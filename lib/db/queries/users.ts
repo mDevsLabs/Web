@@ -27,6 +27,7 @@ import {
   normalizeDictationLanguage,
   normalizeTranslationTarget,
 } from "@/lib/i18n/languages";
+import { normalizePageFont } from "@/lib/pages/style";
 import type { ScheduleToolMode } from "@/lib/planning/tool-mode";
 import { normalizeScheduleToolMode } from "@/lib/planning/tool-mode";
 import {
@@ -113,6 +114,9 @@ export async function getUserPreferences(userId: string) {
           DEFAULT_TRANSLATION_TARGET,
         enabled: Boolean(row.customInstructionsEnabled),
         ghostMemoryEnabled: Boolean(row.ghostMemoryEnabled),
+        pagesDefaultFont: normalizePageFont(row.pagesDefaultFont),
+        pagesDefaultModel: row.pagesDefaultModel?.trim() || null,
+        pagesDefaultPrompt: row.pagesDefaultPrompt ?? "",
         reasoningLevel: (row.reasoningLevel as ReasoningLevel) || "medium",
         // Préférences de recherche mAI Search : normalisées à la lecture, une
         // valeur illisible ne doit jamais faire échouer l'affichage des
@@ -150,6 +154,9 @@ export async function getUserPreferences(userId: string) {
     defaultTranslationLanguage: DEFAULT_TRANSLATION_TARGET,
     enabled: legacy.customInstructionsEnabled,
     ghostMemoryEnabled: false,
+    pagesDefaultFont: "sans" as const,
+    pagesDefaultModel: null,
+    pagesDefaultPrompt: "",
     reasoningLevel: "medium" as const,
     // Table `user_preferences` absente (environnement non migré) : les
     // préférences de recherche retombent sur leurs défauts. La recherche
@@ -187,6 +194,9 @@ type UserPreferencesPatch = Partial<{
   defaultAudioSpeed: number;
   defaultTranslationLanguage: string;
   ghostMemoryEnabled: boolean;
+  pagesDefaultFont: string;
+  pagesDefaultModel: string | null;
+  pagesDefaultPrompt: string;
   showAgentChatIcons: boolean;
   /** Thème partagé : system | light | dark (normalisé à l'écriture). */
   theme: string;
@@ -338,6 +348,9 @@ export async function upsertUserPreferences(
             normalizeTranslationTarget(data.defaultTranslationLanguage) ??
             DEFAULT_TRANSLATION_TARGET,
           ghostMemoryEnabled: data.ghostMemoryEnabled ?? false,
+          pagesDefaultFont: normalizePageFont(data.pagesDefaultFont),
+          pagesDefaultModel: data.pagesDefaultModel?.trim() || null,
+          pagesDefaultPrompt: data.pagesDefaultPrompt ?? "",
           reasoningLevel: data.reasoningLevel ?? "medium",
           searchLanguage: normalizeMaiSearchLanguage(data.searchLanguage),
           searchResultCount: normalizeMaiSearchResultCount(
@@ -400,6 +413,15 @@ export async function upsertUserPreferences(
         DEFAULT_TRANSLATION_TARGET;
     if (data.ghostMemoryEnabled !== undefined)
       updatePayload.ghostMemoryEnabled = data.ghostMemoryEnabled;
+    if (data.pagesDefaultFont !== undefined) {
+      updatePayload.pagesDefaultFont = normalizePageFont(data.pagesDefaultFont);
+    }
+    if (data.pagesDefaultModel !== undefined) {
+      updatePayload.pagesDefaultModel = data.pagesDefaultModel?.trim() || null;
+    }
+    if (data.pagesDefaultPrompt !== undefined) {
+      updatePayload.pagesDefaultPrompt = data.pagesDefaultPrompt;
+    }
     if (data.showAgentChatIcons !== undefined)
       updatePayload.showAgentChatIcons = data.showAgentChatIcons;
     if (data.theme !== undefined)

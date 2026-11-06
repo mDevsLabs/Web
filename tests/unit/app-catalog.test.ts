@@ -17,6 +17,7 @@ describe("catalogue des applications", () => {
       "vibe",
       "code",
       "blackline",
+      "quizzly",
     ]);
   });
 
@@ -28,7 +29,7 @@ describe("catalogue des applications", () => {
       APP_MENU_ORDER.map((entry) =>
         entry.kind === "cli" ? "cli" : entry.entry.key
       )
-    ).toEqual(["mai", "site", "vibe", "code", "cli", "blackline"]);
+    ).toEqual(["mai", "site", "vibe", "code", "cli", "blackline", "quizzly"]);
   });
 
   it("ne déclare le CLI qu'une seule fois dans le menu", () => {
@@ -44,6 +45,7 @@ describe("catalogue des applications", () => {
     expect(APP_CATALOG.vibe.path).toBe("/vibe");
     expect(APP_CATALOG.code.path).toBe("/coder");
     expect(APP_CATALOG.blackline.path).toBe("/blackline");
+    expect(APP_CATALOG.quizzly.path).toBe("/quizzly");
   });
 
   it("porte les descriptions affichées dans le menu du logo", () => {
@@ -60,12 +62,22 @@ describe("catalogue des applications", () => {
     expect(APP_CATALOG.blackline.description).toBe(
       "Détendez-vous en attendant votre agent !"
     );
+    expect(APP_CATALOG.quizzly.description).toBe(
+      "Révisez le collège et le lycée, un quiz à la fois"
+    );
   });
 });
 
 describe("normalizeAppKey", () => {
   it("accepte les clés canoniques", () => {
-    for (const key of ["mai", "site", "vibe", "code", "blackline"] as const) {
+    for (const key of [
+      "mai",
+      "site",
+      "vibe",
+      "code",
+      "blackline",
+      "quizzly",
+    ] as const) {
       expect(normalizeAppKey(key)).toBe(key);
     }
   });
@@ -98,6 +110,7 @@ describe("favoriteAppToPath", () => {
     expect(favoriteAppToPath("vibe")).toBe("/vibe");
     expect(favoriteAppToPath("code")).toBe("/coder");
     expect(favoriteAppToPath("blackline")).toBe("/blackline");
+    expect(favoriteAppToPath("quizzly")).toBe("/quizzly");
   });
 
   it("est fail-safe sur une valeur inconnue", () => {
@@ -113,6 +126,8 @@ describe("appKeyFromPath", () => {
     expect(appKeyFromPath("/vibe/u/pseudo")).toBe("vibe");
     expect(appKeyFromPath("/coder")).toBe("code");
     expect(appKeyFromPath("/blackline")).toBe("blackline");
+    expect(appKeyFromPath("/quizzly")).toBe("quizzly");
+    expect(appKeyFromPath("/quizzly/profil")).toBe("quizzly");
   });
 
   it("attribue tout le reste à mAI", () => {

@@ -13,6 +13,7 @@ import {
   PinIcon,
   PinOffIcon,
   SearchIcon,
+  Share2Icon,
   TrashIcon,
 } from "@mdevs/icons";
 import Image from "next/image";
@@ -34,7 +35,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useSidebar } from "@/components/ui/sidebar";
+import { revalidateChatHistories } from "@/hooks/revalidate-chat-histories";
 import { useActiveChat } from "@/hooks/use-active-chat";
+import { useChatVisibility } from "@/hooks/use-chat-visibility";
 import { confirmInApp, promptInApp } from "@/lib/ui/app-dialog";
 import { cn, fetcher } from "@/lib/utils";
 import { NotificationBell } from "./notification-bell";
@@ -57,6 +60,11 @@ function PureChatHeader({
   const pathname = usePathname();
   const router = useRouter();
   const isHome = pathname === "/";
+  const { visibilityType } = useChatVisibility({
+    chatId,
+    initialVisibilityType: selectedVisibilityType,
+    isSecure,
+  });
   // Fantôme uniquement sur la page d'accueil (nouvelle conversation)
   const showGhost = isHome;
 
@@ -143,6 +151,47 @@ function PureChatHeader({
       }
     },
     [chatId]
+  );
+
+  const handleShareConversation = useCallback(
+    (platform: string) => {
+      if (visibilityType !== "public") {
+        toast.error(
+          "La conversation doit être publique pour partager. Passez-la en public via le sélecteur de visibilité."
+        );
+        return;
+      }
+      const chatUrl = `${window.location.origin}/chat/${chatId}`;
+      const text = "Découvrez cette conversation mAI";
+      const encodedText = encodeURIComponent(text);
+      const encodedUrl = encodeURIComponent(chatUrl);
+      const urls: Record<string, string> = {
+        copy: chatUrl,
+        facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+        linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+        telegram: `https://t.me/share/url?url=${encodedUrl}&text=${encodedText}`,
+        whatsapp: `https://wa.me/?text=${encodedText}%20${encodedUrl}`,
+        x: `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`,
+      };
+      if (platform === "copy") {
+        navigator.clipboard
+          .writeText(`${text}\n${chatUrl}`)
+          .then(() => toast.success("Lien copié !"))
+          .catch(() => toast.error("Échec copie"));
+        return;
+      }
+      if (platform === "native" && navigator.share) {
+        navigator
+          .share({ text, title: "Partager la conversation mAI", url: chatUrl })
+          .catch(() => {});
+        return;
+      }
+      const target = urls[platform];
+      if (target) {
+        window.open(target, "_blank", "noopener,noreferrer");
+      }
+    },
+    [chatId, visibilityType]
   );
 
   const handleCopyId = useCallback(async () => {
@@ -233,6 +282,7 @@ function PureChatHeader({
         throw new Error();
       }
       toast.success("Conversation supprimée");
+      await revalidateChatHistories();
       router.push("/");
     } catch {
       toast.error("Erreur suppression");
@@ -245,24 +295,17 @@ function PureChatHeader({
     <header
       className={`sticky top-0 z-10 flex items-center gap-1.5 sm:gap-2 chat-header-glass px-2 sm:px-4 ${isCollapsedDesktop ? "h-[calc(env(safe-area-inset-top)+2.5rem)] pt-[env(safe-area-inset-top)]" : "h-[calc(env(safe-area-inset-top)+3.5rem)] pt-[env(safe-area-inset-top)]"}`}
     >
-      {isCollapsedDesktop && (
-        <Button
-          aria-label="Ouvrir la barre latérale"
-          onClick={toggleSidebar}
-          size="icon-sm"
-          variant="ghost"
-        >
-          <PanelLeftIcon className="size-4" />
-        </Button>
-      )}
+      {/* Un seul déclencheur : le doublon « bureau replié + mobile » créait
+          deux boutons dans l'en-tête. Il reste visible aux deux tailles, avec
+          une cible tactile de 44 px sur mobile. */}
       <Button
-        aria-label="Ouvrir la barre latérale"
-        className="md:hidden min-h-[44px] min-w-[44px] h-11 w-11 -ml-1"
+        aria-label="Afficher ou masquer la barre latérale"
+        className="-ml-1 h-11 w-11 min-h-[44px] min-w-[44px] md:h-8 md:min-h-8 md:min-w-8 md:w-8"
         onClick={toggleSidebar}
         size="icon-sm"
         variant="ghost"
       >
-        <PanelLeftIcon className="size-5" />
+        <PanelLeftIcon className="size-5 md:size-4" />
       </Button>
 
       <Link
@@ -355,6 +398,9 @@ function PureChatHeader({
                 <span>Exporter</span>
               </DropdownMenuSubTrigger>
               <DropdownMenuSubContent>
+                <DropdownMenuItem onClick={() => handleExport("html")}>
+                  Imprimer / PDF (.html)
+                </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => handleExport("md")}>
                   Markdown (.md)
                 </DropdownMenuItem>
@@ -450,63 +496,54 @@ function PureChatHeader({
       )}
 
       <div className="ml-auto flex items-center gap-2">
-        {/* Export compact (mobile) */}
-        {!isHome && (
+        {!isHome && !isReadonly ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
-                aria-label="Exporter"
-                className="sm:hidden rounded-xl text-xs h-8 w-8 p-0 border-border/60 hover:bg-muted"
+                aria-label="Partager"
+                className="rounded-xl text-xs gap-1.5 h-8 border-border/60 hover:bg-muted"
                 size="sm"
                 variant="outline"
               >
-                <DownloadIcon className="size-4" />
+                <Share2Icon className="size-3.5" />
+                <span className="hidden sm:inline">Partager</span>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-48">
-              <DropdownMenuItem onClick={() => handleExport("html")}>
-                Imprimer / PDF (.html)
+            <DropdownMenuContent align="end" className="w-52">
+              <DropdownMenuItem onClick={() => handleShareConversation("copy")}>
+                Copier le lien
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleExport("md")}>
-                Markdown (.md)
+              <DropdownMenuItem onClick={() => handleShareConversation("x")}>
+                Partager sur X
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleExport("json")}>
-                JSON (.json)
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleExport("txt")}>
-                Texte (.txt)
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        )}
-        {!isHome && (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                className="hidden sm:inline-flex rounded-xl text-xs gap-1.5 h-8 border-border/60 hover:bg-muted"
-                size="sm"
-                variant="outline"
+              <DropdownMenuItem
+                onClick={() => handleShareConversation("facebook")}
               >
-                <DownloadIcon className="size-3.5" />
-                <span>Exporter</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-48">
-              <DropdownMenuItem onClick={() => handleExport("html")}>
-                Imprimer / PDF (.html)
+                Partager sur Facebook
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleExport("md")}>
-                Markdown (.md)
+              <DropdownMenuItem
+                onClick={() => handleShareConversation("linkedin")}
+              >
+                Partager sur LinkedIn
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleExport("json")}>
-                JSON (.json)
+              <DropdownMenuItem
+                onClick={() => handleShareConversation("whatsapp")}
+              >
+                Partager sur WhatsApp
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleExport("txt")}>
-                Texte (.txt)
+              <DropdownMenuItem
+                onClick={() => handleShareConversation("telegram")}
+              >
+                Partager sur Telegram
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => handleShareConversation("native")}
+              >
+                Partager…
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-        )}
+        ) : null}
         <NotificationBell />
       </div>
     </header>

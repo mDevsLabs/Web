@@ -1,0 +1,2568 @@
+{
+  "id": "2nde-physique-chimie-02",
+  "year": "2nde",
+  "subject": "physique-chimie",
+  "title": "Mouvement et interactions",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Décrire un mouvement",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Système de référence",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour décrire un mouvement, on a besoin :",
+              "options": [
+                "d'un système de référence",
+                "d'un chronomètre seul",
+                "d'un repère",
+                "d'une masse"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Trajectoire et vitesse sont définies par rapport à un repère choisi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un mouvement est relatif car il dépend :",
+              "options": [
+                "de la couleur de l'objet",
+                "du référentiel choisi",
+                "de la masse uniquement",
+                "de la température"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le même déplacement peut être vu différemment selon l'observateur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le référentiel géocentrique a pour origine :",
+              "options": [
+                "le Soleil",
+                "le centre de la Terre",
+                "un passager",
+                "le centre de l'atome"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Géocentrique signifie centré sur la Terre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un passager immobile dans un train est au repos dans le référentiel :",
+              "options": ["du sol", "du train", "du Soleil", "de la Lune"],
+              "correctAnswers": [1],
+              "explanation": "Par rapport au train, sa position ne change pas."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'unité SI de la vitesse est :",
+              "options": ["km/h", "m·s⁻¹", "N", "J"],
+              "correctAnswers": [1],
+              "explanation": "Le mètre par seconde est l'unité dérivée SI de vitesse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une trajectoire rectiligne est :",
+              "options": [
+                "une ligne droite",
+                "un cercle",
+                "une parabole obligatoire",
+                "toujours horizontale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rectiligne signifie que la trajectoire est une droite."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La position d'un mobile se note souvent :",
+              "options": ["F", "x(t) ou M(t)", "pH", "λ"],
+              "correctAnswers": [1],
+              "explanation": "La position dépend du temps dans un mouvement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un mobile au repos dans un référentiel a une vitesse :",
+              "options": [
+                "nulle",
+                "infinie",
+                "toujours 9,81 m·s⁻¹",
+                "impossible à définir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au repos, la vitesse par rapport à ce référentiel est nulle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Changer de référentiel peut changer :",
+              "options": [
+                "la masse de l'objet",
+                "l'aspect du mouvement perçu",
+                "le nombre de protons",
+                "la charge électrique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Trajectoire et vitesse sont relatives au repère."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Décrire un mouvement, c'est préciser :",
+              "options": [
+                "uniquement la couleur",
+                "trajectoire, référentiel et évolution dans le temps",
+                "seulement la masse",
+                "le numéro atomique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il faut où va l'objet, par rapport à quoi, et quand."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Trajectoire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une trajectoire peut être :",
+              "options": [
+                "rectiligne",
+                "circulaire",
+                "toujours parabolique",
+                "curviligne"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Rectiligne ou curviligne (cercle, parabole, etc.)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La trajectoire est l'ensemble des :",
+              "options": [
+                "forces",
+                "positions successives du mobile",
+                "températures",
+                "réactions chimiques"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C'est le chemin suivi dans l'espace."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un mouvement circulaire a une trajectoire :",
+              "options": [
+                "rectiligne",
+                "en cercle (ou arc)",
+                "hyperbolique obligatoire",
+                "nulle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le mobile reste à distance constante d'un centre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La trajectoire d'un projectile sans frottement (champ uniforme) est :",
+              "options": [
+                "une droite horizontale",
+                "une parabole",
+                "un cercle parfait",
+                "une hyperbole toujours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sous pesanteur uniforme, la trajectoire est parabolique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour tracer une trajectoire expérimentale, on enregistre :",
+              "options": [
+                "les positions à instants connus",
+                "seulement la masse",
+                "le pH",
+                "la pression atmosphérique seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Positions datées permettent de reconstituer le chemin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un mouvement rectiligne uniforme (MRU) a une trajectoire :",
+              "options": [
+                "droite et vitesse constante",
+                "circulaire",
+                "avec accélération variable",
+                "impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "MRU : droite + vitesse constante en norme et direction."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La distance parcourue sur la trajectoire s'appelle :",
+              "options": [
+                "le déplacement vectoriel seul",
+                "le chemin parcouru (longueur)",
+                "la force",
+                "l'énergie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le chemin est la longueur curviligne suivie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le déplacement est :",
+              "options": [
+                "toujours égal à la distance",
+                "un vecteur entre position initiale et finale",
+                "une force",
+                "une masse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Déplacement = vecteur $\\overrightarrow{M_i M_f}$."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sur un cercle, si le mobile revient au point de départ, le déplacement est :",
+              "options": [
+                "égal au périmètre",
+                "nul",
+                "toujours 9,8 m",
+                "infini"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Position finale = initiale, donc déplacement nul."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une trajectoire curviligne implique :",
+              "options": [
+                "que la direction de la vitesse peut changer",
+                "que la vitesse est toujours nulle",
+                "qu'il n'y a pas de forces",
+                "qu'il n'y a pas de temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En courbe, la tangente à la trajectoire change de direction."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Vitesse et rapidité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La vitesse est une grandeur :",
+              "options": [
+                "vectorielle",
+                "scalaire",
+                "caractérisée par une direction",
+                "toujours négative"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Vitesse = norme, direction et sens (vecteur)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La rapidité (ou vitesse scalaire) correspond à :",
+              "options": [
+                "la norme du vecteur vitesse",
+                "le vecteur complet",
+                "la masse",
+                "l'accélération"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rapidité = $\\|\\vec{v}\\|$ en m·s⁻¹."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un mobile parcourt 100 m en 20 s à vitesse constante. Sa rapidité vaut :",
+              "options": ["5 m·s⁻¹", "2000 m·s⁻¹", "0,2 m·s⁻¹", "50 m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "$v = d/t = 100/20 = 5$ m·s⁻¹."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "72 km/h équivaut à :",
+              "options": ["20 m·s⁻¹", "72 m·s⁻¹", "200 m·s⁻¹", "7,2 m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "$72/3{,}6 = 20$ m·s⁻¹."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le vecteur vitesse est tangent à :",
+              "options": [
+                "l'axe des ordonnées seulement",
+                "la trajectoire",
+                "la verticale toujours",
+                "la normale au sol"
+              ],
+              "correctAnswers": [1],
+              "explanation": "$\\vec{v}$ est tangent à la courbe trajectoire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En MRU, le vecteur vitesse est :",
+              "options": [
+                "constant",
+                "nul obligatoirement",
+                "perpendiculaire à la trajectoire",
+                "toujours vertical"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Direction, sens et norme ne changent pas en MRU."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un mobile recule, le sens du vecteur vitesse :",
+              "options": [
+                "est opposé au sens choisi positif",
+                "disparaît",
+                "est toujours vers le haut",
+                "n'existe pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sens du vecteur indique le sens du mouvement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La vitesse moyenne entre deux instants se calcule avec :",
+              "options": [
+                "$\\Delta x / \\Delta t$ (selon l'axe)",
+                "masse × vitesse seule",
+                "force × distance",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vitesse moyenne = variation de position sur durée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Convertir 15 m·s⁻¹ en km/h :",
+              "options": ["54 km/h", "15 km/h", "150 km/h", "5,4 km/h"],
+              "correctAnswers": [0],
+              "explanation": "$15 \\times 3{,}6 = 54$ km/h."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux mobiles avec la même rapidité peuvent avoir :",
+              "options": [
+                "des vecteurs vitesse différents",
+                "obligatoirement le même vecteur",
+                "toujours la même direction",
+                "une masse nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même norme, directions ou sens différents possibles."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Vitesse instantanée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La vitesse instantanée :",
+              "options": [
+                "dépend du instant considéré",
+                "est toujours égale à la vitesse moyenne",
+                "se lit sur un graphique x(t) via la pente",
+                "est une grandeur sans unité"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Instantanée au temps t ; pente de x(t) donne $v_x$."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur un enregistrement photo, la vitesse instantanée approche :",
+              "options": [
+                "$\\Delta x/\\Delta t$ pour $\\Delta t$ petit",
+                "la masse",
+                "la force",
+                "le pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Taux de variation sur un intervalle très court."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En MRU, vitesse instantanée et moyenne sont :",
+              "options": [
+                "égales",
+                "toujours différentes",
+                "nulles seulement au départ",
+                "impossibles à mesurer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vitesse constante : instantanée = moyenne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'unité de vitesse en SI est :",
+              "options": ["m·s⁻¹", "km seul", "s·m", "N·s"],
+              "correctAnswers": [0],
+              "explanation": "Longueur par temps en système international."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un graphique x(t) linéaire indique :",
+              "options": [
+                "vitesse constante le long de l'axe",
+                "accélération infinie",
+                "repos",
+                "trajectoire circulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente constante ⇒ $v_x$ constante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Au sommet d'un lancer vertical (sans frottement), la vitesse verticale est :",
+              "options": ["nulle", "maximale", "infinie", "égale à g"],
+              "correctAnswers": [0],
+              "explanation": "Le mobile change de sens : $v_y = 0$ au sommet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La norme de la vitesse peut augmenter si :",
+              "options": [
+                "le mobile accélère",
+                "le mobile est au repos",
+                "il n'y a pas de mouvement",
+                "la masse est nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accélération dans le sens du mouvement augmente la rapidité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vitesse instantanée et vecteur vitesse désignent :",
+              "options": [
+                "la même grandeur vectorielle au instant t",
+                "deux unités différentes",
+                "une force",
+                "une énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vecteur $\\vec{v}(t)$ au instant considéré."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sur route, le compteur indique souvent :",
+              "options": [
+                "une rapidité",
+                "une accélération",
+                "une force",
+                "un déplacement vectoriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compteur = norme de vitesse (km/h)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si x(t) = 3t + 2 (SI), alors $v_x$ vaut :",
+              "options": ["3 m·s⁻¹", "2 m·s⁻¹", "3t m·s⁻¹", "5 m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "Pente 3 : vitesse constante 3 m·s⁻¹."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Mouvement uniforme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un mouvement uniforme (MU) vérifie :",
+              "options": [
+                "vitesse vectorielle constante",
+                "trajectoire nécessairement circulaire",
+                "accélération nulle",
+                "vitesse nulle"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "$\\vec{v}$ constant ⇒ $\\vec{a} = \\vec{0}$."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'équation horaire d'un MRU le long de x est :",
+              "options": [
+                "x(t) = x₀ + v·t",
+                "x(t) = ½at²",
+                "x(t) = constante pour tout t",
+                "x(t) = v/t"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relation linéaire position-temps."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sur un graphique x(t) en MRU, la courbe est :",
+              "options": [
+                "une droite",
+                "une parabole",
+                "un cercle",
+                "une exponentielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente constante = droite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un train à 130 km/h en ligne droite (approximation) est en :",
+              "options": [
+                "MRU",
+                "chute libre",
+                "repos",
+                "mouvement circulaire uniforme seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vitesse constante en trajectoire rectiligne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En MRU, la distance parcourue en Δt vaut :",
+              "options": ["v·Δt", "½v·Δt", "v/Δt", "v²·Δt"],
+              "correctAnswers": [0],
+              "explanation": "$d = v \\Delta t$ si v constante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un mobile en MRU subit une résultante des forces :",
+              "options": [
+                "nulle (si seules forces de mouvement)",
+                "toujours égale à mg vers le bas",
+                "infinie",
+                "impossible à déterminer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Principe d'inertie : $\\vec{v}$ constant ⇒ $\\sum \\vec{F} = \\vec{0}$."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le mouvement circulaire uniforme (MCU) a :",
+              "options": [
+                "rapidité constante, direction qui change",
+                "vitesse vectorielle constante",
+                "accélération nulle",
+                "trajectoire rectiligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Norme constante mais $\\vec{v}$ change de direction."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En MCU, l'accélération est :",
+              "options": [
+                "centripète",
+                "nulle",
+                "toujours tangentielle seule",
+                "parallèle à v"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accélération vers le centre du cercle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "x₀ = 5 m, v = 2 m·s⁻¹. À t = 4 s, x vaut :",
+              "options": ["13 m", "8 m", "3 m", "20 m"],
+              "correctAnswers": [0],
+              "explanation": "$x = 5 + 2\\times4 = 13$ m."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "MRU signifie :",
+              "options": [
+                "mouvement rectiligne uniforme",
+                "mouvement rectiligne unidirectionnel uniquement",
+                "masse relative uniforme",
+                "mesure de radiation ultraviolette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rectiligne + vitesse constante."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Mouvement uniformément accéléré",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un mouvement uniformément accéléré (MUA) a :",
+              "options": [
+                "accélération constante",
+                "vitesse qui varie linéairement avec t (composante)",
+                "toujours trajectoire circulaire",
+                "accélération nulle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "$a$ constant ⇒ $v(t) = v_0 + at$."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Chute libre sans frottement (référentiel terrestre) : accélération ≈",
+              "options": [
+                "9,81 m·s⁻² vers le bas",
+                "0 m·s⁻²",
+                "9,81 m·s⁻² vers le haut",
+                "1 m·s⁻²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accélération de la pesanteur $g$."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Équation v(t) en MUA selon x :",
+              "options": [
+                "v = v₀ + a·t",
+                "v = constante",
+                "v = x/t toujours",
+                "v = a/t"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intégration de $a = \\mathrm{cte}$."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Équation x(t) en MUA avec x₀ = 0, v₀ = 0 :",
+              "options": ["x = ½a·t²", "x = a·t", "x = v·t seule", "x = t/a"],
+              "correctAnswers": [0],
+              "explanation": "Double intégration avec conditions nulles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Graphique v(t) linéaire ⇒",
+              "options": [
+                "accélération constante",
+                "MRU",
+                "repos",
+                "vitesse nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente de v(t) = accélération."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "v₀ = 0, a = 2 m·s⁻². À t = 3 s, v vaut :",
+              "options": ["6 m·s⁻¹", "2 m·s⁻¹", "9 m·s⁻¹", "1,5 m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "$v = 0 + 2\\times3 = 6$ m·s⁻¹."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Relation sans temps : v² = v₀² + 2aΔx vient de :",
+              "options": [
+                "MUA",
+                "MRU strict",
+                "repos",
+                "MCU sans accélération"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identité utile quand t n'est pas donnée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Freinage uniforme signifie :",
+              "options": [
+                "accélération opposée au mouvement",
+                "accélération nulle",
+                "vitesse infinie",
+                "pas de forces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décélération = accélération négative selon l'axe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "x(t) parabolique en x(t) indique :",
+              "options": [
+                "accélération non nulle selon x",
+                "MRU",
+                "accélération nulle",
+                "erreur de mesure obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terme en t² ⇒ accélération constante."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En chute libre, on néglige souvent :",
+              "options": [
+                "la résistance de l'air",
+                "la gravité",
+                "la masse",
+                "le temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle ideal : seule pesanteur, pas de frottement."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Accélération",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'accélération :",
+              "options": [
+                "mesure la variation de vitesse",
+                "a pour unité m·s⁻² en SI",
+                "est toujours nulle en MRU",
+                "est une grandeur vectorielle"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "$\\vec{a} = d\\vec{v}/dt$, vecteur en m·s⁻²."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Accélération moyenne : a =",
+              "options": ["Δv/Δt", "v·t", "F/m seulement sans Δt", "x/t"],
+              "correctAnswers": [0],
+              "explanation": "Taux de variation de vitesse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si la vitesse diminue en norme, on parle de :",
+              "options": [
+                "décélération (ralentissement)",
+                "accélération centripète obligatoire",
+                "repos",
+                "MRU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accélération opposée au sens de v."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En MCU, l'accélération centripète a pour norme :",
+              "options": ["v²/R", "v·R", "R/v", "v seule"],
+              "correctAnswers": [0],
+              "explanation": "$a_c = v^2/R$."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "a = 0 signifie :",
+              "options": [
+                "vitesse vectorielle constante",
+                "mobile immobile obligatoire",
+                "force infinie",
+                "trajectoire impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de changement de $\\vec{v}$."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pente de v(t) sur un graphique donne :",
+              "options": [
+                "l'accélération selon l'axe",
+                "la masse",
+                "la distance",
+                "le poids"
+              ],
+              "correctAnswers": [0],
+              "explanation": "$a = dv/dt$ graphiquement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Unité SI d'accélération :",
+              "options": ["m·s⁻²", "N·kg⁻¹ seule en nom", "km/h", "J"],
+              "correctAnswers": [0],
+              "explanation": "m·s⁻² ; N·kg⁻¹ = m·s⁻² aussi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Accélération perpendiculaire à v change surtout :",
+              "options": [
+                "la direction de v",
+                "uniquement la norme sans courbure",
+                "la masse",
+                "la charge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Composante normale ⇒ courbure de trajectoire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Δv = 10 m·s⁻¹ en 2 s donne a moyen :",
+              "options": ["5 m·s⁻²", "20 m·s⁻²", "0,2 m·s⁻²", "2 m·s⁻²"],
+              "correctAnswers": [0],
+              "explanation": "$10/2 = 5$ m·s⁻²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En chute libre, a vertical ≈ g :",
+              "options": [
+                "indépendamment de la masse (sans frottement)",
+                "seulement pour m > 1 kg",
+                "nul",
+                "vers le haut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Galilée : même accélération pour tous les corps."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Graphiques position-temps",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur x(t), on peut lire :",
+              "options": [
+                "la position à un instant",
+                "une idée de la vitesse via la pente",
+                "directement la masse",
+                "le numéro atomique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ordonnée = x ; pente = $v_x$."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pente nulle sur x(t) ⇒",
+              "options": [
+                "repos selon x",
+                "accélération maximale",
+                "vitesse infinie",
+                "force constante non nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x ne varie pas : $v_x = 0$."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Courbe x(t) parabolique croissante ⇒",
+              "options": [
+                "accélération positive selon x",
+                "MRU",
+                "x constant",
+                "v négative toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courbure vers le haut : a > 0."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Deux droites x(t) : la plus raide correspond à :",
+              "options": [
+                "plus grande vitesse selon x",
+                "plus petite vitesse",
+                "accélération nulle plus petite seulement si parallèles",
+                "même vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente plus grande = $v_x$ plus grande."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "x(t) = 10 constant ⇒",
+              "options": [
+                "mobile immobile selon x",
+                "MRU à 10 m·s⁻¹",
+                "chute libre",
+                "MCU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Position fixe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour estimer v à t₀, on trace :",
+              "options": [
+                "tangente à x(t) en t₀",
+                "normale au sol",
+                "cercle",
+                "asymptote horizontale seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente de la tangente = vitesse instantanée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "x diminue avec t :",
+              "options": [
+                "v_x négative (si axe orienté)",
+                "accélération nulle impossible",
+                "v_x toujours positive",
+                "repos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente négative : mouvement sens opposé à l'axe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Graphique x(t) linéaire de pente −3 : v_x vaut :",
+              "options": ["−3 m·s⁻¹", "3 m·s⁻¹", "−3 m", "0 m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "Pente = composante de vitesse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "x(t) et y(t) séparés servent à :",
+              "options": [
+                "décrire un mouvement dans le plan",
+                "mesurer le pH",
+                "calculer la radioactivité",
+                "remplacer les forces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mouvement plan : deux équations horaires."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si x(t) = 4t², alors à t = 2 s, x vaut :",
+              "options": ["16 m", "8 m", "4 m", "32 m"],
+              "correctAnswers": [0],
+              "explanation": "$4\\times4 = 16$ m."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Graphiques vitesse-temps",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur v(t) :",
+              "options": [
+                "l'aire sous la courbe donne Δx (selon x)",
+                "la pente donne l'accélération",
+                "on lit directement la masse molaire",
+                "la courbe donne toujours MRU"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Intégrale de v = déplacement ; pente = a."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "v(t) horizontal non nul ⇒",
+              "options": [
+                "MRU selon x",
+                "MUA",
+                "repos",
+                "accélération variable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "v constante : accélération nulle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "v(t) droite de pente 2 m·s⁻² ⇒ a =",
+              "options": ["2 m·s⁻²", "2 m·s⁻¹", "4 m·s⁻²", "0 m·s⁻²"],
+              "correctAnswers": [0],
+              "explanation": "Pente = accélération."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "v de 0 à 10 m·s⁻¹ en 5 s, a constante : a =",
+              "options": ["2 m·s⁻²", "50 m·s⁻²", "0,5 m·s⁻²", "10 m·s⁻²"],
+              "correctAnswers": [0],
+              "explanation": "$10/5 = 2$ m·s⁻²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Aire rectangle v=6 m·s⁻¹, Δt=4 s : Δx =",
+              "options": ["24 m", "10 m", "1,5 m", "0,24 m"],
+              "correctAnswers": [0],
+              "explanation": "$6\\times4 = 24$ m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "v(t) passe par zéro :",
+              "options": [
+                "changement de sens possible selon x",
+                "impossible en physique",
+                "masse nulle",
+                "accélération nulle obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. sommet d'un lancer vertical."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "v(t) linéaire négative croissante :",
+              "options": [
+                "ralentissement puis sens opposé possible",
+                "MRU positif",
+                "accélération nulle",
+                "v toujours positive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "v augmente algébriquement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Triangle v-t : aire =",
+              "options": [
+                "½ × base × hauteur",
+                "base × hauteur",
+                "pente seule",
+                "v²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aire triangulaire classique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "v(t) = 3t (SI) ⇒ a =",
+              "options": ["3 m·s⁻²", "3 m·s⁻¹", "3t m·s⁻²", "0"],
+              "correctAnswers": [0],
+              "explanation": "Dérivée : a = 3 m·s⁻²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Utiliser v(t) plutôt que x(t) simplifie :",
+              "options": [
+                "trouver a et Δx par aire",
+                "mesurer la température",
+                "compter les électrons",
+                "définir le référentiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil direct pour accélération et déplacement."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse mouvement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour caractériser un mouvement on utilise :",
+              "options": [
+                "référentiel",
+                "trajectoire",
+                "seulement la couleur",
+                "masse molaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Repère, chemin et loi x(t), v(t)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "MRU : accélération",
+              "options": ["nulle", "égale à g", "variable", "infinie"],
+              "correctAnswers": [0],
+              "explanation": "v constante ⇒ a = 0."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Chute libre idéale : type de mouvement",
+              "options": [
+                "MUA vertical",
+                "MRU horizontal obligatoire seul",
+                "repos",
+                "MCU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "a = g constant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Déplacement peut être nul alors que distance > 0 :",
+              "options": [
+                "oui (ex. tour complet)",
+                "non jamais",
+                "seulement en 3D interdit",
+                "si masse nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retour au point : déplacement nul, chemin non."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "72 km/h vers le nord est :",
+              "options": [
+                "une information vectorielle partielle",
+                "une masse",
+                "une force",
+                "un pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Norme + direction (vecteur vitesse)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Enregistrement vidéo point par point sert à :",
+              "options": [
+                "reconstituer trajectoire",
+                "mesurer masse molaire",
+                "faire une titration",
+                "calculer pKa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Positions à instants successifs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "MCU : v vectorielle constante ?",
+              "options": [
+                "non, direction change",
+                "oui toujours",
+                "oui si R infini",
+                "impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Direction varie sur le cercle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Unité cohérente : v en m·s⁻¹, t en s ⇒ x en",
+              "options": ["m", "s", "m·s", "s²"],
+              "correctAnswers": [0],
+              "explanation": "v×t donne une longueur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Modéliser un mouvement, c'est :",
+              "options": [
+                "choisir un modèle (MRU, MUA…) adapté",
+                "ignorer les données",
+                "fixer g = 0",
+                "supprimer le référentiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simplifier la réalité avec un modèle pertinent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La vitesse moyenne sur un aller-retour même distance peut être :",
+              "options": [
+                "inférieure à la rapidité moyenne sur le trajet total",
+                "égale à la lumière",
+                "sans unité",
+                "toujours maximale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Temps total plus long ⇒ vitesse moyenne plus faible."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les interactions fondamentales",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Notion de force",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une force :",
+              "options": [
+                "peut déformer un objet",
+                "peut modifier le mouvement",
+                "est toujours sans unité",
+                "est mesurée en newton"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Force en N ; effets : déformation ou variation de v."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Symbole et unité SI de force :",
+              "options": [
+                "F en newton (N)",
+                "P en pascal",
+                "E en joule",
+                "I en ampère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 N = 1 kg·m·s⁻²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une force est une grandeur :",
+              "options": [
+                "vectorielle",
+                "scalaire",
+                "sans direction",
+                "en mètres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Force = intensité, direction, sens."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Contact vs distance :",
+              "options": [
+                "certaines forces agissent sans contact (ex. gravité)",
+                "toutes nécessitent contact",
+                "aucune à distance",
+                "seulement magnétisme sans contact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gravitation et électromagnétisme agissent à distance."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Résultante des forces $\\sum \\vec{F}$ :",
+              "options": [
+                "vecteur somme de toutes les forces",
+                "une masse",
+                "une énergie",
+                "un temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Principe de superposition des forces."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dynamomètre mesure :",
+              "options": ["une force", "une vitesse", "un volume", "un pH"],
+              "correctAnswers": [0],
+              "explanation": "Instrument de mesure de force."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Force de 1 N environ équivaut à :",
+              "options": [
+                "masse 100 g dans pesanteur terrestre (~1 N)",
+                "1 kg sans g",
+                "10 N toujours",
+                "0,001 N"
+              ],
+              "correctAnswers": [0],
+              "explanation": "$P = mg$ ; 0,1 kg × 10 ≈ 1 N."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Repère avec forces : on dessine :",
+              "options": [
+                "des vecteurs flèches",
+                "des nombres sans direction",
+                "seulement des couleurs",
+                "rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma vectoriel des forces."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux forces égales opposées sur même ligne :",
+              "options": [
+                "résultante nulle",
+                "résultante double",
+                "accélération infinie",
+                "impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forces se compensent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Effet d'une force sur un mobile libre :",
+              "options": [
+                "accélération si résultante non nulle",
+                "vitesse toujours nulle",
+                "masse change",
+                "trajectoire toujours circulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "$\\vec{a} = \\vec{F}_{\\mathrm{res}}/m$."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quatre interactions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Interactions fondamentales :",
+              "options": [
+                "gravitation",
+                "électromagnétique",
+                "forte nucléaire",
+                "oxydation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Quatre forces : grav., EM, forte, faible ; pas l'oxydation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Interaction la plus faible en intensité typique :",
+              "options": [
+                "gravitation",
+                "forte nucléaire",
+                "électromagnétique",
+                "faible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gravité très faible à l'échelle microscopique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Interaction forte agit surtout :",
+              "options": [
+                "dans le noyau",
+                "entre planètes",
+                "dans le vide cosmique seul",
+                "sur les électrons libres seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lie nucleons dans noyau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Interaction faible intervient notamment dans :",
+              "options": [
+                "certaines désintégrations radioactives",
+                "la couleur d'un objet",
+                "MRU",
+                "poids au sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Radioactivité β par exemple."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Électromagnétique explique :",
+              "options": [
+                "liaisons chimiques (aspect EM)",
+                "gravité seule",
+                "fusion soleil seule par forte seule",
+                "rien au quotidien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Atomes, molécules, lumière : EM."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Gravitation universelle :",
+              "options": [
+                "attire masses entre elles",
+                "repousse toujours",
+                "n'agit que sur Terre",
+                "unité newton seulement pour charge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Newton : attraction entre masses."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Portée de la gravitation :",
+              "options": [
+                "infinie",
+                "nulle au-delà de 1 m",
+                "seulement contact",
+                "uniquement noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décroît avec distance mais agit partout."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Force forte portée :",
+              "options": [
+                "très courte (~fm)",
+                "infinie",
+                "km",
+                "uniquement vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confinée au noyau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Au quotidien, poids et frottement relèvent surtout de :",
+              "options": [
+                "gravitation et EM (contact)",
+                "forte seule",
+                "faible seule",
+                "aucune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pesanteur + forces de contact EM."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quatre interactions suffisent à décrire :",
+              "options": [
+                "phénomènes physiques connus à ce jour",
+                "seulement chimie organique",
+                "seulement astrophysique",
+                "aucun phénomène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle standard des interactions."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Gravitation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Loi de gravitation (Newton) :",
+              "options": [
+                "force proportionnelle aux masses",
+                "force inversement proportionnelle au carré de la distance",
+                "force nulle si masses égales",
+                "attractive entre masses"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "$F = G m_1 m_2 / d^2$, attractive."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Constante G :",
+              "options": [
+                "universalité gravitation",
+                "accélération g",
+                "force électrique",
+                "charge e"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Constante de gravitation universelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Plus les masses sont grandes, F gravitation :",
+              "options": [
+                "augmente",
+                "diminue toujours",
+                "nulle",
+                "indépendante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proportionnelle à $m_1 m_2$."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Double distance ⇒ force gravitation :",
+              "options": ["divisée par 4", "doublée", "inchangée", "nulle"],
+              "correctAnswers": [0],
+              "explanation": "Loi en $1/d^2$."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Terre attire Lune :",
+              "options": [
+                "oui, gravitation",
+                "non",
+                "seulement Lune attire Terre",
+                "contact obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interaction réciproque."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Champ de pesanteur g près de la Terre :",
+              "options": [
+                "vers centre Terre",
+                "vers le ciel",
+                "nul",
+                "parallèle à l'équateur seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attraction vers le centre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Satellite en orbite : subit surtout",
+              "options": [
+                "gravitation terrestre",
+                "forte nucléaire",
+                "force de frottement seule en vide",
+                "répulsion gravitationnelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gravité fournit accélération centripète."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Masse et gravitation :",
+              "options": [
+                "plus massive ⇒ plus d'attraction",
+                "masse n'intervient pas",
+                "masse réduit F",
+                "seule charge compte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "F proportionnelle aux masses."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Astronaute en orbite :",
+              "options": [
+                "est en chute libre autour de Terre",
+                "sans gravité du tout",
+                "masse nulle",
+                "force nulle partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Microgravité apparente, g non nul."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Unité cohérente pour G (SI) implique N·m²·kg⁻² :",
+              "options": [
+                "oui",
+                "non, joules seuls",
+                "pascal",
+                "sans dimension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyse dimensionnelle de $F = Gm^2/d^2$."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le poids",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le poids $\\vec{P}$ :",
+              "options": [
+                "est une force",
+                "s'exprime en newton",
+                "est égal à la masse en kg",
+                "dirige vers le centre attracteur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "$\\vec{P} = m\\vec{g}$, force en N."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Relation poids :",
+              "options": ["P = m·g", "P = m/g", "P = g seul", "P = m + g"],
+              "correctAnswers": [0],
+              "explanation": "Produit masse par intensité g."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Masse 60 kg, g ≈ 10 N·kg⁻¹ : poids ≈",
+              "options": ["600 N", "60 N", "6 N", "6000 N"],
+              "correctAnswers": [0],
+              "explanation": "$60\\times10 = 600$ N."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Masse et poids :",
+              "options": [
+                "masses kg, poids N",
+                "identiques numériquement toujours",
+                "poids sans gravité = masse",
+                "masse en newton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grandeurs différentes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sur Lune, même masse : poids",
+              "options": [
+                "plus faible (g plus petit)",
+                "plus grand",
+                "identique",
+                "nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "$g_{\\mathrm{Lune}} < g_{\\mathrm{Terre}}$."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Balance à ressort mesure souvent :",
+              "options": [
+                "poids (force)",
+                "masse invariable partout",
+                "volume",
+                "température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déformation ∝ force."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Poids et réaction du sol :",
+              "options": [
+                "souvent égales en module au repos",
+                "toujours nulles",
+                "unité kg",
+                "sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repos : équilibre des forces verticales."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "g ≈ 9,81 N·kg⁻¹ signifie :",
+              "options": [
+                "1 kg pèse environ 9,81 N",
+                "1 N = 9,81 kg",
+                "accélération en kg",
+                "énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Champ de pesanteur terrestre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En ascenseur qui accélère vers le haut, pesée apparente :",
+              "options": [
+                "augmente",
+                "diminue toujours",
+                "nulle",
+                "masse change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réaction normale plus grande."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Poids s'applique au :",
+              "options": [
+                "centre de gravité (modèle)",
+                "sommet seulement",
+                "vide",
+                "uniquement liquides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Force gravitationnelle sur le corps."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Forces de contact",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Forces de contact :",
+              "options": [
+                "réaction normale du support",
+                "frottement",
+                "gravité à distance sans toucher",
+                "tension de fil"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Normale et frottement au contact ; tension aussi contact."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Réaction normale :",
+              "options": [
+                "perpendiculaire à la surface de contact",
+                "toujours horizontale",
+                "égale au poids toujours",
+                "sans unité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Perpendiculaire au plan de contact."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Frottement sec oppose :",
+              "options": [
+                "glissement relatif",
+                "repos toujours",
+                "gravité",
+                "masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résiste au mouvement tangentiel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Objet au repos sur table :",
+              "options": [
+                "P et N se compensent si pas d'autres forces verticales",
+                "aucune force",
+                "pas de réaction",
+                "P nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équilibre vertical."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tension corde :",
+              "options": [
+                "force le long de la corde",
+                "force perpendiculaire à corde toujours",
+                "scalaire sans direction",
+                "en mètres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tirage transmis par la corde."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Frottement fluide dépend souvent de :",
+              "options": [
+                "vitesse relative",
+                "masse molaire seule",
+                "pH",
+                "numéro atomique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résistance visqueuse ∝ v par exemple."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Contact sans frottement (ideal) :",
+              "options": [
+                "seulement réaction normale",
+                "double poids",
+                "force centripète seule",
+                "R toujours nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle plan sans frottement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Force de liaison ressort (Hooke) :",
+              "options": [
+                "F = −k·x",
+                "F = mg seule",
+                "F = v/t",
+                "F = constante toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rappel proportionnel à l'allongement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Microscopiquement, contact = :",
+              "options": [
+                "interactions EM entre surfaces",
+                "forte nucléaire seule",
+                "gravité seule",
+                "vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réactions électromagnétiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cahier posé : frottement statique empêche :",
+              "options": [
+                "glissement tant que force tangente faible",
+                "toute gravité",
+                "le poids",
+                "la normale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frottement statique s'adapte jusqu'à f max."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Principe d'inertie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Principe d'inertie (1ère loi Newton) :",
+              "options": [
+                "si résultante nulle, v constante",
+                "si résultante nulle, repos ou MRU",
+                "force toujours nécessaire pour maintenir v",
+                "référentiel galiléen requis"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Absence de force ⇒ pas de changement de mouvement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Inertie désigne :",
+              "options": [
+                "résistance à changement de vitesse",
+                "masse ignorée",
+                "force automatique",
+                "énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus m grande, plus difficile d'accélérer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Passager non ceinturé lors freinage :",
+              "options": [
+                "continue par inertie",
+                "s'arrête avec voiture sans effort",
+                "sans masse",
+                "gravité nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tendance à conserver v dans référentiel sol."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Référentiel galiléen :",
+              "options": [
+                "où 1ère loi valide",
+                "toujours accéléré",
+                "fixe au passager tournant",
+                "impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Référentiel inertiel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Objet spatial loin forces : MRU",
+              "options": [
+                "oui (1ère loi)",
+                "non jamais",
+                "repos obligatoire",
+                "MCU obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "$\\sum F = 0$ ⇒ v constante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Force nette nulle et mobile en mouvement :",
+              "options": [
+                "continue en ligne droite à v constante",
+                "s'arrête",
+                "accélère",
+                "change masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inertie du mouvement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Terre approx galiléen pour :",
+              "options": [
+                "mouvements courts",
+                "échelle cosmique exacte toujours",
+                "aucun cas",
+                "seulement quantique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bon approx local court terme."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1ère loi complète 2ème :",
+              "options": [
+                "cas F=0 de la dynamique",
+                "remplace mesure",
+                "donne poids",
+                "unité N"
+              ],
+              "correctAnswers": [0],
+              "explanation": "$a=0$ si $F_{\\mathrm{res}}=0$."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Table lisse puck : sans frottement horizontal",
+              "options": [
+                "v horizontal constant si pas autre force",
+                "arrêt immédiat",
+                "g nul",
+                "N nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Horizontal : pas de force ⇒ MRU."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Inertie dépend de :",
+              "options": [
+                "masse",
+                "couleur",
+                "température seule",
+                "volume seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Masse inertielle."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Principe fondamental dynamique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "2ème loi Newton (PFD) :",
+              "options": [
+                "$\\vec{F}_{\\mathrm{res}} = m\\vec{a}$",
+                "accélération proportionnelle à résultante",
+                "accélération inversement à masse",
+                "énergie = mc²"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "$a = F/m$ dans référentiel galiléen."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "m = 2 kg, F = 6 N : a =",
+              "options": ["3 m·s⁻²", "12 m·s⁻²", "0,33 m·s⁻²", "6 m·s⁻²"],
+              "correctAnswers": [0],
+              "explanation": "$6/2 = 3$ m·s⁻²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Même force, masse double : accélération",
+              "options": ["divisée par 2", "doublée", "nulle", "×4"],
+              "correctAnswers": [0],
+              "explanation": "$a \\propto 1/m$."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Unité cohérente : 1 N =",
+              "options": ["1 kg·m·s⁻²", "1 kg·m·s⁻¹", "1 J·s", "1 Pa·m"],
+              "correctAnswers": [0],
+              "explanation": "Définition du newton."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "PFD s'applique dans :",
+              "options": [
+                "référentiel galiléen",
+                "référentiel accéléré arbitraire sans correction",
+                "sans masse",
+                "vide seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loi valide en référentiel inertiel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Résultante vers l'Est : accélération",
+              "options": [
+                "vers l'Est",
+                "vers le Nord toujours",
+                "nulle",
+                "opposée toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "$\\vec{a}$ parallèle à $\\vec{F}_{\\mathrm{res}}$."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Chute libre sans frottement : a =",
+              "options": ["g", "0", "m·g en N", "v/t seulement"],
+              "correctAnswers": [0],
+              "explanation": "Résultante ≈ poids ⇒ $a = g$."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Plusieurs forces : on calcule",
+              "options": [
+                "vecteur somme avant PFD",
+                "produit des normes",
+                "masse seule",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Superposition puis $\\vec{a}$."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "F = 0 ⇒",
+              "options": ["a = 0", "v = 0 obligatoire", "m = 0", "g infini"],
+              "correctAnswers": [0],
+              "explanation": "Pas d'accélération."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "PFD permet de prévoir :",
+              "options": [
+                "évolution v et trajectoire si forces connues",
+                "masse atomique",
+                "pH",
+                "radioactivité seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien forces et mouvement."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Actions réciproques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "3ème loi Newton :",
+              "options": [
+                "forces action-réaction égales en norme",
+                "directions opposées",
+                "même corps",
+                "deux corps différents"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "$\\vec{F}_{A/B} = -\\vec{F}_{B/A}$."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Terre attire pomme : pomme attire Terre",
+              "options": [
+                "avec même norme de force",
+                "pomme plus forte",
+                "Terre sans force",
+                "forces sans direction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couples action-réaction."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Forces action-réaction s'annulent pour PFD ?",
+              "options": [
+                "non, elles s'exercent sur corps différents",
+                "oui toujours",
+                "oui si même point",
+                "masse nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne pas additionner sur même diagramme corps."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Marche : pied pousse sol, sol pousse pied",
+              "options": [
+                "3ème loi",
+                "1ère loi seule",
+                "pas de réaction",
+                "poids seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réaction du sol propulse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Fusée éjecte gaz :",
+              "options": [
+                "gaz et fusée forces réciproques",
+                "une seule force",
+                "pas de réaction",
+                "gravité seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Action-réaction propulsion."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Livre sur table : poids livre / réaction Terre",
+              "options": [
+                "couple réciproque gravitation",
+                "s'annulent sur le livre pour PFD",
+                "normale et poids sont réciproques",
+                "identiques toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poids et attraction réciproque Terre-livre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Normale table sur livre et poids livre :",
+              "options": [
+                "pas un couple action-réaction",
+                "toujours réciproques",
+                "égaux toujours en sens",
+                "sans norme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forces de nature différente, même corps."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Symbole forces : $\\vec{F}_{\\mathrm{A sur B}}$",
+              "options": [
+                "force exercée par A sur B",
+                "par B sur A",
+                "sans sens",
+                "énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Notation claire de l'agent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Magnét : aimant et fer",
+              "options": [
+                "forces réciproques",
+                "une seule agit",
+                "contact seul",
+                "pas de 3ème loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "EM obéit aussi à réciprocité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comprendre réciprocité aide à :",
+              "options": [
+                "ne pas confondre forces sur un même bilan",
+                "calculer pH",
+                "mesurer volume gaz",
+                "titres seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Isoler forces sur un système."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Diagramme des forces",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Diagramme des forces pour un corps :",
+              "options": [
+                "toutes forces extérieures sur ce corps",
+                "poids si champ gravitationnel",
+                "forces que le corps exerce sur autrui",
+                "réaction normale si contact"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Uniquement forces subies par le système."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Point de application modèle :",
+              "options": [
+                "centre ou point unique",
+                "toujours sol",
+                "infini de points obligatoire",
+                "sans dessin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle particule ou solide."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bloc sur plan incliné : souvent",
+              "options": [
+                "P, N, éventuellement f",
+                "seulement P",
+                "seulement N",
+                "aucune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pesanteur, normale, frottement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Corde idéale : tension",
+              "options": [
+                "même norme le long corde",
+                "nulle",
+                "double poids",
+                "horizontale toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle fil sans masse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Projeter forces sur axes :",
+              "options": [
+                "facilite PFD par composantes",
+                "inutile",
+                "remplace mesure",
+                "supprime vecteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "$\\sum F_x = ma_x$, etc."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Repos sur plan horizontal : N et P",
+              "options": [
+                "opposées, même norme si équilibre",
+                "parallèles",
+                "N > P toujours",
+                "N nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équilibre vertical."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Oublier une force mène à :",
+              "options": [
+                "prévision mouvement fausse",
+                "résultat exact",
+                "masse nulle",
+                "pH faux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan incomplet incorrect."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Force air (frottement fluide) :",
+              "options": [
+                "s'oppose souvent au mouvement",
+                "toujours verticale",
+                "nulle en chute",
+                "sans unité N"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résistance du fluide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Système = deux blocs collés : forces extérieures",
+              "options": [
+                "sur l'ensemble, pas forces internes",
+                "internes seulement",
+                "aucune",
+                "double gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forces internes se compensent par paires."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Échelle de flèches :",
+              "options": [
+                "respecter proportions ou légende",
+                "sans importance",
+                "toujours même taille",
+                "couleur seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lisibilité des intensités."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse interactions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Relier mouvement et forces :",
+              "options": [
+                "PFD",
+                "diagramme des forces",
+                "référentiel galiléen",
+                "tableau périodique seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bilan des forces puis $\\vec{a}$."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quatre interactions : gravitation responsable de",
+              "options": [
+                "orbites planétaires",
+                "liaison nucléaire forte",
+                "β radioactif seul",
+                "couleur feuille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Astrophysique macroscopique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Contact microscopique :",
+              "options": [
+                "électromagnétique",
+                "gravitation seule",
+                "forte seule",
+                "aucune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repulsions/attractions EM."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "m constante, F nette constante :",
+              "options": [
+                "MUA",
+                "MRU toujours",
+                "repos",
+                "MCU sans centripète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "a constante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Poids et masse astronaute Lune :",
+              "options": [
+                "masse identique, poids moindre",
+                "tous deux nuls",
+                "masse double",
+                "poids identique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "m invariant, g plus faible."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Skieur : forces typiques",
+              "options": [
+                "P, N, frottement pente/air",
+                "forte nucléaire",
+                "uniquement tension",
+                "sans P"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan mécanique classique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "1 N s'obtient avec 100 g et g ≈ 10 :",
+              "options": ["oui", "non, 1 kg", "10 N", "0,1 N"],
+              "correctAnswers": [0],
+              "explanation": "0,1 kg × 10 = 1 N."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Force réciproque n'annule pas sur un corps car :",
+              "options": [
+                "sur objets différents",
+                "toujours même sens",
+                "sans norme",
+                "scalaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne pas sommer sur même système."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Modéliser frottement nul simplifie :",
+              "options": [
+                "études MRU/MUA idéaux",
+                "mesure masse molaire",
+                "pH",
+                "oxydation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de termes au bilan."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif chapitre mouvement-interactions :",
+              "options": [
+                "décrire mouvement et relier aux forces",
+                "apprendre seulement formules chimiques",
+                "ignorer vecteurs",
+                "remplacer expérience"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cinématique et dynamique fondamentales."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

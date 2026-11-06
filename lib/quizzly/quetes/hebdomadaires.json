@@ -1,0 +1,902 @@
+[
+  {
+    "description": "Valide quatre quiz pendant la semaine.",
+    "id": "qh-001",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 4,
+    "recompense": 20,
+    "titre": "Quatre validations"
+  },
+  {
+    "description": "Cinq quiz validés d'ici dimanche.",
+    "id": "qh-002",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 5,
+    "recompense": 20,
+    "titre": "La main de cinq"
+  },
+  {
+    "description": "Six validations dans la semaine.",
+    "id": "qh-003",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 6,
+    "recompense": 40,
+    "titre": "Six au tableau"
+  },
+  {
+    "description": "Huit quiz validés avant la fin de la semaine.",
+    "id": "qh-004",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 8,
+    "recompense": 40,
+    "titre": "Huit quiz, une semaine"
+  },
+  {
+    "description": "Dix quiz au vert sur sept jours.",
+    "id": "qh-005",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 10,
+    "recompense": 70,
+    "titre": "Dix validations"
+  },
+  {
+    "description": "Douze quiz validés : la marche haute de la semaine.",
+    "id": "qh-006",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 12,
+    "recompense": 70,
+    "titre": "Douze marches"
+  },
+  {
+    "description": "Quatre quiz suffisent si tu les valides cette semaine.",
+    "id": "qh-007",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 4,
+    "recompense": 20,
+    "titre": "Rythme léger"
+  },
+  {
+    "description": "Cinq validations réparties sur la semaine.",
+    "id": "qh-008",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 5,
+    "recompense": 20,
+    "titre": "Un quiz, presque chaque jour"
+  },
+  {
+    "description": "Six quiz validés, à ton rythme.",
+    "id": "qh-009",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 6,
+    "recompense": 40,
+    "titre": "Semaine en six temps"
+  },
+  {
+    "description": "Huit validations, par exemple deux par séance.",
+    "id": "qh-010",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 8,
+    "recompense": 40,
+    "titre": "Deux par créneau"
+  },
+  {
+    "description": "Une dizaine de quiz validés cette semaine.",
+    "id": "qh-011",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 10,
+    "recompense": 70,
+    "titre": "La dizaine"
+  },
+  {
+    "description": "Douze quiz validés demandent de revenir souvent.",
+    "id": "qh-012",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 12,
+    "recompense": 70,
+    "titre": "Semaine chargée"
+  },
+  {
+    "description": "Quatre quiz validés ferment ce quota.",
+    "id": "qh-013",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 4,
+    "recompense": 20,
+    "titre": "Le quota court"
+  },
+  {
+    "description": "Cinq validations, et la quête hebdomadaire est faite.",
+    "id": "qh-014",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 5,
+    "recompense": 20,
+    "titre": "Quota de cinq"
+  },
+  {
+    "description": "Six quiz validés dans la semaine ISO.",
+    "id": "qh-015",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 6,
+    "recompense": 40,
+    "titre": "Quota de six"
+  },
+  {
+    "description": "Huit validations avant le lundi suivant.",
+    "id": "qh-016",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 8,
+    "recompense": 40,
+    "titre": "Quota de huit"
+  },
+  {
+    "description": "Dix quiz validés, le quota ambitieux.",
+    "id": "qh-017",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 10,
+    "recompense": 70,
+    "titre": "Quota de dix"
+  },
+  {
+    "description": "Douze validations : le quota le plus long.",
+    "id": "qh-018",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 12,
+    "recompense": 70,
+    "titre": "Quota de douze"
+  },
+  {
+    "description": "Ouvre cinq quiz en les validant cette semaine.",
+    "id": "qh-019",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 5,
+    "recompense": 20,
+    "titre": "Cinq portes"
+  },
+  {
+    "description": "Huit quiz validés, huit portes franchies.",
+    "id": "qh-020",
+    "mesure": "quiz_valide",
+    "monnaie": "gemmes",
+    "objectif": 8,
+    "recompense": 40,
+    "titre": "Huit portes"
+  },
+  {
+    "description": "Deux sans-faute au cours de la semaine.",
+    "id": "qh-021",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 2,
+    "recompense": 20,
+    "titre": "Deux parfaits"
+  },
+  {
+    "description": "Trois quiz à dix sur dix cette semaine.",
+    "id": "qh-022",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 3,
+    "recompense": 40,
+    "titre": "Trois parfaits"
+  },
+  {
+    "description": "Quatre sans-faute avant dimanche.",
+    "id": "qh-023",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 4,
+    "recompense": 70,
+    "titre": "Quatre parfaits"
+  },
+  {
+    "description": "Une paire de quiz parfaits dans la semaine.",
+    "id": "qh-024",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 2,
+    "recompense": 20,
+    "titre": "Paire sans faute"
+  },
+  {
+    "description": "Trois quiz sans aucune erreur.",
+    "id": "qh-025",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 3,
+    "recompense": 40,
+    "titre": "Trio sans faute"
+  },
+  {
+    "description": "Quatre quiz immaculés sur la semaine.",
+    "id": "qh-026",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 4,
+    "recompense": 70,
+    "titre": "Quatuor parfait"
+  },
+  {
+    "description": "Deux fois dix sur dix, pas forcément le même jour.",
+    "id": "qh-027",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 2,
+    "recompense": 20,
+    "titre": "Double dix"
+  },
+  {
+    "description": "Trois dix sur dix dans la semaine.",
+    "id": "qh-028",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 3,
+    "recompense": 40,
+    "titre": "Triple dix"
+  },
+  {
+    "description": "Quatre dix sur dix : la quête difficile.",
+    "id": "qh-029",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 4,
+    "recompense": 70,
+    "titre": "Quadruple dix"
+  },
+  {
+    "description": "Deux copies sans rature cette semaine.",
+    "id": "qh-030",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 2,
+    "recompense": 20,
+    "titre": "Deux copies d'excellence"
+  },
+  {
+    "description": "Trois quiz que tu n'as pas à reprendre.",
+    "id": "qh-031",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 3,
+    "recompense": 40,
+    "titre": "Trois copies d'excellence"
+  },
+  {
+    "description": "Quatre sans-faute, et les gemmes sont là.",
+    "id": "qh-032",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 4,
+    "recompense": 70,
+    "titre": "Quatre copies d'excellence"
+  },
+  {
+    "description": "Deux quiz d'une précision totale.",
+    "id": "qh-033",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 2,
+    "recompense": 20,
+    "titre": "Précision de semaine"
+  },
+  {
+    "description": "Tiens trois sans-faute sur sept jours.",
+    "id": "qh-034",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 3,
+    "recompense": 40,
+    "titre": "Précision tenue"
+  },
+  {
+    "description": "Quatre sans-faute dans la même semaine.",
+    "id": "qh-035",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 4,
+    "recompense": 70,
+    "titre": "Précision rare"
+  },
+  {
+    "description": "Deux cartons pleins avant la fin de semaine.",
+    "id": "qh-036",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 2,
+    "recompense": 20,
+    "titre": "Deux cartons de semaine"
+  },
+  {
+    "description": "Trois cartons pleins sur la période.",
+    "id": "qh-037",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 3,
+    "recompense": 40,
+    "titre": "Trois cartons de semaine"
+  },
+  {
+    "description": "Quatre cartons pleins, l'objectif haut.",
+    "id": "qh-038",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 4,
+    "recompense": 70,
+    "titre": "Quatre cartons de semaine"
+  },
+  {
+    "description": "Répète le sans-faute jusqu'à trois fois.",
+    "id": "qh-039",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 3,
+    "recompense": 40,
+    "titre": "Sans-faute répété"
+  },
+  {
+    "description": "Quatre sans-faute installent vraiment la maîtrise.",
+    "id": "qh-040",
+    "mesure": "sans_faute",
+    "monnaie": "gemmes",
+    "objectif": 4,
+    "recompense": 70,
+    "titre": "Sans-faute installé"
+  },
+  {
+    "description": "Quarante bonnes réponses sur la semaine.",
+    "id": "qh-041",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 40,
+    "recompense": 20,
+    "titre": "Quarante justes"
+  },
+  {
+    "description": "Cinquante bonnes réponses avant dimanche.",
+    "id": "qh-042",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 50,
+    "recompense": 20,
+    "titre": "Cinquante justes"
+  },
+  {
+    "description": "Soixante bonnes réponses dans la semaine.",
+    "id": "qh-043",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 60,
+    "recompense": 40,
+    "titre": "Soixante justes"
+  },
+  {
+    "description": "Quatre-vingts bonnes réponses, une vraie semaine de travail.",
+    "id": "qh-044",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 80,
+    "recompense": 40,
+    "titre": "Quatre-vingts justes"
+  },
+  {
+    "description": "Cent bonnes réponses : l'objectif le plus long.",
+    "id": "qh-045",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 100,
+    "recompense": 70,
+    "titre": "Cent justes"
+  },
+  {
+    "description": "Quarante justes, l'équivalent de quatre quiz bien tenus.",
+    "id": "qh-046",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 40,
+    "recompense": 20,
+    "titre": "Quatre quiz solides"
+  },
+  {
+    "description": "Cinquante bonnes réponses sur des premières validations.",
+    "id": "qh-047",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 50,
+    "recompense": 20,
+    "titre": "Cinq quiz honorables"
+  },
+  {
+    "description": "Soixante justes au fil de la semaine.",
+    "id": "qh-048",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 60,
+    "recompense": 40,
+    "titre": "Six quiz en bonne voie"
+  },
+  {
+    "description": "Quatre-vingts bonnes réponses cumulées.",
+    "id": "qh-049",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 80,
+    "recompense": 40,
+    "titre": "Huit quiz nourris"
+  },
+  {
+    "description": "Atteins cent bonnes réponses cette semaine.",
+    "id": "qh-050",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 100,
+    "recompense": 70,
+    "titre": "La centaine"
+  },
+  {
+    "description": "Récolte quarante réponses justes.",
+    "id": "qh-051",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 40,
+    "recompense": 20,
+    "titre": "Moisson de quarante"
+  },
+  {
+    "description": "Récolte cinquante réponses justes.",
+    "id": "qh-052",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 50,
+    "recompense": 20,
+    "titre": "Moisson de cinquante"
+  },
+  {
+    "description": "Soixante justes récoltés avant lundi.",
+    "id": "qh-053",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 60,
+    "recompense": 40,
+    "titre": "Moisson de soixante"
+  },
+  {
+    "description": "Quatre-vingts justes, la moisson large.",
+    "id": "qh-054",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 80,
+    "recompense": 40,
+    "titre": "Moisson de quatre-vingts"
+  },
+  {
+    "description": "Cent justes : la moisson complète.",
+    "id": "qh-055",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 100,
+    "recompense": 70,
+    "titre": "Moisson de cent"
+  },
+  {
+    "description": "Quarante étoiles de bonnes réponses.",
+    "id": "qh-056",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 40,
+    "recompense": 20,
+    "titre": "Quarante étoiles"
+  },
+  {
+    "description": "Soixante étoiles sur la semaine.",
+    "id": "qh-057",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 60,
+    "recompense": 40,
+    "titre": "Soixante étoiles"
+  },
+  {
+    "description": "Quatre-vingts étoiles, presque un ciel plein.",
+    "id": "qh-058",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 80,
+    "recompense": 40,
+    "titre": "Quatre-vingts étoiles"
+  },
+  {
+    "description": "Cent étoiles de réponses justes.",
+    "id": "qh-059",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 100,
+    "recompense": 70,
+    "titre": "Cent étoiles"
+  },
+  {
+    "description": "Cinquante bonnes réponses marquent le milieu de quête.",
+    "id": "qh-060",
+    "mesure": "bonnes_reponses",
+    "monnaie": "gemmes",
+    "objectif": 50,
+    "recompense": 20,
+    "titre": "Le milieu des cinquante"
+  },
+  {
+    "description": "Tiens une série de trois jours.",
+    "id": "qh-061",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 3,
+    "recompense": 20,
+    "titre": "Trois jours de suite"
+  },
+  {
+    "description": "Une série de cinq jours cette semaine.",
+    "id": "qh-062",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 5,
+    "recompense": 40,
+    "titre": "Cinq jours de flamme"
+  },
+  {
+    "description": "Une série de sept jours, sans trou.",
+    "id": "qh-063",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 7,
+    "recompense": 70,
+    "titre": "La semaine entière"
+  },
+  {
+    "description": "Trois jours d'affilée avec au moins un quiz réussi.",
+    "id": "qh-064",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 3,
+    "recompense": 20,
+    "titre": "La flamme courte"
+  },
+  {
+    "description": "Cinq jours d'affilée, la flamme ne s'éteint pas.",
+    "id": "qh-065",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 5,
+    "recompense": 40,
+    "titre": "La flamme longue"
+  },
+  {
+    "description": "Sept jours de série : aucune journée sautée.",
+    "id": "qh-066",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 7,
+    "recompense": 70,
+    "titre": "Flamme sans pause"
+  },
+  {
+    "description": "Construis une série de trois.",
+    "id": "qh-067",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 3,
+    "recompense": 20,
+    "titre": "Début de série"
+  },
+  {
+    "description": "Installe une série de cinq jours.",
+    "id": "qh-068",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 5,
+    "recompense": 40,
+    "titre": "Série installée"
+  },
+  {
+    "description": "Sept jours de suite, la série complète.",
+    "id": "qh-069",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 7,
+    "recompense": 70,
+    "titre": "Série complète"
+  },
+  {
+    "description": "Reviens trois jours de suite.",
+    "id": "qh-070",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 3,
+    "recompense": 20,
+    "titre": "Trois matins"
+  },
+  {
+    "description": "Cinq jours de retour, sans en manquer un au milieu.",
+    "id": "qh-071",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 5,
+    "recompense": 40,
+    "titre": "Cinq retours"
+  },
+  {
+    "description": "Sept jours de présence, du lundi au dimanche si tu pars lundi.",
+    "id": "qh-072",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 7,
+    "recompense": 70,
+    "titre": "Sept retours"
+  },
+  {
+    "description": "La série atteint trois.",
+    "id": "qh-073",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 3,
+    "recompense": 20,
+    "titre": "Série de trois"
+  },
+  {
+    "description": "La série atteint cinq.",
+    "id": "qh-074",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 5,
+    "recompense": 40,
+    "titre": "Série de cinq"
+  },
+  {
+    "description": "La série atteint sept.",
+    "id": "qh-075",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 7,
+    "recompense": 70,
+    "titre": "Série de sept"
+  },
+  {
+    "description": "Garde la série vivante pendant trois jours.",
+    "id": "qh-076",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 3,
+    "recompense": 20,
+    "titre": "Ne casse pas trois"
+  },
+  {
+    "description": "Cinq jours sans laisser la série retomber.",
+    "id": "qh-077",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 5,
+    "recompense": 40,
+    "titre": "Ne casse pas cinq"
+  },
+  {
+    "description": "Sept jours sans casser la série.",
+    "id": "qh-078",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 7,
+    "recompense": 70,
+    "titre": "Ne casse pas sept"
+  },
+  {
+    "description": "Cinq jours de série couvrent presque la semaine.",
+    "id": "qh-079",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 5,
+    "recompense": 40,
+    "titre": "Presque toute la semaine"
+  },
+  {
+    "description": "Aucun jour manqué : la série vaut sept.",
+    "id": "qh-080",
+    "mesure": "serie",
+    "monnaie": "gemmes",
+    "objectif": 7,
+    "recompense": 70,
+    "titre": "Aucun jour manqué"
+  },
+  {
+    "description": "Réussis un quiz sur deux jours distincts.",
+    "id": "qh-081",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 2,
+    "recompense": 20,
+    "titre": "Deux jours ouverts"
+  },
+  {
+    "description": "Trois jours avec au moins un quiz réussi.",
+    "id": "qh-082",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 3,
+    "recompense": 40,
+    "titre": "Trois jours ouverts"
+  },
+  {
+    "description": "Quatre jours actifs dans la semaine.",
+    "id": "qh-083",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 4,
+    "recompense": 40,
+    "titre": "Quatre jours ouverts"
+  },
+  {
+    "description": "Cinq jours où tu valides au moins un quiz.",
+    "id": "qh-084",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 5,
+    "recompense": 70,
+    "titre": "Cinq jours ouverts"
+  },
+  {
+    "description": "Deux journées de travail, pas forcément consécutives.",
+    "id": "qh-085",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 2,
+    "recompense": 20,
+    "titre": "Le binôme de jours"
+  },
+  {
+    "description": "Sois présent trois jours, avec un quiz réussi à chaque fois.",
+    "id": "qh-086",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 3,
+    "recompense": 40,
+    "titre": "Trois présences"
+  },
+  {
+    "description": "Quatre jours actifs, la régularité compte plus que la série.",
+    "id": "qh-087",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 4,
+    "recompense": 40,
+    "titre": "Quatre présences"
+  },
+  {
+    "description": "Cinq jours actifs sur la semaine.",
+    "id": "qh-088",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 5,
+    "recompense": 70,
+    "titre": "Cinq présences"
+  },
+  {
+    "description": "Deux jours de séance suffisent pour cette quête.",
+    "id": "qh-089",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 2,
+    "recompense": 20,
+    "titre": "Deux séances"
+  },
+  {
+    "description": "Trois jours de séance dans la semaine.",
+    "id": "qh-090",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 3,
+    "recompense": 40,
+    "titre": "Trois séances"
+  },
+  {
+    "description": "Quatre jours où le parcours avance.",
+    "id": "qh-091",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 4,
+    "recompense": 40,
+    "titre": "Quatre séances"
+  },
+  {
+    "description": "Cinq jours d'avance sur le parcours.",
+    "id": "qh-092",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 5,
+    "recompense": 70,
+    "titre": "Cinq séances"
+  },
+  {
+    "description": "Un deuxième jour actif, même après une pause.",
+    "id": "qh-093",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 2,
+    "recompense": 20,
+    "titre": "Retour le lendemain ou plus tard"
+  },
+  {
+    "description": "Allume Quizzly trois jours différents.",
+    "id": "qh-094",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 3,
+    "recompense": 40,
+    "titre": "Trois allumages"
+  },
+  {
+    "description": "Quatre jours différents avec un quiz réussi.",
+    "id": "qh-095",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 4,
+    "recompense": 40,
+    "titre": "Quatre allumages"
+  },
+  {
+    "description": "Cinq jours différents, cinq quiz réussis au minimum.",
+    "id": "qh-096",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 5,
+    "recompense": 70,
+    "titre": "Cinq allumages"
+  },
+  {
+    "description": "Trois jours actifs, où tu veux dans la semaine.",
+    "id": "qh-097",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 3,
+    "recompense": 40,
+    "titre": "Présence en milieu de semaine"
+  },
+  {
+    "description": "Élargis à quatre jours avec un quiz réussi.",
+    "id": "qh-098",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 4,
+    "recompense": 40,
+    "titre": "Présence élargie"
+  },
+  {
+    "description": "Cinq jours actifs : la quête la plus régulière.",
+    "id": "qh-099",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 5,
+    "recompense": 70,
+    "titre": "Présence large"
+  },
+  {
+    "description": "Laisse deux jours marqués par un quiz réussi.",
+    "id": "qh-100",
+    "mesure": "jours_actifs",
+    "monnaie": "gemmes",
+    "objectif": 2,
+    "recompense": 20,
+    "titre": "Deux empreintes"
+  }
+]

@@ -35,7 +35,7 @@ const TOKEN_TIMEOUT_MS = 10_000;
 const TOKEN_MAX_BYTES = 64_000;
 
 export type OAuthFailureReason =
-  /** `GOOGLE_CLIENT_ID` / `GITHUB_CLIENT_ID` absent : le connecteur n'est pas activé. */
+  /** `GITHUB_CLIENT_ID` absent : le connecteur n'est pas activé. */
   | "not_configured"
   /** Le fournisseur a refusé l'échange pour une raison de configuration
    *  (`invalid_client`, `invalid_request`…) : ne jamais révoquer sur cela. */

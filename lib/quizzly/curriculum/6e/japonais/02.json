@@ -1,0 +1,2433 @@
+{
+  "id": "6e-japonais-02",
+  "year": "6e",
+  "subject": "japonais",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les membres de la famille",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots japonais désignent des parents ?",
+              "options": [
+                "おかあさん (okaasan)",
+                "おとうさん (otousan)",
+                "せんせい (sensei)",
+                "がっこう (gakkou)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Okaasan signifie « mère » et otousan « père »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie おねえさん (oneesan) ?",
+              "options": ["Grand-mère", "Grande sœur", "Petite sœur", "Tante"],
+              "correctAnswers": [1],
+              "explanation": "Oneesan est la grande sœur ; imouto est la petite sœur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « grand-père » en japonais courant ?",
+              "options": [
+                "おじいさん (ojiisan)",
+                "おじさん (ojisan)",
+                "おとうさん (otousan)",
+                "おにいさん (oniisan)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ojiisan désigne le grand-père ; ojisan est l'oncle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie いもうと (imouto) ?",
+              "options": ["Frère cadet", "Petite sœur", "Cousine", "Fille"],
+              "correctAnswers": [1],
+              "explanation": "Imouto signifie « petite sœur »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le mot かぞく (kazoku) veut dire :",
+              "options": ["Ami", "Famille", "Maison", "Village"],
+              "correctAnswers": [1],
+              "explanation": "Kazoku regroupe les membres d'une même famille."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le frère aîné ?",
+              "options": [
+                "おとうと (otouto)",
+                "おにいさん (oniisan)",
+                "おとうさん (otousan)",
+                "おじさん (ojisan)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Oniisan est le frère aîné ; otouto est le frère cadet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie おかあさん (okaasan) ?",
+              "options": ["Mère", "Sœur", "Tante", "Grand-mère"],
+              "correctAnswers": [0],
+              "explanation": "Okaasan est le mot courant pour « mère »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le suffixe -さん (-san) sert surtout à :",
+              "options": [
+                "Compter des objets",
+                "Marquer la politesse",
+                "Indiquer le passé",
+                "Former le pluriel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "San est un suffixe de politesse attaché aux noms."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie おとうと (otouto) ?",
+              "options": ["Père", "Frère cadet", "Oncle", "Fils aîné"],
+              "correctAnswers": [1],
+              "explanation": "Otouto désigne le frère cadet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on « les deux parents » en un mot ?",
+              "options": [
+                "りょうしん (ryoushin)",
+                "きょうだい (kyoudai)",
+                "しゅじん (shujin)",
+                "こども (kodomo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ryoushin signifie « les deux parents »."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "À la maison",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots désignent des pièces ou lieux de la maison ?",
+              "options": [
+                "へや (heya)",
+                "だいどころ (daidokoro)",
+                "えき (eki)",
+                "としょかん (toshokan)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Heya est la chambre et daidokoro la cuisine."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie いえ (ie) ?",
+              "options": [
+                "Appartement seulement",
+                "Maison / foyer",
+                "École",
+                "Magasin"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ie désigne la maison ou le foyer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le mot だいどころ (daidokoro) correspond à :",
+              "options": ["Salon", "Cuisine", "Salle de bain", "Garage"],
+              "correctAnswers": [1],
+              "explanation": "Daidokoro est la cuisine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Où retire-t-on ses chaussures à la maison au Japon ?",
+              "options": [
+                "Dans la chambre",
+                "À l'entrée (genkan)",
+                "Dans la cuisine",
+                "Sur le balcon"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le genkan est l'entrée où l'on enlève ses chaussures."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie ふとん (futon) ?",
+              "options": [
+                "Chaise",
+                "Matelas / couette japonaise",
+                "Table basse",
+                "Lampe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le futon sert à dormir, posé au sol ou rangé le jour."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le mot トイレ (toire) veut dire :",
+              "options": ["Douche", "Toilettes", "Lavabo seul", "Buanderie"],
+              "correctAnswers": [1],
+              "explanation": "Toire désigne les toilettes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie まど (mado) ?",
+              "options": ["Porte", "Fenêtre", "Mur", "Plafond"],
+              "correctAnswers": [1],
+              "explanation": "Mado signifie « fenêtre »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « chambre » en japonais ?",
+              "options": [
+                "へや (heya)",
+                "にわ (niwa)",
+                "くるま (kuruma)",
+                "みせ (mise)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heya désigne une pièce ou une chambre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le tatami est :",
+              "options": [
+                "Un type de chaussure",
+                "Un sol en paille tressée",
+                "Un plat chaud",
+                "Un jeu de cartes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le tatami recouvre souvent les pièces traditionnelles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie にわ (niwa) ?",
+              "options": ["Jardin", "Toit", "Cave", "Couloir"],
+              "correctAnswers": [0],
+              "explanation": "Niwa est le jardin."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Lieux de l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles traductions scolaires sont correctes ?",
+              "options": [
+                "がっこう (gakkou) = école",
+                "きょうしつ (kyoushitsu) = salle de classe",
+                "せんせい (sensei) = élève",
+                "がくせい (gakusei) = directeur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Gakkou est l'école ; kyoushitsu la salle de classe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "としょかん (toshokan) signifie :",
+              "options": [
+                "La cantine",
+                "La bibliothèque",
+                "Le gymnase",
+                "Le bureau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Toshokan est la bibliothèque."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « le professeur » en japonais ?",
+              "options": [
+                "せんせい (sensei)",
+                "がくせい (gakusei)",
+                "こうちょう (kouchou)",
+                "ともだち (tomodachi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sensei désigne l'enseignant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "がくせい (gakusei) désigne :",
+              "options": [
+                "L'élève / l'étudiant",
+                "Le directeur",
+                "Le gardien",
+                "Le parent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gakusei signifie élève ou étudiant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "うんどうじょう (undoujou) à l'école, c'est :",
+              "options": [
+                "La cour de sport",
+                "Le couloir",
+                "La salle des profs",
+                "Le labo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Undoujou est le terrain de sport."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "たいいくかん (taiikukan) signifie :",
+              "options": [
+                "La salle de sport",
+                "La salle informatique",
+                "La cantine",
+                "L'infirmerie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Taiikukan est le gymnase."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "がっこうに いきます (gakkou ni ikimasu) veut dire :",
+              "options": [
+                "Je vais à l'école",
+                "Je suis à la maison",
+                "J'aime l'école",
+                "Je quitte l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ikimasu exprime le déplacement vers l'école."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "こうちょうせんせい (kouchou sensei) est :",
+              "options": [
+                "Le directeur",
+                "Le professeur de classe",
+                "L'élève",
+                "Le secrétaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kouchou sensei est le directeur de l'école."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "しょくどう (shokudou) correspond à :",
+              "options": [
+                "La cantine",
+                "La classe",
+                "La bibliothèque",
+                "La cour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shokudou est la cantine scolaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "じゅぎょう (jugyou) signifie :",
+              "options": [
+                "Le cours / la leçon",
+                "Les devoirs",
+                "Les vacances",
+                "Les notes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jugyou désigne le cours ou la leçon."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Personnes à l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots désignent des personnes à l'école ?",
+              "options": [
+                "せんせい (sensei)",
+                "がくせい (gakusei)",
+                "いえ (ie)",
+                "くるま (kuruma)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sensei et gakusei sont liés à l'école."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "クラスメート (classmate) en japonais courant :",
+              "options": [
+                "クラスメート (kurasumeeto)",
+                "かぞく (kazoku)",
+                "せんせい (sensei)",
+                "おかあさん (okaasan)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kurasumeeto désigne un camarade de classe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "どうがくせい (dougakusei) veut dire :",
+              "options": [
+                "Camarade de classe",
+                "Professeur",
+                "Directeur",
+                "Parent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dougakusei est un élève de la même école."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "がくちょう (gakuchou) correspond à :",
+              "options": [
+                "Le directeur (terme formel)",
+                "L'élève",
+                "Le prof de sport",
+                "Le bibliothécaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gakuchou est un terme pour le chef d'établissement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sensei s'utilise aussi pour :",
+              "options": [
+                "Montrer le respect envers un enseignant",
+                "Compter des chaises",
+                "Dire bonjour le matin seulement",
+                "Parler de la météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sensei marque le respect envers l'enseignant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "がくねん (gakunen) signifie :",
+              "options": [
+                "L'année scolaire / le niveau",
+                "La matière",
+                "La pause",
+                "Le stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gakunen indique le niveau scolaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "にねんせい (ninen sei) veut dire :",
+              "options": [
+                "Élève de 2e année",
+                "Professeur",
+                "Directeur",
+                "Parent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ninen sei est un élève de deuxième année."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "クラス (kurasu) correspond à :",
+              "options": [
+                "La classe (groupe)",
+                "Le cours de sport",
+                "La cantine",
+                "Le bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kurasu est le groupe-classe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ともだち (tomodachi) à l'école signifie :",
+              "options": ["Ami", "Ennemi", "Professeur", "Frère"],
+              "correctAnswers": [0],
+              "explanation": "Tomodachi est l'ami."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "がっこうの せんせい (gakkou no sensei) :",
+              "options": [
+                "Le professeur de l'école",
+                "L'élève de l'école",
+                "La maison",
+                "Le jardin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gakkou no sensei = le professeur de l'école."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Matériel scolaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles traductions de matériel sont correctes ?",
+              "options": [
+                "ほん (hon) = livre",
+                "ノート (nooto) = cahier",
+                "けしゴム (keshigomu) = stylo",
+                "ペン (pen) = gomme"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hon = livre ; nooto = cahier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "ペン (pen) signifie :",
+              "options": ["Le crayon", "Le stylo", "La gomme", "La règle"],
+              "correctAnswers": [1],
+              "explanation": "Pen est le stylo ; enpitsu est le crayon."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ランドセル (randoseru) veut dire :",
+              "options": [
+                "Le cartable rigide",
+                "La trousse",
+                "Le classeur",
+                "Le tableau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Randoseru est le cartable typique des écoliers."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "えんぴつ (enpitsu) est :",
+              "options": ["Un stylo", "Un crayon", "Une gomme", "Une feuille"],
+              "correctAnswers": [1],
+              "explanation": "Enpitsu désigne le crayon."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "けしゴム (keshigomu) signifie :",
+              "options": ["La gomme", "La règle", "Le compas", "Le scotch"],
+              "correctAnswers": [0],
+              "explanation": "Keshigomu est la gomme à effacer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "じょうぎ (jougi) correspond à :",
+              "options": [
+                "La règle",
+                "Le rapporteur",
+                "Le compas",
+                "Le crayon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jougi est la règle plate."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "はさみ (hasami) veut dire :",
+              "options": ["Les ciseaux", "Le cutter", "La colle", "Le pinceau"],
+              "correctAnswers": [0],
+              "explanation": "Hasami désigne les ciseaux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "ペンが ほしいです (pen ga hoshii desu) :",
+              "options": [
+                "Je veux un stylo",
+                "Je vais à l'école",
+                "J'ai un livre",
+                "J'étudie les maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hoshii exprime le désir ou le besoin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "かみ (kami) dans le cartable, c'est :",
+              "options": [
+                "Le papier / la feuille",
+                "La couverture",
+                "La page web",
+                "Le chapitre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kami est le papier ou la feuille."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "ペンケース (penkeesu) signifie :",
+              "options": [
+                "La trousse",
+                "Le cartable",
+                "Le casier",
+                "Le bureau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Penkeesu est la trousse à stylos."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Matières et horaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles traductions de matières sont correctes ?",
+              "options": [
+                "すうがく (suugaku) = maths",
+                "れきし (rekishi) = histoire",
+                "えいご (eigo) = japonais",
+                "たいいく (taiiku) = histoire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Suugaku = maths ; rekishi = histoire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "たいいく (taiiku) signifie :",
+              "options": [
+                "Éducation civique",
+                "EPS / sport",
+                "Sciences",
+                "Arts plastiques"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Taiiku est le cours de sport."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « anglais » (la langue) ?",
+              "options": [
+                "えいご (eigo)",
+                "フランスご (furansugo)",
+                "にほんご (nihongo)",
+                "ドイツご (doitsugo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eigo est la langue anglaise."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "かがく (kagaku) correspond à :",
+              "options": [
+                "Les sciences",
+                "Les maths",
+                "L'histoire",
+                "La musique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kagaku regroupe les sciences."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "じかんわり (jikanwari) veut dire :",
+              "options": [
+                "L'emploi du temps",
+                "L'heure actuelle",
+                "La sonnerie",
+                "La pause"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jikanwari est l'emploi du temps."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "にほんごの じゅぎょう (nihongo no jugyou) signifie :",
+              "options": [
+                "Cours de japonais",
+                "Cours de sport",
+                "Cours d'arts",
+                "Récréation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nihongo no jugyou = cours de japonais."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "げつようび (getsuyoubi) est :",
+              "options": ["Lundi", "Mardi", "Samedi", "Dimanche"],
+              "correctAnswers": [0],
+              "explanation": "Getsuyoubi = lundi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "べんきょうします (benkyou shimasu) signifie :",
+              "options": ["J'étudie", "Je joue", "Je dors", "Je mange"],
+              "correctAnswers": [0],
+              "explanation": "Benkyou shimasu = j'étudie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ちり (chiri) est :",
+              "options": [
+                "La géographie",
+                "La géométrie",
+                "La biologie",
+                "La physique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chiri = géographie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "きゅうけい (kyuukei) à l'école, c'est :",
+              "options": [
+                "La récréation / la pause",
+                "Le cours",
+                "L'examen",
+                "Le devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kyuukei désigne la pause entre les cours."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Loisirs sportifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles traductions de sports sont correctes ?",
+              "options": [
+                "サッカー (sakkaa) = football",
+                "すいえい (suiei) = natation",
+                "バスケ = natation",
+                "テニス = football"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sakkaa = football ; suiei = natation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "あそぶのが すきです (asobu no ga suki desu) signifie :",
+              "options": [
+                "J'aime jouer",
+                "Je dois jouer",
+                "Je vais jouer",
+                "Je n'aime pas jouer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suki desu exprime l'appréciation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "バスケットボール (basukettobooru) veut dire :",
+              "options": ["Basket-ball", "Baseball", "Handball", "Badminton"],
+              "correctAnswers": [0],
+              "explanation": "Basukettobooru est le basket-ball."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "はしる (hashiru) signifie :",
+              "options": ["Courir", "Sauter", "Nager", "Marcher"],
+              "correctAnswers": [0],
+              "explanation": "Hashiru est le verbe courir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "チーム (chiimu) correspond à :",
+              "options": ["L'équipe", "Le stade", "Le ballon", "Le match"],
+              "correctAnswers": [0],
+              "explanation": "Chiimu = équipe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "しあい (shiai) dans le sport, c'est :",
+              "options": [
+                "Le match / la compétition",
+                "Le jouet",
+                "Le score",
+                "L'arbitre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shiai désigne un match ou une compétition."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "じてんしゃに のる (jitensha ni noru) signifie :",
+              "options": [
+                "Faire du vélo",
+                "Faire du ski",
+                "Faire du skate",
+                "Faire de la danse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jitensha = vélo."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le sport « tennis » s'écrit :",
+              "options": [
+                "テニス (tenisu)",
+                "サッカー (sakkaa)",
+                "すいえい (suiei)",
+                "バレー (baree)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tenisu désigne le tennis."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "スポーツを します (supootsu o shimasu) veut dire :",
+              "options": [
+                "Je fais du sport",
+                "Je regarde la télé",
+                "Je lis un livre",
+                "Je cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Supootsu o shimasu = pratiquer un sport."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "およぐ (oyogu) signifie :",
+              "options": ["Nager", "Plonger", "Patiner", "Surfer"],
+              "correctAnswers": [0],
+              "explanation": "Oyogu est le verbe nager."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Loisirs culturels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles traductions de loisirs culturels sont correctes ?",
+              "options": [
+                "おんがく (ongaku) = musique",
+                "えいが (eiga) = cinéma / film",
+                "えんぴつ (enpitsu) = théâtre",
+                "ボール (booru) = livre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ongaku = musique ; eiga = film / cinéma."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "ほんを よみます (hon o yomimasu) signifie :",
+              "options": [
+                "Lire un livre",
+                "Écrire un livre",
+                "Acheter un livre",
+                "Prêter un livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yomimasu = lire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "きく (kiku) veut dire :",
+              "options": ["Écouter", "Parler", "Chanter", "Crier"],
+              "correctAnswers": [0],
+              "explanation": "Kiku est écouter."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "えを かく (e o kaku) correspond à :",
+              "options": [
+                "Dessiner",
+                "Sculpter",
+                "Photographier",
+                "Peindre seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "E o kaku = dessiner."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "テレビを みます (terebi o mimasu) signifie :",
+              "options": [
+                "Regarder la télévision",
+                "Éteindre la télé",
+                "Réparer la télé",
+                "Acheter une télé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mimasu = regarder."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "おどる (odoru) est :",
+              "options": ["Danser", "Courir", "Manger", "Dormir"],
+              "correctAnswers": [0],
+              "explanation": "Odoru = danser."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "げきじょう (gekijou) signifie :",
+              "options": [
+                "Le théâtre",
+                "Le musée",
+                "La bibliothèque",
+                "Le parc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gekijou = théâtre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "しゅみ (shumi) veut dire :",
+              "options": [
+                "Passe-temps / loisir",
+                "Temps passé",
+                "Vacances",
+                "Week-end"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shumi désigne un hobby."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "おんがくが すきです (ongaku ga suki desu) :",
+              "options": [
+                "J'aime la musique",
+                "Je déteste la musique",
+                "Je suis musicien pro",
+                "Je n'écoute rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suki desu exprime une préférence."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "ゲームを します (geemu o shimasu) signifie :",
+              "options": [
+                "Jouer aux jeux vidéo",
+                "Regarder des films",
+                "Faire du sport",
+                "Lire des BD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Geemu = jeux vidéo."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Verbes du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles traductions de verbes du quotidien sont correctes ?",
+              "options": [
+                "たべる (taberu) = manger",
+                "のむ (nomu) = boire",
+                "ねる (neru) = parler",
+                "はなす (hanasu) = dormir"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Taberu = manger ; nomu = boire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "おきる (okiru) signifie :",
+              "options": ["Se réveiller", "Se coucher", "Dormir", "Rêver"],
+              "correctAnswers": [0],
+              "explanation": "Okiru = se réveiller."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Je me lève » en japonais poli :",
+              "options": [
+                "おきます (okimasu)",
+                "ねます (nemasu)",
+                "たべます (tabemasu)",
+                "のみます (nomimasu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Okimasu peut signifier se lever / se réveiller selon le contexte."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "あさごはんを たべます (asagohan o tabemasu) veut dire :",
+              "options": [
+                "Prendre le petit-déjeuner",
+                "Déjeuner",
+                "Dîner",
+                "Goûter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Asagohan = petit-déjeuner."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "はなす (hanasu) signifie :",
+              "options": ["Parler", "Écouter", "Crier", "Se taire"],
+              "correctAnswers": [0],
+              "explanation": "Hanasu = parler."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "てつだう (tetsudau) correspond à :",
+              "options": ["Aider", "Gêner", "Quitter", "Oublier"],
+              "correctAnswers": [0],
+              "explanation": "Tetsudau = aider."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "あらう (arau) veut dire :",
+              "options": ["Laver", "Sécher", "Repasser", "Plier"],
+              "correctAnswers": [0],
+              "explanation": "Te o arau = se laver les mains."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "はたらく (hataraku) signifie :",
+              "options": ["Travailler", "Se reposer", "Voyager", "Dormir"],
+              "correctAnswers": [0],
+              "explanation": "Hataraku = travailler."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "やすむ (yasumu) veut dire :",
+              "options": [
+                "Se reposer",
+                "Se presser",
+                "Se lever",
+                "Se dépêcher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yasumu = se reposer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "ねる (neru) signifie :",
+              "options": ["Dormir / se coucher", "Manger", "Courir", "Lire"],
+              "correctAnswers": [0],
+              "explanation": "Neru = dormir."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision famille, école, loisirs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles traductions sont correctes ?",
+              "options": [
+                "がっこう (gakkou) = école",
+                "いもうと (imouto) = petite sœur",
+                "いえ (ie) = voiture",
+                "がくせい (gakusei) = professeur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Gakkou et imouto sont corrects ; gakusei = élève."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mon père travaille » :",
+              "options": [
+                "ちちは はたらきます (chichi wa hatarakimasu)",
+                "ははは べんきょうします",
+                "おにいさんは ねます",
+                "おじいさんは およぎます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chichi = mon père ; hatarakimasu = travaille."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "じゅぎょうの あと (jugyou no ato) signifie :",
+              "options": [
+                "Après les cours",
+                "Avant les cours",
+                "Pendant les cours",
+                "Sans cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ato = après."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "ともだちと (tomodachi to) veut dire :",
+              "options": [
+                "Avec mes amis",
+                "Sans mes amis",
+                "Contre mes amis",
+                "Pour mes amis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "To marque l'accompagnement avec."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ともだち (tomodachi) :",
+              "options": ["Ami", "Oncle", "Frère", "Professeur"],
+              "correctAnswers": [0],
+              "explanation": "Tomodachi = ami."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "しゅうまつ (shuumatsu) signifie :",
+              "options": ["Week-end", "Semaine", "Vacances", "Journée"],
+              "correctAnswers": [0],
+              "explanation": "Shuumatsu = week-end."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "まいにち (mainichi) veut dire :",
+              "options": ["Tous les jours", "Un jour", "Parfois", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Mainichi = chaque jour."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "どこ (doko) dans une question, c'est :",
+              "options": ["Où", "Quand", "Comment", "Pourquoi"],
+              "correctAnswers": [0],
+              "explanation": "Doko interroge sur le lieu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "とても (totemo) devant un adjectif exprime :",
+              "options": ["Très", "Peu", "Jamais", "Toujours"],
+              "correctAnswers": [0],
+              "explanation": "Totemo omoshiroi = très intéressant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "こんにちは (konnichiwa) s'utilise :",
+              "options": [
+                "L'après-midi pour saluer",
+                "Le matin seulement",
+                "La nuit seulement",
+                "Pour dire au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Konnichiwa = bonjour (journée)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Adjectifs descriptifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des adjectifs en japonais ?",
+              "options": [
+                "たかい (takai)",
+                "おおきい (ookii)",
+                "がっこう (gakkou)",
+                "たべる (taberu)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Takai et ookii décrivent ; gakkou et taberu ne sont pas des adjectifs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "きれい (kirei) signifie souvent :",
+              "options": ["Beau / propre", "Laid", "Petit", "Vieux"],
+              "correctAnswers": [0],
+              "explanation": "Kirei décrit la beauté ou la propreté."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "たかい (takai) pour une personne veut dire :",
+              "options": ["Grand (taille)", "Petit", "Jeune", "Fatigué"],
+              "correctAnswers": [0],
+              "explanation": "Takai = grand ; hikui = bas / petit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "わかい (wakai) correspond à :",
+              "options": ["Jeune", "Vieux", "Enfant seulement", "Adulte"],
+              "correctAnswers": [0],
+              "explanation": "Wakai = jeune."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ふるい (furui) signifie :",
+              "options": ["Vieux", "Nouveau", "Propre", "Sale"],
+              "correctAnswers": [0],
+              "explanation": "Furui = vieux (objet ou personne)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "かしこい (kashikoi) est :",
+              "options": ["Intelligent", "Stupide", "Paresseux", "Timide"],
+              "correctAnswers": [0],
+              "explanation": "Kashikoi = intelligent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "やさしい (yasashii) veut dire :",
+              "options": [
+                "Facile / gentil",
+                "Difficile",
+                "Possible",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yasashii = facile ou gentil selon le contexte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "大きい いえ (ookii ie) :",
+              "options": [
+                "Une grande maison",
+                "Un grand livre",
+                "Une petite maison",
+                "Un beau jardin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ookii = grand ; ie = maison."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "しんせつ (shinsetsu) décrit :",
+              "options": [
+                "Une personne gentille",
+                "Un objet lourd",
+                "Un lieu lointain",
+                "Un temps pluvieux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shinsetsu = gentil / aimable."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "つかれた (tsukareta) signifie :",
+              "options": ["Fatigué", "Content", "Malade", "Affamé"],
+              "correctAnswers": [0],
+              "explanation": "Tsukareta = fatigué (forme passée adjective)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Couleurs et tailles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles traductions de couleurs sont correctes ?",
+              "options": [
+                "あお (ao) = bleu",
+                "あか (aka) = rouge",
+                "みどり (midori) = rouge",
+                "きいろ (kiiro) = bleu"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ao = bleu ; aka = rouge."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "みどり (midori) signifie :",
+              "options": ["Vert", "Gris", "Marron", "Violet"],
+              "correctAnswers": [0],
+              "explanation": "Midori = vert."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "きいろ (kiiro) veut dire :",
+              "options": ["Jaune", "Orange", "Blanc", "Noir"],
+              "correctAnswers": [0],
+              "explanation": "Kiiro = jaune."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "くろ (kuro) / しろ (shiro) :",
+              "options": [
+                "Noir / blanc",
+                "Bleu / rouge",
+                "Grand / petit",
+                "Beau / laid"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleurs de base."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ちいさい (chiisai) signifie :",
+              "options": ["Petit", "Grand", "Moyen", "Long"],
+              "correctAnswers": [0],
+              "explanation": "Chiisai = petit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "おおきい (ookii) veut dire :",
+              "options": ["Grand", "Petit", "Court", "Étroit"],
+              "correctAnswers": [0],
+              "explanation": "Ookii = grand."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ながい (nagai) correspond à :",
+              "options": ["Long", "Court", "Large", "Mince"],
+              "correctAnswers": [0],
+              "explanation": "Nagai = long ; mijikai = court."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "あおい シャツ (aoi shatsu) :",
+              "options": [
+                "Une chemise bleue",
+                "Un pantalon rouge",
+                "Une jupe verte",
+                "Un manteau noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aoi = bleu ; shatsu = chemise."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ひろい (hiroi) signifie :",
+              "options": ["Large / spacieux", "Étroit", "Épais", "Fin"],
+              "correctAnswers": [0],
+              "explanation": "Hiroi = large."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "いろ (iro) veut dire :",
+              "options": ["Couleur", "Forme", "Taille", "Matière"],
+              "correctAnswers": [0],
+              "explanation": "Iro = couleur."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Présent poli (-masu)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes sont au présent poli ?",
+              "options": [
+                "たべます (tabemasu)",
+                "のみます (nomimasu)",
+                "たべました (tabemashita)",
+                "たべません (tabemasen)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tabemasu et nomimasu sont au présent affirmatif poli."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "べんきょうします (benkyou shimasu) signifie :",
+              "options": [
+                "Il/elle étudie / j'étudie",
+                "Il/elle a étudié",
+                "Il/elle étudiera",
+                "Il/elle n'étudie pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shimasu marque le présent poli."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "わたしたちは ごはんを たべます veut dire :",
+              "options": [
+                "Nous mangeons (le repas)",
+                "Nous avons mangé",
+                "Ils mangent",
+                "Je mange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Watashitachi = nous ; tabemasu = mangeons."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tu bois » poliment :",
+              "options": [
+                "のみます (nomimasu)",
+                "のむ (nomu) seul sans sujet",
+                "のみました",
+                "のめ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nomimasu est la forme polie de boire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "かのじょたちは はたらきます signifie :",
+              "options": [
+                "Elles travaillent",
+                "Elles travaillaient",
+                "Elles ont travaillé",
+                "Elles ne travaillent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hatarakimasu = travailler au présent poli."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "です (desu) après un nom signifie :",
+              "options": [
+                "Est / c'est (copule polie)",
+                "A mangé",
+                "Va",
+                "N'est pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Desu est la copule polie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "います (imasu) avec une personne veut dire :",
+              "options": [
+                "Il/elle est là / il y a (être animé)",
+                "Il/elle mange",
+                "Il/elle va",
+                "Il/elle dort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Imasu indique la présence d'un être animé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "あなたは はなします veut dire :",
+              "options": [
+                "Vous parlez",
+                "Ils parlaient",
+                "Nous parlons",
+                "Tu parlais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hanasimasu = parler au présent poli."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "あめが ふります (ame ga furimasu) signifie :",
+              "options": [
+                "Il pleut",
+                "Il a plu",
+                "Il pleuvra",
+                "Il ne pleut pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Furimasu = tomber (pluie, neige)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "じゅぎょうが あります :",
+              "options": [
+                "Il y a un cours / j'ai cours",
+                "Il n'y a pas de cours",
+                "Le cours est fini",
+                "Le cours était hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arimasu indique l'existence d'un événement."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Passé poli (-mashita)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Que exprime la forme en -ました ? (deux réponses vraies)",
+              "options": [
+                "Une action terminée dans le passé",
+                "L'équivalent du passé composé / passé simple",
+                "Le futur proche",
+                "Une obligation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tabemashita = j'ai mangé / je mangeais (poli passé)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "きのう えいがを みました signifie :",
+              "options": [
+                "Hier j'ai regardé un film",
+                "Demain je regarderai un film",
+                "Je regarde un film",
+                "Je ne regarde pas de film"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mimashita = regarder au passé poli."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "かのじょは ほんを よみました veut dire :",
+              "options": [
+                "Elle a lu un livre",
+                "Elle va lire",
+                "Elle lit",
+                "Elle lisait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yomimashita = lire au passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Structure correcte au passé :",
+              "options": [
+                "がっこうに いきました。",
+                "がっこうに いきますた。",
+                "がっこうに いくました。",
+                "がっこうに いきでした。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ikimasu → ikimashita au passé poli."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "しゅくだいを しました : tu…",
+              "options": [
+                "as fait les devoirs",
+                "vas faire les devoirs",
+                "faisais les devoirs",
+                "ne fais pas les devoirs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shimashita = faire au passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "さっき ともだちに あいました :",
+              "options": [
+                "Je viens de rencontrer / j'ai rencontré un ami à l'instant",
+                "Je rencontrerai un ami",
+                "Je rencontre un ami",
+                "Je ne rencontre personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aimashita = rencontrer au passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le verbe au passé poli se termine en :",
+              "options": ["-ました / -でした", "-ます", "-ません", "-ましょう"],
+              "correctAnswers": [0],
+              "explanation": "Mashita marque le passé affirmatif poli."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "かれらは サッカーを しました signifie :",
+              "options": [
+                "Ils ont joué au football",
+                "Ils vont jouer",
+                "Ils jouaient",
+                "Ils jouent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shimashita au pluriel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Opposé temporel de -mashita pour une action future :",
+              "options": [
+                "-ます / -mashou",
+                "-mashita",
+                "-masen",
+                "-katta seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le présent/futur poli utilise -masu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "きのう あめが ふりました veut dire :",
+              "options": [
+                "Hier il a plu",
+                "Demain il pleuvra",
+                "Il pleut",
+                "Il ne pleut pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Furimashita = il est tombé de la pluie."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Futur et intention (-masu / -tai)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Que peut exprimer -tai desu ? (deux réponses vraies)",
+              "options": [
+                "Un souhait / envie",
+                "L'idée de « vouloir » faire quelque chose",
+                "Le passé récent",
+                "L'impératif"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ikitai desu = je veux aller."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "あした べんきょうします signifie :",
+              "options": [
+                "Demain j'étudierai / j'étudie",
+                "Hier j'ai étudié",
+                "J'étudiais",
+                "Je n'étudie pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le présent poli peut marquer le futur avec un adverbe temporel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "いきます (ikimasu) vient de :",
+              "options": [
+                "いく (iku) = aller",
+                "くる (kuru)",
+                "する (suru)",
+                "いる (iru)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ikimasu est la forme polie de iku."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "かれらは りょこうに いきます veut dire :",
+              "options": [
+                "Ils vont voyager / partir en voyage",
+                "Ils voyageaient",
+                "Ils ont voyagé",
+                "Ils ne voyagent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ryokou ni ikimasu = aller en voyage."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "はちじに でかけます。",
+                "はちじに でかけますた。",
+                "はちじに でかけるます。",
+                "はちじに でかけでした。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dekakemasu = sortir (poli)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "にほんごの じゅぎょうが あります :",
+              "options": [
+                "Il y aura / il y a un cours de japonais",
+                "Le cours est fini",
+                "Pas de cours",
+                "Cours hier seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arimasu + contexte = avoir cours."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "いきたくないです :",
+              "options": [
+                "Je ne veux pas y aller",
+                "Je vais y aller",
+                "J'y suis allé",
+                "J'allais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Takunai = forme négative de tai."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "しゅくだいを つくります : tu…",
+              "options": [
+                "fais / vas faire les devoirs (créer)",
+                "as fait les devoirs",
+                "faisais les devoirs",
+                "ne fais pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tsukurimasu = fabriquer / faire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "あした おじいさんに あいます :",
+              "options": [
+                "Demain je verrai / je rends visite à grand-père",
+                "Hier j'ai visité",
+                "Je visite chaque jour",
+                "Je ne visite pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aimasu = rencontrer / voir quelqu'un."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "えいがを みに いきます signifie :",
+              "options": [
+                "Ils/ je vais voir un film",
+                "Ils voient un film",
+                "Ils ont vu un film",
+                "Ils voyaient un film"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mi ni ikimasu = aller voir."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Placer dans le temps",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles traductions temporelles sont correctes ?",
+              "options": [
+                "きょう (kyou) = aujourd'hui",
+                "あした (ashita) = demain",
+                "きのう (kinou) = demain",
+                "いま (ima) = hier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Kyou = aujourd'hui ; ashita = demain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "きのう (kinou) signifie :",
+              "options": ["Hier", "Aujourd'hui", "Demain", "Bientôt"],
+              "correctAnswers": [0],
+              "explanation": "Kinou = hier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "あさ (asa) veut dire :",
+              "options": ["Le matin", "L'après-midi", "Le soir", "La nuit"],
+              "correctAnswers": [0],
+              "explanation": "Asa = matin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "ごご (gogo) correspond à :",
+              "options": [
+                "L'après-midi",
+                "Le matin",
+                "Minuit",
+                "Midi seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gogo = après-midi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "よる (yoru) signifie :",
+              "options": ["Le soir / la nuit", "Le matin", "Midi", "L'aube"],
+              "correctAnswers": [0],
+              "explanation": "Yoru = nuit / soir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "いま (ima) veut dire :",
+              "options": ["Maintenant", "Avant", "Après", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Ima = maintenant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "いつも (itsumo) signifie :",
+              "options": ["Toujours", "Jamais", "Parfois", "Souvent"],
+              "correctAnswers": [0],
+              "explanation": "Itsumo = toujours."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "ぜんぜん (zenzen) avec négation correspond à :",
+              "options": [
+                "Pas du tout / jamais (avec neg)",
+                "Toujours",
+                "Souvent",
+                "Parfois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zenzen ... masen = pas du tout."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "さんじ (sanji) :",
+              "options": [
+                "À trois heures",
+                "Pendant trois heures",
+                "Il y a trois heures",
+                "Dans trois jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ji marque l'heure."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "あとで (atode) veut dire :",
+              "options": ["Après / plus tard", "Avant", "Pendant", "Jusqu'à"],
+              "correctAnswers": [0],
+              "explanation": "Atode = après, plus tard."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Raconter une journée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels connecteurs servent à ordonner un récit ?",
+              "options": [
+                "はじめに (hajime ni) = d'abord",
+                "それから (sore kara) = ensuite",
+                "ぜんぜん = ensuite",
+                "いつも = d'abord"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hajime ni = d'abord ; sore kara = ensuite."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "はやく おきます (hayaku okimasu) signifie :",
+              "options": [
+                "Je me lève tôt",
+                "Je me couche tôt",
+                "Je reste au lit",
+                "Je dors tard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hayaku = tôt / rapidement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "あさごはんの あと (asagohan no ato) veut dire :",
+              "options": [
+                "Après le petit-déjeuner",
+                "Avant le petit-déjeuner",
+                "Pendant le petit-déjeuner",
+                "Sans petit-déjeuner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ato = après."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "バスで がっこうに いきます :",
+              "options": [
+                "Je vais à l'école en bus",
+                "Je quitte l'école",
+                "Je suis à la maison",
+                "Je cours à l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De = moyen de transport."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ひるごはんを たべます signifie :",
+              "options": [
+                "Je déjeune",
+                "Je dîne",
+                "Je petit-déjeune",
+                "Je ne mange pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hirugohan = déjeuner."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "ごご スポーツを します :",
+              "options": [
+                "L'après-midi je fais du sport",
+                "Le matin je fais du sport",
+                "Le soir je dors",
+                "La nuit je travaille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gogo + activité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "やっと いえに かえりました veut dire :",
+              "options": [
+                "Enfin je suis rentré à la maison",
+                "Je quitte la maison",
+                "Je ne rentre pas",
+                "Je suis déjà sorti"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yatto = enfin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "かぞくと ばんごはんを たべます :",
+              "options": [
+                "Je dîne avec la famille",
+                "Je déjeune seul",
+                "Je grignote",
+                "Je cuisine seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bangohan = dîner."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ねる まえに ほんを よみます signifie :",
+              "options": [
+                "Avant de dormir, je lis",
+                "Après avoir dormi",
+                "Pendant que je dors",
+                "Sans dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mae ni = avant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "ながい いちにち でした :",
+              "options": [
+                "Ce fut une longue journée",
+                "Ce sera une longue journée",
+                "C'est un jour court",
+                "Je ne me souviens pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deshita = passé poli de desu."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Poser des questions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles traductions d'interrogatifs sont correctes ?",
+              "options": [
+                "どこ (doko) = où",
+                "いつ (itsu) = quand",
+                "どう (dou) = où",
+                "だれ (dare) = quand"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Doko = où ; itsu = quand."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "おなまえは なんですか signifie :",
+              "options": [
+                "Comment vous appelez-vous ?",
+                "Où habitez-vous ?",
+                "Quel âge avez-vous ?",
+                "Que faites-vous ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "O namae wa = votre nom."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "なにを しますか veut dire :",
+              "options": [
+                "Que faites-vous ?",
+                "Où allez-vous ?",
+                "Quand venez-vous ?",
+                "Pourquoi partez-vous ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nani o = qu'est-ce que (objet)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "なんさい ですか :",
+              "options": [
+                "Quel âge avez-vous ?",
+                "Combien de frères ?",
+                "Quelle heure ?",
+                "Quel jour ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nansai = combien d'années."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "なぜ にほんごを べんきょうしますか signifie :",
+              "options": [
+                "Pourquoi étudiez-vous le japonais ?",
+                "Comment étudiez-vous ?",
+                "Où étudiez-vous ?",
+                "Quand étudiez-vous ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Naze / doushite = pourquoi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "あのひとは だれですか veut dire :",
+              "options": [
+                "Qui est cette personne ?",
+                "Où est-il ?",
+                "Comment est-il ?",
+                "Quand arrive-t-il ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dare = qui."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Question avec だれ : あの せんせいは ___ ですか",
+              "options": ["だれ", "どこ", "いつ", "どう"],
+              "correctAnswers": [0],
+              "explanation": "Dare desu ka = qui est."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "なんじ ですか signifie :",
+              "options": [
+                "À quelle heure ?",
+                "Combien de temps ?",
+                "Depuis quand ?",
+                "Jusqu'à quand ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nanji = quelle heure."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "すきな しゅみは なんですか :",
+              "options": [
+                "Quel est ton loisir préféré ?",
+                "Où est ton loisir ?",
+                "Quand fais-tu du sport ?",
+                "Pourquoi lis-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suki na = préféré."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réponse à どこに すんでいますか :",
+              "options": [
+                "とうきょうに すんでいます。",
+                "わたしは たなかです。",
+                "じゅうにさい です。",
+                "おんがくが すきです。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sumimasu = habiter."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Connecteurs narratifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles traductions de connecteurs logiques sont correctes ?",
+              "options": [
+                "でも (demo) = mais",
+                "から (kara) = parce que / donc",
+                "と (to) = mais",
+                "または (matawa) = parce que"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Demo = mais ; kara marque la cause ou la conséquence."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "そして (soshite) dans une énumération signifie :",
+              "options": ["Et / puis", "Ou", "Mais", "Donc"],
+              "correctAnswers": [0],
+              "explanation": "Soshite = et puis."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "または (matawa) veut dire :",
+              "options": ["Ou", "Et", "Mais", "Car"],
+              "correctAnswers": [0],
+              "explanation": "Matawa = ou."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "だから (dakara) correspond à :",
+              "options": ["C'est pourquoi / donc", "Malgré", "Avant", "Après"],
+              "correctAnswers": [0],
+              "explanation": "Dakara = donc."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "も (mo) avec un nom signifie souvent :",
+              "options": [
+                "Aussi / également",
+                "Jamais",
+                "Seulement",
+                "Peut-être"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mo = aussi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "それで (sore de) dans un récit veut dire :",
+              "options": ["Alors / et alors", "Avant", "Jamais", "Toujours"],
+              "correctAnswers": [0],
+              "explanation": "Sore de marque la suite logique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "つかれました。___ いきませんでした",
+              "options": ["だから", "でも", "そして", "または"],
+              "correctAnswers": [0],
+              "explanation": "Conséquence : dakara = donc je n'y suis pas allé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "はじめに (hajime ni) au début d'un récit :",
+              "options": ["D'abord", "Enfin", "Parfois", "Soudain seulement"],
+              "correctAnswers": [0],
+              "explanation": "Hajime ni = d'abord."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "〜ながら (nagara) signifie :",
+              "options": [
+                "En faisant… / pendant que (simultané)",
+                "Après que",
+                "Avant que",
+                "Parce que"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nagara exprime deux actions simultanées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "そのあと (sono ato) veut dire :",
+              "options": [
+                "Après cela",
+                "Avant cela",
+                "Malgré cela",
+                "Sans cela"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sono ato = après cela."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision décrire et raconter",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases décrivent correctement ?",
+              "options": [
+                "わたしの おにいさんは たかいです。",
+                "わたしの いえは ちいさいです。",
+                "わたし がっこう おおきい。",
+                "かれら きれい ほん。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Il faut desu et la particule wa pour une phrase polie correcte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "むかしむかし (mukashi mukashi) introduit :",
+              "options": [
+                "Un conte / récit au passé",
+                "Une question",
+                "Un ordre",
+                "Une liste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule narrative classique « il était une fois »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "はなしを します signifie :",
+              "options": [
+                "Raconter une histoire",
+                "Lire une histoire",
+                "Écrire un devoir",
+                "Décrire une photo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hanashi o shimasu = raconter."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "せつめいします (setsumei shimasu) veut dire :",
+              "options": ["Expliquer / décrire", "Écouter", "Courir", "Manger"],
+              "correctAnswers": [0],
+              "explanation": "Setsumei = explication / description."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "きのう えいがを みに いって おもしろい えいがでした :",
+              "options": [
+                "Hier je suis allé au cinéma et c'était un film intéressant",
+                "Demain j'irai au cinéma",
+                "Je vais au cinéma",
+                "Je n'aime pas le cinéma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé avec itte et deshita."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "〜ねんまえ (nen mae) dans さんねんまえ exprime :",
+              "options": ["Il y a (trois ans)", "Ici", "Là-bas", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "Nen mae = il y a X ans."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "〜みたい (mitai) signifie :",
+              "options": [
+                "Comme / on dirait que",
+                "Exactement",
+                "Jamais",
+                "Toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mitai = ressembler à, sembler."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "とても おもしろい :",
+              "options": [
+                "Très intéressant",
+                "Peu intéressant",
+                "Pas intéressant",
+                "Plus intéressant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Totemo intensifie l'adjectif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "この はなしは かなしい です veut dire :",
+              "options": [
+                "Cette histoire est triste",
+                "Cette histoire est drôle",
+                "Cette histoire est longue",
+                "Cette histoire est nouvelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kanashii = triste."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour conclure un récit oral, on peut dire :",
+              "options": [
+                "おわり (owari) / ここまで",
+                "おはよう",
+                "こんにちは",
+                "どうも ありがとう ございません"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Owari ou koko made marquent la fin."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

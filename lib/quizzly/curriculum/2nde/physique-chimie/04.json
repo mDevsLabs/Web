@@ -1,0 +1,2568 @@
+{
+  "id": "2nde-physique-chimie-04",
+  "year": "2nde",
+  "subject": "physique-chimie",
+  "title": "La matière",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Constituants",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Structure de l'atome et noyau",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles particules constituent le noyau d'un atome ?",
+              "options": [
+                "Les protons",
+                "Les électrons",
+                "Les neutrons",
+                "Les photons"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le noyau de l'atome est composé de nucléons, qui regroupent les protons (chargés positivement) et les neutrons (neutres)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la charge électrique d'un proton ?",
+              "options": [
+                "Positive (+e)",
+                "Négative (-e)",
+                "Nulle (neutre)",
+                "Variable selon la température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le proton porte une charge élémentaire positive notée +e (environ +1,6 × 10⁻¹⁹ C)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans la notation symbolique d'un noyau A-Z-X, que représente la lettre Z ?",
+              "options": [
+                "Le numéro atomique (nombre de protons)",
+                "Le nombre de masse (nombre de nucléons)",
+                "Le nombre de neutrons",
+                "La charge électrique totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Z est le numéro atomique, qui correspond au nombre de protons présents dans le noyau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans la notation symbolique d'un noyau A-Z-X, que représente la lettre A ?",
+              "options": [
+                "Le nombre de nucléons (protons + neutrons)",
+                "Le nombre d'électrons de valence",
+                "Le nombre d'électrons de cœur",
+                "La masse totale en grammes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A est le nombre de masse : il représente le nombre total de nucléons (protons et neutrons)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le nombre de neutrons N dans un noyau A-Z-X ?",
+              "options": ["N = A - Z", "N = A + Z", "N = Z - A", "N = A × Z"],
+              "correctAnswers": [0],
+              "explanation": "Comme A = Z + N, le nombre de neutrons se déduit par N = A - Z."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un atome de carbone 12-6-C possède :",
+              "options": [
+                "6 protons et 6 neutrons",
+                "12 protons et 6 neutrons",
+                "6 protons et 12 neutrons",
+                "12 protons et 12 neutrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec Z = 6 et A = 12, cet atome contient 6 protons et N = 12 - 6 = 6 neutrons."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la charge électrique globale d'un atome neutre ?",
+              "options": [
+                "Nulle, car il a autant de protons que d'électrons",
+                "Positive, car le noyau l'emporte",
+                "Négative, car les électrons sont en périphérie",
+                "Variable selon l'état physique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'atome est électriquement neutre : les charges positives des protons compensent les charges négatives des électrons."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Où est concentrée la quasi-totalité de la masse d'un atome ?",
+              "options": [
+                "Dans le noyau",
+                "Dans le cortège électronique",
+                "Répartie uniformément dans tout l'atome",
+                "Dans le vide interatomique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La masse des électrons est négligeable devant celle des nucléons ; la masse est concentrée dans le noyau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel qualificatif décrit la structure de l'atome en raison du vide entre le noyau et les électrons ?",
+              "options": [
+                "Structure lacunaire",
+                "Structure compacte",
+                "Structure continue",
+                "Structure cristalline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'atome est constitué essentiellement de vide entre son noyau et ses électrons : sa structure est lacunaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur du diamètre d'un atome ?",
+              "options": [
+                "10⁻¹⁰ m (environ 0,1 nm)",
+                "10⁻¹⁵ m (environ 1 fm)",
+                "10⁻⁶ m (environ 1 µm)",
+                "10⁻³ m (environ 1 mm)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le diamètre d'un atome est de l'ordre de 10⁻¹⁰ m (0,1 nm), soit 100 000 fois plus grand que son noyau (10⁻¹⁵ m)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Électrons et cortège électronique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernant les électrons sont exactes ?",
+              "options": [
+                "Ils portent une charge élémentaire négative -e",
+                "Leur masse est négligeable devant celle d'un proton",
+                "Ils sont situés à l'intérieur du noyau",
+                "Leur nombre est égal à Z dans un atome neutre"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les électrons forment le cortège électronique autour du noyau, portent la charge -e et ont une masse très faible."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien d'électrons au maximum peut contenir la sous-couche 1s ?",
+              "options": [
+                "2 électrons",
+                "6 électrons",
+                "8 électrons",
+                "10 électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une sous-couche de type s peut contenir au maximum 2 électrons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien d'électrons au maximum peut contenir une sous-couche 2p ?",
+              "options": [
+                "6 électrons",
+                "2 électrons",
+                "8 électrons",
+                "10 électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une sous-couche de type p peut accueillir jusqu'à 6 électrons au maximum."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la configuration électronique de l'atome d'oxygène (Z = 8) dans son état fondamental ?",
+              "options": [
+                "1s² 2s² 2p⁴",
+                "1s² 2s⁴ 2p²",
+                "1s² 2s² 2p⁶",
+                "1s⁴ 2s⁴"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 8 électrons, on remplit 1s (2 électrons), puis 2s (2 électrons), puis 2p (4 électrons) : 1s² 2s² 2p⁴."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les électrons situés sur la couche électronique la plus externe ?",
+              "options": [
+                "Les électrons de valence",
+                "Les électrons de cœur",
+                "Les électrons nucléaires",
+                "Les électrons libres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les électrons de valence sont situés sur la couche externe ; ils déterminent la réactivité chimique de l'élément."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien d'électrons de valence possède l'atome de carbone (configuration 1s² 2s² 2p²) ?",
+              "options": [
+                "4 électrons",
+                "2 électrons",
+                "6 électrons",
+                "8 électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La couche externe n = 2 contient 2 électrons dans 2s et 2 électrons dans 2p, soit 4 électrons de valence."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la configuration électronique de l'atome de sodium (Z = 11) ?",
+              "options": [
+                "1s² 2s² 2p⁶ 3s¹",
+                "1s² 2s² 2p⁷",
+                "1s² 2s⁸ 3s¹",
+                "1s³ 2s² 2p⁶"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les 11 électrons se répartissent en 1s² 2s² 2p⁶ 3s¹."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans quel ordre se remplissent les sous-couches pour les premiers éléments chimiques ?",
+              "options": [
+                "1s, puis 2s, puis 2p, puis 3s, puis 3p",
+                "1s, puis 2p, puis 2s, puis 3p, puis 3s",
+                "1s, puis 2s, puis 3s, puis 2p, puis 3p",
+                "2s, puis 1s, puis 2p, puis 3s, puis 3p"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sous-couches se remplissent par ordre d'énergie croissante : 1s, 2s, 2p, 3s puis 3p."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien d'électrons de valence possède l'atome d'azote (Z = 7, configuration 1s² 2s² 2p³) ?",
+              "options": [
+                "5 électrons",
+                "3 électrons",
+                "7 électrons",
+                "2 électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur la couche de valence n = 2, l'azote compte 2 + 3 = 5 électrons."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel atome a pour configuration électronique 1s² 2s² 2p⁶ dans son état fondamental ?",
+              "options": [
+                "Le néon (Z = 10)",
+                "L'hélium (Z = 2)",
+                "L'argon (Z = 18)",
+                "Le fluor (Z = 9)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nombre total d'électrons est 2 + 2 + 6 = 10, ce qui correspond au néon Ne."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Classification périodique des éléments",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques sont partagées par les éléments d'une même colonne du tableau périodique ?",
+              "options": [
+                "Ils possèdent le même nombre d'électrons de valence",
+                "Ils présentent des propriétés chimiques similaires",
+                "Ils possèdent le même nombre total de nucléons",
+                "Ils appartiennent à la même famille chimique"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les éléments d'une même colonne ont le même nombre d'électrons externes, ce qui détermine leur famille et leurs propriétés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment sont rangés les éléments chimiques dans le tableau périodique moderne ?",
+              "options": [
+                "Par numéro atomique Z croissant",
+                "Par masse atomique décroissante",
+                "Par ordre alphabétique de leur symbole",
+                "Par date de découverte historique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les éléments sont ordonnés par numéro atomique Z croissant (nombre de protons)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que représente une ligne (période) dans le tableau périodique ?",
+              "options": [
+                "Le niveau d'énergie n de la couche électronique externe",
+                "Le nombre total de neutrons dans le noyau",
+                "Le nombre d'électrons de valence",
+                "La masse molaire moyenne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque ligne (ou période) correspond au remplissage d'une nouvelle couche électronique n."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À quelle famille chimique appartiennent les éléments de la 1ère colonne (hors hydrogène) ?",
+              "options": [
+                "Les métaux alcalins",
+                "Les halogènes",
+                "Les gaz nobles",
+                "Les alcalino-terreux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La colonne 1 (Li, Na, K...) est celle des métaux alcalins, possédant 1 électron de valence."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À quelle famille chimique appartiennent les éléments de la 17e colonne (F, Cl, Br, I) ?",
+              "options": [
+                "Les halogènes",
+                "Les gaz nobles",
+                "Les métaux alcalins",
+                "Les métaux de transition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La 17e colonne regroupe les halogènes, qui ont 7 électrons de valence."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les éléments de la 18e colonne (He, Ne, Ar...) ?",
+              "options": [
+                "Les gaz nobles",
+                "Les métaux alcalins",
+                "Les actinides",
+                "Les métaux pauvres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La 18e colonne réunit les gaz nobles (ou gaz rares), caractérisés par une grande stabilité chimique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel chimiste russe a publié en 1869 la première classification périodique ordonnée ?",
+              "options": [
+                "Dmitri Mendeleïev",
+                "Antoine Lavoisier",
+                "John Dalton",
+                "Amedeo Avogadro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mendeleïev a classé les éléments connus et a même prédit les propriétés d'éléments encore non découverts."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien d'électrons de valence possèdent les métaux alcalino-terreux (2e colonne) ?",
+              "options": [
+                "2 électrons",
+                "1 électron",
+                "4 électrons",
+                "8 électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les éléments de la deuxième colonne (Be, Mg, Ca...) possèdent 2 électrons sur leur couche externe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À quelle période appartient le sodium (Z = 11, configuration 1s² 2s² 2p⁶ 3s¹) ?",
+              "options": [
+                "3e période",
+                "1ère période",
+                "2e période",
+                "4e période"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'électron de valence occupant la couche n = 3, le sodium appartient à la 3e ligne (période)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans quelle colonne se situe le chlore (Z = 17, couche externe 3s² 3p⁵) ?",
+              "options": [
+                "17e colonne",
+                "7e colonne",
+                "15e colonne",
+                "18e colonne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 7 électrons de valence (2 + 5), le chlore appartient à la 17e colonne (famille des halogènes)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Stabilité chimique et règle de l'octet",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles règles décrivent la recherche de stabilité des atomes par analogie avec les gaz nobles ?",
+              "options": [
+                "La règle de l'octet (8 électrons de valence)",
+                "La règle du duet (2 électrons pour l'hélium)",
+                "La règle de la neutralité nucléaire",
+                "La règle de Dalton"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les atomes cherchent à saturer leur couche externe en formant un duet (pour Z proche de 2) ou un octet (8 électrons)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi les gaz nobles ne réagissent-ils pratiquement pas chimiquement ?",
+              "options": [
+                "Leur couche externe est déjà saturée et particulièrement stable",
+                "Ils ne possèdent aucun électron",
+                "Leur noyau est radioactif",
+                "Ils sont trop légers pour se lier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possédant une couche externe saturée (duet ou octet), les gaz nobles bénéficient d'une stabilité maximale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien d'électrons de valence possède un atome stable qui respecte la règle de l'octet ?",
+              "options": [
+                "8 électrons",
+                "2 électrons",
+                "4 électrons",
+                "18 électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La règle de l'octet correspond à une couche externe saturée à 8 électrons (configuration en s² p⁶)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel gaz noble sert de référence de stabilité pour l'atome d'hydrogène (Z = 1) ?",
+              "options": [
+                "L'hélium (He)",
+                "Le néon (Ne)",
+                "L'argon (Ar)",
+                "Le krypton (Kr)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hydrogène gagne ou partage 1 électron pour acquérir la configuration stable 1s² de l'hélium (duet)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien d'électrons l'atome de chlore (7 électrons de valence) doit-il acquérir pour saturer sa couche externe ?",
+              "options": [
+                "1 électron",
+                "2 électrons",
+                "3 électrons",
+                "7 électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ayant 7 électrons de valence, le chlore a besoin d'un électron supplémentaire pour atteindre l'octet (8)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'atome de magnésium (Z = 12, 1s² 2s² 2p⁶ 3s²) tend à céder combien d'électrons pour devenir stable ?",
+              "options": [
+                "2 électrons",
+                "1 électron",
+                "6 électrons",
+                "8 électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En cédant ses 2 électrons de valence 3s², le magnésium acquiert la configuration du néon (1s² 2s² 2p⁶)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de liaisons covalentes forme typiquement le carbone (4 électrons de valence) pour respecter l'octet ?",
+              "options": [
+                "4 liaisons",
+                "2 liaisons",
+                "1 liaison",
+                "3 liaisons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour passer de 4 à 8 électrons de valence, le carbone partage 4 paires d'électrons (4 liaisons)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'atome d'oxygène (6 électrons de valence) forme un ion stable en :",
+              "options": [
+                "Gagnant 2 électrons (ion O²⁻)",
+                "Perdant 6 électrons (ion O⁶⁺)",
+                "Gagnant 1 électron (ion O⁻)",
+                "Perdant 2 protons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour compléter son octet, l'oxygène capte 2 électrons et forme l'anion oxyde O²⁻."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel élément chimique suit la règle du duet plutôt que la règle de l'octet ?",
+              "options": ["L'hydrogène", "Le carbone", "L'azote", "Le chlore"],
+              "correctAnswers": [0],
+              "explanation": "L'hydrogène cherche à saturer sa couche 1s avec 2 électrons, adoptant la structure de l'hélium."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment un atome peut-il satisfaire la règle de l'octet ou du duet ?",
+              "options": [
+                "En formant des ions ou en partageant des électrons par liaisons covalentes",
+                "En modifiant son nombre de protons",
+                "En expulsant des neutrons",
+                "En absorbant des photons uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les atomes peuvent soit transférer des électrons (ions), soit mettre en commun des électrons (molécules)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Ions monoatomiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi les ions suivants, lesquels sont des cations ?",
+              "options": ["Na⁺", "Ca²⁺", "Cl⁻", "F⁻"],
+              "correctAnswers": [0, 1],
+              "explanation": "Un cation est un ion chargé positivement (Na⁺ et Ca²⁺). Cl⁻ et F⁻ sont des anions (chargés négativement)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un anion ?",
+              "options": [
+                "Un atome ayant gagné un ou plusieurs électrons",
+                "Un atome ayant perdu un ou plusieurs protons",
+                "Un atome ayant gagné un proton",
+                "Un atome ayant perdu des électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un anion porte une charge électrique négative nette car il a capté un ou plusieurs électrons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel ion forme préférentiellement l'atome de sodium Na (Z = 11, 1 électron de valence) ?",
+              "options": ["Na⁺", "Na²⁺", "Na⁻", "Na³⁺"],
+              "correctAnswers": [0],
+              "explanation": "Le sodium cède facilement son unique électron externe pour acquérir la structure stable du néon, formant Na⁺."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel ion forme préférentiellement l'atome de chlore Cl (Z = 17, 7 électrons de valence) ?",
+              "options": ["Cl⁻", "Cl⁺", "Cl²⁻", "Cl²⁺"],
+              "correctAnswers": [0],
+              "explanation": "Le chlore gagne 1 électron pour saturer sa couche externe à 8 électrons, formant l'ion chlorure Cl⁻."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la formule de l'ion magnésium issu de l'atome Mg (Z = 12) ?",
+              "options": ["Mg²⁺", "Mg⁺", "Mg²⁻", "Mg³⁺"],
+              "correctAnswers": [0],
+              "explanation": "Le magnésium (famille des alcalino-terreux) perd 2 électrons de valence pour former le cation Mg²⁺."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien d'électrons possède l'ion potassium K⁺ (numéro atomique du potassium Z = 19) ?",
+              "options": [
+                "18 électrons",
+                "19 électrons",
+                "20 électrons",
+                "17 électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'atome neutre compte 19 électrons. Le cation K⁺ a perdu 1 électron : 19 - 1 = 18 électrons."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel ion forme l'atome d'aluminium Al (Z = 13, 3 électrons de valence) ?",
+              "options": ["Al³⁺", "Al⁺", "Al²⁺", "Al³⁻"],
+              "correctAnswers": [0],
+              "explanation": "L'aluminium cède ses 3 électrons de valence pour donner le cation Al³⁺."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un ion monoatomique a-t-il le même nombre de protons que son atome d'origine ?",
+              "options": [
+                "Oui, car le noyau reste inchangé lors d'une réaction chimique",
+                "Non, il a gagné ou perdu des protons",
+                "Non, son numéro atomique Z a été modifié",
+                "Seulement si l'ion est négatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ionisation ne modifie que le cortège électronique ; le noyau et son nombre de protons Z restent intacts."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la formule de l'ion sulfure issu de l'atome de soufre S (Z = 16) ?",
+              "options": ["S²⁻", "S⁻", "S²⁺", "S⁺"],
+              "correctAnswers": [0],
+              "explanation": "Le soufre a 6 électrons de valence et capte 2 électrons pour obtenir l'octet : S²⁻."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le nom de l'anion F⁻ issu du fluor ?",
+              "options": [
+                "Ion fluorure",
+                "Ion fluorite",
+                "Ion fluorate",
+                "Ion fluoreux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anion monoatomique dérivé du fluor est nommé l'ion fluorure."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Molécules et liaisons covalentes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels énoncés décrivent correctement une liaison covalente simple ?",
+              "options": [
+                "La mise en commun de deux électrons entre deux atomes",
+                "Le partage d'un doublet liant d'électrons",
+                "Le transfert permanent d'un proton d'un noyau à l'autre",
+                "Une interaction qui permet à chaque atome de se rapprocher d'un gaz noble"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Une liaison covalente est la mise en commun d'une paire d'électrons (doublet liant) pour stabiliser les deux atomes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une paire d'électrons de valence non engagée dans une liaison ?",
+              "options": [
+                "Un doublet non liant",
+                "Un doublet liant",
+                "Un électron célibataire",
+                "Un nuage nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un doublet non liant est une paire d'électrons externes qui n'appartient qu'à un seul atome."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de liaisons covalentes forme l'atome d'hydrogène dans une molécule ?",
+              "options": [
+                "1 liaison simple",
+                "2 liaisons",
+                "3 liaisons",
+                "4 liaisons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hydrogène possède 1 électron et en partage 1 autre pour satisfaire la règle du duet (1 liaison simple)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans la molécule d'eau H₂O, combien de doublets non liants porte l'atome d'oxygène ?",
+              "options": [
+                "2 doublets non liants",
+                "1 doublet non liant",
+                "3 doublets non liants",
+                "0 doublet non liant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oxygène a 6 électrons de valence : 2 forment les liaisons avec H et 4 forment 2 doublets non liants."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel type de liaison relie les deux atomes d'oxygène dans la molécule de dioxygène O₂ ?",
+              "options": [
+                "Une double liaison covalente",
+                "Une simple liaison covalente",
+                "Une triple liaison covalente",
+                "Une liaison ionique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque atome d'oxygène partage 2 électrons : ils forment 2 doublets liants, soit une double liaison O=O."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de liaisons forme l'atome d'azote dans la molécule d'ammoniac NH₃ ?",
+              "options": [
+                "3 liaisons simples",
+                "1 liaison simple",
+                "2 liaisons simples",
+                "4 liaisons simples"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'azote (5 électrons externes) forme 3 liaisons covalentes avec 3 hydrogènes et conserve 1 doublet non liant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel type de liaison unit les deux atomes d'azote dans le diazote N₂ ?",
+              "options": [
+                "Une triple liaison covalente",
+                "Une simple liaison covalente",
+                "Une double liaison covalente",
+                "Une liaison hydrogène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour satisfaire l'octet, les deux atomes d'azote mettent en commun 3 doublets d'électrons (triple liaison N≡N)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans le schéma de Lewis d'une molécule, comment schématise-t-on un doublet d'électrons ?",
+              "options": [
+                "Par un tiret",
+                "Par un point d'exclamation",
+                "Par un cercle rouge",
+                "Par une flèche ondulée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la représentation de Lewis, un doublet liant ou non liant est symbolisé par un tiret."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la formule brute du méthane, composé d'un carbone central lié à des hydrogènes ?",
+              "options": ["CH₄", "C₂H₆", "CO₂", "CH₂"],
+              "correctAnswers": [0],
+              "explanation": "Le carbone tétravalent forme 4 liaisons simples avec 4 atomes d'hydrogène : CH₄."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien de doublets liants comporte la molécule de dioxyde de carbone CO₂ (O=C=O) ?",
+              "options": [
+                "4 doublets liants au total",
+                "2 doublets liants au total",
+                "6 doublets liants au total",
+                "8 doublets liants au total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le carbone forme 2 doubles liaisons (une avec chaque oxygène), soit 2 × 2 = 4 doublets liants."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Solides ioniques et moléculaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies concernant un solide ionique ?",
+              "options": [
+                "Il est constitué d'un empilement ordonné d'anions et de cations",
+                "Il est globalement électriquement neutre",
+                "Sa cohésion est assurée par l'interaction électrostatique",
+                "Il est constitué de molécules individuelles isolées"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Un solide ionique est un réseau tridimensionnel neutre où les charges opposées s'attirent par force électrostatique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la formule statistique du sel de table formé d'ions Na⁺ et Cl⁻ ?",
+              "options": ["NaCl", "Na₂Cl", "NaCl₂", "Na₂Cl₂"],
+              "correctAnswers": [0],
+              "explanation": "L'association d'un ion Na⁺ (+1) et d'un ion Cl⁻ (-1) assure la neutralité électrique : NaCl."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la formule statistique du chlorure de calcium (ions Ca²⁺ et Cl⁻) ?",
+              "options": ["CaCl₂", "CaCl", "Ca₂Cl", "Ca₂Cl₃"],
+              "correctAnswers": [0],
+              "explanation": "Pour compenser la charge 2+ de l'ion calcium Ca²⁺, il faut deux ions chlorure Cl⁻ : CaCl₂."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la formule du sulfate de sodium composé d'ions Na⁺ et SO₄²⁻ ?",
+              "options": ["Na₂SO₄", "NaSO₄", "Na(SO₄)₂", "Na₃SO₄"],
+              "correctAnswers": [0],
+              "explanation": "Deux ions Na⁺ sont nécessaires pour neutraliser la charge 2- de l'ion sulfate SO₄²⁻ : Na₂SO₄."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce qui assure la cohésion d'un solide moléculaire (comme la glace ou le sucre) ?",
+              "options": [
+                "Des interactions intermoléculaires faibles (Van der Waals, liaisons hydrogène)",
+                "Des liaisons ioniques fortes",
+                "Des forces de gravitation gigantesques",
+                "Des réactions de fusion nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un solide moléculaire, les molécules sont unies par des liaisons faibles intermoléculaires."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi une solution d'eau salée conduit-elle le courant électrique alors que le sel solide ne le conduit pas ?",
+              "options": [
+                "Les ions sont mobiles en solution aqueuse",
+                "L'eau dissocie les protons des noyaux",
+                "Le sel solide ne contient aucun ion",
+                "L'eau transforme le sel en métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'état dissous, les ions hydratés sont libres de se déplacer sous l'effet d'une tension électrique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la formule statistique du fluorure de magnésium (ions Mg²⁺ et F⁻) ?",
+              "options": ["MgF₂", "MgF", "Mg₂F", "Mg₂F₃"],
+              "correctAnswers": [0],
+              "explanation": "Chaque ion magnésium Mg²⁺ requiert deux ions fluorure F⁻ pour assurer la neutralité : MgF₂."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans le réseau cristallin d'un solide ionique à température ambiante, les ions peuvent-ils se déplacer librement ?",
+              "options": [
+                "Non, ils oscillent autour de positions d'équilibre fixes",
+                "Oui, ils circulent librement d'un bout à l'autre",
+                "Oui, ils flottent comme dans un gaz",
+                "Seulement sous l'effet de la gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ions d'un cristal solide sont piégés dans le réseau ; ils ne peuvent que vibrer autour de leur position."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel type de solide est le sucre de table (saccharose) ?",
+              "options": [
+                "Un solide moléculaire",
+                "Un solide ionique",
+                "Un solide métallique",
+                "Un cristal atomique covalent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sucre est constitué de molécules individuelles de saccharose maintenues par des liaisons intermoléculaires."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle liaison intermoléculaire remarquable explique la forte cohésion de l'eau liquide et de la glace ?",
+              "options": [
+                "La liaison hydrogène",
+                "La liaison peptidique",
+                "La liaison ionique pure",
+                "La force nucléaire forte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les liaisons hydrogène entre l'atome H d'une molécule d'eau et l'atome O d'une voisine confèrent à l'eau sa grande cohésion."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Masse volumique et caractérisation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles unités sont valides pour exprimer une masse volumique ?",
+              "options": ["kg/m³", "g/cm³", "g/mL", "N/kg"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La masse volumique est le quotient d'une masse par un volume (kg/m³, g/cm³, g/mL). N/kg est l'unité du champ de pesanteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la relation définissant la masse volumique ρ d'un échantillon de masse m et de volume V ?",
+              "options": ["ρ = m / V", "ρ = m × V", "ρ = V / m", "ρ = m + V"],
+              "correctAnswers": [0],
+              "explanation": "La masse volumique est la masse par unité de volume : ρ = m / V."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la masse volumique de l'eau liquide pure à 20 °C ?",
+              "options": [
+                "1,0 g/cm³ (ou 1000 kg/m³)",
+                "0,1 g/cm³",
+                "10 g/cm³",
+                "100 kg/m³"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau pure a une masse volumique de 1 g/cm³, soit 1 g/mL ou 1000 kg/m³ (1 kg par litre)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on la densité d d'un liquide par rapport à l'eau ?",
+              "options": [
+                "d = ρ(liquide) / ρ(eau)",
+                "d = ρ(liquide) × ρ(eau)",
+                "d = ρ(eau) / ρ(liquide)",
+                "d = m(liquide) × V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La densité d'un liquide ou solide est le rapport de sa masse volumique sur celle de l'eau pure."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est l'unité de la densité d ?",
+              "options": [
+                "Elle est sans unité (grandeur adimensionnelle)",
+                "kg/m³",
+                "g/cm³",
+                "L/kg"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Étant le rapport de deux grandeurs de même unité, la densité n'a pas d'unité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un morceau de métal pèse 54 g et occupe un volume de 20 cm³. Quelle est sa masse volumique ?",
+              "options": ["2,7 g/cm³", "0,37 g/cm³", "1080 g/cm³", "74 g/cm³"],
+              "correctAnswers": [0],
+              "explanation": "ρ = m / V = 54 / 20 = 2,7 g/cm³ (ce qui correspond à l'aluminium)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un corps solide flotte sur l'eau si sa densité d par rapport à l'eau est :",
+              "options": [
+                "Inférieure à 1",
+                "Supérieure à 1",
+                "Égale à 2",
+                "Négative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un objet flotte sur l'eau si sa masse volumique est plus faible que celle de l'eau, soit d < 1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'huile d'olive a une densité de 0,92. Dans un mélange avec de l'eau pure, l'huile non miscible va :",
+              "options": [
+                "Surnager au-dessus de l'eau",
+                "Couler au fond du verre",
+                "Se dissoudre complètement",
+                "Se vaporiser instantanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins dense que l'eau (0,92 < 1), l'huile surnage et forme la phase supérieure."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la masse de 2,5 litres d'eau liquide pure ?",
+              "options": ["2,5 kg", "1,0 kg", "5,0 kg", "0,25 kg"],
+              "correctAnswers": [0],
+              "explanation": "Puisque la masse volumique de l'eau est de 1 kg/L, 2,5 L d'eau pèsent 2,5 kg."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment mesure-t-on le volume d'un solide de forme irrégulière en laboratoire ?",
+              "options": [
+                "Par déplacement d'eau dans une éprouvette graduée",
+                "En pesant le solide avec une balance de précision",
+                "En mesurant sa température avec un capteur",
+                "En le chauffant jusqu'à ébullition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On immerge le solide dans une éprouvette contenant de l'eau et on mesure la différence de volume."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "La mole et le nombre d'Avogadro",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernant la mole sont correctes ?",
+              "options": [
+                "C'est l'unité de quantité de matière dans le Système International",
+                "Son symbole officiel est 'mol'",
+                "Elle contient environ 6,022 × 10²³ entités chimiques",
+                "Elle équivaut obligatoirement à un volume de 1 litre"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La mole (symbole mol) est l'unité de quantité de matière regroupant N_A entités (environ 6,022 × 10²³)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la valeur approchée de la constante d'Avogadro N_A ?",
+              "options": [
+                "6,02 × 10²³ mol⁻¹",
+                "1,60 × 10⁻¹⁹ mol⁻¹",
+                "3,00 × 10⁸ mol⁻¹",
+                "9,81 mol⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La constante d'Avogadro vaut environ N_A = 6,022 × 10²³ mol⁻¹."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle relation relie le nombre total d'entités N, la quantité de matière n et la constante d'Avogadro N_A ?",
+              "options": [
+                "N = n × N_A",
+                "N = n / N_A",
+                "N = N_A / n",
+                "N = n + N_A"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nombre d'entités est le produit de la quantité de matière en moles par le nombre d'entités par mole : N = n × N_A."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien d'atomes contient un échantillon de 2,0 moles d'atomes de fer ?",
+              "options": [
+                "Environ 1,2 × 10²⁴ atomes",
+                "Environ 6,0 × 10²³ atomes",
+                "Environ 3,0 × 10²³ atomes",
+                "Exactement 2 atomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "N = n × N_A = 2,0 × 6,02 × 10²³ ≈ 1,2 × 10²⁴ atomes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien de moles représente un échantillon contenant 3,01 × 10²³ molécules d'eau ?",
+              "options": ["0,50 mol", "1,0 mol", "2,0 mol", "3,0 mol"],
+              "correctAnswers": [0],
+              "explanation": "n = N / N_A = (3,01 × 10²³) / (6,02 × 10²³) = 0,50 mol."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi les chimistes regroupent-ils les atomes par paquets d'une mole ?",
+              "options": [
+                "Parce que les atomes sont trop petits et nombreux pour être dénombrés individuellement",
+                "Pour modifier la masse des molécules",
+                "Pour neutraliser la radioactivité des éléments",
+                "Parce que la loi impose de peser en litres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mole permet de passer de l'échelle microscopique inaccessible à l'échelle macroscopique mesurable au laboratoire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans 1 mole de molécules de dioxyde de carbone CO₂, combien y a-t-il de moles d'atomes d'oxygène ?",
+              "options": [
+                "2 moles d'atomes d'oxygène",
+                "1 mole d'atomes d'oxygène",
+                "3 moles d'atomes d'oxygène",
+                "0,5 mole d'atomes d'oxygène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque molécule de CO₂ contenant 2 atomes d'oxygène, 1 mole de CO₂ contient 2 moles d'atomes O."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle quantité de matière correspond à un lot de 1,204 × 10²⁴ électrons ?",
+              "options": ["2,0 mol", "1,0 mol", "4,0 mol", "0,5 mol"],
+              "correctAnswers": [0],
+              "explanation": "n = N / N_A = 1,204 × 10²⁴ / 6,022 × 10²³ = 2,0 mol."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À quel type d'entités peut-on appliquer la notion de mole ?",
+              "options": [
+                "Aux atomes, molécules, ions et électrons",
+                "Uniquement aux atomes solides",
+                "Uniquement aux liquides purs",
+                "Uniquement aux gaz parfaits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mole est une unité de comptage universelle pour toute particule ou entité élémentaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si l'on dispose de 0,10 mol d'atomes d'or, combien d'atomes cela représente-t-il ?",
+              "options": [
+                "6,02 × 10²² atomes",
+                "6,02 × 10²⁴ atomes",
+                "6,02 × 10²³ atomes",
+                "6,02 × 10²¹ atomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "N = n × N_A = 0,10 × 6,02 × 10²³ = 6,02 × 10²² atomes."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Masse molaire et quantité de matière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont exactes à propos de la masse molaire M ?",
+              "options": [
+                "Elle s'exprime usuellement en g/mol (ou g·mol⁻¹)",
+                "Elle représente la masse d'une mole d'entités chimiques",
+                "Elle se calcule pour une molécule en sommant les masses molaires atomiques",
+                "Elle est toujours égale au numéro atomique Z"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La masse molaire (en g/mol) est la masse d'une mole. Pour une molécule, elle est la somme des masses molaires de ses atomes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle formule relie la quantité de matière n, la masse m et la masse molaire M ?",
+              "options": ["n = m / M", "n = m × M", "n = M - m", "n = m + M"],
+              "correctAnswers": [0],
+              "explanation": "La quantité de matière en moles est obtenue en divisant la masse par la masse molaire : n = m / M."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Avec M(H) = 1,0 g/mol et M(O) = 16,0 g/mol, quelle est la masse molaire de l'eau H₂O ?",
+              "options": [
+                "18,0 g/mol",
+                "17,0 g/mol",
+                "34,0 g/mol",
+                "16,0 g/mol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "M(H₂O) = 2 × M(H) + M(O) = 2 × 1,0 + 16,0 = 18,0 g/mol."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la masse molaire du dioxyde de carbone CO₂ (M(C) = 12 g/mol, M(O) = 16 g/mol) ?",
+              "options": [
+                "44,0 g/mol",
+                "28,0 g/mol",
+                "40,0 g/mol",
+                "32,0 g/mol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "M(CO₂) = 12,0 + 2 × 16,0 = 44,0 g/mol."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la masse d'un échantillon de 2,0 moles d'eau pure (M = 18 g/mol) ?",
+              "options": ["36 g", "18 g", "9,0 g", "72 g"],
+              "correctAnswers": [0],
+              "explanation": "m = n × M = 2,0 mol × 18 g/mol = 36 g."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de moles contient un bloc de 24 g de carbone pur (M(C) = 12 g/mol) ?",
+              "options": ["2,0 mol", "0,50 mol", "12 mol", "288 mol"],
+              "correctAnswers": [0],
+              "explanation": "n = m / M = 24 / 12 = 2,0 mol."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Avec M(NaCl) = 58,5 g/mol, quelle quantité de matière représente 117 g de sel ?",
+              "options": ["2,0 mol", "1,0 mol", "0,50 mol", "4,0 mol"],
+              "correctAnswers": [0],
+              "explanation": "n = m / M = 117 / 58,5 = 2,0 mol."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle formule donne la masse m en fonction de la masse volumique ρ et du volume V ?",
+              "options": ["m = ρ × V", "m = ρ / V", "m = V / ρ", "m = ρ + V"],
+              "correctAnswers": [0],
+              "explanation": "Comme ρ = m / V, on a m = ρ × V."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on la quantité de matière n d'un liquide à partir de son volume V, sa masse volumique ρ et sa masse molaire M ?",
+              "options": [
+                "n = (ρ × V) / M",
+                "n = (ρ × M) / V",
+                "n = (M × V) / ρ",
+                "n = ρ / (V × M)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On calcule d'abord m = ρ × V, puis on divise par la masse molaire : n = m / M = (ρ × V) / M."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la masse molaire du glucose C₆H₁₂O₆ (M(C)=12, M(H)=1, M(O)=16 g/mol) ?",
+              "options": ["180 g/mol", "90 g/mol", "360 g/mol", "150 g/mol"],
+              "correctAnswers": [0],
+              "explanation": "M = 6 × 12 + 12 × 1 + 6 × 16 = 72 + 12 + 96 = 180 g/mol."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Changements d'état",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les états de la matière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés caractérisent l'état solide à l'échelle macroscopique ?",
+              "options": [
+                "Il possède une forme propre",
+                "Il possède un volume propre",
+                "Il est quasiment incompressible",
+                "Il occupe tout le volume du récipient"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Un solide possède une forme et un volume propres et ne peut être facilement comprimé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle propriété macroscopique caractérise un gaz ?",
+              "options": [
+                "Il est compressible et expansible",
+                "Il possède une forme propre indéformable",
+                "Sa surface libre est plane et horizontale",
+                "Il a un volume fixe impossible à réduire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un gaz n'a ni forme propre ni volume propre : il occupe tout le volume offert et se comprime facilement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment se comporte la surface libre d'un liquide au repos dans un récipient ?",
+              "options": [
+                "Elle est plane et horizontale",
+                "Elle est toujours courbée en sphère",
+                "Elle suit la pente du récipient",
+                "Elle est verticale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au repos sous l'effet de la pesanteur, la surface libre d'un liquide est plane et horizontale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À l'échelle microscopique, comment sont disposées les molécules dans un solide cristallin ?",
+              "options": [
+                "Compactes et ordonnées selon un réseau régulier",
+                "Dispersées et désordonnées",
+                "Libres de glisser à très grande vitesse",
+                "En mouvement chaotique permanent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un solide cristallin, les entités chimiques sont empilées de manière très compacte et ordonnée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on l'état liquide à l'échelle microscopique ?",
+              "options": [
+                "Compact et désordonné",
+                "Dispersé et ordonné",
+                "Lacunaire et figé",
+                "Rigide et périodique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'état liquide, les molécules sont au contact (compact) mais glissent les unes sur les autres (désordonné)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on l'état gazeux à l'échelle microscopique ?",
+              "options": [
+                "Dispersé et désordonné",
+                "Compact et ordonné",
+                "Compact et désordonné",
+                "Rigide et immobile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un gaz, les molécules sont très éloignées les unes des autres (dispersé) et très agitées (désordonné)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quels états de la matière regroupe le terme de fluide ?",
+              "options": [
+                "Les liquides et les gaz",
+                "Les solides et les liquides",
+                "Uniquement les gaz",
+                "Les solides déformables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un fluide est un corps qui n'a pas de forme propre et peut s'écouler : les liquides et les gaz."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Peut-on comprimer sensiblement un liquide comme l'eau à température ambiante ?",
+              "options": [
+                "Non, un liquide est pratiquement incompressible",
+                "Oui, on peut diviser son volume par deux aisément",
+                "Oui, si on agite le récipient",
+                "Seulement s'il est chauffé à 90 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les molécules étant déjà très rapprochées, les liquides sont très peu compressibles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel état épouse la forme du récipient tout en conservant son propre volume ?",
+              "options": [
+                "L'état liquide",
+                "L'état gazeux",
+                "L'état solide",
+                "L'état plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un liquide a un volume propre mais pas de forme propre : il s'adapte au fond de son récipient."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel état de la matière présente la plus grande vitesse moyenne pour les molécules d'un corps pur ?",
+              "options": [
+                "L'état gazeux",
+                "L'état liquide",
+                "L'état solide",
+                "L'état vitreux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À température équivalente ou supérieure, l'agitation et la vitesse des molécules sont maximales dans le gaz."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Vocabulaire des changements d'état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels changements d'état nécessitent un apport d'énergie thermique (endothermiques) ?",
+              "options": [
+                "La fusion",
+                "La vaporisation",
+                "La sublimation",
+                "La solidification"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La fusion, la vaporisation et la sublimation augmentent le désordre et absorbent de la chaleur du milieu extérieur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le passage de l'état solide à l'état liquide ?",
+              "options": [
+                "La fusion",
+                "La solidification",
+                "La liquéfaction",
+                "La condensation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fusion est la transition de phase du solide vers le liquide (exemple : un glaçon qui fond)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le passage de l'état liquide à l'état solide ?",
+              "options": [
+                "La solidification",
+                "La vaporisation",
+                "La sublimation",
+                "La liquéfaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solidification est le changement d'état d'un liquide qui devient solide."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le passage direct de l'état solide à l'état gazeux sans passer par le liquide ?",
+              "options": [
+                "La sublimation",
+                "La vaporisation",
+                "La fusion",
+                "L'ébullition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sublimation est le passage direct du solide au gaz (exemple : la neige carbonique à l'air libre)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel terme désigne le passage de l'état gazeux à l'état liquide ?",
+              "options": [
+                "La liquéfaction",
+                "L'évaporation",
+                "La sublimation",
+                "La solidification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liquéfaction (ou condensation liquide) est le passage d'un gaz à l'état liquide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le passage direct de l'état gazeux à l'état solide sans phase liquide ?",
+              "options": [
+                "La condensation solide (ou déposition)",
+                "La vaporisation",
+                "La fusion",
+                "La liquéfaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La condensation solide (ou déposition) transforme directement un gaz en solide (exemple : formation du givre)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre évaporation et ébullition ?",
+              "options": [
+                "L'évaporation a lieu en surface à toute température, l'ébullition dans toute la masse à température fixe",
+                "L'évaporation concerne les solides et l'ébullition les liquides",
+                "L'évaporation libère de la chaleur et l'ébullition en absorbe",
+                "Ce sont deux mots strictement synonymes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'évaporation est un phénomène de surface progressif ; l'ébullition produit des bulles dans tout le liquide à température fixée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel changement d'état se produit lorsqu'une flaque d'eau sèche au soleil ?",
+              "options": [
+                "La vaporisation (par évaporation)",
+                "La liquéfaction",
+                "La sublimation",
+                "La solidification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau liquide s'évapore en surface pour passer à l'état de vapeur d'eau dans l'air ambiant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le passage de l'état liquide à l'état gazeux ?",
+              "options": [
+                "La vaporisation",
+                "La condensation",
+                "La solidification",
+                "La fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vaporisation désigne la transition de l'état liquide vers l'état gazeux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La buée apparaissant sur une vitre froide est issue de :",
+              "options": [
+                "La liquéfaction de la vapeur d'eau contenue dans l'air chaud",
+                "La solidification de l'eau liquide de l'air",
+                "La fusion de la vitre",
+                "La sublimation de la poussière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vapeur d'eau gazeuse présente dans l'air se refroidit au contact de la vitre et se liquéfie en microgouttelettes."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Courbes de changement d'état d'un corps pur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Que constate-t-on lors du changement d'état d'un corps pur sous pression constante ?",
+              "options": [
+                "La température reste constante durant toute la transition",
+                "La courbe de température présente un palier horizontal",
+                "Deux états physiques coexistent pendant le palier",
+                "La température augmente de façon continue sans s'arrêter"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Un corps pur à pression fixée change d'état à température constante, formant un palier thermique horizontal."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À pression atmosphérique normale (1013 hPa), à quelle température bout l'eau pure ?",
+              "options": ["100 °C", "0 °C", "50 °C", "120 °C"],
+              "correctAnswers": [0],
+              "explanation": "La température d'ébullition normale de l'eau pure est de 100 °C."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sous pression normale, à quelle température fond la glace d'eau pure ?",
+              "options": ["0 °C", "100 °C", "-10 °C", "4 °C"],
+              "correctAnswers": [0],
+              "explanation": "La température de fusion de l'eau pure sous 1 atm est de 0 °C."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur un graphique température-temps, que signifie une portion rigoureusement horizontale pour un corps pur ?",
+              "options": [
+                "Un palier de changement d'état",
+                "Un arrêt de chauffage",
+                "La présence d'un seul état physique",
+                "Une défaillance de mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La portion horizontale traduit la constance de la température pendant la coexistence des deux phases lors du changement d'état."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si l'on continue de chauffer de l'eau pure qui bout à 100 °C à l'air libre, que fait sa température ?",
+              "options": [
+                "Elle reste bloquée à 100 °C tant qu'il reste du liquide",
+                "Elle monte immédiatement à 150 °C",
+                "Elle redescend à 50 °C",
+                "Elle oscille constamment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute l'énergie thermique apportée sert à vaporiser l'eau sans faire grimper sa température."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la température de fusion ou d'ébullition est-elle une propriété physique caractéristique ?",
+              "options": [
+                "Elle permet d'identifier une espèce chimique pure sous une pression donnée",
+                "Elle est identique pour toutes les molécules connues",
+                "Elle ne dépend jamais de la pression extérieure",
+                "Elle change si la masse de l'échantillon double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque espèce chimique pure possède des températures de changement d'état bien précises qui la caractérisent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Au sommet d'une haute montagne où la pression de l'air est plus faible, l'eau liquide pure bout :",
+              "options": [
+                "À une température inférieure à 100 °C",
+                "À une température supérieure à 100 °C",
+                "Exactement à 100 °C quoi qu'il arrive",
+                "Elle ne peut plus jamais bouillir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand la pression diminue, les molécules s'échappent plus facilement : la température d'ébullition s'abaisse (environ 85 °C au mont Blanc)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans un autocuiseur (cocotte-minute) fermé où la pression monte à 2 bars :",
+              "options": [
+                "L'eau bout à environ 120 °C, ce qui cuit les aliments plus vite",
+                "L'eau bout à 80 °C",
+                "L'eau se transforme en glace",
+                "L'ébullition a lieu sans aucune vapeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'augmentation de pression retarde l'ébullition à 120 °C, permettant une cuisson plus rapide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pendant la solidification de l'eau pure à 0 °C sous 1 atm, que trouve-t-on dans le récipient ?",
+              "options": [
+                "Un mélange diphasique d'eau liquide et de glace solide",
+                "Uniquement de la glace",
+                "Uniquement de l'eau liquide",
+                "De la vapeur d'eau uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pendant le palier de solidification, le liquide et le solide coexistent en équilibre thermique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour un corps pur sous une pression donnée, la température de fusion est-elle égale à celle de solidification ?",
+              "options": [
+                "Oui, c'est exactement la même température d'équilibre",
+                "Non, la solidification a lieu 10 °C plus bas",
+                "Non, la fusion est toujours plus chaude",
+                "Seulement pour les métaux nobles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour un corps pur, la température de changement d'état liquide-solide est strictement identique dans les deux sens."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Changement d'état des mélanges",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies pour le changement d'état d'un mélange ?",
+              "options": [
+                "La température varie pendant la transformation",
+                "La courbe ne présente pas de palier horizontal parfait",
+                "La température de début de solidification dépend des proportions du mélange",
+                "Le mélange gèle obligatoirement à 0 °C"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Un mélange ne présente pas de palier horizontal de température ; le changement d'état s'étale sur une plage de température."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi sale-t-on les routes en hiver pour éviter le verglas ?",
+              "options": [
+                "L'eau salée gèle à une température inférieure à 0 °C",
+                "Le sel crée une réaction chimique inflammable",
+                "Le sel augmente la température de congélation de l'eau",
+                "Le sel fait bouillir la glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ajout de sel abaisse le point de congélation de l'eau en dessous de 0 °C, provoquant la fonte de la glace."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sur une courbe de solidification de l'eau salée, que constate-t-on lors de la congélation ?",
+              "options": [
+                "La température continue de diminuer progressivement",
+                "Un palier horizontal net à 0 °C",
+                "La température reste bloquée à 100 °C",
+                "La température remonte spontanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au fur et à mesure que l'eau pure gèle, le liquide restant devient plus concentré en sel et gèle à température de plus en plus basse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment évolue la température lors de l'ébullition d'un mélange eau-alcool ?",
+              "options": [
+                "Elle augmente continuellement au cours de l'ébullition",
+                "Elle reste bloquée à 78 °C",
+                "Elle reste bloquée à 100 °C",
+                "Elle chute immédiatement à 0 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'alcool plus volatil s'évapore plus vite, modifiant la composition du liquide et faisant monter la température d'ébullition."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle méthode de séparation repose sur la différence de température d'ébullition des composants d'un mélange liquide ?",
+              "options": [
+                "La distillation",
+                "La filtration",
+                "La décantation",
+                "Le tamisage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La distillation permet de séparer deux liquides miscibles en vaporisant puis condensant le constituant le plus volatil."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'air étant un mélange de diazote et dioxygène, sa liquéfaction s'effectue :",
+              "options": [
+                "Sur un intervalle de température sans palier unique",
+                "À une température unique et fixe de 0 °C",
+                "Sans aucun transfert thermique",
+                "À la même température que la fusion du fer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme pour tout mélange, le changement d'état de l'air s'étale sur une plage de température."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'observation d'un palier thermique net et horizontal lors de la fusion d'un solide indique qu'il s'agit :",
+              "options": [
+                "D'un corps pur",
+                "D'un mélange complexe",
+                "D'un plastique composite",
+                "D'une solution saturée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le palier horizontal à pression fixée est la signature expérimentale caractéristique d'un corps pur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lorsqu'on fait bouillir de l'eau salée dans une casserole, que devient la teneur en sel du liquide restant ?",
+              "options": [
+                "Elle augmente car seule l'eau s'évapore",
+                "Elle diminue car le sel s'échappe en premier",
+                "Elle reste inchangée",
+                "Le sel se transforme en gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau pure s'évapore sous forme de vapeur alors que le sel non volatil reste, concentrant la solution."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi le beurre se ramollit-il sur une large plage de température au lieu de fondre d'un coup ?",
+              "options": [
+                "Parce que c'est un mélange complexe de nombreuses matières grasses et d'eau",
+                "Parce qu'il n'obéit pas aux lois de la physique",
+                "Parce qu'il ne contient pas d'atomes",
+                "Parce qu'il est constitué d'un seul corps pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le beurre est un mélange d'acides gras ayant chacun leur point de fusion, d'où une fusion progressive."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le rôle du liquide antigel dans le circuit d'un moteur de voiture ?",
+              "options": [
+                "Abaisser la température de congélation et élever la température d'ébullition",
+                "Faire geler l'eau dès 5 °C",
+                "Accélérer l'évaporation de l'eau",
+                "Remplacer l'huile moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mélange eau-antigel évite le gel en hiver (jusqu'à -25 °C) et retarde l'ébullition en été."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Énergie thermique : endothermique et exothermique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels changements d'état libèrent de l'énergie thermique vers le milieu extérieur (exothermiques) ?",
+              "options": [
+                "La solidification",
+                "La liquéfaction",
+                "La condensation solide",
+                "La vaporisation"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Lorsqu'un corps passe à un état plus condensé et ordonné, il libère de la chaleur : la transformation est exothermique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une transformation physique qui absorbe de la chaleur du milieu extérieur ?",
+              "options": [
+                "Endothermique",
+                "Exothermique",
+                "Athermique",
+                "Isothermique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une transformation est endothermique lorsqu'elle gagne de l'énergie thermique fournie par l'extérieur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lors de la fusion d'un glaçon, que fait le glaçon sur le plan thermique ?",
+              "options": [
+                "Il absorbe de l'énergie thermique de son environnement",
+                "Il fournit de l'énergie thermique à son environnement",
+                "Il ne fait aucun échange thermique",
+                "Il détruit de la chaleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour briser l'ordre de son réseau cristallin solide, le glaçon prélève de l'énergie thermique au milieu extérieur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi a-t-on une sensation de froid en sortant mouillé d'une baignade ?",
+              "options": [
+                "L'eau qui s'évapore absorbe la chaleur de notre peau",
+                "L'eau se solidifie sur notre corps",
+                "L'air chaud extrait nos électrons",
+                "L'eau liquide nous injecte du froid"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'évaporation de l'eau est endothermique : elle puise l'énergie thermique directement sur la peau, la refroidissant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lorsqu'un gaz se liquéfie pour devenir liquide, son énergie thermique échangée avec l'extérieur est :",
+              "options": [
+                "Cédée au milieu extérieur (Q < 0)",
+                "Absorbée du milieu extérieur (Q > 0)",
+                "Toujours rigoureusement nulle",
+                "Transformée en protons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liquéfaction est exothermique : le gaz cède de l'énergie thermique au milieu environnant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans la convention thermodynamique, quel est le signe de l'énergie Q reçue par le système lors d'une fusion ?",
+              "options": [
+                "Q > 0 (positive)",
+                "Q < 0 (négative)",
+                "Q = 0",
+                "Q est indéfini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute énergie reçue par le système est comptabilisée positivement (Q > 0)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans la convention thermodynamique, quel est le signe de l'énergie Q lors d'une solidification pour le système ?",
+              "options": [
+                "Q < 0 (négative)",
+                "Q > 0 (positive)",
+                "Q = 0",
+                "Q est infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système cède de la chaleur à l'extérieur lors de la solidification, donc son énergie échangée est négative (Q < 0)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi les arboriculteurs arrosent-ils les vergers d'eau lors de nuits de gel printanier ?",
+              "options": [
+                "En gelant, l'eau libère de la chaleur qui maintient les bourgeons à 0 °C",
+                "L'eau chaude étouffe le vent",
+                "La glace absorbe la lumière de la lune",
+                "L'eau empêche les bourgeons de respirer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solidification de l'eau est exothermique : elle cède de la chaleur aux fleurs et les protège des températures destructrices."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La transpiration corporelle permet de refroidir l'organisme grâce à :",
+              "options": [
+                "La vaporisation endothermique de la sueur",
+                "La solidification de la sueur",
+                "La fusion des cellules",
+                "La sublimation des sels minéraux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En s'évaporant, la sueur emporte une grande quantité de chaleur, évitant ainsi le coup de chaleur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que fait le fluide frigorigène dans le condenseur situé à l'arrière d'un réfrigérateur domestique ?",
+              "options": [
+                "Il se liquéfie en évacuant de la chaleur dans la pièce",
+                "Il s'évapore en créant du froid extérieur",
+                "Il gèle sous forme de blocs de glace",
+                "Il se transforme en électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le condenseur arrière, le fluide gazeux se liquéfie et rejette de l'énergie thermique dans la cuisine."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Énergie massique de changement d'état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernant l'énergie massique de changement d'état L sont exactes ?",
+              "options": [
+                "Elle s'exprime dans le Système International en J/kg",
+                "Elle représente l'énergie échangée pour changer l'état d'un kilogramme d'espèce",
+                "Elle dépend de la nature de l'espèce chimique",
+                "Elle est toujours égale à 0 pour les corps purs"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L (en J/kg) correspond à l'énergie thermique nécessaire pour faire changer d'état 1 kg d'un corps pur à température constante."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle formule donne l'énergie thermique Q échangée lors du changement d'état d'une masse m de corps pur ?",
+              "options": ["Q = m × L", "Q = m / L", "Q = L / m", "Q = m + L"],
+              "correctAnswers": [0],
+              "explanation": "L'énergie thermique de changement d'état est proportionnelle à la masse : Q = m × L."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est l'unité légale de l'énergie thermique Q dans le Système International ?",
+              "options": [
+                "Le joule (J)",
+                "Le watt (W)",
+                "Le degré Celsius (°C)",
+                "Le newton (N)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute quantité d'énergie ou de chaleur s'exprime en joules (J) dans le Système International."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'énergie massique de fusion de la glace vaut L_fus = 334 kJ/kg. Quelle énergie faut-il pour fondre 2 kg de glace à 0 °C ?",
+              "options": ["668 kJ", "334 kJ", "167 kJ", "0 kJ"],
+              "correctAnswers": [0],
+              "explanation": "Q = m × L_fus = 2 kg × 334 kJ/kg = 668 kJ."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle relation lie l'énergie massique de solidification L_sol et celle de fusion L_fus pour un même corps ?",
+              "options": [
+                "L_sol = - L_fus",
+                "L_sol = L_fus",
+                "L_sol = 1 / L_fus",
+                "L_sol = 2 × L_fus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solidification cède exactement la même quantité d'énergie que la fusion en absorbe : L_sol = - L_fus."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle énergie est absorbée lors de la vaporisation de 0,5 kg d'eau à 100 °C (L_vap = 2260 kJ/kg) ?",
+              "options": ["1130 kJ", "2260 kJ", "4520 kJ", "565 kJ"],
+              "correctAnswers": [0],
+              "explanation": "Q = m × L_vap = 0,5 kg × 2260 kJ/kg = 1130 kJ."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi l'énergie massique de vaporisation de l'eau (2260 kJ/kg) est-elle remarquablement élevée ?",
+              "options": [
+                "Parce qu'il faut rompre de nombreuses liaisons hydrogène très fortes",
+                "Parce que l'eau est radioactive",
+                "Parce que les molécules d'eau sont les plus lourdes de la nature",
+                "Parce que l'eau ne contient aucun électron"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les molécules d'eau liquide sont fortement liées par des ponts hydrogène, dont la rupture totale exige beaucoup d'énergie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle masse d'eau liquide à 0 °C peut-on congeler si un réfrigérateur extrait 334 kJ (L_fus = 334 kJ/kg) ?",
+              "options": ["1,0 kg", "2,0 kg", "0,5 kg", "10 kg"],
+              "correctAnswers": [0],
+              "explanation": "m = Q / L = 334 / 334 = 1,0 kg."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'énergie massique de vaporisation de l'éthanol est 840 kJ/kg, quelle énergie faut-il pour vaporiser 100 g (0,10 kg) d'éthanol ?",
+              "options": ["84 kJ", "840 kJ", "8,4 kJ", "8400 kJ"],
+              "correctAnswers": [0],
+              "explanation": "Q = m × L = 0,10 kg × 840 kJ/kg = 84 kJ."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pendant le changement d'état d'un corps pur, à quoi sert l'énergie thermique transférée ?",
+              "options": [
+                "À modifier les liaisons intermoléculaires sans changer la température",
+                "À augmenter la vitesse des atomes",
+                "À fabriquer de nouveaux atomes",
+                "À détruire la masse du système"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie sert exclusivement à réorganiser l'empilement microscopique et à briser/créer les interactions intermoléculaires."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Modèle microscopique et agitation thermique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Qu'advient-il des molécules d'un liquide lorsqu'on augmente sa température sans changer d'état ?",
+              "options": [
+                "Leur agitation thermique augmente",
+                "Leur vitesse moyenne s'accroît",
+                "Leur énergie cinétique microscopique augmente",
+                "Leur composition atomique interne est détruite"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La température mesure le niveau d'agitation thermique : la vitesse et l'énergie cinétique des molécules augmentent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que se passe-t-il au niveau moléculaire lors de la fusion d'un solide ?",
+              "options": [
+                "L'agitation thermique disloque le réseau ordonné et les molécules glissent",
+                "Les atomes éclatent en particules élémentaires",
+                "Les molécules grossissent de volume",
+                "Toutes les molécules s'immobilisent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'agitation thermique surmonte les forces de cohésion du réseau cristallin solide : les entités deviennent mobiles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À l'échelle microscopique, quelle est la cause de la pression exercée par un gaz sur une paroi ?",
+              "options": [
+                "Les chocs innombrables des molécules de gaz contre la paroi",
+                "La force d'attraction gravitationnelle des molécules",
+                "La répulsion électrostatique des noyaux atomiques",
+                "Le poids statique du récipient"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pression est le résultat macroscopique des collisions incessantes des particules de gaz sur la surface."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans quel état les interactions attractives entre molécules sont-elles les plus fortes ?",
+              "options": [
+                "L'état solide",
+                "L'état liquide",
+                "L'état gazeux",
+                "L'état de vapeur surchauffée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le solide, les molécules sont très proches et maintenues par des forces d'attraction maximales."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'une vaporisation, que deviennent les molécules du liquide ?",
+              "options": [
+                "Elles se séparent et deviennent indépendantes les unes des autres",
+                "Elles fusionnent en une seule macromolécule",
+                "Elles perdent tous leurs électrons",
+                "Elles se transforment en atomes différents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les molécules s'affranchissent des liaisons intermoléculaires et se dispersent dans l'espace gazeux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le zéro absolu (0 Kelvin, soit -273,15 °C) correspond microscopiquement à :",
+              "options": [
+                "L'état d'agitation thermique minimale théorique de la matière",
+                "La vitesse maximale des électrons",
+                "L'ébullition spontanée de l'eau",
+                "La température du Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au zéro absolu, le mouvement d'agitation thermique des atomes et molécules est minimal."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi un gaz occupe-t-il un volume immensément plus grand que le même corps à l'état liquide ?",
+              "options": [
+                "Parce qu'il y a un grand espace vide entre les molécules de gaz",
+                "Parce que les molécules gonflent considérablement",
+                "Parce que le nombre d'atomes est multiplié par mille",
+                "Parce que le gaz attire l'air extérieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un gaz, la distance moyenne entre deux molécules est très grande devant leur propre taille."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel phénomène microscopique s'oppose aux forces de cohésion de la matière lorsqu'on chauffe un corps ?",
+              "options": [
+                "L'agitation thermique",
+                "La gravitation universelle",
+                "La force nucléaire forte",
+                "La masse molaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'agitation thermique tend à séparer et désordonner les molécules, combattant les forces d'attraction."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lors de la solidification, le passage des molécules du désordre à l'ordre s'accompagne de :",
+              "options": [
+                "La formation d'interactions et de liaisons intermoléculaires stables",
+                "L'explosion des atomes",
+                "Une augmentation de la vitesse des particules",
+                "Une perte de la charge électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les molécules ralentissent et se fixent dans les positions d'équilibre du réseau cristallin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une molécule d'eau dans la vapeur est-elle chimiquement identique à une molécule d'eau dans la glace ?",
+              "options": [
+                "Oui, c'est rigoureusement la même molécule H₂O",
+                "Non, la vapeur ne contient que des atomes H",
+                "Non, la glace est formée d'ions séparés",
+                "Non, la molécule change de formule chimique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le changement d'état est une transformation physique : la nature des molécules H₂O reste strictement inchangée."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Conservation de la masse et variation de volume",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles grandeurs sont rigoureusement conservées lors du changement d'état d'un corps pur en système fermé ?",
+              "options": [
+                "La masse totale",
+                "Le nombre de molécules",
+                "Le volume total",
+                "La nature des molécules"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La masse, le nombre et la nature des molécules se conservent. Le volume, lui, varie généralement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si l'on fait fondre 150 g de glaçons dans une bouteille fermée, quelle est la masse d'eau liquide obtenue ?",
+              "options": ["150 g", "135 g", "165 g", "75 g"],
+              "correctAnswers": [0],
+              "explanation": "La masse se conserve rigoureusement lors de tout changement d'état : m = 150 g."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle particularité remarquable présente l'eau lors de sa solidification ?",
+              "options": [
+                "Son volume augmente (dilatation d'environ 9 %)",
+                "Son volume diminue de moitié",
+                "Son volume reste rigoureusement inchangé",
+                "Sa masse double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau fait exception : la structure cristalline hexagonale de la glace occupe plus d'espace que l'eau liquide."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Puisque la glace a un volume supérieur à celui de l'eau liquide pour une même masse, sa masse volumique est :",
+              "options": [
+                "Inférieure à celle de l'eau liquide (ce qui explique qu'elle flotte)",
+                "Supérieure à celle de l'eau liquide",
+                "Égale à celle de l'eau liquide",
+                "Nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme ρ = m / V, un volume plus grand implique une masse volumique plus faible (environ 0,92 g/cm³ contre 1,0 g/cm³)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi une bouteille en verre pleine d'eau à ras bord et fermée éclate-t-elle au congélateur ?",
+              "options": [
+                "L'augmentation de volume de l'eau en gelant exerce une forte pression mécanique",
+                "Le verre rétrécit brutalement de 80 %",
+                "La glace dissout le verre",
+                "L'eau perd toute sa masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dilatation de l'eau lors de la congélation (+9 % de volume) fait éclater les parois rigides de la bouteille."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour la majorité des substances chimiques (hors eau), comment varie le volume lors de la fusion solide -> liquide ?",
+              "options": [
+                "Le volume augmente légèrement",
+                "Le volume diminue fortement",
+                "Le volume est divisé par cent",
+                "Le volume devient nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour la plupart des corps purs, le liquide est légèrement moins dense que le solide et occupe donc un volume plus grand."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de fois environ le volume de la vapeur d'eau est-il plus grand que celui de l'eau liquide à 100 °C et 1 atm ?",
+              "options": [
+                "Environ 1600 à 1700 fois plus grand",
+                "2 fois plus grand",
+                "10 fois plus grand",
+                "100 000 fois plus grand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 litre d'eau liquide se transforme en environ 1700 litres de vapeur d'eau à pression atmosphérique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si 1,0 kg d'eau liquide s'évapore intégralement dans une enceinte étanche, quelle est la masse de la vapeur d'eau obtenue ?",
+              "options": [
+                "1,0 kg",
+                "0,10 kg",
+                "10 kg",
+                "0 kg car les gaz ne pèsent rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La masse se conserve intégralement : 1 kg d'eau liquide donne 1 kg de vapeur d'eau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment varie la masse volumique de l'air chaud par rapport à l'air froid à pression égale ?",
+              "options": [
+                "Elle diminue car l'air chaud se dilate",
+                "Elle augmente car l'air s'alourdit",
+                "Elle reste identique",
+                "Elle devient nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air chaud se dilate (volume plus grand pour la même masse), sa masse volumique diminue : il s'élève (principe de la montgolfière)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si un glaçon flottant dans un verre d'eau fond complètement, que fait le niveau d'eau (en négligeant l'évaporation) ?",
+              "options": [
+                "Il reste strictement inchangé",
+                "Le verre déborde immédiatement",
+                "Le niveau baisse de moitié",
+                "Le verre se vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon la poussée d'Archimède, le volume de liquide résultant de la fonte de la glace est exactement égal au volume immergé du glaçon."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Changements d'état au quotidien et dans la nature",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles étapes du cycle naturel de l'eau correspondent à des changements d'état physique ?",
+              "options": [
+                "L'évaporation de l'eau des océans",
+                "La liquéfaction de la vapeur formant les gouttelettes des nuages",
+                "La solidification de l'eau en neige ou grêle",
+                "L'écoulement gravitaire de l'eau dans un fleuve"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'évaporation, la liquéfaction et la solidification sont des changements d'état physique. L'écoulement est un simple mouvement mécanique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment se forme la rosée matinale sur les végétaux ?",
+              "options": [
+                "Par liquéfaction de la vapeur d'eau de l'air au contact du sol refroidi",
+                "Par une averse venue de très haute altitude",
+                "Par transpiration des cailloux",
+                "Par solidification de l'oxygène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durant la nuit, le sol se refroidit et l'air à son contact atteint le point de rosée : la vapeur d'eau se liquéfie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment se forme le givre sur les pare-brises en hiver ?",
+              "options": [
+                "Par condensation solide directe de la vapeur d'eau sur la surface froide",
+                "Par gel d'une flaque liquide déjà présente",
+                "Par précipitation d'acide chlorhydrique",
+                "Par fusion de la neige"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vapeur d'eau gazeuse de l'air passe directement à l'état solide (cristaux de givre) au contact d'une vitre sous 0 °C."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi souffler sur une cuillère de soupe chaude permet-il de la refroidir plus vite ?",
+              "options": [
+                "Cela accélère l'évaporation superficielle qui emporte de l'énergie thermique",
+                "L'air des poumons contient des cristaux de glace",
+                "On solidifie la surface de la soupe",
+                "Le souffle annule la masse volumique du liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le souffle chasse l'air saturé en vapeur et favorise l'évaporation (endothermique), ce qui refroidit la soupe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En quoi consiste le procédé industriel de lyophilisation des aliments (café, herbes aromatiques) ?",
+              "options": [
+                "Congeler le produit puis sublimer la glace sous vide",
+                "Faire bouillir à 300 °C",
+                "Presser mécaniquement l'aliment sous un rouleau",
+                "Ajouter des solvants chimiques toxiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lyophilisation élimine l'eau par sublimation directe de la glace sous pression réduite, préservant la structure des aliments."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi des glaçons refroidissent-ils beaucoup plus un verre de soda qu'une même masse d'eau liquide à 0 °C ?",
+              "options": [
+                "La fusion de la glace absorbe une énorme énergie thermique supplémentaire (chaleur latente)",
+                "La glace contient des molécules d'azote",
+                "La glace détruit les sucres du soda",
+                "La glace émet un rayonnement réfrigérant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour fondre, chaque gramme de glace prélève 334 J au soda, ce qui le refroidit considérablement plus que de l'eau déjà liquide."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans l'atmosphère terrestre, les nuages sont principalement formés de :",
+              "options": [
+                "Minuscules gouttelettes d'eau liquide ou cristaux de glace en suspension",
+                "Vapeur d'eau totalement invisible",
+                "Fumées de combustion uniquement",
+                "Gaz carbonique pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vapeur d'eau est invisible : ce qu'on voit dans un nuage, ce sont des gouttelettes d'eau liquide ou de petits cristaux de glace."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel appareil domestique utilise l'évaporation et la liquéfaction d'un fluide en circuit fermé pour transférer de la chaleur ?",
+              "options": [
+                "Un réfrigérateur ou une pompe à chaleur",
+                "Un grille-pain électrique",
+                "Une lampe halogène",
+                "Un four à micro-ondes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cycle frigorifique exploite la vaporisation du fluide (qui absorbe de la chaleur) et sa liquéfaction (qui la rejette)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi le sel de déneigement devient-il inefficace lors de grands froids inférieurs à -15 °C ?",
+              "options": [
+                "La limite d'abaissement du point de congélation eau-sel est dépassée",
+                "Le sel se vaporise dans l'atmosphère",
+                "Le sel se transforme en liquide",
+                "La glace repousse chimiquement les grains de sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mélange eutectique eau-sel ne peut pas abaisser la température de fusion en dessous d'environ -21 °C."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle transition de phase subit la glace carbonique (dioxyde de carbone solide) à l'air libre ?",
+              "options": [
+                "Une sublimation directe en gaz CO₂ sans laisser de liquide",
+                "Une fusion en liquide visqueux",
+                "Une solidification",
+                "Une combustion instantanée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À pression ambiante, le CO₂ solide se sublime directement en gaz à -78,5 °C sans passer par l'état liquide."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilans d'énergie et applications thermiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un calorimètre idéal (système isolé thermiquement) contenant deux corps en contact :",
+              "options": [
+                "La somme des énergies thermiques échangées est nulle : Q₁ + Q₂ = 0",
+                "Le corps chaud cède de l'énergie au corps froid",
+                "À l'équilibre final, les deux corps ont la même température",
+                "L'énergie thermique globale est détruite"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Dans une enceinte calorifugée, l'énergie cédée par le corps chaud est intégralement reçue par le corps froid jusqu'à l'équilibre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle formule donne la quantité de chaleur sensible Q nécessaire pour élever la température d'une masse m sans changement d'état ?",
+              "options": [
+                "Q = m × c × (T_finale - T_initiale)",
+                "Q = m × L",
+                "Q = m / c",
+                "Q = c / (m × ΔT)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une variation de température sans changement d'état, Q = m × c × ΔT (avec c la capacité thermique massique)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si l'on mélange 100 g d'eau à 20 °C avec 100 g d'eau à 60 °C dans un calorimètre parfait, quelle sera la température finale ?",
+              "options": ["40 °C", "20 °C", "60 °C", "80 °C"],
+              "correctAnswers": [0],
+              "explanation": "Pour deux masses égales de même liquide, la température finale est la moyenne arithmétique : (20 + 60) / 2 = 40 °C."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le rôle essentiel d'un calorimètre en laboratoire ?",
+              "options": [
+                "Isoler thermiquement le système d'étude du milieu extérieur",
+                "Fournir du courant électrique continu",
+                "Augmenter la pression à 10 bars",
+                "Mesurer directement la vitesse de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ses parois isolantes évitent les pertes thermiques avec l'environnement pour permettre des bilans d'énergie précis."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien d'énergie faut-il pour chauffer 1,0 kg d'eau liquide de 20 °C à 100 °C (c_eau = 4180 J/(kg·K)) ?",
+              "options": ["334,4 kJ", "41,8 kJ", "4180 kJ", "83,6 kJ"],
+              "correctAnswers": [0],
+              "explanation": "Q = m × c × ΔT = 1,0 × 4180 × (100 - 20) = 4180 × 80 = 334 400 J = 334,4 kJ."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lorsqu'on apporte de la chaleur à de la glace déjà à 0 °C sous 1 atm, quelle formule régit l'énergie échangée pendant toute la fonte ?",
+              "options": [
+                "Q = m × L_fus",
+                "Q = m × c × ΔT",
+                "Q = m × g × h",
+                "Q = 1/2 × m × v²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À température constante pendant le palier de fusion, l'énergie absorbée est la chaleur latente Q = m × L_fus."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une bouilloire électrique de puissance P = 2000 W fonctionne pendant 60 s. Quelle énergie électrique fournit-elle ?",
+              "options": [
+                "120 000 J (soit 120 kJ)",
+                "2000 J",
+                "33,3 J",
+                "12 000 J"
+              ],
+              "correctAnswers": [0],
+              "explanation": "E = P × t = 2000 W × 60 s = 120 000 J = 120 kJ."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi une brûlure causée par de la vapeur d'eau à 100 °C est-elle beaucoup plus sévère qu'avec de l'eau liquide à 100 °C ?",
+              "options": [
+                "La vapeur libère son énorme énergie de liquéfaction sur la peau avant de refroidir",
+                "La vapeur d'eau est très acide",
+                "La vapeur d'eau contient du plasma",
+                "La vapeur traverse immédiatement les os"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En se liquéfiant sur la peau, la vapeur cède d'un coup son énergie de changement d'état (2260 kJ/kg), causant une brûlure profonde."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour transformer 1 kg de glace à -10 °C en vapeur à 110 °C, combien d'étapes de calcul thermique distinctes faut-il additionner ?",
+              "options": [
+                "5 étapes (3 échauffements et 2 changements d'état)",
+                "1 seule étape",
+                "2 étapes",
+                "3 étapes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1: échauffement glace, 2: fusion glace, 3: échauffement eau liquide, 4: vaporisation eau, 5: échauffement vapeur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lors d'un contact thermique spontané entre deux corps à températures différentes sans apport extérieur, la chaleur circule :",
+              "options": [
+                "Spontanément du corps le plus chaud vers le corps le plus froid",
+                "Spontanément du corps froid vers le corps chaud",
+                "Aléatoirement dans les deux sens",
+                "Uniquement si les corps sont métalliques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon le second principe de la thermodynamique, l'énergie thermique diffuse spontanément du corps à température plus élevée vers le corps plus froid."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

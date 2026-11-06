@@ -14,7 +14,7 @@ import { exchangeRatePlugin } from "./exchange-rate";
 import { frHolidaysPlugin } from "./fr-holidays";
 import { githubPlugin } from "./github";
 import { gitlabPublicPlugin } from "./gitlab-public";
-import { googlePlugin } from "./google";
+import { googleMapsPlugin } from "./google-maps";
 import { jiraPlugin } from "./jira";
 import { jsonToolboxPlugin } from "./json-toolbox";
 import { linearPlugin } from "./linear";
@@ -28,7 +28,6 @@ import { openFoodFactsPlugin } from "./open-food-facts";
 import { openLibraryPlugin } from "./open-library";
 import { openalexPlugin } from "./openalex";
 import { posthogPlugin } from "./posthog";
-import { quizzlyPlugin } from "./quizzly";
 import { resendPlugin } from "./resend";
 import { sentryPlugin } from "./sentry";
 import { sonarcloudPlugin } from "./sonarcloud";
@@ -41,6 +40,7 @@ import { vercelPlugin } from "./vercel";
 import { weatherPlugin } from "./weather";
 import { wikidataPlugin } from "./wikidata";
 import { worldBankPlugin } from "./world-bank";
+import { youtubePlugin } from "./youtube";
 import { zapierPlugin } from "./zapier";
 import type { PluginDefinition } from "./types";
 
@@ -58,7 +58,7 @@ export const PLUGIN_DEFINITIONS: PluginDefinition[] = [
   frHolidaysPlugin,
   githubPlugin,
   gitlabPublicPlugin,
-  googlePlugin,
+  googleMapsPlugin,
   jiraPlugin,
   jsonToolboxPlugin,
   linearPlugin,
@@ -72,7 +72,6 @@ export const PLUGIN_DEFINITIONS: PluginDefinition[] = [
   openLibraryPlugin,
   openalexPlugin,
   posthogPlugin,
-  quizzlyPlugin,
   resendPlugin,
   sentryPlugin,
   sonarcloudPlugin,
@@ -85,5 +84,6 @@ export const PLUGIN_DEFINITIONS: PluginDefinition[] = [
   weatherPlugin,
   wikidataPlugin,
   worldBankPlugin,
+  youtubePlugin,
   zapierPlugin,
 ];

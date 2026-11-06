@@ -1,0 +1,2678 @@
+{
+  "id": "terminale-svt-05",
+  "year": "terminale",
+  "subject": "svt",
+  "title": "Reproduction et hérédité",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Transmission",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Méiose et étapes de division",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles étapes font partie de la première division de la méiose (méiose réductionnelle) ?",
+              "options": [
+                "Prophase I",
+                "Anaphase II",
+                "Anaphase I",
+                "Télophase II"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La méiose réductionnelle comprend la prophase I, la métaphase I, l'anaphase I et la télophase I."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel événement caractéristique se produit pendant l'anaphase I de la méiose ?",
+              "options": [
+                "La séparation des chromosomes homologues",
+                "La séparation des chromatides sœurs",
+                "La réplication de l'ADN",
+                "La synthèse des histones"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anaphase I sépare les paires de chromosomes homologues sans rupture des centromères."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de cellules haploïdes sont formées à la fin d'une méiose complète à partir d'une cellule mère diploïde ?",
+              "options": [
+                "4 cellules haploïdes",
+                "2 cellules diploïdes",
+                "2 cellules haploïdes",
+                "8 cellules haploïdes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méiose produit 4 cellules haploïdes à partir d'une cellule mère diploïde."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la quantité d'ADN par cellule juste avant le début de la prophase I, après la phase S ?",
+              "options": ["4Q d'ADN", "2Q d'ADN", "Q d'ADN", "0,5Q d'ADN"],
+              "correctAnswers": [0],
+              "explanation": "Après la réplication en phase S, la quantité d'ADN passe de 2Q à 4Q dans la cellule diploïde."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que sépare la deuxième division de méiose (division équationnelle) lors de l'anaphase II ?",
+              "options": [
+                "Les chromatides sœurs",
+                "Les chromosomes homologues",
+                "Les paires d'autosomes",
+                "Les membranes nucléaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anaphase II clive les centromères et sépare les chromatides sœurs de chaque chromosome."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Au cours de quelle phase les tétrades de chromosomes homologues s'apparient-elles ?",
+              "options": [
+                "Prophase I",
+                "Métaphase II",
+                "Anaphase I",
+                "Télophase II"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'appariement des chromosomes homologues formant des bivalents a lieu en prophase I."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel fuseau permet le déplacement des chromosomes pendant les divisions méiotiques ?",
+              "options": [
+                "Le fuseau mitotique ou méiotique",
+                "Le réticulum endoplasmique",
+                "L'anneau contractile d'actine",
+                "Le complexe synaptonémal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les microtubules du fuseau méiotique tractent les chromosomes vers les pôles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la ploïdie des cellules obtenues à la fin de la télophase I ?",
+              "options": [
+                "Haploïde à chromosomes dupliqués (n, 2c)",
+                "Diploïde à chromosomes simples (2n, c)",
+                "Diploïde à chromosomes dupliqués (2n, 2c)",
+                "Triploïde (3n)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La télophase I aboutit à des cellules haploïdes à n chromosomes formés de 2 chromatides."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Y a-t-il une réplication de l'ADN entre la télophase I et la prophase II ?",
+              "options": [
+                "Non, aucune phase S n'a lieu",
+                "Oui, l'ADN double à nouveau",
+                "Uniquement pour les autosomes",
+                "Uniquement chez les femelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intercinèse entre la méiose I et la méiose II se fait sans nouvelle réplication de l'ADN."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle structure protéique stabilise l'appariement des homologues en prophase I ?",
+              "options": [
+                "Le complexe synaptonémal",
+                "Le kinétochore",
+                "Le centrosome",
+                "La laminine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le complexe synaptonémal maintient les chromosomes homologues étroitement accolés."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Brassage intrachromosomique (crossing-over)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques s'appliquent au crossing-over (enjambement) ?",
+              "options": [
+                "Il a lieu en prophase I",
+                "Il concerne les chromatides non sœurs homologues",
+                "Il a lieu en anaphase II",
+                "Il supprime des gènes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le crossing-over a lieu en prophase I entre chromatides non sœurs de chromosomes homologues."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la figure cytologique visible traduisant un crossing-over ?",
+              "options": [
+                "Un chiasma",
+                "Un centromère",
+                "Un kinétochore",
+                "Un télomère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chiasma est le point de contact et de croisement entre chromatides homologues."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est l'effet génétique direct d'un crossing-over entre deux gènes liés ?",
+              "options": [
+                "La création d'associations alléliques nouvelles",
+                "La duplication du centromère",
+                "La perte d'un allèle",
+                "La transformation d'un autosome en hétérochromosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il permet l'échange d'allèles entre chromatides homologues, générant de nouvelles combinaisons."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Entre quels éléments un crossing-over échange-t-il des fragments d'ADN ?",
+              "options": [
+                "Deux chromatides non sœurs de chromosomes homologues",
+                "Deux chromatides sœurs d'un même chromosome",
+                "Deux chromosomes non homologues",
+                "L'ARN et l'ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les échanges ont lieu entre chromatides non sœurs de la même paire d'homologues."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle enzyme clé initie les cassures double brin nécessaires au crossing-over ?",
+              "options": [
+                "Spo11",
+                "ADN polymérase I",
+                "Hélicase réplicative",
+                "Télomérase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La protéine Spo11 induit des cassures double brin programmées en début de méiose."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment évolue la probabilité d'un crossing-over quand la distance physique entre deux gènes augmente ?",
+              "options": [
+                "Elle augmente",
+                "Elle diminue",
+                "Elle reste strictement nulle",
+                "Elle devient négative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus deux locus sont distants sur le chromosome, plus la fréquence de crossing-over est élevée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on les chromatides qui ont subi un échange d'allèles par crossing-over ?",
+              "options": [
+                "Chromatides recombinées",
+                "Chromatides parentales",
+                "Chromatides mutées",
+                "Chromatides aneuploïdes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chromatides modifiées sont dites recombinées, par opposition aux chromatides parentales intactes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans un test-cross sur deux gènes liés, comment sont les proportions des phénotypes recombinés par rapport aux parentaux ?",
+              "options": [
+                "Les recombinés sont en proportion inférieure aux parentaux",
+                "Les recombinés sont strictement supérieurs aux parentaux",
+                "Les quatre phénotypes sont équiprobables à 25 %",
+                "Les parentaux sont absents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour des gènes liés, les individus recombinés sont moins fréquents que les types parentaux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lors d'un crossing-over inégal entre chromosomes homologues mal alignés ?",
+              "options": [
+                "Duplication sur un chromosome et délétion sur l'autre",
+                "Polyploïdisation globale de la cellule",
+                "Création d'un chromosome acentrique stable",
+                "Transformation d'allèles récessifs en dominants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un crossing-over inégal transfère un segment supplémentaire sur l'un et en retire sur l'autre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel pourcentage de gamètes recombinés ne peut théoriquement pas être dépassé pour deux gènes liés ?",
+              "options": ["50 %", "25 %", "75 %", "100 %"],
+              "correctAnswers": [0],
+              "explanation": "La fréquence maximale théorique de recombinaison pour deux gènes liés est de 50 %."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Brassage interchromosomique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propositions caractérisent le brassage interchromosomique ?",
+              "options": [
+                "Il résulte de la disposition aléatoire des tétrades en métaphase I",
+                "Il sépare aléatoirement les chromosomes d'origine parentale en anaphase I",
+                "Il échange des morceaux d'ADN entre chromatides",
+                "Il nécessite obligatoirement des gènes liés"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le brassage interchromosomique découle de l'orientation et de la disjonction aléatoire des paires en anaphase I."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de combinaisons chromosomiques distinctes le brassage interchromosomique peut-il générer chez l'Homme (2n = 46) sans compter le crossing-over ?",
+              "options": [
+                "2 puissance 23 (soit environ 8,4 millions)",
+                "46 puissance 2",
+                "2 puissance 46",
+                "23 puissance 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec n = 23 paires d'homologues, le nombre de combinaisons de gamètes est de 2^23 ≈ 8,4 millions."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À quelle étape précise de la méiose se réalise la ségrégation indépendante des chromosomes homologues ?",
+              "options": [
+                "Anaphase I",
+                "Anaphase II",
+                "Métaphase II",
+                "Télophase II"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La séparation indépendante de chaque paire d'homologues vers les pôles cellulaires a lieu en anaphase I."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans le cas de deux gènes indépendants, quelles proportions phénotypiques obtient-on lors d'un test-cross (F1 x homozygote récessif) ?",
+              "options": [
+                "25 %, 25 %, 25 %, 25 %",
+                "50 %, 50 %, 0 %, 0 %",
+                "9/16, 3/16, 3/16, 1/16",
+                "70 %, 10 %, 10 %, 10 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le brassage interchromosomique produit 4 types de gamètes équiprobables (1/4 chacun)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux gènes situés sur deux paires de chromosomes distinctes sont qualifiés de :",
+              "options": [
+                "Gènes indépendants",
+                "Gènes liés",
+                "Gènes synténiques",
+                "Gènes alléliques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des gènes portés par des paires chromosomiques différentes sont génétiquement et physiquement indépendants."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel généticien a énoncé la loi de ségrégation indépendante des caractères ?",
+              "options": [
+                "Gregor Mendel",
+                "Thomas Hunt Morgan",
+                "Charles Darwin",
+                "Francis Crick"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mendel a découvert la ségrégation indépendante des facteurs héréditaires dans sa troisième loi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelles proportions phénotypiques attend-on en F2 lors d'un croisement F1 x F1 pour deux gènes indépendants à dominance complète ?",
+              "options": [
+                "9/16, 3/16, 3/16, 1/16",
+                "1/4, 1/4, 1/4, 1/4",
+                "3/4, 1/4",
+                "1/2, 1/2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échiquier de croisement 4x4 donne les proportions classiques mendéliennes 9:3:3:1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le brassage interchromosomique a-t-il lieu si l'organisme est homozygote pour tous ses gènes ?",
+              "options": [
+                "Le mécanisme physique a lieu mais ne produit aucune diversité allélique",
+                "Non, la méiose est totalement bloquée",
+                "Oui, de nouveaux allèles sont synthétisés",
+                "Uniquement si la température s'élève"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ségrégation des chromosomes a lieu, mais les gamètes formés sont tous génétiquement identiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Chez la drosophile (2n = 8), combien de types de gamètes distincts peuvent résulter du seul brassage interchromosomique ?",
+              "options": [
+                "16 (2 puissance 4)",
+                "8 (2 puissance 3)",
+                "64 (4 puissance 3)",
+                "4 (2 puissance 2)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec n = 4 paires de chromosomes, 2^4 = 16 assortiments chromosomiques sont possibles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'orientation d'un bivalent sur le plan équatorial influence-t-elle l'orientation des autres bivalents ?",
+              "options": [
+                "Non, les orientations sont totalement indépendantes",
+                "Oui, ils s'orientent tous du même côté",
+                "Oui, ils alternent strictement",
+                "Oui, selon le sexe du parent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque bivalent s'oriente de façon purement aléatoire et indépendante sur la plaque métaphasique."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Fécondation et rétablissement de la diploïdie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels rôles majeurs la fécondation joue-t-elle dans le cycle de développement diplophasique ?",
+              "options": [
+                "Elle rétablit la diploïdie (2n)",
+                "Elle amplifie la diversité génétique par rencontre aléatoire des gamètes",
+                "Elle divise par deux le stock chromosomique",
+                "Elle remplace la méiose chez les animaux"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La fécondation réunit deux lots haploïdes pour reformer une cellule diploïde avec un génotype unique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la fusion des deux noyaux haploïdes des gamètes lors de la fécondation ?",
+              "options": [
+                "La caryogamie",
+                "La plasmogamie",
+                "La cytokinèse",
+                "La réplication"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La caryogamie est la fusion des pronoyaux mâle et femelle au sein du zygote."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de combinaisons génétiques potentielles de zygotes la fécondation peut-elle produire chez l'Homme (hors crossing-over) ?",
+              "options": [
+                "Plus de 70 000 milliards (2^23 x 2^23)",
+                "8,4 millions",
+                "46 000",
+                "400 millions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rencontre de 2^23 spermatozoïdes et 2^23 ovocytes possibles donne (2^23)^2 ≈ 7x10^13 combinaisons."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le mécanisme empêchant la fécondation d'un ovocyte par plusieurs spermatozoïdes ?",
+              "options": [
+                "Le blocage de la polyspermie",
+                "La capacitation spermatique",
+                "L'anergie gamétique",
+                "La réaction acrosomique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réaction corticale modifie la zone pellucide pour bloquer l'entrée d'autres spermatozoïdes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel organite cellulaire est exclusivement transmis par la mère chez la très grande majorité des mammifères ?",
+              "options": [
+                "La mitochondrie",
+                "Le centrosome",
+                "Le réticulum sarcoplasmique",
+                "Le ribosome 80S"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mitochondries du spermatozoïde sont éliminées ; l'ADN mitochondrial est hérité par voie maternelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la cellule initiale issue directement de la fécondation ?",
+              "options": [
+                "La cellule œuf (ou zygote)",
+                "Le blastocyste",
+                "Le gamétocyte",
+                "La morula"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cellule œuf ou zygote est la première cellule diploïde du nouvel individu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle structure libère des enzymes hydrolytiques permettant au spermatozoïde de traverser la zone pellucide ?",
+              "options": [
+                "L'acrosome",
+                "Le flagelle",
+                "La pièce intermédiaire",
+                "Le centriole proximal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réaction acrosomique libère des enzymes pour digérer l'enveloppe de l'ovocyte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "À quel stade de division l'ovocyte II humain est-il bloqué avant la pénétration du spermatozoïde ?",
+              "options": [
+                "Métaphase II",
+                "Prophase I",
+                "Anaphase I",
+                "Télophase II"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ovocyte II est bloqué en métaphase II jusqu'à ce que la fécondation déclenche l'expulsion du 2e globule polaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle conséquence aurait une absence de blocage de la polyspermie ?",
+              "options": [
+                "Une triploïdie non viable du zygote",
+                "Un clone homozygote parfait",
+                "Une monosomie X",
+                "Une inversion péricentrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pénétration de deux spermatozoïdes produit une cellule triploïde anormale, létale chez l'Homme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel outil permet de modéliser l'ensemble des combinaisons alléliques possibles lors d'un croisement ?",
+              "options": [
+                "L'échiquier de croisement",
+                "L'arbre phylogénétique",
+                "Le caryotype spectral",
+                "L'électrophorèse sur gel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échiquier de croisement (tableau de Punnett) croise les types de gamètes parentaux et leurs fréquences."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Anomalies de la méiose (non-disjonctions)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles anomalies du nombre de chromosomes peuvent résulter d'un accident de méiose ?",
+              "options": [
+                "Trisomie 21",
+                "Syndrome de Turner (monosomie X)",
+                "Polyploïdisation par réplication normale",
+                "Délétion ponctuelle d'une cytosine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La trisomie 21 (aneuploïdie 2n+1) et le syndrome de Turner (2n-1) sont causés par des non-disjonctions méiotiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quel moment une non-disjonction chromosomique peut-elle survenir lors de la méiose ?",
+              "options": [
+                "En anaphase I ou en anaphase II",
+                "Strictement en prophase I",
+                "Uniquement en télophase II",
+                "Durant la phase G1 de l'interphase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une non-disjonction des homologues a lieu en anaphase I, ou celle des chromatides sœurs en anaphase II."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si une non-disjonction d'homologues se produit en anaphase I, quelles seront les teneurs en chromosomes des 4 gamètes formés ?",
+              "options": [
+                "Deux gamètes n+1 et deux gamètes n-1",
+                "Deux gamètes n, un gamète n+1 et un gamète n-1",
+                "Quatre gamètes normaux n",
+                "Quatre gamètes n+1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une non-disjonction en anaphase I rend 100 % des gamètes anormaux : deux à n+1 et deux à n-1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on une cellule possédant un nombre anormal de chromosomes qui n'est pas un multiple exact du lot haploïde ?",
+              "options": [
+                "Aneuploïde",
+                "Euploïde",
+                "Polyploïde",
+                "Tétraploïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'aneuploïdie désigne la perte ou le gain d'un ou plusieurs chromosomes individuels (ex: 2n+1, 2n-1)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le caryotype associé au syndrome de Klinefelter chez l'Homme ?",
+              "options": ["47,XXY", "45,X", "47,XY,+18", "46,XY,del(5p)"],
+              "correctAnswers": [0],
+              "explanation": "Le syndrome de Klinefelter est caractérisé par un chromosome X surnuméraire chez un individu masculin (47,XXY)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel facteur maternel est fortement corrélé avec le risque d'accident de disjonction méiotique ?",
+              "options": [
+                "L'âge maternel avancé",
+                "Le groupe sanguin rhésus",
+                "L'alimentation riche en lipides",
+                "La pratique d'une activité sportive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le risque de non-disjonction augmente significativement avec l'âge maternel (altération des cohésines)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'engendre la fécondation d'un gamète à n-1 chromosomes par un gamète normal à n chromosomes ?",
+              "options": [
+                "Une monosomie (2n-1)",
+                "Une trisomie (2n+1)",
+                "Une triploïdie (3n)",
+                "Un individu euploïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'union d'un gamète (n-1) et d'un gamète (n) forme un zygote monosomique (2n-1)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle anomalie structurale chromosomique consiste en l'échange réciproque de segments entre chromosomes non homologues ?",
+              "options": [
+                "Une translocation réciproque",
+                "Une inversion péricentrique",
+                "Une duplication génique",
+                "Un crossing-over classique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La translocation réciproque transfère mutuellement des segments d'ADN entre deux autosomes distincts."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la fusion des bras longs de deux chromosomes acrocentriques (ex: 14 et 21) ?",
+              "options": [
+                "Une translocation robertsonienne",
+                "Une isochromosomie",
+                "Une polyploïdisation",
+                "Une conversion génique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La translocation robertsonienne unit deux chromosomes acrocentriques et peut causer des trisomies familiales."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la plupart des monosomies autosomiques chez l'embryon humain sont-elles indétectables à la naissance ?",
+              "options": [
+                "Elles entraînent un arrêt précoce de développement et une fausse couche",
+                "Elles sont guéries par la mitose",
+                "Elles se transforment en disomies",
+                "Elles ne modifient pas le phénotype"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absence d'un autosome entier est létale dès les premières étapes du développement embryonnaire."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Transmission des allèles autosomiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont exactes pour un gène autosomique récessif ?",
+              "options": [
+                "Deux parents sains hétérozygotes peuvent avoir un enfant atteint",
+                "L'allèle doit être présent en deux exemplaires pour s'exprimer",
+                "La maladie ne touche que les individus de sexe masculin",
+                "Une seule copie de l'allèle suffit à exprimer le phénotype"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une maladie autosomique récessive nécessite deux allèles mutés et s'exprime chez les homozygotes des deux sexes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel risque deux parents porteurs sains (hétérozygotes) d'une maladie autosomique récessive ont-ils d'avoir un enfant atteint ?",
+              "options": ["1/4 (25 %)", "1/2 (50 %)", "3/4 (75 %)", "0 %"],
+              "correctAnswers": [0],
+              "explanation": "Le croisement Aa x Aa donne 1/4 AA, 1/2 Aa et 1/4 aa (seul aa est phénotypiquement malade)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans une transmission autosomique dominante, quelle est la probabilité pour un parent hétérozygote atteint (et un parent sain) de transmettre l'allèle muté ?",
+              "options": ["1/2 (50 %)", "1/4 (25 %)", "3/4 (75 %)", "100 %"],
+              "correctAnswers": [0],
+              "explanation": "L'hétérozygote produit 50 % de gamètes portant l'allèle dominant morbide."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la situation où deux allèles différents s'expriment pleinement et simultanément chez l'hétérozygote ?",
+              "options": [
+                "La codominance",
+                "La dominance incomplète",
+                "L'épistasie",
+                "La pléiotropie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la codominance (ex: groupe sanguin AB), les deux allèles s'expriment conjointement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la définition d'un individu homozygote pour un gène donné ?",
+              "options": [
+                "Il possède deux allèles identiques de ce gène",
+                "Il possède deux allèles différents de ce gène",
+                "Il ne possède qu'une seule copie du gène sur l'X",
+                "Il a perdu ce gène par mutation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un individu est homozygote lorsqu'il porte deux allèles identiques à un locus donné."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle maladie génétique fréquente chez les populations caucasiennes est transmise sur un mode autosomique récessif ?",
+              "options": [
+                "La mucoviscidose",
+                "La chorée de Huntington",
+                "L'achondroplasie",
+                "Le daltonisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mucoviscidose est causée par des mutations récessives du gène CFTR porté par le chromosome 7."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le pourcentage d'individus porteurs d'un génotype donné qui manifestent le phénotype correspondant ?",
+              "options": [
+                "La pénétrance",
+                "L'expressivité",
+                "L'héritabilité",
+                "La fitness"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pénétrance est la proportion d'individus ayant le génotype qui expriment le phénotype attendu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'expressivité variable d'un gène ?",
+              "options": [
+                "Le degré d'intensité de la manifestation phénotypique selon les individus",
+                "La capacité d'un allèle à muter spontanément",
+                "La vitesse de traduction de l'ARN messager",
+                "Le nombre de chromosomes portant le gène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expressivité désigne le degré ou la sévérité d'expression d'un phénotype chez des individus porteurs du même génotype."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans le cas d'une dominance incomplète entre deux allèles rouge et blanc, quelle est la couleur des fleurs hétérozygotes ?",
+              "options": ["Rose", "Rouge", "Blanc", "Tachetée bicolore"],
+              "correctAnswers": [0],
+              "explanation": "La dominance incomplète donne un phénotype intermédiaire chez l'hétérozygote (fleur rose)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle maladie neurodégénérative à début tardif est un exemple classique de transmission autosomique dominante ?",
+              "options": [
+                "La chorée de Huntington",
+                "La drépanocytose",
+                "La phénylcétonurie",
+                "La myopathie de Duchenne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chorée de Huntington est autosomique dominante à pénétrance complète avec répétition de triplets CAG."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Hérédité liée au sexe (gonosomes)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles particularités concernent les maladies récessives liées au chromosome X ?",
+              "options": [
+                "Elles affectent beaucoup plus fréquemment les garçons que les filles",
+                "Un père atteint ne transmet jamais la maladie à son fils",
+                "Une mère saine ne peut jamais avoir de garçon atteint",
+                "Elles se transmettent exclusivement de père en fils"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les garçons (XY) sont hémizygotes pour l'X, et le père transmet son Y (et non son X) à ses fils."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un homme pour les gènes situés sur la région spécifique du chromosome X ?",
+              "options": [
+                "Hémizygote",
+                "Homozygote",
+                "Hétérozygote",
+                "Aneuploïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'homme ne possède qu'un seul chromosome X : il est hémizygote pour les loci de la région différentielle de l'X."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel exemple célèbre illustre une anomalie récessive portée par le chromosome X ?",
+              "options": [
+                "Le daltonisme rouge-vert",
+                "La drépanocytose",
+                "La polypose adénomateuse",
+                "La mucoviscidose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les gènes des opsines rouge et verte sont situés sur le chromosome X ; les mutations récessives causent le daltonisme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle proportion de ses filles un homme atteint d'une maladie récessive liée à l'X rend-il obligatoirement conductrices (hétérozygotes) ?",
+              "options": ["100 %", "50 %", "25 %", "0 %"],
+              "correctAnswers": [0],
+              "explanation": "Le père transmet obligatoirement son unique chromosome X muté à toutes ses filles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le phénomène d'inactivation aléatoire d'un des deux chromosomes X chez les femelles mammifères ?",
+              "options": [
+                "La lyonisation",
+                "La caryogamie",
+                "La transduction",
+                "La polyadénylation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inactivation d'un chromosome X (lyonisation) compense le dosage génique entre mâles et femelles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sous quelle forme cytologique condensée observe-t-on le chromosome X inactivé dans les cellules somatiques femelles ?",
+              "options": [
+                "Le corpuscule de Barr",
+                "Le centrosome",
+                "Le chiasma",
+                "Le kinétochore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chromosome X hétérochromatinisé forme le corpuscule de Barr visible en périphérie du noyau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment se transmet un gène situé exclusivement sur la région propre du chromosome Y (holandrique) ?",
+              "options": [
+                "Uniquement de père en fils",
+                "De mère en fils",
+                "De père en fille",
+                "De façon équiprobable aux deux sexes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chromosome Y est transmis exclusivement du père à tous ses fils biologiques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel gène situé sur le bras court du chromosome Y déclenche la différenciation testiculaire chez l'embryon humain ?",
+              "options": ["SRY", "CFTR", "FOXP2", "DMD"],
+              "correctAnswers": [0],
+              "explanation": "Le gène SRY (Sex-determining Region of Y) code le facteur TDF qui initie la différenciation des gonades en testicules."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi une fille peut-elle exceptionnellement être atteinte de myopathie de Duchenne (liée à l'X récessive) ?",
+              "options": [
+                "Inactivation très biaisée du chromosome X portant l'allèle sain",
+                "Surproduction de dystrophine par le foie",
+                "Présence de deux chromosomes Y",
+                "Consommation excessive de sucre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une inactivation préférentielle du chromosome X normal peut conduire à l'expression du phénotype chez une fille hétérozygote."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on les régions d'homologie aux extrémités des chromosomes X et Y permettant leur appariement en méiose ?",
+              "options": [
+                "Les régions pseudoautosomiques (PAR)",
+                "Les introns différentiels",
+                "Les satellites télomériques",
+                "Les séquences Alu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les régions PAR1 et PAR2 s'apparient et recombinent entre X et Y lors de la prophase I."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Arbres généalogiques et calcul de risques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans les conventions standard d'un arbre généalogique médical, que représentent ces symboles ?",
+              "options": [
+                "Un carré représente un individu masculin",
+                "Un cercle représente un individu féminin",
+                "Un losange représente toujours un individu décédé",
+                "Un triangle représente une adoption"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les carrés désignent les hommes et les cercles les femmes ; les individus atteints sont noircis."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un arbre généalogique, quel indice évoque fortement une transmission autosomique récessive ?",
+              "options": [
+                "La maladie saute des générations et touche des enfants de parents sains",
+                "Chaque individu atteint a obligatoirement un parent atteint",
+                "Seuls les hommes transmettent la maladie à leurs filles",
+                "Toutes les générations successives sont touchées sans exception"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les maladies récessives apparaissent souvent chez des enfants de parents sains hétérozygotes (saut de génération)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si la fréquence des hétérozygotes sains dans une population est de 1/30 pour une maladie récessive, quel est le risque pour un couple sans antécédents d'avoir un enfant atteint ?",
+              "options": [
+                "1/3600 (soit 1/30 x 1/30 x 1/4)",
+                "1/120",
+                "1/60",
+                "1/4"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Risque = P(père porteur) x P(mère porteuse) x P(transmission) = (1/30) x (1/30) x (1/4) = 1/3600."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie un double trait horizontal unissant deux individus dans un pedigree ?",
+              "options": [
+                "Une union consanguine",
+                "Des jumeaux monozygotes",
+                "Un divorce",
+                "Une filiation adoptive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le double trait symbolise la consanguinité (union entre personnes apparentées par le sang)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est l'impact direct de la consanguinité sur le risque de maladies génétiques chez les descendants ?",
+              "options": [
+                "Elle augmente la probabilité de se retrouver homozygote pour un allèle récessif délétère",
+                "Elle induit des mutations chromosomiques nouvelles",
+                "Elle inactive le chromosome X maternel",
+                "Elle diminue le nombre de gènes fonctionnels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La consanguinité augmente le coefficient d'homozygotie par héritage d'allèles identiques d'un ancêtre commun."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans une maladie autosomique dominante, quelle est la probabilité que deux parents atteints hétérozygotes (Aa x Aa) aient un enfant sain ?",
+              "options": ["1/4 (25 %)", "1/2 (50 %)", "0 %", "3/4 (75 %)"],
+              "correctAnswers": [0],
+              "explanation": "L'enfant sain est homozygote récessif (aa), ce qui correspond à une probabilité de 1/4."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le premier individu atteint d'une famille qui amène à consulter et à construire l'arbre généalogique ?",
+              "options": [
+                "Le propositus (ou cas index)",
+                "Le progéniteur",
+                "L'ancêtre fondateur",
+                "Le mutant primaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le propositus (ou propositus/proposita) est le membre de la famille à l'origine de l'enquête génétique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si une femme a un frère atteint d'une maladie récessive liée à l'X, quelle est sa probabilité a priori d'être conductrice ?",
+              "options": ["1/2 (50 %)", "1/4 (25 %)", "100 %", "0 %"],
+              "correctAnswers": [0],
+              "explanation": "La mère étant obligatoirement porteuse saine (hétérozygote), chaque fille a 1 risque sur 2 d'hériter de l'X muté."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mode d'hérédité est caractérisé par une transmission de la mère à TOUS ses enfants, garçons et filles, sans transmission par le père ?",
+              "options": [
+                "Hérédité mitochondriale",
+                "Transmission liée à l'Y",
+                "Transmission autosomique dominante",
+                "Transmission liée à l'X récessive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le génome mitochondrial est transmis exclusivement par le cytoplasme de l'ovocyte maternel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une mutation apparue spontanément dans un gamète parental sans être présente chez les ascendants ?",
+              "options": [
+                "Une mutation de novo (néomutation)",
+                "Une mutation fondatrice",
+                "Une recombinaison mitotique",
+                "Une conversion allique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une néomutation (de novo) apparaît dans les cellules germinales d'un parent sain et s'exprime chez l'enfant."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Gènes liés et cartes factorielles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations définissent correctement des gènes liés ?",
+              "options": [
+                "Ils sont situés physiquement sur le même chromosome",
+                "Ils ne ségrègent pas de façon indépendante en méiose",
+                "Leur test-cross donne toujours 4 phénotypes équiprobables",
+                "Ils se situent obligatoirement sur des chromosomes différents"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les gènes liés sont sur le même chromosome (synténiques) et s'écartent des ratios de ségrégation indépendante."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle unité de distance génétique correspond à 1 % de recombinaison entre deux locus ?",
+              "options": [
+                "Le centimorgan (cM)",
+                "Le kilobase (kb)",
+                "L'angström",
+                "Le nanomètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 centimorgan (cM) équivaut à un taux de recombinaison de 1 % entre deux marqueurs génétiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel chercheur de l'équipe de Thomas Morgan a établi la toute première carte génétique chromosomique ?",
+              "options": [
+                "Alfred Sturtevant",
+                "Theodosius Dobzhansky",
+                "Hermann Muller",
+                "Barbara McClintock"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alfred Sturtevant a cartographié en 1913 l'ordre linéaire des gènes sur le chromosome X de la drosophile."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si deux gènes présentent un taux de recombinaison de 18 % lors d'un test-cross, quelle est leur distance génétique ?",
+              "options": ["18 cM", "9 cM", "36 cM", "1,8 cM"],
+              "correctAnswers": [0],
+              "explanation": "Le pourcentage de recombinés correspond directement à la distance en centimorgans : 18 % = 18 cM."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi la distance génétique en cM ne reflète-t-elle pas toujours exactement la distance physique en paires de bases ?",
+              "options": [
+                "La fréquence des crossing-overs varie le long du chromosome (points chauds et froids)",
+                "Les bases azotées n'ont pas toutes la même masse",
+                "L'ADN se raccourcit à chaque cycle",
+                "Les gènes changent d'ordre constamment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La présence de points chauds et de régions réprimées (hétérochromatine) module la fréquence locale de recombinaison."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la disposition où deux allèles dominants sont portés par le même chromosome homologue ?",
+              "options": [
+                "Configuration cis (ou en couplage)",
+                "Configuration trans (ou en répulsion)",
+                "Configuration hémizygote",
+                "Configuration aneuploïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En phase de couplage (cis), les deux allèles dominants (AB) sont portés par le même chromosome."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel croisement permet de mesurer facilement le taux de recombinaison entre deux gènes ?",
+              "options": [
+                "Un croisement test (test-cross avec un homozygote double récessif)",
+                "Un croisement de deux lignées pures dominantes",
+                "Une autofécondation d'un homozygote",
+                "Un rétrocroisement avec le parent dominant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le parent récessif ne fournissant que des allèles récessifs, le phénotype reflète directement les gamètes du parent testé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si le taux de recombinaison entre A et B est 10 cM et entre B et C est 5 cM, quelle peut être la distance entre A et C si B est au milieu ?",
+              "options": ["15 cM", "5 cM", "50 cM", "2 cM"],
+              "correctAnswers": [0],
+              "explanation": "Par additivité des distances génétiques le long du chromosome : d(A, C) = d(A, B) + d(B, C) = 10 + 5 = 15 cM."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le phénomène où la survenue d'un crossing-over réduit la probabilité d'un autre crossing-over à proximité ?",
+              "options": [
+                "L'interférence génétique",
+                "L'exclusion allélique",
+                "La dérive méiotique",
+                "Le silençage génique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'interférence chromosomique positive empêche deux chiasmas de se produire trop près l'un de l'autre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel organisme modèle a permis à Thomas Hunt Morgan de découvrir la liaison génétique et les crossing-overs ?",
+              "options": [
+                "Drosophila melanogaster (la drosophile)",
+                "Caenorhabditis elegans",
+                "Arabidopsis thaliana",
+                "Mus musculus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mouche du vinaigre (Drosophila melanogaster) a été l'organisme clé de la génétique chromosomique de Morgan."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Tests génétiques et diagnostic préimplantatoire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles techniques permettent d'analyser le matériel génétique d'un fœtus ou d'un embryon ?",
+              "options": [
+                "L'amniocentèse",
+                "Le diagnostic génétique préimplantatoire (DPI)",
+                "La radiographie du bassin maternel",
+                "L'électrocardiogramme maternel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'amniocentèse prélève du liquide amniotique et le DPI analyse une cellule d'embryon in vitro avant transfert."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quel stade du développement embryonnaire in vitro réalise-t-on couramment la biopsie pour un DPI ?",
+              "options": [
+                "Au stade blastocyste (J5) ou 6-8 cellules (J3)",
+                "Au stade morula précoce (J1)",
+                "Au 3e mois de gestation",
+                "Juste après la nidation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le prélèvement de cellules du trophoblaste a lieu typiquement au stade blastocyste (jour 5-6)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle méthode permet le dépistage prénatal non invasif (DPNI) de la trisomie 21 dès la 10e semaine de grossesse ?",
+              "options": [
+                "Le séquençage de l'ADN libre fœtal circulant dans le sang maternel",
+                "Une ponction de villosités choriales",
+                "Une biopsie musculaire du fœtus",
+                "Une radiographie fœtale aux rayons X"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le DPNI analyse des fragments d'ADN fœtal (d'origine placentaire) circulant dans le sang de la mère."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle enzyme est indispensable pour amplifier des séquences d'ADN cibles lors d'une réaction PCR ?",
+              "options": [
+                "La Taq ADN polymérase",
+                "L'ARN polymérase II",
+                "La ligase bactérienne",
+                "La transcriptase inverse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Taq polymérase thermorésistante catalyse l'élongation de l'ADN lors des cycles thermiques de la PCR."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que permet de détecter la technique de caryotypage conventionnel avec bandes chromosomiques ?",
+              "options": [
+                "Les anomalies du nombre et les remaniements de structure de grande taille",
+                "Les mutations ponctuelles d'une seule base",
+                "Le niveau d'expression des ARN messagers",
+                "La méthylation des histones"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le caryotype détecte les aneuploïdies et les anomalies structurales macroscopiques supérieures à plusieurs mégabases."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le principe de l'hybridation in situ en fluorescence (FISH) ?",
+              "options": [
+                "L'appariement d'une sonde d'ADN fluorescente sur une région chromosomique spécifique",
+                "La séparation des protéines selon leur point isoélectrique",
+                "La digestion enzymatique de l'ARN cytoplasmique",
+                "La précipitation des lipides membranaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sonde fluorescente s'hybride spécifiquement avec sa séquence complémentaire sur les chromosomes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle condition légale encadre strictement le recours au DPI en France ?",
+              "options": [
+                "Une forte probabilité de donner naissance à un enfant atteint d'une maladie génétique d'une particulière gravité",
+                "Le simple choix des caractéristiques physiques de l'enfant",
+                "La sélection du sexe pour convenance personnelle",
+                "La demande exclusive de l'employeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi de bioéthique réserve le DPI aux couples ayant un risque élevé de transmettre une maladie d'une particulière gravité incurable."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel risque invasif est associé à la choriocentèse ou à l'amniocentèse ?",
+              "options": [
+                "Un faible risque de fausse couche spontanée (environ 0,1 à 0,5 %)",
+                "Une modification du groupe sanguin maternel",
+                "Une trisomie induite par l'aiguille",
+                "Une stérilité définitive de la mère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces gestes invasifs comportent un risque résiduel de perte fœtale évalué à moins de 0,5 %."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un séquençage de nouvelle génération (NGS) ?",
+              "options": [
+                "Un séquençage à haut débit massivement parallèle de millions de fragments d'ADN",
+                "Une électrophorèse manuelle sur gel d'agarose",
+                "Une réaction de digestion par une seule enzyme",
+                "Une coloration histologique des noyaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le NGS (Next Generation Sequencing) permet de séquencer rapidement un génome complet ou un exome entier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel document obligatoire doit recueillir le médecin avant tout examen des caractéristiques génétiques d'une personne ?",
+              "options": [
+                "Le consentement écrit, libre et éclairé du patient",
+                "L'accord de l'employeur du patient",
+                "L'autorisation d'une compagnie d'assurance",
+                "Le passeport biométrique du patient"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Code civil impose un consentement écrit, libre et éclairé après information médicale détaillée."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Diversité",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Mutations et création de nouveaux allèles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels types de mutations ponctuelles peuvent modifier la séquence nucléotidique d'un gène ?",
+              "options": [
+                "La substitution d'un nucléotide",
+                "La délétion ou l'insertion d'un nucléotide",
+                "La recombinaison méiotique classique",
+                "La déphosphorylation des histones"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les substitutions, insertions et délétions modifient directement la séquence de bases d'un allèle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une mutation par substitution qui ne modifie pas l'acide aminé incorporé grâce à la redondance du code ?",
+              "options": [
+                "Une mutation silencieuse (ou synonyme)",
+                "Une mutation non-sens",
+                "Une mutation faux-sens",
+                "Une mutation décalante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une mutation silencieuse change un codon en un autre codon codant pour le même acide aminé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel type de mutation introduit prématurément un codon-stop dans la séquence codante d'un ARNm ?",
+              "options": [
+                "Une mutation non-sens",
+                "Une mutation faux-sens",
+                "Une mutation silencieuse",
+                "Une mutation neutre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mutation non-sens crée un codon-stop (UAA, UAG, UGA), provoquant l'arrêt prématuré de la traduction."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans quel type de cellule une mutation doit-elle survenir pour pouvoir être transmise à la descendance ?",
+              "options": [
+                "Une cellule de la lignée germinale",
+                "Une cellule somatique",
+                "Un globule blanc mature",
+                "Un neurone du cortex"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seules les mutations affectant les cellules germinales (ou gamètes) sont héréditaires."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel effet produit généralement l'insertion ou la délétion d'un nombre de nucléotides non multiple de 3 dans un exon ?",
+              "options": [
+                "Un décalage du cadre de lecture (frameshift)",
+                "Une duplication du chromosome entier",
+                "Une simple substitution conservative",
+                "L'inversion du sens de réplication"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'insertion ou la délétion non multiple de 3 décale la lecture de tous les triplets situés en aval."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel agent physique est connu pour induire la formation de dimères de thymine dans l'ADN ?",
+              "options": [
+                "Les rayons ultraviolets (UV)",
+                "Les infrarouges",
+                "Les ondes radio",
+                "Les ultrasons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rayonnements UV provoquent des liaisons covalentes anormales entre bases pyrimidiques adjacentes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la capacité d'une ADN polymérase à relire et corriger ses propres erreurs lors de la réplication ?",
+              "options": [
+                "L'activité de relecture (proofreading)",
+                "La transcription inverse",
+                "La maturation épissage",
+                "L'aminoacylation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'activité exonucléase 3'->5' de l'ADN polymérase élimine la majorité des bases mal appariées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle maladie génétique de la peau résulte d'un déficit des enzymes de réparation de l'ADN par excision de nucléotides (NER) ?",
+              "options": [
+                "Le xeroderma pigmentosum",
+                "La mucoviscidose",
+                "L'albinisme oculaire",
+                "La drépanocytose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les patients atteints de xeroderma pigmentosum ne réparent pas les dimères de thymine induits par les UV."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le taux moyen approximatif de mutation spontanée non corrigée par paire de bases et par réplication chez l'Homme ?",
+              "options": [
+                "Environ 10^-10 par paire de bases",
+                "Environ 10^-2 par paire de bases",
+                "Environ 50 % des bases",
+                "Zéro, la réplication est parfaite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce aux mécanismes de réparation, le taux d'erreur final est extrêmement bas, de l'ordre de 10^-10 par nucléotide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un allèle résultant d'une mutation qui confère un avantage adaptatif dans un environnement donné ?",
+              "options": [
+                "Allèle avantageux (ou bénéfique)",
+                "Allèle délétère",
+                "Allèle neutre",
+                "Allèle létal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un allèle augmentant la survie ou le succès reproducteur des porteurs est dit avantageux."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Duplications géniques et familles multigéniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mécanismes peuvent conduire à la duplication d'un gène dans un génome ?",
+              "options": [
+                "Un crossing-over inégal en prophase I",
+                "L'action d'éléments transposables (rétrotransposition)",
+                "Une mitose sans cytodiérèse",
+                "Une simple transcription en ARNm"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les crossing-overs inégaux et les transpositions sont deux causes majeures de duplication génique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on un ensemble de gènes issus de la duplication et de la divergence d'un gène ancestral unique ?",
+              "options": [
+                "Une famille multigénique",
+                "Un opéron bactérien",
+                "Un locus hétérozygote",
+                "Un caryotype spectral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une famille multigénique regroupe des gènes homologues partageant des séquences et des fonctions apparentées."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel exemple classique chez les vertébrés illustre une vaste famille multigénique issue de duplications successives ?",
+              "options": [
+                "La famille des globines (hémoglobines)",
+                "L'ARN ribosomique 5S",
+                "L'ADN télomérique",
+                "La ligase bactérienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les gènes des globines (alpha, bêta, embryonnaires, myoglobine) forment une famille multigénique emblématique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on deux gènes homologues présents au sein du même génome suite à un événement de duplication ?",
+              "options": [
+                "Des gènes paralogues",
+                "Des gènes orthologues",
+                "Des gènes alléliques",
+                "Des gènes synténiques sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les paralogues résultent d'une duplication intragénomique, contrairement aux orthologues issus de spéciation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que désigne la néofonctionnalisation d'une copie dupliquée d'un gène ?",
+              "options": [
+                "L'acquisition d'une nouvelle fonction biologique suite à l'accumulation de mutations",
+                "La perte totale d'expression de la copie",
+                "Le partage de la fonction initiale entre les deux copies",
+                "La conversion de la copie en centromère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La néofonctionnalisation permet à une copie libérée de la pression de sélection d'évoluer vers un nouveau rôle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on un gène dupliqué qui a accumulé des mutations délétères et est devenu non fonctionnel ?",
+              "options": [
+                "Un pseudogène",
+                "Un transposon",
+                "Un épisome",
+                "Un intron"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un pseudogène est une copie de gène altérée incapable de produire une protéine active."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que désigne la sous-fonctionnalisation d'un couple de gènes dupliqués ?",
+              "options": [
+                "La répartition des rôles ou profils d'expression du gène ancestral entre les deux copies",
+                "La destruction immédiate des deux copies par nucléases",
+                "Le transfert des copies chez une autre espèce",
+                "L'amplification par transcription continue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque copie se spécialise dans une sous-tâche assurée originellement par le gène ancestral unique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle famille multigénique essentielle contrôle le plan d'organisation antéro-postérieur chez les animaux bilatériens ?",
+              "options": [
+                "Les gènes homéotiques (gènes Hox)",
+                "Les gènes de l'actine",
+                "Les gènes de la tubuline",
+                "Les gènes des canaux sodiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les complexes de gènes Hox, dupliqués au cours de l'évolution, régissent la régionalisation corporelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel critère bio-informatique permet de suspecter l'appartenance de deux gènes à une même famille multigénique ?",
+              "options": [
+                "Un pourcentage d'identité de séquence nucléotidique ou peptidique supérieur à 20-30 %",
+                "La même masse molaire au gramme près",
+                "Leur présence sur le même ribosome",
+                "Leur découverte par le même auteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une similitude de séquence significative (supérieure au hasard) prouve une homologie d'ascendance commune."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans quel groupe animal l'odorat repose-t-il sur plus d'un millier de gènes paralogues de récepteurs olfactifs ?",
+              "options": [
+                "Les mammifères (ex: rongeurs)",
+                "Les insectes diptères",
+                "Les cnidaires",
+                "Les échinodermes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les récepteurs olfactifs constituent la plus vaste famille multigénique du génome des mammifères."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Transferts horizontaux de gènes et symbioses",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mécanismes permettent l'échange horizontal de matériel génétique chez les bactéries ?",
+              "options": [
+                "La conjugaison bactérienne (via pili sexuels)",
+                "La transformation bactérienne",
+                "La méiose réductrice",
+                "L'épissage alternatif"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La conjugaison, la transformation et la transduction sont les trois voies majeures de transfert horizontal chez les procaryotes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Par opposition au transfert vertical (de parents à descendants), comment définit-on un transfert horizontal de gènes (HGT) ?",
+              "options": [
+                "L'échange d'ADN entre organismes non nécessairement apparentés sans reproduction sexuée",
+                "La transmission des chromosomes des parents aux enfants",
+                "La duplication d'un chromosome entier lors de la mitose",
+                "La dégradation de l'ADN par des enzymes de restriction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le transfert horizontal intègre du matériel génétique provenant d'un autre individu sans filiation directe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle menace médicale majeure est grandement accélérée par les transferts horizontaux de gènes plasmidiques ?",
+              "options": [
+                "La diffusion de l'antibiorésistance chez les bactéries pathogènes",
+                "L'apparition du cancer du côlon",
+                "Le développement de l'ostéoporose",
+                "L'élévation du cholestérol sanguin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les plasmides de résistance (plasmides R) se transmettent rapidement entre souches bactériennes par conjugaison."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle bactérie du sol est naturellement capable de transférer son ADN-T dans le génome des cellules végétales ?",
+              "options": [
+                "Agrobacterium tumefaciens",
+                "Escherichia coli",
+                "Streptococcus pneumoniae",
+                "Lactobacillus bulgaricus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agrobacterium tumefaciens transfère le plasmide Ti dans l'ADN végétal, provoquant la galle du collet."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel vecteur biologique transfère de l'ADN d'une bactérie donneuse à une receveuse lors de la transduction ?",
+              "options": [
+                "Un bactériophage (virus)",
+                "Un ribosome",
+                "Une vacuole",
+                "Un filament d'actine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La transduction est un transfert horizontal d'ADN bactérien véhiculé par une capside virale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle proportion approximative du génome humain est constituée de séquences d'origine rétrovirale endogène (HERV) ?",
+              "options": [
+                "Environ 8 %",
+                "Plus de 90 %",
+                "Moins de 0,001 %",
+                "Exactement 50 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rétrovirus endogènes intégrés dans notre lignée germinale représentent environ 8 % de notre ADN."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel gène essentiel au développement du placenta mammifère provient de la domestication d'une protéine d'enveloppe de rétrovirus ?",
+              "options": [
+                "La syncytine",
+                "L'insuline",
+                "L'hémoglobine",
+                "L'albumine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La syncytine, d'origine virale, permet la fusion des cellules trophoblastiques formant le syncytiotrophoblaste."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'incorporation directe d'ADN libre présent dans le milieu extracellulaire par une bactérie compétente ?",
+              "options": [
+                "La transformation",
+                "La transfection animale",
+                "La conjugaison",
+                "La pinocytose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La transformation (découverte par Griffith) est l'absorption active d'ADN exogène par une cellule compétente."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment démontre-t-on un transfert horizontal ancien entre deux espèces évolutivement éloignées ?",
+              "options": [
+                "Par une incongruence entre la phylogénie du gène et celle des espèces porteuses",
+                "Par la mesure de la taille des cellules",
+                "Par le nombre de pattes de l'organisme",
+                "Par la coloration de Gram"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si l'arbre d'un gène place une plante au milieu de bactéries, cela signe un transfert horizontal de ce gène."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel animal métazoaire remarquable est connu pour incorporer jusqu'à 10 % de gènes étrangers par transfert horizontal lors de dessiccations répétées ?",
+              "options": [
+                "Le rotifère bdelloïde",
+                "La méduse d'eau douce",
+                "Le ver de terre",
+                "L'escargot de Bourgogne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rotifère bdelloïde intègre de nombreux gènes de bactéries, champignons et plantes après réhydratation de son ADN."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Endosymbioses et génomes organites",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels organites cellulaires des eucaryotes actuels dérivent directement d'anciennes endosymbioses procaryotes ?",
+              "options": [
+                "Les mitochondries",
+                "Les chloroplastes",
+                "Les appareils de Golgi",
+                "Les lysosomes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mitochondries et chloroplastes sont d'anciens procaryotes phagocytés devenus des endosymbiotes stables."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle biologiste a popularisé et étayé avec force arguments la théorie de l'endosymbiose en série (SET) en 1967 ?",
+              "options": [
+                "Lynn Margulis",
+                "Rosalind Franklin",
+                "Barbara McClintock",
+                "Christiane Nüsslein-Volhard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lynn Margulis a réhabilité et démontré l'origine endosymbiotique des organites eucaryotes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "De quel groupe de bactéries contemporaines la mitochondrie est-elle phylogénétiquement la plus proche parente ?",
+              "options": [
+                "Les alpha-protéobactéries",
+                "Les cyanobactéries",
+                "Les archées halophiles",
+                "Les spirochètes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les séquences d'ADN mitochondrial relient étroitement la mitochondrie aux alpha-protéobactéries (ex: Rickettsia)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "De quel groupe de procaryotes photosynthétiques dérivent directement les chloroplastes des végétaux ?",
+              "options": [
+                "Les cyanobactéries",
+                "Les bactéries sulfureuses pourpres",
+                "Les mycoplasmes",
+                "Les bactéries lactiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chloroplastes proviennent de l'endosymbiose primaire d'une cyanobactérie photosynthétique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel argument structural soutient fermement l'origine bactérienne de la mitochondrie ?",
+              "options": [
+                "La présence d'une double membrane et d'ADN circulaire bactérien",
+                "La présence de microtubules d'actine internes",
+                "L'absence totale de lipides dans l'enveloppe",
+                "Une paroi peptidoglycane épaisse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La double membrane, l'ADN circulaire nu et les ribosomes 70S sont des signatures bactériennes typiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Où se sont retrouvés la majorité des gènes de l'endosymbiote originel au fil des centaines de millions d'années d'évolution ?",
+              "options": [
+                "Transférés dans le noyau de la cellule hôte",
+                "Détruits sans aucune compensation",
+                "Convertis en ARN de transfert",
+                "Évacués dans les vacuoles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le transfert horizontal massif de gènes de l'organite vers le noyau a réduit la taille du génome organite."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'endosymbiose où une cellule eucaryote hétérotrophe englobe une algue eucaryote photosynthétique unicellulaire ?",
+              "options": [
+                "Une endosymbiose secondaire",
+                "Une endosymbiose primaire",
+                "Une conjugaison croisée",
+                "Une pinocytose simple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'endosymbiose secondaire implique l'ingestion d'un eucaryote photosynthétique (algue rouge ou verte)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel vestige d'ancien noyau eucaryote retrouve-t-on dans les chloroplastes à 4 membranes de certains cryptophytes ?",
+              "options": [
+                "Le nucléomorphe",
+                "Le centrosome",
+                "Le caryosome",
+                "Le prophage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nucléomorphe est le noyau résiduel réduit de l'algue eucaryote absorbée lors d'une endosymbiose secondaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel type de ribosomes retrouve-t-on dans la matrice mitochondriale et le stroma des plastes ?",
+              "options": [
+                "Des ribosomes de type 70S proches de ceux des bactéries",
+                "Des ribosomes 80S strictement eucaryotes",
+                "Des ribosomes 100S géants",
+                "Des ribosomes sans ARN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les organites contiennent des ribosomes 70S sensibles aux mêmes antibiotiques que les ribosomes procaryotes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment se divisent les mitochondries et les chloroplastes au sein du cytoplasme de la cellule eucaryote ?",
+              "options": [
+                "Par scissiparité (fission binaire)",
+                "Par mitose avec condensation chromosomique",
+                "Par méiose",
+                "Par bourgeonnement exogène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les organites se reproduisent de manière autonome par fission binaire analogue à celle des bactéries."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Polyploïdisation et hybridation interspécifique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques distinguent l'autopolyploïdie de l'allopolyploïdie ?",
+              "options": [
+                "L'autopolyploïdie implique la duplication du génome d'une seule et même espèce",
+                "L'allopolyploïdie combine les génomes de deux espèces différentes après hybridation",
+                "L'allopolyploïdie est strictement stérile chez toutes les plantes",
+                "L'autopolyploïdie nécessite toujours un rétrovirus"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'autopolyploïdie multiplie les chromosomes d'une espèce ; l'allopolyploïdie associe des génomes d'espèces distinctes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel alcaloïde végétal inhibe la polymérisation des microtubules et bloque la division cellulaire en induisant la polyploïdie ?",
+              "options": [
+                "La colchicine",
+                "La caféine",
+                "La nicotine",
+                "L'atropine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La colchicine bloque le fuseau mitotique et empêche l'anaphase, ce qui double le nombre de chromosomes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi un hybride interspécifique F1 issu de parents à caryotypes différents est-il classiquement stérile ?",
+              "options": [
+                "L'absence d'homologues empêche l'appariement méiotique régulier en prophase I",
+                "La transcription de l'ARN est totalement bloquée",
+                "L'hybride ne possède aucune mitochondrie",
+                "Les hormones sexuelles sont détruites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans chromosomes homologues pour former des bivalents, la méiose produit des gamètes aneuploïdes non viables."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment un hybride interspécifique stérile peut-il subitement recouvrer sa fertilité et fonder une nouvelle espèce ?",
+              "options": [
+                "Par un doublement chromosomique (amphidiploïdie)",
+                "Par perte de la moitié de ses chromosomes",
+                "Par croisement avec un reptile",
+                "Par hydrolyse enzymatique de son cytoplasme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le doublement chromosomique fournit un partenaire homologue à chaque chromosome, rétablissant la méiose."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel pourcentage important d'espèces de plantes à fleurs (Angiospermes) a un génome marqué par au moins une polyploïdisation ancienne ?",
+              "options": [
+                "Plus de 70 %",
+                "Moins de 1 %",
+                "Exactement 10 %",
+                "Zéro pour cent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La très grande majorité des Angiospermes (70 % ou plus) sont d'anciens polyploïdes (paléopolyploïdes)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel aliment cultivé fondamental de notre alimentation est un allohexaploïde (6n = 42) issu de 3 espèces ancestrales ?",
+              "options": [
+                "Le blé tendre (Triticum aestivum)",
+                "Le maïs grain",
+                "Le riz sauvage",
+                "Le haricot vert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le blé tendre réunit les génomes A, B et D provenant de trois graminées diploïdes distinctes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel effet phénotypique morphologique observe-t-on fréquemment chez les plantes polyploïdes (effet 'gigas') ?",
+              "options": [
+                "Une augmentation de la taille des cellules, des feuilles, fleurs et graines",
+                "Un nanisme prononcé de tous les organes",
+                "La disparition complète de la chlorophylle",
+                "Une multiplication par dix du nombre de branches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'augmentation du volume nucléaire accroît le volume cellulaire et conduit à des organes plus volumineux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la triploïdie (3n) chez les végétaux cultivés (ex: banane dessert, pastèque sans pépins) produit-elle des fruits apyrènes ?",
+              "options": [
+                "La ségrégation méiotique inégale des trivalents avorte le développement des graines",
+                "Les plastes cessent de produire du sucre",
+                "Les fleurs ne s'ouvrent jamais",
+                "Les racines refusent d'absorber l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les 3 jeux chromosomiques ne peuvent pas ségréger équitablement en méiose, ce qui bloque la formation des graines."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'apparition d'un isolement reproducteur immédiat en une seule génération par polyploïdisation ?",
+              "options": [
+                "La spéciation sympatrique instantanée",
+                "La spéciation allopatrique lente",
+                "La dérive adaptative progressive",
+                "La sélection sexuelle directionnelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un nouvel allopolyploïde ne peut plus se reproduire avec les espèces parentales (stérilité des rétrocroisements)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien de duplications complètes du génome entier (WGD) ont jalonné l'origine évolutive des premiers vertébrés ?",
+              "options": [
+                "Deux rondes de duplication (hypothèse 2R)",
+                "Une seule duplication partielle",
+                "Dix duplications consécutives",
+                "Aucune duplication"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hypothèse 2R (Susumu Ohno) démontre deux événements de tétraploïdisation à la base des vertébrés."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Dérive génétique et taille des populations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels paramètres accentuent les effets de la dérive génétique sur les fréquences alléliques ?",
+              "options": [
+                "Un faible effectif de la population",
+                "L'effet de goulot d'étranglement ou effet fondateur",
+                "Une population d'effectif infini",
+                "Une sélection naturelle directionnelle intense"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La dérive est une fluctuation aléatoire d'autant plus rapide et prononcée que l'effectif reproducteur est réduit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment définit-on la dérive génétique au sein d'une population ?",
+              "options": [
+                "La modification aléatoire des fréquences alléliques d'une génération à l'autre",
+                "L'adaptation directionnelle aux changements climatiques",
+                "La migration concertée d'individus vers un autre habitat",
+                "L'apparition ciblée de mutations avantageuses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dérive correspond aux fluctuations stochastiques des allèles dues à l'échantillonnage aléatoire des gamètes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À terme, quelle est l'issue inéluctable d'un allèle neutre soumis exclusivement à la dérive génétique dans une population finie et isolée ?",
+              "options": [
+                "Soit sa fixation (fréquence 1), soit sa disparition complète (fréquence 0)",
+                "Son maintien constant à 50 %",
+                "Sa mutation immédiate en allèle dominant",
+                "Son dédoublement chromosomique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En l'absence de mutation ou sélection, la dérive conduit fatalement à la perte ou à la fixation de l'allèle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la chute drastique et temporaire de l'effectif d'une population due à une catastrophe (épidémie, cataclysme) ?",
+              "options": [
+                "Un goulot d'étranglement génétique",
+                "Une spéciation péripatrique",
+                "Une sélection stabilisante",
+                "Un flux génique unilatéral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le goulot d'étranglement réduit massivement la variabilité génétique de la population survivante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'effet fondateur en génétique des populations ?",
+              "options": [
+                "L'établissement d'une nouvelle population par un petit nombre d'individus pionniers",
+                "La découverte des lois de Mendel en 1865",
+                "La première mutation apparue chez un ancêtre",
+                "L'apparition du premier chromosome sexuel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échantillon restreint d'individus fondateurs n'emporte qu'une fraction biaisée du pool génétique d'origine."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel généticien japonais a formulé la théorie neutraliste de l'évolution moléculaire en 1968 ?",
+              "options": [
+                "Motoo Kimura",
+                "Susumu Ohno",
+                "Masatoshi Nei",
+                "Tomoko Ohta"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kimura a démontré que la majorité des substitutions au niveau moléculaire sont neutres et fixées par dérive."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle conséquence la dérive génétique prolongée a-t-elle sur la diversité génétique intra-populationnelle ?",
+              "options": [
+                "Une diminution globale du taux d'hétérozygotie",
+                "Une explosion exponentielle du polymorphisme",
+                "La création d'une centaine de nouveaux allèles",
+                "Une augmentation constante de la panmixie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dérive élimine des allèles et augmente l'homozygotie moyenne au sein de la population."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle force évolutive neutralise ou contrecarre efficacement les effets de différenciation causés par la dérive entre deux populations voisines ?",
+              "options": [
+                "La migration (ou flux de gènes)",
+                "La consanguinité stricte",
+                "La stérilité géographique",
+                "L'hibernation prolongée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le flux de gènes (migration) homogénéise les fréquences alléliques et atténue la divergence par dérive."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Chez les guépards actuels, quel phénomène historique explique leur uniformité génétique quasi-totale ?",
+              "options": [
+                "Un goulot d'étranglement sévère à la fin du dernier pléistocène",
+                "Une alimentation exclusivement carnivore",
+                "Une sélection artificielle par l'Homme",
+                "Une absence totale de méiose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les guépards ont traversé un goulot d'étranglement historique majeur réduisant drastiquement leur hétérozygotie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la probabilité de fixation finale d'un allèle neutre nouvellement apparu par mutation chez un individu d'une population diploïde de taille N ?",
+              "options": ["1 / (2N)", "1 / N", "50 %", "Zéro"],
+              "correctAnswers": [0],
+              "explanation": "Chaque allèle neutre a une probabilité égale à sa fréquence initiale d'être fixé, soit 1 / (2N)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Sélection naturelle et adaptation au milieu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles conditions sont indispensables pour que la sélection naturelle agisse sur un caractère dans une population ?",
+              "options": [
+                "Le caractère doit présenter une variabilité phénotypique",
+                "La variation du caractère doit être au moins en partie héritable",
+                "Tous les individus doivent avoir exactement le même succès reproducteur",
+                "Le milieu ne doit exercer aucune pression sur les organismes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La sélection naturelle requiert variabilité, héritabilité et succès reproducteur différentiel associé au phénotype."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment définit-on la valeur sélective (ou fitness, w) d'un individu ou d'un génotype ?",
+              "options": [
+                "Sa contribution relative en descendants viables et fertiles à la génération suivante",
+                "Sa force musculaire mesurée en laboratoire",
+                "Sa vitesse de course en milieu naturel",
+                "Le nombre total de mutations dans son ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fitness mesure le succès reproducteur différentiel (survie x fécondité) transmis à la génération future."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel exemple historique célèbre illustre la sélection directionnelle chez la phalène du bouleau (Biston betularia) ?",
+              "options": [
+                "Le mélanisme industriel",
+                "Le mimétisme batésien",
+                "L'aposematisme larvaire",
+                "La diapause hivernale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La suie industrielle a favorisé la forme sombre (carbonaria) mieux camouflée sur les troncs noircis."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel type de sélection favorise les phénotypes intermédiaires tout en éliminant les extrêmes défavorables ?",
+              "options": [
+                "La sélection stabilisante (ou purificatrice)",
+                "La sélection directionnelle",
+                "La sélection disruptive (ou diversifiante)",
+                "La sélection sexuelle intraspécifique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sélection stabilisante (ex: poids de naissance humain) réduit la variance autour de la moyenne optimale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel type de sélection favorise simultanément les deux phénotypes extrêmes au détriment de la moyenne ?",
+              "options": [
+                "La sélection disruptive",
+                "La sélection stabilisante",
+                "La dérive équilibrée",
+                "La sélection négative pure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sélection disruptive scinde la population en favorisant deux optima phénotypiques distincts."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi l'allèle de la drépanocytose (HbS) est-il maintenu à des fréquences élevées dans certaines régions tropicales ?",
+              "options": [
+                "Avantage de l'hétérozygote (résistance accrue au paludisme causé par Plasmodium)",
+                "Surconsommation d'acides gras",
+                "Affection exclusive des personnes âgées",
+                "Régression spontanée de la maladie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le polymorphisme équilibré est maintenu car les hétérozygotes HbA/HbS résistent mieux au paludisme mortel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mécanisme décrit la sélection de caractères ornementaux coûteux facilitant l'accès aux partenaires sexuels ?",
+              "options": [
+                "La sélection sexuelle (intersexuelle ou intrasexuelle)",
+                "La sélection de groupe stricte",
+                "La sélection par parentèle indirecte",
+                "L'effet fondateur neutre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sélection sexuelle explique le dimorphisme sexuel (ex: roue du paon) favorisant l'accouplement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on une sélection où la valeur adaptative d'un phénotype diminue à mesure que sa fréquence augmente dans la population ?",
+              "options": [
+                "La sélection fréquence-dépendante négative",
+                "La sélection stabilisante stricte",
+                "L'effet Allee positif",
+                "La dérive directionnelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sélection fréquence-dépendante négative favorise les formes rares, maintenant le polymorphisme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle pression sélective anthropique majeure a sélectionné des souches bactériennes multirésistantes ?",
+              "options": [
+                "L'utilisation massive et répétée d'antibiotiques en médecine et élevage",
+                "L'éclairage urbain nocturne",
+                "Le rejet de dioxyde de carbone",
+                "L'introduction de poissons exotiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'exposition aux antibiotiques élimine les bactéries sensibles et sélectionne les mutants résistants préexistants."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel ouvrage fondateur Charles Darwin a-t-il publié en 1859 pour exposer sa théorie de la sélection naturelle ?",
+              "options": [
+                "L'Origine des espèces",
+                "La Filiation de l'homme",
+                "Le Voyage du Beagle",
+                "L'Expression des émotions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 1859, Darwin publie 'De l'origine des espèces au moyen de la sélection naturelle'."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Spéciation et isolement reproducteur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mécanismes constituent des barrières reproductives prézygotiques entre deux espèces ?",
+              "options": [
+                "L'isolement comportemental (parades nuptiales)",
+                "L'incompatibilité mécanique des appareils génitaux",
+                "La dégénérescence des hybrides F2",
+                "La stérilité de l'hybride F1"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les barrières prézygotiques empêchent la fécondation (comportement, anatomie, écologie, temporalité)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment définit-on la spéciation allopatrique ?",
+              "options": [
+                "Une divergence génétique progressive suite à une séparation géographique physique des populations",
+                "Une divergence au sein de la même aire géographique sans obstacle",
+                "Une hybridation instantanée entre trois espèces végétales",
+                "Une mutation ponctuelle d'un seul gène chez un individu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'allopatrie implique une barrière géographique (montagne, fleuve, océan) bloquant le flux génique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle forme de spéciation survient au sein d'une même population sans séparation géographique initiale ?",
+              "options": [
+                "La spéciation sympatrique",
+                "La spéciation allopatrique",
+                "La spéciation péripatrique",
+                "La dérive continentale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La spéciation sympatrique se produit dans la même aire géographique (ex: polyploïdisation ou micro-niches)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Selon le concept biologique de l'espèce formulé par Ernst Mayr, qu'est-ce qu'une espèce ?",
+              "options": [
+                "Une population d'individus interféconds produisant une descendance viable et fertile",
+                "Un ensemble d'organismes ayant la même couleur de pelage",
+                "Des individus vivant dans le même biome",
+                "Des animaux partageant le même régime alimentaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le concept biologique repose sur l'interfécondité naturelle et l'isolement reproducteur envers les autres groupes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La stérilité du mulet (croisement âne x jument) est un exemple de quelle barrière reproductive ?",
+              "options": [
+                "Une barrière postzygotique (stérilité des hybrides)",
+                "Une barrière prézygotique temporelle",
+                "Un isolement éthologique",
+                "Une incompatibilité gamétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le zygote se développe en un individu viable mais incapable de produire des gamètes fonctionnels."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la divergence rapide d'une lignée ancestrale en de nombreuses espèces exploitant des niches écologiques variées ?",
+              "options": [
+                "Une radiation adaptative",
+                "Une extinction massive",
+                "Une dérive d'équilibre",
+                "Une convergence morphologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La radiation adaptative (ex: pinsons des Galápagos, cichlidés) colonise rapidement de multiples niches vacantes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel archipel volcanique a fourni à Darwin un exemple remarquable de radiation adaptative chez les pinsons ?",
+              "options": [
+                "L'archipel des Galápagos",
+                "Les îles Canaries",
+                "Les îles Kerguelen",
+                "L'archipel d'Hawaï"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les 13 espèces de pinsons des Galápagos illustrent l'adaptation de la forme du bec aux ressources alimentaires."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que désigne le renforcement (reinforcement) lors du contact secondaire de deux populations incomplètement isolées ?",
+              "options": [
+                "La sélection naturelle favorisant les barrières prézygotiques pour éviter des hybrides peu fertiles",
+                "La fusion définitive des deux génomes en un seul",
+                "L'augmentation de la taille des individus hybrides",
+                "L'arrêt complet des mutations germinales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le renforcement perfectionne l'isolement prézygotique quand les hybrides ont une faible valeur sélective."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on deux espèces morphologiquement indiscernables mais isolées sur le plan reproducteur ?",
+              "options": [
+                "Des espèces jumelles (ou cryptiques)",
+                "Des espèces fossiles",
+                "Des sous-espèces géographiques",
+                "Des mutants silencieux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les espèces cryptiques se ressemblent fortement mais ne peuvent plus se reproduire entre elles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel modèle théorique décrit l'incompatibilité génétique postzygotique par interaction néfaste entre nouveaux allèles à deux loci distincts ?",
+              "options": [
+                "Le modèle de Bateson-Dobzhansky-Muller (BDM)",
+                "La règle de Bergmann",
+                "Le modèle d'équilibre de Hardy-Weinberg",
+                "La théorie neutraliste de Kimura"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le modèle BDM explique comment deux allèles apparus séparément deviennent incompatibles chez l'hybride."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Diversification non génétique (épigénétique et culture)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mécanismes biochimiques participent aux modifications épigénétiques de l'expression des gènes ?",
+              "options": [
+                "La méthylation de cytosines sur l'ADN (îlots CpG)",
+                "La modification post-traductionnelle des histones (acétylation, méthylation)",
+                "La substitution d'une adénine par une guanine",
+                "La délétion d'un exon entier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'épigénétique modifie l'expression génique sans altérer la séquence nucléotidique de l'ADN."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment définit-on l'épigénétique en biologie moderne ?",
+              "options": [
+                "L'étude des changements d'activité des gènes transmissibles sans modification de la séquence d'ADN",
+                "L'étude exclusive des mutations chromosomiques",
+                "L'analyse des fossiles anciens",
+                "La cartographie des sites de restriction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les marques épigénétiques modulent l'accessibilité de la chromatine et l'expression des gènes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel effet la méthylation dense des promoteurs a-t-elle généralement sur la transcription d'un gène ?",
+              "options": [
+                "Une répression ou un silençage transcriptionnel du gène",
+                "Une suractivation de la transcription",
+                "Une duplication immédiate du promoteur",
+                "La traduction directe sans passage par l'ARN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méthylation de l'ADN recrute des répresseurs et condense la chromatine, inhibant la transcription."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Chez les abeilles (Apis mellifera), quel facteur environnemental détermine le devenir d'une larve femelle en reine féconde plutôt qu'en ouvrière stérile ?",
+              "options": [
+                "Une alimentation exclusive à la gelée royale modifiant l'épigénome",
+                "Une température de ruche supérieure à 50 °C",
+                "La piqûre de mâles reproducteurs",
+                "Une mutation spontanée d'un gène royal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La gelée royale modifie la méthylation de l'ADN larvaire et induit le développement du phénotype royal."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'expression préférentielle d'un allèle dépendant strictement de son origine parentale (maternelle ou paternelle) ?",
+              "options": [
+                "L'empreinte génomique parentale",
+                "L'exclusion allélique",
+                "La codominance somatique",
+                "L'effet maternel ribosomal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'empreinte génomique marque épigénétiquement certains gènes lors de la gamétogenèse mâle ou femelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel comportement appris et transmis par imitation sociale chez les mésanges bleues britanniques illustre une diversification culturelle ?",
+              "options": [
+                "Le percement des capsules en aluminium des bouteilles de lait",
+                "La migration vers l'Afrique subsaharienne",
+                "La ponte d'œufs de couleur bleue",
+                "La construction de nids souterrains"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ouverture des bouteilles de lait s'est transmise d'oiseau à oiseau par apprentissage social."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel primatologue a mis en évidence l'utilisation d'outils et la transmission de traditions culturelles chez les chimpanzés sauvages ?",
+              "options": [
+                "Jane Goodall",
+                "Dian Fossey",
+                "Birutė Galdikas",
+                "Frans de Waal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jane Goodall a documenté à Gombe la fabrication d'outils pour capturer les termites chez les chimpanzés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'ensemble des micro-organismes symbiotiques (bactéries, levures) colonisant le tube digestif et influençant le phénotype ?",
+              "options": [
+                "Le microbiote intestinal",
+                "Le génome nucléaire",
+                "Le protéasome",
+                "Le lysosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le microbiote intestinal est acquis à la naissance et module la digestion, l'immunité et le métabolisme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que désigne la plasticité phénotypique chez un être vivant ?",
+              "options": [
+                "La capacité d'un même génotype à produire des phénotypes distincts selon l'environnement",
+                "La fragilité mécanique de la paroi cellulaire",
+                "La fusion de deux cellules de tissus différents",
+                "La mutagenèse induite par les produits plastiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La plasticité phénotypique permet à un organisme d'adapter sa morphologie ou sa physiologie à son milieu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les dialectes chantés observés chez différentes populations de baleines à bosse ou de passereaux relèvent de :",
+              "options": [
+                "Une transmission culturelle par apprentissage vocal",
+                "Une mutation sur le chromosome sexuel W",
+                "Une aneuploïdie somatique",
+                "Une sélection par le venin des prédateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les variations régionales de chants sont apprises auprès des congénères et transmises de façon culturelle."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Biodiversité et dynamique des génomes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels niveaux d'organisation constituent ensemble la biodiversité globale ?",
+              "options": [
+                "La diversité génétique (allélique) intraspécifique",
+                "La diversité spécifique (richesse en espèces)",
+                "La diversité des écosystèmes",
+                "La diversité des éléments du tableau périodique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La biodiversité s'évalue aux échelles génétique, spécifique et écosystémique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle proportion approximative du génome humain correspond à des séquences codant pour des protéines ?",
+              "options": [
+                "Environ 1,5 %",
+                "Environ 25 %",
+                "Plus de 80 %",
+                "Exactement 50 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les exons codants ne représentent qu'environ 1,5 % de l'ADN total du génome humain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on les séquences d'ADN répétées capables de se déplacer ou de se dupliquer au sein du génome ?",
+              "options": [
+                "Les éléments transposables (transposons et rétrotransposons)",
+                "Les télomères terminaux",
+                "Les histones centrales",
+                "Les ribosomes membranaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Découverts par Barbara McClintock, les transposons représentent près de la moitié de notre ADN."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel paradoxe historique exprime l'absence de corrélation entre la quantité totale d'ADN d'une espèce et sa complexité morphologique apparente ?",
+              "options": [
+                "Le paradoxe de la valeur C",
+                "Le paradoxe de Fermi",
+                "Le paradoxe d'Olbers",
+                "Le paradoxe de Levinthal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le paradoxe de la valeur C montre que certains amphibiens ou plantes ont un génome bien plus vaste que l'Homme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mécanisme permet à un seul gène eucaryote de produire plusieurs isoformes de protéines différentes ?",
+              "options": [
+                "L'épissage alternatif des pré-ARNm",
+                "La réplication semi-conservative",
+                "La dérive génétique somatique",
+                "L'endosymbiose rétrograde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'épissage alternatif combine différents exons pour diversifier le répertoire protéique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on le processus évolutif où deux espèces interagissent si étroitement que chacune exerce des pressions sélectives sur l'autre ?",
+              "options": [
+                "La coévolution (ex: fleur et insecte pollinisateur)",
+                "La spéciation allopatrique pure",
+                "Le commensalisme passif",
+                "La polyploïdie clonale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La coévolution implique des adaptations réciproques continues entre espèces partenaires ou antagonistes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle métaphore évolutive issue de Lewis Carroll illustre la course aux armements permanente entre hôtes et parasites ?",
+              "options": [
+                "L'hypothèse de la Reine Rouge",
+                "Le paradoxe du lièvre et de la tortue",
+                "L'effet papillon",
+                "Le rasoir d'Ockham"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Reine Rouge stipule qu'une espèce doit évoluer sans cesse pour simplement maintenir son adaptation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on l'analyse globale de l'ADN extrait directement d'un échantillon environnemental (eau, sol) sans cultiver les organismes ?",
+              "options": [
+                "La métagénomique (ADN environnemental ou ADNe)",
+                "Le caryotypage spectral",
+                "L'immunofluorescence directe",
+                "Le clonage thérapeutique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La métagénomique permet de caractériser l'ensemble des espèces et fonctions d'un milieu complexe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien de crises d'extinction massive majeures la Terre a-t-elle enregistrées au cours du Phanérozoïque ?",
+              "options": [
+                "5 grandes crises majeures (le 'Big Five')",
+                "2 crises mineures",
+                "12 crises identiques",
+                "Aucune crise globale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les 5 grandes extinctions (Ordovicien, Dévonien, Permien, Trias, Crétacé-Paléogène) ont remodelé la biodiversité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la principale cause d'érosion actuelle de la biodiversité qualifiée de 'sixième crise d'extinction' ?",
+              "options": [
+                "Les activités humaines (destruction des habitats, surexploitation, pollutions, climat)",
+                "L'impact d'un astéroïde géant",
+                "Une hausse spontanée de la radioactivité naturelle",
+                "La prolifération naturelle des fougères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sixième crise d'extinction est d'origine anthropique directe et rapide."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

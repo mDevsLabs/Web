@@ -106,10 +106,9 @@ function AgentShellInner() {
   } = useActiveChat();
   const { flags, channelInfo } = useAgentFlags();
   // Le mode Agent remplace tout le contenu de ChatShell, en-tête compris : il
-  // porte donc son propre accès à la navigation. `isMobile` sert à ne pas
-  // afficher un bouton d'en-tête de 44px au doigt sur desktop, ni l'inverse.
-  const { isMobile, state: sidebarState, toggleSidebar } = useSidebar();
-  const isCollapsedDesktop = sidebarState === "collapsed" && !isMobile;
+  // porte donc son propre accès à la navigation. Le bouton unique est assez
+  // grand pour le doigt sur mobile et compact sur desktop.
+  const { toggleSidebar } = useSidebar();
   const {
     capabilities: modelsCapabilities,
     catalogModelIds,
@@ -487,33 +486,19 @@ function AgentShellInner() {
           Le déclencheur du tiroir est reproduit ici parce que `ChatShell`
           remplace son contenu en mode Agent : sans lui, `ChatHeader` n'est jamais
           rendu et la barre latérale devient inatteignable — sur mobile, on n'avait
-          plus ni historique, ni nouveau chat, ni réglages. Même code que
-          `chat-header.tsx` : deux boutons distincts, car un en-tête de 44px ne
-          doit pas être un bouton de 28px sur desktop. */}
+          plus ni historique, ni nouveau chat, ni réglages. Un seul bouton
+          responsive, identique à `chat-header.tsx`. */}
       <header className="flex h-[calc(env(safe-area-inset-top)+2.75rem)] shrink-0 items-center justify-between gap-2 border-b border-border/40 px-3 pt-[env(safe-area-inset-top)] md:px-5">
-        {isCollapsedDesktop ? (
-          <Button
-            aria-label="Ouvrir la navigation"
-            className="-ml-1"
-            data-testid="agent-nav-toggle"
-            onClick={toggleSidebar}
-            size="icon-sm"
-            variant="ghost"
-          >
-            <PanelLeftIcon className="size-4" />
-          </Button>
-        ) : (
-          <Button
-            aria-label="Ouvrir la navigation"
-            className="-ml-1 h-11 w-11 md:hidden"
-            data-testid="agent-nav-toggle"
-            onClick={toggleSidebar}
-            size="icon-sm"
-            variant="ghost"
-          >
-            <PanelLeftIcon className="size-5" />
-          </Button>
-        )}
+        <Button
+          aria-label="Afficher ou masquer la navigation"
+          className="-ml-1 h-11 w-11 min-h-[44px] min-w-[44px] md:h-8 md:min-h-8 md:min-w-8 md:w-8"
+          data-testid="agent-nav-toggle"
+          onClick={toggleSidebar}
+          size="icon-sm"
+          variant="ghost"
+        >
+          <PanelLeftIcon className="size-5 md:size-4" />
+        </Button>
 
         <div className="flex items-center gap-2">
           <AgentChannelBadge channel={channelInfo.channel} />

@@ -1,4 +1,5 @@
-import { FileText, ShieldCheck } from "lucide-react";
+import { FileTextIcon } from "@mdevs/icons/files/file-text";
+import { ShieldCheckIcon } from "@mdevs/icons/security/shield-check";
 import Link from "next/link";
 
 export default async function LegalIndexPage() {
@@ -22,7 +23,7 @@ export default async function LegalIndexPage() {
           className="group rounded-3xl border border-slate-200 bg-white/70 p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
           href="/legal/terms"
         >
-          <FileText aria-hidden="true" className="mb-4 size-7 text-primary" />
+          <FileTextIcon aria-hidden="true" className="mb-4 size-7 text-primary" />
           <h2 className="text-xl font-bold text-slate-900 group-hover:text-primary">
             Conditions générales d’utilisation
           </h2>
@@ -36,7 +37,10 @@ export default async function LegalIndexPage() {
           className="group rounded-3xl border border-slate-200 bg-white/70 p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
           href="/legal/privacy"
         >
-          <ShieldCheck aria-hidden="true" className="mb-4 size-7 text-primary" />
+          <ShieldCheckIcon
+            aria-hidden="true"
+            className="mb-4 size-7 text-primary"
+          />
           <h2 className="text-xl font-bold text-slate-900 group-hover:text-primary">
             Politique de confidentialité
           </h2>

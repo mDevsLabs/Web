@@ -1,0 +1,2733 @@
+{
+  "id": "5e-technologie-08",
+  "year": "5e",
+  "subject": "technologie",
+  "title": "Programmer un objet",
+  "order": 8,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Algorithme",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un algorithme, c'est :",
+              "options": [
+                "Une suite ordonnée d'instructions",
+                "Un ordinateur portable",
+                "Une recette expliquée étape par étape",
+                "Un jeu vidéo"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Un algorithme dit quoi faire et dans quel ordre, comme une recette."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un algorithme, l'ordre des étapes :",
+              "options": [
+                "Importe toujours",
+                "N'a aucune importance",
+                "Change seulement la couleur",
+                "Sert uniquement en sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inverser des étapes peut changer le résultat."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une instruction, c'est :",
+              "options": [
+                "Une action précise à réaliser",
+                "Un câble USB",
+                "Un écran",
+                "Une pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque instruction est une petite action du programme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour programmer un objet, on écrit d'abord :",
+              "options": [
+                "Les étapes dans le bon ordre",
+                "Le prix de l'ampoule",
+                "La marque du meuble",
+                "La date du jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut décrire la séquence avant exécution."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Répète 3 fois » signifie :",
+              "options": [
+                "Faire la même action plusieurs fois",
+                "Effacer le programme",
+                "Couper le courant",
+                "Changer de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La boucle répète un bloc d'instructions."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un algorithme s'arrête quand :",
+              "options": [
+                "Toutes les étapes prévues sont finies",
+                "L'utilisateur regarde ailleurs",
+                "Il pleut dehors",
+                "L'écran est sale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fin correspond à la dernière instruction."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Décrire un algorithme avant de programmer aide à :",
+              "options": [
+                "Réfléchir au problème",
+                "Rendre l'objet plus lourd",
+                "Augmenter le bruit",
+                "Cacher les fils"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Planifier évite d'oublier des étapes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une entrée pour un objet, c'est par exemple :",
+              "options": [
+                "Appuyer sur un bouton",
+                "Peindre le boîtier",
+                "Visser une vis",
+                "Emballer le carton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'entrée est une information ou un geste reçu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une sortie, c'est :",
+              "options": [
+                "Ce que l'objet produit (lumière, son, mouvement)",
+                "Le carton d'emballage",
+                "La notice papier",
+                "Le tournevis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sortie est le résultat visible ou audible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un algorithme incorrect peut :",
+              "options": [
+                "Ne pas donner le résultat voulu",
+                "Rendre l'objet invincible",
+                "Téléporter l'utilisateur",
+                "Geler le temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une erreur dans les étapes mène à un comportement faux."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'ordre compte quand :",
+              "options": [
+                "On assemble dans le mauvais sens",
+                "On mélange les étapes d'allumage",
+                "On choisit une couleur de fil",
+                "On compte les vis"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Inverser des étapes peut empêcher l'objet de fonctionner."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Numéroter les étapes sert à :",
+              "options": [
+                "Les lire dans le bon ordre",
+                "Décorer la feuille",
+                "Gagner de l'argent",
+                "Changer la langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La numérotation fixe la séquence à suivre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Si le bouton est enfoncé, allume la LED » est :",
+              "options": [
+                "Une condition",
+                "Une répétition infinie",
+                "Un commentaire vide",
+                "Une faute obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « si » choisit une action selon une situation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sans ordre clair, un robot de dessin :",
+              "options": [
+                "Peut dessiner n'importe quoi",
+                "Dessine toujours un cercle parfait",
+                "Ne consomme plus d'énergie",
+                "Lit les pensées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des instructions mélangées produisent un tracé incohérent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une flèche entre deux blocs signifie :",
+              "options": [
+                "Passer à l'étape suivante",
+                "Supprimer l'étape",
+                "Couper l'alimentation",
+                "Peindre en rouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les flèches montrent l'enchaînement des instructions."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour clignoter une LED, l'ordre typique est :",
+              "options": [
+                "Allumer, attendre, éteindre, attendre",
+                "Éteindre une seule fois",
+                "Attendre sans allumer",
+                "Couper le fil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le clignotement alterne allumage et extinction."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Mêmes étapes, ordre différent :",
+              "options": [
+                "Peut donner un résultat différent",
+                "Donne toujours le même résultat",
+                "Est impossible",
+                "Efface la mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre fait partie du sens de l'algorithme."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Relire l'ordre des instructions permet de :",
+              "options": [
+                "Repérer une inversion",
+                "Augmenter le volume",
+                "Changer le forfait internet",
+                "Rendre l'objet waterproof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La relecture vérifie la séquence avant test."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Étape « attendre 1 seconde » sert à :",
+              "options": [
+                "Laisser le temps à l'action de se voir",
+                "Ralentir internet",
+                "Charger le nuage",
+                "Effacer la LED"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pause sépare deux actions dans le temps."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Inverser « ouvrir la trappe » et « lancer le mécanisme » peut :",
+              "options": [
+                "Bloquer le mécanisme",
+                "Doubler la vitesse",
+                "Télécharger une app",
+                "Peindre le boîtier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines actions doivent précéder d'autres."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une instruction simple peut être :",
+              "options": [
+                "Allumer une LED",
+                "Compter jusqu'à l'infini sans fin",
+                "Ignorer toutes les entrées",
+                "Supprimer l'algorithme"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Allumer une LED est une action atomique; supprimer n'est pas une étape utile ici."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Éteins la LED » est :",
+              "options": [
+                "Une instruction",
+                "Un capteur",
+                "Un câble",
+                "Un algorithme complet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une seule action dans la suite."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un algorithme est souvent une liste de :",
+              "options": [
+                "Instructions",
+                "Couleurs de peinture",
+                "Marques de vis",
+                "Cartons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On enchaîne des instructions élémentaires."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Joue un son » après « détecte un mouvement » forme :",
+              "options": [
+                "Une petite séquence",
+                "Un hasard sans lien",
+                "Un câble HDMI",
+                "Une pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux instructions enchaînées forment une séquence."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une instruction trop vague, par exemple « fais bien » :",
+              "options": [
+                "Est difficile à exécuter pour l'objet",
+                "Rend le programme parfait",
+                "Charge la batterie",
+                "Remplace un capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut des actions précises et mesurables."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Découper un grand problème en petites étapes, c'est :",
+              "options": ["Décomposer", "Effacer", "Peindre", "Emballer"],
+              "correctAnswers": [0],
+              "explanation": "Décomposer rend le algorithme plus clair."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Chaque instruction doit être :",
+              "options": [
+                "Compréhensible par la machine ou le microcontrôleur",
+                "Secrète",
+                "Aléatoire",
+                "Invisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le programmeur traduit des actions que l'objet peut faire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Avance de 10 cm » convient à :",
+              "options": [
+                "Un robot mobile",
+                "Un four micro-ondes",
+                "Un cahier",
+                "Un stylo seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une instruction de déplacement pour un robot."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ajouter une instruction oubliée change :",
+              "options": [
+                "Le comportement de l'objet",
+                "La couleur du ciel",
+                "La gravité",
+                "Le numéro de série du stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque instruction ajoutée modifie ce qui se passe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une suite vide d'instructions :",
+              "options": [
+                "Ne fait rien",
+                "Allume toutes les LED",
+                "Joue la musique la plus forte",
+                "Ouvre toutes les portes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans instruction, l'objet n'exécute aucune action."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une entrée, c'est :",
+              "options": [
+                "Une information reçue par l'objet",
+                "Un résultat produit",
+                "Un bouton pressé détecté",
+                "Un emballage"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Entrée = signal ou donnée reçue; un bouton pressé en est un exemple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un capteur de lumière envoie :",
+              "options": [
+                "Une entrée au programme",
+                "Une sortie de peinture",
+                "Un emballage",
+                "Une vis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le capteur mesure et transmet une valeur au programme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Allumer une LED est plutôt :",
+              "options": [
+                "Une sortie",
+                "Une entrée",
+                "Un capteur",
+                "Un carton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La LED montre un effet produit par le programme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sans entrée, un objet interactif :",
+              "options": [
+                "Ne réagit pas aux événements",
+                "Devient toujours plus intelligent",
+                "Ne consomme jamais d'énergie",
+                "Se peint seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut des signaux pour déclencher des actions."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Affiche la température » utilise une entrée :",
+              "options": [
+                "Mesurée par un capteur",
+                "Inventée au hasard",
+                "Tirée d'un poster",
+                "Du stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La température vient d'une mesure réelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Entrée et sortie dans un algorithme :",
+              "options": [
+                "Se suivent souvent (si entrée alors sortie)",
+                "N'ont jamais de lien",
+                "Sont la même chose",
+                "N'existent pas en technologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On traite une entrée pour produire une sortie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un bouton poussoir est :",
+              "options": [
+                "Une entrée utilisateur",
+                "Une sortie lumineuse",
+                "Un moteur",
+                "Un haut-parleur seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'utilisateur fournit une entrée en appuyant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un buzzer qui bippe est :",
+              "options": [
+                "Une sortie sonore",
+                "Une entrée de lumière",
+                "Un algorithme papier",
+                "Un tournevis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le son est produit par l'objet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Noter « lire le bouton » dans l'algorithme décrit :",
+              "options": [
+                "Une étape d'entrée",
+                "Une étape de peinture",
+                "Une étape de collage",
+                "Une étape de rangement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lire le bouton récupère l'état de l'entrée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Plusieurs sorties possibles :",
+              "options": [
+                "LED, moteur, écran, buzzer",
+                "Uniquement du papier",
+                "Uniquement des vis",
+                "Rien du tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un objet peut agir sur plusieurs actionneurs."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Répète » sert à :",
+              "options": [
+                "Éviter de recopier la même suite",
+                "Faire une action plusieurs fois",
+                "Supprimer toutes les LED",
+                "Couper le courant"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La boucle répète un bloc sans réécrire chaque fois."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Répéter 5 fois « allume puis éteint » produit :",
+              "options": [
+                "5 clignotements",
+                "1 clignotement",
+                "0 action",
+                "Une panne réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque répétition refait le cycle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sans boucle, faire 100 pas forward :",
+              "options": [
+                "Demandera 100 lignes identiques",
+                "Suffira d'une ligne",
+                "Est impossible",
+                "Efface le robot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La répétition compacte remplace la copie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le nombre après « répète » indique :",
+              "options": [
+                "Combien de fois refaire le bloc",
+                "La couleur du fil",
+                "Le prix",
+                "La date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est le compteur de répétitions."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une boucle infinie sans condition d'arrêt :",
+              "options": [
+                "Ne s'arrête jamais seule",
+                "S'arrête toujours en 1 seconde",
+                "Est obligatoire en 5e",
+                "Peint le robot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut prévoir une fin ou une condition."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Répète tant que le bouton est pressé » :",
+              "options": [
+                "Lie la boucle à une entrée",
+                "Ignore le bouton",
+                "Coupe le moteur",
+                "Efface la mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La condition utilise l'état du bouton."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Répéter un bloc de 3 instructions 2 fois exécute :",
+              "options": [
+                "6 instructions au total",
+                "3 instructions",
+                "9 instructions",
+                "0 instruction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2 × 3 = 6 exécutions d'instructions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les boucles rendent un algorithme :",
+              "options": [
+                "Plus court à écrire",
+                "Toujours incorrect",
+                "Sans ordre",
+                "Impossible à tester"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On évite la répétition inutile de texte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Clignoter 10 fois demande plutôt :",
+              "options": [
+                "Une boucle de 10",
+                "Dix programmes différents",
+                "Aucune instruction",
+                "Un seul allumage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La boucle encode les répétitions."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sortir de la boucle signifie :",
+              "options": [
+                "Passer aux instructions suivantes",
+                "Recommencer à zéro pour toujours",
+                "Couper l'école",
+                "Peindre la carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après les répétitions, on continue la suite."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une condition « si … alors » sert à :",
+              "options": [
+                "Choisir une action selon le cas",
+                "Répéter sans fin",
+                "Ignorer toutes les entrées",
+                "Effacer le programme"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Le si oriente le programme; effacer n'est pas le rôle d'une condition."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Si température > 30 alors ventilateur ON » :",
+              "options": [
+                "Compare une entrée à un seuil",
+                "Peint le ventilateur",
+                "Coupe internet",
+                "Joue un film"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On teste une valeur mesurée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Sinon » sert quand :",
+              "options": [
+                "La condition est fausse",
+                "La condition est vraie",
+                "Il n'y a pas d'entrée",
+                "Le robot est éteint"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sinon exécute un bloc alternatif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sans condition, un feu tricolore simulé :",
+              "options": [
+                "Ne change pas selon les cas",
+                "Devient toujours vert",
+                "Lit les emails",
+                "Devient un stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut des règles selon la situation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tester si le bouton est pressé, c'est :",
+              "options": [
+                "Une condition",
+                "Une sortie",
+                "Un emballage",
+                "Une vis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On vérifie un état d'entrée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux branches si/sinon :",
+              "options": [
+                "Deux comportements possibles",
+                "Toujours le même",
+                "Aucune instruction",
+                "Infini de fils"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une branche est prise selon le test."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Si obstacle détecté alors recule » protège :",
+              "options": ["Le robot", "Le nuage", "Le cahier", "La gomme"],
+              "correctAnswers": [0],
+              "explanation": "La condition réagit au capteur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une condition fausse exécute :",
+              "options": [
+                "Le bloc sinon ou rien du bloc si",
+                "Toujours le bloc si",
+                "Toutes les LED",
+                "Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seule la branche correspondante s'exécute."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combiner si et répète permet :",
+              "options": [
+                "Des comportements plus riches",
+                "D'interdire les capteurs",
+                "De supprimer les sorties",
+                "De ne jamais tester"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut répéter seulement dans certains cas."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Écrire la condition clairement aide à :",
+              "options": [
+                "Éviter les mauvaises réactions",
+                "Gagner au loto",
+                "Changer la météo",
+                "Rendre l'objet plus lourd"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une règle floue produit des bugs."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Décomposer un problème, c'est :",
+              "options": [
+                "Le diviser en sous-problèmes",
+                "Tout mélanger",
+                "Ignorer les étapes",
+                "Ne jamais programmer"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "On découpe pour traiter chaque partie; ignorer n'aide pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour « ouvre si code correct », on peut d'abord :",
+              "options": [
+                "Vérifier le code puis actionner le moteur",
+                "Peindre la porte",
+                "Couper le courant",
+                "Effacer le capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux sous-tâches : contrôle et ouverture."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un organigramme aide à :",
+              "options": [
+                "Visualiser les étapes",
+                "Chauffer la salle",
+                "Télécharger des jeux",
+                "Visser plus vite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le schéma montre l'enchaînement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Résoudre une sous-étape à la fois :",
+              "options": [
+                "Simplifie le travail",
+                "Interdit les capteurs",
+                "Supprime les tests",
+                "Efface la mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On avance par morceaux testables."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un algorithme trop long sans découpage :",
+              "options": [
+                "Est difficile à comprendre",
+                "Est toujours parfait",
+                "Ne peut pas avoir de boucles",
+                "N'utilise jamais de si"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clarté vient aussi de la structure."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tester une sous-partie avant le tout :",
+              "options": [
+                "Repère les erreurs plus tôt",
+                "Est interdit",
+                "Remplace le algorithme",
+                "Efface les entrées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valider par morceaux facilite le debug."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Faire un sandwich » décomposé :",
+              "options": [
+                "Prendre pain, garnir, fermer",
+                "Un seul mot magique",
+                "Aucune étape",
+                "Seulement de la peinture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analogie alimentaire de la décomposition."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Réutiliser un petit algorithme dans un grand :",
+              "options": [
+                "Évite de tout réécrire",
+                "Est impossible en 5e",
+                "Supprime les conditions",
+                "Coupe le Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les blocs se combinent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Nommer un bloc « clignoter » :",
+              "options": [
+                "Rend le programme lisible",
+                "Cache les bugs",
+                "Remplace les tests",
+                "Efface les sorties"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un nom clair explique le rôle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La décomposition ne remplace pas :",
+              "options": [
+                "Le respect de l'ordre des instructions",
+                "Le besoin de matériel",
+                "Les règles de sécurité",
+                "Les piles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque sous-partie reste ordonnée."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Programmer un objet, c'est :",
+              "options": [
+                "Y mettre un algorithme exécutable",
+                "Seulement le peindre",
+                "Écrire des instructions pour sa carte",
+                "Ignorer les capteurs"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "On traduit l'algorithme pour le microcontrôleur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un microcontrôleur :",
+              "options": [
+                "Exécute les instructions une par une",
+                "Est un simple autocollant",
+                "Ne lit jamais les capteurs",
+                "Est toujours un écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il suit le programme chargé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le programme est souvent créé sur :",
+              "options": [
+                "Un ordinateur puis envoyé à l'objet",
+                "Uniquement sur papier sans transfert",
+                "La lune",
+                "Un ballon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On programme puis on téléverse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un capteur sur l'objet sert à :",
+              "options": [
+                "Recueillir des entrées",
+                "Produire toujours de la lumière",
+                "Remplacer la batterie",
+                "Peindre le boîtier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il mesure l'environnement ou un geste."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un actionneur :",
+              "options": [
+                "Réalise une sortie (moteur, LED)",
+                "Est une entrée clavier",
+                "Est un cahier",
+                "Est une règle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il transforme le signal en action."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'algorithme papier avant le code :",
+              "options": [
+                "Prépare la logique",
+                "Remplace le matériel",
+                "Empêche les tests",
+                "Supprime les boucles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On valide la logique humainement d'abord."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Modifier le programme change :",
+              "options": [
+                "Le comportement sans resouder tout",
+                "La gravité",
+                "La taille du cahier",
+                "Le numéro de la classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le logiciel définit les réactions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une carte programmable en classe :",
+              "options": [
+                "Peut piloter LED et moteurs",
+                "Ne fait que du dessin",
+                "N'accepte aucune instruction",
+                "Est identique à une gomme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est le cœur programmable de l'objet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le fil entre capteur et carte transporte :",
+              "options": [
+                "Un signal d'information",
+                "De la peinture",
+                "De l'eau",
+                "Du sable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fils relient entrées et sorties."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif « programmer un objet » en 5e :",
+              "options": [
+                "Comprendre suite, ordre, tests simples",
+                "Maîtriser un langage pro du lycée",
+                "Ignorer les erreurs",
+                "Ne jamais répéter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On reste sur la logique, pas la syntaxe avancée."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Mots utiles en pseudo-code :",
+              "options": [
+                "Si, alors, sinon, répète",
+                "Uniquement des insultes",
+                "Seulement des couleurs",
+                "Rien du tout"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Si et répète structurent; « rien » n'est pas un mot-clé utile."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le pseudo-code :",
+              "options": [
+                "Décrit la logique sans syntaxe compliquée",
+                "Remplace le microcontrôleur",
+                "Est secret",
+                "Ne peut pas avoir d'ordre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un langage humain proche de la logique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Début » et « fin » encadrent :",
+              "options": [
+                "Tout l'algorithme",
+                "Seulement une LED",
+                "Internet",
+                "Le stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils marquent le début et la fin du programme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Écrire « lire capteur lumière » :",
+              "options": [
+                "Indique une entrée",
+                "Est une sortie",
+                "Est une boucle",
+                "Est une erreur obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lire = récupérer une valeur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Traduire pseudo-code en blocs visuels :",
+              "options": [
+                "Facilite le passage à la machine",
+                "Interdit les tests",
+                "Supprime les si",
+                "Efface les capteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les blocs reprennent la même logique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un commentaire dans un algo (// note) :",
+              "options": [
+                "Explique pour les humains",
+                "Est exécuté par la carte",
+                "Allume une LED",
+                "Remplace une condition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La machine ignore souvent les commentaires."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Attendre 2 s » en pseudo-code :",
+              "options": [
+                "Introduit une pause",
+                "Est une condition",
+                "Est une entrée bouton",
+                "Efface la mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La temporisation sépare les actions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Indenter (décaler) les lignes sous « si » :",
+              "options": [
+                "Montre ce qui dépend de la condition",
+                "Change la couleur du fil",
+                "Coupe le moteur",
+                "Est interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'indentation clarifie la structure."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pseudo-code incorrect mais ordre clair :",
+              "options": [
+                "Aide quand même à réfléchir",
+                "Empêche tout test",
+                "Remplace le matériel",
+                "Devient un capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La logique peut se corriger avant le code."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avant de coder, relire le pseudo-code :",
+              "options": [
+                "Vérifie oublis et ordre",
+                "Supprime les boucles",
+                "Interdit les entrées",
+                "Peint la carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relecture = première forme de test."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un bon algorithme pour un objet :",
+              "options": [
+                "Est ordonné et testable",
+                "Mélange aléatoirement les étapes",
+                "Décrit entrées et sorties",
+                "Ignore le but"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ordre et entrées/sorties claires mènent à un objet fiable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Après avoir écrit l'algorithme, la prochaine étape logique :",
+              "options": [
+                "Le tester sur l'objet ou en simulation",
+                "Le jeter",
+                "Ne jamais le relire",
+                "Peindre seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le test valide ou corrige le comportement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si le résultat ne correspond pas au but :",
+              "options": [
+                "On corrige les instructions",
+                "On déclare que c'est parfait",
+                "On coupe tous les capteurs",
+                "On efface le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'itération fait partie du processus."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Boucles, conditions et séquence :",
+              "options": [
+                "Se combinent dans un même programme",
+                "Ne peuvent jamais coexister",
+                "Remplacent les tests",
+                "Interdisent les entrées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un objet réel utilise plusieurs structures."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'algorithme d'un distributeur automatique doit :",
+              "options": [
+                "Gérer choix, paiement, rendu",
+                "Ignorer l'utilisateur",
+                "Ne jamais s'arrêter",
+                "Ne pas avoir d'ordre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs étapes ordonnées selon les cas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Documenter son algorithme aide les camarades à :",
+              "options": [
+                "Comprendre et reprendre le projet",
+                "Gagner sans lire",
+                "Supprimer les tests",
+                "Couper le courant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clarté facilite le travail en équipe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une erreur d'ordre dans l'algorithme :",
+              "options": [
+                "Se voit souvent au test",
+                "Est invisible",
+                "Améliore toujours le robot",
+                "Charge le nuage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le test révèle les mauvais enchaînements."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En 5e, programmer un objet vise surtout :",
+              "options": [
+                "La pensée algorithmique",
+                "Devenir expert réseau",
+                "Ignorer la sécurité",
+                "Ne jamais répéter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre suite, choix et répétitions."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un algorithme fini contient :",
+              "options": [
+                "Un début, des étapes, une fin",
+                "Aucune instruction",
+                "Seulement des commentaires",
+                "Uniquement des images"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure de base de tout programme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Passer de l'idée à l'algorithme :",
+              "options": [
+                "Formalise ce que l'objet doit faire",
+                "Empêche toute créativité",
+                "Supprime les capteurs",
+                "Interdit les boucles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formaliser rend l'idée exécutable."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Tester",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tester un programme sert à :",
+              "options": [
+                "Vérifier qu'il fait ce qu'on veut",
+                "Trouver des erreurs",
+                "Peindre le boîtier",
+                "Augmenter le poids"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Test = contrôle du comportement et recherche de bugs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sans test, on risque :",
+              "options": [
+                "Des surprises en utilisation",
+                "Une garantie parfaite",
+                "Zéro bug",
+                "Un objet qui se peint seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les erreurs restent cachées jusqu'à l'usage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tester dès la première version :",
+              "options": [
+                "Évite d'accumuler les fautes",
+                "Est inutile",
+                "Remplace l'algorithme",
+                "Supprime les entrées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corriger tôt coûte moins d'effort."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un test, c'est :",
+              "options": [
+                "Exécuter et observer le résultat",
+                "Ignorer les sorties",
+                "Ne jamais toucher l'objet",
+                "Effacer la mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On compare ce qui se passe au but."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Noter ce qu'on attend avant le test :",
+              "options": [
+                "Donne un résultat attendu",
+                "Interdit les capteurs",
+                "Coupe internet",
+                "Remplace le moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans attente, on ne peut pas juger."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si la LED devrait s'allumer et reste éteinte :",
+              "options": [
+                "Il y a probablement un problème",
+                "Tout va toujours bien",
+                "Le test est inutile",
+                "L'algorithme est parfait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écart entre attendu et observé = bug."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Retester après une correction :",
+              "options": [
+                "Vérifie que le bug est parti",
+                "Est interdit",
+                "Efface le programme",
+                "Coupe l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut confirmer la réparation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tester avec un camarade qui lit l'algo :",
+              "options": [
+                "Repère des oublis",
+                "Empêche tout bug",
+                "Remplace la carte",
+                "Supprime les boucles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un regard neuf voit des incohérences."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un test réussi signifie :",
+              "options": [
+                "Comportement conforme au but",
+                "Plus jamais de modification",
+                "Fin de la technologie",
+                "Objet indestructible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Succès = résultat attendu obtenu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tester fait partie :",
+              "options": [
+                "Du cycle créer-programmer-tester",
+                "Seulement du rangement",
+                "Uniquement de la peinture",
+                "Du repas cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une étape normale du projet."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une erreur dans un programme peut être :",
+              "options": [
+                "Une mauvaise instruction",
+                "Un mauvais ordre",
+                "Une couleur de fil",
+                "Un prénom"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fautes de logique ou d'enchaînement changent le résultat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un bug, c'est :",
+              "options": [
+                "Un défaut qui fausse le comportement",
+                "Un insecte obligatoire dans la carte",
+                "Un type de pile",
+                "Un stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bug = comportement incorrect du programme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le programme s'exécute mais fait n'importe quoi :",
+              "options": [
+                "Erreur de logique",
+                "Câble USB décoratif",
+                "Pile neuve",
+                "Carton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La syntaxe peut être ok mais la logique non."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Oublier « éteindre » dans un clignotement :",
+              "options": [
+                "Peut laisser la LED allumée",
+                "Améliore toujours le projet",
+                "Est impossible",
+                "Coupe le Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Instruction manquante = comportement différent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Brancher un capteur sur la mauvaise entrée :",
+              "options": [
+                "Donne des mesures ou réactions fausses",
+                "Rend le robot invincible",
+                "Efface les boucles",
+                "Peint la LED"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le test matériel fait aussi partie du debug."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Corriger une erreur, c'est :",
+              "options": [
+                "Modifier algo ou branchements",
+                "Ignorer le problème",
+                "Supprimer tous les tests",
+                "Cacher la LED"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On cherche la cause puis on ajuste."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Relire ligne par ligne aide à :",
+              "options": [
+                "Repérer fautes et oublis",
+                "Télécharger des mods",
+                "Changer la météo",
+                "Gonfler un ballon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relecture = test statique simple."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si « répète 3 » est écrit « répète 30 » par erreur :",
+              "options": [
+                "Le comportement dure plus longtemps",
+                "Rien ne change",
+                "La carte disparaît",
+                "Le capteur devient moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une constante fausse change l'effet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une erreur peut venir :",
+              "options": [
+                "Du programme ou du montage",
+                "Uniquement de la météo",
+                "Du prénom de l'élève",
+                "De la couleur du cahier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logiciel et hardware interagissent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Après correction, il faut :",
+              "options": [
+                "Retester",
+                "Abandonner le projet",
+                "Effacer l'algorithme",
+                "Ne plus observer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confirmer que le bug est résolu."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le résultat attendu, c'est :",
+              "options": [
+                "Ce qu'on veut voir si tout est correct",
+                "Une devinette sans lien",
+                "La description du but",
+                "Un emballage"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "On définit le but pour comparer au test."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Résultat observé :",
+              "options": [
+                "Ce qui se passe vraiment",
+                "Ce qu'on imagine",
+                "La notice du stylo",
+                "La cloche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Observation réelle pendant le test."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Attendu = LED allumée 2 s, observé = éteinte :",
+              "options": [
+                "Échec du test",
+                "Succès",
+                "Test inutile",
+                "Victoire automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écart = problème à corriger."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Écrire le résultat attendu avant de lancer :",
+              "options": [
+                "Rend le test objectif",
+                "Interdit les capteurs",
+                "Supprime les si",
+                "Peint la carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critère clair pour juger."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tableau : entrée / attendu / observé sert à :",
+              "options": [
+                "Documenter les tests",
+                "Décorer",
+                "Remplacer l'algo",
+                "Couper le moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trace écrite des essais."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si observé = attendu plusieurs fois :",
+              "options": [
+                "Confiance plus forte",
+                "Preuve que plus jamais de bug",
+                "Fin des mathématiques",
+                "Objet magique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répéter le test réduit le hasard."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "But : bip à chaque appui. Test : appui sans bip :",
+              "options": [
+                "Non conforme",
+                "Conforme",
+                "Test annulé",
+                "Succès sans son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sortie sonore manque."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comparer attendu et observé :",
+              "options": [
+                "Identifie les écarts",
+                "Efface la mémoire",
+                "Remplace les boucles",
+                "Coupe l'alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est le cœur de l'évaluation du test."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Résultat attendu trop vague (« ça marche ») :",
+              "options": [
+                "Rend le test difficile à juger",
+                "Garantit le succès",
+                "Supprime les bugs",
+                "Remplace l'objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut des critères précis."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Changer le but du projet implique :",
+              "options": [
+                "De mettre à jour le résultat attendu",
+                "De ne plus tester",
+                "D'effacer les capteurs",
+                "De ne jamais corriger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les critères suivent le cahier des charges."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un cas de test, c'est :",
+              "options": [
+                "Une situation précise à essayer",
+                "Une entrée et un attendu définis",
+                "Une couleur au hasard",
+                "Un prénom"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On décrit conditions et résultat espéré."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tester bouton relâché puis enfoncé :",
+              "options": [
+                "Deux cas de test différents",
+                "Un seul cas suffit toujours",
+                "Aucun test",
+                "Interdit en 5e"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque état mérite un essai."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Plusieurs cas de test :",
+              "options": [
+                "Couvrent plus de situations",
+                "Sont toujours inutiles",
+                "Remplacent l'algorithme",
+                "Effacent les sorties"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variété = meilleure couverture."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Cas : « obstacle à 5 cm, robot recule » teste :",
+              "options": [
+                "La condition obstacle",
+                "La peinture",
+                "Le stylo",
+                "La cloche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On vérifie une règle précise."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ordre des tests :",
+              "options": [
+                "Peut suivre une checklist",
+                "Doit être aléatoire sans note",
+                "Interdit de noter",
+                "Sans observation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Procédure structurée évite les oublis."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Test limit : valeur frontière (ex. seuil 30°) :",
+              "options": [
+                "Vérifie le comportement au seuil",
+                "Est inutile",
+                "Remplace le capteur",
+                "Coupe internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bords révèlent souvent des bugs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Noter passé/échoué pour chaque cas :",
+              "options": [
+                "Synthétise la campagne de test",
+                "Cache les bugs",
+                "Supprime les si",
+                "Interdit les boucles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suivi clair des résultats."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un cas échoué indique :",
+              "options": [
+                "Où chercher la correction",
+                "Que le test est mauvais obligatoirement",
+                "Qu'il faut arrêter",
+                "Que l'objet est parfait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cas précise la situation du bug."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tester sans noter les cas :",
+              "options": [
+                "Risque d'oublier ce qui a été fait",
+                "Garantit la perfection",
+                "Efface les LED",
+                "Remplace le moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La trace évite de retester au hasard."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ajouter un cas après un bug trouvé :",
+              "options": [
+                "Évite que le bug revienne",
+                "Est interdit",
+                "Supprime l'algorithme",
+                "Coupe l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Test de non-régression."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Après un test raté, on peut :",
+              "options": [
+                "Analyser la cause",
+                "Corriger le programme",
+                "Ignorer et livrer",
+                "Supprimer tous les capteurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On diagnostique puis on modifie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Petite modification puis retest :",
+              "options": [
+                "Approche itérative",
+                "Abandon total",
+                "Fin du projet",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Améliorer par cycles test-correction."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Changer une seule chose entre deux tests :",
+              "options": [
+                "Aide à voir ce qui a changé le résultat",
+                "Est inutile",
+                "Empêche de comprendre",
+                "Coupe le Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sinon on ne sait pas quelle fix a marché."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si l'ordre était faux, on :",
+              "options": [
+                "Réorganise les instructions",
+                "Peint la carte",
+                "Efface le but",
+                "Supprime les tests"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Correction ciblée sur la cause."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Correction sans retest :",
+              "options": [
+                "Laisse peut-être le bug",
+                "Garantit le succès",
+                "Efface la mémoire",
+                "Rend l'objet invincible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut vérifier l'effet de la fix."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Demander de l'aide après avoir noté le bug :",
+              "options": [
+                "Facilite le diagnostic",
+                "Interdit",
+                "Remplace l'algorithme",
+                "Supprime les boucles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Description précise = aide efficace."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Version corrigée numérotée (v2, v3) :",
+              "options": [
+                "Suit l'évolution du projet",
+                "Est du gaspillage",
+                "Efface v1 de l'histoire",
+                "Interdit en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Historique des améliorations."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Corriger au hasard sans hypothèse :",
+              "options": [
+                "Peut créer d'autres bugs",
+                "Est la meilleure méthode",
+                "Remplace les tests",
+                "Coupe le moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mieux vaut une cause probable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Test OK après fix du cas qui échouait :",
+              "options": [
+                "Bon signe pour ce cas",
+                "Preuve absolue pour toujours",
+                "Fin des capteurs",
+                "Objet parfait certifié"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il reste d'autres cas à vérifier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'itération test-corriger-test :",
+              "options": [
+                "Améliore progressivement l'objet",
+                "N'existe pas en technologie",
+                "Remplace l'algorithme",
+                "Interdit les entrées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cycle normal de développement."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tester plusieurs fois le même cas :",
+              "options": [
+                "Vérifie que le résultat est stable",
+                "Élimine le hasard d'un essai",
+                "Remplace tous les autres cas",
+                "Efface le programme"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Répéter détecte comportements aléatoires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un bug intermittent :",
+              "options": [
+                "N'apparaît pas à chaque test",
+                "N'existe jamais",
+                "Est toujours visible",
+                "Est un capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'où l'intérêt de répéter les tests."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deux élèves testent le même cas :",
+              "options": [
+                "Peut confirmer ou infirmer",
+                "Est interdit",
+                "Remplace la carte",
+                "Supprime les si"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reproductibilité entre testeurs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Test après transport de l'objet :",
+              "options": [
+                "Vérifie que rien ne s'est débranché",
+                "Est inutile",
+                "Peint le boîtier",
+                "Efface l'algo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le matériel peut bouger."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Relancer tous les cas après une grosse modif :",
+              "options": [
+                "Évite les régressions",
+                "Est du temps perdu",
+                "Interdit",
+                "Supprime les boucles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une fix peut casser autre chose."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Automatiser « répète test 10 fois » en classe :",
+              "options": [
+                "Peut être une boucle dans le test",
+                "Est réservé au lycée pro",
+                "Impossible",
+                "Remplace l'observation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même logique de répétition qu'en algo."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si 9 essais OK et 1 KO :",
+              "options": [
+                "Il reste un problème à investiguer",
+                "Tout est parfait",
+                "Abandonner",
+                "Effacer les notes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un échec suffit à remettre en cause."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Fatigue du testeur :",
+              "options": [
+                "Peut faire oublier des étapes",
+                "Améliore la précision",
+                "Remplace la checklist",
+                "Coupe internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'où l'intérêt d'une procédure écrite."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Test de non-régression :",
+              "options": [
+                "Revérifie les anciens cas OK",
+                "Ne sert à rien",
+                "Efface v1",
+                "Interdit les capteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "S'assurer que le passé fonctionne encore."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan après série de tests :",
+              "options": [
+                "Liste ce qui reste à corriger",
+                "Ignore les échecs",
+                "Supprime l'objet",
+                "Fin de la technologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prioriser les corrections restantes."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Cas limites à tester :",
+              "options": [
+                "Valeurs min et max du capteur",
+                "Comportement sans entrée utilisateur",
+                "Couleur des chaussures",
+                "Prénom du prof"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Extrêmes et absence d'action révèlent des bugs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bouton enfoncé très longtemps :",
+              "options": [
+                "Peut tester une boucle ou un timeout",
+                "Est toujours identique à un appui court",
+                "Interdit",
+                "Remplace le moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durée = condition différente."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Aucun obstacle vs obstacle proche :",
+              "options": [
+                "Deux cas limites pour le robot",
+                "Un seul test suffit",
+                "Inutile",
+                "Peinture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couvrir les deux extrêmes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Seuil « si lumière < 10 » : tester 9 et 10 :",
+              "options": [
+                "Vérifie le passage vrai/faux",
+                "Est du gaspillage",
+                "Efface la LED",
+                "Coupe l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autour du seuil = zone critique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pile faible simulée :",
+              "options": [
+                "Peut changer le comportement",
+                "N'a aucun effet",
+                "Remplace l'algorithme",
+                "Supprime les tests"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conditions réelles variées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Entrée impossible dans l'usage normal :",
+              "options": [
+                "Peut quand même être testée par prudence",
+                "Doit être ignorée toujours",
+                "Interdit",
+                "Remplace les sorties"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Robustesse face aux cas rares."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Trop de cas limites sans priorité :",
+              "options": [
+                "Peut faire perdre du temps",
+                "Garantit zéro bug",
+                "Efface le programme",
+                "Coupe le moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commencer par les plus importants."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Bug visible seulement au maximum de vitesse :",
+              "options": [
+                "Cas limite de réglage",
+                "Preuve que les tests servent à rien",
+                "Stylo",
+                "Carton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les extrêmes cachent des erreurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Documenter un cas limite trouvé :",
+              "options": [
+                "Aide les retests futurs",
+                "Interdit",
+                "Supprime les si",
+                "Peint la carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trace pour l'équipe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Après test aux limites, corriger puis :",
+              "options": [
+                "Retester ces cas",
+                "Abandonner",
+                "Effacer l'historique",
+                "Ne plus utiliser l'objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confirmer la fix aux mêmes conditions."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Observer pendant un test :",
+              "options": [
+                "Regarder les sorties (LED, moteur, son)",
+                "Écouter et noter",
+                "Fermer les yeux",
+                "Ignorer l'objet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vue et ouïe (+ notes) capturent le comportement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Chronomètre pour une pause de 2 s :",
+              "options": [
+                "Vérifie le timing",
+                "Décore la table",
+                "Remplace le capteur",
+                "Efface l'algo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesure du temps réel vs attendu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Filmer le robot pendant le test :",
+              "options": [
+                "Permet de revoir le comportement",
+                "Interdit",
+                "Supprime les bugs",
+                "Coupe internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Replay aide à analyser."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ne noter que « ça marche » sans détail :",
+              "options": [
+                "Peu utile pour corriger plus tard",
+                "Parfait",
+                "Remplace la checklist",
+                "Obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut des observations précises."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "LED faiblement allumée vs prévue forte :",
+              "options": [
+                "Écart à investiguer",
+                "Succès total",
+                "Test annulé",
+                "Preuve de perfection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même allumée, l'intensité peut compter."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Observer le moteur qui vibre anormalement :",
+              "options": [
+                "Signe possible de bug ou de blocage",
+                "Normal toujours",
+                "Preuve de réussite",
+                "Remplace le test"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comportement mécanique = donnée de test."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Test en lumière du jour vs obscurité :",
+              "options": [
+                "Change les mesures du capteur lumière",
+                "Identique toujours",
+                "Inutile",
+                "Efface la mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Environnement = variable de test."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Plusieurs personnes observent :",
+              "options": [
+                "Peuvent voir des choses différentes",
+                "Interdit",
+                "Remplace l'algorithme",
+                "Supprime les boucles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentarité des regards."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Observation sans résultat attendu :",
+              "options": [
+                "Difficile de conclure",
+                "Toujours suffisant",
+                "Remplace les cas de test",
+                "Coupe l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut un critère de comparaison."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Synthèse écrite après observation :",
+              "options": [
+                "Alimente la correction",
+                "Efface les capteurs",
+                "Interdit les retests",
+                "Peint l'objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien entre test et modification."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une checklist de test contient :",
+              "options": [
+                "Les cas à exécuter",
+                "Les résultats attendus",
+                "Les recettes de cuisine",
+                "Les noms des planètes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Procédure + critères de succès."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Cocher chaque item testé :",
+              "options": [
+                "Montre l'avancement",
+                "Efface les bugs",
+                "Remplace l'objet",
+                "Coupe le moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suivi visuel de la campagne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Checklist avant démo publique :",
+              "options": [
+                "Réduit le risque de surprise",
+                "Est inutile",
+                "Supprime l'algorithme",
+                "Interdit les LED"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Validation finale structurée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Item non coché à la fin :",
+              "options": [
+                "Test oublié possible",
+                "Preuve de perfection",
+                "Fin du projet",
+                "Objet certifié"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relancer ce qui manque."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Partager la checklist en équipe :",
+              "options": [
+                "Aligne tout le monde",
+                "Cache les bugs",
+                "Efface v1",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même procédure pour tous."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Mettre à jour la checklist après fix :",
+              "options": [
+                "Ajoute tests de non-régression",
+                "Est interdit",
+                "Supprime les capteurs",
+                "Coupe internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liste évolue avec le projet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Checklist trop longue sans priorité :",
+              "options": [
+                "Peut faire oublier l'essentiel",
+                "Garantit zéro bug",
+                "Remplace l'observation",
+                "Efface la mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mettre les cas critiques en premier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Case « sécurité : pas d'échauffement » :",
+              "options": [
+                "Rappelle un critère important",
+                "Décoratif seulement",
+                "Remplace le capteur",
+                "Stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tests incluent parfois la sécurité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Checklist papier ou numérique :",
+              "options": [
+                "Les deux conviennent si clairs",
+                "Interdits",
+                "Remplacent l'objet",
+                "Suppriment les si"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'outil importe moins que le contenu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Checklist complète et tous OK :",
+              "options": [
+                "Objet prêt pour la démo",
+                "Preuve qu'on ne testera plus jamais",
+                "Fin de la technologie",
+                "Carton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Validation avant présentation."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bien tester un objet programmé, c'est :",
+              "options": [
+                "Planifier des cas",
+                "Comparer attendu et observé",
+                "Ne jamais corriger",
+                "Ignorer les erreurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Méthode et comparaison mènent à un objet fiable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le test ne remplace pas :",
+              "options": [
+                "Un algorithme bien conçu",
+                "La peinture du carton",
+                "Le prénom",
+                "La couleur du cahier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logique claire + test = qualité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Cycle complet du projet :",
+              "options": [
+                "Idée, algo, programmation, test, correction",
+                "Uniquement peinture",
+                "Sans observation",
+                "Sans itération"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement classique en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un bug trouvé en test est :",
+              "options": [
+                "Une chance de s'améliorer",
+                "Une catastrophe à cacher",
+                "Preuve d'échec définitif",
+                "Fin du métier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corriger fait progresser le projet."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Présenter son protocole de test au prof :",
+              "options": [
+                "Montre une démarche rigoureuse",
+                "Remplace la démo",
+                "Efface le programme",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La démarche compte autant que l'objet."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tester en 5e sans langage pro :",
+              "options": [
+                "Reste possible avec observation et critères",
+                "Impossible",
+                "Remplace l'algorithme",
+                "Exige Python"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'esprit du test ne dépend pas du langage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dernière passe de tests avant rendu :",
+              "options": [
+                "Limite les mauvaises surprises",
+                "Est du temps perdu",
+                "Supprime les capteurs",
+                "Coupe l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurise la version livrée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Document tests + corrections :",
+              "options": [
+                "Trace le travail pour la soutenance",
+                "Interdit",
+                "Efface les boucles",
+                "Remplace l'objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Histoire du projet pour l'oral."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si tous les tests passent mais l'objet ne plaît pas :",
+              "options": [
+                "Le but utilisateur peut être revu",
+                "Les tests étaient faux obligatoirement",
+                "Plus de technologie",
+                "Objet indestructible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conformité technique ≠ satisfaction du besoin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Message clé « Tester » en séquence 8 :",
+              "options": [
+                "Valider et corriger avant de considérer fini",
+                "Ne jamais observer",
+                "Supprimer l'algorithme",
+                "Interdire les répétitions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tester clôt la boucle programmer-un-objet."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

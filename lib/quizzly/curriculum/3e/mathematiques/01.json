@@ -1,0 +1,1813 @@
+{
+  "id": "3e-mathematiques-01",
+  "year": "3e",
+  "subject": "mathematiques",
+  "title": "Arithmétique et fractions",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Nombres premiers",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Reconnaître un nombre premier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces nombres, lesquels sont premiers ?",
+              "options": ["17", "21", "23", "27"],
+              "correctAnswers": [0, 2],
+              "explanation": "17 et 23 n'ont que 1 et eux-mêmes comme diviseurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le nombre 29 est-il premier ?",
+              "options": [
+                "Oui",
+                "Non, car 29 = 2×14",
+                "Non, car divisible par 3",
+                "Non, car pair"
+              ],
+              "correctAnswers": [0],
+              "explanation": "29 n'est divisible par aucun entier entre 2 et 5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel nombre n'est pas premier ?",
+              "options": ["31", "37", "39", "41"],
+              "correctAnswers": [2],
+              "explanation": "39 = 3 × 13."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de nombres premiers strictement entre 10 et 20 ?",
+              "options": ["3", "4", "5", "6"],
+              "correctAnswers": [1],
+              "explanation": "Les premiers sont 11, 13, 17 et 19."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le plus petit nombre premier est :",
+              "options": ["0", "1", "2", "3"],
+              "correctAnswers": [2],
+              "explanation": "2 est le plus petit nombre premier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "53 est premier car :",
+              "options": [
+                "Il est impair",
+                "Seuls 1 et 53 le divisent",
+                "Il se termine par 3",
+                "Il est supérieur à 50"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un premier a exactement deux diviseurs positifs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel nombre pair est premier ?",
+              "options": ["4", "6", "2", "8"],
+              "correctAnswers": [2],
+              "explanation": "2 est le seul nombre pair premier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "91 est-il premier ?",
+              "options": [
+                "Oui",
+                "Non, car 91 = 7 × 13",
+                "Non, car divisible par 2",
+                "Non, car 91 = 9 × 10"
+              ],
+              "correctAnswers": [1],
+              "explanation": "91 = 7 × 13."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le nombre 1 est-il premier ?",
+              "options": [
+                "Oui",
+                "Non, car il n'a qu'un diviseur",
+                "Oui, car divisible par 1",
+                "Non, car pair"
+              ],
+              "correctAnswers": [1],
+              "explanation": "1 n'est pas considéré comme premier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel nombre premier est le plus proche de 100 ?",
+              "options": ["98", "99", "101", "100"],
+              "correctAnswers": [2],
+              "explanation": "101 est premier ; les autres sont composés."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Premiers jusqu'à 50",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels nombres sont premiers ?",
+              "options": ["43", "45", "47", "49"],
+              "correctAnswers": [0, 2],
+              "explanation": "43 et 47 sont premiers ; 45 et 49 sont composés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de nombres premiers entre 1 et 10 ?",
+              "options": ["3", "4", "5", "6"],
+              "correctAnswers": [1],
+              "explanation": "2, 3, 5 et 7."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le nombre 51 vaut :",
+              "options": ["Premier", "3 × 17", "7 × 7", "Premier car impair"],
+              "correctAnswers": [1],
+              "explanation": "51 = 3 × 17."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel nombre est premier ?",
+              "options": ["33", "35", "37", "39"],
+              "correctAnswers": [2],
+              "explanation": "37 est premier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "22 est-il premier ?",
+              "options": [
+                "Oui",
+                "Non, car 22 = 2 × 11",
+                "Non, car divisible par 3",
+                "Oui, car supérieur à 20"
+              ],
+              "correctAnswers": [1],
+              "explanation": "22 est pair et différent de 2."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plus grand nombre premier strictement inférieur à 30 ?",
+              "options": ["27", "28", "29", "30"],
+              "correctAnswers": [2],
+              "explanation": "29 est premier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le nombre 49 vaut :",
+              "options": ["Premier", "7 × 7", "13 × 4", "Premier car impair"],
+              "correctAnswers": [1],
+              "explanation": "49 = 7²."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien de premiers entre 40 et 50 ?",
+              "options": ["1", "2", "3", "4"],
+              "correctAnswers": [1],
+              "explanation": "41 et 43 sont premiers."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le nombre 57 vaut :",
+              "options": [
+                "Premier",
+                "3 × 19",
+                "5 × 11",
+                "Premier car se termine par 7"
+              ],
+              "correctAnswers": [1],
+              "explanation": "57 = 3 × 19."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel nombre est premier ?",
+              "options": ["46", "47", "48", "50"],
+              "correctAnswers": [1],
+              "explanation": "47 est premier."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Cribler les premiers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels nombres sont premiers ?",
+              "options": ["2", "4", "5", "9"],
+              "correctAnswers": [0, 2],
+              "explanation": "2 et 5 sont premiers."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Au criblage jusqu'à 20, le premier multiple de 2 barré après 2 est :",
+              "options": ["3", "4", "5", "6"],
+              "correctAnswers": [1],
+              "explanation": "4 est le premier multiple de 2 supérieur à 2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Premier nombre premier supérieur à 15 ?",
+              "options": ["16", "17", "18", "19"],
+              "correctAnswers": [1],
+              "explanation": "17 est premier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de nombres premiers inférieurs ou égaux à 20 ?",
+              "options": ["6", "7", "8", "9"],
+              "correctAnswers": [2],
+              "explanation": "Huit nombres : de 2 à 19."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "25 vaut :",
+              "options": ["Premier", "5 × 5", "5 × 6", "Premier car impair"],
+              "correctAnswers": [1],
+              "explanation": "25 = 5²."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel multiple de 3 est premier ?",
+              "options": ["3", "6", "9", "12"],
+              "correctAnswers": [0],
+              "explanation": "Seul 3 est premier parmi ces multiples de 3."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "53 est-il premier ?",
+              "options": [
+                "Oui",
+                "Non, 53 = 3×17",
+                "Non, car pair",
+                "Non, 53 = 7×8"
+              ],
+              "correctAnswers": [0],
+              "explanation": "53 n'a pas de diviseur entre 2 et 7."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le seul nombre premier pair ?",
+              "options": ["Aucun", "2", "4", "Tous les pairs"],
+              "correctAnswers": [1],
+              "explanation": "2 est le seul premier pair."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "67 est-il premier ?",
+              "options": [
+                "Oui",
+                "Non, 67 = 3×22",
+                "Non, 67 = 7×9",
+                "Non, car pair"
+              ],
+              "correctAnswers": [0],
+              "explanation": "67 est premier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le produit de deux nombres premiers supérieurs à 1 est :",
+              "options": [
+                "Toujours premier",
+                "Toujours composé",
+                "Toujours pair",
+                "Impossible"
+              ],
+              "correctAnswers": [1],
+              "explanation": "p×q possède au moins les diviseurs 1, p, q et p×q."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Facteurs premiers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans 12 = 2² × 3, quels facteurs sont premiers ?",
+              "options": ["2", "3", "4", "6"],
+              "correctAnswers": [0, 1],
+              "explanation": "Seuls 2 et 3 sont premiers dans cette décomposition."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Décomposition en facteurs premiers de 18 ?",
+              "options": ["2 × 9", "2 × 3²", "3 × 6", "2² × 3"],
+              "correctAnswers": [1],
+              "explanation": "18 = 2 × 3²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "30 vaut :",
+              "options": ["2 × 3 × 5", "2 × 15", "3 × 10", "5 × 6"],
+              "correctAnswers": [0],
+              "explanation": "30 = 2 × 3 × 5."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "36 = 2^a × 3^b avec a et b valant :",
+              "options": ["2 et 1", "2 et 2", "3 et 2", "4 et 1"],
+              "correctAnswers": [1],
+              "explanation": "36 = 2² × 3²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "50 vaut :",
+              "options": ["2 × 25", "2 × 5²", "5 × 10", "2² × 5"],
+              "correctAnswers": [1],
+              "explanation": "50 = 2 × 5²."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "72 vaut :",
+              "options": ["2³ × 3²", "2² × 3³", "8 × 9", "2 × 36"],
+              "correctAnswers": [0],
+              "explanation": "72 = 2³ × 3²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "100 en facteurs premiers vaut :",
+              "options": ["2² × 5²", "10²", "2 × 50", "4 × 25"],
+              "correctAnswers": [0],
+              "explanation": "100 = 2² × 5²."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "45 vaut :",
+              "options": ["3² × 5", "3 × 15", "9 × 5", "3³"],
+              "correctAnswers": [0],
+              "explanation": "45 = 3² × 5."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "84 vaut :",
+              "options": ["2² × 3 × 7", "2 × 42", "4 × 21", "2³ × 7"],
+              "correctAnswers": [0],
+              "explanation": "84 = 2² × 3 × 7."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La décomposition en facteurs premiers d'un nombre premier p est :",
+              "options": [
+                "p",
+                "1 × p",
+                "Un produit de deux premiers",
+                "Toujours 2 × …"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un premier se décompose en lui-même."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Décomposer un entier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels entiers ont 2 comme facteur premier ?",
+              "options": ["12", "15", "18", "25"],
+              "correctAnswers": [0, 2],
+              "explanation": "12 et 18 sont pairs, donc divisibles par 2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "60 vaut :",
+              "options": ["2² × 3 × 5", "2 × 30", "4 × 15", "6 × 10"],
+              "correctAnswers": [0],
+              "explanation": "60 = 2² × 3 × 5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "28 vaut :",
+              "options": ["2² × 7", "4 × 7", "2 × 14", "7 × 4"],
+              "correctAnswers": [0],
+              "explanation": "28 = 2² × 7."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "90 vaut :",
+              "options": ["2 × 3² × 5", "9 × 10", "2 × 45", "3 × 30"],
+              "correctAnswers": [0],
+              "explanation": "90 = 2 × 3² × 5."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "126 vaut :",
+              "options": ["2 × 3² × 7", "2 × 63", "6 × 21", "2² × 3 × 7"],
+              "correctAnswers": [0],
+              "explanation": "126 = 2 × 3² × 7."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "99 vaut :",
+              "options": ["3² × 11", "9 × 11", "3 × 33", "11 × 9"],
+              "correctAnswers": [0],
+              "explanation": "99 = 3² × 11."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "200 vaut :",
+              "options": ["2³ × 5²", "2 × 100", "4 × 50", "20 × 10"],
+              "correctAnswers": [0],
+              "explanation": "200 = 2³ × 5²."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "56 vaut :",
+              "options": ["2³ × 7", "2 × 28", "4 × 14", "8 × 7"],
+              "correctAnswers": [0],
+              "explanation": "56 = 2³ × 7."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "105 vaut :",
+              "options": ["3 × 5 × 7", "5 × 21", "3 × 35", "15 × 7"],
+              "correctAnswers": [0],
+              "explanation": "105 = 3 × 5 × 7."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "144 vaut :",
+              "options": ["2⁴ × 3²", "12²", "2 × 72", "6² × 4"],
+              "correctAnswers": [0],
+              "explanation": "144 = 2⁴ × 3²."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Diviseurs et premiers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels nombres divisent 12 ?",
+              "options": ["1", "4", "5", "12"],
+              "correctAnswers": [0, 3],
+              "explanation": "1 et 12 divisent toujours 12."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de diviseurs positifs a 7 ?",
+              "options": ["1", "2", "3", "4"],
+              "correctAnswers": [1],
+              "explanation": "7 est premier : 1 et 7."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Plus petit diviseur de 35 supérieur à 1 ?",
+              "options": ["3", "5", "7", "35"],
+              "correctAnswers": [1],
+              "explanation": "35 = 5 × 7."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de diviseurs positifs a 16 ?",
+              "options": ["3", "4", "5", "6"],
+              "correctAnswers": [2],
+              "explanation": "Les diviseurs sont 1, 2, 4, 8 et 16."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si n est premier, combien de diviseurs positifs a n ?",
+              "options": ["1", "2", "3", "n"],
+              "correctAnswers": [1],
+              "explanation": "Exactement deux diviseurs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plus grand diviseur de 48 strictement inférieur à 48 ?",
+              "options": ["12", "24", "48", "16"],
+              "correctAnswers": [1],
+              "explanation": "24 est le plus grand diviseur propre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "13 × 17 est :",
+              "options": ["Premier", "Composé", "Pair", "Égal à 1"],
+              "correctAnswers": [1],
+              "explanation": "Produit de deux premiers supérieurs à 1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel entier divise à la fois 8 et 12 ?",
+              "options": ["3", "4", "5", "7"],
+              "correctAnswers": [1],
+              "explanation": "4 divise 8 et 12."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel nombre a exactement deux diviseurs ?",
+              "options": ["9", "11", "15", "21"],
+              "correctAnswers": [1],
+              "explanation": "11 est premier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "1 est diviseur de :",
+              "options": [
+                "Aucun entier",
+                "Tout entier",
+                "Seulement les premiers",
+                "Seulement les pairs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "1 divise tout entier non nul."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "PGCD",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels nombres divisent à la fois 12 et 18 ?",
+              "options": ["1", "2", "3", "5"],
+              "correctAnswers": [0, 1],
+              "explanation": "1 et 2 sont des diviseurs communs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "PGCD(8, 12) vaut :",
+              "options": ["2", "4", "6", "8"],
+              "correctAnswers": [1],
+              "explanation": "Le plus grand diviseur commun est 4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "PGCD(15, 25) vaut :",
+              "options": ["1", "3", "5", "15"],
+              "correctAnswers": [2],
+              "explanation": "PGCD(15, 25) = 5."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "PGCD(9, 14) vaut :",
+              "options": ["1", "2", "7", "9"],
+              "correctAnswers": [0],
+              "explanation": "9 et 14 sont premiers entre eux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "PGCD(24, 36) vaut :",
+              "options": ["6", "8", "12", "18"],
+              "correctAnswers": [2],
+              "explanation": "PGCD(24, 36) = 12."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "PGCD(n, n) pour n > 0 vaut :",
+              "options": ["1", "n", "2n", "0"],
+              "correctAnswers": [1],
+              "explanation": "Un entier divise toujours lui-même."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Avec 18 = 2×3² et 30 = 2×3×5, PGCD(18, 30) vaut :",
+              "options": ["2", "3", "6", "9"],
+              "correctAnswers": [2],
+              "explanation": "Facteurs premiers communs : 2×3 = 6."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "PGCD(7, 11) vaut :",
+              "options": ["1", "7", "11", "77"],
+              "correctAnswers": [0],
+              "explanation": "7 et 11 n'ont que 1 en commun."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "PGCD(20, 45) vaut :",
+              "options": ["5", "10", "15", "20"],
+              "correctAnswers": [0],
+              "explanation": "PGCD(20, 45) = 5."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "PGCD(a, b) = 1 signifie que :",
+              "options": [
+                "a = b",
+                "a et b n'ont pas de diviseur commun supérieur à 1",
+                "a et b sont premiers",
+                "a = 1"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Seul 1 est diviseur commun."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "PPCM",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels nombres sont multiples communs de 3 et de 4 ?",
+              "options": ["12", "24", "16", "18"],
+              "correctAnswers": [0, 1],
+              "explanation": "12 et 24 sont divisibles par 3 et par 4."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "PPCM(4, 6) vaut :",
+              "options": ["6", "12", "24", "2"],
+              "correctAnswers": [1],
+              "explanation": "PPCM(4, 6) = 12."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "PPCM(5, 7) vaut :",
+              "options": ["1", "12", "35", "70"],
+              "correctAnswers": [2],
+              "explanation": "PPCM(5, 7) = 35."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "PPCM(8, 12) vaut :",
+              "options": ["12", "16", "24", "48"],
+              "correctAnswers": [2],
+              "explanation": "PPCM(8, 12) = 24."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "PPCM(9, 12) vaut :",
+              "options": ["18", "24", "36", "108"],
+              "correctAnswers": [2],
+              "explanation": "PPCM(9, 12) = 36."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "PPCM(6, 9) vaut :",
+              "options": ["3", "18", "54", "12"],
+              "correctAnswers": [1],
+              "explanation": "PPCM(6, 9) = 18."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "PPCM(10, 15) vaut :",
+              "options": ["5", "30", "60", "150"],
+              "correctAnswers": [1],
+              "explanation": "PPCM(10, 15) = 30."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "PPCM(14, 21) vaut :",
+              "options": ["7", "42", "294", "28"],
+              "correctAnswers": [1],
+              "explanation": "PPCM(14, 21) = 42."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "PPCM(n, n) pour n > 0 vaut :",
+              "options": ["1", "n", "2n", "n²"],
+              "correctAnswers": [1],
+              "explanation": "PPCM(n, n) = n."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "PPCM(4, 5) vaut :",
+              "options": ["9", "20", "40", "1"],
+              "correctAnswers": [1],
+              "explanation": "PPCM(4, 5) = 20."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Critères de divisibilité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels nombres sont divisibles par 3 ?",
+              "options": ["123", "124", "126", "128"],
+              "correctAnswers": [0, 2],
+              "explanation": "La somme des chiffres de 123 et 126 est divisible par 3."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel nombre est divisible par 9 ?",
+              "options": ["234", "235", "236", "238"],
+              "correctAnswers": [0],
+              "explanation": "2+3+4 = 9, donc 234 est divisible par 9."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel nombre est divisible par 5 ?",
+              "options": ["742", "745", "746", "748"],
+              "correctAnswers": [1],
+              "explanation": "Un nombre divisible par 5 se termine par 0 ou 5."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel nombre est divisible par 4 ?",
+              "options": ["318", "320", "322", "326"],
+              "correctAnswers": [1],
+              "explanation": "320 se termine par un multiple de 4 : 20."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel nombre est divisible par 6 ?",
+              "options": ["84", "85", "86", "87"],
+              "correctAnswers": [0],
+              "explanation": "84 est pair et divisible par 3."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "512 est divisible par 8 car :",
+              "options": [
+                "Il est pair",
+                "Ses trois derniers chiffres forment un multiple de 8",
+                "La somme de ses chiffres vaut 8",
+                "Il se termine par 2"
+              ],
+              "correctAnswers": [1],
+              "explanation": "512 se termine par 512, multiple de 8."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel nombre est divisible par 11 ?",
+              "options": ["121", "122", "123", "125"],
+              "correctAnswers": [0],
+              "explanation": "121 = 11 × 11."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un nombre divisible par 2 et par 3 est divisible par :",
+              "options": ["5", "6", "8", "9"],
+              "correctAnswers": [1],
+              "explanation": "Pair et multiple de 3 ⇒ multiple de 6."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel nombre est divisible par 25 ?",
+              "options": ["350", "375", "380", "385"],
+              "correctAnswers": [1],
+              "explanation": "375 se termine par 75, multiple de 25."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "0 est divisible par 7 ?",
+              "options": ["Oui", "Non", "Seulement si pair", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "0 est divisible par tout entier non nul."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse nombres premiers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels couples ont PGCD égal à 1 ?",
+              "options": ["(8, 15)", "(9, 12)", "(14, 15)", "(6, 9)"],
+              "correctAnswers": [0, 2],
+              "explanation": "8 et 15, puis 14 et 15 n'ont que 1 en commun."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Décomposition de 210 vaut :",
+              "options": ["2 × 3 × 5 × 7", "2 × 105", "10 × 21", "2² × 3 × 5"],
+              "correctAnswers": [0],
+              "explanation": "210 = 2 × 3 × 5 × 7."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "PPCM(12, 18) vaut :",
+              "options": ["6", "24", "36", "72"],
+              "correctAnswers": [2],
+              "explanation": "PPCM(12, 18) = 36."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le plus petit entier > 1 divisible par 2, 3 et 5 est :",
+              "options": ["15", "30", "60", "90"],
+              "correctAnswers": [1],
+              "explanation": "PPCM(2, 3, 5) = 30."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "97 est-il premier ?",
+              "options": [
+                "Oui",
+                "Non, 97 = 3×32",
+                "Non, pair",
+                "Non, 97 = 7×13"
+              ],
+              "correctAnswers": [0],
+              "explanation": "97 est premier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "PGCD(48, 72) vaut :",
+              "options": ["6", "12", "24", "48"],
+              "correctAnswers": [2],
+              "explanation": "PGCD(48, 72) = 24."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "831 vaut :",
+              "options": ["Premier", "3 × 277", "9 × 92", "7 × 118"],
+              "correctAnswers": [1],
+              "explanation": "8+3+1 = 12, donc 831 est divisible par 3."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien de diviseurs a 36 ?",
+              "options": ["6", "7", "8", "9"],
+              "correctAnswers": [3],
+              "explanation": "36 = 2²×3² possède neuf diviseurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "PPCM(5, 20) vaut :",
+              "options": ["5", "10", "20", "100"],
+              "correctAnswers": [2],
+              "explanation": "20 est multiple de 5."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Produit des premiers nombres premiers : 2 × 3 × 5 vaut :",
+              "options": ["15", "30", "45", "60"],
+              "correctAnswers": [1],
+              "explanation": "2 × 3 × 5 = 30."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Fractions et puissances",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Fractions égales",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fractions sont égales à 1/2 ?",
+              "options": ["2/4", "3/6", "2/3", "4/6"],
+              "correctAnswers": [0, 1],
+              "explanation": "2/4 et 3/6 se simplifient en 1/2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "3/4 vaut la même quantité que :",
+              "options": ["6/8", "4/6", "3/8", "9/16"],
+              "correctAnswers": [0],
+              "explanation": "6/8 = 3/4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "5/10 simplifiée vaut :",
+              "options": ["1/2", "1/5", "2/5", "5/2"],
+              "correctAnswers": [0],
+              "explanation": "On divise numérateur et dénominateur par 5."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle fraction est égale à 2/3 ?",
+              "options": ["4/9", "6/9", "8/12", "6/9 et 8/12"],
+              "correctAnswers": [3],
+              "explanation": "6/9 et 8/12 valent tous deux 2/3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour obtenir 12/18 à partir de 2/3, on multiplie par :",
+              "options": ["3/3", "6/6", "2/2", "9/9"],
+              "correctAnswers": [1],
+              "explanation": "2/3 × 6/6 = 12/18."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "7/14 vaut :",
+              "options": ["1/2", "1/7", "2/7", "7/2"],
+              "correctAnswers": [0],
+              "explanation": "7/14 = 1/2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle fraction vaut 1/3 ?",
+              "options": ["2/6", "3/8", "4/7", "5/12"],
+              "correctAnswers": [0],
+              "explanation": "2/6 se simplifie en 1/3."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle fraction n'est pas égale à 3/4 ?",
+              "options": ["6/8", "9/12", "15/20", "5/8"],
+              "correctAnswers": [3],
+              "explanation": "5/8 est différent de 3/4."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "0,25 vaut :",
+              "options": ["1/4", "1/2", "2/5", "1/5"],
+              "correctAnswers": [0],
+              "explanation": "0,25 = 1/4."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "2/5 vaut :",
+              "options": ["4/10", "5/10", "2/10", "10/4"],
+              "correctAnswers": [0],
+              "explanation": "2/5 = 4/10."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Simplifier une fraction",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fractions sont déjà simplifiées ?",
+              "options": ["3/7", "4/6", "5/9", "10/15"],
+              "correctAnswers": [0, 2],
+              "explanation": "3/7 et 5/9 n'ont pas de diviseur commun autre que 1."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "8/12 simplifiée vaut :",
+              "options": ["2/3", "4/6", "1/2", "3/4"],
+              "correctAnswers": [0],
+              "explanation": "On divise par 4 : 8/12 = 2/3."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "18/24 simplifiée vaut :",
+              "options": ["3/4", "6/8", "9/12", "2/3"],
+              "correctAnswers": [0],
+              "explanation": "PGCD(18, 24) = 6, donc 18/24 = 3/4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "45/60 simplifiée vaut :",
+              "options": ["3/4", "9/12", "15/20", "5/6"],
+              "correctAnswers": [0],
+              "explanation": "On divise par 15 : 45/60 = 3/4."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "14/21 simplifiée vaut :",
+              "options": ["2/3", "7/10", "1/2", "3/4"],
+              "correctAnswers": [0],
+              "explanation": "14/21 = 2/3."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "36/48 simplifiée vaut :",
+              "options": ["3/4", "6/8", "9/12", "2/3"],
+              "correctAnswers": [0],
+              "explanation": "On divise par 12 : 36/48 = 3/4."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "25/40 simplifiée vaut :",
+              "options": ["5/8", "1/2", "3/5", "5/6"],
+              "correctAnswers": [0],
+              "explanation": "25/40 = 5/8."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "27/36 simplifiée vaut :",
+              "options": ["3/4", "2/3", "9/12", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "27/36 = 3/4."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "16/20 simplifiée vaut :",
+              "options": ["4/5", "8/10", "2/3", "3/4"],
+              "correctAnswers": [0],
+              "explanation": "16/20 = 4/5."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "50/75 simplifiée vaut :",
+              "options": ["2/3", "1/2", "3/5", "5/6"],
+              "correctAnswers": [0],
+              "explanation": "50/75 = 2/3."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Additionner des fractions (même dénominateur)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sommes valent 1 ?",
+              "options": ["1/5 + 4/5", "2/7 + 4/7", "3/8 + 5/8", "1/3 + 1/3"],
+              "correctAnswers": [0, 2],
+              "explanation": "1/5+4/5 = 1 et 3/8+5/8 = 1."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "3/7 + 2/7 vaut :",
+              "options": ["5/7", "5/14", "6/7", "1/7"],
+              "correctAnswers": [0],
+              "explanation": "On additionne les numérateurs : 3+2 = 5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "1/9 + 5/9 vaut :",
+              "options": ["6/9", "2/3", "6/18", "6/9 ou 2/3"],
+              "correctAnswers": [1],
+              "explanation": "6/9 = 2/3 après simplification."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "4/11 + 3/11 vaut :",
+              "options": ["7/11", "7/22", "1/11", "8/11"],
+              "correctAnswers": [0],
+              "explanation": "4+3 = 7, le dénominateur reste 11."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "2/5 + 1/5 vaut :",
+              "options": ["3/5", "3/10", "1/5", "4/5"],
+              "correctAnswers": [0],
+              "explanation": "2+1 = 3."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "5/12 + 1/12 vaut :",
+              "options": ["6/12", "1/2", "7/12", "1/6"],
+              "correctAnswers": [1],
+              "explanation": "6/12 = 1/2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "7/10 + 2/10 vaut :",
+              "options": ["9/10", "9/20", "1", "8/10"],
+              "correctAnswers": [0],
+              "explanation": "7+2 = 9, dénominateur 10."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1/4 + 2/4 vaut :",
+              "options": ["3/4", "3/8", "1/2", "2/4"],
+              "correctAnswers": [0],
+              "explanation": "1+2 = 3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "3/8 + 3/8 vaut :",
+              "options": ["6/8", "3/4", "6/16", "1/2"],
+              "correctAnswers": [1],
+              "explanation": "6/8 = 3/4."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "2/3 + 2/3 vaut :",
+              "options": ["4/3", "4/6", "2/3", "1"],
+              "correctAnswers": [0],
+              "explanation": "4/3 est une fraction supérieure à 1."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Additionner des fractions (dénominateurs différents)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sommes valent 1 ?",
+              "options": ["1/2 + 1/2", "1/3 + 2/3", "1/4 + 1/2", "2/5 + 3/5"],
+              "correctAnswers": [0, 1],
+              "explanation": "1/2+1/2 et 1/3+2/3 valent 1."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1/2 + 1/4 vaut :",
+              "options": ["3/4", "2/6", "1/3", "2/4"],
+              "correctAnswers": [0],
+              "explanation": "1/2 = 2/4, donc 2/4+1/4 = 3/4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "1/3 + 1/6 vaut :",
+              "options": ["1/2", "2/9", "1/3", "2/6"],
+              "correctAnswers": [0],
+              "explanation": "2/6+1/6 = 3/6 = 1/2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "2/5 + 1/10 vaut :",
+              "options": ["1/2", "3/15", "3/10", "4/10"],
+              "correctAnswers": [0],
+              "explanation": "4/10+1/10 = 5/10 = 1/2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1/4 + 1/3 vaut :",
+              "options": ["7/12", "2/7", "1/6", "5/12"],
+              "correctAnswers": [0],
+              "explanation": "3/12+4/12 = 7/12."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "3/4 + 1/8 vaut :",
+              "options": ["7/8", "4/12", "5/8", "1"],
+              "correctAnswers": [0],
+              "explanation": "6/8+1/8 = 7/8."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "2/3 + 1/4 vaut :",
+              "options": ["11/12", "3/7", "3/12", "5/12"],
+              "correctAnswers": [0],
+              "explanation": "8/12+3/12 = 11/12."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1/5 + 2/3 vaut :",
+              "options": ["13/15", "3/8", "3/15", "7/15"],
+              "correctAnswers": [0],
+              "explanation": "3/15+10/15 = 13/15."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "5/6 + 1/4 vaut :",
+              "options": ["13/12", "6/10", "1", "11/12"],
+              "correctAnswers": [0],
+              "explanation": "10/12+3/12 = 13/12."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "1/2 + 1/3 vaut :",
+              "options": ["5/6", "2/5", "1/5", "2/6"],
+              "correctAnswers": [0],
+              "explanation": "3/6+2/6 = 5/6."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Soustraire des fractions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles différences valent 1/2 ?",
+              "options": ["3/4 − 1/4", "5/6 − 2/6", "2/3 − 1/6", "7/8 − 3/8"],
+              "correctAnswers": [0, 3],
+              "explanation": "3/4−1/4 = 1/2 et 7/8−3/8 = 1/2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "5/7 − 2/7 vaut :",
+              "options": ["3/7", "3/14", "7/7", "1/7"],
+              "correctAnswers": [0],
+              "explanation": "5−2 = 3."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "3/4 − 1/4 vaut :",
+              "options": ["1/2", "2/4", "1/4", "2/8"],
+              "correctAnswers": [0],
+              "explanation": "2/4 = 1/2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "7/10 − 3/10 vaut :",
+              "options": ["2/5", "4/10", "1/5", "4/20"],
+              "correctAnswers": [0],
+              "explanation": "4/10 = 2/5."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1/2 − 1/4 vaut :",
+              "options": ["1/4", "1/2", "0", "1/8"],
+              "correctAnswers": [0],
+              "explanation": "2/4−1/4 = 1/4."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "5/6 − 1/3 vaut :",
+              "options": ["1/2", "4/3", "1/3", "4/6"],
+              "correctAnswers": [0],
+              "explanation": "5/6−2/6 = 3/6 = 1/2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "11/12 − 1/4 vaut :",
+              "options": ["2/3", "10/12", "1/2", "5/12"],
+              "correctAnswers": [0],
+              "explanation": "11/12−3/12 = 8/12 = 2/3."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "4/5 − 1/2 vaut :",
+              "options": ["3/10", "3/7", "1/10", "2/5"],
+              "correctAnswers": [0],
+              "explanation": "8/10−5/10 = 3/10."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "2/3 − 1/4 vaut :",
+              "options": ["5/12", "1/12", "1/7", "3/12"],
+              "correctAnswers": [0],
+              "explanation": "8/12−3/12 = 5/12."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "1 − 3/8 vaut :",
+              "options": ["5/8", "3/8", "1/8", "11/8"],
+              "correctAnswers": [0],
+              "explanation": "8/8−3/8 = 5/8."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Multiplier des fractions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels produits valent 1/2 ?",
+              "options": ["1/2 × 1", "2/3 × 3/4", "1/4 × 2", "3/5 × 5/6"],
+              "correctAnswers": [0, 1],
+              "explanation": "1/2×1 = 1/2 et 2/3×3/4 = 6/12 = 1/2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "2/3 × 3/5 vaut :",
+              "options": ["2/5", "6/15", "5/8", "6/8"],
+              "correctAnswers": [0],
+              "explanation": "6/15 = 2/5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "1/4 × 8 vaut :",
+              "options": ["2", "4", "1/32", "8/4"],
+              "correctAnswers": [0],
+              "explanation": "8/4 = 2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "3/7 × 14 vaut :",
+              "options": ["6", "3", "42/7", "21"],
+              "correctAnswers": [0],
+              "explanation": "42/7 = 6."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "5/6 × 3/10 vaut :",
+              "options": ["1/4", "15/60", "8/16", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "15/60 = 1/4."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "4/9 × 3/8 vaut :",
+              "options": ["1/6", "12/72", "7/17", "1/3"],
+              "correctAnswers": [0],
+              "explanation": "12/72 = 1/6."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "2/5 × 5/2 vaut :",
+              "options": ["1", "10/10", "4/7", "0"],
+              "correctAnswers": [0],
+              "explanation": "Produit d'une fraction par son inverse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "3/4 × 2/9 vaut :",
+              "options": ["1/6", "6/36", "5/13", "1/3"],
+              "correctAnswers": [0],
+              "explanation": "6/36 = 1/6."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "7/8 × 4/7 vaut :",
+              "options": ["1/2", "28/56", "11/15", "1"],
+              "correctAnswers": [0],
+              "explanation": "28/56 = 1/2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "5/12 × 6/5 vaut :",
+              "options": ["1/2", "30/60", "11/17", "1"],
+              "correctAnswers": [0],
+              "explanation": "30/60 = 1/2."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Diviser par une fraction",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels calculs valent 6 ?",
+              "options": ["6 ÷ 1", "3 ÷ 1/2", "12 × 1/2", "4 ÷ 2/3"],
+              "correctAnswers": [0, 1],
+              "explanation": "6÷1 = 6 et 3÷(1/2) = 6."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "4 ÷ 2/3 vaut :",
+              "options": ["6", "8/3", "2", "4/3"],
+              "correctAnswers": [0],
+              "explanation": "4 × 3/2 = 6."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "5 ÷ 1/5 vaut :",
+              "options": ["25", "1", "5/5", "1/25"],
+              "correctAnswers": [0],
+              "explanation": "Diviser par 1/5 revient à multiplier par 5."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "3/4 ÷ 1/2 vaut :",
+              "options": ["3/2", "3/8", "1/2", "6/4"],
+              "correctAnswers": [0],
+              "explanation": "3/4 × 2 = 3/2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "2/5 ÷ 4 vaut :",
+              "options": ["1/10", "8/5", "2/20", "4/5"],
+              "correctAnswers": [0],
+              "explanation": "2/5 × 1/4 = 2/20 = 1/10."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "7/8 ÷ 7/4 vaut :",
+              "options": ["1/2", "49/32", "1", "4/8"],
+              "correctAnswers": [0],
+              "explanation": "7/8 × 4/7 = 4/8 = 1/2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "1 ÷ 2/5 vaut :",
+              "options": ["5/2", "2/5", "1/2", "3/5"],
+              "correctAnswers": [0],
+              "explanation": "1 × 5/2 = 5/2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "9/10 ÷ 3/5 vaut :",
+              "options": ["3/2", "27/50", "6/10", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "9/10 × 5/3 = 45/30 = 3/2."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "2/3 ÷ 2 vaut :",
+              "options": ["1/3", "4/3", "2/6", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "2/3 × 1/2 = 2/6 = 1/3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "5/6 ÷ 5/12 vaut :",
+              "options": ["2", "25/72", "1/2", "10/12"],
+              "correctAnswers": [0],
+              "explanation": "5/6 × 12/5 = 2."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Puissances d'entiers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles valeurs valent 16 ?",
+              "options": ["2⁴", "4²", "8²", "2⁸"],
+              "correctAnswers": [0, 1],
+              "explanation": "2⁴ = 16 et 4² = 16."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "5³ vaut :",
+              "options": ["125", "15", "25", "75"],
+              "correctAnswers": [0],
+              "explanation": "5×5×5 = 125."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "10⁴ vaut :",
+              "options": ["10000", "1000", "40", "100"],
+              "correctAnswers": [0],
+              "explanation": "10⁴ = 10 000."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "3² × 3³ vaut :",
+              "options": ["3⁵", "3⁶", "9⁵", "6⁵"],
+              "correctAnswers": [0],
+              "explanation": "On additionne les exposants : 2+3 = 5."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "2⁵ vaut :",
+              "options": ["32", "10", "25", "64"],
+              "correctAnswers": [0],
+              "explanation": "2⁵ = 32."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "7² vaut :",
+              "options": ["49", "14", "21", "77"],
+              "correctAnswers": [0],
+              "explanation": "7×7 = 49."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "10⁰ vaut :",
+              "options": ["1", "0", "10", "100"],
+              "correctAnswers": [0],
+              "explanation": "Tout nombre non nul élevé à 0 vaut 1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "2³ × 2² vaut :",
+              "options": ["32", "64", "16", "128"],
+              "correctAnswers": [0],
+              "explanation": "2⁵ = 32."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "4³ vaut :",
+              "options": ["64", "12", "16", "81"],
+              "correctAnswers": [0],
+              "explanation": "4×4×4 = 64."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "6² vaut :",
+              "options": ["36", "12", "18", "66"],
+              "correctAnswers": [0],
+              "explanation": "6×6 = 36."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Calculs avec puissances",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 100 ?",
+              "options": ["10²", "5² × 2²", "2⁵ × 5", "20²"],
+              "correctAnswers": [0, 1],
+              "explanation": "10² = 100 et 5²×2² = 25×4 = 100."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "2⁴ × 5² vaut :",
+              "options": ["400", "200", "100", "80"],
+              "correctAnswers": [0],
+              "explanation": "16×25 = 400."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "3⁴ ÷ 3² vaut :",
+              "options": ["9", "3", "81", "6"],
+              "correctAnswers": [0],
+              "explanation": "3⁴⁻² = 3² = 9."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "(2³)² vaut :",
+              "options": ["64", "32", "128", "256"],
+              "correctAnswers": [0],
+              "explanation": "2⁶ = 64."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "10³ + 10³ vaut :",
+              "options": ["2000", "1000", "10⁶", "3000"],
+              "correctAnswers": [0],
+              "explanation": "1000+1000 = 2000."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "2² × 3² vaut :",
+              "options": ["36", "12", "18", "6²"],
+              "correctAnswers": [0],
+              "explanation": "4×9 = 36, comme 6²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "5⁴ vaut :",
+              "options": ["625", "125", "25", "20"],
+              "correctAnswers": [0],
+              "explanation": "5⁴ = 625."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "2¹⁰ vaut :",
+              "options": ["1024", "512", "2048", "1000"],
+              "correctAnswers": [0],
+              "explanation": "2¹⁰ = 1024."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "9² vaut :",
+              "options": ["81", "18", "27", "99"],
+              "correctAnswers": [0],
+              "explanation": "9×9 = 81."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "10⁵ ÷ 10² vaut :",
+              "options": ["1000", "100", "10⁷", "50"],
+              "correctAnswers": [0],
+              "explanation": "10⁵⁻² = 10³ = 1000."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Fractions et puissances",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles écritures valent 1/8 ?",
+              "options": ["2⁻³", "(1/2)³", "4⁻¹/2", "1/2⁴"],
+              "correctAnswers": [0, 1],
+              "explanation": "2⁻³ = 1/8 et (1/2)³ = 1/8."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "(1/3)² vaut :",
+              "options": ["1/9", "2/3", "1/6", "2/9"],
+              "correctAnswers": [0],
+              "explanation": "1²/3² = 1/9."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "2⁻² vaut :",
+              "options": ["1/4", "−4", "1/2", "4"],
+              "correctAnswers": [0],
+              "explanation": "2⁻² = 1/2² = 1/4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "3/5 × 5/3 vaut :",
+              "options": ["1", "9/25", "25/9", "0"],
+              "correctAnswers": [0],
+              "explanation": "Fraction × inverse = 1."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1/2 + 1/2² vaut :",
+              "options": ["3/4", "1/4", "1", "2/3"],
+              "correctAnswers": [0],
+              "explanation": "1/2+1/4 = 2/4+1/4 = 3/4."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "10⁻¹ vaut :",
+              "options": ["1/10", "−10", "0,1 et 1/10", "10"],
+              "correctAnswers": [2],
+              "explanation": "10⁻¹ = 0,1 = 1/10."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "(2/5)² vaut :",
+              "options": ["4/25", "4/10", "2/25", "4/5"],
+              "correctAnswers": [0],
+              "explanation": "On élève numérateur et dénominateur au carré."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "5²/5³ vaut :",
+              "options": ["1/5", "5", "25/125", "1/25"],
+              "correctAnswers": [0],
+              "explanation": "5²⁻³ = 5⁻¹ = 1/5."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "1/4 + 1/8 + 1/8 vaut :",
+              "options": ["1/2", "3/8", "1/4", "5/8"],
+              "correctAnswers": [0],
+              "explanation": "1/4+2/8 = 1/4+1/4 = 1/2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "2³ × (1/2)³ vaut :",
+              "options": ["1", "8", "1/8", "0"],
+              "correctAnswers": [0],
+              "explanation": "Produit d'un nombre et de son inverse cubé."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 # Backend mAI — architecture et routes
 
 > Périmètre: **le graphe d'imports transitif complet de `main.ts`**, c'est-à-dire
-> 56 fichiers / 31 527 lignes / déclarations relevées dans `API_INVENTORY.json`. Base URL: `https://mai.val.run`.
+> 64 fichiers / 34 145 lignes / 659 déclarations de routes relevées dans `API_INVENTORY.json`. Base URL: `https://mai.val.run`.
 >
 > Ce document décrit le **backend Hono (Val Town)**, pas l'application Next.js.
 > Pour le BFF Next et l'Agent, voir `AGENTS.md`, `docs/1-web/AGENT_ENGINE.md` et
@@ -358,7 +358,7 @@ GET /v1/models · /models · /v1beta/models
 C'est une compatibilité OpenAI / SDK d'Éditeurs. Le graphe réel est donc
 nettement plus large que le nombre de handlers.
 
-### 6.1 `auth.ts` (1 051 l.) — inscription et identité
+### 6.1 `auth.ts` (1 158 l.) — inscription et identité
 
 | Méthode | Route | Rôle |
 |---|---|---|
@@ -395,7 +395,7 @@ Importe `email.ts` (envoi via `nodemailer`) et `vibe-common.ts` (JWT → `userId
 
 Importe `maiModels.ts` (281 l.): le catalogue de modèles mAI.
 
-### 6.4 `images.ts` (1 806 l.) — 59 handlers
+### 6.4 `images.ts` (2 435 l.) — 52 handlers
 
 | Domaine | Routes |
 |---|---|
@@ -405,7 +405,7 @@ Importe `maiModels.ts` (281 l.): le catalogue de modèles mAI.
 | Historique | `GET` / `PATCH` `/v1/images/history[/:id]` |
 | Midjourney | `POST /mj/submit/{imagine,action,describe,blend}` · `GET /mj/task/:id/fetch` |
 
-### 6.5 `audio.ts` (835 l.) — 54 handlers
+### 6.5 `audio.ts` (821 l.) — 45 handlers
 
 | Domaine | Routes |
 |---|---|
@@ -513,7 +513,7 @@ pas confondre avec l'interdiction de DDL au runtime côté Next
 (vibe-books, vibe-dms-conversations, -core, -groups, -moderation, vibe-posts-crud,
 -engage) et `ensureRealtimeTables()`.
 
-Il définit aussi `registerRealtimeRoutes` — **jamais appelée** (voir section 9).
+`main.ts` appelle `registerRealtimeRoutes` : le flux SSE est monté avec le graphe. `pushRealtimeEvent` écrit les événements que ce flux relit.
 
 ---
 
@@ -525,13 +525,13 @@ Le graphe ci-dessous est issu de l’inventaire local. Les alias HTTP sont compt
 | --- | ---: | --- |
 | `api-context.ts` | 18 | |
 | `api-middleware.ts` | 403 | `./config.ts`, `./openrouter-models.ts` |
-| `audio.ts` | 837 | `./config.ts`, `./openrouter-models.ts` |
-| `auth.ts` | 1086 | `./config.ts`, `./email.ts`, `./vibe-common.ts` |
+| `audio.ts` | 821 | `./config.ts`, `./openrouter-models.ts` |
+| `auth.ts` | 1158 | `./auth-resend-policy.ts`, `./config.ts`, `./email.ts`, `./vibe-common.ts` |
 | `cli-env.ts` | 22 | |
 | `config.ts` | 552 | `./api-context.ts` |
 | `devices.ts` | 154 | `./config.ts` |
 | `email.ts` | 553 | |
-| `images.ts` | 1884 | `./config.ts` |
+| `images.ts` | 2435 | `./api-quota.ts`, `./config.ts`, `./image-route-policy.ts` |
 | `mai-identity.ts` | 143 | |
 | `mai-translate.ts` | 375 | `./config.ts`, `./vibe-common.ts` |
 | `maiModels.ts` | 339 | |
@@ -569,7 +569,7 @@ Le graphe ci-dessous est issu de l’inventaire local. Les alias HTTP sont compt
 | `vibe-posts-core.ts` | 569 | `./config.ts` |
 | `vibe-posts-crud.ts` | 1624 | `./config.ts`, `./realtime.ts`, `./vibe-books.ts`, `./vibe-circle.ts`, `./vibe-common.ts`, `./vibe-mai-fleet.ts`, `./vibe-posts-core.ts` |
 | `vibe-posts-engage.ts` | 1161 | `./config.ts`, `./realtime.ts`, `./vibe-circle.ts`, `./vibe-common.ts`, `./vibe-dms.ts`, `./vibe-mai-fleet.ts`, `./vibe-mai.ts`, `./vibe-posts-core.ts` |
-| `vibe-posts.ts` | 53 | `./vibe-common.ts`, `./vibe-feed.ts`, `./vibe-posts-core.ts`, `./vibe-posts-crud.ts`, `./vibe-posts-engage.ts` |
+| `vibe-posts.ts` | 49 | `./vibe-common.ts`, `./vibe-feed.ts`, `./vibe-posts-core.ts`, `./vibe-posts-crud.ts`, `./vibe-posts-engage.ts` |
 | `vibe-recommender.ts` | 277 | |
 | `vibe-settings.ts` | 483 | `./config.ts`, `./vibe-common.ts`, `./vibe-tools.ts` |
 | `vibe-tools.ts` | 709 | `./config.ts`, `./vibe-mai-fleet.ts` |
@@ -579,36 +579,32 @@ Le graphe ci-dessous est issu de l’inventaire local. Les alias HTTP sont compt
 
 ## 9. Code mort et pièges connus
 
-Relevés par analyse statique du graphe. À traiter avant toute cleanup, pour ne
-pas « corriger» du code qui n'est simplement pas atteint.
+Relevés par analyse statique du graphe. À relire avant toute cleanup, pour ne
+pas « corriger» du code qui est en réalité monté.
 
-### 9.1 `vibe-ai.ts` — fichier orphelin (16 ko)
+### 9.1 `vibe-ai.ts` — monté depuis `main.ts`
 
-Définit `registerVibeAIRoutes` (ligne 101) mais **n'est importé par aucun
-fichier**. Il est donc absent du graphe de `main.ts` et jamais déployé
-utilement. Contrairement aux deux cas suivants, son contenu n'est probablement
-pas repris ailleurs.
+`registerVibeAIRoutes` est appelé par `main.ts`, juste après
+`registerRealtimeRoutes`. Le module fait partie du graphe déployé :
+`/v1/ai/text` et `/v1/ai/translate` ne sont pas du code mort.
 
-### 9.2 `registerRealtimeRoutes` — définie, jamais appelée
+### 9.2 `registerRealtimeRoutes` — montée depuis `main.ts`
 
-`realtime.ts:86` définit un endpoint SSE complet (heartbeat, timeout
-`HEARTBEAT_TICKS = 15`, purge `UNREAD_TICKS = 30`,
-`NOTIF_POLL_TICKS = 2`, `MAX_CONNECTIONS_PER_USER = 2`, rattrapage des événements
-émis dans les 3 s preceding la connexion). **Le registre n'est jamais appelé**:
-aucun endpoint SSE n'est monté.
+`realtime.ts` définit le flux SSE (heartbeat, timeout `HEARTBEAT_TICKS = 15`,
+purge `UNREAD_TICKS = 30`, `NOTIF_POLL_TICKS = 2`,
+`MAX_CONNECTIONS_PER_USER = 2`, rattrapage des événements émis dans les 3 s
+précédant la connexion). `main.ts` appelle `registerRealtimeRoutes`.
+`pushRealtimeEvent` écrit des événements que ce flux relit. Ne pas retirer
+l'appel en croyant le registre orphelin.
 
-Conséquence: `pushRealtimeEvent` écrit dans les tables de la base mais
-**personne ne les lit**. Le temps réel de la plateforme sociale est inactif.
-`vibe-feed.ts:24` utilise `HybridRecommender` (recommandation) et fonctionne
-indépendamment du SSE.
+### 9.3 Fil monté une seule fois
 
-### 9.3 `registerVibeFeedRoutes` monté deux fois
-
-`vibe.ts:44` puis `vibe-posts.ts:47`. Le second appel n'est **pas** protégé,
-contrairement à `registerVibePostsRoutes` qui utilise le fanion
-`__vibe_posts_registered`. Hono ignore la seconde inscription, donc le
-comportement est correct — mais c'est fragile: une modification d'un des deux
-sites peut créer un doublon silencieux.
+`vibe.ts` appelle `registerVibeFeedRoutes` **avant** `registerVibePostsRoutes`.
+L'ordre est obligatoire : la route statique `/v1/posts/top` (fil) doit primer
+sur `/v1/posts/:id` (posts). `vibe-posts.ts` ne remonte plus le fil ; il
+réexporte seulement `registerVibeFeedRoutes`. Le fanion
+`__vibe_feed_registered` dans `vibe-feed.ts` reste une garde si un second
+appel réapparaît.
 
 ### 9.4 `0014_notifications_and_memory.sql` — orphelin assumé, et non un absent
 

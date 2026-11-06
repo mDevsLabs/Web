@@ -1,0 +1,2358 @@
+{
+  "id": "5e-allemand-09",
+  "year": "5e",
+  "subject": "allemand",
+  "title": "Médias et actualité en l'allemand",
+  "order": 9,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un titre",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Titre : « Heute ist das Wetter schön. » Quels mots indiquent le moment ?",
+              "options": ["Heute", "Wetter", "schön", "ist"],
+              "correctAnswers": [0, 3],
+              "explanation": "« Heute » signifie aujourd'hui et « ist » est au présent."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Que signifie « heute » dans un titre ?",
+              "options": ["aujourd'hui", "hier", "demain", "souvent"],
+              "correctAnswers": [0],
+              "explanation": "« Heute » correspond à la date du jour."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Titre : « Heute startet die Schule. » Que commence ?",
+              "options": ["la météo", "l'école", "le sport", "le cinéma"],
+              "correctAnswers": [1],
+              "explanation": "« die Schule » désigne l'école."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Dans « Heute regnet es », que décrit-on ?",
+              "options": ["le soleil", "la pluie", "le vent", "la neige"],
+              "correctAnswers": [1],
+              "explanation": "« regnet » vient de « regnen », pleuvoir."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Heute » se place en général…",
+              "options": [
+                "au début du titre",
+                "à la fin seulement",
+                "jamais dans un titre",
+                "après un point"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les titres annoncent souvent l'actualité du jour en tête."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Titre : « Heute ist Freitag. » Quel jour ?",
+              "options": ["lundi", "mercredi", "vendredi", "dimanche"],
+              "correctAnswers": [2],
+              "explanation": "« Freitag » est vendredi."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Heute » est un mot…",
+              "options": ["de lieu", "de temps", "de couleur", "de nombre"],
+              "correctAnswers": [1],
+              "explanation": "Il situe l'information dans le temps."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Titre : « Heute spielt die Mannschaft. » Qui joue ?",
+              "options": [
+                "une équipe",
+                "un professeur",
+                "une voiture",
+                "un livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« die Mannschaft » signifie l'équipe."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Pour parler d'aujourd'hui en allemand on dit…",
+              "options": ["gestern", "heute", "morgen", "jetzt nur"],
+              "correctAnswers": [1],
+              "explanation": "« Heute » est le mot courant pour aujourd'hui."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Titre : « Heute: Konzert in Berlin. » Où a lieu l'événement ?",
+              "options": ["Paris", "Berlin", "Wien", "Rom"],
+              "correctAnswers": [1],
+              "explanation": "« in Berlin » indique la ville."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Titre : « Ein neues Handy ist da. » Quels mots parlent de nouveauté ?",
+              "options": ["neues", "Handy", "da", "ist"],
+              "correctAnswers": [0, 3],
+              "explanation": "« neues » veut dire nouveau et « ist da » annonce l'arrivée."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Que signifie « neu » ?",
+              "options": ["vieux", "nouveau", "petit", "cher"],
+              "correctAnswers": [1],
+              "explanation": "« Neu » est l'adjectif nouveau."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Ein neues Buch » désigne…",
+              "options": [
+                "un vieux livre",
+                "un nouveau livre",
+                "un grand livre",
+                "un livre bleu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« neues » accorde l'adjectif avec « Buch » neutre."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Titre : « Neue App für Kinder. » Pour qui ?",
+              "options": [
+                "pour les enfants",
+                "pour les chats",
+                "pour les voitures",
+                "pour la pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« für Kinder » signifie pour les enfants."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Neu » dans un titre attire l'attention sur…",
+              "options": ["la date", "la nouveauté", "la météo", "la couleur"],
+              "correctAnswers": [1],
+              "explanation": "C'est un mot-clé fréquent en publicité et presse."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Titre : « Neues Kino in der Stadt. » Quoi d'ouvert ?",
+              "options": ["une école", "un cinéma", "un stade", "un parc"],
+              "correctAnswers": [1],
+              "explanation": "« Kino » est le cinéma."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Neue Schuhe » = …",
+              "options": [
+                "de nouvelles chaussures",
+                "de vieilles chaussures",
+                "des chaussures vertes",
+                "sans chaussures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Schuhe » sont des chaussures au pluriel."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "L'opposé de « neu » est souvent…",
+              "options": ["groß", "alt", "gut", "heute"],
+              "correctAnswers": [1],
+              "explanation": "« Alt » signifie vieux."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Titre : « Neue Regeln in der Schule. » De quoi parle-t-on ?",
+              "options": [
+                "de nouvelles règles",
+                "d'un nouveau prof",
+                "d'un nouveau bus",
+                "d'une nouvelle couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Regeln » sont des règles."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« Das ist neu » veut dire…",
+              "options": [
+                "c'est grand",
+                "c'est nouveau",
+                "c'est hier",
+                "c'est lent"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Phrase simple pour commenter une nouveauté."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Titre : « Ein großes Fest heute. » Quels mots parlent de taille ou de fête ?",
+              "options": ["großes", "Fest", "heute", "ein"],
+              "correctAnswers": [0, 1],
+              "explanation": "« großes » indique que c'est grand et « Fest » une fête."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Groß » signifie…",
+              "options": ["petit", "grand", "nouveau", "froid"],
+              "correctAnswers": [1],
+              "explanation": "Adjectif de taille très fréquent."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Titre : « Großer Sieg für die Mannschaft. » Quel type d'événement ?",
+              "options": [
+                "une défaite",
+                "une victoire",
+                "un match nul",
+                "un entraînement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Sieg » veut dire victoire."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Ein großer Hund » = …",
+              "options": [
+                "un grand chien",
+                "un petit chien",
+                "un chien noir",
+                "deux chiens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hund » est chien, masculin : großer."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Titre : « Große Party am Samstag. » Quand ?",
+              "options": ["lundi", "samedi", "dimanche", "mercredi"],
+              "correctAnswers": [1],
+              "explanation": "« Samstag » est samedi."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "L'opposé de « groß » est…",
+              "options": ["neu", "klein", "gut", "heute"],
+              "correctAnswers": [1],
+              "explanation": "« Klein » signifie petit."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Große Stadt » désigne…",
+              "options": [
+                "une grande ville",
+                "une petite maison",
+                "un grand livre",
+                "un long voyage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Stadt » est ville, féminin : große."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Titre : « Großes Konzert in Hamburg. » Quelle ville ?",
+              "options": ["Berlin", "Hamburg", "München", "Köln"],
+              "correctAnswers": [1],
+              "explanation": "Le nom de ville est dans le titre."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Sehr groß » renforce l'idée de…",
+              "options": ["nouveauté", "grande taille", "pluie", "hier"],
+              "correctAnswers": [1],
+              "explanation": "« Sehr » signifie très."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Titre : « Große Hilfe für Kinder. » Pour qui l'aide ?",
+              "options": [
+                "pour les profs",
+                "pour les enfants",
+                "pour les voitures",
+                "pour la pluie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« für Kinder » précise le public."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Titre : « 3:1 – Team gewinnt heute. » Quels éléments indiquent un score et le temps ?",
+              "options": ["3:1", "gewinnt", "heute", "Team"],
+              "correctAnswers": [0, 2],
+              "explanation": "Le score est « 3:1 » et « heute » situe le match aujourd'hui."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Dans un titre sportif, « 2:0 » indique…",
+              "options": ["l'heure", "le score", "la température", "le prix"],
+              "correctAnswers": [1],
+              "explanation": "Les chiffres séparés par « : » donnent le résultat."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Gewinnt » vient de…",
+              "options": ["gagner", "perdre", "jouer", "courir"],
+              "correctAnswers": [0],
+              "explanation": "« Gewinnen » signifie gagner."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Titre : « 10 neue Bücher ». Combien de livres ?",
+              "options": ["deux", "cinq", "dix", "vingt"],
+              "correctAnswers": [2],
+              "explanation": "« 10 » se lit zehn en allemand."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Erste Platz » dans un titre sportif évoque…",
+              "options": [
+                "la première place",
+                "la pluie",
+                "la nuit",
+                "la couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Platz » est place, rang."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Titre : « 15 Minuten Pause ». De quoi s'agit-il ?",
+              "options": [
+                "d'une pause de 15 minutes",
+                "d'un match 15-0",
+                "de 15 livres",
+                "de 15 villes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Minuten » signifie minutes."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Le chiffre « 1 » dans « Platz 1 » indique…",
+              "options": [
+                "dernier rang",
+                "premier rang",
+                "deuxième rang",
+                "aucun rang"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Place numéro un = première place."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« 2026 » dans un titre peut indiquer…",
+              "options": [
+                "une année",
+                "une heure seule",
+                "une couleur",
+                "un prénom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quatre chiffres donnent souvent l'année."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Titre : « 5 Euro für das Ticket ». Quel mot est la monnaie ?",
+              "options": ["Ticket", "Euro", "für", "das"],
+              "correctAnswers": [1],
+              "explanation": "« Euro » est la devise."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« 0:0 » dans un titre de foot signifie…",
+              "options": [
+                "match nul",
+                "grande victoire",
+                "annulation",
+                "pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aucun but pour les deux équipes."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Titre : « Konzert in München heute. » Quels mots donnent le lieu et le moment ?",
+              "options": ["München", "heute", "Konzert", "in"],
+              "correctAnswers": [0, 1],
+              "explanation": "« in München » localise et « heute » date l'événement."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« in Berlin » indique…",
+              "options": ["à Berlin", "de Berlin", "sans Berlin", "vers hier"],
+              "correctAnswers": [0],
+              "explanation": "« in » + ville = à/en."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Titre : « Wetter in Paris: sonnig. » Quelle ville ?",
+              "options": ["Paris", "Berlin", "Rom", "Wien"],
+              "correctAnswers": [0],
+              "explanation": "Le nom propre reste reconnaissable."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Deutschland » dans un titre parle de…",
+              "options": ["l'Allemagne", "la France", "l'Espagne", "l'Italie"],
+              "correctAnswers": [0],
+              "explanation": "Nom du pays en allemand."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Titre : « Schule in Köln ». Où est l'école ?",
+              "options": ["à Cologne", "à Berlin", "à Hambourg", "à Vienne"],
+              "correctAnswers": [0],
+              "explanation": "Köln = Cologne."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Wien » est…",
+              "options": ["Vienne", "Berlin", "Zürich", "Paris"],
+              "correctAnswers": [0],
+              "explanation": "Capitale autrichienne en allemand."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Titre : « Festival in der Stadt ». « der Stadt » = …",
+              "options": ["de la ville", "du prof", "du chien", "de l'école"],
+              "correctAnswers": [0],
+              "explanation": "« Stadt » est ville."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Aus Frankfurt » signifie…",
+              "options": [
+                "de Francfort",
+                "à Francfort",
+                "sans Francfort",
+                "vers Francfort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« aus » indique l'origine."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Titre : « Hamburg: großes Fest ». Quelle ville est au début ?",
+              "options": ["Hambourg", "Munich", "Dresden", "Bonn"],
+              "correctAnswers": [0],
+              "explanation": "Le nom avant les deux points est le lieu."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Pour annoncer un lieu dans un titre, on utilise souvent…",
+              "options": [
+                "in + ville",
+                "ohne + ville",
+                "gestern + ville",
+                "neu + ville seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« in » introduit la localisation."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Titre : « Die Schule startet morgen. » Quels mots indiquent sujet et action ?",
+              "options": ["Schule", "startet", "morgen", "die"],
+              "correctAnswers": [0, 1],
+              "explanation": "« die Schule » est le sujet et « startet » l'action de commencer."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Startet » signifie…",
+              "options": ["commence", "finit", "dort", "mange"],
+              "correctAnswers": [0],
+              "explanation": "Verbe « starten » au présent."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Titre : « Mannschaft gewinnt 2:1. » Que fait l'équipe ?",
+              "options": ["elle gagne", "elle pleut", "elle dort", "elle lit"],
+              "correctAnswers": [0],
+              "explanation": "« gewinnt » = gagne."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Kommt » dans « Der Bus kommt » veut dire…",
+              "options": ["arrive", "part", "tombe", "coûte"],
+              "correctAnswers": [0],
+              "explanation": "« kommen » = venir/arriver."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Titre : « Kinder spielen im Park. » Où jouent-ils ?",
+              "options": ["au parc", "à l'école", "au cinéma", "à la mer"],
+              "correctAnswers": [0],
+              "explanation": "« im Park » = dans le parc."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Gibt es » dans un titre pose souvent…",
+              "options": [
+                "une question",
+                "une couleur",
+                "un score",
+                "un prénom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure interrogative « y a-t-il »."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Titre : « Film beginnt um 20 Uhr. » Quand ?",
+              "options": ["à 20 h", "à 8 h du matin", "à midi", "hier"],
+              "correctAnswers": [0],
+              "explanation": "« um 20 Uhr » = à vingt heures."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Hilft » signifie…",
+              "options": ["aide", "court", "chante", "ferme"],
+              "correctAnswers": [0],
+              "explanation": "« helfen » = aider."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Titre : « Stadt feiert heute. » Que fait la ville ?",
+              "options": ["elle fête", "elle pleut", "elle ferme", "elle dort"],
+              "correctAnswers": [0],
+              "explanation": "« feiern » = fêter."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Le verbe en fin de titre court attire l'œil sur…",
+              "options": [
+                "l'action",
+                "la couleur",
+                "le silence",
+                "le passé seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les titres mettent souvent l'action en avant."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Titre : « Gutes Wetter heute in Berlin. » Quels mots décrivent météo et moment ?",
+              "options": ["Gutes", "Wetter", "heute", "Berlin"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Gutes Wetter » = beau temps, thème central du titre."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Gutes Wetter » = …",
+              "options": [
+                "beau temps",
+                "mauvais temps",
+                "grand vent",
+                "nuit noire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« gut » = bon."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Titre : « Wichtige Nachricht für Schüler. » Pour qui ?",
+              "options": [
+                "pour les élèves",
+                "pour les voitures",
+                "pour les chiens",
+                "pour la pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Schüler » = élèves."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Wichtig » signifie…",
+              "options": ["important", "petit", "bleu", "lent"],
+              "correctAnswers": [0],
+              "explanation": "Adjectif fréquent dans les titres."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Titre : « Schlechtes Wetter im Norden. » Quelle météo ?",
+              "options": [
+                "mauvais temps",
+                "soleil",
+                "chaleur",
+                "neige fine seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« schlecht » = mauvais."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Schnelle Hilfe » évoque une aide…",
+              "options": ["rapide", "lente", "noire", "gratuite toujours"],
+              "correctAnswers": [0],
+              "explanation": "« schnell » = rapide."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Titre : « Interessante Geschichte ». « Geschichte » = …",
+              "options": ["histoire", "couleur", "score", "ville"],
+              "correctAnswers": [0],
+              "explanation": "Peut être récit ou histoire au sens général."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Laut » dans « Laut Polizei » signifie…",
+              "options": ["selon", "sans", "contre", "sous"],
+              "correctAnswers": [0],
+              "explanation": "Introduit une source d'information."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Titre : « Warme Tage kommen. » Quel adjectif décrit les jours ?",
+              "options": ["warme", "kalte", "neue", "große"],
+              "correctAnswers": [0],
+              "explanation": "« warm » = chaud."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Un adjectif en début de titre sert surtout à…",
+              "options": [
+                "qualifier le sujet",
+                "donner l'heure exacte",
+                "compter les buts",
+                "nommer un pays seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il précise le ton ou la nature de l'info."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Titre : « Sonne und Regen heute. » Quels mots nomment deux phénomènes ?",
+              "options": ["Sonne", "Regen", "heute", "und"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Sonne » = soleil et « Regen » = pluie."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« und » signifie…",
+              "options": ["et", "ou", "mais", "sans"],
+              "correctAnswers": [0],
+              "explanation": "Conjonction de base très fréquente."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Titre : « Schule und Sport ». De quoi parle-t-on ?",
+              "options": [
+                "école et sport",
+                "école seule",
+                "sport hier",
+                "pluie et vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« und » relie deux thèmes."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« oder » dans un titre introduit…",
+              "options": ["un choix", "une heure", "une ville", "un score"],
+              "correctAnswers": [0],
+              "explanation": "« oder » = ou."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Titre : « Musik und Tanz im Park ». Où ?",
+              "options": ["au parc", "à l'école", "au cinéma", "à la gare"],
+              "correctAnswers": [0],
+              "explanation": "« im Park » localise."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« aber » signifie…",
+              "options": ["mais", "et", "car", "donc"],
+              "correctAnswers": [0],
+              "explanation": "Conjonction d'opposition simple."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Titre : « Kino und Pizza heute Abend ». Quand ?",
+              "options": [
+                "ce soir",
+                "hier matin",
+                "l'an passé",
+                "à midi seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« heute Abend » = ce soir."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Relier « Buch » et « Film » avec « und » donne…",
+              "options": [
+                "livre et film",
+                "livre ou film",
+                "livre sans film",
+                "film hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux médias sont associés."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Titre : « Eltern und Kinder im Museum ». Qui ?",
+              "options": [
+                "parents et enfants",
+                "professeurs seuls",
+                "voitures",
+                "chiens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Eltern » = parents, « Kinder » = enfants."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« und » ne change pas le sens en…",
+              "options": [
+                "addition de deux idées",
+                "question directe",
+                "score sportif",
+                "nom propre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il coordonne deux éléments du titre."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Titre : « Regnet es heute? » Quels indices montrent une question sur la météo ?",
+              "options": ["Regnet", "es", "heute", "?"],
+              "correctAnswers": [0, 3],
+              "explanation": "« Regnet » = pleut et « ? » marque la question."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Un « ? » en fin de titre indique…",
+              "options": ["une question", "un score", "une heure", "un prix"],
+              "correctAnswers": [0],
+              "explanation": "Ponctuation typique des titres interrogatifs."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Was ist neu? » demande…",
+              "options": [
+                "ce qui est nouveau",
+                "l'heure",
+                "la ville",
+                "le score"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Was » = quoi/que."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Titre : « Wer gewinnt heute? » On demande…",
+              "options": [
+                "qui gagne",
+                "où jouer",
+                "combien coûte",
+                "quelle couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Wer » = qui."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Wann startet der Film? » « Wann » = …",
+              "options": ["quand", "où", "pourquoi", "comment"],
+              "correctAnswers": [0],
+              "explanation": "Interrogatif temporel."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Titre : « Wo ist das Konzert? » On cherche…",
+              "options": ["le lieu", "le prix", "la couleur", "le passé"],
+              "correctAnswers": [0],
+              "explanation": "« Wo » = où."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Wie ist das Wetter? » porte sur…",
+              "options": ["la météo", "le foot", "le cinéma", "l'école"],
+              "correctAnswers": [0],
+              "explanation": "« Wetter » = temps (météo)."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Dans une question, le verbe peut être en…",
+              "options": [
+                "première position",
+                "fin seulement",
+                "milieu sans verbe",
+                "anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En allemand simple, le verbe conduit souvent la question."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Titre : « Ist das wichtig? » Réponse possible : …",
+              "options": [
+                "Ja oder Nein",
+                "nur ein score",
+                "une ville",
+                "un chiffre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question fermée oui/non."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« Gibt es heute Schule? » signifie…",
+              "options": [
+                "Y a-t-il école aujourd'hui ?",
+                "Il pleut",
+                "La ville est grande",
+                "Le match est fini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Gibt es » = y a-t-il."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Titre : « Heute: großes Konzert und gutes Wetter. » Quels mots résument l'actualité positive ?",
+              "options": ["heute", "großes", "gutes", "und"],
+              "correctAnswers": [1, 2],
+              "explanation": "« großes Konzert » et « gutes Wetter » sont les deux bonnes nouvelles."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Lire un titre, c'est d'abord repérer…",
+              "options": [
+                "les mots-clés",
+                "toutes les virgules",
+                "la page suivante",
+                "la marge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mots importants donnent le sujet vite."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Breaking » ou « Eilmeldung » dans la presse allemande évoque…",
+              "options": [
+                "une info urgente",
+                "une recette",
+                "un exercice",
+                "un dictionnaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Eilmeldung » = flash info."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Titre : « Schule: neue Regeln ». De quoi parle-t-on ?",
+              "options": [
+                "de nouvelles règles à l'école",
+                "d'un match",
+                "d'un film d'horreur",
+                "d'une carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Schule » et « neue Regeln » guident la lecture."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Un titre très court sert à…",
+              "options": [
+                "accrocher le lecteur",
+                "raconter tout l'article",
+                "donner tous les détails",
+                "remplacer l'image"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il résume en quelques mots."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Lokal » dans un journal signifie souvent…",
+              "options": ["local", "global", "sportif", "musical"],
+              "correctAnswers": [0],
+              "explanation": "Actualité de la région."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Titre : « Wetter: kalt und windig ». Quel thème ?",
+              "options": ["météo", "musique", "maths", "histoire ancienne"],
+              "correctAnswers": [0],
+              "explanation": "« Wetter » indique la météo."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Titel » en allemand = …",
+              "options": ["titre", "texte long", "image", "quiz"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire médias de base."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Si tu ne comprends qu'un mot du titre, tu peux…",
+              "options": [
+                "deviner le thème général",
+                "abandonner tout",
+                "traduire l'article entier",
+                "changer de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mots connus (heute, neu, groß) aident beaucoup."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« Nachrichten » désigne…",
+              "options": [
+                "les informations / actualités",
+                "les chansons",
+                "les jeux",
+                "les vacances seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot central pour parler de médias."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Commenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Phrase : « Ich finde das Konzert gut. » Quels mots expriment l'opinion positive ?",
+              "options": ["Ich finde", "gut", "Konzert", "das"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ich finde » introduit l'avis et « gut » le juge positif."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Ich finde » sert à…",
+              "options": [
+                "donner son avis",
+                "demander l'heure",
+                "compter",
+                "saluer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure standard pour commenter."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Ich finde den Film gut. » Que pense-t-on du film ?",
+              "options": [
+                "il est bien",
+                "il est mauvais",
+                "il est absent",
+                "il est hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« gut » = bien/bon."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Pour dire « je trouve » on dit…",
+              "options": ["Ich finde", "Ich bin", "Ich habe", "Ich gehe"],
+              "correctAnswers": [0],
+              "explanation": "Verbe « finden » au présent."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Das Wetter ist gut, ich finde. » L'avis porte sur…",
+              "options": ["la météo", "le bus", "le prof", "le stylo"],
+              "correctAnswers": [0],
+              "explanation": "« Wetter » = météo."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Sehr gut » renforce…",
+              "options": [
+                "le positif",
+                "le négatif",
+                "la question",
+                "le silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« sehr » = très."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Ich finde die Idee gut. » « Idee » = …",
+              "options": ["idée", "île", "image seule", "heure"],
+              "correctAnswers": [0],
+              "explanation": "Faux ami proche du français."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Commenter une info, c'est…",
+              "options": [
+                "dire ce qu'on en pense",
+                "recopier le titre",
+                "effacer le texte",
+                "traduire mot à mot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On exprime un jugement simple."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Ich finde das spannend ». « spannend » = …",
+              "options": ["passionnant", "ennuyeux", "petit", "froid"],
+              "correctAnswers": [0],
+              "explanation": "Adjectif positif pour un sujet."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Après « ich finde », on place souvent…",
+              "options": [
+                "le sujet puis l'adjectif",
+                "seulement un chiffre",
+                "un point d'interrogation",
+                "rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. : ich finde das gut."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "« Ich finde den Text schlecht. » Quels mots montrent un avis négatif ?",
+              "options": ["Ich finde", "schlecht", "Text", "den"],
+              "correctAnswers": [0, 1],
+              "explanation": "La formule d'opinion plus « schlecht » = mauvais."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Schlecht » signifie…",
+              "options": ["mauvais", "grand", "nouveau", "rapide"],
+              "correctAnswers": [0],
+              "explanation": "Antonyme fréquent de « gut »."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Ich finde das Wetter schlecht heute. » Quel jugement ?",
+              "options": [
+                "météo mauvaise",
+                "météo parfaite",
+                "pas de météo",
+                "météo hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« schlecht » qualifie le temps."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Pour un avis négatif poli en classe, on peut dire…",
+              "options": [
+                "Ich finde das nicht gut",
+                "Ich bin gut",
+                "Das ist heute",
+                "Groß und neu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« nicht gut » adoucit le refus."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Ich finde den Titel schlecht. » On critique…",
+              "options": ["le titre", "le prof", "Berlin", "le score"],
+              "correctAnswers": [0],
+              "explanation": "« Titel » = titre."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Nicht interessant » exprime…",
+              "options": [
+                "de l'ennui",
+                "de la joie",
+                "de la pluie",
+                "un score"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manque d'intérêt."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Ich finde das falsch. » « falsch » = …",
+              "options": ["faux / incorrect", "vrai", "grand", "beau"],
+              "correctAnswers": [0],
+              "explanation": "Jugement sur la justesse."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Un commentaire négatif reste en 5e…",
+              "options": [
+                "simple et clair",
+                "un essai de philo",
+                "sans verbe",
+                "en latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une phrase courte suffit."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Zu lang » dans « Ich finde den Text zu lang » = …",
+              "options": ["trop long", "trop court", "trop neuf", "trop grand"],
+              "correctAnswers": [0],
+              "explanation": "« zu » = trop."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Opposé de « gut » dans un commentaire…",
+              "options": ["schlecht", "heute", "Berlin", "und"],
+              "correctAnswers": [0],
+              "explanation": "Paire basique d'évaluation."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "« Ich finde die Nachricht interessant. » Quels mots donnent sujet et jugement ?",
+              "options": ["Nachricht", "interessant", "Ich finde", "die"],
+              "correctAnswers": [0, 1],
+              "explanation": "On commente une « Nachricht » jugée « interessant »."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Interessant » = …",
+              "options": ["intéressant", "ennuyeux", "petit", "fermé"],
+              "correctAnswers": [0],
+              "explanation": "Adjectif proche du français."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Ich finde das Buch interessant. » Que pense-t-on du livre ?",
+              "options": ["il captive", "il dort", "il pleut", "il coûte zero"],
+              "correctAnswers": [0],
+              "explanation": "Jugement positif modéré."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Sehr interessant » signifie…",
+              "options": [
+                "très intéressant",
+                "pas intéressant",
+                "très petit",
+                "très hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« sehr » intensifie."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Ich finde den Bericht interessant. » « Bericht » = …",
+              "options": ["reportage / article", "chaussure", "nuage", "bus"],
+              "correctAnswers": [0],
+              "explanation": "Mot fréquent dans les médias."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Un sujet « interessant » retient…",
+              "options": [
+                "l'attention",
+                "la pluie",
+                "le silence total",
+                "la marge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sens courant de l'adjectif."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Ich finde die Story interessant. » « Story » peut désigner…",
+              "options": [
+                "une story / récit court",
+                "une règle",
+                "un verbe",
+                "une heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emprunt utilisé dans les médias jeunes."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Pour réagir à une info surprenante : …",
+              "options": [
+                "Ich finde das interessant",
+                "Ich bin gestern",
+                "Das ist und",
+                "Heute groß"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule d'avis adaptée."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Nicht langweilig » suggère plutôt…",
+              "options": ["intéressant", "mauvais", "fermé", "froid"],
+              "correctAnswers": [0],
+              "explanation": "Double négation simple = pas ennuyeux."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Commenter avec « interessant », c'est rester…",
+              "options": [
+                "positif ou curieux",
+                "en colère",
+                "sans opinion",
+                "muet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ton ouvert, niveau 5e."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "« Ich finde den Artikel langweilig. » Quels mots expriment l'ennui ?",
+              "options": ["Ich finde", "langweilig", "Artikel", "den"],
+              "correctAnswers": [0, 1],
+              "explanation": "Structure d'avis + adjectif « langweilig »."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Langweilig » = …",
+              "options": ["ennuyeux", "excitant", "grand", "nouveau"],
+              "correctAnswers": [0],
+              "explanation": "Antonyme fréquent d'« interessant »."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Ich finde das Video langweilig. » Jugement sur…",
+              "options": ["la vidéo", "la pluie", "Berlin", "le score 3:1"],
+              "correctAnswers": [0],
+              "explanation": "« Video » est le sujet commenté."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Total langweilig » renforce…",
+              "options": ["l'ennui", "la joie", "la vitesse", "la date"],
+              "correctAnswers": [0],
+              "explanation": "« total » = vraiment / totalement."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Opposé de « langweilig »…",
+              "options": ["interessant", "schlecht", "klein", "heute"],
+              "correctAnswers": [0],
+              "explanation": "Paire utile pour commenter."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Ich finde die Sendung langweilig. » « Sendung » = …",
+              "options": ["émission", "chaussure", "stylo", "gateau"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire TV/radio."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Si un titre est trop long et répétitif, tu peux dire…",
+              "options": [
+                "Ich finde das langweilig",
+                "Ich finde das groß",
+                "Heute neu",
+                "Und und"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commentaire honnête niveau collège."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Langweilig » décrit surtout un ressenti…",
+              "options": [
+                "subjectif",
+                "scientifique",
+                "géographique",
+                "mathématique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est ton avis personnel."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Ich finde den Text langweilig, aber kurz. » Il y a…",
+              "options": [
+                "deux remarques",
+                "aucun verbe",
+                "seulement un chiffre",
+                "une ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« aber » ajoute une nuance."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "En classe, dire qu'un texte est langweilig reste…",
+              "options": [
+                "une opinion à respecter",
+                "une insulte obligatoire",
+                "une règle",
+                "un titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On formule son ressenti avec des mots appris."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "« Ich finde das Fußballspiel spannend. » Quels mots relient sport et émotion ?",
+              "options": ["Fußballspiel", "spannend", "Ich finde", "das"],
+              "correctAnswers": [0, 1],
+              "explanation": "Match de foot jugé « spannend » (palpitant)."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Fußball » = …",
+              "options": ["football", "basket", "tennis", "natation"],
+              "correctAnswers": [0],
+              "explanation": "Sport le plus cité dans la presse allemande."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Ich finde den Sieg gut. » « Sieg » = …",
+              "options": ["victoire", "défaite", "pluie", "livre"],
+              "correctAnswers": [0],
+              "explanation": "Mot fréquent après un match."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Titre lu : « Team verliert 0:2. » Commentaire possible : …",
+              "options": [
+                "Ich finde das schlecht",
+                "Ich finde das groß",
+                "Heute neu",
+                "Und Sonne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Défaite = avis négatif simple."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Spannend » pour un match = …",
+              "options": ["palpitant", "ennuyeux", "fermé", "froid"],
+              "correctAnswers": [0],
+              "explanation": "Émotion positive du sport."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Ich finde die Mannschaft stark. » « stark » = …",
+              "options": ["forte / solide", "faible", "petite", "vide"],
+              "correctAnswers": [0],
+              "explanation": "Compliment sportif basique."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Tor » dans les titres sportifs = …",
+              "options": ["but", "porte", "tour", "table"],
+              "correctAnswers": [0],
+              "explanation": "Mot clé des comptes rendus."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Après « 3:1 », tu peux dire : …",
+              "options": [
+                "Ich finde das Ergebnis gut",
+                "Ich finde das Wetter",
+                "Heute ist und",
+                "Neu groß"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ergebnis » = résultat."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Ich finde Sport in den Nachrichten interessant. » Sujet : …",
+              "options": [
+                "le sport à la une",
+                "la cuisine",
+                "la météo seule",
+                "les stylos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'avis porte sur la rubrique sport."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Commenter un match, c'est parler de…",
+              "options": [
+                "résultat et ressenti",
+                "grammaire latine",
+                "carte géographique seule",
+                "couleur du cahier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien direct avec l'actualité sportive."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "« Ich finde das Wetter heute schön. » Quels mots ciblent météo et jugement ?",
+              "options": ["Wetter", "schön", "heute", "Ich finde"],
+              "correctAnswers": [0, 1],
+              "explanation": "On commente le « Wetter » qualifié de « schön »."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Schön » pour le temps = …",
+              "options": ["beau", "mauvais", "froid seulement", "noir"],
+              "correctAnswers": [0],
+              "explanation": "Beau temps en allemand courant."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Titre : « Regen heute. » Commentaire : …",
+              "options": [
+                "Ich finde das schlecht",
+                "Ich finde das groß",
+                "Ich bin neu",
+                "Und gut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluie souvent perçue négativement."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Sonnig » = …",
+              "options": [
+                "ensoleillé",
+                "pluvieux",
+                "neigeux",
+                "nuageux seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif météo fréquent."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Ich finde es zu kalt. » « kalt » = …",
+              "options": ["froid", "chaud", "grand", "neuf"],
+              "correctAnswers": [0],
+              "explanation": "Température basse."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Warm » = …",
+              "options": ["chaud / doux", "froid", "petit", "lent"],
+              "correctAnswers": [0],
+              "explanation": "Opposé de froid."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Ich finde den Sommer gut. » Saison visée : …",
+              "options": ["été", "hiver", "automne seul", "nuit"],
+              "correctAnswers": [0],
+              "explanation": "« Sommer » = été."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Météo au journal : rubrique souvent…",
+              "options": ["Wetter", "Sport", "Kino", "Mathe"],
+              "correctAnswers": [0],
+              "explanation": "Mot identique au vocabulaire appris."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Ich finde Schnee okay. » « Schnee » = …",
+              "options": ["neige", "soleil", "vent", "orage"],
+              "correctAnswers": [0],
+              "explanation": "Phénomène hivernal."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Relier titre météo et avis, c'est…",
+              "options": [
+                "lire puis commenter",
+                "ignorer le titre",
+                "traduire l'Allemagne",
+                "compter les pages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement typique de l'unité."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "« Ich finde die Schulnews wichtig. » Quels mots montrent l'importance ?",
+              "options": ["Schulnews", "wichtig", "Ich finde", "die"],
+              "correctAnswers": [0, 1],
+              "explanation": "Actu scolaire jugée « wichtig »."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Wichtig » = …",
+              "options": ["important", "petit", "bleu", "lent"],
+              "correctAnswers": [0],
+              "explanation": "Adjectif pour insister sur l'info."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Titre : « Neue Pause in der Schule. » Commentaire : …",
+              "options": [
+                "Ich finde das gut",
+                "Ich finde das und",
+                "Heute groß",
+                "Regen neu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nouvelle pause = souvent vue positive."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Ich finde die Hausaufgaben viel. » « viel » = …",
+              "options": ["beaucoup", "peu", "jamais", "hier"],
+              "correctAnswers": [0],
+              "explanation": "Quantité importante."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Schule » = …",
+              "options": ["école", "ville", "film", "match"],
+              "correctAnswers": [0],
+              "explanation": "Mot de base du chapitre."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Ich finde den Test schwer. » « schwer » = …",
+              "options": ["difficile", "facile", "grand", "beau"],
+              "correctAnswers": [0],
+              "explanation": "Jugement sur une évaluation."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Leicht » = …",
+              "options": ["facile", "difficile", "froid", "noir"],
+              "correctAnswers": [0],
+              "explanation": "Opposé de « schwer »."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Info sur une sortie scolaire : tu peux dire…",
+              "options": [
+                "Ich finde das interessant",
+                "Ich finde das Regen",
+                "Groß heute",
+                "Und schlecht nur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réaction adaptée à une bonne nouvelle."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Ich finde die Regel unfair. » « unfair » = …",
+              "options": ["injuste", "juste", "grand", "neuf"],
+              "correctAnswers": [0],
+              "explanation": "Emprunt compréhensible en 5e."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Commenter une info scolaire utilise surtout…",
+              "options": [
+                "ich finde + adjectif",
+                "seulement des chiffres",
+                "un plan de ville",
+                "la météo d'hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure vue en u2."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "« Ich finde das gut, weil es kurz ist. » Quels mots lient avis et raison ?",
+              "options": ["gut", "weil", "kurz", "ist"],
+              "correctAnswers": [1, 2],
+              "explanation": "« weil » introduit la cause et « kurz » la justifie."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Weil » signifie…",
+              "options": ["parce que", "mais", "ou", "sans"],
+              "correctAnswers": [0],
+              "explanation": "Conjonction de cause niveau débutant."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Ich finde den Titel gut, weil er kurz ist. » Pourquoi ?",
+              "options": [
+                "il est court",
+                "il pleut",
+                "il est en France",
+                "il est hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« kurz » = court."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Weil es interessant ist » complète…",
+              "options": ["une raison", "une heure", "un score", "une couleur"],
+              "correctAnswers": [0],
+              "explanation": "Proposition causale."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Ich finde das schlecht, weil es langweilig ist. » Cause : …",
+              "options": ["ennui", "victoire", "soleil", "grandeur"],
+              "correctAnswers": [0],
+              "explanation": "« langweilig » explique l'avis."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Après « weil », le verbe en allemand simple va souvent…",
+              "options": [
+                "en fin de proposition",
+                "au début seul",
+                "disparaît",
+                "en anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rappel de phrase subordonnée élémentaire."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Weil ich Sport mag » explique un avis…",
+              "options": [
+                "positif sur le sport",
+                "sur la pluie",
+                "sur Berlin",
+                "sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« mag » = aime."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Kurz » = …",
+              "options": ["court", "long", "grand", "neuf"],
+              "correctAnswers": [0],
+              "explanation": "Utile pour parler d'un texte."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Donner une raison rend le commentaire…",
+              "options": [
+                "plus clair",
+                "impossible",
+                "sans opinion",
+                "un titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dit pourquoi on pense cela."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Phrase complète niveau 5e : …",
+              "options": [
+                "Ich finde das gut, weil es neu ist",
+                "Ich finde weil gut",
+                "Weil ich finde",
+                "Gut weil ich"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre logique opinion + cause."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "« Ich finde das interessant, aber lang. » Quels mots marquent la nuance ?",
+              "options": ["interessant", "aber", "lang", "Ich finde"],
+              "correctAnswers": [1, 2],
+              "explanation": "« aber » oppose une réserve « lang » à l'intérêt."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Aber » = …",
+              "options": ["mais", "et", "car", "donc"],
+              "correctAnswers": [0],
+              "explanation": "Conjonction d'opposition."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Gut, aber teuer » commente…",
+              "options": ["qualité et prix", "météo", "score", "ville"],
+              "correctAnswers": [0],
+              "explanation": "« teuer » = cher."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Ich finde den Film spannend, aber lang. » Deux idées : …",
+              "options": [
+                "palpitant mais long",
+                "court et ennuyeux",
+                "pluie et soleil",
+                "hier et demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure aber entre deux adjectifs."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Teuer » = …",
+              "options": ["cher", "gratuit", "petit", "froid"],
+              "correctAnswers": [0],
+              "explanation": "Pour commenter un prix."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Lang » = …",
+              "options": ["long", "court", "beau", "nouveau"],
+              "correctAnswers": [0],
+              "explanation": "Opposé de « kurz »."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Ich finde die Nachricht wichtig, aber traurig. » « traurig » = …",
+              "options": ["triste", "joyeux", "grand", "rapide"],
+              "correctAnswers": [0],
+              "explanation": "Info lourde émotionnellement."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Aber » permet de…",
+              "options": [
+                "nuancer son avis",
+                "effacer le sujet",
+                "traduire le titre",
+                "compter les mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ajoute un contrepoint."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Schön, aber kalt » pour la météo = …",
+              "options": [
+                "beau mais froid",
+                "pluie et vent",
+                "match nul",
+                "texte long"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux adjectifs météo."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Commentaire nuancé typique : …",
+              "options": [
+                "Ich finde das gut, aber kurz",
+                "Ich finde aber",
+                "Aber ich",
+                "Gut gut gut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opinion + restriction avec « aber »."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Titre : « Heute: neues Video online. » Réaction : « Ich finde das interessant und gut. » Quels mots sont l'avis ?",
+              "options": ["Ich finde", "interessant", "gut", "online"],
+              "correctAnswers": [0, 1],
+              "explanation": "La formule d'opinion et le premier adjectif positif."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Étape 1 pour commenter une actu : …",
+              "options": [
+                "lire / comprendre le titre",
+                "écrire un roman",
+                "ignorer le sujet",
+                "changer de matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On s'appuie sur l'info lue en u1."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Meinung » = …",
+              "options": ["opinion", "question", "image", "score"],
+              "correctAnswers": [0],
+              "explanation": "Mot utile pour parler de commentaires."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Phrase complète : « Ich finde ____. » Il manque…",
+              "options": [
+                "un jugement (gut, schlecht…)",
+                "un pays",
+                "un bus",
+                "une heure seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif ou complément d'avis."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Ich finde das nicht schlecht » = …",
+              "options": [
+                "plutôt pas mal",
+                "très mauvais",
+                "sans avis",
+                "hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation adoucie."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Pour réagir à « großes Konzert heute » : …",
+              "options": [
+                "Ich finde das spannend",
+                "Ich finde das Regen",
+                "Neu und klein",
+                "Wetter und Bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Événement = palpitant possible."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Kommentar » = …",
+              "options": ["commentaire", "titre", "publicité", "couverture"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire médias."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Un bon commentaire en 5e est…",
+              "options": [
+                "court et clair",
+                "de dix pages",
+                "sans verbe",
+                "en code"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une ou deux phrases suffisent."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Ich finde die Nachrichten manchmal langweilig. » « manchmal » = …",
+              "options": ["parfois", "toujours", "jamais", "hier"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe de fréquence."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Objectif du chapitre : …",
+              "options": [
+                "lire un titre puis donner son avis",
+                "apprendre le passé composé français",
+                "cartographier l'Europe",
+                "jouer au foot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "u1 + u2 forment ce parcours médias."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

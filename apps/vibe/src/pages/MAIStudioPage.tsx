@@ -108,6 +108,8 @@ export const MAIStudioPage: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [renamingId, setRenamingId] = useState<string | null>(null);
   const [renameDraft, setRenameDraft] = useState('');
+  // Échap démonte le champ : le blur qui suit ne doit pas enregistrer le titre.
+  const cancelRenameRef = useRef(false);
   const [convItemMenuId, setConvItemMenuId] = useState<string | null>(null);
   const { confirm, confirmDialog } = useConfirmDialog();
 
@@ -652,11 +654,19 @@ export const MAIStudioPage: React.FC = () => {
                         handleRenameConversation(c.id, renameDraft);
                       }
                       if (e.key === 'Escape') {
+                        e.preventDefault();
+                        cancelRenameRef.current = true;
                         setRenamingId(null);
                         setRenameDraft('');
                       }
                     }}
-                    onBlur={() => handleRenameConversation(c.id, renameDraft)}
+                    onBlur={() => {
+                      if (cancelRenameRef.current) {
+                        cancelRenameRef.current = false;
+                        return;
+                      }
+                      handleRenameConversation(c.id, renameDraft);
+                    }}
                     maxLength={120}
                     className="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-700 text-xs text-white focus:outline-none"
                   />

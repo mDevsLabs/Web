@@ -1,0 +1,2728 @@
+{
+  "id": "terminale-nsi-03",
+  "year": "terminale",
+  "subject": "nsi",
+  "title": "Architectures et systèmes",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Processus",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Notions de processus",
+          "questions": [
+            {
+              "id": "q01-01",
+              "type": "multiple_choice",
+              "question": "Un processus, dans un OS moderne :",
+              "options": [
+                "Instance en cours d'exécution d'un programme",
+                "Identifié par un PID",
+                "Strictement identique à un fichier .exe inactif sur disque",
+                "Ne possède jamais de contexte propre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Processus = programme actif + ressources ; le binaire sur disque n'est pas un processus tant qu'il n'est pas lancé."
+            },
+            {
+              "id": "q01-02",
+              "type": "single_choice",
+              "question": "Le PCB (Process Control Block) contient surtout :",
+              "options": [
+                "État, registres, PID, infos de planification",
+                "Le code source Python du programme",
+                "La table de routage du routeur",
+                "Uniquement le nom du fichier image"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure noyau pour sauver/restaurer le contexte lors des commutations."
+            },
+            {
+              "id": "q01-03",
+              "type": "single_choice",
+              "question": "Programme vs processus :",
+              "options": [
+                "Programme statique ; processus dynamique exécuté",
+                "Synonymes stricts",
+                "Le programme a un PID",
+                "Le processus est toujours sur disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un programme peut avoir plusieurs processus (instances)."
+            },
+            {
+              "id": "q01-04",
+              "type": "single_choice",
+              "question": "Mode utilisateur :",
+              "options": [
+                "Code application sans accès matériel privilégié direct",
+                "Toutes les instructions CPU autorisées",
+                "Modification libre de la MMU",
+                "Exécution du microcode seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le noyau (mode kernel) protège le matériel."
+            },
+            {
+              "id": "q01-05",
+              "type": "single_choice",
+              "question": "Appel système (syscall) :",
+              "options": [
+                "Interface contrôlée vers services du noyau",
+                "Requête HTTP",
+                "Protocole BGP",
+                "Jointure SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. : read, write, fork, exit."
+            },
+            {
+              "id": "q01-06",
+              "type": "single_choice",
+              "question": "Multitâche préemptif :",
+              "options": [
+                "Le planificateur peut retirer le CPU au processus courant",
+                "Un processus garde le CPU jusqu'à la fin sans interruption",
+                "Un seul processus existe",
+                "Pas de file ready"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quantum, timer ou E/S déclenchent le changement de contexte."
+            },
+            {
+              "id": "q01-07",
+              "type": "single_choice",
+              "question": "Multicœur et parallélisme :",
+              "options": [
+                "Exécution simultanée possible sur plusieurs cœurs",
+                "Interdit tout partage",
+                "Supprime le planificateur",
+                "Remplace la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monoprocesseur = concurrence par alternance ; multicœur = parallélisme réel."
+            },
+            {
+              "id": "q01-08",
+              "type": "single_choice",
+              "question": "Isolation entre processus :",
+              "options": [
+                "Espaces d'adressage séparés",
+                "Partage obligatoire de toutes les variables globales",
+                "Même pile pour tous",
+                "PID identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limite qu'un processus corrompe un autre ; IPC si échange voulu."
+            },
+            {
+              "id": "q01-09",
+              "type": "single_choice",
+              "question": "Ordonnancement (scheduling) :",
+              "options": [
+                "Choix du processus qui obtient le CPU",
+                "Compression gzip",
+                "Agrégation CIDR",
+                "Normalisation 3FN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "FIFO, tourniquet, priorités, etc."
+            },
+            {
+              "id": "q01-10",
+              "type": "single_choice",
+              "question": "Commutation de contexte :",
+              "options": [
+                "Sauver/restaurer registres et état (PCB)",
+                "Copier le disque entier",
+                "Recalculer OSPF",
+                "Compiler le noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coût non nul payé par le système."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "États et cycle de vie",
+          "questions": [
+            {
+              "id": "q02-01",
+              "type": "multiple_choice",
+              "question": "États usuels d'un processus :",
+              "options": [
+                "Running (sur CPU)",
+                "Ready (prêt, attend CPU)",
+                "Compiled (état standard OS)",
+                "Blocked (attend E/S ou événement)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Running/Ready/Blocked sont classiques ; Compiled n'est pas un état OS standard."
+            },
+            {
+              "id": "q02-02",
+              "type": "single_choice",
+              "question": "État ready signifie :",
+              "options": [
+                "Éligible au CPU, en file d'attente",
+                "Terminé",
+                "Zombie obligatoire",
+                "En E/S bloquante forcée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le processus peut tourner dès qu'un cœur est libre."
+            },
+            {
+              "id": "q02-03",
+              "type": "single_choice",
+              "question": "État blocked :",
+              "options": [
+                "Attente d'un événement (E/S, signal, ressource)",
+                "Exécution sur CPU",
+                "PID libéré",
+                "Compilation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. read() bloquant."
+            },
+            {
+              "id": "q02-04",
+              "type": "single_choice",
+              "question": "Processus zombie :",
+              "options": [
+                "Terminé, père n'a pas encore wait()",
+                "Bloqué sur disque",
+                "Sans mémoire",
+                "Thread seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entrée table processus conservée jusqu'à wait du père."
+            },
+            {
+              "id": "q02-05",
+              "type": "single_choice",
+              "question": "Transition running → ready :",
+              "options": [
+                "Preemption ou fin de quantum",
+                "Uniquement exit()",
+                "Fork",
+                "Format disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le processus reste prêt à reprendre."
+            },
+            {
+              "id": "q02-06",
+              "type": "single_choice",
+              "question": "Transition blocked → ready :",
+              "options": [
+                "Événement attendu survenu",
+                "Suppression du PCB",
+                "Changement de langage",
+                "Route statique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "E/S terminée ou ressource disponible."
+            },
+            {
+              "id": "q02-07",
+              "type": "single_choice",
+              "question": "Diagramme états-processus sert à :",
+              "options": [
+                "Modéliser le cycle de vie et les commutations",
+                "Router IP",
+                "Modéliser SQL",
+                "Trier un tableau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil de cours NSI architectures."
+            },
+            {
+              "id": "q02-08",
+              "type": "single_choice",
+              "question": "Processus terminé (terminated) :",
+              "options": [
+                "Libère ressources sauf cas zombie",
+                "Reste forever sur CPU",
+                "Devient noyau",
+                "Perd son code source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "wait() du père finalise la récupération."
+            },
+            {
+              "id": "q02-09",
+              "type": "single_choice",
+              "question": "File ready :",
+              "options": [
+                "Processus prêts pour le planificateur",
+                "Fichiers temporaires",
+                "Paquets ICMP",
+                "Pages web"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Queue d'attente CPU."
+            },
+            {
+              "id": "q02-10",
+              "type": "single_choice",
+              "question": "Swapping (échange) peut envoyer un processus :",
+              "options": [
+                "Hors RAM vers swap (bloqué/suspendu selon OS)",
+                "Directement en running",
+                "En compilation",
+                "En BGP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manque de mémoire : partie du processus sur disque."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Planification CPU",
+          "questions": [
+            {
+              "id": "q03-01",
+              "type": "multiple_choice",
+              "question": "Objectifs de la planification :",
+              "options": [
+                "Équité et réactivité",
+                "Utilisation du CPU",
+                "Remplacer le modèle relationnel",
+                "Chiffrer TLS"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Throughput, temps de réponse, équité sont des critères classiques."
+            },
+            {
+              "id": "q03-02",
+              "type": "single_choice",
+              "question": "FIFO (FCFS) :",
+              "options": [
+                "Ordre d'arrivée dans la file ready",
+                "Priorité dynamique seule",
+                "Tri par taille mémoire",
+                "Aléatoire pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simple mais convoy effect possible."
+            },
+            {
+              "id": "q03-03",
+              "type": "single_choice",
+              "question": "Tourniquet (Round-Robin) :",
+              "options": [
+                "Quantum de temps puis passage au suivant",
+                "CPU jusqu'à exit sans partage",
+                "Un seul processus",
+                "Sans file ready"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bon pour interactif si quantum adapté."
+            },
+            {
+              "id": "q03-04",
+              "type": "single_choice",
+              "question": "Priorité statique :",
+              "options": [
+                "Priorité fixée à la création",
+                "Toujours identique pour tous",
+                "Interdit en OS",
+                "Remplace PID"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peut causer famine de basse priorité."
+            },
+            {
+              "id": "q03-05",
+              "type": "single_choice",
+              "question": "Priorité dynamique :",
+              "options": [
+                "Ajustée (vieillissement, pénalités CPU)",
+                "Jamais modifiée",
+                "Uniquement pour threads",
+                "Pour routage RIP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évite monopolisation."
+            },
+            {
+              "id": "q03-06",
+              "type": "single_choice",
+              "question": "Quantum trop grand en RR :",
+              "options": [
+                "Comportement proche FIFO",
+                "Temps de réponse optimal garanti",
+                "Supprime ready",
+                "Interdit E/S"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de préemption."
+            },
+            {
+              "id": "q03-07",
+              "type": "single_choice",
+              "question": "Planification preemptive vs cooperative :",
+              "options": [
+                "Preemptive : OS reprend CPU ; coop : cession volontaire",
+                "Identiques",
+                "Coop : timer obligatoire",
+                "Preemptive : sans interruptions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction fondamentale."
+            },
+            {
+              "id": "q03-08",
+              "type": "single_choice",
+              "question": "Charge système (load average) reflète :",
+              "options": [
+                "Pression sur les processus prêts / ressources",
+                "Taille du disque",
+                "Nombre de tables SQL",
+                "Couleur UI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indicateur de saturation."
+            },
+            {
+              "id": "q03-09",
+              "type": "single_choice",
+              "question": "Processus interactif vs batch :",
+              "options": [
+                "Interactif : faible latence ; batch : débit",
+                "Identiques",
+                "Batch sans OS",
+                "Interactif sans CPU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politiques différentes possibles."
+            },
+            {
+              "id": "q03-10",
+              "type": "single_choice",
+              "question": "Ordonnanceur du noyau s'exécute :",
+              "options": [
+                "Lors de commutation ou événements (timer, E/S)",
+                "Uniquement au boot",
+                "Côté navigateur",
+                "Dans chaque processus user sans privilège"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Code privilégié."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "fork, exec et wait",
+          "questions": [
+            {
+              "id": "q04-01",
+              "type": "multiple_choice",
+              "question": "fork() sous Unix :",
+              "options": [
+                "Crée un processus fils",
+                "Copie logique de l'espace d'adressage du père",
+                "Supprime le père",
+                "Compile Java"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fils reçoit nouveau PID ; copy-on-write souvent."
+            },
+            {
+              "id": "q04-02",
+              "type": "single_choice",
+              "question": "Valeur de retour de fork() :",
+              "options": [
+                "0 dans le fils, PID du fils dans le père",
+                "Toujours 0",
+                "Toujours -1",
+                "Identique père/fils"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Permet de distinguer père et fils."
+            },
+            {
+              "id": "q04-03",
+              "type": "single_choice",
+              "question": "exec() :",
+              "options": [
+                "Remplace l'image mémoire par un nouveau programme",
+                "Crée toujours un fils",
+                "Change le PID",
+                "Ferme le réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même processus, nouveau binaire."
+            },
+            {
+              "id": "q04-04",
+              "type": "single_choice",
+              "question": "wait() / waitpid() :",
+              "options": [
+                "Synchronise terminaison fils et récupère code sortie",
+                "Lance OSPF",
+                "Crée thread",
+                "Formate disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évite zombies."
+            },
+            {
+              "id": "q04-05",
+              "type": "single_choice",
+              "question": "exit() :",
+              "options": [
+                "Termine le processus courant",
+                "Redémarre le CPU",
+                "Ajoute route statique",
+                "Commit SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Libération ressources (sauf zombie)."
+            },
+            {
+              "id": "q04-06",
+              "type": "single_choice",
+              "question": "Chaîne fork + exec typique :",
+              "options": [
+                "Shell lance commande via nouveau programme",
+                "Tri topologique",
+                "Dijkstra",
+                "Heap sort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle création processus Unix."
+            },
+            {
+              "id": "q04-07",
+              "type": "single_choice",
+              "question": "Processus fils hérite souvent :",
+              "options": [
+                "Descripteurs fichiers ouverts, environnement",
+                "Table de routage BGP du routeur",
+                "Schéma SQL",
+                "Code source du noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Héritage à la création."
+            },
+            {
+              "id": "q04-08",
+              "type": "single_choice",
+              "question": "Orphelin (père mort avant fils) :",
+              "options": [
+                "Adopté par init/systemd qui wait()",
+                "Supprimé instantanément toujours",
+                "Devient noyau",
+                "Perd PID"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convention Unix/Linux."
+            },
+            {
+              "id": "q04-09",
+              "type": "single_choice",
+              "question": "Code de sortie d'un processus :",
+              "options": [
+                "Entier signalé au père via wait",
+                "Adresse IP",
+                "Clé primaire",
+                "Hauteur arbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statut succès/erreur."
+            },
+            {
+              "id": "q04-10",
+              "type": "single_choice",
+              "question": "fork bomb :",
+              "options": [
+                "Création récursive massive de processus",
+                "Algorithme de routage",
+                "Requête SELECT",
+                "Rotation AVL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déni de service par épuisement ressources."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Threads et parallélisme",
+          "questions": [
+            {
+              "id": "q05-01",
+              "type": "multiple_choice",
+              "question": "Thread vs processus :",
+              "options": [
+                "Threads partagent l'espace d'adressage du processus",
+                "Chaque thread a sa pile",
+                "Thread = toujours processus séparé avec PID distinct",
+                "Processus ne peut pas avoir plusieurs threads"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Threads légers : même PID, piles séparées."
+            },
+            {
+              "id": "q05-02",
+              "type": "single_choice",
+              "question": "Avantage des threads :",
+              "options": [
+                "Parallélisme/cooperation avec coût création moindre",
+                "Isolation mémoire totale entre threads",
+                "Pas de synchronisation nécessaire",
+                "Remplace le noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partage mémoire facilite IPC intra-processus."
+            },
+            {
+              "id": "q05-03",
+              "type": "single_choice",
+              "question": "pthread (POSIX) modélise :",
+              "options": [
+                "Threads dans un processus",
+                "Paquets IP",
+                "Transactions SQL",
+                "Graphes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "API standard Unix-like."
+            },
+            {
+              "id": "q05-04",
+              "type": "single_choice",
+              "question": "Parallélisme de données (terminale) :",
+              "options": [
+                "Répartir traitement sur plusieurs cœurs/threads",
+                "Un seul fil d'exécution obligatoire",
+                "Routage statique",
+                "Normalisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. boucles parallélisables."
+            },
+            {
+              "id": "q05-05",
+              "type": "single_choice",
+              "question": "GIL Python (notion) :",
+              "options": [
+                "Un seul thread exécute bytecode à la fois (CPython)",
+                "Threads illimités parallèles CPU",
+                "Remplace OS",
+                "Protocole réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limite parallélisme CPU pur en CPython."
+            },
+            {
+              "id": "q05-06",
+              "type": "single_choice",
+              "question": "Création thread coûte moins que processus car :",
+              "options": [
+                "Pas de nouvel espace d'adressage complet",
+                "Pas de pile",
+                "Pas de planificateur",
+                "Pas de CPU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de structures noyau."
+            },
+            {
+              "id": "q05-07",
+              "type": "single_choice",
+              "question": "Thread daemon (Python) :",
+              "options": [
+                "Ne bloque pas la fin du programme principal",
+                "Empêche exit",
+                "Processus zombie",
+                "Route par défaut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Se termine quand le main termine."
+            },
+            {
+              "id": "q05-08",
+              "type": "single_choice",
+              "question": "Race condition :",
+              "options": [
+                "Résultat dépend de l'ordre d'exécution concurrent",
+                "Toujours déterministe",
+                "Erreur SQL",
+                "Cycle eulerien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motivation synchronisation."
+            },
+            {
+              "id": "q05-09",
+              "type": "single_choice",
+              "question": "Affinité CPU (notion) :",
+              "options": [
+                "Favoriser même cœur pour cache",
+                "Interdit multicœur",
+                "BGP",
+                "FK SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Optimisation performance."
+            },
+            {
+              "id": "q05-10",
+              "type": "single_choice",
+              "question": "Modèle processus lourd / threads légers :",
+              "options": [
+                "Processus isolés ; threads coopèrent dans un processus",
+                "Identiques",
+                "Threads ont PID différents toujours",
+                "Processus sans OS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Architecture hybride courante."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Concurrence et sections critiques",
+          "questions": [
+            {
+              "id": "q06-01",
+              "type": "multiple_choice",
+              "question": "Section critique :",
+              "options": [
+                "Zone accédant à ressource partagée",
+                "Doit être protégée pour éviter incohérences",
+                "Toujours sans lock",
+                "Uniquement réseau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Exclusion mutuelle nécessaire."
+            },
+            {
+              "id": "q06-02",
+              "type": "single_choice",
+              "question": "Exclusion mutuelle :",
+              "options": [
+                "Un seul thread/processus dans la section à la fois",
+                "Plusieurs écrivains simultanés libres",
+                "Routage RIP",
+                "SELECT *"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Préserve invariants."
+            },
+            {
+              "id": "q06-03",
+              "type": "single_choice",
+              "question": "Interblocage (deadlock) :",
+              "options": [
+                "Ensemble de processus qui s'attendent mutuellement",
+                "Fin normale",
+                "BFS",
+                "Tri topologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cycle de détention ressources."
+            },
+            {
+              "id": "q06-04",
+              "type": "single_choice",
+              "question": "Conditions de Coffman pour deadlock :",
+              "options": [
+                "Mutuelle exclusion, hold-and-wait, no preemption, cycle attente",
+                "Une seule condition",
+                "Uniquement SQL",
+                "ICMP seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre théorique."
+            },
+            {
+              "id": "q06-05",
+              "type": "single_choice",
+              "question": "Famine (starvation) :",
+              "options": [
+                "Processus n'obtient jamais la ressource",
+                "Trop de CPU",
+                "Trop de RAM toujours",
+                "Euler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Priorité ou ordre injuste."
+            },
+            {
+              "id": "q06-06",
+              "type": "single_choice",
+              "question": "Propriété de sûreté (safety) :",
+              "options": [
+                "Pas d'état incohérent atteint",
+                "Pas de deadlock toujours garanti",
+                "Vitesse maximale",
+                "Sans OS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Correctitude."
+            },
+            {
+              "id": "q06-07",
+              "type": "single_choice",
+              "question": "Propriété de vivacité (liveness) :",
+              "options": [
+                "Progression : pas d'attente éternelle",
+                "Sans mémoire",
+                "Sans CPU",
+                "Sans threads"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complète la sûreté."
+            },
+            {
+              "id": "q06-08",
+              "type": "single_choice",
+              "question": "Test-and-set / compare-and-swap :",
+              "options": [
+                "Primitives atomiques matérielles",
+                "Protocoles BGP",
+                "Vues SQL",
+                "HTML"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base des locks bas niveau."
+            },
+            {
+              "id": "q06-09",
+              "type": "single_choice",
+              "question": "Verrou spinlock :",
+              "options": [
+                "Attente active (boucle) jusqu'à libération",
+                "Toujours sleep",
+                "Routage",
+                "Jointure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adapté courte contention."
+            },
+            {
+              "id": "q06-10",
+              "type": "single_choice",
+              "question": "Ordre des accès non synchronisés :",
+              "options": [
+                "Non déterministe (concurrence)",
+                "Toujours séquentiel apparent",
+                "Fixé par SQL",
+                "Fixé par IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Source de bugs subtils."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Synchronisation",
+          "questions": [
+            {
+              "id": "q07-01",
+              "type": "multiple_choice",
+              "question": "Sémaphore compteur :",
+              "options": [
+                "P() (wait) décrémente si >0 sinon bloque",
+                "V() (signal) incrémente et réveille",
+                "Remplace TCP",
+                "Est une clé SQL"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dijkstra : synchronisation classique."
+            },
+            {
+              "id": "q07-02",
+              "type": "single_choice",
+              "question": "Mutex :",
+              "options": [
+                "Verrou binaire d'exclusion mutuelle",
+                "Protocole RIP",
+                "Index B-tree",
+                "Vue matérialisée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un seul détenteur."
+            },
+            {
+              "id": "q07-03",
+              "type": "single_choice",
+              "question": "Moniteur (Hoare/Mesa) :",
+              "options": [
+                "Structure avec mutex + variables condition",
+                "Routeur Cisco seul",
+                "Fichier CSV",
+                "Graphe non orienté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Encapsule attente/signal."
+            },
+            {
+              "id": "q07-04",
+              "type": "single_choice",
+              "question": "Variable condition :",
+              "options": [
+                "Attendre un événement sous mutex",
+                "Remplace PID",
+                "MTU Ethernet",
+                "PK composite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "wait/signal associés."
+            },
+            {
+              "id": "q07-05",
+              "type": "single_choice",
+              "question": "Producteur-consommateur :",
+              "options": [
+                "File bornée + sémaphores/mutex",
+                "Dijkstra seul",
+                "Kruskal",
+                "PageRank"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Problème classique NSI."
+            },
+            {
+              "id": "q07-06",
+              "type": "single_choice",
+              "question": "Lecteurs-écrivains :",
+              "options": [
+                "Plusieurs lecteurs OU un écrivain",
+                "Tous écrivent librement",
+                "Sans données partagées",
+                "Sans OS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique de concurrence."
+            },
+            {
+              "id": "q07-07",
+              "type": "single_choice",
+              "question": "Barrier (barrière) :",
+              "options": [
+                "Synchronise N threads à un point",
+                "Route statique",
+                "DROP TABLE",
+                "DNS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous attendent le dernier."
+            },
+            {
+              "id": "q07-08",
+              "type": "single_choice",
+              "question": "Lock granulaire fin :",
+              "options": [
+                "Verrous par ressource pour limiter contention",
+                "Un lock global unique toujours",
+                "Interdit",
+                "BGP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Performance vs complexité."
+            },
+            {
+              "id": "q07-09",
+              "type": "single_choice",
+              "question": "Priority inversion :",
+              "options": [
+                "Thread basse priorité retient lock haute priorité",
+                "Toujours souhaitable",
+                "ICMP",
+                "1FN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Problème temps réel."
+            },
+            {
+              "id": "q07-10",
+              "type": "single_choice",
+              "question": "Éviter deadlock par ordre ressources :",
+              "options": [
+                "Acquisition ordonnée des locks",
+                "Supprimer mutex",
+                "Cartésien SQL",
+                "NAT seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prevention classique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Mémoire virtuelle et processus",
+          "questions": [
+            {
+              "id": "q08-01",
+              "type": "multiple_choice",
+              "question": "Mémoire virtuelle :",
+              "options": [
+                "Abstraction adressage par processus",
+                "Pagination en pages fixes",
+                "Supprime toute RAM",
+                "Remplace IP"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Isolation + partage physique."
+            },
+            {
+              "id": "q08-02",
+              "type": "single_choice",
+              "question": "Page fault :",
+              "options": [
+                "Accès page absente RAM → chargement",
+                "Succès toujours",
+                "Route RIP",
+                "Commit SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trap noyau."
+            },
+            {
+              "id": "q08-03",
+              "type": "single_choice",
+              "question": "TLB :",
+              "options": [
+                "Cache traduction adresse virtuelle → physique",
+                "Protocole OSPF",
+                "File FIFO user",
+                "Clé étrangère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accélère accès mémoire."
+            },
+            {
+              "id": "q08-04",
+              "type": "single_choice",
+              "question": "Swap / zone d'échange :",
+              "options": [
+                "Extension disque pour pages évincées",
+                "Cache L1",
+                "DNS",
+                "Vue SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thrashing si excessif."
+            },
+            {
+              "id": "q08-05",
+              "type": "single_choice",
+              "question": "Working set (notion) :",
+              "options": [
+                "Pages actives récentes d'un processus",
+                "Toutes pages disque",
+                "Table ARP",
+                "Graphe complet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle localité."
+            },
+            {
+              "id": "q08-06",
+              "type": "single_choice",
+              "question": "Copy-on-write après fork :",
+              "options": [
+                "Pages partagées jusqu'à écriture",
+                "Copie intégrale immédiate toujours",
+                "Sans mémoire",
+                "NAT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Optimisation fork."
+            },
+            {
+              "id": "q08-07",
+              "type": "single_choice",
+              "question": "Segmentation (historique) :",
+              "options": [
+                "Espaces logiques variables",
+                "Remplace toujours pagination",
+                "BGP",
+                "Heap sort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souvent combinée ou remplacée par pages."
+            },
+            {
+              "id": "q08-08",
+              "type": "single_choice",
+              "question": "Protection mémoire (bits) :",
+              "options": [
+                "Lecture/écriture/exécution par page",
+                "Couleur CSS",
+                "Port HTTP",
+                "Unicode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité processus."
+            },
+            {
+              "id": "q08-09",
+              "type": "single_choice",
+              "question": "Thrashing :",
+              "options": [
+                "CPU passé à pager au lieu d'exécuter",
+                "Performance optimale",
+                "Sans swap",
+                "Euler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trop de processus actifs vs RAM."
+            },
+            {
+              "id": "q08-10",
+              "type": "single_choice",
+              "question": "Adresse virtuelle vs physique :",
+              "options": [
+                "MMU traduit virtuelle → physique",
+                "Identiques toujours",
+                "Uniquement DNS",
+                "Uniquement SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transparent pour programme user."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Communication inter-processus",
+          "questions": [
+            {
+              "id": "q09-01",
+              "type": "multiple_choice",
+              "question": "Mécanismes IPC :",
+              "options": [
+                "Pipes, sockets, signaux, mémoire partagée",
+                "Permettent échange entre processus",
+                "Remplacent le CPU",
+                "Sont des index SQL"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Canaux noyau ou partagés."
+            },
+            {
+              "id": "q09-02",
+              "type": "single_choice",
+              "question": "Pipe anonyme :",
+              "options": [
+                "Communication unidirectionnelle parent-fils typique",
+                "Routage BGP",
+                "Jointure SQL",
+                "BFS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Descripteurs hérités."
+            },
+            {
+              "id": "q09-03",
+              "type": "single_choice",
+              "question": "Socket :",
+              "options": [
+                "Extrémité communication réseau ou local",
+                "Clé primaire",
+                "Rotation AVL",
+                "1FN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "API Berkeley sockets."
+            },
+            {
+              "id": "q09-04",
+              "type": "single_choice",
+              "question": "Signal SIGINT (Ctrl+C) :",
+              "options": [
+                "Interruption demandée au processus",
+                "Accusé TCP",
+                "Requête HTTP GET",
+                "Migration SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Communication asynchrone."
+            },
+            {
+              "id": "q09-05",
+              "type": "single_choice",
+              "question": "Mémoire partagée (shm) :",
+              "options": [
+                "Zone commune entre processus mappée",
+                "Toujours sans sync",
+                "Table de routage",
+                "Vue SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rapide mais sync nécessaire."
+            },
+            {
+              "id": "q09-06",
+              "type": "single_choice",
+              "question": "Message queue :",
+              "options": [
+                "Messages structurés via noyau",
+                "Cartésien SQL",
+                "Cycle hamiltonien",
+                "PNG"
+              ],
+              "correctAnswers": [0],
+              "explanation": "IPC orientée messages."
+            },
+            {
+              "id": "q09-07",
+              "type": "single_choice",
+              "question": "FIFO nommée (mkfifo) :",
+              "options": [
+                "Pipe avec nom dans filesystem",
+                "Index unique",
+                "OSPF area 0 seule",
+                "Deadlock"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Processus non liés par parenté."
+            },
+            {
+              "id": "q09-08",
+              "type": "single_choice",
+              "question": "RPC (notion) :",
+              "options": [
+                "Appel procédure distant",
+                "Tri fusion local",
+                "RIP v2 seul",
+                "NULL SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Client/serveur distribué."
+            },
+            {
+              "id": "q09-09",
+              "type": "single_choice",
+              "question": "Descripteur de fichier (fd) :",
+              "options": [
+                "Entier identifiant flux ouvert",
+                "Adresse MAC",
+                "Clé candidate",
+                "Profondeur arbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Table par processus."
+            },
+            {
+              "id": "q09-10",
+              "type": "single_choice",
+              "question": "Standard streams 0,1,2 :",
+              "options": [
+                "Entrée, sortie, erreur",
+                "RIP, OSPF, BGP",
+                "SELECT, INSERT, DELETE",
+                "TCP, UDP, ICMP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "stdin stdout stderr."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse processus",
+          "questions": [
+            {
+              "id": "q10-01",
+              "type": "multiple_choice",
+              "question": "Compétences processus terminale NSI :",
+              "options": [
+                "Modéliser états et planification",
+                "Comprendre fork/threads/sync",
+                "Ignorer le noyau",
+                "Confondre processus et fichier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lien OS / programmation concurrente."
+            },
+            {
+              "id": "q10-02",
+              "type": "single_choice",
+              "question": "Confiance en identité (PID, credentials) rappelle :",
+              "options": [
+                "Le noyau arbitre les droits, pas le processus seul",
+                "Processus sans PID",
+                "Routage sans table",
+                "SQL sans schéma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analogie sécurité : autorité centralisée (OS) vs affirmation locale."
+            },
+            {
+              "id": "q10-03",
+              "type": "single_choice",
+              "question": "Context switch fréquent :",
+              "options": [
+                "Overhead CPU non négligeable",
+                "Gratuit toujours",
+                "Supprime threads",
+                "Fixe MTU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trop de processus/quantum petit."
+            },
+            {
+              "id": "q10-04",
+              "type": "single_choice",
+              "question": "Processus vs thread pour isolation :",
+              "options": [
+                "Processus plus isolé",
+                "Thread plus isolé",
+                "Identiques",
+                "Aucun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité vs performance."
+            },
+            {
+              "id": "q10-05",
+              "type": "single_choice",
+              "question": "Scheduler fairness :",
+              "options": [
+                "Éviter monopolisation CPU",
+                "Toujours FIFO seul",
+                "Sans file ready",
+                "NAT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équité utilisateurs."
+            },
+            {
+              "id": "q10-06",
+              "type": "single_choice",
+              "question": "Outil ps/top affiche :",
+              "options": [
+                "Processus actifs et ressources",
+                "Routes BGP",
+                "Schéma SQL",
+                "Graphe eulerien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Administration système."
+            },
+            {
+              "id": "q10-07",
+              "type": "single_choice",
+              "question": "nice/renice :",
+              "options": [
+                "Ajuste priorité utilisateur Unix",
+                "Change IP",
+                "ALTER TABLE",
+                "Tri topologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Influence planification."
+            },
+            {
+              "id": "q10-08",
+              "type": "single_choice",
+              "question": "Conteneur vs VM (notion) :",
+              "options": [
+                "Conteneur partage noyau hôte ; VM noyau invité",
+                "Identiques",
+                "Conteneur sans processus",
+                "VM sans isolation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Virtualisation légère vs complète."
+            },
+            {
+              "id": "q10-09",
+              "type": "single_choice",
+              "question": "Limites ulimit :",
+              "options": [
+                "Quotas ressources par processus/utilisateur",
+                "Routes statiques",
+                "Contraintes FK",
+                "Couleurs CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plafonds fichiers, CPU, etc."
+            },
+            {
+              "id": "q10-10",
+              "type": "single_choice",
+              "question": "Message clé unité Processus :",
+              "options": [
+                "OS gère exécution, ressources et concurrence",
+                "Programme = toujours un thread",
+                "Pas de synchronisation",
+                "Pas de mémoire virtuelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fil architectures et systèmes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Protocoles de routage",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Principes du routage IP",
+          "questions": [
+            {
+              "id": "u2-q01-01",
+              "type": "multiple_choice",
+              "question": "Routage IP :",
+              "options": [
+                "Choix du prochain saut (next hop) vers destination",
+                "S'appuie sur adresse de destination du paquet",
+                "Remplace la couche liaison",
+                "Ignore les tables"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Forward = décision locale par routeur."
+            },
+            {
+              "id": "u2-q01-02",
+              "type": "single_choice",
+              "question": "Couche réseau (OSI) / IP :",
+              "options": [
+                "Adressage logique et routage bout en bout",
+                "Uniquement câble Ethernet",
+                "Uniquement HTTP",
+                "Uniquement SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "IP = datagrammes indépendants."
+            },
+            {
+              "id": "u2-q01-03",
+              "type": "single_choice",
+              "question": "Routeur vs commutateur (switch) L2 :",
+              "options": [
+                "Routeur décide L3 ; switch transfère L2 par MAC",
+                "Identiques",
+                "Switch route IP",
+                "Routeur ignore IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction terminale NSI."
+            },
+            {
+              "id": "u2-q01-04",
+              "type": "single_choice",
+              "question": "Forwarding :",
+              "options": [
+                "Transfert paquet selon table locale",
+                "Calcul global centralisé unique",
+                "Compilation",
+                "Normalisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décision distribuée."
+            },
+            {
+              "id": "u2-q01-05",
+              "type": "single_choice",
+              "question": "Default route (0.0.0.0/0) :",
+              "options": [
+                "Passerelle pour destinations non matchées",
+                "Interdit",
+                "Remplace DNS",
+                "Clé PK"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sortie vers Internet souvent."
+            },
+            {
+              "id": "u2-q01-06",
+              "type": "single_choice",
+              "question": "Longest prefix match :",
+              "options": [
+                "Choisir entrée la plus spécifique (masque long)",
+                "Première ligne table",
+                "Aléatoire",
+                "Par TTL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle standard."
+            },
+            {
+              "id": "u2-q01-07",
+              "type": "single_choice",
+              "question": "Autonomous System (AS) :",
+              "options": [
+                "Domaine administratif de routage",
+                "Un PC seul",
+                "Une table SQL",
+                "Un processus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Numéro ASN."
+            },
+            {
+              "id": "u2-q01-08",
+              "type": "single_choice",
+              "question": "IGP vs EGP :",
+              "options": [
+                "IGP intra-AS ; EGP inter-AS (BGP)",
+                "Identiques",
+                "IGP = HTTP",
+                "EGP = FTP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classification protocoles."
+            },
+            {
+              "id": "u2-q01-09",
+              "type": "single_choice",
+              "question": "TTL IP décrémenté :",
+              "options": [
+                "À chaque routeur ; évite boucles infinies",
+                "Jamais",
+                "Par le client seul",
+                "Par DNS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ICMP time exceeded si 0."
+            },
+            {
+              "id": "u2-q01-10",
+              "type": "single_choice",
+              "question": "Datagramme IP :",
+              "options": [
+                "Peut prendre chemins différents (best effort)",
+                "Circuit virtuel garanti",
+                "Sans adresse source",
+                "Sans destination"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de connexion L3."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Tables de routage",
+          "questions": [
+            {
+              "id": "u2-q02-01",
+              "type": "multiple_choice",
+              "question": "Entrée table de routage contient :",
+              "options": [
+                "Préfixe destination",
+                "Next hop ou interface de sortie",
+                "Code source Python",
+                "Clé étrangère SQL"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Destination + où envoyer."
+            },
+            {
+              "id": "u2-q02-02",
+              "type": "single_choice",
+              "question": "Métrique :",
+              "options": [
+                "Coût comparatif des routes",
+                "Couleur UI",
+                "PID",
+                "Profondeur arbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs routes → choisir meilleure."
+            },
+            {
+              "id": "u2-q02-03",
+              "type": "single_choice",
+              "question": "Route connectée (direct) :",
+              "options": [
+                "Réseau attaché à interface locale",
+                "Toujours via BGP",
+                "Sans masque",
+                "ICMP seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. LAN du routeur."
+            },
+            {
+              "id": "u2-q02-04",
+              "type": "single_choice",
+              "question": "Route distante apprise :",
+              "options": [
+                "Via protocole ou statique",
+                "Uniquement DHCP",
+                "Uniquement DNS",
+                "Par heap sort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Source : static, RIP, OSPF, BGP..."
+            },
+            {
+              "id": "u2-q02-05",
+              "type": "single_choice",
+              "question": "Administrative distance (Cisco) :",
+              "options": [
+                "Confiance source route (statique vs dynamique)",
+                "Taille paquet",
+                "Port TCP",
+                "Unicode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Notion pédagogique courante."
+            },
+            {
+              "id": "u2-q02-06",
+              "type": "single_choice",
+              "question": "show ip route (IOS-like) :",
+              "options": [
+                "Affiche table de routage",
+                "Crée processus",
+                "Compile C",
+                "Tri topologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diagnostic réseau."
+            },
+            {
+              "id": "u2-q02-07",
+              "type": "single_choice",
+              "question": "Split horizon (RIP) :",
+              "options": [
+                "Ne pas renvoyer route par interface apprise",
+                "Doubler métrique",
+                "Supprimer ICMP",
+                "NAT obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduit boucles distance-vector."
+            },
+            {
+              "id": "u2-q02-08",
+              "type": "single_choice",
+              "question": "Convergence :",
+              "options": [
+                "Tables cohérentes après changement topo",
+                "Instantanée toujours",
+                "Sans échange",
+                "SQL transaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Délai propagation."
+            },
+            {
+              "id": "u2-q02-09",
+              "type": "single_choice",
+              "question": "Route flottante (floating static) :",
+              "options": [
+                "Statique backup si dynamique tombe",
+                "Remplace DNS",
+                "Thread zombie",
+                "Vue SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "AD plus élevée."
+            },
+            {
+              "id": "u2-q02-10",
+              "type": "single_choice",
+              "question": "FIB vs RIB (notion) :",
+              "options": [
+                "FIB = forwarding ; RIB = base décision routing",
+                "Identiques",
+                "FIB = DNS",
+                "RIB = DHCP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séparation contrôle/data plane."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Routage statique",
+          "questions": [
+            {
+              "id": "u2-q03-01",
+              "type": "multiple_choice",
+              "question": "Route statique :",
+              "options": [
+                "Configurée manuellement par admin",
+                "Ne change pas seule (sans intervention)",
+                "Toujours meilleure que OSPF",
+                "Sans next hop"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Simple, prévisible, maintenance manuelle."
+            },
+            {
+              "id": "u2-q03-02",
+              "type": "single_choice",
+              "question": "Avantage routage statique :",
+              "options": [
+                "Prévisibilité et faible overhead protocole",
+                "Adaptation auto topologie grande",
+                "Sans erreur possible",
+                "Remplace adressage IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Petits réseaux stables."
+            },
+            {
+              "id": "u2-q03-03",
+              "type": "single_choice",
+              "question": "Inconvénient statique :",
+              "options": [
+                "Mise à jour manuelle si topo change",
+                "Trop de BGP",
+                "Trop de threads",
+                "Trop de SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne scale pas seul."
+            },
+            {
+              "id": "u2-q03-04",
+              "type": "single_choice",
+              "question": "ip route dest mask gw :",
+              "options": [
+                "Commande type route statique",
+                "Requête SELECT",
+                "fork()",
+                "mutex lock"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Syntaxe IOS-like enseignée."
+            },
+            {
+              "id": "u2-q03-05",
+              "type": "single_choice",
+              "question": "Passerelle par défaut sur PC :",
+              "options": [
+                "Route statique vers routeur sortie",
+                "Serveur DNS",
+                "Processus init",
+                "Index B-tree"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Host envoie trafic externe au GW."
+            },
+            {
+              "id": "u2-q03-06",
+              "type": "single_choice",
+              "question": "Route statique récursive (notion) :",
+              "options": [
+                "Next hop résolu via autre entrée",
+                "Sans table",
+                "Sans IP",
+                "NAT seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Next hop pas forcément direct."
+            },
+            {
+              "id": "u2-q03-07",
+              "type": "single_choice",
+              "question": "Statique + dynamique coexistent :",
+              "options": [
+                "Oui, avec AD/priorités",
+                "Interdit",
+                "Supprime IP",
+                "Supprime OS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratique courante."
+            },
+            {
+              "id": "u2-q03-08",
+              "type": "single_choice",
+              "question": "Réseau stub :",
+              "options": [
+                "Souvent une route default suffit",
+                "Nécessite BGP obligatoire",
+                "Sans routeur",
+                "Sans adresses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Extrémité topologie."
+            },
+            {
+              "id": "u2-q03-09",
+              "type": "single_choice",
+              "question": "Erreur next hop inaccessible :",
+              "options": [
+                "Paquets drop ou ICMP unreachable",
+                "Succès toujours",
+                "Fork bomb",
+                "Deadlock"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Route invalide."
+            },
+            {
+              "id": "u2-q03-10",
+              "type": "single_choice",
+              "question": "Quand préférer statique ?",
+              "options": [
+                "Petit réseau, peu de changements",
+                "Internet multihomed complexe",
+                "Datacenter BGP full mesh",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix ingénierie."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "RIP (distance-vector)",
+          "questions": [
+            {
+              "id": "u2-q04-01",
+              "type": "multiple_choice",
+              "question": "RIP :",
+              "options": [
+                "Protocole distance-vector",
+                "Métrique = nombre de sauts (hop count)",
+                "Link-state comme OSPF",
+                "Inter-AS comme BGP"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bellman-Ford distribué, max 15 sauts utiles."
+            },
+            {
+              "id": "u2-q04-02",
+              "type": "single_choice",
+              "question": "RIP v2 améliore v1 :",
+              "options": [
+                "Support VLSM/CIDR et authentification option",
+                "Supprime IP",
+                "Remplace Ethernet",
+                "Sans tables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "v1 classful legacy."
+            },
+            {
+              "id": "u2-q04-03",
+              "type": "single_choice",
+              "question": "Count to infinity :",
+              "options": [
+                "Problème boucles métrique croissante lente",
+                "Avantage RIP",
+                "ICMP ping",
+                "SQL injection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motivation split horizon / poison reverse."
+            },
+            {
+              "id": "u2-q04-04",
+              "type": "single_choice",
+              "question": "Poison reverse :",
+              "options": [
+                "Annoncer métrique infinie sur interface d'origine",
+                "Doubler bande passante",
+                "Chiffrer BGP",
+                "Créer thread"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anti-boucle DV."
+            },
+            {
+              "id": "u2-q04-05",
+              "type": "single_choice",
+              "question": "Métrique RIP max utilisable :",
+              "options": [
+                "15 (16 = infinie)",
+                "255 toujours routable",
+                "1 seul",
+                "0 interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limite protocole."
+            },
+            {
+              "id": "u2-q04-06",
+              "type": "single_choice",
+              "question": "Updates RIP périodiques :",
+              "options": [
+                "Toutes les 30 s environ (v4 broadcast/multicast)",
+                "Uniquement au boot",
+                "Par DNS",
+                "Par SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "DV périodique."
+            },
+            {
+              "id": "u2-q04-07",
+              "type": "single_choice",
+              "question": "Triggered update :",
+              "options": [
+                "Envoi immédiat si changement",
+                "Interdit RIP",
+                "OSPF seul",
+                "NAT seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accélère convergence."
+            },
+            {
+              "id": "u2-q04-08",
+              "type": "single_choice",
+              "question": "RIP transport :",
+              "options": ["UDP port 520", "TCP 443", "ICMP seul", "FTP"],
+              "correctAnswers": [0],
+              "explanation": "Application layer encapsulation."
+            },
+            {
+              "id": "u2-q04-09",
+              "type": "single_choice",
+              "question": "RIP inadapté :",
+              "options": [
+                "Grands réseaux / métriques hop-count pauvres",
+                "Petit LAN",
+                "Lab NSI",
+                "Stub"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Préférer OSPF/IS-IS à grande échelle."
+            },
+            {
+              "id": "u2-q04-10",
+              "type": "single_choice",
+              "question": "Distance-vector :",
+              "options": [
+                "Partage vecteur distances avec voisins",
+                "Carte complète topo (LS)",
+                "Politique inter-AS",
+                "HTML"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Routing by rumor »."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "OSPF (link-state)",
+          "questions": [
+            {
+              "id": "u2-q05-01",
+              "type": "multiple_choice",
+              "question": "OSPF :",
+              "options": [
+                "Protocole link-state IGP",
+                "Utilise Dijkstra localement",
+                "Métrique hop-count uniquement comme RIP",
+                "Diffusion LSA pour construire carte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chaque routeur calcule SPF sur LSDB."
+            },
+            {
+              "id": "u2-q05-02",
+              "type": "single_choice",
+              "question": "Area OSPF :",
+              "options": [
+                "Partition hiérarchique (area 0 backbone)",
+                "Processus Linux",
+                "Table SQL",
+                "Thread"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduit état."
+            },
+            {
+              "id": "u2-q05-03",
+              "type": "single_choice",
+              "question": "LSA :",
+              "options": [
+                "Link State Advertisement",
+                "Logical SQL Address",
+                "Local System API",
+                "Longest Source AS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unité information topo."
+            },
+            {
+              "id": "u2-q05-04",
+              "type": "single_choice",
+              "question": "Coût OSPF par défaut (Cisco) :",
+              "options": [
+                "100 Mbps / bandwidth interface",
+                "Hop count seul",
+                "Aléatoire",
+                "TTL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Métrique configurable bandwidth-based."
+            },
+            {
+              "id": "u2-q05-05",
+              "type": "single_choice",
+              "question": "DR/BDR (broadcast) :",
+              "options": [
+                "Designated Router réduit adjacences",
+                "Default Route Backup",
+                "Data Router Bridge",
+                "DNS Record"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Optimisation LAN multiaccès."
+            },
+            {
+              "id": "u2-q05-06",
+              "type": "single_choice",
+              "question": "OSPF hello :",
+              "options": [
+                "Découverte/maintenance voisins",
+                "HTTP GET",
+                "DHCP DISCOVER",
+                "SQL ping"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multicast 224.0.0.5."
+            },
+            {
+              "id": "u2-q05-07",
+              "type": "single_choice",
+              "question": "Convergence OSPF vs RIP :",
+              "options": [
+                "OSPF généralement plus rapide (événements)",
+                "RIP toujours instant",
+                "Identiques",
+                "Aucun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "LS triggered updates."
+            },
+            {
+              "id": "u2-q05-08",
+              "type": "single_choice",
+              "question": "OSPF encapsulation :",
+              "options": [
+                "Directement sur IP protocole 89",
+                "TCP 520",
+                "UDP DNS",
+                "FTP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas TCP/UDP."
+            },
+            {
+              "id": "u2-q05-09",
+              "type": "single_choice",
+              "question": "Réseau multi-accès sans DR :",
+              "options": [
+                "n(n-1) adjacences possibles",
+                "Une seule",
+                "Sans LSA",
+                "Sans area"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Explique rôle DR."
+            },
+            {
+              "id": "u2-q05-10",
+              "type": "single_choice",
+              "question": "Link-state avantage :",
+              "options": [
+                "Vue globale topo pour SPF",
+                "Politique BGP",
+                "NAT PAT",
+                "Mutex"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Meilleure métrique diverse."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "BGP et inter-domaines",
+          "questions": [
+            {
+              "id": "u2-q06-01",
+              "type": "multiple_choice",
+              "question": "BGP :",
+              "options": [
+                "Protocole path-vector inter-AS",
+                "Transport TCP 179",
+                "IGP intra-AS standard",
+                "Remplace DNS"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "eBGP entre AS, iBGP inside AS."
+            },
+            {
+              "id": "u2-q06-02",
+              "type": "single_choice",
+              "question": "eBGP vs iBGP :",
+              "options": [
+                "eBGP entre AS différents ; iBGP même AS",
+                "Identiques",
+                "iBGP sur Internet public",
+                "eBGP sans ASN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politiques et loop prevention."
+            },
+            {
+              "id": "u2-q06-03",
+              "type": "single_choice",
+              "question": "AS-PATH :",
+              "options": [
+                "Attribut liste AS traversés",
+                "Adresse MAC",
+                "PID",
+                "Clé SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loop detection + politique."
+            },
+            {
+              "id": "u2-q06-04",
+              "type": "single_choice",
+              "question": "BGP décision (simplifié) :",
+              "options": [
+                "Attributs locaux, AS-PATH, MED, etc.",
+                "TTL seul",
+                "Ping seul",
+                "FIFO processus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique > métrique pure."
+            },
+            {
+              "id": "u2-q06-05",
+              "type": "single_choice",
+              "question": "Full table Internet BGP (ordre grandeur) :",
+              "options": [
+                "Centaines de milliers de préfixes",
+                "10 routes",
+                "1 route",
+                "Sans préfixes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scale Internet."
+            },
+            {
+              "id": "u2-q06-06",
+              "type": "single_choice",
+              "question": "Multihoming :",
+              "options": [
+                "Plusieurs fournisseurs/transit BGP",
+                "Un seul câble",
+                "Sans ASN",
+                "NAT seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Redondance connexion."
+            },
+            {
+              "id": "u2-q06-07",
+              "type": "single_choice",
+              "question": "BGP annonce :",
+              "options": [
+                "Préfixes IP agrégables",
+                "Adresses MAC",
+                "Noms domaine",
+                "Processus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrôle inter-domaine."
+            },
+            {
+              "id": "u2-q06-08",
+              "type": "single_choice",
+              "question": "Route reflector :",
+              "options": [
+                "Réduit mesh iBGP full",
+                "Remplace OSPF obligatoire",
+                "Thread pool",
+                "Vue SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scalabilité iBGP."
+            },
+            {
+              "id": "u2-q06-09",
+              "type": "single_choice",
+              "question": "BGP et politique :",
+              "options": [
+                "Peering, transit, filtrage préfixes",
+                "Sans choix admin",
+                "Automatique pur hop",
+                "ICMP only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Business + technique."
+            },
+            {
+              "id": "u2-q06-10",
+              "type": "single_choice",
+              "question": "IGP + BGP relation :",
+              "options": [
+                "IGP carry next-hop interne ; BGP edge",
+                "BGP remplace IP",
+                "OSPF remplace BGP Internet",
+                "Sans IGP jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Edge route BGP, core IGP."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "NAT et politiques",
+          "questions": [
+            {
+              "id": "u2-q07-01",
+              "type": "multiple_choice",
+              "question": "NAT :",
+              "options": [
+                "Traduit adresses privées ↔ publiques",
+                "RFC1918 : 10/8, 172.16/12, 192.168/16",
+                "Remplace routage",
+                "Chiffre IPsec seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Conserve IPv4, complique bout-à-bout."
+            },
+            {
+              "id": "u2-q07-02",
+              "type": "single_choice",
+              "question": "PAT/NAPT :",
+              "options": [
+                "Plusieurs hôtes privés → une IP publique (ports)",
+                "Un port par AS",
+                "Sans table",
+                "Processus fork"
+              ],
+              "correctAnswers": [0],
+              "explanation": "NAT overload courant."
+            },
+            {
+              "id": "u2-q07-03",
+              "type": "single_choice",
+              "question": "NAT end-to-end argument :",
+              "options": [
+                "Casse certains protocoles (FTP, IPSec)",
+                "Améliore toujours BGP",
+                "Supprime ICMP",
+                "Remplace OSPF"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critique architecture."
+            },
+            {
+              "id": "u2-q07-04",
+              "type": "single_choice",
+              "question": "Route policy (filtrage) :",
+              "options": [
+                "Contrôle annonces/acceptations routes",
+                "Tri bulle",
+                "Mutex",
+                "1FN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prefix lists, route-maps."
+            },
+            {
+              "id": "u2-q07-05",
+              "type": "single_choice",
+              "question": "Stateful firewall (notion) :",
+              "options": [
+                "Filtre selon état connexions",
+                "Routage LS",
+                "Heap",
+                "DAG"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité périmètre."
+            },
+            {
+              "id": "u2-q07-06",
+              "type": "single_choice",
+              "question": "DNS vs routage :",
+              "options": [
+                "DNS résout noms ; routage IP vers adresses",
+                "Identiques",
+                "DNS route paquets",
+                "Routage résout noms"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couches différentes."
+            },
+            {
+              "id": "u2-q07-07",
+              "type": "single_choice",
+              "question": "DHCP (notion) :",
+              "options": [
+                "Attribue IP/config host",
+                "Calcule SPF",
+                "BGP path",
+                "SQL join"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas protocole routage."
+            },
+            {
+              "id": "u2-q07-08",
+              "type": "single_choice",
+              "question": "Double NAT :",
+              "options": [
+                "Deux traductions successives",
+                "Impossible",
+                "OSPF area 0",
+                "Zombie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complexifie diagnostics."
+            },
+            {
+              "id": "u2-q07-09",
+              "type": "single_choice",
+              "question": "CGNAT (carrier-grade) :",
+              "options": [
+                "NAT opérateur pour manque IPv4",
+                "Remplace BGP",
+                "Thread",
+                "Euler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partage IP publique."
+            },
+            {
+              "id": "u2-q07-10",
+              "type": "single_choice",
+              "question": "IPv6 réduit besoin NAT car :",
+              "options": [
+                "Espace adresses vaste",
+                "Sans routage",
+                "Sans ICMP",
+                "Sans OS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "End-to-end retrouvable."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "ICMP et diagnostic réseau",
+          "questions": [
+            {
+              "id": "u2-q08-01",
+              "type": "multiple_choice",
+              "question": "ICMP :",
+              "options": [
+                "Messages contrôle/erreur IP",
+                "Ping utilise Echo Request/Reply",
+                "Remplace TCP",
+                "Table SQL"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Diagnostic reachability."
+            },
+            {
+              "id": "u2-q08-02",
+              "type": "single_choice",
+              "question": "Destination Unreachable :",
+              "options": [
+                "Impossible joindre destination (code détail)",
+                "Succès",
+                "BGP open",
+                "Commit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. port fermé, réseau inconnu."
+            },
+            {
+              "id": "u2-q08-03",
+              "type": "single_choice",
+              "question": "Time Exceeded :",
+              "options": [
+                "TTL=0 en transit (traceroute)",
+                "DNS timeout",
+                "Deadlock",
+                "Page fault"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traceroute exploite TTL."
+            },
+            {
+              "id": "u2-q08-04",
+              "type": "single_choice",
+              "question": "traceroute / tracert :",
+              "options": [
+                "Découvre route hop par hop",
+                "Remplace OSPF",
+                "Compile noyau",
+                "Tri fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TTL croissant + ICMP/time."
+            },
+            {
+              "id": "u2-q08-05",
+              "type": "single_choice",
+              "question": "ping mesure surtout :",
+              "options": [
+                "RTT aller-retour",
+                "Bande passante max",
+                "Nombre AS BGP",
+                "Taille SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Latence reachability."
+            },
+            {
+              "id": "u2-q08-06",
+              "type": "single_choice",
+              "question": "ICMP filtré par firewall :",
+              "options": [
+                "Ping/traceroute peuvent échouer",
+                "BGP tombe toujours",
+                "NAT disparaît",
+                "OS crash"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité courante."
+            },
+            {
+              "id": "u2-q08-07",
+              "type": "single_choice",
+              "question": "Path MTU discovery :",
+              "options": [
+                "ICMP Fragmentation Needed",
+                "RIP update",
+                "wait()",
+                "VIEW SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évite fragmentation."
+            },
+            {
+              "id": "u2-q08-08",
+              "type": "single_choice",
+              "question": "ARP (notion L2) :",
+              "options": [
+                "Résout IP → MAC sur LAN",
+                "Remplace BGP",
+                "Processus scheduling",
+                "3FN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prérequis forwarding local."
+            },
+            {
+              "id": "u2-q08-09",
+              "type": "single_choice",
+              "question": "tcpdump/Wireshark :",
+              "options": [
+                "Analyse trames/paquets",
+                "Calcule Dijkstra",
+                "Migration SQL",
+                "Fork"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil diagnostic NSI."
+            },
+            {
+              "id": "u2-q08-10",
+              "type": "single_choice",
+              "question": "MTU Ethernet typique :",
+              "options": [
+                "1500 octets payload IP",
+                "64 sauts RIP",
+                "65535 processus",
+                "1 tuple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fragmentation si dépassement."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "CIDR et agrégation",
+          "questions": [
+            {
+              "id": "u2-q09-01",
+              "type": "multiple_choice",
+              "question": "CIDR :",
+              "options": [
+                "Notation préfixe / masque variable",
+                "Agrégation routes supernet",
+                "Classe A/B/C strictes seulement",
+                "Remplace IP"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "VLSM flexible, tables plus petites."
+            },
+            {
+              "id": "u2-q09-02",
+              "type": "single_choice",
+              "question": "192.168.1.0/24 contient :",
+              "options": [
+                "256 adresses (2^8 hosts space)",
+                "2 adresses",
+                "65536",
+                "1 seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2^(32-prefix) adresses."
+            },
+            {
+              "id": "u2-q09-03",
+              "type": "single_choice",
+              "question": "Supernetting :",
+              "options": [
+                "Regrouper préfixes contigus",
+                "Diviser processus",
+                "Mutex",
+                "DAG cycle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduit entrées table."
+            },
+            {
+              "id": "u2-q09-04",
+              "type": "single_choice",
+              "question": "VLSM :",
+              "options": [
+                "Masques différents par sous-réseau",
+                "Un masque global obligatoire",
+                "Sans routage",
+                "Sans IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Optimise adressage."
+            },
+            {
+              "id": "u2-q09-05",
+              "type": "single_choice",
+              "question": "/32 préfixe :",
+              "options": [
+                "Une adresse hôte (route host)",
+                "Tout Internet",
+                "Class A legacy",
+                "Broadcast seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loopback, BGP host routes."
+            },
+            {
+              "id": "u2-q09-06",
+              "type": "single_choice",
+              "question": "Agrégation BGP :",
+              "options": [
+                "Annoncer bloc plus large stable",
+                "Toujours /32",
+                "Sans ASN",
+                "ICMP only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stabilité tables globales."
+            },
+            {
+              "id": "u2-q09-07",
+              "type": "single_choice",
+              "question": "Longest match 10.0.0.0/8 vs 10.1.0.0/16 pour 10.1.2.3 :",
+              "options": ["Choisit /16", "Choisit /8", "Aléatoire", "Default"],
+              "correctAnswers": [0],
+              "explanation": "Plus spécifique gagne."
+            },
+            {
+              "id": "u2-q09-08",
+              "type": "single_choice",
+              "question": "APIPA 169.254.x.x :",
+              "options": [
+                "Auto-config lien local sans DHCP",
+                "BGP public",
+                "OSPF area",
+                "SQL null"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Windows/Linux link-local."
+            },
+            {
+              "id": "u2-q09-09",
+              "type": "single_choice",
+              "question": "Masque 255.255.255.0 =",
+              "options": ["/24", "/8", "/32", "/16"],
+              "correctAnswers": [0],
+              "explanation": "8 bits host."
+            },
+            {
+              "id": "u2-q09-10",
+              "type": "single_choice",
+              "question": "Plan adressage document :",
+              "options": [
+                "Préfixes, VLAN, DHCP pools",
+                "Code Python seul",
+                "PCB seul",
+                "Deadlock graph"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Livrable réseau."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse protocoles de routage",
+          "questions": [
+            {
+              "id": "u2-q10-01",
+              "type": "multiple_choice",
+              "question": "Choisir protocole :",
+              "options": [
+                "RIP petit LAN simple",
+                "OSPF réseau entreprise scalable",
+                "BGP connexion Internet/AS",
+                "SQL agrégats"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "RIP/OSPF/BGP rôles distincts."
+            },
+            {
+              "id": "u2-q10-02",
+              "type": "single_choice",
+              "question": "Boucle routage temporaire :",
+              "options": [
+                "Paquets tournent jusqu TTL=0",
+                "Toujours permanent",
+                "Corrige SQL",
+                "Thread join"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convergence + mécanismes anti-loop."
+            },
+            {
+              "id": "u2-q10-03",
+              "type": "single_choice",
+              "question": "Black hole route :",
+              "options": [
+                "Trafic discard silencieux",
+                "Toujours ICMP",
+                "Processus zombie",
+                "Index unique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erreur config/policy."
+            },
+            {
+              "id": "u2-q10-04",
+              "type": "single_choice",
+              "question": "Load balancing ECMP (notion) :",
+              "options": [
+                "Plusieurs next-hop égaux métrique",
+                "Un seul chemin obligatoire",
+                "Sans IP",
+                "NAT only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répartition flux."
+            },
+            {
+              "id": "u2-q10-05",
+              "type": "single_choice",
+              "question": "SDN (notion) :",
+              "options": [
+                "Contrôle centralisé / programmabilité",
+                "Sans forwarding",
+                "Sans tables",
+                "Processus only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évolution architecture réseau."
+            },
+            {
+              "id": "u2-q10-06",
+              "type": "single_choice",
+              "question": "Tracer problème connectivité :",
+              "options": [
+                "Couches : IP, route, ARP, DNS, firewall",
+                "Uniquement reboot",
+                "Uniquement SQL",
+                "Uniquement CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode OSI."
+            },
+            {
+              "id": "u2-q10-07",
+              "type": "single_choice",
+              "question": "Métrique hop-count faiblesse :",
+              "options": [
+                "Ignore bande passante/latence",
+                "Parfaite toujours",
+                "BGP only",
+                "Mutex"
+              ],
+              "correctAnswers": [0],
+              "explanation": "OSPF cost meilleur critère."
+            },
+            {
+              "id": "u2-q10-08",
+              "type": "single_choice",
+              "question": "Route summarization at area border :",
+              "options": [
+                "Réduit LSDB/ tables OSPF",
+                "Augmente boucles",
+                "Supprime IP",
+                "Crée fork"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiérarchie OSPF."
+            },
+            {
+              "id": "u2-q10-09",
+              "type": "single_choice",
+              "question": "Compétence terminale routage :",
+              "options": [
+                "Lire table, comprendre RIP/OSPF/BGP rôles",
+                "Configurer BGP Internet complet seul",
+                "Ignorer CIDR",
+                "Confondre switch/routeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectifs programme NSI."
+            },
+            {
+              "id": "u2-q10-10",
+              "type": "single_choice",
+              "question": "Message clé chapitre routage :",
+              "options": [
+                "Forwarding distribué + protocoles pour reachability",
+                "Routage = DNS",
+                "Routage = SQL",
+                "Sans tables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Architectures et systèmes réseau."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

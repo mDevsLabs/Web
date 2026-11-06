@@ -253,6 +253,9 @@ app.on("browser-window-created", (_event, win) => {
 });
 
 app.whenReady().then(async () => {
+  // Le verrou a déjà appelé app.quit() : sans ce retour, la seconde instance
+  // ouvrait quand même la fenêtre et une deuxième base SQLite.
+  if (!gotLock) return;
   // Recover from a previous run that did not get to restore the system proxy.
   if (BrowserSystemProxy.hasSavedState()) {
     void BrowserSystemProxy.disable().catch(() => {

@@ -1,0 +1,2663 @@
+{
+  "id": "1ere-enseignement-scientifique-02",
+  "year": "1ere",
+  "subject": "enseignement-scientifique",
+  "title": "Le Soleil, notre source d'énergie",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Le rayonnement solaire",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Nature du rayonnement solaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent le rayonnement solaire ?",
+              "options": [
+                "Onde électromagnétique se propageant dans le vide",
+                "Impossible sans air",
+                "Transporte de l'énergie du Soleil",
+                "Ne transporte que de la chaleur par contact"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le rayonnement solaire est une onde EM dans le vide qui véhicule de l'énergie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La constante solaire vaut environ :",
+              "options": [
+                "1361 W·m⁻² au sommet de l'atmosphère",
+                "0,3 sans unité",
+                "340 K",
+                "100 % d'albédo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au sommet de l'atmosphère, le flux moyen est d'environ 1361 W·m⁻²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le spectre d'émission du Soleil suit principalement :",
+              "options": [
+                "La loi de Planck",
+                "La loi d'Ohm",
+                "La loi de Pascal",
+                "La loi de la gravitation seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un corps chaud comme le Soleil obéit à la loi de Planck."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La loi de Wien indique qu'un corps plus chaud émet un maximum vers :",
+              "options": [
+                "Des longueurs d'onde plus courtes",
+                "Des longueurs d'onde toujours identiques",
+                "L'absence d'émission",
+                "Les ondes radio seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus la température augmente, plus le pic d'émission se déplace vers le bleu/UV."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'irradiance extraterrestre est évaluée :",
+              "options": [
+                "Au sommet de l'atmosphère",
+                "Au centre du noyau terrestre",
+                "Sous les océans",
+                "Uniquement la nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Extraterrestre signifie avant atténuation par l'atmosphère."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un pyranomètre mesure :",
+              "options": [
+                "Le flux radiatif solaire reçu",
+                "La pression atmosphérique",
+                "Le vent",
+                "La pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il quantifie l'irradiance solaire sur une surface."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La célérité de la lumière dans le vide est environ :",
+              "options": ["3×10⁸ m·s⁻¹", "340 m·s⁻¹", "1 m·s⁻¹", "3 m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "Le rayonnement EM se propage à environ 3×10⁸ m·s⁻¹ dans le vide."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La puissance totale émise par le Soleil s'appelle :",
+              "options": [
+                "La luminosité",
+                "L'albédo",
+                "Le forçage",
+                "La transmittance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La luminosité est la puissance radiative totale de l'étoile."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La lumière met environ … pour voyager du Soleil à la Terre :",
+              "options": ["8 minutes", "8 secondes", "8 heures", "8 jours"],
+              "correctAnswers": [0],
+              "explanation": "La distance Soleil–Terre implique un délai d'environ 8 minutes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour une onde EM, c vaut :",
+              "options": ["λ × ν", "m × a", "P × t", "F / S"],
+              "correctAnswers": [0],
+              "explanation": "Célérité, longueur d'onde et fréquence sont liées par c = λν."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Spectre électromagnétique solaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels domaines composent surtout le spectre solaire utile à la surface ?",
+              "options": [
+                "Ultraviolet",
+                "Visible",
+                "Ondes sismiques",
+                "Infrarouge proche"
+              ],
+              "correctAnswers": [1, 3],
+              "explanation": "Le Soleil émet surtout visible, UV et une part d'infrarouge proche."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La plus grande part de l'énergie solaire reçue au sol est dans le :",
+              "options": [
+                "Visible",
+                "Gamma",
+                "Rayons X",
+                "Radio basse fréquence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le visible concentre une large fraction du flux utile."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'ozone stratosphérique filtre surtout :",
+              "options": [
+                "Une partie de l'UV",
+                "Tout le visible",
+                "Les ondes radio",
+                "L'infrarouge terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'O₃ absorbe des UV nocifs avant qu'ils n'atteignent le sol."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le ciel bleu résulte surtout de :",
+              "options": [
+                "La diffusion de Rayleigh",
+                "L'émission nocturne du sol",
+                "La fusion dans l'air",
+                "La réflexion lunaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rayleigh diffuse davantage le bleu que le rouge."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'énergie d'un photon vaut :",
+              "options": ["h × ν", "m × g", "P / S", "R × T"],
+              "correctAnswers": [0],
+              "explanation": "E = hν relie énergie et fréquence du photon."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le spectre au sol diffère du spectre spatial à cause :",
+              "options": [
+                "De l'absorption et diffusion atmosphériques",
+                "De l'absence de Soleil",
+                "De la rotation lunaire",
+                "De la gravité seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gaz, aérosols et nuages modifient le spectre reçu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un spectrophotomètre sert à :",
+              "options": [
+                "Mesurer l'intensité par longueur d'onde",
+                "Compter les séismes",
+                "Peser l'air",
+                "Mesurer le vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il décompose le rayonnement selon λ ou ν."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les UV-B au sol sont limités par :",
+              "options": [
+                "L'ozone et l'épaisseur d'air",
+                "La marée",
+                "Le magnétisme terrestre seul",
+                "La salinité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins d'ozone ou un chemin air plus long modifie l'UV reçu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le proche infrarouge solaire :",
+              "options": [
+                "Traverse partiellement l'atmosphère",
+                "Est totalement absent du Soleil",
+                "Provient du noyau terrestre",
+                "Est identique aux rayons gamma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une fenêtre IR laisse passer une fraction d'infrarouge solaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le Soleil paraît blanc depuis l'espace car :",
+              "options": [
+                "Il émet un continuum avec pic dans le visible",
+                "Il n'émet qu'une seule couleur",
+                "Il n'émet pas de photons",
+                "Il émet uniquement de l'UV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le continuum solaire couvre surtout visible et proche UV/IR."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Transmission atmosphérique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels agents atténuent le rayonnement solaire dans l'atmosphère ?",
+              "options": [
+                "Vapeur d'eau",
+                "Ozone",
+                "Oxygène sans bandes d'absorption",
+                "Hélium du sol"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "H₂O et O₃ absorbent des bandes du spectre solaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une fenêtre atmosphérique est :",
+              "options": [
+                "Une bande où le rayonnement traverse bien",
+                "Un trou dans la stratosphère artificiel",
+                "L'absence totale d'air",
+                "Un satellite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines longueurs d'onde traversent l'air avec peu d'absorption."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les nuages augmentent surtout :",
+              "options": [
+                "La réflexion et la diffusion",
+                "La constante solaire intrinsèque",
+                "La masse du Soleil",
+                "La vitesse de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nuages renvoient et diffusent une part du flux incident."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'irradiance au sol par temps clair est :",
+              "options": [
+                "Inférieure à l'irradiance extraterrestre",
+                "Toujours égale à 1361 W·m⁻² horizontal",
+                "Nulle le jour",
+                "Supérieure sans limite au flux spatial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'atmosphère absorbe et diffuse, réduisant le flux au sol."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le flux direct provient :",
+              "options": [
+                "Du disque solaire sans diffusion majeure",
+                "Du noyau terrestre",
+                "Des éclairs",
+                "De l'IR émis la nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le direct est le faisceau solaire non diffusé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le flux diffus provient surtout :",
+              "options": [
+                "De la diffusion par l'air et les nuages",
+                "De la fusion océanique",
+                "Des marées",
+                "Du vent seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diffusion atmosphérique crée un éclairement venant du ciel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En altitude, l'irradiance augmente car :",
+              "options": [
+                "L'atmosphère au-dessus est moins épaisse",
+                "Le Soleil se rapproche fortement",
+                "La constante solaire double",
+                "L'ozone disparaît totalement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins d'absorption et de diffusion au-dessus de la station."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La transmittance est le rapport :",
+              "options": [
+                "Flux transmis sur flux incident",
+                "Température sur pression",
+                "Albédo sur forçage",
+                "Volume sur masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle mesure la fraction du rayonnement incident qui traverse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les aérosols peuvent :",
+              "options": [
+                "Diffuser et absorber le solaire",
+                "Créer de la lumière sans Soleil",
+                "Annuler la gravité",
+                "Bloquer uniquement l'IR terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poussières et aérosols modifient direct et diffus."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La réfraction à l'horizon :",
+              "options": [
+                "Dévie les rayons lumineux dans l'air",
+                "Supprime l'UV",
+                "Double la constante solaire",
+                "Éteint le Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réfraction modifie la trajectoire apparente du Soleil."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Ultraviolet et santé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels risques sont liés à un excès d'UV solaires ?",
+              "options": [
+                "Coups de soleil",
+                "Atteintes cutanées",
+                "Renforcement garanti de l'ozone local",
+                "Disparition du visible"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un excès d'UV nuit à la peau sans recréer de l'ozone stratosphérique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'indice UV renseigne sur :",
+              "options": [
+                "Le risque d'exposition aux UV",
+                "La vitesse du vent",
+                "La pression en hPa",
+                "La salinité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il résume l'intensité UV et le risque pour la peau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La vitamine D cutanée dépend surtout de :",
+              "options": [
+                "Une fraction d'UV-B",
+                "Les rayons gamma",
+                "Les ondes radio",
+                "Le froid seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les UV-B déclenchent la synthèse de vitamine D."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'ozone stratosphérique se situe environ :",
+              "options": [
+                "Entre 15 et 35 km",
+                "Au centre de la Terre",
+                "Dans le noyau solaire",
+                "Sous les fonds marins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La couche d'ozone protège en haute atmosphère."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un écran solaire large spectre filtre :",
+              "options": [
+                "UV-A et UV-B",
+                "Uniquement l'IR terrestre",
+                "Les ondes sismiques",
+                "La gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il réduit l'exposition aux UV nocifs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En été à midi, l'indice UV est souvent plus élevé car :",
+              "options": [
+                "Le Soleil est plus haut dans le ciel",
+                "La Terre s'arrête de tourner",
+                "L'ozone triple partout",
+                "La Lune émet des UV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hauteur solaire élevée ⇒ chemin atmosphérique plus court en UV."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La neige réfléchissante peut :",
+              "options": [
+                "Augmenter l'exposition UV du visage",
+                "Supprimer tout rayonnement",
+                "Créer de l'ozone au sol",
+                "Bloquer le visible totalement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réflexion au sol expose davantage, surtout en montagne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Moins d'ozone stratosphérique implique :",
+              "options": [
+                "Plus d'UV-B en surface",
+                "Zéro lumière diurne",
+                "Plus d'ozone au sol",
+                "Disparition du spectre solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtrage UV réduit ⇒ plus d'UV-B atteignent le sol."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les lunettes de soleil certifiées protègent :",
+              "options": [
+                "Les yeux des UV excessifs",
+                "Le noyau terrestre",
+                "Les satellites",
+                "Le phytoplancton seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtres UV limitent l'agression rétinienne."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les UV-A pénètrent généralement :",
+              "options": [
+                "Plus profondément que les UV-B dans la peau",
+                "Pas du tout",
+                "Uniquement la nuit",
+                "Seulement sous l'eau salée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "UV-A atteint davantage le derme ; UV-B agit plus en surface."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Angle d'incidence et saisons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels facteurs modulent l'énergie solaire reçue par m² ?",
+              "options": [
+                "L'angle d'incidence",
+                "La durée du jour",
+                "La masse du noyau seule",
+                "La couleur des océans seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Inclinaison des rayons et durée d'ensoleillement fixent l'énergie reçue."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'inclinaison de l'axe terrestre vaut environ :",
+              "options": ["23,4°", "90°", "0°", "180°"],
+              "correctAnswers": [0],
+              "explanation": "L'axe est incliné d'environ 23,4° par rapport à la normale à l'orbite."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Aux solstices, l'axe incliné explique :",
+              "options": [
+                "Des saisons opposées entre hémisphères",
+                "L'égalité jour/nuit partout",
+                "L'arrêt de la rotation",
+                "La fusion solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque hémisphère reçoit différemment l'ensoleillement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Au zénith, le flux sur une surface horizontale est :",
+              "options": [
+                "Maximal pour cette orientation",
+                "Minimal",
+                "Nul",
+                "Indépendant de la latitude"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rayons perpendiculaires ⇒ énergie par m² la plus grande."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Aux équinoxes, jour et nuit durent environ :",
+              "options": [
+                "Également partout",
+                "Toujours 24 h de nuit",
+                "Toujours 24 h de jour",
+                "Zéro heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aux équinoxes, la durée du jour ≈ celle de la nuit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En hiver, rayons obliques et journées courtes :",
+              "options": [
+                "Réduisent l'énergie solaire reçue",
+                "Doublent la constante solaire",
+                "Suppriment l'UV",
+                "Annulent l'atmosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Obliquité et durée du jour diminuent le bilan local."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Entre les tropiques, le Soleil peut être au zénith :",
+              "options": [
+                "Au moins une fois par an",
+                "Jamais",
+                "Tous les jours au pôle",
+                "Uniquement la nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Latitudes tropicales permettent le zénith solaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une surface inclinée vers le Soleil reçoit :",
+              "options": [
+                "Souvent plus d'énergie qu'une surface horizontale",
+                "Toujours moins",
+                "Aucun rayonnement",
+                "Uniquement l'IR terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orientation optimale augmente le flux capté."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le soleil de minuit arctique vient de :",
+              "options": [
+                "L'inclinaison de l'axe et la latitude",
+                "La disparition de l'atmosphère",
+                "L'extinction du Soleil",
+                "La marée seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inclinaison maintient le Soleil au-dessus de l'horizon en été polaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La variation saisonnière du flux intégré vient surtout de :",
+              "options": [
+                "Géométrie Soleil–Terre et durée du jour",
+                "Changement de masse solaire",
+                "Variation de c",
+                "Absence d'atmosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orbite et inclinaison modulent l'énergie quotidienne reçue."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Énergie solaire et biosphère",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels processus dépendent directement du rayonnement solaire ?",
+              "options": [
+                "Photosynthèse",
+                "Évaporation du cycle de l'eau",
+                "Convection mantellique sans chaleur",
+                "Réflexion sans source lumineuse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le Soleil alimente la photosynthèse et l'évaporation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La chlorophylle absorbe surtout :",
+              "options": [
+                "Rouge et bleu du visible",
+                "Tout l'IR lointain",
+                "Les gamma",
+                "Les ondes radio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Absorption en rouge et bleu ; le vert est surtout réfléchi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'énergie des fossiles provient :",
+              "options": [
+                "De biomasse ancienne photosynthétique",
+                "Du noyau instantané",
+                "De la Lune",
+                "Du vent seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Charbon et pétrole stockent une énergie solaire passée via la vie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les panneaux photovoltaïques convertissent :",
+              "options": [
+                "Une part des photons solaires en électricité",
+                "Tous les photons à 100 %",
+                "Des neutrons solaires",
+                "La marée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seule une fraction du flux est convertie en électricité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le solaire thermique sert surtout à :",
+              "options": [
+                "Chauffer un fluide ou un local",
+                "Refroidir sans énergie",
+                "Créer de l'ozone",
+                "Bloquer le visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capteurs transforment le flux en chaleur utile."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'évaporation océanique est pilotée par :",
+              "options": [
+                "Le chauffage radiatif de la surface",
+                "La gravité lunaire seule",
+                "La rotation du Soleil",
+                "Le vent sans chaleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux solaire absorbé alimente l'évaporation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le phytoplancton dépend de :",
+              "options": [
+                "L'ensoleillement en couche éclairée",
+                "Les rayons gamma",
+                "Le champ magnétique seul",
+                "La salinité seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La photosynthèse marine nécessite la lumière en surface."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une forêt modifie le microclimat par :",
+              "options": [
+                "Ombrage et évapotranspiration",
+                "Augmentation de la constante solaire",
+                "Suppression de l'IR",
+                "Fusion nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Canopée filtre le flux et humidifie l'air."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les serres agricoles exploitent le flux pour :",
+              "options": [
+                "Chauffer l'air et favoriser la croissance",
+                "Bloquer toute lumière",
+                "Refroidir sans énergie",
+                "Émettre des UV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Serres captent le rayonnement pour le climat interne."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le rendement photosynthétique global reste modeste car :",
+              "options": [
+                "Grande part du flux n'est pas convertie en biomasse",
+                "Le Soleil n'émet pas de photons",
+                "Il n'y a pas de CO₂",
+                "Les plantes absorbent les gamma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réflexion, chaleur et respiration limitent la conversion."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Observations spatiales du Soleil",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels moyens observent le rayonnement solaire depuis l'espace ?",
+              "options": [
+                "Satellites météorologiques",
+                "Observatoires solaires orbitaux",
+                "Sismographes",
+                "Baromètres seuls"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Satellites mesurent flux et spectre hors distorsions locales."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mesurer le flux au sommet de l'atmosphère sert à :",
+              "options": [
+                "Calibrer modèles et constante solaire",
+                "Mesurer la masse lunaire",
+                "Compter les marées",
+                "Peser l'air au sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Référence extraterrestre pour énergie et climat."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le cycle solaire d'environ 11 ans concerne :",
+              "options": [
+                "Activité magnétique et taches",
+                "Rotation terrestre",
+                "Précession seule",
+                "Salinité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Activité solaire varie avec un cycle d'environ 11 ans."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La TSI varie sur un cycle d'environ :",
+              "options": ["0,1 %", "50 %", "0 % exact", "1000 %"],
+              "correctAnswers": [0],
+              "explanation": "Flux total varie faiblement autour de 1361 W·m⁻²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un radiomètre spatial mesure :",
+              "options": [
+                "Puissance radiative incidente",
+                "Vitesse du son",
+                "Conductivité du sol",
+                "Pluviométrie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il quantifie le flux électromagnétique incident."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Imager le disque solaire permet de suivre :",
+              "options": [
+                "Taches et éruptions",
+                "Salinité",
+                "Pression au sol",
+                "Séismes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Activité solaire influence légèrement flux et vent solaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Données satellite d'ensoleillement estiment le flux au sol via :",
+              "options": [
+                "Modèles et mesures combinées",
+                "Mesure dans le manteau",
+                "Observations nocturnes seules",
+                "Gamma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Algorithmes combinent espace et modèles atmosphériques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calibrer capteurs sol et espace réduit :",
+              "options": [
+                "Biais et dérives d'instruments",
+                "Distance Terre–Lune",
+                "Masse de l'air seule",
+                "Marées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intercomparaison améliore les séries temporelles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "UV satellite sert à :",
+              "options": [
+                "Cartographier l'exposition UV globale",
+                "Mesurer gravité",
+                "Compter poissons",
+                "Détecter séismes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complète les réseaux de mesure au sol."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un observatoire héliosphérique étudie souvent :",
+              "options": [
+                "Vent solaire et champ magnétique",
+                "Forage mantellique",
+                "Salinité",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Héliosphère = Soleil, particules et magnétisme."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Direct, diffus et albédo local",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles composantes contribuent à l'irradiance globale au sol ?",
+              "options": [
+                "Rayonnement direct",
+                "Rayonnement diffus",
+                "Rayonnement sismique",
+                "Neutrons solaires"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Global = direct + diffus (plus parfois réflexion alentour)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ciel très nuageux : le direct devient souvent :",
+              "options": [
+                "Faible, le diffus domine",
+                "Maximal",
+                "Nul avec diffus nul",
+                "Supérieur au zénith clair"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nuages diffusent fortement et réduisent le faisceau direct."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Albédo élevé d'une surface claire augmente :",
+              "options": [
+                "La part réfléchie du solaire",
+                "L'absorption obligatoire",
+                "L'émission gamma",
+                "Le séisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surface claire renvoie plus de lumière solaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un tracker solaire vise à :",
+              "options": [
+                "Maximiser le direct en suivant le Soleil",
+                "Augmenter les nuages",
+                "Capturer l'IR terrestre seul",
+                "Réduire le flux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suivi solaire optimise l'angle d'incidence."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le diffus provient d'angles :",
+              "options": [
+                "Non solaires (ciel)",
+                "Uniquement du disque solaire",
+                "Du centre terrestre",
+                "Des étoiles le jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diffus arrive de directions multiples du ciel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Neige fraîche a un albédo élevé, donc :",
+              "options": [
+                "Réfléchit une grande part du solaire",
+                "Absorbe tout le visible",
+                "Émet des UV",
+                "Chauffe sans limite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Albédo élevé ⇒ faible absorption, forte réflexion."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une ombre supprime surtout :",
+              "options": [
+                "Le composant direct",
+                "Toute lumière y compris diffus lointain",
+                "La gravité",
+                "L'ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Obstacle bloque le faisceau solaire direct."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sol réfléchissant peut éclairer :",
+              "options": [
+                "Faces verticales voisines",
+                "Le noyau",
+                "La stratosphère sans limite",
+                "Gamma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réverbération sol contribue à l'éclairement local."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mesurer direct et diffus sert à :",
+              "options": [
+                "Dimensionner installations solaires",
+                "Calculer masse solaire",
+                "Prévoir tsunamis",
+                "Mesurer pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répartition guide le génie solaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Soleil bas, ciel bleu : direct souvent :",
+              "options": [
+                "Faible avec diffus non nul",
+                "Maximal",
+                "Zéro diffus",
+                "Flux IR seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Obliquité réduit direct ; air diffuse encore une part."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Applications énergétiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels usages exploitent le rayonnement solaire ?",
+              "options": [
+                "Photovoltaïque",
+                "Chauffage solaire",
+                "Fusion artificielle dans l'air",
+                "Pétrole sans énergie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "PV et solaire thermique convertissent le flux solaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Centrale solaire thermodynamique :",
+              "options": [
+                "Concentre le flux pour produire vapeur",
+                "Refroidit sans énergie",
+                "Crée ozone",
+                "Filtre UV seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concentration chauffe un fluide pour turbine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Intermittence solaire signifie :",
+              "options": [
+                "Production variable jour/nuit et météo",
+                "Flux constant 24 h partout",
+                "Absence de nuages garantie",
+                "Constante nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nuit et nuages modulent la production."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Stockage d'énergie solaire via :",
+              "options": [
+                "Batteries ou chaleur stockée",
+                "Annulation de c",
+                "Suppression atmosphère",
+                "Magnétisme lunaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stockage compense l'intermittence."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Potentiel d'un site dépend surtout de :",
+              "options": [
+                "Irradiance moyenne et ombrage",
+                "Salinité",
+                "Sismique",
+                "Profondeur manteau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ensoleillement et obstacles fixent le gisement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Autoconsommation photovoltaïque :",
+              "options": [
+                "Utiliser sur place l'électricité produite",
+                "Vendre sans panneau",
+                "Ignorer le flux",
+                "Consommer la nuit sans stockage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Production locale pour les besoins du site."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Capteur incliné au sud (hém. nord) vise à :",
+              "options": [
+                "Augmenter le flux capté",
+                "Réduire le flux",
+                "Capturer IR terrestre seul",
+                "Bloquer visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inclinaison optimisée selon latitude améliore rendement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rendement global inclut :",
+              "options": [
+                "Pertes optiques, thermiques et électriques",
+                "Uniquement météo",
+                "Masse Soleil",
+                "Marées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne de conversion comporte plusieurs pertes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Énergie solaire renouvelable car :",
+              "options": [
+                "Le Soleil brille encore des milliards d'années",
+                "Pétrole se renouvelle en minutes",
+                "Terre crée photons",
+                "Ozone produit électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux solaire durable à l'échelle humaine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "ACV d'un panneau intègre :",
+              "options": [
+                "Fabrication, transport, fin de vie",
+                "Usage seul",
+                "Rien hors usine",
+                "Nuit seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cycle de vie couvre toutes les étapes."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse rayonnement solaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Relations correctes pour le rayonnement solaire :",
+              "options": [
+                "Flux/m² baisse si angle d'incidence augmente",
+                "Atmosphère atténue le spectre",
+                "1361 W·m⁻² horizontal au sol toujours",
+                "Soleil n'émet pas d'UV"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Obliquité réduit flux/m² ; air filtre ; 1361 W·m⁻² est extraterrestre, pas au sol horizontal."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Source primaire de l'énergie du climat :",
+              "options": [
+                "Rayonnement solaire",
+                "Chaleur interne dominante",
+                "Marée seule",
+                "Radioactivité seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Soleil pilote presque tout le bilan de surface."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sans effet de serre naturel, température moyenne serait :",
+              "options": [
+                "Plus froide",
+                "Identique",
+                "Plus chaude qu'aujourd'hui",
+                "Indépendante du Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans rétention IR, la Terre serait bien plus froide."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Bilan commence par :",
+              "options": [
+                "Absorption d'une part du flux solaire",
+                "Émission solaire par océans",
+                "Fusion dans l'air",
+                "Conduction noyau dominante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entrée d'énergie = rayonnement solaire absorbé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réflexion solaire participe à :",
+              "options": [
+                "Albédo planétaire",
+                "Constante solaire intrinsèque",
+                "Fusion solaire",
+                "Gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Part renvoyée vers l'espace = albédo."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Capteurs au sol complètent l'espace car ils :",
+              "options": [
+                "Captent effets locaux",
+                "Mesurent noyau",
+                "Voient gamma",
+                "Remplacent Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseaux locaux affinent irradiance réelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Protection UV stratosphérique illustre :",
+              "options": [
+                "Interaction rayonnement–atmosphère",
+                "Absence d'ozone",
+                "Émission solaire nulle",
+                "Convection sans Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Absorption sélective protège la biosphère."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Géométrie solaire explique :",
+              "options": [
+                "Saisons",
+                "Plaques seules",
+                "Magnétisme seul",
+                "Marées dominantes climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inclinaison et orbite créent cycles saisonniers."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Convertir flux en électricité respecte :",
+              "options": [
+                "Conservation énergie (rendement < 100 %)",
+                "Création ex nihilo",
+                "Suppression photons Soleil",
+                "Augmentation luminosité solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conversion obéit à conservation avec pertes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Étudier rayonnement solaire prépare à :",
+              "options": [
+                "Comprendre climat, énergie et santé UV",
+                "Ignorer physique",
+                "Nier effet de serre",
+                "Supprimer mesures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thème central pour énergie, climat et prévention."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Le bilan radiatif terrestre",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Bilan énergétique global",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "À l'équilibre radiatif moyen, quels flux se compensent ?",
+              "options": [
+                "Énergie solaire absorbée",
+                "Énergie IR émise vers l'espace",
+                "Flux de neutrons solaires",
+                "Chaleur géothermique dominante"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En moyenne, absorption solaire ≈ émission IR vers l'espace."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Environ … du flux solaire incident est réfléchi :",
+              "options": ["30 %", "0 %", "100 %", "5 %"],
+              "correctAnswers": [0],
+              "explanation": "Albédo planétaire ≈ 0,3 renvoie ~30 % du flux incident."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Terre émet vers l'espace surtout en :",
+              "options": [
+                "Infrarouge thermique",
+                "Visible",
+                "UV solaire",
+                "Gamma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Température ~288 K ⇒ pic d'émission IR lointain."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Déséquilibre radiatif positif tend à :",
+              "options": [
+                "Réchauffer le système",
+                "Refroidir instantanément",
+                "Ne rien changer",
+                "Stopper rotation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Excédent énergétique s'accumule et réchauffe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Chaleur interne au bilan de surface :",
+              "options": [
+                "Négligeable devant solaire",
+                "Dominante",
+                "Identique au flux solaire",
+                "Source principale effet de serre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Géothermie ≈ 0,1 W·m⁻² vs ~240 W·m⁻² solaire absorbé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Flux solaire moyen absorbé ≈ :",
+              "options": [
+                "240 W·m⁻²",
+                "1361 W·m⁻²",
+                "0 W·m⁻²",
+                "1000 W·m⁻² réfléchi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après albédo, ~240 W·m⁻² alimentent le climat."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Température effective d'émission suppose :",
+              "options": [
+                "Corps noir émettant flux sortant",
+                "Soleil froid",
+                "Absence d'atmosphère toujours",
+                "Albédo nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stefan–Boltzmann relie flux émis et température effective."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Océan stocke énergie, ce qui :",
+              "options": [
+                "Lisse variations saisonnières",
+                "Annule effet de serre",
+                "Supprime albédo",
+                "Bloque Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inertie thermique océanique modère le climat."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bilan radiatif s'exprime en :",
+              "options": ["W·m⁻²", "Pascal", "mol·L⁻¹", "Secondes seules"],
+              "correctAnswers": [0],
+              "explanation": "Flux énergétiques radiatifs en watts par mètre carré."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pôles reçoivent moins de solaire mais émettent :",
+              "options": [
+                "Peu d'IR s'ils restent froids",
+                "Plus d'IR que l'équateur toujours",
+                "Aucun IR",
+                "Visible vers espace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan spatial hétérogène selon latitude et température."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Rayonnement infrarouge",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Émission IR terrestre :",
+              "options": [
+                "Liée à température de surface",
+                "Décalée vers grandes longueurs d'onde vs Soleil",
+                "Identique au spectre solaire",
+                "Absente la nuit"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Corps ~300 K émet IR ; spectre différent du Soleil chaud."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Stefan–Boltzmann : flux émis varie en :",
+              "options": ["T⁴", "T", "1/T", "T² seule"],
+              "correctAnswers": [0],
+              "explanation": "Flux ∝ T⁴ pour un corps noir."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Atmosphère absorbe IR terrestre via :",
+              "options": [
+                "GES (H₂O, CO₂, CH₄…)",
+                "O₂ seul sans bandes",
+                "Azote seul",
+                "Hélium seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Molécules polyatomiques absorbent bandes IR."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "IR capté par l'air :",
+              "options": [
+                "Réchauffe et réémet IR",
+                "Disparaît",
+                "Devient visible pur",
+                "Refroidit sans limite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Absorption–réémission réchauffent l'atmosphère."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Nuit nuageuse plus douce car :",
+              "options": [
+                "Nuages réémettent IR vers sol",
+                "Nuages bloquent Soleil la nuit",
+                "Ozone chauffe sol",
+                "Flux solaire augmente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nuages renvoient IR terrestre, limitant refroidissement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Corps plus chaud émet :",
+              "options": [
+                "Plus de flux IR",
+                "Moins de flux IR",
+                "Uniquement UV",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Température plus élevée ⇒ flux radiatif accru."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Désert la nuit refroidit vite car :",
+              "options": [
+                "Peu de nuages, IR fuit vers espace",
+                "Albédo nul",
+                "Absence d'IR",
+                "Géothermie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ciel clair laisse fuir IR vers l'espace froid."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Caméra thermique détecte :",
+              "options": [
+                "IR émis par surfaces chaudes",
+                "Visible seul",
+                "Pression",
+                "Vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Imagerie thermique capte rayonnement IR."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Spectres Soleil vs Terre :",
+              "options": [
+                "Terre émet surtout IR",
+                "Identiques",
+                "Terre émet surtout UV",
+                "Soleil émet surtout radio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wien : corps froid ⇒ pic IR ; Soleil chaud ⇒ visible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "IR sortant passe surtout par :",
+              "options": [
+                "Fenêtres atmosphériques IR",
+                "Visible",
+                "Gamma",
+                "UV-B"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bandes de transmission laissent échapper une part du flux."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Effet de serre naturel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Effet de serre naturel implique :",
+              "options": [
+                "Air transparent au visible solaire",
+                "Absorption IR terrestre",
+                "Refroidissement sans atmosphère",
+                "Blocage total Soleil"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Air laisse entrer visible et retient part de l'IR sortant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sans effet de serre, T moyenne ≈ :",
+              "options": [
+                "–18 °C vs ~15 °C actuel",
+                "100 °C",
+                "Identique",
+                "200 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Estimation classique ~255 K vs ~288 K."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "GES le plus variable en masse d'effet :",
+              "options": ["Vapeur d'eau", "Argon", "Oxygène", "Néon"],
+              "correctAnswers": [0],
+              "explanation": "H₂O domine en abundance variable, forte absorption IR."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "CO₂ contribue car :",
+              "options": [
+                "Absorbe bandes IR complémentaires de H₂O",
+                "Bloque tout visible",
+                "Refroidit seul",
+                "Remplace ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CO₂ absorbe des λ IR où l'eau est moins active."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Serre agricole vs atmosphère :",
+              "options": [
+                "Serre limite convection, air absorbe IR",
+                "Mécanismes identiques",
+                "Serre = CO₂ seul",
+                "Air bloque visible totalement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analogie imparfaite : serre ≠ uniquement absorption IR."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Effet de serre ne viole pas thermodynamique car :",
+              "options": [
+                "Redistribue énergie déjà absorbée",
+                "Crée énergie",
+                "Stoppe émission IR",
+                "Refroidit Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retarde refroidissement, ne crée pas d'énergie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Plus de GES tend à :",
+              "options": [
+                "Réduire flux IR sortant",
+                "Augmenter albédo obligatoire",
+                "Couper solaire entrant totalement",
+                "Geler atmosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opacité IR accrue ⇒ moins d'énergie quitte le système."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "CH₄ est GES car :",
+              "options": [
+                "Absorbe IR",
+                "Monoatomique",
+                "Transparent tout λ",
+                "Remplace azote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Molécule polyatomique avec bandes IR actives."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Effet de serre naturel rend Terre :",
+              "options": [
+                "Habitable",
+                "Identique Lune",
+                "Sans océans",
+                "Inhabitable chaude"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans lui, froid extrême dominerait."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Flux IR sortant spatial sert à :",
+              "options": [
+                "Vérifier bilan radiatif",
+                "Mesurer salinité",
+                "Compter poissons",
+                "Prévoir séismes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Satellites type CERES surveillent flux entrant/sortant."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Albédo planétaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Éléments augmentant albédo planétaire :",
+              "options": [
+                "Neige et glace",
+                "Nuages clairs",
+                "Océan sombre",
+                "Forêt sombre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Surfaces claires et nuages réfléchissent plus le solaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Albédo = :",
+              "options": [
+                "Flux réfléchi / flux incident",
+                "Flux absorbé / émis",
+                "T / P",
+                "m / V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fraction réfléchie du rayonnement incident."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Océan albédo faible ⇒ :",
+              "options": [
+                "Absorbe grande part du solaire",
+                "Réfléchit presque tout",
+                "N'absorbe rien",
+                "Émet visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau sombre absorbe et réchauffe surface marine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fonte glace baisse albédo ⇒ :",
+              "options": [
+                "Rétroaction réchauffante locale",
+                "Refroidissement instantané",
+                "Albédo augmente",
+                "Bloque Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de glace ⇒ plus d'absorption solaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Aérosols volcaniques sulfatés peuvent :",
+              "options": [
+                "Refroidir temporairement",
+                "Albédo zéro",
+                "Chauffer sans réflexion",
+                "Supprimer IR"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aérosols réfléchissants augmentent albédo stratosphérique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Albédo 0,3 implique :",
+              "options": [
+                "30 % réfléchi",
+                "70 % réfléchi",
+                "100 % absorbé",
+                "0 % réfléchi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fraction réfléchie = 0,3 pour système moyen."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Urbanisation surfaces sombres :",
+              "options": [
+                "Abaisse albédo local",
+                "Double constante solaire",
+                "Gèle climat",
+                "Augmente albédo partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Asphalte absorbant ⇒ îlots de chaleur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Toit clair vise à :",
+              "options": [
+                "Augmenter réflexion",
+                "Absorber plus",
+                "Bloquer IR total",
+                "Créer nuages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toitures réfléchissantes réduisent gain solaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mesure albédo utilise souvent :",
+              "options": [
+                "Radiomètres visible/NIR",
+                "Sismographes",
+                "pH-mètres",
+                "Anémomètres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réflectance solaire quantifie albédo."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Terre bleue depuis espace car :",
+              "options": [
+                "Océans et diffusion atmosphérique",
+                "Atmosphère émet visible",
+                "Soleil bleu",
+                "Albédo nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Océans et diffusion colorent la planète."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Rétroactions climatiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Rétroactions touchant bilan radiatif :",
+              "options": [
+                "Fonte glace–albédo",
+                "Vapeur d'eau avec chaleur",
+                "Gravité lunaire seule",
+                "Déclin de c"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Albédo et vapeur d'eau modifient absorption et effet de serre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Plus de vapeur d'eau dans air chaud :",
+              "options": [
+                "Renforce effet de serre",
+                "Supprime IR",
+                "Refroidit sans limite",
+                "Bloque visible total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "H₂O est GES ; contenu augmente avec température."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Rétroaction positive :",
+              "options": [
+                "Amplifie changement initial",
+                "Toujours refroidit",
+                "Rien",
+                "Rotation terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boucle positive accentue l'écart initial."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Nuages effet net incertain car :",
+              "options": [
+                "Réfléchissent solaire et trap IR",
+                "N'interagissent pas",
+                "Absorbent gamma seuls",
+                "Refroidissent sans réfléchir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétition albédo vs effet de serre des nuages."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Fonte calottes réduit :",
+              "options": [
+                "Surface réfléchissante",
+                "Température océan nulle",
+                "Niveau marin jamais",
+                "Absorption solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de glace ⇒ moins de réflexion."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Permafrost CH₄ est rétroaction :",
+              "options": [
+                "Positive réchauffement",
+                "Négative systématique",
+                "Neutre garantie",
+                "Albédo seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CH₄ supplémentaire renforce effet de serre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Évaporation accrue refroidit par :",
+              "options": [
+                "Chaleur latente",
+                "Gamma",
+                "Albédo infini",
+                "Blocage solaire total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évaporation consomme énergie, refroidit surface."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Modèles intègrent rétroactions pour :",
+              "options": [
+                "Projeter évolution bilan",
+                "Supprimer mesures",
+                "Fixer constante solaire",
+                "Annuler CO₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couplages physiques nécessaires aux projections."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Boucle négative stabilisatrice :",
+              "options": [
+                "Contrebalance perturbation",
+                "Amplifie toujours",
+                "Ignore rayonnement",
+                "Supprime air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. : plus chaud ⇒ plus d'émission (Stefan–Boltzmann)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Forêt boréale vs neige peut :",
+              "options": [
+                "Absorber plus solaire si sombre remplace neige",
+                "Refroidir par albédo élevé forêt",
+                "Ne pas affecter bilan",
+                "Bloquer CO₂ sans effet radiatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Changement albédo surface modifie absorption locale."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Forçages radiatifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Forçages anthropiques majeurs depuis 1750 :",
+              "options": [
+                "Augmentation CO₂",
+                "Aérosols et usages des sols",
+                "Variation orbitale instantanée",
+                "Marées seules"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "GES et aérosols/usages des sols perturbent le bilan."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Forçage positif signifie :",
+              "options": [
+                "Gain net d'énergie",
+                "Perte nette",
+                "Aucun effet",
+                "Refroidissement garanti"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forçage > 0 ⇒ tendance au réchauffement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Doublement CO₂ ≈ forçage :",
+              "options": ["3,7 W·m⁻²", "0 W·m⁻²", "1000 W·m⁻²", "–10 W·m⁻²"],
+              "correctAnswers": [0],
+              "explanation": "Valeur canonique ~3,7 W·m⁻² pour CO₂ doublé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Aérosols sulfates tendent à :",
+              "options": [
+                "Refroidir (albédo)",
+                "Réchauffer seuls",
+                "Ne pas interagir",
+                "Bloquer IR total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aérosols réfléchissants = forçage négatif partiel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Forçage net récent (IPCC) :",
+              "options": [
+                "Positif, GES dominants",
+                "Négatif large",
+                "Nul exact",
+                "Solaire seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "GES l'emportent sur forçages négatifs partiels."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Variation flux solaire 11 ans :",
+              "options": [
+                "Forçage faible vs GES récents",
+                "Dominant sur CO₂",
+                "Nul",
+                "Infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TSI varie ~0,1 %, faible vs forçage GES."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Déforestation peut :",
+              "options": [
+                "Baisser albédo si sol sombre",
+                "Toujours augmenter albédo",
+                "Supprimer nuages",
+                "Éteindre Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Changement usage sol modifie réflexion."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Forçage s'exprime en :",
+              "options": ["W·m⁻²", "°C direct", "ppm seules", "J sans surface"],
+              "correctAnswers": [0],
+              "explanation": "Flux radiatif perturbé par unité de surface."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contrails avions :",
+              "options": [
+                "Modifient légèrement forçage",
+                "Arrêtent rotation",
+                "Suppriment ozone",
+                "Doublent constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traînées = nuages artificiels minces, effet radiatif faible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Atténuer forçage GES :",
+              "options": [
+                "Réduire émissions et renforcer puits",
+                "Augmenter CO₂",
+                "Supprimer mesures",
+                "Ignorer bilan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mitigation réduit déséquilibre radiatif."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Modèle énergétique simplifié",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Modèle une couche utilise :",
+              "options": [
+                "Bilan solaire absorbé",
+                "Émission IR sortante",
+                "Ignorer Stefan–Boltzmann",
+                "Neutrinos dominants"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Modèles simples équilibrent absorption solaire et émission IR."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "T équilibre sans atmosphère (albédo 0,3) ≈ :",
+              "options": ["255 K", "288 K", "373 K", "0 K"],
+              "correctAnswers": [0],
+              "explanation": "Calcul standard ~255 K (~–18 °C)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Couche atmosphère absorbante élève :",
+              "options": [
+                "Température de surface",
+                "Toujours baisse surface",
+                "Aucun effet",
+                "Supprime Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rétention IR augmente T surface en équilibre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "σT⁴ apparaît dans :",
+              "options": [
+                "Stefan–Boltzmann",
+                "Boyle",
+                "P = UI seule",
+                "Archimède"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux émis ∝ σT⁴ pour corps noir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Albédo augmente ⇒ T équilibre :",
+              "options": ["Diminue", "Augmente", "288 K fixe", "Infinie"],
+              "correctAnswers": [0],
+              "explanation": "Plus de réflexion ⇒ moins absorbé ⇒ plus froid."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Forçage +1 W·m⁻² en équilibre ⇒ :",
+              "options": [
+                "Léger réchauffement jusqu'à nouveau bilan",
+                "Refroidissement",
+                "Rien",
+                "Arrêt rotation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déséquilibre temporaire puis nouvelle T d'équilibre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sensibilité climatique relie :",
+              "options": [
+                "Forçage et ΔT",
+                "Pression et vent",
+                "Salinité et pH",
+                "Masse et volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ΔT pour un forçage donné (ex. CO₂ doublé)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Modèles 1D enseignent :",
+              "options": [
+                "Principes bilan radiatif",
+                "Météo horaire",
+                "Tectonique",
+                "Marées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pédagogie forçage–réponse radiatif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Terre intercepte disque πR² mais émet sur :",
+              "options": ["4πR²", "πR² seulement", "Surface lunaire", "Noyau"],
+              "correctAnswers": [0],
+              "explanation": "Facteur 4 entre flux moyen et flux intercepté."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Schéma bilan montre :",
+              "options": [
+                "Flux W·m⁻² par composante",
+                "Carte séismes",
+                "Salinité",
+                "Vent seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schémas énergétiques quantifient chaque terme."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Changement climatique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Preuves réchauffement lié au bilan :",
+              "options": [
+                "Températures globales en hausse",
+                "Océans qui se réchauffent",
+                "Disparition IR",
+                "Constante solaire ×10"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "T globale et chaleur océanique confirment gain d'énergie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Déséquilibre énergétique actuel ≈ :",
+              "options": [
+                "+0,5 à 1 W·m⁻²",
+                "0 exact",
+                "–100 W·m⁻²",
+                "+1000 W·m⁻²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus d'énergie entrante que sortante, ordre 0,5–1 W·m⁻²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "CO₂ préindustriel ~280 ppm, aujourd'hui > :",
+              "options": ["420 ppm", "280 ppm fixe", "0 ppm", "100 000 ppm"],
+              "correctAnswers": [0],
+              "explanation": "Concentration actuelle dépasse 420 ppm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Chaleur océanique profonde montre :",
+              "options": [
+                "Accumulation énergie système",
+                "Refroidissement total",
+                "Aucun lien bilan",
+                "Flux solaire nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Océan capte l'essentiel de l'excédent récent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Atténuer émissions GES vise :",
+              "options": [
+                "Limiter forçage radiatif",
+                "Albédo à 1",
+                "Éteindre Soleil",
+                "Supprimer IR"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduire rétention IR diminue déséquilibre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Fonte calottes et expansion thermique :",
+              "options": [
+                "Élèvent niveau marin",
+                "Réduisent masse Terre",
+                "Annulent marées",
+                "Suppriment océans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau des glaces et dilatation augmentent le niveau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Extrêmes et climat :",
+              "options": [
+                "Tendance modifie probabilités",
+                "Chaque événement causé seul par CO₂",
+                "Uniquement marée",
+                "Soleil éteint"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Changement climatique modifie probabilités, pas chaque événement isolé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Capture carbone vise :",
+              "options": [
+                "Réduire GES et forçage",
+                "Augmenter CO₂",
+                "Bloquer visible",
+                "Refroidir Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séquestration diminue concentration GES."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Accord de Paris : objectifs de :",
+              "options": [
+                "Limitation réchauffement",
+                "Suppression atmosphère",
+                "Augmentation CO₂",
+                "Interdiction mesures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectifs well below 2 °C."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Citoyenneté scientifique climat :",
+              "options": [
+                "Comprendre bilan et agir sur émissions",
+                "Nier mesures",
+                "Ignorer énergie",
+                "Confondre météo et climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Littératie repose sur bilan énergétique et actions."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Mesures du bilan",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Outils mesurant bilan radiatif :",
+              "options": [
+                "Radiomètres satellite CERES",
+                "Stations pyranométriques",
+                "Sismomètres",
+                "Chronomètres seuls"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Espace et sol quantifient flux entrant et sortant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Entrant moins sortant détecte :",
+              "options": [
+                "Déséquilibre énergétique",
+                "Magnitude sismique",
+                "Salinité",
+                "Pression locale seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écart = accumulation ou perte d'énergie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bilan global nécessite :",
+              "options": [
+                "Couverture spatiale étendue",
+                "Une seule ville",
+                "Nuit seule",
+                "Ignorer nuages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Satellites cartographient flux planétaires."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calibrations croisées visent :",
+              "options": [
+                "Réduire incertitudes",
+                "Augmenter forçage artificiel",
+                "Supprimer IR",
+                "Doubler albédo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Harmonisation améliore séries climatiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Télédétection albédo :",
+              "options": [
+                "Réflectance multi-spectrale",
+                "Sismique",
+                "Gravimétrie seule",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bandes solaires estiment réflexion surface."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Profils T atmosphère aident car :",
+              "options": [
+                "IR émis dépend structure T",
+                "Albédo n'existe pas",
+                "Soleil absent",
+                "Flux nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Atmosphère non isotherme modifie émission sortante."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bouées Argo mesurent surtout :",
+              "options": [
+                "Température océanique",
+                "Flux solaire direct",
+                "Albédo nuage",
+                "UV stratosphérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Océan = réservoir principal chaleur récente."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Stations sol au sol :",
+              "options": [
+                "Valident produits satellite",
+                "Remplacent climat entier",
+                "Mesurent noyau",
+                "Cartes sismiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ground truth pour irradiance."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Incertitude forçage GES :",
+              "options": [
+                "Faible vs signal net positif",
+                "Infinie donc inutile",
+                "Toujours négative",
+                "Nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "GES bien quantifiés ; incertitudes n'invalident pas tendance."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Données flux ouvertes favorisent :",
+              "options": [
+                "Recherche et éducation",
+                "Opacité",
+                "Négation",
+                "Suppression mesures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Données CERES/ERA5 soutiennent analyse publique."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse bilan radiatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Climat stable long terme requiert approximativement :",
+              "options": [
+                "Flux solaire absorbé ≈ flux IR sortant",
+                "GES retiennent part de l'IR tout en laissant entrer le visible",
+                "Émission IR nulle",
+                "Albédo égal à 1 partout"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Équilibre global absorbe ≈ émis ; l'atmosphère modifie le chemin de l'énergie sans créer de flux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Source énergie climat surface :",
+              "options": [
+                "Rayonnement solaire",
+                "Géothermie dominante",
+                "Marée seule",
+                "Radioactivité seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soleil pilote presque tout le bilan de surface."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Terre émet IR car :",
+              "options": [
+                "Température surface > 0 K",
+                "Absence de Soleil",
+                "Albédo nul",
+                "Pas d'atmosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout corps chaud émet rayonnement thermique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Renforcer GES anthropiques :",
+              "options": [
+                "Augmente rétention IR",
+                "Diminue toujours T",
+                "Supprime absorption solaire",
+                "Annule albédo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus d'opacité IR ⇒ moins d'énergie sortante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Albédo et GES agissent :",
+              "options": [
+                "Sur termes opposés du bilan (réflexion vs rétention)",
+                "Identiquement toujours",
+                "Sans effet",
+                "Sur gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Albédo modifie entrant ; GES modifient sortant IR."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comprendre bilan permet :",
+              "options": [
+                "Relier activités humaines et réchauffement",
+                "Nier observations",
+                "Supprimer satellites",
+                "Ignorer énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan énergétique explique forçages et réponses."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Océan dans bilan :",
+              "options": [
+                "Tampon stockant chaleur",
+                "N'échange pas énergie",
+                "Refroidit sans limite",
+                "Bloque solaire total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inertie océanique retarde et lisse réponses."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mesures satellites + sol :",
+              "options": [
+                "Contraintes communes sur bilan",
+                "Incompatibles",
+                "Inutiles",
+                "Remplacent physique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multiples observations convergent vers même déséquilibre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mitigation climatique cohérente avec :",
+              "options": [
+                "Réduire forçages radiatifs positifs",
+                "Augmenter CO₂ sans limite",
+                "Ignorer IR",
+                "Confondre météo et climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif : revenir vers équilibre radiatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Chapitre Soleil et bilan enseigne :",
+              "options": [
+                "Enchaînement flux solaire → absorption → IR → climat",
+                "Soleil sans lien climat",
+                "IR sans atmosphère",
+                "Énergie sans mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fil conducteur : source solaire, transferts, équilibre radiatif."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2703 @@
+{
+  "id": "3e-technologie-01",
+  "year": "3e",
+  "subject": "technologie",
+  "title": "Objets connectés",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Capteurs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Rôle d'un capteur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent un capteur dans un objet connecté ?",
+              "options": [
+                "Il mesure une grandeur physique",
+                "Il affiche toujours une vidéo HD",
+                "Il fournit une information mesurée",
+                "Il refroidit le processeur"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le capteur acquiert une information du monde réel, souvent sous forme de signal électrique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle grandeur un capteur de température mesure-t-il ?",
+              "options": [
+                "La température",
+                "La vitesse du vent",
+                "La pression atmosphérique",
+                "L'humidité uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un thermomètre ou une sonde mesure la température."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un capteur de luminosité mesure surtout :",
+              "options": ["L'éclairement", "Le poids", "Le son", "La force"],
+              "correctAnswers": [0],
+              "explanation": "La photorésistance ou la photodiode réagit à la lumière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La sortie typique d'un capteur numérique est :",
+              "options": [
+                "Une suite de bits",
+                "Une roue dentée",
+                "Un fluide",
+                "Un ressort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après conversion, l'information est numérique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un capteur ultrason mesure souvent :",
+              "options": [
+                "Une distance",
+                "Une couleur",
+                "Un goût",
+                "Une odeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le temps de vol de l'écho permet de calculer une distance."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans la chaîne d'information, le capteur est :",
+              "options": [
+                "En acquisition",
+                "En action",
+                "En alimentation mécanique",
+                "En stockage papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il capture l'information en entrée de chaîne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un accéléromètre détecte :",
+              "options": [
+                "Des variations de vitesse ou d'orientation",
+                "La température du four",
+                "Le débit d'eau",
+                "La couleur RGB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il mesure l'accélération du support."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un capteur analogique produit :",
+              "options": [
+                "Un signal continu",
+                "Un signal toujours binaire",
+                "Aucun signal",
+                "Uniquement de la lumière visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La grandeur varie de façon continue avant numérisation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Exemple d'objet connecté utilisant un capteur :",
+              "options": [
+                "Thermostat intelligent",
+                "Règle en bois",
+                "Crayon",
+                "Agenda papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le thermostat mesure la température ambiante."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans capteur, un objet connecté ne peut pas :",
+              "options": [
+                "Percevoir son environnement",
+                "Consommer de l'électricité",
+                "Avoir un boîtier",
+                "Avoir une marque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La perception de l'environnement passe par les capteurs."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Types de capteurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels capteurs sont courants en domotique ?",
+              "options": [
+                "Température",
+                "Présence",
+                "Masse d'un camion",
+                "Humidité"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Température, présence et humidité régulent confort et sécurité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un détecteur de mouvement PIR réagit à :",
+              "options": [
+                "L'infrarouge émis par les corps",
+                "La pression du sol",
+                "Le magnétisme terrestre seul",
+                "Les ondes radio FM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le PIR détecte les variations de chaleur infrarouge."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un capteur de porte magnétique est un :",
+              "options": [
+                "Capteur de contact",
+                "Capteur de pH",
+                "Capteur GPS",
+                "Capteur sonore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'aimant et le reed switch signalent ouverture ou fermeture."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un capteur de fumée détecte :",
+              "options": [
+                "Des particules ou de la chaleur anormale",
+                "La vitesse du vent",
+                "La pluie",
+                "La couleur des murs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il alerte en cas d'incendie ou de fumée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un capteur de pression mesure :",
+              "options": [
+                "Une force par unité de surface",
+                "Une distance en mètres",
+                "Une fréquence radio",
+                "Une couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pression est une force rapportée à une surface."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un encodeur rotatif mesure :",
+              "options": [
+                "Une position ou un angle",
+                "Une odeur",
+                "Un goût",
+                "Une masse moléculaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il suit la rotation d'un axe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un capteur de courant permet de :",
+              "options": [
+                "Surveiller la consommation électrique",
+                "Mesurer la température de l'eau",
+                "Compter les pas",
+                "Filmer en 4K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il transforme le courant en signal mesurable."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un capteur de qualité de l'air mesure souvent :",
+              "options": [
+                "Des COV ou du CO2",
+                "La vitesse d'un vélo",
+                "Le poids d'un colis",
+                "La tension mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il évalue la pollution ou le taux de CO2."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un capteur tactile détecte :",
+              "options": [
+                "Un contact ou une pression du doigt",
+                "Un champ magnétique lointain",
+                "Un satellite",
+                "Un tremblement majeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il réagit au toucher sur une surface."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir un capteur adapté dépend surtout de :",
+              "options": [
+                "La grandeur à mesurer",
+                "La couleur du boîtier",
+                "La marque du câble HDMI",
+                "La taille de l'écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut correspondre au phénomène physique observé."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Grandeurs et unités",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles paires grandeur–unité sont correctes ?",
+              "options": [
+                "Température en °C",
+                "Luminosité en lux",
+                "Distance en newton",
+                "Pression en pascal"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le newton mesure une force, le pascal une pression."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le lux mesure :",
+              "options": [
+                "L'éclairement",
+                "La masse",
+                "Le courant",
+                "La fréquence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est l'unité SI de l'éclairement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un capteur de humidité relative renvoie souvent :",
+              "options": [
+                "Un pourcentage",
+                "Des mètres par seconde",
+                "Des degrés uniquement",
+                "Des ohm sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'HR s'exprime en %."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La distance mesurée par ultrasons est en :",
+              "options": [
+                "Mètres ou centimètres",
+                "Décibels",
+                "Lux",
+                "Hertz seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On obtient une longueur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un capteur de niveau d'eau mesure :",
+              "options": [
+                "Une hauteur ou un remplissage",
+                "Une couleur",
+                "Un goût",
+                "Une vitesse angulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il indique le niveau dans un réservoir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le hertz (Hz) caractérise :",
+              "options": [
+                "Une fréquence",
+                "Une masse",
+                "Une température",
+                "Une pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fréquence = cycles par seconde."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un capteur de courant mesure une grandeur :",
+              "options": [
+                "Électrique",
+                "Optique seule",
+                "Chimique gustative",
+                "Géologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le courant est en ampères."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Convertir une grandeur en signal exploitable s'appelle :",
+              "options": ["Transduction", "Soudure", "Peinture", "Découpe"],
+              "correctAnswers": [0],
+              "explanation": "Le capteur est un transducteur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une valeur numérique 1023 sur 10 bits signifie :",
+              "options": [
+                "Une mesure discrétisée",
+                "Une panne réseau",
+                "Un mot de passe",
+                "Une adresse IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conversion numérique produit un entier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparer deux mesures exige la même :",
+              "options": [
+                "Unité ou une conversion cohérente",
+                "Couleur de fil",
+                "Marque de box",
+                "Heure sans date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne compare pas °C et lux directement."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Chaîne d'information",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels blocs appartiennent à la chaîne d'information ?",
+              "options": ["Acquérir", "Traiter", "Transmettre", "Souder"],
+              "correctAnswers": [0, 1],
+              "explanation": "Acquérir et traiter font partie de la chaîne d'information."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Après le capteur, on trouve souvent :",
+              "options": [
+                "Un traitement du signal",
+                "Un moteur seul",
+                "Une vis sans tête",
+                "Un agrafeuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le microcontrôleur traite la mesure."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La chaîne d'information se distingue de la chaîne d'énergie car elle porte :",
+              "options": [
+                "Des informations",
+                "Uniquement du courant fort",
+                "De l'eau",
+                "Du sable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie alimente, l'information décide."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un écran affichant la tempérure est en :",
+              "options": [
+                "Restitution d'information",
+                "Acquisition pure",
+                "Stockage mécanique",
+                "Actionneur linéaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'utilisateur voit le résultat."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Filtrer un signal bruité relève :",
+              "options": [
+                "Du traitement",
+                "De la soudure seule",
+                "Du peinture",
+                "Du transport seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Algorithmes ou circuits filtrent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Stocker une mesure dans une mémoire flash est :",
+              "options": [
+                "Mémoriser l'information",
+                "Actionner un relais",
+                "Couper l'alimentation",
+                "Souffler de l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La donnée est enregistrée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Envoyer une mesure au cloud passe par :",
+              "options": [
+                "La transmission",
+                "La decoupe laser",
+                "Le moulage",
+                "Le trempage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wi-Fi ou Ethernet transmettent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un capteur + carte électronique forment :",
+              "options": [
+                "Une partie de l'objet connecté",
+                "Un réseau WAN seul",
+                "Un satellite",
+                "Un marteau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est le cœur de perception."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une alarme déclenchée par seuil de température utilise :",
+              "options": [
+                "Traitement + restitution",
+                "Uniquement peinture",
+                "Aucun capteur",
+                "Uniquement papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparaison au seuil puis alerte."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Modéliser la chaîne d'information aide à :",
+              "options": [
+                "Comprendre le fonctionnement global",
+                "Ignorer les capteurs",
+                "Supprimer le réseau",
+                "Oublier la sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un outil d'analyse en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Numérisation et échantillonnage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments interviennent dans la numérisation ?",
+              "options": [
+                "Convertisseur analogique-numérique",
+                "Échantillonnage périodique",
+                "Roue à aubes",
+                "Martelage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'ADC et l'échantillonnage produisent des valeurs numériques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un CAN (ADC) transforme :",
+              "options": [
+                "Analogique → numérique",
+                "Numérique → mécanique",
+                "Lumière → son",
+                "Eau → gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conversion pour le microcontrôleur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Plus de bits sur un CAN donne en général :",
+              "options": [
+                "Une meilleure précision",
+                "Une panne réseau",
+                "Une adresse MAC",
+                "Un câble HDMI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résolution augmentée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Échantillonner trop lentement peut :",
+              "options": [
+                "Déformer le signal mesuré",
+                "Augmenter la précision infinie",
+                "Créer du Wi-Fi",
+                "Souder l'acier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théorème de Nyquist en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un capteur binaire renvoie :",
+              "options": [
+                "Deux états (0/1)",
+                "Toujours 512 valeurs",
+                "Une tension aléatoire continue",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : fin de course ou contact."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La résolution d'un capteur indique :",
+              "options": [
+                "Le plus petit écart détectable",
+                "La couleur du boîtier",
+                "Le prix",
+                "La marque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Précision de la mesure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calibrer un capteur sert à :",
+              "options": [
+                "Ajuster la mesure à une référence",
+                "Peindre le boîtier",
+                "Couper le fil",
+                "Changer l'IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduire l'erreur systématique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un bruit de mesure est :",
+              "options": [
+                "Une variation parasite",
+                "Un câble réseau",
+                "Un routeur",
+                "Un moteur seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il fausse la lecture."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Moyenner plusieurs mesures permet de :",
+              "options": [
+                "Réduire le bruit",
+                "Augmenter le bruit",
+                "Couper le Wi-Fi",
+                "Ouvrir un port"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtrage logiciel simple."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une valeur capteur envoyée à une appli mobile est :",
+              "options": [
+                "Numérique",
+                "Toujours analogique sur le téléphone",
+                "Toujours papier",
+                "Toujours mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle a été convertie en données."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Capteurs et actionneurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels composants sont des actionneurs ?",
+              "options": [
+                "Moteur électrique",
+                "Voyant LED",
+                "Capteur ultrason",
+                "Relais"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Moteur et LED agissent sur le monde réel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un relais commande souvent :",
+              "options": [
+                "Un circuit de puissance",
+                "Un capteur de lumière",
+                "Une mesure de pH",
+                "Un GPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il commute une charge."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Thermostat : capteur de température + actionneur sur :",
+              "options": [
+                "Chauffage ou climatisation",
+                "Écran seulement",
+                "Antenne parabolique",
+                "Imprimante papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boucle régulation confort."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un servomoteur oriente :",
+              "options": [
+                "Une pièce mécanique",
+                "Uniquement la lumière du soleil",
+                "Le DNS",
+                "Le ciel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Actionneur rotatif positionné."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La chaîne d'énergie alimente :",
+              "options": [
+                "Les actionneurs",
+                "Uniquement les capteurs sans énergie",
+                "Le vide",
+                "Le papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moteurs, résistances chauffantes, etc."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une vanne motorisée est :",
+              "options": [
+                "Un actionneur",
+                "Un capteur de goût",
+                "Un câble HDMI",
+                "Un nuage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle modifie un débit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un buzzer émet :",
+              "options": [
+                "Un son",
+                "Une température",
+                "Une adresse IP",
+                "Une odeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Restitution sonore d'alerte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Capteur + microcontrôleur + actionneur = :",
+              "options": [
+                "Boucle de commande simple",
+                "Réseau WAN obligatoire",
+                "Satellite",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Automatisme local possible."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un éclairage automatique détecte présence puis :",
+              "options": [
+                "Allume les lampes",
+                "Mesure le vent seulement",
+                "Coupe Internet",
+                "Imprime"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Action sur l'éclairage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Distinguer capteur et actionneur évite :",
+              "options": [
+                "Confondre mesure et action",
+                "Brancher le réseau",
+                "Lire une unité",
+                "Utiliser un câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erreur fréquente en schéma fonctionnel."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Objets connectés du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels objets sont des objets connectés ?",
+              "options": [
+                "Montre connectée",
+                "Enceinte intelligente",
+                "Règle graduée seule",
+                "Thermostat communicant"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Montre et thermostat échangent des données sur un réseau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une montre connectée mesure souvent :",
+              "options": [
+                "Pouls ou activité",
+                "La masse de la Terre",
+                "Le salaire",
+                "La couleur du ciel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capteurs biométriques intégrés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un capteur de fuite d'eau alerte via :",
+              "options": [
+                "Notification ou sirène",
+                "Uniquement papier",
+                "Un marteau",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Domotique sécurité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une sonde météo domestique envoie :",
+              "options": [
+                "Température, HR, pression",
+                "Uniquement des vidéos 8K",
+                "Des pièces de monnaie",
+                "Du carburant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capteurs environnement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un robot aspirateur utilise des capteurs :",
+              "options": [
+                "Distance, chute, parfois caméra",
+                "Uniquement goût",
+                "Uniquement odeur",
+                "Aucun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Navigation et sécurité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un compteur Linky communique :",
+              "options": [
+                "La consommation électrique",
+                "La météo lunaire",
+                "Le stock boursier",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objet connecté énergie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une caméra IP est connectée car :",
+              "options": [
+                "Elle transmet des images sur le réseau",
+                "Elle est en bois",
+                "Elle n'a pas de capteur",
+                "Elle est toujours hors ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capteur image + transmission."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un capteur de qualité de l'air intérieur aide à :",
+              "options": [
+                "Aérer au bon moment",
+                "Couper l'électricité nationale",
+                "Peindre les murs",
+                "Souder"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Santé et confort."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La box Internet relie les objets au :",
+              "options": [
+                "Réseau local puis Internet",
+                "Soleil",
+                "Océan",
+                "Papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passerelle domestique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La vie privée sur objets connectés demande :",
+              "options": [
+                "Des mots de passe et mises à jour",
+                "De tout publier",
+                "D'ouvrir tous les ports",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité numérique domestique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Fiabilité et sécurité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles bonnes pratiques améliorent la fiabilité d'un capteur ?",
+              "options": [
+                "Calibration périodique",
+                "Placement adapté",
+                "Cacher le capteur dans un métal blindé sans besoin",
+                "Ignorer la poussière sur une sonde"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Calibration et emplacement limitent les erreurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un capteur de gaz domestique doit :",
+              "options": [
+                "Déclencher une alerte fiable",
+                "Rester silencieux toujours",
+                "Mesurer la couleur",
+                "Remplacer la ventilation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité des personnes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La redondance (deux capteurs) sert à :",
+              "options": [
+                "Fiabiliser une mesure critique",
+                "Doubler le bruit",
+                "Couper le Wi-Fi",
+                "Peindre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparaison ou secours."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un capteur exposé au soleil direct peut :",
+              "options": [
+                "Dériver la mesure de température",
+                "Devenir plus précis sans limite",
+                "Créer du fibre optique",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Environnement influence la mesure."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Étanchéité d'un capteur extérieur protège :",
+              "options": [
+                "Contre l'eau et la poussière",
+                "Contre les maths",
+                "Contre le DNS",
+                "Contre les livres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indice IP en produit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Maintenance : remplacer une pile de capteur évite :",
+              "options": [
+                "Une panne silencieuse",
+                "Une amélioration réseau",
+                "Une adresse IP",
+                "Un câble coaxial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alimentation faible = mesures fausses."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un défaut capteur peut entraîner :",
+              "options": [
+                "Une mauvaise décision automatique",
+                "Une meilleure météo",
+                "Plus de lumière solaire",
+                "Rien jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chaîne suit la mesure erronée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Normes CE sur un produit électronique visent :",
+              "options": [
+                "Sécurité et compatibilité",
+                "Couleur imposée",
+                "Prix fixe",
+                "Interdiction Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conformité européenne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Court-circuit sur un capteur mal câblé :",
+              "options": [
+                "Peut endommager la carte",
+                "Améliore la précision",
+                "Crée du Wi-Fi gratuit",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respecter le schéma électrique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tester un capteur en classe permet de :",
+              "options": [
+                "Vérifier la cohérence des mesures",
+                "Ignorer les unités",
+                "Supprimer le cahier des charges",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Validation expérimentale."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Prototypage et programmation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles cartes sont utilisées en prototypage d'objets connectés ?",
+              "options": [
+                "Arduino",
+                "Raspberry Pi",
+                "Planche à pain seule",
+                "Feuille A4"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cartes programmables courantes au collège."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Lire une valeur capteur en code correspond à :",
+              "options": [
+                "Acquisition logicielle",
+                "Soudure seule",
+                "Peinture",
+                "Découpe bois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fonction analogRead/digitalRead par ex."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un seuil dans le programme sert à :",
+              "options": [
+                "Déclencher une action",
+                "Changer la couleur du ciel",
+                "Modifier la gravité",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparaison mesure / consigne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un bus I2C permet de :",
+              "options": [
+                "Relier plusieurs capteurs avec peu de fils",
+                "Couper Internet",
+                "Souder l'acier",
+                "Peindre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Communication série entre composants."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Simuler un capteur en logiciel aide à :",
+              "options": [
+                "Tester sans matériel",
+                "Casser le réseau",
+                "Supprimer l'électricité",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Développement par étapes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un délai (delay) trop long dans une boucle :",
+              "options": [
+                "Ralentit la réactivité",
+                "Améliore toujours la mesure",
+                "Crée du Wi-Fi",
+                "Soude"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Temps de réponse de l'automatisme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Documenter le câblage d'un capteur sert à :",
+              "options": [
+                "Reproduire et dépanner",
+                "Effacer le code",
+                "Changer l'IP seule",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma et broches."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Alimenter un capteur en 3,3 V au lieu de 5 V sans compatibilité :",
+              "options": [
+                "Peut l'endommager ou fausser la mesure",
+                "Améliore toujours",
+                "Crée Ethernet",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respecter la fiche technique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une bibliothèque capteur fournit :",
+              "options": [
+                "Des fonctions prêtes à l'emploi",
+                "Un routeur",
+                "Une box TV",
+                "Un marteau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simplifie la programmation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Prototyper avant produit final permet :",
+              "options": [
+                "Corriger les erreurs tôt",
+                "Ignorer les tests",
+                "Supprimer les capteurs",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Démarche de projet technologique."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse capteurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour un projet d'objet connecté, quels éléments sont indispensables ?",
+              "options": [
+                "Capteur adapté",
+                "Traitement des données",
+                "Peinture seule",
+                "Transmission si distant"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mesure et traitement sont le minimum; la transmission est requise si l'objet communique à distance."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La chaîne capteur → microcontrôleur → serveur illustre :",
+              "options": [
+                "Information puis transmission",
+                "Uniquement mécanique",
+                "Uniquement peinture",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Architecture IoT typique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Choisir un capteur commence par :",
+              "options": [
+                "Identifier la grandeur",
+                "Choisir la couleur du site web",
+                "Tirer au sort",
+                "Ignorer le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cahier des charges fonctionnel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un objet connecté économe coupe parfois :",
+              "options": [
+                "La mesure entre deux envois",
+                "La gravité",
+                "Le soleil",
+                "Les unités"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Veille et autonomie pile."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Interopérabilité signifie :",
+              "options": [
+                "Des objets de marques différentes peuvent coopérer",
+                "Un seul fabricant obligatoire",
+                "Pas de réseau",
+                "Papier seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Standards et protocoles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Impact écologique : capteur bien choisi permet :",
+              "options": [
+                "D'éviter le gaspillage énergétique",
+                "De tout jeter",
+                "De couper le tri",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régulation fine chauffage/éclairage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En 3e technologie, modéliser un capteur sur schéma :",
+              "options": [
+                "Clarifie les échanges d'information",
+                "Remplace la sécurité",
+                "Supprime la mesure",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Représentation SYSML simplifiée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Erreur fréquente : confondre lux et lumen car :",
+              "options": [
+                "Ce ne sont pas la même grandeur",
+                "Ce sont des adresses IP",
+                "Ce sont des ports",
+                "Identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lux = éclairement reçu, lumen = flux émis."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un projet capteur évalue aussi :",
+              "options": [
+                "Précision et coût",
+                "Couleur des chaussures",
+                "Signe astrologique",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compromis technique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan : les capteurs sont :",
+              "options": [
+                "Les yeux de l'objet connecté",
+                "Inutiles",
+                "Toujours mécaniques seuls",
+                "Hors réseau obligatoirement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils rendent l'environnement mesurable."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Réseaux locaux",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Réseau local (LAN)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments forment un réseau local domestique ?",
+              "options": [
+                "Box ou routeur",
+                "Ordinateur ou smartphone",
+                "Satellite météo seul",
+                "Câble ou Wi-Fi"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "La box route les flux; les liens sont filaires ou radio Wi-Fi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "LAN signifie :",
+              "options": [
+                "Local Area Network",
+                "Large Audio Network",
+                "Light And Night",
+                "Link All Nodes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseau local limité à une maison ou un bâtiment."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un réseau local relie des appareils :",
+              "options": [
+                "Dans une même zone géographique proche",
+                "Sur toute la planète sans Internet",
+                "Uniquement par courrier",
+                "Sans adresse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maison, école, entreprise."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La box Internet fait aussi office de :",
+              "options": [
+                "Routeur et point d'accès Wi-Fi",
+                "Capteur de température seul",
+                "Imprimante 3D",
+                "Marteau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passerelle vers le FAI."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un objet connecté sur le LAN peut :",
+              "options": [
+                "Échanger des données avec d'autres appareils locaux",
+                "Remplacer l'électricité",
+                "Souder le cuivre",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Communication interne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le switch (commutateur) sert à :",
+              "options": [
+                "Relier plusieurs câbles Ethernet",
+                "Mesurer le vent",
+                "Couper le gaz",
+                "Peindre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interconnexion filaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un réseau filaire Ethernet utilise souvent :",
+              "options": [
+                "Câble RJ45",
+                "Câble coaxial TV seul",
+                "Ficelle",
+                "Papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Standard LAN filaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le Wi-Fi est :",
+              "options": [
+                "Un réseau local sans fil",
+                "Un capteur de pluie",
+                "Un moteur",
+                "Un satellite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "IEEE 802.11 en pratique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "SSID correspond au :",
+              "options": [
+                "Nom du réseau Wi-Fi visible",
+                "Mot de passe obligatoirement",
+                "Adresse IP",
+                "Débit fibre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identifiant radio du réseau."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans réseau local, les objets connectés domestiques :",
+              "options": [
+                "Ne peuvent pas communiquer entre eux facilement",
+                "Fonctionnent toujours avec le cloud seul sans lien",
+                "Devienent mécaniques",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le LAN est la base domotique."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Adresses IP",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur IPv4 sont vraies ?",
+              "options": [
+                "Format quatre octets séparés par des points",
+                "Exemple privé : 192.168.x.x",
+                "Toujours illimité en adresses publiques",
+                "Identique au nom de domaine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "IPv4 utilise 4 nombres; certaines plages sont privées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une adresse IP identifie :",
+              "options": [
+                "Une interface réseau sur un réseau",
+                "La couleur d'un câble",
+                "Le poids d'une box",
+                "Un capteur seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adressage logique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "192.168.1.1 est souvent :",
+              "options": [
+                "L'adresse de la box",
+                "Un site public Google",
+                "Une adresse MAC",
+                "Un port USB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passerelle par défaut domestique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le masque de sous-réseau sert à :",
+              "options": [
+                "Distinguer partie réseau et hôte",
+                "Peindre le routeur",
+                "Mesurer la température",
+                "Couper le Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. 255.255.255.0 en classique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "DHCP attribue :",
+              "options": [
+                "Des adresses IP automatiquement",
+                "Des marteaux",
+                "Des capteurs",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évite la saisie manuelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Adresse IP privée :",
+              "options": [
+                "Non routée directement sur Internet",
+                "Toujours publique",
+                "Toujours identique mondiale",
+                "Un mot de passe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "NAT sur la box."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "IPv6 a pour intérêt :",
+              "options": [
+                "Plus d'adresses disponibles",
+                "Supprimer le Wi-Fi",
+                "Remplacer les capteurs",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Format plus long, déploiement progressif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Conflit d'adresse IP provoque :",
+              "options": [
+                "Pannes de communication",
+                "Plus de débit",
+                "Meilleur signal",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux appareils ne doivent pas partager la même IP."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ping une adresse teste :",
+              "options": [
+                "L'atteignabilité réseau",
+                "La couleur LED",
+                "Le goût de l'eau",
+                "Le vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ICMP echo request."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Passerelle par défaut envoie vers :",
+              "options": [
+                "Un autre réseau (souvent Internet)",
+                "Un capteur ultrason",
+                "Une imprimante seule",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sortie du LAN."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Adresse MAC et DHCP",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernent la couche liaison ?",
+              "options": [
+                "Adresse MAC unique par interface",
+                "DHCP peut fournir IP et DNS",
+                "MAC remplace toujours le Wi-Fi",
+                "MAC est un site web"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "MAC identifie la carte; DHCP configure l'hôte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Adresse MAC :",
+              "options": [
+                "Identifiant matériel de la carte réseau",
+                "Mot de passe Wi-Fi",
+                "Nom de domaine",
+                "Port HTTP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "48 bits en hexadécimal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ARP associe :",
+              "options": [
+                "IP et MAC sur le LAN",
+                "Température et humidité",
+                "Son et lumière",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résolution adresse locale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Durée de bail DHCP :",
+              "options": [
+                "Temps de validité d'une IP louée",
+                "Durée de vie d'un capteur",
+                "Heure de cours",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renouvellement périodique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réserver une IP DHCP pour une imprimante :",
+              "options": [
+                "Stabilise l'adresse de l'appareil",
+                "Coupe Internet",
+                "Change la MAC",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile pour les services locaux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "DNS fourni par DHCP permet :",
+              "options": [
+                "Résoudre les noms de domaine",
+                "Souder",
+                "Mesurer lux",
+                "Peindre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traduction nom → IP."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Filtrage MAC sur box :",
+              "options": [
+                "Autorise ou bloque des appareils par MAC",
+                "Mesure la pluie",
+                "Remplace le capteur",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrôle d'accès Wi-Fi possible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Carte Wi-Fi et Ethernet d'un PC ont :",
+              "options": [
+                "Des MAC différentes",
+                "Toujours la même MAC",
+                "Pas d'adresse",
+                "Uniquement IP publique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une MAC par interface."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Adresse MAC visible sur étiquette box :",
+              "options": [
+                "Parfois pour support technique",
+                "Pour cuisine",
+                "Pour sport",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identification matérielle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans DHCP, il faudrait :",
+              "options": [
+                "Configurer IP manuellement",
+                "Supprimer le LAN",
+                "Enlever les câbles",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Configuration statique possible."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Wi-Fi et sécurité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles pratiques sécurisent un Wi-Fi domestique ?",
+              "options": [
+                "Utiliser WPA2 ou WPA3",
+                "Choisir un mot de passe long",
+                "Laisser WEP activé",
+                "Désactiver le chiffrement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chiffrement moderne et mot de passe robuste protègent le LAN."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "WEP est :",
+              "options": [
+                "Obsolète et faible",
+                "Le plus sûr",
+                "Un capteur",
+                "Un câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne plus l'utiliser."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Mot de passe Wi-Fi fort :",
+              "options": [
+                "Long et complexe",
+                "1234",
+                "Identique au SSID seul",
+                "Vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résiste aux attaques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Invité Wi-Fi séparé sert à :",
+              "options": [
+                "Isoler les visiteurs du LAN principal",
+                "Augmenter le bruit",
+                "Couper la fibre",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité domestique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Bande 2,4 GHz :",
+              "options": [
+                "Portée plus longue, débit modéré",
+                "Toujours plus rapide que 5 GHz",
+                "Interdit en France",
+                "Capteur seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compromis portée/débit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bande 5 GHz :",
+              "options": [
+                "Débit souvent plus élevé, portée plus courte",
+                "Utilise le cuivre seul",
+                "Remplace Ethernet obligatoire",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins encombré que 2,4 GHz."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Cacher le SSID :",
+              "options": [
+                "N'empêche pas vraiment un accès déterminé",
+                "Rend le réseau inviolable",
+                "Coupe Internet",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité par obscurité insuffisante."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mise à jour firmware box :",
+              "options": [
+                "Corrige des failles",
+                "Inutile",
+                "Casse toujours le Wi-Fi",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maintenance sécurité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "WPS vulnérable :",
+              "options": [
+                "Mieux vaut le désactiver",
+                "Toujours obligatoire",
+                "Remplace WPA3",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pin WPS attaquable."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Chiffrement protège :",
+              "options": [
+                "La confidentialité des trames Wi-Fi",
+                "La température",
+                "Le poids",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Données radio illisibles sans clé."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Protocoles et ports",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels protocoles circulent sur un LAN connecté à Internet ?",
+              "options": [
+                "HTTP/HTTPS",
+                "MQTT parfois en domotique",
+                "SMTP pour courriel",
+                "Protocole papier postal"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Web et IoT utilisent HTTP/S ou MQTT; le courrier n'est pas un protocole LAN objet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "HTTP sert à :",
+              "options": [
+                "Transférer des pages web",
+                "Mesurer lux",
+                "Souder",
+                "Peindre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protocole application web."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "HTTPS ajoute :",
+              "options": [
+                "Chiffrement TLS",
+                "Plus de bruit radio",
+                "Un capteur",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurise les échanges web."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Port 80 par défaut :",
+              "options": ["HTTP", "HTTPS", "FTP seul", "DNS"],
+              "correctAnswers": [0],
+              "explanation": "Convention historique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Port 443 :",
+              "options": ["HTTPS", "HTTP clair", "Imprimante seule", "Rien"],
+              "correctAnswers": [0],
+              "explanation": "Web sécurisé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "MQTT est léger pour :",
+              "options": [
+                "Objets connectés",
+                "Imprimer du bois",
+                "Couper le gaz",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Publish/subscribe IoT."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "TCP garantit :",
+              "options": [
+                "Livraison ordonnée des données",
+                "Aucune perte jamais sans réseau",
+                "Mesure température",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Connexion fiable."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "UDP est :",
+              "options": [
+                "Plus rapide mais sans garantie",
+                "Toujours chiffré",
+                "Un capteur",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Streaming ou découverte locale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "DNS utilise le port :",
+              "options": ["53", "80", "443", "22 toujours"],
+              "correctAnswers": [0],
+              "explanation": "Résolution de noms."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "API REST sur objet connecté :",
+              "options": [
+                "Échange JSON via HTTP",
+                "Remplace l'électricité",
+                "Coupe le LAN",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrôle à distance standard."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "NAT et pare-feu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels rôles assure la box domestique ?",
+              "options": [
+                "NAT vers Internet",
+                "Pare-feu basique",
+                "Capteur de fumée intégré obligatoire",
+                "Remplacement de tous les capteurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "NAT partage une IP publique; filtrage entrant possible."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "NAT signifie :",
+              "options": [
+                "Traduction d'adresses",
+                "Nouveau capteur analogique",
+                "Rien",
+                "Peinture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Network Address Translation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "NAT permet à plusieurs appareils :",
+              "options": [
+                "Partager une IP publique",
+                "Avoir chacun une IP publique v4 dédiée toujours",
+                "Sans réseau",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Économie d'adresses."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ouverture de port (port forwarding) :",
+              "options": [
+                "Expose un service vers Internet",
+                "Toujours sans risque",
+                "Coupe le Wi-Fi",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À configurer avec prudence."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pare-feu filtre :",
+              "options": [
+                "Trafic entrant/sortant",
+                "Couleur des murs",
+                "Température",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique de sécurité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "UPnP ouvre parfois des ports :",
+              "options": [
+                "Automatiquement pour des applis",
+                "Toujours en sécurité maximale",
+                "Pour capteurs analogiques",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peut être un risque si mal géré."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "DMZ sur box :",
+              "options": [
+                "Isole un appareil exposé",
+                "Mesure humidité",
+                "Remplace DHCP",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zone démilitarisée réseau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Trafic local reste en général :",
+              "options": [
+                "Dans le LAN sans sortir",
+                "Toujours chiffré WPA3",
+                "Sur papier",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Communication interne directe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "VPN vers maison :",
+              "options": [
+                "Accès distant sécurisé au LAN",
+                "Coupe les capteurs",
+                "Remplace Wi-Fi",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tunnel chiffré."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bonne pratique :",
+              "options": [
+                "Désactiver services inutiles sur box",
+                "Ouvrir tous les ports",
+                "Partager mot de passe invité public",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surface d'attaque réduite."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Débit, latence et QoS",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes décrivent la performance réseau ?",
+              "options": [
+                "Débit (bitrate)",
+                "Latence",
+                "Couleur du câble",
+                "Odeur du plastique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Débit = quantité par seconde; latence = délai."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Débit se mesure souvent en :",
+              "options": ["Mbit/s", "Lux", "Newton", "Pascal seul"],
+              "correctAnswers": [0],
+              "explanation": "Mégabits par seconde."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Latence élevée affecte :",
+              "options": [
+                "Jeux en ligne et visio",
+                "Couleur du boîtier",
+                "Masse volumique",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réactivité ressentie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ping élevé signifie :",
+              "options": [
+                "Latence importante",
+                "Câble plus coloré",
+                "Capteur défaillant",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Temps aller-retour."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "QoS priorise :",
+              "options": [
+                "Certains flux (visio, jeu)",
+                "La poussière",
+                "Le papier",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quality of Service."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Wi-Fi saturé :",
+              "options": [
+                "Réduit le débit effectif",
+                "Augmente toujours la portée",
+                "Remplace fibre",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interférences ou nombre de clients."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Câble Ethernet Cat 6 :",
+              "options": [
+                "Supporte débits élevés",
+                "Mesure température",
+                "Est un capteur",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Standard de câblage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Bottleneck (goulot) :",
+              "options": [
+                "Composant le plus limitant",
+                "Toujours le Wi-Fi",
+                "Toujours le capteur",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. ligne ADSL vs fibre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Test speedtest mesure :",
+              "options": [
+                "Débit montant/descendant",
+                "Humidité",
+                "CO2",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diagnostic utilisateur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objet IoT envoie peu de données :",
+              "options": [
+                "Débit faible suffit",
+                "Nécessite toujours 10 Gbit/s",
+                "Sans réseau",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trafic léger typique capteurs."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Découverte et configuration",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels outils diagnostiquent un LAN ?",
+              "options": [
+                "ipconfig / ifconfig",
+                "Ping",
+                "Martelage",
+                "Peinture"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Commandes d'adressage et test reachability."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Interface web 192.168.x.x sert à :",
+              "options": [
+                "Configurer la box",
+                "Couper l'électricité",
+                "Souder",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Administration routeur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Scanner réseau liste :",
+              "options": [
+                "Appareils connectés",
+                "Planètes",
+                "Couleurs",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inventaire LAN."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Câble croisé historique :",
+              "options": [
+                "Reliait deux PC sans switch",
+                "Mesurait lux",
+                "Remplaçait Wi-Fi",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aujourd'hui auto-MDIX fréquent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Redémarrer la box :",
+              "options": [
+                "Résout parfois des blocages",
+                "Garantit piratage",
+                "Supprime DHCP",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Premier dépannage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Mot de passe admin box :",
+              "options": [
+                "Doit être changé à l'installation",
+                "Laissé usine toujours",
+                "Affiché sur réseau public",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité administration."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Double NAT arrive si :",
+              "options": [
+                "Box derrière un autre routeur",
+                "Un seul switch",
+                "Capteur seul",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peut compliquer port forwarding."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "mDNS/Bonjour sert à :",
+              "options": [
+                "Découvrir services locaux",
+                "Mesurer pression",
+                "Couper gaz",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Imprimantes, enceintes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Plan adressage documenté :",
+              "options": [
+                "Facilite maintenance",
+                "Inutile",
+                "Interdit",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "IP réservées notées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Câble Ethernet max longueur pratique segment :",
+              "options": ["100 m environ", "1 km sans limite", "1 cm", "Rien"],
+              "correctAnswers": [0],
+              "explanation": "Norme cuivre Ethernet."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "IoT et cloud sur LAN",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels schémas IoT domestiques existent ?",
+              "options": [
+                "Local pur (LAN seul)",
+                "Passerelle vers cloud",
+                "Sans aucune communication",
+                "Uniquement papier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Automatisme local ou relais cloud."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Hub domotique centralise :",
+              "options": [
+                "Protocoles divers (Zigbee, Z-Wave…)",
+                "Uniquement papier",
+                "Rien",
+                "Sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passerelle objets ↔ IP."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Zigbee et Wi-Fi :",
+              "options": [
+                "Réseaux différents; hub fait le lien",
+                "Identiques toujours",
+                "Remplacent capteurs",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "IoT radio basse consommation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Cloud permet :",
+              "options": [
+                "Contrôle à distance via Internet",
+                "Supprimer le LAN",
+                "Remplacer capteurs",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appli mobile hors maison."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Fonctionnement local si Internet coupé :",
+              "options": [
+                "Dépend du produit",
+                "Toujours impossible",
+                "Toujours identique cloud",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains hubs gardent scénarios locaux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "MQTT broker peut être :",
+              "options": [
+                "Sur Raspberry Pi local",
+                "Uniquement sur Lune",
+                "Un capteur seul",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Home Assistant etc."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "TLS vers cloud protège :",
+              "options": [
+                "Données en transit",
+                "Couleur mur",
+                "Température capteur",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chiffrement Internet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mise à jour OTA :",
+              "options": [
+                "Firmware objet via réseau",
+                "Peinture manuelle",
+                "Sans électricité",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité correctifs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Edge computing :",
+              "options": [
+                "Traitement local avant cloud",
+                "Sans réseau",
+                "Papier seul",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduit latence et trafic."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choix cloud vs local :",
+              "options": [
+                "Compromis vie privée, coût, autonomie",
+                "Toujours cloud obligatoire",
+                "Jamais LAN",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Argumentation 3e."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse réseaux locaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour un objet connecté fiable à la maison, il faut :",
+              "options": [
+                "LAN stable",
+                "Sécurité Wi-Fi",
+                "Ignorer les mises à jour",
+                "Mot de passe faible"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Réseau sain et Wi-Fi protégé sont essentiels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Capteur + Wi-Fi + serveur local = :",
+              "options": [
+                "Chaîne information + réseau",
+                "Uniquement mécanique",
+                "Sans données",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Architecture domestique type."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Adresse IP privée + NAT :",
+              "options": [
+                "Accès Internet partagé",
+                "Capteur analogique",
+                "Rien",
+                "Peinture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma box classique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Segmenter réseau invité :",
+              "options": [
+                "Limite accès aux objets sensibles",
+                "Coupe capteurs",
+                "Remplace DHCP",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bonne pratique sécurité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dépannage : vérifier d'abord :",
+              "options": [
+                "Link LED, IP, ping passerelle",
+                "Couleur chaussures",
+                "Astrologie",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode technologique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Objets connectés augmentent :",
+              "options": [
+                "Surface d'attaque réseau",
+                "Toujours sécurité sans config",
+                "Rien",
+                "Papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mises à jour et mots de passe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ethernet vs Wi-Fi pour caméra fixe :",
+              "options": [
+                "Ethernet plus stable",
+                "Wi-Fi toujours meilleur",
+                "Identiques",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débit et latence constants."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Projet 3e : documenter réseau inclut :",
+              "options": [
+                "SSID, IP, schéma",
+                "Rien",
+                "Secret partagé publiquement",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Communication technique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "LAN + capteurs = base de :",
+              "options": [
+                "Maison intelligente",
+                "Satellite seul",
+                "Rien",
+                "Papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Domotique scolaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan module : objets connectés reposent sur :",
+              "options": [
+                "Capteurs et réseau local",
+                "Uniquement peinture",
+                "Sans électricité",
+                "Sans données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux unités du chapitre."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

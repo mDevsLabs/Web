@@ -1,0 +1,2708 @@
+{
+  "id": "5e-physique-chimie-03",
+  "year": "5e",
+  "subject": "physique-chimie",
+  "title": "L'énergie",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Sources et formes",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce que l'énergie ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels énoncés décrivent l'énergie en physique-chimie ?",
+              "options": [
+                "Capacité à produire un effet (mouvement, chaleur, lumière)",
+                "Grandeur mesurable en joules (J)",
+                "Couleur d'un objet",
+                "Nombre de pages d'un cahier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'énergie se mesure en joules et permet des transformations."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'unité SI de l'énergie est :",
+              "options": [
+                "le joule (J)",
+                "le newton (N)",
+                "le mètre (m)",
+                "le watt (W)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le joule est l'unité d'énergie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sans énergie, un ventilateur :",
+              "options": [
+                "ne tourne pas",
+                "tourne plus vite",
+                "devient plus lourd",
+                "change de couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut de l'énergie pour produire un mouvement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un objet possède de l'énergie lorsqu'il :",
+              "options": [
+                "peut la transférer ou la transformer",
+                "est invisible",
+                "n'a pas de masse",
+                "ne peut jamais bouger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie se stocke ou se transfère entre systèmes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1 kJ vaut :",
+              "options": ["1000 J", "1 J", "0,001 J", "1 000 000 J"],
+              "correctAnswers": [0],
+              "explanation": "kJ signifie kilojoule, soit mille joules."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La nourriture apporte surtout :",
+              "options": [
+                "de l'énergie chimique",
+                "de l'énergie nucléaire",
+                "de l'énergie gravitationnelle seule",
+                "aucune énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les aliments contiennent de l'énergie chimique libérée par le corps."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une pile neuve contient surtout :",
+              "options": [
+                "de l'énergie chimique",
+                "de l'énergie cinétique",
+                "de l'énergie sonore",
+                "de l'énergie lumineuse permanente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une pile stocke de l'énergie chimique convertible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Brûler du bois libère surtout :",
+              "options": [
+                "énergie thermique et lumineuse",
+                "énergie nucléaire",
+                "énergie cinétique du bois immobile",
+                "aucun transfert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La combustion transforme l'énergie chimique du bois."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En classe, on dit que l'énergie :",
+              "options": [
+                "se transforme d'une forme à une autre",
+                "disparaît totalement à chaque usage",
+                "se crée sans limite",
+                "double à chaque seconde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On conserve l'idée que l'énergie se transforme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La lettre E désigne souvent :",
+              "options": [
+                "l'énergie",
+                "la masse",
+                "la vitesse",
+                "la température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "E est le symbole courant de l'énergie."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les sources d'énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels exemples sont des sources d'énergie ?",
+              "options": ["Le Soleil", "Le pétrole", "La grammaire", "Le vent"],
+              "correctAnswers": [0, 1],
+              "explanation": "Une source fournit l'énergie utilisée par les appareils."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une centrale nucléaire utilise :",
+              "options": [
+                "l'énergie de l'uranium",
+                "uniquement le vent",
+                "uniquement les marées",
+                "aucune source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fission de noyaux libère de l'énergie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une éolienne transforme l'énergie :",
+              "options": [
+                "du vent en électricité",
+                "de la lumière en vent",
+                "du son en pétrole",
+                "de la chaleur en vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vent fait tourner les pales puis un alternateur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le charbon est une source :",
+              "options": [
+                "fossile",
+                "renouvelable instantanée",
+                "solaire directe",
+                "sonore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Charbon, pétrole et gaz sont des énergies fossiles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Renouvelable signifie :",
+              "options": [
+                "se reconstitue à l'échelle humaine",
+                "jamais disponible",
+                "utilisable une seule fois",
+                "identique à fossile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soleil, vent et biomasse se renouvellent assez vite."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La biomasse provient :",
+              "options": [
+                "de matière organique",
+                "de roches seules",
+                "du vide",
+                "de métal pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bois, déchets organiques et cultures énergétiques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une source sert à :",
+              "options": [
+                "alimenter des conversions utiles",
+                "mesurer la masse",
+                "compter les élèves",
+                "corriger l'orthographe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On exploite la source pour chaleur, mouvement ou lumière."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le gaz naturel est :",
+              "options": [
+                "fossile",
+                "un astéroïde",
+                "cinétique d'un livre",
+                "toujours renouvelable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme le pétrole, il se forme sur des millions d'années."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Énergie primaire :",
+              "options": [
+                "directement disponible dans la nature",
+                "toujours de l'électricité",
+                "fabriquée seulement en usine",
+                "sans intérêt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemples : Soleil, uranium, vent, pétrole."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'électricité du réseau peut venir :",
+              "options": [
+                "de plusieurs sources combinées",
+                "d'une seule source obligatoire",
+                "de nulle part",
+                "uniquement de piles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mix énergétique combine nucléaire, hydraulique, fossile, etc."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Énergie du Soleil",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le Soleil fournit surtout :",
+              "options": [
+                "Énergie lumineuse",
+                "Énergie thermique",
+                "Énergie chimique du bois",
+                "Énergie nucléaire terrestre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rayonnement solaire = lumière et chaleur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un panneau solaire photovoltaïque produit :",
+              "options": [
+                "de l'électricité",
+                "du pétrole",
+                "du charbon",
+                "de l'uranium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules transforment une partie de la lumière en courant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le chauffage solaire thermique utilise :",
+              "options": [
+                "la chaleur du Soleil",
+                "le vent seul",
+                "le son",
+                "la marée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un fluide est réchauffé par le rayonnement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La photosynthèse stocke l'énergie solaire sous forme :",
+              "options": [
+                "chimique dans la biomasse",
+                "nucléaire",
+                "sonore",
+                "magnétique du champ terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les plantes fabriquent des molécules organiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La source Soleil est :",
+              "options": [
+                "renouvelable",
+                "fossile",
+                "épuisée en une heure",
+                "artificielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Soleil brille encore des milliards d'années."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sans Soleil, la température à la surface de la Terre serait :",
+              "options": [
+                "très basse",
+                "identique",
+                "celle du noyau terrestre",
+                "infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rayonnement solaire réchauffe la surface."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une ombrière solaire sert à :",
+              "options": [
+                "produire de l'électricité et ombrager",
+                "fabriquer du gaz",
+                "mesurer la masse",
+                "stocker du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Panneaux + protection contre le soleil."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La lumière du Soleil voyage :",
+              "options": [
+                "dans le vide jusqu'à la Terre",
+                "uniquement dans l'air",
+                "sans se déplacer",
+                "dans l'eau seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ondes lumineuses traversent l'espace."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un capteur solaire noir absorbe :",
+              "options": [
+                "plus de rayonnement",
+                "moins de chaleur",
+                "uniquement le son",
+                "le pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleur sombre favorise l'absorption."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'énergie solaire est :",
+              "options": [
+                "gratuite à la réception",
+                "toujours stockée dans le pétrole",
+                "identique à l'uranium",
+                "impossible à utiliser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rayonnement arrive sans facture, l'installation coûte."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Vent et eau",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles installations utilisent le vent ou l'eau ?",
+              "options": [
+                "Éolienne",
+                "Barrage hydroélectrique",
+                "Four à micro-ondes seul",
+                "Pile à combustible alimentée par vent direct"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vent et chute d'eau entraînent des alternateurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une éolienne convertit l'énergie :",
+              "options": [
+                "cinétique du vent en électrique",
+                "chimique en vent",
+                "nucléaire en vent",
+                "sonore en pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air en mouvement fait tourner le rotor."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un barrage hydroélectrique utilise :",
+              "options": [
+                "énergie potentielle de l'eau en hauteur",
+                "énergie du vide",
+                "énergie sonore",
+                "énergie du bois brûlé dans la turbine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau descend et entraîne une turbine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les marées peuvent produire :",
+              "options": [
+                "de l'électricité",
+                "du charbon",
+                "de l'uranium",
+                "de la lumière sans conversion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mouvement de la mer entraîne des turbines."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le vent est une source :",
+              "options": [
+                "renouvelable",
+                "fossile",
+                "nucléaire",
+                "non énergétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vent est reconstitué par le Soleil et la rotation terrestre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'eau d'un lac en altitude possède surtout :",
+              "options": [
+                "énergie potentielle de pesanteur",
+                "énergie nucléaire",
+                "énergie sonore",
+                "aucune énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La hauteur permet un transfert vers l'énergie cinétique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une turbine dans un barrage est entraînée par :",
+              "options": [
+                "l'eau qui s'écoule",
+                "le vent dans la salle",
+                "la lumière seule",
+                "le son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le débit d'eau produit un mouvement de rotation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'hydraulique ne fonctionne pas sans :",
+              "options": [
+                "eau en mouvement ou en hauteur",
+                "pétrole",
+                "charbon",
+                "vide total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut un écoulement ou une chute."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Plus le vent est fort, une éolienne peut :",
+              "options": [
+                "produire plus d'électricité (dans certaines limites)",
+                "produire moins",
+                "fabriquer du gaz",
+                "arrêter la rotation du Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La puissance dépend de la vitesse du vent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'énergie mécanique de l'eau qui tombe se transforme en :",
+              "options": [
+                "énergie électrique via l'alternateur",
+                "énergie chimique du barrage",
+                "énergie sonore seule",
+                "énergie lumineuse obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Turbine + alternateur produisent du courant."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Énergies renouvelables",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles énergies sont renouvelables ?",
+              "options": ["Solaire", "Éolien", "Charbon", "Pétrole"],
+              "correctAnswers": [0, 1],
+              "explanation": "Charbon est fossile ; soleil, vent et eau se renouvellent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La géothermie utilise :",
+              "options": [
+                "la chaleur du sous-sol",
+                "le vent seul",
+                "le pétrole",
+                "la lumière des étoiles lointaines seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaleur interne de la Terre réchauffe un fluide."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Brûler du bois (biomasse) est :",
+              "options": [
+                "renouvelable si la forêt est replantée",
+                "toujours fossile",
+                "nucléaire",
+                "impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La biomasse dépend du cycle des végétaux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Avantage des renouvelables :",
+              "options": [
+                "Peu ou pas d'épuisement à court terme",
+                "Émissions de CO₂ nulles dans tous les cas",
+                "Prix toujours nul",
+                "Fonctionnent sans Soleil ni vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ressource se renouvelle ; l'installation a un coût."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le pétrole est :",
+              "options": [
+                "fossile et non renouvelable à l'échelle humaine",
+                "renouvelable en une journée",
+                "produit par les éoliennes",
+                "identique au vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formation sur des millions d'années."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une éolienne en mer utilise :",
+              "options": [
+                "des vents souvent plus réguliers",
+                "de l'uranium",
+                "du charbon liquide",
+                "aucun vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le large offre souvent plus de vent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le solaire dépend :",
+              "options": [
+                "de l'ensoleillement",
+                "du pétrole",
+                "de la marée seule",
+                "du charbon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans soleil direct, production réduite."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mélanger renouvelable et fossile sert à :",
+              "options": [
+                "assurer l'approvisionnement quand le vent ou le soleil manquent",
+                "supprimer toute électricité",
+                "augmenter le charbon",
+                "éteindre le réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réseau combine plusieurs sources."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La biomasse peut produire :",
+              "options": [
+                "chaleur ou électricité",
+                "uniquement du plastique",
+                "uniquement du son",
+                "de l'uranium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combustion ou biogaz alimentent des générateurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir une énergie renouvelable, c'est :",
+              "options": [
+                "limiter l'épuisement des ressources fossiles",
+                "augmenter le pétrole",
+                "interdire l'électricité",
+                "supprimer le Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif : diversifier et réduire la dépendance aux fossiles."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Énergies fossiles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles énergies sont fossiles ?",
+              "options": ["Pétrole", "Gaz naturel", "Soleil", "Vent"],
+              "correctAnswers": [0, 1],
+              "explanation": "Pétrole et gaz naturel sont des énergies fossiles formées sur des millions d'années."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les fossiles se forment :",
+              "options": [
+                "sur des millions d'années",
+                "en une seconde",
+                "dans une pile",
+                "dans une éolienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sédimentation et transformation lente."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Brûler du gaz dans une chaudière libère surtout :",
+              "options": [
+                "énergie thermique",
+                "énergie nucléaire",
+                "énergie cinétique du gaz immobile",
+                "aucune énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combustion = énergie chimique → chaleur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le pétrole sert aussi à fabriquer :",
+              "options": [
+                "certains plastiques et carburants",
+                "uniquement de l'eau",
+                "uniquement du vent",
+                "de l'électricité sans combustion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Raffinage produit carburants et matériaux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une centrale thermique au charbon :",
+              "options": [
+                "brûle du charbon pour produire de l'électricité",
+                "utilise le vent seul",
+                "ne produit jamais de chaleur",
+                "fonctionne sans source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaleur → vapeur → turbine → alternateur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Inconvénient majeur des fossiles en classe :",
+              "options": [
+                "Émissions de CO₂ et ressource limitée",
+                "Trop renouvelables",
+                "Absence d'énergie",
+                "Production de vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On étudie pollution et épuisement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le gazole dans un camion est :",
+              "options": [
+                "énergie chimique fossile",
+                "énergie solaire",
+                "énergie du vent",
+                "énergie nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Carburant issu du pétrole."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Extraire du pétrole, c'est :",
+              "options": [
+                "récupérer une source d'énergie stockée",
+                "créer de l'énergie ex nihilo",
+                "fabriquer du vent",
+                "mesurer des joules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On exploite une ressource naturelle limitée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le charbon était autrefois :",
+              "options": [
+                "de la matière végétale enfouie",
+                "du métal pur",
+                "de l'eau",
+                "du soleil liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forêts anciennes transformées sous pression."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réduire les fossiles permet de :",
+              "options": [
+                "limiter certaines pollutions",
+                "augmenter le CO₂ volontairement",
+                "supprimer toute énergie",
+                "éteindre le Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transition vers des sources plus propres."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Énergie cinétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'énergie cinétique est liée :",
+              "options": [
+                "Au mouvement d'un objet",
+                "À sa masse",
+                "À sa couleur",
+                "Au nombre de lettres de son nom"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un objet en mouvement possède de l'énergie cinétique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un objet immobile au sol a :",
+              "options": [
+                "énergie cinétique nulle (dans ce référentiel)",
+                "énergie cinétique infinie",
+                "énergie cinétique obligatoire",
+                "pas de masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans vitesse, Ec = 0 dans le référentiel choisi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Plus un vélo roule vite, son énergie cinétique :",
+              "options": [
+                "augmente",
+                "diminue toujours",
+                "disparaît",
+                "devient chimique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ec dépend de la vitesse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un ballon lancé possède surtout :",
+              "options": [
+                "énergie cinétique",
+                "énergie nucléaire",
+                "énergie sonore seule",
+                "aucune forme d'énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il se déplace : forme cinétique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Freiner un vélo transforme l'énergie cinétique en :",
+              "options": [
+                "chaleur (frottements)",
+                "lumière seule",
+                "masse",
+                "vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les freins et le sol chauffent un peu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'énergie cinétique du vent sert à :",
+              "options": [
+                "faire tourner une éolienne",
+                "fabriquer du charbon",
+                "stocker du pétrole",
+                "mesurer la température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Air en mouvement → rotation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux objets à la même vitesse : celui plus lourd a :",
+              "options": [
+                "plus d'énergie cinétique",
+                "moins d'énergie cinétique",
+                "aucune énergie",
+                "énergie sonore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ec augmente avec la masse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une turbine de barrage reçoit l'énergie cinétique :",
+              "options": [
+                "de l'eau qui s'écoule",
+                "du Soleil directement sans eau",
+                "du son",
+                "du vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau en mouvement entraîne la turbine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Arrêter un objet en mouvement nécessite :",
+              "options": [
+                "d'absorber ou transformer son énergie cinétique",
+                "de créer de l'énergie",
+                "de supprimer sa masse",
+                "d'éteindre la gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une action mécanique freine le mouvement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Énergie cinétique et vitesse :",
+              "options": [
+                "augmentent ensemble",
+                "sont sans lien",
+                "diminuent toujours ensemble",
+                "valent toujours zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans mouvement, pas de cinétique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Énergie potentielle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'énergie potentielle de pesanteur dépend :",
+              "options": [
+                "De la masse",
+                "De la hauteur",
+                "De la couleur",
+                "Du prénom de l'objet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plus haut et plus massif ⇒ plus d'énergie stockée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un livre posé en haut d'une étagère a :",
+              "options": [
+                "énergie potentielle de pesanteur",
+                "énergie cinétique grande",
+                "énergie nucléaire",
+                "aucune énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sa hauteur permet un transfert s'il tombe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Au sol, la hauteur est nulle : l'énergie potentielle de pesanteur (réf. sol) est :",
+              "options": ["nulle", "infinie", "toujours maximale", "sonore"],
+              "correctAnswers": [0],
+              "explanation": "h = 0 ⇒ Ep = 0 avec le sol comme référence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'eau d'un barrage en altitude stocke :",
+              "options": [
+                "énergie potentielle",
+                "énergie sonore",
+                "énergie du vide",
+                "énergie grammaticale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grande masse d'eau en hauteur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quand un objet tombe, l'énergie potentielle se transforme en :",
+              "options": [
+                "énergie cinétique",
+                "énergie nucléaire",
+                "énergie chimique du plastique",
+                "rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chute : Ep → Ec."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un ressort comprimé possède :",
+              "options": [
+                "énergie potentielle élastique",
+                "énergie nucléaire",
+                "énergie fossile",
+                "énergie du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déformation stockée dans le ressort."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Monter un objet en hauteur, c'est :",
+              "options": [
+                "augmenter son énergie potentielle",
+                "supprimer son énergie",
+                "le rendre sans masse",
+                "créer du pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut fournir de l'énergie pour le hisser."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux objets identiques : celui le plus haut a :",
+              "options": [
+                "plus d'énergie potentielle de pesanteur",
+                "moins d'énergie",
+                "énergie cinétique nulle obligatoire",
+                "énergie sonore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ep augmente avec la hauteur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'énergie potentielle est dite « stockée » car :",
+              "options": [
+                "elle peut se transformer si la situation change",
+                "elle disparaît sans transformation",
+                "elle est toujours visible",
+                "elle ne dépend de rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chute ou détente libère l'énergie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un parachutiste en altitude possède surtout (avant chute) :",
+              "options": [
+                "énergie potentielle de pesanteur",
+                "énergie du noyau",
+                "énergie sonore seule",
+                "aucune énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hauteur par rapport au sol."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Chaleur, lumière et son",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations nomment des formes d'énergie ?",
+              "options": [
+                "Thermique = chaleur",
+                "Lumineuse = lumière",
+                "Cinétique = couleur",
+                "Sonore = vibrations"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Thermique et lumineuse sont des formes d'énergie étudiées en 5e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une bougie émet surtout :",
+              "options": [
+                "énergie lumineuse et thermique",
+                "énergie nucléaire",
+                "énergie cinétique du cierge immobile",
+                "énergie du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flamme = lumière + chaleur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un radiateur électrique transfère surtout :",
+              "options": [
+                "énergie thermique",
+                "énergie sonore seule",
+                "énergie nucléaire",
+                "énergie du pétrole dans le fil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Électrique → chaleur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le son est une :",
+              "options": [
+                "énergie mécanique vibratoire",
+                "énergie nucléaire",
+                "forme de charbon",
+                "unité en joules seulement sans vibration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vibrations dans l'air ou un solide."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une ampoule LED transforme l'électricité en :",
+              "options": [
+                "lumière et un peu de chaleur",
+                "son seul",
+                "pétrole",
+                "vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rendement lumineux meilleur qu'ancienne ampoule."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réchauffer de l'eau sur un feu, c'est :",
+              "options": [
+                "transfert d'énergie thermique",
+                "création de masse",
+                "production de vent",
+                "absence d'énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaleur passe du feu à l'eau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le Soleil nous apporte surtout :",
+              "options": [
+                "lumière et chaleur",
+                "son très fort",
+                "charbon",
+                "électricité directe sans panneau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rayonnement solaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un haut-parleur transforme l'électricité en :",
+              "options": [
+                "énergie sonore",
+                "énergie nucléaire",
+                "charbon",
+                "eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Membrane vibrante dans l'air."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Toucher un objet brûlant, c'est recevoir :",
+              "options": [
+                "énergie thermique",
+                "énergie lumineuse seule",
+                "énergie cinétique du doigt immobile",
+                "énergie du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transfert de chaleur par contact."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Formes d'énergie différentes peuvent :",
+              "options": [
+                "se transformer les unes en les autres",
+                "jamais interagir",
+                "rester toujours identiques",
+                "disparaître sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : électrique → lumière + chaleur."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Énergie électrique et chimique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Où trouve-t-on de l'énergie chimique ?",
+              "options": [
+                "Dans une pile",
+                "Dans les aliments",
+                "Dans le vent seul",
+                "Dans un fil sans courant"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Piles et nourriture stockent de l'énergie chimique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'énergie électrique circule dans :",
+              "options": [
+                "un circuit fermé",
+                "le vide sans fil",
+                "un livre fermé",
+                "une règle seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courant = déplacement de charges dans un circuit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une pile transforme l'énergie chimique en :",
+              "options": [
+                "énergie électrique",
+                "énergie nucléaire",
+                "énergie du vent",
+                "énergie sonore seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réactions dans la pile produisent du courant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le carburant d'une voiture est :",
+              "options": [
+                "énergie chimique",
+                "énergie solaire directe",
+                "énergie du vent",
+                "énergie lumineuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Essence ou diesel : combustion chimique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'électricité du mur est :",
+              "options": [
+                "énergie électrique",
+                "énergie chimique du plâtre",
+                "énergie nucléaire dans chaque prise",
+                "énergie sonore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réseau distribue du courant alternatif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Manger libère progressivement :",
+              "options": [
+                "énergie chimique pour le corps",
+                "énergie nucléaire",
+                "électricité directe",
+                "vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Digestion = transformations chimiques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un téléphone branché charge :",
+              "options": [
+                "stocke de l'énergie chimique dans la batterie",
+                "crée du pétrole",
+                "fabrique du vent",
+                "supprime l'électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Électrique → chimique dans l'accumulateur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Unité de l'énergie électrique consommée (facture) liée au joule ; on cite aussi :",
+              "options": [
+                "le kilowattheure (kWh)",
+                "le newton",
+                "le mètre",
+                "le hertz seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "kWh = énergie, couramment sur les factures."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Court-circuiter une pile est dangereux car :",
+              "options": [
+                "l'énergie se dissipe vite en chaleur",
+                "il n'y a aucune énergie",
+                "la pile devient plus lourde",
+                "le vent s'arrête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résistance faible ⇒ échauffement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Énergie chimique et électrique :",
+              "options": [
+                "peuvent se convertir l'une en l'autre",
+                "sont identiques toujours",
+                "ne se transforment jamais",
+                "existent seulement dans le Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pile, batterie, combustion dans une centrale."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Conversions",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Transformer l'énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Convertir l'énergie, c'est :",
+              "options": [
+                "Passer d'une forme à une autre",
+                "La transférer d'un système à un autre",
+                "La détruire totalement",
+                "Changer la couleur sans effet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Conversion = changement de forme ; transfert = passage entre objets."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un moteur convertit surtout l'énergie électrique en :",
+              "options": [
+                "énergie mécanique (mouvement)",
+                "énergie nucléaire",
+                "charbon",
+                "eau pure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courant → rotation de l'axe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une ampoule convertit l'électricité en :",
+              "options": ["lumière et chaleur", "vent", "pétrole", "masse"],
+              "correctAnswers": [0],
+              "explanation": "Filament ou LED émettent de la lumière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Friction entre deux surfaces transforme l'énergie mécanique en :",
+              "options": [
+                "chaleur",
+                "lumière seule",
+                "électricité directe",
+                "eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frottement dissipe en énergie thermique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une chaîne énergétique montre :",
+              "options": [
+                "les conversions successives",
+                "uniquement la couleur",
+                "la grammaire",
+                "le nombre de pages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On schématise source → convertisseur → usage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un convertisseur d'énergie :",
+              "options": [
+                "change la forme de l'énergie",
+                "crée de la matière",
+                "supprime la gravité",
+                "mesure la longueur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemples : moteur, ampoule, panneau solaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'énergie mécanique peut se composer de :",
+              "options": [
+                "cinétique et potentielle",
+                "couleur et goût",
+                "CO₂ seul",
+                "grammaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Em = Ec + Ep en cours de mouvement/chute."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quand on allume une lampe torche :",
+              "options": [
+                "chimique → électrique → lumineuse",
+                "vent → pétrole",
+                "nucléaire → grammaire",
+                "aucune conversion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pile puis ampoule."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Toute conversion réelle produit parfois :",
+              "options": [
+                "de la chaleur perdue",
+                "de l'énergie infinie",
+                "du vent obligatoire",
+                "de la masse nouvelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rendement < 100 % : dissipation thermique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Schématiser une conversion aide à :",
+              "options": [
+                "comprendre où l'énergie va",
+                "oublier la source",
+                "supprimer les joules",
+                "interdire l'électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Visualiser transferts et pertes."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "De l'électrique à la chaleur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels appareils transforment l'électricité en chaleur ?",
+              "options": [
+                "Radiateur électrique",
+                "Bouilloire",
+                "Ventilateur seul (mouvement d'air)",
+                "Four micro-ondes (chauffe l'eau dans l'aliment)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Résistance et bouilloire chauffent ; le ventilateur produit surtout du mouvement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans une résistance, l'électricité devient surtout :",
+              "options": [
+                "énergie thermique",
+                "énergie nucléaire",
+                "énergie du vent",
+                "énergie sonore seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet Joule : échauffement du fil."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Chauffer une pièce avec un radiateur, c'est :",
+              "options": [
+                "électrique → thermique",
+                "thermique → électrique seule",
+                "chimique → vent",
+                "aucun transfert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courant réchauffe l'air et les parois."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une plaque à induction chauffe :",
+              "options": [
+                "la casserole par champ magnétique",
+                "le vent",
+                "le pétrole dans la paroi",
+                "uniquement la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courants induits dans le fond métallique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Plus le courant est intense (à tension fixe), la puissance dissipée :",
+              "options": [
+                "augmente",
+                "diminue toujours",
+                "disparaît",
+                "devient nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus d'énergie électrique convertie par seconde."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un fil électrique trop fin pour le courant peut :",
+              "options": [
+                "chauffer dangereusement",
+                "refroidir la maison",
+                "produire du vent froid",
+                "créer du charbon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résistance élevée ⇒ échauffement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La chaleur d'un sèche-cheveux vient :",
+              "options": [
+                "de l'électricité dans la résistance",
+                "du Soleil dans le fil",
+                "du vent dans la prise",
+                "de l'uranium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Air chaud soufflé après chauffage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mesurer la température après conversion permet de :",
+              "options": [
+                "constater le transfert thermique",
+                "mesurer la masse",
+                "compter les joules sans lien",
+                "supprimer l'énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thermomètre : preuve de chauffage."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une couverture ne branche pas sur le secteur car elle :",
+              "options": [
+                "retient la chaleur déjà présente",
+                "convertit l'électricité",
+                "produit du courant",
+                "fabrique du gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Isolation ≠ convertisseur électrique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Éteindre un radiateur arrête :",
+              "options": [
+                "l'apport d'énergie électrique",
+                "la gravité",
+                "la masse de l'air",
+                "toute chaleur déjà stockée instantanément partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de conversion ; la pièce refroidit progressivement."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "De l'électrique au mouvement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels objets transforment l'électricité en mouvement ?",
+              "options": [
+                "Moteur électrique",
+                "Ventilateur",
+                "Ampoule seule (lumière)",
+                "Résistance chauffante seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Moteur et ventilateur produisent une rotation ou un flux d'air."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un train électrique, le moteur convertit :",
+              "options": [
+                "électrique → mécanique",
+                "mécanique → électrique seule",
+                "chimique → lumière",
+                "vent → pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courant entraîne les roues."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un ascenseur utilise un moteur pour :",
+              "options": [
+                "monter et descendre la cabine",
+                "produire de la lumière",
+                "fabriquer du charbon",
+                "mesurer la température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie électrique → déplacement vertical."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un dynamo de vélo (génératrice) fait l'inverse :",
+              "options": [
+                "mécanique → électrique",
+                "électrique → mécanique seule",
+                "nucléaire → vent",
+                "aucune conversion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rotation de la roue produit du courant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le rotor d'un moteur :",
+              "options": [
+                "tourne quand le courant passe",
+                "reste toujours fixe",
+                "devient une pile",
+                "absorbe le Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Action du champ magnétique sur le courant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un mixeur de cuisine convertit l'électricité en :",
+              "options": [
+                "rotation des lames",
+                "lumière seule",
+                "charbon",
+                "eau froide sans moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Petit moteur dans l'appareil."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sans électricité, un moteur électrique :",
+              "options": [
+                "ne produit pas de mouvement",
+                "tourne plus vite",
+                "fabrique du vent chaud",
+                "devient une source solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut un courant pour le faire fonctionner."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'énergie mécanique produite peut servir à :",
+              "options": [
+                "déplacer un objet",
+                "changer la couleur du ciel",
+                "créer des protons",
+                "supprimer la masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mouvement = transport ou action mécanique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un traineau électrique pour enfant utilise :",
+              "options": [
+                "un petit moteur à courant",
+                "un réacteur nucléaire",
+                "le vent seul",
+                "du charbon dans les roues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batterie + moteur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Freiner un moteur électrique régénère parfois :",
+              "options": [
+                "un peu d'électricité (cas étudié simplement)",
+                "du pétrole",
+                "du vent froid",
+                "de la lumière seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines voitures récupèrent de l'énergie au freinage."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "De la chimique à l'électrique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels dispositifs transforment l'énergie chimique en électrique ?",
+              "options": [
+                "Pile",
+                "Batterie rechargeable",
+                "Ampoule seule",
+                "Règle en bois"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Réactions chimiques produisent ou stockent du courant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans une pile usagée, l'énergie chimique :",
+              "options": [
+                "est en grande partie consommée",
+                "augmente sans limite",
+                "devient vent",
+                "crée du pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réactifs épuisés ⇒ plus de courant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Recharger une batterie, c'est :",
+              "options": [
+                "électrique → chimique",
+                "chimique → vent",
+                "nucléaire → son",
+                "aucun stockage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On restaure l'énergie chimique stockée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le bornes + et − d'une pile indiquent :",
+              "options": [
+                "le sens du courant dans le circuit",
+                "la couleur du plastique",
+                "la masse de l'air",
+                "la vitesse du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Polarité pour brancher correctement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une pile dans une lampe torche convertit :",
+              "options": [
+                "chimique puis électrique puis lumineuse",
+                "vent → pétrole",
+                "lumière → charbon",
+                "rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne pile + ampoule."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Mélanger certains produits dans une expérience (avec prof) peut produire :",
+              "options": [
+                "un peu d'électricité (pile chimique)",
+                "du vent permanent",
+                "de l'uranium",
+                "de la lumière sans réaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Piles à citron ou électrochimie simple."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ne pas jeter une pile avec les ordures car :",
+              "options": [
+                "elle contient des produits chimiques polluants",
+                "elle est comestible",
+                "elle produit du vent",
+                "elle disparaît seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Collecte spécifique pour piles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Capacité d'une batterie (mAh) indique :",
+              "options": [
+                "quantité de charge / autonomie possible",
+                "masse du téléphone",
+                "couleur de l'écran",
+                "vitesse du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de mAh ⇒ plus longtemps avant recharge."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une pile à combustible consomme :",
+              "options": [
+                "un carburant (souvent hydrogène) et produit de l'électricité",
+                "uniquement du vent",
+                "de la lumière seule",
+                "de la grammaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conversion chimique contrôlée en courant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans réaction chimique interne, une pile :",
+              "options": [
+                "ne fournit plus de courant",
+                "devient plus puissante",
+                "fabrique du charbon",
+                "produit du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réactifs épuisés = pile morte."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Chaîne énergétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une chaîne énergétique correcte contient :",
+              "options": [
+                "Une source d'énergie",
+                "Un ou plusieurs convertisseurs",
+                "Uniquement des couleurs",
+                "Aucune forme d'énergie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Source → conversions → forme utile (et parfois pertes)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Voiture essence : source principale :",
+              "options": [
+                "énergie chimique du carburant",
+                "énergie du vent seul",
+                "énergie solaire directe",
+                "énergie du vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Essence = stock chimique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Centrale éolienne : chaîne simplifiée :",
+              "options": [
+                "vent → mécanique → électrique",
+                "électrique → vent",
+                "charbon → vent",
+                "lumière → pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éolienne + alternateur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Panneau solaire + maison :",
+              "options": [
+                "solaire → électrique → usages",
+                "pétrole → vent",
+                "nucléaire → grammaire",
+                "aucune étape"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Production puis consommation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les pertes en chaleur dans une chaîne :",
+              "options": [
+                "sont représentées vers l'environnement",
+                "n'existent jamais",
+                "valent toujours zéro",
+                "remplacent la source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flèches vers « chaleur perdue »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lire une chaîne de gauche à droite suit souvent :",
+              "options": [
+                "l'ordre des transformations",
+                "l'alphabet seulement",
+                "la couleur du crayon",
+                "le numéro de page"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convention visuelle en classe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une télévision branchée : chaîne depuis le réseau :",
+              "options": [
+                "électrique → lumineuse + sonore (+ chaleur)",
+                "chimique → vent",
+                "mécanique → charbon",
+                "aucune conversion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Image, son et échauffement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Identifier la source permet de :",
+              "options": [
+                "savoir d'où vient l'énergie initiale",
+                "supprimer les joules",
+                "interdire le mouvement",
+                "changer la masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Première étape de l'analyse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un convertisseur dans le schéma :",
+              "options": [
+                "change la forme de l'énergie",
+                "est toujours la source",
+                "mesure la température externe seule",
+                "est un astéroïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boîte « moteur », « ampoule », etc."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Plusieurs convertisseurs en série signifient :",
+              "options": [
+                "plusieurs transformations successives",
+                "aucune énergie",
+                "une seule forme",
+                "suppression du réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : chimique → électrique → lumineuse."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Pertes et dissipation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'énergie « perdue » devient souvent :",
+              "options": [
+                "Chaleur dans l'air",
+                "Chaleur dans les composants",
+                "Disparition totale de l'univers",
+                "Nouvelle masse créée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dissipation thermique dans l'environnement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une ampoule ancienne chauffe beaucoup car :",
+              "options": [
+                "grande partie de l'énergie part en chaleur",
+                "elle ne consomme rien",
+                "elle produit du vent",
+                "elle est une pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rendement lumineux faible."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Frottements dans une machine :",
+              "options": [
+                "transforment de l'énergie mécanique en chaleur",
+                "créent de l'électricité infinie",
+                "suppriment la gravité",
+                "refroidissent sans limite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pertes mécaniques = échauffement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dissipation signifie :",
+              "options": [
+                "répartition de l'énergie difficilement réutilisable",
+                "création de pétrole",
+                "arrêt du Soleil",
+                "augmentation de la masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaleur diffuse dans l'environnement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Moteur très chaud après usage :",
+              "options": [
+                "signe de pertes thermiques",
+                "signe de zéro énergie",
+                "preuve qu'il ne consomme rien",
+                "preuve de refroidissement magique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partie de l'énergie devient chaleur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Isoler un tuyau de chauffage limite :",
+              "options": [
+                "les pertes de chaleur vers l'extérieur",
+                "la production d'électricité",
+                "la masse de l'eau",
+                "le nombre de joules dans l'univers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de chaleur perdue en route."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Son très fort d'un appareil peut être :",
+              "options": [
+                "une forme de perte d'énergie",
+                "une source de pétrole",
+                "absence d'énergie",
+                "énergie nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie sonore non utile = dissipation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "On ne récupère pas toute la chaleur perdue car :",
+              "options": [
+                "elle se propage et se mélange",
+                "elle disparaît totalement",
+                "elle devient masse",
+                "elle arrête le vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Difficile de reconcentrer la chaleur diffuse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réduire les pertes permet de :",
+              "options": [
+                "économiser de l'énergie",
+                "augmenter le gaspillage",
+                "supprimer les joules",
+                "éteindre le réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus d'énergie utile pour la même source."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Flèche « chaleur » vers l'air sur un schéma :",
+              "options": [
+                "représente une perte",
+                "représente la source principale",
+                "indique l'absence d'énergie",
+                "mesure la masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convention pour les dissipations."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Rendement d'un appareil",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un bon rendement signifie :",
+              "options": [
+                "Grande part d'énergie utile",
+                "Peu de pertes relatives",
+                "Rendement toujours supérieur à 100 %",
+                "Aucune conversion"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rendement = énergie utile / énergie reçue."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rendement de 100 % en pratique :",
+              "options": [
+                "impossible pour la plupart des appareils",
+                "obligatoire pour une ampoule",
+                "interdit par la loi",
+                "vrai pour toute voiture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toujours des pertes en chaleur ou son."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "LED plus efficace qu'ampoule à filament car :",
+              "options": [
+                "plus de lumière pour la même énergie",
+                "elle consomme zéro joule",
+                "elle produit du pétrole",
+                "elle ne chauffe jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Meilleur rendement lumineux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si un appareil reçoit 100 J et rend 30 J utiles, rendement = :",
+              "options": ["30 %", "130 %", "100 %", "0 %"],
+              "correctAnswers": [0],
+              "explanation": "30/100 = 0,30."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comparer deux chauffe-eau, on regarde :",
+              "options": [
+                " leur rendement ou étiquette énergie",
+                "leur couleur seule",
+                "le nombre de pages du manuel",
+                "la grammaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classes énergétiques informent l'efficacité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rendement faible implique :",
+              "options": [
+                "beaucoup d'énergie gaspillée en chaleur",
+                "aucune perte",
+                "énergie infinie",
+                "suppression du courant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gros écart entre reçu et utile."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Améliorer le rendement sert à :",
+              "options": [
+                "faire la même chose avec moins d'énergie",
+                "augmenter les pertes",
+                "interdire l'électricité",
+                "créer du charbon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif écologique et économique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Énergie utile, c'est :",
+              "options": [
+                "celle qui sert au but (lumière, mouvement…)",
+                "toujours la chaleur perdue",
+                "zéro joule",
+                "le vent seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Part effective de la conversion."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un moteur bien lubrifié peut avoir :",
+              "options": [
+                "un rendement un peu meilleur (moins de frottements)",
+                "rendement infini",
+                "zéro énergie",
+                "plus de pertes volontaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de friction ⇒ moins de chaleur perdue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Étiquette énergétique A ou B sur un frigo :",
+              "options": [
+                "indique une meilleure efficacité qu'une classe basse",
+                "mesure la masse",
+                "indique la couleur",
+                "interdit l'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classe haute = moins de kWh consommés."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Ampoules et éclairage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une ampoule transforme l'électricité en :",
+              "options": [
+                "Lumière",
+                "Chaleur",
+                "Pétrole",
+                "Vent mécanique principal"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Éclairage utile + échauffement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ampoule à filament (classique) : rendement lumineux :",
+              "options": [
+                "faible",
+                "parfait à 100 %",
+                "nul en chaleur",
+                "identique au vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Majorité de l'énergie en chaleur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "LED consomme pour même lumière :",
+              "options": [
+                "souvent moins d'électricité",
+                "plus de pétrole",
+                "plus de charbon dans le fil",
+                "aucun courant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Technologie plus efficace."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La puissance en watts (W) indique :",
+              "options": [
+                "énergie consommée par seconde",
+                "masse de l'ampoule",
+                "couleur du plafond",
+                "vitesse du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 W = 1 J/s."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Éteindre la lumière en quittant une pièce :",
+              "options": [
+                "économise de l'énergie électrique",
+                "augmente la facture",
+                "produit du gaz",
+                "arrête le Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de conversion inutile."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lumen mesure :",
+              "options": [
+                "flux lumineux (quantité de lumière)",
+                "température du corps",
+                "masse",
+                "force en newtons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de lumens = plus de lumière perçue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ampoule 60 W consomme plus qu'une 10 W LED si :",
+              "options": [
+                " elles restent allumées même temps",
+                "la LED est éteinte",
+                "aucune ne consomme",
+                "les watts ne comptent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puissance plus élevée ⇒ plus de joules/s."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Chaîne d'une lampe de bureau :",
+              "options": [
+                "réseau électrique → ampoule → lumière (+ chaleur)",
+                "vent → charbon",
+                "pile → vent seul",
+                "aucune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma type en 5e."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lumière naturelle du Soleil évite :",
+              "options": [
+                "consommation électrique pour éclairer",
+                "toute énergie",
+                "la photosynthèse",
+                "la journée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éclairage gratuit par fenêtre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ampoule grillée : le filament :",
+              "options": [
+                "ne convertit plus l'électricité en lumière",
+                "devient une éolienne",
+                "produit du pétrole",
+                "augmente le rendement à 200 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Circuit ouvert : plus de courant utile."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Chauffage et isolation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Limiter les pertes de chaleur d'une maison :",
+              "options": [
+                "Isolation des murs",
+                "Double vitrage",
+                "Ouvrir toutes les fenêtres en hiver",
+                "Enlever la toiture"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Isolation et vitrage réduisent les fuites thermiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Chaudière gaz : conversion principale :",
+              "options": [
+                "chimique → thermique",
+                "thermique → chimique seule",
+                "électrique → vent",
+                "nucléaire → lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combustion réchauffe l'eau ou l'air."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Thermostat sert à :",
+              "options": [
+                "réguler la température et limiter la consommation",
+                "produire du pétrole",
+                "mesurer la masse",
+                "créer du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arrêt/redémarrage du chauffage."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pompe à chaleur transfère :",
+              "options": [
+                "chaleur de l'extérieur vers l'intérieur (avec électricité)",
+                "charbon dans les murs",
+                "vent dans la prise",
+                "lumière en pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Système de conversion et transfert."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Baisser le chauffage de 1 °C peut :",
+              "options": [
+                "réduire la consommation d'énergie",
+                "l'augmenter infiniment",
+                "éteindre le Soleil",
+                "créer du gaz gratuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de chaleur à apporter."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calorifuge sur un tuyau :",
+              "options": [
+                "limite les pertes vers l'air",
+                "augmente les fuites",
+                "produit de l'électricité",
+                "mesure les joules restants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Isolant = barrière thermique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Feu de cheminée : source :",
+              "options": [
+                "chimique du bois",
+                "électrique du bois",
+                "nucléaire",
+                "vent seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combustion du bois."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Fuite d'air par une porte mal jointe :",
+              "options": [
+                "augmente les pertes de chaleur",
+                "isole la maison",
+                "produit de l'électricité",
+                "refroidit le Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Air chaud sort, air froid entre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Radiateur électrique : énergie reçue :",
+              "options": [
+                "électrique du réseau",
+                "chimique du plâtre",
+                "cinétique du mur",
+                "vent dans la prise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prise secteur alimente la résistance."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bien isoler, c'est :",
+              "options": [
+                "garder la chaleur utile plus longtemps",
+                "supprimer toute énergie",
+                "interdire le chauffage",
+                "augmenter les fuites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins d'énergie pour maintenir la température."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Économiser l'énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Gestes pour économiser l'énergie :",
+              "options": [
+                "Éteindre les appareils inutiles",
+                "Choisir des appareils efficaces",
+                "Laisser tout allumé en permanence",
+                "Ouvrir les fenêtres avec le chauffage à fond"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sobriété et efficacité réduisent la consommation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mode veille d'une télé peut :",
+              "options": [
+                "consommer encore un peu d'électricité",
+                "consommer zéro toujours",
+                "produire du charbon",
+                "arrêter le réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mieux vaut éteindre complètement parfois."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Transports : vélo ou marche :",
+              "options": [
+                "utilisent l'énergie alimentaire (chimique) du corps",
+                "consomment du pétrole direct",
+                "ne nécessitent aucune énergie",
+                "produisent de l'uranium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Muscles convertissent l'énergie chimique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Covoiturage permet de :",
+              "options": [
+                "partager l'énergie du carburant",
+                "doubler la consommation",
+                "supprimer les joules",
+                "éteindre le Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de carburant par personne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Éco-gestes à l'école :",
+              "options": [
+                "Éteindre lumière et vidéoprojecteur",
+                "Gaspiller le papier volontairement",
+                "Laisser couler l'eau chaude",
+                "Ouvrir les fenêtres en hiver avec chauffage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque geste réduit la consommation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "kWh sur une facture mesure :",
+              "options": [
+                "énergie consommée sur la période",
+                "puissance instantanée seule",
+                "masse",
+                "vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Facturation de l'énergie totale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Développement durable et énergie :",
+              "options": [
+                "visent à ne pas épuiser les ressources",
+                "encouragent le gaspillage",
+                "interdisent toute lumière",
+                "suppriment le vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Préserver ressources pour l'avenir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Remplacer vieux réfrigérateur par modèle récent efficace :",
+              "options": [
+                "peut réduire la consommation",
+                "augmente toujours la facture",
+                "crée du pétrole",
+                "n'a aucun effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Meilleur rendement thermique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sensibilisation à l'énergie en classe vise à :",
+              "options": [
+                "comprendre conversions et agir responsable",
+                "ignorer les sources",
+                "augmenter le gaspillage",
+                "supprimer la physique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Citoyenneté et sciences."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Économiser l'énergie, c'est aussi :",
+              "options": [
+                "limiter les émissions liées aux fossiles",
+                "brûler plus de charbon",
+                "interdire le Soleil",
+                "supprimer l'électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de consommation ⇒ souvent moins de CO₂."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

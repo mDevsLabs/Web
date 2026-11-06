@@ -1,0 +1,2098 @@
+{
+  "id": "2nde-italien-04",
+  "year": "2nde",
+  "subject": "italien",
+  "title": "La grammaire de l'italien",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Articles définis au masculin",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Devant quel nom masculin singulier utilise-t-on l'article défini « il » ?",
+              "type": "single_choice",
+              "options": ["studente", "ragazzo", "amico", "zaino"],
+              "correctAnswers": [1],
+              "explanation": "On utilise « il » devant les noms masculins singuliers commençant par une consonne simple (sauf s+consonne, z, etc.) : « il ragazzo »."
+            },
+            {
+              "id": "q2",
+              "question": "Quel article défini masculin singulier s'emploie devant « s + consonne » ou « z » ?",
+              "type": "single_choice",
+              "options": ["il", "l'", "lo", "la"],
+              "correctAnswers": [2],
+              "explanation": "L'article « lo » s'utilise devant les noms masculins singuliers commençant par s impure (s + consonne), z, gn, ps, pn ou x : « lo studente », « lo zaino »."
+            },
+            {
+              "id": "q3",
+              "question": "Complète la phrase : « ... orologio di Marco è rotto. »",
+              "type": "single_choice",
+              "options": ["L'", "Il", "Lo", "I"],
+              "correctAnswers": [0],
+              "explanation": "Devant un nom masculin commençant par une voyelle, l'article « lo » s'élide en « l' » : « l'orologio »."
+            },
+            {
+              "id": "q4",
+              "question": "Quel est l'article défini pluriel correspondant à « il » ?",
+              "type": "single_choice",
+              "options": ["gli", "le", "i", "li"],
+              "correctAnswers": [2],
+              "explanation": "Le pluriel de « il » est « i » : « il ragazzo » devient « i ragazzi »."
+            },
+            {
+              "id": "q5",
+              "question": "Quels noms masculins pluriels prennent l'article défini « gli » ?",
+              "type": "multiple_choice",
+              "options": ["studenti", "libri", "amici", "ragazzi"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Gli » est le pluriel de « lo » et « l' ». On dit donc « gli studenti » (commence par s+consonne) et « gli amici » (commence par une voyelle)."
+            },
+            {
+              "id": "q6",
+              "question": "Quel article défini convient devant « zaino » (le sac à dos) ?",
+              "type": "single_choice",
+              "options": ["il", "lo", "l'", "la"],
+              "correctAnswers": [1],
+              "explanation": "Le mot « zaino » commence par un « z », il exige donc l'article « lo » au singulier : « lo zaino »."
+            },
+            {
+              "id": "q7",
+              "question": "Quelle est la forme correcte au pluriel de « lo zio » (l'oncle) ?",
+              "type": "single_choice",
+              "options": ["i zii", "gli zii", "le zie", "li zii"],
+              "correctAnswers": [1],
+              "explanation": "Au pluriel, les noms masculins en « z » prennent l'article « gli » : « lo zio » devient « gli zii »."
+            },
+            {
+              "id": "q8",
+              "question": "Complète la phrase : « ... cane di Giulia abbaia spesso nel giardino. »",
+              "type": "single_choice",
+              "options": ["Lo", "L'", "Il", "I"],
+              "correctAnswers": [2],
+              "explanation": "« Cane » commence par la consonne simple « c », l'article masculin singulier régulier est donc « il »."
+            },
+            {
+              "id": "q9",
+              "question": "Devant quel mot masculin singulier doit-on employer l'article « lo » ?",
+              "type": "single_choice",
+              "options": ["gnomo", "gatto", "libro", "pane"],
+              "correctAnswers": [0],
+              "explanation": "Devant « gn », « ps », « x », « z » ou « s + consonne », on utilise « lo » au masculin singulier : « lo gnomo »."
+            },
+            {
+              "id": "q10",
+              "question": "Complète : « Dove hai messo ... quaderni di matematica ? »",
+              "type": "single_choice",
+              "options": ["i", "gli", "il", "le"],
+              "correctAnswers": [0],
+              "explanation": "« Quaderni » est un nom masculin pluriel commençant par une consonne simple ; on utilise « i » (« i quaderni »)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Articles définis au féminin",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quel article défini féminin singulier utilise-t-on devant un mot commençant par une consonne ?",
+              "type": "single_choice",
+              "options": ["la", "le", "l'", "il"],
+              "correctAnswers": [0],
+              "explanation": "Devant une consonne, l'article défini féminin singulier est « la » : « la ragazza », « la casa »."
+            },
+            {
+              "id": "q2",
+              "question": "Que devient l'article féminin singulier « la » devant une voyelle ?",
+              "type": "single_choice",
+              "options": ["lo", "l'", "le", "la"],
+              "correctAnswers": [1],
+              "explanation": "Devant une voyelle, « la » s'élide obligatoirement en « l' » au singulier : « l'amica », « l'isola »."
+            },
+            {
+              "id": "q3",
+              "question": "Quel est l'unique article défini féminin pluriel en italien ?",
+              "type": "single_choice",
+              "options": ["i", "gli", "le", "la"],
+              "correctAnswers": [2],
+              "explanation": "En italien, tous les noms féminins pluriels prennent l'article « le », qu'ils commencent par une consonne ou une voyelle."
+            },
+            {
+              "id": "q4",
+              "question": "Complète la phrase : « ... amica di Sara abita vicino alla stazione. »",
+              "type": "single_choice",
+              "options": ["La", "L'", "Le", "Il"],
+              "correctAnswers": [1],
+              "explanation": "« Amica » est un nom féminin commençant par une voyelle ; on élide l'article : « l'amica »."
+            },
+            {
+              "id": "q5",
+              "question": "Quelles associations entre l'article féminin pluriel et le nom sont correctes ?",
+              "type": "multiple_choice",
+              "options": [
+                "le ragazze",
+                "le amiche",
+                "le zaini",
+                "le professori"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Le ragazze » et « le amiche » sont des féminins pluriels bien accordés. « Zaini » et « professori » sont masculins."
+            },
+            {
+              "id": "q6",
+              "question": "Complète : « ... casa dei miei nonni è molto grande. »",
+              "type": "single_choice",
+              "options": ["L'", "La", "Le", "Il"],
+              "correctAnswers": [1],
+              "explanation": "« Casa » commence par une consonne au féminin singulier, on emploie « la »."
+            },
+            {
+              "id": "q7",
+              "question": "Quelle est la forme correcte au pluriel de « l'isola » (l'île) ?",
+              "type": "single_choice",
+              "options": ["l'isole", "le isole", "gli isole", "i isole"],
+              "correctAnswers": [1],
+              "explanation": "Au féminin pluriel, l'article « le » ne s'élide jamais : on écrit « le isole »."
+            },
+            {
+              "id": "q8",
+              "question": "Complète : « Mi piacciono molto ... canzoni di Laura Pausini. »",
+              "type": "single_choice",
+              "options": ["le", "la", "i", "gli"],
+              "correctAnswers": [0],
+              "explanation": "« Canzoni » est féminin pluriel (singulier : « la canzone »). L'article défini féminin pluriel est « le »."
+            },
+            {
+              "id": "q9",
+              "question": "Quel article défini singulier convient devant « scuola » ?",
+              "type": "single_choice",
+              "options": ["lo", "la", "l'", "il"],
+              "correctAnswers": [1],
+              "explanation": "Au féminin, la règle de « s + consonne » ne change rien : tous les noms féminins commençant par une consonne prennent « la » (« la scuola »)."
+            },
+            {
+              "id": "q10",
+              "question": "Pourquoi écrit-on « le aule » et jamais « l'aule » au pluriel ?",
+              "type": "single_choice",
+              "options": [
+                "Car l'article pluriel « le » ne s'élide jamais en italien moderne",
+                "Parce que aula est un mot invariable",
+                "Car aula est masculin au pluriel",
+                "Parce que le nom se termine par une consonne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement au singulier (« l'aula »), l'article féminin pluriel « le » ne subit jamais d'élision devant voyelle."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Articles indéfinis masculins et féminins",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quel article indéfini masculin singulier utilise-t-on devant la plupart des consonnes et devant les voyelles ?",
+              "type": "single_choice",
+              "options": ["uno", "un", "una", "un'"],
+              "correctAnswers": [1],
+              "explanation": "En italien, « un » s'emploie devant une consonne simple (« un libro ») et devant une voyelle (« un amico »)."
+            },
+            {
+              "id": "q2",
+              "question": "Dans quel cas emploie-t-on l'article indéfini masculin « uno » ?",
+              "type": "single_choice",
+              "options": [
+                "Devant toutes les consonnes",
+                "Devant s + consonne, z, gn, ps, pn ou x",
+                "Devant les voyelles",
+                "Devant les noms féminins"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Uno » s'utilise devant les mêmes sons que l'article défini « lo » : s impure, z, gn, ps, pn, x."
+            },
+            {
+              "id": "q3",
+              "question": "Complète : « Ho comprato ... zaino nuovo per la scuola. »",
+              "type": "single_choice",
+              "options": ["un", "uno", "una", "un'"],
+              "correctAnswers": [1],
+              "explanation": "« Zaino » commence par un « z », nom masculin singulier, il exige donc l'article indéfini « uno »."
+            },
+            {
+              "id": "q4",
+              "question": "Pourquoi écrit-on « un amico » SANS apostrophe ?",
+              "type": "single_choice",
+              "options": [
+                "Parce que l'article masculin « un » ne s'apostrophe jamais",
+                "Car amico est un adjectif",
+                "Parce qu'on ne met d'apostrophe qu'au pluriel",
+                "C'est une erreur d'orthographe fréquente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Un » masculin existe en tant que mot autonome sans élision ; il ne prend JAMAIS d'apostrophe."
+            },
+            {
+              "id": "q5",
+              "question": "Quelles formes avec article indéfini sont rigoureusement correctes ?",
+              "type": "multiple_choice",
+              "options": ["un'amica", "un amico", "un'albero", "uno ragazzo"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Un'amica » prend une apostrophe car c'est un nom féminin. « Un amico » n'en prend pas car c'est masculin. « Albero » prend « un », et « ragazzo » prend « un »."
+            },
+            {
+              "id": "q6",
+              "question": "Complète : « C'è ... studentessa nuova nella nostra classe. »",
+              "type": "single_choice",
+              "options": ["una", "un'", "un", "uno"],
+              "correctAnswers": [0],
+              "explanation": "« Studentessa » est féminin singulier commençant par une consonne : l'article indéfini est « una »."
+            },
+            {
+              "id": "q7",
+              "question": "Quand doit-on obligatoirement écrire l'article indéfini avec une apostrophe (« un' ») ?",
+              "type": "single_choice",
+              "options": [
+                "Devant un nom masculin commençant par une voyelle",
+                "Uniquement devant un nom féminin singulier commençant par une voyelle",
+                "Devant n'importe quel mot pluriel",
+                "Devant un nom féminin commençant par une consonne"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'élision « un' » est la marque exclusive du féminin singulier devant une voyelle (« un'idea », « un'amica »)."
+            },
+            {
+              "id": "q8",
+              "question": "Complète : « Vorrei ... gelato al cioccolato, per favore. »",
+              "type": "single_choice",
+              "options": ["uno", "un", "una", "un'"],
+              "correctAnswers": [1],
+              "explanation": "« Gelato » est un nom masculin singulier commençant par une consonne simple (« g » doux), on utilise donc « un »."
+            },
+            {
+              "id": "q9",
+              "question": "Quel article indéfini convient devant « psicologo » ?",
+              "type": "single_choice",
+              "options": ["un", "uno", "una", "un'"],
+              "correctAnswers": [1],
+              "explanation": "Devant les noms masculins commençant par « ps », on emploie l'article indéfini « uno » : « uno psicologo »."
+            },
+            {
+              "id": "q10",
+              "question": "Complète : « È ... idea davvero originale ! »",
+              "type": "single_choice",
+              "options": ["un'", "una", "un", "uno"],
+              "correctAnswers": [0],
+              "explanation": "« Idea » est féminin et commence par la voyelle « i » ; l'article « una » s'élide en « un' »."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Genre des noms : masculin ou féminin",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "En règle générale, quelle est la terminaison des noms masculins singuliers en italien ?",
+              "type": "single_choice",
+              "options": ["-o", "-a", "-e", "-i"],
+              "correctAnswers": [0],
+              "explanation": "La grande majorité des noms masculins singuliers se terminent par « -o » en italien : « ragazzo », « libro », « tavolo »."
+            },
+            {
+              "id": "q2",
+              "question": "En règle générale, quelle est la terminaison des noms féminins singuliers en italien ?",
+              "type": "single_choice",
+              "options": ["-o", "-a", "-u", "-i"],
+              "correctAnswers": [1],
+              "explanation": "La majorité des noms féminins singuliers se terminent par « -a » : « ragazza », « casa », « sedia »."
+            },
+            {
+              "id": "q3",
+              "question": "Quel est le genre du mot « il problema » malgré sa terminaison en « -a » ?",
+              "type": "single_choice",
+              "options": [
+                "Féminin",
+                "Masculin",
+                "Neutre",
+                "Pluriel invariable"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les mots d'origine grecque terminés par « -ma » (comme « problema », « tema », « programma ») sont masculins."
+            },
+            {
+              "id": "q4",
+              "question": "Quel est le genre du mot « la mano » malgré sa terminaison en « -o » ?",
+              "type": "single_choice",
+              "options": ["Masculin", "Neutre", "Féminin", "Indéterminé"],
+              "correctAnswers": [2],
+              "explanation": "« La mano » est une exception célèbre issue du latin : il est féminin au singulier comme au pluriel (« le mani »)."
+            },
+            {
+              "id": "q5",
+              "question": "Parmi ces mots se terminant par « -a », lesquels sont masculins ?",
+              "type": "multiple_choice",
+              "options": ["il cinema", "il pianeta", "la pizza", "la scuola"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Il cinema » (abréviation de cinematografo) et « il pianeta » (d'origine grecque) sont masculins. « Pizza » et « scuola » sont féminins."
+            },
+            {
+              "id": "q6",
+              "question": "Les noms terminés par « -e » au singulier (comme « il fiore » ou « la notte ») sont :",
+              "type": "single_choice",
+              "options": [
+                "Toujours masculins",
+                "Toujours féminins",
+                "Soit masculins, soit féminins",
+                "Toujours neutres"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les noms en « -e » au singulier peuvent être masculins (« il fiore », « il mare ») ou féminins (« la notte », « la voce »). Il faut apprendre leur genre."
+            },
+            {
+              "id": "q7",
+              "question": "Les noms terminés par le suffixe « -zione » (comme « la stazione », « la lezione ») sont :",
+              "type": "single_choice",
+              "options": [
+                "Toujours féminins",
+                "Toujours masculins",
+                "Invariables",
+                "Neutres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous les noms en « -zione » correspondent au français « -tion » et sont systématiquement féminins."
+            },
+            {
+              "id": "q8",
+              "question": "Quel est le genre du mot « il cane » ?",
+              "type": "single_choice",
+              "options": ["Féminin", "Masculin", "Neutre", "Pluriel"],
+              "correctAnswers": [1],
+              "explanation": "« Il cane » (le chien) est un nom masculin singulier terminé par « -e »."
+            },
+            {
+              "id": "q9",
+              "question": "Quel est le genre du mot « la foto » ?",
+              "type": "single_choice",
+              "options": [
+                "Masculin car il finit par -o",
+                "Féminin car c'est l'abréviation de fotografia",
+                "Neutre",
+                "Toujours pluriel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« La foto » est l'abréviation de « la fotografia », il conserve donc son genre féminin."
+            },
+            {
+              "id": "q10",
+              "question": "Quel article convient devant « tema » (la dissertation / le sujet) ?",
+              "type": "single_choice",
+              "options": ["il", "la", "lo", "l'"],
+              "correctAnswers": [0],
+              "explanation": "« Tema » est masculin d'origine grecque ; on dit donc « il tema »."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Formation du pluriel des noms",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Comment se transforme la terminaison d'un nom masculin en « -o » au pluriel ?",
+              "type": "single_choice",
+              "options": [
+                "Elle devient -i",
+                "Elle devient -e",
+                "Elle devient -a",
+                "Elle prend un -s final"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au pluriel, les noms masculins en « -o » prennent la terminaison « -i » : « il ragazzo » -> « i ragazzi »."
+            },
+            {
+              "id": "q2",
+              "question": "Comment se transforme la terminaison d'un nom féminin régulier en « -a » au pluriel ?",
+              "type": "single_choice",
+              "options": [
+                "Elle devient -i",
+                "Elle devient -e",
+                "Elle devient -o",
+                "Elle reste invariable"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Au pluriel, les noms féminins réguliers en « -a » prennent la terminaison « -e » : « la casa » -> « le case »."
+            },
+            {
+              "id": "q3",
+              "question": "Quel est le pluriel des noms se terminant par « -e » au singulier (qu'ils soient masculins ou féminins) ?",
+              "type": "single_choice",
+              "options": [
+                "Ils se terminent toujours par -i",
+                "Ils se terminent par -e",
+                "Ils prennent un -s final",
+                "Ils deviennent invariables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous les noms en « -e » au singulier se terminent par « -i » au pluriel : « il fiore » -> « i fiori », « la notte » -> « le notti »."
+            },
+            {
+              "id": "q4",
+              "question": "Quel est le pluriel du mot masculin « il tema » ?",
+              "type": "single_choice",
+              "options": ["le teme", "i temi", "i temo", "le temi"],
+              "correctAnswers": [1],
+              "explanation": "« Tema » étant masculin, son pluriel suit la règle des masculins en devenant « i temi »."
+            },
+            {
+              "id": "q5",
+              "question": "Quels types de noms restent invariables au pluriel en italien ?",
+              "type": "multiple_choice",
+              "options": [
+                "Les noms accentués sur la dernière voyelle (la città -> le città)",
+                "Les mots d'origine étrangère finissant par une consonne (il bar -> i bar)",
+                "Les noms féminins réguliers en -a",
+                "Les noms masculins en -o"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les mots portant un accent final (« la città ») et les mots d'origine étrangère finissant par une consonne (« il film », « il bar ») ne changent pas au pluriel."
+            },
+            {
+              "id": "q6",
+              "question": "Quel est le pluriel irrégulier du mot « l'uomo » (l'homme) ?",
+              "type": "single_choice",
+              "options": ["i uomi", "gli uomini", "gli uomos", "le uomine"],
+              "correctAnswers": [1],
+              "explanation": "« L'uomo » a un pluriel irrégulier hérité du latin : « gli uomini »."
+            },
+            {
+              "id": "q7",
+              "question": "Quel est le pluriel de « la mano » ?",
+              "type": "single_choice",
+              "options": ["le mane", "i mani", "le mani", "le mano"],
+              "correctAnswers": [2],
+              "explanation": "« La mano » fait son pluriel en « -i » tout en restant féminin : « le mani »."
+            },
+            {
+              "id": "q8",
+              "question": "Pour préserver le son dur [k] ou [g] au pluriel, que fait-on aux noms en « -ca » et « -ga » ?",
+              "type": "single_choice",
+              "options": [
+                "On insère un « h » graphique (amica -> amiche)",
+                "On remplace par la lettre « k »",
+                "On ne change rien",
+                "On supprime la voyelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En italien, le « h » durcit le « c » et le « g » devant « e » et « i » : « amica » donne « amiche », « collega » donne « colleghe »."
+            },
+            {
+              "id": "q9",
+              "question": "Quel est le pluriel de « l'amico » ?",
+              "type": "single_choice",
+              "options": ["gli amichi", "gli amici", "i amicos", "le amiche"],
+              "correctAnswers": [1],
+              "explanation": "Pour « amico », le pluriel masculin passe au son doux [tʃ] : « gli amici »."
+            },
+            {
+              "id": "q10",
+              "question": "Quel est le pluriel de « il re » (le roi) ?",
+              "type": "single_choice",
+              "options": ["i rei", "i ree", "i re", "i res"],
+              "correctAnswers": [2],
+              "explanation": "Les monosyllabes ne changent pas au pluriel : « il re » devient « i re »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Accords des adjectifs qualificatifs réguliers",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Un adjectif régulier à 4 formes (-o, -a, -i, -e) comme « alto » se termine au féminin pluriel par :",
+              "type": "single_choice",
+              "options": ["-i", "-a", "-e", "-o"],
+              "correctAnswers": [2],
+              "explanation": "Au féminin pluriel, l'adjectif prend la terminaison « -e » : « le ragazze alte »."
+            },
+            {
+              "id": "q2",
+              "question": "Complète la phrase : « Maria e Giulia sono molto ... »",
+              "type": "single_choice",
+              "options": ["simpatici", "simpatiche", "simpatico", "simpatica"],
+              "correctAnswers": [1],
+              "explanation": "Maria et Giulia sont deux personnes de sexe féminin : l'adjectif s'accorde au féminin pluriel avec « -e » (et « h » phonétique) : « simpatiche »."
+            },
+            {
+              "id": "q3",
+              "question": "Les adjectifs à 2 formes se terminant par « -e » au singulier (comme « verde » ou « grande ») font leur pluriel en :",
+              "type": "single_choice",
+              "options": [
+                "-i au masculin et au féminin",
+                "-e au féminin et -i au masculin",
+                "-es comme en français",
+                "-a pour le neutre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les adjectifs en « -e » n'ont que deux formes : singulier en « -e » et pluriel en « -i », identique pour les deux genres."
+            },
+            {
+              "id": "q4",
+              "question": "Complète : « I compiti di matematica sono molto ... »",
+              "type": "single_choice",
+              "options": ["difficile", "difficili", "difficilo", "difficilie"],
+              "correctAnswers": [1],
+              "explanation": "« Compiti » est masculin pluriel. L'adjectif « difficile » devient « difficili » au pluriel."
+            },
+            {
+              "id": "q5",
+              "question": "Quelles phrases présentent un accord correct de l'adjectif qualificatif ?",
+              "type": "multiple_choice",
+              "options": [
+                "I ragazzi sono italiani.",
+                "Le ragazze sono felici.",
+                "I ragazzi sono italiana.",
+                "Le ragazze sono felice."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Italiani » s'accorde au masculin pluriel avec « i ragazzi » et « felici » s'accorde au féminin pluriel avec « le ragazze »."
+            },
+            {
+              "id": "q6",
+              "question": "Quand un adjectif qualifie à la fois un nom masculin et un nom féminin (Marco e Lucia), quel accord applique-t-on ?",
+              "type": "single_choice",
+              "options": [
+                "Féminin pluriel",
+                "Masculin pluriel",
+                "L'adjectif reste au singulier",
+                "Accord de proximité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La règle de préséance masculine s'applique : « Marco e Lucia sono bravi »."
+            },
+            {
+              "id": "q7",
+              "question": "Complète : « Abbiamo letto delle storie molto ... »",
+              "type": "single_choice",
+              "options": [
+                "interessante",
+                "interessanti",
+                "interessanto",
+                "interessanta"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Storie » est féminin pluriel. L'adjectif « interessante » fait son pluriel en « -i » (« interessanti »)."
+            },
+            {
+              "id": "q8",
+              "question": "Quelle est la forme féminine singulière de l'adjectif « nuovo » ?",
+              "type": "single_choice",
+              "options": ["nuova", "nuove", "nuovi", "nuovo"],
+              "correctAnswers": [0],
+              "explanation": "Au féminin singulier, les adjectifs en « -o » prennent un « -a » : « una nuova macchina »."
+            },
+            {
+              "id": "q9",
+              "question": "Complète : « Queste scarpe nere sono molto ... »",
+              "type": "single_choice",
+              "options": ["comodi", "comoda", "comode", "comodo"],
+              "correctAnswers": [2],
+              "explanation": "« Scarpe » est féminin pluriel, l'adjectif s'accorde avec « -e » : « comode »."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle phrase est correctement accordée ?",
+              "type": "single_choice",
+              "options": [
+                "Il libro è interessante.",
+                "Il libro è interessanti.",
+                "Il libro è interessanta.",
+                "Il libro è interessanto."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au singulier, l'adjectif conserve sa terminaison « -e » pour qualifier un nom singulier : « Il libro è interessante »."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Adjectifs de couleur et invariables",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Comment s'accorde l'adjectif de couleur régulier « rosso » avec un nom féminin pluriel ?",
+              "type": "single_choice",
+              "options": ["rossi", "rossa", "rosse", "rosso"],
+              "correctAnswers": [2],
+              "explanation": "L'adjectif « rosso » est régulier à 4 formes : rosso, rossa, rossi, rosse (« le mele rosse »)."
+            },
+            {
+              "id": "q2",
+              "question": "Quelle est la particularité des adjectifs de couleur « blu » et « rosa » en italien ?",
+              "type": "single_choice",
+              "options": [
+                "Ils sont totalement invariables en genre et en nombre",
+                "Ils prennent un -s au pluriel",
+                "Ils ne s'accordent qu'au masculin",
+                "Ils changent de consonne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Blu », « rosa », « viola » restent invariables : « una camicia blu », « dei pantaloni blu », « due magliette rosa »."
+            },
+            {
+              "id": "q3",
+              "question": "Complète : « Ho comprato due magliette ... »",
+              "type": "single_choice",
+              "options": ["blue", "blus", "blu", "blui"],
+              "correctAnswers": [2],
+              "explanation": "« Blu » est invariable, il ne prend ni « e », ni « s »."
+            },
+            {
+              "id": "q4",
+              "question": "Complète : « Luca indossa una camicia ... »",
+              "type": "single_choice",
+              "options": ["bianco", "bianca", "bianchi", "bianche"],
+              "correctAnswers": [1],
+              "explanation": "« Camicia » est féminin singulier ; « bianco » devient « bianca »."
+            },
+            {
+              "id": "q5",
+              "question": "Parmi ces adjectifs de couleur, lesquels sont invariables au pluriel ?",
+              "type": "multiple_choice",
+              "options": ["viola", "rosa", "giallo", "nero"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Viola » et « rosa » sont des noms de fleurs devenus adjectifs invariables. « Giallo » et « nero » s'accordent normalement."
+            },
+            {
+              "id": "q6",
+              "question": "Comment s'accorde l'adjectif de couleur « marrone » au pluriel ?",
+              "type": "single_choice",
+              "options": ["marroni", "marrone", "marrones", "marron"],
+              "correctAnswers": [0],
+              "explanation": "« Marrone » suit la règle des adjectifs en « -e » et devient « marroni » au pluriel : « gli occhi marroni »."
+            },
+            {
+              "id": "q7",
+              "question": "Complète : « Gli occhi di Laura sono ... »",
+              "type": "single_choice",
+              "options": ["verde", "verdi", "verdo", "verda"],
+              "correctAnswers": [1],
+              "explanation": "« Occhi » est masculin pluriel ; l'adjectif en « -e » devient « verdi »."
+            },
+            {
+              "id": "q8",
+              "question": "Quel est le pluriel féminin de « bianco » (attention à l'orthographe) ?",
+              "type": "single_choice",
+              "options": ["biance", "bianche", "bianchi", "bianci"],
+              "correctAnswers": [1],
+              "explanation": "Pour conserver le son [k] devant la voyelle « e », on ajoute un « h » : « bianche »."
+            },
+            {
+              "id": "q9",
+              "question": "Complète : « C'erano molte macchine ... nel parcheggio. »",
+              "type": "single_choice",
+              "options": ["neri", "nera", "nere", "nero"],
+              "correctAnswers": [2],
+              "explanation": "« Macchine » est féminin pluriel : « nere »."
+            },
+            {
+              "id": "q10",
+              "question": "Complète : « Le arance sono ... »",
+              "type": "single_choice",
+              "options": ["arancione", "arancioni", "arancionas", "aranciona"],
+              "correctAnswers": [1],
+              "explanation": "« Arancione » se termine par « -e » au singulier et fait son pluriel régulier en « -i » : « arancioni »."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Articles contractés (preposizioni articolate)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelle préposition contractée obtient-on en associant « di » et l'article « il » ?",
+              "type": "single_choice",
+              "options": ["dal", "del", "al", "nel"],
+              "correctAnswers": [1],
+              "explanation": "« Di » + « il » fusionnent en « del » : « il quaderno del ragazzo »."
+            },
+            {
+              "id": "q2",
+              "question": "Complète la phrase : « Vado ... cinema con i miei compagni di classe. » (a + il)",
+              "type": "single_choice",
+              "options": ["allo", "nel", "al", "dal"],
+              "correctAnswers": [2],
+              "explanation": "« A » + « il » donne « al » : « vado al cinema »."
+            },
+            {
+              "id": "q3",
+              "question": "Que donne la contraction de la préposition « in » avec l'article « la » ?",
+              "type": "single_choice",
+              "options": ["nella", "della", "alla", "sulla"],
+              "correctAnswers": [0],
+              "explanation": "« In » se transforme en base « ne- » et s'associe à l'article : « in » + « la » = « nella »."
+            },
+            {
+              "id": "q4",
+              "question": "Complète : « I libri di testo sono ... tavolo del salotto. » (su + il)",
+              "type": "single_choice",
+              "options": ["sul", "su lo", "nel", "dal"],
+              "correctAnswers": [0],
+              "explanation": "« Su » + « il » se contracte obligatoirement en « sul » : « sul tavolo »."
+            },
+            {
+              "id": "q5",
+              "question": "Quelles formes de prépositions contractées sont parfaitement correctes ?",
+              "type": "multiple_choice",
+              "options": [
+                "dello (di + lo)",
+                "negli (in + gli)",
+                "inlo (in + lo)",
+                "dali (da + i)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Dello » et « negli » sont des contractions régulières. « Inlo » n'existe pas (on dit « nello ») et « dali » n'existe pas (on dit « dai »)."
+            },
+            {
+              "id": "q6",
+              "question": "Complète : « Gli studenti escono ... scuola alle quattro. » (da + la)",
+              "type": "single_choice",
+              "options": ["dalla", "alla", "nella", "sulla"],
+              "correctAnswers": [0],
+              "explanation": "« Da » + « la » fusionnent en « dalla » : « escono dalla scuola »."
+            },
+            {
+              "id": "q7",
+              "question": "Quelle est la forme contractée de « di » + « gli » ?",
+              "type": "single_choice",
+              "options": ["dei", "degli", "delli", "delle"],
+              "correctAnswers": [1],
+              "explanation": "« Di » + « gli » donne « degli » : « la casa degli zii »."
+            },
+            {
+              "id": "q8",
+              "question": "Complète : « Questo è il regalo per la festa ... mamma. » (di + la)",
+              "type": "single_choice",
+              "options": ["della", "alla", "nella", "dalla"],
+              "correctAnswers": [0],
+              "explanation": "« Di » + « la » donne « della » : « la festa della mamma »."
+            },
+            {
+              "id": "q9",
+              "question": "Que donne la contraction de « a » + « lo » devant un mot en « z » ou « s + consonne » ?",
+              "type": "single_choice",
+              "options": ["al", "allo", "all'", "agli"],
+              "correctAnswers": [1],
+              "explanation": "« A » + « lo » devient « allo » : « vado allo stadio »."
+            },
+            {
+              "id": "q10",
+              "question": "En italien moderne, les prépositions « con » et « per » forment-elles des contractions obligatoires ?",
+              "type": "single_choice",
+              "options": [
+                "Non, elles restent le plus souvent séparées de l'article (per il, con la)",
+                "Oui, la fusion est toujours obligatoire",
+                "Uniquement avec l'article pluriel",
+                "Seulement à l'oral familier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En italien moderne, on écrit couramment « per il », « per la », « con il », « con la » sans contraction."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Adjectifs démonstratifs : questo et quello",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Que désigne l'adjectif démonstratif « questo » ?",
+              "type": "single_choice",
+              "options": [
+                "Un être ou un objet proche de la personne qui parle",
+                "Un objet très lointain dans l'espace",
+                "Une personne absente",
+                "Une chose déjà oubliée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Questo » s'emploie pour désigner ce qui est proche de celui qui parle dans l'espace ou le temps (l'équivalent de « ce...-ci »)."
+            },
+            {
+              "id": "q2",
+              "question": "Quelle est la forme féminine plurielle de « questo » ?",
+              "type": "single_choice",
+              "options": ["questi", "questa", "queste", "questo"],
+              "correctAnswers": [2],
+              "explanation": "« Questo » s'accorde comme un adjectif régulier : questo, questa, questi, queste."
+            },
+            {
+              "id": "q3",
+              "question": "Devant un nom masculin singulier commençant par une consonne simple (ex: libro), quelle forme prend « quello » ?",
+              "type": "single_choice",
+              "options": ["quel", "quello", "quell'", "quei"],
+              "correctAnswers": [0],
+              "explanation": "« Quello » suit exactement les règles de l'article « il/lo/l' ». Devant consonne simple, il devient « quel » (« quel libro » comme « il libro »)."
+            },
+            {
+              "id": "q4",
+              "question": "Devant un nom masculin singulier commençant par « s + consonne » ou « z » (ex: zaino), quelle forme prend « quello » ?",
+              "type": "single_choice",
+              "options": ["quel", "quello", "quell'", "quei"],
+              "correctAnswers": [1],
+              "explanation": "Comme l'article « lo », la forme pleine « quello » est conservée : « quello zaino », « quello studente »."
+            },
+            {
+              "id": "q5",
+              "question": "Quelles formes de l'adjectif démonstratif sont correctement utilisées ?",
+              "type": "multiple_choice",
+              "options": [
+                "quei ragazzi",
+                "quegli studenti",
+                "quel zaino",
+                "quello libro"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Quei ragazzi » correspond à « i ragazzi », « quegli studenti » correspond à « gli studenti ». On dit « quello zaino » et « quel libro »."
+            },
+            {
+              "id": "q6",
+              "question": "Complète : « ... amica di Paolo è molto simpatica. »",
+              "type": "single_choice",
+              "options": ["Questi", "Quest'", "Quei", "Questo"],
+              "correctAnswers": [1],
+              "explanation": "Devant une voyelle au féminin singulier, « questa » s'élide en « quest' » : « quest'amica »."
+            },
+            {
+              "id": "q7",
+              "question": "Quel est le pluriel de « quel ragazzo » ?",
+              "type": "single_choice",
+              "options": [
+                "quelli ragazzi",
+                "quegli ragazzi",
+                "quei ragazzi",
+                "quelle ragazze"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Comme « il » devient « i », « quel » devient « quei » au pluriel : « quei ragazzi »."
+            },
+            {
+              "id": "q8",
+              "question": "Quel est le pluriel de « quello zaino » ?",
+              "type": "single_choice",
+              "options": [
+                "quei zaini",
+                "quelli zaini",
+                "quegli zaini",
+                "quelle zaine"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Comme « lo » devient « gli », « quello » devient « quegli » au pluriel : « quegli zaini »."
+            },
+            {
+              "id": "q9",
+              "question": "Complète : « Guarda ... bella ragazza laggiù vicino alla fontana. »",
+              "type": "single_choice",
+              "options": ["quella", "quel", "questi", "quegli"],
+              "correctAnswers": [0],
+              "explanation": "« Ragazza » est féminin singulier commençant par une consonne : « quella ragazza »."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle est la forme plurielle de « quella casa » ?",
+              "type": "single_choice",
+              "options": [
+                "quelli case",
+                "quei case",
+                "quelle case",
+                "quegli case"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Au féminin pluriel, « quella » devient simplement « quelle » (« quelle case »)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan et pièges d'accords et d'articles",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quel article défini convient devant « bar » (nom masculin singulier emprunté à une langue étrangère) ?",
+              "type": "single_choice",
+              "options": ["lo", "il", "l'", "la"],
+              "correctAnswers": [1],
+              "explanation": "« Bar » commence par une consonne simple « b », on utilise « il » : « il bar »."
+            },
+            {
+              "id": "q2",
+              "question": "Complète la phrase : « Il cane e la gatta sono entrambi molto ... »",
+              "type": "single_choice",
+              "options": [
+                "affettuose",
+                "affettuosi",
+                "affettuosa",
+                "affettuoso"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Quand deux noms de genres différents sont coordonnés, l'accord se fait au masculin pluriel : « affettuosi »."
+            },
+            {
+              "id": "q3",
+              "question": "Quel article indéfini convient devant « isola » (nom féminin singulier) ?",
+              "type": "single_choice",
+              "options": ["un", "una", "un'", "uno"],
+              "correctAnswers": [2],
+              "explanation": "Devant un nom féminin commençant par une voyelle, on écrit « un' » avec apostrophe : « un'isola »."
+            },
+            {
+              "id": "q4",
+              "question": "Quel est le pluriel correct de « la città » ?",
+              "type": "single_choice",
+              "options": ["le citte", "le cittade", "le città", "i città"],
+              "correctAnswers": [2],
+              "explanation": "Les noms accentués sur la voyelle finale sont invariables au pluriel : « la città » -> « le città »."
+            },
+            {
+              "id": "q5",
+              "question": "Quelles phrases respectent scrupuleusement les règles d'accord et d'articles ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ho comprato un libro interessante.",
+                "Abbiamo visitato una città antica.",
+                "Ho visto un'amico simpatico ieri.",
+                "I compiti sono molto difficile."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 0 et 1 sont parfaites. La 2 a le tort d'apostropher « un » devant un nom masculin, et la 4 n'accorde pas « difficile » au pluriel."
+            },
+            {
+              "id": "q6",
+              "question": "Quel article défini pluriel convient devant « alberi » (les arbres) ?",
+              "type": "single_choice",
+              "options": ["i", "le", "gli", "li"],
+              "correctAnswers": [2],
+              "explanation": "Devant un nom masculin pluriel commençant par une voyelle, on utilise « gli » : « gli alberi »."
+            },
+            {
+              "id": "q7",
+              "question": "Complète : « La professoressa ha spiegato ... regola importante. »",
+              "type": "single_choice",
+              "options": ["un'", "una", "uno", "un"],
+              "correctAnswers": [1],
+              "explanation": "« Regola » commence par la consonne « r », nom féminin : on écrit « una regola » sans apostrophe."
+            },
+            {
+              "id": "q8",
+              "question": "Comment s'accorde l'adjectif « francese » avec le nom « le canzoni » ?",
+              "type": "single_choice",
+              "options": ["francese", "francesa", "francesi", "francesas"],
+              "correctAnswers": [2],
+              "explanation": "« Canzoni » est féminin pluriel. L'adjectif en « -e » fait son pluriel en « -i » : « le canzoni francesi »."
+            },
+            {
+              "id": "q9",
+              "question": "Pourquoi dit-on « l'autobus » et « gli autobus » sans modifier le nom ?",
+              "type": "single_choice",
+              "options": [
+                "Car les mots terminés par une consonne sont invariables au pluriel",
+                "Car autobus est un nom féminin",
+                "Car l'article gli s'emploie uniquement au singulier",
+                "Parce que c'est une faute tolérée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mots terminés par une consonne (d'origine étrangère) restent invariables au pluriel en italien."
+            },
+            {
+              "id": "q10",
+              "question": "Complète : « Questo è ... miglior gelato che abbia mai mangiato ! »",
+              "type": "single_choice",
+              "options": ["lo", "il", "l'", "la"],
+              "correctAnswers": [1],
+              "explanation": "« Miglior » commence par une consonne simple « m », on emploie « il » : « il miglior gelato »."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Structure de la phrase déclarative affirmative",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "En italien, pourquoi omet-on très souvent les pronoms sujets (io, tu, lui...) ?",
+              "type": "single_choice",
+              "options": [
+                "Car la terminaison du verbe conjugué indique clairement la personne",
+                "Car les pronoms sujets sont interdits dans la langue écrite",
+                "Parce que l'italien ne possède aucun pronom sujet",
+                "Uniquement dans les poésies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'italien est une langue à sujet nul (pro-drop) : la désinence verbale suffit presque toujours à identifier le sujet."
+            },
+            {
+              "id": "q2",
+              "question": "Quel est l'ordre habituel des mots dans une phrase déclarative simple en italien ?",
+              "type": "single_choice",
+              "options": [
+                "Verbe - Sujet - Complément",
+                "Sujet - Verbe - Complément (SVO)",
+                "Complément - Verbe - Sujet",
+                "Sujet - Complément - Verbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Comme le français, l'italien utilise couramment la structure Sujet - Verbe - Objet (ex: « Marco mangia una mela »)."
+            },
+            {
+              "id": "q3",
+              "question": "Traduis simplement : « J'habite à Rome. »",
+              "type": "single_choice",
+              "options": [
+                "Io abito di Roma.",
+                "Abito a Roma.",
+                "Abita a Roma.",
+                "Abitare a Roma."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Abito a Roma » est la formulation directe et naturelle sans pronom superflu."
+            },
+            {
+              "id": "q4",
+              "question": "Dans quelle situation exprime-t-on explicitement le pronom sujet « io » ou « tu » ?",
+              "type": "single_choice",
+              "options": [
+                "Pour insister ou marquer un contraste (ex: Io studio, ma tu dormi)",
+                "Dans chaque phrase obligatoirement",
+                "Uniquement avec le verbe essere",
+                "Jamais, c'est considéré comme impoli"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On exprime le pronom personnel sujet pour insister, clarifier une ambiguïté ou marquer une opposition."
+            },
+            {
+              "id": "q5",
+              "question": "Quelles phrases déclaratives simples sont correctes et naturelles en italien ?",
+              "type": "multiple_choice",
+              "options": [
+                "Leggiamo un libro interessante.",
+                "Marco mangia una mela.",
+                "Mangia mela Marco una.",
+                "Noi leggono un libro."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Leggiamo un libro interessante » et « Marco mangia una mela » sont parfaitement construites."
+            },
+            {
+              "id": "q6",
+              "question": "Complète : « Noi ... studenti e abitiamo a Firenze. »",
+              "type": "single_choice",
+              "options": ["sono", "siamo", "siete", "è"],
+              "correctAnswers": [1],
+              "explanation": "Le verbe essere avec « noi » se conjugue « siamo »."
+            },
+            {
+              "id": "q7",
+              "question": "Quelle phrase correspond fidèlement à « Luca parle italien » ?",
+              "type": "single_choice",
+              "options": [
+                "Luca parli italiano.",
+                "Luca parla italiano.",
+                "Luca parlo italiano.",
+                "Luca parlano italiano."
+              ],
+              "correctAnswers": [1],
+              "explanation": "À la 3e personne du singulier des verbes en -are, la terminaison est « -a » : « Luca parla italiano »."
+            },
+            {
+              "id": "q8",
+              "question": "Dans « Arrivano i nostri amici stasera », pourquoi le sujet est-il après le verbe ?",
+              "type": "single_choice",
+              "options": [
+                "Pour mettre en valeur l'information nouvelle apportée par le sujet",
+                "C'est une erreur de grammaire",
+                "Car il s'agit d'une question",
+                "Parce que le verbe arrivere est passif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inversion sujet-verbe est fréquente en italien pour focaliser l'attention sur le sujet qui arrive."
+            },
+            {
+              "id": "q9",
+              "question": "Complète : « (Tu) ... la musica classica ? » (verbe ascoltare)",
+              "type": "single_choice",
+              "options": ["Ascolta", "Ascolti", "Ascolto", "Ascoltate"],
+              "correctAnswers": [1],
+              "explanation": "Avec « tu », la terminaison du présent est « -i » : « Ascolti la musica classica ? »."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle est la traduction correcte de « Nous partons demain » ?",
+              "type": "single_choice",
+              "options": [
+                "Parto domani.",
+                "Partono domani.",
+                "Partiamo domani.",
+                "Partite domani."
+              ],
+              "correctAnswers": [2],
+              "explanation": "La 1re personne du pluriel se termine par « -iamo » : « Partiamo domani »."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La négation simple avec non",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Où se place l'adverbe de négation « non » dans une phrase simple en italien ?",
+              "type": "single_choice",
+              "options": [
+                "Juste après le verbe conjugué",
+                "Juste devant le verbe conjugué",
+                "À la toute fin de la phrase",
+                "Toujours entre le sujet et l'adjectif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En italien, « non » se place impérativement juste devant le verbe conjugué : « Non parlo italiano »."
+            },
+            {
+              "id": "q2",
+              "question": "Traduis en italien : « Je ne comprends pas. »",
+              "type": "single_choice",
+              "options": [
+                "Capisco non.",
+                "Non capisco.",
+                "Non capisce.",
+                "No capire."
+              ],
+              "correctAnswers": [1],
+              "explanation": "On place « non » devant le verbe conjugué à la 1re personne : « Non capisco »."
+            },
+            {
+              "id": "q3",
+              "question": "Comment traduit-on « Jamais » dans une phrase négative comme « Je ne fume jamais » ?",
+              "type": "single_choice",
+              "options": [
+                "Non fumo mai.",
+                "Fumo non mai.",
+                "Non mai fumo.",
+                "Fumo mai non."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La double négation est de règle en italien : « non » devant le verbe et « mai » après le verbe (« Non fumo mai »)."
+            },
+            {
+              "id": "q4",
+              "question": "Complète : « Marco ... studia oggi perché ha mal di testa. »",
+              "type": "single_choice",
+              "options": ["no", "non", "niente", "nessuno"],
+              "correctAnswers": [1],
+              "explanation": "Pour nier le verbe « studia », on utilise l'adverbe « non » : « Marco non studia oggi »."
+            },
+            {
+              "id": "q5",
+              "question": "Quelles phrases négatives sont correctement formulées en italien ?",
+              "type": "multiple_choice",
+              "options": [
+                "Non ho fame.",
+                "Non mangio niente.",
+                "Ho non fame.",
+                "No mangio niente."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Non ho fame » et « Non mangio niente » respectent la syntaxe de la négation."
+            },
+            {
+              "id": "q6",
+              "question": "Quelle est la différence fondamentale entre « no » et « non » ?",
+              "type": "single_choice",
+              "options": [
+                "« No » répond de façon autonome ; « non » modifie et nie un verbe",
+                "« No » s'emploie uniquement au passé",
+                "« No » est réservé aux adultes",
+                "Il n'y a aucune différence entre les deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On utilise « No » pour répondre négativement (« No, grazie ») et « non » pour nier un verbe (« Non voglio »)."
+            },
+            {
+              "id": "q7",
+              "question": "Traduis : « Il n'y a plus de pain. »",
+              "type": "single_choice",
+              "options": [
+                "Non c'è mai pane.",
+                "Non c'è più pane.",
+                "C'è non più pane.",
+                "No c'è più pane."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Ne... plus » se traduit par « non... più » : « Non c'è più pane »."
+            },
+            {
+              "id": "q8",
+              "question": "Comment traduit-on « Je ne sais rien » ?",
+              "type": "single_choice",
+              "options": [
+                "So non niente.",
+                "Non so mai.",
+                "Non so niente.",
+                "No so nulla."
+              ],
+              "correctAnswers": [2],
+              "explanation": "« Ne... rien » se traduit par « non... niente » (ou « non... nulla ») : « Non so niente »."
+            },
+            {
+              "id": "q9",
+              "question": "Complète : « Giulia ... parla francese, ma impara l'inglese con passione. »",
+              "type": "single_choice",
+              "options": ["no", "non", "né", "mai"],
+              "correctAnswers": [1],
+              "explanation": "Devant le verbe « parla », la négation simple est « non »."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie la phrase : « Non mi piace questo film » ?",
+              "type": "single_choice",
+              "options": [
+                "Ce film ne me plaît pas",
+                "Ce film est très intéressant",
+                "Je n'ai pas vu ce film",
+                "Je préfère un autre livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Non mi piace » signifie « cela ne me plaît pas » / « je n'aime pas »."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Poser une question : intonation et pronoms interrogatifs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "À l'oral, comment transforme-t-on le plus simplement une phrase affirmative en question ?",
+              "type": "single_choice",
+              "options": [
+                "En inversant obligatoirement le sujet et le verbe",
+                "En montant l'intonation en fin de phrase, sans changer l'ordre des mots",
+                "En ajoutant systématiquement « est-ce que »",
+                "En plaçant toujours le mot « cosa » au début"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'intonation montante suffit à transformer une affirmation en question à l'oral en italien."
+            },
+            {
+              "id": "q2",
+              "question": "Quel pronom interrogatif signifie « Où » en italien ?",
+              "type": "single_choice",
+              "options": ["Quando", "Dove", "Come", "Chi"],
+              "correctAnswers": [1],
+              "explanation": "« Dove » signifie « où » : « Dove abiti ? » (Où habites-tu ?)."
+            },
+            {
+              "id": "q3",
+              "question": "Quel mot interrogatif utilise-t-on pour demander « Qui » ?",
+              "type": "single_choice",
+              "options": ["Che", "Chi", "Cosa", "Quale"],
+              "correctAnswers": [1],
+              "explanation": "« Chi » signifie « qui » : « Chi è quel ragazzo ? » (Qui est ce garçon ?)."
+            },
+            {
+              "id": "q4",
+              "question": "Complète : « ... ti chiami ? - Mi chiamo Lorenzo. »",
+              "type": "single_choice",
+              "options": ["Dove", "Come", "Chi", "Quanto"],
+              "correctAnswers": [1],
+              "explanation": "« Come » signifie « comment » : « Come ti chiami ? » (Comment t'appelles-tu ?)."
+            },
+            {
+              "id": "q5",
+              "question": "Quels mots interrogatifs signifient « Que / Qu'est-ce que » en italien ?",
+              "type": "multiple_choice",
+              "options": ["Che cosa", "Cosa", "Come", "Quando"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Che cosa », « cosa » ou simplement « che » sont équivalents pour dire « que / quoi »."
+            },
+            {
+              "id": "q6",
+              "question": "Complète : « ... costa questo dizionario d'italiano ? »",
+              "type": "single_choice",
+              "options": ["Quale", "Perché", "Quanto", "Quando"],
+              "correctAnswers": [2],
+              "explanation": "« Quanto » s'utilise pour interroger sur la quantité ou le prix : « Quanto costa ? »."
+            },
+            {
+              "id": "q7",
+              "question": "Quel mot interrogatif utilise-t-on pour demander « Pourquoi » ?",
+              "type": "single_choice",
+              "options": ["Quando", "Perché", "Come", "Dove"],
+              "correctAnswers": [1],
+              "explanation": "« Perché » sert à la fois pour demander « pourquoi » dans la question et pour répondre « parce que »."
+            },
+            {
+              "id": "q8",
+              "question": "Complète : « ... abiti ? - Abito a Milano con la mia famiglia. »",
+              "type": "single_choice",
+              "options": ["Chi", "Come", "Dove", "Cosa"],
+              "correctAnswers": [2],
+              "explanation": "« Dove abiti ? » interroge sur le lieu d'habitation."
+            },
+            {
+              "id": "q9",
+              "question": "Que signifie la question : « A che ora comincia la lezione ? »",
+              "type": "single_choice",
+              "options": [
+                "À quelle heure commence le cours ?",
+                "Quand finit la récréation ?",
+                "Combien d'heures dure la classe ?",
+                "Où se trouve la salle de cours ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« A che ora comincia » se traduit par « À quelle heure commence »."
+            },
+            {
+              "id": "q10",
+              "question": "Quel mot interrogatif utilise-t-on pour demander « Quand » ?",
+              "type": "single_choice",
+              "options": ["Quanto", "Quale", "Quando", "Chi"],
+              "correctAnswers": [2],
+              "explanation": "« Quando » signifie « quand » : « Quando arrivi ? » (Quand arrives-tu ?)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le verbe essere et avere au présent",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelle est la forme du verbe « essere » à la 1re personne du singulier (io) ?",
+              "type": "single_choice",
+              "options": ["sei", "sono", "è", "siamo"],
+              "correctAnswers": [1],
+              "explanation": "Au présent de l'indicatif : io sono, tu sei, lui/lei è, noi siamo, voi siete, loro sono."
+            },
+            {
+              "id": "q2",
+              "question": "Complète : « Tu ... molto gentile con tutti i tuoi compagni. » (essere)",
+              "type": "single_choice",
+              "options": ["sono", "è", "sei", "siete"],
+              "correctAnswers": [2],
+              "explanation": "Avec « tu », le verbe essere fait « sei »."
+            },
+            {
+              "id": "q3",
+              "question": "Quelle est la forme du verbe « avere » pour « noi » au présent ?",
+              "type": "single_choice",
+              "options": ["avete", "hanno", "ho", "abbiamo"],
+              "correctAnswers": [3],
+              "explanation": "Au présent de l'indicatif : io ho, tu hai, lui ha, noi abbiamo, voi avete, loro hanno."
+            },
+            {
+              "id": "q4",
+              "question": "Pourquoi certaines formes du présent de « avere » prennent-elles un « h » initial muet ?",
+              "type": "single_choice",
+              "options": [
+                "Pour les distinguer d'autres mots homophones (a, ai, o, anno)",
+                "Car le h se prononce fortement en italien",
+                "Pour indiquer un temps du passé",
+                "C'est une règle réservée à la poésie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « h » graphique permet de distinguer « ho » de « o » (ou), « hai » de « ai » (à les), « ha » de « a » (à), et « hanno » de « anno » (année)."
+            },
+            {
+              "id": "q5",
+              "question": "Quelles formes du verbe « avere » s'écrivent avec un « h » graphique au présent ?",
+              "type": "multiple_choice",
+              "options": ["io ho", "loro hanno", "noi abbiamo", "voi avete"],
+              "correctAnswers": [0, 1],
+              "explanation": "Les 4 formes avec « h » sont : ho, hai, ha, hanno. « Abbiamo » et « avete » s'écrivent sans « h »."
+            },
+            {
+              "id": "q6",
+              "question": "Complète : « Quanti anni ... ? - Ho quindici anni. »",
+              "type": "single_choice",
+              "options": ["ha", "hai", "hanno", "ho"],
+              "correctAnswers": [1],
+              "explanation": "Pour demander l'âge à un camarade : « Quanti anni hai ? » (verbe avere avec tu)."
+            },
+            {
+              "id": "q7",
+              "question": "Complète : « Noi ... contenti di essere qui insieme. » (essere)",
+              "type": "single_choice",
+              "options": ["sono", "siete", "siamo", "è"],
+              "correctAnswers": [2],
+              "explanation": "Avec « noi », la forme correcte de essere est « siamo »."
+            },
+            {
+              "id": "q8",
+              "question": "Comment dit-on « J'ai faim » en italien ?",
+              "type": "single_choice",
+              "options": [
+                "Sono fame.",
+                "Ho fame.",
+                "Faccio fame.",
+                "Sto fame."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Comme en français, les sensations physiques (faim, soif, sommeil, froid) s'expriment avec le verbe « avere » : « ho fame », « ho sete »."
+            },
+            {
+              "id": "q9",
+              "question": "Complète : « Loro ... studenti di questo liceo. » (essere)",
+              "type": "single_choice",
+              "options": ["siamo", "è", "sono", "siete"],
+              "correctAnswers": [2],
+              "explanation": "À la 3e personne du pluriel (loro), essere fait « sono »."
+            },
+            {
+              "id": "q10",
+              "question": "Complète : « Voi ... una bella casa in campagna. » (avere)",
+              "type": "single_choice",
+              "options": ["abbiamo", "hanno", "avete", "hai"],
+              "correctAnswers": [2],
+              "explanation": "Avec « voi », le verbe avere prend la forme « avete »."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Verbes réguliers du premier groupe (-are)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles sont les terminaisons du présent de l'indicatif pour les verbes en « -are » ?",
+              "type": "single_choice",
+              "options": [
+                "-o, -i, -e, -iamo, -ete, -ono",
+                "-o, -i, -a, -iamo, -ate, -ano",
+                "-o, -es, -e, -ons, -ez, -ent",
+                "-i, -i, -a, -iamo, -ate, -ano"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les terminaisons des verbes en -are sont : -o, -i, -a, -iamo, -ate, -ano (ex: parlo, parli, parla, parliamo, parlate, parlano)."
+            },
+            {
+              "id": "q2",
+              "question": "Conjugue le verbe « parlare » à la 1re personne du pluriel (noi) au présent :",
+              "type": "single_choice",
+              "options": ["parlate", "parlano", "parliamo", "parla"],
+              "correctAnswers": [2],
+              "explanation": "La 1re personne du pluriel de tous les verbes réguliers au présent se termine par « -iamo » : « parliamo »."
+            },
+            {
+              "id": "q3",
+              "question": "Complète : « Marco ... la chitarra ogni pomeriggio. » (suonare)",
+              "type": "single_choice",
+              "options": ["suoni", "suona", "suono", "suonate"],
+              "correctAnswers": [1],
+              "explanation": "Marco est un sujet singulier (3e personne) : « Marco suona »."
+            },
+            {
+              "id": "q4",
+              "question": "Complète : « Tu ... spesso con i tuoi genitori ? » (parlare)",
+              "type": "single_choice",
+              "options": ["parla", "parlo", "parli", "parlate"],
+              "correctAnswers": [2],
+              "explanation": "La 2e personne du singulier (tu) se termine par « -i » : « Tu parli »."
+            },
+            {
+              "id": "q5",
+              "question": "Quelles phrases contiennent un verbe en « -are » correctement accordé ?",
+              "type": "multiple_choice",
+              "options": [
+                "Abitiamo a Torino con i nostri cugini.",
+                "I ragazzi ascoltano la musica in camera.",
+                "Tu abita a Napoli.",
+                "Loro parla italiano molto bene."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Abitiamo » (noi) et « ascoltano » (loro) sont parfaitement accordés."
+            },
+            {
+              "id": "q6",
+              "question": "Pour les verbes en « -care » et « -gare » (comme giocare ou pagare), que fait-on devant « -i » et « -iamo » ?",
+              "type": "single_choice",
+              "options": [
+                "On ajoute un « h » pour conserver le son dur [k] ou [g]",
+                "On supprime la consonne c ou g",
+                "On double la consonne suivante",
+                "On ne change rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour garder le son dur : tu giochi, noi giochiamo ; tu paghi, noi paghiamo."
+            },
+            {
+              "id": "q7",
+              "question": "Complète : « Noi ... il conto al cameriere. » (pagare)",
+              "type": "single_choice",
+              "options": ["pagiamo", "paghiamo", "pagamo", "pagano"],
+              "correctAnswers": [1],
+              "explanation": "On insère un « h » pour préserver le son [g] dur : « paghiamo »."
+            },
+            {
+              "id": "q8",
+              "question": "Quelle est la forme de « lavorare » avec « voi » au présent ?",
+              "type": "single_choice",
+              "options": ["lavoriamo", "lavorano", "lavorate", "lavori"],
+              "correctAnswers": [2],
+              "explanation": "Avec « voi », la terminaison est « -ate » : « voi lavorate »."
+            },
+            {
+              "id": "q9",
+              "question": "Complète : « Maria e Sofia ... molto bene in coro. » (cantare)",
+              "type": "single_choice",
+              "options": ["canta", "cantano", "cantiamo", "cantate"],
+              "correctAnswers": [1],
+              "explanation": "Maria et Sofia forment un sujet pluriel (3e personne) : « cantano »."
+            },
+            {
+              "id": "q10",
+              "question": "Traduis en italien : « J'achète un cahier. » (comprare)",
+              "type": "single_choice",
+              "options": [
+                "Compri un quaderno.",
+                "Compra un quaderno.",
+                "Compro un quaderno.",
+                "Compriamo un quaderno."
+              ],
+              "correctAnswers": [2],
+              "explanation": "À la 1re personne du singulier (io), la désinence est « -o » : « Compro un quaderno »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Verbes réguliers des 2e et 3e groupes (-ere, -ire)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles sont les terminaisons du présent de l'indicatif pour les verbes réguliers en « -ere » ?",
+              "type": "single_choice",
+              "options": [
+                "-o, -i, -e, -iamo, -ete, -ono",
+                "-o, -i, -a, -iamo, -ate, -ano",
+                "-o, -e, -i, -iamo, -ite, -ono",
+                "-i, -i, -e, -iamo, -ete, -ono"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les verbes en -ere font : -o, -i, -e, -iamo, -ete, -ono (ex: prendo, prendi, prende, prendiamo, prendete, prendono)."
+            },
+            {
+              "id": "q2",
+              "question": "Complète : « Io ... una lettera al mio amico italiano. » (scrivere)",
+              "type": "single_choice",
+              "options": ["scrivi", "scrive", "scrivo", "scriviamo"],
+              "correctAnswers": [2],
+              "explanation": "Avec « io », la terminaison est « -o » : « scrivo »."
+            },
+            {
+              "id": "q3",
+              "question": "Complète : « Voi ... un caffè al bar del centro. » (prendere)",
+              "type": "single_choice",
+              "options": ["prendiamo", "prendete", "prendono", "prendi"],
+              "correctAnswers": [1],
+              "explanation": "Avec « voi », la terminaison des verbes en -ere est « -ete » : « prendete »."
+            },
+            {
+              "id": "q4",
+              "question": "Quelle particularité ont de nombreux verbes en « -ire » comme « capire » ou « finire » au singulier et à la 3e pers. du pluriel ?",
+              "type": "single_choice",
+              "options": [
+                "Ils intercalent l'élément « -isc- » entre le radical et la terminaison",
+                "Ils deviennent complètement invariables",
+                "Ils changent leur voyelle radicale en -u-",
+                "Ils ne se conjuguent pas au présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les verbes dits à infixe prennent « -isc- » aux personnes du singulier et à la 3e personne du pluriel (capisco, capisci, capisce, capiscono)."
+            },
+            {
+              "id": "q5",
+              "question": "Parmi ces verbes en « -ire », lesquels prennent l'infixe « -isc- » au présent ?",
+              "type": "multiple_choice",
+              "options": ["capire", "finire", "dormire", "partire"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Capire » (capisco) et « finire » (finisco) prennent « -isc- ». « Dormire » (dormo) et « partire » (parto) sont des verbes réguliers simples sans infixe."
+            },
+            {
+              "id": "q6",
+              "question": "Complète : « A che ora ... il treno per Venezia ? » (partire)",
+              "type": "single_choice",
+              "options": ["partisce", "parte", "parto", "partono"],
+              "correctAnswers": [1],
+              "explanation": "« Partire » n'a pas d'infixe : le sujet « il treno » (3e pers. sing.) prend « -e » : « parte »."
+            },
+            {
+              "id": "q7",
+              "question": "Complète : « Lucia ... otto ore ogni notte. » (dormire)",
+              "type": "single_choice",
+              "options": ["dormisce", "dormo", "dorme", "dormono"],
+              "correctAnswers": [2],
+              "explanation": "« Dormire » est sans infixe : 3e personne du singulier « dorme »."
+            },
+            {
+              "id": "q8",
+              "question": "Conjugue « capire » à la 1re personne du singulier (io) au présent :",
+              "type": "single_choice",
+              "options": ["capo", "capisci", "capisco", "capisce"],
+              "correctAnswers": [2],
+              "explanation": "« Capire » prend l'infixe -isc- : io capisco [ka'pisko]."
+            },
+            {
+              "id": "q9",
+              "question": "Complète : « Noi ... i compiti prima di uscire con gli amici. » (finire)",
+              "type": "single_choice",
+              "options": ["finisciamo", "finiamo", "finite", "finiscono"],
+              "correctAnswers": [1],
+              "explanation": "Attention, à « noi » et « voi », l'infixe disparaît : « noi finiamo », « voi finite »."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle est la forme correcte de « leggere » (lire) avec « loro » au présent ?",
+              "type": "single_choice",
+              "options": ["leggete", "leggiamo", "leggono", "legge"],
+              "correctAnswers": [2],
+              "explanation": "Avec « loro », la terminaison des verbes en -ere est « -ono » : « loro leggono »."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Les verbes modaux : dovere, potere, volere",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Par quoi est généralement suivi un verbe modal (dovere, potere, volere) dans une phrase simple ?",
+              "type": "single_choice",
+              "options": [
+                "Par un verbe à l'infinitif",
+                "Par un nom sans article",
+                "Par un adjectif qualificatif",
+                "Par un gérondif obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les verbes modaux sont immédiatement suivis d'un verbe à l'infinitif : « Devo studiare », « Posso uscire »."
+            },
+            {
+              "id": "q2",
+              "question": "Quel verbe modal exprime l'obligation ou la nécessité (« devoir ») ?",
+              "type": "single_choice",
+              "options": ["potere", "dovere", "volere", "sapere"],
+              "correctAnswers": [1],
+              "explanation": "« Dovere » signifie « devoir » : « Devo andare » (Je dois partir)."
+            },
+            {
+              "id": "q3",
+              "question": "Complète : « Oggi io ... studiare per la verifica di storia. » (dovere)",
+              "type": "single_choice",
+              "options": ["puoi", "devo", "voglio", "dobbiamo"],
+              "correctAnswers": [1],
+              "explanation": "La 1re personne du singulier de dovere est « devo »."
+            },
+            {
+              "id": "q4",
+              "question": "Quel verbe modal exprime la volonté ou le désir (« vouloir ») ?",
+              "type": "single_choice",
+              "options": ["potere", "dovere", "volere", "andare"],
+              "correctAnswers": [2],
+              "explanation": "« Volere » signifie « vouloir » : « Voglio un gelato »."
+            },
+            {
+              "id": "q5",
+              "question": "Quelles phrases emploient correctement un verbe modal au présent ?",
+              "type": "multiple_choice",
+              "options": [
+                "Posso uscire con i miei amici stasera.",
+                "Vogliamo imparare l'italiano.",
+                "Dovere studiare molto oggi.",
+                "Lui posso parlare francese."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Posso uscire » (io) et « Vogliamo imparare » (noi) sont correctement conjugués et suivis d'un infinitif."
+            },
+            {
+              "id": "q6",
+              "question": "Complète : « Scusi professore, ... andare al bagno ? » (potere)",
+              "type": "single_choice",
+              "options": ["devo", "posso", "voglio", "puoi"],
+              "correctAnswers": [1],
+              "explanation": "« Posso andare » exprime une demande polie de permission (« Puis-je aller... ? »)."
+            },
+            {
+              "id": "q7",
+              "question": "Quelle est la forme du verbe « volere » pour « noi » au présent ?",
+              "type": "single_choice",
+              "options": ["volete", "vogliono", "vogliamo", "vuole"],
+              "correctAnswers": [2],
+              "explanation": "Avec « noi », la forme est « vogliamo » : « Noi vogliamo partire »."
+            },
+            {
+              "id": "q8",
+              "question": "Complète : « Se vuoi migliorare in italiano, ... fare molti esercizi. » (dovere, 2e pers. sing.)",
+              "type": "single_choice",
+              "options": ["devo", "devi", "deve", "dobbiamo"],
+              "correctAnswers": [1],
+              "explanation": "La 2e personne du singulier (tu) du verbe dovere est « devi »."
+            },
+            {
+              "id": "q9",
+              "question": "Quelle phrase signifie fidèlement « Ils veulent partir en vacances » ?",
+              "type": "single_choice",
+              "options": [
+                "Possono partire in vacanza.",
+                "Vogliono partire in vacanza.",
+                "Devono partire in vacanza.",
+                "Volete partire in vacanza."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Vogliono » est la 3e personne du pluriel de volere : « Vogliono partire »."
+            },
+            {
+              "id": "q10",
+              "question": "Complète : « Ragazzi, voi ... entrare, la porta è aperta. » (potere)",
+              "type": "single_choice",
+              "options": ["possiamo", "potete", "possono", "può"],
+              "correctAnswers": [1],
+              "explanation": "La 2e personne du pluriel (voi) du verbe potere est « potete »."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Pronoms personnels compléments directs (COD)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Où se place en règle générale le pronom personnel COD devant un verbe conjugué simple ?",
+              "type": "single_choice",
+              "options": [
+                "Directement devant le verbe conjugué",
+                "Après le verbe avec un trait d'union",
+                "À la toute fin de la phrase",
+                "Entre le sujet et le nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En italien, les pronoms COD atones se placent juste devant le verbe conjugué : « Lo vedo », « La chiamo »."
+            },
+            {
+              "id": "q2",
+              "question": "Quel pronom COD remplace un nom masculin singulier (ex: « il libro ») ?",
+              "type": "single_choice",
+              "options": ["la", "li", "lo", "le"],
+              "correctAnswers": [2],
+              "explanation": "« Lo » remplace un COD masculin singulier : « Compri il libro ? - Sì, lo compro »."
+            },
+            {
+              "id": "q3",
+              "question": "Complète : « Vedi quel ragazzo laggiù ? Sì, ... vedo molto bene. »",
+              "type": "single_choice",
+              "options": ["la", "lo", "li", "le"],
+              "correctAnswers": [1],
+              "explanation": "« Quel ragazzo » est masculin singulier, on le remplace par « lo »."
+            },
+            {
+              "id": "q4",
+              "question": "Quel pronom COD remplace un nom féminin pluriel (ex: « le chiavi ») ?",
+              "type": "single_choice",
+              "options": ["li", "le", "la", "lo"],
+              "correctAnswers": [1],
+              "explanation": "« Le » remplace un COD féminin pluriel : « Hai le chiavi ? - Sì, le ho »."
+            },
+            {
+              "id": "q5",
+              "question": "Quels pronoms sont des pronoms personnels compléments directs (COD) ?",
+              "type": "multiple_choice",
+              "options": ["lo", "ci", "loro", "di"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Lo » (le) et « ci » (nous) sont des pronoms compléments directs atones."
+            },
+            {
+              "id": "q6",
+              "question": "Complète : « Compri le mele al mercato ? - Sì, ... compro tutte. »",
+              "type": "single_choice",
+              "options": ["li", "lo", "le", "la"],
+              "correctAnswers": [2],
+              "explanation": "« Le mele » est un nom féminin pluriel, remplacé par le pronom « le »."
+            },
+            {
+              "id": "q7",
+              "question": "Dans une phrase négative, où se place le pronom COD par rapport à « non » ?",
+              "type": "single_choice",
+              "options": [
+                "Entre « non » et le verbe (ex: Non lo so)",
+                "Devant « non »",
+                "Après le verbe",
+                "À la fin de la phrase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre strict est : « non » + pronom COD + verbe (« Non lo conosco », « Non la vedo »)."
+            },
+            {
+              "id": "q8",
+              "question": "Que signifie la phrase : « Ti ascolto attentamente » ?",
+              "type": "single_choice",
+              "options": [
+                "Tu m'écoutes attentivement",
+                "Je t'écoute attentivement",
+                "Il t'écoute attentivement",
+                "Nous vous écoutons"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Ti » est le pronom COD de 2e personne (te/toi), et « ascolto » est à la 1re personne : « Je t'écoute »."
+            },
+            {
+              "id": "q9",
+              "question": "Complète : « Conosci Marco e Luca ? - Sì, ... conosco da molti anni. »",
+              "type": "single_choice",
+              "options": ["le", "lo", "li", "la"],
+              "correctAnswers": [2],
+              "explanation": "Marco et Luca forment un groupe masculin pluriel, remplacé par « li » : « li conosco »."
+            },
+            {
+              "id": "q10",
+              "question": "Traduis : « Elle m'appelle tous les soirs. »",
+              "type": "single_choice",
+              "options": [
+                "Mi chiama tutte le sere.",
+                "Chiama mi toutes le sere.",
+                "Me chiama tutte le sere.",
+                "Io chiama tutte le sere."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pronom COD de 1re personne « mi » se place devant le verbe : « Mi chiama »."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Prépositions simples essentielles : di, a, da, in, con, su, per, tra/fra",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Combien y a-t-il de prépositions simples fondamentales en italien ?",
+              "type": "single_choice",
+              "options": [
+                "4",
+                "8 (di, a, da, in, con, su, per, tra/fra)",
+                "12",
+                "6"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La comptine traditionnelle italienne récite les 8 prépositions simples : di, a, da, in, con, su, per, tra/fra."
+            },
+            {
+              "id": "q2",
+              "question": "Quelle préposition utilise-t-on devant un nom de ville pour indiquer où l'on est ou où l'on va ?",
+              "type": "single_choice",
+              "options": ["in", "a", "da", "di"],
+              "correctAnswers": [1],
+              "explanation": "Devant une ville, on utilise toujours « a » : « abito a Roma », « vado a Parigi »."
+            },
+            {
+              "id": "q3",
+              "question": "Quelle préposition emploie-t-on généralement devant un nom de pays ?",
+              "type": "single_choice",
+              "options": ["a", "in", "su", "da"],
+              "correctAnswers": [1],
+              "explanation": "Devant un pays ou une région, on utilise généralement « in » sans article : « vado in Italia », « vivo in Francia »."
+            },
+            {
+              "id": "q4",
+              "question": "Complète : « Questo zaino è ... Matteo. » (pour exprimer la possession)",
+              "type": "single_choice",
+              "options": ["a", "da", "di", "in"],
+              "correctAnswers": [2],
+              "explanation": "L'appartenance et la possession s'expriment avec la préposition « di » (« C'est le sac de Matteo »)."
+            },
+            {
+              "id": "q5",
+              "question": "Quelles phrases utilisent correctement une préposition de lieu ?",
+              "type": "multiple_choice",
+              "options": [
+                "Vado a Milano questo fine settimana.",
+                "Abito in Spagna da due anni.",
+                "Vado in Roma domani mattina.",
+                "Abito a Italia con la mia famiglia."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On utilise « a » devant une ville (« a Milano ») et « in » devant un pays (« in Spagna »)."
+            },
+            {
+              "id": "q6",
+              "question": "Complète : « Vado al cinema ... i miei compagni di scuola. » (accompagnement)",
+              "type": "single_choice",
+              "options": ["su", "con", "di", "da"],
+              "correctAnswers": [1],
+              "explanation": "L'accompagnement (« avec ») se traduit par « con » : « con i miei compagni »."
+            },
+            {
+              "id": "q7",
+              "question": "Quelle préposition exprime la provenance ou le point de départ (« venir de ») ?",
+              "type": "single_choice",
+              "options": ["in", "da", "su", "per"],
+              "correctAnswers": [1],
+              "explanation": "« Da » exprime la provenance géographique : « Vengo da Napoli » (Je viens de Naples)."
+            },
+            {
+              "id": "q8",
+              "question": "Complète : « Il treno ... Napoli parte dal binario 4. » (destination)",
+              "type": "single_choice",
+              "options": ["di", "per", "con", "su"],
+              "correctAnswers": [1],
+              "explanation": "La destination d'un moyen de transport s'exprime avec « per » : « il treno per Napoli »."
+            },
+            {
+              "id": "q9",
+              "question": "Que signifient les prépositions synonymes « tra » et « fra » ?",
+              "type": "single_choice",
+              "options": [
+                "Entre ou dans (un laps de temps)",
+                "Sans",
+                "Contre",
+                "Sous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tra » et « fra » sont parfaitement interchangeables et signifient « entre » ou « d'ici / dans » pour le temps."
+            },
+            {
+              "id": "q10",
+              "question": "Complète : « Il gatto dorme ... divano in salotto. » (sur le)",
+              "type": "single_choice",
+              "options": ["nel", "dal", "sul", "al"],
+              "correctAnswers": [2],
+              "explanation": "« Sur le » se traduit par la préposition contractée « su » + « il » = « sul »."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan : construire et enrichir la phrase simple",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Comment relie-t-on deux propositions affirmatives pour exprimer l'addition (« et ») ?",
+              "type": "single_choice",
+              "options": ["ma", "e (ou ed devant voyelle)", "o", "perché"],
+              "correctAnswers": [1],
+              "explanation": "La conjonction « e » (qui devient parfois « ed » devant un mot commençant par « e ») correspond au français « et »."
+            },
+            {
+              "id": "q2",
+              "question": "Quel mot utilise-t-on pour exprimer l'opposition (« mais ») dans la phrase simple ?",
+              "type": "single_choice",
+              "options": ["ma", "e", "anche", "dunque"],
+              "correctAnswers": [0],
+              "explanation": "« Ma » exprime l'opposition (« mais ») : « Vorrei venire, ma non posso »."
+            },
+            {
+              "id": "q3",
+              "question": "Complète : « Non vengo alla festa ... devo studiare per la verifica. » (cause / parce que)",
+              "type": "single_choice",
+              "options": ["quindi", "ma", "perché", "oppure"],
+              "correctAnswers": [2],
+              "explanation": "« Perché » introduit la cause (« parce que ») : « Non vengo perché devo studiare »."
+            },
+            {
+              "id": "q4",
+              "question": "Quelle phrase est correctement construite et naturelle en italien ?",
+              "type": "single_choice",
+              "options": [
+                "Oggi vado scuola mia bicicletta.",
+                "Oggi vado a scuola in bicicletta.",
+                "Oggi io andare a scuola con bici.",
+                "Vado a scuola con bicicletta mia oggi."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Vado a scuola in bicicletta » respecte l'usage des prépositions de lieu et de moyen de transport."
+            },
+            {
+              "id": "q5",
+              "question": "Quelles phrases sont à la fois grammaticalement correctes et bien coordonnées ?",
+              "type": "multiple_choice",
+              "options": [
+                "Marco studia molto perché vuole superare l'esame.",
+                "La domenica mi sveglio tardi e faccio colazione.",
+                "Marco studia molto ma vuole superare l'esame non.",
+                "La domenica sveglio mi tardi."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les propositions 0 et 1 sont parfaitement construites et bien coordonnées avec « perché » et « e »."
+            },
+            {
+              "id": "q6",
+              "question": "Comment traduit-on « Moi aussi, j'aime la musique italienne » ?",
+              "type": "single_choice",
+              "options": [
+                "Anche a me piace la musica italiana.",
+                "Io anche piace la musica italiana.",
+                "Anche io piaccio la musica italiana.",
+                "Me piace anche musica italiana."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe « piacere » se construit avec un complément indirect : « A me piace » -> « Anche a me piace »."
+            },
+            {
+              "id": "q7",
+              "question": "Complète : « Preferisci bere un tè ... un caffè freddo ? » (choix / ou)",
+              "type": "single_choice",
+              "options": ["ma", "o (oppure)", "e", "perché"],
+              "correctAnswers": [1],
+              "explanation": "La disjonction « ou » se traduit par « o » (ou « oppure »)."
+            },
+            {
+              "id": "q8",
+              "question": "Quelle phrase montre un accord sujet-verbe correct avec « I miei genitori » ?",
+              "type": "single_choice",
+              "options": [
+                "I miei genitori lavorano a Bologna.",
+                "I miei genitori lavora a Bologna.",
+                "I miei genitori lavorate a Bologna.",
+                "I miei genitori lavoriamo a Bologna."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« I miei genitori » est un sujet à la 3e personne du pluriel (loro) : « lavorano »."
+            },
+            {
+              "id": "q9",
+              "question": "Que signifie l'adverbe « purtroppo » souvent placé en début de phrase ?",
+              "type": "single_choice",
+              "options": [
+                "Heureusement",
+                "Probablement",
+                "Malheureusement",
+                "Certainement"
+              ],
+              "correctAnswers": [2],
+              "explanation": "« Purtroppo » signifie « malheureusement » : « Purtroppo non posso venire »."
+            },
+            {
+              "id": "q10",
+              "question": "Complète : « Fa molto caldo oggi, ... bevo molta acqua fresca. » (conséquence : donc)",
+              "type": "single_choice",
+              "options": ["ma", "perché", "se", "quindi"],
+              "correctAnswers": [3],
+              "explanation": "« Quindi » exprime la conséquence logique (« donc / par conséquent »)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

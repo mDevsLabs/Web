@@ -3,21 +3,15 @@ import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { getDueScheduledMessages } from "@/lib/db/queries";
 import { executeScheduledMessage } from "@/lib/planning/executor";
-import { timingSafeCompare } from "@/lib/security/timing";
+import { verifyCronAuth } from "@/lib/security/timing";
 
 export const maxDuration = 300;
 
 async function isAuthorized(request: Request): Promise<boolean> {
-  const cronSecret = process.env.CRON_SECRET;
-  const authHeader = request.headers.get("authorization");
-  const headerSecret = request.headers.get("x-cron-secret");
-
   // Secret uniquement via header (jamais en query : logs/proxy/history).
   // En prod, CRON_SECRET obligatoire (fail-closed).
-  if (cronSecret) {
-    if (timingSafeCompare(authHeader, `Bearer ${cronSecret}`)) return true;
-    if (timingSafeCompare(headerSecret, cronSecret)) return true;
-    return false;
+  if (process.env.CRON_SECRET) {
+    return verifyCronAuth(request);
   }
 
   if (process.env.NODE_ENV === "production") {

@@ -1,0 +1,2403 @@
+{
+  "id": "1ere-chinois-03",
+  "year": "1ere",
+  "subject": "chinois",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Repérer l'essentiel",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "Avant de lire un texte en chinois, quelles démarches sont utiles en première ?",
+              "options": [
+                "Repérer le titre et les dates",
+                "Traduire mot à mot dès la première ligne",
+                "Chercher des mots-clés familiers",
+                "Ignorer les caractères déjà vus"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le titre, les dates et les mots-clés orientent la lecture sans bloquer sur chaque caractère."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "Sur une affiche, 入口 signifie généralement :",
+              "options": ["Sortie", "Entrée", "Interdit", "Accueil"],
+              "correctAnswers": [1],
+              "explanation": "口 est la bouche ou une ouverture ; 入 signifie entrer : 入口 désigne l'entrée."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "Dans un horaire, 上午 désigne :",
+              "options": ["L'après-midi", "Le matin", "Le soir", "La nuit"],
+              "correctAnswers": [1],
+              "explanation": "上 signifie « avant » ou « supérieur » et 午 le midi : le matin avant midi."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "Le repère 2024年 indique :",
+              "options": ["Le mois", "L'année", "L'heure", "Le jour"],
+              "correctAnswers": [1],
+              "explanation": "年 signifie « année » ; le nombre qui le précède est l'année du calendrier."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "Sur un formulaire, 姓名 demande :",
+              "options": [
+                "L'adresse",
+                "Le nom complet",
+                "Le téléphone",
+                "La nationalité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "姓 est le nom de famille et 名 le prénom : ensemble, le nom complet."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "Lire de haut en bas puis de gauche à droite correspond surtout à :",
+              "options": [
+                "Un texte vertical ancien",
+                "Un texte horizontal moderne",
+                "Un menu illustré",
+                "Une carte routière"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les documents modernes en chinois simplifié se lisent le plus souvent horizontalement."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "Dans une notice, 注意 signifie :",
+              "options": ["Merci", "Attention", "Bienvenue", "Fermé"],
+              "correctAnswers": [1],
+              "explanation": "注意 est l'avertissement habituel sur les consignes ou la sécurité."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "Le chiffre arabe 3 correspond en caractères chinois à :",
+              "options": ["二", "三", "四", "五"],
+              "correctAnswers": [1],
+              "explanation": "三 se prononce sān et vaut 3 ; 二 vaut 2, 四 vaut 4."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "Sur une porte, 推 indique qu'il faut :",
+              "options": ["Tirer", "Pousser", "Fermer à clé", "Sonner"],
+              "correctAnswers": [1],
+              "explanation": "推 signifie pousser, souvent affiché sur les portes coulissantes ou battantes."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "Un document « court » en classe vise surtout à :",
+              "options": [
+                "Mémoriser 500 caractères",
+                "Comprendre l'idée générale",
+                "Recopier sans lire",
+                "Traduire avec un dictionnaire ligne par ligne"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En première, l'objectif est la compréhension globale avant la traduction fine."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Signes et lieux",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "Quels indices aident à comprendre un panneau sans tout déchiffrer ?",
+              "options": [
+                "Des pictogrammes universels",
+                "La couleur rouge pour interdit ou danger",
+                "Le pinyin sous chaque phrase longue",
+                "Le contexte du lieu"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Pictogrammes et contexte complètent les caractères que tu reconnais déjà."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "厕所 désigne le plus souvent :",
+              "options": [
+                "La cuisine",
+                "Les toilettes",
+                "La bibliothèque",
+                "La salle des professeurs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "厕 renvoie aux lieux d'aisance ; 所 indique un endroit."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "在学校 signifie :",
+              "options": [
+                "À la maison",
+                "À l'école",
+                "Au marché",
+                "À l'hôpital"
+              ],
+              "correctAnswers": [1],
+              "explanation": "学校 est l'école ; 在 marque la localisation « à »."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "出口 sur un plan de métro signifie :",
+              "options": ["Entrée", "Sortie", "Quai", "Billet"],
+              "correctAnswers": [1],
+              "explanation": "出 signifie sortir ; 口 est l'ouverture : la sortie."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "Le caractère 站 dans 地铁站 signifie :",
+              "options": ["Voiture", "Gare ou station", "Pont", "Route"],
+              "correctAnswers": [1],
+              "explanation": "地铁 est le métro et 站 la station."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "禁止 fum(er) s'écrit souvent 禁止___ :",
+              "options": ["吸烟", "吃饭", "说话", "跑步"],
+              "correctAnswers": [0],
+              "explanation": "吸烟 signifie fumer ; 禁止 interdit l'action."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "图书馆 est :",
+              "options": [
+                "Un restaurant",
+                "Une bibliothèque",
+                "Un parc",
+                "Une banque"
+              ],
+              "correctAnswers": [1],
+              "explanation": "图 désigne documents ou cartes, 书 les livres, 馆 un bâtiment public."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "Sur une affiche, 免费 signifie :",
+              "options": ["Payant", "Gratuit", "Réduit", "Réservé"],
+              "correctAnswers": [1],
+              "explanation": "免 signifie exempté et 费 les frais : sans coût."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "医院 correspond à :",
+              "options": ["Hôtel", "Hôpital", "Musée", "Stade"],
+              "correctAnswers": [1],
+              "explanation": "医 renvoie à la médecine et 院 à un établissement."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "Lire un plan de métro en chinois, tu commences par :",
+              "options": [
+                "Toutes les stations inconnues",
+                "Ta station de départ et d'arrivée",
+                "La publicité",
+                "Les numéros de ligne uniquement en pinyin"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Repérer départ et arrivée structure la lecture du document."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Dates et chiffres",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "Pour lire une date comme 2024年3月8日, tu utilises :",
+              "options": [
+                "年 pour l'année",
+                "月 pour le mois",
+                "日 ou 号 pour le jour",
+                "时 pour la minute"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "年, 月 et 日 (ou 号) encadrent année, mois et jour ; 时 concerne l'heure."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "星期一 est :",
+              "options": ["Dimanche", "Lundi", "Mardi", "Mercredi"],
+              "correctAnswers": [1],
+              "explanation": "星期 introduit le jour de la semaine ; 一 vaut lundi dans l'usage scolaire."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "Le nombre 15 s'écrit :",
+              "options": ["十四", "十五", "十六", "五十"],
+              "correctAnswers": [1],
+              "explanation": "十五 combine 十 (dix) et 五 (cinq)."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "今天 signifie :",
+              "options": ["Hier", "Aujourd'hui", "Demain", "Cette semaine"],
+              "correctAnswers": [1],
+              "explanation": "今 est « maintenant » ou « ce » ; 天 le jour."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "Dans 三点, 点 indique :",
+              "options": [
+                "Un euro",
+                "Une heure (point)",
+                "Un kilomètre",
+                "Une personne"
+              ],
+              "correctAnswers": [1],
+              "explanation": "点 marque l'heure dans l'expression de l'heure."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "2020年 en français s'écrit :",
+              "options": [
+                "Le 20 février",
+                "L'année 2020",
+                "20 h 20",
+                "20 yuan"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le nombre suivi de 年 désigne l'année civile."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "半 dans 三点半 signifie :",
+              "options": [
+                "Et quart",
+                "Et demie",
+                "Moins le quart",
+                "Précisément"
+              ],
+              "correctAnswers": [1],
+              "explanation": "半 est la moitié : trois heures et demie."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "Le caractère 第 devant 一 sert à :",
+              "options": [
+                "Former un ordinal",
+                "Nier une action",
+                "Demander poliment",
+                "Indiquer le passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "第 marque l'ordre : premier, deuxième, etc."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "明天 signifie :",
+              "options": ["Demain", "Matin", "Lune", "Mois prochain"],
+              "correctAnswers": [0],
+              "explanation": "明 évoque le jour suivant avec 天 (jour)."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "Lire un calendrier scolaire chinois, l'ordre logique est :",
+              "options": [
+                "Jour, mois, année",
+                "Année, mois, jour",
+                "Heure, minute, seconde",
+                "Semaine, saison, siècle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'ordre habituel va du plus large au plus précis : année, mois, jour."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Consignes simples",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "Dans une consigne en classe, 请 et 不要 indiquent :",
+              "options": [
+                "Une demande polie",
+                "Une interdiction",
+                "Une question rhétorique",
+                "Un titre de chapitre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "请 invite poliment ; 不要 exprime « ne pas »."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "请坐 signifie :",
+              "options": [
+                "Asseyez-vous, je vous en prie",
+                "Levez-vous",
+                "Sortez",
+                "Parlez fort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "请 rend la phrase polie et 坐 signifie s'asseoir."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "不要说话 demande de :",
+              "options": [
+                "Ne pas parler",
+                "Parler chinois",
+                "Lire à voix haute",
+                "Écrire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "说话 est parler ; 不要 le interdit."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "打开 signifie souvent :",
+              "options": ["Fermer", "Ouvrir", "Couper", "Jeter"],
+              "correctAnswers": [1],
+              "explanation": "打 est ici un verbe auxiliaire et 开 « ouvert » : ouvrir."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "写 dans 请写名字 signifie :",
+              "options": ["Lire", "Écrire", "Écouter", "Regarder"],
+              "correctAnswers": [1],
+              "explanation": "写 est l'action d'écrire, fréquente sur les formulaires."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "听录音 signifie :",
+              "options": [
+                "Enregistrer une vidéo",
+                "Écouter l'enregistrement",
+                "Lire le texte",
+                "Corriger la copie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "听 écouter et 录音 enregistrement audio."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "一起 signifie :",
+              "options": ["Seul", "Ensemble", "Deux fois", "Encore"],
+              "correctAnswers": [1],
+              "explanation": "一起 marque la simultanéité ou la coopération."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "开始 signifie :",
+              "options": ["Finir", "Commencer", "Continuer", "Répéter"],
+              "correctAnswers": [1],
+              "explanation": "开 peut signifier ouvrir ou commencer selon le contexte."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "练习 …… 在笔记本上 demande de :",
+              "options": [
+                "Faire l'exercice sur le cahier",
+                "Jeter le cahier",
+                "Lire sans écrire",
+                "Travailler en groupe obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "练习 est l'exercice ; 笔记本 le cahier."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "Lire une consigne, le verbe principal se trouve souvent :",
+              "options": [
+                "À la fin de la phrase",
+                "Au milieu ou en fin, après le sujet",
+                "Uniquement en pinyin",
+                "Jamais en caractères"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En mandarin, l'ordre sujet–verbe–complément aide à repérer l'action demandée."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Textes du quotidien",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "Un SMS ou message court en chinois peut contenir :",
+              "options": [
+                "Des caractères simplifiés",
+                "Des emojis ou ponctuation",
+                "Un roman entier",
+                "Uniquement du classique sans ponctuation moderne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les messages quotidiens mélangent caractères simplifiés et ponctuation familière."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "你好 dans un message signifie :",
+              "options": ["Au revoir", "Bonjour", "Merci", "Pardon"],
+              "correctAnswers": [1],
+              "explanation": "你好 est la salutation standard « bonjour »."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "谢谢 correspond à :",
+              "options": ["Désolé", "Merci", "De rien", "S'il vous plaît"],
+              "correctAnswers": [1],
+              "explanation": "谢谢 remercie ; 不客气 répond « de rien »."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "对不起 exprime :",
+              "options": ["Félicitations", "Excuses", "Colère", "Surprise"],
+              "correctAnswers": [1],
+              "explanation": "对不起 sert à s'excuser poliment."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "在吗 ? dans un chat demande :",
+              "options": [
+                "Tu es là ?",
+                "Tu pars ?",
+                "Tu manges ?",
+                "Tu dors ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在 indique la présence ; 吗 transforme en question oui/non."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "没问题 signifie :",
+              "options": [
+                "Impossible",
+                "Pas de problème",
+                "Je ne sais pas",
+                "Refus"
+              ],
+              "correctAnswers": [1],
+              "explanation": "没 négation et 问题 problème : tout va bien."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "一会儿见 signifie :",
+              "options": [
+                "À tout de suite / à bientôt",
+                "À jamais",
+                "Hier soir",
+                "Bonne nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一会儿 est « dans un moment » ; 见 revoir quelqu'un."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "电话 est :",
+              "options": ["Téléphone", "Télévision", "Ordinateur", "Courrier"],
+              "correctAnswers": [0],
+              "explanation": "电 électricité et 话 parole : téléphone."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "Lire un menu, 饭 désigne souvent :",
+              "options": [
+                "Le riz ou le repas",
+                "L'eau",
+                "Le dessert uniquement",
+                "La serviette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "饭 renvoie au riz cuit ou au repas en général."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "Pour un document court du quotidien, le pinyin sert surtout à :",
+              "options": [
+                "Remplacer toute lecture des caractères",
+                "Aider à prononcer des mots nouveaux",
+                "Changer le sens du texte",
+                "Indiquer la traduction anglaise"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le pinyin aide à la prononciation pendant que tu consolides les caractères."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Annonces et affiches",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "Sur une affiche culturelle en première, tu peux repérer :",
+              "options": [
+                "Le lieu 地点",
+                "L'heure 时间",
+                "Le nombre de syllabes du français",
+                "Le public visé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lieu et horaire sont des repères fréquents sur les affiches d'événements."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "活动 signifie souvent :",
+              "options": [
+                "Activité ou événement",
+                "Examen final",
+                "Vacances forcées",
+                "Transport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "活动 désigne une activité organisée."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "欢迎参加 signifie :",
+              "options": [
+                "Interdit d'entrer",
+                "Bienvenue, participez",
+                "Annulé",
+                "Complet"
+              ],
+              "correctAnswers": [1],
+              "explanation": "欢迎 accueille et 参加 inviter à participer."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "展览 est :",
+              "options": [
+                "Une exposition",
+                "Un concert de rock uniquement",
+                "Un match",
+                "Une grève"
+              ],
+              "correctAnswers": [0],
+              "explanation": "展 exposer et 览 voir : exposition."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "门票 signifie :",
+              "options": [
+                "Billet d'entrée",
+                "Carte d'identité",
+                "Badge professeur",
+                "Plan de ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "门 porte ou entrée et 票 ticket."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "文化 dans 中国文化 signifie :",
+              "options": ["Culture", "Nature", "Sport", "Politique"],
+              "correctAnswers": [0],
+              "explanation": "文化 est le mot standard pour la culture."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "学生票 indique :",
+              "options": [
+                "Tarif étudiant",
+                "Billet perdu",
+                "Place VIP",
+                "Entrée interdite aux mineurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学生 est l'étudiant ; le billet lui est réservé."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "结束 signifie :",
+              "options": ["Commencer", "Terminer", "Reporter", "Ouvrir"],
+              "correctAnswers": [1],
+              "explanation": "结 et 束 marquent la fin d'une action."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "联系 signifie souvent :",
+              "options": ["Contacter", "Couper", "Oublier", "Vendre"],
+              "correctAnswers": [0],
+              "explanation": "联系 s'emploie pour les coordonnées ou prendre contact."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "Lire une affiche, la taille des caractères suggère :",
+              "options": [
+                "L'importance relative des informations",
+                "L'âge de l'imprimeur",
+                "La difficulté grammaticale uniquement",
+                "Rien du tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le titre est en gros ; les détails pratiques en plus petit."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Mots outils",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "Quels mots outils aident à comprendre un paragraphe court ?",
+              "options": [
+                "和 (et)",
+                "很 (très)",
+                "因为 … 所以 …",
+                "的 (marque du possessif)"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "和 relie des éléments ; 的 structure la possession ou l'attribution."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "我 signifie :",
+              "options": ["Je, moi", "Tu", "Il", "Nous"],
+              "correctAnswers": [0],
+              "explanation": "我 est le pronom de première personne."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "也 signifie :",
+              "options": ["Aussi", "Jamais", "Toujours", "Peut-être"],
+              "correctAnswers": [0],
+              "explanation": "也 place une information en parallèle."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "在 … 学习 signifie :",
+              "options": [
+                "Étudier à (lieu)",
+                "Finir d'étudier",
+                "Refuser d'étudier",
+                "Étudier hier seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在 localise ; 学习 étudier."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "有 signifie :",
+              "options": ["Avoir", "Être sans", "Venir", "Partir"],
+              "correctAnswers": [0],
+              "explanation": "有 exprime la possession ou l'existence."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "没有 signifie :",
+              "options": [
+                "Ne pas avoir",
+                "Avoir beaucoup",
+                "Avoir faim",
+                "Avoir sommeil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "没 nie et 有 avoir : absence."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "什么 est :",
+              "options": ["Quoi / quel", "Pourquoi", "Combien", "Où"],
+              "correctAnswers": [0],
+              "explanation": "什么 interroge sur la chose ou la nature."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "谁 signifie :",
+              "options": ["Qui", "Quand", "Comment", "Lequel"],
+              "correctAnswers": [0],
+              "explanation": "谁 est le pronom interrogatif « qui »."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "因为 … 所以 … exprime :",
+              "options": [
+                "La cause et la conséquence",
+                "Le contraste",
+                "Le temps passé",
+                "Le futur proche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "因为 introduit la cause, 所以 le résultat."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "Repérer 的 dans un nom de document indique souvent :",
+              "options": [
+                "Une relation d'appartenance ou d'attribution",
+                "Une question",
+                "Une interjection",
+                "Un nombre cardinal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "的 lie un déterminant à un nom, comme « de » en français."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Compréhension globale",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "Après une première lecture, il est pertinent de :",
+              "options": [
+                "Reformuler l'idée principale en français",
+                "Noter deux mots inconnus à chercher",
+                "Recopier le texte en calligraphie",
+                "Ignorer le titre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Comprendre l'idée et cibler quelques mots suffit en première."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "文章 signifie :",
+              "options": [
+                "Texte ou article",
+                "Image seule",
+                "Chanson",
+                "Carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "文 écrit et 章 section : un texte."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "主要 signifie :",
+              "options": ["Principal", "Secondaire", "Secret", "Ancien"],
+              "correctAnswers": [0],
+              "explanation": "主要 met l'accent sur l'essentiel."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "介绍 signifie :",
+              "options": [
+                "Présenter / introduire",
+                "Effacer",
+                "Vendre",
+                "Cacher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "介绍 présente une personne, un lieu ou un sujet."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "关于 signifie :",
+              "options": ["À propos de", "Contre", "Sans", "Avant"],
+              "correctAnswers": [0],
+              "explanation": "关于 introduit le thème du document."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "第一段落 désigne :",
+              "options": [
+                "Le premier paragraphe",
+                "La dernière phrase",
+                "Le titre",
+                "La bibliographie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "第 forme l'ordinal et 段落 paragraphe."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "总结 signifie :",
+              "options": [
+                "Résumer",
+                "Inventer",
+                "Débattre",
+                "Traduire mot à mot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "总 regrouper et 结 finir : faire la synthèse."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "意思 signifie :",
+              "options": ["Sens / signification", "Couleur", "Taille", "Prix"],
+              "correctAnswers": [0],
+              "explanation": "意思 est le sens d'un mot ou d'une phrase."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "生词 désigne :",
+              "options": [
+                "Un mot nouveau",
+                "Un verbe régulier",
+                "Une ponctuation",
+                "Un nom propre français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "生 neuf et 词 mot : vocabulaire inconnu."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "Une lecture efficace en première évite :",
+              "options": [
+                "S'arrêter sur chaque caractère inconnu dès la première ligne",
+                "Utiliser le contexte",
+                "Relire une phrase clé",
+                "Comparer au titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut d'abord saisir le fil général, puis approfondir le vocabulaire."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Documents scolaires",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "Sur une feuille d'exercices, tu peux voir :",
+              "options": [
+                "题 (question)",
+                "答案 (réponses, parfois séparées)",
+                "姓名 (nom)",
+                "Uniquement des idéogrammes du Japon"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "题 marque les questions ; 姓名 le nom de l'élève."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "考试 signifie :",
+              "options": ["Examen", "Récréation", "Cantine", "Sortie scolaire"],
+              "correctAnswers": [0],
+              "explanation": "考 tester et 试 essai : examen."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "作业 est :",
+              "options": [
+                "Les devoirs",
+                "Le tableau",
+                "La cloche",
+                "Le directeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "作 faire et 业 travail : travail à la maison."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "班级 signifie :",
+              "options": [
+                "La classe (groupe)",
+                "Le couloir",
+                "La cour de récréation",
+                "Le gymnase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "班 groupe et 级 niveau : la classe scolaire."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "汉语 désigne :",
+              "options": [
+                "La langue chinoise",
+                "Le japonais",
+                "L'anglais",
+                "Le cantonais uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "汉语 nomme le chinois mandarin dans un contexte scolaire."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "课文 est :",
+              "options": [
+                "Le texte de la leçon",
+                "Le cahier de brouillon",
+                "L'emploi du temps",
+                "Le règlement intérieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "课 leçon et 文 texte : passage étudié en classe."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "朗读 signifie :",
+              "options": [
+                "Lire à voix haute",
+                "Écrire en silence",
+                "Écouter sans livre",
+                "Dessiner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "朗 clair et 读 lire : lecture oralisée."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "正确 signifie :",
+              "options": ["Correct", "Faux", "Incomplete", "Illisible"],
+              "correctAnswers": [0],
+              "explanation": "正 juste et 确 certain : réponse correcte."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "错误 signifie :",
+              "options": ["Erreur / incorrect", "Parfait", "Facile", "Rapide"],
+              "correctAnswers": [0],
+              "explanation": "错 faux et 误 tromper : ce qui est faux."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "Lire consignes d'examen en chinois, 分钟 indique :",
+              "options": [
+                "Les minutes (durée)",
+                "Les mètres",
+                "Les pages",
+                "Les points"
+              ],
+              "correctAnswers": [0],
+              "explanation": "分 minute et 钟 horloge : durée en minutes."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse lecture",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "Pour préparer un oral sur un document chinois court, tu peux :",
+              "options": [
+                "Identifier le type de document",
+                "Nommer deux informations concrètes (lieu, date…)",
+                "Apprendre par cœur sans comprendre",
+                "Oublier le public visé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Type de document et faits précis structurent une présentation claire."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "作者 signifie :",
+              "options": [
+                "Auteur",
+                "Lecteur",
+                "Éditeur de mode",
+                "Traducteur automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "作 créer et 者 personne : l'auteur."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "标题 est :",
+              "options": [
+                "Le titre",
+                "La footnote",
+                "La marge",
+                "La couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "标 marquer et 题 thème : titre du texte."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "内容 signifie :",
+              "options": ["Contenu", "Forme", "Couleur", "Prix"],
+              "correctAnswers": [0],
+              "explanation": "内 intérieur et 容 contenir : le contenu."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "简单 signifie :",
+              "options": ["Simple", "Compliqué", "Long", "Dangereux"],
+              "correctAnswers": [0],
+              "explanation": "简 simple et 单 seul : facile à comprendre."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "重要 signifie :",
+              "options": ["Important", "Rare", "Gratuit", "Privé"],
+              "correctAnswers": [0],
+              "explanation": "重 lourd et 要 nécessaire : important."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "根据课文 signifie :",
+              "options": [
+                "Selon le texte",
+                "Contre le texte",
+                "Sans texte",
+                "Avant le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "根据 signifie « selon, d'après »."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "回答 signifie :",
+              "options": ["Répondre", "Questionner", "Silence", "Couper"],
+              "correctAnswers": [0],
+              "explanation": "回 retourner et 答 répondre : réponse."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "最后 signifie :",
+              "options": [
+                "Enfin / à la fin",
+                "Au début",
+                "Deux fois",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "最 le plus et 后 après : en dernier lieu."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "Objectif « lire un document court » en première :",
+              "options": [
+                "Extraire des informations utiles avec des repères culturels",
+                "Traduire intégralement un roman",
+                "Ignorer le contexte chinois",
+                "Ne lire que le pinyin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lecture documentaire combine langue et repères culturels simples."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Géographie et symboles",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "La Chine est souvent associée en classe aux repères :",
+              "options": [
+                "Le fleuve Jaune 黄河",
+                "La Grande Muraille 长城",
+                "Les Alpes",
+                "Le Sahara"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "黄河 et 长城 sont des symboles géographiques et historiques majeurs."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "中国 signifie :",
+              "options": ["Le Japon", "La Chine", "La Corée", "Le Vietnam"],
+              "correctAnswers": [1],
+              "explanation": "中 centre et 国 pays : le Pays du Milieu."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "北京 est la capitale :",
+              "options": [
+                "De la France",
+                "De la Chine",
+                "Du Canada",
+                "De l'Inde"
+              ],
+              "correctAnswers": [1],
+              "explanation": "北京 Pékin est la capitale politique de la Chine."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "上海 est connue comme :",
+              "options": [
+                "Un grand centre économique côtier",
+                "Un désert",
+                "Une île polaire",
+                "Un village montagnard isolé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shanghai est une métropole portuaire et financière."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "长江 est :",
+              "options": [
+                "Le fleuve Bleu (Yangtsé)",
+                "Le Nil",
+                "La Seine",
+                "Le Danube"
+              ],
+              "correctAnswers": [0],
+              "explanation": "长江, le Yangtsé, est le plus long fleuve de Chine."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "熊猫 est :",
+              "options": [
+                "Le panda géant",
+                "Le tigre",
+                "Le dragon uniquement mythique",
+                "Le lapin de Pâques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "熊猫 désigne le panda, emblème animalier connu."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "龙 dans la culture chinoise évoque surtout :",
+              "options": [
+                "Un symbole de puissance et de chance",
+                "Un animal réel domestique",
+                "Un signe de malheur absolu",
+                "Un mot français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dragon est une figure positive, unlike certaines cultures européennes."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "汉字 désigne :",
+              "options": [
+                "Les caractères chinois",
+                "L'alphabet latin",
+                "Le braille",
+                "Le morse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "汉 Chine han et 字 caractère : l'écriture chinoise."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "普通话 correspond au :",
+              "options": [
+                "Mandarin standard",
+                "Cantonais obligatoire partout",
+                "Français officiel",
+                "Japonais parlé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "普通话 est la langue commune enseignée à l'école."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "La superficie de la Chine est :",
+              "options": [
+                "Très vaste, comparable à un continent",
+                "Plus petite que la Belgique",
+                "Identique à l'Islande",
+                "Limitée à une seule ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Chine couvre une immense diversité de paysages et de climats."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Histoire en bref",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "Les dynasties sont des repères parce qu'elles :",
+              "options": [
+                "Structurent le récit historique",
+                "Nomment des périodes politiques",
+                "Remplacent le calendrier grégorien en France",
+                "N'existent que dans la mythologie grecque"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dynastie signifie succession de familles au pouvoir sur des périodes longues."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "朝代 signifie :",
+              "options": ["Dynastie", "Semaine", "Minute", "Couleur"],
+              "correctAnswers": [0],
+              "explanation": "朝 cour et 代 génération : dynastie."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "秦始皇 est associé à :",
+              "options": [
+                "Unification impériale et Grande Muraille",
+                "Invention du croissant parisien",
+                "Découverte de l'Amérique",
+                "Renaissance italienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qin Shi Huang fonde l'empire unifié et renforce les défenses."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "丝绸之路 évoque :",
+              "options": [
+                "La Route de la soie",
+                "La route de la soja uniquement",
+                "Un métro parisien",
+                "Un fleuve"
+              ],
+              "correctAnswers": [0],
+              "explanation": "丝 soie et 路 chemin : échanges Est-Ouest anciens."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "故宫 à Pékin est :",
+              "options": [
+                "La Cité interdite",
+                "Un stade olympique récent",
+                "Une usine",
+                "Un aéroport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "故 ancien et 宫 palais : résidence impériale."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "兵马俑 se trouve près de :",
+              "options": ["Xi'an", "Paris", "Rome", "Le Caire"],
+              "correctAnswers": [0],
+              "explanation": "L'armée de terre cuite garde le mausolée près de Xi'an."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "发明 désigne souvent :",
+              "options": [
+                "Une invention",
+                "Une destruction",
+                "Un voyage",
+                "Un refus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "发 lancer et 明 clair : création technique ou scientifique."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "四大发明 inclut traditionnellement :",
+              "options": [
+                "La poudre, le papier, la boussole, l'imprimerie",
+                "Le téléphone, Internet, la radio, la TV",
+                "Le vélo, la voiture, l'avion, le bateau",
+                "Uniquement la soie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces quatre innovations sont un repère culturel classique au lycée."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "历史 signifie :",
+              "options": ["Histoire", "Géographie", "Musique", "Sport"],
+              "correctAnswers": [0],
+              "explanation": "历 parcours et 史 registre : l'histoire."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "古代 signifie :",
+              "options": [
+                "Antiquité / temps ancien",
+                "Futur",
+                "Midi",
+                "Hier seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "古 ancien et 代 époque : les temps anciens."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Pensée et valeurs",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "Confucius est lié à des idées de :",
+              "options": [
+                "Respect des aînés",
+                "Importance de l'éducation",
+                "Rejet total de la famille",
+                "Interdiction d'étudier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Confucius valorise les rites, la famille et l'étude."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "孔子 est :",
+              "options": [
+                "Confucius",
+                "Mencius uniquement français",
+                "Un empereur du XXe siècle",
+                "Un dieu grec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "孔 est le nom de famille et 子 maître : Confucius."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "家庭 signifie :",
+              "options": ["Famille", "École", "Gouvernement", "Armée"],
+              "correctAnswers": [0],
+              "explanation": "家 maison et 庭 cour : la famille."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "老师 est :",
+              "options": [
+                "Le professeur / maître",
+                "L'élève",
+                "Le directeur uniquement",
+                "Le médecin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "老 vénérable et 师 maître : enseignant respecté."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "礼貌 renvoie à :",
+              "options": ["Politesse", "Violence", "Paresse", "Peur"],
+              "correctAnswers": [0],
+              "explanation": "礼 rite et 貌 apparence : comportement courtois."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "和谐 signifie :",
+              "options": ["Harmonie", "Guerre", "Bruit", "Solitude"],
+              "correctAnswers": [0],
+              "explanation": "和 harmonie et 谐 accord : équilibre social."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "传统 signifie :",
+              "options": ["Tradition", "Mode passagère", "Erreur", "Secret"],
+              "correctAnswers": [0],
+              "explanation": "传 transmettre et 统 système : héritage culturel."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "现代 signifie :",
+              "options": ["Moderne", "Médiéval", "Préhistorique", "Imaginaire"],
+              "correctAnswers": [0],
+              "explanation": "现 présent et 代 époque : époque moderne."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "思想 signifie :",
+              "options": ["Pensée / idée", "Couleur", "Vitesse", "Poids"],
+              "correctAnswers": [0],
+              "explanation": "思 réfléchir et 想 imaginer : la pensée."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "En première, étudier Confucius sert surtout à :",
+              "options": [
+                "Comprendre des valeurs qui structurent la société chinoise",
+                "Apprendre uniquement des dates sans contexte",
+                "Remplacer l'étude de la langue",
+                "Nier la diversité régionale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confucius éclaire familles, école et rites encore présents."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Fêtes et calendrier",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "Le Nouvel An chinois (春节) implique souvent :",
+              "options": [
+                "Retour en famille",
+                "Couleurs rouges et lumières",
+                "Ignorer les ancêtres",
+                "Un calendrier uniquement grégorien fixe"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "春节 mêle retrouvailles familiales et symboles de chance."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "春节 est :",
+              "options": [
+                "La fête du Nouvel An lunaire",
+                "Noël",
+                "Halloween",
+                "Pâques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "春 printemps et 节 fête : début de l'année lunaire."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "红包 est :",
+              "options": [
+                "Une enveloppe rouge avec de l'argent",
+                "Un chapeau vert",
+                "Un billet de train",
+                "Un devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "红 rouge et 包 enveloppe : cadeau monétaire de bon augure."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "中秋节 concerne :",
+              "options": [
+                "La fête de la Lune / mi-automne",
+                "Le premier jour d'été",
+                "Un examen scolaire",
+                "Le carnaval brésilien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "中秋 est au milieu de l'automne, liée à la pleine lune."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "月饼 est :",
+              "options": [
+                "Gâteau de lune",
+                "Soupe de nouilles",
+                "Thé vert seul",
+                "Riz frit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "月 lune et 饼 galette : pâtisserie traditionnelle."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "端午节 évoque :",
+              "options": [
+                "La fête des bateaux-dragons",
+                "La Saint-Valentin",
+                "Le jour de l'an grégorien",
+                "La rentrée scolaire française"
+              ],
+              "correctAnswers": [0],
+              "explanation": "端午 commémore Qu Yuan avec courses de bateaux-dragons."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "农历 désigne :",
+              "options": [
+                "Le calendrier lunaire traditionnel",
+                "Le calendrier républicain",
+                "L'heure d'été",
+                "Le fuseau UTC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "农 agricole et 历 calendrier : calendrier luni-solaire."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "过年 signifie :",
+              "options": [
+                "Passer le Nouvel An",
+                "Passer un examen",
+                "Voyager seul",
+                "Déménager"
+              ],
+              "correctAnswers": [0],
+              "explanation": "过 traverser et 年 année : célébrer le Nouvel An."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "祝福 signifie :",
+              "options": [
+                "Souhaiter bonheur / bénédiction",
+                "Interdire",
+                "Mentir",
+                "Oublier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "祝 prier pour et 福 bonheur : formule de vœux."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "En classe, comparer 春节 et Noël permet de :",
+              "options": [
+                "Voir des rituels familiaux et symboliques communs et différents",
+                "Prouver que les cultures sont identiques",
+                "Éviter toute réflexion interculturelle",
+                "Supprimer le calendrier lunaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparer les fêtes développe la compétence culturelle."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Art et patrimoine",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "La calligraphie chinoise est :",
+              "options": [
+                "Art de l'écriture au pinceau",
+                "Patrimoine esthétique majeur",
+                "Uniquement de l'imprimerie numérique",
+                "Interdite au lycée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "书法 allie discipline, esthétique et culture littéraire."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "书法 signifie :",
+              "options": [
+                "Calligraphie",
+                "Cuisine",
+                "Architecture",
+                "Natation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "书 écrire et 法 méthode : art calligraphique."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "中国画 désigne :",
+              "options": [
+                "La peinture chinoise traditionnelle",
+                "La photo numérique",
+                "La bande dessinée franco-belge",
+                "La sculpture grecque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "中国 Chine et 画 peinture : arts picturaux classiques."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "京剧 est :",
+              "options": [
+                "L'opéra de Pékin",
+                "Un jeu vidéo",
+                "Un sport de ballon",
+                "Une marque de voiture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "京 Pékin et 剧 théâtre : opéra traditionnel."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "音乐 signifie :",
+              "options": ["Musique", "Peinture", "Sculpture", "Jardinage"],
+              "correctAnswers": [0],
+              "explanation": "音 son et 乐 plaisir : musique."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "功夫 évoque souvent :",
+              "options": [
+                "Arts martiaux chinois",
+                "Pâtisserie",
+                "Poésie uniquement",
+                "Astronomie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "功夫 désigne le travail martial et la discipline."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "遗产 dans 文化遗产 signifie :",
+              "options": ["Patrimoine", "Dette", "Frontière", "Usine"],
+              "correctAnswers": [0],
+              "explanation": "文化 culture et 遗产 héritage : patrimoine culturel."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "博物馆 est :",
+              "options": ["Musée", "Maison", "Marché", "Gare"],
+              "correctAnswers": [0],
+              "explanation": "博 vaste et 物 objet : lieu de conservation."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "古代建筑 renvoie à :",
+              "options": [
+                "Architecture ancienne",
+                "Mode contemporaine",
+                "Publicité",
+                "Météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "建筑 construction : temples, palais, ponts historiques."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "Protéger le patrimoine, c'est :",
+              "options": [
+                "Préserver mémoire et identité culturelle",
+                "Détruire les vieux objets",
+                "Interdire les musées",
+                "Oublier l'histoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le patrimoine relie passé et présent pour les générations futures."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Gastronomie et quotidien",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "La cuisine chinoise se caractérise par :",
+              "options": [
+                "Grande diversité régionale",
+                "Usage du riz ou des nouilles selon les zones",
+                "Un seul plat identique partout",
+                "Absence de légumes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "North-south et provinces offrent des styles très variés."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "茶 signifie :",
+              "options": ["Thé", "Café", "Lait", "Jus d'orange"],
+              "correctAnswers": [0],
+              "explanation": "茶 désigne le thé, boisson centrale dans la société."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "筷子 sont :",
+              "options": ["Baguettes", "Fourchettes", "Couteaux", "Cuillères"],
+              "correctAnswers": [0],
+              "explanation": "筷子 sont les baguettes pour manger."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "饺子 sont :",
+              "options": [
+                "Raviolis bouillis ou vapeur",
+                "Crêpes sucrées",
+                "Pizza",
+                "Sushi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "饺子, jiaozi, sont des raviolis, symboles du Nouvel An."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "北京烤鸭 est :",
+              "options": [
+                "Canard laqué de Pékin",
+                "Soupe de tomates",
+                "Salade",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plat emblématique de la cuisine du Nord."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "味道 signifie :",
+              "options": ["Goût", "Couleur", "Forme", "Prix"],
+              "correctAnswers": [0],
+              "explanation": "味 saveur et 道 voie : sensation gustative."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "餐厅 est :",
+              "options": ["Restaurant", "Bibliothèque", "Parc", "Banque"],
+              "correctAnswers": [0],
+              "explanation": "餐 repas et 厅 salle : lieu pour manger."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "请客 signifie :",
+              "options": [
+                "Inviter à manger / offrir le repas",
+                "Refuser de payer",
+                "Cuisiner seul sans partager",
+                "Fermer le restaurant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "请客 exprime l'hospitalité en offrant un repas."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "南北差异 évoque :",
+              "options": [
+                "Différences entre Nord et Sud",
+                "Identité strictement identique partout",
+                "Uniquement la météo en Europe",
+                "La frontière franco-allemande"
+              ],
+              "correctAnswers": [0],
+              "explanation": "南 sud et 北 nord : contrastes culturels et culinaires."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "Parler cuisine en cours de chinois permet :",
+              "options": [
+                "Relier langue, culture et vécu quotidien",
+                "Éviter tout vocabulaire",
+                "Remplacer la grammaire",
+                "Ignorer les régions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La gastronomie est un vecteur concret de civilisation."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Société contemporaine",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "La Chine contemporaine combine :",
+              "options": [
+                "Héritage traditionnel",
+                "Modernisation urbaine et technologique",
+                "Absence totale de villes",
+                "Uniquement la vie agricole sans changement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Métropoles dynamiques coexistent avec traditions et campagnes."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "人口 signifie :",
+              "options": ["Population", "Climat", "Monnaie", "Religion unique"],
+              "correctAnswers": [0],
+              "explanation": "人 personnes et 口 bouches : population."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "发展 signifie :",
+              "options": [
+                "Développement",
+                "Régression",
+                "Silence",
+                "Fermeture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "发 lancer et 展 déployer : croissance."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "经济 est :",
+              "options": ["Économie", "Poésie", "Sport", "Musée"],
+              "correctAnswers": [0],
+              "explanation": "经 gérer et 济 traverser : activité économique."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "科技 signifie :",
+              "options": [
+                "Science et technologie",
+                "Agriculture seule",
+                "Artisanat du Moyen Âge",
+                "Théâtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "科 science et 技 technique : innovation."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "互联网 désigne :",
+              "options": [
+                "Internet",
+                "Chemin de fer uniquement",
+                "Télégramme",
+                "Carte papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "互 mutuel et 联网 réseau : internet."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "手机 est :",
+              "options": [
+                "Téléphone portable",
+                "Télévision",
+                "Radio",
+                "Horloge solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "手 main et 机 appareil : mobile."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "环境 signifie :",
+              "options": [
+                "Environnement",
+                "Histoire",
+                "Grammaire",
+                "Calligraphie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "环 entourer et 境 limite : milieu naturel."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "变化 signifie :",
+              "options": ["Changement", "Immobilité", "Copie", "Erreur"],
+              "correctAnswers": [0],
+              "explanation": "变 transformer et 化 devenir : évolution."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "Comprendre la Chine d'aujourd'hui implique :",
+              "options": [
+                "Relier modernité et traditions",
+                "Réduire le pays à un cliché",
+                "Ignorer la diversité interne",
+                "Ne regarder que les statistiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une approche équilibrée évite les stéréotypes."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Langue et écriture",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "L'écriture chinoise se repère par :",
+              "options": [
+                "Des caractères logographiques",
+                "Le pinyin pour la prononciation",
+                "Un alphabet de 26 lettres obligatoire pour écrire",
+                "L'absence de tons"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chaque caractère porte du sens ; le pinyin aide à parler."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "简体字 désigne :",
+              "options": [
+                "Caractères simplifiés",
+                "Caractères égyptiens",
+                "Chiffres romains",
+                "Cyrillique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "简体 est la forme simplifiée en usage continental."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "繁体字 sont :",
+              "options": [
+                "Caractères traditionnels",
+                "Emojis",
+                "Notes de musique",
+                "Signes mathématiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "繁 complexe : formes utilisées à Taiwan, Hong Kong, etc."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "拼音 est :",
+              "options": [
+                "Transcription phonétique latine",
+                "Un dialecte",
+                "Une monnaie",
+                "Un plat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "拼 assembler et 音 son : romanisation officielle."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "声调 en mandarin :",
+              "options": [
+                "Modifient le sens des syllabes",
+                "Sont décoratifs sans effet",
+                "N'existent qu'en français",
+                "Remplacent les caractères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quatre tons principaux distinguent des mots homophones."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "部首 aide à :",
+              "options": [
+                "Classer les caractères dans le dictionnaire",
+                "Compter en euros",
+                "Lire le latin",
+                "Choisir un métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le radical est un repère pour retrouver un caractère."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "笔画 signifie :",
+              "options": [
+                "Traits du caractère",
+                "Paragraphes",
+                "Pages",
+                "Chapitres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "笔 pinceau et 画 trait : ordre et nombre de traits."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "中文 signifie :",
+              "options": [
+                "Langue chinoise",
+                "Langue anglaise",
+                "Langue arabe",
+                "Langue russe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "中 Chine et 文 langue écrite : le chinois."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "翻译 signifie :",
+              "options": ["Traduire", "Effacer", "Chanter", "Peindre"],
+              "correctAnswers": [0],
+              "explanation": "翻 retourner et 译 interpréter : traduction."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "En première, lier caractère et culture, c'est :",
+              "options": [
+                "Voir comment l'écriture porte histoire et sens",
+                "Apprendre sans contexte",
+                "Refuser le pinyin",
+                "Copier sans lire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les caractères relient langue et civilisation."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Échanges France-Chine",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "Les relations France-Chine au lycée peuvent passer par :",
+              "options": [
+                "Échanges scolaires ou projets",
+                "Découverte d'œuvres traduites",
+                "Négation de toute différence culturelle",
+                "Interdiction de parler chinois"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Échanges et lectures traduites enrichissent la compétence culturelle."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "法国 est :",
+              "options": ["La France", "La Chine", "L'Italie", "L'Espagne"],
+              "correctAnswers": [0],
+              "explanation": "法 loi/civilisation et 国 pays : France."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "朋友 signifie :",
+              "options": ["Ami", "Ennemi", "Professeur", "Vendeur"],
+              "correctAnswers": [0],
+              "explanation": "朋 et 友 ensemble désignent l'amitié."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "交流 signifie :",
+              "options": [
+                "Échange / communication",
+                "Guerre",
+                "Silence",
+                "Fuite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "交 croiser et 流 couler : interaction."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "合作 signifie :",
+              "options": [
+                "Coopération",
+                "Concurrence seule",
+                "Isolement",
+                "Refus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "合 réunir et 作 agir : travailler ensemble."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "留学 signifie :",
+              "options": [
+                "Étudier à l'étranger",
+                "Dormir en classe",
+                "Quitter l'école définitivement",
+                "Refuser les langues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "留 rester et 学 étudier : séjour d'études."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "签证 est :",
+              "options": [
+                "Visa",
+                "Billet de métro",
+                "Carte bibliothèque",
+                "Diplôme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "签 signer et 证 certificat : autorisation de voyage."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "参观 signifie :",
+              "options": ["Visiter", "Cacher", "Vendre", "Détruire"],
+              "correctAnswers": [0],
+              "explanation": "参 joindre et 观 regarder : visite guidée ou libre."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "了解 signifie :",
+              "options": [
+                "Comprendre / connaître",
+                "Oublier",
+                "Critiquer sans lire",
+                "Refuser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "了 achever et 解 dénouer : saisir un sujet."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "Un repère de civilisation en échange scolaire sert à :",
+              "options": [
+                "Éviter les malentendus et respecter l'autre",
+                "Imposer une seule culture",
+                "Ignorer les règles locales",
+                "Refuser le dialogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Connaître des repères facilite le respect mutuel."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse civilisation",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "Pour présenter un repère de civilisation en oral, tu peux :",
+              "options": [
+                "Nommer le repère en chinois et en français",
+                "Expliquer pourquoi il est significatif",
+                "Réciter sans lien avec la culture",
+                "Oublier toute illustration concrète"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nom bilingue et pertinence culturelle structurent l'exposé."
+            },
+            {
+              "id": 2,
+              "type": "single_choice",
+              "question": "世界 signifie :",
+              "options": ["Monde", "Ville", "Quartier", "Maison"],
+              "correctAnswers": [0],
+              "explanation": "世 génération et 界 limite : le monde."
+            },
+            {
+              "id": 3,
+              "type": "single_choice",
+              "question": "不同 signifie :",
+              "options": ["Différent", "Identique", "Proche", "Facile"],
+              "correctAnswers": [0],
+              "explanation": "不 pas et 同 même : différence."
+            },
+            {
+              "id": 4,
+              "type": "single_choice",
+              "question": "相同 signifie :",
+              "options": ["Identique / similaire", "Opposé", "Rare", "Cher"],
+              "correctAnswers": [0],
+              "explanation": "相 mutuel et 同 même : points communs."
+            },
+            {
+              "id": 5,
+              "type": "single_choice",
+              "question": "尊重 signifie :",
+              "options": ["Respecter", "Moquer", "Ignorer", "Copier"],
+              "correctAnswers": [0],
+              "explanation": "尊 honorer et 重 prendre au sérieux : respect."
+            },
+            {
+              "id": 6,
+              "type": "single_choice",
+              "question": "多元 signifie :",
+              "options": ["Divers / pluralité", "Uniforme", "Unique", "Fermé"],
+              "correctAnswers": [0],
+              "explanation": "多 multiple et 元 élément : diversité."
+            },
+            {
+              "id": 7,
+              "type": "single_choice",
+              "question": "全球 signifie :",
+              "options": [
+                "Global / mondial",
+                "Local uniquement",
+                "Secret",
+                "Privé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "全 entier et 球 globe : échelle planétaire."
+            },
+            {
+              "id": 8,
+              "type": "single_choice",
+              "question": "未来 signifie :",
+              "options": ["Avenir / futur", "Passé lointain", "Hier", "Midi"],
+              "correctAnswers": [0],
+              "explanation": "未 pas encore et 来 venir : ce qui vient."
+            },
+            {
+              "id": 9,
+              "type": "single_choice",
+              "question": "希望 signifie :",
+              "options": ["Espoir / souhaiter", "Peur", "Colère", "Honte"],
+              "correctAnswers": [0],
+              "explanation": "希 rare/précieux et 望 regarder : espérer."
+            },
+            {
+              "id": 10,
+              "type": "single_choice",
+              "question": "L'unité « Culture et documents » en première vise à :",
+              "options": [
+                "Lire des documents simples et situer des repères de civilisation chinoise",
+                "Devenir sinologue en une semaine",
+                "N'étudier que la grammaire sans culture",
+                "Remplacer le français par le chinois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture documentaire et repères culturels se renforcent mutuellement."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

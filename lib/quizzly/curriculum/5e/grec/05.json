@@ -1,0 +1,2523 @@
+{
+  "id": "5e-grec-05",
+  "year": "5e",
+  "subject": "grec",
+  "title": "Le passé en grec ancien",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux vérités sur χθές (chthés) :",
+              "explanation": "χθés signifie hier et sert à situer la veille dans le récit.",
+              "options": [
+                "Il signifie hier",
+                "Il signifie demain",
+                "Il situe la veille",
+                "Il remplace le verbe"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "χθές (chthés) en français :",
+              "explanation": "Traduction usuelle : hier.",
+              "options": ["hier", "demain", "maintenant", "ensuite"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "εἶδε (eide) veut dire :",
+              "explanation": "Aoriste simple : il ou elle a vu.",
+              "options": [
+                "il/elle a vu",
+                "il/elle voit",
+                "il/elle verra",
+                "il/elle entend"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Adverbe de la veille :",
+              "explanation": "χθés (chthés) marque hier.",
+              "options": [
+                "σήμερον (sémeron)",
+                "χθές (chthés)",
+                "αὔριον (aúrion)",
+                "ἔπειτα (epeita)"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "χθὲς εἶδον (chthès eidon) :",
+              "explanation": "J ai vu hier.",
+              "options": [
+                "Je vois aujourd hui",
+                "J ai vu hier",
+                "Je verrai demain",
+                "Je n ai pas vu"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Fait d hier : le verbe est surtout à l",
+              "explanation": "L aoriste rend l action accomplie.",
+              "options": ["aoriste", "présent", "futur", "infinitif seul"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "εἶδε (eide) vient du verbe :",
+              "explanation": "ὁράω (horáô), voir.",
+              "options": [
+                "ὁράω (horáô)",
+                "τρέχω (trékhô)",
+                "πίνω (pínô)",
+                "λέγω (légô)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "σήμερον (sémeron) et χθés (chthés) :",
+              "explanation": "Dates opposées : aujourd hui et hier.",
+              "options": [
+                "dates opposées",
+                "identiques",
+                "prépositions",
+                "mois"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Personne de εἶδε (eide) :",
+              "explanation": "3e personne du singulier.",
+              "options": [
+                "1re singulier",
+                "2e singulier",
+                "3e singulier",
+                "1re pluriel"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase qui situe l action hier :",
+              "explanation": "χθès ἔπαιξε place le jeu hier.",
+              "options": [
+                "νῦν παίζω (nun paízô)",
+                "χθὲς ἔπαιξε (chthès épaike)",
+                "αὔριον παίξω (aúrion paíxô)",
+                "ἀεὶ παίζει (aeí paízei)"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux idées vraies sur l aoriste en 5e :",
+              "explanation": "Accompli et adapté au récit d hier.",
+              "options": [
+                "Action accomplie",
+                "Toujours futur",
+                "Convient au récit d hier",
+                "Remplace les noms"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ὁ πατὴρ χθὲς εἶδε (ho patêr chthès eide) :",
+              "explanation": "Le père a vu hier.",
+              "options": [
+                "Le père verra demain",
+                "Le père a vu hier",
+                "Le père parle maintenant",
+                "Personne n a vu"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ἐχθές (echthés) :",
+              "explanation": "Variante qui garde le sens hier.",
+              "options": ["aussi hier", "demain", "ensuite", "ici"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "αὔριον (aúrion) signifie :",
+              "explanation": "Adverbe demain.",
+              "options": ["hier", "demain", "alors", "jamais"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle forme est un aoriste ?",
+              "explanation": "ἦλθe = il ou elle est venu(e).",
+              "options": [
+                "ἔρχεται (érkhetai)",
+                "ἦλθε (êlthe)",
+                "ἐλεύσεται (eleusetai)",
+                "ἔρχομαι (érkhomai)"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "χθὲς ἔγραψα (chthès égrapsa) :",
+              "explanation": "J ai écrit hier.",
+              "options": [
+                "J écris aujourd hui",
+                "J ai écrit hier",
+                "J écrirai",
+                "Je n écris pas"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "εἶδε (eide) ne décrit pas :",
+              "explanation": "Pas une vue au présent.",
+              "options": [
+                "une vue d hier",
+                "une vue passée",
+                "une vue en ce moment",
+                "une vue du temple"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "νῦν (nun) signifie :",
+              "explanation": "Maintenant.",
+              "options": ["hier", "maintenant", "ensuite", "alors"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Raconter hier combine :",
+              "explanation": "χθés et aoriste.",
+              "options": [
+                "χθés (chthés) et aoriste",
+                "futur et νῦν (nun)",
+                "présent seul",
+                "αὔριον (aúrion) seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "εἶδε τὸν ἵππον (eide ton híppon) : objet",
+              "explanation": "Accusatif : le cheval.",
+              "options": ["le cheval", "la maison", "la mer", "le vent"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux affirmations exactes sur εἶδε (eide) :",
+              "explanation": "Aoriste de voir, 3e singulier.",
+              "options": [
+                "Forme du verbe voir",
+                "Il ou elle a vu",
+                "Adverbe de lieu",
+                "Toujours futur"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L aoriste indique en général :",
+              "explanation": "Une action terminée.",
+              "options": [
+                "action en cours",
+                "action accomplie",
+                "couleur",
+                "question"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Phrase au passé d hier :",
+              "explanation": "χθès ἤκουσa = j ai entendu hier.",
+              "options": [
+                "χθὲς ἤκουσα (chthès êkousa)",
+                "νῦν ἀκούω (nun akoúô)",
+                "αὔριον ἀκούσω (aúrion akoúsô)",
+                "ἀεὶ ἀκούω (aeí akoúô)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un récit d hier commence souvent par :",
+              "explanation": "χθés ouvre le cadre.",
+              "options": [
+                "χθés (chthés)",
+                "μή (mê) seul",
+                "ὦ (ô) seul",
+                "οὐ (ou) pour la date"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ἡ μήτηρ χθès ἔμαθε (hê mêtêr chthès emathe) :",
+              "explanation": "La mère a appris hier.",
+              "options": [
+                "La mère apprend demain",
+                "La mère a appris hier",
+                "La mère n apprend jamais",
+                "La mère enseigne maintenant"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mot n indique pas hier ?",
+              "explanation": "ἔπειτα = ensuite.",
+              "options": [
+                "χθés (chthés)",
+                "ἐχθés (echthés)",
+                "χθès (chthès)",
+                "ἔπειτα (epeita)"
+              ],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "χθès ἦλθες (chthès êlthes) :",
+              "explanation": "Tu es venu(e) hier.",
+              "options": [
+                "Tu viens",
+                "Tu es venu(e) hier",
+                "Tu viendras",
+                "Ils sont venus"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "εἶδον (eidon) à la 1re personne :",
+              "explanation": "J ai vu.",
+              "options": ["je vois", "j ai vu", "tu as vu", "nous courons"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Après χθés (chthés), on attend :",
+              "explanation": "Un verbe au passé, souvent l aoriste.",
+              "options": [
+                "un verbe au passé",
+                "uniquement un nom",
+                "le futur obligatoire",
+                "rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Εἶδε τὴν θάλατταν (eide tên thálassan) sans adverbe :",
+              "explanation": "Il ou elle a vu la mer.",
+              "options": [
+                "voit maintenant",
+                "a vu la mer",
+                "n a jamais vu",
+                "nage"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux outils pour raconter hier :",
+              "explanation": "χθés date le jour, l aoriste le fait.",
+              "options": [
+                "χθés (chthés)",
+                "verbe à l aoriste",
+                "αὔριον (aúrion) seul",
+                "νῦν (nun) pour le passé"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Contraire temporal de χθés (chthés) ici :",
+              "explanation": "αὔριον = demain.",
+              "options": [
+                "αὔριον (aúrion)",
+                "καί (kaí)",
+                "ἐν (en)",
+                "μετά (metá)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Préciser hier avec il a vu : ajouter",
+              "explanation": "χθés (chthés).",
+              "options": [
+                "χθés (chthés)",
+                "ὦ (ô)",
+                "ἰδού (idoú) seul",
+                "μή (mê)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "χθès ἐν τῇ ἀγορᾷ (chthès en tê agora) situe :",
+              "explanation": "Hier au marché.",
+              "options": [
+                "demain à l école",
+                "hier au marché",
+                "maintenant à la mer",
+                "jamais"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Aoriste 3e singulier :",
+              "explanation": "ἔφαγε = il ou elle a mangé.",
+              "options": [
+                "τρώγει (trôgei)",
+                "ἔφαγε (éphage)",
+                "φάγεται (phagetai)",
+                "ἐσθίει (esthíei)"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Οὐκ εἶδε χθés (ouk eide chthés) :",
+              "explanation": "Il ou elle n a pas vu hier.",
+              "options": [
+                "a tout vu hier",
+                "n a pas vu hier",
+                "verra demain",
+                "voit double"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "εἶπε (eîpe), εἶδε (eide), ἦλθε (êlthe) partagent :",
+              "explanation": "Temps du fait accompli.",
+              "options": [
+                "fait accompli",
+                "présent continu",
+                "futur seul",
+                "infinitif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "χθès ἐπαίξαμεν (chthès epaíxamen) :",
+              "explanation": "Nous avons joué hier.",
+              "options": [
+                "nous jouons demain",
+                "nous avons joué hier",
+                "vous jouez seuls",
+                "ils ne jouent pas"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ordre clair dans un petit récit :",
+              "explanation": "χθés, sujet, aoriste.",
+              "options": [
+                "χθés — sujet — aoriste",
+                "futur — adjectif",
+                "sans verbe",
+                "αὔριον — présent pour hier"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L aoriste εἶδε (eide) présente la vision :",
+              "explanation": "Comme déjà accomplie.",
+              "options": [
+                "en train de durer",
+                "déjà accomplie",
+                "impossible",
+                "future obligatoirement"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases qui situent l action hier :",
+              "explanation": "χθés avec aoriste.",
+              "options": [
+                "χθès ἔλυσα (chthès élusa)",
+                "νῦν λύω (nun lúô)",
+                "χθès εὗρε (chthès heûre)",
+                "αὔριον εὑρήσω (aúrion heurêsô)"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Χθès ὁ κύριος εἶπε (chthès ho kúrios eîpe) :",
+              "explanation": "Le maître a dit hier.",
+              "options": [
+                "dira demain",
+                "a dit hier",
+                "parle toujours",
+                "silence"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "εἶδε (eide) avec χθés (chthés) : la vue date",
+              "explanation": "D hier.",
+              "options": ["du futur", "d hier", "sans date", "d aujourd hui"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour ils ont vu hier :",
+              "explanation": "χθès εἶδον possible en 5e.",
+              "options": [
+                "χθès εἶδον (chthès eidon)",
+                "αὔριον ὁρῶ (aúrion horô)",
+                "νῦν βλέπω seul",
+                "μή eide affirmatif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mot qui n est pas hier :",
+              "explanation": "ἔπειτα enchaîne.",
+              "options": [
+                "χθés (chthés)",
+                "ἔπειτα (epeita)",
+                "ἐχθés (echthés)",
+                "χθès (chthès)"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Récit d école d hier, première ligne :",
+              "explanation": "Χθès ἐν τῷ σχολείῳ.",
+              "options": [
+                "Χθὲς ἐν τῷ σχολείῳ (chthès en tô skholeíô)",
+                "Αὔριον ἐν τῷ σχολείῳ",
+                "Οὐδέποτε seul",
+                "Νῦν αὔριον"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "χθés avec aoriste car hier est :",
+              "explanation": "Action accomplie.",
+              "options": ["future", "accomplie", "interdite", "sans verbe"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Εἶδες τὸν φίλον χθés (eides ton phílon chthés) :",
+              "explanation": "Tu as vu ton ami hier.",
+              "options": [
+                "verras demain",
+                "as vu l ami hier",
+                "vois maintenant",
+                "ami absent"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Aoriste entendre 3e singulier :",
+              "explanation": "ἤκουσε.",
+              "options": [
+                "ἀκούει (akoúei)",
+                "ἤκουσε (êkouse)",
+                "ἀκούσει (akoúsei)",
+                "ἀκούσαι (akoúsai)"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Erreur à éviter après χθés (chthés) :",
+              "explanation": "Présent pour l action d hier.",
+              "options": ["présent pour hier", "aoriste", "sujet", "lieu"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "εἶδε (eide) peut décrire :",
+              "explanation": "Il ou elle a vu stade ou lune.",
+              "options": [
+                "Il a vu le stade",
+                "Elle a vu la lune",
+                "Nous mangeons",
+                "Ils courront"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "σήμερον (sémeron) s oppose à :",
+              "explanation": "χθés (chthés).",
+              "options": ["χθés (chthés)", "τὸ (to)", "ὁ (ho)", "ἡ (hê)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "χθès ἔπεσον (chthès épeson) :",
+              "explanation": "Je suis tombé(e) hier.",
+              "options": [
+                "je tombe",
+                "tombé(e) hier",
+                "tomberai",
+                "ne tombe pas"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Graphie du mot entendu chthés :",
+              "explanation": "χθés (chthés).",
+              "options": [
+                "αὔριον (aúrion)",
+                "χθés (chthés)",
+                "τότε (tote)",
+                "νῦν (nun)"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Χθès ὁ μαθητὴς ἀπῆλθε (chthès ho mathêtês apêlthe) :",
+              "explanation": "L élève est parti hier.",
+              "options": ["part demain", "parti hier", "reste", "absent"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Passé d hier vs maintenant :",
+              "explanation": "Adverbe et temps du verbe.",
+              "options": [
+                "adverbe et temps",
+                "ponctuation",
+                "sans sujet",
+                "syllabes FR"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Εἶδε τὰς βίβλους (eide tas bíblous) :",
+              "explanation": "Il ou elle a vu les livres.",
+              "options": [
+                "a vu les livres",
+                "livres mangent",
+                "demain",
+                "sans livres"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Après χθés en récit oral :",
+              "explanation": "Faits à l aoriste.",
+              "options": [
+                "faits à l aoriste",
+                "adjectifs seuls",
+                "futur",
+                "rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pas un marqueur de hier :",
+              "explanation": "τότε = alors.",
+              "options": [
+                "χθés (chthés)",
+                "ἐχθés (echthés)",
+                "τότε (tote)",
+                "χθès (chthès)"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réviser u1 : relier surtout",
+              "explanation": "χθés et aoriste.",
+              "options": [
+                "τότε et futur",
+                "χθés et aoriste",
+                "αὔριον et présent",
+                "μή et infinitif"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Traduire hier il a couru : deux besoins",
+              "explanation": "χθés et aoriste de courir.",
+              "options": [
+                "χθés (chthés)",
+                "aoriste de courir",
+                "αὔριον (aúrion) seul",
+                "présent τρέχει pour hier"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phrase au présent, pas hier :",
+              "explanation": "νῦν βλέπω = maintenant.",
+              "options": [
+                "χθès εἶδον (chthès eidon)",
+                "χθès εἶδε (chthès eide)",
+                "νῦν βλέπω (nun blépô)",
+                "χθès ἦλθε (chthès êlthe)"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "εἶδε (eide) + τὸν ναόν (ton naón) :",
+              "explanation": "Il ou elle a vu le temple.",
+              "options": [
+                "a vu le temple",
+                "le temple voit",
+                "nous courons",
+                "demain"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "χθès ἐν τῇ οἰκίᾳ ἔμεινα (chthès en tê oikíā émeina) :",
+              "explanation": "Resté(e) hier à la maison.",
+              "options": [
+                "demain",
+                "resté(e) hier maison",
+                "part maintenant",
+                "maison court"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Aoriste reconnaissable en 5e par :",
+              "explanation": "Formes courtes εἶδε ἦλθε εἶπε.",
+              "options": [
+                "formes courtes passé",
+                "-ω présent",
+                "latin",
+                "sans voyelle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "χθès οὐκ ἦλθον (chthès ouk êlthon) :",
+              "explanation": "Je ne suis pas venu(e) hier.",
+              "options": ["venu hier", "non venu hier", "viendrai", "viens"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ὁ κύων εἶδε (ho kúôn eide) :",
+              "explanation": "Le chien a vu.",
+              "options": [
+                "chien a vu",
+                "chien parle",
+                "demain",
+                "pas de chien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Opposer hier et aujourd hui en grec :",
+              "explanation": "χθés / σήμερον.",
+              "options": [
+                "χθés / σήμερον (sémeron)",
+                "τότε / τότε",
+                "νῦν / νῦν",
+                "ἔπειτα / ἔπειτα"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ἡ θεὰ χθès ἐφάνη (hê theà chthès ephanê) :",
+              "explanation": "Déesse apparue hier.",
+              "options": ["demain", "apparue hier", "absente", "présent"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "u1 exclut en 5e :",
+              "explanation": "Paradigme complet aoriste lycée.",
+              "options": [
+                "paradigme aoriste strong complet",
+                "χθés (chthés)",
+                "εἶδε (eide)",
+                "petits récits"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Ne pas confondre χθés (chthés) avec :",
+              "explanation": "τότε = alors ; ἔπειτα = ensuite.",
+              "options": [
+                "τότε (tote)",
+                "ἔπειτα (epeita)",
+                "σήμερον (sémeron) comme même sens que hier",
+                "χθès (chthès)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Transcription de χθés (chthés) :",
+              "explanation": "chthés.",
+              "options": ["chthés", "tote", "epeita", "aúrion"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ἔφαγον (éphagon) + χθés (chthés) :",
+              "explanation": "J ai mangé hier.",
+              "options": [
+                "mangé hier",
+                "mange demain",
+                "ne mange pas",
+                "il pleut"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "χθès εἶδε (chthès eide) renforce :",
+              "explanation": "Vue d hier accomplie.",
+              "options": ["futur", "vue d hier", "négation", "impératif"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ἡ ἀδελφὴ χθès ἔγραψε (hê adelphê chthès égrapse) :",
+              "explanation": "Sœur a écrit hier.",
+              "options": ["demain", "écrit hier", "frère court", "silence"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi χθés près du verbe ?",
+              "explanation": "Dater à hier.",
+              "options": [
+                "futur",
+                "dater à hier",
+                "effacer sujet",
+                "interdire aoriste"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ἔμαθες (emathe) + χθés (chthés) :",
+              "explanation": "Tu as appris hier.",
+              "options": ["demain", "appris hier", "impératif", "nous"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "χθès ἤσαμεν (chthès êsamen) :",
+              "explanation": "Nous avons chanté hier.",
+              "options": [
+                "chantons demain",
+                "chanté hier",
+                "chantez",
+                "silence"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "εἶδε (eide) répond en français à :",
+              "explanation": "Il ou elle a vu.",
+              "options": [
+                "Qu a-t-il fait ? Il a vu",
+                "Où ? Demain",
+                "Combien ? Trois",
+                "Pourquoi ? Demain"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Compétence raconter hier :",
+              "explanation": "Situer la veille en grec simple.",
+              "options": [
+                "situer la veille",
+                "tous les cas",
+                "latin",
+                "oublier aoriste"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Mini-récit d hier peut contenir :",
+              "explanation": "χθés et aoriste.",
+              "options": [
+                "χθés (chthés)",
+                "verbe aoriste",
+                "αὔριον (aúrion) pour hier",
+                "futur pour hier"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Raconter hier au gymnase :",
+              "explanation": "χθés + lieu.",
+              "options": [
+                "χθés + lieu",
+                "futur seul",
+                "présent pour hier",
+                "ἀεί sans date"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "εἶδε (eide) incompatible pour hier avec :",
+              "explanation": "αὔριον pour un fait d hier.",
+              "options": [
+                "χθés (chthés)",
+                "ἐχθés (echthés)",
+                "αὔριον (aúrion) pour hier",
+                "sans adverbe"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Place de χθés (chthés) :",
+              "explanation": "En tête ou près du verbe.",
+              "options": [
+                "tête ou près verbe",
+                "jamais avec verbe",
+                "latin",
+                "après point sans sens"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ἐχθές (echthés) :",
+              "explanation": "Signifie aussi hier.",
+              "options": ["aussi hier", "jamais", "ici", "verbe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Aoriste sans χθés reste :",
+              "explanation": "Passé accompli.",
+              "options": ["passé accompli", "futur", "adverbe", "préposition"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Χθès εἶδον τὴν σελήνην (chthès eidon tên selênên) :",
+              "explanation": "J ai vu la lune hier.",
+              "options": ["lune hier", "soleil demain", "lune parle", "mer"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vérifier le passé : chercher",
+              "explanation": "Aoriste, pas présent seul pour hier.",
+              "options": [
+                "aoriste pas présent seul",
+                "noms seuls",
+                "futur",
+                "chiffres romains"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Χθès ὁ πατὴρ εἶδε τὸν ἀγῶνα (chthès ho patêr eide ton agôna) :",
+              "explanation": "Père a vu la compétition hier.",
+              "options": [
+                "demain",
+                "compétition hier",
+                "sans compétition",
+                "futur"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "χθès ἔπαιξεν (chthès épaike) :",
+              "explanation": "Il ou elle a joué hier.",
+              "options": ["joué hier", "joue demain", "jouez", "ne joue pas"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Associations χθés + verbe cohérentes :",
+              "explanation": "Aoristes avec χθés.",
+              "options": [
+                "χθès ἔδραμε (chthès édrame)",
+                "χθès εἶπε (chthès eîpe)",
+                "χθès τρέχω présent",
+                "αὔριον εἶδε pour hier"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bilan u1 : mot-clé hier",
+              "explanation": "χθés (chthés).",
+              "options": [
+                "χθés (chthés)",
+                "ἀεί (aeí)",
+                "πολύ (polú)",
+                "μικρός (mikrós)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bilan u1 : aoriste voir",
+              "explanation": "εἶδε (eide).",
+              "options": [
+                "εἶδε (eide)",
+                "ὁρῶ (horô) pour hier passé",
+                "ὄψομαι (ópsomai)",
+                "βλέπεις (blépeis) pour hier"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Après u1 l élève sait :",
+              "explanation": "Relier χθés et aoriste.",
+              "options": [
+                "relier χθés et aoriste",
+                "tout aoriste strong",
+                "ignorer adverbes",
+                "sans grec"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "χθès … τότε (chthès … tote) : τότε marque",
+              "explanation": "Un instant dans le récit d hier.",
+              "options": ["instant du récit", "demain", "jamais", "un nom"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "εἶδε (eide) : thème rappelle",
+              "explanation": "Voir.",
+              "options": ["voir", "courir seul", "sans sens", "demain"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Test sur χθés (chthés) :",
+              "explanation": "Sens de χθés.",
+              "options": [
+                "Que veut dire χθés ?",
+                "Capitale France ?",
+                "Nb lettres grec ?",
+                "Futur latin ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "χθès ἔλυσα (chthès élusa) :",
+              "explanation": "Action hier à l aoriste.",
+              "options": [
+                "agi hier aoriste",
+                "libère demain",
+                "présent",
+                "impossible"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Hier vs ensuite en grec :",
+              "explanation": "χθés veille ; ἔπειτα suite.",
+              "options": [
+                "χθés veille ; ἔπειτα suite",
+                "identiques",
+                "τότε = hier",
+                "ἔπειτα = demain"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Duo central u1 :",
+              "explanation": "χθés et aoriste simple.",
+              "options": [
+                "χθés et aoriste simple",
+                "futur infinitif",
+                "latin grec",
+                "sans verbe"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sens de τότε (tote) et ἔπειτα (epeita) :",
+              "explanation": "τότε = alors ; ἔπειτα = ensuite.",
+              "options": [
+                "τότε alors",
+                "ἔπειτα ensuite",
+                "τότε hier",
+                "ἔπειτα jamais"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "τότε (tote) sert à :",
+              "explanation": "Situer un moment du récit.",
+              "options": ["moment du récit", "couleur", "refus", "compter"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ἔπειτα (epeita) introduit :",
+              "explanation": "L étape suivante.",
+              "options": [
+                "étape suivante",
+                "début du monde",
+                "uniquement hier",
+                "question"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Transcription τότε (tote) :",
+              "explanation": "tote.",
+              "options": ["tote", "epeita", "chthés", "sémeron"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Transcription ἔπειτα (epeita) :",
+              "explanation": "epeita.",
+              "options": ["epeita", "tote", "aúrion", "nun"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ne signifie pas ensuite :",
+              "explanation": "τότε = alors.",
+              "options": [
+                "ἔπειτα (epeita)",
+                "τότε (tote)",
+                "μετὰ ταῦτα parfois",
+                "ἔπειτα enchaînement"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "… ἔπειτα (epeita) … enchaîne :",
+              "explanation": "La deuxième action.",
+              "options": [
+                "2e action",
+                "annule 1re",
+                "futur seul",
+                "sans sujet"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "τότε (tote) + aoriste :",
+              "explanation": "Fait accompli à ce moment.",
+              "options": ["fait ce moment", "demain", "habitude", "interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "χθés (chthés) vs τότε (tote) :",
+              "explanation": "Veille vs alors dans le récit.",
+              "options": [
+                "veille vs alors",
+                "identiques",
+                "τότε demain",
+                "χθés ensuite"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Τότε εἶδε (tote eide) :",
+              "explanation": "Alors il ou elle a vu.",
+              "options": [
+                "Alors a vu",
+                "Ensuite mange",
+                "Hier courons",
+                "Demain partent"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Ordonner un récit passé :",
+              "explanation": "τότε et ἔπειτα.",
+              "options": [
+                "τότε (tote)",
+                "ἔπειτα (epeita)",
+                "χθés pour ensuite",
+                "νῦν pour ensuite passé"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ἔπειτα ἦλθεν (epeita êlthen) :",
+              "explanation": "Ensuite il ou elle est venu(e).",
+              "options": [
+                "Ensuite venu(e)",
+                "Hier seul",
+                "Demain",
+                "Alors début"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ordre logique petit récit :",
+              "explanation": "Fait 1 — marqueur — fait 2.",
+              "options": [
+                "fait1-marqueur-fait2",
+                "futur-présent-rien",
+                "τότε remplace verbe",
+                "ἔπειτα sans verbe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "ἔπειτα (epeita) proche de :",
+              "explanation": "Puis, ensuite.",
+              "options": ["puis ensuite", "hier", "jamais", "ici"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "τότε (tote) proche de :",
+              "explanation": "Alors, à ce moment-là.",
+              "options": [
+                "alors ce moment",
+                "demain matin",
+                "sous table",
+                "trois fois"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Après χθès εἶδε, τότε (tote) sert à :",
+              "explanation": "Préciser un instant du récit d hier.",
+              "options": [
+                "instant du récit",
+                "futur",
+                "effacer vue",
+                "interdire ἔπειτα"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ἔπειτα (epeita) + aoriste :",
+              "explanation": "Nouveau fait accompli.",
+              "options": [
+                "passé accompli",
+                "présent seul",
+                "futur seul",
+                "sans verbe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Adverbe de succession :",
+              "explanation": "ἔπειτα (epeita).",
+              "options": [
+                "ἔπειτα (epeita)",
+                "ὁ (ho)",
+                "ἐν (en) seul",
+                "καί sans temps"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "τότε (tote) ne remplace pas :",
+              "explanation": "Le verbe conjugué.",
+              "options": [
+                "verbe conjugué",
+                "lieu parfois",
+                "nom",
+                "ponctuation FR"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Enchaînement cohérent :",
+              "explanation": "Τότε εἶπε, ἔπειτα ἀπῆλθε.",
+              "options": [
+                "Τότε εἶπε· ἔπειτα ἀπῆλθε (tote eîpe, epeita apêlthe)",
+                "Ἔπειτα αὔριον pour hier",
+                "Τότε τρέχω pour passé",
+                "Χθés = ἔπειτα"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "χθés (chthés) et τότε (tote) ensemble :",
+              "explanation": "Jour veille + instant du récit.",
+              "options": [
+                "χθés donne la veille",
+                "τότε un instant du récit",
+                "τότε = demain",
+                "χθés = ensuite"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Χθès ἦλθον. Ἔπειτα εἶδον. (chthès êlthon. epeita eidon.) :",
+              "explanation": "Hier venu, ensuite vu.",
+              "options": [
+                "venu puis vu",
+                "demain",
+                "alors sans suite",
+                "présent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ἔπειτα (epeita) se place :",
+              "explanation": "Avant le verbe suivant.",
+              "options": [
+                "avant verbe suivant",
+                "dans un nom",
+                "en latin",
+                "sans verbe après"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "τότε (tote) répond à :",
+              "explanation": "Quand dans l histoire ?",
+              "options": [
+                "Quand dans l histoire ?",
+                "Combien ?",
+                "Où Athènes seule ?",
+                "Pourquoi demain ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ἔπειτα (epeita) répond à :",
+              "explanation": "Et après ?",
+              "options": [
+                "Et après ?",
+                "Quelle couleur ?",
+                "Qui est Zeus ?",
+                "Quel siècle ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "εἶδε (eide) + τότε (tote) : la vue",
+              "explanation": "À ce moment du récit.",
+              "options": [
+                "ce moment récit",
+                "dans mille ans",
+                "sans sujet",
+                "avant voir"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "τότε / ἔπειτα servent à :",
+              "explanation": "Organiser le temps du récit.",
+              "options": [
+                "organiser temps récit",
+                "déclinaison",
+                "alphabet",
+                "lettres"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "ἔπειτα ≠ τότε car :",
+              "explanation": "Ensuite vs alors.",
+              "options": [
+                "ensuite vs alors",
+                "synonymes",
+                "τότε hier",
+                "ἔπειτα demain"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En 5e avec marqueurs on évite :",
+              "explanation": "Paradigme complet de tous les aoristes.",
+              "options": [
+                "paradigme tous aoristes",
+                "adverbes simples",
+                "εἶδε (eide)",
+                "petites phrases"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "χθès … τότε (chthès … tote) : τότε renvoie",
+              "explanation": "À un instant du récit d hier.",
+              "options": [
+                "instant récit hier",
+                "demain",
+                "règle latine",
+                "rien"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux marqueurs de suite du récit :",
+              "explanation": "τότε instant ; ἔπειτα enchaîne.",
+              "options": [
+                "τότε (tote)",
+                "ἔπειτα (epeita)",
+                "μή (mê) comme ensuite",
+                "αὔριον (aúrion) comme alors"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Récit : χθés puis τότε puis ἔπειτα",
+              "explanation": "Veille, instant, suite.",
+              "options": [
+                "veille-instant-suite",
+                "demain-futur",
+                "présent seul",
+                "sans verbe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Τότε ἔφαγε (tote éphage) :",
+              "explanation": "Alors il ou elle a mangé.",
+              "options": [
+                "Alors a mangé",
+                "Ensuite demain",
+                "Hier maintenant",
+                "mange toujours"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ἔπειτα εἶδε (epeita eide) :",
+              "explanation": "Ensuite il ou elle a vu.",
+              "options": [
+                "Ensuite a vu",
+                "Alors hier seul",
+                "Demain voir",
+                "Présent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "τότε (tote) avec χθés (chthés) :",
+              "explanation": "Hier à un moment précis.",
+              "options": [
+                "hier moment précis",
+                "demain",
+                "jamais",
+                "sans passé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Marqueur qui n est pas alors :",
+              "explanation": "ἔπειτα = ensuite.",
+              "options": [
+                "τότε (tote)",
+                "ἔπειτα (epeita)",
+                "τότε dans récit",
+                "τότε + aoriste"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "χθès ἔμεινα, τότε ἔγραψα, ἔπειτα ἀπῆλθον :",
+              "explanation": "Resté, écrit, parti.",
+              "options": ["resté-écrit-parti", "futur", "un verbe", "demain"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "ἔπειτα après τότε :",
+              "explanation": "Suite après alors.",
+              "options": [
+                "suite après alors",
+                "annule τότε",
+                "remplace χθés",
+                "interdit aoriste"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Question sur τότε (tote) :",
+              "explanation": "Que signifie τότε ?",
+              "options": [
+                "Que signifie τότε (tote) ?",
+                "Voyelles grec ?",
+                "Capitale Rome ?",
+                "Futur FR ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "τότε (tote) et εἶδε (eide) :",
+              "explanation": "Alors, vue au passé.",
+              "options": [
+                "Alors vue passée",
+                "Demain voir",
+                "Présent seul",
+                "sans action"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux traductions correctes :",
+              "explanation": "τότε alors ; ἔπειτα ensuite.",
+              "options": [
+                "τότε = alors",
+                "ἔπειτα = ensuite",
+                "τότε = hier",
+                "ἔπειτα = demain"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "χθès … ἔπειτα (chthès … epeita) :",
+              "explanation": "Hier puis suite.",
+              "options": [
+                "hier puis suite",
+                "demain puis hier",
+                "sans ordre",
+                "présent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Erreur fréquente u2 :",
+              "explanation": "Confondre alors et ensuite.",
+              "options": [
+                "confondre alors et ensuite",
+                "utiliser aoriste",
+                "mettre sujet",
+                "lire grec"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Τότε ὁ ἥρως εἶδε (tote ho hêrôs eide) :",
+              "explanation": "Alors le héros a vu.",
+              "options": [
+                "Alors héros vu",
+                "Ensuite demain",
+                "Héros présent",
+                "sans héros"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ἔπειτα (epeita) en tête indique :",
+              "explanation": "Action suivante.",
+              "options": [
+                "action suivante",
+                "fin monde",
+                "question",
+                "couleur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "τότε (tote) renvoie à :",
+              "explanation": "Moment déjà évoqué.",
+              "options": [
+                "moment évoqué",
+                "année prochaine",
+                "math",
+                "alphabet"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Modèle trois temps :",
+              "explanation": "Χθès ἦλθε. Τότε εἶπε. Ἔπειτα ἀπῆλθε.",
+              "options": [
+                "Χθès ἦλθε. Τότε εἶπε. Ἔπειτα ἀπῆλθε.",
+                "futur seul",
+                "un verbe",
+                "demain"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Alors en grec ici :",
+              "explanation": "τότε (tote).",
+              "options": [
+                "τότε (tote)",
+                "χθés (chthés)",
+                "αὔριον (aúrion)",
+                "νῦν (nun)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ensuite en grec ici :",
+              "explanation": "ἔπειτα (epeita).",
+              "options": [
+                "ἔπειτα (epeita)",
+                "τότε (tote)",
+                "σήμερον (sémeron)",
+                "ἀεί (aeí)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Marqueurs u2 + εἶδε (eide) :",
+              "explanation": "Récit passé structuré.",
+              "options": [
+                "récit structuré",
+                "présent habituel",
+                "futur seul",
+                "sans temps"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux adverbes qui structurent la suite :",
+              "explanation": "τότε (tote) et ἔπειτα (epeita).",
+              "options": [
+                "τότε (tote)",
+                "ἔπειτα (epeita)",
+                "χθés = ensuite",
+                "νῦν = ensuite passé"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Τότε εἶδε· ἔπειτα ἔφυγε (tote eide, epeita éphuge) :",
+              "explanation": "Alors vu, ensuite fui.",
+              "options": [
+                "Alors vu puis fui",
+                "Hier seul",
+                "Demain",
+                "Présent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "τότε (tote) dans un récit long :",
+              "explanation": "Repère un instant.",
+              "options": [
+                "repère instant",
+                "remplace sujet",
+                "futur",
+                "couleur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "ἔπειτα (epeita) après une action :",
+              "explanation": "Ouvre la nouvelle action.",
+              "options": [
+                "nouvelle action",
+                "efface récit",
+                "demain obligé",
+                "sans verbe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ordre χθés — τότε — ἔπειτα :",
+              "explanation": "Date, alors, ensuite.",
+              "options": [
+                "date-alors-ensuite",
+                "suite-date-alors",
+                "alors seul",
+                "ἔπειτα = χθés"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "τότε ≠ χθés car :",
+              "explanation": "Alors vs veille.",
+              "options": [
+                "alors vs veille",
+                "identiques",
+                "τότε demain",
+                "χθés ensuite"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ἔπειτα ἔμαθον (epeita emathon) :",
+              "explanation": "Ensuite j ai ou nous avons appris.",
+              "options": ["Ensuite appris", "Alors hier", "Demain", "Présent"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Récit école avec τότε (tote) :",
+              "explanation": "Τότε ἐν τῷ διδασκαλείῳ (tote en tô didaskaleíô).",
+              "options": [
+                "Τότε ἐν τῷ διδασκαλείῳ (tote en tô didaskaleíô)",
+                "Ἔπειτα χθés",
+                "Αὔριον τότε",
+                "Νῦν ἔπειτα"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Εἶδε. Ἔπειτα ἦλθε. (eide. epeita êlthe.) :",
+              "explanation": "Vu puis venu.",
+              "options": [
+                "vu puis venu",
+                "τότε αὔριον",
+                "χθés = ἔπειτα",
+                "présent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif u2 :",
+              "explanation": "Enchaîner les moments du récit.",
+              "options": [
+                "enchaîner moments",
+                "paradigme complet",
+                "sans adverbes",
+                "latin"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux rôles dans un récit χθès + marqueurs :",
+              "explanation": "χθés cadre ; τότε marque un instant (pas ἔπειτα ici).",
+              "options": [
+                "χθés (chthés) cadre le jour",
+                "τότε (tote) marque un instant",
+                "αὔριον (aúrion) marque alors",
+                "νῦν (nun) marque ensuite au passé"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ἔπειτα οἱ φίλοι ἦλθον (epeita hoi phíloi êlthon) :",
+              "explanation": "Ensuite les amis sont venus.",
+              "options": [
+                "Ensuite amis venus",
+                "Alors seul",
+                "Hier demain",
+                "Présent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "τότε (tote) sans χθés (chthés) :",
+              "explanation": "Alors dans un récit quelconque.",
+              "options": [
+                "alors dans récit",
+                "obligatoirement hier",
+                "demain",
+                "jamais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "τότε (tote) + εἶπε (eîpe) :",
+              "explanation": "Alors il ou elle a dit.",
+              "options": ["Alors a dit", "Ensuite a dit", "Demain", "Silence"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Après action 1, marqueur pour action 2 :",
+              "explanation": "ἔπειτα (epeita).",
+              "options": [
+                "ἔπειτα (epeita)",
+                "χθés seul",
+                "νῦν passé",
+                "μή (mê)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Première lettre de τότε (tote) :",
+              "explanation": "Tau (τ).",
+              "options": ["τ (tau)", "χ (chi)", "ἔ (epsilon)", "ν (nu)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Première lettre de ἔπειτα (epeita) :",
+              "explanation": "Epsilon (ε).",
+              "options": ["ε (epsilon)", "τ (tau)", "χ (chi)", "ν (nu)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "χθès τότε εἶδε ἔπειτα ἔφαγε (chthès tote eide epeita éphage) :",
+              "explanation": "Hier alors vu ensuite mangé.",
+              "options": [
+                "hier-alors-vu-mangé",
+                "demain-futur",
+                "présent",
+                "sans ordre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "τότε (tote) répond plutôt à :",
+              "explanation": "Instant du récit, pas calendrier seul.",
+              "options": [
+                "instant du récit",
+                "calendrier latin",
+                "couleur",
+                "nombre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "ἔπειτα (epeita) vs χθés (chthés) :",
+              "explanation": "Ensuite vs veille.",
+              "options": [
+                "ensuite vs veille",
+                "identiques",
+                "τότε = veille",
+                "ἔπειτα = veille"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux paires adverbe-sens justes :",
+              "explanation": "χθés-hier ; τότε-alors (ἔπειτα ensuite est vrai mais non demandé ici).",
+              "options": [
+                "χθés — hier",
+                "τότε — alors",
+                "ἔπειτα — hier",
+                "τότε — demain"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ἔπειτα ἔδραμε (epeita édrame) :",
+              "explanation": "Ensuite il ou elle a couru.",
+              "options": ["Ensuite a couru", "Alors hier", "Demain", "Présent"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Τότε ἤκουσα (tote êkousa) :",
+              "explanation": "Alors j ai entendu.",
+              "options": [
+                "Alors j ai entendu",
+                "Ensuite demain",
+                "Hier seul",
+                "Silence"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans un récit, τότε (tote) précède souvent :",
+              "explanation": "Le verbe du moment alors.",
+              "options": ["verbe du moment", "uniquement nom", "futur", "rien"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans un récit, ἔπειτα (epeita) précède :",
+              "explanation": "Le verbe de l action suivante.",
+              "options": [
+                "verbe action suivante",
+                "date calendaire",
+                "couleur",
+                "nombre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "χθés (chthés), τότε (tote), ἔπειτα (epeita) : rôles",
+              "explanation": "Veille, alors, ensuite.",
+              "options": [
+                "veille-alors-ensuite",
+                "ensuite-alors-veille",
+                "demain-présent-futur",
+                "tous synonymes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Τότε εἶδε τὸν δρόμον (tote eide ton drómon) :",
+              "explanation": "Alors il ou elle a vu la route.",
+              "options": [
+                "Alors a vu la route",
+                "Ensuite demain",
+                "Route parle",
+                "Présent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ἔπειτα εὗρον (epeita heûron) :",
+              "explanation": "Ensuite j ai ou ils ont trouvé.",
+              "options": [
+                "Ensuite trouvé",
+                "Alors hier",
+                "Demain",
+                "Impossible"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Marqueur pour Et après en grec :",
+              "explanation": "ἔπειτα (epeita).",
+              "options": [
+                "ἔπειτα (epeita)",
+                "τότε (tote)",
+                "χθés (chthés)",
+                "αὔριον (aúrion)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Marqueur pour A ce moment en grec :",
+              "explanation": "τότε (tote).",
+              "options": [
+                "τότε (tote)",
+                "ἔπειτα (epeita)",
+                "χθés (chthés)",
+                "νῦν (nun) pour passé"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux marqueurs de chronologie interne :",
+              "explanation": "τότε et ἔπειτα ordonnent le récit.",
+              "options": [
+                "τότε (tote)",
+                "ἔπειτα (epeita)",
+                "χθés (chthés) pour ensuite",
+                "σήμερον (sémeron) pour ensuite"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phrase modèle u2 :",
+              "explanation": "Χθès ἦλθον· τότε εἶπον· ἔπειτα ἀπῆλθον.",
+              "options": [
+                "Χθès ἦλθον· τότε εἶπον· ἔπειτα ἀπῆλθον.",
+                "Αὔριον τότε ἔπειτα",
+                "Νῦν χθés τότε",
+                "Présent seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "τότε (tote) avec εἶδε (eide) sans χθés :",
+              "explanation": "Alors a vu (moment du récit).",
+              "options": [
+                "Alors a vu",
+                "Hier obligatoire",
+                "Demain",
+                "Présent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "ἔπειτα (epeita) avec aoriste ἦλθε (êlthe) :",
+              "explanation": "Ensuite est venu(e).",
+              "options": [
+                "Ensuite venu(e)",
+                "Alors demain",
+                "χθés ensuite",
+                "Futur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel adverbe enchaîne deux faits passés ?",
+              "explanation": "ἔπειτα (epeita).",
+              "options": [
+                "ἔπειτα (epeita)",
+                "τότε (tote) seul pour suite",
+                "χθés (chthés)",
+                "μή (mê)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel adverbe pointe l instant raconté ?",
+              "explanation": "τότε (tote).",
+              "options": [
+                "τότε (tote)",
+                "ἔπειτα (epeita)",
+                "αὔριον (aúrion)",
+                "ἀεί (aeí)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Récit voyage : τότε (tote) ἐν τῇ ὁδῷ (en tê hodô) :",
+              "explanation": "Alors sur la route.",
+              "options": [
+                "Alors sur la route",
+                "Ensuite demain",
+                "Hier seul",
+                "Sans lieu"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Récit voyage : ἔπειτα (epeita) εἰς τὴν πόλιν (eis tên polin) :",
+              "explanation": "Ensuite vers la ville.",
+              "options": [
+                "Ensuite vers la ville",
+                "Alors hier",
+                "Demain",
+                "Présent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bilan partiel u2 : τότε =",
+              "explanation": "Alors.",
+              "options": ["alors", "hier", "demain", "jamais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan partiel u2 : ἔπειτα =",
+              "explanation": "Ensuite.",
+              "options": ["ensuite", "alors", "hier", "maintenant"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux affirmations vraies sur les marqueurs u2 :",
+              "explanation": "τότε = alors ; ἔπειτα = ensuite dans le récit.",
+              "options": [
+                "τότε (tote) situe un instant",
+                "ἔπειτα (epeita) enchaîne",
+                "τότε signifie hier",
+                "ἔπειτα signifie demain"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Chapitre 05 u2 : mots-clés",
+              "explanation": "τότε (tote) et ἔπειτα (epeita).",
+              "options": [
+                "τότε (tote) et ἔπειτα (epeita)",
+                "αὔριον (aúrion) seul",
+                "μή (mê) seul",
+                "latin"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Enchaînement final :",
+              "explanation": "χθés, τότε, ἔπειτα avec aoristes.",
+              "options": [
+                "χθés + τότε + ἔπειτα + aoristes",
+                "présent seul",
+                "futur seul",
+                "sans adverbes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Τότε εἶδε· ἔπειτα ἔγραψε (tote eide, epeita égrapse) :",
+              "explanation": "Alors vu, ensuite écrit.",
+              "options": [
+                "Alors vu ensuite écrit",
+                "Demain",
+                "Présent",
+                "Sans action"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Après u2 l élève sait :",
+              "explanation": "Ordonner un récit avec τότε et ἔπειτα.",
+              "options": [
+                "ordonner récit avec τότε et ἔπειτα",
+                "paradigme aoriste complet",
+                "ignorer χθés",
+                "sans grec"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "τότε (tote) et χθés (chthés) dans une phrase :",
+              "explanation": "χθés date ; τότε précise un moment.",
+              "options": [
+                "χθés date ; τότε moment",
+                "identiques",
+                "τότε = veille",
+                "χθés = ensuite"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ἔπειτα (epeita) et aoriste εἶδε (eide) :",
+              "explanation": "Ensuite il ou elle a vu.",
+              "options": [
+                "Ensuite a vu",
+                "Alors demain",
+                "Hier seul",
+                "Présent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Test final : sens ἔπειτα (epeita)",
+              "explanation": "Ensuite.",
+              "options": ["ensuite", "alors", "hier", "demain"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Test final : sens τότε (tote)",
+              "explanation": "Alors.",
+              "options": ["alors", "ensuite", "hier", "demain"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Chapitre 05 complet : duo u1 + duo u2",
+              "explanation": "χθés/aoriste et τότε/ἔπειτα.",
+              "options": [
+                "χθés+aoriste ; τότε+ἔπειτα",
+                "futur seul",
+                "latin",
+                "sans marqueurs"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

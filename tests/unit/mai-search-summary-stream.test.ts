@@ -100,8 +100,10 @@ describe("séparation réflexion / réponse", () => {
     ).toBe("Calcul");
   });
 
-  it("ne répète pas un delta déjà cumulé", () => {
+  it("ne répète pas un delta déjà cumulé et préserve les flux légitimes", () => {
     expect(mergeStreamText("Bon", "Bonjour")).toBe("Bonjour");
-    expect(mergeStreamText("Bonjour", "jour")).toBe("Bonjour");
+    expect(mergeStreamText("Bonjour", " le monde")).toBe("Bonjour le monde");
+    expect(mergeStreamText("Bonjour.", ".")).toBe("Bonjour..");
+    expect(mergeStreamText("encore ", "encore ")).toBe("encore encore ");
   });
 });

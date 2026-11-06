@@ -1,0 +1,2713 @@
+{
+  "id": "1ere-francais-02",
+  "year": "1ere",
+  "subject": "francais",
+  "title": "Le théâtre du XVIIe au XXIe siècle",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "La tragédie classique",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Cadre historique et esthétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments caractérisent la tragédie classique française ?",
+              "options": [
+                "Vers alexandrins",
+                "Intrigue noble et conflit moral",
+                "Happy end obligatoire",
+                "Prose dialoguée exclusive"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La tragédie du Grand Siècle combine mètre noble et enjeux éthiques élevés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle institution parisienne accueillait les premières représentations de tragédies classiques ?",
+              "options": [
+                "L'Opéra Garnier",
+                "Le Théâtre du Châtelet",
+                "La Comédie-Française (successeur de l'hôtel de Bourgogne)",
+                "Le Théâtre de la Ville"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La troupe du roi, ancêtre de la Comédie-Française, jouait dans l'hôtel de Bourgogne puis au Palais-Royal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le théâtre classique s'inspire fortement de quel modèle antique ?",
+              "options": [
+                "Le roman grec",
+                "La tragédie grecque et latine",
+                "La comédie italienne seule",
+                "Le drame shakespearien sans filtre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Eschyle, Sophocle, Euripide et Sénèque servent de référence aux auteurs du Grand Siècle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel roi protège et encadre le théâtre tragique au XVIIe siècle ?",
+              "options": [
+                "Henri IV",
+                "Louis XIII seul",
+                "Louis XIV",
+                "Napoléon Ier"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Louis XIV fait du théâtre un instrument de gloire et soumet les auteurs à des règles codifiées."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La tragédie classique vise surtout à représenter :",
+              "options": [
+                "La vie quotidienne du peuple",
+                "Des personnages nobles pris dans un conflit moral majeur",
+                "Des farces burlesques",
+                "Des monologues intérieurs sans action"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le héros tragique appartient à l'élite et affronte un dilemme qui engage honneur, devoir ou passion."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel vers est la norme de la tragédie classique ?",
+              "options": [
+                "L'alexandrin",
+                "L'octosyllabe",
+                "Le décasyllabe libre",
+                "Le vers blanc en prose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Douze syllabes avec césure au milieu du vers : l'alexandrin structure la tragédie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la « bienséance » au théâtre classique ?",
+              "options": [
+                "Obligation de faire rire",
+                "Interdiction de montrer à l'écran des actes choquants ou grossiers",
+                "Usage exclusif du langage populaire",
+                "Suppression de toute violence verbale"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On évite de représenter directement meurtres ou outrages pour ne pas heurter le public aristocratique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La « vraisemblance » exige que :",
+              "options": [
+                "Tout soit historiquement exact",
+                "Les actions paraissent crédibles au spectateur éclairé",
+                "Les personnages soient tous réels",
+                "Le décor soit minimaliste"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'œuvre doit sembler possible et cohérente, même si elle s'écarte parfois de l'histoire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel auteur théorise les règles du théâtre dans les « Entretiens sur le fils de Corneille » et les « Réflexions sur la poétique » ?",
+              "options": ["Boileau", "La Bruyère", "Diderot", "Voltaire"],
+              "correctAnswers": [0],
+              "explanation": "Boileau, dans l'« Art poétique », consacre des vers aux trois unités et à la bienséance."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La tragédie classique se distingue de la comédie classique par :",
+              "options": [
+                "L'absence de vers",
+                "Un ton grave, des enjeux élevés et souvent une fin funeste",
+                "L'obligation d'un happy end",
+                "L'usage exclusif de la prose"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La tragédie explore la souffrance, le devoir et la mort ; Molière, lui, fait rire dans la comédie."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les trois unités",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles règles font partie des trois unités classiques ?",
+              "options": [
+                "Unité d'action",
+                "Unité de costume",
+                "Unité de temps",
+                "Unité de lieu"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Action et temps sont deux des trois unités ; le costume n'en fait pas partie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'unité de temps recommande que l'action représentée dure environ :",
+              "options": [
+                "Une heure",
+                "Vingt-quatre heures",
+                "Un mois",
+                "Une année entière"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'illusion veut que le temps de la représentation coïncide avec une journée au maximum."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'unité de lieu impose en principe :",
+              "options": [
+                "Plusieurs pays en alternance",
+                "Un seul lieu principal (souvent une cour ou un palais)",
+                "Un décor changeant à chaque acte sans limite",
+                "Exclusivement la scène de rue"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un même espace (Antioch, Rome, Troie…) concentre l'action pour la clarté."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'unité d'action signifie :",
+              "options": [
+                "Une intrigue secondaire par acte",
+                "Une intrigue principale unique, sans sous-intrigue parasite",
+                "L'absence de conflit",
+                "Plusieurs dénouements"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tout doit converger vers un nœud dramatique central et un dénouement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qui formule explicitement les trois unités dans « L'Illusion comique » (1636) ?",
+              "options": [
+                "Molière",
+                "Corneille dans une préface",
+                "D'Urfé",
+                "Scudéry"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Corneille discute et parfois assouplit les règles dans ses préfaces, notamment après la querelle du Cid."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les violations des unités étaient surtout critiquées par :",
+              "options": [
+                "Le public populaire",
+                "L'Académie française et les doctes",
+                "Les acteurs italiens",
+                "Les romanciers seuls"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Scudéry, l'Académie et Boileau jugent les pièces au regard des normes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le récit d'un événement off (hors scène) sert souvent à respecter :",
+              "options": [
+                "L'unité de genre comique",
+                "La bienséance et parfois le temps",
+                "L'obligation du chœur",
+                "Le mélange des registres"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un messager raconte un meurtre ou une bataille au lieu de la montrer."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Corneille dans « Cinna » concentre l'action à Rome pour illustrer surtout :",
+              "options": [
+                "L'unité de lieu",
+                "L'unité de rime",
+                "L'unité de public",
+                "L'absence de règles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conspiration contre Auguste se déroule dans un espace unique, typique du classicisme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Racine, dans ses tragédies, tend à :",
+              "options": [
+                "Multiplier les lieux exotiques",
+                "Serrer le temps et réduire les péripéties externes",
+                "Abandonner le vers",
+                "Introduire des chœurs antiques longs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Racine privilégie la tension psychologique dans un cadre resserré."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les unités visent avant tout à :",
+              "options": [
+                "Allonger les pièces",
+                "Rendre l'action claire, intense et vraisemblable pour le spectateur",
+                "Imiter le roman feuilleton",
+                "Supprimer la passion"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La cohérence spatio-temporelle renforce l'impact tragique."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Pierre Corneille",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels traits définissent l'héroïsme cornélien ?",
+              "options": [
+                "Volonté et devoir",
+                "Renoncement au combat sans honneur",
+                "Fuite systématique",
+                "Comique pur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le héros surmonte la passion par la volonté et le sens du devoir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Corneille est surtout associé au :",
+              "options": [
+                "XVIIe siècle",
+                "XIXe siècle",
+                "Moyen Âge",
+                "XXIe siècle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Auteur majeur du classicisme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Horace met en scène :",
+              "options": [
+                "Un conflit entre devoir patriotique et amour fraternel",
+                "Une farce de village",
+                "Un conte féerique",
+                "Un vaudeville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rome contre Alba : frères ennemis."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Polyeucte traite de :",
+              "options": [
+                "Le martyre chrétien",
+                "La comédie de mœurs",
+                "La science-fiction",
+                "Le roman policier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conversion et sacrifice religieux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le Cid est une :",
+              "options": [
+                "Tragédie héroïque",
+                "Comédie-ballet",
+                "Farce",
+                "Pastorale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amour, honneur et devoir chez Rodrigue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Chimène demande justice tout en aimant Rodrigue :",
+              "options": [
+                "Conflit passion/devoir",
+                "Absence de conflit",
+                "Intrigue comique",
+                "Récit épique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dilemme central de la pièce."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Corneille écrit en :",
+              "options": [
+                "Alexandrins",
+                "Prose seule",
+                "Vers libres",
+                "Octosyllabes uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mètre noble de la scène tragique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Auguste dans Cinna est :",
+              "options": [
+                "Un souverain clément après l'épreuve",
+                "Un bouffon",
+                "Un paysan",
+                "Un enfant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pouvoir peut se montrer magnanime."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Corneille dépasse parfois :",
+              "options": [
+                "Les règles strictes pour l'émotion",
+                "Toute écriture",
+                "La langue française",
+                "Le théâtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il revendique une « règle qui me chagrine »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le héros cornélien choisit souvent :",
+              "options": [
+                "L'honneur contre la passion",
+                "La fuite",
+                "Le mensonge systématique",
+                "Le burlesque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Va, je ne te hais point » illustre la tension."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le Cid et la querelle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels enjeux alimentent la querelle du Cid (1637) ?",
+              "options": [
+                "Respect des règles classiques",
+                "Mérite esthétique de la pièce",
+                "Interdiction du théâtre",
+                "Passage au cinéma"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'Académie critique les unités ; Corneille défend sa pièce."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le Cid s'inspire de :",
+              "options": [
+                "Des sources espagnoles (Guillén de Castro)",
+                "Homère seul",
+                "Shakespeare mot à mot",
+                "Un fait divers de 1990"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adaptation du théâtre espagnol."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Rodrigue tue le père de Chimène parce que :",
+              "options": [
+                "Son père a été outragé",
+                "Il veut devenir roi",
+                "C'est un accident",
+                "Chimène l'y force"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'honneur familial exige vengeance."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Chimène demande au roi :",
+              "options": [
+                "De punir Rodrigue",
+                "Un mariage immédiat",
+                "D'abolir le théâtre",
+                "De quitter l'Espagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle doit sauver l'honneur tout en aimant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le roi décide finalement :",
+              "options": [
+                "Un mariage différé après la gloire de Rodrigue",
+                "L'exécution de Rodrigue",
+                "L'exil de Chimène",
+                "La fin du théâtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dénouement qui concilie gloire et amour."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Scudéry critique surtout :",
+              "options": [
+                "Les violations des règles",
+                "L'usage du français",
+                "La présence de vers",
+                "Le public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Discours « Observations sur le Cid »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le terme « tragédie héroïque » évoque :",
+              "options": [
+                "Grandeur du héros et passions fortes",
+                "Farce",
+                "Pastorale",
+                "Opérette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Genre associé au Cid."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le Cid se situe :",
+              "options": [
+                "À Séville et en Espagne médiévale",
+                "À Paris en 1789",
+                "En Grèce antique",
+                "Sur la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre ibérique légendaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La pièce mêle :",
+              "options": [
+                "Amour et devoir",
+                "Uniquement le comique",
+                "Prose administrative",
+                "Aucun conflit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure du dilemme tragique cornélien."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Après la querelle, Corneille :",
+              "options": [
+                "Révise et théorise dans ses préfaces",
+                "Abandonne le théâtre",
+                "Écrit en prose",
+                "Devient comique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il intègre et discute les normes."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Jean Racine",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels traits caractérisent le théâtre de Racine ?",
+              "options": [
+                "Passion dévorante",
+                "Analyse psychologique",
+                "Farce populaire",
+                "Prose réaliste"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Racine explore l'emprise des affects sur des héros nobles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Racine est contemporain de :",
+              "options": [
+                "La fin du XVIIe siècle",
+                "Victor Hugo",
+                "Molière au XXe",
+                "Le surréalisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1639-1699, après Corneille."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Racine écrit surtout en :",
+              "options": [
+                "Alexandrins",
+                "Prose",
+                "Vers libres",
+                "Chanson populaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vers réguliers au service de la tension."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Andromaque oppose :",
+              "options": [
+                "Oreste, Hermione, Pyrrhus et Andromaque",
+                "Deux bouffons",
+                "Des robots",
+                "Des paysans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jalousie et politique à Epire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Britannicus se déroule :",
+              "options": [
+                "À Rome sous Néron",
+                "À Londres",
+                "À Troie",
+                "À New York"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intrigues de cour et poison."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bérénice est une tragédie :",
+              "options": [
+                "D'amour et de renoncement politique",
+                "De farce",
+                "De science-fiction",
+                "Burlesque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titus doit quitter Bérénice."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Racine vs Corneille :",
+              "options": [
+                "Passion subie vs volonté héroïque",
+                "Identiques",
+                "Racine en prose",
+                "Corneille sans règles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux visions du héros tragique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les monologues raciniens servent à :",
+              "options": [
+                "Révéler la passion intérieure",
+                "Lister des recettes",
+                "Décrire un paysage neutre",
+                "Remplacer l'action"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intériorité au premier plan."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phèdre est l'œuvre :",
+              "options": [
+                "Mature et emblématique de Racine",
+                "Une comédie",
+                "Un opéra seul",
+                "Un pamphlet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1677, mythe d'Hippolyte et Phèdre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Racine quitte le théâtre laïque pour :",
+              "options": [
+                "Devenir historiographe et écrire pour Saint-Cyr",
+                "Le cinéma",
+                "La peinture",
+                "La politique élective"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retraite relative après le succès."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Phèdre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels personnages structurent Phèdre ?",
+              "options": [
+                "Phèdre",
+                "Hippolyte",
+                "Un narrateur de roman",
+                "Des marionnettes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Reine, beau-fils, Thésée et Enone complètent le nœud tragique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phèdre aime :",
+              "options": [
+                "Hippolyte, son beau-fils",
+                "Thésée sans conflit",
+                "Enone",
+                "Le roi de Sparte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passion incestueuse et coupable."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Thésée croit Hippolyte coupable grâce à :",
+              "options": [
+                "La calomnie d'Enone",
+                "Une vidéo",
+                "Un témoin neutre",
+                "Hippolyte lui-même"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faux récit provoquant la colère du père."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Hippolyte aime :",
+              "options": ["Aricie", "Phèdre", "Enone", "Hermione"],
+              "correctAnswers": [0],
+              "explanation": "Contrepoint innocent à la passion de Phèdre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le mythe vient de :",
+              "options": [
+                "La tradition grecque (Euripide, Sénèque)",
+                "Un fait divers parisien",
+                "Shakespeare seul",
+                "La Bible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Racine adapte les sources antiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La fin de Phèdre est :",
+              "options": [
+                "Funeste pour Hippolyte et Phèdre",
+                "Un mariage comique",
+                "Une fête",
+                "Un happy end"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Destin tragique sans réconciliation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Enone est :",
+              "options": [
+                "La confidente complice de Phèdre",
+                "La reine d'Espagne",
+                "Une déesse",
+                "Un messager grec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle pousse au mensonge fatal."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Thésée demande à Neptune :",
+              "options": [
+                "De punir Hippolyte",
+                "Un banquet",
+                "D'abolir le théâtre",
+                "Un voyage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Père aveuglé par la jalousie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le registre dominant est :",
+              "options": [
+                "Tragique et pathétique",
+                "Comique pur",
+                "Didactique neutre",
+                "Burlesque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Honte, désir et mort."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phèdre avoue sa faute :",
+              "options": [
+                "Devant Thésée, trop tard",
+                "Dès la scène I",
+                "Jamais",
+                "En prose dans un journal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Catharsis par la confession tardive."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Autres tragédies raciniennes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles pièces sont de Racine ?",
+              "options": [
+                "Mithridate",
+                "Le Misanthrope",
+                "Iphigénie",
+                "Le Bourgeois gentilhomme"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Mithridate et Iphigénie sont tragiques ; Molière écrit les deux autres."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Iphigénie se situe :",
+              "options": [
+                "En Aulide avant la guerre de Troie",
+                "À Versailles",
+                "À Berlin",
+                "En Amérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sacrifice d'Iphigénie demandé par les dieux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Esther et Athalie sont :",
+              "options": [
+                "Des pièces à thème biblique pour Saint-Cyr",
+                "Des farces",
+                "Des opéras de Mozart",
+                "Des films"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théâtre éducatif et tragique tardif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Hermione dans Andromaque :",
+              "options": [
+                "Aime Pyrrhus qui la repousse",
+                "Est une paysanne",
+                "Ne parle pas",
+                "Est comique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jalousie meurtrière."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Oreste dans Andromaque :",
+              "options": [
+                "Fou d'amour pour Hermione",
+                "Roi d'Espagne",
+                "Bouffon",
+                "Narrateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passion désespérée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Mithridate oppose :",
+              "options": [
+                "Deux fils rivaux et leur père",
+                "Deux chats",
+                "Des machines",
+                "Des notaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jalousie filiale et politique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bajazet se déroule :",
+              "options": [
+                "À Constantinople",
+                "À Paris",
+                "Sur la Lune",
+                "En mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Harem et pouvoir ottoman."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les femmes chez Racine :",
+              "options": [
+                "Souvent dominées par une passion fatale",
+                "Sont absentes",
+                "Sont uniquement comiques",
+                "Ne parlent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phèdre, Hermione, Monime…"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le dénouement racinien est le plus souvent :",
+              "options": [
+                "Mort ou séparation",
+                "Mariage comique",
+                "Fête champêtre",
+                "Procès gagné"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impasse des passions."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Racine utilise :",
+              "options": [
+                "Peu de péripéties externes, beaucoup de tension intérieure",
+                "Des centaines de lieux",
+                "De la prose",
+                "Un chœur antique long"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théâtre de la parole et du désir."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Héros, passion et destin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels moteurs animent le héros tragique classique ?",
+              "options": [
+                "Passion",
+                "Conflit de devoir",
+                "Mode d'emploi",
+                "Bulletin météo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Amour, honneur, pouvoir s'entrechoquent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La fatalité chez Racine évoque :",
+              "options": [
+                "Des forces qui dépassent le héros",
+                "Un hasard comique",
+                "L'absence de sens",
+                "Un happy end"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Héritage des dieux et du sang."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le monologue tragique permet :",
+              "options": [
+                "D'exposer le dilemme intérieur",
+                "De vendre des places",
+                "De changer de décor",
+                "De supprimer le vers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parole du conflit avec soi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La vengeance est un thème :",
+              "options": [
+                "Fréquent (Chimène, Oreste)",
+                "Interdit",
+                "Absent",
+                "Comique seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Honneur et justice personnelle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'amour impossible structure :",
+              "options": [
+                "Phèdre, Bérénice, Andromaque",
+                "Uniquement la farce",
+                "Aucune tragédie",
+                "Le vaudeville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passion vs devoir ou politique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le roi en tragédie classique :",
+              "options": [
+                "Arbitre du destin des héros",
+                "Toujours ridicule",
+                "Absent",
+                "Comique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Figure du pouvoir et de la clémence."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La mort du héros sert à :",
+              "options": [
+                "Clore l'impasse tragique",
+                "Faire rire",
+                "Ouvrir une suite comique",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Purification par la catastrophe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le pathétique vise :",
+              "options": [
+                "L'émotion du spectateur",
+                "L'ennui",
+                "La distraction pure",
+                "L'instruction technique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pitié et crainte héritées d'Aristote."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Corneille exalte :",
+              "options": [
+                "La volonté",
+                "La lâcheté",
+                "L'indifférence",
+                "Le burlesque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Morceau d'immortelle gloire »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Racine montre :",
+              "options": [
+                "La faiblesse devant la passion",
+                "L'invincibilité totale",
+                "Le comique",
+                "La prose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Héros déchiré par le désir."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Vers, déclamation et scène",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments rythment la tragédie en vers ?",
+              "options": [
+                "Alexandrin",
+                "Césure",
+                "Sonnet obligatoire",
+                "Haïku"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Douze syllabes avec pause médiane."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La déclamation au XVIIe siècle :",
+              "options": [
+                "Mettait en valeur la musicalité du vers",
+                "Interdisait toute voix",
+                "Était du cinéma",
+                "N'existait pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Art oratoire des comédiens."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un alexandrin tragique compte :",
+              "options": [
+                "12 syllabes",
+                "8 syllabes",
+                "10 syllabes",
+                "14 syllabes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mètre standard."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La stichomythie désigne :",
+              "options": [
+                "Répliques courtes échangées",
+                "Un monologue de dix pages",
+                "Un décor",
+                "Un costume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dialogue rapide, vers contre vers."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le chœur grec :",
+              "options": [
+                "Est largement remplacé par des confidents",
+                "Domine Racine tel quel",
+                "Parle en prose seule",
+                "Est obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adaptation classique du modèle antique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les didascalies classiques :",
+              "options": [
+                "Sont rares et sobres",
+                "Remplacent tout le dialogue",
+                "Sont un roman",
+                "Sont un film"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entrées, gestes essentiels."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le décor au XVIIe siècle :",
+              "options": [
+                "Reste souvent symbolique (palais)",
+                "Est réaliste au cinéma",
+                "Est absent de scène",
+                "Change à chaque réplique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unité de lieu simplifiée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'acteur tragique joue :",
+              "options": [
+                "Noblesse et retenue puis passion",
+                "Uniquement le grotesque",
+                "Sans texte",
+                "En prose improvisée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Code corporel de la cour."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La rime en tragédie :",
+              "options": [
+                "Structure les couplets ou quatrains",
+                "Est interdite",
+                "Remplace le sens",
+                "N'existe qu'en comédie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Harmonie sonore du discours."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lire une tirade, c'est repérer :",
+              "options": [
+                "Césures, images et progression argumentative",
+                "Uniquement la date",
+                "Le prix du billet",
+                "La couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyse du vers tragique."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan de la tragédie classique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels auteurs incarnent la tragédie classique ?",
+              "options": [
+                "Corneille",
+                "Racine",
+                "Feydeau seul",
+                "Ionesco seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux piliers du XVIIe ; Feydeau et Ionesco appartiennent à d'autres époques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La tragédie classique influence :",
+              "options": [
+                "Le théâtre français ultérieur",
+                "Uniquement la peinture",
+                "Rien",
+                "Seulement l'opéra italien sans retour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Référence scolaire et artistique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Voltaire écrit des tragédies :",
+              "options": [
+                "En héritier du classicisme",
+                "En prose burlesque seule",
+                "Sans vers",
+                "Uniquement au XXe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adaptation et modernisation des thèmes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le classicisme théâtral valorise :",
+              "options": [
+                "Ordre, clarté, maîtrise",
+                "Le chaos sans forme",
+                "L'improvisation seule",
+                "L'absence de texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Esthétique normée du Grand Siècle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La querelle des Anciens et Modernes touche :",
+              "options": [
+                "Le statut des règles antiques",
+                "Le prix du pain",
+                "Le cinéma",
+                "Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat sur l'imitation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La Comédie-Française conserve :",
+              "options": [
+                "Le répertoire classique",
+                "Uniquement des films",
+                "Rien du XVIIe",
+                "Des pièces en anglais seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Institution du répertoire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Étudier Corneille et Racine en 1re, c'est :",
+              "options": [
+                "Comprendre devoir, passion et forme",
+                "Mémoriser des dates seules",
+                "Ignorer le vers",
+                "Ne jamais lire de pièce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objet du programme de français."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La tragédie classique parle encore de :",
+              "options": [
+                "Pouvoir, désir, culpabilité",
+                "Uniquement de technologie",
+                "Rien d'humain",
+                "Sports"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thèmes universels."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une mise en scène contemporaine de Phèdre :",
+              "options": [
+                "Peut renouveler le décor tout en gardant le texte",
+                "Doit interdire le texte",
+                "Est impossible",
+                "Remplace par un roman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Actualisation scénique du classique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le passage au théâtre moderne rompt avec :",
+              "options": [
+                "Certaines règles strictes du classicisme",
+                "Toute écriture dramatique",
+                "La langue française",
+                "Les acteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "XIXe-XXe : nouvelles esthétiques."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Le théâtre moderne",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Du classicisme aux Lumières",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels changements annoncent le théâtre des Lumières ?",
+              "options": [
+                "Critique sociale",
+                "Quête de vraisemblance morale",
+                "Retour obligé aux trois unités",
+                "Fin de toute représentation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Diderot et Beaumarchais préparent le renouveau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Marivaux écrit surtout :",
+              "options": [
+                "Comédie de caractères et sentiments",
+                "Tragédie racinienne pure",
+                "Opéra seul",
+                "Cinéma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyse fine des rapports amoureux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Beaumarchais représente :",
+              "options": [
+                "La société pré-révolutionnaire",
+                "Le Moyen Âge",
+                "La Grèce antique seule",
+                "Le futur spatial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Figaro et le comte d'Almaviva."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Diderot théorise :",
+              "options": [
+                "Le drame bourgeois",
+                "L'opéra baroque seul",
+                "La farce sans message",
+                "L'absence de théâtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entre tragédie et comédie, larmes et vertu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le siècle des Lumières critique :",
+              "options": [
+                "L'aristocratie et les privilèges",
+                "Uniquement la science",
+                "Toute lecture",
+                "Les vers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théâtre engagé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La comédie larmoyante :",
+              "options": [
+                "Mêle émotion et morale",
+                "Interdit toute émotion",
+                "Est un documentaire",
+                "Est un jeu vidéo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spectateur attendri et édifié."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le public parisien du XVIIIe :",
+              "options": [
+                "Se diversifie (bourgeoisie)",
+                "Disparaît",
+                "Est uniquement royal",
+                "Est en ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salons et théâtres commerciaux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les censeurs sous l'Ancien Régime :",
+              "options": [
+                "Contrôlent les textes",
+                "N'existent pas",
+                "Écrivent toutes les pièces",
+                "Interdisent tout vers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Censure politique fréquente."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le Mariage de Figaro (1784) provoque :",
+              "options": [
+                "Scandale et succès",
+                "Silence total",
+                "Interdiction définitive",
+                "Un film muet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Satire de la noblesse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Vers le XIXe, le théâtre :",
+              "options": [
+                "Ouvre la voie au romantisme",
+                "Meurt complètement",
+                "Devient prose seule obligatoire",
+                "Quitte la France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transition vers Hugo et Musset."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Marivaux et la comédie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels procédés marivaudages caractérisent Marivaux ?",
+              "options": [
+                "Jeux de masque et de sentiment",
+                "Analyse psychologique fine",
+                "Farce sans paroles",
+                "Documentaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Double sens et reprise des sentiments."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le Jeu de l'amour et du hasard est :",
+              "options": [
+                "Une comédie en prose",
+                "Une tragédie en alexandrins",
+                "Un opéra",
+                "Un roman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intrigue de déguisements et reconnaissances."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Marivaux écrit :",
+              "options": [
+                "En prose dialoguée",
+                "En alexandrins tragiques",
+                "Sans personnages",
+                "En latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Style précieux et subtil."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Marivaudage » désigne :",
+              "options": [
+                "Conversations fines sur l'amour",
+                "Violence scénique",
+                "Silence total",
+                "Chœur antique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parfois péjoratif, finesse du dialogue."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les valets chez Marivaux :",
+              "options": [
+                "Observent et commentent les sentiments",
+                "Sont absents",
+                "Sont des rois",
+                "Ne parlent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rôle complice du public."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La Double Inconstance traite :",
+              "options": [
+                "De la fidélité mise à l'épreuve",
+                "De la guerre de Troie",
+                "De la physique",
+                "Du code civil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amour et épreuves."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Marivaux publie aussi :",
+              "options": [
+                "Des journaux et réflexions",
+                "Uniquement des pièces",
+                "Des films",
+                "Des jeux vidéo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Auteur complet des Lumières."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'Île des esclaves propose :",
+              "options": [
+                "Une utopie sur le pouvoir renversé",
+                "Un documentaire historique",
+                "Une tragédie grecque",
+                "Un opéra"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maîtres et esclaves échangés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le registre marivaudien est :",
+              "options": [
+                "Comique léger et sentimental",
+                "Épique guerrier",
+                "Horreur",
+                "Didactique sec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Subtilité des rapports."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Marivaux prépare :",
+              "options": [
+                "La comédie de mœurs moderne",
+                "L'extinction du théâtre",
+                "Le cinéma muet",
+                "La tragédie racinienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Influence sur le XIXe."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Beaumarchais et Figaro",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels thèmes portent Le Barbier de Séville et Le Mariage de Figaro ?",
+              "options": [
+                "Classes sociales",
+                "Droit au bonheur",
+                "Guerre de Troie",
+                "Silence absolu"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Servant avisé contre aristocratie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Figaro est :",
+              "options": [
+                "Valet spirituel et rebelle",
+                "Roi de France",
+                "Tragique racinien",
+                "Chœur grec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intelligence populaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le comte d'Almaviva :",
+              "options": [
+                "Noble autoritaire contourné par Figaro",
+                "Paysan",
+                "Dieu grec",
+                "Robot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conflit de classes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Suzanne et la comtesse :",
+              "options": [
+                "Alliées contre les abus du comte",
+                "Ennemies sans cause",
+                "Absentes",
+                "Tragiques comme Phèdre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Solidarité féminine."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Beaumarchais écrit en :",
+              "options": [
+                "Prose vive",
+                "Alexandrins obligatoires",
+                "Latin",
+                "Vers libres seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dialogue brillant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Mozart adapte :",
+              "options": [
+                "Le Barbier de Séville en opéra",
+                "Phèdre",
+                "Horace",
+                "Britannicus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« La folle journée » musicale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La censure visait surtout :",
+              "options": [
+                "La critique des privilèges",
+                "La musique",
+                "Les costumes",
+                "La durée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Danger politique perçu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le monologue de Figaro (acte V) :",
+              "options": [
+                "Dénonce les injustices sociales",
+                "Est muet",
+                "Est en grec",
+                "Remplace toute l'intrigue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passage célèbre engagé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Beaumarchais est aussi :",
+              "options": [
+                "Musicien, espion, homme d'affaires",
+                "Uniquement paysan",
+                "Sans activité",
+                "Peintre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Biographie riche."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le Mariage de Figaro annonce :",
+              "options": [
+                "Les bouleversements révolutionnaires",
+                "Le retour de Racine pur",
+                "La fin du dialogue",
+                "Le cinéma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1784, avant 1789."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le drame romantique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels traits définissent le drame romantique ?",
+              "options": [
+                "Mélange des genres",
+                "Liberté formelle",
+                "Respect strict des trois unités",
+                "Interdiction de la passion"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hugo théorise le grotesque et le sublime."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Victor Hugo écrit :",
+              "options": ["Hernani (1830)", "Le Cid", "Phèdre", "Andromaque"],
+              "correctAnswers": [0],
+              "explanation": "Manifeste du théâtre romantique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La bataille d'Hernani (1830) symbolise :",
+              "options": [
+                "Victoire des jeunes romantiques",
+                "Fin du théâtre",
+                "Retour de Racine seul",
+                "Censure définitive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Climat au Théâtre-Français."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Hugo défend :",
+              "options": [
+                "Le mélange du tragique et du grotesque",
+                "L'interdiction du vers",
+                "La prose seule",
+                "L'absence de décor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Preface de Cromwell."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ruy Blas mêle :",
+              "options": [
+                "Intrigue espagnole et dénonciation sociale",
+                "Comédie pure",
+                "Documentaire",
+                "Opéra muet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Servant amoureux du roi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le romantisme théâtral rompt avec :",
+              "options": [
+                "Bienséance et unités strictes",
+                "Toute langue",
+                "Les acteurs",
+                "Le public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nouvelle esthétique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les alexandrins chez Hugo :",
+              "options": [
+                "Restent mais se flexibilisent",
+                "Disparaissent totalement",
+                "Devient prose",
+                "Sont interdits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vers romantiques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le décor romantique :",
+              "options": [
+                "Se démocratise et se précise",
+                "Disparaît",
+                "Est unique toujours",
+                "Est cinéma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réalisme visuel croissant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les « batailles » au parterre :",
+              "options": [
+                "Opposent partisans et classiques",
+                "N'existent pas",
+                "Sont des batailles réelles",
+                "Sont des examens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hernani, clameurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le drame romantique traite :",
+              "options": [
+                "Passion, honneur, révolte",
+                "Uniquement la cuisine",
+                "Rien",
+                "Bulletins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thèmes héroïques renouvelés."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Musset, Dumas fils et le XIXe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels auteurs illustrent le théâtre du XIXe français ?",
+              "options": [
+                "Alfred de Musset",
+                "Alexandre Dumas fils",
+                "Corneille seul",
+                "Racine seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Comédies et drames sociaux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "On ne badine pas avec l'amour est :",
+              "options": [
+                "Une comédie en prose de Musset",
+                "Une tragédie de Racine",
+                "Un opéra de Wagner",
+                "Un film"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pastorale amère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lorenzaccio de Musset :",
+              "options": [
+                "Drame historique sur le tyrannicide",
+                "Farce",
+                "Vaudeville",
+                "Conte pour enfants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réflexion sur le pouvoir."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La Dame aux camélias de Dumas fils :",
+              "options": [
+                "Condamne la double morale",
+                "Est une farce",
+                "Est un traité de botanique",
+                "Est un opéra seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marguerite Gautier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dumas fils défend :",
+              "options": [
+                "La « thèse » sociale au théâtre",
+                "L'absence de message",
+                "Le muet",
+                "La censure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pièce à argument."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le vaudeville au XIXe :",
+              "options": [
+                "Divertit avec quiproquos",
+                "Remplace toute tragédie",
+                "Disparaît en 1600",
+                "Est grec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eugène Labiche, Feydeau plus tard."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Scribe structure :",
+              "options": [
+                "Des pièces bien ficelées (well-made)",
+                "Des romans seuls",
+                "Des films",
+                "Des statues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intrigue mécanique efficace."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le naturalisme au théâtre :",
+              "options": [
+                "Influence le réalisme de mœurs",
+                "Ignore la société",
+                "Est purement grec",
+                "Est futuriste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Héritage zolien possible."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ibsen traduit en France :",
+              "options": [
+                "Bouleverse le théâtre réaliste",
+                "N'est jamais lu",
+                "Écrit en français natif",
+                "Est comique seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nora, Hedda Gabler."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le XIXe prépare :",
+              "options": [
+                "Les ruptures du XXe siècle",
+                "La fin du théâtre",
+                "L'absence de texte",
+                "Le retour exclusif de Racine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passage vers modernité."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Réalisme, naturalisme et fin de siècle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels courants marquent la fin du XIXe théâtral ?",
+              "options": [
+                "Réalisme",
+                "Naturalisme",
+                "Tragédie classique pure seule",
+                "Absence de mise en scène"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mœurs, milieu social, vérité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Zola défend :",
+              "options": [
+                "Le naturalisme au théâtre",
+                "L'interdiction du théâtre",
+                "Le romantisme seul",
+                "Le cinéma seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Naturalisme au théâtre »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le Théâtre-Libre d'Antoine :",
+              "options": [
+                "Monte des pièces réalistes et scandaleuses",
+                "N'existe pas",
+                "Joue Racine seul",
+                "Est un opéra"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1887, répertoire international."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Strindberg en France :",
+              "options": [
+                "Influence le drame psychologique",
+                "Est ignoré",
+                "Écrit au XVIIe",
+                "Est comique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tension intérieure."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Feydeau au tournant :",
+              "options": [
+                "Perfectionne le vaudeville",
+                "Écrit Phèdre",
+                "Est tragique grec",
+                "Est cinéaste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quiproquos et portes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une Puce à l'oreille de Feydeau :",
+              "options": [
+                "Une pièce à claques",
+                "Une tragédie",
+                "Un opéra",
+                "Un poème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comique de situation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le décor réaliste :",
+              "options": [
+                "Reproduit intérieurs bourgeois",
+                "Est vide toujours",
+                "Est interdit",
+                "Est unique abstrait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intérieur comme personnage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le Théâtre de l'Œuvre :",
+              "options": [
+                "Accueille symbolisme et nouveautés",
+                "Ferme en 1600",
+                "Est uniquement vaudeville",
+                "Est un stade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lugné-Poe, Maeterlinck."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Maeterlinck en France :",
+              "options": [
+                "Théâtre de l'invisible et du silence",
+                "Farce",
+                "Vaudeville",
+                "Opérette seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Pelléas et Mélisande »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Vers 1900, le théâtre :",
+              "options": [
+                "Pluralise esthétiques",
+                "Devient muet définitif",
+                "Perd la langue",
+                "N'a plus de public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avant-garde et boulevard coexistent."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Théâtre de l'absurde",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels auteurs sont associés à l'absurde en France ?",
+              "options": [
+                "Eugène Ionesco",
+                "Samuel Beckett (en français)",
+                "Corneille",
+                "Racine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Post-guerre, crise de sens."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La Cantatrice chauve d'Ionesco :",
+              "options": [
+                "Parodie conversations vides",
+                "Est tragédie classique",
+                "Est opéra sérieux",
+                "Est un roman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1950, anti-théâtre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Rhinocéros montre :",
+              "options": [
+                "Transformation des hommes en bêtes",
+                "Guerre de Troie",
+                "Pastorale",
+                "Comédie classique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Totalitarisme et conformisme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Beckett écrit En attendant Godot :",
+              "options": [
+                "En français d'abord",
+                "En grec antique",
+                "Sans paroles",
+                "En prose administrative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1953, deux clochards."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Godot symbolise :",
+              "options": [
+                "Attente sans aboutissement",
+                "Un happy end",
+                "La science",
+                "La cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sens différé ou absent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'absurde questionne :",
+              "options": [
+                "Le langage et la communication",
+                "Uniquement les costumes",
+                "Rien",
+                "Les mathématiques seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dialogues circulaires."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ionesco dénonce :",
+              "options": [
+                "Bétonisation de la pensée",
+                "Uniquement la musique",
+                "Le vers classique seul",
+                "Les jeux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Logologie » des clichés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le décor absurde est souvent :",
+              "options": [
+                "Minimal",
+                "Hyperréaliste historique",
+                "Cinématographique obligatoire",
+                "Absent impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arbre, route, chaise."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'humour noir caractérise :",
+              "options": [
+                "Beaucoup de pièces absurdes",
+                "Uniquement Molière",
+                "Rien",
+                "La tragédie racinienne pure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rire et malaise."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'absurde réagit à :",
+              "options": [
+                "Traumatismes guerres et crise de valeurs",
+                "XVIIe seul",
+                "Renaissance",
+                "Moyen Âge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "XXe siècle."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Existentialisme : Sartre et Camus",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles pièces illustrent l'existentialisme ?",
+              "options": [
+                "Huis clos de Sartre",
+                "Les Mouches de Sartre",
+                "Le Cid",
+                "Horace"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Liberté, responsabilité, regard d'autrui."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« L'enfer, c'est les autres » vient de :",
+              "options": ["Huis clos", "Phèdre", "Figaro", "Hernani"],
+              "correctAnswers": [0],
+              "explanation": "Garcin, Inès, Estelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les Mouches adaptent :",
+              "options": [
+                "Le mythe d'Oreste",
+                "Le Barbier",
+                "Cromwell seul",
+                "Un fait divers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liberté face au remords."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sartre refuse le Nobel de littérature en :",
+              "options": ["1964", "1637", "1789", "2000"],
+              "correctAnswers": [0],
+              "explanation": "Engagement et indépendance."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Camus écrit Caligula :",
+              "options": [
+                "Drame philosophique sur le pouvoir absolu",
+                "Vaudeville",
+                "Opérette",
+                "Roman seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Empereur et absurdité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'existentialisme théâtral insiste sur :",
+              "options": [
+                "Choix et responsabilité",
+                "Destin fixe sans liberté",
+                "Comique pur",
+                "Absence de parole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Homme condamné à être libre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Huis clos se passe :",
+              "options": [
+                "Dans l'au-delà, sans miroir",
+                "À Versailles",
+                "En Grèce seule",
+                "Dans l'espace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pièce à une salle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "No Exit est :",
+              "options": [
+                "La traduction anglaise de Huis clos",
+                "Phèdre",
+                "Le Cid",
+                "Hernani"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titre bilingue connu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le théâtre engagé sartrien :",
+              "options": [
+                "Lie art et politique",
+                "Interdit toute idée",
+                "Est muet",
+                "Est uniquement comique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Responsabilité de l'écrivain."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Camus et Sartre :",
+              "options": [
+                "Partagent puis divergent sur la révolte",
+                "Sont identiques toujours",
+                "N'écrivent pas pour la scène",
+                "Sont du XVIIe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat existentialiste célèbre."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Ionesco, Beckett et nouvelles écritures",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels procédés ionesciens sont fréquents ?",
+              "options": [
+                "Répétition et déformation du langage",
+                "Alexandrin strict",
+                "Chœur grec long",
+                "Happy end cornélien"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Banalité qui devient insupportable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La Leçon d'Ionesco :",
+              "options": [
+                "Montre le pouvoir absurde du langage",
+                "Est tragédie classique",
+                "Est opéra",
+                "Est ballet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Professeur et élève."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Beckett écrit aussi :",
+              "options": [
+                "Fin de partie",
+                "Le Cid",
+                "Andromaque",
+                "Le Misanthrope"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fin du monde intérieur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Happy Days de Beckett :",
+              "options": [
+                "Enfouissement progressif du personnage",
+                "Mariage comique",
+                "Guerre de Troie",
+                "Vaudeville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Image de la condition humaine."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le « nouveau théâtre » des années 1950-70 :",
+              "options": [
+                "Remet en cause le réalisme psychologique",
+                "Copie Racine",
+                "Disparaît",
+                "Est uniquement opéra"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expérimentation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Adamov, Arrabal, Genet :",
+              "options": [
+                "Explorent violence et marginalité",
+                "Sont classiques du XVIIe",
+                "N'écrivent pas",
+                "Sont peintres seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théâtre du désordre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les Bonnes de Genet :",
+              "options": [
+                "Jeu de rôle servantes/maîtresses",
+                "Pastorale",
+                "Tragédie grecque pure",
+                "Opérette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rituel et identité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Beckett reçoit le Nobel en :",
+              "options": ["1969", "1639", "1830", "2020"],
+              "correctAnswers": [0],
+              "explanation": "Littérature en anglais et français."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ionesco devient :",
+              "options": [
+                "Immortel à l'Académie française",
+                "Roi de France",
+                "Tragédien du XVIIe",
+                "Sans œuvre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reconnaissance institutionnelle tardive."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ces auteurs écrivent pour :",
+              "options": [
+                "Scène minimaliste et parole essentielle",
+                "Cinéma seul",
+                "Radio seule",
+                "Aucun public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théâtre de chambre."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Théâtre contemporain et mise en scène",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels enjeux marquent le théâtre contemporain ?",
+              "options": [
+                "Mise en scène auteur",
+                "Pluralité des formes",
+                "Retour exclusif au Cid seul",
+                "Fin de la représentation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Directeur-artiste et hybridations."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ariane Mnouchkine avec le Théâtre du Soleil :",
+              "options": [
+                "Renouvelle le collectif et le visuel",
+                "Joue Racine sans changement",
+                "Est un opéra seul",
+                "N'existe pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« 1789 », « Les Atrides »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le théâtre documentaire :",
+              "options": [
+                "S'appuie sur témoignages réels",
+                "Interdit tout fait réel",
+                "Est grec antique",
+                "Est jeu vidéo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vérité et montage."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Koltès en France :",
+              "options": [
+                "Poétique urbaine et marginalité",
+                "XVIIe siècle",
+                "Comédie classique",
+                "Opérette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Dans la solitude des champs de coton »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le festival d'Avignon :",
+              "options": [
+                "Met en avant créations contemporaines",
+                "N'accueille que Racine",
+                "Est un stade",
+                "Est fermé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Juillet, off et in."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le théâtre physique (Decroux, Barrault) :",
+              "options": [
+                "Valorise le corps mime",
+                "Supprime l'acteur",
+                "Est cinéma",
+                "Est peinture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corps expressif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les reprises de classics :",
+              "options": [
+                "Actualisent Corneille et Racine",
+                "Interdisent le texte",
+                "Sont impossibles",
+                "Remplacent par des films"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mises en scène modernes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le one-man-show :",
+              "options": [
+                "Concentre la scène sur un performer",
+                "Est chœur grec",
+                "Est tragédie obligatoire",
+                "Est interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme populaire récente."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le théâtre inclusif et diversité :",
+              "options": [
+                "Élargit voix et publics",
+                "Réduit le répertoire à zéro",
+                "Interdit la langue française",
+                "Est uniquement film"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjeux actuels."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Étudier XVIIe-XXIe au lycée, c'est :",
+              "options": [
+                "Relier formes, sens et société",
+                "Ignorer le contexte",
+                "Mémoriser sans texte",
+                "Éviter la scène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parcours français en 1re."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

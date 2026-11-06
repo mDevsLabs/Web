@@ -1,0 +1,2013 @@
+{
+  "id": "4e-arabe-02",
+  "year": "4e",
+  "subject": "arabe",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La famille proche",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Parmi ces mots, lesquels désignent « père » et « mère » en arabe ?",
+              "type": "multiple_choice",
+              "options": ["أَب", "أُمّ", "عَمّ", "خَال"],
+              "correctAnswers": [0, 1],
+              "explanation": "أَب = père et أُمّ = mère ; عَمّ = oncle paternel, خَال = oncle maternel."
+            },
+            {
+              "id": "q2",
+              "question": "« أَخ » signifie :",
+              "type": "single_choice",
+              "options": ["sœur", "frère", "fils", "oncle"],
+              "correctAnswers": [1],
+              "explanation": "أَخ (akh) = frère."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « fille » ?",
+              "type": "single_choice",
+              "options": ["ابْن", "بِنْت", "زَوْجَة", "أُخْت"],
+              "correctAnswers": [1],
+              "explanation": "بِنْت (bint) = fille."
+            },
+            {
+              "id": "q4",
+              "question": "« أُسْرَة » veut dire :",
+              "type": "single_choice",
+              "options": ["classe", "famille", "maison", "ville"],
+              "correctAnswers": [1],
+              "explanation": "أُسْرَة = famille."
+            },
+            {
+              "id": "q5",
+              "question": "« أُخْتِي » traduit :",
+              "type": "single_choice",
+              "options": ["mon frère", "ma sœur", "mon père", "ma mère"],
+              "correctAnswers": [1],
+              "explanation": "Le suffixe -i = mon/ma : أُخْتِي = ma sœur."
+            },
+            {
+              "id": "q6",
+              "question": "« جَدّ » est :",
+              "type": "single_choice",
+              "options": ["grand-père", "grand-mère", "père", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "جَدّ = grand-père ; جَدَّة = grand-mère."
+            },
+            {
+              "id": "q7",
+              "question": "« زَوْجَة » signifie :",
+              "type": "single_choice",
+              "options": ["mari", "épouse", "sœur", "mère"],
+              "correctAnswers": [1],
+              "explanation": "زَوْجَة = épouse."
+            },
+            {
+              "id": "q8",
+              "question": "Pluriel de « ابْن » :",
+              "type": "single_choice",
+              "options": ["بَنَات", "أَبْنَاء", "أَخَوَة", "آبَاء"],
+              "correctAnswers": [1],
+              "explanation": "أَبْنَاء = fils (pluriel masculin)."
+            },
+            {
+              "id": "q9",
+              "question": "« وَالِدَاي » désigne :",
+              "type": "single_choice",
+              "options": [
+                "mes parents",
+                "mes voisins",
+                "mes amis",
+                "mes professeurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "وَالِد = parent ; dual avec -ay = mes deux parents."
+            },
+            {
+              "id": "q10",
+              "question": "« أَبِي » signifie :",
+              "type": "single_choice",
+              "options": ["ma mère", "mon père", "mon frère", "mon oncle"],
+              "correctAnswers": [1],
+              "explanation": "أَب + i possessif = mon père."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Famille élargie",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent des oncles en arabe ?",
+              "type": "multiple_choice",
+              "options": ["عَمّ", "خَال", "أَخ", "جَدّ"],
+              "correctAnswers": [0, 1],
+              "explanation": "عَمّ = oncle paternel, خَال = oncle maternel."
+            },
+            {
+              "id": "q2",
+              "question": "« عَمَّة » est :",
+              "type": "single_choice",
+              "options": [
+                "tante paternelle",
+                "tante maternelle",
+                "grand-mère",
+                "cousine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "عَمَّة = tante du côté paternel."
+            },
+            {
+              "id": "q3",
+              "question": "« خَالَة » signifie :",
+              "type": "single_choice",
+              "options": ["oncle paternel", "tante maternelle", "sœur", "mère"],
+              "correctAnswers": [1],
+              "explanation": "خَالَة = tante maternelle."
+            },
+            {
+              "id": "q4",
+              "question": "Un « ابْن عَمّ » est :",
+              "type": "single_choice",
+              "options": ["un cousin", "un frère", "un fils", "un neveu"],
+              "correctAnswers": [0],
+              "explanation": "ابْن عَمّ = fils de l'oncle paternel, donc cousin."
+            },
+            {
+              "id": "q5",
+              "question": "« أَقَارِب » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "voisins",
+                "parents / proches",
+                "élèves",
+                "professeurs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "أَقَارِب = proches, parenté."
+            },
+            {
+              "id": "q6",
+              "question": "« حَفِيد » est :",
+              "type": "single_choice",
+              "options": ["petit-fils", "grand-père", "oncle", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "حَفِيد = petit-fils ; حَفِيدَة = petite-fille."
+            },
+            {
+              "id": "q7",
+              "question": "« زَمِيل » désigne plutôt :",
+              "type": "single_choice",
+              "options": ["un cousin", "un camarade", "un voisin", "un oncle"],
+              "correctAnswers": [1],
+              "explanation": "زَمِيل = camarade (classe, travail)."
+            },
+            {
+              "id": "q8",
+              "question": "« جَار » signifie :",
+              "type": "single_choice",
+              "options": ["ami", "voisin", "frère", "professeur"],
+              "correctAnswers": [1],
+              "explanation": "جَار = voisin."
+            },
+            {
+              "id": "q9",
+              "question": "Pour « ma famille », on dit souvent :",
+              "type": "single_choice",
+              "options": ["عَائِلَتِي", "مَدْرَسَتِي", "غُرْفَتِي", "كِتَابِي"],
+              "correctAnswers": [0],
+              "explanation": "عَائِلَة = famille ; عَائِلَتِي = ma famille."
+            },
+            {
+              "id": "q10",
+              "question": "« أُخْت » au féminin de « أَخ » signifie :",
+              "type": "single_choice",
+              "options": ["mère", "sœur", "tante", "fille"],
+              "correctAnswers": [1],
+              "explanation": "أُخْت = sœur."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La maison",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots nomment des pièces de la maison ?",
+              "type": "multiple_choice",
+              "options": ["مَطْبَخ", "حَمَّام", "مَلْعَب", "سَيَّارَة"],
+              "correctAnswers": [0, 1],
+              "explanation": "مَطْبَخ = cuisine, حَمَّام = salle de bain ; les deux sont des pièces."
+            },
+            {
+              "id": "q2",
+              "question": "« بَيْت » signifie :",
+              "type": "single_choice",
+              "options": ["école", "maison", "rue", "jardin"],
+              "correctAnswers": [1],
+              "explanation": "بَيْt = maison."
+            },
+            {
+              "id": "q3",
+              "question": "« غُرْفَة » veut dire :",
+              "type": "single_choice",
+              "options": ["chambre / pièce", "porte", "fenêtre", "toit"],
+              "correctAnswers": [0],
+              "explanation": "غُرْفَة = chambre ou pièce."
+            },
+            {
+              "id": "q4",
+              "question": "Où prépare-t-on le repas ? (مَطْبَخ)",
+              "type": "single_choice",
+              "options": ["salon", "cuisine", "cour", "garage"],
+              "correctAnswers": [1],
+              "explanation": "مَطْبَخ = cuisine."
+            },
+            {
+              "id": "q5",
+              "question": "« صَالَة » désigne souvent :",
+              "type": "single_choice",
+              "options": [
+                "le salon",
+                "la cave",
+                "le grenier",
+                "le couloir seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "صَالَة = salon / salle de séjour."
+            },
+            {
+              "id": "q6",
+              "question": "« بَاب » est :",
+              "type": "single_choice",
+              "options": ["fenêtre", "porte", "mur", "sol"],
+              "correctAnswers": [1],
+              "explanation": "بَاب = porte."
+            },
+            {
+              "id": "q7",
+              "question": "« نَافِذَة » signifie :",
+              "type": "single_choice",
+              "options": ["porte", "fenêtre", "escalier", "clé"],
+              "correctAnswers": [1],
+              "explanation": "نَافِذَة = fenêtre."
+            },
+            {
+              "id": "q8",
+              "question": "« سَطْح » peut désigner :",
+              "type": "single_choice",
+              "options": [
+                "le toit / terrasse",
+                "le sous-sol",
+                "la cour d'école",
+                "le bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "سَطْح = toit ou terrasse."
+            },
+            {
+              "id": "q9",
+              "question": "« حَدِيقَة » devant la maison, c'est :",
+              "type": "single_choice",
+              "options": [
+                "un jardin",
+                "une piscine obligatoire",
+                "une classe",
+                "un stade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "حَدِيقَة = jardin."
+            },
+            {
+              "id": "q10",
+              "question": "« شَقَّة » correspond à :",
+              "type": "single_choice",
+              "options": [
+                "un appartement",
+                "un village",
+                "un pays",
+                "un train"
+              ],
+              "correctAnswers": [0],
+              "explanation": "شَقَّة = appartement."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Dans la chambre",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels objets trouve-t-on souvent dans une غُرْفَة نَوْم ?",
+              "type": "multiple_choice",
+              "options": ["سَرِير", "خِزَانَة", "سَبُّورَة", "مِiqَaas cuisson"],
+              "correctAnswers": [0, 1],
+              "explanation": "سَرِير = lit, خِزَانَة = armoire ; typiques d'une chambre."
+            },
+            {
+              "id": "q2",
+              "question": "« سَرِير » signifie :",
+              "type": "single_choice",
+              "options": ["chaise", "lit", "table", "lampe"],
+              "correctAnswers": [1],
+              "explanation": "سَرِير = lit."
+            },
+            {
+              "id": "q3",
+              "question": "« مِكْتَب » dans une chambre d'élève, c'est :",
+              "type": "single_choice",
+              "options": ["un bureau", "un vélo", "un ballon", "un four"],
+              "correctAnswers": [0],
+              "explanation": "مِكْتَب = bureau (meuble)."
+            },
+            {
+              "id": "q4",
+              "question": "« كُرْسِي » veut dire :",
+              "type": "single_choice",
+              "options": ["chaise", "porte", "mur", "plafond"],
+              "correctAnswers": [0],
+              "explanation": "كُرْسِي = chaise."
+            },
+            {
+              "id": "q5",
+              "question": "« مِصْبَاح » est :",
+              "type": "single_choice",
+              "options": ["une lampe", "un tapis", "un rideau", "un miroir"],
+              "correctAnswers": [0],
+              "explanation": "مِصْبَاح = lampe."
+            },
+            {
+              "id": "q6",
+              "question": "« سَجَّادَة » sur le sol :",
+              "type": "single_choice",
+              "options": [
+                "un tapis",
+                "une fenêtre",
+                "une cloche",
+                "un cartable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "سَجَّادَة = tapis."
+            },
+            {
+              "id": "q7",
+              "question": "« مِرْآة » signifie :",
+              "type": "single_choice",
+              "options": ["miroir", "horloge", " téléphone", "cahier"],
+              "correctAnswers": [0],
+              "explanation": "مِرْآة = miroir."
+            },
+            {
+              "id": "q8",
+              "question": "Ranger ses vêtements dans la :",
+              "type": "single_choice",
+              "options": ["خِزَانَة", "مَطْبَخ", "سَبُّورَة", "مَلْعَب"],
+              "correctAnswers": [0],
+              "explanation": "خِزَانَة = armoire."
+            },
+            {
+              "id": "q9",
+              "question": "« وِسَادَة » sur le lit :",
+              "type": "single_choice",
+              "options": [
+                "oreiller",
+                "couverture seulement",
+                "chaussure",
+                "stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "وِسَادَة = oreiller."
+            },
+            {
+              "id": "q10",
+              "question": "« غُرْفَة نَوْم » est :",
+              "type": "single_choice",
+              "options": [
+                "chambre à coucher",
+                "salle de sport",
+                "cantine",
+                "bibliothèque municipale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "غُرْفَة نَوْm = chambre à coucher."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Au collège : les lieux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels lieux se trouvent dans une مَدْرَسَة ?",
+              "type": "multiple_choice",
+              "options": [
+                "فَصْل",
+                "مَكْتَبَة",
+                "مَطْبَخ familial seul",
+                "piste d'athlétisme olympique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "فَصْل = classe, مَكْتَبَة = bibliothèque scolaire."
+            },
+            {
+              "id": "q2",
+              "question": "« مَدْرَسَة » signifie :",
+              "type": "single_choice",
+              "options": ["école", "hôpital", "musée", "aéroport"],
+              "correctAnswers": [0],
+              "explanation": "مَدْرَسَة = école."
+            },
+            {
+              "id": "q3",
+              "question": "« فَصْل » au collège, c'est :",
+              "type": "single_choice",
+              "options": [
+                "une classe",
+                "une matière",
+                "une vacance",
+                "un devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "فَصْl = classe (salle)."
+            },
+            {
+              "id": "q4",
+              "question": "« سَاحَة » de récréation :",
+              "type": "single_choice",
+              "options": [
+                "cour de récréation",
+                "salle de bain",
+                "chambre",
+                "cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "سَاحَة = cour / place."
+            },
+            {
+              "id": "q5",
+              "question": "« مَكْتَبَة » à l'école :",
+              "type": "single_choice",
+              "options": [
+                "bibliothèque",
+                "cantine",
+                "infirmerie",
+                "parking seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مَكْتَبَة = bibliothèque."
+            },
+            {
+              "id": "q6",
+              "question": "« مَعْهَد » peut désigner :",
+              "type": "single_choice",
+              "options": [
+                "un institut / établissement",
+                "un jardin privé",
+                "un marché",
+                "un stade pro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مَعْهَد = institut, établissement d'enseignement."
+            },
+            {
+              "id": "q7",
+              "question": "« مُدِير » à l'école :",
+              "type": "single_choice",
+              "options": ["le directeur", "l'élève", "le cousin", "le voisin"],
+              "correctAnswers": [0],
+              "explanation": "مُدِير = directeur."
+            },
+            {
+              "id": "q8",
+              "question": "« مَدْرَسَة ثَانَوِيَّة » correspond à :",
+              "type": "single_choice",
+              "options": [
+                "lycée / secondaire",
+                "crèche",
+                "université seule",
+                "maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ثَانَوِي = secondaire."
+            },
+            {
+              "id": "q9",
+              "question": "« مِرْحَاض » (lieu scolaire) :",
+              "type": "single_choice",
+              "options": [
+                "toilettes",
+                "cantine",
+                "labo obligatoire",
+                "piscine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مِرْحَاض = toilettes."
+            },
+            {
+              "id": "q10",
+              "question": "« قِسْم » peut signifier :",
+              "type": "single_choice",
+              "options": [
+                "section / département",
+                "vacances",
+                "devoir maison",
+                "cousin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "قِسْm = section, département dans un établissement."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Matériel scolaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent du matériel scolaire ?",
+              "type": "multiple_choice",
+              "options": ["قَلَم", "دَفْتَر", "سَرِير", "مِقْلاَة"],
+              "correctAnswers": [0, 1],
+              "explanation": "قَلَم = stylo/crayon, دَفْتَر = cahier."
+            },
+            {
+              "id": "q2",
+              "question": "« حَقِيبَة » pour les cours :",
+              "type": "single_choice",
+              "options": [
+                "cartable / sac",
+                "chaussure",
+                "casquette seule",
+                "lit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "حَقِيبَة = sac, cartable."
+            },
+            {
+              "id": "q3",
+              "question": "« كِتَاب » signifie :",
+              "type": "single_choice",
+              "options": ["livre", "porte", "ballon", "pluie"],
+              "correctAnswers": [0],
+              "explanation": "كِتَاب = livre."
+            },
+            {
+              "id": "q4",
+              "question": "« مِمْحَاة » sert à :",
+              "type": "single_choice",
+              "options": ["effacer", "coudre", "nager", "dormir"],
+              "correctAnswers": [0],
+              "explanation": "مِمْحَاة = gomme."
+            },
+            {
+              "id": "q5",
+              "question": "« مِسْطَرَة » mesure :",
+              "type": "single_choice",
+              "options": ["règle", "crayon", "table", "cloche"],
+              "correctAnswers": [0],
+              "explanation": "مِسْطَرَة = règle."
+            },
+            {
+              "id": "q6",
+              "question": "« قَلَم رَصَاص » c'est :",
+              "type": "single_choice",
+              "options": [
+                "un crayon",
+                "un feutre obligatoire",
+                "une gomme",
+                "un cartable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "قَلَم رَصَاص = crayon à papier."
+            },
+            {
+              "id": "q7",
+              "question": "« مِقَرَّر » à l'école :",
+              "type": "single_choice",
+              "options": [
+                "programme / manuel",
+                "récréation",
+                "oncle",
+                "jardin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مِقَرَّر = programme ou manuel scolaire."
+            },
+            {
+              "id": "q8",
+              "question": "« وَاجِب » veut dire :",
+              "type": "single_choice",
+              "options": ["devoir", "vacances", "sport seul", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "وَاجِب = devoir (scolaire)."
+            },
+            {
+              "id": "q9",
+              "question": "« امْتِحَان » signifie :",
+              "type": "single_choice",
+              "options": ["examen", "récréation", "repas", "sieste"],
+              "correctAnswers": [0],
+              "explanation": "امْتِحَان = examen, contrôle."
+            },
+            {
+              "id": "q10",
+              "question": "« سَبُّورَة » dans la classe :",
+              "type": "single_choice",
+              "options": ["tableau", "chaise", "fenêtre", "cartable"],
+              "correctAnswers": [0],
+              "explanation": "سَبُّورَة = tableau (noir ou blanc)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Matières et cours",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles matières entend-on souvent au collège en arabe ?",
+              "type": "multiple_choice",
+              "options": [
+                "رِيَاضِيَّات",
+                "عُلُوم",
+                "طَبْخ maison seul",
+                "conduite voiture"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "رِيَاضِيَّات = maths, عُلُوم = sciences."
+            },
+            {
+              "id": "q2",
+              "question": "« لُغَة عَرَبِيَّة » est :",
+              "type": "single_choice",
+              "options": ["langue arabe", "sport", "musique seule", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "لُغَة عَرَبِيَّة = langue arabe."
+            },
+            {
+              "id": "q3",
+              "question": "« لُغَة فَرَنسِيَّة » correspond à :",
+              "type": "single_choice",
+              "options": ["français", "arabe", "maths", "EPS seule"],
+              "correctAnswers": [0],
+              "explanation": "لُغَة فَرَنسِيَّة = langue française."
+            },
+            {
+              "id": "q4",
+              "question": "« تَارِيخ » signifie :",
+              "type": "single_choice",
+              "options": [
+                "histoire",
+                "géographie",
+                "physique",
+                "arts plastiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "تَارِيخ = histoire."
+            },
+            {
+              "id": "q5",
+              "question": "« جُغْرَافِيَا » veut dire :",
+              "type": "single_choice",
+              "options": ["géographie", "chimie", "musique", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "جُغْرَافِيَا = géographie."
+            },
+            {
+              "id": "q6",
+              "question": "« حَصَّة » à l'école :",
+              "type": "single_choice",
+              "options": [
+                "cours / séance",
+                "vacances",
+                "devoir maison",
+                "oncle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "حَصَّة = période de cours."
+            },
+            {
+              "id": "q7",
+              "question": "« أُسْتَاذ » ou « مُعَلِّم » :",
+              "type": "single_choice",
+              "options": [
+                "professeur",
+                "élève",
+                "directeur toujours",
+                "voisin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أُسْتَاذ / مُعَلِّم = enseignant."
+            },
+            {
+              "id": "q8",
+              "question": "« تِلْمِيذ » désigne :",
+              "type": "single_choice",
+              "options": ["un élève", "un parent", "un lit", "un four"],
+              "correctAnswers": [0],
+              "explanation": "تِلْمِيذ = élève."
+            },
+            {
+              "id": "q9",
+              "question": "« فُنُون » peut inclure :",
+              "type": "single_choice",
+              "options": ["arts", "maths seules", "oncles", "pluie"],
+              "correctAnswers": [0],
+              "explanation": "فُنُون = arts."
+            },
+            {
+              "id": "q10",
+              "question": "« رِيَاضَة » comme matière ou activité :",
+              "type": "single_choice",
+              "options": ["sport / EPS", "histoire seule", "chambre", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "رِيَاضَة = sport, éducation physique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Loisirs du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles activités sont des أَوْقَات فَرَاغ courantes ?",
+              "type": "multiple_choice",
+              "options": [
+                "قِرَاءَة",
+                "لَعِب",
+                "امْتِحَان obligatoire",
+                "وَاجِب sans pause"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "قِرَاءَة = lecture, لَعِب = jeu ; loisirs typiques."
+            },
+            {
+              "id": "q2",
+              "question": "« أَوْقَات فَرَاغ » signifie :",
+              "type": "single_choice",
+              "options": ["temps libre", "heure de cours", "devoir", "examen"],
+              "correctAnswers": [0],
+              "explanation": "أَوْقَات فَرَاغ = temps libre."
+            },
+            {
+              "id": "q3",
+              "question": "« سِينِمَا » pour se distraire :",
+              "type": "single_choice",
+              "options": ["cinéma", "cantine", "classe", "toilettes"],
+              "correctAnswers": [0],
+              "explanation": "سِينِمَا = cinéma."
+            },
+            {
+              "id": "q4",
+              "question": "« مُزِيكَا » ou « مُوسِيقَى » :",
+              "type": "single_choice",
+              "options": ["musique", "maths", "oncle", "lit"],
+              "correctAnswers": [0],
+              "explanation": "مُوسِيقَى = musique."
+            },
+            {
+              "id": "q5",
+              "question": "« رَسْم » comme hobby :",
+              "type": "single_choice",
+              "options": ["dessin", "natation seule", "cousin", "devoir"],
+              "correctAnswers": [0],
+              "explanation": "رَسْm = dessin."
+            },
+            {
+              "id": "q6",
+              "question": "« تَسَوُّق » le samedi :",
+              "type": "single_choice",
+              "options": [
+                "faire les courses",
+                "dormir en classe",
+                "examen oral",
+                "oncle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "تَسَوُّق = shopping, courses."
+            },
+            {
+              "id": "q7",
+              "question": "« زِيَارَة » à un ami :",
+              "type": "single_choice",
+              "options": ["visite", "punition", "devoir", "cousinage seul"],
+              "correctAnswers": [0],
+              "explanation": "زِيَارَة = visite."
+            },
+            {
+              "id": "q8",
+              "question": "« نُزْهَة » au parc :",
+              "type": "single_choice",
+              "options": ["promenade / sortie", "examen", "cuisine", "oncle"],
+              "correctAnswers": [0],
+              "explanation": "نُزْهَة = promenade agréable."
+            },
+            {
+              "id": "q9",
+              "question": "« لَيْلَة » avec un film :",
+              "type": "single_choice",
+              "options": [
+                "soirée / nuit",
+                "matin de cours",
+                "devoir seul",
+                "oncle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "لَيْلَة = nuit, soirée."
+            },
+            {
+              "id": "q10",
+              "question": "« مُتَنَزَّه » pour se promener :",
+              "type": "single_choice",
+              "options": ["parc", "classe", "cantine", "examen"],
+              "correctAnswers": [0],
+              "explanation": "مُتَنَزَّه = parc."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Sport et jeu",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots relèvent du sport ou du jeu ?",
+              "type": "multiple_choice",
+              "options": ["كُرَة قَدَم", "سِبَاحَة", "دَفْتَر seul", "مِمْحَاة"],
+              "correctAnswers": [0, 1],
+              "explanation": "كُرَة قَدَm = football, سِبَاحَة = natation."
+            },
+            {
+              "id": "q2",
+              "question": "« مَلْعَب » signifie :",
+              "type": "single_choice",
+              "options": [
+                "terrain de jeu / stade",
+                "cuisine",
+                "chambre",
+                "bibliothèque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مَلْعَب = terrain de sport."
+            },
+            {
+              "id": "q3",
+              "question": "« فَرِيق » en match :",
+              "type": "single_choice",
+              "options": ["équipe", "devoir", "oncle", "gomme"],
+              "correctAnswers": [0],
+              "explanation": "فَرِيق = équipe."
+            },
+            {
+              "id": "q4",
+              "question": "« مُبَارَاة » veut dire :",
+              "type": "single_choice",
+              "options": ["match", "cahier", "cousin", "pluie"],
+              "correctAnswers": [0],
+              "explanation": "مُبَارَاة = match."
+            },
+            {
+              "id": "q5",
+              "question": "« كُرَة » seul, souvent :",
+              "type": "single_choice",
+              "options": ["ballon", "livre", "lit", "stylo"],
+              "correctAnswers": [0],
+              "explanation": "كُرَة = balle, ballon."
+            },
+            {
+              "id": "q6",
+              "question": "« جَرِي » comme activité :",
+              "type": "single_choice",
+              "options": ["course à pied", "lecture", "devoir", "oncle"],
+              "correctAnswers": [0],
+              "explanation": "جَرِي = course (courir)."
+            },
+            {
+              "id": "q7",
+              "question": "« يَد » + sport de raquette évoque parfois :",
+              "type": "single_choice",
+              "options": [
+                "tennis de table / sports de main",
+                "natation seule",
+                "cousin",
+                "examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De nombreux sports se disent avec كُرَة et partie du corps ; يَد = main."
+            },
+            {
+              "id": "q8",
+              "question": "« فَوْز » à la fin :",
+              "type": "single_choice",
+              "options": ["victoire", "défaite", "devoir", "oncle"],
+              "correctAnswers": [0],
+              "explanation": "فَوْز = victoire."
+            },
+            {
+              "id": "q9",
+              "question": "« هَزِيمَة » signifie :",
+              "type": "single_choice",
+              "options": [
+                "défaite",
+                "match nul obligatoire",
+                "cousin",
+                "cahier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "هَزِيمَة = défaite."
+            },
+            {
+              "id": "q10",
+              "question": "« لَعِب » au présent décrit :",
+              "type": "single_choice",
+              "options": ["jouer / jeu", "dormir", "écrire un devoir", "oncle"],
+              "correctAnswers": [0],
+              "explanation": "لَعِب = jouer (activité ludique)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Routine après le collège",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles actions suivent souvent العَودَة من المَدْرَسَة ?",
+              "type": "multiple_choice",
+              "options": ["غَدَاء", "رَاحَة", "امْتِحَان immédiat", "نَوْم en classe"],
+              "correctAnswers": [0, 1],
+              "explanation": "Après l'école : غَدَاء (repas) et رَاحَة (repos) sont fréquents."
+            },
+            {
+              "id": "q2",
+              "question": "« العَودَة » signifie :",
+              "type": "single_choice",
+              "options": ["retour", "départ", "oncle", "ballon"],
+              "correctAnswers": [0],
+              "explanation": "عَودَة = retour."
+            },
+            {
+              "id": "q3",
+              "question": "« غَدَاء » c'est :",
+              "type": "single_choice",
+              "options": [
+                "déjeuner / repas de midi",
+                "petit-déjeuner seul",
+                "oncle",
+                "devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "غَدَاء = repas de midi."
+            },
+            {
+              "id": "q4",
+              "question": "« عَشَاء » le soir :",
+              "type": "single_choice",
+              "options": ["dîner", "goûter seul", "cousin", "cahier"],
+              "correctAnswers": [0],
+              "explanation": "عَشَاء = dîner."
+            },
+            {
+              "id": "q5",
+              "question": "« نَوْm » après une longue journée :",
+              "type": "single_choice",
+              "options": ["sommeil", "match", "oncle", "stylo"],
+              "correctAnswers": [0],
+              "explanation": "نَوْm = sommeil."
+            },
+            {
+              "id": "q6",
+              "question": "« مُذَاكَرَة » pour les cours :",
+              "type": "single_choice",
+              "options": [
+                "révisions",
+                "foot seul",
+                "oncle",
+                "cinéma obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مُذَاكَرَة = révision, étude."
+            },
+            {
+              "id": "q7",
+              "question": "« مُسَاعَدَة » aux parents :",
+              "type": "single_choice",
+              "options": ["aide", "punition", "oncle", "ballon"],
+              "correctAnswers": [0],
+              "explanation": "مُسَاعَدَة = aide."
+            },
+            {
+              "id": "q8",
+              "question": "« تَنْظِيف » de sa chambre :",
+              "type": "single_choice",
+              "options": ["nettoyage", "jeu seul", "cousin", "examen"],
+              "correctAnswers": [0],
+              "explanation": "تَنْظِيف = nettoyage."
+            },
+            {
+              "id": "q9",
+              "question": "« مُشَاهَدَة » la télé :",
+              "type": "single_choice",
+              "options": ["regarder (TV)", "dormir en cours", "oncle", "gomme"],
+              "correctAnswers": [0],
+              "explanation": "مُشَاهَدَة = visionnage."
+            },
+            {
+              "id": "q10",
+              "question": "« مَسَاء » après les cours :",
+              "type": "single_choice",
+              "options": ["soir", "matin de classe", "oncle", "devoir seul"],
+              "correctAnswers": [0],
+              "explanation": "مَسَاء = soir."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Décrire une personne",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adjectifs décrivent une personne en arabe ?",
+              "type": "multiple_choice",
+              "options": ["طَوِيل", "قَصِير", "مَطْبَخ", "سَبُّورَة"],
+              "correctAnswers": [0, 1],
+              "explanation": "طَوِيل = grand, قَصِير = petit (taille)."
+            },
+            {
+              "id": "q2",
+              "question": "« طَوِيل » pour un garçon :",
+              "type": "single_choice",
+              "options": ["grand (taille)", "petit", "fatigué", "jeune seul"],
+              "correctAnswers": [0],
+              "explanation": "طَوِيل = grand, long."
+            },
+            {
+              "id": "q3",
+              "question": "« قَصِير » signifie :",
+              "type": "single_choice",
+              "options": ["petit / court", "grand", "heureux", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "قَصِير = petit, court."
+            },
+            {
+              "id": "q4",
+              "question": "« شَابّ » désigne :",
+              "type": "single_choice",
+              "options": ["un jeune", "un bébé seul", "un oncle", "un cahier"],
+              "correctAnswers": [0],
+              "explanation": "شَابّ = jeune (homme)."
+            },
+            {
+              "id": "q5",
+              "question": "« بِنْت » dans une description :",
+              "type": "single_choice",
+              "options": ["fille", "garçon", "oncle", "stylo"],
+              "correctAnswers": [0],
+              "explanation": "بِنْت = fille."
+            },
+            {
+              "id": "q6",
+              "question": "« وَجْه » à décrire :",
+              "type": "single_choice",
+              "options": ["visage", "pied seul", "cousin", "devoir"],
+              "correctAnswers": [0],
+              "explanation": "وَجْh = visage."
+            },
+            {
+              "id": "q7",
+              "question": "« شَعْر » de couleur :",
+              "type": "single_choice",
+              "options": ["cheveux", "yeux seuls", "oncle", "ballon"],
+              "correctAnswers": [0],
+              "explanation": "شَعْr = cheveux."
+            },
+            {
+              "id": "q8",
+              "question": "« عَيْن » au pluriel « عُيُون » :",
+              "type": "single_choice",
+              "options": ["œil / yeux", "oreille", "cousin", "cahier"],
+              "correctAnswers": [0],
+              "explanation": "عَيْn = œil."
+            },
+            {
+              "id": "q9",
+              "question": "« لَطِيف » comme trait :",
+              "type": "single_choice",
+              "options": [
+                "gentil / agréable",
+                "méchant obligatoire",
+                "oncle",
+                "examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "لَطِيف = gentil, sympa."
+            },
+            {
+              "id": "q10",
+              "question": "« مُجْتَهِد » à l'école :",
+              "type": "single_choice",
+              "options": [
+                "travailleur / appliqué",
+                "paresseux",
+                "oncle",
+                "lit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مُجْتَهِد = studieux."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Couleurs et vêtements",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles couleurs de base connais-tu en arabe ?",
+              "type": "multiple_choice",
+              "options": ["أَحْمَر", "أَزْرَق", "مَدْرَسَة", "وَاجِب"],
+              "correctAnswers": [0, 1],
+              "explanation": "أَحْمَر = rouge, أَزْرَق = bleu."
+            },
+            {
+              "id": "q2",
+              "question": "« أَسْوَد » signifie :",
+              "type": "single_choice",
+              "options": ["noir", "blanc", "vert", "oncle"],
+              "correctAnswers": [0],
+              "explanation": "أَسْوَد = noir."
+            },
+            {
+              "id": "q3",
+              "question": "« أَبْيَض » veut dire :",
+              "type": "single_choice",
+              "options": ["blanc", "rouge", "cousin", "devoir"],
+              "correctAnswers": [0],
+              "explanation": "أَبْيَض = blanc."
+            },
+            {
+              "id": "q4",
+              "question": "« أَخْضَر » pour l'herbe :",
+              "type": "single_choice",
+              "options": ["vert", "jaune", "oncle", "ballon"],
+              "correctAnswers": [0],
+              "explanation": "أَخْضَr = vert."
+            },
+            {
+              "id": "q5",
+              "question": "« ثَوْب » ou « قَمِيص » :",
+              "type": "single_choice",
+              "options": [
+                "vêtement / chemise",
+                "chaussure seule",
+                "cousin",
+                "cahier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ثَوْb = habit ; قَمِيص = chemise."
+            },
+            {
+              "id": "q6",
+              "question": "« بِنْطَال » signifie :",
+              "type": "single_choice",
+              "options": ["pantalon", "casquette", "oncle", "examen"],
+              "correctAnswers": [0],
+              "explanation": "بِنْطَال = pantalon."
+            },
+            {
+              "id": "q7",
+              "question": "« حِذَاء » aux pieds :",
+              "type": "single_choice",
+              "options": ["chaussure", "gant", "cousin", "stylo"],
+              "correctAnswers": [0],
+              "explanation": "حِذَاء = chaussure."
+            },
+            {
+              "id": "q8",
+              "question": "« لَبِس » au passé proche :",
+              "type": "single_choice",
+              "options": [
+                "il/elle a porté (vêtement)",
+                "il a mangé",
+                "oncle",
+                "devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "لَبِs (passé) = porter un vêtement."
+            },
+            {
+              "id": "q9",
+              "question": "« جَاكِيت » emprunté désigne :",
+              "type": "single_choice",
+              "options": ["veste", "pantalon seul", "oncle", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "جَاكِيت = veste (emprunt courant)."
+            },
+            {
+              "id": "q10",
+              "question": "« مَلَابِس » au pluriel :",
+              "type": "single_choice",
+              "options": ["vêtements", "chaussure unique", "oncle", "cahier"],
+              "correctAnswers": [0],
+              "explanation": "مَلَابِs = vêtements."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Parler de sa journée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots ordonnent une journée type ?",
+              "type": "multiple_choice",
+              "options": ["صَبَاح", "مَسَاء", "عَمّ", "خَال"],
+              "correctAnswers": [0, 1],
+              "explanation": "صَبَاح = matin, مَسَاء = soir."
+            },
+            {
+              "id": "q2",
+              "question": "« أَصْبَح » avec « je » raconte :",
+              "type": "single_choice",
+              "options": [
+                "je me suis levé le matin",
+                "j'ai dormi",
+                "oncle",
+                "ballon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أَصْبَحَ = commencer la matinée / se lever."
+            },
+            {
+              "id": "q3",
+              "question": "« ذَهَب » à l'école :",
+              "type": "single_choice",
+              "options": [
+                "il/elle est allé(e)",
+                "il/elle est venu(e)",
+                "oncle",
+                "devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ذَهَb (passé) = aller."
+            },
+            {
+              "id": "q4",
+              "question": "« دَرَس » en classe :",
+              "type": "single_choice",
+              "options": [
+                "étudier / a étudié",
+                "jouer seul",
+                "oncle",
+                "cousin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "دَرَs = étudier (passé : a étudié)."
+            },
+            {
+              "id": "q5",
+              "question": "« تَنَاوَل » الطَّعَام :",
+              "type": "single_choice",
+              "options": ["prendre un repas", "dormir", "oncle", "examen"],
+              "correctAnswers": [0],
+              "explanation": "تَنَاوَل = prendre (repas)."
+            },
+            {
+              "id": "q6",
+              "question": "« عَاد » إلى البَيْt :",
+              "type": "single_choice",
+              "options": ["retourner", "partir", "oncle", "stylo"],
+              "correctAnswers": [0],
+              "explanation": "عَاد = revenir, retourner."
+            },
+            {
+              "id": "q7",
+              "question": "« لَعِب » après les devoirs :",
+              "type": "single_choice",
+              "options": ["jouer", "écrire un examen", "oncle", "cahier"],
+              "correctAnswers": [0],
+              "explanation": "لَعِb = jouer."
+            },
+            {
+              "id": "q8",
+              "question": "« نَام » tard :",
+              "type": "single_choice",
+              "options": ["dormir / a dormi", "manger", "oncle", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "نَام = dormir (passé)."
+            },
+            {
+              "id": "q9",
+              "question": "« يَوْm » complet :",
+              "type": "single_choice",
+              "options": ["jour", "nuit seule", "oncle", "devoir"],
+              "correctAnswers": [0],
+              "explanation": "يَوْm = jour."
+            },
+            {
+              "id": "q10",
+              "question": "« أَمْس » pour raconter :",
+              "type": "single_choice",
+              "options": ["hier", "demain", "oncle", "ballon"],
+              "correctAnswers": [0],
+              "explanation": "أَمْs = hier."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "L'heure",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots servent à parler de l'heure ?",
+              "type": "multiple_choice",
+              "options": ["سَاعَة", "دَقِيقَة", "عَمّ", "جَدّ"],
+              "correctAnswers": [0, 1],
+              "explanation": "سَاعَة = heure / montre ; دَقِيقَة = minute."
+            },
+            {
+              "id": "q2",
+              "question": "« السَّاعَة وَاحِدَة » indique :",
+              "type": "single_choice",
+              "options": ["une heure", "deux heures", "oncle", "devoir"],
+              "correctAnswers": [0],
+              "explanation": "وَاحِدَة = une (fém.) → une heure."
+            },
+            {
+              "id": "q3",
+              "question": "« الثَّانِيَة » dans l'heure :",
+              "type": "single_choice",
+              "options": ["deux (heures)", "trois", "oncle", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "الثَّانِيَة = la deuxième (heure)."
+            },
+            {
+              "id": "q4",
+              "question": "« نِصْف » avec l'heure :",
+              "type": "single_choice",
+              "options": ["demi", "quart", "oncle", "ballon"],
+              "correctAnswers": [0],
+              "explanation": "نِصْf = moitié, et demie."
+            },
+            {
+              "id": "q5",
+              "question": "« رُبْع » signifie :",
+              "type": "single_choice",
+              "options": ["quart", "heure pleine", "oncle", "cahier"],
+              "correctAnswers": [0],
+              "explanation": "رُبْع = quart (d'heure)."
+            },
+            {
+              "id": "q6",
+              "question": "« صَبَاحًا » précise :",
+              "type": "single_choice",
+              "options": ["le matin", "le soir", "oncle", "devoir"],
+              "correctAnswers": [0],
+              "explanation": "صَبَاحًا = le matin (adverbe)."
+            },
+            {
+              "id": "q7",
+              "question": "« مَسَاءً » indique :",
+              "type": "single_choice",
+              "options": ["le soir", "midi seul", "oncle", "examen"],
+              "correctAnswers": [0],
+              "explanation": "مَسَاءً = le soir."
+            },
+            {
+              "id": "q8",
+              "question": "« الآن » dans une phrase :",
+              "type": "single_choice",
+              "options": ["maintenant", "hier", "oncle", "stylo"],
+              "correctAnswers": [0],
+              "explanation": "الآن = maintenant."
+            },
+            {
+              "id": "q9",
+              "question": "« مُبَكِّر » le matin :",
+              "type": "single_choice",
+              "options": ["tôt", "tard", "oncle", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "مُبَكِّr = tôt."
+            },
+            {
+              "id": "q10",
+              "question": "« مُتَأَخِّر » pour l'heure :",
+              "type": "single_choice",
+              "options": ["en retard / tard", "à l'heure", "oncle", "devoir"],
+              "correctAnswers": [0],
+              "explanation": "مُتَأَخِّr = tard, en retard."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Verbes au passé (actions)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels verbes sont au passé (فِعْل مَاضٍ) ?",
+              "type": "multiple_choice",
+              "options": ["كَتَبَ", "قَرَأَ", "يَكْتُب", "سَيَذْهَب"],
+              "correctAnswers": [0, 1],
+              "explanation": "كَتَبَ = il a écrit, قَرَأَ = il a lu ; formes passées."
+            },
+            {
+              "id": "q2",
+              "question": "« أَكَلَ » signifie :",
+              "type": "single_choice",
+              "options": [
+                "il a mangé",
+                "il mange (présent)",
+                "oncle",
+                "devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أَكَلَ = manger au passé (il a mangé)."
+            },
+            {
+              "id": "q3",
+              "question": "« شَرِبَ » avec de l'eau :",
+              "type": "single_choice",
+              "options": ["il a bu", "il boit", "oncle", "ballon"],
+              "correctAnswers": [0],
+              "explanation": "شَرِbَ = boire (passé)."
+            },
+            {
+              "id": "q4",
+              "question": "« كَتَبَ » الوَاجِب :",
+              "type": "single_choice",
+              "options": [
+                "il a écrit le devoir",
+                "il efface",
+                "oncle",
+                "cousin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "كَتَbَ = écrire au passé."
+            },
+            {
+              "id": "q5",
+              "question": "« سَمِعَ » موسيقى :",
+              "type": "single_choice",
+              "options": [
+                "il a entendu / écouté",
+                "il a vu",
+                "oncle",
+                "cahier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "سَمِعَ = entendre, écouter (passé)."
+            },
+            {
+              "id": "q6",
+              "question": "« رَأَى » الفِيلم :",
+              "type": "single_choice",
+              "options": ["il a vu", "il a dormi", "oncle", "examen"],
+              "correctAnswers": [0],
+              "explanation": "رَأَى = voir au passé."
+            },
+            {
+              "id": "q7",
+              "question": "« لَعِبَ » كُرَة :",
+              "type": "single_choice",
+              "options": [
+                "il a joué au ballon",
+                "il a étudié",
+                "oncle",
+                "stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "لَعِbَ = jouer (passé)."
+            },
+            {
+              "id": "q8",
+              "question": "« جَلَسَ » dans le salon :",
+              "type": "single_choice",
+              "options": ["il s'est assis", "il a couru", "oncle", "devoir"],
+              "correctAnswers": [0],
+              "explanation": "جَلَsَ = s'asseoir (passé)."
+            },
+            {
+              "id": "q9",
+              "question": "« قَامَ » مِنَ السَّرِير :",
+              "type": "single_choice",
+              "options": [
+                "il s'est levé",
+                "il s'est couché",
+                "oncle",
+                "cousin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "قَامَ = se lever (passé)."
+            },
+            {
+              "id": "q10",
+              "question": "« فَهِمَ » الدَّرْس :",
+              "type": "single_choice",
+              "options": [
+                "il a compris la leçon",
+                "il a oublié",
+                "oncle",
+                "ballon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "فَهِmَ = comprendre au passé."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Où et quand",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots interrogatifs situent dans le temps ou l'espace ?",
+              "type": "multiple_choice",
+              "options": ["أَيْن", "مَتَى", "كِتَاب", "قَلَم"],
+              "correctAnswers": [0, 1],
+              "explanation": "أَيْn = où ; مَتَى = quand."
+            },
+            {
+              "id": "q2",
+              "question": "« أَيْن » تَسْكُن ? » demande :",
+              "type": "single_choice",
+              "options": ["où", "quand", "oncle", "devoir"],
+              "correctAnswers": [0],
+              "explanation": "أَيْn = où."
+            },
+            {
+              "id": "q3",
+              "question": "« مَتَى » الامْتِحَان ? » :",
+              "type": "single_choice",
+              "options": ["quand", "comment", "oncle", "ballon"],
+              "correctAnswers": [0],
+              "explanation": "مَتَى = quand."
+            },
+            {
+              "id": "q4",
+              "question": "« هُنَا » dans la classe :",
+              "type": "single_choice",
+              "options": ["ici", "là-bas", "oncle", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "هُنَا = ici."
+            },
+            {
+              "id": "q5",
+              "question": "« هُنَاك » au parc :",
+              "type": "single_choice",
+              "options": ["là-bas", "ici", "oncle", "cahier"],
+              "correctAnswers": [0],
+              "explanation": "هُنَاك = là-bas."
+            },
+            {
+              "id": "q6",
+              "question": "« قَرِيب » de la maison :",
+              "type": "single_choice",
+              "options": ["proche", "loin", "oncle", "examen"],
+              "correctAnswers": [0],
+              "explanation": "قَرِيب = proche."
+            },
+            {
+              "id": "q7",
+              "question": "« بَعِيد » signifie :",
+              "type": "single_choice",
+              "options": ["loin", "proche", "oncle", "stylo"],
+              "correctAnswers": [0],
+              "explanation": "بَعِيد = loin."
+            },
+            {
+              "id": "q8",
+              "question": "« غَدًا » pour demain :",
+              "type": "single_choice",
+              "options": ["demain", "hier", "oncle", "devoir"],
+              "correctAnswers": [0],
+              "explanation": "غَدًا = demain."
+            },
+            {
+              "id": "q9",
+              "question": "« كُلَّ » يَوْm :",
+              "type": "single_choice",
+              "options": ["chaque jour", "jamais", "oncle", "ballon"],
+              "correctAnswers": [0],
+              "explanation": "كُلَّ = chaque."
+            },
+            {
+              "id": "q10",
+              "question": "« أَحْيَانًا » en loisirs :",
+              "type": "single_choice",
+              "options": ["parfois", "toujours", "oncle", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "أَحْيَانًا = parfois."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Décrire un lieu",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adjectifs décrivent un lieu ?",
+              "type": "multiple_choice",
+              "options": ["كَبِير", "صَغِير", "أَخ", "أُمّ"],
+              "correctAnswers": [0, 1],
+              "explanation": "كَبِير = grand, صَغِير = petit (lieu ou chose)."
+            },
+            {
+              "id": "q2",
+              "question": "« وَسِيع » pour une salle :",
+              "type": "single_choice",
+              "options": ["spacieux", "étroit", "oncle", "devoir"],
+              "correctAnswers": [0],
+              "explanation": "وَسِيع = large, spacieux."
+            },
+            {
+              "id": "q3",
+              "question": "« ضَيِّق » signifie :",
+              "type": "single_choice",
+              "options": ["étroit", "grand", "oncle", "ballon"],
+              "correctAnswers": [0],
+              "explanation": "ضَيِّq = étroit."
+            },
+            {
+              "id": "q4",
+              "question": "« نَظِيف » après le ménage :",
+              "type": "single_choice",
+              "options": ["propre", "sale", "oncle", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "نَظِيف = propre."
+            },
+            {
+              "id": "q5",
+              "question": "« قَدِيم » pour un bâtiment :",
+              "type": "single_choice",
+              "options": ["ancien", "neuf", "oncle", "cahier"],
+              "correctAnswers": [0],
+              "explanation": "قَدِيم = ancien, vieux."
+            },
+            {
+              "id": "q6",
+              "question": "« جَدِيد » lycée :",
+              "type": "single_choice",
+              "options": ["neuf / nouveau", "sale", "oncle", "examen"],
+              "correctAnswers": [0],
+              "explanation": "جَدِيد = nouveau."
+            },
+            {
+              "id": "q7",
+              "question": "« هَادِئ » quartier :",
+              "type": "single_choice",
+              "options": ["calme", "bruyant", "oncle", "stylo"],
+              "correctAnswers": [0],
+              "explanation": "هَادِئ = calme."
+            },
+            {
+              "id": "q8",
+              "question": "« مُزْدَحِم » marché :",
+              "type": "single_choice",
+              "options": ["bondé", "vide", "oncle", "devoir"],
+              "correctAnswers": [0],
+              "explanation": "مُزْدَحِm = bondé."
+            },
+            {
+              "id": "q9",
+              "question": "« جَمِيل » vue du parc :",
+              "type": "single_choice",
+              "options": ["beau", "laid", "oncle", "ballon"],
+              "correctAnswers": [0],
+              "explanation": "جَمِيل = beau."
+            },
+            {
+              "id": "q10",
+              "question": "« قَرِيب مِن » المَدْرَسَة :",
+              "type": "single_choice",
+              "options": [
+                "près de l'école",
+                "loin de l'école",
+                "oncle",
+                "cousin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "قَرِيب مِن = proche de."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Enchaîner un récit",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels connecteurs enchaînent un récit ?",
+              "type": "multiple_choice",
+              "options": ["ثُمَّ", "بَعْدَ ذَلِك", "عَمّ", "خَال"],
+              "correctAnswers": [0, 1],
+              "explanation": "ثُمَّ = puis ; بَعْدَ ذَلِك = après cela."
+            },
+            {
+              "id": "q2",
+              "question": "« أَوَّلًا » dans un récit :",
+              "type": "single_choice",
+              "options": ["d'abord", "enfin", "oncle", "devoir"],
+              "correctAnswers": [0],
+              "explanation": "أَوَّلًا = d'abord."
+            },
+            {
+              "id": "q3",
+              "question": "« أَخِيرًا » pour conclure :",
+              "type": "single_choice",
+              "options": ["enfin", "d'abord", "oncle", "ballon"],
+              "correctAnswers": [0],
+              "explanation": "أَخِيرًا = enfin."
+            },
+            {
+              "id": "q4",
+              "question": "« بَعْد » الغَدَاء :",
+              "type": "single_choice",
+              "options": ["après", "avant", "oncle", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "بَعْd = après."
+            },
+            {
+              "id": "q5",
+              "question": "« قَبْل » الامْتِحَان :",
+              "type": "single_choice",
+              "options": ["avant", "après", "oncle", "cahier"],
+              "correctAnswers": [0],
+              "explanation": "قَبْl = avant."
+            },
+            {
+              "id": "q6",
+              "question": "« عِنْدَمَا » رَجَعْt :",
+              "type": "single_choice",
+              "options": ["quand (passé)", "jamais", "oncle", "examen"],
+              "correctAnswers": [0],
+              "explanation": "عِنْدَmَا = lorsque, quand."
+            },
+            {
+              "id": "q7",
+              "question": "« لِأَنَّ » pour expliquer :",
+              "type": "single_choice",
+              "options": ["parce que", "malgré", "oncle", "stylo"],
+              "correctAnswers": [0],
+              "explanation": "لِأَنَّ = parce que."
+            },
+            {
+              "id": "q8",
+              "question": "« فَ » entre deux actions :",
+              "type": "single_choice",
+              "options": ["alors / et puis", "mais seul", "oncle", "devoir"],
+              "correctAnswers": [0],
+              "explanation": "فَ = alors (conséquence)."
+            },
+            {
+              "id": "q9",
+              "question": "« لَكِنَّ » oppose :",
+              "type": "single_choice",
+              "options": ["mais", "donc", "oncle", "ballon"],
+              "correctAnswers": [0],
+              "explanation": "لَكِنَّ = mais."
+            },
+            {
+              "id": "q10",
+              "question": "« في » النِّهَايَة :",
+              "type": "single_choice",
+              "options": ["à la fin", "au début", "oncle", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "في النِّهَايَة = à la fin."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Sentiments et météo du récit",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots expriment un ressenti au passé ?",
+              "type": "multiple_choice",
+              "options": ["كُنْt سَعِيدًا", "كُنْt تَعْبَان", "مَطْبَخ", "سَبُّورَة"],
+              "correctAnswers": [0, 1],
+              "explanation": "سَعِيد = content ; تَعْبَان = fatigué — états fréquents dans un récit."
+            },
+            {
+              "id": "q2",
+              "question": "« سَعِيد » après une bonne note :",
+              "type": "single_choice",
+              "options": ["content / heureux", "triste", "oncle", "devoir"],
+              "correctAnswers": [0],
+              "explanation": "سَعِيد = heureux."
+            },
+            {
+              "id": "q3",
+              "question": "« حَزِين » signifie :",
+              "type": "single_choice",
+              "options": ["triste", "joyeux", "oncle", "ballon"],
+              "correctAnswers": [0],
+              "explanation": "حَزِين = triste."
+            },
+            {
+              "id": "q4",
+              "question": "« تَعْبَان » après le sport :",
+              "type": "single_choice",
+              "options": ["fatigué", "en forme", "oncle", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "تَعْبَان = fatigué."
+            },
+            {
+              "id": "q5",
+              "question": "« جَوّ » en narration :",
+              "type": "single_choice",
+              "options": ["temps (météo)", "devoir", "oncle", "cahier"],
+              "correctAnswers": [0],
+              "explanation": "جَوّ = temps, météo."
+            },
+            {
+              "id": "q6",
+              "question": "« شَمْs » dans « كان الجو مشمسا » :",
+              "type": "single_choice",
+              "options": ["soleil", "pluie", "oncle", "examen"],
+              "correctAnswers": [0],
+              "explanation": "شَمْs = soleil."
+            },
+            {
+              "id": "q7",
+              "question": "« مَطَر » hier :",
+              "type": "single_choice",
+              "options": ["pluie", "vent seul", "oncle", "stylo"],
+              "correctAnswers": [0],
+              "explanation": "مَطَr = pluie."
+            },
+            {
+              "id": "q8",
+              "question": "« بَارِد » en hiver :",
+              "type": "single_choice",
+              "options": ["froid", "chaud", "oncle", "devoir"],
+              "correctAnswers": [0],
+              "explanation": "بَارِd = froid."
+            },
+            {
+              "id": "q9",
+              "question": "« حَارّ » en été :",
+              "type": "single_choice",
+              "options": ["chaud", "froid", "oncle", "ballon"],
+              "correctAnswers": [0],
+              "explanation": "حَارّ = chaud."
+            },
+            {
+              "id": "q10",
+              "question": "« كَان » + adjectif sert à :",
+              "type": "single_choice",
+              "options": [
+                "décrire au passé (il était…)",
+                "futur seul",
+                "oncle",
+                "cousin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "كَان = être au passé (description)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Raconter le week-end",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions ouvrent un récit du week-end ?",
+              "type": "multiple_choice",
+              "options": ["في نِهَايَة الأُسْبُوع", "يَوْm الجُمُعَة", "عَمّ", "خَال"],
+              "correctAnswers": [0, 1],
+              "explanation": "نِهَايَة الأُسْبُوع = week-end ; الجُمُعَة = vendredi."
+            },
+            {
+              "id": "q2",
+              "question": "« عُطْلَة » scolaire :",
+              "type": "single_choice",
+              "options": ["vacances / congé", "devoir", "oncle", "ballon"],
+              "correctAnswers": [0],
+              "explanation": "عُطْلَة = vacances, jour sans cours."
+            },
+            {
+              "id": "q3",
+              "question": "« زُرْت » جَدِّي :",
+              "type": "single_choice",
+              "options": [
+                "j'ai visité mon grand-père",
+                "j'ai oublié",
+                "oncle",
+                "cousin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "زَارَ / زُرْt = visiter (passé)."
+            },
+            {
+              "id": "q4",
+              "question": "« قَضَيْt » وَقْتًا مُمْتِعًا :",
+              "type": "single_choice",
+              "options": [
+                "j'ai passé un moment agréable",
+                "j'ai raté l'examen",
+                "oncle",
+                "cahier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "قَضَى = passer (du temps)."
+            },
+            {
+              "id": "q5",
+              "question": "« خَرَجْt » مع أَصْدِقَائِي :",
+              "type": "single_choice",
+              "options": [
+                "je suis sorti avec mes amis",
+                "je suis resté seul",
+                "oncle",
+                "examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "خَرَجَ = sortir (passé)."
+            },
+            {
+              "id": "q6",
+              "question": "« أَصْدِقَاء » au pluriel :",
+              "type": "single_choice",
+              "options": ["amis", "oncles", "devoirs", "chaises"],
+              "correctAnswers": [0],
+              "explanation": "صَدِيق = ami ; أَصْدِقَاء = amis."
+            },
+            {
+              "id": "q7",
+              "question": "« سَافَرَ » en narration :",
+              "type": "single_choice",
+              "options": ["voyager / a voyagé", "dormir", "oncle", "stylo"],
+              "correctAnswers": [0],
+              "explanation": "سَافَr = voyager au passé."
+            },
+            {
+              "id": "q8",
+              "question": "« اِشْتَرَيْt » هَدِيَّة :",
+              "type": "single_choice",
+              "options": [
+                "j'ai acheté un cadeau",
+                "j'ai vendu",
+                "oncle",
+                "devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "اِشْتَرَى = acheter (passé)."
+            },
+            {
+              "id": "q9",
+              "question": "« عَادَ » مِنَ الرِّحْلَة :",
+              "type": "single_choice",
+              "options": [
+                "il est revenu du voyage",
+                "il est parti",
+                "oncle",
+                "ballon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "عَادَ = revenir."
+            },
+            {
+              "id": "q10",
+              "question": "« كَانَ » يَوْmًا رَائِعًا » conclut :",
+              "type": "single_choice",
+              "options": [
+                "c'était une journée super",
+                "ce sera demain",
+                "oncle",
+                "cousin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "كَانَ يَوْmًا رَائِعًا = c'était une journée magnifique."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

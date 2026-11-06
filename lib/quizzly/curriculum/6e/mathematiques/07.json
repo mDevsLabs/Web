@@ -1,0 +1,1963 @@
+{
+  "id": "6e-mathematiques-07",
+  "year": "6e",
+  "subject": "mathematiques",
+  "title": "Organisation de données",
+  "order": 7,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un graphique",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Effectifs au tableau",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Goûters préférés : pomme 8 votes, banane 5. Quelles affirmations sont exactes ?",
+              "options": [
+                "Pomme est la plus choisie.",
+                "Banane a plus de votes que pomme.",
+                "Il y a 13 votes pour pomme et banane réunis.",
+                "Pomme et banane ont le même effectif."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "8 > 5 donc pomme domine ; 8 + 5 = 13."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sports : foot 12, basket 9, natation 6. Quel sport a le plus petit effectif ?",
+              "options": ["Foot", "Basket", "Natation", "Tous pareils"],
+              "correctAnswers": [2],
+              "explanation": "6 est le plus petit effectif : natation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Couleurs : bleu 7, rouge 4, vert 7. Combien d'élèves ont choisi bleu ou vert ?",
+              "options": ["11", "14", "18", "7"],
+              "correctAnswers": [1],
+              "explanation": "7 + 7 = 14."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le bâton « chien » du diagramme s'arrête à la graduation 10. Quel est l'effectif ?",
+              "options": ["5", "10", "15", "Impossible à lire"],
+              "correctAnswers": [1],
+              "explanation": "La hauteur du bâton lit 10 sur l'axe des effectifs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Transport : vélo 6, bus 14, à pied 8. Quel mode a le plus grand effectif ?",
+              "options": ["Vélo", "Bus", "À pied", "Bus et à pied"],
+              "correctAnswers": [1],
+              "explanation": "14 est le maximum : bus."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Animaux : chat 11, hamster 3, lapin 8. Quel est l'effectif total ?",
+              "options": ["19", "22", "14", "11"],
+              "correctAnswers": [1],
+              "explanation": "11 + 3 + 8 = 22."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Diagramme : lundi 4, mardi 9. De combien mardi dépasse-t-il lundi ?",
+              "options": ["4", "5", "9", "13"],
+              "correctAnswers": [1],
+              "explanation": "9 − 4 = 5."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Fruits vendus : pommes 15, poires 10, oranges 15. Quelle valeur d'effectif apparaît deux fois ?",
+              "options": ["10", "15", "25", "40"],
+              "correctAnswers": [1],
+              "explanation": "15 est l'effectif de pommes et d'oranges."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Effectifs A = 2, B = 5, C = 3. Quelle lettre a le plus petit effectif ?",
+              "options": ["A", "B", "C", "B et C"],
+              "correctAnswers": [0],
+              "explanation": "2 est le minimum : A."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Livres lus : jeudi 7, vendredi 12. Combien sur ces deux jours ?",
+              "options": ["5", "12", "19", "7"],
+              "correctAnswers": [2],
+              "explanation": "7 + 12 = 19."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Hauteurs des bâtons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bâtons : maths 6, français 6, histoire 4. Quelles phrases sont vraies ?",
+              "options": [
+                "Maths et français ont le même effectif.",
+                "Histoire a le plus petit effectif.",
+                "Le total des trois vaut 16.",
+                "Français a strictement plus que maths."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "6 = 6 ; histoire 4 est la plus petite valeur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un bâton atteint la graduation 8 sur l'axe vertical. Quel effectif ?",
+              "options": ["2", "4", "8", "16"],
+              "correctAnswers": [2],
+              "explanation": "On lit 8 au sommet du bâton."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Séries A : 3, B : 9, C : 6. Quelle série a le bâton le plus haut ?",
+              "options": ["A", "B", "C", "A et C"],
+              "correctAnswers": [1],
+              "explanation": "9 est le plus grand effectif : B."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tableau : filles 18, garçons 17. Combien d'élèves au total ?",
+              "options": ["1", "17", "18", "35"],
+              "correctAnswers": [3],
+              "explanation": "18 + 17 = 35."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Glaces : vanille 5, chocolat 11, fraise 8. Quelle saveur est en deuxième position si l'on classe du plus grand au plus petit ?",
+              "options": [
+                "Vanille",
+                "Chocolat",
+                "Fraise",
+                "Chocolat et fraise"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Ordre : 11, 8, 5 — fraise est deuxième."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Diagramme : janvier 0, février 6. Quel mois a un effectif nul ?",
+              "options": ["Janvier", "Février", "Les deux", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "0 signifie aucune occurrence : janvier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Votes : rouge 10, bleu 7, jaune 10. Combien pour rouge et jaune ensemble ?",
+              "options": ["17", "20", "27", "10"],
+              "correctAnswers": [1],
+              "explanation": "10 + 10 = 20."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Effectifs 12, 5, 9, 5. Quel est le plus petit effectif ?",
+              "options": ["12", "5", "9", "5 et 9"],
+              "correctAnswers": [1],
+              "explanation": "5 est le minimum."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pages lues : 4, 4, 10, 6. Quel est le total ?",
+              "options": ["20", "24", "14", "10"],
+              "correctAnswers": [1],
+              "explanation": "4 + 4 + 10 + 6 = 24."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Catégorie X : 13, Y : 8. De combien X dépasse-t-il Y ?",
+              "options": ["8", "13", "5", "21"],
+              "correctAnswers": [2],
+              "explanation": "13 − 8 = 5."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Tableaux à deux colonnes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sport / effectif : tennis 4, judo 4, danse 7. Quelles réponses conviennent ?",
+              "options": [
+                "Tennis et judo sont à égalité.",
+                "Danse a le plus grand effectif.",
+                "Le total vaut 11.",
+                "Judo est seul en tête."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "4 = 4 ; danse 7 est au-dessus. Total = 15, pas 11."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Repas : pizza 20, pâtes 13, salade 7. Quel plat a le plus petit effectif ?",
+              "options": ["Pizza", "Pâtes", "Salade", "Pâtes et salade"],
+              "correctAnswers": [2],
+              "explanation": "7 est le minimum : salade."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tableau : ligne « cinéma », effectif 9. Combien de personnes cela représente-t-il ?",
+              "options": ["9", "6", "12", "0"],
+              "correctAnswers": [0],
+              "explanation": "L'effectif indiqué est 9."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ventes : A 14, B 9, C 14. Quelle valeur d'effectif est la plus grande ?",
+              "options": ["9", "14", "23", "28"],
+              "correctAnswers": [1],
+              "explanation": "14 est le maximum."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mois : mars 5, avril 5, mai 11. Combien pour mars et avril ?",
+              "options": ["10", "11", "16", "21"],
+              "correctAnswers": [0],
+              "explanation": "5 + 5 = 10."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Effectifs 1, 4, 7, 10. Quel est le plus grand ?",
+              "options": ["1", "4", "7", "10"],
+              "correctAnswers": [3],
+              "explanation": "10 est le maximum."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Absences : classe A 3, B 8, C 3. Quelle classe a le plus d'absences ?",
+              "options": ["A", "B", "C", "A et C"],
+              "correctAnswers": [1],
+              "explanation": "8 est le plus grand effectif : B."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quatre effectifs valent 2, 2, 2, 2. Quel est le total ?",
+              "options": ["2", "4", "6", "8"],
+              "correctAnswers": [3],
+              "explanation": "2 × 4 = 8."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Visites : samedi 15, dimanche 9. Quel jour a le plus petit effectif ?",
+              "options": ["Samedi", "Dimanche", "Égalité", "Impossible"],
+              "correctAnswers": [1],
+              "explanation": "9 < 15 : dimanche."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Jeux : échecs 6, dames 10, cartes 4. Quel est le total ?",
+              "options": ["16", "20", "10", "14"],
+              "correctAnswers": [1],
+              "explanation": "6 + 10 + 4 = 20."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Graduations du graphique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Effectifs : nord 12, sud 12, est 5. Quelles affirmations sont correctes ?",
+              "options": [
+                "Nord et sud sont égaux.",
+                "Est a le plus petit effectif.",
+                "Nord et sud réunis valent 24.",
+                "Sud a moins que nord."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "12 = 12 ; est 5 est minimal."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Axe gradué 0, 5, 10, 15. Un bâton s'arrête exactement sur le trait du 10. Effectif ?",
+              "options": ["5", "10", "15", "12"],
+              "correctAnswers": [1],
+              "explanation": "Le sommet du bâton est sur la graduation 10."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lecture : livre 9, magazine 14, journal 6. Quel support a le plus grand effectif ?",
+              "options": ["Livre", "Magazine", "Journal", "Livre et journal"],
+              "correctAnswers": [1],
+              "explanation": "14 est le maximum : magazine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Bâtons : 11, 8, 11, 3. Quel est le plus petit effectif ?",
+              "options": ["11", "8", "3", "11 et 8"],
+              "correctAnswers": [2],
+              "explanation": "3 est le minimum."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Vote : oui 22, non 6. Combien de votes au total ?",
+              "options": ["16", "22", "28", "6"],
+              "correctAnswers": [2],
+              "explanation": "22 + 6 = 28."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Stades visités : effectifs 0, 4, 4, 9. Combien de valeurs valent 4 ?",
+              "options": ["Une", "Deux", "Trois", "Zéro"],
+              "correctAnswers": [1],
+              "explanation": "4 apparaît deux fois."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Heures de sport en diagramme : 2, 3, 5. Quelle durée est la plus longue ?",
+              "options": ["2 h", "3 h", "5 h", "Toutes égales"],
+              "correctAnswers": [2],
+              "explanation": "5 est la plus grande valeur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pomme 7, poire 7, kiwi 2. Total des trois effectifs ?",
+              "options": ["14", "16", "9", "7"],
+              "correctAnswers": [1],
+              "explanation": "7 + 7 + 2 = 16."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Groupe 1 : 10, groupe 2 : 6. Différence entre les effectifs ?",
+              "options": ["4", "6", "10", "16"],
+              "correctAnswers": [0],
+              "explanation": "10 − 6 = 4."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quatre bâtons valent 5, 5, 5, 5. Quel est le total ?",
+              "options": ["5", "10", "15", "20"],
+              "correctAnswers": [3],
+              "explanation": "5 × 4 = 20."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Comparer deux barres",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Barres filles 16, garçons 14. Quelles phrases sont exactes ?",
+              "options": [
+                "Filles ont un effectif plus grand que garçons.",
+                "Garçons ont le plus grand effectif.",
+                "L'écart entre les effectifs vaut 2.",
+                "Les effectifs sont identiques."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "16 > 14 ; 16 − 14 = 2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Effectifs 9 et 13. Lequel est le plus grand ?",
+              "options": ["9", "13", "Ils sont égaux", "22"],
+              "correctAnswers": [1],
+              "explanation": "13 > 9."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Nombres de livres lus : 3, 6, 6, 9. Quel effectif est le plus grand ?",
+              "options": ["3", "6", "9", "18"],
+              "correctAnswers": [2],
+              "explanation": "9 est le maximum."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Passagers : ligne A 18, ligne B 11. Total ?",
+              "options": ["7", "18", "29", "11"],
+              "correctAnswers": [2],
+              "explanation": "18 + 11 = 29."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Bâtons rouge 4, vert 4, bleu 1. Quelle couleur a le plus petit effectif ?",
+              "options": ["Rouge", "Vert", "Bleu", "Rouge et vert"],
+              "correctAnswers": [2],
+              "explanation": "1 est le minimum : bleu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ventes matin 12, après-midi 19. Quelle période a le plus grand effectif ?",
+              "options": ["Matin", "Après-midi", "Égalité", "On ne sait pas"],
+              "correctAnswers": [1],
+              "explanation": "19 > 12 : après-midi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Effectifs 20, 15, 10, 5. Quel est le plus petit ?",
+              "options": ["20", "15", "10", "5"],
+              "correctAnswers": [3],
+              "explanation": "5 est le minimum."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Arbres plantés : 7, 7, 3. Somme des trois effectifs ?",
+              "options": ["10", "14", "17", "7"],
+              "correctAnswers": [2],
+              "explanation": "7 + 7 + 3 = 17."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "M : 8, N : 12. De combien N dépasse M ?",
+              "options": ["4", "8", "12", "20"],
+              "correctAnswers": [0],
+              "explanation": "12 − 8 = 4."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Aucun bâton ne dépasse 6 et le plus haut vaut exactement 6. Quel est le plus grand effectif ?",
+              "options": ["0", "3", "6", "12"],
+              "correctAnswers": [2],
+              "explanation": "Le maximum indiqué est 6."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Recensement de la classe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Animaux : poisson 2, oiseau 2, reptile 5. Quelles réponses sont vraies ?",
+              "options": [
+                "Poisson et oiseau ont le même effectif.",
+                "Reptile a le plus grand effectif.",
+                "Le total vaut 9.",
+                "Poisson est seul maximum."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "2 = 2 ; reptile 5 est le plus grand."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pointures : 36→3, 37→8, 38→5. Quelle taille a le plus grand effectif ?",
+              "options": ["36", "37", "38", "3"],
+              "correctAnswers": [1],
+              "explanation": "8 est le maximum : taille 37."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Matières préférées : arts 10, musique 7, eps 13. Quelle matière est en tête ?",
+              "options": ["Arts", "Musique", "EPS", "Arts et musique"],
+              "correctAnswers": [2],
+              "explanation": "13 est le maximum : EPS."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Effectifs 4, 9, 9, 1. Quel est le total ?",
+              "options": ["13", "18", "23", "9"],
+              "correctAnswers": [2],
+              "explanation": "4 + 9 + 9 + 1 = 23."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pluie par mois : janvier 8, février 3, mars 8. Quel mois a le plus petit effectif ?",
+              "options": ["Janvier", "Février", "Mars", "Janvier et mars"],
+              "correctAnswers": [1],
+              "explanation": "3 est le minimum : février."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux barres valent 15 et 15. Que peut-on dire ?",
+              "options": [
+                "La première est plus grande",
+                "Les effectifs sont égaux",
+                "La deuxième est nulle",
+                "Le total vaut 15"
+              ],
+              "correctAnswers": [1],
+              "explanation": "15 = 15 : égalité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Snacks : gâteau 11, fruit 14, yaourt 6. Combien pour gâteau et yaourt ?",
+              "options": ["17", "20", "11", "6"],
+              "correctAnswers": [0],
+              "explanation": "11 + 6 = 17."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Parmi 2, 5, 5, 8, quel est le plus grand effectif ?",
+              "options": ["2", "5", "8", "5 et 8"],
+              "correctAnswers": [2],
+              "explanation": "8 est le maximum."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bibliothèques visitées : 0, 1, 4, 4. Quel est le plus petit effectif ?",
+              "options": ["0", "1", "4", "9"],
+              "correctAnswers": [0],
+              "explanation": "0 est le minimum."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Votes blanc 4, rouge 9, vert 9. Total des votes ?",
+              "options": ["13", "18", "22", "9"],
+              "correctAnswers": [2],
+              "explanation": "4 + 9 + 9 = 22."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Sports et loisirs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Loisirs : lecture 13, dessin 13, jeux vidéo 20. Quelles phrases conviennent ?",
+              "options": [
+                "Lecture et dessin ont le même effectif.",
+                "Jeux vidéo ont le plus grand effectif.",
+                "Le total vaut 46.",
+                "Dessin est le minimum."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "13 = 13 ; 20 est le maximum."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ski 5, snowboard 12, luge 5. Quels sports ont l'effectif 5 ?",
+              "options": [
+                "Ski seulement",
+                "Luge seulement",
+                "Ski et luge",
+                "Snowboard"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Ski et luge ont chacun l'effectif 5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bâtons 18, 12, 9. Quel est le plus petit effectif ?",
+              "options": ["18", "12", "9", "39"],
+              "correctAnswers": [2],
+              "explanation": "9 est le minimum."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Concert A 7 entrées, concert B 14. Différence d'entrées ?",
+              "options": ["7", "14", "21", "1"],
+              "correctAnswers": [0],
+              "explanation": "14 − 7 = 7."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Trois effectifs valent 6, 6, 6. Total ?",
+              "options": ["6", "12", "18", "0"],
+              "correctAnswers": [2],
+              "explanation": "6 × 3 = 18."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Km à pied : lundi 2, mardi 5, mercredi 5. Quelle valeur est la plus grande ?",
+              "options": ["2", "5", "Lundi", "Mardi seulement"],
+              "correctAnswers": [1],
+              "explanation": "5 est la plus grande valeur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Casquettes : noir 10, blanc 4, gris 7. Plus petit effectif ?",
+              "options": ["Noir", "Blanc", "Gris", "10"],
+              "correctAnswers": [1],
+              "explanation": "4 est le minimum : blanc."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Effectifs 3, 7, 7, 10. Total ?",
+              "options": ["17", "24", "27", "10"],
+              "correctAnswers": [2],
+              "explanation": "3 + 7 + 7 + 10 = 27."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Barre la plus haute 16, la plus basse 4. Écart ?",
+              "options": ["4", "12", "16", "20"],
+              "correctAnswers": [1],
+              "explanation": "16 − 4 = 12."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sondage : oui 17, sans opinion 3, non 8. Combien oui et non réunis ?",
+              "options": ["11", "20", "25", "8"],
+              "correctAnswers": [2],
+              "explanation": "17 + 8 = 25."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Lecture d'axes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Déplacements : bus 11, métro 11, vélo 4. Quelles affirmations sont vraies ?",
+              "options": [
+                "Bus et métro sont à égalité.",
+                "Vélo a le plus petit effectif.",
+                "Le total vaut 26.",
+                "Métro a moins que bus."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "11 = 11 ; vélo 4 est minimal."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quatre bâtons valent 10, 10, 10, 10. Total ?",
+              "options": ["10", "20", "30", "40"],
+              "correctAnswers": [3],
+              "explanation": "10 × 4 = 40."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Heures de TV : 0, 2, 5, 5. Quelle valeur est la plus grande ?",
+              "options": ["0", "2", "5", "12"],
+              "correctAnswers": [2],
+              "explanation": "5 est le maximum."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Croissants : mardi 14, mercredi 9. Quel jour a le plus petit effectif de ventes ?",
+              "options": ["Mardi", "Mercredi", "Égalité", "23"],
+              "correctAnswers": [1],
+              "explanation": "9 < 14 : mercredi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Effectifs 13, 8, 13. Le plus petit ?",
+              "options": ["13", "8", "13 et 8", "34"],
+              "correctAnswers": [1],
+              "explanation": "8 est le minimum."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Catégories P 6, Q 15, R 9. Quelle catégorie a le plus grand effectif ?",
+              "options": ["P", "Q", "R", "P et R"],
+              "correctAnswers": [1],
+              "explanation": "15 est le maximum : Q."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Somme de 5, 5 et 5 ?",
+              "options": ["5", "10", "15", "20"],
+              "correctAnswers": [2],
+              "explanation": "5 + 5 + 5 = 15."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Effectifs 3, 6, 9, 12. Le plus grand ?",
+              "options": ["3", "6", "9", "12"],
+              "correctAnswers": [3],
+              "explanation": "12 est le maximum."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Films vus : A 4, B 4, C 10. Total A + B + C ?",
+              "options": ["8", "14", "18", "10"],
+              "correctAnswers": [2],
+              "explanation": "4 + 4 + 10 = 18."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Effectifs 19 et 11. Le plus grand ?",
+              "options": ["19", "11", "8", "30"],
+              "correctAnswers": [0],
+              "explanation": "19 > 11."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Effectifs cumulés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Boissons : thé 6, café 6, lait 11. Quelles phrases sont exactes ?",
+              "options": [
+                "Thé et café ont le même effectif.",
+                "Lait a le plus grand effectif.",
+                "Le total vaut 23.",
+                "Café est seul minimum."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "6 = 6 ; lait 11 est le maximum."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bâtons 7, 12, 12, 3. Plus petit effectif ?",
+              "options": ["7", "12", "3", "34"],
+              "correctAnswers": [2],
+              "explanation": "3 est le minimum."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Timbres : 20, 15, 10. Total ?",
+              "options": ["35", "45", "25", "20"],
+              "correctAnswers": [1],
+              "explanation": "20 + 15 + 10 = 45."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Deux catégories valent 9 et une vaut 2. Quel est le plus petit effectif ?",
+              "options": ["9", "2", "18", "11"],
+              "correctAnswers": [1],
+              "explanation": "2 est le minimum."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Couleurs : rouge 8, orange 13, violet 5. Quelle couleur a le plus grand effectif ?",
+              "options": ["Rouge", "Orange", "Violet", "Rouge et violet"],
+              "correctAnswers": [1],
+              "explanation": "13 est le maximum : orange."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Barre A = 1, barre B = 11. Différence B − A ?",
+              "options": ["10", "11", "12", "1"],
+              "correctAnswers": [0],
+              "explanation": "11 − 1 = 10."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Effectifs 4, 4, 5, 5. Total ?",
+              "options": ["9", "14", "18", "8"],
+              "correctAnswers": [2],
+              "explanation": "4 + 4 + 5 + 5 = 18."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Minutes de jeu : 30, 25, 30. Quel effectif est le plus grand ?",
+              "options": ["25", "30", "85", "55"],
+              "correctAnswers": [1],
+              "explanation": "30 est le maximum."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Effectifs 0, 6, 6, 12. Combien de fois apparaît 6 ?",
+              "options": ["Une fois", "Deux fois", "Trois fois", "Zéro fois"],
+              "correctAnswers": [1],
+              "explanation": "6 apparaît deux fois."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cadeaux : 5, 8, 8, 4. Total ?",
+              "options": ["17", "21", "25", "13"],
+              "correctAnswers": [2],
+              "explanation": "5 + 8 + 8 + 4 = 25."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse lecture",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Mascottes : ours 14, loup 14, renard 6. Quelles réponses sont correctes ?",
+              "options": [
+                "Ours et loup sont à égalité.",
+                "Renard a le plus petit effectif.",
+                "Le total vaut 34.",
+                "Ours est seul en tête."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "14 = 14 ; renard 6 est minimal."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Effectifs 12, 7, 19, 7. Plus grand ?",
+              "options": ["12", "7", "19", "45"],
+              "correctAnswers": [2],
+              "explanation": "19 est le maximum."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Diagramme : 11 jours de pluie sont représentés par un effectif 11. Que signifie 11 ?",
+              "options": [
+                "11 jours recensés",
+                "11 millimètres",
+                "11 degrés",
+                "11 graphiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effectif compte 11 jours dans cette catégorie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Effectifs 2, 9, 9, 9. Plus petit ?",
+              "options": ["2", "9", "29", "7"],
+              "correctAnswers": [0],
+              "explanation": "2 est le minimum."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Barres 16 et 10. Total des deux ?",
+              "options": ["6", "16", "26", "10"],
+              "correctAnswers": [2],
+              "explanation": "16 + 10 = 26."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Erreurs corrigées : 3, 8, 8, 1. Total ?",
+              "options": ["11", "16", "20", "8"],
+              "correctAnswers": [2],
+              "explanation": "3 + 8 + 8 + 1 = 20."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Marche 20, trottinette 13. Lequel a le plus grand effectif ?",
+              "options": ["Marche", "Trottinette", "Égalité", "33"],
+              "correctAnswers": [0],
+              "explanation": "20 > 13 : marche."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Cinq bâtons valent 2, 2, 2, 2, 2. Total ?",
+              "options": ["2", "8", "10", "4"],
+              "correctAnswers": [2],
+              "explanation": "2 × 5 = 10."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Points marqués : 15, 12, 9, 6. Plus petit effectif ?",
+              "options": ["15", "12", "9", "6"],
+              "correctAnswers": [3],
+              "explanation": "6 est le minimum."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Trois effectifs valent 18, 18 et 5. Quel est le plus petit ?",
+              "options": ["18", "5", "41", "13"],
+              "correctAnswers": [1],
+              "explanation": "5 est le minimum des trois."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Interpréter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Tirer une conclusion",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Desserts : glace 24, fruit 9. Quelles conclusions sont fondées sur les effectifs ?",
+              "options": [
+                "La glace est plus choisie que le fruit.",
+                "Le fruit a plus de votes que la glace.",
+                "24 personnes ont choisi la glace.",
+                "Le total des deux choix vaut 33."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "24 > 9 ; l'effectif glace est 24."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tri sélectif : papier 40 kg, verre 25 kg. Quel tri pèse le plus ?",
+              "options": ["Papier", "Verre", "Égalité", "15 kg"],
+              "correctAnswers": [0],
+              "explanation": "40 > 25 : papier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Livres lus : 0 livre→5 élèves, 1 livre→12, 2 livres→8. Quelle catégorie a le plus grand effectif ?",
+              "options": ["0 livre", "1 livre", "2 livres", "Toutes égales"],
+              "correctAnswers": [1],
+              "explanation": "12 est le maximum : 1 livre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Gourdes vendues : A 50, B 35, C 50. Combien de modèles partagent l'effectif maximum ?",
+              "options": ["Un", "Deux", "Trois", "Aucun"],
+              "correctAnswers": [1],
+              "explanation": "50 est le max pour A et C."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Retards : lundi 4, mercredi 9, vendredi 4. Quel jour a le plus de retards ?",
+              "options": ["Lundi", "Mercredi", "Vendredi", "Lundi et vendredi"],
+              "correctAnswers": [1],
+              "explanation": "9 est le maximum : mercredi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Effectifs 14, 14, 6, 6. Quelle valeur est le plus grand effectif ?",
+              "options": ["6", "14", "20", "28"],
+              "correctAnswers": [1],
+              "explanation": "14 est le maximum."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Catégorie « aucune réponse » a l'effectif 3, le plus bas du graphique. Que signifie 3 ?",
+              "options": [
+                "3 personnes sans réponse",
+                "3 questions",
+                "3 graphiques",
+                "Personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effectif 3 compte trois personnes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Distances (km) : 2 km→5 élèves, 5 km→11, 10 km→4. Quelle distance est la plus fréquente ?",
+              "options": ["2 km", "5 km", "10 km", "20 km"],
+              "correctAnswers": [1],
+              "explanation": "11 est le plus grand effectif : 5 km."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Saisons : été 30, hiver 18, printemps 30. Combien été et hiver réunis ?",
+              "options": ["30", "48", "60", "18"],
+              "correctAnswers": [1],
+              "explanation": "30 + 18 = 48."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Effectifs 7 et 21. 21 vaut combien de fois 7 ?",
+              "options": ["2", "3", "4", "14"],
+              "correctAnswers": [1],
+              "explanation": "21 ÷ 7 = 3."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Comparer des séries",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Classe A : foot 10, basket 6. Classe B : foot 6, basket 10. Quelles phrases sont vraies ?",
+              "options": [
+                "Dans A, foot bat basket.",
+                "Dans B, basket bat foot.",
+                "Foot vaut toujours 10 dans les deux classes.",
+                "Chaque classe totalise 16."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "A : 10>6 pour foot ; B : 10>6 pour basket."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Arts : filles 15, garçons 8. Quel effectif est plus grand ?",
+              "options": ["Filles", "Garçons", "Égalité", "23"],
+              "correctAnswers": [0],
+              "explanation": "15 > 8 : filles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Marché : pommes 22, poires 22, prunes 7. Quelle interprétation est correcte ?",
+              "options": [
+                "Les prunes sont les moins vendues",
+                "Les pommes valent deux fois les poires",
+                "Le total vaut 51",
+                "Les poires dominent seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "7 est le plus petit effectif : prunes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Semaine 1 : 12, semaine 2 : 18. De combien augmente-t-on ?",
+              "options": ["6", "12", "18", "30"],
+              "correctAnswers": [0],
+              "explanation": "18 − 12 = 6."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Animaux : chat 9, chien 9, poisson 4, lapin 4. Combien ont l'effectif le plus bas ?",
+              "options": ["Un", "Deux", "Trois", "Quatre"],
+              "correctAnswers": [1],
+              "explanation": "4 est le minimum pour poisson et lapin : deux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Fréquentation cantine : le pic vaut 25. Que représente ce pic ?",
+              "options": [
+                "L'effectif le plus élevé du graphique",
+                "25 personnes au total sur tous les jours",
+                "25 jours",
+                "25 euros"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pic est la valeur maximale d'effectif : 25."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Couleurs : rouge 11, bleu 5, vert 11, jaune 3. Plus petit effectif ?",
+              "options": ["Rouge", "Bleu", "Vert", "Jaune"],
+              "correctAnswers": [3],
+              "explanation": "3 est le minimum : jaune."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Effectif passe de 20 à 12 entre deux mois. Différence ?",
+              "options": ["8", "12", "20", "32"],
+              "correctAnswers": [0],
+              "explanation": "20 − 12 = 8."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Valeurs 5, 10, 15, 20 rangées dans l'ordre croissant. Quelle est la deuxième plus petite ?",
+              "options": ["5", "10", "15", "20"],
+              "correctAnswers": [1],
+              "explanation": "Ordre 5, 10, 15, 20 — la deuxième est 10."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cinq effectifs valent 8, 8, 8, 8, 8. Total ?",
+              "options": ["8", "16", "32", "40"],
+              "correctAnswers": [3],
+              "explanation": "8 × 5 = 40."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Questions du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Trajets : à pied 16, bus 16, voiture 9. Quelles interprétations sont correctes ?",
+              "options": [
+                "À pied et bus ont le même effectif.",
+                "Voiture est le mode le moins utilisé.",
+                "Le total vaut 41.",
+                "Bus bat à pied."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "16 = 16 ; voiture 9 est minimal."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Météo préférée : chaud 20, doux 13, froid 6. Quelle préférence est minoritaire ?",
+              "options": ["Chaud", "Doux", "Froid", "Chaud et doux"],
+              "correctAnswers": [2],
+              "explanation": "6 est le plus petit effectif : froid."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Arrosages : lun 5, mar 5, mer 10. Quel jour a le plus grand effectif ?",
+              "options": ["Lundi", "Mardi", "Mercredi", "Lundi et mardi"],
+              "correctAnswers": [2],
+              "explanation": "10 est le maximum : mercredi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Effectifs 18, 12, 6. Somme des deux plus grands ?",
+              "options": ["18", "30", "36", "6"],
+              "correctAnswers": [1],
+              "explanation": "18 + 12 = 30."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Aucune barre ne dépasse 9 et la plus haute vaut 9. Que conclure ?",
+              "options": [
+                "9 est l'effectif maximum",
+                "9 personnes au total",
+                "Il y a 9 catégories",
+                "Tout le monde a choisi 9"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La barre la plus haute indique le maximum 9."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Votes : blancs 2, oui 19, non 7. Combien ont répondu oui ou non ?",
+              "options": ["9", "26", "28", "19"],
+              "correctAnswers": [1],
+              "explanation": "19 + 7 = 26, hors blancs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Trois activités ont chacune l'effectif 11. Que conclure ?",
+              "options": [
+                "Une activité domine",
+                "Les trois ont le même effectif",
+                "Le total vaut 11",
+                "Impossible"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Trois effectifs identiques à 11."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Messages : 4, 9, 9, 14. Plus grand effectif ?",
+              "options": ["4", "9", "14", "36"],
+              "correctAnswers": [2],
+              "explanation": "14 est le maximum."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Barre « vélo » à hauteur nulle. Signification ?",
+              "options": [
+                "Aucun élève n'a choisi vélo",
+                "Un seul élève",
+                "Vélo interdit",
+                "Erreur obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effectif 0 : personne dans cette catégorie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Effectifs 13, 7, 13, 7. Total ?",
+              "options": ["20", "26", "40", "13"],
+              "correctAnswers": [2],
+              "explanation": "13 + 7 + 13 + 7 = 40."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Dominante et rareté",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Musique : pop 28, rock 28, jazz 5. Quelles phrases sont exactes ?",
+              "options": [
+                "Pop et rock sont ex æquo en tête.",
+                "Jazz est le moins écouté.",
+                "Le total vaut 61.",
+                "Rock bat pop."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "28 = 28 ; jazz 5 est minimal."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tailles : petit 14, moyen 21, grand 7. Quelle taille est la plus représentée ?",
+              "options": ["Petit", "Moyen", "Grand", "Petit et grand"],
+              "correctAnswers": [1],
+              "explanation": "21 est le plus grand effectif : moyen."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Erreurs : 1, 1, 1, 10. Quelle valeur est nettement plus grande ?",
+              "options": ["1", "10", "3", "0"],
+              "correctAnswers": [1],
+              "explanation": "10 dépasse les trois effectifs 1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Barres 6, 12, 18. De combien augmente-t-on entre deux barres consécutives ?",
+              "options": ["6", "12", "18", "3"],
+              "correctAnswers": [0],
+              "explanation": "12 − 6 = 6 et 18 − 12 = 6."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Desserts : mousse 8, tarte 15, salade 8. Combien mousse et salade réunis ?",
+              "options": ["8", "15", "16", "31"],
+              "correctAnswers": [2],
+              "explanation": "8 + 8 = 16."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Autre » vaut 2, toutes les autres catégories valent au moins 10. Interprétation ?",
+              "options": [
+                "« Autre » est marginal",
+                "« Autre » domine",
+                "Le total vaut 2",
+                "Erreur certaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2 est très inférieur aux autres effectifs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Effectifs 20, 20, 20, 5. Plus petit ?",
+              "options": ["20", "5", "65", "15"],
+              "correctAnswers": [1],
+              "explanation": "5 est le minimum."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sommeil : 8 h→12 élèves, 9 h→12, 10 h→3. Quelle durée est la plus rare ?",
+              "options": ["8 h", "9 h", "10 h", "12 h"],
+              "correctAnswers": [2],
+              "explanation": "3 est le plus petit effectif : 10 h."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Barres A 17, B 9, C 17. Combien atteignent le maximum ?",
+              "options": ["Une", "Deux", "Trois", "Zéro"],
+              "correctAnswers": [1],
+              "explanation": "17 pour A et C : deux barres."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Somme 11 + 11 + 11 ?",
+              "options": ["11", "22", "33", "3"],
+              "correctAnswers": [2],
+              "explanation": "11 × 3 = 33."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Lire entre les barres",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Cantine : menu A 45, menu B 45, menu C 12. Quelles conclusions sont valides ?",
+              "options": [
+                "A et B sont ex æquo en tête.",
+                "C est le moins choisi.",
+                "Plus de 100 repas comptés au total.",
+                "B bat A."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "45 = 45 ; C 12 est minimal."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Piscine : effectifs 0, 4, 8, 12. Le plus grand ?",
+              "options": ["0", "4", "8", "12"],
+              "correctAnswers": [3],
+              "explanation": "12 est le maximum."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deux barres voisines valent 7 et 13. Écart ?",
+              "options": ["6", "7", "13", "20"],
+              "correctAnswers": [0],
+              "explanation": "13 − 7 = 6."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Langues : anglais 22, espagnol 14, allemand 14. Lesquelles ne sont pas en tête ?",
+              "options": [
+                "Anglais seulement",
+                "Espagnol seulement",
+                "Allemand seulement",
+                "Espagnol et allemand"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Anglais 22 domine ; espagnol et allemand valent 14."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Recyclage : 30, 25, 20, 15. Total ?",
+              "options": ["30", "60", "90", "100"],
+              "correctAnswers": [2],
+              "explanation": "30 + 25 + 20 + 15 = 90."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une catégorie vaut 10 et une autre 5. Que signifie 10 par rapport à 5 ?",
+              "options": [
+                "10 vaut deux fois 5",
+                "5 vaut deux fois 10",
+                "Total 15",
+                "Égalité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "10 = 2 × 5."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Effectifs 3, 3, 3, 9. Quelle valeur est la plus grande ?",
+              "options": ["3", "9", "12", "18"],
+              "correctAnswers": [1],
+              "explanation": "9 est le maximum."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Participation : oui 16, non 4, peut-être 16. Plus petit effectif ?",
+              "options": ["Oui", "Non", "Peut-être", "Oui et peut-être"],
+              "correctAnswers": [1],
+              "explanation": "4 est le minimum : non."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Effectifs 24 et 6. Différence ?",
+              "options": ["18", "24", "6", "30"],
+              "correctAnswers": [0],
+              "explanation": "24 − 6 = 18."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Barres 2, 4, 6, 8, 10. Total ?",
+              "options": ["20", "30", "40", "10"],
+              "correctAnswers": [1],
+              "explanation": "2 + 4 + 6 + 8 + 10 = 30."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Données de la ville",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bibliothèque : enfants 35, ados 35, adultes 20. Quelles phrases sont justes ?",
+              "options": [
+                "Enfants et ados ont le même effectif.",
+                "Adultes sont le public le moins nombreux.",
+                "Le total vaut 90.",
+                "Ados battent enfants."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "35 = 35 ; adultes 20 minimum."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Véhicules : vélos 40, voitures 55, bus 15. Le moins fréquent ?",
+              "options": ["Vélos", "Voitures", "Bus", "Vélos et bus"],
+              "correctAnswers": [2],
+              "explanation": "15 est le minimum : bus."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Plaintes : bruit 12, propreté 12, éclairage 5. Total bruit + propreté ?",
+              "options": ["12", "17", "24", "29"],
+              "correctAnswers": [2],
+              "explanation": "12 + 12 = 24."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Barres 50, 45, 40, 35. Plus grand effectif ?",
+              "options": ["50", "45", "40", "35"],
+              "correctAnswers": [0],
+              "explanation": "50 est le maximum."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Stationnement : voiture 28, moto 7. De combien voiture dépasse moto ?",
+              "options": ["7", "21", "28", "35"],
+              "correctAnswers": [1],
+              "explanation": "28 − 7 = 21."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cinq effectifs valent 9, 9, 9, 9, 9. Total ?",
+              "options": ["9", "18", "36", "45"],
+              "correctAnswers": [3],
+              "explanation": "9 × 5 = 45."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Parc : oiseaux 60, poissons 60, mammifères 22. Groupe minoritaire ?",
+              "options": [
+                "Oiseaux",
+                "Poissons",
+                "Mammifères",
+                "Oiseaux et poissons"
+              ],
+              "correctAnswers": [2],
+              "explanation": "22 est le plus petit effectif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Musée : jan 8, fév 14, mar 14. Quels mois partagent le maximum ?",
+              "options": [
+                "Janvier seul",
+                "Février seul",
+                "Mars seul",
+                "Février et mars"
+              ],
+              "correctAnswers": [3],
+              "explanation": "14 est le max pour février et mars."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Barres 11, 6, 17, 6. Plus petit effectif ?",
+              "options": ["11", "6", "17", "40"],
+              "correctAnswers": [1],
+              "explanation": "6 est le minimum."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Total 17 + 17 + 6 ?",
+              "options": ["23", "34", "40", "17"],
+              "correctAnswers": [2],
+              "explanation": "17 + 17 + 6 = 40."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Décisions simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Clubs : sciences 19, arts 19, sport 11. Quelles interprétations tiennent ?",
+              "options": [
+                "Sciences et arts attirent autant de monde.",
+                "Sport est le moins populaire.",
+                "Sciences doivent fermer.",
+                "Le total vaut 49."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "19 = 19 ; sport 11 est minimal."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Jus : orange 33, pomme 27, raisin 9. Quel jus vend le moins ?",
+              "options": ["Orange", "Pomme", "Raisin", "Pomme et raisin"],
+              "correctAnswers": [2],
+              "explanation": "9 est le minimum : raisin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Effectif passe de 10 à 15. Augmentation ?",
+              "options": ["5", "10", "15", "25"],
+              "correctAnswers": [0],
+              "explanation": "15 − 10 = 5."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Barres 14, 14, 14, 2. Quelle barre est clairement plus basse ?",
+              "options": ["14", "2", "Toutes", "Aucune"],
+              "correctAnswers": [1],
+              "explanation": "2 est nettement inférieur à 14."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Cantine : matin 18, midi 22, soir 18. Quel moment a le plus grand effectif ?",
+              "options": ["Matin", "Midi", "Soir", "Matin et soir"],
+              "correctAnswers": [1],
+              "explanation": "22 est le maximum : midi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Inscriptions : 40, 35, 30, 25. Total ?",
+              "options": ["100", "110", "130", "40"],
+              "correctAnswers": [2],
+              "explanation": "40 + 35 + 30 + 25 = 130."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux lignes valent 13, une vaut 26. 26 vaut combien de fois 13 ?",
+              "options": ["1", "2", "3", "13"],
+              "correctAnswers": [1],
+              "explanation": "26 ÷ 13 = 2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Déchets : plastique 18, métal 18, verre 10. Plus petit effectif ?",
+              "options": ["Plastique", "Métal", "Verre", "Plastique et métal"],
+              "correctAnswers": [2],
+              "explanation": "10 est le minimum : verre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Barres 7, 14, 21. Par rapport à 7, les hauteurs valent successivement ?",
+              "options": [
+                "×1, ×2, ×3",
+                "×2, ×2, ×2",
+                "×3 partout",
+                "Toutes égales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "7, 14 = 2×7, 21 = 3×7."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Somme 12 + 8 + 12 ?",
+              "options": ["20", "28", "32", "12"],
+              "correctAnswers": [2],
+              "explanation": "12 + 8 + 12 = 32."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Lire un tableau complet",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sondage : oui 26, non 26, sans avis 4. Quelles phrases sont exactes ?",
+              "options": [
+                "Oui et non sont à égalité.",
+                "Sans avis a le plus petit effectif.",
+                "Le total vaut 56.",
+                "Non bat oui."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "26 = 26 ; sans avis 4 est minimal."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Couleurs : noir 15, blanc 8, gris 15. Combien noir + blanc ?",
+              "options": ["15", "23", "30", "8"],
+              "correctAnswers": [1],
+              "explanation": "15 + 8 = 23."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Trois catégories valent 10 et une vaut 1. Quelle catégorie est la plus basse ?",
+              "options": ["Une des dizaines", "Celle à 1", "Toutes", "Aucune"],
+              "correctAnswers": [1],
+              "explanation": "1 est l'effectif le plus faible."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Barres 19, 11, 19, 11. Plus grand effectif ?",
+              "options": ["11", "19", "30", "60"],
+              "correctAnswers": [1],
+              "explanation": "19 est le maximum."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dons : 5 €→6 personnes, 10 €→14, 20 €→4. Quel montant a le plus grand effectif ?",
+              "options": ["5 €", "10 €", "20 €", "14 €"],
+              "correctAnswers": [1],
+              "explanation": "14 personnes pour 10 € : effectif max."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Effectifs 16, 4, 16, 4. Total ?",
+              "options": ["20", "32", "40", "16"],
+              "correctAnswers": [2],
+              "explanation": "16 + 4 + 16 + 4 = 40."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lundi 6, mardi 9, mercredi 6. Quels jours ont le plus petit effectif ?",
+              "options": [
+                "Lundi seul",
+                "Mardi seul",
+                "Mercredi seul",
+                "Lundi et mercredi"
+              ],
+              "correctAnswers": [3],
+              "explanation": "6 est le minimum pour lundi et mercredi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Effectifs 25, 25, 10, 10. Somme des deux plus petits ?",
+              "options": ["10", "20", "35", "70"],
+              "correctAnswers": [1],
+              "explanation": "10 + 10 = 20."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Barres 8, 12, 16, 20. Écart entre la plus haute et la plus basse ?",
+              "options": ["4", "12", "20", "8"],
+              "correctAnswers": [1],
+              "explanation": "20 − 8 = 12."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Répartition A 40, B 35, C 25 pour un total 100. Quelle part est la plus petite ?",
+              "options": ["A", "B", "C", "40"],
+              "correctAnswers": [2],
+              "explanation": "25 est le plus petit effectif : C."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Vérifier un graphique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Animaux : chats 13, chiens 13, lapins 4. Quelles affirmations sont vraies ?",
+              "options": [
+                "Chats et chiens ont le même effectif.",
+                "Lapins sont les moins nombreux.",
+                "Le total vaut 30.",
+                "Chiens battent chats."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "13 = 13 ; lapins 4 minimum."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Cinq jours valent chacun l'effectif 8. Total sur la semaine ?",
+              "options": ["8", "16", "40", "80"],
+              "correctAnswers": [2],
+              "explanation": "8 × 5 = 40."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Notes (effectifs) : A 5, B 12, C 18. Quelle note regroupe le plus d'élèves ?",
+              "options": ["A", "B", "C", "35"],
+              "correctAnswers": [2],
+              "explanation": "18 est le maximum : note C."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Barres 22 et 11. 22 vaut combien de fois 11 ?",
+              "options": ["1", "2", "3", "11"],
+              "correctAnswers": [1],
+              "explanation": "22 ÷ 11 = 2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Effectifs 5, 15, 25 rangés. Quelle valeur est au centre de cette liste de trois ?",
+              "options": ["5", "15", "25", "45"],
+              "correctAnswers": [1],
+              "explanation": "Ordre 5, 15, 25 — la valeur centrale est 15."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Paniers retrouvés : 0, 2, 4, 6. Plus grand effectif ?",
+              "options": ["0", "2", "4", "6"],
+              "correctAnswers": [3],
+              "explanation": "6 est le maximum."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Effectifs 30, 30, 10, 10, 10. Combien valent 10 ?",
+              "options": [
+                "Une catégorie",
+                "Deux catégories",
+                "Trois catégories",
+                "Cinq catégories"
+              ],
+              "correctAnswers": [2],
+              "explanation": "10 apparaît trois fois."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Barres 9, 18, 27. Total ?",
+              "options": ["9", "45", "54", "18"],
+              "correctAnswers": [2],
+              "explanation": "9 + 18 + 27 = 54."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quatre barres valent 6 et une vaut 24. 24 vaut combien de fois 6 ?",
+              "options": ["2", "3", "4", "6"],
+              "correctAnswers": [2],
+              "explanation": "24 ÷ 6 = 4."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Effectifs 17, 12, 7. Somme des deux plus petits ?",
+              "options": ["19", "24", "29", "7"],
+              "correctAnswers": [0],
+              "explanation": "7 + 12 = 19."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Bilan interprétation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lectures : roman 32, BD 32, poésie 8. Quelles conclusions sont correctes ?",
+              "options": [
+                "Roman et BD ont le même effectif.",
+                "Poésie est la catégorie la moins lue.",
+                "Le total vaut 72.",
+                "BD bat roman."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "32 = 32 ; poésie 8 est minimal."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Stades : A 11, B 11, C 4, D 11. Combien partagent l'effectif maximum ?",
+              "options": ["Un", "Deux", "Trois", "Quatre"],
+              "correctAnswers": [2],
+              "explanation": "11 pour A, B et D : trois."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Graphique montre une chute de 30 à 18. Diminution ?",
+              "options": ["12", "18", "30", "48"],
+              "correctAnswers": [0],
+              "explanation": "30 − 18 = 12."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Effectifs 1, 1, 1, 1, 9. Quelle valeur domine ?",
+              "options": ["1", "9", "5", "4"],
+              "correctAnswers": [1],
+              "explanation": "9 est le plus grand effectif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Barres 13, 13, 13, 13, 2. Total des quatre plus hautes ?",
+              "options": ["52", "54", "13", "2"],
+              "correctAnswers": [0],
+              "explanation": "13 × 4 = 52."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tableau : aucune ligne ne dépasse 20 ; le maximum vaut 20. Interprétation ?",
+              "options": [
+                "20 est l'effectif le plus grand",
+                "20 personnes au total",
+                "20 lignes",
+                "Tous valent 20"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le maximum du tableau est 20."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Couleurs : rouge 9, bleu 9, vert 9, noir 3. Plus petit effectif ?",
+              "options": ["Rouge", "Bleu", "Vert", "Noir"],
+              "correctAnswers": [3],
+              "explanation": "3 est le minimum : noir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Effectifs 14, 21, 28. Chaque valeur augmente de 7. Total des trois ?",
+              "options": ["42", "49", "63", "21"],
+              "correctAnswers": [2],
+              "explanation": "14 + 21 + 28 = 63."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux diagrammes montrent le même total 50 avec effectifs 30 et 20 d'un côté, 25 et 25 de l'autre. Que partagent-ils ?",
+              "options": [
+                "Le même total",
+                "Les mêmes barres",
+                "Le même maximum",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "30 + 20 = 50 et 25 + 25 = 50 : même total."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dernière lecture : barres 6, 9, 12, 15. De combien augmente-t-on d'une barre à la suivante ?",
+              "options": ["3", "6", "9", "15"],
+              "correctAnswers": [0],
+              "explanation": "9 − 6 = 3, 12 − 9 = 3, 15 − 12 = 3."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -22,20 +22,6 @@ import { createRegisterMulti } from "./vibe-common.ts";
 export function registerAuthRoutes(app: Hono) {
   const registerMulti = createRegisterMulti(app);
 
-  // GET /register info endpoint (évite 404 lors des tests au navigateur)
-  registerMulti(
-    "get",
-    ["/register", "/v1/register", "/api/register", "/api/vibe/register"],
-    (c) =>
-      c.json({
-        description:
-          "Pour créer un compte, envoyez une requête HTTP POST avec { email, username, password } en JSON.",
-        endpoint: "/register",
-        method: "POST",
-        service: "mAI Vibe Auth",
-      })
-  );
-
   // POST /register
   registerMulti(
     "post",
@@ -180,20 +166,6 @@ export function registerAuthRoutes(app: Hono) {
         return c.json({ error: err?.message || "Erreur serveur." }, 500);
       }
     }
-  );
-
-  // GET /login info endpoint (évite 404 lors des tests au navigateur)
-  registerMulti(
-    "get",
-    ["/login", "/v1/login", "/api/login", "/api/vibe/login"],
-    (c) =>
-      c.json({
-        description:
-          "Pour vous connecter, envoyez une requête HTTP POST avec { identifier, password } en JSON.",
-        endpoint: "/login",
-        method: "POST",
-        service: "mAI Vibe Auth",
-      })
   );
 
   // POST /login

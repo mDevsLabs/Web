@@ -1,0 +1,2133 @@
+{
+  "id": "6e-japonais-01",
+  "year": "6e",
+  "subject": "japonais",
+  "title": "Découvrir le japonais",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Bonjour au matin",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels saluts japonais conviennent le matin ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "おはよう (ohayō)",
+                "こんばんは (konbanwa)",
+                "おはようございます (ohayō gozaimasu)",
+                "さようなら (sayōnara)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le matin on dit ohayō ou la forme polie ohayō gozaimasu."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie « konnichiwa » ?",
+              "type": "single_choice",
+              "options": ["Bonjour (journée)", "Bonsoir", "Au revoir", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "Konnichiwa sert à saluer dans la journée, de midi environ au soir."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « bonsoir » en japonais ?",
+              "type": "single_choice",
+              "options": [
+                "こんばんは (konbanwa)",
+                "おはよう (ohayō)",
+                "こんにちは (konnichiwa)",
+                "おやすみ (oyasumi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Konbanwa signifie littéralement « ce soir » et sert à saluer le soir."
+            },
+            {
+              "id": "q4",
+              "question": "« Sayōnara » correspond surtout à :",
+              "type": "single_choice",
+              "options": [
+                "Au revoir",
+                "Bonjour",
+                "S'il vous plaît",
+                "Excusez-moi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sayōnara est un au revoir assez définitif, souvent pour une longue séparation."
+            },
+            {
+              "id": "q5",
+              "question": "Quel salut utilise-t-on en entrant dans une maison ?",
+              "type": "single_choice",
+              "options": [
+                "ただいま (tadaima)",
+                "いってきます (itte kimasu)",
+                "おかえり (okaeri)",
+                "いただきます (itadakimasu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tadaima signifie « je suis rentré » et s'entend en arrivant chez soi."
+            },
+            {
+              "id": "q6",
+              "question": "Avant de partir de la maison, on dit souvent :",
+              "type": "single_choice",
+              "options": [
+                "いってきます (itte kimasu)",
+                "ただいま (tadaima)",
+                "ごちそうさまでした",
+                "おやすみなさい"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Itte kimasu veut dire « j'y vais » et annonce le départ."
+            },
+            {
+              "id": "q7",
+              "question": "Comment répond-on à « arigatō » de façon simple ?",
+              "type": "single_choice",
+              "options": [
+                "どういたしまして (dō itashimashite)",
+                "すみません (sumimasen)",
+                "こんにちは",
+                "はい (hai)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dō itashimashite est la réponse polie standard à « merci »."
+            },
+            {
+              "id": "q8",
+              "question": "« Sumimasen » peut servir à :",
+              "type": "single_choice",
+              "options": [
+                "S'excuser ou attirer l'attention",
+                "Dire bonne nuit",
+                "Se présenter",
+                "Compter jusqu'à dix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sumimasen exprime des excuses légères ou une demande d'attention."
+            },
+            {
+              "id": "q9",
+              "question": "Que signifie « gomen nasai » ?",
+              "type": "single_choice",
+              "options": [
+                "Pardon / désolé",
+                "Bon appétit",
+                "Enchanté",
+                "À bientôt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gomen nasai est une excuse plus personnelle que sumimasen."
+            },
+            {
+              "id": "q10",
+              "question": "« Oyasumi nasai » s'utilise surtout pour :",
+              "type": "single_choice",
+              "options": [
+                "Dire bonne nuit",
+                "Dire bonjour",
+                "Remercier",
+                "Demander son nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oyasumi nasai est la formule polie pour souhaiter une bonne nuit."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Politesse et remerciements",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions signifient « merci » ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "ありがとう (arigatō)",
+                "ありがとうございます",
+                "すみません",
+                "こんにちは"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Arigatō et arigatō gozaimasu sont les deux niveaux courants pour remercier."
+            },
+            {
+              "id": "q2",
+              "question": "La forme la plus polie de « merci » est :",
+              "type": "single_choice",
+              "options": [
+                "ありがとうございます",
+                "ありがとう",
+                "どうも",
+                "はい"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arigatō gozaimasu ajoute la politesse formelle à arigatō."
+            },
+            {
+              "id": "q3",
+              "question": "« Onegaishimasu » sert souvent à :",
+              "type": "single_choice",
+              "options": [
+                "Demander quelque chose poliment",
+                "Saluer le matin",
+                "Dire au revoir",
+                "Nommer les couleurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Onegaishimasu accompagne une demande ou une commande polie."
+            },
+            {
+              "id": "q4",
+              "question": "Avant de manger, les Japonais disent :",
+              "type": "single_choice",
+              "options": [
+                "いただきます (itadakimasu)",
+                "ごちそうさまでした",
+                "ただいま",
+                "いらっしゃいませ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Itadakimasu remercie pour le repas avant de commencer."
+            },
+            {
+              "id": "q5",
+              "question": "Après le repas, on dit :",
+              "type": "single_choice",
+              "options": [
+                "ごちそうさまでした (gochisōsama deshita)",
+                "いただきます",
+                "おはよう",
+                "さようなら"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gochisōsama deshita remercie après avoir mangé."
+            },
+            {
+              "id": "q6",
+              "question": "« Hai » signifie en général :",
+              "type": "single_choice",
+              "options": ["Oui", "Non", "Peut-être", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "Hai est la réponse affirmative la plus courante."
+            },
+            {
+              "id": "q7",
+              "question": "« Iie » signifie :",
+              "type": "single_choice",
+              "options": ["Non", "Oui", "Bonjour", "Pardon"],
+              "correctAnswers": [0],
+              "explanation": "Iie sert à refuser ou nier poliment."
+            },
+            {
+              "id": "q8",
+              "question": "En entrant dans un magasin, on entend souvent :",
+              "type": "single_choice",
+              "options": [
+                "いらっしゃいませ (irasshaimase)",
+                "おやすみなさい",
+                "バイバイ",
+                "おはよう"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Irasshaimase est l'accueil standard des commerces."
+            },
+            {
+              "id": "q9",
+              "question": "« Dōmo » peut signifier brièvement :",
+              "type": "single_choice",
+              "options": [
+                "Merci (familier)",
+                "Bonsoir formel",
+                "Mon nom est…",
+                "Deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dōmo seul est un merci très court et informel."
+            },
+            {
+              "id": "q10",
+              "question": "Pour s'excuser poliment en public, on préfère souvent :",
+              "type": "single_choice",
+              "options": [
+                "すみません (sumimasen)",
+                "おはよう",
+                "こんにちは",
+                "さようなら"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sumimasen couvre excuse légère et appel poli."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Se présenter",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases servent à se présenter ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "わたしは…です (watashi wa … desu)",
+                "…ともうします (… to mōshimasu)",
+                "こんばんは",
+                "いただきます"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Watashi wa … desu et … to mōshimasu indiquent son nom."
+            },
+            {
+              "id": "q2",
+              "question": "« Watashi wa Marie desu » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je suis Marie",
+                "Marie est grande",
+                "Bonjour Marie",
+                "Au revoir Marie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Watashi wa … desu = « je suis … »."
+            },
+            {
+              "id": "q3",
+              "question": "« Desu » à la fin d'une phrase marque souvent :",
+              "type": "single_choice",
+              "options": [
+                "La politesse / une affirmation",
+                "Une question",
+                "Un nombre",
+                "Une couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Desu est la copule polie en fin de phrase déclarative."
+            },
+            {
+              "id": "q4",
+              "question": "Comment demander « Comment tu t'appelles ? » simplement ?",
+              "type": "single_choice",
+              "options": [
+                "おなまえは？ (onamae wa?)",
+                "げんきですか？",
+                "どこから？",
+                "なんさい？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Onamae wa ? demande le nom de l'interlocuteur."
+            },
+            {
+              "id": "q5",
+              "question": "« Hajimemashite » s'utilise :",
+              "type": "single_choice",
+              "options": [
+                "Lors d'une première rencontre",
+                "Au coucher",
+                "En mangeant",
+                "En comptant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hajimemashite signifie « enchanté » lors d'une première fois."
+            },
+            {
+              "id": "q6",
+              "question": "Après hajimemashite, on dit souvent :",
+              "type": "single_choice",
+              "options": [
+                "よろしくおねがいします (yoroshiku onegaishimasu)",
+                "さようなら",
+                "おやすみ",
+                "いただきます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yoroshiku onegaishimasu conclut poliment une présentation."
+            },
+            {
+              "id": "q7",
+              "question": "« Watashi » signifie :",
+              "type": "single_choice",
+              "options": ["Je / moi", "Toi", "Il", "Nous"],
+              "correctAnswers": [0],
+              "explanation": "Watashi est le pronom « je » neutre et courant."
+            },
+            {
+              "id": "q8",
+              "question": "« Anata » signifie en général :",
+              "type": "single_choice",
+              "options": [
+                "Tu / vous (singulier)",
+                "Ils",
+                "Elle seulement",
+                "Nous deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anata est « tu », mais on évite parfois de le surutiliser."
+            },
+            {
+              "id": "q9",
+              "question": "Pour dire « J'ai douze ans » on peut dire :",
+              "type": "single_choice",
+              "options": [
+                "わたしは12さいです",
+                "わたしは12にんです",
+                "12じです",
+                "12まいです"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'âge se dit avec さい (sai) après le nombre."
+            },
+            {
+              "id": "q10",
+              "question": "« Dōzo yoroshiku » est :",
+              "type": "single_choice",
+              "options": [
+                "Une formule de politesse après une présentation",
+                "Un salut du matin",
+                "Un adieu définitif",
+                "Un mot pour « chat »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une variante courte de yoroshiku onegaishimasu."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Hiragana : voyelles",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels caractères hiragana sont des voyelles pures ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": ["あ (a)", "い (i)", "か (ka)", "さ (sa)"],
+              "correctAnswers": [0, 1],
+              "explanation": "あ et い sont les voyelles a et i ; か et さ contiennent une consonne."
+            },
+            {
+              "id": "q2",
+              "question": "Le hiragana う se prononce :",
+              "type": "single_choice",
+              "options": ["u", "o", "e", "a"],
+              "correctAnswers": [0],
+              "explanation": "う correspond au son [u] japonais."
+            },
+            {
+              "id": "q3",
+              "question": "Le hiragana え correspond au son :",
+              "type": "single_choice",
+              "options": ["e", "i", "o", "u"],
+              "correctAnswers": [0],
+              "explanation": "え se lit « e » comme dans « été » (approximatif)."
+            },
+            {
+              "id": "q4",
+              "question": "Le hiragana お se prononce :",
+              "type": "single_choice",
+              "options": ["o", "a", "u", "i"],
+              "correctAnswers": [0],
+              "explanation": "お est la voyelle o en hiragana."
+            },
+            {
+              "id": "q5",
+              "question": "Combien de voyelles de base en hiragana (a, i, u, e, o) ?",
+              "type": "single_choice",
+              "options": ["5", "3", "10", "46"],
+              "correctAnswers": [0],
+              "explanation": "Le syllabaire commence par cinq voyelles : あいうえお."
+            },
+            {
+              "id": "q6",
+              "question": "Quel ordre est correct pour les cinq voyelles ?",
+              "type": "single_choice",
+              "options": [
+                "あ い う え お",
+                "あ う い え お",
+                "い あ う え お",
+                "あ い え う お"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre traditionnel est a-i-u-e-o (aiueo)."
+            },
+            {
+              "id": "q7",
+              "question": "Le mot あお (ao) signifie :",
+              "type": "single_choice",
+              "options": ["Bleu / vert", "Rouge", "Blanc", "Noir"],
+              "correctAnswers": [0],
+              "explanation": "Ao désigne souvent le bleu et par extension le vert."
+            },
+            {
+              "id": "q8",
+              "question": "Le mot いえ (ie) signifie :",
+              "type": "single_choice",
+              "options": ["Maison", "Eau", "Feu", "École"],
+              "correctAnswers": [0],
+              "explanation": "Ie = maison, écrit avec い et え."
+            },
+            {
+              "id": "q9",
+              "question": "Hiragana sert surtout à écrire :",
+              "type": "single_choice",
+              "options": [
+                "Les mots japonais natifs et la grammaire",
+                "Uniquement les mots étrangers",
+                "Seulement les noms propres chinois",
+                "Les chiffres romains"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiragana est le syllabaire pour le japonais courant et les particules."
+            },
+            {
+              "id": "q10",
+              "question": "Le hiragana あ ressemble phonétiquement à :",
+              "type": "single_choice",
+              "options": ["a", "i", "u", "n"],
+              "correctAnswers": [0],
+              "explanation": "あ est la première voyelle, le son « a »."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Hiragana : ligne ka",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels hiragana commencent par le son « k » ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": ["か (ka)", "き (ki)", "さ (sa)", "た (ta)"],
+              "correctAnswers": [0, 1],
+              "explanation": "か et き appartiennent à la ligne ka ; さ et た sont d'autres lignes."
+            },
+            {
+              "id": "q2",
+              "question": "Le hiragana く se prononce :",
+              "type": "single_choice",
+              "options": ["ku", "ke", "ko", "ka"],
+              "correctAnswers": [0],
+              "explanation": "く est « ku », comme dans くつ (kutsu, chaussures)."
+            },
+            {
+              "id": "q3",
+              "question": "Le hiragana け correspond à :",
+              "type": "single_choice",
+              "options": ["ke", "ki", "ka", "ko"],
+              "correctAnswers": [0],
+              "explanation": "け se lit « ke »."
+            },
+            {
+              "id": "q4",
+              "question": "Le hiragana こ se prononce :",
+              "type": "single_choice",
+              "options": ["ko", "ku", "ke", "ki"],
+              "correctAnswers": [0],
+              "explanation": "こ est « ko », voyelle o après k."
+            },
+            {
+              "id": "q5",
+              "question": "Dans ここ (koko), le mot signifie :",
+              "type": "single_choice",
+              "options": ["Ici", "Là-bas", "Là", "Partout"],
+              "correctAnswers": [0],
+              "explanation": "Koko = ici, lieu proche de l locuteur."
+            },
+            {
+              "id": "q6",
+              "question": "La ligne ka en hiragana comprend :",
+              "type": "single_choice",
+              "options": [
+                "か き く け こ",
+                "か き く け",
+                "が ぎ ぐ げ ご",
+                "さ し す せ そ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cinq caractères : ka, ki, ku, ke, ko."
+            },
+            {
+              "id": "q7",
+              "question": "Le mot かさ (kasa) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Parapluie",
+                "Chapeau de soleil seulement",
+                "Sac",
+                "Clé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kasa désigne le parapluie (ou parfois un abri)."
+            },
+            {
+              "id": "q8",
+              "question": "Le mot き (ki) seul peut être :",
+              "type": "single_choice",
+              "options": [
+                "Arbre (木 en kanji, lu ki)",
+                "Eau",
+                "Pierre",
+                "Vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ki = arbre ; en 6e on le rencontre dans des mots simples."
+            },
+            {
+              "id": "q9",
+              "question": "Pour lire かき (kaki), on enchaîne :",
+              "type": "single_choice",
+              "options": ["ka + ki", "ka + ku", "ki + ka", "ko + ki"],
+              "correctAnswers": [0],
+              "explanation": "Chaque hiragana = une syllabe ; kaki = ka puis ki."
+            },
+            {
+              "id": "q10",
+              "question": "Le son « ki » s'écrit :",
+              "type": "single_choice",
+              "options": ["き", "け", "く", "こ"],
+              "correctAnswers": [0],
+              "explanation": "き est le hiragana pour ki."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Hiragana : lignes sa et ta",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels caractères appartiennent à la ligne sa ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": ["さ (sa)", "し (shi)", "た (ta)", "な (na)"],
+              "correctAnswers": [0, 1],
+              "explanation": "さ et し font partie de sa shi su se so."
+            },
+            {
+              "id": "q2",
+              "question": "Le hiragana し se lit :",
+              "type": "single_choice",
+              "options": ["shi", "si (comme en français « si »)", "chi", "tsu"],
+              "correctAnswers": [0],
+              "explanation": "En romaji moderne, し = shi."
+            },
+            {
+              "id": "q3",
+              "question": "Le hiragana す se prononce :",
+              "type": "single_choice",
+              "options": ["su", "so", "sa", "shi"],
+              "correctAnswers": [0],
+              "explanation": "す = su, comme dans すし (sushi)."
+            },
+            {
+              "id": "q4",
+              "question": "Le mot さかな (sakana) signifie :",
+              "type": "single_choice",
+              "options": ["Poisson", "Viande", "Riz", "Pain"],
+              "correctAnswers": [0],
+              "explanation": "Sakana = poisson (nourriture ou animal)."
+            },
+            {
+              "id": "q5",
+              "question": "La ligne ta en hiragana est :",
+              "type": "single_choice",
+              "options": [
+                "た ち つ て と",
+                "だ ぢ づ で ど",
+                "さ し す せ そ",
+                "な に ぬ ね の"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ta chi tsu te to sont les cinq hiragana de la ligne t."
+            },
+            {
+              "id": "q6",
+              "question": "Le hiragana ち se lit :",
+              "type": "single_choice",
+              "options": ["chi", "ti", "shi", "ji"],
+              "correctAnswers": [0],
+              "explanation": "ち = chi en romaji standard."
+            },
+            {
+              "id": "q7",
+              "question": "Le hiragana つ se prononce :",
+              "type": "single_choice",
+              "options": ["tsu", "tu", "su", "chi"],
+              "correctAnswers": [0],
+              "explanation": "つ = tsu, une seule syllabe."
+            },
+            {
+              "id": "q8",
+              "question": "Le mot ともだち (tomodachi) signifie :",
+              "type": "single_choice",
+              "options": ["Ami(e)", "Professeur", "Frère", "Voisin"],
+              "correctAnswers": [0],
+              "explanation": "Tomodachi = ami, utilisant ta et to entre autres."
+            },
+            {
+              "id": "q9",
+              "question": "Le hiragana て se lit :",
+              "type": "single_choice",
+              "options": ["te", "to", "ta", "chi"],
+              "correctAnswers": [0],
+              "explanation": "て = te, comme dans て (main)."
+            },
+            {
+              "id": "q10",
+              "question": "Le hiragana と se prononce :",
+              "type": "single_choice",
+              "options": ["to", "te", "tsu", "ta"],
+              "correctAnswers": [0],
+              "explanation": "と = to, voyelle o après t."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Hiragana : lignes na et ha",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels hiragana sont de la ligne na ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": ["な (na)", "に (ni)", "は (ha)", "ま (ma)"],
+              "correctAnswers": [0, 1],
+              "explanation": "な et に appartiennent à na ni nu ne no."
+            },
+            {
+              "id": "q2",
+              "question": "Le hiragana ぬ se lit :",
+              "type": "single_choice",
+              "options": ["nu", "ne", "no", "ni"],
+              "correctAnswers": [0],
+              "explanation": "ぬ = nu."
+            },
+            {
+              "id": "q3",
+              "question": "Le mot ねこ (neko) signifie :",
+              "type": "single_choice",
+              "options": ["Chat", "Chien", "Oiseau", "Poisson"],
+              "correctAnswers": [0],
+              "explanation": "Neko = chat, très fréquent en vocabulaire débutant."
+            },
+            {
+              "id": "q4",
+              "question": "Le hiragana の se prononce :",
+              "type": "single_choice",
+              "options": ["no", "nu", "ne", "na"],
+              "correctAnswers": [0],
+              "explanation": "の = no ; c'est aussi une particule de possession."
+            },
+            {
+              "id": "q5",
+              "question": "La particule の indique souvent :",
+              "type": "single_choice",
+              "options": [
+                "La possession (de)",
+                "Le passé",
+                "Le futur",
+                "La négation seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. わたしのなまえ = le nom de moi / mon nom."
+            },
+            {
+              "id": "q6",
+              "question": "Le hiragana は se lit comme particule thème :",
+              "type": "single_choice",
+              "options": ["wa", "ha", "ba", "pa"],
+              "correctAnswers": [0],
+              "explanation": "は s'écrit ha mais se prononce wa en particule."
+            },
+            {
+              "id": "q7",
+              "question": "Le hiragana ひ se lit :",
+              "type": "single_choice",
+              "options": ["hi", "he", "ho", "ha"],
+              "correctAnswers": [0],
+              "explanation": "ひ = hi."
+            },
+            {
+              "id": "q8",
+              "question": "Le mot はな (hana) peut signifier :",
+              "type": "single_choice",
+              "options": ["Fleur", "Nez seulement", "Feu", "Pluie"],
+              "correctAnswers": [0],
+              "explanation": "Hana = fleur (contexte courant en 6e)."
+            },
+            {
+              "id": "q9",
+              "question": "Le hiragana ほ se prononce :",
+              "type": "single_choice",
+              "options": ["ho", "he", "hi", "fu"],
+              "correctAnswers": [0],
+              "explanation": "ほ = ho, fin de la ligne ha."
+            },
+            {
+              "id": "q10",
+              "question": "La ligne ha complète est :",
+              "type": "single_choice",
+              "options": [
+                "は ひ ふ へ ほ",
+                "は ひ ふ へ",
+                "ば び ぶ べ ぼ",
+                "ぱ ぴ ぷ ぺ ぽ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ha hi fu he ho sont les cinq de base."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Hiragana : lignes ma et ya",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels caractères sont de la ligne ma ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": ["ま (ma)", "み (mi)", "や (ya)", "ら (ra)"],
+              "correctAnswers": [0, 1],
+              "explanation": "ま et み font partie de ma mi mu me mo."
+            },
+            {
+              "id": "q2",
+              "question": "Le hiragana む se lit :",
+              "type": "single_choice",
+              "options": ["mu", "mo", "me", "mi"],
+              "correctAnswers": [0],
+              "explanation": "む = mu."
+            },
+            {
+              "id": "q3",
+              "question": "Le mot みず (mizu) signifie :",
+              "type": "single_choice",
+              "options": ["Eau", "Lait", "Thé", "Jus"],
+              "correctAnswers": [0],
+              "explanation": "Mizu = eau."
+            },
+            {
+              "id": "q4",
+              "question": "Le hiragana め se prononce :",
+              "type": "single_choice",
+              "options": ["me", "ma", "mi", "mo"],
+              "correctAnswers": [0],
+              "explanation": "め = me, comme dans め (œil)."
+            },
+            {
+              "id": "q5",
+              "question": "Le mot もも (momo) peut désigner :",
+              "type": "single_choice",
+              "options": [
+                "Une pêche (fruit)",
+                "Un chat",
+                "Une montagne",
+                "Un train"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Momo = pêche le fruit."
+            },
+            {
+              "id": "q6",
+              "question": "Les hiragana ya, yu, yo sont :",
+              "type": "single_choice",
+              "options": ["や ゆ よ", "や い よ", "ゆ よ のみ", "や ゆ え よ"],
+              "correctAnswers": [0],
+              "explanation": "Il n'y a que trois caractères pour les y en hiragana de base."
+            },
+            {
+              "id": "q7",
+              "question": "Le hiragana や se lit :",
+              "type": "single_choice",
+              "options": ["ya", "yu", "yo", "ye"],
+              "correctAnswers": [0],
+              "explanation": "や = ya."
+            },
+            {
+              "id": "q8",
+              "question": "Le mot ゆき (yuki) signifie :",
+              "type": "single_choice",
+              "options": ["Neige", "Pluie", "Vent", "Soleil"],
+              "correctAnswers": [0],
+              "explanation": "Yuki = neige."
+            },
+            {
+              "id": "q9",
+              "question": "Le hiragana よ se prononce :",
+              "type": "single_choice",
+              "options": ["yo", "ya", "yu", "i"],
+              "correctAnswers": [0],
+              "explanation": "よ = yo."
+            },
+            {
+              "id": "q10",
+              "question": "En lecture, まゆ (mayu) combine :",
+              "type": "single_choice",
+              "options": ["ma + yu", "ma + yo", "mi + yu", "mo + ya"],
+              "correctAnswers": [0],
+              "explanation": "Chaque hiragana = une syllabe : ma puis yu."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Hiragana : ra, wa, n",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels hiragana appartiennent à la ligne ra ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": ["ら (ra)", "り (ri)", "わ (wa)", "ん (n)"],
+              "correctAnswers": [0, 1],
+              "explanation": "ら et り font partie de ra ri ru re ro."
+            },
+            {
+              "id": "q2",
+              "question": "Le hiragana る se lit :",
+              "type": "single_choice",
+              "options": ["ru", "ro", "re", "ri"],
+              "correctAnswers": [0],
+              "explanation": "る = ru."
+            },
+            {
+              "id": "q3",
+              "question": "Le mot りんご (ringo) signifie :",
+              "type": "single_choice",
+              "options": ["Pomme", "Orange", "Banane", "Raisin"],
+              "correctAnswers": [0],
+              "explanation": "Ringo = pomme."
+            },
+            {
+              "id": "q4",
+              "question": "Le hiragana れ se prononce :",
+              "type": "single_choice",
+              "options": ["re", "ra", "ri", "ro"],
+              "correctAnswers": [0],
+              "explanation": "れ = re."
+            },
+            {
+              "id": "q5",
+              "question": "Le hiragana ろ se lit :",
+              "type": "single_choice",
+              "options": ["ro", "ru", "re", "ra"],
+              "correctAnswers": [0],
+              "explanation": "ろ = ro, dernière de la ligne ra."
+            },
+            {
+              "id": "q6",
+              "question": "Le hiragana わ se lit (hors particule) :",
+              "type": "single_choice",
+              "options": ["wa", "wo", "we", "wi"],
+              "correctAnswers": [0],
+              "explanation": "わ = wa ; を (wo) est une exception pour la particule objet."
+            },
+            {
+              "id": "q7",
+              "question": "Le hiragana ん représente :",
+              "type": "single_choice",
+              "options": [
+                "La consonne nasale « n » en fin de syllabe",
+                "La voyelle a",
+                "Le doublement de voyelle",
+                "Un silence total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ん est le seul hiragana sans voyelle pleine après."
+            },
+            {
+              "id": "q8",
+              "question": "Dans せんせい (sensei), ん se prononce avant :",
+              "type": "single_choice",
+              "options": ["s (sensei)", "e seul", "i seul", "k"],
+              "correctAnswers": [0],
+              "explanation": "Sensei = sen + sei ; le n de ん se lie à la syllabe suivante."
+            },
+            {
+              "id": "q9",
+              "question": "Combien de hiragana de base compte-t-on environ (avec ん) ?",
+              "type": "single_choice",
+              "options": ["46", "26", "50", "100"],
+              "correctAnswers": [0],
+              "explanation": "Le syllabaire complet standard compte 46 hiragana de base."
+            },
+            {
+              "id": "q10",
+              "question": "Le mot わたし (watashi) commence par :",
+              "type": "single_choice",
+              "options": ["わ (wa)", "を (wo)", "れ (re)", "ん (n)"],
+              "correctAnswers": [0],
+              "explanation": "Watashi s'écrit わたし, première syllabe wa."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision salutations et hiragana",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formules sont des salutations ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": ["こんにちは", "おはよう", "ありがとう", "さようなら"],
+              "correctAnswers": [0, 1],
+              "explanation": "Konnichiwa et ohayō saluent ; arigatō remercie et sayōnara prend congé."
+            },
+            {
+              "id": "q2",
+              "question": "Lire あさ (asa) donne :",
+              "type": "single_choice",
+              "options": ["asa (matin)", "ashi", "aisu", "asa = soir"],
+              "correctAnswers": [0],
+              "explanation": "Asa signifie le matin."
+            },
+            {
+              "id": "q3",
+              "question": "Pour dire « enchanté » au début d'une rencontre :",
+              "type": "single_choice",
+              "options": [
+                "はじめまして",
+                "おやすみ",
+                "いただきます",
+                "いってきます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hajimemashite ouvre une première présentation."
+            },
+            {
+              "id": "q4",
+              "question": "Le hiragana い + ぬ =",
+              "type": "single_choice",
+              "options": ["inu (chien)", "neko", "tori", "sakana"],
+              "correctAnswers": [0],
+              "explanation": "いぬ (inu) = chien."
+            },
+            {
+              "id": "q5",
+              "question": "« Konbanwa » s'utilise :",
+              "type": "single_choice",
+              "options": [
+                "Le soir",
+                "Le matin",
+                "À midi seulement",
+                "En dormant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Konbanwa = bonsoir."
+            },
+            {
+              "id": "q6",
+              "question": "La particule は dans わたしは marque :",
+              "type": "single_choice",
+              "options": [
+                "Le thème de la phrase (je, quant à moi…)",
+                "La possession",
+                "La question",
+                "Le passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wa (particule は) indique le sujet/thème."
+            },
+            {
+              "id": "q7",
+              "question": "Le mot いぬ (inu) signifie :",
+              "type": "single_choice",
+              "options": ["Chien", "Chat", "Loup", "Renard"],
+              "correctAnswers": [0],
+              "explanation": "Inu = chien."
+            },
+            {
+              "id": "q8",
+              "question": "Remercier poliment après un cadeau :",
+              "type": "single_choice",
+              "options": [
+                "ありがとうございます",
+                "さようなら",
+                "おはよう",
+                "ごめん"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La forme gozaimasu est adaptée à un contexte poli."
+            },
+            {
+              "id": "q9",
+              "question": "Le hiragana つき (tsuki) signifie souvent :",
+              "type": "single_choice",
+              "options": ["Lune / mois", "Soleil", "Étoile", "Nuage"],
+              "correctAnswers": [0],
+              "explanation": "Tsuki = lune ou mois selon le contexte."
+            },
+            {
+              "id": "q10",
+              "question": "En japonais, lire les hiragana de gauche à droite signifie :",
+              "type": "single_choice",
+              "options": [
+                "Lire syllabe par syllabe dans l'ordre",
+                "Lire de bas en haut",
+                "Ignorer les voyelles",
+                "Lire uniquement les kanji"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le japonais moderne se lit en général de gauche à droite, syllabe par syllabe en hiragana."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Nombres et âge",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels nombres japonais signifient 1 et 2 ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": ["いち (ichi)", "に (ni)", "さん (san)", "よん (yon)"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ichi = 1 et ni = 2 en comptage japonais de base."
+            },
+            {
+              "id": "q2",
+              "question": "Le nombre 3 se dit :",
+              "type": "single_choice",
+              "options": ["さん (san)", "し (shi)", "ご (go)", "ろく (roku)"],
+              "correctAnswers": [0],
+              "explanation": "San = 3 ; shi existe aussi mais san est préféré pour 3."
+            },
+            {
+              "id": "q3",
+              "question": "Le nombre 5 se dit :",
+              "type": "single_choice",
+              "options": ["ご (go)", "よ (yo)", "いつ (itsu)", "なな (nana)"],
+              "correctAnswers": [0],
+              "explanation": "Go = 5."
+            },
+            {
+              "id": "q4",
+              "question": "Le nombre 10 se dit :",
+              "type": "single_choice",
+              "options": [
+                "じゅう (jū)",
+                "じゅういち",
+                "はち (hachi)",
+                "きゅう (kyū)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jū = 10."
+            },
+            {
+              "id": "q5",
+              "question": "Pour dire « j'ai onze ans » :",
+              "type": "single_choice",
+              "options": ["11さいです", "11にんです", "11まいです", "11じです"],
+              "correctAnswers": [0],
+              "explanation": "L'âge utilise le suffixe さい (sai)."
+            },
+            {
+              "id": "q6",
+              "question": "Le nombre 0 se dit :",
+              "type": "single_choice",
+              "options": [
+                "ゼロ / れい (zero / rei)",
+                "いち",
+                "まる seulement en maths françaises",
+                "なし uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zero ou rei sont courants pour zéro."
+            },
+            {
+              "id": "q7",
+              "question": "Le nombre 7 est souvent :",
+              "type": "single_choice",
+              "options": [
+                "なな (nana) ou しち (shichi)",
+                "ろく seulement",
+                "きゅう",
+                "じゅう"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nana et shichi sont deux lectures pour 7."
+            },
+            {
+              "id": "q8",
+              "question": "Le nombre 4 peut se lire :",
+              "type": "single_choice",
+              "options": [
+                "よん (yon) ou し (shi)",
+                "に seulement",
+                "はち",
+                "ご"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yon et shi existent ; yon est souvent préféré."
+            },
+            {
+              "id": "q9",
+              "question": "Le nombre 9 se dit souvent :",
+              "type": "single_choice",
+              "options": ["きゅう (kyū) ou く (ku)", "ろく", "さん", "に"],
+              "correctAnswers": [0],
+              "explanation": "Kyū et ku sont les lectures de 9."
+            },
+            {
+              "id": "q10",
+              "question": "Combien font 5 + 3 en japonais si on dit le résultat ?",
+              "type": "single_choice",
+              "options": ["はち (hachi)", "ろく", "きゅう", "じゅう"],
+              "correctAnswers": [0],
+              "explanation": "5 + 3 = 8, soit hachi."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Couleurs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles couleurs sont あか et しろ ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Rouge (aka)",
+                "Blanc (shiro)",
+                "Bleu (ao)",
+                "Noir (kuro)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Aka = rouge et shiro = blanc."
+            },
+            {
+              "id": "q2",
+              "question": "Le mot くろ (kuro) signifie :",
+              "type": "single_choice",
+              "options": ["Noir", "Vert", "Jaune", "Rose"],
+              "correctAnswers": [0],
+              "explanation": "Kuro = noir."
+            },
+            {
+              "id": "q3",
+              "question": "Le mot きいろ (kiiro) signifie :",
+              "type": "single_choice",
+              "options": ["Jaune", "Bleu", "Gris", "Orange"],
+              "correctAnswers": [0],
+              "explanation": "Kiiro = jaune (littéralement « couleur jaune »)."
+            },
+            {
+              "id": "q4",
+              "question": "Le drapeau du Japon est surtout :",
+              "type": "single_choice",
+              "options": [
+                "Blanc et rouge",
+                "Bleu et blanc",
+                "Vert et jaune",
+                "Noir et or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fond blanc (shiro) et disque rouge (aka)."
+            },
+            {
+              "id": "q5",
+              "question": "Pour dire « c'est rouge » on peut dire :",
+              "type": "single_choice",
+              "options": [
+                "あかです",
+                "あかい desu (adj.) ou あか desu selon le niveau",
+                "しろです pour rouge",
+                "くろです"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En vocabulaire 6e, aka desu ou akai desu présente la couleur rouge."
+            },
+            {
+              "id": "q6",
+              "question": "Le mot みどり (midori) signifie :",
+              "type": "single_choice",
+              "options": ["Vert", "Bleu clair", "Marron", "Violet"],
+              "correctAnswers": [0],
+              "explanation": "Midori = vert."
+            },
+            {
+              "id": "q7",
+              "question": "Ao (あお) désigne surtout :",
+              "type": "single_choice",
+              "options": ["Bleu (et parfois vert)", "Rouge", "Blanc", "Noir"],
+              "correctAnswers": [0],
+              "explanation": "Ao couvre le bleu et historiquement certaines nuances de vert."
+            },
+            {
+              "id": "q8",
+              "question": "Le mot ちゃいろ (chairo) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Marron (couleur thé)",
+                "Bleu ciel",
+                "Rose vif",
+                "Argent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chairo = marron, littéralement « couleur thé »."
+            },
+            {
+              "id": "q9",
+              "question": "Le mot むらさき (murasaki) signifie :",
+              "type": "single_choice",
+              "options": ["Violet", "Jaune", "Gris", "Beige"],
+              "correctAnswers": [0],
+              "explanation": "Murasaki = violet / pourpre."
+            },
+            {
+              "id": "q10",
+              "question": "Le mot ピンク (pinku) en japonais moderne signifie :",
+              "type": "single_choice",
+              "options": ["Rose (couleur)", "Bleu", "Vert foncé", "Or"],
+              "correctAnswers": [0],
+              "explanation": "Pinku est un emprunt pour la couleur rose."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Famille",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent père et mère (forme simple) ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "ちち (chichi, mon père)",
+                "はは (haha, ma mère)",
+                "あに (ani)",
+                "いもうと (imōto)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chichi et haha parlent de ses propres parents humblement."
+            },
+            {
+              "id": "q2",
+              "question": "Le mot おとうさん (otōsan) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Papa / père (familier ou poli)",
+                "Maman",
+                "Frère",
+                "Grand-père"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Otōsan est l'appellation courante pour papa."
+            },
+            {
+              "id": "q3",
+              "question": "Le mot おかあさん (okāsan) signifie :",
+              "type": "single_choice",
+              "options": ["Maman / mère", "Sœur", "Tante", "Cousine"],
+              "correctAnswers": [0],
+              "explanation": "Okāsan = maman."
+            },
+            {
+              "id": "q4",
+              "question": "Le mot あに (ani) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Grand frère (propre)",
+                "Petit frère",
+                "Grand-père",
+                "Oncle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ani = mon grand frère."
+            },
+            {
+              "id": "q5",
+              "question": "Le mot いもうと (imōto) signifie :",
+              "type": "single_choice",
+              "options": ["Petite sœur", "Grande sœur", "Mère", "Fille"],
+              "correctAnswers": [0],
+              "explanation": "Imōto = petite sœur."
+            },
+            {
+              "id": "q6",
+              "question": "Le mot おとうと (otōto) signifie :",
+              "type": "single_choice",
+              "options": ["Petit frère", "Grand frère", "Père", "Fils aîné"],
+              "correctAnswers": [0],
+              "explanation": "Otōto = petit frère."
+            },
+            {
+              "id": "q7",
+              "question": "Le mot あね (ane) signifie :",
+              "type": "single_choice",
+              "options": ["Grande sœur", "Petite sœur", "Grand-mère", "Nièce"],
+              "correctAnswers": [0],
+              "explanation": "Ane = grande sœur."
+            },
+            {
+              "id": "q8",
+              "question": "Le mot かぞく (kazoku) signifie :",
+              "type": "single_choice",
+              "options": ["Famille", "Ami", "École", "Maison seule"],
+              "correctAnswers": [0],
+              "explanation": "Kazoku = la famille."
+            },
+            {
+              "id": "q9",
+              "question": "Le mot そふ (sofu) ou おじいさん désigne :",
+              "type": "single_choice",
+              "options": ["Grand-père", "Grand-mère", "Oncle", "Cousin"],
+              "correctAnswers": [0],
+              "explanation": "Sofu / ojīsan = grand-père."
+            },
+            {
+              "id": "q10",
+              "question": "Le mot そぼ (sobo) ou おばあさん désigne :",
+              "type": "single_choice",
+              "options": ["Grand-mère", "Grand-père", "Sœur", "Mère"],
+              "correctAnswers": [0],
+              "explanation": "Sobo / obāsan = grand-mère."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "École et objets",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont liés à l'école ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "がっこう (gakkō)",
+                "せんせい (sensei)",
+                "ねこ (neko)",
+                "ゆき (yuki)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Gakkō = école et sensei = professeur / maître."
+            },
+            {
+              "id": "q2",
+              "question": "Le mot ほん (hon) signifie :",
+              "type": "single_choice",
+              "options": ["Livre", "Crayon", "Table", "Porte"],
+              "correctAnswers": [0],
+              "explanation": "Hon = livre."
+            },
+            {
+              "id": "q3",
+              "question": "Le mot えんぴつ (enpitsu) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Crayon à papier",
+                "Gomme",
+                "Règle",
+                "Stylo plume seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enpitsu = crayon (à papier)."
+            },
+            {
+              "id": "q4",
+              "question": "Le mot つくえ (tsukue) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Bureau / table d'élève",
+                "Chaise seule",
+                "Tableau",
+                "Cour de récréation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tsukue = bureau (table)."
+            },
+            {
+              "id": "q5",
+              "question": "Le mot いす (isu) signifie :",
+              "type": "single_choice",
+              "options": ["Chaise", "Lit", "Armoire", "Fenêtre"],
+              "correctAnswers": [0],
+              "explanation": "Isu = chaise."
+            },
+            {
+              "id": "q6",
+              "question": "Le mot かばん (kaban) signifie :",
+              "type": "single_choice",
+              "options": ["Sac (cartable)", "Chapeau", "Chaussure", "Montre"],
+              "correctAnswers": [0],
+              "explanation": "Kaban = sac, souvent cartable."
+            },
+            {
+              "id": "q7",
+              "question": "Le mot ノート (nōto) en japonais scolaire signifie :",
+              "type": "single_choice",
+              "options": ["Cahier", "Carte", "Globe", "Cloche"],
+              "correctAnswers": [0],
+              "explanation": "Nōto = cahier (emprunt de l'anglais note)."
+            },
+            {
+              "id": "q8",
+              "question": "Le mot じしょ (jisho) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Dictionnaire",
+                "Bibliothèque",
+                "Manuel uniquement",
+                "Cahier de textes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jisho = dictionnaire."
+            },
+            {
+              "id": "q9",
+              "question": "Le mot クラス (kurasu) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Classe (groupe d'élèves)",
+                "Cour",
+                "Cantine",
+                "Gymnase seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kurasu = la classe."
+            },
+            {
+              "id": "q10",
+              "question": "Le mot べんきょう (benkyō) signifie :",
+              "type": "single_choice",
+              "options": ["Étude / apprendre", "Jeux", "Sport seul", "Dormir"],
+              "correctAnswers": [0],
+              "explanation": "Benkyō = étudier, faire ses devoirs."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Nourriture et boisson",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont des aliments ou boissons ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "ごはん (gohan)",
+                "みず (mizu)",
+                "つくえ (tsukue)",
+                "かばん (kaban)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Gohan = riz/repas et mizu = eau."
+            },
+            {
+              "id": "q2",
+              "question": "Le mot パン (pan) vient du portugais et signifie :",
+              "type": "single_choice",
+              "options": ["Pain", "Pomme", "Poisson", "Soupe"],
+              "correctAnswers": [0],
+              "explanation": "Pan = pain, emprunt historique."
+            },
+            {
+              "id": "q3",
+              "question": "Le mot さかな (sakana) signifie :",
+              "type": "single_choice",
+              "options": ["Poisson", "Viande de bœuf", "Légume", "Fruit sec"],
+              "correctAnswers": [0],
+              "explanation": "Sakana = poisson."
+            },
+            {
+              "id": "q4",
+              "question": "Le mot たまご (tamago) signifie :",
+              "type": "single_choice",
+              "options": ["Œuf", "Lait", "Fromage", "Beurre"],
+              "correctAnswers": [0],
+              "explanation": "Tamago = œuf."
+            },
+            {
+              "id": "q5",
+              "question": "Le mot おちゃ (ocha) signifie :",
+              "type": "single_choice",
+              "options": ["Thé (vert surtout)", "Café", "Jus d'orange", "Soda"],
+              "correctAnswers": [0],
+              "explanation": "Ocha = thé, typiquement thé vert."
+            },
+            {
+              "id": "q6",
+              "question": "Le mot ぎゅうにゅう (gyūnyū) signifie :",
+              "type": "single_choice",
+              "options": ["Lait (de vache)", "Eau", "Bière", "Vin"],
+              "correctAnswers": [0],
+              "explanation": "Gyūnyū = lait de vache."
+            },
+            {
+              "id": "q7",
+              "question": "Le mot すし (sushi) désigne :",
+              "type": "single_choice",
+              "options": [
+                "Un plat japonais à base de riz vinaigré",
+                "Une soupe épicée coréenne",
+                "Un dessert français",
+                "Un pain sucré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sushi est un emblème de la cuisine japonaise."
+            },
+            {
+              "id": "q8",
+              "question": "Le mot くだもの (kudamono) signifie :",
+              "type": "single_choice",
+              "options": ["Fruit", "Légume", "Viande", "Poisson cru"],
+              "correctAnswers": [0],
+              "explanation": "Kudamono = fruit."
+            },
+            {
+              "id": "q9",
+              "question": "Le mot やさい (yasai) signifie :",
+              "type": "single_choice",
+              "options": ["Légume", "Viande", "Riz seul", "Boisson"],
+              "correctAnswers": [0],
+              "explanation": "Yasai = légume."
+            },
+            {
+              "id": "q10",
+              "question": "Avant de manger, la formule est :",
+              "type": "single_choice",
+              "options": [
+                "いただきます",
+                "ごちそうさまでした",
+                "おはよう",
+                "はじめまして"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Itadakimasu précède le repas."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Animaux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels animaux sont ねこ et いぬ ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": ["Chat", "Chien", "Cheval", "Poisson"],
+              "correctAnswers": [0, 1],
+              "explanation": "Neko = chat et inu = chien."
+            },
+            {
+              "id": "q2",
+              "question": "Le mot とり (tori) signifie :",
+              "type": "single_choice",
+              "options": ["Oiseau", "Poisson", "Insecte", "Serpent"],
+              "correctAnswers": [0],
+              "explanation": "Tori = oiseau."
+            },
+            {
+              "id": "q3",
+              "question": "Le mot うま (uma) signifie :",
+              "type": "single_choice",
+              "options": ["Cheval", "Vache", "Mouton", "Cochon"],
+              "correctAnswers": [0],
+              "explanation": "Uma = cheval."
+            },
+            {
+              "id": "q4",
+              "question": "Le mot うし (ushi) signifie :",
+              "type": "single_choice",
+              "options": ["Vache / bœuf", "Cheval", "Chat", "Lapin"],
+              "correctAnswers": [0],
+              "explanation": "Ushi = bovin."
+            },
+            {
+              "id": "q5",
+              "question": "Le mot さる (saru) signifie :",
+              "type": "single_choice",
+              "options": ["Singe", "Ours", "Lion", "Éléphant"],
+              "correctAnswers": [0],
+              "explanation": "Saru = singe."
+            },
+            {
+              "id": "q6",
+              "question": "Le mot ぞう (zō) signifie :",
+              "type": "single_choice",
+              "options": ["Éléphant", "Tigre", "Renard", "Loup"],
+              "correctAnswers": [0],
+              "explanation": "Zō = éléphant."
+            },
+            {
+              "id": "q7",
+              "question": "Le mot きつね (kitsune) signifie :",
+              "type": "single_choice",
+              "options": ["Renard", "Chat", "Chien", "Oiseau"],
+              "correctAnswers": [0],
+              "explanation": "Kitsune = renard, très présent dans la culture."
+            },
+            {
+              "id": "q8",
+              "question": "Le mot うさぎ (usagi) signifie :",
+              "type": "single_choice",
+              "options": ["Lapin", "Souris", "Hamster", "Tortue"],
+              "correctAnswers": [0],
+              "explanation": "Usagi = lapin."
+            },
+            {
+              "id": "q9",
+              "question": "Le mot さかな (sakana) comme animal vivant :",
+              "type": "single_choice",
+              "options": [
+                "Poisson",
+                "Crustacé seulement",
+                "Mammifère marin",
+                "Oiseau de mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sakana = poisson (animal ou plat)."
+            },
+            {
+              "id": "q10",
+              "question": "Le mot むし (mushi) signifie souvent :",
+              "type": "single_choice",
+              "options": ["Insecte", "Poisson", "Reptile", "Oiseau"],
+              "correctAnswers": [0],
+              "explanation": "Mushi = insecte (terme large)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Lieux et directions",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots indiquent des lieux ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "いえ (ie)",
+                "がっこう (gakkō)",
+                "あか (aka)",
+                "いち (ichi)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ie = maison et gakkō = école."
+            },
+            {
+              "id": "q2",
+              "question": "Le mot みせ (mise) ou 店 signifie :",
+              "type": "single_choice",
+              "options": ["Magasin / boutique", "Hôpital", "Gare", "Parc"],
+              "correctAnswers": [0],
+              "explanation": "Mise = magasin."
+            },
+            {
+              "id": "q3",
+              "question": "Le mot えき (eki) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Gare (train)",
+                "Aéroport seul",
+                "Port",
+                "Arrêt de bus uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eki = gare ferroviaire."
+            },
+            {
+              "id": "q4",
+              "question": "Le mot こうえん (kōen) signifie :",
+              "type": "single_choice",
+              "options": ["Parc public", "École", "Bibliothèque", "Musée seul"],
+              "correctAnswers": [0],
+              "explanation": "Kōen = parc."
+            },
+            {
+              "id": "q5",
+              "question": "Le mot びょういん (byōin) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Hôpital",
+                "Pharmacie",
+                "Clinique dentaire seule",
+                "Caserne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Byōin = hôpital."
+            },
+            {
+              "id": "q6",
+              "question": "Le mot みぎ (migi) signifie :",
+              "type": "single_choice",
+              "options": ["Droite", "Gauche", "Devant", "Derrière"],
+              "correctAnswers": [0],
+              "explanation": "Migi = à droite."
+            },
+            {
+              "id": "q7",
+              "question": "Le mot ひだり (hidari) signifie :",
+              "type": "single_choice",
+              "options": ["Gauche", "Droite", "Haut", "Bas"],
+              "correctAnswers": [0],
+              "explanation": "Hidari = à gauche."
+            },
+            {
+              "id": "q8",
+              "question": "Le mot まえ (mae) signifie :",
+              "type": "single_choice",
+              "options": ["Devant", "Derrière", "À côté", "Loin"],
+              "correctAnswers": [0],
+              "explanation": "Mae = devant."
+            },
+            {
+              "id": "q9",
+              "question": "Le mot うしろ (ushiro) signifie :",
+              "type": "single_choice",
+              "options": ["Derrière", "Devant", "Dessus", "Dessous"],
+              "correctAnswers": [0],
+              "explanation": "Ushiro = derrière."
+            },
+            {
+              "id": "q10",
+              "question": "Le mot ここ (koko) signifie :",
+              "type": "single_choice",
+              "options": ["Ici", "Là-bas", "Là (proche de l'autre)", "Partout"],
+              "correctAnswers": [0],
+              "explanation": "Koko = ici."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Temps et météo",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots parlent du temps qu'il fait ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "あめ (ame)",
+                "ゆき (yuki)",
+                "ほん (hon)",
+                "いす (isu)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ame = pluie et yuki = neige."
+            },
+            {
+              "id": "q2",
+              "question": "Le mot はれ (hare) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Beau temps / soleil",
+                "Orage",
+                "Brouillard",
+                "Vent fort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hare = ciel clair."
+            },
+            {
+              "id": "q3",
+              "question": "Le mot かぜ (kaze) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Vent (ou rhume selon contexte)",
+                "Pluie",
+                "Neige",
+                "Nuage seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kaze = vent ; en autre contexte, rhume."
+            },
+            {
+              "id": "q4",
+              "question": "Le mot きょう (kyō) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Aujourd'hui",
+                "Demain",
+                "Hier",
+                "La semaine prochaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kyō = aujourd'hui."
+            },
+            {
+              "id": "q5",
+              "question": "Le mot あした (ashita) signifie :",
+              "type": "single_choice",
+              "options": ["Demain", "Hier", "Ce soir", "Maintenant"],
+              "correctAnswers": [0],
+              "explanation": "Ashita = demain."
+            },
+            {
+              "id": "q6",
+              "question": "Le mot きのう (kinō) signifie :",
+              "type": "single_choice",
+              "options": ["Hier", "Demain", "Aujourd'hui", "Toujours"],
+              "correctAnswers": [0],
+              "explanation": "Kinō = hier."
+            },
+            {
+              "id": "q7",
+              "question": "Le mot あさ (asa) signifie :",
+              "type": "single_choice",
+              "options": ["Matin", "Soir", "Nuit", "Midi"],
+              "correctAnswers": [0],
+              "explanation": "Asa = le matin."
+            },
+            {
+              "id": "q8",
+              "question": "Le mot ばん (ban) ou よる (yoru) évoque :",
+              "type": "single_choice",
+              "options": [
+                "Le soir / la nuit",
+                "Le matin seul",
+                "L'après-midi",
+                "L'aube"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ban/yoru = soirée ou nuit."
+            },
+            {
+              "id": "q9",
+              "question": "Le mot げつようび (getsuyōbi) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Lundi",
+                "Dimanche",
+                "Samedi",
+                "Mercredi seulement par hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Getsuyōbi = lundi (jour de la lune)."
+            },
+            {
+              "id": "q10",
+              "question": "Le mot なつ (natsu) signifie :",
+              "type": "single_choice",
+              "options": ["Été", "Hiver", "Printemps", "Automne"],
+              "correctAnswers": [0],
+              "explanation": "Natsu = été."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Verbes essentiels",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont des verbes ou actions de base ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "たべる (taberu, manger)",
+                "のむ (nomu, boire)",
+                "あか (rouge)",
+                "がっこう (école)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Taberu et nomu décrivent manger et boire."
+            },
+            {
+              "id": "q2",
+              "question": "Le verbe いく (iku) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Aller",
+                "Venir",
+                "Rester",
+                "Partir définitivement seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Iku = aller."
+            },
+            {
+              "id": "q3",
+              "question": "Le verbe くる (kuru) signifie :",
+              "type": "single_choice",
+              "options": ["Venir", "Aller", "Monter", "Descendre"],
+              "correctAnswers": [0],
+              "explanation": "Kuru = venir."
+            },
+            {
+              "id": "q4",
+              "question": "Le verbe みる (miru) signifie :",
+              "type": "single_choice",
+              "options": ["Regarder / voir", "Entendre", "Parler", "Écrire"],
+              "correctAnswers": [0],
+              "explanation": "Miru = voir, regarder."
+            },
+            {
+              "id": "q5",
+              "question": "Le verbe きく (kiku) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Écouter / entendre (ou demander)",
+                "Manger",
+                "Dormir",
+                "Courir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kiku = écouter ; aussi poser une question."
+            },
+            {
+              "id": "q6",
+              "question": "Le verbe はなす (hanasu) signifie :",
+              "type": "single_choice",
+              "options": ["Parler", "Lire", "Écrire", "Chanter seulement"],
+              "correctAnswers": [0],
+              "explanation": "Hanasu = parler."
+            },
+            {
+              "id": "q7",
+              "question": "Le verbe よむ (yomu) signifie :",
+              "type": "single_choice",
+              "options": ["Lire", "Écrire", "Compter", "Dessiner"],
+              "correctAnswers": [0],
+              "explanation": "Yomu = lire."
+            },
+            {
+              "id": "q8",
+              "question": "Le verbe かく (kaku) signifie :",
+              "type": "single_choice",
+              "options": ["Écrire / dessiner", "Effacer", "Couper", "Coller"],
+              "correctAnswers": [0],
+              "explanation": "Kaku = écrire ou dessiner."
+            },
+            {
+              "id": "q9",
+              "question": "Le verbe ねる (neru) signifie :",
+              "type": "single_choice",
+              "options": ["Dormir", "Manger", "Jouer", "Nager"],
+              "correctAnswers": [0],
+              "explanation": "Neru = dormir."
+            },
+            {
+              "id": "q10",
+              "question": "Le verbe する (suru) signifie :",
+              "type": "single_choice",
+              "options": ["Faire", "Être", "Avoir", "Aller uniquement"],
+              "correctAnswers": [0],
+              "explanation": "Suru = faire (verbe très productif)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision mots essentiels",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent des personnes proches ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "ともだち (tomodachi)",
+                "かぞく (kazoku)",
+                "つくえ (tsukue)",
+                "あめ (ame)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tomodachi = ami et kazoku = famille."
+            },
+            {
+              "id": "q2",
+              "question": "Le mot おおきい (ōkii) signifie :",
+              "type": "single_choice",
+              "options": ["Grand", "Petit", "Beau", "Lourd"],
+              "correctAnswers": [0],
+              "explanation": "Ōkii = grand."
+            },
+            {
+              "id": "q3",
+              "question": "Le mot ちいさい (chiisai) signifie :",
+              "type": "single_choice",
+              "options": ["Petit", "Grand", "Rapide", "Lent"],
+              "correctAnswers": [0],
+              "explanation": "Chiisai = petit."
+            },
+            {
+              "id": "q4",
+              "question": "Le mot たのしい (tanoshii) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Amusant / agréable",
+                "Triste",
+                "Fatigant",
+                "Ennuyeux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tanoshii = amusant, fun."
+            },
+            {
+              "id": "q5",
+              "question": "Le mot すき (suki) avec une chose signifie :",
+              "type": "single_choice",
+              "options": [
+                "Aimer / apprécier",
+                "Détester",
+                "Ignorer",
+                "Craquer seulement pour la nourriture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suki = aimer (ex. ねこがすき)."
+            },
+            {
+              "id": "q6",
+              "question": "Le mot きらい (kirai) signifie :",
+              "type": "single_choice",
+              "options": ["Ne pas aimer", "Adorer", "Préférer", "Essayer"],
+              "correctAnswers": [0],
+              "explanation": "Kirai = aversion, ne pas aimer."
+            },
+            {
+              "id": "q7",
+              "question": "Le mot げんき (genki) signifie souvent :",
+              "type": "single_choice",
+              "options": ["En forme / va bien", "Malade", "Fatigué", "Endormi"],
+              "correctAnswers": [0],
+              "explanation": "Genki = en bonne santé, en forme."
+            },
+            {
+              "id": "q8",
+              "question": "Demander « Ça va ? » familièrement :",
+              "type": "single_choice",
+              "options": [
+                "げんき？ / げんきですか",
+                "おはよう",
+                "さようなら",
+                "いただきます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Genki desu ka ? = comment vas-tu ?"
+            },
+            {
+              "id": "q9",
+              "question": "Le mot ニホン / にほん (Nihon) signifie :",
+              "type": "single_choice",
+              "options": ["Le Japon", "La Chine", "La Corée", "Le Vietnam"],
+              "correctAnswers": [0],
+              "explanation": "Nihon = Japon."
+            },
+            {
+              "id": "q10",
+              "question": "Le mot にほんご (nihongo) signifie :",
+              "type": "single_choice",
+              "options": [
+                "La langue japonaise",
+                "La culture seule",
+                "La monnaie",
+                "La capitale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nihongo = langue japonaise."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

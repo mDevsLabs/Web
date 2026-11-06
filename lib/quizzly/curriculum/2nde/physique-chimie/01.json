@@ -1,0 +1,2543 @@
+{
+  "id": "2nde-physique-chimie-01",
+  "year": "2nde",
+  "subject": "physique-chimie",
+  "title": "Constitution de la matière",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Espèces chimiques",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Corps purs et mélanges",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent correctement un corps pur ?",
+              "options": [
+                "Il est constitué d'une seule espèce chimique",
+                "Il peut toujours être séparé en deux phases visibles",
+                "Sa composition est fixe et caractéristique",
+                "Il contient obligatoirement de l'eau"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Un corps pur ne contient qu'une espèce chimique et possède une composition constante."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'air atmosphérique est classé comme :",
+              "options": [
+                "Corps pur",
+                "Mélange homogène",
+                "Mélange hétérogène",
+                "Solution saturée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'air est un mélange de gaz invisible et uniforme, donc homogène."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un mélange hétérogène se reconnaît souvent par :",
+              "options": [
+                "Une seule phase",
+                "Des phases ou des composants visibles distincts",
+                "Une couleur uniforme obligatoire",
+                "L'absence de solvant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On distingue visuellement ou par sédimentation les constituants d'un mélange hétérogène."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le sel de cuisine (NaCl) pur est un exemple de :",
+              "options": [
+                "Mélange",
+                "Corps pur composé",
+                "Alliage",
+                "Solution"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le chlorure de sodium est une espèce chimique définie, donc un corps pur composé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'eau distillée est considérée comme :",
+              "options": [
+                "Mélange de gaz dissous uniquement",
+                "Corps pur (H₂O) pouvant contenir traces de gaz dissous",
+                "Alliage métallique",
+                "Mélange hétérogène"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'eau distillée est essentiellement de l'eau pure, éventuellement avec de faibles quantités de gaz dissous."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour séparer un mélange hétérogène solide-liquide, on utilise souvent :",
+              "options": [
+                "Distillation",
+                "Filtration",
+                "Chromatographie sur papier",
+                "Électrolyse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La filtration retient le solide insoluble et laisse passer le liquide."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un lait commercial non homogénéisé est typiquement :",
+              "options": [
+                "Corps pur",
+                "Mélange homogène",
+                "Mélange hétérogène (émulsion)",
+                "Élément chimique"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le lait est une émulsion où la matière grasse peut se séparer, c'est un mélange hétérogène."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'unité SI de quantité de matière est :",
+              "options": ["Le kilogramme", "La mole", "Le litre", "Le pascal"],
+              "correctAnswers": [1],
+              "explanation": "La mole (mol) compte les entités chimiques (atomes, molécules, ions)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le fer métallique Fe(s) est un corps pur :",
+              "options": ["Composé", "Élémentaire", "Ionique", "Organique"],
+              "correctAnswers": [1],
+              "explanation": "Le fer est constitué uniquement d'atomes de fer : corps pur élémentaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un sirop de sucre dans l'eau est un :",
+              "options": [
+                "Corps pur",
+                "Mélange homogène",
+                "Mélange hétérogène",
+                "Alliage"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sucre et eau forment une solution transparente et uniforme : mélange homogène."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Espèces chimiques et entités",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi les propositions, lesquelles sont des espèces chimiques ?",
+              "options": [
+                "L'ion Na⁺",
+                "Un morceau de bois",
+                "La molécule H₂O",
+                "L'air du laboratoire"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Na⁺ et H₂O désignent des entités de composition définie ; le bois et l'air sont des mélanges."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une entité chimique peut être :",
+              "options": [
+                "Un atome, une molécule ou un ion",
+                "Uniquement un atome",
+                "Toujours un mélange",
+                "Uniquement un gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le terme entité regroupe atomes, molécules, ions et parfois d'autres particules définies."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La formule chimique CO₂ représente :",
+              "options": [
+                "Un mélange",
+                "Une espèce chimique (dioxyde de carbone)",
+                "Un alliage",
+                "Une solution"
+              ],
+              "correctAnswers": [1],
+              "explanation": "CO₂ est la formule d'une molécule unique, donc d'une espèce chimique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le symbole chimique O désigne :",
+              "options": [
+                "Une molécule d'ozone",
+                "L'élément oxygène",
+                "Un ion carbonate",
+                "De l'eau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "O est le symbole de l'élément oxygène (atome ou espèce élémentaire O)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans une solution de chlorure de sodium, l'espèce dissoute principale à l'origine du sel est :",
+              "options": ["NaCl(s) intact", "Na⁺ et Cl⁻", "Na₂O", "Cl₂(g)"],
+              "correctAnswers": [1],
+              "explanation": "Le sel se dissocie en ions Na⁺ et Cl⁻ dans l'eau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une espèce chimique est caractérisée par :",
+              "options": [
+                "Sa masse volumique seule",
+                "Sa formule ou son symbole et ses propriétés",
+                "Sa couleur uniquement",
+                "Son prix au kilogramme"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque espèce possède une identité chimique (formule) et des propriétés associées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le gaz dihydrogène H₂(g) est une espèce :",
+              "options": ["Ionique", "Moléculaire", "Métallique", "Indéfinie"],
+              "correctAnswers": [1],
+              "explanation": "H₂ est une molécule diatomique, espèce moléculaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'eau H₂O et la glace H₂O(s) correspondent :",
+              "options": [
+                "À deux espèces chimiques différentes",
+                "À la même espèce chimique dans des états physiques différents",
+                "À un mélange",
+                "À deux éléments"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Changement d'état physique sans transformation chimique : même espèce H₂O."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour désigner une quantité d'espèce en chimie, on utilise souvent :",
+              "options": [
+                "Des mètres",
+                "Des moles",
+                "Des newtons",
+                "Des joules uniquement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La mole relie la masse macroscopique au nombre d'entités microscopiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le granite est :",
+              "options": [
+                "Une espèce chimique unique",
+                "Un mélange de minéraux",
+                "Un corps pur élémentaire",
+                "Un ion"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le granite associe plusieurs minéraux : c'est un mélange, pas une espèce unique."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "États de la matière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels changements d'état impliquent une absorption d'énergie par la matière ?",
+              "options": [
+                "Fusion",
+                "Condensation",
+                "Vaporisation",
+                "Solidification"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Fusion et vaporisation demandent de l'énergie ; condensation et solidification la cèdent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À pression constante, la température d'un corps pur reste constante pendant :",
+              "options": [
+                "Un chauffage dans un seul état",
+                "Un changement d'état",
+                "Toute dilatation",
+                "Une réaction chimique exothermique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pendant un changement d'état, l'énergie sert à modifier l'état, pas la température."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un solide cristallin ordonné, les entités sont :",
+              "options": [
+                "Très éloignées et désordonnées",
+                "Proches et disposées de façon régulière",
+                "Libres de se déplacer sur de longues distances",
+                "Toujours ionisées"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Au solid, les entités vibrent autour de positions fixes dans un réseau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La compressibilité est généralement la plus forte pour :",
+              "options": [
+                "Les solides",
+                "Les liquides",
+                "Les gaz",
+                "Les cristaux ioniques"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les gaz ont de grands espaces interparticulaires, d'où une forte compressibilité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'ébullition se produit :",
+              "options": [
+                "Uniquement à la surface",
+                "Dans tout le volume du liquide à la température d'ébullition",
+                "Seulement sous 0 °C",
+                "Sans apport d'énergie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À Tébullition, des bulles de vapeur se forment dans la masse du liquide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le dioxygène O₂ à 20 °C et 1 bar est typiquement :",
+              "options": ["Solide", "Liquide", "Gazeux", "Plasma"],
+              "correctAnswers": [2],
+              "explanation": "Sous conditions ambiantes, l'oxygène est un gaz."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La sublimation désigne le passage direct :",
+              "options": [
+                "Liquide → gaz",
+                "Solide → gaz",
+                "Gaz → liquide",
+                "Solide → liquide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Exemple : la neige carbonique (CO₂ solide) passe directement en gaz."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un métal en fusion est dans l'état :",
+              "options": [
+                "Solide",
+                "Liquide",
+                "Gazeux",
+                "Ionique gazeux uniquement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Fusion = passage solide → liquide pour un métal chauffé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La forme d'un échantillon de gaz dépend surtout :",
+              "options": [
+                "De la forme du récipient",
+                "De la couleur du solide",
+                "Du nombre de protons",
+                "De la masse molaire seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un gaz prend le volume et épouse la forme de son contenant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'eau à 25 °C sous 1 bar est :",
+              "options": ["Gazeuse", "Liquide", "Solide", "Plasma"],
+              "correctAnswers": [1],
+              "explanation": "À température ambiante, l'eau pure est liquide."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Solutions aqueuses",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans une solution aqueuse, on trouve typiquement :",
+              "options": [
+                "Un solvant (souvent l'eau)",
+                "Au moins un soluté",
+                "Uniquement des corps purs séparés",
+                "Toujours un métal"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une solution est un mélange homogène solvant + soluté(s)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La concentration massique Cm s'exprime en :",
+              "options": ["mol·L⁻¹", "g·L⁻¹", "Pa", "J·K⁻¹"],
+              "correctAnswers": [1],
+              "explanation": "Cm = masse de soluté / volume de solution, unité g·L⁻¹."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour préparer une solution par dissolution, on ajoute le soluté à :",
+              "options": [
+                "L'huile uniquement",
+                "Le solvant (souvent de l'eau)",
+                "Un gaz",
+                "Un solide sec sans liquide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La dissolution se fait en mélangeant soluté et solvant jusqu'à homogénéité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une solution diluée contient :",
+              "options": [
+                "Plus de soluté par litre qu'une solution concentrée",
+                "Moins de soluté par litre qu'une solution plus concentrée",
+                "Aucun solvant",
+                "Uniquement du solvant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Diluer diminue la concentration en soluté."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'eau de mer est une solution où le soluté principal est :",
+              "options": [
+                "Le sucre",
+                "Les sels dissous (ions)",
+                "Le fer métallique",
+                "Le dioxygène seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'eau de mer contient surtout des ions (Na⁺, Cl⁻, etc.) dissous."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si Cm = 10 g·L⁻¹ et V = 0,5 L, la masse de soluté dissoute est :",
+              "options": ["5 g", "10 g", "20 g", "0,5 g"],
+              "correctAnswers": [0],
+              "explanation": "m = Cm × V = 10 × 0,5 = 5 g."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une solution saturée à température donnée :",
+              "options": [
+                "Peut dissoudre encore une quantité illimitée de soluté",
+                "Contient le maximum de soluté soluble",
+                "Ne contient jamais de cristaux",
+                "Est toujours incolore"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À saturation, l'équilibre solubilité est atteint ; l'excès peut précipiter."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le sel dans l'eau disparaît visuellement car :",
+              "options": [
+                "Il devient gaz",
+                "Les ions sont dispersés à l'échelle moléculaire",
+                "Il devient métal",
+                "Il s'évapore"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les entités sont trop petites pour être vues : mélange homogène."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour passer d'une solution mère à une solution fille diluée, on :",
+              "options": [
+                "Ajoute du solvant",
+                "Retire tout le soluté par filtration",
+                "Chauffe jusqu'à fusion du verre",
+                "Mélange avec un solide insoluble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dilution augmente le volume de solvant, donc diminue Cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une boisson gazeuse contient du CO₂ dissous : c'est un exemple de :",
+              "options": [
+                "Corps pur",
+                "Soluté gaz dans un solvant liquide",
+                "Alliage",
+                "Cristal ionique sec"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le CO₂ est le soluté gazeux dissous dans l'eau (solvant)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Séparations : distillation et décantation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles techniques séparent un solide insoluble d'un liquide ?",
+              "options": [
+                "Filtration",
+                "Décantation",
+                "Distillation de deux liquides miscibles",
+                "Mesure du pH"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Filtration ou décantation conviennent à un mélange solide-liquide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La distillation sépare surtout :",
+              "options": [
+                "Un solide et un liquide",
+                "Des liquides miscibles aux températures d'ébullition différentes",
+                "Deux gaz identiques",
+                "Des ions dissous sans chauffage"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On exploite la différence de températures d'ébullition."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lors d'une décantation, le solide insoluble :",
+              "options": [
+                "Reste en suspension indéfiniment",
+                "Se dépose au fond du récipient",
+                "S'évapore",
+                "Devient liquide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le solide plus dense forme un dépôt."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'eau distillée est surtout appauvrie en :",
+              "options": [
+                "Solutés non volatils",
+                "Dihydrogène gazeux",
+                "Métaux fondus",
+                "Électrons libres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sels non volatils restent dans le ballon."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le réfrigérant à eau sert à :",
+              "options": [
+                "Chauffer le ballon",
+                "Condenser les vapeurs",
+                "Filtrer le solide",
+                "Peser le distillat"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les vapeurs se liquéfient dans le réfrigérant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Eau et huile non miscibles : séparation adaptée",
+              "options": [
+                "Distillation immédiate",
+                "Décantation",
+                "Dissolution du fer",
+                "Électrolyse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Deux phases liquides se séparent par décantation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pendant une distillation, le distillat récupéré est :",
+              "options": [
+                "Toujours solide",
+                "Une phase condensée du composant volatil",
+                "Un mélange hétérogène de sable",
+                "Un plasma"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le distillat provient de la condensation des vapeurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une éprouvette graduée sert principalement à :",
+              "options": [
+                "Mesurer un volume de liquide",
+                "Peser une masse",
+                "Compter des atomes",
+                "Mesurer une intensité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les graduations indiquent un volume."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Règle de sécurité en distillation :",
+              "options": [
+                "Boucher hermétiquement le système",
+                "Laisser évacuer les vapeurs sans surpression",
+                "Verser de l'eau dans l'huile bouillante",
+                "Retirer le réfrigérant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il faut éviter l'accumulation de pression de vapeur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sable dans l'eau : séparation la plus directe",
+              "options": [
+                "Distillation",
+                "Filtration",
+                "Sublimation du sable",
+                "Combustion"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le sable insoluble est retenu par un filtre."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Chromatographie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La chromatographie sur papier permet de :",
+              "options": [
+                "Séparer des espèces d'un mélange",
+                "Repérer des espèces par leur déplacement",
+                "Créer de nouveaux éléments",
+                "Mesurer la masse d'un atome"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Séparation et repérage reposent sur les affinités avec le papier et le solvant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La phase mobile en chromatographie sur papier est :",
+              "options": [
+                "Le papier sec",
+                "Le solvant qui migre",
+                "Le métal du support",
+                "Le vide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le solvant entraîne les espèces le long du papier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une tache qui monte peu est :",
+              "options": [
+                "Très soluble dans le solvant",
+                "Peu mobile sur le papier",
+                "Toujours un gaz",
+                "Toujours un métal"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Faible déplacement signifie forte rétention sur la phase stationnaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le rapport Rf compare :",
+              "options": [
+                "Masse et volume",
+                "Distance de la tache à celle du front de solvant",
+                "Température et pression",
+                "pH et conductivité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Rf est le rapport des distances parcourues."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un révélateur iodé sert à :",
+              "options": [
+                "Colorer certaines taches",
+                "Dissoudre le papier",
+                "Chauffer le ballon",
+                "Filtrer le solvant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'iode révèle par exemple l'amidon."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plusieurs encres dans un mélange peuvent donner :",
+              "options": [
+                "Une seule tache toujours",
+                "Plusieurs taches distinctes",
+                "Aucun déplacement",
+                "Un corps pur unique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque colorant peut migrer différemment."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les taches doivent être déposées :",
+              "options": [
+                "Dans le solvant immergé",
+                "Au-dessus du niveau initial de solvant",
+                "Sur le réfrigérant",
+                "Hors du papier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les taches ne doivent pas être plongées dans le solvant au départ."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Chromatographie et distillation diffèrent car :",
+              "options": [
+                "La chromatographie utilise des affinités, pas l'ébullition",
+                "La chromatographie ne sépare jamais",
+                "La distillation ne chauffe pas",
+                "La distillation ne fonctionne qu'avec des gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mécanismes de séparation sont différents."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux taches au même Rf suggèrent :",
+              "options": [
+                "La même espèce possible",
+                "Des éléments obligatoirement différents",
+                "Une réaction chimique",
+                "Un mélange hétérogène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mobilité relative identique, espèce possiblement identique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La phase stationnaire sur papier est :",
+              "options": [
+                "Le papier",
+                "Le ballon",
+                "Le filtre Büchner",
+                "L'électrode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le papier retient partiellement les espèces."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Filtration et centrifugation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour une filtration, quelles affirmations sont correctes ?",
+              "options": [
+                "Le filtre retient les insolubles",
+                "Le filtrat traverse le filtre",
+                "Tous les ions sont retenus",
+                "Le solvant disparaît"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les particules solides sont retenues et le liquide passe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La centrifugation accélère :",
+              "options": [
+                "La dissolution",
+                "La sédimentation",
+                "La fusion du filtre",
+                "La création d'ions"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La force centrifuge sépare plus vite les phases."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un filtre à pores fins retient surtout :",
+              "options": [
+                "Les ions dissous",
+                "Les particules de grande taille",
+                "Les photons",
+                "Le vide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Seules les particules plus grosses que les pores sont bloquées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Eau trouble avec argile : après filtration, le filtrat est :",
+              "options": [
+                "Plus trouble",
+                "Plus clair si l'argile est retenue",
+                "Solide",
+                "Gazeux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les fines particules insolubles sont retenues par le filtre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le papier filtre utilisé en TP est :",
+              "options": [
+                "Imperméable",
+                "Perméable au liquide",
+                "Un métal",
+                "Un catalyseur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le liquide traverse les pores du papier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Filtration sous vide (Büchner) sert à :",
+              "options": [
+                "Accélérer le drainage du filtrat",
+                "Chauffer à 1000 °C",
+                "Créer des isotopes",
+                "Mesurer le pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dépression accélère l'écoulement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Solution salée limpide filtrée : le filtrat contient :",
+              "options": [
+                "Uniquement de l'eau sans ions",
+                "Eau et ions dissous",
+                "Du sel solide",
+                "Du fer"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les ions dissous traversent le filtre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le résidu sur le filtre est :",
+              "options": [
+                "Le filtrat",
+                "La partie retenue (solide)",
+                "Le solvant pur",
+                "Un gaz"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le résidu est le solide retenu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Centrifuger du lait non homogénéisé permet de :",
+              "options": [
+                "Séparer la crème",
+                "Transformer le lait en métal",
+                "Créer de l'oxygène",
+                "Distiller l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phase grasse se concentre selon la densité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Filtration inadaptée pour séparer :",
+              "options": [
+                "Sable et eau",
+                "Deux liquides miscibles",
+                "Charbon et eau",
+                "Précipité et eau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Deux liquides miscibles forment une seule phase liquide."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Tests d'identification",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Des tests chimiques permettent de :",
+              "options": [
+                "Mettre en évidence une espèce",
+                "Confirmer la présence d'ions ou de gaz",
+                "Créer des noyaux artificiels",
+                "Mesurer la vitesse de la lumière"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les tests révèlent des espèces par une réaction ou un changement observable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'eau de chaux trouble en présence de CO₂ indique :",
+              "options": [
+                "Absence de gaz",
+                "Présence de dioxyde de carbone",
+                "Présence de fer",
+                "Présence d'hélium"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le CO₂ réagit et forme un précipité blanc."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une buée à l'ouverture d'un flacon d'ammoniaque suggère :",
+              "options": [
+                "Un gaz très soluble dans l'eau",
+                "Un métal solide",
+                "Un corps pur ionique sec",
+                "Un liquide miscible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le NH₃ gazeux se dissolve dans l'humidité de l'air."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le test à la flamme colore parfois la flamme selon :",
+              "options": [
+                "L'ion métallique présent",
+                "La masse du bécher",
+                "La forme du filtre",
+                "Le volume du labo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains ions métalliques émettent une lumière caractéristique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le sulfate ionique peut être mis en évidence avec des ions :",
+              "options": [
+                "Ba²⁺ formant un précipité blanc",
+                "Na⁺ seuls",
+                "Cl⁻ sans réaction",
+                "H⁺ seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ba²⁺ + SO₄²⁻ → BaSO₄(s) blanc."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le chlorure ionique peut être testé avec Ag⁺ :",
+              "options": [
+                "Précipité blanc AgCl",
+                "Gaz O₂",
+                "Liquide miscible",
+                "Métal Cu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ag⁺ + Cl⁻ → AgCl(s)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un papier pH indique :",
+              "options": [
+                "L'acidité ou basicité",
+                "La masse molaire",
+                "Le numéro atomique",
+                "La radioactivité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pH mesure l'activité acido-basique en solution."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le dihydrogène H₂ brûle avec une flamme :",
+              "options": [
+                "Bleue pâle",
+                "Verte due au fer",
+                "Noire sans chaleur",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La combustion du H₂ produit une flamme bleue pâle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le dioxygène O₂ avive :",
+              "options": [
+                "La combustion d'une bille incandescente",
+                "La solidification de l'eau",
+                "La formation de sel sans feu",
+                "La condensation du fer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "O₂ est un comburant qui entretient la combustion."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un test positif signifie :",
+              "options": [
+                "L'espèce recherchée est probablement présente",
+                "Le mélange est pur",
+                "Il n'y a aucune réaction",
+                "La température est 0 K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le changement observé indique la présence de l'espèce testée."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Eau et ions en solution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'eau du robinet contient souvent :",
+              "options": [
+                "Des ions dissous",
+                "Parfois des gaz dissous",
+                "Uniquement des molécules H₂O sans aucun soluté",
+                "Un alliage métallique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'eau potable contient des sels et parfois du CO₂ dissous."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La conductivité d'une solution augmente si :",
+              "options": [
+                "La concentration en ions augmente",
+                "Il n'y a aucun ion",
+                "Le solvant est sec",
+                "La température est 0 K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ions porteurs de charge conduisent le courant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une solution d'eau distillée est :",
+              "options": [
+                "Peu conductrice",
+                "Très conductrice comme un métal",
+                "Un gaz",
+                "Un plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu d'ions ⇒ faible conductivité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "NaCl en solution contient :",
+              "options": [
+                "Na⁺ et Cl⁻",
+                "NaCl(s) uniquement",
+                "Na₂O",
+                "Cl₂ gazeux libre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sel se dissocie en ions."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'eau est un solvant :",
+              "options": [
+                "Polair, dissolvant de nombreux ions",
+                "Exclusivement pour les métaux solides",
+                "Impossible pour le sucre",
+                "Réservé aux gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La polarité de H₂O favorise la dissolution d'espèces polaires et ioniques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le ion carbonate CO₃²⁻ en solution peut réagir avec un acide en dégageant :",
+              "options": ["CO₂", "O₂ seul", "Fe(s)", "H₂ métallique"],
+              "correctAnswers": [0],
+              "explanation": "Acide + carbonate → souvent CO₂."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une eau « dure » contient souvent plus de :",
+              "options": [
+                "Ions Ca²⁺ et Mg²⁺",
+                "Hélium",
+                "Or métallique",
+                "Plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dureté est liée aux ions calcium et magnésium."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le symbole Na⁺ indique :",
+              "options": [
+                "Un ion sodium charge +1",
+                "Un atome neutre",
+                "Une molécule Na₂",
+                "Un gaz Na₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le superscript + donne la charge de l'ion."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le ion chlorure Cl⁻ a une charge :",
+              "options": ["−1", "+1", "0", "+2"],
+              "correctAnswers": [0],
+              "explanation": "Cl⁻ est un anion monovalent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Désaliniser l'eau de mer vise à :",
+              "options": [
+                "Réduire la teneur en sels dissous",
+                "Ajouter du fer",
+                "Créer du NaCl solide dans l'eau",
+                "Transformer l'eau en gaz sans phase liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On retire les ions dissous pour obtenir une eau plus pure."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse — espèces chimiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces échantillons, lesquels sont des mélanges ?",
+              "options": ["Air", "Eau distillée (H₂O)", "Granite", "NaCl pur"],
+              "correctAnswers": [0, 2],
+              "explanation": "Air et granite associent plusieurs constituants ; NaCl pur et H₂O distillée sont des corps purs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour identifier un colorant dans une encre, on peut utiliser :",
+              "options": [
+                "Chromatographie",
+                "Distillation du papier",
+                "Fusion du filtre",
+                "Mesure du volume seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chromatographie sépare les colorants."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Cm = 20 g·L⁻¹, V = 2 L : masse de soluté",
+              "options": ["40 g", "10 g", "20 g", "0,1 g"],
+              "correctAnswers": [0],
+              "explanation": "m = Cm × V = 40 g."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Séparer deux liquides miscibles d'ébullitions différentes :",
+              "options": [
+                "Distillation",
+                "Filtration simple",
+                "Décantation seule",
+                "Pesée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La distillation exploite les températures d'ébullition."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une espèce chimique est décrite par :",
+              "options": [
+                "Sa formule ou son symbole",
+                "Sa couleur seule",
+                "Le nom du flacon",
+                "La date du TP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule et symbole identifient l'espèce."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le changement d'état de l'eau sans réaction chimique :",
+              "options": [
+                "Conserve l'espèce H₂O",
+                "Crée du NaCl",
+                "Forme du fer",
+                "Change le numéro atomique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Changement physique, même espèce."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le filtrat d'une suspension d'argile est :",
+              "options": [
+                "Plus clair",
+                "Toujours solide",
+                "Un métal",
+                "Un gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les particules sont retenues par le filtre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La mole sert à :",
+              "options": [
+                "Compter des entités chimiques",
+                "Mesurer une longueur",
+                "Calculer une vitesse",
+                "Mesurer une pression atmosphérique seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 mol ≈ 6,02×10²³ entités."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "CO₂ dissous dans une boisson est :",
+              "options": [
+                "Un soluté",
+                "Un solvant",
+                "Un filtre",
+                "Un réfrigérant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CO₂ est dissous dans l'eau."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Corps pur composé exemple :",
+              "options": ["H₂O", "Air", "Lait", "Granite"],
+              "correctAnswers": [0],
+              "explanation": "L'eau est une espèce chimique composée."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "De l'atome à l'entité",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Structure de l'atome",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un atome est composé de :",
+              "options": [
+                "Un noyau",
+                "Des électrons",
+                "Uniquement de protons libres dans le vide intergalactique",
+                "De molécules O₂"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'atome = noyau + électrons."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La charge électrique du noyau est :",
+              "options": [
+                "Positive",
+                "Négative",
+                "Toujours nulle",
+                "Variable au hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les protons portent une charge positive."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les électrons se situent :",
+              "options": [
+                "Autour du noyau",
+                "Dans le noyau uniquement",
+                "Uniquement entre deux noyaux fusionnés",
+                "Absents dans les atomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nuage électronique entoure le noyau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un atome neutre a :",
+              "options": [
+                "Autant de protons que d'électrons",
+                "Plus de protons que d'électrons toujours",
+                "Aucun électron",
+                "Aucun proton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Neutralité électrique : charges compensées."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La presque totalité de la masse de l'atome est dans :",
+              "options": [
+                "Le noyau",
+                "Les électrons seuls",
+                "Le vide entre atomes",
+                "Les photons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protons et neutrons concentrés dans le noyau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le modèle de Rutherford montre un atome :",
+              "options": [
+                "Noyau dense et électrons éloignés",
+                "Pâte uniforme",
+                "Cube solide",
+                "Sans noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Noyau central, électrons en périphérie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ordre de grandeur du diamètre d'un atome :",
+              "options": ["10⁻¹⁰ m", "1 m", "10³ m", "10⁻² m"],
+              "correctAnswers": [0],
+              "explanation": "L'atome est de l'ordre de l'angström (0,1 nm)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le neutron est :",
+              "options": [
+                "Neutre et dans le noyau",
+                "Chargé +1",
+                "Un électron",
+                "Dans la couche K seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le neutron, sans charge, compose le noyau avec les protons."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le proton a une charge :",
+              "options": ["+e", "−e", "0", "+2e toujours"],
+              "correctAnswers": [0],
+              "explanation": "Charge élémentaire positive."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'électron a une charge :",
+              "options": ["−e", "+e", "0", "+2e"],
+              "correctAnswers": [0],
+              "explanation": "Charge opposée au proton, même valeur absolue."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Noyau et électrons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans le noyau on trouve :",
+              "options": [
+                "Des protons",
+                "Des neutrons",
+                "Des électrons",
+                "Des molécules H₂O"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nucléons = protons + neutrons."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le numéro atomique Z compte :",
+              "options": [
+                "Les protons du noyau",
+                "Les neutrons seuls",
+                "Les électrons du voisin",
+                "Les molécules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Z = nombre de protons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le nombre de masse A représente :",
+              "options": [
+                "Protons + neutrons",
+                "Électrons seuls",
+                "Neutrons seuls",
+                "La vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A = nucleons totaux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Neutrons dans ¹²C :",
+              "options": ["6", "12", "0", "18"],
+              "correctAnswers": [0],
+              "explanation": "A=12, Z=6 ⇒ N = 12−6 = 6."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les électrons participent surtout aux :",
+              "options": [
+                "Liaisons chimiques",
+                "Masse du noyau",
+                "Fusion nucléaire",
+                "Radioactivité alpha du noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le comportement chimique dépend des électrons."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un atome de fer a Z=26 : il possède",
+              "options": [
+                "26 protons",
+                "26 neutrons obligatoirement",
+                "0 électron",
+                "26 molécules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Z définit le nombre de protons."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'atome d'hydrogène ¹H a A=1, donc :",
+              "options": ["0 neutron", "1 neutron", "2 protons", "0 proton"],
+              "correctAnswers": [0],
+              "explanation": "A=1 et Z=1 ⇒ pas de neutron."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux atomes de même Z mais A différents sont :",
+              "options": [
+                "Isotopes",
+                "Ions identiques",
+                "Molécules",
+                "Alliages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même élément, masse nucléaire différente."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La répartition des électrons est décrite par :",
+              "options": [
+                "Des couches ou niveaux d'énergie",
+                "Un cube fixe",
+                "La température du ballon",
+                "Le volume du filtrat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle en couches pour les électrons."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Retirer un électron d'un atome neutre forme :",
+              "options": [
+                "Un cation",
+                "Un anion",
+                "Un neutron",
+                "Une molécule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déficit d'électrons ⇒ charge positive."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Symboles Z et A",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour ²³Na⁺, on peut affirmer :",
+              "options": [
+                "Z = 11",
+                "A = 23",
+                "C'est une molécule diatomique",
+                "Il a gagné un électron"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sodium Z=11, masse 23 ; Na⁺ a perdu un électron."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Z définit :",
+              "options": [
+                "L'élément chimique",
+                "Le nombre de neutrons seul",
+                "La masse molaire exacte",
+                "La couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le numéro atomique identifie l'élément."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Neutrons dans ¹⁹F :",
+              "options": ["10", "9", "19", "0"],
+              "correctAnswers": [0],
+              "explanation": "Z=9, A=19 ⇒ N=10."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Notation AZX : A est en",
+              "options": [
+                "Exposant supérieur gauche",
+                "Indice inférieur droit",
+                "Indice supérieur droit",
+                "Milieu du symbole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A en haut à gauche, Z en bas à gauche."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux isotopes du chlore diffèrent par :",
+              "options": [
+                "Le nombre de neutrons",
+                "Le nombre de protons",
+                "Z",
+                "Le symbole chimique de l'élément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Z identique, A (donc neutrons) différent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'atome ³He a :",
+              "options": [
+                "2 protons et 1 neutron",
+                "3 protons",
+                "0 électron",
+                "3 neutrons et 0 proton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Z=2, A=3 ⇒ 1 neutron."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Masse d'un électron comparée au proton :",
+              "options": [
+                "Beaucoup plus faible",
+                "Identique",
+                "Plus grande",
+                "Infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'électron est environ 2000 fois plus léger."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le carbone ¹²C et ¹³C ont le même :",
+              "options": [
+                "Z",
+                "A",
+                "Nombre de neutrons",
+                "Nombre de protons différent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Isotopes : même Z, A différent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un ion ³⁵Cl⁻ contient :",
+              "options": ["17 protons", "35 protons", "18 protons", "0 proton"],
+              "correctAnswers": [0],
+              "explanation": "Z du chlore = 17."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "A − Z donne :",
+              "options": [
+                "Le nombre de neutrons",
+                "Le nombre d'électrons en ion",
+                "La charge",
+                "Le pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "N = A − Z."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Ions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles espèces sont des ions ?",
+              "options": [
+                "Na⁺",
+                "Atome de chlore neutre Cl",
+                "O²⁻",
+                "Molécule O₂ neutre"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Na⁺ et O²⁻ portent une charge ; Cl et O₂ neutres ne sont pas des ions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un cation a une charge :",
+              "options": [
+                "Positive",
+                "Négative",
+                "Nulle",
+                "Variable sans électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Perte d'électrons ⇒ charge positive."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un anion a une charge :",
+              "options": ["Négative", "Positive", "Nulle", "Toujours +2"],
+              "correctAnswers": [0],
+              "explanation": "Gain d'électrons ⇒ charge négative."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mg²⁺ a perdu :",
+              "options": [
+                "2 électrons",
+                "2 protons",
+                "2 neutrons",
+                "Toute sa charge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Charge +2 par perte de deux électrons."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "O²⁻ a gagné :",
+              "options": [
+                "2 électrons",
+                "2 protons",
+                "8 protons",
+                "0 électron"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Charge −2 par gain de deux électrons."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans NaCl solide, les entités sont :",
+              "options": [
+                "Na⁺ et Cl⁻",
+                "Na et Cl atomes neutres",
+                "Na₂ et Cl₂",
+                "H₂O"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseau ionique de cations et anions."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le ion nitrate NO₃⁻ porte une charge :",
+              "options": ["−1", "+1", "0", "+3"],
+              "correctAnswers": [0],
+              "explanation": "Anion monovalent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Fe³⁺ est un :",
+              "options": ["Cation", "Anion", "Atome neutre", "Molécule"],
+              "correctAnswers": [0],
+              "explanation": "Ion fer(III) positif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une solution contenant des ions est :",
+              "options": [
+                "Souvent conductrice",
+                "Toujours isolante",
+                "Toujours solide",
+                "Sans solvant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ions mobiles conduisent le courant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'ion hydrogène H⁺ en solution aqueuse est lié à :",
+              "options": [
+                "Les ions hydronium H₃O⁺",
+                "Des atomes de fer",
+                "Du NaCl solide",
+                "Du CO₂ gazeux pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En eau, H⁺ s'hydrate surtout en H₃O⁺."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Molécules et formules",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent des molécules possibles ?",
+              "options": [
+                "Diatomique comme O₂",
+                "Monoatomique comme He",
+                "Toujours un réseau ionique",
+                "Toujours un mélange hétérogène"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une molécule peut être diatomique ou monoatomique selon l'espèce."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "H₂O est la formule d'une :",
+              "options": ["Molécule", "Ion seul", "Alliage", "Solution"],
+              "correctAnswers": [0],
+              "explanation": "Deux H et un O liés covalamment."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "O₂ est une molécule :",
+              "options": ["Diatomique", "Ionique", "Métallique", "Réseau NaCl"],
+              "correctAnswers": [0],
+              "explanation": "Deux atomes d'oxygène liés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "CO₂ contient :",
+              "options": [
+                "1 carbone et 2 oxygènes",
+                "2 carbones et 1 oxygène",
+                "Uniquement du carbone",
+                "Du sodium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule CO₂ : un C, deux O."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "CH₄ est :",
+              "options": ["Méthane", "Chlorure de sodium", "Eau", "Dioxygène"],
+              "correctAnswers": [0],
+              "explanation": "CH₄ = méthane."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une formule brute indique :",
+              "options": [
+                "Le nombre d'atomes de chaque élément",
+                "La forme du flacon",
+                "La température",
+                "La vitesse du son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. C₆H₁₂O₆ compte C, H, O."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "NaCl(s) cristallin n'est pas une molécule car :",
+              "options": [
+                "C'est un réseau d'ions",
+                "C'est un gaz",
+                "C'est un métal pur",
+                "C'est de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "NaCl forme un empilement ionique, pas des molécules NaCl isolées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "N₂ est une espèce :",
+              "options": ["Moléculaire", "Ionique", "Métallique", "Plasma"],
+              "correctAnswers": [0],
+              "explanation": "Azote sous forme diatomique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "C₂H₆ contient combien d'hydrogènes ?",
+              "options": ["6", "2", "1", "8"],
+              "correctAnswers": [0],
+              "explanation": "Indice 6 sur H."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une entité moléculaire peut être représentée par :",
+              "options": [
+                "Une formule chimique",
+                "Uniquement une photo",
+                "Le pH seul",
+                "La masse du laboratoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule encode la composition."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Lewis et doublets",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une représentation de Lewis montre :",
+              "options": [
+                "Les électrons de valence",
+                "Les symboles des atomes",
+                "Le noyau en détail",
+                "La vitesse des ions en solution"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Symboles + points pour les électrons de valence."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'atome de carbone en Lewis a souvent :",
+              "options": [
+                "4 électrons de valence représentés",
+                "1 seul électron",
+                "8 électrons de valence pour C seul",
+                "0 électron"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C est en groupe 14 : 4 électrons de valence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un doublet non liant :",
+              "options": [
+                "N'entre pas dans une liaison",
+                "Forme toujours une liaison double",
+                "Est un proton",
+                "Est un neutron"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paire d'électrons localisée sur un atome."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans H₂, les deux H partagent :",
+              "options": [
+                "Une liaison covalente",
+                "Un ion Na⁺",
+                "Un métal",
+                "Un réseau ionique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux électrons partagés entre les deux H."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'atome d'hydrogène forme souvent :",
+              "options": ["1 liaison", "4 liaisons", "0 liaison", "8 liaisons"],
+              "correctAnswers": [0],
+              "explanation": "H vise la couche duet (2 électrons) via 1 liaison."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "O en Lewis isolé a des doublets non liants car :",
+              "options": [
+                "Il possède 6 électrons de valence",
+                "Il n'a pas d'électrons",
+                "Il est un cation",
+                "Il est un métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "6 électrons ⇒ liaisons et doublets non liants possibles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La règle du octet vise :",
+              "options": [
+                "8 électrons de valence (sauf H)",
+                "0 électron",
+                "20 protons",
+                "Un noyau seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stabilité type gaz rare pour la couche externe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans NH₃, l'azote possède :",
+              "options": [
+                "Un doublet non liant",
+                "Aucun électron",
+                "Trois protons de moins",
+                "Une charge +2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "N lié à 3 H garde un doublet non liant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une liaison covalente partage :",
+              "options": [
+                "Des électrons",
+                "Des protons",
+                "Des neutrons",
+                "Des noyaux entiers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Covalence = mise en commun d'électrons."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cl₂ est une molécule avec :",
+              "options": [
+                "Liaison simple Cl−Cl",
+                "Réseau ionique",
+                "Métal",
+                "Ion O²⁻"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux chlores liés par covalence."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Isotopes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Des isotopes d'un élément ont :",
+              "options": [
+                "Le même Z",
+                "Le même nombre de neutrons toujours",
+                "Un A différent possible",
+                "Des symboles d'éléments différents"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Même nombre de protons, masse nucléaire pouvant différer."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "¹²C et ¹³C sont des isotopes du :",
+              "options": ["Carbone", "Chlore", "Fer", "Hélium"],
+              "correctAnswers": [0],
+              "explanation": "Même Z=6, masses 12 et 13."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les isotopes ont les mêmes propriétés chimiques car :",
+              "options": [
+                "Ils ont le même Z et les mêmes électrons",
+                "Ils ont la même masse",
+                "Ils n'ont pas d'électrons",
+                "Ils sont des ions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le comportement chimique dépend surtout des électrons (donc de Z)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'isotope ²H (deutérium) a :",
+              "options": [
+                "1 proton et 1 neutron",
+                "2 protons",
+                "0 neutron",
+                "3 neutrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Z=1, A=2 ⇒ un neutron."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La masse atomique relative sur le tableau utilise comme référence :",
+              "options": ["¹²C = 12 exactement", "¹H = 12", "O₂ = 1", "Fe = 0"],
+              "correctAnswers": [0],
+              "explanation": "L'unité u est basée sur le carbone 12."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "³⁵Cl et ³⁷Cl diffèrent par :",
+              "options": [
+                "2 neutrons",
+                "2 protons",
+                "2 électrons en atome neutre",
+                "Le symbole Cl"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A diffère de 2 ⇒ 2 neutrons de plus."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un échantillon naturel de chlore a une masse atomique proche de 35,5 car :",
+              "options": [
+                "Il mélange plusieurs isotopes",
+                "Il n'a pas de neutrons",
+                "Il est pur ³⁷Cl seul",
+                "Il est ionique seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moyenne pondérée des isotopes naturels."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le tritium ³H est :",
+              "options": [
+                "Un isotope de l'hydrogène",
+                "Un isotope du fer",
+                "Une molécule O₂",
+                "Un ion Ca²⁺"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hydrogène avec A=3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux isotopes ne diffèrent pas par le nombre de :",
+              "options": [
+                "Protons",
+                "Neutrons",
+                "Nucléons si A change",
+                "Masse si A change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Z (protons) est identique pour isotopes d'un même élément."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "¹⁴C est utilisé en datation car :",
+              "options": [
+                "C'est un isotope radioactif du carbone",
+                "C'est du fer",
+                "C'est un gaz noble",
+                "C'est du sel NaCl"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La désintégration du ¹⁴C permet la datation."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Masse molaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La masse molaire M d'une espèce :",
+              "options": [
+                "S'exprime en g·mol⁻¹",
+                "Relie une mole à une masse en grammes",
+                "S'exprime en mètres",
+                "Est toujours 1 pour toute espèce"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "M permet de convertir moles ↔ grammes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "M(H₂O) ≈",
+              "options": [
+                "18 g·mol⁻¹",
+                "2 g·mol⁻¹",
+                "100 g·mol⁻¹",
+                "58 g·mol⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2×1 + 16 ≈ 18 g·mol⁻¹."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "M(CO₂) ≈",
+              "options": [
+                "44 g·mol⁻¹",
+                "28 g·mol⁻¹",
+                "12 g·mol⁻¹",
+                "18 g·mol⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "12 + 2×16 = 44 g·mol⁻¹."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "n = 2 mol, M = 32 g·mol⁻¹ : masse m =",
+              "options": ["64 g", "16 g", "32 g", "0,5 g"],
+              "correctAnswers": [0],
+              "explanation": "m = n × M = 64 g."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "M(NaCl) ≈",
+              "options": [
+                "58,5 g·mol⁻¹",
+                "18 g·mol⁻¹",
+                "2 g·mol⁻¹",
+                "100 g·mol⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "23 + 35,5 ≈ 58,5 g·mol⁻¹."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une mole de CO₂ contient environ :",
+              "options": [
+                "6,02×10²³ molécules",
+                "1 atome",
+                "0 entité",
+                "10²³ g"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nombre d'Avogadro d'entités."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "M(O₂) ≈",
+              "options": [
+                "32 g·mol⁻¹",
+                "16 g·mol⁻¹",
+                "44 g·mol⁻¹",
+                "2 g·mol⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2×16 = 32 g·mol⁻¹."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "m = 56 g de Fe, M(Fe) ≈ 56 g·mol⁻¹ : n =",
+              "options": ["1 mol", "2 mol", "0,1 mol", "56 mol"],
+              "correctAnswers": [0],
+              "explanation": "n = m/M = 1 mol."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La masse molaire atomique du carbone naturel ≈ 12 g·mol⁻¹ car :",
+              "options": [
+                "Isotopes pondérés autour de 12 u",
+                "Il n'a pas de neutrons",
+                "C'est du NaCl",
+                "C'est un gaz noble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moyenne des isotopes 12 et 13."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour passer de entités à moles, on divise par :",
+              "options": [
+                "6,02×10²³",
+                "9,81",
+                "1000 m",
+                "R (constante des gaz)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "n = N / N_A."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Modèles et représentations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un modèle moléculaire (boules et tiges) montre :",
+              "options": [
+                "L'arrangement des atomes",
+                "Les liaisons entre atomes",
+                "Le noyau à l'échelle réelle",
+                "La trajectoire exacte de chaque électron"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Modèle simplifié de la géométrie et des liaisons."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Modèle CPK : les sphères représentent :",
+              "options": [
+                "Des atomes avec tailles relatives",
+                "Des protons seuls",
+                "Des ions toujours",
+                "Des photons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boules = atomes, couleurs par élément."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "H₂O en modèle : forme en V car :",
+              "options": [
+                "L'oxygène a deux liaisons et des doublets non liants",
+                "L'eau est ionique",
+                "Il n'y a qu'un atome",
+                "C'est un métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Géométrie liée à la covalence de O."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une formule développée CH₃CH₃ est équivalente à :",
+              "options": ["C₂H₆", "CH₄", "C₂H₄", "H₂O"],
+              "correctAnswers": [0],
+              "explanation": "Éthane C₂H₆."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Schéma de Lewis de HCl montre :",
+              "options": [
+                "Une liaison H−Cl",
+                "Un réseau NaCl",
+                "Trois liaisons O",
+                "Du fer métallique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Acide chlorhydrique : liaison covalente H−Cl."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le modèle de l'atome n'est pas à l'échelle car :",
+              "options": [
+                "Noyau très petit vs nuage électronique",
+                "Les atomes n'existent pas",
+                "Les électrons n'ont pas de charge",
+                "Z vaut toujours 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'atome est surtout du vide à l'échelle classique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "CO₂ en modèle linéaire :",
+              "options": ["O=C=O", "Tétraédrique", "Ionique NaCl", "Métal Fe"],
+              "correctAnswers": [0],
+              "explanation": "Dioxyde de carbone linéaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Représenter NaCl(s) par une molécule Na−Cl isolée est :",
+              "options": [
+                "Incorrect pour le cristal",
+                "Exact pour le gaz",
+                "Obligatoire",
+                "Identique au diamant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le solide ionique est un réseau, pas des molécules NaCl."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une entité chimique peut être visualisée par :",
+              "options": [
+                "Formule, Lewis ou modèle 3D",
+                "Uniquement une balance",
+                "Le pH du papier",
+                "La couleur du bécher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs représentations complémentaires."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "CH₄ a une géométrie tétraédrique autour du carbone car :",
+              "options": [
+                "4 liaisons C−H",
+                "1 liaison C−H",
+                "Réseau ionique",
+                "Ion Fe³⁺"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quatre liaisons équivalentes autour de C."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse — atome et entité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces entités, lesquelles sont des ions ?",
+              "options": ["Ca²⁺", "Cl₂", "SO₄²⁻", "Ne"],
+              "correctAnswers": [0, 2],
+              "explanation": "Ca²⁺ et SO₄²⁻ sont chargés ; Cl₂ et Ne sont neutres."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Z = 17 correspond à :",
+              "options": ["Chlore", "Sodium", "Fer", "Carbone"],
+              "correctAnswers": [0],
+              "explanation": "17 protons = chlore."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "¹⁶O a 8 neutrons car :",
+              "options": ["A=16 et Z=8", "A=8", "Z=16", "Pas de protons"],
+              "correctAnswers": [0],
+              "explanation": "N = 16 − 8 = 8."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "M(H₂) ≈",
+              "options": [
+                "2 g·mol⁻¹",
+                "18 g·mol⁻¹",
+                "32 g·mol⁻¹",
+                "58 g·mol⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2×1 g·mol⁻¹."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'eau est une entité :",
+              "options": [
+                "Moléculaire H₂O",
+                "Réseau NaCl",
+                "Ion seul Na⁺",
+                "Alliage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Molécule d'eau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un atome neutre de Na (Z=11) a :",
+              "options": [
+                "11 électrons",
+                "10 protons",
+                "0 neutron toujours",
+                "Charge +1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Neutralité : 11 e⁻ pour 11 p⁺."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Isotopes : même élément signifie même :",
+              "options": ["Z", "A toujours", "Masse toujours", "Couleur"],
+              "correctAnswers": [0],
+              "explanation": "Même nombre de protons."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "n = 0,5 mol, M = 40 g·mol⁻¹ (Ca) : m =",
+              "options": ["20 g", "80 g", "40 g", "0,5 g"],
+              "correctAnswers": [0],
+              "explanation": "m = nM = 20 g."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La quasi-totalité de la masse de l'atome est dans :",
+              "options": [
+                "Le noyau",
+                "Les électrons",
+                "Le vide seul",
+                "Les photons visibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protons et neutrons concentrés au centre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Du NaCl solide à des ions en solution, on passe de :",
+              "options": [
+                "Réseau ionique à ions hydratés",
+                "Molécules O₂ à H₂",
+                "Métal à gaz noble",
+                "Atome à noyau seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dissolution sépare le réseau en ions dispersés dans l'eau."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

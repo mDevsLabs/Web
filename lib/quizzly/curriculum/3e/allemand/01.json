@@ -1,0 +1,2438 @@
+{
+  "id": "3e-allemand-01",
+  "year": "3e",
+  "subject": "allemand",
+  "title": "Découvrir l'allemand",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Premier contact en entreprise",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Tu arrives pour ton stage. Quelles salutations conviennent à un adulte inconnu ?",
+              "type": "multiple_choice",
+              "options": ["Guten Tag", "Guten Morgen", "Tschüss", "Servus"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Guten Tag » et « Guten Morgen » sont polis ; « Tschüss » et « Servus » sont trop familiers pour un premier contact pro."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dire « Je m'appelle Léa » pour te présenter au tuteur ?",
+              "type": "single_choice",
+              "options": [
+                "Ich heiße Léa.",
+                "Ich bin Léa heißen.",
+                "Mein Name Léa ist.",
+                "Ich heißt Léa."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule standard est « Ich heiße » + prénom."
+            },
+            {
+              "id": "q3",
+              "question": "Le collègue te demande : « Wie heißen Sie ? » Que réponds-tu avec politesse ?",
+              "type": "single_choice",
+              "options": [
+                "Ich heiße Tom Müller.",
+                "Du heißt Tom Müller.",
+                "Er heißt Tom Müller.",
+                "Wir heißen Tom."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sie » exige « ich » à la première personne."
+            },
+            {
+              "id": "q4",
+              "question": "Quelle phrase utilise correctement « du » avec un camarade de stage ?",
+              "type": "single_choice",
+              "options": [
+                "Wo kommst du her?",
+                "Wo kommen Sie her?",
+                "Wo komme ich her?",
+                "Wo kommt er her?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« du » va avec « kommst » (2e personne du singulier)."
+            },
+            {
+              "id": "q5",
+              "question": "« Ich komme aus Lyon. » Que demande-t-on sur ton origine ?",
+              "type": "single_choice",
+              "options": [
+                "Woher kommst du?",
+                "Wie alt bist du?",
+                "Was machst du?",
+                "Wann beginnst du?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Woher kommst du? » = d'où viens-tu (Herkunft)."
+            },
+            {
+              "id": "q6",
+              "question": "Tu veux saluer le directeur. Quelle formule est la plus adaptée ?",
+              "type": "single_choice",
+              "options": [
+                "Guten Tag, Herr Schmidt.",
+                "Hey, Schmidt!",
+                "Na, Schmidt?",
+                "Tschüss, Schmidt."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titre + nom avec « Guten Tag » = registre professionnel."
+            },
+            {
+              "id": "q7",
+              "question": "« Ich möchte mich vorstellen. » Que veux-tu faire ?",
+              "type": "single_choice",
+              "options": [
+                "Te présenter",
+                "Partir tout de suite",
+                "Déjeuner",
+                "Téléphoner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« sich vorstellen » = se présenter."
+            },
+            {
+              "id": "q8",
+              "question": "On te dit « Willkommen im Betrieb! » C'est :",
+              "type": "single_choice",
+              "options": [
+                "Un accueil dans l'entreprise",
+                "Un refus",
+                "Une question sur l'école",
+                "Une heure de fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Willkommen im Betrieb » = bienvenue dans l'entreprise."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dire « Enchanté(e) » après une poignée de main ?",
+              "type": "single_choice",
+              "options": [
+                "Freut mich.",
+                "Es tut mir leid.",
+                "Auf Wiedersehen.",
+                "Gute Nacht."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Freut mich » = ravi(e) de te rencontrer."
+            },
+            {
+              "id": "q10",
+              "question": "« Ich bin Schülerin und mache ein Praktikum. » Tu es :",
+              "type": "single_choice",
+              "options": [
+                "Une élève en stage",
+                "Un professeur",
+                "Un client",
+                "Un médecin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Schülerin » + « Praktikum » = élève en stage."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Du ou Sie au stage",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux formulations correctes pour parler poliment à Mme Weber :",
+              "type": "multiple_choice",
+              "options": [
+                "Wie heißen Sie?",
+                "Können Sie mir helfen?",
+                "Wie heißt du?",
+                "Hilf mir mal!"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Sie » avec verbe à la 2e personne de politesse : « heißen Sie », « Können Sie »."
+            },
+            {
+              "id": "q2",
+              "question": "Avec un autre stagiaire de 15 ans, tu dis :",
+              "type": "single_choice",
+              "options": [
+                "Hast du schon einen Ausweis?",
+                "Haben Sie schon einen Ausweis?",
+                "Hat er schon einen Ausweis?",
+                "Habe ich schon einen Ausweis?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entre jeunes du même âge on utilise « du » : « Hast du »."
+            },
+            {
+              "id": "q3",
+              "question": "« Entschuldigung, ich bin neu hier. » Tu :",
+              "type": "single_choice",
+              "options": [
+                "T'excuses et dis que tu es nouveau",
+                "Demandes l'heure",
+                "Refuses le stage",
+                "Parles de ta Schule en détail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Entschuldigung » + « ich bin neu hier » = excuse, je suis nouveau."
+            },
+            {
+              "id": "q4",
+              "question": "Réponse à « Woher kommen Sie? » (tu viens de Marseille) :",
+              "type": "single_choice",
+              "options": [
+                "Ich komme aus Marseille.",
+                "Du kommst aus Marseille.",
+                "Sie kommen aus Marseille.",
+                "Wir kommt aus Marseille."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse à « Sie » : répondre avec « ich »."
+            },
+            {
+              "id": "q5",
+              "question": "« Guten Morgen » s'utilise surtout :",
+              "type": "single_choice",
+              "options": [
+                "Le matin",
+                "Le soir",
+                "Après minuit seulement",
+                "Jamais au travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Morgen » = matin."
+            },
+            {
+              "id": "q6",
+              "question": "Pour quitter poliment après la réunion d'accueil :",
+              "type": "single_choice",
+              "options": [
+                "Auf Wiedersehen.",
+                "Guten Appetit.",
+                "Gute Reise.",
+                "Herzlichen Glückwunsch."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Auf Wiedersehen » = au revoir (formel)."
+            },
+            {
+              "id": "q7",
+              "question": "« Ich möchte meinen Mentor kennenlernen. » Tu veux :",
+              "type": "single_choice",
+              "options": [
+                "Faire connaissance avec ton tuteur",
+                "Quitter l'école",
+                "Acheter un cahier",
+                "Dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« kennenlernen » = faire connaissance."
+            },
+            {
+              "id": "q8",
+              "question": "« Das ist meine Lehrerin von der Schule. » Qui est-ce ?",
+              "type": "single_choice",
+              "options": [
+                "Ta professeure du collège/lycée",
+                "Ton patron",
+                "Un voisin",
+                "Un touriste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Lehrerin » + « Schule » = enseignante de l'école."
+            },
+            {
+              "id": "q9",
+              "question": "Comment demander le prénom à un pair en stage ?",
+              "type": "single_choice",
+              "options": [
+                "Wie heißt du?",
+                "Wie heißen Sie?",
+                "Wie heißt er?",
+                "Wie heißen wir?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pair = « du » → « Wie heißt du? »."
+            },
+            {
+              "id": "q10",
+              "question": "« Mein Name ist Jonas. » Équivaut à :",
+              "type": "single_choice",
+              "options": [
+                "Je m'appelle Jonas.",
+                "Je suis fatigué.",
+                "J'habite à Berlin.",
+                "Je n'aime pas le stage."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mein Name ist » = je m'appelle."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Herkunft et école",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux questions possibles sur la provenance d'une personne :",
+              "type": "multiple_choice",
+              "options": [
+                "Woher kommst du?",
+                "Woher kommen Sie?",
+                "Wie groß bist du?",
+                "Was kostet das?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Herkunft : « Woher kommst du? » (du) ou « Woher kommen Sie? » (Sie)."
+            },
+            {
+              "id": "q2",
+              "question": "« Ich komme aus Frankreich. » Tu viens :",
+              "type": "single_choice",
+              "options": ["De France", "D'Allemagne", "D'Italie", "De Suisse"],
+              "correctAnswers": [0],
+              "explanation": "« Frankreich » = France."
+            },
+            {
+              "id": "q3",
+              "question": "Pour dire « Je suis en troisième au collège » (contexte scolaire) :",
+              "type": "single_choice",
+              "options": [
+                "Ich bin in der neunten Klasse.",
+                "Ich bin im Krankenhaus.",
+                "Ich bin im Urlaub.",
+                "Ich bin im Kino."
+              ],
+              "correctAnswers": [0],
+              "explanation": "En Allemagne la 3e ≈ often 9. Klasse selon système ; ici c'est le niveau scolaire indiqué."
+            },
+            {
+              "id": "q4",
+              "question": "« Meine Schule heißt Collège Victor Hugo. » Parles-tu de :",
+              "type": "single_choice",
+              "options": [
+                "Ton établissement scolaire",
+                "Ton entreprise de stage",
+                "Ta maison",
+                "Ton sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Schule » = école / établissement scolaire."
+            },
+            {
+              "id": "q5",
+              "question": "Le tuteur : « Sprechen Sie Deutsch? » Réponse honnête si tu apprends :",
+              "type": "single_choice",
+              "options": [
+                "Ein bisschen.",
+                "Gar nicht, nie.",
+                "Nur Chinesisch.",
+                "Sehr schlecht, auf Wiedersehen."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ein bisschen » = un peu — adapté à un débutant en 3e."
+            },
+            {
+              "id": "q6",
+              "question": "« Ich möchte auf Deutsch antworten. » Tu veux :",
+              "type": "single_choice",
+              "options": [
+                "Répondre en allemand",
+                "Manger",
+                "Partir en vacances",
+                "Écrire en latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« auf Deutsch antworten » = répondre en allemand."
+            },
+            {
+              "id": "q7",
+              "question": "Salutation du soir au bureau :",
+              "type": "single_choice",
+              "options": [
+                "Guten Abend.",
+                "Guten Morgen.",
+                "Gute Nacht.",
+                "Guten Hunger."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Guten Abend » = bonsoir."
+            },
+            {
+              "id": "q8",
+              "question": "« Das ist mein Praktikumsplatz. » C'est :",
+              "type": "single_choice",
+              "options": [
+                "Ton lieu de stage",
+                "Ta salle de classe",
+                "Ton lit",
+                "Ta gare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Praktikumsplatz » = place / poste de stage."
+            },
+            {
+              "id": "q9",
+              "question": "« Ich wohne in Straßburg. » Tu indiques :",
+              "type": "single_choice",
+              "options": [
+                "Ta ville de résidence",
+                "Ton plat préféré",
+                "Ton âge",
+                "Ton numéro de téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« wohnen in » = habiter à."
+            },
+            {
+              "id": "q10",
+              "question": "Réponse à « Wie alt bist du? » — 14 ans :",
+              "type": "single_choice",
+              "options": [
+                "Ich bin vierzehn.",
+                "Ich bin vierzehn Jahre alt sein.",
+                "Du bist vierzehn.",
+                "Sie sind vierzehn."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ich bin » + nombre ou « ... Jahre alt »."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Ich möchte au bureau",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux phrases correctes avec « ich möchte » en situation de stage :",
+              "type": "multiple_choice",
+              "options": [
+                "Ich möchte fragen.",
+                "Ich möchte mich vorstellen.",
+                "Ich möchte du helfen.",
+                "Ich möchte sind müde."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Après « möchte » : infinitif en fin de proposition (« fragen », « vorstellen »)."
+            },
+            {
+              "id": "q2",
+              "question": "« Ich möchte den Ablauf verstehen. » Tu veux :",
+              "type": "single_choice",
+              "options": [
+                "Comprendre le déroulement",
+                "Dormir",
+                "Crier",
+                "Peindre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« den Ablauf verstehen » = comprendre le déroulement."
+            },
+            {
+              "id": "q3",
+              "question": "Demander poliment une carte du bâtiment :",
+              "type": "single_choice",
+              "options": [
+                "Haben Sie einen Plan?",
+                "Hast du Hunger?",
+                "Wo ist die Disco?",
+                "Ich bin der Chef."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Haben Sie einen Plan? » = avez-vous un plan ? (poli)."
+            },
+            {
+              "id": "q4",
+              "question": "« Können Sie langsamer sprechen, bitte? » Tu demandes :",
+              "type": "single_choice",
+              "options": [
+                "De parler plus lentement",
+                "De partir",
+                "De danser",
+                "De fermer la porte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« langsamer sprechen » = parler plus lentement."
+            },
+            {
+              "id": "q5",
+              "question": "Présenter ton école en une phrase :",
+              "type": "single_choice",
+              "options": [
+                "Ich gehe auf ein Gymnasium in Nancy.",
+                "Ich esse Pizza.",
+                "Ich fahre Auto.",
+                "Ich schlafe gut."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« gehe auf ... Gymnasium/Schule » = fréquenter un établissement."
+            },
+            {
+              "id": "q6",
+              "question": "« Schön, Sie kennenzulernen. » Équivaut à :",
+              "type": "single_choice",
+              "options": [
+                "Ravi de faire votre connaissance",
+                "Au revoir",
+                "Bonne nuit",
+                "Bon appétit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule de politesse après une présentation (Sie)."
+            },
+            {
+              "id": "q7",
+              "question": "Un collègue te tutoie : « Wo arbeitest du heute? » Il demande :",
+              "type": "single_choice",
+              "options": [
+                "Où tu travailles aujourd'hui",
+                "Quelle est ta couleur préférée",
+                "Combien tu pèses",
+                "Si tu es prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« arbeitest » + « heute » = travailles aujourd'hui."
+            },
+            {
+              "id": "q8",
+              "question": "« Meine Herkunft ist marokkanisch. » Tu parles de :",
+              "type": "single_choice",
+              "options": [
+                "Tes origines / ascendance",
+                "Ton horaire",
+                "Ton vélo",
+                "Ton chien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Herkunft » = origine (familiale ou culturelle)."
+            },
+            {
+              "id": "q9",
+              "question": "Répondre « Ja, gern » à « Hilfst du mir? » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Oui, volontiers",
+                "Non, jamais",
+                "Peut-être demain",
+                "Je ne comprends pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« gern » = volontiers, avec plaisir."
+            },
+            {
+              "id": "q10",
+              "question": "« Ich bin für zwei Wochen hier. » Durée du stage :",
+              "type": "single_choice",
+              "options": [
+                "Deux semaines",
+                "Deux mois",
+                "Deux jours",
+                "Deux ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« zwei Wochen » = deux semaines."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Formules de politesse",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux réponses polies possibles après « Danke » ?",
+              "type": "multiple_choice",
+              "options": ["Bitte.", "Gern geschehen.", "Tschüss.", "Na und?"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Bitte » ou « Gern geschehen » répondent à un remerciement."
+            },
+            {
+              "id": "q2",
+              "question": "Avant de poser une question au responsable :",
+              "type": "single_choice",
+              "options": [
+                "Entschuldigung, ...",
+                "Hör auf!",
+                "Geh weg!",
+                "Psst!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Entschuldigung » = excusez-moi."
+            },
+            {
+              "id": "q3",
+              "question": "« Vielen Dank für die Einweisung. » Tu remercies pour :",
+              "type": "single_choice",
+              "options": [
+                "La prise en main / briefing",
+                "Le déjeuner offert seulement",
+                "Un cadeau d'anniversaire",
+                "La météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Einweisung » = briefing, prise en main."
+            },
+            {
+              "id": "q4",
+              "question": "Comment dire « S'il vous plaît » en fin de phrase ?",
+              "type": "single_choice",
+              "options": [
+                "..., bitte.",
+                "..., tschüss.",
+                "..., hallo.",
+                "..., tschau."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« bitte » = s'il vous plaît."
+            },
+            {
+              "id": "q5",
+              "question": "« Wie geht es Ihnen? » Tu demandes :",
+              "type": "single_choice",
+              "options": [
+                "Comment allez-vous ?",
+                "Quelle heure est-il ?",
+                "Où est la cantine ?",
+                "Combien coûte le bus ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule de politesse avec « Ihnen » (Sie)."
+            },
+            {
+              "id": "q6",
+              "question": "Réponse standard : « Danke, gut. » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Merci, ça va bien",
+                "Merci, au revoir",
+                "Non merci",
+                "Je suis malade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« gut » = bien."
+            },
+            {
+              "id": "q7",
+              "question": "Tu présentes ton parcours : « Ich komme aus der Provence. » C'est :",
+              "type": "single_choice",
+              "options": [
+                "Une région d'origine en France",
+                "Un plat allemand",
+                "Un métier",
+                "Une matière scolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indication géographique de Herkunft."
+            },
+            {
+              "id": "q8",
+              "question": "« Das ist Herr Bauer, mein Betreuer. » Betreuer =",
+              "type": "single_choice",
+              "options": [
+                "Ton tuteur de stage",
+                "Ton cousin",
+                "Le facteur",
+                "Un étranger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Betreuer » = encadrant / tuteur."
+            },
+            {
+              "id": "q9",
+              "question": "Avec « Sie », « kommen » se conjugue :",
+              "type": "single_choice",
+              "options": ["Sie kommen", "Sie kommst", "Sie komme", "Sie kommt"],
+              "correctAnswers": [0],
+              "explanation": "Politesse « Sie » → verbe comme « sie » pluriel : « kommen »."
+            },
+            {
+              "id": "q10",
+              "question": "« Ich heiße Amina und ich bin Schülerin. » Deux infos :",
+              "type": "single_choice",
+              "options": [
+                "Prénom + statut d'élève",
+                "Age + adresse",
+                "Métier + salaire",
+                "Sport + musique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation nom + qualité d'élève."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Se présenter en détail",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles informations donne « Ich bin … und komme aus … » ?",
+              "type": "multiple_choice",
+              "options": [
+                "Une identité ou un statut",
+                "Une ville ou un pays d'origine",
+                "Un loisir et une heure",
+                "Une couleur et un nombre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On enchaîne souvent qui l'on est et d'où l'on vient."
+            },
+            {
+              "id": "q2",
+              "question": "« Meine Muttersprache ist Französisch. » Tu dis :",
+              "type": "single_choice",
+              "options": [
+                "Ta langue maternelle est le français",
+                "Tu parles allemand natif",
+                "Tu es muet",
+                "Tu es prof d'allemand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Muttersprache » = langue maternelle."
+            },
+            {
+              "id": "q3",
+              "question": "Demander l'origine à un adulte :",
+              "type": "single_choice",
+              "options": [
+                "Woher kommen Sie?",
+                "Woher kommst du?",
+                "Wie heißt du?",
+                "Was ist das?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adulte inconnu → « Sie »."
+            },
+            {
+              "id": "q4",
+              "question": "« Ich lerne Deutsch in der Schule. » Où apprends-tu l'allemand ?",
+              "type": "single_choice",
+              "options": [
+                "À l'école",
+                "Au supermarché",
+                "Dans l'espace",
+                "Nulle part"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« in der Schule » = à l'école."
+            },
+            {
+              "id": "q5",
+              "question": "Phrase pour dire que tu es stagiaire :",
+              "type": "single_choice",
+              "options": [
+                "Ich mache hier ein Praktikum.",
+                "Ich bin König.",
+                "Ich kaufe Aktien.",
+                "Ich fliege nach Mars."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ein Praktikum machen » = faire un stage."
+            },
+            {
+              "id": "q6",
+              "question": "« Hallo, ich bin der neue Praktikant. » Tu es :",
+              "type": "single_choice",
+              "options": [
+                "Le nouveau stagiaire (garçon)",
+                "La directrice",
+                "Un robot",
+                "Un client"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Praktikant » = stagiaire (masculin)."
+            },
+            {
+              "id": "q7",
+              "question": "« Guten Tag zusammen! » Tu salues :",
+              "type": "single_choice",
+              "options": [
+                "Un groupe",
+                "Une seule personne la nuit",
+                "Personne",
+                "Un animal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« zusammen » = ensemble, tout le groupe."
+            },
+            {
+              "id": "q8",
+              "question": "Réponse à « Und du? » après avoir parlé de toi :",
+              "type": "single_choice",
+              "options": [
+                "Et toi ? (on attend la réponse de l'autre)",
+                "Au revoir",
+                "Merci beaucoup",
+                "De rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Und du? » relance la conversation vers l'interlocuteur."
+            },
+            {
+              "id": "q9",
+              "question": "« Ich möchte wissen, wo die Toilette ist. » Tu veux :",
+              "type": "single_choice",
+              "options": [
+                "Savoir où sont les toilettes",
+                "Manger",
+                "Dormir",
+                "Conduire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question pratique en entreprise."
+            },
+            {
+              "id": "q10",
+              "question": "« Mein Nachname ist Dubois. » C'est :",
+              "type": "single_choice",
+              "options": [
+                "Ton nom de famille",
+                "Ton prénom seul",
+                "Ton surnom",
+                "Ta rue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Nachname » = nom de famille."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Échanges avec l'équipe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux salutations adaptées à 8 h au open-space :",
+              "type": "multiple_choice",
+              "options": [
+                "Guten Morgen!",
+                "Hallo!",
+                "Gute Nacht!",
+                "Schlaf gut!"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Matin : « Guten Morgen » ou « Hallo » professionnel."
+            },
+            {
+              "id": "q2",
+              "question": "« Arbeitest du auch im Marketing? » On te demande si tu :",
+              "type": "single_choice",
+              "options": [
+                "Travailles aussi au marketing",
+                "Vis en marketing",
+                "Manges du marketing",
+                "Détestes le stage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« auch im Marketing » = aussi dans le service marketing."
+            },
+            {
+              "id": "q3",
+              "question": "Présenter une camarade : « Das ist meine Mitschülerin ... »",
+              "type": "single_choice",
+              "options": [
+                "Une camarade de classe",
+                "Ta grand-mère",
+                "Le directeur",
+                "Un passant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mitschülerin » = camarade de classe (féminin)."
+            },
+            {
+              "id": "q4",
+              "question": "« Wo ist Ihr Arbeitsplatz? » (poli) =",
+              "type": "single_choice",
+              "options": [
+                "Où est votre poste de travail ?",
+                "Quelle est votre nationalité ?",
+                "Avez-vous faim ?",
+                "Parlez-vous latin ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Arbeitsplatz » = poste / lieu de travail."
+            },
+            {
+              "id": "q5",
+              "question": "Tu réponds en « du » : « Ja, ich helfe dir gern. »",
+              "type": "single_choice",
+              "options": [
+                "Tu acceptes d'aider ton pair",
+                "Tu refuses",
+                "Tu pars",
+                "Tu insultes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« dir helfen » = t'aider (datif)."
+            },
+            {
+              "id": "q6",
+              "question": "« Ich bin heute zum ersten Mal da. » C'est :",
+              "type": "single_choice",
+              "options": [
+                "Ton premier jour sur place",
+                "Ton dernier jour",
+                "Un jour férié",
+                "Un rêve"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« zum ersten Mal » = pour la première fois."
+            },
+            {
+              "id": "q7",
+              "question": "Formule pour dire « Ravi de te voir » à un ami de stage :",
+              "type": "single_choice",
+              "options": [
+                "Schön, dich zu sehen.",
+                "Schön, Sie zu sehen.",
+                "Tschüss, dich.",
+                "Gute Nacht, dich."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« dich » = tutoiement."
+            },
+            {
+              "id": "q8",
+              "question": "« Unsere Schule hat einen Austausch. » Parle de :",
+              "type": "single_choice",
+              "options": [
+                "Un échange scolaire",
+                "Un match de foot uniquement",
+                "Une grève",
+                "Une vente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Austausch » = échange (programme scolaire)."
+            },
+            {
+              "id": "q9",
+              "question": "« Sprechen Sie bitte deutlich. » Tu demandes :",
+              "type": "single_choice",
+              "options": [
+                "De parler clairement",
+                "De crier",
+                "De se taire forever",
+                "De écrire en chinois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« deutlich » = clairement."
+            },
+            {
+              "id": "q10",
+              "question": "« Ich heiße ... und komme aus Belgien. » Deux thèmes :",
+              "type": "single_choice",
+              "options": [
+                "Nom + origine",
+                "Couleur + taille",
+                "Prix + heure",
+                "Animal + fruit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation classique nom + Herkunft."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Contexte Praktikum",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux mots liés au stage en entreprise :",
+              "type": "multiple_choice",
+              "options": ["Praktikum", "Betrieb", "Schwimmbad", "Kino"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Praktikum » = stage ; « Betrieb » = entreprise."
+            },
+            {
+              "id": "q2",
+              "question": "« Ich möchte meine Aufgaben kennenlernen. » Tu veux :",
+              "type": "single_choice",
+              "options": [
+                "Découvrir tes missions",
+                "Partir en voyage",
+                "Acheter des chaussures",
+                "Regarder la TV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Aufgaben » = tâches / missions."
+            },
+            {
+              "id": "q3",
+              "question": "Répondre à « Bist du nervös? » — un peu :",
+              "type": "single_choice",
+              "options": [
+                "Ja, ein bisschen.",
+                "Nein, ich bin ein Auto.",
+                "Vielleicht nie.",
+                "Ich bin Pizza."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ein bisschen nervös » = un peu stressé."
+            },
+            {
+              "id": "q4",
+              "question": "« Der Chef begrüßt uns. » Le chef :",
+              "type": "single_choice",
+              "options": [
+                "Nous accueille / salue",
+                "Nous licencie",
+                "Dort",
+                "Cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« begrüßen » = accueillir, saluer."
+            },
+            {
+              "id": "q5",
+              "question": "Question sur l'école en allemand :",
+              "type": "single_choice",
+              "options": [
+                "Welche Schule besuchst du?",
+                "Wie groß ist der Mond?",
+                "Was ist ein Auto?",
+                "Wo ist Paris?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Welche Schule besuchst du? » = quel établissement fréquentes-tu ?"
+            },
+            {
+              "id": "q6",
+              "question": "« Ich bin aus der dritten Klasse der Collège. » (adapté) Tu précises :",
+              "type": "single_choice",
+              "options": [
+                "Ton niveau scolaire (3e)",
+                "Ton salaire",
+                "Ta voiture",
+                "Ton film"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien avec le niveau 3e / classe."
+            },
+            {
+              "id": "q7",
+              "question": "« Können wir uns duzen? » On propose :",
+              "type": "single_choice",
+              "options": [
+                "De se tutoyer",
+                "De se battre",
+                "De se séparer",
+                "De parler anglais only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« duzen » = tutoyer."
+            },
+            {
+              "id": "q8",
+              "question": "« Meine Herkunft: mein Vater kommt aus Senegal. » Parle :",
+              "type": "single_choice",
+              "options": [
+                "Des origines familiales",
+                "Du menu cantine",
+                "Du bus",
+                "De la pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Herkunft via la famille."
+            },
+            {
+              "id": "q9",
+              "question": "Au revoir informel entre stagiaires :",
+              "type": "single_choice",
+              "options": [
+                "Tschüss, bis morgen!",
+                "Guten Tag, Herr Präsident!",
+                "Willkommen!",
+                "Herzlichen Glückwunsch!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« bis morgen » = à demain (familier pro entre jeunes)."
+            },
+            {
+              "id": "q10",
+              "question": "« Ich heiße ... Ich bin 15 und mache Praktikum. » Tu donnes :",
+              "type": "single_choice",
+              "options": [
+                "Nom, âge, activité de stage",
+                "Recette",
+                "Carte",
+                "Blague"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation complète pour un stage."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Comprendre et répondre",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux questions avec « Sie » correctes :",
+              "type": "multiple_choice",
+              "options": [
+                "Wo arbeiten Sie?",
+                "Was machen Sie hier?",
+                "Wo arbeitest du?",
+                "Was machst du hier?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Politesse : « arbeiten Sie », « machen Sie »."
+            },
+            {
+              "id": "q2",
+              "question": "« Das verstehe ich nicht. » Tu :",
+              "type": "single_choice",
+              "options": [
+                "Ne comprends pas",
+                "Comprends tout",
+                "Es très content",
+                "Pars en courant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« verstehe ... nicht » = je ne comprends pas."
+            },
+            {
+              "id": "q3",
+              "question": "« Ich möchte es noch einmal hören. » Tu veux :",
+              "type": "single_choice",
+              "options": [
+                "Réentendre une explication",
+                "Manger",
+                "Dormir",
+                "Coudre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« noch einmal hören » = entendre encore une fois."
+            },
+            {
+              "id": "q4",
+              "question": "« Kommst du aus der gleichen Schule? » On demande :",
+              "type": "single_choice",
+              "options": [
+                "Si vous êtes de la même école",
+                "Si tu as faim",
+                "L'heure",
+                "Le prix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« gleiche Schule » = même établissement."
+            },
+            {
+              "id": "q5",
+              "question": "Réponse : « Nein, ich komme aus einer anderen Stadt. »",
+              "type": "single_choice",
+              "options": [
+                "Tu viens d'une autre ville",
+                "Tu es d'ici",
+                "Tu n'existes pas",
+                "Tu es prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« andere Stadt » = autre ville."
+            },
+            {
+              "id": "q6",
+              "question": "« Guten Tag, mein Name ist ... » Registre :",
+              "type": "single_choice",
+              "options": [
+                "Formel / professionnel",
+                "Très grossier",
+                "Secret",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Introduction formelle standard."
+            },
+            {
+              "id": "q7",
+              "question": "« Ich bin Schüler, nicht Mitarbeiter. » Tu précises :",
+              "type": "single_choice",
+              "options": [
+                "Tu es élève, pas employé",
+                "Tu es patron",
+                "Tu es retraité",
+                "Tu es invisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mitarbeiter » = collaborateur salarié."
+            },
+            {
+              "id": "q8",
+              "question": "Demander le nom du tuteur (poli) :",
+              "type": "single_choice",
+              "options": [
+                "Wie heißt Ihr Betreuer?",
+                "Wie alt bist du?",
+                "Was ist los?",
+                "Wo ist Afrika?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Betreuer » = tuteur de stage."
+            },
+            {
+              "id": "q9",
+              "question": "« Freut mich, dich kennenzulernen. » Tutoiement car :",
+              "type": "single_choice",
+              "options": [
+                "Pair / collègue stagiaire",
+                "Le PDG en gala",
+                "Inconnu âgé",
+                "Juge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« dich » = contexte tutoiement entre jeunes."
+            },
+            {
+              "id": "q10",
+              "question": "« Ich wohne nicht in Deutschland, ich wohne in Frankreich. »",
+              "type": "single_choice",
+              "options": [
+                "Résidence en France",
+                "Résidence obligatoire en Allemagne",
+                "Sans domicile",
+                "Sur la lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraste pays de résidence."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan se présenter",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux phrases utiles le jour J du stage :",
+              "type": "multiple_choice",
+              "options": [
+                "Guten Tag, ich heiße ...",
+                "Ich möchte mich vorstellen.",
+                "Ich bin gestern.",
+                "Gestern tschüss."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Salutation + nom ou intention de se présenter."
+            },
+            {
+              "id": "q2",
+              "question": "Choisir « Sie » : tu parles à :",
+              "type": "single_choice",
+              "options": [
+                "La responsable RH adulte",
+                "Ton copain stagiaire",
+                "Ta sœur",
+                "Un ami d'enfance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adulte professionnel → « Sie »."
+            },
+            {
+              "id": "q3",
+              "question": "« Woher kommt ihr? » (vous plusieurs) demande :",
+              "type": "single_choice",
+              "options": [
+                "D'où venez-vous (groupe)",
+                "D'où viens-tu seul",
+                "Quelle heure",
+                "Quel âge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ihr » = vous (pluriel familier)."
+            },
+            {
+              "id": "q4",
+              "question": "« Meine Schule liegt in der Innenstadt. » La school :",
+              "type": "single_choice",
+              "options": [
+                "Est en centre-ville",
+                "Est sous l'eau",
+                "N'existe pas",
+                "Est en Allemagne seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Innenstadt » = centre-ville."
+            },
+            {
+              "id": "q5",
+              "question": "« Ich spreche Französisch und ein bisschen Deutsch. »",
+              "type": "single_choice",
+              "options": ["Langues parlées", "Sports", "Plats", "Couleurs"],
+              "correctAnswers": [0],
+              "explanation": "Indication de compétences linguistiques."
+            },
+            {
+              "id": "q6",
+              "question": "« Auf Wiedersehen und vielen Dank! » Tu :",
+              "type": "single_choice",
+              "options": ["Prends congé poliment", "Arrives", "Manges", "Dors"],
+              "correctAnswers": [0],
+              "explanation": "Au revoir + remerciement."
+            },
+            {
+              "id": "q7",
+              "question": "« Das ist meine E-Mail-Adresse. » Tu donnes :",
+              "type": "single_choice",
+              "options": [
+                "Ton adresse mail",
+                "Ton poids",
+                "Ta taille de chaussure",
+                "Ton numéro de maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coordonnée professionnelle courante."
+            },
+            {
+              "id": "q8",
+              "question": "« Ich bin hier, um zu lernen. » Motivation :",
+              "type": "single_choice",
+              "options": [
+                "Apprendre en stage",
+                "Gagner des millions",
+                "Dormir",
+                "Ne rien faire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« um zu lernen » = pour apprendre."
+            },
+            {
+              "id": "q9",
+              "question": "En stage, pour répondre à un camarade qui demande « Wie heißt du? », on dit :",
+              "type": "single_choice",
+              "options": [
+                "Ich heiße Max.",
+                "Sie heißen Max.",
+                "Er heiße Max.",
+                "Du heißt Max."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On répond avec « ich »."
+            },
+            {
+              "id": "q10",
+              "question": "« Herkunft und Schule » dans ta présentation, c'est :",
+              "type": "single_choice",
+              "options": [
+                "Origine + établissement scolaire",
+                "Musique + sport",
+                "Argent + voiture",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thèmes clés du chapitre 3e stage."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Mots du quotidien en stage",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux traductions correctes de « le bureau » (lieu de travail) :",
+              "type": "multiple_choice",
+              "options": [
+                "das Büro",
+                "der Arbeitsraum",
+                "die Schule",
+                "das Schwimmbad"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Büro » ou « Arbeitsraum » = espace de travail."
+            },
+            {
+              "id": "q2",
+              "question": "« der Computer » est :",
+              "type": "single_choice",
+              "options": ["Masculin", "Féminin", "Neutre", "Pluriel only"],
+              "correctAnswers": [0],
+              "explanation": "Article « der » → masculin."
+            },
+            {
+              "id": "q3",
+              "question": "« die Pause » signifie :",
+              "type": "single_choice",
+              "options": ["La pause", "La porte", "La peur", "Le pain"],
+              "correctAnswers": [0],
+              "explanation": "Pause café / déjeuner au travail."
+            },
+            {
+              "id": "q4",
+              "question": "« Ich möchte Wasser, bitte. » Tu demandes :",
+              "type": "single_choice",
+              "options": ["De l'eau", "Du pain", "Un vélo", "Un chat"],
+              "correctAnswers": [0],
+              "explanation": "« Wasser » = eau."
+            },
+            {
+              "id": "q5",
+              "question": "« der Stift » =",
+              "type": "single_choice",
+              "options": [
+                "Le stylo",
+                "Le stylo plume only",
+                "La gomme",
+                "Le tableau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil pour noter pendant le stage."
+            },
+            {
+              "id": "q6",
+              "question": "« das Formular » tu le remplis pour :",
+              "type": "single_choice",
+              "options": [
+                "Un document administratif",
+                "Un sport",
+                "Un jeu",
+                "Une chanson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formulaire d'accueil stage fréquent."
+            },
+            {
+              "id": "q7",
+              "question": "« die Kantine » c'est :",
+              "type": "single_choice",
+              "options": [
+                "La cantine",
+                "La cuisine à la maison",
+                "Le parking",
+                "Le toit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu de repas en entreprise."
+            },
+            {
+              "id": "q8",
+              "question": "« heute » =",
+              "type": "single_choice",
+              "options": ["Aujourd'hui", "Hier", "Demain", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe de temps basique."
+            },
+            {
+              "id": "q9",
+              "question": "« morgen » (adverbe) =",
+              "type": "single_choice",
+              "options": ["Demain", "Le matin", "Le soir", "L'an"],
+              "correctAnswers": [0],
+              "explanation": "« morgen » sans article = demain."
+            },
+            {
+              "id": "q10",
+              "question": "« die Uhr » pour demander l'heure :",
+              "type": "single_choice",
+              "options": [
+                "Wie spät ist es? / die Uhr",
+                "Wie alt?",
+                "Woher?",
+                "Warum?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Uhr » = horloge / heure."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Articles et noms",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux noms féminins avec « die » :",
+              "type": "multiple_choice",
+              "options": ["die Tasche", "die Firma", "der Tisch", "das Buch"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Tasche » (sac) et « Firma » (entreprise) sont féminins."
+            },
+            {
+              "id": "q2",
+              "question": "« das Handy » =",
+              "type": "single_choice",
+              "options": [
+                "Le téléphone portable",
+                "La main",
+                "Le ordinateur fixe",
+                "La radio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Neutre : « das Handy »."
+            },
+            {
+              "id": "q3",
+              "question": "« der Ausweis » sert à :",
+              "type": "single_choice",
+              "options": ["Prouver ton identité", "Manger", "Dormir", "Nager"],
+              "correctAnswers": [0],
+              "explanation": "Badge / carte d'identité en entreprise."
+            },
+            {
+              "id": "q4",
+              "question": "« die Adresse » =",
+              "type": "single_choice",
+              "options": ["L'adresse", "L'âge", "L'ami", "L'arc"],
+              "correctAnswers": [0],
+              "explanation": "Coordonnée utile pour la fiche stage."
+            },
+            {
+              "id": "q5",
+              "question": "« ein Kollege » (m) =",
+              "type": "single_choice",
+              "options": [
+                "Un collègue",
+                "Une collègue",
+                "Un client",
+                "Un enfant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Collègue masculin."
+            },
+            {
+              "id": "q6",
+              "question": "« eine Kollegin » =",
+              "type": "single_choice",
+              "options": [
+                "Une collègue (f)",
+                "Un collègue (m)",
+                "Un stagiaire",
+                "Un prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Féminin avec « eine »."
+            },
+            {
+              "id": "q7",
+              "question": "« das Team » est :",
+              "type": "single_choice",
+              "options": ["Neutre", "Masculin", "Féminin", "Verbe"],
+              "correctAnswers": [0],
+              "explanation": "Emprunt : « das Team »."
+            },
+            {
+              "id": "q8",
+              "question": "« der Eingang » =",
+              "type": "single_choice",
+              "options": ["L'entrée", "La sortie", "Le plafond", "Le sol"],
+              "correctAnswers": [0],
+              "explanation": "Premier jour : trouver l'entrée."
+            },
+            {
+              "id": "q9",
+              "question": "« die Tür » =",
+              "type": "single_choice",
+              "options": ["La porte", "La tour", "La douleur", "La table"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire bâtiment."
+            },
+            {
+              "id": "q10",
+              "question": "« der Aufzug » =",
+              "type": "single_choice",
+              "options": ["L'ascenseur", "L'escalier", "Le bus", "Le train"],
+              "correctAnswers": [0],
+              "explanation": "Se déplacer dans l'immeuble."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Verbes essentiels",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux formes correctes de « pouvoir » (poli) :",
+              "type": "multiple_choice",
+              "options": [
+                "Können Sie ...?",
+                "Ich kann ...",
+                "Ich könnt ...",
+                "Du kann ..."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Können Sie » (question) et « ich kann » (indicatif)."
+            },
+            {
+              "id": "q2",
+              "question": "« ich arbeite » =",
+              "type": "single_choice",
+              "options": ["Je travaille", "Je mange", "Je dors", "Je pars"],
+              "correctAnswers": [0],
+              "explanation": "« arbeiten » = travailler."
+            },
+            {
+              "id": "q3",
+              "question": "« du lernst » =",
+              "type": "single_choice",
+              "options": ["Tu apprends", "Tu lis", "Tu vends", "Tu cries"],
+              "correctAnswers": [0],
+              "explanation": "« lernen » = apprendre (stage + école)."
+            },
+            {
+              "id": "q4",
+              "question": "« wir helfen » =",
+              "type": "single_choice",
+              "options": [
+                "Nous aidons",
+                "Nous fuyons",
+                "Nous oublions",
+                "Nous payons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« helfen » = aider."
+            },
+            {
+              "id": "q5",
+              "question": "« er fragt » =",
+              "type": "single_choice",
+              "options": ["Il demande", "Il répond", "Il court", "Il chante"],
+              "correctAnswers": [0],
+              "explanation": "« fragen » = demander."
+            },
+            {
+              "id": "q6",
+              "question": "« ich schreibe » (e-mail) =",
+              "type": "single_choice",
+              "options": [
+                "J'écris",
+                "Je lis seulement",
+                "Je efface",
+                "Je imprime only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« schreiben » = écrire."
+            },
+            {
+              "id": "q7",
+              "question": "« du kommst » =",
+              "type": "single_choice",
+              "options": ["Tu viens", "Tu deviens", "Tu prends", "Tu fermes"],
+              "correctAnswers": [0],
+              "explanation": "« kommen » = venir."
+            },
+            {
+              "id": "q8",
+              "question": "« Sie warten » (poli) =",
+              "type": "single_choice",
+              "options": [
+                "Vous attendez",
+                "Vous partez",
+                "Vous dormez",
+                "Vous nagez"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« warten » = attendre (réception)."
+            },
+            {
+              "id": "q9",
+              "question": "« ich verstehe » =",
+              "type": "single_choice",
+              "options": ["Je comprends", "Je perds", "Je vends", "Je casse"],
+              "correctAnswers": [0],
+              "explanation": "Essentiel en immersion légère."
+            },
+            {
+              "id": "q10",
+              "question": "« ich möchte » + infinitif =",
+              "type": "single_choice",
+              "options": [
+                "Je voudrais ...",
+                "Je suis ...",
+                "J'étais ...",
+                "Je serai ..."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure modale du chapitre."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Nombres et heures",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux nombres entre 13 et 20 :",
+              "type": "multiple_choice",
+              "options": ["vierzehn", "siebzehn", "drei", "hundert"],
+              "correctAnswers": [0, 1],
+              "explanation": "14 et 17 — âge scolaire / horaires."
+            },
+            {
+              "id": "q2",
+              "question": "« acht Uhr » =",
+              "type": "single_choice",
+              "options": ["8 heures", "18 heures", "8 euros", "8 jours"],
+              "correctAnswers": [0],
+              "explanation": "« Uhr » après l'heure."
+            },
+            {
+              "id": "q3",
+              "question": "« halb neun » =",
+              "type": "single_choice",
+              "options": ["8 h 30", "9 h 30", "9 h", "4 h 30"],
+              "correctAnswers": [0],
+              "explanation": "Allemand : half before nine = 8:30."
+            },
+            {
+              "id": "q4",
+              "question": "« zwanzig » =",
+              "type": "single_choice",
+              "options": ["20", "12", "2", "200"],
+              "correctAnswers": [0],
+              "explanation": "Vingt — durées, âges."
+            },
+            {
+              "id": "q5",
+              "question": "« der Montag » =",
+              "type": "single_choice",
+              "options": ["Lundi", "Mardi", "Dimanche", "Mardi soir"],
+              "correctAnswers": [0],
+              "explanation": "Jours de stage."
+            },
+            {
+              "id": "q6",
+              "question": "« die Woche » =",
+              "type": "single_choice",
+              "options": ["La semaine", "La weekend", "L'heure", "La minute"],
+              "correctAnswers": [0],
+              "explanation": "« zwei Wochen Praktikum »."
+            },
+            {
+              "id": "q7",
+              "question": "« um neun » (beginnt) =",
+              "type": "single_choice",
+              "options": ["À 9 h", "En 9 jours", "9 euros", "Neuf fois"],
+              "correctAnswers": [0],
+              "explanation": "« um » + heure."
+            },
+            {
+              "id": "q8",
+              "question": "« der Freitag » =",
+              "type": "single_choice",
+              "options": ["Vendredi", "Lundi", "Jeudi", "Mercredi"],
+              "correctAnswers": [0],
+              "explanation": "Fin de semaine scolaire/pro."
+            },
+            {
+              "id": "q9",
+              "question": "« sechzehn » =",
+              "type": "single_choice",
+              "options": ["16", "60", "6", "61"],
+              "correctAnswers": [0],
+              "explanation": "Nombre pour l'âge."
+            },
+            {
+              "id": "q10",
+              "question": "« Von ... bis ... » indique :",
+              "type": "single_choice",
+              "options": [
+                "De ... à ... (horaire)",
+                "Sans ...",
+                "Contre ...",
+                "Sous ..."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plage horaire de stage."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Adjectifs et contraires",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux antonymes utiles :",
+              "type": "multiple_choice",
+              "options": [
+                "schnell / langsam",
+                "groß / klein",
+                "schnell / schnell",
+                "lang / lang"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rapide/lent, grand/petit."
+            },
+            {
+              "id": "q2",
+              "question": "« müde » =",
+              "type": "single_choice",
+              "options": ["Fatigué", "Content", "En colère", "Riche"],
+              "correctAnswers": [0],
+              "explanation": "Longue journée de stage."
+            },
+            {
+              "id": "q3",
+              "question": "« wichtig » =",
+              "type": "single_choice",
+              "options": ["Important", "Inutile", "Drôle", "Bleu"],
+              "correctAnswers": [0],
+              "explanation": "Consigne importante du tuteur."
+            },
+            {
+              "id": "q4",
+              "question": "« neu » (der Kollege) =",
+              "type": "single_choice",
+              "options": ["Nouveau", "Vieux", "Lent", "Fermé"],
+              "correctAnswers": [0],
+              "explanation": "« neu » = nouveau."
+            },
+            {
+              "id": "q5",
+              "question": "« ruhig » (bitte) =",
+              "type": "single_choice",
+              "options": ["Calme", "Bruyant", "Sale", "Chaud"],
+              "correctAnswers": [0],
+              "explanation": "« Sei ruhig » en open-space parfois."
+            },
+            {
+              "id": "q6",
+              "question": "« klar » (Das ist klar.) =",
+              "type": "single_choice",
+              "options": [
+                "C'est clair",
+                "C'est flou",
+                "C'est loin",
+                "C'est cher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compréhension d'une consigne."
+            },
+            {
+              "id": "q7",
+              "question": "« freundlich » =",
+              "type": "single_choice",
+              "options": ["Amical / aimable", "Méchant", "Triste", "Vide"],
+              "correctAnswers": [0],
+              "explanation": "Accueil « freundlich »."
+            },
+            {
+              "id": "q8",
+              "question": "« schwierig » (die Aufgabe) =",
+              "type": "single_choice",
+              "options": ["Difficile", "Facile", "Gratuit", "Rapide"],
+              "correctAnswers": [0],
+              "explanation": "Mission de stage."
+            },
+            {
+              "id": "q9",
+              "question": "« einfach » =",
+              "type": "single_choice",
+              "options": ["Simple / facile", "Compliqué", "Lourd", "Noir"],
+              "correctAnswers": [0],
+              "explanation": "Contraire de schwierig."
+            },
+            {
+              "id": "q10",
+              "question": "« gut » (Das ist gut.) =",
+              "type": "single_choice",
+              "options": ["Bon / bien", "Mauvais", "Petit", "Fermé"],
+              "correctAnswers": [0],
+              "explanation": "Feedback positif."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Prépositions et lieux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux prépositions de lieu avec « in » :",
+              "type": "multiple_choice",
+              "options": [
+                "in der Schule",
+                "im Büro",
+                "auf dem Mond ohne Sinn",
+                "in der Pizza"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« in der Schule », « im Büro » (in + dem)."
+            },
+            {
+              "id": "q2",
+              "question": "« im Betrieb » =",
+              "type": "single_choice",
+              "options": [
+                "Dans l'entreprise",
+                "Dehors",
+                "À la plage",
+                "Dans l'espace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« im » = in dem."
+            },
+            {
+              "id": "q3",
+              "question": "« auf der Station » (accueil) ≈",
+              "type": "single_choice",
+              "options": [
+                "À l'accueil / poste",
+                "Sous terre",
+                "Dans l'avion",
+                "Dans le fleuve"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poste d'accueil (contexte simplifié)."
+            },
+            {
+              "id": "q4",
+              "question": "« neben » =",
+              "type": "single_choice",
+              "options": ["À côté de", "Derrière", "Loin de", "Au-dessus"],
+              "correctAnswers": [0],
+              "explanation": "Place à côté d'un collègue."
+            },
+            {
+              "id": "q5",
+              "question": "« hier » =",
+              "type": "single_choice",
+              "options": ["Ici", "Là-bas", "Partout", "Nulle part"],
+              "correctAnswers": [0],
+              "explanation": "« Ich bin hier »."
+            },
+            {
+              "id": "q6",
+              "question": "« dort » =",
+              "type": "single_choice",
+              "options": ["Là-bas", "Ici", "Hier", "Dehors only"],
+              "correctAnswers": [0],
+              "explanation": "Pointer un bureau."
+            },
+            {
+              "id": "q7",
+              "question": "« zu » (gehe zu meinem Betreuer) =",
+              "type": "single_choice",
+              "options": ["Vers / chez", "Sans", "Contre", "Sous"],
+              "correctAnswers": [0],
+              "explanation": "Aller voir le tuteur."
+            },
+            {
+              "id": "q8",
+              "question": "« aus » (komme aus ...) Herkunft =",
+              "type": "single_choice",
+              "options": ["De / provenant de", "Vers", "Dans", "Sur"],
+              "correctAnswers": [0],
+              "explanation": "Origine géographique."
+            },
+            {
+              "id": "q9",
+              "question": "« mit » (mit dem Bus) =",
+              "type": "single_choice",
+              "options": ["Avec / en (transport)", "Sans", "Pour", "Chez"],
+              "correctAnswers": [0],
+              "explanation": "Trajet vers le stage."
+            },
+            {
+              "id": "q10",
+              "question": "« bei » (bei der Firma) =",
+              "type": "single_choice",
+              "options": ["Chez / au sein de", "Malgré", "Sans", "Après"],
+              "correctAnswers": [0],
+              "explanation": "« bei der Firma » = dans l'entreprise."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Phrases utiles au stage",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux demandes polies avec « bitte » :",
+              "type": "multiple_choice",
+              "options": [
+                "Helfen Sie mir, bitte.",
+                "Können Sie das wiederholen, bitte?",
+                "Geh weg!",
+                "Sei leise forever"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Aide ou répétition avec « bitte »."
+            },
+            {
+              "id": "q2",
+              "question": "« Ich habe eine Frage. » =",
+              "type": "single_choice",
+              "options": [
+                "J'ai une question",
+                "J'ai faim",
+                "J'ai peur du dark",
+                "Je n'ai rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« eine Frage » = une question."
+            },
+            {
+              "id": "q3",
+              "question": "« Wo finde ich ...? » =",
+              "type": "single_choice",
+              "options": [
+                "Où est-ce que je trouve ... ?",
+                "Pourquoi ... ?",
+                "Combien ... ?",
+                "Qui ... ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orientation dans les locaux."
+            },
+            {
+              "id": "q4",
+              "question": "« Das ist mein Platz. » =",
+              "type": "single_choice",
+              "options": [
+                "C'est ma place (poste)",
+                "C'est ton argent",
+                "C'est la mer",
+                "C'est fini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Platz » = place assise / poste."
+            },
+            {
+              "id": "q5",
+              "question": "« Ich bin pünktlich. » =",
+              "type": "single_choice",
+              "options": [
+                "Je suis à l'heure",
+                "Je suis en retard",
+                "Je suis malade",
+                "Je suis absent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« pünktlich » = ponctuel."
+            },
+            {
+              "id": "q6",
+              "question": "« Entschuldigung, ich bin zu spät. » =",
+              "type": "single_choice",
+              "options": [
+                "Désolé, je suis en retard",
+                "Merci",
+                "Bonjour",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« zu spät » = en retard."
+            },
+            {
+              "id": "q7",
+              "question": "« Kein Problem. » =",
+              "type": "single_choice",
+              "options": [
+                "Pas de problème",
+                "Gros problème",
+                "Interdit",
+                "Danger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse rassurante."
+            },
+            {
+              "id": "q8",
+              "question": "« Ich notiere das. » =",
+              "type": "single_choice",
+              "options": ["Je note cela", "J'oublie", "Je ris", "Je pars"],
+              "correctAnswers": [0],
+              "explanation": "« notieren » = noter."
+            },
+            {
+              "id": "q9",
+              "question": "« Alles klar! » (familier pro) =",
+              "type": "single_choice",
+              "options": [
+                "OK, compris !",
+                "Tout flou",
+                "Tout perdu",
+                "Tout interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression courante entre collègues."
+            },
+            {
+              "id": "q10",
+              "question": "« Bis später! » =",
+              "type": "single_choice",
+              "options": [
+                "À plus tard !",
+                "Bonne nuit",
+                "Bon voyage",
+                "Bon anniversaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quitter temporairement le service."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Vocabulaire école + entreprise",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux mots liés à l'école :",
+              "type": "multiple_choice",
+              "options": [
+                "der Unterricht",
+                "die Klasse",
+                "der Urlaub",
+                "das Meer"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Unterricht » = cours ; « Klasse » = classe."
+            },
+            {
+              "id": "q2",
+              "question": "« das Fach » =",
+              "type": "single_choice",
+              "options": [
+                "La matière (scolaire)",
+                "La porte",
+                "Le facteur",
+                "Le vélo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. : Deutsch als Fach."
+            },
+            {
+              "id": "q3",
+              "question": "« die Hausaufgabe » =",
+              "type": "single_choice",
+              "options": ["Les devoirs", "La maison", "Le chien", "Le stage"],
+              "correctAnswers": [0],
+              "explanation": "Devoirs après l'école."
+            },
+            {
+              "id": "q4",
+              "question": "« der Chef / die Chefin » =",
+              "type": "single_choice",
+              "options": [
+                "Le/la responsable",
+                "Le stagiaire",
+                "L'élève",
+                "Le passant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patron / cheffe d'équipe."
+            },
+            {
+              "id": "q5",
+              "question": "« die Besprechung » =",
+              "type": "single_choice",
+              "options": ["La réunion", "La promenade", "La sieste", "La fête"],
+              "correctAnswers": [0],
+              "explanation": "Réunion d'équipe."
+            },
+            {
+              "id": "q6",
+              "question": "« das Projekt » =",
+              "type": "single_choice",
+              "options": [
+                "Le projet",
+                "Le produit fini only",
+                "Le problème",
+                "Le prix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mission projet en stage."
+            },
+            {
+              "id": "q7",
+              "question": "« die E-Mail » =",
+              "type": "single_choice",
+              "options": [
+                "Le courriel",
+                "La lettre papier only",
+                "Le télégramme",
+                "Le fax only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Communication pro."
+            },
+            {
+              "id": "q8",
+              "question": "« der Termin » =",
+              "type": "single_choice",
+              "options": [
+                "Le rendez-vous",
+                "La fin du monde",
+                "Le terrain",
+                "Le terme latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "RDV avec le Betreuer."
+            },
+            {
+              "id": "q9",
+              "question": "« die Schule » ≠ « die Firma » :",
+              "type": "single_choice",
+              "options": [
+                "École vs entreprise",
+                "Même chose",
+                "Deux sports",
+                "Deux plats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction des lieux 3e."
+            },
+            {
+              "id": "q10",
+              "question": "« der Stundenplan » =",
+              "type": "single_choice",
+              "options": [
+                "L'emploi du temps",
+                "Le plan de ville",
+                "Le plan de maison",
+                "La carte bancaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Horaire des cours à l'école."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Mots interrogatifs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux mots interrogatifs :",
+              "type": "multiple_choice",
+              "options": ["Wo?", "Was?", "Tisch", "Stift"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Wo? » = où ; « Was? » = quoi."
+            },
+            {
+              "id": "q2",
+              "question": "« Wer? » =",
+              "type": "single_choice",
+              "options": ["Qui ?", "Où ?", "Quand ?", "Comment ?"],
+              "correctAnswers": [0],
+              "explanation": "Personne : « Wer ist das? »"
+            },
+            {
+              "id": "q3",
+              "question": "« Wann? » =",
+              "type": "single_choice",
+              "options": ["Quand ?", "Pourquoi ?", "Combien ?", "Quel ?"],
+              "correctAnswers": [0],
+              "explanation": "Heure / date de réunion."
+            },
+            {
+              "id": "q4",
+              "question": "« Wie? » (Wie geht's?) =",
+              "type": "single_choice",
+              "options": ["Comment ?", "Pourquoi ?", "Où ?", "Qui ?"],
+              "correctAnswers": [0],
+              "explanation": "« Wie » = comment."
+            },
+            {
+              "id": "q5",
+              "question": "« Warum? » =",
+              "type": "single_choice",
+              "options": ["Pourquoi ?", "Où ?", "Qui ?", "Quoi ?"],
+              "correctAnswers": [0],
+              "explanation": "Raison d'une consigne."
+            },
+            {
+              "id": "q6",
+              "question": "« Woher? » lié à Herkunft =",
+              "type": "single_choice",
+              "options": [
+                "D'où ? (provenance)",
+                "Où ? (position)",
+                "Quand ?",
+                "Combien ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Différent de « Wo? » (position)."
+            },
+            {
+              "id": "q7",
+              "question": "« Wohin? » =",
+              "type": "single_choice",
+              "options": [
+                "Vers où ? (direction)",
+                "D'où ?",
+                "Pourquoi ?",
+                "Qui ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Wohin gehst du? » direction."
+            },
+            {
+              "id": "q8",
+              "question": "« Wie viel? » / « Wie viele? » =",
+              "type": "single_choice",
+              "options": ["Combien ?", "Comment ?", "Où ?", "Quel ?"],
+              "correctAnswers": [0],
+              "explanation": "Quantité ou nombre."
+            },
+            {
+              "id": "q9",
+              "question": "« Welche ...? » =",
+              "type": "single_choice",
+              "options": [
+                "Quel / quelle ... ?",
+                "Pourquoi ?",
+                "Comment ?",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Welche Schule? »"
+            },
+            {
+              "id": "q10",
+              "question": "« Was machen Sie? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Que faites-vous ? / Votre activité",
+                "Quelle couleur",
+                "Quel poids",
+                "Quelle planète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Activité professionnelle ou tâche."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision mots essentiels",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux expressions de remerciement / réponse :",
+              "type": "multiple_choice",
+              "options": [
+                "Danke schön",
+                "Bitte schön",
+                "Tschüss tschüss",
+                "Na und"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Merci / de rien (je vous en prie)."
+            },
+            {
+              "id": "q2",
+              "question": "« die Herkunft » =",
+              "type": "single_choice",
+              "options": [
+                "L'origine",
+                "La hauteur",
+                "La couleur",
+                "La vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot clé du programme 3e."
+            },
+            {
+              "id": "q3",
+              "question": "« das Praktikum » =",
+              "type": "single_choice",
+              "options": [
+                "Le stage",
+                "Le prêt bancaire",
+                "Le pratique sport",
+                "La pratique interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stage en entreprise."
+            },
+            {
+              "id": "q4",
+              "question": "« ich heiße / mein Name ist » =",
+              "type": "single_choice",
+              "options": ["Se présenter (nom)", "Partir", "Manger", "Dormir"],
+              "correctAnswers": [0],
+              "explanation": "Formules de présentation."
+            },
+            {
+              "id": "q5",
+              "question": "« du / Sie » marquent :",
+              "type": "single_choice",
+              "options": [
+                "Tutoiement vs vouvoiement",
+                "Pluriel vs singulier only",
+                "Passé vs futur",
+                "Couleur vs forme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Registre de politesse allemand."
+            },
+            {
+              "id": "q6",
+              "question": "« die Notiz » =",
+              "type": "single_choice",
+              "options": [
+                "La note (écrite)",
+                "La musique",
+                "Le nœud",
+                "La nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prise de notes au stage."
+            },
+            {
+              "id": "q7",
+              "question": "« der Fehler » =",
+              "type": "single_choice",
+              "options": ["L'erreur", "La fête", "Le fer", "La peur"],
+              "correctAnswers": [0],
+              "explanation": "« Einen Fehler machen »."
+            },
+            {
+              "id": "q8",
+              "question": "« die Antwort » =",
+              "type": "single_choice",
+              "options": ["La réponse", "La question", "L'entrée", "La sortie"],
+              "correctAnswers": [0],
+              "explanation": "Répondre à « eine Frage »."
+            },
+            {
+              "id": "q9",
+              "question": "« zusammen » =",
+              "type": "single_choice",
+              "options": ["Ensemble", "Séparément", "Hier", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "Travailler « zusammen » en équipe."
+            },
+            {
+              "id": "q10",
+              "question": "Objectif du fichier : vocabulaire pour :",
+              "type": "single_choice",
+              "options": [
+                "Se présenter en stage et parler école / entreprise",
+                "Faire du ski only",
+                "Cuisiner only",
+                "Conduire sans mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse du chapitre 3e allemand 01."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -29,13 +29,13 @@ import {
 import { isLucideIconName } from "@/lib/plugins/icon-allowlist";
 import { jsonToolbox } from "@/lib/plugins/json-toolbox";
 import { getFoodProduct } from "@/lib/plugins/open-food-facts";
-import { quizQuestionSchema, quizzly } from "@/lib/plugins/quizzly";
 import {
   createPluginTools,
   getPluginDefinition,
   getToolIdsForPluginIds,
   PLUGIN_DEFINITION_LIST,
 } from "@/lib/plugins/server";
+import { requireWriteScope } from "@/lib/plugins/shared/authorized-api";
 import {
   fetchPublicJson,
   PUBLIC_API_MAX_BYTES,
@@ -97,7 +97,7 @@ describe("Catalogue de plugins", () => {
       "fr-holidays",
       "github",
       "gitlab-public",
-      "google",
+      "google-maps",
       "jira",
       "json-toolbox",
       "linear",
@@ -111,7 +111,6 @@ describe("Catalogue de plugins", () => {
       "open-library",
       "openalex",
       "posthog",
-      "quizzly",
       "resend",
       "sentry",
       "sonarcloud",
@@ -124,6 +123,7 @@ describe("Catalogue de plugins", () => {
       "weather",
       "wikidata",
       "world-bank",
+      "youtube",
       "zapier",
     ]);
 
@@ -189,7 +189,6 @@ describe("Catalogue de plugins", () => {
 
   it("marque comme « plugin uniquement » les outils fournis par un plugin", () => {
     expect(PLUGIN_ONLY_TOOL_IDS).toContain("getWeather");
-    expect(PLUGIN_ONLY_TOOL_IDS).toContain("quizzly");
     expect(isPluginOnlyToolId("getWeather")).toBe(true);
     expect(isPluginOnlyToolId("webSearch")).toBe(false);
     expect(isPluginOnlyToolId("mcp_github_list")).toBe(false);
@@ -282,11 +281,11 @@ describe("Catalogue de plugins", () => {
     expect(getReadToolIdsForPluginIds(plainPluginIds).toSorted()).toEqual(
       getToolIdsForPluginIds(plainPluginIds).toSorted()
     );
-    // Les deux connecteurs, eux, perdent exactement leurs écritures.
+    // GitHub perd exactement ses trois écritures hors de l'Agent.
     expect(
-      getToolIdsForPluginIds(["github", "google"]).length -
-        getReadToolIdsForPluginIds(["github", "google"]).length
-    ).toBe(5);
+      getToolIdsForPluginIds(["github"]).length -
+        getReadToolIdsForPluginIds(["github"]).length
+    ).toBe(3);
   });
 
   describe("effet par outil, non par plugin", () => {
@@ -481,19 +480,19 @@ describe("Catalogue de plugins", () => {
   });
 
   it("ne sert que la lecture d'un connecteur sur un canal non-Agent", () => {
-    // GitHub : 9 outils, 6 en lecture. Google : 12 outils, 10 en lecture
-    // (créer un événement et envoyer un mail restent côté Agent).
+    // GitHub : 9 outils, 6 en lecture. Maps et YouTube sont entièrement en lecture.
     expect(getReadToolIdsForPluginIds(["github"])).toHaveLength(6);
-    expect(getReadToolIdsForPluginIds(["google"])).toHaveLength(10);
-    expect(getReadToolIdsForPluginIds(["github", "google"])).toHaveLength(16);
+    expect(getReadToolIdsForPluginIds(["google-maps"])).toHaveLength(4);
+    expect(getReadToolIdsForPluginIds(["youtube"])).toHaveLength(3);
     const chatTools = createPluginTools({ channel: "chat", userId: "user" }, [
       "github",
-      "google",
+      "google-maps",
+      "youtube",
     ]);
-    expect(Object.keys(chatTools)).toHaveLength(16);
-    expect(chatTools.sendGmailMessage).toBeUndefined();
-    expect(chatTools.createCalendarEvent).toBeUndefined();
-    expect(chatTools.searchDriveFiles).toBeDefined();
+    expect(Object.keys(chatTools)).toHaveLength(13);
+    expect(chatTools.createGithubIssue).toBeUndefined();
+    expect(chatTools.mapsGeocode).toBeDefined();
+    expect(chatTools.youtubeSearchVideos).toBeDefined();
   });
 });
 
@@ -898,50 +897,53 @@ describe("Connecteurs publics des plugins", () => {
   });
 
   it("refuse une écriture dont le consentement ne porte pas la portée", async () => {
+    const result = await requireWriteScope(
+      {
+        secretResolver: async ({ key }) =>
+          key.endsWith(".scopes") ? "read:user" : "jeton-du-compte",
+        userId: "user",
+      },
+      "github",
+      "repo"
+    );
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
+      expect(result.error).toContain("n'inclut pas la portée");
+    }
+  });
+
+  it("envoie la clé Google Maps en paramètre, jamais dans le chemin", async () => {
+    const calls: string[] = [];
     vi.stubGlobal(
       "fetch",
-      vi.fn(async () => Response.json({ id: "evt" }))
+      vi.fn(async (input: RequestInfo | URL) => {
+        calls.push(String(input));
+        return Response.json({
+          results: [
+            {
+              formatted_address: "Paris, France",
+              geometry: { location: { lat: 48.8, lng: 2.3 } },
+            },
+          ],
+          status: "OK",
+        });
+      })
     );
     const tools = createPluginTools(
       {
-        channel: "agent",
-        secretResolver: async ({ key }) =>
-          key.endsWith(".scopes")
-            ? "openid email https://www.googleapis.com/auth/calendar.readonly"
-            : "jeton-du-compte",
+        channel: "chat",
+        secretResolver: async () => "cle-du-compte",
         userId: "user",
       },
-      ["google"]
+      ["google-maps"]
     );
-    const result = await runTool(tools.createCalendarEvent, {
-      endsAt: "2026-10-12T11:00:00Z",
-      startsAt: "2026-10-12T10:00:00Z",
-      summary: "Point mensuel",
-    });
-    expect(String(result.error)).toContain("n'inclut pas la portée");
-  });
-
-  it("valide les indices et les longueurs du quiz", () => {
-    expect(
-      quizQuestionSchema.safeParse({
-        correctAnswers: [-1, 1, 1],
-        explanation: "explication",
-        id: "q1",
-        options: ["a", "b"],
-        question: "Question",
-        type: "single_choice",
-      }).success
-    ).toBe(false);
-    expect(
-      quizQuestionSchema.safeParse({
-        correctAnswers: [0],
-        explanation: "explication",
-        id: "q2",
-        options: ["a", "b"],
-        question: "Question",
-        type: "single_choice",
-      }).success
-    ).toBe(true);
+    const result = await runTool(tools.mapsGeocode, { query: "Paris" });
+    expect(calls[0]).toContain(
+      "https://maps.googleapis.com/maps/api/geocode/json"
+    );
+    expect(calls[0]).toContain("key=cle-du-compte");
+    expect(calls[0]).not.toContain("/cle-du-compte");
+    expect(result).toMatchObject({ total: 1 });
   });
 
   it("refuse une date grégorienne impossible", async () => {

@@ -18,9 +18,9 @@ import type {
 import manifest from "./index.json";
 
 /**
- * Connecteur Notion — les pages et bases partagées avec l'intégration, rien de
- * plus. Notion n'a pas de portées OAuth : c'est l'utilisateur qui choisit, dans
- * le portail de l'intégration, les pages qu'il partage. Un outil qui demande
+ * Connecteur Notion — les pages et bases partagées avec l'intégration interne
+ * dont l'utilisateur a collé le jeton. C'est lui qui choisit, dans Notion, les
+ * pages qu'il partage. Un outil qui demande
  * une page non partagée reçoit un 404 du fournisseur, et le message le dit.
  *
  * Les écritures (créer une page, ajouter des blocs) sont `effect: "write"` :

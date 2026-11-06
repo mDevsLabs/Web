@@ -1,0 +1,2453 @@
+{
+  "id": "5e-latin-04",
+  "year": "5e",
+  "subject": "latin",
+  "title": "La grammaire du latin",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le latin possède-t-il des articles comme « le » ou « la » ?",
+              "options": [
+                "Non, le latin n'a pas d'article défini.",
+                "Oui, il y a « le » devant chaque nom.",
+                "Sans article, on repère le rôle grâce aux cas.",
+                "Les articles latins sont identiques au français."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Pas d'article en latin ; les cas aident à distinguer sujet et objet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans « puella cantat », que désigne « puella » ?",
+              "options": [
+                "Le complément d'objet",
+                "Le sujet",
+                "Le verbe",
+                "Un adjectif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Puella » est au nominatif singulier, la forme du sujet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle terminaison indique souvent l'accusatif singulier féminin en -a ?",
+              "options": ["-ae", "-am", "-arum", "-is"],
+              "correctAnswers": [1],
+              "explanation": "La fille (objet) se dit « puellam », avec la terminaison -am."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Puella » et « puellam » : quelle forme est le nominatif ?",
+              "options": ["puellam", "puella", "puellae", "puellarum"],
+              "correctAnswers": [1],
+              "explanation": "Le nominatif « puella » sert de sujet ; « puellam » est l'accusatif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « sum » ?",
+              "options": ["Tu es", "Je suis", "Il est", "Nous sommes"],
+              "correctAnswers": [1],
+              "explanation": "« Sum » est la première personne du singulier du verbe « esse » (être)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie « es » ?",
+              "options": ["Je suis", "Tu es", "Vous êtes", "Ils sont"],
+              "correctAnswers": [1],
+              "explanation": "« Es » correspond à « tu es » à la deuxième personne du singulier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Magna puella » : l'adjectif « magna » s'accorde avec « puella » en…",
+              "options": [
+                "Masculin seulement",
+                "Féminin singulier",
+                "Neutre pluriel",
+                "Accusatif masculin"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'adjectif en -a s'accorde avec un nom féminin singulier au nominatif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour traduire « la fille » (sujet), on dit en latin :",
+              "options": ["puellam", "puella", "la puella", "puellae"],
+              "correctAnswers": [1],
+              "explanation": "Sans article, le sujet seul « puella » suffit pour « la fille »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Video puellam » : « puellam » est à quel cas ?",
+              "options": ["Nominatif", "Accusatif", "Génitif", "Datif"],
+              "correctAnswers": [1],
+              "explanation": "Après « video » (je vois), le complément d'objet direct est à l'accusatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En français on dit « le garçon » ; en latin « puer » signifie :",
+              "options": [
+                "Le garçon (avec article)",
+                "Garçon / le garçon (sans article)",
+                "Uniquement « des garçons »",
+                "La fille"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Puer » au nominatif rend le nom sans article défini."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur les articles en latin sont vraies ?",
+              "options": [
+                "Le latin n'a pas d'équivalent de « le » ou « un ».",
+                "On ajoute parfois « le » devant chaque nom.",
+                "Le sens « défini » vient souvent du contexte.",
+                "Tous les noms latins portent un article en -um."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Pas d'article grammatical ; le contexte ou la traduction française peut ajouter « le »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le cas du sujet s'appelle :",
+              "options": ["Accusatif", "Nominatif", "Ablatif", "Vocatif"],
+              "correctAnswers": [1],
+              "explanation": "Le nominatif est le cas du sujet du verbe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Puer currit » : « puer » est :",
+              "options": [
+                "Accusatif",
+                "Nominatif sujet",
+                "Objet direct",
+                "Adverbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Puer » (le garçon) est le sujet de « currit » (court)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Forme accusative de « puella » :",
+              "options": ["puella", "puellam", "puellae", "puellis"],
+              "correctAnswers": [1],
+              "explanation": "L'accusatif singulier féminin en -a prend souvent la terminaison -am."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ego sum » signifie :",
+              "options": ["Tu es", "Je suis", "Il est", "Es-tu ?"],
+              "correctAnswers": [1],
+              "explanation": "« Ego » (je) + « sum » (suis) = « je suis »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Tu es discipulus » en latin :",
+              "options": [
+                "Sum discipulus",
+                "Es discipulus",
+                "Est discipulus",
+                "Sunt discipuli"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Es » est la forme « tu es » devant le nom au nominatif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Parvus puer » : « parvus » décrit :",
+              "options": [
+                "Une fille",
+                "Un garçon petit (accord masculin)",
+                "Un verbe",
+                "Un pluriel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Parvus » s'accorde en masculin singulier avec « puer »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour « je vois la fille », on attend :",
+              "options": [
+                "Puella video",
+                "Video puellam",
+                "Puellam sum",
+                "Video puella"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'objet de « video » se met à l'accusatif « puellam »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux noms au nominatif dans une phrase simple servent surtout à :",
+              "options": [
+                "Former deux sujets sans verbe",
+                "Lier sujet et attribut avec « sum »",
+                "Remplacer les articles",
+                "Indiquer l'objet direct"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Avec « sum/es », un second nominatif peut être l'attribut du sujet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« La » dans « la fille » en traduction du latin correspond à :",
+              "options": [
+                "Une terminaison -la en latin",
+                "Rien en latin ; c'est ajouté en français",
+                "Le mot « la » en latin",
+                "L'accusatif seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'article français n'a pas de mot séparé en latin."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels cas connais-tu déjà bien en 5e pour les noms en -a ?",
+              "options": [
+                "Nominatif",
+                "Accusatif",
+                "Génitif complet de toutes les déclinaisons",
+                "Optatif"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En 5e on travaille surtout nominatif (sujet) et accusatif (objet direct)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Rosa » au nominatif signifie :",
+              "options": [
+                "Rose (sujet)",
+                "Rose (objet)",
+                "Des roses",
+                "De la rose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Rosa » est la forme sujet, comme « la rose » qui…"
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Amo rosam » : « rosam » est :",
+              "options": ["Sujet", "Objet direct", "Verbe", "Négation"],
+              "correctAnswers": [1],
+              "explanation": "« Rosam » est l'accusatif après « amo » (j'aime)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Est » correspond à :",
+              "options": ["Je suis", "Tu es", "Il/elle est", "Nous sommes"],
+              "correctAnswers": [2],
+              "explanation": "« Est » est la troisième personne du singulier de « être »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Accord : « bona puella » signifie :",
+              "options": [
+                "Bon garçon",
+                "Bonne fille",
+                "Bonnes filles (objet)",
+                "Mauvaise fille"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Bona » (féminin) s'accorde avec « puella »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sans article, « puer » peut se traduire par :",
+              "options": [
+                "Un garçon / le garçon",
+                "Les garçons seulement",
+                "Du garçon",
+                "Au garçon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nominatif seul couvre « garçon » ou « le garçon » selon la phrase française."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le sujet se reconnaît surtout au :",
+              "options": ["Accusatif", "Nominatif", "Infinitif", "Gérondif"],
+              "correctAnswers": [1],
+              "explanation": "Le sujet est généralement au nominatif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Magister » dans « magister legit » est :",
+              "options": [
+                "Objet",
+                "Sujet (le maître)",
+                "Adjectif de couleur",
+                "Accusatif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Magister » (maître) est le sujet de « legit » (lit)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Es magistra » : le mot « magistra » est :",
+              "options": [
+                "Accusatif",
+                "Nominatif attribut",
+                "Pluriel",
+                "Verbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Après « es », le complément du sujet reste au nominatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour dire « une fille » (sujet), on écrit :",
+              "options": [
+                "Una puella en latin obligatoire",
+                "Puella (sans article)",
+                "Puellam",
+                "La puella"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Puella » suffit ; « une » n'a pas d'équivalent obligatoire en latin de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases respectent l'accord sujet–adjectif au nominatif ?",
+              "options": [
+                "« Parva puella » (petite fille)",
+                "« Parvus puella »",
+                "« Magnus puer » (grand garçon)",
+                "« Magna puer »"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Féminin avec féminin, masculin avec masculin au même cas et nombre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'accusatif sert surtout à marquer :",
+              "options": [
+                "Le sujet",
+                "Le complément d'objet direct",
+                "L'adresse (vocatif)",
+                "La possession seule"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'objet direct de nombreux verbes se met à l'accusatif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Video magistrum » : pourquoi « magistrum » ?",
+              "options": [
+                "C'est le sujet",
+                "C'est l'objet de « video »",
+                "C'est un article",
+                "C'est un pluriel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Magistrum » est l'accusatif de « magister » (je vois le maître)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Sum discipula » signifie :",
+              "options": [
+                "Tu es élève",
+                "Je suis élève (f.)",
+                "Il est maître",
+                "Nous sommes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Sum » + nominatif « discipula » = je suis une élève."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En latin, « les » devant un nom :",
+              "options": [
+                "Se traduit par « les »",
+                "N'existe pas comme en français",
+                "Se met en -ae toujours",
+                "Remplace le verbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le pluriel se voit sur la terminaison du nom, pas avec un article."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Puellae » peut être nominatif pluriel signifiant :",
+              "options": [
+                "Les filles (sujet)",
+                "Toujours accusatif",
+                "Un seul garçon",
+                "Je suis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Puellae » est souvent le nominatif pluriel « les filles »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Es » s'utilise avec :",
+              "options": ["Je", "Tu", "Il", "Elles seules"],
+              "correctAnswers": [1],
+              "explanation": "« Es » = deuxième personne du singulier « tu es »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduction logique de « puella laudat puerum » :",
+              "options": [
+                "Le garçon loue la fille",
+                "La fille loue le garçon",
+                "La fille est un garçon",
+                "Le garçon est une fille"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Puella » sujet, « puerum » objet accusatif : la fille loue le garçon."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Alta rosa » : « alta » s'accorde avec « rosa » en :",
+              "options": [
+                "Masculin",
+                "Féminin singulier",
+                "Neutre pluriel",
+                "Accusatif masculin"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Alta » (haute/grande) est féminin singulier comme « rosa »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Différence clé puella / puellam :",
+              "options": [
+                "Genre différent",
+                "Sujet vs objet direct",
+                "Deux verbes",
+                "Article défini"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Nominatif pour le sujet, accusatif pour l'objet direct."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le verbe « esse » (être) en 5e :",
+              "options": [
+                "« Sum » = je suis",
+                "« Es » = tu es",
+                "« Video » = je suis",
+                "« Est » = il/elle est"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On retient sum, es, est pour parler de l'identité ou de la qualité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Puer est parvus » : « parvus » est :",
+              "options": [
+                "Accusatif objet",
+                "Nominatif attribut",
+                "Infinitif",
+                "Adverbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Avec « est », l'attribut se met au nominatif comme le sujet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "On ne dit pas en latin :",
+              "options": [
+                "Puella cantat",
+                "La puella cantat",
+                "Puella est bona",
+                "Es discipulus"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« La » n'est pas un mot latin devant le nom."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Amicus » (ami, masc.) au sujet reste :",
+              "options": ["Amicum", "Amicus", "Amici toujours", "Amica"],
+              "correctAnswers": [1],
+              "explanation": "Sujet masculin singulier : nominatif « amicus »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Objet de « audio » (j'entends) : cas attendu :",
+              "options": [
+                "Nominatif",
+                "Accusatif",
+                "Vocatif seulement",
+                "Sans cas"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Comme pour « video », le complément d'objet direct est à l'accusatif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Puella est magna » signifie :",
+              "options": [
+                "La fille est grande",
+                "La fille voit grande",
+                "Grand fille est",
+                "Tu es grande fille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure sujet + est + attribut au nominatif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour un accord correct féminin :",
+              "options": [
+                "Magnus puella",
+                "Magna puella",
+                "Magnum puella",
+                "Magnae puer"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Magna » accompagne un nom féminin « puella »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Nauta » (marin) est un nom :",
+              "options": [
+                "Féminin en -a",
+                "Masculin en apparence -a",
+                "Neutre",
+                "Verbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Certains noms en -a sont masculins ; l'accord reste masculin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ego sum puella » : « ego » sert à :",
+              "options": [
+                "Remplacer le verbe",
+                "Insister sur « je »",
+                "Former l'accusatif",
+                "Ajouter un article"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Ego » met l'accent sur le sujet « je »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le français « de la fille » n'est pas un simple :",
+              "options": [
+                "Nominatif latin",
+                "Accusatif seul sans préposition apprise",
+                "Verbe sum",
+                "Pluriel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le génitif et autres cas viennent plus tard ; en 5e on reste sur nom./acc."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vrai sur nominatif et accusatif en 5e :",
+              "options": [
+                "Le nominatif peut être sujet.",
+                "L'accusatif peut être objet direct.",
+                "L'accusatif est toujours le sujet.",
+                "Le nominatif suit toujours « video »."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rôles de base : nominatif = sujet (souvent), accusatif = COD."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Legimus librum » : « librum » est :",
+              "options": [
+                "Sujet",
+                "Objet (le livre)",
+                "Verbe être",
+                "Pluriel sujet"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Librum » est l'accusatif de « liber » (livre)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Tu es » se conjugue :",
+              "options": ["Sum", "Es", "Est", "Sunt"],
+              "correctAnswers": [1],
+              "explanation": "Deuxième personne : « es »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Bonae puellae » (nom. pl. f.) signifie environ :",
+              "options": [
+                "Bonne fille",
+                "Bonnes filles",
+                "Bon garçon",
+                "Je suis bon"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Adjectif et nom au pluriel nominatif féminin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Article indéfini français « un/une » en latin en 5e :",
+              "options": [
+                "Toujours « unus/unum » obligatoire",
+                "Souvent absent, comme « le »",
+                "Se place après le verbe",
+                "Remplace l'accusatif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Comme pour « le », on n'exige pas d'article en début d'apprentissage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Discipulus » après « sum » :",
+              "options": ["Accusatif", "Nominatif", "Ablatif", "Génitif"],
+              "correctAnswers": [1],
+              "explanation": "Attribut du sujet avec « sum » : nominatif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase : sujet + verbe + objet. Objet en latin :",
+              "options": [
+                "Nominatif d'habitude",
+                "Accusatif d'habitude",
+                "Infinitif",
+                "Vocatif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'objet direct se met en accusatif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Porta » (porte) sujet : forme :",
+              "options": ["Portam", "Porta", "Portae objet", "Portis"],
+              "correctAnswers": [1],
+              "explanation": "Sujet féminin singulier : nominatif « porta »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Clara puella » : les deux mots sont :",
+              "options": [
+                "Accusatif",
+                "Nominatif singulier f.",
+                "Verbes",
+                "Masculin pluriel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Accord en genre, nombre et cas au nominatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le latin dit « puella », le français ajoute souvent :",
+              "options": [
+                "Un préfixe « le »",
+                "L'article défini à la traduction",
+                "Un suffixe -am",
+                "Rien du tout jamais"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À la traduction, on peut ajouter « la » en français seulement."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formes du verbe être utiles en 5e :",
+              "options": ["sum", "es", "cantat", "est"],
+              "correctAnswers": [0, 1],
+              "explanation": "Sum, es, est forment le noyau du présent de « esse »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Puer amat puellam » : sujet ?",
+              "options": ["Puellam", "Puer", "Amat", "Amat puer"],
+              "correctAnswers": [1],
+              "explanation": "« Puer » nominatif est le sujet de « amat »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Même phrase : objet ?",
+              "options": ["Puer", "Puellam", "Amat", "Sum"],
+              "correctAnswers": [1],
+              "explanation": "« Puellam » est l'accusatif, objet de « amat »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Magister est bonus » : accord ?",
+              "options": [
+                "Bonus avec magister (masc.)",
+                "Bona avec magister",
+                "Bonum avec magister",
+                "Pas d'accord"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attribut masculin singulier « bonus » avec « magister »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pas d'article défini : conséquence pour l'élève :",
+              "options": [
+                "Il faut deviner le genre",
+                "Il repère le rôle via le cas (nom./acc.)",
+                "Il n'y a pas de verbes",
+                "Tous les noms finissent pareil"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Cas et contexte indiquent sujet ou objet."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Insula » (île) sujet :",
+              "options": ["Insulam", "Insula", "Insulas", "Insulae génitif"],
+              "correctAnswers": [1],
+              "explanation": "Nominatif singulier féminin « insula »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Video insulam » :",
+              "options": [
+                "Je vois l'île (acc.)",
+                "L'île me voit",
+                "Je suis une île",
+                "Tu es île"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Insulam » accusatif après « video »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Es puella bona » : nombre de nominatifs ?",
+              "options": [
+                "Aucun",
+                "Deux (tu = puella, bona attribut)",
+                "Trois accusatifs",
+                "Un seul verbe nominatif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Puella » et « bona » restent au nominatif avec « es »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Erreur d'accord :",
+              "options": [
+                "Parva rosa",
+                "Parvus rosa",
+                "Parva puella",
+                "Magnus puer"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Rosa » est féminin : on dit « parva rosa », pas « parvus »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Le » latin n'existe pas : traduction de « Puer currit » :",
+              "options": [
+                "Le garçon court",
+                "Garçon court sans sens",
+                "Court le",
+                "Du garçon court"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ajoute « le » en français pour une phrase naturelle."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Accusatif singulier possible en 5e :",
+              "options": [
+                "puellam (f.)",
+                "puerum (m.)",
+                "sum (verbe)",
+                "puella (sujet)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Terminaisons typiques -am (f.) et -um (m.) pour l'objet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Filia » (fille) sujet singulier :",
+              "options": ["Filiam", "Filia", "Filius", "Filium"],
+              "correctAnswers": [1],
+              "explanation": "Nominatif « filia » ; « filiam » serait l'objet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Mater est bona » : « mater » (mère) est :",
+              "options": ["Objet", "Sujet", "Verbe", "Accusatif"],
+              "correctAnswers": [1],
+              "explanation": "« Mater » sujet de « est »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Sum » avec « magister » donne :",
+              "options": [
+                "Je suis maître",
+                "Tu es maître",
+                "Maître voit",
+                "Maître accusatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sum magister » = je suis maître."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'adjectif « magnus, magna, magnum » change pour :",
+              "options": [
+                "Remplacer le verbe",
+                "S'accorder avec le nom",
+                "Former un article",
+                "Créer l'accusatif seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Triple forme pour masculin, féminin, neutre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Magna insula » =",
+              "options": [
+                "Grande île",
+                "Grand garçon",
+                "Petite île objet",
+                "Je suis île"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Magna » féminin avec « insula »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complément après « laudo » (je loue) :",
+              "options": ["Nominatif", "Accusatif", "Sum", "Es"],
+              "correctAnswers": [1],
+              "explanation": "On loue quelqu'un à l'accusatif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Tu es élève » (m.) :",
+              "options": [
+                "Sum discipulus",
+                "Es discipulus",
+                "Est discipula",
+                "Es discipulam"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Es » + nominatif « discipulus »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi pas « es discipulam » avec « es » ?",
+              "options": [
+                "Discipulam est sujet/attribut nominatif",
+                "Discipulam est toujours sujet",
+                "Es prend l'accusatif",
+                "Verbe interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec « être », le nom qualifiant reste au nominatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le latin sans article oblige à :",
+              "options": [
+                "Ignorer le genre",
+                "Lire la terminaison et le contexte",
+                "Mettre deux sujets",
+                "Supprimer les verbes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Terminaisons et place dans la phrase guident l'analyse."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux bonnes réponses sur les articles :",
+              "options": [
+                "« Le garçon » peut se dire « puer ».",
+                "On écrit « le puer » en latin.",
+                "« La fille » sujet : « puella ».",
+                "Chaque nom a « un » devant."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Traduction française avec article ; latin = nom au bon cas seulement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Canis » (chien) sujet :",
+              "options": ["Canem", "Canis", "Canes objet", "Sum"],
+              "correctAnswers": [1],
+              "explanation": "Nominatif « canis » pour le sujet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Video canem » :",
+              "options": [
+                "Je vois le chien",
+                "Le chien voit",
+                "Je suis chien",
+                "Tu es chien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Canem » accusatif de « canis »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Est » + nominatif sert à :",
+              "options": [
+                "Décrire une action",
+                "Dire ce qu'est quelqu'un",
+                "Remplacer l'accusatif objet",
+                "Former le pluriel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Structure identité/attribut : … est …"
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Nova porta » : genre de « nova » ?",
+              "options": ["Masculin", "Féminin", "Neutre pluriel", "Verbe"],
+              "correctAnswers": [1],
+              "explanation": "Accord avec « porta » féminin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sujet féminin + verbe : terminaison sujet en -a exemple :",
+              "options": [
+                "Puellam currit",
+                "Puella currit",
+                "Currit puellam",
+                "Sum puellam"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sujet « puella » + verbe « currit »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Ego » et « tu » (tu) :",
+              "options": [
+                "« Tu » latin « tu » + « es »",
+                "« Tu » = « ego »",
+                "« Tu » remplace l'accusatif",
+                "Pas de pronoms en 5e"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut dire « tu es » avec « es » ou « tu es » avec pronom."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Accord masculin :",
+              "options": [
+                "Parva puer",
+                "Parvus puer",
+                "Parvum puella",
+                "Parvae puer"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Parvus puer » = petit garçon."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Objectif de l'accusatif en phrase simple :",
+              "options": [
+                "Indiquer qui fait l'action",
+                "Indiquer ce qui reçoit l'action (COD)",
+                "Remplacer « sum »",
+                "Marquer « le »"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Rôle de complément d'objet direct."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En 5e, on évite :",
+              "options": [
+                "Nominatif et accusatif de base",
+                "Toute la déclinaison du lycée",
+                "Sum et es",
+                "Accord adjectif simple"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Programme limité aux cas et accords essentiels."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Révisions : vrai ?",
+              "options": [
+                "Pas d'article latin = le/la.",
+                "Nominatif ≈ sujet.",
+                "Accusatif ≈ objet direct courant.",
+                "« Es » = je suis."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rappels clés du chapitre articles et cas du sujet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Choisis l'accusatif :",
+              "options": ["Rosa (sujet)", "Rosam", "Sum", "Es"],
+              "correctAnswers": [1],
+              "explanation": "« Rosam » forme objet de verbes transitifs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Choisis le nominatif :",
+              "options": ["Puerum", "Puer", "Puellam", "Magistrum"],
+              "correctAnswers": [1],
+              "explanation": "« Puer » est la forme sujet typique masculin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Puella est pulchra » :",
+              "options": [
+                "La fille est belle",
+                "La fille voit belle",
+                "Belle est fille objet",
+                "Tu es belle fille objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attribut « pulchra » au nominatif féminin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Sum puella » vs « Video puellam » :",
+              "options": [
+                "Même cas pour puella/m",
+                "Nominatif puis accusatif",
+                "Deux accusatifs",
+                "Deux verbes être"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Être + nominatif ; voir + accusatif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "Magna puer",
+                "Magna puella",
+                "Magnus puella",
+                "Magnum puella nom."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Magna puella » respecte le féminin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Il est » en latin :",
+              "options": ["Sum", "Es", "Est", "Sunt"],
+              "correctAnswers": [2],
+              "explanation": "Troisième personne singulier « est »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduction : « Magister laudat discipulum »",
+              "options": [
+                "L'élève loue le maître",
+                "Le maître loue l'élève",
+                "Le maître est élève",
+                "L'élève est maître"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sujet magister, objet discipulum."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le français « les filles » sujet peut être :",
+              "options": [
+                "Puellae",
+                "Puellam",
+                "Puella seulement",
+                "Le puellae"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nominatif pluriel « puellae » sans article."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Message principal du chapitre u1 :",
+              "options": [
+                "Apprendre tous les cas du lycée",
+                "Cas sujet/objet, être, accord sans articles",
+                "Oublier les verbes",
+                "Copier le français mot à mot"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Bases grammaticales du latin en 5e sans articles."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une phrase latine simple contient souvent :",
+              "options": [
+                "Un sujet au nominatif",
+                "Un verbe",
+                "Uniquement des articles",
+                "Aucun verbe jamais"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Minimum habituel : qui ? (sujet) + que fait-il ? (verbe)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ordre le plus fréquent en phrase simple (5e) :",
+              "options": [
+                "Verbe – sujet – objet",
+                "Sujet – verbe – objet",
+                "Objet – sujet – verbe",
+                "Article – nom – verbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "SVO est courant, mais l'ordre latin est assez souple grâce aux cas."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Puella cantat » se traduit :",
+              "options": [
+                "La fille chante",
+                "Chante la fille objet",
+                "La fille est",
+                "Tu chantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet + verbe à la 3e personne singulier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Puer pilam iactat » : « pilam » (balle) est :",
+              "options": ["Sujet", "Objet direct", "Verbe être", "Adjectif"],
+              "correctAnswers": [1],
+              "explanation": "Accusatif « pilam » complète « iactat » (lance)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Phrase avec « sum » : type ?",
+              "options": [
+                "Action",
+                "Description / identité",
+                "Question sans verbe",
+                "Pluriel obligatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Sum … » indique qui je suis ou une qualité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Es Romanus » signifie :",
+              "options": [
+                "Je suis Romain",
+                "Tu es Romain",
+                "Il est Romaine",
+                "Nous sommes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Es » + attribut « Romanus »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour repérer le sujet, on cherche :",
+              "options": [
+                "L'accusatif après video",
+                "Le nominatif qui s'accorde avec le verbe (souvent)",
+                "Un article « le »",
+                "La dernière syllabe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le sujet est en général au nominatif et commande la personne du verbe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Magister puellam docet » : verbe ?",
+              "options": ["Puellam", "Docet", "Magister", "La"],
+              "correctAnswers": [1],
+              "explanation": "« Docet » (enseigne) est le verbe de la phrase."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Même phrase : sujet ?",
+              "options": ["Puellam", "Magister", "Docet", "Pilam"],
+              "correctAnswers": [1],
+              "explanation": "« Magister » nominatif = le maître."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une phrase simple n'a en 5e pas besoin de :",
+              "options": [
+                "Verbe",
+                "Subordonnées complexes",
+                "Sujet ou sujet sous-entendu",
+                "Sens clair"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On reste sur des énoncés courts, une seule proposition."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Éléments d'une phrase « Le garçon voit la fille » en latin :",
+              "options": [
+                "Puer (sujet)",
+                "Video / videt (verbe voir)",
+                "Le mot « le » deux fois",
+                "Puellam (objet possible)"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Structure : puer + verbe de vision + puellam, sans articles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Puer puellam videt » =",
+              "options": [
+                "La fille voit le garçon",
+                "Le garçon voit la fille",
+                "Le garçon est fille",
+                "Voir garçon fille"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Nominatif sujet, accusatif objet, verbe en fin fréquent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le verbe « cantat » indique :",
+              "options": [
+                "3e pers. sing. (il/elle)",
+                "1re pers. je",
+                "2e pers. tu",
+                "Infinitif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terminaison -t : il/elle chante."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Sum in schola » (simplifié) : mot principal de lien sujet–verbe ?",
+              "options": ["In", "Sum", "Schola", "Article"],
+              "correctAnswers": [1],
+              "explanation": "« Sum » est le verbe ; les prépositions viennent plus tard en détail."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Phrase identité :",
+              "options": [
+                "Puella currit",
+                "Puella est discipula",
+                "Puellam currit",
+                "Currit est"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Verbe « est » + nominatif attribut."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sans changement de sens de base, le latin peut déplacer :",
+              "options": [
+                "Les terminaisons de cas",
+                "Les mots grâce aux cas",
+                "Le genre des verbes français",
+                "Les articles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les cas marquent les rôles, l'ordre est plus libre qu'en français."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Discipuli legunt » : sujet nombre ?",
+              "options": ["Singulier", "Pluriel", "Absent", "Accusatif"],
+              "correctAnswers": [1],
+              "explanation": "« Discipuli » nominatif pluriel ; verbe « legunt » pluriel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduction « Les élèves lisent » :",
+              "options": [
+                "Discipulus legit",
+                "Discipuli legunt",
+                "Discipulum legunt",
+                "Legunt sum"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Accord sujet pluriel + verbe pluriel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Objet dans « Nauta insulam videt » :",
+              "options": ["Nauta", "Insulam", "Videt", "Es"],
+              "correctAnswers": [1],
+              "explanation": "« Insulam » accusatif : l'île (vue)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase simple = une idée avec :",
+              "options": [
+                "Trois subordonnées",
+                "Un verbe fini principal",
+                "Sans nominatif",
+                "Articles obligatoires"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un prédicat verbal central suffit en 5e."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Verbes repérables en phrase simple :",
+              "options": [
+                "cantat (chante)",
+                "est (est)",
+                "puella (nom seul)",
+                "currit (court)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les verbes portent personne et temps ; les noms seuls ne suffisent pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Rosa in horto stat » (rose est debout) : sujet ?",
+              "options": ["Horto", "Rosa", "Stat", "In"],
+              "correctAnswers": [1],
+              "explanation": "« Rosa » nominatif est le sujet de « stat »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ego sum discipulus » : type de phrase ?",
+              "options": [
+                "Action",
+                "Présentation de soi",
+                "Impératif",
+                "Objet seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Phrase identité avec « ego sum »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Tu es » + métier féminin :",
+              "options": [
+                "Es magistra",
+                "Sum magistra",
+                "Est magistra tu",
+                "Es magistrum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Es magistra » : tu es maîtresse (f.)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Canis latrat » :",
+              "options": [
+                "Le chien aboie",
+                "Le chien est",
+                "Aboie chien objet",
+                "Tu aboies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet « canis » + verbe « latrat »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour traduire une phrase simple, on commence par :",
+              "options": [
+                "Trouver le verbe",
+                "Inventer des articles",
+                "Ignorer les cas",
+                "Lire de droite à gauche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe donne l'action ou l'état central."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Puella puerum videt » ordre des rôles :",
+              "options": [
+                "Garçon voit fille",
+                "Fille voit garçon",
+                "Fille est garçon",
+                "Voir sans sujet"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Puella sujet, puerum objet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Sunt discipuli » signifie environ :",
+              "options": [
+                "Je suis élève",
+                "Ils sont / ce sont des élèves",
+                "Tu es",
+                "Elève court"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Sunt » pluriel de « esse » avec sujet pluriel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase action avec objet : minimum :",
+              "options": [
+                "Sujet + verbe + complément d'objet",
+                "Deux verbes être",
+                "Article + nom",
+                "Accusatif seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle transitif : qui fait + action + quoi/qui (acc.)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Magna voce cantat » (voix grande) en 5e on retient surtout :",
+              "options": [
+                "Cantat = verbe chanter",
+                "Magna = verbe",
+                "Voce = sujet nominatif seul",
+                "Phrase sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repérer le verbe « cantat » comme noyau de la phrase."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases correctes en latin simple :",
+              "options": [
+                "Puer currit.",
+                "Puer currit puerum (le garçon court le garçon).",
+                "Puella est bona.",
+                "Sum es est ensemble sujet."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Action intransitive ou phrase avec « est » + attribut cohérent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Aquila volat » :",
+              "options": [
+                "L'aigle vole",
+                "L'aigle voit",
+                "Je vole",
+                "Aigle est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet « aquila » + « volat » (vole)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Question de 5e : qui fait l'action dans « Insula apparet » ?",
+              "options": ["Apparet", "Insula", "Les deux verbes", "Accusatif"],
+              "correctAnswers": [1],
+              "explanation": "« Insula » (île) sujet de « apparet » (apparaît)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Porta aperta est » (porte ouverte est) : verbe ?",
+              "options": ["Aperta seule", "Est", "Porta", "Le"],
+              "correctAnswers": [1],
+              "explanation": "« Est » lie sujet et attribut/adjectif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Traduction « Le maître parle » (parler) :",
+              "options": [
+                "Magister loquitur",
+                "Magistrum loquitur",
+                "Loquitur magistrum sujet",
+                "Sum magister loquitur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet nominatif + verbe « loquitur »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux nominatifs avec un seul « est » :",
+              "options": [
+                "Impossible",
+                "Sujet + attribut",
+                "Deux objets",
+                "Deux verbes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ex. : puella est magna."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Video » en phrase : j'attends :",
+              "options": [
+                "Un sujet « je » ou nom + accusatif",
+                "Un article",
+                "Deux verbes être",
+                "Génitif seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe transitif : celui qui voit + ce qu'on voit (acc.)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Pueri in agro ludunt » : sujet ?",
+              "options": ["Agro", "Pueri", "Ludunt", "In"],
+              "correctAnswers": [1],
+              "explanation": "« Pueri » nominatif pluriel = les garçons."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase simple négative (ne … pas) en 5e :",
+              "options": [
+                "Non currit",
+                "Ne currit (non) simplifié",
+                "Pas de verbe",
+                "Article non"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On peut rencontrer « non » + verbe pour nier simplement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lire « filia matrem amat » : sens ?",
+              "options": [
+                "La mère aime la fille",
+                "La fille aime la mère",
+                "Fille est mère",
+                "Mère sans verbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Filia sujet, matrem objet de « amat »."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Accord sujet–verbe en phrase simple :",
+              "options": [
+                "Puella cantat (sing.)",
+                "Puellae cantat (sing. verbe)",
+                "Puer currit",
+                "Discipuli legunt (pl.)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Singulier avec -t/-t, pluriel avec -nt souvent ; paires cohérentes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Equus currit » :",
+              "options": [
+                "Le cheval court",
+                "Le cheval voit",
+                "Cheval objet",
+                "Tu cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase intransitive sujet + verbe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sujet sous-entendu avec « es » :",
+              "options": ["Je", "Tu", "Il", "Nous"],
+              "correctAnswers": [1],
+              "explanation": "« Es » contient déjà la deuxième personne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Sum » phrase : sujet ?",
+              "options": ["Tu", "Je (ego implicite ou dit)", "Il", "Elles"],
+              "correctAnswers": [1],
+              "explanation": "Première personne du singulier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Librum habeo » (j'ai un livre) : objet ?",
+              "options": ["Habeo", "Librum", "Sum", "Liber sujet"],
+              "correctAnswers": [1],
+              "explanation": "« Librum » accusatif après « habeo »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ordre « Videt puer puellam » reste clair car :",
+              "options": [
+                "Articles fixent l'ordre",
+                "Cas marquent sujet et objet",
+                "Verbe toujours en premier",
+                "Pas de traduction"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Puer nom., puellam acc., quel que soit l'ordre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase « Caelum est blue » incorrecte en latin car :",
+              "options": [
+                "Mot anglais ; on dit « caeruleum »",
+                "Pas de verbe",
+                "Pas de nominatif",
+                "Trop d'articles latins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire latin requis ; structure caelum est caeruleum."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Puella in via ambulat » : verbe ?",
+              "options": ["Via", "Ambulat", "In", "Puella seule"],
+              "correctAnswers": [1],
+              "explanation": "« Ambulat » = marche (3e pers.)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Type « Pater filium vocat » :",
+              "options": [
+                "Le père appelle le fils",
+                "Le fils appelle le père",
+                "Père est fils",
+                "Appel sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pater sujet, filium objet, vocat verbe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Étape 1 analyse phrase latine :",
+              "options": [
+                "Chercher verbe et cas du nom",
+                "Traduire mot à mot sans verbe",
+                "Ajouter le/la partout",
+                "Ignorer l'accusatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode : verbe, puis sujet (nom.) et objets (acc.)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases avec « esse » :",
+              "options": [
+                "Sum Romanus.",
+                "Es magistra.",
+                "Puella currit.",
+                "Est sol magnum (le soleil est grand)."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Présentations ou qualités avec sum/es/est + nominatif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Sol lucet » :",
+              "options": [
+                "Le soleil brille",
+                "Le soleil est",
+                "Je brille",
+                "Soleil objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Action simple : sujet + verbe « lucet »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Nox est longa » :",
+              "options": [
+                "La nuit est longue",
+                "La nuit court",
+                "Nuit objet",
+                "Tu es nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase attributive avec « est »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complément d'objet manque dans :",
+              "options": [
+                "Puer pilam iactat",
+                "Puella cantat",
+                "Magister discipulum videt",
+                "Canem audio"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Cantat » peut être complet sans objet en phrase simple."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Gladiator pugnat » sens :",
+              "options": [
+                "Le gladiateur se bat / combat",
+                "Le gladiateur est",
+                "Combat objet",
+                "Tu combats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe intransitif « pugnat »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Reformulation française d'une phrase simple :",
+              "options": [
+                "Une proposition principale claire",
+                "Cinq subordonnées",
+                "Liste de noms sans verbe",
+                "Articles latins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une idée = sujet + prédicat (+ objet éventuel)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Marius Romae habitat » (habite) : sujet ?",
+              "options": ["Romae", "Marius", "Habitat", "Le"],
+              "correctAnswers": [1],
+              "explanation": "« Marius » personnage sujet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Tu es discipula » réponse logique :",
+              "options": [
+                "Es discipula",
+                "Sum discipula",
+                "Est discipula",
+                "Sunt discipula"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même personne « tu » → « es »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase « Amicus meus est » (mon ami est) : tronc ?",
+              "options": [
+                "Verbe être + sujet/attribut",
+                "Pas de verbe",
+                "Accusatif double",
+                "Articles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure identité avec « est »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sens de « puella cum cane ambulat » (avec chien) en 5e :",
+              "options": [
+                "La fille marche (avec un chien)",
+                "Chien marche fille objet",
+                "Sans verbe",
+                "Pluriel obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet puella + verbe ambulat ; groupe avec complément."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Transitif = verbe qui peut avoir :",
+              "options": [
+                "Un objet à l'accusatif",
+                "Un sujet au nominatif",
+                "Uniquement « sum »",
+                "Jamais de complément"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Transitifs : sujet + action + objet ; intransitifs sans objet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Poeta carmen cantat » : objet ?",
+              "options": ["Poeta", "Carmen", "Cantat", "Es"],
+              "correctAnswers": [1],
+              "explanation": "« Carmen » (chanson) accusatif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Puella florem dat » (donne fleur) : qui donne ?",
+              "options": ["Florem", "Puella", "Dat", "Le"],
+              "correctAnswers": [1],
+              "explanation": "Sujet « puella »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase la plus courte valide :",
+              "options": ["Curro (je cours)", "Puella", "Le puella", "Sum sum"],
+              "correctAnswers": [0],
+              "explanation": "Verbe seul peut inclure le sujet (je) dans la terminaison."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Estne puella? » (est-ce fille?) repose sur :",
+              "options": [
+                "Verbe est + sujet",
+                "Accusatif seul",
+                "Article estne",
+                "Pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question simple sur identité avec « est »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Milites pugnant » :",
+              "options": [
+                "Les soldats combattent",
+                "Le soldat combat",
+                "Soldats sont",
+                "Tu combats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel sujet + verbe « pugnant »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Erreur de phrase :",
+              "options": [
+                "Puer amat puellam",
+                "Amat puer puellam",
+                "Puer amat puella",
+                "Puellam puer amat"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Objet doit être « puellam » accusatif, pas « puella »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Luna in caelo splendet » :",
+              "options": [
+                "La lune brille dans le ciel",
+                "Lune est ciel",
+                "Je brille",
+                "Ciel sujet seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet luna + verbe splendet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour « nous sommes » on retient plus tard « sumus » ; en 5e phrase simple avec « sum » :",
+              "options": [
+                "Je suis",
+                "Tu es surtout sum/es/est",
+                "Ils sont seulement",
+                "Sans verbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Focus pédagogique sur sum, es, est."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bonne traduction « Le chat chasse la souris » (souris acc. mus) :",
+              "options": [
+                "Felis murum venatur",
+                "Mus felem venatur",
+                "Felis mus nominatif",
+                "Venatur sum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Felis sujet, murum objet, verbe venatur/chase."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Rôles dans « Magister discipulos laudat » :",
+              "options": [
+                "Magister = sujet",
+                "Discipulos = objet",
+                "Laudat = verbe",
+                "Discipulos = sujet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Maître loue les élèves : nom. + acc. pl. + verbe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Aqua fluit » :",
+              "options": ["L'eau coule", "L'eau est", "Eau objet", "Tu coules"],
+              "correctAnswers": [0],
+              "explanation": "Phrase intransitive simple."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Puer et puella ludunt » : nombre verbe ?",
+              "options": ["Singulier", "Pluriel", "Infinitif", "Absent"],
+              "correctAnswers": [1],
+              "explanation": "Deux sujets → « ludunt » pluriel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Sum parvus » (je suis petit) : « parvus » accord ?",
+              "options": [
+                "Masculin sing. avec je (m.)",
+                "Féminin",
+                "Accusatif",
+                "Pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attribut masculin avec sujet « je » masculin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Phrase simple affirmative :",
+              "options": ["Non est", "Puella ridet", "Estne?", "Sine verbo"],
+              "correctAnswers": [1],
+              "explanation": "Sujet + verbe « ridet » (rit)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Ventus flat » : sujet ?",
+              "options": ["Flatus", "Ventus", "Flat", "Le"],
+              "correctAnswers": [1],
+              "explanation": "« Ventus » (vent) souffle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Objectif traduction phrase :",
+              "options": [
+                "Français naturel avec sens latin",
+                "Mot à mot avec « le » partout",
+                "Ignorer le verbe",
+                "Changer les cas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respecter cas et verbe, français fluide."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Regina filiam amat » :",
+              "options": [
+                "La reine aime sa fille",
+                "La fille aime la reine",
+                "Reine est fille",
+                "Amat sans sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Regina sujet, filiam objet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Es tardus » (tu es en retard/lent) : structure ?",
+              "options": [
+                "Es + attribut nominatif",
+                "Es + accusatif",
+                "Tardus verbe",
+                "Article es"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même modèle que « es discipulus »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une phrase simple latine correspond en français le plus souvent à :",
+              "options": [
+                "Une phrase simple",
+                "Un paragraphe entier",
+                "Une seule lettre",
+                "Deux questions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même niveau de complexité syntaxique en 5e."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Verbe « videre » en phrase :",
+              "options": [
+                "Videt = il/elle voit",
+                "Video = je vois",
+                "Puella = verbe voir",
+                "Vident = ils voient"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Formes courantes du présent de voir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Orator populum salutat » : sujet ?",
+              "options": ["Populum", "Orator", "Salutat", "Le"],
+              "correctAnswers": [1],
+              "explanation": "L'orateur salue le peuple."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Même phrase : objet ?",
+              "options": ["Orator", "Populum", "Salutat", "Sum"],
+              "correctAnswers": [1],
+              "explanation": "« Populum » accusatif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Stella micat » :",
+              "options": [
+                "L'étoile scintille",
+                "Étoile est",
+                "Je scintille",
+                "Scintille objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase simple sujet + verbe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Puer non dormit » :",
+              "options": [
+                "Le garçon ne dort pas",
+                "Garçon dort toujours",
+                "Ne = sujet",
+                "Dormit objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Non » nie le verbe « dormit »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Choisir phrase complète :",
+              "options": [
+                "Magister",
+                "Magister legit",
+                "Legit magistrum sujet",
+                "Sum legit"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sujet + verbe « lit »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Filius patrem adiuvat » (aide père) :",
+              "options": [
+                "Le fils aide le père",
+                "Le père aide le fils",
+                "Fils est père",
+                "Adiuvat sans sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filius sujet, patrem objet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ego te video » (je te vois) en 5e on retient :",
+              "options": [
+                "Video + accusatif de la personne vue",
+                "Te = verbe",
+                "Ego = accusatif",
+                "Pas de structure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe voir + complément en accusatif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Urbs magna est » :",
+              "options": [
+                "La ville est grande",
+                "Grande ville court",
+                "Ville objet",
+                "Tu es ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase « est » + attribut magna."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Analyser « nauta ratem gubernat » : d'abord",
+              "options": [
+                "Gubernat (gouverne) verbe",
+                "Ratem sujet",
+                "Nauta objet",
+                "Article ratem"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le marin gouverne le radeau : repérer « gubernat »."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bilan phrases simples u2 :",
+              "options": [
+                "Sujet nominatif + verbe",
+                "Objet possible en accusatif",
+                "Article « le » obligatoire",
+                "Sum/es pour identité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Modèle de base SVO et phrases avec être."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Discipula tabulam scribit » :",
+              "options": [
+                "L'élève écrit sur/tableau (objet tabulam)",
+                "Le tableau écrit",
+                "Scribit sujet",
+                "Sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Discipula sujet, tabulam objet, scribit verbe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Omnes tacent » (tous se taisent) : verbe ?",
+              "options": ["Omnes", "Tacent", "Le", "Sum"],
+              "correctAnswers": [1],
+              "explanation": "« Tacent » = ils se taisent (3e pl.)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase identité féminine :",
+              "options": [
+                "Sum magister",
+                "Es magistra",
+                "Puer est",
+                "Currit puella est"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Es magistra » tu es maîtresse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Lepus currit » :",
+              "options": [
+                "Le lièvre court",
+                "Lièvre voit",
+                "Je cours",
+                "Lièvre objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase action simple."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Méthode : après le verbe, trouver sujet =",
+              "options": [
+                "Nom. qui fait l'action/état",
+                "Accusatif",
+                "Adverbe",
+                "Article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agent ou être au nominatif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Caesar exercitum ducit » sens global :",
+              "options": [
+                "César mène l'armée",
+                "L'armée mène César",
+                "César est armée",
+                "Ducit sans sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caesar sujet, exercitum objet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Puella est in horto » en 5e l'essentiel :",
+              "options": [
+                "Est + puella (être/localisation)",
+                "In = verbe",
+                "Horto sujet",
+                "Phrase sans sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe « est » lie la fille à un lieu (notion simple)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Différence phrase action / phrase « est » :",
+              "options": [
+                "Action = verbe d'action ; est = qualité/identité",
+                "Identique toujours",
+                "Est jamais utilisé",
+                "Action sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux types fondamentaux en 5e."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif u2 « Phrases simples » :",
+              "options": [
+                "Construire et lire des énoncés courts cohérents",
+                "Maîtriser toutes les subordonnées",
+                "Apprendre le grec",
+                "Oublier les cas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lire sujet, verbe, objet et phrases avec sum/es/est."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -18,6 +18,7 @@ import {
   Code2Icon,
   CrosshairIcon,
   GlobeIcon,
+  GraduationCapIcon,
   LockIcon,
   MessageCircleIcon,
   TerminalIcon,
@@ -51,6 +52,7 @@ export const APP_MENU_ICONS: Record<
   cli: TerminalIcon,
   code: Code2Icon,
   mai: MessageCircleIcon,
+  quizzly: GraduationCapIcon,
   site: GlobeIcon,
   vibe: VibeGlyph,
 };

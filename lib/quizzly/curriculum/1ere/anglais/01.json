@@ -1,0 +1,2418 @@
+{
+  "id": "1ere-anglais-01",
+  "year": "1ere",
+  "subject": "anglais",
+  "title": "Identités et échanges",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Se présenter et se définir",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Salutations et formules de politesse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions anglaises servent à saluer quelqu'un ?",
+              "options": ["Hello", "Goodbye", "Hi", "See you later"],
+              "correctAnswers": [0, 2],
+              "explanation": "Hello et Hi sont des salutations courantes au début d'un échange."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduire « Bonjour » le matin en anglais ?",
+              "options": [
+                "Good night",
+                "Good morning",
+                "Good afternoon",
+                "Good evening"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Good morning s'utilise le matin jusqu'à midi environ."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « Nice to meet you » ?",
+              "options": ["Au revoir", "Enchanté(e)", "Bonne nuit", "À demain"],
+              "correctAnswers": [1],
+              "explanation": "On dit Nice to meet you lors d'une première rencontre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle réponse convient à « How are you? » ?",
+              "options": [
+                "I'm fine, thank you",
+                "My name is Tom",
+                "I'm from France",
+                "I am sixteen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "How are you? demande des nouvelles de la personne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Please » et « Thank you » expriment surtout :",
+              "options": ["La colère", "La politesse", "La fatigue", "La faim"],
+              "correctAnswers": [1],
+              "explanation": "Please et Thank you sont des marqueurs essentiels de politesse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« See you soon » équivaut à :",
+              "options": [
+                "À bientôt",
+                "Bonne chance",
+                "Bon appétit",
+                "Félicitations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "See you soon annonce une prochaine rencontre proche."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour dire au revoir de façon informelle, on peut dire :",
+              "options": ["Bye", "Welcome", "Sorry", "Please"],
+              "correctAnswers": [0],
+              "explanation": "Bye est une formule familière de départ."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Excuse me » sert surtout à :",
+              "options": [
+                "Féliciter",
+                "S'excuser ou attirer l'attention",
+                "Commander un plat",
+                "Se présenter"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Excuse me précède une demande ou une excuse légère."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Good evening » convient :",
+              "options": [
+                "Le matin",
+                "L'après-midi",
+                "Le soir",
+                "La nuit au lit"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Good evening s'emploie en début de soirée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« You're welcome » répond à :",
+              "options": ["Thank you", "Hello", "Goodbye", "How old are you?"],
+              "correctAnswers": [0],
+              "explanation": "You're welcome est la réponse standard à un remerciement."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Nom, âge et origine",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles questions permettent de demander l'identité de quelqu'un ?",
+              "options": [
+                "What's your name?",
+                "How old are you?",
+                "Where do you live?",
+                "What's the weather like?"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le nom et le lieu de vie font partie de l'identité personnelle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« My name is Lisa » signifie :",
+              "options": [
+                "J'ai seize ans",
+                "Je m'appelle Lisa",
+                "Je suis française",
+                "J'habite à Paris"
+              ],
+              "correctAnswers": [1],
+              "explanation": "My name is… indique le prénom ou le nom complet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour demander l'âge en anglais :",
+              "options": [
+                "How tall are you?",
+                "How old are you?",
+                "How are you?",
+                "How many are you?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "How old are you? est la formule standard pour l'âge."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« I am fifteen » veut dire :",
+              "options": [
+                "J'ai quinze ans",
+                "Je fais 1,50 m",
+                "Je suis le quinzième",
+                "Il est quinze heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec be + nombre, on exprime l'âge en anglais."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« I'm from Spain » indique :",
+              "options": [
+                "La nationalité uniquement",
+                "Le pays d'origine",
+                "La profession",
+                "Le hobby"
+              ],
+              "correctAnswers": [1],
+              "explanation": "From + pays situe géographiquement la personne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« She is British » décrit :",
+              "options": [
+                "Son âge",
+                "Sa nationalité",
+                "Son adresse",
+                "Sa taille"
+              ],
+              "correctAnswers": [1],
+              "explanation": "British est un adjectif de nationalité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Where are you from? » demande :",
+              "options": [
+                "Où tu vas",
+                "D'où tu viens",
+                "Où tu travailles",
+                "Où tu étudies"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Cette question porte sur l'origine géographique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« I live in London » parle de :",
+              "options": [
+                "Un voyage",
+                "Un lieu de résidence",
+                "Une langue",
+                "Un sport"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Live in + ville indique où l'on habite."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« What's your surname? » demande :",
+              "options": [
+                "Le prénom",
+                "Le nom de famille",
+                "L'âge",
+                "La couleur des yeux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Surname désigne le nom de famille en anglais britannique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« He is twenty years old » : l'âge est :",
+              "options": ["12", "20", "30", "40"],
+              "correctAnswers": [1],
+              "explanation": "Twenty years old correspond à vingt ans."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Verbe be au présent",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes du verbe be sont correctes au présent ?",
+              "options": ["I am", "You is", "She is", "They are"],
+              "correctAnswers": [0, 2],
+              "explanation": "I am et she is suivent les accords du présent de be."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complétez : « They ___ students. »",
+              "options": ["is", "am", "are", "be"],
+              "correctAnswers": [2],
+              "explanation": "They s'accorde avec are."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La forme contractée de « I am » est :",
+              "options": ["I'm", "I's", "I're", "I be"],
+              "correctAnswers": [0],
+              "explanation": "I'm est très fréquent à l'oral."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« He ___ my brother. »",
+              "options": ["are", "is", "am", "be"],
+              "correctAnswers": [1],
+              "explanation": "He/she/it prend is."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour une question avec be : « ___ you ready? »",
+              "options": ["Do", "Are", "Is", "Have"],
+              "correctAnswers": [1],
+              "explanation": "Avec you, l'inversion utilise Are."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« We ___ happy. »",
+              "options": ["is", "am", "are", "be"],
+              "correctAnswers": [2],
+              "explanation": "We + are au présent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La forme négative de « She is tall » est :",
+              "options": [
+                "She not is tall",
+                "She isn't tall",
+                "She don't tall",
+                "She aren't tall"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Isn't est la négation contractée de is not."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« It ___ cold today. »",
+              "options": ["are", "is", "am", "be"],
+              "correctAnswers": [1],
+              "explanation": "It prend is au présent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« You ___ late. » ( plusieurs personnes ou forme de politesse )",
+              "options": ["is", "am", "are", "be"],
+              "correctAnswers": [2],
+              "explanation": "You s'accorde toujours avec are."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« ___ he your friend? »",
+              "options": ["Do", "Are", "Is", "Have"],
+              "correctAnswers": [2],
+              "explanation": "He + is → inversion Is he…?"
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Pronoms personnels sujets",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels pronoms remplacent une personne au singulier ?",
+              "options": ["I", "They", "He", "We"],
+              "correctAnswers": [0, 2],
+              "explanation": "I et he sont des pronoms singuliers."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« ___ am a student. » (je)",
+              "options": ["You", "I", "She", "They"],
+              "correctAnswers": [1],
+              "explanation": "I s'emploie pour parler de soi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour une fille, on utilise :",
+              "options": ["He", "She", "It", "We"],
+              "correctAnswers": [1],
+              "explanation": "She désigne une personne féminine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« ___ are my parents. »",
+              "options": ["He", "She", "They", "It"],
+              "correctAnswers": [2],
+              "explanation": "Parents est pluriel → they."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« It » peut désigner :",
+              "options": [
+                "Un chat (animal)",
+                "Une table (objet)",
+                "Les deux selon le contexte",
+                "Uniquement une personne"
+              ],
+              "correctAnswers": [2],
+              "explanation": "It sert pour les choses, animaux ou bébés selon le contexte."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« We » correspond à :",
+              "options": ["Je", "Tu", "Nous", "Vous (pluriel)"],
+              "correctAnswers": [2],
+              "explanation": "We inclut le locuteur et au moins une autre personne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« You » en anglais peut signifier :",
+              "options": [
+                "Tu ou vous",
+                "Il seulement",
+                "Elle seulement",
+                "Ils seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "You couvre le singulier et le pluriel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Remplace « Tom » : « ___ plays football. »",
+              "options": ["She", "He", "It", "They"],
+              "correctAnswers": [1],
+              "explanation": "Tom est masculin → he."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« ___ live in Dublin. » (mes amis et moi)",
+              "options": ["I", "You", "We", "He"],
+              "correctAnswers": [2],
+              "explanation": "Mes amis et moi = we."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ordre logique : sujet + be + …",
+              "options": [
+                "Complément",
+                "Verbe principal d'abord",
+                "Adverbe en tête obligatoire",
+                "Pas de complément possible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après be vient souvent un adjectif ou un nom."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Famille et relations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots désignent des membres de la famille proche ?",
+              "options": ["Mother", "Cousin", "Sister", "Neighbour"],
+              "correctAnswers": [0, 2],
+              "explanation": "Mother et sister appartiennent au noyau familial immédiat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Father » signifie :",
+              "options": ["Frère", "Père", "Oncle", "Grand-père"],
+              "correctAnswers": [1],
+              "explanation": "Father = père."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Brother » est :",
+              "options": ["Une sœur", "Un frère", "Un cousin", "Un fils"],
+              "correctAnswers": [1],
+              "explanation": "Brother désigne un frère."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Parents » en anglais désigne souvent :",
+              "options": [
+                "Les grands-parents",
+                "Le père et la mère",
+                "Les cousins",
+                "Les voisins"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Parents = père et mère (pas « parents » au sens large français)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« I have got two brothers » parle de :",
+              "options": [
+                "Possession / composition familiale",
+                "Localisation",
+                "Météo",
+                "Nationalité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Have got exprime ce que l'on a dans sa famille."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Grandmother » :",
+              "options": ["Grand-mère", "Grand-père", "Tante", "Nièce"],
+              "correctAnswers": [0],
+              "explanation": "Grandmother = grand-mère."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Only child » signifie :",
+              "options": [
+                "Enfant unique",
+                "Premier enfant",
+                "Enfant adopté",
+                "Enfant jumeau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un only child n'a pas de frères ni sœurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Nephew » est :",
+              "options": ["Neveu", "Nièce", "Beau-frère", "Gendre"],
+              "correctAnswers": [0],
+              "explanation": "Nephew = neveu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour dire « ma famille est grande » :",
+              "options": [
+                "My family is big",
+                "My family are big",
+                "My family am big",
+                "My family be big"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Family peut prendre is (collectif) en anglais courant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Twins » désigne :",
+              "options": [
+                "Des jumeaux",
+                "Des cousins",
+                "Des parents",
+                "Des colocataires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Twins = jumeaux ou jumelles."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Loisirs et centres d'intérêt",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes expriment des activités de loisir courantes ?",
+              "options": ["Play", "Eat", "Listen", "Sleep"],
+              "correctAnswers": [0, 2],
+              "explanation": "Play et listen s'emploient avec sports ou musique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« I like reading » : le hobby est :",
+              "options": [
+                "La lecture",
+                "La cuisine",
+                "La natation",
+                "Le théâtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reading = lire / la lecture."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« She plays the guitar » utilise play car :",
+              "options": [
+                "C'est un instrument de musique",
+                "C'est un métier",
+                "C'est un plat",
+                "C'est une ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Play + the + instrument pour la musique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Go swimming » signifie :",
+              "options": [
+                "Aller nager",
+                "Aller dormir",
+                "Aller cuisiner",
+                "Aller conduire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Go + -ing décrit une activité (go swimming)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Hobby » veut dire :",
+              "options": ["Passe-temps", "Travail", "Devoir", "Examen"],
+              "correctAnswers": [0],
+              "explanation": "Un hobby est une activité plaisir régulière."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« I'm keen on football » exprime :",
+              "options": [
+                "Un fort intérêt",
+                "Une allergie",
+                "Une peur",
+                "Un refus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Keen on = très intéressé par."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Watch films » :",
+              "options": [
+                "Regarder des films",
+                "Filmer des films",
+                "Produire des films",
+                "Critiquer sans voir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Watch = regarder à l'écran."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Free time » correspond à :",
+              "options": [
+                "Temps libre",
+                "Temps de travail",
+                "Heure de cours",
+                "Pause obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Free time = moments hors obligations."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour demander les hobbies : « What do you ___ in your free time? »",
+              "options": ["do", "does", "doing", "did"],
+              "correctAnswers": [0],
+              "explanation": "After do you, le verbe reste à la base (do)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« I can't stand rap » exprime :",
+              "options": [
+                "Une aversion forte",
+                "Un amour passionné",
+                "Une indifférence",
+                "Une curiosité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Can't stand = ne pas supporter."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Apparence physique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs décrivent l'apparence ?",
+              "options": ["Tall", "Happy", "Blue-eyed", "Hungry"],
+              "correctAnswers": [0, 2],
+              "explanation": "Tall et blue-eyed décrivent le physique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« She has long hair » parle de :",
+              "options": [
+                "Cheveux longs",
+                "Bras longs",
+                "Jambes longues",
+                "Ongles longs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hair = cheveux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« He is medium height » :",
+              "options": [
+                "Taille moyenne",
+                "Très grand",
+                "Très petit",
+                "Très mince"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Medium height = stature moyenne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Slim » signifie :",
+              "options": ["Mince", "Musclé", "Rond", "Grand"],
+              "correctAnswers": [0],
+              "explanation": "Slim = mince, élancé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Wear glasses » :",
+              "options": [
+                "Porter des lunettes",
+                "Porter une montre",
+                "Porter un chapeau",
+                "Porter des gants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Glasses = lunettes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Beard » est :",
+              "options": ["Barbe", "Moustache seule", "Cheveux", "Sourcil"],
+              "correctAnswers": [0],
+              "explanation": "Beard = barbe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour les yeux verts :",
+              "options": [
+                "Green eyes",
+                "Green hairs",
+                "Green skin",
+                "Green teeth"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleur + eyes décrit le regard."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Look like » sert à :",
+              "options": [
+                "Ressembler à",
+                "Regarder fixement",
+                "Chercher",
+                "Disparaître"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Look like = ressembler à quelqu'un."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Curly hair » :",
+              "options": [
+                "Cheveux bouclés",
+                "Cheveux raides",
+                "Cheveux courts",
+                "Cheveux blonds uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Curly = bouclé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« What does he look like? » demande :",
+              "options": [
+                "Son apparence",
+                "Son caractère",
+                "Son métier",
+                "Son âge exact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Look like porte sur l'apparence physique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Personnalité et caractère",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs décrivent un tempérament positif ?",
+              "options": ["Friendly", "Selfish", "Generous", "Rude"],
+              "correctAnswers": [0, 2],
+              "explanation": "Friendly et generous sont des traits appréciés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Shy » signifie :",
+              "options": ["Timide", "Bavard", "Colérique", "Organisé"],
+              "correctAnswers": [0],
+              "explanation": "Shy = timide, réservé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Hard-working » :",
+              "options": ["Travailleur", "Paresseux", "Distrait", "Impulsif"],
+              "correctAnswers": [0],
+              "explanation": "Hard-working = qui travaille dur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« What is she like? » demande :",
+              "options": [
+                "Le caractère",
+                "L'apparence",
+                "La nationalité",
+                "L'adresse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "What is… like? = comment est-elle (personnalité)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Outgoing » décrit quelqu'un :",
+              "options": [
+                "Sociable et ouvert",
+                "Triste en permanence",
+                "Silencieux par peur",
+                "Méfiant envers tous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outgoing = extraverti, sociable."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Patient » en anglais :",
+              "options": ["Patient", "Impatient", "Patiently", "Patience"],
+              "correctAnswers": [0],
+              "explanation": "Patient est l'adjectif de caractère."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Creative » :",
+              "options": [
+                "Créatif",
+                "Créature",
+                "Création",
+                "Créateur seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Creative qualifie l'imagination."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Honest » opposé le plus proche :",
+              "options": ["Dishonest", "Lazy", "Shy", "Tall"],
+              "correctAnswers": [0],
+              "explanation": "Dishonest = malhonnête."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« I think he is reliable » :",
+              "options": ["Fiable", "Drôle", "En colère", "Perdu"],
+              "correctAnswers": [0],
+              "explanation": "Reliable = sur qui on peut compter."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Sense of humour » :",
+              "options": [
+                "Sens de l'humour",
+                "Sens de l'orientation",
+                "Sens du danger",
+                "Sens du goût"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Humour britannique ou américain : même expression."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Études, métier et ambitions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases parlent de parcours scolaire ou professionnel ?",
+              "options": [
+                "I'm a pupil",
+                "I like pizza",
+                "She is a nurse",
+                "It's raining"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Pupil et nurse indiquent statut ou métier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Student » en première signifie souvent :",
+              "options": [
+                "Élève / étudiant",
+                "Professeur",
+                "Directeur",
+                "Secrétaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Student = personne qui étudie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« What do you want to be? » demande :",
+              "options": [
+                "Le métier visé",
+                "La taille",
+                "La couleur préférée",
+                "Le plat du jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question classique sur les projets professionnels."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« I would like to become a doctor » exprime :",
+              "options": [
+                "Une ambition",
+                "Un souvenir",
+                "Une obligation légale",
+                "Une blague obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Would like to = souhait pour l'avenir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Job » et « work » :",
+              "options": [
+                "Emploi / travail (proches)",
+                "Vacances",
+                "Jeux",
+                "Maladies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Job = poste ; work = activité professionnelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Graduate » peut signifier :",
+              "options": ["Diplômé", "Débutant", "Retraité", "Absent"],
+              "correctAnswers": [0],
+              "explanation": "To graduate = obtenir un diplôme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Skill » :",
+              "options": ["Compétence", "Chance", "Argent", "Bruit"],
+              "correctAnswers": [0],
+              "explanation": "Skills = savoir-faire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Internship » :",
+              "options": ["Stage", "Examen final", "Récréation", "Retraite"],
+              "correctAnswers": [0],
+              "explanation": "Un internship est un stage en entreprise."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« She works part-time » :",
+              "options": [
+                "Temps partiel",
+                "Nuit uniquement",
+                "Bénévolat",
+                "Sans contrat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Part-time = à temps partiel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Major in history » (USA) :",
+              "options": [
+                "Spécialisation principale en histoire",
+                "Mineur en histoire",
+                "Refus d'histoire",
+                "Histoire au lycée seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Major = discipline principale à l'université."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Se décrire à l'oral : synthèse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour une présentation complète, quels thèmes sont pertinents ?",
+              "options": [
+                "Name and age",
+                "Favourite weather only",
+                "Hobbies",
+                "Random password"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Identité et centres d'intérêt structurent une intro."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Let me introduce myself » sert à :",
+              "options": [
+                "Commencer une présentation",
+                "Terminer un discours",
+                "Refuser de parler",
+                "Changer de sujet brutalement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule d'ouverture pour se présenter."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« As for me » introduit :",
+              "options": [
+                "Un point personnel",
+                "Une citation officielle",
+                "Une loi",
+                "Une date historique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "As for me = pour ma part."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« In a nutshell » signifie :",
+              "options": ["En bref", "En détail", "En colère", "En retard"],
+              "correctAnswers": [0],
+              "explanation": "Expression idiomatique pour résumer."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Both … and … » exprime :",
+              "options": [
+                "Deux éléments inclus",
+                "Une exclusion",
+                "Une opposition seule",
+                "Une question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Both A and B = à la fois A et B."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Identity » en lien avec le chapitre :",
+              "options": [
+                "Identité",
+                "Identité false friend : identité",
+                "Carte bancaire",
+                "Passeport uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identity = ce qui définit qui on est."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Belong to » :",
+              "options": ["Appartenir à", "Partir de", "Cacher", "Vendre"],
+              "correctAnswers": [0],
+              "explanation": "Sense of belonging = sentiment d'appartenance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Self-esteem » :",
+              "options": [
+                "Estime de soi",
+                "Estime des autres seulement",
+                "Estime du prof",
+                "Estime du temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Important dans la construction identitaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Background » peut désigner :",
+              "options": [
+                "Origine sociale ou culturelle",
+                "Arrière-plan d'image seulement",
+                "Dos d'un livre",
+                "Arrière de la classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cultural background = contexte culturel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Exchange » dans « identities and exchanges » :",
+              "options": ["Échange", "Examen", "Excursion seule", "Exclusion"],
+              "correctAnswers": [0],
+              "explanation": "Exchange = interaction entre personnes ou cultures."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les échanges culturels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Royaume-Uni : repères culturels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments sont associés au Royaume-Uni ?",
+              "options": [
+                "The Union Jack",
+                "The Stars and Stripes",
+                "Tea culture",
+                "The Eiffel Tower"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le drapeau britannique et le thé sont des symboles reconnus."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La capitale du Royaume-Uni est :",
+              "options": ["Edinburgh", "London", "Cardiff", "Belfast"],
+              "correctAnswers": [1],
+              "explanation": "London est la capitale politique et économique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« The UK » comprend :",
+              "options": [
+                "Angleterre, Écosse, Pays de Galles, Irlande du Nord",
+                "Uniquement l'Angleterre",
+                "Toute l'Irlande",
+                "Le Canada"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Royaume-Uni est un État union de quatre nations."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Pub » désigne :",
+              "options": [
+                "Un bar traditionnel",
+                "Une école",
+                "Un musée",
+                "Une banque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pub est un lieu social britannique typique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Buckingham Palace » est lié à :",
+              "options": [
+                "La monarchie",
+                "Le football américain",
+                "Hollywood",
+                "La Silicon Valley"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résidence officielle du roi au Londres."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Fish and chips » est :",
+              "options": [
+                "Un plat emblématique",
+                "Un sport",
+                "Une fête",
+                "Un examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plat populaire de poisson frit et frites."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« BBC » est :",
+              "options": [
+                "Une chaîne / service public média",
+                "Une marque de voiture",
+                "Un parti politique",
+                "Une monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "British Broadcasting Corporation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Double-decker bus » :",
+              "options": [
+                "Bus à deux étages",
+                "Bus sans roues",
+                "Bus privé uniquement",
+                "Bus de nuit interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Icône des rues londoniennes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Mind the gap » se entend :",
+              "options": [
+                "Dans le métro londonien",
+                "À l'aéroport de New York",
+                "Au théâtre seulement",
+                "À l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Annonce de sécurité du Tube."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« GCSE » concerne :",
+              "options": [
+                "Examens de fin de collège (UK)",
+                "Université américaine",
+                "Service militaire",
+                "Tourisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "General Certificate of Secondary Education."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "États-Unis : diversité et symboles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels symboles sont américains ?",
+              "options": [
+                "Statue of Liberty",
+                "Big Ben",
+                "Thanksgiving",
+                "Guy Fawkes Night"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La statue de la Liberté et Thanksgiving sont US."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La capitale fédérale des USA est :",
+              "options": [
+                "New York",
+                "Washington D.C.",
+                "Los Angeles",
+                "Chicago"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Washington D.C. abrite le gouvernement fédéral."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Melting pot » suggère :",
+              "options": [
+                "Mélange de cultures",
+                "Isolation totale",
+                "Un seul dialecte",
+                "Absence d'immigration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Métaphore de la diversité américaine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Native Americans » :",
+              "options": [
+                "Peuples autochtones",
+                "Colons britanniques",
+                "Touristes européens",
+                "Astronautes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terme pour les premières nations du continent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« High school » correspond à :",
+              "options": ["Lycée", "Primaire", "Université", "Maternelle"],
+              "correctAnswers": [0],
+              "explanation": "Derniers niveaux avant l'université aux USA."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Homecoming » est souvent :",
+              "options": [
+                "Fête scolaire avec match de football",
+                "Examen national",
+                "Jour férié britannique",
+                "Élection présidentielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition lycéenne très médiatisée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Diverse » signifie :",
+              "options": ["Varié", "Identique", "Vide", "Fermé"],
+              "correctAnswers": [0],
+              "explanation": "Diversity = diversité culturelle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« The American Dream » évoque :",
+              "options": [
+                "Réussite par le travail",
+                "Interdiction de voyager",
+                "Monarchie",
+                "Uniformité linguistique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Idéal de mobilité sociale et prospérité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« State » aux USA peut être :",
+              "options": [
+                "Un État fédéré",
+                "Uniquement un pays",
+                "Une rue",
+                "Une langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "50 states composent les USA."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Hispanic heritage » met en avant :",
+              "options": [
+                "Influence latino-américaine",
+                "Culture viking",
+                "Culture samouraï",
+                "Culture inuit seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fort poids hispanophone aux États-Unis."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Festivals et traditions anglophones",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fêtes sont célébrées dans le monde anglophone ?",
+              "options": [
+                "Halloween",
+                "Bastille Day (comme fête US/UK)",
+                "Christmas",
+                "Independence Day (USA)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Halloween et Noël sont largement pratiqués ; July 4th est US."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Trick or treat » est lié à :",
+              "options": ["Halloween", "Pâques", "Noël", "Thanksgiving"],
+              "correctAnswers": [0],
+              "explanation": "Les enfants demandent des bonbons le 31 octobre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Thanksgiving » (USA) tombe :",
+              "options": [
+                "En novembre",
+                "En juillet",
+                "En février",
+                "En septembre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quatrième jeudi de novembre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Easter » célèbre :",
+              "options": ["Pâques", "Hanoukka", "Ramadan", "Diwali"],
+              "correctAnswers": [0],
+              "explanation": "Fête chrétienne importante au UK/US."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Bank holiday » (UK) :",
+              "options": [
+                "Jour férié",
+                "Jour de banque seulement",
+                "Examen",
+                "Match obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jours chômés légaux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Fireworks » on July 4th :",
+              "options": [
+                "Feux d'artifice",
+                "Feux de forêt",
+                "Feux de cuisine",
+                "Feux d'auto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition du Independence Day."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Pancake Day » (UK) :",
+              "options": [
+                "Mardi gras / crêpes",
+                "Noël",
+                "Halloween",
+                "Prom night"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shrove Tuesday associé aux pancakes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Custom » signifie :",
+              "options": [
+                "Tradition / coutume",
+                "Douane frontière",
+                "Client",
+                "Costume uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Customs = coutumes culturelles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Celebrate » :",
+              "options": ["Célébrer", "Critiquer", "Oublier", "Interdire"],
+              "correctAnswers": [0],
+              "explanation": "To celebrate a festival."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Public holiday » :",
+              "options": [
+                "Jour férié",
+                "Cours obligatoire",
+                "Jour de vote seulement",
+                "Vacances scolaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synonyme courant de jour chômé."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "École et éducation à l'étranger",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes désignent des lieux ou statuts scolaires anglophones ?",
+              "options": [
+                "Secondary school",
+                "Kindergarten",
+                "Boulangerie",
+                "Town hall"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Secondary school et kindergarten relèvent du système éducatif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Exchange student » :",
+              "options": [
+                "Élève en échange",
+                "Professeur permanent",
+                "Directeur",
+                "Agent immobilier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Participant à un programme d'échange."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Host family » :",
+              "options": [
+                "Famille d'accueil",
+                "Famille d'accueil internet",
+                "Famille royale",
+                "Famille nombreuse obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accueille l'élève étranger."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Term » (UK school) :",
+              "options": [
+                "Trimestre",
+                "Interrogation",
+                "Récréation",
+                "Cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Division de l'année scolaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Grade » aux USA peut signifier :",
+              "options": [
+                "Niveau scolaire ou note",
+                "Uniquement une couleur",
+                "Un métier",
+                "Un sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Polysemic : year level or mark."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Uniform » au UK :",
+              "options": [
+                "Tenue imposée dans beaucoup d'établissements",
+                "Interdit partout",
+                "Réservé aux profs",
+                "Uniquement USA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "School uniform très répandu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Assembly » :",
+              "options": [
+                "Rassemblement d'élèves",
+                "Examen écrit",
+                "Match de rugby",
+                "Repas de gala"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moment collectif en début de journée parfois."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Curriculum » :",
+              "options": [
+                "Programme scolaire",
+                "Cantine",
+                "Cour de récré",
+                "Bus scolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ensemble des enseignements."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Scholarship » :",
+              "options": ["Bourse d'études", "Amende", "Absence", "Retard"],
+              "correctAnswers": [0],
+              "explanation": "Aide financière méritocratique ou sociale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Gap year » :",
+              "options": [
+                "Année de pause avant les études sup",
+                "Année sans vacances",
+                "Année de prison",
+                "Année de maternelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition anglo-saxonne de voyage ou bénévolat."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Médias, musique et culture pop",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels médias diffusent la culture anglophone ?",
+              "options": [
+                "Streaming platforms",
+                "Social media",
+                "Stone tablets only",
+                "No radio in English"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plateformes et réseaux propagent films et musique US/UK."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Blockbuster » désigne souvent :",
+              "options": [
+                "Un grand succès au box-office",
+                "Un petit film d'auteur",
+                "Un documentaire scolaire",
+                "Un livre de maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Film à large audience."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Lyrics » :",
+              "options": [
+                "Paroles de chanson",
+                "Instruments",
+                "Billets de concert",
+                "Album cover only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "The lyrics of a song."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Influencer » dans un échange culturel :",
+              "options": [
+                "Personne qui oriente les tendances en ligne",
+                "Prof de gym",
+                "Juge",
+                "Facteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impact sur modes et opinions."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Subtitles » aident à :",
+              "options": [
+                "Comprendre une version originale",
+                "Couper le son",
+                "Changer la nationalité",
+                "Passer un examen oral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous-titres pour films en VO."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Genre » (musique) :",
+              "options": [
+                "Style (rock, pop…)",
+                "Genre grammatical seulement",
+                "Ville",
+                "Monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Music genre = catégorie stylistique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Fandom » :",
+              "options": [
+                "Communauté de fans",
+                "Gouvernement",
+                "Syndicat",
+                "Bibliothèque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fans partagent références communes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Cultural appropriation » débat :",
+              "options": [
+                "Emprunt de symboles sans contexte",
+                "Apprentissage respectueux seul",
+                "Traduction de texte",
+                "Échange scolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet éthique dans les échanges culturels."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Podcast » :",
+              "options": [
+                "Émission audio à la demande",
+                "Journal papier",
+                "Télévision analogique",
+                "Carte postale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Format populaire pour apprendre l'anglais."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Trend » :",
+              "options": ["Tendance", "Tradition immuable", "Loi", "Frontière"],
+              "correctAnswers": [0],
+              "explanation": "Les trends voyagent vite entre pays anglophones."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Communication interculturelle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels comportements peuvent créer des malentendus interculturels ?",
+              "options": [
+                "Personal space differences",
+                "Same greeting everywhere",
+                "Direct vs indirect speech",
+                "Identical gestures worldwide"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Distance physique et style de communication varient."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Stereotype » :",
+              "options": [
+                "Idée reçue simplificatrice",
+                "Description scientifique",
+                "Traduction exacte",
+                "Carte d'identité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les stéréotypes freinent les échanges authentiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Open-minded » :",
+              "options": ["Ouvert d'esprit", "Fermé", "Fatigué", "En retard"],
+              "correctAnswers": [0],
+              "explanation": "Qualité clé en échange culturel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Misunderstanding » :",
+              "options": [
+                "Malentendu",
+                "Accord parfait",
+                "Traduction payée",
+                "Visa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fréquent quand les codes diffèrent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Body language » :",
+              "options": [
+                "Langage corporel",
+                "Grammaire",
+                "Accent",
+                "Alphabet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gestes et posture communiquent aussi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Small talk » :",
+              "options": [
+                "Conversation légère de politesse",
+                "Discours politique",
+                "Examen oral",
+                "Silence total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Weather talk typique au UK."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Politically correct » (débat) vise souvent :",
+              "options": [
+                "Éviter termes offensants",
+                "Interdire toute politesse",
+                "Parler plus fort",
+                "Refuser l'anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sensibilité aux paroles inclusives."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Tolerance » :",
+              "options": ["Tolérance", "Traduction", "Transport", "Télévision"],
+              "correctAnswers": [0],
+              "explanation": "Respect des différences."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Adapt » :",
+              "options": ["S'adapter", "Attaquer", "Abandonner", "Amplifier"],
+              "correctAnswers": [0],
+              "explanation": "To adapt to a new culture."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Cultural shock » :",
+              "options": [
+                "Choc culturel",
+                "Choc électrique",
+                "Choc sportif",
+                "Choc thermique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réaction au dépaysement initial."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Voyage, accueil et intégration",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels documents ou démarches concernent un séjour à l'étranger ?",
+              "options": [
+                "Passport",
+                "Visa (sometimes)",
+                "Library card only",
+                "Local phone number (useful)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Passeport et parfois visa sont obligatoires selon pays."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Jet lag » :",
+              "options": [
+                "Décalage horaire",
+                "Retard d'avion",
+                "Mal des transports",
+                "Allergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fatigue après long haul flight."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Homestay » :",
+              "options": [
+                "Logement chez l'habitant",
+                "Hôtel de luxe",
+                "Camping sauvage",
+                "Prison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Immersion linguistique fréquente."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Customs » (aéroport) :",
+              "options": [
+                "Douane",
+                "Coutumes",
+                "Les deux selon contexte",
+                "Cantine"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Customs = douane ; custom = coutume."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Settle in » :",
+              "options": [
+                "S'installer / prendre ses marques",
+                "Partir vite",
+                "Refuser l'accueil",
+                "Changer de passeport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phase d'adaptation au début du séjour."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Local habits » :",
+              "options": [
+                "Habitudes locales",
+                "Habits de luxe",
+                "Habits vestimentaires only",
+                "Lois nationales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À observer pour mieux s'intégrer."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Buddy system » à l'école :",
+              "options": [
+                "Parrainage par un élève",
+                "Système de punition",
+                "Examens groupés",
+                "Cantine libre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un pair aide le nouvel arrivant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Public transport » :",
+              "options": [
+                "Transports en commun",
+                "Voiture privée",
+                "Hélicoptère personnel",
+                "Cheval"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bus, train, metro…"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Tip » (USA) :",
+              "options": ["Pourboire", "Conseil seulement", "Ticket", "Type"],
+              "correctAnswers": [0],
+              "explanation": "Pourboire attendu dans la restauration US."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Farewell party » :",
+              "options": [
+                "Fête d'au revoir",
+                "Fête d'arrivée",
+                "Réunion parents-profs",
+                "Match de foot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clôture d'un échange scolaire."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Langue, identité et bilinguisme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels facteurs façonnent l'identité linguistique ?",
+              "options": [
+                "Mother tongue",
+                "Second language learning",
+                "Only eye colour",
+                "Random luck"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Langue maternelle et L2 construisent le profil linguistique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Bilingual » :",
+              "options": ["Bilingue", "Monolingue", "Muet", "Illiterate"],
+              "correctAnswers": [0],
+              "explanation": "Maîtrise de deux langues."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Accent » :",
+              "options": [
+                "Façon de prononcer",
+                "Faute de grammaire",
+                "Mot nouveau",
+                "Dialecte interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marque régionale ou sociale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Dialect » :",
+              "options": [
+                "Variété régionale de langue",
+                "Langue officielle UN seulement",
+                "Argot sans règles jamais",
+                "Langue morte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. : scouse, cockney…"
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Code-switching » :",
+              "options": [
+                "Alterner deux langues dans la conversation",
+                "Changer de code postal",
+                "Couper internet",
+                "Tricher à un test"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratique fréquente chez les bilingues."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Fluent » :",
+              "options": ["Courant", "Débutant", "Fatigué", "Flou"],
+              "correctAnswers": [0],
+              "explanation": "Speak fluent English."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Mother tongue » :",
+              "options": [
+                "Langue maternelle",
+                "Langue du père seulement",
+                "Anglais obligatoire",
+                "Latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Première langue acquise."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Global language » pour l'échange :",
+              "options": [
+                "L'anglais joue ce rôle",
+                "Le esperanto officiel partout",
+                "Le français seul",
+                "Le silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lingua franca des échanges internationaux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Identity card » (figuré) lie :",
+              "options": [
+                "Langue et sentiment d'appartenance",
+                "Uniquement photo",
+                "Uniquement sport",
+                "Uniquement nourriture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La langue porte l'identité culturelle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Mispronounce » :",
+              "options": [
+                "Mal prononcer",
+                "Bien écrire",
+                "Traduire",
+                "Comprendre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erreur normale en apprentissage."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Art de vivre et différences quotidiennes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels aspects du quotidien diffèrent entre cultures anglophones ?",
+              "options": [
+                "Meal times",
+                "Units (miles vs km)",
+                "Same Celsius everywhere in USA",
+                "Driving side"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Horaires des repas et unités varient UK/US."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Au UK, on conduit généralement :",
+              "options": ["À gauche", "À droite", "Au centre", "Sans règles"],
+              "correctAnswers": [0],
+              "explanation": "Left-hand traffic."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Queue » (UK) dans la rue :",
+              "options": [
+                "File d'attente",
+                "Queue d'animal",
+                "Requête internet",
+                "Question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "British word for line."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Apartment » (US) = « Flat » (UK) :",
+              "options": ["Appartement", "Maison", "Garage", "École"],
+              "correctAnswers": [0],
+              "explanation": "Faux-amis de vocabulaire logement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Soccer » aux USA désigne :",
+              "options": ["Football", "Rugby", "Basket", "Baseball"],
+              "correctAnswers": [0],
+              "explanation": "American English for association football."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Takeaway » (UK) :",
+              "options": ["Plat à emporter", "Cadeau", "Vacances", "Examen"],
+              "correctAnswers": [0],
+              "explanation": "Takeaway food."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Trash » (US) vs « Rubbish » (UK) :",
+              "options": ["Déchets", "Trésor", "Meubles", "Livres"],
+              "correctAnswers": [0],
+              "explanation": "Variantes lexicales."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Fahrenheit » est surtout utilisé aux USA pour :",
+              "options": ["Température", "Distance", "Poids", "Vitesse"],
+              "correctAnswers": [0],
+              "explanation": "Le UK utilise surtout Celsius aujourd'hui."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Lifestyle » :",
+              "options": [
+                "Mode de vie",
+                "Style vestimentaire only",
+                "Durée de vie",
+                "Type de maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ensemble des habitudes quotidiennes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Routine » en échange :",
+              "options": [
+                "Aide à structurer la journée",
+                "Empêche toute découverte",
+                "Remplace les devoirs",
+                "Supprime le sommeil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une routine rassure en séjour."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Projet d'échange et ouverture sur le monde",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels objectifs poursuit un échange scolaire ?",
+              "options": [
+                "Improve language skills",
+                "Ignore local culture",
+                "Build friendships",
+                "Avoid all communication"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Langue et liens humains sont au cœur du projet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Broaden one's horizons » :",
+              "options": [
+                "Élargir ses horizons",
+                "Rétrécir sa chambre",
+                "Fermer son passeport",
+                "Quitter l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression sur l'ouverture au monde."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Mutual understanding » :",
+              "options": [
+                "Compréhension mutuelle",
+                "Victoire sportive",
+                "Traduction automatique",
+                "Conflit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "But des programmes d'échange."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Report back » après le séjour :",
+              "options": [
+                "Faire un retour / compte rendu",
+                "Ne rien dire",
+                "Oublier l'expérience",
+                "Refuser de présenter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oral ou écrit en classe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Pen pal » traditionnel :",
+              "options": [
+                "Correspondant",
+                "Camarade de classe local",
+                "Professeur",
+                "Directeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échange de lettres ou messages."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Citizenship » (educational) :",
+              "options": [
+                "Éducation à la citoyenneté mondiale",
+                "Passeport automatique",
+                "Vote obligatoire à 12 ans",
+                "Armée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sens des responsabilités globales."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Sustainable exchange » pense à :",
+              "options": [
+                "Impact environnemental du voyage",
+                "Ignorer le climat",
+                "Voyager sans objectif",
+                "Supprimer les visas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mobilité plus responsable."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Feedback » du partenaire :",
+              "options": [
+                "Retour constructif",
+                "Silence",
+                "Punition",
+                "Note sans commentaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Améliore l'expérience des deux côtés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Lifelong friendship » :",
+              "options": [
+                "Amitié durable",
+                "Amitié d'un jour",
+                "Rivalité",
+                "Indifférence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souvenir fréquent des échanges."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Global citizen » :",
+              "options": [
+                "Citoyen du monde conscient des enjeux communs",
+                "Citoyen d'un seul village",
+                "Personne sans nationalité",
+                "Touriste passif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vision clé du thème Identités et échanges."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2648 @@
+{
+  "id": "1ere-enseignement-scientifique-03",
+  "year": "1ere",
+  "subject": "enseignement-scientifique",
+  "title": "Le son et sa perception",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Ondes sonores",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Nature et propagation du son",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le son est une onde mécanique. Quelles affirmations sont correctes ?",
+              "options": [
+                "Il nécessite un milieu matériel",
+                "Il se propage dans le vide interstellaire",
+                "Il transporte de l'énergie sans déplacer le milieu en bloc",
+                "Il n'existe que dans les métaux"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Sans milieu, pas de vibration transmise ; l'énergie se propage, pas une masse d'air entière."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ordre de grandeur de la célérité du son dans l'air (20 °C) :",
+              "options": ["340 m·s⁻¹", "3×10⁸ m·s⁻¹", "34 m·s⁻¹", "1500 m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "Dans l'air, v ≈ 340 m·s⁻¹ ; dans l'eau elle est plus élevée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un haut-parleur émet du son en :",
+              "options": [
+                "Faisant vibrer une membrane qui comprime l'air",
+                "Émettant des photons audibles",
+                "Chauffant l'air jusqu'au plasma",
+                "Créant un champ électrique statique audible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les variations de pression constituent l'onde sonore."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans l'espace interplanétaire, une explosion n'est pas entendue car :",
+              "options": [
+                "Il n'y a pratiquement pas de milieu",
+                "La gravité annule le son",
+                "Le son devient toujours infrasonore",
+                "Seul l'oxygène transmet le son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Onde mécanique = besoin de particules pour transmettre la perturbation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Onde sonore dans l'air, direction de vibration des molécules :",
+              "options": [
+                "Parallèle à la propagation (longitudinale)",
+                "Toujours perpendiculaire",
+                "Uniquement circulaire en surface",
+                "Aléatoire sans propagation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zones de compression et de dilatation suivent la direction d'avance."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comparer lumière et son :",
+              "options": [
+                "Lumière : EM ; son : mécanique",
+                "Les deux sont mécaniques",
+                "Les deux nécessitent l'air",
+                "Le son est plus rapide que la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière traverse le vide ; le son non."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le son se propage généralement plus vite dans :",
+              "options": [
+                "L'eau que dans l'air",
+                "L'air que dans l'eau",
+                "Le vide que dans l'air",
+                "L'hélium que dans l'eau (toujours)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "v_eau ≈ 1500 m·s⁻¹ > v_air ≈ 340 m·s⁻¹."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un micro transforme le son en signal électrique via :",
+              "options": [
+                "Une membrane sensible à la pression",
+                "La couleur de l'onde",
+                "Un laser mesurant la masse moléculaire",
+                "La radioactivité naturelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même principe physique qu'une oreille ou un haut-parleur inversé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sur un enregistrement, le signal sonore peut représenter :",
+              "options": [
+                "La surpression en fonction du temps",
+                "Uniquement la fréquence sans temps",
+                "La température de l'air",
+                "Le nombre de décibels sans signal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oscillogramme trace une grandeur acoustique vs le temps."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux auditeurs côte à côte entendent la même source car :",
+              "options": [
+                "L'onde se propage dans plusieurs directions",
+                "Le son ne se propage qu'en ligne droite vers un seul point",
+                "Seul le plus proche reçoit l'onde",
+                "Le son ne quitte jamais la source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La source émet des ondes qui se répandent dans le milieu."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Fréquence et période",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour un son périodique, fréquence f et période T :",
+              "options": [
+                "f = 1/T",
+                "T = 1/f",
+                "f × T = 1 en unités SI",
+                "f et T sont sans lien"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fréquence et période sont réciproques ; f×T = 1 sans dimension."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une note à 440 Hz a une période d'environ :",
+              "options": ["2,3 ms", "440 s", "0,44 s", "44 ms"],
+              "correctAnswers": [0],
+              "explanation": "T = 1/440 s ≈ 2,27×10⁻³ s."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Unité SI de la fréquence :",
+              "options": [
+                "Hertz (Hz)",
+                "Décibel (dB)",
+                "Newton (N)",
+                "Pascal (Pa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 Hz = 1 cycle par seconde."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Doubler la fréquence d'un son audible :",
+              "options": [
+                "Monte la hauteur d'une octave",
+                "Rend le son deux fois plus grave",
+                "Ne change pas la hauteur",
+                "Le rend inaudible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hauteur perçue augmente avec f."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Domaine audible humain (ordre de grandeur) :",
+              "options": ["20 Hz – 20 kHz", "0–1 Hz", "1–10 MHz", "20–200 MHz"],
+              "correctAnswers": [0],
+              "explanation": "Au-delà : infrasons ou ultrasons."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sur un oscillogramme, la période T se mesure entre :",
+              "options": [
+                "Deux instants de même phase consécutifs",
+                "Deux amplitudes max sans temps",
+                "Deux fréquences différentes",
+                "Deux niveaux en dB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durée d'un cycle complet du signal."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "100 Hz comparé à 400 Hz est :",
+              "options": [
+                "Quatre fois plus grave",
+                "Quatre fois plus aigu",
+                "Identique",
+                "Inaudible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fréquence plus basse ⇒ son plus grave."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Effet Doppler (source en mouvement) :",
+              "options": [
+                "La fréquence perçue change",
+                "La fréquence reste toujours identique",
+                "N'existe que dans le vide",
+                "Ne concerne que la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rapprochement ⇒ fréquence perçue plus haute."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "50 Hz (réseau électrique) est :",
+              "options": [
+                "Très grave mais audible",
+                "Un ultrason",
+                "Toujours inaudible",
+                "Au-dessus de 20 kHz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En dessous des notes habituelles d'un piano."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un son pur sinusoïdal est décrit surtout par :",
+              "options": [
+                "Une fréquence fondamentale unique",
+                "Toutes les harmoniques d'un violon",
+                "Le timbre complet d'une trompette",
+                "La célérité dans l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un seul pic fréquentiel ; le timbre implique plusieurs composantes."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Longueur d'onde",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Relation correcte pour une onde sonore de célérité v :",
+              "options": ["λ = v/f", "λ = v × T", "v = λ × f", "λ = f/v"],
+              "correctAnswers": [0, 2],
+              "explanation": "Avec T = 1/f, on a aussi λ = vT."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Son à 340 Hz dans l'air (v ≈ 340 m·s⁻¹), λ vaut environ :",
+              "options": ["1 m", "340 m", "0,001 m", "34 m"],
+              "correctAnswers": [0],
+              "explanation": "λ = v/f = 340/340 = 1 m."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si la fréquence augmente à v constante :",
+              "options": [
+                "λ diminue",
+                "λ augmente",
+                "λ reste fixe",
+                "v diminue toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "λ et f sont inversement proportionnels."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "λ désigne :",
+              "options": [
+                "Longueur d'onde",
+                "Période",
+                "Amplitude",
+                "Niveau sonore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distance parcourue par l'onde pendant une période."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux points distants de λ, même phase :",
+              "options": [
+                "En phase",
+                "En opposition de phase",
+                "Sans rapport",
+                "Toujours nodes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décalage spatial d'un cycle complet."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ultrason à 40 kHz dans l'air (340 m·s⁻¹), λ ≈",
+              "options": ["8,5 mm", "340 m", "40 m", "0,85 m"],
+              "correctAnswers": [0],
+              "explanation": "λ = 340/40000 ≈ 0,0085 m."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Même note (même f) dans air et eau :",
+              "options": [
+                "λ différente car v différente",
+                "λ identique toujours",
+                "f change seule",
+                "Pas d'onde en eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f imposée par la source ; v milieu change λ."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Représentation spatiale instantanée d'une onde :",
+              "options": [
+                "Pression ou déplacement vs position",
+                "Couleur vs temps",
+                "dB vs fréquence seule",
+                "Température vs temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On visualise le profil spatial à un instant donné."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "λ du la 440 Hz (v = 340 m·s⁻¹) ≈",
+              "options": ["0,77 m", "440 m", "4,4 m", "77 m"],
+              "correctAnswers": [0],
+              "explanation": "λ = 340/440 ≈ 0,77 m."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Doubler λ à f fixe impliquerait :",
+              "options": [
+                "Doubler v (même milieu impossible sans changer f)",
+                "Halver f",
+                "Rien",
+                "Tripler l'amplitude"
+              ],
+              "correctAnswers": [1],
+              "explanation": "λ = v/f : à v constant, λ×f constant."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Célérité du son",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La célérité v du son dépend surtout :",
+              "options": [
+                "Du milieu de propagation",
+                "De la température du milieu",
+                "De l'amplitude seule",
+                "De la couleur perçue"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La vitesse du son change avec le milieu et avec sa température."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "v dans l'air augmente légèrement quand T augmente car :",
+              "options": [
+                "Les molécules sont plus agitées",
+                "L'air devient un métal",
+                "La fréquence double",
+                "Le vide se forme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet thermique sur la compressibilité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "v dans l'eau ≈ 1500 m·s⁻¹ signifie qu'une perturbation :",
+              "options": [
+                "Parcourt 1500 m en 1 s",
+                "Parcourt 340 m en 1 s",
+                "Ne se propage pas",
+                "Va à la vitesse de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Célérité = distance / temps."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans l'acier, v est généralement :",
+              "options": [
+                "Supérieure à celle dans l'air",
+                "Inférieure à 10 m·s⁻¹",
+                "Nulle",
+                "Identique au vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Solides : forte élasticité → v élevée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Distance d'une foudre : compter secondes entre éclair et tonnerre sert à estimer :",
+              "options": [
+                "Distance (lumière quasi instantanée)",
+                "Fréquence du tonnerre",
+                "Timbre",
+                "Ultrasons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "d ≈ v_sound × Δt avec v ≈ 340 m·s⁻¹."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sonar utilise surtout :",
+              "options": [
+                "Ultrasons dans l'eau",
+                "Lumière visible seule",
+                "Infrasons dans le vide",
+                "Ondes radio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesure de temps de retour dans l'eau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "v ne dépend pas principalement de :",
+              "options": [
+                "La fréquence audible (milieu non dispersif)",
+                "Le milieu",
+                "La température (air)",
+                "La nature gaz/liquide/solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans l'air, v est quasi indépendante de f pour l'audible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Helium dans les poumons change la voix car :",
+              "options": [
+                "v plus élevée modifie les résonances",
+                "Amplitude nulle",
+                "Fréquence fondamentale imposée par He",
+                "Absence d'onde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même source, milieu plus léger → spectre perçu différent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Unité SI de v :",
+              "options": ["m·s⁻¹", "Hz", "Pa", "W"],
+              "correctAnswers": [0],
+              "explanation": "Vitesse de propagation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Retard sonore entre deux micros espacés sert à :",
+              "options": [
+                "Localiser une source",
+                "Mesurer la masse molaire",
+                "Datation carbone",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Δt et géométrie donnent la direction."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Amplitude et intensité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Amplitude et intensité sonore :",
+              "options": [
+                "Grande amplitude ⇒ plus d'énergie transportée",
+                "Intensité I se mesure en W·m⁻²",
+                "Amplitude se mesure en hertz",
+                "I ne dépend pas de la distance"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Amplitude lie pression ; I est puissance par surface."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Intensité I à distance r d'une source isotrope diminise comme :",
+              "options": ["1/r²", "r²", "1/r", "Constante"],
+              "correctAnswers": [0],
+              "explanation": "Répartition sur sphère 4πr²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Doubler l'amplitude de pression (à f fixe) multiplie I environ par :",
+              "options": ["4", "2", "√2", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "I ∝ amplitude²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Son « plus fort » perçu correspond surtout à :",
+              "options": [
+                "Plus grande intensité",
+                "Fréquence plus basse toujours",
+                "Timbre identique obligatoire",
+                "λ plus grande"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sensation de force liée à l'énergie reçue."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Seuil d'audition I₀ ≈ 10⁻¹² W·m⁻² sert de référence pour :",
+              "options": ["Décibels", "Hertz", "Metres", "Moles"],
+              "correctAnswers": [0],
+              "explanation": "Échelle logarithmique du niveau sonore."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Atténuation avec distance explique pourquoi :",
+              "options": [
+                "On crie de loin",
+                "Le timbre devient pur",
+                "f augmente",
+                "v diminue à 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compenser la baisse d'intensité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Absorption par l'air et obstacles :",
+              "options": [
+                "Réduit l'intensité reçue",
+                "Augmente toujours I",
+                "Crée le vide",
+                "Annule f"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie convertie en chaleur ou réfléchie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Oscillogramme : amplitude visible comme :",
+              "options": [
+                "Hauteur du signal",
+                "Couleur",
+                "Axe fréquence",
+                "Durée totale seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Excursion max autour du zéro."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux sources identiques en phase même point :",
+              "options": [
+                "Intensité peut augmenter (interférences)",
+                "Toujours silence",
+                "I divisée par 2",
+                "f doublée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Superposition constructive possible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Protection auditive vise surtout à baisser :",
+              "options": [
+                "L'intensité atteignant l'oreille",
+                "La vitesse du son",
+                "La fréquence fondamentale",
+                "λ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limiter énergie reçue par le tympan."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Niveau sonore et décibels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Niveau sonore L en dB :",
+              "options": [
+                "L = 10 log(I/I₀)",
+                "Échelle logarithmique",
+                "L = f × T",
+                "Mesure directe de la hauteur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "dB compresse la large gamme d'intensités."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "+10 dB correspond environ à :",
+              "options": [
+                "Intensité ×10",
+                "Intensité ×2",
+                "Intensité /10",
+                "Fréquence ×10"
+              ],
+              "correctAnswers": [0],
+              "explanation": "10 log10(10) = 10 dB."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "3 dB en plus ≈",
+              "options": [
+                "Double l'intensité",
+                "Divise I par 2",
+                "Triple f",
+                "Change le timbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "10 log10(2) ≈ 3 dB."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Conversation ≈ 60 dB, perceuse ≈ 90 dB : écart 30 dB ⇒ I perceuse ≈",
+              "options": [
+                "1000 × conversation",
+                "2 × conversation",
+                "10 × conversation",
+                "Identique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "10^(30/10) = 1000."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "dB(A) pondère les fréquences car :",
+              "options": [
+                "L'oreille est plus sensible à 1–4 kHz",
+                "L'air n'existe pas",
+                "v change",
+                "λ = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtrage imitant sensibilité auditive."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Seuil de douleur ≈ 120 dB signifie :",
+              "options": [
+                "Risque auditif majeur",
+                "Inaudible",
+                "Infrason",
+                "Silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exposition prolongée dangereuse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sonometre mesure :",
+              "options": [
+                "Niveau sonore",
+                "Masse molaire",
+                "Température seule",
+                "Couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appareil de mesure en dB."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "0 dB ne signifie pas « aucun son » mais :",
+              "options": [
+                "I = I₀ seuil",
+                "I = 0 W·m⁻² strict",
+                "f = 0",
+                "Vacuum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Référence au seuil d'audition."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Limiter temps d'exposition à fort L vise à :",
+              "options": [
+                "Éviter lésions cochlée",
+                "Changer λ",
+                "Augmenter v",
+                "Supprimer harmoniques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dose énergétique cumulée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Addition de niveaux sonores identiques +3 dB car :",
+              "options": [
+                "Intensités s'additionnent",
+                "Fréquences s'annulent",
+                "v double",
+                "T double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux sources égales → I totale ×2."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Ultrasons et infrasons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Ultrasons (f > 20 kHz) :",
+              "options": [
+                "Inaudibles pour l'humain moyen",
+                "Utilisés en échographie médicale",
+                "Sont toujours des infrasons",
+                "Ne se propagent pas dans l'eau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Au-dessus de l'audible ; utiles en imagerie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Infrasons :",
+              "options": [
+                "f < 20 Hz",
+                "f > 20 MHz",
+                "Uniquement dans le vide",
+                "Toujours musicaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Graves sous le seuil audible."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Échographie envoie des ultrasons et analyse :",
+              "options": [
+                "Échos réfléchis",
+                "Lumière UV",
+                "Rayons X seuls",
+                "Neutrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Temps de retour → profondeur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Chien entend jusqu'à ≈ 40 kHz car :",
+              "options": [
+                "Oreille sensible aux hautes f",
+                "Pas d'onde mécanique",
+                "v infinie",
+                "T = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limite auditive espèce-dépendante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sismographe enregistre souvent :",
+              "options": [
+                "Infrasons / basses f de séismes",
+                "Gamma",
+                "Visible seul",
+                "Micro-ondes cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tremblements : très basses fréquences."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ultrasons nettoyage pièces :",
+              "options": [
+                "Cavitation et agitation",
+                "Fusion métal",
+                "Photosynthèse",
+                "Ionisation air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hautes f + liquide → microbulles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Limite 20 kHz humain est :",
+              "options": [
+                "Ordre de grandeur physiologique",
+                "Loi v = λf",
+                "Masse atomique",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variable selon âge et exposition."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dauphin localisation proie utilise :",
+              "options": [
+                "Ultrasons",
+                "Lumière seule",
+                "Gravité",
+                "Champ magnétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écholocation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Infrasons éoliennes ressentis parfois comme :",
+              "options": ["Vibration / malaise", "Couleur", "Odeur", "Saveur"],
+              "correctAnswers": [0],
+              "explanation": "Perception corporelle possible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Filtrer f > 20 kHz sur enregistrement :",
+              "options": [
+                "Supprime ultrasons",
+                "Change timbre grave seul",
+                "Annule v",
+                "Crée vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtre passe-bas auditive."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Réflexion et écho",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Écho :",
+              "options": [
+                "Réflexion du son sur une surface",
+                "Retard perceptible si Δt > ~0,1 s",
+                "Preuve que le son est une lumière",
+                "Impossible en montagne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Onde renvoyée ; cerveau sépare si délai suffisant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mur lisse dur réfléchit mieux car :",
+              "options": [
+                "Changement d'impédance marqué",
+                "Absorption totale",
+                "v = 0",
+                "f = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu d'énergie absorbée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Distance montagne : 2 s entre cri et écho ⇒ parcours aller-retour 680 m, distance ≈",
+              "options": ["340 m", "680 m", "170 m", "1360 m"],
+              "correctAnswers": [0],
+              "explanation": "d = v×t/2 = 340×2/2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Réverbération vs écho :",
+              "options": [
+                "Réverbération : multiples reflets rapprochés",
+                "Écho : retour distinct",
+                "Réverbération n'existe pas",
+                "Écho sans réflexion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salles : superposition de reflets."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Absorption par tapis réduit :",
+              "options": [
+                "Réverbération",
+                "v dans l'air",
+                "f fondamentale",
+                "Z atomique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matériaux poreux absorbent l'énergie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Angle incidence = angle réflexion concerne :",
+              "options": [
+                "Ondes sonores comme optique",
+                "Uniquement lumière",
+                "Gravité",
+                "Chimie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loi de Snell pour réflexion."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sonar mesure profondeur avec :",
+              "options": [
+                "Temps d'aller-retour ultrason",
+                "Couleur",
+                "pH",
+                "Masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "d = v×t/2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Paroi anti-bruit réfléchissante peut :",
+              "options": [
+                "Augmenter niveau côté réfléchi",
+                "Supprimer toute onde",
+                "Créer vide",
+                "Baisser f"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Redirection de l'énergie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Chambre anéchoïque :",
+              "options": [
+                "Absorbe pour limiter échos",
+                "Amplifie échos",
+                "Vide interstellaire",
+                "Réacteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tests acoustiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Loi v = λf reste vraie après réflexion si :",
+              "options": [
+                "Milieu identique, f conservée",
+                "Milieu change f",
+                "v = 0",
+                "Onde devient EM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La source impose f ; v milieu impose λ."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Interférences sonores",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Superposition de deux ondes :",
+              "options": [
+                "Amplitudes s'additionnent algébriquement",
+                "Interférences constructives si en phase",
+                "Annule toujours le son",
+                "Change Z chimique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Principe de superposition."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Décalage de phase π (demi-λ) ⇒",
+              "options": [
+                "Interférence destructive possible",
+                "Toujours renforcement",
+                "f double",
+                "v infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Crêtes rencontrent creux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deux haut-parleurs même f, fils inversés :",
+              "options": [
+                "Possible annulation locale",
+                "Gain partout",
+                "Ultrason",
+                "Silence global garanti"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déphasage π selon position."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Battements (2 f proches) :",
+              "options": [
+                "Modulation amplitude",
+                "Changement timbre seul",
+                "v = 0",
+                "Écho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f_battement = |f1−f2|."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Cordes résonantes :",
+              "options": [
+                "Onde stationnaire si conditions adaptées",
+                "Uniquement lumière",
+                "Pas d'onde",
+                "I = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nœuds et ventres."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tube ouvert/fermé musical :",
+              "options": [
+                "Longueur lie f des modes",
+                "Détermine couleur",
+                "Fixe v lumière",
+                "Mesure pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résonance air column."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Casque antibruit actif envoie :",
+              "options": [
+                "Onde déphasée",
+                "Ultrason seul",
+                "Silence mécanique seul",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Destructive interference."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Interférences nécessitent :",
+              "options": [
+                "Cohérence (f stable, relation phase)",
+                "Vide",
+                "I = I₀",
+                "T = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sinon moyenne temporelle masque franges."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Point milieu deux sources en phase, même distance :",
+              "options": ["Renforcement", "Annulation", "f nulle", "Écho"],
+              "correctAnswers": [0],
+              "explanation": "Chemins égaux → constructive."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mesure λ par deux micros :",
+              "options": [
+                "Différence de phase / distance",
+                "Couleur",
+                "Masse",
+                "Température seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Géométrie + interférences."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse ondes sonores",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Caractériser une onde sonore :",
+              "options": [
+                "f, T, λ, v, amplitude",
+                "Timbre lié au spectre",
+                "Couleur RGB",
+                "Numéro atomique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Grandeurs physiques + contenu fréquentiel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Signal numérique audio :",
+              "options": [
+                "Échantillons amplitude vs temps",
+                "Mesure toujours I directe",
+                "Ignore f",
+                "Remplace l'oreille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conversion analogique-numérique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Fréquence d'échantillonnage 44,1 kHz permet :",
+              "options": [
+                "Enregistrer jusqu'à ~22 kHz (théorème Nyquist)",
+                "Ultrasons médicaux",
+                "Infrasons seuls",
+                "v = 340"
+              ],
+              "correctAnswers": [0],
+              "explanation": "fs > 2×f_max."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Compression MP3 :",
+              "options": [
+                "Réduit données en gardant perception",
+                "Supprime toute f",
+                "Change v air",
+                "Mesure dB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Codage perceptuel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Spectrogramme affiche :",
+              "options": [
+                "f vs temps (énergie)",
+                "λ vs masse",
+                "pH vs temps",
+                "Z vs temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vision temps-fréquence."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Onde + mur : réflexion et :",
+              "options": [
+                "Transmission partielle",
+                "Disparition totale systématique",
+                "Changement élément chimique",
+                "Fusion noyaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie répartie réflexion/absorption/transmission."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Source mobile + observateur fixe :",
+              "options": ["Doppler", "Diffraction seule", "Osmose", "Mitose"],
+              "correctAnswers": [0],
+              "explanation": "Fréquence perçue modifiée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Intensité diminue avec distance :",
+              "options": ["1/r² (source ponctuelle)", "r²", "Constante", "1/f"],
+              "correctAnswers": [0],
+              "explanation": "Géométrie sphérique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Son pur vs complexe :",
+              "options": [
+                "Pur : une f ; complexe : plusieurs",
+                "Pur : plusieurs f",
+                "Complexe : une seule",
+                "Identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spectre continu ou discret."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En résumé, entendre un son requiert :",
+              "options": [
+                "Onde mécanique, intensité suffisante, f audible",
+                "Vide interstellaire",
+                "Lumière seule",
+                "I = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne physique jusqu'à l'oreille."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Musique et audition",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Oreille et seuils",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Oreille humaine :",
+              "options": [
+                "Convertit ondes en signal nerveux",
+                "Tympan transmet vibrations",
+                "Transforme directement en lumière",
+                "N'a pas de cochlée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chaîne mécanique puis électrophysiologique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Cochlée contient :",
+              "options": [
+                "Cellules ciliées sensorielles",
+                "Rétine",
+                "Alvéoles",
+                "Mitochondries seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transduction mécano-électrique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Seuil d'audition :",
+              "options": [
+                "Intensité minimale audible",
+                "Fréquence max",
+                "Timbre",
+                "λ max"
+              ],
+              "correctAnswers": [0],
+              "explanation": "I₀ référence dB."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Seuil de douleur ≈ 120 dB :",
+              "options": [
+                "Exposition dangereuse",
+                "Silence",
+                "Infrason",
+                "Audible seulement aux bébés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Risque traumatismes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Audition binaurale permet :",
+              "options": [
+                "Localiser la source",
+                "Changer f",
+                "Supprimer timbre",
+                "Mesurer v lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Différences temps/intensité entre oreilles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Conduction osseuse :",
+              "options": [
+                "Vibration via crâne",
+                "Uniquement air",
+                "Ultrason seul",
+                "Vue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contourne tympan/cf chain."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Presbyacousie :",
+              "options": [
+                "Perte auditive liée à l'âge",
+                "Vision",
+                "Goût",
+                "Odeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sensibilité hautes f diminue."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Acouphène :",
+              "options": [
+                "Sensation sonore sans source externe",
+                "Mesure dB",
+                "Écho montagne",
+                "Réverbération salle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Perception interne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Audiométrie teste :",
+              "options": [
+                "Seuils par fréquence",
+                "Masse molaire",
+                "Couleur",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Audiogramme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Nerf auditif transmet :",
+              "options": [
+                "Impulsions vers cerveau",
+                "Lumière",
+                "O₂",
+                "Glucose seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voie VIII."
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "order": 2,
+          "title": "Hauteur et fréquence",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Hauteur perçue :",
+              "options": [
+                "Corrélée à la fréquence fondamentale",
+                "Plus aigu si f augmente",
+                "Dépend uniquement de I",
+                "Identique à timbre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Attribute mélodique vs spectre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La 440 Hz internationale (A4) sert à :",
+              "options": [
+                "Accorder instruments",
+                "Mesurer température",
+                "Datation",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Référence musique moderne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Octave :",
+              "options": ["f ×2", "f /2", "f +440", "I ×2"],
+              "correctAnswers": [0],
+              "explanation": "Doubler f = monter d'une octave."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Gamme tempérée :",
+              "options": [
+                "12 demi-tons par octave égales",
+                "Fréquences aléatoires",
+                "Un seul son pur",
+                "Pas de rapport f"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2^(1/12) entre demi-tons."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Note plus grave :",
+              "options": [
+                "f plus basse",
+                "f plus haute",
+                "I plus faible seule",
+                "T plus court"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hauteur ↓ si f ↓."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Soprano vs basse :",
+              "options": [
+                "Registres de f différents",
+                "Même f toujours",
+                "Pas de cordes vocales",
+                "Ultrason seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tessiture vocale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Mélodie = suite de :",
+              "options": [
+                "Hauteurs dans le temps",
+                "Intensités seules",
+                "Couleurs",
+                "Pressions atmosphériques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variation f perçue."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Diapason 440 Hz :",
+              "options": [
+                "Son quasi pur",
+                "Bruit blanc",
+                "Silence",
+                "Infrason"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sinusoïde stable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Transposition change :",
+              "options": [
+                "Hauteur globale (f multipliées)",
+                "Timbre obligatoirement",
+                "v air",
+                "λ vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même morceau, autre registre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Hauteur vs intensité :",
+              "options": [
+                "Deux attributs distincts",
+                "Identiques",
+                "I fixe hauteur",
+                "f fixe volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Perception multidimensionnelle."
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "order": 3,
+          "title": "Timbre et harmoniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Timbre dépend :",
+              "options": [
+                "Du spectre (harmoniques)",
+                "De l'enveloppe temporelle",
+                "Uniquement de f fondamentale seule",
+                "De la couleur des yeux"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Même note, instruments différents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Harmonique à 880 Hz pour fondamentale 440 Hz :",
+              "options": [
+                "2e harmonique (octave)",
+                "Fondamentale",
+                "Subharmonique",
+                "Infrason"
+              ],
+              "correctAnswers": [0],
+              "explanation": "880 = 2×440."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Violon vs flûte même note :",
+              "options": [
+                "Spectres différents",
+                "f fondamentale forcément différente",
+                "Pas d'onde",
+                "v différente lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Timbre distingue."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Son carré (synthé) riche en :",
+              "options": [
+                "Harmoniques impaires",
+                "Uniquement fondamentale",
+                "Infrasons seuls",
+                "Photon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme d'onde influence spectre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Filtre passe-bas sur signal :",
+              "options": [
+                "Atténue hautes f",
+                "Boost ultrasons",
+                "Change v",
+                "Crée vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Timbre adouci."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Formants voix :",
+              "options": [
+                "Pics fréquentiels du tractus vocal",
+                "Harmoniques absents",
+                "Silence",
+                "Couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelles identifiables."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Analyse de Fourier :",
+              "options": [
+                "Décompose en sinusoïdes",
+                "Mesure masse",
+                "Datation",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spectre fréquentiel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Coup de piano (attaque) influence :",
+              "options": [
+                "Enveloppe ADSR",
+                "f fondamentale seule",
+                "v air",
+                "Z"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Timbre dynamique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux instruments même f, I similaire, timbre différent ⇒",
+              "options": [
+                "Spectres différents",
+                "λ identiques obligatoires",
+                "Pas de cochlée",
+                "Onde EM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contenu harmonique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Reconnaître une voix au téléphone utilise surtout :",
+              "options": [
+                "Timbre/formants",
+                "Seulement infrasons",
+                "Couleur",
+                "Goût"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bande passante réduit mais timbre reste."
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "order": 4,
+          "title": "Spectre et analyse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Spectre d'un son périodique :",
+              "options": [
+                "Raies aux multiples de f0",
+                "Largeur bande pour bruit",
+                "Uniquement une raie toujours",
+                "Mesure température"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Harmoniques vs bruit continu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bruit blanc :",
+              "options": [
+                "Énergie répartie sur bande",
+                "Une seule raie",
+                "Silence",
+                "Infrason pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spectre plat en idéal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "FFT sur enregistrement calcule :",
+              "options": [
+                "Contenu fréquentiel",
+                "Masse molaire",
+                "Couleur",
+                "Pression atmos seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil numérique standard."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Spectrogramme couleur =",
+              "options": [
+                "Intensité vs f et t",
+                "Masse vs t",
+                "pH vs f",
+                "Z vs λ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Visualisation 3D projetée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Fondamentale absente mais harmoniques présentes :",
+              "options": [
+                "Hauteur reconstructible par cerveau",
+                "Silence total",
+                "Inaudible",
+                "f = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet de missing fundamental."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Résonance pic spectrale :",
+              "options": [
+                "Amplification bande fréquence",
+                "Suppression toutes f",
+                "Changement élément",
+                "Fusion atomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cavité sélective."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Equalizer audio :",
+              "options": [
+                "Modifie gains par bandes f",
+                "Change v air",
+                "Mesure dB seul",
+                "Remplace cochlée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réglage timbre/ balance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Son aperiodique (percussion) :",
+              "options": [
+                "Spectre continu riche",
+                "Une raie",
+                "Pur sinus",
+                "Vacuum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attaque brève → large spectre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Nyquist : fs doit dépasser :",
+              "options": [
+                "2 × f_max signal",
+                "f/2 seulement",
+                "20 Hz",
+                "120 dB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éviter repliement spectral."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Analyser timbre en classe :",
+              "options": [
+                "Oscillogramme + spectre",
+                "Balance chimique",
+                "Microscope optique seul",
+                "Carte IGN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux vues complémentaires."
+            }
+          ]
+        },
+        {
+          "id": "q5",
+          "order": 5,
+          "title": "Instruments et familles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Cordes frottées (violon) :",
+              "options": [
+                "Vibration corde + caisse résonance",
+                "Archet fournit énergie",
+                "Pas d'harmoniques",
+                "Son pur unique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Excitation continue, spectre riche."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Vent (flûte) :",
+              "options": [
+                "Colonne air vibrante",
+                "Corde métallique",
+                "Membrane peau",
+                "Électronique seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Instruments à anche ou bec."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Piano :",
+              "options": [
+                "Cordes frappées",
+                "Archet",
+                "Colonne air seule",
+                "Uniquement synthé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marteaux + cordes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Percussion peau (tambour) :",
+              "options": [
+                "Membrane + résonance",
+                "Corde seule",
+                "Pas d'attaque",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mode non périodique prolongé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Longueur corde ↑ (tension masse constantes) ⇒ f :",
+              "options": [
+                "Diminue (plus grave)",
+                "Augmente",
+                "Inchange",
+                "Double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f ∝ 1/L."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tension corde ↑ ⇒ f :",
+              "options": ["Augmente", "Diminue", "Nulle", "Infrason"],
+              "correctAnswers": [0],
+              "explanation": "Plus tendue → plus rapide."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Trompette vs trombone :",
+              "options": [
+                "Longueur tube variable change f",
+                "Pas de résonance",
+                "Pas d'embouchure",
+                "Silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coupe résonante ajustable."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Synthétiseur :",
+              "options": [
+                "Génère signaux électriques convertis en son",
+                "Uniquement acoustique",
+                "Pas de haut-parleur",
+                "Mesure pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Musique électroacoustique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ensemble orchestral timbre global :",
+              "options": [
+                "Superposition spectres",
+                "Une seule harmonique",
+                "Pas d'interférences",
+                "v = c"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mix complexe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Facteur qualité instrument (résonance) :",
+              "options": [
+                "Sustain / sélectivité fréquence",
+                "Couleur peinture",
+                "Masse molaire air",
+                "Datation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Q élevé → son résonne."
+            }
+          ]
+        },
+        {
+          "id": "q6",
+          "order": 6,
+          "title": "Battements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Battements entre f1 et f2 proches :",
+              "options": [
+                "Fréquence battement |f1−f2|",
+                "Variation d'amplitude périodique",
+                "Changement v air",
+                "Suppression cochlée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Superposition deux sinus proches."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "440 et 442 Hz ⇒ battements à :",
+              "options": ["2 Hz", "441 Hz", "880 Hz", "0 Hz"],
+              "correctAnswers": [0],
+              "explanation": "|442−440| = 2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Accordeur écoute battements pour :",
+              "options": [
+                "Ajuster f jusqu'à disparition",
+                "Mesurer température",
+                "Couleur",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f égales → pas de battements."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Battements utilisés en acoustique pour :",
+              "options": [
+                "Mesurer petite différence f",
+                "Datation",
+                "Microscope",
+                "Chromatographie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Précision d'accord."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux diapasons légèrement différents :",
+              "options": [
+                "On entend pulsation volume",
+                "Silence",
+                "Ultrason",
+                "Écho seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modulation amplitude."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Battements ≠ écho car :",
+              "options": [
+                "Interférence deux sources continues",
+                "Réflexion unique",
+                "Pas de superposition",
+                "Onde EM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phénomènes distincts."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f1 = f2 exactement :",
+              "options": [
+                "Pas de battements audibles",
+                "Battements max",
+                "Infrason",
+                "Douleur 120 dB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fréquences identiques → phase constante relative."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Battements rapides (10 Hz) perçus plutôt comme :",
+              "options": [
+                "Ton combiné / roughness",
+                "Silence",
+                "Grave pur",
+                "Écho montagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au-delà, fusion perceptuelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ondes doivent être :",
+              "options": [
+                "Proches en f et cohérentes",
+                "Très différentes en f",
+                "Dans le vide",
+                "Sans amplitude"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sinon modulation trop rapide ou invisible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En résumé battements lient :",
+              "options": [
+                "Interférences et perception",
+                "Photosynthèse",
+                "Mitose",
+                "Cristallisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Physique → sensation pulsation."
+            }
+          ]
+        },
+        {
+          "id": "q7",
+          "order": 7,
+          "title": "Résonance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Résonance acoustique :",
+              "options": [
+                "Amplification si excitation à f propre",
+                "Énergie stockée dans mode propre",
+                "Annule toujours le son",
+                "N'existe qu'en électrique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Couplage fort à fréquence naturelle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Vocalise devant bouteille :",
+              "options": [
+                "Certaines f amplifiées (cavité)",
+                "Toutes f égales",
+                "Pas d'onde",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résonateur Helmholtz-like."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pont soldats cadence :",
+              "options": [
+                "Risque résonance structure",
+                "Effet Doppler seul",
+                "Silence",
+                "Ultrason"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anecdote historique d'amplitude."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Corde résonne si longueur =",
+              "options": [
+                "Multiples λ/2 (conditions aux bords)",
+                "λ infini",
+                "0",
+                "Uniquement λ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modes stationnaires."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Amortissement réduit :",
+              "options": ["Pic résonance (Q↓)", "Toutes f", "v air", "Couleur"],
+              "correctAnswers": [0],
+              "explanation": "Friction dissipe énergie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Caisson de voiture basses :",
+              "options": [
+                "Résonance amplifie graves",
+                "Supprime ondes",
+                "Mesure dB seul",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enceinte accordée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Résonance ≠ réverbération :",
+              "options": [
+                "Résonance : mode propre ; réverb : multiples échos",
+                "Identiques",
+                "Pas d'énergie",
+                "Vacuum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concepts liés mais distincts."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Exciter résonateur à sa f0 avec faible amplitude :",
+              "options": [
+                "Sortie amplitude grande possible",
+                "Silence",
+                "f0 double",
+                "I = I₀"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accumulation énergie au mode."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Instruments exploitent résonance pour :",
+              "options": [
+                "Amplifier et colorer le son",
+                "Supprimer harmoniques",
+                "Changer élément chimique",
+                "Refroidir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caisse, tube, corde."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mesurer f0 d'une cavité :",
+              "options": [
+                "Balayage fréquence ou impulsion",
+                "Balance",
+                "pH-mètre",
+                "Thermomètre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse maximale à f0."
+            }
+          ]
+        },
+        {
+          "id": "q8",
+          "order": 8,
+          "title": "Audition et risques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Exposition bruit fort :",
+              "options": [
+                "Peut endommager cellules ciliées",
+                "Effet cumulatif avec durée",
+                "Guérit toujours instantanément",
+                "Sans effet sur cochlée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Traumatisme acoustique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bouchons d'oreille :",
+              "options": [
+                "Atténuent intensité entrante",
+                "Augmentent f",
+                "Mesurent spectre",
+                "Remplacent cochlée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection passive."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Écoute prolongée casque fort volume :",
+              "options": [
+                "Risque perte auditive",
+                "Améliore toujours audition",
+                "Change v air",
+                "Supprime timbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévention jeunes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Reglementation travail bruit fixe :",
+              "options": [
+                "Limites d'exposition et protection",
+                "Interdit toute mesure",
+                "Uniquement lumière",
+                "Pas de dB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hygiène sécurité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Distance d'une source forte :",
+              "options": [
+                "Réduit I reçue",
+                "Augmente I",
+                "Annule f",
+                "Crée ultrason"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1/r²."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Son bref très intense (impact) :",
+              "options": [
+                "Peut léser même si court",
+                "Sans danger",
+                "Infrason seul",
+                "Silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pic de pression."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Limiter volume numérique :",
+              "options": [
+                "Préserve audition",
+                "Change λ",
+                "Mesure température",
+                "Datation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signal plus faible au casque."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Audiogramme perte hautes f typique :",
+              "options": ["Presbyacousie / bruit", "Vision", "Goût", "Odeur"],
+              "correctAnswers": [0],
+              "explanation": "Sensible aux aigus d'abord."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Concert ~100 dB :",
+              "options": [
+                "Limiter temps + protection conseillés",
+                "Sans risque",
+                "Inaudible",
+                "Infrason"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dose élevée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Prévention primaire :",
+              "options": [
+                "Réduire source et exposition",
+                "Augmenter dB",
+                "Supprimer oreille",
+                "Ignorer seuils"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agir sur bruit et durée."
+            }
+          ]
+        },
+        {
+          "id": "q9",
+          "order": 9,
+          "title": "Musique enregistrée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Chaîne audio numérique :",
+              "options": [
+                "Capteur, conversion numérique, traitement, puis haut-parleur",
+                "Le signal est découpé en échantillons",
+                "Le signal reste toujours purement analogique",
+                "Le théorème de Nyquist est ignoré"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une chaîne numérique échantillonne le son, le traite, puis le restitue."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Stéréo :",
+              "options": [
+                "Deux canaux spatialisés",
+                "Une seule oreille",
+                "Infrason",
+                "Pas de timbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Image stéréophonique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dynamic range compression :",
+              "options": [
+                "Réduit écart fort/faible",
+                "Supprime toutes f",
+                "Change v",
+                "Mesure pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mastering moderne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lossless (FLAC) vs lossy (MP3) :",
+              "options": [
+                "FLAC conserve données ; MP3 compresse",
+                "Identiques",
+                "MP3 sans perte",
+                "FLAC supprime timbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trade-off taille/qualité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "MIDI ne transporte pas :",
+              "options": [
+                "Forme d'onde audio brute",
+                "Notes et contrôleurs",
+                "Hauteur numérique",
+                "Vélocité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protocole événements."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Autotune corrige :",
+              "options": ["Hauteur vers gamme", "Couleur", "Masse", "pH"],
+              "correctAnswers": [0],
+              "explanation": "Traitement pitch."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réverbération artificielle :",
+              "options": [
+                "Simule multiples reflets",
+                "Supprime harmoniques",
+                "Change élément",
+                "Mesure température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet numérique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Streaming faible débit :",
+              "options": [
+                "Codec perceptuel",
+                "Augmente v son",
+                "Remplace cochlée",
+                "Silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compression adaptative."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Loudness war :",
+              "options": [
+                "Compétition niveaux élevés",
+                "Accord diapason",
+                "Silence total",
+                "Infrason"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjeu santé auditive + esthétique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Écoute critique compare :",
+              "options": [
+                "Source, casque, niveau modéré",
+                "Volume max toujours",
+                "Uniquement basse",
+                "Sans protection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conditions contrôlées."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse musique et audition",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Percevoir musique implique :",
+              "options": [
+                "Onde mécanique + oreille + cerveau",
+                "Hauteur, timbre, rythme, intensité",
+                "Uniquement dB sans f",
+                "Vacuum"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chaîne physique et cognitive."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rythme correspond surtout à :",
+              "options": [
+                "Organisation temporelle des sons",
+                "Spectre harmonique seul",
+                "Couleur",
+                "Masse molaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durées et accents."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Consonance (accords) liée à :",
+              "options": ["Rapports simples entre f", "Couleur", "pH", "Z"],
+              "correctAnswers": [0],
+              "explanation": "Intervalles petits ratios."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Musique et mathématiques :",
+              "options": [
+                "Gamme et ratios fréquences",
+                "Ignore f",
+                "Pas de période",
+                "Uniquement dB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Harmonie et nombres."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Binaural beats ( deux f légèrement différentes ) :",
+              "options": [
+                "Perception liée à interférences",
+                "Écho montagne",
+                "Datation",
+                "Mitose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phénomène perceptif discuté."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Salle de concert conçue pour :",
+              "options": [
+                "Équilibrer réverbération et clarté",
+                "Maximiser écho seul",
+                "Supprimer toute réflexion",
+                "Vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Acoustique architecturale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Prothèse auditive :",
+              "options": [
+                "Amplifie et traite selon audiogramme",
+                "Remplace lumière",
+                "Mesure température",
+                "Supprime timbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aide technologique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Musique et santé :",
+              "options": [
+                "Volume modéré bénéfique ; excessif nocif",
+                "Toujours dangereux",
+                "Sans lien audition",
+                "Guérit toute surdité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévention et plaisir."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ingénieur du son règle :",
+              "options": [
+                "Niveaux, EQ, spatialisation",
+                "v lumière",
+                "Migrations SQL",
+                "pH sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Production audio."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Fil conducteur chapitre :",
+              "options": [
+                "Son = onde ; oreille = capteur ; musique = organisation des sons",
+                "Son = lumière",
+                "Pas de spectre",
+                "Ignore protection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien ES physique et perception."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

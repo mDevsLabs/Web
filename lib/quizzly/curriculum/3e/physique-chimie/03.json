@@ -1,0 +1,2088 @@
+{
+  "id": "3e-physique-chimie-03",
+  "year": "3e",
+  "subject": "physique-chimie",
+  "title": "Chimie de la vie courante",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Ions et pH",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les ions en solution",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels ions ont une charge positive ?",
+              "type": "multiple_choice",
+              "options": ["Na⁺", "Cl⁻", "H⁺", "OH⁻"],
+              "correctAnswers": [0, 2],
+              "explanation": "Na⁺ et H⁺ sont des cations."
+            },
+            {
+              "id": "q2",
+              "question": "L'ion chlorure s'écrit :",
+              "type": "single_choice",
+              "options": ["Cl⁻", "Cl⁺", "Cl₂", "NaCl"],
+              "correctAnswers": [0],
+              "explanation": "Anion Cl⁻ en solution."
+            },
+            {
+              "id": "q3",
+              "question": "NaCl dissous donne :",
+              "type": "single_choice",
+              "options": [
+                "Na⁺ et Cl⁻",
+                "Atomes neutres",
+                "Du gaz Cl₂",
+                "De l'huile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dissociation ionique."
+            },
+            {
+              "id": "q4",
+              "question": "Un cation est :",
+              "type": "single_choice",
+              "options": ["Positif", "Négatif", "Neutre", "Gazeux"],
+              "correctAnswers": [0],
+              "explanation": "Ion positif."
+            },
+            {
+              "id": "q5",
+              "question": "Eau distillée conduit mal car :",
+              "type": "single_choice",
+              "options": [
+                "Peu d'ions",
+                "Trop chaude",
+                "Colorée",
+                "Contient du fer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faible ionisation."
+            },
+            {
+              "id": "q6",
+              "question": "OH⁻ est l'ion :",
+              "type": "single_choice",
+              "options": ["Hydroxyde", "Hydrogène", "Sodium", "Chlorure"],
+              "correctAnswers": [0],
+              "explanation": "Présent en milieu basique."
+            },
+            {
+              "id": "q7",
+              "question": "Conductimètre allumé avec :",
+              "type": "single_choice",
+              "options": ["Solution salée", "Sucre sec", "Huile", "Plastique"],
+              "correctAnswers": [0],
+              "explanation": "Ions transportent le courant."
+            },
+            {
+              "id": "q8",
+              "question": "Na⁺ provient souvent de :",
+              "type": "single_choice",
+              "options": ["Sels de sodium", "O₂", "Carbone pur", "Pétrole"],
+              "correctAnswers": [0],
+              "explanation": "Composés ioniques."
+            },
+            {
+              "id": "q9",
+              "question": "Un anion a gagné :",
+              "type": "single_choice",
+              "options": [
+                "Des électrons",
+                "Un proton",
+                "De la masse sans charge",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Charge négative."
+            },
+            {
+              "id": "q10",
+              "question": "Solution ionique contient :",
+              "type": "single_choice",
+              "options": [
+                "Cations et anions",
+                "Neutrons seuls",
+                "Gaz seuls",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ions des deux signes."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Échelle de pH",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels pH sont acides ?",
+              "type": "multiple_choice",
+              "options": ["pH = 2", "pH = 5", "pH = 7", "pH = 11"],
+              "correctAnswers": [0, 1],
+              "explanation": "pH < 7 : acide."
+            },
+            {
+              "id": "q2",
+              "question": "Solution neutre : pH",
+              "type": "single_choice",
+              "options": ["7", "0", "14", "10"],
+              "correctAnswers": [0],
+              "explanation": "Eau pure à 25 °C."
+            },
+            {
+              "id": "q3",
+              "question": "pH = 12 :",
+              "type": "single_choice",
+              "options": ["Basique", "Acide", "Neutre", "Gaz"],
+              "correctAnswers": [0],
+              "explanation": "pH > 7."
+            },
+            {
+              "id": "q4",
+              "question": "Plus acide entre 3 et 6 :",
+              "type": "single_choice",
+              "options": ["pH 3", "pH 6", "Égales", "Neutre"],
+              "correctAnswers": [0],
+              "explanation": "pH plus petit."
+            },
+            {
+              "id": "q5",
+              "question": "Échelle courante :",
+              "type": "single_choice",
+              "options": ["0 à 14", "0 à 100", "1 à 10", "7 à 14"],
+              "correctAnswers": [0],
+              "explanation": "Collège."
+            },
+            {
+              "id": "q6",
+              "question": "Vinaigre :",
+              "type": "single_choice",
+              "options": ["Acide", "Basique", "Neutre", "Métal"],
+              "correctAnswers": [0],
+              "explanation": "Acide acétique."
+            },
+            {
+              "id": "q7",
+              "question": "pH 9 :",
+              "type": "single_choice",
+              "options": ["Basique", "Acide", "Neutre", "Fer"],
+              "correctAnswers": [0],
+              "explanation": "> 7."
+            },
+            {
+              "id": "q8",
+              "question": "Le pH mesure :",
+              "type": "single_choice",
+              "options": [
+                "Acidité/basicité",
+                "Masse",
+                "Vitesse son",
+                "Pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En solution aqueuse."
+            },
+            {
+              "id": "q9",
+              "question": "Eau de mer légèrement :",
+              "type": "single_choice",
+              "options": ["Basique", "Neutre exact", "pH 0", "Sans ions"],
+              "correctAnswers": [0],
+              "explanation": "pH ~ 8."
+            },
+            {
+              "id": "q10",
+              "question": "pH 7 à 25 °C :",
+              "type": "single_choice",
+              "options": ["Neutre", "Très acide", "Très basique", "Solide"],
+              "correctAnswers": [0],
+              "explanation": "Référence eau pure."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Acides du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Produits acides :",
+              "type": "multiple_choice",
+              "options": ["Citron", "Vinaigre", "Savon", "Javel"],
+              "correctAnswers": [0, 1],
+              "explanation": "Citron et vinaigre ; savon et javel basiques."
+            },
+            {
+              "id": "q2",
+              "question": "Acide du citron :",
+              "type": "single_choice",
+              "options": [
+                "Citrique",
+                "Sulfurique",
+                "Chlorhydrique",
+                "Lactique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agrume."
+            },
+            {
+              "id": "q3",
+              "question": "Solution acide : excès d'ions",
+              "type": "single_choice",
+              "options": ["H⁺", "OH⁻", "Neutrons", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "Acidité."
+            },
+            {
+              "id": "q4",
+              "question": "pH citron ~",
+              "type": "single_choice",
+              "options": ["2–3", "7", "10", "14"],
+              "correctAnswers": [0],
+              "explanation": "Fort acide."
+            },
+            {
+              "id": "q5",
+              "question": "Acide + métal actif peut donner :",
+              "type": "single_choice",
+              "options": ["H₂", "Or", "Plastique", "Rien"],
+              "correctAnswers": [0],
+              "explanation": "Réaction encadrée."
+            },
+            {
+              "id": "q6",
+              "question": "Vinaigre contient :",
+              "type": "single_choice",
+              "options": ["Acide acétique", "NaOH", "PVC", "Fer"],
+              "correctAnswers": [0],
+              "explanation": "Produit courant."
+            },
+            {
+              "id": "q7",
+              "question": "Pluie acide : pH",
+              "type": "single_choice",
+              "options": ["< 5,6", "= 7", "> 10", "= 14"],
+              "correctAnswers": [0],
+              "explanation": "Pollution acide."
+            },
+            {
+              "id": "q8",
+              "question": "Diluer un acide :",
+              "type": "single_choice",
+              "options": [
+                "pH monte vers 7",
+                "pH = 14",
+                "Devient métal",
+                "Ne change pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins concentré."
+            },
+            {
+              "id": "q9",
+              "question": "Antiacide neutralise :",
+              "type": "single_choice",
+              "options": ["Acide gastrique", "Plastique", "Fer", "Air"],
+              "correctAnswers": [0],
+              "explanation": "Base médicamenteuse."
+            },
+            {
+              "id": "q10",
+              "question": "Ne pas goûter en labo car :",
+              "type": "single_choice",
+              "options": ["Dangereux", "Obligatoire", "Amusant", "Précis"],
+              "correctAnswers": [0],
+              "explanation": "Sécurité."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Bases et basicité",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Solutions basiques :",
+              "type": "multiple_choice",
+              "options": [
+                "Savon dilué",
+                "Soude diluée (prudence)",
+                "Vinaigre",
+                "Citron"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "pH > 7."
+            },
+            {
+              "id": "q2",
+              "question": "Base : excès",
+              "type": "single_choice",
+              "options": ["OH⁻", "H⁺", "Cl₂", "Na⁺ seul"],
+              "correctAnswers": [0],
+              "explanation": "Ions hydroxyde."
+            },
+            {
+              "id": "q3",
+              "question": "Javel : pH",
+              "type": "single_choice",
+              "options": ["Basique", "Acide", "7", "0"],
+              "correctAnswers": [0],
+              "explanation": "Produit ménager."
+            },
+            {
+              "id": "q4",
+              "question": "pH 8 vs 7 :",
+              "type": "single_choice",
+              "options": ["Plus basique", "Plus acide", "Neutre", "Solide"],
+              "correctAnswers": [0],
+              "explanation": "> 7."
+            },
+            {
+              "id": "q5",
+              "question": "Savon et graisses :",
+              "type": "single_choice",
+              "options": [
+                "Basique + tensioactif",
+                "Métal",
+                "Gaz",
+                "Toujours pH 7"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nettoyage."
+            },
+            {
+              "id": "q6",
+              "question": "Synonyme de basique :",
+              "type": "single_choice",
+              "options": ["Alcalin", "Alliage", "Plastique", "Recyclage"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire."
+            },
+            {
+              "id": "q7",
+              "question": "pH 13 :",
+              "type": "single_choice",
+              "options": ["Très basique", "Acide", "Neutre", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "Fort."
+            },
+            {
+              "id": "q8",
+              "question": "Javel + vinaigre :",
+              "type": "single_choice",
+              "options": ["Dangereux", "Recommandé", "Sans effet", "Recyclage"],
+              "correctAnswers": [0],
+              "explanation": "Gaz toxiques."
+            },
+            {
+              "id": "q9",
+              "question": "NaOH en solution :",
+              "type": "single_choice",
+              "options": ["Basique", "Acide", "Neutre", "Gaz"],
+              "correctAnswers": [0],
+              "explanation": "Soude."
+            },
+            {
+              "id": "q10",
+              "question": "Neutraliser une base avec :",
+              "type": "single_choice",
+              "options": ["Un acide", "Plastique", "Sel sec", "Air"],
+              "correctAnswers": [0],
+              "explanation": "Réaction acide-base."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Indicateurs colorés",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Indicateurs de pH :",
+              "type": "multiple_choice",
+              "options": ["BTB", "Phénolphtaléine", "Fer massif", "PVC"],
+              "correctAnswers": [0, 1],
+              "explanation": "Changement de couleur."
+            },
+            {
+              "id": "q2",
+              "question": "Indicateur sert à :",
+              "type": "single_choice",
+              "options": ["Estimer pH", "Peser", "Couper métal", "Recycler"],
+              "correctAnswers": [0],
+              "explanation": "Couleur vs pH."
+            },
+            {
+              "id": "q3",
+              "question": "BTB acide :",
+              "type": "single_choice",
+              "options": ["Jaune", "Bleu", "Noir", "Blanc"],
+              "correctAnswers": [0],
+              "explanation": "Jaune acide, bleu basique."
+            },
+            {
+              "id": "q4",
+              "question": "Phénolphtaléine acide :",
+              "type": "single_choice",
+              "options": ["Incolore", "Rose", "Verte", "Métal"],
+              "correctAnswers": [0],
+              "explanation": "Rose en basique."
+            },
+            {
+              "id": "q5",
+              "question": "Bandelettes pH :",
+              "type": "single_choice",
+              "options": [
+                "Comparaison couleur",
+                "Balance",
+                "Règle",
+                "pH-mètre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Test rapide."
+            },
+            {
+              "id": "q6",
+              "question": "pH-mètre :",
+              "type": "single_choice",
+              "options": [
+                "Sonde électronique",
+                "Thermomètre",
+                "Balance",
+                "Compas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesure précise."
+            },
+            {
+              "id": "q7",
+              "question": "BTB vert ~",
+              "type": "single_choice",
+              "options": ["pH 7", "pH 0", "pH 14", "Sans eau"],
+              "correctAnswers": [0],
+              "explanation": "Neutre."
+            },
+            {
+              "id": "q8",
+              "question": "Phénolphtaléine rose :",
+              "type": "single_choice",
+              "options": ["Basique", "Acide", "Neutre", "Fer"],
+              "correctAnswers": [0],
+              "explanation": "Couleur caractéristique."
+            },
+            {
+              "id": "q9",
+              "question": "Avant évacuation liquide inconnu :",
+              "type": "single_choice",
+              "options": [
+                "Consignes sécurité",
+                "Goûter",
+                "Mélanger javel",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protocole."
+            },
+            {
+              "id": "q10",
+              "question": "Précision maximale avec :",
+              "type": "single_choice",
+              "options": ["pH-mètre calibré", "Œil seul", "Fer", "Plastique"],
+              "correctAnswers": [0],
+              "explanation": "Instrument."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Neutralisation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Neutralisation acide-base produit :",
+              "type": "multiple_choice",
+              "options": ["Eau", "Sel", "Pétrole", "PVC pur"],
+              "correctAnswers": [0, 1],
+              "explanation": "H₂O + sel."
+            },
+            {
+              "id": "q2",
+              "question": "Neutraliser : pH vers",
+              "type": "single_choice",
+              "options": ["7", "0", "14", "100"],
+              "correctAnswers": [0],
+              "explanation": "Neutre."
+            },
+            {
+              "id": "q3",
+              "question": "HCl + NaOH →",
+              "type": "single_choice",
+              "options": ["NaCl + H₂O", "Fe + O₂", "PVC", "Plastique"],
+              "correctAnswers": [0],
+              "explanation": "Modèle cours."
+            },
+            {
+              "id": "q4",
+              "question": "Neutralisation complète idéale : pH",
+              "type": "single_choice",
+              "options": ["~ 7", "0", "14", "Aléatoire"],
+              "correctAnswers": [0],
+              "explanation": "Équivalence."
+            },
+            {
+              "id": "q5",
+              "question": "Antiacide réagit avec :",
+              "type": "single_choice",
+              "options": ["Acide estomac", "Alu", "PET", "Bois"],
+              "correctAnswers": [0],
+              "explanation": "Santé."
+            },
+            {
+              "id": "q6",
+              "question": "NaCl dissous :",
+              "type": "single_choice",
+              "options": ["Ions Na⁺ Cl⁻", "Métal", "Gaz", "Plastique"],
+              "correctAnswers": [0],
+              "explanation": "Ionique."
+            },
+            {
+              "id": "q7",
+              "question": "Excès de base : pH",
+              "type": "single_choice",
+              "options": ["> 7", "< 7", "= 0", "Sans eau"],
+              "correctAnswers": [0],
+              "explanation": "Basique."
+            },
+            {
+              "id": "q8",
+              "question": "H⁺ + OH⁻ →",
+              "type": "single_choice",
+              "options": ["H₂O", "H₂", "Na", "Cl₂"],
+              "correctAnswers": [0],
+              "explanation": "Formation eau."
+            },
+            {
+              "id": "q9",
+              "question": "Neutraliser acide avec :",
+              "type": "single_choice",
+              "options": ["Base", "Autre acide", "Huile", "Fer"],
+              "correctAnswers": [0],
+              "explanation": "Opposition."
+            },
+            {
+              "id": "q10",
+              "question": "Neutraliser déchets labo :",
+              "type": "single_choice",
+              "options": [
+                "Réduit risques",
+                "Augmente toxicité",
+                "Crée plastique",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Dilution et concentration",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Diluer un acide :",
+              "type": "multiple_choice",
+              "options": [
+                "pH augmente vers 7",
+                "Concentration H⁺ baisse",
+                "Devient basique sûr",
+                "Devient fer"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Reste acide si acide."
+            },
+            {
+              "id": "q2",
+              "question": "Plus de H⁺ : pH",
+              "type": "single_choice",
+              "options": ["Plus bas", "Plus haut", "7", "14"],
+              "correctAnswers": [0],
+              "explanation": "Inverse."
+            },
+            {
+              "id": "q3",
+              "question": "Eau dans vinaigre :",
+              "type": "single_choice",
+              "options": [
+                "Dilue",
+                "Concentre",
+                "Neutralise totalement",
+                "Solidifie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Volume ↑."
+            },
+            {
+              "id": "q4",
+              "question": "Base concentrée : pH",
+              "type": "single_choice",
+              "options": ["Élevé", "0", "7", "Sans ions"],
+              "correctAnswers": [0],
+              "explanation": "Fort basique."
+            },
+            {
+              "id": "q5",
+              "question": "Volume ↑ sans soluté :",
+              "type": "single_choice",
+              "options": ["Dilution", "Oxydation", "Fusion", "Alliage"],
+              "correctAnswers": [0],
+              "explanation": "Définition."
+            },
+            {
+              "id": "q6",
+              "question": "Moins corrosif :",
+              "type": "single_choice",
+              "options": [
+                "Diluer (protocole)",
+                "Concentrer",
+                "Javel+vinaigre",
+                "Brûler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concentration ↓."
+            },
+            {
+              "id": "q7",
+              "question": "Double volume eau même acide :",
+              "type": "single_choice",
+              "options": ["Concentration ÷2", "×2", "pH 14", "Na pur"],
+              "correctAnswers": [0],
+              "explanation": "Dilution."
+            },
+            {
+              "id": "q8",
+              "question": "Goutte acide fort + beaucoup d'eau :",
+              "type": "single_choice",
+              "options": ["Moins acide", "pH 0", "Métal", "Immiscible"],
+              "correctAnswers": [0],
+              "explanation": "Effet dilution."
+            },
+            {
+              "id": "q9",
+              "question": "pH après dilution :",
+              "type": "single_choice",
+              "options": ["À mesurer", "Inutile", "Toujours 0", "Fer"],
+              "correctAnswers": [0],
+              "explanation": "Contrôle."
+            },
+            {
+              "id": "q10",
+              "question": "Concentration et pH acide :",
+              "type": "single_choice",
+              "options": ["Liés", "Indépendants", "Identiques", "Sans eau"],
+              "correctAnswers": [0],
+              "explanation": "Niveau 3e."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Sécurité chimique",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Obligatoire en TP :",
+              "type": "multiple_choice",
+              "options": [
+                "Lunettes",
+                "Respect consignes",
+                "Goûter",
+                "Mélanger au hasard"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Jamais goûter ni mélanger."
+            },
+            {
+              "id": "q2",
+              "question": "Brûlure chimique : rincer",
+              "type": "single_choice",
+              "options": ["Eau abondante", "Huile", "Vinaigre", "Rien"],
+              "correctAnswers": [0],
+              "explanation": "Premiers secours."
+            },
+            {
+              "id": "q3",
+              "question": "Acide + javel :",
+              "type": "single_choice",
+              "options": ["Gaz dangereux", "Eau potable", "Fer", "Rien"],
+              "correctAnswers": [0],
+              "explanation": "Interdit."
+            },
+            {
+              "id": "q4",
+              "question": "Pictogrammes :",
+              "type": "single_choice",
+              "options": ["Dangers", "Mode", "Sport", "Musique"],
+              "correctAnswers": [0],
+              "explanation": "Étiquetage."
+            },
+            {
+              "id": "q5",
+              "question": "Déchets chimiques TP :",
+              "type": "single_choice",
+              "options": [
+                "Conteneur adapté",
+                "Poubelle maison",
+                "Cour",
+                "Évier sans consigne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Collecte."
+            },
+            {
+              "id": "q6",
+              "question": "Corrosif attaque :",
+              "type": "single_choice",
+              "options": ["Peau/matériaux", "Rien", "Lumière", "Gravité"],
+              "correctAnswers": [0],
+              "explanation": "Acides/bases forts."
+            },
+            {
+              "id": "q7",
+              "question": "FDS décrit :",
+              "type": "single_choice",
+              "options": ["Risques", "Recettes", "Scores", "Couleurs mode"],
+              "correctAnswers": [0],
+              "explanation": "Fiche sécurité."
+            },
+            {
+              "id": "q8",
+              "question": "Solution inconnue :",
+              "type": "single_choice",
+              "options": [
+                "Ne pas goûter",
+                "Boire",
+                "Mélanger javel",
+                "Jeter rue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prudence."
+            },
+            {
+              "id": "q9",
+              "question": "Ions en solution :",
+              "type": "single_choice",
+              "options": [
+                "Conductivité",
+                "Toujours solide",
+                "Sans eau",
+                "Plastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courant."
+            },
+            {
+              "id": "q10",
+              "question": "Mélange eau-acide :",
+              "type": "single_choice",
+              "options": [
+                "Protocole strict",
+                "Au hasard",
+                "Sans protection",
+                "Avec javel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éclaboussures."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Eau et ions",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Eau potable contient ions :",
+              "type": "multiple_choice",
+              "options": ["Ca²⁺", "HCO₃⁻", "Fe solide pur", "PVC"],
+              "correctAnswers": [0, 1],
+              "explanation": "Minéraux dissous."
+            },
+            {
+              "id": "q2",
+              "question": "Dureté : ions",
+              "type": "single_choice",
+              "options": ["Ca²⁺ Mg²⁺", "O₂ seul", "Plastique", "Bois"],
+              "correctAnswers": [0],
+              "explanation": "Calcaire."
+            },
+            {
+              "id": "q3",
+              "question": "Eau de mer : surtout",
+              "type": "single_choice",
+              "options": ["Na⁺ Cl⁻", "Sucre", "Pétrole", "Air liquide"],
+              "correctAnswers": [0],
+              "explanation": "Salinité."
+            },
+            {
+              "id": "q4",
+              "question": "Adoucisseur échange Na⁺ vs",
+              "type": "single_choice",
+              "options": ["Ca²⁺", "Fe métal", "PET", "Bois"],
+              "correctAnswers": [0],
+              "explanation": "Dureté."
+            },
+            {
+              "id": "q5",
+              "question": "pH rivière surveille :",
+              "type": "single_choice",
+              "options": ["Qualité eau", "Vent", "Acier", "Rien"],
+              "correctAnswers": [0],
+              "explanation": "Environnement."
+            },
+            {
+              "id": "q6",
+              "question": "Pluie acide : ions de",
+              "type": "single_choice",
+              "options": [
+                "Pollution",
+                "Sel cuisine seul",
+                "Plastique fondu",
+                "Or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SO₄²⁻ NO₃⁻…"
+            },
+            {
+              "id": "q7",
+              "question": "Eau pH 7 : [H⁺] et [OH⁻]",
+              "type": "single_choice",
+              "options": ["Égales", "Nulles", "Infinies", "Solides"],
+              "correctAnswers": [0],
+              "explanation": "25 °C."
+            },
+            {
+              "id": "q8",
+              "question": "Sel déneigement :",
+              "type": "single_choice",
+              "options": [
+                "Cl⁻ environnement",
+                "Supprime ions",
+                "Crée PVC",
+                "Air liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impact."
+            },
+            {
+              "id": "q9",
+              "question": "Filtre eau retire :",
+              "type": "single_choice",
+              "options": [
+                "Particules surtout",
+                "Tous ions toujours",
+                "Eau",
+                "Gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas osmose."
+            },
+            {
+              "id": "q10",
+              "question": "HCO₃⁻ influence :",
+              "type": "single_choice",
+              "options": ["pH tampon", "Couleur fer", "PET", "Lumière"],
+              "correctAnswers": [0],
+              "explanation": "Carbonates."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan ions et pH",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Affirmations vraies :",
+              "type": "multiple_choice",
+              "options": [
+                "Sel dissous → ions",
+                "pH mesure acide/basique",
+                "pH mesure masse",
+                "Ions conduisent courant"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un sel dissous forme des ions ; le pH indique si la solution est acide ou basique (ce n'est pas une mesure de masse)."
+            },
+            {
+              "id": "q2",
+              "question": "pH 0 :",
+              "type": "single_choice",
+              "options": ["Très acide", "Neutre", "Basique", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "Extrême."
+            },
+            {
+              "id": "q3",
+              "question": "Na⁺ Cl⁻ viennent de :",
+              "type": "single_choice",
+              "options": ["NaCl", "H₂O seule", "Fe", "PVC"],
+              "correctAnswers": [0],
+              "explanation": "Sel."
+            },
+            {
+              "id": "q4",
+              "question": "BTB bleu :",
+              "type": "single_choice",
+              "options": ["Basique", "Acide", "Sans ions", "Fer"],
+              "correctAnswers": [0],
+              "explanation": "Couleur."
+            },
+            {
+              "id": "q5",
+              "question": "Neutralisation : eau +",
+              "type": "single_choice",
+              "options": ["Sel", "Plastique", "Alliage", "Pétrole"],
+              "correctAnswers": [0],
+              "explanation": "Modèle."
+            },
+            {
+              "id": "q6",
+              "question": "Savon pH",
+              "type": "single_choice",
+              "options": ["> 7", "< 7", "= 7", "= 0"],
+              "correctAnswers": [0],
+              "explanation": "Basique."
+            },
+            {
+              "id": "q7",
+              "question": "Citron pH",
+              "type": "single_choice",
+              "options": ["< 7", "> 7", "= 7", "= 14"],
+              "correctAnswers": [0],
+              "explanation": "Acide."
+            },
+            {
+              "id": "q8",
+              "question": "Anion :",
+              "type": "single_choice",
+              "options": ["Cl⁻", "Na⁺", "H⁺", "K⁺"],
+              "correctAnswers": [0],
+              "explanation": "Négatif."
+            },
+            {
+              "id": "q9",
+              "question": "Diluer acide : pH",
+              "type": "single_choice",
+              "options": ["↑ vers 7", "↓ vers 0", "14", "—"],
+              "correctAnswers": [0],
+              "explanation": "Dilution."
+            },
+            {
+              "id": "q10",
+              "question": "Mesure précise pH :",
+              "type": "single_choice",
+              "options": ["pH-mètre", "Balance", "Règle", "Thermomètre seul"],
+              "correctAnswers": [0],
+              "explanation": "Sonde."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Matériaux et environnement",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les métaux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Matériaux métalliques :",
+              "type": "multiple_choice",
+              "options": ["Fer", "Aluminium", "PVC", "Bois"],
+              "correctAnswers": [0, 1],
+              "explanation": "Fer et alu métaux."
+            },
+            {
+              "id": "q2",
+              "question": "Métaux conduisent :",
+              "type": "single_choice",
+              "options": [
+                "Chaleur et électricité",
+                "Rien",
+                "Eau pure",
+                "Lumière seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conducteurs."
+            },
+            {
+              "id": "q3",
+              "question": "Fe =",
+              "type": "single_choice",
+              "options": ["Fer", "Cuivre", "Carbone", "Chlore"],
+              "correctAnswers": [0],
+              "explanation": "Symbole."
+            },
+            {
+              "id": "q4",
+              "question": "Canettes :",
+              "type": "single_choice",
+              "options": ["Aluminium", "PVC", "Bois", "Sel"],
+              "correctAnswers": [0],
+              "explanation": "Léger."
+            },
+            {
+              "id": "q5",
+              "question": "Métal à ambiante :",
+              "type": "single_choice",
+              "options": [
+                "Solide (sauf Hg)",
+                "Toujours gaz",
+                "Toujours liquide",
+                "Plastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mercure liquide."
+            },
+            {
+              "id": "q6",
+              "question": "Cu pour fils :",
+              "type": "single_choice",
+              "options": ["Cuivre", "PET", "Papier", "Sel"],
+              "correctAnswers": [0],
+              "explanation": "Conducteur."
+            },
+            {
+              "id": "q7",
+              "question": "Alu vs fer densité :",
+              "type": "single_choice",
+              "options": [
+                "Alu moins dense",
+                "Alu plus dense",
+                "Égales",
+                "Sans masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Léger."
+            },
+            {
+              "id": "q8",
+              "question": "Recyclage alu :",
+              "type": "single_choice",
+              "options": [
+                "Économise énergie",
+                "Impossible",
+                "Pétrole",
+                "Devient plastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filière."
+            },
+            {
+              "id": "q9",
+              "question": "Rouille :",
+              "type": "single_choice",
+              "options": [
+                "Oxydation fer",
+                "Plastique",
+                "Fusion seule",
+                "Sans air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau + O₂."
+            },
+            {
+              "id": "q10",
+              "question": "Déchets métal :",
+              "type": "single_choice",
+              "options": ["Recyclage", "Organique", "Évier", "Rue"],
+              "correctAnswers": [0],
+              "explanation": "Tri."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Alliages",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Exemples d'alliages :",
+              "type": "multiple_choice",
+              "options": ["Acier", "Laiton", "Cuivre pur seul", "Eau"],
+              "correctAnswers": [0, 1],
+              "explanation": "Mélanges métalliques."
+            },
+            {
+              "id": "q2",
+              "question": "Acier :",
+              "type": "single_choice",
+              "options": ["Fer + carbone", "Alu pur", "PVC", "Sel"],
+              "correctAnswers": [0],
+              "explanation": "Alliage."
+            },
+            {
+              "id": "q3",
+              "question": "Laiton :",
+              "type": "single_choice",
+              "options": ["Cu + Zn", "Fe seul", "Pétrole", "Verre"],
+              "correctAnswers": [0],
+              "explanation": "Cu-Zn."
+            },
+            {
+              "id": "q4",
+              "question": "Alliage pour :",
+              "type": "single_choice",
+              "options": [
+                "Améliorer propriétés",
+                "Interdire recyclage",
+                "Vaporiser",
+                "Dissoudre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matériaux."
+            },
+            {
+              "id": "q5",
+              "question": "Inox résiste :",
+              "type": "single_choice",
+              "options": ["Corrosion", "Gravité", "Son", "Lumière seule"],
+              "correctAnswers": [0],
+              "explanation": "Chrome."
+            },
+            {
+              "id": "q6",
+              "question": "Bronze : Cu +",
+              "type": "single_choice",
+              "options": ["Étain", "O₂ gaz", "Plastique", "Sucre"],
+              "correctAnswers": [0],
+              "explanation": "Historique."
+            },
+            {
+              "id": "q7",
+              "question": "Alliage ≠",
+              "type": "single_choice",
+              "options": [
+                "Corps pur unique",
+                "Mélange homogène",
+                "Acier",
+                "Laiton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mixture."
+            },
+            {
+              "id": "q8",
+              "question": "Recyclage alliages :",
+              "type": "single_choice",
+              "options": ["Tri filières", "Rien", "Mer", "Organique"],
+              "correctAnswers": [0],
+              "explanation": "Qualité."
+            },
+            {
+              "id": "q9",
+              "question": "Duralumin base :",
+              "type": "single_choice",
+              "options": ["Aluminium", "Chlore", "Eau pure", "Bois"],
+              "correctAnswers": [0],
+              "explanation": "Renforcé."
+            },
+            {
+              "id": "q10",
+              "question": "Propriété changée :",
+              "type": "single_choice",
+              "options": [
+                "Dureté",
+                "Vitesse lumière",
+                "pH eau pure",
+                "Gravité Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mécanique."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Corrosion",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Corrosion du fer needs :",
+              "type": "multiple_choice",
+              "options": ["Eau", "Oxygène", "Or pur", "PVC seul"],
+              "correctAnswers": [0, 1],
+              "explanation": "Rouille."
+            },
+            {
+              "id": "q2",
+              "question": "Rouille couleur :",
+              "type": "single_choice",
+              "options": ["Rouille/orangé", "Bleu BTB", "Transparent", "Or"],
+              "correctAnswers": [0],
+              "explanation": "Oxydes fer."
+            },
+            {
+              "id": "q3",
+              "question": "Protéger fer :",
+              "type": "single_choice",
+              "options": [
+                "Peinture/galvanisation",
+                "Eau seule",
+                "Sel",
+                "Javel+mélange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Barrière."
+            },
+            {
+              "id": "q4",
+              "question": "Galvanisation : couche",
+              "type": "single_choice",
+              "options": ["Zinc", "Plastique", "Bois", "Sucre"],
+              "correctAnswers": [0],
+              "explanation": "Sacrifice."
+            },
+            {
+              "id": "q5",
+              "question": "Inox contient",
+              "type": "single_choice",
+              "options": ["Chrome", "PVC", "Pétrole", "Sel seul"],
+              "correctAnswers": [0],
+              "explanation": "Couche passive."
+            },
+            {
+              "id": "q6",
+              "question": "Acide peut accélérer :",
+              "type": "single_choice",
+              "options": [
+                "Corrosion métal",
+                "Recyclage PET",
+                "pH neutre",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attaque chimique."
+            },
+            {
+              "id": "q7",
+              "question": "Alu surface :",
+              "type": "single_choice",
+              "options": ["Oxyde protecteur", "Rouille fer", "PVC", "Eau pure"],
+              "correctAnswers": [0],
+              "explanation": "Patine."
+            },
+            {
+              "id": "q8",
+              "question": "Bateau acier : risque",
+              "type": "single_choice",
+              "options": [
+                "Corrosion eau salée",
+                "Devenir plastique",
+                "pH 0",
+                "Sans O₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milieu agressif."
+            },
+            {
+              "id": "q9",
+              "question": "Pont rouillé :",
+              "type": "single_choice",
+              "options": ["Moins résistant", "Plus fort", "Plastique", "Or"],
+              "correctAnswers": [0],
+              "explanation": "Sécurité."
+            },
+            {
+              "id": "q10",
+              "question": "Limiter corrosion :",
+              "type": "single_choice",
+              "options": [
+                "Entretien/protection",
+                "Sel partout",
+                "Jeter mer",
+                "Mélanger acides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durée de vie."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les plastiques",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Plastiques courants :",
+              "type": "multiple_choice",
+              "options": ["PET", "PVC", "Fer pur", "Cuivre pur"],
+              "correctAnswers": [0, 1],
+              "explanation": "Polymères."
+            },
+            {
+              "id": "q2",
+              "question": "Plastique vient souvent de :",
+              "type": "single_choice",
+              "options": ["Pétrole (synthèse)", "Eau pure", "Sel", "Air seul"],
+              "correctAnswers": [0],
+              "explanation": "Chimie organique."
+            },
+            {
+              "id": "q3",
+              "question": "Polymère =",
+              "type": "single_choice",
+              "options": [
+                "Grandes molécules en chaîne",
+                "Atome seul",
+                "Ion Na⁺",
+                "Métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure."
+            },
+            {
+              "id": "q4",
+              "question": "Bouteille eau :",
+              "type": "single_choice",
+              "options": ["PET", "Fer", "Verre seulement", "Sel"],
+              "correctAnswers": [0],
+              "explanation": "Courant."
+            },
+            {
+              "id": "q5",
+              "question": "Tuyau rigide peut être :",
+              "type": "single_choice",
+              "options": ["PVC", "Or", "NaCl", "H₂O gaz"],
+              "correctAnswers": [0],
+              "explanation": "Usage."
+            },
+            {
+              "id": "q6",
+              "question": "Plastique isolant :",
+              "type": "single_choice",
+              "options": [
+                "Électricité",
+                "Rien",
+                "Toujours métal",
+                "Ions seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mauvais conducteur."
+            },
+            {
+              "id": "q7",
+              "question": "Durée décomposition plastique nature :",
+              "type": "single_choice",
+              "options": ["Très longue", "1 seconde", "1 jour", "Instantané"],
+              "correctAnswers": [0],
+              "explanation": "Pollution durable."
+            },
+            {
+              "id": "q8",
+              "question": "Microplastiques :",
+              "type": "single_choice",
+              "options": ["Fragments petits", "Ions H⁺", "Fer pur", "Eau pH 7"],
+              "correctAnswers": [0],
+              "explanation": "Océans."
+            },
+            {
+              "id": "q9",
+              "question": "Réduire plastique :",
+              "type": "single_choice",
+              "options": [
+                "Réutiliser/réduire",
+                "Brûler sans filtre",
+                "Mer",
+                "Mélanger javel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écologie."
+            },
+            {
+              "id": "q10",
+              "question": "Symbole triangle flèches :",
+              "type": "single_choice",
+              "options": ["Recyclage", "pH", "Métal", "Acide"],
+              "correctAnswers": [0],
+              "explanation": "Emballages."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "PET et PVC",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Codes recyclage plastique :",
+              "type": "multiple_choice",
+              "options": ["PET (1)", "PVC (3)", "Fer (Fe)", "Eau (H₂O)"],
+              "correctAnswers": [0, 1],
+              "explanation": "Numéros emballages."
+            },
+            {
+              "id": "q2",
+              "question": "PET sigle :",
+              "type": "single_choice",
+              "options": [
+                "Polyéthylène téréphtalate",
+                "Polychlorure",
+                "Fer",
+                "Sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bouteilles."
+            },
+            {
+              "id": "q3",
+              "question": "PVC contient",
+              "type": "single_choice",
+              "options": ["Chlore dans polymère", "Na⁺ seul", "Or", "Eau pure"],
+              "correctAnswers": [0],
+              "explanation": "Polychlorure vinyle."
+            },
+            {
+              "id": "q4",
+              "question": "PET recyclé en :",
+              "type": "single_choice",
+              "options": [
+                "Nouvelles bouteilles/fibres",
+                "Fer",
+                "Sel",
+                "Acide seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filière."
+            },
+            {
+              "id": "q5",
+              "question": "PVC incinéré mal filtré :",
+              "type": "single_choice",
+              "options": ["Pollution", "Eau potable", "Or", "Rien"],
+              "correctAnswers": [0],
+              "explanation": "HCl possible."
+            },
+            {
+              "id": "q6",
+              "question": "Ne pas brûler PVC maison car :",
+              "type": "single_choice",
+              "options": ["Toxique", "Recyclable", "Métal", "pH 7"],
+              "correctAnswers": [0],
+              "explanation": "Sécurité."
+            },
+            {
+              "id": "q7",
+              "question": "Numéro 1 emballage :",
+              "type": "single_choice",
+              "options": ["PET", "PVC", "Fer", "Bois"],
+              "correctAnswers": [0],
+              "explanation": "Triangle."
+            },
+            {
+              "id": "q8",
+              "question": "Numéro 3 :",
+              "type": "single_choice",
+              "options": ["PVC", "PET", "Alu", "Verre"],
+              "correctAnswers": [0],
+              "explanation": "Identification."
+            },
+            {
+              "id": "q9",
+              "question": "Trier PET/PVC :",
+              "type": "single_choice",
+              "options": [
+                "Filières différentes",
+                "Même poubelle métal",
+                "Mer",
+                "Compost"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recyclage."
+            },
+            {
+              "id": "q10",
+              "question": "Plastique vs métal masse canette :",
+              "type": "single_choice",
+              "options": [
+                "Alu léger aussi",
+                "Plastique toujours plus lourd que plomb",
+                "Identiques",
+                "Sans masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparaison matériaux."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Pollution plastique",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Conséquences plastique océan :",
+              "type": "multiple_choice",
+              "options": [
+                "Animaux étouffés/ingèrent",
+                "Microplastiques",
+                "pH devient 0",
+                "Fer devient or"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Impact vie marine."
+            },
+            {
+              "id": "q2",
+              "question": "Gyres plastique :",
+              "type": "single_choice",
+              "options": [
+                "Accumulation déchets",
+                "Ions seuls",
+                "Métal pur",
+                "Eau pH 14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courants."
+            },
+            {
+              "id": "q3",
+              "question": "Sac plastique usage unique :",
+              "type": "single_choice",
+              "options": [
+                "Réduire",
+                "Multiplier",
+                "Fondre fer",
+                "Neutraliser acide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévention."
+            },
+            {
+              "id": "q4",
+              "question": "Biodegradable ≠ toujours :",
+              "type": "single_choice",
+              "options": [
+                "Disparaît vite partout",
+                "Moins de plastique",
+                "Tri",
+                "Recyclage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conditions."
+            },
+            {
+              "id": "q5",
+              "question": "Filtres cigarette :",
+              "type": "single_choice",
+              "options": ["Microplastiques", "Fer", "Sel", "Eau pure"],
+              "correctAnswers": [0],
+              "explanation": "Pollution."
+            },
+            {
+              "id": "q6",
+              "question": "Rivière plastique :",
+              "type": "single_choice",
+              "options": [
+                "Eau potable menacée",
+                "Améliore pH",
+                "Crée alu",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne."
+            },
+            {
+              "id": "q7",
+              "question": "Ramassage déchets :",
+              "type": "single_choice",
+              "options": ["Action locale", "Inutile", "Crée PVC", "Acide"],
+              "correctAnswers": [0],
+              "explanation": "Citoyenneté."
+            },
+            {
+              "id": "q8",
+              "question": "Emballage excessif :",
+              "type": "single_choice",
+              "options": ["Gaspillage", "Recyclage parfait", "Métal", "Ion"],
+              "correctAnswers": [0],
+              "explanation": "Réduction source."
+            },
+            {
+              "id": "q9",
+              "question": "Pêche filets perdus :",
+              "type": "single_choice",
+              "options": ["Piège marine", "Recyclage auto", "pH 7", "Or"],
+              "correctAnswers": [0],
+              "explanation": "Déchets fantômes."
+            },
+            {
+              "id": "q10",
+              "question": "Solution durable :",
+              "type": "single_choice",
+              "options": [
+                "Réduire réutiliser recycler",
+                "Brûler tout",
+                "Mer",
+                "Mélanger produits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3R."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Recyclage",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Matériaux recyclables facilement :",
+              "type": "multiple_choice",
+              "options": [
+                "Aluminium",
+                "Verre",
+                "Mélange sale non trié",
+                "Déchets chimiques TP"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Filières matures."
+            },
+            {
+              "id": "q2",
+              "question": "Recyclage :",
+              "type": "single_choice",
+              "options": [
+                "Transformer déchets en ressources",
+                "Jeter mer",
+                "Brûler sans tri",
+                "Enterrer seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Économie circulaire."
+            },
+            {
+              "id": "q3",
+              "question": "Fonte alu :",
+              "type": "single_choice",
+              "options": [
+                "Moins énergie que minerai",
+                "Plus que minerai",
+                "Impossible",
+                "Devient bois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gain énergie."
+            },
+            {
+              "id": "q4",
+              "question": "Verre recyclé :",
+              "type": "single_choice",
+              "options": ["Refondu", "Devient fer", "Ion Cl⁻", "pH"],
+              "correctAnswers": [0],
+              "explanation": "Bouteilles."
+            },
+            {
+              "id": "q5",
+              "question": "Contamination tri :",
+              "type": "single_choice",
+              "options": ["Baisse qualité recyclat", "Améliore", "Or", "Rien"],
+              "correctAnswers": [0],
+              "explanation": "Propreté."
+            },
+            {
+              "id": "q6",
+              "question": "Poubelle jaune France :",
+              "type": "single_choice",
+              "options": [
+                "Emballages recyclables",
+                "Organique",
+                "Verre",
+                "DEEE seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consigne locale."
+            },
+            {
+              "id": "q7",
+              "question": "Compost ≠",
+              "type": "single_choice",
+              "options": [
+                "Recyclage plastique",
+                "Déchets verts",
+                "Biodéchets",
+                "Jardin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filieres différentes."
+            },
+            {
+              "id": "q8",
+              "question": "Réemployer bouteille :",
+              "type": "single_choice",
+              "options": ["Avant recyclage", "Après mer", "Jamais", "Brûler"],
+              "correctAnswers": [0],
+              "explanation": "Hiérarchie 3R."
+            },
+            {
+              "id": "q9",
+              "question": "Métal aimant tri :",
+              "type": "single_choice",
+              "options": ["Fer/acier", "Alu", "PET", "Verre"],
+              "correctAnswers": [0],
+              "explanation": "Magnétique."
+            },
+            {
+              "id": "q10",
+              "question": "Recycler sans tri :",
+              "type": "single_choice",
+              "options": ["Efficacité baisse", "Parfait", "Crée or", "pH 14"],
+              "correctAnswers": [0],
+              "explanation": "Tri source."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Tri des déchets",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "À mettre bac verre :",
+              "type": "multiple_choice",
+              "options": [
+                "Bouteille verre",
+                "Pot confiture verre",
+                "Canette alu",
+                "Pile"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Verre seul ; alu ailleurs ; piles DEEE."
+            },
+            {
+              "id": "q2",
+              "question": "Piles usagées :",
+              "type": "single_choice",
+              "options": [
+                "Point collecte DEEE",
+                "Poubelle organique",
+                "Évier",
+                "Compost"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Métaux lourds."
+            },
+            {
+              "id": "q3",
+              "question": "Médicaments périmés :",
+              "type": "single_choice",
+              "options": ["Pharmacie", "Robinet", "Jaune", "Rue"],
+              "correctAnswers": [0],
+              "explanation": "Filière."
+            },
+            {
+              "id": "q4",
+              "question": "Huile alimentaire :",
+              "type": "single_choice",
+              "options": ["Collecte spécifique", "Évier", "Jardin", "Verre"],
+              "correctAnswers": [0],
+              "explanation": "Eaux usées."
+            },
+            {
+              "id": "q5",
+              "question": "Canette :",
+              "type": "single_choice",
+              "options": ["Tri métal/emballage", "Verre", "Compost", "Piles"],
+              "correctAnswers": [0],
+              "explanation": "Recyclable."
+            },
+            {
+              "id": "q6",
+              "question": "Carton propre :",
+              "type": "single_choice",
+              "options": ["Papier/carton", "Verre", "DEEE", "Chimique"],
+              "correctAnswers": [0],
+              "explanation": "Fibres."
+            },
+            {
+              "id": "q7",
+              "question": "Stylo plastique :",
+              "type": "single_choice",
+              "options": [
+                "Souvent poubelle ou filière spéciale",
+                "Verre",
+                "Compost",
+                "Médicament"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complexe."
+            },
+            {
+              "id": "q8",
+              "question": "Tri correct permet :",
+              "type": "single_choice",
+              "options": [
+                "Meilleur recyclage",
+                "Plus pollution",
+                "Fer→or",
+                "pH 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualité."
+            },
+            {
+              "id": "q9",
+              "question": "DEEE exemple :",
+              "type": "single_choice",
+              "options": ["Téléphone cassé", "Banane", "Feuille", "Eau"],
+              "correctAnswers": [0],
+              "explanation": "Électrique."
+            },
+            {
+              "id": "q10",
+              "question": "Erreur tri :",
+              "type": "single_choice",
+              "options": ["Contamine filière", "Améliore", "Rien", "Crée ion"],
+              "correctAnswers": [0],
+              "explanation": "Conséquence."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Pollution air et eau",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Gaz effet serre :",
+              "type": "multiple_choice",
+              "options": ["CO₂", "CH₄", "O₂ respiration", "N₂ majoritaire air"],
+              "correctAnswers": [0, 1],
+              "explanation": "CO₂ et méthane réchauffent."
+            },
+            {
+              "id": "q2",
+              "question": "CO₂ augmente via :",
+              "type": "single_choice",
+              "options": [
+                "Combustibles fossiles",
+                "Photosynthèse seule",
+                "Tri verre",
+                "Recyclage alu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Émissions."
+            },
+            {
+              "id": "q3",
+              "question": "Pluies acides liées :",
+              "type": "single_choice",
+              "options": ["SO₂ NOx", "O₂ pur", "PET", "Sel seul"],
+              "correctAnswers": [0],
+              "explanation": "Pollution air."
+            },
+            {
+              "id": "q4",
+              "question": "Eutrophisation eau :",
+              "type": "single_choice",
+              "options": ["Excès nutriments", "pH 7", "Fer pur", "Recyclage"],
+              "correctAnswers": [0],
+              "explanation": "Algues."
+            },
+            {
+              "id": "q5",
+              "question": "Hydrocarbures mer :",
+              "type": "single_choice",
+              "options": ["Mare noire", "Ion Na⁺", "BTB", "Alliage"],
+              "correctAnswers": [0],
+              "explanation": "Pollution."
+            },
+            {
+              "id": "q6",
+              "question": "Qualité air ville :",
+              "type": "single_choice",
+              "options": ["Particules/NOx", "Sans O₂", "Que plastique", "pH"],
+              "correctAnswers": [0],
+              "explanation": "Santé."
+            },
+            {
+              "id": "q7",
+              "question": "Réchauffement climatique :",
+              "type": "single_choice",
+              "options": ["Conséquence GES", "pH eau", "Fer rouille", "Rien"],
+              "correctAnswers": [0],
+              "explanation": "Climat."
+            },
+            {
+              "id": "q8",
+              "question": "Limiter CO₂ :",
+              "type": "single_choice",
+              "options": [
+                "Énergies sobres/renouvelables",
+                "Brûler plus",
+                "Plastique mer",
+                "Javel+acide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Atténuation."
+            },
+            {
+              "id": "q9",
+              "question": "Station épuration :",
+              "type": "single_choice",
+              "options": [
+                "Traite eaux usées",
+                "Fabrique PVC",
+                "Mine fer",
+                "Mesure pH seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection milieu."
+            },
+            {
+              "id": "q10",
+              "question": "Nitrates eau agriculture :",
+              "type": "single_choice",
+              "options": ["Pollution", "Recyclage", "Métal", "BTB"],
+              "correctAnswers": [0],
+              "explanation": "NO₃⁻."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Développement durable",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Développement durable équilibre :",
+              "type": "multiple_choice",
+              "options": [
+                "Environnement",
+                "Social/économie",
+                "Ignorer ressources",
+                "Polluer plus"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "3 piliers simplifiés."
+            },
+            {
+              "id": "q2",
+              "question": "Empreinte carbone :",
+              "type": "single_choice",
+              "options": ["GES émises", "Masse fer", "pH", "Volume verre"],
+              "correctAnswers": [0],
+              "explanation": "Indicateur."
+            },
+            {
+              "id": "q3",
+              "question": "Économie circulaire :",
+              "type": "single_choice",
+              "options": [
+                "Recycler/réutiliser",
+                "Jeter linéaire",
+                "Mer",
+                "Brûler tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boucle."
+            },
+            {
+              "id": "q4",
+              "question": "Éco-conception :",
+              "type": "single_choice",
+              "options": [
+                "Produit durable dès création",
+                "Plus plastique",
+                "Sans tri",
+                "Acide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conception."
+            },
+            {
+              "id": "q5",
+              "question": "Transport vélo vs voiture :",
+              "type": "single_choice",
+              "options": ["Moins CO₂", "Plus CO₂", "Crée PVC", "Ion seul"],
+              "correctAnswers": [0],
+              "explanation": "Mobilité."
+            },
+            {
+              "id": "q6",
+              "question": "Ressources finies :",
+              "type": "single_choice",
+              "options": ["Pétrole/minerais", "Eau cycle", "Air", "Lumière"],
+              "correctAnswers": [0],
+              "explanation": "Fossiles."
+            },
+            {
+              "id": "q7",
+              "question": "Biodiversité menacée par :",
+              "type": "single_choice",
+              "options": [
+                "Pollution/habitat",
+                "Tri verre",
+                "Recyclage alu",
+                "pH 7"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pressions."
+            },
+            {
+              "id": "q8",
+              "question": "Agir citoyen :",
+              "type": "single_choice",
+              "options": [
+                "Tri/ sobriété",
+                "Plastique mer",
+                "Gaspiller",
+                "Mélanger produits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comportement."
+            },
+            {
+              "id": "q9",
+              "question": "Label environnement :",
+              "type": "single_choice",
+              "options": [
+                "Informe consommateur",
+                "Remplace tri",
+                "Crée fer",
+                "Mesure pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certification."
+            },
+            {
+              "id": "q10",
+              "question": "Objectif classe matériaux :",
+              "type": "single_choice",
+              "options": [
+                "Usage + impact environnement",
+                "Ignorer pollution",
+                "Tout jeter",
+                "Uniquement pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan chapitre."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

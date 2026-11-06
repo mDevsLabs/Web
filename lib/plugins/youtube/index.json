@@ -1,0 +1,40 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez l'API YouTube Data par clé : l'IA cherche des vidéos, lit une fiche et présente une chaîne. Elle ne publie rien.",
+  "icon": { "src": "/plugins/youtube.svg", "type": "image" },
+  "id": "youtube",
+  "minTier": "plus",
+  "name": "YouTube",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": true,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": ["google", "youtube", "vidéo", "chaîne", "clé"],
+  "tools": [
+    {
+      "description": "Cherche des vidéos publiques sur YouTube.",
+      "effect": "read",
+      "id": "youtubeSearchVideos",
+      "label": "Chercher des vidéos",
+      "systemHint": "Citez le titre, la chaîne et le lien. Ne décrivez pas une vidéo absente des résultats."
+    },
+    {
+      "description": "Lit la fiche publique d'une vidéo YouTube : titre, durée et statistiques.",
+      "effect": "read",
+      "id": "youtubeVideoDetails",
+      "label": "Fiche d'une vidéo",
+      "systemHint": "Les chiffres viennent de l'outil. S'il n'en rend pas, dites-le."
+    },
+    {
+      "description": "Lit la fiche publique d'une chaîne YouTube.",
+      "effect": "read",
+      "id": "youtubeChannelDetails",
+      "label": "Fiche d'une chaîne",
+      "systemHint": "Distinguez l'identifiant de chaîne du nom affiché."
+    }
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,2523 @@
+{
+  "id": "2nde-physique-chimie-05",
+  "year": "2nde",
+  "subject": "physique-chimie",
+  "title": "Mélanges et solutions",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Dissolution",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Soluté, solvant et solution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans une solution, qu'appelle-t-on le soluté ?",
+              "options": [
+                "L'espèce chimique minoritaire dissoute dans le solvant",
+                "Le liquide présent en très grande majorité",
+                "Le mélange homogène obtenu après agitation",
+                "Le filtre utilisé pour retenir les impuretés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le soluté est l'espèce chimique (solide, liquide ou gazeuse) qui est dissoute dans le solvant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans une solution, qu'appelle-t-on le solvant ?",
+              "options": [
+                "L'espèce chimique majoritaire qui dissout le soluté",
+                "Le solide qui se dépose au fond du récipient",
+                "La substance gazeuse qui s'échappe",
+                "Le composé chimique toujours à l'état solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le solvant est le liquide prépondérant capable de dissoudre une ou plusieurs espèces chimiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une solution dont le solvant est l'eau ?",
+              "options": [
+                "Une solution aqueuse",
+                "Une solution organique",
+                "Une solution alcoolique",
+                "Une solution huileuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une solution aqueuse est par définition une solution dont le solvant principal est l'eau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans de l'eau sucrée obtenue en dissolvant du saccharose dans l'eau, quel est le solvant ?",
+              "options": [
+                "L'eau",
+                "Le sucre",
+                "Le caramel",
+                "Le dioxyde de carbone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau est présente en quantité majoritaire : c'est le solvant. Le sucre (saccharose) est le soluté."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi les propositions suivantes, lesquelles peuvent jouer le rôle de soluté dans une solution aqueuse ?",
+              "options": [
+                "Le chlorure de sodium solide",
+                "Le gaz dioxygène dissous",
+                "Le saccharose solide",
+                "Le verre du récipient"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Des solides (sel, sucre) comme des gaz (dioxygène) peuvent se dissoudre dans l'eau et être des solutés. Le verre est insoluble."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans une boisson gazeuse, le dioxyde de carbone dissous est un :",
+              "options": [
+                "Soluté gazeux",
+                "Solvant liquide",
+                "Précipité solide",
+                "Catalyseur inerte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dioxyde de carbone CO2 est un gaz dissous dans l'eau : c'est donc un soluté à l'état gazeux initialement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel peut être l'état physique initial d'un soluté avant sa dissolution dans l'eau ?",
+              "options": [
+                "Solide, liquide ou gazeux",
+                "Exclusivement solide",
+                "Exclusivement liquide",
+                "Uniquement gazeux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un soluté peut être solide (sucre, sel), liquide (éthanol) ou gazeux (dioxygène, dioxyde de carbone)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lorsque deux liquides se mélangent parfaitement pour former une seule phase, on dit qu'ils sont :",
+              "options": ["Miscibles", "Immiscibles", "Saturés", "Sublimés"],
+              "correctAnswers": [0],
+              "explanation": "Deux liquides sont miscibles lorsqu'ils forment ensemble un mélange homogène en toute proportion."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que deviennent les molécules ou ions du soluté lors d'une dissolution ?",
+              "options": [
+                "Ils se dispersent et sont entourés par les molécules de solvant",
+                "Ils sont détruits et disparaissent",
+                "Ils se transforment en atomes de plomb",
+                "Ils fusionnent pour former un bloc solide compact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lors de la dissolution, les entités du soluté se séparent et sont solvatées par les molécules de solvant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une eau minérale naturelle limpide est :",
+              "options": [
+                "Une solution aqueuse homogène",
+                "Un corps pur simple",
+                "Un mélange hétérogène",
+                "Un solvant pur sans soluté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau minérale contient de l'eau (solvant) et divers minéraux dissous sous forme d'ions : c'est une solution aqueuse homogène."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Mélanges homogènes et hétérogènes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un mélange homogène ?",
+              "options": [
+                "Un mélange dont on ne peut distinguer les constituants à l'œil nu",
+                "Un mélange présentant au moins deux phases visibles",
+                "Un corps constitué d'un seul type d'atome",
+                "Un mélange qui contient uniquement de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un mélange homogène est uniforme : il ne présente qu'une seule phase visible à l'œil nu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un mélange hétérogène ?",
+              "options": [
+                "Un mélange dont on peut distinguer au moins deux constituants à l'œil nu",
+                "Un mélange parfaitement uniforme sous tous ses aspects",
+                "Une solution limpide et transparente",
+                "Un gaz pur sans aucune particule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un mélange hétérogène comporte au moins deux phases distinctes observables à l'œil nu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que forme le mélange d'eau et d'huile végétale après agitation et repos ?",
+              "options": [
+                "Un mélange hétérogène à deux phases",
+                "Une solution aqueuse homogène",
+                "Un corps pur liquide",
+                "Un mélange homogène sans interface"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau et l'huile sont non miscibles : après repos, l'huile surnage sur l'eau, formant deux phases distinctes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "De l'eau et du sel entièrement dissous forment :",
+              "options": [
+                "Un mélange homogène",
+                "Un mélange hétérogène",
+                "Une émulsion instable",
+                "Une suspension trouble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une fois le sel complètement dissous dans l'eau, la solution obtenue est limpide et homogène."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi les exemples suivants, lesquels sont des mélanges homogènes à l'œil nu ?",
+              "options": [
+                "L'air que nous respirons",
+                "L'eau minérale limpide",
+                "Le jus d'orange avec pulpe",
+                "Le vinaigre d'alcool blanc"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "L'air, l'eau minérale et le vinaigre blanc sont uniformes à l'œil nu. Le jus avec pulpe présente des morceaux solides visibles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi le lait frais est-il considéré comme un mélange hétérogène au microscope optique ?",
+              "options": [
+                "Il contient de minuscules gouttelettes de matière grasse en suspension",
+                "Il est constitué d'une seule espèce chimique pure",
+                "Il ne contient pas d'eau",
+                "Ses molécules sont toutes identiques et immobiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au microscope, le lait révèle une émulsion de gouttelettes lipidiques dispersées dans une phase aqueuse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle méthode simple permet de séparer les constituants solides visibles d'un mélange hétérogène ?",
+              "options": [
+                "La filtration",
+                "La distillation fractionnée",
+                "La chromatographie",
+                "L'électrolyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La filtration retient les particules solides insolubles sur le papier filtre tout en laissant passer le filtrat liquide."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La décantation permet de séparer deux liquides non miscibles de densités différentes grâce à :",
+              "options": [
+                "La gravité",
+                "Un filtre en papier",
+                "Un champ magnétique",
+                "Une réaction acide-base"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous l'action de la gravité, le liquide le plus dense se place en dessous du liquide le moins dense."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'air atmosphérique sec est constitué principalement de :",
+              "options": [
+                "Diazote et dioxygène",
+                "Dioxyde de carbone pur",
+                "Vapeur d'eau et hélium",
+                "Monoxyde de carbone et ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air est un mélange gazeux homogène composé d'environ 78 % de diazote N2 et 21 % de dioxygène O2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un liquide parfaitement limpide et incolore est-il obligatoirement de l'eau pure ?",
+              "options": [
+                "Non, il peut s'agir d'une solution aqueuse contenant des solutés dissous",
+                "Oui, la limpidité garantit qu'il s'agit d'un corps pur",
+                "Oui, l'absence de couleur prouve la pureté absolue",
+                "Non, c'est obligatoirement un acide concentré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une eau salée ou sucrée est limpide et incolore tout en étant un mélange de plusieurs espèces chimiques."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Dissolution et fusion",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre la dissolution et la fusion ?",
+              "options": [
+                "La fusion est un changement d'état sous l'effet de la chaleur, la dissolution nécessite un solvant",
+                "La fusion produit un gaz alors que la dissolution produit un solide",
+                "La dissolution ne s'applique qu'aux métaux chauds",
+                "La fusion nécessite toujours la présence d'eau liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fusion est le passage du solide au liquide pour un corps pur chauffé. La dissolution met en jeu un soluté et un solvant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le passage de l'état solide à l'état liquide sous l'effet de la chaleur est :",
+              "options": [
+                "La fusion",
+                "La dissolution",
+                "La liquéfaction",
+                "La condensation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le changement d'état physique solide -> liquide provoqué par un apport thermique s'appelle la fusion."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que subit un glaçon placé au soleil à 25 °C ?",
+              "options": [
+                "Une fusion",
+                "Une dissolution",
+                "Une vaporisation instantanée",
+                "Une combustion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le glaçon d'eau pure fond sous l'effet de la chaleur : c'est un changement d'état (fusion)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lorsqu'on met du sel dans une casserole d'eau chaude, le sel subit :",
+              "options": [
+                "Une dissolution",
+                "Une fusion",
+                "Une solidification",
+                "Une sublimation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sel se dissout dans l'eau liquide (solvant). Sa température de fusion est d'ailleurs de plus de 800 °C !"
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi les affirmations suivantes, lesquelles caractérisent la fusion ?",
+              "options": [
+                "Elle se produit à température constante pour un corps pur sous pression fixée",
+                "Elle concerne une seule espèce chimique qui change d'état physique",
+                "Elle requiert obligatoirement un soluté et un solvant",
+                "Elle nécessite un apport d'énergie thermique (chaleur)"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La fusion est un changement d'état physique endothermique d'un corps pur à température fixe. Elle ne nécessite aucun solvant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La cire d'une bougie allumée qui devient liquide subit :",
+              "options": [
+                "Une fusion",
+                "Une dissolution",
+                "Une dissolution dans l'air",
+                "Une filtration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cire solide fond à proximité de la flamme sous l'action de la chaleur : c'est une fusion."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel phénomène met impérativement en jeu au moins deux espèces chimiques distinctes ?",
+              "options": [
+                "La dissolution d'un soluté dans un solvant",
+                "La fusion de la glace",
+                "L'ébullition de l'eau pure",
+                "La solidification de l'étain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dissolution requiert la présence d'au moins deux espèces chimiques : le soluté et le solvant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "À pression atmosphérique normale, à quelle température l'eau pure fond-elle ?",
+              "options": ["0 °C", "100 °C", "-18 °C", "20 °C"],
+              "correctAnswers": [0],
+              "explanation": "Sous 1 atm (1013 hPa), la température de fusion de la glace d'eau pure est exactement de 0 °C."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi dire 'le sucre a fondu dans le café chaud' est-il un abus de langage en sciences ?",
+              "options": [
+                "Car le sucre s'est dissous dans le café et n'a pas atteint sa température de fusion (186 °C)",
+                "Car le sucre est devenu un gaz invisible",
+                "Car le café a détruit les atomes de carbone du sucre",
+                "Car le café est un solide qui a absorbé le liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sucre se dissout dans l'eau du café. Pour fondre, le saccharose sec devrait être chauffé à 186 °C."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si l'on chauffe du chocolat sans eau jusqu'à ce qu'il devienne liquide, on réalise :",
+              "options": [
+                "Une fusion de la matière grasse",
+                "Une dissolution aqueuse",
+                "Une dilution",
+                "Une évaporation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le beurre de cacao solide passe à l'état liquide sous l'effet de la chaleur : c'est un phénomène de fusion."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Solubilité et saturation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la solubilité d'une espèce chimique dans un solvant ?",
+              "options": [
+                "La masse maximale de cette espèce que l'on peut dissoudre par litre de solution à une température donnée",
+                "La vitesse à laquelle le soluté disparaît dans le solvant",
+                "Le volume minimal de liquide nécessaire pour mouiller un solide",
+                "La température à laquelle le solide commence à bouillir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solubilité est la concentration massique maximale d'un soluté dans un solvant donné à température fixée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'unité usuelle de la solubilité en chimie au lycée ?",
+              "options": [
+                "Le gramme par litre (g/L)",
+                "Le kilogramme par mètre carré (kg/m²)",
+                "Le mètre cube par seconde (m³/s)",
+                "Le litre par gramme (L/g)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solubilité s'exprime couramment en grammes de soluté par litre de solution (g/L) ou en g pour 100 mL."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une solution dans laquelle le soluté ne peut plus se dissoudre à température donnée ?",
+              "options": [
+                "Une solution saturée",
+                "Une solution diluée",
+                "Une solution insaturée",
+                "Une solution volatile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque la limite de solubilité est atteinte, la solution est saturée ; tout ajout supplémentaire forme un dépôt solide."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La solubilité du sel de table dans l'eau à 20 °C est environ 360 g/L. Si on ajoute 400 g de sel dans 1 L d'eau à 20 °C, quelle masse de sel se dissout ?",
+              "options": ["360 g", "400 g", "40 g", "0 g"],
+              "correctAnswers": [0],
+              "explanation": "Seule la masse correspondant à la solubilité (360 g) peut être dissoute. Les 40 g restants restent au fond du récipient."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies à propos d'une solution saturée avec dépôt solide au fond ?",
+              "options": [
+                "Le liquide au-dessus du dépôt est à sa concentration maximale en soluté",
+                "Le mélange global est devenu hétérogène du fait de la présence du solide non dissous",
+                "L'ajout d'eau permettrait de dissoudre une partie ou la totalité du dépôt",
+                "Tout le solide ajouté a été détruit par une réaction chimique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La solution liquide est saturée, le solide excédentaire forme un dépôt non dissous (mélange hétérogène), soluble par ajout d'eau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que devient généralement la solubilité de la plupart des solides (comme le sucre) quand la température de l'eau augmente ?",
+              "options": [
+                "Elle augmente",
+                "Elle diminue fortement",
+                "Elle reste strictement inchangée",
+                "Elle tombe à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour la majorité des solides, la solubilité dans l'eau s'accroît lorsque la température s'élève."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se passe-t-il souvent si l'on refroidit lentement une solution saturée en sucre préparée à chaud ?",
+              "options": [
+                "Des cristaux de sucre se reforment par cristallisation",
+                "Le sucre se vaporise dans l'air",
+                "La solution se transforme en glace instantanément",
+                "Le récipient se dissout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solubilité diminuant avec la température, l'excès de sucre ne peut plus rester dissous et cristallise."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Contrairement à la plupart des solides, la solubilité des gaz dans l'eau lorsque la température augmente :",
+              "options": [
+                "Diminue",
+                "Augmente considérablement",
+                "Reste strictement égale à 100 g/L",
+                "Devient infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les gaz sont moins solubles dans l'eau chaude que dans l'eau froide ; c'est pourquoi des bulles s'échappent lorsqu'on chauffe de l'eau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les poissons peuvent-ils manquer de dioxygène dans une eau trop chaude en été ?",
+              "options": [
+                "Car la solubilité du dioxygène gazeux dans l'eau diminue avec la température",
+                "Car l'eau chaude transforme le dioxygène en azote",
+                "Car les poissons nagent plus vite en eau chaude",
+                "Car les algues consomment toute l'eau du lac"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La teneur maximale en dioxygène dissous diminue quand la température de l'eau augmente, provoquant l'asphyxie des poissons."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une solution non saturée peut :",
+              "options": [
+                "Dissoudre encore une quantité supplémentaire de soluté",
+                "Précipiter spontanément sans ajout de solide",
+                "Faire flotter n'importe quel objet dense",
+                "Bouillir spontanément à température ambiante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tant que la saturation n'est pas atteinte, du soluté additionnel peut encore se dissoudre complètement."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Facteurs cinétiques de la dissolution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'effet de l'agitation mécanique lors de la préparation d'une solution ?",
+              "options": [
+                "Elle accélère la vitesse de dissolution",
+                "Elle augmente la masse maximale que l'on peut dissoudre",
+                "Elle empêche définitivement le soluté de se dissoudre",
+                "Elle diminue la solubilité du soluté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'agitation favorise le contact entre le soluté et le solvant, accélérant la dissolution sans modifier la solubilité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'agitation permet-elle de dépasser la limite de solubilité d'une solution à température constante ?",
+              "options": [
+                "Non, elle accélère le processus mais ne modifie pas la solubilité maximale",
+                "Oui, avec une agitation très rapide on peut dissoudre une quantité infinie de sel",
+                "Oui, car l'agitation détruit les molécules de soluté",
+                "Oui, mais uniquement pour les liquides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'agitation est un facteur cinétique : elle augmente la vitesse mais ne change pas la limite thermodynamique de solubilité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment la finesse des grains (état de division) d'un solide influence-t-elle sa dissolution ?",
+              "options": [
+                "Plus les grains sont fins, plus la surface de contact est grande et plus la dissolution est rapide",
+                "Plus les grains sont gros, plus la dissolution est rapide",
+                "La taille des grains n'a strictement aucun impact sur la vitesse",
+                "Seuls les très gros blocs solides peuvent se dissoudre dans l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Broyer un solide augmente la surface de contact avec le solvant, ce qui accélère notablement la dissolution."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi le sucre en poudre se dissout-il plus vite qu'un morceau de sucre compact de même masse ?",
+              "options": [
+                "La surface de contact avec le solvant est beaucoup plus grande pour la poudre",
+                "Le sucre en poudre est une espèce chimique différente du saccharose",
+                "Le sucre en poudre contient de l'eau liquide cachée",
+                "Le morceau de sucre est entouré d'une couche de plastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La poudre offre une surface exposée au solvant bien plus grande qu'un bloc compact de même masse."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi les facteurs suivants, lesquels augmentent la vitesse de dissolution d'un soluté solide dans l'eau ?",
+              "options": [
+                "L'agitation du mélange",
+                "L'élévation de la température du solvant",
+                "L'augmentation de la surface de contact (solide broyé en poudre)",
+                "L'utilisation d'un récipient en verre opaque"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Agiter, chauffer et broyer en poudre sont trois facteurs cinétiques qui accélèrent la dissolution."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel matériel de laboratoire utilise-t-on pour agiter une solution de manière autonome et continue ?",
+              "options": [
+                "Un agitateur magnétique avec un barreau aimanté",
+                "Une pipette pasteur",
+                "Un thermomètre à alcool",
+                "Une balance de précision"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'agitateur magnétique fait tourner un barreau aimanté placé dans le récipient pour mélanger en continu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que fait-on dans un mortier à l'aide d'un pilon avant de dissoudre un gros cristal solide ?",
+              "options": [
+                "On broie le solide pour réduire la taille des grains",
+                "On chauffe le solide pour le faire fondre",
+                "On pèse le volume de liquide",
+                "On mesure son pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mortier et le pilon permettent de concasser et broyer les solides pour faciliter leur dissolution."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi chauffe-t-on parfois légèrement l'eau pour dissoudre certains composés chimiques récalcitrants ?",
+              "options": [
+                "Pour augmenter la vitesse de dissolution et souvent la solubilité",
+                "Pour transformer le composé en diamant synthétique",
+                "Pour éliminer toutes les molécules d'eau du récipient",
+                "Pour solidifier instantanément le mélange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chaleur accroît l'agitation thermique des molécules, accélérant la dissolution et augmentant la solubilité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La vitesse à laquelle s'effectue une dissolution est une grandeur qui relève de :",
+              "options": [
+                "La cinétique de dissolution",
+                "La statique des fluides",
+                "L'optique géométrique",
+                "La radioactivité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'étude de la vitesse des processus chimiques et physiques s'appelle la cinétique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si l'on cesse d'agiter une solution non saturée dans laquelle tout le soluté est déjà dissous :",
+              "options": [
+                "Le soluté reste parfaitement dissous de manière stable",
+                "Le soluté retombe immédiatement au fond sous forme de poudre",
+                "La solution se sépare en deux couches distinctes",
+                "Le solvant s'évapore en quelques secondes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une solution homogène est thermodynamiquement stable : sans évaporation, le soluté ne se redépose pas."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Aspect microscopique : espèces moléculaires et ioniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Lors de la dissolution du saccharose (sucre de table) dans l'eau, que deviennent les molécules de sucre ?",
+              "options": [
+                "Elles se dispersent individuellement parmi les molécules d'eau sans être dissociées en atomes",
+                "Elles se décomposent en carbone pur et en gaz hydrogène",
+                "Elles se brisent en ions positifs et négatifs",
+                "Elles s'assemblent pour former de gigantesques cristaux insolubles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le saccharose est un solide moléculaire : ses molécules se séparent les unes des autres et sont hydratées intactes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le chlorure de sodium (sel de cuisine) solide est constitué de :",
+              "options": [
+                "Un empilement ordonné d'ions sodium Na+ et d'ions chlorure Cl-",
+                "Molécules neutres de NaCl gazeuses",
+                "Grains métalliques de sodium pur",
+                "Cellules végétales microscopiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sel NaCl est un solide ionique formé d'un réseau cristallin régulier de cations Na+ et d'anions Cl-."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lors de la dissolution d'un solide ionique dans l'eau, les ions subissent successivement :",
+              "options": [
+                "La dissociation, la solvatation (hydratation) et la dispersion",
+                "La fusion, l'ébullition et la solidification",
+                "La combustion, l'oxydation et la réduction",
+                "La précipitation, le séchage et la pesée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les 3 étapes microscopiques sont : rupture du réseau (dissociation), entourage par l'eau (hydratation), puis dispersion."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on l'hydratation (ou solvatation) des ions par l'eau ?",
+              "options": [
+                "Le phénomène par lequel les molécules d'eau entourent et stabilisent les ions dissociés",
+                "La transformation des ions en molécules d'eau pure",
+                "L'évaporation complète de l'eau autour des ions",
+                "Le passage des ions de l'état solide à l'état gazeux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les molécules d'eau s'orientent autour des ions grâce à leur polarité, stabilisant les charges électriques en solution."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont correctes concernant les solutions aqueuses ioniques et moléculaires ?",
+              "options": [
+                "Une solution ionique contient des ions mobiles capables de conduire le courant électrique",
+                "Une solution aqueuse de sucre contient des molécules neutres et ne conduit pratiquement pas le courant",
+                "L'eau pure liquide est un excellent conducteur électrique grâce à ses milliards d'ions libres",
+                "Le chlorure de sodium dissous dans l'eau produit des ions Na+(aq) et Cl-(aq)"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les solutions ioniques conduisent l'électricité grâce aux ions mobiles. Les solutions moléculaires (sucre) sont isolantes. L'eau pure est très peu conductrice."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la molécule d'eau (H2O) est-elle particulièrement adaptée pour dissoudre les solides ioniques ?",
+              "options": [
+                "Elle est polaire : elle présente des charges partielles positive et négative",
+                "Elle est totalement apolaire et symétrique",
+                "Elle ne possède aucun atome d'hydrogène",
+                "Elle est plus lourde que tous les solides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau est une molécule polaire coudée avec un pôle négatif (oxygène) et un pôle positif (hydrogènes)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vers quel atome de la molécule d'eau les ions positifs (cations comme Na+) sont-ils attirés lors de l'hydratation ?",
+              "options": [
+                "L'atome d'oxygène (porteur d'une charge partielle négative)",
+                "Les atomes d'hydrogène (porteurs de charges partielles positives)",
+                "Le noyau du carbone central",
+                "Aucun, ils sont repoussés par toutes les molécules d'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oxygène de l'eau porte une charge partielle négative delta- qui attire électrostatiquement les cations positifs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est l'équation de dissolution du chlorure de sodium solide dans l'eau ?",
+              "options": [
+                "NaCl(s) -> Na+(aq) + Cl-(aq)",
+                "NaCl(s) -> Na(s) + Cl2(g)",
+                "NaCl(s) + H2O -> HCl(aq) + NaOH(s)",
+                "2 NaCl(s) -> Na2Cl2(aq)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dissolution sépare les ions du cristal : NaCl(s) donne un ion sodium Na+(aq) et un ion chlorure Cl-(aq)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le sulfate de cuivre solide de formule CuSO4 donne par dissolution dans l'eau les ions :",
+              "options": [
+                "Cu2+(aq) et SO4 2-(aq)",
+                "Cu+(aq) et S2-(aq)",
+                "Cu(s) et SO2(g)",
+                "CuO(s) et H2SO4(aq)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CuSO4 se dissocie en ions cuivre(II) Cu2+(aq) et en ions sulfate SO4 2-(aq)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle couleur caractéristique prennent les ions cuivre(II) hydratés Cu2+(aq) en solution aqueuse ?",
+              "options": ["Bleue", "Jaune vif", "Rouge rubis", "Verte fluo"],
+              "correctAnswers": [0],
+              "explanation": "Les ions Cu2+(aq) hydratés confèrent une coloration bleue caractéristique à leurs solutions aqueuses."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Conservation de la masse lors d'une dissolution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que stipule le principe de conservation de la masse lors d'une dissolution sans perte de matière ?",
+              "options": [
+                "La masse de la solution finale est égale à la somme de la masse du solvant et de la masse du soluté dissous",
+                "La masse finale est toujours strictement inférieure à la masse de solvant",
+                "La masse finale double automatiquement par réaction chimique",
+                "La masse du soluté disparaît totalement lors du mélange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La masse se conserve : m_solution = m_solvant + m_soluté en l'absence d'échange de matière avec l'extérieur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "On dissout 15 g de sucre en poudre dans 150 g d'eau pure dans un récipient fermé. Quelle est la masse totale de la solution obtenue ?",
+              "options": ["165 g", "150 g", "135 g", "15 g"],
+              "correctAnswers": [0],
+              "explanation": "Masse totale = 150 g d'eau + 15 g de sucre = 165 g."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si l'on dissout un comprimé effervescent dans un bécher ouvert d'eau et que la balance affiche une masse plus faible à la fin, pourquoi ?",
+              "options": [
+                "Du gaz dioxyde de carbone s'est échappé dans l'air ambiant",
+                "La masse s'est transformée en lumière visible",
+                "La pesanteur terrestre a diminué pendant l'expérience",
+                "L'eau a absorbé les atomes du comprimé sans peser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réaction effervescente produit du CO2 gazeux qui quitte le bécher ouvert, d'où la perte de masse observée sur la balance."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel scientifique célèbre du XVIIIe siècle est associé à la maxime 'Rien ne se perd, rien ne se crée, tout se transforme' ?",
+              "options": [
+                "Antoine de Lavoisier",
+                "Louis Pasteur",
+                "Dmitri Mendeleïev",
+                "Marie Curie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Antoine de Lavoisier a démontré expérimentalement la conservation de la masse au cours des transformations chimiques."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Lors de la dissolution de 8 g de chlorure de sodium dans 100 g d'eau dans un flacon hermétiquement fermé, quelles grandeurs se conservent rigoureusement ?",
+              "options": [
+                "La masse totale du système fermé",
+                "Le nombre total d'atomes de chaque élément chimique présent",
+                "Le volume total du liquide (qui est strictement la somme des volumes)",
+                "La charge électrique globale du système"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Masse, atomes et charge se conservent rigoureusement. En revanche, le volume n'est pas strictement additif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le volume de la solution finale est-il toujours exactement égal à la somme du volume de solvant et du volume de soluté ?",
+              "options": [
+                "Pas nécessairement, des phénomènes d'interaction moléculaire peuvent entraîner une légère contraction de volume",
+                "Oui, les volumes s'additionnent toujours rigoureusement sans exception",
+                "Non, le volume final est toujours le triple du volume initial",
+                "Oui, le volume ne dépend jamais de la structure moléculaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La masse se conserve toujours, mais les volumes ne sont pas strictement additifs en raison de l'agencement microscopique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lorsqu'on mélange 50 mL d'eau et 50 mL d'éthanol pur, on obtient environ 96 mL de mélange. Cela s'explique par :",
+              "options": [
+                "Un réarrangement microscopique où les petites molécules d'eau se glissent entre les molécules d'éthanol",
+                "Une perte de matière par transformation nucléaire",
+                "Une erreur systématique de fabrication de toutes les éprouvettes",
+                "L'absorption de l'éthanol par le verre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une contraction de volume : les molécules d'eau comblent les espaces interstitiels entre les molécules d'éthanol."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur une balance électronique, à quoi sert le bouton 'Tare' ?",
+              "options": [
+                "À remettre l'affichage à zéro en tenant compte de la masse du récipient vide",
+                "À éteindre définitivement la balance",
+                "À multiplier la masse mesurée par dix",
+                "À mesurer la température ambiante de la pièce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La touche Tare permet de soustraire la masse du contenant (coupelle, bécher) pour ne mesurer que la masse de produit ajouté."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "On pèse une coupelle vide (5,2 g), puis on appuie sur 'Tare'. On ajoute du sel jusqu'à afficher 12,0 g. Quelle est la masse de sel prélevée ?",
+              "options": ["12,0 g", "6,8 g", "17,2 g", "5,2 g"],
+              "correctAnswers": [0],
+              "explanation": "La tare ayant remis l'affichage à zéro, la valeur affichée (12,0 g) correspond exactement à la masse de sel prélevée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La dissolution d'une espèce chimique moléculaire dans l'eau est :",
+              "options": [
+                "Une transformation physique",
+                "Une transformation nucléaire",
+                "Une création spontanée de nouveaux éléments chimiques",
+                "Une destruction irréversible d'atomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dissolution est une transformation physique : les espèces se dispersent sans qu'il n'y ait modification des molécules elles-mêmes."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Protocole de préparation d'une solution par dissolution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle verrerie de précision à col étroit et trait circulaire doit-on impérativement utiliser pour préparer un volume précis de solution ?",
+              "options": [
+                "Une fiole jaugée",
+                "Un bécher gradué",
+                "Une éprouvette graduée",
+                "Un erlenmeyer gradué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fiole jaugée est la verrerie de référence pour préparer un volume précis de solution par dissolution ou dilution."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi ne prépare-t-on jamais une solution de concentration précise directement dans un bécher ?",
+              "options": [
+                "Les graduations d'un bécher ne sont qu'approximatives et non de précision",
+                "Le verre du bécher détruit les solutés dissous",
+                "Le bécher est trop étroit pour recevoir de l'eau",
+                "L'eau s'évapore instantanément dans un bécher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un bécher a une précision de l'ordre de 10 à 20 %, ce qui est insuffisant pour un dosage ou une préparation précise."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel instrument utilise-t-on pour déposer délicatement le soluté solide dans la coupelle de pesée ?",
+              "options": [
+                "Une spatule",
+                "Une pipette jaugée",
+                "Un agitateur magnétique",
+                "Une burette graduée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La spatule propre et sèche permet de prélever des solides pulvérulents sans les toucher avec les doigts."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment transfère-t-on le solide de la coupelle de pesée vers la fiole jaugée sans perdre de grains ?",
+              "options": [
+                "En utilisant un entonnoir à solide et en rinçant la coupelle avec de l'eau distillée",
+                "En soufflant très fort sur la coupelle au-dessus de la fiole",
+                "En versant à sec puis en jetant les résidus collés sur la coupelle",
+                "En versant le solide avec les doigts nus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On rince la coupelle et l'entonnoir à la pissette d'eau distillée pour que toutes les particules entrent dans la fiole."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi les étapes suivantes, lesquelles font partie du protocole rigoureux de dissolution dans une fiole jaugée ?",
+              "options": [
+                "Rincer l'entonnoir avec de l'eau distillée de la pissette pour entraîner tout le solide",
+                "Remplir d'abord la fiole aux deux tiers environ et agiter pour dissoudre entièrement le solide",
+                "Ajuster le niveau au trait de jauge en plaçant le bas du ménisque au niveau du trait",
+                "Chauffer la fiole jaugée directement au bec Bunsen jusqu'à ébullition"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "On rince, on dissout aux 2/3, puis on ajuste au trait de jauge. On ne chauffe jamais une fiole jaugée (risque de décalibrage)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment doit-on positionner son regard pour ajuster correctement le niveau du liquide au trait de jauge ?",
+              "options": [
+                "À hauteur horizontale du trait de jauge pour éviter l'erreur de parallaxe",
+                "Bien au-dessus de la fiole en regardant vers le bas",
+                "En dessous de la fiole en regardant vers le haut",
+                "De dos en utilisant un miroir déformant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'œil doit être strictement à l'horizontale du trait pour éviter toute erreur de lecture par parallaxe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel accessoire permet d'ajouter les toutes dernières gouttes d'eau distillée sans dépasser le trait de jauge ?",
+              "options": [
+                "Une pipette Pasteur ou compte-gouttes",
+                "Une éprouvette de 2 litres",
+                "Un tuyau d'arrosage",
+                "Une fiole à vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pipette Pasteur permet un ajout délicat goutte par goutte pour amener le bas du ménisque sur le trait."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que doit-on faire une fois que le trait de jauge est atteint avec précision ?",
+              "options": [
+                "Boucher la fiole et la retourner plusieurs fois pour homogénéiser la solution",
+                "Vider immédiatement la solution dans l'évier",
+                "Laisser la fiole ouverte au soleil pendant plusieurs jours",
+                "Rajouter un litre d'eau distillée rapidement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'homogénéisation finale en retournant la fiole bouchée garantit une concentration identique dans tout le volume."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'on dépasse par mégarde le trait de jauge en ajoutant trop d'eau distillée, que doit-on faire ?",
+              "options": [
+                "Recommencer entièrement la préparation car la concentration serait faussée",
+                "Retirer l'excédent avec un morceau de papier absorbant",
+                "Ajouter un peu de sel au hasard pour compenser",
+                "Secouer très fort pour faire disparaître l'excédent d'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le volume étant trop grand, la concentration est trop faible. Enlever du liquide enlèverait du soluté : il faut recommencer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle eau utilise-t-on systématiquement pour préparer des solutions et rincer la verrerie en chimie ?",
+              "options": [
+                "De l'eau distillée ou déminéralisée",
+                "De l'eau du robinet très calcaire",
+                "De l'eau gazeuse du commerce",
+                "De l'eau de mer filtrée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau distillée ne contient aucun ion parasite qui risquerait de fausser les calculs ou réagir avec les solutés."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Sécurité, pictogrammes et bonnes pratiques de laboratoire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le pictogramme de sécurité représentant une flamme au-dessus d'un trait horizontal ?",
+              "options": [
+                "Produit inflammable",
+                "Produit explosif",
+                "Produit comburant",
+                "Gaz sous pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La flamme indique une substance inflammable pouvant s'enflammer au contact d'une étincelle ou d'une source de chaleur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le pictogramme montrant un liquide qui ronge une surface et une main ?",
+              "options": [
+                "Produit corrosif",
+                "Produit radioactif",
+                "Matière biologique infectieuse",
+                "Produit sans aucun danger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce pictogramme signale un produit corrosif capable d'attaquer les métaux et de provoquer de graves brûlures cutanées."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie le pictogramme représentant un point d'exclamation noir dans un losange rouge ?",
+              "options": [
+                "Produit irritant, sensibilisant ou toxique à faible dose",
+                "Produit hautement explosif",
+                "Produit bon pour la santé",
+                "Matière inflammable à basse température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le point d'exclamation avertit d'effets néfastes : irritation cutanée, oculaire ou toxicité aiguë modérée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel équipement de protection individuelle (EPI) est obligatoire en permanence lors d'une séance de travaux pratiques de chimie ?",
+              "options": [
+                "Blouse en coton fermée et lunettes de protection",
+                "Manteau en laine et écharpe",
+                "Casque de chantier et gilet jaune",
+                "Lunettes de soleil et gants de ski"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La blouse en coton boutonnée protège le corps et les vêtements, et les lunettes protègent les yeux des projections."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi les règles suivantes, lesquelles sont obligatoires au laboratoire de chimie pour assurer sa sécurité et celle des autres ?",
+              "options": [
+                "Attacher les cheveux longs pour éviter qu'ils ne trempent dans les solutions ou ne s'enflamment",
+                "Ne jamais goûter, boire ni sentir directement un produit chimique",
+                "Porter des lunettes de protection adaptées lors de toute manipulation",
+                "Courir dans les allées pour terminer rapidement les pesées"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Attacher ses cheveux, ne pas goûter les produits et porter ses lunettes sont des règles de sécurité cardinales. Courir est proscrit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que doit-on faire immédiatement en cas de projection accidentelle d'une solution acide ou basique sur la peau ?",
+              "options": [
+                "Rincer abondamment à l'eau courante tiède pendant plusieurs minutes et prévenir le professeur",
+                "Mettre de l'huile ou du beurre sur la zone touchée",
+                "Attendre la fin de la séance pour voir si cela brûle",
+                "Frotter vigoureusement avec un chiffon sec et poussiéreux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rinçage à grande eau dilue et élimine le produit corrosif immédiatement. Il faut avertir l'enseignant sans attendre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi est-il formellement interdit de pipeter un liquide à la bouche en chimie ?",
+              "options": [
+                "Il y a un risque majeur d'ingestion ou d'inhalation de substances chimiques toxiques ou corrosives",
+                "Car cela déforme le verre de la pipette jaugée",
+                "Car la salive solidifie instantanément la solution",
+                "Car le volume aspiré serait trop précis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pipeter à la bouche expose à des intoxications et brûlures chimiques gravissimes : on utilise obligatoirement une propipette."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Où doit-on éliminer les résidus de solutions contenant des métaux lourds (comme le sulfate de cuivre) après manipulation ?",
+              "options": [
+                "Dans un bidon de récupération dédié aux déchets chimiques",
+                "Directement dans l'évier sous un filet d'eau",
+                "Dans la poubelle à papier ordinaire",
+                "Dans les toilettes de l'établissement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les métaux lourds polluent gravement les milieux aquatiques et doivent être collectés pour traitement spécialisé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que représente le pictogramme montrant un tronc d'arbre mort et un poisson inerte au bord de l'eau ?",
+              "options": [
+                "Produit dangereux pour le milieu aquatique et l'environnement",
+                "Produit comestible pour les poissons",
+                "Produit favorisant la pêche",
+                "Engrais écologique naturel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce pictogramme signale une toxicité aiguë ou chronique pour les organismes aquatiques et l'environnement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que doit comporter obligatoirement l'étiquette d'un flacon de solution préparée au laboratoire ?",
+              "options": [
+                "Le nom de l'espèce chimique, sa concentration, la date et les éventuels pictogrammes de danger",
+                "Uniquement le prénom de l'élève en gros caractères",
+                "Le prix estimé du produit en euros",
+                "La recette de cuisine associée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un flacon doit être clairement identifié : nom de la substance, concentration précise, date et symboles de sécurité."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse et défis sur la dissolution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel solvant constitue l'essentiel des fluides biologiques chez les êtres vivants ?",
+              "options": [
+                "L'eau",
+                "L'éthanol",
+                "L'acétone",
+                "L'huile de tournesol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau est le solvant biologique universel, constituant environ 60 à 70 % de la masse du corps humain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une solution dont le solvant principal est l'éthanol est appelée une solution :",
+              "options": ["Alcoolique", "Aqueuse", "Gazeuse", "Minérale"],
+              "correctAnswers": [0],
+              "explanation": "Lorsque l'éthanol (alcool) joue le rôle de solvant, la solution est qualifiée d'alcoolique (ou hydroalcoolique si mélangée à l'eau)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi répand-on du sel sur les routes verglacées en hiver ?",
+              "options": [
+                "La dissolution du sel dans l'eau abaisse la température de solidification de l'eau en dessous de 0 °C",
+                "Le sel brûle la glace par une réaction explosive produisant du feu",
+                "Le sel durcit la glace pour la rendre praticable",
+                "Le sel attire les rayons ultraviolets de la lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau salée gèle à une température inférieure à 0 °C (environ -10 °C à -21 °C selon la concentration), ce qui fait fondre le verglas."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si une espèce chimique solide ne se dissout pas du tout dans l'eau, on dit qu'elle est :",
+              "options": [
+                "Insoluble dans l'eau",
+                "Saturée d'avance",
+                "Miscible",
+                "Volatile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une espèce incapable de se dissoudre dans un solvant donné est dite insoluble dans ce solvant."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi les affirmations suivantes sur la dissolution, lesquelles sont scientifiquement exactes ?",
+              "options": [
+                "La masse se conserve rigoureusement lors d'une dissolution en système fermé",
+                "La solubilité d'un solide dépend généralement de la température du solvant",
+                "Une solution aqueuse de chlorure de sodium contient des ions Na+ et Cl- hydratés",
+                "Une dissolution est toujours un changement d'état physique d'un corps pur"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Masse conservée, dépendance thermique de la solubilité et présence d'ions hydratés sont exacts. La dissolution n'est pas un changement d'état."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si l'on chauffe une eau salée jusqu'à évaporation complète de l'eau dans une coupelle, que recueille-t-on au fond ?",
+              "options": [
+                "Des cristaux de sel solide intacts",
+                "De l'or pur",
+                "Rien, tout s'est évaporé dans l'atmosphère",
+                "Une couche d'huile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau s'évapore à 100 °C alors que le sel, non volatil, cristallise et reste dans la coupelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux liquides qui se mélangent en toutes proportions en formant une seule phase sont dits :",
+              "options": [
+                "Miscibles",
+                "Immiscibles",
+                "Précipités",
+                "Saturants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau et l'éthanol, par exemple, sont miscibles en toutes proportions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'eau et l'acétone sont deux liquides miscibles. Leur mélange forme :",
+              "options": [
+                "Une solution homogène",
+                "Deux couches distinctes avec interface visible",
+                "Une mousse compacte solide",
+                "Un précipité blanc opaque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La miscibilité implique la formation d'un mélange parfaitement homogène à l'œil nu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La quantité maximale d'un gaz comme le CO2 dissoute dans une eau gazeuse dépend directement de :",
+              "options": [
+                "La pression du gaz au-dessus du liquide et de la température",
+                "De la couleur de la bouteille en verre",
+                "Du jour de la semaine où la bouteille a été scellée",
+                "De la masse de la table sur laquelle est posée la bouteille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon la loi de Henry, la solubilité d'un gaz est proportionnelle à sa pression partielle au-dessus du liquide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lors de l'ouverture d'une bouteille de soda pétillant, pourquoi observe-t-on la formation de bulles de gaz ?",
+              "options": [
+                "La baisse de pression au-dessus du liquide fait chuter la solubilité du CO2 dissous",
+                "Le liquide gèle instantanément au contact de l'air",
+                "Le sucre se transforme soudainement en gaz",
+                "Une réaction nucléaire se déclenche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En débouchant la bouteille, la pression diminue brutalement : le CO2 en excès ne peut plus rester dissous et s'échappe en bulles."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Concentration",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Introduction à la concentration en masse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la concentration en masse (ou titre massique) d'un soluté dans une solution ?",
+              "options": [
+                "La masse de soluté dissous par unité de volume de solution",
+                "Le volume de solvant par kilogramme de soluté",
+                "La masse totale du récipient divisée par le nombre de cuillères",
+                "La température moyenne de la solution en degrés Celsius"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La concentration en masse correspond au rapport de la masse de soluté dissous m sur le volume total V de solution."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le symbole usuel utilisé au lycée pour désigner la concentration en masse ?",
+              "options": ["Cm ou gamma", "V", "m", "rho"],
+              "correctAnswers": [0],
+              "explanation": "On note couramment la concentration en masse Cm ou gamma (lettre grecque). Ne pas confondre avec rho (masse volumique)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est l'unité usuelle de la concentration en masse en travaux pratiques de chimie ?",
+              "options": [
+                "Le gramme par litre (g/L ou g·L⁻¹)",
+                "Le kilogramme par mètre carré (kg/m²)",
+                "Le mètre par seconde (m/s)",
+                "Le litre par gramme (L/g)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'unité la plus courante au laboratoire est le gramme par litre (g/L ou g·L⁻¹)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans la formule Cm = m / V, que représente la lettre m ?",
+              "options": [
+                "La masse du soluté dissous",
+                "La masse totale de la solution",
+                "La masse de la fiole jaugée vide",
+                "Le nombre de molécules d'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans Cm = m / V, m est exclusivement la masse du soluté dissous dans la solution."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies pour une solution aqueuse de concentration massique Cm = 20 g/L ?",
+              "options": [
+                "Un litre de cette solution contient 20 grammes de soluté dissous",
+                "Un demi-litre (0,5 L) de cette solution contient 10 grammes de soluté",
+                "Deux litres de cette solution contiennent 40 grammes de soluté",
+                "La masse totale d'un litre de cette solution est obligatoirement égale à 20 grammes"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Cm = 20 g/L signifie 20 g de soluté par litre. Un litre pèse environ 1000 g d'eau + 20 g de soluté = 1020 g, et non 20 g !"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans la formule Cm = m / V, que représente la lettre V ?",
+              "options": [
+                "Le volume total de la solution obtenue",
+                "Le volume de la fiole vide",
+                "Le volume de la balance",
+                "La vitesse de mélange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "V représente le volume total occupé par la solution préparée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si on ajoute de l'eau distillée dans une solution sans rajouter de soluté, que devient sa concentration massique ?",
+              "options": [
+                "Elle diminue car le volume augmente à masse de soluté constante",
+                "Elle augmente car il y a plus de liquide",
+                "Elle reste strictement identique",
+                "Elle double instantanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le volume V augmentant au dénominateur sans changer m, Cm = m / V diminue : c'est le principe de la dilution."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si l'on dissout deux fois plus de soluté dans un même volume de solution, que devient la concentration en masse ?",
+              "options": [
+                "Elle est multipliée par deux",
+                "Elle est divisée par deux",
+                "Elle reste inchangée",
+                "Elle tombe à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cm est proportionnelle à la masse m de soluté : si m double à volume constant, Cm double."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La concentration en masse est une grandeur :",
+              "options": [
+                "Intensive (elle ne dépend pas de la quantité totale de solution prélevée)",
+                "Extensive (elle double si l'on prend deux verres de la même carafe)",
+                "Aléatoire et imprévisible",
+                "Purement géométrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La concentration est intensive : prélever une goutte ou un litre d'une même carafe ne change pas sa concentration."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si l'on verse 50 mL d'un flacon d'eau salée à 10 g/L dans un petit bécher, quelle est la concentration en masse dans le bécher ?",
+              "options": ["10 g/L", "500 g/L", "0,5 g/L", "5 g/L"],
+              "correctAnswers": [0],
+              "explanation": "La solution étant homogène, la concentration du prélèvement est rigoureusement identique à celle du flacon d'origine."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Calculs de concentration : Cm = m / V",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "On dissout 5,0 g de glucose dans de l'eau pour obtenir 250 mL de solution. Quelle est la concentration en masse Cm ?",
+              "options": ["20 g/L", "1,25 g/L", "0,020 g/L", "50 g/L"],
+              "correctAnswers": [0],
+              "explanation": "V = 250 mL = 0,250 L. Cm = m / V = 5,0 / 0,250 = 20 g/L."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour utiliser la formule Cm = m / V avec m en grammes et Cm en g/L, dans quelle unité le volume V doit-il être exprimé ?",
+              "options": [
+                "En litres (L)",
+                "En millilitres (mL)",
+                "En centimètres cubes (cm³)",
+                "En mètres cubes (m³)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour obtenir une concentration en g/L, le volume doit impérativement être converti en litres (L)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Convertir un volume de 250 mL en litres :",
+              "options": ["0,250 L", "2,50 L", "25,0 L", "0,025 L"],
+              "correctAnswers": [0],
+              "explanation": "1 L = 1000 mL, donc 250 mL = 250 / 1000 = 0,250 L."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "On dissout 3,0 g de sel dans 0,50 L de solution. Que vaut la concentration massique Cm ?",
+              "options": ["6,0 g/L", "1,5 g/L", "0,17 g/L", "15 g/L"],
+              "correctAnswers": [0],
+              "explanation": "Cm = m / V = 3,0 / 0,50 = 6,0 g/L."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi les calculs suivants, lesquels donnent une concentration en masse de 10 g/L ?",
+              "options": [
+                "m = 5,0 g dans V = 0,50 L de solution",
+                "m = 1,0 g dans V = 100 mL de solution",
+                "m = 20 g dans V = 2,0 L de solution",
+                "m = 10 g dans V = 10 L de solution"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "5/0,5 = 10 g/L ; 1/0,1 = 10 g/L ; 20/2 = 10 g/L. En revanche, 10/10 = 1 g/L."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une dosette de 10 mL de collyre contient 0,050 g de principe actif. Quelle est sa concentration en masse en g/L ?",
+              "options": ["5,0 g/L", "0,50 g/L", "50 g/L", "0,005 g/L"],
+              "correctAnswers": [0],
+              "explanation": "V = 10 mL = 0,010 L. Cm = 0,050 / 0,010 = 5,0 g/L."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "On dissout 800 mg de chlorure de sodium dans 200 mL d'eau. Quelle est sa concentration en masse en g/L ?",
+              "options": ["4,0 g/L", "0,40 g/L", "40 g/L", "160 g/L"],
+              "correctAnswers": [0],
+              "explanation": "m = 800 mg = 0,800 g et V = 200 mL = 0,200 L. Cm = 0,800 / 0,200 = 4,0 g/L."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien vaut la masse de 800 mg exprimée en grammes ?",
+              "options": ["0,800 g", "8,00 g", "80,0 g", "0,080 g"],
+              "correctAnswers": [0],
+              "explanation": "1 g = 1000 mg, donc 800 mg = 800 / 1000 = 0,800 g."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une canette de 330 mL de soda contient 36 g de sucre dissous. Quelle est approximativement la concentration massique en sucre ?",
+              "options": ["109 g/L", "11,9 g/L", "360 g/L", "1,09 g/L"],
+              "correctAnswers": [0],
+              "explanation": "V = 330 mL = 0,330 L. Cm = 36 / 0,330 ≈ 109 g/L (ce qui est considérable !)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une solution contenant 0,15 g de colorant dans 50 mL de solution, quelle est la valeur de Cm ?",
+              "options": ["3,0 g/L", "0,30 g/L", "7,5 g/L", "30 g/L"],
+              "correctAnswers": [0],
+              "explanation": "V = 50 mL = 0,050 L. Cm = 0,15 / 0,050 = 3,0 g/L."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Calcul de la masse de soluté : m = Cm * V",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la relation littérale permettant de calculer la masse m de soluté à partir de Cm et V ?",
+              "options": [
+                "m = Cm * V",
+                "m = Cm / V",
+                "m = V / Cm",
+                "m = Cm + V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De Cm = m / V, on déduit immédiatement m = Cm * V."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "On souhaite préparer 2,0 L d'une solution d'eau salée à 15 g/L. Quelle masse de sel doit-on peser ?",
+              "options": ["30 g", "7,5 g", "17 g", "0,13 g"],
+              "correctAnswers": [0],
+              "explanation": "m = Cm * V = 15 g/L * 2,0 L = 30 g."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "On désire préparer 500 mL d'une solution de sulfate de cuivre à 4,0 g/L. Quelle masse de soluté faut-il prélever ?",
+              "options": ["2,0 g", "8,0 g", "2000 g", "0,50 g"],
+              "correctAnswers": [0],
+              "explanation": "V = 500 mL = 0,500 L. m = Cm * V = 4,0 * 0,500 = 2,0 g."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un volume de 500 mL correspond à :",
+              "options": ["0,500 L", "5,00 L", "50,0 L", "0,050 L"],
+              "correctAnswers": [0],
+              "explanation": "500 mL = 500 / 1000 L = 0,500 L."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi les situations suivantes, lesquelles correspondent à une masse prélevée de 2,5 g de soluté ?",
+              "options": [
+                "Préparer 250 mL d'une solution à 10 g/L",
+                "Préparer 500 mL d'une solution à 5,0 g/L",
+                "Préparer 1,0 L d'une solution à 2,5 g/L",
+                "Préparer 100 mL d'une solution à 1,0 g/L"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "10 * 0,25 = 2,5 g ; 5,0 * 0,5 = 2,5 g ; 2,5 * 1,0 = 2,5 g. Pour 100 mL à 1,0 g/L, m = 0,10 g."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle masse de sucre contient un verre de 200 mL d'un jus de fruit dont la concentration en sucre est 120 g/L ?",
+              "options": ["24 g", "60 g", "12 g", "2,4 g"],
+              "correctAnswers": [0],
+              "explanation": "V = 200 mL = 0,200 L. m = 120 * 0,200 = 24 g (soit environ 4 à 5 morceaux de sucre !)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le sérum physiologique est une solution de chlorure de sodium à 9,0 g/L. Quelle masse de sel se trouve dans une dosette de 5,0 mL ?",
+              "options": ["0,045 g (soit 45 mg)", "0,45 g", "4,5 g", "0,009 g"],
+              "correctAnswers": [0],
+              "explanation": "V = 5,0 mL = 0,0050 L. m = 9,0 * 0,0050 = 0,045 g = 45 mg."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment s'écrit le volume de 5,0 mL converti en litres ?",
+              "options": ["0,0050 L", "0,050 L", "0,50 L", "5000 L"],
+              "correctAnswers": [0],
+              "explanation": "5,0 mL = 5,0 * 10^-3 L = 0,0050 L."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle masse de permanganate de potassium faut-il peser pour préparer 100 mL de solution à 0,20 g/L ?",
+              "options": ["0,020 g (soit 20 mg)", "0,20 g", "2,0 g", "20 g"],
+              "correctAnswers": [0],
+              "explanation": "V = 100 mL = 0,100 L. m = 0,20 * 0,100 = 0,020 g = 20 mg."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une eau minérale contient 80 mg/L d'ions magnésium. Quelle masse de magnésium absorbe-t-on en buvant une bouteille de 1,5 L ?",
+              "options": ["120 mg", "80 mg", "53 mg", "180 mg"],
+              "correctAnswers": [0],
+              "explanation": "m = Cm * V = 80 mg/L * 1,5 L = 120 mg."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Calcul du volume de solution : V = m / Cm",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle formule littérale permet d'isoler le volume V à partir de Cm = m / V ?",
+              "options": [
+                "V = m / Cm",
+                "V = Cm / m",
+                "V = m * Cm",
+                "V = Cm - m"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En isolant V dans Cm = m / V, on obtient V = m / Cm."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Avec 10 g de sucre, quel volume maximal de solution à 20 g/L peut-on préparer ?",
+              "options": ["0,50 L (soit 500 mL)", "2,0 L", "200 L", "0,050 L"],
+              "correctAnswers": [0],
+              "explanation": "V = m / Cm = 10 / 20 = 0,50 L = 500 mL."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel volume de solution antiseptique à 5,0 g/L contient une masse de 15 g de principe actif ?",
+              "options": ["3,0 L", "0,33 L", "75 L", "10 L"],
+              "correctAnswers": [0],
+              "explanation": "V = m / Cm = 15 / 5,0 = 3,0 L."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Avec une masse de 2,0 g de sel, quel volume de sérum physiologique à 9,0 g/L peut-on approximativement fabriquer ?",
+              "options": ["0,22 L (soit 220 mL)", "4,5 L", "18 L", "0,022 L"],
+              "correctAnswers": [0],
+              "explanation": "V = m / Cm = 2,0 / 9,0 ≈ 0,22 L = 220 mL."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles associations masse/concentration permettent d'obtenir un volume exactement égal à 0,250 L (250 mL) ?",
+              "options": [
+                "m = 2,5 g et Cm = 10 g/L",
+                "m = 5,0 g et Cm = 20 g/L",
+                "m = 1,0 g et Cm = 4,0 g/L",
+                "m = 25 g et Cm = 2,5 g/L"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "2,5 / 10 = 0,25 L ; 5,0 / 20 = 0,25 L ; 1,0 / 4,0 = 0,25 L. En revanche, 25 / 2,5 = 10 L."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un laboratoire dispose de 0,50 g de colorant. Quel volume de solution à 0,10 g/L peut-on préparer avec cette masse ?",
+              "options": ["5,0 L", "0,050 L", "50 L", "0,50 L"],
+              "correctAnswers": [0],
+              "explanation": "V = m / Cm = 0,50 / 0,10 = 5,0 L."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un patient doit recevoir 3,0 g d'un antibiotique par perfusion. La poche de perfusion est titrée à 6,0 g/L. Quel volume doit-on lui injecter ?",
+              "options": ["0,50 L (soit 500 mL)", "2,0 L", "18 L", "0,050 L"],
+              "correctAnswers": [0],
+              "explanation": "V = m / Cm = 3,0 / 6,0 = 0,50 L = 500 mL."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "On a pesé 75 g de sel de cuisine. Combien de litres d'eau salée à 25 g/L peut-on préparer ?",
+              "options": ["3,0 L", "1875 L", "0,33 L", "50 L"],
+              "correctAnswers": [0],
+              "explanation": "V = m / Cm = 75 / 25 = 3,0 L."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien de flacons de 100 mL peut-on remplir entièrement avec 2,0 L de solution préparée ?",
+              "options": [
+                "20 flacons",
+                "5 flacons",
+                "200 flacons",
+                "2 flacons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2,0 L = 2000 mL. Nombre de flacons = 2000 / 100 = 20 flacons."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si l'on dispose de 1,2 g de soluté pour une solution à 2,4 g/L, le volume obtenu est de :",
+              "options": ["500 mL", "288 mL", "2000 mL", "50 mL"],
+              "correctAnswers": [0],
+              "explanation": "V = 1,2 / 2,4 = 0,50 L = 500 mL."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Masse volumique vs Concentration en masse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la définition de la masse volumique rho d'un échantillon de matière ?",
+              "options": [
+                "Le quotient de la masse totale de l'échantillon par son volume : rho = m_totale / V",
+                "Le quotient de la masse de soluté par le volume : Cm = m_soluté / V",
+                "La masse de solvant multipliée par la surface",
+                "La vitesse de déplacement des molécules dans le liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La masse volumique rho = m_totale / V prend en compte toute la matière constituant le volume V."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans la formule de la concentration massique Cm = m / V, que représente m par rapport à la masse intervenant dans rho ?",
+              "options": [
+                "m est uniquement la masse du soluté dissous, alors que dans rho il s'agit de la masse totale de la solution",
+                "m est la masse de la Terre",
+                "m est la masse du récipient en verre",
+                "Les deux grandeurs désignent exactement la même masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cm ne comptabilise que le soluté (m_soluté / V), tandis que rho comptabilise toute la solution (m_totale / V)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la masse volumique de l'eau liquide pure à température ambiante ?",
+              "options": [
+                "Environ 1,0 kg/L (ou 1000 g/L, ou 1,0 g/mL)",
+                "Environ 100 g/L",
+                "Environ 0,10 g/mL",
+                "Environ 10 kg/mL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 litre d'eau pure pèse 1 kg (1000 g), donc rho_eau = 1,0 kg/L = 1000 g/L = 1,0 g/cm³."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une fiole de 1,0 L contient une solution aqueuse salée pesant 1050 g et renfermant 50 g de sel. Quelle est la masse volumique de la solution ?",
+              "options": ["1050 g/L", "50 g/L", "1000 g/L", "21 g/L"],
+              "correctAnswers": [0],
+              "explanation": "rho = m_totale / V = 1050 g / 1,0 L = 1050 g/L."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Pour la même solution (1050 g au total pour 1,0 L de solution contenant 50 g de sel dissous), quelles propositions sont correctes ?",
+              "options": [
+                "La masse volumique de la solution est rho = 1050 g/L",
+                "La concentration en masse en sel dissous est Cm = 50 g/L",
+                "La masse d'eau liquide présente dans la fiole est de 1000 g",
+                "La concentration en masse et la masse volumique ont la même valeur numérique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "rho = 1050 g/L ; Cm = 50 g / 1 L = 50 g/L ; m_eau = 1050 - 50 = 1000 g. Elles ont la même unité mais des valeurs différentes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi ne doit-on jamais confondre la masse volumique d'une solution et la concentration massique d'un soluté ?",
+              "options": [
+                "Car la concentration massique ne prend en compte que le soluté, tandis que la masse volumique prend en compte tout le mélange",
+                "Car la masse volumique n'a pas d'unité alors que la concentration en a une",
+                "Car la concentration en masse ne concerne que les solides purs",
+                "Car la masse volumique ne se mesure qu'à 100 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bien qu'exprimées dans les mêmes unités (g/L), elles décrivent deux grandeurs physiques distinctes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour une solution aqueuse, la masse volumique rho de la solution est généralement :",
+              "options": [
+                "Très proche de 1000 g/L (souvent légèrement supérieure à 1000 g/L)",
+                "Toujours égale à la concentration en masse Cm",
+                "Proche de 0,001 g/L",
+                "Égale à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau étant le composant majoritaire (1000 g/L), la présence de soluté dense rend la masse volumique légèrement supérieure à 1000 g/L."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La concentration en masse d'un soluté dans une solution aqueuse peut-elle être supérieure à la masse volumique de la solution ?",
+              "options": [
+                "Non, la masse de soluté dissous est obligatoirement inférieure à la masse totale de la solution",
+                "Oui, la concentration en masse peut valoir 50 000 g/L dans l'eau",
+                "Oui, car le soluté est plus lourd que l'eau",
+                "Oui, si la solution est bleue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque m_soluté < m_totale, on a toujours Cm < rho pour toute solution."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un densimètre ou aréomètre permet de déterminer facilement :",
+              "options": [
+                "La masse volumique ou la densité d'un liquide par flottaison",
+                "La température de fusion d'un cristal",
+                "La formule brute d'un soluté",
+                "Le nombre d'électrons d'un atome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le densimètre flotte à une profondeur qui dépend directement de la masse volumique du liquide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si l'on dissout beaucoup de sel dans de l'eau, que devient la masse volumique de la solution salée par rapport à l'eau pure ?",
+              "options": [
+                "Elle augmente",
+                "Elle diminue considérablement",
+                "Elle reste rigoureusement égale à 1,000 kg/L",
+                "Elle devient négative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ajouter du sel dissous augmente la masse du liquide sans augmenter proportionnellement son volume : rho augmente."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Principe de la dilution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En quoi consiste l'opération de dilution au laboratoire ?",
+              "options": [
+                "À préparer une solution moins concentrée à partir d'une solution plus concentrée par ajout de solvant",
+                "À ajouter du soluté solide pour rendre la solution plus foncée",
+                "À chauffer la solution pour faire évaporer le liquide",
+                "À séparer les ions à l'aide d'un aimant puissant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diluer consiste à ajouter du solvant (eau distillée) pour obtenir une solution de concentration plus faible."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la solution initiale plus concentrée avant dilution ?",
+              "options": [
+                "La solution mère",
+                "La solution fille",
+                "La solution neutre",
+                "La solution témoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solution initiale concentrée d'où l'on effectue le prélèvement est appelée solution mère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la solution finale obtenue après ajout de solvant ?",
+              "options": [
+                "La solution fille",
+                "La solution mère",
+                "La solution saturante",
+                "Le corps pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solution moins concentrée obtenue après dilution est nommée solution fille."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lors d'une dilution par ajout d'eau distillée, que peut-on dire de la masse de soluté prélevée ?",
+              "options": [
+                "Elle se conserve intégralement : m_mère = m_fille",
+                "Elle diminue car l'eau distillée détruit le soluté",
+                "Elle double spontanément lors du mélange",
+                "Elle s'évapore avec l'air ambiant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ajout d'eau n'ajoute ni ne détruit de soluté : la masse de soluté dissous se conserve rigoureusement."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Lors de la dilution d'une solution par ajout d'eau distillée, quelles grandeurs varient ?",
+              "options": [
+                "Le volume total de la solution (qui augmente)",
+                "La concentration en masse du soluté (qui diminue)",
+                "L'intensité de la coloration si le soluté est coloré (qui diminue)",
+                "La masse de soluté dissous présent dans l'échantillon"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le volume augmente, la concentration et la teinte diminuent, mais la masse de soluté reste strictement constante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle relation fondamentale traduit la conservation de la masse de soluté lors d'une dilution ?",
+              "options": [
+                "C_mère * V_mère = C_fille * V_fille",
+                "C_mère / V_mère = C_fille / V_fille",
+                "C_mère + V_mère = C_fille + V_fille",
+                "C_mère * C_fille = V_mère * V_fille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme m = Cm * V et que m_mère = m_fille, on a directement C_mère * V_mère = C_fille * V_fille."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La concentration de la solution fille C_fille par rapport à la solution mère C_mère est toujours :",
+              "options": [
+                "Inférieure à C_mère",
+                "Supérieure à C_mère",
+                "Strictement égale à C_mère",
+                "Infiniment grande"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diluer abaisse toujours la concentration : C_fille < C_mère."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si l'on prélève 20 mL d'une solution et qu'on y ajoute 20 mL d'eau distillée, le volume est doublé. Sa concentration est :",
+              "options": [
+                "Divisée par deux",
+                "Multipliée par deux",
+                "Inchangée",
+                "Multipliée par quatre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si le volume total double, la concentration est divisée par deux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'on dilue une solution rouge très foncée en y ajoutant de l'eau, que constate-t-on visuellement ?",
+              "options": [
+                "La couleur s'éclaircit progressivement",
+                "La couleur devient noire opaque",
+                "La solution commence à émettre de la lumière verte",
+                "Le liquide disparaît complètement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La concentration en espèces absorbantes diminuant, l'intensité de la coloration s'atténue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans l'expression C_mère * V_mère = C_fille * V_fille, que représente V_mère ?",
+              "options": [
+                "Le volume de solution mère prélevé pour fabriquer la solution fille",
+                "Le volume total du flacon de solution mère",
+                "Le volume de la pissette d'eau",
+                "Le volume du laboratoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "V_mère est le volume de solution mère prélevé à la pipette jaugée pour effectuer la dilution."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Facteur de dilution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la définition du facteur de dilution F ?",
+              "options": [
+                "F = C_mère / C_fille = V_fille / V_mère",
+                "F = C_fille / C_mère = V_mère / V_fille",
+                "F = C_mère * C_fille",
+                "F = V_mère * V_fille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le facteur de dilution est le rapport F = C_mère / C_fille = V_fille / V_mère."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'unité du facteur de dilution F ?",
+              "options": [
+                "Il n'a pas d'unité (grandeur sans dimension)",
+                "Le gramme par litre (g/L)",
+                "Le litre (L)",
+                "Le mole par seconde (mol/s)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "F étant le rapport de deux grandeurs de même dimension (volumes ou concentrations), il est sans unité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie l'expression 'diluer une solution 10 fois' (ou au dixième) ?",
+              "options": [
+                "F = 10 : la solution fille est 10 fois moins concentrée que la solution mère",
+                "On a ajouté exactement 10 gouttes de soluté",
+                "La concentration de la solution fille a été multipliée par 10",
+                "On a chauffé la solution pendant 10 minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diluer 10 fois signifie F = 10, soit C_fille = C_mère / 10 et V_fille = 10 * V_mère."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le facteur de dilution F lors d'une dilution est un nombre toujours :",
+              "options": [
+                "Supérieur à 1",
+                "Compris entre 0 et 1",
+                "Négatif",
+                "Égal à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme C_mère > C_fille et V_fille > V_mère, le rapport F est toujours strictement supérieur à 1."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "On réalise une dilution avec un facteur de dilution F = 5. Quelles propositions sont exactes ?",
+              "options": [
+                "C_fille = C_mère / 5",
+                "V_fille = 5 * V_mère",
+                "Le volume de solution mère à prélever est V_mère = V_fille / 5",
+                "La concentration de la solution fille est 5 fois plus grande que celle de la mère"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "F = 5 signifie que la solution fille est 5 fois plus diluée et son volume 5 fois plus grand que le volume prélevé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "On souhaite préparer 100 mL de solution fille à partir d'une solution mère avec un facteur de dilution F = 5. Quel volume V_mère doit-on prélever ?",
+              "options": ["20 mL", "50 mL", "5 mL", "500 mL"],
+              "correctAnswers": [0],
+              "explanation": "V_mère = V_fille / F = 100 / 5 = 20 mL."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une solution mère a une concentration C_mère = 40 g/L et on souhaite obtenir une solution fille à C_fille = 8,0 g/L. Que vaut F ?",
+              "options": ["5", "32", "0,20", "320"],
+              "correctAnswers": [0],
+              "explanation": "F = C_mère / C_fille = 40 / 8,0 = 5."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "On prélève 10 mL de solution mère pour préparer une fiole jaugée de 250 mL de solution fille. Quel est le facteur de dilution F ?",
+              "options": ["25", "2,5", "250", "0,04"],
+              "correctAnswers": [0],
+              "explanation": "F = V_fille / V_mère = 250 / 10 = 25."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si une solution mère a une concentration C_mère = 12 g/L et qu'on la dilue avec un facteur F = 4, quelle est la concentration C_fille ?",
+              "options": ["3,0 g/L", "48 g/L", "8,0 g/L", "16 g/L"],
+              "correctAnswers": [0],
+              "explanation": "C_fille = C_mère / F = 12 / 4 = 3,0 g/L."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour préparer 50 mL d'une solution diluée au vingtième (F = 20), quel volume V_mère de solution mère faut-il prélever ?",
+              "options": ["2,5 mL", "5,0 mL", "10 mL", "1,0 mL"],
+              "correctAnswers": [0],
+              "explanation": "V_mère = V_fille / F = 50 / 20 = 2,5 mL."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Protocole expérimental de la dilution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle verrerie de précision doit-on utiliser pour prélever avec la plus grande précision le volume de solution mère V_mère ?",
+              "options": [
+                "Une pipette jaugée munie d'un système d'aspiration",
+                "Une éprouvette graduée de 100 mL",
+                "Un bécher gradué ordinaire",
+                "Un compte-gouttes en plastique sans graduation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pipette jaugée est l'instrument le plus précis pour prélever un volume déterminé de liquide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel dispositif de sécurité doit-on impérativement fixer sur la pipette jaugée pour aspirer le liquide ?",
+              "options": [
+                "Une propipette (ou poire à pipeter) ou un pipeteur",
+                "Un entonnoir en plastique",
+                "Un thermomètre à mercure",
+                "Un bouchon étanche scellé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La propipette permet d'aspirer et de refouler le liquide en toute sécurité sans contact buccal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans quel récipient de précision doit-on préparer la solution fille pour obtenir le volume final V_fille exact ?",
+              "options": [
+                "Une fiole jaugée",
+                "Un bécher gradué",
+                "Un cristallisoir",
+                "Un tube à essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fiole jaugée de volume V_fille permet de mesurer le volume final avec une haute précision."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi ne doit-on jamais pipeter directement dans le flacon de stockage de la solution mère ?",
+              "options": [
+                "Pour éviter de contaminer ou polluer l'ensemble du flacon de réserve",
+                "Car la pipette briserait systématiquement le fond du flacon",
+                "Car le liquide changerait instantanément de couleur",
+                "Car c'est interdit par la loi sur les emballages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On verse d'abord une fraction dans un bécher de prélèvement propre pour ne pas souiller le flacon source."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi la liste suivante, quels matériels sont indispensables pour réaliser une dilution de précision au laboratoire ?",
+              "options": [
+                "Une pipette jaugée adaptée",
+                "Une poire à pipeter (propipette)",
+                "Une fiole jaugée de volume adapté",
+                "Un agitateur à micro-ondes"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Pipette jaugée, propipette, bécher et fiole jaugée constituent la verrerie essentielle d'une dilution précise."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans quel récipient verse-t-on un petit volume de solution mère avant d'y plonger la pipette jaugée ?",
+              "options": [
+                "Un petit bécher propre et sec (bécher de prélèvement)",
+                "Directement dans l'évier",
+                "Dans une éprouvette sale",
+                "Sur la paillasse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On utilise un bécher de prélèvement propre et sec pour éviter toute contamination ou dilution accidentelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lors de l'ajustement du liquide dans la pipette jaugée, où doit se trouver le ménisque ?",
+              "options": [
+                "Le bas du ménisque doit coïncider exactement avec le trait de jauge à hauteur des yeux",
+                "Le haut du ménisque doit dépasser le trait de jauge de 2 cm",
+                "Le liquide doit remplir la pipette jusqu'au bord supérieur",
+                "La position du ménisque n'a aucune importance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le creux (bas) du ménisque incurvé doit affleurer parfaitement le trait de jauge."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Après avoir versé le volume prélevé dans la fiole jaugée, que fait-on avant d'ajuster au trait de jauge ?",
+              "options": [
+                "On ajoute de l'eau distillée aux 2/3 environ et on agite pour homogénéiser",
+                "On remplit immédiatement à ras bord avec du vinaigre",
+                "On fait bouillir la fiole",
+                "On place la fiole au congélateur pendant une heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ajoute de l'eau distillée aux deux tiers, on agite doucement pour mélanger, puis on termine l'ajustement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment réalise-t-on l'ajustement final du niveau au trait de jauge de la fiole jaugée ?",
+              "options": [
+                "Goutte à goutte à l'aide d'une pissette d'eau distillée ou d'une pipette Pasteur",
+                "En versant un grand jet d'eau du robinet",
+                "En plongeant une éponge dans la fiole",
+                "En penchant la fiole pour faire déborder l'excédent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le compte-gouttes ou la pipette Pasteur évite tout dépassement accidentel du trait de jauge."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi retourne-t-on la fiole jaugée bouchée plusieurs fois à la fin de la préparation ?",
+              "options": [
+                "Pour assurer une parfaite homogénéité de la solution fille",
+                "Pour réchauffer le liquide avec les mains",
+                "Pour créer des bulles d'air décoratives",
+                "Pour vérifier que le bouchon est collé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le col étroit retient du solvant pur : il est indispensable de retourner la fiole bouchée pour homogénéiser la solution."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Échelle de teintes et dosage par étalonnage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une échelle de teintes au laboratoire ?",
+              "options": [
+                "Une série ordonnée de solutions étalons de concentrations connues, de même soluté coloré",
+                "Un ensemble de feutres de couleur pour dessiner la verrerie",
+                "Une boîte contenant des cristaux de différentes formes géométriques",
+                "Un nuancier de peinture murale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échelle de teintes est constituée de solutions de concentrations croissantes connues pour encadrer une inconnue."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment varie l'intensité de la coloration d'une solution avec la concentration en soluté coloré ?",
+              "options": [
+                "Plus la concentration est élevée, plus la coloration est intense et foncée",
+                "Plus la concentration est élevée, plus la solution devient transparente",
+                "La coloration ne dépend jamais de la concentration",
+                "La solution change de couleur toutes les cinq minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intensité lumineuse absorbée augmente avec le nombre de molécules colorées : la teinte s'assombrit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment estime-t-on la concentration d'une solution inconnue à l'aide d'une échelle de teintes ?",
+              "options": [
+                "En comparant visuellement sa teinte avec celles des solutions étalons sous un même éclairage",
+                "En pesant la solution sur une balance électronique",
+                "En mesurant sa température avec un thermomètre",
+                "En mesurant la hauteur du tube à essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On encadre la teinte de la solution inconnue entre deux tubes de l'échelle dont les concentrations sont connues."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour que la comparaison visuelle soit rigoureuse, que doivent avoir en commun les tubes à essais de l'échelle ?",
+              "options": [
+                "Le même diamètre (même épaisseur de liquide traversée) et le même volume",
+                "La même couleur de bouchon uniquement",
+                "La même étiquette manuscrite",
+                "Le même poids de verre au gramme près"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absorption dépend de l'épaisseur traversée : les tubes doivent impérativement avoir le même diamètre."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles sont les conditions nécessaires pour réaliser un dosage par échelle de teintes ?",
+              "options": [
+                "Le soluté doit être coloré en solution",
+                "Les solutions étalons doivent être préparées avec précision par dissolution ou dilution",
+                "L'observation doit se faire dans des tubes identiques sous le même éclairage",
+                "La solution doit obligatoirement être portée à ébullition"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le soluté doit être coloré, les étalons bien titrés et observés dans des conditions identiques. Aucune ébullition n'est requise."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si la couleur de la solution inconnue est plus foncée que le tube étalon à 2 g/L et plus claire que celui à 4 g/L, que peut-on conclure ?",
+              "options": [
+                "La concentration de la solution inconnue est comprise entre 2 g/L et 4 g/L",
+                "La concentration est exactement de 0 g/L",
+                "La concentration est supérieure à 10 g/L",
+                "La solution inconnue ne contient pas de soluté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échelle de teintes permet un encadrement : 2 g/L < C_inconnue < 4 g/L."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel appareil de mesure optique permet de mesurer précisément l'absorbance d'une solution à la place de l'œil ?",
+              "options": [
+                "Un spectrophotomètre",
+                "Un voltmètre",
+                "Un microscope électronique",
+                "Un baromètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le spectrophotomètre mesure quantitativement la proportion de lumière absorbée à une longueur d'onde donnée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle grandeur physique mesure un spectrophotomètre pour quantifier l'atténuation de la lumière par la solution ?",
+              "options": [
+                "L'absorbance (A)",
+                "La résistance électrique (R)",
+                "La vitesse de la lumière (c)",
+                "La pression acoustique (P)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absorbance A est une grandeur positive sans dimension qui quantifie la lumière absorbée par l'échantillon."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle loi physique affirme que l'absorbance A est proportionnelle à la concentration massique Cm pour des solutions diluées ?",
+              "options": [
+                "La loi de Beer-Lambert",
+                "La loi d'Ohm",
+                "La loi de Newton",
+                "La loi d'Archimède"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi de Beer-Lambert s'écrit A = k * C (droite d'étalonnage passant par l'origine pour des solutions diluées)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'estimation d'une concentration par échelle de teintes est-elle une méthode destructive pour l'échantillon analysé ?",
+              "options": [
+                "Non, c'est une méthode non destructive qui n'altère pas la solution",
+                "Oui, la solution est entièrement brûlée par la lumière",
+                "Oui, les molécules de soluté sont détruites à la fin du test",
+                "Oui, le tube à essais fond pendant la mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une méthode non destructive : la solution reste intacte après observation ou passage au spectrophotomètre."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Problèmes et bilans sur la concentration",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Un sirop de menthe a une concentration en sucre de 600 g/L. On verse 20 mL de ce sirop dans un verre et on ajoute de l'eau pour obtenir 200 mL de boisson. Quel est le facteur de dilution F ?",
+              "options": ["10", "20", "5", "100"],
+              "correctAnswers": [0],
+              "explanation": "F = V_fille / V_mère = 200 mL / 20 mL = 10."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans le problème précédent (F = 10 et C_mère = 600 g/L), quelle est la concentration en sucre de la boisson préparée dans le verre ?",
+              "options": ["60 g/L", "6,0 g/L", "300 g/L", "120 g/L"],
+              "correctAnswers": [0],
+              "explanation": "C_fille = C_mère / F = 600 / 10 = 60 g/L."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une eau minérale indique une teneur en ions calcium Ca2+ de 160 mg/L. Quelle masse de calcium absorbe-t-on en buvant 1,5 L de cette eau ?",
+              "options": ["240 mg", "160 mg", "107 mg", "320 mg"],
+              "correctAnswers": [0],
+              "explanation": "m = Cm * V = 160 mg/L * 1,5 L = 240 mg."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien vaut la masse de 240 mg convertie en grammes ?",
+              "options": ["0,240 g", "2,40 g", "0,024 g", "24,0 g"],
+              "correctAnswers": [0],
+              "explanation": "240 mg = 240 * 10^-3 g = 0,240 g."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi les manipulations suivantes, lesquelles entraînent une diminution de la concentration massique d'une solution aqueuse ?",
+              "options": [
+                "L'ajout d'eau distillée dans la solution (dilution)",
+                "Le prélèvement d'un volume de solution suivi d'un ajout d'eau dans une fiole plus grande",
+                "Laisser évaporer la moitié de l'eau au soleil sans ajout de soluté",
+                "L'ajout d'une nouvelle dose de soluté solide dans le même volume"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ajouter du solvant diminue la concentration. L'évaporation concentre la solution et l'ajout de soluté l'augmente."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une solution de permanganate de potassium a une concentration Cm = 5,0 g/L. On en prélève 25 mL dans un tube à essais. Quelle est la concentration dans le tube ?",
+              "options": ["5,0 g/L", "0,125 g/L", "125 g/L", "0,20 g/L"],
+              "correctAnswers": [0],
+              "explanation": "La solution étant homogène, tout prélèvement possède exactement la même concentration (5,0 g/L)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi la concentration d'un prélèvement est-elle identique à celle du flacon d'origine ?",
+              "options": [
+                "Car la solution est homogène : le soluté est réparti uniformément dans tout le volume",
+                "Car le liquide se multiplie lorsqu'on le verse",
+                "Car la pipette rajoute automatiquement du soluté",
+                "Car la gravité empêche le soluté de changer de place"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un mélange homogène, les proportions entre soluté et solvant sont strictement identiques en tout point."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si l'on laisse une coupelle d'eau salée à l'air libre et que la moitié de l'eau s'évapore, que devient la concentration en sel du liquide restant ?",
+              "options": [
+                "Elle est multipliée par deux",
+                "Elle est divisée par deux",
+                "Elle reste strictement inchangée",
+                "Elle tombe à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sel ne s'évapore pas. Si le volume d'eau est divisé par deux, la concentration Cm = m / V double."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour un aquarium d'eau de mer de volume V = 120 L, on souhaite une concentration en sel de 35 g/L. Quelle masse totale de sel doit être dissoute ?",
+              "options": ["4,2 kg (soit 4200 g)", "0,29 kg", "3,5 kg", "350 g"],
+              "correctAnswers": [0],
+              "explanation": "m = Cm * V = 35 g/L * 120 L = 4200 g = 4,2 kg."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En médecine, pourquoi est-il vital que le sérum physiologique injecté par perfusion ait une concentration précise en sel (environ 9 g/L) ?",
+              "options": [
+                "Pour être isotonique au plasma sanguin et ne pas faire éclater ni déshydrater les globules rouges",
+                "Pour donner un goût agréable au sang du patient",
+                "Pour colorer le sang en rouge vif",
+                "Pour refroidir rapidement les artères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une solution à 9 g/L est isotonique aux cellules sanguines ; une solution trop diluée ferait éclater les hématies par osmose."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

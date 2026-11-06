@@ -1,6 +1,7 @@
 import {
   type ChatModel,
   getModelCapabilities as getBaseModelCapabilities,
+  readSupportedParameters,
 } from "@/lib/ai/models";
 import {
   isReasoningLevel,
@@ -34,6 +35,10 @@ export type ModelCapabilities = {
   // L'interface masque alors le sélecteur plutôt que d'inventer des niveaux.
   reasoningLevels: ReasoningLevel[];
   tools: boolean;
+  // Vrai seulement si le catalogue déclare `tool_choice`. Sans cette
+  // déclaration, la synthèse finale retire les outils au lieu d'envoyer un
+  // paramètre que le modèle ignore.
+  toolChoice: boolean;
   vision: boolean;
 };
 
@@ -163,6 +168,7 @@ export function deriveModelCapabilities(
     reasoningDefault: readReasoningDefault(model),
     reasoningLevels: readReasoningLevels(model),
     reasoningMandatory: readReasoningMandatory(model),
+    toolChoice: readSupportedParameters(model).includes("tool_choice"),
     tools: base.tools,
     vision: base.vision,
   };
@@ -183,6 +189,8 @@ export function getMemoizedCapabilities(
   // du catalogue pendant toute la vie du processus. `reasoning` en fait partie
   // depuis la v3 : sans lui, un modèle qui gagne (ou perd) des niveaux d'effort
   // garderait ses anciennes capacités jusqu'au redémarrage du process.
+  // Le préfixe v4 invalide les objets calculés avant `toolChoice`, dérivé de
+  // `supported_parameters` déjà inclus dans cette signature.
   const metadataKey =
     typeof model === "string"
       ? ""
@@ -192,7 +200,7 @@ export function getMemoizedCapabilities(
           reasoning: model.reasoning,
           supported_parameters: model.supported_parameters,
         });
-  const cacheKey = `v3:${modelId}:${metadataKey}`;
+  const cacheKey = `v4:${modelId}:${metadataKey}`;
   const cached = capabilitiesCache.get(cacheKey);
   if (cached) {
     return cached;

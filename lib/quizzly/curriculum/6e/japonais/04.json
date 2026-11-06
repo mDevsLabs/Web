@@ -1,0 +1,2673 @@
+{
+  "id": "6e-japonais-04",
+  "year": "6e",
+  "subject": "japonais",
+  "title": "La grammaire du japonais",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Pas d'articles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur les articles en japonais sont vraies ?",
+              "options": [
+                "Le japonais n'utilise pas « le » ou « un » comme en français.",
+                "On traduit parfois « the » en anglais, mais ce n'est pas un mot japonais.",
+                "Le mot は (wa) signifie « le ».",
+                "Chaque nom japonais doit être précédé d'un article."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le japonais n'a pas d'articles définis ou indéfinis ; は marque le thème, pas « le »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « livre » sans article en japonais ?",
+              "options": [
+                "ほん (hon)",
+                "のほん (no hon)",
+                "ほんは (hon wa)",
+                "一ほん (ippon)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ほん (hon) suffit ; aucun article n'est obligatoire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En français on dit « un chat ». En japonais on dit plutôt :",
+              "options": [
+                "ねこ (neko)",
+                "un neko",
+                "のねこ (no neko)",
+                "ねこです (neko desu) seulement si c'est une phrase complète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nom seul ねこ correspond à « chat / un chat / le chat » selon le contexte."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La particule は (wa) sert surtout à :",
+              "options": [
+                "indiquer le thème de la phrase",
+                "remplacer l'article « la »",
+                "marquer le pluriel",
+                "rendre un nom féminin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "は indique « quant à… », le sujet dont on parle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans わたしは (watashi wa), は marque :",
+              "options": [
+                "わたし comme thème (« quant à moi »)",
+                "わたし comme objet direct",
+                "une question",
+                "le passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "わたしは présente « moi » comme thème de la phrase."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour « l'école », en japonais on emploie souvent :",
+              "options": [
+                "がっこう (gakkou)",
+                "la gakkou",
+                "がっこうの (gakkou no) comme article",
+                "がっこうを (gakkou o) pour dire « l'école » seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "がっこう seul ; le contexte ou は précise « l' » en français."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le français « des pommes » sans article équivalent se dit :",
+              "options": [
+                "りんご (ringo)",
+                "des ringo",
+                "りんごたち (ringo-tachi) toujours",
+                "のりんご (no ringo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "りんご peut vouloir dire pomme(s) ; le pluriel n'est pas obligatoire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase montre qu'il n'y a pas d'article ?",
+              "options": [
+                "いぬ (inu) = chien",
+                "le inu en japonais",
+                "un inu obligatoire",
+                "inu le mot français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "いぬ est juste le nom, sans article devant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si tu vois さくら (sakura), tu peux traduire par :",
+              "options": [
+                "cerisier / le cerisier / un cerisier selon la phrase",
+                "toujours « le cerisier »",
+                "toujours « un cerisier »",
+                "impossible sans article japonais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La traduction française ajoute parfois un article ; le japonais non."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En 6e, retenir sur les articles :",
+              "options": [
+                "le japonais s'en passe ; は ≠ « le »",
+                "は = le",
+                "on ajoute の devant chaque nom",
+                "comme en français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas d'articles ; は = thème de la phrase."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "は (wa) thème",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Que fait la particule は (wa) ? (deux réponses)",
+              "options": [
+                "Elle marque le thème dont on parle.",
+                "Elle se lit « wa » même s'il s'écrit は.",
+                "Elle remplace です.",
+                "Elle rend le verbe négatif."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "は = particule de thème ; en lecture hiragana は vaut wa ici."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans これは ほん です (kore wa hon desu) :",
+              "options": [
+                "これは = « quant à ceci »",
+                "は se lit « ha » toujours",
+                "ほん est le verbe",
+                "です est négatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "これは présente « ceci » ; です = « c'est »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "わたしは がくせい です (watashi wa gakusei desu) signifie :",
+              "options": [
+                "Je suis élève.",
+                "Je ne suis pas élève.",
+                "Tu es élève.",
+                "L'élève suis je."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moi (thème) + élève + です = je suis élève."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Où place-t-on は en général ?",
+              "options": [
+                "Après le mot thème",
+                "Avant le mot thème",
+                "À la fin de la phrase",
+                "Deux fois obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot thème + は + reste de la phrase."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "は est-elle un article ?",
+              "options": [
+                "Non",
+                "Oui, défini",
+                "Oui, indéfin",
+                "Oui, partitif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une particule de thème, pas un article."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "あれは いぬ です (are wa inu desu) :",
+              "options": [
+                "C'est un chien (là-bas).",
+                "Ce n'est pas un chien.",
+                "C'est un chat.",
+                "Question : chien ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あれ = cela là-bas ; phrase affirmative avec です."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sans は, わたし がくせい です est :",
+              "options": [
+                "Moins naturel en phrase simple ; は aide à structurer",
+                "Interdit",
+                "Signifie « tu »",
+                "Toujours faux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En débutant, わたしは… est le modèle le plus clair."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le thème marqué par は :",
+              "options": [
+                "Peut être traduit par un article en français selon contexte",
+                "Est toujours « le »",
+                "Est toujours « un »",
+                "N'existe pas en français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le français ajoute parfois « le/la » ; le japonais marque le thème avec は."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "は s'écrit avec le hiragana :",
+              "options": ["は", "わ", "が", "を"],
+              "correctAnswers": [0],
+              "explanation": "Même caractère que ha, lu wa comme particule."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une leçon 6e, は sert à :",
+              "options": [
+                "Dire « quant à X… »",
+                "Conjuguer au passé",
+                "Former le pluriel",
+                "Remplacer 私"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rôle principal : particule de thème."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Accords en français vs japonais",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Différences d'« accord » français / japonais (deux vraies) :",
+              "options": [
+                "En japonais, les adjectifs ne s'accordent pas en genre avec le nom.",
+                "En japonais, le nom ne change pas au pluriel comme « chat → chats ».",
+                "En japonais, chaque adjectif prend -e au féminin.",
+                "Le japonais a trois genres."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pas d'accord en genre ; pluriel souvent implicite."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「大きい いぬ」(ookii inu) : l'adjectif 大きい",
+              "options": [
+                "Reste 大きい que le chien soit « gros » pour un ou plusieurs sens",
+                "Devient 大きな pour un chien mâle",
+                "Prend -e au féminin",
+                "Disparaît au pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif en -い : forme fixe devant le nom."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En français « une grande maison ». En japonais :",
+              "options": [
+                "大きい いえ (ookii ie)",
+                "大きな une ie",
+                "grande ie accordée",
+                "いえ grandes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif + nom, sans accord de genre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les noms japonais ont-ils un genre grammatical ?",
+              "options": [
+                "Non (pas comme le/la en français)",
+                "Oui, masculin/féminin",
+                "Oui, neutre seulement",
+                "Trois genres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de genre grammatical sur les noms."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「小さい ねこ」(chiisai neko) et plusieurs chats imaginaires :",
+              "options": [
+                "On peut garder ねこ sans -s",
+                "On écrit ねこs",
+                "On change 小さい en 小さな only",
+                "On ajoute un article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pluriel se comprend par le contexte."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Contrairement au français, en japonais le verbe です :",
+              "options": [
+                "Ne s'accorde pas en personne/nombre comme « suis/es/est »",
+                "Devient desuons",
+                "Prend un -s au pluriel",
+                "Disparaît au féminin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "です reste です pour je/tu/il/elles…"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「きれいな へや」(kirei na heya) utilise :",
+              "options": [
+                "Un adjectif en -な devant le nom",
+                "Un article « la »",
+                "Un accord féminin",
+                "Le passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif きれい + particule な + nom."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour dire « c'est rouge » on apprend plutôt :",
+              "options": [
+                "あか です (aka desu) ou あかい です (akai desu) selon le modèle",
+                "rouge est",
+                "desu rouge accord",
+                "article + aka"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleur + です ; pas d'accord."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En 6e, « accord » en japonais signifie surtout :",
+              "options": [
+                "Pas d'accord nom-adjectif-verbe comme en français",
+                "Tout s'accorde en -s",
+                "Genres obligatoires",
+                "Articles accordés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Point clé : simplicité des formes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "わたし は フランスじん です : le mot フランスじん",
+              "options": [
+                "Ne change pas si c'est une fille ou un garçon",
+                "Devient フランスじんe",
+                "Prend le féminin",
+                "Exige un article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "国籍 : même forme pour tous."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Noms et particules de base",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vrai sur の (no) en 6e ? (deux réponses)",
+              "options": [
+                "の lie deux noms : « … de … ».",
+                "の n'est pas l'article « le ».",
+                "の remplace toujours は.",
+                "の signifie toujours « et »."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "の = possession/appartenance ; pas un article."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「わたし の なまえ」(watashi no namae) =",
+              "options": ["Mon nom", "Je nom", "Nom watashi", "Le nom est je"],
+              "correctAnswers": [0],
+              "explanation": "わたし + の + なまえ = nom de moi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「がっこう の せんせい」(gakkou no sensei) =",
+              "options": [
+                "Le professeur de l'école / prof de l'école",
+                "École professeur article",
+                "Professeur est école",
+                "Question école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "の relie école et professeur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sans article, « mon ami » s'approche de :",
+              "options": [
+                "わたし の ともだち (watashi no tomodachi)",
+                "mon tomodachi japonais",
+                "le watashi tomodachi",
+                "ともだち は only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possession avec の, pas « mon » mot à mot."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「これ」(kore) dans これは ペン です :",
+              "options": [
+                "Ceci / this",
+                "Article le",
+                "Négation",
+                "Professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "これ = démonstratif « ceci »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「それ」(sore) signifie :",
+              "options": [
+                "Cela (près de l'interlocuteur)",
+                "Ceci",
+                "Là-bas",
+                "Moi"
+              ],
+              "correctAnswers": [0],
+              "explanation": " série これ/それ/あれ pour proximité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un nom propre étranger en japonais :",
+              "options": [
+                "Souvent en katakana, sans article",
+                "Toujours avec le",
+                "Avec は seulement",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. フランス (Furansu) sans article."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「にほん」(Nihon) dans une phrase simple :",
+              "options": [
+                "Japon, sans article devant",
+                "Le Nihon obligatoire",
+                "Un nihon",
+                "Verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom de pays comme les autres noms."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Particule à ne pas confondre avec un article :",
+              "options": ["は (wa)", "です", "私", "か"],
+              "correctAnswers": [0],
+              "explanation": "は = thème, pas le/la."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase modèle sans article : ペン です (pen desu) peut dire :",
+              "options": [
+                "C'est un stylo / c'est le stylo (contexte)",
+                "Stylo article obligatoire",
+                "Négation",
+                "Passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom + です = identification."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Pluriel et quantité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pluriel en japonais (6e) — deux vraies :",
+              "options": [
+                "Souvent on ne change pas la forme du nom.",
+                "たち (tachi) peut marquer un groupe de personnes.",
+                "Tous les noms prennent -s.",
+                "Un article marque le pluriel."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pluriel implicite ; たち pour « et compagnie » (personnes)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「ともだち」(tomodachi) pour plusieurs amis :",
+              "options": [
+                "Peut rester ともだち",
+                "Devient tomodachis",
+                "Exige « les »",
+                "Devient ともだちは only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte ou たち si besoin explicite."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「がくせいたち」(gakusei-tachi) suggère :",
+              "options": [
+                "Les élèves (groupe)",
+                "Un seul élève",
+                "Négation",
+                "Professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "たち après nom de personne = groupe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les articles français « des chats » → japonais :",
+              "options": [
+                "ねこ (neko) suffit souvent",
+                "des neko mot",
+                "les neko obligatoire",
+                "neko le"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas d'article ni pluriel obligatoire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Compter avec doigts/objets utilise en japonais :",
+              "options": [
+                "Des compteurs (intro 6e : 一、二…)",
+                "Des articles",
+                "Accord en genre",
+                "です seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les nombres + compteurs viennent plus tard ; pas des articles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「いぬ」(inu) au sens « des chiens » :",
+              "options": [
+                "Même mot ; le contexte ou たち rarement pour animaux en 6e",
+                "Inus",
+                "Les inu article",
+                "Inu n'est jamais pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme unique du nom."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "わたしたち (watashi-tachi) =",
+              "options": ["Nous", "Je seul", "Tu", "Articles nous"],
+              "correctAnswers": [0],
+              "explanation": "わたし + たち = nous."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En grammaire 6e, le « zéro article » aide à comprendre :",
+              "options": [
+                "Qu'un nom seul peut être sujet ou objet selon particules",
+                "Qu'il faut toujours le",
+                "Que は est pluriel",
+                "Keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure : nom + particule + prédicat."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "「これら」(korera) en 6e signifie approximativement :",
+              "options": [
+                "Ceci (pluriel / ces choses-ci)",
+                "Article ces",
+                "Négation",
+                "Professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme plurielle de これ (aperçu)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Retenir : articles et pluriel",
+              "options": [
+                "Pas d'articles ; pluriel souvent implicite",
+                "Comme le français",
+                "は = pluriel",
+                "の = des"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse u1 partielle."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Adjectifs -i",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Adjectif en -い (ex. あかい akai) — deux vraies :",
+              "options": [
+                "Il se place avant le nom qu'il décrit.",
+                "Il ne s'accorde pas en genre avec le nom.",
+                "Il prend -ment en français.",
+                "Il remplace です toujours."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ordre adjectif + nom ; pas d'accord."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「あかい ほん」(akai hon) =",
+              "options": [
+                "Un livre rouge",
+                "Livre rouges accord",
+                "Rouge est livre",
+                "Négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif あかい + nom ほん."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「しろい ねこ」(shiroi neko) =",
+              "options": [
+                "Un chat blanc",
+                "Chat blanches",
+                "Blanc chat article",
+                "Chat suis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "しろい = blanc ; forme fixe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "あたらしい (atarashii) devant がっこう :",
+              "options": [
+                "Nouvelle école / nouvel école sans accord japonais",
+                "École new accordée",
+                "Article new",
+                "Passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "「新しい 学校」= école neuve/nouvelle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En phrase それは おもしろい です (omoshiroi) :",
+              "options": [
+                "C'est intéressant / amusant",
+                "Ce n'est pas intéressant",
+                "Intéressant nom",
+                "Question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif + です en prédicat."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "おおきい (ookii) signifie :",
+              "options": ["Grand", "Petit", "Beau", "Rapide"],
+              "correctAnswers": [0],
+              "explanation": "Antonyme approximatif : ちいさい."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Adjectif -い en fin de phrase avec です :",
+              "options": [
+                "おもしろい です (c'est …)",
+                "おもしろい だ seulement en 6e poli",
+                "おもしろい じゃない seule sans leçon",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme polie de base : adj + です."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "ちいさい (chiisai) + いぬ :",
+              "options": [
+                "Petit chien",
+                "Chiens petits accord",
+                "Chien articles",
+                "Chien です seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif directement avant le nom."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pas d'accord signifie pour あかい :",
+              "options": [
+                "Même forme pour ほん, ねこ, いぬ…",
+                "あかな devant ねこ",
+                "あかe",
+                "Pluriel あかいs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme あかい invariante en 6e."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "は dans その ほんは あたらしい です :",
+              "options": [
+                "Marque そのほん comme thème",
+                "Article le livre",
+                "Pluriel",
+                "Négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce livre (thème) est neuf."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Adjectifs -na",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Adjectif en -な (ex. きれい kirei) — deux vraies :",
+              "options": [
+                "Devant un nom : きれい + な + nom.",
+                "きれい です = c'est joli/propre.",
+                "On écrit きれいい devant le nom.",
+                "Il s'accorde au féminin en -e."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "な entre adjectif et nom ; です en prédicat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「しずかな へや」(shizuka na heya) =",
+              "options": [
+                "Une chambre calme",
+                "Chambre calmes",
+                "Calme est chambre seule",
+                "Article chambre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "しずか + な + へや."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「げんきな ともだち」(genki na tomodachi) =",
+              "options": [
+                "Un ami en forme / dynamique",
+                "Ami genki article",
+                "Amis toujours たち",
+                "Négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "げんき + な + ともだち."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "へやは きれい です (heya wa kirei desu) =",
+              "options": [
+                "La chambre est propre/jolie",
+                "Chambre n'est pas",
+                "Chambre question",
+                "Petite chambre nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thème へや + adjectif + です."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Devise な sert à :",
+              "options": [
+                "Lier adjectif -na et nom",
+                "Remplacer は",
+                "Marquer le passé",
+                "Article un"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pont entre adjectif et nom."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「にほんご」(Nihongo) est :",
+              "options": [
+                "Langue japonaise (nom)",
+                "Adjectif",
+                "Article",
+                "Verbe négatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom ; pas d'article."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ゆうめい (yuumei) devant nom :",
+              "options": [
+                "ゆうめいな + nom (célèbre)",
+                "ゆうめい article",
+                "ゆうめいい",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle -na : ゆうめいな 人."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Différence 6e : あかい vs きれい :",
+              "options": [
+                "-い se colle au nom ; -な insère な",
+                "Les deux prennent な",
+                "Les deux prennent -s",
+                "Articles différents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux familles d'adjectifs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "がっこうは しずか です sans な car :",
+              "options": [
+                "しずか est prédicat (après thème), pas devant nom ici",
+                "Erreur",
+                "Article",
+                "Pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "な seulement adjectif + nom."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pas d'article dans しずかな がっこう :",
+              "options": [
+                "Vrai : 学校 seul après な",
+                "Faux : le obligatoire",
+                "Faux : un en japonais",
+                "がっこう = article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure adj-na + nom."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Révision thème et noms",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Choisis deux phrases correctes sur la grammaire 6e :",
+              "options": [
+                "Le japonais n'a pas d'articles le/la/un.",
+                "は marque le thème de la phrase.",
+                "です veut dire « non ».",
+                "わたし est toujours sujet sans は."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Articles absents ; は = thème."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Traduction de これは みず です (mizu) :",
+              "options": [
+                "C'est de l'eau.",
+                "Ce n'est pas de l'eau.",
+                "C'est du feu.",
+                "Eau question ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "みず = eau ; です affirmatif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「せんせい」(sensei) dans たなかせんせい :",
+              "options": [
+                "Professeur Tanaka (nom propre + titre)",
+                "Article prof",
+                "Négation",
+                "Pluriel obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Collage nom + sensei courant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Particule interdite de confondre avec « de » français parfois :",
+              "options": [
+                "の pour possession",
+                "は pour « de » toujours",
+                "です pour « de »",
+                "か pour « de »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "の ≈ de (possession), pas article."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ordre typique phrase simple :",
+              "options": [
+                "Thème + は + complément + です",
+                "です + sujet + verbe français",
+                "Article + nom",
+                "Verbe en premier toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle copule です en fin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「ほん」(hon) peut être traduit :",
+              "options": [
+                "Livre / un livre / des livres (contexte)",
+                "Toujours les livres",
+                "Jamais pluriel français",
+                "Avec le seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traduction française variable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "わたしは 12さい です (sai) introduit :",
+              "options": [
+                "Âge sans « ans » accordé au japonais",
+                "Article ans",
+                "Pluriel さいs",
+                "Négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nombre + さい + です."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Keigo en 6e :",
+              "options": [
+                "On ne l'étudie pas ici",
+                "Obligatoire partout",
+                "Remplace です",
+                "Est un article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Registre poli simple seulement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "「ペン」(pen) emprunté s'écrit en :",
+              "options": [
+                "Katakana ペン",
+                "Hiragana seulement",
+                "Avec article ペンle",
+                "Kanji obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emprunts étrangers → katakana."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Synthèse : articles",
+              "options": [
+                "Aucun mot japonais = le/la/un",
+                "は = le",
+                "の = un",
+                "です = the"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rappel central de l'unité."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Mélange u1",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux bonnes réponses :",
+              "options": [
+                "わたし = je (mot de base).",
+                "じゃない rend la phrase négative (aperçu lié u2).",
+                "は se lit toujours ha.",
+                "Le japonais a le/la."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "わたし ; négation じゃない (lien phrases)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "あれは つくえ じゃない です (tsukue) =",
+              "options": [
+                "Ce n'est pas un bureau.",
+                "C'est un bureau.",
+                "C'est une chaise.",
+                "Bureau question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "つくえ = bureau ; じゃない négation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sans article, « la maison » →",
+              "options": [
+                "いえ (ie) ou いえは selon phrase",
+                "la ie",
+                "un ie obligatoire",
+                "ie le"
+              ],
+              "correctAnswers": [0],
+              "explanation": "いえ seul ; は si thème."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「ふじさん」(Fujisan) :",
+              "options": [
+                "Mont Fuji, nom sans article",
+                "Le fuji article",
+                "Adjectif",
+                "Verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom propre / lieu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "たかい (takai) + やま (yama) :",
+              "options": [
+                "Haute montagne / montagne haute",
+                "Montagnes hautes accordées",
+                "Article mont",
+                "Négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif -i + nom."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "がくせいは 日本人 じゃない です possible si :",
+              "options": [
+                "L'élève n'est pas japonais",
+                "Toujours vrai",
+                "Article 日本人",
+                "Keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation avec じゃない です."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "は après わたし sert à :",
+              "options": [
+                "Présenter « moi » comme sujet/thème",
+                "Article je",
+                "Pluriel",
+                "Passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "わたしは… = quant à moi…"
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「ともだち」(tomodachi) : pas de genre, donc :",
+              "options": [
+                "Même mot pour ami/amie",
+                "TomodachiF",
+                "Article amie",
+                "Deux mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de genre grammatical."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "これ + は + nom + です sert à :",
+              "options": [
+                "Identifier « ceci est … »",
+                "Nier",
+                "Question sans か",
+                "Article ceci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase d'identification."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Point clé u1 :",
+              "options": [
+                "Pas d'articles ; は et の ont d'autres rôles",
+                "Copier le français",
+                "Keigo",
+                "Accord -s"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Message principal de l'unité."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse u1",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour valider « Accords et articles » (deux réponses) :",
+              "options": [
+                "Le japonais évite le/la/un ; le contexte français les ajoute à la traduction.",
+                "Les adjectifs ne s'accordent pas en genre.",
+                "は = article défini.",
+                "です marque le pluriel."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Synthèse articles et accords."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phrase : わたしの くには さくらが あります — en 6e on retient surtout :",
+              "options": [
+                "の = de (mon pays…)",
+                "くに = article",
+                "あります = です seulement",
+                "さくら = verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "の pour possession ; reste vocabulaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le plus proche de « C'est un stylo » :",
+              "options": [
+                "これは ペン です",
+                "ペン le desu",
+                "これ ペン じゃない",
+                "はペンこれ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle これは…です."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Erreur fréquente des débutants francophones :",
+              "options": [
+                "Croire que は = « le »",
+                "Oublier です parfois",
+                "Lire wa",
+                "Utiliser hiragana"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confusion article / thème."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "しろい くるま (shiroi kuruma) — pas d'accord car :",
+              "options": [
+                "しろい reste inchangé",
+                "くるma féminin",
+                "Article blanc",
+                "Pluriel くるmas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif invariant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "がっこうは 大きい です :",
+              "options": [
+                "L'école est grande",
+                "Grande école nom seulement",
+                "Petite école",
+                "Question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thème + adjectif + です."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Traduction « mon école » :",
+              "options": [
+                "わたしの がっこう",
+                "mon gakkou japonais",
+                "がっこうわたし",
+                "le watashi gakkou"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possession avec の."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Particule de thème :",
+              "options": ["は (wa)", "です", "私", "ない"],
+              "correctAnswers": [0],
+              "explanation": "Rappel は."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En japonais, « les chats » sans -s :",
+              "options": [
+                "ねこ contexte pluriel",
+                "ねこs",
+                "les neko",
+                "ねこは only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel implicite."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Fin u1 — tu peux expliquer à un camarade :",
+              "options": [
+                "Pas d'articles ; は = thème ; pas d'accords comme en français",
+                "Copier l'anglais the",
+                "Tout mettre au passé",
+                "Keigo partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan unité 1."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "です affirmatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur です (desu) — deux vraies :",
+              "options": [
+                "です termine une phrase polie « c'est / je suis… ».",
+                "です ne s'accorde pas en personne.",
+                "です signifie toujours « non ».",
+                "です remplace tout nom."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Copule polie ; forme unique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "わたしは がくせい です =",
+              "options": [
+                "Je suis élève.",
+                "Je ne suis pas élève.",
+                "Tu es élève.",
+                "Suis je élève ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Affirmation avec です."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "これは ねこ です =",
+              "options": [
+                "C'est un chat.",
+                "Ce n'est pas un chat.",
+                "C'est un chien.",
+                "Chat suis ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "これ = ceci ; ねこ = chat."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "です se place :",
+              "options": [
+                "En fin de phrase (souvent)",
+                "Au début seulement",
+                "Avant は",
+                "Deux fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Copule en fin de prédicat."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "あなたは せんせい です (anata) en classe 6e :",
+              "options": [
+                "Tu es professeur (registre simple, pas keigo)",
+                "Vous honorifique",
+                "Je suis prof",
+                "Négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase simple sans keigo."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "ペン です seul peut dire :",
+              "options": [
+                "C'est un stylo.",
+                "Stylo question",
+                "Pas stylo",
+                "Je stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identification courte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "さむい です (samui) =",
+              "options": [
+                "Il fait froid / j'ai froid (contexte)",
+                "Chaud",
+                "Beau",
+                "Négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif + です."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "です équivalent approximatif français :",
+              "options": [
+                "« être » (est/sont/c'est)",
+                "« avoir » toujours",
+                "« ne…pas »",
+                "Article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Copule du japonais débutant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "それは ほん です =",
+              "options": [
+                "C'est un livre.",
+                "Livre n'est pas",
+                "C'est de l'eau",
+                "Livre ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "それ = cela."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avec 私 (watashi) on dit plutôt en hiragana :",
+              "options": [
+                "わたし",
+                "ワタシ seulement katakana",
+                "私は toujours kanji obligatoire en quiz",
+                "watashi desu français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture courante わたし."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "じゃない négatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Négation 6e — deux vraies :",
+              "options": [
+                "じゃない です = ce n'est pas / je ne suis pas (poli simple).",
+                "じゃない se place avant です.",
+                "じゃない = oui.",
+                "じゃない remplace は."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Modèle nom/adj + じゃない です."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "わたしは せんせい じゃない です =",
+              "options": [
+                "Je ne suis pas professeur.",
+                "Je suis professeur.",
+                "Tu n'es pas prof.",
+                "Professeur suis."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation de です."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "これは ペン じゃない です =",
+              "options": [
+                "Ce n'est pas un stylo.",
+                "C'est un stylo.",
+                "Stylo question",
+                "C'est un livre forcément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation identité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Affirmatif → négatif : がくせい です →",
+              "options": [
+                "がくせい じゃない です",
+                "がくせい です ない",
+                "じゃない がくせい です",
+                "がくせい ではありません seulement 6e"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme enseignée en 6e."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "おもしろい じゃない です =",
+              "options": [
+                "Ce n'est pas intéressant.",
+                "C'est intéressant.",
+                "Très intéressant",
+                "Question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif -i négatif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "あれは いぬ じゃない です =",
+              "options": [
+                "Ce n'est pas un chien.",
+                "C'est un chien.",
+                "Chien là",
+                "Chien ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あれ + négation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "じゃない sans です en classe :",
+              "options": [
+                "On apprend surtout じゃない です (poli)",
+                "Toujours impoli seul",
+                "Interdit",
+                "Keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Registre poli de base."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "きれい じゃない です =",
+              "options": [
+                "Ce n'est pas propre/joli.",
+                "C'est joli.",
+                "Joli question",
+                "Grand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif -na en négatif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "わたしは 12さい じゃない です =",
+              "options": [
+                "Je n'ai pas 12 ans.",
+                "J'ai 12 ans.",
+                "Tu as 12 ans.",
+                "12 ans question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nier l'âge."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Opposé de です affirmatif :",
+              "options": ["じゃない です", "です です", "は です", "か です"],
+              "correctAnswers": [0],
+              "explanation": "Paire de base."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "私 watashi",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "わたし (watashi) — deux vraies :",
+              "options": [
+                "Signifie « je / moi ».",
+                "Avec は : わたしは = quant à moi…",
+                "Est keigo honorifique.",
+                "Remplace です."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pronom de base ; thème avec は."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Kanji de « je » appris :",
+              "options": ["私", "僕 seulement 6e", "あなた", "彼"],
+              "correctAnswers": [0],
+              "explanation": "私 lu watashi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "わたしは マリア です =",
+              "options": [
+                "Je suis Maria.",
+                "Tu es Maria.",
+                "Maria est toi",
+                "Je ne suis pas Maria"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation nom."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "わたしの なまえは… =",
+              "options": [
+                "Mon nom est…",
+                "Ton nom",
+                "Nom article",
+                "Je nom desu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "の possession + は thème."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "わたしは フランスじん です =",
+              "options": [
+                "Je suis français(e).",
+                "Tu es français.",
+                "France est",
+                "Négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nationalité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "わたし じゃない です (sans nom) peut nier :",
+              "options": [
+                "« Ce n'est pas moi » (contexte)",
+                "Toujours je ne suis pas élève",
+                "Tu",
+                "Keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation d'identité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En phrase simple, わたし est :",
+              "options": ["Le pronom « je »", "Article", "Verbe", "Question"],
+              "correctAnswers": [0],
+              "explanation": "Pronom personnel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "わたしは + adjectif + です ex. げんき です :",
+              "options": [
+                "Je vais bien / je suis en forme.",
+                "Tu es en forme.",
+                "Négation",
+                "Passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "État avec adjectif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "On évite en 6e :",
+              "options": ["Formules keigo pour « je »", "わたし", "です", "は"],
+              "correctAnswers": [0],
+              "explanation": "Pas de registre honorifique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "わたしは がくせい じゃない です =",
+              "options": [
+                "Je ne suis pas élève.",
+                "Je suis élève.",
+                "Élève suis je",
+                "Question élève"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation métier/statut."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Ordre des mots",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Ordre en japonais simple — deux vraies :",
+              "options": [
+                "Le verbe/copule (です) vient en fin.",
+                "Thème + は + reste + です est un modèle.",
+                "Identique au français toujours.",
+                "です en premier obligatoire."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "SOV/copule finale ; modèle は."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Français « Je suis élève » → japonais :",
+              "options": [
+                "わたしは がくせい です",
+                "です わたし がくせい",
+                "がくせい わたし は",
+                "Je suis gakusei mot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thème-prédicat-copule."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「がくせい です わたしは」 est :",
+              "options": [
+                "Ordre incorrect pour phrase simple",
+                "Parfait",
+                "Question",
+                "Keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "です en fin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Adjectif + nom : あかい ペン",
+              "options": [
+                "Adjectif avant le nom",
+                "Nom avant adjectif comme rare français",
+                "Article entre",
+                "Verbe milieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif précède le nom."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "これは あおい です (aoi) =",
+              "options": [
+                "C'est bleu.",
+                "Bleu nom seulement",
+                "Ce n'est pas bleu",
+                "Bleu question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleur en prédicat."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "わたしは + lieu + です ex. にほん =",
+              "options": [
+                "Je suis au Japon / japonais selon mot",
+                "Japon suis",
+                "Tu Japon",
+                "Négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte vocabulaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Particule は position :",
+              "options": [
+                "Juste après le mot thème",
+                "Fin phrase",
+                "Avant です seule",
+                "Début phrase toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot + は."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase négative ordre :",
+              "options": [
+                "… じゃない です en fin",
+                "じゃない en début seul",
+                "です じゃない わたし",
+                "は じゃない です わたし"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation avant copule finale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "「school I am» en mots anglais mal ordonnés ≈",
+              "options": [
+                "Erreur comme です avant わたし",
+                "Correct japonais",
+                "Keigo",
+                "Article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre compte."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Modèle le plus sûr 6e :",
+              "options": [
+                "[Thème] は [complément] です",
+                "[Complément] [Thème] です",
+                "です [Thème] は",
+                "Sans は toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma à mémoriser."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Questions avec か",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "か (ka) en fin de phrase — deux vraies :",
+              "options": [
+                "Marque une question.",
+                "Remplace le « ? » français en écriture.",
+                "Signifie « non ».",
+                "Remplace です toujours."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Particule interrogative finale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "これは ペン です か。= ",
+              "options": [
+                "Est-ce un stylo ?",
+                "C'est un stylo.",
+                "Ce n'est pas un stylo.",
+                "Stylo !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "です + か = question."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "あなたは がくせい です か。= ",
+              "options": [
+                "Es-tu élève ?",
+                "Je suis élève.",
+                "Tu n'es pas élève.",
+                "Professeur ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question sur statut."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "わたしは せんせい です か。= ",
+              "options": [
+                "Suis-je professeur ? / Est-ce que je suis prof ?",
+                "Je suis prof.",
+                "Tu es prof.",
+                "Négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question avec わたし."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "か se place :",
+              "options": [
+                "Après です (souvent)",
+                "Au début",
+                "Avant は",
+                "Deux fois obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "…ですか。"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réponse oui (6e) :",
+              "options": [
+                "はい (hai)",
+                "いいえ seulement pour oui",
+                "か",
+                "です"
+              ],
+              "correctAnswers": [0],
+              "explanation": "はい = oui."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réponse non (6e) :",
+              "options": ["いいえ (iie)", "はい", "じゃない seule", "わたし"],
+              "correctAnswers": [0],
+              "explanation": "いいえ = non."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "それは ほん じゃない です か。= ",
+              "options": [
+                "N'est-ce pas un livre ? / Ce n'est pas un livre ?",
+                "C'est un livre.",
+                "Livre oui",
+                "Livre keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question négative possible."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sans か, これは みず です reste :",
+              "options": [
+                "Affirmation",
+                "Question obligatoire",
+                "Négation",
+                "Keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "か transforme en question."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Intonation seule sans か en 6e :",
+              "options": [
+                "On apprend surtout avec か à l'écrit",
+                "Interdit parler",
+                "Keigo",
+                "Article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Focus écrit ですか."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Phrases modèles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases modèles correctes :",
+              "options": [
+                "X は Y です.",
+                "X は Y じゃない です.",
+                "X です は Y.",
+                "Y じゃない X です は."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Affirmatif et négatif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Présentation :",
+              "options": [
+                "わたしは … です",
+                "です わたし …",
+                "… は わたし です seulement inverse",
+                "Keigo … でございます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle présentation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Identification objet :",
+              "options": [
+                "これは … です",
+                "… は これ です seulement",
+                "これ です は",
+                "… じゃない これ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ceci est…"
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "わたしは 14さい です =",
+              "options": [
+                "J'ai 14 ans.",
+                "Tu as 14 ans.",
+                "14 ans question",
+                "Je 14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Âge + さい."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "あなたは だれ です か (dare) =",
+              "options": [
+                "Qui es-tu ?",
+                "Je suis qui",
+                "Tu n'es pas qui",
+                "Keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "だれ = qui."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "これは なん です か (nan) =",
+              "options": [
+                "Qu'est-ce que c'est ?",
+                "C'est ceci.",
+                "Ce n'est rien",
+                "Négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "なん = quoi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "さむい です → négatif :",
+              "options": [
+                "さむい じゃない です",
+                "さむい です ない",
+                "じゃない さむい",
+                "さむくない です (hors 6e focus)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme enseignée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "がっこうは たのしい です =",
+              "options": [
+                "L'école est amusante/agréable.",
+                "École triste",
+                "Question",
+                "Keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif -i prédicat."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase complète minimale polie :",
+              "options": [
+                "Nom/adj + です",
+                "です seul = phrase longue",
+                "は seul",
+                "か seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Copule nécessaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Erreur : oublier です dans わたしは がくせい",
+              "options": [
+                "Phrase incomplète en registre poli appris",
+                "Correct",
+                "Keigo",
+                "Article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "です marque politesse de base."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Vocabulaire et です",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vocab + grammaire — deux vraies :",
+              "options": [
+                "いぬ です = c'est un chien.",
+                "みず じゃない です = ce n'est pas de l'eau.",
+                "すべての mots prennent le.",
+                "です devient desuwa."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nom + copule/négation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「とけい」(tokei) です =",
+              "options": [
+                "C'est une montre.",
+                "C'est une horloge/montre.",
+                "C'est un livre.",
+                "Négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "とけい = montre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「つくえ」(tsukue) じゃない です =",
+              "options": [
+                "Ce n'est pas un bureau.",
+                "C'est un bureau.",
+                "Bureau question",
+                "Chaise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation nom."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「いす」(isu) は あかい です =",
+              "options": [
+                "La chaise est rouge.",
+                "Chaise bleue",
+                "Ce n'est pas rouge",
+                "Chaise question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thème + couleur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「えき」(eki) です dans ここは えき です =",
+              "options": [
+                "Ici c'est la gare.",
+                "Gare n'est pas",
+                "Bus",
+                "Question gare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ここ = ici."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「てがみ」(tegami) = lettre ; phrase :",
+              "options": [
+                "これは てがみ です",
+                "てがami le",
+                "てがみ じゃない です か seulement négatif",
+                "Keigo tegami"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identification."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「やさい」(yasai) です =",
+              "options": [
+                "Ce sont des légumes / c'est un légume.",
+                "Viande",
+                "Négation",
+                "Boisson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "yasai = légume(s)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「パン」(pan) です =",
+              "options": ["C'est du pain.", "Riz", "Eau", "Chat"],
+              "correctAnswers": [0],
+              "explanation": "Emprunt katakana."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "「ともだち」(tomodachi) です =",
+              "options": [
+                "C'est un ami / ce sont des amis (contexte).",
+                "Professeur",
+                "École",
+                "Stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom relation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Même grammaire pour ねこ et ペン :",
+              "options": [
+                "Nom + です / じゃない です",
+                "Articles différents",
+                "Verbes différents obligatoires",
+                "Keigo ねこ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Copule identique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Affirmatif vs négatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Contraste — deux paires justes :",
+              "options": [
+                "… です = affirmation.",
+                "… じゃない です = négation.",
+                "… です = négation.",
+                "… じゃない = affirmation seule polie."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux formes de base."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Affirmatif : それは つくえ です. Négatif :",
+              "options": [
+                "それは つくえ じゃない です",
+                "それは つくえ です じゃない",
+                "じゃない それ つくえ",
+                "つくえ です それ は"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même thème, négation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "わたしは げんき です ↔ négatif :",
+              "options": [
+                "わたしは げんき じゃない です",
+                "わたし げんき です",
+                "げんki わたし",
+                "Keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nier « en forme »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "これは ペン です。Vrai si c'est un stylo. Faux →",
+              "options": [
+                "これは ペン じゃない です",
+                "これ ペン",
+                "ペン です か seulement",
+                "はい"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Correction négative."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "あかい です ↔",
+              "options": [
+                "あかい じゃない です",
+                "あか です",
+                "あかい です か seulement",
+                "しろい です = négatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleur négative."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Question : ペン です か。 Réponse non :",
+              "options": [
+                "いいえ、ペン じゃない です",
+                "はい、じゃない",
+                "か",
+                "です"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse polie type."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "じゃない です contient :",
+              "options": [
+                "じゃない (négation) + です (politesse)",
+                "Article",
+                "Passé",
+                "Pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure morphologique simple."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "がくせい です / がくせい じゃない です — même sujet avec は :",
+              "options": [
+                "わたしは がくせい です / わたしは がくせい じゃない です",
+                "がくせい は わたし です inverse obligatoire",
+                "Keigo",
+                "Article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parallèle affirmatif/négatif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ce n'est PAS keigo :",
+              "options": [
+                "じゃない です",
+                "でございます",
+                "いらっしゃい",
+                "おっしゃる"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Registre courant 6e."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Signal mot négation 6e :",
+              "options": ["じゃない", "は", "か", "の"],
+              "correctAnswers": [0],
+              "explanation": "Marqueur appris."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Mélange u2",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases simples — deux vraies :",
+              "options": [
+                "わたしは … です = je suis…",
+                "… です か = question.",
+                "です = particule thème.",
+                "私 se lit always watashi en kanji seul sans apprendre."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Modèle sujet et question."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "わたしは マリア。です oublié → en poli :",
+              "options": [
+                "Incomplet ; ajouter です",
+                "Parfait",
+                "Keigo",
+                "Article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "です attendu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "これは なん です か。 Réponse : これは ペン です =",
+              "options": [
+                "C'est un stylo.",
+                "Qu'est-ce que c'est ?",
+                "Non",
+                "Question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse affirmative."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "あなたは フランスじん です か。 はい →",
+              "options": [
+                "Tu es français(e).",
+                "Tu n'es pas français.",
+                "Je suis français.",
+                "Keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confirmation question."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "しずか じゃない です =",
+              "options": [
+                "Ce n'est pas calme.",
+                "C'est calme.",
+                "Calme question",
+                "Grand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation adjectif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ordre : わたしは ともだち です =",
+              "options": [
+                "Je suis ami / j'ai un contexte « je suis un ami » selon cours",
+                "Ami je",
+                "Tu es ami",
+                "Négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure standard."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "は dans phrase simple indique :",
+              "options": ["Thème", "Article le", "Question", "Passé"],
+              "correctAnswers": [0],
+              "explanation": "Rappel u1/u2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Transcription です :",
+              "options": ["desu", "de-su article", "dasu", "jai"],
+              "correctAnswers": [0],
+              "explanation": "Lecture romaji courante."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "わたしは 12さい じゃない です か。 sens :",
+              "options": [
+                "Est-ce que je n'ai pas 12 ans ? / Je n'ai pas 12 ans ?",
+                "J'ai 12 ans affirmatif",
+                "Keigo",
+                "Article 12"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question/négation combinées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans keigo, salutation phrase 6e apprise ailleurs + grammaire :",
+              "options": [
+                "こんにちは (salut) ≠ particule は thème",
+                "Même fonction",
+                "Keigo",
+                "Article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "は dans こんにちは = wa salutation."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse u2",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bilan « Phrases simples » — deux réponses :",
+              "options": [
+                "Modèle X は Y です / じゃない です.",
+                "か en fin pour question.",
+                "Articles obligatoires.",
+                "Keigo requis en 6e."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Structures cœur u2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Présente-toi en japonais 6e :",
+              "options": [
+                "わたしは [nom] です",
+                "[nom] わたし desu français",
+                "です わたし",
+                "Keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Auto-présentation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Nier « c'est un chat » :",
+              "options": [
+                "これは ねこ じゃない です",
+                "これ ねこ です",
+                "ねこ は これ",
+                "か ねこ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation modèle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Demander « Est-ce un livre ? » :",
+              "options": [
+                "これは ほん です か",
+                "ほん です これ か inverse seule",
+                "じゃない ほん",
+                "Keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question ですか."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "わたし (hiragana) = kanji :",
+              "options": ["私", "僕", "あなた", "彼女"],
+              "correctAnswers": [0],
+              "explanation": "Équivalence appris."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "です vs じゃない です :",
+              "options": [
+                "Affirmatif vs négatif",
+                "Passé vs futur",
+                "Pluriel vs singulier",
+                "Keigo vs familier seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opposition principale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase : あれは 学校 じゃない です =",
+              "options": [
+                "Ce n'est pas une école (là-bas).",
+                "C'est une école.",
+                "École question",
+                "Je école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あれ + négation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En 6e on évite :",
+              "options": ["Formules keigo complexes", "です", "わたし", "は"],
+              "correctAnswers": [0],
+              "explanation": "Consigne niveau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Copule polie de base :",
+              "options": ["です", "だ seulement en 6e poli", "ます", "ある"],
+              "correctAnswers": [0],
+              "explanation": "です en premier registre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tu maîtrises u2 si tu peux dire :",
+              "options": [
+                "わたしは … です / じゃない です et … です か",
+                "Seulement des mots sans です",
+                "Articles le/la",
+                "Keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif unité 2."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

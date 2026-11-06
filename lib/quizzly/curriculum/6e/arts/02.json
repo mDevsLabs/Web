@@ -1,0 +1,2688 @@
+{
+  "id": "6e-arts-02",
+  "year": "6e",
+  "subject": "arts",
+  "title": "Éducation musicale — le rythme",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "La pulsation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Qu'est-ce que la pulsation ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces éléments, lesquels décrivent bien la pulsation en musique ?",
+              "options": [
+                "Un battement régulier qui structure le temps",
+                "La hauteur des notes uniquement",
+                "Une succession régulière d'instants forts et faibles",
+                "Le volume du son seulement"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La pulsation est le « tic-tac » régulier du temps musical ; elle se ressent par des accents plus ou moins marqués."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment peut-on ressentir la pulsation sans instrument ?",
+              "options": [
+                "En fermant les yeux seulement",
+                "En tapant du pied ou des mains de façon régulière",
+                "En parlant très vite",
+                "En changeant de place dans la classe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le corps (pied, mains, tête) aide à internaliser un tempo stable avant de lire une partition."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La pulsation est surtout…",
+              "options": [
+                "Irrégulière et imprévisible",
+                "Régulière comme un métronome ou un cœur qui bat",
+                "Absente dans la musique classique",
+                "Identique au texte d'une chanson"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Même si le rythme varie, la pulsation sous-jacente reste généralement régulière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le tempo désigne…",
+              "options": [
+                "La couleur d'un instrument",
+                "La vitesse de la pulsation",
+                "Le nombre de musiciens",
+                "Le type de silence"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tempo = rapidité du beat ; lent ou rapide, la pulsation peut accélérer ou ralentir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un tempo lent évoque plutôt…",
+              "options": [
+                "Une course effrénée",
+                "Une marche calme ou une berceuse",
+                "Un orage",
+                "Un sifflement aigu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les tempos lents (lento, adagio) suggèrent souvent le calme ou la gravité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un tempo rapide évoque plutôt…",
+              "options": [
+                "Un sommeil profond",
+                "De l'énergie, de la joie ou de l'agitation",
+                "L'absence de pulsation",
+                "Un seul son tenu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Allegro, presto… des tempos vifs dynamisent la musique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La pulsation se distingue de la mélodie car…",
+              "options": [
+                "La mélodie est la suite de hauteurs ; la pulsation marque le temps",
+                "Ce sont deux mots pour la même chose",
+                "La pulsation ne s'entend jamais",
+                "La mélodie n'existe qu'au piano"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mélodie = lignes de notes ; pulsation = grille temporelle sur laquelle elles s'appuient."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour garder la pulsation en groupe, il faut…",
+              "options": [
+                "Chacun son propre tempo",
+                "S'écouter et rester synchronisés",
+                "Ne jamais regarder le chef ou le métronome",
+                "Jouer toujours plus fort"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En classe ou en orchestre, l'alignement sur une même pulsation est essentiel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un métronome sert à…",
+              "options": [
+                "Accorder les instruments",
+                "Indiquer et stabiliser un tempo",
+                "Écrire les paroles",
+                "Mesurer la longueur d'une salle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le métronome émet des clics réguliers correspondant à la pulsation choisie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans pulsation claire, une musique peut sembler…",
+              "options": [
+                "Toujours plus facile à danser",
+                "Flottante ou désorientée dans le temps",
+                "Impossible à écouter",
+                "Dépourvue de hauteur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Même en musique libre, repérer ou sentir un temps aide à structurer l'écoute."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Tempo lent et tempo rapide",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes ou idées sont liés à un tempo lent ?",
+              "options": [
+                "Lent, calme, adagio (idée générale)",
+                "Presto, très vite",
+                "Ralenti, espacement des battements",
+                "Staccato systématique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "En 6e, on retient surtout l'idée de lenteur et de battements plus espacés ; adagio est un exemple courant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si la pulsation accélère, le tempo…",
+              "options": [
+                "Diminue",
+                "Augmente",
+                "Disparaît",
+                "Devient une mesure"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Plus de pulsations par minute = tempo plus rapide."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une berceuse utilise en général un tempo…",
+              "options": [
+                "Très rapide",
+                "Modéré à lent",
+                "Impossible à deviner",
+                "Sans pulsation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le bercement rythmique repose sur une pulsation douce et lente."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une marche militaire évoque plutôt un tempo…",
+              "options": [
+                "Très lent",
+                "Régulier et soutenu",
+                "Aléatoire",
+                "Un seul coup"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La marche impose un tempo stable, souvent ni trop lent ni extrêmement rapide."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comparer deux enregistrements, on parle de tempo quand on compare…",
+              "options": [
+                "Les couleurs des pochettes",
+                "La vitesse des battements",
+                "Le nombre de silences seulement",
+                "La taille de la salle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Même mélodie jouée plus vite ou plus lentement = changement de tempo."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ralentir le tempo, c'est…",
+              "options": [
+                "Espacer les pulsations",
+                "Supprimer la mesure",
+                "Jouer plus de notes par seconde sans lien",
+                "Augmenter le volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de battements par unité de temps = tempo plus lent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Accélérer le tempo, c'est…",
+              "options": [
+                "Rapprocher les pulsations",
+                "Effacer le rythme",
+                "Ne jouer que des silences",
+                "Changer uniquement la tonalité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les instants forts arrivent plus fréquemment."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le tempo peut changer au cours d'une œuvre : on dit qu'il y a…",
+              "options": [
+                "Un changement de tempo (accélération ou ralentissement)",
+                "Une impossibilité musicale",
+                "Suppression de la pulsation à vie",
+                "Uniquement un changement de paroles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ritardando, accelerando… le tempo n'est pas toujours fixe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour décrire un tempo en classe, on peut dire…",
+              "options": [
+                "« Rapide comme un sprint » ou « Lent comme une promenade »",
+                "« Bleu comme le ciel »",
+                "« Carré comme une table » uniquement",
+                "Rien, le tempo n'existe pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les métaphores corporelles aident à mémoriser lent vs rapide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tempo et pulsation sont liés : le tempo précise…",
+              "options": [
+                "À quelle vitesse bat la pulsation",
+                "La forme du pupitre",
+                "Le prix du concert",
+                "La nationalité du compositeur seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pulsation = battements ; tempo = leur vitesse."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Battre la mesure avec la pulsation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quand on « bat la mesure », on combine souvent…",
+              "options": [
+                "La pulsation régulière",
+                "Un dessin au crayon",
+                "Des gestes du chef (fort/faible)",
+                "La température de la salle"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Battre la mesure = marquer la pulsation en montrant où sont les temps forts dans la mesure."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le premier temps d'une mesure est souvent…",
+              "options": [
+                "Le plus faible",
+                "Le plus accentué (temps fort)",
+                "Silencieux obligatoirement",
+                "Hors pulsation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En 2/4, 3/4 ou 4/4, le temps 1 porte généralement l'accent principal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Battre la mesure en 4/4, un geste courant est…",
+              "options": [
+                "Fort-faible-moyen-faible",
+                "Un seul coup par minute",
+                "Sans aucune régularité",
+                "Uniquement des silences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pattern classique : accent sur 1, plus léger sur 2, 3, 4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La pulsation aide à…",
+              "options": [
+                "Placer les temps dans la mesure",
+                "Choisir la couleur des chaises",
+                "Compter les pages d'un livre",
+                "Régler la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans pulsation stable, difficile de savoir où on est dans la mesure."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En classe, taper « 1-2-3-4 » en boucle, c'est…",
+              "options": [
+                "Marquer la pulsation",
+                "Jouer une gamme",
+                "Lire une clé de sol",
+                "Improviser une harmonie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compter à voix haute ancre la pulsation avant le rythme des durées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une mesure en musique correspond à…",
+              "options": [
+                "Un groupe de temps délimité par des barres",
+                "Un instrument",
+                "Un genre de silence uniquement",
+                "La vitesse du bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mesure organise les pulsations en groupes (2, 3, 4 temps…)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les barres de mesure sur la portée…",
+              "options": [
+                "Séparent les mesures",
+                "Indiquent la hauteur des notes seulement",
+                "Remplacent le tempo",
+                "Suppriment la pulsation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque segment entre deux barres = une mesure."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si tout le monde bat la mesure différemment, le groupe…",
+              "options": [
+                "Reste parfaitement uni",
+                "Perd la synchronisation",
+                "Joue automatiquement plus vite",
+                "N'a plus de mélodie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'alignement sur la même pulsation et le même placement des accents est crucial."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La pulsation se compte en…",
+              "options": [
+                "Temps (1, 2, 3…)",
+                "Couleurs",
+                "Degrés Celsius",
+                "Lettres sans chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les numéros de temps structurent la mesure sur la pulsation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Battre la mesure prépare à…",
+              "options": [
+                "Lire et jouer des rythmes écrits",
+                "Peindre un tableau",
+                "Écrire un poème sans rime",
+                "Couper du papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une étape vers la lecture rythmique sur partition."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Pulsation et écoute",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En écoutant une chanson, repérer la pulsation, c'est…",
+              "options": [
+                "Sentir le beat régulier",
+                "Nommer chaque instrument sans écouter",
+                "Compter les temps forts avec le corps",
+                "Ignorer le tempo"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'oreille et le corps (taper, bouger) repèrent le pulse sous le rythme des notes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans beaucoup de musiques pop, la pulsation est marquée par…",
+              "options": [
+                "La grosse caisse ou la batterie",
+                "Uniquement le silence",
+                "Les paroles seules",
+                "La couverture du CD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kick/snare ou caisse claire renforcent souvent la pulsation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La pulsation peut rester stable alors que…",
+              "options": [
+                "Les rythmes des mélodies changent",
+                "La gravité disparaît",
+                "La partition n'existe pas",
+                "Le tempo n'existe jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rythme = durées variées ; pulsation = grille régulière en dessous."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fermer les yeux et taper la pulsation d'un extrait, c'est un exercice…",
+              "options": [
+                "D'écoute active",
+                "De dessin",
+                "De géographie",
+                "De cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concentrer l'attention sur le temps, pas seulement sur la mélodie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si la pulsation est difficile à entendre, on peut…",
+              "options": [
+                "Chercher la basse ou la batterie",
+                "Arrêter d'écouter",
+                "Supposer qu'il n'y en a pas toujours",
+                "Changer de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les instruments graves ou rythmiques portent souvent le pulse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Danser sur la pulsation, c'est bouger…",
+              "options": [
+                "Sur le beat principal",
+                "Sans aucun rapport avec le temps",
+                "Uniquement sur les silences",
+                "Plus lent que le tempo réel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pas ou mouvements s'alignent sur la pulsation sentie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un tempo très lent rend la pulsation…",
+              "options": [
+                "Plus espacée",
+                "Invisible obligatoirement",
+                "Identique à une noire",
+                "Hors mesure toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de battements par minute = pulse plus lent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Repérer la pulsation aide à…",
+              "options": [
+                "Entrer au bon moment en chantant",
+                "Accorder une guitare seule",
+                "Choisir un prénom",
+                "Mesurer une table"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choir et classe entrent ensemble si tout le monde sent le « un »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La pulsation n'est pas la même chose que…",
+              "options": [
+                "Le motif mélodique seul",
+                "Le temps musical en général",
+                "Un battement régulier",
+                "Le tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mélodie peut être syncopée ; la pulsation reste la référence temporelle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En 6e, la pulsation est le premier pilier pour comprendre…",
+              "options": [
+                "Le rythme et la mesure",
+                "La perspective en arts plastiques",
+                "La respiration en EPS seulement",
+                "Les fractions en maths sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tempo, mesure et durées (noire, blanche…) s'appuient sur la pulsation."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Corps et pulsation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels gestes aident à sentir la pulsation ?",
+              "options": [
+                "Tapoter des mains en cadence",
+                "Marcher sur place régulièrement",
+                "Tenir la respiration une heure",
+                "Regarder ailleurs sans bouger"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mains, pieds et marche internalisent le tempo avant la lecture écrite."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Balancer la tête ou le corps sur la musique suit souvent…",
+              "options": [
+                "La pulsation perçue",
+                "La couleur du mur",
+                "Le numéro de page",
+                "L'heure de la récréation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mouvement naturel du corps épouse le beat."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En choeur, le chef bat la mesure pour…",
+              "options": [
+                "Montrer la pulsation et les accents",
+                "Remplacer les chanteurs",
+                "Éteindre les lumières",
+                "Lire le journal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sa main matérialise le tempo et la place des temps forts."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si tu vas plus vite que la pulsation du groupe…",
+              "options": [
+                "Tu es en avance (désynchronisé)",
+                "Tu es parfaitement à l'heure",
+                "Le tempo disparaît",
+                "La mesure change seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut se recaler sur le pulse commun."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La pulsation régulière ressemble à…",
+              "options": [
+                "Un battement de cœur stable",
+                "Un éclair aléatoire",
+                "Un vent sans direction",
+                "Un nombre premier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Métaphore fréquente en classe : le cœur bat régulièrement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Jouer « tap-clap » en alternance peut marquer…",
+              "options": [
+                "Des subdivisions de la pulsation",
+                "Un changement de couleur",
+                "Un silence définitif",
+                "Une mesure à 7 temps obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On subdivise un temps en deux (croches) tout en gardant la pulse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sans bouger du tout, on peut quand même…",
+              "options": [
+                "Compter la pulsation intérieurement",
+                "Supprimer le tempo",
+                "Changer la mesure écrite",
+                "Effacer la partition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le repérage mental compte autant que le geste."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La pulsation en 3/4 se sent souvent comme…",
+              "options": [
+                "Un « 1-2-3 » avec accent sur 1",
+                "Un « 1-2-3-4 » sans fin",
+                "Aucun temps",
+                "Deux temps seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valse et many chansons en 3 : triolet de pulsation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Entraîner la pulsation améliore…",
+              "options": [
+                "La précision rythmique plus tard",
+                "La taille du pupitre",
+                "Le prix des billets",
+                "La météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base pour noires, blanches et silences à la mesure."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pulsation et tempo ensemble signifient…",
+              "options": [
+                "Des battements réguliers à une vitesse donnée",
+                "Une note tenue infinie",
+                "Absence de mesure",
+                "Uniquement du rap"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régularité + vitesse = fondation du travail rythmique."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Vocabulaire du tempo",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions décrivent un tempo plutôt lent ?",
+              "options": [
+                "Lent, calme",
+                "Adagio (très lent, idée générale)",
+                "Prestissimo",
+                "Très rapide"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En 6e on retient lent/calm vs rapide ; adagio est un mot courant pour lent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Allegro suggère un tempo…",
+              "options": [
+                "Assez vif",
+                "Extrêmement lent",
+                "Sans pulsation",
+                "Uniquement pour les silences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Allegro = gai, rapide (niveau introductif)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Moderato évoque…",
+              "options": [
+                "Un tempo moyen",
+                "Le silence total",
+                "Une mesure à 10 temps",
+                "Une note noire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entre lent et rapide : modéré."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur une partition, « ♩ = 120 » indique…",
+              "options": [
+                "120 noires par minute (idée de tempo)",
+                "120 mesures",
+                "120 instruments",
+                "120 silences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indication métronomique : vitesse de la noire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Plus le nombre ♩=… est grand, plus le tempo est…",
+              "options": ["Rapide", "Lent", "Absent", "Silencieux"],
+              "correctAnswers": [0],
+              "explanation": "Plus de noires/minute = pulse plus dense."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ritardando signifie…",
+              "options": [
+                "Ralentir progressivement",
+                "Accélérer",
+                "Jouer plus fort",
+                "Changer de mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tempo diminue peu à peu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Accelerando signifie…",
+              "options": [
+                "Accélérer progressivement",
+                "S'arrêter net",
+                "Supprimer la pulsation",
+                "Doubler les silences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tempo augmente progressivement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le tempo peut être indiqué par…",
+              "options": [
+                "Des mots (lento, allegro…) ou un chiffre métronome",
+                "Uniquement une photo",
+                "La météo",
+                "Le prénom de l'élève"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux systèmes courants sur les partitions."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Même pulsation, tempo plus lent : les battements sont…",
+              "options": [
+                "Plus espacés",
+                "Plus serrés",
+                "Inexistants",
+                "Toujours syncopés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lenteur = plus de temps entre deux pulses."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Connaître le tempo aide à…",
+              "options": [
+                "Jouer ou chanter à la bonne vitesse",
+                "Choisir la couleur des crayons",
+                "Compter les fenêtres",
+                "Ignorer la mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respecter l'intention du morceau."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Pulsation régulière ou libre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une pulsation régulière, c'est…",
+              "options": [
+                "Des intervalles de temps égaux entre les battements",
+                "Des battements toujours aléatoires",
+                "Une base pour danser ou marcher en musique",
+                "L'absence de tempo"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Régularité = même distance entre les pulses ; beaucoup de musiques s'y appuient."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Certaines musiques « libres » rubato…",
+              "options": [
+                "Flexibilisent le tempo autour d'une pulsation",
+                "N'ont jamais de temps",
+                "Interdisent l'écoute",
+                "Suppriment les notes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rubato = liberté expressive, mais on sent souvent un pulse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un métronome régulier produit des clics…",
+              "options": [
+                "Équidistants",
+                "Aléatoires",
+                "Uniquement le dimanche",
+                "Sans rapport avec le temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil pour stabiliser une pulsation régulière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si la pulsation irrégulière sans intention, l'effet est…",
+              "options": [
+                "Désorganisé ou difficile à suivre",
+                "Toujours meilleur",
+                "Identique au metronome",
+                "Une mesure en 4/4"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans régularité, difficile de garder ensemble."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La plupart des exercices de 6e sur la pulsation visent…",
+              "options": [
+                "La régularité",
+                "Le chaos volontaire",
+                "Zero battement",
+                "Un tempo infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On entraîne d'abord la stabilité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pulsation régulière + mesure 4/4 = …",
+              "options": [
+                "Quatre temps par mesure, pulse stable",
+                "Trois temps obligatoires",
+                "Aucune barre",
+                "Silences seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesure et pulse se combinent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Compter « 1-2-1-2 » en 2/4, la pulsation…",
+              "options": [
+                "Revient tous les deux temps",
+                "Disparaît au troisième temps",
+                "Devient une blanche",
+                "Change de couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Binary simple : deux pulses par mesure."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tenir la pulsation pendant 32 mesures demande…",
+              "options": [
+                "Concentration et régularité",
+                "Aucune écoute",
+                "Changer de tempo à chaque mesure",
+                "Supprimer les temps forts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Endurance rythmique = travail de classe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La pulsation peut être sentie même quand…",
+              "options": [
+                "Les instruments se taisent un instant",
+                "La salle est vide de son",
+                "Il n'y a pas de compositeur",
+                "La partition est en couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On continue de compter intérieurement (silences inclus)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Régularité de la pulsation facilite…",
+              "options": [
+                "L'ajout de rythmes plus complexes ensuite",
+                "L'oubli de la mesure",
+                "La fin de la musique",
+                "La suppression du tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Noires et syncopes se placent sur une pulse stable."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Pulsation et mesure (introduction)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La mesure organise…",
+              "options": [
+                "Les pulsations en groupes",
+                "Les couleurs du décor",
+                "Les temps forts et faibles dans ce groupe",
+                "Uniquement les paroles"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Mesure = cadre ; pulsations numérotées à l'intérieur avec accents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En 4/4, combien de temps (pulsations) par mesure ?",
+              "options": ["4", "2", "7", "1"],
+              "correctAnswers": [0],
+              "explanation": "Chiffre du haut = nombre de temps par mesure."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En 3/4, la pulsation se compte…",
+              "options": ["1-2-3", "1-2-3-4-5", "1 seul", "Sans chiffres"],
+              "correctAnswers": [0],
+              "explanation": "Trois temps par mesure, typique valse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La double barre finale…",
+              "options": [
+                "Marque la fin de la musique",
+                "Indique le tempo",
+                "Remplace une noire",
+                "Ajoute un silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fin de piece ; plus de mesures après."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Chaque pulsation correspond à…",
+              "options": [
+                "Un temps dans la mesure",
+                "Une octave",
+                "Un instrument obligatoire",
+                "Une page"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 pulse = 1 temps (en simple, niveau 6e)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La mesure 2/4 a … pulsations par mesure.",
+              "options": ["2", "4", "6", "8"],
+              "correctAnswers": [0],
+              "explanation": "Marches, polkas parfois en 2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sans barres de mesure, lire le rythme serait…",
+              "options": [
+                "Plus difficile à structurer",
+                "Impossible à entendre",
+                "Identique visuellement",
+                "Sans tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les barres aident à repérer où on en est."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La pulsation continue d'un bout à l'autre d'une mesure…",
+              "options": [
+                "Sans s'arrêter entre les barres",
+                "S'arrête à chaque barre",
+                "N'existe qu'au milieu",
+                "Change de nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les barres découpent l'écriture, pas le flux du temps."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Indication « C » (common time) équivaut souvent à…",
+              "options": ["4/4", "3/4", "2/4", "Silence"],
+              "correctAnswers": [0],
+              "explanation": "Temps commun = quatre temps."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pulsation + mesure préparent l'étude de…",
+              "options": [
+                "Noires, blanches et silences",
+                "Perspective",
+                "Sculpture",
+                "Cartographie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les durées s'inscrivent dans les temps de la mesure."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Synthèse — la pulsation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La pulsation, c'est aussi…",
+              "options": [
+                "Le battement régulier du temps",
+                "La vitesse (tempo) de ce battement",
+                "Un synonyme exact de « mélodie »",
+                "Un support pour placer mesure et rythme"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Pulse régulière et cadre pour mesure/rythme ; le tempo est lié mais c'est une notion distincte ; la mélodie est autre chose."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Résumé : tempo = …",
+              "options": [
+                "Vitesse de la pulsation",
+                "Hauteur des notes",
+                "Type de clef",
+                "Nombre de mesures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition clé du chapitre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Résumé : pulsation = …",
+              "options": [
+                "Battements réguliers qui cadrent le temps",
+                "Silence permanent",
+                "Couleur du son",
+                "Texte de la chanson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base temporelle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour entrer ensemble, les musiciens partagent…",
+              "options": [
+                "La même pulsation et le même tempo",
+                "Des pupitres différents sans écoute",
+                "Un tempo aléatoire chacun",
+                "Aucun décompte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synchronisation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le temps fort tombe en général sur…",
+              "options": [
+                "Le premier temps de la mesure",
+                "Toujours le silence",
+                "La dernière page",
+                "Une noire seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accent sur le « un »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un exercice utile est de…",
+              "options": [
+                "Écouter et taper la pulse",
+                "Ignorer le chef",
+                "Changer de tempo à chaque note",
+                "Ne jamais compter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écoute + corps."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La pulsation existe dans…",
+              "options": [
+                "Beaucoup de styles (classique, pop, jazz…)",
+                "Aucun style",
+                "Seulement le silence",
+                "Seulement les images"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Universalité du beat."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Avant de lire des noires, il faut…",
+              "options": [
+                "Bien sentir la pulsation",
+                "Oublier la mesure",
+                "Supprimer le tempo",
+                "Ne pas écouter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre pédagogique 6e."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Métronome à 60 signifie environ…",
+              "options": [
+                "60 battements/minute (pulse lent)",
+                "60 mesures/seconde",
+                "60 instruments",
+                "60 silences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture introductive des chiffres."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Unité u1 : thème principal…",
+              "options": [
+                "La pulsation et le tempo",
+                "Les couleurs chaudes",
+                "La perspective",
+                "Le contraste en dessin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clôture de l'unité La pulsation."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision — la pulsation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels outils ou gestes servent la pulsation en classe ?",
+              "options": [
+                "Métronome",
+                "Tapotements mains/pieds",
+                "Compter les temps à voix haute",
+                "Ignorer le tempo volontairement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Métronome et gestes corporels stabilisent la pulse ; compter à voix haute aide aussi, mais métronome + corps sont la paire la plus directe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pulsation irrégulière non voulue produit…",
+              "options": [
+                "Un ensemble instable",
+                "Toujours de la virtuosité",
+                "Une mesure invisible",
+                "Un tempo fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Importance de la régularité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tempo rapide = pulsations…",
+              "options": [
+                "Plus rapprochées",
+                "Plus espacées",
+                "Absentes",
+                "Uniquement silencieuses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rappel tempo."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En 3/4, le « 1 » est…",
+              "options": [
+                "Temps fort",
+                "Toujours muet",
+                "Hors mesure",
+                "Une blanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accent en tête de mesure."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La pulsation se distingue du rythme car le rythme…",
+              "options": [
+                "Décrit les durées et accents des notes",
+                "Est toujours identique au tempo",
+                "N'utilise pas la mesure",
+                "N'existe pas en 6e"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pont vers u2."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Battre la mesure, c'est matérialiser…",
+              "options": [
+                "Pulsation + hiérarchie des temps",
+                "Seulement la mélodie",
+                "Les paroles",
+                "Le volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gestuelle du chef."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Écouter le kick/basse aide à…",
+              "options": [
+                "Trouver la pulse",
+                "Accorder le violon seul",
+                "Lire une clé de fa",
+                "Compter les chaises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Astuce d'écoute."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Adagio vs allegro : le plus lent est…",
+              "options": ["Adagio", "Allegro", "Identiques", "Silence"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire tempo."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une mesure contient…",
+              "options": [
+                "Un nombre fixe de temps (pulsations)",
+                "Uniquement des blanches",
+                "Zero pulsation",
+                "Des couleurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien mesure-pulse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Prêt pour l'unité « Le rythme » : on ajoute surtout…",
+              "options": [
+                "Noires, blanches, silences et figures",
+                "Uniquement le tempo",
+                "Plus de pulsation",
+                "Rien de nouveau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transition vers u2."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Le rythme",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Qu'est-ce que le rythme ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le rythme en musique concerne…",
+              "options": [
+                "La succession de durées longues et courtes",
+                "Uniquement la hauteur des notes",
+                "L'organisation des silences et des sons dans le temps",
+                "La couleur des instruments seulement"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Rythme = durées + silences placés sur la pulsation/mesure."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le rythme se superpose à…",
+              "options": [
+                "La pulsation",
+                "La gravité terrestre",
+                "Le numéro de classe",
+                "La météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pulse = grille ; rythme = motifs de durées."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deux notes différentes en hauteur peuvent avoir…",
+              "options": [
+                "Le même rythme (même durée)",
+                "Obligatoirement des rythmes différents",
+                "Aucune durée",
+                "Pas de place en mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hauteur ≠ rythme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un motif rythmique, c'est…",
+              "options": [
+                "Un pattern de durées qui se répète",
+                "Une seule note tenue",
+                "Un changement de tempo obligatoire",
+                "Une mesure vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répétition rythmique = motif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lire un rythme, c'est…",
+              "options": [
+                "Décoder durées et silences écrits",
+                "Ignorer la mesure",
+                "Ne regarder que les paroles",
+                "Compter les pupitres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture rythmique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sans rythme varié, une mélodie serait…",
+              "options": [
+                "Monotone en durée (toutes notes égales)",
+                "Sans hauteur",
+                "Sans tempo",
+                "Sans instruments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rythme apporte variety temporelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le rythme inclut…",
+              "options": [
+                "Les silences",
+                "Uniquement les sons",
+                "Seulement les temps forts",
+                "Les couvertures d'album"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Silence = durée sans son."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En 6e, on commence par des figures…",
+              "options": [
+                "Noire, blanche, silences correspondants",
+                "Triples croches complexes",
+                "Mesures à 11 temps",
+                "Polyrythmies avancées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Programme de base."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Syncope (intro) : accent sur un temps…",
+              "options": [
+                "Normalement faible",
+                "Toujours le premier",
+                "Hors musique",
+                "Sans pulsation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décalage d'accent — aperçu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Rythme et pulsation : le rythme est…",
+              "options": [
+                "Plus détaillé (durées des notes)",
+                "Identique au tempo seul",
+                "Absence de mesure",
+                "Uniquement le volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction fondamentale."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "La noire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La noire (♩) …",
+              "options": [
+                "Dure en général 1 temps en 4/4 simple",
+                "Vaut deux temps comme une blanche",
+                "Est une figure rythmique courante en 6e",
+                "Est un silence obligatoire"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Une noire = 1 temps dans la mesure simple usuelle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Deux noires dans une mesure 2/4…",
+              "options": [
+                "Remplissent la mesure (2 temps)",
+                "Dépassent la mesure",
+                "Valent zero temps",
+                "Interdisent la pulsation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2 × 1 temps = 2 temps."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quatre noires en 4/4…",
+              "options": [
+                "Comptent 4 temps",
+                "Comptent 8 temps",
+                "Silence total",
+                "Une blanche seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "4 noires = 4 temps."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La tête de note noire est…",
+              "options": [
+                "Pleine (noire)",
+                "Blanche (vide) pour la noire",
+                "Carrée toujours",
+                "Absente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tête pleine = noire (en notation fr.)"
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une noire a une hampe…",
+              "options": [
+                "Montant ou descendant selon la place",
+                "Jamais",
+                "Uniquement horizontale",
+                "Qui remplace le tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture de la portée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Jouer « ta-ta-ta-ta » (4 sons égaux), en 4/4 c'est souvent…",
+              "options": [
+                "4 noires",
+                "4 blanches",
+                "4 mesures vides",
+                "4 silences de blanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exercice vocal corporel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une noire vaut…",
+              "options": [
+                "Moins qu'une blanche en durée",
+                "Plus qu'une blanche",
+                "Autant qu'une ronde",
+                "Rien en mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Blanche = 2 noires (niveau 6e)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le silence de noire…",
+              "options": [
+                "Dure 1 temps sans son",
+                "Dure 2 temps",
+                "Remplace la mesure",
+                "Est une note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Silence équivalent à la noire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Indication ♩ = 100 veut dire…",
+              "options": [
+                "100 noires par minute (tempo)",
+                "100 blanches",
+                "100 mesures",
+                "100 silences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Métronome basé sur la noire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En comptant la pulsation, une noire tombe en général sur…",
+              "options": [
+                "Un temps (1 pulse)",
+                "Trois pulses",
+                "Aucun temps",
+                "La double barre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ancrage rythmique."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "La blanche",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La blanche (♩ tête vide) en 4/4 simple…",
+              "options": [
+                "Dure 2 temps",
+                "Dure 1 temps comme la noire",
+                "Équivaut à 2 noires",
+                "Est un silence"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Blanche = double durée de la noire dans le simple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une blanche + une blanche en 4/4…",
+              "options": [
+                "Remplissent toute la mesure (4 temps)",
+                "Dépassent toujours",
+                "Valent 1 temps",
+                "Interdisent le tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2 + 2 = 4 temps."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une blanche vaut combien de noires ?",
+              "options": ["2", "4", "1", "8"],
+              "correctAnswers": [0],
+              "explanation": "Relation de durée fondamentale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La tête de la blanche est…",
+              "options": [
+                "Blanche (vide)",
+                "Pleine",
+                "Triangulaire",
+                "Invisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Notation standard."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux noires = …",
+              "options": [
+                "Une blanche en durée",
+                "Une ronde",
+                "Un silence de ronde",
+                "Zero temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Addition de durées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Taaa-taaa » (2 sons longs) en 4/4 peut être…",
+              "options": [
+                "2 blanches",
+                "4 noires",
+                "8 croches",
+                "Silence seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocalisation des durées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une blanche tient le son pendant…",
+              "options": [
+                "2 pulsations",
+                "1 pulsation",
+                "8 pulsations",
+                "Aucune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tenue sur deux temps."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Blanche + 2 noires en 4/4…",
+              "options": [
+                "Total 4 temps",
+                "Total 2 temps",
+                "Total 6 temps",
+                "Mesure impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2 + 1 + 1 = 4."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le silence de blanche dure…",
+              "options": ["2 temps", "1 temps", "4 temps", "0 temps"],
+              "correctAnswers": [0],
+              "explanation": "Pause équivalente à la blanche."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Par rapport à la noire, la blanche est…",
+              "options": [
+                "Plus longue",
+                "Plus courte",
+                "Identique",
+                "Hors mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiérarchie des durées."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Noires et blanches ensemble",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En 4/4, quelles combinaisons remplissent exactement 4 temps ?",
+              "options": [
+                "4 noires",
+                "2 blanches",
+                "1 blanche + 2 noires",
+                "8 blanches"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "4 noires ou 2 blanches remplissent 4 temps ; 8 blanches feraient 16 temps."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1 blanche + 1 noire + 1 noire en 4/4…",
+              "options": [
+                "Mesure complète",
+                "Il manque des temps",
+                "Trop long",
+                "Sans pulsation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2+1+1=4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "3 noires seules en 4/4 laissent…",
+              "options": [
+                "1 temps à compléter",
+                "Mesure pleine",
+                "2 mesures",
+                "Rien à compter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il reste 1 temps (noire ou silence)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lire « noire-blanche-noire » en 4/4 totalise…",
+              "options": ["4 temps", "3 temps", "5 temps", "1 temps"],
+              "correctAnswers": [0],
+              "explanation": "1+2+1=4."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour ne pas dépasser la mesure, on…",
+              "options": [
+                "Additionne les durées",
+                "Ignore la pulsation",
+                "Change le tempo à chaque note",
+                "Supprime les barres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Somme = capacité de la mesure."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux blanches se suivent en 2/4…",
+              "options": [
+                "Dépassent (4 temps pour 2)",
+                "Remplissent exactement",
+                "Valent 1 temps",
+                "Sont interdites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2/4 = 2 temps ; 2 blanches = 4 temps."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une blanche en 2/4…",
+              "options": [
+                "Remplit la mesure",
+                "Dépasse",
+                "Vaut une noire",
+                "Est silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2 temps = une blanche."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rythme « long-court-court » peut être…",
+              "options": [
+                "Blanche + 2 noires",
+                "3 blanches",
+                "1 noire",
+                "Silence seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motif fréquent pédagogique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Écrire des noires et blanches, c'est écrire…",
+              "options": [
+                "Le rythme",
+                "La hauteur seule",
+                "Les paroles obligatoires",
+                "Le tempo en lettres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Figures = durée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans respecter la somme des temps, la mesure est…",
+              "options": [
+                "Incorrecte ou illisible",
+                "Toujours meilleure",
+                "Plus rapide",
+                "Sans tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle de complétude."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Les silences",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un silence en musique…",
+              "options": [
+                "A une durée comme une note",
+                "Compte dans le rythme et la mesure",
+                "N'existe pas en 6e",
+                "Remplace toujours le tempo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Silence de noire, blanche… = temps sans son."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Silence de noire = …",
+              "options": [
+                "1 temps sans jouer",
+                "2 temps",
+                "4 temps",
+                "Son fort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équivalent durée noire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Silence de blanche = …",
+              "options": ["2 temps", "1 temps", "1/2 temps", "8 temps"],
+              "correctAnswers": [0],
+              "explanation": "Pause de deux pulses."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Noire + silence de noire en 4/4…",
+              "options": [
+                "2 temps utilisés",
+                "Mesure pleine",
+                "0 temps",
+                "4 temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 + 1 = 2 temps."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pendant un silence, le musicien…",
+              "options": [
+                "Ne produit pas de son mais compte le temps",
+                "Arrête de compter",
+                "Change de mesure",
+                "Accélère le tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le temps continue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "2 noires + silence de blanche en 4/4…",
+              "options": [
+                "4 temps (mesure pleine)",
+                "2 temps",
+                "6 temps",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1+1+2=4."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le symbole du silence de noire ressemble à…",
+              "options": [
+                "Un petit trait/repose sur la ligne (selon notation)",
+                "Une tête pleine",
+                "Une clé de sol",
+                "Un métronome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signes de silence propres à chaque durée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Silences et notes mélangés forment…",
+              "options": [
+                "Un rythme complet",
+                "Uniquement du tempo",
+                "Plus de pulsation",
+                "Une mesure sans temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motifs avec pauses."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Toute la mesure en silence de noires x4 en 4/4…",
+              "options": [
+                "Reste du rythme écrit (4 temps muets)",
+                "N'est pas de la musique",
+                "Ignore la mesure",
+                "Supprime le tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesure de silences valide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Compter les silences à voix haute aide à…",
+              "options": [
+                "Ne pas perdre la pulsation",
+                "Oublier la mesure",
+                "Jouer plus fort",
+                "Changer de tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Continuité du pulse."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Mesure et rythme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le rythme écrit dans une mesure doit…",
+              "options": [
+                "Respecter le nombre de temps de la mesure",
+                "Ignorer les silences",
+                "Tenir compte de la pulsation sous-jacente",
+                "Changer la couleur des notes"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Somme des durées = temps de la mesure ; pulse guide l'exécution."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "4/4 signifie souvent…",
+              "options": [
+                "4 temps par mesure, la noire compte pour 1",
+                "4 noires obligatoires toujours",
+                "4 mesures par page",
+                "4 silences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signature rythmique usuelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "3/4 signifie…",
+              "options": [
+                "3 temps par mesure",
+                "4 temps",
+                "2 temps",
+                "Silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ternary."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "2/4 signifie…",
+              "options": [
+                "2 temps par mesure",
+                "4 temps",
+                "3 temps",
+                "1 mesure par note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Binary."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En 3/4, 3 noires…",
+              "options": [
+                "Remplissent une mesure",
+                "Dépassent",
+                "Valent une blanche",
+                "Interdisent le tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3 × 1 = 3 temps."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La barre de mesure aide à lire le rythme car…",
+              "options": [
+                "On recompte à chaque mesure",
+                "Elle supprime la pulsation",
+                "Elle change le tempo",
+                "Elle efface les silences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repères visuels."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Mesure et pulsation : chaque temps de la mesure…",
+              "options": [
+                "Correspond à une pulsation",
+                "N'a aucun lien",
+                "Est toujours muet",
+                "Vaut une octave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alignement temps/pulse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un rythme syncopé joue parfois…",
+              "options": [
+                "Entre ou contre les temps forts",
+                "Sans durée",
+                "Sans mesure",
+                "Uniquement des blanches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intro syncope."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Changer de mesure (barre) ne change pas…",
+              "options": [
+                "Le tempo en cours (sauf indication)",
+                "Le fait de compter",
+                "L'existence du rythme",
+                "La partition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tempo continue sauf marquage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif 6e : lire un rythme simple en…",
+              "options": [
+                "2/4, 3/4 ou 4/4",
+                "12/8 expert",
+                "Mesures irrégulières seules",
+                "Sans figures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signatures de base."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Lecture rythmique simple",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour lire un rythme à voix haute, on peut…",
+              "options": [
+                "Dire « ta » pour chaque note",
+                "Compter 1-2-3-4 en gardant le tempo",
+                "Ignorer les silences",
+                "Changer de tempo à chaque figure"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Solfège rythmique + comptage."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ta-m » peut marquer…",
+              "options": [
+                "Une noire puis un silence de noire",
+                "Une blanche seule",
+                "Rien",
+                "Deux blanches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Son + silence d'une noire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Devant une blanche, on tient le « ta »…",
+              "options": ["2 temps", "1/2 temps", "4 mesures", "Sans pulse"],
+              "correctAnswers": [0],
+              "explanation": "Durée tenue."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lecture : noire noire blanche en 4/4…",
+              "options": ["4 temps", "3 temps", "5 temps", "1 temps"],
+              "correctAnswers": [0],
+              "explanation": "1+1+2=4."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le métronome aide la lecture en…",
+              "options": [
+                "Stabilisant la pulsation",
+                "Changeant les durées",
+                "Supprimant les mesures",
+                "Effaçant les silences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Support tempo."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Erreur fréquente : raccourcir une blanche en…",
+              "options": [
+                "1 temps au lieu de 2",
+                "2 temps exacts",
+                "Silence",
+                "Mesure pleine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tenue insuffisante."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Erreur fréquente : ne pas compter un silence…",
+              "options": [
+                "Décale tout le groupe",
+                "Améliore l'ensemble",
+                "Change la mesure en 3/4",
+                "Accorde l'instrument"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les silences comptent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Répéter un motif rythmique 4 fois…",
+              "options": [
+                "Entraîne la mémoire rythmique",
+                "Supprime le tempo",
+                "Efface la pulsation",
+                "Interdit les noires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Clapper un rythme écrit sans instrument…",
+              "options": [
+                "Vérifie la compréhension",
+                "Remplace la mesure",
+                "Est interdit en 6e",
+                "Change le tempo seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corps + lecture."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lecture rythmique utilise les figures…",
+              "options": [
+                "Noire, blanche, silences",
+                "Uniquement rondes expertes",
+                "Sans barres",
+                "Sans tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Périmètre 6e."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Rythme et pulsation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Rythme et pulsation ensemble…",
+              "options": [
+                "La pulse reste régulière pendant le rythme",
+                "Le rythme place des durées sur cette pulse",
+                "Le rythme supprime toujours la pulse",
+                "Le tempo n'a aucun rôle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Grille stable + motifs de durées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un rythme plus chargé (plus de notes) peut garder…",
+              "options": [
+                "Le même tempo",
+                "Zero pulsation",
+                "Une mesure sans temps",
+                "Un tempo aléatoire obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Densité ≠ changement de tempo."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Subdiviser une noire en deux « ti-ti »…",
+              "options": [
+                "Reste sur la même pulsation",
+                "Change la mesure en 7/4",
+                "Supprime les silences",
+                "Efface le tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Croches = subdivision (aperçu)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Jouer un rythme en retard sur la pulse, c'est…",
+              "options": [
+                "Être en retard (désynchronisé)",
+                "Être parfait",
+                "Changer de mesure",
+                "Lire une blanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Précision d'entrée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le tempo lent rend les noires…",
+              "options": [
+                "Plus espacées dans le temps réel",
+                "Plus courtes en durée relative",
+                "Silencieuses",
+                "Des blanches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même figure, exécution plus lente."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Accentuer différemment les notes change…",
+              "options": [
+                "Le caractère rythmique",
+                "La hauteur obligatoirement",
+                "Le nombre de mesures",
+                "La clé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dynamique rythmique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ensemble : même rythme écrit + même tempo = …",
+              "options": [
+                "Unisson rythmique",
+                "Chaos",
+                "Mesures différentes",
+                "Silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coordination."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La pulsation se continue pendant les silences du rythme…",
+              "options": [
+                "Oui, on continue de compter",
+                "Non, tout s'arrête",
+                "Seulement en 3/4",
+                "Jamais en 4/4"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Continuité du temps."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un motif : noire-blanche en boucle repose sur…",
+              "options": [
+                "Pulse stable et mesure adaptée",
+                "Tempo zero",
+                "Sans figures",
+                "8 mesures vides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motif = répétition rythmique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans pulsation intériorisée, le rythme écrit devient…",
+              "options": [
+                "Difficile à exécuter ensemble",
+                "Toujours facile",
+                "Une mélodie seule",
+                "Un tempo fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien u1-u2."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Motifs et répétition",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un motif rythmique peut…",
+              "options": [
+                "Se répéter plusieurs mesures d'affilée",
+                "Mélanger noires, blanches et silences",
+                "Ignorer totalement la mesure sans limite",
+                "Remplacer le tempo par des couleurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pattern reproductible avec figures du programme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Répéter « ta ta ta-m » (3 noires + silence noire) x2 en 4/4…",
+              "options": [
+                "2 mesures identiques",
+                "1 mesure",
+                "0 mesure",
+                "8 temps en une mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motif sur une mesure, répété."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Varier un motif en allongeant une noire en blanche…",
+              "options": [
+                "Change le rythme",
+                "Change obligatoirement le tempo",
+                "Supprime la pulse",
+                "Efface la mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transformation rythmique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Question d'écoute : entendre deux fois le même rythme…",
+              "options": [
+                "Reconnaître la répétition",
+                "Ignorer la mesure",
+                "Changer de tempo",
+                "Lire une clé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oreille rythmique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En percussion, un pattern de caisse claire est…",
+              "options": [
+                "Un motif rythmique",
+                "Une hauteur",
+                "Un silence total",
+                "Une mesure sans temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratique courante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Composer 4 mesures en 4/4 avec le même motif…",
+              "options": [
+                "Travaille la régularité",
+                "Supprime les noires",
+                "Interdit les blanches",
+                "Change la pulse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exercice de classe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Motif + tempo constant = …",
+              "options": [
+                "Prévisibilité pour les musiciens",
+                "Impossible à jouer",
+                "Mesure 7/8",
+                "Sans silences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stabilité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Anticipation (jouer un peu avant le temps fort) est…",
+              "options": [
+                "Un effet rythmique avancé (aperçu)",
+                "Une blanche",
+                "Un tempo",
+                "Une mesure vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au-delà du programme strict, mention intro."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mémoriser un rythme de 2 mesures aide…",
+              "options": [
+                "À le jouer sans lire",
+                "À oublier la pulsation",
+                "À supprimer le tempo",
+                "À ne plus compter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mémoire rythmique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les motifs relient rythme à…",
+              "options": [
+                "La créativité et la répétition en musique",
+                "Seulement la peinture",
+                "Uniquement le silence",
+                "Zero pulsation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dimension expressive."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision — le rythme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En 6e, figures rythmiques étudiées ici…",
+              "options": [
+                "Noire",
+                "Blanche",
+                "Silences de noire et blanche",
+                "Double croche obligatoire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Noire/blanche + silences ; double croche hors cœur de ce fichier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une blanche vaut … noire(s).",
+              "options": ["2", "1", "4", "0"],
+              "correctAnswers": [0],
+              "explanation": "Relation de durée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "4 noires en 4/4…",
+              "options": [
+                "1 mesure pleine",
+                "2 mesures",
+                "1/2 mesure",
+                "Silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Addition."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le rythme décrit…",
+              "options": [
+                "Durées et silences",
+                "Seulement le tempo",
+                "Uniquement la pulse",
+                "Les paroles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La pulsation sert de…",
+              "options": [
+                "Grille pour exécuter le rythme",
+                "Remplacement des mesures",
+                "Suppression du tempo",
+                "Couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "u1 + u2."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tempo = vitesse de…",
+              "options": ["La pulsation", "La hauteur", "La clé", "La salle"],
+              "correctAnswers": [0],
+              "explanation": "Rappel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Silence de blanche en 3/4 occupe…",
+              "options": [
+                "2 des 3 temps",
+                "Toute la mesure",
+                "0 temps",
+                "1/2 temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durée du silence."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mesure 3/4 + 3 noires = …",
+              "options": ["Correct", "Trop long", "Trop court", "Sans tempo"],
+              "correctAnswers": [0],
+              "explanation": "Complétude."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lire « ta » sur chaque note/noire et compter les silences…",
+              "options": [
+                "Est une bonne méthode 6e",
+                "Est interdit",
+                "Remplace la mesure",
+                "Change le tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pédagogie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ce chapitre « le rythme » complète l'unité…",
+              "options": [
+                "La pulsation (tempo, pulse, mesure, figures)",
+                "Arts plastiques seulement",
+                "EPS",
+                "Géographie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan du fichier 6e-arts-02."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

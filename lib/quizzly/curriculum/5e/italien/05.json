@@ -1,0 +1,2433 @@
+{
+  "id": "5e-italien-05",
+  "year": "5e",
+  "subject": "italien",
+  "title": "Le passé en l'italien",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont au passé composé ?",
+              "options": [
+                "Ho mangiato la pasta.",
+                "Mangio la pasta.",
+                "Ho giocato a calcio.",
+                "Gioco a calcio."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Ho mangiato » et « ho giocato » combinent l'auxiliaire « ho » et le participe passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « hier » en italien ?",
+              "options": ["ieri", "oggi", "domani", "sempre"],
+              "correctAnswers": [0],
+              "explanation": "« Ieri » signifie « hier » et introduit souvent une action passée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Traduction de « J'ai mangé » :",
+              "options": [
+                "Ho mangiato",
+                "Sono mangiato",
+                "Ho mangiare",
+                "Mangiato ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mangiare » au passé composé : « ho mangiato » avec « avere »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Auxiliaire de « giocare » au passé :",
+              "options": ["avere", "essere", "fare", "potere"],
+              "correctAnswers": [0],
+              "explanation": "« Giocare » forme le passato prossimo avec « avere »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Je suis allé » (garçon) :",
+              "options": [
+                "Sono andato",
+                "Ho andato",
+                "Sono andata",
+                "Ho andata"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Andare » prend « essere » : « sono andato » au masculin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel verbe de mouvement utilise « essere » ?",
+              "options": ["andare", "mangiare", "giocare", "guardare"],
+              "correctAnswers": [0],
+              "explanation": "« Andare » est un verbe de déplacement conjugué avec « essere »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« J'ai joué » :",
+              "options": [
+                "Ho giocato",
+                "Sono giocato",
+                "Ho giocare",
+                "Giocato sono"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé de « giocare » : « ho giocato »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Participe passé de « mangiare » :",
+              "options": ["mangiato", "mangiare", "mangio", "mangiata"],
+              "correctAnswers": [0],
+              "explanation": "Les verbes en -are font le participe en -ato."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Négation de « ho mangiato » :",
+              "options": [
+                "Non ho mangiato",
+                "Ho non mangiato",
+                "Non mangiato",
+                "Non sono mangiato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Non » se place devant l'auxiliaire « ho »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ieri Marco ___ al cinema.",
+              "options": ["è andato", "ha andato", "è andata", "ho andato"],
+              "correctAnswers": [0],
+              "explanation": "Marco : sujet masculin, « è andato » avec « essere »."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases racontent correctement hier ?",
+              "options": [
+                "Ieri ho studiato.",
+                "Ieri studio.",
+                "Ieri sono andato a scuola.",
+                "Ieri vado a scuola."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Après « ieri », le passato prossimo remplace le présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« J'ai regardé la télé » :",
+              "options": [
+                "Ho guardato la TV",
+                "Sono guardato la TV",
+                "Ho guardare la TV",
+                "Guardato ho la TV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Guardare » + « avere » : « ho guardato »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une fille dit « Je suis allée » :",
+              "options": [
+                "Sono andata",
+                "Sono andato",
+                "Ho andata",
+                "È andato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec « essere », le participe s'accorde au féminin : « andata »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ho ___ un gelato. (manger)",
+              "options": ["mangiato", "mangiata", "mangiare", "mangio"],
+              "correctAnswers": [0],
+              "explanation": "Avec « avere », le participe de « mangiare » reste « mangiato »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Nous sommes allés » :",
+              "options": [
+                "Siamo andati",
+                "Abbiamo andato",
+                "Siamo andato",
+                "Ho andati"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel avec « essere » : « siamo andati »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phrase est au présent ?",
+              "options": [
+                "Oggi gioco a calcio",
+                "Ieri ho giocato",
+                "Ieri sono andato",
+                "Sabato scorso ho studiato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Oggi gioco » décrit aujourd'hui, pas hier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Passé de « parlare » (io) :",
+              "options": [
+                "ho parlato",
+                "sono parlato",
+                "ho parlare",
+                "parlato ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Parlare » se conjugue avec « avere »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Passé de « venire » (io, garçon) :",
+              "options": [
+                "sono venuto",
+                "ho venuto",
+                "sono venire",
+                "venuto ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Venire » prend « essere » : « sono venuto »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ieri, tu ___ la pizza ?",
+              "options": [
+                "hai mangiato",
+                "ho mangiato",
+                "sei mangiato",
+                "hai mangiare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deuxième personne : « hai mangiato »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Forme impossible pour « andare » :",
+              "options": [
+                "ho andato",
+                "sono andato",
+                "sono andata",
+                "siamo andati"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On n'utilise pas « avere » avec « andare »."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels auxiliaires peuvent commencer un passato prossimo ?",
+              "options": ["ho", "sono", "mangio", "andato"],
+              "correctAnswers": [0, 1],
+              "explanation": "Le passé composé commence par « ho » (avere) ou « sono » (essere)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ieri, io ___ (dormir) bene.",
+              "options": [
+                "ho dormito",
+                "sono dormito",
+                "ho dormire",
+                "dormito ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Dormire » (-ire) prend « avere » : « ho dormito »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Participe de « giocare » :",
+              "options": ["giocato", "giocare", "gioco", "giocata"],
+              "correctAnswers": [0],
+              "explanation": "Participe régulier en -ato : « giocato »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Elle est allée » :",
+              "options": ["È andata", "È andato", "Ha andata", "Sono andata"],
+              "correctAnswers": [0],
+              "explanation": "Féminin singulier avec « essere » : « è andata »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Vous avez mangé » (voi) :",
+              "options": [
+                "Avete mangiato",
+                "Hai mangiato",
+                "Abbiamo mangiato",
+                "Hanno mangiato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Voi » prend l'auxiliaire « avete »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Ils sont allés » :",
+              "options": [
+                "Sono andati",
+                "Hanno andato",
+                "Sono andato",
+                "Ho andati"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel masculin : « sono andati »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ho ___ a calcio ieri. (jouer)",
+              "options": ["giocato", "giocare", "gioco", "giocata"],
+              "correctAnswers": [0],
+              "explanation": "Compléter avec le participe « giocato »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ascoltare » au passé (io) :",
+              "options": [
+                "ho ascoltato",
+                "sono ascoltato",
+                "ho ascoltare",
+                "ascoltato sono"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe en -are avec « avere » : « ho ascoltato »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase parle d'hier ?",
+              "options": [
+                "Ieri ho cantato",
+                "Oggi canto",
+                "Domani canto",
+                "Adesso canto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seule la phrase avec « ieri » situe l'action dans le passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Uscire » (io, fille) au passé :",
+              "options": [
+                "sono uscita",
+                "ho uscita",
+                "sono uscito",
+                "ho uscito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Uscire » + « essere », accord féminin : « sono uscita »."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels groupes sont bien formés ?",
+              "options": [
+                "ho + mangiato",
+                "sono + andato",
+                "ho + andato",
+                "sono + giocato"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Mangiare » avec « ho », « andare » avec « sono »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Lavorare » (io) passé :",
+              "options": [
+                "ho lavorato",
+                "sono lavorato",
+                "ho lavorare",
+                "lavorato ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Lavorare » utilise « avere » au passato prossimo."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ieri noi ___ in Italia. (être)",
+              "options": [
+                "siamo stati",
+                "abbiamo stati",
+                "siamo stato",
+                "ho stati"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Stare » / « essere » au passé : « siamo stati »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Tu es venu » (garçon) :",
+              "options": [
+                "Sei venuto",
+                "Hai venuto",
+                "Sei venuta",
+                "Ho venuto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Venire » + « essere », masculin : « sei venuto »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Participe de « guardare » :",
+              "options": ["guardato", "guardare", "guardo", "guardata"],
+              "correctAnswers": [0],
+              "explanation": "Participe régulier : « guardato »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Ils ont joué » :",
+              "options": [
+                "Hanno giocato",
+                "Hanno giocare",
+                "Sono giocato",
+                "Ho giocato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Loro » + « avere » : « hanno giocato »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Non ___ ieri. (je ne suis pas allé, garçon)",
+              "options": [
+                "sono andato",
+                "ho andato",
+                "non andato",
+                "sono andata"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation : « non sono andato » — ici on choisit la forme affirmative correcte du verbe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle question au passé ?",
+              "options": [
+                "Hai mangiato ieri?",
+                "Mangi ieri?",
+                "Mangia ieri?",
+                "Mangerai ieri?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hai mangiato » interroge sur une action passée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Comprare » (io) passé :",
+              "options": [
+                "ho comprato",
+                "sono comprato",
+                "ho comprare",
+                "comprato ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Comprare » + « avere » : « ho comprato »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ieri, lei ___ un libro. (lire)",
+              "options": ["ha letto", "ho letto", "è letto", "ha leggere"],
+              "correctAnswers": [0],
+              "explanation": "« Leggere » irrégulier : « ha letto » avec « avere »."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux traductions correctes de « hier j'ai mangé » :",
+              "options": [
+                "Ieri ho mangiato",
+                "Ieri mangio",
+                "Ieri ho mangiato la cena",
+                "Ieri mangio la cena"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Ieri ho mangiato » avec ou sans complément reste au passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Scrivare » (io) passé :",
+              "options": [
+                "ho scritto",
+                "ho scrivato",
+                "sono scritto",
+                "scrivato ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Participe irrégulier de « scrivere » : « scritto »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Entrare » (io, garçon) :",
+              "options": [
+                "sono entrato",
+                "ho entrato",
+                "sono entrata",
+                "entrato ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Entrare » de mouvement : « sono entrato »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Finire » (io) passé :",
+              "options": [
+                "ho finito",
+                "sono finito",
+                "ho finire",
+                "finito sono"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe en -ire avec « avere » : « ho finito »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ieri tu ___ a tennis. (jouer)",
+              "options": [
+                "hai giocato",
+                "ho giocato",
+                "sei giocato",
+                "hai giocare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tu » : « hai giocato »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Arrivare » (noi) :",
+              "options": [
+                "siamo arrivati",
+                "abbiamo arrivato",
+                "siamo arrivato",
+                "ho arrivati"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Arrivare » + « essere » : « siamo arrivati »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Mot interrogatif « As-tu » au passé :",
+              "options": ["Hai...?", "Ho...?", "Sei...?", "È...?"],
+              "correctAnswers": [0],
+              "explanation": "Pour « avere », on inverse « hai » en question : « Hai mangiato? »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Prendere » (io) passé :",
+              "options": ["ho preso", "ho prendato", "sono preso", "preso ho"],
+              "correctAnswers": [0],
+              "explanation": "Participe irrégulier : « preso »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ieri, io non ___ . (manger)",
+              "options": [
+                "ho mangiato",
+                "mangio",
+                "ho mangiare",
+                "sono mangiato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même à la négation, la forme est « non ho mangiato » ; ici la forme affirmative correcte est « ho mangiato »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Restare » (io) passé :",
+              "options": [
+                "sono restato",
+                "ho restato",
+                "sono restare",
+                "restato ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Restare » prend souvent « essere » : « sono restato »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent « essere » au passé ?",
+              "options": [
+                "Sono andato a casa",
+                "Ho andato a casa",
+                "Sono arrivata tardi",
+                "Ho arrivata tardi"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Andato » et « arrivata » avec « sono » sont corrects."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Cadere » (io) passé :",
+              "options": [
+                "sono caduto",
+                "ho caduto",
+                "sono cadere",
+                "caduto ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Cadere » se conjugue avec « essere »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ieri, noi ___ la musica. (écouter)",
+              "options": [
+                "abbiamo ascoltato",
+                "siamo ascoltato",
+                "ho ascoltato",
+                "abbiamo ascoltare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Noi » + « avere » : « abbiamo ascoltato »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Partire » (io, fille) :",
+              "options": [
+                "sono partita",
+                "ho partita",
+                "sono partito",
+                "partita ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Départ = mouvement, « essere », féminin « partita »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Vivere » (io) passé :",
+              "options": [
+                "ho vissuto",
+                "ho viverato",
+                "sono vissuto",
+                "viverato ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Participe « vissuto » avec « avere »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réponse à « Hai giocato ieri? » — Oui :",
+              "options": [
+                "Sì, ho giocato",
+                "Sì, gioco",
+                "Sì, ho giocare",
+                "Sì, sono giocato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On répète l'auxiliaire et le participe : « sì, ho giocato »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Mettere » (io) passé :",
+              "options": ["ho messo", "ho mettato", "sono messo", "messo sono"],
+              "correctAnswers": [0],
+              "explanation": "Participe irrégulier « messo »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ieri, voi ___ al mare. (aller)",
+              "options": [
+                "siete andati",
+                "avete andato",
+                "siete andato",
+                "ho andati"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Voi » + « essere » : « siete andati »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Capire » (io) passé :",
+              "options": ["ho capito", "sono capito", "ho capire", "capito ho"],
+              "correctAnswers": [0],
+              "explanation": "« Capire » avec « avere » : « ho capito »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel verbe ne prend PAS « avere » ici ?",
+              "options": ["andare", "mangiare", "giocare", "guardare"],
+              "correctAnswers": [0],
+              "explanation": "« Andare » demande « essere », pas « avere »."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases vraies sur hier :",
+              "options": [
+                "Ieri ho guardato un film",
+                "Ieri guardo un film",
+                "Ieri sono andato al parco",
+                "Ieri vado al parco"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le passato prossimo suit « ieri », pas le présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Bere » (io) passé :",
+              "options": ["ho bevuto", "ho berato", "sono bevuto", "bevuto ho"],
+              "correctAnswers": [0],
+              "explanation": "Participe « bevuto » avec « avere »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Tornare » (io) :",
+              "options": [
+                "sono tornato",
+                "ho tornato",
+                "sono tornare",
+                "tornato ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retour = mouvement : « sono tornato »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Aprire » (io) passé :",
+              "options": [
+                "ho aperto",
+                "ho apriato",
+                "sono aperto",
+                "aperto ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Participe « aperto » avec « avere »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ieri, Maria ___ la pizza. (manger)",
+              "options": [
+                "ha mangiato",
+                "ho mangiato",
+                "è mangiato",
+                "ha mangiare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maria = « lei », auxiliaire « ha »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Chiudere » (io) passé :",
+              "options": [
+                "ho chiuso",
+                "ho chiudato",
+                "sono chiuso",
+                "chiuso ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Participe « chiuso »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Essere » (io) passé :",
+              "options": ["sono stato", "ho stato", "sono essere", "stato ho"],
+              "correctAnswers": [0],
+              "explanation": "« Essere » se conjugue avec « essere » : « sono stato »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ieri, io ___ tardi. (se lever, fille)",
+              "options": [
+                "mi sono alzata",
+                "mi ho alzata",
+                "sono alzata mi",
+                "ho alzata"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe pronominal : « mi sono alzata »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Dire » (io) passé :",
+              "options": ["ho detto", "ho ditato", "sono detto", "detto ho"],
+              "correctAnswers": [0],
+              "explanation": "Participe irrégulier « detto »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ordre correct : auxiliaire + participe ?",
+              "options": [
+                "Ho mangiato",
+                "Mangiato ho",
+                "Mangiare ho",
+                "Ho mangiare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'auxiliaire précède le participe passé."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels participes conviennent après « ho » ?",
+              "options": ["parlato", "andato", "mangiato", "andata"],
+              "correctAnswers": [0, 2],
+              "explanation": "Avec « avere », « parlato » et « mangiato » ; « andato/andata » vont avec « essere »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Fare » (io) passé :",
+              "options": ["ho fatto", "ho fare", "sono fatto", "fatto ho"],
+              "correctAnswers": [0],
+              "explanation": "« Ho fatto » est la forme correcte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ieri, Luca ___ calcio. (jouer)",
+              "options": [
+                "ha giocato",
+                "ho giocato",
+                "è giocato",
+                "ha giocare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Luca = « lui », « ha giocato »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Vedere » (io) passé :",
+              "options": ["ho visto", "ho vedato", "sono visto", "visto ho"],
+              "correctAnswers": [0],
+              "explanation": "Participe « visto » avec « avere »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Nascere » (io, garçon) :",
+              "options": ["sono nato", "ho nato", "sono nata", "nato ho"],
+              "correctAnswers": [0],
+              "explanation": "« Nascere » + « essere » : « sono nato »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Perdere » (io) passé :",
+              "options": ["ho perso", "ho perdato", "sono perso", "perso ho"],
+              "correctAnswers": [0],
+              "explanation": "Participe « perso »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ieri, io ___ a scuola. (aller)",
+              "options": [
+                "sono andato",
+                "ho andato",
+                "sono andata",
+                "andato ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Garçon ou neutre « io » : « sono andato »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Vincere » (io) passé :",
+              "options": ["ho vinto", "ho vincato", "sono vinto", "vinto ho"],
+              "correctAnswers": [0],
+              "explanation": "Participe « vinto »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Stare » (io) passé :",
+              "options": ["sono stato", "ho stato", "sono stare", "stato sono"],
+              "correctAnswers": [0],
+              "explanation": "« Stare » au passé : « sono stato »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase la plus naturelle pour raconter hier :",
+              "options": [
+                "Ieri ho mangiato e sono andato a dormire",
+                "Ieri mangio e vado a dormire",
+                "Ieri mangerò",
+                "Ieri mangiavo sempre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux actions passées avec « ho » et « sono »."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses utilisent le bon auxiliaire ?",
+              "options": [
+                "Ho giocato",
+                "Sono giocato",
+                "Sono andato",
+                "Ho andato"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Giocato » avec « ho », « andato » avec « sono »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Uscire » (tu, garçon) :",
+              "options": [
+                "sei uscito",
+                "hai uscito",
+                "sei uscita",
+                "ho uscito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tu » masculin : « sei uscito »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ieri, essi ___ . (manger)",
+              "options": [
+                "hanno mangiato",
+                "hanno mangiare",
+                "sono mangiato",
+                "ho mangiato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Loro » : « hanno mangiato »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ritornare » (io) :",
+              "options": [
+                "sono ritornato",
+                "ho ritornato",
+                "ritornato sono",
+                "sono ritornare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retour = « essere » : « sono ritornato »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Suonare » (io) passé :",
+              "options": [
+                "ho suonato",
+                "sono suonato",
+                "ho suonare",
+                "suonato ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Suonare » + « avere »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Piangere » (io) passé :",
+              "options": [
+                "ho pianto",
+                "ho piangato",
+                "sono pianto",
+                "pianto ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Participe « pianto »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ieri, io ___ un amico. (voir)",
+              "options": ["ho visto", "sono visto", "ho vedere", "visto ho"],
+              "correctAnswers": [0],
+              "explanation": "« Vedere » : « ho visto »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ridere » (io) passé :",
+              "options": ["ho riso", "ho ridato", "sono riso", "riso ho"],
+              "correctAnswers": [0],
+              "explanation": "Participe « riso »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Morire » (io) passé (sens figuré : j'ai beaucoup ri) — forme courante en classe : « Sono morto dal ridere » utilise :",
+              "options": [
+                "essere + morto",
+                "avere + morto",
+                "avere + morire",
+                "essere + morire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Morire » se conjugue avec « essere » : « sono morto »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Récapitulatif : « mangiare » + « ieri » + « io » :",
+              "options": [
+                "Ieri ho mangiato",
+                "Ieri mangio",
+                "Ieri sono mangiato",
+                "Ieri ho mangiare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule type passato prossimo avec « ieri »."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases correctes pour raconter la veille :",
+              "options": [
+                "Ieri sono andato in città",
+                "Ieri vado in città",
+                "Ieri ho giocato con gli amici",
+                "Ieri gioco con gli amici"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Ieri » exige le passato prossimo."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Choisis la bonne traduction : « Hier j'ai joué »",
+              "options": [
+                "Ieri ho giocato",
+                "Ieri gioco",
+                "Ieri sono giocato",
+                "Ieri ho giocare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ho giocato » traduit « j'ai joué »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Choisis la bonne traduction : « Hier je suis allé » (m.)",
+              "options": [
+                "Ieri sono andato",
+                "Ieri ho andato",
+                "Ieri sono andata",
+                "Ieri andato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sono andato » avec « ieri »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Auxiliaire de « dormire » :",
+              "options": ["avere", "essere", "sempre essere", "mai avere"],
+              "correctAnswers": [0],
+              "explanation": "« Dormire » prend « avere » en passato prossimo."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Auxiliaire de « venire » :",
+              "options": ["essere", "avere", "fare", "potere"],
+              "correctAnswers": [0],
+              "explanation": "« Venire » utilise « essere »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ieri, tu ___ ? (manger, question)",
+              "options": [
+                "hai mangiato",
+                "ho mangiato",
+                "mangio",
+                "hai mangiare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question au passé : « Hai mangiato ieri? »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Participe de « andare » :",
+              "options": ["andato", "andare", "ando", "andata"],
+              "correctAnswers": [0],
+              "explanation": "Le participe de « andare » est « andato » (accord avec « essere »)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Non sono andato ieri » signifie :",
+              "options": [
+                "Je ne suis pas allé hier",
+                "Je suis allé hier",
+                "J'ai mangé hier",
+                "Je vais hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation du passé avec « non » + auxiliaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Verbe en -are au passé (io) : modèle",
+              "options": [
+                "ho ...ato",
+                "sono ...ato",
+                "ho ...ito",
+                "sono ...ito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les -are font -ato avec « ho » en général."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase qui résume le chapitre :",
+              "options": [
+                "Ieri ho mangiato e sono andato a casa",
+                "Ieri mangio e vado a casa",
+                "Mangio ieri",
+                "Sono mangiato ieri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé composé avec « avere » et « essere » après « ieri »."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots situent une action dans le passé récent ?",
+              "options": ["ieri", "sabato scorso", "domani", "oggi"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ieri » et « sabato scorso » placent l'action avant maintenant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie « sabato scorso » ?",
+              "options": [
+                "samedi dernier",
+                "samedi prochain",
+                "ce samedi",
+                "chaque samedi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Scorso » indique le samedi qui vient de passer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : ___ ho studiato italiano. (hier)",
+              "options": ["Ieri", "Oggi", "Domani", "Presto"],
+              "correctAnswers": [0],
+              "explanation": "« Ieri » = hier, en début de phrase."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« La settimana scorsa » signifie :",
+              "options": [
+                "la semaine dernière",
+                "la semaine prochaine",
+                "cette semaine",
+                "chaque semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Scorsa » = dernière, passée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sabato scorso io ___ al cinema. (aller, m.)",
+              "options": ["sono andato", "ho andato", "sono andata", "ieri"],
+              "correctAnswers": [0],
+              "explanation": "Marqueur passé + passato prossimo : « sono andato »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Ieri sera » en italien :",
+              "options": [
+                "Ieri sera",
+                "Ieri mattina",
+                "Stasera",
+                "Domani sera"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ieri sera » = hier soir."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Ieri mattina » signifie :",
+              "options": [
+                "hier matin",
+                "hier soir",
+                "ce matin",
+                "demain matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mattina » = matin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel marqueur n'est PAS passé ?",
+              "options": [
+                "domani",
+                "ieri",
+                "sabato scorso",
+                "la settimana scorsa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Domani » = demain, futur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La settimana scorsa noi ___ . (jouer)",
+              "options": ["abbiamo giocato", "giocare", "giocano", "giochiamo"],
+              "correctAnswers": [0],
+              "explanation": "Après un marqueur passé, « abbiamo giocato »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« L'anno scorso » signifie :",
+              "options": [
+                "l'année dernière",
+                "l'année prochaine",
+                "cette année",
+                "l'an prochain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Anno scorso » = année passée."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux expressions avec « scorso/scorsa » :",
+              "options": [
+                "mese scorso",
+                "anno scorso",
+                "mese prossimo",
+                "settimana prossima"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Scorso » marque le mois ou l'année précédents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Il mese scorso » =",
+              "options": [
+                "le mois dernier",
+                "le mois prochain",
+                "ce mois-ci",
+                "un mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mese scorso » = mois passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ieri ___ ho visto un film. (soir)",
+              "options": ["sera", "mattina", "pomeriggio", "notte"],
+              "correctAnswers": [0],
+              "explanation": "« Ieri sera » précise le moment."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sabato scorso ___ . (j'ai mangé)",
+              "options": ["ho mangiato", "mangio", "mangerò", "mangiavo"],
+              "correctAnswers": [0],
+              "explanation": "Passé composé après « sabato scorso »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Domenica scorsa » =",
+              "options": [
+                "dimanche dernier",
+                "dimanche prochain",
+                "ce dimanche",
+                "chaque dimanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Domenica scorsa » = dimanche passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Marqueur + verbe : « Lunedì scorso io ___ » (aller, f.)",
+              "options": ["sono andata", "ho andata", "sono andato", "ieri"],
+              "correctAnswers": [0],
+              "explanation": "Fille : « sono andata » après « lunedì scorso »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Due giorni fa » signifie environ :",
+              "options": [
+                "il y a deux jours",
+                "dans deux jours",
+                "deux jours",
+                "deux fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Fa » indique un moment révolu : il y a deux jours."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Prossimo » indique :",
+              "options": [
+                "le futur proche",
+                "le passé",
+                "le présent",
+                "jamais le temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Prossimo/prossima » = prochain, à venir."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ieri pomeriggio tu ___ . (jouer)",
+              "options": ["hai giocato", "ho giocato", "gioca", "giocare"],
+              "correctAnswers": [0],
+              "explanation": "« Ieri pomeriggio » + « hai giocato »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase situe bien le temps ?",
+              "options": [
+                "Sabato scorso ho giocato a calcio",
+                "Sabato scorso gioco a calcio",
+                "Sabato prossimo ho giocato",
+                "Gioco sabato scorso"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur passé + passato prossimo cohérents."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels débuts de phrase imposent le passé ?",
+              "options": ["Ieri", "Sabato scorso", "Domani", "Tra due giorni"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ieri » et « sabato scorso » renvoient au passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Venerdì scorso » =",
+              "options": [
+                "vendredi dernier",
+                "vendredi prochain",
+                "ce vendredi",
+                "vendredi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Scorso » = dernier (passé)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La settimana scorsa, io ___ . (manger)",
+              "options": [
+                "ho mangiato",
+                "mangio",
+                "ho mangiare",
+                "sono mangiato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ho mangiato » après marqueur passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Stasera » indique :",
+              "options": [
+                "ce soir (présent/futur proche)",
+                "hier soir",
+                "demain soir",
+                "hier matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Stasera » = ce soir, pas le passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ieri mattina noi ___ a scuola. (aller)",
+              "options": [
+                "siamo andati",
+                "abbiamo andato",
+                "andiamo",
+                "sono andato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Siamo andati » avec « ieri mattina »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Tre settimane fa » =",
+              "options": [
+                "il y a trois semaines",
+                "dans trois semaines",
+                "trois semaines",
+                "trois fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Fa » = il y a (temps écoulé)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Mercoledì scorso » =",
+              "options": [
+                "mercredi dernier",
+                "mercredi prochain",
+                "mercredi",
+                "chaque mercredi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour + « scorso » = dernier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Anno scorso, tu ___ . (voyager — semplificato: andare)",
+              "options": ["sei andato", "hai andato", "vai", "andare"],
+              "correctAnswers": [0],
+              "explanation": "« Sei andato » : voyage = mouvement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Différence : « scorso » vs « prossimo »",
+              "options": [
+                "scorso = passé, prossimo = futur",
+                "les deux passés",
+                "les deux futurs",
+                "aucune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Scorso » regarde en arrière, « prossimo » en avant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "Ieri sera ho guardato la TV",
+                "Ieri sera guardo la TV",
+                "Ieri sera guarderò",
+                "Guardo ieri sera"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur temporel + passato prossimo."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux marqueurs « hier + moment de la journée » :",
+              "options": [
+                "ieri mattina",
+                "ieri sera",
+                "domani mattina",
+                "oggi pomeriggio"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ieri mattina » et « ieri sera » précisent hier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Giovedì scorso » =",
+              "options": ["jeudi dernier", "jeudi prochain", "jeudi", "hier"],
+              "correctAnswers": [0],
+              "explanation": "« Giovedì scorso » = jeudi passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sabato scorso, Maria ___ . (manger)",
+              "options": [
+                "ha mangiato",
+                "ho mangiato",
+                "mangia",
+                "ha mangiare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maria : « ha mangiato »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Un'ora fa » =",
+              "options": [
+                "il y a une heure",
+                "dans une heure",
+                "une heure",
+                "pendant une heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Fa » avec durée = il y a."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Oggi » avec passé est :",
+              "options": [
+                "incorrect si on parle d'hier",
+                "toujours avec passé",
+                "identique à ieri",
+                "futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Oggi » = aujourd'hui, pas hier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La settimana scorsa voi ___ . (étudier)",
+              "options": [
+                "avete studiato",
+                "avete studiare",
+                "studiate",
+                "ho studiato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Voi » : « avete studiato »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Martedì scorso » =",
+              "options": ["mardi dernier", "mardi prochain", "mardi", "demain"],
+              "correctAnswers": [0],
+              "explanation": "Pattern jour + scorso."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ieri, ___ pomeriggio, ho giocato.",
+              "options": ["ieri", "domani", "oggi", "sempre"],
+              "correctAnswers": [0],
+              "explanation": "On répète « ieri » ou dit « ieri pomeriggio »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« L'altro ieri » signifie :",
+              "options": ["avant-hier", "après-demain", "hier", "demain"],
+              "correctAnswers": [0],
+              "explanation": "« L'altro ieri » = avant-hier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mese scorso, io ___ . (lire)",
+              "options": ["ho letto", "ho leggere", "leggo", "sono letto"],
+              "correctAnswers": [0],
+              "explanation": "« Ho letto » après « mese scorso »."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions vont avec le passato prossimo ?",
+              "options": [
+                "ieri ho dormito",
+                "sabato scorso siamo usciti",
+                "domani ho dormito",
+                "oggi ho dormito hier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Marqueurs passés + passé composé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Sabato prossimo » =",
+              "options": [
+                "samedi prochain",
+                "samedi dernier",
+                "hier",
+                "samedi passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Prossimo » = à venir."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Due giorni fa io ___ . (aller, m.)",
+              "options": ["sono andato", "ho andato", "vado", "andato"],
+              "correctAnswers": [0],
+              "explanation": "Il y a deux jours : action passée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ieri notte » =",
+              "options": ["hier nuit", "hier soir", "ce soir", "demain nuit"],
+              "correctAnswers": [0],
+              "explanation": "« Notte » = nuit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Settimana scorsa, loro ___ . (jouer)",
+              "options": [
+                "hanno giocato",
+                "hanno giocare",
+                "giocano",
+                "sono giocato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hanno giocato »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Prima » dans « Prima ho mangiato » =",
+              "options": ["d'abord / avant", "après", "jamais", "demain"],
+              "correctAnswers": [0],
+              "explanation": "« Prima » ordonne dans le récit : d'abord."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Dopo » dans « Dopo sono andato » =",
+              "options": ["ensuite / après", "avant", "hier", "jamais"],
+              "correctAnswers": [0],
+              "explanation": "« Dopo » = après, ensuite."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ieri mattina, tu ___ ? (manger)",
+              "options": ["hai mangiato", "ho mangiato", "mangi", "mangia"],
+              "correctAnswers": [0],
+              "explanation": "Question passée : « hai mangiato »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Lo scorso mese » =",
+              "options": [
+                "le mois dernier",
+                "le mois prochain",
+                "ce mois",
+                "un mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Lo scorso mese » = mois passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase avec marqueur + mouvement :",
+              "options": [
+                "Sabato scorso sono andato al mare",
+                "Sabato scorso ho andato al mare",
+                "Sabato scorso vado al mare",
+                "Sabato prossimo sono andato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sabato scorso » + « sono andato »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux traductions correctes de marqueurs :",
+              "options": [
+                "sabato scorso = samedi dernier",
+                "ieri = hier",
+                "domani = hier",
+                "oggi = hier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Sabato scorso » et « ieri » sont des repères passés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Quattro giorni fa » =",
+              "options": [
+                "il y a quatre jours",
+                "dans quatre jours",
+                "quatre jours",
+                "quatre fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Fa » = il y a."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Domenica scorsa, io ___ in chiesa. (aller — exemple neutre m.)",
+              "options": ["sono andato", "ho andato", "vado", "andare"],
+              "correctAnswers": [0],
+              "explanation": "Passé + mouvement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ieri pomeriggio » =",
+              "options": [
+                "hier après-midi",
+                "hier matin",
+                "aujourd'hui après-midi",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Pomeriggio » = après-midi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel couple est incohérent ?",
+              "options": [
+                "Domani ho mangiato",
+                "Ieri ho mangiato",
+                "Sabato scorso ho mangiato",
+                "La settimana scorsa ho mangiato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Domani » (futur) ne va pas avec passé composé passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Anno scorso noi ___ . (habiter — stare)",
+              "options": ["siamo stati", "abbiamo stati", "stiamo", "ho stati"],
+              "correctAnswers": [0],
+              "explanation": "« Siamo stati » = nous avons été / nous sommes restés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Scorsa » s'accorde avec :",
+              "options": [
+                "un nom féminin (settimana scorsa)",
+                "toujours masculin",
+                "jamais",
+                "verbes seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Settimana » est féminin : « scorsa »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Scorso » avec « sabato » car :",
+              "options": [
+                "sabato est masculin",
+                "sabato est féminin",
+                "c'est un verbe",
+                "c'est pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sabato » masculin → « scorso »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ieri sera, noi ___ . (dormir)",
+              "options": [
+                "abbiamo dormito",
+                "dormiamo",
+                "abbiamo dormire",
+                "sono dormito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Abbiamo dormito » hier soir."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Raconter avec ordre : « Prima ___, poi ___ »",
+              "options": [
+                "ho mangiato, sono uscito",
+                "mangio, esco",
+                "ho mangiare, uscire",
+                "ieri, domani"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux passés : manger puis sortir."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels marqueurs précisent « hier » ?",
+              "options": [
+                "ieri mattina",
+                "ieri sera",
+                "domani sera",
+                "lunedì prossimo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Matin et soir d'hier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Cinque minuti fa » =",
+              "options": [
+                "il y a cinq minutes",
+                "dans cinq minutes",
+                "cinq minutes",
+                "cinq fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Fa » = il y a."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lunedì scorso tu ___ . (jouer)",
+              "options": ["hai giocato", "ho giocato", "giocato", "gioca"],
+              "correctAnswers": [0],
+              "explanation": "« Tu » : « hai giocato »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« La scorsa estate » =",
+              "options": [
+                "l'été dernier",
+                "l'été prochain",
+                "cet été",
+                "en été"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Estate » féminin : « scorsa »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Tra una settimana » =",
+              "options": [
+                "dans une semaine",
+                "il y a une semaine",
+                "la semaine dernière",
+                "une semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tra » = dans (futur)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Settimana scorsa, io ___ un regalo. (acheter)",
+              "options": [
+                "ho comprato",
+                "sono comprato",
+                "compro",
+                "ho comprare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ho comprato »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Sempre » avec passé récent :",
+              "options": [
+                "ne remplace pas ieri",
+                "signifie hier",
+                "est identique à ieri",
+                "interdit le passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sempre » = toujours, pas un marqueur de hier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sabato scorso, voi ___ ? (manger, question)",
+              "options": [
+                "avete mangiato",
+                "hai mangiato",
+                "mangiate",
+                "avete mangiare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Voi » : « avete mangiato »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Lo scorso anno » =",
+              "options": [
+                "l'année dernière",
+                "l'année prochaine",
+                "cette année",
+                "an"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variante de « anno scorso »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Meilleure phrase vacances :",
+              "options": [
+                "La scorsa estate sono andato in vacanza",
+                "La prossima estate sono andato in vacanza",
+                "La scorsa estate vado in vacanza",
+                "Estate scorsa vado"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Été passé + passato prossimo."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases avec « fa » (il y a) :",
+              "options": [
+                "Due ore fa ho telefonato",
+                "Tre giorni fa siamo arrivati",
+                "Due ore prossime",
+                "Tre giorni domani"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Fa » marque un moment passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ieri » se place souvent :",
+              "options": [
+                "en début de phrase",
+                "seulement à la fin",
+                "jamais avec un verbe",
+                "après domani"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ieri » en tête est très fréquent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Venerdì scorso, lei ___ . (aller)",
+              "options": ["è andata", "ha andata", "è andato", "sono andata"],
+              "correctAnswers": [0],
+              "explanation": "« Lei » féminin : « è andata »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Precedente » en classe 5e, sens proche de scorso :",
+              "options": [
+                "précédent / dernier",
+                "prochain",
+                "aujourd'hui",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Settimana precedente » ≈ semaine précédente."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mese scorso tu ___ . (étudier)",
+              "options": [
+                "hai studiato",
+                "ho studiato",
+                "studia",
+                "hai studiare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hai studiato »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Dopodomani » =",
+              "options": ["après-demain", "avant-hier", "hier", "demain"],
+              "correctAnswers": [0],
+              "explanation": "« Dopodomani » = après-demain."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ieri notte io ___ . (dormir)",
+              "options": ["ho dormito", "dormo", "ho dormire", "sono dormito"],
+              "correctAnswers": [0],
+              "explanation": "« Ho dormito » hier nuit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Sabato » + passé sans « scorso » en 5e, on préfère :",
+              "options": [
+                "sabato scorso",
+                "sabato ieri",
+                "sabato domani",
+                "sabato sempre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sabato scorso » évite l'ambiguïté."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Giovedì scorso, noi ___ . (manger)",
+              "options": [
+                "abbiamo mangiato",
+                "hanno mangiato",
+                "mangiamo",
+                "abbiamo mangiare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Noi » : « abbiamo mangiato »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Marqueur + « ho giocato » :",
+              "options": [
+                "Ieri ho giocato",
+                "Domani ho giocato",
+                "Oggi ho giocato hier",
+                "Prossimo ho giocato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ieri » + passé composé cohérent."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels jours + « scorso/scorsa » sont passés ?",
+              "options": [
+                "martedì scorso",
+                "domenica scorsa",
+                "martedì prossimo",
+                "domenica prossima"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Scorso/scorsa » = dernier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Sette giorni fa » ≈",
+              "options": [
+                "il y a sept jours",
+                "dans sept jours",
+                "sept jours",
+                "sept fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Fa » = il y a."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La settimana scorsa, tu ___ a casa. (rester)",
+              "options": ["sei rimasto", "ho rimasto", "resti", "rimanere"],
+              "correctAnswers": [0],
+              "explanation": "« Sei rimasto » avec « rimanere » + essere."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ieri » + présent : bon ou mauvais ?",
+              "options": [
+                "mauvais pour raconter hier",
+                "toujours bon",
+                "obligatoire",
+                "identique passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut le passato prossimo après « ieri »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Anno scorso, io ___ . (jouer)",
+              "options": ["ho giocato", "sono giocato", "gioco", "ho giocare"],
+              "correctAnswers": [0],
+              "explanation": "« Ho giocato » l'année dernière."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Poi » dans un récit passé =",
+              "options": ["ensuite", "avant", "hier", "jamais"],
+              "correctAnswers": [0],
+              "explanation": "« Poi » enchaîne les actions."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sabato scorso, essi ___ . (aller)",
+              "options": [
+                "sono andati",
+                "hanno andato",
+                "vanno",
+                "sono andato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Loro » mouvement : « sono andati »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« L'altro ieri » + passé :",
+              "options": [
+                "L'altro ieri ho mangiato",
+                "L'altro ieri mangio",
+                "L'altro ieri domani",
+                "Altro ieri gioco"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avant-hier + passato prossimo."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Scorsi » (es. « gli anni scorsi ») évoque :",
+              "options": [
+                "les années passées",
+                "les années futures",
+                "demain",
+                "aujourd'hui"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel du passé récent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase la plus complète :",
+              "options": [
+                "Ieri mattina ho mangiato e poi sono andato a scuola",
+                "Ieri mattina mangio e vado a scuola",
+                "Domani mattina ho mangiato",
+                "Ieri mattina ho mangiare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur + deux passés enchaînés."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux bonnes associations marqueur + sens :",
+              "options": [
+                "ieri = hier",
+                "settimana scorsa = semaine dernière",
+                "settimana prossima = semaine dernière",
+                "domani = hier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Repères temporels passés bien identifiés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Traduction : « Samedi dernier j'ai joué »",
+              "options": [
+                "Sabato scorso ho giocato",
+                "Sabato prossimo ho giocato",
+                "Sabato scorso gioco",
+                "Ieri sabato gioco"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sabato scorso ho giocato »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Traduction : « Hier je suis allé » (m.)",
+              "options": [
+                "Ieri sono andato",
+                "Ieri ho andato",
+                "Sabato scorso sono andato",
+                "Ieri andato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ieri sono andato »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Scorso » après un jour de la semaine indique :",
+              "options": [
+                "le dernier de ce nom",
+                "le prochain",
+                "aujourd'hui",
+                "chaque semaine sans passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. « lunedì scorso » = lundi passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Due giorni fa, noi ___ . (manger)",
+              "options": [
+                "abbiamo mangiato",
+                "mangiamo",
+                "abbiamo mangiare",
+                "hanno mangiato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il y a deux jours : « abbiamo mangiato »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel marqueur est futur ?",
+              "options": [
+                "la prossima settimana",
+                "la settimana scorsa",
+                "ieri",
+                "sabato scorso"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Prossima settimana » = semaine prochaine."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ieri sera, io ___ . (regarder)",
+              "options": [
+                "ho guardato",
+                "guardo",
+                "ho guardare",
+                "sono guardato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ho guardato » hier soir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase récap marqueurs + passé :",
+              "options": [
+                "Sabato scorso ho mangiato e ieri sono andato al parco",
+                "Sabato scorso mangio e ieri vado",
+                "Domani ho mangiato",
+                "Ho mangiato sabato prossimo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux marqueurs passés et passato prossimo."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Fa » dans « due settimane fa » =",
+              "options": ["il y a", "dans", "pendant", "jamais"],
+              "correctAnswers": [0],
+              "explanation": "« Fa » indique l'écart vers le passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif unité : avec un marqueur passé, le verbe est au",
+              "options": [
+                "passato prossimo",
+                "presente",
+                "futuro",
+                "infinito seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les marqueurs de temps passé exigent le passé composé."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

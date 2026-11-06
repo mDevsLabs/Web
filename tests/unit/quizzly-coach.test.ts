@@ -1,0 +1,399 @@
+import { describe, expect, it } from "vitest";
+import {
+  assemblerTentatives,
+  blocsCompteCoach,
+  COACH_FACT_GUARD,
+  type ContexteCoach,
+  construireTentative,
+  messagesPourModele,
+  messageVisibleCoach,
+  modeleCoachEnregistrable,
+  preparerEchangeCoach,
+  promptCoachAvecCompte,
+  type QuizTente,
+  resoudreModeleCoach,
+  scoreRetenu,
+  validerSuivi,
+} from "@/lib/quizzly/coach";
+
+const questions = [
+  {
+    explanation: "Le carré de 3 est 9.",
+    id: "q1",
+    options: ["6", "9", "12", "3"],
+    question: "Combien font 3 au carré ?",
+  },
+  {
+    explanation: "Deux droites parallèles ne se coupent pas.",
+    id: "q2",
+    options: [
+      "elles se coupent",
+      "elles sont parallèles",
+      "elles sont égales",
+      "elles sont sécantes",
+    ],
+    question: "Deux droites qui ne se rencontrent pas sont…",
+  },
+] as const;
+
+function contexte(tentatives: QuizTente[]): ContexteCoach {
+  return {
+    passedCount: 2,
+    streakCount: 3,
+    tentatives,
+    xp: 40,
+    yearLabel: "4e",
+  };
+}
+
+describe("dernière tentative Quizzly", () => {
+  it("ne garde que les erreurs, et le meilleur score ne baisse pas", () => {
+    const tentative = construireTentative(
+      questions,
+      {
+        correctCount: 1,
+        passed: false,
+        results: [
+          {
+            correct: false,
+            expectedIndexes: [1],
+            givenIndexes: [0],
+            questionId: "q1",
+          },
+          {
+            correct: true,
+            expectedIndexes: [1],
+            givenIndexes: [1],
+            questionId: "q2",
+          },
+        ],
+        totalCount: 2,
+      },
+      new Date("2026-10-31T08:00:00.000Z")
+    );
+    expect(tentative.correctCount).toBe(1);
+    expect(tentative.misses).toHaveLength(1);
+    expect(tentative.misses[0]?.questionId).toBe("q1");
+    expect(tentative.misses[0]?.question).toBe("Combien font 3 au carré ?");
+    expect(tentative.misses.some((erreur) => erreur.questionId === "q2")).toBe(
+      false
+    );
+
+    const retenu = scoreRetenu(
+      { correctCount: 8, passed: true },
+      { correctCount: tentative.correctCount, passed: tentative.passed }
+    );
+    expect(retenu).toEqual({ correctCount: 8, passed: true });
+  });
+
+  it("génère une tentative partielle exploitable par le Coach en cas d'interruption Game Over", () => {
+    const tentative = construireTentative(
+      questions,
+      {
+        correctCount: 0,
+        passed: false,
+        results: [
+          {
+            correct: false,
+            expectedIndexes: [1],
+            givenIndexes: [0],
+            questionId: "q1",
+          },
+        ],
+        totalCount: 10,
+      },
+      new Date("2026-10-31T08:30:00.000Z")
+    );
+    expect(tentative.passed).toBe(false);
+    expect(tentative.correctCount).toBe(0);
+    expect(tentative.totalCount).toBe(10);
+    expect(tentative.misses).toHaveLength(1);
+    expect(tentative.misses[0]?.questionId).toBe("q1");
+
+    const retenu = scoreRetenu(null, {
+      correctCount: tentative.correctCount,
+      passed: tentative.passed,
+    });
+    expect(retenu).toEqual({ correctCount: 0, passed: false });
+  });
+});
+
+describe("échange du Coach", () => {
+  const tente: QuizTente = {
+    answeredAt: "2026-10-31T08:00:00.000Z",
+    chapterTitle: "Nombres",
+    correctCount: 1,
+    misses: [
+      {
+        expectedIndexes: [1],
+        explanation: "Le carré de 3 est 9.",
+        givenIndexes: [0],
+        options: ["6", "9", "12", "3"],
+        question: "Combien font 3 au carré ?",
+        questionId: "q1",
+      },
+    ],
+    passed: false,
+    quizId: "4e/maths/01/u1/q01",
+    quizTitle: "Carrés",
+    subjectLabel: "Maths",
+    totalCount: 2,
+  };
+
+  it("refuse une question absente des erreurs", () => {
+    const autre = preparerEchangeCoach({
+      contexte: contexte([tente]),
+      intent: "explain",
+      questionId: "q2",
+      quizId: tente.quizId,
+    });
+    expect(autre).toEqual({ code: "unknown_question", ok: false });
+
+    const inconnu = preparerEchangeCoach({
+      contexte: contexte([tente]),
+      intent: "explain",
+      questionId: "q1",
+      quizId: "4e/maths/01/u1/q02",
+    });
+    expect(inconnu).toEqual({ code: "unknown_question", ok: false });
+  });
+
+  it("ancre l'explication sur le cours et ignore une question juste", () => {
+    const echange = preparerEchangeCoach({
+      contexte: contexte([tente]),
+      intent: "explain",
+      questionId: "q1",
+      quizId: tente.quizId,
+    });
+    expect(echange.ok).toBe(true);
+    if (!echange.ok) {
+      return;
+    }
+    expect(echange.ouverture).toContain("Le carré de 3 est 9.");
+    expect(echange.ouverture).toContain("choix de l'élève");
+    expect(echange.ouverture).not.toContain("Deux droites parallèles");
+    expect(echange.system).toContain("4e");
+  });
+
+  it("répond à une question libre sans livrer les corrections", () => {
+    const echange = preparerEchangeCoach({
+      contexte: contexte([tente]),
+      intent: "chat",
+    });
+    expect(echange.ok).toBe(true);
+    if (!echange.ok) {
+      return;
+    }
+    expect(echange.ouverture).toContain("Carrés");
+    expect(echange.ouverture).toContain("1/2");
+    expect(echange.ouverture).not.toContain("Le carré de 3 est 9.");
+    expect(echange.faits).not.toContain("Le carré de 3 est 9.");
+  });
+
+  it("formule le message visible d'une erreur", () => {
+    const visible = messageVisibleCoach({
+      contexte: contexte([tente]),
+      intent: "explain",
+      questionId: "q1",
+      quizId: tente.quizId,
+    });
+    expect(visible).toEqual({
+      ok: true,
+      text: "Explique mon erreur : Combien font 3 au carré ?",
+    });
+  });
+
+  it("ne garde que les derniers messages pour le modèle", () => {
+    const fenetre = messagesPourModele(
+      Array.from({ length: 25 }, (_, index) => index)
+    );
+    expect(fenetre).toHaveLength(20);
+    expect(fenetre[0]).toBe(5);
+    expect(fenetre.at(-1)).toBe(24);
+  });
+
+  it("encourage sans redonner l'explication du cours", () => {
+    const echange = preparerEchangeCoach({
+      contexte: contexte([tente]),
+      intent: "encourage",
+    });
+    expect(echange.ok).toBe(true);
+    if (!echange.ok) {
+      return;
+    }
+    expect(echange.ouverture).toContain("40");
+    expect(echange.ouverture).not.toContain("Le carré de 3 est 9.");
+  });
+
+  it("ne détaille que vingt erreurs dans le bilan", () => {
+    const base = tente.misses[0];
+    if (!base) {
+      throw new Error("La fixture doit contenir une erreur.");
+    }
+    const tentatives = [0, 1, 2].map((quiz) => ({
+      ...tente,
+      misses: Array.from({ length: 10 }, (_, index) => ({
+        ...base,
+        explanation: `explication-${quiz}-${index}`,
+        question: `Question ${quiz}-${index}`,
+        questionId: `q${index + 1}`,
+      })),
+      quizId: `4e/maths/01/u1/q0${quiz + 1}`,
+    }));
+    const echange = preparerEchangeCoach({
+      contexte: contexte(tentatives),
+      intent: "summary",
+    });
+    expect(echange.ok).toBe(true);
+    if (!echange.ok) {
+      return;
+    }
+    expect(echange.ouverture).toContain("explication-0-0");
+    expect(echange.ouverture).toContain("explication-1-9");
+    expect(echange.ouverture).not.toContain("explication-2-0");
+  });
+
+  it("rejette un suivi qui ne vient pas de l'élève", () => {
+    expect(
+      validerSuivi([{ role: "assistant", text: "Voici pourquoi." }])
+    ).toMatchObject({ ok: false });
+    expect(
+      validerSuivi([
+        { role: "assistant", text: "Voici pourquoi." },
+        { role: "user", text: "Je n'ai pas compris le carré." },
+      ]).ok
+    ).toBe(true);
+  });
+});
+
+describe("modèle du Coach", () => {
+  const catalogue = ["mai-2-mini", "gros-modele"];
+
+  it("retombe sur le modèle du compte si le modèle enregistré n'est plus autorisé", () => {
+    expect(
+      resoudreModeleCoach({
+        autorise: (id) => id !== "gros-modele",
+        catalogueIds: catalogue,
+        fallback: "mai-2-mini",
+        preferred: "mai-2-mini",
+        stored: "gros-modele",
+      })
+    ).toBe("mai-2-mini");
+  });
+
+  it("utilise le modèle du compte quand Quizzly n'en a pas choisi", () => {
+    expect(
+      resoudreModeleCoach({
+        autorise: () => true,
+        catalogueIds: catalogue,
+        fallback: "mai-2-mini",
+        preferred: "compte-modele",
+        stored: null,
+      })
+    ).toBe("compte-modele");
+  });
+
+  it("retombe sur le repli si le modèle du compte est refusé", () => {
+    expect(
+      resoudreModeleCoach({
+        autorise: (id) => id === "mai-2-mini",
+        catalogueIds: catalogue,
+        fallback: "mai-2-mini",
+        preferred: "compte-modele",
+        stored: null,
+      })
+    ).toBe("mai-2-mini");
+  });
+
+  it("n'enregistre pas un modèle hors catalogue ou hors forfait", () => {
+    expect(
+      modeleCoachEnregistrable({
+        autorise: (id) => id !== "gros-modele",
+        catalogueIds: catalogue,
+        modelId: "gros-modele",
+      })
+    ).toBe(false);
+    expect(
+      modeleCoachEnregistrable({
+        autorise: () => true,
+        catalogueIds: catalogue,
+        modelId: "inconnu",
+      })
+    ).toBe(false);
+    expect(
+      modeleCoachEnregistrable({
+        autorise: () => true,
+        catalogueIds: catalogue,
+        modelId: "mai-2-mini",
+      })
+    ).toBe(true);
+  });
+});
+
+describe("lecture d'une tentative illisible", () => {
+  it("ignore un instantané qui n'a pas la forme attendue", () => {
+    expect(
+      assemblerTentatives(
+        [{ lastAttempt: { misses: "non" }, quizId: "4e/maths/01/u1/q01" }],
+        () => null
+      )
+    ).toEqual([]);
+  });
+});
+
+describe("instructions personnalisées et mémoire du Coach", () => {
+  it("inclut les instructions seulement si activées, et intègre la mémoire", () => {
+    const vide = blocsCompteCoach({
+      instructions: "Tutoyer et être concis.",
+      instructionsEnabled: false,
+      memory: null,
+    });
+    expect(vide).toBeNull();
+
+    const avecInstructions = blocsCompteCoach({
+      instructions: "Tutoyer et être concis.",
+      instructionsEnabled: true,
+      memory: null,
+    });
+    expect(avecInstructions).toContain("INSTRUCTIONS DE L'ÉLÈVE");
+    expect(avecInstructions).toContain("Tutoyer et être concis.");
+    expect(avecInstructions).not.toContain("MÉMOIRE");
+
+    const avecMemoire = blocsCompteCoach({
+      instructions: null,
+      instructionsEnabled: false,
+      memory: "1. L'élève révise le brevet.",
+    });
+    expect(avecMemoire).toContain("MÉMOIRE");
+    expect(avecMemoire).toContain("1. L'élève révise le brevet.");
+    expect(avecMemoire).not.toContain("INSTRUCTIONS DE L'ÉLÈVE");
+
+    const complet = blocsCompteCoach({
+      instructions: "Parler simplement.",
+      instructionsEnabled: true,
+      memory: "1. Aime les exemples géométriques.",
+    });
+    expect(complet).toContain("INSTRUCTIONS DE L'ÉLÈVE");
+    expect(complet).toContain("Parler simplement.");
+    expect(complet).toContain("MÉMOIRE");
+    expect(complet).toContain("1. Aime les exemples géométriques.");
+  });
+
+  it("ajoute la garde pédagogique stricte et ne modifie pas les règles", () => {
+    const base = "Tu es le coach Quizzly.";
+    const sansPerso = promptCoachAvecCompte(base, null);
+    expect(sansPerso).toContain(COACH_FACT_GUARD);
+    expect(sansPerso).toContain(
+      "La personnalisation règle le ton et l'adaptation à l'élève. Elle ne change pas les faits du cours, les règles du jeu ni la note déjà décidée."
+    );
+
+    const avecPerso = promptCoachAvecCompte(base, "BLOC PERSO");
+    expect(avecPerso).toContain(COACH_FACT_GUARD);
+    expect(avecPerso).toContain("BLOC PERSO");
+
+    // Idempotent
+    const double = promptCoachAvecCompte(sansPerso, null);
+    const occurrences = double.split(COACH_FACT_GUARD).length - 1;
+    expect(occurrences).toBe(1);
+  });
+});

@@ -1,0 +1,2728 @@
+{
+  "id": "3e-francais-02",
+  "year": "3e",
+  "subject": "francais",
+  "title": "L'argumentation",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Convaincre et persuader",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Convaincre ou persuader ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels objectifs visent principalement la conviction et la persuasion ?",
+              "options": [
+                "Convaincre cherche l'adhésion par la raison ; persuader touche les émotions et les valeurs",
+                "Convaincre et persuader désignent exactement la même démarche",
+                "Persuader repose surtout sur des preuves et des faits vérifiables",
+                "Convaincre ignore totalement le raisonnement logique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Convaincre privilégie le logos ; persuader mobilise aussi le pathos et l'ethos."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un texte argumentatif, la thèse correspond à…",
+              "options": [
+                "Un exemple tiré de l'actualité",
+                "L'idée défendue par l'auteur",
+                "La conclusion obligatoire du paragraphe",
+                "Un connecteur logique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La thèse est la position que l'on cherche à faire accepter."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un argument est…",
+              "options": [
+                "Une opinion sans justification",
+                "Une raison qui soutient la thèse",
+                "Un résumé du texte",
+                "Une figure de style uniquement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque argument doit expliquer pourquoi la thèse est plausible."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le logos désigne…",
+              "options": [
+                "L'appel à la crédibilité de l'orateur",
+                "L'appel à la logique et au raisonnement",
+                "L'appel exclusif à la colère",
+                "L'absence d'exemples"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le logos repose sur des faits, des causes et des conséquences."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le pathos vise surtout…",
+              "options": [
+                "Les émotions et l'imaginaire du lecteur",
+                "La correction grammaticale",
+                "La longueur du texte",
+                "La citation systématique de sources"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Images, anecdotes ou ton peuvent susciter une réaction affective."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'ethos repose sur…",
+              "options": [
+                "Le nombre de pages",
+                "La crédibilité et l'image de celui qui parle",
+                "L'usage obligatoire de chiffres",
+                "L'absence de concession"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On accorde plus d'attention à une voix perçue comme compétente et honnête."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Donc » et « ainsi » sont surtout des…",
+              "options": [
+                "Connecteurs argumentatifs",
+                "Noms propres",
+                "Verbes au passé simple",
+                "Adjectifs qualificatifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils marquent une conséquence ou une conclusion dans le raisonnement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une concession consiste à…",
+              "options": [
+                "Rejeter toute objection",
+                "Reconnaître une limite avant de défendre sa thèse",
+                "Copier un texte sans le citer",
+                "Changer de sujet"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Conceder un point renforce souvent la crédibilité de l'argumentation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un exemple bien choisi sert à…",
+              "options": [
+                "Remplacer tous les arguments",
+                "Illustrer concrètement une idée",
+                "Éviter toute thèse",
+                "Allonger le texte sans sens"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'exemple rend l'argument plus clair et mémorable."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une publicité, « 9 familles sur 10 » peut viser surtout…",
+              "options": [
+                "Un effet de preuve statistique pour convaincre",
+                "Une description poétique sans but",
+                "Une erreur de conjugaison",
+                "Un récit au passé simple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chiffres donnent une impression de vérité et de sérieux."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "L'argument logique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments renforcent un argument logique ?",
+              "options": [
+                "Des faits vérifiables et un enchaînement clair",
+                "Des insultes adressées à l'adversaire",
+                "Des causes et conséquences bien expliquées",
+                "Le refus de toute preuve"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La logique lie des éléments pour montrer qu'une conclusion suit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une cause explique surtout…",
+              "options": [
+                "Pourquoi un phénomène se produit",
+                "La date exacte d'un roman",
+                "Le nombre de lignes d'un poème",
+                "La couleur d'une couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relier cause et effet structure un raisonnement convaincant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Par conséquent » introduit en général…",
+              "options": [
+                "Une opposition",
+                "Une conséquence",
+                "Une description de personnage",
+                "Un dialogue"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ce connecteur annonce ce qui découle de ce qui précède."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un sophisme est…",
+              "options": [
+                "Un argument qui paraît solide mais est trompeur",
+                "Un synonyme de thèse",
+                "Un type de vers régulier",
+                "Une figure obligatoire du débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut repérer les raisonnements fallacieux pour bien argumenter."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Généraliser à partir d'un seul cas est…",
+              "options": [
+                "Toujours une preuve scientifique",
+                "Souvent un raccourci logique fragile",
+                "Interdit en français",
+                "Une règle de ponctuation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un cas isolé ne prouve pas une règle valable pour tous."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comparer deux situations pour défendre une idée, c'est une…",
+              "options": [
+                "Comparaison argumentative",
+                "Métaphore obligatoire",
+                "Erreur d'orthographe",
+                "Conclusion sans thèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La comparaison met en lumière des points communs ou des différences utiles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Cependant » sert surtout à…",
+              "options": [
+                "Marquer une opposition ou une nuance",
+                "Indiquer une énumération",
+                "Remplacer un sujet",
+                "Terminer une lettre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il introduit un contraste avec l'idée précédente."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une définition précise dans un texte argumentatif…",
+              "options": [
+                "Clarifie les termes du débat",
+                "Empêche toute thèse",
+                "Remplace la conclusion",
+                "Supprime le besoin d'exemples"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans mots clairs, les arguments peuvent être mal compris."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Enchaîner thèse → argument → exemple, c'est…",
+              "options": [
+                "Un plan de paragraphe argumentatif",
+                "Un plan narratif chronologique",
+                "Une strophe de poème",
+                "Une liste de courses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette progression guide le lecteur pas à pas."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une statistique fiable doit idéalement…",
+              "options": [
+                "Provenir d'une source identifiable",
+                "Être inventée pour frapper les esprits",
+                "Rester sans contexte",
+                "Contredire tous les faits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La source et le contexte évitent de manipuler le lecteur."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les procédés de persuasion",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels procédés visent à persuader le public ?",
+              "options": [
+                "Témoignages et histoires touchantes",
+                "Refus de toute émotion",
+                "Images fortes ou slogans mémorables",
+                "Suppression de toute thèse"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La persuasion s'appuie souvent sur l'affectif et la mémoire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un slogan efficace est en général…",
+              "options": [
+                "Court et facile à retenir",
+                "Une page entière",
+                "Sans verbe",
+                "Rédigé en latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La brièveté aide la mémorisation et la diffusion."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'appel à l'autorité consiste à…",
+              "options": [
+                "Citer un expert ou une institution reconnue",
+                "Insulter l'adversaire",
+                "Omettre toute preuve",
+                "Changer de sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On espère que la crédibilité de la source convaincra."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une anecdote personnelle peut…",
+              "options": [
+                "Humaniser le propos et créer de l'empathie",
+                "Remplacer la loi",
+                "Supprimer le débat",
+                "Interdire la réfutation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le récit concret touche le lecteur au-delà des chiffres."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La répétition d'une idée dans un discours…",
+              "options": [
+                "Peut ancrer le message dans les esprits",
+                "Efface automatiquement la thèse",
+                "Est toujours une faute",
+                "Empêche toute argumentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marteler une formule renforce son impact persuasif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une question rhétorique…",
+              "options": [
+                "Oriente le public sans attendre de réponse",
+                "Remplace la conclusion",
+                "Supprime les arguments",
+                "Est réservée aux poèmes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle invite à adopter implicitement le point de vue de l'orateur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le choix des mots chargés (positifs ou négatifs) relève du…",
+              "options": [
+                "Lexique persuasif",
+                "Plan narratif",
+                "Versification",
+                "Théâtre classique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Connoter un terme influence l'attitude du lecteur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une image publicitaire de nature peut viser…",
+              "options": [
+                "Associer le produit à un sentiment de bien-être",
+                "Démontrer une théorème mathématique",
+                "Raconter une biographie complète",
+                "Supprimer la marque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'association d'idées persuade sans argument détaillé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Présenter un choix comme urgent (« agissez maintenant ») exploite…",
+              "options": [
+                "La peur de manquer une opportunité",
+                "Les règles d'accord du participe passé",
+                "La versification",
+                "Le passé simple du récit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'urgence pousse à décider vite, parfois sans réfléchir."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Distinguer persuasion et manipulation, c'est repérer si…",
+              "options": [
+                "Les preuves et les intentions sont honnêtes",
+                "Le texte est écrit en vers",
+                "Il n'y a aucun titre",
+                "Le auteur est célèbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manipuler, c'est induire en erreur ou cacher des enjeux."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Pathos, ethos et logos",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels énoncés décrivent la rhétorique étudiée en argumentation ?",
+              "options": [
+                "Logos, pathos et ethos sont des modes de persuasion",
+                "Acte, scène et chapitre sont des modes de persuasion",
+                "Pathos et ethos peuvent compléter le logos",
+                "Strophe et refrain sont des connecteurs logiques"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Aristote distingue logos, pathos et ethos ; ils peuvent se combiner dans un discours."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un discours très émotionnel mobilise surtout…",
+              "options": [
+                "Le pathos",
+                "Le logos seul",
+                "La ponctuation",
+                "Le passé simple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sentiments du public sont au centre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Montrer qu'on maîtrise le sujet renforce…",
+              "options": [
+                "L'ethos",
+                "Le nombre de pages",
+                "La rime",
+                "Le décor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La compétence perçue crédibilise le propos."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Enchaîner des données chiffrées relève surtout du…",
+              "options": ["Logos", "Pathos exclusif", "Théâtre", "Sonnet"],
+              "correctAnswers": [0],
+              "explanation": "Les chiffres appuient un raisonnement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un ton calme et respectueux peut améliorer…",
+              "options": [
+                "L'ethos",
+                "La longueur du texte",
+                "Le genre épique",
+                "La couleur du livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On fait plus confiance à une voix posée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une métaphore émotive (« un avenir sombre ») touche surtout…",
+              "options": [
+                "Le pathos",
+                "La conjugaison",
+                "La typographie",
+                "Le plan en deux actes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'image suscite une réaction affective."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Citer une loi ou un texte officiel appuie surtout…",
+              "options": [
+                "Le logos",
+                "L'absence d'argument",
+                "Le comique",
+                "La strophe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On s'appuie sur une norme vérifiable."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Assumer une erreur passée dans un discours peut renforcer…",
+              "options": [
+                "L'ethos",
+                "Le pathos uniquement",
+                "La confusion",
+                "Le silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'honnêteté améliore la confiance."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combiner logos et pathos permet…",
+              "options": [
+                "De toucher la raison et les émotions",
+                "D'éviter toute thèse",
+                "De supprimer la conclusion",
+                "De ne plus citer d'exemples"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bons discours mêlent preuves et sensibilité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repérer le logos dans un texte, c'est chercher…",
+              "options": [
+                "Faits, causes, conséquences",
+                "Uniquement des adjectifs",
+                "Le nombre de chapitres",
+                "La couleur de couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le raisonnement explicite est la marque du logos."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Thèse et arguments",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments structurent un paragraphe argumentatif ?",
+              "options": [
+                "Une thèse claire",
+                "Des arguments développés",
+                "Uniquement des dialogues",
+                "Aucune idée directrice"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Thèse et arguments forment le cœur du paragraphe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une thèse doit être…",
+              "options": [
+                "Soutenable et précise",
+                "Impossible à discuter",
+                "Sans lien avec le sujet",
+                "Secrète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On doit pouvoir la défendre avec des raisons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un argument sans exemple ni explication est…",
+              "options": [
+                "Souvent trop vague",
+                "Toujours suffisant",
+                "Une conclusion",
+                "Un connecteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut développer pour convaincre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Plusieurs arguments peuvent…",
+              "options": [
+                "Se compléter pour renforcer la thèse",
+                "Se contredire sans problème",
+                "Remplacer la thèse",
+                "Supprimer la conclusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque raison apporte un angle différent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une thèse sous forme de question (« Faut-il… ? »)…",
+              "options": [
+                "Annonce le problème étudié",
+                "Est interdite en argumentation",
+                "Remplace tous les arguments",
+                "Est un récit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La question cadre le débat."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Hiérarchiser ses arguments, c'est…",
+              "options": [
+                "Placer le plus fort au bon endroit",
+                "Les supprimer",
+                "Les mélanger au hasard",
+                "Ne garder qu'un mot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre influence la force du texte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un paragraphe qui ne défend qu'une seule idée est…",
+              "options": [
+                "Plus clair pour le lecteur",
+                "Interdit",
+                "Sans thèse",
+                "Un poème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un paragraphe = une sous-thèse ou un aspect."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La conclusion d'un texte argumentatif…",
+              "options": [
+                "Rappelle la thèse et ouvre parfois une perspective",
+                "Introduit une thèse nouvelle sans lien",
+                "Supprime tous les arguments",
+                "Est un dialogue théâtral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle boucle le raisonnement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un argument d'autorité cite…",
+              "options": [
+                "Une personne ou source reconnue",
+                "Un personnage fictif sans contexte",
+                "Rien",
+                "Uniquement des onomatopées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expertise ou la notoriété soutient la thèse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Vérifier que chaque argument répond à la thèse, c'est…",
+              "options": [
+                "Contrôler la cohérence",
+                "Compter les lignes",
+                "Choisir une police",
+                "Écrire en vers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un argument hors sujet affaiblit le texte."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Exemples et citations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quand utilise-t-on exemples et citations ?",
+              "options": [
+                "Pour illustrer ou prouver un argument",
+                "Pour remplacer toute réflexion",
+                "Pour appuyer sur des faits ou des paroles d'autrui",
+                "Pour éviter toute ponctuation"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ils concrétisent ou légitiment une idée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une citation entre guillemets doit…",
+              "options": [
+                "Respecter les mots d'origine",
+                "Être inventée",
+                "Changer le sens volontairement",
+                "Remplacer la thèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Citer, c'est reproduire fidèlement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Présenter une citation, c'est souvent…",
+              "options": [
+                "Introduire la source et expliquer son intérêt",
+                "La coller sans commentaire",
+                "La cacher",
+                "La traduire en chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le commentaire lie la citation à l'argument."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un exemple historique sert à…",
+              "options": [
+                "Montrer qu'une situation s'est déjà produite",
+                "Remplacer la loi",
+                "Supprimer le débat",
+                "Écrire un dialogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passé éclaire le présent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un contre-exemple peut…",
+              "options": [
+                "Nuancer ou tester la solidité d'une thèse",
+                "Prouver automatiquement la thèse",
+                "Remplacer la conclusion",
+                "Interdire la concession"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il oblige à préciser ou limiter le propos."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Par exemple » introduit…",
+              "options": [
+                "Une illustration",
+                "Une opposition forte",
+                "Une fin de texte",
+                "Un chapitre de roman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un marqueur d'exemplification."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Citer un scientifique dans un dossier sur le climat renforce…",
+              "options": [
+                "Le logos",
+                "Le nombre de pages",
+                "La rime",
+                "Le quiproquo comique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La expertise appuie le raisonnement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un exemple trop éloigné du sujet…",
+              "options": [
+                "Affaiblit l'argumentation",
+                "Remplace la thèse",
+                "Est toujours obligatoire",
+                "Est un connecteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'exemple doit éclairer la thèse, pas la distraire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Paraphraser une source, c'est…",
+              "options": [
+                "Reformuler avec ses mots en gardant le sens",
+                "Copier mot pour mot",
+                "Inventer une citation",
+                "Supprimer la source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La paraphrase évite le plagiat tout en s'appuyant sur l'idée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une citation trop longue sans analyse…",
+              "options": [
+                "N'avance pas assez l'argument",
+                "Remplace tous les connecteurs",
+                "Est une règle de grammaire",
+                "Est un genre théâtral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut commenter pour intégrer la citation au raisonnement."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Connecteurs argumentatifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels connecteurs expriment une opposition ?",
+              "options": ["Cependant", "Donc", "Néanmoins", "Par conséquent"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Donc » et « par conséquent » marquent plutôt une conséquence."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« En effet » sert à…",
+              "options": [
+                "Justifier ou expliquer",
+                "Conclure brusquement",
+                "Raconter une histoire",
+                "Décrire un décor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il introduit une raison ou une preuve."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« De plus » indique…",
+              "options": [
+                "Un argument supplémentaire",
+                "Une conclusion finale",
+                "Un flash-back",
+                "Une didascalie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ajoute une raison à la même thèse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Toutefois » est proche de…",
+              "options": ["Cependant", "Ensuite", "Hier", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "Les deux marquent une restriction ou un contraste."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« En conclusion » annonce…",
+              "options": [
+                "La fin du raisonnement",
+                "Un nouveau chapitre narratif",
+                "Un dialogue",
+                "Une strophe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On boucle le texte argumentatif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Car » introduit…",
+              "options": [
+                "Une cause",
+                "Une opposition",
+                "Une énumération de courses",
+                "Un personnage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il explique pourquoi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Enchaîner sans connecteur peut…",
+              "options": [
+                "Rendre le texte confus",
+                "Rendre la thèse invisible",
+                "Créer un sonnet",
+                "Remplacer la réfutation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les articulateurs guident la lecture."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« D'une part… d'autre part » structure…",
+              "options": [
+                "Deux aspects ou deux arguments",
+                "Un unique mot",
+                "Un poème lyrique",
+                "Une liste sans sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On organise clairement deux pôles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ainsi » peut marquer…",
+              "options": [
+                "Une conséquence ou une synthèse",
+                "Uniquement le passé",
+                "Un dialogue théâtral",
+                "Une faute d'orthographe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sens dépend du contexte du paragraphe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repérer les connecteurs aide à…",
+              "options": [
+                "Suivre le fil du raisonnement",
+                "Compter les personnages",
+                "Mesurer le vers",
+                "Choisir une couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils signalent relations logiques entre idées."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Réfutation et concession",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Que fait une bonne réfutation ?",
+              "options": [
+                "Reconnaît l'argument adverse",
+                "L'ignore complètement",
+                "Montre ses limites avec des preuves",
+                "Insulte l'adversaire"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "On répond précisément aux objections."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Réfuter, c'est…",
+              "options": [
+                "Contester un argument adverse",
+                "Copier l'adversaire",
+                "Changer de sujet",
+                "Supprimer sa thèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On montre pourquoi l'autre raison est insuffisante."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Certes… mais » exprime…",
+              "options": [
+                "Concession puis contre-argument",
+                "Un récit au passé",
+                "Une ode",
+                "Un monologue sans thèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On accorde un point avant de défendre sa thèse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Attaquer la personne au lieu de son argument est…",
+              "options": [
+                "Un sophisme (ad hominem)",
+                "Une preuve logique",
+                "Une citation",
+                "Un connecteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cela affaiblit le débat."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Anticiper une objection dans son texte…",
+              "options": [
+                "Renforce la crédibilité",
+                "Supprime la thèse",
+                "Interdit la conclusion",
+                "Remplace les exemples"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On montre qu'on a envisagé d'autres points de vue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une concession honnête…",
+              "options": [
+                "Ne supprime pas forcément la thèse",
+                "Oblige à changer d'avis",
+                "Est interdite",
+                "Remplace la réfutation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut admettre une limite tout en défendant l'idée principale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour réfuter, on peut…",
+              "options": [
+                "Apporter un contre-exemple ou une preuve",
+                "Répéter la thèse sans explication",
+                "Effacer l'argument adverse",
+                "Ne rien dire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut répondre au fond."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Il est vrai que… néanmoins… » sert à…",
+              "options": [
+                "Concéder puis nuancer",
+                "Raconter une biographie",
+                "Décrire un paysage",
+                "Finir un poème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure classique concession + défense."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ignorer les arguments contraires…",
+              "options": [
+                "Affaiblit souvent le texte",
+                "Rend le texte parfait",
+                "Est obligatoire",
+                "Crée un dialogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lecteur sceptique reste insatisfait."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un débat, réfuter avec courtoisie…",
+              "options": [
+                "Maintient l'échange constructif",
+                "Interdit toute thèse",
+                "Supprime le temps de parole",
+                "Remplace la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On attaque les idées, pas les personnes."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Publicité et argumentation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels procédés trouve-t-on souvent dans une publicité ?",
+              "options": [
+                "Slogan mémorable",
+                "Démonstration mathématique complète",
+                "Témoignage ou star",
+                "Absence de message"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La pub persuade vite, pas toujours par la logique seule."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Nouveau » dans une annonce vise à…",
+              "options": [
+                "Susciter l'envie ou la curiosité",
+                "Prouver une loi",
+                "Raconter le passé simple",
+                "Supprimer la marque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La nouveauté attire l'attention."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Montrer des clients satisfaits relève du…",
+              "options": [
+                "Pathos et ethos",
+                "Sonnet",
+                "Passé simple narratif",
+                "Vers alexandrin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On mise sur émotion et confiance."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une pub qui cache les défauts du produit…",
+              "options": [
+                "Peut manipuler le consommateur",
+                "Est toujours honnête",
+                "Est un genre théâtral",
+                "Remplace la thèse scolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut rester critique face au message."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comparer son produit à un autre sans preuve…",
+              "options": [
+                "Peut être trompeur",
+                "Est une règle de grammaire",
+                "Est un connecteur",
+                "Est une strophe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les comparaisons doivent être vérifiables."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Analyser une publicité, c'est repérer…",
+              "options": [
+                "Cible, arguments, images",
+                "Uniquement la taille de l'affiche",
+                "Le nombre de pages du dictionnaire",
+                "La rime interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On décortique les moyens de persuasion."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un prix barré « promo » persuade en jouant sur…",
+              "options": [
+                "Le gain économique perçu",
+                "La conjugaison",
+                "Le passé composé",
+                "Le alexandrin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lecteur croit faire une bonne affaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Recommandé par 8 médecins sur 10 » mélange…",
+              "options": [
+                "Ethos et logos",
+                "Théâtre et ode",
+                "Sonnet et fable",
+                "Récit et conte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autorité plus chiffre pour convaincre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La musique ou les couleurs dans une pub…",
+              "options": [
+                "Renforcent l'émotion (pathos)",
+                "Remplacent la loi",
+                "Suppriment la thèse",
+                "Sont des connecteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ambiance influence l'attitude."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Devenir un lecteur vigilant face à la pub, c'est…",
+              "options": [
+                "Questionner preuves et intentions",
+                "Accepter tout sans réfléchir",
+                "Ignorer les images",
+                "Supprimer les slogans du français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Esprit critique et argumentation vont ensemble."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan — convaincre et persuader",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour convaincre et persuader efficacement, il faut…",
+              "options": [
+                "Structurer thèse et arguments",
+                "Oublier les exemples",
+                "Adapter le registre au public",
+                "Refuser toute concession"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Structure et public guident le choix des preuves et du ton."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Convaincre repose surtout sur…",
+              "options": [
+                "La raison et les preuves",
+                "Les insultes",
+                "Le silence",
+                "L'absence de plan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le logos est central."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Persuader mobilise aussi…",
+              "options": [
+                "Les émotions et la confiance",
+                "Uniquement les tableaux",
+                "Le passé simple",
+                "Les didascalies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pathos et ethos complètent le logos."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un texte argumentatif efficace est…",
+              "options": [
+                "Clair, ordonné et justifié",
+                "Sans connecteurs",
+                "Sans thèse",
+                "Uniquement des citations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clarté et preuves convainquent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Repérer un sophisme sert à…",
+              "options": [
+                "Ne pas se laisser tromper",
+                "Supprimer la réfutation",
+                "Écrire en vers",
+                "Changer de genre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'esprit critique protège le débat."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La concession bien utilisée…",
+              "options": [
+                "Peut renforcer l'ethos",
+                "Efface la thèse",
+                "Interdit la conclusion",
+                "Remplace les faits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reconnaître une limite paraît plus honnête."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les connecteurs argumentatifs…",
+              "options": [
+                "Articulent le raisonnement",
+                "Remplacent les arguments",
+                "Sont des personnages",
+                "Sont des rimes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils rendent la logique visible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Exemples et citations doivent…",
+              "options": [
+                "Servir la thèse",
+                "Remplacer la réflexion",
+                "Contredire tous les faits",
+                "Supprimer la conclusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sinon ils diluent le message."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Face à un discours persuasif, le citoyen doit…",
+              "options": [
+                "Analyser arguments et preuves",
+                "Croire sans vérifier",
+                "Ignorer le contexte",
+                "Refuser toute émotion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'analyse est une compétence de 3e."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'argumentation prépare notamment à…",
+              "options": [
+                "Le débat oral et l'essai",
+                "Le sonnet seul",
+                "La liste de vocabulaire seule",
+                "L'absence d'échange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écrire et parler argumenté sont liés."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Le débat",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce qu'un débat ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques définissent un débat ?",
+              "options": [
+                "Des positions opposées sur un sujet",
+                "Un monologue sans public",
+                "Des échanges oraux structurés",
+                "L'absence de règles"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "On confronte des idées devant des auditeurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une motion de débat est…",
+              "options": [
+                "La question ou proposition discutée",
+                "Un décor de scène",
+                "Un type de vers",
+                "Un connecteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle fixe le sujet du débat."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Défendre la motion, c'est…",
+              "options": [
+                "Prouver qu'elle est acceptable",
+                "La rejeter",
+                "La changer sans prévenir",
+                "Ne pas parler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équipe « pour » soutient la motion."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "S'opposer à la motion, c'est…",
+              "options": [
+                "Montrer ses limites ou la refuter",
+                "La répéter sans argument",
+                "Quitter la salle",
+                "Lire un poème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équipe « contre » conteste la proposition."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un débat scolaire vise aussi à…",
+              "options": [
+                "Apprendre à argumenter à l'oral",
+                "Supprimer l'écoute",
+                "Interdire la réfutation",
+                "Remplacer la lecture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un entraînement à la démocratie du dialogue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le public ou le jury…",
+              "options": [
+                "Peut évaluer la qualité des arguments",
+                "Ne joue aucun rôle",
+                "Écrit le texte à la place",
+                "Choisit les rimes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils jugent souvent la persuasion et la cohérence."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un débat n'est pas…",
+              "options": [
+                "Une dispute d'insultes",
+                "Un échange d'idées",
+                "Une confrontation argumentée",
+                "Une pratique orale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La courtoisie distingue débat et querelle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le temps de parole limité…",
+              "options": [
+                "Oblige à être clair et concis",
+                "Empêche toute thèse",
+                "Supprime les arguments",
+                "Interdit la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque minute doit compter."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Préparer un débat commence par…",
+              "options": [
+                "Analyser la motion et rechercher des preuves",
+                "Improviser sans lire",
+                "Ignorer l'adversaire",
+                "Changer de sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Documentation et plan sont essentiels."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un bon débat respecte…",
+              "options": [
+                "Les règles et les autres orateurs",
+                "Uniquement son opinion",
+                "Le silence absolu",
+                "L'absence de motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cadre permet un échange productif."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Règles et courtoisie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels comportements sont attendus en débat ?",
+              "options": [
+                "Écouter sans couper la parole",
+                "Insulter l'adversaire",
+                "S'adresser au fond des arguments",
+                "Déformer les propos adverses"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le respect maintient un échange utile."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Couper la parole en permanence…",
+              "options": [
+                "Nuit à la qualité du débat",
+                "Renforce toujours sa thèse",
+                "Est une règle officielle",
+                "Remplace la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chacun doit pouvoir s'exprimer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Parler au fond, c'est…",
+              "options": [
+                "Répondre aux arguments, pas aux personnes",
+                "Changer de sujet",
+                "Lire un roman",
+                "Ignorer la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On évite les attaques personnelles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le ton agressif…",
+              "options": [
+                "Affaiblit souvent la crédibilité (ethos)",
+                "Prouve automatiquement la thèse",
+                "Est obligatoire",
+                "Remplace les preuves"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La violence verbale décrédibilise."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Reformuler l'argument adverse avant de répondre…",
+              "options": [
+                "Montre qu'on a bien écouté",
+                "Est interdit",
+                "Supprime la réfutation",
+                "Remplace la conclusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cela évite les malentendus."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un arbitre ou président de séance…",
+              "options": [
+                "Fait respecter le règlement",
+                "Écrit les devoirs",
+                "Choisit les rimes",
+                "Joue un personnage de théâtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il garantit l'équité du débat."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Utiliser des sources en débat…",
+              "options": [
+                "Renforce le logos",
+                "Est inutile",
+                "Interdit la parole",
+                "Remplace la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les faits vérifiables soutiennent la parole."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Accepter une bonne objection…",
+              "options": [
+                "Peut montrer honnêteté intellectuelle",
+                "Signifie abandonner",
+                "Est interdit",
+                "Supprime le jury"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nuancer n'est pas perdre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le langage inclusif et respectueux…",
+              "options": [
+                "Facilite l'écoute",
+                "Empêche d'argumenter",
+                "Remplace la thèse",
+                "Est hors sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le public reste ouvert au message."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En 3e, apprendre la courtoisie au débat sert à…",
+              "options": [
+                "Débattre en citoyen responsable",
+                "Éviter toute prise de parole",
+                "Supprimer la réfutation",
+                "Interdire la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Argumenter, c'est aussi respecter l'autre."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Motion et position",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour traiter une motion, un orateur doit…",
+              "options": [
+                "Comprendre les mots clés",
+                "Ignorer le sujet",
+                "Choisir une position claire",
+                "Refuser toute preuve"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Analyse et prise de position guident les arguments."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Faut-il limiter… » est une motion…",
+              "options": [
+                "Sous forme de question",
+                "Narrative",
+                "Lyrique",
+                "Théâtrale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La question engage le pour et le contre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Définir les termes de la motion…",
+              "options": [
+                "Évite les malentendus",
+                "Supprime le débat",
+                "Interdit la réfutation",
+                "Remplace le jury"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout le monde doit parler du même sujet."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une position « pour » doit…",
+              "options": [
+                "Apporter des arguments favorables",
+                "Répéter « non »",
+                "Changer de motion",
+                "Ne pas citer d'exemples"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque argument soutient la motion."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une position « contre » cherche à…",
+              "options": [
+                "Montrer les limites ou dangers",
+                "Défendre la motion",
+                "Supprimer la parole",
+                "Lire un poème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On conteste la proposition."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une motion trop vague…",
+              "options": [
+                "Complique l'argumentation",
+                "Rend le débat parfait",
+                "Est toujours interdite",
+                "Remplace le temps de parole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut préciser le problème."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Repérer les enjeux d'une motion, c'est voir…",
+              "options": [
+                "Qui est concerné et quelles conséquences",
+                "Uniquement la couleur du pupitre",
+                "Le nombre de vers",
+                "La météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les enjeux nourrissent les arguments."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Changer de camp en cours de débat sans raison…",
+              "options": [
+                "Peut perdre la crédibilité",
+                "Est toujours exigé",
+                "Remplace la motion",
+                "Supprime le jury"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cohérence renforce l'ethos."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une motion sur les écrans à l'école implique…",
+              "options": [
+                "Des arguments sur santé, pédagogie, liberté",
+                "Uniquement des rimes",
+                "Un récit au passé simple",
+                "Un décor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs angles alimentent le débat."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Noter sa position avant de parler…",
+              "options": [
+                "Clarifie le plan",
+                "Interdit la concession",
+                "Supprime l'écoute",
+                "Remplace les connecteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On sait où l'on veut conduire l'auditoire."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Construire son plan",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un plan de débat solide comprend…",
+              "options": [
+                "Introduction de la position",
+                "Arguments ordonnés",
+                "Absence totale d'exemples",
+                "Insultes personnelles"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Intro et arguments ordonnés forment le cœur du plan ; exemples et conclusion viennent les compléter."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'introduction orale présente…",
+              "options": [
+                "La motion et sa position",
+                "Un chapitre de roman",
+                "Un alexandrin",
+                "Une liste de courses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le public sait d'emblée où vous situez."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deux ou trois arguments forts valent mieux que…",
+              "options": [
+                "Dix idées floues",
+                "Aucune idée",
+                "Un seul mot",
+                "Un dialogue sans fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La qualité prime sur la quantité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Classer ses arguments du plus solide au plus léger…",
+              "options": [
+                "Peut renforcer l'impact",
+                "Est interdit",
+                "Supprime la motion",
+                "Remplace la courtoisie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre stratégique persuade mieux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Prévoir une réfutation dans le plan…",
+              "options": [
+                "Anticipe l'adversaire",
+                "Empêche de parler",
+                "Supprime la thèse",
+                "Interdit l'écoute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On prépare la réponse aux objections."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Des notes succinctes en débat…",
+              "options": [
+                "Aident sans lire mot à mot",
+                "Doivent être un roman",
+                "Remplacent la voix",
+                "Interdisent la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oral reste naturel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La conclusion d'un discours de débat…",
+              "options": [
+                "Rappelle la position et résume",
+                "Introduit un sujet neuf",
+                "Supprime les arguments",
+                "Est un poème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On laisse une impression claire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un argument = une idée + …",
+              "options": [
+                "Preuve ou exemple",
+                "Uniquement un adjectif",
+                "Silence",
+                "Changement de motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans appui, l'idée reste fragile."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Utiliser des connecteurs à l'oral…",
+              "options": [
+                "Guide l'auditoire",
+                "Est interdit",
+                "Remplace la motion",
+                "Supprime le temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« D'abord », « en outre », « enfin » structurent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Répéter la motion dans le plan…",
+              "options": [
+                "Maintient le focus",
+                "Efface la thèse",
+                "Interdit la réfutation",
+                "Remplace le jury"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne s'éloigne pas du sujet."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Écouter et répliquer",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bien répliquer suppose de…",
+              "options": [
+                "Avoir écouté l'argument adverse",
+                "Inventer ce que l'autre a dit",
+                "Noter les points faibles",
+                "Ignorer la motion"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La réplique répond au fond, pas à une caricature."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Prendre des notes pendant l'adversaire…",
+              "options": [
+                "Facilite la réfutation",
+                "Est interdit",
+                "Supprime sa propre parole",
+                "Remplace la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On retient les arguments à contester."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une réplique efficace est…",
+              "options": [
+                "Courte et ciblée",
+                "Une insulte",
+                "Un monologue de dix minutes",
+                "Hors sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On va droit au point contesté."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Reformuler avant de répliquer…",
+              "options": [
+                "Prouve l'écoute",
+                "Affaiblit toujours",
+                "Supprime la thèse",
+                "Interdit le logos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adversaire se sent entendu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Répondre à un argument faible en premier…",
+              "options": [
+                "Peut gagner confiance",
+                "Est toujours inutile",
+                "Remplace la conclusion",
+                "Supprime le jury"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On montre qu'on maîtrise le débat."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si l'adversaire cite une statistique douteuse…",
+              "options": [
+                "On peut demander la source ou la contester",
+                "On applaudit sans réfléchir",
+                "On change de motion",
+                "On se tait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le logos exige des preuves solides."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le silence après une réplique forte…",
+              "options": [
+                "Peut laisser réfléchir le public",
+                "Interdit le débat",
+                "Remplace la motion",
+                "Est une faute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'impact n'a pas toujours besoin de volume."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une question à l'adversaire…",
+              "options": [
+                "Peut révéler une faiblesse",
+                "Remplace toute argumentation",
+                "Est interdite partout",
+                "Supprime la courtoisie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle engage à clarifier ou justifier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ne pas répondre à un argument important…",
+              "options": [
+                "Affaiblit sa propre équipe",
+                "Garantit la victoire",
+                "Est obligatoire",
+                "Remplace la synthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le public remarque les angles morts."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'écoute active en débat inclut…",
+              "options": [
+                "Attention, notes, reformulation",
+                "Regarder ailleurs",
+                "Parler en même temps",
+                "Ignorer la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre l'autre est une compétence clé."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "L'art de la réfutation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Techniques de réfutation au débat :",
+              "options": [
+                "Contre-exemple",
+                "Ad hominem",
+                "Preuve nouvelle",
+                "Fuite du sujet"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Attaquer la personne ou fuir le sujet affaiblit le débat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Démontrer qu'une statistique est hors contexte, c'est…",
+              "options": [
+                "Réfuter par la mise en contexte",
+                "Concéder la motion",
+                "Changer de genre",
+                "Lire un poème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On montre que la preuve ne prouve pas ce qu'on dit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Votre exemple date de vingt ans » peut…",
+              "options": [
+                "Questionner l'actualité de l'argument",
+                "Prouver automatiquement la motion",
+                "Supprimer le temps de parole",
+                "Remplacer la courtoisie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un exemple obsolète affaiblit la démonstration."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Accuser l'adversaire de mauvaise foi sans preuve…",
+              "options": [
+                "Est un procédé faible",
+                "Est la meilleure réfutation",
+                "Remplace la motion",
+                "Est obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On reste sur les arguments."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Montrer une contradiction interne chez l'adversaire…",
+              "options": [
+                "Affaiblit son raisonnement",
+                "Renforce toujours sa thèse",
+                "Interdit la concession",
+                "Supprime le jury"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cohérence est essentielle au logos."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Proposer une solution alternative…",
+              "options": [
+                "Peut réfuter en montrant un meilleur chemin",
+                "Est interdit au « contre »",
+                "Remplace l'écoute",
+                "Supprime la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne détruit pas sans construire parfois."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La réfutation finale (dernière réplique)…",
+              "options": [
+                "Synthétise les points gagnants",
+                "Introduit un roman",
+                "Ignore la motion",
+                "Supprime les preuves"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dernière impression pour le jury."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Utiliser une concession avant de réfuter…",
+              "options": [
+                "Peut paraître plus crédible",
+                "Interdit toute victoire",
+                "Supprime la motion",
+                "Remplace le plan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Oui, mais… » adoucit et convainc."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réfuter une généralisation avec un cas précis…",
+              "options": [
+                "Montre les limites du raisonnement",
+                "Est un sophisme",
+                "Remplace la courtoisie",
+                "Supprime le temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un contre-exemple cible la faille."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En débat, réfuter calmement…",
+              "options": [
+                "Renforce l'ethos",
+                "Prouve qu'on a tort",
+                "Interdit le pathos",
+                "Supprime la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maîtrise de soi = sérieux."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Débat et médias",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "À la télévision ou en ligne, un débat médiatique…",
+              "options": [
+                "S'adresse à un large public",
+                "Ignore toujours les arguments",
+                "Utilise parfois slogans et images",
+                "N'a aucun lien avec l'argumentation"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les médias amplifient oralité et persuasion."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un talk-show n'est pas toujours…",
+              "options": [
+                "Un débat équilibré",
+                "Une émission",
+                "Un plateau",
+                "Un format oral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le spectacle peut primer sur la profondeur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les réseaux sociaux peuvent…",
+              "options": [
+                "Diffuser des arguments courts et viraux",
+                "Remplacer toute réflexion",
+                "Interdire la réfutation",
+                "Supprimer la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La brièveté change la forme du débat."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Repérer le montage ou la coupure d'une interview…",
+              "options": [
+                "Évite de mal interpréter",
+                "Est inutile",
+                "Remplace la thèse",
+                "Interdit l'écoute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contexte compte pour juger."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un titre clickbait…",
+              "options": [
+                "Peut déformer le débat",
+                "Garantit la vérité",
+                "Remplace la motion",
+                "Est un connecteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il cherche le clic plus que la nuance."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comparer plusieurs sources sur un sujet…",
+              "options": [
+                "Développe l'esprit critique",
+                "Est interdit",
+                "Supprime la parole",
+                "Remplace la courtoisie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On croise arguments et faits."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une émission qui n'invite qu'un seul avis…",
+              "options": [
+                "Limite le débat",
+                "Est le modèle parfait",
+                "Remplace la réfutation",
+                "Supprime le jury"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pluralité nourrit la démocratie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les sondages présentés en direct…",
+              "options": [
+                "Doivent être interprétés avec prudence",
+                "Prouvent toujours la vérité",
+                "Remplacent les arguments",
+                "Sont des poèmes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode et marge d'erreur comptent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Analyser un débat télévisé, c'est observer…",
+              "options": [
+                "Arguments, temps de parole, procédés",
+                "Uniquement les costumes",
+                "Le nombre de pages",
+                "La rime"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On décortique comme en classe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le citoyen face aux débats médiatiques doit…",
+              "options": [
+                "Questionner sources et intentions",
+                "Croire tout sans preuve",
+                "Ignorer la motion",
+                "Refuser toute émotion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même compétences qu'en débat scolaire."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Débat scolaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En classe, un débat peut…",
+              "options": [
+                "Mobiliser recherche documentaire",
+                "Se passer de motion",
+                "Entraîner prise de parole et écoute",
+                "Interdire la réfutation"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "C'est une mise en pratique du programme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le rôle du professeur animateur…",
+              "options": [
+                "Facilite le respect des règles",
+                "Remplace tous les élèves",
+                "Choisit le gagnant sans critères",
+                "Supprime la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il cadre sans étouffer les idées."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Travailler en équipe pour un débat…",
+              "options": [
+                "Répartit arguments et répliques",
+                "Interdit la préparation",
+                "Supprime la motion",
+                "Remplace l'écoute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chacun a un rôle (orateur, réfutateur…)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une grille d'évaluation peut porter sur…",
+              "options": [
+                "Clarté, arguments, écoute",
+                "Couleur des chaussures",
+                "Taille du cartable",
+                "Nombre de rimes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les critères rendent le progrès visible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Chronométrer les prises de parole…",
+              "options": [
+                "Entraîne à la concision",
+                "Empêche de parler",
+                "Supprime la thèse",
+                "Interdit la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétence utile pour examens et concours."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Après un débat, un débriefing…",
+              "options": [
+                "Permet de réfléchir sur ce qui a marché",
+                "Est inutile",
+                "Remplace la motion",
+                "Supprime les notes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On progresse en analysant sa performance."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Utiliser des fiches sources en classe…",
+              "options": [
+                "Renforce le logos",
+                "Est tricher",
+                "Interdit la parole",
+                "Remplace la courtoisie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Documenter est une étape du projet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un débat sur un roman lu en classe…",
+              "options": [
+                "Relie lecture et argumentation",
+                "Interdit les citations",
+                "Supprime la motion",
+                "Remplace l'écrit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On défend une interprétation ou un jugement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Parler debout face à la classe…",
+              "options": [
+                "Travaille l'aisance orale",
+                "Interdit les arguments",
+                "Supprime le jury",
+                "Remplace la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Posture et voix comptent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le débat scolaire prépare à…",
+              "options": [
+                "DNB et vie citoyenne",
+                "Uniquement le théâtre antique",
+                "L'absence de dialogue",
+                "Le sonnet seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Argumenter est une compétence du socle."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Argumentation orale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour convaincre à l'oral, on soigne…",
+              "options": [
+                "Volume et articulation",
+                "Marmonnement systématique",
+                "Regard du public",
+                "Structure des idées"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Voix, corps et plan soutiennent le message."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Varier le rythme de sa voix…",
+              "options": [
+                "Maintient l'attention",
+                "Affaiblit toujours",
+                "Supprime la motion",
+                "Remplace la thèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monotonie = public qui décroche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une pause après une idée forte…",
+              "options": [
+                "La met en valeur",
+                "Interdit le débat",
+                "Supprime l'argument",
+                "Remplace la conclusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le silence fait réfléchir."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Éviter de lire son texte en entier…",
+              "options": [
+                "Favorise le contact visuel",
+                "Est interdit",
+                "Supprime les preuves",
+                "Remplace la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oral n'est pas une lecture muette."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les gestes trop nombreux…",
+              "options": [
+                "Peuvent distraire",
+                "Prouvent toujours la thèse",
+                "Remplacent les arguments",
+                "Sont obligatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gestuelle sobre suffit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Adapter son vocabulaire au public…",
+              "options": [
+                "Facilite la compréhension",
+                "Affaiblit le logos",
+                "Interdit la motion",
+                "Supprime la réfutation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On reste clair sans être condescendant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Répéter la thèse avec des mots différents…",
+              "options": [
+                "Ancre le message",
+                "Est une faute",
+                "Supprime la conclusion",
+                "Remplace l'écoute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reformulation = mémorisation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Gérer le stress avant de parler…",
+              "options": [
+                "Respirer et connaître son plan",
+                "Abandonner",
+                "Insulter",
+                "Changer de motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La préparation rassure."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un exemple raconté à l'oral…",
+              "options": [
+                "Rend l'argument vivant (pathos)",
+                "Remplace toute preuve",
+                "Interdit le logos",
+                "Supprime le jury"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le récit engage l'auditoire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Terminer par une phrase claire sur sa position…",
+              "options": [
+                "Laisse une impression nette",
+                "Est interdit",
+                "Supprime la motion",
+                "Remplace la réfutation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chute orale compte autant qu'à l'écrit."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan — le débat",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un bon débatoral combine…",
+              "options": [
+                "Arguments solides (logos)",
+                "Mépris de l'adversaire",
+                "Écoute et réfutation",
+                "Refus de toute règle"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Raison, respect et réponse aux objections vont ensemble."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La motion reste…",
+              "options": [
+                "Le fil directeur",
+                "Un détail optionnel",
+                "Un connecteur",
+                "Un vers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout argument doit y revenir."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le débat diffère d'une simple opinion car…",
+              "options": [
+                "Il justifie avec des preuves",
+                "Il n'a pas de public",
+                "Il interdit la parole",
+                "Il ignore la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opinion ≠ argumentation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La courtoisie au débat…",
+              "options": [
+                "Protège l'échange démocratique",
+                "Affaiblit toujours",
+                "Supprime la réfutation",
+                "Remplace le plan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans respect, plus de dialogue."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Préparer plan et sources…",
+              "options": [
+                "Augmente les chances de persuader",
+                "Est inutile",
+                "Interdit l'improvisation totale",
+                "Supprime le temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même l'oral se prépare."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réfuter sans écouter…",
+              "options": [
+                "Produit des réponses hors sujet",
+                "Est le ideal",
+                "Renforce l'ethos",
+                "Remplace la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut connaître l'argument adverse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le débat à l'école et dans les médias…",
+              "options": [
+                "Partagent des enjeux d'argumentation",
+                "N'ont rien à voir",
+                "Interdisent le logos",
+                "Suppriment la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Esprit critique partout."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Convaincre à l'oral, c'est aussi…",
+              "options": [
+                "Toucher par la voix et le corps",
+                "Lire sans articuler",
+                "Ignorer le public",
+                "Supprimer la thèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dimension persuasive est orale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Après ce chapitre, l'élève de 3e doit savoir…",
+              "options": [
+                "Structurer écrit et oral argumentés",
+                "Uniquement conjuguer",
+                "Éviter tout débat",
+                "Supprimer les connecteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif du programme sur l'argumentation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'argumentation prépare à…",
+              "options": [
+                "Défendre une idée en citoyen",
+                "Rejeter toute preuve",
+                "Parler sans écouter",
+                "Ignorer la motion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétence pour la suite du collège et au-delà."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

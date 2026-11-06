@@ -1,0 +1,2738 @@
+{
+  "id": "3e-svt-03",
+  "year": "3e",
+  "subject": "svt",
+  "title": "La planète et les risques",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Climat et météo",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Météo ou climat ?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases décrivent la météo ?",
+              "type": "multiple_choice",
+              "options": [
+                "État de l'atmosphère à court terme",
+                "Moyenne sur trente ans minimum",
+                "Température et vent du moment",
+                "Climat identique chaque année"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La météo est le temps observé sur quelques heures ou jours."
+            },
+            {
+              "id": "q2",
+              "question": "Le climat d'un lieu correspond à…",
+              "type": "single_choice",
+              "options": [
+                "La pluie de demain",
+                "Des moyennes sur plusieurs décennies",
+                "Le vent à midi",
+                "Un bulletin d'une semaine"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le climat résume ce qui est habituel sur la longue durée."
+            },
+            {
+              "id": "q3",
+              "question": "Un record de chaleur en été est surtout…",
+              "type": "single_choice",
+              "options": [
+                "Un événement météo",
+                "La preuve que le climat n'existe pas",
+                "Une mesure sur 100 ans obligatoire",
+                "Un changement de saison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un jour exceptionnel ne définit pas le climat moyen."
+            },
+            {
+              "id": "q4",
+              "question": "Quel appareil mesure la température de l'air ?",
+              "type": "single_choice",
+              "options": [
+                "Baromètre",
+                "Thermomètre",
+                "Pluviomètre",
+                "Sismographe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le thermomètre mesure la température."
+            },
+            {
+              "id": "q5",
+              "question": "Les stations météo servent à…",
+              "type": "single_choice",
+              "options": [
+                "Collecter des données pour prévisions et statistiques",
+                "Changer le climat",
+                "Stopper les orages",
+                "Mesurer les fossiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mesures alimentent prévisions et études climatiques."
+            },
+            {
+              "id": "q6",
+              "question": "L'inclinaison de l'axe terrestre explique surtout…",
+              "type": "single_choice",
+              "options": [
+                "Les saisons",
+                "Les marées",
+                "Les séismes",
+                "La salinité des mers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inclinaison modifie l'éclairement solaire selon la période de l'année."
+            },
+            {
+              "id": "q7",
+              "question": "Une masse d'air chaud et humide favorise souvent…",
+              "type": "single_choice",
+              "options": [
+                "Nuages et pluie possibles",
+                "Ciel toujours dégagé",
+                "Glace au sol en été",
+                "Absence de vent obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'humidité peut condenser et donner des précipitations."
+            },
+            {
+              "id": "q8",
+              "question": "Un front froid, c'est…",
+              "type": "single_choice",
+              "options": [
+                "Air froid qui avance et soulève l'air chaud",
+                "Fin de toute pluie sur la planète",
+                "Hausse du climat en une heure",
+                "Frontière d'un pays"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au front froid, l'air froid pousse l'air chaud : instabilité possible."
+            },
+            {
+              "id": "q9",
+              "question": "Comparer une semaine aux normales climatiques permet…",
+              "type": "single_choice",
+              "options": [
+                "De voir si le temps a été plus chaud ou humide que d'habitude",
+                "De prédire le climat au jour près dans 200 ans",
+                "D'annuler les aléas",
+                "De mesurer le noyau terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On repère des écarts par rapport aux moyennes."
+            },
+            {
+              "id": "q10",
+              "question": "La rotation de la Terre provoque…",
+              "type": "single_choice",
+              "options": [
+                "L'alternance jour et nuit",
+                "Les saisons seules",
+                "Les tsunamis",
+                "La formation du pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Terre tourne sur elle-même en environ 24 h."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Lire le temps qu'il fait",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Un bulletin météo utile contient souvent…",
+              "type": "multiple_choice",
+              "options": [
+                "Températures et risque de pluie",
+                "Direction ou force du vent",
+                "Composition du noyau terrestre",
+                "Liste de toutes les espèces locales"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Température, précipitations et vent sont des éléments classiques."
+            },
+            {
+              "id": "q2",
+              "question": "Haute pression atmosphérique : temps souvent…",
+              "type": "single_choice",
+              "options": [
+                "Plus stable",
+                "Toujours orageux",
+                "Sans air",
+                "Identique au climat mondial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anticyclone : air descend, nuages limités."
+            },
+            {
+              "id": "q3",
+              "question": "L'humidité relative mesure…",
+              "type": "single_choice",
+              "options": [
+                "Vapeur d'eau par rapport à la saturation",
+                "Salinité de l'océan",
+                "Vitesse de la Terre",
+                "pH des roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus elle est haute, plus l'air est proche de la saturation."
+            },
+            {
+              "id": "q4",
+              "question": "Cumulonimbus = surtout…",
+              "type": "single_choice",
+              "options": [
+                "Nuages d'orage",
+                "Brouillard permanent",
+                "Glace polaire",
+                "Nuages très bas sans pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gros nuages avec forte convection et orages possibles."
+            },
+            {
+              "id": "q5",
+              "question": "La rose des vents indique…",
+              "type": "single_choice",
+              "options": [
+                "D'où vient le vent",
+                "Température du magma",
+                "Nombre de jours de pluie sur 30 ans",
+                "Âge des glaciers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On lit nord, sud-est, etc. pour la direction du vent."
+            },
+            {
+              "id": "q6",
+              "question": "Sur une carte, les isobares sont…",
+              "type": "single_choice",
+              "options": [
+                "Lignes de même pression",
+                "Profondeur des océans",
+                "Routes",
+                "Frontières politiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Iso = égal ; bar = pression."
+            },
+            {
+              "id": "q7",
+              "question": "Pluies plus acides peuvent être liées à…",
+              "type": "single_choice",
+              "options": [
+                "Polluants issus d'activités humaines",
+                "Rotation de la Lune seule",
+                "Absence de nuages",
+                "Marées uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains gaz polluants modifient la chimie des précipitations."
+            },
+            {
+              "id": "q8",
+              "question": "Le brouillard se forme quand…",
+              "type": "single_choice",
+              "options": [
+                "Vapeur d'eau condense près du sol",
+                "Le Soleil s'éteint",
+                "Pression toujours maximale",
+                "Plus d'humidité dans l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nuage au contact du sol par refroidissement."
+            },
+            {
+              "id": "q9",
+              "question": "Satellites météo : on peut…",
+              "type": "single_choice",
+              "options": [
+                "Suivre nuages et tempêtes à grande échelle",
+                "Modifier le climat d'un pays",
+                "Remplacer toute mesure au sol",
+                "Mesurer les fossiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'imagerie aide à repérer cyclones et fronts."
+            },
+            {
+              "id": "q10",
+              "question": "Prévision à 3 jours vs 15 jours : en général…",
+              "type": "single_choice",
+              "options": [
+                "3 jours est plus fiable",
+                "15 jours est toujours exact",
+                "Les deux sont identiques au climat",
+                "Impossible aujourd'hui"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'incertitude augmente avec l'échéance."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Effet de serre naturel",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "L'effet de serre naturel…",
+              "type": "multiple_choice",
+              "options": [
+                "Retient une partie du rayonnement infrarouge",
+                "Rend la Terre habitable avec des températures plus élevées qu'en son absence",
+                "Bloque tout le rayonnement solaire",
+                "Supprime l'évaporation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sans lui, la planète serait bien plus froide."
+            },
+            {
+              "id": "q2",
+              "question": "La Terre réémet surtout en…",
+              "type": "single_choice",
+              "options": [
+                "Infrarouge",
+                "Lumière visible uniquement",
+                "Ultraviolet intense",
+                "Ondes radio seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Absorption du visible, réémission en IR vers l'espace."
+            },
+            {
+              "id": "q3",
+              "question": "La vapeur d'eau est…",
+              "type": "single_choice",
+              "options": [
+                "Un gaz à effet de serre",
+                "Un métal",
+                "Un nuage bas uniquement",
+                "Sans effet sur la chaleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle retient une part importante de chaleur."
+            },
+            {
+              "id": "q4",
+              "question": "CO₂ naturel provient aussi de…",
+              "type": "single_choice",
+              "options": [
+                "Vivant et échanges air-océan",
+                "Uniquement usines modernes",
+                "La Lune",
+                "Météores"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le carbone circule dans biosphère et océans."
+            },
+            {
+              "id": "q5",
+              "question": "Mars : atmosphère fine ⇒…",
+              "type": "single_choice",
+              "options": [
+                "Effet de serre faible, froid",
+                "Plus chaud que la Terre",
+                "Même climat que la Terre",
+                "Pas de température mesurable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu de gaz pour retenir la chaleur."
+            },
+            {
+              "id": "q6",
+              "question": "Océans et CO₂ :",
+              "type": "single_choice",
+              "options": [
+                "Absorbent et libèrent du carbone",
+                "Ne contiennent jamais de CO₂",
+                "Créent seuls l'effet de serre",
+                "Empêchent photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mers sont un puits et une source de CO₂."
+            },
+            {
+              "id": "q7",
+              "question": "Photosynthèse :",
+              "type": "single_choice",
+              "options": [
+                "Fixe CO₂, libère O₂",
+                "Augmente toujours CO₂ air",
+                "Ne se fait que la nuit",
+                "Stoppe l'effet de serre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les plantes captent le carbone pour leur croissance."
+            },
+            {
+              "id": "q8",
+              "question": "Effet de serre renforcé par l'homme :",
+              "type": "single_choice",
+              "options": [
+                "Plus de GES émis que certains puits n'en absorbent",
+                "Plus d'effet de serre naturel",
+                "Soleil plus chaud depuis 1900",
+                "Terre ne tourne plus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Émissions humaines s'ajoutent au cycle naturel."
+            },
+            {
+              "id": "q9",
+              "question": "Le méthane CH₄ est…",
+              "type": "single_choice",
+              "options": [
+                "Un GES puissant",
+                "Un roc",
+                "De l'eau pure",
+                "Un nuage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fort pouvoir de réchauffement par rapport au CO₂."
+            },
+            {
+              "id": "q10",
+              "question": "Sans atmosphère, température moyenne…",
+              "type": "single_choice",
+              "options": [
+                "Serait bien plus basse",
+                "Identique",
+                "Plus chaude",
+                "Inconnue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'atmosphère isole la surface."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Gaz à effet de serre et activités",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Des GES liés aux activités humaines incluent…",
+              "type": "multiple_choice",
+              "options": [
+                "CO₂ des combustibles fossiles",
+                "Méthane de certaines filières",
+                "Oxygène pur respiré",
+                "Azote liquide industriel sans lien"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Combustion et élevage/agriculture émettent CO₂ et CH₄."
+            },
+            {
+              "id": "q2",
+              "question": "Combustibles fossiles :",
+              "type": "single_choice",
+              "options": [
+                "Charbon, pétrole, gaz",
+                "Uniquement bois mort",
+                "Sel de mer",
+                "Sable siliceux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Issus de matière organique ancienne stockant du carbone."
+            },
+            {
+              "id": "q3",
+              "question": "Déforestation peut augmenter CO₂ car…",
+              "type": "single_choice",
+              "options": [
+                "Moins de photosynthèse et carbone libéré",
+                "Les arbres produisent du pétrole",
+                "Le vent disparaît",
+                "Les océans s'évaporent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de puits de carbone, parfois combustion ou décomposition."
+            },
+            {
+              "id": "q4",
+              "question": "Protocole/climat : objectif principal des accords internationaux…",
+              "type": "single_choice",
+              "options": [
+                "Limiter le réchauffement en réduisant les émissions",
+                "Supprimer la météo",
+                "Interdire la pluie",
+                "Augmenter les fossiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coopération pour réduire GES et s'adapter."
+            },
+            {
+              "id": "q5",
+              "question": "Transport routier contribue surtout via…",
+              "type": "single_choice",
+              "options": [
+                "Émissions de CO₂ des moteurs",
+                "Rotation terrestre",
+                "Marées",
+                "Photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Essence et diesel libèrent du carbone stocké."
+            },
+            {
+              "id": "q6",
+              "question": "N₂O (protoxyde d'azote) :",
+              "type": "single_choice",
+              "options": [
+                "GES issu en partie de certaines pratiques agricoles",
+                "Métal",
+                "Nuage bas",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Engrais et processus agricoles peuvent en émettre."
+            },
+            {
+              "id": "q7",
+              "question": "Empreinte carbone d'un produit :",
+              "type": "single_choice",
+              "options": [
+                "GES émis tout au long de son cycle de vie",
+                "Poids en kg seulement",
+                "Couleur",
+                "Distance au magasin seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fabrication, transport, usage, fin de vie comptent."
+            },
+            {
+              "id": "q8",
+              "question": "Passage au renouvelable vise à…",
+              "type": "single_choice",
+              "options": [
+                "Diminuer émissions liées à l'énergie",
+                "Augmenter CO₂",
+                "Remplacer l'eau",
+                "Stopper les saisons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éolien, solaire, etc. émettent peu de GES à l'usage."
+            },
+            {
+              "id": "q9",
+              "question": "Séquestration du carbone :",
+              "type": "single_choice",
+              "options": [
+                "Stockage durable du carbone (forêts, sols, techniques)",
+                "Mesure du vent",
+                "Prévision météo",
+                "Tremblement de terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retirer ou stocker CO₂ limite l'accumulation atmosphérique."
+            },
+            {
+              "id": "q10",
+              "question": "Réduire gaspillage alimentaire aide car…",
+              "type": "single_choice",
+              "options": [
+                "Moins d'énergie et émissions pour rien",
+                "Plus de méthane dans l'air toujours",
+                "Climat identique",
+                "Moins de pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Production, transport et déchets émettent des GES."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Changement climatique",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Indices du réchauffement climatique récent…",
+              "type": "multiple_choice",
+              "options": [
+                "Hausse des températures moyennes mondiales",
+                "Fonte accélérée de certaines glaces",
+                "Disparition totale des saisons demain",
+                "Baisse du niveau marin partout"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Observations montrent réchauffement et impact sur glaces."
+            },
+            {
+              "id": "q2",
+              "question": "Paleoclimat : on étudie…",
+              "type": "single_choice",
+              "options": [
+                "Climats passés via glaces, sédiments, cernes",
+                "Météo de demain",
+                "Vent actuel seulement",
+                "Tremblements uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Archives naturelles racontent variations anciennes."
+            },
+            {
+              "id": "q3",
+              "question": "Niveau des mers monte en partie car…",
+              "type": "single_choice",
+              "options": [
+                "Eau des glaces fondue et dilatation thermique",
+                "Lune plus lourde",
+                "Moins de pluie",
+                "Plus de fossiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fonte terrestre et océans plus chauds augmentent le volume."
+            },
+            {
+              "id": "q4",
+              "question": "Modèles climatiques servent à…",
+              "type": "single_choice",
+              "options": [
+                "Simuler évolutions possibles selon scénarios",
+                "Changer le passé",
+                "Remplacer mesures",
+                "Prédire météo à la minute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Calculs sur l'atmosphère, océans, glaces et activités humaines."
+            },
+            {
+              "id": "q5",
+              "question": "Canicules plus fréquentes/intenses : lien avec…",
+              "type": "single_choice",
+              "options": [
+                "Changement climatique global",
+                "Uniquement météo d'un jour",
+                "Marées",
+                "Séismes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tendance à la hausse des températures extrêmes."
+            },
+            {
+              "id": "q6",
+              "question": "Acidification des océans :",
+              "type": "single_choice",
+              "options": [
+                "Plus de CO₂ dissous abaisse le pH",
+                "Mer devient salée uniquement",
+                "Plus de poissons d'eau douce",
+                "Glace augmente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CO₂ forme acide carbonique en mer."
+            },
+            {
+              "id": "q7",
+              "question": "Régions polaires réchauffent souvent plus vite car…",
+              "type": "single_choice",
+              "options": [
+                "Rétroactions (albédo glace, etc.)",
+                "Soleil plus proche",
+                "Pas de vent",
+                "Pas d'océans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fonte de glace réduit réflexion, amplifie réchauffement."
+            },
+            {
+              "id": "q8",
+              "question": "Atténuation vs adaptation :",
+              "type": "single_choice",
+              "options": [
+                "Atténuer = réduire causes ; adapter = limiter impacts",
+                "Identiques",
+                "Adapter = plus de CO₂",
+                "Atténuer = ignorer risques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux piliers face au changement climatique."
+            },
+            {
+              "id": "q9",
+              "question": "Événement extrême ≠ climat mais…",
+              "type": "single_choice",
+              "options": [
+                "Climat modifié peut rendre certains extrêmes plus probables",
+                "Prouve absence de réchauffement",
+                "Annule statistiques",
+                "Remplace trente ans de données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un épisode seul ne définit pas la tendance."
+            },
+            {
+              "id": "q10",
+              "question": "GIEC / rapports scientifiques consensuels :",
+              "type": "single_choice",
+              "options": [
+                "Réchauffement observé, cause humaine majoritaire pour GES",
+                "Climat inchangé",
+                "Soleil seul responsable à 100 %",
+                "Pas de preuve"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse internationale des connaissances."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Aléas climatiques",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Un aléa climatique…",
+              "type": "multiple_choice",
+              "options": [
+                "Phénomène potentiellement dangereux (inondation, sécheresse…)",
+                "Toujours prévisible au jour exact un an avant",
+                "Lié à conditions météo/climat",
+                "Jamais influencé par le relief"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Aléa = risque de phénomène dommageable ; relief modifie impacts."
+            },
+            {
+              "id": "q2",
+              "question": "Inondation : facteur aggravant fréquent…",
+              "type": "single_choice",
+              "options": [
+                "Sol imperméabilisé en ville",
+                "Absence de nuages",
+                "Climat polaire",
+                "Pas de rivière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eaux de ruissellement plus rapides sur surfaces bétonnées."
+            },
+            {
+              "id": "q3",
+              "question": "Sécheresse agricole :",
+              "type": "single_choice",
+              "options": [
+                "Déficit de pluie sur une période",
+                "Pluie torrentielle",
+                "Tsunami",
+                "Volcan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manque d'eau pour sols, cultures et parfois approvisionnement."
+            },
+            {
+              "id": "q4",
+              "question": "Cyclone/tempête tropicale : énergie surtout de…",
+              "type": "single_choice",
+              "options": [
+                "Océan chaud et humidité",
+                "Noyau terrestre",
+                "Fossiles",
+                "Glaces seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mer ≥ ~26 °C alimente convection intense."
+            },
+            {
+              "id": "q5",
+              "question": "Météo France / vigilance :",
+              "type": "single_choice",
+              "options": [
+                "Alerte population sur risques météo",
+                "Change le climat",
+                "Mesure les fossiles",
+                "Cartographie géologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleurs de vigilance pour canicule, pluie, neige…"
+            },
+            {
+              "id": "q6",
+              "question": "Glissement de terrain après pluies :",
+              "type": "single_choice",
+              "options": [
+                "Sol saturé perd stabilité sur pente",
+                "Cause toujours sécheresse",
+                "Lié à la Lune seule",
+                "Impossible en montagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau augmente poids et réduit cohésion."
+            },
+            {
+              "id": "q7",
+              "question": "Vague de chaleur : danger santé car…",
+              "type": "single_choice",
+              "options": [
+                "Corps peine à se refroidir",
+                "Air trop froid",
+                "Plus d'oxygène",
+                "Moins de soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déshydratation, coup de chaleur possibles."
+            },
+            {
+              "id": "q8",
+              "question": "Grêle :",
+              "type": "single_choice",
+              "options": [
+                "Precipitation de glace dans orage",
+                "Neige au sol permanent",
+                "Sécheresse",
+                "Marée haute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grains de glace dans cumulonimbus."
+            },
+            {
+              "id": "q9",
+              "question": "Retrait du trait de côte :",
+              "type": "single_choice",
+              "options": [
+                "Érosion et montée eau menacent littoral",
+                "Toujours gain de sable",
+                "Sans lien tempêtes",
+                "Uniquement désert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vagues et niveau marin modifient le rivage."
+            },
+            {
+              "id": "q10",
+              "question": "Cartographie des zones inondables sert à…",
+              "type": "single_choice",
+              "options": [
+                "Planifier urbanisme et alertes",
+                "Supprimer pluie",
+                "Mesurer vent seul",
+                "Dater roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Connaître le risque guide aménagement et prévention."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Vulnérabilité et enjeux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Vulnérabilité face à un risque climatique…",
+              "type": "multiple_choice",
+              "options": [
+                "Sensibilité d'une population ou d'un territoire",
+                "Capacité à faire face et à se relever",
+                "Impossibilité d'avoir des inondations",
+                "Identique pour tous les pays"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vulnérabilité = sensibilité ; résilience = rebond possible."
+            },
+            {
+              "id": "q2",
+              "question": "Îles basses : enjeu majeur…",
+              "type": "single_choice",
+              "options": [
+                "Montée des eaux",
+                "Séismes seuls",
+                "Météorites",
+                "Noyau terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Érosion et submersion partielle menacent habitants."
+            },
+            {
+              "id": "q3",
+              "question": "Canicule en ville : îlot de chaleur car…",
+              "type": "single_choice",
+              "options": [
+                "Béton retient chaleur, moins de végétation",
+                "Trop de forêt",
+                "Océan proche",
+                "Pas de bâtiments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surfaces sombres et imperméables réchauffent l'air local."
+            },
+            {
+              "id": "q4",
+              "question": "Sécheresse et eau potable :",
+              "type": "single_choice",
+              "options": [
+                "Stress sur ressources et agriculture",
+                "Plus de glace automatique",
+                "Moins de besoin d'eau",
+                "Climat identique partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rationnement et conflits d'usage possibles."
+            },
+            {
+              "id": "q5",
+              "question": "Migrants climatiques :",
+              "type": "single_choice",
+              "options": [
+                "Personnes contraintes de quitter région dégradée",
+                "Touristes",
+                "Astronautes",
+                "Sans lien climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Montée eau, sécheresse ou catastrophes poussent au départ."
+            },
+            {
+              "id": "q6",
+              "question": "Biodiversité et climat :",
+              "type": "single_choice",
+              "options": [
+                "Changements de température/precipitations déplacent habitats",
+                "Aucun effet",
+                "Espèces identiques partout",
+                "Plus de coraux partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Espèces doivent migrer, s'adapter ou disparaître localement."
+            },
+            {
+              "id": "q7",
+              "question": "Justice climatique :",
+              "type": "single_choice",
+              "options": [
+                "Pays les plus vulnérables souvent peu responsables historiques",
+                "Tous égaux face aux émissions passées",
+                "Sans enjeu social",
+                "Uniquement météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inégalités entre émetteurs et victimes."
+            },
+            {
+              "id": "q8",
+              "question": "Assurance et aléas :",
+              "type": "single_choice",
+              "options": [
+                "Coût des dommages peut augmenter avec extrêmes",
+                "Supprime les cyclones",
+                "Mesure CO₂ seul",
+                "Remplace prévention"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sinistres plus fréquents ou coûteux pèsent sur société."
+            },
+            {
+              "id": "q9",
+              "question": "Plan communal de sauvegarde :",
+              "type": "single_choice",
+              "options": [
+                "Organise alerte et secours locaux",
+                "Change le climat",
+                "Remplace école",
+                "Cartographie lunaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PCS prévoit accueil, évacuation, communication."
+            },
+            {
+              "id": "q10",
+              "question": "Réduire vulnérabilité :",
+              "type": "single_choice",
+              "options": [
+                "Prévention, alerte, aménagement adapté",
+                "Ignorer cartes de risque",
+                "Bétonner tous les fleuves sans étude",
+                "Augmenter émissions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agir sur exposition et capacités de réponse."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Ressources et climat",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Ressources en eau douce…",
+              "type": "multiple_choice",
+              "options": [
+                "Renouvelables par cycle hydrologique",
+                "Menacées par surconsommation et pollution",
+                "Infinies quelle que soit la région",
+                "Uniquement dans les glaciers"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Eau circule mais disponibilité locale est limitée."
+            },
+            {
+              "id": "q2",
+              "question": "Nappe phréatique :",
+              "type": "single_choice",
+              "options": [
+                "Eau souterraine dans roches poreuses",
+                "Océan profond",
+                "Nuage",
+                "Lave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puit pioche parfois la nappe ; recharge lente."
+            },
+            {
+              "id": "q3",
+              "question": "Stress hydrique :",
+              "type": "single_choice",
+              "options": [
+                "Demande > ressource renouvelable",
+                "Trop de pluie toujours",
+                "Glace uniquement",
+                "Sans agriculture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécheresse et surpompage aggravent."
+            },
+            {
+              "id": "q4",
+              "question": "Forêt amazonienne et climat :",
+              "type": "single_choice",
+              "options": [
+                "Puits de carbone et influence régionale sur pluie",
+                "Sans rôle",
+                "Produit pétrole",
+                "Refroidit par métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Biomasse stocke carbone ; évapotranspiration alimente pluies."
+            },
+            {
+              "id": "q5",
+              "question": "Pêche et réchauffement :",
+              "type": "single_choice",
+              "options": [
+                "Déplacement d'espèces et stocks modifiés",
+                "Poissons identiques partout",
+                "Plus de glace en mer",
+                "Sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Température et acidification changent écosystèmes marins."
+            },
+            {
+              "id": "q6",
+              "question": "Sol fertile : ressource car…",
+              "type": "single_choice",
+              "options": [
+                "Production alimentaire dépend de sa qualité",
+                "Inépuisable sans limite",
+                "Uniquement sable",
+                "Sans eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Érosion et salinisation peuvent dégrader sols."
+            },
+            {
+              "id": "q7",
+              "question": "Énergie fossile :",
+              "type": "single_choice",
+              "options": [
+                "Ressource non renouvelable à échelle humaine",
+                "Infinie en un siècle",
+                "Sans CO₂",
+                "Eau douce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formation sur millions d'années, consommée rapidement."
+            },
+            {
+              "id": "q8",
+              "question": "Métaux rares pour batteries :",
+              "type": "single_choice",
+              "options": [
+                "Enjeu pour transition énergétique et recyclage",
+                "Sans impact environnement",
+                "Dans l'atmosphère",
+                "Uniquement plastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Extraction et fin de vie posent questions écologiques."
+            },
+            {
+              "id": "q9",
+              "question": "Gestion durable des ressources :",
+              "type": "single_choice",
+              "options": [
+                "Préserver capacité future des écosystèmes",
+                "Tout extraire vite",
+                "Polluer pour économiser",
+                "Ignorer renouvellement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne pas épuiser sols, eau, biodiversité."
+            },
+            {
+              "id": "q10",
+              "question": "Empreinte eau d'un produit :",
+              "type": "single_choice",
+              "options": [
+                "Volume d'eau pour le produire",
+                "Poids du carton",
+                "CO₂ seul",
+                "Distance route seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Irrigation, industrie, dilution comptent."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Agir sur le climat",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Gestes individuels utiles (limités mais réels)…",
+              "type": "multiple_choice",
+              "options": [
+                "Réduire consommation d'énergie",
+                "Limiter gaspillage et privilégier transports sobres",
+                "Supprimer toute pluie",
+                "Remplacer climat par météo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chaque geste compte ; le système demande aussi des changements collectifs."
+            },
+            {
+              "id": "q2",
+              "question": "Isolation des bâtiments :",
+              "type": "single_choice",
+              "options": [
+                "Moins de chauffage/clim = moins d'émissions",
+                "Plus de CO₂",
+                "Sans effet",
+                "Interdit en ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Efficacité énergétique réduit facture et GES."
+            },
+            {
+              "id": "q3",
+              "question": "Mobilité douce :",
+              "type": "single_choice",
+              "options": [
+                "Vélo, marche, transports en commun",
+                "Uniquement avion court",
+                "Plus de diesel",
+                "Sans CO₂ toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduit émissions par personne transportée."
+            },
+            {
+              "id": "q4",
+              "question": "Tri et recyclage :",
+              "type": "single_choice",
+              "options": [
+                "Diminue déchets et extraction de matières",
+                "Supprime effet de serre totalement",
+                "Sans énergie",
+                "Inutile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recycler consomme souvent moins que fabriquer neuf."
+            },
+            {
+              "id": "q5",
+              "question": "Vote et citoyenneté climat :",
+              "type": "single_choice",
+              "options": [
+                "Influencer politiques publiques et investissements",
+                "Change météo demain",
+                "Remplace science",
+                "Sans effet collectif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lois, taxes carbone, subventions vertes passent par décisions collectives."
+            },
+            {
+              "id": "q6",
+              "question": "Éducation au développement durable :",
+              "type": "single_choice",
+              "options": [
+                "Comprendre interactions société-environnement",
+                "Ignorer données",
+                "Uniquement météo TV",
+                "Sans lien SVT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Former à analyser impacts et solutions."
+            },
+            {
+              "id": "q7",
+              "question": "Observatoire ou capteurs locaux :",
+              "type": "single_choice",
+              "options": [
+                "Mesurer température/pluie pour projet scolaire",
+                "Modifient le climat",
+                "Remplacent GIEC",
+                "Mesurent le noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Données locales complètent grandes bases."
+            },
+            {
+              "id": "q8",
+              "question": "Plantation d'arbres en projet :",
+              "type": "single_choice",
+              "options": [
+                "Puits de carbone et ombrage si bien choisis",
+                "Toujours n'importe où sans eau",
+                "Remplace toute réduction d'émissions",
+                "Sans entretien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Essences adaptées et entretien nécessaires."
+            },
+            {
+              "id": "q9",
+              "question": "Greenwashing :",
+              "type": "single_choice",
+              "options": [
+                "Communication verte trompeuse",
+                "Science du climat",
+                "Mesure du vent",
+                "Accord international"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Afficher écologie sans actions réelles."
+            },
+            {
+              "id": "q10",
+              "question": "Objectif neutralité carbone :",
+              "type": "single_choice",
+              "options": [
+                "Équilibrer émissions et absorptions",
+                "Zéro émission absolue obligatoire partout demain",
+                "Supprimer respiration",
+                "Sans adaptation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduire au maximum puis compenser le résiduel vérifié."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse climat et météo",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Différences météo / climat correctes…",
+              "type": "multiple_choice",
+              "options": [
+                "Météo = court terme ; climat = moyennes long terme",
+                "Les deux utilisent parfois les mêmes paramètres (T°, pluie)",
+                "Météo = toujours 100 ans",
+                "Climat = bulletin de demain"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Même grandeurs, échelles de temps différentes."
+            },
+            {
+              "id": "q2",
+              "question": "Renforcement effet de serre : conséquence attendue…",
+              "type": "single_choice",
+              "options": [
+                "Énergie piégée ↑ ⇒ réchauffement moyen",
+                "Refroidissement global immédiat",
+                "Plus de glace partout",
+                "Saisons supprimées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de GES retient plus d'infrarouge."
+            },
+            {
+              "id": "q3",
+              "question": "Aléa + vulnérabilité + exposition =",
+              "type": "single_choice",
+              "options": ["Risque", "Météo", "Fossile", "Saison"],
+              "correctAnswers": [0],
+              "explanation": "Risque climatique combine probabilité et dommage potentiel."
+            },
+            {
+              "id": "q4",
+              "question": "Preuve locale du changement :",
+              "type": "single_choice",
+              "options": [
+                "Séries longues de température cohérentes avec global",
+                "Un seul jour de neige",
+                "Vent d'une heure",
+                "Marée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tendances locales s'inscrivent dans tendance mondiale."
+            },
+            {
+              "id": "q5",
+              "question": "Adapter agriculture au climat :",
+              "type": "single_choice",
+              "options": [
+                "Varietés, dates semis, économie d'eau",
+                "Ignorer sécheresse",
+                "Touj même culture sans eau",
+                "Plus de CO₂ volontaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratiques évoluent avec stress hydrique et chaleur."
+            },
+            {
+              "id": "q6",
+              "question": "Océan et climat :",
+              "type": "single_choice",
+              "options": [
+                "Stockent chaleur et CO₂, modulent régulations",
+                "Sans rôle",
+                "Refroidissent toujours la Terre instantanément",
+                "Uniquement météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mer = inertie thermique majeure du système."
+            },
+            {
+              "id": "q7",
+              "question": "La COP réunit États pour…",
+              "type": "single_choice",
+              "options": [
+                "Négocier actions climat",
+                "Prévoir météo locale",
+                "Cartographier volcan",
+                "Mesurer vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conférences climat onusienne."
+            },
+            {
+              "id": "q8",
+              "question": "Résilience territoriale :",
+              "type": "single_choice",
+              "options": [
+                "Capacité à absorber choc climatique",
+                "Impossibilité d'inonder",
+                "Climat figé",
+                "Sans prévention"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rebond après sécheresse, inondation, tempête."
+            },
+            {
+              "id": "q9",
+              "question": "Énergie et climat liés car…",
+              "type": "single_choice",
+              "options": [
+                "Grande part des GES vient production/consommation énergie",
+                "Énergie sans émission jamais",
+                "Climat sans énergie",
+                "Uniquement nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transition énergétique = levier majeur d'atténuation."
+            },
+            {
+              "id": "q10",
+              "question": "En 3e, étudier climat/risques sert à…",
+              "type": "single_choice",
+              "options": [
+                "Comprendre enjeux planétaires et agir avec discernement",
+                "Mémoriser vent du jour",
+                "Nier les mesures",
+                "Ignorer société"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Science, citoyenneté et prévention des risques."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Activités humaines",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Pression sur les ressources",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Activités humaines qui sollicitent ressources…",
+              "type": "multiple_choice",
+              "options": [
+                "Agriculture et industrie",
+                "Urbanisation",
+                "Rotation de la Terre seule",
+                "Marées seules"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Homme exploite sols, eau, minerais, énergie."
+            },
+            {
+              "id": "q2",
+              "question": "Surconsommation d'eau :",
+              "type": "single_choice",
+              "options": [
+                "Irrigation, industrie, fuite réseaux",
+                "Pluie naturelle",
+                "Photosynthèse seule",
+                "Vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usages humains peuvent épuiser nappes localement."
+            },
+            {
+              "id": "q3",
+              "question": "Métaux en mine :",
+              "type": "single_choice",
+              "options": [
+                "Ressource finie, impact paysage/toxicité",
+                "Infinis en 50 ans",
+                "Sans pollution",
+                "Eau douce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Extraction modifie relief et peut polluer eaux."
+            },
+            {
+              "id": "q4",
+              "question": "Pêche intensive :",
+              "type": "single_choice",
+              "options": [
+                "Peut diminuer stocks si non régulée",
+                "Augmente toujours poissons",
+                "Sans lien océan",
+                "Climat seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quotas et aires protégées visent durabilité."
+            },
+            {
+              "id": "q5",
+              "question": "Déforestation pour cultures :",
+              "type": "single_choice",
+              "options": [
+                "Perte habitat et carbone stocké",
+                "Plus de biodiversité garantie",
+                "Sans érosion",
+                "Refroidit toujours région"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sol nu érodé, espèces menacées."
+            },
+            {
+              "id": "q6",
+              "question": "Ressource renouvelable :",
+              "type": "single_choice",
+              "options": [
+                "Se reconstitue assez vite (bois bien géré, vent)",
+                "Pétrole",
+                "Charbon",
+                "Uranium consommé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renouvellement à échelle humaine possible."
+            },
+            {
+              "id": "q7",
+              "question": "Empreinte écologique :",
+              "type": "single_choice",
+              "options": [
+                "Surface bioproductive pour supporter mode de vie",
+                "Poids du corps",
+                "CO₂ d'une respiration",
+                "Météo d'un jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compare consommation aux capacités planétaires."
+            },
+            {
+              "id": "q8",
+              "question": "Rarefaction ressource :",
+              "type": "single_choice",
+              "options": [
+                "Demande croissante + limites physiques",
+                "Toujours fiction",
+                "Sans prix",
+                "Uniquement espace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pénuries locales ou globales possibles."
+            },
+            {
+              "id": "q9",
+              "question": "Économie circulaire :",
+              "type": "single_choice",
+              "options": [
+                "Réduire, réutiliser, recycler",
+                "Tout jeter",
+                "Plus d'extraction sans limite",
+                "Ignorer déchets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boucler matières plutôt qu'enfouir."
+            },
+            {
+              "id": "q10",
+              "question": "Services écosystémiques :",
+              "type": "single_choice",
+              "options": [
+                "Pollinisation, purification eau, régulation climat par vivant",
+                "Uniquement tourisme",
+                "Sans agriculture",
+                "Métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nature apporte bénéfices gratuits à la société."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Énergie et société",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Sources d'énergie liées à activités humaines…",
+              "type": "multiple_choice",
+              "options": [
+                "Combustion fossile",
+                "Éolien et solaire",
+                "Gravité lunaire seule",
+                "Rotation Terre pour moteur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Société s'appuie sur fossiles et de plus en plus renouvelables."
+            },
+            {
+              "id": "q2",
+              "question": "Centrale thermique charbon :",
+              "type": "single_choice",
+              "options": [
+                "CO₂ et parfois polluants atmosphériques",
+                "Zéro émission",
+                "Eau douce seulement",
+                "Sans chaleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combustion libère carbone stocké."
+            },
+            {
+              "id": "q3",
+              "question": "Nucléaire : avantage/inconvénient 3e",
+              "type": "single_choice",
+              "options": [
+                "Peu de CO₂ à l'usage ; déchets radioactifs à gérer",
+                "CO₂ énorme",
+                "Sans électricité",
+                "Pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat énergie décarbonée et gestion déchets."
+            },
+            {
+              "id": "q4",
+              "question": "Rendement énergétique :",
+              "type": "single_choice",
+              "options": [
+                "Part d'énergie utile vs perdue",
+                "Vitesse vent",
+                "Pluie",
+                "Masse Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Isoler améliore rendement chauffage."
+            },
+            {
+              "id": "q5",
+              "question": "Transport aérien :",
+              "type": "single_choice",
+              "options": [
+                "Fortes émissions par passager-km",
+                "Sans kérosène",
+                "Renouvelable direct",
+                "Sans climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Longue distance consomme beaucoup."
+            },
+            {
+              "id": "q6",
+              "question": "Biomasse énergie :",
+              "type": "single_choice",
+              "options": [
+                "Doit être durable pour ne pas émettre plus net",
+                "Toujours neutre sans condition",
+                "Pétrole",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brûler bois non renouvelé peut émettre plus."
+            },
+            {
+              "id": "q7",
+              "question": "Panneaux solaires :",
+              "type": "single_choice",
+              "options": [
+                "Électricité sans émission à l'usage",
+                "Nuages artificiels",
+                "Charbon",
+                "Méthane obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fabrication consomme énergie ; usage propre."
+            },
+            {
+              "id": "q8",
+              "question": "Gaspillage électrique :",
+              "type": "single_choice",
+              "options": [
+                "Appareils en veille, surconsommation",
+                "Réduit CO₂",
+                "Sans facture",
+                "Climat local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éteindre et choisir efficace limite impact."
+            },
+            {
+              "id": "q9",
+              "question": "Géothermie :",
+              "type": "single_choice",
+              "options": [
+                "Chaleur du sous-sol exploitée",
+                "Vent seul",
+                "Marée seule",
+                "Pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utilisée chauffage/électricité selon sites."
+            },
+            {
+              "id": "q10",
+              "question": "Sobriété énergétique :",
+              "type": "single_choice",
+              "options": [
+                "Consommer moins en gardant service",
+                "Tout interdire",
+                "Plus de fossiles",
+                "Ignorer besoins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduire demande complète production propre."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Agriculture et sols",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Agriculture intensive peut…",
+              "type": "multiple_choice",
+              "options": [
+                "Compactér sols et éroder",
+                "Polluer eau via engrais/pesticides",
+                "Créer toujours plus d'humus sans limite",
+                "Stopper pluie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pratiques mal maîtrisées dégradent milieux."
+            },
+            {
+              "id": "q2",
+              "question": "Rotation des cultures :",
+              "type": "single_choice",
+              "options": [
+                "Préserve fertilité et limite ravageurs",
+                "Épuise toujours sol",
+                "Sans eau",
+                "Uniquement élevage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alternance légumineuses/céréales aide sol."
+            },
+            {
+              "id": "q3",
+              "question": "Élevage : émissions…",
+              "type": "single_choice",
+              "options": [
+                "Méthane digestif et alimentation",
+                "Zéro GES",
+                "Uniquement vent",
+                "Sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ruminants et chaîne alimentaire ont empreinte."
+            },
+            {
+              "id": "q4",
+              "question": "Irrigation excessive :",
+              "type": "single_choice",
+              "options": [
+                "Salinise ou vide nappe",
+                "Augmente toujours rendement sans fin",
+                "Sans sol",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gestion fine de l'eau nécessaire."
+            },
+            {
+              "id": "q5",
+              "question": "Pollinisateurs menacés :",
+              "type": "single_choice",
+              "options": [
+                "Pesticides et perte fleurs",
+                "Plus abeilles partout",
+                "Sans cultures",
+                "Océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Biodiversité agricole importante rendements."
+            },
+            {
+              "id": "q6",
+              "question": "Agroécologie :",
+              "type": "single_choice",
+              "options": [
+                "Moins d'intrants chimiques, diversité",
+                "Toujours plus d'engrais",
+                "Sans sol vivant",
+                "Monoculture seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "S'appuie sur écosystèmes agricoles."
+            },
+            {
+              "id": "q7",
+              "question": "Urbanisation mange terres agricoles :",
+              "type": "single_choice",
+              "options": [
+                "Artificialisation réduit surfaces cultivables",
+                "Plus de blé automatique",
+                "Sans transport",
+                "Climat fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjeu foncier autour des villes."
+            },
+            {
+              "id": "q8",
+              "question": "OM du sol :",
+              "type": "single_choice",
+              "options": [
+                "Matériau organique améliore structure et eau",
+                "Métal",
+                "Pétrole",
+                "Sans vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Humus retient eau et nutriments."
+            },
+            {
+              "id": "q9",
+              "question": "OGM débat 3e :",
+              "type": "single_choice",
+              "options": [
+                "Variétés modifiées : rendement vs biodiversité/acceptation",
+                "Tous interdits France sans exception",
+                "Sans régulation",
+                "Uniquement animaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre légal et enjeux alimentaires."
+            },
+            {
+              "id": "q10",
+              "question": "Sécurité alimentaire mondiale :",
+              "type": "single_choice",
+              "options": [
+                "Accès nourriture pour tous, fragilisée par climat/guerres",
+                "Trop de nourriture partout",
+                "Sans lien sol",
+                "Météo d'un jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Production, distribution, prix, aléas."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Ville et artificialisation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Artificialisation des sols…",
+              "type": "multiple_choice",
+              "options": [
+                "Béton et routes imperméabilisent",
+                "Accélère ruissellement pluie",
+                "Augmente toujours nappes",
+                "Refroidit ville la nuit"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Moins infiltration, plus inondations urbaines."
+            },
+            {
+              "id": "q2",
+              "question": "Îlot de chaleur urbain :",
+              "type": "single_choice",
+              "options": [
+                "Centre ville plus chaud la nuit",
+                "Banlieue glacée toujours",
+                "Sans bâtiments",
+                "Océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matériaux stockent chaleur."
+            },
+            {
+              "id": "q3",
+              "question": "Transport en commun :",
+              "type": "single_choice",
+              "options": [
+                "Moins de voitures = moins émissions/personne",
+                "Plus de CO₂ par passager",
+                "Sans bus",
+                "Avion local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mutualise énergie déplacement."
+            },
+            {
+              "id": "q4",
+              "question": "ZAN (zéro artificialisation nette) objectif :",
+              "type": "single_choice",
+              "options": [
+                "Limiter extension urbaine sur nature",
+                "Bétonner tout",
+                "Sans agriculture",
+                "Plus routes seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique française limiter consommation espace."
+            },
+            {
+              "id": "q5",
+              "question": "Espaces verts en ville :",
+              "type": "single_choice",
+              "options": [
+                "Ombrent, infiltrer eau, biodiversité",
+                "Sans effet chaleur",
+                "Polluent",
+                "Remplacent toute eau potable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parcs refroidissent et accueillent espèces."
+            },
+            {
+              "id": "q6",
+              "question": "Qualité air urbaine :",
+              "type": "single_choice",
+              "options": [
+                "NO₂, particules liés trafic/industrie",
+                "Oxygène pur toujours",
+                "Sans santé",
+                "Uniquement campagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Astme, maladies respiratoires aggravées."
+            },
+            {
+              "id": "q7",
+              "question": "Densité urbaine bien planifiée :",
+              "type": "single_choice",
+              "options": [
+                "Réduit trajets et préservation périurbain",
+                "Toujours pire",
+                "Sans transport",
+                "Sans logement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ville compacte vs étalement."
+            },
+            {
+              "id": "q8",
+              "question": "Bruit trafic :",
+              "type": "single_choice",
+              "options": [
+                "Pollution sensorielle affectant santé",
+                "Sans impact",
+                "Climat",
+                "Séisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stress, sommeil perturbé."
+            },
+            {
+              "id": "q9",
+              "question": "Toitures végétalisées :",
+              "type": "single_choice",
+              "options": [
+                "Isolation et rétention pluie partielle",
+                "Plus chaleur toujours",
+                "Sans entretien jamais",
+                "Pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Améliorent confort été."
+            },
+            {
+              "id": "q10",
+              "question": "Friche réhabilitée :",
+              "type": "single_choice",
+              "options": [
+                "Limite extension sur nature",
+                "Toujours détruire",
+                "Sans intérêt",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recyclage foncier urbain."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Pollution et santé",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pollutions liées activités humaines…",
+              "type": "multiple_choice",
+              "options": [
+                "Atmosphère (particules, gaz)",
+                "Eau et sols",
+                "Uniquement volcanes",
+                "Sans lien santé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Industrie, transport, agriculture contaminent milieux."
+            },
+            {
+              "id": "q2",
+              "question": "Particules fines PM2.5 :",
+              "type": "single_choice",
+              "options": [
+                "Pénètrent profond poumons",
+                "Visibles seulement",
+                "Bonnes santé",
+                "Eau douce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diamètre < 2,5 µm, risque cardiovasculaire."
+            },
+            {
+              "id": "q3",
+              "question": "Plastique en mer :",
+              "type": "single_choice",
+              "options": [
+                "Menace faune (ingestion, enchevêtrement)",
+                "Disparaît en 1 jour",
+                "Nutriment",
+                "Sans source terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déchets terrestres et marins s'accumulent."
+            },
+            {
+              "id": "q4",
+              "question": "Eutrophisation eau :",
+              "type": "single_choice",
+              "options": [
+                "Excès nutriments ⇒ algues et manque O₂",
+                "Eau plus pure",
+                "Sans agriculture",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nitrates/phosphates favorisent blooms."
+            },
+            {
+              "id": "q5",
+              "question": "Pesticide :",
+              "type": "single_choice",
+              "options": [
+                "Substance contre organismes nuisibles, risque non-cible",
+                "Toujours inoffensif",
+                "Oxygène",
+                "Sel table"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usage réglementé, impact biodiversité."
+            },
+            {
+              "id": "q6",
+              "question": "Mégapole smog :",
+              "type": "single_choice",
+              "options": [
+                "Mélange pollution et conditions météo",
+                "Volcan",
+                "Tsunami",
+                "Sans voitures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inversion température piège polluants."
+            },
+            {
+              "id": "q7",
+              "question": "Décharge sauvage :",
+              "type": "single_choice",
+              "options": [
+                "Lixiviats polluent nappes",
+                "Sans sol",
+                "Renouvelable",
+                "Climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tri officiel limite impacts."
+            },
+            {
+              "id": "q8",
+              "question": "Antibiotiques en élevage :",
+              "type": "single_choice",
+              "options": [
+                "Risque résistance bactérienne",
+                "Sans médecine",
+                "Vent",
+                "Photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "One Health humains-animaux."
+            },
+            {
+              "id": "q9",
+              "question": "Normes EU/limites émissions :",
+              "type": "single_choice",
+              "options": [
+                "Encadrent industrie et véhicules",
+                "Sans effet",
+                "Suppriment pluie",
+                "Météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régulation qualité air/eau."
+            },
+            {
+              "id": "q10",
+              "question": "Principe de précaution :",
+              "type": "single_choice",
+              "options": [
+                "Agir face risque grave même incertitude",
+                "Attendre preuve absolue toujours",
+                "Ignorer santé",
+                "Sans science"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limiter exposition suspectée dangereuse."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Biodiversité menacée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Causes disparition espèces aujourd'hui…",
+              "type": "multiple_choice",
+              "options": [
+                "Destruction habitats",
+                "Changement climatique",
+                "Meteorites seules chaque jour",
+                "Marées seules"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Homme fragmente milieux et modifie climat."
+            },
+            {
+              "id": "q2",
+              "question": "Espèce invasive :",
+              "type": "single_choice",
+              "options": [
+                "Introduite, perturbe écosystème local",
+                "Toujours native",
+                "Sans concurrence",
+                "Climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex lapin Australie historique, renouée…"
+            },
+            {
+              "id": "q3",
+              "question": "Coraux blanchiment :",
+              "type": "single_choice",
+              "options": [
+                "Stress thermique expulse algues symbiotes",
+                "Plus de couleur = santé",
+                "Froid polaire",
+                "Sans océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau trop chaude affaiblit récifs."
+            },
+            {
+              "id": "q4",
+              "question": "Zone protégée :",
+              "type": "single_choice",
+              "options": [
+                "Limite exploitation pour préserver espèces",
+                "Toujours urbaniser",
+                "Pétrole obligatoire",
+                "Sans loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parcs, réserves marines."
+            },
+            {
+              "id": "q5",
+              "question": "Corridor écologique :",
+              "type": "single_choice",
+              "options": [
+                "Relie habitats pour migration espèces",
+                "Mur béton",
+                "Route seule",
+                "Sans animaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Franges boisées entre zones isolées."
+            },
+            {
+              "id": "q6",
+              "question": "Sixième extinction ? débat :",
+              "type": "single_choice",
+              "options": [
+                "Taux disparition élevé lié activités humaines",
+                "Aucune extinction depuis 1900",
+                "Uniquement dinosaures",
+                "Sans données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparé fond fossilifère, rythme anormal."
+            },
+            {
+              "id": "q7",
+              "question": "Pollinisateurs :",
+              "type": "single_choice",
+              "options": [
+                "Essentiels nombreuses cultures",
+                "Inutiles",
+                "Poissons",
+                "Roche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abeilles, bourdons…"
+            },
+            {
+              "id": "q8",
+              "question": "Surpêche + pollution :",
+              "type": "single_choice",
+              "options": [
+                "Affaiblissent écosystèmes marins",
+                "Plus requins partout",
+                "Sans lien",
+                "Climat seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cumul pressions sur océan."
+            },
+            {
+              "id": "q9",
+              "question": "Red list UICN :",
+              "type": "single_choice",
+              "options": [
+                "État conservation espèces",
+                "Météo",
+                "Carte routes",
+                "Pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Catégories vulnérable, en danger…"
+            },
+            {
+              "id": "q10",
+              "question": "Restauration écologique :",
+              "type": "single_choice",
+              "options": [
+                "Réparer milieu dégradé",
+                "Toujours béton",
+                "Sans espèces",
+                "Ignorer sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réintroduire espèces, renaturer rives."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Déchets et consommation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Déchets ménagers issues…",
+              "type": "multiple_choice",
+              "options": [
+                "Emballages et produits usagés",
+                "Tri permet valorisation matière",
+                "Sans lien consommation",
+                "Uniquement roche"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mode vie matérialiste augmente déchets."
+            },
+            {
+              "id": "q2",
+              "question": "Incinération avec récupération énergie :",
+              "type": "single_choice",
+              "options": [
+                "Brûle déchets, électricité/chaleur, émissions filtrées",
+                "Sans fumée jamais",
+                "Enterre tout",
+                "Sans contrôle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mieux que enfouissement seul mais émet CO₂."
+            },
+            {
+              "id": "q3",
+              "question": "Compost :",
+              "type": "single_choice",
+              "options": [
+                "Déchets organiques → amendement",
+                "Plastique",
+                "Métal pur",
+                "Pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduit méthane en décharge."
+            },
+            {
+              "id": "q4",
+              "question": "Obsolescence programmée :",
+              "type": "single_choice",
+              "options": [
+                "Durée vie artificiellement courte",
+                "Produit éternel",
+                "Sans impact",
+                "Climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Encourage rachat, gaspille ressources."
+            },
+            {
+              "id": "q5",
+              "question": "Microplastiques :",
+              "type": "single_choice",
+              "options": [
+                "Fragments < 5 mm dans eau/sol",
+                "Visibles seulement",
+                "Nutriments",
+                "Sans textile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vêtements synthétiques, abrasion."
+            },
+            {
+              "id": "q6",
+              "question": "Repair café / réparer :",
+              "type": "single_choice",
+              "options": [
+                "Allonge vie objet, moins extraction",
+                "Interdit",
+                "Plus déchets",
+                "Sans énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Économie circulaire citoyenne."
+            },
+            {
+              "id": "q7",
+              "question": "Export déchets :",
+              "type": "single_choice",
+              "options": [
+                "Enjeu éthique si mal recyclés ailleurs",
+                "Toujours parfait",
+                "Sans transport",
+                "Climat seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traçabilité filières."
+            },
+            {
+              "id": "q8",
+              "question": "Affichage environnemental :",
+              "type": "single_choice",
+              "options": [
+                "Informe impact produit",
+                "Change météo",
+                "Sans consommateur",
+                "Volcan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indice carbone, étiquettes énergie."
+            },
+            {
+              "id": "q9",
+              "question": "Acheter local saison :",
+              "type": "single_choice",
+              "options": [
+                "Réduit transport parfois",
+                "Toujours plus de CO₂",
+                "Sans agriculture",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas automatique mais souvent moins km."
+            },
+            {
+              "id": "q10",
+              "question": "Réduire empreinte = aussi…",
+              "type": "single_choice",
+              "options": [
+                "Consommer moins et mieux",
+                "Jeter plus",
+                "Plus fossiles",
+                "Ignorer tri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sobriété matérielle."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Industrie et transport",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Impacts industrialisation…",
+              "type": "multiple_choice",
+              "options": [
+                "Émissions et rejets",
+                "Emploi et production biens",
+                "Supprime toute biodiversité instantanément",
+                "Sans énergie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Progrès matériel vs pression environnementale."
+            },
+            {
+              "id": "q2",
+              "question": "Chaîne logistique mondiale :",
+              "type": "single_choice",
+              "options": [
+                "Conteneurs, avions, camions = GES",
+                "Sans transport",
+                "Uniquement vélo",
+                "Local toujours 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Globalisation allonge distances."
+            },
+            {
+              "id": "q3",
+              "question": "Voiture électrique :",
+              "type": "single_choice",
+              "options": [
+                "Usage sans échappement ; impact fabrication/batterie",
+                "Zéro impact total",
+                "Charbon moteur",
+                "Sans électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan dépend mix électrique."
+            },
+            {
+              "id": "q4",
+              "question": "Covoiturage :",
+              "type": "single_choice",
+              "options": [
+                "Divise émissions par personne",
+                "Double CO₂",
+                "Sans route",
+                "Bateau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Places occupées optimisées."
+            },
+            {
+              "id": "q5",
+              "question": "Port maritime :",
+              "type": "single_choice",
+              "options": [
+                "Gros navires émettent SOx/CO₂",
+                "Sans marchandises",
+                "Avion seul",
+                "Sans lien économie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "80 % commerce mondial par mer."
+            },
+            {
+              "id": "q6",
+              "question": "Industrie verte :",
+              "type": "single_choice",
+              "options": [
+                "Procédés moins polluants, recyclage",
+                "Plus charbon volontaire",
+                "Sans innovation",
+                "Pétrole seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtres, efficacité, matériaux propres."
+            },
+            {
+              "id": "q7",
+              "question": "Externalités environnementales :",
+              "type": "single_choice",
+              "options": [
+                "Coûts santé/environnement non payés par pollueur",
+                "Toujours facturés",
+                "Sans économie",
+                "Météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Taxe carbone internalise partiellement."
+            },
+            {
+              "id": "q8",
+              "question": "Télétravail partiel :",
+              "type": "single_choice",
+              "options": [
+                "Peut réduire trajets domicile-travail",
+                "Augmente toujours CO₂",
+                "Sans internet",
+                "Climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins km, mais chauffage individuel compte."
+            },
+            {
+              "id": "q9",
+              "question": "Hydrogène vert :",
+              "type": "single_choice",
+              "options": [
+                "Produit avec renouvelable, décarbone certaines usages",
+                "Toujours gris",
+                "Eau potable seule",
+                "Sans stockage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Défis coût et infrastructure."
+            },
+            {
+              "id": "q10",
+              "question": "Frein transport marchandises :",
+              "type": "single_choice",
+              "options": [
+                "Train fluvial vs camion seul parfois",
+                "Toujours avion court",
+                "Sans choix",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modal shift réduit empreinte."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Mer et littoral",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pressions sur littoral…",
+              "type": "multiple_choice",
+              "options": [
+                "Urbanisation et tourisme",
+                "Pollution terrestre rejetée en mer",
+                "Sans érosion",
+                "Climat figé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Côte attractive et réceptacle déchets."
+            },
+            {
+              "id": "q2",
+              "question": "Marée noire :",
+              "type": "single_choice",
+              "options": [
+                "Déversement hydrocarbures toxique faune",
+                "Pluie",
+                "Séisme",
+                "Vent seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Naufrage pipeline, pollution massive."
+            },
+            {
+              "id": "q3",
+              "question": "Surpêche :",
+              "type": "single_choice",
+              "options": [
+                "Stock < reproduction",
+                "Plus poissons garantis",
+                "Sans bateaux",
+                "Climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quotas scientifiques."
+            },
+            {
+              "id": "q4",
+              "question": "Aquaculture :",
+              "type": "single_choice",
+              "options": [
+                "Élevage poissons/coquillages, risques pollution locale",
+                "Sans eau",
+                "Forêt",
+                "Pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alimentation mondiale croissante."
+            },
+            {
+              "id": "q5",
+              "question": "Érosion côtière solutions :",
+              "type": "single_choice",
+              "options": [
+                "Rechargement sable, digues, recul aménagé",
+                "Toujours béton seul",
+                "Ignorer montée eau",
+                "Sans tempêtes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adaptation multifactorielle."
+            },
+            {
+              "id": "q6",
+              "question": "Zone humide côtière :",
+              "type": "single_choice",
+              "options": [
+                "Tampon tempête et nurserie poissons",
+                "Sans biodiversité",
+                "Route",
+                "Mine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mangroves, marais salants."
+            },
+            {
+              "id": "q7",
+              "question": "Déchets plastique océan gyres :",
+              "type": "single_choice",
+              "options": [
+                "Accumulation vortex courants",
+                "Disparaissent vite",
+                "Sans source humaine",
+                "Météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Continents de plastique flottant."
+            },
+            {
+              "id": "q8",
+              "question": "Acidification + réchauffement mer :",
+              "type": "single_choice",
+              "options": [
+                "Stress coraux et calcaires",
+                "Plus coraux partout",
+                "Sans coquillages",
+                "Glace mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faune à coquille fragilisée."
+            },
+            {
+              "id": "q9",
+              "question": "Pêche artisanale vs industrielle :",
+              "type": "single_choice",
+              "options": [
+                "Enjeux emploi local et selectivity engins",
+                "Identiques toujours",
+                "Sans régulation",
+                "Volcan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maille, quotas, zones."
+            },
+            {
+              "id": "q10",
+              "question": "Protéger littoral =",
+              "type": "single_choice",
+              "options": [
+                "Limiter béton, traiter eaux, gérer pêche",
+                "Tout extraire",
+                "Sans tourisme",
+                "Ignorer climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durabilité économie bleue."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Agir ensemble sur la planète",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Développement durable repose sur…",
+              "type": "multiple_choice",
+              "options": [
+                "Environnement",
+                "Social et économie",
+                "Ignorer futur",
+                "Uniquement profit court terme"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Trois piliers équilibrés intergénérations."
+            },
+            {
+              "id": "q2",
+              "question": "ODD ONU :",
+              "type": "single_choice",
+              "options": [
+                "17 objectifs dont climat et vie terrestre",
+                "Météo locale",
+                "Sans pays",
+                "Carte vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agenda 2030."
+            },
+            {
+              "id": "q3",
+              "question": "Éco-anxiété :",
+              "type": "single_choice",
+              "options": [
+                "Stress face crises environnementales",
+                "Sans jeunes",
+                "Climat froid",
+                "Sans émotion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parler et agir aide."
+            },
+            {
+              "id": "q4",
+              "question": "Science citoyenne :",
+              "type": "single_choice",
+              "options": [
+                "Public collecte données (oiseaux, pollen…)",
+                "Remplace labo",
+                "Sans méthode",
+                "Fiction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complète recherche."
+            },
+            {
+              "id": "q5",
+              "question": "Entreprise responsabilité :",
+              "type": "single_choice",
+              "options": [
+                "RSE : limiter impacts chaîne production",
+                "Toujours greenwash",
+                "Sans employés",
+                "Pétrole seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan carbone entreprise."
+            },
+            {
+              "id": "q6",
+              "question": "Loi climat France exemple :",
+              "type": "single_choice",
+              "options": [
+                "Vise réduction émissions nationale",
+                "Change rotation Terre",
+                "Sans citoyens",
+                "Météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre réglementaire national."
+            },
+            {
+              "id": "q7",
+              "question": "Coopération internationale ressource eau :",
+              "type": "single_choice",
+              "options": [
+                "Fleuves transfrontaliers nécessitent accords",
+                "Toujours guerre",
+                "Sans Méditerranée",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partage et pollution."
+            },
+            {
+              "id": "q8",
+              "question": "Éducation nationale EE :",
+              "type": "single_choice",
+              "options": [
+                "SVT aborde climat, risques, activités",
+                "Sans programme",
+                "Uniquement maths",
+                "Nie réchauffement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Esprit critique et savoirs."
+            },
+            {
+              "id": "q9",
+              "question": "Choix alimentation :",
+              "type": "single_choice",
+              "options": [
+                "Moins viande peut réduire empreinte (debats)",
+                "Sans impact",
+                "Toujours plus GES",
+                "Sans eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pyramide, gaspillage, origine."
+            },
+            {
+              "id": "q10",
+              "question": "Message final 3e risques planète :",
+              "type": "single_choice",
+              "options": [
+                "Comprendre liens homme-environnement et participer à solutions",
+                "Ignorer mesures",
+                "Climat = une journée",
+                "Sans responsabilité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Citoyenneté éclairée pour demain."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

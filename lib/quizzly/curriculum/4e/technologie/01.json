@@ -1,0 +1,2738 @@
+{
+  "id": "4e-technologie-01",
+  "year": "4e",
+  "subject": "technologie",
+  "title": "Réseaux",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Identifier un réseau",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce qu'un réseau ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces éléments, lesquels décrivent un réseau informatique ?",
+              "options": [
+                "Des appareils reliés pour échanger des données",
+                "Un seul ordinateur isolé sans connexion",
+                "Des règles communes pour communiquer entre machines",
+                "Un logiciel de traitement de texte uniquement"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Un réseau lie plusieurs équipements et s'appuie sur des protocoles communs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un réseau local (LAN), où se trouvent généralement les ordinateurs connectés ?",
+              "options": [
+                "Dans un même bâtiment ou site",
+                "Sur des continents différents uniquement",
+                "Uniquement dans l'espace",
+                "Sans aucun câble ni onde radio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un LAN couvre une zone restreinte comme une maison ou une classe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Internet est surtout un exemple de :",
+              "options": [
+                "Réseau étendu (WAN)",
+                "Réseau personnel (PAN) seul",
+                "Bus USB local",
+                "Disque dur interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Internet interconnecte des réseaux à l'échelle mondiale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un nœud dans un réseau, c'est :",
+              "options": [
+                "Un équipement connecté (PC, smartphone, imprimante…)",
+                "Uniquement le câble électrique du bâtiment",
+                "La poussière dans un ventilateur",
+                "Un type de clavier mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque appareil participant au réseau est un nœud ou hôte."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le rôle d'une passerelle (gateway) est surtout de :",
+              "options": [
+                "Relier deux réseaux différents (ex. LAN et Internet)",
+                "Augmenter la taille de l'écran",
+                "Charger la batterie du téléphone",
+                "Couper l'alimentation du routeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La passerelle fait le lien entre le réseau local et un autre réseau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un réseau peer-to-peer (P2P) signifie souvent que :",
+              "options": [
+                "Les machines peuvent échanger directement entre elles",
+                "Aucun appareil ne communique jamais",
+                "Seul le professeur a un ordinateur",
+                "Il n'y a pas de données numériques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En P2P, chaque poste peut envoyer et recevoir sans serveur unique obligatoire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La topologie en étoile place les appareils :",
+              "options": [
+                "Reliés à un point central (switch ou routeur)",
+                "Uniquement en chaîne ligne par ligne",
+                "Sans aucun lien",
+                "Seulement par câbles coaxiaux TV anciens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En étoile, tout passe par un équipement central."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un protocole réseau sert à :",
+              "options": [
+                "Définir comment les données sont formatées et échangées",
+                "Peindre le boîtier du routeur",
+                "Mesurer la température du CPU",
+                "Remplacer la carte mère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans protocole commun, les appareils ne se comprennent pas."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le débit d'un réseau indique :",
+              "options": [
+                "La quantité de données transmises par unité de temps",
+                "La couleur des câbles Ethernet",
+                "Le nombre de touches du clavier",
+                "L'âge du switch"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On l'exprime souvent en Mbit/s ou Gbit/s."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un réseau filaire utilise surtout :",
+              "options": [
+                "Des câbles (Ethernet, fibre…)",
+                "Uniquement la lumière du soleil",
+                "Aucun support physique",
+                "Des disquettes 3,5 pouces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filaire relie les appareils par cuivre ou fibre."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Matériel réseau de base",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels équipements sont typiques dans un petit réseau domestique ?",
+              "options": [
+                "Routeur ou box",
+                "Switch ou point d'accès Wi-Fi",
+                "Four micro-ondes sur bus SCSI",
+                "Marteau pour serrer les RJ45"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La box distribue Internet ; un switch étend les ports filaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un switch Ethernet sert principalement à :",
+              "options": [
+                "Relier plusieurs appareils filaires sur le même LAN",
+                "Convertir le texte en voix analogique",
+                "Imprimer sans fil seul",
+                "Stocker des films sur USB seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le switch interconnecte les ports du réseau local."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La carte réseau (NIC) d'un PC permet :",
+              "options": [
+                "D'envoyer et recevoir des trames sur le réseau",
+                "De refroidir le processeur",
+                "D'afficher le bureau en 3D obligatoire",
+                "De graver des CD audio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La NIC est l'interface entre l'ordinateur et le média réseau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un point d'accès Wi-Fi sert à :",
+              "options": [
+                "Diffuser un réseau sans fil depuis une connexion filaire",
+                "Couper Internet pour économiser",
+                "Remplacer la batterie du laptop",
+                "Lire les cartes SD uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'AP étend le réseau en ondes radio."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un câble Ethernet RJ45 transporte :",
+              "options": [
+                "Des signaux numériques pour le réseau local",
+                "De l'eau pour refroidir",
+                "Du courant haute tension pour le four",
+                "Des images analogiques TV seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La paire torsadée véhicule les données Ethernet."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La fibre optique transmet les données :",
+              "options": [
+                "Sous forme de lumière dans un fil de verre ou plastique",
+                "Par cuivre épais uniquement",
+                "Par ventilateur",
+                "Par cartes perforées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fibre utilise des impulsions lumineuses."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un modem sur une box sert souvent à :",
+              "options": [
+                "Adapter le signal de la ligne Internet au réseau domestique",
+                "Couper le son Bluetooth",
+                "Scanner du papier",
+                "Jouer sans écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le modem parle avec le fournisseur d'accès."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une imprimante réseau :",
+              "options": [
+                "Est joignable par plusieurs postes via le réseau",
+                "Ne peut imprimer qu'une page par an",
+                "N'a pas d'encre",
+                "Fonctionne sans électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partagée sur LAN ou Wi-Fi sans USB vers chaque PC."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le port WAN sur une box est en général :",
+              "options": [
+                "Celui qui reçoit la connexion vers Internet",
+                "Réservé au clavier",
+                "Pour l'écran VGA",
+                "Toujours désactivé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "WAN côté opérateur ; LAN pour tes appareils."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un répéteur Wi-Fi sert surtout à :",
+              "options": [
+                "Étendre la portée du signal sans fil",
+                "Augmenter la RAM du smartphone",
+                "Chiffrer le disque dur",
+                "Remplacer le processeur du routeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il retransmet le Wi-Fi dans une zone mal desservie."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Filaire et sans fil",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels médias construisent un réseau local moderne ?",
+              "options": [
+                "Câble Ethernet",
+                "Ondes radio Wi-Fi",
+                "Fumée codée",
+                "Gravité lunaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On combine filaire (stabilité) et Wi-Fi (mobilité)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le Wi-Fi correspond aux normes :",
+              "options": [
+                "IEEE 802.11",
+                "IEEE 802.3 seulement",
+                "USB 1.0",
+                "HDMI 2.1 seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "802.11 = sans fil ; 802.3 = Ethernet filaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le filaire est souvent plus stable que le Wi-Fi car :",
+              "options": [
+                "Moins d'interférences et de pertes dans les murs",
+                "Satellites obligatoires",
+                "TCP interdit",
+                "Pas de débit mesurable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le câble isole mieux le signal."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Bluetooth convient surtout à :",
+              "options": [
+                "Un réseau personnel de courte portée",
+                "Relier deux continents sans opérateur",
+                "Remplacer tout Ethernet du lycée",
+                "Héberger un site public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bluetooth est un PAN de faible portée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La bande 2,4 GHz Wi-Fi :",
+              "options": [
+                "Traverse mieux les murs mais peut être encombrée",
+                "N'existe pas",
+                "Aucune connexion",
+                "Réservée aux RJ45"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2,4 GHz porte loin mais partage le spectre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La bande 5 GHz Wi-Fi offre en général :",
+              "options": [
+                "Plus de débit, moins d'interférences, portée parfois plus courte",
+                "Radio AM",
+                "Aucun canal",
+                "1 bit/s max"
+              ],
+              "correctAnswers": [0],
+              "explanation": "5 GHz est moins saturée mais s'affaiblit vite."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un SSID correspond :",
+              "options": [
+                "Au nom du réseau Wi-Fi",
+                "Au numéro de série du disque",
+                "À la température du routeur",
+                "Au GPU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SSID = identifiant du réseau sans fil."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "PC vers switch en salle info :",
+              "options": [
+                "Câble Ethernet droit",
+                "HDMI vers clavier",
+                "Alimentation vers RJ45",
+                "USB vers imprimante matricielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PC-switch : câble droit en général."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le mode avion coupe surtout :",
+              "options": [
+                "Les radios sans fil",
+                "L'écran tactile seul",
+                "La caméra seule",
+                "Le stockage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Désactive émetteurs/récepteurs radio."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un hotspot transforme le téléphone en :",
+              "options": [
+                "Point d'accès Wi-Fi pour d'autres appareils",
+                "Disque dur obligatoire",
+                "Scanner 3D",
+                "Routeur satellite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partage 4G/5G via Wi-Fi ou USB."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Clients, serveurs et services",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans client-serveur, quels rôles sont corrects ?",
+              "options": [
+                "Le client demande un service",
+                "Le serveur fournit une ressource",
+                "Le serveur ne répond jamais",
+                "Le client héberge toujours seul le site public"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le client demande ; le serveur répond."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un serveur web envoie surtout :",
+              "options": [
+                "Pages via HTTP/HTTPS",
+                "Essence",
+                "Pièces de vélo",
+                "SMS seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le navigateur client interroge le serveur web."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un serveur de fichiers permet :",
+              "options": [
+                "Centraliser des documents pour utilisateurs autorisés",
+                "Couper l'électricité",
+                "Remplacer les profs",
+                "Imprimer sans papier obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évite copies USB entre chaque poste."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le cloud désigne surtout :",
+              "options": [
+                "Services hébergés sur serveurs distants via Internet",
+                "Météo au-dessus de l'école",
+                "Disque dans un nuage réel",
+                "Réseau sans serveur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Drive, messagerie en ligne, etc."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un DNS sert à :",
+              "options": [
+                "Traduire un nom de domaine en adresse IP",
+                "Mesurer le vent",
+                "Couper le Wi-Fi la nuit",
+                "Formater une clé USB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évite de mémoriser toutes les IP."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un serveur de messagerie gère :",
+              "options": [
+                "Envoi, réception et stockage des e-mails",
+                "Appels sans Internet",
+                "Rotation Terre",
+                "Volume casque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SMTP, IMAP, POP sur serveurs dédiés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Serveur d'authentification au lycée :",
+              "options": [
+                "Vérifie identifiant et mot de passe",
+                "Peint les murs",
+                "Remplace le tableau",
+                "Coupe la clim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurise Wi-Fi et ressources pédagogiques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Jeu en ligne multijoueur :",
+              "options": [
+                "Serveurs synchronisent l'état de la partie",
+                "Aucune connexion",
+                "Disquettes par la poste",
+                "VGA entre consoles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Serveur ou hôte coordonne les joueurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Streaming vidéo :",
+              "options": [
+                "Client reçoit des flux depuis serveurs distants",
+                "Sans protocole",
+                "Courrier papier",
+                "USB entre clés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux par morceaux via Internet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Disponibilité d'un serveur :",
+              "options": [
+                "Joignable et fonctionnel quand nécessaire",
+                "Toujours éteint",
+                "Sans IP",
+                "Refuse toute connexion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Important pour sites et ENT."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Données et paquets",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur un réseau, les gros volumes de données sont souvent :",
+              "options": [
+                "Découpés en paquets",
+                "Réassemblés à destination",
+                "Envoyés uniquement par la poste",
+                "Stockés uniquement sur papier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fragmentation en paquets puis reconstitution à l'arrivée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un paquet contient typiquement :",
+              "options": [
+                "Des données utiles et des informations d'adressage",
+                "Uniquement la couleur du câble",
+                "Le modèle du clavier",
+                "La date de naissance du routeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En-têtes + charge utile."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si un paquet est perdu, TCP peut :",
+              "options": [
+                "Demander une retransmission",
+                "Effacer tout Internet",
+                "Couper l'électricité",
+                "Changer la couleur du Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TCP assure fiabilité avec acquittements."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "UDP convient plutôt à :",
+              "options": [
+                "Flux temps réel tolérant quelques pertes",
+                "Virements bancaires sans erreur seuls",
+                "Impression papier",
+                "Couper le réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "UDP privilégie la rapidité sans garantie forte."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La latence mesure :",
+              "options": [
+                "Le délai entre envoi et réception",
+                "La masse du câble",
+                "La taille de l'écran",
+                "Le nombre de ports USB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ping élevé = réponse lente."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La bande passante limite :",
+              "options": [
+                "Le volume maximal de données par seconde",
+                "La couleur des LED",
+                "Le nombre de lettres dans un mot de passe",
+                "La gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Canal saturé = ralentissements."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Encapsulation signifie :",
+              "options": [
+                "Ajouter des en-têtes protocole autour des données",
+                "Peindre le boîtier",
+                "Vider la mémoire RAM",
+                "Couper le Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque couche ajoute sa « enveloppe »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux paquets d'un même fichier peuvent :",
+              "options": [
+                "Emprunter des chemins différents sur Internet",
+                "Être obligés sur le même fil unique",
+                "Ne jamais être numérotés",
+                "Rester toujours dans le switch local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le routage IP est indépendant par paquet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une trame Ethernet circule surtout :",
+              "options": [
+                "Sur un réseau local (couche liaison)",
+                "Uniquement sur la Lune",
+                "Dans le disque dur seul",
+                "Sans adresse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ethernet gère l'envoi sur le LAN."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un octet vaut :",
+              "options": ["8 bits", "1 bit", "1024 bits", "0 bit"],
+              "correctAnswers": [0],
+              "explanation": "Unité de base pour mesurer la taille des données."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Sécurité de base sur le réseau",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles bonnes pratiques protègent un réseau domestique ?",
+              "options": [
+                "Mot de passe Wi-Fi fort",
+                "Mise à jour du firmware de la box",
+                "Partager le mot de passe avec tout le quartier",
+                "Laisser le Wi-Fi ouvert"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Secret robuste et mises à jour corrigent des failles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un pare-feu (firewall) sert à :",
+              "options": [
+                "Filtrer le trafic autorisé ou suspect",
+                "Augmenter le volume sonore",
+                "Imprimer plus vite",
+                "Charger le téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bloque ou autorise connexions selon règles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le chiffrement WPA2/WPA3 sur Wi-Fi :",
+              "options": [
+                "Protège les données radio entre appareil et box",
+                "Rend le réseau public pour tous",
+                "Supprime le mot de passe",
+                "Coupe Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans clé, les voisins pourraient lire le trafic."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un phishing par e-mail vise à :",
+              "options": [
+                "Voler identifiants via un faux message",
+                "Réparer ton PC gratuitement",
+                "Augmenter le débit fibre",
+                "Installer une imprimante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méfiance : liens et pièces jointes douteuses."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ne pas cliquer sur un lien inconnu, c'est :",
+              "options": [
+                "Limiter les risques de malware ou arnaque",
+                "Inutile sur Internet",
+                "Réservé aux serveurs",
+                "Interdit au collège"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Principe de prudence numérique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un antivirus sur poste :",
+              "options": [
+                "Aide à détecter logiciels malveillants",
+                "Remplace le pare-feu toujours",
+                "Augmente le débit Wi-Fi",
+                "Coupe le DNS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couche de protection complémentaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sauvegarder ses fichiers importants :",
+              "options": [
+                "Limite la perte en cas de panne ou ransomware",
+                "Est inutile avec un réseau",
+                "Remplace les mots de passe",
+                "Supprime les paquets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Copie sur cloud ou disque externe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Réseau invité sur une box :",
+              "options": [
+                "Isole les visiteurs du LAN principal",
+                "Donne accès à tous tes dossiers",
+                "Coupe la fibre",
+                "Remplace le switch"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séparation des appareils de confiance."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "HTTPS dans le navigateur indique :",
+              "options": [
+                "Chiffrement entre navigateur et site web",
+                "Absence totale de virus garantie",
+                "Wi-Fi désactivé",
+                "IP publique cachée toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadenas = canal chiffré, pas anonymat complet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Partager son mot de passe ENT à un ami :",
+              "options": [
+                "Est dangereux et interdit",
+                "Améliore la sécurité",
+                "Augmente le débit",
+                "Est obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compte personnel = responsabilité individuelle."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Repères pour adresser les machines",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels identifiants distinguent une machine sur un réseau ?",
+              "options": [
+                "Adresse IP (logique)",
+                "Adresse MAC (carte réseau)",
+                "Couleur du clavier",
+                "Numéro de série du moniteur seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "IP pour le routage ; MAC pour la liaison locale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une adresse IPv4 ressemble à :",
+              "options": [
+                "Quatre nombres de 0 à 255 séparés par des points",
+                "Une URL avec https://",
+                "Un nom de fichier .docx",
+                "Un code postal seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : 192.168.1.10."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "192.168.x.x est souvent :",
+              "options": [
+                "Une adresse privée sur un réseau local",
+                "Une adresse publique mondiale unique",
+                "Une adresse e-mail",
+                "Un numéro de téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plages privées réservées au LAN."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'adresse MAC comporte :",
+              "options": [
+                "48 bits souvent notés en hexadécimal",
+                "4 chiffres décimaux seulement",
+                "Une lettre unique",
+                "Rien de fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identifiant usine de la carte réseau."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "DHCP sur la box :",
+              "options": [
+                "Attribue automatiquement IP, masque, passerelle",
+                "Coupe le Wi-Fi la nuit",
+                "Formate les disques",
+                "Remplace le clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évite de saisir IP à la main sur chaque appareil."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux appareils sur le même LAN doivent avoir :",
+              "options": [
+                "Des IP différentes dans le même sous-réseau",
+                "La même IP identique",
+                "Aucune adresse",
+                "Uniquement une MAC identique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conflit IP si doublon."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "localhost ou 127.0.0.1 désigne :",
+              "options": [
+                "La machine elle-même",
+                "Le serveur Google",
+                "La box du voisin",
+                "Internet entier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boucle locale pour tests."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Nom d'hôte (hostname) sert à :",
+              "options": [
+                "Identifier lisiblement un appareil sur le réseau",
+                "Mesurer la température",
+                "Chiffrer WPA3",
+                "Couper Ethernet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. pc-salle-03 au lieu de mémoriser l'IP."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "IPv6 a été introduit surtout pour :",
+              "options": [
+                "Plus d'adresses disponibles que IPv4",
+                "Supprimer le Wi-Fi",
+                "Remplacer Ethernet",
+                "Interdire Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "IPv4 manque d'adresses publiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ping envoie des paquets ICMP pour :",
+              "options": [
+                "Tester si une machine répond et mesurer le délai",
+                "Imprimer un document",
+                "Télécharger une mise à jour obligatoire",
+                "Changer le SSID"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil diagnostic réseau courant."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Topologies et liens",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles topologies existent en cours de technologie ?",
+              "options": [
+                "Étoile",
+                "Bus (historique)",
+                "Triangle des Bermudes",
+                "Chaîne sans lien"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Étoile (central) et bus (ligne partagée) sont au programme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En topologie bus, une coupure de câble :",
+              "options": [
+                "Peut isoler une partie des machines",
+                "N'a aucun effet",
+                "Double le débit",
+                "Crée une étoile automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ligne unique = point de défaillance."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En étoile, si le switch central tombe :",
+              "options": [
+                "Tout le réseau local peut être coupé",
+                "Seul un PC est affecté toujours",
+                "Internet disparaît mondialement",
+                "Les MAC changent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'où l'importance d'un équipement fiable."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un lien full duplex :",
+              "options": [
+                "Permet d'envoyer et recevoir en même temps",
+                "Interdit toute réception",
+                "Unidirectionnel seulement",
+                "Sans câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ethernet moderne est full duplex."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La longueur maximale d'un segment Ethernet cuivre est limitée car :",
+              "options": [
+                "Les signaux s'affaiblissent et se déforment",
+                "Le cuivre fond",
+                "La loi interdit plus de 1 m",
+                "Le Wi-Fi remplace tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normes IEEE fixent des distances typiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Mesh Wi-Fi domestique :",
+              "options": [
+                "Plusieurs bornes coopèrent pour couvrir la maison",
+                "Un seul câble coaxial TV",
+                "Sans radio",
+                "Remplace Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maillage améliore couverture sans fil."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un câble croisé (crossover) sert parfois à :",
+              "options": [
+                "Relier deux PC sans switch",
+                "Brancher l'écran HDMI",
+                "Alimenter la box",
+                "Couper la fibre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cas pédagogique ou ancien matériel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La redondance en réseau pro signifie :",
+              "options": [
+                "Chemins ou équipements de secours",
+                "Suppression de tous les câbles",
+                "Wi-Fi ouvert",
+                "Une seule box"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si un lien tombe, un autre prend le relais."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un backbone (colonne vertébrale) :",
+              "options": [
+                "Lien principal à fort débit entre zones du réseau",
+                "Petit câble USB",
+                "Antenne TV",
+                "Clavier sans fil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interconnecte bâtiments ou étages."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Schématiser un réseau en classe aide à :",
+              "options": [
+                "Voir qui est relié à quoi",
+                "Ignorer les protocoles",
+                "Supprimer la sécurité",
+                "Confondre LAN et WAN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Représentation graphique = compréhension."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Internet et fournisseur d'accès",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour accéder à Internet depuis la maison, il faut typiquement :",
+              "options": [
+                "Un abonnement auprès d'un FAI",
+                "Une box ou modem-routeur",
+                "Uniquement une imprimante",
+                "Aucune adresse IP"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "FAI fournit la liaison ; box partage chez toi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "FAI signifie :",
+              "options": [
+                "Fournisseur d'accès à Internet",
+                "Fichier audio interne",
+                "Format d'image",
+                "Firewall automatique intégré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orange, Free, SFR, Bouygues, etc. en France."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La fibre FTTH amène :",
+              "options": [
+                "La fibre jusqu'au logement",
+                "Uniquement du cuivre ADSL",
+                "Rien de numérique",
+                "Du satellite obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Très haut débit sur fibre optique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une IP publique :",
+              "options": [
+                "Identifie ton accès sur Internet",
+                "Est toujours identique à 192.168.1.1",
+                "Ne sert jamais",
+                "Remplace le DNS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Visible depuis l'extérieur via la box."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le NAT sur la box permet :",
+              "options": [
+                "Plusieurs appareils privés partagent une IP publique",
+                "Un seul smartphone sans Wi-Fi",
+                "Couper le DNS",
+                "Interdire Ethernet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traduction d'adresses entre LAN et Internet."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un site hébergé chez un hébergeur :",
+              "options": [
+                "Est sur des serveurs connectés en permanence à Internet",
+                "Vit sur ton PC éteint la nuit",
+                "Sans adresse",
+                "Uniquement sur papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Datacenter = disponibilité 24/7."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La neutralité du Net (principe) évoque :",
+              "options": [
+                "Traiter les flux sans discrimination abusive des FAI",
+                "Interdire tout streaming",
+                "Couper le Wi-Fi scolaire",
+                "Supprimer les protocoles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat réglementaire sur égalité d'accès."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Coupure Internet chez soi peut venir de :",
+              "options": [
+                "Panne FAI, box, ou câble",
+                "Changement de fond d'écran",
+                "Volume musique bas",
+                "Couleur du clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diagnostic : box, câbles, panne générale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "CDN (réseau de diffusion) rapproche :",
+              "options": [
+                "Les contenus (vidéos, images) des utilisateurs",
+                "Les élèves de la lune",
+                "Les imprimantes du soleil",
+                "Les MAC des IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Serveurs miroirs = moins de latence."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Traceroute (tracert) montre :",
+              "options": [
+                "Les routeurs traversés vers une destination",
+                "La température CPU",
+                "Le mot de passe Wi-Fi",
+                "La taille du disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile pour voir où un chemin bloque."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Récap : identifier un réseau",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments caractérisent le réseau de la salle informatique ?",
+              "options": [
+                "Switch ou routeur central",
+                "PC connectés en LAN",
+                "Absence totale de protocole",
+                "Partage de ressources (fichiers, imprimante)"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Central + LAN + services partagés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Différence LAN / WAN :",
+              "options": [
+                "LAN = local ; WAN = étendu (ex. Internet)",
+                "LAN = mondial ; WAN = une seule classe",
+                "Identiques",
+                "Sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échelle géographique et usage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Identifier un réseau, c'est aussi repérer :",
+              "options": [
+                "Les supports (filaire, radio) et équipements actifs",
+                "Uniquement la couleur des murs",
+                "Le menu cantine",
+                "La météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matériel + médias + organisation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un ENT scolaire est accessible via :",
+              "options": [
+                "Internet et authentification élève",
+                "Uniquement clé USB sans réseau",
+                "Disquette",
+                "Sans serveur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plateforme hébergée joignable en ligne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Partager une imprimante en réseau évite :",
+              "options": [
+                "Brancher chaque PC en USB",
+                "Toute consommation électrique",
+                "Toute adresse IP",
+                "Les protocoles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une imprimante pour toute la salle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le diagramme réseau légende :",
+              "options": [
+                "Ordinateurs, switch, routeur, liens",
+                "Uniquement des emoticons",
+                "Rien",
+                "Seulement le clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma normalisé en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sans switch/routeur, relier 30 PC en étoile :",
+              "options": [
+                "Nécessite un équipement central adapté",
+                "Se fait avec un seul câble bus long",
+                "Impossible d'avoir plus de 2 machines",
+                "Sans adresses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Centralisation des connexions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un réseau scolaire filtré (proxy) peut :",
+              "options": [
+                "Bloquer certains sites dangereux ou non scolaires",
+                "Augmenter la gravité",
+                "Couper l'électricité",
+                "Changer les MAC aléatoirement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique de sécurité pédagogique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La veille réseau (monitoring) sert à :",
+              "options": [
+                "Surveiller disponibilité et trafic",
+                "Peindre les câbles",
+                "Supprimer DHCP",
+                "Interdire Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Admin détecte pannes ou surcharge."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan : un réseau informatique est :",
+              "options": [
+                "Des nœuds, des liens, des protocoles et des services",
+                "Un seul câble sans but",
+                "Sans échange de données",
+                "Uniquement du Wi-Fi public ouvert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition synthèse niveau 4e."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Adresse et routage",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Adresse IP",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur l'adresse IP sont vraies ?",
+              "options": [
+                "Elle identifie une interface sur un réseau",
+                "Elle peut être IPv4 ou IPv6",
+                "Elle remplace toujours le mot de passe Wi-Fi",
+                "Elle est toujours 8.8.8.8"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "IP = identifiant logique ; formats v4 et v6."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une IPv4 valide :",
+              "options": [
+                "192.168.0.5",
+                "999.999.999.999",
+                "abc.def.ghi.jkl",
+                "-1.0.0.1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque octet entre 0 et 255."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Adresse privée 10.0.0.0/8 :",
+              "options": [
+                "Réservée aux réseaux locaux",
+                "Routeable directement sur tout Internet",
+                "Identique à une IP publique unique",
+                "Un nom de domaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plage privée RFC 1918."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Changer d'IP en DHCP se fait :",
+              "options": [
+                "Souvent au renouvellement ou reconnexion",
+                "Jamais",
+                "Uniquement en effaçant le disque",
+                "En peignant la box"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bail DHCP temporaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Conflit d'adresse IP provoque :",
+              "options": [
+                "Pannes ou déconnexions pour les appareils concernés",
+                "Débit doublé",
+                "Wi-Fi gratuit public",
+                "DNS supprimé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux machines ne peuvent partager la même IP."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "ipconfig (Windows) affiche :",
+              "options": [
+                "Adresses IP et passerelle du poste",
+                "Mot de passe Wi-Fi en clair toujours",
+                "Historique des sites",
+                "Température GPU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil ligne de commande local."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "127.0.0.1 sert à :",
+              "options": [
+                "Tester services sur la machine locale",
+                "Joindre Google",
+                "Remplacer la box",
+                "Couper Ethernet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boucle locale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une IP statique est :",
+              "options": [
+                "Fixée manuellement ou réservée (imprimante, serveur)",
+                "Toujours aléatoire chaque seconde",
+                "Interdite au collège",
+                "Un SSID"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile pour équipements toujours joignables."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "IPv6 ressemble à :",
+              "options": [
+                "Groupes hexadécimaux séparés par :",
+                "Quatre décimaux avec points seulement",
+                "Une adresse e-mail",
+                "Un code barre EAN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. 2001:db8::1."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans IP correcte, un PC :",
+              "options": [
+                "Ne communique pas correctement sur le réseau IP",
+                "Imprime plus vite",
+                "Change de MAC seul",
+                "Devient serveur DNS mondial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couche réseau indispensable."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Masque et sous-réseau",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le masque de sous-réseau sert à :",
+              "options": [
+                "Séparer partie réseau et partie hôte dans l'IP",
+                "Définir la taille du sous-réseau local",
+                "Nommer le Wi-Fi",
+                "Mesurer la latence seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Masque + IP indiquent qui est sur le même LAN."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Masque courant 255.255.255.0 signifie :",
+              "options": [
+                "254 hôtes possibles sur le sous-réseau (hors réservés)",
+                "Aucun hôte",
+                "Un seul appareil sur Terre",
+                "Pas de passerelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Masque /24 classique en box domestique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "192.168.1.10 et 192.168.1.50 avec masque 255.255.255.0 :",
+              "options": [
+                "Sont sur le même sous-réseau",
+                "Sont sur des continents différents obligés",
+                "N'ont pas d'IP",
+                "Partagent toujours la même MAC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même préfixe réseau 192.168.1.0/24."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "192.168.1.10 et 192.168.2.10 avec masque 255.255.255.0 :",
+              "options": [
+                "Sont sur des sous-réseaux différents",
+                "Identiques toujours",
+                "Sans adresse",
+                "Uniquement en Wi-Fi ouvert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le troisième octet diffère."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La passerelle par défaut est en général :",
+              "options": [
+                "L'adresse IP du routeur sur le LAN",
+                "L'adresse MAC du PC",
+                "Un nom de domaine .com",
+                "Le SSID"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Point de sortie vers autres réseaux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Broadcast sur un LAN sert à :",
+              "options": [
+                "Envoyer à tous les hôtes du sous-réseau",
+                "Couper Internet",
+                "Chiffrer HTTPS",
+                "Formater disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adresse de diffusion limitée au segment."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Découper un réseau en VLAN (notion) :",
+              "options": [
+                "Isole des groupes logiques sur même switch",
+                "Supprime Ethernet",
+                "Remplace IP par MAC",
+                "Interdit Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Segmentation logique en entreprise."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "CIDR /24 correspond à :",
+              "options": [
+                "Masque 255.255.255.0",
+                "Masque 0.0.0.0",
+                "Pas de masque",
+                "Adresse MAC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Notation compacte du masque."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calculer un sous-réseau aide à :",
+              "options": [
+                "Savoir quelles machines se parlent directement",
+                "Peindre la salle",
+                "Changer le clavier",
+                "Couper DHCP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétence réseau niveau 4e simplifiée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si le masque est mal configuré :",
+              "options": [
+                "Communication locale ou Internet peut échouer",
+                "Débit Wi-Fi double",
+                "MAC disparaît",
+                "DNS devient MAC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Configuration IP cohérente requise."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Adresse MAC",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'adresse MAC :",
+              "options": [
+                "Identifie la carte réseau",
+                "Est gravée par le constructeur (en principe)",
+                "Remplace le DNS sur Internet",
+                "Change à chaque page web visitée toujours"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Identifiant physique de l'interface."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Format MAC typique :",
+              "options": [
+                "AA:BB:CC:DD:EE:FF (hexadécimal)",
+                "192.168.1.1",
+                "https://example.fr",
+                "Mot de passe WPA2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Six octets en hexadécimal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Switch utilise souvent la MAC pour :",
+              "options": [
+                "Acheminer les trames vers le bon port",
+                "Traduire les noms de domaine",
+                "Chiffrer HTTPS",
+                "Imprimer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Table MAC apprise automatiquement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Différence IP / MAC :",
+              "options": [
+                "IP = logique routable ; MAC = physique locale",
+                "Identiques",
+                "MAC route sur Internet seule",
+                "IP gravée en usine seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux niveaux du modèle réseau."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ARP associe sur un LAN :",
+              "options": [
+                "IP à MAC",
+                "SSID à mot de passe",
+                "URL à couleur",
+                "CPU à GPU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protocole de résolution d'adresses."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Filtrage MAC sur box (notion) :",
+              "options": [
+                "Autorise seulement certaines cartes réseau",
+                "Coupe la fibre",
+                "Remplace DNS",
+                "Supprime IPv6"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liste blanche d'appareils."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Adresse MAC broadcast :",
+              "options": [
+                "FF:FF:FF:FF:FF:FF",
+                "00:00:00:00:00:00 seulement pour tout",
+                "127.0.0.1",
+                "8.8.8.8"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diffusion couche liaison."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Randomisation MAC sur smartphone :",
+              "options": [
+                "Peut changer MAC Wi-Fi pour la vie privée",
+                "Supprime IP",
+                "Coupe Internet",
+                "Remplace routeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Empêche traçage permanent en Wi-Fi public."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux cartes réseau sur un PC ont :",
+              "options": [
+                "Deux adresses MAC différentes",
+                "Une MAC obligatoirement identique",
+                "Aucune adresse",
+                "Un SSID"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une MAC par interface."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Voir sa MAC sous Windows :",
+              "options": [
+                "ipconfig /all ou paramètres réseau",
+                "Uniquement en ouvrant le boîtier",
+                "Ping 8.8.8.8 seul",
+                "Format disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adresse physique listée avec l'interface."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Principes de routage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un routeur :",
+              "options": [
+                "Relie plusieurs réseaux IP",
+                "Choisit où envoyer les paquets selon la destination",
+                "Est toujours un simple câble HDMI",
+                "Remplace le clavier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Routage = décision de chemin inter-réseaux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Table de routage contient :",
+              "options": [
+                "Destinations et prochain saut",
+                "Recettes de cuisine",
+                "Mots de passe Wi-Fi",
+                "Couleurs des câbles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque entrée guide un paquet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Paquet pour 203.0.113.5 depuis le LAN :",
+              "options": [
+                "Passe par la passerelle puis routeurs Internet",
+                "Reste toujours dans le switch",
+                "Ne quitte jamais le PC",
+                "Devient une trame USB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sortie WAN vers destination publique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Routeur domestique fait aussi :",
+              "options": [
+                "NAT entre IP privées et IP publique",
+                "Refroidissement CPU du PC",
+                "Impression papier",
+                "Scan antivirus seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partage d'une connexion."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Saut suivant (next hop) :",
+              "options": [
+                "Prochain routeur vers la destination",
+                "Dernier utilisateur",
+                "SSID",
+                "Port USB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Étape intermédiaire du chemin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Routage statique :",
+              "options": [
+                "Routes configurées manuellement",
+                "Toujours appris seul sans admin",
+                "Interdit en classe",
+                "Remplace DNS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utilisé sur petits réseaux ou routes fixes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Routage dynamique (notion) :",
+              "options": [
+                "Routeurs échangent infos pour s'adapter",
+                "Sans table",
+                "Uniquement Bluetooth",
+                "Coupe Ethernet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protocoles type OSPF, BGP en backbone."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si aucune route ne correspond :",
+              "options": [
+                "Paquet peut être abandonné (perdu)",
+                "Internet accélère",
+                "MAC devient IP",
+                "Wi-Fi s'éteint"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Route par défaut ou échec."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Chemin d'un paquet peut :",
+              "options": [
+                "Traverser plusieurs routeurs",
+                "Être unique fil obligé",
+                "Ignorer IP",
+                "Passer par imprimante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Internet = réseau de routeurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Schéma avec deux LAN et un routeur montre :",
+              "options": [
+                "Interconnexion et choix de chemin",
+                "Absence d'adresses",
+                "Un seul PC",
+                "Sans protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Visualisation pédagogique du routage."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Passerelle par défaut",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La passerelle par défaut est nécessaire pour :",
+              "options": [
+                "Joindre des adresses hors du sous-réseau local",
+                "Atteindre Internet via le routeur",
+                "Changer la couleur du clavier",
+                "Formater une clé USB"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sans passerelle, pas de sortie du LAN."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur une box 192.168.1.0/24, passerelle typique :",
+              "options": [
+                "192.168.1.1",
+                "192.168.1.255",
+                "127.0.0.1",
+                "0.0.0.0 seul pour tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souvent .1 sur réseaux domestiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Oublier la passerelle sur un PC :",
+              "options": [
+                "Empêche d'atteindre Internet",
+                "Double le débit",
+                "Change le SSID",
+                "Supprime MAC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paquets externes non dirigés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ping de la passerelle teste :",
+              "options": [
+                "Lien local jusqu'au routeur",
+                "Site web en Australie obligé",
+                "Imprimante USB",
+                "Disque dur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diagnostic première étape."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Passerelle ≠ serveur DNS :",
+              "options": [
+                "DNS traduit noms ; passerelle route les paquets IP",
+                "Identiques toujours",
+                "DNS remplace routeur",
+                "Passerelle stocke e-mails"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux rôles distincts."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "DHCP peut fournir :",
+              "options": [
+                "IP, masque, passerelle et DNS",
+                "Uniquement le SSID",
+                "Mot de passe e-mail",
+                "Wallpaper"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Configuration automatique complète."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Double routeur mal configuré peut :",
+              "options": [
+                "Créer double NAT et problèmes de port",
+                "Augmenter gravité",
+                "Supprimer Wi-Fi",
+                "Rendre MAC publique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cas box + second routeur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Route par défaut 0.0.0.0/0 signifie :",
+              "options": [
+                "Tout trafic non local via cette passerelle",
+                "Aucun trafic",
+                "LAN seulement",
+                "Broadcast"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Catch-all vers Internet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Passerelle dans l'ENT scolaire :",
+              "options": [
+                "Peut filtrer et tracer le trafic élève",
+                "Est un crayon",
+                "Remplace prof",
+                "Coupe l'électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique réseau établissement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Vérifier passerelle après changement box :",
+              "options": [
+                "Évite perte d'accès Internet",
+                "Inutile",
+                "Formate PC",
+                "Change tier compte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reconfiguration parfois nécessaire."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "DNS et noms",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le DNS permet :",
+              "options": [
+                "De résoudre un nom en adresse IP",
+                "D'utiliser des noms lisibles (ex. www.example.fr)",
+                "De remplacer le câble Ethernet",
+                "De couper le Wi-Fi"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Système de noms hiérarchique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Serveur DNS 8.8.8.8 est :",
+              "options": [
+                "Un resolver public Google",
+                "Une adresse MAC",
+                "Un SSID",
+                "Un port USB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple de DNS public (Google)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sans DNS fonctionnel :",
+              "options": [
+                "Les noms de sites ne se résolvent pas",
+                "Le clavier cesse de marcher",
+                "La RAM double",
+                "Ethernet disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut alors connaître l'IP."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Enregistrement A associe :",
+              "options": [
+                "Nom de domaine à IPv4",
+                "Nom à adresse MAC",
+                "SSID à mot de passe",
+                "URL à fichier local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Type d'enregistrement DNS courant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Cache DNS sur PC ou box :",
+              "options": [
+                "Accélère les requêtes répétées",
+                "Supprime Internet",
+                "Chiffre WPA3",
+                "Formate disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mémorise réponses récentes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "DNS hijacking (arnaque) :",
+              "options": [
+                "Redirige vers de faux sites",
+                "Améliore sécurité",
+                "Augmente débit fibre",
+                "Remplace DHCP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méfiance réseaux non fiables."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Nom de domaine .fr :",
+              "options": [
+                "Géré pour la France (AFNIC)",
+                "Réservé aux satellites",
+                "Identique à .com toujours",
+                "Une adresse IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suffixe national."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Navigateur tape www.example.com :",
+              "options": [
+                "Demande résolution DNS puis connexion IP",
+                "Ignore IP",
+                "Utilise MAC seule",
+                "Sans protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Étapes résolution + TCP + HTTP(S)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "DNS secondaire (notion) :",
+              "options": [
+                "Serveur de secours si le premier tombe",
+                "Coupe Wi-Fi",
+                "Remplace routeur",
+                "Imprimante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Redondance des noms."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Configurer DNS sur box :",
+              "options": [
+                "Peut utiliser FAI ou publics (Cloudflare, Google…)",
+                "Interdit au collège",
+                "Remplace masque",
+                "Supprime NAT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix resolver selon préférence."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Ports et services",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un port TCP/UDP sert à :",
+              "options": [
+                "Identifier une application sur une machine",
+                "Distinguer plusieurs services sur même IP",
+                "Mesurer température routeur",
+                "Peindre RJ45"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "IP + port = socket."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Port 80 correspond en général à :",
+              "options": [
+                "HTTP (web non chiffré)",
+                "E-mail SMTP",
+                "DNS",
+                "FTP seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Web classique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Port 443 correspond à :",
+              "options": [
+                "HTTPS (web chiffré)",
+                "Ping ICMP",
+                "DHCP",
+                "Bluetooth"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sites sécurisés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Port bien connu 0-1023 :",
+              "options": [
+                "Services standards (web, mail…)",
+                "Réservés aux imprimantes USB",
+                "Interdits",
+                "Identiques à MAC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ports système historiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ouvrir un port sur box (redirection) :",
+              "options": [
+                "Expose un service interne vers Internet (avec risque)",
+                "Coupe NAT",
+                "Supprime Wi-Fi",
+                "Change tier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À utiliser avec prudence."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Firewall peut bloquer :",
+              "options": [
+                "Ports non autorisés",
+                "Tout sans distinction (selon règles)",
+                "Uniquement le clavier",
+                "La gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtrage entrant/sortant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Scan de ports (notion) :",
+              "options": [
+                "Teste quels services écoutent",
+                "Répare PC",
+                "Installe Windows",
+                "Remplace DNS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil admin ou attaquant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Serveur écoute sur un port signifie :",
+              "options": [
+                "Il attend des connexions entrantes",
+                "Il est éteint",
+                "Sans IP",
+                "Sans protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Socket en écoute (listen)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Multiplexage :",
+              "options": [
+                "Plusieurs connexions simultanées via ports différents",
+                "Un seul port pour tout Internet",
+                "Sans TCP",
+                "MAC seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs onglets web = plusieurs ports."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Associer service-port aide à :",
+              "options": [
+                "Comprendre trafic réseau en technologie",
+                "Ignorer sécurité",
+                "Couper DHCP",
+                "Confondre IP et URL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cartographie des applications."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "NAT simplifié",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le NAT sur box :",
+              "options": [
+                "Traduit adresses privées en IP publique",
+                "Permet plusieurs appareils avec une IP publique",
+                "Remplace le clavier",
+                "Supprime Ethernet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Partage de connexion Internet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "IP privée 192.168.0.15 sur PC :",
+              "options": [
+                "Non routée directement sur Internet global",
+                "Visible partout sans NAT",
+                "Identique IP publique",
+                "Un DNS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "RFC 1918 non globale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Table NAT mémorise :",
+              "options": [
+                "Correspondances session interne ↔ externe",
+                "Mots de passe Wi-Fi",
+                "Fichiers Word",
+                "Couleur câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suivi des connexions sortantes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "NAT type PAT (overload) :",
+              "options": [
+                "Plusieurs ports pour plusieurs appareils",
+                "Un appareil seulement",
+                "Sans IP publique",
+                "Remplace DHCP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Translation par port."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Jeu en ligne console peut nécessiter :",
+              "options": [
+                "Configuration port forwarding sur box",
+                "Couper NAT",
+                "Supprimer IP",
+                "MAC seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Connexions entrantes parfois requises."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Double NAT peut compliquer :",
+              "options": [
+                "Certaines applications P2P ou domotique",
+                "Respiration",
+                "Couleur écran",
+                "Clavier AZERTY"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diagnostics plus difficiles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "IPv6 peut réduire besoin NAT car :",
+              "options": [
+                "Plus d'adresses publiques disponibles",
+                "Supprime Wi-Fi",
+                "Interdit routeur",
+                "Remplace DNS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adressage de bout en bout possible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Voir IP publique :",
+              "options": [
+                "Site whatismyip ou statut box",
+                "ipconfig seul sur PC",
+                "Ping localhost",
+                "SSID"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Différente de 192.168.x.x."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "NAT améliore sécurité modestement car :",
+              "options": [
+                "Masque topologie interne",
+                "Chiffre tout HTTPS seul",
+                "Remplace antivirus",
+                "Coupe phishing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Barrière adressage, pas bouclier total."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans NAT ni IP publique suffisante :",
+              "options": [
+                "Partage Internet difficile (IPv4)",
+                "Débit illimité",
+                "DNS inutile",
+                "MAC route monde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte historique IPv4."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Diagnostiquer un chemin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Outils de diagnostic réseau courants :",
+              "options": [
+                "ping",
+                "tracert / traceroute",
+                "Peinture murale",
+                "Compas géographique seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Test reachability et chemin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "ping 192.168.1.1 réussi signifie :",
+              "options": [
+                "La passerelle répond",
+                "Internet mondial garanti",
+                "DNS fonctionne toujours",
+                "Imprimante OK"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Test local vers routeur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ping échoue avec « destination unreachable » :",
+              "options": [
+                "Problème routage ou hôte down",
+                "Succès total",
+                "DNS OK obligé",
+                "Wi-Fi plus rapide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Message ICMP d'erreur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "tracert montre :",
+              "options": [
+                "Liste des routeurs intermédiaires",
+                "Mot de passe Wi-Fi",
+                "Contenu e-mail",
+                "Taille disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TTL increment révèle sauts."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Latence élevée en jeu en ligne :",
+              "options": [
+                "Retard ressenti (lag)",
+                "Débit upload illimité",
+                "DNS cassé seul",
+                "MAC changée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ping élevé = gameplay pénalisé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Câble Ethernet débranché :",
+              "options": [
+                "Ping local peut échouer (pas de lien)",
+                "Accélère fibre",
+                "Change DNS",
+                "Ouvre ports"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couche physique d'abord."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tester DNS :",
+              "options": [
+                "nslookup ou ping sur un nom de domaine",
+                "Formater C:",
+                "Couper box",
+                "Changer SSID"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vérifie résolution noms."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Wi-Fi faible signal :",
+              "options": [
+                "Pertes paquets et latence",
+                "Sécurité maximale",
+                "IP publique change seule",
+                "NAT désactivé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualité radio impacte flux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ordre diagnostic sensé :",
+              "options": [
+                "Physique → IP locale → passerelle → DNS → Internet",
+                "Internet avant câble",
+                "DNS avant câble branché",
+                "Aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode en couches."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Documenter un schéma réseau + tests :",
+              "options": [
+                "Aide à expliquer une panne en technologie",
+                "Inutile en 4e",
+                "Remplace cours",
+                "Interdit ENT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Démarche d'investigation."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Récap : adresse et routage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour qu'un PC accède à un site web :",
+              "options": [
+                "IP/masque/passerelle/DNS cohérents",
+                "Routage via passerelle vers Internet",
+                "Uniquement MAC sans IP",
+                "Aucun protocole"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Configuration + routage + DNS."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Résumé : adresse IP sert à :",
+              "options": [
+                "Identifier et localiser logiquement sur réseau IP",
+                "Peindre câble",
+                "Volume son",
+                "Taille écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couche réseau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Résumé : routage sert à :",
+              "options": [
+                "Diriger paquets entre réseaux",
+                "Stocker fichiers",
+                "Imprimer",
+                "Chiffrer WPA2 seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix de chemin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "LAN 192.168.0.0/24 avec box .1 :",
+              "options": [
+                "Passerelle .1 pour sortie",
+                "Tous PC même IP",
+                "Sans masque",
+                "DNS = MAC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Configuration type."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Nom site → IP → paquets → routeurs :",
+              "options": [
+                "Chaîne normal d'accès web",
+                "Impossible",
+                "Sans DNS ni IP",
+                "USB seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vue d'ensemble 4e."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sécurité : ne pas exposer inutilement :",
+              "options": [
+                "Ports services sur Internet",
+                "Cahier de textes papier",
+                "Clavier filaire",
+                "Tableau blanc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surface d'attaque réduite."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "IPv4 et IPv6 coexistence :",
+              "options": [
+                "Transition progressive sur Internet",
+                "IPv6 remplace clavier",
+                "IPv4 interdit",
+                "Identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dual stack fréquent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Projet réseau en classe peut inclure :",
+              "options": [
+                "Adresser des PC et tester ping",
+                "Ignorer schéma",
+                "Sans switch",
+                "Sans objectif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratique pédagogique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comprendre NAT aide à :",
+              "options": [
+                "Expliquer IP publique vs privée",
+                "Couper Wi-Fi",
+                "Supprimer MAC",
+                "Remplacer HTTPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Box domestique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan unité : adresse et routage, c'est :",
+              "options": [
+                "Identifier machines et cheminer les données",
+                "Uniquement Wi-Fi",
+                "Sans passerelle",
+                "Sans DNS jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétences clés technologie 4e."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

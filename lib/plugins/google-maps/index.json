@@ -1,0 +1,47 @@
+{
+  "author": "mAI",
+  "category": "integrations",
+  "description": "Reliez Google Maps par clé API : l'IA géocode un lieu, retrouve une adresse, cherche un endroit et calcule un itinéraire. Elle ne modifie aucune carte.",
+  "icon": { "src": "/plugins/google-maps.svg", "type": "image" },
+  "id": "google-maps",
+  "minTier": "plus",
+  "name": "Google Maps",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": true,
+    "requiresApproval": false,
+    "writesUserData": false
+  },
+  "tags": ["google", "maps", "géocodage", "itinéraire", "clé"],
+  "tools": [
+    {
+      "description": "Transforme une adresse ou un lieu en coordonnées Google Maps.",
+      "effect": "read",
+      "id": "mapsGeocode",
+      "label": "Géocoder un lieu",
+      "systemHint": "Donnez le lieu le plus précis rendu, avec ses coordonnées. N'inventez pas d'adresse si l'outil n'en rend pas."
+    },
+    {
+      "description": "Transforme des coordonnées en adresse Google Maps.",
+      "effect": "read",
+      "id": "mapsReverseGeocode",
+      "label": "Adresse depuis des coordonnées",
+      "systemHint": "Les coordonnées viennent de l'utilisateur ou d'un géocodage précédent."
+    },
+    {
+      "description": "Recherche de lieux Google Maps à partir d'un texte.",
+      "effect": "read",
+      "id": "mapsSearchPlaces",
+      "label": "Chercher un lieu",
+      "systemHint": "Citez le nom et l'adresse rendus. Ne complétez pas avec un lieu absent de la réponse."
+    },
+    {
+      "description": "Itinéraire routier Google Maps entre deux points.",
+      "effect": "read",
+      "id": "mapsDirections",
+      "label": "Itinéraire routier",
+      "systemHint": "Annoncez la distance et la durée. N'inventez pas d'étapes si l'outil ne les rend pas."
+    }
+  ],
+  "version": "1.0.0"
+}

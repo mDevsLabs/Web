@@ -1,0 +1,2753 @@
+{
+  "id": "1ere-svt-02",
+  "year": "1ere",
+  "subject": "svt",
+  "title": "Enjeux contemporains",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Écosystèmes",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Notion d'écosystème",
+          "questions": [
+            {
+              "id": "u1-q01-01",
+              "type": "multiple_choice",
+              "question": "Quels éléments caractérisent un écosystème ?",
+              "options": [
+                "Biotope et biocénose en interaction",
+                "Uniquement les plantes",
+                "Flux de matière et d'énergie",
+                "Un milieu sans aucun organisme"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Écosystème = milieu + communauté vivante + échanges dynamiques."
+            },
+            {
+              "id": "u1-q01-02",
+              "type": "single_choice",
+              "question": "Le biotope correspond à :",
+              "options": [
+                "Le milieu physique et chimique",
+                "L'ensemble des espèces",
+                "Les prédateurs seuls",
+                "La biomasse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Support abiotique du vivant."
+            },
+            {
+              "id": "u1-q01-03",
+              "type": "single_choice",
+              "question": "La biocénose est :",
+              "options": [
+                "L'ensemble des organismes du milieu",
+                "Le substrat rocheux",
+                "La pluie",
+                "L'ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Communauté biologique d'un écosystème."
+            },
+            {
+              "id": "u1-q01-04",
+              "type": "single_choice",
+              "question": "Un biome regroupe :",
+              "options": [
+                "Écosystèmes à climat comparable",
+                "Une seule mare",
+                "Un gène",
+                "Un parasite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grande zone écologique (savane, taïga…)."
+            },
+            {
+              "id": "u1-q01-05",
+              "type": "single_choice",
+              "question": "L'énergie dans un écosystème :",
+              "options": [
+                "Se dissipe en chaleur",
+                "Est entièrement recyclée",
+                "Ne vient jamais du Soleil",
+                "Augmente à chaque niveau sans limite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux unidirectionnel avec pertes."
+            },
+            {
+              "id": "u1-q01-06",
+              "type": "single_choice",
+              "question": "La matière organique :",
+              "options": [
+                "Est recyclée par décomposeurs",
+                "Disparaît définitivement chaque hiver",
+                "N'existe qu'en mer",
+                "Ignore le sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cycle des éléments via décomposition."
+            },
+            {
+              "id": "u1-q01-07",
+              "type": "single_choice",
+              "question": "Résilience écologique :",
+              "options": [
+                "Capacité à absorber une perturbation",
+                "Absence de toute variation",
+                "Disparition immédiate des espèces",
+                "Climat figé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retour ou nouvel équilibre dynamique."
+            },
+            {
+              "id": "u1-q01-08",
+              "type": "single_choice",
+              "question": "Anthropisation :",
+              "options": [
+                "Transformation du milieu par l'homme",
+                "Volcanisme seul",
+                "Photosynthèse marine",
+                "Mitose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pression humaine sur écosystèmes."
+            },
+            {
+              "id": "u1-q01-09",
+              "type": "single_choice",
+              "question": "Échelle d'étude d'un écosystème :",
+              "options": [
+                "Dépend de la question posée",
+                "Toujours planétaire",
+                "Toujours microscopique",
+                "Imposée par la loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Étang, parcelle forestière ou biome."
+            },
+            {
+              "id": "u1-q01-10",
+              "type": "single_choice",
+              "question": "Équilibre dynamique signifie :",
+              "options": [
+                "Flux et populations varient autour d'une moyenne",
+                "Aucun changement jamais",
+                "Zéro espèce",
+                "Énergie infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stabilité ≠ immobilité."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Niveaux trophiques",
+          "questions": [
+            {
+              "id": "u1-q02-01",
+              "type": "multiple_choice",
+              "question": "Producteurs primaires typiques :",
+              "options": [
+                "Phytoplancton photosynthétique",
+                "Loup",
+                "Végétaux terrestres",
+                "Champignons saprotrophes"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Fixation primaire d'énergie lumineuse."
+            },
+            {
+              "id": "u1-q02-02",
+              "type": "single_choice",
+              "question": "Consommateur primaire :",
+              "options": [
+                "Herbivore",
+                "Producteur",
+                "Décomposeur du sol",
+                "Roche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mange directement les producteurs."
+            },
+            {
+              "id": "u1-q02-03",
+              "type": "single_choice",
+              "question": "Consommateur secondaire :",
+              "options": [
+                "Se nourrit surtout d'herbivores",
+                "Fixe le CO₂",
+                "Photosynthétise",
+                "Est toujours décomposeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Carnivore de niveau 2."
+            },
+            {
+              "id": "u1-q02-04",
+              "type": "single_choice",
+              "question": "Décomposeurs :",
+              "options": [
+                "Minéralisent matière organique",
+                "Bloquent le cycle",
+                "Produisent pétrole direct",
+                "Ignorent l'azote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Libèrent ions pour producteurs."
+            },
+            {
+              "id": "u1-q02-05",
+              "type": "single_choice",
+              "question": "Règle des 10 % :",
+              "options": [
+                "~10 % énergie passe au niveau suivant",
+                "100 % transférés",
+                "0 % perdu",
+                "50 % toujours biomasse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respiration et chaleur."
+            },
+            {
+              "id": "u1-q02-06",
+              "type": "single_choice",
+              "question": "Pyramide de biomasse inversée si :",
+              "options": [
+                "Producteurs à turnover rapide",
+                "Pas de producteurs",
+                "Pas d'eau",
+                "Pas de lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Biomasse instantanée faible mais production élevée."
+            },
+            {
+              "id": "u1-q02-07",
+              "type": "single_choice",
+              "question": "Réseau trophique :",
+              "options": [
+                "Liens alimentaires multiples",
+                "Chaîne linéaire unique",
+                "Sans décomposeurs",
+                "Sans producteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interconnexions réalistes."
+            },
+            {
+              "id": "u1-q02-08",
+              "type": "single_choice",
+              "question": "PPB :",
+              "options": [
+                "Production primaire brute",
+                "Biomasse des prédateurs",
+                "Pluie annuelle",
+                "Température seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie fixée avant respiration."
+            },
+            {
+              "id": "u1-q02-09",
+              "type": "single_choice",
+              "question": "Omnivore :",
+              "options": [
+                "Plusieurs niveaux trophiques",
+                "Un seul aliment toujours",
+                "Producteur",
+                "Abiotique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régime mixte."
+            },
+            {
+              "id": "u1-q02-10",
+              "type": "single_choice",
+              "question": "Superprédateur :",
+              "options": [
+                "Peu abondant, fort impact",
+                "Le plus nombreux",
+                "Toujours herbivore",
+                "Absent en mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sommet de la pyramide."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Relations interspécifiques",
+          "questions": [
+            {
+              "id": "u1-q03-01",
+              "type": "multiple_choice",
+              "question": "Relations mutualistes :",
+              "options": [
+                "Mycorhizes",
+                "Lichen algue–champignon",
+                "Parasitisme du paludisme",
+                "Prédation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bénéfice réciproque (+/+)."
+            },
+            {
+              "id": "u1-q03-02",
+              "type": "single_choice",
+              "question": "Parasitisme :",
+              "options": ["+/− pour l'hôte", "+/+", "0/0", "−/− toujours"],
+              "correctAnswers": [0],
+              "explanation": "Un partenaire lésé."
+            },
+            {
+              "id": "u1-q03-03",
+              "type": "single_choice",
+              "question": "Compétition :",
+              "options": [
+                "Ressource limitée partagée",
+                "Sans contact",
+                "Toujours mutualisme",
+                "Sans effet démographique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exclusion possible."
+            },
+            {
+              "id": "u1-q03-04",
+              "type": "single_choice",
+              "question": "Commensalisme :",
+              "options": ["+/0", "+/+", "−/−", "+/−"],
+              "correctAnswers": [0],
+              "explanation": "Un bénéficiaire, neutre pour l'autre."
+            },
+            {
+              "id": "u1-q03-05",
+              "type": "single_choice",
+              "question": "Prédation :",
+              "options": [
+                "+/− avec régulation proies",
+                "0/0",
+                "Sans mortalité",
+                "Toujours mutualiste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relation consommateur–proie."
+            },
+            {
+              "id": "u1-q03-06",
+              "type": "single_choice",
+              "question": "Coévolution :",
+              "options": [
+                "Sélection réciproque",
+                "Sans gènes",
+                "Instantanée",
+                "Uniquement humaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. défenses et contre-adaptations."
+            },
+            {
+              "id": "u1-q03-07",
+              "type": "single_choice",
+              "question": "Espèce invasive :",
+              "options": [
+                "Déséquilibre réseaux locaux",
+                "Toujours bénéfique",
+                "Native par définition",
+                "Sans compétition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expansion hors aire + faibles régulateurs."
+            },
+            {
+              "id": "u1-q03-08",
+              "type": "single_choice",
+              "question": "Niche écologique :",
+              "options": [
+                "Rôle et conditions de vie",
+                "Nid seulement",
+                "Un gène",
+                "Température moyenne seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multidimensionnelle."
+            },
+            {
+              "id": "u1-q03-09",
+              "type": "single_choice",
+              "question": "Symbiose (large) :",
+              "options": [
+                "Contact intime durable",
+                "Rencontre unique",
+                "Sans organismes",
+                "Toujours prédation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inclut mutualisme, commensalisme, parasitisme."
+            },
+            {
+              "id": "u1-q03-10",
+              "type": "single_choice",
+              "question": "Facilitation :",
+              "options": [
+                "Une espèce améliore le milieu pour une autre",
+                "Bloque colonisation",
+                "Supprime l'eau",
+                "Empêche photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Espèces pionnières stabilisant le sol."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Biodiversité",
+          "questions": [
+            {
+              "id": "u1-q04-01",
+              "type": "multiple_choice",
+              "question": "Dimensions de la biodiversité :",
+              "options": [
+                "Diversité spécifique",
+                "Diversité génétique",
+                "Diversité des écosystèmes",
+                "Diversité des atomes du noyau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plusieurs niveaux d'organisation."
+            },
+            {
+              "id": "u1-q04-02",
+              "type": "single_choice",
+              "question": "Richesse spécifique :",
+              "options": [
+                "Nombre d'espèces",
+                "Masse totale",
+                "Vitesse du vent",
+                "pH seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comptage taxonomique."
+            },
+            {
+              "id": "u1-q04-03",
+              "type": "single_choice",
+              "question": "Hotspot de biodiversité :",
+              "options": [
+                "Fort endémisme et menace",
+                "Désert sans vie",
+                "Zone urbaine seule",
+                "Pôle Nord glacial seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Priorité conservation."
+            },
+            {
+              "id": "u1-q04-04",
+              "type": "single_choice",
+              "question": "Fragmentation d'habitat :",
+              "options": [
+                "Isole populations",
+                "Augmente toujours diversité",
+                "Sans effet génétique",
+                "Crée biomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effets démographiques et génétiques."
+            },
+            {
+              "id": "u1-q04-05",
+              "type": "single_choice",
+              "question": "Indice de diversité (Shannon) intègre :",
+              "options": [
+                "Richesse et équilibre",
+                "Température seule",
+                "Salinité seule",
+                "Altitude seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abondance relative des espèces."
+            },
+            {
+              "id": "u1-q04-06",
+              "type": "single_choice",
+              "question": "Extinction locale :",
+              "options": [
+                "Espèce disparaît d'un site",
+                "Disparition mondiale",
+                "Nouvelle espèce",
+                "Mutation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échelle régionale."
+            },
+            {
+              "id": "u1-q04-07",
+              "type": "single_choice",
+              "question": "Corridor écologique sert à :",
+              "options": [
+                "Relier habitats fragmentés",
+                "Bloquer migrations",
+                "Augmenter pesticides",
+                "Saliniser sols"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Connectivité du paysage."
+            },
+            {
+              "id": "u1-q04-08",
+              "type": "single_choice",
+              "question": "Espèce clé de voûte :",
+              "options": [
+                "Impact disproportionné sur communauté",
+                "Toujours la plus petite",
+                "Sans interactions",
+                "Uniquement plante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. prédateur régulateur."
+            },
+            {
+              "id": "u1-q04-09",
+              "type": "single_choice",
+              "question": "Sixième extinction de masse :",
+              "options": [
+                "Liée surtout aux activités humaines",
+                "Sans cause",
+                "Uniquement météorite",
+                "Terminée au Crétacé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Taux d'extinction actuel élevé."
+            },
+            {
+              "id": "u1-q04-10",
+              "type": "single_choice",
+              "question": "In situ (conservation) :",
+              "options": [
+                "Protection dans habitat naturel",
+                "Uniquement zoo",
+                "Banque gène seule",
+                "Laboratoire ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parcs, réserves."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Cycles biogéochimiques",
+          "questions": [
+            {
+              "id": "u1-q05-01",
+              "type": "multiple_choice",
+              "question": "Cycle du carbone inclut :",
+              "options": [
+                "Photosynthèse et respiration",
+                "Combustion fossiles",
+                "Mitose seule",
+                "Traduction"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pools atmosphère, biosphère, géosphère."
+            },
+            {
+              "id": "u1-q05-02",
+              "type": "single_choice",
+              "question": "Fixation biologique de l'azote :",
+              "options": [
+                "Certaines bactéries",
+                "Tous les vertébrés",
+                "Roche mère",
+                "Ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "N₂ → NH₃ ou assimilables."
+            },
+            {
+              "id": "u1-q05-03",
+              "type": "single_choice",
+              "question": "Nitrification :",
+              "options": [
+                "NH₄⁺ → NO₃⁻",
+                "NO₃⁻ → N₂ seul",
+                "Photosynthèse",
+                "Respiration anaérobie seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bactéries aérobies."
+            },
+            {
+              "id": "u1-q05-04",
+              "type": "single_choice",
+              "question": "Dénitrification :",
+              "options": [
+                "Retour N₂ atmosphère",
+                "Fixation N₂",
+                "Calcium seul",
+                "Oxygène produit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milieu souvent anaérobie."
+            },
+            {
+              "id": "u1-q05-05",
+              "type": "single_choice",
+              "question": "Cycle de l'eau :",
+              "options": [
+                "Évaporation–précipitations–ruissellement",
+                "Uniquement souterrain",
+                "Sans océan",
+                "Sans transpiration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux solaire entraîne cycle."
+            },
+            {
+              "id": "u1-q05-06",
+              "type": "single_choice",
+              "question": "Eutrophisation :",
+              "options": [
+                "Excès nutriments → blooms algaux",
+                "Manque total d'azote",
+                "Refroidissement global",
+                "Sécheresse seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "O₂ peut chuter (hypoxie)."
+            },
+            {
+              "id": "u1-q05-07",
+              "type": "single_choice",
+              "question": "Phosphore en écosystème :",
+              "options": [
+                "Souvent limitant, peu gazeux",
+                "Très volatile en N₂",
+                "Absent du sol",
+                "Uniquement air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cycle surtout lithosphère–eau–vivant."
+            },
+            {
+              "id": "u1-q05-08",
+              "type": "single_choice",
+              "question": "Décomposeurs dans cycle C :",
+              "options": [
+                "Libèrent CO₂ par respiration",
+                "Fixent N₂ obligatoire",
+                "Produisent O₃",
+                "Bloquent H₂O"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Minéralisation matière organique."
+            },
+            {
+              "id": "u1-q05-09",
+              "type": "single_choice",
+              "question": "Puits de carbone :",
+              "options": [
+                "Stockent C (forêts, océans)",
+                "Émettent toujours",
+                "Sans biosphère",
+                "Uniquement métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Atténuation partielle émissions."
+            },
+            {
+              "id": "u1-q05-10",
+              "type": "single_choice",
+              "question": "Biodiversité et cycles :",
+              "options": [
+                "Diversité stabilise certains flux",
+                "Empêche tout cycle",
+                "Supprime décomposeurs",
+                "Annule pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Redondance fonctionnelle possible."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Productivité et flux",
+          "questions": [
+            {
+              "id": "u1-q06-01",
+              "type": "multiple_choice",
+              "question": "Facteurs limitant productivité primaire :",
+              "options": [
+                "Lumière",
+                "Nutriments (N, P)",
+                "Température (dans une plage)",
+                "Distance à la Lune"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ressources et conditions physiques."
+            },
+            {
+              "id": "u1-q06-02",
+              "type": "single_choice",
+              "question": "PPN :",
+              "options": [
+                "PPB moins respiration producteurs",
+                "Biomasse loups",
+                "Pluie",
+                "Vent seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie nette stockée."
+            },
+            {
+              "id": "u1-q06-03",
+              "type": "single_choice",
+              "question": "Mer très productive (upwelling) :",
+              "options": [
+                "Remontée eaux riches en nutriments",
+                "Sans plancton",
+                "Sans lumière",
+                "Eau stagnante profonde seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fertilisation surface."
+            },
+            {
+              "id": "u1-q06-04",
+              "type": "single_choice",
+              "question": "Désert : productivité souvent faible car :",
+              "options": [
+                "Eau limitante",
+                "Trop de prédateurs",
+                "Excès phosphore",
+                "Trop de lumière seule suffit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stress hydrique."
+            },
+            {
+              "id": "u1-q06-05",
+              "type": "single_choice",
+              "question": "Effet de bordure (lisière) :",
+              "options": [
+                "Plus grande diversité locale possible",
+                "Zéro espèce",
+                "Sans microclimat",
+                "Sans lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mosaïque d'habitats."
+            },
+            {
+              "id": "u1-q06-06",
+              "type": "single_choice",
+              "question": "Biomasse ≠ production si :",
+              "options": [
+                "Turnover rapide",
+                "Pas de respiration",
+                "Pas de consommateurs",
+                "Pas de producteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stock instantané vs flux annuel."
+            },
+            {
+              "id": "u1-q06-07",
+              "type": "single_choice",
+              "question": "Herbivorie contrôle parfois :",
+              "options": [
+                "Biomasse végétale",
+                "Rotation Terre",
+                "Marées lunaires",
+                "Fusion noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pression consommation."
+            },
+            {
+              "id": "u1-q06-08",
+              "type": "single_choice",
+              "question": "Export de matière (récolte, érosion) :",
+              "options": [
+                "Peut appauvrir écosystème",
+                "Enrichit toujours",
+                "Sans effet",
+                "Crée biome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sortie de boucles locales."
+            },
+            {
+              "id": "u1-q06-09",
+              "type": "single_choice",
+              "question": "Méthane en zone humide :",
+              "options": [
+                "Produit en anaérobie",
+                "Fixé par photosynthèse directe",
+                "Métal lourd",
+                "Oxygène pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gaz à effet de serre."
+            },
+            {
+              "id": "u1-q06-10",
+              "type": "single_choice",
+              "question": "Mesurer flux énergétique :",
+              "options": [
+                "Calorimétrie / bilans",
+                "Caryotype",
+                "PCR seule",
+                "Centrifuge ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quantifier transferts."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Succession écologique",
+          "questions": [
+            {
+              "id": "u1-q07-01",
+              "type": "multiple_choice",
+              "question": "Succession primaire :",
+              "options": [
+                "Colonisation substrat vierge",
+                "Après incendie sur sol existant (secondaire)",
+                "Lave ou roche nue",
+                "Toujours instantanée"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Secondaire = sol déjà présent."
+            },
+            {
+              "id": "u1-q07-02",
+              "type": "single_choice",
+              "question": "Espèces pionnières :",
+              "options": [
+                "Tolèrent conditions rudes",
+                "Climax uniquement",
+                "Sans reproduction",
+                "Uniquement prédateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lichens, mousses…"
+            },
+            {
+              "id": "u1-q07-03",
+              "type": "single_choice",
+              "question": "Climax (concept) :",
+              "options": [
+                "Communauté relativement stable",
+                "Première colonisation",
+                "Sol vierge lave",
+                "Océan sans vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équilibre dynamique tardif."
+            },
+            {
+              "id": "u1-q07-04",
+              "type": "single_choice",
+              "question": "Succession secondaire après feu :",
+              "options": [
+                "Sol et graines restent",
+                "Substrat sans vie jamais",
+                "Sans espèces",
+                "Ignore climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Regeneration plus rapide."
+            },
+            {
+              "id": "u1-q07-05",
+              "type": "single_choice",
+              "question": "Facilitation en succession :",
+              "options": [
+                "Espèces précoces préparent milieu",
+                "Bloque toute vie",
+                "Tue toutes graines",
+                "Sans interaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Changement graduel conditions."
+            },
+            {
+              "id": "u1-q07-06",
+              "type": "single_choice",
+              "question": "Inhibition possible :",
+              "options": [
+                "Espèce early empêche autres",
+                "Toujours facilitation",
+                "Sans compétition",
+                "Sans allelopathie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chimiques ou occupation espace."
+            },
+            {
+              "id": "u1-q07-07",
+              "type": "single_choice",
+              "question": "Diversité souvent augmente puis :",
+              "options": [
+                "Peut se stabiliser en climax",
+                "Tombe à zéro obligatoire",
+                "Sans variation",
+                "Ignore perturbations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courbe typique succession."
+            },
+            {
+              "id": "u1-q07-08",
+              "type": "single_choice",
+              "question": "Perturbation moyenne (MGP) :",
+              "options": [
+                "Diversité max à intensité intermédiaire",
+                "Zéro feu toujours",
+                "Feu permanent total",
+                "Sans modèle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hypothèse historique écologie."
+            },
+            {
+              "id": "u1-q07-09",
+              "type": "single_choice",
+              "question": "Régénération forêt :",
+              "options": [
+                "Grainier, gaulis, arbres",
+                "Uniquement loup",
+                "Roche nue seule",
+                "Sans soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stades structurels."
+            },
+            {
+              "id": "u1-q07-10",
+              "type": "single_choice",
+              "question": "Succession ≠ évolution biologique car :",
+              "options": [
+                "Changement communauté, pas spéciation directe",
+                "Identique génétique",
+                "Sans espèces",
+                "ADN ne change pas instantanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échelle écologique vs évolutive."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Pressions humaines",
+          "questions": [
+            {
+              "id": "u1-q08-01",
+              "type": "multiple_choice",
+              "question": "Menaces sur écosystèmes :",
+              "options": [
+                "Destruction d'habitats",
+                "Pollution",
+                "Changement climatique",
+                "Photosynthèse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Triple pression majeure (+ climat)."
+            },
+            {
+              "id": "u1-q08-02",
+              "type": "single_choice",
+              "question": "Eutrophisation agricole :",
+              "options": [
+                "Nitrates/phosphates en eau",
+                "Manque CO₂",
+                "Excès O₃ stratosphérique",
+                "Refroidissement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Run-off fertilisants."
+            },
+            {
+              "id": "u1-q08-03",
+              "type": "single_choice",
+              "question": "Biomagnification :",
+              "options": [
+                "Polluant concentre aux niveaux élevés",
+                "Dilue toujours",
+                "Sans réseau trophique",
+                "Uniquement chez plantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. mercure, PCB."
+            },
+            {
+              "id": "u1-q08-04",
+              "type": "single_choice",
+              "question": "Surpêche :",
+              "options": [
+                "Effondre stocks proies",
+                "Augmente toujours diversité",
+                "Sans effet réseau",
+                "Crée producteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dépletion ressource."
+            },
+            {
+              "id": "u1-q08-05",
+              "type": "single_choice",
+              "question": "Urbanisation :",
+              "options": [
+                "Imperméabilise sols",
+                "Augmente milieux humides",
+                "Sans îlot chaleur",
+                "Sans espèces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fragmentation + microclimat."
+            },
+            {
+              "id": "u1-q08-06",
+              "type": "single_choice",
+              "question": "Acidification océans :",
+              "options": [
+                "CO₂ dissous → pH baisse",
+                "pH augmente",
+                "Sans coraux",
+                "Sans plancton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impact calcaires."
+            },
+            {
+              "id": "u1-q08-07",
+              "type": "single_choice",
+              "question": "Espèce introduite sans contrôle :",
+              "options": [
+                "Peut devenir invasive",
+                "Toujours native",
+                "Sans reproduction",
+                "Toujours mutualiste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Risque écologique."
+            },
+            {
+              "id": "u1-q08-08",
+              "type": "single_choice",
+              "question": "Déforestation tropicale :",
+              "options": [
+                "Perte habitat + émissions C",
+                "Augmente toujours pluie locale",
+                "Sans érosion",
+                "Sans espèces endémiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjeu global."
+            },
+            {
+              "id": "u1-q08-09",
+              "type": "single_choice",
+              "question": "Plastique en milieu marin :",
+              "options": [
+                "Microplastiques entrent réseau trophique",
+                "Se dégrade instantanément partout",
+                "Sans impact",
+                "Nutriment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Persistance et ingestion."
+            },
+            {
+              "id": "u1-q08-10",
+              "type": "single_choice",
+              "question": "Restauration écologique vise :",
+              "options": [
+                "Fonctions et biodiversité",
+                "Bétonner rivières",
+                "Zéro espèce",
+                "Monoculture seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réhabilitation habitats."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Services écosystémiques",
+          "questions": [
+            {
+              "id": "u1-q09-01",
+              "type": "multiple_choice",
+              "question": "Services provisioning :",
+              "options": [
+                "Nourriture",
+                "Bois",
+                "Pollinisation",
+                "Régulation climat"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Produits tangibles ; pollinisation = service régulation."
+            },
+            {
+              "id": "u1-q09-02",
+              "type": "single_choice",
+              "question": "Service régulation :",
+              "options": [
+                "Pollinisation, contrôle ravageurs",
+                "Bois uniquement",
+                "Tourisme seul",
+                "Pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maintien conditions favorables."
+            },
+            {
+              "id": "u1-q09-03",
+              "type": "single_choice",
+              "question": "Service culturel :",
+              "options": [
+                "Loisirs, esthétique, spiritualité",
+                "Nitrification",
+                "Respiration seule",
+                "Érosion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valeurs non matérielles."
+            },
+            {
+              "id": "u1-q09-04",
+              "type": "single_choice",
+              "question": "Service support :",
+              "options": [
+                "Cycles nutriments, production primaire",
+                "Ticket cinéma",
+                "Plastique",
+                "Béton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fondations écologiques."
+            },
+            {
+              "id": "u1-q09-05",
+              "type": "single_choice",
+              "question": "Zones humides filtrent :",
+              "options": [
+                "Polluants et sédiments",
+                "Uniquement CO₂",
+                "Métaux lourds sans limite",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Épuration naturelle."
+            },
+            {
+              "id": "u1-q09-06",
+              "type": "single_choice",
+              "question": "Forêts montagne :",
+              "options": [
+                "Stabilisent sols",
+                "Augmentent toujours érosion",
+                "Sans eau",
+                "Sans biodiversité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection contre glissements."
+            },
+            {
+              "id": "u1-q09-07",
+              "type": "single_choice",
+              "question": "Pollinisateurs en déclin menacent :",
+              "options": [
+                "Rendements agricoles",
+                "Rotation terrestre",
+                "Gravité",
+                "Marées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dépendance cultures."
+            },
+            {
+              "id": "u1-q09-08",
+              "type": "single_choice",
+              "question": "Valuation économique des services :",
+              "options": [
+                "Aide décisions publiques",
+                "Remplace écologie",
+                "Sans limite",
+                "Ignore biodiversité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil, pas vérité unique."
+            },
+            {
+              "id": "u1-q09-09",
+              "type": "single_choice",
+              "question": "TEEB / IPBES :",
+              "options": [
+                "Rapports biodiversité et services",
+                "Catalogue gènes",
+                "Carte ADN",
+                "Table périodique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèses scientifiques."
+            },
+            {
+              "id": "u1-q09-10",
+              "type": "single_choice",
+              "question": "Dégradation service régulation entraîne :",
+              "options": [
+                "Coûts humains (santé, catastrophes)",
+                "Gain automatique",
+                "Sans lien société",
+                "Plus de pollinisateurs garantis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien écologie–société."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Gestion et conservation",
+          "questions": [
+            {
+              "id": "u1-q10-01",
+              "type": "multiple_choice",
+              "question": "Outils conservation :",
+              "options": [
+                "Aires protégées",
+                "Reintroduction",
+                "Lois et quotas",
+                "Ignorer monitoring"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Combinaison in situ et gestion."
+            },
+            {
+              "id": "u1-q10-02",
+              "type": "single_choice",
+              "question": "Ex situ :",
+              "options": [
+                "Zoos, banques de graines",
+                "Forêt intacte seule",
+                "Océan libre",
+                "Sans élevage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hors habitat naturel."
+            },
+            {
+              "id": "u1-q10-03",
+              "type": "single_choice",
+              "question": "Gestion adaptative :",
+              "options": [
+                "Ajuster selon retours monitoring",
+                "Plan figé sans données",
+                "Sans indicateurs",
+                "Sans population"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apprentissage iteratif."
+            },
+            {
+              "id": "u1-q10-04",
+              "type": "single_choice",
+              "question": "Quota de pêche :",
+              "options": [
+                "Limiter prélèvement",
+                "Augmenter toujours prises",
+                "Sans science",
+                "Tuer producteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durabilité ressource."
+            },
+            {
+              "id": "u1-q10-05",
+              "type": "single_choice",
+              "question": "CITES concerne :",
+              "options": [
+                "Commerce espèces menacées",
+                "Climat seul",
+                "Ozone seul",
+                "Pesticides seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convention commerce international."
+            },
+            {
+              "id": "u1-q10-06",
+              "type": "single_choice",
+              "question": "Réintroduction réussie nécessite :",
+              "options": [
+                "Habitat viable + génétique",
+                "Zoo seul",
+                "Sans proies",
+                "Sans suivi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conditions multiples."
+            },
+            {
+              "id": "u1-q10-07",
+              "type": "single_choice",
+              "question": "Braconnage menace :",
+              "options": [
+                "Grands mammifères (ivoire, cornes)",
+                "Plancton seul",
+                "Bactéries",
+                "Roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pression illégale."
+            },
+            {
+              "id": "u1-q10-08",
+              "type": "single_choice",
+              "question": "Écotourisme bien encadré :",
+              "options": [
+                "Finance protection locale",
+                "Détruit toujours habitat",
+                "Sans réglementation",
+                "Sans éducation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valorisation durable."
+            },
+            {
+              "id": "u1-q10-09",
+              "type": "single_choice",
+              "question": "Indicateurs écologiques suivent :",
+              "options": [
+                "Populations, qualité eau",
+                "Couleur mode",
+                "Musique",
+                "Vitesse F1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesure état écosystème."
+            },
+            {
+              "id": "u1-q10-10",
+              "type": "single_choice",
+              "question": "Objectif unité Écosystèmes :",
+              "options": [
+                "Comprendre structure, fonctionnement, enjeux",
+                "Ignorer réseaux trophiques",
+                "Supprimer cycles",
+                "Étudier ADN seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base écologie contemporaine."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Agrosystèmes",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Agrosystème et flux",
+          "questions": [
+            {
+              "id": "u2-q01-01",
+              "type": "multiple_choice",
+              "question": "Un agrosystème comprend :",
+              "options": [
+                "Cultures et élevage",
+                "Homme et choix techniques",
+                "Uniquement la forêt vierge",
+                "Aucun flux de matière"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Écosystème modifié pour production."
+            },
+            {
+              "id": "u2-q01-02",
+              "type": "single_choice",
+              "question": "Différence avec écosystème naturel :",
+              "options": [
+                "Objectif production alimentaire",
+                "Sans énergie solaire",
+                "Sans sol",
+                "Sans eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gestion anthropique forte."
+            },
+            {
+              "id": "u2-q01-03",
+              "type": "single_choice",
+              "question": "Entrées externes typiques :",
+              "options": [
+                "Engrais, eau, énergie",
+                "Uniquement roche mère",
+                "Vent seul",
+                "Sans intrants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compensent export récolte."
+            },
+            {
+              "id": "u2-q01-04",
+              "type": "single_choice",
+              "question": "Sorties principales :",
+              "options": [
+                "Récoltes et émissions",
+                "Rien ne sort",
+                "Uniquement pluie",
+                "Roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Biomasse exportée."
+            },
+            {
+              "id": "u2-q01-05",
+              "type": "single_choice",
+              "question": "Monoculture :",
+              "options": [
+                "Une espèce dominante",
+                "Toujours polyculture",
+                "Sans sol",
+                "Sans ravageurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simplification écosystème."
+            },
+            {
+              "id": "u2-q01-06",
+              "type": "single_choice",
+              "question": "Polyculture :",
+              "options": [
+                "Plusieurs cultures associées",
+                "Une seule plante",
+                "Sans rotation",
+                "Sans sol vivant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diversification parcelle."
+            },
+            {
+              "id": "u2-q01-07",
+              "type": "single_choice",
+              "question": "Bilan azoté positif chronique peut :",
+              "options": [
+                "Polluer eaux",
+                "Fixer N₂ seul",
+                "Sans nitrate",
+                "Refroidir climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lixiviation des nitrates vers les eaux."
+            },
+            {
+              "id": "u2-q01-08",
+              "type": "single_choice",
+              "question": "Machinisme agricole consomme :",
+              "options": [
+                "Énergie fossile",
+                "Uniquement vent",
+                "Sans carburant",
+                "Lumière directe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Empreinte carbone."
+            },
+            {
+              "id": "u2-q01-09",
+              "type": "single_choice",
+              "question": "Élevage intensif concentre :",
+              "options": [
+                "Effluents et risques sanitaires",
+                "Sans métaux",
+                "Sans antibiotiques possibles",
+                "Sans eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gestion déjections."
+            },
+            {
+              "id": "u2-q01-10",
+              "type": "single_choice",
+              "question": "Agrosystème ouvert :",
+              "options": [
+                "Échanges importants avec extérieur",
+                "Totalement fermé",
+                "Sans climat",
+                "Sans humains"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intrants et export."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Sol et fertilité",
+          "questions": [
+            {
+              "id": "u2-q02-01",
+              "type": "multiple_choice",
+              "question": "Composantes sol fertile :",
+              "options": [
+                "Matière organique",
+                "Microorganismes",
+                "Structure (agrégats)",
+                "Uniquement sable sans eau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sol vivant et structuré."
+            },
+            {
+              "id": "u2-q02-02",
+              "type": "single_choice",
+              "question": "Humus :",
+              "options": [
+                "Matière organique décomposée",
+                "Roche mère",
+                "Plastique",
+                "Sel de table seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rétention eau et nutriments."
+            },
+            {
+              "id": "u2-q02-03",
+              "type": "single_choice",
+              "question": "Érosion accélérée :",
+              "options": [
+                "Perte sol et fertilité",
+                "Enrichit toujours",
+                "Sans pluie",
+                "Sans vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sol nu, labour mal adapté."
+            },
+            {
+              "id": "u2-q02-04",
+              "type": "single_choice",
+              "question": "pH acide limite parfois :",
+              "options": [
+                "Disponibilité phosphore",
+                "Gravité",
+                "Rotation Terre",
+                "Marées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chimie du sol."
+            },
+            {
+              "id": "u2-q02-05",
+              "type": "single_choice",
+              "question": "Légumineuses en rotation :",
+              "options": [
+                "Fixent azote symbiotique",
+                "Consomment N₂ sans fixer",
+                "Sans bactéries",
+                "Empoisonnent sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rhizobiums."
+            },
+            {
+              "id": "u2-q02-06",
+              "type": "single_choice",
+              "question": "Compactage par engins :",
+              "options": [
+                "Réduit porosité",
+                "Augmente toujours infiltration",
+                "Sans racines",
+                "Sans eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stress racinaire."
+            },
+            {
+              "id": "u2-q02-07",
+              "type": "single_choice",
+              "question": "Salinisation irrigation :",
+              "options": [
+                "Accumulation sels",
+                "Eau douce garantie",
+                "Sans évaporation",
+                "Sans stress plante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aridification chimique."
+            },
+            {
+              "id": "u2-q02-08",
+              "type": "single_choice",
+              "question": "Couvert végétal permanent :",
+              "options": [
+                "Protège sol érosion",
+                "Augmente toujours érosion",
+                "Sans racines",
+                "Sans eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agriculture conservation."
+            },
+            {
+              "id": "u2-q02-09",
+              "type": "single_choice",
+              "question": "Analyser sol (NPK) sert à :",
+              "options": [
+                "Adapter fertilisation",
+                "Choisir mode",
+                "Ignorer cultures",
+                "Sans agronomie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prescription raisonnée."
+            },
+            {
+              "id": "u2-q02-10",
+              "type": "single_choice",
+              "question": "Mycorhizes en culture :",
+              "options": [
+                "Améliorent prise P et eau",
+                "Tuent plantes",
+                "Sans champignons",
+                "Sans racines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symbiose utile."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Phytoprotection",
+          "questions": [
+            {
+              "id": "u2-q03-01",
+              "type": "multiple_choice",
+              "question": "Ravageurs et maladies :",
+              "options": [
+                "Insectes, champignons et virus peuvent attaquer une culture",
+                "Ils peuvent réduire le rendement",
+                "Ils sont toujours bénéfiques",
+                "Ils se limitent à la météo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les ravageurs et les maladies diminuent souvent le rendement ; la météo n'est pas un organisme nuisible."
+            },
+            {
+              "id": "u2-q03-02",
+              "type": "single_choice",
+              "question": "Pesticide :",
+              "options": [
+                "Substance lutte organismes nuisibles",
+                "Engrais azoté",
+                "Eau seule",
+                "Humus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Large catégorie réglementée."
+            },
+            {
+              "id": "u2-q03-03",
+              "type": "single_choice",
+              "question": "Résistance aux pesticides :",
+              "options": [
+                "Sélection populations résistantes",
+                "Impossible",
+                "Sans gènes",
+                "Uniquement plantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évolution rapide."
+            },
+            {
+              "id": "u2-q03-04",
+              "type": "single_choice",
+              "question": "IPM (protection intégrée) :",
+              "options": [
+                "Combiner prévention, biocontrôle, chimie ciblée",
+                "Pulvériser systématique",
+                "Ignorer monitoring",
+                "Sans seuils"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduction intrants."
+            },
+            {
+              "id": "u2-q03-05",
+              "type": "single_choice",
+              "question": "Effet pesticide sur non-cibles :",
+              "options": [
+                "Pollinisateurs, auxiliaires",
+                "Sans impact",
+                "Toujours positif",
+                "Uniquement sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Externalités écologiques."
+            },
+            {
+              "id": "u2-q03-06",
+              "type": "single_choice",
+              "question": "Biocontrôle :",
+              "options": [
+                "Ennemis naturels, pièges",
+                "Uniquement glyphosate",
+                "Sans espèces",
+                "Sans régulation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Auxiliaires (coccinelles…)."
+            },
+            {
+              "id": "u2-q03-07",
+              "type": "single_choice",
+              "question": "Rotation cultures limite :",
+              "options": [
+                "Cycle parasites spécifiques",
+                "Tous ravageurs identiques",
+                "Sans effet",
+                "Erosion seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rupture hôte."
+            },
+            {
+              "id": "u2-q03-08",
+              "type": "single_choice",
+              "question": "OGM Bt exprime :",
+              "options": [
+                "Toxine sélective certains insectes",
+                "Antibiotique humain",
+                "Sans protéine",
+                "Humus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transgène insecticide."
+            },
+            {
+              "id": "u2-q03-09",
+              "type": "single_choice",
+              "question": "Mildiou (oomycète) :",
+              "options": [
+                "Maladie fongique-like cultures",
+                "Insecte",
+                "Virus seul",
+                "Roche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Humidité favorise."
+            },
+            {
+              "id": "u2-q03-10",
+              "type": "single_choice",
+              "question": "Phytosanitaire en UE :",
+              "options": [
+                "Homologation et doses max",
+                "Sans règle",
+                "Vente libre toujours",
+                "Sans étiquette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre réglementaire."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Irrigation et eau",
+          "questions": [
+            {
+              "id": "u2-q04-01",
+              "type": "multiple_choice",
+              "question": "Irrigation intensive peut :",
+              "options": [
+                "Prélèvement nappes",
+                "Salinisation",
+                "Augmenter rendements à court terme",
+                "Créer forêt amazonienne"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Gains et risques hydriques."
+            },
+            {
+              "id": "u2-q04-02",
+              "type": "single_choice",
+              "question": "Goutte-à-goutte :",
+              "options": [
+                "Économise eau",
+                "Gaspi maximal",
+                "Sans tuyaux",
+                "Inonde toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apport localisé."
+            },
+            {
+              "id": "u2-q04-03",
+              "type": "single_choice",
+              "question": "Stress hydrique plante :",
+              "options": [
+                "Ferme stomates, baisse croissance",
+                "Croissance infinie",
+                "Sans photosynthèse jamais",
+                "Plus eau interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régulation transpiration."
+            },
+            {
+              "id": "u2-q04-04",
+              "type": "single_choice",
+              "question": "Besoins en eau varient selon :",
+              "options": [
+                "Espèce et stade",
+                "Couleur tracteur",
+                "Marque semence seule",
+                "Jour semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phénologie."
+            },
+            {
+              "id": "u2-q04-05",
+              "type": "single_choice",
+              "question": "Bassin versant agricole :",
+              "options": [
+                "Run-off engrais vers rivières",
+                "Sans eau",
+                "Fermé totalement",
+                "Sans sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Continuum terre–eau."
+            },
+            {
+              "id": "u2-q04-06",
+              "type": "single_choice",
+              "question": "Zone riparienne protégée :",
+              "options": [
+                "Filtre sédiments et nutriments",
+                "Augmente érosion",
+                "Sans végétation",
+                "Sans biodiversité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tampon écologique."
+            },
+            {
+              "id": "u2-q04-07",
+              "type": "single_choice",
+              "question": "Sécheresse récurrente pousse à :",
+              "options": [
+                "Varietés tolérantes, gestion eau",
+                "Ignorer climat",
+                "Plus gaspillage",
+                "Sans adaptation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Changement climatique."
+            },
+            {
+              "id": "u2-q04-08",
+              "type": "single_choice",
+              "question": "Eau virtuelle exportée via :",
+              "options": [
+                "Produits agricoles",
+                "Roches",
+                "Air seul",
+                "Sans culture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau incorporée récolte."
+            },
+            {
+              "id": "u2-q04-09",
+              "type": "single_choice",
+              "question": "Météo vs climat en agriculture :",
+              "options": [
+                "Climat = tendance long terme",
+                "Identiques",
+                "Sans effet",
+                "Uniquement vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aléas vs moyennes."
+            },
+            {
+              "id": "u2-q04-10",
+              "type": "single_choice",
+              "question": "Capteurs sol humidité :",
+              "options": [
+                "Irrigation raisonnée",
+                "Sans données",
+                "Augmentent gaspillage",
+                "Remplacent plantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agriculture de précision."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Rotation et assolements",
+          "questions": [
+            {
+              "id": "u2-q05-01",
+              "type": "multiple_choice",
+              "question": "Rotation des cultures :",
+              "options": [
+                "Améliore structure sol",
+                "Limite maladies spécifiques",
+                "Toujours monoculture",
+                "Sans légumineuses"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Diversité temporelle."
+            },
+            {
+              "id": "u2-q05-02",
+              "type": "single_choice",
+              "question": "Assolement triennal type :",
+              "options": [
+                "Céréale – oléagineux – légumineuse",
+                "Même plante 10 ans",
+                "Sans sol",
+                "Sans récolte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle pédagogique courant."
+            },
+            {
+              "id": "u2-q05-03",
+              "type": "single_choice",
+              "question": "Jachère (historique) :",
+              "options": [
+                "Repos du sol",
+                "Irrigation",
+                "Récolte double",
+                "Sans végétation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régénération partielle."
+            },
+            {
+              "id": "u2-q05-04",
+              "type": "single_choice",
+              "question": "Interculture :",
+              "options": [
+                "Couvert entre deux cultures",
+                "Culture sous eau",
+                "Sans racines",
+                "Sans semis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fixe azote, couvre sol."
+            },
+            {
+              "id": "u2-q05-05",
+              "type": "single_choice",
+              "question": "Succession même famille (solanacées) :",
+              "options": [
+                "Favorise maladies communes",
+                "Sans effet",
+                "Tue toujours sol",
+                "Fixe azote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éviter répétition hôte."
+            },
+            {
+              "id": "u2-q05-06",
+              "type": "single_choice",
+              "question": "Rotation + TCS réduit :",
+              "options": [
+                "Travail sol et érosion",
+                "Rendement toujours",
+                "Biodiversité toujours",
+                "Eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TCS = travail direct semis."
+            },
+            {
+              "id": "u2-q05-07",
+              "type": "single_choice",
+              "question": "Planification rotation tient compte :",
+              "options": [
+                "Marché, climat, sanitaire",
+                "Mode vestimentaire",
+                "Sport",
+                "Musique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraintes agronomiques et éco."
+            },
+            {
+              "id": "u2-q05-08",
+              "type": "single_choice",
+              "question": "Culture de service (phacélie) :",
+              "options": [
+                "Couverture et pollinisateurs",
+                "Récolte blé",
+                "Sans fleurs",
+                "Sans insectes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interculture mellifère."
+            },
+            {
+              "id": "u2-q05-09",
+              "type": "single_choice",
+              "question": "Rotation longue (prairie) :",
+              "options": [
+                "Restaure matière organique",
+                "Épuise instantanément",
+                "Sans racines",
+                "Sans eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Systèmes herbagers."
+            },
+            {
+              "id": "u2-q05-10",
+              "type": "single_choice",
+              "question": "Sans rotation en monoculture :",
+              "options": [
+                "Pression ravageurs augmente",
+                "Diversité sanitaire monte",
+                "Sans pathogènes",
+                "Sol toujours neuf"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spécialisation nuisible."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Agriculture biologique",
+          "questions": [
+            {
+              "id": "u2-q06-01",
+              "type": "multiple_choice",
+              "question": "Agriculture biologique (AB) :",
+              "options": [
+                "Sans pesticides de synthèse (règles)",
+                "Valorise biodiversité",
+                "Utilise n'importe quel pesticide",
+                "Ignore certification"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cadre européen strict."
+            },
+            {
+              "id": "u2-q06-02",
+              "type": "single_choice",
+              "question": "Engrais AB autorisés :",
+              "options": [
+                "Compost, fumier mature",
+                "Tous N minéraux sans limite",
+                "Plastique",
+                "Pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liste positive."
+            },
+            {
+              "id": "u2-q06-03",
+              "type": "single_choice",
+              "question": "Rendement AB vs conventionnel :",
+              "options": [
+                "Souvent légèrement inférieur",
+                "Toujours double",
+                "Zéro",
+                "Identique partout sans contexte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dépend système et culture."
+            },
+            {
+              "id": "u2-q06-04",
+              "type": "single_choice",
+              "question": "Label AB garantit :",
+              "options": [
+                "Contrôles et traçabilité",
+                "Zéro impact",
+                "Sans travail",
+                "Sans sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certification tierce."
+            },
+            {
+              "id": "u2-q06-05",
+              "type": "single_choice",
+              "question": "Auxiliaires en AB :",
+              "options": [
+                "Haies, habitats favorisés",
+                "Tués systématiquement",
+                "Sans importance",
+                "Interdits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régulation naturelle."
+            },
+            {
+              "id": "u2-q06-06",
+              "type": "single_choice",
+              "question": "Semences AB :",
+              "options": [
+                "Non OGM, critères spécifiques",
+                "Toutes OGM",
+                "Sans variété",
+                "Importées sans règle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réglementation semences."
+            },
+            {
+              "id": "u2-q06-07",
+              "type": "single_choice",
+              "question": "Conversion AB dure :",
+              "options": [
+                "Période transition (≈3 ans)",
+                "24 h",
+                "Sans contrôle",
+                "10 jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Assainissement parcelle."
+            },
+            {
+              "id": "u2-q06-08",
+              "type": "single_choice",
+              "question": "Biodiversité fermière AB :",
+              "options": [
+                "Souvent plus élevée (études)",
+                "Toujours nulle",
+                "Sans oiseaux",
+                "Sans insectes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratiques diversifiées."
+            },
+            {
+              "id": "u2-q06-09",
+              "type": "single_choice",
+              "question": "Cuivre (bouillie) en AB :",
+              "options": [
+                "Autorisé avec plafonds",
+                "Illimité",
+                "Interdit partout",
+                "Engrais azoté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Métal trace régulé."
+            },
+            {
+              "id": "u2-q06-10",
+              "type": "single_choice",
+              "question": "AB ≠ agroécologie mais :",
+              "options": [
+                "Objectifs durabilité proches",
+                "Identiques juridiquement",
+                "Sans écologie",
+                "Sans production"
+              ],
+              "correctAnswers": [0],
+              "explanation": "AB = certification ; agroécologie = démarche."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "OGM et sélection",
+          "questions": [
+            {
+              "id": "u2-q07-01",
+              "type": "multiple_choice",
+              "question": "OGM en Europe :",
+              "options": [
+                "Culture très restreinte",
+                "Autorisation au cas par cas",
+                "Tous libres sans étude",
+                "Dans tous les jardins"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cadre strict UE."
+            },
+            {
+              "id": "u2-q07-02",
+              "type": "single_choice",
+              "question": "Transgénèse :",
+              "options": [
+                "Gène d'une espèce inséré dans autre",
+                "Croisement naturel seul",
+                "Sans ADN",
+                "Mutation aléatoire seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ingénierie génétique."
+            },
+            {
+              "id": "u2-q07-03",
+              "type": "single_choice",
+              "question": "Sélection variétale classique :",
+              "options": [
+                "Croisements et choix phénotypes",
+                "Insertion gène artificiel obligatoire",
+                "Sans diversité",
+                "Un an seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amélioration génétique traditionnelle."
+            },
+            {
+              "id": "u2-q07-04",
+              "type": "single_choice",
+              "question": "OGM tolérant herbicide :",
+              "options": [
+                "Résistance à glyphosate (ex.)",
+                "Fixe azote",
+                "Sans gène",
+                "Rend inerte sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat usage herbicides."
+            },
+            {
+              "id": "u2-q07-05",
+              "type": "single_choice",
+              "question": "Traçabilité OGM :",
+              "options": [
+                "Étiquetage si >0,9 %",
+                "Sans étiquette",
+                "Toujours 100 %",
+                "Interdit de mentionner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle seuil UE."
+            },
+            {
+              "id": "u2-q07-06",
+              "type": "single_choice",
+              "question": "Risque fuite transgènes :",
+              "options": [
+                "Pollen vers espèces proches",
+                "Impossible",
+                "Sans reproduction",
+                "Uniquement animaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coexistence difficile."
+            },
+            {
+              "id": "u2-q07-07",
+              "type": "single_choice",
+              "question": "New Breeding Techniques :",
+              "options": [
+                "Édition génome débattue réglementairement",
+                "Sans ADN",
+                "Interdites partout",
+                "Identiques OGM 1990 sans discussion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évolution cadre légal."
+            },
+            {
+              "id": "u2-q07-08",
+              "type": "single_choice",
+              "question": "Biodiversité variétale ancienne :",
+              "options": [
+                "Ressource génétique patrimoine",
+                "Sans intérêt",
+                "Toujours moins productive",
+                "Un gène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conservation mesures."
+            },
+            {
+              "id": "u2-q07-09",
+              "type": "single_choice",
+              "question": "Évaluation OGM inclut :",
+              "options": [
+                "Santé, environnement",
+                "Couleur packaging",
+                "Logo",
+                "Prix mode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "EFSA en UE."
+            },
+            {
+              "id": "u2-q07-10",
+              "type": "single_choice",
+              "question": "Choix sociétal OGM :",
+              "options": [
+                "Débat précaution + utilité",
+                "Sans science",
+                "Uniquement marketing",
+                "Sans agriculture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjeu contemporain."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Élevage et alimentation",
+          "questions": [
+            {
+              "id": "u2-q08-01",
+              "type": "multiple_choice",
+              "question": "Impacts élevage intensif :",
+              "options": [
+                "Émissions CH₄",
+                "Consommation aliments concentrés",
+                "Sans eau",
+                "Sans antibiorésistance possible"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ruminants et flux entériques."
+            },
+            {
+              "id": "u2-q08-02",
+              "type": "single_choice",
+              "question": "Pâturage extensif :",
+              "options": [
+                "Entretien prairies, biodiversité",
+                "Toujours désert",
+                "Sans herbivores",
+                "Sans plantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Systèmes herbagers."
+            },
+            {
+              "id": "u2-q08-03",
+              "type": "single_choice",
+              "question": "Aliment bétail (soja) :",
+              "options": [
+                "Importations, déforestation possible",
+                "Sans empreinte",
+                "Uniquement local toujours",
+                "Sans protéines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne valeur globale."
+            },
+            {
+              "id": "u2-q08-04",
+              "type": "single_choice",
+              "question": "Bien-être animal réglemente :",
+              "options": [
+                "Densité, transport, abattage",
+                "Couleur grange",
+                "Musique seule",
+                "Sans contrôle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normes européennes."
+            },
+            {
+              "id": "u2-q08-05",
+              "type": "single_choice",
+              "question": "Effluents d'élevage :",
+              "options": [
+                "Spreading raisonné ou méthanisation",
+                "Verser en rivière",
+                "Sans azote",
+                "Sans pathogènes jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gestion agronomique."
+            },
+            {
+              "id": "u2-q08-06",
+              "type": "single_choice",
+              "question": "Antibiotiques prophylactiques :",
+              "options": [
+                "Réduits par réglementation",
+                "Encouragés sans limite",
+                "Sans résistance",
+                "Pour plantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Santé publique One Health."
+            },
+            {
+              "id": "u2-q08-07",
+              "type": "single_choice",
+              "question": "Élevage-culture couplé :",
+              "options": [
+                "Fumier fertilise cultures",
+                "Sans cycle",
+                "Sans énergie",
+                "Sans sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boucle nutriments ferme."
+            },
+            {
+              "id": "u2-q08-08",
+              "type": "single_choice",
+              "question": "Alimentation humaine et rendement :",
+              "options": [
+                "Demande protéines influence systèmes",
+                "Sans lien",
+                "Uniquement poisson",
+                "Sans céréales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjeu alimentation mondiale."
+            },
+            {
+              "id": "u2-q08-09",
+              "type": "single_choice",
+              "question": "Gaspillage alimentaire :",
+              "options": [
+                "Ressources agricoles perdues",
+                "Sans CO₂",
+                "Sans eau gaspillée",
+                "Sans impact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne post-récolte."
+            },
+            {
+              "id": "u2-q08-10",
+              "type": "single_choice",
+              "question": "Régime végétarien global massif :",
+              "options": [
+                "Réduirait pression terres (modèles)",
+                "Sans effet climat",
+                "Double élevage obligatoire",
+                "Sans agriculture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scénarios alimentation."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Durabilité et climat",
+          "questions": [
+            {
+              "id": "u2-q09-01",
+              "type": "multiple_choice",
+              "question": "Agriculture et climat :",
+              "options": [
+                "Source GHG (élevage, sols)",
+                "Puits carbone possible (sol, boisement)",
+                "Sans émissions jamais",
+                "Ignore CO₂"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Atténuation et adaptation."
+            },
+            {
+              "id": "u2-q09-02",
+              "type": "single_choice",
+              "question": "Stockage carbone sol :",
+              "options": [
+                "Agroforesterie, couverts",
+                "Labour intensif permanent",
+                "Sans plantes",
+                "Béton champs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "4 pour 1000 initiative."
+            },
+            {
+              "id": "u2-q09-03",
+              "type": "single_choice",
+              "question": "Bilan carbone ferme :",
+              "options": [
+                "Entrées/sorties GES",
+                "Couleur tracteur",
+                "Nombre vaches seul sans contexte",
+                "Sans méthane"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comptabilité GES."
+            },
+            {
+              "id": "u2-q09-04",
+              "type": "single_choice",
+              "question": "Adaptation sécheresse :",
+              "options": [
+                "Varietés, stockage eau",
+                "Ignorer",
+                "Plus irrigation sans limite",
+                "Sans sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stratégies locales."
+            },
+            {
+              "id": "u2-q09-05",
+              "type": "single_choice",
+              "question": "PAC (politique agricole commune) :",
+              "options": [
+                "Soutiens et conditionnalité environnementale",
+                "Sans Europe",
+                "Sans paysans",
+                "Sans règles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Greening, eco-schemes."
+            },
+            {
+              "id": "u2-q09-06",
+              "type": "single_choice",
+              "question": "Agroforesterie :",
+              "options": [
+                "Arbres + cultures/ pâturage",
+                "Forêt dense sans agriculture",
+                "Sans ombre",
+                "Sans racines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multifonctionnalité."
+            },
+            {
+              "id": "u2-q09-07",
+              "type": "single_choice",
+              "question": "Réduire intrants :",
+              "options": [
+                "Précision, rotation, AB partielle",
+                "Pulvériser plus",
+                "Sans monitoring",
+                "Sans sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Efficience ressources."
+            },
+            {
+              "id": "u2-q09-08",
+              "type": "single_choice",
+              "question": "Sécurité alimentaire :",
+              "options": [
+                "Accès nourriture suffisante saine",
+                "Surplus uniquement",
+                "Sans distribution",
+                "Sans production"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois piliers FAO."
+            },
+            {
+              "id": "u2-q09-09",
+              "type": "single_choice",
+              "question": "Empreinte écologique agriculture :",
+              "options": [
+                "Surfaces, eau, énergie",
+                "Sans indicateur",
+                "Uniquement prix",
+                "Sans biodiversité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multicritère."
+            },
+            {
+              "id": "u2-q09-10",
+              "type": "single_choice",
+              "question": "Transition agroécologique :",
+              "options": [
+                "Changement système à long terme",
+                "Un seul produit",
+                "Sans farmers",
+                "Sans recherche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Co-construction savoirs."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Agroécologie et enjeux",
+          "questions": [
+            {
+              "id": "u2-q10-01",
+              "type": "multiple_choice",
+              "question": "Principes agroécologie :",
+              "options": [
+                "Recyclage nutriments",
+                "Diversification",
+                "Ignorer contexte local",
+                "Maximiser intrants sans limite"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mimique écosystèmes naturels."
+            },
+            {
+              "id": "u2-q10-02",
+              "type": "single_choice",
+              "question": "Agroécologie vs productivisme :",
+              "options": [
+                "Intègre durabilité sociale et écologique",
+                "Rendement seul",
+                "Sans paysans",
+                "Sans consommateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Triple bottom line."
+            },
+            {
+              "id": "u2-q10-03",
+              "type": "single_choice",
+              "question": "Circuits courts :",
+              "options": [
+                "Moins intermédiaires, lien consommateur",
+                "Toujours import",
+                "Sans empreinte",
+                "Sans qualité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relocalisation partielle."
+            },
+            {
+              "id": "u2-q10-04",
+              "type": "single_choice",
+              "question": "Agriculture urbaine :",
+              "options": [
+                "Potagers, toitures, périurbain",
+                "Sans sol jamais",
+                "Remplace toute campagne",
+                "Sans eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complément alimentaire local."
+            },
+            {
+              "id": "u2-q10-05",
+              "type": "single_choice",
+              "question": "Savoirs paysans :",
+              "options": [
+                "Complément science agronomique",
+                "Obsoletes sans intérêt",
+                "Sans observation",
+                "Interdits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agroécologie participative."
+            },
+            {
+              "id": "u2-q10-06",
+              "type": "single_choice",
+              "question": "Système agroforestier riz :",
+              "options": [
+                "Exemple diversification Asie",
+                "Monoculture riz seule",
+                "Sans eau",
+                "Désert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratiques traditionnelles modernisées."
+            },
+            {
+              "id": "u2-q10-07",
+              "type": "single_choice",
+              "question": "Justice alimentaire :",
+              "options": [
+                "Accès équitable ressources",
+                "Profit seul",
+                "Sans nutrition",
+                "Sans farmers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dimension sociale."
+            },
+            {
+              "id": "u2-q10-08",
+              "type": "single_choice",
+              "question": "Indicateurs agroécologiques :",
+              "options": [
+                "Biodiversité, sol, eau, revenu",
+                "Couleur logo",
+                "Vitesse tracteur",
+                "Nombre likes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évaluation holistique."
+            },
+            {
+              "id": "u2-q10-09",
+              "type": "single_choice",
+              "question": "Recherche INRAE-type :",
+              "options": [
+                "Varietés, agroécologie, sols",
+                "Sans agriculture",
+                "Uniquement mode",
+                "Sans données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appui transition."
+            },
+            {
+              "id": "u2-q10-10",
+              "type": "single_choice",
+              "question": "Objectif unité Agrosystèmes :",
+              "options": [
+                "Relier production, écologie, société",
+                "Ignorer sols",
+                "Supprimer élevage étude",
+                "Sans enjeux contemporains"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjeux SVT première."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

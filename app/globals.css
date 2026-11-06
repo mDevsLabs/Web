@@ -70,6 +70,15 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-q-xp: var(--q-xp);
+  --color-q-gem: var(--q-gem);
+  --color-q-heart: var(--q-heart);
+  --color-q-streak: var(--q-streak);
+  --color-q-level: var(--q-level);
+  --color-q-quest: var(--q-quest);
+  --color-q-shop: var(--q-shop);
+  --color-q-path: var(--q-path);
+  --color-q-on: var(--q-on);
 }
 
 :root {
@@ -219,6 +228,109 @@
   --md-success: var(--success);
   --md-danger: var(--destructive);
   --md-warning: var(--warning);
+}
+
+/*
+  Quizzly vit sous `.quizzly-root`. Ses teintes ne sortent pas de ce cadre :
+  l'hôte reste achromatique. Les utilitaires `bg-q-xp`, `text-q-gem`, etc.
+  lisent ces variables.
+*/
+.quizzly-root {
+  --q-xp: oklch(0.58 0.17 150);
+  --q-gem: oklch(0.58 0.2 305);
+  --q-heart: oklch(0.58 0.21 18);
+  --q-streak: oklch(0.7 0.17 62);
+  --q-level: oklch(0.55 0.18 255);
+  --q-quest: oklch(0.58 0.14 205);
+  --q-shop: oklch(0.62 0.18 330);
+  --q-path: oklch(0.68 0.14 150);
+  --q-on: oklch(0.99 0.01 150);
+  --q-league-bronze: oklch(0.62 0.12 55);
+  --q-league-silver: oklch(0.78 0.02 250);
+  --q-league-gold: oklch(0.82 0.14 90);
+  --q-league-platinum: oklch(0.74 0.06 200);
+  --q-league-diamond: oklch(0.72 0.14 230);
+  --q-league-champion: oklch(0.62 0.2 320);
+  --q-year-6e: oklch(0.62 0.12 145);
+  --q-year-5e: oklch(0.6 0.13 175);
+  --q-year-4e: oklch(0.58 0.14 210);
+  --q-year-3e: oklch(0.56 0.15 250);
+  --q-year-2nde: oklch(0.58 0.14 290);
+  --q-year-1ere: oklch(0.6 0.15 25);
+  --q-year-terminale: oklch(0.58 0.16 55);
+  --q-subject-allemand: oklch(0.58 0.14 250);
+  --q-subject-anglais: oklch(0.62 0.14 255);
+  --q-subject-arabe: oklch(0.56 0.13 265);
+  --q-subject-arts: oklch(0.62 0.16 330);
+  --q-subject-chinois: oklch(0.6 0.12 240);
+  --q-subject-coreen: oklch(0.54 0.14 270);
+  --q-subject-enseignement-scientifique: oklch(0.6 0.12 175);
+  --q-subject-espagnol: oklch(0.64 0.15 35);
+  --q-subject-francais: oklch(0.58 0.16 25);
+  --q-subject-grec: oklch(0.57 0.12 280);
+  --q-subject-hebreu: oklch(0.55 0.13 300);
+  --q-subject-hggsp: oklch(0.58 0.12 70);
+  --q-subject-histoire-geographie: oklch(0.62 0.13 75);
+  --q-subject-hlp: oklch(0.56 0.14 10);
+  --q-subject-italien: oklch(0.6 0.15 145);
+  --q-subject-japonais: oklch(0.57 0.13 220);
+  --q-subject-latin: oklch(0.55 0.1 80);
+  --q-subject-mathematiques: oklch(0.58 0.16 145);
+  --q-subject-nsi: oklch(0.55 0.14 290);
+  --q-subject-philosophie: oklch(0.52 0.12 350);
+  --q-subject-physique-chimie: oklch(0.58 0.14 190);
+  --q-subject-portugais: oklch(0.6 0.14 130);
+  --q-subject-russe: oklch(0.56 0.12 210);
+  --q-subject-sciences-et-technologie: oklch(0.62 0.11 165);
+  --q-subject-ses: oklch(0.6 0.11 85);
+  --q-subject-snt: oklch(0.57 0.13 200);
+  --q-subject-svt: oklch(0.56 0.15 155);
+  --q-subject-technologie: oklch(0.54 0.12 185);
+  --q-subject-turc: oklch(0.61 0.14 45);
+  background-color: var(--background);
+  background-image:
+    radial-gradient(
+      920px 420px at -8% -18%,
+      color-mix(in oklab, var(--q-level) 24%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      720px 380px at 108% -8%,
+      color-mix(in oklab, var(--q-shop) 20%, transparent),
+      transparent 68%
+    );
+}
+
+.dark .quizzly-root {
+  --q-xp: oklch(0.78 0.15 150);
+  --q-gem: oklch(0.78 0.15 305);
+  --q-heart: oklch(0.76 0.15 18);
+  --q-streak: oklch(0.82 0.14 68);
+  --q-level: oklch(0.78 0.12 255);
+  --q-quest: oklch(0.8 0.1 205);
+  --q-shop: oklch(0.8 0.13 330);
+  --q-path: oklch(0.74 0.12 150);
+  --q-on: oklch(0.18 0.03 255);
+}
+
+@keyframes q-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@utility q-float {
+  animation: q-float 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quizzly-root .q-float {
+    animation: none;
+  }
 }
 
 /* Synchronisation systématique pour les composants @mdevs/ui sous mode sombre */
@@ -449,6 +561,21 @@ textarea:focus-visible {
   }
 }
 
+@keyframes quizzy-pop {
+  from {
+    opacity: 0.65;
+    transform: translateY(6px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@utility quizzy-pop {
+  animation: quizzy-pop 0.35s var(--ease-spring) both;
+}
+
 @utility fade-up {
   animation: fade-up 0.25s var(--ease-spring) both;
 }
@@ -578,15 +705,14 @@ textarea:focus-visible {
  * Les éléments arrivent à leur état FINAL : la coupe ne doit pas laisser
  * une page à mi-transition, ni masquer un contenu.
  */
-html[data-economy="true"] {
-  &,
-  &::before,
-  &::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
+html[data-economy="true"],
+html[data-economy="true"] *,
+html[data-economy="true"] *::before,
+html[data-economy="true"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
 }
 
 /**
@@ -606,7 +732,9 @@ html[data-economy="true"] {
 }
 
 /**
- * Repère monochrome d'une application externe (GitHub, Notion, Discord).
+ * Repère monochrome d'une application externe et des logos du catalogue
+ * plugins (`PluginIcon`). GitHub, Notion, Discord, et les SVG de
+ * `public/plugins` passent par ce masque.
  *
  * La marque n'existe qu'en noir : posée telle quelle sur un fond sombre, elle
  * devient invisible, et le `dark:invert` d'un logo monochrome détruirait un logo
@@ -624,6 +752,15 @@ html[data-economy="true"] {
   mask-position: center;
   -webkit-mask-size: contain;
   mask-size: contain;
+}
+
+/* Le popover partagé plafonne à 24rem. Le sélecteur de modèle a deux
+   colonnes : sans ce plafond plus large, l'aperçu est coupé. */
+.md-root.md-popover.model-selector-popover {
+  width: min(40rem, calc(100vw - 1rem));
+  max-width: min(40rem, calc(100vw - 1rem));
+  padding: 0;
+  overflow: hidden;
 }
 
 /**

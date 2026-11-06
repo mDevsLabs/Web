@@ -1,0 +1,2663 @@
+{
+  "id": "1ere-physique-chimie-04",
+  "year": "1ere",
+  "subject": "physique-chimie",
+  "title": "La matière",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Constituants",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le noyau et le cortège électronique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "De quoi est constitué le noyau d'un atome ?",
+              "options": [
+                "De protons et de neutrons",
+                "De protons et d'électrons",
+                "De neutrons et d'électrons",
+                "Uniquement de neutrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le noyau atomique est constitué de nucléons : les protons (chargés positivement) et les neutrons (neutres)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que représente le numéro atomique Z d'un atome ?",
+              "options": [
+                "Le nombre de protons",
+                "Le nombre total de nucléons",
+                "Le nombre de neutrons",
+                "La masse en grammes de l'atome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le numéro atomique Z correspond au nombre de protons présents dans le noyau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que représente le nombre de masse noté A ?",
+              "options": [
+                "Le nombre total de nucléons",
+                "Le nombre d'électrons de valence",
+                "Le nombre de neutrons uniquement",
+                "La charge électrique globale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A est le nombre de masse, égal à la somme des protons et des neutrons (A = Z + N)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le nombre de neutrons N d'un noyau ?",
+              "options": ["N = A - Z", "N = A + Z", "N = Z - A", "N = A × Z"],
+              "correctAnswers": [0],
+              "explanation": "Comme A = Z + N, le nombre de neutrons s'obtient par la relation N = A - Z."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la charge électrique d'un atome neutre ?",
+              "options": [
+                "Nulle car il y a autant d'électrons que de protons",
+                "Positive à cause des protons",
+                "Négative à cause des électrons",
+                "Variable selon la température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un atome est électriquement neutre : le nombre d'électrons (-e) est égal au nombre de protons (+e)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que sont deux isotopes ?",
+              "options": [
+                "Des atomes de même Z mais de nombre de nucléons A différent",
+                "Des atomes de même A mais de Z différent",
+                "Des ions de charges opposées",
+                "Des molécules de même formule brute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les isotopes possèdent le même numéro atomique Z (même élément) mais un nombre de neutrons différent (donc A différent)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle particule a une masse négligeable devant celle du proton ?",
+              "options": [
+                "L'électron",
+                "Le neutron",
+                "Le nucléon",
+                "Le positon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La masse d'un électron est environ 1836 fois plus faible que celle d'un proton ou d'un neutron."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Où est concentrée la quasi-totalité de la masse de l'atome ?",
+              "options": [
+                "Dans le noyau",
+                "Dans le cortège électronique",
+                "Répartie uniformément",
+                "Dans les liaisons chimiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le noyau concentre plus de 99,9 % de la masse de l'atome, conférant à la matière une structure lacunaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur du diamètre d'un atome ?",
+              "options": ["10⁻¹⁰ m", "10⁻¹⁵ m", "10⁻⁶ m", "10⁻³ m"],
+              "correctAnswers": [0],
+              "explanation": "Le diamètre atomique est d'environ 1 dixième de nanomètre (1 Ångström = 10⁻¹⁰ m), tandis que le noyau fait ~10⁻¹⁵ m."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles particules subatomiques possèdent une charge électrique non nulle ?",
+              "options": ["Le proton", "L'électron", "Le neutron", "Le photon"],
+              "correctAnswers": [0, 1],
+              "explanation": "Le proton porte la charge élémentaire +e et l'électron porte -e. Le neutron a une charge nulle."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Configuration électronique et stabilité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Combien d'électrons peut contenir au maximum la sous-couche 1s ?",
+              "options": [
+                "2 électrons",
+                "6 électrons",
+                "8 électrons",
+                "10 électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une sous-couche s est formée d'une seule orbitale et peut contenir au maximum 2 électrons."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien d'électrons peut contenir au maximum une sous-couche p ?",
+              "options": [
+                "6 électrons",
+                "2 électrons",
+                "8 électrons",
+                "10 électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une sous-couche p comporte 3 orbitales et peut accueillir au maximum 6 électrons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la configuration électronique du carbone dans son état fondamental (Z = 6) ?",
+              "options": ["1s² 2s² 2p²", "1s² 2s⁴", "1s² 2p⁴", "1s² 2s¹ 2p³"],
+              "correctAnswers": [0],
+              "explanation": "Pour Z = 6, les 6 électrons se répartissent selon 1s² 2s² 2p²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien d'électrons de valence possède l'atome d'oxygène (1s² 2s² 2p⁴) ?",
+              "options": [
+                "6 électrons",
+                "8 électrons",
+                "4 électrons",
+                "2 électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les électrons de valence occupent la couche la plus externe n=2 : 2 en 2s et 4 en 2p, soit 6 électrons."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Selon la règle de l'octet, combien d'électrons de valence les atomes cherchent-ils à acquérir ?",
+              "options": [
+                "8 électrons",
+                "2 électrons",
+                "18 électrons",
+                "4 électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La règle de l'octet stipule que les atomes tendent à acquérir une couche externe saturée à 8 électrons."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel atome suit la règle du duet pour acquérir une structure stable ?",
+              "options": [
+                "L'hydrogène",
+                "Le carbone",
+                "Le chlore",
+                "Le sodium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hydrogène cherche à saturer sa couche 1s avec 2 électrons (règle du duet), comme l'hélium."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la formule de l'ion chlorure stable formé par le chlore (Z = 17, 7 électrons de valence) ?",
+              "options": ["Cl⁻", "Cl²⁻", "Cl⁺", "Cl³⁻"],
+              "correctAnswers": [0],
+              "explanation": "En gagnant 1 électron, le chlore obtient 8 électrons de valence et forme l'anion chlorure Cl⁻."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la formule de l'ion magnésium stable (Z = 12, configuration 1s² 2s² 2p⁶ 3s²) ?",
+              "options": ["Mg²⁺", "Mg⁺", "Mg²⁻", "Mg³⁺"],
+              "correctAnswers": [0],
+              "explanation": "En perdant ses 2 électrons de valence 3s², le magnésium acquiert la configuration stable du néon et forme Mg²⁺."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les éléments de la dernière colonne du tableau périodique ?",
+              "options": [
+                "Les gaz nobles",
+                "Les halogènes",
+                "Les métaux alcalins",
+                "Les métaux de transition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les gaz nobles (hélium, néon, argon...) possèdent une couche de valence saturée et sont très stables."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels éléments suivants possèdent exactement 4 électrons de valence ?",
+              "options": [
+                "Le carbone (Z=6)",
+                "Le silicium (Z=14)",
+                "L'azote (Z=7)",
+                "Le bore (Z=5)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le carbone (1s² 2s² 2p²) et le silicium (1s² 2s² 2p⁶ 3s² 3p²) appartiennent à la colonne 14 et ont 4 électrons externes."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le schéma de Lewis des molécules",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une liaison covalente simple ?",
+              "options": [
+                "La mise en commun de deux électrons entre deux atomes",
+                "Le transfert définitif d'un électron",
+                "Une attraction entre deux noyaux sans électrons",
+                "Une force magnétique entre deux neutrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une liaison covalente résulte de la mise en commun d'une paire d'électrons (un doublet liant) entre deux atomes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une paire d'électrons de valence non engagée dans une liaison ?",
+              "options": [
+                "Un doublet non-liant",
+                "Un doublet liant",
+                "Un électron célibataire",
+                "Une lacune électronique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un doublet non-liant appartient exclusivement à un atome et n'intervient pas dans une liaison covalente."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de doublets liants forme l'atome de carbone pour respecter l'octet ?",
+              "options": [
+                "4 liaisons",
+                "2 liaisons",
+                "3 liaisons",
+                "1 liaison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 4 électrons de valence, le carbone doit former 4 liaisons covalentes (tétravalence) pour atteindre l'octet."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de doublets non-liants possède l'atome d'oxygène dans la molécule d'eau (H₂O) ?",
+              "options": [
+                "2 doublets non-liants",
+                "1 doublet non-liant",
+                "3 doublets non-liants",
+                "Aucun doublet non-liant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oxygène possède 6 électrons de valence : 2 forment des liaisons simples avec les H, et 4 forment 2 doublets non-liants."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien de doublets liants et non-liants possède l'azote dans l'ammoniac (NH₃) ?",
+              "options": [
+                "3 doublets liants et 1 doublet non-liant",
+                "4 doublets liants et 0 non-liant",
+                "2 doublets liants et 2 non-liants",
+                "1 doublet liant et 3 non-liants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'azote forme 3 liaisons covalentes avec les hydrogènes et conserve 1 doublet non-liant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel type de liaison relie les deux atomes d'oxygène dans le dioxygène O₂ ?",
+              "options": [
+                "Une double liaison covalente",
+                "Une liaison simple",
+                "Une triple liaison",
+                "Une liaison ionique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque atome d'oxygène partage 2 électrons, formant une double liaison covalente O=O."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel type de liaison covalente relie les deux atomes d'azote dans le diazote N₂ ?",
+              "options": [
+                "Une triple liaison covalente",
+                "Une simple liaison",
+                "Une double liaison",
+                "Une liaison hydrogène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans N₂, les deux atomes d'azote mettent en commun 3 paires d'électrons, créant une triple liaison N≡N."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien de doublets non-liants entourent chaque atome de chlore dans Cl₂ ?",
+              "options": [
+                "3 doublets non-liants",
+                "1 doublet non-liant",
+                "2 doublets non-liants",
+                "4 doublets non-liants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque chlore partage 1 électron dans la liaison simple et conserve ses 6 autres électrons en 3 doublets non-liants."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans le méthane CH₄, combien de doublets liants compte-t-on au total ?",
+              "options": [
+                "4 doublets liants",
+                "8 doublets liants",
+                "2 doublets liants",
+                "1 doublet liant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le carbone central est lié aux 4 atomes d'hydrogène par 4 liaisons simples C-H."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles molécules possèdent au moins un doublet non-liant sur leur atome central ?",
+              "options": [
+                "L'ammoniac NH₃",
+                "L'eau H₂O",
+                "Le méthane CH₄",
+                "Le dioxyde de carbone CO₂"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'azote de NH₃ possède 1 doublet non-liant et l'oxygène de H₂O en a 2. Le carbone de CH₄ et CO₂ n'en a aucun."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Géométrie des molécules",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel principe régit la géométrie des molécules selon la méthode VSEPR ?",
+              "options": [
+                "La répulsion maximale des doublets d'électrons",
+                "L'attraction entre doublets électroniques",
+                "L'attraction exclusive des noyaux",
+                "L'orientation du champ magnétique terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les doublets d'électrons (liants et non-liants) se repoussent mutuellement et s'éloignent le plus possible."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la forme géométrique de la molécule de méthane CH₄ ?",
+              "options": [
+                "Tétraédrique",
+                "Plane carrée",
+                "Linéaire",
+                "Pyramidale à base triangulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 4 doublets liants autour du carbone et aucun non-liant, CH₄ adopte une géométrie tétraédrique (angles ~109,5°)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la géométrie de la molécule d'ammoniac NH₃ ?",
+              "options": [
+                "Pyramidale à base triangulaire",
+                "Tétraédrique",
+                "Plane triangulaire",
+                "Linéaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "NH₃ possède 3 liaisons et 1 doublet non-liant, ce qui repousse les liaisons vers le bas en une pyramide trigonale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la forme de la molécule d'eau H₂O ?",
+              "options": [
+                "Coudée",
+                "Linéaire",
+                "Tétraédrique",
+                "Plane triangulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les 2 doublets non-liants de l'oxygène repoussent les 2 liaisons O-H, donnant une géométrie coudée (angle ~104,5°)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la géométrie de la molécule de dioxyde de carbone CO₂ ?",
+              "options": ["Linéaire", "Coudée", "Tétraédrique", "Pyramidale"],
+              "correctAnswers": [0],
+              "explanation": "Le carbone est engagé dans 2 doubles liaisons opposées sans doublet non-liant : l'angle O=C=O est de 180° (linéaire)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la géométrie autour de l'atome de bore dans le trifluorure de bore BF₃ ?",
+              "options": [
+                "Plane triangulaire",
+                "Pyramidale",
+                "Tétraédrique",
+                "Coudée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bore est entouré de 3 doublets liants espacés à 120° dans un même plan : géométrie plane triangulaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est l'angle entre les liaisons C-H dans un tétraèdre régulier (CH₄) ?",
+              "options": ["109,5°", "90°", "120°", "180°"],
+              "correctAnswers": [0],
+              "explanation": "Dans un tétraèdre régulier avec 4 doublets identiques, l'angle de répulsion minimale vaut environ 109,5°."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi l'angle de liaison dans H₂O (104,5°) est-il inférieur à celui de CH₄ (109,5°) ?",
+              "options": [
+                "Les doublets non-liants exercent une répulsion plus forte",
+                "L'hydrogène est plus lourd dans l'eau",
+                "L'oxygène attire moins les électrons",
+                "La molécule d'eau est solide à température ambiante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les doublets non-liants sont plus volumineux et exercent une répulsion accrue sur les doublets liants."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la représentation conventionnelle projetant des liaisons en avant ou en arrière du plan ?",
+              "options": [
+                "La représentation de Cram",
+                "La formule brute",
+                "La projection de Newman",
+                "Le schéma de Bohr"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La représentation de Cram utilise des triangles pleins (en avant) et des hachures (en arrière) pour figurer la 3D."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles molécules possèdent une géométrie linéaire ?",
+              "options": [
+                "Le dioxyde de carbone CO₂",
+                "Le cyanure d'hydrogène HCN",
+                "Le dioxyde de soufre SO₂",
+                "L'eau H₂O"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "CO₂ (O=C=O) et HCN (H-C≡N) sont linéaires avec un angle de 180°. H₂O et SO₂ sont coudées en raison de doublets non-liants."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Électronégativité et liaisons polarisées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'électronégativité d'un atome ?",
+              "options": [
+                "Sa capacité à attirer les électrons d'une liaison chimique",
+                "La charge globale négative de son noyau",
+                "L'énergie nécessaire pour expulser un proton",
+                "Sa masse volumique sous forme solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'électronégativité mesure la tendance d'un atome engagé dans une liaison à attirer vers lui les électrons du doublet liant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment varie généralement l'électronégativité dans le tableau périodique ?",
+              "options": [
+                "Elle augmente vers le haut et vers la droite",
+                "Elle augmente vers le bas et vers la droite",
+                "Elle augmente vers le bas et vers la gauche",
+                "Elle est constante sur une même ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la classification, l'électronégativité croît de bas en haut dans une colonne, et de gauche à droite sur une période."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est l'élément le plus électronégatif du tableau périodique ?",
+              "options": [
+                "Le fluor (F)",
+                "Le chlore (Cl)",
+                "L'oxygène (O)",
+                "L'hélium (He)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fluor a la valeur d'électronégativité la plus élevée selon l'échelle de Pauling (~4,0)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quand qualifie-t-on une liaison covalente de polarisée ?",
+              "options": [
+                "Quand les deux atomes ont une différence d'électronégativité significative",
+                "Quand les deux atomes sont rigoureusement identiques",
+                "Quand elle relie deux métaux alcalins",
+                "Quand aucun électron n'est mis en commun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une liaison A-B est polarisée si la différence d'électronégativité Δχ est non négligeable (typiquement > 0,4)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle charge partielle porte l'atome le plus électronégatif dans une liaison polarisée ?",
+              "options": [
+                "Une charge partielle négative notée δ⁻",
+                "Une charge partielle positive notée δ⁺",
+                "Une charge entière égale à -2e",
+                "Une charge nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En attirant le nuage électronique vers lui, l'atome le plus électronégatif acquiert une charge partielle négative δ⁻."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle liaison est considérée comme quasi non-polaire en chimie organique ?",
+              "options": [
+                "La liaison C-H",
+                "La liaison O-H",
+                "La liaison C-F",
+                "La liaison C=O"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'électronégativité du carbone (2,5) et celle de l'hydrogène (2,2) sont très proches : la liaison C-H est quasi apolaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans la liaison O-H, quel atome porte la charge partielle positive δ⁺ ?",
+              "options": [
+                "L'atome d'hydrogène",
+                "L'atome d'oxygène",
+                "Les deux atomes alternativement",
+                "Aucun atome car la liaison est ionique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oxygène est beaucoup plus électronégatif (3,44) que l'hydrogène (2,20) : H porte la charge δ⁺ et O porte δ⁻."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle grandeur vectorielle caractérise la polarité d'une liaison chimique ?",
+              "options": [
+                "Le moment dipolaire",
+                "Le vecteur vitesse",
+                "L'énergie cinétique",
+                "La force gravitationnelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dipôle électrique créé par la séparation des charges partielles est caractérisé par un vecteur moment dipolaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que peut-on dire d'une liaison entre deux atomes d'azote dans N₂ ?",
+              "options": [
+                "Elle est purement covalente et non polarisée",
+                "Elle est fortement polarisée",
+                "Elle est de nature ionique",
+                "Elle est instable à froid"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux atomes ayant exactement la même électronégativité, le doublet est équitablement partagé : liaison apolaire."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles liaisons parmi les suivantes sont nettement polarisées ?",
+              "options": [
+                "La liaison C-Cl",
+                "La liaison O-H",
+                "La liaison C-C",
+                "La liaison H-H"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cl et O sont bien plus électronégatifs que C et H, rendant C-Cl et O-H polarisées. C-C et H-H relient des atomes identiques (apolaires)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Molécules polaires et apolaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "À quelle condition une molécule comportant des liaisons polarisées est-elle polaire ?",
+              "options": [
+                "Si le barycentre des charges positives ne coïncide pas avec celui des charges négatives",
+                "Dès qu'elle contient au moins un atome d'hydrogène",
+                "Si le nombre d'atomes est pair",
+                "Si elle est à l'état liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une molécule est polaire si la somme vectorielle de ses moments dipolaires est non nulle (barycentres disjoints)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi la molécule de dioxyde de carbone CO₂ est-elle apolaire bien que ses liaisons C=O soient polarisées ?",
+              "options": [
+                "Sa géométrie linéaire annule la somme des moments dipolaires",
+                "L'oxygène n'a pas d'électronégativité propre",
+                "Elle est gazeuse à 25 °C",
+                "Le carbone neutralise les liaisons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CO₂ est linéaire : les deux dipôles C=O sont opposés et de même intensité, leur résultante est nulle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi la molécule d'eau H₂O est-elle polaire ?",
+              "options": [
+                "Sa géométrie coudée empêche les dipôles de s'annuler",
+                "Elle ne contient que deux liaisons simples",
+                "L'hydrogène est un métal alcalin",
+                "Sa masse molaire est très faible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'angle de 104,5° fait que les moments dipolaires des liaisons O-H s'additionnent en un moment dipolaire global non nul."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi le tétrachlorométhane CCl₄ est-il une molécule apolaire ?",
+              "options": [
+                "Les quatre liaisons C-Cl se compensent par symétrie tétraédrique",
+                "Le chlore n'est pas électronégatif",
+                "Il possède un doublet non-liant central",
+                "Il est insoluble dans l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par symétrie dans un tétraèdre régulier, le centre des charges positives coïncide avec celui des charges négatives."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La molécule de chloroforme CHCl₃ est-elle polaire ou apolaire ?",
+              "options": [
+                "Polaire car la symétrie tétraédrique est brisée par l'hydrogène",
+                "Apolaire car le carbone a 4 liaisons",
+                "Apolaire car elle ne porte pas de charge",
+                "Polaire uniquement à haute température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liaison C-H n'a pas le même moment dipolaire que les liaisons C-Cl : la résultante vectorielle est non nulle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment se comporte un solvant polaire vis-à-vis d'un soluté polaire ?",
+              "options": [
+                "Il le dissout facilement selon l'adage « qui se ressemble s'assemble »",
+                "Il le repousse systématiquement",
+                "Il provoque une décomposition explosive",
+                "Il transforme le soluté en solide ionique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les solutés polaires interagissent favorablement avec les solvants polaires et s'y dissolvent bien."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'huile est un liquide essentiellement apolaire. Que se passe-t-il si on la mélange avec de l'eau ?",
+              "options": [
+                "Elles forment deux phases non miscibles",
+                "Elles forment un mélange homogène limpide",
+                "L'huile se dissout instantanément dans l'eau",
+                "L'eau s'évapore sous l'effet de l'huile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau (très polaire) et l'huile (apolaire) sont immiscibles car elles ne développent pas d'interactions favorables."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans quel solvant le diiode I₂ (molécule apolaire) est-il le plus soluble ?",
+              "options": [
+                "Le cyclohexane (solvant apolaire)",
+                "L'eau pure",
+                "Une solution saline aqueuse",
+                "Le vinaigre blanc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le diiode étant apolaire, il se dissout bien mieux dans un solvant apolaire comme le cyclohexane que dans l'eau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que provoque l'approche d'une règle électrisée près d'un mince filet d'eau liquide ?",
+              "options": [
+                "Une déviation du filet d'eau due au caractère polaire des molécules",
+                "L'ébullition instantanée de l'eau",
+                "Aucun effet visible car l'eau est neutre",
+                "Une congélation locale de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les molécules polaires de l'eau s'orientent sous l'effet du champ électrique de la règle et sont attirées vers elle."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles molécules parmi les suivantes sont polaires ?",
+              "options": [
+                "L'ammoniac NH₃",
+                "Le fluorure d'hydrogène HF",
+                "Le diazote N₂",
+                "Le méthane CH₄"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "NH₃ (pyramidale) et HF (diatomique asymétrique) ont un moment dipolaire permanent. N₂ et CH₄ sont strictement apolaires."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Les solides ioniques et covalents",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "De quoi est constitué un cristal ionique ?",
+              "options": [
+                "D'un empilement ordonné de cations et d'anions",
+                "De molécules liées par des forces de Van der Waals",
+                "D'atomes métalliques partageant des électrons libres",
+                "De protons en suspension dans le vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un solide ionique est un réseau tridimensionnel périodique alternant des cations et des anions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle interaction assure la cohésion d'un cristal ionique comme NaCl ?",
+              "options": [
+                "L'interaction électrostatique coulombienne",
+                "L'interaction gravitationnelle",
+                "La liaison hydrogène",
+                "La force nucléaire forte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cohésion repose sur l'attraction électrostatique entre ions de signes opposés (loi de Coulomb)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi la formule d'un composé ionique s'écrit-elle neutre (ex : CaCl₂) ?",
+              "options": [
+                "La charge globale du cristal doit être rigoureusement nulle",
+                "Les électrons ont été détruits",
+                "Il y a toujours un seul cation par anion",
+                "Le cristal perd ses charges au contact de l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La matière est électriquement neutre : les charges positives des cations compensent exactement les charges négatives des anions."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la formule statistique du chlorure de fer(III) composé d'ions Fe³⁺ et Cl⁻ ?",
+              "options": ["FeCl₃", "Fe₃Cl", "FeCl", "Fe₂Cl₃"],
+              "correctAnswers": [0],
+              "explanation": "Il faut 3 anions chlorure Cl⁻ pour neutraliser la charge de l'ion Fe³⁺, d'où la formule FeCl₃."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la formule statistique du sulfate d'aluminium formé d'ions Al³⁺ et SO₄²⁻ ?",
+              "options": ["Al₂(SO₄)₃", "AlSO₄", "Al₃(SO₄)₂", "Al(SO₄)₃"],
+              "correctAnswers": [0],
+              "explanation": "2 × (+3) + 3 × (-2) = 0, ce qui conduit à la formule neutre Al₂(SO₄)₃."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un cristal ionique solide conduit-il le courant électrique ?",
+              "options": [
+                "Non car les ions sont immobiles dans le réseau cristallin",
+                "Oui car il contient beaucoup de charges",
+                "Oui grâce aux électrons libres",
+                "Non car il ne contient aucune charge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'état solide, les ions sont figés dans leur maille et ne peuvent se déplacer : le cristal est isolant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle propriété macroscopique caractérise les solides ioniques ?",
+              "options": [
+                "Des températures de fusion élevées et une grande friabilité",
+                "Une température d'ébullition inférieure à 0 °C",
+                "Une très grande élasticité",
+                "Une conductivité thermique exceptionnelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fortes attractions coulombiennes nécessitent beaucoup d'énergie thermique pour être rompues (haute Tfus)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle interaction assure la cohésion du diamant, solide covalent ?",
+              "options": [
+                "Des liaisons covalentes formant un réseau tridimensionnel continu",
+                "Des liaisons hydrogène multiples",
+                "Des forces de dispersion de London uniquement",
+                "Des attractions entre ions carbone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le diamant, chaque atome de carbone est lié de façon covalente à 4 voisins dans un réseau géant très dur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi le graphite conduit-il l'électricité alors que le diamant ne la conduit pas ?",
+              "options": [
+                "Le graphite possède des électrons délocalisés entre ses feuillets",
+                "Le graphite contient des impuretés métalliques",
+                "Le diamant est constitué d'ions",
+                "Le graphite est liquide à température ambiante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le graphite, chaque carbone n'établit que 3 liaisons localisées ; le 4e électron est délocalisé sur le plan de graphène."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels composés parmi les suivants sont des solides ioniques ?",
+              "options": [
+                "Le chlorure de sodium NaCl",
+                "Le carbonate de calcium CaCO₃",
+                "Le saccharose C₁₂H₂₂O₁₁",
+                "Le dioxyde de silicium SiO₂"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "NaCl (Na⁺, Cl⁻) et CaCO₃ (Ca²⁺, CO₃²⁻) sont formés d'ions. Le saccharose est un solide moléculaire et SiO₂ un solide covalent."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Interactions intermoléculaires : Van der Waals et ponts hydrogène",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que sont les interactions de Van der Waals ?",
+              "options": [
+                "Des interactions électrostatiques attractives de courte portée entre molécules",
+                "Des réactions nucléaires au sein du noyau",
+                "Des liaisons covalentes très fortes",
+                "Des répulsions magnétiques gravitationnelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les forces de Van der Waals regroupent les interactions entre dipôles permanents, induits ou instantanés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment évolue l'intensité des forces de Van der Waals avec la taille des molécules ?",
+              "options": [
+                "Elle augmente car les molécules volumineuses sont plus polarisables",
+                "Elle diminue car les molécules s'écartent",
+                "Elle reste rigoureusement constante",
+                "Elle s'annule pour les grosses molécules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus le nuage électronique est étendu, plus il est déformable (polarisable), ce qui renforce les forces de dispersion."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une liaison hydrogène (ou pont hydrogène) ?",
+              "options": [
+                "Une interaction électrostatique entre un H lié à un atome très électronégatif et un doublet non-liant voisin",
+                "Une liaison covalente de partage d'électrons entre deux atomes d'hydrogène",
+                "Une fusion nucléaire de deux noyaux d'hydrogène",
+                "Une force gravitationnelle entre protons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle s'établit entre un H polarisé δ⁺ (porté par N, O ou F) et un doublet non-liant d'un autre atome très électronégatif (N, O ou F)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Entre quels éléments la liaison hydrogène peut-elle typiquement se former ?",
+              "options": [
+                "Entre un H lié à N, O ou F et un atome de N, O ou F",
+                "Uniquement entre deux atomes de carbone",
+                "Entre un atome de fer et un atome de chlore",
+                "Entre des atomes de gaz nobles uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'atome porteur et l'atome accepteur doivent être très électronégatifs et de petite taille, c'est-à-dire F, O ou N."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment se compare l'énergie d'une liaison hydrogène à celle d'une liaison covalente ?",
+              "options": [
+                "Elle est environ 10 à 20 fois plus faible qu'une liaison covalente",
+                "Elle est 100 fois plus forte",
+                "Elles ont exactement la même énergie",
+                "Elle est nulle à température ambiante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une liaison hydrogène vaut ~20 kJ/mol contre 300 à 450 kJ/mol pour une liaison covalente classique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la température d'ébullition de l'eau (100 °C) est-elle anormalement élevée comparée à celle de H₂S (-60 °C) ?",
+              "options": [
+                "Grâce au réseau tridimensionnel dense de liaisons hydrogène dans l'eau",
+                "Parce que l'oxygène est plus lourd que le soufre",
+                "Parce que H₂S n'a pas de liaisons covalentes",
+                "Parce que l'eau contient des ions métalliques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oxygène très électronégatif forme des liaisons hydrogène fortes absentes avec le soufre, ce qui stabilise l'état liquide de l'eau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de liaisons hydrogène au maximum une molécule d'eau peut-elle former avec ses voisines ?",
+              "options": [
+                "4 liaisons hydrogène",
+                "2 liaisons hydrogène",
+                "1 liaison hydrogène",
+                "6 liaisons hydrogène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau peut engager ses 2 atomes d'hydrogène (donneurs) et ses 2 doublets non-liants (accepteurs), soit 4 liaisons au maximum."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la glace flotte-t-elle sur l'eau liquide ?",
+              "options": [
+                "Le réseau de liaisons hydrogène fige une structure ouverte moins dense que le liquide",
+                "La glace emprisonne toujours de l'air sous pression",
+                "La masse des molécules diminue quand elles gèlent",
+                "Les forces de Van der Waals deviennent répulsives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la glace, l'organisation tétraédrique des liaisons H ménage des espaces vides, rendant la glace moins dense que l'eau liquide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel rôle biologique capital jouent les liaisons hydrogène dans l'ADN ?",
+              "options": [
+                "Elles maintiennent les deux brins de la double hélice appariés",
+                "Elles constituent la chaîne désoxyribose-phosphate",
+                "Elles créent les mutations génétiques spontanées",
+                "Elles fournissent l'énergie mécanique aux cellules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bases azotées complémentaires s'associent par liaisons H (2 entre A et T, 3 entre G et C) pour former la double hélice."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles espèces parmi les suivantes peuvent former des liaisons hydrogène entre leurs molécules ?",
+              "options": [
+                "L'éthanol CH₃CH₂OH",
+                "L'ammoniac NH₃",
+                "Le méthane CH₄",
+                "Le sulfure d'hydrogène H₂S"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'éthanol possède un groupement -O-H et l'ammoniac un groupement N-H, conditions requises pour former des liaisons hydrogène."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Dissolution d'un solide ionique et solvatation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelles sont les trois étapes successives de la dissolution d'un solide ionique dans l'eau ?",
+              "options": [
+                "Dissociation, hydratation (solvatation), puis dispersion",
+                "Fusion, évaporation, puis condensation",
+                "Oxydation, réduction, puis précipitation",
+                "Filtration, décantation, puis cristallisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dissolution se déroule en trois étapes : rupture du réseau (dissociation), entourage par le solvant (solvatation), et mélange (dispersion)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment les molécules d'eau s'orientent-elles autour d'un cation Na⁺ lors de la solvatation ?",
+              "options": [
+                "Avec leur atome d'oxygène (pôle négatif) dirigé vers le cation",
+                "Avec leurs atomes d'hydrogène (pôles positifs) dirigés vers le cation",
+                "De manière totalement aléatoire sans interaction",
+                "En partageant un électron covalent avec le sodium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oxygène portant une charge partielle δ⁻ est attiré électrostatiquement par le cation chargé positivement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment les molécules d'eau s'orientent-elles autour d'un anion Cl⁻ ?",
+              "options": [
+                "Avec leurs atomes d'hydrogène (pôle positif δ⁺) dirigés vers l'anion",
+                "Avec leur atome d'oxygène (pôle δ⁻) dirigé vers l'anion",
+                "En expulsant tous leurs électrons",
+                "En créant une répulsion coulombienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les hydrogènes de l'eau portent des charges partielles δ⁺ et s'orientent vers l'anion négatif Cl⁻."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est l'équation correcte de la dissolution du sulfate de sodium Na₂SO₄ dans l'eau ?",
+              "options": [
+                "Na₂SO₄ (s) → 2 Na⁺ (aq) + SO₄²⁻ (aq)",
+                "Na₂SO₄ (s) → Na₂²⁺ (aq) + SO₄²⁻ (aq)",
+                "Na₂SO₄ (s) → 2 Na (s) + S (s) + 2 O₂ (g)",
+                "Na₂SO₄ (s) → Na⁺ (aq) + SO₄⁻ (aq)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque unité formulaire libère 2 ions sodium Na⁺ et 1 ion sulfate SO₄²⁻ en solution aqueuse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est l'équation de dissolution du chlorure d'aluminium AlCl₃ dans l'eau ?",
+              "options": [
+                "AlCl₃ (s) → Al³⁺ (aq) + 3 Cl⁻ (aq)",
+                "AlCl₃ (s) → Al³⁺ (aq) + Cl₃³⁻ (aq)",
+                "AlCl₃ (s) → Al⁺ (aq) + 3 Cl⁻ (aq)",
+                "AlCl₃ (s) → AlCl (aq) + Cl₂ (g)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "AlCl₃ se dissocie en un ion aluminium Al³⁺ et 3 ions chlorure Cl⁻."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel terme désigne l'énergie nécessaire pour dissocier une mole de cristal ionique en ions gazeux isolés ?",
+              "options": [
+                "L'énergie réticulaire",
+                "L'énergie cinétique",
+                "L'énergie de liaison covalente",
+                "La constante de Planck"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie réticulaire quantifie la force de cohésion du réseau cristallin ionique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi l'eau est-elle un excellent solvant pour les composés ioniques ?",
+              "options": [
+                "Elle a une constante diélectrique élevée et est très polaire",
+                "Elle est totalement apolaire et visqueuse",
+                "Elle dissocie l'oxygène en atomes libres",
+                "Elle est acide à l'état pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sa forte permittivité relative affaiblit l'attraction entre ions (loi de Coulomb atténuée) et sa polarité permet une solvatation efficace."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une dissolution qui dégage de la chaleur et fait monter la température de la solution ?",
+              "options": [
+                "Une dissolution exothermique",
+                "Une dissolution endothermique",
+                "Une dissolution athermique",
+                "Une dissolution adiabatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une transformation exothermique libère de l'énergie thermique vers le milieu extérieur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lors d'une dissolution endothermique comme celle du nitrate d'ammonium dans l'eau ?",
+              "options": [
+                "La température de la solution diminue",
+                "La température de la solution augmente fortement",
+                "Il y a émission d'une flamme vive",
+                "La solution gèle instantanément à 100 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une réaction endothermique absorbe de la chaleur du milieu environnant, ce qui abaisse la température du mélange."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels facteurs favorisent la solubilité d'un solide dans l'eau ?",
+              "options": [
+                "La forte polarité des molécules du solide",
+                "La présence de liaisons ioniques facilement solvatables",
+                "Une chaîne carbonée apolaire extrêmement longue",
+                "Un réseau cristallin à cohésion infinie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les solutés polaires ou ioniques interagissent fortement avec les molécules d'eau, favorisant leur mise en solution."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Concentrations en ions et solubilité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Si on dissout C = 0,10 mol/L de chlorure de calcium CaCl₂, quelle est la concentration effective en ions Cl⁻ ?",
+              "options": [
+                "0,20 mol/L",
+                "0,10 mol/L",
+                "0,05 mol/L",
+                "0,40 mol/L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon l'équation CaCl₂ → Ca²⁺ + 2 Cl⁻, on a [Cl⁻] = 2 × C = 2 × 0,10 = 0,20 mol/L."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la relation entre la concentration en soluté apporté C et la concentration effective en ions Al³⁺ pour une solution de Al₂(SO₄)₃ ?",
+              "options": [
+                "[Al³⁺] = 2 C",
+                "[Al³⁺] = 3 C",
+                "[Al³⁺] = C / 2",
+                "[Al³⁺] = 6 C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équation est Al₂(SO₄)₃ → 2 Al³⁺ + 3 SO₄²⁻, donc chaque mole de soluté produit 2 moles d'ions Al³⁺."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la solubilité s d'un composé dans un solvant donné ?",
+              "options": [
+                "La masse ou la quantité maximale de soluté que l'on peut dissoudre par litre de solution",
+                "Le temps nécessaire pour dissoudre 1 gramme de sel",
+                "Le volume d'eau requis pour noyer le solide",
+                "La masse molaire du composé en g/mol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solubilité maximale s s'exprime généralement en g/L ou en mol/L à une température donnée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une solution dans laquelle le soluté ne peut plus se dissoudre et forme un dépôt solide ?",
+              "options": [
+                "Une solution saturée",
+                "Une solution diluée",
+                "Une solution concentrée non saturée",
+                "Une solution gazeuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque la limite de solubilité est atteinte, la solution est saturée et tout ajout supplémentaire forme un précipité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est l'unité internationale de la concentration molaire ?",
+              "options": [
+                "mol/m³ ou couramment mol/L",
+                "g/L",
+                "kg/mol",
+                "sans unité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La concentration molaire est le rapport n/V, exprimé en mol/m³ dans le SI et couramment en mol/L (ou mol·L⁻¹)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on la concentration en masse Cm à partir de la concentration molaire C et de la masse molaire M ?",
+              "options": [
+                "Cm = C × M",
+                "Cm = C / M",
+                "Cm = M / C",
+                "Cm = C + M"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cm = m/V = (n × M)/V = (n/V) × M = C × M (avec Cm en g/L, C en mol/L et M en g/mol)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si la solubilité du sel de table NaCl est de 360 g/L à 20 °C, que se passe-t-il si l'on ajoute 400 g de sel dans 1 L d'eau pure ?",
+              "options": [
+                "360 g se dissolvent et 40 g restent sous forme de solide au fond",
+                "Les 400 g se dissolvent totalement",
+                "Rien ne se dissout car il y a trop de sel",
+                "L'eau se transforme instantanément en vapeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solution dissout au maximum 360 g ; l'excès de 40 g reste non dissous au fond du récipient."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment varie généralement la solubilité d'un solide dans l'eau lorsque la température augmente ?",
+              "options": [
+                "Elle augmente dans la majorité des cas",
+                "Elle diminue systématiquement",
+                "Elle reste toujours inchangée",
+                "Elle tombe immédiatement à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour la plupart des solides, l'élévation de température favorise la rupture du réseau cristallin et augmente la solubilité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lors d'un mélange de solutions contenant des ions Ag⁺ et Cl⁻ ?",
+              "options": [
+                "Il se forme un précipité blanc de chlorure d'argent AgCl qui noircit à la lumière",
+                "Il se dégage du dichlore gazeux toxique",
+                "Il se produit une explosion thermique",
+                "La solution devient instantanément bleue limpide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "AgCl est un solide très peu soluble : les ions Ag⁺ et Cl⁻ s'associent pour précipiter sous forme de solide blanc."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Dans une solution de phosphate de potassium K₃PO₄ à C = 0,2 mol/L, quelles sont les concentrations exactes en ions ?",
+              "options": [
+                "[K⁺] = 0,6 mol/L",
+                "[PO₄³⁻] = 0,2 mol/L",
+                "[K⁺] = 0,2 mol/L",
+                "[PO₄³⁻] = 0,6 mol/L"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "K₃PO₄ → 3 K⁺ + PO₄³⁻. Ainsi [K⁺] = 3 × 0,2 = 0,6 mol/L et [PO₄³⁻] = 0,2 mol/L."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Changements d'état",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les états de la matière et vocabulaire des transitions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on l'état solide à l'échelle microscopique pour un solide cristallin ?",
+              "options": [
+                "Compact et ordonné",
+                "Dispersé et désordonné",
+                "Compact et désordonné",
+                "Dilaté et immobile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un solide cristallin, les entités chimiques sont très proches les unes des autres (compact) et agencées selon un motif régulier (ordonné)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on l'état liquide à l'échelle microscopique ?",
+              "options": [
+                "Compact et désordonné",
+                "Dispersé et ordonné",
+                "Compact et ordonné",
+                "Très dispersé et immobile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'état liquide, les entités restent au contact les unes des autres (compact) mais glissent librement sans ordre à longue distance (désordonné)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on l'état gazeux à l'échelle microscopique ?",
+              "options": [
+                "Dispersé et désordonné",
+                "Compact et ordonné",
+                "Compact et désordonné",
+                "Ordonné et compressible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les molécules de gaz sont très éloignées les unes des autres (dispersé) et animées de mouvements incessants et aléatoires (désordonné)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le passage direct de l'état solide à l'état gazeux ?",
+              "options": [
+                "La sublimation",
+                "La vaporisation",
+                "La fusion",
+                "La condensation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sublimation désigne la transition directe du solide au gaz sans passer par la phase liquide."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le passage de l'état gazeux à l'état liquide ?",
+              "options": [
+                "La liquéfaction (ou condensation liquide)",
+                "La vaporisation",
+                "La solidification",
+                "La fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passage de l'état gaz à l'état liquide est nommé liquéfaction (ou condensation liquide)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel terme désigne la transition directe de la phase gazeuse à la phase solide ?",
+              "options": [
+                "La condensation solide (ou déposition)",
+                "La liquéfaction",
+                "La sublimation",
+                "La vaporisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La condensation solide (ou déposition) est la transformation inverse directe de la sublimation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le passage de l'état solide à l'état liquide ?",
+              "options": [
+                "La fusion",
+                "La dissolution",
+                "La solidification",
+                "La liquéfaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fusion est la transition de phase solide → liquide. Il ne faut pas la confondre avec la dissolution dans un solvant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la transformation physique inverse de la fusion ?",
+              "options": [
+                "La solidification",
+                "La vaporisation",
+                "La sublimation",
+                "La précipitation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solidification est le passage de l'état liquide à l'état solide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la différence entre l'ébullition et l'évaporation ?",
+              "options": [
+                "L'ébullition se produit dans toute la masse du liquide à température fixe, l'évaporation en surface à toute température",
+                "L'ébullition ne concerne que l'eau pure",
+                "L'évaporation brise des liaisons covalentes",
+                "Ce sont deux termes strictement synonymes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vaporisation peut s'effectuer par évaporation lente en surface, ou par ébullition tumultueuse dans tout le liquide à sa Téb."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles transitions de phase conduisent à un état final plus désordonné ?",
+              "options": [
+                "La fusion",
+                "La vaporisation",
+                "La solidification",
+                "La liquéfaction"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La fusion (solide → liquide) et la vaporisation (liquide → gaz) augmentent le désordre et la liberté de mouvement des entités."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Interprétation microscopique des changements d'état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Lors d'un changement d'état d'un corps moléculaire, quelles liaisons sont modifiées ?",
+              "options": [
+                "Uniquement les interactions intermoléculaires (Van der Waals, liaisons hydrogène)",
+                "Les liaisons covalentes intramoléculaires",
+                "Les liaisons nucléaires au sein des protons",
+                "Toutes les liaisons chimiques sans exception"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un changement d'état physique n'affecte pas l'intégrité de la molécule : seules les interactions intermoléculaires sont rompues ou formées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que traduit la température d'un corps à l'échelle microscopique ?",
+              "options": [
+                "L'agitation thermique moyenne des entités chimiques",
+                "Le nombre d'électrons de valence des atomes",
+                "La masse gravitationnelle des noyaux",
+                "La charge électrique nette du corps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La température absolue est directement proportionnelle à l'énergie cinétique moyenne d'agitation des molécules ou atomes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que se passe-t-il à l'échelle microscopique lors de la vaporisation d'un liquide ?",
+              "options": [
+                "L'énergie thermique fournie permet de vaincre totalement les interactions attractives intermoléculaires",
+                "Les molécules se scindent en atomes isolés",
+                "Les atomes fusionnent pour former de nouveaux éléments",
+                "Les électrons s'échappent des atomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'état gazeux, les molécules sont quasi libres : la vaporisation nécessite la rupture complète des liaisons intermoléculaires."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi la masse se conserve-t-elle rigoureusement lors d'un changement d'état d'un système fermé ?",
+              "options": [
+                "Le nombre et la nature des entités chimiques restent strictement identiques",
+                "L'énergie compense la perte d'atomes",
+                "La gravité augmente pendant le changement de phase",
+                "Les molécules deviennent plus légères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système fermé ne perd aucune matière : seules l'organisation et la disposition spatiale des entités changent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi le volume occupé par une masse donnée de gaz est-il environ 1000 fois plus grand que celui du liquide correspondant ?",
+              "options": [
+                "Les molécules de gaz sont très éloignées les unes des autres dans le vide",
+                "Les molécules grossissent fortement lors de la vaporisation",
+                "Le gaz absorbe de l'air environnant",
+                "Les liaisons covalentes s'allongent d'un facteur 1000"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un gaz à pression ambiante, la distance intermoléculaire est environ 10 fois plus grande que la taille des molécules, d'où un volume 1000 fois plus vaste."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle particularité volumique présente l'eau lors de sa solidification sous 1 bar ?",
+              "options": [
+                "Son volume augmente car le réseau cristallin de la glace est plus aéré",
+                "Son volume diminue comme pour la quasi-totalité des corps",
+                "Son volume reste rigoureusement inchangé",
+                "Son volume est divisé par deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau présente une anomalie dilatométrique : la glace est moins dense que l'eau liquide (le volume augmente de ~9 % à la congélation)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi faut-il fournir plus d'énergie pour vaporiser une mole d'eau que pour la faire fondre ?",
+              "options": [
+                "La vaporisation rompt toutes les liaisons H, alors que la fusion n'en désorganise qu'une fraction",
+                "La fusion est une réaction chimique destructive",
+                "La température de fusion est plus élevée que celle d'ébullition",
+                "L'eau gazeuse pèse plus lourd que la glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans l'eau liquide, de nombreuses liaisons hydrogène subsistent encore ; la vaporisation nécessite de toutes les briser."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est l'effet d'une augmentation de pression sur la température d'ébullition d'un liquide usuel ?",
+              "options": [
+                "Elle augmente la température d'ébullition car il est plus difficile pour les molécules de s'échapper",
+                "Elle diminue la température d'ébullition",
+                "Elle n'a aucun effet car la température d'ébullition est absolue",
+                "Elle transforme immédiatement le liquide en solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une pression extérieure accrue comprime la phase vapeur : il faut chauffer davantage pour que la pression de vapeur atteigne la pression externe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À quelle température l'eau bout-elle au sommet du mont Blanc (pression ~0,5 bar) ?",
+              "options": [
+                "À environ 85 °C",
+                "À 100 °C exactement",
+                "À 120 °C",
+                "À 0 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En altitude, la pression atmosphérique est plus faible, ce qui abaisse la température d'ébullition de l'eau en dessous de 100 °C (~85 °C)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies concernant un changement d'état physique d'une substance pure ?",
+              "options": [
+                "Les molécules restent chimiquement inchangées",
+                "La masse globale du système fermé est conservée",
+                "De nouvelles liaisons covalentes se créent spontanément",
+                "La formule brute du composé est modifiée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un changement d'état est une transformation physique : la nature des molécules et la masse se conservent, aucune liaison covalente n'est altérée."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Énergie massique de changement d'état (chaleur latente)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'énergie massique de changement d'état L (ou chaleur latente) ?",
+              "options": [
+                "L'énergie thermique échangée par unité de masse lors de la transition à température constante",
+                "La vitesse à laquelle s'évapore 1 kg de matière",
+                "La température maximale atteinte par le corps",
+                "La force requise pour comprimer un solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L exprime la quantité d'énergie nécessaire pour faire changer d'état 1 kg de corps pur à température et pression constantes (en J/kg)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle formule relie l'énergie thermique Q transférée lors d'un changement d'état à la masse m et à l'énergie massique L ?",
+              "options": [
+                "Q = m × L",
+                "Q = m / L",
+                "Q = m × c × L",
+                "Q = L / m"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie échangée pour changer l'état d'une masse m vaut Q = m × L."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est l'unité du Système International pour l'énergie massique de changement d'état L ?",
+              "options": [
+                "J·kg⁻¹ (joule par kilogramme)",
+                "J·K⁻¹",
+                "W·kg⁻¹",
+                "kg·mol⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme L = Q/m, son unité SI est le joule par kilogramme (J/kg ou J·kg⁻¹)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle relation existe-t-il entre l'énergie massique de fusion L_fus et l'énergie massique de solidification L_sol ?",
+              "options": [
+                "L_sol = - L_fus",
+                "L_sol = L_fus",
+                "L_sol = 1 / L_fus",
+                "L_sol = L_fus²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fusion absorbe de l'énergie (L_fus > 0) tandis que la solidification en libère exactement la même quantité (L_sol = -L_fus)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si L_fus(eau) = 334 kJ/kg, quelle énergie faut-il apporter pour faire fondre 2 kg de glace à 0 °C ?",
+              "options": ["668 kJ", "167 kJ", "334 kJ", "1336 kJ"],
+              "correctAnswers": [0],
+              "explanation": "Q = m × L_fus = 2 kg × 334 kJ/kg = 668 kJ."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si la vaporisation de 0,5 kg d'eau nécessite 1130 kJ, quelle est l'énergie massique de vaporisation de l'eau L_vap ?",
+              "options": [
+                "2260 kJ/kg",
+                "565 kJ/kg",
+                "1130 kJ/kg",
+                "4520 kJ/kg"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L_vap = Q / m = 1130 kJ / 0,5 kg = 2260 kJ/kg (soit 2,26×10⁶ J/kg)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que devient l'énergie thermique fournie à un corps pur pendant son changement d'état ?",
+              "options": [
+                "Elle sert à vaincre les interactions entre molécules sans augmenter la température",
+                "Elle augmente l'énergie cinétique moyenne des molécules",
+                "Elle est transformée en rayonnement gamma",
+                "Elle détruit la masse selon E = mc²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pendant le palier de changement d'état, l'énergie fournie rompt les liaisons intermoléculaires ; la température reste constante."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle relation existe-t-il entre l'énergie massique L et l'énergie molaire L_m d'un corps pur de masse molaire M ?",
+              "options": [
+                "L_m = L × M",
+                "L_m = L / M",
+                "L_m = M / L",
+                "L_m = L + M"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme 1 mole pèse M kg (ou M g), l'énergie par mole vaut L_m = L × M."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle quantité de chaleur est cédée par 100 g de vapeur d'eau qui se liquéfient à 100 °C (L_vap = 2260 kJ/kg) ?",
+              "options": ["-226 kJ", "-2260 kJ", "+226 kJ", "-22,6 kJ"],
+              "correctAnswers": [0],
+              "explanation": "m = 0,100 kg. Q = m × L_liq = 0,100 × (-2260 kJ/kg) = -226 kJ cédés au milieu extérieur."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles grandeurs physiques interviennent dans le calcul de l'énergie échangée lors d'un changement d'état à température constante ?",
+              "options": [
+                "La masse m de la substance qui change d'état",
+                "L'énergie massique de changement d'état L",
+                "La vitesse de déplacement du récipient",
+                "La capacité thermique molaire du récipient"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La formule Q = m × L dépend uniquement de la masse transformée et de la chaleur latente L spécifique du changement d'état."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Changements d'état endothermiques et exothermiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une transformation physique qui absorbe de l'énergie thermique du milieu extérieur (Q > 0) ?",
+              "options": [
+                "Endothermique",
+                "Exothermique",
+                "Athermique",
+                "Isotherme forcée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une transformation endothermique gagne de la chaleur depuis le milieu extérieur (ΔH > 0 ou Q > 0 pour le système)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une transformation physique qui libère de l'énergie thermique vers le milieu extérieur (Q < 0) ?",
+              "options": [
+                "Exothermique",
+                "Endothermique",
+                "Adiabatique",
+                "Cryogénique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une transformation exothermique cède de l'énergie thermique au milieu extérieur (Q < 0 pour le système)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La fusion de la glace est-elle un changement d'état endothermique ou exothermique ?",
+              "options": [
+                "Endothermique car la glace doit recevoir de la chaleur pour fondre",
+                "Exothermique car la glace refroidit l'environnement",
+                "Athermique à 0 °C",
+                "Exothermique uniquement en plein soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour rompre les liaisons hydrogène de la glace, le système doit absorber de l'énergie : la fusion est endothermique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi a-t-on une sensation de froid lorsque de l'alcool ou de l'éther s'évapore sur notre peau ?",
+              "options": [
+                "L'évaporation est endothermique et prélève de la chaleur à notre peau",
+                "L'alcool détruit les cellules nerveuses",
+                "L'alcool diffuse un fluide glacé dans le sang",
+                "L'évaporation produit un souffle de vent froid"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour se vaporiser, le liquide a besoin d'énergie qu'il puise sous forme de chaleur au niveau de la peau."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La solidification de l'eau liquide est-elle endothermique ou exothermique ?",
+              "options": [
+                "Exothermique : elle cède de la chaleur à l'extérieur en formant des liaisons",
+                "Endothermique car il faut du froid",
+                "Athermique en toute circonstance",
+                "Endothermique car la glace est plus dense"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formation de liaisons intermoléculaires stables dégage de l'énergie : la solidification est exothermique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le signe de l'énergie massique de vaporisation L_vap selon la convention thermodynamique usuelle ?",
+              "options": [
+                "Positif (L_vap > 0)",
+                "Négatif (L_vap < 0)",
+                "Toujours nul",
+                "Variable selon la pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vaporisation étant endothermique, le système gagne de l'énergie, donc L_vap > 0."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi pulvérise-t-on parfois de l'eau sur les vergers lors des nuits de gel printanier ?",
+              "options": [
+                "La solidification de l'eau est exothermique et libère de la chaleur qui protège les bourgeons à 0 °C",
+                "L'eau chaude étouffe les insectes ravageurs",
+                "La glace forme un miroir renvoyant la lumière",
+                "L'eau dissout les cristaux de gel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En gelant, l'eau libère sa chaleur latente de solidification (334 kJ/kg), maintenant les bourgeons à 0 °C sans descendre plus bas."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la brûlure par de la vapeur d'eau à 100 °C est-elle beaucoup plus grave qu'une brûlure par de l'eau liquide à 100 °C ?",
+              "options": [
+                "La vapeur se liquéfie sur la peau en libérant sa gigantesque chaleur latente (2260 kJ/kg)",
+                "La vapeur contient des acides corrosifs",
+                "La vapeur pénètre à travers la peau jusqu'aux os",
+                "L'eau liquide ne transfère pas de chaleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En se liquéfiant sur la peau, la vapeur cède instantanément 2260 J par gramme en plus du refroidissement du liquide chaud."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La condensation solide (gaz → solide) est-elle endothermique ou exothermique ?",
+              "options": [
+                "Exothermique",
+                "Endothermique",
+                "Athermique",
+                "Isotherme uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passage du désordre gazeux à l'ordre cristallin solide s'accompagne d'une libération massive d'énergie thermique."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels changements d'état parmi les suivants sont endothermiques (absorbent de la chaleur) ?",
+              "options": [
+                "La fusion",
+                "La vaporisation",
+                "La solidification",
+                "La liquéfaction"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La fusion, la vaporisation et la sublimation nécessitent un apport thermique pour rompre les interactions entre entités."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Courbes de refroidissement et paliers de température",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que constate-t-on sur la courbe de température d'un corps pur au cours de son changement d'état sous pression constante ?",
+              "options": [
+                "Un palier de température horizontale (température constante)",
+                "Une montée exponentielle continue",
+                "Une chute brutale à zéro kelvin",
+                "Des oscillations sinusoïdales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour un corps pur sous pression fixée, la coexistence de deux phases s'effectue à température strictement constante."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment se comporte la température d'un mélange liquide lors de son ébullition sous pression constante ?",
+              "options": [
+                "Elle varie continuellement sans palier franc",
+                "Elle reste rigoureusement constante comme pour un corps pur",
+                "Elle diminue spontanément",
+                "Elle retombe à la température de fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sauf cas d'azéotrope, la composition du mélange évolue lors de l'ébullition, ce qui fait varier la température d'ébullition."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de phases sont en équilibre le long du palier de fusion d'un corps pur ?",
+              "options": [
+                "2 phases (solide et liquide)",
+                "1 seule phase liquide",
+                "3 phases (solide, liquide, gaz)",
+                "Une infinité de phases distinctes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pendant toute la durée du palier de fusion, la phase solide et la phase liquide coexistent en équilibre thermique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le phénomène de surfusion de l'eau ?",
+              "options": [
+                "Un état métastable où l'eau reste liquide à une température inférieure à 0 °C",
+                "Une ébullition anormale au-dessus de 200 °C",
+                "Une congélation instantanée sous vide",
+                "Une réaction nucléaire au sein de la glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En l'absence de germes de cristallisation, l'eau liquide peut descendre sous 0 °C avant de geler soudainement à la moindre perturbation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sur une courbe d'échauffement d'un bloc de glace initialement à -20 °C jusqu'à 50 °C, combien observe-t-on de paliers thermiques ?",
+              "options": [
+                "1 seul palier (à 0 °C pour la fusion)",
+                "2 paliers",
+                "Aucun palier",
+                "3 paliers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On observe la hausse de -20 à 0 °C, le palier de fusion à 0 °C, puis la hausse du liquide de 0 à 50 °C (l'ébullition à 100 °C n'est pas atteinte)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que représente la température de fusion d'un corps pur ?",
+              "options": [
+                "La température à laquelle coexistent les phases solide et liquide sous une pression donnée",
+                "La température à laquelle le solide s'enflamme",
+                "La température maximale que peut atteindre un solide",
+                "La température d'évaporation totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La température de fusion sous 1 bar est une constante caractéristique d'identification d'une espèce chimique pure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel appareil de laboratoire permet de mesurer précisément la température de fusion d'un solide pour contrôler sa pureté ?",
+              "options": [
+                "Le banc Kofler",
+                "Le réfractomètre",
+                "Le spectrophotomètre UV-visible",
+                "Le polarimètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le banc Kofler présente un gradient de température et permet d'observer la ligne de fusion d'un solide."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si la température de fusion d'un produit synthétisé n'est pas nette et inférieure à la valeur tabulée, qu'en conclut-on ?",
+              "options": [
+                "Le produit est impur",
+                "Le produit est d'une pureté absolue",
+                "Le thermomètre est obligatoirement cassé",
+                "La masse molaire a changé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les impuretés abaissent le point de fusion et étalent la transition sur une plage de température (dépression du point de fusion)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que vaut la température de fusion de l'eau pure sous la pression atmosphérique normale (1013 hPa) ?",
+              "options": [
+                "0 °C (soit 273,15 K)",
+                "100 °C",
+                "-273,15 °C",
+                "25 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous 1 atm, la glace fond à 0 °C, soit 273,15 Kelvin."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques permettent d'identifier un corps pur lors de son changement d'état ?",
+              "options": [
+                "L'existence d'un palier de température horizontale à pression constante",
+                "Une température de changement d'état nette et conforme aux tables de référence",
+                "Une augmentation continue et aléatoire de la température pendant la transition",
+                "Une couleur qui devient obligatoirement transparente"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un corps pur présente un palier thermique horizontal et une température de fusion/ébullition constante et tabulée."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Capacité thermique et variation de température",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle formule relie l'énergie thermique Q transférée à un corps à sa masse m, sa capacité thermique massique c et sa variation de température ΔT ?",
+              "options": [
+                "Q = m × c × ΔT",
+                "Q = m × c / ΔT",
+                "Q = m × ΔT / c",
+                "Q = c × ΔT / m"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une variation de température sans changement d'état, l'énergie transférée est Q = m·c·(T_finale - T_initiale)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'unité de la capacité thermique massique c dans le Système International ?",
+              "options": ["J·kg⁻¹·K⁻¹", "J·kg⁻¹", "W·m⁻¹·K⁻¹", "J·mol⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "Comme c = Q / (m × ΔT), son unité SI est le joule par kilogramme et par kelvin (J/(kg·K) ou J/(kg·°C))."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que vaut approximativement la capacité thermique massique de l'eau liquide c_eau ?",
+              "options": [
+                "4185 J·kg⁻¹·K⁻¹ (environ 4,18 kJ/(kg·K))",
+                "334 J·kg⁻¹·K⁻¹",
+                "1000 J·kg⁻¹·K⁻¹",
+                "100 J·kg⁻¹·K⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau liquide possède une très forte capacité thermique massique, valant environ 4185 J·kg⁻¹·K⁻¹."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle énergie faut-il fournir pour chauffer 1 kg d'eau de 20 °C à 30 °C (c = 4185 J·kg⁻¹·K⁻¹) ?",
+              "options": [
+                "41 850 J (environ 41,9 kJ)",
+                "4 185 J",
+                "83 700 J",
+                "418,5 kJ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Q = m × c × ΔT = 1 × 4185 × (30 - 20) = 1 × 4185 × 10 = 41 850 J."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi le climat océanique présente-t-il des hivers doux et des étés frais comparé au climat continental ?",
+              "options": [
+                "L'eau des océans a une très grande capacité thermique qui amortit les variations de température",
+                "L'océan émet constamment de la vapeur chaude",
+                "Les vagues créent un frottement thermique intense",
+                "Le sel dans la mer absorbe le rayonnement solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau stocke d'immenses quantités de chaleur en été et les restitue lentement en hiver, régulant le climat côtier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle différence de valeur existe-t-il entre un écart de température exprimé en degrés Celsius et le même écart en Kelvin (ΔT) ?",
+              "options": [
+                "Aucune différence : un écart de 1 °C équivaut strictement à un écart de 1 K",
+                "Il faut ajouter 273,15 à l'écart",
+                "Il faut multiplier l'écart par 273,15",
+                "L'écart en Kelvin est toujours négatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les échelles Celsius et Kelvin ont le même pas : ΔT = T_f - T_i a exactement la même valeur en °C qu'en K."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le produit C = m × c associant la masse et la capacité massique d'un objet ?",
+              "options": [
+                "La capacité thermique C de l'objet (en J·K⁻¹)",
+                "L'inertie mécanique",
+                "L'énergie cinétique totale",
+                "La puissance thermique instantanée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La capacité thermique C = m·c caractérise l'objet dans sa globalité et s'exprime en J·K⁻¹ (ou J·°C⁻¹)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel matériau chauffe le plus rapidement pour un même apport d'énergie thermique ?",
+              "options": [
+                "Le matériau ayant la plus petite capacité thermique massique c",
+                "Le matériau ayant la plus grande capacité thermique c",
+                "Tous les matériaux chauffent à la même vitesse",
+                "L'eau liquide pure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme ΔT = Q / (m × c), plus c est faible, plus l'élévation de température ΔT est importante pour un même apport Q."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'on refroidit un corps de 50 °C à 20 °C, quel est le signe du transfert thermique Q pour ce corps ?",
+              "options": [
+                "Négatif (Q < 0) car le corps cède de la chaleur",
+                "Positif (Q > 0)",
+                "Nul car la masse reste constante",
+                "Infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ΔT = 20 - 50 = -30 K < 0, donc Q = m × c × ΔT < 0 : le corps perd de l'énergie thermique."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels paramètres influencent directement la quantité d'énergie thermique nécessaire pour chauffer un bloc métallique sans le faire fondre ?",
+              "options": [
+                "La masse du bloc",
+                "La capacité thermique massique du métal",
+                "La forme géométrique extérieure du bloc",
+                "La couleur de la peinture sur le bloc"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Selon Q = m × c × ΔT, l'énergie dépend de la masse m, de la capacité c du matériau et de l'amplitude du chauffage ΔT."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Bilans thermiques et mélanges calorimétriques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un système thermiquement isolé ?",
+              "options": [
+                "Un système qui n'échange aucune chaleur ni aucun travail avec l'extérieur",
+                "Un système maintenu à 0 kelvin sous cloche",
+                "Un système qui absorbe tous les rayonnements",
+                "Un système dont la masse est nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un système isolé (comme un calorimètre idéal) n'échange aucun transfert thermique Q ni de matière avec l'environnement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que vaut la somme des chaleurs échangées au sein d'un calorimètre parfaitement isolé à l'équilibre thermique ?",
+              "options": [
+                "Σ Q_i = 0",
+                "Σ Q_i = +∞",
+                "Σ Q_i = T_finale",
+                "Σ Q_i = 100 J"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une enceinte adiabatique, la chaleur cédée par les corps chauds est intégralement reçue par les corps froids : Σ Q = 0."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si on mélange 100 g d'eau à 20 °C et 100 g d'eau à 80 °C dans un calorimètre parfait, quelle est la température finale d'équilibre ?",
+              "options": ["50 °C", "60 °C", "40 °C", "100 °C"],
+              "correctAnswers": [0],
+              "explanation": "Les masses et capacités étant identiques : T_eq = (20 + 80) / 2 = 50 °C."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si on mélange 100 g d'eau à 20 °C et 200 g d'eau à 80 °C, vers quelle valeur tend la température finale ?",
+              "options": ["60 °C", "50 °C", "70 °C", "40 °C"],
+              "correctAnswers": [0],
+              "explanation": "m₁·c·(T - 20) + m₂·c·(T - 80) = 0 ⇒ 100(T - 20) + 200(T - 80) = 0 ⇒ 300·T = 18000 ⇒ T = 60 °C."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que représente la valeur en eau notée μ d'un calorimètre ?",
+              "options": [
+                "La masse d'eau fictive qui aurait la même capacité thermique que les parois et accessoires du calorimètre",
+                "Le volume d'eau maximal du récipient",
+                "La masse de liquide renversée lors des mesures",
+                "La teneur en humidité de l'isolant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La capacité thermique des accessoires (vase, agitateur, sonde) est modélisée par C_cal = μ × c_eau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se passe-t-il quand on plonge un glaçon de 20 g à 0 °C dans un verre contenant 200 g d'eau à 20 °C ?",
+              "options": [
+                "Le glaçon fond entièrement en prélevant de la chaleur à l'eau liquide qui se refroidit",
+                "L'eau se met instantanément à bouillir",
+                "Le glaçon congèle toute l'eau du verre",
+                "Aucun échange thermique n'a lieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fusion du glaçon est endothermique : elle absorbe de l'énergie à l'eau tiède dont la température chute."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans l'équation de bilan thermique Q_glace + Q_eau = 0, quel terme représente l'énergie nécessaire à la fusion du glaçon ?",
+              "options": [
+                "m_glace × L_fus",
+                "m_glace × c_eau × ΔT",
+                "m_eau × L_vap",
+                "c_eau / m_glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le changement d'état du glaçon à 0 °C consomme l'énergie de fusion Q = m_glace × L_fus."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi utilise-t-on un agitateur dans un calorimètre ?",
+              "options": [
+                "Pour homogénéiser la température et accélérer l'équilibre thermique",
+                "Pour créer de l'énergie par frottement mécanique important",
+                "Pour faire évaporer le liquide plus vite",
+                "Pour casser les molécules en ions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'agitation douce assure une répartition thermique homogène sans créer de gradient de température dans la solution."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quand deux corps à des températures différentes sont mis en contact thermique, dans quel sens s'effectue spontanément le transfert d'énergie ?",
+              "options": [
+                "Toujours du corps le plus chaud vers le corps le plus froid",
+                "Toujours du corps le plus froid vers le corps le plus chaud",
+                "Dans les deux sens avec égale intensité",
+                "Uniquement si les masses sont identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le transfert spontané de chaleur s'effectue toujours irréversiblement de la source chaude vers la source froide."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Dans une expérience de calorimétrie avec mélange d'eau et d'un morceau de cuivre chaud, quelles grandeurs sont nécessaires pour déterminer la capacité thermique du cuivre ?",
+              "options": [
+                "Les masses d'eau et de cuivre",
+                "Les températures initiales de l'eau et du cuivre, et la température finale d'équilibre",
+                "La résistance électrique du fil de suspension",
+                "La vitesse de la lumière dans le calorimètre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le bilan thermique Q_eau + Q_cuivre = 0 nécessite de connaître les masses et les températures initiales et finale d'équilibre."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Modes de transfert thermique : conduction, convection, rayonnement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels sont les trois modes fondamentaux de transfert thermique ?",
+              "options": [
+                "La conduction, la convection et le rayonnement",
+                "La fusion, la vaporisation et la sublimation",
+                "L'induction, la résonance et la gravitation",
+                "La réflexion, la réfraction et la diffraction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie thermique se transmet par conduction (milieu fixe), convection (avec mouvement de fluide) ou rayonnement (ondes EM)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment s'effectue le transfert thermique par conduction ?",
+              "options": [
+                "De proche en proche au sein de la matière sans déplacement macroscopique de matière",
+                "Par déplacement de courants de liquide ou de gaz",
+                "Par émission de photons dans le vide uniquement",
+                "Par transfert d'ondes sonores audibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conduction se produit par transmission de l'agitation thermique d'atome en atome, particulièrement efficace dans les solides."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mode de transfert thermique nécessite obligatoirement un déplacement macroscopique de matière ?",
+              "options": [
+                "La convection",
+                "La conduction",
+                "Le rayonnement",
+                "L'effet photoélectrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La convection a lieu dans les fluides (liquides, gaz) via des mouvements ascendants de matière chaude moins dense."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mode de transfert thermique peut se propager à travers le vide spatial ?",
+              "options": [
+                "Le rayonnement électromagnétique",
+                "La conduction thermique",
+                "La convection naturelle",
+                "Le courant thermique de matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rayonnement (infrarouge, lumière visible...) est constitué d'ondes électromagnétiques se propageant dans le vide (ex: Soleil → Terre)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi une cuillère en métal plongée dans une soupe chaude devient-elle vite brûlante contrairement à une cuillère en bois ?",
+              "options": [
+                "Les métaux ont une très grande conductivité thermique",
+                "Le bois absorbe les photons infrarouges",
+                "Le métal produit sa propre chaleur chimique",
+                "Le bois conduit la chaleur par convection interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les métaux sont d'excellents conducteurs thermiques grâce aux collisions atomiques et à leurs électrons libres."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi l'air chaud monte-t-il au-dessus d'un radiateur ?",
+              "options": [
+                "En chauffant, il se dilate, devient moins dense et subit la poussée d'Archimède",
+                "L'air chaud est repoussé par le champ magnétique terrestre",
+                "Les molécules d'air chaud perdent leur masse",
+                "Le radiateur aspire l'air froid vers le plafond"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échauffement diminue la masse volumique du fluide, créant des courants de convection ascendante."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle loi régit le flux thermique Φ traversant une paroi plane de résistance thermique R_th soumise à un écart de température ΔT ?",
+              "options": [
+                "Φ = ΔT / R_th",
+                "Φ = R_th / ΔT",
+                "Φ = ΔT × R_th",
+                "Φ = ΔT² × R_th"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par analogie avec la loi d'Ohm (I = U/R), le flux thermique (puissance en W) s'écrit Φ = ΔT / R_th."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est l'unité du flux thermique Φ dans le Système International ?",
+              "options": [
+                "Le watt (W), équivalent au joule par seconde (J·s⁻¹)",
+                "Le joule (J)",
+                "Le kelvin (K)",
+                "Le pascal (Pa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le flux thermique est une puissance thermique transférée par unité de temps : 1 W = 1 J/s."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les bouteilles isothermes (bouteilles thermos) comportent-elles une double paroi sous vide aux parois argentées ?",
+              "options": [
+                "Le vide bloque la conduction et la convection, les parois réfléchissantes minimisent le rayonnement",
+                "Le vide augmente la capacité thermique du liquide",
+                "L'argent produit des réactions nucléaires isolantes",
+                "Pour alléger le poids de la bouteille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vide élimine la conduction et la convection (pas de matière), tandis que l'argenture réfléchit les infrarouges (rayonnement)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels phénomènes relèvent principalement d'un transfert par convection ?",
+              "options": [
+                "Le mouvement de l'eau en ébullition dans une casserole",
+                "La brise de mer créée par la différence de température entre la terre et l'eau",
+                "La transmission de chaleur le long d'une barre de fer",
+                "Le chauffage de la Terre par le Soleil"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La convection implique des mouvements de fluide : bouillonnement d'eau et vents marins. La barre de fer relève de la conduction et le Soleil du rayonnement."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Applications pratiques : régulation thermique et réfrigération",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel principe physique permet au corps humain de se refroidir lors de la transpiration ?",
+              "options": [
+                "L'évaporation de la sueur est endothermique et prélève de la chaleur à la peau",
+                "La sueur glacée pénètre dans les pores",
+                "Les gouttes d'eau agissent comme des miroirs protecteurs",
+                "La sueur absorbe le dioxyde de carbone ambiant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vaporisation de l'eau liquide de la sueur requiert ~2400 kJ/kg, énergie puisée directement au corps, ce qui régule la température corporelle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment un réfrigérateur extrait-il de la chaleur à l'intérieur de sa cuve ?",
+              "options": [
+                "Un fluide frigorigène s'y évapore en absorbant de l'énergie thermique",
+                "Un ventilateur expulse de l'air solide à haute vitesse",
+                "Des blocs de glace chimique absorbent les photons",
+                "Un moteur électrique aspire la chaleur comme un aspirateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans l'évaporateur intérieur, le fluide frigorigène subit une vaporisation endothermique à basse pression, refroidissant l'enceinte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi la grille arrière (condenseur) d'un réfrigérateur est-elle chaude au toucher ?",
+              "options": [
+                "Le fluide frigorigène s'y liquéfie en libérant de l'énergie thermique vers l'extérieur",
+                "Le moteur chauffe directement la grille par frottement mécanique",
+                "L'air de la pièce y brûle spontanément",
+                "La grille reçoit le rayonnement solaire concentré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le condenseur extérieur, le fluide sous haute pression se liquéfie de façon exothermique et cède sa chaleur à la pièce."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le rôle du compresseur dans une pompe à chaleur ou un réfrigérateur ?",
+              "options": [
+                "Comprimer la vapeur du fluide frigorigène pour augmenter sa pression et sa température",
+                "Créer un vide absolu dans le compartiment à légumes",
+                "Détruire les molécules usagées de fluide",
+                "Convertir la chaleur en électricité réinjectée sur le réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le compresseur fournit un travail mécanique au fluide pour élever sa pression avant condensation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une pompe à chaleur (PAC) réversible ?",
+              "options": [
+                "Un dispositif thermique capable de chauffer en hiver et de climatiser en été",
+                "Une pompe à eau qui fonctionne sous l'eau et dans l'air",
+                "Un moteur électrique à deux pistons opposés",
+                "Une turbine produisant de la vapeur et du gel simultanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En inversant le cycle thermodynamique, la PAC prélève des calories à l'extérieur pour chauffer, ou l'inverse pour climatiser."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel rôle joue le détenteur dans un circuit frigorifique fermé ?",
+              "options": [
+                "Abaisser brutalement la pression du fluide, ce qui provoque son refroidissement et amorce sa vaporisation",
+                "Réchauffer le fluide à 200 °C",
+                "Filtrer les bactéries en suspension",
+                "Accélérer le débit jusqu'à la vitesse du son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La détente abaisse la pression du liquide, provoquant une baisse de température spectaculaire avant l'évaporateur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le principe de la cryothérapie médicale utilisant de l'azote liquide (-196 °C) ?",
+              "options": [
+                "L'azote liquide bout instantanément sur la peau en absorbant une immense quantité de chaleur locale",
+                "L'azote liquide diffuse des protons toxiques dans la verrue",
+                "L'azote liquide gèle l'air ambiant pour former un diamant",
+                "L'azote liquide s'enflamme sans chaleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vaporisation ultra-rapide de l'azote liquide prélève instantanément l'énergie thermique des tissus, détruisant les lésions par le froid."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la brumisation d'eau est-elle efficace pour rafraîchir l'air ambiant d'une terrasse en été ?",
+              "options": [
+                "Les micro-gouttelettes s'évaporent rapidement dans l'air sec en consommant de la chaleur",
+                "Les gouttes d'eau bloquent les courants d'air",
+                "L'eau brumisée dissout l'oxygène de l'air",
+                "L'eau froide gèle au contact du sol chaud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La grande surface de contact des micro-gouttelettes permet une évaporation immédiate (endothermique) qui abaisse la température de l'air."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une centrale thermique ou nucléaire, quel est le rôle du condenseur ?",
+              "options": [
+                "Liquéfier la vapeur d'eau issue des turbines pour la recycler en eau liquide",
+                "Brûler le combustible usagé sous pression",
+                "Refroidir les câbles électriques haute tension",
+                "Produire de l'ozone protecteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le condenseur évacue l'énergie résiduelle de la vapeur pour la transformer en eau liquide réinjectée dans le générateur de vapeur."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels composants sont indispensables au fonctionnement en boucle fermée d'un réfrigérateur ?",
+              "options": [
+                "Un évaporateur et un condenseur",
+                "Un compresseur et un détendeur",
+                "Un réacteur chimique à combustion",
+                "Une cellule photovoltaïque interne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le cycle frigorifique à compression de vapeur repose sur 4 éléments clés : compresseur, condenseur, détendeur et évaporateur."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Premier principe de la thermodynamique et énergie interne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'énergie interne U d'un système à l'échelle microscopique ?",
+              "options": [
+                "La somme de l'énergie cinétique microscopique et des énergies potentielles d'interaction des particules",
+                "L'énergie cinétique macroscopique liée à la vitesse du centre de masse",
+                "L'énergie gravitationnelle du système par rapport au centre de la Terre",
+                "La masse au repos multipliée par la vitesse du son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "U = E_c,micro + E_p,micro : elle englobe l'agitation thermique et l'énergie des liaisons (inter et intramoléculaires)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'expression mathématique du premier principe de la thermodynamique pour un système fermé au repos macroscopique ?",
+              "options": [
+                "ΔU = W + Q",
+                "ΔU = W - Q",
+                "ΔU = W × Q",
+                "ΔU = Q / W"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La variation d'énergie interne est égale à la somme algébrique du travail W et de la chaleur Q échangés avec l'extérieur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la convention de signe pour les échanges d'énergie W et Q en thermodynamique ?",
+              "options": [
+                "Positif si reçu par le système, négatif si cédé par le système",
+                "Toujours positif quelle que soit la direction",
+                "Positif si cédé, négatif si reçu",
+                "Négatif pour la chaleur et positif pour le travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Principe du compte bancaire : toute énergie qui entre dans le système est comptée positivement (> 0), toute perte est négative (< 0)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que vaut la variation d'énergie interne ΔU d'un système isolé au cours de toute transformation ?",
+              "options": [
+                "ΔU = 0 car il n'y a aucun échange d'énergie (W = 0 et Q = 0)",
+                "ΔU > 0 systématiquement",
+                "ΔU < 0 car l'énergie se dissipe",
+                "ΔU dépend de la pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un système isolé n'échange ni travail ni chaleur avec l'extérieur, son énergie interne se conserve : ΔU = 0."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour une phase condensée incompressible (solide ou liquide) dont le volume est constant (W = 0), à quoi est égale la variation d'énergie interne ΔU ?",
+              "options": [
+                "ΔU = Q = m × c × ΔT (sans changement d'état)",
+                "ΔU = W",
+                "ΔU = 0 en toute circonstance",
+                "ΔU = m × g × h"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En l'absence de travail des forces de pression, ΔU = Q = m·c·ΔT lors d'un simple échauffement ou refroidissement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que vaut la variation d'énergie interne ΔU lors d'un changement d'état à volume constant d'une masse m de substance ?",
+              "options": [
+                "ΔU = m × L",
+                "ΔU = 0",
+                "ΔU = m × c / L",
+                "ΔU = - m × c × T"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie thermique échangée pour changer l'état sans travail vaut Q = m × L, d'où ΔU = m × L."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lorsqu'on gonfle un pneu de vélo avec une pompe manuelle, pourquoi le bas de la pompe devient-il chaud ?",
+              "options": [
+                "Le travail mécanique de compression fourni au gaz augmente son énergie interne et sa température",
+                "Le caoutchouc de la pompe frotte contre la jante",
+                "L'air extérieur est chauffé par le soleil",
+                "Les molécules d'oxygène subissent une fusion nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La compression rapide est quasi adiabatique (Q ≈ 0) : le travail W reçu augmente l'énergie interne U et la température de l'air."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une transformation thermodynamique s'effectuant sans aucun échange de chaleur avec l'extérieur (Q = 0) ?",
+              "options": ["Adiabatique", "Isotherme", "Isobare", "Isochore"],
+              "correctAnswers": [0],
+              "explanation": "Une transformation adiabatique est exempte de tout transfert thermique entre le système et l'environnement (Q = 0)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est l'unité de l'énergie interne U dans le Système International ?",
+              "options": [
+                "Le joule (J)",
+                "Le watt (W)",
+                "Le kelvin (K)",
+                "Le newton (N)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme toute forme d'énergie, l'énergie interne s'exprime en joules (J) dans le Système International."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles formes d'échanges d'énergie sont prises en compte dans le premier principe de la thermodynamique (ΔU = W + Q) ?",
+              "options": [
+                "Le travail mécanique W",
+                "Le transfert thermique (chaleur) Q",
+                "Le transfert de matière par osmose inverse",
+                "La création spontanée de masse ex nihilo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le premier principe stipule que l'énergie interne d'un système fermé varie par transfert de travail W et/ou de chaleur Q."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

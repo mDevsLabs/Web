@@ -1,0 +1,2358 @@
+{
+  "id": "6e-italien-10",
+  "year": "6e",
+  "subject": "italien",
+  "title": "Vers l'examen en l'italien",
+  "order": 10,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Compréhension",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Ciao! Come stai? » — « Bene, grazie. E tu? » Quelles idées sont justes ?",
+              "options": [
+                "Salut et prise de nouvelles.",
+                "Bene, grazie = bien, merci.",
+                "E tu? = et vous (formel).",
+                "On parle de devoirs."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Salutation ; bene, grazie répond à come stai ; E tu? est informel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Buongiorno =",
+              "options": ["bonsoir", "bonjour", "au revoir", "merci"],
+              "correctAnswers": [1],
+              "explanation": "Buongiorno = bonjour."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Arrivederci =",
+              "options": ["bonjour", "au revoir", "pardon", "oui"],
+              "correctAnswers": [1],
+              "explanation": "Formule de départ."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mi chiamo Anna : Anna est",
+              "options": ["une ville", "un prénom", "une heure", "un plat"],
+              "correctAnswers": [1],
+              "explanation": "Mi chiamo = je m'appelle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Piacere! sert à",
+              "options": ["partir", "se présenter", "manger", "dormir"],
+              "correctAnswers": [1],
+              "explanation": "Enchanté."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Come ti chiami? =",
+              "options": [
+                "quel âge",
+                "quel prénom",
+                "quelle heure",
+                "quel goût"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Demande le prénom (tu)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sto bene =",
+              "options": [
+                "j'ai mal",
+                "je vais bien",
+                "j'ai faim",
+                "je suis en retard"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Réponse positive."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "A domani! =",
+              "options": ["à demain", "hier", "bonne nuit", "bon appétit"],
+              "correctAnswers": [0],
+              "explanation": "Au revoir pour le lendemain."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Scusa =",
+              "options": ["merci", "pardon (tu)", "bonjour", "non"],
+              "correctAnswers": [1],
+              "explanation": "Excuse informelle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Grazie / Prego =",
+              "options": [
+                "merci / de rien",
+                "bonjour / au revoir",
+                "oui / non",
+                "entrée / sortie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formules de politesse."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Buonasera, professoressa! » — « Buonasera, ragazzi. »",
+              "options": [
+                "Buonasera = bonsoir.",
+                "Professoressa = prof (f.).",
+                "Buonasera = bonjour matin.",
+                "Ragazzi = toujours filles seules."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Soir ; féminin professoressa ; ragazzi = élèves/groupe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La scuola =",
+              "options": ["maison", "école", "plage", "gare"],
+              "correctAnswers": [1],
+              "explanation": "Vocabulaire école."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'aula =",
+              "options": ["cour", "salle de classe", "bus", "cantine"],
+              "correctAnswers": [1],
+              "explanation": "Aula = classe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Il libro =",
+              "options": ["stylo", "livre", "table", "cloche"],
+              "correctAnswers": [1],
+              "explanation": "Libro = livre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lo zaino =",
+              "options": ["cartable", "chaise", "prof", "note"],
+              "correctAnswers": [0],
+              "explanation": "Sac à dos scolaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Matematica =",
+              "options": ["sport", "maths", "musique", "histoire"],
+              "correctAnswers": [1],
+              "explanation": "Matière."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Studiare =",
+              "options": ["jouer", "étudier", "cuisiner", "nager"],
+              "correctAnswers": [1],
+              "explanation": "Verbe fréquent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "I compiti =",
+              "options": ["devoirs", "vacances", "jeux", "films"],
+              "correctAnswers": [0],
+              "explanation": "Devoirs maison."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Interrogazione =",
+              "options": ["interro", "récré", "repas", "voyage"],
+              "correctAnswers": [0],
+              "explanation": "Oral."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La pausa =",
+              "options": ["cours", "récréation", "examen", "directeur"],
+              "correctAnswers": [1],
+              "explanation": "Pause."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Ti piace la pizza? » — « Sì, mi piace molto! »",
+              "options": [
+                "Ti piace? = tu aimes ?",
+                "Mi piace = j'aime.",
+                "Réponse négative.",
+                "Molto = beaucoup."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Verbe piacere ; réponse oui ; molto renforce."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mi piace il gelato =",
+              "options": [
+                "j'aime la glace",
+                "je déteste",
+                "je cours",
+                "je dors"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure mi piace."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Non mi piace =",
+              "options": ["j'aime", "je n'aime pas", "peut-être", "toujours"],
+              "correctAnswers": [1],
+              "explanation": "Négation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La musica =",
+              "options": ["musique", "sport", "science", "carte"],
+              "correctAnswers": [0],
+              "explanation": "Loisir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Il calcio =",
+              "options": ["football", "tennis", "natation", "ski"],
+              "correctAnswers": [0],
+              "explanation": "Sport italien."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Preferisco =",
+              "options": ["je préfère", "je refuse", "j'attends", "j'oublie"],
+              "correctAnswers": [0],
+              "explanation": "Présent indicatif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Buono (cibo) =",
+              "options": ["bon", "mauvais", "froid", "vide"],
+              "correctAnswers": [0],
+              "explanation": "Qualité/goût."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Cattivo =",
+              "options": ["mauvais", "grand", "bleu", "jeune"],
+              "correctAnswers": [0],
+              "explanation": "Opposé de buono."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La frutta =",
+              "options": ["fruits", "viande", "pain", "fromage"],
+              "correctAnswers": [0],
+              "explanation": "Alimentation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bevo acqua =",
+              "options": [
+                "je bois de l'eau",
+                "je mange",
+                "je lis",
+                "je chante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bevo = boire."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Ieri ho fatto sport e ho ascoltato musica. »",
+              "options": [
+                "Ieri = hier.",
+                "Ho fatto = j'ai fait.",
+                "Phrase au futur.",
+                "Ascoltato = écouté."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Passato prossimo ; ieri = passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ieri =",
+              "options": ["demain", "hier", "aujourd'hui", "bientôt"],
+              "correctAnswers": [1],
+              "explanation": "Repère temps."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ho mangiato =",
+              "options": [
+                "je mange",
+                "j'ai mangé",
+                "je mangerai",
+                "je ne mange pas"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Passé composé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sono andato a scuola =",
+              "options": [
+                "je vais",
+                "je suis allé à l'école",
+                "je reste",
+                "j'habite"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Andare avec essere."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ho giocato =",
+              "options": ["j'ai joué", "je joue", "je dormirai", "je lis"],
+              "correctAnswers": [0],
+              "explanation": "Passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ho visto un film =",
+              "options": [
+                "j'ai vu un film",
+                "je vois",
+                "hier demain",
+                "je nage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vedere passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Non ho studiato =",
+              "options": [
+                "j'ai étudié",
+                "je n'ai pas étudié",
+                "j'étudie",
+                "toujours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Non + passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'altro ieri =",
+              "options": ["avant-hier", "demain", "ce soir", "tôt"],
+              "correctAnswers": [0],
+              "explanation": "Calendrier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ho dormito bene =",
+              "options": [
+                "j'ai bien dormi",
+                "je dors",
+                "j'ai faim",
+                "je cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dormire passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Abbiamo parlato italiano =",
+              "options": [
+                "nous avons parlé italien",
+                "nous parlons",
+                "tu parles",
+                "ils ont mangé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Noi passé."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Domani vado al parco con i miei amici. »",
+              "options": [
+                "Domani = demain.",
+                "Vado = je vais (plan futur).",
+                "Ieri vado correct.",
+                "Amici = amis."
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Futur proche avec présent ; amici."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Domani =",
+              "options": ["hier", "demain", "maintenant", "souvent"],
+              "correctAnswers": [1],
+              "explanation": "Demain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Vado in biblioteca (demain) =",
+              "options": [
+                "j'irai / je vais",
+                "j'allais",
+                "j'y étais",
+                "je ne vais pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présent futur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Preparo i compiti =",
+              "options": [
+                "je prépare les devoirs",
+                "j'ai préparé",
+                "je dors",
+                "je mange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dopo domani =",
+              "options": ["après-demain", "hier", "matin", "semaine passée"],
+              "correctAnswers": [0],
+              "explanation": "Expression date."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La prossima settimana =",
+              "options": [
+                "semaine prochaine",
+                "semaine dernière",
+                "aujourd'hui",
+                "ce soir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Futur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Stasera =",
+              "options": ["ce soir", "demain", "hier", "midi"],
+              "correctAnswers": [0],
+              "explanation": "Soir même."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Più tardi =",
+              "options": ["plus tard", "tôt", "jamais", "hier"],
+              "correctAnswers": [0],
+              "explanation": "Retard dans le temps."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Vengo a scuola alle otto =",
+              "options": [
+                "je viens à l'école à huit heures",
+                "je suis venu",
+                "huit nuits",
+                "je pars"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Horaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sabato =",
+              "options": ["samedi", "dimanche", "lundi", "jeudi"],
+              "correctAnswers": [0],
+              "explanation": "Jour."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Quanti anni hai? » — « Ho dodici anni. »",
+              "options": [
+                "Question sur l'âge.",
+                "Dodici = 12.",
+                "Anni = toujours singulier en français.",
+                "Ho = tu as."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Quanti anni hai ; ho dodici anni."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dove abiti? =",
+              "options": [
+                "où habites-tu",
+                "comment vas-tu",
+                "qui es-tu",
+                "quand pars-tu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dove = où."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Abito a Roma =",
+              "options": [
+                "j'habite à Rome",
+                "je vais",
+                "je suis né",
+                "je travaille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abitare."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sono italiano =",
+              "options": [
+                "je suis italien (m.)",
+                "je suis italienne",
+                "elle est",
+                "nous mangeons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nationalité masc."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lei è francese =",
+              "options": [
+                "elle est française",
+                "il est",
+                "tu es",
+                "nous sommes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lei = elle (ou vous)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Famiglia =",
+              "options": ["famille", "ami", "prof", "ville"],
+              "correctAnswers": [0],
+              "explanation": "Lexique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Fratello / sorella =",
+              "options": [
+                "frère / sœur",
+                "père / mère",
+                "oncle / tante",
+                "chat / chien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parenté."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Telefono =",
+              "options": ["téléphone", "télé", "table", "stylo"],
+              "correctAnswers": [0],
+              "explanation": "Objet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Indirizzo =",
+              "options": ["adresse", "heure", "nom", "couleur"],
+              "correctAnswers": [0],
+              "explanation": "Coordonnées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quanti anni hai? demande",
+              "options": ["l'âge", "le prix", "le temps", "le plat"],
+              "correctAnswers": [0],
+              "explanation": "Ans en italien."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Oggi fa caldo e c'è il sole. »",
+              "options": [
+                "Oggi = aujourd'hui.",
+                "Fa caldo = il fait chaud.",
+                "C'è il sole = il y a du soleil.",
+                "Piove."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Météo aujourd'hui."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Piove =",
+              "options": ["il pleut", "il neige", "il vente", "il fait beau"],
+              "correctAnswers": [0],
+              "explanation": "Pluie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Fa freddo =",
+              "options": ["froid", "chaud", "sec", "nuage"],
+              "correctAnswers": [0],
+              "explanation": "Température."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Che tempo fa? =",
+              "options": ["quel temps", "quelle heure", "où", "comment"],
+              "correctAnswers": [0],
+              "explanation": "Météo."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Inverno =",
+              "options": ["hiver", "été", "printemps", "automne"],
+              "correctAnswers": [0],
+              "explanation": "Saison."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Estate =",
+              "options": ["été", "hiver", "automne", "nuit"],
+              "correctAnswers": [0],
+              "explanation": "Saison."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Primavera =",
+              "options": ["printemps", "automne", "hier", "demain"],
+              "correctAnswers": [0],
+              "explanation": "Saison."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Autunno =",
+              "options": ["automne", "été", "mars", "lundi"],
+              "correctAnswers": [0],
+              "explanation": "Saison."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Nuvoloso =",
+              "options": ["nuageux", "soleil", "vent", "pluie forte"],
+              "correctAnswers": [0],
+              "explanation": "Ciel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "In maggio =",
+              "options": ["en mai", "en mars", "en juin", "en janvier"],
+              "correctAnswers": [0],
+              "explanation": "Mois."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Scusi, dov'è la biblioteca? » — « È vicino alla piazza. »",
+              "options": [
+                "Scusi = excusez-moi.",
+                "Dov'è = où est.",
+                "Biblioteca = bibliothèque.",
+                "Vicino = loin."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Demande de lieu ; vicino = près."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "A destra =",
+              "options": ["à droite", "à gauche", "droit", "derrière"],
+              "correctAnswers": [0],
+              "explanation": "Direction."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "A sinistra =",
+              "options": ["à gauche", "à droite", "devant", "haut"],
+              "correctAnswers": [0],
+              "explanation": "Direction."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dritto =",
+              "options": ["tout droit", "tourne", "stop", "recule"],
+              "correctAnswers": [0],
+              "explanation": "Itinéraire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La piazza =",
+              "options": ["place", "rue", "gare", "école"],
+              "correctAnswers": [0],
+              "explanation": "Ville."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Il negozio =",
+              "options": ["magasin", "hôpital", "parc", "plage"],
+              "correctAnswers": [0],
+              "explanation": "Commerce."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quanto costa? =",
+              "options": ["combien", "où", "quoi", "quand"],
+              "correctAnswers": [0],
+              "explanation": "Prix."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Per favore =",
+              "options": ["s'il vous plaît", "merci", "pardon", "au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Politesse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Vorrei un'acqua =",
+              "options": ["je voudrais une eau", "je mange", "bonjour", "hier"],
+              "correctAnswers": [0],
+              "explanation": "Au café."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Il conto =",
+              "options": ["addition", "menu", "chaise", "serveur"],
+              "correctAnswers": [0],
+              "explanation": "Restaurant."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Maria è alta e ha i capelli castani. »",
+              "options": [
+                "Alta = grande (taille).",
+                "Capelli castani = châtains.",
+                "Maria est obligatoirement petite.",
+                "Castani = blonds."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Description physique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Basso =",
+              "options": ["petit", "grand", "gros", "fort"],
+              "correctAnswers": [0],
+              "explanation": "Taille."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Occhi azzurri =",
+              "options": [
+                "yeux bleu clair",
+                "yeux verts",
+                "cheveux",
+                "chaussures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleur yeux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Porta gli occhiali =",
+              "options": ["porte des lunettes", "court", "mange", "dort"],
+              "correctAnswers": [0],
+              "explanation": "Accessoire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Simpatico =",
+              "options": ["sympa", "triste", "fâché", "malade"],
+              "correctAnswers": [0],
+              "explanation": "Caractère."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Timido =",
+              "options": ["timide", "bruyant", "rapide", "vieux"],
+              "correctAnswers": [0],
+              "explanation": "Caractère."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sportivo =",
+              "options": ["sportif", "paresseux", "petit", "bleu"],
+              "correctAnswers": [0],
+              "explanation": "Caractère."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Intelligente =",
+              "options": ["intelligente", "bête", "lent", "froid"],
+              "correctAnswers": [0],
+              "explanation": "Caractère."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Divertente =",
+              "options": ["amusant", "ennuyeux", "dangereux", "triste"],
+              "correctAnswers": [0],
+              "explanation": "Caractère."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Descrivere un amico =",
+              "options": [
+                "décrire un ami",
+                "saluer seulement",
+                "compter",
+                "nager"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tâche expression."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Ciao a tutti! Oggi abbiamo italiano e poi matematica. »",
+              "options": [
+                "Ciao a tutti = salut à tous.",
+                "Oggi = aujourd'hui.",
+                "Abbiamo = nous avons (cours).",
+                "Poi = avant seulement."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Emploi du temps ; poi = ensuite."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Poi =",
+              "options": ["puis", "jamais", "hier", "avant tout"],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tutti =",
+              "options": ["tous", "personne", "un", "deux"],
+              "correctAnswers": [0],
+              "explanation": "Quantité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Spesso =",
+              "options": ["souvent", "rarement", "une fois", "maintenant"],
+              "correctAnswers": [0],
+              "explanation": "Fréquence."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Non ... mai =",
+              "options": ["ne ... jamais", "toujours", "parfois", "souvent"],
+              "correctAnswers": [0],
+              "explanation": "Négation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sempre =",
+              "options": ["toujours", "jamais", "parfois", "bientôt"],
+              "correctAnswers": [0],
+              "explanation": "Fréquence."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Anche =",
+              "options": ["aussi", "mais", "ou", "sans"],
+              "correctAnswers": [0],
+              "explanation": "Addition."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Perché? =",
+              "options": ["pourquoi", "parce que", "quand", "où"],
+              "correctAnswers": [0],
+              "explanation": "Question."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quando =",
+              "options": ["quand", "où", "comment", "qui"],
+              "correctAnswers": [0],
+              "explanation": "Question temps."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bene (adverbe) =",
+              "options": ["bien", "mal", "vite", "lent"],
+              "correctAnswers": [0],
+              "explanation": "Manière."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Expression",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Saluer le matin et partir poliment :",
+              "options": [
+                "Buongiorno",
+                "Arrivederci",
+                "Buonanotte à 8 h",
+                "Ciao entre amis"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Matin vs départ ; buonanotte le soir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rencontrer un camarade :",
+              "options": [
+                "Ciao, come stai?",
+                "Arrivederci",
+                "Buonanotte",
+                "Grazie mille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Se présenter :",
+              "options": [
+                "Mi chiamo Sofia.",
+                "Ho fame Sofia.",
+                "Sono pizza.",
+                "Vado ieri."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mi chiamo."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Répondre au prénom :",
+              "options": [
+                "Mi chiamo Marco.",
+                "Sto bene.",
+                "A domani!",
+                "Dove abiti?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse adaptée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Enchanté :",
+              "options": ["Piacere!", "Scusa", "Per favore", "Presto"],
+              "correctAnswers": [0],
+              "explanation": "Piacere."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réponse à Grazie :",
+              "options": ["Prego", "Ciao", "Ieri", "Domani"],
+              "correctAnswers": [0],
+              "explanation": "De rien."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Excuse (tu) :",
+              "options": ["Scusa", "Arrivederci", "Buon appetito", "Sto male"],
+              "correctAnswers": [0],
+              "explanation": "Scusa."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Au revoir amis :",
+              "options": ["Ciao!", "Buongiorno!", "Come stai?", "Mi piace"],
+              "correctAnswers": [0],
+              "explanation": "Ciao depart."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ça va ? (tu) :",
+              "options": [
+                "Come stai?",
+                "Quanti anni hai?",
+                "Dov'è la penna?",
+                "Che ore sono?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Come stai."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réponse positive :",
+              "options": [
+                "Sto bene, grazie.",
+                "Non mi piace.",
+                "Ieri ho dormito.",
+                "Domani piove."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sto bene."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases correctes à l'école :",
+              "options": [
+                "Ho il libro di italiano.",
+                "Sono in aula.",
+                "Ho mangiato ieri la scuola domani.",
+                "Faccio i compiti."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Syntaxe simple présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "J'ai mon cartable :",
+              "options": [
+                "Ho lo zaino.",
+                "Ho dormito.",
+                "Vado ieri.",
+                "Mi piace zaino solo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ho lo zaino."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Nous sommes en classe :",
+              "options": [
+                "Siamo in aula.",
+                "Siamo ieri.",
+                "Abbiamo domani.",
+                "Sono in aula (io)."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Siamo."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Je fais mes devoirs :",
+              "options": [
+                "Faccio i compiti.",
+                "Mangio compiti.",
+                "Dormo compiti.",
+                "Vado compiti."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faccio."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Où est le stylo ?",
+              "options": [
+                "Dov'è la penna?",
+                "Come stai?",
+                "Ti piace?",
+                "Quanti anni?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dov'è."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "J'étudie l'italien :",
+              "options": [
+                "Studio italiano.",
+                "Gioco italiano.",
+                "Dormo italiano.",
+                "Bevo italiano."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Studio."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le prof parle :",
+              "options": [
+                "Il professore parla.",
+                "Il professore parla ieri domani.",
+                "Professore libro.",
+                "Parla compiti mangiare."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "J'ai maths aujourd'hui :",
+              "options": [
+                "Oggi ho matematica.",
+                "Ieri ho matematica domani.",
+                "Ho matematica ieri.",
+                "Matematica sono."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oggi ho."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ouvre le livre !",
+              "options": [
+                "Apri il libro!",
+                "Apro ieri libro.",
+                "Libro aprire domani.",
+                "Ho aperto domani."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impératif Apri."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Écoute !",
+              "options": [
+                "Ascolta!",
+                "Ascolto ieri.",
+                "Dormi libro!",
+                "Mangia penna!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ascolta."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parler de goûts :",
+              "options": [
+                "Mi piace la musica.",
+                "Non mi piace il calcio.",
+                "Mi piace ieri domani.",
+                "Ti piace mangiare sole."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Structures piacere correctes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "J'aime la pizza :",
+              "options": [
+                "Mi piace la pizza.",
+                "Mi piace pizza ieri.",
+                "Piacere pizza.",
+                "Ho pizza piace."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mi piace + nom."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Je n'aime pas les légumes :",
+              "options": [
+                "Non mi piacciono le verdure.",
+                "Mi piace non verdure.",
+                "Verdure ieri.",
+                "Ho verdure."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel piacciono."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tu aimes le foot ?",
+              "options": [
+                "Ti piace il calcio?",
+                "Ti piace ieri calcio?",
+                "Calcio ti mangia?",
+                "Ho calcio?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ti piace."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Je préfère la glace :",
+              "options": [
+                "Preferisco il gelato.",
+                "Preferisco ieri.",
+                "Gelato dormo.",
+                "Ho preferisco."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Preferisco."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "J'aime bien lire :",
+              "options": [
+                "Mi piace leggere.",
+                "Leggere mi ho.",
+                "Mi piace ieri leggere domani.",
+                "Non leggere piace."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe infinitif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "C'est bon ! (nourriture)",
+              "options": ["È buono!", "È ieri!", "Buono dormo.", "Ho buono."],
+              "correctAnswers": [0],
+              "explanation": "È buono."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Je bois du jus :",
+              "options": [
+                "Bevo un succo.",
+                "Bevo ieri succo.",
+                "Succo sono.",
+                "Ho bevo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bevo."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Nous aimons danser :",
+              "options": [
+                "Ci piace ballare.",
+                "Ci piace ieri.",
+                "Ballare ho.",
+                "Piace ci domani mangiare."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ci piace."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réponse : tu aimes la musique ? Oui beaucoup",
+              "options": [
+                "Sì, mi piace molto!",
+                "No, mi piace molto.",
+                "Sì, ieri molto.",
+                "Mi piace domani no."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sì + molto."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Raconter hier :",
+              "options": [
+                "Ieri ho studiato italiano.",
+                "Ieri sono andato a scuola.",
+                "Ieri vado domani parco.",
+                "Ho ieri studio domani."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Passé cohérent avec ieri."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Hier j'ai mangé une pizza :",
+              "options": [
+                "Ieri ho mangiato una pizza.",
+                "Ieri mangio una pizza.",
+                "Ho mangiato ieri domani.",
+                "Mangio ieri pizza domani."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ieri + passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Hier il a plu :",
+              "options": [
+                "Ieri ha piovuto.",
+                "Ieri piove domani.",
+                "Ha piovuto ieri domani.",
+                "Piove ieri ho."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impersonnel passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Je n'ai pas travaillé hier :",
+              "options": [
+                "Ieri non ho lavorato.",
+                "Non lavoro ieri domani.",
+                "Ho non ieri.",
+                "Lavorato ieri sono."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Non ho lavorato."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Nous avons joué au foot :",
+              "options": [
+                "Ieri abbiamo giocato a calcio.",
+                "Abbiamo giocato ieri domani.",
+                "Giochiamo ieri abbiamo.",
+                "Calcio ieri dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abbiamo giocato."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Elle a écouté de la musique :",
+              "options": [
+                "Ieri ha ascoltato musica.",
+                "Ha ascoltato ieri domani.",
+                "Ascolta ieri ha.",
+                "Musica ieri sono."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ha ascoltato."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tu as bien dormi :",
+              "options": [
+                "Ieri hai dormito bene.",
+                "Hai dormito ieri domani.",
+                "Dormi ieri hai.",
+                "Bene dormo ieri."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hai dormito."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "J'ai vu mes amis :",
+              "options": [
+                "Ieri ho visto i miei amici.",
+                "Ho visto ieri domani.",
+                "Vedo ieri ho.",
+                "Amici visto sono."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ho visto."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Il est allé au parc :",
+              "options": [
+                "Ieri è andato al parco.",
+                "È andato ieri domani.",
+                "Va ieri è.",
+                "Parco ieri ho."
+              ],
+              "correctAnswers": [0],
+              "explanation": "È andato."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Question : Qu'as-tu fait hier ?",
+              "options": [
+                "Cosa hai fatto ieri?",
+                "Cosa fai ieri domani?",
+                "Hai fatto cosa domani?",
+                "Ieri cosa dormo?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cosa hai fatto ieri?"
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parler de demain :",
+              "options": [
+                "Domani vado a scuola.",
+                "Domani studio italiano.",
+                "Domani ho ieri mangiato.",
+                "Vado ieri domani scuola ho."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Présent + domani pour futur proche."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Demain je viens chez toi :",
+              "options": [
+                "Domani vengo da te.",
+                "Vengo ieri da te.",
+                "Ho vengo domani.",
+                "Da te ieri dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Domani vengo."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Demain nous mangeons à la cantine :",
+              "options": [
+                "Domani mangiamo in mensa.",
+                "Mangiamo ieri mensa.",
+                "In mensa ho ieri.",
+                "Domani mangiato."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présent futur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ce soir je regarde un film :",
+              "options": [
+                "Stasera guardo un film.",
+                "Guardo ieri stasera.",
+                "Ho guardo stasera.",
+                "Film ieri sono."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stasera."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La semaine prochaine je voyage :",
+              "options": [
+                "La prossima settimana viaggio.",
+                "Viaggio ieri settimana.",
+                "Ho viaggio prossima.",
+                "Settimana dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prossima settimana."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "À quelle heure demain ?",
+              "options": [
+                "A che ora domani?",
+                "Che ora ieri domani?",
+                "Domani ora ho.",
+                "Ora dormo domani."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Che ora."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Demain il fera beau (simple) :",
+              "options": [
+                "Domani fa bel tempo.",
+                "Fa bel ieri domani.",
+                "Bel tempo ho.",
+                "Domani piove ieri."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fa bel tempo."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Je préparerai mes devoirs (présent futur) :",
+              "options": [
+                "Domani preparo i compiti.",
+                "Preparo ieri compiti.",
+                "Ho preparo domani.",
+                "Compiti ieri sono."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Domani preparo."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "On se voit demain !",
+              "options": [
+                "Ci vediamo domani!",
+                "Vediamo ieri domani!",
+                "Ci ho domani.",
+                "Domani vedo ieri."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ci vediamo."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Après-demain j'ai sport :",
+              "options": [
+                "Dopo domani ho educazione fisica.",
+                "Ho ieri dopo domani.",
+                "Dopo domani ho mangiato.",
+                "Educazione ieri dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dopo domani."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Mini-dialogue présentation :",
+              "options": [
+                "Ciao, mi chiamo Leo. Piacere!",
+                "Piacere, come ti chiami? Mi chiamo Leo.",
+                "Mi chiamo ieri Leo domani.",
+                "Piacere ho Leo."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Enchaînement cohérent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Demander l'âge (tu) :",
+              "options": [
+                "Quanti anni hai?",
+                "Quanti anni ho?",
+                "Anni quanti ieri?",
+                "Hai quanti dormo?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quanti anni hai."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "J'ai treize ans :",
+              "options": [
+                "Ho tredici anni.",
+                "Ho tredici ieri.",
+                "Anni ho tredici domani mangio.",
+                "Tredici sono ho."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ho ... anni."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Où habites-tu ?",
+              "options": [
+                "Dove abiti?",
+                "Dove abito?",
+                "Dove ieri abiti?",
+                "Abiti dove ho?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dove abiti."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "J'habite en France :",
+              "options": [
+                "Abito in Francia.",
+                "Abito ieri Francia.",
+                "In Francia ho abito.",
+                "Francia dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abito in."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Je suis française (fille) :",
+              "options": [
+                "Sono francese.",
+                "Sono francese ieri.",
+                "Francese ho.",
+                "Sono francesco."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sono francese."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Et toi ? (informel)",
+              "options": [
+                "E tu?",
+                "E lei? (vouvoiement)",
+                "Tu e ieri?",
+                "E tu ho?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "E tu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Répondre : comment vas-tu ?",
+              "options": [
+                "Sto bene, e tu?",
+                "Mi chiamo bene.",
+                "Sto ieri bene.",
+                "Bene dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sto bene."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Voici mon amie Emma :",
+              "options": [
+                "Questa è la mia amica Emma.",
+                "Questa ieri Emma.",
+                "Emma ho questa.",
+                "Mia amica ieri dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Presentazione."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Au revoir, à lundi !",
+              "options": [
+                "Arrivederci, a lunedì!",
+                "Ciao ieri lunedì.",
+                "Lunedì ho arrivederci.",
+                "A lunedì dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "A lunedì."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Météo et activités :",
+              "options": [
+                "Oggi piove, resto a casa.",
+                "Domani fa caldo, vado al parco.",
+                "Oggi piove ieri domani vado.",
+                "Fa caldo ho ieri."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Phrases logiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Il pleut, prends un parapluie :",
+              "options": [
+                "Piove, prendi un ombrello.",
+                "Piove prendi ieri.",
+                "Ombrello ho piove.",
+                "Prendi piove domani ieri."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Imperatif prendi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel temps fait-il ?",
+              "options": [
+                "Che tempo fa?",
+                "Che tempo ieri fa domani?",
+                "Fa che ho?",
+                "Tempo dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Che tempo fa."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Il fait froid en hiver :",
+              "options": [
+                "In inverno fa freddo.",
+                "Fa freddo ieri inverno.",
+                "Inverno ho freddo fa.",
+                "Freddo dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Saison + fa freddo."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En été j'aime la plage :",
+              "options": [
+                "In estate mi piace la spiaggia.",
+                "Mi piace ieri spiaggia.",
+                "Estate ho spiaggia.",
+                "Spiaggia dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "In estate."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Aujourd'hui il y a du soleil :",
+              "options": [
+                "Oggi c'è il sole.",
+                "C'è ieri sole.",
+                "Oggi ho sole c'è domani.",
+                "Sole dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'è il sole."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Il neige ! (présent)",
+              "options": [
+                "Nevica!",
+                "Nevica ieri domani!",
+                "Ho nevicato!",
+                "Neve dormo!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nevica présent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Il fait beau, sortons !",
+              "options": [
+                "Fa bel tempo, usciamo!",
+                "Bel tempo ieri usciamo.",
+                "Usciamo ho bel.",
+                "Fa bel dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usciamo."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En octobre il pleut souvent :",
+              "options": [
+                "In ottobre piove spesso.",
+                "Piove ottobre ieri.",
+                "Spesso ho ottobre.",
+                "Ottobre dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spesso."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Demain il fera nuageux (simple) :",
+              "options": [
+                "Domani è nuvoloso.",
+                "Nuvoloso ieri domani.",
+                "È nuvoloso ho.",
+                "Domani piove ieri sole."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Domani + adjectif."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Demander son chemin :",
+              "options": [
+                "Scusi, dov'è la stazione?",
+                "Dov'è la stazione? (informel: Dov'è la stazione?)",
+                "Dov'è ieri stazione domani?",
+                "Stazione ho scusi."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Scusi + dov'è ; forme informelle possible sans scusi en contexte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où est la gare ?",
+              "options": [
+                "Dov'è la stazione?",
+                "Dove stazione ieri?",
+                "La stazione ho?",
+                "Stazione dormo?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stazione = gare."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tournez à gauche :",
+              "options": [
+                "Gira a sinistra.",
+                "Sinistra ieri gira.",
+                "Gira ho sinistra.",
+                "A sinistra dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Imperatif gira."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "C'est près d'ici :",
+              "options": [
+                "È vicino a qui.",
+                "Vicino ieri qui.",
+                "È ho vicino.",
+                "Qui dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vicino."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Je voudrais un café :",
+              "options": [
+                "Vorrei un caffè.",
+                "Vorrei ieri caffè.",
+                "Caffè ho vorrei.",
+                "Un caffè dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vorrei."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'addition, s'il vous plaît :",
+              "options": [
+                "Il conto, per favore.",
+                "Conto ieri per favore.",
+                "Per favore ho conto.",
+                "Il conto dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Restaurant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien coûte ce livre ?",
+              "options": [
+                "Quanto costa questo libro?",
+                "Costa quanto ieri?",
+                "Libro ho costa.",
+                "Questo dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quanto costa."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Où sont les toilettes ?",
+              "options": [
+                "Dov'è il bagno?",
+                "Bagno ieri dov'è?",
+                "Il bagno ho?",
+                "Dov'è dormo?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bagno."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Merci beaucoup !",
+              "options": [
+                "Grazie mille!",
+                "Grazie ieri mille.",
+                "Mille ho grazie.",
+                "Grazie dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grazie mille."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Excusez-moi (formel) :",
+              "options": [
+                "Scusi!",
+                "Scusa! (tu seulement)",
+                "Scusi ieri!",
+                "Scusi ho!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scusi vouvoiement."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Décrire quelqu'un :",
+              "options": [
+                "Luca è alto e sportivo.",
+                "Maria ha gli occhi verdi.",
+                "Luca è alto ieri domani.",
+                "Sportivo ho Luca."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Adjectifs + avoir pour yeux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Il est grand et sympa :",
+              "options": [
+                "È alto e simpatico.",
+                "È alto ieri simpatico.",
+                "Alto ho è.",
+                "Simpatico dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "E + adjectifs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Elle a les cheveux blonds :",
+              "options": [
+                "Ha i capelli biondi.",
+                "Ha capelli ieri.",
+                "Biondi ho ha.",
+                "Capelli dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ha i capelli."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mon frère est timide :",
+              "options": [
+                "Mio fratello è timido.",
+                "Fratello ieri timido.",
+                "Timido ho fratello.",
+                "Mio dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mio fratello."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Nous sommes intelligents :",
+              "options": [
+                "Siamo intelligenti.",
+                "Siamo ieri intelligenti.",
+                "Intelligenti ho.",
+                "Siamo dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tu es drôle !",
+              "options": [
+                "Sei divertente!",
+                "Divertente ieri sei.",
+                "Sei ho divertente.",
+                "Divertente dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sei divertente."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Elle n'est pas grande :",
+              "options": [
+                "Lei non è alta.",
+                "Non è alta ieri.",
+                "Alta ho non.",
+                "Lei dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Non è alta."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Il porte un manteau bleu :",
+              "options": [
+                "Porta un cappotto blu.",
+                "Porta cappotto ieri.",
+                "Blu ho porta.",
+                "Cappotto dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Porta + couleur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ils sont italien et français (mixte groupe masc.) :",
+              "options": [
+                "Sono italiani e francesi.",
+                "Sono ieri italiani.",
+                "Italiani ho sono.",
+                "Francesi dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriels nationalités."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mon amie est gentille :",
+              "options": [
+                "La mia amica è gentile.",
+                "Amica ieri gentile.",
+                "Gentile ho amica.",
+                "Mia dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mia amica."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Révision expression examen :",
+              "options": [
+                "Buongiorno professoressa, posso entrare?",
+                "Sì, entra pure.",
+                "Entra ieri domani pure ho.",
+                "Posso entrare dormo."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Politesse classe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Puis-je entrer ? (formel prof)",
+              "options": [
+                "Posso entrare?",
+                "Entro ieri posso?",
+                "Posso ho entrare?",
+                "Entrare dormo?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Posso entrare."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Je n'ai pas compris :",
+              "options": [
+                "Non ho capito.",
+                "Ho capito non ieri.",
+                "Capito ho non domani.",
+                "Non dormo capito."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé capito."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Peux-tu répéter ?",
+              "options": [
+                "Puoi ripetere?",
+                "Ripeti puoi ieri?",
+                "Puoi ho ripetere?",
+                "Ripetere dormo?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puoi ripetere."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "J'ai une question :",
+              "options": [
+                "Ho una domanda.",
+                "Domanda ho ieri.",
+                "Una domanda dormo.",
+                "Ho ieri domanda domani."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ho una domanda."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bon courage ! (exam)",
+              "options": [
+                "In bocca al lupo!",
+                "In bocca ieri lupo.",
+                "Lupo ho bocca.",
+                "Bocca dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule italienne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réponse à In bocca al lupo !",
+              "options": [
+                "Crepi il lupo!",
+                "Crepi ieri lupo.",
+                "Lupo crepi ho.",
+                "Crepi dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réplique fixe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Bonne chance ! (simple)",
+              "options": [
+                "Buona fortuna!",
+                "Fortuna ieri buona.",
+                "Buona ho fortuna.",
+                "Fortuna dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Buona fortuna."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À bientôt !",
+              "options": [
+                "A presto!",
+                "Presto ieri a.",
+                "A ho presto.",
+                "Presto dormo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "A presto."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Merci professeur, au revoir !",
+              "options": [
+                "Grazie professoressa, arrivederci!",
+                "Grazie ieri arrivederci ho.",
+                "Arrivederci dormo professoressa.",
+                "Professoressa grazie ieri domani."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clôture polie."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

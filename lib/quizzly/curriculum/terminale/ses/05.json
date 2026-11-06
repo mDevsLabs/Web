@@ -1,0 +1,2743 @@
+{
+  "id": "terminale-ses-05",
+  "year": "terminale",
+  "subject": "ses",
+  "title": "Monnaie et financement",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Rôles de la monnaie",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les trois fonctions traditionnelles de la monnaie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les fonctions économiques canoniques de la monnaie selon Aristote ?",
+              "options": [
+                "Unité de compte",
+                "Intermédiaire des échanges",
+                "Moyen exclusif de spéculation",
+                "Facteur de production physique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La monnaie remplit traditionnellement trois fonctions : unité de compte, intermédiaire des échanges et réserve de valeur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle fonction permet d'exprimer la valeur de tous les biens dans une mesure commune ?",
+              "options": [
+                "L'unité de compte",
+                "La réserve de valeur",
+                "L'intermédiaire des échanges",
+                "Le pouvoir libératoire illimité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'unité de compte simplifie le système des prix relatifs en réduisant le nombre de prix à comparer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel problème majeur du troc la fonction d'intermédiaire des échanges résout-elle ?",
+              "options": [
+                "La double coïncidence des besoins",
+                "L'absence d'institutions bancaires",
+                "La surabondance de biens durables",
+                "La volatilité des taux de change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une économie de troc, l'échange exige que chaque partie désire exactement ce que l'autre propose au même moment."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que permet la fonction de réserve de valeur de la monnaie ?",
+              "options": [
+                "Transférer du pouvoir d'achat dans le temps",
+                "Éliminer totalement le risque de faillite",
+                "Garantir un taux d'intérêt obligatoirement positif",
+                "Fixer la valeur de la monnaie pour toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réserve de valeur permet de différer une dépense en conservant du pouvoir d'achat pour l'avenir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel phénomène économique érode directement la fonction de réserve de valeur ?",
+              "options": [
+                "L'inflation",
+                "La déflation",
+                "La baisse du chômage",
+                "La hausse de la productivité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une hausse générale et continue des prix réduit le pouvoir d'achat de la monnaie détenue sous forme liquide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans une économie avec 4 biens sans monnaie, combien de prix relatifs existent au troc ?",
+              "options": [
+                "6 prix relatifs",
+                "3 prix relatifs",
+                "4 prix relatifs",
+                "12 prix relatifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule n(n-1)/2 donne pour 4 biens : 4 x 3 / 2 = 6 prix relatifs, contre 4 prix monétaires."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que la monnaie est l'actif le plus liquide de l'économie ?",
+              "options": [
+                "Elle est immédiatement utilisable sans coût de conversion",
+                "Elle rapporte toujours le rendement financier le plus fort",
+                "Elle ne subit jamais de fluctuation de cours",
+                "Elle est nécessairement adossée à un stock d'or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liquidité désigne l'aptitude d'un actif à être transformé instantanément et sans perte en moyen de paiement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le pouvoir légal de la monnaie d'éteindre une dette ?",
+              "options": [
+                "Le pouvoir libératoire",
+                "Le pouvoir fiduciaire",
+                "Le cours forcé",
+                "La convertibilité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pouvoir libératoire oblige un créancier à accepter la monnaie officielle en règlement d'une dette."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lorsqu'un créancier ne peut refuser un paiement en billets, la monnaie a :",
+              "options": [
+                "Cours légal",
+                "Cours forcé",
+                "Valeur intrinsèque",
+                "Rendement garanti"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cours légal interdit à tout agent économique de refuser les billets et pièces ayant validité officielle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si les billets ne sont plus échangeables contre de l'or à la banque, on parle de :",
+              "options": [
+                "Cours forcé",
+                "Cours légal simple",
+                "Démonétisation",
+                "Dévaluation compétitive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cours forcé suspend l'obligation pour l'institut d'émission de convertir ses billets en métal précieux."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les formes de la monnaie à travers l'histoire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes de monnaie ont historiquement précédé la monnaie scripturale moderne ?",
+              "options": [
+                "La monnaie marchandise",
+                "La monnaie métallique",
+                "La monnaie algorithmique décentralisée",
+                "Le paiement instantané sans fil"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les sociétés ont d'abord utilisé des monnaies marchandises (coquillages, bétail, sel) puis des métaux précieux forgés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qui caractérise la monnaie marchandise ?",
+              "options": [
+                "Le bien utilisé a une valeur d'usage propre",
+                "Elle est émise par une banque centrale nationale",
+                "Elle ne circule que sous forme d'écriture comptable",
+                "Elle n'a aucune utilité matérielle directe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la monnaie marchandise (sel, céréales), le bien a une valeur intrinsèque et une utilité en soi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi les métaux précieux se sont-ils imposés comme monnaie ?",
+              "options": [
+                "Ils sont inaltérables, divisibles et faciles à transporter",
+                "Ils sont périssables et encouragent la consommation rapide",
+                "Ils sont illimités et disponibles gratuitement partout",
+                "Ils perdaient leur valeur après chaque transaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'or et l'argent possédaient les qualités physiques optimales : rareté, durabilité, divisibilité et homogénéité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que désigne la valeur faciale d'une pièce de monnaie ?",
+              "options": [
+                "La valeur légale inscrite sur la pièce",
+                "Le coût d'extraction du minerai brut",
+                "Le poids exact de métal précieux pur",
+                "Le prix de vente sur le marché de collection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La valeur faciale est le montant nominal officiel garanti par l'autorité émettrice."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que stipule la fameuse loi de Gresham ?",
+              "options": [
+                "La mauvaise monnaie chasse la bonne",
+                "La création monétaire stimule toujours l'emploi",
+                "Le taux d'intérêt dépend uniquement de l'épargne",
+                "L'offre de monnaie détermine la vitesse de circulation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque deux monnaies circulent, les agents thésaurisent la monnaie de plus forte valeur intrinsèque."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle étape a marqué le passage des pièces métalliques aux premiers billets de banque ?",
+              "options": [
+                "Les certificats de dépôt délivrés par les orfèvres",
+                "L'apparition des cartes à puce électronique",
+                "La création du Système monétaire européen",
+                "L'adoption du bitcoin par les États"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les orfèvres londoniens et banquiers italiens délivraient des reçus de dépôt d'or qui ont commencé à circuler."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la disparition progressive du support matériel de la monnaie ?",
+              "options": [
+                "La dématérialisation monétaire",
+                "La thésaurisation systématique",
+                "L'hyperinflation monétaire",
+                "La déflation par la dette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monnaie est passée du métal physique aux écritures comptables électroniques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel pourcentage approximatif de la masse monétaire représente la monnaie scripturale aujourd'hui ?",
+              "options": [
+                "Environ 90 %",
+                "Moins de 20 %",
+                "Environ 50 %",
+                "Strictement 100 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La quasi-totalité de la monnaie contemporaine circule sous forme d'écritures sur des comptes en banque."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les pièces de monnaie actuelles en circulation constituent la monnaie :",
+              "options": [
+                "Divisionnaire",
+                "Marchandise",
+                "Électronique pure",
+                "Virtuelle spéculative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monnaie divisionnaire regroupe les pièces métalliques destinées aux menues transactions quotidiennes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La valeur intrinsèque des pièces modernes en euros est :",
+              "options": [
+                "Très inférieure à leur valeur faciale",
+                "Égale à la valeur de l'or qu'elles contiennent",
+                "Strictement nulle en toutes circonstances",
+                "Supérieure à leur montant légal affiché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le coût du métal d'une pièce moderne est dérisoire par rapport au pouvoir d'achat garanti par sa valeur faciale."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La monnaie fiduciaire et la monnaie scripturale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments composent ensemble la monnaie fiduciaire ?",
+              "options": [
+                "Les billets de banque",
+                "Les pièces métalliques divisionnaires",
+                "Les dépôts à vue sur compte bancaire",
+                "Les actions cotées en bourse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La monnaie fiduciaire au sens large réunit les billets et les pièces, dont la valeur repose sur la confiance."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "D'où vient l'étymologie du mot « fiduciaire » ?",
+              "options": [
+                "Du latin fiducia qui signifie confiance",
+                "Du grec physis qui signifie nature",
+                "Du latin fiscus qui signifie trésor public",
+                "Du germanique fehu qui signifie bétail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monnaie fiduciaire ne vaut que parce que les agents ont confiance en sa valeur d'échange."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la monnaie scripturale ?",
+              "options": [
+                "Des soldes créditeurs inscrits sur des comptes bancaires",
+                "Des contrats d'assurance-vie bloqués sur dix ans",
+                "Des titres de propriété d'entreprises privées",
+                "Des lingots conservés dans un coffre de banque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monnaie scripturale est constituée des dépôts à vue enregistrés par de simples écritures comptables."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La carte bancaire est-elle une forme de monnaie en soi ?",
+              "options": [
+                "Non, c'est un instrument technique de circulation de la monnaie",
+                "Oui, elle constitue une monnaie distincte des dépôts",
+                "Oui, elle remplace totalement la monnaie centrale",
+                "Non, c'est un titre financier produisant un dividende"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La carte, le chèque et le virement ne sont que des instruments permettant de faire circuler la monnaie scripturale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel instrument de paiement scriptural transmet un ordre écrit de paiement immédiat ?",
+              "options": [
+                "Le chèque bancaire",
+                "Le billet de trésorerie",
+                "L'obligation convertible",
+                "Le contrat à terme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chèque donne l'ordre au banquier de transférer une somme du compte de l'émetteur vers celui du bénéficiaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lors d'un virement entre deux comptes d'une même banque ?",
+              "options": [
+                "Un simple jeu d'écritures créditant l'un et débitant l'autre",
+                "Un transfert physique de lingots d'or en chambre forte",
+                "Une création nette de monnaie pour l'économie globale",
+                "Une destruction définitive de pouvoir d'achat national"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le virement interne à une banque modifie les comptes clients sans faire intervenir d'autre établissement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle institution dispose du monopole d'émission des billets de banque en zone euro ?",
+              "options": [
+                "La Banque centrale européenne et l'Eurosystème",
+                "Les banques commerciales privées",
+                "Le ministère des Finances de chaque pays",
+                "Le Fonds monétaire international"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Eurosystème détient le privilège exclusif d'autoriser l'émission de billets en euros."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi les banques commerciales incitent-elles à l'usage des paiements scripturaux ?",
+              "options": [
+                "Ils réduisent la manipulation d'espèces et fidélisent les dépôts",
+                "Ils suppriment tout besoin de sécurité informatique",
+                "Ils obligent les clients à emprunter chaque mois",
+                "Ils interdisent tout contrôle par l'administration fiscale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La scripturalisation réduit les coûts logistiques de manipulation des espèces et limite les fuites en billets."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lorsqu'un particulier retire des billets à un distributeur automatique :",
+              "options": [
+                "La monnaie scripturale est convertie en monnaie fiduciaire",
+                "De la nouvelle monnaie est créée ex nihilo",
+                "La masse monétaire globale augmente immédiatement",
+                "Le compte du client est crédité d'un montant égal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le retrait transforme une créance scripturale sur la banque en monnaie fiduciaire sans changer la masse monétaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le risque spécifique lié aux dépôts bancaires scripturaux en cas de panique ?",
+              "options": [
+                "La course aux guichets où chacun exige ses espèces",
+                "L'effacement automatique des dettes des entreprises",
+                "La hausse immédiate de la valeur intrinsèque de l'or",
+                "Le doublement mécanique des salaires nominaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bank run survient lorsque les déposants veulent tous retirer leurs avoirs en espèces en même temps."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "La monnaie comme institution et confiance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Selon Michel Aglietta et André Orléan, quelles formes de confiance fondent la monnaie ?",
+              "options": [
+                "La confiance méthodique",
+                "La confiance hiérarchique",
+                "La confiance mystique",
+                "La confiance spéculative"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Aglietta et Orléan identifient trois piliers : confiance méthodique, confiance hiérarchique et confiance éthique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la confiance méthodique selon la théorie institutionnaliste ?",
+              "options": [
+                "L'acceptation quotidienne de la monnaie par routine et mimétisme",
+                "Le respect strict des règles imposées par l'armée",
+                "La vérification personnelle du poids de métal de chaque pièce",
+                "L'obligation de voter les lois budgétaires au parlement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La confiance méthodique découle de l'usage régulier : chacun accepte la monnaie car il sait qu'autrui l'acceptera."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sur quoi repose la confiance hiérarchique ?",
+              "options": [
+                "Sur la garantie offerte par les autorités publiques et la banque centrale",
+                "Sur la hiérarchie des cours des actions boursières",
+                "Sur le classement annuel des banques privées les plus rentables",
+                "Sur l'accord unanime des commerçants d'un quartier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La confiance hiérarchique émane des institutions tutélaires qui régulent l'émission et veillent à la stabilité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En quoi consiste la confiance éthique dans l'ordre monétaire ?",
+              "options": [
+                "Dans l'adhésion aux valeurs collectives et au bien commun incarné par la monnaie",
+                "Dans le versement systématique de dons aux œuvres de bienfaisance",
+                "Dans le refus de tout intérêt lors des prêts bancaires",
+                "Dans la suppression de la fiscalité sur les hauts revenus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La confiance éthique renvoie à la légitimité sociopolitique de la monnaie et au respect du pacte social."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que démontre l'histoire des épisodes d'hyperinflation quant à la nature de la monnaie ?",
+              "options": [
+                "La monnaie s'effondre dès lors que la confiance sociale est brisée",
+                "La valeur de la monnaie est totalement indépendante des institutions",
+                "Le troc est toujours plus efficace qu'une monnaie stable",
+                "Les billets conservent leur pouvoir d'achat même sans autorité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand la confiance dans l'émetteur disparaît, les agents fuient la monnaie nationale qui perd toute valeur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi les sociologues et économistes qualifient-ils la monnaie de lien social ?",
+              "options": [
+                "Elle relie les individus au sein d'une même communauté de paiement",
+                "Elle empêche tout désaccord économique entre les citoyens",
+                "Elle garantit l'égalité parfaite des patrimoines individuels",
+                "Elle interdit les échanges commerciaux avec l'étranger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partager une monnaie commune crée un sentiment d'appartenance et matérialise la souveraineté collective."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle souveraineté historique est directement associée au droit de battre monnaie ?",
+              "options": [
+                "Le privilège régalien des États",
+                "Le monopole des guildes de marchands",
+                "Le droit exclusif des propriétaires terriens",
+                "L'autonomie financière des régions rurales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le droit de battre monnaie est un attribut régalien majeur permettant à l'État d'asseoir son autorité politique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans la république de Weimar en 1923, la destruction de la monnaie a provoqué :",
+              "options": [
+                "Un effondrement du lien social et le retour au troc de survie",
+                "Une prospérité sans précédent pour les classes moyennes",
+                "Une disparition complète de toute dette extérieure",
+                "Une appréciation record du mark sur les marchés de change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hyperinflation allemande a anéanti l'épargne et ruiné la cohésion sociale de la population."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le seigneuriage désigne historiquement :",
+              "options": [
+                "Le gain tiré par le souverain de l'émission de la monnaie",
+                "L'impôt prélevé sur les héritages des familles nobles",
+                "Le salaire versé aux employés de la banque centrale",
+                "Le taux d'intérêt payé lors des emprunts d'État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le seigneuriage est la différence entre la valeur faciale de la monnaie et son coût de fabrication."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la monnaie ne peut-elle pas être réduite à un simple voile selon les institutionnalistes ?",
+              "options": [
+                "Elle façonne la hiérarchie sociale et influence l'économie réelle",
+                "Elle n'a aucun impact sur les décisions d'investissement des firmes",
+                "Elle ne sert qu'à mesurer les richesses sans jamais orienter l'épargne",
+                "Elle est strictement neutre sur l'emploi à court et long terme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les institutionnalistes, la monnaie est active et inséparable des rapports sociaux et politiques."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Les motifs de détention de la monnaie chez Keynes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les motifs de demande de monnaie distingués par John Maynard Keynes ?",
+              "options": [
+                "Le motif de transaction",
+                "Le motif de précaution",
+                "Le motif d'ostentation",
+                "Le motif d'expropriation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Keynes distingue trois motifs fondamentaux : transaction, précaution et spéculation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "De quoi dépend principalement la demande de monnaie pour motif de transaction chez Keynes ?",
+              "options": [
+                "Du niveau du revenu national global",
+                "Du niveau des cours de la bourse",
+                "Du taux de change vis-à-vis du dollar",
+                "Du nombre de banques commerciales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus le revenu et l'activité augmentent, plus les ménages et firmes ont besoin de monnaie pour leurs achats courants."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi les agents économiques conservent-ils de la monnaie pour motif de précaution ?",
+              "options": [
+                "Pour faire face à des dépenses imprévues ou des incertitudes",
+                "Pour obtenir un rendement financier très élevé garanti",
+                "Pour se prémunir contre la baisse mécanique des prix",
+                "Pour spéculer immédiatement sur les cours de l'or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le motif de précaution répond au besoin de sécurité face aux aléas futurs (maladie, réparations urgentes)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment varie la demande de monnaie pour motif de spéculation par rapport au taux d'intérêt ?",
+              "options": [
+                "Elle diminue lorsque le taux d'intérêt augmente",
+                "Elle augmente proportionnellement au taux d'intérêt",
+                "Elle reste parfaitement constante quel que soit le taux",
+                "Elle devient nulle dès que le taux d'intérêt est positif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand les taux d'intérêt sont élevés, détenir de la monnaie liquide entraîne un coût d'opportunité important."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le coût d'opportunité de la détention d'encaisses liquides ?",
+              "options": [
+                "Le renoncement aux intérêts qu'aurait rapportés un placement",
+                "Le montant des frais de tenue de compte bancaire",
+                "La perte due à la dégradation physique des billets",
+                "Le taux de taxe sur la valeur ajoutée acquitté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conserver de l'argent sous forme liquide prive l'agent des intérêts qu'il percevrait en prêtant ou plaçant ses fonds."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle relation existe-t-il entre le prix des obligations et le taux d'intérêt de marché ?",
+              "options": [
+                "Une relation inverse : si le taux monte, le cours baisse",
+                "Une relation directe : si le taux monte, le cours monte",
+                "Une indépendance totale en toutes circonstances",
+                "Une égalité stricte et mathématique à chaque instant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque les taux montent, les obligations anciennes à coupon fixe deviennent moins attractives, leur cours baisse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que désigne la « trappe à liquidité » théorisée par Keynes ?",
+              "options": [
+                "Une situation où les taux très bas rendent la politique monétaire inopérante",
+                "Une faillite généralisée des banques commerciales",
+                "Une pénurie physique totale de billets en circulation",
+                "Une taxation à 100 % des liquidités bancaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À des taux d'intérêt proches de zéro, toute création monétaire supplémentaire est conservée sous forme liquide sans effet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Chez Keynes, la préférence pour la liquidité traduit :",
+              "options": [
+                "Le désir des agents de conserver des actifs immédiatement disponibles face à l'incertitude",
+                "Une aversion pathologique pour les achats de biens matériels",
+                "Une volonté exclusive d'investir dans le capital fixe",
+                "L'obligation légale de régler ses impôts en numéraire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La préférence pour la liquidité est l'arbitrage entre détenir de la monnaie sans risque nominal ou acheter des titres."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la théorie keynésienne rompt-elle avec la vision néoclassique de la monnaie ?",
+              "options": [
+                "Elle affirme que la monnaie est détenue pour elle-même et n'est pas neutre",
+                "Elle soutient que les prix s'ajustent toujours instantanément",
+                "Elle nie l'existence du système bancaire moderne",
+                "Elle refuse de prendre en compte le taux d'intérêt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour Keynes, la monnaie peut être thésaurisée, ce qui rompt la loi des débouchés de Say et affecte la production réelle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si les agents anticipent une hausse future des taux d'intérêt ?",
+              "options": [
+                "Ils préfèrent garder des liquidités pour éviter des pertes en capital sur les obligations",
+                "Ils achètent immédiatement un maximum de titres à taux fixe",
+                "Ils arrêtent immédiatement toute consommation courante",
+                "Ils convertissent l'intégralité de leurs dépôts en devises étrangères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anticipant une baisse future du cours des obligations consécutive à la hausse des taux, ils restent liquides."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "La théorie quantitative de la monnaie et l'inflation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans l'équation quantitative d'Irving Fisher (M.V = P.Y), que représentent M et V ?",
+              "options": [
+                "M est la masse monétaire en circulation",
+                "V est la vitesse de circulation de la monnaie",
+                "M est la marge bénéficiaire des entreprises",
+                "V est le volume des importations de biens"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'équation M.V = P.Y relie la quantité de monnaie (M) et sa vitesse (V) au niveau général des prix (P) et au volume de production (Y)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle hypothèse classique fait-on sur la vitesse de circulation (V) et la production (Y) à long terme ?",
+              "options": [
+                "Elles sont considérées comme stables ou exogènes",
+                "Elles s'annulent dès qu'il y a de l'inflation",
+                "Elles augmentent toujours au même rythme que les impôts",
+                "Elles dépendent exclusivement du cours de l'or physique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon les monétaristes, V est liée aux habitudes de paiement et Y est au plein-emploi, rendant la hausse de M directement inflationniste."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle célèbre formule de Milton Friedman résume la thèse monétariste sur l'inflation ?",
+              "options": [
+                "L'inflation est toujours et partout un phénomène monétaire",
+                "L'inflation est le signe d'une économie en pleine expansion",
+                "La monnaie n'a aucune influence sur les grandeurs nominales",
+                "L'inflation provient exclusivement du déficit commercial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Friedman affirme que l'inflation résulte d'une émission de monnaie plus rapide que la croissance de la production."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que postule la neutralité de la monnaie dans la pensée classique ?",
+              "options": [
+                "La variation de la masse monétaire ne modifie que les prix nominaux sans affecter l'économie réelle",
+                "La monnaie permet d'annuler les effets des crises économiques majeures",
+                "Les taux d'intérêt n'ont aucun rapport avec les décisions de placement",
+                "L'État doit fixer directement le prix de toutes les marchandises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les classiques, la monnaie est un simple voile : elle n'affecte ni l'emploi ni le niveau de production d'équilibre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la déflation ?",
+              "options": [
+                "Une baisse générale et durable du niveau des prix",
+                "Un ralentissement temporaire du rythme de l'inflation",
+                "Une augmentation rapide des coûts de transport",
+                "Une dévaluation légale de la monnaie nationale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La déflation est une baisse auto-entretenue du niveau général des prix, souvent accompagnée d'une récession."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la déflation est-elle particulièrement redoutée par les économistes ?",
+              "options": [
+                "Elle incite à reporter les achats et alourdit la charge réelle des dettes",
+                "Elle provoque une surchauffe incontrôlable des usines",
+                "Elle fait disparaître instantanément toute monnaie fiduciaire",
+                "Elle oblige les banques à prêter à des taux d'intérêt infinis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la spirale déflationniste, la baisse des prix pousse les ménages à différer leur consommation, aggravant la crise."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle distinction fait-on entre désinflation et déflation ?",
+              "options": [
+                "La désinflation est un ralentissement de l'inflation, la déflation une baisse des prix",
+                "La désinflation ne concerne que les produits agricoles de base",
+                "La déflation est toujours décidée par une loi votée au parlement",
+                "Les deux termes désignent exactement la même situation monétaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En période de désinflation, les prix continuent d'augmenter, mais à un rythme plus modéré (ex. passage de 6 % à 2 %)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'illusion monétaire ?",
+              "options": [
+                "Confondre les grandeurs nominales et les grandeurs réelles corrigées de l'inflation",
+                "Penser que les billets de banque peuvent être mangés",
+                "Refuser d'utiliser des pièces métalliques divisionnaires",
+                "Croire que les banques centrales fabriquent de l'or artificiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'illusion monétaire consiste à se réjouir d'une hausse de salaire nominal sans percevoir que les prix ont augmenté davantage."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel effet néfaste une inflation élevée non anticipée a-t-elle sur les épargnants ?",
+              "options": [
+                "Elle réduit le pouvoir d'achat réel de leur épargne à taux fixe",
+                "Elle double automatiquement le montant de leurs liquidités",
+                "Elle transforme leurs dépôts bancaires en obligations souveraines",
+                "Elle supprime tous les impôts dus sur leurs revenus financiers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inflation pénalise les créanciers et les épargnants au profit des emprunteurs dont la dette réelle diminue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle cible d'inflation la Banque centrale européenne vise-t-elle à moyen terme ?",
+              "options": [
+                "Un taux proche de 2 % par an",
+                "Un taux strictement égal à 0 % par an",
+                "Un taux supérieur à 10 % par an",
+                "Un taux négatif pour encourager l'épargne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La BCE vise une inflation symétrique de 2 % à moyen terme afin de préserver la stabilité des prix sans risquer la déflation."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Les agrégats monétaires (M1, M2, M3)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels actifs monétaires composent l'agrégat monétaire étroit M1 ?",
+              "options": [
+                "Les pièces et billets en circulation (monnaie fiduciaire)",
+                "Les dépôts à vue transférables par chèque ou carte (monnaie scripturale)",
+                "Les actions de grandes entreprises industrielles",
+                "Les obligations d'État remboursables à trente ans"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "M1 représente la monnaie au sens strict : les moyens de paiement immédiatement disponibles (billets, pièces, dépôts à vue)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Selon quel critère principal classe-t-on les actifs dans les agrégats M1, M2 et M3 ?",
+              "options": [
+                "Leur degré décroissant de liquidité",
+                "Leur nationalité d'émission géographique",
+                "Leur taux de rentabilité fiscale espéré",
+                "Leur montant nominal obligatoirement supérieur à mille euros"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les agrégats sont emboîtés du plus liquide (M1) au moins liquide (titres de créances négociables et OPCVM de M3)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quels placements trouve-t-on dans M2 en plus des composantes de M1 ?",
+              "options": [
+                "Les dépôts sur livrets d'épargne et dépôts à terme jusqu'à deux ans",
+                "Les œuvres d'art acquises à des fins patrimoniales",
+                "Les investissements directs à l'étranger des multinationales",
+                "Les actions d'entreprises non cotées en bourse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "M2 inclut M1 plus les livrets d'épargne (comme le Livret A) et les dépôts avec préavis de remboursement court."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'agrégat large M3 englobe M2 ainsi que :",
+              "options": [
+                "Les parts d'OPCVM monétaires et titres de créance à court terme",
+                "L'ensemble du patrimoine immobilier des résidents",
+                "Les crédits immobiliers souscrits sur vingt-cinq ans",
+                "Le montant total du capital social des banques centrales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "M3 ajoute à M2 les instruments négociables du marché monétaire émis par les institutions financières."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel agrégat est le principal indicateur de surveillance de la masse monétaire pour l'Eurosystème ?",
+              "options": [
+                "L'agrégat large M3",
+                "L'agrégat très restreint M0 uniquement",
+                "Le total des réserves d'or physique",
+                "Le montant annuel des dividendes distribués"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La BCE suit particulièrement l'évolution de M3 dans son analyse monétaire pour anticiper les tensions inflationnistes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un transfert d'argent de son compte courant vers son Livret A :",
+              "options": [
+                "Réduit M1 sans modifier M2",
+                "Augmente M1 et diminue M3",
+                "Crée immédiatement de la nouvelle monnaie",
+                "Détruit définitivement de la masse monétaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Livret A est dans M2 mais pas dans M1 ; ce transfert fait donc baisser M1 tout en laissant M2 inchangé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la monnaie émise exclusivement par la banque centrale ?",
+              "options": [
+                "La base monétaire ou monnaie centrale (M0)",
+                "La quasi-monnaie commerciale de second rang",
+                "Le portefeuille d'obligations d'entreprises",
+                "Le capital risque institutionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La base monétaire (M0) comprend les billets en circulation et les réserves des banques commerciales auprès de la banque centrale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi les actions ne font-elles pas partie des agrégats monétaires ?",
+              "options": [
+                "Leur valeur fluctue et elles ne constituent pas un moyen de paiement certain",
+                "Elles sont interdites de transaction sur le territoire européen",
+                "Leur émission est strictement réservée au ministère des Finances",
+                "Elles ne rapportent jamais aucun flux financier aux détenteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les actions comportent un risque de perte en capital et doivent être vendues contre monnaie avant toute dépense."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que mesure la vitesse de circulation de l'agrégat M1 ?",
+              "options": [
+                "Le nombre moyen de transactions financées par unité monétaire sur une période",
+                "La rapidité de traitement informatique des chèques bancaires",
+                "Le temps nécessaire pour imprimer un lot de nouveaux billets",
+                "La durée d'acheminement des pièces métalliques par transport de fonds"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vitesse de circulation mesure l'intensité d'utilisation de chaque unité de monnaie pour régler des transactions."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle conséquence a une monétisation croissante de l'économie sur les agrégats ?",
+              "options": [
+                "Une part grandissante des échanges est mesurée et facilitée par la monnaie",
+                "Une baisse obligatoire du PIB nominal mesuré par les comptables nationaux",
+                "L'interdiction progressive de tout emprunt bancaire",
+                "La suppression des comptes à vue dans les banques commerciales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monétisation reflète l'extension des relations marchandes et le recours généralisé aux instruments monétaires."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Monnaie centrale et monnaie commerciale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles composantes forment l'actif du bilan d'une banque centrale moderne ?",
+              "options": [
+                "Les créances sur les banques de second rang (refinancement)",
+                "Les titres publics acquis sur le marché obligataire",
+                "Les dépôts à vue des ménages particuliers ordinaires",
+                "Le montant total des crédits à la consommation accordés aux familles"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La banque centrale détient des créances de refinancement et des titres financiers à son actif, mais pas de dépôts de particuliers."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qui a légalement accès aux comptes en monnaie centrale à la banque centrale ?",
+              "options": [
+                "Les banques commerciales et le Trésor public",
+                "Tous les citoyens résidents de la zone euro",
+                "Seulement les entreprises cotées sur le marché boursier",
+                "Uniquement les institutions financières non bancaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La banque centrale est la banque des banques : seuls les établissements de crédit et l'État possèdent des comptes chez elle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le marché interbancaire ?",
+              "options": [
+                "Le marché où les banques s'échangent des liquidités en monnaie centrale",
+                "La bourse d'échange d'actions entre actionnaires individuels",
+                "Le guichet où les commerçants déposent leurs recettes d'espèces",
+                "Le marché international d'achat et de vente de pétrole brut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur le marché interbancaire, les banques équilibrent quotidiennement leurs trésoreries en s'empruntant de la monnaie centrale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le taux d'intérêt moyen du marché interbancaire au jour le jour en zone euro ?",
+              "options": [
+                "L'€STR (Euro Short-Term Rate)",
+                "Le taux du Livret A",
+                "Le taux de rendement interne",
+                "Le dividende annuel moyen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'€STR mesure le taux d'intérêt moyen des prêts non garantis en monnaie centrale au jour le jour entre banques de la zone euro."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi une banque commerciale a-t-elle besoin de monnaie centrale ?",
+              "options": [
+                "Pour régler ses dettes envers les autres banques et obtenir des billets",
+                "Pour verser les salaires bruts de ses employés de bureau",
+                "Pour fabriquer elle-même ses propres pièces de monnaie",
+                "Pour acheter les ordinateurs de ses agences bancaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La compensation interbancaire et l'approvisionnement des distributeurs de billets exigent de la monnaie centrale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la compensation interbancaire ?",
+              "options": [
+                "Le règlement des soldes nets réciproques entre banques à la fin de la journée",
+                "Le remboursement immédiat des pertes dues aux piratages de carte",
+                "La distribution d'un bonus aux banquiers les plus rentables",
+                "L'annulation annuelle des créances douteuses des particuliers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les banques calculent ce qu'elles se doivent mutuellement et règlent le solde net sur leurs comptes à la banque centrale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que sont les réserves obligatoires ?",
+              "options": [
+                "Une fraction des dépôts que les banques doivent bloquer à la banque centrale",
+                "Un stock de pièces d'or gardé dans chaque agence locale",
+                "Le montant maximal de crédits qu'une banque a le droit d'accorder",
+                "Les impôts payés par anticipation au ministère de l'Économie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les banques doivent obligatoirement détenir un pourcentage de leurs dépôts sous forme de réserves à la banque centrale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si la banque A doit 100 millions d'euros à la banque B et que B doit 80 millions à A :",
+              "options": [
+                "A verse 20 millions en monnaie centrale à B lors de la compensation",
+                "A doit fermer ses portes immédiatement pour insolvabilité",
+                "La banque centrale crée 180 millions de monnaie nouvelle",
+                "Les deux banques fusionnent pour effacer la dette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La compensation nette s'établit à 100 - 80 = 20 millions d'euros transférés du compte de A vers celui de B."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le risque si une banque n'obtient pas le refinancement nécessaire sur le marché ?",
+              "options": [
+                "Une crise de liquidité l'empêchant d'honorer ses engagements immédiats",
+                "Une baisse automatique de son imposition sur les bénéfices",
+                "Une conversion obligatoire de son statut en coopérative agricole",
+                "Une interdiction définitive pour ses clients de déposer des chèques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le manque de liquidités peut précipiter la faillite d'une banque, même si elle est solvable sur le plan patrimonial."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En cas de crise systémique de liquidité, la banque centrale agit comme :",
+              "options": [
+                "Prêteur en dernier ressort",
+                "Actionnaire majoritaire de toutes les entreprises",
+                "Gestionnaire unique des retraites publiques",
+                "Cour de justice pénale financière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rôle de prêteur en dernier ressort consiste à fournir des liquidités d'urgence aux banques solvables mais illiquides."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Les monnaies locales et cryptomonnaies",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques distinguent les cryptomonnaies (cryptoactifs) de la monnaie officielle ?",
+              "options": [
+                "L'absence d'autorité centrale émettrice ou régulatrice",
+                "L'absence de cours légal imposé aux créanciers",
+                "Une garantie intégrale du capital assurée par l'Eurosystème",
+                "Une stabilité absolue de leur pouvoir d'achat dans le temps"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les cryptoactifs reposent sur des registres décentralisés sans garantie d'une banque centrale ni cours légal obligatoire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle technologie sous-tend le fonctionnement décentralisé du Bitcoin ?",
+              "options": [
+                "La blockchain (chaîne de blocs)",
+                "La puce électronique sans contact EMV",
+                "Le protocole de compensation interbancaire SEPA",
+                "Le réseau téléphonique commuté analogique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La blockchain est un registre public, partagé et infalsifiable qui enregistre l'historique de toutes les transactions."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi la plupart des économistes qualifient-ils le Bitcoin de « cryptoactif » plutôt que de vraie monnaie ?",
+              "options": [
+                "Sa forte volatilité l'empêche de servir d'unité de compte stable et de réserve sûre",
+                "Il est impossible de l'échanger sur Internet",
+                "Son code informatique a été détruit par ses créateurs",
+                "Il est exclusivement réservé au paiement des fonctionnaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En raison de fluctuations de cours extrêmes, le Bitcoin ne remplit pas de façon satisfaisante les trois fonctions traditionnelles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est l'objectif premier des monnaies locales complémentaires (comme l'Eusko au Pays basque) ?",
+              "options": [
+                "Dynamiser l'économie locale et favoriser les circuits courts écoresponsables",
+                "Remplacer l'euro comme monnaie de réserve mondiale",
+                "Permettre aux banques de spéculer sur les devises étrangères",
+                "Échapper totalement au paiement des taxes et impôts nationaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les monnaies locales encouragent les échanges de proximité et la solidarité territoriale sans chercher la spéculation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi les monnaies locales sont-elles souvent qualifiées de monnaies fondantes ?",
+              "options": [
+                "Elles perdent de la valeur si elles ne circulent pas rapidement, décourageant la thésaurisation",
+                "Elles sont imprimées sur une cire qui fond au soleil",
+                "Leur taux de conversion baisse chaque jour à minuit",
+                "Elles doivent être brûlées à la fin de chaque mois par la mairie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mécanisme de dépréciation programmée (monnaie fondante de Gesell) incite les agents à dépenser plutôt qu'à épargner."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un « stablecoin » dans l'univers des cryptoactifs ?",
+              "options": [
+                "Un jeton adossé à un actif financier ou une monnaie fiduciaire pour stabiliser son cours",
+                "Une pièce métallique d'or massif frappée par une principauté",
+                "Un compte d'épargne rémunéré à un taux fixe supérieur à dix pour cent",
+                "Une obligation émise conjointement par tous les pays de l'Union européenne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les stablecoins visent à maintenir un cours stable (ex. 1 jeton = 1 dollar) en conservant des réserves d'actifs réels."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel projet développé par l'Eurosystème répond à l'essor des paiements numériques privés ?",
+              "options": [
+                "L'euro numérique de banque centrale",
+                "La privatisation de la frappe des pièces de monnaie",
+                "L'interdiction absolue de tout virement par Internet",
+                "Le retour exclusif à l'étalon-or pour les particuliers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'euro numérique serait une monnaie de banque centrale accessible directement aux citoyens pour leurs paiements quotidiens."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le risque environnemental majeur associé au minage de certaines cryptomonnaies par preuve de travail ?",
+              "options": [
+                "Une consommation d'électricité et une empreinte carbone massives",
+                "Une pénurie mondiale de papier destiné à imprimer les reçus",
+                "Une pollution chimique directe des cours d'eau souterrains",
+                "Une accélération mécanique de la fonte des glaciers polaires par friction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La preuve de travail (Proof-of-Work) mobilise d'immenses puissances de calcul informatique très énergivores."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un commerçant en France a-t-il le droit de refuser un paiement en monnaie locale ou en cryptomonnaie ?",
+              "options": [
+                "Oui, car seules les pièces et billets en euros ont cours légal obligatoire",
+                "Non, toute offre de règlement doit être acceptée sous peine d'amende pénale",
+                "Oui, mais seulement les dimanches et jours fériés nationaux",
+                "Non, dès lors que le montant est strictement inférieur à cinquante euros"
+              ],
+              "correctAnswers": [0],
+              "explanation": "N'ayant pas cours légal, les monnaies alternatives ne s'imposent à personne et reposent sur le consentement mutuel des parties."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel règlement européen a été adopté pour encadrer les marchés de cryptoactifs ?",
+              "options": [
+                "Le règlement MiCA (Markets in Crypto-Assets)",
+                "Le traité de Maastricht sur la monnaie unique",
+                "Le pacte de stabilité et de croissance budgétaire",
+                "La directive sur la libre circulation des travailleurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le règlement MiCA harmonise la régulation des prestataires et émetteurs de cryptoactifs au sein de l'Union européenne."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan et synthèse sur les rôles de la monnaie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles dimensions fondamentales caractérisent la monnaie dans les économies modernes ?",
+              "options": [
+                "Une dimension économique (instrument d'échange et de calcul)",
+                "Une dimension sociale et politique (institution de confiance et souveraineté)",
+                "Une dimension magique indépendante des règles juridiques",
+                "Une dimension exclusivement matérielle liée au poids physique de l'or"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La monnaie est à la fois un instrument économique indispensable et une institution politique fondée sur la confiance collective."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si la monnaie n'était qu'un simple voile selon Jean-Baptiste Say, quel serait l'impact d'une hausse de sa quantité ?",
+              "options": [
+                "Une hausse proportionnelle des prix nominaux sans effet durable sur l'emploi",
+                "Une augmentation permanente de la production industrielle de pointe",
+                "Une disparition définitive de tous les déficits publics de l'État",
+                "Une baisse spectaculaire du temps de travail des salariés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La théorie du voile monétaire stipule que la monnaie n'influence pas la sphère réelle à long terme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour les économistes keynésiens, pourquoi la monnaie peut-elle perturber l'équilibre réel ?",
+              "options": [
+                "Parce qu'elle peut être thésaurisée au lieu d'être immédiatement dépensée",
+                "Parce que son transport physique coûte plus cher que sa valeur faciale",
+                "Parce que les ménages refusent toujours de percevoir des salaires monétaires",
+                "Parce que la banque centrale est incapable de mesurer les prix courants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En conservant des liquidités face à l'incertitude, les agents provoquent un déficit de demande globale qui engendre du chômage."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle forme de monnaie constitue aujourd'hui l'immense majorité des moyens de paiement ?",
+              "options": [
+                "La monnaie scripturale des banques commerciales",
+                "La monnaie fiduciaire en billets imprimés par la banque centrale",
+                "Les pièces divisionnaires métalliques de bronze et de nickel",
+                "Les bons du trésor physique conservés sous forme papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les dépôts bancaires scripturaux représentent plus de 85 à 90 % de la masse monétaire en circulation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'exprime le prix relatif d'un bien X par rapport à un bien Y ?",
+              "options": [
+                "La quantité de bien Y à laquelle il faut renoncer pour obtenir une unité de X",
+                "Le taux de taxe sur la valeur ajoutée applicable au bien X",
+                "Le coût total de transport du bien Y jusqu'à l'usine",
+                "La somme des salaires versés pour concevoir le bien X"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le prix relatif exprime la valeur d'une marchandise mesurée en termes d'une autre marchandise."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment la monnaie facilite-t-elle la spécialisation et la division du travail ?",
+              "options": [
+                "En réduisant les coûts de transaction et en élargissant les marchés possibles",
+                "En interdisant toute concurrence entre les producteurs nationaux",
+                "En fixant un salaire identique pour toutes les professions",
+                "En obligeant les ouvriers à rester dans la même usine toute leur vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans monnaie, la spécialisation serait entravée par la difficulté colossale d'échanger au troc les surplus produits."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel risque court une économie dont les agents perdent confiance dans la monnaie nationale ?",
+              "options": [
+                "La dollarisation ou la fuite vers des devises étrangères et des biens réels",
+                "Une hausse exceptionnelle de l'épargne en livrets bancaires locaux",
+                "Une disparition spontanée de toutes les dettes privées et publiques",
+                "Une baisse spectaculaire des taux de change des pays voisins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand la confiance disparaît, les agents rejettent la monnaie locale et adoptent des devises refuges ou de l'or."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel concept résume l'idée que chacun accepte la monnaie parce qu'il anticipe que les autres l'accepteront ?",
+              "options": [
+                "L'anticipation mimétique ou conventionnelle",
+                "L'individualisme méthodologique strict",
+                "Le calcul actuariel probabiliste individuel",
+                "La maximisation sous contrainte budgétaire pure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La confiance monétaire est une convention autoréalisatrice : l'acceptabilité sociale garantit la valeur d'usage de la monnaie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la conséquence directe de l'introduction de l'euro en 1999 pour les pays membres ?",
+              "options": [
+                "L'abandon de leur souveraineté monétaire nationale au profit de la BCE",
+                "La fusion obligatoire de tous les budgets nationaux en un seul budget fédéral",
+                "La disparition de toute taxe sur les carburants dans toute l'Europe",
+                "L'interdiction pour les banques commerciales d'accorder des crédits immobiliers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pays de la zone euro ont transféré la politique monétaire à la BCE et partagent désormais une même monnaie unique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En conclusion, pourquoi peut-on dire que la monnaie est un bien public ?",
+              "options": [
+                "La stabilité monétaire bénéficie à l'ensemble des agents sans exclusion ni rivalité",
+                "Elle est distribuée gratuitement et sans limite à chaque citoyen à la naissance",
+                "Elle appartient juridiquement aux ministres des finances en titre",
+                "Elle ne peut jamais être utilisée pour financer des achats privés de consommation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un système monétaire stable et digne de confiance est un bien public fondamental conditionnant toute l'activité économique."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Crédit",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le mécanisme de création monétaire par le crédit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propositions caractérisent la formule « les crédits font les dépôts » ?",
+              "options": [
+                "L'octroi d'un crédit crée une nouvelle créance inscrite au compte du client",
+                "La banque n'a pas besoin de détenir préalablement les fonds prêtés",
+                "La banque doit obligatoirement puiser dans un coffre rempli d'or",
+                "Les dépôts préalables déterminent à l'euro près le montant des crédits"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lorsqu'une banque octroie un crédit, elle crédite le compte de l'emprunteur par un simple jeu d'écritures : c'est la création monétaire ex nihilo."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie l'expression « création monétaire ex nihilo » ?",
+              "options": [
+                "La monnaie est créée à partir de rien par simple inscription comptable",
+                "La monnaie est créée uniquement à partir de pièces d'argent fondues",
+                "La monnaie provient d'un don accordé par une organisation caritative",
+                "La monnaie est fabriquée par l'emprunteur lui-même à son domicile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex nihilo signifie que la monnaie créée par la banque n'existait pas avant l'opération de prêt."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment s'enregistre un octroi de crédit dans le bilan de la banque commerciale ?",
+              "options": [
+                "Une créance sur le client à l'actif et un dépôt supplémentaire au passif",
+                "Une dette envers la banque centrale à l'actif et une perte au compte de résultat",
+                "Une diminution de son capital social inscrite au passif du bilan",
+                "Une entrée physique de billets de banque dans son coffre-fort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le crédit apparaît comme une créance à l'actif de la banque et comme un dépôt créditeur au passif (dette de la banque envers son client)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle était la vision erronée traditionnelle dite du « voile » ou des « dépôts font les crédits » ?",
+              "options": [
+                "Croire que les banques ne font que prêter l'épargne préalablement déposée par d'autres clients",
+                "Affirmer que la banque centrale est la seule institution de crédit du pays",
+                "Penser que les taux d'intérêt sont fixés librement par les emprunteurs",
+                "Prétendre que les billets de banque ne perdent jamais leur pouvoir d'achat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vision traditionnelle d'intermédiaire pur ignorait le pouvoir de création monétaire propre aux banques commerciales."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que représente la contrepartie « créances sur l'économie » dans la création monétaire ?",
+              "options": [
+                "L'ensemble des crédits accordés aux ménages et aux entreprises privées",
+                "Le montant total des subventions versées par l'Union européenne",
+                "Les achats d'actions étrangères par des investisseurs institutionnels",
+                "La réserve de devises étrangères conservée par le Trésor public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les crédits aux particuliers et aux entreprises représentent la contrepartie majeure de la masse monétaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lorsqu'une banque achète des titres publics (obligations souveraines) émis par l'État ?",
+              "options": [
+                "Elle crée de la monnaie en créditant le compte du Trésor public",
+                "Elle détruit immédiatement de la monnaie commerciale en circulation",
+                "Elle transfère ses réserves d'or directement aux ministères",
+                "Elle augmente automatiquement le capital social des entreprises cotées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'acquisition de titres publics par le système bancaire constitue une monétisation de la dette et crée de la monnaie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lorsqu'un résident convertit des devises étrangères en euros auprès de sa banque ?",
+              "options": [
+                "La banque acquiert les devises à son actif et crédite le compte du client en euros",
+                "La banque centrale détruit immédiatement un montant équivalent de billets",
+                "La masse monétaire en euros diminue du montant de la transaction",
+                "Le client perd l'intégralité de son pouvoir d'achat initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'achat de devises par le système bancaire est une contrepartie externe qui accroît la masse monétaire en euros."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la création monétaire est-elle indispensable à la croissance économique ?",
+              "options": [
+                "Elle permet d'anticiper la production future en finançant l'investissement avant qu'il rapporte",
+                "Elle élimine toute incertitude quant à la rentabilité commerciale des projets",
+                "Elle oblige les ménages à consommer l'intégralité de leurs revenus mensuels",
+                "Elle garantit que les entreprises n'aient jamais besoin d'embaucher de salariés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le crédit permet aux agents d'investir et de produire aujourd'hui en misant sur les revenus futurs attendus."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans le modèle de Joseph Schumpeter, quel lien existe-t-il entre le banquier et l'entrepreneur innovateur ?",
+              "options": [
+                "Le banquier fournit le pouvoir d'achat nécessaire pour détourner des ressources vers l'innovation",
+                "Le banquier interdit à l'entrepreneur de prendre le moindre risque technologique",
+                "L'entrepreneur finance obligatoirement ses innovations sur ses économies d'enfance",
+                "Le banquier rachète systématiquement tous les brevets déposés par l'entrepreneur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schumpeter qualifie le banquier d'éphore de l'économie : il autorise l'innovation par la création de crédit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le risque majeur d'une création monétaire excessive par rapport aux capacités de production ?",
+              "options": [
+                "Une surchauffe économique et des tensions inflationnistes durables",
+                "Une baisse automatique de tous les salaires réels vers zéro",
+                "Une disparition immédiate de tous les billets de banque en circulation",
+                "Une augmentation imprévue du nombre d'heures de travail par semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si la quantité de monnaie augmente plus vite que l'offre de biens et services disponibles, les prix ont tendance à monter."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Le rôle des banques de second rang et le bilan bancaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments figurent typiquement au passif du bilan d'une banque commerciale ?",
+              "options": [
+                "Les dépôts à vue et d'épargne de ses clients",
+                "Les fonds propres (capital et réserves comptables)",
+                "Les crédits accordés aux ménages pour l'achat de leur logement",
+                "Les immeubles de bureaux possédés par l'agence bancaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le passif détaille l'origine des ressources de la banque : dépôts des clients, emprunts interbancaires et fonds propres."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une banque de second rang ?",
+              "options": [
+                "Une banque commerciale ordinaire ayant pour clients des ménages, entreprises et administrations",
+                "Une filiale de banque qui a fait faillite et fonctionne sous tutelle",
+                "Une institution financière qui n'a pas le droit d'accorder de prêts",
+                "Un bureau de poste habilité uniquement à distribuer le courrier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On appelle banques de second rang les établissements de crédit commerciaux, par opposition à la banque centrale (premier rang)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Où sont enregistrés les crédits octroyés par une banque à ses clients dans son bilan ?",
+              "options": [
+                "À l'actif du bilan, car ils représentent des créances génératrices d'intérêts",
+                "Au passif du bilan, car ils représentent une somme due aux actionnaires",
+                "Dans les annexes comptables sans impact sur la taille du bilan",
+                "Exclusivement au compte de résultat parmi les charges d'exploitation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les crédits sont des actifs pour la banque puisqu'ils constituent des créances qu'elle recouvrera avec des intérêts."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la transformation bancaire ?",
+              "options": [
+                "Transformer des dépôts liquides à court terme en crédits illiquides à long terme",
+                "Changer des euros papier en pièces métalliques divisionnaires",
+                "Remplacer les employés de guichet par des applications smartphone",
+                "Convertir des actions cotées en obligations d'État souveraines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La transformation d'échéances permet de financer des investissements longs grâce à la masse stable des dépôts courts."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel risque spécifique découle directement de la transformation bancaire ?",
+              "options": [
+                "Le risque d'illiquidité en cas de retraits massifs imprévus des déposants",
+                "Le risque d'une hausse permanente du nombre de nouveaux clients",
+                "Le risque d'une interdiction légale de pratiquer des taux d'intérêt",
+                "Le risque d'une surévaluation définitive des pièces de monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si trop de déposants réclament leur argent en même temps, la banque ne peut pas liquider instantanément ses prêts à long terme."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'intermédiation financière bancaire ?",
+              "options": [
+                "L'activité consistant à s'interposer entre agents à capacité de financement et agents à besoin de financement",
+                "La vente aux enchères de biens saisis par la justice après impayé",
+                "L'obligation de faire valider chaque virement par un commissaire aux comptes",
+                "Le courtage en assurances pour les véhicules des entreprises publiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intermédiation bancaire met en relation épargnants et emprunteurs en adaptant les montants, les risques et les durées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment une banque commerciale se rémunère-t-elle principalement sur ses opérations de crédit ?",
+              "options": [
+                "Par la marge d'intérêt nette entre les taux des prêts accordés et le coût de ses ressources",
+                "Par le prélèvement d'une taxe sur la valeur ajoutée sur les salaires versés",
+                "Par la revente au marché noir des données personnelles de ses clients",
+                "Par une subvention annuelle versée automatiquement par la banque centrale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La marge d'intermédiation est la différence entre les intérêts perçus sur les crédits et les intérêts versés sur les dépôts et emprunts."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que désigne le risque de contrepartie (ou risque de crédit) pour une banque ?",
+              "options": [
+                "Le risque que l'emprunteur ne rembourse pas sa dette à l'échéance convenue",
+                "Le risque que la banque centrale refuse d'imprimer de nouveaux billets",
+                "Le risque d'une panne d'électricité affectant les serveurs centraux",
+                "Le risque d'une dépréciation soudaine du cours des devises étrangères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le risque de défaut survient quand un ménage ou une entreprise est incapable d'honorer les mensualités prévues."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les banques demandent-elles des garanties (hypothèques, cautions) lors d'un prêt ?",
+              "options": [
+                "Pour limiter la perte financière subie en cas de défaillance de l'emprunteur",
+                "Pour doubler artificiellement le montant nominal des intérêts perçus",
+                "Pour transférer automatiquement la propriété du bien à l'État",
+                "Pour empêcher le client d'ouvrir un autre compte dans une banque concurrente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En cas de défaut, la garantie permet à la banque de saisir et revendre le bien pour récupérer le capital prêté."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre insolvabilité et illiquidité pour une banque ?",
+              "options": [
+                "L'insolvabilité signifie que les pertes dépassent les fonds propres, l'illiquidité est un manque passager de cash",
+                "L'insolvabilité ne concerne que les banques publiques d'investissement",
+                "L'illiquidité entraîne obligatoirement la liquidation judiciaire immédiate de la banque",
+                "Les deux notions sont rigoureusement synonymes en comptabilité bancaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une banque solvable possède un actif sain supérieur à ses dettes, mais peut manquer de liquidités immédiates en cas de panique."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La destruction monétaire lors du remboursement des crédits",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Que provoque le remboursement du capital d'un crédit bancaire par un emprunteur ?",
+              "options": [
+                "Une diminution de la monnaie scripturale inscrite sur le compte de l'emprunteur",
+                "Une destruction monétaire nette qui contracte la masse monétaire globale",
+                "Une augmentation du montant total des billets en circulation dans le pays",
+                "Une hausse mécanique du déficit budgétaire de l'administration publique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le remboursement du principal éteint la créance de la banque et fait disparaître le dépôt correspondant : la monnaie est détruite."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Lors d'une mensualité de crédit, quelle partie détruit effectivement de la monnaie ?",
+              "options": [
+                "Le remboursement du capital emprunté uniquement",
+                "Le versement des intérêts d'emprunt à la banque",
+                "Le paiement des frais de dossier initiaux",
+                "La souscription de l'assurance décès obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seul le remboursement du capital réduit la masse monétaire ; les intérêts constituent un revenu pour la banque qui le réinjecte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que deviennent les intérêts payés par l'emprunteur à la banque ?",
+              "options": [
+                "Ils rémunèrent les coûts de la banque, paient les salaires et forment son profit",
+                "Ils sont immédiatement brûlés sous forme de billets par la banque centrale",
+                "Ils sont obligatoirement reversés au Trésor public sous forme d'amende",
+                "Ils sont transférés gratuitement aux actionnaires des entreprises clientes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les intérêts couvrent les charges d'exploitation, les risques et la marge bénéficiaire de la banque sans être détruits."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si le flux de nouveaux crédits accordés est supérieur au flux de crédits remboursés :",
+              "options": [
+                "La masse monétaire globale augmente sur la période",
+                "La masse monétaire diminue de façon continue",
+                "Le niveau d'activité économique s'effondre obligatoirement",
+                "La banque centrale doit fermer le marché interbancaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La création nette de monnaie est la différence positive entre les nouveaux crédits accordés et les remboursements effectués."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que se passe-t-il dans l'économie si les agents remboursent plus de dettes qu'ils n'en souscrivent ?",
+              "options": [
+                "On assiste à un désendettement (deleveraging) et une contraction de la masse monétaire",
+                "L'inflation s'accélère très fortement dans tous les secteurs industriels",
+                "La banque centrale est contrainte de doubler ses taux directeurs immédiatement",
+                "Le cours des actions d'entreprises atteint un niveau record historique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le désendettement net détruit plus de monnaie qu'il n'en crée, ce qui peut freiner la demande globale et peser sur la croissance."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment s'appelle la théorie économique d'Irving Fisher décrivant la crise par le désendettement ?",
+              "options": [
+                "La déflation par la dette (debt-deflation)",
+                "La théorie de la préférence pour la liquidité",
+                "Le paradoxe de la tranquillité financière",
+                "L'hypothèse des marchés financiers efficients"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fisher montre qu'en voulant se désendetter en masse, les agents vendent des actifs, font baisser les prix et alourdissent leur dette réelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans le bilan de la banque, que provoque le remboursement complet d'un crédit ?",
+              "options": [
+                "Une diminution simultanée de l'actif (créance) et du passif (dépôt client)",
+                "Une augmentation de l'actif compensée par une baisse équivalente des capitaux propres",
+                "Un transfert obligatoire de la créance vers le bilan d'un concurrent étranger",
+                "Une hausse permanente des liquidités en monnaie centrale détenues à la BCE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bilan de la banque rétrécit : la créance à l'actif s'éteint et le compte de dépôt du client au passif diminue d'autant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la monnaie scripturale moderne est-elle qualifiée de « monnaie-dette » ?",
+              "options": [
+                "Parce qu'elle naît d'une dette bancaire et disparaît avec son remboursement",
+                "Parce que son utilisation entraîne des pénalités fiscales à chaque achat",
+                "Parce qu'elle n'appartient jamais juridiquement à celui qui la dépense",
+                "Parce qu'elle ne peut servir qu'à acheter des biens fabriqués à crédit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'immense majorité de la monnaie en circulation a pour origine un crédit bancaire accordé à un emprunteur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si un emprunteur fait faillite et ne peut plus rembourser son crédit ?",
+              "options": [
+                "La banque enregistre une perte à son actif qui vient réduire ses fonds propres",
+                "La monnaie scripturale créée au départ disparaît instantanément de l'économie",
+                "L'État rembourse immédiatement l'intégralité du prêt sur le budget public",
+                "La banque centrale annule les réserves obligatoires de toutes les banques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monnaie créée lors du prêt reste dans l'économie (dépensée par le failli), mais la banque subit une perte nette sur ses fonds propres."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel effet un gel du crédit (credit crunch) a-t-il sur la dynamique monétaire ?",
+              "options": [
+                "Les remboursements dépassent les nouveaux crédits, provoquant une asphyxie monétaire",
+                "Une vague d'hyperinflation immédiate frappe l'ensemble des marchés financiers",
+                "Le taux d'épargne des ménages tombe spontanément à zéro",
+                "Toutes les entreprises privées deviennent instantanément très profitables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lors d'un credit crunch, la raréfaction des nouveaux prêts combinée aux remboursements contracte la masse monétaire et l'activité."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les limites à la création monétaire et les fuites en monnaie centrale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles contraintes majeures limitent la capacité d'une banque commerciale à créer du crédit ?",
+              "options": [
+                "Les fuites en billets de banque exigées par ses clients au distributeur",
+                "Les fuites vers les banques concurrentes lors des règlements par carte ou virement",
+                "L'obligation légale de demander l'autorisation préalable du président de la République",
+                "L'impossibilité physique de tenir des comptes informatiques dépassant un milliard d'euros"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une banque doit pouvoir faire face aux demandes de billets et aux règlements interbancaires en monnaie centrale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on une fuite en billets pour une banque commerciale ?",
+              "options": [
+                "La part des dépôts retirée sous forme d'espèces par les clients aux guichets",
+                "Le vol physique de coupures de banque lors d'un braquage d'agence",
+                "L'envoi par la poste de chèques non encaissés à l'étranger",
+                "L'achat de papier sécurisé destiné à imprimer les relevés de compte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour fournir des billets à ses clients, la banque doit obligatoirement les acheter à la banque centrale avec de la monnaie centrale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi les transferts vers d'autres établissements constituent-ils une fuite de liquidité ?",
+              "options": [
+                "Ils obligent la banque émettrice à transférer de la monnaie centrale lors de la compensation",
+                "Ils réduisent automatiquement la rentabilité boursière des actions de la banque centrale",
+                "Ils entraînent une amende fiscale systématique prélevée par les douanes",
+                "Ils détruisent définitivement les comptes d'épargne des titulaires du virement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si un emprunteur règle une facture chez un client d'une autre banque, la première doit céder de la monnaie centrale à la seconde."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Plus la part de marché d'une banque commerciale dans le système bancaire est grande :",
+              "options": [
+                "Moins elle subit de fuites interbancaires, car de nombreux paiements restent internes",
+                "Plus elle est obligée d'emprunter de la monnaie centrale sur le marché interbancaire",
+                "Moins elle est rentable en raison des coûts de gestion de ses nombreuses agences",
+                "Plus elle est exposée à une interdiction immédiate d'accorder des prêts immobiliers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une grande banque a une probabilité élevée que le bénéficiaire d'un chèque ou virement soit aussi l'un de ses clients."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel rôle joue le taux des réserves obligatoires imposé par la banque centrale ?",
+              "options": [
+                "Il force les banques à geler une fraction de leurs dépôts sous forme de monnaie centrale",
+                "Il interdit aux ménages modestes de souscrire un crédit à la consommation",
+                "Il fixe le plafond maximal de dividendes distribuables aux actionnaires",
+                "Il détermine le prix de vente des biens immobiliers neufs sur le marché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En modifiant le ratio de réserves obligatoires, la banque centrale module le besoin structurel de monnaie centrale des banques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment le taux de refinancement (taux directeur) influence-t-il la création de crédit ?",
+              "options": [
+                "Un taux plus élevé renchérit le coût de la liquidité pour les banques, qui augmentent leurs taux de prêt",
+                "Un taux plus élevé oblige les banques commerciales à prêter gratuitement aux ménages",
+                "Il n'a aucun impact économique puisque les banques refusent de l'appliquer",
+                "Il supprime toute concurrence entre les différentes enseignes bancaires du pays"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La hausse des taux directeurs accroît le coût d'obtention de la monnaie centrale, freinant l'offre de crédit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi la demande solvable des emprunteurs est-elle une limite naturelle au crédit ?",
+              "options": [
+                "La banque ne prête qu'aux agents capables d'apporter des garanties et de rembourser leur dette",
+                "La loi interdit aux ménages ayant des enfants de souscrire un emprunt à la banque",
+                "Les entreprises refusent systématiquement de s'endetter pour investir dans l'outil productif",
+                "Les salaires doivent être intégralement épargnés pour valider un dossier de prêt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour éviter les défauts de paiement, la banque sélectionne les projets et exige un taux d'endettement raisonnable."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le ratio de solvabilité bancaire (ratio Cooke puis ratio McDonough / Bâle III) ?",
+              "options": [
+                "Un pourcentage minimal de fonds propres requis en fonction du risque des crédits accordés",
+                "Le ratio entre le nombre de guichets bancaires et le nombre total d'habitants",
+                "La part obligatoire de prêts accordés aux entreprises du secteur de l'armement",
+                "Le montant maximal d'intérêts qu'une banque a le droit d'encaisser chaque trimestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les règles prudentielles imposent aux banques de détenir un coussin de fonds propres proportionné aux risques de leurs actifs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que décrit le multiplicateur de crédit dans la théorie monétaire classique ?",
+              "options": [
+                "La quantité maximale de monnaie créée à partir d'un montant donné de base monétaire",
+                "Le nombre de fois qu'un même billet de banque change de propriétaire par jour",
+                "Le taux de croissance annuel du chiffre d'affaires des banques d'affaires",
+                "La formule mathématique servant à calculer les impôts sur les plus-values"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le multiplicateur montre que la base monétaire limite mécaniquement le volume potentiel de dépôts et de crédits."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans l'approche du diviseur de crédit (monnaie endogène), comment s'enchaîne le processus ?",
+              "options": [
+                "Les banques accordent d'abord les crédits, puis se procurent la monnaie centrale nécessaire",
+                "La banque centrale distribue d'abord des billets avant que les banques ne puissent prêter",
+                "Les ménages décident unilatéralement du montant des réserves des banques",
+                "L'État fixe à l'avance le volume exact des crédits autorisés chaque semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon la thèse de la monnaie endogène, les crédits sont initiés par la demande des agents et la banque centrale refinance ensuite le système."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Financement interne et financement externe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles ressources composent l'autofinancement d'une entreprise ?",
+              "options": [
+                "Les bénéfices non distribués mis en réserve",
+                "Les dotations aux amortissements comptables",
+                "Les crédits bancaires à moyen terme souscrits auprès d'une agence",
+                "Les fonds collectés lors d'une émission d'obligations sur le marché"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'autofinancement est constitué de l'épargne brute de l'entreprise : bénéfices conservés et amortissements pour renouveler le capital."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le financement interne d'un agent économique ?",
+              "options": [
+                "Financer ses dépenses d'investissement ou de consommation grâce à sa propre épargne",
+                "Emprunter auprès d'une banque appartenant à la même famille que l'entrepreneur",
+                "Faire appel aux subventions versées par la collectivité territoriale locale",
+                "Vendre des actions nouvelles à des fonds de pension internationaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le financement interne repose exclusivement sur les capacités financières propres générées par l'agent sans endettement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le taux d'autofinancement d'une entreprise ?",
+              "options": [
+                "(Épargne brute / Formation brute de capital fixe) x 100",
+                "(Dettes totales / Chiffre d'affaires annuel) x 100",
+                "(Dividendes versés / Bénéfice net d'exploitation) x 100",
+                "(Masse salariale brute / Valeur ajoutée) x 100"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le taux d'autofinancement mesure la part des investissements matériels (FBCF) financée par l'épargne propre de l'entreprise."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si le taux d'autofinancement d'une entreprise est de 125 % :",
+              "options": [
+                "Ses ressources propres dépassent son investissement, elle a une capacité de financement",
+                "Elle est obligée d'emprunter 25 % du montant de son investissement à la banque",
+                "Elle se trouve en situation de faillite imminente pour surendettement",
+                "Ses actionnaires doivent immédiatement réinjecter des capitaux frais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un taux supérieur à 100 % indique que l'entreprise dégage un surplus financier qu'elle peut prêter ou placer."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est l'avantage principal de l'autofinancement pour une entreprise ?",
+              "options": [
+                "Il préserve son indépendance financière et évite le paiement d'intérêts d'emprunt",
+                "Il supprime totalement le risque technologique lié aux nouveaux produits",
+                "Il garantit une exonération fiscale intégrale sur toutes ses activités",
+                "Il oblige les concurrents à baisser leurs propres prix de vente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "S'autofinancer permet de garder la maîtrise de sa gestion sans dépendre du bon vouloir des créanciers."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la limite majeure d'un recours exclusif à l'autofinancement ?",
+              "options": [
+                "Il peut freiner la croissance si les bénéfices passés sont insuffisants pour saisir les opportunités",
+                "Il entraîne automatiquement la démission des membres du conseil d'administration",
+                "Il interdit à l'entreprise d'embaucher des ingénieurs diplômés d'université",
+                "Il force la direction à distribuer l'intégralité du chiffre d'affaires en salaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une entreprise qui ne compte que sur ses profits peut rater des investissements stratégiques faute de liquidités suffisantes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le financement externe d'un agent économique ?",
+              "options": [
+                "Faire appel aux ressources d'autres agents économiques (crédit ou marchés financiers)",
+                "Acheter des matières premières importées depuis un pays étranger hors d'Europe",
+                "Ouvrir une succursale commerciale dans une grande ville voisine",
+                "Payer ses fournisseurs avec un délai de règlement supérieur à trente jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le financement externe mobilise des capitaux extérieurs apportés par des banques ou des investisseurs de marché."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Parmi les secteurs institutionnels en France, lequel est traditionnellement en capacité de financement ?",
+              "options": [
+                "Le secteur des ménages",
+                "Le secteur des administrations publiques",
+                "Le secteur des sociétés non financières",
+                "Le secteur des banques centrales étrangères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Globalement, les ménages épargnent plus qu'ils n'investissent dans leur logement, finançant les besoins des firmes et de l'État."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel secteur institutionnel est presque continuellement en besoin de financement en France depuis 1975 ?",
+              "options": [
+                "Les administrations publiques (État, sécurité sociale, collectivités)",
+                "Les ménages pris dans leur globalité nationale",
+                "Les institutions sans but lucratif au service des ménages",
+                "Les compagnies d'assurance-vie et fonds de pension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les administrations publiques présentent un déficit budgétaire récurrent et doivent emprunter pour financer leurs investissements et charges."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'indique un compte financier national où le besoin de financement global dépasse la capacité nationale ?",
+              "options": [
+                "La nation dans son ensemble doit faire appel à l'épargne du reste du monde (déficit extérieur)",
+                "Le pays prête massivement des liquidités à tous les États partenaires",
+                "La monnaie nationale s'apprécie obligatoirement de 50 % contre toutes devises",
+                "Le taux de chômage national tombe automatiquement à un niveau nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si l'épargne nationale ne suffit pas à financer l'investissement du pays, celui-ci doit emprunter auprès du reste du monde."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Financement direct et financement intermédié",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques distinguent le financement direct selon John Gurley et Edward Shaw ?",
+              "options": [
+                "L'emprunteur émet directement des titres sur les marchés financiers",
+                "Les agents à besoin et capacité de financement se rencontrent sans intermédiaire bancaire créateur de monnaie",
+                "La banque commerciale supporte seule l'intégralité du risque d'impayé",
+                "Les transactions se font obligatoirement en pièces de monnaie d'argent"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dans la finance directe, l'échange de capitaux s'opère sur les marchés de capitaux via l'achat d'actions ou d'obligations."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En quoi consiste l'économie d'endettement décrite par John Hicks ?",
+              "options": [
+                "Un système financier dominé par les banques commerciales et le crédit intermédié",
+                "Une économie où les ménages refusent d'acheter des logements à crédit",
+                "Un modèle où l'État interdit formellement toute création de dette publique",
+                "Un pays dont la monnaie n'est acceptée nulle part à l'étranger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une économie d'endettement, le financement de l'économie repose sur le crédit bancaire et le refinancement de la banque centrale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une « économie de marchés financiers » ?",
+              "options": [
+                "Un système où les entreprises et l'État se financent principalement par émission de titres sur les marchés",
+                "Une économie où le commerce des denrées agricoles est entièrement subventionné",
+                "Une nation où les supermarchés remplacent tous les petits commerces de quartier",
+                "Un pays qui a supprimé toutes ses banques pour n'utiliser que des lingots d'or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une économie de marchés financiers, la finance directe prend le pas sur le crédit bancaire traditionnel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle politique des « 3 D » d'Henri Bourguinat a transformé le système financier français dans les années 1980 ?",
+              "options": [
+                "Déréglementation, Décloisonnement, Désintermédiation",
+                "Dévaluation, Déflation, Délocalisation",
+                "Démantèlement, Décentralisation, Dépollution",
+                "Détaxation, Débureaucratisation, Digitalisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les « 3 D » résument la libéralisation financière : fin des contrôles stricts, ouverture des marchés et accès direct aux capitaux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le décloisonnement des marchés financiers ?",
+              "options": [
+                "L'effacement des frontières entre marchés nationaux et entre marchés court et long terme",
+                "La destruction physique des cloisons séparant les bureaux des banquiers",
+                "L'obligation de regrouper toutes les banques sous un même toit",
+                "La suppression des impôts sur les plus-values immobilières des particuliers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le décloisonnement permet aux capitaux de circuler librement entre compartiments autrefois étanches (marché monétaire, obligataire, devises)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la « désintermédiation » financière ?",
+              "options": [
+                "Le recours croissant des grandes entreprises aux marchés de capitaux plutôt qu'aux crédits bancaires",
+                "L'interdiction légale pour les banques d'embaucher de nouveaux conseillers",
+                "La fermeture définitive de tous les guichets de banque de quartier",
+                "La disparition complète de tout intermédiaire boursier agréé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La désintermédiation désigne la perte du monopole bancaire au profit du financement direct par titres de dette négociables."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi parle-t-on d'une ré-intermédiation des banques modernes malgré la désintermédiation apparente ?",
+              "options": [
+                "Les banques gèrent les portefeuilles de titres, conseillent les émissions et achètent elles-mêmes des obligations",
+                "Les banques ont racheté tous les appartements des centres-villes",
+                "Les banques obligent chaque salarié à posséder un compte dans dix banques distinctes",
+                "Les banques fabriquent les ordinateurs utilisés sur les places boursières"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les banques jouent un rôle clé sur les marchés en structurant les émissions de titres et en gérant des fonds d'investissement (OPCVM)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel avantage présente le marché financier pour une très grande entreprise multinationale ?",
+              "options": [
+                "Lever d'importants capitaux directement auprès d'investisseurs mondiaux à des taux compétitifs",
+                "Échapper à l'obligation de publier ses comptes financiers audités annuels",
+                "Bénéficier d'une immunité totale contre tout risque de faillite commerciale",
+                "Supprimer tous les droits de vote de ses actionnaires historiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les marchés permettent de mobiliser des sommes massives dépassant souvent la capacité de prêt d'une seule banque."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les Petites et Moyennes Entreprises (PME) restent-elles très dépendantes du crédit bancaire ?",
+              "options": [
+                "L'accès direct aux marchés de titres est trop coûteux et complexe en raison de leur taille et notoriété modeste",
+                "La législation interdit rigoureusement aux PME de posséder un compte bancaire",
+                "Les investisseurs boursiers préfèrent donner de l'argent gratuitement aux PME",
+                "Les banques accordent toujours des crédits à taux zéro à toutes les PME sans condition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les coûts fixes d'émission et les exigences d'information financière excluent la plupart des PME du marché obligataire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que représente le taux d'intermédiation financière au sens large ?",
+              "options": [
+                "La part des financements assurée par les institutions financières (crédits et achats de titres)",
+                "Le pourcentage de distributeurs de billets installés dans les zones rurales",
+                "La part des salaires consacrée au remboursement de l'assurance automobile",
+                "Le ratio entre le nombre de courtiers et le nombre d'actionnaires individuels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le taux au sens large intègre tous les financements dans lesquels une institution financière intervient, révélant leur rôle persistant."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Les instruments du marché financier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles différences fondamentales distinguent une action d'une obligation ?",
+              "options": [
+                "L'action est un titre de propriété alors que l'obligation est un titre de créance",
+                "L'action rapporte un dividende variable alors que l'obligation rapporte un intérêt fixé à l'avance",
+                "L'action confère obligatoirement le statut de fonctionnaire d'État à son acquéreur",
+                "L'obligation donne un droit de vote aux assemblées générales d'actionnaires de la société"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'actionnaire est copropriétaire de l'entreprise (dividendes, droit de vote), tandis que l'obligataire est un simple créancier (intérêts, remboursement)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le marché financier où sont émis les titres neufs pour la première fois ?",
+              "options": [
+                "Le marché primaire (le marché du neuf)",
+                "Le marché secondaire (le marché de l'occasion)",
+                "Le marché interbancaire des devises",
+                "Le marché noir des biens d'équipement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur le marché primaire, les entreprises ou les États vendent de nouveaux titres pour lever des capitaux frais."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le rôle essentiel du marché secondaire (la bourse de valeurs) ?",
+              "options": [
+                "Assurer la liquidité des titres en permettant aux détenteurs de les revendre avant l'échéance",
+                "Distribuer gratuitement des actions aux ménages sans épargne préalable",
+                "Garantir que le cours des actions ne baisse jamais en dessous de sa valeur d'émission",
+                "Créer de la monnaie scripturale par simple arrêté préfectoral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans marché secondaire pour revendre facilement leurs titres, les épargnants refuseraient de prêter à long terme sur le marché primaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment se nomme la rémunération périodique versée à l'actionnaire lorsque l'entreprise fait des bénéfices ?",
+              "options": [
+                "Le dividende",
+                "Le coupon d'obligation",
+                "Le taux directeur",
+                "La plus-value d'acquisition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dividende est la part du bénéfice net distribuée aux actionnaires sur décision de l'assemblée générale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le versement d'intérêt périodique perçu par le détenteur d'une obligation ?",
+              "options": [
+                "Le coupon",
+                "Le dividende d'action",
+                "L'agio bancaire",
+                "Le salaire différé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le coupon d'obligation correspond au versement régulier des intérêts convenus lors de l'émission de l'emprunt obligataire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que désigne la capitalisation boursière d'une société cotée ?",
+              "options": [
+                "Le cours d'une action multiplié par le nombre total d'actions en circulation",
+                "Le montant total des salaires bruts versés pendant l'exercice annuel",
+                "La valeur nette comptable des machines inscrites au bilan",
+                "Le montant maximal des crédits bancaires accordés à ses clients"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La capitalisation boursière mesure la valeur de l'entreprise attribuée par le marché boursier à un instant donné."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En cas de faillite et de liquidation d'une entreprise, quel investisseur est remboursé en priorité ?",
+              "options": [
+                "Le créancier obligataire est remboursé avant l'actionnaire",
+                "L'actionnaire est remboursé intégralement avant tous les créanciers",
+                "Les deux sont remboursés exactement au même rang mathématique",
+                "Aucun des deux, les fonds sont obligatoirement confisqués par la mairie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'actionnaire supporte le risque ultime du capital : il n'est remboursé qu'après désintéressement complet de tous les créanciers."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que sont les obligations assimilables du Trésor (OAT) en France ?",
+              "options": [
+                "Des titres d'emprunt à moyen et long terme émis par l'État français",
+                "Des actions réservées exclusivement aux membres du Conseil d'État",
+                "Des livrets bancaires défiscalisés distribués aux étudiants",
+                "Des primes d'assurance versées aux victimes d'accidents de travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les OAT sont le principal instrument de la dette publique à long terme émis par l'Agence France Trésor."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle relation existe-t-il entre le risque perçu d'un emprunteur et le taux d'intérêt de son obligation ?",
+              "options": [
+                "Plus l'emprunteur est jugé risqué, plus le taux d'intérêt exigé (prime de risque) est élevé",
+                "Plus l'emprunteur est risqué, plus le taux d'intérêt est bas pour l'aider à s'en sortir",
+                "Le taux est strictement identique pour tous les emprunteurs de la planète",
+                "Le taux d'intérêt devient obligatoirement nul dès que le risque d'impayé dépasse dix pour cent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les créanciers exigent une prime de risque (spread) additionnelle pour compenser la probabilité accrue de défaut de paiement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel rôle jouent les agences de notation financière (Standard & Poor's, Moody's, Fitch) ?",
+              "options": [
+                "Évaluer la solvabilité des émetteurs de titres et leur attribuer une note de crédit",
+                "Fixer unilatéralement le prix de vente des biens manufacturés dans les magasins",
+                "Collecter les impôts fonciers pour le compte des trésoreries municipales",
+                "Imprimer les billets de banque pour les pays en voie de développement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les agences attribuent des notes (de AAA aux catégories spéculatives) pour informer les investisseurs sur le risque de crédit."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Le rôle de la banque centrale et les taux directeurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les trois principaux taux directeurs pilotés par la Banque centrale européenne ?",
+              "options": [
+                "Le taux des opérations principales de refinancement (MRO)",
+                "Le taux de la facilité de dépôt",
+                "Le taux du Livret A pour les ménages français",
+                "Le taux d'imposition sur les bénéfices des entreprises"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'Eurosystème pilote le taux de refinancement, le taux de facilité de dépôt et le taux de facilité de prêt marginal."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal assigné à la Banque centrale européenne par le traité de Maastricht ?",
+              "options": [
+                "Le maintien de la stabilité des prix dans la zone euro",
+                "La maximisation du taux de croissance du PIB nominal",
+                "L'annulation annuelle des dettes de tous les États membres",
+                "Le maintien d'un taux de change fixe avec la livre sterling"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mandat prioritaire de la BCE est la stabilité des prix, définie comme une inflation à 2 % à moyen terme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que permet le taux de la facilité de dépôt de la BCE ?",
+              "options": [
+                "Rémunérer les liquidités excédentaires que les banques commerciales placent au jour le jour à la banque centrale",
+                "Fixer le taux d'intérêt des emprunts immobiliers des ménages à revenus modestes",
+                "Déterminer le montant des aides sociales versées par les départements",
+                "Assurer les dépôts bancaires des clients en cas d'attaque informatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le taux de dépôt rémunère les surplus de liquidités des banques et constitue le plancher des taux d'intérêt interbancaires."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que fixe le taux de la facilité de prêt marginal ?",
+              "options": [
+                "Le coût d'un emprunt d'urgence de monnaie centrale au jour le jour consenti à une banque",
+                "Le prix de vente des lingots d'or stockés dans les coffres de la banque centrale",
+                "Le salaire maximal des directeurs généraux des banques de réseau",
+                "Le montant maximal des retraits d'espèces autorisés par semaine au distributeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La facilité de prêt marginal offre des liquidités d'urgence aux banques et constitue le plafond du corridor des taux directeurs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie l'indépendance de la Banque centrale européenne ?",
+              "options": [
+                "Elle ne peut recevoir aucune consigne ni instruction des gouvernements nationaux ou des institutions européennes",
+                "Elle refuse de communiquer ses statistiques de prévision économique au public",
+                "Elle est libre de changer de monnaie officielle chaque début d'année",
+                "Elle ne paie aucun impôt sur ses achats de fournitures administratives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'indépendance politique protège la banque centrale des pressions électorales et du risque de monétisation de la dette publique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une politique monétaire restrictive (ou de resserrement) ?",
+              "options": [
+                "Augmenter les taux directeurs pour freiner le crédit et lutter contre l'inflation",
+                "Distribuer des billets de banque supplémentaires à tous les commerçants du pays",
+                "Baisser les taux d'intérêt pour relancer à tout prix les investissements industriels",
+                "Obliger les banques commerciales à prêter sans exiger aucun apport personnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En élevant ses taux directeurs, la banque centrale renchérit le coût du crédit, ce qui ralentit la demande et calme la hausse des prix."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une politique monétaire expansionniste (ou accommodante) ?",
+              "options": [
+                "Baisser les taux directeurs pour stimuler l'emprunt, l'investissement et la croissance",
+                "Interdire aux banques commerciales de détenir des réserves à la banque centrale",
+                "Augmenter les taxes sur les transactions financières pour remplir le Trésor public",
+                "Fermer les frontières aux capitaux pour empêcher toute importation de biens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une baisse des taux directeurs incite les banques à prêter davantage et à des taux plus bas, stimulant ainsi l'activité économique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les achats massifs d'actifs (titres publics) par la banque centrale lors de crises majeures ?",
+              "options": [
+                "L'assouplissement quantitatif (Quantitative Easing ou QE)",
+                "Le resserrement macroprudentiel unilatéral",
+                "La titrisation obligatoire des créances douteuses",
+                "Le plafonnement administratif du prix des carburants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le QE est une mesure non conventionnelle visant à injecter directement des liquidités massives et à faire baisser les taux longs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la Réserve fédérale des États-Unis (Fed) a-t-elle un mandat dit « duel » différent de celui de la BCE ?",
+              "options": [
+                "Elle vise à la fois la stabilité des prix et le niveau maximal d'emploi durable",
+                "Elle gère à la fois le budget fédéral de la Maison Blanche et les impôts locaux",
+                "Elle s'occupe à égalité des affaires monétaires et du commerce militaire extérieur",
+                "Elle doit assurer la rentabilité boursière de toutes les banques privées américaines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Fed a la double mission légale d'assurer le plein emploi et de contenir l'inflation à un niveau modéré."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le « guidage prospectif » (forward guidance) de la banque centrale ?",
+              "options": [
+                "La communication explicite sur la trajectoire future anticipée de ses taux directeurs",
+                "Le guidage GPS des camions de transport de fonds blindés entre les succursales",
+                "L'obligation faite aux salariés de choisir leur profession dès l'âge de dix ans",
+                "Le classement annuel des banques privées selon leur niveau d'éthique commerciale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La forward guidance est un outil non conventionnel guidant les anticipations des acteurs de marché sur la politique future."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Les canaux de transmission de la politique monétaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les principaux canaux de transmission des décisions de la banque centrale à l'économie réelle ?",
+              "options": [
+                "Le canal des taux d'intérêt (coût du crédit)",
+                "Le canal du prix des actifs et des effets de richesse",
+                "Le canal météorologique des catastrophes naturelles",
+                "Le canal de la taxation obligatoire des salaires minimaux"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La politique monétaire se transmet par les taux d'intérêt, le crédit bancaire, le cours des actifs financiers et le taux de change."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment fonctionne le canal du taux d'intérêt en cas de baisse des taux directeurs ?",
+              "options": [
+                "Les taux des crédits bancaires baissent, ce qui stimule la consommation et l'investissement",
+                "Les entreprises arrêtent immédiatement d'acheter des machines de production",
+                "Les ménages augmentent fortement leur épargne de précaution en livrets",
+                "Les banques commerciales cessent totalement de prêter aux ménages modestes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des crédits moins chers réduisent le coût du financement, encourageant les ménages et firmes à emprunter pour dépenser."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En quoi consiste l'effet de richesse (canal du prix des actifs) ?",
+              "options": [
+                "La hausse de la valeur de l'immobilier et des actions fait que les ménages se sentent plus riches et consomment plus",
+                "L'État distribue des lingots d'or à chaque foyer à la fin de l'année civile",
+                "Les salariés les plus pauvres sont automatiquement exonérés de tout loyer",
+                "Les entreprises technologiques reversent l'intégralité de leurs profits à des associations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La baisse des taux valorise les portefeuilles financiers et le logement, incitant les propriétaires à dépenser davantage."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment le canal du taux de change agit-il lors d'une baisse des taux d'intérêt de la zone euro ?",
+              "options": [
+                "L'euro a tendance à se déprécier, ce qui renforce la compétitivité-prix des exportations européennes",
+                "L'euro devient instantanément la monnaie la plus chère du monde entier",
+                "Les exportations s'effondrent immédiatement faute de clients intéressés",
+                "Les douanes européennes bloquent toutes les entrées de conteneurs de marchandises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des taux plus faibles entraînent des sorties de capitaux et une baisse de l'euro, rendant les produits européens moins chers pour les étrangers."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le revers d'une dépréciation de la monnaie consécutive à une politique monétaire très accommodante ?",
+              "options": [
+                "Une inflation importée due à la hausse du prix des produits libellés en devises étrangères (pétrole)",
+                "Une baisse immédiate du pouvoir d'achat des touristes étrangers visitant l'Europe",
+                "L'interdiction de commercer avec les pays membres de l'Organisation mondiale du commerce",
+                "La suppression des cotisations retraite pour l'ensemble des travailleurs nationaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque l'euro baisse, les importations énergétiques et les composants achetés en dollars coûtent plus cher en euros."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment fonctionne le canal du crédit bancaire (large credit channel) ?",
+              "options": [
+                "La liquidité abondante assouplit les critères d'octroi des prêts et accroît le volume de crédit offert",
+                "Les banques refusent systématiquement les dossiers des grandes entreprises industrielles",
+                "Les emprunteurs sont obligés de rembourser leurs prêts en deux jours ouvrés",
+                "La banque centrale sélectionne elle-même chaque emprunteur dans chaque agence locale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le canal du crédit bancaire montre comment la politique monétaire modifie la disposition des banques à prêter et leur tolérance au risque."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le délai habituel estimé pour qu'une variation de taux directeur se transmette pleinement à l'inflation ?",
+              "options": [
+                "Entre 12 et 24 mois (délais longs et variables)",
+                "Moins de 24 heures après la conférence de presse",
+                "Strictement 10 ans sans aucune exception",
+                "Le temps exact nécessaire pour imprimer le journal officiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La transmission monétaire est lente et graduelle en raison de la rigidité des contrats, des cycles d'investissement et des comportements."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie le canal des anticipations de la politique monétaire ?",
+              "options": [
+                "La crédibilité de la banque centrale ancre les anticipations d'inflation des agents autour de la cible de 2 %",
+                "Les banques centrales publient des horoscopes économiques quotidiens",
+                "Les entreprises anticipent toujours une faillite prochaine de leurs banques",
+                "Les salariés réclament le doublement de leur rémunération dès qu'un ministre parle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si les agents croient que la banque centrale jugulera l'inflation, ils modèrent leurs revendications de salaires et hausses de prix."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le paradoxe de la crédibilité des banques centrales ?",
+              "options": [
+                "Moins la banque centrale a besoin d'agir, plus ses déclarations verbales suffisent à stabiliser les marchés",
+                "Les agents économiques font plus confiance aux criminels qu'aux gouverneurs de banque",
+                "Une banque centrale crédible est systématiquement dissoute par décision de justice",
+                "Les banques les plus fiables sont celles qui refusent de publier leurs bilans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une banque centrale dont la réputation est totale guide les marchés par sa simple parole sans devoir modifier ses taux brutalement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En cas de choc d'offre négatif (stagflation avec hausse des prix de l'énergie et récession) :",
+              "options": [
+                "La banque centrale fait face à un dilemme entre combattre l'inflation et soutenir l'activité",
+                "La banque centrale n'a aucune règle à respecter et peut fermer ses portes",
+                "La politique monétaire est capable d'extraire du pétrole du sous-sol en quantité infinie",
+                "L'inflation disparaît spontanément sans qu'aucune mesure ne soit prise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Augmenter les taux jugule l'inflation mais aggrave le chômage, tandis que baisser les taux soutient l'activité mais nourrit l'inflation."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Instabilité financière et régulation prudentielle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels types de structures de financement d'entreprises Hyman Minsky distingue-t-il dans son modèle d'instabilité ?",
+              "options": [
+                "Le financement prudent (hedge finance)",
+                "Le financement spéculatif (speculative finance)",
+                "Le financement automatique par tirage au sort",
+                "Le financement magique par création d'or"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Minsky identifie trois étapes : la finance prudente (couvre intérêts et capital), spéculative (couvre les intérêts) et Ponzi (couvre ni l'un ni l'autre)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle thèse célèbre Hyman Minsky résume-t-il par « la stabilité engendre l'instabilité » ?",
+              "options": [
+                "L'hypothèse d'instabilité financière",
+                "La théorie de la concurrence pure et parfaite",
+                "La loi d'Okun sur la croissance et l'emploi",
+                "Le paradoxe d'Anderson sur la mobilité sociale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En période de prospérité durable, les agents sous-estiment les risques, s'endettent excessivement et préparent la future crise financière."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une structure de financement de type « Ponzi » selon Minsky ?",
+              "options": [
+                "L'agent ne peut rembourser ni le capital ni les intérêts sans contracter de nouvelles dettes ou vendre des actifs",
+                "L'agent finance tous ses projets grâce à des subventions de l'État non remboursables",
+                "L'entreprise détient plus de liquidités que le montant total de ses dettes brutes",
+                "La banque centrale rachète l'ensemble des titres émis par une entreprise publique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la finance Ponzi, l'emprunteur parie uniquement sur la hausse continue du cours de ses actifs pour ne pas faire faillite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une bulle spéculative sur un marché financier ou immobilier ?",
+              "options": [
+                "Un écart cumulatif et auto-entretenu entre le prix de marché d'un actif et sa valeur fondamentale",
+                "Une baisse brutale et soudaine de l'ensemble des salaires versés dans le pays",
+                "Une pénurie d'acheteurs provoquée par une taxe excessive sur les transactions",
+                "L'apparition de fausses pièces de monnaie en chocolat dans les agences bancaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une bulle se gonfle par mimétisme : chacun achète non pour la valeur d'usage, mais dans l'espoir de revendre plus cher à court terme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le « moment Minsky » lors d'un cycle financier ?",
+              "options": [
+                "Le basculement soudain où les dettes deviennent insoutenables, déclenchant des ventes paniques d'actifs",
+                "Le moment où le président de la banque centrale prend sa retraite officielle",
+                "Le vote de la loi de finances au parlement à la fin du mois de décembre",
+                "L'ouverture quotidienne de la bourse de New York à neuf heures et demie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le moment Minsky marque l'effondrement brutal de la confiance et le passage de l'euphorie au krach par liquidation des actifs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'aléa moral (moral hazard) dans le secteur bancaire ?",
+              "options": [
+                "La tendance des banques à prendre des risques excessifs sachant qu'elles seront renflouées par l'État si la situation tourne mal",
+                "Le refus moral des banquiers de financer des projets de développement durable",
+                "L'obligation légale de donner des conseils d'épargne gratuits aux enfants scolarisés",
+                "La démission volontaire des directeurs de banque pour des motifs religieux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le principe « too big to fail » encourage la prise de risque imprudente si les banques anticipent un sauvetage public garanti."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la qualification d'établissement financier « systémique » (too big to fail) ?",
+              "options": [
+                "Sa faillite risquerait de contaminer l'ensemble du système financier et de paralyser l'économie réelle",
+                "Elle a son siège social obligatoirement situé dans la capitale européenne",
+                "Elle emploie plus de la moitié des fonctionnaires du ministère des Finances",
+                "Elle est juridiquement interdite de posséder des ordinateurs portables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une banque systémique est tellement interconnectée que sa défaillance menacerait la stabilité financière globale du pays ou du monde."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel comité international basé en Suisse élabore les normes prudentielles pour les banques ?",
+              "options": [
+                "Le Comité de Bâle sur le contrôle bancaire",
+                "Le tribunal arbitral du sport de Lausanne",
+                "L'Organisation mondiale de la santé à Genève",
+                "Le Conseil de sécurité des Nations unies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Comité de Bâle réunit les gouverneurs de banques centrales et définit les ratios prudentiels (Bâle I, II, III)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle innovation majeure les accords de Bâle III ont-ils introduite après la crise de 2008 ?",
+              "options": [
+                "Le renforcement des exigences de fonds propres de qualité (Core Tier 1) et des ratios de liquidité (LCR)",
+                "L'interdiction absolue de tout prêt immobilier aux ménages âgés de moins de cinquante ans",
+                "La nationalisation intégrale de toutes les banques commerciales de la planète",
+                "La suppression des distributeurs automatiques de billets de banque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bâle III exige plus de fonds propres durs pour absorber les chocs et impose des réserves de liquidité à 30 jours (ratio LCR)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En quoi consiste la régulation macroprudentielle moderne ?",
+              "options": [
+                "Prévenir les risques pesant sur le système financier dans son ensemble et freiner les cycles de crédit excessifs",
+                "Vérifier individuellement la déclaration de revenus de chaque client d'agence",
+                "Contrôler le respect des normes d'hygiène dans les cafétérias des banques privées",
+                "Fixer le taux de change de l'euro par décret présidentiel chaque premier du mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La politique macroprudentielle utilise des outils globaux (coussins contracycliques, plafonds d'endettement) pour limiter le risque systémique."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

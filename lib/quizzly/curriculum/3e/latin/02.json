@@ -1,0 +1,2743 @@
+{
+  "id": "3e-latin-02",
+  "year": "3e",
+  "subject": "latin",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La domus et la famille",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent père et mère ?",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "pater" },
+                { "id": "b", "text": "magister" },
+                { "id": "c", "text": "mater" },
+                { "id": "d", "text": "servus" }
+              ],
+              "correctAnswers": ["a", "c"],
+              "explanation": "Pater et mater ; magister = maître, servus = esclave."
+            },
+            {
+              "id": "q2",
+              "question": "Frère en latin :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "soror" },
+                { "id": "b", "text": "frater" },
+                { "id": "c", "text": "filius" },
+                { "id": "d", "text": "avus" }
+              ],
+              "correctAnswers": ["b"],
+              "explanation": "Frater = frère."
+            },
+            {
+              "id": "q3",
+              "question": "Le paterfamilias est",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "le chef de la famille" },
+                { "id": "b", "text": "un gladiateur" },
+                { "id": "c", "text": "un esclave" },
+                { "id": "d", "text": "un prêtre grec" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Autorité sur la domus."
+            },
+            {
+              "id": "q4",
+              "question": "Filius cum sorore ludit :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "lit" },
+                { "id": "b", "text": "joue" },
+                { "id": "c", "text": "mange" },
+                { "id": "d", "text": "combat" }
+              ],
+              "correctAnswers": ["b"],
+              "explanation": "Ludit = joue."
+            },
+            {
+              "id": "q5",
+              "question": "Maison / foyer :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "ludus" },
+                { "id": "b", "text": "domus" },
+                { "id": "c", "text": "via" },
+                { "id": "d", "text": "pontus" }
+              ],
+              "correctAnswers": ["b"],
+              "explanation": "Domus = maison."
+            },
+            {
+              "id": "q6",
+              "question": "Mater bona : bona s'accorde avec",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "mater" },
+                { "id": "b", "text": "verbe" },
+                { "id": "c", "text": "toujours neutre" },
+                { "id": "d", "text": "accusatif seul" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Féminin nominatif."
+            },
+            {
+              "id": "q7",
+              "question": "1re conj. présent : amo, amas,",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "amat" },
+                { "id": "b", "text": "amant" },
+                { "id": "c", "text": "amavi" },
+                { "id": "d", "text": "amem" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "3e pers. sg. amat."
+            },
+            {
+              "id": "q8",
+              "question": "Avia vetusta :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "grand-mère vieille" },
+                { "id": "b", "text": "grand-père jeune" },
+                { "id": "c", "text": "mère belle" },
+                { "id": "d", "text": "sœur grande" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Avia + vetusta (fém.)."
+            },
+            {
+              "id": "q9",
+              "question": "Servi in culina laborant : lieu",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "cuisine" },
+                { "id": "b", "text": "école" },
+                { "id": "c", "text": "temple" },
+                { "id": "d", "text": "mer" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Culina = cuisine."
+            },
+            {
+              "id": "q10",
+              "question": "Accord correct :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "puella parva" },
+                { "id": "b", "text": "puella parvus" },
+                { "id": "c", "text": "puer parva" },
+                { "id": "d", "text": "soror parvus" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Féminin parva."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Enfants et parents",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Mots féminins :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "filius" },
+                { "id": "b", "text": "filia" },
+                { "id": "c", "text": "nepos" },
+                { "id": "d", "text": "soror" }
+              ],
+              "correctAnswers": ["b", "d"],
+              "explanation": "Filia, soror."
+            },
+            {
+              "id": "q2",
+              "question": "Parentes liberos amant :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "parents aiment enfants" },
+                { "id": "b", "text": "enfants punissent" },
+                { "id": "c", "text": "esclaves fuient" },
+                { "id": "d", "text": "maître dort" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Amant = aiment."
+            },
+            {
+              "id": "q3",
+              "question": "Gén. sg. pater :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "patris" },
+                { "id": "b", "text": "patri" },
+                { "id": "c", "text": "patrem" },
+                { "id": "d", "text": "patrum" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Patris."
+            },
+            {
+              "id": "q4",
+              "question": "Frater meus altus :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "frère grand" },
+                { "id": "b", "text": "sœur petite" },
+                { "id": "c", "text": "père vieux" },
+                { "id": "d", "text": "fils jeune" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Altus = grand."
+            },
+            {
+              "id": "q5",
+              "question": "Ma sœur :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "soror mea" },
+                { "id": "b", "text": "soror meus" },
+                { "id": "c", "text": "frater mea" },
+                { "id": "d", "text": "filia meus" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Mea fém."
+            },
+            {
+              "id": "q6",
+              "question": "J'ai (habeo) :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "habeo" },
+                { "id": "b", "text": "habes" },
+                { "id": "c", "text": "habet" },
+                { "id": "d", "text": "habent" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "1re pers. habeo."
+            },
+            {
+              "id": "q7",
+              "question": "Picturam pulchram : pulchram avec",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "picturam" },
+                { "id": "b", "text": "puella seulement" },
+                { "id": "c", "text": "verbe" },
+                { "id": "d", "text": "rien" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Acc. fém."
+            },
+            {
+              "id": "q8",
+              "question": "Infans =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "très jeune enfant" },
+                { "id": "b", "text": "sénateur" },
+                { "id": "c", "text": "soldat" },
+                { "id": "d", "text": "magister" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Petit enfant."
+            },
+            {
+              "id": "q9",
+              "question": "Je vois :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "video" },
+                { "id": "b", "text": "vides" },
+                { "id": "c", "text": "videt" },
+                { "id": "d", "text": "vidi" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Présent video."
+            },
+            {
+              "id": "q10",
+              "question": "Pater filium laudat : COD",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "filium" },
+                { "id": "b", "text": "pater" },
+                { "id": "c", "text": "laudat" },
+                { "id": "d", "text": "null" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Accusatif filium."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le ludus",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Vocabulaire école :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "ludus" },
+                { "id": "b", "text": "discipulus" },
+                { "id": "c", "text": "thermae" },
+                { "id": "d", "text": "navis" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Ludus, discipulus."
+            },
+            {
+              "id": "q2",
+              "question": "Au ludus on apprend",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "lire écrire compter" },
+                { "id": "b", "text": "naviguer seul" },
+                { "id": "c", "text": "faire la loi" },
+                { "id": "d", "text": "combattre en arène" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Base litterae."
+            },
+            {
+              "id": "q3",
+              "question": "Tabulas scriptas habent :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "tablettes écrites" },
+                { "id": "b", "text": "épées" },
+                { "id": "c", "text": "chevaux" },
+                { "id": "d", "text": "statues" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Tabula + scriptas."
+            },
+            {
+              "id": "q4",
+              "question": "Ils lisent (legere) :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "legunt" },
+                { "id": "b", "text": "legit" },
+                { "id": "c", "text": "legi" },
+                { "id": "d", "text": "legent" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "3e pl. legunt."
+            },
+            {
+              "id": "q5",
+              "question": "Magister est",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "maître d'école" },
+                { "id": "b", "text": "cuisinier seul" },
+                { "id": "c", "text": "consul toujours" },
+                { "id": "d", "text": "esclave de ferme" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Magister = maître."
+            },
+            {
+              "id": "q6",
+              "question": "Magister discipulos interrogat :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "interroge élèves" },
+                { "id": "b", "text": "dort" },
+                { "id": "c", "text": "nage" },
+                { "id": "d", "text": "vend" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Interrogat présent."
+            },
+            {
+              "id": "q7",
+              "question": "Stilus sert à",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "écrire" },
+                { "id": "b", "text": "coudre" },
+                { "id": "c", "text": "pêcher" },
+                { "id": "d", "text": "voter" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Stylet sur cire."
+            },
+            {
+              "id": "q8",
+              "question": "Discipulus diligens : diligens =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "appliqué" },
+                { "id": "b", "text": "paresseux" },
+                { "id": "c", "text": "furieux" },
+                { "id": "d", "text": "muet" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Consciencieux."
+            },
+            {
+              "id": "q9",
+              "question": "Pueri non respondent :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "ne répondent pas" },
+                { "id": "b", "text": "répondent vite" },
+                { "id": "c", "text": "chantent" },
+                { "id": "d", "text": "partent" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Non + présent."
+            },
+            {
+              "id": "q10",
+              "question": "Liberi (nom) peut signifier",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "enfants" },
+                { "id": "b", "text": "livres seulement" },
+                { "id": "c", "text": "esclaves" },
+                { "id": "d", "text": "soldats" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Libéri = enfants libres."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Matin à l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Formes au présent :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "scribit" },
+                { "id": "b", "text": "legunt" },
+                { "id": "c", "text": "amavit" },
+                { "id": "d", "text": "portaverunt" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Scribit, legunt présent ; autres passés."
+            },
+            {
+              "id": "q2",
+              "question": "Mane discipuli veniunt : mane =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "le matin" },
+                { "id": "b", "text": "le soir" },
+                { "id": "c", "text": "hier" },
+                { "id": "d", "text": "demain" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Mane = matin."
+            },
+            {
+              "id": "q3",
+              "question": "Puella litteras scribit :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "fille écrit lettres" },
+                { "id": "b", "text": "fille lit livres" },
+                { "id": "c", "text": "garçon court" },
+                { "id": "d", "text": "maître dort" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Scribit = écrit."
+            },
+            {
+              "id": "q4",
+              "question": "Magna schola / magnus ludus : magn- s'accorde",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "avec le nom" },
+                { "id": "b", "text": "jamais" },
+                { "id": "c", "text": "avec verbe" },
+                { "id": "d", "text": "toujours neutre" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Genre et cas du nom."
+            },
+            {
+              "id": "q5",
+              "question": "Nos (we) au présent amamus : am- est",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "1re conj." },
+                { "id": "b", "text": "2e conj. seulement" },
+                { "id": "c", "text": "4e décl." },
+                { "id": "d", "text": "participe" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Amo 1re conj."
+            },
+            {
+              "id": "q6",
+              "question": "Sedent in subselliis :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "s'asseyent sur bancs" },
+                { "id": "b", "text": "courent au forum" },
+                { "id": "c", "text": "nagent" },
+                { "id": "d", "text": "dorment chez eux" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Sedere = s'asseoir."
+            },
+            {
+              "id": "q7",
+              "question": "Multa verba discunt : multa =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "beaucoup de mots (neutre pl.)" },
+                { "id": "b", "text": "un mot" },
+                { "id": "c", "text": "aucun mot" },
+                { "id": "d", "text": "verbe" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Multa acc. pl. neutre."
+            },
+            {
+              "id": "q8",
+              "question": "Clamant magistrum : magistrum =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "acc. maître" },
+                { "id": "b", "text": "nom. maître" },
+                { "id": "c", "text": "gén. maître" },
+                { "id": "d", "text": "abl. maître" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Appeler quelqu'un → acc."
+            },
+            {
+              "id": "q9",
+              "question": "Taciti student : taciti =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "silencieux (masc. pl.)" },
+                { "id": "b", "text": "bruyants" },
+                { "id": "c", "text": "fatigués" },
+                { "id": "d", "text": "heureux fém." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Adj. masc. pl. nom."
+            },
+            {
+              "id": "q10",
+              "question": "Post meridiem redeunt :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "reviennent l'après-midi" },
+                { "id": "b", "text": "partent la nuit" },
+                { "id": "c", "text": "restent à Rome année entière" },
+                { "id": "d", "text": "vont au circus matin" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Redeunt = reviennent."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Loisirs romains",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Loisirs d'enfants possibles :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "ludere pilam" },
+                { "id": "b", "text": "ludere talis" },
+                { "id": "c", "text": "condere legem" },
+                { "id": "d", "text": "ducere exercitum" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Balle et osselets ; loi/armée = adultes."
+            },
+            {
+              "id": "q2",
+              "question": "Ludere =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "jouer" },
+                { "id": "b", "text": "lire" },
+                { "id": "c", "text": "punir" },
+                { "id": "d", "text": "dormir" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Verbe loisir."
+            },
+            {
+              "id": "q3",
+              "question": "Pueri in horto currunt :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "courent au jardin" },
+                { "id": "b", "text": "lisent au ludus" },
+                { "id": "c", "text": "cuisinent" },
+                { "id": "d", "text": "naviguent" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Currere = courir."
+            },
+            {
+              "id": "q4",
+              "question": "Pila parva est rotunda : rotunda avec",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "pila" },
+                { "id": "b", "text": "pueri" },
+                { "id": "c", "text": "est" },
+                { "id": "d", "text": "parva" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Pila fém. → rotunda."
+            },
+            {
+              "id": "q5",
+              "question": "Cum amicis ludunt : cum + abl. =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "avec" },
+                { "id": "b", "text": "sans" },
+                { "id": "c", "text": "contre toujours" },
+                { "id": "d", "text": "pour de" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Cum amicis = avec amis."
+            },
+            {
+              "id": "q6",
+              "question": "Vespere parentes redeunt : vespere =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "le soir" },
+                { "id": "b", "text": "à l'aube" },
+                { "id": "c", "text": "à midi exact" },
+                { "id": "d", "text": "jamais" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Vespere = soir."
+            },
+            {
+              "id": "q7",
+              "question": "Puella carmen cantat :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "chante un chant" },
+                { "id": "b", "text": "mange pain" },
+                { "id": "c", "text": "bat soldat" },
+                { "id": "d", "text": "ferme porte seule" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Cantare = chanter."
+            },
+            {
+              "id": "q8",
+              "question": "Laetus laeta laetum : laetus garçon au nom.",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "puer laetus" },
+                { "id": "b", "text": "puer laeta" },
+                { "id": "c", "text": "puella laetus" },
+                { "id": "d", "text": "puella laetum" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Masc. laetus."
+            },
+            {
+              "id": "q9",
+              "question": "Spectant aves in caelo :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "regardent oiseaux ciel" },
+                { "id": "b", "text": "entendent musique" },
+                { "id": "c", "text": "écrivent poème" },
+                { "id": "d", "text": "dorment" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Spectare = regarder."
+            },
+            {
+              "id": "q10",
+              "question": "Otium est",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "temps libre / loisir" },
+                { "id": "b", "text": "guerre" },
+                { "id": "c", "text": "travail forcé esclave" },
+                { "id": "d", "text": "vote" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Otium = loisir."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Présent 1re conjugaison",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Verbes 1re conj. :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "amo" },
+                { "id": "b", "text": "doceo" },
+                { "id": "c", "text": "paro" },
+                { "id": "d", "text": "video" }
+              ],
+              "correctAnswers": ["a", "c"],
+              "explanation": "Amo, paro en -are ; doceo -ere, video -ere."
+            },
+            {
+              "id": "q2",
+              "question": "Tu aimes (amo) :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "amas" },
+                { "id": "b", "text": "amat" },
+                { "id": "c", "text": "amant" },
+                { "id": "d", "text": "amamus" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "2e pers. amas."
+            },
+            {
+              "id": "q3",
+              "question": "Narramus fabulam : narramus =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "nous racontons" },
+                { "id": "b", "text": "tu racontes" },
+                { "id": "c", "text": "ils racontent" },
+                { "id": "d", "text": "je racontai" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "1re pl. présent."
+            },
+            {
+              "id": "q4",
+              "question": "Paro cenam : paro =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "je prépare" },
+                { "id": "b", "text": "je punis" },
+                { "id": "c", "text": "je vois" },
+                { "id": "d", "text": "j'ai eu" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Parare = préparer."
+            },
+            {
+              "id": "q5",
+              "question": "Laudant parentes filios : laudant =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "ils louent" },
+                { "id": "b", "text": "nous louons" },
+                { "id": "c", "text": "je loue" },
+                { "id": "d", "text": "tu loues" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "3e pl."
+            },
+            {
+              "id": "q6",
+              "question": "Cenam bonam parat : bonam avec",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "cenam" },
+                { "id": "b", "text": "parat" },
+                { "id": "c", "text": "servus" },
+                { "id": "d", "text": "bonam seule" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Acc. fém. cenam."
+            },
+            {
+              "id": "q7",
+              "question": "Optime (adv.) souvent =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "très bien" },
+                { "id": "b", "text": "mal" },
+                { "id": "c", "text": "hier" },
+                { "id": "d", "text": "demain" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Superlatif adverbe."
+            },
+            {
+              "id": "q8",
+              "question": "Puellae rosas amant : sujet",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "puellae" },
+                { "id": "b", "text": "rosas" },
+                { "id": "c", "text": "amant" },
+                { "id": "d", "text": "rosas amant" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Nom. pl. fém."
+            },
+            {
+              "id": "q9",
+              "question": "Non laboro hodie : laboro =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "je travaille" },
+                { "id": "b", "text": "je joue" },
+                { "id": "c", "text": "je dors" },
+                { "id": "d", "text": "je vends" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Laborare = travailler."
+            },
+            {
+              "id": "q10",
+              "question": "I portant -o en 1re pers. sg. :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "amo paro" },
+                { "id": "b", "text": "sum es" },
+                { "id": "c", "text": "vidi" },
+                { "id": "d", "text": "eram" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Terminaison -o."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Présent 2e et 3e conj.",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Présent indicatif :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "habes" },
+                { "id": "b", "text": "habet" },
+                { "id": "c", "text": "habuisti" },
+                { "id": "d", "text": "vident" }
+              ],
+              "correctAnswers": ["a", "d"],
+              "explanation": "Habes, vident présent ; habuisti passé."
+            },
+            {
+              "id": "q2",
+              "question": "Habeo librum : habeo =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "j'ai" },
+                { "id": "b", "text": "tu as" },
+                { "id": "c", "text": "ils ont" },
+                { "id": "d", "text": "j'avais" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "2e conj. -eo."
+            },
+            {
+              "id": "q3",
+              "question": "Videmus magistrum :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "nous voyons le maître" },
+                { "id": "b", "text": "tu vois" },
+                { "id": "c", "text": "il vit seul" },
+                { "id": "d", "text": "vous aviez vu" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Videmus 1re pl."
+            },
+            {
+              "id": "q4",
+              "question": "Docet pueros : docet =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "il/elle enseigne" },
+                { "id": "b", "text": "nous enseignons" },
+                { "id": "c", "text": "j'ai enseigné" },
+                { "id": "d", "text": "enseignez impératif" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "2e conj. docere."
+            },
+            {
+              "id": "q5",
+              "question": "Scribitis nomina : scribitis =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "vous écrivez" },
+                { "id": "b", "text": "ils écrivent" },
+                { "id": "c", "text": "j'écris" },
+                { "id": "d", "text": "tu écris" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "2e pl. 3e conj."
+            },
+            {
+              "id": "q6",
+              "question": "Agit puer bonus : bonus avec",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "puer" },
+                { "id": "b", "text": "agit" },
+                { "id": "c", "text": "bonus toujours fém." },
+                { "id": "d", "text": "accusatif seul" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Masc. nom. bonus."
+            },
+            {
+              "id": "q7",
+              "question": "Faciunt multa : faciunt =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "ils font" },
+                { "id": "b", "text": "nous faisons" },
+                { "id": "c", "text": "je fais" },
+                { "id": "d", "text": "fais (imp.)" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "3e conj. facere."
+            },
+            {
+              "id": "q8",
+              "question": "Dicit verum : dicit =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "il dit" },
+                { "id": "b", "text": "nous disons" },
+                { "id": "c", "text": "disais" },
+                { "id": "d", "text": "dira" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Dicere 3e conj."
+            },
+            {
+              "id": "q9",
+              "question": "Potes legere : potes =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "tu peux" },
+                { "id": "b", "text": "je peux" },
+                { "id": "c", "text": "ils peuvent" },
+                { "id": "d", "text": "pouvoir infinitif" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Posse irrégulier."
+            },
+            {
+              "id": "q10",
+              "question": "Regit domum pater : regit =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "dirige / gouverne" },
+                { "id": "b", "text": "détruit" },
+                { "id": "c", "text": "oublie" },
+                { "id": "d", "text": "achète toujours" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Regere = diriger."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Adjectifs -us -a -um",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Trois genres même adjectif :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "bonus bona bonum" },
+                { "id": "b", "text": "parvus parva parvum" },
+                { "id": "c", "text": "pater mater" },
+                { "id": "d", "text": "servus serva" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Bonus et parvus en 3 formes."
+            },
+            {
+              "id": "q2",
+              "question": "Puella parva : parva =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "petite fém." },
+                { "id": "b", "text": "petit masc." },
+                { "id": "c", "text": "grand fém." },
+                { "id": "d", "text": "neutre seul" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Accord fém."
+            },
+            {
+              "id": "q3",
+              "question": "Templum sacrum : sacrum =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "neutre sacré" },
+                { "id": "b", "text": "fém. sacrée" },
+                { "id": "c", "text": "masc. toujours" },
+                { "id": "d", "text": "verbe" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Templum neut. → sacrum."
+            },
+            {
+              "id": "q4",
+              "question": "Multi discipuli : multi =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "masc. pl. nom." },
+                { "id": "b", "text": "fém. pl." },
+                { "id": "c", "text": "neutre sg." },
+                { "id": "d", "text": "acc. fém." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Plusieurs élèves masc."
+            },
+            {
+              "id": "q5",
+              "question": "Nova toga : nova avec",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "toga fém." },
+                { "id": "b", "text": "puer" },
+                { "id": "c", "text": "verbe" },
+                { "id": "d", "text": "toujours masc." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Toga fém. → nova."
+            },
+            {
+              "id": "q6",
+              "question": "Liber liber (adj.) masc. =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "libre" },
+                { "id": "b", "text": "livre" },
+                { "id": "c", "text": "enfant toujours" },
+                { "id": "d", "text": "esclave" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Adjectif liber libre."
+            },
+            {
+              "id": "q7",
+              "question": "Magnam domum vident : magnam",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "acc. fém. grande" },
+                { "id": "b", "text": "nom. masc." },
+                { "id": "c", "text": "neutre pl." },
+                { "id": "d", "text": "verbe" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Domum fém. acc."
+            },
+            {
+              "id": "q8",
+              "question": "Romanus puer : Romanus =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "romain masc." },
+                { "id": "b", "text": "romaine fém." },
+                { "id": "c", "text": "Rome ville" },
+                { "id": "d", "text": "empire seul" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Adj. ethnique masc."
+            },
+            {
+              "id": "q9",
+              "question": "Malum pomum : malum =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "mauvais neutre" },
+                { "id": "b", "text": "bon fém." },
+                { "id": "c", "text": "grand masc." },
+                { "id": "d", "text": "petit verbe" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Pomum neut. → malum."
+            },
+            {
+              "id": "q10",
+              "question": "Clara voce clamat : clara avec",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "voce fém. abl." },
+                { "id": "b", "text": "clamat verbe" },
+                { "id": "c", "text": "masc. nom." },
+                { "id": "d", "text": "neutre acc." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Ablatif voce fém."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Accorder l'adjectif",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Accords corrects :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "filius parvus" },
+                { "id": "b", "text": "filia parva" },
+                { "id": "c", "text": "filia parvus" },
+                { "id": "d", "text": "templum parvum" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Filius parvus et filia parva ; filia parvus est incorrect."
+            },
+            {
+              "id": "q2",
+              "question": "Soror mea iuvenis est : iuvenis ici",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "adjectif jeune fém." },
+                { "id": "b", "text": "toujours verbe" },
+                { "id": "c", "text": "accusatif" },
+                { "id": "d", "text": "pluriel" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Iuvenis jeune avec soror."
+            },
+            {
+              "id": "q3",
+              "question": "Duae sorores bonae : bonae =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "fém. pl. nom." },
+                { "id": "b", "text": "masc. sg." },
+                { "id": "c", "text": "neutre" },
+                { "id": "d", "text": "acc. masc." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Sorores fém. pl."
+            },
+            {
+              "id": "q4",
+              "question": "Pater iratus est : iratus",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "masc. nom. en colère" },
+                { "id": "b", "text": "fém. irata seulement" },
+                { "id": "c", "text": "verbe" },
+                { "id": "d", "text": "adv." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Pater masc. → iratus."
+            },
+            {
+              "id": "q5",
+              "question": "Mater irata filium vocat : irata",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "fém. nom. mère en colère" },
+                { "id": "b", "text": "masc." },
+                { "id": "c", "text": "neutre pl." },
+                { "id": "d", "text": "infinitif" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Mater → irata."
+            },
+            {
+              "id": "q6",
+              "question": "Servi fessi laborant : fessi =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "fatigués masc. pl." },
+                { "id": "b", "text": "fatiguée fém." },
+                { "id": "c", "text": "joyeux" },
+                { "id": "d", "text": "verbe" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Servi masc. pl. nom."
+            },
+            {
+              "id": "q7",
+              "question": "Longa via : longa",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "fém. longue" },
+                { "id": "b", "text": "masc. longus" },
+                { "id": "c", "text": "neutre longum" },
+                { "id": "d", "text": "verbe" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Via fém."
+            },
+            {
+              "id": "q8",
+              "question": "Altior puer : altior =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "comparatif plus grand" },
+                { "id": "b", "text": "superlatif" },
+                { "id": "c", "text": "négation" },
+                { "id": "d", "text": "pronom" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Comparatif de altus."
+            },
+            {
+              "id": "q9",
+              "question": "Rana parva in stagno : parva avec",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "rana fém." },
+                { "id": "b", "text": "stagno" },
+                { "id": "c", "text": "in" },
+                { "id": "d", "text": "verbe caché" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Rana fém. nominatif."
+            },
+            {
+              "id": "q10",
+              "question": "Omnes liberi laeti : laeti",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "masc. pl. joyeux" },
+                { "id": "b", "text": "fém. laetae seulement ici" },
+                { "id": "c", "text": "neutre" },
+                { "id": "d", "text": "singulier" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Libéri masc. pl. → laeti."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision famille école loisirs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Mots du quotidien :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "domus" },
+                { "id": "b", "text": "ludus" },
+                { "id": "c", "text": "senatus consultum seul" },
+                { "id": "d", "text": "otium" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Domus, ludus ; sénatus moins quotidien enfant."
+            },
+            {
+              "id": "q2",
+              "question": "Hodie pueri ad ludum eunt :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "aujourd'hui vont à l'école" },
+                { "id": "b", "text": "hier restent" },
+                { "id": "c", "text": "demain dorment" },
+                { "id": "d", "text": "jamais lisent" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Hodie = aujourd'hui ; eunt = vont."
+            },
+            {
+              "id": "q3",
+              "question": "Fessus puer cenam edit : fessus",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "garçon fatigué masc." },
+                { "id": "b", "text": "fille" },
+                { "id": "c", "text": "pluriel" },
+                { "id": "d", "text": "verbe" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Puer masc. → fessus."
+            },
+            {
+              "id": "q4",
+              "question": "Puellae cum matre ambulant :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "filles marchent avec mère" },
+                { "id": "b", "text": "pères courent" },
+                { "id": "c", "text": "maîtres punissent" },
+                { "id": "d", "text": "esclaves vendent" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Ambulare = marcher."
+            },
+            {
+              "id": "q5",
+              "question": "Laetus domum redit : laetus =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "heureux" },
+                { "id": "b", "text": "triste" },
+                { "id": "c", "text": "sale" },
+                { "id": "d", "text": "lent" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Laetus = joyeux."
+            },
+            {
+              "id": "q6",
+              "question": "Magister bonus discipulos amat :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "bon maître aime élèves" },
+                { "id": "b", "text": "élèves punissent maître" },
+                { "id": "c", "text": "parents vendent école" },
+                { "id": "d", "text": "enfants nagent" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Bonus avec magister masc."
+            },
+            {
+              "id": "q7",
+              "question": "Vespere ludunt : vespere",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "le soir ils jouent" },
+                { "id": "b", "text": "matin" },
+                { "id": "c", "text": "hiver" },
+                { "id": "d", "text": "guerre" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Loisir du soir."
+            },
+            {
+              "id": "q8",
+              "question": "Multae fabulae : multae =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "fém. pl. nom. beaucoup" },
+                { "id": "b", "text": "masc. sg." },
+                { "id": "c", "text": "neutre" },
+                { "id": "d", "text": "verbe" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Fabulae fém. pl."
+            },
+            {
+              "id": "q9",
+              "question": "Serva domi manet : domi =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "à la maison" },
+                { "id": "b", "text": "au forum toujours" },
+                { "id": "c", "text": "à l'école" },
+                { "id": "d", "text": "en mer" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Locatif domi."
+            },
+            {
+              "id": "q10",
+              "question": "Familia Romana habitat in domo : habitat =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "habite (présent)" },
+                { "id": "b", "text": "habitait imparfait" },
+                { "id": "c", "text": "habitera futur" },
+                { "id": "d", "text": "impératif" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Présent 3e sg."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Décrire une personne",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Adjectifs description :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "altus" },
+                { "id": "b", "text": "parvus" },
+                { "id": "c", "text": "lego" },
+                { "id": "d", "text": "curro" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Altus, parvus adj. ; lego, curro verbes."
+            },
+            {
+              "id": "q2",
+              "question": "Puella alta est :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "fille est grande" },
+                { "id": "b", "text": "garçon petit" },
+                { "id": "c", "text": "maison vieille" },
+                { "id": "d", "text": "chien rapide" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Alta fém. avec puella."
+            },
+            {
+              "id": "q3",
+              "question": "Puer fortis : fortis =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "fort (masc.)" },
+                { "id": "b", "text": "faible" },
+                { "id": "c", "text": "verbe" },
+                { "id": "d", "text": "adv. toujours" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Adjectif en -is."
+            },
+            {
+              "id": "q4",
+              "question": "Capillos nigros habet : nigros",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "acc. pl. masc. noirs" },
+                { "id": "b", "text": "nom. fém." },
+                { "id": "c", "text": "neutre sg." },
+                { "id": "d", "text": "verbe" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Capillos masc. acc. pl."
+            },
+            {
+              "id": "q5",
+              "question": "Oculi caerulei sunt :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "yeux bleus" },
+                { "id": "b", "text": "cheveux noirs" },
+                { "id": "c", "text": "mains petites" },
+                { "id": "d", "text": "pieds lents" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Caerulei masc. pl."
+            },
+            {
+              "id": "q6",
+              "question": "Avus senex est : senex =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "vieux homme" },
+                { "id": "b", "text": "jeune fille" },
+                { "id": "c", "text": "livre" },
+                { "id": "d", "text": "route" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Senex = vieux."
+            },
+            {
+              "id": "q7",
+              "question": "Soror mea est pulchra : pulchra",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "belle fém." },
+                { "id": "b", "text": "beau masc." },
+                { "id": "c", "text": "petit neutre" },
+                { "id": "d", "text": "verbe" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Accord soror."
+            },
+            {
+              "id": "q8",
+              "question": "Magister strictus : strictus =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "sévère" },
+                { "id": "b", "text": "gentil seulement adv." },
+                { "id": "c", "text": "enfant" },
+                { "id": "d", "text": "maison" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Strictus sévère."
+            },
+            {
+              "id": "q9",
+              "question": "Infans plorat : plorat =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "pleure" },
+                { "id": "b", "text": "rit toujours" },
+                { "id": "c", "text": "court" },
+                { "id": "d", "text": "lit passé" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Plorare = pleurer."
+            },
+            {
+              "id": "q10",
+              "question": "Elegans toga : elegans",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "s'accorde avec toga fém." },
+                { "id": "b", "text": "masc. toujours" },
+                { "id": "c", "text": "verbe" },
+                { "id": "d", "text": "neutre seul" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Elegans fém. elegans."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Couleurs et taille",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Couleurs latines :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "niger nigra nigrum" },
+                { "id": "b", "text": "albus alba album" },
+                { "id": "c", "text": "video" },
+                { "id": "d", "text": "sum" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Niger et albus ; video, sum verbes."
+            },
+            {
+              "id": "q2",
+              "question": "Toga alba : alba =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "blanche fém." },
+                { "id": "b", "text": "noire" },
+                { "id": "c", "text": "verte masc." },
+                { "id": "d", "text": "verbe" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Alba avec toga."
+            },
+            {
+              "id": "q3",
+              "question": "Murex ruber : ruber =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "rouge masc." },
+                { "id": "b", "text": "bleu fém." },
+                { "id": "c", "text": "gris neutre" },
+                { "id": "d", "text": "adv." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Ruber rouge."
+            },
+            {
+              "id": "q4",
+              "question": "Parvi pueri : parvi =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "petits masc. pl." },
+                { "id": "b", "text": "grandes fém." },
+                { "id": "c", "text": "verbe" },
+                { "id": "d", "text": "acc. fém. sg." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Pueri masc. pl."
+            },
+            {
+              "id": "q5",
+              "question": "Stagnum magnum : magnum",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "neutre grand" },
+                { "id": "b", "text": "fém. magna seulement" },
+                { "id": "c", "text": "verbe" },
+                { "id": "d", "text": "pluriel masc." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Stagnum neut."
+            },
+            {
+              "id": "q6",
+              "question": "Vir longus : longus =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "long homme masc." },
+                { "id": "b", "text": "courte femme" },
+                { "id": "c", "text": "petit enfant" },
+                { "id": "d", "text": "verbe courir" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Longus masc."
+            },
+            {
+              "id": "q7",
+              "question": "Flores flavi : flavi =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "jaunes masc. pl." },
+                { "id": "b", "text": "noirs" },
+                { "id": "c", "text": "verbe" },
+                { "id": "d", "text": "singulier fém." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Flavus jaune."
+            },
+            {
+              "id": "q8",
+              "question": "Minima puella : minima =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "superlatif plus petite fém." },
+                { "id": "b", "text": "comparatif seul masc." },
+                { "id": "c", "text": "verbe" },
+                { "id": "d", "text": "adv. toujours" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Minimum superlatif."
+            },
+            {
+              "id": "q9",
+              "question": "Umbra longa : longa avec",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "umbra fém." },
+                { "id": "b", "text": "puer" },
+                { "id": "c", "text": "verbe" },
+                { "id": "d", "text": "neutre" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Umbra fém."
+            },
+            {
+              "id": "q10",
+              "question": "Equus celer : celer =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "rapide masc." },
+                { "id": "b", "text": "lent fém." },
+                { "id": "c", "text": "petit neutre" },
+                { "id": "d", "text": "verbe" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Celer rapide."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Raconter sa journée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Mots de temps présent :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "hodie" },
+                { "id": "b", "text": "nunc" },
+                { "id": "c", "text": "heri" },
+                { "id": "d", "text": "cras" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Hodie, nunc = maintenant/aujourd'hui ; heri/cras autres jours."
+            },
+            {
+              "id": "q2",
+              "question": "Mané surgimus : surgimus =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "nous levons" },
+                { "id": "b", "text": "ils dorment" },
+                { "id": "c", "text": "tu manges" },
+                { "id": "d", "text": "j'ai levé" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "1re pl. surgere."
+            },
+            {
+              "id": "q3",
+              "question": "Deinde cenam sumimus : deinde =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "ensuite" },
+                { "id": "b", "text": "avant" },
+                { "id": "c", "text": "jamais" },
+                { "id": "d", "text": "hier" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Deinde = puis."
+            },
+            {
+              "id": "q4",
+              "question": "Post cenam ambulo : ambulo =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "je me promène" },
+                { "id": "b", "text": "nous courons" },
+                { "id": "c", "text": "ils lisent" },
+                { "id": "d", "text": "vous dormez" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "1re sg. ambulare."
+            },
+            {
+              "id": "q5",
+              "question": "Tandem dormio : tandem =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "enfin" },
+                { "id": "b", "text": "tôt matin" },
+                { "id": "c", "text": "souvent guerre" },
+                { "id": "d", "text": "devant" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Tandem = enfin."
+            },
+            {
+              "id": "q6",
+              "question": "Narrat quid faciat : narrat =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "il/elle raconte" },
+                { "id": "b", "text": "nous avons raconté" },
+                { "id": "c", "text": "raconter inf." },
+                { "id": "d", "text": "silence" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Présent narrare."
+            },
+            {
+              "id": "q7",
+              "question": "Prima hora ludum intramus :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "première heure entrons école" },
+                { "id": "b", "text": "soir sortons" },
+                { "id": "c", "text": "nuit dormons" },
+                { "id": "d", "text": "midi nageons" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Intramus = entrons."
+            },
+            {
+              "id": "q8",
+              "question": "Multa narras : multa =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "beaucoup de choses acc. neut. pl." },
+                { "id": "b", "text": "un mot masc." },
+                { "id": "c", "text": "verbe" },
+                { "id": "d", "text": "jamais" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Multa complément."
+            },
+            {
+              "id": "q9",
+              "question": "Saepe fabulas legimus : saepe =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "souvent" },
+                { "id": "b", "text": "rarement" },
+                { "id": "c", "text": "demain" },
+                { "id": "d", "text": "hier" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Saepe = souvent."
+            },
+            {
+              "id": "q10",
+              "question": "Nocte stellae lucent : nocte =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "la nuit (abl.)" },
+                { "id": "b", "text": "matin" },
+                { "id": "c", "text": "midi" },
+                { "id": "d", "text": "verbe" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Ablatif de temps."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Verbes du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Verbes action quotidienne :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "edo" },
+                { "id": "b", "text": "dormio" },
+                { "id": "c", "text": "vinco (passé sens)" },
+                { "id": "d", "text": "lavo" }
+              ],
+              "correctAnswers": ["a", "d"],
+              "explanation": "Edo = manger, lavo = laver (actions du quotidien)."
+            },
+            {
+              "id": "q2",
+              "question": "Edo panem : edo =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "je mange" },
+                { "id": "b", "text": "je dors" },
+                { "id": "c", "text": "je vends" },
+                { "id": "d", "text": "je combats" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Edere manger."
+            },
+            {
+              "id": "q3",
+              "question": "Dormiunt liberi : dormiunt =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "ils dorment" },
+                { "id": "b", "text": "nous mangeons" },
+                { "id": "c", "text": "tu lis" },
+                { "id": "d", "text": "je cours" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "3e pl. dormire."
+            },
+            {
+              "id": "q4",
+              "question": "Lavo manus : lavo =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "je lave" },
+                { "id": "b", "text": "je casse" },
+                { "id": "c", "text": "j'oublie" },
+                { "id": "d", "text": "je gagne" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Lavare laver."
+            },
+            {
+              "id": "q5",
+              "question": "Audio vocem matris : audio =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "j'entends" },
+                { "id": "b", "text": "je vois" },
+                { "id": "c", "text": "je parle seul" },
+                { "id": "d", "text": "je cours" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Audire entendre."
+            },
+            {
+              "id": "q6",
+              "question": "Respondes magistro : respondes =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "tu réponds" },
+                { "id": "b", "text": "ils répondent" },
+                { "id": "c", "text": "je réponds" },
+                { "id": "d", "text": "répondez imp." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "2e sg."
+            },
+            {
+              "id": "q7",
+              "question": "Intrant in cubiculum : intrant =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "ils entrent" },
+                { "id": "b", "text": "nous sortons" },
+                { "id": "c", "text": "tu dors" },
+                { "id": "d", "text": "je mange" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Intrare entrer."
+            },
+            {
+              "id": "q8",
+              "question": "Exiunt e domo : exiunt =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "ils sortent" },
+                { "id": "b", "text": "ils entrent" },
+                { "id": "c", "text": "nous lisons" },
+                { "id": "d", "text": "vous chantez" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Exire sortir."
+            },
+            {
+              "id": "q9",
+              "question": "Specto fenestram : specto =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "je regarde" },
+                { "id": "b", "text": "je ferme" },
+                { "id": "c", "text": "je casse" },
+                { "id": "d", "text": "j'achète" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Spectare regarder."
+            },
+            {
+              "id": "q10",
+              "question": "Claudo ianuam : claudo =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "je ferme" },
+                { "id": "b", "text": "j'ouvre" },
+                { "id": "c", "text": "je brûle" },
+                { "id": "d", "text": "je nage" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Claudere fermer."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Hodie cras heri",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Aujourd'hui et demain :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "hodie" },
+                { "id": "b", "text": "cras" },
+                { "id": "c", "text": "heri" },
+                { "id": "d", "text": "semper passé" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Hodie aujourd'hui, cras demain."
+            },
+            {
+              "id": "q2",
+              "question": "Heri lusi : heri =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "hier" },
+                { "id": "b", "text": "demain" },
+                { "id": "c", "text": "maintenant" },
+                { "id": "d", "text": "toujours futur" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Heri = hier."
+            },
+            {
+              "id": "q3",
+              "question": "Cras ad ludum ibimus : cras =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "demain" },
+                { "id": "b", "text": "hier" },
+                { "id": "c", "text": "ce soir passé" },
+                { "id": "d", "text": "jamais" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Cras = demain."
+            },
+            {
+              "id": "q4",
+              "question": "Nunc studet : nunc =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "maintenant" },
+                { "id": "b", "text": "autrefois seul" },
+                { "id": "c", "text": "bientôt cras" },
+                { "id": "d", "text": "hier" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Nunc = now."
+            },
+            {
+              "id": "q5",
+              "question": "Iam cenat : iam =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "déjà / maintenant" },
+                { "id": "b", "text": "pas encore neg." },
+                { "id": "c", "text": "jamais" },
+                { "id": "d", "text": "hier" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Iam = déjà."
+            },
+            {
+              "id": "q6",
+              "question": "Mane legimus : mane =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "le matin" },
+                { "id": "b", "text": "la nuit" },
+                { "id": "c", "text": "l'année" },
+                { "id": "d", "text": "le siècle" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Mane matin."
+            },
+            {
+              "id": "q7",
+              "question": "Interdiu laborat : interdiu =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "pendant le jour" },
+                { "id": "b", "text": "la nuit" },
+                { "id": "c", "text": "sous terre" },
+                { "id": "d", "text": "en mer" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Interdiu de jour."
+            },
+            {
+              "id": "q8",
+              "question": "Saepe erras : saepe =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "souvent" },
+                { "id": "b", "text": "une fois hier seul" },
+                { "id": "c", "text": "demain" },
+                { "id": "d", "text": "jamais" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Saepe souvent."
+            },
+            {
+              "id": "q9",
+              "question": "Raro taces : raro =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "rarement" },
+                { "id": "b", "text": "toujours" },
+                { "id": "c", "text": "vite" },
+                { "id": "d", "text": "fort" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Raro = rarement."
+            },
+            {
+              "id": "q10",
+              "question": "Quotidie puer scribit : quotidie =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "chaque jour" },
+                { "id": "b", "text": "une fois an" },
+                { "id": "c", "text": "jamais" },
+                { "id": "d", "text": "la nuit seule" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Quotidie = quotidiennement."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Phrases au présent",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phrases présent correct :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "puer currit" },
+                { "id": "b", "text": "puella cantat" },
+                { "id": "c", "text": "puer currit amavit" },
+                { "id": "d", "text": "est sum" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Currit, cantat présent ; c mélange, d faux."
+            },
+            {
+              "id": "q2",
+              "question": "Quis venit ? venit =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "vient" },
+                { "id": "b", "text": "venait" },
+                { "id": "c", "text": "viendra" },
+                { "id": "d", "text": "venez imp." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Présent venire."
+            },
+            {
+              "id": "q3",
+              "question": "Ubi est mater ? ubi =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "où" },
+                { "id": "b", "text": "quand cras" },
+                { "id": "c", "text": "pourquoi" },
+                { "id": "d", "text": "comment" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Ubi = où."
+            },
+            {
+              "id": "q4",
+              "question": "Quid facis ? facis =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "tu fais" },
+                { "id": "b", "text": "ils font" },
+                { "id": "c", "text": "je fais" },
+                { "id": "d", "text": "faites" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "2e sg. facere."
+            },
+            {
+              "id": "q5",
+              "question": "Cur rides ? rides =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "tu ris" },
+                { "id": "b", "text": "je pleure" },
+                { "id": "c", "text": "ils dorment" },
+                { "id": "d", "text": "nous mangeons" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Ridere rire."
+            },
+            {
+              "id": "q6",
+              "question": "It ad forum pater : it =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "va (présent)" },
+                { "id": "b", "text": "allait" },
+                { "id": "c", "text": "ira" },
+                { "id": "d", "text": "aller inf." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": " Ire irrégulier."
+            },
+            {
+              "id": "q7",
+              "question": "Stamus iuxta domum : stamus =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "nous sommes debout" },
+                { "id": "b", "text": "tu es assis" },
+                { "id": "c", "text": "ils courent" },
+                { "id": "d", "text": "je dors" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Stare être debout."
+            },
+            {
+              "id": "q8",
+              "question": "Sedet sub arbore : sedet =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "est assis" },
+                { "id": "b", "text": "court" },
+                { "id": "c", "text": "nous parlons" },
+                { "id": "d", "text": "vous partez" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Sedere s'asseoir."
+            },
+            {
+              "id": "q9",
+              "question": "Parat cenam bona mater : ordre sens",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "bonne mère prépare repas" },
+                { "id": "b", "text": "enfant mange école" },
+                { "id": "c", "text": "maître vend livre" },
+                { "id": "d", "text": "chien lit poème" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "SVO latin flexible."
+            },
+            {
+              "id": "q10",
+              "question": "Sum paratus : paratus =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "prêt masc." },
+                { "id": "b", "text": "fatiguée fém." },
+                { "id": "c", "text": "verbe manger" },
+                { "id": "d", "text": "adv. hier" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Paratus prêt."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "De la maison à l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Lieux trajet :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "domus" },
+                { "id": "b", "text": "ludus" },
+                { "id": "c", "text": "via" },
+                { "id": "d", "text": "oceanus lointain" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Maison école ; via aussi mais 2 réponses a,b."
+            },
+            {
+              "id": "q2",
+              "question": "E domo ad ludum ambulat :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "marche maison → école" },
+                { "id": "b", "text": "nage mer → temple" },
+                { "id": "c", "text": "vole ciel" },
+                { "id": "d", "text": "dort forum" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Ad ludum vers école."
+            },
+            {
+              "id": "q3",
+              "question": "In via multae personae sunt :",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "dans rue beaucoup gens" },
+                { "id": "b", "text": "dans école silence" },
+                { "id": "c", "text": "mer poissons" },
+                { "id": "d", "text": "ciel étoiles seules" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Via = rue."
+            },
+            {
+              "id": "q4",
+              "question": "Porta domus aperta est : aperta",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "fém. ouverte" },
+                { "id": "b", "text": "masc. fermé" },
+                { "id": "c", "text": "verbe" },
+                { "id": "d", "text": "pl. masc." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Porta fém. → aperta."
+            },
+            {
+              "id": "q5",
+              "question": "Celeriter currit puer : celeriter =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "vite (adv.)" },
+                { "id": "b", "text": "lentement" },
+                { "id": "c", "text": "hier" },
+                { "id": "d", "text": "demain" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Adverbe vitesse."
+            },
+            {
+              "id": "q6",
+              "question": "Tardus puer venit : tardus =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "en retard / lent masc." },
+                { "id": "b", "text": "premier" },
+                { "id": "c", "text": "fém. tardive" },
+                { "id": "d", "text": "verbe" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Tardus en retard."
+            },
+            {
+              "id": "q7",
+              "question": "Ante ludum expectat : ante =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "devant / avant" },
+                { "id": "b", "text": "derrière toujours" },
+                { "id": "c", "text": "dans" },
+                { "id": "d", "text": "sans" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Ante + acc."
+            },
+            {
+              "id": "q8",
+              "question": "Post scholam redit : redit =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "revient" },
+                { "id": "b", "text": "part définitif" },
+                { "id": "c", "text": "dort école" },
+                { "id": "d", "text": "mange rue" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Redire revenir."
+            },
+            {
+              "id": "q9",
+              "question": "Prope domum habitat : prope =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "près de" },
+                { "id": "b", "text": "loin" },
+                { "id": "c", "text": "sous eau" },
+                { "id": "d", "text": "contre guerre" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Prope + acc."
+            },
+            {
+              "id": "q10",
+              "question": "Longa est via : longa avec",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "via fém." },
+                { "id": "b", "text": "est verbe seul" },
+                { "id": "c", "text": "masc." },
+                { "id": "d", "text": "neutre pl." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Via longue."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Sports et jeux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Jeux romains :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "pila" },
+                { "id": "b", "text": "tali" },
+                { "id": "c", "text": "senatus" },
+                { "id": "d", "text": "comitia vote" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Balle et osselets."
+            },
+            {
+              "id": "q2",
+              "question": "Pilam iactat : iactat =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "lance / jette" },
+                { "id": "b", "text": "mange" },
+                { "id": "c", "text": "lit livre" },
+                { "id": "d", "text": "dort" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Iacere lancer."
+            },
+            {
+              "id": "q3",
+              "question": "Cursor velocissimus : velocissimus =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "superlatif très rapide" },
+                { "id": "b", "text": "comparatif" },
+                { "id": "c", "text": "lent" },
+                { "id": "d", "text": "verbe" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Superlatif velox."
+            },
+            {
+              "id": "q4",
+              "question": "In campo ludunt : campus =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "terrain / champ" },
+                { "id": "b", "text": "mer" },
+                { "id": "c", "text": "cuisine" },
+                { "id": "d", "text": "prison" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Campus terrain."
+            },
+            {
+              "id": "q5",
+              "question": "Vincit amicus : vincit =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "gagne / vainc" },
+                { "id": "b", "text": "perd toujours" },
+                { "id": "c", "text": "dort" },
+                { "id": "d", "text": "pleure" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Vincere gagner."
+            },
+            {
+              "id": "q6",
+              "question": "Certant pueri : certant =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "ils rivalisent" },
+                { "id": "b", "text": "ils dorment" },
+                { "id": "c", "text": "nous lisons" },
+                { "id": "d", "text": "tu chantes" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Certare rivaliser."
+            },
+            {
+              "id": "q7",
+              "question": "Fortiter pugnant : fortiter =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "courageusement" },
+                { "id": "b", "text": "faiblement" },
+                { "id": "c", "text": "hier" },
+                { "id": "d", "text": "demain" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Adverbe fortiter."
+            },
+            {
+              "id": "q8",
+              "question": "Ludus pilae placet : placet =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "plaît" },
+                { "id": "b", "text": "déplaît toujours" },
+                { "id": "c", "text": "mange" },
+                { "id": "d", "text": "fuit" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Placere plaire."
+            },
+            {
+              "id": "q9",
+              "question": "Otio fruor : fruor =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "je profite / jouis" },
+                { "id": "b", "text": "je hais" },
+                { "id": "c", "text": "je vends" },
+                { "id": "d", "text": "je casse" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Fruī loisir."
+            },
+            {
+              "id": "q10",
+              "question": "Laeti post ludum : laeti =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "heureux masc. pl." },
+                { "id": "b", "text": "tristes fém." },
+                { "id": "c", "text": "verbe" },
+                { "id": "d", "text": "acc. sg." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Laeti joyeux."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Récit au présent",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Verbes récit présent :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "dicit" },
+                { "id": "b", "text": "videt" },
+                { "id": "c", "text": "dixit" },
+                { "id": "d", "text": "vidit" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Dicit, videt présent ; dixit, vidit passé."
+            },
+            {
+              "id": "q2",
+              "question": "Ecce magister ! ecce =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "voici" },
+                { "id": "b", "text": "adieu" },
+                { "id": "c", "text": "silence" },
+                { "id": "d", "text": "hier" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Ecce présenter."
+            },
+            {
+              "id": "q3",
+              "question": "Subito clamat : subito =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "soudain" },
+                { "id": "b", "text": "lentement" },
+                { "id": "c", "text": "demain" },
+                { "id": "d", "text": "souvent hier" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Subito soudain."
+            },
+            {
+              "id": "q4",
+              "question": "Omnes pueri audiunt : omnes =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "tous masc. pl." },
+                { "id": "b", "text": "une fille" },
+                { "id": "c", "text": "verbe" },
+                { "id": "d", "text": "neutre sg." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Omnes tous."
+            },
+            {
+              "id": "q5",
+              "question": "Tum ridet : tum =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "alors" },
+                { "id": "b", "text": "avant" },
+                { "id": "c", "text": "jamais" },
+                { "id": "d", "text": "loin" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Tum alors."
+            },
+            {
+              "id": "q6",
+              "question": "Fabula iucunda est : iucunda =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "agréable fém." },
+                { "id": "b", "text": "triste masc." },
+                { "id": "c", "text": "verbe" },
+                { "id": "d", "text": "adv." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Fabula fém."
+            },
+            {
+              "id": "q7",
+              "question": "Pueros monet : monet =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "avertit / conseille" },
+                { "id": "b", "text": "oublie" },
+                { "id": "c", "text": "dort" },
+                { "id": "d", "text": "nage" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Monere avertir."
+            },
+            {
+              "id": "q8",
+              "question": "Tacent discipuli : tacent =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "se taisent" },
+                { "id": "b", "text": "crient" },
+                { "id": "c", "text": "mangent" },
+                { "id": "d", "text": "partent mer" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Tacere se taire."
+            },
+            {
+              "id": "q9",
+              "question": "Iterum narrat : iterum =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "de nouveau" },
+                { "id": "b", "text": "jamais plus" },
+                { "id": "c", "text": "hier seul" },
+                { "id": "d", "text": "demain cras" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Iterum encore."
+            },
+            {
+              "id": "q10",
+              "question": "Finita fabula : finita =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "terminée fém." },
+                { "id": "b", "text": "commencée masc." },
+                { "id": "c", "text": "verbe présent" },
+                { "id": "d", "text": "adv. vite" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Participium finita."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Décrire et raconter — synthèse",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Outils décrire raconter :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "a", "text": "adjectifs" },
+                { "id": "b", "text": "présent indicatif" },
+                { "id": "c", "text": "ablatif absolu seul 3e" },
+                { "id": "d", "text": "génitif seul sans nom" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Adj. + présent pour niveau 3e."
+            },
+            {
+              "id": "q2",
+              "question": "Describe sororem : impératif =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "décris ta sœur" },
+                { "id": "b", "text": "je décris" },
+                { "id": "c", "text": "ils décrivaient" },
+                { "id": "d", "text": "décrivez passé" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Impératif describe."
+            },
+            {
+              "id": "q3",
+              "question": "Puella quae cantat : sens",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "fille qui chante" },
+                { "id": "b", "text": "garçon qui dort" },
+                { "id": "c", "text": "maison qui brûle" },
+                { "id": "d", "text": "chien qui vend" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Relative quae fém."
+            },
+            {
+              "id": "q4",
+              "question": "Hodie totam fabulam narramus : totam",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "acc. fém. entière" },
+                { "id": "b", "text": "nom. masc." },
+                { "id": "c", "text": "verbe" },
+                { "id": "d", "text": "adv." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Fabulam fém. acc."
+            },
+            {
+              "id": "q5",
+              "question": "Laeta puella ridet : laeta =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "joyeuse fém." },
+                { "id": "b", "text": "triste masc." },
+                { "id": "c", "text": "verbe" },
+                { "id": "d", "text": "neutre" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Laeta avec puella."
+            },
+            {
+              "id": "q6",
+              "question": "Magna voce clamat puer : sens",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "garçon crie grande voix" },
+                { "id": "b", "text": "maître dort" },
+                { "id": "c", "text": "mère mange" },
+                { "id": "d", "text": "chien lit" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Abl. voce."
+            },
+            {
+              "id": "q7",
+              "question": "Cottidie haec facio : cottidie ≈",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "chaque jour" },
+                { "id": "b", "text": "jamais" },
+                { "id": "c", "text": "hier" },
+                { "id": "d", "text": "une heure" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Comme quotidie."
+            },
+            {
+              "id": "q8",
+              "question": "Intellego fabulam : intellego =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "je comprends" },
+                { "id": "b", "text": "j'oublie" },
+                { "id": "c", "text": "je cours" },
+                { "id": "d", "text": "je vends" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Intellegere comprendre."
+            },
+            {
+              "id": "q9",
+              "question": "Brevis est dies : brevis =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "court (jour)" },
+                { "id": "b", "text": "longue nuit" },
+                { "id": "c", "text": "verbe" },
+                { "id": "d", "text": "pl. masc." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Brevis court."
+            },
+            {
+              "id": "q10",
+              "question": "Sic vitam narrat : sic =",
+              "type": "single_choice",
+              "options": [
+                { "id": "a", "text": "ainsi" },
+                { "id": "b", "text": "non" },
+                { "id": "c", "text": "demain" },
+                { "id": "d", "text": "avant hier" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Sic = ainsi."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

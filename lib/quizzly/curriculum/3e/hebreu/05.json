@@ -1,0 +1,2653 @@
+{
+  "id": "3e-hebreu-05",
+  "year": "3e",
+  "subject": "hebreu",
+  "title": "Le passé en hébreu",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : Les suffixes du passé au Binyan Paal (singulier)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le suffixe de la 1re personne du singulier (אני - ani) au passé ?",
+              "options": ["-תי (-ti)", "-תָ (-ta)", "-נו (-nu)", "-תם (-tem)"],
+              "correctAnswers": [0],
+              "explanation": "Au passé, le sujet 'אני' (je) prend systématiquement la terminaison '-תי' (-ti), par exemple כָּתַבְתִּי (katavti - j'ai écrit)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel suffixe ajoute-t-on pour 'tu' masculin singulier (אתה - ata) au passé ?",
+              "options": ["-תָ (-ta)", "-תְ (-t)", "-תי (-ti)", "-תם (-tem)"],
+              "correctAnswers": [0],
+              "explanation": "Pour 'אתה' (tu masc.), on ajoute la terminaison '-תָ' (-ta), comme dans כָּתַבְתָּ (katavta - tu as écrit)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel suffixe ajoute-t-on pour 'tu' féminin singulier (את - at) au passé ?",
+              "options": ["-תְ (-t)", "-תי (-ti)", "-ה (-ah)", "-נו (-nu)"],
+              "correctAnswers": [0],
+              "explanation": "Pour 'את' (tu fém.), on ajoute la lettre ת avec un cheva muet '-תְ' (-t) : כָּתַבְתְּ (katavt - tu as écrit)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la forme de la 3e personne masculin singulier (הוא - hu) au passé ?",
+              "options": [
+                "Aucun suffixe (forme de base à 3 lettres)",
+                "Le suffixe -תי (-ti)",
+                "Le préfixe י- (yi-)",
+                "Le suffixe -ו (-u)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au passé, la 3e personne masc. singulier (הוא) correspond à la forme nue du verbe sans suffixe personnel (ex: כָּתַב - katav)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes verbales ci-dessous correspondent à un sujet au singulier au passé ?",
+              "options": [
+                "לָמַדְתִּי (lamadti)",
+                "שָׁמַרְתָּ (shamarta)",
+                "לָמַדְנוּ (lamadnu)",
+                "שָׁמְרוּ (shamru)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "למדתי (1re singulier) et שמרת (2e masc. singulier) sont au singulier. למדנו (nous) et שמרו (ils/elles) sont au pluriel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel suffixe prend la 3e personne féminin singulier (היא - hi) au passé ?",
+              "options": ["-ָה (-ah)", "-ת (-et)", "-תם (-tem)", "-ו (-u)"],
+              "correctAnswers": [0],
+              "explanation": "Pour 'היא' (elle), on ajoute la terminaison accentuée '-ָה' (-ah), par exemple כָּתְבָה (katvah - elle a écrit)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Elle a fermé la porte » avec le verbe סָגַר (sagar) ?",
+              "options": [
+                "היא סָגְרָה את הדלת",
+                "היא סָגַר את הדלת",
+                "היא סָגַרְתִּי את הדלת",
+                "היא סוֹגֶרֶת את הדלת"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet 'היא' (elle), le verbe סגר prend la terminaison -ה, ce qui donne סָגְרָה (sagrah)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « Tu as dit » en s'adressant à un garçon avec אָמַר (amar) ?",
+              "options": [
+                "אָמַרְתָּ (amarta)",
+                "אָמַרְתְּ (amart)",
+                "אָמַרְתִּי (amarti)",
+                "אָמַר (amar)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la 2e personne masculine singulière, la terminaison est -תָ (-ta), donc אָמַרְתָּ (amarta)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on « Tu as gardé » en s'adressant à une fille avec שָׁמַר (shamar) ?",
+              "options": [
+                "שָׁמַרְתְּ (shamart)",
+                "שָׁמַרְתָּ (shamarta)",
+                "שָׁמַרְתִּי (shamarti)",
+                "שָׁמְרָה (shamrah)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour 'את' (tu fém.), on ajoute la terminaison muette -תְ (-t), ce qui donne שָׁמַרְתְּ (shamart)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans la phrase « דני קָרָא ספר » (Dani kara sefer), à quel temps est le verbe ?",
+              "options": [
+                "Au passé (3e personne masculin singulier)",
+                "Au présent",
+                "Au futur",
+                "À l'impératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "קָרָא (kara) est la forme de base du passé pour la 3e personne masc. singulier (Dani = הוא)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Les suffixes du passé au Binyan Paal (pluriel)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le suffixe de la 1re personne du pluriel (אנחנו - anakhnu) au passé ?",
+              "options": ["-נוּ (-nu)", "-תֶם (-tem)", "-וּ (-u)", "-תִּי (-ti)"],
+              "correctAnswers": [0],
+              "explanation": "La terminaison de 'אנחנו' (nous) au passé est toujours '-נוּ' (-nu), comme dans כָּתַבְנוּ (katavnu - nous avons écrit)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel suffixe prend 'אתם' (vous masculin/mixte) au passé ?",
+              "options": ["-תֶּם (-tem)", "-תֶּן (-ten)", "-נוּ (-nu)", "-וּ (-u)"],
+              "correctAnswers": [0],
+              "explanation": "Pour 'אתם' (vous masc.), on ajoute le suffixe '-תֶּם' (-tem), par exemple כְּתַבְתֶּם (ktavtem)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel suffixe prend 'אתן' (vous féminin pluriel) au passé ?",
+              "options": ["-תֶּן (-ten)", "-תֶּם (-tem)", "-נוּ (-nu)", "-ָה (-ah)"],
+              "correctAnswers": [0],
+              "explanation": "Pour 'אתן' (vous fém. pluriel), on ajoute la terminaison '-תֶּן' (-ten) : כְּתַבְתֶּן (ktavten)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel suffixe prend la 3e personne du pluriel (הם / הן - ils / elles) au passé ?",
+              "options": ["-וּ (-u)", "-נוּ (-nu)", "-תֶּם (-tem)", "-ִים (-im)"],
+              "correctAnswers": [0],
+              "explanation": "Au passé, 'הם' et 'הן' prennent tous les deux la terminaison '-וּ' (-u), comme dans כָּתְבוּ (katvu)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes verbales ci-dessous correspondent à un sujet pluriel au passé ?",
+              "options": [
+                "כָּתַבְנוּ (katavnu)",
+                "כָּתְבוּ (katvu)",
+                "כָּתַבְתִּי (katavti)",
+                "כָּתַב (katav)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "כתבנו (nous) et כתבו (ils/elles) sont au pluriel. כתבתי (je) et כתב (il) sont au singulier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment se traduit « Nous avons appris l'hébreu » avec לָמַד (lamad) ?",
+              "options": [
+                "לָמַדְנוּ עברית",
+                "לְמַדְתֶּם עברית",
+                "לָמְדוּ עברית",
+                "לוֹמְדִים עברית"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour 'אנחנו' (nous), on ajoute -נו, ce qui donne לָמַדְנוּ עברית (lamadnu ivrit)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on « Vous avez écrit » en s'adressant à un groupe masculin ou mixte ?",
+              "options": [
+                "כְּתַבְתֶּם (ktavtem)",
+                "כְּתַבְתֶּן (ktavten)",
+                "כָּתַבְנוּ (katavnu)",
+                "כָּתְבוּ (katvu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 'אתם' (vous masc.), la terminaison est -תם (-tem) : כְּתַבְתֶּם (ktavtem)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la forme correcte pour « Ils ont gardé » (verbe שָׁמַר - shamar) ?",
+              "options": [
+                "שָׁמְרוּ (shamru)",
+                "שָׁמַרְנוּ (shamarnu)",
+                "שְׁמַרְתֶּם (shmartem)",
+                "שׁוֹמְרִים (shomrim)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la 3e personne du pluriel au passé, on ajoute -ו à la racine : שָׁמְרוּ (shamru)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En hébreu moderne, la forme du passé pour 'elles' (הן) est-elle distincte de 'ils' (הם) ?",
+              "options": [
+                "Non, elles partagent la même terminaison en -וּ",
+                "Oui, 'elles' prend obligatoirement -ָן",
+                "Oui, 'elles' prend obligatoirement -וֹת",
+                "Non, elles prennent toutes deux -נוּ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au passé, il n'y a pas de distinction de genre à la 3e personne du pluriel : ils et elles prennent -ו (ex: הם/הן כָּתְבוּ)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on « Vous avez fermé » à un groupe exclusivement féminin (אתן) ?",
+              "options": [
+                "סְגַרְתֶּן (sgarten)",
+                "סְגַרְתֶּם (sgartem)",
+                "סָגַרְנוּ (sagarnu)",
+                "סָגְרוּ (sagru)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet féminin pluriel 'אתן', la terminaison est -תן (-ten) : סְגַרְתֶּן (sgarten)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : Verbes réguliers au passé (katav, lamad, sagar)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la traduction de « J'ai écrit une lettre » (מִכְתָּב - mikhtav) ?",
+              "options": ["כָּתַבְתִּי מכתב", "כָּתַב מכתב", "כּוֹתֵב מכתב", "כָּתַבְנוּ מכתב"],
+              "correctAnswers": [0],
+              "explanation": "'J'ai écrit' correspond à la 1re personne du passé : כָּתַבְתִּי (katavti)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Il a fermé la fenêtre » (חַלּוֹן - khalon) ?",
+              "options": [
+                "הוא סָגַר את החלון",
+                "הוא סָגְרָה את החלון",
+                "הוא סָגַרְתִּי את החלון",
+                "הוא סוֹגֵר את החלון"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Il a fermé' est la 3e personne masc. singulier au passé, donc la forme simple סָגַר (sagar)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la racine trilitère du verbe לָמַדְתִּי (lamadti) ?",
+              "options": [
+                "ל-מ-ד (L-M-D)",
+                "ל-מ-ת (L-M-T)",
+                "מ-ד-ת (M-D-T)",
+                "ל-מ-ד-י (L-M-D-Y)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le suffixe personnel est -תי (-ti), la racine de base du verbe est donc ל-מ-ד (apprendre/étudier)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « אתמול דני ויוסי ___ למבחן » (Hier, Dani et Yossi ont révisé pour l'examen).",
+              "options": [
+                "לָמְדוּ (lamdu)",
+                "לָמַד (lamad)",
+                "לָמְדָה (lamdah)",
+                "לוֹמְדִים (lomdim)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dani et Yossi forment un sujet pluriel (הם). Le verbe au passé prend la terminaison -ו : לָמְדוּ (lamdu)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels verbes ci-dessous sont conjugués à la 1re personne du passé (sujet אני) ?",
+              "options": [
+                "סָגַרְתִּי (sagarti)",
+                "לָמַדְתִּי (lamadti)",
+                "סָגַר (sagar)",
+                "לוֹמֵד (lomed)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les formes terminées par -תי (-ti) correspondent à la 1re personne du passé (אני)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment se traduit « Tu as fermé » adressé à un garçon ?",
+              "options": [
+                "סָגַרְתָּ (sagarta)",
+                "סָגַרְתְּ (sagart)",
+                "סָגַרְתִּי (sagarti)",
+                "סָגְרָה (sagrah)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 'אתה' (tu masculin), la désinence du passé est -תָ (-ta) : סָגַרְתָּ (sagarta)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle voyelle porte généralement la 1re consonne d'un verbe régulier au passé Paal (ex: כָּתַב) ?",
+              "options": [
+                "Le qamats (son 'a')",
+                "Le hiriq (son 'i')",
+                "Le shourouq (son 'ou')",
+                "Le tseire (son 'e')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au passé Paal régulier à la 3e personne masc. (כָּתַב, לָמַד), la première lettre est vocalisée par un qamats (a)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Nous avons gardé la maison » se traduit par :",
+              "options": [
+                "שָׁמַרְנוּ על הבית",
+                "שָׁמְרוּ על הבית",
+                "שָׁמַרְתִּי על הבית",
+                "שׁוֹמְרִים על הבית"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Nous avons gardé' se conjugue avec le suffixe -נו : שָׁמַרְנוּ (shamarnu)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « כְּתַבְתֶּן ספר יפה » ?",
+              "options": [
+                "Vous avez écrit un beau livre (à des femmes)",
+                "Vous écrivez un beau livre (à des hommes)",
+                "Elles ont écrit un beau livre",
+                "Nous avons écrit un beau livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La terminaison -תֶן (-ten) s'adresse à 'אתן' (vous féminin pluriel) au passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si le sujet est « מִיכַל » (Mikhal, prénom féminin), quelle forme choisir pour סָגַר ?",
+              "options": [
+                "סָגְרָה (sagrah)",
+                "סָגַר (sagar)",
+                "סָגַרְתְּ (sagart)",
+                "סוֹגֶרֶת (sogeret)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mikhal est un sujet féminin singulier à la 3e personne (היא), donc la forme du passé est סָגְרָה (sagrah)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : Verbes de mouvement au passé (halakh, ba, nasa)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Je suis allé à l'école » avec הָלַךְ (halakh) ?",
+              "options": [
+                "הָלַכְתִּי לבית הספר",
+                "הָלַךְ לבית הספר",
+                "הוֹלֵךְ לבית הספר",
+                "הָלַכְנוּ לבית הספר"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La 1re personne du verbe הלך au passé prend -תי : הָלַכְתִּי (halakhti)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la forme du verbe הָלַךְ pour « ils sont allés » ?",
+              "options": [
+                "הָלְכוּ (halkhu)",
+                "הָלַכְנוּ (halakhnu)",
+                "הוֹלְכִים (holkhim)",
+                "הֲלַכְתֶּם (halakhtem)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la 3e personne du pluriel, הָלַךְ devient הָלְכוּ (halkhu)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment se conjugue le verbe בָּא (ba - venir) au passé avec 'אני' (je) ?",
+              "options": [
+                "בָּאתִי (bati)",
+                "בּוֹאתִי (boati)",
+                "בָּאתָ (bata)",
+                "בָּאנוּ (banu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour le verbe creux בא, on ajoute directement le suffixe -תי à la base : בָּאתִי (bati - je suis venu)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Elle est venue hier » se traduit par :",
+              "options": [
+                "היא בָּאָה אתמול",
+                "היא בָּא אתמול",
+                "היא בָּאתִי אתמול",
+                "היא בָּאוּ אתמול"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au passé comme au présent, 'elle est venue' s'écrit בָּאָה (ba'ah) avec un hé final."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes du verbe נָסַע (nasa - voyager/partir) sont au passé ?",
+              "options": [
+                "נָסַעְתִּי (nasa'ti)",
+                "נָסַעְנוּ (nasa'nu)",
+                "נוֹסֵעַ (nose'a)",
+                "נִסַּע (nisa)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "נסעתי (j'ai voyagé) et נסענו (nous avons voyagé) sont au passé. נוסע est au présent et ניסע au futur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « Nous avons voyagé à Jérusalem » ?",
+              "options": [
+                "נָסַעְנוּ לירושלים",
+                "נָסַעְתִּי לירושלים",
+                "נָסְעוּ לירושלים",
+                "נוֹסְעִים לירושלים"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet 'אנחנו' (nous), le verbe נסע prend la terminaison -נו : נָסַעְנוּ (nasa'nu)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la particularité phonétique de נָסַעְתִּי due à la consonne ע (ayin) ?",
+              "options": [
+                "Un son 'a' se maintient sous le ע guttural (nasa'ti)",
+                "La lettre ע devient muette comme un aleph",
+                "Le verbe prend un préfixe מ-",
+                "La lettre ע est remplacée par un noune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lettre gutturale ע favorise la présence d'une voyelle 'a' : on prononce distinctement nasa'ti."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Tu es allé » en parlant à un garçon se dit :",
+              "options": [
+                "הָלַכְתָּ (halakhta)",
+                "הָלַכְתְּ (halakht)",
+                "הָלַכְתִּי (halakhti)",
+                "הָלַךְ (halakh)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la 2e personne masculine singulière, la terminaison est -תָ : הָלַכְתָּ (halakhta)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « הם בָּאוּ מְאֻחָר » ?",
+              "options": [
+                "Ils sont venus en retard",
+                "Ils viennent demain",
+                "Ils sont partis tôt",
+                "Nous sommes venus ensemble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "באו (ba'u) est le passé 3e pluriel de בא (venir) et מאוחר (me'ukhar) signifie 'tard / en retard'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Elles sont allées à la plage » se traduit par :",
+              "options": [
+                "הן הָלְכוּ לים",
+                "הן הָלְכָה לים",
+                "הן הוֹלְכוֹת לים",
+                "הן הָלַכְנוּ לים"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour 'הן' (elles), le verbe au passé prend la terminaison -ו : הָלְכוּ (halkhu)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : Verbes du quotidien au passé (akhal, shata, amar)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment traduit-on « J'ai mangé une pomme » avec אָכַל (akhal) ?",
+              "options": ["אָכַלְתִּי תפוח", "אָכַל תפוח", "אוֹכֵל תפוח", "אָכַלְנוּ תפוח"],
+              "correctAnswers": [0],
+              "explanation": "La 1re personne du passé de אכל prend la terminaison -תי : אָכַלְתִּי (akhalti)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « Il a bu de l'eau » avec שָׁתָה (shatah) ?",
+              "options": [
+                "הוא שָׁתָה מים",
+                "הוא שָׁתִיתִי מים",
+                "הוא שׁוֹתֶה מים",
+                "הוא שָׁתוּ מים"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la 3e personne masc. singulier (הוא), le verbe est à sa forme de base : שָׁתָה (shatah)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment se dit « J'ai bu du thé » en hébreu ?",
+              "options": [
+                "שָׁתִיתִי תה (shatiti teh)",
+                "שָׁתָה תה (shatah teh)",
+                "שָׁתִיתָ תה (shatita teh)",
+                "שָׁתַהְתִּי תה (shatahti teh)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les verbes se terminant par hé (lamed-hé) remplacent le hé par un yod aux personnes à suffixe : שָׁתִיתִי (shatiti)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi le verbe שָׁתָה prend-il un י dans שָׁתִיתִי ?",
+              "options": [
+                "Car les verbes faibles terminés par ה (Lamed-Hé) font réapparaître un י au passé",
+                "Car c'est un verbe emprunté à une langue étrangère",
+                "Car la racine perd sa première lettre",
+                "Car c'est une exception sans règle grammaticale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans les racines terminées par ה, la 3e lettre d'origine est un yod qui réapparaît devant les consonnes : שתיתי, קניתי, ראיתי."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes verbales ci-dessous sont au passé avec la racine א-כ-ל (manger) ?",
+              "options": [
+                "אָכַלְנוּ (akhalnu)",
+                "אָכְלוּ (akhlu)",
+                "אוֹכְלִים (okhlim)",
+                "יֹאכַל (yokhal)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "אכלנו (nous avons mangé) et אכלו (ils ont mangé) sont au passé. אוכלים est au présent et יאכל au futur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment demande-t-on « Qu'as-tu dit ? » à un garçon ?",
+              "options": [
+                "מה אָמַרְתָּ? (Mah amarta?)",
+                "מה אָמַרְתְּ? (Mah amart?)",
+                "מה אָמַרְתִּי? (Mah amarti?)",
+                "מה אתה אוֹמֵר? (Mah ata omer?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La question s'adresse à un garçon (אתה) au passé, donc la terminaison est -תָ : אָמַרְתָּ."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Elle a dit la vérité » (אֱמֶת - emet) se traduit par :",
+              "options": [
+                "היא אָמְרָה את האמת",
+                "היא אָמַר את האמת",
+                "היא אוֹמֶרֶת את האמת",
+                "היא אָמַרְתִּי את האמת"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet féminin 'היא', le verbe אמר prend le suffixe -ָה : אָמְרָה (amrah)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Nous avons bu du jus d'orange » se traduit par :",
+              "options": [
+                "שָׁתִינוּ מיץ תפוזים",
+                "שָׁתוּ מיץ תפוזים",
+                "שְׁתִיתֶם מיץ תפוזים",
+                "שׁוֹתִים מיץ תפוזים"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sujet 'אנחנו' donne שָׁתִינוּ (shatinu) au passé pour le verbe לשתות."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ils ont mangé au restaurant » se traduit par :",
+              "options": [
+                "הם אָכְלוּ במסעדה",
+                "הם אָכַל במסעדה",
+                "הם אוֹכְלִים במסעדה",
+                "הם אָכַלְנוּ במסעדה"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La 3e personne du pluriel au passé de אכל prend -ו : אָכְלוּ (akhlu)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « אתמול לא ___ כלום כי הייתי חולה » (Hier je n'ai rien mangé car j'étais malade).",
+              "options": [
+                "אָכַלְתִּי (akhalti)",
+                "אָכַל (akhal)",
+                "אוֹכֵל (okhel)",
+                "נֶאֱכַל (ne'ekhal)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phrase parle de 'je' (הייתי) hier, il faut donc la 1re personne du passé : אָכַלְתִּי."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : Le Binyan Piel au passé (diber, siper, bikech)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle voyelle caractérise la 1re consonne de la racine au passé dans le Binyan Piel (ex: דִּבֵּר) ?",
+              "options": [
+                "Le hiriq (son 'i')",
+                "Le patakh (son 'a')",
+                "Le holam (son 'o')",
+                "Le shourouq (son 'ou')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Binyan Piel au passé se caractérise par la voyelle 'i' (hiriq) sous la première lettre : דִּבֵּר (diber), סִפֵּר (siper)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « J'ai parlé avec le professeur » avec דִּבֵּר (diber) ?",
+              "options": [
+                "דִּבַּרְתִּי עם המורה",
+                "דִּבֵּר עם המורה",
+                "מְדַבֵּר עם המורה",
+                "דִּבַּרְנוּ עם המורה"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au passé Piel, avec le suffixe -תי, le son 'e' s'abrège souvent en 'a' : דִּבַּרְתִּי (dibarti)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Il a raconté une histoire » (סִפּוּר - sipur) se traduit par :",
+              "options": [
+                "הוא סִפֵּר סיפור",
+                "הוא סִפְּרָה סיפור",
+                "הוא סִפַּרְתִּי סיפור",
+                "הוא מְסַפֵּר סיפור"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la 3e personne masc. singulier, la forme est סִפֵּר (siper - il a raconté)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Elle a demandé pardon » avec בִּקֵּשׁ (bikech slikha) :",
+              "options": [
+                "היא בִּקְּשָׁה סליחה",
+                "היא בִּקֵּשׁ סליחה",
+                "היא מְבַקֶּשֶׁת סליחה",
+                "היא בִּקַּשְׁתִּי סליחה"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour 'היא', on ajoute le suffixe -ָה à la forme de base : בִּקְּשָׁה (bikshah)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels verbes ci-dessous appartiennent au Binyan Piel au passé ?",
+              "options": [
+                "דִּבֵּר (diber)",
+                "סִפַּרְנוּ (siparnu)",
+                "כָּתַב (katav)",
+                "הָלַךְ (halakh)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "דיבר et סיפרנו sont du Binyan Piel (forme CiCeC). כתב et הלך sont du Binyan Paal (forme CaCaC)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Nous avons parlé hébreu » se traduit par :",
+              "options": [
+                "דִּבַּרְנוּ עברית",
+                "דִּבַּרְתֶּם עברית",
+                "דִּבְּרוּ עברית",
+                "מְדַבְּרִים עברית"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour 'אנחנו' (nous), le verbe prend le suffixe -נו : דִּבַּרְנוּ (dibarnu)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on « Tu as raconté » à un garçon ?",
+              "options": [
+                "סִפַּרְתָּ (siparta)",
+                "סִפַּרְתְּ (sipart)",
+                "סִפַּרְתִּי (siparti)",
+                "סִפֵּר (siper)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 'אתה' (tu masc.), la terminaison est -תָ : סִפַּרְתָּ (siparta)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ils ont demandé de l'aide » (עֶזְרָה - ezrah) se traduit par :",
+              "options": [
+                "הם בִּקְּשׁוּ עזרה",
+                "הם בִּקֵּשׁ עזרה",
+                "הם מְבַקְּשִׁים עזרה",
+                "הם בִּקַּשְׁנוּ עזרה"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la 3e personne du pluriel, le verbe בִּקֵּשׁ prend la terminaison -ו : בִּקְּשׁוּ (bikshu)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel signe grammatical intérieur caractérise la 2e consonne de la racine au Binyan Piel ?",
+              "options": [
+                "Un daguesh fort (redoublement de la consonne)",
+                "Un mapiq",
+                "Un patah furtif",
+                "Un cheva quiescent obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Binyan Piel se caractérise morphologiquement par un daguesh fort dans la 2e consonne de la racine (sauf gutturales)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment se traduit « J'ai payé l'addition » avec שִׁלֵּם (shilem) ?",
+              "options": [
+                "שִׁלַּמְתִּי את החשבון",
+                "שִׁלֵּם את החשבון",
+                "מְשַׁלֵּם את החשבון",
+                "שִׁלַּמְנוּ את החשבון"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'J'ai payé' à la 1re personne du passé donne שִׁלַּמְתִּי (shilamti)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Le Binyan Hifil au passé (hizmin, himshikh, hidlik)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le préfixe caractéristique du Binyan Hifil au passé ?",
+              "options": ["הִ- (hi-)", "נִ- (ni-)", "מִ- (mi-)", "אֶ- (e-)"],
+              "correctAnswers": [0],
+              "explanation": "Au passé, le Binyan Hifil commence toujours par le préfixe הִ- (hi-), comme dans הִזְמִין (hizmin - il a invité)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « J'ai invité des amis » avec הִזְמִין (hizmin) ?",
+              "options": [
+                "הִזְמַנְתִּי חברים",
+                "הִזְמִין חברים",
+                "מַזְמִין חברים",
+                "הִזְמַנּוּ חברים"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la 1re personne, la voyelle 'i' devient 'a' devant le suffixe -תי : הִזְמַנְתִּי (hizmanti)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Il a allumé la lumière » (אוֹר - or) avec הִדְלִיק (hidlik) se traduit par :",
+              "options": [
+                "הוא הִדְלִיק את האור",
+                "הוא הִדְלִיקָה את האור",
+                "הוא מַדְלִיק את האור",
+                "הוא הִדְלַקְתִּי את האור"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la 3e personne masc. singulier, on conserve la forme type הִדְלִיק (hidlik)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Elle a continué son travail » avec הִמְשִׁיךְ (himshikh) se traduit par :",
+              "options": [
+                "היא הִמְשִׁיכָה בעבודה שלה",
+                "היא הִמְשִׁיךְ בעבודה שלה",
+                "היא מַמְשִׁיכָה בעבודה שלה",
+                "היא הִמְשַׁכְתִּי בעבודה שלה"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour 'היא', on ajoute la terminaison -ָה : הִמְשִׁיכָה (himshikhah)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels verbes ci-dessous appartiennent au Binyan Hifil au passé ?",
+              "options": [
+                "הִזְמַנְתִּי (hizmanti)",
+                "הִדְלִיקוּ (hidliku)",
+                "לָמַדְתִּי (lamadti)",
+                "דִּבֵּר (diber)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "הזמנתי et הדליקו commencent par le préfixe הִ- caractéristique du Hifil au passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que devient la voyelle 'i' de הִזְמִין devant les terminaisons comme -תִּי ou -תָּ ?",
+              "options": [
+                "Elle se change en 'a' (patakh) : hizmanti, hizmanta",
+                "Elle reste un 'i' long : hizminti",
+                "Elle disparaît totalement : hizmenti",
+                "Elle devient un son 'ou' : hizmunti"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la conjugaison du Hifil au passé, le 'i' passe à 'a' dès qu'un suffixe consonantique est ajouté (הזמנתי, התחלתי)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Nous avons commencé la leçon » avec הִתְחִיל (hitkhil) se dit :",
+              "options": [
+                "הִתְחַלְנוּ את השיעור",
+                "הִתְחַלְתֶּם את השיעור",
+                "הִתְחִילוּ את השיעור",
+                "מַתְחִילִים את השיעור"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour 'אנחנו', la terminaison est -נו et le radical prend un 'a' : הִתְחַלְנוּ (hitkhalnu)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « Tu as compris » à un garçon avec הֵבִין (hevin) ?",
+              "options": [
+                "הֵבַנְתָּ (hevanta)",
+                "הֵבַנְתְּ (hevant)",
+                "הֵבַנְתִּי (hevanti)",
+                "הֵבִין (hevin)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe creux הבין donne à la 2e masc. singulier : הֵבַנְתָּ (hevanta)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ils ont invité toute la classe » se traduit par :",
+              "options": [
+                "הם הִזְמִינוּ את כל הכיתה",
+                "הם הִזְמִין את כל הכיתה",
+                "הם מַזְמִינִים את כל הכיתה",
+                "הם הִזְמַנּוּ את כל הכיתה"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la 3e personne du pluriel au passé, הִזְמִין prend -ו : הִזְמִינוּ (hizminu)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « הִסְבַּרְתִּי את השיעור » (hesbarti et ha-shi'ur) ?",
+              "options": [
+                "J'ai expliqué la leçon",
+                "J'ai compris la leçon",
+                "J'ai appris la leçon",
+                "J'ai répété la leçon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe להסביר (hesbir) signifie 'expliquer'. הִסְבַּרְתִּי = j'ai expliqué."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : Le Binyan Hitpael au passé (hitrahets, hitlabesh)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le préfixe caractéristique du Binyan Hitpael au passé ?",
+              "options": [
+                "הִתְ- (hit-)",
+                "נִתְ- (nit-)",
+                "מִתְ- (mit-)",
+                "הִשְׁ- (hish-)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au passé, le Binyan Hitpael commence par le préfixe הִתְ- (hit-), comme dans הִתְלַבֵּשׁ (hitlabesh)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel sens exprime très fréquemment le Binyan Hitpael ?",
+              "options": [
+                "Une action réfléchie ou réciproque (faite sur soi ou mutuelle)",
+                "Une action purement passive sans agent",
+                "Un ordre direct impératif",
+                "Une probabilité future"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Binyan Hitpael sert souvent à exprimer des actions réfléchies (s'habiller, se laver) ou réciproques (se rencontrer)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Je me suis lavé » avec הִתְרַחֵץ (hitrakhets) ?",
+              "options": [
+                "הִתְרַחַצְתִּי (hitrakhatsti)",
+                "הִתְרַחֵץ (hitrakhets)",
+                "מִתְרַחֵץ (mitrakhets)",
+                "הִתְרַחַצְנוּ (hitrakhatsnu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la 1re personne du passé, on ajoute -תי : הִתְרַחַצְתִּי (hitrakhatsti)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Il s'est habillé rapidement » (מַהֵר - maher) se traduit par :",
+              "options": [
+                "הוא הִתְלַבֵּשׁ מהר",
+                "הוא הִתְלַבְּשָׁה מהר",
+                "הוא מִתְלַבֵּשׁ מהר",
+                "הוא הִתְלַבַּשְׁתִּי מהר"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la 3e personne masc. singulier, la forme est הִתְלַבֵּשׁ (hitlabesh)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels verbes ci-dessous sont au Binyan Hitpael au passé ?",
+              "options": [
+                "הִתְלַבַּשְׁתִּי (hitlabashti)",
+                "הִתְרַחֲצוּ (hitrakhatsu)",
+                "הִזְמַנְתִּי (hizmanti)",
+                "כָּתְבוּ (katvu)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "התלבשתי et התרחצו sont au Hitpael (préfixe הת-). הזמנתי est au Hifil et כתבו au Paal."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Elle s'est coiffée » avec le verbe הִסְתָּרֵק (histarek) se dit :",
+              "options": [
+                "היא הִסְתָּרְקָה",
+                "היא הִסְתָּרֵק",
+                "היא מִסְתָּרֶקֶת",
+                "היא הִסְתָּרַקְתִּי"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour 'היא', on ajoute la terminaison -ָה : הִסְתָּרְקָה (histarkah)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on הִסְתָּרֵק (histarek) et non pas הִתְסָרֵק ?",
+              "options": [
+                "Par métathèse : la sifflante ס et le ת du préfixe intervertissent leur place",
+                "Parce que le tav s'assimile toujours en samekh",
+                "Parce que c'est un verbe d'origine grecque",
+                "Pour éviter d'ajouter des voyelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque la 1re lettre de la racine est une sifflante comme ס (samekh), le ת du préfixe permute avec elle : הִסְתָּרֵק."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Nous nous sommes vus / rencontrés hier » se traduit par :",
+              "options": [
+                "הִתְרָאִינוּ אתמול (hitra'inu etmol)",
+                "מִתְרָאִים אתמול (mitra'im etmol)",
+                "הִתְרָאוּ אתמול (hitra'u etmol)",
+                "נִתְרָאֶה אתמול (nitra'eh etmol)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La 1re personne pluriel au passé du verbe להתראות est הִתְרָאִינוּ (hitra'inu)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Vous vous êtes excusés » à un groupe masculin pluriel (הִתְנַצֵּל) se dit :",
+              "options": [
+                "הִתְנַצַּלְתֶּם (hitnatsaltem)",
+                "הִתְנַצַּלְתֶּן (hitnatsalten)",
+                "הִתְנַצַּלְנוּ (hitnatsalnu)",
+                "מִתְנַצְּלִים (mitnatslim)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 'אתם' au passé, la terminaison est -תם : הִתְנַצַּלְתֶּם (hitnatsaltem)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « דני הִתְפַּלֵּל בבית הכנסת » ?",
+              "options": [
+                "Dani a prié à la synagogue",
+                "Dani prie chez lui",
+                "Dani est allé à l'école",
+                "Dani a chanté à la synagogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe להתפלל (hitpalel) signifie 'prier'. דני התפלל = Dani a prié."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Verbes particuliers au passé (haya, lakah, raah)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment dit-on « J'étais / j'ai été » (verbe לִהְיוֹת - lihyot) ?",
+              "options": [
+                "הָיִיתִי (hayiti)",
+                "הָיָה (hayah)",
+                "הָיִיתָ (hayita)",
+                "הָיִינוּ (hayinu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la 1re personne du passé de להיות, la forme est הָיִיתִי (hayiti - j'étais / j'ai été)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Il était à la maison » se traduit par :",
+              "options": [
+                "הוא הָיָה בבית",
+                "הוא הָיְתָה בבית",
+                "הוא הָיִיתִי בבית",
+                "הוא הָיוּ בבית"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet 'הוא' (il), la forme du verbe être au passé est הָיָה (hayah)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Elle était fatiguée » (עֲיֵפָה - ayefah) se traduit par :",
+              "options": [
+                "היא הָיְתָה עייפה",
+                "היא הָיָה עייפה",
+                "היא הָיִית עייפה",
+                "היא הָיוּ עייפה"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 'היא' (elle), le verbe être au passé devient הָיְתָה (haytah)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Nous étions ensemble » (בְּיַחַד - beyakhad) se traduit par :",
+              "options": ["הָיִינוּ ביחד", "הָיוּ ביחד", "הֱיִיתֶם ביחד", "הָיִיתִי ביחד"],
+              "correctAnswers": [0],
+              "explanation": "Pour 'אנחנו' (nous), le passé du verbe être est הָיִינוּ (hayinu)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes ci-dessous appartiennent au verbe לִהְיוֹת (être) au passé ?",
+              "options": [
+                "הָיִיתִי (hayiti)",
+                "הָיוּ (hayu)",
+                "יִהְיֶה (yihyeh)",
+                "הוֹוֶה (hoveh)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "הייתי (j'étais) et היו (ils/elles étaient) sont au passé. יהיה est au futur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « J'ai vu un film » avec רָאָה (ra'ah) ?",
+              "options": ["רָאִיתִי סרט", "רָאָה סרט", "רוֹאֶה סרט", "רָאִינוּ סרט"],
+              "correctAnswers": [0],
+              "explanation": "Pour רָאָה (voir), la 1re personne du passé est רָאִיתִי (ra'iti)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Il a pris son sac » avec לָקַח (lakakh) se traduit par :",
+              "options": [
+                "הוא לָקַח את התיק שלו",
+                "הוא לָקְחָה את התיק שלו",
+                "הוא לוֹקֵחַ את התיק שלו",
+                "הוא לָקַחְתִּי את התיק שלו"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la 3e personne masc. singulier, la forme est לָקַח (lakakh)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « Tu as pris » en s'adressant à une fille ?",
+              "options": [
+                "לָקַחַתְּ (lakakht)",
+                "לָקַחְתָּ (lakakhta)",
+                "לָקַחְתִּי (lakakhti)",
+                "לָקְחָה (lakhah)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 'את' (tu fém.), on ajoute la terminaison -תְ : לָקַחַתְּ (lakakht)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ils ont vu la mer » se traduit par :",
+              "options": [
+                "הם רָאוּ את הים",
+                "הם רָאֲתָה את הים",
+                "הם רוֹאִים את הים",
+                "הם רָאִינוּ את הים"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la 3e personne du pluriel, le verbe ראה prend -ו : רָאוּ (ra'u)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « אתמול ___ לנו שיעור עברית מעניין » (Hier nous avons eu un cours d'hébreu intéressant).",
+              "options": [
+                "הָיָה (hayah)",
+                "הָיְתָה (haytah)",
+                "הָיִיתִי (hayiti)",
+                "הָיוּ (hayu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sujet grammatical est שיעור (cours), qui est masculin singulier, d'où le verbe הָיָה (hayah)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Récits et narration au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on la négation au passé (ex: « Je n'ai pas écrit ») ?",
+              "options": [
+                "לֹא כָּתַבְתִּי (lo katavti)",
+                "אֵין כָּתַבְתִּי (eyn katavti)",
+                "אַל כָּתַבְתִּי (al katavti)",
+                "לֹא כּוֹתֵב (lo kotev)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La négation des verbes conjugués au passé s'exprime toujours avec לֹא (lo)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Hier je me suis levé à sept heures » avec קָם (kam) :",
+              "options": [
+                "אתמול קַמְתִּי בשבע",
+                "אתמול קָם בשבע",
+                "אתמול קוֹם בשבע",
+                "אתמול קַמְנוּ בשבע"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe creux קם fait à la 1re personne du passé : קַמְתִּי (kamti)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle phrase traduit « Nous sommes arrivés, puis nous avons mangé » ?",
+              "options": [
+                "הִגַּעְנוּ ואחר כך אָכַלְנוּ",
+                "הִגַּעְנוּ ואחר כך אוֹכְלִים",
+                "מַגִּיעִים ואחר כך אָכַלְנוּ",
+                "הִגַּעְתִּי ואחר כך אָכַל"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux actions successives dans le passé s'accordent avec le sujet 'אנחנו' : הִגַּעְנוּ et אָכַלְנוּ."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment demande-t-on « Où es-tu allé hier ? » à un garçon ?",
+              "options": [
+                "לאן הָלַכְתָּ אתמול?",
+                "לאן אתה הוֹלֵךְ אתמול?",
+                "לאן הֲלַכְתֶּם אתמול?",
+                "לאן הָלַכְתִּי אתמול?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour interroger un garçon (אתה) au passé, on utilise הָלַכְתָּ (halakhta)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles propositions racontent des faits passés avec une grammaire correcte ?",
+              "options": [
+                "אתמול קָרָאתִי ספר מעניין",
+                "דני ורוני הָלְכוּ לקולנוע",
+                "אתמול אנחנו הוֹלְכִים לבית הספר",
+                "היא כָּתַב מכתב לחברה שלה"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "קראתי et הלכו sont correctement accordés au passé. Les deux autres contiennent des erreurs de temps ou d'accord."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Il n'a rien fait hier » avec עָשָׂה (asah) se traduit par :",
+              "options": [
+                "הוא לא עָשָׂה כלום אתמול",
+                "הוא אין עָשָׂה כלום אתמול",
+                "הוא לא עוֹשֶׂה כלום אתמול",
+                "הוא לא עָשִׂיתִי כלום אתמול"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 'הוא', le verbe עשה est à la 3e personne du passé précédé de לא : הוא לא עשה כלום."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« J'ai acheté du pain et du lait » avec קָנָה (kanah) se traduit par :",
+              "options": [
+                "קָנִיתִי לחם וחלב",
+                "קָנָה לחם וחלב",
+                "קוֹנֶה לחם וחלב",
+                "קָנִינוּ לחם וחלב"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La 1re personne du passé de קנה est קָנִיתִי (kaniti)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « C'était formidable / super ! » en hébreu ?",
+              "options": [
+                "זה היה נהדר! (Zeh hayah nehedar!)",
+                "זה הייתה נהדר!",
+                "זה יהיה נהדר!",
+                "זה הווה נהדר!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le pronom neutre זה (masculin grammatical), on emploie הָיָה (hayah)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mot de négation ne s'emploie JAMAIS avec un verbe au passé ?",
+              "options": ["אַל (al)", "לֹא (lo)", "כְּלָל (klal)", "אַף (af)"],
+              "correctAnswers": [0],
+              "explanation": "אַל (al) s'emploie exclusivement pour l'impératif négatif (défense avec le futur). La négation du passé est toujours לֹא."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Dès que nous avons terminé, nous sommes partis » se traduit par :",
+              "options": [
+                "ברגע שֶׁסִּיַּמְנוּ, הָלַכְנוּ",
+                "ברגע שמסיימים, הלכנו",
+                "ברגע שסיימתם, הלך",
+                "ברגע שסיימנו, נלך"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux propositions subordonnées dans le passé prennent des verbes au passé : סִיַּמְנוּ et הָלַכְנוּ."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : Hier et avant-hier (etmol, shilshom)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le mot « אֶתְמוֹל » (etmol) en hébreu ?",
+              "options": ["Hier", "Demain", "Aujourd'hui", "Avant-hier"],
+              "correctAnswers": [0],
+              "explanation": "אֶתְמוֹל (etmol) est le mot hébreu désignant 'hier'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « avant-hier » en hébreu ?",
+              "options": [
+                "שִׁלְשׁוֹם (shilshom)",
+                "אֶתְמוֹל (etmol)",
+                "מָחָר (makhar)",
+                "הַיּוֹם (hayom)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "שִׁלְשׁוֹם (shilshom) signifie 'avant-hier'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans la phrase « רָאִיתִי אותו שלשום », quand l'action a-t-elle eu lieu ?",
+              "options": [
+                "Avant-hier",
+                "Hier",
+                "Ce matin",
+                "La semaine dernière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "שלשום (shilshom) renvoie spécifiquement au jour précédant hier, soit avant-hier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Hier matin » se dit en hébreu :",
+              "options": [
+                "אתמול בבוקר (etmol ba-boker)",
+                "אתמול בערב (etmol ba-erev)",
+                "הבוקר אתמול (ha-boker etmol)",
+                "מחר בבוקר (makhar ba-boker)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On combine אתמול (hier) avec בבוקר (le matin) : אתמול בבוקר."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels termes ci-dessous désignent des moments situés dans le passé ?",
+              "options": [
+                "אֶתְמוֹל (etmol)",
+                "שִׁלְשׁוֹם (shilshom)",
+                "מָחָר (makhar)",
+                "מָחֳרָתַיִם (makhrotayim)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "אתמול (hier) et שלשום (avant-hier) renvoient au passé. מחר (demain) et מחרתיים (après-demain) renvoient au futur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Hier soir » se traduit couramment par :",
+              "options": [
+                "אתמול בערב (etmol ba-erev)",
+                "אתמול בלילה (etmol ba-layla)",
+                "שלשום בערב (shilshom ba-erev)",
+                "הערב אתמול (ha-erev etmol)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour 'hier soir', on emploie la locution אתמול בערב (etmol ba-erev)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « ___ הייתי בבית, אבל היום אני בבית הספר ».",
+              "options": [
+                "אתמול (etmol)",
+                "מחר (makhar)",
+                "עכשיו (akhshav)",
+                "תמיד (tamid)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opposition avec 'היום' (aujourd'hui) et le verbe au passé 'הייתי' appellent 'אתמול' (hier)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "D'où vient étymologiquement le mot « שִׁלְשׁוֹם » (shilshom) ?",
+              "options": [
+                "De la racine de 'trois' (שלוש), désignant le 3e jour en comptant à rebours",
+                "Du mot shalom (la paix)",
+                "Du chiffre six (shesh)",
+                "D'un emprunt moderne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shilshom est construit sur la racine de 'trois' (chaloche), comptant aujourd'hui (1), hier (2) et avant-hier (3)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment demande-t-on « Où étais-tu avant-hier ? » à une fille ?",
+              "options": [
+                "איפה הָיִית שִׁלְשׁוֹם? (Efo hayit shilshom?)",
+                "איפה הָיִיתָ שִׁלְשׁוֹם? (Efo hayita shilshom?)",
+                "איפה הָיִיתִי שִׁלְשׁוֹם? (Efo hayiti shilshom?)",
+                "איפה אַתְּ שִׁלְשׁוֹם? (Efo at shilshom?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À une fille (את), la 2e personne du passé est הָיִית (hayit)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase associe correctement « אתמול » avec son verbe ?",
+              "options": [
+                "אתמול אָכַלְתִּי פיצה",
+                "אתמול אני אוֹכֵל פיצה",
+                "אתמול יֹאכַל פיצה",
+                "אתמול אוֹכֶלֶת פיצה"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le marqueur de passé 'אתמול' exige un verbe au passé, ici אָכַלְתִּי (j'ai mangé)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Les jours et moments passés (boker, erev, layla)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment dit-on « ce matin » (moment déjà écoulé dans la journée) ?",
+              "options": [
+                "הַבֹּקֶר (ha-boker)",
+                "בֹּקֶר (boker)",
+                "אתמול בוקר (etmol boker)",
+                "כל בוקר (kol boker)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot בוקר précédé de l'article הַ- désigne 'ce matin' : הַבֹּקֶר."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Hier soir, nous avons regardé la télévision » se traduit par :",
+              "options": [
+                "אתמול בערב רָאִינוּ טלוויזיה",
+                "אתמול בבוקר ראינו טלוויזיה",
+                "הערב ראינו טלוויזיה",
+                "אתמול בלילה רואים טלוויזיה"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Hier soir' se dit אתמול בערב et 'nous avons regardé' se traduit par רָאִינוּ."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment peut-on désigner « la nuit dernière » en hébreu ?",
+              "options": [
+                "אתמול בלילה / אֶמֶשׁ",
+                "הלילה הבא",
+                "מחר בלילה",
+                "כל הלילה"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dit couramment אתמול בלילה (etmol ba-layla) ou dans un registre soigné אֶמֶשׁ (emesh)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie le mot littéraire « אֶמֶשׁ » (emesh) ?",
+              "options": [
+                "Hier soir / la nuit dernière",
+                "Ce matin à l'aube",
+                "Après-demain",
+                "Il y a un an"
+              ],
+              "correctAnswers": [0],
+              "explanation": "אֶמֶשׁ (emesh) est un terme littéraire classique signifiant 'la nuit dernière' ou 'hier soir'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases indiquent un moment du jour situé dans le passé ?",
+              "options": [
+                "הַבֹּקֶר קַמְתִּי מוקדם",
+                "אתמול בלילה יָשַׁנְתִּי טוב",
+                "מחר בבוקר אקום מוקדם",
+                "הערב אני יוֹצֵא לקולנוע"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "הבוקר קמתי (ce matin je me suis levé) et אתמול בלילה ישנתי (hier soir j'ai dormi) rapportent des faits passés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « hier après-midi » en hébreu ?",
+              "options": [
+                "אתמול אחר הצהריים (akhar ha-tsohorayim)",
+                "אתמול בבוקר (ba-boker)",
+                "אתמול בצהריים (ba-tsohorayim)",
+                "היום בצהריים (hayom)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'après-midi se dit אַחַר הַצָּהֳרַיִם (akhar ha-tsohorayim), précédé d'אתמול."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Dimanche dernier, j'ai voyagé à Tel-Aviv » se traduit par :",
+              "options": [
+                "ביום ראשון שעבר נָסַעְתִּי לתל אביב",
+                "ביום ראשון הבא אסע לתל אביב",
+                "כל יום ראשון נסעתי לתל אביב",
+                "ביום שני שעבר נסעתי לתל אביב"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Dimanche dernier' se dit ביום ראשון שעבר, suivi du passé נָסַעְתִּי."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour exprimer « pendant la nuit » (durée d'une nuit passée), on utilise :",
+              "options": [
+                "בְּמֶשֶׁךְ הלילה (be-meshekh ha-layla)",
+                "לפני הלילה",
+                "אחרי הלילה",
+                "עד הלילה"
+              ],
+              "correctAnswers": [0],
+              "explanation": "בְּמֶשֶׁךְ (be-meshekh) signifie 'pendant / au cours de'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « ___ שָׁתִיתִי קפה לפני שיצאתי לבית הספר » (Ce matin...).",
+              "options": [
+                "הַבֹּקֶר (ha-boker)",
+                "מחר (makhar)",
+                "עוד מעט (od me'at)",
+                "מחרתיים (makhrotayim)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe étant au passé (שתיתי), le marqueur approprié pour ce matin écoulé est הַבֹּקֶר."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « אתמול בצהריים נִפְגַּשְׁנוּ בפארק » ?",
+              "options": [
+                "Hier midi nous nous sommes rencontrés au parc",
+                "Hier soir nous nous sommes promenés au parc",
+                "Aujourd'hui à midi nous allons au parc",
+                "Demain midi nous nous retrouverons au parc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "אתמול בצהריים = hier midi / en début d'après-midi ; נפגשנו = nous nous sommes rencontrés."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : Il y a... (lifney)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel mot hébreu signifie « il y a » lorsqu'il est suivi d'une durée ?",
+              "options": [
+                "לִפְנֵי (lifney)",
+                "אַחֲרֵי (akharey)",
+                "בְּעוֹד (be-od)",
+                "בִּזְמַן (bi-zman)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "לִפְנֵי (lifney) suivi d'une durée exprime 'il y a' (ex: לפני שעה = il y a une heure)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on « il y a deux jours » en utilisant la forme du duel ?",
+              "options": [
+                "לִפְנֵי יוֹמַיִם (lifney yomayim)",
+                "אחרי יומיים",
+                "בעוד יומיים",
+                "לפני שני ימים"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En hébreu, 'deux jours' s'exprime par le duel יוֹמַיִם (yomayim), donc לפני יומיים."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « il y a une heure » en hébreu ?",
+              "options": [
+                "לִפְנֵי שָׁעָה (lifney sha'ah)",
+                "אחרי שעה",
+                "בעוד שעה",
+                "לפני שעות"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Une heure' se dit שעה (sha'ah), donc 'il y a une heure' se dit לפני שעה."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Il est arrivé il y a dix minutes » se traduit par :",
+              "options": [
+                "הוא הִגִּיעַ לפני עשר דקות",
+                "הוא הגיע אחרי עשר דקות",
+                "הוא מגיע לפני עשר דקות",
+                "הוא הגיע בעוד עשר דקות"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Il y a dix minutes' = לפני עשר דקות, avec le verbe au passé הִגִּיעַ."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions ci-dessous expriment une antériorité temporelle (« il y a... ») ?",
+              "options": [
+                "לִפְנֵי שָׁבוּעַ (lifney shavu'a)",
+                "לִפְנֵי שָׁנָה (lifney shanah)",
+                "אַחֲרֵי שָׁבוּעַ (akharey shavu'a)",
+                "בְּעוֹד שָׁנָה (be-od shanah)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "לפני שבוע (il y a une semaine) et לפני שנה (il y a un an) renvoient au passé avec לפני."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la différence entre « לפני שבוע » et « בעוד שבוע » ?",
+              "options": [
+                "'lifney' = il y a une semaine (passé) ; 'be-od' = dans une semaine (futur)",
+                "'lifney' = dans une semaine ; 'be-od' = il y a une semaine",
+                "Les deux s'emploient indifféremment au passé",
+                "Les deux indiquent une durée continue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "לפני + durée = 'il y a' (passé), tandis que בעוד + durée = 'dans' (futur)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on « il y a trois ans » en hébreu ?",
+              "options": [
+                "לִפְנֵי שָׁלוֹשׁ שָׁנִים (lifney shalosh shanim)",
+                "לפני שלושה שנים",
+                "אחרי שלוש שנים",
+                "בעוד שלוש שנים"
+              ],
+              "correctAnswers": [0],
+              "explanation": "שָׁנָה étant féminin, le chiffre 3 prend la forme féminine שָׁלוֹשׁ : לפני שלוש שנים."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi emploie-t-on le féminin « שלוש » devant le pluriel « שנים » ?",
+              "options": [
+                "Car le nom singulier שָׁנָה est féminin",
+                "Car le mot שנים est un duel",
+                "Car après לפני on utilise toujours le féminin",
+                "Car le chiffre 3 est invariable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le genre des nombres s'accorde avec le singulier du nom : שנה est féminin, donc שלוש שנים."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« J'ai fini mes devoirs il y a un instant » se dit :",
+              "options": [
+                "סִיַּמְתִּי את השיעורים לפני רגע",
+                "סיימתי את השיעורים בעוד רגע",
+                "אסיים את השיעורים לפני רגע",
+                "סיימתי את השיעורים אחרי רגע"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Il y a un instant' se dit לפני רגע (lifney rega)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « דִּבַּרְתִּי איתו לפני כמה ימים » ?",
+              "options": [
+                "J'ai parlé avec lui il y a quelques jours",
+                "Je parlerai avec lui dans quelques jours",
+                "Je lui parle tous les jours",
+                "J'ai parlé avec lui avant-hier soir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "לפני כמה ימים (lifney kama yamim) = il y a quelques jours."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : Semaine, mois et année passés (ha-aharon / she-avar)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment dit-on « la semaine dernière » avec le verbe עָבַר (passer) ?",
+              "options": [
+                "הַשָּׁבוּעַ שֶׁעָבַר (ha-shavu'a she-avar)",
+                "השבוע הבא (ha-shavu'a ha-ba)",
+                "כל שבוע (kol shavu'a)",
+                "שבוע שעובר (shavu'a she-over)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expression consacrée pour 'la semaine dernière' est השבוע שעבר (littéralement : la semaine qui a passé)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie littéralement la proposition « שֶׁעָבַר » (she-avar) ?",
+              "options": [
+                "Qui est passé / qui s'est écoulé",
+                "Qui va venir",
+                "Qui commence",
+                "Qui dure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "שֶׁ (qui / que) + עָבַר (est passé) signifie littéralement 'qui a passé'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour le nom féminin « שָׁנָה » (année), comment dit-on « l'année dernière » ?",
+              "options": [
+                "הַשָּׁנָה שֶׁעָבְרָה (ha-shanah she-avrah)",
+                "השנה שעבר (ha-shanah she-avar)",
+                "השנה הבאה (ha-shanah ha-ba'ah)",
+                "שנה עבר (shanah avar)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot שנה étant féminin, le verbe עבר s'accorde au féminin passé : שֶׁעָבְרָה (she-avrah)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel adjectif hébreu signifie également « dernier » (ex: le mois dernier) ?",
+              "options": [
+                "אַחֲרוֹן (akharon)",
+                "רִאשׁוֹן (rishon)",
+                "הַבָּא (ha-ba)",
+                "חָדָשׁ (khadash)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "אַחֲרוֹן (akharon) signifie 'dernier' (féminin: אַחֲרוֹנָה - akhronah)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions désignent correctement « le mois dernier » en hébreu ?",
+              "options": [
+                "הַחֹדֶשׁ שֶׁעָבַר (ha-khodesh she-avar)",
+                "הַחֹדֶשׁ הָאַחֲרוֹן (ha-khodesh ha-akharon)",
+                "החודש הבא (ha-khodesh ha-ba)",
+                "כל חודש (kol khodesh)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On peut dire aussi bien החודש שעבר que החודש האחרון pour désigner le mois écoulé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« L'année dernière, nous habitions à Haïfa » se traduit par :",
+              "options": [
+                "בַּשָּׁנָה שֶׁעָבְרָה גַּרְנוּ בחיפה",
+                "בשנה הבאה נגור בחיפה",
+                "כל שנה גרנו בחיפה",
+                "בשנה שעבר גרנו בחיפה"
+              ],
+              "correctAnswers": [0],
+              "explanation": "בַּשָּׁנָה שֶׁעָבְרָה (l'année dernière) s'accorde au féminin, et גַּרְנוּ est au passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on « שֶׁעָבְרָה » avec שנה et « שֶׁעָבַר » avec שבוע ?",
+              "options": [
+                "Car שנה est un nom féminin et שבוע est un nom masculin",
+                "Car שבוע est un nom pluriel",
+                "Car le verbe change de sens",
+                "C'est une exception sans logique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe s'accorde en genre avec le nom antécédent : שבוע (masculin) -> שעבר ; שנה (féminin) -> שעברה."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Le week-end dernier » se dit couramment :",
+              "options": [
+                "סוֹף הַשָּׁבוּעַ שֶׁעָבַר (sof ha-shavu'a she-avar)",
+                "סוף השבוע הבא",
+                "סוף שבוע הבא",
+                "כל סוף שבוע"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le week-end (סוף שבוע) dernier se dit סוף השבוע שעבר."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la locution « בַּפַּעַם הָאַחֲרוֹנָה » (ba-pa'am ha-akhronah) ?",
+              "options": [
+                "La dernière fois",
+                "La première fois",
+                "Chaque fois",
+                "Une prochaine fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "פַּעַם (fois) étant féminin, on accorde : בפעם האחרונה (la dernière fois)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « בחופש הגדול ___ הייתי באילת » (Pendant les dernières grandes vacances...).",
+              "options": [
+                "הָאַחֲרוֹן (ha-akharon)",
+                "הבאה (ha-ba'ah)",
+                "הראשון (ha-rishon)",
+                "שעברה (she-avrah)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "חֹפֶשׁ (vacances / congé) est masculin singulier, d'où l'adjectif masculin défini הָאַחֲרוֹן."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : Marqueurs d'antériorité (kodem, lifney khen)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe « קֹדֶם » (kodem) dans un récit ?",
+              "options": [
+                "D'abord / avant",
+                "Ensuite",
+                "Pendant ce temps",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "קֹדֶם (kodem) marque la première étape d'une succession temporelle : 'd'abord' ou 'auparavant'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « auparavant / avant cela » en hébreu ?",
+              "options": [
+                "לִפְנֵי כֵן (lifney khen)",
+                "אַחַר כָּךְ (akhar kakh)",
+                "עַכְשָׁיו (akhshav)",
+                "מִיָּד (miyad)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "לִפְנֵי כֵן (lifney khen) est un adverbe autonome signifiant 'avant cela' ou 'auparavant'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans « קודם אָכַלְתִּי ואחר כך יָצָאתִי », quelle action a eu lieu en premier ?",
+              "options": [
+                "Manger (קודם אכלתי)",
+                "Sortir (אחר כך יצאתי)",
+                "Les deux en même temps",
+                "Aucune des deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot קודם indique la première action effectuée dans l'ordre chronologique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la différence d'emploi entre « לפני » et « לפני כן » ?",
+              "options": [
+                "'לפני' est une préposition suivie d'un nom ; 'לפני כן' est un adverbe qui s'emploie seul",
+                "'לפני כן' doit toujours être suivi d'un infinitif",
+                "'לפני' s'emploie seulement au futur",
+                "Il n'y a aucune différence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "לפני s'associe à un groupe nominal (לפני השיעור), alors que לפני כן fonctionne seul en fin ou début de phrase."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels marqueurs expriment l'antériorité dans une chronologie d'actions passées ?",
+              "options": [
+                "קֹדֶם (kodem)",
+                "לִפְנֵי כֵן (lifney khen)",
+                "אַחַר כָּךְ (akhar kakh)",
+                "בֶּעָתִיד (ba-atid)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "קודם et לפני כן situent une action en amont dans la chronologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Avant le cours, j'ai lu le texte » se traduit par :",
+              "options": [
+                "לִפְנֵי השיעור קָרָאתִי את הטקסט",
+                "לפני כן קראתי את הטקסט",
+                "אחרי השיעור קראתי את הטקסט",
+                "קודם השיעור קראתי את הטקסט"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant le nom 'השיעור', on utilise la préposition simple לפני : לפני השיעור."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« D'abord nous avons parlé avec le directeur » se traduit par :",
+              "options": [
+                "קֹדֶם דִּבַּרְנוּ עם המנהל",
+                "אחר כך דיברנו עם המנהל",
+                "בסוף דיברנו עם המנהל",
+                "תמיד דיברנו עם המנהל"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'D'abord' se traduit par קודם (kodem)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la locution courante « קֹדֶם כֹּל » (kodem kol) ?",
+              "options": [
+                "Tout d'abord / avant tout",
+                "À la fin de tout",
+                "Tout le monde",
+                "Presque tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "קודם כל (kodem kol) signifie 'tout d'abord' ou 'en premier lieu'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « לא הִכַּרְתִּי אותו ___, פגשתי אותו רק אתמול » (Je ne le connaissais pas avant...).",
+              "options": [
+                "לִפְנֵי כֵן (lifney khen)",
+                "אחר כך (akhar kakh)",
+                "מחר (makhar)",
+                "עוד מעט (od me'at)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "לפני כן (auparavant) convient parfaitement en position finale pour marquer le fait antérieur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on « avant de manger » en hébreu ?",
+              "options": [
+                "לִפְנֵי הָאֹכֶל / לפני שאוכלים",
+                "אחרי האוכל",
+                "בזמן האוכל",
+                "בלי אוכל"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Avant de manger' se rend couramment par לפני האוכל ou la subordonnée לפני שאוכלים."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : Marqueurs de succession (ahar kakh, az, miyad)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie l'expression « אַחַר כָּךְ » (akhar kakh) ?",
+              "options": [
+                "Ensuite / après cela",
+                "Auparavant",
+                "Maintenant",
+                "Tout à coup"
+              ],
+              "correctAnswers": [0],
+              "explanation": "אַחַר כָּךְ (akhar kakh) est l'expression standard pour exprimer 'ensuite' ou 'après cela'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « alors / à ce moment-là » en hébreu ?",
+              "options": ["אָז (az)", "אִם (im)", "אַף (af)", "גַּם (gam)"],
+              "correctAnswers": [0],
+              "explanation": "אָז (az) exprime 'alors' ou 'à ce moment précis du passé'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe « מִיָּד » (miyad) ?",
+              "options": [
+                "Aussitôt / immédiatement",
+                "Plus tard",
+                "Rarement",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "מִיָּד (miyad) signifie 'immédiatement' ou 'aussitôt'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« D'abord nous avons étudié, ensuite nous avons joué » se traduit par :",
+              "options": [
+                "קֹדֶם לָמַדְנוּ, ואחר כך שִׂחַקְנוּ",
+                "אחר כך למדנו, וקודם שיחקנו",
+                "למדנו כי שיחקנו אחר כך",
+                "תמיד למדנו ומעולם לא שיחקנו"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La succession logique est : קודם (d'abord) ... ואחר כך (et ensuite)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels connecteurs permettent d'enchaîner des étapes chronologiques successives ?",
+              "options": [
+                "אַחַר כָּךְ (akhar kakh)",
+                "אָז (az)",
+                "שִׁלְשׁוֹם (shilshom)",
+                "אֶתְמוֹל (etmol)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "אחר כך (ensuite) et אז (alors) servent de connecteurs de progression chronologique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Après le repas, nous sommes allés au cinéma » se traduit par :",
+              "options": [
+                "אַחֲרֵי הארוחה הָלַכְנוּ לקולנוע",
+                "לפני הארוחה הלכנו לקולנוע",
+                "בזמן הארוחה הלכנו לקולנוע",
+                "בלי הארוחה הלכנו לקולנוע"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La préposition 'après' suivie d'un nom se traduit par אַחֲרֵי (akharey)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle conjonction introduit une proposition subordonnée : « après que... » ?",
+              "options": [
+                "אַחֲרֵי שֶׁ... (akharey she...)",
+                "לפני ש...",
+                "בזמן ש...",
+                "כדי ש..."
+              ],
+              "correctAnswers": [0],
+              "explanation": "אַחֲרֵי שֶׁ... introduit une proposition : אחרי שסיימתי = après que j'ai terminé / après avoir terminé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Dès qu'il a appelé, je suis parti immédiatement » :",
+              "options": [
+                "ברגע שהוא הִתְקַשֵּׁר, יָצָאתִי מִיָּד",
+                "אחרי שהוא התקשר, לא יצאתי",
+                "לפני שהוא התקשר, יצאתי מיד",
+                "כשמצלצל, יוצא מיד"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ברגע ש... = au moment où / dès que ; יצאתי מיד = je suis parti immédiatement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on « finalement / à la fin » pour clore une suite d'actions ?",
+              "options": [
+                "בַּסּוֹף (ba-sof)",
+                "בַּהַתְחָלָה (ba-hatkhalah)",
+                "בָּאֶמְצַע (ba-emtsa)",
+                "תָּמִיד (tamid)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "בַּסּוֹף (ba-sof) signifie 'à la fin' ou 'finalement'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « הָלַכְתִּי לחנות, וְאָז רָאִיתִי את יוסי », que signifie « ואז » ?",
+              "options": [
+                "Et alors / et là / et à ce moment",
+                "Et avant",
+                "Mais pas",
+                "Sans raison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "וְאָז (ve-az) relie deux propositions pour marquer une conséquence ou une étape immédiate : 'et alors'."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Exprimer la fréquence dans le passé (tamid, lifamim, af paam)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe « תָּמִיד » (tamid) ?",
+              "options": ["Toujours", "Parfois", "Jamais", "Souvent"],
+              "correctAnswers": [0],
+              "explanation": "תָּמִיד (tamid) exprime la constance : 'toujours'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « parfois / quelquefois » en hébreu ?",
+              "options": [
+                "לִפְעָמִים (lif'amim)",
+                "תָּמִיד (tamid)",
+                "אַף פַּעַם (af pa'am)",
+                "הַרְבֵּה (harbeh)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "לִפְעָמִים (lif'amim) signifie 'parfois / de temps en temps'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « jamais » dans une phrase au passé (ex: je n'ai jamais vu) ?",
+              "options": [
+                "אַף פַּעַם לֹא (af pa'am lo)",
+                "תמיד לא (tamid lo)",
+                "רק לא (rak lo)",
+                "כבר לא (kvar lo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Jamais' s'exprime par אַף פַּעַם combiné obligatoirement avec la négation לֹא."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Je n'ai jamais visité cet endroit » se traduit par :",
+              "options": [
+                "אַף פַּעַם לא בִּקַּרְתִּי במקום הזה",
+                "תמיד ביקרתי במקום הזה",
+                "לפעמים ביקרתי במקום הזה",
+                "כבר ביקרתי במקום הזה"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On emploie אף פעם לא + verbe au passé : אף פעם לא ביקרתי."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels termes expriment une notion de fréquence temporelle ?",
+              "options": [
+                "לִפְעָמִים (lif'amim)",
+                "תָּמִיד (tamid)",
+                "אֶתְמוֹל (etmol)",
+                "שִׁלְשׁוֹם (shilshom)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "לפעמים (parfois) et תמיד (toujours) sont des adverbes de fréquence. אתמול et שלשום désignent des jours précis."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « souvent » en hébreu ?",
+              "options": [
+                "הַרְבֵּה פְּעָמִים (harbeh pe'amim)",
+                "פַּעַם אַחַת (pa'am akhat)",
+                "אַף פַּעַם (af pa'am)",
+                "מְעַט (me'at)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Souvent' se traduit par הַרְבֵּה פְּעָמִים (littéralement : beaucoup de fois) ou לְעִתִּים קְרוֹבוֹת."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la locution « פַּעַם אַחַת » (pa'am akhat) ?",
+              "options": [
+                "Une fois",
+                "Plusieurs fois",
+                "Chaque fois",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "פַּעַם אַחַת = une fois (terme classique de conte : 'il était une fois')."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Quand j'étais petit, je jouais toujours au football » se traduit par :",
+              "options": [
+                "כְּשֶׁהָיִיתִי קטן, תָּמִיד שִׂחַקְתִּי כדורגל",
+                "כשהייתי קטן, אף פעם לא שיחקתי כדורגל",
+                "כשאני קטן, תמיד משחק כדורגל",
+                "כשהייתי גדול, לפעמים שיחקתי כדורגל"
+              ],
+              "correctAnswers": [0],
+              "explanation": "כְּשֶׁהָיִיתִי = quand j'étais ; תָּמִיד שִׂחַקְתִּי = je jouais toujours."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la formule soutenue « מֵעוֹלָם לֹא » (me'olam lo) avec un verbe au passé ?",
+              "options": [
+                "Jamais de ma vie / jamais au grand jamais",
+                "Depuis toujours",
+                "Demain sans faute",
+                "Tous les jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "מֵעוֹלָם לֹא s'emploie dans un registre soigné au passé pour signifier 'jamais de la vie'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Quelquefois nous allions à la mer le samedi » se traduit par :",
+              "options": [
+                "לִפְעָמִים הָלַכְנוּ לים בשבת",
+                "תמיד הלכנו לים בשבת",
+                "אף פעם לא הלכנו לים בשבת",
+                "היום אנחנו הולכים לים בשבת"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Quelquefois' se traduit par לפעמים, suivi de הלכנו au passé."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : Époques et durées passées (ba-avar, be-meshekh)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment dit-on « dans le passé / autrefois » en hébreu ?",
+              "options": [
+                "בֶּעָבָר (ba-avar)",
+                "בֶּעָתִיד (ba-atid)",
+                "בַּהֹוֶה (ba-hoveh)",
+                "בְּקָרוֹב (be-karov)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "בֶּעָבָר (ba-avar) signifie 'dans le passé' (du mot עבר - passé)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel mot court signifie couramment « autrefois / jadis » ?",
+              "options": [
+                "פַּעַם (pa'am)",
+                "עַכְשָׁיו (akhshav)",
+                "מָחָר (makhar)",
+                "עוֹד מְעַט (od me'at)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "פַּעַם (pa'am) employé seul en début de phrase signifie souvent 'autrefois / jadis'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on la durée « pendant trois heures » au passé ?",
+              "options": [
+                "בְּמֶשֶׁךְ שָׁלוֹשׁ שָׁעוֹת",
+                "לפני שלוש שעות",
+                "אחרי שלוש שעות",
+                "בעוד שלוש שעות"
+              ],
+              "correctAnswers": [0],
+              "explanation": "בְּמֶשֶׁךְ (be-meshekh) indique la durée d'une action : pendant trois heures."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Pendant toute la journée, il a plu » se traduit par :",
+              "options": [
+                "בְּמֶשֶׁךְ כל היום יָרַד גשם",
+                "לפני כל היום ירד גשם",
+                "אחרי כל היום ירד גשם",
+                "בכל יום יורד גשם"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Pendant toute la journée' se dit במשך כל היום, et 'il a plu' יָרַד גשם."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions font référence à une époque passée ou à un temps révolu ?",
+              "options": [
+                "בֶּעָבָר (ba-avar)",
+                "פַּעַם (pa'am)",
+                "בֶּעָתִיד (ba-atid)",
+                "מָחֳרָתַיִם (makhrotayim)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "בעבר (dans le passé) et פעם (autrefois) font référence au passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie « פַּעַם אנשים חָיוּ בלי טלפונים ניידים » ?",
+              "options": [
+                "Autrefois, les gens vivaient sans téléphones portables",
+                "Aujourd'hui, les gens vivent avec des téléphones portables",
+                "Bientôt, les gens vivront sans téléphones portables",
+                "Toujours, les gens ont eu des téléphones portables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "פעם = autrefois ; אנשים חיו = les gens vivaient ; בלי טלפונים = sans téléphones."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on « depuis ce moment-là / depuis lors » ?",
+              "options": [
+                "מֵאָז (me-az)",
+                "עַד אָז (ad az)",
+                "לִפְנֵי אָז (lifney az)",
+                "אַחַר כָּךְ (akhar kakh)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "מֵאָז (me-az) signifie 'depuis lors / depuis ce temps-là'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Jusqu'à hier, je ne savais pas » se traduit par :",
+              "options": [
+                "עַד אתמול לא יָדַעְתִּי",
+                "מאז אתמול לא ידעתי",
+                "לפני אתמול לא ידעתי",
+                "במשך אתמול לא ידעתי"
+              ],
+              "correctAnswers": [0],
+              "explanation": "עַד (ad) signifie 'jusqu'à' : עד אתמול (jusqu'à hier)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la nuance entre « בְּמֶשֶׁךְ » et « לִפְנֵי » devant une durée ?",
+              "options": [
+                "'במשך' exprime la durée totale continue ; 'לפני' exprime l'intervalle écoulé depuis l'événement",
+                "'לפני' exprime une durée continue",
+                "Les deux mots sont strictement interchangeables",
+                "'במשך' ne s'emploie qu'au futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "לפני שעה = il y a une heure (repère ponctuel) ; במשך שעה = pendant une heure (durée continue)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la locution biblique et littéraire « בִּימֵי קֶדֶם » (bi-ymey kedem) ?",
+              "options": [
+                "Aux temps anciens / jadis",
+                "Il y a quelques jours",
+                "Dans un avenir proche",
+                "À la fin de la semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "בימי קדם signifie 'dans les temps anciens' ou 'aux premiers âges'."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Concordance des temps et narration",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Quand je suis venu, il dormait » ?",
+              "options": [
+                "כְּשֶׁבָּאתִי, הוא יָשַׁן",
+                "כשבאתי, הוא יישן",
+                "כשבאתי, הוא יושן",
+                "כשאבוא, הוא ישן"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe כש- s'associe au verbe au passé באתי, et ישן exprime l'état passé 'il dormait'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le préfixe « כְּשֶׁ... » (ke-she...) devant une proposition verbale ?",
+              "options": [
+                "Quand / lorsque...",
+                "Parce que...",
+                "Pour que...",
+                "Bien que..."
+              ],
+              "correctAnswers": [0],
+              "explanation": "כְּשֶׁ... (ke-she...) signifie 'quand' ou 'lorsque'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot formel est synonyme de « כְּשֶׁ... » pour signifier « lorsque » ?",
+              "options": [
+                "כַּאֲשֶׁר (ka'asher)",
+                "מִפְּנֵי שֶׁ (mipney she)",
+                "כְּדֵי שֶׁ (kdey she)",
+                "לַמְרוֹת שֶׁ (lamrot she)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "כַּאֲשֶׁר (ka'asher) est la conjonction littéraire équivalente à כש... (lorsque)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Pendant que nous mangions, le téléphone a sonné » se traduit par :",
+              "options": [
+                "בִּזְמַן שֶׁאָכַלְנוּ, הטלפון צִלְצֵל",
+                "לפני שאכלנו, הטלפון צלצל",
+                "אחרי שאכלנו, הטלפון מצלצל",
+                "בלי שאכלנו, הטלפון צלצל"
+              ],
+              "correctAnswers": [0],
+              "explanation": "בִּזְמַן שֶׁ... (bi-zman she...) exprime la simultanéité : 'pendant que'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles conjonctions introduisent une proposition temporelle dans un récit ?",
+              "options": [
+                "כְּשֶׁ... (ke-she...)",
+                "כַּאֲשֶׁר (ka'asher)",
+                "כִּי (ki)",
+                "אִם (im)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "כש... et כאשר expriment le temps ('quand'). כי exprime la cause ('car') et אם la condition ('si')."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans « הוא אָמַר שֶׁהוּא כְּבָר עָשָׂה את זה », à quel temps est le verbe עָשָׂה (asah) ?",
+              "options": [
+                "Au passé (action accomplie antérieurement)",
+                "Au présent",
+                "Au futur",
+                "À l'impératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "עָשָׂה est à la 3e personne masc. du passé, signifiant 'qu'il avait déjà fait cela'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe « כְּבָר » (kvar) dans une proposition au passé ?",
+              "options": ["Déjà", "Encore", "Bientôt", "Toujours"],
+              "correctAnswers": [0],
+              "explanation": "כְּבָר (kvar) signifie 'déjà' (ex: כבר עשיתי = j'ai déjà fait)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Nous avons entendu qu'ils sont arrivés hier » se traduit par :",
+              "options": [
+                "שָׁמַעְנוּ שֶׁהֵם הִגִּיעוּ אתמול",
+                "שומעים שהם יגיעו אתמול",
+                "שמענו שהם מגיעים מחר",
+                "שמעתם שהם הגיעו מחר"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux verbes sont au passé : שָׁמַעְנוּ (nous avons entendu) et הִגִּיעוּ (ils sont arrivés)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on « Dès que je suis entré, j'ai vu mon ami » en hébreu parlé ?",
+              "options": [
+                "אֵיךְ שֶׁנִּכְנַסְתִּי, רָאִיתִי את חבר שלי",
+                "לפני שנכנסתי, ראיתי את חבר שלי",
+                "אחרי שאכנס, אראה את חבר שלי",
+                "כשנכנס, רואה את חבר שלי"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En hébreu familier et courant, אֵיךְ שֶׁ... (eykh she...) signifie 'dès que / à peine'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment l'hébreu moderne rend-il la distinction entre l'imparfait et le passé composé du français ?",
+              "options": [
+                "Par une seule forme verbale de passé, le contexte et les adverbes précisant l'aspect",
+                "Par deux conjugaisons de passé complètement distinctes",
+                "Par l'utilisation obligatoire du futur pour l'imparfait",
+                "Par l'interdiction des adverbes temporels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hébreu possède un temps de passé unique ; la nuance entre imparfait et passé composé provient du contexte et des adverbes."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Synthèse : Raconter une journée ou un souvenir au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Complétez le récit : « ___ קַמְתִּי בשבע, הִתְלַבַּשְׁתִּי ויָצָאתִי לדרך ».",
+              "options": [
+                "אֶתְמוֹל (etmol)",
+                "מחר (makhar)",
+                "עכשיו (akhshav)",
+                "עוד מעט (od me'at)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La suite de verbes au passé (קמתי, התלבשתי, יצאתי) nécessite le marqueur temporel passé 'אתמול'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Nous avons passé une excellente journée à la plage » se traduit par :",
+              "options": [
+                "בִּלִּינוּ יום נהדר בים",
+                "נבלה יום נהדר בים",
+                "מבלים יום נהדר בים",
+                "ביליתם יום נהדר בים"
+              ],
+              "correctAnswers": [0],
+              "explanation": "בִּלִּינוּ (bilinu) est la 1re personne pluriel au passé du verbe לבלות (passer du bon temps)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle phrase traduit « D'abord nous avons visité le musée, puis nous avons déjeuné » ?",
+              "options": [
+                "קֹדֶם בִּקַּרְנוּ במוזיאון, ואחר כך אָכַלְנוּ צהריים",
+                "אחר כך ביקרנו במוזיאון, וקודם אכלנו צהריים",
+                "ביקרנו במוזיאון כי אכלנו צהריים",
+                "לפני שנבקר במוזיאון נאכל צהריים"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On structure le récit avec קודם (d'abord) puis ואחר כך (et ensuite), avec les verbes au passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Quand j'étais jeune, nous habitions à Jérusalem » se traduit par :",
+              "options": [
+                "כְּשֶׁהָיִיתִי צעיר, גַּרְנוּ בירושלים",
+                "כשאני צעיר, נגור בירושלים",
+                "כשאהיה צעיר, גרנו בירושלים",
+                "כשהיו צעירים, גרתי בירושלים"
+              ],
+              "correctAnswers": [0],
+              "explanation": "כְּשֶׁהָיִיתִי צעיר = quand j'étais jeune ; גַּרְנוּ = nous habitions."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels éléments sont essentiels pour structurer un récit chronologique au passé en hébreu ?",
+              "options": [
+                "Des verbes conjugués au passé (עבר)",
+                "Des connecteurs temporels (קודם, אחר כך, אז)",
+                "Des verbes systématiquement au futur",
+                "L'emploi exclusif d'adjectifs au féminin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un récit au passé s'articule autour de verbes au temps passé et de marqueurs/connecteurs chronologiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on « C'était une expérience inoubliable » ?",
+              "options": [
+                "זאת הָיְתָה חֲוָיָה בלתי נשכחת",
+                "זה היה חוויה בלתי נשכחת",
+                "זאת תהיה חוויה בלתי נשכחת",
+                "זאת חוויה בלתי נשכחת עכשיו"
+              ],
+              "correctAnswers": [0],
+              "explanation": "חֲוָיָה étant féminin, le pronom démonstratif est זאת et le verbe s'accorde au féminin : הָיְתָה."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi emploie-t-on « הָיְתָה » (haytah) et non « הָיָה » devant « חֲוָיָה » ?",
+              "options": [
+                "Parce que חֲוָיָה (khavayah) est un nom féminin singulier",
+                "Parce que le sujet est au duel",
+                "Parce que c'est une action rapide",
+                "C'est une exception invariable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accord du verbe être se fait avec le nom attribut/sujet : חוויה est féminin, d'où הייתה."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« À la fin de la journée, nous sommes rentrés fatigués mais heureux » :",
+              "options": [
+                "בְּסוֹף היום חָזַרְנוּ עייפים אך שמחים",
+                "בתחילת היום יצאנו עייפים אך שמחים",
+                "בסוף היום נחזור עייפים אך שמחים",
+                "בסוף היום חוזרים עייפים אך שמחים"
+              ],
+              "correctAnswers": [0],
+              "explanation": "בסוף היום = à la fin de la journée ; חָזַרְנוּ = nous sommes rentrés (au passé)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « שִׁלְשׁוֹם רָאִיתִי סרט מעולה שֶׁסִּפֵּר על ההיסטוריה », combien y a-t-il de verbes au passé ?",
+              "options": [
+                "Deux verbes : רָאִיתִי (j'ai vu) et סִפֵּר (a raconté)",
+                "Un seul verbe : ראיתי",
+                "Trois verbes",
+                "Aucun verbe au passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il y a 2 verbes au passé : רָאִיתִי (Binyan Paal, 1re pers.) et סִפֵּר (Binyan Piel, 3e pers. masc.)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase résume le mieux un souvenir de vacances inoubliable au passé ?",
+              "options": [
+                "זה היה טיול בלתי נשכח! (Ce fut une excursion inoubliable !)",
+                "מחר נצא לטיול! (Demain nous irons en excursion !)",
+                "אנחנו לא אוהבים לטייל. (Nous n'aimons pas voyager.)",
+                "אף פעם לא נסענו לשם. (Nous ne sommes jamais allés là-bas.)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'זה היה טיול בלתי נשכח!' utilise le passé pour clore un souvenir positif."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

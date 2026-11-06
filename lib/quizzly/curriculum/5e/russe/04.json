@@ -1,0 +1,2463 @@
+{
+  "id": "5e-russe-04",
+  "year": "5e",
+  "subject": "russe",
+  "title": "La grammaire du russe",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur les articles en russe sont correctes ?",
+              "explanation": "Le russe n'utilise pas d'articles comme « le » ou « un », mais les noms ont un genre.",
+              "options": [
+                "Le russe n'a pas d'article défini ou indéfini",
+                "On place « le » devant chaque nom",
+                "Le genre du nom compte pour accorder certains mots",
+                "Tous les noms russes sont masculins"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En français on dit « la table » ; en russe стол (stol) se dit comment ?",
+              "explanation": "On dit simplement стол (stol), sans article.",
+              "options": [
+                "стол (stol)",
+                "la стол (stol)",
+                "un стол (stol)",
+                "le стол (stol)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot est masculin ?",
+              "explanation": "Стол (stol) « table » est un nom masculin.",
+              "options": [
+                "стол (stol)",
+                "книга (kniga)",
+                "море (more)",
+                "это (eto)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot est féminin ?",
+              "explanation": "Книга (kniga) « livre » est un nom féminin.",
+              "options": [
+                "стол (stol)",
+                "книга (kniga)",
+                "море (more)",
+                "он (on)"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot est neutre ?",
+              "explanation": "Море (more) « mer » est un nom neutre.",
+              "options": [
+                "книга (kniga)",
+                "стол (stol)",
+                "море (more)",
+                "ты (ty)"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour accorder un adjectif en russe, on regarde surtout…",
+              "explanation": "L'adjectif s'accorde en genre (et nombre) avec le nom qu'il décrit.",
+              "options": [
+                "le genre du nom",
+                "la présence d'un article",
+                "l'heure de la phrase",
+                "la traduction française"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Большой стол » (bol'shoy stol) décrit…",
+              "explanation": "Bol'shoy est à la forme masculine pour accompagner стол (stol).",
+              "options": [
+                "une grande table (masculin)",
+                "une grande mer",
+                "un grand livre",
+                "cette table sans adjectif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Большая книга » (bol'shaya kniga) montre un accord…",
+              "explanation": "Bol'shaya est la forme féminine devant книга (kniga).",
+              "options": ["féminin", "masculin", "neutre", "sans genre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En russe, le genre se voit souvent…",
+              "explanation": "La terminaison du nom donne souvent un indice (consonne, -a, -e…).",
+              "options": [
+                "à la fin du mot",
+                "avant un article",
+                "dans le verbe « être »",
+                "uniquement à l'oral"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lequel n'existe pas en russe comme en français ?",
+              "explanation": "Il n'y a pas d'équivalent de « un » ou « une » devant le nom.",
+              "options": [
+                "l'article indéfini",
+                "le genre",
+                "le nom commun",
+                "l'adjectif"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels noms sont masculins ?",
+              "explanation": "Стол (stol) et дом (dom) sont masculins ; книга (kniga) est féminin.",
+              "options": [
+                "стол (stol)",
+                "книга (kniga)",
+                "дом (dom)",
+                "море (more)"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Стол (stol) signifie…",
+              "explanation": "Stol = table, nom masculin.",
+              "options": ["table", "livre", "mer", "maison"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un nom masculin se termine souvent par…",
+              "explanation": "Beaucoup de masculins finissent par une consonne, comme стол (stol).",
+              "options": [
+                "une consonne",
+                "toujours -a",
+                "toujours -ие",
+                "un article"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Новый стол » (novyy stol) : novyy est…",
+              "explanation": "Novyy est la forme masculine de « nouveau ».",
+              "options": [
+                "masculin",
+                "féminin",
+                "neutre",
+                "pluriel uniquement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot va avec « маленький » (malen'kiy) au masculin ?",
+              "explanation": "Malen'kiy s'accorde avec un nom masculin comme дом (dom).",
+              "options": [
+                "дом (dom)",
+                "книга (kniga)",
+                "море (more)",
+                "она (ona)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Дом (dom) signifie…",
+              "explanation": "Dom = maison, généralement masculin.",
+              "options": ["maison", "mer", "livre", "elle"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sans article, « un stylo » se dit simplement…",
+              "explanation": "On emploie le nom seul, par ex. ручка (ruchka) si on le connaît.",
+              "options": [
+                "le nom seul",
+                "« un » + nom en russe",
+                "« le » + nom",
+                "deux articles"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le masculin aide surtout à…",
+              "explanation": "Il permet de choisir la bonne forme d'adjectif ou de démonstratif.",
+              "options": [
+                "accorder les mots liés",
+                "ajouter « le »",
+                "effacer le nom",
+                "traduire en anglais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Это стол » (eto stol) : стол est…",
+              "explanation": "Стол reste masculin dans cette phrase simple.",
+              "options": ["masculin", "féminin", "neutre", "sans nom"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Parmi ces mots, le masculin est…",
+              "explanation": "Стул (stul) « chaise » est masculin.",
+              "options": [
+                "стул (stul)",
+                "рука (ruka)",
+                "окно (okno)",
+                "это (eto)"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont féminins ?",
+              "explanation": "Книга (kniga) et школа (shkola) sont féminins.",
+              "options": [
+                "книга (kniga)",
+                "стол (stol)",
+                "школа (shkola)",
+                "море (more)"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Книга (kniga) signifie…",
+              "explanation": "Kniga = livre, nom féminin.",
+              "options": ["livre", "table", "mer", "je"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Beaucoup de noms féminins finissent par…",
+              "explanation": "La terminaison -a est fréquente, comme dans книга (kniga).",
+              "options": [
+                "-a",
+                "toujours -o seul",
+                "un article",
+                "-ть toujours"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Хорошая книга » (khoroshaya kniga) : khoroshaya est…",
+              "explanation": "Khoroshaya est la forme féminine de « bon/bonne ».",
+              "options": ["féminine", "masculine", "neutre", "anglaise"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel adjectif féminin va avec книга (kniga) ?",
+              "explanation": "Novaya (новая) est la forme féminine de « nouveau/nouvelle ».",
+              "options": [
+                "новая (novaya)",
+                "новый (novyy)",
+                "новое (novoye)",
+                "новые (novyye)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Школа (shkola) est…",
+              "explanation": "Shkola « école » est un nom féminin.",
+              "options": ["féminin", "masculin", "neutre", "verbe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En russe, « la bonne école » sans article se construit avec…",
+              "explanation": "Un adjectif féminin + nom féminin, sans « la ».",
+              "options": [
+                "adjectif féminin + школа (shkola)",
+                "article + nom",
+                "nom seul obligatoire",
+                "pronon « elle » seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Рука (ruka) « main » est…",
+              "explanation": "Ruka est un nom féminin en -a.",
+              "options": ["féminin", "masculin", "neutre", "pronom"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Это книга » (eto kniga) : le nom est…",
+              "explanation": "Книга reste féminin après это (eto).",
+              "options": ["féminin", "masculin", "neutre", "pluriel"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le féminin sert surtout à…",
+              "explanation": "Comme pour le masculin, il guide l'accord des adjectifs.",
+              "options": [
+                "accorder adjectifs et certains mots",
+                "remplacer les articles",
+                "supprimer le nom",
+                "changer я en ты"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont neutres ?",
+              "explanation": "Море (more) et окно (okno) sont neutres.",
+              "options": [
+                "море (more)",
+                "стол (stol)",
+                "окно (okno)",
+                "книга (kniga)"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Море (more) signifie…",
+              "explanation": "More = mer, nom neutre.",
+              "options": ["mer", "livre", "table", "tu"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Окно (okno) signifie…",
+              "explanation": "Okno = fenêtre, nom neutre.",
+              "options": ["fenêtre", "main", "maison", "il"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Большое море » (bol'shoye more) : bol'shoye est…",
+              "explanation": "Bol'shoye est la forme neutre de « grand/grande ».",
+              "options": ["neutre", "masculin", "féminin", "article"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un neutre va souvent avec un adjectif en…",
+              "explanation": "Forme neutre typique : -oe, comme большое (bol'shoye).",
+              "options": [
+                "-ое (oe) comme большое",
+                "toujours -ый seul",
+                "article le",
+                "sans adjectif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Это море » (eto more) : more est…",
+              "explanation": "Море est neutre dans cette phrase.",
+              "options": ["neutre", "masculin", "féminin", "pronom"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le neutre existe en russe…",
+              "explanation": "Comme en français certains mots, le russe a trois genres.",
+              "options": [
+                "oui, avec masculin et féminin",
+                "non, seulement deux",
+                "non, il n'y a pas de genre",
+                "seulement au pluriel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Новое окно (novoye okno) signifie environ…",
+              "explanation": "Novoye okno = nouvelle fenêtre (accord neutre).",
+              "options": [
+                "nouvelle fenêtre",
+                "nouvelle table",
+                "grand livre",
+                "c'est moi"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Parmi ces noms, le neutre est…",
+              "explanation": "Море (more) est neutre.",
+              "options": [
+                "море (more)",
+                "дом (dom)",
+                "книга (kniga)",
+                "он (on)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans article, « la mer » se dit…",
+              "explanation": "On dit море (more) ou, avec un adjectif, большое море (bol'shoye more).",
+              "options": ["море (more)", "la море", "un море", "le море"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles paires nom-genre sont correctes ?",
+              "explanation": "Стол masculin, книга féminin ; море neutre.",
+              "options": [
+                "стол (stol) — masculin",
+                "книга (kniga) — masculin",
+                "море (more) — neutre",
+                "море (more) — féminin"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Trois genres en russe : masculin, féminin et…",
+              "explanation": "Le troisième genre est le neutre.",
+              "options": [
+                "neutre",
+                "article",
+                "pluriel seulement",
+                "infinitif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deviner le genre aide quand on…",
+              "explanation": "Il faut choisir la bonne forme d'adjectif.",
+              "options": [
+                "accorde un adjectif",
+                "ajoute « des »",
+                "parle anglais",
+                "efface это"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Книга (kniga) — стол (stol) : les genres sont…",
+              "explanation": "Kniga féminin, stol masculin.",
+              "options": [
+                "féminin et masculin",
+                "tous masculins",
+                "tous neutres",
+                "identiques"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le russe compare-t-il au français pour les articles ?",
+              "explanation": "Le français en a ; le russe non.",
+              "options": [
+                "le russe n'en a pas",
+                "les deux en ont autant",
+                "le russe en a plus",
+                "seulement au pluriel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Маленькая книга » : le nom est…",
+              "explanation": "Malen'kaya exige un nom féminin comme книга.",
+              "options": ["féminin", "masculin", "neutre", "verbe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Маленький стол » : le nom est…",
+              "explanation": "Malen'kiy va avec un masculin.",
+              "options": ["masculin", "féminin", "neutre", "pronom"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Indice : terminaison -a souvent…",
+              "explanation": "Souvent féminin, pas toujours, mais c'est un bon repère en 5e.",
+              "options": [
+                "féminin",
+                "masculin systématique",
+                "neutre systématique",
+                "article"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Это (eto) n'est pas un article ; c'est…",
+              "explanation": "Eto = « c'est / ceci » pour présenter.",
+              "options": [
+                "un mot pour dire « c'est »",
+                "« le »",
+                "« une »",
+                "un verbe être seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour « accord », en 5e on retient surtout…",
+              "explanation": "Adjectif + nom du même genre.",
+              "options": [
+                "adjectif et nom du même genre",
+                "article + nom",
+                "deux verbes",
+                "pronon + article"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs sont masculins ?",
+              "explanation": "Novyy et bol'shoy sont masculins ; novaya est féminin.",
+              "options": [
+                "новый (novyy)",
+                "новая (novaya)",
+                "большой (bol'shoy)",
+                "большая (bol'shaya)"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Accord correct : … стол (stol)",
+              "explanation": "Novyy stol = nouvelle table (forme masc.).",
+              "options": [
+                "новый (novyy)",
+                "новая (novaya)",
+                "новое (novoye)",
+                "новую (novuyu)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Синий стол » (siniy stol) : siniy est…",
+              "explanation": "Siniy « bleu » est masculin ici.",
+              "options": ["masculin", "féminin", "neutre", "nom"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Erreur d'accord : lequel est faux pour стол (stol) ?",
+              "explanation": "On ne dit pas novaya avec stol.",
+              "options": [
+                "новая стол (novaya stol)",
+                "новый стол (novyy stol)",
+                "большой стол (bol'shoy stol)",
+                "маленький стол (malen'kiy stol)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Большой (bol'shoy) avec дом (dom) est…",
+              "explanation": "Dom est masculin, accord correct.",
+              "options": [
+                "correct",
+                "impossible",
+                "féminin seulement",
+                "sans sens"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un adjectif masculin décrit un nom…",
+              "explanation": "Même genre masculin.",
+              "options": [
+                "masculin",
+                "toujours féminin",
+                "toujours neutre",
+                "sans nom"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Стол (stol) + adjectif : on choisit la forme…",
+              "explanation": "Forme masculine de l'adjectif.",
+              "options": ["masculine", "féminine", "neutre seule", "anglaise"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Хороший дом » (khoroshiy dom) : khoroshiy est…",
+              "explanation": "Khoroshiy est masculin avec dom.",
+              "options": ["masculin", "féminin", "neutre", "pluriel"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sans article, l'accord se voit entre…",
+              "explanation": "Adjectif et nom visibles côte à côte.",
+              "options": [
+                "adjectif et nom",
+                "nom et « le »",
+                "deux articles",
+                "pronon et verbe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Masculin + masculin : exemple correct…",
+              "explanation": "Novyy stul = nouvelle chaise.",
+              "options": [
+                "новый стул (novyy stul)",
+                "новая стул (novaya stul)",
+                "новое стул (novoye stul)",
+                "новая дом (novaya dom)"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs sont féminins ?",
+              "explanation": "Novaya et bol'shaya sont féminins.",
+              "options": [
+                "новая (novaya)",
+                "новый (novyy)",
+                "большая (bol'shaya)",
+                "большой (bol'shoy)"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Accord correct : … книга (kniga)",
+              "explanation": "Bol'shaya kniga = grand livre.",
+              "options": [
+                "большая (bol'shaya)",
+                "большой (bol'shoy)",
+                "большое (bol'shoye)",
+                "большие (bol'shiye)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Erreur : avec книга (kniga) on évite…",
+              "explanation": "Novyy est masculin, incompatible ici.",
+              "options": [
+                "новый (novyy)",
+                "новая (novaya)",
+                "хорошая (khoroshaya)",
+                "маленькая (malen'kaya)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Красная книга » (krasnaya kniga) : krasnaya est…",
+              "explanation": "Krasnaya « rouge » est féminin.",
+              "options": ["féminin", "masculin", "neutre", "article"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Школа (shkola) prend souvent un adjectif en…",
+              "explanation": "Terminaison féminine -aya.",
+              "options": [
+                "-ая (aya)",
+                "-ый (yy) seul",
+                "-ое (oye) seul",
+                "article"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Хорошая школа (khoroshaya shkola) signifie…",
+              "explanation": "Bonne école, accord féminin.",
+              "options": [
+                "bonne école",
+                "bonne table",
+                "grand mer",
+                "c'est elle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Féminin + féminin : lequel est correct ?",
+              "explanation": "Malen'kaya ruka = petite main.",
+              "options": [
+                "маленькая рука (malen'kaya ruka)",
+                "маленький рука (malen'kiy ruka)",
+                "маленькое рука (malen'koye ruka)",
+                "новый книга (novyy kniga)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'adjectif féminin change surtout…",
+              "explanation": "La fin du mot (-aya, etc.).",
+              "options": [
+                "sa terminaison",
+                "le nom en article",
+                "я en ты",
+                "l'ordre des mots en français"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Книга (kniga) avec krasnaya montre…",
+              "explanation": "Accord féminin correct.",
+              "options": [
+                "un bon accord",
+                "un article",
+                "un pronom il",
+                "un neutre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En 5e, pour féminin on retient…",
+              "explanation": "Nom en -a souvent + adjectif en -aya.",
+              "options": [
+                "nom souvent en -a + adjectif en -aya",
+                "toujours « la »",
+                "pas d'accord",
+                "seulement neutre"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs sont neutres ?",
+              "explanation": "Bol'shoye et novoye sont neutres.",
+              "options": [
+                "большое (bol'shoye)",
+                "большой (bol'shoy)",
+                "новое (novoye)",
+                "новая (novaya)"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Accord correct : … море (more)",
+              "explanation": "Bol'shoye more = grande mer.",
+              "options": [
+                "большое (bol'shoye)",
+                "большая (bol'shaya)",
+                "большой (bol'shoy)",
+                "большую (bol'shuyu)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "С окном (s oknom) « avec la fenêtre » : okno est neutre, adjectif…",
+              "explanation": "Novoye okno = nouvelle fenêtre.",
+              "options": [
+                "новое (novoye)",
+                "новая (novaya)",
+                "новый (novyy)",
+                "новые (novyye)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Erreur avec море (more) : …",
+              "explanation": "Bol'shaya est féminin, pas pour more.",
+              "options": [
+                "большая море (bol'shaya more)",
+                "большое море (bol'shoye more)",
+                "синее море (sinee more)",
+                "новое море (novoye more)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Neutre + neutre correct : …",
+              "explanation": "Sinee okno = fenêtre bleue.",
+              "options": [
+                "синее окно (sinee okno)",
+                "синяя окно (sinaya okno)",
+                "синий окно (siniy okno)",
+                "синяя море (sinaya more)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bol'shoye (большое) décrit un nom…",
+              "explanation": "Genre neutre.",
+              "options": [
+                "neutre",
+                "masculin seulement",
+                "féminin seulement",
+                "pronom"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Море (more) et окно (okno) prennent un adjectif en…",
+              "explanation": "Forme -oye / -ee typique neutre.",
+              "options": ["-ое / -ее", "-ая seule", "-ый seule", "article"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Это большое окно » : окно est…",
+              "explanation": "Neutre, adjectif en -oe.",
+              "options": ["neutre", "masculin", "féminin", "verbe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Trois formes d'adjectif (novyy, novaya, novoye) servent à…",
+              "explanation": "Accorder avec le genre du nom.",
+              "options": [
+                "accorder le genre",
+                "remplacer это",
+                "créer des articles",
+                "conjugaison"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans « le/la », on voit le neutre dans…",
+              "explanation": "Ex. большое море (bol'shoye more).",
+              "options": [
+                "большое море (bol'shoye more)",
+                "le море",
+                "она море",
+                "ty more"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels accords nom-adjectif sont corrects ?",
+              "explanation": "Novyy stol et bol'shaya kniga sont corrects.",
+              "options": [
+                "новый стол (novyy stol)",
+                "новая стол (novaya stol)",
+                "большая книга (bol'shaya kniga)",
+                "большой книга (bol'shoy kniga)"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Lequel est incorrect ?",
+              "explanation": "Kniga est féminin, pas avec bol'shoy.",
+              "options": [
+                "большой книга (bol'shoy kniga)",
+                "большая книга (bol'shaya kniga)",
+                "новое окно (novoye okno)",
+                "новый дом (novyy dom)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Стол (stol) : choisis l'adjectif…",
+              "explanation": "Masculin : malen'kiy.",
+              "options": [
+                "маленький (malen'kiy)",
+                "маленькая (malen'kaya)",
+                "маленькое (malen'koye)",
+                "маленькую (malen'kuyu)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Книга (kniga) : choisis l'adjectif…",
+              "explanation": "Féminin : khoroshaya.",
+              "options": [
+                "хорошая (khoroshaya)",
+                "хороший (khoroshiy)",
+                "хорошее (khorosheye)",
+                "хорошие (khoroshiye)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Море (more) : choisis l'adjectif…",
+              "explanation": "Neutre : sinее.",
+              "options": [
+                "синее (sinee)",
+                "синяя (sinaya)",
+                "синий (siniy)",
+                "синие (siniye)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi pas d'article en russe ?",
+              "explanation": "Le sens se fait avec le nom, les adjectifs et le contexte.",
+              "options": [
+                "le sens n'en a pas besoin comme en français",
+                "le russe refuse les noms",
+                "seulement en 6e",
+                "à cause de я"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Это новая книга » : accord…",
+              "explanation": "Novaya + kniga, féminin correct.",
+              "options": [
+                "correct",
+                "faux",
+                "neutre obligatoire",
+                "avec article"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Это новый стол » : accord…",
+              "explanation": "Novyy + stol, masculin correct.",
+              "options": ["correct", "faux", "féminin obligatoire", "sans nom"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Genre + accord : la règle de 5e…",
+              "explanation": "Même genre pour nom et adjectif.",
+              "options": [
+                "même genre pour nom et adjectif",
+                "toujours masculin",
+                "toujours article",
+                "ignorer le nom"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le plus utile sans articles français…",
+              "explanation": "Repérer le genre du nom.",
+              "options": [
+                "repérer le genre du nom",
+                "inventer « le »",
+                "ne jamais accorder",
+                "supprimer les adjectifs"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vrai sur le russe en 5e ?",
+              "explanation": "Pas d'articles ; trois genres ; accords d'adjectifs.",
+              "options": [
+                "Pas d'articles comme en français",
+                "Deux genres seulement",
+                "Les adjectifs s'accordent en genre",
+                "Книга (kniga) est masculin"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Révision : стол (stol) est…",
+              "explanation": "Masculin.",
+              "options": ["masculin", "féminin", "neutre", "pronom"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Révision : книга (kniga) est…",
+              "explanation": "Féminin.",
+              "options": ["féminin", "masculin", "neutre", "verbe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Révision : море (more) est…",
+              "explanation": "Neutre.",
+              "options": ["neutre", "masculin", "féminin", "article"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Bonne phrase : …",
+              "explanation": "Bol'shaya kniga est correct.",
+              "options": [
+                "большая книга (bol'shaya kniga)",
+                "большой книга (bol'shoy kniga)",
+                "большое книга (bol'shoye kniga)",
+                "la книга"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bonne phrase : …",
+              "explanation": "Novyy stol est correct.",
+              "options": [
+                "новый стол (novyy stol)",
+                "новая стол (novaya stol)",
+                "новое стол (novoye stol)",
+                "un stol"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bonne phrase : …",
+              "explanation": "Bol'shoye more est correct.",
+              "options": [
+                "большое море (bol'shoye more)",
+                "большая море (bol'shaya more)",
+                "большой море (bol'shoy more)",
+                "le more"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Это (eto) sert à présenter un nom…",
+              "explanation": "Ex. Это книга — C'est un livre.",
+              "options": [
+                "sans article séparé",
+                "avec « le » obligatoire",
+                "seulement pour il",
+                "sans nom"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En russe, « les articles » du français…",
+              "explanation": "On ne les traduit pas mot à mot.",
+              "options": [
+                "ne se traduisent pas",
+                "se disent « le »",
+                "doublent le nom",
+                "remplacent я"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Message clé de l'unité…",
+              "explanation": "Genre et accord remplacent le rôle des articles.",
+              "options": [
+                "genre et accord comptent sans articles",
+                "copier le français",
+                "oublier les noms",
+                "tout est neutre"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Que peut signifier это (eto) dans une phrase simple ?",
+              "explanation": "Eto présente ou identifie : « c'est / ceci ».",
+              "options": [
+                "« c'est » pour présenter",
+                "le pronom « il » seul",
+                "« ceci » pour montrer quelque chose",
+                "un article « la »"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Это стол » (eto stol) signifie…",
+              "explanation": "C'est une table.",
+              "options": [
+                "C'est une table.",
+                "Il est table.",
+                "Tu es table.",
+                "La table article."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Это книга » (eto kniga) signifie…",
+              "explanation": "C'est un livre.",
+              "options": [
+                "C'est un livre.",
+                "Elle lit.",
+                "C'est la mer.",
+                "Je suis livre."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Это море » (eto more) signifie…",
+              "explanation": "C'est la mer.",
+              "options": [
+                "C'est la mer.",
+                "C'est la maison.",
+                "Tu es mer.",
+                "Il table."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « Это … », le mot après это est…",
+              "explanation": "Un nom ou un groupe nominal simple.",
+              "options": [
+                "souvent un nom",
+                "toujours un verbe seul",
+                "un article français",
+                "seulement я"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Это (eto) se place…",
+              "explanation": "En début de phrase simple de présentation.",
+              "options": [
+                "en tête pour présenter",
+                "après « le »",
+                "seulement à la fin",
+                "jamais avec un nom"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Traduction logique : « C'est une fenêtre » → …",
+              "explanation": "Это окно (eto okno).",
+              "options": [
+                "Это окно (eto okno)",
+                "Я окно (ya okno)",
+                "Он окно (on okno)",
+                "Ты окно (ty okno)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Это remplace-t-il « un/une » en français ?",
+              "explanation": "Eto rend « c'est », pas l'article devant un nom seul.",
+              "options": [
+                "non, c'est « c'est », pas « un » seul",
+                "oui, c'est « un » toujours",
+                "c'est « le »",
+                "c'est « des »"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase correcte : …",
+              "explanation": "Это школа = C'est une école.",
+              "options": [
+                "Это школа (eto shkola)",
+                "Это я (eto ya) pour un objet",
+                "Le shkola",
+                "Stol eto seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour montrer un objet : on utilise souvent…",
+              "explanation": "Это + nom.",
+              "options": [
+                "это (eto) + nom",
+                "ty + nom seul",
+                "article le",
+                "on + adjectif seul"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles traductions de я (ya) sont correctes ?",
+              "explanation": "Ya = je ; on l'utilise comme sujet.",
+              "options": ["je", "tu", "mot pour parler de soi", "article"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Я (ya) signifie…",
+              "explanation": "Pronom personnel « je ».",
+              "options": ["je", "tu", "il", "elle"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Я студент » (ya student) signifie…",
+              "explanation": "Je suis étudiant (phrase simple, sans « suis » séparé en 5e).",
+              "options": [
+                "Je suis étudiant.",
+                "Tu es étudiant.",
+                "C'est un étudiant.",
+                "Il est mer."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le pronom pour « je » est…",
+              "explanation": "Я (ya).",
+              "options": ["я (ya)", "ты (ty)", "он (on)", "это (eto)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Я … » exprime…",
+              "explanation": "Quelque chose à propos de moi.",
+              "options": [
+                "parler de soi",
+                "parler de toi",
+                "présenter un objet avec это",
+                "un article"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Erreur : « je » se traduit par…",
+              "explanation": "Pas ty ni on pour « je ».",
+              "options": [
+                "я (ya), pas ты (ty)",
+                "ты (ty)",
+                "она (ona)",
+                "море (more)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase simple : « Je suis ici » niveau 5e → …",
+              "explanation": "Я здесь (ya zdes') — modèle simple.",
+              "options": [
+                "Я здесь (ya zdes')",
+                "Ты здесь (ty zdes') pour je",
+                "Это здесь seul pour je",
+                "On я"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Я et это : …",
+              "explanation": "Rôles différents : je vs c'est.",
+              "options": [
+                "je vs présenter « c'est »",
+                "identiques",
+                "deux articles",
+                "genres"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Я ученик » (ya uchenik) : uchenik est…",
+              "explanation": "Élève, nom masculin dans ce modèle.",
+              "options": [
+                "élève (modèle masculin)",
+                "mer",
+                "pronom elle",
+                "verbe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour dire qui je suis, je commence par…",
+              "explanation": "Я (ya).",
+              "options": [
+                "я (ya)",
+                "это (eto) seul",
+                "книга (kniga)",
+                "article"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Ты (ty) correspond à…",
+              "explanation": "Ty = tu (informel) ; s'adresse à une personne.",
+              "options": [
+                "tu",
+                "je",
+                "parler à quelqu'un de façon informelle",
+                "elle seulement"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ты (ty) signifie…",
+              "explanation": "Pronom « tu ».",
+              "options": ["tu", "je", "il", "c'est"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ты друг » (ty drug) signifie environ…",
+              "explanation": "Tu es ami / tu es un ami (modèle simple).",
+              "options": [
+                "Tu es ami.",
+                "Je suis ami.",
+                "C'est ami.",
+                "Elle est ami."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Opposé de я (ya) pour la 2e personne : …",
+              "explanation": "Ty = tu.",
+              "options": ["ты (ty)", "он (on)", "она (ona)", "море (more)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Phrase : s'adresser à un camarade → …",
+              "explanation": "On commence par ty.",
+              "options": ["ты (ty)", "я (ya)", "это (eto)", "стол (stol)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Ты здесь » (ty zdes') signifie…",
+              "explanation": "Tu es ici.",
+              "options": [
+                "Tu es ici.",
+                "Je suis ici.",
+                "Il est ici.",
+                "C'est ici objet."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Erreur : « tu » en russe…",
+              "explanation": "C'est ty, pas ya.",
+              "options": ["ты (ty)", "я (ya)", "он (on)", "книга (kniga)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ty s'utilise quand on…",
+              "explanation": "Parle directement à l'interlocuteur.",
+              "options": [
+                "parle à l'interlocuteur",
+                "décrit un meuble seul",
+                "remplace это",
+                "accorde un adjectif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Я … / Ты … : la différence est…",
+              "explanation": "Je vs tu.",
+              "options": ["je vs tu", "il vs elle", "c'est vs mer", "genre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pronom correct pour « Tu es élève » : …",
+              "explanation": "Ты ученик (ty uchenik).",
+              "options": [
+                "Ты ученик (ty uchenik)",
+                "Я ученик (ya uchenik)",
+                "Это ученик pour tu",
+                "Он ученик pour tu"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Он (on) sert à…",
+              "explanation": "On = il pour une personne ou parfois un objet masculin connu.",
+              "options": [
+                "dire « il »",
+                "dire « je »",
+                "parler d'un garçon ou d'un mâle",
+                "remplacer это toujours"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Он (on) signifie…",
+              "explanation": "Il.",
+              "options": ["il", "elle", "tu", "je"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Он друг » (on drug) signifie…",
+              "explanation": "Il est ami.",
+              "options": [
+                "Il est ami.",
+                "Elle est amie.",
+                "Tu es ami.",
+                "C'est ami."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour « il » on utilise…",
+              "explanation": "Он (on).",
+              "options": [
+                "он (on)",
+                "она (ona)",
+                "ты (ty)",
+                "это (eto) pour il toujours"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Он et она : …",
+              "explanation": "Il vs elle.",
+              "options": ["il vs elle", "je vs tu", "c'est vs nom", "article"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phrase : parler d'un garçon → …",
+              "explanation": "Commencer par on.",
+              "options": ["он (on)", "она (ona)", "я (ya)", "книга (kniga)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Он здесь » (on zdes') signifie…",
+              "explanation": "Il est ici.",
+              "options": [
+                "Il est ici.",
+                "Elle est ici.",
+                "Tu es ici.",
+                "C'est ici."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Erreur : « il » en russe…",
+              "explanation": "On, pas ona.",
+              "options": ["он (on)", "она (ona)", "ты (ty)", "море (more)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "On remplace parfois un nom masculin…",
+              "explanation": "Comme en français « il » pour un homme.",
+              "options": [
+                "personne masculine",
+                "toujours la mer",
+                "article le",
+                "adjectif seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Modèle simple : Il est étudiant → …",
+              "explanation": "Он студент (on student).",
+              "options": [
+                "Он студент (on student)",
+                "Она студент (ona student)",
+                "Ты студент (ty student)",
+                "Это студент pour il obligé"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Она (ona) correspond à…",
+              "explanation": "Ona = elle.",
+              "options": ["elle", "il", "parler d'une fille ou femme", "tu"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Она (ona) signifie…",
+              "explanation": "Elle.",
+              "options": ["elle", "il", "je", "c'est"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Она здесь » (ona zdes') signifie…",
+              "explanation": "Elle est ici.",
+              "options": [
+                "Elle est ici.",
+                "Il est ici.",
+                "Tu es ici.",
+                "C'est ici."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour « elle » : …",
+              "explanation": "Она (ona).",
+              "options": ["она (ona)", "он (on)", "я (ya)", "стол (stol)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Она ученица » (ona uchenitsa) : uchenitsa est…",
+              "explanation": "Élève (féminin).",
+              "options": ["élève (féminin)", "table", "mer", "pronom il"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ona s'oppose à…",
+              "explanation": "On = il.",
+              "options": ["он (on)", "ты (ty)", "это (eto)", "книга (kniga)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase : une fille est amie → …",
+              "explanation": "Она подруга (ona podruga) — modèle simple.",
+              "options": [
+                "Она подруга (ona podruga)",
+                "Он подруга (on podruga)",
+                "Я подруга pour elle",
+                "Это подруга pour il"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Erreur : « elle » …",
+              "explanation": "Ona, pas on.",
+              "options": [
+                "она (ona)",
+                "он (on)",
+                "ты (ty)",
+                "я (ya) pour elle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les pronoms il/elle en russe…",
+              "explanation": "On et ona.",
+              "options": [
+                "он et она",
+                "я et ты seulement",
+                "это seulement",
+                "articles"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Elle est à l'école (modèle) → …",
+              "explanation": "Она в школе (ona v shkole).",
+              "options": [
+                "Она в школе (ona v shkole)",
+                "Он в школе pour elle",
+                "Ты в школе pour elle",
+                "Это в школе pour elle seule"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases simples correctes ?",
+              "explanation": "Это kniga et Ya student sont des modèles valides.",
+              "options": [
+                "Это книга (eto kniga)",
+                "Я студент (ya student)",
+                "Ты море (ty more) pour « c'est la mer »",
+                "Le kniga"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Présenter : « C'est un livre » → …",
+              "explanation": "Это книга.",
+              "options": [
+                "Это книга (eto kniga)",
+                "Я книга (ya kniga)",
+                "Он книга (on kniga)",
+                "Книга это (kniga eto) seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Présenter : « C'est une table » → …",
+              "explanation": "Это стол.",
+              "options": [
+                "Это стол (eto stol)",
+                "Ты стол (ty stol)",
+                "Она стол (ona stol)",
+                "La stol"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Je + nom : « Je suis élève (f) » → …",
+              "explanation": "Я ученица (ya uchenitsa).",
+              "options": [
+                "Я ученица (ya uchenitsa)",
+                "Ты ученица (ty uchenitsa)",
+                "Это ученица pour je",
+                "Он ученица"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tu + nom : « Tu es ami » → …",
+              "explanation": "Ты друг (ty drug).",
+              "options": [
+                "Ты друг (ty drug)",
+                "Я друг (ya drug)",
+                "Она друг (ona drug)",
+                "Это друг pour tu"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Il + nom : « Il est étudiant » → …",
+              "explanation": "Он студент (on student).",
+              "options": [
+                "Он студент (on student)",
+                "Она студент (ona student)",
+                "Я студент (ya student)",
+                "Это студент pour il seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Elle + nom : « Elle est étudiante » → …",
+              "explanation": "Она студентка (ona studentka).",
+              "options": [
+                "Она студентка (ona studentka)",
+                "Он студентка (on studentka)",
+                "Ты студентка (ty studentka) pour elle",
+                "Stol studentka"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase incohérente : …",
+              "explanation": "Ty more ne signifie pas « c'est la mer ».",
+              "options": [
+                "Ты море (ty more) = « tu es la mer »",
+                "Это море (eto more)",
+                "Я здесь (ya zdes')",
+                "Он друг (on drug)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ordre simple le plus fréquent : …",
+              "explanation": "Pronom ou это + reste.",
+              "options": [
+                "это/я/ты/он/она + mot suivant",
+                "nom + article le",
+                "verbe être français",
+                "adjectif seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans « suis/es/est » séparé en 5e, on…",
+              "explanation": "Met pronom + nom adjectif : Я студент.",
+              "options": [
+                "met pronom + nom",
+                "ajoute « le »",
+                "supprime le nom",
+                "utilise только море"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles associations pronom français-russe sont correctes ?",
+              "explanation": "Je → я, tu → ты ; il → он et elle → она sont aussi des paires justes à connaître.",
+              "options": [
+                "je → я (ya)",
+                "tu → ты (ty)",
+                "je → ты (ty)",
+                "il → она (ona)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Associe : je → …",
+              "explanation": "Я (ya).",
+              "options": ["я (ya)", "ты (ty)", "он (on)", "она (ona)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Associe : tu → …",
+              "explanation": "Ты (ty).",
+              "options": ["ты (ty)", "я (ya)", "он (on)", "это (eto)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Associe : il → …",
+              "explanation": "Он (on).",
+              "options": ["он (on)", "она (ona)", "ты (ty)", "я (ya)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Associe : elle → …",
+              "explanation": "Она (ona).",
+              "options": ["она (ona)", "он (on)", "я (ya)", "стол (stol)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« C'est … » utilise plutôt…",
+              "explanation": "Это (eto).",
+              "options": ["это (eto)", "я (ya)", "он (on)", "ты (ty)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quatre pronoms appris : я, ты, …",
+              "explanation": "Он et она complètent il/elle.",
+              "options": [
+                "он et она",
+                "море et стол",
+                "le et la",
+                "книга et школа"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans une phrase, le pronom…",
+              "explanation": "Indique qui parle ou de qui on parle.",
+              "options": [
+                "indique la personne",
+                "remplace tous les articles",
+                "change le genre de la mer",
+                "supprime это"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Choix : parler de toi-même → …",
+              "explanation": "Я.",
+              "options": ["я (ya)", "ты (ty)", "он (on)", "она (ona)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choix : parler d'une fille → …",
+              "explanation": "Она.",
+              "options": [
+                "она (ona)",
+                "он (on)",
+                "я (ya)",
+                "это (eto) pour elle toujours"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Traductions françaises plausibles ?",
+              "explanation": "Eto stol = c'est une table ; On doma ≈ il est à la maison (modèle).",
+              "options": [
+                "Это стол → c'est une table",
+                "Я ty → je tu",
+                "Он дома → il est à la maison (modèle)",
+                "Книга → pronom je"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« C'est la mer » → …",
+              "explanation": "Это море.",
+              "options": [
+                "Это море (eto more)",
+                "Я море (ya more)",
+                "Ты море (ty more) sens c'est",
+                "La more"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Je suis ici » → …",
+              "explanation": "Я здесь.",
+              "options": [
+                "Я здесь (ya zdes')",
+                "Ты здесь (ty zdes')",
+                "Это здесь pour je",
+                "Она здесь pour je"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Tu es ici » → …",
+              "explanation": "Ты здесь.",
+              "options": [
+                "Ты здесь (ty zdes')",
+                "Я здесь (ya zdes')",
+                "Он здесь pour tu",
+                "Это здесь pour tu"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Il est ici » → …",
+              "explanation": "Он здесь.",
+              "options": [
+                "Он здесь (on zdes')",
+                "Она здесь (ona zdes')",
+                "Я здесь (ya zdes')",
+                "Это здесь pour il"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Elle est ici » → …",
+              "explanation": "Она здесь.",
+              "options": [
+                "Она здесь (ona zdes')",
+                "Он здесь (on zdes')",
+                "Ты здесь (ty zdes')",
+                "Stol zdes'"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Mini-dialogue : « C'est une école » → …",
+              "explanation": "Это школа.",
+              "options": [
+                "Это школа (eto shkola)",
+                "Я школа (ya shkola)",
+                "Ty shkola pour c'est",
+                "Article shkola"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sens de « Это дом » (eto dom) …",
+              "explanation": "C'est une maison.",
+              "options": [
+                "C'est une maison.",
+                "Il est maison.",
+                "Tu es maison.",
+                "La maison le."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrases simples : pas de mot pour…",
+              "explanation": "Pas d'« un/une/le/la » séparé comme en français.",
+              "options": [
+                "articles français séparés",
+                "noms russes",
+                "pronoms",
+                "это"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour vérifier une phrase, je regarde…",
+              "explanation": "Le bon pronom ou это + sens du nom.",
+              "options": [
+                "pronom/это + sens",
+                "article le",
+                "déclinaison complète",
+                "six cas"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Affirmations vraies (phrases simples) ?",
+              "explanation": "Pas d'articles ; это présente ; pronoms distincts.",
+              "options": [
+                "On peut dire Это книга sans article",
+                "Я signifie tu",
+                "Он et она sont il et elle",
+                "Il faut « le » devant stol"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Vrai ou faux : « Это стол » = présentation d'un objet.",
+              "explanation": "Vrai : c'est une table.",
+              "options": [
+                "vrai",
+                "faux",
+                "faux car article",
+                "faux car neutre seulement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Faux : …",
+              "explanation": "Ya = je, pas tu.",
+              "options": [
+                "Я = tu",
+                "Ты = tu",
+                "Она = elle",
+                "Это = c'est (souvent)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase acceptable en 5e : …",
+              "explanation": "Он друг.",
+              "options": [
+                "Он друг (on drug)",
+                "Drug on français",
+                "Le on drug",
+                "On la drug"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Impossible comme traduction de « je » : …",
+              "explanation": "Ty = tu.",
+              "options": ["ты (ty)", "я (ya)", "я (ya) seul correct", "—"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Это + книга (kniga) : le nom reste…",
+              "explanation": "Féminin.",
+              "options": ["féminin", "masculin", "verbe", "pronom il"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Это + стол (stol) : le nom est…",
+              "explanation": "Masculin.",
+              "options": ["masculin", "féminin", "pronom", "article"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mélange à éviter : …",
+              "explanation": "Ne pas confondre rôle de это et des pronoms personnels.",
+              "options": [
+                "utiliser это à la place de я sans raison",
+                "Это море pour objet",
+                "Я здесь pour je",
+                "Она здесь pour elle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase simple = …",
+              "explanation": "Peu de mots, sujet + information.",
+              "options": [
+                "structure courte claire",
+                "tous les cas russes",
+                "paragraph français",
+                "liste d'articles"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif de l'unité : …",
+              "explanation": "Construire Это… et phrases avec je/tu/il/elle.",
+              "options": [
+                "présenter et parler de personnes simplement",
+                "maîtriser six cas",
+                "copier la 6e",
+                "apprendre « le »"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Révision : quoi retenir ?",
+              "explanation": "Eto, ya, ty, on, ona ; pas d'articles.",
+              "options": [
+                "это pour « c'est »",
+                "я/ты/он/она pour personnes",
+                "articles obligatoires",
+                "pas de phrases sans verbe français"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Révision : это (eto) …",
+              "explanation": "Présente un nom.",
+              "options": [
+                "présente un nom",
+                "signifie je",
+                "signifie tu",
+                "est « le »"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Révision : je …",
+              "explanation": "Я (ya).",
+              "options": ["я (ya)", "ты (ty)", "он (on)", "она (ona)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Révision : tu …",
+              "explanation": "Ты (ty).",
+              "options": ["ты (ty)", "я (ya)", "он (on)", "это (eto)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Révision : il …",
+              "explanation": "Он (on).",
+              "options": ["он (on)", "она (ona)", "я (ya)", "книга (kniga)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Révision : elle …",
+              "explanation": "Она (ona).",
+              "options": ["она (ona)", "он (on)", "ты (ty)", "море (more)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase modèle objet : …",
+              "explanation": "Это книга.",
+              "options": [
+                "Это книга (eto kniga)",
+                "Я книга (ya kniga)",
+                "Он книга (on kniga)",
+                "La kniga"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase modèle personne : …",
+              "explanation": "Я студент ou Она студентка selon le cas.",
+              "options": [
+                "Я студент (ya student) / Она студентка (ona studentka)",
+                "Это студент pour toute phrase",
+                "Ty on",
+                "Article student"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lien avec u1 : книга (kniga) dans Это книга est…",
+              "explanation": "Féminin, sans article.",
+              "options": [
+                "féminin sans article",
+                "masculin avec le",
+                "neutre avec la",
+                "pronom"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tu peux maintenant former…",
+              "explanation": "Des phrases courtes de présentation et d'identité.",
+              "options": [
+                "phrases courtes avec это et pronoms",
+                "textes avec six cas",
+                "français avec « le » partout",
+                "uniquement des adjectifs"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

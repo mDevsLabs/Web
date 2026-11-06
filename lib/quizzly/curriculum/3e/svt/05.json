@@ -1,0 +1,2663 @@
+{
+  "id": "3e-svt-05",
+  "year": "3e",
+  "subject": "svt",
+  "title": "Reproduction et hérédité",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Transmission",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les chromosomes et le caryotype",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Combien de chromosomes une cellule humaine non reproductrice contient-elle normalement ?",
+              "options": [
+                "23 chromosomes",
+                "46 chromosomes",
+                "48 chromosomes",
+                "2 chromosomes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les cellules somatiques humaines possèdent 46 chromosomes organisés en 23 paires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où sont situés les chromosomes dans une cellule eucaryote ?",
+              "options": [
+                "Dans la membrane",
+                "Dans le cytoplasme",
+                "Dans le noyau",
+                "Dans la vacuole"
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'information génétique portée par les chromosomes est enfermée dans le noyau cellulaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un caryotype ?",
+              "options": [
+                "Une maladie génétique",
+                "Le classement ordonné des chromosomes d'une cellule",
+                "Un type particulier de cellule",
+                "Une molécule de sucre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le caryotype est la représentation ordonnée des chromosomes par paires et selon leur taille."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la paire de chromosomes sexuels chez un être humain de sexe masculin ?",
+              "options": ["XX", "XY", "YY", "XO"],
+              "correctAnswers": [1],
+              "explanation": "Un individu de sexe masculin possède une paire de chromosomes sexuels hétérologues notée XY."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques permettent d'identifier et classer des chromosomes homologues sur un caryotype ?",
+              "options": [
+                "Leur taille",
+                "La position de leur centromère",
+                "Leur couleur naturelle",
+                "Leur odeur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les chromosomes homologues ont la même taille et la même position de centromère après coloration au laboratoire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la paire de chromosomes sexuels chez une femme ?",
+              "options": ["XY", "XX", "YY", "XXX"],
+              "correctAnswers": [1],
+              "explanation": "Une femme possède deux chromosomes sexuels identiques appelés chromosomes X (notés XX)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quand les chromosomes deviennent-ils bien visibles et individualisés au microscope optique ?",
+              "options": [
+                "Lors de la division cellulaire",
+                "En permanence dans toute cellule",
+                "Uniquement après la mort de la cellule",
+                "Pendant l'absorption d'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chromosomes se condensent fortement et deviennent visibles lors de la division cellulaire (mitose)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "De quoi sont principalement constitués les chromosomes ?",
+              "options": [
+                "D'eau et de sels minéraux",
+                "D'ADN et de protéines",
+                "De lipides et de glucides",
+                "D'acide ribonucléique pur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque chromosome est formé d'une molécule d'ADN enroulée autour de protéines protectrices (histones)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les 22 premières paires de chromosomes chez l'être humain ?",
+              "options": [
+                "Les autosomes",
+                "Les gonosomes",
+                "Les ribosomes",
+                "Les allèles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les autosomes sont les chromosomes non sexuels, identiques chez l'homme et chez la femme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien de paires de chromosomes trouve-t-on dans un caryotype humain standard ?",
+              "options": ["23 paires", "46 paires", "12 paires", "44 paires"],
+              "correctAnswers": [0],
+              "explanation": "Il y a 23 paires de chromosomes, soit 46 chromosomes au total dans chaque cellule somatique."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "L'ADN et les gènes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le sigle ADN ?",
+              "options": [
+                "Acide désoxyribonucléique",
+                "Acide double azoté",
+                "Agent dynamique nucléaire",
+                "Amidon de noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ADN signifie acide désoxyribonucléique, support universel de l'information génétique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un gène ?",
+              "options": [
+                "Une cellule reproductrice",
+                "Une portion d'ADN portant une information génétique précise",
+                "Un organe du système digestif",
+                "Un chromosome entier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un gène est un fragment d'ADN qui détermine la réalisation d'un caractère héréditaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la forme caractéristique de la molécule d'ADN ?",
+              "options": [
+                "Une sphère parfaite",
+                "Une double hélice",
+                "Un anneau plat",
+                "Un cube régulier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La molécule d'ADN a la forme d'une double hélice hélicoïdale ressemblant à une échelle torsadée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'ensemble des gènes portés par un individu ?",
+              "options": [
+                "Le génome",
+                "Le caryotype",
+                "Le phénotype",
+                "L'hématie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le génome désigne la totalité du matériel génétique et des gènes d'une espèce ou d'un individu."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi ces affirmations, lesquelles sont vraies concernant les gènes ?",
+              "options": [
+                "Chaque gène occupe une place fixe sur un chromosome précis",
+                "Un gène détermine un caractère héréditaire",
+                "Les gènes sont absents des cellules musculaires",
+                "Tous les gènes ont disparu chez l'adulte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les gènes occupent un emplacement précis (locus) sur les chromosomes et gouvernent nos caractères."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien d'exemplaires d'un gène autosomal une cellule somatique possède-t-elle ?",
+              "options": [
+                "Un seul",
+                "Deux exemplaires",
+                "Quatre exemplaires",
+                "Zéro exemplaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Comme les chromosomes vont par paires, chaque gène autosomal est présent en deux exemplaires."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'emplacement précis d'un gène sur un chromosome ?",
+              "options": [
+                "Le locus",
+                "Le centromère",
+                "Le télomère",
+                "Le lysosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le locus est la position physique spécifique occupée par un gène sur son chromosome."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'information génétique portée par l'ADN est universelle car :",
+              "options": [
+                "Elle n'existe que chez l'être humain",
+                "Elle repose sur le même langage chez tous les êtres vivants",
+                "Elle change selon les saisons",
+                "Elle est transmise par l'air"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La structure et le code de l'ADN sont communs à l'ensemble des êtres vivants sur Terre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien de gènes environ compte le génome humain ?",
+              "options": [
+                "Environ 20 000 à 25 000",
+                "Exactement 46",
+                "Plus d'un milliard",
+                "Environ 230"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'espèce humaine possède entre 20 000 et 25 000 gènes répartis sur ses chromosomes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une transgénèse ?",
+              "options": [
+                "Le transfert d'un gène d'une espèce à une autre",
+                "La destruction d'un chromosome",
+                "La fécondation in vitro",
+                "Une division cellulaire anormale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La transgénèse consiste à introduire un gène d'un organisme donneur dans le génome d'un receveur."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les allèles et l'information génétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un allèle ?",
+              "options": [
+                "Une version possible d'un même gène",
+                "Un chromosome sexuel",
+                "Une enzyme de digestion",
+                "Une cellule de la peau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les allèles sont les différentes versions ou variations d'un même gène."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien d'allèles d'un gène donné une cellule humaine possède-t-elle au maximum sur ses autosomes ?",
+              "options": ["1", "2", "4", "23"],
+              "correctAnswers": [1],
+              "explanation": "Puisque les autosomes sont par paires, une cellule possède deux allèles pour chaque gène autosomal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un individu possédant deux allèles identiques pour un gène donné ?",
+              "options": [
+                "Hétérozygote",
+                "Homozygote",
+                "Hémizygote",
+                "Dizygote"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un individu homozygote possède deux allèles identiques pour le gène considéré."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un allèle qui s'exprime dès qu'il est présent en au moins un exemplaire ?",
+              "options": ["Récessif", "Dominant", "Codominant", "Muet"],
+              "correctAnswers": [1],
+              "explanation": "Un allèle dominant masque l'expression de l'allèle récessif et détermine le phénotype."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont les trois principaux allèles qui déterminent le groupe sanguin ABO chez l'humain ?",
+              "options": [
+                "L'allèle A",
+                "L'allèle B",
+                "L'allèle O",
+                "L'allèle D"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le système ABO repose sur trois allèles du même gène : A, B et O."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Parmi les allèles du système ABO, quel allèle est récessif face aux deux autres ?",
+              "options": [
+                "L'allèle A",
+                "L'allèle B",
+                "L'allèle O",
+                "L'allèle AB"
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'allèle O est récessif : une personne de groupe O possède obligatoirement deux allèles O."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le groupe sanguin d'un individu portant les allèles A et B ?",
+              "options": ["Groupe A", "Groupe B", "Groupe AB", "Groupe O"],
+              "correctAnswers": [2],
+              "explanation": "Les allèles A et B sont codominants : ils s'expriment tous les deux simultanément, donnant le groupe AB."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'ensemble des allèles d'un individu pour un ou plusieurs caractères ?",
+              "options": [
+                "Le génotype",
+                "Le phénotype",
+                "Le caryotype",
+                "Le biotype"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le génotype est la composition allélique d'un individu pour ses gènes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on l'ensemble des caractères observables d'un individu ?",
+              "options": [
+                "Le génotype",
+                "Le phénotype",
+                "Le sérotype",
+                "Le gonosome"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le phénotype correspond à l'ensemble des traits et caractères observables d'un organisme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si un individu a les allèles A et O, quel sera son phénotype pour le groupe sanguin ?",
+              "options": [
+                "Groupe [A]",
+                "Groupe [O]",
+                "Groupe [B]",
+                "Groupe [AB]"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'allèle A étant dominant sur l'allèle O récessif, le phénotype exprimé est le groupe [A]."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "La mitose et la reproduction conforme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le rôle principal de la mitose dans un organisme pluricellulaire ?",
+              "options": [
+                "Créer des gamètes",
+                "Permettre la croissance et le renouvellement cellulaire",
+                "Détruire les cellules âgées",
+                "Fabriquer des anticorps"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La mitose permet de multiplier les cellules à l'identique pour assurer la croissance et le renouvellement des tissus."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de cellules filles sont produites à l'issue d'une mitose ?",
+              "options": [
+                "Une seule",
+                "Deux cellules",
+                "Quatre cellules",
+                "Huit cellules"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La mitose produit deux cellules filles génétiquement identiques à partir d'une cellule mère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que doit subir l'ADN avant qu'une cellule n'entre en division cellulaire ?",
+              "options": [
+                "Une digestion",
+                "Une réplication",
+                "Une oxydation",
+                "Une évaporation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Avant la division, l'ADN est dupliqué (réplication) afin que chaque chromosome possède deux chromatides identiques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les deux brins identiques qui forment un chromosome double ?",
+              "options": [
+                "Les chromatides",
+                "Les centromères",
+                "Les allèles",
+                "Les lysosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un chromosome dupliqué est constitué de deux chromatides sœurs génétiquement identiques."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies concernant les cellules filles issues d'une mitose ?",
+              "options": [
+                "Elles ont le même nombre de chromosomes que la cellule mère",
+                "Elles sont génétiquement identiques entre elles",
+                "Elles ont la moitié des chromosomes de la cellule mère",
+                "Elles ne possèdent aucun noyau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La mitose conserve fidèlement le caryotype et l'information génétique (reproduction conforme)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la zone qui relie les deux chromatides sœurs d'un chromosome ?",
+              "options": [
+                "Le centromère",
+                "Le télomère",
+                "Le cytoplasme",
+                "Le ribosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le centromère est le point d'attache unissant les deux chromatides sœurs d'un chromosome."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se passe-t-il pour les chromatides sœurs lors de la séparation en anaphase de mitose ?",
+              "options": [
+                "Elles fusionnent en un seul brin",
+                "Elles se séparent et migrent vers des pôles opposés",
+                "Elles sont dégradées par des enzymes",
+                "Elles doublent de taille"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les chromatides se séparent au niveau du centromère et migrent chacune vers un pôle de la cellule."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien de chromosomes contient une cellule fille humaine après une mitose normale ?",
+              "options": [
+                "23 chromosomes simples",
+                "46 chromosomes simples",
+                "92 chromosomes doubles",
+                "46 chromosomes doubles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque cellule fille reçoit 46 chromosomes à une chromatide (chromosomes simples)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi qualifie-t-on la mitose de division conforme ?",
+              "options": [
+                "Parce qu'elle conserve l'information génétique",
+                "Parce qu'elle élimine les anomalies",
+                "Parce qu'elle change les allèles",
+                "Parce qu'elle réduit le nombre de gènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle est dite conforme car les cellules filles possèdent exactement le même patrimoine génétique que la cellule initiale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "À quel moment du cycle cellulaire la réplication de l'ADN s'effectue-t-elle ?",
+              "options": [
+                "Pendant l'interphase",
+                "Pendant la mitose",
+                "Après la division",
+                "Uniquement la nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réplication de l'ADN a lieu au cours de l'interphase qui précède la mitose."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "La méiose et la formation des gamètes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'objectif fondamental de la méiose ?",
+              "options": [
+                "Réparer les tissus blessés",
+                "Former des gamètes haploïdes",
+                "Augmenter la taille du corps",
+                "Cloner un individu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La méiose produit des cellules reproductrices (gamètes) contenant la moitié du stock chromosomique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de divisions cellulaires successives composent la méiose ?",
+              "options": [
+                "Une seule",
+                "Deux divisions",
+                "Trois divisions",
+                "Quatre divisions"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La méiose comporte deux divisions successives précédées d'une seule phase de réplication."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de chromosomes contient un gamète humain (spermatozoïde ou ovocyte) ?",
+              "options": [
+                "23 chromosomes",
+                "46 chromosomes",
+                "48 chromosomes",
+                "2 chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les gamètes humains contiennent 23 chromosomes, soit un seul exemplaire de chaque paire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de cellules filles sont produites à l'issue complète de la méiose ?",
+              "options": [
+                "2 cellules",
+                "4 cellules",
+                "8 cellules",
+                "1 cellule"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une cellule mère diploïde donne 4 cellules filles haploïdes après les deux divisions de méiose."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles cellules sont issues de la méiose chez les mammifères ?",
+              "options": [
+                "Les spermatozoïdes",
+                "Les ovocytes",
+                "Les neurones",
+                "Les hématies"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La méiose produit exclusivement les cellules reproductrices : ovocytes chez la femelle et spermatozoïdes chez le mâle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se sépare-t-il lors de la première division de méiose ?",
+              "options": [
+                "Les chromosomes homologues de chaque paire",
+                "Les chromatides sœurs",
+                "Les noyaux des cellules voisines",
+                "Les molécules d'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La première division sépare les chromosomes homologues de chaque paire, réduisant le nombre de chromosomes par deux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se sépare-t-il lors de la deuxième division de méiose ?",
+              "options": [
+                "Les chromosomes homologues",
+                "Les chromatides de chaque chromosome",
+                "Les ribosomes",
+                "Les vacuoles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La seconde division de méiose sépare les chromatides sœurs de chaque chromosome, comme lors d'une mitose."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une cellule ne possédant qu'un seul jeu de chromosomes (noté n) ?",
+              "options": ["Haploïde", "Diploïde", "Polyploïde", "Aneuploïde"],
+              "correctAnswers": [0],
+              "explanation": "Une cellule haploïde (comme un gamète) contient n chromosomes, contre 2n pour une cellule diploïde."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien de chromosomes sexuels trouve-t-on dans un gamète humain ?",
+              "options": [
+                "Aucun",
+                "1 seul chromosome sexuel (X ou Y)",
+                "2 chromosomes sexuels",
+                "4 chromosomes sexuels"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un gamète contient un seul chromosome sexuel : X dans un ovocyte, X ou Y dans un spermatozoïde."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans quels organes s'effectue la méiose chez l'humain ?",
+              "options": [
+                "Le foie et les reins",
+                "Les gonades (testicules et ovaires)",
+                "Le cœur et les poumons",
+                "La moelle osseuse rouge"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La méiose a lieu exclusivement dans les gonades (testicules chez l'homme et ovaires chez la femme)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "La fécondation et le rétablissement du caryotype",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la fécondation ?",
+              "options": [
+                "La fusion d'un spermatozoïde et d'un ovocyte",
+                "La division d'une cellule en deux",
+                "La réplication de l'ADN",
+                "L'expulsion des gamètes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fécondation est l'union de deux gamètes haploïdes donnant naissance à une cellule-œuf diploïde."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le nom de la première cellule issue de la fécondation ?",
+              "options": [
+                "L'embryon",
+                "La cellule-œuf (ou zygote)",
+                "Le fœtus",
+                "La morula"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La fusion des noyaux du spermatozoïde et de l'ovocyte forme une cellule unique appelée cellule-œuf ou zygote."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de chromosomes possède la cellule-œuf humaine ?",
+              "options": [
+                "23 chromosomes",
+                "46 chromosomes",
+                "92 chromosomes",
+                "69 chromosomes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "23 chromosomes de l'ovocyte s'associent aux 23 chromosomes du spermatozoïde pour reconstituer 46 chromosomes (23 paires)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel gamète détermine le sexe biologique de l'enfant chez l'être humain ?",
+              "options": [
+                "L'ovocyte",
+                "Le spermatozoïde",
+                "Les deux gamètes également",
+                "Aucun des deux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'ovocyte apporte toujours un chromosome X, alors que le spermatozoïde apporte soit un chromosome X soit un chromosome Y."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels rôles majeurs la fécondation joue-t-elle dans le cycle de reproduction sexuée ?",
+              "options": [
+                "Elle rétablit la diploïdie caractéristique de l'espèce",
+                "Elle réunit au hasard deux lots d'allèles parentaux",
+                "Elle divise par deux le nombre de chromosomes",
+                "Elle empêche toute mutation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La fécondation rétablit les 23 paires de chromosomes et crée une combinaison d'allèles unique chez le nouvel individu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la probabilité d'avoir un enfant de sexe féminin à chaque fécondation ?",
+              "options": ["25 %", "50 %", "75 %", "100 %"],
+              "correctAnswers": [1],
+              "explanation": "Il y a une chance sur deux (50 %) qu'un spermatozoïde porteur du chromosome X féconde l'ovocyte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de chromosomes homologues proviennent du père dans chaque paire de la cellule-œuf ?",
+              "options": ["0", "1", "2", "23"],
+              "correctAnswers": [1],
+              "explanation": "Pour chaque paire d'homologues, l'un provient du père et l'autre de la mère."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si un spermatozoïde porteur de Y féconde un ovocyte, quel sera le sexe génétique du zygote ?",
+              "options": [
+                "Masculin (XY)",
+                "Féminin (XX)",
+                "Indéterminé",
+                "Hermaphrodite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'association du chromosome X maternel et du chromosome Y paternel donne un individu génétiquement masculin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle alternance fondamentale permet le maintien du caryotype de génération en génération ?",
+              "options": [
+                "Mitose et digestion",
+                "Méiose et fécondation",
+                "Mutation et sélection",
+                "Respiration et photosynthèse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La méiose divise par deux le caryotype (n) et la fécondation le rétablit (2n), assurant la stabilité de l'espèce."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La cellule-œuf commence ensuite son développement par une succession rapide de :",
+              "options": ["Mitoses", "Méioses", "Mutations", "Fécondations"],
+              "correctAnswers": [0],
+              "explanation": "La cellule-œuf se divise par mitoses successives pour former les milliards de cellules de l'organisme."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Transmission des allèles dominants et récessifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pour qu'un allèle récessif s'exprime dans le phénotype d'un caractère autosomal, l'individu doit être :",
+              "options": [
+                "Hétérozygote",
+                "Homozygote pour cet allèle",
+                "Porteur d'un allèle dominant",
+                "Dépourvu de chromosomes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un allèle récessif ne s'exprime au niveau phénotypique que s'il est présent en double exemplaire (homozygote)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si deux parents hétérozygotes (A/O) ont un enfant, quelle est la probabilité que cet enfant soit de groupe O ?",
+              "options": ["0 %", "25 %", "50 %", "75 %"],
+              "correctAnswers": [1],
+              "explanation": "Chaque parent a 1 chance sur 2 de transmettre l'allèle O. La probabilité d'avoir O/O est de 1/2 × 1/2 = 1/4 (25 %)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on deux allèles qui s'expriment tous les deux conjointement chez un hétérozygote ?",
+              "options": ["Codominants", "Récessifs", "Létaux", "Muets"],
+              "correctAnswers": [0],
+              "explanation": "Deux allèles sont dits codominants lorsqu'ils participent tous les deux équitablement au phénotype."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel outil graphique utilise-t-on pour prévoir les génotypes possibles issus d'un croisement ?",
+              "options": [
+                "Un échiquier de croisement",
+                "Un cardiogramme",
+                "Un spectrogramme",
+                "Un caryotype"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échiquier de croisement (tableau de croisement) permet de visualiser les combinaisons alléliques possibles."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Si un parent est de génotype B/B et l'autre de génotype O/O, quelles affirmations sont vraies ?",
+              "options": [
+                "Tous leurs enfants seront de génotype B/O",
+                "Tous leurs enfants seront de phénotype [B]",
+                "Certains enfants pourront être de groupe [O]",
+                "La moitié des enfants seront [B] et l'autre moitié [O]"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le parent B/B transmet B et le parent O/O transmet O : tous les enfants sont B/O, et comme B domine O, ils sont [B]."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un porteur sain d'une maladie génétique récessive ?",
+              "options": [
+                "Un individu malade mais guéri",
+                "Un hétérozygote portant l'allèle muté sans développer la maladie",
+                "Une personne sans aucun allèle muté",
+                "Une personne immunisée contre les virus"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un porteur sain possède un allèle normal dominant et un allèle récessif défectueux : il ne présente aucun symptôme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La mucoviscidose est une maladie autosomique récessive. Deux parents porteurs sains ont quel risque d'avoir un enfant malade ?",
+              "options": ["0 %", "25 %", "50 %", "100 %"],
+              "correctAnswers": [1],
+              "explanation": "Les deux parents étant hétérozygotes (M/m), le risque que l'enfant reçoive les deux allèles m est de 1/4 (25 %)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi les hommes sont-ils plus fréquemment touchés par les anomalies liées au chromosome X (comme le daltonisme) ?",
+              "options": [
+                "Ils n'ont qu'un seul chromosome X",
+                "Ils possèdent deux chromosomes Y",
+                "Leur ADN se réplique plus vite",
+                "Leurs hormones détruisent les gènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "N'ayant qu'un seul chromosome X (XY), l'homme exprime obligatoirement tout allèle récessif porté par ce chromosome."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une femme daltonienne possède obligatoirement :",
+              "options": [
+                "Deux allèles daltoniens sur ses deux chromosomes X",
+                "Un allèle daltonien et un allèle normal",
+                "Un chromosome Y anormal",
+                "Trois chromosomes X"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le daltonisme étant récessif et lié à l'X, une femme doit être homozygote récessive pour exprimer le daltonisme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si une maladie génétique est dominante autosomique, un individu hétérozygote sera :",
+              "options": [
+                "Sain et non transmetteur",
+                "Atteint par la maladie",
+                "Protégé contre d'autres maladies",
+                "Stérile obligatoirement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Avec un allèle dominant responsable de la pathologie, un seul exemplaire suffit pour que la maladie s'exprime."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les anomalies chromosomiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une trisomie ?",
+              "options": [
+                "La présence de trois chromosomes sur une paire donnée",
+                "L'absence totale d'un chromosome",
+                "Un chromosome coupé en deux",
+                "Une maladie causée par une bactérie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La trisomie correspond à la présence anormale de trois chromosomes au lieu de deux pour une paire donnée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de chromosomes comporte le caryotype d'une personne atteinte du syndrome de Down (trisomie 21) ?",
+              "options": [
+                "45 chromosomes",
+                "46 chromosomes",
+                "47 chromosomes",
+                "48 chromosomes"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le caryotype comporte un chromosome surnuméraire sur la paire 21, soit 47 chromosomes au total."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'absence d'un chromosome sur une paire ?",
+              "options": [
+                "Une trisomie",
+                "Une monosomie",
+                "Une duplication",
+                "Une translocation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une monosomie est l'anomalie dans laquelle un seul chromosome est présent au lieu d'une paire homologue complète."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle anomalie de caryotype caractérise le syndrome de Turner chez la femme ?",
+              "options": [
+                "Un caryotype à 45 chromosomes avec un seul X (X0)",
+                "Trois chromosomes X (XXX)",
+                "Un chromosome Y supplémentaire (XYY)",
+                "Une trisomie 18"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le syndrome de Turner correspond à une monosomie X : la femme possède 45 chromosomes au total avec un unique X."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "À quel moment peut survenir l'erreur de répartition conduisant à une anomalie chromosomique ?",
+              "options": [
+                "Lors de la première division de méiose",
+                "Lors de la deuxième division de méiose",
+                "Pendant la digestion gastrique",
+                "Au moment de l'expiration pulmonaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La non-disjonction des chromosomes ou des chromatides peut se produire lors de la 1re ou 2e division de méiose."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si un gamète possédant 24 chromosomes féconde un gamète normal à 23 chromosomes, la cellule-œuf aura :",
+              "options": [
+                "46 chromosomes",
+                "47 chromosomes",
+                "45 chromosomes",
+                "48 chromosomes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "24 + 23 = 47 chromosomes : la cellule-œuf résultante sera trisomique pour la paire concernée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel examen médical permet de visualiser les chromosomes du fœtus avant la naissance ?",
+              "options": [
+                "Une radiographie osseuse",
+                "Le diagnostic prénatal par caryotype",
+                "Une prise de tension artérielle",
+                "Un test d'effort"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le caryotype fœtal (après amniocentèse par exemple) permet de vérifier le nombre et la structure des chromosomes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que provoque généralement la majorité des anomalies chromosomiques chez l'embryon précoce ?",
+              "options": [
+                "Un arrêt spontané du développement (fausse couche)",
+                "Une accélération de la croissance",
+                "Une immunité renforcée",
+                "Aucune conséquence biologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La plupart des anomalies chromosomiques perturbent trop gravement le fonctionnement cellulaire et sont non viables."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le syndrome de Klinefelter correspond à un caryotype masculin particulier possédant :",
+              "options": [
+                "Un seul chromosome Y",
+                "Deux chromosomes X et un Y (XXY)",
+                "Trois chromosomes Y",
+                "Aucun chromosome sexuel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le syndrome de Klinefelter est caractérisé par un caryotype 47, XXY chez des individus de phénotype masculin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une anomalie portant sur la structure d'un chromosome (comme la perte d'un morceau) s'appelle :",
+              "options": [
+                "Une délétion",
+                "Une mitose",
+                "Une osmose",
+                "Une synapsis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La perte d'un segment de chromosome s'appelle une délétion chromosomique."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "L'arbre généalogique et l'hérédité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans un arbre généalogique en génétique humaine, quelle forme géométrique représente généralement un homme ?",
+              "options": ["Un cercle", "Un carré", "Un triangle", "Une étoile"],
+              "correctAnswers": [1],
+              "explanation": "Par convention internationale, un carré représente un individu masculin et un cercle un individu féminin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que symbolise généralement un symbole noirci ou hachuré dans un arbre généalogique ?",
+              "options": [
+                "Un individu atteint par le caractère ou la maladie étudiée",
+                "Un individu décédé de vieillesse",
+                "Un jumeau monozygote",
+                "Une personne adoptée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le symbole plein ou coloré indique que la personne présente le phénotype étudié (atteinte de la maladie)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un arbre, comment sont numérotées les générations successives ?",
+              "options": [
+                "Par des chiffres romains (I, II, III...)",
+                "Par des lettres majuscules (A, B, C...)",
+                "Par des couleurs",
+                "Par ordre alphabétique inverse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les générations sont indiquées par des chiffres romains (I pour les grands-parents, II pour les parents, etc.)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si deux parents sains ont un enfant malade, que peut-on déduire sur l'allèle responsable de la maladie ?",
+              "options": [
+                "Il est obligatoirement dominant",
+                "Il est récessif",
+                "Il est situé sur le chromosome Y",
+                "Il s'agit d'une infection bactérienne"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'allèle est récessif car il était masqué chez les deux parents hétérozygotes (porteurs sains)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Que permet d'étudier l'analyse d'un arbre généalogique en médecine ?",
+              "options": [
+                "Le mode de transmission d'une maladie génétique",
+                "Le calcul du risque de récurrence pour un futur enfant",
+                "Le régime alimentaire exact des ancêtres",
+                "La pointure des générations futures"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'arbre généalogique permet de déterminer si l'allèle est récessif ou dominant, et d'évaluer les probabilités de transmission."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si une maladie dominante touche un individu, au moins l'un de ses deux parents doit être :",
+              "options": [
+                "Atteint par la maladie également",
+                "Porteur sain sans aucun signe",
+                "D'un autre groupe sanguin",
+                "Âgé de plus de 60 ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une maladie autosomique dominante, chaque enfant malade a au moins un parent atteint (sauf néomutation)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment relie-t-on deux conjoints dans un arbre généalogique conventionnel ?",
+              "options": [
+                "Par un trait horizontal direct",
+                "Par une double flèche verticale",
+                "Par une croix rouge",
+                "Par des pointillés ondulés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un trait horizontal simple relie les deux partenaires d'un couple (double trait en cas de consanguinité)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment sont numérotés les individus au sein d'une même génération dans un arbre généalogique ?",
+              "options": [
+                "De gauche à droite par des chiffres arabes (1, 2, 3...)",
+                "Par leur date de naissance exacte",
+                "Par leur prénom",
+                "De droite à gauche par des lettres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au sein de chaque génération, les individus sont repérés par des chiffres arabes de gauche à droite (ex: II-3)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que peut signifier le fait qu'une maladie ne touche quasiment que des garçons dans une grande famille ?",
+              "options": [
+                "Une transmission liée au chromosome sexuel X",
+                "Une alimentation trop riche en protéines",
+                "Une transmission virale contagieuse",
+                "Un hasard absolu sans base génétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une maladie récessive liée à l'X touche préférentiellement les garçons car ils ne possèdent qu'un seul chromosome X."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel conseil médical accompagne l'étude des arbres généalogiques pour les familles à risque ?",
+              "options": [
+                "Le conseil génétique",
+                "L'ordonnance d'antibiotiques",
+                "Le bilan podologique",
+                "La phytothérapie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le conseil génétique informe les futurs parents sur les risques de transmission et les tests disponibles."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan sur la transmission génétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle structure porteuse de l'information génétique est transmise des parents aux enfants ?",
+              "options": [
+                "Les chromosomes constitués d'ADN",
+                "Les globules rouges du sang",
+                "Les enzymes digestives",
+                "Les nutriments absorbés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hérédité repose sur la transmission des chromosomes et de l'ADN contenu dans les gamètes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la définition d'un caractère héréditaire ?",
+              "options": [
+                "Une caractéristique transmise de génération en génération",
+                "Une habitude acquise par l'apprentissage",
+                "Une cicatrice due à une blessure",
+                "Une langue parlée couramment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un caractère héréditaire est une particularité biologique transmise par les gènes des géniteurs à leur descendance."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les vrais jumeaux (monozygotes) possèdent :",
+              "options": [
+                "Une information génétique strictement identique",
+                "Des caryotypes totalement différents",
+                "Des génomes d'espèces différentes",
+                "Deux pères différents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Issus d'une même cellule-œuf qui s'est scindée, les vrais jumeaux partagent exactement le même patrimoine génétique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi des faux jumeaux (dizygotes) ne sont-ils pas plus ressemblants que des frères et sœurs ordinaires ?",
+              "options": [
+                "Ils proviennent de deux ovocytes fécondés par deux spermatozoïdes distincts",
+                "Ils ont été élevés dans des familles différentes",
+                "Leurs chromosomes ont muté après la naissance",
+                "Ils ne possèdent aucun allèle en commun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les faux jumeaux naissent de la fécondation indépendante de deux ovocytes par deux spermatozoïdes différents."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels mécanismes fondamentaux assurent la continuité et la constance du caryotype de l'espèce ?",
+              "options": [
+                "La réduction chromatique par méiose",
+                "Le rétablissement du nombre diploïde par fécondation",
+                "La synthèse de glycogène par le foie",
+                "La sudation lors de l'effort physique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'association de la méiose (passage de 2n à n) et de la fécondation (de n à 2n) assure la stabilité caryotypique de l'espèce."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le phénotype observable d'un individu résulte de l'interaction entre :",
+              "options": [
+                "Son génotype et les facteurs environnementaux",
+                "Sa vitesse de marche et son poids",
+                "Le champ magnétique et les ondes radio",
+                "Sa date de naissance et la saison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le phénotype est le produit de l'expression des gènes (génotype) modulée par l'environnement et le mode de vie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien d'allèles d'un gène donné un gamète normal transporte-t-il ?",
+              "options": [
+                "Un seul allèle",
+                "Deux allèles",
+                "Quatre allèles",
+                "Zéro allèle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque gamète étant haploïde, il ne contient qu'un seul chromosome de chaque paire, donc un seul allèle par gène."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle molécule constitue le support universel de l'information génétique chez tous les êtres vivants ?",
+              "options": ["L'ADN", "L'ATP", "Le cholestérol", "L'insuline"],
+              "correctAnswers": [0],
+              "explanation": "L'ADN est la molécule universelle support de l'hérédité pour tous les êtres vivants connus."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une modification accidentelle de la séquence nucléotidique de l'ADN ?",
+              "options": [
+                "Une mutation",
+                "Une mitose",
+                "Une osmose",
+                "Une scission"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une mutation est un changement spontané ou provoqué dans la séquence de bases de l'ADN."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la part moyenne du génome transmise par une mère à son enfant biologique ?",
+              "options": ["50 %", "100 %", "25 %", "75 %"],
+              "correctAnswers": [0],
+              "explanation": "La mère transmet exactement 23 chromosomes sur les 46 de son enfant, soit 50 % de son patrimoine nucléaire."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Diversité",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le brassage génétique lors de la méiose",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment s'effectue la séparation des chromosomes homologues lors de la première division de méiose ?",
+              "options": [
+                "De manière aléatoire et indépendante pour chaque paire",
+                "Toujours selon l'origine paternelle d'un côté",
+                "Par ordre de taille décroissante obligatoire",
+                "Selon la volonté de l'organisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La répartition des chromosomes de chaque paire vers les pôles de la cellule se fait de façon totalement aléatoire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la redistribution aléatoire des chromosomes des différentes paires au cours de la méiose ?",
+              "options": [
+                "Le brassage interchromosomique",
+                "La mitose conforme",
+                "La glycolyse",
+                "La translocation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le brassage interchromosomique résulte de la séparation indépendante et aléatoire des paires de chromosomes homologues."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de combinaisons de chromosomes différentes la méiose humaine peut-elle produire sans compter les crossing-over ?",
+              "options": [
+                "2 puissance 23 (soit plus de 8 millions)",
+                "23 combinaisons",
+                "46 combinaisons",
+                "1 000 combinaisons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 23 paires, il existe 2^23 combinaisons chromosomiques possibles dans les gamètes d'un même individu, soit 8 388 608."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on des échanges de fragments entre chromatides de chromosomes homologues pendant la méiose ?",
+              "options": [
+                "Le crossing-over (ou enjambement)",
+                "La scission binaire",
+                "La caryocinèse",
+                "L'apoptose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le crossing-over permet des échanges de portions de chromatides entre homologues, créant de nouvelles associations d'allèles."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles sont les conséquences directes du brassage génétique lors de la méiose ?",
+              "options": [
+                "Chaque gamète produit est génétiquement unique",
+                "La diversité génétique des descendants est immensément accrue",
+                "Le nombre total de chromosomes est multiplié par deux",
+                "Tous les allèles récessifs sont détruits"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le brassage génétique crée une variété infinie de gamètes, assurant l'unicité génétique de chaque individu issu de la reproduction sexuée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux gamètes produits par un même individu ont-ils la même combinaison d'allèles ?",
+              "options": [
+                "Pratiquement jamais en raison des brassages génétiques",
+                "Toujours exactement la même combinaison",
+                "Uniquement s'ils sont produits le même jour",
+                "Oui, car ils viennent de la même personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce aux brassages inter et intrachromosomiques, la probabilité que deux gamètes soient identiques est quasi nulle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quand a lieu le brassage interchromosomique ?",
+              "options": [
+                "En anaphase de première division de méiose",
+                "Pendant l'interphase",
+                "Après la fécondation",
+                "Lors de la synthèse des protéines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il a lieu lors de l'anaphase 1, quand les chromosomes homologues migrent au hasard vers un pôle ou l'autre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel terme désigne l'unicité de la combinaison allélique de chaque être vivant issu de la reproduction sexuée ?",
+              "options": [
+                "L'unicité génétique",
+                "L'isogénie",
+                "Le clonage naturel",
+                "L'homogénéité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque individu est génétiquement unique au monde (à l'exception des vrais jumeaux)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le brassage génétique a-t-il lieu lors de la mitose ?",
+              "options": [
+                "Non, car la mitose conserve le patrimoine à l'identique",
+                "Oui, exactement comme dans la méiose",
+                "Oui, mais uniquement dans les cellules musculaires",
+                "Seulement chez les plantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mitose est une division conforme : elle ne crée aucun brassage génétique entre chromosomes homologues."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi des frères et sœurs nés de mêmes parents (hors jumeaux monozygotes) sont-ils différents ?",
+              "options": [
+                "Ils résultent de gamètes porteurs de combinaisons alléliques différentes",
+                "Leurs gènes ont changé d'espèce",
+                "Ils n'ont pas les mêmes chromosomes sexuels",
+                "Leur alimentation modifie leurs chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le brassage des allèles lors de la fabrication des gamètes parentaux produit des enfants aux combinaisons uniques."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Le hasard de la fécondation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment se choisit le spermatozoïde qui fécondera l'ovocyte parmi les millions émis ?",
+              "options": [
+                "Au hasard de la rencontre",
+                "Par tirage génétique contrôlé par l'ovocyte",
+                "C'est obligatoirement le plus volumineux",
+                "Selon le groupe sanguin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fécondation résulte de la rencontre aléatoire entre un spermatozoïde parmi des millions et l'ovocyte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de cellules-œufs génétiquement différentes un couple humain peut-il potentiellement concevoir au minimum ?",
+              "options": [
+                "Plus de 70 000 milliards de combinaisons possibles",
+                "Seulement 46 combinaisons",
+                "Environ 23 combinaisons",
+                "4 combinaisons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2^23 gamètes paternels × 2^23 gamètes maternels = plus de 70 000 milliards de cellules-œufs différentes possibles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est l'effet de la fécondation sur la diversité génétique apportée par les gamètes ?",
+              "options": [
+                "Elle l'amplifie considérablement",
+                "Elle l'annule complètement",
+                "Elle réduit la diversité à zéro",
+                "Elle la fige sans changement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En associant deux gamètes uniques choisis au hasard, la fécondation multiplie la diversité allélique des individus."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de spermatozoïdes pénètrent normalement dans l'ovocyte lors de la fécondation ?",
+              "options": [
+                "Un seul",
+                "Deux",
+                "Une dizaine",
+                "Plusieurs milliers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dès qu'un spermatozoïde pénètre dans l'ovocyte, une membrane protectrice bloque immédiatement l'entrée de tout autre spermatozoïde."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles étapes contribuent au rôle amplificateur de la fécondation pour la diversité ?",
+              "options": [
+                "Le tirage au sort d'un spermatozoïde parmi des millions",
+                "L'association inédite de deux lots haploïdes d'allèles",
+                "L'échange de gènes avec des espèces animales",
+                "L'altération volontaire de l'ADN par la cellule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La rencontre fortuite de deux gamètes hautement diversifiés crée une combinaison génétique totalement inédite."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle probabilité existe-t-il que deux frères (non jumeaux) aient exactement le même génotype ?",
+              "options": [
+                "Pratiquement zéro",
+                "Une chance sur deux",
+                "Une chance sur dix",
+                "Une certitude absolue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La probabilité est infinitésimale (inférieure à 1 sur 70 000 milliards), ce qui garantit l'unicité de chaque enfant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La fécondation permet de créer chez chaque descendant une combinaison d'allèles :",
+              "options": [
+                "Nouvelle et unique",
+                "Identique à celle du père uniquement",
+                "Identique à celle de la mère uniquement",
+                "Semblable à tous les membres de l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque individu hérite d'une combinaison nouvelle et singulière d'allèles transmise pour moitié par chaque parent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que forme l'union des 23 chromosomes de l'ovocyte et des 23 chromosomes du spermatozoïde ?",
+              "options": [
+                "Une cellule-œuf diploïde à 46 chromosomes",
+                "Un gamète géant",
+                "Une bactérie symbiotique",
+                "Un clone parental"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'union rétablit le stock diploïde à 46 chromosomes caractéristique de l'espèce humaine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mécanisme empêche la polyspermie (pénétration de plusieurs spermatozoïdes dans l'ovocyte) ?",
+              "options": [
+                "Une modification de l'enveloppe de l'ovocyte dès la pénétration du premier spermatozoïde",
+                "Une expulsion mécanique par des battements de cils",
+                "La mort immédiate de l'ovocyte",
+                "Une baisse brutale de température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une réaction biochimique rapide modifie la zone pellucide de l'ovocyte pour empêcher toute pénétration supplémentaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En quoi la reproduction sexuée se distingue-t-elle fondamentalement de la reproduction asexuée ?",
+              "options": [
+                "Elle crée continuellement de nouveaux génotypes et de la diversité",
+                "Elle produit des clones strictement identiques",
+                "Elle nécessite moins d'énergie",
+                "Elle ne transmet aucun ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La reproduction sexuée brasse les allèles et engendre une grande diversité génétique, contrairement au clonage asexué."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les mutations et l'apparition de nouveaux allèles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est l'origine initiale de tous les allèles différents d'un gène ?",
+              "options": [
+                "Les mutations génétiques",
+                "La digestion des aliments",
+                "L'effort physique répété",
+                "Le changement de climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mutations sont les modifications de la séquence d'ADN à l'origine de l'apparition de nouveaux allèles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quelle fréquence surviennent les mutations spontanées dans les cellules ?",
+              "options": [
+                "Très rarement, ce sont des événements rares et aléatoires",
+                "À chaque seconde dans chaque gène",
+                "Uniquement pendant le sommeil",
+                "Jamais dans des conditions normales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mutations sont des événements accidentels rares lors de la réplication de l'ADN."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quels agents environnementaux peuvent augmenter considérablement la fréquence des mutations ?",
+              "options": [
+                "Les agents mutagènes comme les rayons UV ou les radiations ionisantes",
+                "L'eau pure et le sel de table",
+                "L'air frais de montagne",
+                "Les bruits intenses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rayons UV, rayons X et certains produits chimiques sont des agents mutagènes qui altèrent l'ADN."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour qu'une mutation soit transmise à la descendance, dans quelles cellules doit-elle survenir ?",
+              "options": [
+                "Dans les cellules des lignées reproductrices (gamètes)",
+                "Dans les cellules de la peau",
+                "Dans les cellules des poumons",
+                "Dans les neurones du cerveau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seules les mutations touchant les cellules germinales (à l'origine des gamètes) sont héréditaires."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles peuvent être les conséquences d'une mutation génétique sur l'organisme ?",
+              "options": [
+                "Elle peut être neutre et ne rien changer au fonctionnement",
+                "Elle peut être défavorable ou provoquer une maladie",
+                "Elle peut conférer un avantage dans un environnement donné",
+                "Elle transforme l'organisme en une espèce végétale"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Une mutation peut être silencieuse/neutre, néfaste, ou avantageuse selon son impact sur la protéine codée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une mutation touchant une cellule du corps autre qu'un gamète ?",
+              "options": [
+                "Une mutation somatique",
+                "Une mutation germinale",
+                "Une mutation chromosomique",
+                "Une mutation cosmique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une mutation somatique touche les tissus du corps (comme la peau) et disparaît avec l'individu sans être transmise."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mécanisme cellulaire limite le nombre de mutations lors de la réplication de l'ADN ?",
+              "options": [
+                "Les systèmes enzymatiques de réparation de l'ADN",
+                "La membrane plasmique",
+                "La mitochondrie",
+                "L'acide gastrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des enzymes surveillent la réplication et corrigent la majorité des erreurs d'appariement de l'ADN."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que peut provoquer l'accumulation de mutations somatiques non réparées dans une cellule de la peau ?",
+              "options": [
+                "Le développement d'un cancer (comme un mélanome)",
+                "Une augmentation de la vision nocturne",
+                "Un changement de groupe sanguin",
+                "La formation de gamètes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des mutations affectant les gènes régulant la division cellulaire peuvent déclencher une prolifération cancéreuse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une mutation qui modifie une seule paire de bases azotées dans l'ADN est qualifiée de :",
+              "options": [
+                "Mutation ponctuelle",
+                "Mutation polyploïde",
+                "Mutation globale",
+                "Mutation mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une mutation ponctuelle touche un seul nucléotide (substitution, insertion ou délétion d'une base)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi les mutations sont-elles le moteur indispensable de l'évolution des espèces ?",
+              "options": [
+                "Elles créent la nouveauté génétique et de nouveaux allèles",
+                "Elles éliminent tous les prédateurs",
+                "Elles rendent tous les individus identiques",
+                "Elles arrêtent le temps biologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans mutation, il n'y aurait aucune variation allélique et aucune possibilité d'adaptation et d'évolution."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Influence de l'environnement sur le phénotype",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Le bronzage de la peau après une exposition au soleil illustre l'action de :",
+              "options": [
+                "L'environnement sur l'expression du phénotype",
+                "Une mutation transmise aux enfants",
+                "Un changement de génotype irréversible",
+                "Une nouvelle paire de chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bronzage est une modification phénotypique temporaire induite par le soleil sans altération du génotype transmis."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les caractères acquis sous l'influence de l'environnement sont-ils transmissibles aux descendants ?",
+              "options": [
+                "Non, ils ne modifient pas l'information génétique des gamètes",
+                "Oui, toujours intégralement",
+                "Uniquement chez les mammifères",
+                "Oui, dès la génération suivante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une musculature développée ou une cicatrice sont des caractères acquis non inscrits dans l'ADN des gamètes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Chez certaines espèces de tortues et de crocodiles, qu'est-ce qui détermine le sexe des nouveau-nés ?",
+              "options": [
+                "La température d'incubation des œufs",
+                "La taille des feuilles du nid",
+                "La pression atmosphérique",
+                "La salinité de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La température du nid influence l'activité enzymatique et oriente la différenciation sexuelle chez ces reptiles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi deux vrais jumeaux adultes peuvent-ils présenter des différences de poids ou de santé ?",
+              "options": [
+                "Leur mode de vie et leur environnement sont différents",
+                "Leurs gènes de naissance n'étaient pas les mêmes",
+                "Leurs chromosomes ont disparu",
+                "Leur espèce biologique a changé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'alimentation, le sport, le stress ou les maladies modulent l'expression phénotypique de leur génotype identique."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi ces caractères, lesquels sont principalement acquis sous l'effet de l'environnement ?",
+              "options": [
+                "La maîtrise du français ou de l'anglais",
+                "Une cicatrice sur le genou",
+                "Le groupe sanguin ABO",
+                "La présence de 46 chromosomes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La langue parlée et les cicatrices sont le résultat de l'apprentissage et d'accidents de la vie, non de l'ADN."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La couleur des fleurs d'hortensia varie du rose au bleu en fonction :",
+              "options": [
+                "De l'acidité et de la composition du sol",
+                "De l'âge du jardinier",
+                "Du nombre de chromosomes des pétales",
+                "Du chant des oiseaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un sol acide et riche en aluminium donne des hortensias bleus, alors qu'un sol calcaire donne des fleurs roses."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle maladie nutritionnelle résultant du manque de vitamine D et d'ensoleillement déforme le squelette ?",
+              "options": [
+                "Le rachitisme",
+                "La mucoviscidose",
+                "La drépanocytose",
+                "L'hémophilie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rachitisme est un défaut de minéralisation osseuse dû à une carence environnementale en vitamine D."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la capacité d'un génotype à produire différents phénotypes selon l'environnement ?",
+              "options": [
+                "La plasticité phénotypique",
+                "La fixité génétique",
+                "La dégénérescence",
+                "La stérilité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La plasticité phénotypique désigne la flexibilité d'expression des caractères en réponse au milieu de vie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une plante qui pousse à l'ombre produit souvent des feuilles plus larges et plus fines afin de :",
+              "options": [
+                "Capter un maximum de lumière disponible",
+                "Se protéger du gel",
+                "Attirer les insectes",
+                "Réduire son absorption d'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La plante optimise sa surface d'interception lumineuse pour compenser le faible éclairement du sous-bois."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le phénotype final d'un individu est résumé par la relation :",
+              "options": [
+                "Phénotype = Génotype + Action du milieu",
+                "Phénotype = Espèce - Climat",
+                "Phénotype = Chromosomes × 2",
+                "Phénotype = Environnement seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le phénotype résulte toujours de l'interaction constante entre les prédispositions génétiques et le contexte de vie."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Diversité des allèles dans une population",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le pool génétique ou patrimoine génétique d'une population ?",
+              "options": [
+                "L'ensemble de tous les allèles présents chez les individus de cette population",
+                "Le nombre total de chromosomes de la planète",
+                "Le carnet de santé des habitants",
+                "La liste des espèces en voie de disparition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pool génétique rassemble la totalité des allèles portés par l'ensemble des membres d'une même population."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quand qualifie-t-on un gène de polymorphe au sein d'une espèce ?",
+              "options": [
+                "Quand il existe sous la forme d'au moins deux allèles fréquents",
+                "Quand il change de taille chaque année",
+                "Quand il ne possède aucun allèle",
+                "Quand il est présent chez une seule personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un gène est polymorphe s'il présente au moins deux allèles avec une fréquence supérieure à 1 % dans la population."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la proportion d'un allèle donné par rapport à l'ensemble des allèles de ce gène dans une population ?",
+              "options": [
+                "La fréquence allélique",
+                "La vitesse génétique",
+                "Le taux de mitose",
+                "La charge pondérale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fréquence allélique mesure l'abondance relative d'un allèle donné au sein d'une population."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel phénomène aléatoire fait varier la fréquence des allèles d'une génération à l'autre dans les petites populations ?",
+              "options": [
+                "La dérive génétique",
+                "La sélection artificielle",
+                "La photosynthèse",
+                "L'effet de serre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dérive génétique est la variation aléatoire des fréquences alléliques causée par le hasard des transmissions."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels facteurs peuvent modifier la diversité des allèles au sein d'une population vivante ?",
+              "options": [
+                "Les mutations créant de nouveaux allèles",
+                "La dérive génétique éliminant certains allèles par hasard",
+                "La sélection naturelle favorisant certains allèles",
+                "La couleur de la lune pendant la nuit"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Mutations, dérive génétique, sélection naturelle et migrations modifient la composition allélique des populations."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la diversité allélique est-elle cruciale pour la survie d'une population face à une nouvelle maladie ?",
+              "options": [
+                "Certains individus ont plus de chances de posséder des allèles de résistance",
+                "Elle garantit que tous les individus tombent malades ensemble",
+                "Elle permet de fabriquer des médicaments chimiques",
+                "Elle empêche les bactéries de se reproduire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une grande diversité génétique augmente la probabilité que certains individus résistent aux épidémies."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'effet de goulot d'étranglement pour une population animale ?",
+              "options": [
+                "Une réduction drastique de l'effectif entraînant une perte massive de diversité génétique",
+                "Une augmentation soudaine du nombre de naissances",
+                "Le passage obligé par un col de montagne",
+                "Un changement d'alimentation vers les graines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une chute brutale de population (chasse, catastrophe) élimine de nombreux allèles et appauvrit le patrimoine génétique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'effet fondateur se produit lorsqu'un petit groupe d'individus :",
+              "options": [
+                "Colonise un nouvel environnement avec seulement un échantillon restreint d'allèles",
+                "Construit un habitat en béton",
+                "Élimine tous les membres âgés",
+                "Change de régime alimentaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effet fondateur réduit la diversité génétique car la nouvelle population ne part que d'un sous-ensemble d'allèles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la consanguinité dans une petite population augmente-t-elle le risque de maladies génétiques ?",
+              "options": [
+                "Elle augmente la fréquence d'apparition d'individus homozygotes pour des allèles récessifs néfastes",
+                "Elle détruit le noyau des cellules",
+                "Elle empêche la réplication de l'ADN",
+                "Elle transforme les gènes dominants en virus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En croisant des individus apparentés, le risque de réunir deux allèles récessifs délétères augmente fortement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Au sein de l'espèce humaine, la très grande majorité de la diversité génétique se trouve :",
+              "options": [
+                "À l'intérieur de chaque population humaine",
+                "Entre des continents isolés",
+                "Uniquement chez les scientifiques",
+                "Chez les nouveau-nés uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Environ 85 % de la diversité génétique humaine totale existe entre individus d'une même population."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Sélection naturelle et adaptation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel célèbre naturaliste a formalisé le concept de sélection naturelle en 1859 ?",
+              "options": [
+                "Charles Darwin",
+                "Gregor Mendel",
+                "Louis Pasteur",
+                "Jean-Baptiste de Lamarck"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Charles Darwin a exposé sa théorie de l'évolution par la sélection naturelle dans 'L'Origine des espèces'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la sélection naturelle ?",
+              "options": [
+                "La survie et la reproduction différentielles des individus les mieux adaptés à leur milieu",
+                "La création d'espèces nouvelles en laboratoire",
+                "L'extinction soudaine de tous les carnivores",
+                "La destruction des forêts par l'Homme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les individus présentant des allèles avantageux dans leur milieu ont plus de descendants, transmettant ces allèles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'exemple classique de la phalène du bouleau pendant la révolution industrielle illustre :",
+              "options": [
+                "La sélection naturelle de la forme sombre sur les troncs noircis par la suie",
+                "Une mutation provoquée par le froid hivernal",
+                "La disparition définitive des papillons",
+                "Une maladie génétique contagieuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les papillons sombres étaient moins visibles pour les oiseaux prédateurs sur les troncs couverts de suie industrielle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La résistance des bactéries aux antibiotiques est une preuve moderne de :",
+              "options": [
+                "La sélection naturelle favorisant les bactéries mutantes résistantes",
+                "L'affaiblissement général de la médecine",
+                "La disparition des globules blancs",
+                "Une baisse de la température corporelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'antibiotique élimine les bactéries sensibles, laissant proliférer les rares souches mutantes résistantes."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles conditions sont indispensables pour que la sélection naturelle agisse sur un caractère ?",
+              "options": [
+                "Il doit exister une diversité phénotypique initiale au sein de la population",
+                "Ce caractère doit être au moins en partie héritable (génétique)",
+                "Tous les individus doivent obligatoirement survivre sans exception",
+                "L'environnement doit être strictement figé et immuable"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Il faut une variation préalable des caractères et leur transmission héréditaire pour que la sélection puisse opérer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la sélection opérée par l'Homme sur les plantes cultivées et les animaux d'élevage ?",
+              "options": [
+                "La sélection artificielle",
+                "La sélection naturelle",
+                "La dérive spatiale",
+                "L'endosymbiose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Homme sélectionne artificiellement les reproducteurs présentant les caractéristiques qui l'intéressent (rendement, docilité)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La sélection naturelle 'crée-t-elle' volontairement les mutations avantageuses ?",
+              "options": [
+                "Non, les mutations apparaissent au hasard et la sélection filtre celles qui favorisent la survie",
+                "Oui, l'environnement commande les mutations nécessaires",
+                "Oui, selon le besoin conscient de l'animal",
+                "Non, car les mutations n'existent pas dans la nature"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mutations surviennent de manière fortuite ; la sélection naturelle retient simplement les formes les mieux adaptées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le moteur principal qui oriente l'adaptation d'une population à son environnement au fil des générations ?",
+              "options": [
+                "La sélection naturelle",
+                "Le clonage systématique",
+                "L'immobilité des continents",
+                "La photosynthèse nocturne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sélection naturelle augmente la fréquence des allèles qui procurent un avantage dans un milieu donné."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'environnement change brutalement, que deviennent les allèles auparavant avantageux ?",
+              "options": [
+                "Ils peuvent devenir neutres ou même désavantageux pour la survie",
+                "Ils se transforment immédiatement en protéines",
+                "Ils sont obligatoirement dupliqués",
+                "Ils empêchent la reproduction de l'espèce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La valeur adaptative d'un allèle dépend toujours de l'environnement : un atout hier peut être un handicap demain."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que l'adaptation est relative à un milieu précis ?",
+              "options": [
+                "Une adaptation efficace dans un milieu peut être inutile ou néfaste dans un autre",
+                "Tous les milieux sur Terre sont strictement identiques",
+                "Les gènes ne fonctionnent que dans l'eau salée",
+                "L'adaptation ne concerne que les animaux volants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un pelage blanc épais est avantageux en milieu polaire mais défavorable dans une forêt tropicale dense."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Évolution des espèces et parenté",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une espèce sur le plan biologique ?",
+              "options": [
+                "Un ensemble d'individus capables de se reproduire entre eux et d'avoir une descendance fertile",
+                "Des êtres vivants de même couleur et de même poids",
+                "Tous les animaux vivant dans la même forêt",
+                "Des organismes apparus exactement la même année"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La capacité d'interfécondité et la fertilité de la descendance définissent classiquement l'espèce biologique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la formation d'une nouvelle espèce à partir d'une population ancestrale ?",
+              "options": [
+                "La spéciation",
+                "La mitose",
+                "La sédimentation",
+                "La pollinisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La spéciation est le processus évolutif par lequel de nouvelles espèces se différencient et s'isolent génétiquement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel événement physique peut isoler deux populations et favoriser l'apparition de nouvelles espèces ?",
+              "options": [
+                "Un isolement géographique (montagne, océan, canyon)",
+                "Une simple averse de pluie",
+                "Le coucher du soleil",
+                "Le passage d'un nuage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'isolement géographique empêche les flux de gènes, permettant aux populations d'accumuler des mutations différentes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on un schéma en forme d'arbre illustrant les liens de parenté entre les espèces ?",
+              "options": [
+                "Un arbre phylogénétique",
+                "Un diagramme de Venn",
+                "Un planisphère",
+                "Un histogramme de fréquence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'arbre phylogénétique représente les relations évolutives et de parenté entre différents groupes d'êtres vivants."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Sur quels indices scientifiques s'appuie-t-on pour établir la parenté entre deux espèces vivantes ?",
+              "options": [
+                "Le partage de caractères homologues dérivés",
+                "La comparaison des séquences d'ADN ou de protéines",
+                "La comparaison de leur habitat touristique actuel",
+                "La préférence pour la même heure de repas"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'anatomie comparée (caractères partagés) et la génétique moléculaire (ADN) permettent d'établir les degrés de parenté."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que représente un nœud dans un arbre phylogénétique ?",
+              "options": [
+                "Le dernier ancêtre commun hypothétique exclusif à deux branches",
+                "L'extinction définitive d'une espèce",
+                "Une mutation survenue en laboratoire",
+                "Le début d'une ère géologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque nœud figure un ancêtre commun hypothétique partagé par les espèces issues de ces branches."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux espèces sont dites d'autant plus proches parentes qu'elles :",
+              "options": [
+                "Partagent un ancêtre commun plus récent",
+                "Vivent dans la même cage de zoo",
+                "Ont la même espérance de vie",
+                "Se nourrissent des mêmes graines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus l'ancêtre commun exclusif partagé est récent dans le temps, plus la parenté évolutive est étroite."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le membre antérieur des mammifères (chauve-souris, baleine, humain) possède le même plan d'organisation car :",
+              "options": [
+                "Ils ont hérité cette structure d'un ancêtre commun tétrapode",
+                "Ils nagent tous dans l'océan",
+                "Leur ADN est synthétisé par la même plante",
+                "Ils ont la même alimentation carnée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'homologie osseuse témoigne d'une origine commune et d'une diversification évolutive adaptative."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel groupe d'animaux fossiles et actuels partage avec les oiseaux des caractères comme la présence de plumes ?",
+              "options": [
+                "Les dinosaures théropodes",
+                "Les amphibiens",
+                "Les insectes coléoptères",
+                "Les poissons osseux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les oiseaux sont les descendants directs d'un groupe de dinosaures théropodes à plumes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel pourcentage d'ADN l'espèce humaine partage-t-elle environ avec le chimpanzé ?",
+              "options": [
+                "Près de 98 à 99 %",
+                "Moins de 50 %",
+                "Environ 12 %",
+                "Exactement 100 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'extrême proximité génétique (environ 98,8 %) atteste d'un ancêtre commun très récent entre l'Homme et le chimpanzé."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Histoire de la vie et crises biologiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quand les premières traces de vie cellulaire sont-elles apparues sur Terre environ ?",
+              "options": [
+                "Il y a environ 3,8 à 3,5 milliards d'années",
+                "Il y a 6 000 ans",
+                "Il y a 65 millions d'années",
+                "Il y a 200 000 ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les premiers micro-organismes fossiles (stromatolites bactériens) datent d'environ 3,5 à 3,8 milliards d'années."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une crise biologique majeure dans l'histoire de la Terre ?",
+              "options": [
+                "Une extinction massive et rapide d'un grand nombre d'espèces à l'échelle planétaire",
+                "Une épidémie touchant une seule colonie de fourmis",
+                "L'apparition d'un nouveau virus saisonnier",
+                "Une sécheresse estivale locale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une crise de la biodiversité se caractérise par l'extinction simultanée et globale de nombreux groupes d'êtres vivants."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle grande crise biologique a marqué la disparition des dinosaures non aviens il y a 66 millions d'années ?",
+              "options": [
+                "La crise Crétacé-Paléogène",
+                "La crise Permien-Trias",
+                "La crise Cambrienne",
+                "La crise de l'Holocène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La crise Crétacé-Paléogène (limite K-Pg) a causé l'extinction des ammonites et des dinosaures non aviens."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel événement géologique ou astronomique est associé à la crise d'il y a 66 millions d'années ?",
+              "options": [
+                "L'impact d'une météorite géante et un volcanisme massif",
+                "Une explosion nucléaire",
+                "Une marée noire géante",
+                "L'inversion de l'axe terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'impact d'un astéroïde à Chicxulub combiné au volcanisme intense des trapps du Deccan a provoqué un cataclysme climatique."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles sont les conséquences écologiques d'une crise biologique majeure après l'extinction ?",
+              "options": [
+                "La libération de nombreuses niches écologiques",
+                "Une diversification rapide et explosive des groupes survivants (radiation adaptative)",
+                "La disparition définitive de toute forme de vie sur Terre",
+                "Le retour immédiat à l'état gazeux de la Terre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Après chaque crise, les survivants se diversifient activement pour occuper les niches écologiques libérées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel groupe de vertébrés a connu une formidable radiation adaptative après la crise Crétacé-Paléogène ?",
+              "options": [
+                "Les mammifères",
+                "Les trilobites",
+                "Les fougères arborescentes géantes",
+                "Les ichtyosaures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les petits mammifères survivants se sont rapidement diversifiés pour occuper les habitats laissés vacants."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de grandes extinctions de masse majeures les géologues ont-ils identifiées dans l'histoire de la Terre ?",
+              "options": [
+                "5 grandes crises majeures",
+                "1 seule crise",
+                "Plus de 500 crises",
+                "24 crises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les paléontologues distinguent les 'Big Five' : cinq extinctions massives majeures depuis le début du Cambrien."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle crise a été la plus dévastatrice de toute l'histoire de la Terre, éliminant plus de 90 % des espèces marines ?",
+              "options": [
+                "La crise du Permien-Trias (il y a 252 millions d'années)",
+                "La crise de l'Ordovicien",
+                "La crise de 1929",
+                "La glaciation de Würm"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La crise Permien-Trias a détruit plus de 90 % des espèces marines à la suite d'un volcanisme cataclysmique en Sibérie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les restes minéralisés ou empreintes d'organismes vivants conservés dans les roches ?",
+              "options": [
+                "Les fossiles",
+                "Les minéraux purs",
+                "Les cristaux de roche",
+                "Les scories"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fossiles sont les traces directes ou indirectes des êtres vivants ayant peuplé la Terre par le passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi parle-t-on aujourd'hui d'une 'sixième crise d'extinction' ?",
+              "options": [
+                "Le rythme actuel de disparition des espèces causé par les activités humaines est anormalement élevé",
+                "Une nouvelle météorite s'approche de la Terre",
+                "Les océans se sont complètement évaporés",
+                "Les plantes ne réalisent plus de photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La destruction des habitats, le braconnage et le réchauffement climatique accélèrent le déclin brutal de la biodiversité."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Diversité génétique et biodiversité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels sont les trois niveaux interdépendants qui définissent la biodiversité sur Terre ?",
+              "options": [
+                "Diversité des écosystèmes, des espèces et génétique (allélique)",
+                "Diversité des roches, des nuages et de l'eau",
+                "Diversité des langues, des monnaies et des pays",
+                "Diversité des planètes, des étoiles et des galaxies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La biodiversité s'étudie à trois échelles : les écosystèmes, les espèces et la diversité génétique intraspécifique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi la diversité génétique au sein d'une espèce est-elle un rempart contre son extinction ?",
+              "options": [
+                "Elle augmente la probabilité que certains individus résistent aux changements environnementaux",
+                "Elle permet de cloner automatiquement tous les individus",
+                "Elle empêche les prédateurs de chasser",
+                "Elle garantit une durée de vie éternelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Face à un pathogène ou un changement climatique, une riche variabilité génétique offre plus de chances de survie collective."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une espèce invasive (ou exotique envahissante) ?",
+              "options": [
+                "Une espèce introduite par l'Homme qui prolifère et menace les espèces locales",
+                "Une espèce native vivant dans une grotte",
+                "Une plante cultivée dans un potager",
+                "Un animal domestiqué depuis des millénaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'espèce invasive colonise un nouvel écosystème au détriment de la biodiversité locale et des espèces endémiques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel impact majeur la déforestation a-t-elle sur la biodiversité génétique des forêts tropicales ?",
+              "options": [
+                "La fragmentation des habitats et l'appauvrissement du patrimoine génétique des espèces",
+                "L'apparition miraculeuse de nouveaux allèles",
+                "L'accélération de la reproduction sexuée",
+                "Le doublement du nombre de chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La destruction et la fragmentation réduisent la taille des populations et entraînent une perte irréversible d'allèles."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles actions permettent de préserver durablement la biodiversité et le patrimoine génétique des espèces ?",
+              "options": [
+                "Créer des réserves naturelles et des parcs nationaux protégés",
+                "Restaurer des corridors écologiques pour reconnecter les populations",
+                "Déverser des pesticides pour éliminer tous les insectes",
+                "Assécher toutes les zones humides et marais"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La protection des habitats et le maintien de corridors favorisent les flux génétiques et la pérennité des espèces."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que conserve-t-on dans les banques de graines comme celle du Svalbard en Norvège ?",
+              "options": [
+                "La diversité génétique et les variétés végétales cultivées et sauvages",
+                "De la farine industrielle",
+                "Des fossiles de dinosaures",
+                "Des engrais chimiques de synthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette réserve mondiale sauvegarde la variabilité génétique des semences face aux risques de catastrophes planétaires."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel terme désigne la disparition irréversible de tous les individus d'une espèce sur la planète ?",
+              "options": [
+                "L'extinction",
+                "La spéciation",
+                "La méiose",
+                "La dormance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'extinction marque la mort du dernier spécimen d'une espèce et la perte définitive de son génome unique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la surpêche menace-t-elle la diversité génétique des poissons marins ?",
+              "options": [
+                "Elle élimine massivement les individus les plus grands et réduit les effectifs reproducteurs",
+                "Elle refroidit la température des mers",
+                "Elle modifie la composition en sel de l'eau",
+                "Elle détruit l'ADN des algues marines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pression de pêche sélective favorise une maturité plus précoce et fait chuter drastiquement la variabilité génétique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que fournissent les écosystèmes riches en biodiversité aux sociétés humaines ?",
+              "options": [
+                "Des services écosystémiques essentiels (pollinisation, eau potable, médicaments, oxygène)",
+                "De la monnaie fiduciaire",
+                "De l'électricité sans centrale",
+                "Des ordinateurs portables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les écosystèmes sains et diversifiés régulent le climat, purifient l'eau et assurent la pollinisation de nos cultures."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La biodiversité actuelle sur Terre représente :",
+              "options": [
+                "Une infime fraction de toutes les espèces qui ont existé depuis les origines de la vie",
+                "La totalité des espèces jamais créées",
+                "Exactement 100 000 espèces",
+                "Un nombre décroissant qui ne peut plus évoluer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On estime que plus de 99 % des espèces ayant vécu sur Terre ont disparu au cours de l'histoire géologique."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse sur la diversité du vivant",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels sont les deux moteurs essentiels de l'évolution biologique à l'échelle des populations ?",
+              "options": [
+                "La sélection naturelle et la dérive génétique",
+                "L'érosion et la tectonique des plaques",
+                "La sédimentation et le cycle de l'eau",
+                "La photosynthèse et la fermentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sélection naturelle (tri par l'environnement) et la dérive génétique (hasard) modifient les fréquences alléliques au fil du temps."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'universalité de la molécule d'ADN chez tous les êtres vivants démontre :",
+              "options": [
+                "Une origine commune à toutes les formes de vie terrestres (LUCA)",
+                "Que tous les êtres vivants ont la même taille",
+                "Que les espèces ne changent jamais",
+                "Que l'ADN est fabriqué par le soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le même code génétique chez les bactéries, plantes et animaux prouve une parenté globale et un ancêtre commun universel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment la méiose et la fécondation créent-elles de la diversité génétique sans modifier les gènes eux-mêmes ?",
+              "options": [
+                "En brassant les allèles existants dans des combinaisons toujours renouvelées",
+                "En augmentant la quantité d'eau dans la cellule",
+                "En détruisant les chromosomes surnuméraires",
+                "En changeant la couleur des noyaux cellulaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La reproduction sexuée réorganise et mélange les allèles préexistants sans nécessairement en créer de nouveaux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel processus cellulaire est la source unique d'apparition de nouveaux allèles au cours de l'histoire du vivant ?",
+              "options": [
+                "Les mutations génétiques",
+                "La mitose conforme",
+                "La respiration cellulaire",
+                "L'endocytose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seule la mutation de la séquence nucléotidique génère de nouveaux allèles dans le patrimoine d'une espèce."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels facteurs peuvent accélérer la spéciation et la différenciation des populations ?",
+              "options": [
+                "Un isolement reproducteur prolongé (géographique ou comportemental)",
+                "Des pressions sélectives contrastées dans des milieux différents",
+                "Une alimentation identique dans un enclos fermé",
+                "L'absence complète de divisions cellulaires"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'isolement génétique combiné à des pressions de sélection différentes fait diverger les populations jusqu'à créer de nouvelles espèces."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel concept moderne résume le fait que tous les êtres vivants sont apparentés et ont une histoire partagée ?",
+              "options": [
+                "L'arbre du vivant (phylogénie)",
+                "La génération spontanée",
+                "Le fixisme",
+                "La panspermie obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phylogénie établit les relations de parenté entre toutes les espèces reliées par une ascendance commune."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La dérive génétique a un impact d'autant plus fort et rapide que l'effectif de la population est :",
+              "options": [
+                "Très faible (petite population)",
+                "Immense (milliards d'individus)",
+                "Stable depuis des siècles",
+                "Composé uniquement de plantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une petite population, les fluctuations aléatoires d'échantillonnage des allèles sont beaucoup plus marquées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment l'étude des fossiles renseigne-t-elle sur l'évolution du vivant ?",
+              "options": [
+                "Elle montre le renouvellement progressif des groupes d'espèces et les formes de transition au cours des temps géologiques",
+                "Elle permet de mesurer la vitesse du vent ancien",
+                "Elle indique la composition de l'air sur Mars",
+                "Elle prouve que les dinosaures étaient des robots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fossiles témoignent de l'apparition, de la diversification et de la disparition successive de groupes biologiques au cours des temps."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la biodiversité n'est-elle pas un état statique et figé ?",
+              "options": [
+                "Elle est le résultat dynamique d'un équilibre permanent entre spéciation et extinction",
+                "Les continents tournent sur eux-mêmes",
+                "L'eau des océans est renouvelée par les météorites",
+                "Les animaux se transforment tous les dix ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La biodiversité évolue continuellement au gré des mutations, des adaptations et des changements planétaires."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le rôle de la reproduction sexuée à long terme pour la survie des espèces pluricellulaires ?",
+              "options": [
+                "Maintenir un haut niveau de diversité génétique indispensable pour faire face aux variations environnementales",
+                "Permettre la fabrication de jumeaux à chaque naissance",
+                "Empêcher le vieillissement individuel",
+                "Figer les génomes pour stopper l'évolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En renouvelant sans cesse les combinaisons d'allèles, la reproduction sexuée confère une grande résilience adaptative aux espèces."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

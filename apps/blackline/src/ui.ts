@@ -1,6 +1,5 @@
 import { normalizeCareer } from '../lib/game/career.js';
 import { normalizeCollection } from '../lib/game/shop-catalog.js';
-import { SaveController } from './save-controller.ts';
 import type { Game,GameState,HUDData } from './game.ts';
 import { visible } from './math.ts';
 import { normalizeProgress } from './progression.ts';
@@ -17,11 +16,11 @@ import { weaponGraphic } from './ui/weapon-graphic.ts';
 export { icon } from './ui/icons.ts';
 
 export class UI {
-  saves:SaveController;game:Game|null=null;screen='play';config:MatchConfig;state:GameState='menu';lastResult:MatchResult|null=null;
+  game:Game|null=null;screen='play';config:MatchConfig;state:GameState='menu';lastResult:MatchResult|null=null;
   shopFilter='all';engineReady=true;loadProgress=0;killRows:{html:string;time:number}[]=[];toastTimer=0;noticeTimer=0;hudRefs:Record<string,HTMLElement>={};minimap:HTMLCanvasElement|null=null;lastMini=0;fps=0;resolution='';
   touchControls:TouchControls|null=null;
   damageTimer=0;bannerTimer=0;bindingCapture:AbortController|null=null;arsenalRotation?:{yaw:number;pitch:number;zoomFactor:number;};
-  constructor(readonly app:HTMLElement,readonly settings:Settings,readonly profile:Profile,readonly mobile=false){this.config={mode:'tdm',map:'harbor',difficulty:'regular',bots:7,allies:3,enemies:4,weapon:profile.weapon,duration:300};this.saves=new SaveController(this);this.menu();}
+  constructor(readonly app:HTMLElement,readonly settings:Settings,readonly profile:Profile,readonly mobile=false){this.config={mode:'tdm',map:'harbor',difficulty:'regular',bots:7,allies:3,enemies:4,weapon:profile.weapon,duration:300};this.menu();}
   setGame(game:Game){this.game=game;this.profile.weaponProgress??=normalizeProgress({});game.progress=this.profile.weaponProgress;game.collection=normalizeCollection(this.profile.collection,this.profile.xp);game.career=normalizeCareer(this.profile.career,game.collection);this.bindMenu();}
   profileMarkup(...args:Parameters<typeof menu_controller.profileMarkup>):ReturnType<typeof menu_controller.profileMarkup>{return menu_controller.profileMarkup.apply(this,args);}
   menu(...args:Parameters<typeof menu_controller.menu>):ReturnType<typeof menu_controller.menu>{return menu_controller.menu.apply(this,args);}

@@ -1,0 +1,2098 @@
+{
+  "id": "4e-arabe-01",
+  "year": "4e",
+  "subject": "arabe",
+  "title": "Découvrir l'arabe",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Bonjour le matin",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Salutations adaptées entre 6 h et 11 h ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "صباح الخير (sabāḥ al-khayr)",
+                "مساء الخير (masāʾ al-khayr)",
+                "صباح النور (sabāḥ an-nūr)",
+                "تصبح على خير (tuṣbiḥ ʿalā khayr)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le matin : « sabāḥ al-khayr » et la réponse « sabāḥ an-nūr »."
+            },
+            {
+              "id": "q2",
+              "question": "Signification de « sabāḥ al-khayr » ?",
+              "type": "single_choice",
+              "options": ["Bonsoir", "Bonjour (matin)", "Au revoir", "Merci"],
+              "correctAnswers": [1],
+              "explanation": "« Sabāḥ » = matin."
+            },
+            {
+              "id": "q3",
+              "question": "Réponse courante à « sabāḥ al-khayr » :",
+              "type": "single_choice",
+              "options": ["مع السلامة", "صباح النور", "إلى اللقاء", "شكراً"],
+              "correctAnswers": [1],
+              "explanation": "« Sabāḥ an-nūr » = matin de lumière."
+            },
+            {
+              "id": "q4",
+              "question": "À 9 h au collège, tu dis :",
+              "type": "single_choice",
+              "options": [
+                "مساء الخير",
+                "صباح الخير",
+                "تصبح على خير",
+                "ليلة سعيدة"
+              ],
+              "correctAnswers": [1],
+              "explanation": "9 h = matin."
+            },
+            {
+              "id": "q5",
+              "question": "« Sabāḥ » signifie :",
+              "type": "single_choice",
+              "options": ["Soir", "Matin", "Nuit", "Merci"],
+              "correctAnswers": [1],
+              "explanation": "Opposé de « masāʾ »."
+            },
+            {
+              "id": "q6",
+              "question": "Quelle option n'est pas du matin ?",
+              "type": "single_choice",
+              "options": [
+                "صباح الخير",
+                "صباح النور",
+                "مساء الخير",
+                "sabāḥ al-khayr"
+              ],
+              "correctAnswers": [2],
+              "explanation": "« Masāʾ al-khayr » = soir."
+            },
+            {
+              "id": "q7",
+              "question": "Transcription de صباح النور :",
+              "type": "single_choice",
+              "options": [
+                "masāʾ an-nūr",
+                "sabāḥ an-nūr",
+                "maʿa as-salāma",
+                "ismī"
+              ],
+              "correctAnswers": [1],
+              "explanation": "صباح = sabāḥ."
+            },
+            {
+              "id": "q8",
+              "question": "« Sabāḥ an-nūr » signifie environ :",
+              "type": "single_choice",
+              "options": [
+                "Bonne soirée",
+                "Matin de lumière",
+                "À demain",
+                "Je m'appelle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« An-nūr » = lumière."
+            },
+            {
+              "id": "q9",
+              "question": "Saluer poliment un professeur le matin :",
+              "type": "single_choice",
+              "options": ["صباح الخير", "مع السلامة", "عمري", "من فرنسا"],
+              "correctAnswers": [0],
+              "explanation": "Formule de politesse matinale."
+            },
+            {
+              "id": "q10",
+              "question": "« Al-khayr » dans la salutation veut dire :",
+              "type": "single_choice",
+              "options": ["Le mal", "Le bien", "Le livre", "La porte"],
+              "correctAnswers": [1],
+              "explanation": "On souhaite un moment « bon »."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Bonsoir et bonne nuit",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Formules de fin de journée ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "مساء الخير (masāʾ al-khayr)",
+                "صباح الخير",
+                "مساء النور (masāʾ an-nūr)",
+                "صباح النور"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le soir : masāʾ al-khayr / masāʾ an-nūr."
+            },
+            {
+              "id": "q2",
+              "question": "« Masāʾ al-khayr » =",
+              "type": "single_choice",
+              "options": ["Bonjour", "Bonsoir", "Au revoir", "Bonne nuit"],
+              "correctAnswers": [1],
+              "explanation": "« Masāʾ » = soir."
+            },
+            {
+              "id": "q3",
+              "question": "Avant de dormir :",
+              "type": "single_choice",
+              "options": ["صباح الخير", "تصبح على خير", "مرحباً", "اسمي"],
+              "correctAnswers": [1],
+              "explanation": "Bonne nuit : tuṣbiḥ ʿalā khayr."
+            },
+            {
+              "id": "q4",
+              "question": "Réponse à « masāʾ al-khayr » :",
+              "type": "single_choice",
+              "options": ["مساء النور", "صباح الخير", "مع السلامة", "كم عمرك"],
+              "correctAnswers": [0],
+              "explanation": "Parallèle au matin avec « an-nūr »."
+            },
+            {
+              "id": "q5",
+              "question": "À 20 h tu dis :",
+              "type": "single_choice",
+              "options": ["صباح الخير", "مساء الخير", "صباح النور", "أنا من"],
+              "correctAnswers": [1],
+              "explanation": "20 h = soir."
+            },
+            {
+              "id": "q6",
+              "question": "« Masāʾ » signifie :",
+              "type": "single_choice",
+              "options": ["Matin", "Soir", "Nom", "Classe"],
+              "correctAnswers": [1],
+              "explanation": "Mot-clé des salutations du soir."
+            },
+            {
+              "id": "q7",
+              "question": "Salutation du matin parmi :",
+              "type": "single_choice",
+              "options": [
+                "مساء الخير",
+                "صباح الخير",
+                "مساء النور",
+                "تصبح على خير"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Seul « sabāḥ » indique le matin."
+            },
+            {
+              "id": "q8",
+              "question": "« Tuṣbiḥ ʿalā khayr » sert à :",
+              "type": "single_choice",
+              "options": [
+                "Demander le nom",
+                "Souhaiter bonne nuit",
+                "Compter",
+                "Dire son âge"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Formule nocturne."
+            },
+            {
+              "id": "q9",
+              "question": "Transcription مساء الخير :",
+              "type": "single_choice",
+              "options": [
+                "sabāḥ al-khayr",
+                "masāʾ al-khayr",
+                "kayfa ḥāluk",
+                "min Tūnis"
+              ],
+              "correctAnswers": [1],
+              "explanation": "مساء = masāʾ."
+            },
+            {
+              "id": "q10",
+              "question": "Après les cours à 18 h :",
+              "type": "single_choice",
+              "options": ["صباح النور", "مساء الخير", "اسمي", "واحد"],
+              "correctAnswers": [1],
+              "explanation": "Fin d'après-midi / soir."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Mon nom",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour « je m'appelle » ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["اسمي … (ismī …)", "أنا اسمي …", "عمري …", "من …"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ismī » ou « anā ismī » + prénom."
+            },
+            {
+              "id": "q2",
+              "question": "« Ismī Huda » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai 13 ans",
+                "Je m'appelle Huda",
+                "Je viens de Huda",
+                "Bonsoir Huda"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Présentation du prénom."
+            },
+            {
+              "id": "q3",
+              "question": "Demander le prénom :",
+              "type": "single_choice",
+              "options": [
+                "كم عمرك؟",
+                "ما اسمك؟ (mā ismuk?)",
+                "من أين أنت؟",
+                "كيف حالك؟"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Mā ismuk » = quel est ton nom ?"
+            },
+            {
+              "id": "q4",
+              "question": "Réponse à « mā ismuk ? » :",
+              "type": "single_choice",
+              "options": ["أنا بخير", "اسمي عمر", "من الجزائر", "أربعة عشر"],
+              "correctAnswers": [1],
+              "explanation": "On utilise « ismī »."
+            },
+            {
+              "id": "q5",
+              "question": "« Ism » =",
+              "type": "single_choice",
+              "options": ["Âge", "Nom", "Pays", "Frère"],
+              "correctAnswers": [1],
+              "explanation": "Racine « nom »."
+            },
+            {
+              "id": "q6",
+              "question": "Phrase correcte :",
+              "type": "single_choice",
+              "options": [
+                "مرحباً، اسمي ليلى",
+                "مرحباً، عمري ليلى",
+                "مع السلامة ليلى",
+                "من ليلى"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutation + ismī."
+            },
+            {
+              "id": "q7",
+              "question": "« Mā ismuk » demande :",
+              "type": "single_choice",
+              "options": ["L'heure", "Le nom", "L'origine", "Le nombre"],
+              "correctAnswers": [1],
+              "explanation": "Question sur le prénom."
+            },
+            {
+              "id": "q8",
+              "question": "Traduction « Mon nom est Rami » :",
+              "type": "single_choice",
+              "options": ["عمري رامي", "اسمي رامي", "من رامي", "رامي مساء"],
+              "correctAnswers": [1],
+              "explanation": "Ismī + prénom."
+            },
+            {
+              "id": "q9",
+              "question": "Phrase qui donne l'âge :",
+              "type": "single_choice",
+              "options": ["اسمي سمير", "عمري خمسة عشر", "ما اسمك", "أنا من"],
+              "correctAnswers": [1],
+              "explanation": "« ʿumrī » = mon âge."
+            },
+            {
+              "id": "q10",
+              "question": "En dialogue de présentation, « ismī » sert à :",
+              "type": "single_choice",
+              "options": [
+                "Saluer le soir",
+                "Donner son prénom",
+                "Compter",
+                "Nommer la mère"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Identité : le prénom."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Mon âge",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phrases pour l'âge ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "عمري أربعة عشر",
+                "أنا عمري خمسة عشر",
+                "اسمي أربعة عشر",
+                "من أربعة عشر"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« ʿumrī » + nombre."
+            },
+            {
+              "id": "q2",
+              "question": "« Kam ʿumruk ? » =",
+              "type": "single_choice",
+              "options": [
+                "Comment t'appelles-tu ?",
+                "Quel âge as-tu ?",
+                "D'où viens-tu ?",
+                "Ça va ?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Kam » = combien."
+            },
+            {
+              "id": "q3",
+              "question": "« ʿumrī thalātha ʿashar » =",
+              "type": "single_choice",
+              "options": ["12 ans", "13 ans", "14 ans", "15 ans"],
+              "correctAnswers": [1],
+              "explanation": "Treize."
+            },
+            {
+              "id": "q4",
+              "question": "14 ans :",
+              "type": "single_choice",
+              "options": [
+                "اسمي أربعة عشر",
+                "عمري أربعة عشر",
+                "من أربعة عشر",
+                "أربعة عشر كتاب"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Structure ʿumrī."
+            },
+            {
+              "id": "q5",
+              "question": "« ʿumr » signifie :",
+              "type": "single_choice",
+              "options": ["Nom", "Âge", "Ville", "Table"],
+              "correctAnswers": [1],
+              "explanation": "Mot de l'âge."
+            },
+            {
+              "id": "q6",
+              "question": "« Khamsa ʿashar » =",
+              "type": "single_choice",
+              "options": ["14", "15", "16", "11"],
+              "correctAnswers": [1],
+              "explanation": "Quinze."
+            },
+            {
+              "id": "q7",
+              "question": "Incorrect pour l'âge :",
+              "type": "single_choice",
+              "options": [
+                "عمري ستة عشر",
+                "أنا عمري سبعة عشر",
+                "اسمي ستة عشر",
+                "عمري خمسة عشر"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Ismī = nom."
+            },
+            {
+              "id": "q8",
+              "question": "« ʿumrī » =",
+              "type": "single_choice",
+              "options": [
+                "Mon nom est",
+                "Mon âge est",
+                "Mon pays est",
+                "Ma mère est"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Suffixe possessif -ī."
+            },
+            {
+              "id": "q9",
+              "question": "Présentation nom + âge :",
+              "type": "single_choice",
+              "options": [
+                "اسمي مريم وعمري ثلاثة عشر",
+                "مساء مريم",
+                "من مريم ثلاثة",
+                "ثلاثة عشر فقط"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wa = et."
+            },
+            {
+              "id": "q10",
+              "question": "Réponse à « kam ʿumruk ? » pour 15 ans :",
+              "type": "single_choice",
+              "options": [
+                "اسمي خمسة عشر",
+                "عمري خمسة عشر",
+                "من خمسة عشر",
+                "خمسة عشر مساء"
+              ],
+              "correctAnswers": [1],
+              "explanation": "ʿumrī khamsa ʿashar."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "D'où je viens",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Indiquer l'origine ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "أنا من فرنسا",
+                "من تونس (min Tūnis)",
+                "عمري من",
+                "اسمي من"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Min » + lieu."
+            },
+            {
+              "id": "q2",
+              "question": "« Min ayna anta ? » =",
+              "type": "single_choice",
+              "options": [
+                "Quel est ton nom ?",
+                "D'où viens-tu ?",
+                "Quel âge as-tu ?",
+                "Où est le stylo ?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Origine géographique."
+            },
+            {
+              "id": "q3",
+              "question": "« Anā min Al-Jazāʾir » =",
+              "type": "single_choice",
+              "options": [
+                "Je viens d'Algérie",
+                "Je m'appelle Algérie",
+                "J'ai 12 ans",
+                "Bonsoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Algérie."
+            },
+            {
+              "id": "q4",
+              "question": "« Min » =",
+              "type": "single_choice",
+              "options": ["Avec", "De / depuis", "Sans", "Dans"],
+              "correctAnswers": [1],
+              "explanation": "Préposition d'origine."
+            },
+            {
+              "id": "q5",
+              "question": "Je viens du Maroc :",
+              "type": "single_choice",
+              "options": [
+                "أنا من المغرب",
+                "اسمي المغرب",
+                "عمري المغرب",
+                "المغرب صباح"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Al-Maghrib."
+            },
+            {
+              "id": "q6",
+              "question": "« Farānsā » =",
+              "type": "single_choice",
+              "options": ["Tunisie", "France", "Égypte", "Syrie"],
+              "correctAnswers": [1],
+              "explanation": "France en arabe."
+            },
+            {
+              "id": "q7",
+              "question": "Présentation complète :",
+              "type": "single_choice",
+              "options": [
+                "اسمي زينب، عمري أربعة عشر، أنا من لبنان",
+                "مع السلامة",
+                "مساء فقط",
+                "من زينب"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom, âge, origine."
+            },
+            {
+              "id": "q8",
+              "question": "« Tūnis » =",
+              "type": "single_choice",
+              "options": ["Turquie", "Tunisie", "Tanger", "Tokyo"],
+              "correctAnswers": [1],
+              "explanation": "Pays arabe."
+            },
+            {
+              "id": "q9",
+              "question": "« Min ayna anti ? » s'adresse à :",
+              "type": "single_choice",
+              "options": ["Une fille", "Un livre", "Le matin", "Un nombre"],
+              "correctAnswers": [0],
+              "explanation": "« Anti » = tu (f.)."
+            },
+            {
+              "id": "q10",
+              "question": "« Anā min Miṣr » parle de :",
+              "type": "single_choice",
+              "options": ["Le prénom", "L'Égypte", "L'âge", "La classe"],
+              "correctAnswers": [1],
+              "explanation": "Miṣr = Égypte."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Comment ça va",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Demander « comment vas-tu ? » ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "كيف حالك؟ (kayfa ḥāluk?)",
+                "كيف حالكِ؟ (kayfa ḥāluki?)",
+                "ما اسمك؟",
+                "كم عمرك؟"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Kayfa ḥāluk/ḥāluki selon le genre."
+            },
+            {
+              "id": "q2",
+              "question": "Réponse « je vais bien » :",
+              "type": "single_choice",
+              "options": [
+                "مع السلامة",
+                "أنا بخير (anā bikhayr)",
+                "من بخير",
+                "اسمي بخير"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Formule standard."
+            },
+            {
+              "id": "q3",
+              "question": "En s'adressant à un garçon, « kayfa ḥāluk ? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Le nom",
+                "La santé / comment ça va",
+                "L'âge",
+                "Le pays"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Ḥāl » = situation."
+            },
+            {
+              "id": "q4",
+              "question": "« Al-ḥamdu lillāh » exprime souvent :",
+              "type": "single_choice",
+              "options": [
+                "Au revoir",
+                "Gratitude / ça va",
+                "Bonjour matin",
+                "Mon frère"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Réponse culturelle positive."
+            },
+            {
+              "id": "q5",
+              "question": "Après « kayfa ḥāluk ? » réponse courte :",
+              "type": "single_choice",
+              "options": [
+                "أنا بخير، شكراً",
+                "عمري بخير",
+                "من بخير",
+                "بخير مساء"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bien + merci."
+            },
+            {
+              "id": "q6",
+              "question": "« Shukran » =",
+              "type": "single_choice",
+              "options": ["Bonjour", "Merci", "Au revoir", "Nom"],
+              "correctAnswers": [1],
+              "explanation": "Politesse après réponse."
+            },
+            {
+              "id": "q7",
+              "question": "« Kayfa » signifie :",
+              "type": "single_choice",
+              "options": ["Où", "Comment", "Combien", "Qui"],
+              "correctAnswers": [1],
+              "explanation": "Adverbe interrogatif."
+            },
+            {
+              "id": "q8",
+              "question": "Dialogue : salut + comment ça va :",
+              "type": "single_choice",
+              "options": [
+                "مرحباً، كيف حالك؟ — أنا بخير",
+                "مساء الخير فقط",
+                "اسمي كيف",
+                "من حالك"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement courant."
+            },
+            {
+              "id": "q9",
+              "question": "« Anā bikhayr » ne donne pas :",
+              "type": "single_choice",
+              "options": [
+                "Un état",
+                "Un prénom",
+                "Une réponse positive",
+                "Une formule de dialogue"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pas une présentation nominale."
+            },
+            {
+              "id": "q10",
+              "question": "« Ḥāluk » indique :",
+              "type": "single_choice",
+              "options": [
+                "Ton nom",
+                "Ta situation (masculin)",
+                "Ton pays",
+                "Ton stylo"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Suffixe -uk = ton (m.)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Au revoir",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Formules pour partir ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "مع السلامة (maʿa as-salāma)",
+                "إلى اللقاء (ilā al-liqāʾ)",
+                "صباح الخير",
+                "ما اسمك"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Au revoir courants."
+            },
+            {
+              "id": "q2",
+              "question": "« Maʿa as-salāma » =",
+              "type": "single_choice",
+              "options": [
+                "Bonjour",
+                "Au revoir (avec la paix)",
+                "Merci",
+                "J'ai 14 ans"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Salām = paix."
+            },
+            {
+              "id": "q3",
+              "question": "« Ilā al-liqāʾ » =",
+              "type": "single_choice",
+              "options": [
+                "À bientôt / au revoir",
+                "Bonsoir",
+                "Comment vas-tu",
+                "Mon nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Liqāʾ » = rencontre."
+            },
+            {
+              "id": "q4",
+              "question": "Tu quittes le cours à 17 h :",
+              "type": "single_choice",
+              "options": ["صباح الخير", "مع السلامة", "اسمي", "واحد"],
+              "correctAnswers": [1],
+              "explanation": "Formule de départ."
+            },
+            {
+              "id": "q5",
+              "question": "Réponse à « maʿa as-salāma » :",
+              "type": "single_choice",
+              "options": [
+                "مع السلامة aussi",
+                "صباح النور",
+                "كم عمرك",
+                "من أين"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On renvoie la formule."
+            },
+            {
+              "id": "q6",
+              "question": "« As-salāma » lie à :",
+              "type": "single_choice",
+              "options": ["La paix", "Le matin", "Le nombre", "La mère"],
+              "correctAnswers": [0],
+              "explanation": "Racine salām."
+            },
+            {
+              "id": "q7",
+              "question": "Ce n'est pas un au revoir :",
+              "type": "single_choice",
+              "options": [
+                "مع السلامة",
+                "إلى اللقاء",
+                "أهلاً وسهلاً (accueil)",
+                "ilā al-liqāʾ"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Ahlan = bienvenue."
+            },
+            {
+              "id": "q8",
+              "question": "« Ilā » dans « ilā al-liqāʾ » ≈",
+              "type": "single_choice",
+              "options": ["Vers / à", "Sans", "Sous", "De"],
+              "correctAnswers": [0],
+              "explanation": "Préposition de direction."
+            },
+            {
+              "id": "q9",
+              "question": "Après « ilā al-liqāʾ » on peut répondre :",
+              "type": "single_choice",
+              "options": ["إلى اللقاء", "صباح الخير", "عمري", "أخت"],
+              "correctAnswers": [0],
+              "explanation": "Symétrie de politesse."
+            },
+            {
+              "id": "q10",
+              "question": "En quittant un ami le soir :",
+              "type": "single_choice",
+              "options": ["مع السلامة", "صباح الخير", "ما اسمك", "ثلاثة"],
+              "correctAnswers": [0],
+              "explanation": "Départ neutre jour/soir."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Bienvenue",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Accueillir quelqu'un ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "أهلاً وسهلاً (ahlan wa-sahlan)",
+                "مرحباً (marḥaban)",
+                "مع السلامة",
+                "تصبح على خير"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Formules d'accueil."
+            },
+            {
+              "id": "q2",
+              "question": "« Marḥaban » =",
+              "type": "single_choice",
+              "options": [
+                "Au revoir",
+                "Bonjour / bienvenue",
+                "Mon âge",
+                "Deux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Salutation d'accueil."
+            },
+            {
+              "id": "q3",
+              "question": "« Ahlan wa-sahlan » signifie :",
+              "type": "single_choice",
+              "options": ["Bonne nuit", "Bienvenue", "D'où viens-tu", "Treize"],
+              "correctAnswers": [1],
+              "explanation": "Expression chaleureuse."
+            },
+            {
+              "id": "q4",
+              "question": "Un invité arrive : tu dis :",
+              "type": "single_choice",
+              "options": ["أهلاً وسهلاً", "مع السلامة", "عمري", "من"],
+              "correctAnswers": [0],
+              "explanation": "Accueil."
+            },
+            {
+              "id": "q5",
+              "question": "« Marḥaban » convient :",
+              "type": "single_choice",
+              "options": [
+                "En partant",
+                "En arrivant",
+                "En dormant",
+                "En comptant seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Arrivée / salutation."
+            },
+            {
+              "id": "q6",
+              "question": "Réponse à l'accueil :",
+              "type": "single_choice",
+              "options": ["شكراً (shukran)", "مع السلامة", "اسمي شكر", "من شكر"],
+              "correctAnswers": [0],
+              "explanation": "Remercier."
+            },
+            {
+              "id": "q7",
+              "question": "Différence : « maʿa as-salāma » sert à :",
+              "type": "single_choice",
+              "options": [
+                "Partir",
+                "Accueillir",
+                "Donner l'âge",
+                "Nommer la classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au revoir, pas ahlan."
+            },
+            {
+              "id": "q8",
+              "question": "« Sahlan » dans l'expression renforce :",
+              "type": "single_choice",
+              "options": [
+                "L'idée de facilité / bienvenue",
+                "Le soir",
+                "Le nombre 7",
+                "La sœur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Locution fixe en 4e."
+            },
+            {
+              "id": "q9",
+              "question": "En classe, nouveau élève :",
+              "type": "single_choice",
+              "options": ["مرحباً، أهلاً", "تصبح على خير", "كم قلم", "أب"],
+              "correctAnswers": [0],
+              "explanation": "Accueil collectif."
+            },
+            {
+              "id": "q10",
+              "question": "« Ahlan » seul peut signifier :",
+              "type": "single_choice",
+              "options": [
+                "Salut / bienvenue",
+                "Au revoir définitif",
+                "Quinze ans",
+                "Table"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot d'accueil fréquent."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Présenter un camarade",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Présenter quelqu'un ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "هذا … (hādhā …)",
+                "هذه … (hādhihi …)",
+                "مع السلامة",
+                "عمري"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hādhā (m.) / hādhihi (f.) = voici."
+            },
+            {
+              "id": "q2",
+              "question": "« Hādhā ṣadīqī Yāsīn » =",
+              "type": "single_choice",
+              "options": [
+                "Voici mon ami Yasin",
+                "Au revoir Yasin",
+                "Yasin a 14 ans seulement",
+                "Je viens de Yasin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ṣadīq = ami."
+            },
+            {
+              "id": "q3",
+              "question": "« Ṣadīq » =",
+              "type": "single_choice",
+              "options": ["Ami (m.)", "Sœur", "Stylo", "Deux"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire relation."
+            },
+            {
+              "id": "q4",
+              "question": "Présenter une camarade :",
+              "type": "single_choice",
+              "options": [
+                "هذه صديقتي ليلى",
+                "هذا صديقتي",
+                "مع السلامة ليلى",
+                "من ليلى"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hādhihi + ṣadīqatī (mon amie)."
+            },
+            {
+              "id": "q5",
+              "question": "« Ṣadīqatī » =",
+              "type": "single_choice",
+              "options": ["Mon amie", "Mon frère", "Mon prof", "Ma table"],
+              "correctAnswers": [0],
+              "explanation": "Féminin + possessif."
+            },
+            {
+              "id": "q6",
+              "question": "« Hādhā » s'utilise pour :",
+              "type": "single_choice",
+              "options": [
+                "Masculin proche",
+                "Feminin proche",
+                "Au revoir",
+                "Nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Démonstratif m."
+            },
+            {
+              "id": "q7",
+              "question": "« Hādhihi » =",
+              "type": "single_choice",
+              "options": ["Voici (f.)", "Voici (m.)", "Merci", "Bonsoir"],
+              "correctAnswers": [0],
+              "explanation": "Démonstratif f."
+            },
+            {
+              "id": "q8",
+              "question": "Après présentation, politesse :",
+              "type": "single_choice",
+              "options": ["مرحباً", "مع السلامة", "تصبح", "واحد"],
+              "correctAnswers": [0],
+              "explanation": "Saluer le nouveau."
+            },
+            {
+              "id": "q9",
+              "question": "« Ṣadīqī » =",
+              "type": "single_choice",
+              "options": ["Mon ami", "Ma mère", "Mon âge", "Mon pays"],
+              "correctAnswers": [0],
+              "explanation": "Suffixe -ī."
+            },
+            {
+              "id": "q10",
+              "question": "Phrase incorrecte :",
+              "type": "single_choice",
+              "options": [
+                "هذا زميلي في الصف",
+                "هذه زميلتي",
+                "هذا زميلتي (accord)",
+                "زميل = camarade"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Hādhā + féminin zamīlatī incohérent."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision présentation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phrases de présentation complète ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "مرحباً، اسمي …، عمري …، أنا من …",
+                "صباح الخير، اسمي …",
+                "مع السلامة، اسمي …",
+                "اسمي … فقط sans salut"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Salut + identité ; matin + nom aussi."
+            },
+            {
+              "id": "q2",
+              "question": "Ordre logique : salut, nom, âge, origine :",
+              "type": "single_choice",
+              "options": [
+                "صباح الخير، اسمي طارق، عمري أربعة عشر، أنا من سوريا",
+                "عمري طارق",
+                "من طارق صباح",
+                "طارق مع السلامة"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Progression du dialogue 4e."
+            },
+            {
+              "id": "q3",
+              "question": "Question sur les trois infos : nom, âge, origine :",
+              "type": "single_choice",
+              "options": [
+                "ما اسمك؟ كم عمرك؟ من أين أنت؟",
+                "أين القلم؟",
+                "كم كرسي؟",
+                "ما لون الحائط؟"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Triplet de présentation."
+            },
+            {
+              "id": "q4",
+              "question": "Le matin en classe :",
+              "type": "single_choice",
+              "options": [
+                "صباح الخير ثم كيف حالك",
+                "مساء الخير",
+                "تصبح على خير en arrivant 8h",
+                "مع السلامة en entrant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutation horaire + politesse."
+            },
+            {
+              "id": "q5",
+              "question": "« Anā min Sūriyā » = origine :",
+              "type": "single_choice",
+              "options": ["Syrie", "Soudan", "Suède", "Saudi seule"],
+              "correctAnswers": [0],
+              "explanation": "Sūriyā = Syrie."
+            },
+            {
+              "id": "q6",
+              "question": "Répondre « kayfa ḥāluk ? » puis présenter :",
+              "type": "single_choice",
+              "options": [
+                "أنا بخير، اسمي …",
+                "مع السلامة اسمي",
+                "من بخير",
+                "بخير عمري"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement naturel."
+            },
+            {
+              "id": "q7",
+              "question": "Quitter après présentation :",
+              "type": "single_choice",
+              "options": ["مع السلامة", "صباح الخير", "ما اسمك", "هذا"],
+              "correctAnswers": [0],
+              "explanation": "Clôture du dialogue."
+            },
+            {
+              "id": "q8",
+              "question": "« Ismī » + « ʿumrī » + « anā min » =",
+              "type": "single_choice",
+              "options": [
+                "Nom, âge, origine",
+                "Soir, matin, nuit",
+                "Stylo, table, chaise",
+                "Un, deux, trois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bloc identité 4e."
+            },
+            {
+              "id": "q9",
+              "question": "Accueillir puis demander le nom :",
+              "type": "single_choice",
+              "options": [
+                "أهلاً، ما اسمك؟",
+                "مع السلامة ما اسمك",
+                "تصبح ما اسمك",
+                "من اسمك"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ahlan + mā ismuk."
+            },
+            {
+              "id": "q10",
+              "question": "Salutation du soir après cours :",
+              "type": "single_choice",
+              "options": ["مساء الخير", "صباح النور", "صباح الخير", "واحد"],
+              "correctAnswers": [0],
+              "explanation": "Fin de journée scolaire."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Nombres 1 à 5",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Nombres corrects en arabe ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "واحد (wāḥid)",
+                "اثنان (ithnān)",
+                "ثلاثة (thalātha)",
+                "عشرة (ʿashara)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "1 = wāḥid, 2 = ithnān."
+            },
+            {
+              "id": "q2",
+              "question": "« Wāḥid » =",
+              "type": "single_choice",
+              "options": ["1", "2", "3", "5"],
+              "correctAnswers": [0],
+              "explanation": "Premier nombre."
+            },
+            {
+              "id": "q3",
+              "question": "« Thalātha » =",
+              "type": "single_choice",
+              "options": ["2", "3", "4", "5"],
+              "correctAnswers": [1],
+              "explanation": "Trois."
+            },
+            {
+              "id": "q4",
+              "question": "« Arbaʿa » =",
+              "type": "single_choice",
+              "options": ["3", "4", "5", "1"],
+              "correctAnswers": [1],
+              "explanation": "Quatre."
+            },
+            {
+              "id": "q5",
+              "question": "« Khamsa » =",
+              "type": "single_choice",
+              "options": ["4", "5", "6", "2"],
+              "correctAnswers": [1],
+              "explanation": "Cinq."
+            },
+            {
+              "id": "q6",
+              "question": "Écrire « 2 stylos » (deux) :",
+              "type": "single_choice",
+              "options": [
+                "قلم واحد",
+                "قلمان / deux stylos → اثنان",
+                "خمسة أقلام",
+                "قلم ثلاثة"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ithnān = deux."
+            },
+            {
+              "id": "q7",
+              "question": "Nombre pair parmi :",
+              "type": "single_choice",
+              "options": ["واحد", "اثنان", "ثلاثة", "خمسة"],
+              "correctAnswers": [1],
+              "explanation": "2 est pair."
+            },
+            {
+              "id": "q8",
+              "question": "« Ithnān » =",
+              "type": "single_choice",
+              "options": ["1", "2", "3", "4"],
+              "correctAnswers": [1],
+              "explanation": "Deux."
+            },
+            {
+              "id": "q9",
+              "question": "Compter : wāḥid, ithnān, puis :",
+              "type": "single_choice",
+              "options": ["thalātha", "khamsa", "ʿashara", "ismī"],
+              "correctAnswers": [0],
+              "explanation": "Ordre 1-2-3."
+            },
+            {
+              "id": "q10",
+              "question": "« 5 » en arabe :",
+              "type": "single_choice",
+              "options": ["أربعة", "خمسة", "ستة", "واحد"],
+              "correctAnswers": [1],
+              "explanation": "Khamsa."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Nombres 6 à 10",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Nombres 6-10 ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["ستة (sitta)", "سبعة (sabʿa)", "اثنان", "واحد"],
+              "correctAnswers": [0, 1],
+              "explanation": "6 et 7 dans la série."
+            },
+            {
+              "id": "q2",
+              "question": "« Sitta » =",
+              "type": "single_choice",
+              "options": ["6", "7", "8", "9"],
+              "correctAnswers": [0],
+              "explanation": "Six."
+            },
+            {
+              "id": "q3",
+              "question": "« Sabʿa » =",
+              "type": "single_choice",
+              "options": ["6", "7", "8", "10"],
+              "correctAnswers": [1],
+              "explanation": "Sept."
+            },
+            {
+              "id": "q4",
+              "question": "« Thamāniya » =",
+              "type": "single_choice",
+              "options": ["7", "8", "9", "6"],
+              "correctAnswers": [1],
+              "explanation": "Huit."
+            },
+            {
+              "id": "q5",
+              "question": "« Tisʿa » =",
+              "type": "single_choice",
+              "options": ["8", "9", "10", "5"],
+              "correctAnswers": [1],
+              "explanation": "Neuf."
+            },
+            {
+              "id": "q6",
+              "question": "« ʿAshara » =",
+              "type": "single_choice",
+              "options": ["8", "9", "10", "11"],
+              "correctAnswers": [2],
+              "explanation": "Dix."
+            },
+            {
+              "id": "q7",
+              "question": "Après sabʿa vient :",
+              "type": "single_choice",
+              "options": ["thamāniya", "sitta", "wāḥid", "ismī"],
+              "correctAnswers": [0],
+              "explanation": "7 puis 8."
+            },
+            {
+              "id": "q8",
+              "question": "« 10 livres » mot pour 10 :",
+              "type": "single_choice",
+              "options": ["عشرة", "ثلاثة", "واحد", "أب"],
+              "correctAnswers": [0],
+              "explanation": "ʿAshara."
+            },
+            {
+              "id": "q9",
+              "question": "Plus grand entre tisʿa et thamāniya :",
+              "type": "single_choice",
+              "options": ["ثمانية", "تسعة", "ستة", "واحد"],
+              "correctAnswers": [1],
+              "explanation": "9 > 8."
+            },
+            {
+              "id": "q10",
+              "question": "Série complète se termine par :",
+              "type": "single_choice",
+              "options": ["عشرة", "خمسة", "اثنان", "مرحباً"],
+              "correctAnswers": [0],
+              "explanation": "1 à 10 finit à dix."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Nombres 11 à 15",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Teens en arabe ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "أحد عشر (aḥada ʿashar)",
+                "اثنا عشر (ithnā ʿashar)",
+                "واحد",
+                "خمسة"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "11 et 12."
+            },
+            {
+              "id": "q2",
+              "question": "« Aḥada ʿashar » =",
+              "type": "single_choice",
+              "options": ["10", "11", "12", "13"],
+              "correctAnswers": [1],
+              "explanation": "Onze."
+            },
+            {
+              "id": "q3",
+              "question": "« Thalātha ʿashar » =",
+              "type": "single_choice",
+              "options": ["12", "13", "14", "11"],
+              "correctAnswers": [1],
+              "explanation": "Treize."
+            },
+            {
+              "id": "q4",
+              "question": "« Arbaʿa ʿashar » =",
+              "type": "single_choice",
+              "options": ["13", "14", "15", "16"],
+              "correctAnswers": [1],
+              "explanation": "Quatorze — niveau 4e."
+            },
+            {
+              "id": "q5",
+              "question": "« Khamsa ʿashar » =",
+              "type": "single_choice",
+              "options": ["14", "15", "16", "12"],
+              "correctAnswers": [1],
+              "explanation": "Quinze."
+            },
+            {
+              "id": "q6",
+              "question": "« ʿumrī arbaʿa ʿashar » =",
+              "type": "single_choice",
+              "options": ["13 ans", "14 ans", "15 ans", "4 ans"],
+              "correctAnswers": [1],
+              "explanation": "Lien âge-collège."
+            },
+            {
+              "id": "q7",
+              "question": "Mot « ʿashar » dans les teens =",
+              "type": "single_choice",
+              "options": ["Dix (base)", "Un", "Mère", "Classe"],
+              "correctAnswers": [0],
+              "explanation": "Structure nombre + ʿashar."
+            },
+            {
+              "id": "q8",
+              "question": "Après ithnā ʿashar :",
+              "type": "single_choice",
+              "options": ["thalātha ʿashar", "wāḥid", "sitta", "مع السلامة"],
+              "correctAnswers": [0],
+              "explanation": "12 puis 13."
+            },
+            {
+              "id": "q9",
+              "question": "11 en arabe :",
+              "type": "single_choice",
+              "options": ["أحد عشر", "عشرة", "اثنا عشر", "خمسة"],
+              "correctAnswers": [0],
+              "explanation": "Aḥada ʿashar."
+            },
+            {
+              "id": "q10",
+              "question": "15 en arabe :",
+              "type": "single_choice",
+              "options": ["خمسة عشر", "خمسة", "أربعة عشر", "ستة"],
+              "correctAnswers": [0],
+              "explanation": "Khamsa ʿashar."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Famille proche",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Membres de la famille ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["أب (ab) — père", "أم (umm) — mère", "قلم", "كرسي"],
+              "correctAnswers": [0, 1],
+              "explanation": "Père et mère."
+            },
+            {
+              "id": "q2",
+              "question": "« Ab » =",
+              "type": "single_choice",
+              "options": ["Père", "Mère", "Frère", "Sœur"],
+              "correctAnswers": [0],
+              "explanation": "Papa."
+            },
+            {
+              "id": "q3",
+              "question": "« Umm » =",
+              "type": "single_choice",
+              "options": ["Mère", "Père", "Oncle", "Cousin"],
+              "correctAnswers": [0],
+              "explanation": "Maman."
+            },
+            {
+              "id": "q4",
+              "question": "« Akh » =",
+              "type": "single_choice",
+              "options": ["Frère", "Sœur", "Père", "Stylo"],
+              "correctAnswers": [0],
+              "explanation": "Frère."
+            },
+            {
+              "id": "q5",
+              "question": "« Ukht » =",
+              "type": "single_choice",
+              "options": ["Sœur", "Frère", "Mère", "Table"],
+              "correctAnswers": [0],
+              "explanation": "Sœur."
+            },
+            {
+              "id": "q6",
+              "question": "« Jadd » =",
+              "type": "single_choice",
+              "options": ["Grand-père", "Grand-mère", "Oncle", "Ami"],
+              "correctAnswers": [0],
+              "explanation": "Aïeul masculin."
+            },
+            {
+              "id": "q7",
+              "question": "« Jadda » =",
+              "type": "single_choice",
+              "options": ["Grand-mère", "Grand-père", "Père", "Classe"],
+              "correctAnswers": [0],
+              "explanation": "Aïeule."
+            },
+            {
+              "id": "q8",
+              "question": "« Abū » =",
+              "type": "single_choice",
+              "options": [
+                "Mon père (possessif)",
+                "Mon frère",
+                "Deux",
+                "Bonsoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme « mon père »."
+            },
+            {
+              "id": "q9",
+              "question": "« Ummī » =",
+              "type": "single_choice",
+              "options": ["Ma mère", "Mon père", "Ma sœur", "Mon stylo"],
+              "correctAnswers": [0],
+              "explanation": "Possessif -ī."
+            },
+            {
+              "id": "q10",
+              "question": "Famille proche : pas",
+              "type": "single_choice",
+              "options": ["أب وأم", "أخ وأخت", "مكتب وسبورة seuls", "جد وجدة"],
+              "correctAnswers": [2],
+              "explanation": "Bureau/tableau = classe."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Dans la classe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Objets de classe ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "سبورة (sabbūra) — tableau",
+                "مكتب (maktab) — bureau",
+                "أم",
+                "أب"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tableau et bureau."
+            },
+            {
+              "id": "q2",
+              "question": "« Fasīl » / « ṣaff » =",
+              "type": "single_choice",
+              "options": ["Classe (cours)", "Cuisine", "Rue", "Nuit"],
+              "correctAnswers": [0],
+              "explanation": "Groupe scolaire."
+            },
+            {
+              "id": "q3",
+              "question": "« Madrasa » =",
+              "type": "single_choice",
+              "options": ["École", "Maison", "Marché", "Mosquée seule"],
+              "correctAnswers": [0],
+              "explanation": "Établissement scolaire."
+            },
+            {
+              "id": "q4",
+              "question": "« Ustādh / ustādha » =",
+              "type": "single_choice",
+              "options": ["Professeur", "Élève", "Stylo", "Cinq"],
+              "correctAnswers": [0],
+              "explanation": "Enseignant."
+            },
+            {
+              "id": "q5",
+              "question": "« Tilmīdh / tilmīdha » =",
+              "type": "single_choice",
+              "options": ["Élève", "Directeur", "Frère", "Deux"],
+              "correctAnswers": [0],
+              "explanation": "Apprenant."
+            },
+            {
+              "id": "q6",
+              "question": "« Kitāb » =",
+              "type": "single_choice",
+              "options": ["Livre", "Chaise", "Porte", "Sœur"],
+              "correctAnswers": [0],
+              "explanation": "Manuel."
+            },
+            {
+              "id": "q7",
+              "question": "« Qalam » =",
+              "type": "single_choice",
+              "options": ["Stylo", "Table", "Tableau", "Mère"],
+              "correctAnswers": [0],
+              "explanation": "Outil d'écriture."
+            },
+            {
+              "id": "q8",
+              "question": "« Kurāsī » =",
+              "type": "single_choice",
+              "options": ["Chaise", "Livre", "Père", "Onze"],
+              "correctAnswers": [0],
+              "explanation": "Siège en classe."
+            },
+            {
+              "id": "q9",
+              "question": "« Bab » =",
+              "type": "single_choice",
+              "options": ["Porte", "Fenêtre", "Ami", "Trois"],
+              "correctAnswers": [0],
+              "explanation": "Entrée de salle."
+            },
+            {
+              "id": "q10",
+              "question": "En classe on trouve :",
+              "type": "single_choice",
+              "options": [
+                "كتب وأقلام",
+                "أب فقط",
+                "مساء الخير seulement",
+                "من فرنسا"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Livres et stylos."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Couleurs de base",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Couleurs en arabe ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "أحمر (aḥmar) — rouge",
+                "أزرق (azraq) — bleu",
+                "أب — père",
+                "واحد"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rouge et bleu."
+            },
+            {
+              "id": "q2",
+              "question": "« Abyaḍ » =",
+              "type": "single_choice",
+              "options": ["Blanc", "Noir", "Vert", "Jaune"],
+              "correctAnswers": [0],
+              "explanation": "Couleur claire."
+            },
+            {
+              "id": "q3",
+              "question": "« Aswad » =",
+              "type": "single_choice",
+              "options": ["Noir", "Blanc", "Bleu", "Rouge"],
+              "correctAnswers": [0],
+              "explanation": "Couleur foncée."
+            },
+            {
+              "id": "q4",
+              "question": "« Aḍḍar » / « akhḍar » =",
+              "type": "single_choice",
+              "options": ["Vert", "Rouge", "Gris", "Orange"],
+              "correctAnswers": [0],
+              "explanation": "Vert (cahier)."
+            },
+            {
+              "id": "q5",
+              "question": "« Aṣfar » =",
+              "type": "single_choice",
+              "options": ["Jaune", "Bleu", "Noir", "Mère"],
+              "correctAnswers": [0],
+              "explanation": "Jaune."
+            },
+            {
+              "id": "q6",
+              "question": "Cahier bleu :",
+              "type": "single_choice",
+              "options": ["دفتر أزرق", "دفتر أب", "دفتر واحد", "دفتر مساء"],
+              "correctAnswers": [0],
+              "explanation": "Azraq = bleu."
+            },
+            {
+              "id": "q7",
+              "question": "« Lawn » =",
+              "type": "single_choice",
+              "options": ["Couleur", "Nombre", "Frère", "Classe"],
+              "correctAnswers": [0],
+              "explanation": "Mot générique."
+            },
+            {
+              "id": "q8",
+              "question": "« Aḥmar » =",
+              "type": "single_choice",
+              "options": ["Rouge", "Bleu", "Blanc", "Stylo seul"],
+              "correctAnswers": [0],
+              "explanation": "Rouge."
+            },
+            {
+              "id": "q9",
+              "question": "Opposés often appris :",
+              "type": "single_choice",
+              "options": ["أبيض وأسود", "أب وأم", "واحد واسم", "صباح ومساء"],
+              "correctAnswers": [0],
+              "explanation": "Blanc et noir."
+            },
+            {
+              "id": "q10",
+              "question": "« Azraq » =",
+              "type": "single_choice",
+              "options": ["Bleu", "Vert", "Rouge", "Quatorze"],
+              "correctAnswers": [0],
+              "explanation": "Bleu."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Jours de la semaine",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Jours en arabe ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "الاثنين (al-ithnayn) — lundi",
+                "الجمعة (al-jumʿa) — vendredi",
+                "قلم",
+                "أخت"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lundi et vendredi."
+            },
+            {
+              "id": "q2",
+              "question": "« Al-Aḥad » =",
+              "type": "single_choice",
+              "options": ["Dimanche", "Lundi", "Samedi", "Mercredi"],
+              "correctAnswers": [0],
+              "explanation": "Premier jour dans calendrier arabe courant."
+            },
+            {
+              "id": "q3",
+              "question": "« Al-Arbiʿāʾ » =",
+              "type": "single_choice",
+              "options": ["Mercredi", "Jeudi", "Mardi", "Vendredi"],
+              "correctAnswers": [0],
+              "explanation": "Milieu de semaine."
+            },
+            {
+              "id": "q4",
+              "question": "« Al-Khamīs » =",
+              "type": "single_choice",
+              "options": ["Jeudi", "Lundi", "Dimanche", "Stylo"],
+              "correctAnswers": [0],
+              "explanation": "Jeudi."
+            },
+            {
+              "id": "q5",
+              "question": "« As-Sabt » =",
+              "type": "single_choice",
+              "options": ["Samedi", "Vendredi", "Lundi", "Mère"],
+              "correctAnswers": [0],
+              "explanation": "Week-end proche."
+            },
+            {
+              "id": "q6",
+              "question": "« Al-Jumʿa » =",
+              "type": "single_choice",
+              "options": ["Vendredi", "Mardi", "Jeudi", "Deux"],
+              "correctAnswers": [0],
+              "explanation": "Jour important culturellement."
+            },
+            {
+              "id": "q7",
+              "question": "« Yawm » =",
+              "type": "single_choice",
+              "options": ["Jour", "Nuit", "Classe", "Bleu"],
+              "correctAnswers": [0],
+              "explanation": "Unité de temps."
+            },
+            {
+              "id": "q8",
+              "question": "Après al-ithnayn (lundi) souvent :",
+              "type": "single_choice",
+              "options": [
+                "الثلاثاء (ath-thulāthāʾ)",
+                "الجمعة",
+                "واحد",
+                "مع السلامة"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mardi."
+            },
+            {
+              "id": "q9",
+              "question": "Cours d'arabe le mercredi :",
+              "type": "single_choice",
+              "options": ["يوم الأربعاء", "يوم الأم", "يوم القلم", "يوم مساء"],
+              "correctAnswers": [0],
+              "explanation": "Al-arbiʿāʾ."
+            },
+            {
+              "id": "q10",
+              "question": "« Al-ithnayn » =",
+              "type": "single_choice",
+              "options": ["Lundi", "Dimanche", "Samedi", "Quatre"],
+              "correctAnswers": [0],
+              "explanation": "Deuxième jour nommé."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Lieux à l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Lieux scolaires ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "مكتبة (maktaba) — bibliothèque",
+                "ساحة (sāḥa) — cour",
+                "أم",
+                "واحد"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bibliothèque et cour."
+            },
+            {
+              "id": "q2",
+              "question": "« Ḥamrām » / « ḥammām » contexte école =",
+              "type": "single_choice",
+              "options": ["Toilettes", "Cuisine maison", "Rue", "Lune"],
+              "correctAnswers": [0],
+              "explanation": "Sanitaires (vocabulaire courant 4e)."
+            },
+            {
+              "id": "q3",
+              "question": "« Maṭʿam » =",
+              "type": "single_choice",
+              "options": ["Cantine / restaurant", "Classe", "Stylo", "Sœur"],
+              "correctAnswers": [0],
+              "explanation": "Repas à midi."
+            },
+            {
+              "id": "q4",
+              "question": "« Ghurfa » =",
+              "type": "single_choice",
+              "options": ["Salle / chambre", "Frère", "Rouge", "Onze"],
+              "correctAnswers": [0],
+              "explanation": "Pièce."
+            },
+            {
+              "id": "q5",
+              "question": "« Ayna al-maktaba ? » =",
+              "type": "single_choice",
+              "options": [
+                "Où est la bibliothèque ?",
+                "Quel est ton nom ?",
+                "Combien de stylos ?",
+                "Bonsoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ayna = où."
+            },
+            {
+              "id": "q6",
+              "question": "« Madrasa » lieu :",
+              "type": "single_choice",
+              "options": ["École", "Plage", "Marché seul", "Nuit"],
+              "correctAnswers": [0],
+              "explanation": "Bâtiment scolaire."
+            },
+            {
+              "id": "q7",
+              "question": "Récréation dans la cour :",
+              "type": "single_choice",
+              "options": ["في الساحة", "في الأم", "في واحد", "في اسمي"],
+              "correctAnswers": [0],
+              "explanation": "Sāḥa = cour."
+            },
+            {
+              "id": "q8",
+              "question": "« Bab » à l'école =",
+              "type": "single_choice",
+              "options": ["Porte d'entrée", "Livre", "Bleu", "Vendredi"],
+              "correctAnswers": [0],
+              "explanation": "Accès bâtiment."
+            },
+            {
+              "id": "q9",
+              "question": "Lire des livres :",
+              "type": "single_choice",
+              "options": ["المكتبة", "السبورة seule", "الأب", "الاثنان"],
+              "correctAnswers": [0],
+              "explanation": "Maktaba."
+            },
+            {
+              "id": "q10",
+              "question": "« Ayna » =",
+              "type": "single_choice",
+              "options": ["Où", "Comment", "Combien", "Qui"],
+              "correctAnswers": [0],
+              "explanation": "Localiser un lieu."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Adjectifs simples",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Adjectifs utiles ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "كبير (kabīr) — grand",
+                "صغير (ṣaghīr) — petit",
+                "قلم",
+                "جمعة"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Taille."
+            },
+            {
+              "id": "q2",
+              "question": "« Kabīr » =",
+              "type": "single_choice",
+              "options": ["Grand", "Petit", "Beau", "Lent"],
+              "correctAnswers": [0],
+              "explanation": "Opposé ṣaghīr."
+            },
+            {
+              "id": "q3",
+              "question": "« Ṣaghīr » =",
+              "type": "single_choice",
+              "options": ["Petit", "Grand", "Nouveau", "Vieux"],
+              "correctAnswers": [0],
+              "explanation": "Petite taille."
+            },
+            {
+              "id": "q4",
+              "question": "« Jamīl » =",
+              "type": "single_choice",
+              "options": ["Beau / joli", "Laid", "Noir", "Frère"],
+              "correctAnswers": [0],
+              "explanation": "Compliment simple."
+            },
+            {
+              "id": "q5",
+              "question": "« Jadīd » =",
+              "type": "single_choice",
+              "options": ["Nouveau", "Vieux", "Rouge", "Mère"],
+              "correctAnswers": [0],
+              "explanation": "Cahier neuf."
+            },
+            {
+              "id": "q6",
+              "question": "« Qadīm » =",
+              "type": "single_choice",
+              "options": ["Vieux / ancien", "Nouveau", "Bleu", "Cinq"],
+              "correctAnswers": [0],
+              "explanation": "Opposé jadīd."
+            },
+            {
+              "id": "q7",
+              "question": "Grande salle :",
+              "type": "single_choice",
+              "options": ["غرفة كبيرة", "غرفة صغيرة", "غرفة واحد", "غرفة أب"],
+              "correctAnswers": [0],
+              "explanation": "Kabīra accord f."
+            },
+            {
+              "id": "q8",
+              "question": "« Ṣaḥīḥ » souvent =",
+              "type": "single_choice",
+              "options": ["Correct / vrai", "Faux", "Stylo", "Lundi"],
+              "correctAnswers": [0],
+              "explanation": "En classe : c'est juste."
+            },
+            {
+              "id": "q9",
+              "question": "« Khāṭiʾ » =",
+              "type": "single_choice",
+              "options": ["Faux / erreur", "Grand", "Vert", "Onze"],
+              "correctAnswers": [0],
+              "explanation": "Opposé de correct."
+            },
+            {
+              "id": "q10",
+              "question": "Petit livre :",
+              "type": "single_choice",
+              "options": ["كتاب صغير", "كتاب كبير", "كتاب أم", "كتاب مساء"],
+              "correctAnswers": [0],
+              "explanation": "Ṣaghīr + kitāb."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision vocabulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Mots de la unité 2 ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "أب — famille",
+                "قلم — classe",
+                "صباح الخير — nombre",
+                "مع السلامة — couleur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Famille et objet scolaire."
+            },
+            {
+              "id": "q2",
+              "question": "Relier : 14 ans en arabe",
+              "type": "single_choice",
+              "options": ["أربعة عشر", "أربعة", "عشرة", "أربعة أقلام"],
+              "correctAnswers": [0],
+              "explanation": "Teen 14."
+            },
+            {
+              "id": "q3",
+              "question": "Relier : sœur",
+              "type": "single_choice",
+              "options": ["أخت", "أخ", "أم", "جد"],
+              "correctAnswers": [0],
+              "explanation": "Ukht."
+            },
+            {
+              "id": "q4",
+              "question": "Relier : tableau",
+              "type": "single_choice",
+              "options": ["سبورة", "كرسي", "باب", "يوم"],
+              "correctAnswers": [0],
+              "explanation": "Sabbūra."
+            },
+            {
+              "id": "q5",
+              "question": "Relier : bleu",
+              "type": "single_choice",
+              "options": ["أزرق", "أحمر", "أسود", "أب"],
+              "correctAnswers": [0],
+              "explanation": "Azraq."
+            },
+            {
+              "id": "q6",
+              "question": "Vendredi :",
+              "type": "single_choice",
+              "options": ["الجمعة", "الاثنين", "السبت", "واحد"],
+              "correctAnswers": [0],
+              "explanation": "Al-jumʿa."
+            },
+            {
+              "id": "q7",
+              "question": "Bibliothèque :",
+              "type": "single_choice",
+              "options": ["مكتبة", "ساحة", "مطبخ", "أخت"],
+              "correctAnswers": [0],
+              "explanation": "Maktaba."
+            },
+            {
+              "id": "q8",
+              "question": "Grand / petit :",
+              "type": "single_choice",
+              "options": [
+                "كبير / صغير",
+                "أبيض / أم",
+                "اسم / عمر",
+                "صباح / مساء"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paires d'adjectifs."
+            },
+            {
+              "id": "q9",
+              "question": "Compter stylos : 3",
+              "type": "single_choice",
+              "options": ["ثلاثة أقلام", "قلم واحد", "قلم اثنان", "قلم أب"],
+              "correctAnswers": [0],
+              "explanation": "Thalātha aqlām."
+            },
+            {
+              "id": "q10",
+              "question": "En 4e tu utilises ces mots pour :",
+              "type": "single_choice",
+              "options": [
+                "Parler de toi, de la famille et de l'école",
+                "Uniquement saluer le soir",
+                "Sans chiffres",
+                "Sans arabe écrit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif de la leçon."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2566 @@
+{
+  "id": "3e-espagnol-02",
+  "year": "3e",
+  "subject": "espagnol",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Ma famille",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Comment dit-on « mes parents » en espagnol ? (Deux réponses possibles.)",
+              "type": "multiple_choice",
+              "options": [
+                "mis padres",
+                "mi familia",
+                "mis progenitores",
+                "mis abuelos"
+              ],
+              "correctAnswers": ["mis padres", "mis progenitores"],
+              "explanation": "« Mis padres » est la forme courante ; « mis progenitores » est plus formel mais correct pour désigner les parents."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie « hermano » ?",
+              "type": "single_choice",
+              "options": ["le cousin", "le frère", "la sœur", "l'oncle"],
+              "correctAnswers": ["le frère"],
+              "explanation": "« Hermano » = frère ; « hermana » = sœur."
+            },
+            {
+              "id": "q3",
+              "question": "« Tengo quince años » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "J'ai quinze euros",
+                "J'ai quinze ans",
+                "Il est quinze heures",
+                "Nous sommes quinze"
+              ],
+              "correctAnswers": ["J'ai quinze ans"],
+              "explanation": "En espagnol on « a » des années : tener + años."
+            },
+            {
+              "id": "q4",
+              "question": "Comment demander « Combien de frères et sœurs as-tu ? »",
+              "type": "single_choice",
+              "options": [
+                "¿Cuántos hermanos tienes?",
+                "¿Dónde vives?",
+                "¿Qué estudias?",
+                "¿Cómo te llamas?"
+              ],
+              "correctAnswers": ["¿Cuántos hermanos tienes?"],
+              "explanation": "« Cuántos » + nom + « tienes » pour la famille."
+            },
+            {
+              "id": "q5",
+              "question": "« Mi madre es profesora » : la mère est",
+              "type": "single_choice",
+              "options": ["médecin", "professeure", "étudiante", "cuisinière"],
+              "correctAnswers": ["professeure"],
+              "explanation": "« Profesora » = professeure (féminin)."
+            },
+            {
+              "id": "q6",
+              "question": "Le mot « abuelos » désigne",
+              "type": "single_choice",
+              "options": [
+                "les parents",
+                "les grands-parents",
+                "les cousins",
+                "les voisins"
+              ],
+              "correctAnswers": ["les grands-parents"],
+              "explanation": "« Abuelo/abuela » = grand-père/mère ; « abuelos » = les deux."
+            },
+            {
+              "id": "q7",
+              "question": "« Vivimos en Lyon » se traduit par",
+              "type": "single_choice",
+              "options": [
+                "Vivimos en Lyon",
+                "Vivís en Lyon",
+                "Vivo en Lyon",
+                "Viven en Lyon"
+              ],
+              "correctAnswers": ["Vivimos en Lyon"],
+              "explanation": "« Vivimos » = nous vivons, sujet « we »."
+            },
+            {
+              "id": "q8",
+              "question": "« Casado » décrit une personne",
+              "type": "single_choice",
+              "options": ["célibataire", "mariée", "jeune", "fatiguée"],
+              "correctAnswers": ["mariée"],
+              "explanation": "« Casado/a » = marié(e)."
+            },
+            {
+              "id": "q9",
+              "question": "Pour dire « mon petit frère » on dit",
+              "type": "single_choice",
+              "options": [
+                "mi hermano pequeño",
+                "mi hermana mayor",
+                "mi padre",
+                "mi tío"
+              ],
+              "correctAnswers": ["mi hermano pequeño"],
+              "explanation": "« Pequeño » = petit ; « mayor » = aîné."
+            },
+            {
+              "id": "q10",
+              "question": "« ¿Cómo es tu padre? » porte sur",
+              "type": "single_choice",
+              "options": [
+                "l'âge du père",
+                "la description du père",
+                "le métier du père",
+                "l'adresse"
+              ],
+              "correctAnswers": ["la description du père"],
+              "explanation": "« Cómo es » = à quoi ressemble / quel caractère."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "À l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent des lieux de l'établissement ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["el aula", "el patio", "el cine", "la playa"],
+              "correctAnswers": ["el aula", "el patio"],
+              "explanation": "« Aula » = salle de classe ; « patio » = cour de récréation."
+            },
+            {
+              "id": "q2",
+              "question": "« El instituto » correspond à",
+              "type": "single_choice",
+              "options": [
+                "le collège-lycée",
+                "l'université",
+                "le stade",
+                "le musée"
+              ],
+              "correctAnswers": ["le collège-lycée"],
+              "explanation": "En Espagne « instituto » = établissement secondaire."
+            },
+            {
+              "id": "q3",
+              "question": "« Estudio español » signifie",
+              "type": "single_choice",
+              "options": [
+                "Je parle espagnol",
+                "J'étudie l'espagnol",
+                "J'aime l'espagnol",
+                "J'enseigne l'espagnol"
+              ],
+              "correctAnswers": ["J'étudie l'espagnol"],
+              "explanation": "« Estudiar » = étudier une matière."
+            },
+            {
+              "id": "q4",
+              "question": "« La asignatura de mates » :",
+              "type": "single_choice",
+              "options": [
+                "la matière de maths",
+                "le prof de maths",
+                "le devoir de maths",
+                "la salle de maths"
+              ],
+              "correctAnswers": ["la matière de maths"],
+              "explanation": "« Asignatura » = matière ; « mates » = maths (familier)."
+            },
+            {
+              "id": "q5",
+              "question": "« Tengo clase a las ocho » :",
+              "type": "single_choice",
+              "options": [
+                "Le cours est à huit heures",
+                "J'ai huit cours",
+                "Il est huit heures du soir",
+                "La classe a huit élèves"
+              ],
+              "correctAnswers": ["Le cours est à huit heures"],
+              "explanation": "« A las ocho » = à huit heures."
+            },
+            {
+              "id": "q6",
+              "question": "« El profesor explica la lección » : le prof",
+              "type": "single_choice",
+              "options": ["corrige", "explique la leçon", "sort", "dort"],
+              "correctAnswers": ["explique la leçon"],
+              "explanation": "« Explicar » = expliquer ; « lección » = leçon."
+            },
+            {
+              "id": "q7",
+              "question": "« Sacar buenas notas » veut dire",
+              "type": "single_choice",
+              "options": [
+                "avoir de bonnes notes",
+                "perdre ses affaires",
+                "arriver en retard",
+                "faire du sport"
+              ],
+              "correctAnswers": ["avoir de bonnes notes"],
+              "explanation": "« Nota » = note ; « sacar » = obtenir."
+            },
+            {
+              "id": "q8",
+              "question": "« ¿Dónde está la biblioteca? »",
+              "type": "single_choice",
+              "options": [
+                "Où est la bibliothèque ?",
+                "Où est la cantine ?",
+                "Où est le prof ?",
+                "Où est la cour ?"
+              ],
+              "correctAnswers": ["Où est la bibliothèque ?"],
+              "explanation": "« Biblioteca » = bibliothèque."
+            },
+            {
+              "id": "q9",
+              "question": "« Los deberes » sont",
+              "type": "single_choice",
+              "options": [
+                "les devoirs",
+                "les jeux",
+                "les vacances",
+                "les examens"
+              ],
+              "correctAnswers": ["les devoirs"],
+              "explanation": "« Deberes » = devoirs scolaires."
+            },
+            {
+              "id": "q10",
+              "question": "« Me gusta el recreo » : j'aime",
+              "type": "single_choice",
+              "options": ["la récréation", "le prof", "les maths", "l'examen"],
+              "correctAnswers": ["la récréation"],
+              "explanation": "« Recreo » = récréation / pause."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Matières et cours",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions nomment des matières ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "historia",
+                "educación física",
+                "televisión",
+                "restaurante"
+              ],
+              "correctAnswers": ["historia", "educación física"],
+              "explanation": "Histoire et EPS sont des matières scolaires courantes."
+            },
+            {
+              "id": "q2",
+              "question": "« Ciencias » désigne souvent",
+              "type": "single_choice",
+              "options": [
+                "les sciences",
+                "la musique",
+                "l'anglais",
+                "le dessin"
+              ],
+              "correctAnswers": ["les sciences"],
+              "explanation": "« Ciencias » = sciences (SVT, physique… selon le contexte)."
+            },
+            {
+              "id": "q3",
+              "question": "« Lengua » à l'école espagnole, c'est",
+              "type": "single_choice",
+              "options": [
+                "la langue et littérature",
+                "la gym",
+                "la techno",
+                "l'allemand"
+              ],
+              "correctAnswers": ["la langue et littérature"],
+              "explanation": "« Lengua castellana » = français/langue maternelle."
+            },
+            {
+              "id": "q4",
+              "question": "« ¿Qué asignatura prefieres? »",
+              "type": "single_choice",
+              "options": [
+                "Quelle matière préfères-tu ?",
+                "Quel prof préfères-tu ?",
+                "Quelle note as-tu ?",
+                "Quelle heure est le cours ?"
+              ],
+              "correctAnswers": ["Quelle matière préfères-tu ?"],
+              "explanation": "« Asignatura » = matière ; « preferir » = préférer."
+            },
+            {
+              "id": "q5",
+              "question": "« Inglés » est",
+              "type": "single_choice",
+              "options": ["l'anglais", "l'espagnol", "l'italien", "le latin"],
+              "correctAnswers": ["l'anglais"],
+              "explanation": "« Inglés » = anglais (matière étrangère fréquente)."
+            },
+            {
+              "id": "q6",
+              "question": "« Tecnología » correspond à",
+              "type": "single_choice",
+              "options": [
+                "la technologie",
+                "l'histoire",
+                "la géo",
+                "la musique"
+              ],
+              "correctAnswers": ["la technologie"],
+              "explanation": "« Tecnología » = technologie / informatique selon l'établissement."
+            },
+            {
+              "id": "q7",
+              "question": "« Música » en cours, c'est",
+              "type": "single_choice",
+              "options": ["la musique", "le théâtre", "le sport", "la philo"],
+              "correctAnswers": ["la musique"],
+              "explanation": "Même racine que en français."
+            },
+            {
+              "id": "q8",
+              "question": "« Geografía » =",
+              "type": "single_choice",
+              "options": [
+                "géographie",
+                "géométrie",
+                "gymnastique",
+                "grammaire"
+              ],
+              "correctAnswers": ["géographie"],
+              "explanation": "« Geografía » = géographie."
+            },
+            {
+              "id": "q9",
+              "question": "« El horario escolar » est",
+              "type": "single_choice",
+              "options": [
+                "l'emploi du temps",
+                "le tableau",
+                "le cahier",
+                "le stylo"
+              ],
+              "correctAnswers": ["l'emploi du temps"],
+              "explanation": "« Horario » = horaire / emploi du temps."
+            },
+            {
+              "id": "q10",
+              "question": "« Falto a clase » signifie",
+              "type": "single_choice",
+              "options": [
+                "Je manque le cours",
+                "Je comprends le cours",
+                "J'aime le cours",
+                "Je finis le cours"
+              ],
+              "correctAnswers": ["Je manque le cours"],
+              "explanation": "« Faltar a » = manquer (être absent)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Loisirs du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels verbes parlent de loisirs ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["jugar", "leer", "facturar", "multar"],
+              "correctAnswers": ["jugar", "leer"],
+              "explanation": "« Jugar » = jouer ; « leer » = lire — activités de temps libre."
+            },
+            {
+              "id": "q2",
+              "question": "« Me gusta leer cómics » :",
+              "type": "single_choice",
+              "options": [
+                "J'aime lire des BD",
+                "J'aime cuisiner",
+                "J'aime courir",
+                "J'aime dormir"
+              ],
+              "correctAnswers": ["J'aime lire des BD"],
+              "explanation": "« Cómic » = bande dessinée."
+            },
+            {
+              "id": "q3",
+              "question": "« Salir con amigos » :",
+              "type": "single_choice",
+              "options": [
+                "Sortir avec des amis",
+                "Rester seul",
+                "Aller à l'école",
+                "Faire les devoirs"
+              ],
+              "correctAnswers": ["Sortir avec des amis"],
+              "explanation": "« Salir con » = sortir avec."
+            },
+            {
+              "id": "q4",
+              "question": "« Escuchar música » =",
+              "type": "single_choice",
+              "options": [
+                "écouter de la musique",
+                "jouer de la musique",
+                "écrire une chanson",
+                "chanter seul"
+              ],
+              "correctAnswers": ["écouter de la musique"],
+              "explanation": "« Escuchar » = écouter."
+            },
+            {
+              "id": "q5",
+              "question": "« Ver series en la tele » :",
+              "type": "single_choice",
+              "options": [
+                "Regarder des séries à la télé",
+                "Lire des séries",
+                "Jouer à des jeux",
+                "Faire du vélo"
+              ],
+              "correctAnswers": ["Regarder des séries à la télé"],
+              "explanation": "« Ver » = voir/regarder ; « tele » = télé."
+            },
+            {
+              "id": "q6",
+              "question": "« Jugar a videojuegos » :",
+              "type": "single_choice",
+              "options": [
+                "Jouer aux jeux vidéo",
+                "Regarder des films",
+                "Nager",
+                "Danser"
+              ],
+              "correctAnswers": ["Jouer aux jeux vidéo"],
+              "explanation": "« Videojuegos » = jeux vidéo."
+            },
+            {
+              "id": "q7",
+              "question": "« Pasear al perro » signifie",
+              "type": "single_choice",
+              "options": [
+                "Promener le chien",
+                "Acheter un chien",
+                "Nourrir le chat",
+                "Dormir"
+              ],
+              "correctAnswers": ["Promener le chien"],
+              "explanation": "« Pasear » = se promener / promener."
+            },
+            {
+              "id": "q8",
+              "question": "« Los fines de semana » =",
+              "type": "single_choice",
+              "options": [
+                "les week-ends",
+                "les matins",
+                "les cours",
+                "les examens"
+              ],
+              "correctAnswers": ["les week-ends"],
+              "explanation": "« Fin de semana » = week-end."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿Qué haces en tu tiempo libre? »",
+              "type": "single_choice",
+              "options": [
+                "Que fais-tu pendant ton temps libre ?",
+                "Où habites-tu ?",
+                "Quel âge as-tu ?",
+                "Comment t'appelles-tu ?"
+              ],
+              "correctAnswers": ["Que fais-tu pendant ton temps libre ?"],
+              "explanation": "« Tiempo libre » = temps libre."
+            },
+            {
+              "id": "q10",
+              "question": "« Me aburro » veut dire",
+              "type": "single_choice",
+              "options": ["Je m'ennuie", "Je m'amuse", "Je cours", "Je mange"],
+              "correctAnswers": ["Je m'ennuie"],
+              "explanation": "« Aburrirse » = s'ennuyer."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Sport et activité",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels sports ou activités sont courants ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "fútbol",
+                "natación",
+                "contabilidad",
+                "cocina profesional"
+              ],
+              "correctAnswers": ["fútbol", "natación"],
+              "explanation": "Football et natation sont des loisirs sportifs fréquents."
+            },
+            {
+              "id": "q2",
+              "question": "« Jugar al baloncesto » :",
+              "type": "single_choice",
+              "options": [
+                "Jouer au basket",
+                "Jouer au foot",
+                "Faire de la natation",
+                "Courir"
+              ],
+              "correctAnswers": ["Jouer au basket"],
+              "explanation": "« Baloncesto » = basket-ball."
+            },
+            {
+              "id": "q3",
+              "question": "« Hago judo los martes » :",
+              "type": "single_choice",
+              "options": [
+                "Je fais du judo le mardi",
+                "Je fais du judo le jeudi",
+                "Je regarde le judo",
+                "Je déteste le judo"
+              ],
+              "correctAnswers": ["Je fais du judo le mardi"],
+              "explanation": "« Los martes » = le mardi (habitude)."
+            },
+            {
+              "id": "q4",
+              "question": "« El equipo » dans le sport, c'est",
+              "type": "single_choice",
+              "options": ["l'équipe", "le stade", "le ballon", "l'arbitre"],
+              "correctAnswers": ["l'équipe"],
+              "explanation": "« Equipo » = équipe."
+            },
+            {
+              "id": "q5",
+              "question": "« Ganar un partido » :",
+              "type": "single_choice",
+              "options": [
+                "Gagner un match",
+                "Perdre un match",
+                "Regarder un match",
+                "Annuler un match"
+              ],
+              "correctAnswers": ["Gagner un match"],
+              "explanation": "« Ganar » = gagner ; « partido » = match."
+            },
+            {
+              "id": "q6",
+              "question": "« Entrenar » signifie",
+              "type": "single_choice",
+              "options": ["s'entraîner", "dormir", "manger", "lire"],
+              "correctAnswers": ["s'entraîner"],
+              "explanation": "« Entrenar » = s'entraîner."
+            },
+            {
+              "id": "q7",
+              "question": "« ¿Practicas algún deporte? »",
+              "type": "single_choice",
+              "options": [
+                "Pratiques-tu un sport ?",
+                "As-tu un animal ?",
+                "Manges-tu bien ?",
+                "Vas-tu au cinéma ?"
+              ],
+              "correctAnswers": ["Pratiques-tu un sport ?"],
+              "explanation": "« Practicar un deporte » = pratiquer un sport."
+            },
+            {
+              "id": "q8",
+              "question": "« Correr en el parque » :",
+              "type": "single_choice",
+              "options": [
+                "Courir au parc",
+                "Nager à la piscine",
+                "Skier",
+                "Jouer aux échecs"
+              ],
+              "correctAnswers": ["Courir au parc"],
+              "explanation": "« Correr » = courir ; « parque » = parc."
+            },
+            {
+              "id": "q9",
+              "question": "« La piscina » est",
+              "type": "single_choice",
+              "options": [
+                "la piscine",
+                "le terrain",
+                "la salle de classe",
+                "la bibliothèque"
+              ],
+              "correctAnswers": ["la piscine"],
+              "explanation": "« Piscina » = piscine."
+            },
+            {
+              "id": "q10",
+              "question": "« Me lesioné la rodilla » (passé) :",
+              "type": "single_choice",
+              "options": [
+                "Je me suis blessé au genou",
+                "Je vais au genou",
+                "Je n'aime pas le sport",
+                "Je gagne"
+              ],
+              "correctAnswers": ["Je me suis blessé au genou"],
+              "explanation": "« Rodilla » = genou ; contexte passé avec « me lesioné »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Musique et écran",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles activités liées à la musique ou aux écrans ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "tocar la guitarra",
+                "ir al cine",
+                "firmar contratos",
+                "pagar impuestos"
+              ],
+              "correctAnswers": ["tocar la guitarra", "ir al cine"],
+              "explanation": "Jouer de la guitare et aller au cinéma sont des loisirs."
+            },
+            {
+              "id": "q2",
+              "question": "« Tocar el piano » :",
+              "type": "single_choice",
+              "options": [
+                "Jouer du piano",
+                "Acheter un piano",
+                "Casser un piano",
+                "Écouter la radio"
+              ],
+              "correctAnswers": ["Jouer du piano"],
+              "explanation": "« Tocar un instrumento » = jouer d'un instrument."
+            },
+            {
+              "id": "q3",
+              "question": "« La película » =",
+              "type": "single_choice",
+              "options": ["le film", "la chanson", "le livre", "le jeu"],
+              "correctAnswers": ["le film"],
+              "explanation": "« Película » = film."
+            },
+            {
+              "id": "q4",
+              "question": "« ¿Te gusta el rock? »",
+              "type": "single_choice",
+              "options": [
+                "Tu aimes le rock ?",
+                "Tu joues au rock ?",
+                "Tu détestes la musique ?",
+                "Tu vas au concert demain ?"
+              ],
+              "correctAnswers": ["Tu aimes le rock ?"],
+              "explanation": "« Gustar » = plaire / aimer (construction avec « te »)."
+            },
+            {
+              "id": "q5",
+              "question": "« El concierto » est",
+              "type": "single_choice",
+              "options": ["le concert", "le cinéma", "le match", "le musée"],
+              "correctAnswers": ["le concert"],
+              "explanation": "« Concierto » = concert."
+            },
+            {
+              "id": "q6",
+              "question": "« Cantar en un coro » :",
+              "type": "single_choice",
+              "options": [
+                "Chanter dans une chorale",
+                "Danser seul",
+                "Lire un poème",
+                "Peindre"
+              ],
+              "correctAnswers": ["Chanter dans une chorale"],
+              "explanation": "« Coro » = chorale / chœur."
+            },
+            {
+              "id": "q7",
+              "question": "« Descargar una canción » :",
+              "type": "single_choice",
+              "options": [
+                "Télécharger une chanson",
+                "Écrire une lettre",
+                "Couper la musique",
+                "Oublier les paroles"
+              ],
+              "correctAnswers": ["Télécharger une chanson"],
+              "explanation": "« Descargar » = télécharger ; « canción » = chanson."
+            },
+            {
+              "id": "q8",
+              "question": "« La pantalla » désigne",
+              "type": "single_choice",
+              "options": ["l'écran", "la porte", "la table", "le stylo"],
+              "correctAnswers": ["l'écran"],
+              "explanation": "« Pantalla » = écran (télé, ordi, portable)."
+            },
+            {
+              "id": "q9",
+              "question": "« Pasar tiempo en redes sociales » :",
+              "type": "single_choice",
+              "options": [
+                "Passer du temps sur les réseaux sociaux",
+                "Faire du sport",
+                "Dormir",
+                "Étudier les maths"
+              ],
+              "correctAnswers": ["Passer du temps sur les réseaux sociaux"],
+              "explanation": "« Redes sociales » = réseaux sociaux."
+            },
+            {
+              "id": "q10",
+              "question": "« Me relajo escuchando música » :",
+              "type": "single_choice",
+              "options": [
+                "Je me détends en écoutant de la musique",
+                "Je cours vite",
+                "Je m'énervé",
+                "Je fais mes devoirs"
+              ],
+              "correctAnswers": ["Je me détends en écoutant de la musique"],
+              "explanation": "« Relajarse » = se détendre."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Amis et sorties",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots concernent les amis ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["el amigo", "la amiga", "el jefe", "el cliente"],
+              "correctAnswers": ["el amigo", "la amiga"],
+              "explanation": "Amigo/amiga = ami(e) ; les autres sont pro ou commerce."
+            },
+            {
+              "id": "q2",
+              "question": "« Quedar con Laura » :",
+              "type": "single_choice",
+              "options": [
+                "Donner rendez-vous à Laura",
+                "Quitter Laura",
+                "Appeler Laura prof",
+                "Ignorer Laura"
+              ],
+              "correctAnswers": ["Donner rendez-vous à Laura"],
+              "explanation": "« Quedar con » = retrouver / RDV avec."
+            },
+            {
+              "id": "q3",
+              "question": "« Invitar a una fiesta » :",
+              "type": "single_choice",
+              "options": [
+                "Inviter à une fête",
+                "Interdire la fête",
+                "Organiser l'école",
+                "Finir les devoirs"
+              ],
+              "correctAnswers": ["Inviter à une fête"],
+              "explanation": "« Invitar a » = inviter à."
+            },
+            {
+              "id": "q4",
+              "question": "« ¿Vienes al cine conmigo? »",
+              "type": "single_choice",
+              "options": [
+                "Tu viens au cinéma avec moi ?",
+                "Tu restes chez toi ?",
+                "Tu détestes le cinéma ?",
+                "Tu es prof ?"
+              ],
+              "correctAnswers": ["Tu viens au cinéma avec moi ?"],
+              "explanation": "« Vienes » = tu viens ; « conmigo » = avec moi."
+            },
+            {
+              "id": "q5",
+              "question": "« Enviar un mensaje » =",
+              "type": "single_choice",
+              "options": [
+                "Envoyer un message",
+                "Lire un livre",
+                "Courir",
+                "Manger"
+              ],
+              "correctAnswers": ["Envoyer un message"],
+              "explanation": "« Mensaje » = message (SMS, appli)."
+            },
+            {
+              "id": "q6",
+              "question": "« La quedada » (familier) évoque",
+              "type": "single_choice",
+              "options": [
+                "un rendez-vous entre amis",
+                "un examen",
+                "un cours",
+                "un devoir"
+              ],
+              "correctAnswers": ["un rendez-vous entre amis"],
+              "explanation": "« Quedada » = sortie / meet entre amis (Espagne)."
+            },
+            {
+              "id": "q7",
+              "question": "« Compartir fotos » :",
+              "type": "single_choice",
+              "options": [
+                "Partager des photos",
+                "Effacer des photos",
+                "Voler des photos",
+                "Imprimer des devoirs"
+              ],
+              "correctAnswers": ["Partager des photos"],
+              "explanation": "« Compartir » = partager."
+            },
+            {
+              "id": "q8",
+              "question": "« Nos divertimos mucho » :",
+              "type": "single_choice",
+              "options": [
+                "On s'est beaucoup amusés",
+                "On s'est ennuyés",
+                "On a étudié",
+                "On a dormi"
+              ],
+              "correctAnswers": ["On s'est beaucoup amusés"],
+              "explanation": "« Divertirse » = s'amuser."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿A qué hora quedamos? »",
+              "type": "single_choice",
+              "options": [
+                "À quelle heure on se retrouve ?",
+                "Où habites-tu ?",
+                "Quel est ton sport ?",
+                "Combien coûte le billet ?"
+              ],
+              "correctAnswers": ["À quelle heure on se retrouve ?"],
+              "explanation": "« Quedar » = fixer un RDV."
+            },
+            {
+              "id": "q10",
+              "question": "« Mi mejor amigo » =",
+              "type": "single_choice",
+              "options": [
+                "mon meilleur ami",
+                "mon voisin",
+                "mon frère aîné",
+                "mon prof"
+              ],
+              "correctAnswers": ["mon meilleur ami"],
+              "explanation": "« Mejor » = meilleur."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "La maison au quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles pièces trouve-t-on à la maison ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "la cocina",
+                "el dormitorio",
+                "el aeropuerto",
+                "la estación"
+              ],
+              "correctAnswers": ["la cocina", "el dormitorio"],
+              "explanation": "Cuisine et chambre sont des pièces de la maison."
+            },
+            {
+              "id": "q2",
+              "question": "« Hacer la cama » :",
+              "type": "single_choice",
+              "options": [
+                "Faire le lit",
+                "Cuisiner",
+                "Laver la voiture",
+                "Faire les courses"
+              ],
+              "correctAnswers": ["Faire le lit"],
+              "explanation": "Expression fixe pour ranger le lit."
+            },
+            {
+              "id": "q3",
+              "question": "« Ayudar en casa » signifie",
+              "type": "single_choice",
+              "options": [
+                "Aider à la maison",
+                "Quitter la maison",
+                "Acheter une maison",
+                "Dormir dehors"
+              ],
+              "correctAnswers": ["Aider à la maison"],
+              "explanation": "« Ayudar en casa » = tâches domestiques."
+            },
+            {
+              "id": "q4",
+              "question": "« El salón » est souvent",
+              "type": "single_choice",
+              "options": [
+                "le salon (séjour)",
+                "la salle de bain",
+                "le garage",
+                "le jardin"
+              ],
+              "correctAnswers": ["le salon (séjour)"],
+              "explanation": "« Salón » = pièce de vie / salon."
+            },
+            {
+              "id": "q5",
+              "question": "« Lavar los platos » :",
+              "type": "single_choice",
+              "options": [
+                "Laver la vaisselle",
+                "Coudre",
+                "Peindre",
+                "Jardiner"
+              ],
+              "correctAnswers": ["Laver la vaisselle"],
+              "explanation": "« Platos » = assiettes / vaisselle."
+            },
+            {
+              "id": "q6",
+              "question": "« Recoger mi habitación » :",
+              "type": "single_choice",
+              "options": [
+                "Ranger ma chambre",
+                "Agrandir ma chambre",
+                "Louer ma chambre",
+                "Quitter ma chambre"
+              ],
+              "correctAnswers": ["Ranger ma chambre"],
+              "explanation": "« Recoger » = ranger ; « habitación » = chambre."
+            },
+            {
+              "id": "q7",
+              "question": "« El vecino » =",
+              "type": "single_choice",
+              "options": ["le voisin", "le cousin", "le prof", "l'élève"],
+              "correctAnswers": ["le voisin"],
+              "explanation": "« Vecino/a » = voisin(e)."
+            },
+            {
+              "id": "q8",
+              "question": "« Subir las escaleras » :",
+              "type": "single_choice",
+              "options": [
+                "Monter les escaliers",
+                "Descendre la rue",
+                "Conduire",
+                "Nager"
+              ],
+              "correctAnswers": ["Monter les escaliers"],
+              "explanation": "« Subir » = monter ; « escaleras » = escaliers."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿Dónde está el baño? » (à la maison)",
+              "type": "single_choice",
+              "options": [
+                "Où sont les toilettes / la salle de bain ?",
+                "Où est la cuisine ?",
+                "Où est l'école ?",
+                "Où est le parc ?"
+              ],
+              "correctAnswers": ["Où sont les toilettes / la salle de bain ?"],
+              "explanation": "« Baño » = salle de bain / WC."
+            },
+            {
+              "id": "q10",
+              "question": "« Cenar con mi familia » :",
+              "type": "single_choice",
+              "options": [
+                "Dîner avec ma famille",
+                "Déjeuner seul",
+                "Petit-déjeuner au lycée",
+                "Ne pas manger"
+              ],
+              "correctAnswers": ["Dîner avec ma famille"],
+              "explanation": "« Cenar » = dîner (soir)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Horaires et routine",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots parlent du temps et des horaires ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["temprano", "tarde", "imposible", "eterno"],
+              "correctAnswers": ["temprano", "tarde"],
+              "explanation": "« Temprano » = tôt ; « tarde » = tard."
+            },
+            {
+              "id": "q2",
+              "question": "« Me levanto a las siete » :",
+              "type": "single_choice",
+              "options": [
+                "Je me lève à sept heures",
+                "Je me couche à sept heures",
+                "Je mange à sept heures",
+                "Je cours à sept heures"
+              ],
+              "correctAnswers": ["Je me lève à sept heures"],
+              "explanation": "« Levantarse » = se lever."
+            },
+            {
+              "id": "q3",
+              "question": "« Desayuno » =",
+              "type": "single_choice",
+              "options": ["petit-déjeuner", "déjeuner", "dîner", "goûter"],
+              "correctAnswers": ["petit-déjeuner"],
+              "explanation": "« Desayunar » = prendre le petit-déjeuner."
+            },
+            {
+              "id": "q4",
+              "question": "« Después de clase » :",
+              "type": "single_choice",
+              "options": [
+                "Après les cours",
+                "Avant les cours",
+                "Pendant le cours",
+                "Jamais"
+              ],
+              "correctAnswers": ["Après les cours"],
+              "explanation": "« Después de » = après."
+            },
+            {
+              "id": "q5",
+              "question": "« Siempre » signifie",
+              "type": "single_choice",
+              "options": ["toujours", "jamais", "parfois", "rarement"],
+              "correctAnswers": ["toujours"],
+              "explanation": "« Siempre » = toujours."
+            },
+            {
+              "id": "q6",
+              "question": "« A veces voy al gimnasio » :",
+              "type": "single_choice",
+              "options": [
+                "Parfois je vais à la salle de sport",
+                "Je vais toujours",
+                "Je ne vais jamais",
+                "Je vais à l'école"
+              ],
+              "correctAnswers": ["Parfois je vais à la salle de sport"],
+              "explanation": "« A veces » = parfois ; « gimnasio » = gym."
+            },
+            {
+              "id": "q7",
+              "question": "« Antes de dormir » :",
+              "type": "single_choice",
+              "options": [
+                "Avant de dormir",
+                "Après de dormir",
+                "Sans dormir",
+                "Pour dormir"
+              ],
+              "correctAnswers": ["Avant de dormir"],
+              "explanation": "« Antes de » = avant de + infinitif."
+            },
+            {
+              "id": "q8",
+              "question": "« La rutina diaria » =",
+              "type": "single_choice",
+              "options": [
+                "la routine quotidienne",
+                "les vacances",
+                "le week-end",
+                "l'examen"
+              ],
+              "correctAnswers": ["la routine quotidienne"],
+              "explanation": "« Diaria » = quotidienne."
+            },
+            {
+              "id": "q9",
+              "question": "« Nunca llego tarde » :",
+              "type": "single_choice",
+              "options": [
+                "Je n'arrive jamais en retard",
+                "J'arrive toujours en retard",
+                "Je n'aime pas l'école",
+                "Je cours vite"
+              ],
+              "correctAnswers": ["Je n'arrive jamais en retard"],
+              "explanation": "« Nunca » = jamais ; « llegar tarde » = arriver en retard."
+            },
+            {
+              "id": "q10",
+              "question": "« ¿A qué hora te acuestas? »",
+              "type": "single_choice",
+              "options": [
+                "À quelle heure te couches-tu ?",
+                "À quelle heure manges-tu ?",
+                "Où dors-tu ?",
+                "Pourquoi es-tu fatigué ?"
+              ],
+              "correctAnswers": ["À quelle heure te couches-tu ?"],
+              "explanation": "« Acostarse » = se coucher."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision vocabulaire quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adjectifs décrivent une journée ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["ocupado", "aburrido", "triangular", "metálico"],
+              "correctAnswers": ["ocupado", "aburrido"],
+              "explanation": "Occupé / ennuyeux décrivent une journée type."
+            },
+            {
+              "id": "q2",
+              "question": "« Cansado » =",
+              "type": "single_choice",
+              "options": ["fatigué", "content", "jeune", "fort"],
+              "correctAnswers": ["fatigué"],
+              "explanation": "« Cansado/a » = fatigué(e)."
+            },
+            {
+              "id": "q3",
+              "question": "« Contento » veut dire",
+              "type": "single_choice",
+              "options": ["content", "triste", "fâché", "malade"],
+              "correctAnswers": ["content"],
+              "explanation": "« Contento/a » = content(e)."
+            },
+            {
+              "id": "q4",
+              "question": "« Hoy » =",
+              "type": "single_choice",
+              "options": ["aujourd'hui", "hier", "demain", "souvent"],
+              "correctAnswers": ["aujourd'hui"],
+              "explanation": "« Hoy » = aujourd'hui."
+            },
+            {
+              "id": "q5",
+              "question": "« Mañana » (adverbe) =",
+              "type": "single_choice",
+              "options": ["demain", "hier", "maintenant", "tôt"],
+              "correctAnswers": ["demain"],
+              "explanation": "« Mañana » = demain (sans article) ; matin avec contexte."
+            },
+            {
+              "id": "q6",
+              "question": "« Ayer » =",
+              "type": "single_choice",
+              "options": ["hier", "aujourd'hui", "bientôt", "toujours"],
+              "correctAnswers": ["hier"],
+              "explanation": "« Ayer » = hier — utile avant le prétérito."
+            },
+            {
+              "id": "q7",
+              "question": "« Mucho » devant un verbe =",
+              "type": "single_choice",
+              "options": ["beaucoup", "peu", "jamais", "mal"],
+              "correctAnswers": ["beaucoup"],
+              "explanation": "« Mucho » intensifie l'action."
+            },
+            {
+              "id": "q8",
+              "question": "« Poco » =",
+              "type": "single_choice",
+              "options": ["peu", "beaucoup", "trop", "assez"],
+              "correctAnswers": ["peu"],
+              "explanation": "« Poco/a » = peu."
+            },
+            {
+              "id": "q9",
+              "question": "« Todo el día » :",
+              "type": "single_choice",
+              "options": [
+                "Toute la journée",
+                "Une heure",
+                "Le matin seulement",
+                "Jamais"
+              ],
+              "correctAnswers": ["Toute la journée"],
+              "explanation": "« Todo el día » = toute la journée."
+            },
+            {
+              "id": "q10",
+              "question": "« Normalmente » signifie",
+              "type": "single_choice",
+              "options": [
+                "normalement",
+                "exceptionnellement",
+                "hier",
+                "demain"
+              ],
+              "correctAnswers": ["normalement"],
+              "explanation": "« Normalmente » = d'habitude / normalement."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Prétérito : ir (fui)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formes sont au prétérito indefinido de « ir » ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["fui", "fuiste", "voy", "iré"],
+              "correctAnswers": ["fui", "fuiste"],
+              "explanation": "« Fui » = je suis allé ; « fuiste » = tu es allé — passé terminé."
+            },
+            {
+              "id": "q2",
+              "question": "« Ayer fui al instituto » :",
+              "type": "single_choice",
+              "options": [
+                "Hier je suis allé au lycée",
+                "Demain j'irai",
+                "Je vais souvent",
+                "Je n'y vais pas"
+              ],
+              "correctAnswers": ["Hier je suis allé au lycée"],
+              "explanation": "« Ayer » + « fui » = action passée unique."
+            },
+            {
+              "id": "q3",
+              "question": "« Fuimos al parque » =",
+              "type": "single_choice",
+              "options": [
+                "Nous sommes allés au parc",
+                "Vous allez au parc",
+                "Ils vont au parc",
+                "Je vais au parc"
+              ],
+              "correctAnswers": ["Nous sommes allés au parc"],
+              "explanation": "« Fuimos » = nous sommes allés (ir)."
+            },
+            {
+              "id": "q4",
+              "question": "La forme « fue » correspond à",
+              "type": "single_choice",
+              "options": [
+                "il/elle est allé(e)",
+                "tu es allé",
+                "nous sommes allés",
+                "je suis allé"
+              ],
+              "correctAnswers": ["il/elle est allé(e)"],
+              "explanation": "3e personne singulier de ir au prétérito."
+            },
+            {
+              "id": "q5",
+              "question": "« ¿Adónde fuiste el sábado? »",
+              "type": "single_choice",
+              "options": [
+                "Où es-tu allé samedi ?",
+                "Où vas samedi ?",
+                "Où habites-tu ?",
+                "Où est le samedi ?"
+              ],
+              "correctAnswers": ["Où es-tu allé samedi ?"],
+              "explanation": "« Fuiste » = passé ; « adónde » = vers où."
+            },
+            {
+              "id": "q6",
+              "question": "« Fui a casa de mi abuela » :",
+              "type": "single_choice",
+              "options": [
+                "Je suis allé chez ma grand-mère",
+                "Je vais chez ma tante",
+                "Je reste ici",
+                "Je suis prof"
+              ],
+              "correctAnswers": ["Je suis allé chez ma grand-mère"],
+              "explanation": "« Casa de » = chez (maison de)."
+            },
+            {
+              "id": "q7",
+              "question": "« No fui a clase » signifie",
+              "type": "single_choice",
+              "options": [
+                "Je ne suis pas allé en cours",
+                "Je vais toujours en cours",
+                "J'aime la classe",
+                "Je suis le prof"
+              ],
+              "correctAnswers": ["Je ne suis pas allé en cours"],
+              "explanation": "Négation « no » + prétérito."
+            },
+            {
+              "id": "q8",
+              "question": "« Ellos fueron al cine » :",
+              "type": "single_choice",
+              "options": [
+                "Ils sont allés au cinéma",
+                "Elles vont au cinéma",
+                "Nous allons",
+                "Tu es allé"
+              ],
+              "correctAnswers": ["Ils sont allés au cinéma"],
+              "explanation": "« Fueron » = ils/elles sont allés."
+            },
+            {
+              "id": "q9",
+              "question": "On utilise le prétérito indefinido pour",
+              "type": "single_choice",
+              "options": [
+                "une action passée terminée",
+                "une habitude présente",
+                "le futur",
+                "la description physique"
+              ],
+              "correctAnswers": ["une action passée terminée"],
+              "explanation": "Indefinido = fait accompli dans le passé."
+            },
+            {
+              "id": "q10",
+              "question": "« Fui en autobús » :",
+              "type": "single_choice",
+              "options": [
+                "Je suis allé en bus",
+                "Je vais à pied",
+                "Je conduis",
+                "Je n'aime pas le bus"
+              ],
+              "correctAnswers": ["Je suis allé en bus"],
+              "explanation": "« En autobús » = en bus (transport)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Prétérito : hacer (hice)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formes sont au prétérito de « hacer » ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["hice", "hiciste", "hago", "haré"],
+              "correctAnswers": ["hice", "hiciste"],
+              "explanation": "« Hice/hiciste » = passé simple de hacer (irrégulier)."
+            },
+            {
+              "id": "q2",
+              "question": "« Hice los deberes » :",
+              "type": "single_choice",
+              "options": [
+                "J'ai fait mes devoirs",
+                "Je fais mes devoirs",
+                "Je ferai mes devoirs",
+                "Je n'ai pas de devoirs"
+              ],
+              "correctAnswers": ["J'ai fait mes devoirs"],
+              "explanation": "Prétérito = action finie : devoirs terminés."
+            },
+            {
+              "id": "q3",
+              "question": "« Hicimos un proyecto » =",
+              "type": "single_choice",
+              "options": [
+                "Nous avons fait un projet",
+                "Vous faites un projet",
+                "Ils feront un projet",
+                "Je fais un projet"
+              ],
+              "correctAnswers": ["Nous avons fait un projet"],
+              "explanation": "« Hicimos » = nous avons fait."
+            },
+            {
+              "id": "q4",
+              "question": "« ¿Qué hiciste ayer? »",
+              "type": "single_choice",
+              "options": [
+                "Qu'as-tu fait hier ?",
+                "Que fais-tu ?",
+                "Que feras-tu ?",
+                "Pourquoi es-tu là ?"
+              ],
+              "correctAnswers": ["Qu'as-tu fait hier ?"],
+              "explanation": "Question au passé avec « hiciste »."
+            },
+            {
+              "id": "q5",
+              "question": "« Hizo mucho sol » :",
+              "type": "single_choice",
+              "options": [
+                "Il a fait très beau (soleil)",
+                "Il pleut",
+                "Il neige",
+                "Il fait nuit"
+              ],
+              "correctAnswers": ["Il a fait très beau (soleil)"],
+              "explanation": "« Hacer sol » = faire du soleil (météo passée)."
+            },
+            {
+              "id": "q6",
+              "question": "« No hice deporte » :",
+              "type": "single_choice",
+              "options": [
+                "Je n'ai pas fait de sport",
+                "Je fais toujours du sport",
+                "J'aime le sport",
+                "Je gagne"
+              ],
+              "correctAnswers": ["Je n'ai pas fait de sport"],
+              "explanation": "Négation au passé."
+            },
+            {
+              "id": "q7",
+              "question": "« Ellas hicieron una fiesta » :",
+              "type": "single_choice",
+              "options": [
+                "Elles ont organisé une fête",
+                "Elles vont fêter",
+                "Une fête demain",
+                "Pas de fête"
+              ],
+              "correctAnswers": ["Elles ont organisé une fête"],
+              "explanation": "« Hicieron » = elles ont fait."
+            },
+            {
+              "id": "q8",
+              "question": "« Hice una foto » =",
+              "type": "single_choice",
+              "options": [
+                "J'ai pris une photo",
+                "J'ai effacé une photo",
+                "Je regarde la télé",
+                "Je lis"
+              ],
+              "correctAnswers": ["J'ai pris une photo"],
+              "explanation": "« Hacer una foto » = prendre une photo."
+            },
+            {
+              "id": "q9",
+              "question": "Le verbe « hacer » au passé peut exprimer",
+              "type": "single_choice",
+              "options": [
+                "faire / fabriquer / (météo) faire",
+                "aller",
+                "voir seulement",
+                "être seulement"
+              ],
+              "correctAnswers": ["faire / fabriquer / (météo) faire"],
+              "explanation": "Hacer est polyvalent : devoirs, projet, soleil…"
+            },
+            {
+              "id": "q10",
+              "question": "« ¿Hicisteis el trabajo en grupo? » (voseo absent, Espagne)",
+              "type": "single_choice",
+              "options": [
+                "Avez-vous fait le travail en groupe ?",
+                "Faites-vous le travail ?",
+                "Aimez-vous le groupe ?",
+                "Êtes-vous en classe ?"
+              ],
+              "correctAnswers": ["Avez-vous fait le travail en groupe ?"],
+              "explanation": "« Hicisteis » = vous avez fait (Espagne)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Prétérito : ver (vi)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formes sont au prétérito de « ver » ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["vi", "viste", "veo", "veré"],
+              "correctAnswers": ["vi", "viste"],
+              "explanation": "« Vi/viste » = je/tu as vu — verbe irrégulier au passé."
+            },
+            {
+              "id": "q2",
+              "question": "« Vi una película interesante » :",
+              "type": "single_choice",
+              "options": [
+                "J'ai vu un film intéressant",
+                "Je vois un film",
+                "Je regarderai",
+                "Je n'aime pas le cinéma"
+              ],
+              "correctAnswers": ["J'ai vu un film intéressant"],
+              "explanation": "« Vi » + complément = vision passée."
+            },
+            {
+              "id": "q3",
+              "question": "« Vimos el partido » =",
+              "type": "single_choice",
+              "options": [
+                "Nous avons regardé le match",
+                "Vous voyez le match",
+                "Ils jouent",
+                "Je joue"
+              ],
+              "correctAnswers": ["Nous avons regardé le match"],
+              "explanation": "« Vimos » = nous avons vu."
+            },
+            {
+              "id": "q4",
+              "question": "« ¿Viste a María? »",
+              "type": "single_choice",
+              "options": [
+                "As-tu vu María ?",
+                "Vois-tu María ?",
+                "María est-elle prof ?",
+                "Où est María ?"
+              ],
+              "correctAnswers": ["As-tu vu María ?"],
+              "explanation": "« Viste » = tu as vu (passé)."
+            },
+            {
+              "id": "q5",
+              "question": "« No vi la tele » :",
+              "type": "single_choice",
+              "options": [
+                "Je n'ai pas regardé la télé",
+                "Je regarde la télé",
+                "J'adore la télé",
+                "La télé est cassée"
+              ],
+              "correctAnswers": ["Je n'ai pas regardé la télé"],
+              "explanation": "Négation + prétérito de ver."
+            },
+            {
+              "id": "q6",
+              "question": "« Vio un concierto en la plaza » :",
+              "type": "single_choice",
+              "options": [
+                "Il/elle a vu un concert sur la place",
+                "Il va au concert",
+                "Demain concert",
+                "Pas de concert"
+              ],
+              "correctAnswers": ["Il/elle a vu un concert sur la place"],
+              "explanation": "« Vio » = il/elle a vu."
+            },
+            {
+              "id": "q7",
+              "question": "« Ver » au passé raconte",
+              "type": "single_choice",
+              "options": [
+                "ce qu'on a regardé ou aperçu",
+                "ce qu'on fera",
+                "une habitude",
+                "une obligation"
+              ],
+              "correctAnswers": ["ce qu'on a regardé ou aperçu"],
+              "explanation": "Récit d'expérience passée."
+            },
+            {
+              "id": "q8",
+              "question": "« Vi a mis amigos en el centro » :",
+              "type": "single_choice",
+              "options": [
+                "J'ai vu mes amis en centre-ville",
+                "Je vais au centre",
+                "Mes amis partent",
+                "Je suis seul"
+              ],
+              "correctAnswers": ["J'ai vu mes amis en centre-ville"],
+              "explanation": "« En el centro » = en centre(-ville)."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿Qué viste en el museo? »",
+              "type": "single_choice",
+              "options": [
+                "Qu'as-tu vu au musée ?",
+                "Où est le musée ?",
+                "Aimes-tu le musée ?",
+                "Le musée est fermé ?"
+              ],
+              "correctAnswers": ["Qu'as-tu vu au musée ?"],
+              "explanation": "Question passée avec « viste »."
+            },
+            {
+              "id": "q10",
+              "question": "« Vieron muchas cosas » :",
+              "type": "single_choice",
+              "options": [
+                "Ils/elles ont vu beaucoup de choses",
+                "Nous voyons",
+                "Tu vois",
+                "Je verrai"
+              ],
+              "correctAnswers": ["Ils/elles ont vu beaucoup de choses"],
+              "explanation": "« Vieron » = ils/elles ont vu."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Raconter un week-end",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases racontent le passé ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "El sábado fui al cine",
+                "El domingo hice deporte",
+                "Mañana voy al parque",
+                "Siempre desayuno"
+              ],
+              "correctAnswers": [
+                "El sábado fui al cine",
+                "El domingo hice deporte"
+              ],
+              "explanation": "Samedi/dimanche + prétérito = récit du week-end passé."
+            },
+            {
+              "id": "q2",
+              "question": "« El fin de semana pasado » =",
+              "type": "single_choice",
+              "options": [
+                "Le week-end dernier",
+                "Le week-end prochain",
+                "Ce week-end",
+                "Chaque week-end"
+              ],
+              "correctAnswers": ["Le week-end dernier"],
+              "explanation": "« Pasado » = dernier / passé."
+            },
+            {
+              "id": "q3",
+              "question": "Pour enchaîner : « Primero…, después… »",
+              "type": "single_choice",
+              "options": [
+                "D'abord…, ensuite…",
+                "Jamais…, toujours…",
+                "Peut-être…, non…",
+                "Hier…, demain…"
+              ],
+              "correctAnswers": ["D'abord…, ensuite…"],
+              "explanation": "Marqueurs chronologiques pour raconter."
+            },
+            {
+              "id": "q4",
+              "question": "« Por la mañana leí » :",
+              "type": "single_choice",
+              "options": [
+                "Le matin j'ai lu",
+                "Le soir j'ai dormi",
+                "La nuit j'ai couru",
+                "À midi j'ai nagé"
+              ],
+              "correctAnswers": ["Le matin j'ai lu"],
+              "explanation": "« Por la mañana » + prétérito (leí = lire passé)."
+            },
+            {
+              "id": "q5",
+              "question": "« Fue un día genial » :",
+              "type": "single_choice",
+              "options": [
+                "C'était une journée géniale",
+                "Ce sera génial",
+                "C'est ennuyeux",
+                "Je suis malade"
+              ],
+              "correctAnswers": ["C'était une journée géniale"],
+              "explanation": "« Fue » de ser au passé = c'était."
+            },
+            {
+              "id": "q6",
+              "question": "« Salí con mis amigos » (salir passé) :",
+              "type": "single_choice",
+              "options": [
+                "Je suis sorti avec mes amis",
+                "Je reste chez moi",
+                "Je travaille",
+                "Je dors"
+              ],
+              "correctAnswers": ["Je suis sorti avec mes amis"],
+              "explanation": "« Salí » = prétérito de salir."
+            },
+            {
+              "id": "q7",
+              "question": "« Comí en un restaurante » =",
+              "type": "single_choice",
+              "options": [
+                "J'ai mangé au restaurant",
+                "Je mange à la maison",
+                "Je cuisine",
+                "Je jeûne"
+              ],
+              "correctAnswers": ["J'ai mangé au restaurant"],
+              "explanation": "« Comí » = prétérito de comer."
+            },
+            {
+              "id": "q8",
+              "question": "« Volví tarde a casa » :",
+              "type": "single_choice",
+              "options": [
+                "Je suis rentré tard",
+                "Je pars tôt",
+                "Je ne rentre pas",
+                "Je suis à l'école"
+              ],
+              "correctAnswers": ["Je suis rentré tard"],
+              "explanation": "« Volver » passé = rentrer."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿Qué hiciste el domingo? » sert à",
+              "type": "single_choice",
+              "options": [
+                "demander le récit du dimanche",
+                "demander l'heure",
+                "demander le chemin",
+                "décrire un prof"
+              ],
+              "correctAnswers": ["demander le récit du dimanche"],
+              "explanation": "Question passée = invitation à raconter."
+            },
+            {
+              "id": "q10",
+              "question": "« Me lo pasé muy bien » :",
+              "type": "single_choice",
+              "options": [
+                "Je me suis très bien amusé",
+                "Je m'ennuie",
+                "Je suis fatigué",
+                "Je suis fâché"
+              ],
+              "correctAnswers": ["Je me suis très bien amusé"],
+              "explanation": "Expression idiomique après une sortie."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Demander son chemin",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles questions servent à l'orientation ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "¿Dónde está la estación?",
+                "¿Cómo llego al instituto?",
+                "¿Cuántos años tienes?",
+                "¿Qué hora es?"
+              ],
+              "correctAnswers": [
+                "¿Dónde está la estación?",
+                "¿Cómo llego al instituto?"
+              ],
+              "explanation": "Où est… / comment arriver… = orientation."
+            },
+            {
+              "id": "q2",
+              "question": "« ¿Dónde está el banco? »",
+              "type": "single_choice",
+              "options": [
+                "Où est la banque ?",
+                "Où est la plage ?",
+                "Combien coûte ?",
+                "Qui es-tu ?"
+              ],
+              "correctAnswers": ["Où est la banque ?"],
+              "explanation": "« Banco » = banque."
+            },
+            {
+              "id": "q3",
+              "question": "« Siga recto » =",
+              "type": "single_choice",
+              "options": [
+                "Continuez tout droit",
+                "Tournez à gauche",
+                "Arrêtez-vous",
+                "Reculez"
+              ],
+              "correctAnswers": ["Continuez tout droit"],
+              "explanation": "Impératif poli (usted) pour indicaciones."
+            },
+            {
+              "id": "q4",
+              "question": "« Gire a la derecha » :",
+              "type": "single_choice",
+              "options": [
+                "Tournez à droite",
+                "Tournez à gauche",
+                "Montez",
+                "Descendez"
+              ],
+              "correctAnswers": ["Tournez à droite"],
+              "explanation": "« Derecha » = droite ; « girar » = tourner."
+            },
+            {
+              "id": "q5",
+              "question": "« Está cerca » signifie",
+              "type": "single_choice",
+              "options": [
+                "C'est près",
+                "C'est loin",
+                "C'est fermé",
+                "C'est cher"
+              ],
+              "correctAnswers": ["C'est près"],
+              "explanation": "« Cerca » = près ; « lejos » = loin."
+            },
+            {
+              "id": "q6",
+              "question": "« La esquina » =",
+              "type": "single_choice",
+              "options": [
+                "le coin (de rue)",
+                "le pont",
+                "le rond-point",
+                "l'autoroute"
+              ],
+              "correctAnswers": ["le coin (de rue)"],
+              "explanation": "« Esquina » = angle / coin de rue."
+            },
+            {
+              "id": "q7",
+              "question": "« Cruce la calle » :",
+              "type": "single_choice",
+              "options": [
+                "Traversez la rue",
+                "Longez la rue",
+                "Fermez la rue",
+                "Courez"
+              ],
+              "correctAnswers": ["Traversez la rue"],
+              "explanation": "« Cruzar » = traverser."
+            },
+            {
+              "id": "q8",
+              "question": "« ¿Hay un supermercado por aquí? »",
+              "type": "single_choice",
+              "options": [
+                "Y a-t-il un supermarché par ici ?",
+                "Le super est-il cher ?",
+                "Aimes-tu faire les courses ?",
+                "Où es-tu ?"
+              ],
+              "correctAnswers": ["Y a-t-il un supermarché par ici ?"],
+              "explanation": "« Hay » = il y a ; « por aquí » = par ici."
+            },
+            {
+              "id": "q9",
+              "question": "« Enfrente de » =",
+              "type": "single_choice",
+              "options": ["en face de", "derrière", "sous", "dans"],
+              "correctAnswers": ["en face de"],
+              "explanation": "Préposition de place courante."
+            },
+            {
+              "id": "q10",
+              "question": "« Perdí el mapa » (passé) :",
+              "type": "single_choice",
+              "options": [
+                "J'ai perdu le plan",
+                "Je trouve le plan",
+                "Je dessine",
+                "Je suis prof"
+              ],
+              "correctAnswers": ["J'ai perdu le plan"],
+              "explanation": "« Perder » au prétérito = perdre."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Repères dans la ville",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels lieux aide-t-on à trouver ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["la plaza", "el hospital", "el techo", "el sueño"],
+              "correctAnswers": ["la plaza", "el hospital"],
+              "explanation": "Place et hôpital sont des repères urbains."
+            },
+            {
+              "id": "q2",
+              "question": "« La calle Mayor » désigne",
+              "type": "single_choice",
+              "options": [
+                "une rue (nom propre)",
+                "un maire",
+                "un marché",
+                "un métro"
+              ],
+              "correctAnswers": ["une rue (nom propre)"],
+              "explanation": "« Calle » = rue ; Mayor = nom fréquent."
+            },
+            {
+              "id": "q3",
+              "question": "« El semáforo » =",
+              "type": "single_choice",
+              "options": [
+                "feux tricolores",
+                "passage piéton",
+                "arrêt de bus",
+                "gare"
+              ],
+              "correctAnswers": ["feux tricolores"],
+              "explanation": "« Semáforo » = feux (circulation)."
+            },
+            {
+              "id": "q4",
+              "question": "« ¿Está lejos de aquí? »",
+              "type": "single_choice",
+              "options": [
+                "C'est loin d'ici ?",
+                "C'est près ?",
+                "C'est beau ?",
+                "C'est ouvert ?"
+              ],
+              "correctAnswers": ["C'est loin d'ici ?"],
+              "explanation": "« Lejos de aquí » = loin d'ici."
+            },
+            {
+              "id": "q5",
+              "question": "« Al final de la calle » :",
+              "type": "single_choice",
+              "options": [
+                "Au bout de la rue",
+                "Au milieu",
+                "Au début",
+                "Sous la rue"
+              ],
+              "correctAnswers": ["Au bout de la rue"],
+              "explanation": "« Al final » = au bout / à la fin."
+            },
+            {
+              "id": "q6",
+              "question": "« La parada de autobús » =",
+              "type": "single_choice",
+              "options": [
+                "l'arrêt de bus",
+                "la gare SNCF",
+                "l'aéroport",
+                "le taxi"
+              ],
+              "correctAnswers": ["l'arrêt de bus"],
+              "explanation": "« Parada » = arrêt."
+            },
+            {
+              "id": "q7",
+              "question": "« Suba por esta calle » :",
+              "type": "single_choice",
+              "options": [
+                "Montez par cette rue",
+                "Descendez",
+                "Traversez",
+                "Reculez"
+              ],
+              "correctAnswers": ["Montez par cette rue"],
+              "explanation": "« Subir por » = monter / remonter une rue."
+            },
+            {
+              "id": "q8",
+              "question": "« Entre el banco y la farmacia » =",
+              "type": "single_choice",
+              "options": [
+                "Entre la banque et la pharmacie",
+                "Derrière la banque",
+                "Sans pharmacie",
+                "Avant la banque"
+              ],
+              "correctAnswers": ["Entre la banque et la pharmacie"],
+              "explanation": "« Entre… y… » = entre… et…"
+            },
+            {
+              "id": "q9",
+              "question": "« ¿Me puede ayudar? »",
+              "type": "single_choice",
+              "options": [
+                "Pouvez-vous m'aider ?",
+                "Où allez-vous ?",
+                "Quelle heure ?",
+                "Au revoir"
+              ],
+              "correctAnswers": ["Pouvez-vous m'aider ?"],
+              "explanation": "Formule polie avant de demander le chemin."
+            },
+            {
+              "id": "q10",
+              "question": "« Llegué tarde porque me perdí » :",
+              "type": "single_choice",
+              "options": [
+                "Je suis arrivé en retard car je me suis perdu",
+                "J'arrive tôt",
+                "Je connais bien la ville",
+                "Je n'aime pas la ville"
+              ],
+              "correctAnswers": [
+                "Je suis arrivé en retard car je me suis perdu"
+              ],
+              "explanation": "« Perderse » passé = se perdre (orientation)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Stage et découverte",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots évoquent un stage ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "las prácticas",
+                "la empresa",
+                "la fiesta",
+                "el helado"
+              ],
+              "correctAnswers": ["las prácticas", "la empresa"],
+              "explanation": "« Prácticas » = stage ; « empresa » = entreprise d'accueil."
+            },
+            {
+              "id": "q2",
+              "question": "« Hice un stage en una panadería » :",
+              "type": "single_choice",
+              "options": [
+                "J'ai fait un stage dans une boulangerie",
+                "Je mange du pain",
+                "Je suis boulanger depuis 10 ans",
+                "Je déteste le pain"
+              ],
+              "correctAnswers": ["J'ai fait un stage dans une boulangerie"],
+              "explanation": "« Panadería » = boulangerie — récit passé."
+            },
+            {
+              "id": "q3",
+              "question": "« Aprendí mucho » =",
+              "type": "single_choice",
+              "options": [
+                "J'ai beaucoup appris",
+                "J'apprends maintenant",
+                "Je n'ai rien appris",
+                "Je enseigne"
+              ],
+              "correctAnswers": ["J'ai beaucoup appris"],
+              "explanation": "« Aprendí » = prétérito de aprender."
+            },
+            {
+              "id": "q4",
+              "question": "« El jefe fue amable » :",
+              "type": "single_choice",
+              "options": [
+                "Le chef / responsable a été gentil",
+                "Le prof est strict",
+                "Mon ami est triste",
+                "Il pleut"
+              ],
+              "correctAnswers": ["Le chef / responsable a été gentil"],
+              "explanation": "« Jefe » = patron ; « fue » = était (passé)."
+            },
+            {
+              "id": "q5",
+              "question": "« Trabajé ocho horas » :",
+              "type": "single_choice",
+              "options": [
+                "J'ai travaillé huit heures",
+                "Je dormirai huit heures",
+                "Je joue huit heures",
+                "Je cours"
+              ],
+              "correctAnswers": ["J'ai travaillé huit heures"],
+              "explanation": "« Trabajé » = prétérito de trabajar."
+            },
+            {
+              "id": "q6",
+              "question": "« ¿Dónde hiciste las prácticas? »",
+              "type": "single_choice",
+              "options": [
+                "Où as-tu fait ton stage ?",
+                "Combien de temps ?",
+                "Aimes-tu travailler ?",
+                "Quel est ton métier ?"
+              ],
+              "correctAnswers": ["Où as-tu fait ton stage ?"],
+              "explanation": "Question passée sur le lieu du stage."
+            },
+            {
+              "id": "q7",
+              "question": "« Conocí gente nueva » :",
+              "type": "single_choice",
+              "options": [
+                "J'ai rencontré des gens nouveaux",
+                "Je ne connais personne",
+                "Je reste seul",
+                "Je pars"
+              ],
+              "correctAnswers": ["J'ai rencontré des gens nouveaux"],
+              "explanation": "« Conocer » passé = rencontrer / connaître pour la 1re fois."
+            },
+            {
+              "id": "q8",
+              "question": "« Fue una experiencia útil » =",
+              "type": "single_choice",
+              "options": [
+                "C'était une expérience utile",
+                "Ce sera utile",
+                "C'est inutile",
+                "Je n'ai pas de stage"
+              ],
+              "correctAnswers": ["C'était une expérience utile"],
+              "explanation": "Bilan au passé du stage."
+            },
+            {
+              "id": "q9",
+              "question": "« Llevé un informe al profe » :",
+              "type": "single_choice",
+              "options": [
+                "J'ai apporté un rapport au prof",
+                "J'ai mangé un rapport",
+                "J'ai perdu le prof",
+                "Je n'ai pas travaillé"
+              ],
+              "correctAnswers": ["J'ai apporté un rapport au prof"],
+              "explanation": "« Llevar » = apporter ; « informe » = rapport."
+            },
+            {
+              "id": "q10",
+              "question": "« Me gustó el ambiente » :",
+              "type": "single_choice",
+              "options": [
+                "J'ai aimé l'ambiance",
+                "Je déteste l'entreprise",
+                "Je suis malade",
+                "Je suis en vacances"
+              ],
+              "correctAnswers": ["J'ai aimé l'ambiance"],
+              "explanation": "« Gustó » = a plu (passé) — ambiance du stage."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Décrire une personne",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles questions décrivent quelqu'un ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "¿Cómo es?",
+                "¿Cómo es de carácter?",
+                "¿Cuánto cuesta?",
+                "¿A qué hora es?"
+              ],
+              "correctAnswers": ["¿Cómo es?", "¿Cómo es de carácter?"],
+              "explanation": "Apparence / caractère — pas prix ou heure."
+            },
+            {
+              "id": "q2",
+              "question": "« Es alto y delgado » :",
+              "type": "single_choice",
+              "options": [
+                "Il est grand et mince",
+                "Elle est petite",
+                "Ils sont fatigués",
+                "Nous sommes jeunes"
+              ],
+              "correctAnswers": ["Il est grand et mince"],
+              "explanation": "Adjectifs physiques avec ser."
+            },
+            {
+              "id": "q3",
+              "question": "« Tiene el pelo castaño » =",
+              "type": "single_choice",
+              "options": [
+                "Il/elle a les cheveux châtains",
+                "Il/elle est chauve",
+                "Il/elle a les yeux bleus",
+                "Il/elle porte un chapeau"
+              ],
+              "correctAnswers": ["Il/elle a les cheveux châtains"],
+              "explanation": "« Tener el pelo » = avoir les cheveux."
+            },
+            {
+              "id": "q4",
+              "question": "« Es simpática y generosa » décrit",
+              "type": "single_choice",
+              "options": ["le caractère", "la taille", "l'âge", "l'adresse"],
+              "correctAnswers": ["le caractère"],
+              "explanation": "Simpática/generosa = traits de personnalité."
+            },
+            {
+              "id": "q5",
+              "question": "« Lleva gafas » :",
+              "type": "single_choice",
+              "options": [
+                "Il/elle porte des lunettes",
+                "Il/elle mange",
+                "Il/elle court",
+                "Il/elle chante"
+              ],
+              "correctAnswers": ["Il/elle porte des lunettes"],
+              "explanation": "« Llevar gafas » = porter des lunettes."
+            },
+            {
+              "id": "q6",
+              "question": "« Mi prof es estricto pero justo » :",
+              "type": "single_choice",
+              "options": [
+                "Mon prof est strict mais juste",
+                "Mon prof est absent",
+                "Je n'aime pas l'école",
+                "Le cours est annulé"
+              ],
+              "correctAnswers": ["Mon prof est strict mais juste"],
+              "explanation": "Description d'un professeur."
+            },
+            {
+              "id": "q7",
+              "question": "« Es bastante tímido » =",
+              "type": "single_choice",
+              "options": [
+                "Il est assez timide",
+                "Il est très bruyant",
+                "Il est méchant",
+                "Il est toujours en retard"
+              ],
+              "correctAnswers": ["Il est assez timide"],
+              "explanation": "« Bastante » = assez ; « tímido » = timide."
+            },
+            {
+              "id": "q8",
+              "question": "« Se parece a su madre » :",
+              "type": "single_choice",
+              "options": [
+                "Il/elle ressemble à sa mère",
+                "Il/elle est médecin",
+                "Sa mère part",
+                "Il n'a pas de famille"
+              ],
+              "correctAnswers": ["Il/elle ressemble à sa mère"],
+              "explanation": "« Parecerse a » = ressembler à."
+            },
+            {
+              "id": "q9",
+              "question": "« Tiene unos ojos verdes » :",
+              "type": "single_choice",
+              "options": [
+                "Il/elle a les yeux verts",
+                "Il/elle a froid",
+                "Il/elle regarde la télé",
+                "Il/elle est prof"
+              ],
+              "correctAnswers": ["Il/elle a les yeux verts"],
+              "explanation": "Couleur des yeux avec tener."
+            },
+            {
+              "id": "q10",
+              "question": "Pour la taille on dit souvent",
+              "type": "single_choice",
+              "options": [
+                "Es de mediana estatura",
+                "Es de la calle Mayor",
+                "Es de noche",
+                "Es de España solamente"
+              ],
+              "correctAnswers": ["Es de mediana estatura"],
+              "explanation": "« Mediana estatura » = taille moyenne."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Passé : repères et formes",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels marqueurs indiquent le passé raconté ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["ayer", "el año pasado", "mañana", "siempre hoy"],
+              "correctAnswers": ["ayer", "el año pasado"],
+              "explanation": "Hier / l'an passé déclenchent le prétérito."
+            },
+            {
+              "id": "q2",
+              "question": "« Compré un regalo » =",
+              "type": "single_choice",
+              "options": [
+                "J'ai acheté un cadeau",
+                "J'achète un cadeau",
+                "Je vendrai",
+                "Je perds"
+              ],
+              "correctAnswers": ["J'ai acheté un cadeau"],
+              "explanation": "« Compré » = prétérito de comprar."
+            },
+            {
+              "id": "q3",
+              "question": "« Dije la verdad » :",
+              "type": "single_choice",
+              "options": [
+                "J'ai dit la vérité",
+                "Je mens",
+                "Je parle anglais",
+                "Je suis silencieux"
+              ],
+              "correctAnswers": ["J'ai dit la vérité"],
+              "explanation": "« Decir » → dije (irrégulier)."
+            },
+            {
+              "id": "q4",
+              "question": "« Vine a clase preparado » (ver) :",
+              "type": "single_choice",
+              "options": [
+                "Je suis venu en cours préparé",
+                "Je vais partir",
+                "Je n'aime pas l'école",
+                "Le cours est fini"
+              ],
+              "correctAnswers": ["Je suis venu en cours préparé"],
+              "explanation": "« Vine » = prétérito de venir."
+            },
+            {
+              "id": "q5",
+              "question": "« Estuve enfermo » (estar passé) :",
+              "type": "single_choice",
+              "options": [
+                "J'ai été malade (état passé)",
+                "Je suis toujours malade demain",
+                "Je suis prof",
+                "Je suis content"
+              ],
+              "correctAnswers": ["J'ai été malade (état passé)"],
+              "explanation": "Estuve = estar au indefinido (état limité)."
+            },
+            {
+              "id": "q6",
+              "question": "On oppose souvent au présent",
+              "type": "single_choice",
+              "options": [
+                "une action passée terminée",
+                "une vérité générale",
+                "un horaire fixe",
+                "une description permanente"
+              ],
+              "correctAnswers": ["une action passée terminée"],
+              "explanation": "Indefinido vs présent habituel."
+            },
+            {
+              "id": "q7",
+              "question": "« ¿Recuerdas lo que pasó? »",
+              "type": "single_choice",
+              "options": [
+                "Tu te souviens de ce qui s'est passé ?",
+                "Que se passera-t-il ?",
+                "Où es-tu ?",
+                "Quelle heure ?"
+              ],
+              "correctAnswers": ["Tu te souviens de ce qui s'est passé ?"],
+              "explanation": "« Pasó » = il s'est passé (passé)."
+            },
+            {
+              "id": "q8",
+              "question": "« Escribí un mensaje » =",
+              "type": "single_choice",
+              "options": [
+                "J'ai écrit un message",
+                "Je lis",
+                "Je efface",
+                "Je téléphone sans écrire"
+              ],
+              "correctAnswers": ["J'ai écrit un message"],
+              "explanation": "« Escribí » = prétérito de escribir."
+            },
+            {
+              "id": "q9",
+              "question": "« Tuvimos un examen difícil » :",
+              "type": "single_choice",
+              "options": [
+                "Nous avons eu un examen difficile",
+                "Nous aurons un examen",
+                "Pas d'examen",
+                "J'aime les examens"
+              ],
+              "correctAnswers": ["Nous avons eu un examen difficile"],
+              "explanation": "« Tener » → tuvimos au passé."
+            },
+            {
+              "id": "q10",
+              "question": "« Fue emocionante » décrit",
+              "type": "single_choice",
+              "options": [
+                "une expérience passée",
+                "demain",
+                "une règle de grammaire",
+                "un horaire"
+              ],
+              "correctAnswers": ["une expérience passée"],
+              "explanation": "Adjectif avec ser au passé pour juger un événement."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Compréhension : récit au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dans « Ayer fui, vi y comí », quels verbes sont au passé ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["fui", "vi", "voy", "como"],
+              "correctAnswers": ["fui", "vi"],
+              "explanation": "Fui et vi sont prétérito ; voy/como sont présent."
+            },
+            {
+              "id": "q2",
+              "question": "Texte : « Hice deporte y después descansé. » Que fit la personne d'abord ?",
+              "type": "single_choice",
+              "options": ["Du sport", "Du repos", "Les devoirs", "Un stage"],
+              "correctAnswers": ["Du sport"],
+              "explanation": "« Hice deporte » avant « descansé »."
+            },
+            {
+              "id": "q3",
+              "question": "« No pude ir porque llovió » :",
+              "type": "single_choice",
+              "options": [
+                "Je n'ai pas pu y aller car il a plu",
+                "Je vais sous la pluie",
+                "J'aime la pluie",
+                "Il fait beau"
+              ],
+              "correctAnswers": ["Je n'ai pas pu y aller car il a plu"],
+              "explanation": "« Poder » passé + « llover » passé."
+            },
+            {
+              "id": "q4",
+              "question": "« Todos estábamos contentos » (imparfait) nuance",
+              "type": "single_choice",
+              "options": [
+                "État / ambiance dans le passé",
+                "Action soudaine hier seulement",
+                "Futur proche",
+                "Présent"
+              ],
+              "correctAnswers": ["État / ambiance dans le passé"],
+              "explanation": "Imparfait pour description d'ambiance (niveau intro 3e)."
+            },
+            {
+              "id": "q5",
+              "question": "« Al final del día » dans un récit =",
+              "type": "single_choice",
+              "options": [
+                "À la fin de la journée",
+                "Au début",
+                "À midi",
+                "Jamais"
+              ],
+              "correctAnswers": ["À la fin de la journée"],
+              "explanation": "Marqueur de conclusion du récit."
+            },
+            {
+              "id": "q6",
+              "question": "« ¿Te gustó el viaje? » après des vacances :",
+              "type": "single_choice",
+              "options": [
+                "As-tu aimé le voyage ?",
+                "Vas-tu voyager ?",
+                "Où est la gare ?",
+                "Quel est ton âge ?"
+              ],
+              "correctAnswers": ["As-tu aimé le voyage ?"],
+              "explanation": "« Gustó » = passé — bilan de vacances."
+            },
+            {
+              "id": "q7",
+              "question": "« Llegamos cansados pero felices » :",
+              "type": "single_choice",
+              "options": [
+                "Nous sommes arrivés fatigués mais contents",
+                "Nous partons demain",
+                "Nous dormons",
+                "Nous étudions"
+              ],
+              "correctAnswers": ["Nous sommes arrivés fatigués mais contents"],
+              "explanation": "« Llegamos » = prétérito de llegar."
+            },
+            {
+              "id": "q8",
+              "question": "Choisir le sens de « conté » :",
+              "type": "single_choice",
+              "options": [
+                "j'ai raconté",
+                "je compte (chiffres)",
+                "je vends",
+                "je cours"
+              ],
+              "correctAnswers": ["j'ai raconté"],
+              "explanation": "« Contar » au passé = raconter."
+            },
+            {
+              "id": "q9",
+              "question": "« Fue la mejor semana » =",
+              "type": "single_choice",
+              "options": [
+                "C'était la meilleure semaine",
+                "Ce sera la meilleure",
+                "Semaine ennuyeuse",
+                "Pas de semaine"
+              ],
+              "correctAnswers": ["C'était la meilleure semaine"],
+              "explanation": "Superlatif + ser passé pour un souvenir."
+            },
+            {
+              "id": "q10",
+              "question": "Pour terminer un récit oral on peut dire",
+              "type": "single_choice",
+              "options": [
+                "Y eso es todo",
+                "Hasta mañana siempre",
+                "No pasó nada nunca",
+                "Soy de París"
+              ],
+              "correctAnswers": ["Y eso es todo"],
+              "explanation": "« Y eso es todo » = et voilà / c'est tout — clôture du récit."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

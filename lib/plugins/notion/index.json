@@ -1,7 +1,7 @@
 {
   "author": "mAI",
   "category": "integrations",
-  "description": "Connectez votre espace Notion : l'IA cherche les pages partagées avec l'intégration, les lit, parcourt vos bases de données et — dans l'Agent, avec votre accord — crée une page ou y ajoute des blocs.",
+  "description": "Collez le jeton de votre intégration Notion : l'IA cherche les pages partagées avec elle, les lit, parcourt vos bases et — dans l'Agent, avec votre accord — crée une page ou y ajoute des blocs.",
   "icon": { "src": "/plugins/notion.svg", "type": "image" },
   "id": "notion",
   "minTier": "plus",
@@ -19,7 +19,7 @@
     "wiki",
     "base de données",
     "pages",
-    "oauth",
+    "jeton",
     "productivité"
   ],
   "tools": [

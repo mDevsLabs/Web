@@ -1,0 +1,2088 @@
+{
+  "id": "1ere-mathematiques-01",
+  "year": "1ere",
+  "subject": "mathematiques",
+  "title": "Suites numériques",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Modes de génération",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Suite arithmétique — définition",
+          "questions": [
+            {
+              "id": "u1-q01-01",
+              "type": "multiple_choice",
+              "prompt": "(u_n) arithmétique, r = 3, u_0 = 5. Affirmations exactes ?",
+              "options": [
+                "u_{n+1} = u_n + 3",
+                "u_{n+1} = 3u_n",
+                "u_n = 5 + 3n",
+                "r = u_1 × u_0"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Suite arithmétique : différence constante r ; u_n = u_0 + nr."
+            },
+            {
+              "id": "u1-q01-02",
+              "type": "single_choice",
+              "prompt": "u_0 = 7, u_{n+1} = u_n − 2. Raison ?",
+              "options": ["−2", "2", "7", "−7"],
+              "correctAnswers": [0],
+              "explanation": "r = u_{n+1} − u_n = −2."
+            },
+            {
+              "id": "u1-q01-03",
+              "type": "single_choice",
+              "prompt": "4 ; 9 ; 14 ; 19 : raison ?",
+              "options": ["5", "4", "9", "−5"],
+              "correctAnswers": [0],
+              "explanation": "Écart constant 5."
+            },
+            {
+              "id": "u1-q01-04",
+              "type": "single_choice",
+              "prompt": "Arithmétique : u_5 − u_2 = ?",
+              "options": ["3r", "2r", "5r", "r^2"],
+              "correctAnswers": [0],
+              "explanation": "Différence de 3 rangs : 3r."
+            },
+            {
+              "id": "u1-q01-05",
+              "type": "single_choice",
+              "prompt": "u_0 = −1, r = 4. u_3 ?",
+              "options": ["11", "8", "12", "−5"],
+              "correctAnswers": [0],
+              "explanation": "−1 + 3×4 = 11."
+            },
+            {
+              "id": "u1-q01-06",
+              "type": "single_choice",
+              "prompt": "Suite constante u_n = c : raison ?",
+              "options": ["0", "1", "c", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "Différence nulle."
+            },
+            {
+              "id": "u1-q01-07",
+              "type": "single_choice",
+              "prompt": "Non arithmétique ?",
+              "options": [
+                "1 ; 4 ; 9 ; 16",
+                "0 ; 3 ; 6 ; 9",
+                "−2 ; 0 ; 2 ; 4",
+                "10 ; 7 ; 4 ; 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Carrés : écarts non constants."
+            },
+            {
+              "id": "u1-q01-08",
+              "type": "single_choice",
+              "prompt": "u_4 = 20, r = 5. u_0 ?",
+              "options": ["0", "5", "15", "25"],
+              "correctAnswers": [0],
+              "explanation": "u_0 = 20 − 4×5 = 0."
+            },
+            {
+              "id": "u1-q01-09",
+              "type": "single_choice",
+              "prompt": "Termes consécutifs u, v, w arithmétiques :",
+              "options": ["2v = u + w", "v = uw", "w = 2u", "u + w = 0"],
+              "correctAnswers": [0],
+              "explanation": "Milieu arithmétique."
+            },
+            {
+              "id": "u1-q01-10",
+              "type": "single_choice",
+              "prompt": "Nuage (n, u_n) arithmétique non constante :",
+              "options": ["Points alignés", "Parabole", "Cercle", "Aléatoire"],
+              "correctAnswers": [0],
+              "explanation": "u_n affine en n."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Suite arithmétique — terme général",
+          "questions": [
+            {
+              "id": "u1-q02-01",
+              "type": "multiple_choice",
+              "prompt": "u_1 = 8, r = −3 (n ≥ 1). Vrai ?",
+              "options": [
+                "u_n = 8 − 3(n−1)",
+                "u_5 = −4",
+                "u_n = 11 − 3n",
+                "u_n = 8 + 3n"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "u_n = u_1 + (n−1)r ; u_5 = −4."
+            },
+            {
+              "id": "u1-q02-02",
+              "type": "single_choice",
+              "prompt": "u_0 = 2, r = 5. u_n ?",
+              "options": ["2 + 5n", "5n", "2×5^n", "7n"],
+              "correctAnswers": [0],
+              "explanation": "u_n = u_0 + nr."
+            },
+            {
+              "id": "u1-q02-03",
+              "type": "single_choice",
+              "prompt": "u_3 = 14, u_7 = 26. r ?",
+              "options": ["3", "4", "12", "2"],
+              "correctAnswers": [0],
+              "explanation": "4r = 12."
+            },
+            {
+              "id": "u1-q02-04",
+              "type": "single_choice",
+              "prompt": "u_10 = −5, r = −2. u_0 ?",
+              "options": ["15", "−25", "5", "−15"],
+              "correctAnswers": [0],
+              "explanation": "u_0 = −5 − 10r = 15."
+            },
+            {
+              "id": "u1-q02-05",
+              "type": "single_choice",
+              "prompt": "u_0 = 2, r = 6. n pour u_n = 50 ?",
+              "options": ["8", "7", "9", "48"],
+              "correctAnswers": [0],
+              "explanation": "2 + 6n = 50 ⇒ n = 8."
+            },
+            {
+              "id": "u1-q02-06",
+              "type": "single_choice",
+              "prompt": "u_n = 3n − 7 : u_0 et r ?",
+              "options": ["−7 et 3", "3 et −7", "−4 et 3", "−7 et −3"],
+              "correctAnswers": [0],
+              "explanation": "u_0 = −7, r = 3."
+            },
+            {
+              "id": "u1-q02-07",
+              "type": "single_choice",
+              "prompt": "u_2 = 1, u_8 = 19. u_5 ?",
+              "options": ["10", "9", "11", "8"],
+              "correctAnswers": [0],
+              "explanation": "Moyenne : 10."
+            },
+            {
+              "id": "u1-q02-08",
+              "type": "single_choice",
+              "prompt": "u_n = −4 + 2n. Premier n avec u_n > 0 ?",
+              "options": ["3", "2", "4", "1"],
+              "correctAnswers": [0],
+              "explanation": "n > 2 ⇒ n = 3."
+            },
+            {
+              "id": "u1-q02-09",
+              "type": "single_choice",
+              "prompt": "u_p = A, u_q = B, p < q. r ?",
+              "options": ["(B−A)/(q−p)", "B−A", "A−B", "B/A"],
+              "correctAnswers": [0],
+              "explanation": "(q−p) sauts de r."
+            },
+            {
+              "id": "u1-q02-10",
+              "type": "single_choice",
+              "prompt": "u_1 = 100, r = −10. Dernier u_n > 0 (n ≥ 1) ?",
+              "options": ["u_10 = 10", "u_11 = 0", "u_9 = 30", "u_12 = −10"],
+              "correctAnswers": [0],
+              "explanation": "u_n = 110 − 10n ; u_10 = 10."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Sommes partielles arithmétiques",
+          "questions": [
+            {
+              "id": "u1-q03-01",
+              "type": "multiple_choice",
+              "prompt": "u_0 = 1, r = 2. Affirmations exactes ?",
+              "options": [
+                "S_n = Σ_{k=0}^{n} u_k = (n+1)(2 + 2n)/2 = (n+1)^2",
+                "u_n = 1 + 2n",
+                "S_3 = 16",
+                "S_n = 2^{n+1} − 1"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Suite 1,3,5,… ; somme des impairs : (n+1)²."
+            },
+            {
+              "id": "u1-q03-02",
+              "type": "single_choice",
+              "prompt": "Nombre de termes de 5 à 95, pas 5 (arithmétique) ?",
+              "options": ["19", "18", "20", "90"],
+              "correctAnswers": [0],
+              "explanation": "(95−5)/5 + 1 = 19."
+            },
+            {
+              "id": "u1-q03-03",
+              "type": "single_choice",
+              "prompt": "u_0 = 4, r = 3. S_4 = u_0+…+u_4 ?",
+              "options": ["50", "40", "35", "44"],
+              "correctAnswers": [0],
+              "explanation": "5 termes, moyenne (4+16)/2=10, S=50."
+            },
+            {
+              "id": "u1-q03-04",
+              "type": "single_choice",
+              "prompt": "Formule S_n si u_0 et r connus (n+1 termes) ?",
+              "options": ["(n+1)(2u_0 + nr)/2", "(n+1)u_0", "nr", "u_0 + nr"],
+              "correctAnswers": [0],
+              "explanation": "Somme arithmétique classique."
+            },
+            {
+              "id": "u1-q03-05",
+              "type": "single_choice",
+              "prompt": "1+3+5+…+39 (impairs) : combien de termes ?",
+              "options": ["20", "19", "21", "40"],
+              "correctAnswers": [0],
+              "explanation": "(39−1)/2 + 1 = 20."
+            },
+            {
+              "id": "u1-q03-06",
+              "type": "single_choice",
+              "prompt": "u_1 = 10, u_n = 100. r = 5. n ?",
+              "options": ["19", "18", "20", "90"],
+              "correctAnswers": [0],
+              "explanation": "10 + 5(n−1) = 100 ⇒ n = 19."
+            },
+            {
+              "id": "u1-q03-07",
+              "type": "single_choice",
+              "prompt": "u_n = n (n ≥ 0). S_9 − S_4 ?",
+              "options": ["35", "30", "25", "45"],
+              "correctAnswers": [0],
+              "explanation": "Somme 5+6+7+8+9 = 35."
+            },
+            {
+              "id": "u1-q03-08",
+              "type": "single_choice",
+              "prompt": "Paliers numérotés 1 à n. Somme des numéros ?",
+              "options": ["n(n+1)/2", "n^2", "2n", "n(n−1)/2"],
+              "correctAnswers": [0],
+              "explanation": "Suite 1,2,…,n."
+            },
+            {
+              "id": "u1-q03-09",
+              "type": "single_choice",
+              "prompt": "u_0 = −3, r = 4. S_5 ?",
+              "options": ["35", "32", "40", "50"],
+              "correctAnswers": [0],
+              "explanation": "Termes −3,1,5,9,13,17 ; somme 35."
+            },
+            {
+              "id": "u1-q03-10",
+              "type": "single_choice",
+              "prompt": "Même raison r, u_0 = a et v_0 = b. u_n − v_n ?",
+              "options": ["a − b", "nr", "a − b + nr", "0"],
+              "correctAnswers": [0],
+              "explanation": "Différence constante des premiers termes."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Suite géométrique — définition",
+          "questions": [
+            {
+              "id": "u1-q04-01",
+              "type": "multiple_choice",
+              "prompt": "(v_n) géométrique, q = 2, v_0 = 3. Vrai ?",
+              "options": [
+                "v_{n+1} = 2v_n",
+                "v_n = 3×2^n",
+                "v_n = 3 + 2n",
+                "v_3 = 24"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Multiplication par q ; v_n = v_0 q^n."
+            },
+            {
+              "id": "u1-q04-02",
+              "type": "single_choice",
+              "prompt": "3 ; 6 ; 12 ; 24 : raison q ?",
+              "options": ["2", "3", "6", "12"],
+              "correctAnswers": [0],
+              "explanation": "6/3 = 2."
+            },
+            {
+              "id": "u1-q04-03",
+              "type": "single_choice",
+              "prompt": "v_0 = 81, q = 1/3. v_2 ?",
+              "options": ["9", "27", "1", "3"],
+              "correctAnswers": [0],
+              "explanation": "81 × (1/3)² = 9."
+            },
+            {
+              "id": "u1-q04-04",
+              "type": "single_choice",
+              "prompt": "Suite géométrique, q = −1, v_0 = 5. v_4 ?",
+              "options": ["5", "−5", "0", "25"],
+              "correctAnswers": [0],
+              "explanation": "(−1)^4 = 1."
+            },
+            {
+              "id": "u1-q04-05",
+              "type": "single_choice",
+              "prompt": "Laquelle n'est pas géométrique ?",
+              "options": [
+                "1 ; 2 ; 4 ; 8",
+                "5 ; 5 ; 5 ; 5",
+                "2 ; −4 ; 8 ; −16",
+                "1 ; 3 ; 5 ; 7"
+              ],
+              "correctAnswers": [3],
+              "explanation": "1,3,5,7 arithmétique."
+            },
+            {
+              "id": "u1-q04-06",
+              "type": "single_choice",
+              "prompt": "q > 1 et v_0 > 0. v_{n+1} vs v_n ?",
+              "options": [
+                "Strictement plus grand",
+                "Plus petit",
+                "Égal",
+                "Alterne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multiplication par q > 1."
+            },
+            {
+              "id": "u1-q04-07",
+              "type": "single_choice",
+              "prompt": "v_0 ≠ 0, q = 0. v_3 ?",
+              "options": ["0", "v_0", "3v_0", "Indéfini"],
+              "correctAnswers": [0],
+              "explanation": "Dès n ≥ 1, v_n = 0."
+            },
+            {
+              "id": "u1-q04-08",
+              "type": "single_choice",
+              "prompt": "v_2 = 12, v_4 = 108. q > 0 ?",
+              "options": ["3", "9", "6", "36"],
+              "correctAnswers": [0],
+              "explanation": "v_4/v_2 = q² = 9."
+            },
+            {
+              "id": "u1-q04-09",
+              "type": "single_choice",
+              "prompt": "Termes consécutifs a, b, c géométriques (b ≠ 0) :",
+              "options": ["b² = ac", "2b = a + c", "c = a + b", "a/b = c"],
+              "correctAnswers": [0],
+              "explanation": "b/a = c/b."
+            },
+            {
+              "id": "u1-q04-10",
+              "type": "single_choice",
+              "prompt": "v_n = (−2)^n. Nature ?",
+              "options": [
+                "Géométrique q = −2",
+                "Arithmétique",
+                "Ni l'un ni l'autre",
+                "Constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "v_{n+1}/v_n = −2 (n pair défini)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Suite géométrique — terme général",
+          "questions": [
+            {
+              "id": "u1-q05-01",
+              "type": "multiple_choice",
+              "prompt": "v_0 = 5, q = 1/2. Exact ?",
+              "options": [
+                "v_n = 5/2^n",
+                "v_3 = 5/8",
+                "v_n = 5 − n/2",
+                "v_4 = 5/16"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "v_n = 5×(1/2)^n ; v_3 = 5/8."
+            },
+            {
+              "id": "u1-q05-02",
+              "type": "single_choice",
+              "prompt": "v_0 = 2, q = 3. v_5 ?",
+              "options": ["486", "243", "162", "729"],
+              "correctAnswers": [0],
+              "explanation": "2×3^5 = 486."
+            },
+            {
+              "id": "u1-q05-03",
+              "type": "single_choice",
+              "prompt": "v_n = 4×0,9^n. v_0 ?",
+              "options": ["4", "0,9", "4×0,9", "3,6"],
+              "correctAnswers": [0],
+              "explanation": "n = 0."
+            },
+            {
+              "id": "u1-q05-04",
+              "type": "single_choice",
+              "prompt": "v_1 = 6, q = 2. v_0 ?",
+              "options": ["3", "12", "2", "6"],
+              "correctAnswers": [0],
+              "explanation": "v_0 = v_1/q = 3."
+            },
+            {
+              "id": "u1-q05-05",
+              "type": "single_choice",
+              "prompt": "v_n = 100×1,05^n. Facteur multiplicatif en un pas ?",
+              "options": ["1,05", "100", "0,05", "1,5"],
+              "correctAnswers": [0],
+              "explanation": "C'est q."
+            },
+            {
+              "id": "u1-q05-06",
+              "type": "single_choice",
+              "prompt": "v_0 = 7, v_4 = 112. q > 0 ?",
+              "options": ["2", "16", "8", "4"],
+              "correctAnswers": [0],
+              "explanation": "112/7 = 16 = q^4."
+            },
+            {
+              "id": "u1-q05-07",
+              "type": "single_choice",
+              "prompt": "Plus petit n avec v_n < 1 si v_0 = 8, q = 1/2 ?",
+              "options": ["4", "3", "5", "8"],
+              "correctAnswers": [0],
+              "explanation": "8/2^n < 1 ⇒ n > 3."
+            },
+            {
+              "id": "u1-q05-08",
+              "type": "single_choice",
+              "prompt": "v_n = −3×2^n. v_3 ?",
+              "options": ["−24", "24", "−6", "−12"],
+              "correctAnswers": [0],
+              "explanation": "−3×8 = −24."
+            },
+            {
+              "id": "u1-q05-09",
+              "type": "single_choice",
+              "prompt": "Deux termes v_2 = A, v_5 = B (q > 0). q ?",
+              "options": ["(B/A)^(1/3)", "B/A", "A/B", "(B/A)^2"],
+              "correctAnswers": [0],
+              "explanation": "q^3 = B/A."
+            },
+            {
+              "id": "u1-q05-10",
+              "type": "single_choice",
+              "prompt": "v_0 = 1, q = −3. v_6 ?",
+              "options": ["729", "−729", "243", "−243"],
+              "correctAnswers": [0],
+              "explanation": "(−3)^6 = 729."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Sommes géométriques finies",
+          "questions": [
+            {
+              "id": "u1-q06-01",
+              "type": "multiple_choice",
+              "prompt": "v_0 = 1, q = 2. Vrai ?",
+              "options": [
+                "S_n = 2^{n+1} − 1",
+                "v_n = 2^n",
+                "S_3 = 15",
+                "S_n = n×2^n"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Somme 1+2+4+…+2^n = 2^{n+1}−1 ; S_3=15."
+            },
+            {
+              "id": "u1-q06-02",
+              "type": "single_choice",
+              "prompt": "v_0 = 3, q = 2. S_2 ?",
+              "options": ["21", "12", "9", "24"],
+              "correctAnswers": [0],
+              "explanation": "3+6+12=21."
+            },
+            {
+              "id": "u1-q06-03",
+              "type": "single_choice",
+              "prompt": "q = 1, v_0 = c. S_n (n+1 termes) ?",
+              "options": ["(n+1)c", "c", "nc", "2c"],
+              "correctAnswers": [0],
+              "explanation": "Suite constante."
+            },
+            {
+              "id": "u1-q06-04",
+              "type": "single_choice",
+              "prompt": "1 + 1/2 + 1/4 + 1/8 (3 termes après 1) S_3 ?",
+              "options": ["15/8", "7/4", "2", "8/15"],
+              "correctAnswers": [0],
+              "explanation": "1+0,5+0,25+0,125=1,875=15/8."
+            },
+            {
+              "id": "u1-q06-05",
+              "type": "single_choice",
+              "prompt": "Formule S_n si q ≠ 1 ?",
+              "options": [
+                "v_0(1−q^{n+1})/(1−q)",
+                "v_0(1−q^n)/(1−q)",
+                "nv_0",
+                "v_0 q^n"
+              ],
+              "correctAnswers": [0],
+              "explanation": "n+1 termes de v_0 à v_n."
+            },
+            {
+              "id": "u1-q06-06",
+              "type": "single_choice",
+              "prompt": "v_0 = 10, q = 0,1. S_2 ?",
+              "options": ["11,1", "10,1", "11", "10,11"],
+              "correctAnswers": [0],
+              "explanation": "10+1+0,1=11,1."
+            },
+            {
+              "id": "u1-q06-07",
+              "type": "single_choice",
+              "prompt": "Chaque jour doublement : 1 grain jour 0. Grains jours 0 à 3 ?",
+              "options": ["15", "8", "7", "16"],
+              "correctAnswers": [0],
+              "explanation": "1+2+4+8=15."
+            },
+            {
+              "id": "u1-q06-08",
+              "type": "single_choice",
+              "prompt": "v_0 = 1, q = −2. S_3 ?",
+              "options": ["−5", "5", "11", "−11"],
+              "correctAnswers": [0],
+              "explanation": "1−2+4−8=−5."
+            },
+            {
+              "id": "u1-q06-09",
+              "type": "single_choice",
+              "prompt": "v_0 = 1, q = 2. S_4 − S_2 ?",
+              "options": ["24", "16", "8", "31"],
+              "correctAnswers": [0],
+              "explanation": "Somme v_3+v_4 = 8+16 = 24."
+            },
+            {
+              "id": "u1-q06-10",
+              "type": "single_choice",
+              "prompt": "0,999… = 1 démontre limite de S_n pour v_0=0,9, q=0,1 ?",
+              "options": [
+                "Oui, S_n → 1",
+                "Non",
+                "S_n diverge",
+                "q doit valoir 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Série géométique convergente."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Relations de récurrence",
+          "questions": [
+            {
+              "id": "u1-q07-01",
+              "type": "multiple_choice",
+              "prompt": "u_{n+1} = 2u_n + 1, u_0 = 0. Vrai ?",
+              "options": [
+                "u_1 = 1",
+                "u_2 = 3",
+                "(u_n) est arithmétique",
+                "u_3 = 7"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "0→1→3→7 : pas arithmétique ; u_3=7."
+            },
+            {
+              "id": "u1-q07-02",
+              "type": "single_choice",
+              "prompt": "u_{n+1} = u_n + 5, u_0 = 2. Type ?",
+              "options": [
+                "Arithmétique r=5",
+                "Géométrique",
+                "Périodique",
+                "Aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Différence constante."
+            },
+            {
+              "id": "u1-q07-03",
+              "type": "single_choice",
+              "prompt": "v_{n+1} = 0,5 v_n, v_0 = 80. v_2 ?",
+              "options": ["20", "40", "10", "160"],
+              "correctAnswers": [0],
+              "explanation": "80→40→20."
+            },
+            {
+              "id": "u1-q07-04",
+              "type": "single_choice",
+              "prompt": "u_{n+1} = −u_n, u_0 = 3. u_5 ?",
+              "options": ["−3", "3", "0", "9"],
+              "correctAnswers": [0],
+              "explanation": "Alternance, n impair."
+            },
+            {
+              "id": "u1-q07-05",
+              "type": "single_choice",
+              "prompt": "Suite définie par u_n = n². Récurrence ?",
+              "options": [
+                "u_{n+1} − u_n = 2n + 1",
+                "u_{n+1} = 2u_n",
+                "u_{n+1} = u_n + 1",
+                "u_{n+1} = u_n²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "(n+1)² − n² = 2n+1."
+            },
+            {
+              "id": "u1-q07-06",
+              "type": "single_choice",
+              "prompt": "Fibonacci F_{n+2}=F_{n+1}+F_n, F_0=0,F_1=1. F_4 ?",
+              "options": ["3", "2", "5", "8"],
+              "correctAnswers": [0],
+              "explanation": "0,1,1,2,3."
+            },
+            {
+              "id": "u1-q07-07",
+              "type": "single_choice",
+              "prompt": "u_{n+1} = u_n, u_0 = π. u_100 ?",
+              "options": ["π", "100π", "0", "101π"],
+              "correctAnswers": [0],
+              "explanation": "Suite constante."
+            },
+            {
+              "id": "u1-q07-08",
+              "type": "single_choice",
+              "prompt": "w_{n+1} = w_n − 3, w_0 = 10. w_n explicite ?",
+              "options": ["10 − 3n", "10 + 3n", "10×3^n", "3n − 10"],
+              "correctAnswers": [0],
+              "explanation": "Arithmétique."
+            },
+            {
+              "id": "u1-q07-09",
+              "type": "single_choice",
+              "prompt": "a_{n+1} = 3a_n, a_0 = 2. a_n ?",
+              "options": ["2×3^n", "2+3n", "3×2^n", "6n"],
+              "correctAnswers": [0],
+              "explanation": "Géométrique."
+            },
+            {
+              "id": "u1-q07-10",
+              "type": "single_choice",
+              "prompt": "Pour étudier u_{n+1} = f(u_n), on trace souvent :",
+              "options": [
+                "La droite y=x et y=f(x)",
+                "Un cercle",
+                "Seulement u_0",
+                "La dérivée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Graphique de récurrence."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Reconnaître arithmétique ou géométrique",
+          "questions": [
+            {
+              "id": "u1-q08-01",
+              "type": "multiple_choice",
+              "prompt": "Parmi ces formules explicites, lesquelles sont géométriques ?",
+              "options": [
+                "u_n = 7×0,8^n",
+                "u_n = 3n + 1",
+                "u_n = (−1)^n",
+                "u_n = 2^{n+1}"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Quotient constant entre termes consécutifs."
+            },
+            {
+              "id": "u1-q08-02",
+              "type": "single_choice",
+              "prompt": "u_n = 4n − 1. Nature ?",
+              "options": ["Arithmétique", "Géométrique", "Les deux", "Aucune"],
+              "correctAnswers": [0],
+              "explanation": "Différence 4."
+            },
+            {
+              "id": "u1-q08-03",
+              "type": "single_choice",
+              "prompt": "u_n = 5×2^n. q ?",
+              "options": ["2", "5", "2^n", "10"],
+              "correctAnswers": [0],
+              "explanation": "u_{n+1}/u_n = 2."
+            },
+            {
+              "id": "u1-q08-04",
+              "type": "single_choice",
+              "prompt": "Tableau : n 0 1 2 3 ; u_n 1 4 7 10. Type ?",
+              "options": [
+                "Arithmétique",
+                "Géométrique",
+                "Quadratique seulement",
+                "Périodique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "+3 constant."
+            },
+            {
+              "id": "u1-q08-05",
+              "type": "single_choice",
+              "prompt": "u_n = n(n+1). Suite arithmétique ?",
+              "options": ["Non", "Oui r=2", "Oui r=1", "Constante"],
+              "correctAnswers": [0],
+              "explanation": "Différences non constantes."
+            },
+            {
+              "id": "u1-q08-06",
+              "type": "single_choice",
+              "prompt": "3 ; 3√2 ; 6 ; 6√2. Nature ?",
+              "options": [
+                "Géométrique",
+                "Arithmétique",
+                "Fibonacci",
+                "Constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Facteur √2."
+            },
+            {
+              "id": "u1-q08-07",
+              "type": "single_choice",
+              "prompt": "u_{n+1} − u_n = 2u_n. Type ?",
+              "options": [
+                "Géométrique q=3",
+                "Arithmétique r=2",
+                "Constante",
+                "Linéaire non homogène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "u_{n+1}=3u_n."
+            },
+            {
+              "id": "u1-q08-08",
+              "type": "single_choice",
+              "prompt": "u_n = 1 + (−1)^n. Période ?",
+              "options": ["2", "1", "4", "Non périodique"],
+              "correctAnswers": [0],
+              "explanation": "Alterne 0 et 2."
+            },
+            {
+              "id": "u1-q08-09",
+              "type": "single_choice",
+              "prompt": "Même r arithmétique pour (u_n) et (v_n). (u_n+v_n) ?",
+              "options": [
+                "Arithmétique même r",
+                "Géométrique",
+                "Constante",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Somme des différences."
+            },
+            {
+              "id": "u1-q08-10",
+              "type": "single_choice",
+              "prompt": "u_n = 2^n + 1. Suite géométrique pure ?",
+              "options": ["Non", "Oui q=2", "Oui q=3", "Constante"],
+              "correctAnswers": [0],
+              "explanation": "Somme d'une géométrique et d'une constante."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Modélisation discrète",
+          "questions": [
+            {
+              "id": "u1-q09-01",
+              "type": "multiple_choice",
+              "prompt": "Capital C_0, intérêts composés 5 % par an. Vrai ?",
+              "options": [
+                "C_{n+1} = 1,05 C_n",
+                "(C_n) géométrique q=1,05",
+                "C_n = C_0 + 0,05n",
+                "C_n = C_0×1,05^n"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Composition multiplicative."
+            },
+            {
+              "id": "u1-q09-02",
+              "type": "single_choice",
+              "prompt": "+200 € chaque mois sur un compte (sans intérêts). Modèle ?",
+              "options": [
+                "Arithmétique",
+                "Géométrique",
+                "Exponentielle continue",
+                "Aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ajout constant."
+            },
+            {
+              "id": "u1-q09-03",
+              "type": "single_choice",
+              "prompt": "Population ×1,02 par an, P_0=1000. P_3 ?",
+              "options": ["1061,2", "1060", "1020", "1006"],
+              "correctAnswers": [0],
+              "explanation": "1000×1,02³ ≈ 1061,2."
+            },
+            {
+              "id": "u1-q09-04",
+              "type": "single_choice",
+              "prompt": "Décroissance 10 % par jour : v_{n+1} = ?",
+              "options": ["0,9 v_n", "v_n − 0,1", "1,1 v_n", "v_n/10"],
+              "correctAnswers": [0],
+              "explanation": "−10 % ⇒ ×0,9."
+            },
+            {
+              "id": "u1-q09-05",
+              "type": "single_choice",
+              "prompt": "Escalier : marche 1 = 20 cm, +3 cm par marche. Hauteur marche 10 ?",
+              "options": ["47 cm", "50 cm", "44 cm", "30 cm"],
+              "correctAnswers": [0],
+              "explanation": "20+9×3=47."
+            },
+            {
+              "id": "u1-q09-06",
+              "type": "single_choice",
+              "prompt": "Cellules qui se divisent en 2 chaque heure. Après 5 h depuis 1 ?",
+              "options": ["32", "16", "25", "10"],
+              "correctAnswers": [0],
+              "explanation": "2^5=32."
+            },
+            {
+              "id": "u1-q09-07",
+              "type": "single_choice",
+              "prompt": "Remboursement : dette D_{n+1}=D_n − 500, D_0=5000. D_10 ?",
+              "options": ["0", "500", "5000", "−5000"],
+              "correctAnswers": [0],
+              "explanation": "5000−10×500=0."
+            },
+            {
+              "id": "u1-q09-08",
+              "type": "single_choice",
+              "prompt": "Température T_{n+1}=0,95 T_n + 5 (four). Type ?",
+              "options": [
+                "Affine (non pure arith/géo)",
+                "Géométrique pure",
+                "Arithmétique pure",
+                "Constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Récurrence affine."
+            },
+            {
+              "id": "u1-q09-09",
+              "type": "single_choice",
+              "prompt": "Part de marché 40 %, +5 points par trimestre. Part au 4e trimestre ?",
+              "options": ["55 %", "60 %", "45 %", "20 %"],
+              "correctAnswers": [0],
+              "explanation": "40+3×5=55 (après 3 pas)."
+            },
+            {
+              "id": "u1-q09-10",
+              "type": "single_choice",
+              "prompt": "Choix entre modèle u_n=1000+50n et v_n=900×1,06^n pour n grand :",
+              "options": [
+                "La géométique dépasse tôt ou tard si q>1",
+                "L'arithmétique domine toujours",
+                "Égales",
+                "Aucune croît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Croissance exponentielle vs linéaire."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse — génération",
+          "questions": [
+            {
+              "id": "u1-q10-01",
+              "type": "multiple_choice",
+              "prompt": "u_n = 3×2^n − 2. Vrai ?",
+              "options": [
+                "Partie 3×2^n est géométrique",
+                "u_0 = 1",
+                "u_{n+1} − u_n constant",
+                "u_2 = 10"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "u_0=1 ; différences non constantes ; u_2=10."
+            },
+            {
+              "id": "u1-q10-02",
+              "type": "single_choice",
+              "prompt": "u_0=1,r=2 arithmétique ET v_0=1,q=2 géométrique : u_3 + v_3 ?",
+              "options": ["15", "14", "16", "12"],
+              "correctAnswers": [0],
+              "explanation": "u_3=7, v_3=8."
+            },
+            {
+              "id": "u1-q10-03",
+              "type": "single_choice",
+              "prompt": "Passer de u_n à u_{n+1} = u_n + r équivaut à :",
+              "options": [
+                "Translation arithmétique",
+                "Multiplication par r",
+                "Division",
+                "Racine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition arithmétique."
+            },
+            {
+              "id": "u1-q10-04",
+              "type": "single_choice",
+              "prompt": "Suite 2 ; 6 ; 18 ; 54 : terme général ?",
+              "options": ["2×3^n", "2+4n", "3^n", "6n"],
+              "correctAnswers": [0],
+              "explanation": "Géométrique q=3."
+            },
+            {
+              "id": "u1-q10-05",
+              "type": "single_choice",
+              "prompt": "Nombre de faces d'un polyèdre augmenté de 2 par étape (triangles) : suite ?",
+              "options": [
+                "Arithmétique",
+                "Géométrique",
+                "Fibonacci",
+                "Périodique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "+2 constant."
+            },
+            {
+              "id": "u1-q10-06",
+              "type": "single_choice",
+              "prompt": "u_n = 5 − 2n. Premier n où u_n < 0 ?",
+              "options": ["3", "2", "4", "5"],
+              "correctAnswers": [0],
+              "explanation": "5−2n<0 ⇒ n>2,5."
+            },
+            {
+              "id": "u1-q10-07",
+              "type": "single_choice",
+              "prompt": "v_0=16, q=1/2. Plus grand n avec v_n ≥ 1 ?",
+              "options": ["4", "5", "3", "16"],
+              "correctAnswers": [0],
+              "explanation": "16/2^n≥1 ⇒ n≤4."
+            },
+            {
+              "id": "u1-q10-08",
+              "type": "single_choice",
+              "prompt": "u_n = 2n+1, n=0…9. Somme S ?",
+              "options": ["100", "120", "90", "81"],
+              "correctAnswers": [0],
+              "explanation": "Dix premiers impairs : 100."
+            },
+            {
+              "id": "u1-q10-09",
+              "type": "single_choice",
+              "prompt": "Doublement puis +1 à chaque étape : u_{n+1}=2u_n+1, u_0=1. u_2 ?",
+              "options": ["7", "5", "3", "9"],
+              "correctAnswers": [0],
+              "explanation": "1→3→7."
+            },
+            {
+              "id": "u1-q10-10",
+              "type": "single_choice",
+              "prompt": "Indice de départ u_0 vs u_1 : attention car…",
+              "options": [
+                "Le terme général change de forme",
+                "La raison change",
+                "La suite disparaît",
+                "q devient 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "u_n = u_0+nr vs u_1+(n−1)r."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Sens de variation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Suite arithmétique — monotonie",
+          "questions": [
+            {
+              "id": "u2-q01-01",
+              "type": "multiple_choice",
+              "prompt": "Suite arithmétique de raison r. Vrai ?",
+              "options": [
+                "r > 0 ⇒ strictement croissante",
+                "r < 0 ⇒ strictement décroissante",
+                "r = 0 ⇒ constante",
+                "r > 0 ⇒ décroissante"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Signe de r fixe le sens (r>0 croissante, r<0 décroissante)."
+            },
+            {
+              "id": "u2-q01-02",
+              "type": "single_choice",
+              "prompt": "u_n = 5 − 3n. Variation ?",
+              "options": [
+                "Strictement décroissante",
+                "Croissante",
+                "Constante",
+                "Non monotone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "r = −3."
+            },
+            {
+              "id": "u2-q01-03",
+              "type": "single_choice",
+              "prompt": "u_n = −2 + 4n. Variation ?",
+              "options": [
+                "Strictement croissante",
+                "Décroissante",
+                "Constante",
+                "Périodique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "r = 4 > 0."
+            },
+            {
+              "id": "u2-q01-04",
+              "type": "single_choice",
+              "prompt": "r = 0. Suite ?",
+              "options": ["Constante", "Croissante", "Alternée", "Divergente"],
+              "correctAnswers": [0],
+              "explanation": "Tous termes égaux."
+            },
+            {
+              "id": "u2-q01-05",
+              "type": "single_choice",
+              "prompt": "u_0=10, r=−1. u_5 vs u_0 ?",
+              "options": ["u_5 < u_0", "u_5 > u_0", "Égaux", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "Décroît de 5."
+            },
+            {
+              "id": "u2-q01-06",
+              "type": "single_choice",
+              "prompt": "Plus grand terme pour u_n=20−2n, n∈ℕ ?",
+              "options": ["u_0 = 20", "u_10", "u_1", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "Décroissante, max en n=0."
+            },
+            {
+              "id": "u2-q01-07",
+              "type": "single_choice",
+              "prompt": "u_n = 3n − 12. Premier n avec u_n ≥ 0 ?",
+              "options": ["4", "3", "5", "12"],
+              "correctAnswers": [0],
+              "explanation": "3n≥12 ⇒ n≥4."
+            },
+            {
+              "id": "u2-q01-08",
+              "type": "single_choice",
+              "prompt": "Deux suites arithmétiques même r>0. Si u_0 < v_0 alors :",
+              "options": [
+                "u_n < v_n pour tout n",
+                "u_n > v_n",
+                "Égales",
+                "Alterne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écart constant."
+            },
+            {
+              "id": "u2-q01-09",
+              "type": "single_choice",
+              "prompt": "u_{n+1} − u_n > 0 pour tout n signifie :",
+              "options": [
+                "Strictement croissante",
+                "Décroissante",
+                "Constante",
+                "Bornée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition."
+            },
+            {
+              "id": "u2-q01-10",
+              "type": "single_choice",
+              "prompt": "Graphique (n,u_n), r<0 : pente ?",
+              "options": ["Négative", "Nulle", "Positive", "Variable"],
+              "correctAnswers": [0],
+              "explanation": "Affine décroissante."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Suite géométrique — monotonie (v_0 > 0)",
+          "questions": [
+            {
+              "id": "u2-q02-01",
+              "type": "multiple_choice",
+              "prompt": "v_0 > 0. Vrai ?",
+              "options": [
+                "q > 1 ⇒ croissante",
+                "0 < q < 1 ⇒ décroissante",
+                "q = 1 ⇒ constante",
+                "q < 0 ⇒ toujours croissante"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Si v_0>0 : q>1 croissante, 0<q<1 décroissante ; q<0 alterne les signes."
+            },
+            {
+              "id": "u2-q02-02",
+              "type": "single_choice",
+              "prompt": "v_0=100, q=0,9. Sens ?",
+              "options": [
+                "Strictement décroissante",
+                "Croissante",
+                "Constante",
+                "Alternée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "0<q<1."
+            },
+            {
+              "id": "u2-q02-03",
+              "type": "single_choice",
+              "prompt": "v_0=2, q=3. v_3 vs v_2 ?",
+              "options": ["v_3 > v_2", "v_3 < v_2", "Égaux", "v_3 = 0"],
+              "correctAnswers": [0],
+              "explanation": "q>1."
+            },
+            {
+              "id": "u2-q02-04",
+              "type": "single_choice",
+              "prompt": "v_n = 5×1,2^n. Variation ?",
+              "options": [
+                "Croissante",
+                "Décroissante",
+                "Constante",
+                "Non définie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "q=1,2>1."
+            },
+            {
+              "id": "u2-q02-05",
+              "type": "single_choice",
+              "prompt": "v_0=8, q=1/2. Minimum atteint ?",
+              "options": ["Limite 0 (approche)", "8", "−8", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "Termes positifs décroissants vers 0."
+            },
+            {
+              "id": "u2-q02-06",
+              "type": "single_choice",
+              "prompt": "q = −2, v_0=1. Monotone ?",
+              "options": [
+                "Non (alternance de signe)",
+                "Croissante",
+                "Décroissante",
+                "Constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signes alternent."
+            },
+            {
+              "id": "u2-q02-07",
+              "type": "single_choice",
+              "prompt": "v_n = 10×0,5^n. v_5 ?",
+              "options": ["0,3125", "0,625", "5", "1"],
+              "correctAnswers": [0],
+              "explanation": "10/32=0,3125."
+            },
+            {
+              "id": "u2-q02-08",
+              "type": "single_choice",
+              "prompt": "Comparaison v_n et v_{n+1} si q=1,05 :",
+              "options": ["v_{n+1} > v_n", "<", "=", "Alterne"],
+              "correctAnswers": [0],
+              "explanation": "Multiplication >1."
+            },
+            {
+              "id": "u2-q02-09",
+              "type": "single_choice",
+              "prompt": "v_0>0, 0<q<1. Suite bornée inférieurement par ?",
+              "options": ["0", "q", "v_0", "−v_0"],
+              "correctAnswers": [0],
+              "explanation": "Termes positifs."
+            },
+            {
+              "id": "u2-q02-10",
+              "type": "single_choice",
+              "prompt": "Croissance linéaire vs géométrique q>1 :",
+              "options": [
+                "Géométique finit par l'emporter",
+                "Linéaire toujours au-dessus",
+                "Identiques",
+                "Aucune croît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparaison asymptotique."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Signe des termes",
+          "questions": [
+            {
+              "id": "u2-q03-01",
+              "type": "multiple_choice",
+              "prompt": "u_n = −3 + 2n. Vrai ?",
+              "options": [
+                "u_n > 0 à partir de n = 2",
+                "u_0 < 0",
+                "u_1 = −1",
+                "Tous termes négatifs"
+              ],
+              "correctAnswers": [1, 2],
+              "explanation": "u_0=−3, u_1=−1 ; u_n>0 dès n=2."
+            },
+            {
+              "id": "u2-q03-02",
+              "type": "single_choice",
+              "prompt": "u_n = 4 − n. Dernier n avec u_n ≥ 0 ?",
+              "options": ["4", "3", "5", "0"],
+              "correctAnswers": [0],
+              "explanation": "4−n≥0 ⇒ n≤4."
+            },
+            {
+              "id": "u2-q03-03",
+              "type": "single_choice",
+              "prompt": "v_n = (−1)^n. Signes ?",
+              "options": [
+                "Alternent + et −",
+                "Toujours +",
+                "Toujours −",
+                "Nuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "(−1)^n."
+            },
+            {
+              "id": "u2-q03-04",
+              "type": "single_choice",
+              "prompt": "v_0=−2, q=3. v_2 ?",
+              "options": ["−18", "18", "−6", "6"],
+              "correctAnswers": [0],
+              "explanation": "−2×9=−18."
+            },
+            {
+              "id": "u2-q03-05",
+              "type": "single_choice",
+              "prompt": "Produit de deux termes consécutifs < 0 signifie :",
+              "options": [
+                "Changement de signe entre n et n+1",
+                "Suite constante",
+                "Tous négatifs",
+                "Tous positifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signes opposés."
+            },
+            {
+              "id": "u2-q03-06",
+              "type": "single_choice",
+              "prompt": "u_n = (n−5)(n−1). Signe pour n=0 ?",
+              "options": ["Positif", "Négatif", "Nul", "Indéfini"],
+              "correctAnswers": [0],
+              "explanation": "(−5)(−1)=5>0."
+            },
+            {
+              "id": "u2-q03-07",
+              "type": "single_choice",
+              "prompt": "Arithmétique r≠0 : combien de changements de signe max ?",
+              "options": ["Au plus un", "Infini", "Deux", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "Affine en n."
+            },
+            {
+              "id": "u2-q03-08",
+              "type": "single_choice",
+              "prompt": "v_n = 2×(−0,5)^n. v_1 ?",
+              "options": ["−1", "1", "−0,5", "0,5"],
+              "correctAnswers": [0],
+              "explanation": "2×(−0,5)=−1."
+            },
+            {
+              "id": "u2-q03-09",
+              "type": "single_choice",
+              "prompt": "u_n > 0 pour tout n. Peut-on conclure croissante ?",
+              "options": [
+                "Non",
+                "Oui toujours",
+                "Seulement si arithmétique",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contre-ex : 1/n."
+            },
+            {
+              "id": "u2-q03-10",
+              "type": "single_choice",
+              "prompt": "u_n = −5 + n. Premier n avec u_n > 0 ?",
+              "options": ["6", "5", "7", "0"],
+              "correctAnswers": [0],
+              "explanation": "n>5."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Comparer deux termes",
+          "questions": [
+            {
+              "id": "u2-q04-01",
+              "type": "multiple_choice",
+              "prompt": "Arithmétique r=4, u_0=1. Vrai ?",
+              "options": [
+                "u_5 > u_2",
+                "u_7 − u_3 = 16",
+                "u_n croissante",
+                "u_10 < u_0"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "r>0 : croissante et u_5>u_2."
+            },
+            {
+              "id": "u2-q04-02",
+              "type": "single_choice",
+              "prompt": "u_n=10−n. u_3 vs u_8 ?",
+              "options": ["u_3 > u_8", "u_3 < u_8", "Égaux", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "Décroissante."
+            },
+            {
+              "id": "u2-q04-03",
+              "type": "single_choice",
+              "prompt": "v_n=3×2^n. v_4 vs v_2 ?",
+              "options": ["v_4 > v_2", "<", "=", "Non définie"],
+              "correctAnswers": [0],
+              "explanation": "q>1."
+            },
+            {
+              "id": "u2-q04-04",
+              "type": "single_choice",
+              "prompt": "u_p et u_q, r>0, p<q. Alors :",
+              "options": [
+                "u_p < u_q",
+                "u_p > u_q",
+                "Égaux",
+                "Dépend de u_0 seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Croissante."
+            },
+            {
+              "id": "u2-q04-05",
+              "type": "single_choice",
+              "prompt": "v_0=81, q=1/3. v_1 vs v_4 ?",
+              "options": ["v_1 > v_4", "v_1 < v_4", "=", "Alterne"],
+              "correctAnswers": [0],
+              "explanation": "Décroissante positive."
+            },
+            {
+              "id": "u2-q04-06",
+              "type": "single_choice",
+              "prompt": "u_{n+1} − u_n = −2. u_100 vs u_50 ?",
+              "options": ["u_100 < u_50", ">", "=", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "r=−2."
+            },
+            {
+              "id": "u2-q04-07",
+              "type": "single_choice",
+              "prompt": "Même suite : u_2n vs u_{2n+1} si r>0 ?",
+              "options": ["u_{2n+1} > u_2n", "<", "=", "Alterne"],
+              "correctAnswers": [0],
+              "explanation": "Indice plus grand, terme plus grand."
+            },
+            {
+              "id": "u2-q04-08",
+              "type": "single_choice",
+              "prompt": "v_n/v_{n−1}=q. Si q=−1/2, |v_n| vs |v_{n−1}| ?",
+              "options": ["|v_n| = (1/2)|v_{n−1}|", "Double", "Égal", "Nul"],
+              "correctAnswers": [0],
+              "explanation": "Valeur absolue ×1/2."
+            },
+            {
+              "id": "u2-q04-09",
+              "type": "single_choice",
+              "prompt": "u_n = n² − 4n. u_1 vs u_5 ?",
+              "options": ["u_1 < u_5", "u_1 > u_5", "Égaux", "Non comparables"],
+              "correctAnswers": [0],
+              "explanation": "−3 < 5."
+            },
+            {
+              "id": "u2-q04-10",
+              "type": "single_choice",
+              "prompt": "Pour p<q et suite décroissante :",
+              "options": ["u_p > u_q", "u_p < u_q", "=", "Aléatoire"],
+              "correctAnswers": [0],
+              "explanation": "Ordre inverse des indices."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Encadrements et bornes",
+          "questions": [
+            {
+              "id": "u2-q05-01",
+              "type": "multiple_choice",
+              "prompt": "0<q<1, v_0=10. Vrai ?",
+              "options": [
+                "0 < v_n ≤ 10 pour tout n",
+                "v_n > 0 pour tout n",
+                "v_n > 10",
+                "v_n ≥ 10"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Décroissante, reste strictement positive et ≤ v_0."
+            },
+            {
+              "id": "u2-q05-02",
+              "type": "single_choice",
+              "prompt": "u_n=2n+1. Minorant ?",
+              "options": ["1 (atteint en n=0)", "0", "−1", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "Minimum u_0=1."
+            },
+            {
+              "id": "u2-q05-03",
+              "type": "single_choice",
+              "prompt": "u_n=100−5n, n≥0. Majorant ?",
+              "options": ["100", "95", "∞", "0"],
+              "correctAnswers": [0],
+              "explanation": "Max en n=0."
+            },
+            {
+              "id": "u2-q05-04",
+              "type": "single_choice",
+              "prompt": "|v_n| avec v_n=0,8^n. Majorant ?",
+              "options": ["1", "0,8", "∞", "0"],
+              "correctAnswers": [0],
+              "explanation": "≤1 pour n≥0."
+            },
+            {
+              "id": "u2-q05-05",
+              "type": "single_choice",
+              "prompt": "Suite arithmétique r>0 non bornée supérieurement ?",
+              "options": ["Oui", "Non, max u_0", "Bornée", "Constante"],
+              "correctAnswers": [0],
+              "explanation": "Diverge."
+            },
+            {
+              "id": "u2-q05-06",
+              "type": "single_choice",
+              "prompt": "v_n=5×(−2)^n. Bornée ?",
+              "options": ["Non (|v_n|→∞)", "Oui", "Constante", "→0"],
+              "correctAnswers": [0],
+              "explanation": "|q|>1."
+            },
+            {
+              "id": "u2-q05-07",
+              "type": "single_choice",
+              "prompt": "u_n∈[2,7] pour tout n signifie :",
+              "options": [
+                "Suite bornée",
+                "Croissante",
+                "Géométrique",
+                "Constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Encadrement uniforme."
+            },
+            {
+              "id": "u2-q05-08",
+              "type": "single_choice",
+              "prompt": "v_0=1, q=0,5. Encadrement v_n ?",
+              "options": ["0 < v_n ≤ 1", "v_n ≥ 2", "v_n ≤ −1", "v_n = 1"],
+              "correctAnswers": [0],
+              "explanation": "Positive décroissante."
+            },
+            {
+              "id": "u2-q05-09",
+              "type": "single_choice",
+              "prompt": "u_n=−n²+4. Majorant ?",
+              "options": ["4 (en n=0)", "0", "−∞", "∞"],
+              "correctAnswers": [0],
+              "explanation": "Parabole ouverte vers −∞."
+            },
+            {
+              "id": "u2-q05-10",
+              "type": "single_choice",
+              "prompt": "Minimum de u_n=3n−10 sur ℕ ?",
+              "options": ["−10 en n=0", "0", "−7", "3"],
+              "correctAnswers": [0],
+              "explanation": "Croissante, min à n=0."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Sens de variation — critères",
+          "questions": [
+            {
+              "id": "u2-q06-01",
+              "type": "multiple_choice",
+              "prompt": "Définitions. Vrai ?",
+              "options": [
+                "Croissante : u_{n+1} ≥ u_n",
+                "Strictement décroissante : u_{n+1} < u_n",
+                "Constante ⇔ u_{n+1}=u_n",
+                "Décroissante ⇒ tous termes négatifs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Définitions de monotonie (croissante et strictement décroissante)."
+            },
+            {
+              "id": "u2-q06-02",
+              "type": "single_choice",
+              "prompt": "u_{n+1}/u_n = 1,2 > 0. Sens ?",
+              "options": [
+                "Croissante",
+                "Décroissante",
+                "Constante",
+                "Indéterminé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quotient >1."
+            },
+            {
+              "id": "u2-q06-03",
+              "type": "single_choice",
+              "prompt": "u_n = (−1)^n × n. Monotone ?",
+              "options": ["Non", "Croissante", "Décroissante", "Constante"],
+              "correctAnswers": [0],
+              "explanation": "Alternance amplitude croissante."
+            },
+            {
+              "id": "u2-q06-04",
+              "type": "single_choice",
+              "prompt": "Arithmétique : étudier le signe de :",
+              "options": ["r", "u_0 seul", "n", "q"],
+              "correctAnswers": [0],
+              "explanation": "r fixe monotonie."
+            },
+            {
+              "id": "u2-q06-05",
+              "type": "single_choice",
+              "prompt": "Géométique v_0>0 : étudier :",
+              "options": ["q par rapport à 1", "u_0 seul", "n mod 2", "Somme"],
+              "correctAnswers": [0],
+              "explanation": "Comparer q à 1."
+            },
+            {
+              "id": "u2-q06-06",
+              "type": "single_choice",
+              "prompt": "u_n = 1/n (n≥1). Variation ?",
+              "options": [
+                "Strictement décroissante",
+                "Croissante",
+                "Constante",
+                "Alternée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Termes diminuent."
+            },
+            {
+              "id": "u2-q06-07",
+              "type": "single_choice",
+              "prompt": "Suite croissante et minorée par m :",
+              "options": [
+                "Termes ≥ m",
+                "Termes ≤ m",
+                "Tous égaux m",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Minorant."
+            },
+            {
+              "id": "u2-q06-08",
+              "type": "single_choice",
+              "prompt": "u_{n+1} − u_n = f(n) > 0. Suite ?",
+              "options": [
+                "Strictement croissante",
+                "Décroissante",
+                "Constante",
+                "Périodique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Différences positives."
+            },
+            {
+              "id": "u2-q06-09",
+              "type": "single_choice",
+              "prompt": "v_n = 2^{n−1}. v_{n+1}/v_n ?",
+              "options": ["2", "1", "n", "2^n"],
+              "correctAnswers": [0],
+              "explanation": "Géométrique q=2."
+            },
+            {
+              "id": "u2-q06-10",
+              "type": "single_choice",
+              "prompt": "Tableau : u_0<u_1<u_2. On peut conclure croissante ?",
+              "options": [
+                "Non (seulement au début)",
+                "Oui toujours",
+                "Décroissante",
+                "Constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut tous rangs."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Tableau de variations discret",
+          "questions": [
+            {
+              "id": "u2-q07-01",
+              "type": "multiple_choice",
+              "prompt": "u_n = −2n + 8. Quelles affirmations sont vraies ?",
+              "options": [
+                "La suite est décroissante",
+                "u_3 > u_4",
+                "u_4 = 4",
+                "La suite est croissante"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La raison vaut −2, donc la suite décroît et u_3 > u_4. u_4 = 0, pas 4."
+            },
+            {
+              "id": "u2-q07-02",
+              "type": "single_choice",
+              "prompt": "Flèche tableau pour r>0 arithmétique ?",
+              "options": ["↗", "↘", "→", "↕"],
+              "correctAnswers": [0],
+              "explanation": "Croissante."
+            },
+            {
+              "id": "u2-q07-03",
+              "type": "single_choice",
+              "prompt": "v_n=0,9^n. Flèche ?",
+              "options": ["↘", "↗", "→", "Alternée"],
+              "correctAnswers": [0],
+              "explanation": "Décroissante positive."
+            },
+            {
+              "id": "u2-q07-04",
+              "type": "single_choice",
+              "prompt": "Changement de signe u_n u_{n+1}<0 : tableau ?",
+              "options": [
+                "Passage +/− entre n et n+1",
+                "Flèche ↗",
+                "Suite constante",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Racine entre deux rangs."
+            },
+            {
+              "id": "u2-q07-05",
+              "type": "single_choice",
+              "prompt": "u_n=n−3. Rang où u_n change de signe ?",
+              "options": ["Entre n=2 et n=3", "n=0", "n=1", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "u_2=−1, u_3=0."
+            },
+            {
+              "id": "u2-q07-06",
+              "type": "single_choice",
+              "prompt": "Suite constante : tableau ?",
+              "options": ["→ horizontal", "↗", "↘", "Vide"],
+              "correctAnswers": [0],
+              "explanation": "Variation nulle."
+            },
+            {
+              "id": "u2-q07-07",
+              "type": "single_choice",
+              "prompt": "u_n=5×1,1^n. Variation sur ℕ ?",
+              "options": [
+                "Strictement croissante",
+                "Décroissante",
+                "Constante",
+                "Alternée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "q>1."
+            },
+            {
+              "id": "u2-q07-08",
+              "type": "single_choice",
+              "prompt": "Plus petit n avec u_n≤0, u_n=6−2n ?",
+              "options": ["3", "2", "4", "6"],
+              "correctAnswers": [0],
+              "explanation": "6−2n≤0 ⇒ n≥3."
+            },
+            {
+              "id": "u2-q07-09",
+              "type": "single_choice",
+              "prompt": "v_n=(−1)^n. Tableau de variation classique ?",
+              "options": ["Non monotone", "↘", "↗", "→"],
+              "correctAnswers": [0],
+              "explanation": "Alternance."
+            },
+            {
+              "id": "u2-q07-10",
+              "type": "single_choice",
+              "prompt": "u_n strictement croissante : u_5 − u_2 ?",
+              "options": ["> 0", "< 0", "= 0", "≤ 0"],
+              "correctAnswers": [0],
+              "explanation": "Indice plus grand ⇒ terme plus grand."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Comportement asymptotique intuitif",
+          "questions": [
+            {
+              "id": "u2-q08-01",
+              "type": "multiple_choice",
+              "prompt": "v_n = 100×0,95^n. Vrai ?",
+              "options": [
+                "Décroissante",
+                "Termes → 0 quand n→+∞",
+                "Termes → +∞",
+                "Constante"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "0<q<1."
+            },
+            {
+              "id": "u2-q08-02",
+              "type": "single_choice",
+              "prompt": "u_n = 3n + 1 quand n→+∞ :",
+              "options": ["→ +∞", "→ 0", "→ 1", "→ −∞"],
+              "correctAnswers": [0],
+              "explanation": "Linéaire croissante."
+            },
+            {
+              "id": "u2-q08-03",
+              "type": "single_choice",
+              "prompt": "v_n = 2^n. Comportement ?",
+              "options": ["Croît très vite vers +∞", "→ 0", "→ 2", "Alterne"],
+              "correctAnswers": [0],
+              "explanation": "Exponentielle."
+            },
+            {
+              "id": "u2-q08-04",
+              "type": "single_choice",
+              "prompt": "u_n = (−1)^n. Limite finie ?",
+              "options": ["Non (pas de limite)", "0", "1", "−1"],
+              "correctAnswers": [0],
+              "explanation": "Oscille."
+            },
+            {
+              "id": "u2-q08-05",
+              "type": "single_choice",
+              "prompt": "Arithmétique r<0. Limite ?",
+              "options": ["→ −∞", "→ 0", "→ u_0", "→ +∞"],
+              "correctAnswers": [0],
+              "explanation": "Lineaire décroissante."
+            },
+            {
+              "id": "u2-q08-06",
+              "type": "single_choice",
+              "prompt": "v_n = 5×(1/2)^n. Limite ?",
+              "options": ["0", "5", "∞", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "Géométrique convergente."
+            },
+            {
+              "id": "u2-q08-07",
+              "type": "single_choice",
+              "prompt": "Comparer n et 2^n pour n grand :",
+              "options": ["2^n l'emporte", "n l'emporte", "Égaux", "→0"],
+              "correctAnswers": [0],
+              "explanation": "Exponentielle vs linéaire."
+            },
+            {
+              "id": "u2-q08-08",
+              "type": "single_choice",
+              "prompt": "u_n = 1/n. Limite intuitive ?",
+              "options": ["0", "1", "∞", "−∞"],
+              "correctAnswers": [0],
+              "explanation": "Harmonique."
+            },
+            {
+              "id": "u2-q08-09",
+              "type": "single_choice",
+              "prompt": "v_0=1, q=−0,9. |v_n| quand n→+∞ ?",
+              "options": ["→ 0", "→ ∞", "→ 1", "→ 0,9"],
+              "correctAnswers": [0],
+              "explanation": "|q|<1."
+            },
+            {
+              "id": "u2-q08-10",
+              "type": "single_choice",
+              "prompt": "Suite constante c. Limite ?",
+              "options": ["c", "0", "∞", "Indéfinie"],
+              "correctAnswers": [0],
+              "explanation": "Tous termes c."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Extremums sur un intervalle d'indices",
+          "questions": [
+            {
+              "id": "u2-q09-01",
+              "type": "multiple_choice",
+              "prompt": "u_n=2n−1 sur n=0…4. Vrai ?",
+              "options": [
+                "Minimum u_0=−1",
+                "Maximum u_4=7",
+                "Croissante sur l'intervalle",
+                "Maximum u_0"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Croissante : min u_0, max u_4."
+            },
+            {
+              "id": "u2-q09-02",
+              "type": "single_choice",
+              "prompt": "u_n=10−n, n=0…10. Max ?",
+              "options": ["10", "0", "5", "−10"],
+              "correctAnswers": [0],
+              "explanation": "n=0."
+            },
+            {
+              "id": "u2-q09-03",
+              "type": "single_choice",
+              "prompt": "v_n=8×0,5^n, n=0…3. Min ?",
+              "options": ["v_3=1", "v_0=8", "v_1=4", "0"],
+              "correctAnswers": [0],
+              "explanation": "Décroissante, min à n=3."
+            },
+            {
+              "id": "u2-q09-04",
+              "type": "single_choice",
+              "prompt": "u_n=n², n=1…5. Max ?",
+              "options": ["25", "16", "9", "5"],
+              "correctAnswers": [0],
+              "explanation": "n=5."
+            },
+            {
+              "id": "u2-q09-05",
+              "type": "single_choice",
+              "prompt": "Arithmétique r>0, indices 0…N. Max ?",
+              "options": ["u_N", "u_0", "u_{N/2}", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "Croissante."
+            },
+            {
+              "id": "u2-q09-06",
+              "type": "single_choice",
+              "prompt": "u_n=−n²+6n, n=0…6. Max ?",
+              "options": ["9 en n=3", "6", "0", "36"],
+              "correctAnswers": [0],
+              "explanation": "Sommet n=3, u_3=9."
+            },
+            {
+              "id": "u2-q09-07",
+              "type": "single_choice",
+              "prompt": "v_n=3×2^n, n=0…4. Min ?",
+              "options": ["3", "6", "48", "96"],
+              "correctAnswers": [0],
+              "explanation": "n=0."
+            },
+            {
+              "id": "u2-q09-08",
+              "type": "single_choice",
+              "prompt": "u_n=5 (constante), n=0…100. Min et max ?",
+              "options": ["5 et 5", "0 et 5", "5 et 100", "Min 0"],
+              "correctAnswers": [0],
+              "explanation": "Constante."
+            },
+            {
+              "id": "u2-q09-09",
+              "type": "single_choice",
+              "prompt": "u_n=4−2n, n=0…2. Plus petit terme ?",
+              "options": ["u_2=0", "u_0=4", "u_1=2", "−2"],
+              "correctAnswers": [0],
+              "explanation": "Décroissante, min n=2."
+            },
+            {
+              "id": "u2-q09-10",
+              "type": "single_choice",
+              "prompt": "Chercher extremum sur 0…N pour suite croissante :",
+              "options": [
+                "Comparer u_0 et u_N",
+                "Seulement u_0",
+                "Moyenne",
+                "Aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Min u_0, max u_N."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse — variation",
+          "questions": [
+            {
+              "id": "u2-q10-01",
+              "type": "multiple_choice",
+              "prompt": "u_n arithmétique r=−5. Vrai ?",
+              "options": [
+                "Strictement décroissante",
+                "u_3 − u_1 = −10",
+                "u_n → −∞",
+                "Croissante"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "r<0 : suite strictement décroissante ; u_3−u_1=2r=−10."
+            },
+            {
+              "id": "u2-q10-02",
+              "type": "single_choice",
+              "prompt": "v_n=2×3^n et u_n=2n. Pour n=0 :",
+              "options": ["Égales à 2", "v_0>u_0", "u_0>v_0", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "2 et 2."
+            },
+            {
+              "id": "u2-q10-03",
+              "type": "single_choice",
+              "prompt": "Suite décroissante et majorée par M :",
+              "options": ["u_n ≤ M", "u_n ≥ M", "u_n = M", "Diverge"],
+              "correctAnswers": [0],
+              "explanation": "Majorant."
+            },
+            {
+              "id": "u2-q10-04",
+              "type": "single_choice",
+              "prompt": "q=−1, v_0=7. Variation monotone ?",
+              "options": [
+                "Non (alternance)",
+                "Croissante",
+                "Décroissante",
+                "Constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alterne 7 et −7."
+            },
+            {
+              "id": "u2-q10-05",
+              "type": "single_choice",
+              "prompt": "u_n=1−0,1n. Premier n avec u_n≤0 ?",
+              "options": ["10", "9", "11", "1"],
+              "correctAnswers": [0],
+              "explanation": "1−0,1n≤0 ⇒ n≥10."
+            },
+            {
+              "id": "u2-q10-06",
+              "type": "single_choice",
+              "prompt": "v_n=100×1,01^n. Sens et signe ?",
+              "options": [
+                "Croissante, toujours positive",
+                "Décroissante",
+                "Négative",
+                "Constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "q>1, v_0>0."
+            },
+            {
+              "id": "u2-q10-07",
+              "type": "single_choice",
+              "prompt": "u_{n+1}−u_n>0 et u_n<0 pour tout n. Suite ?",
+              "options": [
+                "Croissante (peut rester négative)",
+                "Décroissante",
+                "Positive",
+                "Constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monotonie ≠ signe."
+            },
+            {
+              "id": "u2-q10-08",
+              "type": "single_choice",
+              "prompt": "Comparer croissance : u_n=n et v_n=√n :",
+              "options": [
+                "u_n l'emporte pour n≥1",
+                "v_n toujours au-dessus",
+                "Égales",
+                "Aucune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "n ≥ √n pour n≥1."
+            },
+            {
+              "id": "u2-q10-09",
+              "type": "single_choice",
+              "prompt": "Arithmétique r=0. Tableau complet ?",
+              "options": ["→ constant", "↗", "↘", "Chaotique"],
+              "correctAnswers": [0],
+              "explanation": "Variation nulle."
+            },
+            {
+              "id": "u2-q10-10",
+              "type": "single_choice",
+              "prompt": "Objectif première : étudier une suite, ordre logique ?",
+              "options": [
+                "Termes → variation → encadrements/modèle",
+                "Somme d'abord",
+                "Limite formelle L",
+                "Dérivée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Progression programme."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

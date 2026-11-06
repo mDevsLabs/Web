@@ -38,5 +38,4 @@ export function bindMenu(this:UI){
     this.app.querySelectorAll<HTMLButtonElement>('[data-buy-power]').forEach(b=>b.onclick=()=>{if(buyPower(this.profile,b.dataset.buyPower!)){saveProfile(this.profile);this.menu();}});
     this.app.querySelectorAll<HTMLButtonElement>('[data-loadout]').forEach(b=>b.onclick=()=>{const c=this.profile.career=normalizeCareer(this.profile.career,this.profile.collection),id=b.dataset.loadout!,next=c.loadout.includes(id)?c.loadout.filter(i=>i!==id):[...c.loadout,id];if(next.length>5)return;if(!next.some(i=>i!=='medkit'&&i!=='grenade')){this.notice('Gardez au moins une arme équipée.');return;}c.loadout=normalizeLoadout(next,this.profile.collection);if(!c.loadout.includes(this.config.weapon)){this.profile.weapon=this.config.weapon=c.loadout.find(i=>i!=='medkit'&&i!=='grenade')!;}saveProfile(this.profile);this.menu();});
     this.app.querySelectorAll<HTMLSelectElement>('[data-outfit]').forEach(e=>e.onchange=()=>{const c=this.profile.career=normalizeCareer(this.profile.career,this.profile.collection);c.appearance[e.dataset.outfit as 'self'|'ally'|'enemy']=e.value;saveProfile(this.profile);});
-    this.saves.bind();
   }

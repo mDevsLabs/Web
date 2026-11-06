@@ -25,7 +25,7 @@ describe("public/plugins/", () => {
   it("expose un fichier pour chaque connecteur déclaré", () => {
     const missing = INTEGRATION_PROVIDERS.filter((descriptor) => {
       const src = integrationLogoSrc(descriptor.id);
-      return !(src.startsWith("/plugins/") || src.startsWith("/mcp/"));
+      return !src.startsWith("/plugins/");
     });
     expect(missing.map((item) => item.id)).toEqual([]);
     for (const descriptor of INTEGRATION_PROVIDERS) {
@@ -104,7 +104,7 @@ describe("public/plugins/", () => {
   });
 
   it("dérive le chemin d'un identifiant, sans liste à entretenir", () => {
-    expect(integrationLogoSrc("google")).toBe("/plugins/google.svg");
+    expect(integrationLogoSrc("google-maps")).toBe("/plugins/google-maps.svg");
     expect(integrationLogoSrc("github")).toBe("/plugins/github.svg");
   });
 });

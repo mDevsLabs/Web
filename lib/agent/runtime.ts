@@ -9,6 +9,7 @@ import {
   toUIMessageStream,
 } from "ai";
 import { recordAgentUsage } from "@/lib/agent/accounting";
+import { remainingBudget } from "@/lib/agent/budget";
 import type { AgentContextResult } from "@/lib/agent/context/build";
 import {
   type AgentEventWriter,
@@ -45,6 +46,7 @@ import {
   deriveSuggestedActions,
   validateDerivedActions,
 } from "@/lib/agent/suggested-actions/derive";
+import { repairAgentToolCallWithinBudget } from "@/lib/agent/tool-call-repair";
 import {
   type AgentToolControllerState,
   createAgentToolController,
@@ -57,6 +59,7 @@ import type {
   ReasoningLevel,
   RegisteredAgentTool,
 } from "@/lib/agent/types";
+import { resolveModelMaxOutput } from "@/lib/ai/models";
 import type { ReasoningDetailsSink } from "@/lib/ai/reasoning-details";
 import { createReasoningChunkWriter } from "@/lib/ai/reasoning-stream";
 import { resolveReasoningProviderOptions } from "@/lib/ai/registry/reasoning";
@@ -125,6 +128,9 @@ export type AgentStreamParams = {
   // chain-of-thought : seuls les parts explicitement fournis par le provider
   // pour affichage transitent — le même protocole que le Chat.
   sendReasoning: boolean;
+  // Le catalogue déclare-t-il `tool_choice` ? Sinon la synthèse retire les
+  // outils (`activeTools: []`) au lieu d'envoyer un paramètre ignoré.
+  supportsToolChoice: boolean;
   // Indice de départ des étapes : sur une reprise (réponse, approbation), les
   // nouvelles étapes s'ajoutent à la suite au lieu de repartir de 0.
   startStepIndex?: number;
@@ -174,6 +180,22 @@ export function shouldForceAgentFinalResponse(params: {
     return true;
   }
   return params.stepCount >= Math.max(0, params.maxSteps - 1);
+}
+
+/**
+ * Dernière étape : une réponse texte, sans nouvel appel d'outil.
+ *
+ * Un modèle qui déclare `tool_choice` reçoit `none` et garde la liste des
+ * outils. Les autres (Flint, par exemple) ne comprennent pas ce paramètre :
+ * retirer les outils fait omettre `tools` et `tool_choice` par le SDK.
+ */
+export function agentFinalStepToolControl(
+  supportsToolChoice: boolean
+): { activeTools: [] } | { toolChoice: "none" } {
+  if (supportsToolChoice) {
+    return { toolChoice: "none" };
+  }
+  return { activeTools: [] };
 }
 
 export function createAgentStream(params: AgentStreamParams) {
@@ -322,6 +344,15 @@ export function createAgentStream(params: AgentStreamParams) {
       }
       await persistCheckpoint();
 
+      const budgetSnapshot = () =>
+        remainingBudget({
+          budget: params.budget,
+          now: clock.now(),
+          startedAt: params.startedAt,
+          stepCount: state.stepIndex,
+          toolCallCount: state.toolCallCount,
+        });
+
       const controller = createAgentToolController({
         approvalRequiredToolIds: params.approvalRequiredToolIds,
         base: {
@@ -335,6 +366,7 @@ export function createAgentStream(params: AgentStreamParams) {
           userId: params.userId,
         },
         executionOwner: params.executionOwner,
+        getRemainingMs: () => budgetSnapshot().remainingMs,
         maxToolAttempts: Math.max(1, params.budget.maxRetries + 1),
         onPlanProgress: ({ status, title }) => {
           if (!plan) {
@@ -402,6 +434,7 @@ export function createAgentStream(params: AgentStreamParams) {
           params.context.instructions,
           pendingReorientations
         ),
+        maxOutputTokens: resolveModelMaxOutput(params.modelId),
         maxRetries: params.budget.maxRetries,
         messages: params.context.messages,
         model: params.model,
@@ -540,7 +573,7 @@ export function createAgentStream(params: AgentStreamParams) {
         },
         prepareStep: async ({ steps }) => {
           if (state.waitingForUser || state.waitingForApproval) {
-            return { toolChoice: "none" };
+            return agentFinalStepToolControl(params.supportsToolChoice);
           }
           const elapsed = clock.now() - params.startedAt;
           // Comptage CUMULÉ à travers les reprises : baseline persistée +
@@ -573,7 +606,11 @@ export function createAgentStream(params: AgentStreamParams) {
             stepCount,
             toolCallCount: toolCalls,
           });
-          const patch: { instructions?: string; toolChoice?: "none" } = {};
+          const patch: {
+            activeTools?: [];
+            instructions?: string;
+            toolChoice?: "none";
+          } = {};
           // Les réorientations lues au dernier point sûr sont injectées ICI,
           // avant la construction de l'étape suivante. Les lire seulement en
           // fin d'étape (onStepEnd) les rendait inopérantes : les instructions
@@ -609,12 +646,21 @@ export function createAgentStream(params: AgentStreamParams) {
             );
           }
           if (forceFinalResponse) {
-            patch.toolChoice = "none";
+            Object.assign(
+              patch,
+              agentFinalStepToolControl(params.supportsToolChoice)
+            );
           }
 
           return Object.keys(patch).length > 0 ? patch : undefined;
         },
         ...(providerOptions ? { providerOptions } : {}),
+        repairToolCall: (options) =>
+          repairAgentToolCallWithinBudget({
+            budgetExhausted: budgetSnapshot().exhausted,
+            error: options.error,
+            toolCall: options.toolCall,
+          }),
         stopWhen: ({ steps }) => {
           if (state.waitingForUser || state.waitingForApproval) {
             return true;
@@ -669,10 +715,11 @@ export function createAgentStream(params: AgentStreamParams) {
         // L'erreur a déjà été captée par onError ; on poursuit la finalisation.
       }
 
-      // Un provider peut respecter toolChoice: "none" tout en renvoyant une
-      // étape vide. On ne laisse jamais un run terminé silencieusement sans
-      // texte conversationnel : les erreurs réseau réelles restent des
-      // erreurs, mais une réponse vide reçoit un fallback persistable.
+      // Un provider peut renvoyer une étape vide même quand les outils ont été
+      // retirés ou que toolChoice vaut "none". On ne laisse jamais un run
+      // terminé silencieusement sans texte conversationnel : les erreurs
+      // réseau réelles restent des erreurs, mais une réponse vide reçoit un
+      // fallback persistable.
       if (
         !state.waitingForApproval &&
         !state.waitingForUser &&

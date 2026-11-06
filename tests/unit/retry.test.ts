@@ -4,7 +4,7 @@ import {
   DEFAULT_TOOL_RETRY_POLICY,
   decideToolRetry,
 } from "@/lib/agent/retry";
-import { AgentToolError } from "@/lib/agent/tool-errors";
+import { AgentToolError, toAgentToolError } from "@/lib/agent/tool-errors";
 
 function transientError(): AgentToolError {
   return new AgentToolError({
@@ -78,5 +78,57 @@ describe("Politique de retry des outils", () => {
       remainingMs: 2000,
     });
     expect(decision).toEqual({ reason: "delay_exceeds_budget", retry: false });
+  });
+
+  it("refuse permission, quota et arguments invalides", () => {
+    const permission = new AgentToolError({
+      category: "permission",
+      code: "permission_denied",
+      message: "Action refusée.",
+    });
+    const quota = toAgentToolError(new Error("quota_exceeded secret"));
+    const invalid = new AgentToolError({
+      category: "invalid_arguments",
+      code: "invalid_input",
+      message: "Arguments invalides.",
+    });
+    for (const error of [permission, quota, invalid]) {
+      expect(
+        decideToolRetry({
+          attempt: 1,
+          error,
+          policy: DEFAULT_TOOL_RETRY_POLICY,
+        })
+      ).toEqual({ reason: "not_retryable", retry: false });
+    }
+    expect(quota.toSafeShape().message).not.toContain("secret");
+  });
+
+  it("attend au moins le Retry-After, sauf s'il dépasse le budget", () => {
+    const error = new AgentToolError({
+      category: "transient",
+      code: "tool_failed",
+      message: "Limité.",
+      retryAfterMs: 4000,
+    });
+    const waited = decideToolRetry({
+      attempt: 1,
+      error,
+      policy: DEFAULT_TOOL_RETRY_POLICY,
+      random: () => 0,
+    });
+    expect(waited).toEqual({ delayMs: 4000, retry: true });
+
+    const refused = decideToolRetry({
+      attempt: 1,
+      error,
+      policy: DEFAULT_TOOL_RETRY_POLICY,
+      random: () => 0,
+      remainingMs: 2000,
+    });
+    expect(refused).toEqual({
+      reason: "delay_exceeds_budget",
+      retry: false,
+    });
   });
 });

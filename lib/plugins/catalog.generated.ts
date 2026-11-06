@@ -13,7 +13,7 @@ import exchangeRatePluginManifest from "./exchange-rate/index.json";
 import frHolidaysPluginManifest from "./fr-holidays/index.json";
 import githubPluginManifest from "./github/index.json";
 import gitlabPublicPluginManifest from "./gitlab-public/index.json";
-import googlePluginManifest from "./google/index.json";
+import googleMapsPluginManifest from "./google-maps/index.json";
 import jiraPluginManifest from "./jira/index.json";
 import jsonToolboxPluginManifest from "./json-toolbox/index.json";
 import linearPluginManifest from "./linear/index.json";
@@ -27,7 +27,6 @@ import openFoodFactsPluginManifest from "./open-food-facts/index.json";
 import openLibraryPluginManifest from "./open-library/index.json";
 import openalexPluginManifest from "./openalex/index.json";
 import posthogPluginManifest from "./posthog/index.json";
-import quizzlyPluginManifest from "./quizzly/index.json";
 import resendPluginManifest from "./resend/index.json";
 import sentryPluginManifest from "./sentry/index.json";
 import sonarcloudPluginManifest from "./sonarcloud/index.json";
@@ -40,6 +39,7 @@ import vercelPluginManifest from "./vercel/index.json";
 import weatherPluginManifest from "./weather/index.json";
 import wikidataPluginManifest from "./wikidata/index.json";
 import worldBankPluginManifest from "./world-bank/index.json";
+import youtubePluginManifest from "./youtube/index.json";
 import zapierPluginManifest from "./zapier/index.json";
 import rootCatalog from "./index.json";
 import type { PluginCategory, PluginManifest } from "./types";
@@ -60,7 +60,7 @@ export const PLUGIN_MANIFESTS = [
   frHolidaysPluginManifest,
   githubPluginManifest,
   gitlabPublicPluginManifest,
-  googlePluginManifest,
+  googleMapsPluginManifest,
   jiraPluginManifest,
   jsonToolboxPluginManifest,
   linearPluginManifest,
@@ -74,7 +74,6 @@ export const PLUGIN_MANIFESTS = [
   openLibraryPluginManifest,
   openalexPluginManifest,
   posthogPluginManifest,
-  quizzlyPluginManifest,
   resendPluginManifest,
   sentryPluginManifest,
   sonarcloudPluginManifest,
@@ -87,6 +86,7 @@ export const PLUGIN_MANIFESTS = [
   weatherPluginManifest,
   wikidataPluginManifest,
   worldBankPluginManifest,
+  youtubePluginManifest,
   zapierPluginManifest,
 ] as unknown as PluginManifest[];
 

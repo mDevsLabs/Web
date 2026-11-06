@@ -171,10 +171,6 @@ export function registerAudioRoutes(app: Hono, database: typeof getDb = getDb) {
   app.get("/speech/voices", handleGetSpeechVoices);
   app.get("/v1/audio/voices", handleGetSpeechVoices);
   app.get("/audio/voices", handleGetSpeechVoices);
-  app.get("/api/vibe/speech/voices", handleGetSpeechVoices);
-  app.get("/vibe/speech/voices", handleGetSpeechVoices);
-  app.get("/api/speech/voices", handleGetSpeechVoices);
-  app.get("/api/v1/speech/voices", handleGetSpeechVoices);
 
   // ─────────────────────────────────────────────
   // GET /v1/speech/usage, /speech/usage, /v1/audio/usage & /usage/speech
@@ -815,12 +811,6 @@ export function registerAudioRoutes(app: Hono, database: typeof getDb = getDb) {
   app.post("/v1/audio/generations", handleAudioSpeech);
   app.post("/audio/speech", handleAudioSpeech);
   app.post("/audio/generations", handleAudioSpeech);
-  app.post("/api/vibe/speech", handleAudioSpeech);
-  app.post("/vibe/speech", handleAudioSpeech);
-  app.post("/api/speech", handleAudioSpeech);
-  app.post("/api/v1/speech", handleAudioSpeech);
-  app.post("/api/v1/audio/speech", handleAudioSpeech);
-  app.post("/api/vibe/audio/speech", handleAudioSpeech);
 
   // Routes Google Cloud TTS / Gemini SDK
   app.post("/v1beta/models/*:synthesizeSpeech", handleAudioSpeech);

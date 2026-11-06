@@ -1,0 +1,2678 @@
+{
+  "id": "5e-allemand-06",
+  "year": "5e",
+  "subject": "allemand",
+  "title": "L'avenir et les projets en l'allemand",
+  "order": 6,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Dire ce qu'on va faire",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases disent « demain » ?",
+              "options": [
+                "Morgen gehe ich in die Schule.",
+                "Gestern war ich müde.",
+                "Morgen spiele ich Fußball.",
+                "Heute regnet es."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Morgen » signifie « demain », pas « hier » ni « aujourd'hui »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « Demain je vais au cinéma » simplement ?",
+              "options": [
+                "Morgen gehe ich ins Kino.",
+                "Morgen ich gehe Kino.",
+                "Ich morgen gehe ins Kino.",
+                "Morgen gehe ins ich Kino."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre habituel est sujet + verbe : ich gehe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « Ich werde schwimmen » ?",
+              "options": [
+                "Je vais nager.",
+                "Je nage maintenant.",
+                "J'ai nagé.",
+                "Je n'aime pas nager."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« werde » + infinitif exprime une action future simple."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot correspond à « demain » ?",
+              "options": ["morgen", "heute", "gestern", "jetzt"],
+              "correctAnswers": [0],
+              "explanation": "« morgen » = demain ; « heute » = aujourd'hui."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ich gehe morgen nicht zur Schule » veut dire :",
+              "options": [
+                "Demain je ne vais pas à l'école.",
+                "Demain je vais à l'école.",
+                "Aujourd'hui je reste à la maison.",
+                "Hier je suis allé à l'école."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« nicht » nie la phrase : action future annulée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phrase parle du futur proche avec « gehen » ?",
+              "options": [
+                "Wir gehen am Samstag einkaufen.",
+                "Wir gingen gestern einkaufen.",
+                "Wir gehen jetzt schlafen.",
+                "Wir sind müde."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« am Samstag » indique un moment futur avec ich/wir gehen."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment demander « Qu'est-ce que tu fais demain ? »",
+              "options": [
+                "Was machst du morgen?",
+                "Was machst du gestern?",
+                "Was bist du morgen?",
+                "Machst was du morgen?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Was machst du morgen? » est la formule courante au collège."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Du gehst morgen ins Schwimmbad » : qui agit ?",
+              "options": ["tu", "je", "nous", "il"],
+              "correctAnswers": [0],
+              "explanation": "« du gehst » = tu vas."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que répond-on à « Was machst du morgen? » si on étudie ?",
+              "options": [
+                "Ich werde lernen.",
+                "Ich lernte gestern.",
+                "Ich bin müde.",
+                "Ich esse Pizza."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ich werde lernen » = demain j'apprendrai / je vais apprendre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Morgen haben wir frei » signifie :",
+              "options": [
+                "Demain nous n'avons pas cours.",
+                "Demain nous avons cours.",
+                "Aujourd'hui nous sommes libres.",
+                "Hier c'était un jour férié."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« frei haben » = ne pas avoir cours / être libre."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes sont correctes pour « je vais » ?",
+              "options": [
+                "Ich gehe.",
+                "Ich geht.",
+                "Ich werde gehen.",
+                "Ich gehen."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Ich gehe » ou « Ich werde gehen » conviennent ; « geht/gehen » ne vont pas avec ich."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Morgen spiele ich Tennis » : quand ?",
+              "options": ["demain", "aujourd'hui", "hier", "maintenant"],
+              "correctAnswers": [0],
+              "explanation": "« morgen » est en début ou milieu de phrase selon l'emphase."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Traduction de « Nous irons au parc demain » (simple) :",
+              "options": [
+                "Wir gehen morgen in den Park.",
+                "Wir gingen gestern in den Park.",
+                "Wir gehen heute in den Park.",
+                "Morgen wir gehen Park."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet wir + gehen + morgen + lieu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ich werde Fußball spielen » parle de :",
+              "options": [
+                "un projet futur",
+                "le passé",
+                "la météo",
+                "un refus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "werde + infinitif = intention ou futur proche."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Où se place souvent « morgen » ?",
+              "options": [
+                "Au début ou après le verbe, selon la phrase",
+                "Toujours à la fin seulement",
+                "Jamais en allemand",
+                "Uniquement avant le sujet toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux placements sont possibles au niveau 5e."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Er geht morgen zur Schule » : il va où ?",
+              "options": [
+                "à l'école demain",
+                "au cinéma hier",
+                "à la maison aujourd'hui",
+                "nulle part"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« zur Schule » = à l'école."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Négation : « Ich gehe morgen nicht ins Kino »",
+              "options": [
+                "Je ne vais pas au cinéma demain.",
+                "Je vais au cinéma demain.",
+                "Je suis au cinéma.",
+                "Je n'aime pas le cinéma."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« nicht » avant le complément ou en fin selon le focus."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Was wirst du morgen machen? » demande :",
+              "options": [
+                "ce que tu feras demain",
+                "ce que tu as fait hier",
+                "où tu habites",
+                "ton âge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« wirst du ... machen » = futur avec werden (5e)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réponse courte : demain, repos.",
+              "options": [
+                "Morgen ruhe ich mich aus.",
+                "Gestern ruhe ich mich aus.",
+                "Ich ruhe gestern aus.",
+                "Morgen ich müde bin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Morgen + verbe au présent ou werde + infinitif selon le style enseigné."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Sie geht morgen einkaufen » : Sie =",
+              "options": [
+                "elle (ou formule de politesse)",
+                "ils",
+                "tu",
+                "nous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« sie geht » peut être elle ou Madame/Mademoiselle selon le contexte."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots indiquent le futur / un moment à venir ?",
+              "options": ["morgen", "übermorgen", "gestern", "am Freitag"],
+              "correctAnswers": [0, 1],
+              "explanation": "morgen et übermorgen = demain et après-demain ; gestern = passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Übermorgen gehe ich zum Arzt » : c'est quand ?",
+              "options": ["après-demain", "demain", "hier", "chaque jour"],
+              "correctAnswers": [0],
+              "explanation": "« übermorgen » = après-demain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ich gehe am Montag in die Bibliothek »",
+              "options": [
+                "Lundi je vais à la bibliothèque.",
+                "Lundi passé j'y suis allé.",
+                "Je n'aime pas lire.",
+                "Aujourd'hui c'est lundi."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« am Montag » = lundi (prochain ou habituel selon le contexte)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Futur simple : « Ich werde meine Freunde treffen »",
+              "options": [
+                "Je vais retrouver mes amis.",
+                "Je retrouve mes amis maintenant.",
+                "Je n'ai pas d'amis.",
+                "J'ai rencontré mes amis."
+              ],
+              "correctAnswers": [0],
+              "explanation": "werde + treffen = futur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Heute lerne ich, morgen spiele ich » contrast :",
+              "options": [
+                "aujourd'hui étudier, demain jouer",
+                "demain étudier, hier jouer",
+                "tout le temps jouer",
+                "jamais apprendre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "heute / morgen opposent aujourd'hui et demain."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Wir werden morgen früh aufstehen »",
+              "options": [
+                "Demain nous nous lèverons tôt.",
+                "Hier nous nous sommes levés tôt.",
+                "Nous dormons.",
+                "Nous ne nous levons jamais."
+              ],
+              "correctAnswers": [0],
+              "explanation": "werden + aufstehen = se lever (futur)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Question : projet pour demain soir.",
+              "options": [
+                "Was machst du morgen Abend?",
+                "Was machst du gestern Abend?",
+                "Wo wohnst du?",
+                "Wie alt bist du?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« morgen Abend » = demain soir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ich gehe nicht morgen, ich gehe heute »",
+              "options": [
+                "Je n'y vais pas demain, j'y vais aujourd'hui.",
+                "Je vais demain seulement.",
+                "Je ne vais jamais.",
+                "Je suis allé hier."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraste heute / morgen avec nicht."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Du wirst morgen viel Spaß haben » promet :",
+              "options": [
+                "tu t'amuseras beaucoup demain",
+                "tu t'es amusé hier",
+                "tu es triste",
+                "tu ne viens pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spaß haben = s'amuser."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Morgen ist ein schöner Tag » parle de :",
+              "options": [
+                "la météo ou l'humeur de demain",
+                "hier seulement",
+                "la nuit",
+                "le passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase simple sur demain (météo ou opinion)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent « ich gehe » correctement ?",
+              "options": [
+                "Ich gehe morgen nach Hause.",
+                "Ich gehe zur Party am Samstag.",
+                "Ich gehe gestern ins Bett.",
+                "Ich gehe ins Schwimmbad."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« gestern » avec le présent « gehe » est incohérent ; les autres projets futurs conviennent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Nach Hause gehe ich morgen » : sens ?",
+              "options": [
+                "Demain je rentre à la maison.",
+                "Je suis à la maison.",
+                "Je ne rentre pas.",
+                "Hier je suis resté."
+              ],
+              "correctAnswers": [0],
+              "explanation": "nach Hause = à la maison (retour)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ich werde morgen frühstücken »",
+              "options": [
+                "Demain je prendrai le petit-déjeuner.",
+                "Je déjeune maintenant.",
+                "Je n'ai pas faim.",
+                "Hier j'ai mangé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "frühstücken = prendre le petit-déjeuner."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lieu : « ins Kino gehen »",
+              "options": [
+                "aller au cinéma",
+                "aller à l'école",
+                "rester chez soi",
+                "nager"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ins Kino = au cinéma (accusatif)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Am Wochenende gehen wir wandern »",
+              "options": [
+                "Le week-end nous allons randonner.",
+                "Nous sommes allés randonner hier.",
+                "Nous ne sortons pas.",
+                "Nous travaillons."
+              ],
+              "correctAnswers": [0],
+              "explanation": "am Wochenende = le week-end."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Was wirst du am Samstag machen? »",
+              "options": [
+                "Que feras-tu samedi ?",
+                "Que fais-tu maintenant ?",
+                "Où es-tu samedi passé ?",
+                "As-tu faim ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "am Samstag + futur = projet pour samedi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Ich gehe mit meiner Schwester einkaufen »",
+              "options": [
+                "Je vais faire les courses avec ma sœur.",
+                "Ma sœur est malade.",
+                "Je suis seul.",
+                "Nous avons acheté hier."
+              ],
+              "correctAnswers": [0],
+              "explanation": "mit + Dativ ; einkaufen = faire les courses."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Morgen beginnt die Schule um acht Uhr »",
+              "options": [
+                "Demain les cours commencent à huit heures.",
+                "Les cours commencent hier.",
+                "Il est huit heures.",
+                "Pas de cours demain."
+              ],
+              "correctAnswers": [0],
+              "explanation": "beginnt = commence (3e personne)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Er wird morgen nicht kommen »",
+              "options": [
+                "Il ne viendra pas demain.",
+                "Il vient demain.",
+                "Il est là.",
+                "Il est venu hier."
+              ],
+              "correctAnswers": [0],
+              "explanation": "nicht + futur avec werden."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Plan : foot demain après-midi.",
+              "options": [
+                "Morgen Nachmittag spiele ich Fußball.",
+                "Gestern Nachmittag spiele ich Fußball.",
+                "Ich spiele nie Fußball.",
+                "Fußball ist langweilig."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Morgen Nachmittag = demain après-midi."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses parlent d'un plan pour demain ?",
+              "options": [
+                "Morgen gehe ich zu meiner Oma.",
+                "Ich werde morgen lernen.",
+                "Gestern war ich krank.",
+                "Heute ist es warm."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Oma et lernen avec morgen ; gestern/heute ne sont pas des projets futurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« zu meiner Oma » signifie :",
+              "options": [
+                "chez ma grand-mère",
+                "à l'école",
+                "au parc",
+                "au supermarché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oma = grand-mère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ich werde mein Zimmer aufräumen »",
+              "options": [
+                "Je vais ranger ma chambre.",
+                "Ma chambre est propre.",
+                "Je dors.",
+                "Je joue."
+              ],
+              "correctAnswers": [0],
+              "explanation": "aufräumen = ranger."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Wir gehen morgen in den Zoo » : où ?",
+              "options": ["au zoo", "au cinéma", "à la piscine", "à l'hôpital"],
+              "correctAnswers": [0],
+              "explanation": "Zoo = zoo."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Négation future : « Sie wird morgen nicht arbeiten »",
+              "options": [
+                "Elle ne travaillera pas demain.",
+                "Elle travaille demain.",
+                "Elle travaille beaucoup.",
+                "Elle est en vacances aujourd'hui."
+              ],
+              "correctAnswers": [0],
+              "explanation": "nicht avec werden."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Was macht ihr morgen? » s'adresse à :",
+              "options": [
+                "vous (pluriel) / vous tous",
+                "une seule personne formelle seule",
+                "il",
+                "personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ihr = vous (pluriel familier)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réponse : « Wir gehen ins Museum »",
+              "options": [
+                "Nous allons au musée.",
+                "Nous sommes au musée hier.",
+                "Je vais seul.",
+                "Nous restons."
+              ],
+              "correctAnswers": [0],
+              "explanation": "ins Museum = au musée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ich gehe morgen früh zur Schule » : früh =",
+              "options": ["tôt", "tard", "jamais", "vite"],
+              "correctAnswers": [0],
+              "explanation": "früh = tôt ; spät = tard."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Du wirst morgen einen Test schreiben »",
+              "options": [
+                "Demain tu auras un contrôle.",
+                "Tu as eu un contrôle hier.",
+                "Tu n'as pas de contrôle.",
+                "Tu lis un livre."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Test schreiben = passer/écrire un contrôle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Morgen regnet es vielleicht »",
+              "options": [
+                "Demain il pleuvra peut-être.",
+                "Il pleut maintenant.",
+                "Il a plu hier.",
+                "Il ne pleut jamais."
+              ],
+              "correctAnswers": [0],
+              "explanation": "vielleicht = peut-être."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adverbes de temps vont avec des projets futurs ?",
+              "options": ["bald", "später", "sofort gestern", "neulich"],
+              "correctAnswers": [0, 1],
+              "explanation": "bald/später = bientôt/plus tard ; gestern/neulich = passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Bald gehe ich in den Urlaub »",
+              "options": [
+                "Bientôt je pars en vacances.",
+                "Je suis en vacances depuis hier.",
+                "Je ne pars pas.",
+                "Les vacances sont finies."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Urlaub = vacances."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Später werde ich meine Hausaufgaben machen »",
+              "options": [
+                "Plus tard je ferai mes devoirs.",
+                "Je fais mes devoirs maintenant.",
+                "Je n'ai pas de devoirs.",
+                "J'ai fini mes devoirs."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hausaufgaben = devoirs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ich gehe morgen zum Friseur »",
+              "options": [
+                "Demain je vais chez le coiffeur.",
+                "Je coupe les cheveux moi-même.",
+                "Hier j'y suis allé.",
+                "Je n'aime pas mes cheveux."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Friseur = coiffeur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Wir werden uns morgen treffen »",
+              "options": [
+                "Demain nous nous retrouverons.",
+                "Nous nous sommes vus hier.",
+                "Nous ne nous connaissons pas.",
+                "Nous sommes en classe."
+              ],
+              "correctAnswers": [0],
+              "explanation": "sich treffen = se retrouver."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Was wirst du nach der Schule machen? »",
+              "options": [
+                "Que feras-tu après l'école ?",
+                "Que fais-tu pendant les cours ?",
+                "Où est l'école ?",
+                "As-tu de l'argent ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "nach der Schule = après l'école."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Er geht morgen mit dem Bus »",
+              "options": [
+                "Demain il prend le bus.",
+                "Il prend le bus hier.",
+                "Il marche toujours.",
+                "Le bus est en panne aujourd'hui."
+              ],
+              "correctAnswers": [0],
+              "explanation": "mit dem Bus = en bus."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ich werde nicht fernsehen, ich werde lesen »",
+              "options": [
+                "Je ne regarderai pas la télé, je lirai.",
+                "Je regarde la télé.",
+                "Je n'aime pas lire.",
+                "Hier j'ai lu."
+              ],
+              "correctAnswers": [0],
+              "explanation": "fernsehen = regarder la télé ; lesen = lire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Morgen kochen wir zusammen »",
+              "options": [
+                "Demain nous cuisinons ensemble.",
+                "Nous avons cuisiné hier.",
+                "Personne ne cuisine.",
+                "Nous mangeons au restaurant."
+              ],
+              "correctAnswers": [0],
+              "explanation": "kochen = cuisiner ; zusammen = ensemble."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Die Schule fängt morgen wieder an »",
+              "options": [
+                "Les cours reprennent demain.",
+                "Les cours sont finis pour toujours.",
+                "C'est les vacances aujourd'hui.",
+                "L'école est fermée hier."
+              ],
+              "correctAnswers": [0],
+              "explanation": "wieder anfangen = recommencer."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases avec « werden » sont correctes au niveau 5e ?",
+              "options": [
+                "Ich werde helfen.",
+                "Du wirst kommen.",
+                "Ich werde gegangen.",
+                "Er wird spielen."
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "werden + infinitif ; pas werden + participe passé simple ici."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ich werde dir helfen » promet :",
+              "options": [
+                "Je vais t'aider.",
+                "Je t'ai aidé.",
+                "Je ne peux pas aider.",
+                "Tu m'aides."
+              ],
+              "correctAnswers": [0],
+              "explanation": "helfen + Dativ dir = t'aider."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Morgen fahre ich mit dem Zug »",
+              "options": [
+                "Demain je prendrai le train.",
+                "Je prends le train hier.",
+                "Je n'aime pas le train.",
+                "Le train est parti."
+              ],
+              "correctAnswers": [0],
+              "explanation": "fahren mit dem Zug = voyager en train."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Was machen Sie morgen? » : Sie =",
+              "options": [
+                "vous (formule de politesse)",
+                "ils",
+                "tu seulement",
+                "nous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sie majuscule = vous (politesse)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ich gehe morgen zum Sport »",
+              "options": [
+                "Demain je fais du sport / vais au sport.",
+                "Je fais du sport hier.",
+                "Je déteste le sport.",
+                "Le sport est annulé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "zum Sport = au sport (activité)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Wir werden ein Picknick machen »",
+              "options": [
+                "Nous ferons un pique-nique.",
+                "Nous avons pique-niqué.",
+                "Il pleut.",
+                "Nous restons dedans."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Picknick machen = faire un pique-nique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Du gehst morgen zu Lisa »",
+              "options": [
+                "Demain tu vas chez Lisa.",
+                "Lisa vient chez toi.",
+                "Tu ne connais pas Lisa.",
+                "C'était hier."
+              ],
+              "correctAnswers": [0],
+              "explanation": "zu + personne = chez."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Er wird morgen Geburtstag feiern »",
+              "options": [
+                "Demain il fêtera son anniversaire.",
+                "Son anniversaire était hier.",
+                "Il n'a pas d'anniversaire.",
+                "Il est triste."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Geburtstag feiern = fêter un anniversaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Morgen muss ich früh aufstehen » (muss = devoir)",
+              "options": [
+                "Demain je dois me lever tôt.",
+                "Je peux dormir.",
+                "Je me suis levé tôt hier.",
+                "Je ne vais pas dormir jamais."
+              ],
+              "correctAnswers": [0],
+              "explanation": "muss = je dois (modal simple)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ich gehe morgen nicht spazieren »",
+              "options": [
+                "Demain je ne me promène pas.",
+                "Je me promène demain.",
+                "J'aime me promener.",
+                "Il fait beau."
+              ],
+              "correctAnswers": [0],
+              "explanation": "spazieren gehen = se promener."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels jours peuvent accompagner un plan futur avec « am » ?",
+              "options": [
+                "am Dienstag",
+                "am Sonntag",
+                "am gestern",
+                "am letzten Jahr"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "am + jour de la semaine ; gestern/letztes Jahr = passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Am Dienstag gehe ich zum Arzt »",
+              "options": [
+                "Mardi je vais chez le médecin.",
+                "Mardi passé j'y suis allé.",
+                "Je suis malade aujourd'hui seulement.",
+                "Je n'aime pas le médecin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arzt = médecin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ich werde am Sonntag schlafen » (beaucoup)",
+              "options": [
+                "Dimanche je dormirai / je me reposerai.",
+                "Je dors en classe.",
+                "Dimanche passé j'ai travaillé.",
+                "Je ne dors jamais."
+              ],
+              "correctAnswers": [0],
+              "explanation": "schlafen = dormir."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Was macht deine Familie morgen? »",
+              "options": [
+                "Que fait ta famille demain ?",
+                "Où habite ta famille ?",
+                "Combien de personnes ?",
+                "Ta famille est grande ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Familie = famille."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Meine Eltern gehen morgen ins Restaurant »",
+              "options": [
+                "Mes parents vont au restaurant demain.",
+                "Mes parents cuisinent.",
+                "Mes parents sont au travail hier.",
+                "Je vais seul."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eltern = parents ; Restaurant = restaurant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Ich werde morgen meine Freundin anrufen »",
+              "options": [
+                "Demain j'appellerai mon amie.",
+                "J'ai appelé hier.",
+                "Je n'ai pas de téléphone.",
+                "Elle m'appelle."
+              ],
+              "correctAnswers": [0],
+              "explanation": "anrufen = appeler (téléphone)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Wir gehen morgen auf die Party »",
+              "options": [
+                "Demain nous allons à la fête.",
+                "La fête est finie.",
+                "Nous n'aimons pas les fêtes.",
+                "Hier nous sommes restés."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Party = fête (emprunt courant)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Du wirst müde sein morgen » avertit :",
+              "options": [
+                "Demain tu seras fatigué.",
+                "Tu es fatigué maintenant.",
+                "Tu dors bien.",
+                "Tu es sportif."
+              ],
+              "correctAnswers": [0],
+              "explanation": "müde sein = être fatigué."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Morgen ist Schule wieder da » (reprise)",
+              "options": [
+                "Demain les cours reprennent.",
+                "Plus jamais d'école.",
+                "C'est les vacances demain.",
+                "L'école est loin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression simple de reprise des cours."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ich gehe morgen mit Hund spazieren »",
+              "options": [
+                "Demain je promène le chien.",
+                "Je n'ai pas de chien.",
+                "Le chien dort.",
+                "Hier nous sommes restés."
+              ],
+              "correctAnswers": [0],
+              "explanation": "mit dem Hund spazieren = promener le chien."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles questions portent sur demain ?",
+              "options": [
+                "Was machst du morgen?",
+                "Wo gehst du morgen hin?",
+                "Was hast du gestern gemacht?",
+                "Wo warst du letzte Woche?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "morgen dans la question ; gestern/letzte Woche = passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Wo gehst du morgen hin? » demande :",
+              "options": [
+                "où tu iras demain",
+                "comment tu vas",
+                "qui tu es",
+                "quelle heure il est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "wo ... hin = direction / destination."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réponse : « Ich gehe morgen in die Stadt »",
+              "options": [
+                "Demain je vais en ville.",
+                "Je suis en ville maintenant.",
+                "Je reste à la maison.",
+                "Hier j'étais en ville."
+              ],
+              "correctAnswers": [0],
+              "explanation": "in die Stadt = en ville."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ich werde morgen Gitarre spielen »",
+              "options": [
+                "Demain je jouerai de la guitare.",
+                "Je joue du piano.",
+                "Je n'aime pas la musique.",
+                "J'ai joué hier."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gitarre spielen = jouer de la guitare."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Sie gehen morgen zum Konzert » : Sie =",
+              "options": [
+                "ils/elles",
+                "je",
+                "tu",
+                "vous (politesse) selon contexte — ici ils/elles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sie gehen = ils/elles vont (pluriel)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Morgen bleibe ich zu Hause »",
+              "options": [
+                "Demain je reste à la maison.",
+                "Je sors demain.",
+                "Je suis à l'école.",
+                "Hier je suis sorti."
+              ],
+              "correctAnswers": [0],
+              "explanation": "bleiben = rester ; zu Hause = à la maison."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Ich werde morgen nicht schwimmen gehen »",
+              "options": [
+                "Demain je n'irai pas nager.",
+                "Je vais nager demain.",
+                "Je nage bien.",
+                "La piscine est fermée hier."
+              ],
+              "correctAnswers": [0],
+              "explanation": "schwimmen gehen = aller nager."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Was werdet ihr am Wochenende machen? »",
+              "options": [
+                "Que ferez-vous le week-end ?",
+                "Que faisiez-vous l'an passé ?",
+                "Où est le week-end ?",
+                "Avez-vous cours ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "werdet ihr = futur pour vous (pluriel)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Er geht morgen zum Training »",
+              "options": [
+                "Demain il va à l'entraînement.",
+                "Il s'entraîne hier.",
+                "Il abandonne le sport.",
+                "Il est coach."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Training = entraînement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Morgen kaufe ich ein Geschenk »",
+              "options": [
+                "Demain j'achète un cadeau.",
+                "J'ai acheté un cadeau.",
+                "Je n'ai pas d'argent.",
+                "Le cadeau est pour hier."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Geschenk = cadeau ; kaufen = acheter."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases décrivent un projet pour demain matin ?",
+              "options": [
+                "Morgen früh stehe ich um sieben Uhr auf.",
+                "Ich werde morgen früh joggen.",
+                "Gestern früh war es kalt.",
+                "Heute früh esse ich Müsli."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "morgen früh + futur ou présent pour plan ; gestern/heute früh = autre moment."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Um sieben Uhr » indique :",
+              "options": [
+                "à sept heures",
+                "sept jours",
+                "sept personnes",
+                "en sept minutes seulement passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "um + heure = à ... heures."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ich gehe morgen mit meinen Freunden ins Kino »",
+              "options": [
+                "Demain je vais au cinéma avec mes amis.",
+                "Je vais seul.",
+                "Mes amis sont absents hier.",
+                "Je n'aime pas le cinéma."
+              ],
+              "correctAnswers": [0],
+              "explanation": "mit meinen Freunden = avec mes amis."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Wir werden morgen viel lernen »",
+              "options": [
+                "Demain nous apprendrons beaucoup.",
+                "Nous n'apprenons rien.",
+                "Nous avons appris hier.",
+                "Les cours sont annulés."
+              ],
+              "correctAnswers": [0],
+              "explanation": "viel lernen = apprendre beaucoup."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Was wirst du morgen früh machen? »",
+              "options": [
+                "Que feras-tu demain matin ?",
+                "As-tu déjeuné ?",
+                "Où es-tu ?",
+                "Quelle est ta matière préférée ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "morgen früh = demain matin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Ich gehe morgen nicht zur Party »",
+              "options": [
+                "Demain je ne vais pas à la fête.",
+                "Je vais à la fête.",
+                "La fête est géniale.",
+                "Hier c'était la fête."
+              ],
+              "correctAnswers": [0],
+              "explanation": "nicht zur Party = pas à la fête."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Er wird morgen seine Großeltern besuchen »",
+              "options": [
+                "Demain il rendra visite à ses grands-parents.",
+                "Ses grands-parents viennent ici.",
+                "Il n'a pas de famille.",
+                "Visite faite hier."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Großeltern besuchen = rendre visite aux grands-parents."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Morgen ist ein neuer Tag » exprime :",
+              "options": [
+                "Demain est un nouveau jour (optimisme).",
+                "Hier était parfait.",
+                "Aujourd'hui est fini seulement négatif.",
+                "Jamais de changement."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression motivante simple."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Du gehst morgen in die Bibliothek, oder? »",
+              "options": [
+                "Demain tu vas à la bibliothèque, n'est-ce pas ?",
+                "Tu n'y vas jamais.",
+                "Tu y es hier.",
+                "C'est fermé demain seulement sans sens."
+              ],
+              "correctAnswers": [0],
+              "explanation": "..., oder? = n'est-ce pas ? (tag question)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan : parler de ses projets demain, on utilise surtout :",
+              "options": [
+                "morgen, ich gehe, ich werde + infinitif",
+                "gestern, ich war, ich hatte",
+                "nur le passé composé français",
+                "kein Deutsch"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chapitre centré sur morgen et constructions simples du futur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Invitations",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont des invitations ?",
+              "options": [
+                "Kommst du mit?",
+                "Komm mit zum Kino!",
+                "Ich bin müde.",
+                "Gehst du weg?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Komm(st) du mit / Komm mit invitent à accompagner ; les autres ne proposent pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Kommst du mit? » signifie :",
+              "options": [
+                "Tu viens avec moi ?",
+                "Tu pars ?",
+                "Tu es malade ?",
+                "Tu m'aides ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "mitkommen = venir avec quelqu'un."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réponse positive simple :",
+              "options": [
+                "Ja, gerne!",
+                "Nein, danke.",
+                "Vielleicht morgen.",
+                "Ich heiße Tom."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ja, gerne! = oui, volontiers !"
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Refus poli :",
+              "options": [
+                "Nein, leider nicht.",
+                "Ja, klar!",
+                "Komm mit!",
+                "Guten Tag."
+              ],
+              "correctAnswers": [0],
+              "explanation": "leider nicht = malheureusement non."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Hast du Zeit am Samstag? » demande :",
+              "options": [
+                "As-tu du temps samedi ?",
+                "Quelle heure est-il ?",
+                "Où es-tu samedi passé ?",
+                "As-tu de l'argent ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zeit haben = avoir du temps."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Kommst du zu meiner Party? »",
+              "options": [
+                "Tu viens à ma fête ?",
+                "Ma fête est finie.",
+                "Je n'ai pas de fête.",
+                "Tu organises la fête."
+              ],
+              "correctAnswers": [0],
+              "explanation": "zu meiner Party = à ma fête."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Wann treffen wir uns? »",
+              "options": [
+                "Quand nous retrouvons-nous ?",
+                "Où habitons-nous ?",
+                "Pourquoi ?",
+                "Qui es-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sich treffen = se retrouver."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Wo treffen wir uns? »",
+              "options": [
+                "Où nous retrouvons-nous ?",
+                "Quand ?",
+                "Combien ?",
+                "Pourquoi pas ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "wo = où (lieu)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Lust auf Kino? » propose :",
+              "options": [
+                "Envie d'aller au cinéma ?",
+                "Tu détestes le cinéma.",
+                "Le cinéma est fermé.",
+                "Film hier soir passé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lust auf = envie de."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Accepter : « Super, ich komme mit! »",
+              "options": [
+                "Super, je viens avec toi !",
+                "Je ne viens pas.",
+                "Je suis en retard hier.",
+                "Au revoir."
+              ],
+              "correctAnswers": [0],
+              "explanation": "ich komme mit = je viens (avec toi)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses acceptent une invitation ?",
+              "options": [
+                "Ja, klar!",
+                "Gerne!",
+                "Leider nein.",
+                "Ich kann nicht."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ja klar / Gerne = oui ; leider nein / ich kann nicht = refus."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Möchtest du mitkommen? » =",
+              "options": [
+                "Veux-tu venir avec ?",
+                "Tu es déjà venu.",
+                "Partez !",
+                "Silence."
+              ],
+              "correctAnswers": [0],
+              "explanation": "möchten = vouloir (poli, 5e)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ich lade dich ein »",
+              "options": [
+                "Je t'invite.",
+                "Je te dis au revoir.",
+                "Je te punis.",
+                "Tu m'invites."
+              ],
+              "correctAnswers": [0],
+              "explanation": "einladen = inviter."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Komm doch mit! » est :",
+              "options": [
+                "une invitation amicale",
+                "une interdiction",
+                "une question sur l'heure",
+                "un devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "doch mit = insiste amicalement pour venir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Um wie viel Uhr? »",
+              "options": [
+                "À quelle heure ?",
+                "Combien de temps ?",
+                "Quel jour ?",
+                "Pourquoi ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Um wie viel Uhr = à quelle heure."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Am Samstag um drei Uhr »",
+              "options": [
+                "Samedi à trois heures",
+                "Samedi passé seulement hier",
+                "Trois samedis",
+                "À trois heures hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "am Samstag um drei Uhr = samedi à 15h."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Treffen wir uns vor dem Kino »",
+              "options": [
+                "Retrouvons-nous devant le cinéma",
+                "Allons au cinéma hier passé",
+                "Le cinéma est loin sans rendez-vous",
+                "Je ne viens pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "vor dem Kino = devant le cinéma."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Refus : « Tut mir leid, ich habe keine Zeit »",
+              "options": [
+                "Désolé, je n'ai pas le temps",
+                "Oui avec plaisir",
+                "J'ai beaucoup de temps",
+                "Merci pour l'invitation acceptée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tut mir leid = désolé ; keine Zeit = pas de temps."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Hast du Lust auf Eis? »",
+              "options": [
+                "Tu as envie d'une glace ?",
+                "Tu as peur ?",
+                "Tu manges de la soupe ?",
+                "C'est l'hiver seulement."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eis = glace (crème glacée)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Wir gehen schwimmen, kommst du? »",
+              "options": [
+                "Nous allons nager, tu viens ?",
+                "Nous nageons hier seulement",
+                "Tu nages seul toujours",
+                "Pas de piscine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "schwimmen gehen + kommst du = invitation."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots servent à fixer un rendez-vous ?",
+              "options": ["Wann?", "Wo?", "Warum?", "Gestern"],
+              "correctAnswers": [0, 1],
+              "explanation": "Wann/Wo = quand/où ; gestern ne fixe pas un RDV futur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Wann beginnt die Party? »",
+              "options": [
+                "Quand commence la fête ?",
+                "Où est la fête ?",
+                "Qui vient ?",
+                "Pourquoi une fête ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "beginnt = commence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Die Party beginnt um acht Uhr »",
+              "options": [
+                "La fête commence à huit heures",
+                "La fête est finie",
+                "Huit personnes",
+                "Hier à huit heures passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "um acht Uhr = à huit heures."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Kommst du am Freitag mit? »",
+              "options": [
+                "Tu viens vendredi avec nous ?",
+                "Vendredi passé tu es venu",
+                "Tu restes seul",
+                "Vendredi interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "am Freitag = vendredi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ja, am Freitag habe ich Zeit »",
+              "options": [
+                "Oui, vendredi j'ai du temps",
+                "Non vendredi",
+                "Je n'ai jamais de temps",
+                "Vendredi j'ai cours seulement négatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zeit haben = être disponible."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Wo ist dein Haus? » (pour une fête)",
+              "options": [
+                "Où est ta maison ?",
+                "Quand est la fête ?",
+                "Combien coûte ?",
+                "Qui cuisine ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Haus = maison (lieu de fête)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Komm um sechs Uhr »",
+              "options": [
+                "Viens à six heures",
+                "Pars à six heures",
+                "Il est six heures passé hier",
+                "Six jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Imperatif Komm + heure."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ich kann am Montag nicht »",
+              "options": [
+                "Je ne peux pas lundi",
+                "Je peux lundi",
+                "Lundi est libre",
+                "J'aime lundi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "kann nicht = ne peux pas."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Vielleicht am Sonntag? »",
+              "options": [
+                "Peut-être dimanche ?",
+                "Dimanche impossible toujours",
+                "Dimanche passé",
+                "Non dimanche ferme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "vielleicht = peut-être (contre-proposition)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Bis dann! » après accord =",
+              "options": [
+                "À tout à l'heure / à plus !",
+                "Bonjour",
+                "Au revoir définitif triste",
+                "Non merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bis dann = à bientôt (après plan)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases proposent une sortie ?",
+              "options": [
+                "Gehen wir ins Café?",
+                "Lust auf Pizza?",
+                "Ich esse allein.",
+                "Das Wetter ist schlecht."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Gehen wir / Lust auf = proposition ; manger seul ou météo ne invitent pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Gehen wir ins Café? »",
+              "options": [
+                "Allons-nous au café ?",
+                "Je suis au café hier",
+                "Le café est fermé sans invitation",
+                "Tu vas seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gehen wir = allons-nous (nous inclusive)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Lust auf Pizza? » réponse oui :",
+              "options": [
+                "Ja, gern!",
+                "Nein, nie",
+                "Ich bin Pizza",
+                "Pizza ist teuer only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "gern = volontiers."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Spielen wir morgen Fußball? »",
+              "options": [
+                "Jouons-nous au foot demain ?",
+                "Foot hier passé",
+                "Je déteste le foot seul",
+                "Pas de ballon ever"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spielen wir = jouons-nous."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Wo sollen wir uns treffen? »",
+              "options": [
+                "Où devons-nous nous retrouver ?",
+                "Quand ?",
+                "Pourquoi ?",
+                "Qui paie ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sollen = devoir (ici: où convenons-nous)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Vor der Schule » comme lieu",
+              "options": [
+                "Devant l'école",
+                "Derrière l'école",
+                "Dans l'école fermée nuit",
+                "Loin de l'école sans précision"
+              ],
+              "correctAnswers": [0],
+              "explanation": "vor = devant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Kommst du mit ins Schwimmbad? »",
+              "options": [
+                "Tu viens à la piscine avec moi ?",
+                "Tu nages hier seul passé",
+                "Piscine interdite",
+                "Je reste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ins Schwimmbad = à la piscine."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Sorry, ich muss lernen »",
+              "options": [
+                "Désolé, je dois étudier (refus)",
+                "Oui j'apprends avec toi fête",
+                "Je viens quand même",
+                "Invitation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "muss lernen = obligation de devoirs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Hast du am Nachmittag Zeit? »",
+              "options": [
+                "As-tu du temps l'après-midi ?",
+                "Matin seulement",
+                "Nuit",
+                "An passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "am Nachmittag = l'après-midi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Klar, bis später! »",
+              "options": [
+                "D'accord, à plus tard !",
+                "Refus",
+                "Bonjour",
+                "Je ne viens pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Klar = d'accord ; bis später = à tout à l'heure."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels jours peut-on citer dans une invitation ?",
+              "options": [
+                "am Samstag",
+                "am Mittwoch",
+                "am gestern",
+                "am vorige Woche"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "am + jour ; gestern/vorige Woche = passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Einladung » signifie :",
+              "options": ["invitation", "école", "devoir", "météo"],
+              "correctAnswers": [0],
+              "explanation": "Einladung = invitation (nom)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ich mache eine Party am Samstag »",
+              "options": [
+                "Je fais une fête samedi",
+                "Fête hier",
+                "Pas de fête",
+                "Tu fais la fête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "eine Party machen = organiser une fête."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Du bist eingeladen! »",
+              "options": [
+                "Tu es invité !",
+                "Tu n'es pas invité",
+                "Invitation annulée",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "eingeladen = invité (participe)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Bringst du einen Freund mit? »",
+              "options": [
+                "Tu amènes un ami avec toi ?",
+                "Tu n'as pas d'amis",
+                "Un ami part seul",
+                "Ami interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "mitbringen = amener avec soi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Ja, meinen Freund Tom »",
+              "options": [
+                "Oui, mon ami Tom",
+                "Non personne",
+                "Tom n'existe",
+                "Tom refuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "meinen Freund = mon ami (accusatif)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Die Party ist um sieben Uhr bei mir »",
+              "options": [
+                "La fête est à sept heures chez moi",
+                "Chez toi",
+                "Sept jours",
+                "Hier sept heures passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "bei mir = chez moi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Komm bitte pünktlich »",
+              "options": [
+                "Viens s'il te plaît à l'heure",
+                "En retard",
+                "Ne viens pas",
+                "Sans heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "pünktlich = à l'heure (ponctuel)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ich freue mich! » (acceptation)",
+              "options": [
+                "Je suis content(e) !",
+                "Je suis triste",
+                "Je refuse",
+                "Je m'ennuie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sich freuen = se réjouir."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Was soll ich mitbringen? »",
+              "options": [
+                "Qu'est-ce que je dois apporter ?",
+                "Où aller ?",
+                "Quelle heure ?",
+                "Qui es-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "mitbringen = apporter."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formules sont polies pour inviter ?",
+              "options": [
+                "Möchtest du ...?",
+                "Könntest du mitkommen? (simple 5e)",
+                "Geh weg!",
+                "Ich hasse dich."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "möchten/könntest = poli ; insultes = non."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Schauen wir uns einen Film an? »",
+              "options": [
+                "Regardons-nous un film ?",
+                "Film hier passé seul",
+                "Pas de film",
+                "Tu regardes seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Film ansehen = regarder un film."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Im Kino um halb acht »",
+              "options": [
+                "Au cinéma à sept heures et demie",
+                "Huit heures pile sans demi",
+                "Hier",
+                "Matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "halb acht = 7h30 (allemand)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Kommst du oder nicht? »",
+              "options": [
+                "Tu viens ou pas ?",
+                "Tu viens samedi seulement",
+                "Invitation douce",
+                "Merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ou ... oder nicht = insistance amicale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Doch, ich komme! »",
+              "options": [
+                "Si, je viens ! (contre un doute)",
+                "Non je ne viens pas",
+                "Peut-être",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "doch = si (réponse positive après négation)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Leider habe ich schon Pläne »",
+              "options": [
+                "Malheureusement j'ai déjà des plans",
+                "Je suis libre",
+                "Oui volontiers",
+                "Aucun plan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pläne = plans / engagements."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Nächste Woche vielleicht? »",
+              "options": [
+                "La semaine prochaine peut-être ?",
+                "Semaine passée",
+                "Aujourd'hui",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "nächste Woche = semaine prochaine."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Treffen wir uns am Bahnhof »",
+              "options": [
+                "Retrouvons-nous à la gare",
+                "Gare hier passé",
+                "Train sans RDV",
+                "Bus seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bahnhof = gare."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ist das okay für dich? »",
+              "options": [
+                "C'est bon pour toi ?",
+                "Tu refuses",
+                "C'est fini",
+                "Sans toi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "okay für dich = ça te va ?"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Perfekt, wir sehen uns! »",
+              "options": [
+                "Parfait, on se voit !",
+                "Refus",
+                "Bonjour",
+                "Dommage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "wir sehen uns = on se voit."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles questions vérifient la disponibilité ?",
+              "options": [
+                "Hast du Zeit?",
+                "Bist du frei am Sonntag?",
+                "Wie heißt du?",
+                "Wie alt bist du?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Zeit/frei = disponibilité ; name/âge = identité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Bist du frei am Sonntag? » frei =",
+              "options": [
+                "libre / disponible",
+                "fatigué",
+                "en colère",
+                "malade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "frei sein = être libre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ja, ich bin frei »",
+              "options": [
+                "Oui, je suis libre",
+                "Non occupé",
+                "Je travaille",
+                "Refus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confirmation de disponibilité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Gehen wir Eis essen? »",
+              "options": [
+                "Allons manger une glace ?",
+                "Glaces hier passé",
+                "Sans glace",
+                "Tu manges seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eis essen = manger de la glace."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Wo gibt es gutes Eis? »",
+              "options": [
+                "Où y a-t-il de bonnes glaces ?",
+                "Quelle heure ?",
+                "Combien ?",
+                "Pourquoi ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "gibt es = il y a."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Im Park, um vier Uhr »",
+              "options": [
+                "Au parc, à quatre heures",
+                "Dans la maison",
+                "Quatre parcs",
+                "Hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Im Park = au parc."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Kommst du mit zum Einkaufen? »",
+              "options": [
+                "Tu viens faire les courses avec moi ?",
+                "Tu achètes seul hier",
+                "Sans magasin",
+                "Refus obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "zum Einkaufen = pour faire les courses."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Nein, ich habe Hausaufgaben »",
+              "options": [
+                "Non, j'ai des devoirs",
+                "Oui volontiers",
+                "Pas de devoirs",
+                "Devoirs finis fête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Refus motivé par devoirs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Kein Problem, ein anderes Mal! »",
+              "options": [
+                "Pas de souci, une autre fois !",
+                "Jamais",
+                "Tu dois venir",
+                "Colère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ein anderes Mal = une autre fois."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Danke für die Einladung! »",
+              "options": [
+                "Merci pour l'invitation !",
+                "Invitation refusée grossier",
+                "Sans merci",
+                "Bonjour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politesse après invitation."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses refusent poliment ?",
+              "options": [
+                "Leider kann ich nicht.",
+                "Tut mir leid, nein.",
+                "Ja, super!",
+                "Natürlich!"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "leider/tut mir leid = refus poli ; ja/natürlich = oui."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ich bin krank » pour refuser",
+              "options": [
+                "Je suis malade",
+                "Je suis content",
+                "Je viens",
+                "Invitation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "krank = malade."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Meine Eltern sagen nein »",
+              "options": [
+                "Mes parents disent non",
+                "Mes parents invitent",
+                "Oui des parents",
+                "Sans parents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Excuse familiale courante."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Vielleicht nächstes Mal »",
+              "options": [
+                "Peut-être la prochaine fois",
+                "Oui cette fois",
+                "Jamais poli",
+                "Maintenant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "nächstes Mal = prochaine fois."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Kommst du zu mir nach Hause? »",
+              "options": [
+                "Tu viens chez moi ?",
+                "Tu restes chez toi seul",
+                "Maison interdite",
+                "Hier passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "zu mir nach Hause = chez moi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Wir grillen im Garten »",
+              "options": [
+                "Nous faisons un barbecue dans le jardin",
+                "Nous dormons",
+                "Pas de jardin fête",
+                "Hiver seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "grillen = barbecue ; Garten = jardin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Bring einen Salat mit »",
+              "options": [
+                "Apporte une salade",
+                "Sans nourriture",
+                "Salade interdite",
+                "Mange seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Imperatif mitbringen."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Wie komme ich zu dir? »",
+              "options": [
+                "Comment je viens chez toi ?",
+                "Quelle heure ?",
+                "Pourquoi ?",
+                "Qui es-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wie komme ich = comment arriver."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Nimm die Buslinie 5 »",
+              "options": [
+                "Prends le bus ligne 5",
+                "Marche seulement",
+                "Avion",
+                "Refus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Buslinie = ligne de bus."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Bis gleich! » au téléphone",
+              "options": [
+                "À tout de suite !",
+                "Au revoir long",
+                "Non",
+                "Bonjour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bis gleich = à tout de suite."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels lieux conviennent pour un rendez-vous ?",
+              "options": [
+                "im Park",
+                "im Café",
+                "gestern zu Hause passé seul",
+                "nirgends ohne wann"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Park/Café = lieux de RDV courants."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Im Stadtzentrum »",
+              "options": [
+                "En centre-ville",
+                "À la campagne",
+                "À l'école seulement",
+                "Loin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stadtzentrum = centre-ville."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Unter dem Brunnen » (RDV)",
+              "options": [
+                "Sous / près de la fontaine (devant)",
+                "Dans l'eau nager",
+                "Fontaine hier",
+                "Sans lieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "unter dem Brunnen = point de rendez-vous typique devant fontaine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ich warte auf dich »",
+              "options": ["Je t'attends", "Tu m'attends", "Au revoir", "Refus"],
+              "correctAnswers": [0],
+              "explanation": "warten auf = attendre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ich bin schon da »",
+              "options": [
+                "Je suis déjà là",
+                "Je suis loin",
+                "Je ne viens pas",
+                "Demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "schon da = déjà sur place."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Komm schnell! »",
+              "options": [
+                "Viens vite !",
+                "Viens lentement",
+                "Ne viens pas",
+                "Merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "schnell = vite."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Wir gehen zusammen hin »",
+              "options": [
+                "Nous y allons ensemble",
+                "Tu vas seul",
+                "Séparément",
+                "Retour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "zusammen = ensemble."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Hast du den Weg gefunden? »",
+              "options": [
+                "As-tu trouvé le chemin ?",
+                "As-tu faim ?",
+                "Quelle heure ?",
+                "Qui paie ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Weg finden = trouver le chemin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ja, ich bin vor dem Café »",
+              "options": [
+                "Oui, je suis devant le café",
+                "Je suis perdu loin",
+                "À la maison",
+                "Refus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "vor dem Café = devant le café."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Super, ich komme! »",
+              "options": ["Super, j'arrive !", "Je reste", "Non", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "ich komme = j'arrive (je viens)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases clôturent un échange d'invitation positivement ?",
+              "options": [
+                "Bis dann!",
+                "Tschüss, wir sehen uns!",
+                "Geh weg.",
+                "Ich mag dich nicht."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bis dann / wir sehen uns = au revoir amical après accord."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Kommst du mit zum Konzert? »",
+              "options": [
+                "Tu viens au concert avec moi ?",
+                "Concert hier passé",
+                "Sans musique",
+                "Tu joues seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Konzert = concert."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Das klingt gut! »",
+              "options": [
+                "Ça a l'air bien !",
+                "Ça sonne mal",
+                "Refus",
+                "Je ne comprends pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "klingt gut = ça a l'air bien."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Wann und wo? » ensemble",
+              "options": [
+                "Quand et où ?",
+                "Pourquoi seulement",
+                "Qui seulement",
+                "Combien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fixer heure et lieu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Am Donnerstag, vor der Bibliothek »",
+              "options": [
+                "Jeudi, devant la bibliothèque",
+                "Jeudi passé seul",
+                "Bibliothèque fermée sans RDV",
+                "Mardi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Donnerstag = jeudi ; Bibliothek = bibliothèque."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Ich freue mich auf Samstag! »",
+              "options": [
+                "J'ai hâte de samedi !",
+                "Je déteste samedi",
+                "Samedi passé",
+                "Sans samedi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sich freuen auf = avoir hâte de."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Vergiss nicht! »",
+              "options": [
+                "N'oublie pas !",
+                "Oublie tout",
+                "Invitation annulée",
+                "Bonjour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "vergiss nicht = n'oublie pas."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Schreib mir eine Nachricht »",
+              "options": [
+                "Écris-moi un message",
+                "Ne parle pas",
+                "Sans téléphone ever",
+                "Appelle seulement interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nachricht = message."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Bis morgen! » après plan",
+              "options": ["À demain !", "À jamais", "Hier", "Refus"],
+              "correctAnswers": [0],
+              "explanation": "Bis morgen = à demain."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Thème u2 : pour inviter en 5e, on utilise surtout",
+              "options": [
+                "Kommst du mit?, Zeit, Wann/Wo, Ja gerne",
+                "Passé composé allemand complexe",
+                "Subjonctif",
+                "Nur gestern"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Invitations simples : mitkommen, disponibilité, lieu et heure."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

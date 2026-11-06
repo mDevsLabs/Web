@@ -1,0 +1,2218 @@
+{
+  "id": "4e-portugais-01",
+  "year": "4e",
+  "subject": "portugais",
+  "title": "Découvrir le portugais",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Bonjour le matin",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles salutations conviennent le matin ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["Bom dia", "Boa noite", "Olá", "Adeus"],
+              "correctAnswers": [0, 2],
+              "explanation": "Bom dia et olá saluent ; boa noite et adeus quittent ou visent le soir."
+            },
+            {
+              "id": "q2",
+              "question": "Réponse à « Bom dia » :",
+              "type": "single_choice",
+              "options": ["Bom dia", "Tchau", "Obrigado", "Chamo-me"],
+              "correctAnswers": [0],
+              "explanation": "On renvoie la même formule."
+            },
+            {
+              "id": "q3",
+              "question": "« Olá » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Bonjour / salut",
+                "Au revoir",
+                "Merci",
+                "S'il vous plaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Olá = bonjour ou salut."
+            },
+            {
+              "id": "q4",
+              "question": "« Bom dia » s'utilise surtout :",
+              "type": "single_choice",
+              "options": [
+                "Le matin",
+                "La nuit",
+                "Pour dire merci",
+                "Pour son âge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bom dia = bonjour (matin)."
+            },
+            {
+              "id": "q5",
+              "question": "Phrase de salutation :",
+              "type": "single_choice",
+              "options": ["Olá, como está?", "Até logo", "Adeus", "Tchau"],
+              "correctAnswers": [0],
+              "explanation": "Olá + como está accueille quelqu'un."
+            },
+            {
+              "id": "q6",
+              "question": "Bonjour du matin en portugais :",
+              "type": "single_choice",
+              "options": ["Bom dia", "Buenos días", "Bonjour", "Bom noite"],
+              "correctAnswers": [0],
+              "explanation": "En PT européen : bom dia."
+            },
+            {
+              "id": "q7",
+              "question": "« Boa noite » sert le soir à :",
+              "type": "single_choice",
+              "options": [
+                "Saluer ou souhaiter bonne nuit",
+                "Saluer à 8 h",
+                "Se présenter",
+                "Compter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boa noite = bonsoir / bonne nuit."
+            },
+            {
+              "id": "q8",
+              "question": "Mot proche de hello :",
+              "type": "single_choice",
+              "options": ["Olá", "Sim", "Não", "Ano"],
+              "correctAnswers": [0],
+              "explanation": "Olá ≈ hello."
+            },
+            {
+              "id": "q9",
+              "question": "« Bom dia, professora! » salue :",
+              "type": "single_choice",
+              "options": [
+                "Une professeure",
+                "Un chien",
+                "Une table",
+                "Un nombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Professora = professeure."
+            },
+            {
+              "id": "q10",
+              "question": "Entrer en classe le matin :",
+              "type": "single_choice",
+              "options": [
+                "Bom dia a todos",
+                "Adeus a todos",
+                "Tenho a todos",
+                "Sou de todos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bonjour à tous le matin."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Au revoir",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formules disent au revoir ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["Tchau", "Olá", "Até logo", "Bom dia"],
+              "correctAnswers": [0, 2],
+              "explanation": "Tchau et até logo quittent ; olá et bom dia saluent."
+            },
+            {
+              "id": "q2",
+              "question": "« Até amanhã » =",
+              "type": "single_choice",
+              "options": ["À demain", "Bonjour", "Merci", "Je m'appelle"],
+              "correctAnswers": [0],
+              "explanation": "Amanhã = demain."
+            },
+            {
+              "id": "q3",
+              "question": "« Adeus » est :",
+              "type": "single_choice",
+              "options": [
+                "Un au revoir plus solennel",
+                "Un plat",
+                "Un prénom",
+                "Un article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adeus = adieu / au revoir."
+            },
+            {
+              "id": "q4",
+              "question": "À tout de suite :",
+              "type": "single_choice",
+              "options": ["Até já", "Bom dia", "Sou de", "Tenho"],
+              "correctAnswers": [0],
+              "explanation": "Até já = à tout de suite."
+            },
+            {
+              "id": "q5",
+              "question": "« Até à próxima aula » =",
+              "type": "single_choice",
+              "options": [
+                "À la prochaine leçon",
+                "Bonne nuit",
+                "J'ai faim",
+                "D'où es-tu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Próxima aula = prochaine leçon."
+            },
+            {
+              "id": "q6",
+              "question": "Fin de conversation amicale :",
+              "type": "single_choice",
+              "options": [
+                "Tchau, até logo!",
+                "Bom dia!",
+                "Chamo-me Ana",
+                "Tenho doze anos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formules d'au revoir."
+            },
+            {
+              "id": "q7",
+              "question": "« Até logo » signifie :",
+              "type": "single_choice",
+              "options": [
+                "À bientôt",
+                "Bon appétit",
+                "Je suis de",
+                "Comment vas-tu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Até logo = à bientôt."
+            },
+            {
+              "id": "q8",
+              "question": "Ce n'est pas un au revoir :",
+              "type": "single_choice",
+              "options": ["Como está?", "Tchau", "Adeus", "Até amanhã"],
+              "correctAnswers": [0],
+              "explanation": "Como está demande des nouvelles."
+            },
+            {
+              "id": "q9",
+              "question": "Quitter un ami après le collège :",
+              "type": "single_choice",
+              "options": [
+                "Até amanhã!",
+                "Bom dia!",
+                "Olá, sou o Pedro",
+                "Obrigada por favor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Até amanhã si on se revoit demain."
+            },
+            {
+              "id": "q10",
+              "question": "« Tchau » en portugais :",
+              "type": "single_choice",
+              "options": [
+                "Au revoir informel",
+                "Bonjour seulement",
+                "Merci",
+                "Un nombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tchau = ciao, au revoir."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Comment vas-tu",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Questions pour « comment vas-tu ? » (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Como está?",
+                "Como estás?",
+                "Onde ficas?",
+                "Quantos anos tens?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Como está (vous) et como estás (tu)."
+            },
+            {
+              "id": "q2",
+              "question": "Réponse à « Tudo bem? » :",
+              "type": "single_choice",
+              "options": [
+                "Tudo bem, obrigado",
+                "Adeus",
+                "Sou de Lisboa",
+                "A casa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On confirme tout va bien."
+            },
+            {
+              "id": "q3",
+              "question": "« Tudo bem » =",
+              "type": "single_choice",
+              "options": [
+                "Tout va bien",
+                "Tout est bleu",
+                "Bonjour",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tudo bem = tout va bien."
+            },
+            {
+              "id": "q4",
+              "question": "« E tu? » sert à :",
+              "type": "single_choice",
+              "options": [
+                "Renvoyer la question",
+                "Donner son âge",
+                "Saluer le matin",
+                "Refuser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "E tu = et toi ?"
+            },
+            {
+              "id": "q5",
+              "question": "Formule avec você :",
+              "type": "single_choice",
+              "options": [
+                "Como está você?",
+                "Como estás tu?",
+                "Tchau tu",
+                "Tenho você"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Você = vous (poli)."
+            },
+            {
+              "id": "q6",
+              "question": "« Mais ou menos » =",
+              "type": "single_choice",
+              "options": [
+                "Comme ci, comme ça",
+                "Très bien",
+                "Au revoir",
+                "Merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mais ou menos = plus ou moins."
+            },
+            {
+              "id": "q7",
+              "question": "« Muito bem, obrigada » :",
+              "type": "single_choice",
+              "options": [
+                "Très bien, merci (femme)",
+                "Bonjour",
+                "Je m'appelle",
+                "À demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Obrigada au féminin."
+            },
+            {
+              "id": "q8",
+              "question": "Ne demande pas « comment vas-tu ? » :",
+              "type": "single_choice",
+              "options": [
+                "Como te chamas?",
+                "Como estás?",
+                "Tudo bem?",
+                "Como está?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Como te chamas = prénom."
+            },
+            {
+              "id": "q9",
+              "question": "« Olá! Tudo bem? » — réponse :",
+              "type": "single_choice",
+              "options": [
+                "Sim, tudo bem. E tu?",
+                "Chamo-me João",
+                "Sou de Paris",
+                "Até logo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse + et toi ?"
+            },
+            {
+              "id": "q10",
+              "question": "« Estou bem » =",
+              "type": "single_choice",
+              "options": [
+                "Je vais bien",
+                "Je suis grand",
+                "J'habite bien",
+                "Je m'appelle bien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Estar bem = aller bien."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Mon prénom",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Présenter son prénom (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Chamo-me Sofia",
+                "O meu nome é Miguel",
+                "Tenho fome",
+                "Sou alta"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chamo-me et o meu nome é donnent le nom."
+            },
+            {
+              "id": "q2",
+              "question": "« Chamo-me Inês » =",
+              "type": "single_choice",
+              "options": [
+                "Je m'appelle Inês",
+                "J'aime Inês",
+                "Au revoir Inês",
+                "Inês est ici"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chamar-se = s'appeler."
+            },
+            {
+              "id": "q3",
+              "question": "Comment tu t'appelles ? (tu)",
+              "type": "single_choice",
+              "options": [
+                "Como te chamas?",
+                "Como está?",
+                "Onde vives?",
+                "Quantos anos?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Como te chamas ?"
+            },
+            {
+              "id": "q4",
+              "question": "« Nome » dans o meu nome é =",
+              "type": "single_choice",
+              "options": ["Nom", "An", "Ville", "Jour"],
+              "correctAnswers": [0],
+              "explanation": "Nome = nom."
+            },
+            {
+              "id": "q5",
+              "question": "Réponse à « Como se chama? » :",
+              "type": "single_choice",
+              "options": [
+                "Chamo-me Ana",
+                "Tchau senhor",
+                "Bom dia ontem",
+                "Tenho Ana"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chamo-me + prénom."
+            },
+            {
+              "id": "q6",
+              "question": "« Prazer em conhecê-lo » =",
+              "type": "single_choice",
+              "options": [
+                "Enchanté (homme)",
+                "Merci",
+                "Je suis fatigué",
+                "Bonne nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politesse en rencontrant quelqu'un."
+            },
+            {
+              "id": "q7",
+              "question": "Prénom féminin portugais :",
+              "type": "single_choice",
+              "options": ["Mariana", "João", "Pedro", "Rui"],
+              "correctAnswers": [0],
+              "explanation": "Mariana est féminin."
+            },
+            {
+              "id": "q8",
+              "question": "« Eu sou a Carla » indique :",
+              "type": "single_choice",
+              "options": [
+                "Je suis Carla",
+                "Carla part",
+                "Bonjour Carla",
+                "Carla a faim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sou a + prénom féminin."
+            },
+            {
+              "id": "q9",
+              "question": "Garçon qui se présente :",
+              "type": "single_choice",
+              "options": [
+                "Chamo-me Tomás",
+                "Chamo-me a Tomás",
+                "Tenho Tomás anos",
+                "Sou a Tomás"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chamo-me + prénom sans article."
+            },
+            {
+              "id": "q10",
+              "question": "Après présentations :",
+              "type": "single_choice",
+              "options": ["Prazer!", "Adeus!", "O gato", "Boa tarde ontem"],
+              "correctAnswers": [0],
+              "explanation": "Prazer = enchanté."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Mon âge",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phrases d'âge correctes (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Tenho catorze anos",
+                "Tenho quinze anos",
+                "Sou de anos",
+                "Chamo-me anos"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tenho + nombre + anos."
+            },
+            {
+              "id": "q2",
+              "question": "« Tenho treze anos » =",
+              "type": "single_choice",
+              "options": [
+                "J'ai treize ans",
+                "Treize heures",
+                "Au revoir",
+                "Treize frères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure tenho X anos."
+            },
+            {
+              "id": "q3",
+              "question": "Demander l'âge (tu) :",
+              "type": "single_choice",
+              "options": [
+                "Quantos anos tens?",
+                "Como te chamas?",
+                "Onde ficas?",
+                "Que horas são?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quantos anos tens ?"
+            },
+            {
+              "id": "q4",
+              "question": "« Anos » =",
+              "type": "single_choice",
+              "options": ["Ans", "Amis", "Animaux", "Avions"],
+              "correctAnswers": [0],
+              "explanation": "Ano/anos = an(s)."
+            },
+            {
+              "id": "q5",
+              "question": "« Tenho doze anos » : nombre",
+              "type": "single_choice",
+              "options": ["12", "20", "2", "22"],
+              "correctAnswers": [0],
+              "explanation": "Doze = 12."
+            },
+            {
+              "id": "q6",
+              "question": "Erreur pour l'âge :",
+              "type": "single_choice",
+              "options": [
+                "Sou quatorze",
+                "Tenho quatorze anos",
+                "Utiliser anos",
+                "Utiliser tenho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Âge avec ter : tenho X anos."
+            },
+            {
+              "id": "q7",
+              "question": "« Quantos anos tem? » =",
+              "type": "single_choice",
+              "options": [
+                "Formule polie (vous)",
+                "Au revoir",
+                "Couleur",
+                "Jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tem = avez."
+            },
+            {
+              "id": "q8",
+              "question": "J'ai quatorze ans :",
+              "type": "single_choice",
+              "options": [
+                "Tenho catorze anos",
+                "Sou catorze anos",
+                "Chamo-me catorze",
+                "O catorze"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tenho catorze anos."
+            },
+            {
+              "id": "q9",
+              "question": "« Catorze » =",
+              "type": "single_choice",
+              "options": ["14", "4", "40", "16"],
+              "correctAnswers": [0],
+              "explanation": "Catorze = 14."
+            },
+            {
+              "id": "q10",
+              "question": "« Quantos anos tens? » —",
+              "type": "single_choice",
+              "options": [
+                "Tenho treze anos",
+                "Sou de treze",
+                "Olá treze",
+                "Até treze"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse avec tenho … anos."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "D'où je viens",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Origine correcte (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Sou de Portugal",
+                "Sou de Lyon",
+                "Tenho de Paris",
+                "Chamo-me de Roma"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sou de + lieu."
+            },
+            {
+              "id": "q2",
+              "question": "« Sou de Lisboa » =",
+              "type": "single_choice",
+              "options": [
+                "Je suis de Lisbonne",
+                "J'aime Lisbonne",
+                "Lisbonne est ici",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ser de = être de."
+            },
+            {
+              "id": "q3",
+              "question": "D'où es-tu ?",
+              "type": "single_choice",
+              "options": [
+                "De onde és?",
+                "Como estás?",
+                "Quantos anos tens?",
+                "Que horas são?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De onde és ?"
+            },
+            {
+              "id": "q4",
+              "question": "« Sou português » :",
+              "type": "single_choice",
+              "options": ["Homme portugais", "Femme portugaise", "Plat", "Bus"],
+              "correctAnswers": [0],
+              "explanation": "Portugues = masculin."
+            },
+            {
+              "id": "q5",
+              "question": "« Sou portuguesa » :",
+              "type": "single_choice",
+              "options": ["Féminin", "Masculin", "Verbe", "Nombre"],
+              "correctAnswers": [0],
+              "explanation": "Portuguesa = féminin."
+            },
+            {
+              "id": "q6",
+              "question": "Je suis de France :",
+              "type": "single_choice",
+              "options": [
+                "Sou de França",
+                "Tenho France",
+                "Chamo-me France",
+                "O France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "França en portugais."
+            },
+            {
+              "id": "q7",
+              "question": "« De onde é você? » =",
+              "type": "single_choice",
+              "options": ["D'où êtes-vous ?", "Bonjour", "Merci", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Formule polie."
+            },
+            {
+              "id": "q8",
+              "question": "« De onde és? » —",
+              "type": "single_choice",
+              "options": [
+                "Sou do Porto",
+                "Tenho Porto anos",
+                "Chamo-me Porto",
+                "Bom dia Porto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sou do Porto = de Porto."
+            },
+            {
+              "id": "q9",
+              "question": "Le pays Portugal :",
+              "type": "single_choice",
+              "options": ["Portugal", "Portughal", "Portugalia", "Porto only"],
+              "correctAnswers": [0],
+              "explanation": "Même nom : Portugal."
+            },
+            {
+              "id": "q10",
+              "question": "« Sou de Coimbra » : Coimbra est",
+              "type": "single_choice",
+              "options": [
+                "Une ville du Portugal",
+                "Un fruit",
+                "Un verbe",
+                "Un au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ville portugaise."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Politesse",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Mots de politesse (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["Por favor", "Obrigado", "Tchau", "Gato"],
+              "correctAnswers": [0, 1],
+              "explanation": "Por favor et obrigado."
+            },
+            {
+              "id": "q2",
+              "question": "Merci (fille) :",
+              "type": "single_choice",
+              "options": ["Obrigada", "Obrigado", "Por favor", "Desculpe"],
+              "correctAnswers": [0],
+              "explanation": "Obrigada au féminin."
+            },
+            {
+              "id": "q3",
+              "question": "« Desculpe » =",
+              "type": "single_choice",
+              "options": ["Excusez-moi", "Saluer", "Âge", "Nom"],
+              "correctAnswers": [0],
+              "explanation": "Pardon / excusez-moi."
+            },
+            {
+              "id": "q4",
+              "question": "Réponse à « Obrigado! » :",
+              "type": "single_choice",
+              "options": ["De nada", "Bom dia", "Sou de", "Tenho"],
+              "correctAnswers": [0],
+              "explanation": "De nada = de rien."
+            },
+            {
+              "id": "q5",
+              "question": "« Por favor, como se chama? » :",
+              "type": "single_choice",
+              "options": [
+                "Demande polie du nom",
+                "Au revoir",
+                "Insulte",
+                "Nombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Por favor adoucit."
+            },
+            {
+              "id": "q6",
+              "question": "« Com licença » =",
+              "type": "single_choice",
+              "options": [
+                "Excusez-moi (passer)",
+                "Merci",
+                "Bonsoir",
+                "J'ai quinze ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour passer poliment."
+            },
+            {
+              "id": "q7",
+              "question": "« Muito obrigado » =",
+              "type": "single_choice",
+              "options": ["Merci beaucoup", "Très mal", "Bonjour", "À demain"],
+              "correctAnswers": [0],
+              "explanation": "Muito = beaucoup."
+            },
+            {
+              "id": "q8",
+              "question": "Poli en classe :",
+              "type": "single_choice",
+              "options": [
+                "Por favor, posso entrar?",
+                "Tchau professor agora",
+                "Não nome",
+                "Sou por favor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demander avec por favor."
+            },
+            {
+              "id": "q9",
+              "question": "« De nada » après :",
+              "type": "single_choice",
+              "options": ["Obrigado/a", "Olá", "Chamo-me", "Dez"],
+              "correctAnswers": [0],
+              "explanation": "Réponse au merci."
+            },
+            {
+              "id": "q10",
+              "question": "« Desculpa » (tu) =",
+              "type": "single_choice",
+              "options": ["Désolé", "Merci", "Enchanté", "Bonjour"],
+              "correctAnswers": [0],
+              "explanation": "Desculpa = désolé (familier)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Présentation complète",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Mini-présentations cohérentes (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Olá! Chamo-me Rita e tenho treze anos",
+                "Bom dia! Sou de Braga",
+                "Tenho chamo-me",
+                "Anos sou de"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Salut + nom/âge ou origine."
+            },
+            {
+              "id": "q2",
+              "question": "Ordre : saluer, nom, âge",
+              "type": "single_choice",
+              "options": [
+                "Olá! Chamo-me Luís. Tenho catorze anos.",
+                "Tenho Luís olá",
+                "Adeus chamo-me",
+                "Anos Luís bom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutation puis infos."
+            },
+            {
+              "id": "q3",
+              "question": "« Olá, sou a Beatriz, sou de Aveiro » :",
+              "type": "single_choice",
+              "options": [
+                "Salut, prénom, origine",
+                "Au revoir",
+                "Nombre seul",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois infos claires."
+            },
+            {
+              "id": "q4",
+              "question": "« Ele chama-se … » : ele =",
+              "type": "single_choice",
+              "options": ["Il", "Elle", "Nous", "Vous"],
+              "correctAnswers": [0],
+              "explanation": "Ele = il."
+            },
+            {
+              "id": "q5",
+              "question": "« Prazer, ___ Marta, tenho doze anos. »",
+              "type": "single_choice",
+              "options": ["chamo-me", "tchau", "obrigada", "sou de"],
+              "correctAnswers": [0],
+              "explanation": "Chamo-me pour le nom."
+            },
+            {
+              "id": "q6",
+              "question": "« Somos da França » : somos =",
+              "type": "single_choice",
+              "options": ["Nous sommes", "Je suis", "Tu es", "Il est"],
+              "correctAnswers": [0],
+              "explanation": "1re personne du pluriel."
+            },
+            {
+              "id": "q7",
+              "question": "Présentation formelle :",
+              "type": "single_choice",
+              "options": [
+                "Bom dia. Chamo-me Costa.",
+                "Tchau nome",
+                "Por favor anos",
+                "Gato sou"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutation + nom."
+            },
+            {
+              "id": "q8",
+              "question": "« E tu, de onde és? » :",
+              "type": "single_choice",
+              "options": [
+                "Demander l'origine",
+                "Au revoir",
+                "Compter",
+                "Refuser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relance sur l'origine."
+            },
+            {
+              "id": "q9",
+              "question": "« Muito prazer em conhecer-te » =",
+              "type": "single_choice",
+              "options": [
+                "Enchanté de te connaître",
+                "Merci",
+                "À demain",
+                "J'ai faim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politesse tutoiement."
+            },
+            {
+              "id": "q10",
+              "question": "Phrase complète niveau 4e :",
+              "type": "single_choice",
+              "options": [
+                "Tenho treze anos e sou de Paris",
+                "Sou bom dia",
+                "Chamo-me obrigado",
+                "De nada anos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Âge + origine corrects."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Salutations du jour",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Salutations après-midi (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Boa tarde",
+                "Olá",
+                "Bom dia à minuit",
+                "Boa noite à 7 h"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Boa tarde l'après-midi ; olá toujours possible."
+            },
+            {
+              "id": "q2",
+              "question": "« Boa tarde » =",
+              "type": "single_choice",
+              "options": [
+                "Bon après-midi",
+                "Bonne nuit",
+                "Bon matin",
+                "Au revoir seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tarde = après-midi."
+            },
+            {
+              "id": "q3",
+              "question": "Le soir :",
+              "type": "single_choice",
+              "options": [
+                "Boa noite",
+                "Bom dia",
+                "Boa tarde à 8 h matin",
+                "Olá interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boa noite le soir."
+            },
+            {
+              "id": "q4",
+              "question": "8 h en classe :",
+              "type": "single_choice",
+              "options": ["Bom dia", "Boa noite", "Boa tarde", "Adeus only"],
+              "correctAnswers": [0],
+              "explanation": "Matin : bom dia."
+            },
+            {
+              "id": "q5",
+              "question": "« Boa tarde, professor! » :",
+              "type": "single_choice",
+              "options": ["Après-midi", "Minuit", "Jamais", "Nombre"],
+              "correctAnswers": [0],
+              "explanation": "Contexte après-midi."
+            },
+            {
+              "id": "q6",
+              "question": "Salutation quasi universelle :",
+              "type": "single_choice",
+              "options": ["Olá", "Bom dia only", "Tenho", "Anos"],
+              "correctAnswers": [0],
+              "explanation": "Olá à presque toute heure."
+            },
+            {
+              "id": "q7",
+              "question": "Erreur : « bom dia » à",
+              "type": "single_choice",
+              "options": [
+                "22 h (préférer boa noite)",
+                "8 h",
+                "En entrant",
+                "Au prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le soir : boa noite."
+            },
+            {
+              "id": "q8",
+              "question": "« Boa noite » en partant le soir :",
+              "type": "single_choice",
+              "options": [
+                "Bonne nuit / au revoir",
+                "Bonjour",
+                "À midi",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souhait en partant."
+            },
+            {
+              "id": "q9",
+              "question": "Réponse à « Boa tarde » :",
+              "type": "single_choice",
+              "options": [
+                "Boa tarde",
+                "Bom dia",
+                "Tenho tarde",
+                "Chamo-me tarde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On renvoie boa tarde."
+            },
+            {
+              "id": "q10",
+              "question": "Matin → après-midi → soir :",
+              "type": "single_choice",
+              "options": [
+                "Bom dia → boa tarde → boa noite",
+                "Boa noite → bom dia",
+                "Tchau ×3",
+                "Anos ×3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre des salutations."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision unité 1",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Réponses à « Olá! Como te chamas? » (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Chamo-me Diogo",
+                "O meu nome é Sara",
+                "Até logo",
+                "Boa noite forever"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On donne son nom."
+            },
+            {
+              "id": "q2",
+              "question": "Salut + nom + âge :",
+              "type": "single_choice",
+              "options": [
+                "Olá! Chamo-me Ana. Tenho quatorze anos.",
+                "Adeus Ana tenho",
+                "Sou anos olá",
+                "Por favor tchau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Révision structurée."
+            },
+            {
+              "id": "q3",
+              "question": "« Sou de Portugal e tenho treze anos » :",
+              "type": "single_choice",
+              "options": ["Origine + âge", "Au revoir", "Merci seul", "Rien"],
+              "correctAnswers": [0],
+              "explanation": "Deux infos perso."
+            },
+            {
+              "id": "q4",
+              "question": "Remerciement :",
+              "type": "single_choice",
+              "options": [
+                "Muito obrigada!",
+                "Bom dia anos",
+                "Chamo-me por favor",
+                "Tchau desculpe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Merci beaucoup."
+            },
+            {
+              "id": "q5",
+              "question": "« Tudo bem? » — « Sim, ___ »",
+              "type": "single_choice",
+              "options": ["obrigado", "adeus", "chamo-me", "sou de"],
+              "correctAnswers": [0],
+              "explanation": "Sim, obrigado possible."
+            },
+            {
+              "id": "q6",
+              "question": "Quitter après présentation :",
+              "type": "single_choice",
+              "options": [
+                "Prazer! Até logo!",
+                "Bom dia chamo-me",
+                "Quantos anos",
+                "De onde és"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prazer puis au revoir."
+            },
+            {
+              "id": "q7",
+              "question": "« Sou ___ França »",
+              "type": "single_choice",
+              "options": ["de", "tenho", "chamo", "olá"],
+              "correctAnswers": [0],
+              "explanation": "Sou de França."
+            },
+            {
+              "id": "q8",
+              "question": "Vouvoiement nom : « Como ___ você? »",
+              "type": "single_choice",
+              "options": ["se chama", "te chamas", "tchau", "anos tens"],
+              "correctAnswers": [0],
+              "explanation": "Como se chama você ?"
+            },
+            {
+              "id": "q9",
+              "question": "Saluer le prof le matin :",
+              "type": "single_choice",
+              "options": [
+                "Bom dia, professora!",
+                "Boa noite, professora!",
+                "Tenho professora!",
+                "Adeus professora!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte matin."
+            },
+            {
+              "id": "q10",
+              "question": "Tout correct :",
+              "type": "single_choice",
+              "options": [
+                "Olá! Chamo-me João, tenho catorze anos, sou de Porto.",
+                "Tchau nome anos",
+                "Por favor sou olá",
+                "Boa tarde tenho chamo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salut, nom, âge, origine."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Articles o et a",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Articles définis (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["O", "A", "E", "Não"],
+              "correctAnswers": [0, 1],
+              "explanation": "O masculin, a féminin."
+            },
+            {
+              "id": "q2",
+              "question": "« O livro » : livro est",
+              "type": "single_choice",
+              "options": ["Masculin", "Féminin", "Verbe", "Adverbe"],
+              "correctAnswers": [0],
+              "explanation": "O livro = le livre."
+            },
+            {
+              "id": "q3",
+              "question": "« A casa » =",
+              "type": "single_choice",
+              "options": ["La maison", "Le chien", "Au revoir", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "A casa = la maison."
+            },
+            {
+              "id": "q4",
+              "question": "La table : ___ mesa",
+              "type": "single_choice",
+              "options": ["A", "O", "Tchau", "Dez"],
+              "correctAnswers": [0],
+              "explanation": "Mesa féminin : a mesa."
+            },
+            {
+              "id": "q5",
+              "question": "« O caderno » =",
+              "type": "single_choice",
+              "options": ["Le cahier", "La maison", "Les chats", "Sans mot"],
+              "correctAnswers": [0],
+              "explanation": "Caderno masculin."
+            },
+            {
+              "id": "q6",
+              "question": "« A professora » =",
+              "type": "single_choice",
+              "options": [
+                "La professeure",
+                "Le professeur",
+                "Un élève",
+                "Une porte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Professora féminin."
+            },
+            {
+              "id": "q7",
+              "question": "Corriger « a livro » :",
+              "type": "single_choice",
+              "options": ["O livro", "A livro", "Livro o", "E livro"],
+              "correctAnswers": [0],
+              "explanation": "Livro prend o."
+            },
+            {
+              "id": "q8",
+              "question": "« O aluno » / « a aluna » :",
+              "type": "single_choice",
+              "options": [
+                "Élève m / f",
+                "Deux verbes",
+                "Deux nombres",
+                "Salutations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aluno/aluna."
+            },
+            {
+              "id": "q9",
+              "question": "« A escola » : escola est",
+              "type": "single_choice",
+              "options": ["Féminin", "Masculin", "Anglais", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "A escola = l'école."
+            },
+            {
+              "id": "q10",
+              "question": "Association correcte :",
+              "type": "single_choice",
+              "options": [
+                "O rapaz / a rapariga",
+                "O casa / a livro",
+                "A o gato",
+                "Não mesa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Garçon/fille en PT."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Nombres 1-20",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Nombres 1 et 2 (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["Um", "Dois", "Dez", "Vinte"],
+              "correctAnswers": [0, 1],
+              "explanation": "Um=1, dois=2."
+            },
+            {
+              "id": "q2",
+              "question": "Quinze =",
+              "type": "single_choice",
+              "options": ["15", "5", "50", "13"],
+              "correctAnswers": [0],
+              "explanation": "Quinze = 15."
+            },
+            {
+              "id": "q3",
+              "question": "Dez =",
+              "type": "single_choice",
+              "options": ["10", "2", "12", "20"],
+              "correctAnswers": [0],
+              "explanation": "Dez = dix."
+            },
+            {
+              "id": "q4",
+              "question": "« Tenho dezasseis anos » :",
+              "type": "single_choice",
+              "options": ["16 ans", "6 ans", "10 ans", "60 ans"],
+              "correctAnswers": [0],
+              "explanation": "Dezasseis = 16 (PT)."
+            },
+            {
+              "id": "q5",
+              "question": "Après catorze :",
+              "type": "single_choice",
+              "options": ["Quinze", "Treze", "Onze", "Um"],
+              "correctAnswers": [0],
+              "explanation": "14 puis 15."
+            },
+            {
+              "id": "q6",
+              "question": "Três =",
+              "type": "single_choice",
+              "options": ["3", "13", "30", "33"],
+              "correctAnswers": [0],
+              "explanation": "Três = trois."
+            },
+            {
+              "id": "q7",
+              "question": "Vinte =",
+              "type": "single_choice",
+              "options": ["20", "12", "2", "22"],
+              "correctAnswers": [0],
+              "explanation": "Vinte = vingt."
+            },
+            {
+              "id": "q8",
+              "question": "Onze =",
+              "type": "single_choice",
+              "options": ["11", "1", "10", "21"],
+              "correctAnswers": [0],
+              "explanation": "Onze = 11."
+            },
+            {
+              "id": "q9",
+              "question": "Oito dans tenho oito anos :",
+              "type": "single_choice",
+              "options": ["8", "18", "80", "0"],
+              "correctAnswers": [0],
+              "explanation": "Oito = huit."
+            },
+            {
+              "id": "q10",
+              "question": "Plus grand : um, cinco, dez, vinte",
+              "type": "single_choice",
+              "options": ["Vinte", "Um", "Cinco", "Dez"],
+              "correctAnswers": [0],
+              "explanation": "20 est le plus grand."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Famille",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Parents proches (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["Mãe", "Pai", "Mesa", "Livro"],
+              "correctAnswers": [0, 1],
+              "explanation": "Mãe mère, pai père."
+            },
+            {
+              "id": "q2",
+              "question": "Irmão =",
+              "type": "single_choice",
+              "options": ["Frère", "Sœur", "Oncle", "Cousin"],
+              "correctAnswers": [0],
+              "explanation": "Irmão = frère."
+            },
+            {
+              "id": "q3",
+              "question": "Irmã =",
+              "type": "single_choice",
+              "options": ["Sœur", "Père", "Grand-mère", "Fils"],
+              "correctAnswers": [0],
+              "explanation": "Irmã = sœur."
+            },
+            {
+              "id": "q4",
+              "question": "Os meus pais =",
+              "type": "single_choice",
+              "options": [
+                "Mes parents",
+                "Mes livres",
+                "Mes tables",
+                "Mes chats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pais = parents."
+            },
+            {
+              "id": "q5",
+              "question": "Avó =",
+              "type": "single_choice",
+              "options": ["Grand-mère", "Grand-père", "Bébé", "Prof"],
+              "correctAnswers": [0],
+              "explanation": "Avó = grand-mère."
+            },
+            {
+              "id": "q6",
+              "question": "Filho / filha =",
+              "type": "single_choice",
+              "options": [
+                "Fils / fille",
+                "Frère / sœur",
+                "Oncle / tante",
+                "Cousin / cousine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enfant selon genre."
+            },
+            {
+              "id": "q7",
+              "question": "« A minha mãe chama-se Maria » :",
+              "type": "single_choice",
+              "options": [
+                "Prénom de ma mère",
+                "Mon âge",
+                "Mon école",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parle de la mère."
+            },
+            {
+              "id": "q8",
+              "question": "Família =",
+              "type": "single_choice",
+              "options": ["Famille", "Faim", "Fenêtre", "Fête"],
+              "correctAnswers": [0],
+              "explanation": "Família = famille."
+            },
+            {
+              "id": "q9",
+              "question": "« O meu pai é português » :",
+              "type": "single_choice",
+              "options": ["Nationalité du père", "Couleur", "Nombre", "Jour"],
+              "correctAnswers": [0],
+              "explanation": "Adjectif nationalité."
+            },
+            {
+              "id": "q10",
+              "question": "Tenho um irmão =",
+              "type": "single_choice",
+              "options": [
+                "J'ai un frère",
+                "Je suis frère",
+                "Au revoir",
+                "Mon frère a dix ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ter = avoir."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Couleurs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Azul et vermelho (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["Bleu", "Rouge", "Vert", "Noir"],
+              "correctAnswers": [0, 1],
+              "explanation": "Azul bleu, vermelho rouge."
+            },
+            {
+              "id": "q2",
+              "question": "Verde =",
+              "type": "single_choice",
+              "options": ["Vert", "Gris", "Jaune", "Rose"],
+              "correctAnswers": [0],
+              "explanation": "Verde = vert."
+            },
+            {
+              "id": "q3",
+              "question": "Amarelo =",
+              "type": "single_choice",
+              "options": ["Jaune", "Bleu", "Blanc", "Marron"],
+              "correctAnswers": [0],
+              "explanation": "Amarelo = jaune."
+            },
+            {
+              "id": "q4",
+              "question": "O caderno azul =",
+              "type": "single_choice",
+              "options": [
+                "Cahier bleu",
+                "Maison rouge",
+                "Chat vert",
+                "Table jaune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caderno azul."
+            },
+            {
+              "id": "q5",
+              "question": "Preto et branco =",
+              "type": "single_choice",
+              "options": [
+                "Noir et blanc",
+                "Rouge et bleu",
+                "Grand et petit",
+                "Bonjour et merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleurs de base."
+            },
+            {
+              "id": "q6",
+              "question": "Bandeira verde e vermelho :",
+              "type": "single_choice",
+              "options": ["Couleurs du drapeau", "Plat", "Verbe", "Nombre"],
+              "correctAnswers": [0],
+              "explanation": "Drapeau du Portugal."
+            },
+            {
+              "id": "q7",
+              "question": "Cor =",
+              "type": "single_choice",
+              "options": ["Couleur", "Cour", "Corde", "Cœur médical"],
+              "correctAnswers": [0],
+              "explanation": "Cor = couleur."
+            },
+            {
+              "id": "q8",
+              "question": "Rosa (couleur) =",
+              "type": "single_choice",
+              "options": ["Rose", "Rouge foncé", "Gris", "Orange UK"],
+              "correctAnswers": [0],
+              "explanation": "Rosa = rose."
+            },
+            {
+              "id": "q9",
+              "question": "Phrase couleur :",
+              "type": "single_choice",
+              "options": [
+                "A caneta é vermelha",
+                "Chamo-me verde",
+                "Tenho azul anos",
+                "Sou de preto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stylo rouge."
+            },
+            {
+              "id": "q10",
+              "question": "Laranja =",
+              "type": "single_choice",
+              "options": ["Orange", "Au revoir", "Article", "Pronom"],
+              "correctAnswers": [0],
+              "explanation": "Laranja = orange."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Classe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Objets de classe (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["Caderno", "Lápis", "Avó", "Pai"],
+              "correctAnswers": [0, 1],
+              "explanation": "Cahier et crayon."
+            },
+            {
+              "id": "q2",
+              "question": "A sala de aula =",
+              "type": "single_choice",
+              "options": ["Salle de classe", "Cuisine", "Stade", "Plage"],
+              "correctAnswers": [0],
+              "explanation": "Lieu scolaire."
+            },
+            {
+              "id": "q3",
+              "question": "O professor / a professora =",
+              "type": "single_choice",
+              "options": ["Prof m / f", "Élève", "Table", "Stylo"],
+              "correctAnswers": [0],
+              "explanation": "Enseignant."
+            },
+            {
+              "id": "q4",
+              "question": "A cadeira =",
+              "type": "single_choice",
+              "options": ["Chaise", "Tableau", "Porte", "Plafond"],
+              "correctAnswers": [0],
+              "explanation": "Cadeira = chaise."
+            },
+            {
+              "id": "q5",
+              "question": "O quadro =",
+              "type": "single_choice",
+              "options": ["Tableau", "Sac", "Frère", "Chien"],
+              "correctAnswers": [0],
+              "explanation": "Quadro = tableau."
+            },
+            {
+              "id": "q6",
+              "question": "A mochila =",
+              "type": "single_choice",
+              "options": ["Sac à dos", "Gomme", "Règle", "Fenêtre"],
+              "correctAnswers": [0],
+              "explanation": "Mochila = sac à dos."
+            },
+            {
+              "id": "q7",
+              "question": "Estou na escola =",
+              "type": "single_choice",
+              "options": [
+                "Je suis à l'école",
+                "Je m'appelle école",
+                "Au revoir",
+                "J'ai école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Estar na = être à."
+            },
+            {
+              "id": "q8",
+              "question": "O livro de português =",
+              "type": "single_choice",
+              "options": [
+                "Livre de portugais",
+                "Livre de maths",
+                "Chaise",
+                "Prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matière avec de."
+            },
+            {
+              "id": "q9",
+              "question": "Demander un crayon :",
+              "type": "single_choice",
+              "options": [
+                "Posso ter um lápis, por favor?",
+                "Chamo-me lápis",
+                "Sou lápis",
+                "Tenho escola"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Posso ter = puis-je avoir."
+            },
+            {
+              "id": "q10",
+              "question": "O aluno est na sala =",
+              "type": "single_choice",
+              "options": [
+                "L'élève est en classe",
+                "L'élève mange",
+                "Au revoir",
+                "Merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Na sala = dans la salle."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Jours",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Jours de semaine (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["Segunda-feira", "Sexta-feira", "Olá", "Obrigado"],
+              "correctAnswers": [0, 1],
+              "explanation": "Lundi et vendredi en PT."
+            },
+            {
+              "id": "q2",
+              "question": "Domingo =",
+              "type": "single_choice",
+              "options": ["Dimanche", "Lundi", "Mercredi", "Samedi"],
+              "correctAnswers": [0],
+              "explanation": "Domingo = dimanche."
+            },
+            {
+              "id": "q3",
+              "question": "Terça-feira =",
+              "type": "single_choice",
+              "options": ["Mardi", "Jeudi", "Vendredi", "Nuit"],
+              "correctAnswers": [0],
+              "explanation": "Terça = mardi."
+            },
+            {
+              "id": "q4",
+              "question": "Hoje é segunda-feira :",
+              "type": "single_choice",
+              "options": [
+                "Aujourd'hui c'est lundi",
+                "Demain",
+                "Hier",
+                "Bonjour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hoje = aujourd'hui."
+            },
+            {
+              "id": "q5",
+              "question": "Sábado =",
+              "type": "single_choice",
+              "options": ["Samedi", "Dimanche", "Lundi", "Mardi"],
+              "correctAnswers": [0],
+              "explanation": "Sábado = samedi."
+            },
+            {
+              "id": "q6",
+              "question": "Quarta-feira =",
+              "type": "single_choice",
+              "options": ["Mercredi", "Mardi", "Jeudi", "Vendredi"],
+              "correctAnswers": [0],
+              "explanation": "Quarta = mercredi."
+            },
+            {
+              "id": "q7",
+              "question": "Fim de semana =",
+              "type": "single_choice",
+              "options": ["Week-end", "Matin", "Merci", "Cahier"],
+              "correctAnswers": [0],
+              "explanation": "Fin de semaine."
+            },
+            {
+              "id": "q8",
+              "question": "Amanhã =",
+              "type": "single_choice",
+              "options": ["Demain", "Hier", "Aujourd'hui", "Semaine"],
+              "correctAnswers": [0],
+              "explanation": "Amanhã = demain."
+            },
+            {
+              "id": "q9",
+              "question": "Ontem =",
+              "type": "single_choice",
+              "options": ["Hier", "Demain", "Lundi", "Nuit"],
+              "correctAnswers": [0],
+              "explanation": "Ontem = hier."
+            },
+            {
+              "id": "q10",
+              "question": "Dia =",
+              "type": "single_choice",
+              "options": ["Jour", "Nuit", "Merci", "Table"],
+              "correctAnswers": [0],
+              "explanation": "Dia = jour."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Verbes utiles",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Verbes fréquents (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["Ser", "Ter", "Azul", "Mesa"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ser = être, ter = avoir."
+            },
+            {
+              "id": "q2",
+              "question": "Eu sou =",
+              "type": "single_choice",
+              "options": ["Je suis", "J'ai", "Je vais", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "Ser = être."
+            },
+            {
+              "id": "q3",
+              "question": "Eu tenho =",
+              "type": "single_choice",
+              "options": ["J'ai", "Je suis", "Bonjour", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Ter = avoir."
+            },
+            {
+              "id": "q4",
+              "question": "Estou bem utilise",
+              "type": "single_choice",
+              "options": ["Estar", "Ter", "Chamar", "Adeus"],
+              "correctAnswers": [0],
+              "explanation": "Estar = être (état)."
+            },
+            {
+              "id": "q5",
+              "question": "Chamo-me utilise",
+              "type": "single_choice",
+              "options": ["Chamar-se", "Ser de", "Ter anos", "Olá"],
+              "correctAnswers": [0],
+              "explanation": "Chamar-se = s'appeler."
+            },
+            {
+              "id": "q6",
+              "question": "Gosto de =",
+              "type": "single_choice",
+              "options": ["J'aime", "Je suis", "J'ai", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Gostar de = aimer."
+            },
+            {
+              "id": "q7",
+              "question": "Falo português =",
+              "type": "single_choice",
+              "options": [
+                "Je parle portugais",
+                "Je suis portugais",
+                "J'ai portugais",
+                "Merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Falar = parler."
+            },
+            {
+              "id": "q8",
+              "question": "Moro em Lisboa =",
+              "type": "single_choice",
+              "options": [
+                "J'habite à Lisbonne",
+                "Je suis de Lisbonne",
+                "J'ai Lisbonne",
+                "Bonjour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Morar em = habiter."
+            },
+            {
+              "id": "q9",
+              "question": "Trabalho na escola =",
+              "type": "single_choice",
+              "options": [
+                "Je travaille à l'école",
+                "Je mange",
+                "Je dors",
+                "Tchau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trabalhar = travailler."
+            },
+            {
+              "id": "q10",
+              "question": "Aprendo português =",
+              "type": "single_choice",
+              "options": [
+                "J'apprends le portugais",
+                "J'oublie",
+                "Au revoir",
+                "O livro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aprender = apprendre."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Adjectifs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Adjectifs de base (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["Grande", "Pequeno", "Tchau", "Dez"],
+              "correctAnswers": [0, 1],
+              "explanation": "Grand / petit."
+            },
+            {
+              "id": "q2",
+              "question": "Bom / boa =",
+              "type": "single_choice",
+              "options": ["Bon / bonne", "Mauvais", "Grand", "Petit"],
+              "correctAnswers": [0],
+              "explanation": "Bom masc., boa fém."
+            },
+            {
+              "id": "q3",
+              "question": "Mau / má =",
+              "type": "single_choice",
+              "options": ["Mauvais", "Bon", "Bleu", "Vert"],
+              "correctAnswers": [0],
+              "explanation": "Mau = mauvais."
+            },
+            {
+              "id": "q4",
+              "question": "Nova escola =",
+              "type": "single_choice",
+              "options": [
+                "Nouvelle école",
+                "Vieille maison",
+                "Grand chat",
+                "Petit merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nova = nouvelle (f)."
+            },
+            {
+              "id": "q5",
+              "question": "Velho amigo =",
+              "type": "single_choice",
+              "options": ["Vieux ami", "Nouvelle amie", "Table", "Stylo"],
+              "correctAnswers": [0],
+              "explanation": "Velho = vieux."
+            },
+            {
+              "id": "q6",
+              "question": "Alta rapariga =",
+              "type": "single_choice",
+              "options": ["Grande fille", "Petit garçon", "Bleu ciel", "Rouge"],
+              "correctAnswers": [0],
+              "explanation": "Alta = grande (f)."
+            },
+            {
+              "id": "q7",
+              "question": "Bonito / bonita =",
+              "type": "single_choice",
+              "options": ["Beau / belle", "Laid", "Petit", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "Bonito = joli."
+            },
+            {
+              "id": "q8",
+              "question": "Fácil =",
+              "type": "single_choice",
+              "options": ["Facile", "Difficile", "Grand", "Nuit"],
+              "correctAnswers": [0],
+              "explanation": "Fácil = facile."
+            },
+            {
+              "id": "q9",
+              "question": "Difícil =",
+              "type": "single_choice",
+              "options": ["Difficile", "Facile", "Bonjour", "Olá"],
+              "correctAnswers": [0],
+              "explanation": "Difícil = difficile."
+            },
+            {
+              "id": "q10",
+              "question": "Casa pequena =",
+              "type": "single_choice",
+              "options": [
+                "Petite maison",
+                "Grande école",
+                "Bleu livre",
+                "Rouge mesa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pequena accorde avec casa."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "À table",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Mots de nourriture (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["Pão", "Água", "Cadeira", "Quadro"],
+              "correctAnswers": [0, 1],
+              "explanation": "Pain et eau."
+            },
+            {
+              "id": "q2",
+              "question": "Leite =",
+              "type": "single_choice",
+              "options": ["Lait", "Eau", "Pain", "Fromage"],
+              "correctAnswers": [0],
+              "explanation": "Leite = lait."
+            },
+            {
+              "id": "q3",
+              "question": "Maçã =",
+              "type": "single_choice",
+              "options": ["Pomme", "Poire", "Banane", "Orange"],
+              "correctAnswers": [0],
+              "explanation": "Maçã = pomme."
+            },
+            {
+              "id": "q4",
+              "question": "Gosto de pão =",
+              "type": "single_choice",
+              "options": [
+                "J'aime le pain",
+                "Je suis pain",
+                "Au revoir",
+                "Merci pain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gostar de + nom."
+            },
+            {
+              "id": "q5",
+              "question": "Tenho sede =",
+              "type": "single_choice",
+              "options": ["J'ai soif", "J'ai faim", "Je dors", "Bonjour"],
+              "correctAnswers": [0],
+              "explanation": "Sede = soif."
+            },
+            {
+              "id": "q6",
+              "question": "Tenho fome =",
+              "type": "single_choice",
+              "options": ["J'ai faim", "J'ai soif", "Je suis grand", "Olá"],
+              "correctAnswers": [0],
+              "explanation": "Fome = faim."
+            },
+            {
+              "id": "q7",
+              "question": "Queijo =",
+              "type": "single_choice",
+              "options": ["Fromage", "Pain", "Eau", "Lait"],
+              "correctAnswers": [0],
+              "explanation": "Queijo = fromage."
+            },
+            {
+              "id": "q8",
+              "question": "Pequeno-almoço =",
+              "type": "single_choice",
+              "options": ["Petit-déjeuner", "Dîner", "Souper", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "Pequeno-almoço = petit-déj."
+            },
+            {
+              "id": "q9",
+              "question": "Por favor, um copo de água =",
+              "type": "single_choice",
+              "options": [
+                "Un verre d'eau svp",
+                "Au revoir",
+                "Je m'appelle",
+                "J'ai dix ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demande polie."
+            },
+            {
+              "id": "q10",
+              "question": "Bom apetite =",
+              "type": "single_choice",
+              "options": ["Bon appétit", "Bonjour", "Au revoir", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "Formule au repas."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision unité 2",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Mots essentiels (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["O gato", "A mesa", "Adeus only", "Tenho chamo"],
+              "correctAnswers": [0, 1],
+              "explanation": "Le chat (m) et la table (f)."
+            },
+            {
+              "id": "q2",
+              "question": "Quelle phrase est correcte pour se présenter en cours :",
+              "type": "single_choice",
+              "options": [
+                "Tenho um caderno azul",
+                "Sou caderno azul",
+                "Chamo-me mesa",
+                "Olá anos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avoir + objet + couleur."
+            },
+            {
+              "id": "q3",
+              "question": "« A minha família é grande » :",
+              "type": "single_choice",
+              "options": [
+                "Ma famille est grande",
+                "Mon crayon",
+                "Au revoir",
+                "Merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Família + adjectif."
+            },
+            {
+              "id": "q4",
+              "question": "Segunda-feira + escola :",
+              "type": "single_choice",
+              "options": [
+                "Na segunda-feira vou à escola",
+                "Olá mesa",
+                "Tenho professor azul",
+                "Sou de lápis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour + école."
+            },
+            {
+              "id": "q5",
+              "question": "Um, dois, três =",
+              "type": "single_choice",
+              "options": ["1, 2, 3", "10, 20, 30", "Merci", "Bonjour"],
+              "correctAnswers": [0],
+              "explanation": "Compte de base."
+            },
+            {
+              "id": "q6",
+              "question": "O livro / a caneta :",
+              "type": "single_choice",
+              "options": [
+                "Articles corrects m/f",
+                "Deux verbes",
+                "Au revoir",
+                "Salut only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Livre m, caneta f."
+            },
+            {
+              "id": "q7",
+              "question": "Estou na sala de aula =",
+              "type": "single_choice",
+              "options": [
+                "Je suis en classe",
+                "Je mange pão",
+                "Bom dia anos",
+                "Chamo-me escola"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu classe."
+            },
+            {
+              "id": "q8",
+              "question": "Cor + objet :",
+              "type": "single_choice",
+              "options": [
+                "A porta é branca",
+                "Tenho verde anos",
+                "Sou azul",
+                "Olá preto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Porte blanche."
+            },
+            {
+              "id": "q9",
+              "question": "Gosto de maçã =",
+              "type": "single_choice",
+              "options": [
+                "J'aime la pomme",
+                "Je suis pomme",
+                "Au revoir",
+                "Obrigado maçã"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gostar de."
+            },
+            {
+              "id": "q10",
+              "question": "Tout le vocabulaire u2 :",
+              "type": "single_choice",
+              "options": [
+                "O aluno tem um lápis verde na mochila",
+                "Adeus caderno sou",
+                "Tenho chamo mesa",
+                "Bom dia três"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Élève, crayon vert, sac."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

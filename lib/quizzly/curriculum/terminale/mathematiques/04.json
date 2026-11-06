@@ -1,0 +1,2238 @@
+{
+  "id": "terminale-mathematiques-04",
+  "year": "terminale",
+  "subject": "mathematiques",
+  "title": "Nombres et calculs",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Priorités et fractions",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Fractions rationnelles et réductions au même dénominateur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Calculer la somme A = 1/(x+1) + 1/(x-1) pour tout x distinct de -1 et 1.",
+              "options": [
+                "2x / (x^2 - 1)",
+                "2 / (x^2 - 1)",
+                "2x / (x^2 + 1)",
+                "x / (x^2 - 1)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En réduisant au même dénominateur (x+1)(x-1) = x^2 - 1, on obtient (x-1 + x+1) / (x^2 - 1) = 2x / (x^2 - 1)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Simplifier B = 2/(x+2) - 1/x pour tout réel x distinct de 0 et -2.",
+              "options": [
+                "(x - 2) / (x(x + 2))",
+                "(x + 2) / (x(x + 2))",
+                "1 / (x(x + 2))",
+                "(2x - 2) / (x(x + 2))"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dénominateur commun est x(x+2). Le numérateur vaut 2x - 1*(x+2) = 2x - x - 2 = x - 2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réduire au même dénominateur l'expression C = 3/x + 2/x^2 pour tout x non nul.",
+              "options": [
+                "(3x + 2) / x^2",
+                "5 / x^3",
+                "(3x + 2) / x",
+                "5 / x^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dénominateur commun est x^2. On multiplie la première fraction par x : (3x)/x^2 + 2/x^2 = (3x + 2)/x^2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Simplifier la fraction rationnelle (x^2 - 4) / (x - 2) pour tout réel x ≠ 2.",
+              "options": ["x + 2", "x - 2", "x + 4", "x - 4"],
+              "correctAnswers": [0],
+              "explanation": "x^2 - 4 = (x - 2)(x + 2). En simplifiant par (x - 2) non nul, on trouve x + 2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calculer la différence 1/(x-1) - 1/(x+1) pour tout réel x distinct de -1 et 1.",
+              "options": [
+                "2 / (x^2 - 1)",
+                "2x / (x^2 - 1)",
+                "-2 / (x^2 - 1)",
+                "0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le numérateur devient (x + 1) - (x - 1) = x + 1 - x + 1 = 2 sur le dénominateur x^2 - 1."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Simplifier la fraction (2x + 4) / (4x + 8) pour tout réel x ≠ -2.",
+              "options": ["1/2", "2", "x / 2", "(x + 2) / (2x + 4)"],
+              "correctAnswers": [0],
+              "explanation": "2x + 4 = 2(x + 2) et 4x + 8 = 4(x + 2). Le quotient vaut 2/4 = 1/2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Soit f(x) = (x^2 + 3x) / x. Pour tout réel x non nul, f(x) est égale à :",
+              "options": ["x + 3", "x^2 + 3", "3x", "4x"],
+              "correctAnswers": [0],
+              "explanation": "On factorise le numérateur par x : x(x + 3) / x = x + 3 pour x non nul."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mettre sous la forme d'une fraction unique l'expression 2 + 3/(x-1) pour tout x ≠ 1.",
+              "options": [
+                "(2x + 1) / (x - 1)",
+                "(2x - 2) / (x - 1)",
+                "(2x + 3) / (x - 1)",
+                "5 / (x - 1)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2 + 3/(x-1) = [2(x-1) + 3] / (x-1) = (2x - 2 + 3) / (x-1) = (2x + 1) / (x-1)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour deux réels non nuls a et b, que vaut l'expression 1/a - 1/b ?",
+              "options": [
+                "(b - a) / (ab)",
+                "(a - b) / (ab)",
+                "1 / (a - b)",
+                "(b + a) / (ab)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1/a - 1/b = (b)/(ab) - (a)/(ab) = (b - a) / (ab)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles expressions sont strictement égales à 1 + 1/x pour tout réel x non nul ?",
+              "options": [
+                "(x + 1) / x",
+                "(x^2 + x) / x^2",
+                "(x - 1) / x",
+                "(2x + 2) / (2x)"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "1 + 1/x = (x+1)/x. En multipliant en haut et en bas par x on a (x^2+x)/x^2, et par 2 on a (2x+2)/(2x)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Produits et quotients de fractions algébriques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Calculer le produit P = (2x / 3) * (9 / (4x^2)) pour tout réel x non nul.",
+              "options": ["3 / (2x)", "6 / x", "3 / (4x)", "2 / (3x)"],
+              "correctAnswers": [0],
+              "explanation": "(2x * 9) / (3 * 4x^2) = 18x / (12x^2) = 3 / (2x)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Simplifier le quotient ((x+1)/x) / ((x+1)/2) pour tout x distinct de 0 et -1.",
+              "options": ["2 / x", "x / 2", "2(x + 1) / x", "1 / (2x)"],
+              "correctAnswers": [0],
+              "explanation": "Diviser par une fraction revient à multiplier par son inverse : ((x+1)/x) * (2/(x+1)) = 2/x."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour tous réels non nuls a, b, c, d, que vaut (a/b) / (c/d) ?",
+              "options": [
+                "(ad) / (bc)",
+                "(ac) / (bd)",
+                "(ab) / (cd)",
+                "(bd) / (ac)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "(a/b) / (c/d) = (a/b) * (d/c) = (ad) / (bc)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Simplifier [(x^2 - 9)/(x+1)] * [(x+1)/(x-3)] pour tout x distinct de -1 et 3.",
+              "options": ["x + 3", "x - 3", "(x + 3)/(x - 3)", "1"],
+              "correctAnswers": [0],
+              "explanation": "x^2 - 9 = (x - 3)(x + 3). Les termes (x+1) et (x-3) se simplifient, il reste x + 3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calculer le carré de la fraction (2x)/(x+1) pour tout x ≠ -1.",
+              "options": [
+                "(4x^2) / (x + 1)^2",
+                "(2x^2) / (x + 1)^2",
+                "(4x) / (x + 1)^2",
+                "(4x^2) / (x^2 + 1)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le carré d'un quotient est le quotient des carrés : (2x)^2 / (x+1)^2 = 4x^2 / (x+1)^2."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est l'inverse de la fraction (x - 3)/(2x + 5) pour x ∉ {-5/2, 3} ?",
+              "options": [
+                "(2x + 5) / (x - 3)",
+                "-(x - 3) / (2x + 5)",
+                "(3 - x) / (2x + 5)",
+                "-(2x + 5) / (x - 3)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inverse de A/B est B/A, donc ici (2x + 5)/(x - 3)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calculer le quotient (3/x) / 6 pour tout réel x non nul.",
+              "options": ["1 / (2x)", "2 / x", "18 / x", "x / 2"],
+              "correctAnswers": [0],
+              "explanation": "(3/x) / 6 = (3/x) * (1/6) = 3 / (6x) = 1 / (2x)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calculer le quotient 3 / (x/6) pour tout réel x non nul.",
+              "options": ["18 / x", "x / 18", "1 / (2x)", "2 / x"],
+              "correctAnswers": [0],
+              "explanation": "3 / (x/6) = 3 * (6/x) = 18/x."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Simplifier l'expression [(x - 1)/x] * [x / (1 - x)] pour tout réel x distinct de 0 et 1.",
+              "options": ["-1", "1", "0", "(x - 1)^2 / x^2"],
+              "correctAnswers": [0],
+              "explanation": "x se simplifie, et (x - 1)/(1 - x) = (x - 1)/(-(x - 1)) = -1."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles fractions ou expressions sont rigoureusement égales à 2/3 ?",
+              "options": [
+                "(4x) / (6x) pour tout réel x non nul",
+                "(2x + 2) / (3x + 3) pour tout x distinct de -1",
+                "(2 + x) / (3 + x) pour tout x réel",
+                "(2e^x) / (3e^x) pour tout réel x"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "(4x)/(6x) = 2/3 ; 2(x+1)/(3(x+1)) = 2/3 ; (2e^x)/(3e^x) = 2/3. En revanche (2+x)/(3+x) dépend de x."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Fractions et radicaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Rendre rationnel le dénominateur de la fraction 1 / sqrt(2).",
+              "options": ["sqrt(2) / 2", "2 / sqrt(2)", "sqrt(2)", "1 / 2"],
+              "correctAnswers": [0],
+              "explanation": "On multiplie numérateur et dénominateur par sqrt(2) : 1*sqrt(2) / (sqrt(2)*sqrt(2)) = sqrt(2)/2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rendre rationnel le dénominateur de 1 / (sqrt(3) - 1).",
+              "options": [
+                "(sqrt(3) + 1) / 2",
+                "(sqrt(3) - 1) / 2",
+                "sqrt(3) + 1",
+                "(sqrt(3) + 1) / 4"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On multiplie par la quantité conjuguée sqrt(3)+1 : (sqrt(3)+1) / (3 - 1) = (sqrt(3)+1)/2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Simplifier (x - 4) / (sqrt(x) - 2) pour tout x > 0 avec x ≠ 4.",
+              "options": [
+                "sqrt(x) + 2",
+                "sqrt(x) - 2",
+                "x + 2",
+                "1 / (sqrt(x) + 2)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x - 4 = (sqrt(x))^2 - 2^2 = (sqrt(x) - 2)(sqrt(x) + 2). En simplifiant, il reste sqrt(x) + 2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calculer la valeur exacte de (sqrt(5) + 1)(sqrt(5) - 1) / 2.",
+              "options": ["2", "4", "sqrt(5)", "3"],
+              "correctAnswers": [0],
+              "explanation": "(sqrt(5) + 1)(sqrt(5) - 1) = (sqrt(5))^2 - 1^2 = 5 - 1 = 4. Divisé par 2, le résultat est 2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Simplifier l'expression sqrt(x) / x pour tout réel x > 0.",
+              "options": ["1 / sqrt(x)", "sqrt(x)", "x", "1 / x"],
+              "correctAnswers": [0],
+              "explanation": "Comme x = (sqrt(x))^2, on a sqrt(x) / (sqrt(x))^2 = 1 / sqrt(x)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rendre rationnel le dénominateur de 2 / (sqrt(5) + sqrt(3)).",
+              "options": [
+                "sqrt(5) - sqrt(3)",
+                "(sqrt(5) - sqrt(3)) / 2",
+                "sqrt(5) + sqrt(3)",
+                "2(sqrt(5) - sqrt(3))"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quantité conjuguée : 2(sqrt(5) - sqrt(3)) / (5 - 3) = 2(sqrt(5) - sqrt(3)) / 2 = sqrt(5) - sqrt(3)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour tout x > 0, l'expression x / sqrt(x^3) se simplifie en :",
+              "options": ["1 / sqrt(x)", "sqrt(x)", "1 / x", "x * sqrt(x)"],
+              "correctAnswers": [0],
+              "explanation": "sqrt(x^3) = x * sqrt(x). Donc x / (x * sqrt(x)) = 1 / sqrt(x)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Simplifier la fraction (3 - sqrt(3)) / sqrt(3).",
+              "options": ["sqrt(3) - 1", "3 - 1", "sqrt(3)", "1 - sqrt(3)"],
+              "correctAnswers": [0],
+              "explanation": "3 / sqrt(3) - sqrt(3)/sqrt(3) = sqrt(3) - 1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la valeur exacte du carré (sqrt(2) / 2)^2 ?",
+              "options": ["1/2", "1/4", "2", "sqrt(2) / 4"],
+              "correctAnswers": [0],
+              "explanation": "(sqrt(2))^2 / 2^2 = 2 / 4 = 1/2."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles expressions sont strictement égales au réel sqrt(2) ?",
+              "options": [
+                "2 / sqrt(2)",
+                "sqrt(8) / 2",
+                "sqrt(4) / 2",
+                "4 / sqrt(8)"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "2/sqrt(2) = sqrt(2) ; sqrt(8)/2 = 2*sqrt(2)/2 = sqrt(2) ; 4/sqrt(8) = 4/(2*sqrt(2)) = 2/sqrt(2) = sqrt(2)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Fractions et fonctions exponentielles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Simplifier le quotient e^(2x) / e^x pour tout réel x.",
+              "options": ["e^x", "e^2", "e^(3x)", "2"],
+              "correctAnswers": [0],
+              "explanation": "e^(2x) / e^x = e^(2x - x) = e^x."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour tout réel x, l'expression (e^x + 1) / e^x est égale à :",
+              "options": ["1 + e^(-x)", "1 + e^x", "e^(-x)", "2"],
+              "correctAnswers": [0],
+              "explanation": "(e^x + 1)/e^x = e^x / e^x + 1 / e^x = 1 + e^(-x)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Simplifier (e^(2x) - 1) / (e^x - 1) pour tout réel x ≠ 0.",
+              "options": ["e^x + 1", "e^x - 1", "e^(2x) + 1", "2"],
+              "correctAnswers": [0],
+              "explanation": "e^(2x) - 1 = (e^x - 1)(e^x + 1). On simplifie par (e^x - 1) pour obtenir e^x + 1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est l'écriture simplifiée de 1 / e^(-3x) ?",
+              "options": ["e^(3x)", "e^(-3x)", "-e^(3x)", "3e^x"],
+              "correctAnswers": [0],
+              "explanation": "1 / e^(-a) = e^a, donc 1 / e^(-3x) = e^(3x)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réduire au même dénominateur l'expression 1 + 1 / (e^x).",
+              "options": [
+                "(e^x + 1) / e^x",
+                "(e^x - 1) / e^x",
+                "2 / e^x",
+                "e^(-x)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 + 1/e^x = e^x / e^x + 1 / e^x = (e^x + 1) / e^x."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Simplifier l'expression (e^x - e^(-x)) / (e^x) pour tout réel x.",
+              "options": ["1 - e^(-2x)", "1 - e^0", "e^(-2x)", "0"],
+              "correctAnswers": [0],
+              "explanation": "e^x / e^x - e^(-x) / e^x = 1 - e^(-x - x) = 1 - e^(-2x)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la valeur numérique exacte de (e^0 + e^0) / 4 ?",
+              "options": ["1/2", "1/4", "1", "0"],
+              "correctAnswers": [0],
+              "explanation": "e^0 = 1, donc (1 + 1) / 4 = 2 / 4 = 1/2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Factoriser par e^x pour simplifier : (2e^x + 1) / (e^x + 3).",
+              "options": [
+                "(2 + e^(-x)) / (1 + 3e^(-x))",
+                "(2 - e^(-x)) / (1 - 3e^(-x))",
+                "(2 + e^x) / (1 + 3e^x)",
+                "2/3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En factorisant numérateur et dénominateur par e^x, on obtient (2 + e^(-x)) / (1 + 3e^(-x))."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour tout réel x, le quotient (e^x)^3 / e^(2x) est égal à :",
+              "options": ["e^x", "e^(5x)", "e^(6x)", "e^(-x)"],
+              "correctAnswers": [0],
+              "explanation": "(e^x)^3 = e^(3x), et e^(3x) / e^(2x) = e^(3x - 2x) = e^x."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles expressions sont rigoureusement égales à 1 / (1 + e^x) pour tout réel x ?",
+              "options": [
+                "e^(-x) / (e^(-x) + 1)",
+                "(1 - e^x) / (1 - e^(2x))",
+                "e^x / (1 + e^x)",
+                "1 - e^x / (1 + e^x)"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "En multipliant par e^(-x) : e^(-x)/(e^(-x)+1). En utilisant 1-e^x : (1-e^x)/(1-e^(2x)). Enfin 1 - e^x/(1+e^x) = 1/(1+e^x)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Fractions et logarithmes népériens",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pour deux réels strictement positifs a et b, que vaut ln(a) - ln(b) ?",
+              "options": ["ln(a / b)", "ln(a) / ln(b)", "ln(a - b)", "ln(ab)"],
+              "correctAnswers": [0],
+              "explanation": "D'après les propriétés fondamentales du logarithme népérien, ln(a) - ln(b) = ln(a/b)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour tout réel x > 0, simplifier la fraction ln(x^2) / 2.",
+              "options": ["ln(x)", "ln(x / 2)", "2 ln(x)", "(ln(x))^2"],
+              "correctAnswers": [0],
+              "explanation": "ln(x^2) = 2 ln(x) pour x > 0, donc 2 ln(x) / 2 = ln(x)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour tout réel x > 0, l'expression ln(1/x) est égale à :",
+              "options": ["-ln(x)", "1 / ln(x)", "ln(-x)", "ln(x)"],
+              "correctAnswers": [0],
+              "explanation": "ln(1/x) = ln(x^(-1)) = -ln(x)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la valeur exacte du quotient ln(e^4) / 2 ?",
+              "options": ["2", "4", "e^2", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "ln(e^4) = 4, donc 4 / 2 = 2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour a > 0 et b > 0, que vaut l'expression (ln(a) + ln(b)) / 2 ?",
+              "options": [
+                "ln(sqrt(ab))",
+                "ln((a + b) / 2)",
+                "sqrt(ln(ab))",
+                "ln(ab) / 4"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ln(a) + ln(b) = ln(ab), et (1/2) ln(ab) = ln((ab)^(1/2)) = ln(sqrt(ab))."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Simplifier le quotient (ln(x^3) - ln(x)) / 2 pour tout x > 0.",
+              "options": ["ln(x)", "2 ln(x)", "ln(x^2)", "0"],
+              "correctAnswers": [0],
+              "explanation": "ln(x^3) - ln(x) = 3 ln(x) - ln(x) = 2 ln(x). En divisant par 2, on obtient ln(x)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour tout x > 0, quelle relation relie ln(sqrt(x)) et ln(x) ?",
+              "options": [
+                "ln(sqrt(x)) = (1/2) ln(x)",
+                "ln(sqrt(x)) = 2 ln(x)",
+                "ln(sqrt(x)) = sqrt(ln(x))",
+                "ln(sqrt(x)) = ln(x) / x"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sqrt(x) = x^(1/2), donc ln(x^(1/2)) = (1/2) ln(x)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Écrire sous la forme d'un seul logarithme la différence ln(3) - ln(6).",
+              "options": ["-ln(2)", "ln(2)", "ln(1/3)", "-ln(3)"],
+              "correctAnswers": [0],
+              "explanation": "ln(3) - ln(6) = ln(3/6) = ln(1/2) = -ln(2)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour tout x > 1, simplifier le quotient ln(x) / ln(x^2).",
+              "options": ["1/2", "2", "ln(1/2)", "1 / x"],
+              "correctAnswers": [0],
+              "explanation": "ln(x^2) = 2 ln(x). Donc ln(x) / (2 ln(x)) = 1/2."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles expressions sont strictement égales à -ln(3) ?",
+              "options": ["ln(1/3)", "ln(3^(-1))", "-ln(1/3)", "ln(2) - ln(6)"],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "-ln(3) = ln(1/3) = ln(3^(-1)). De plus, ln(2) - ln(6) = ln(2/6) = ln(1/3) = -ln(3)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Décomposition en éléments simples et formes rationnelles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Trouver A et B réels tels que 1 / (x(x+1)) = A/x + B/(x+1) pour tout x ∉ {-1, 0}.",
+              "options": [
+                "A = 1 et B = -1",
+                "A = 1 et B = 1",
+                "A = -1 et B = 1",
+                "A = 2 et B = -1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A(x+1) + Bx = (A+B)x + A = 1, ce qui impose A = 1 et A + B = 0, donc B = -1."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour tout x distinct de -1 et 1, décomposer (2x) / (x^2 - 1).",
+              "options": [
+                "1/(x - 1) + 1/(x + 1)",
+                "1/(x - 1) - 1/(x + 1)",
+                "2/(x - 1) - 2/(x + 1)",
+                "1/x^2 - 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1/(x-1) + 1/(x+1) = (x+1 + x-1)/(x^2 - 1) = 2x / (x^2 - 1)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Écrire la fraction (x + 3) / (x + 1) sous la forme a + b/(x + 1).",
+              "options": [
+                "1 + 2 / (x + 1)",
+                "1 + 3 / (x + 1)",
+                "2 + 1 / (x + 1)",
+                "1 - 2 / (x + 1)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "(x + 3)/(x + 1) = (x + 1 + 2)/(x + 1) = 1 + 2/(x + 1)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Écrire la fraction (2x + 5) / (x + 2) sous la forme a + b/(x + 2).",
+              "options": [
+                "2 + 1 / (x + 2)",
+                "2 + 5 / (x + 2)",
+                "1 + 3 / (x + 2)",
+                "2 - 1 / (x + 2)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "(2x + 5)/(x + 2) = (2(x + 2) + 1)/(x + 2) = 2 + 1/(x + 2)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour tout entier k ≥ 1, le terme 1 / (k(k+1)) s'écrit sous forme télescopique :",
+              "options": [
+                "1/k - 1/(k + 1)",
+                "1/k + 1/(k + 1)",
+                "1/(k + 1) - 1/k",
+                "1 / k^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1/k - 1/(k+1) = (k+1 - k) / (k(k+1)) = 1 / (k(k+1))."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Décomposer 2 / (x^2 - 1) en éléments simples pour tout x distinct de -1 et 1.",
+              "options": [
+                "1/(x - 1) - 1/(x + 1)",
+                "1/(x - 1) + 1/(x + 1)",
+                "2/(x - 1) + 2/(x + 1)",
+                "-1/(x - 1) + 1/(x + 1)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1/(x-1) - 1/(x+1) = (x+1 - (x-1))/(x^2 - 1) = 2 / (x^2 - 1)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Soit f(x) = (3x - 1)/(x - 1). Trouver a et b tels que f(x) = a + b/(x - 1).",
+              "options": [
+                "a = 3 et b = 2",
+                "a = 3 et b = -1",
+                "a = 1 et b = 2",
+                "a = 3 et b = -4"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3x - 1 = 3(x - 1) + 2. Ainsi, f(x) = 3 + 2/(x - 1)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour tout réel x > 0, décomposer en deux termes la fraction (x^2 + 1) / x.",
+              "options": ["x + 1/x", "x + 1", "x^2 + 1/x", "1 + 1/x"],
+              "correctAnswers": [0],
+              "explanation": "(x^2 + 1)/x = x^2/x + 1/x = x + 1/x."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calculer la somme télescopique S = (1 - 1/2) + (1/2 - 1/3) + ... + (1/n - 1/(n+1)).",
+              "options": [
+                "1 - 1 / (n + 1)",
+                "1 / n",
+                "1 - 1 / n",
+                "1 / (n + 1)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous les termes intermédiaires s'annulent deux à deux, il ne reste que le premier (1) et le dernier (-1/(n+1))."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles égalités rationnelles sont vraies pour tout réel x distinct de 0 et 2 ?",
+              "options": [
+                "2 / (x(x - 2)) = 1/(x - 2) - 1/x",
+                "(x - 1) / (x(x - 2)) = 1/(2x) + 1/(2(x - 2))",
+                "(x^2 - 4) / (x - 2) = x + 2",
+                "1 / (x - 2) + 1 / x = (2x - 2) / (x(x - 2))"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les options 0, 1 et 3 se vérifient par mise au même dénominateur direct. L'option 2 est valide pour x ≠ 2 mais ne concerne pas x = 0."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Fractions et suites numériques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Soit la suite u_n = 1 / (n + 1). Calculer la différence u_(n+1) - u_n.",
+              "options": [
+                "-1 / ((n + 1)(n + 2))",
+                "1 / ((n + 1)(n + 2))",
+                "-1 / (n + 2)",
+                "1 / (n + 1)^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1/(n+2) - 1/(n+1) = (n+1 - (n+2)) / ((n+1)(n+2)) = -1 / ((n+1)(n+2))."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour la suite géométrique u_n = (2/3)^n, calculer le quotient u_(n+1) / u_n.",
+              "options": ["2/3", "3/2", "(2/3)^(n+1)", "1"],
+              "correctAnswers": [0],
+              "explanation": "Par définition d'une suite géométrique de raison q = 2/3, u_(n+1) / u_n = 2/3."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Soit u_n = (2n + 1) / (n + 3). Quelle est la limite de u_n quand n tend vers +∞ ?",
+              "options": ["2", "1/3", "+∞", "1"],
+              "correctAnswers": [0],
+              "explanation": "On factorise par n : n(2 + 1/n) / [n(1 + 3/n)] = (2 + 1/n)/(1 + 3/n), qui tend vers 2/1 = 2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calculer la limite quand n tend vers +∞ de 1 + 1/2 + 1/4 + ... + (1/2)^n.",
+              "options": ["2", "1", "3/2", "+∞"],
+              "correctAnswers": [0],
+              "explanation": "Somme géométrique : (1 - (1/2)^(n+1)) / (1 - 1/2) = 2(1 - (1/2)^(n+1)), qui tend vers 2 car 1/2 < 1."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Soit u_n = (3n^2 - 1) / (2n^2 + 5n). Quelle est la limite de u_n en +∞ ?",
+              "options": ["3/2", "0", "-1/5", "+∞"],
+              "correctAnswers": [0],
+              "explanation": "Le rapport des termes de plus haut degré est (3n^2)/(2n^2) = 3/2."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Soit u_0 = 1 et u_(n+1) = u_n / (1 + u_n). Que vaut 1/u_(n+1) - 1/u_n ?",
+              "options": ["1", "-1", "u_n", "0"],
+              "correctAnswers": [0],
+              "explanation": "1/u_(n+1) = (1 + u_n) / u_n = 1/u_n + 1. Donc 1/u_(n+1) - 1/u_n = 1 (suite arithmétique)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Soit la suite u_n = n / (n + 1). Calculer 1 - u_n.",
+              "options": [
+                "1 / (n + 1)",
+                "-1 / (n + 1)",
+                "n / (n + 1)",
+                "1 / n"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 - n/(n+1) = (n + 1 - n)/(n + 1) = 1/(n + 1)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La somme infinie S = 1 + (4/5) + (4/5)^2 + ... vaut :",
+              "options": ["5", "4", "1", "4/5"],
+              "correctAnswers": [0],
+              "explanation": "S = 1 / (1 - 4/5) = 1 / (1/5) = 5."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour tout entier n ≥ 1, simplifier le quotient de factorielles (n + 1)! / n!.",
+              "options": ["n + 1", "n", "1 / (n + 1)", "n!"],
+              "correctAnswers": [0],
+              "explanation": "(n + 1)! = (n + 1) * n!, donc (n + 1)! / n! = n + 1."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles suites ont pour limite 0 lorsque n tend vers +∞ ?",
+              "options": [
+                "u_n = 1 / (n^2 + 1)",
+                "v_n = (1/3)^n",
+                "w_n = n / (n + 1)",
+                "t_n = (-1)^n / n"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "1/(n^2+1) -> 0 ; (1/3)^n -> 0 car |1/3| < 1 ; (-1)^n/n -> 0 par encadrement. En revanche, n/(n+1) -> 1."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Taux d'accroissement et limites de fractions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Calculer le taux d'accroissement de f(x) = x^2 en 1 : (f(1+h) - f(1)) / h pour h ≠ 0.",
+              "options": ["2 + h", "2h", "h + 1", "2 - h"],
+              "correctAnswers": [0],
+              "explanation": "[(1+h)^2 - 1] / h = (1 + 2h + h^2 - 1) / h = (2h + h^2) / h = 2 + h."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la limite quand h tend vers 0 du quotient ((1+h)^2 - 1) / h ?",
+              "options": ["2", "1", "0", "+∞"],
+              "correctAnswers": [0],
+              "explanation": "La limite de 2 + h quand h tend vers 0 est 2, ce qui correspond au nombre dérivé f'(1)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calculer la limite fondamentale en 0 du quotient (e^h - 1) / h.",
+              "options": ["1", "0", "e", "+∞"],
+              "correctAnswers": [0],
+              "explanation": "C'est la dérivée de exp en 0 : exp'(0) = e^0 = 1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calculer la limite quand x tend vers 1 du quotient ln(x) / (x - 1).",
+              "options": ["1", "0", "e", "-1"],
+              "correctAnswers": [0],
+              "explanation": "C'est le taux d'accroissement de ln en 1 : ln'(1) = 1/1 = 1."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calculer la limite classique quand x tend vers 0 de sin(x) / x.",
+              "options": ["1", "0", "+∞", "N'existe pas"],
+              "correctAnswers": [0],
+              "explanation": "C'est le taux d'accroissement de la fonction sinus en 0 : sin'(0) = cos(0) = 1."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Déterminer la limite en +∞ de la fraction rationnelle (3x^3 - 2x) / (5x^3 + 7).",
+              "options": ["3/5", "0", "+∞", "-2/7"],
+              "correctAnswers": [0],
+              "explanation": "En +∞, une fraction rationnelle a la même limite que le quotient de ses termes de plus haut degré : (3x^3)/(5x^3) = 3/5."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calculer la limite quand x tend vers 2 de (x^2 - 4) / (x - 2).",
+              "options": ["4", "0", "2", "Indéterminée"],
+              "correctAnswers": [0],
+              "explanation": "(x^2 - 4)/(x - 2) = x + 2 pour x ≠ 2. En tendant vers 2, x + 2 tend vers 4."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Taux d'accroissement de f(x) = 1/x en a = 2 : que vaut (1/(2+h) - 1/2) / h pour h ≠ 0 ?",
+              "options": [
+                "-1 / (2(2 + h))",
+                "1 / (2(2 + h))",
+                "-1 / h",
+                "-1/4"
+              ],
+              "correctAnswers": [0],
+              "explanation": "[2 - (2+h)] / [2(2+h) * h] = -h / [2(2+h) * h] = -1 / [2(2+h)]."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En déduire le nombre dérivé f'(2) de f(x) = 1/x en calculant la limite en h=0 de -1 / (2(2+h)).",
+              "options": ["-1/4", "1/4", "-1/2", "0"],
+              "correctAnswers": [0],
+              "explanation": "Quand h tend vers 0, 2(2+h) tend vers 4, donc la limite vaut -1/4 = -1/2^2."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles formes de limites sont considérées comme indéterminées sans transformation préalable ?",
+              "options": ["0 / 0", "∞ / ∞", "0 / ∞", "∞ - ∞"],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "0/0, ∞/∞ et ∞ - ∞ sont les indéterminations classiques. 0/∞ n'est pas indéterminée (elle tend vers 0)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Équations et inéquations rationnelles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Résoudre dans R l'équation rationnelle (2x - 1) / (x + 3) = 0.",
+              "options": ["x = 1/2", "x = -3", "x = -1/2", "x = 3"],
+              "correctAnswers": [0],
+              "explanation": "Une fraction est nulle si et seulement si son numérateur est nul et son dénominateur non nul : 2x - 1 = 0 => x = 1/2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles sont les valeurs interdites de l'équation 1/(x - 2) = 3/(x + 1) ?",
+              "options": ["2 et -1", "2 et 1", "-2 et 1", "0 et 2"],
+              "correctAnswers": [0],
+              "explanation": "Les dénominateurs s'annulent pour x - 2 = 0 (x = 2) et x + 1 = 0 (x = -1)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Résoudre dans R l'équation 1/(x - 2) = 3/(x + 1).",
+              "options": ["x = 7/2", "x = 5/2", "x = 1", "x = -7/2"],
+              "correctAnswers": [0],
+              "explanation": "Produit en croix : 1*(x + 1) = 3*(x - 2) => x + 1 = 3x - 6 => 2x = 7 => x = 7/2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Résoudre dans R l'inéquation (x - 1) / (x + 2) ≥ 0.",
+              "options": [
+                "]-∞ ; -2[ U [1 ; +∞[",
+                "]-2 ; 1]",
+                "]-∞ ; -2] U [1 ; +∞[",
+                "[1 ; +∞["
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tableau de signes : positif à l'extérieur des racines. Attention, x = -2 est valeur interdite (crochet ouvert)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Résoudre dans R l'inéquation 1/x < 1.",
+              "options": [
+                "]-∞ ; 0[ U ]1 ; +∞[",
+                "]1 ; +∞[",
+                "]0 ; 1[",
+                "]-∞ ; 1["
+              ],
+              "correctAnswers": [0],
+              "explanation": "1/x - 1 < 0 => (1 - x)/x < 0. Le quotient est négatif pour x < 0 et pour x > 1."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Résoudre l'équation (x^2 - 9) / (x - 3) = 0.",
+              "options": [
+                "x = -3 uniquement",
+                "x = 3 et x = -3",
+                "x = 3 uniquement",
+                "Aucune solution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le numérateur s'annule en 3 et -3, mais 3 est valeur interdite du dénominateur. Seul -3 est solution."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le signe de (3 - x) / (2x + 4) pour x dans l'intervalle ]-2 ; 3[ ?",
+              "options": [
+                "Strictement positif",
+                "Strictement négatif",
+                "Nul",
+                "Variable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur ]-2, 3[, 3 - x > 0 et 2x + 4 > 0, donc le quotient est strictement positif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Résoudre dans R l'équation 2/x + 1 = 0.",
+              "options": ["x = -2", "x = 2", "x = -1/2", "x = 1/2"],
+              "correctAnswers": [0],
+              "explanation": "2/x = -1 => x = -2 (qui est non nul)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est l'ensemble des solutions de 1/(x - 1) > 0 ?",
+              "options": ["]1 ; +∞[", "[1 ; +∞[", "]-∞ ; 1[", "R*"],
+              "correctAnswers": [0],
+              "explanation": "Le numérateur 1 étant strictement positif, la fraction est positive si et seulement si x - 1 > 0, soit x > 1."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels réels parmi les suivants sont solutions de l'inéquation (x^2 - 1) / x ≥ 0 ?",
+              "options": ["x = -0.5", "x = 2", "x = 1", "x = -2"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le tableau de signes donne S = [-1 ; 0[ U [1 ; +∞[. -0.5, 2 et 1 appartiennent à cet ensemble, mais pas -2."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Priorités de calculs et expressions composées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Calculer l'expression numérique A = 3 - 2 * (4 - 7).",
+              "options": ["9", "-3", "-9", "3"],
+              "correctAnswers": [0],
+              "explanation": "Parenthèses d'abord : 4 - 7 = -3. Puis multiplication : -2 * (-3) = +6. Enfin : 3 + 6 = 9."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calculer B = (2/3 - 1/6) / (1/2 + 1/4).",
+              "options": ["2/3", "3/4", "1/2", "4/3"],
+              "correctAnswers": [0],
+              "explanation": "Numérateur : 4/6 - 1/6 = 3/6 = 1/2. Dénominateur : 2/4 + 1/4 = 3/4. Quotient : (1/2) / (3/4) = 4/6 = 2/3."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calculer la valeur numérique de C = 2^3 * 3^2 - 4^2.",
+              "options": ["56", "36", "64", "48"],
+              "correctAnswers": [0],
+              "explanation": "Puissances prioritaires : 8 * 9 - 16 = 72 - 16 = 56."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calculer D = 10 - 2 * 3^2.",
+              "options": ["-8", "72", "64", "2"],
+              "correctAnswers": [0],
+              "explanation": "La puissance est prioritaire : 3^2 = 9. Puis 2 * 9 = 18. Enfin 10 - 18 = -8."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calculer E = (1/2)^(-2) + (1/3)^(-1).",
+              "options": ["7", "5", "1/7", "13"],
+              "correctAnswers": [0],
+              "explanation": "(1/2)^(-2) = 2^2 = 4 et (1/3)^(-1) = 3^1 = 3. 4 + 3 = 7."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calculer le coefficient binomial 4! / (2! * 2!).",
+              "options": ["6", "12", "4", "24"],
+              "correctAnswers": [0],
+              "explanation": "4! = 24 et 2! * 2! = 2 * 2 = 4. 24 / 4 = 6."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calculer 5 - (3 - (2 - 1)).",
+              "options": ["3", "1", "5", "4"],
+              "correctAnswers": [0],
+              "explanation": "Parenthèses intérieures : 2 - 1 = 1. Puis 3 - 1 = 2. Enfin 5 - 2 = 3."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calculer la somme de fractions S = 1/2 + 1/6 + 1/12.",
+              "options": ["3/4", "2/3", "5/6", "7/12"],
+              "correctAnswers": [0],
+              "explanation": "Dénominateur commun 12 : 6/12 + 2/12 + 1/12 = 9/12 = 3/4."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que vaut l'expression avec puissances imbriquées 2^(2^3) ?",
+              "options": ["256", "64", "512", "128"],
+              "correctAnswers": [0],
+              "explanation": "L'exposant se calcule du haut vers le bas : 2^3 = 8, puis 2^8 = 256."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles expressions numériques ont une valeur strictement égale à 1 ?",
+              "options": [
+                "cos^2(x) + sin^2(x) pour tout réel x",
+                "e^0",
+                "ln(e)",
+                "ln(1)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "cos^2(x) + sin^2(x) = 1, e^0 = 1, et ln(e) = 1. En revanche, ln(1) = 0."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Problèmes numériques",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Approximation numérique et méthode de dichotomie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le principe fondamental de la méthode de dichotomie pour localiser une racine ?",
+              "options": [
+                "Diviser par deux la longueur de l'intervalle à chaque étape",
+                "Calculer la tangente à la courbe en chaque point",
+                "Multiplier l'intervalle par deux à chaque étape",
+                "Estimer la racine par régression polynomiale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dichotomie évalue le signe de la fonction au milieu de l'intervalle pour diviser sa largeur par deux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si on applique 3 étapes de dichotomie à partir de [0, 1], quelle est l'amplitude de l'intervalle obtenu ?",
+              "options": ["1/8", "1/4", "1/16", "1/6"],
+              "correctAnswers": [0],
+              "explanation": "Après n étapes, l'amplitude est (b - a)/2^n. Pour n = 3 : 1 / 2^3 = 1/8 = 0.125."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien d'étapes de dichotomie au minimum faut-il pour atteindre une précision de 10^(-3) sur un intervalle initial de longueur 1 ?",
+              "options": [
+                "10 étapes car 2^10 = 1024 > 1000",
+                "7 étapes car 2^7 = 128",
+                "1000 étapes",
+                "3 étapes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On veut 1/2^n ≤ 1/1000 <=> 2^n ≥ 1000. Comme 2^9 = 512 et 2^10 = 1024, il faut au moins 10 étapes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Soit f continue strictement croissante sur [1, 2] avec f(1) = -2 et f(2) = 3. Que teste la première étape de dichotomie ?",
+              "options": [
+                "Le signe de f(1.5)",
+                "Le signe de f(0)",
+                "La dérivée f'(1.5)",
+                "La valeur de f(3)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le milieu de [1, 2] est m = (1 + 2)/2 = 1.5. On calcule le signe de f(1.5)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si dans l'exercice précédent on trouve f(1.5) = -0.4, quel est le nouvel intervalle de recherche ?",
+              "options": ["[1.5, 2]", "[1, 1.5]", "[0, 1.5]", "[1.5, 3]"],
+              "correctAnswers": [0],
+              "explanation": "Comme f(1.5) < 0 et f(2) > 0, le changement de signe a lieu dans l'intervalle [1.5, 2]."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'amplitude de l'intervalle [a, b] après n itérations de dichotomie est donnée par la formule :",
+              "options": [
+                "(b - a) / 2^n",
+                "(b - a) / n",
+                "(b - a) / 2n",
+                "(b - a) * 2^n"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque étape divise la longueur par 2, donc après n itérations, la longueur est (b - a)/2^n."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle condition sur une fonction f garantit l'existence d'une unique solution à f(x) = 0 sur [a, b] ?",
+              "options": [
+                "f continue, strictement monotone et f(a)*f(b) < 0",
+                "f continue uniquement",
+                "f dérivable et positive",
+                "f constante sur [a, b]"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le corollaire du TVI (théorème de la bijection) requiert la continuité et la stricte monotonie avec changement de signe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour un balayage de [0, 1] avec un pas de 0.1, combien de valeurs sont évaluées au maximum ?",
+              "options": [
+                "11 valeurs",
+                "100 valeurs",
+                "10 valeurs",
+                "2 valeurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les points évalués sont 0, 0.1, 0.2, ..., 1.0, ce qui fait 11 points au total."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la méthode de dichotomie est-elle préférée au balayage à pas constant pour une haute précision ?",
+              "options": [
+                "Sa complexité est logarithmique et nécessite beaucoup moins de calculs",
+                "Elle donne toujours la valeur exacte",
+                "Elle n'utilise pas de divisions",
+                "Elle fonctionne pour les fonctions discontinues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La convergence de la dichotomie est géométrique (O(log(1/ε))), bien plus rapide qu'un balayage linéaire (O(1/ε))."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels sont les avantages théoriques de la méthode de dichotomie ?",
+              "options": [
+                "Elle converge à coup sûr si f est continue et change de signe",
+                "Le nombre d'itérations pour une précision donnée est connu à l'avance",
+                "Elle s'applique sans hypothèse de continuité",
+                "Elle donne toujours une valeur exacte en un nombre fini d'étapes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La dichotomie est garantie de converger si f est continue avec changement de signe, et l'amplitude (b-a)/2^n est parfaitement déterministe."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Résolution approchée d'équations et TVI",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Le théorème des valeurs intermédiaires (TVI) s'applique à toute fonction :",
+              "options": [
+                "Continue sur un intervalle [a, b]",
+                "Dérivable à l'infini",
+                "Strictement positive",
+                "Polynomiale uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hypothèse indispensable pour appliquer le TVI est la continuité sur un intervalle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de solutions réelles l'équation x^3 + x - 1 = 0 admet-elle sur [0, 1] ?",
+              "options": [
+                "Exactement une solution",
+                "Aucune solution",
+                "Exactement deux solutions",
+                "Une infinité de solutions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'(x) = 3x^2 + 1 > 0 donc f est strictement croissante. f(0) = -1 < 0 et f(1) = 1 > 0 : il y a une unique solution."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si f est continue sur [a, b] et f(a)*f(b) < 0, alors l'équation f(x) = 0 admet :",
+              "options": [
+                "Au moins une solution sur ]a, b[",
+                "Exactement une solution",
+                "Aucune solution",
+                "Exactement deux solutions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par le TVI, sans hypothèse de stricte monotonie, on peut seulement garantir l'existence d'au moins une solution."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la solution exacte de l'équation exponentielle e^x = 3 ?",
+              "options": ["ln(3)", "e^3", "3/e", "sqrt(3)"],
+              "correctAnswers": [0],
+              "explanation": "La fonction exponentielle est bijective de R sur ]0, +∞[. e^x = 3 <=> x = ln(3)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Donner une valeur approchée à 0.01 près du nombre ln(3).",
+              "options": ["1.10", "0.48", "2.08", "0.79"],
+              "correctAnswers": [0],
+              "explanation": "ln(3) ≈ 1.0986, ce qui s'arrondit à 1.10 au centième."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Soit f(x) = x - cos(x). Quelle est l'expression de sa dérivée f'(x) ?",
+              "options": ["1 + sin(x)", "1 - sin(x)", "cos(x)", "-sin(x)"],
+              "correctAnswers": [0],
+              "explanation": "La dérivée de x est 1 et celle de -cos(x) est -(-sin(x)) = +sin(x)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comme sin(x) ≥ -1, f'(x) = 1 + sin(x) ≥ 0. Que peut-on en déduire pour f(x) = x - cos(x) ?",
+              "options": [
+                "f est croissante sur R",
+                "f est décroissante sur R",
+                "f est constante",
+                "f est périodique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une dérivée positive ou nulle (qui ne s'annule qu'en des points isolés) implique que f est strictement croissante."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien de solutions réelles l'équation x = cos(x) possède-t-elle sur R ?",
+              "options": [
+                "Exactement une solution",
+                "Deux solutions",
+                "Une infinité de solutions",
+                "Aucune solution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f(x) = x - cos(x) est continue strictement croissante de R dans R. Par le théorème de la bijection, il existe une unique solution."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel outil géométrique la méthode de Newton utilise-t-elle pour approcher une racine ?",
+              "options": [
+                "La tangente à la courbe représentative",
+                "La corde joignant les deux bornes",
+                "La normale à la courbe",
+                "Le cercle osculateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méthode de Newton remplace localement la courbe par sa tangente : x_(n+1) = x_n - f(x_n)/f'(x_n)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles équations admettent au moins une solution réelle dans leur ensemble de définition ?",
+              "options": [
+                "x^3 + 2x - 5 = 0",
+                "e^x - 2 = 0",
+                "x^2 + 1 = 0",
+                "ln(x) = 1"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "x^3+2x-5=0 a une solution (polynôme de degré impair), e^x=2 a x=ln(2), ln(x)=1 a x=e. x^2+1=0 n'a aucune solution réelle."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Modélisation discrète et suites numériques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Une population de 1000 individus augmente de 3 % par an. Quelle est l'expression de P_n après n années ?",
+              "options": [
+                "P_n = 1000 * (1.03)^n",
+                "P_n = 1000 + 30n",
+                "P_n = 1000 * (0.03)^n",
+                "P_n = 1000 * (1.3)^n"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Augmenter de 3 % revient à multiplier par le coefficient multiplicateur 1 + 0.03 = 1.03."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un capital de 2000 € est placé à intérêts composés au taux annuel de 2 %. Que vaut le capital au bout de n années ?",
+              "options": [
+                "2000 * (1.02)^n",
+                "2000 + 40n",
+                "2000 * (0.02)^n",
+                "2000 * (1.2)^n"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les intérêts composés suivent une progression géométrique de raison 1 + 2/100 = 1.02."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un traitement élimine 20 % d'une molécule par jour avec un apport quotidien fixe de 10 mg. La relation de récurrence est :",
+              "options": [
+                "u_(n+1) = 0.8 * u_n + 10",
+                "u_(n+1) = 0.2 * u_n + 10",
+                "u_(n+1) = 1.2 * u_n + 10",
+                "u_(n+1) = 0.8 * u_n - 10"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une baisse de 20 % laisse 80 % (facteur 0.8), auquel s'ajoute l'apport constant de 10 mg."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour la suite arithmético-géométrique u_(n+1) = 0.8 * u_n + 10, quel est le point fixe L tel que L = 0.8L + 10 ?",
+              "options": ["50", "10", "80", "12.5"],
+              "correctAnswers": [0],
+              "explanation": "L - 0.8L = 10 <=> 0.2L = 10 <=> L = 10 / 0.2 = 50."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que représente la valeur d'équilibre L = 50 dans le modèle médical précédent ?",
+              "options": [
+                "La quantité limite de molécule dans l'organisme à long terme",
+                "La dose toxique maximale",
+                "La dose initiale administrée",
+                "La perte totale sur une semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme |0.8| < 1, la suite converge vers son point fixe L = 50 mg, quel que soit le point de départ."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Soit u_n = 1000 * (0.5)^n. Au bout de combien d'étapes la valeur passe-t-elle strictement sous 100 ?",
+              "options": [
+                "4 étapes car 0.5^4 = 0.0625 et 1000*0.0625 = 62.5 < 100",
+                "2 étapes",
+                "10 étapes",
+                "1 étape"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour n = 3 : 1000 * 0.125 = 125 > 100. Pour n = 4 : 1000 * 0.0625 = 62.5 < 100."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une grandeur physique décroît de 5 % par période. Quel est son coefficient multiplicateur ?",
+              "options": ["0.95", "0.05", "1.05", "-0.05"],
+              "correctAnswers": [0],
+              "explanation": "Diminuer de 5 % revient à multiplier par 1 - 0.05 = 0.95."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Doubler une quantité initiale correspond mathématiquement à une augmentation de :",
+              "options": ["100 %", "200 %", "50 %", "20 %"],
+              "correctAnswers": [0],
+              "explanation": "Le coefficient multiplicateur est 2 = 1 + 100/100, soit une hausse de 100 %."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une quantité croît de 5 % par an. En combien d'années environ double-t-elle (règle des 70) ?",
+              "options": [
+                "Environ 14 ans car 70 / 5 = 14",
+                "Environ 20 ans",
+                "Environ 7 ans",
+                "Environ 50 ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La règle empirique des 70 donne n ≈ 70 / taux = 70 / 5 = 14 ans (en effet 1.05^14 ≈ 1.98)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles modélisations correspondent rigoureusement à une croissance ou décroissance géométrique ?",
+              "options": [
+                "L'évolution d'un capital à intérêts composés sans versements",
+                "La décroissance radioactive d'un isotope",
+                "L'évolution d'un capital à intérêts simples",
+                "La division cellulaire sans contrainte de ressources"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les intérêts simples sont une suite arithmétique. Les trois autres cas ont un facteur multiplicatif constant (suite géométrique)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Calculs de seuils et algorithmique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Soit u_n = 3 * 2^n. Pour chercher le plus petit entier n tel que u_n > 1000, quelle inéquation résout-on ?",
+              "options": [
+                "2^n > 1000 / 3",
+                "2^n > 3000",
+                "n > 1000 / 6",
+                "2^n > 333"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3 * 2^n > 1000 <=> 2^n > 1000 / 3 ≈ 333.33."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Résoudre analytiquement 2^n > 1000/3 à l'aide du logarithme népérien.",
+              "options": [
+                "n > ln(1000/3) / ln(2)",
+                "n > ln(2) / ln(1000/3)",
+                "n > ln(1000/3) - ln(2)",
+                "n > 1000 / (3 ln(2))"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En appliquant ln qui est strictement croissante : ln(2^n) = n ln(2) > ln(1000/3), d'où n > ln(1000/3)/ln(2)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sachant que ln(1000/3) / ln(2) ≈ 8.38, quel est le premier entier n solution ?",
+              "options": ["9", "8", "10", "7"],
+              "correctAnswers": [0],
+              "explanation": "Comme n est un entier naturel et n > 8.38, le plus petit entier possible est n = 9."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En algorithmique, quelle structure de contrôle est la plus appropriée pour chercher un seuil inconnu à l'avance ?",
+              "options": [
+                "Une boucle conditionnelle 'Tant que' (while)",
+                "Une boucle bornée 'Pour' (for)",
+                "Une structure conditionnelle simple 'Si' (if)",
+                "Une affectation directe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand le nombre d'itérations n'est pas connu a priori, on utilise une boucle while qui s'arrête dès que la condition est satisfaite."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans un algorithme de recherche de seuil, quel est le rôle de l'instruction 'n = n + 1' ?",
+              "options": [
+                "Incrémenter le compteur d'étapes à chaque passage de boucle",
+                "Vérifier si n est égal à n + 1",
+                "Réinitialiser n à zéro",
+                "Sortir de la boucle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'n = n + 1' augmente de 1 la variable n pour passer au rang suivant de la suite."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Soit u_0 = 100 et u_(n+1) = 0.9 * u_n. Pour trouver le premier n où u_n < 10, la condition de la boucle 'while' est :",
+              "options": [
+                "while u >= 10:",
+                "while u < 10:",
+                "while u == 10:",
+                "while u <= 0:"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La boucle while continue TANT QUE le seuil n'est pas franchi, donc tant que u ≥ 10."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Soit u_n = 1 - (0.5)^n. Pour quelle valeur minimale de n a-t-on u_n > 0.99 ?",
+              "options": [
+                "n = 7 car 0.5^7 ≈ 0.0078 < 0.01",
+                "n = 2",
+                "n = 5",
+                "n = 100"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 - 0.5^n > 0.99 <=> 0.5^n < 0.01. Or 0.5^6 = 0.0156 et 0.5^7 = 0.0078, donc n = 7."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle fonction mathématique associe à un réel x le plus petit entier supérieur ou égal à x ?",
+              "options": [
+                "La partie entière par excès (plafond / ceil)",
+                "La partie entière par défaut (plancher / floor)",
+                "La valeur absolue",
+                "L'arrondi au plus proche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction plafond (ceil) renvoie le plus petit entier k tel que k ≥ x."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que vaut la partie entière par excès ceil(8.38) ?",
+              "options": ["9", "8", "8.4", "8.5"],
+              "correctAnswers": [0],
+              "explanation": "Le plus petit entier supérieur ou égal à 8.38 est 9."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles instructions Python calculent correctement le terme suivant de u_(n+1) = 1.05 * u_n + 20 ?",
+              "options": [
+                "u = 1.05 * u + 20",
+                "u = u * 1.05 + 20",
+                "u = 1.05 * (u + 20)",
+                "u += 0.05 * u + 20"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "1.05 * u + 20 = u * 1.05 + 20 = u + 0.05 * u + 20. En revanche, 1.05 * (u + 20) distribue 1.05 sur 20, ce qui est faux."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Calculs d'aires, intégrales et sommes de Riemann",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que représente géométriquement l'intégrale d'une fonction continue et positive f sur [a, b] ?",
+              "options": [
+                "L'aire sous la courbe de f délimitée par l'axe des abscisses et les droites x = a et x = b",
+                "La pente de la tangente moyenne",
+                "La longueur de l'arc de courbe",
+                "Le volume de révolution de la courbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition, pour f ≥ 0, l'intégrale mesure l'aire du domaine situé sous la courbe en unités d'aire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calculer l'intégrale de 0 à 1 de x dx.",
+              "options": ["1/2", "1", "2", "1/4"],
+              "correctAnswers": [0],
+              "explanation": "Une primitive de x est x^2 / 2. [1^2 / 2] - [0^2 / 2] = 1/2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calculer l'intégrale de 0 à 2 de (3x^2) dx.",
+              "options": ["8", "12", "6", "24"],
+              "correctAnswers": [0],
+              "explanation": "Une primitive de 3x^2 est x^3. [2^3] - [0^3] = 8 - 0 = 8."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calculer l'intégrale de 0 à 1 de e^x dx.",
+              "options": ["e - 1", "e", "e + 1", "1"],
+              "correctAnswers": [0],
+              "explanation": "Une primitive de e^x est e^x. [e^1] - [e^0] = e - 1."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la valeur moyenne de f(x) = 2x sur l'intervalle [0, 3] ?",
+              "options": ["3", "6", "9", "2"],
+              "correctAnswers": [0],
+              "explanation": "La valeur moyenne est 1/(3 - 0) * Intégrale de 0 à 3 de 2x dx = (1/3) * [x^2]_0^3 = (1/3) * 9 = 3."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans la méthode des rectangles avec n sous-intervalles sur [a, b], quel est le pas de découpage ?",
+              "options": [
+                "(b - a) / n",
+                "(b - a) / 2n",
+                "n / (b - a)",
+                "(b + a) / n"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On découpe l'intervalle [a, b] de longueur (b - a) en n parties égales de largeur h = (b - a)/n."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si f est strictement croissante, la méthode des rectangles à gauche fournit une approximation :",
+              "options": [
+                "Par défaut (inférieure à l'intégrale exacte)",
+                "Par excès (supérieure à l'intégrale exacte)",
+                "Exacte",
+                "Nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque rectangle est sous la courbe car la hauteur choisie est le minimum sur chaque sous-intervalle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calculer l'intégrale de 1 à e de (1/x) dx.",
+              "options": ["1", "0", "e", "ln(2)"],
+              "correctAnswers": [0],
+              "explanation": "Une primitive de 1/x est ln(x). [ln(e)] - [ln(1)] = 1 - 0 = 1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans la méthode des trapèzes sur un sous-intervalle de largeur h entre y_0 et y_1, l'aire est estimée par :",
+              "options": [
+                "h * (y_0 + y_1) / 2",
+                "h * (y_0 + y_1)",
+                "h * y_0",
+                "h * y_1 / 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'aire d'un trapèze est la largeur fois la moyenne des deux bases : h * (y_0 + y_1) / 2."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés fondamentales de l'intégrale sont valides pour des fonctions continues sur [a, b] ?",
+              "options": [
+                "Linéarité : Int(f + g) = Int(f) + Int(g)",
+                "Positivité : si f ≤ g sur [a, b] alors Int(f) ≤ Int(g)",
+                "Int(f * g) = Int(f) * Int(g)",
+                "Relation de Chasles : Int_a^b(f) + Int_b^c(f) = Int_a^c(f)"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "L'intégrale d'un produit n'est en aucun cas égale au produit des intégrales. Les trois autres propriétés sont fondamentales."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Problèmes d'optimisation numérique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pour qu'une fonction deux fois dérivable f admette un maximum local en x_0, il suffit que :",
+              "options": [
+                "f'(x_0) = 0 et f''(x_0) < 0",
+                "f'(x_0) = 0 et f''(x_0) > 0",
+                "f'(x_0) > 0 et f''(x_0) = 0",
+                "f(x_0) = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un point critique à dérivée nulle avec une concavité vers le bas (f'' < 0) correspond à un maximum local."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "On veut délimiter un enclos rectangulaire d'aire 100 m^2 avec un périmètre minimal. Quelles dimensions choisir ?",
+              "options": [
+                "Un carré de côté 10 m",
+                "Un rectangle de 20 m par 5 m",
+                "Un rectangle de 50 m par 2 m",
+                "Un rectangle de 25 m par 4 m"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À aire fixée, le rectangle de périmètre minimal est le carré : côté = sqrt(100) = 10 m."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le périmètre minimal d'un rectangle d'aire 100 m^2 ?",
+              "options": ["40 m", "50 m", "100 m", "20 m"],
+              "correctAnswers": [0],
+              "explanation": "Pour un carré de 10 m de côté, le périmètre est 4 * 10 = 40 m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Soit la fonction de coût C(q) = q^2 - 10q + 50 pour q ≥ 0. Pour quelle quantité q le coût est-il minimal ?",
+              "options": ["q = 5", "q = 10", "q = 0", "q = 25"],
+              "correctAnswers": [0],
+              "explanation": "C'(q) = 2q - 10 = 0 <=> q = 5. Comme le coefficient de q^2 est positif, c'est un minimum."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que vaut la valeur minimale du coût C(q) = q^2 - 10q + 50 ?",
+              "options": ["25", "50", "0", "15"],
+              "correctAnswers": [0],
+              "explanation": "C(5) = 5^2 - 10*5 + 50 = 25 - 50 + 50 = 25."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour maximiser le volume d'une boîte fabriquée en découpant des carrés de coin de côté x dans une plaque, la variable est :",
+              "options": [
+                "La longueur x du côté des carrés découpés",
+                "L'épaisseur de la plaque",
+                "La couleur du métal",
+                "Le coût du matériau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La hauteur et les dimensions de la base dépendent directement de la découpe x des coins."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Soit f(x) = -2x^2 + 8x - 3. Quelle est l'abscisse du sommet de cette parabole ?",
+              "options": ["x = 2", "x = -2", "x = 4", "x = 1"],
+              "correctAnswers": [0],
+              "explanation": "L'abscisse du sommet est -b / (2a) = -8 / (2 * (-2)) = -8 / -4 = 2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le maximum de la fonction f(x) = -2x^2 + 8x - 3 sur R ?",
+              "options": ["5", "3", "-3", "8"],
+              "correctAnswers": [0],
+              "explanation": "f(2) = -2*(2^2) + 8*2 - 3 = -8 + 16 - 3 = 5."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si la dérivée d'une fonction s'annule en changeant de signe du négatif vers le positif, la fonction admet en ce point :",
+              "options": [
+                "Un minimum local",
+                "Un maximum local",
+                "Un point d'inflexion",
+                "Une discontinuité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction passe de décroissante à croissante, ce qui caractérise un minimum local."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles étapes sont indispensables pour déterminer le maximum global d'une fonction continue sur un intervalle fermé [a, b] ?",
+              "options": [
+                "Calculer la dérivée et trouver les points critiques intérieurs",
+                "Évaluer la fonction aux bornes a et b",
+                "Tracer obligatoirement la courbe à la main",
+                "Comparer les valeurs prises aux points critiques et aux bornes"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Le maximum sur un segment est atteint soit en un point critique où f'=0, soit sur l'une des bornes de l'intervalle."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Croissances comparées et ordres de grandeur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la limite quand x tend vers +∞ du quotient e^x / x ?",
+              "options": ["+∞", "0", "1", "e"],
+              "correctAnswers": [0],
+              "explanation": "Par théorème des croissances comparées, l'exponentielle l'emporte sur toute fonction puissance en +∞."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la limite quand x tend vers +∞ de ln(x) / x ?",
+              "options": ["0", "+∞", "1", "e"],
+              "correctAnswers": [0],
+              "explanation": "Toute puissance positive de x l'emporte sur le logarithme népérien en +∞, donc ln(x)/x tend vers 0."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la limite quand x tend vers 0 avec x > 0 du produit x * ln(x) ?",
+              "options": ["0", "-∞", "1", "N'existe pas"],
+              "correctAnswers": [0],
+              "explanation": "C'est une croissance comparée classique en 0+ : x impose sa limite 0 sur ln(x)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la limite quand x tend vers -∞ du produit x * e^x ?",
+              "options": ["0", "-∞", "+∞", "-1"],
+              "correctAnswers": [0],
+              "explanation": "En posant X = -x -> +∞, x * e^x = -X * e^(-X) = -X / e^X, qui tend vers 0."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour tout entier n ≥ 1 fixé, quelle est la limite quand x tend vers +∞ de e^x / x^n ?",
+              "options": ["+∞", "0", "n!", "1"],
+              "correctAnswers": [0],
+              "explanation": "L'exponentielle croît plus vite que n'importe quelle puissance polynomiale x^n en +∞."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Classer par ordre croissant de vitesse de croissance en +∞ les fonctions : ln(x), x^2, e^x.",
+              "options": [
+                "ln(x) < x^2 < e^x",
+                "x^2 < ln(x) < e^x",
+                "e^x < x^2 < ln(x)",
+                "ln(x) < e^x < x^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En +∞, le logarithme est dominé par les puissances de x, qui sont elles-mêmes dominées par l'exponentielle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la limite en +∞ de l'expression (ln(x))^5 / x ?",
+              "options": ["0", "+∞", "5", "1"],
+              "correctAnswers": [0],
+              "explanation": "Par croissances comparées, toute puissance positive de x l'emporte sur toute puissance du logarithme en +∞."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calculer la limite quand x tend vers +∞ de (2^x) / (3^x).",
+              "options": ["0 car 2/3 < 1", "+∞", "2/3", "1"],
+              "correctAnswers": [0],
+              "explanation": "(2^x) / (3^x) = (2/3)^x. Comme 0 < 2/3 < 1, la limite en +∞ est égale à 0."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que vaut la limite quand x tend vers +∞ de (x^100) / e^(0.01 x) ?",
+              "options": ["0", "+∞", "100", "0.01"],
+              "correctAnswers": [0],
+              "explanation": "Même avec un coefficient faible dans l'exposant, l'exponentielle finit toujours par dominer x^100 en +∞."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur les croissances comparées en +∞ sont mathématiquement exactes ?",
+              "options": [
+                "L'exponentielle l'emporte sur toute puissance de x",
+                "Toute puissance strictement positive de x l'emporte sur ln(x)",
+                "ln(x) l'emporte sur x",
+                "e^x / x^3 tend vers +∞ en +∞"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "e^x domine x^n, et x^a domine ln(x). En revanche, ln(x) est dominé par x (donc ln(x) ne l'emporte pas sur x)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Arithmétique et calcul numérique fondamental",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Deux entiers strictement positifs a et b sont dits premiers entre eux si :",
+              "options": [
+                "Leur PGCD est égal à 1",
+                "Leur PPCM est égal à 1",
+                "Leur somme est un nombre premier",
+                "Ils sont tous les deux impairs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition, a et b sont premiers entre eux ssi PGCD(a, b) = 1."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le plus grand commun diviseur (PGCD) de 42 et 56 ?",
+              "options": ["14", "7", "28", "2"],
+              "correctAnswers": [0],
+              "explanation": "42 = 14 * 3 et 56 = 14 * 4. Comme 3 et 4 sont premiers entre eux, le PGCD vaut 14."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la décomposition en facteurs premiers de l'entier 60 ?",
+              "options": ["2^2 * 3 * 5", "2 * 3 * 10", "4 * 15", "2^3 * 3 * 5"],
+              "correctAnswers": [0],
+              "explanation": "60 = 4 * 15 = 2^2 * 3 * 5, où 2, 3 et 5 sont des nombres premiers."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le reste de la division euclidienne de 157 par 12 ?",
+              "options": ["1", "5", "13", "7"],
+              "correctAnswers": [0],
+              "explanation": "157 = 12 * 13 + 1, avec 0 ≤ 1 < 12. Le reste est donc 1."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que stipule le théorème de Bézout pour deux entiers a et b premiers entre eux ?",
+              "options": [
+                "Il existe deux entiers relatifs u et v tels que au + bv = 1",
+                "a divise b ou b divise a",
+                "a^2 + b^2 est un carré parfait",
+                "Leur quotient est un nombre entier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le théorème de Bézout affirme que PGCD(a, b) = 1 ssi il existe u, v dans Z tels que au + bv = 1."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si un entier non nul a divise b, et b divise c, alors par transitivité :",
+              "options": ["a divise c", "c divise a", "a = c", "b = a + c"],
+              "correctAnswers": [0],
+              "explanation": "La divisibilité dans Z est une relation transitive : si b = k*a et c = k'*b, alors c = (k*k')*a."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le plus petit commun multiple (PPCM) de 6 et 8 ?",
+              "options": ["24", "48", "14", "12"],
+              "correctAnswers": [0],
+              "explanation": "6 = 2 * 3 et 8 = 2^3. Le PPCM prend les plus grandes puissances : 2^3 * 3 = 24."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le nombre 97 est-il un nombre premier ?",
+              "options": [
+                "Oui, il n'est divisible par aucun nombre premier inférieur à sqrt(97) ≈ 9.8",
+                "Non, il est divisible par 3",
+                "Non, il est divisible par 7",
+                "Non, c'est un nombre pair"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sqrt(97) ≈ 9.8. Les nombres premiers à tester sont 2, 3, 5, 7. Aucun ne divise 97, il est donc premier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que vaut l'entier 13 modulo 5 ?",
+              "options": ["3", "2", "1", "5"],
+              "correctAnswers": [0],
+              "explanation": "13 = 5 * 2 + 3. Le reste modulo 5 est 3."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels nombres parmi les suivants sont des nombres premiers ?",
+              "options": ["29", "37", "51", "41"],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "29, 37 et 41 sont premiers. En revanche, 51 = 3 * 17 est divisible par 3 (somme des chiffres 5+1=6)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Équations différentielles et modèles continus",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Les solutions sur R de l'équation différentielle y' = 2y sont de la forme :",
+              "options": [
+                "y(t) = C * e^(2t) avec C constante réelle",
+                "y(t) = C * e^(-2t)",
+                "y(t) = 2t + C",
+                "y(t) = C * t^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équation y' = ay a pour solutions générales y(t) = C * e^(at). Ici a = 2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Résoudre y' = -0.5 y avec la condition initiale y(0) = 100.",
+              "options": [
+                "y(t) = 100 * e^(-0.5 t)",
+                "y(t) = 100 * e^(0.5 t)",
+                "y(t) = -50t + 100",
+                "y(t) = e^(-0.5 t) + 99"
+              ],
+              "correctAnswers": [0],
+              "explanation": "y(t) = C * e^(-0.5 t). Avec y(0) = 100, on trouve C = 100."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans le modèle d'accroissement de Malthus y' = ky (k > 0), que représente k ?",
+              "options": [
+                "Le taux de croissance relatif instantané de la population",
+                "La capacité maximale d'accueil du milieu",
+                "La population initiale",
+                "Le temps de demi-vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rapport y'/y = k représente la vitesse de reproduction relative par individu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans la désintégration radioactive N'(t) = -lambda * N(t), que vaut la demi-vie t_(1/2) ?",
+              "options": [
+                "ln(2) / lambda",
+                "lambda / ln(2)",
+                "1 / (2 lambda)",
+                "2 / lambda"
+              ],
+              "correctAnswers": [0],
+              "explanation": "e^(-lambda * t_(1/2)) = 1/2 <=> -lambda * t_(1/2) = -ln(2) <=> t_(1/2) = ln(2) / lambda."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la forme générale des solutions de y' = ay + b pour a non nul ?",
+              "options": [
+                "y(t) = C * e^(at) - b/a",
+                "y(t) = C * e^(at) + b/a",
+                "y(t) = C * e^(-at) - b/a",
+                "y(t) = at + b"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solution générale est la somme de la solution homogène C*e^(at) et d'une solution particulière constante -b/a."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La température d'un corps vérifie T' = -0.1 (T - 20). Quelle est la température d'équilibre en +∞ ?",
+              "options": ["20 °C", "0 °C", "100 °C", "-0.1 °C"],
+              "correctAnswers": [0],
+              "explanation": "T' = -0.1 T + 2. La solution particulière constante est -b/a = -2 / (-0.1) = 20 °C, température ambiante."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle méthode numérique d'approximation pas à pas utilise la tangente pour résoudre y' = f(t, y) ?",
+              "options": [
+                "La méthode d'Euler",
+                "La méthode de Gauss",
+                "La méthode de Cardan",
+                "La méthode de Simpson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méthode d'Euler approxime la courbe par des segments de tangente : y_(n+1) ≈ y_n + h * f(t_n, y_n)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans la méthode d'Euler de pas h pour l'équation y' = 2y, quelle est la formule de récurrence ?",
+              "options": [
+                "y_(n+1) = y_n * (1 + 2h)",
+                "y_(n+1) = y_n + 2h",
+                "y_(n+1) = y_n * (1 - 2h)",
+                "y_(n+1) = 2h * y_n"
+              ],
+              "correctAnswers": [0],
+              "explanation": "y_(n+1) = y_n + h * y'_n = y_n + h * (2y_n) = y_n * (1 + 2h)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour la méthode d'Euler d'ordre 1, si on divise le pas h par 2, l'erreur de troncature globale est :",
+              "options": [
+                "Approximativement divisée par 2",
+                "Multipliée par 2",
+                "Divisée par 4",
+                "Inchangée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méthode d'Euler étant d'ordre 1, l'erreur globale est proportionnelle au pas h (O(h))."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles équations différentielles ont des solutions qui tendent toutes vers 0 lorsque t tend vers +∞ ?",
+              "options": ["y' = -3y", "y' + 5y = 0", "y' = 2y", "y' = -0.1 y"],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les solutions sont de la forme C*e^(at). Elles tendent vers 0 si et seulement si a < 0. C'est le cas pour a = -3, a = -5 et a = -0.1."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Modélisation probabiliste et espérance numérique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pour une variable aléatoire X suivant une loi binomiale B(n, p), quelle est l'expression de l'espérance E(X) ?",
+              "options": ["n * p", "n * p * (1 - p)", "sqrt(n * p)", "p / n"],
+              "correctAnswers": [0],
+              "explanation": "L'espérance d'une loi binomiale de paramètres n et p est égale au produit n * p."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour une variable aléatoire X suivant une loi binomiale B(n, p), quelle est l'expression de la variance V(X) ?",
+              "options": [
+                "n * p * (1 - p)",
+                "n * p",
+                "sqrt(n * p * (1 - p))",
+                "(n * p)^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La variance de la loi binomiale B(n, p) est V(X) = n * p * (1 - p)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un jeu coûte 5 € et permet de gagner 20 € avec une probabilité de 0.2 (et 0 € sinon). Quelle est l'espérance du gain algébrique net ?",
+              "options": ["-1 € car 20 * 0.2 - 5 = -1", "0 €", "+1 €", "-5 €"],
+              "correctAnswers": [0],
+              "explanation": "Gain brut moyen : 20 * 0.2 + 0 * 0.8 = 4 €. Gain net moyen : 4 - 5 = -1 €."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un jeu de hasard est dit équitable si et seulement si l'espérance du gain algébrique net est :",
+              "options": [
+                "Égale à 0",
+                "Strictement positive",
+                "Égale au prix de la mise",
+                "Strictement supérieure à 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition, un jeu est équitable si son espérance de gain net est nulle (E(G) = 0)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que stipule la loi des grands nombres pour la moyenne empirique M_n d'un échantillon de variables aléatoires i.i.d. d'espérance mu ?",
+              "options": [
+                "M_n converge en probabilité vers l'espérance théorique mu quand n tend vers +∞",
+                "M_n est toujours exactement égale à mu",
+                "La variance de l'échantillon devient infinie",
+                "Tous les résultats possibles deviennent équiprobables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi faible des grands nombres garantit que la moyenne observée se rapproche de l'espérance théorique lorsque la taille n augmente."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Soit X suivant la loi binomiale B(100, 0.4). Quel est son écart-type sigma(X) arrondi à 0.01 près ?",
+              "options": [
+                "4.90 car sqrt(100 * 0.4 * 0.6) = sqrt(24)",
+                "40.00",
+                "24.00",
+                "4.00"
+              ],
+              "correctAnswers": [0],
+              "explanation": "V(X) = 100 * 0.4 * 0.6 = 24. L'écart-type est sigma = sqrt(24) ≈ 4.8989, soit 4.90."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'inégalité de Bienaymé-Tchebychev s'écrit pour tout réel a > 0 :",
+              "options": [
+                "P(|X - E(X)| ≥ a) ≤ V(X) / a^2",
+                "P(|X - E(X)| ≥ a) ≤ a^2 / V(X)",
+                "P(X ≥ a) ≤ E(X) / a",
+                "P(|X - E(X)| ≤ a) ≤ V(X) / a^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inégalité majore la probabilité que X s'écarte de son espérance d'au moins a par V(X)/a^2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'inégalité de Markov pour une variable aléatoire positive Y et un réel a > 0 est :",
+              "options": [
+                "P(Y ≥ a) ≤ E(Y) / a",
+                "P(Y ≥ a) ≤ a / E(Y)",
+                "P(Y ≤ a) ≤ E(Y) / a",
+                "P(Y ≥ a) ≤ V(Y) / a^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour Y positive et a > 0, l'inégalité de Markov stipule que P(Y ≥ a) ≤ E(Y)/a."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour un échantillon de taille n = 1000, quelle est l'amplitude de l'intervalle de confiance classique à 95 % [f - 1/sqrt(n), f + 1/sqrt(n)] ?",
+              "options": [
+                "2 / sqrt(1000) ≈ 0.063",
+                "1 / sqrt(1000) ≈ 0.032",
+                "0.95",
+                "0.01"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'amplitude de l'intervalle est (f + 1/sqrt(n)) - (f - 1/sqrt(n)) = 2/sqrt(n) = 2/sqrt(1000) ≈ 0.0632."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés de la variance sont mathématiquement vérifiées pour toute variable aléatoire X et constante a ?",
+              "options": [
+                "V(aX) = a^2 * V(X)",
+                "V(X + a) = V(X)",
+                "V(X) ≥ 0 toujours",
+                "V(aX) = a * V(X)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La variance d'un produit par une constante multiplie par a^2, ajouter une constante ne change pas la dispersion, et la variance est toujours positive ou nulle."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2043 @@
+{
+  "id": "6e-espagnol-04",
+  "year": "6e",
+  "subject": "espagnol",
+  "title": "La grammaire de l'espagnol",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "El et la",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels articles conviennent devant un nom féminin singulier ?",
+              "options": ["el", "la", "un", "una"],
+              "correctAnswers": [1, 3],
+              "explanation": "La et una accompagnent un nom féminin singulier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « le livre » ?",
+              "options": ["la libro", "el libro", "los libro", "una libro"],
+              "correctAnswers": [1],
+              "explanation": "Libro est masculin : el libro."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle forme est correcte pour « maison » ?",
+              "options": ["el casa", "la casa", "los casa", "un casa"],
+              "correctAnswers": [1],
+              "explanation": "Casa est féminin : la casa."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« El perro » signifie :",
+              "options": [
+                "la chienne",
+                "le chien",
+                "les chiens",
+                "une chienne"
+              ],
+              "correctAnswers": [1],
+              "explanation": "El = le ; perro = chien."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot est féminin ?",
+              "options": ["chico", "amigo", "mesa", "libro"],
+              "correctAnswers": [2],
+              "explanation": "Mesa (table) est féminin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complete : ___ escuela es grande.",
+              "options": ["El", "La", "Los", "Un"],
+              "correctAnswers": [1],
+              "explanation": "Escuela est féminin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complete : ___ coche es rojo.",
+              "options": ["La", "El", "Las", "Una"],
+              "correctAnswers": [1],
+              "explanation": "Coche est masculin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« La niña » veut dire :",
+              "options": ["le garçon", "la fille", "les filles", "un garçon"],
+              "correctAnswers": [1],
+              "explanation": "Niña = fille."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel article ne va pas avec flor ?",
+              "options": ["la", "una", "el", "las"],
+              "correctAnswers": [2],
+              "explanation": "Flor est féminin, pas el flor."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La paire correcte est :",
+              "options": ["el silla", "la silla", "la gato", "el mesa"],
+              "correctAnswers": [1],
+              "explanation": "Silla est féminin : la silla."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Un et una",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les articles indéfinis singuliers ?",
+              "options": ["un", "una", "el", "la"],
+              "correctAnswers": [0, 1],
+              "explanation": "Un et una sont indéfinis singuliers."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Un amigo » signifie :",
+              "options": ["une amie", "un ami", "les amis", "l'ami"],
+              "correctAnswers": [1],
+              "explanation": "Un amigo = un ami."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complete : ___ profesora es simpática.",
+              "options": ["Un", "Una", "El", "Los"],
+              "correctAnswers": [1],
+              "explanation": "Profesora est féminin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Un bolígrafo » signifie :",
+              "options": ["une plume", "un stylo", "le stylo", "les stylos"],
+              "correctAnswers": [1],
+              "explanation": "Bolígrafo = stylo, masculin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle forme est incorrecte ?",
+              "options": ["un perro", "una gata", "una perro", "un gato"],
+              "correctAnswers": [2],
+              "explanation": "Perro est masculin : un perro."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Una manzana » veut dire :",
+              "options": ["un pommier", "une pomme", "les pommes", "la pomme"],
+              "correctAnswers": [1],
+              "explanation": "Una manzana = une pomme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complete : Tengo ___ cuaderno.",
+              "options": ["una", "un", "la", "las"],
+              "correctAnswers": [1],
+              "explanation": "Cuaderno est masculin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complete : Hay ___ ventana abierta.",
+              "options": ["un", "una", "el", "los"],
+              "correctAnswers": [1],
+              "explanation": "Ventana est féminin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un professeur (homme) :",
+              "options": [
+                "una profesor",
+                "un profesor",
+                "una profesora",
+                "los profesor"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Profesor masculin : un profesor."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "El gato vs un gato :",
+              "options": [
+                "pluriel/singulier",
+                "défini/indéfini",
+                "féminin/masculin",
+                "négation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "El défini, un indéfini."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Los et las",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels articles sont pluriels définis ?",
+              "options": ["los", "las", "un", "una"],
+              "correctAnswers": [0, 1],
+              "explanation": "Los et las sont les pluriels définis."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Los libros » signifie :",
+              "options": ["le livre", "les livres", "une livre", "la livre"],
+              "correctAnswers": [1],
+              "explanation": "Los libros = les livres."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complete : ___ casas son blancas.",
+              "options": ["El", "La", "Las", "Un"],
+              "correctAnswers": [2],
+              "explanation": "Casas féminin pluriel : las."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complete : ___ niños juegan.",
+              "options": ["La", "Los", "Las", "Una"],
+              "correctAnswers": [1],
+              "explanation": "Niños masculin pluriel : los."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle forme est fausse ?",
+              "options": [
+                "las flores",
+                "los coches",
+                "las gatos",
+                "los amigos"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Gatos masculin : los gatos."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pluriel de la mesa :",
+              "options": ["los mesas", "las mesas", "la mesas", "el mesas"],
+              "correctAnswers": [1],
+              "explanation": "Las mesas."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Las chicas » veut dire :",
+              "options": ["la fille", "les filles", "les garçons", "un garçon"],
+              "correctAnswers": [1],
+              "explanation": "Las chicas = les filles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complete : ___ perros son grandes.",
+              "options": ["La", "Los", "Las", "Un"],
+              "correctAnswers": [1],
+              "explanation": "Los perros."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Les voitures » :",
+              "options": ["la coches", "los coches", "las coches", "el coches"],
+              "correctAnswers": [1],
+              "explanation": "Los coches."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Las sillas signifie :",
+              "options": ["la chaise", "les chaises", "un chaise", "le chaise"],
+              "correctAnswers": [1],
+              "explanation": "Las sillas = les chaises."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Articles définis",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont correctes ?",
+              "options": [
+                "El sol brilla.",
+                "La luna brilla.",
+                "El luna brilla.",
+                "La sol brilla."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "El sol, la luna."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Article défini masculin singulier :",
+              "options": ["la", "el", "los", "una"],
+              "correctAnswers": [1],
+              "explanation": "El = le."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Traduis : la porte",
+              "options": ["el puerta", "la puerta", "los puertas", "un puerta"],
+              "correctAnswers": [1],
+              "explanation": "La puerta."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "On dit el mapa car mapa est :",
+              "options": ["féminin", "masculin", "pluriel", "verbe"],
+              "correctAnswers": [1],
+              "explanation": "Mapa est masculin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complete : ___ leche está fría.",
+              "options": ["El", "La", "Los", "Un"],
+              "correctAnswers": [1],
+              "explanation": "Leche féminin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« El profesor » veut dire :",
+              "options": ["la prof", "le professeur", "les profs", "une prof"],
+              "correctAnswers": [1],
+              "explanation": "El profesor."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complete : ___ clase empieza tarde.",
+              "options": ["El", "La", "Los", "Una"],
+              "correctAnswers": [1],
+              "explanation": "Clase féminin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complete : ___ parque es bonito.",
+              "options": ["La", "El", "Las", "Una"],
+              "correctAnswers": [1],
+              "explanation": "Parque masculin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La fenêtre :",
+              "options": [
+                "el ventana",
+                "la ventana",
+                "los ventanas",
+                "un ventana"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La ventana."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "El et la servent à :",
+              "options": [
+                "compter",
+                "désigner précisément",
+                "nier",
+                "conjugaison"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Articles définis."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Choisir l'article",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels groupes sont corrects ?",
+              "options": ["el árbol", "la ciudad", "la árbol", "el ciudad"],
+              "correctAnswers": [0, 1],
+              "explanation": "El árbol, la ciudad."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complete : ___ zapato negro.",
+              "options": ["La", "El", "Las", "Una"],
+              "correctAnswers": [1],
+              "explanation": "Zapato masculin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complete : ___ camisa azul.",
+              "options": ["El", "La", "Los", "Un"],
+              "correctAnswers": [1],
+              "explanation": "Camisa féminin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Perro est :",
+              "options": ["féminin", "masculin", "verbe", "adjectif"],
+              "correctAnswers": [1],
+              "explanation": "Perro masculin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Indéfini devant mesa :",
+              "options": ["un mesa", "una mesa", "el mesa", "las mesa"],
+              "correctAnswers": [1],
+              "explanation": "Una mesa."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Défini devant escuela :",
+              "options": [
+                "el escuela",
+                "la escuela",
+                "los escuela",
+                "un escuela"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La escuela."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Veo ___ pájaro en ___ árbol.",
+              "options": ["un / el", "una / la", "el / un", "la / el"],
+              "correctAnswers": [0],
+              "explanation": "Un pájaro, el árbol."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "La chico alto.",
+                "El chico alto.",
+                "El chica alta.",
+                "La chico alta."
+              ],
+              "correctAnswers": [1],
+              "explanation": "El chico alto."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complete : ___ niña pequeña.",
+              "options": ["El", "La", "Los", "Un"],
+              "correctAnswers": [1],
+              "explanation": "La niña."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Los/las remplacent el/la quand :",
+              "options": ["pluriel", "question", "négation", "futur"],
+              "correctAnswers": [0],
+              "explanation": "Au pluriel."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Genre des noms",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels noms sont féminins ?",
+              "options": ["casa", "mesa", "libro", "día"],
+              "correctAnswers": [0, 1],
+              "explanation": "Casa et mesa féminins."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "El dormitorio =",
+              "options": ["la chambre", "le salon", "la cuisine", "le jardin"],
+              "correctAnswers": [0],
+              "explanation": "Dormitorio = chambre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La cocina =",
+              "options": ["le jardin", "la cuisine", "le garage", "la chambre"],
+              "correctAnswers": [1],
+              "explanation": "Cocina = cuisine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Nom masculin :",
+              "options": ["silla", "pluma", "cuaderno", "manzana"],
+              "correctAnswers": [2],
+              "explanation": "Cuaderno masculin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "El jardín : jardín est",
+              "options": ["féminin", "masculin", "verbe", "adverbe"],
+              "correctAnswers": [1],
+              "explanation": "Jardín masculin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La calle =",
+              "options": ["la rue", "le pont", "la place", "le parc"],
+              "correctAnswers": [0],
+              "explanation": "Calle = rue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complete : ___ teléfono móvil.",
+              "options": ["La", "El", "Las", "Una"],
+              "correctAnswers": [1],
+              "explanation": "Teléfono masculin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complete : ___ radio nueva.",
+              "options": ["El", "La", "Los", "Un"],
+              "correctAnswers": [1],
+              "explanation": "Radio féminin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Una bicicleta : bicicleta est",
+              "options": ["masculin", "féminin", "pluriel", "verbe"],
+              "correctAnswers": [1],
+              "explanation": "Bicicleta féminin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Beaucoup de noms en -o sont :",
+              "options": ["féminins", "masculins", "sans genre", "pluriels"],
+              "correctAnswers": [1],
+              "explanation": "-o souvent masculin."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Accord adjectif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Adjectifs avec chica :",
+              "options": ["alta", "alto", "bonita", "bonito"],
+              "correctAnswers": [0, 2],
+              "explanation": "Chica féminin : alta, bonita."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "El chico ___ (grand) :",
+              "options": ["grande", "granda", "alto", "alta"],
+              "correctAnswers": [2],
+              "explanation": "Alto avec chico."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La casa ___ (blanc) :",
+              "options": ["blanco", "blanca", "blancos", "blancas"],
+              "correctAnswers": [1],
+              "explanation": "Blanca féminin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Los libros ___ (rouge) :",
+              "options": ["rojo", "roja", "rojos", "rojas"],
+              "correctAnswers": [2],
+              "explanation": "Rojos pluriel masc."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Las flores ___ (joli) :",
+              "options": ["bonito", "bonita", "bonitos", "bonitas"],
+              "correctAnswers": [3],
+              "explanation": "Bonitas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Una mesa ___ (petit) :",
+              "options": ["pequeño", "pequeña", "pequeños", "pequeñas"],
+              "correctAnswers": [1],
+              "explanation": "Pequeña."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "El coche es ___ (nouveau).",
+              "options": ["nueva", "nuevo", "nuevas", "nuevos"],
+              "correctAnswers": [1],
+              "explanation": "Nuevo."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La niña es ___ (sympa).",
+              "options": ["simpático", "simpática", "simpáticos", "simpáticas"],
+              "correctAnswers": [1],
+              "explanation": "Simpática."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'adjectif s'accorde en :",
+              "options": ["temps", "genre et nombre", "personne", "mode"],
+              "correctAnswers": [1],
+              "explanation": "Genre et nombre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "El perro es ___.",
+              "options": ["negro", "negra", "negros", "negras"],
+              "correctAnswers": [0],
+              "explanation": "Negro masculin sing."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Phrases avec articles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases correctes :",
+              "options": [
+                "El gato duerme.",
+                "La gata duerme.",
+                "El gata duerme.",
+                "La gato duerme."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Gato/gata + el/la."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les garçons sont grands :",
+              "options": [
+                "El chico es alto.",
+                "Los chicos son altos.",
+                "La chica es alta.",
+                "Un chico alto."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Los chicos son altos."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "___ amigas son de España.",
+              "options": ["El", "Las", "Un", "La"],
+              "correctAnswers": [1],
+              "explanation": "Las amigas."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Hay ___ problema.",
+              "options": ["la", "un", "las", "los"],
+              "correctAnswers": [1],
+              "explanation": "Un problema."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "___ estudiantes están en clase.",
+              "options": ["El", "Los", "La", "Una"],
+              "correctAnswers": [1],
+              "explanation": "Los estudiantes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une table ronde :",
+              "options": [
+                "el mesa redonda",
+                "una mesa redonda",
+                "los mesa redonda",
+                "la mesa redondo"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Una mesa redonda."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "No tengo ___ lápiz.",
+              "options": ["el", "un", "la", "las"],
+              "correctAnswers": [1],
+              "explanation": "Un lápiz."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Me gusta ___ música.",
+              "options": ["el", "la", "un", "los"],
+              "correctAnswers": [1],
+              "explanation": "La música."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Vivo en ___ casa pequeña.",
+              "options": ["el", "una", "los", "las"],
+              "correctAnswers": [1],
+              "explanation": "Una casa."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Abro ___ puerta.",
+              "options": ["el", "la", "un", "los"],
+              "correctAnswers": [1],
+              "explanation": "La puerta."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Révision singulier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Couples corrects :",
+              "options": ["un libro", "una silla", "un silla", "una libro"],
+              "correctAnswers": [0, 1],
+              "explanation": "Un libro, una silla."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Défini de una amiga :",
+              "options": ["el amiga", "la amiga", "la amigo", "el amigo"],
+              "correctAnswers": [1],
+              "explanation": "La amiga."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« El reloj » =",
+              "options": ["la montre", "le stylo", "les montres", "une montre"],
+              "correctAnswers": [0],
+              "explanation": "Reloj = montre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Es ___ buen día.",
+              "options": ["la", "un", "una", "las"],
+              "correctAnswers": [1],
+              "explanation": "Un buen día."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La photo :",
+              "options": ["el foto", "la foto", "un foto", "los fotos"],
+              "correctAnswers": [1],
+              "explanation": "La foto."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Indéfini : ___ ordenador",
+              "options": ["la", "un", "una", "los"],
+              "correctAnswers": [1],
+              "explanation": "Un ordenador."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "___ escuela es nueva.",
+              "options": ["El", "La", "Los", "Un"],
+              "correctAnswers": [1],
+              "explanation": "La escuela."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tengo ___ hermana.",
+              "options": ["un", "una", "el", "los"],
+              "correctAnswers": [1],
+              "explanation": "Una hermana."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "___ hombre habla español.",
+              "options": ["La", "El", "Las", "Una"],
+              "correctAnswers": [1],
+              "explanation": "El hombre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Una vs el/la : una est",
+              "options": ["défini", "indéfini", "pluriel", "négatif"],
+              "correctAnswers": [1],
+              "explanation": "Una = indéfini."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse articles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Articles masculins singuliers :",
+              "options": ["el", "un", "la", "una"],
+              "correctAnswers": [0, 1],
+              "explanation": "El et un masculins sing."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Traduis : les filles",
+              "options": ["la chica", "las chicas", "los chicas", "el chica"],
+              "correctAnswers": [1],
+              "explanation": "Las chicas."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complete : ___ agua fría. (cours 6e)",
+              "options": ["La", "El", "Los", "Una"],
+              "correctAnswers": [1],
+              "explanation": "El agua (exception fréquente en 6e)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "Los casa grande.",
+                "La casa grande.",
+                "El casa grande.",
+                "Las casa grande."
+              ],
+              "correctAnswers": [1],
+              "explanation": "La casa grande."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quatre articles de base :",
+              "options": ["el la un una", "yo tú él", "ser estar", "no sí"],
+              "correctAnswers": [0],
+              "explanation": "El, la, un, una."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pluriel défini féminin :",
+              "options": ["los", "las", "la", "una"],
+              "correctAnswers": [1],
+              "explanation": "Las."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un perro y ___ gata.",
+              "options": ["un", "una", "el", "los"],
+              "correctAnswers": [1],
+              "explanation": "Una gata."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Los niños y ___ niñas.",
+              "options": ["el", "las", "la", "un"],
+              "correctAnswers": [1],
+              "explanation": "Las niñas."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sans article français « des », en espagnol souvent :",
+              "options": ["un/una", "los/las", "el/la", "no"],
+              "correctAnswers": [1],
+              "explanation": "Les pluriels los/las."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'article montre le genre du nom :",
+              "options": [
+                "jamais",
+                "souvent",
+                "seulement au passé",
+                "seulement avec ser"
+              ],
+              "correctAnswers": [1],
+              "explanation": "El/un masculin, la/una féminin."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Ser : soy, eres, es",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formes de ser à la 1re et 2e personne singulier :",
+              "options": ["soy", "eres", "estoy", "estás"],
+              "correctAnswers": [0, 1],
+              "explanation": "Soy (je suis), eres (tu es) viennent de ser."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Yo ___ estudiante.",
+              "options": ["estoy", "soy", "es", "estás"],
+              "correctAnswers": [1],
+              "explanation": "Identité : soy."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tú ___ de Francia.",
+              "options": ["soy", "eres", "es", "somos"],
+              "correctAnswers": [1],
+              "explanation": "Tú eres."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Él ___ profesor.",
+              "options": ["soy", "eres", "es", "son"],
+              "correctAnswers": [2],
+              "explanation": "Él es."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Soy » signifie :",
+              "options": ["tu es", "je suis", "il est", "nous sommes"],
+              "correctAnswers": [1],
+              "explanation": "Soy = je suis."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "María ___ alta.",
+              "options": ["estoy", "soy", "es", "eres"],
+              "correctAnswers": [2],
+              "explanation": "María = elle : es."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Nosotros ___ amigos.",
+              "options": ["es", "sois", "somos", "son"],
+              "correctAnswers": [2],
+              "explanation": "Somos = nous sommes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ellos ___ españoles.",
+              "options": ["soy", "somos", "son", "es"],
+              "correctAnswers": [2],
+              "explanation": "Ellos son."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ser sert surtout à :",
+              "options": ["lieu", "identité et nature", "faim", "fatigue"],
+              "correctAnswers": [1],
+              "explanation": "Ser = être (identité)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "Yo es alto.",
+                "Yo soy alto.",
+                "Yo eres alto.",
+                "Yo son alto."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Yo soy alto."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Ser : identité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases avec ser correctes :",
+              "options": [
+                "Soy Ana.",
+                "Es mi amigo.",
+                "Estoy Ana.",
+                "Está mi amigo."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Identité : ser (soy, es)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Je suis français :",
+              "options": [
+                "Soy francés.",
+                "Estoy francés.",
+                "Es francés.",
+                "Eres francés."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soy francés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "C'est mon frère :",
+              "options": [
+                "Está mi hermano.",
+                "Es mi hermano.",
+                "Soy mi hermano.",
+                "Son mi hermano."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Es mi hermano."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tu es sympa :",
+              "options": [
+                "Eres simpático.",
+                "Es simpático.",
+                "Soy simpático.",
+                "Estás simpático."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eres simpático."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Nous sommes en sixième :",
+              "options": [
+                "Somos de sexto.",
+                "Estamos de sexto.",
+                "Son de sexto.",
+                "Sois de sexto."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Somos de sexto (classe)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Elle est professeure :",
+              "options": [
+                "Está profesora.",
+                "Es profesora.",
+                "Soy profesora.",
+                "Son profesora."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Es profesora."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ils sont grands :",
+              "options": [
+                "Es altos.",
+                "Son altos.",
+                "Están altos.",
+                "Soy altos."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Son altos."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ser + adjectif décrit :",
+              "options": [
+                "un lieu",
+                "une caractéristique",
+                "une heure",
+                "une quantité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Caractéristique stable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "¿Quién ___ tú? — Yo ___ Luis.",
+              "options": ["es / soy", "eres / soy", "es / estoy", "estás / es"],
+              "correctAnswers": [1],
+              "explanation": "¿Quién eres? Yo soy Luis."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "Ella es inteligente.",
+                "Ellos son altos.",
+                "Yo es Luis.",
+                "Tú eres Ana."
+              ],
+              "correctAnswers": [2],
+              "explanation": "On dit Yo soy Luis, pas Yo es Luis."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Estar : estoy, estás, está",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes viennent du verbe estar ?",
+              "options": ["estoy", "estás", "soy", "eres"],
+              "correctAnswers": [0, 1],
+              "explanation": "Estoy et estás sont des formes de estar."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Yo ___ en casa.",
+              "options": ["soy", "estoy", "es", "está"],
+              "correctAnswers": [1],
+              "explanation": "Lieu : estoy en casa."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tú ___ cansado.",
+              "options": ["estás", "eres", "es", "estoy"],
+              "correctAnswers": [0],
+              "explanation": "État : estás cansado."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ella ___ en el parque.",
+              "options": ["es", "está", "soy", "estoy"],
+              "correctAnswers": [1],
+              "explanation": "Ella está en el parque."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Estoy signifie :",
+              "options": [
+                "tu es (identité)",
+                "je suis (lieu ou état)",
+                "il est (identité)",
+                "nous sommes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Estoy = je suis (position ou état)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Nosotros ___ contentos.",
+              "options": ["somos", "estamos", "son", "están"],
+              "correctAnswers": [1],
+              "explanation": "Estamos contentos."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ellos ___ en clase.",
+              "options": ["son", "están", "es", "está"],
+              "correctAnswers": [1],
+              "explanation": "Están en clase."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Estar sert surtout pour :",
+              "options": ["le métier", "le lieu et l'état", "le nom", "l'âge"],
+              "correctAnswers": [1],
+              "explanation": "Estar = où ou comment on est (souvent temporaire)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "¿Dónde ___ tú?",
+              "options": ["es", "estás", "soy", "son"],
+              "correctAnswers": [1],
+              "explanation": "¿Dónde estás? = Où es-tu ?"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "Yo está bien.",
+                "Yo estoy bien.",
+                "Yo soy bien.",
+                "Yo estás bien."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Yo estoy bien."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Estar : lieu et état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent estar correctement ?",
+              "options": [
+                "Estoy en Madrid.",
+                "Está triste.",
+                "Soy en Madrid.",
+                "Es triste ahora (état) avec estar"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lieu et émotion momentanée : estar."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Je suis à l'école :",
+              "options": [
+                "Soy en la escuela.",
+                "Estoy en la escuela.",
+                "Es en la escuela.",
+                "Está en la escuela."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Estoy en la escuela."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Il est fatigué (maintenant) :",
+              "options": [
+                "Es cansado.",
+                "Está cansado.",
+                "Soy cansado.",
+                "Estoy cansado."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Está cansado."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Los libros ___ en la mesa.",
+              "options": ["son", "están", "es", "estoy"],
+              "correctAnswers": [1],
+              "explanation": "Están en la mesa."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "¿Cómo ___? — Bien.",
+              "options": ["es", "estás", "soy", "son"],
+              "correctAnswers": [1],
+              "explanation": "¿Cómo estás?"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "María ___ enferma hoy.",
+              "options": ["es", "está", "soy", "son"],
+              "correctAnswers": [1],
+              "explanation": "Está enferma hoy."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Nous sommes dans le jardin :",
+              "options": [
+                "Somos en el jardín.",
+                "Estamos en el jardín.",
+                "Son en el jardín.",
+                "Están en el jardín."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Estamos en el jardín."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "El perro ___ en el jardín.",
+              "options": ["es", "está", "estoy", "son"],
+              "correctAnswers": [1],
+              "explanation": "Está en el jardín."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "¿Dónde ___ los libros?",
+              "options": ["son", "están", "es", "está"],
+              "correctAnswers": [1],
+              "explanation": "¿Dónde están los libros?"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un état temporaire se forme avec :",
+              "options": ["ser", "estar", "tener", "hay"],
+              "correctAnswers": [1],
+              "explanation": "Estar pour un état momentané."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Ser ou estar",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "On emploie ser pour :",
+              "options": [
+                "Soy Pablo.",
+                "Es médico.",
+                "Estoy en casa.",
+                "Está contento."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Identité et profession : ser."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Nationalité :",
+              "options": [
+                "Estoy francés.",
+                "Soy francés.",
+                "Está francés.",
+                "Es en Francia."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Soy francés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lieu :",
+              "options": [
+                "Soy en París.",
+                "Estoy en París.",
+                "Es en París.",
+                "Son en París."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Estoy en París."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Elle est contente aujourd'hui :",
+              "options": [
+                "Es contenta.",
+                "Está contenta.",
+                "Soy contenta.",
+                "Son contenta."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Está contenta."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "C'est une table :",
+              "options": [
+                "Está una mesa.",
+                "Es una mesa.",
+                "Estoy una mesa.",
+                "Son una mesa."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Es una mesa."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Los niños ___ en el colegio.",
+              "options": ["son", "están", "es", "está"],
+              "correctAnswers": [1],
+              "explanation": "Están en el colegio (lieu)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tu es mon ami :",
+              "options": [
+                "Estás mi amigo.",
+                "Eres mi amigo.",
+                "Es mi amigo.",
+                "Soy mi amigo."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Eres mi amigo."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En 6e, ser sert surtout à parler de :",
+              "options": ["où l'on est", "qui l'on est", "la météo", "l'heure"],
+              "correctAnswers": [1],
+              "explanation": "Ser = identité, nature stable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En 6e, estar sert surtout à parler de :",
+              "options": [
+                "le nom",
+                "où l'on est et comment on se sent",
+                "la profession",
+                "l'origine"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Estar = lieu ou état."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "Soy cansado hoy.",
+                "Estoy cansado hoy.",
+                "Estoy médico.",
+                "Soy en clase."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Estoy cansado ; Soy médico."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Phrases affirmatives",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases affirmatives correctes :",
+              "options": [
+                "La casa es grande.",
+                "El niño está feliz.",
+                "La casa está grande (identité)",
+                "El niño es en casa"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Es grande ; está feliz."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ordre le plus fréquent en espagnol :",
+              "options": [
+                "verbe + sujet",
+                "sujet + verbe + complément",
+                "complément + sujet",
+                "verbe seul toujours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sujet + verbe + complément."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "El gato ___ negro.",
+              "options": ["está", "es", "estoy", "son"],
+              "correctAnswers": [1],
+              "explanation": "Es negro (description)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mis padres ___ en España.",
+              "options": ["son", "están", "es", "estoy"],
+              "correctAnswers": [1],
+              "explanation": "Están en España."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ana ___ mi hermana.",
+              "options": ["está", "es", "estoy", "son"],
+              "correctAnswers": [1],
+              "explanation": "Es mi hermana."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Los estudiantes ___ inteligentes.",
+              "options": ["están", "son", "está", "es"],
+              "correctAnswers": [1],
+              "explanation": "Son inteligentes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Yo ___ en la biblioteca.",
+              "options": ["soy", "estoy", "es", "está"],
+              "correctAnswers": [1],
+              "explanation": "Estoy en la biblioteca."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduis : Le chat dort.",
+              "options": [
+                "El gato duerme.",
+                "La gato duerme.",
+                "El gato duermen.",
+                "Los gato duerme."
+              ],
+              "correctAnswers": [0],
+              "explanation": "El gato duerme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pablo y yo ___ amigos.",
+              "options": ["estamos", "somos", "son", "sois"],
+              "correctAnswers": [1],
+              "explanation": "Somos amigos."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La ventana ___ abierta.",
+              "options": ["es", "está", "son", "estoy"],
+              "correctAnswers": [1],
+              "explanation": "Está abierta (état)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "La négation no",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Négations correctes :",
+              "options": [
+                "No soy profesor.",
+                "No estoy en casa.",
+                "Soy no profesor.",
+                "Estoy no en casa."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "No se place avant le verbe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Je ne suis pas fatigué :",
+              "options": [
+                "No estoy cansado.",
+                "No soy cansado.",
+                "No es cansado.",
+                "No están cansado."
+              ],
+              "correctAnswers": [0],
+              "explanation": "No estoy cansado."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "No se place :",
+              "options": [
+                "après le verbe",
+                "avant le verbe",
+                "à la fin seulement",
+                "deux fois"
+              ],
+              "correctAnswers": [1],
+              "explanation": "No + verbe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Él ___ es alto.",
+              "options": ["no", "sí", "muy", "y"],
+              "correctAnswers": [0],
+              "explanation": "No es alto."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Nous ne sommes pas en classe :",
+              "options": [
+                "No somos en clase.",
+                "No estamos en clase.",
+                "No son en clase.",
+                "No es en clase."
+              ],
+              "correctAnswers": [1],
+              "explanation": "No estamos en clase."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "No tengo un perro signifie :",
+              "options": [
+                "je n'ai pas de chien",
+                "je suis un chien",
+                "j'ai un chien",
+                "le chien dort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "No tengo = je n'ai pas."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "¿___ eres de París? — No, no soy de París.",
+              "options": ["Sí", "No (dans la question)", "Muy", "Y"],
+              "correctAnswers": [1],
+              "explanation": "On peut répondre par No."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Las flores ___ están en la mesa.",
+              "options": ["no", "sí", "el", "la"],
+              "correctAnswers": [0],
+              "explanation": "No están en la mesa."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "No soy de México.",
+                "No estoy triste.",
+                "Soy no feliz.",
+                "No es difícil."
+              ],
+              "correctAnswers": [2],
+              "explanation": "No soy feliz, pas soy no feliz."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour nier en espagnol simple, on utilise :",
+              "options": [
+                "pas seulement",
+                "no devant le verbe",
+                "ne...pas",
+                "subjonctif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "No + verbe suffit en 6e."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Questions simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Questions correctes :",
+              "options": [
+                "¿Eres español?",
+                "¿Estás bien?",
+                "¿Es estás bien?",
+                "¿Soy eres tú?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "¿Eres? et ¿Estás? sont correctes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "¿___ es tu nombre?",
+              "options": ["Cómo", "Cuál", "Dónde", "Cuándo"],
+              "correctAnswers": [1],
+              "explanation": "¿Cuál es tu nombre?"
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "¿Dónde ___?",
+              "options": ["es", "estás", "soy", "son"],
+              "correctAnswers": [1],
+              "explanation": "¿Dónde estás?"
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "¿___ eres tú?",
+              "options": ["Quién", "Dónde", "Cuándo", "Cuánto"],
+              "correctAnswers": [0],
+              "explanation": "¿Quién eres?"
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "¿Cómo ___?",
+              "options": ["es", "estás", "soy", "son"],
+              "correctAnswers": [1],
+              "explanation": "¿Cómo estás?"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "¿___ está la clase?",
+              "options": ["Dónde", "Cuándo", "Quién", "Cuál"],
+              "correctAnswers": [0],
+              "explanation": "¿Dónde está la clase?"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En espagnol, une question écrite a souvent :",
+              "options": [
+                "un point seulement",
+                "¿ au début et ? à la fin",
+                "! au début",
+                "rien de spécial"
+              ],
+              "correctAnswers": [1],
+              "explanation": "¿ ... ? est la ponctuation courante."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "¿Tú ___ de Francia?",
+              "options": ["estás", "eres", "es", "soy"],
+              "correctAnswers": [1],
+              "explanation": "¿Eres de Francia?"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "¿Los libros ___ en la mochila?",
+              "options": ["son", "están", "es", "estoy"],
+              "correctAnswers": [1],
+              "explanation": "¿Están en la mochila?"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "¿___ son ellos? — Son mis primos.",
+              "options": ["Quién", "Quiénes", "Dónde", "Cómo"],
+              "correctAnswers": [1],
+              "explanation": "¿Quiénes son ellos?"
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Adjectifs avec ser",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases avec ser + adjectif correctes :",
+              "options": [
+                "Soy alto.",
+                "Ella es simpática.",
+                "Estoy alto (identité en 6e)",
+                "Es en Madrid"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Soy alto ; es simpática."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mi madre ___ joven.",
+              "options": ["está", "es", "estoy", "son"],
+              "correctAnswers": [1],
+              "explanation": "Es joven."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Los problemas ___ difíciles.",
+              "options": ["están", "son", "es", "estoy"],
+              "correctAnswers": [1],
+              "explanation": "Son difíciles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tú ___ muy amable.",
+              "options": ["estás", "eres", "es", "soy"],
+              "correctAnswers": [1],
+              "explanation": "Eres muy amable."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "El examen ___ fácil.",
+              "options": ["está", "es", "estoy", "son"],
+              "correctAnswers": [1],
+              "explanation": "Es fácil."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Nosotras ___ estudiantes.",
+              "options": ["estamos", "somos", "son", "es"],
+              "correctAnswers": [1],
+              "explanation": "Somos estudiantes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ellos ___ de Madrid.",
+              "options": ["están", "son", "es", "estoy"],
+              "correctAnswers": [1],
+              "explanation": "Son de Madrid (origine)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'adjectif après ser s'accorde avec :",
+              "options": ["le verbe", "le sujet", "la ville", "l'heure"],
+              "correctAnswers": [1],
+              "explanation": "Accord avec le sujet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La ciudad ___ grande.",
+              "options": ["está", "es", "son", "estoy"],
+              "correctAnswers": [1],
+              "explanation": "Es grande (description)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Yo ___ de París.",
+              "options": ["estoy", "soy", "es", "son"],
+              "correctAnswers": [1],
+              "explanation": "Soy de París (origine avec ser)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse phrases simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux verbes essentiels en 6e :",
+              "options": ["ser", "estar", "tener", "ir"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ser et estar structurent les phrases simples."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phrase complète correcte :",
+              "options": [
+                "Yo soy en casa.",
+                "Yo estoy en casa.",
+                "Yo es en casa.",
+                "Yo están en casa."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Yo estoy en casa."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Phrase complète correcte :",
+              "options": [
+                "Ella está profesora.",
+                "Ella es profesora.",
+                "Ella son profesora.",
+                "Ella soy profesora."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ella es profesora."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "¿___ hablas español? — Sí, un poco.",
+              "options": ["Dónde", "Hablas (¿Hablas tú?)", "Cuál", "Cuándo"],
+              "correctAnswers": [1],
+              "explanation": "¿Hablas español? question simple."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Nosotros ___ en el aula y ___ contentos.",
+              "options": [
+                "estamos / estamos",
+                "somos / estamos",
+                "estamos / somos",
+                "son / es"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Estamos en el aula ; estamos contentos."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "No, yo ___ María.",
+              "options": ["estoy", "soy", "es", "son"],
+              "correctAnswers": [1],
+              "explanation": "Soy María (identité)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Los libros ___ en la mochila.",
+              "options": ["son", "están", "es", "estoy"],
+              "correctAnswers": [1],
+              "explanation": "Están en la mochila."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "El perro ___ pequeño y ___ en el salón.",
+              "options": [
+                "es / está",
+                "está / es",
+                "son / están",
+                "estoy / soy"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Es pequeño ; está en el salón."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "¿Quién ___ tu professeur? — ___ Carlos.",
+              "options": ["es / Es", "está / Está", "son / Son", "soy / Soy"],
+              "correctAnswers": [0],
+              "explanation": "¿Quién es? — Es Carlos."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour réviser ce chapitre, retiens surtout :",
+              "options": [
+                "articles et ser/estar simples",
+                "subjonctif",
+                "passé composé",
+                "impératif seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "El, la, un, una, los, las, ser et estar au présent simple."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

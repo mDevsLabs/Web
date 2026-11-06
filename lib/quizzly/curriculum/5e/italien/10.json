@@ -1,0 +1,2143 @@
+{
+  "id": "5e-italien-10",
+  "year": "5e",
+  "subject": "italien",
+  "title": "Vers l'examen en l'italien",
+  "order": 10,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Compréhension",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : « Marco : Ieri ho avuto matematica e italiano. — Sara : Anch'io! Domani abbiamo educazione fisica. » Quelles affirmations sont vraies ?",
+              "explanation": "Marco cite les cours d'hier et Sara annonce la gym demain.",
+              "options": [
+                "Marco parle de la veille.",
+                "Sara dit qu'elle n'a pas eu italien.",
+                "Demain il y a EPS.",
+                "Marco a eu seulement sport."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ieri ho avuto matematica » : quel jour parle Marco ?",
+              "explanation": "« Ieri » signifie hier.",
+              "options": ["Aujourd'hui", "Hier", "Demain", "Lundi prochain"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Anch'io! » veut dire :",
+              "explanation": "« Anch'io » = moi aussi.",
+              "options": [
+                "Moi non plus",
+                "Moi aussi",
+                "Moi d'abord",
+                "Chez moi"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« educazione fisica » correspond à :",
+              "explanation": "C'est le cours de sport à l'école.",
+              "options": ["Arts plastiques", "EPS", "Musique", "Latin"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« abbiamo » est la forme de « avere » pour :",
+              "explanation": "Terminaison -iamo = nous.",
+              "options": ["io", "tu", "noi", "loro"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« ho avuto » est au :",
+              "explanation": "Passato prossimo de « avere ».",
+              "options": ["présent", "passé composé", "futur", "impératif"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Domani » indique :",
+              "explanation": "« Domani » = demain.",
+              "options": ["hier", "demain", "maintenant", "souvent"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel mot lie Marco et Sara dans le dialogue ?",
+              "explanation": "Sara partage la même idée avec « anch'io ».",
+              "options": ["Però", "Anch'io", "Mai", "Niente"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« matematica » signifie :",
+              "explanation": "Vocabulaire scolaire courant.",
+              "options": ["histoire", "maths", "géo", "français"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le dialogue se situe surtout :",
+              "explanation": "Ils évoquent hier et demain à l'école.",
+              "options": [
+                "à la maison le soir",
+                "au contexte scolaire",
+                "en vacances",
+                "au supermarché"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : « Prof : Come va oggi? — Luca : Bene, grazie. La lezione di storia è interessante. — Prof : Secondo me anche la geografia è utile. » Quelles réponses sont correctes ?",
+              "explanation": "Luca va bien et trouve l'histoire intéressante ; le prof valorise aussi la géo.",
+              "options": [
+                "Luca dit que ça va mal.",
+                "Luca trouve l'histoire intéressante.",
+                "Le prof trouve la géo inutile.",
+                "Le prof pense que la géo est utile."
+              ],
+              "correctAnswers": [1, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Come va oggi? » demande :",
+              "explanation": "Formule de politesse = comment ça va aujourd'hui.",
+              "options": [
+                "Quelle heure est-il ?",
+                "Comment ça va ?",
+                "Où habites-tu ?",
+                "Quel âge as-tu ?"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Bene, grazie » exprime :",
+              "explanation": "Réponse positive polie.",
+              "options": [
+                "un refus",
+                "un avis négatif",
+                "que ça va bien",
+                "une question"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« interessante » veut dire :",
+              "explanation": "Adjectif d'opinion positif.",
+              "options": ["ennuyeux", "intéressant", "difficile", "facile"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Secondo me » introduit :",
+              "explanation": "Expression d'avis = selon moi.",
+              "options": ["une heure", "un avis", "une date", "un ordre"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« utile » est le contraire de :",
+              "explanation": "Utile = qui sert ; inutile = qui ne sert pas.",
+              "options": ["inutile", "bello", "facile", "lungo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« lezione di storia » : quel cours ?",
+              "explanation": "Storia = histoire.",
+              "options": ["histoire", "sport", "anglais", "techno"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« geografia » signifie :",
+              "explanation": "Matière scolaire géographie.",
+              "options": [
+                "géographie",
+                "grammaire",
+                "gymnastique",
+                "géométrie seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« oggi » veut dire :",
+              "explanation": "Repère temporel du dialogue.",
+              "options": ["hier", "aujourd'hui", "demain", "jamais"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qui donne un avis sur la géographie ?",
+              "explanation": "Le professeur dit « secondo me ».",
+              "options": [
+                "Luca seulement",
+                "le professeur",
+                "personne",
+                "Sara"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : « Giulia : Ieri non ho fatto i compiti di scienze. — Mamma : Domani li finisci dopo scuola. — Giulia : Va bene, prometto. » Quelles affirmations sont vraies ?",
+              "explanation": "Giulia avoue hier ; la mère fixe demain après les cours.",
+              "options": [
+                "Giulia a tout fini hier.",
+                "Giulia n'a pas fait les devoirs de sciences hier.",
+                "La mère propose de finir demain après l'école.",
+                "Giulia refuse."
+              ],
+              "correctAnswers": [1, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« compiti » signifie :",
+              "explanation": "Devoirs scolaires.",
+              "options": ["devoirs", "cahiers", "crayons", "notes"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« non ho fatto » exprime :",
+              "explanation": "Négation au passé avec « fare ».",
+              "options": [
+                "j'ai fait",
+                "je n'ai pas fait",
+                "je ferai",
+                "je fais"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« scienze » correspond à :",
+              "explanation": "Matière sciences.",
+              "options": ["sciences", "musique", "arts", "EPS"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Domani li finisci » : « li » remplace :",
+              "explanation": "Pronom « li » = les (devoirs).",
+              "options": ["les devoirs", "la mère", "l'école", "demain"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« dopo scuola » veut dire :",
+              "explanation": "Après la fin des cours.",
+              "options": [
+                "avant l'école",
+                "pendant la classe",
+                "après l'école",
+                "le week-end"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« prometto » signifie :",
+              "explanation": "Je promets.",
+              "options": ["je promets", "j'oublie", "je refuse", "je dors"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Va bene » accepte :",
+              "explanation": "Accord avec le plan proposé.",
+              "options": ["un refus", "un accord", "une colère", "un silence"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ieri » situe l'action de Giulia :",
+              "explanation": "Hier au passé.",
+              "options": ["demain", "hier", "maintenant", "toujours"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qui parle à Giulia ?",
+              "explanation": "« Mamma » dans le texte.",
+              "options": ["le prof", "la mère", "un ami", "le directeur"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : « Tommaso : Per me l'italiano è facile ma il francese è difficile. — Anna : Io preferisco il francese. Domani abbiamo un test. » Quelles infos sont correctes ?",
+              "explanation": "Tommaso compare deux langues ; Anna préfère le français et rappelle un test demain.",
+              "options": [
+                "Tommaso trouve l'italien facile.",
+                "Tommaso adore le français.",
+                "Anna préfère le français.",
+                "Demain il y a un contrôle."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Per me » exprime :",
+              "explanation": "Pour moi = avis personnel.",
+              "options": ["une heure", "un avis", "une adresse", "un prix"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« facile » opposé de :",
+              "explanation": "Facile vs difficile.",
+              "options": ["difficile", "bello", "utile", "lungo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« preferisco » veut dire :",
+              "explanation": "Je préfère.",
+              "options": ["je préfère", "je déteste", "j'oublie", "j'attends"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« ma » dans le dialogue signifie :",
+              "explanation": "Conjonction mais.",
+              "options": ["mais", "et", "ou", "car"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« test » ici c'est :",
+              "explanation": "Contrôle ou évaluation.",
+              "options": ["un contrôle", "une sortie", "un repas", "une fête"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle langue Anna préfère-t-elle ?",
+              "explanation": "Elle dit « preferisco il francese ».",
+              "options": ["italien", "français", "anglais", "allemand"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« difficile » décrit ici :",
+              "explanation": "Tommaso parle du français.",
+              "options": [
+                "le français pour Tommaso",
+                "l'EPS",
+                "la cantine",
+                "le bus"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Domani abbiamo un test » : quand ?",
+              "explanation": "Demain.",
+              "options": ["hier", "demain", "la semaine dernière", "jamais"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le dialogue parle surtout de :",
+              "explanation": "Langues et évaluation scolaire.",
+              "options": ["cuisine", "langues et école", "météo", "vacances"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : « Prof : Ieri siamo andati al museo. — Ele : Che bello! Domani raccontiamo la visita in classe. — Prof : Portate un quaderno. » Quelles phrases sont vraies ?",
+              "explanation": "Sortie hier au musée ; demain exposé ; quaderno demandé.",
+              "options": [
+                "Ils iront au musée demain.",
+                "Hier ils sont allés au museo.",
+                "Demain ils racontent la visite.",
+                "Il faut apporter un cahier."
+              ],
+              "correctAnswers": [1, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« siamo andati » utilise l'auxiliaire :",
+              "explanation": "Andare → essere au passé.",
+              "options": ["avere", "essere", "fare", "dire"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« museo » signifie :",
+              "explanation": "Lieu culturel.",
+              "options": ["musée", "stade", "cinéma", "bibliothèque"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Che bello! » montre :",
+              "explanation": "Enthousiasme positif.",
+              "options": ["ennui", "enthousiasme", "colère", "peur"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« raccontiamo » veut dire :",
+              "explanation": "Nous racontons / nous allons raconter.",
+              "options": [
+                "nous racontons",
+                "nous mangeons",
+                "nous dormons",
+                "nous courons"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« in classe » signifie :",
+              "explanation": "En classe, à l'école.",
+              "options": ["en classe", "à la maison", "dans la rue", "au parc"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Portate » est à l'impératif :",
+              "explanation": "Ordre au pluriel (vous).",
+              "options": ["vous (impératif)", "je", "lui", "noi"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« quaderno » c'est :",
+              "explanation": "Cahier scolaire.",
+              "options": ["un cahier", "un stylo", "une gomme", "une règle"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« visita » dans le texte :",
+              "explanation": "La visite du musée.",
+              "options": ["la visite", "le devoir", "le test", "le sport"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ieri » indique que la sortie :",
+              "explanation": "Déjà faite hier.",
+              "options": [
+                "est passée",
+                "est demain",
+                "n'existe pas",
+                "est dans un mois"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : « Chiara : La mensa è buona oggi. — Paolo : Per me è un po' cara. — Chiara : Ieri ho mangiato pasta e insalata. » Quelles affirmations conviennent ?",
+              "explanation": "Chiara apprécie ; Paolo trouve un peu cher ; hier pasta et salade.",
+              "options": [
+                "Chiara dit que la cantine est bonne aujourd'hui.",
+                "Paolo trouve la cantine un peu chère.",
+                "Chiara n'a rien mangé hier.",
+                "Hier Chiara a mangé pâtes et salade."
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« mensa » à l'école :",
+              "explanation": "Cantine scolaire.",
+              "options": ["cantine", "cour", "bibliothèque", "infirmerie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« un po' » veut dire :",
+              "explanation": "Un peu.",
+              "options": ["un peu", "beaucoup", "jamais", "toujours"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« cara » signifie :",
+              "explanation": "Chère (prix).",
+              "options": ["chère", "gratuite", "froide", "vide"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« ho mangiato » est au :",
+              "explanation": "Passato prossimo de mangiare.",
+              "options": ["passé", "futur", "présent", "conditionnel"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« pasta » signifie :",
+              "explanation": "Pâtes.",
+              "options": ["pâtes", "pain", "viande", "poisson"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« insalata » c'est :",
+              "explanation": "Salade.",
+              "options": ["salade", "soupe", "dessert", "boisson"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« oggi » dans la première phrase :",
+              "explanation": "Aujourd'hui.",
+              "options": ["aujourd'hui", "hier", "demain", "souvent"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Per me » de Paolo introduit :",
+              "explanation": "Son opinion sur le prix.",
+              "options": ["un avis", "une heure", "un lieu", "un nombre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le sujet principal :",
+              "explanation": "Repas à la cantine.",
+              "options": [
+                "la cantine et le repas",
+                "le bus",
+                "les vacances",
+                "la musique"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : « Matteo : Domani non c'è scuola, è festa. — Lisa : Bene! Ieri ho studiato matematica tutta la sera. — Matteo : Io ho giocato a calcio. » Quelles infos sont exactes ?",
+              "explanation": "Pas d'école demain ; Lisa a révisé hier soir ; Matteo a joué au foot.",
+              "options": [
+                "Demain il y a cours normaux.",
+                "Demain pas d'école (fête).",
+                "Lisa a étudié les maths hier soir.",
+                "Matteo a étudié toute la soirée."
+              ],
+              "correctAnswers": [1, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« non c'è scuola » signifie :",
+              "explanation": "Il n'y a pas école.",
+              "options": ["pas d'école", "double cours", "examen", "retard"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« festa » ici :",
+              "explanation": "Jour férié ou fête sans cours.",
+              "options": [
+                "jour sans cours / fête",
+                "punition",
+                "devoir",
+                "contrôle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« ho studiato » : action de Lisa :",
+              "explanation": "Étudier au passé.",
+              "options": ["étudier (passé)", "jouer", "dormir", "manger"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« tutta la sera » veut dire :",
+              "explanation": "Toute la soirée.",
+              "options": [
+                "toute la soirée",
+                "cinq minutes",
+                "le matin",
+                "demain"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« ho giocato a calcio » :",
+              "explanation": "Jouer au football.",
+              "options": [
+                "jouer au foot",
+                "faire de la natation",
+                "lire",
+                "chanter"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Domani » concerne :",
+              "explanation": "Le jour sans école.",
+              "options": ["demain", "hier", "hier soir", "maintenant"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Bene! » de Lisa montre :",
+              "explanation": "Contente qu'il n'y ait pas école.",
+              "options": ["joie", "tristesse", "peur", "colère"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ieri » situe l'action de Lisa :",
+              "explanation": "Hier.",
+              "options": ["hier", "demain", "aujourd'hui", "jamais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qui a fait du sport hier ?",
+              "explanation": "Matteo dit « ho giocato a calcio ».",
+              "options": ["Matteo", "Lisa", "le prof", "personne"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : « Insegnante : Per favore, silenzio! — Marco : Scusi, ieri ero malato. — Insegnante : Va bene, siediti. Domani porta il certificato. » Quelles réponses sont correctes ?",
+              "explanation": "Demande de silence ; Marco excusé car malade hier ; certificat demain.",
+              "options": [
+                "Le prof demande le silence.",
+                "Marco dit qu'il était malade hier.",
+                "Marco refuse de s'asseoir.",
+                "Demain Marco doit apporter un certificat."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Per favore » veut dire :",
+              "explanation": "S'il vous plaît.",
+              "options": ["s'il vous plaît", "merci", "au revoir", "pardon"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« silenzio » signifie :",
+              "explanation": "Silence.",
+              "options": ["silence", "bruit", "course", "jeu"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Scusi » est :",
+              "explanation": "Excusez-moi (forme polie).",
+              "options": ["excusez-moi", "bonjour", "au revoir", "oui"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« ero malato » : temps et sens ?",
+              "explanation": "Imparfait = j'étais malade.",
+              "options": [
+                "j'étais malade",
+                "je suis guéri demain",
+                "je mange",
+                "je cours"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« siediti » ordonne :",
+              "explanation": "Impératif assieds-toi.",
+              "options": ["assieds-toi", "lève-toi", "pars", "crie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« certificato » ici :",
+              "explanation": "Certificat médical scolaire.",
+              "options": ["certificat médical", "devoir", "cahier", "ticket"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« porta » (demain) veut dire :",
+              "explanation": "Apporter.",
+              "options": ["apporter", "jeter", "oublier", "vendre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ieri » explique :",
+              "explanation": "Absence ou état d'hier.",
+              "options": ["hier", "demain", "maintenant", "souvent"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qui parle en premier ?",
+              "explanation": "L'enseignant (« Insegnante »).",
+              "options": ["l'enseignant", "Marco", "la mère", "Anna"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : « Sofia : Secondo me il libro di inglese è noioso. — Leo : Io lo trovo utile per domani. — Sofia : Ieri ho letto dieci pagine. » Quelles affirmations sont vraies ?",
+              "explanation": "Sofia trouve le livre ennuyeux ; Leo utile pour demain ; Sofia a lu hier.",
+              "options": [
+                "Sofia trouve le manuel d'anglais ennuyeux.",
+                "Leo trouve le livre inutile.",
+                "Leo pense que c'est utile pour demain.",
+                "Sofia n'a rien lu hier."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« noioso » signifie :",
+              "explanation": "Ennuyeux.",
+              "options": ["ennuyeux", "passionnant", "court", "neuf"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« lo trovo » : « lo » remplace :",
+              "explanation": "Le livre (masculin singulier).",
+              "options": ["le livre", "Sofia", "demain", "l'école"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« inglese » c'est :",
+              "explanation": "Langue anglaise.",
+              "options": ["anglais", "italien", "espagnol", "allemand"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« ho letto » veut dire :",
+              "explanation": "J'ai lu (passé).",
+              "options": ["j'ai lu", "je lis", "je lirai", "j'écris"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« dieci pagine » : combien ?",
+              "explanation": "Dix pages.",
+              "options": ["dix", "deux", "cent", "zéro"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Secondo me » de Sofia :",
+              "explanation": "Selon moi = avis.",
+              "options": ["un avis", "une date", "un lieu", "un nombre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« utile per domani » : Leo pense que le livre sert :",
+              "explanation": "Pour la préparation de demain.",
+              "options": ["pour demain", "pour hier", "jamais", "à la cantine"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ieri » avec « ho letto » :",
+              "explanation": "Lecture faite hier.",
+              "options": [
+                "action passée hier",
+                "action future",
+                "maintenant",
+                "interdit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le « libro » est de quelle matière ?",
+              "explanation": "Libro di inglese.",
+              "options": ["anglais", "EPS", "cuisine", "histoire seule"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : « Amico : Hai fatto i compiti di musica? — Tu : Ieri sì, erano facili. Domani porto la chitarra a scuola. — Amico : Che bello! » Quelles infos sont correctes ?",
+              "explanation": "Devoirs faits hier, faciles ; guitare apportée demain.",
+              "options": [
+                "Les devoirs de musique sont faits (hier).",
+                "Les devoirs étaient difficiles.",
+                "Demain tu apportes la guitare.",
+                "Tu refuses d'aller à l'école."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Hai fatto i compiti » demande :",
+              "explanation": "As-tu fait les devoirs ?",
+              "options": [
+                "as-tu fait les devoirs",
+                "quelle heure",
+                "où es-tu",
+                "comment t'appelles-tu"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« musica » signifie :",
+              "explanation": "Musique (cours).",
+              "options": ["musique", "maths", "sport", "latin"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« erano facili » : les devoirs étaient :",
+              "explanation": "Faciles à l'imparfait.",
+              "options": ["faciles", "impossibles", "longs", "interdits"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« chitarra » c'est :",
+              "explanation": "Guitare.",
+              "options": ["guitare", "piano", "trompette", "batterie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« porto » demain :",
+              "explanation": "J'apporte.",
+              "options": ["j'apporte", "j'oublie", "je vends", "je casse"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« a scuola » veut dire :",
+              "explanation": "À l'école.",
+              "options": ["à l'école", "à la plage", "chez moi", "au cinéma"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ieri sì » répond :",
+              "explanation": "Confirmation pour hier.",
+              "options": ["oui pour hier", "non", "peut-être demain", "jamais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Che bello! » de l'ami montre :",
+              "explanation": "Réaction positive.",
+              "options": ["enthousiasme", "colère", "ennui", "peur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Thème du dialogue :",
+              "explanation": "Musique et devoirs scolaires.",
+              "options": ["musique et école", "météo", "vacances", "shopping"],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Expression",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour dire « Hier j'ai eu cours de maths » et « Demain nous avons sport », quelles phrases conviennent ?",
+              "explanation": "Passé avec « ho avuto » et futur proche avec « domani abbiamo ».",
+              "options": [
+                "Ieri ho avuto matematica.",
+                "Ieri ho avuto domani.",
+                "Domani abbiamo educazione fisica.",
+                "Domani ho avuto ieri."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dire « Selon moi, c'est intéressant » ?",
+              "explanation": "« Secondo me » + adjectif sans subjonctif compliqué.",
+              "options": [
+                "Secondo me è interessante.",
+                "Secondo me sono ieri.",
+                "Domani secondo ieri.",
+                "Per favore interessante."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réponse polie à « Come va? » :",
+              "explanation": "« Bene, grazie » est la formule standard.",
+              "options": [
+                "Bene, grazie.",
+                "Male ieri domani.",
+                "Silenzio scuola.",
+                "Quaderno festa."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour dire « Moi aussi ! » :",
+              "explanation": "« Anch'io » partage l'avis ou l'expérience.",
+              "options": ["Anch'io!", "Mai!", "Niente!", "Però solo."],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Nier « J'ai fait les devoirs » :",
+              "explanation": "« Non ho fatto i compiti ».",
+              "options": [
+                "Non ho fatto i compiti.",
+                "Ho fatto non compiti.",
+                "Fatto ho ieri non.",
+                "Compiti non domani ho."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Demander « As-tu fait les devoirs ? » :",
+              "explanation": "« Hai fatto i compiti? »",
+              "options": [
+                "Hai fatto i compiti?",
+                "Ho fatto i compiti?",
+                "Fatto compiti io?",
+                "Compiti hai domani?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Pour moi, le français est difficile » :",
+              "explanation": "« Per me il francese è difficile ».",
+              "options": [
+                "Per me il francese è difficile.",
+                "Per me ieri è scuola.",
+                "Domani per me grazie.",
+                "Francese per favore."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Excusez-moi (forme polie) :",
+              "explanation": "« Scusi » en classe.",
+              "options": ["Scusi.", "Silenzio.", "Siediti.", "Portate."],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Demain :",
+              "explanation": "« Domani » en début de phrase.",
+              "options": ["Domani", "Ieri", "Oggi", "Mai"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Hier au passé composé avec « mangiare » :",
+              "explanation": "« Ieri ho mangiato ».",
+              "options": [
+                "Ieri ho mangiato.",
+                "Ieri mangio domani.",
+                "Ho mangiato domani ieri.",
+                "Mangiato oggi festa."
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases expriment un avis positif et une préférence ?",
+              "explanation": "« È bello » et « preferisco » sont des formules 5e.",
+              "options": [
+                "Trovo bello il progetto.",
+                "Il progetto è ieri.",
+                "Preferisco l'italiano.",
+                "Preferisco domani ieri."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Je préfère l'histoire :",
+              "explanation": "« Preferisco la storia ».",
+              "options": [
+                "Preferisco la storia.",
+                "Preferisco ieri storia.",
+                "Storia preferisco domani.",
+                "La preferisco ieri."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "C'est ennuyeux :",
+              "explanation": "« È noioso ».",
+              "options": [
+                "È noioso.",
+                "È domani.",
+                "Noioso ieri ho.",
+                "Sono noioso scusi."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Accord : « D'accord, promis » :",
+              "explanation": "« Va bene, prometto ».",
+              "options": [
+                "Va bene, prometto.",
+                "Malato certificato.",
+                "Silenzio per favore.",
+                "Anch'io domani."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Après l'école :",
+              "explanation": "« Dopo scuola ».",
+              "options": [
+                "Dopo scuola",
+                "Prima ieri",
+                "Durante domani",
+                "Mai scuola"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Apporter un cahier (impératif vous) :",
+              "explanation": "« Portate un quaderno ».",
+              "options": [
+                "Portate un quaderno.",
+                "Porto quaderno ieri.",
+                "Quaderno va bene.",
+                "Siediti quaderno."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Il n'y a pas école demain :",
+              "explanation": "« Domani non c'è scuola ».",
+              "options": [
+                "Domani non c'è scuola.",
+                "Ieri c'è scuola domani.",
+                "Non scuola ieri ho.",
+                "C'è festa ieri domani."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "J'ai étudié toute la soirée :",
+              "explanation": "« Ho studiato tutta la sera ».",
+              "options": [
+                "Ho studiato tutta la sera.",
+                "Studio domani sera.",
+                "Ieri gioco sera.",
+                "Sera tutta non."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "S'il vous plaît, silence :",
+              "explanation": "« Per favore, silenzio! »",
+              "options": [
+                "Per favore, silenzio!",
+                "Grazie, festa!",
+                "Scusi, calcio!",
+                "Bene, quaderno!"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "J'étais malade (hier) :",
+              "explanation": "« Ieri ero malato » à l'imparfait.",
+              "options": [
+                "Ieri ero malato.",
+                "Ieri sono malato domani.",
+                "Ero domani malato.",
+                "Malato ho ieri."
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour parler d'hier et demain à l'école, choisis deux phrases correctes :",
+              "explanation": "Repères « ieri » / « domani » avec verbes cohérents.",
+              "options": [
+                "Ieri abbiamo avuto un test.",
+                "Ieri domani abbiamo test.",
+                "Domani raccontiamo la visita.",
+                "Raccontiamo ieri domani visita."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Nous sommes allés au musée (passé) :",
+              "explanation": "« Siamo andati al museo ».",
+              "options": [
+                "Siamo andati al museo.",
+                "Andiamo ieri museo.",
+                "Siamo museo domani.",
+                "Andati non museo."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle beauté ! (enthousiasme) :",
+              "explanation": "« Che bello! »",
+              "options": [
+                "Che bello!",
+                "Che noioso ieri!",
+                "Che silenzio!",
+                "Che compiti!"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La cantine est bonne aujourd'hui :",
+              "explanation": "« La mensa è buona oggi ».",
+              "options": [
+                "La mensa è buona oggi.",
+                "Mensa ieri domani.",
+                "Buona mensa ieri ho.",
+                "Oggi mensa malato."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un peu cher :",
+              "explanation": "« È un po' cara ».",
+              "options": [
+                "È un po' cara.",
+                "È un po' scuola.",
+                "Cara ieri domani.",
+                "Po' non cara."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "J'ai lu dix pages :",
+              "explanation": "« Ho letto dieci pagine ».",
+              "options": [
+                "Ho letto dieci pagine.",
+                "Leggo pagine ieri domani.",
+                "Dieci ho scuola.",
+                "Pagina non letto."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Je trouve utile (le livre) :",
+              "explanation": "« Lo trovo utile ».",
+              "options": [
+                "Lo trovo utile.",
+                "Trovo ieri utile domani.",
+                "Utile lo ieri.",
+                "Lo utile non."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Assieds-toi :",
+              "explanation": "« Siediti » impératif.",
+              "options": ["Siediti.", "Portate.", "Scusi.", "Prometto."],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Demain, apporte le certificat :",
+              "explanation": "« Domani porta il certificato ».",
+              "options": [
+                "Domani porta il certificato.",
+                "Ieri porta certificato.",
+                "Porta domani ieri.",
+                "Certificato silenzio."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "J'ai joué au football :",
+              "explanation": "« Ho giocato a calcio ».",
+              "options": [
+                "Ho giocato a calcio.",
+                "Gioco calcio ieri domani.",
+                "Calcio ho scuola.",
+                "Giocato non calcio."
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux façons correctes de répondre positivement et partager :",
+              "explanation": "« Bene, grazie » et « Anch'io ».",
+              "options": [
+                "Bene, grazie.",
+                "Male, grazie ieri.",
+                "Anch'io!",
+                "Anch'io domani test."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Facile (adjectif) :",
+              "explanation": "« facile » décrit un cours ou devoir.",
+              "options": [
+                "facile",
+                "facili ieri",
+                "facile domani non",
+                "facile scusi"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Phrase : l'italien est facile mais le français est difficile :",
+              "explanation": "Structure « è … ma … è … ».",
+              "options": [
+                "L'italiano è facile ma il francese è difficile.",
+                "Italiano francese ieri domani.",
+                "Facile difficile non.",
+                "Ma ieri è scuola."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Demain nous avons un test :",
+              "explanation": "« Domani abbiamo un test ».",
+              "options": [
+                "Domani abbiamo un test.",
+                "Ieri abbiamo domani.",
+                "Test abbiamo ieri.",
+                "Un test non domani."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Utile (adjectif) :",
+              "explanation": "« utile » = qui sert.",
+              "options": [
+                "utile",
+                "utile ieri ho",
+                "non utile domani scuola",
+                "utile silenzio"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Finis les devoirs demain :",
+              "explanation": "« Domani finisci i compiti ».",
+              "options": [
+                "Domani finisci i compiti.",
+                "Finisci ieri compiti.",
+                "Compiti domani ieri.",
+                "Non finisci domani."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Intéressant :",
+              "explanation": "« interessante » accord adjectif.",
+              "options": [
+                "interessante",
+                "interessante domani ieri",
+                "noioso interessante",
+                "interessante scusi"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En classe nous racontons :",
+              "explanation": "« In classe raccontiamo ».",
+              "options": [
+                "In classe raccontiamo.",
+                "Raccontiamo ieri classe.",
+                "Classe non raccontiamo.",
+                "Domani classe ieri."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pâtes et salade (hier j'ai mangé…) :",
+              "explanation": "« Ho mangiato pasta e insalata ».",
+              "options": [
+                "Ho mangiato pasta e insalata.",
+                "Mangio pasta ieri domani.",
+                "Pasta insalata scuola.",
+                "Ho insalata non."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour moi (avis) :",
+              "explanation": "« Per me » en tête de phrase.",
+              "options": [
+                "Per me",
+                "Per favore me",
+                "Per me ieri",
+                "Me per domani"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Choisis deux phrases avec « domani » correctement employé :",
+              "explanation": "« Domani » + présent/futur proche, pas avec passé composé incohérent.",
+              "options": [
+                "Domani porto la chitarra.",
+                "Domani ho avuto ieri.",
+                "Domani non c'è scuola.",
+                "Ieri domani festa."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Hier oui (réponse courte) :",
+              "explanation": "« Ieri sì ».",
+              "options": [
+                "Ieri sì",
+                "Ieri no domani",
+                "Sì domani ieri",
+                "Sì scuola"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ils étaient faciles (devoirs) :",
+              "explanation": "« Erano facili » imparfait pluriel.",
+              "options": [
+                "Erano facili.",
+                "Erano domani.",
+                "Facili erano ieri domani.",
+                "Erano non."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Demande de politesse : s'il vous plaît :",
+              "explanation": "« Per favore ».",
+              "options": ["Per favore", "Per me", "Però", "Mai"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Merci (après un service) :",
+              "explanation": "« Grazie ».",
+              "options": ["Grazie", "Scusi", "Silenzio", "Siediti"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Aujourd'hui :",
+              "explanation": "« Oggi ».",
+              "options": ["Oggi", "Ieri", "Domani", "Sera"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Hier :",
+              "explanation": "« Ieri ».",
+              "options": ["Ieri", "Domani", "Oggi", "Festa"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Devoir scolaire (nom) :",
+              "explanation": "« compiti ».",
+              "options": [
+                "compiti",
+                "compiti domani ieri",
+                "silenzio",
+                "certificato"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Cahier :",
+              "explanation": "« quaderno ».",
+              "options": ["quaderno", "mensa", "museo", "calcio"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase complète : Hier j'ai eu italien :",
+              "explanation": "« Ieri ho avuto italiano ».",
+              "options": [
+                "Ieri ho avuto italiano.",
+                "Ho avuto ieri domani.",
+                "Italiano ieri non.",
+                "Avuto ho scuola."
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases pour exprimer « selon moi » et « c'est utile » :",
+              "explanation": "« Secondo me » + « è utile » ou « lo trovo utile ».",
+              "options": [
+                "Secondo me è utile.",
+                "Secondo me ieri domani.",
+                "Per me è utile.",
+                "Utile secondo ieri."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Je promets :",
+              "explanation": "« Prometto ».",
+              "options": ["Prometto", "Porto", "Siediti", "Scusi"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "D'accord :",
+              "explanation": "« Va bene ».",
+              "options": ["Va bene", "È noioso", "Non c'è", "Malato"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mais (conjonction) :",
+              "explanation": "« ma ».",
+              "options": ["ma", "e", "o", "per"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Et (conjonction) :",
+              "explanation": "« e » lie deux éléments.",
+              "options": ["e", "ma", "però", "non"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Nous avons (présent) :",
+              "explanation": "« abbiamo ».",
+              "options": ["abbiamo", "ho", "hai", "hanno"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "J'ai (présent avere) :",
+              "explanation": "« ho ».",
+              "options": ["ho", "hai", "ha", "abbiamo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tu as (présent) :",
+              "explanation": "« hai ».",
+              "options": ["hai", "ho", "hanno", "siamo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Nous sommes (présent essere) :",
+              "explanation": "« siamo ».",
+              "options": ["siamo", "sono", "sei", "siete"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase : Demain j'apporte la guitare à l'école :",
+              "explanation": "« Domani porto la chitarra a scuola ».",
+              "options": [
+                "Domani porto la chitarra a scuola.",
+                "Porto ieri chitarra.",
+                "Chitarra domani ieri.",
+                "A scuola non porto."
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux réponses scolaires correctes avec passé :",
+              "explanation": "« Ho studiato » et « siamo andati » au passé.",
+              "options": [
+                "Ieri ho studiato matematica.",
+                "Ieri studio domani.",
+                "Ieri siamo andati al museo.",
+                "Andiamo ieri museo domani."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Visite (nom) :",
+              "explanation": "« visita ».",
+              "options": ["visita", "visita ieri domani", "silenzio", "mensa"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Fête / jour sans cours :",
+              "explanation": "« festa ».",
+              "options": ["festa", "test", "lezione", "quaderno"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Contrôle :",
+              "explanation": "« test ».",
+              "options": ["test", "mensa", "chitarra", "insalata"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Leçon :",
+              "explanation": "« lezione ».",
+              "options": [
+                "lezione",
+                "lezione ieri non",
+                "calcio",
+                "certificato"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Professeur (mot) :",
+              "explanation": "« insegnante » ou « prof ».",
+              "options": [
+                "insegnante",
+                "insegnante domani ieri",
+                "mensa",
+                "pasta"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "École :",
+              "explanation": "« scuola ».",
+              "options": ["scuola", "scuola non c'è", "museo", "calcio"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Cantine :",
+              "explanation": "« mensa ».",
+              "options": ["mensa", "mensa cara", "quaderno", "storia"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sport (foot) :",
+              "explanation": "« calcio ».",
+              "options": [
+                "calcio",
+                "calcio ieri domani",
+                "geografia",
+                "inglese"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase : Pour moi c'est un peu cher :",
+              "explanation": "« Per me è un po' cara ».",
+              "options": [
+                "Per me è un po' cara.",
+                "Per me ieri cara.",
+                "Cara un po' domani.",
+                "Po' per me scuola."
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Choisis deux formules de classe appropriées :",
+              "explanation": "Demander silence et s'excuser.",
+              "options": [
+                "Per favore, silenzio!",
+                "Silenzio ieri domani!",
+                "Scusi, ieri ero malato.",
+                "Scusi domani ieri."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Certificat médical :",
+              "explanation": "« certificato ».",
+              "options": ["certificato", "compiti", "quaderno", "test"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Malade (adjectif) :",
+              "explanation": "« malato ».",
+              "options": ["malato", "malato domani", "facile", "utile"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Silence !",
+              "explanation": "« Silenzio! »",
+              "options": ["Silenzio!", "Grazie!", "Bene!", "Anch'io!"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment ça va ?",
+              "explanation": "« Come va? »",
+              "options": ["Come va?", "Come ieri?", "Domani va?", "Va scuola?"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bien ! (interjection) :",
+              "explanation": "« Bene! »",
+              "options": ["Bene!", "Male!", "Noioso!", "Cara!"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Page (livre) :",
+              "explanation": "« pagina » pluriel « pagine ».",
+              "options": ["pagina", "mensa", "festa", "calcio"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Livre :",
+              "explanation": "« libro ».",
+              "options": ["libro", "libro ieri domani", "museo", "insalata"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Anglais (matière) :",
+              "explanation": "« inglese ».",
+              "options": ["inglese", "italiano", "storia", "scienze"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sciences :",
+              "explanation": "« scienze ».",
+              "options": ["scienze", "scienze ieri ho", "musica", "geografia"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases avec opinion négative et positive :",
+              "explanation": "« È noioso » vs « è interessante » / « utile ».",
+              "options": [
+                "Secondo me è noioso.",
+                "Noioso ieri domani scuola.",
+                "Trovo utile il libro.",
+                "Utile noioso non."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Histoire (matière) :",
+              "explanation": "« storia ».",
+              "options": ["storia", "storia domani", "calcio", "mensa"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Géographie :",
+              "explanation": "« geografia ».",
+              "options": ["geografia", "geografia ieri", "test", "festa"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mathématiques :",
+              "explanation": "« matematica ».",
+              "options": [
+                "matematica",
+                "matematica domani ieri",
+                "chitarra",
+                "certificato"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Musique :",
+              "explanation": "« musica ».",
+              "options": ["musica", "musica compiti", "museo", "pasta"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Guitare :",
+              "explanation": "« chitarra ».",
+              "options": ["chitarra", "quaderno", "silenzio", "scusi"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Musée :",
+              "explanation": "« museo ».",
+              "options": ["museo", "scuola", "mensa", "test"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Projet (scolaire) :",
+              "explanation": "« progetto ».",
+              "options": ["progetto", "progetto ieri", "insalata", "calcio"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Je trouve (avis) :",
+              "explanation": "« Trovo » + adjectif.",
+              "options": ["Trovo", "Porto", "Mangio", "Siediti"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase : Nous préférons le français :",
+              "explanation": "« Preferiamo il francese ».",
+              "options": [
+                "Preferiamo il francese.",
+                "Preferisco ieri francese.",
+                "Francese domani preferiamo.",
+                "Preferiamo non."
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases récapitulatives niveau examen (hier + avis) :",
+              "explanation": "Passé « ieri » et avis « secondo me / per me ».",
+              "options": [
+                "Ieri ho letto il libro di inglese.",
+                "Ieri leggo domani libro.",
+                "Per me la lezione è interessante.",
+                "Per me ieri domani."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Français (langue) :",
+              "explanation": "« francese ».",
+              "options": ["francese", "italiano", "inglese", "storia"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Italien (langue) :",
+              "explanation": "« italiano ».",
+              "options": ["italiano", "francese", "scienze", "mensa"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Préférer (je) :",
+              "explanation": "« preferisco ».",
+              "options": [
+                "preferisco",
+                "preferiamo",
+                "preferisci",
+                "prefersco"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Préférer (nous) :",
+              "explanation": "« preferiamo ».",
+              "options": ["preferiamo", "preferisco", "preferite", "prefero"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Raconter (nous) :",
+              "explanation": "« raccontiamo ».",
+              "options": ["raccontiamo", "racconto", "racconti", "raccontano"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Finir (tu, impératif) :",
+              "explanation": "« finisci ».",
+              "options": ["finisci", "finisco", "finiscono", "finisci ieri"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Apporter (tu, demain) :",
+              "explanation": "« porti » ou « porta » selon registre ; 5e : « porto » je.",
+              "options": ["porto", "portate", "porti", "portiamo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Toute la soirée :",
+              "explanation": "« tutta la sera ».",
+              "options": [
+                "tutta la sera",
+                "tutta la scuola",
+                "tutta la mensa",
+                "tutta domani"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase finale : Demain en classe nous racontons la visite :",
+              "explanation": "« Domani in classe raccontiamo la visita ».",
+              "options": [
+                "Domani in classe raccontiamo la visita.",
+                "Raccontiamo ieri visita domani.",
+                "Visita non raccontiamo.",
+                "In classe ieri domani."
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

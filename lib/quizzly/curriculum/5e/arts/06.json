@@ -1,0 +1,2488 @@
+{
+  "id": "5e-arts-06",
+  "year": "5e",
+  "subject": "arts",
+  "title": "Le récit visuel",
+  "order": 6,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire une image",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur une affiche, que repère-t-on vite ?",
+              "explanation": "On voit des sujets et souvent une action ou une émotion.",
+              "options": [
+                "Personnages ou objets",
+                "Action ou émotion",
+                "Numéro de série",
+                "Épaisseur du verre"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le premier plan, c'est :",
+              "explanation": "C'est la partie qui semble la plus proche.",
+              "options": [
+                "Le fond lointain",
+                "Le plus proche du spectateur",
+                "Uniquement le ciel",
+                "La signature"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'arrière-plan sert à :",
+              "explanation": "Il donne le lieu et le contexte.",
+              "options": [
+                "Effacer l'histoire",
+                "Situer la scène",
+                "Supprimer les visages",
+                "Changer le format"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un sourire suggère plutôt :",
+              "explanation": "Le visage exprime des sentiments.",
+              "options": ["La colère", "La joie", "La peur", "Le silence"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une flèche montre surtout :",
+              "explanation": "Elle oriente le regard ou le mouvement.",
+              "options": ["Une odeur", "Une direction", "Un goût", "Un prix"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lire une image commence par :",
+              "explanation": "Observer ce qui est montré.",
+              "options": [
+                "Compter les lettres",
+                "Regarder ce qui est montré",
+                "Mesurer la page",
+                "Citer l'auteur"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux regards croisés évoquent :",
+              "explanation": "Un échange entre personnages.",
+              "options": [
+                "Une interaction",
+                "Aucune scène",
+                "Un paysage vide",
+                "Un texte caché"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une image sombre peut créer :",
+              "explanation": "Lumière et ombre modulent l'ambiance.",
+              "options": [
+                "Une ambiance sérieuse",
+                "Zéro émotion",
+                "Uniquement du rire",
+                "Du bruit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le cadre :",
+              "explanation": "Il limite la zone visible.",
+              "options": [
+                "Délimite la vue",
+                "Ajoute du son",
+                "Traduit le texte",
+                "Efface les détails"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un détail utile :",
+              "explanation": "Il aide à comprendre l'histoire.",
+              "options": [
+                "Aide à comprendre",
+                "Est toujours caché",
+                "N'a jamais de sens",
+                "Remplace le titre"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels indices situent une scène dehors ?",
+              "explanation": "Ciel, végétation ou horizon urbain indiquent l'extérieur.",
+              "options": [
+                "Ciel visible",
+                "Arbres ou horizon",
+                "Plafond de métro",
+                "Moquette de bureau"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Penché en avant, un corps montre :",
+              "explanation": "La posture traduit l'énergie ou l'attention.",
+              "options": [
+                "Mouvement ou attention",
+                "Sommeil",
+                "Statue",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comparer deux images sert à :",
+              "explanation": "On repère les changements.",
+              "options": [
+                "Voir les différences",
+                "Effacer les couleurs",
+                "Supprimer les visages",
+                "Ignorer l'ordre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un objet en main peut :",
+              "explanation": "Il participe à l'action.",
+              "options": [
+                "Être clé pour l'action",
+                "Être sans importance",
+                "Cacher le récit",
+                "Remplacer le décor"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sans mots, une image peut :",
+              "explanation": "Gestes et lieux racontent.",
+              "options": [
+                "Montrer une situation",
+                "Ne rien dire",
+                "Interdire l'émotion",
+                "Effacer le sujet"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Fort contraste clair/foncé :",
+              "explanation": "Il met certains éléments en avant.",
+              "options": [
+                "Accentue des éléments",
+                "Efface tout",
+                "Supprime l'histoire",
+                "Uniformise"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En fuite, les jambes sont :",
+              "explanation": "Le corps montre la vitesse.",
+              "options": [
+                "En mouvement rapide",
+                "Immobiles",
+                "Absentes",
+                "Au plafond"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Bulle de pensée =",
+              "explanation": "Elle montre les idées du personnage.",
+              "options": [
+                "Pensées du personnage",
+                "Bruit du vent",
+                "Température",
+                "Titre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ordre de lecture des images :",
+              "explanation": "Il suit la chronologie du récit.",
+              "options": [
+                "Suit le temps de l'histoire",
+                "Change les couleurs",
+                "Efface les cases",
+                "Ignore l'action"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Croix rouge = souvent",
+              "explanation": "Symbole reconnu d'interdit ou danger.",
+              "options": ["Interdit", "Neige", "Musique", "Victoire"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments aident à deviner l'heure du jour ?",
+              "explanation": "Lumière du soleil et ombres longues suggèrent le moment.",
+              "options": [
+                "Couleur du ciel",
+                "Ombres portées",
+                "Numéro de page",
+                "Type de papier"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Personnages plus grands au premier plan :",
+              "explanation": "La taille relative indique la proximité.",
+              "options": [
+                "Semblent plus proches",
+                "Sont toujours des géants",
+                "Sont au fond",
+                "Disparaissent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lignes de fuite convergent vers :",
+              "explanation": "Elles donnent l'impression de profondeur.",
+              "options": [
+                "Un point lointain",
+                "Le haut de page",
+                "Un texte",
+                "Un son"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mains sur les hanches :",
+              "explanation": "Posture souvent liée à l'assurance ou l'attente.",
+              "options": [
+                "Attitude affirmée",
+                "Sommeil",
+                "Peur extrême",
+                "Absence de corps"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Couleurs chaudes (rouge, orange) :",
+              "explanation": "Elles peuvent renforcer chaleur ou tension.",
+              "options": [
+                "Ambiance énergique ou chaude",
+                "Froid glacial",
+                "Silence",
+                "Texte"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un animal dans l'image :",
+              "explanation": "Il peut participer à l'action ou symboliser un trait.",
+              "options": [
+                "Peut avoir un rôle",
+                "Est toujours décoratif",
+                "Efface le récit",
+                "Interdit lecture"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Regard vers le bas :",
+              "explanation": "Peut montrer tristesse, honte ou objet au sol.",
+              "options": [
+                "Tristesse ou objet vu",
+                "Joie forcée",
+                "Ciel",
+                "Musique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Image coupée au bord :",
+              "explanation": "On devine une action qui continue hors cadre.",
+              "options": [
+                "Action continue hors cadre",
+                "Erreur sans sens",
+                "Fin de l'histoire",
+                "Suppression du sujet"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Légende sous une photo :",
+              "explanation": "Elle précise le sens ou le contexte.",
+              "options": [
+                "Aide à comprendre",
+                "Remplace l'image",
+                "Efface les couleurs",
+                "Change le cadre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Silhouette sombre sur fond clair :",
+              "explanation": "Le contraste rend la forme lisible.",
+              "options": [
+                "Forme bien visible",
+                "Image illisible",
+                "Texte obligatoire",
+                "Son"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels signes montrent la pluie dans une image ?",
+              "explanation": "Gouttes, nuages ou parapluies sont des indices météo.",
+              "options": [
+                "Gouttes ou nuages",
+                "Parapluie ou flaques",
+                "Musique notée",
+                "Index"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Personnage de dos :",
+              "explanation": "On partage son point de vue ou sa direction.",
+              "options": [
+                "On voit où il regarde",
+                "On voit toujours son visage",
+                "Il n'existe pas",
+                "Il remplace le texte"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Gros plan sur un visage :",
+              "explanation": "Il accentue l'émotion.",
+              "options": [
+                "Met l'émotion en avant",
+                "Efface l'histoire",
+                "Montre toujours le paysage",
+                "Supprime les yeux"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Couleurs froides (bleu) :",
+              "explanation": "Elles évoquent souvent calme ou mélancolie.",
+              "options": [
+                "Calme ou mélancolie",
+                "Chaleur extrême",
+                "Bruit",
+                "Goût"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Objet cassé au sol :",
+              "explanation": "Peut indiquer un accident récent.",
+              "options": [
+                "Accident ou tension",
+                "Victoire",
+                "Neige",
+                "Musique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plusieurs personnages alignés :",
+              "explanation": "Peut montrer une file, une équipe ou une attente.",
+              "options": [
+                "Groupe ou attente",
+                "Paysage seul",
+                "Texte caché",
+                "Cadre absent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lumière venant d'un côté :",
+              "explanation": "Crée des ombres qui modelent les volumes.",
+              "options": [
+                "Modelage par ombres",
+                "Efface les formes",
+                "Supprime le récit",
+                "Change la langue"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Costume ou uniforme :",
+              "explanation": "Indique parfois le métier ou l'époque.",
+              "options": [
+                "Indice de rôle ou époque",
+                "Sans intérêt",
+                "Efface le visage",
+                "Interdit lecture"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Point d'interrogation dans l'image :",
+              "explanation": "Suggère surprise ou questionnement.",
+              "options": [
+                "Surprise ou doute",
+                "Fin certaine",
+                "Silence total",
+                "Neige"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Observer les mains :",
+              "explanation": "Elles montrent ce que fait le personnage.",
+              "options": [
+                "Montre l'action",
+                "Inutile",
+                "Efface l'émotion",
+                "Remplace le décor"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels indices montrent la nuit ?",
+              "explanation": "Ciel sombre et sources de lumière artificielle indiquent la nuit.",
+              "options": [
+                "Ciel foncé",
+                "Lampadaires ou fenêtres lumineuses",
+                "Index du livre",
+                "Marge blanche"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Flèches entre deux images :",
+              "explanation": "Elles lient les étapes d'une suite.",
+              "options": [
+                "Montrent la suite",
+                "Effacent les couleurs",
+                "Suppriment les visages",
+                "Changent le titre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Personnage petit dans grand paysage :",
+              "explanation": "Insiste sur l'environnement ou la solitude.",
+              "options": [
+                "Insiste sur le décor",
+                "Géant obligatoire",
+                "Texte seul",
+                "Cadre absent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Yeux fermés :",
+              "explanation": "Peut indiquer sommeil, repos ou émotion intérieure.",
+              "options": ["Sommeil ou émotion", "Course", "Fuite", "Parade"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Couleurs vives soudaines :",
+              "explanation": "Attirent l'œil sur un moment important.",
+              "options": [
+                "Moment important",
+                "Effacement",
+                "Silence",
+                "Page blanche"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Porte ouverte :",
+              "explanation": "Suggère entrée, sortie ou passage.",
+              "options": [
+                "Passage possible",
+                "Mur sans sens",
+                "Fin du récit",
+                "Texte"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ombre d'un personnage :",
+              "explanation": "Confirme la lumière et la présence.",
+              "options": [
+                "Confirme lumière et présence",
+                "Efface le sujet",
+                "Interdit lecture",
+                "Remplace l'action"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Image floue volontaire :",
+              "explanation": "Peut traduire vitesse, rêve ou souvenir.",
+              "options": [
+                "Vitesse ou rêve",
+                "Erreur sans sens",
+                "Texte obligatoire",
+                "Cadre carré"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Symbole cœur :",
+              "explanation": "Évoque amour ou affection.",
+              "options": ["Amour ou affection", "Pluie", "Route", "Bruit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lire de gauche à droite en France :",
+              "explanation": "Ordre habituel pour suivre une suite d'images.",
+              "options": [
+                "Ordre habituel de lecture",
+                "Interdit",
+                "Aléatoire",
+                "Sans effet"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments montrent un conflit ?",
+              "explanation": "Gestes opposés ou visages en colère suggèrent un conflit.",
+              "options": [
+                "Visages en colère",
+                "Gestes opposés",
+                "Page numérotée",
+                "Marge"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Plan large :",
+              "explanation": "Montre beaucoup de décor et la situation globale.",
+              "options": [
+                "Situation globale",
+                "Uniquement un œil",
+                "Texte seul",
+                "Son"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Personnage au centre :",
+              "explanation": "Attire l'attention comme sujet principal.",
+              "options": [
+                "Sujet principal",
+                "Toujours invisible",
+                "Décoration",
+                "Index"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Couleur dominante verte :",
+              "explanation": "Évoque souvent nature ou calme.",
+              "options": ["Nature ou calme", "Feu", "Neige", "Métal"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Horloge visible :",
+              "explanation": "Rappelle le temps qui passe.",
+              "options": ["Temps qui passe", "Musique", "Goût", "Parfum"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Larmes sur un visage :",
+              "explanation": "Signe de tristesse ou de soulagement.",
+              "options": [
+                "Tristesse ou émotion forte",
+                "Joie seule",
+                "Neige",
+                "Route"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Image en noir et blanc :",
+              "explanation": "Peut marquer passé, souvenir ou style.",
+              "options": [
+                "Passé ou style",
+                "Interdit couleur",
+                "Texte seul",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Flèche circulaire :",
+              "explanation": "Peut indiquer répétition ou retour.",
+              "options": ["Répétition ou retour", "Fin", "Silence", "Neige"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Objet au premier plan net, fond flou :",
+              "explanation": "Isole le sujet important.",
+              "options": [
+                "Isole le sujet",
+                "Efface l'histoire",
+                "Supprime le cadre",
+                "Change la langue"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Titre au-dessus d'une image :",
+              "explanation": "Annonce le thème ou le moment.",
+              "options": [
+                "Annonce le thème",
+                "Efface le dessin",
+                "Remplace les couleurs",
+                "Ajoute du son"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels indices montrent la joie ?",
+              "explanation": "Sourire et gestes ouverts traduisent souvent la joie.",
+              "options": [
+                "Sourire",
+                "Bras levés ou saut",
+                "Numéro de chapitre",
+                "Reliure"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Point de vue en hauteur :",
+              "explanation": "On voit la scène comme depuis les airs.",
+              "options": [
+                "Vue plongeante",
+                "Vue au ras du sol",
+                "Texte seul",
+                "Cadre absent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Point de vue bas :",
+              "explanation": "Personnages paraissent imposants.",
+              "options": ["Contre-plongée", "Plongée", "Musique", "Index"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ligne diagonale dynamique :",
+              "explanation": "Donne du mouvement à la composition.",
+              "options": ["Mouvement", "Immobilité", "Silence", "Texte"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Personnages de tailles différentes :",
+              "explanation": "Peut montrer adulte et enfant ou proximité.",
+              "options": [
+                "Relations ou proximité",
+                "Erreur",
+                "Effacement",
+                "Neige"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Main devant la bouche :",
+              "explanation": "Peut indiquer surprise ou secret.",
+              "options": ["Surprise ou secret", "Sommeil", "Course", "Pluie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Couleur rouge dominante :",
+              "explanation": "Peut signaler danger, passion ou chaleur.",
+              "options": ["Danger ou intensité", "Froid", "Silence", "Index"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Image sans visage visible :",
+              "explanation": "On se concentre sur action ou objet.",
+              "options": [
+                "Focus sur action",
+                "Impossible à lire",
+                "Texte obligatoire",
+                "Son"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Éclair entre personnages :",
+              "explanation": "L'espace vide peut montrer tension ou distance.",
+              "options": [
+                "Distance ou tension",
+                "Amour certain",
+                "Neige",
+                "Musique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pictogramme universel :",
+              "explanation": "Symbole compris sans mots.",
+              "options": [
+                "Compris sans texte",
+                "Toujours privé",
+                "Illisible",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels signes évoquent la peur ?",
+              "explanation": "Yeux grands ouverts et recul du corps traduisent la peur.",
+              "options": [
+                "Yeux grands ouverts",
+                "Corps reculant",
+                "Numéro ISBN",
+                "Reliure"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Suite de trois images :",
+              "explanation": "Peut raconter début, milieu, fin.",
+              "options": [
+                "Progression d'histoire",
+                "Une seule seconde",
+                "Texte seul",
+                "Son"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Flèche du temps :",
+              "explanation": "Montre l'ordre des événements.",
+              "options": ["Ordre chronologique", "Couleur", "Parfum", "Goût"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Décors identiques, personnage change :",
+              "explanation": "Le temps passe dans le même lieu.",
+              "options": [
+                "Temps qui passe",
+                "Changement de planète",
+                "Texte",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Objet mis en évidence par halo :",
+              "explanation": "Attire l'attention sur son importance.",
+              "options": ["Importance", "Effacement", "Neige", "Route"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Personnage hors cadre, main visible :",
+              "explanation": "On devine sa présence par un détail.",
+              "options": [
+                "Présence suggérée",
+                "Absence totale",
+                "Texte",
+                "Musique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Couleurs délavées :",
+              "explanation": "Peuvent évoquer souvenir ou fatigue.",
+              "options": [
+                "Souvenir ou fatigue",
+                "Joie extrême",
+                "Bruit",
+                "Index"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Symbole éclair :",
+              "explanation": "Souvent lié à énergie ou urgence.",
+              "options": ["Énergie ou urgence", "Neige", "Calme", "Silence"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lire une affiche de transport :",
+              "explanation": "On repère destination et symboles.",
+              "options": [
+                "Repérer infos utiles",
+                "Ignorer les pictos",
+                "Effacer le sens",
+                "Changer le cadre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Image très chargée :",
+              "explanation": "Demande de parcourir la scène avec méthode.",
+              "options": [
+                "Observation organisée",
+                "Lecture impossible",
+                "Texte seul",
+                "Son"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments situent une fête ?",
+              "explanation": "Guirlandes et groupes joyeux indiquent une célébration.",
+              "options": [
+                "Guirlandes ou décor festif",
+                "Groupe souriant",
+                "Marge",
+                "ISBN"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Perspective avec route qui rétrécit :",
+              "explanation": "Donne l'illusion de profondeur.",
+              "options": ["Profondeur", "Surface plate", "Texte", "Bruit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Personnage regardant hors cadre :",
+              "explanation": "On veut savoir ce qu'il voit.",
+              "options": [
+                "Crée curiosité",
+                "Efface l'histoire",
+                "Interdit lecture",
+                "Neige"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Couleurs complémentaires fortes :",
+              "explanation": "Créent un contraste vivant.",
+              "options": [
+                "Contraste vivant",
+                "Image grise",
+                "Silence",
+                "Index"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Trace de pas dans la neige :",
+              "explanation": "Montre un passage récent.",
+              "options": ["Passage récent", "Fin du récit", "Musique", "Goût"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Image miroir ou reflet :",
+              "explanation": "Peut montrer double ou surprise.",
+              "options": [
+                "Double ou surprise",
+                "Texte seul",
+                "Cadre absent",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Symbole pause (deux barres) :",
+              "explanation": "Indique arrêt ou suspension.",
+              "options": ["Pause ou arrêt", "Course", "Pluie", "Route"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Légende minimaliste :",
+              "explanation": "Quelques mots orientent sans tout dire.",
+              "options": [
+                "Oriente sans tout dire",
+                "Remplace l'image",
+                "Efface les couleurs",
+                "Ajoute du son"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Personnage plus petit que porte :",
+              "explanation": "Rappelle échelle et lieu.",
+              "options": ["Échelle réaliste", "Erreur", "Texte", "Neige"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Observer plusieurs fois la même image :",
+              "explanation": "On découvre des détails au second regard.",
+              "options": [
+                "Détails nouveaux",
+                "Impossible",
+                "Texte seul",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour décrire une image, on peut citer :",
+              "explanation": "Sujet et action sont des bases de description.",
+              "options": [
+                "Le sujet principal",
+                "Une action visible",
+                "Le prix de l'encre",
+                "La marque du stylo"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Image calme avec horizon loin :",
+              "explanation": "Espace vide peut transmettre sérénité.",
+              "options": ["Sérénité", "Panique", "Bruit", "Texte"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Symbole ampoule allumée :",
+              "explanation": "Évoque une idée ou une solution.",
+              "options": ["Idée", "Neige", "Route", "Pluie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Personnages liés par la main :",
+              "explanation": "Montre lien ou accompagnement.",
+              "options": [
+                "Lien ou aide",
+                "Conflit certain",
+                "Texte",
+                "Musique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Couleur jaune dominante :",
+              "explanation": "Peut suggérer lumière ou optimisme.",
+              "options": ["Lumière ou optimisme", "Nuit", "Silence", "Index"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Image avec grande zone vide :",
+              "explanation": "Le vide guide le regard vers le sujet.",
+              "options": [
+                "Guide le regard",
+                "Efface le récit",
+                "Interdit lecture",
+                "Son"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Objet flèche verte :",
+              "explanation": "Souvent associé à « avancer » ou « oui ».",
+              "options": ["Continuer ou valider", "Stop", "Neige", "Bruit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Changement de saison entre images :",
+              "explanation": "Feuilles, neige ou soleil marquent le temps.",
+              "options": [
+                "Temps long qui passe",
+                "Une seconde",
+                "Texte",
+                "Parfum"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lire une image, étape finale :",
+              "explanation": "On formule une interprétation raisonnée.",
+              "options": [
+                "Interpréter avec indices",
+                "Ignorer les détails",
+                "Effacer le sujet",
+                "Changer le cadre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Image et récit visuel :",
+              "explanation": "L'image peut raconter sans être une BD complexe.",
+              "options": [
+                "Raconte par indices visuels",
+                "Exige toujours un roman",
+                "Interdit émotion",
+                "Ignore l'ordre"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Raconter en images",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour raconter en images, on peut utiliser :",
+              "explanation": "Suite d'images et point de vue construisent l'histoire.",
+              "options": [
+                "Plusieurs images ordonnées",
+                "Un point de vue choisi",
+                "Uniquement du texte",
+                "Aucun personnage"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Première vignette d'une suite :",
+              "explanation": "Elle lance la situation.",
+              "options": [
+                "Situation de départ",
+                "Toujours la fin",
+                "Texte seul",
+                "Son"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dernière vignette :",
+              "explanation": "Elle conclut ou ouvre une question.",
+              "options": [
+                "Conclusion ou cliffhanger",
+                "Toujours le milieu",
+                "Index",
+                "Marge"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Storyboard sert à :",
+              "explanation": "Planifier les plans avant réalisation.",
+              "options": [
+                "Planifier le récit visuel",
+                "Effacer les couleurs",
+                "Supprimer l'histoire",
+                "Changer la langue"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Changer de cadrage entre images :",
+              "explanation": "Marque un temps fort ou un détail.",
+              "options": [
+                "Marque un temps fort",
+                "Interdit le récit",
+                "Efface les visages",
+                "Supprime l'ordre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Silence visuel (image sans bulle) :",
+              "explanation": "Peut accentuer émotion ou suspense.",
+              "options": [
+                "Accentue émotion",
+                "Efface l'histoire",
+                "Interdit lecture",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Répéter un motif visuel :",
+              "explanation": "Crée un rythme ou un leitmotiv.",
+              "options": [
+                "Crée un rythme",
+                "Supprime le sens",
+                "Texte seul",
+                "Neige"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Point de vue du personnage :",
+              "explanation": "Le spectateur voit comme lui.",
+              "options": [
+                "Vision subjective",
+                "Vue satellite",
+                "Texte",
+                "Parfum"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ellipse entre deux images :",
+              "explanation": "On devine ce qui s'est passé entre.",
+              "options": [
+                "Temps sauté imaginé",
+                "Rien ne change",
+                "Texte obligatoire",
+                "Son"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif raconter sans mots :",
+              "explanation": "Gestes et enchaînement doivent être clairs.",
+              "options": ["Clarté des actions", "Texte long", "Bruit", "Index"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour montrer le temps qui passe :",
+              "explanation": "Changer lumière ou position des personnages marque le temps.",
+              "options": [
+                "Changer la lumière",
+                "Déplacer les personnages",
+                "Effacer le cadre",
+                "Supprimer les yeux"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Plan serré sur mains :",
+              "explanation": "Met l'accent sur geste important.",
+              "options": [
+                "Geste important",
+                "Paysage entier",
+                "Texte",
+                "Musique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Plan général :",
+              "explanation": "Montre où se déroule l'action.",
+              "options": ["Situe le lieu", "Uniquement un œil", "Son", "Goût"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Flèche « puis » entre cases :",
+              "explanation": "Indique l'ordre chronologique.",
+              "options": [
+                "Ordre chronologique",
+                "Couleur",
+                "Parfum",
+                "Reliure"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Contraste avant/après :",
+              "explanation": "Deux images opposées montrent le changement.",
+              "options": [
+                "Montre transformation",
+                "Efface le récit",
+                "Texte seul",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Personnage qui entre par la gauche :",
+              "explanation": "En lecture FR, arrive souvent dans la scène.",
+              "options": [
+                "Entrée dans la scène",
+                "Sortie certaine",
+                "Neige",
+                "Index"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sortie vers la droite :",
+              "explanation": "Peut signifier départ ou fin d'étape.",
+              "options": [
+                "Départ ou fin d'étape",
+                "Début obligatoire",
+                "Texte",
+                "Musique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ligne de mouvement derrière personnage :",
+              "explanation": "Renforce vitesse ou direction.",
+              "options": [
+                "Renforce vitesse",
+                "Efface l'action",
+                "Silence",
+                "Parfum"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Changer taille du personnage :",
+              "explanation": "Peut montrer rapprochement ou éloignement.",
+              "options": ["Distance dans l'espace", "Erreur", "Texte", "Bruit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Récit visuel clair :",
+              "explanation": "Chaque image apporte une info nouvelle.",
+              "options": [
+                "Info nouvelle par image",
+                "Répétition inutile",
+                "Texte long",
+                "Son"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour créer du suspense :",
+              "explanation": "Cadrage serré et détail mystérieux retiennent l'attention.",
+              "options": [
+                "Cadrage serré",
+                "Détail mystérieux",
+                "Page blanche seule",
+                "Index"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Image avant révélation :",
+              "explanation": "On cache partiellement l'information.",
+              "options": [
+                "Information cachée",
+                "Tout est montré",
+                "Texte seul",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Image de révélation :",
+              "explanation": "Montre ce qui manquait.",
+              "options": [
+                "Montre la réponse",
+                "Efface l'histoire",
+                "Neige",
+                "Route"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rythme rapide :",
+              "explanation": "Vignettes courtes et actions enchaînées.",
+              "options": [
+                "Enchaînement serré",
+                "Une image par heure",
+                "Texte seul",
+                "Silence"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Rythme lent :",
+              "explanation": "Plans calmes et pauses visuelles.",
+              "options": ["Plans calmes", "Actions sans fin", "Bruit", "Index"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Point de vue extérieur :",
+              "explanation": "On observe la scène comme spectateur.",
+              "options": [
+                "Vue objective",
+                "Dans la tête du chat",
+                "Texte",
+                "Goût"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Saut dans le temps (ellipse) :",
+              "explanation": "Deux images distantes dans l'histoire.",
+              "options": [
+                "Intervalle non montré",
+                "Même seconde",
+                "Musique",
+                "Marge"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Montage parallèle :",
+              "explanation": "Deux actions en même temps en alternance.",
+              "options": [
+                "Actions simultanées",
+                "Une seule image",
+                "Texte",
+                "Neige"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Climax visuel :",
+              "explanation": "Moment le plus intense du récit.",
+              "options": [
+                "Moment le plus fort",
+                "Début calme",
+                "Index",
+                "Reliure"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Chute ou fin :",
+              "explanation": "Dernière image résout ou surprend.",
+              "options": [
+                "Résolution ou surprise",
+                "Toujours identique",
+                "Texte seul",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour montrer un voyage :",
+              "explanation": "Paysages qui changent et déplacement du personnage.",
+              "options": [
+                "Paysages différents",
+                "Personnage en marche",
+                "Marge",
+                "ISBN"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Carte dessinée dans la suite :",
+              "explanation": "Aide à situer le parcours.",
+              "options": [
+                "Situe le parcours",
+                "Efface l'histoire",
+                "Texte seul",
+                "Son"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Icônes de lieu (maison, école) :",
+              "explanation": "Repères rapides sans long texte.",
+              "options": ["Repères rapides", "Illisibles", "Bruit", "Goût"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fil conducteur visuel :",
+              "explanation": "Objet ou couleur revient d'une image à l'autre.",
+              "options": ["Élément qui revient", "Erreur", "Neige", "Index"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Expression qui change peu à peu :",
+              "explanation": "Montre évolution émotionnelle.",
+              "options": [
+                "Évolution émotionnelle",
+                "Statue",
+                "Texte",
+                "Musique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Gros plan puis plan large :",
+              "explanation": "Alternance detail / contexte.",
+              "options": [
+                "Detail puis contexte",
+                "Toujours identique",
+                "Silence",
+                "Parfum"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Objet perdu puis retrouvé :",
+              "explanation": "Intrigue simple en deux temps.",
+              "options": [
+                "Intrigue en deux temps",
+                "Sans sens",
+                "Texte",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Utiliser couleur récurrente :",
+              "explanation": "Lie les scènes entre elles.",
+              "options": [
+                "Lie les scènes",
+                "Efface le récit",
+                "Interdit lecture",
+                "Neige"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Case vide entre deux actions :",
+              "explanation": "Pause ou temps qui passe.",
+              "options": ["Pause ou ellipse", "Erreur", "Texte long", "Son"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Storyboard en croquis :",
+              "explanation": "Teste l'ordre avant version finale.",
+              "options": [
+                "Teste l'ordre",
+                "Version finale obligatoire",
+                "Bruit",
+                "Index"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour montrer une émotion forte :",
+              "explanation": "Gros plan visage et couleurs intensifiées.",
+              "options": [
+                "Gros plan visage",
+                "Couleurs intensifiées",
+                "Marge",
+                "Reliure"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ligne ondulée derrière objet :",
+              "explanation": "Peut indiquer tremblement ou peur.",
+              "options": ["Tremblement", "Neige", "Route", "Musique"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Étoiles autour de la tête :",
+              "explanation": "Symbole cartoon de choc ou étourdissement.",
+              "options": [
+                "Choc ou étourdissement",
+                "Pluie",
+                "Silence",
+                "Texte"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Nuage gris au-dessus personnage :",
+              "explanation": "Traduit tristesse ou mauvaise humeur.",
+              "options": ["Tristesse", "Joie", "Bruit", "Goût"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Cœur qui grossit :",
+              "explanation": "Monte l'affection ou l'amour.",
+              "options": ["Affection", "Colère", "Neige", "Index"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Vitesse = lignes horizontales :",
+              "explanation": "Code visuel de déplacement rapide.",
+              "options": [
+                "Déplacement rapide",
+                "Immobilité",
+                "Texte",
+                "Parfum"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Personnage rétrécit visuellement :",
+              "explanation": "Peut montrer honte ou peur.",
+              "options": ["Honte ou peur", "Victoire", "Musique", "Marge"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Couleur qui envahit toute la case :",
+              "explanation": "Traduit émotion dominante.",
+              "options": [
+                "Émotion dominante",
+                "Effacement",
+                "Texte seul",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contraste joie/tristesse en deux images :",
+              "explanation": "Récit par opposition.",
+              "options": ["Opposition claire", "Sans sens", "Neige", "Route"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Code visuel universel :",
+              "explanation": "Symboles compris par beaucoup de lecteurs.",
+              "options": [
+                "Compris largement",
+                "Privé à une personne",
+                "Illisible",
+                "Son"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour un récit cohérent :",
+              "explanation": "Même personnage reconnaissable et ordre logique.",
+              "options": [
+                "Personnage reconnaissable",
+                "Ordre logique",
+                "Texte aléatoire",
+                "Cases mélangées"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Erreur de continuité :",
+              "explanation": "Objet qui disparaît sans raison casse le récit.",
+              "options": [
+                "Objet qui disparaît sans raison",
+                "Coherence",
+                "Texte",
+                "Musique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Costume constant :",
+              "explanation": "Aide à suivre le même personnage.",
+              "options": [
+                "Identifie le personnage",
+                "Change à chaque case sans raison",
+                "Efface l'histoire",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Décors cohérents :",
+              "explanation": "Le lieu reste reconnaissable.",
+              "options": [
+                "Lieu reconnaissable",
+                "Planète différente chaque case",
+                "Texte seul",
+                "Neige"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Direction du regard cohérente :",
+              "explanation": "Les yeux indiquent où va l'action.",
+              "options": ["Guide l'action", "Sans effet", "Index", "Reliure"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Numéro discret des étapes :",
+              "explanation": "Peut aider à lire l'ordre.",
+              "options": [
+                "Aide à l'ordre",
+                "Efface le récit",
+                "Interdit image",
+                "Son"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Flèche retour en arrière :",
+              "explanation": "Flash-back ou souvenir.",
+              "options": ["Retour dans le passé", "Fin", "Musique", "Goût"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Même cadrage, action change :",
+              "explanation": "Insiste sur transformation dans le lieu.",
+              "options": [
+                "Transformation au même endroit",
+                "Changement de planète",
+                "Texte",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Plan séquence imaginaire :",
+              "explanation": "Enchaînement fluide sans coupure visible.",
+              "options": ["Fluidité", "Chaos", "Neige", "Index"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Relecture du storyboard :",
+              "explanation": "Vérifie si l'histoire se comprend.",
+              "options": [
+                "Test de compréhension",
+                "Inutile",
+                "Texte seul",
+                "Parfum"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour une histoire humoristique :",
+              "explanation": "Exagération des traits et situation comique.",
+              "options": [
+                "Traits exagérés",
+                "Situation comique",
+                "Texte triste seul",
+                "Cases vides"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Chute visuelle :",
+              "explanation": "Dernière image surprend ou fait rire.",
+              "options": [
+                "Surprise ou rire",
+                "Toujours tragique",
+                "Texte",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Gag en une image :",
+              "explanation": "Contraste immédiat dans la case.",
+              "options": [
+                "Contraste immédiat",
+                "Roman entier",
+                "Musique",
+                "Marge"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Répétition comique :",
+              "explanation": "Même gag qui revient avec variation.",
+              "options": [
+                "Variation d'un gag",
+                "Efface le sens",
+                "Neige",
+                "Index"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Personnage immobile, décor fou :",
+              "explanation": "Contraste pour l'humour.",
+              "options": [
+                "Contraste humoristique",
+                "Sans effet",
+                "Texte",
+                "Goût"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Point de vue absurdement bas :",
+              "explanation": "Montre scène de façon drôle.",
+              "options": [
+                "Angle drôle",
+                "Toujours sérieux",
+                "Silence",
+                "Reliure"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Objet trop grand pour la situation :",
+              "explanation": "Exagération visuelle.",
+              "options": ["Exagération", "Réalisme strict", "Bruit", "Parfum"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Expression figée comique :",
+              "explanation": "Visage qui ne change pas pendant chaos.",
+              "options": [
+                "Visage figé vs chaos",
+                "Effacement",
+                "Texte seul",
+                "Neige"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Onomatopée dessinée (BANG) :",
+              "explanation": "Renforce l'action sans paragraphe.",
+              "options": [
+                "Renforce l'action",
+                "Remplace toute image",
+                "Interdit lecture",
+                "Musique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Humour visuel sans mots :",
+              "explanation": "Doit se lire en quelques secondes.",
+              "options": [
+                "Lecture rapide",
+                "Impossible",
+                "Texte long",
+                "Index"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour raconter une quête :",
+              "explanation": "Objectif visible et obstacles successifs.",
+              "options": [
+                "Objectif clair",
+                "Obstacles successifs",
+                "Page vide",
+                "ISBN"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Carte au trésor :",
+              "explanation": "Montre destination et chemin.",
+              "options": [
+                "Destination et chemin",
+                "Efface l'histoire",
+                "Texte seul",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Obstacle en image :",
+              "explanation": "Mur, rivière ou porte fermée.",
+              "options": [
+                "Barrière à franchir",
+                "Fin du récit",
+                "Musique",
+                "Goût"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Allié qui apparaît :",
+              "explanation": "Nouveau personnage aide le héros.",
+              "options": ["Aide au héros", "Efface le but", "Neige", "Index"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Récompense finale montrée :",
+              "explanation": "Objet ou scène de victoire.",
+              "options": ["Victoire visible", "Début", "Texte", "Parfum"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Péripétie =",
+              "explanation": "Événement qui complique le parcours.",
+              "options": ["Complication", "Fin", "Silence", "Reliure"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Retour au point de départ :",
+              "explanation": "Boucle narrative possible.",
+              "options": ["Boucle", "Impossible", "Bruit", "Marge"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Transformation du héros :",
+              "explanation": "Visible en attitude ou apparence.",
+              "options": ["Évolution visible", "Statue", "Texte", "Neige"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Plan final large :",
+              "explanation": "Montre le monde après l'aventure.",
+              "options": [
+                "Monde après l'aventure",
+                "Uniquement un œil",
+                "Musique",
+                "Goût"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quête en images :",
+              "explanation": "Enchaînement cause-effet clair.",
+              "options": [
+                "Cause-effet clair",
+                "Aléatoire",
+                "Texte seul",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour adapter un petit texte en images :",
+              "explanation": "Choisir moments clés et les ordonner.",
+              "options": [
+                "Moments clés",
+                "Ordre chronologique",
+                "Tout effacer",
+                "Mélanger"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une phrase = souvent",
+              "explanation": "Une ou deux vignettes suffisent.",
+              "options": [
+                "Une ou deux vignettes",
+                "Cent pages",
+                "Texte seul",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dialogue réduit :",
+              "explanation": "Bulles courtes ou gestes.",
+              "options": [
+                "Bulles courtes",
+                "Roman dans bulle",
+                "Neige",
+                "Index"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Narrateur hors image :",
+              "explanation": "Légende sous la vignette.",
+              "options": ["Légende", "Efface le dessin", "Musique", "Goût"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Choisir l'instant décisif :",
+              "explanation": "Image où l'action bascule.",
+              "options": [
+                "Instant décisif",
+                "Instant banal",
+                "Texte",
+                "Parfum"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Simplifier les personnages :",
+              "explanation": "Silhouettes lisibles suffisent.",
+              "options": [
+                "Silhouettes lisibles",
+                "Détails inutiles",
+                "Bruit",
+                "Reliure"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Fond minimal :",
+              "explanation": "Ne pas noyer l'action.",
+              "options": [
+                "Action visible",
+                "Décor illisible",
+                "Texte seul",
+                "Neige"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Couleur limitée :",
+              "explanation": "Peut unifier la suite.",
+              "options": ["Unité visuelle", "Chaos", "Musique", "Marge"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Relecture par un camarade :",
+              "explanation": "Test si l'histoire se comprend seule.",
+              "options": ["Test de clarté", "Inutile", "Texte", "Bruit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Adapter ≠ copier mot à mot :",
+              "explanation": "Traduire en actions visibles.",
+              "options": [
+                "Traduire en actions",
+                "Recopier le texte",
+                "Effacer images",
+                "Son"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bilan raconter en images :",
+              "explanation": "Ordre et point de vue structurent le récit.",
+              "options": [
+                "Ordre des vignettes",
+                "Point de vue choisi",
+                "Ignorer les gestes",
+                "Mélanger sans fin"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Projet classe : suite de 4 images :",
+              "explanation": "Début, développement, twist, fin possible.",
+              "options": [
+                "Structure en étapes",
+                "Une seule image",
+                "Texte seul",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Présenter son récit :",
+              "explanation": "Expliquer choix de cadrage et ordre.",
+              "options": [
+                "Expliquer choix visuels",
+                "Lire seulement l'index",
+                "Neige",
+                "Goût"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Respecter le public 5e :",
+              "explanation": "Histoire simple, lisible, sans violence graphique.",
+              "options": [
+                "Simple et lisible",
+                "Analyse musée",
+                "Texte latin",
+                "Bruit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Innovation dans storyboard :",
+              "explanation": "Tester un angle ou un rythme original.",
+              "options": [
+                "Angle ou rythme original",
+                "Copier sans réfléchir",
+                "Effacer ordre",
+                "Marge"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Collaborer à deux :",
+              "explanation": "Partager storyboard et rôles de dessin.",
+              "options": [
+                "Storyboard partagé",
+                "Travail sans échange",
+                "Texte seul",
+                "Parfum"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Auto-critique :",
+              "explanation": "Vérifier ordre et clarté des émotions.",
+              "options": [
+                "Ordre et émotions claires",
+                "Ignorer le récit",
+                "Neige",
+                "Index"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Export numérique :",
+              "explanation": "Série d'images dans l'ordre.",
+              "options": [
+                "Images ordonnées",
+                "Fichiers mélangés",
+                "Texte",
+                "Musique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Récit visuel et arts :",
+              "explanation": "Art de choisir quoi montrer et quand.",
+              "options": [
+                "Choisir quoi montrer",
+                "Uniquement copier",
+                "Interdit émotion",
+                "Ignore cadre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif du chapitre :",
+              "explanation": "Lire et construire un petit récit visuel.",
+              "options": [
+                "Lire et construire un récit",
+                "Analyser comme au lycée",
+                "Ignorer l'ordre",
+                "Texte seul"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

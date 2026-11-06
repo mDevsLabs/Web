@@ -1,0 +1,2313 @@
+{
+  "id": "3e-latin-01",
+  "year": "3e",
+  "subject": "latin",
+  "title": "Découvrir le latin",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Salve et vale",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formules disent bonjour en latin ?",
+              "type": "multiple_choice",
+              "options": ["Salve", "Vale", "Salvete", "Valete"],
+              "correctAnswers": [0, 2],
+              "explanation": "Salve et salvete saluent ; vale et valete disent au revoir."
+            },
+            {
+              "id": "q2",
+              "question": "Au revoir à une personne :",
+              "type": "single_choice",
+              "options": ["Salve", "Vale", "Salvete", "Nomen mihi est"],
+              "correctAnswers": [1],
+              "explanation": "Vale = au revoir (singulier)."
+            },
+            {
+              "id": "q3",
+              "question": "Salvete s'emploie quand…",
+              "type": "single_choice",
+              "options": [
+                "Tu es seul",
+                "On s'adresse à plusieurs",
+                "On lit un texte",
+                "On donne son nom"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Salvete est le pluriel de salve."
+            },
+            {
+              "id": "q4",
+              "question": "Traduction de « vale, frater » ?",
+              "type": "single_choice",
+              "options": [
+                "Bonjour frère",
+                "Au revoir frère",
+                "Je suis frère",
+                "Mon frère est"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Frater = frère ; vale congédie."
+            },
+            {
+              "id": "q5",
+              "question": "En entrant, un élève dit plutôt…",
+              "type": "single_choice",
+              "options": ["Valete", "Salve", "Vale magister", "Accusativus"],
+              "correctAnswers": [1],
+              "explanation": "Salve marque l'arrivée."
+            },
+            {
+              "id": "q6",
+              "question": "Valete omnes signifie…",
+              "type": "single_choice",
+              "options": [
+                "Bonjour à tous",
+                "Au revoir à tous",
+                "Je m'appelle tous",
+                "Tous lisent"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Valete = au revoir pluriel ; omnes = tous."
+            },
+            {
+              "id": "q7",
+              "question": "Salve ne change pas si tu parles à…",
+              "type": "single_choice",
+              "options": [
+                "Un garçon ou une fille (une personne)",
+                "Toujours plusieurs",
+                "Seulement au professeur",
+                "Personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salve vise une interlocuteur unique."
+            },
+            {
+              "id": "q8",
+              "question": "Quelle phrase est un au-revoir ?",
+              "type": "single_choice",
+              "options": [
+                "Salve amice",
+                "Vale soror",
+                "Salvete discipuli",
+                "Nomen mihi est"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Vale soror = au revoir sœur."
+            },
+            {
+              "id": "q9",
+              "question": "Deux amies partent. Elles entendent…",
+              "type": "single_choice",
+              "options": ["Salve", "Valete", "Sum", "Est nomen"],
+              "correctAnswers": [1],
+              "explanation": "Valete convient au pluriel."
+            },
+            {
+              "id": "q10",
+              "question": "Salve et vale viennent de verbes qui signifient…",
+              "type": "single_choice",
+              "options": [
+                "Lire et écrire",
+                "Être en bonne santé / porte-toi bien",
+                "Compter",
+                "Marcher"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sens originel : sois en bonne santé."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Nomen mihi est",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phrases pour donner son prénom :",
+              "type": "multiple_choice",
+              "options": [
+                "Nomen mihi est Octavia",
+                "Mihi nomen est Publius",
+                "Vale Publius",
+                "Video librum"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux ordres expriment « mon nom est… »."
+            },
+            {
+              "id": "q2",
+              "question": "Dans nomen mihi est Drusus, Drusus est…",
+              "type": "single_choice",
+              "options": [
+                "Accusatif",
+                "Nominatif (prénom)",
+                "Verbe",
+                "Au revoir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Prénom sujet de est."
+            },
+            {
+              "id": "q3",
+              "question": "Mihi = …",
+              "type": "single_choice",
+              "options": ["À moi", "De toi", "Chez eux", "Sans nom"],
+              "correctAnswers": [0],
+              "explanation": "Datif : à moi."
+            },
+            {
+              "id": "q4",
+              "question": "« Mon nom est Théo » (Theodorus) :",
+              "type": "single_choice",
+              "options": [
+                "Theodorus vale",
+                "Nomen mihi est Theodorus",
+                "Salve Theodorus est",
+                "Lego Theodorus"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Formule standard nomen mihi est."
+            },
+            {
+              "id": "q5",
+              "question": "Nomen signifie…",
+              "type": "single_choice",
+              "options": ["Nom", "Porte", "Chaise", "Ciel"],
+              "correctAnswers": [0],
+              "explanation": "Nomen = nom."
+            },
+            {
+              "id": "q6",
+              "question": "Est dans nomen mihi est…",
+              "type": "single_choice",
+              "options": ["Nous sommes", "Il/elle/c'est", "Tu es", "Ils sont"],
+              "correctAnswers": [1],
+              "explanation": "Est = 3e pers. sing."
+            },
+            {
+              "id": "q7",
+              "question": "Réponse à « Quel est ton nom ? » :",
+              "type": "single_choice",
+              "options": [
+                "Vale",
+                "Nomen mihi est Cornelia",
+                "Sum accusativus",
+                "Salvete nomen"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On annonce le prénom."
+            },
+            {
+              "id": "q8",
+              "question": "Autre présentation courte :",
+              "type": "single_choice",
+              "options": [
+                "Sum Aemilia",
+                "Vale Aemilia",
+                "Aemilia legunt",
+                "Est vale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sum + prénom = je suis…"
+            },
+            {
+              "id": "q9",
+              "question": "Mot absent de nomen mihi est :",
+              "type": "single_choice",
+              "options": ["Nomen", "Mihi", "Salve", "Est"],
+              "correctAnswers": [2],
+              "explanation": "Salve n'entre pas dans la formule."
+            },
+            {
+              "id": "q10",
+              "question": "Prénom féminin exemple :",
+              "type": "single_choice",
+              "options": ["Marcus", "Flavia", "Magister", "Discipulus"],
+              "correctAnswers": [1],
+              "explanation": "Flavia est un prénom féminin latin."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Sum, es, est",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Traductions de sum discipulus :",
+              "type": "multiple_choice",
+              "options": [
+                "Je suis un élève (garçon)",
+                "Je suis élève",
+                "Tu es élève",
+                "Elle est professeure"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sum = je suis ; discipulus = élève masculin."
+            },
+            {
+              "id": "q2",
+              "question": "Es magister = …",
+              "type": "single_choice",
+              "options": [
+                "Je suis professeur",
+                "Tu es professeur",
+                "Il est professeur",
+                "Au revoir professeur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Es = tu es."
+            },
+            {
+              "id": "q3",
+              "question": "Je suis (1re pers.) :",
+              "type": "single_choice",
+              "options": ["Sum", "Es", "Est", "Sunt"],
+              "correctAnswers": [0],
+              "explanation": "Sum = je suis."
+            },
+            {
+              "id": "q4",
+              "question": "Est amica :",
+              "type": "single_choice",
+              "options": [
+                "Je suis amie",
+                "Tu es amie",
+                "Elle est une amie",
+                "Ils sont amis"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Est = elle est ; amica = amie."
+            },
+            {
+              "id": "q5",
+              "question": "Discipula après sum est au…",
+              "type": "single_choice",
+              "options": ["Nominatif", "Accusatif", "Datif", "Ablatif"],
+              "correctAnswers": [0],
+              "explanation": "Complément de être au nominatif."
+            },
+            {
+              "id": "q6",
+              "question": "Sum puer signifie…",
+              "type": "single_choice",
+              "options": [
+                "Je suis un garçon",
+                "Tu es un garçon",
+                "Le garçon part",
+                "Au revoir garçon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puer = garçon."
+            },
+            {
+              "id": "q7",
+              "question": "Sunt amici = …",
+              "type": "single_choice",
+              "options": [
+                "Je suis ami",
+                "Ils sont amis",
+                "Tu es ami",
+                "Elle est amie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sunt = ils sont."
+            },
+            {
+              "id": "q8",
+              "question": "Es soror mea = …",
+              "type": "single_choice",
+              "options": [
+                "Je suis ta sœur",
+                "Tu es ma sœur",
+                "Elle est sœur",
+                "Au revoir sœur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Es = tu es ; soror mea = ma sœur."
+            },
+            {
+              "id": "q9",
+              "question": "Fille élève :",
+              "type": "single_choice",
+              "options": [
+                "Sum discipulus",
+                "Sum discipula",
+                "Es discipulus",
+                "Est discipulus"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Discipula = élève féminin."
+            },
+            {
+              "id": "q10",
+              "question": "Verbe être en latin :",
+              "type": "single_choice",
+              "options": ["Lego", "Sum (esse)", "Amo", "Audio"],
+              "correctAnswers": [1],
+              "explanation": "Sum, es, est… = être."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Dialogue de classe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Mini-dialogues cohérents (salut + nom) :",
+              "type": "multiple_choice",
+              "options": [
+                "Salve ! — Salve ! — Nomen mihi est Gaius.",
+                "Salve ! — Nomen mihi est Gaia. — Salve !",
+                "Vale — Vale — nomen",
+                "Est est sum"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On se salue puis on donne nomen mihi est…"
+            },
+            {
+              "id": "q2",
+              "question": "Après « Nomen mihi est Laura », tu réponds…",
+              "type": "single_choice",
+              "options": [
+                "Vale seul",
+                "Nomen mihi est Nikias",
+                "Accusativus",
+                "Lego"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On renvoie la formule avec son prénom."
+            },
+            {
+              "id": "q3",
+              "question": "Quis es ? demande…",
+              "type": "single_choice",
+              "options": ["Où ?", "Qui es-tu ?", "Quand ?", "Pourquoi lire ?"],
+              "correctAnswers": [1],
+              "explanation": "Quis = qui ; es = tu es."
+            },
+            {
+              "id": "q4",
+              "question": "Magister : Salvete ! Classe : …",
+              "type": "single_choice",
+              "options": ["Valete", "Salvete", "Nomen", "Sum legere"],
+              "correctAnswers": [1],
+              "explanation": "Réponse au pluriel."
+            },
+            {
+              "id": "q5",
+              "question": "Salve, amice s'adresse à…",
+              "type": "single_choice",
+              "options": [
+                "Une fille",
+                "Un ami (garçon)",
+                "Un livre",
+                "La lune"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Amice = appel à l'ami."
+            },
+            {
+              "id": "q6",
+              "question": "Fin de cours, le professeur dit…",
+              "type": "single_choice",
+              "options": [
+                "Salve omnes",
+                "Valete discipuli",
+                "Nomen mihi est",
+                "Sum schola"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Au revoir aux élèves."
+            },
+            {
+              "id": "q7",
+              "question": "Politesse : ne pas dire vale quand…",
+              "type": "single_choice",
+              "options": [
+                "On part",
+                "On arrive et salue",
+                "On quitte la cour",
+                "Le cours finit"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À l'arrivée on dit salve."
+            },
+            {
+              "id": "q8",
+              "question": "Sum + prénom sert à…",
+              "type": "single_choice",
+              "options": ["Lire", "Se nommer", "Compter", "Accuser"],
+              "correctAnswers": [1],
+              "explanation": "Sum Lucius = je suis Lucius."
+            },
+            {
+              "id": "q9",
+              "question": "Salve, magistra : magistra est…",
+              "type": "single_choice",
+              "options": [
+                "Professeur (femme)",
+                "Élève garçon",
+                "Livre",
+                "Cour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Magistra = professeure."
+            },
+            {
+              "id": "q10",
+              "question": "Deux élèves arrivent ensemble, on dit…",
+              "type": "single_choice",
+              "options": ["Salve", "Salvete", "Vale", "Est"],
+              "correctAnswers": [1],
+              "explanation": "Pluriel pour plusieurs personnes."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Amicus et amica",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Mots pour « ami / amie » :",
+              "type": "multiple_choice",
+              "options": [
+                "Amicus (garçon)",
+                "Amica (fille)",
+                "Magister",
+                "Nomen"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Amicus masculin, amica féminin."
+            },
+            {
+              "id": "q2",
+              "question": "Amica est…",
+              "type": "single_choice",
+              "options": [
+                "Une amie",
+                "Un ami garçon",
+                "Un professeur",
+                "Un nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amica = amie."
+            },
+            {
+              "id": "q3",
+              "question": "Sum amicus tuus = …",
+              "type": "single_choice",
+              "options": [
+                "Tu es mon ami",
+                "Je suis ton ami",
+                "Elle est amie",
+                "Au revoir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tuus = ton ; sum = je suis."
+            },
+            {
+              "id": "q4",
+              "question": "Salve, amica ! s'adresse à…",
+              "type": "single_choice",
+              "options": [
+                "Un garçon",
+                "Une fille amie",
+                "Le livre",
+                "Tous les élèves"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Amica au vocatif."
+            },
+            {
+              "id": "q5",
+              "question": "Meus / mea signifient…",
+              "type": "single_choice",
+              "options": ["Mon / ma", "Ton / ta", "Son / sa", "Notre"],
+              "correctAnswers": [0],
+              "explanation": "Meus (m.), mea (f.) = mon, ma."
+            },
+            {
+              "id": "q6",
+              "question": "Es amica mea = …",
+              "type": "single_choice",
+              "options": [
+                "Je suis ton amie",
+                "Tu es mon amie",
+                "Il est ami",
+                "Elles sont amies"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Es = tu es."
+            },
+            {
+              "id": "q7",
+              "question": "Amici (pluriel) = …",
+              "type": "single_choice",
+              "options": [
+                "Amis (masculin ou mixte)",
+                "Une amie",
+                "Professeurs",
+                "Noms"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amici = plusieurs amis."
+            },
+            {
+              "id": "q8",
+              "question": "Vale, amice ! = …",
+              "type": "single_choice",
+              "options": [
+                "Bonjour ami",
+                "Au revoir ami (garçon)",
+                "Je suis ami",
+                "Nom de l'ami"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Vale + vocatif amice."
+            },
+            {
+              "id": "q9",
+              "question": "Mea amica est…",
+              "type": "single_choice",
+              "options": [
+                "Mon ami garçon",
+                "Mon amie",
+                "Ton frère",
+                "Le professeur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Mea + amica = mon amie."
+            },
+            {
+              "id": "q10",
+              "question": "Présenter un ami : « Hic est amicus meus » = …",
+              "type": "single_choice",
+              "options": [
+                "Voici mon ami",
+                "Au revoir mon ami",
+                "Je suis ami",
+                "L'ami lit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hic est = voici ; amicus meus = mon ami."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Magister et discipuli",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Mots de la classe :",
+              "type": "multiple_choice",
+              "options": [
+                "Magister (professeur homme)",
+                "Discipuli (élèves)",
+                "Valete seul comme nom",
+                "Accusativus comme prénom"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Magister = prof ; discipuli = élèves."
+            },
+            {
+              "id": "q2",
+              "question": "Magistra = …",
+              "type": "single_choice",
+              "options": ["Professeure", "Élève garçon", "Cour", "Livre"],
+              "correctAnswers": [0],
+              "explanation": "Magistra = professeure."
+            },
+            {
+              "id": "q3",
+              "question": "Discipulus = …",
+              "type": "single_choice",
+              "options": [
+                "Élève (garçon)",
+                "Élève (fille)",
+                "Professeur",
+                "Salle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Discipulus masculin."
+            },
+            {
+              "id": "q4",
+              "question": "Salve, magister ! = …",
+              "type": "single_choice",
+              "options": [
+                "Au revoir professeur",
+                "Bonjour professeur",
+                "Je suis professeur",
+                "Le professeur lit"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Salve = bonjour."
+            },
+            {
+              "id": "q5",
+              "question": "Discipulae (pluriel) = …",
+              "type": "single_choice",
+              "options": [
+                "Élèves filles",
+                "Un seul garçon",
+                "Professeurs",
+                "Amis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Discipulae = élèves féminin pluriel."
+            },
+            {
+              "id": "q6",
+              "question": "Magister sum = …",
+              "type": "single_choice",
+              "options": [
+                "Je suis professeur",
+                "Tu es professeur",
+                "Il est élève",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sum = je suis."
+            },
+            {
+              "id": "q7",
+              "question": "Vale, discipuli ! le professeur…",
+              "type": "single_choice",
+              "options": [
+                "Salue en entrant",
+                "Congédie les élèves",
+                "Donne son nom",
+                "Lit le nominatif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Valete/vale aux élèves qui partent."
+            },
+            {
+              "id": "q8",
+              "question": "Schola = …",
+              "type": "single_choice",
+              "options": ["École", "Maison seulement", "Ami", "Verbe"],
+              "correctAnswers": [0],
+              "explanation": "Schola = école."
+            },
+            {
+              "id": "q9",
+              "question": "Sum in schola = …",
+              "type": "single_choice",
+              "options": [
+                "Je suis à l'école",
+                "Tu es professeur",
+                "Au revoir école",
+                "L'école lit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In schola = à l'école."
+            },
+            {
+              "id": "q10",
+              "question": "Discipuli sunt in classe : classe ≈ …",
+              "type": "single_choice",
+              "options": [
+                "La salle de classe",
+                "Un prénom",
+                "Un au revoir",
+                "Un verbe lire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classe = salle / groupe en cours."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Nominatif simple",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Formes au nominatif (sujet) :",
+              "type": "multiple_choice",
+              "options": [
+                "Puella (la fille)",
+                "Puer (le garçon)",
+                "Puellam (accusatif)",
+                "Pueros (accusatif plur.)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Puella et puer sont sujets ; -am/-os marquent l'accusatif."
+            },
+            {
+              "id": "q2",
+              "question": "Le nominatif sert surtout à…",
+              "type": "single_choice",
+              "options": [
+                "Compléter un verbe comme sujet",
+                "Dire « je vois » l'objet",
+                "Dire au revoir",
+                "Compter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cas du sujet."
+            },
+            {
+              "id": "q3",
+              "question": "Puer currit : puer est…",
+              "type": "single_choice",
+              "options": [
+                "Sujet (nominatif)",
+                "Objet direct",
+                "Datif",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le garçon court : puer = sujet."
+            },
+            {
+              "id": "q4",
+              "question": "Puella est discipula : puella…",
+              "type": "single_choice",
+              "options": [
+                "Est sujet",
+                "Est accusatif",
+                "Est verbe",
+                "Est vale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fille est élève : puella sujet."
+            },
+            {
+              "id": "q5",
+              "question": "Fin typique nominatif singulier féminin 1re décl. :",
+              "type": "single_choice",
+              "options": ["-a", "-us", "-um", "-i"],
+              "correctAnswers": [0],
+              "explanation": "Puella, amica : -a."
+            },
+            {
+              "id": "q6",
+              "question": "Fin typique nominatif masculin 2e décl. :",
+              "type": "single_choice",
+              "options": ["-us ou -er", "-a", "-ae", "-ibus"],
+              "correctAnswers": [0],
+              "explanation": "Puer, amicus : -us/-er."
+            },
+            {
+              "id": "q7",
+              "question": "Magister est au…",
+              "type": "single_choice",
+              "options": ["Nominatif", "Accusatif", "Ablatif seul", "Vale"],
+              "correctAnswers": [0],
+              "explanation": "Sujet de la phrase."
+            },
+            {
+              "id": "q8",
+              "question": "Nominatif pluriel amici = …",
+              "type": "single_choice",
+              "options": [
+                "Des amis (sujets)",
+                "Objets directs",
+                "Au revoir",
+                "Verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amici = amis en sujet."
+            },
+            {
+              "id": "q9",
+              "question": "Est + nominatif : Est rex = …",
+              "type": "single_choice",
+              "options": [
+                "Il est roi",
+                "Je vois le roi",
+                "Au revoir roi",
+                "Roi lit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rex nominatif après est."
+            },
+            {
+              "id": "q10",
+              "question": "Quel mot est probablement nominatif ?",
+              "type": "single_choice",
+              "options": ["Soror", "Sororem", "Sorori", "Sorore"],
+              "correctAnswers": [0],
+              "explanation": "Soror = sœur (sujet) ; -em = accusatif."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Accusatif simple",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Formes accusatif singulier :",
+              "type": "multiple_choice",
+              "options": [
+                "Puellam (la fille)",
+                "Puerum (le garçon)",
+                "Puella (nominatif)",
+                "Puer (nominatif)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "-am et -um marquent l'objet direct."
+            },
+            {
+              "id": "q2",
+              "question": "L'accusatif sert surtout à…",
+              "type": "single_choice",
+              "options": [
+                "Objet direct du verbe",
+                "Sujet seul",
+                "Salutation",
+                "Prénom après est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On « frappe » l'objet avec l'accusatif."
+            },
+            {
+              "id": "q3",
+              "question": "Video puellam = …",
+              "type": "single_choice",
+              "options": [
+                "Je vois la fille",
+                "La fille voit",
+                "Au revoir fille",
+                "Je suis fille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Video + accusatif : je vois."
+            },
+            {
+              "id": "q4",
+              "question": "Audio magistrum = …",
+              "type": "single_choice",
+              "options": [
+                "J'écoute le professeur",
+                "Le professeur écoute",
+                "Bonjour professeur",
+                "Je suis professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Magistrum = accusatif de magister."
+            },
+            {
+              "id": "q5",
+              "question": "Amicum video = …",
+              "type": "single_choice",
+              "options": [
+                "Je vois l'ami",
+                "L'ami voit",
+                "Mon ami est",
+                "Salve ami"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amicum = objet ; ordre libre."
+            },
+            {
+              "id": "q6",
+              "question": "Puella puerum videt : qui voit ?",
+              "type": "single_choice",
+              "options": ["La fille", "Le garçon", "Le professeur", "Personne"],
+              "correctAnswers": [0],
+              "explanation": "Puella sujet ; puerum objet."
+            },
+            {
+              "id": "q7",
+              "question": "Discipulus librum legit : librum est…",
+              "type": "single_choice",
+              "options": [
+                "Accusatif (le livre)",
+                "Nominatif",
+                "Salve",
+                "Prénom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lego + librum = je lis le livre."
+            },
+            {
+              "id": "q8",
+              "question": "Fin accusatif féminin sing. 1re décl. :",
+              "type": "single_choice",
+              "options": ["-am", "-a", "-ae", "-as"],
+              "correctAnswers": [0],
+              "explanation": "Puellam, amicam."
+            },
+            {
+              "id": "q9",
+              "question": "Fin accusatif masculin sing. 2e décl. :",
+              "type": "single_choice",
+              "options": ["-um", "-us", "-o", "-i"],
+              "correctAnswers": [0],
+              "explanation": "Puerum, amicum."
+            },
+            {
+              "id": "q10",
+              "question": "Saluto amicam = …",
+              "type": "single_choice",
+              "options": [
+                "Je salue l'amie",
+                "L'amie salue",
+                "Au revoir amie",
+                "Je suis amie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Saluto + amicam (accusatif)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Nominatif ou accusatif ?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles affirmations sur nominatif et accusatif sont vraies ?",
+              "type": "multiple_choice",
+              "options": [
+                "Video sororem : sororem est à l'accusatif",
+                "Soror est bona : soror est au nominatif",
+                "Après vale, le nom est toujours accusatif",
+                "Est prend toujours l'accusatif"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Video + accusatif ; est + nominatif pour soror."
+            },
+            {
+              "id": "q2",
+              "question": "Puer amicum salutat : amicum est…",
+              "type": "single_choice",
+              "options": ["Accusatif", "Nominatif", "Vale", "Verbe être"],
+              "correctAnswers": [0],
+              "explanation": "Salutat quelqu'un : amicum objet."
+            },
+            {
+              "id": "q3",
+              "question": "Magistra discipulos audit : discipulos…",
+              "type": "single_choice",
+              "options": [
+                "Accusatif pluriel",
+                "Nominatif",
+                "Salutation",
+                "Prénom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Audit les élèves : -os accusatif."
+            },
+            {
+              "id": "q4",
+              "question": "Frater est iuvenis : frater…",
+              "type": "single_choice",
+              "options": ["Nominatif sujet", "Accusatif", "Datif", "Vale"],
+              "correctAnswers": [0],
+              "explanation": "Le frère est jeune : sujet."
+            },
+            {
+              "id": "q5",
+              "question": "Je vois le garçon :",
+              "type": "single_choice",
+              "options": [
+                "Video puerum",
+                "Video puer",
+                "Puerum sum",
+                "Vale puerum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puerum = accusatif."
+            },
+            {
+              "id": "q6",
+              "question": "Nomen puellae est Claudia : Claudia…",
+              "type": "single_choice",
+              "options": [
+                "Nominatif (prénom)",
+                "Accusatif objet",
+                "Vale",
+                "Verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prénom après est = nominatif."
+            },
+            {
+              "id": "q7",
+              "question": "Legimus tabulam : tabulam = …",
+              "type": "single_choice",
+              "options": [
+                "La tablette (objet)",
+                "Sujet",
+                "Bonjour",
+                "Professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Legimus = nous lisons + objet."
+            },
+            {
+              "id": "q8",
+              "question": "Sans verbe transitif, le nom est souvent…",
+              "type": "single_choice",
+              "options": [
+                "Nominatif (sujet)",
+                "Toujours accusatif",
+                "Toujours vale",
+                "Jamais latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet avec est ou verbe intransitif."
+            },
+            {
+              "id": "q9",
+              "question": "Porto malum : malum = …",
+              "type": "single_choice",
+              "options": [
+                "Une pomme (objet)",
+                "Je suis pomme",
+                "Au revoir",
+                "Sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Porto = je porte + malum."
+            },
+            {
+              "id": "q10",
+              "question": "Indice accusatif masculin :",
+              "type": "single_choice",
+              "options": [
+                "Terminaison -um en singulier",
+                "Toujours -a",
+                "Salve",
+                "Est seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "-um pour l'objet masculin singulier."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision saluer et se présenter",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Formules utiles en 3e :",
+              "type": "multiple_choice",
+              "options": [
+                "Salve / salvete",
+                "Nomen mihi est…",
+                "Vale comme bonjour d'arrivée",
+                "Sum discipulus / discipula"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Salutations et présentation avec nomen mihi est."
+            },
+            {
+              "id": "q2",
+              "question": "Phrase complète de départ :",
+              "type": "single_choice",
+              "options": [
+                "Salve, nomen mihi est Varro, vale cras",
+                "Nomen mihi est Varro",
+                "Vale Varro nomen",
+                "Lego Varro"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Présentation avec nomen mihi est."
+            },
+            {
+              "id": "q3",
+              "question": "Video magistram : magistram…",
+              "type": "single_choice",
+              "options": [
+                "Accusatif",
+                "Nominatif sujet",
+                "Salve",
+                "Prénom est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Je vois la professeure."
+            },
+            {
+              "id": "q4",
+              "question": "Discipula est Romana : Romana…",
+              "type": "single_choice",
+              "options": [
+                "Nominatif (attribut)",
+                "Accusatif objet",
+                "Vale",
+                "Verbe lire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle est romaine : attribut nominatif."
+            },
+            {
+              "id": "q5",
+              "question": "Pluriel : nous saluons les amies → amicas…",
+              "type": "single_choice",
+              "options": [
+                "Accusatif pluriel",
+                "Nominatif seul",
+                "Valete",
+                "Est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutons amicas : -as accusatif f. pl."
+            },
+            {
+              "id": "q6",
+              "question": "Entrée en cours :",
+              "type": "single_choice",
+              "options": [
+                "Salvete magister",
+                "Salve magister",
+                "Vale magister",
+                "Nomen magister"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Singulier au professeur seul."
+            },
+            {
+              "id": "q7",
+              "question": "Sum Titus et vale amice :",
+              "type": "single_choice",
+              "options": [
+                "Présentation puis au revoir possible",
+                "Erreur totale",
+                "Deux salutations bonjour",
+                "Accusatif seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux phrases distinctes possibles."
+            },
+            {
+              "id": "q8",
+              "question": "Pueros audio = …",
+              "type": "single_choice",
+              "options": [
+                "J'écoute les garçons",
+                "Les garçons écoutent",
+                "Bonjour garçons",
+                "Je suis garçon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pueros = accusatif pluriel."
+            },
+            {
+              "id": "q9",
+              "question": "Mot latin pour « élève » (fille) :",
+              "type": "single_choice",
+              "options": ["Discipula", "Discipulus", "Magister", "Nomen"],
+              "correctAnswers": [0],
+              "explanation": "Discipula féminin."
+            },
+            {
+              "id": "q10",
+              "question": "Objectif du chapitre :",
+              "type": "single_choice",
+              "options": [
+                "Saluer, se nommer, repérer nominatif/accusatif simples",
+                "Conjuguer tout le passé",
+                "Traduire Virgile entier",
+                "Oublier vale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bases de politesse et deux cas."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Famille proche",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Nominatifs famille :",
+              "type": "multiple_choice",
+              "options": [
+                "Mater (mère)",
+                "Pater (père)",
+                "Matrem (acc.)",
+                "Patrem (acc.)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mater et pater sujets ; -em = accusatif."
+            },
+            {
+              "id": "q2",
+              "question": "Mater = …",
+              "type": "single_choice",
+              "options": ["Mère", "Père", "Frère", "Sœur"],
+              "correctAnswers": [0],
+              "explanation": "Mater = mère."
+            },
+            {
+              "id": "q3",
+              "question": "Video patrem = …",
+              "type": "single_choice",
+              "options": [
+                "Je vois le père",
+                "Le père voit",
+                "Bonjour père",
+                "Je suis père"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patrem accusatif."
+            },
+            {
+              "id": "q4",
+              "question": "Frater et soror = …",
+              "type": "single_choice",
+              "options": ["Frère et sœur", "Parents", "Professeurs", "Livres"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire familial."
+            },
+            {
+              "id": "q5",
+              "question": "Saluto matrem : matrem…",
+              "type": "single_choice",
+              "options": ["Accusatif", "Nominatif", "Vale", "Verbe est"],
+              "correctAnswers": [0],
+              "explanation": "Je salue la mère."
+            },
+            {
+              "id": "q6",
+              "question": "Pater est magister : pater…",
+              "type": "single_choice",
+              "options": ["Nominatif", "Accusatif", "Salve", "Lego"],
+              "correctAnswers": [0],
+              "explanation": "Le père est professeur."
+            },
+            {
+              "id": "q7",
+              "question": "Soror mea est discipula = …",
+              "type": "single_choice",
+              "options": [
+                "Ma sœur est élève",
+                "Je vois ma sœur",
+                "Au revoir sœur",
+                "Ton frère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soror mea = ma sœur."
+            },
+            {
+              "id": "q8",
+              "question": "Filius / filia = …",
+              "type": "single_choice",
+              "options": ["Fils / fille", "Parents", "Amis", "École"],
+              "correctAnswers": [0],
+              "explanation": "Filius fils, filia fille."
+            },
+            {
+              "id": "q9",
+              "question": "Audio fratrem et sororem : …",
+              "type": "single_choice",
+              "options": [
+                "J'écoute le frère et la sœur",
+                "Ils écoutent",
+                "Salve frère",
+                "Nomen frater"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux accusatifs."
+            },
+            {
+              "id": "q10",
+              "question": "Familia = …",
+              "type": "single_choice",
+              "options": ["Famille", "Classe seule", "Cour", "Verbe"],
+              "correctAnswers": [0],
+              "explanation": "Familia = famille."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Maison et école",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Lieux (nominatif) :",
+              "type": "multiple_choice",
+              "options": [
+                "Domus (maison)",
+                "Schola (école)",
+                "Domum (acc. maison)",
+                "Scholam (acc.)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Domus/schola sujets ; -um/-am pour l'accusatif."
+            },
+            {
+              "id": "q2",
+              "question": "In domo sum = …",
+              "type": "single_choice",
+              "options": [
+                "Je suis à la maison",
+                "Je vois la maison",
+                "Maison est verbe",
+                "Au revoir maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In + lieu : à la maison."
+            },
+            {
+              "id": "q3",
+              "question": "Video scholam = …",
+              "type": "single_choice",
+              "options": [
+                "Je vois l'école",
+                "L'école voit",
+                "Salve école",
+                "Sum schola"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scholam = accusatif."
+            },
+            {
+              "id": "q4",
+              "question": "Atrium = …",
+              "type": "single_choice",
+              "options": ["Cour / hall", "Livre", "Professeur", "Frère"],
+              "correctAnswers": [0],
+              "explanation": "Grande pièce d'entrée."
+            },
+            {
+              "id": "q5",
+              "question": "Cubiculum = …",
+              "type": "single_choice",
+              "options": ["Chambre", "Cour", "Classe", "Nom"],
+              "correctAnswers": [0],
+              "explanation": "Petite chambre."
+            },
+            {
+              "id": "q6",
+              "question": "Discipuli in schola sunt = …",
+              "type": "single_choice",
+              "options": [
+                "Les élèves sont à l'école",
+                "Je vois l'école",
+                "Au revoir",
+                "L'école lit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In schola = à l'école."
+            },
+            {
+              "id": "q7",
+              "question": "Porto librum domum : domum…",
+              "type": "single_choice",
+              "options": [
+                "Accusatif (vers la maison)",
+                "Nominatif",
+                "Salve",
+                "Est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mouvement vers : domum."
+            },
+            {
+              "id": "q8",
+              "question": "Tablinum ≈ …",
+              "type": "single_choice",
+              "options": [
+                "Bureau / pièce du maître",
+                "Cuisine seule",
+                "Stade",
+                "Verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pièce de travail à Rome."
+            },
+            {
+              "id": "q9",
+              "question": "Mensa = …",
+              "type": "single_choice",
+              "options": ["Table", "Porte", "Ciel", "Ami"],
+              "correctAnswers": [0],
+              "explanation": "Mensa = table."
+            },
+            {
+              "id": "q10",
+              "question": "Sella = …",
+              "type": "single_choice",
+              "options": ["Chaise", "Maison", "Élève", "Professeur"],
+              "correctAnswers": [0],
+              "explanation": "Sella = chaise."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Objets du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Accusatifs objets :",
+              "type": "multiple_choice",
+              "options": [
+                "Librum (livre)",
+                "Stilum (stylo)",
+                "Liber (nominatif livre)",
+                "Stilus (nominatif)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Librum/stilum objets ; liber/stilus sujets."
+            },
+            {
+              "id": "q2",
+              "question": "Liber = …",
+              "type": "single_choice",
+              "options": ["Livre (sujet)", "Stylo", "Table", "Mère"],
+              "correctAnswers": [0],
+              "explanation": "Liber, libri = livre."
+            },
+            {
+              "id": "q3",
+              "question": "Lego librum = …",
+              "type": "single_choice",
+              "options": [
+                "Je lis le livre",
+                "Le livre lit",
+                "Bonjour livre",
+                "Je suis livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lego + accusatif."
+            },
+            {
+              "id": "q4",
+              "question": "Stilus = …",
+              "type": "single_choice",
+              "options": ["Stylo / outil d'écrire", "Chaise", "Frère", "École"],
+              "correctAnswers": [0],
+              "explanation": "Stilus = stylo latin."
+            },
+            {
+              "id": "q5",
+              "question": "Porto stilum et tabulam = …",
+              "type": "single_choice",
+              "options": [
+                "Je porte le stylo et la tablette",
+                "Ils portent",
+                "Salve",
+                "Nomen stilus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux objets en -um/-am."
+            },
+            {
+              "id": "q6",
+              "question": "Malum = …",
+              "type": "single_choice",
+              "options": ["Pomme", "Maison", "Professeur", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Malum = pomme."
+            },
+            {
+              "id": "q7",
+              "question": "Panis = …",
+              "type": "single_choice",
+              "options": ["Pain", "Eau", "Livre", "Sœur"],
+              "correctAnswers": [0],
+              "explanation": "Panis = pain."
+            },
+            {
+              "id": "q8",
+              "question": "Aquam bibo : aquam…",
+              "type": "single_choice",
+              "options": ["Accusatif (l'eau)", "Nominatif", "Salve", "Sum"],
+              "correctAnswers": [0],
+              "explanation": "Bibo = je bois + objet."
+            },
+            {
+              "id": "q9",
+              "question": "Sacculus = …",
+              "type": "single_choice",
+              "options": [
+                "Petit sac",
+                "Grande maison",
+                "Verbe être",
+                "Nominatif seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sacculus = sac."
+            },
+            {
+              "id": "q10",
+              "question": "Litterae (pl.) = …",
+              "type": "single_choice",
+              "options": [
+                "Lettres / courrier",
+                "Un stylo",
+                "Une chaise",
+                "Vale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Litterae = lettres."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Nombres et age",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont des nombres en latin ?",
+              "type": "multiple_choice",
+              "options": ["Unus", "Duo", "Salve", "Nomen"],
+              "correctAnswers": [0, 1],
+              "explanation": "Unus et duo ; salve et nomen ne comptent pas."
+            },
+            {
+              "id": "q2",
+              "question": "Unus = …",
+              "type": "single_choice",
+              "options": ["Un", "Deux", "Trois", "Dix"],
+              "correctAnswers": [0],
+              "explanation": "Unus, una, unum."
+            },
+            {
+              "id": "q3",
+              "question": "Duo discipuli = …",
+              "type": "single_choice",
+              "options": ["Deux élèves", "Un élève", "Salve", "Je vois"],
+              "correctAnswers": [0],
+              "explanation": "Duo = deux (masc.)."
+            },
+            {
+              "id": "q4",
+              "question": "Tres amicae = …",
+              "type": "single_choice",
+              "options": [
+                "Trois amies",
+                "Trois amis masc.",
+                "Professeur",
+                "Livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tres + féminin amicae."
+            },
+            {
+              "id": "q5",
+              "question": "Quattuor = …",
+              "type": "single_choice",
+              "options": ["Quatre", "Cinq", "Six", "Un"],
+              "correctAnswers": [0],
+              "explanation": "Quattuor invariable."
+            },
+            {
+              "id": "q6",
+              "question": "Decem discipuli = …",
+              "type": "single_choice",
+              "options": [
+                "Dix élèves",
+                "Deux élèves",
+                "Au revoir",
+                "Accusatif seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Decem = dix."
+            },
+            {
+              "id": "q7",
+              "question": "Annos quindecim natus : idée …",
+              "type": "single_choice",
+              "options": [
+                "Avoir quinze ans",
+                "Avoir cinq livres",
+                "Saluer",
+                "Lire quinze fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Annos + nombre + âge."
+            },
+            {
+              "id": "q8",
+              "question": "Primus / prima = …",
+              "type": "single_choice",
+              "options": ["Premier / première", "Dernier", "Deux", "Vale"],
+              "correctAnswers": [0],
+              "explanation": "Ordre : premier."
+            },
+            {
+              "id": "q9",
+              "question": "Multus / multa = …",
+              "type": "single_choice",
+              "options": ["Beaucoup de", "Peu", "Un seul", "Nom"],
+              "correctAnswers": [0],
+              "explanation": "Multus multa = nombreux."
+            },
+            {
+              "id": "q10",
+              "question": "Nullus = …",
+              "type": "single_choice",
+              "options": ["Aucun", "Tous", "Deux", "Salve"],
+              "correctAnswers": [0],
+              "explanation": "Nullus = pas un."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Couleurs simples",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Couleurs (accord) :",
+              "type": "multiple_choice",
+              "options": [
+                "Albus (blanc masc.)",
+                "Alba (blanche f.)",
+                "Albus pour puella sans accord",
+                "Vale coloratus"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Albus/alba s'accordent ; vale n'est pas couleur."
+            },
+            {
+              "id": "q2",
+              "question": "Puella alba est = …",
+              "type": "single_choice",
+              "options": [
+                "La fille est blonde/claire",
+                "Je vois blanc",
+                "Au revoir",
+                "Le garçon blanc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alba avec puella."
+            },
+            {
+              "id": "q3",
+              "question": "Niger / nigra = …",
+              "type": "single_choice",
+              "options": ["Noir / noire", "Blanc", "Rouge", "Vert"],
+              "correctAnswers": [0],
+              "explanation": "Niger nigra."
+            },
+            {
+              "id": "q4",
+              "question": "Ruber / rubra = …",
+              "type": "single_choice",
+              "options": ["Rouge", "Bleu", "Gris", "Pain"],
+              "correctAnswers": [0],
+              "explanation": "Ruber rubra rouge."
+            },
+            {
+              "id": "q5",
+              "question": "Caeruleus = souvent …",
+              "type": "single_choice",
+              "options": ["Bleu", "Jaune", "Table", "Stylo"],
+              "correctAnswers": [0],
+              "explanation": "Caeruleus = bleu foncé."
+            },
+            {
+              "id": "q6",
+              "question": "Viridis = …",
+              "type": "single_choice",
+              "options": ["Vert", "Rouge", "Noir", "Maison"],
+              "correctAnswers": [0],
+              "explanation": "Viridis = vert."
+            },
+            {
+              "id": "q7",
+              "question": "Toga alba : toga est…",
+              "type": "single_choice",
+              "options": [
+                "Féminin nominatif",
+                "Accusatif seul",
+                "Verbe",
+                "Salve"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toga f. ; alba accordée."
+            },
+            {
+              "id": "q8",
+              "question": "Oculus niger : …",
+              "type": "single_choice",
+              "options": ["Œil noir", "Oreille", "Livre", "École"],
+              "correctAnswers": [0],
+              "explanation": "Oculus = œil."
+            },
+            {
+              "id": "q9",
+              "question": "Video malum rubrum = …",
+              "type": "single_choice",
+              "options": [
+                "Je vois une pomme rouge",
+                "Pomme voit",
+                "Salve pomme",
+                "Sum rubrum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Malum rubrum objet."
+            },
+            {
+              "id": "q10",
+              "question": "Color = …",
+              "type": "single_choice",
+              "options": ["Couleur", "Nombre", "Frère", "Cours"],
+              "correctAnswers": [0],
+              "explanation": "Color = couleur."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Animaux familiers",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Animaux nominatif :",
+              "type": "multiple_choice",
+              "options": [
+                "Canis (chien)",
+                "Feles (chat)",
+                "Canem (acc.)",
+                "Feles accusatif felem"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Canis/feles sujets ; canem objet."
+            },
+            {
+              "id": "q2",
+              "question": "Canis = …",
+              "type": "single_choice",
+              "options": ["Chien", "Chat", "Cheval", "Livre"],
+              "correctAnswers": [0],
+              "explanation": "Canis = chien."
+            },
+            {
+              "id": "q3",
+              "question": "Video felem = …",
+              "type": "single_choice",
+              "options": [
+                "Je vois le chat",
+                "Le chat voit",
+                "Bonjour chat",
+                "Chien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Felem = chat (acc.)."
+            },
+            {
+              "id": "q4",
+              "question": "Equus = …",
+              "type": "single_choice",
+              "options": ["Cheval", "Chien", "Oiseau", "Stylo"],
+              "correctAnswers": [0],
+              "explanation": "Equus = cheval."
+            },
+            {
+              "id": "q5",
+              "question": "Avis = …",
+              "type": "single_choice",
+              "options": ["Oiseau", "Poisson", "Table", "Mère"],
+              "correctAnswers": [0],
+              "explanation": "Avis = oiseau."
+            },
+            {
+              "id": "q6",
+              "question": "Canis magnus currit : canis…",
+              "type": "single_choice",
+              "options": ["Nominatif sujet", "Accusatif", "Vale", "Nomen"],
+              "correctAnswers": [0],
+              "explanation": "Le chien court."
+            },
+            {
+              "id": "q7",
+              "question": "Piscis = …",
+              "type": "single_choice",
+              "options": ["Poisson", "Chat", "Pain", "Professeur"],
+              "correctAnswers": [0],
+              "explanation": "Piscis = poisson."
+            },
+            {
+              "id": "q8",
+              "question": "Amo canem : canem…",
+              "type": "single_choice",
+              "options": ["Accusatif", "Nominatif", "Salve", "Est"],
+              "correctAnswers": [0],
+              "explanation": "Amo = j'aime + objet."
+            },
+            {
+              "id": "q9",
+              "question": "Parvulus canis = …",
+              "type": "single_choice",
+              "options": [
+                "Petit chien",
+                "Grand cheval",
+                "École",
+                "Livre rouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parvulus = petit."
+            },
+            {
+              "id": "q10",
+              "question": "Animal = …",
+              "type": "single_choice",
+              "options": ["Animal", "Végétal seul", "Verbe lire", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Animal = animal."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Verbes utiles",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Verbes + accusatif :",
+              "type": "multiple_choice",
+              "options": [
+                "Video (je vois)",
+                "Lego (je lis)",
+                "Sum (être sans objet)",
+                "Vale (formule)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Video et lego prennent un objet en -um/-am."
+            },
+            {
+              "id": "q2",
+              "question": "Amo = …",
+              "type": "single_choice",
+              "options": ["J'aime", "Je vois", "Je suis", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Amo = j'aime."
+            },
+            {
+              "id": "q3",
+              "question": "Audio = …",
+              "type": "single_choice",
+              "options": ["J'écoute", "Je porte", "Je bois", "Je suis"],
+              "correctAnswers": [0],
+              "explanation": "Audio = j'écoute."
+            },
+            {
+              "id": "q4",
+              "question": "Porto = …",
+              "type": "single_choice",
+              "options": ["Je porte", "Je lis", "Je suis", "Bonjour"],
+              "correctAnswers": [0],
+              "explanation": "Porto = je porte."
+            },
+            {
+              "id": "q5",
+              "question": "Saluto = …",
+              "type": "single_choice",
+              "options": ["Je salue", "Je quitte", "Je m'appelle", "Je compte"],
+              "correctAnswers": [0],
+              "explanation": "Saluto = je salue."
+            },
+            {
+              "id": "q6",
+              "question": "Habito = …",
+              "type": "single_choice",
+              "options": ["J'habite", "Je vois", "Je suis", "Vale"],
+              "correctAnswers": [0],
+              "explanation": "Habito = j'habite."
+            },
+            {
+              "id": "q7",
+              "question": "Curro = …",
+              "type": "single_choice",
+              "options": ["Je cours", "Je dors", "Je lis", "Nom"],
+              "correctAnswers": [0],
+              "explanation": "Curro = je cours."
+            },
+            {
+              "id": "q8",
+              "question": "Scribo litteras : litteras…",
+              "type": "single_choice",
+              "options": ["Accusatif pluriel", "Nominatif", "Salve", "Sum"],
+              "correctAnswers": [0],
+              "explanation": "J'écris des lettres."
+            },
+            {
+              "id": "q9",
+              "question": "Do = …",
+              "type": "single_choice",
+              "options": ["Je donne", "Je prends seul", "Je suis", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Do = je donne."
+            },
+            {
+              "id": "q10",
+              "question": "Specto = …",
+              "type": "single_choice",
+              "options": ["Je regarde", "J'écoute", "Je bois", "Nomen"],
+              "correctAnswers": [0],
+              "explanation": "Specto = je regarde."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Adjectifs bon / grand",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Accord adjectif :",
+              "type": "multiple_choice",
+              "options": [
+                "Bonus puer (bon garçon)",
+                "Bona puella (bonne fille)",
+                "Bonus puella sans changement",
+                "Bonum canem (acc.)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bonus/bona/bonum selon genre/cas."
+            },
+            {
+              "id": "q2",
+              "question": "Magna schola = …",
+              "type": "single_choice",
+              "options": ["Grande école", "Petit stylo", "Au revoir", "Verbe"],
+              "correctAnswers": [0],
+              "explanation": "Magnus magna magnum."
+            },
+            {
+              "id": "q3",
+              "question": "Parvus puer = …",
+              "type": "single_choice",
+              "options": [
+                "Petit garçon",
+                "Grande fille",
+                "Livre",
+                "Professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parvus = petit (m.)."
+            },
+            {
+              "id": "q4",
+              "question": "Multae amicae = …",
+              "type": "single_choice",
+              "options": [
+                "Plusieurs amies",
+                "Un ami",
+                "Salve",
+                "Accusatif seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multae avec féminin pluriel."
+            },
+            {
+              "id": "q5",
+              "question": "Bonam matrem saluto = …",
+              "type": "single_choice",
+              "options": [
+                "Je salue la bonne mère",
+                "Mère salue",
+                "Nomen",
+                "Vale seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bonam accusatif féminin."
+            },
+            {
+              "id": "q6",
+              "question": "Magnum librum lego = …",
+              "type": "single_choice",
+              "options": [
+                "Je lis le grand livre",
+                "Livre lit",
+                "Je suis grand",
+                "Salve"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Magnum librum objet."
+            },
+            {
+              "id": "q7",
+              "question": "Nova tabula = …",
+              "type": "single_choice",
+              "options": ["Nouvelle tablette", "Vieux livre", "Chien", "Frère"],
+              "correctAnswers": [0],
+              "explanation": "Novus nova novum."
+            },
+            {
+              "id": "q8",
+              "question": "Malus / mala = …",
+              "type": "single_choice",
+              "options": ["Mauvais / mauvaise", "Bon", "Grand", "Blanc"],
+              "correctAnswers": [0],
+              "explanation": "Opposé de bonus."
+            },
+            {
+              "id": "q9",
+              "question": "Altus mons = …",
+              "type": "single_choice",
+              "options": ["Haute montagne", "Petite chaise", "Stylo", "Salve"],
+              "correctAnswers": [0],
+              "explanation": "Altus = haut."
+            },
+            {
+              "id": "q10",
+              "question": "Laus bona discipulae : laus…",
+              "type": "single_choice",
+              "options": [
+                "Éloge / louange bonne pour l'élève",
+                "Au revoir",
+                "Verbe voir",
+                "Accusatif puer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Laus = louange."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Phrases à construire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phrases correctes :",
+              "type": "multiple_choice",
+              "options": [
+                "Puella amicum salutat",
+                "Amicum puella salutat",
+                "Puella amicus salutat (accord faux sujet)",
+                "Video puellam"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ordre libre ; amicus sujet doit être amica pour puella."
+            },
+            {
+              "id": "q2",
+              "question": "Traduction : Le garçon porte le livre.",
+              "type": "single_choice",
+              "options": [
+                "Puer librum portat",
+                "Puer liber portat",
+                "Librum sum",
+                "Vale puer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puer sujet ; librum objet."
+            },
+            {
+              "id": "q3",
+              "question": "Magistra discipulos laudat = …",
+              "type": "single_choice",
+              "options": [
+                "La professeure félicite les élèves",
+                "Les élèves félicitent",
+                "Salve",
+                "Nomen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Laudat = elle loue."
+            },
+            {
+              "id": "q4",
+              "question": "In horto ludimus : horto ≈ …",
+              "type": "single_choice",
+              "options": ["Jardin", "Livre", "Stylo", "Professeur"],
+              "correctAnswers": [0],
+              "explanation": "Hortus = jardin."
+            },
+            {
+              "id": "q5",
+              "question": "Sole lucet : sole = …",
+              "type": "single_choice",
+              "options": ["Soleil", "Lune", "Chaise", "Nom"],
+              "correctAnswers": [0],
+              "explanation": "Sol = soleil."
+            },
+            {
+              "id": "q6",
+              "question": "Nox est longa : nox = …",
+              "type": "single_choice",
+              "options": ["Nuit", "Jour", "École", "Pain"],
+              "correctAnswers": [0],
+              "explanation": "Nox = nuit."
+            },
+            {
+              "id": "q7",
+              "question": "Mane discipuli veniunt : mane = …",
+              "type": "single_choice",
+              "options": ["Le matin", "Le soir", "Au revoir", "Accusatif"],
+              "correctAnswers": [0],
+              "explanation": "Mane = matin."
+            },
+            {
+              "id": "q8",
+              "question": "Post schola vale : idée …",
+              "type": "single_choice",
+              "options": [
+                "Après l'école, au revoir",
+                "Bonjour école",
+                "Je lis",
+                "Sum schola"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Post = après."
+            },
+            {
+              "id": "q9",
+              "question": "Cum amicis sum : cum = …",
+              "type": "single_choice",
+              "options": ["Avec", "Sans", "Contre seul", "Nom"],
+              "correctAnswers": [0],
+              "explanation": "Cum = avec."
+            },
+            {
+              "id": "q10",
+              "question": "Sine aqua : sine = …",
+              "type": "single_choice",
+              "options": ["Sans", "Avec", "Chez", "Salve"],
+              "correctAnswers": [0],
+              "explanation": "Sine = sans."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision mots essentiels",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Paires utiles 3e :",
+              "type": "multiple_choice",
+              "options": [
+                "Mater / pater",
+                "Librum / lego",
+                "Nominatif et accusatif repérables",
+                "Vale = prénom"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Famille, lire+livre ; vale n'est pas prénom."
+            },
+            {
+              "id": "q2",
+              "question": "Je vois la maison :",
+              "type": "single_choice",
+              "options": [
+                "Video domum",
+                "Video domus",
+                "Domum sum",
+                "Salve domus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Domum accusatif mouvement/lieu vu."
+            },
+            {
+              "id": "q3",
+              "question": "Bonus liber est in mensa : …",
+              "type": "single_choice",
+              "options": [
+                "Le bon livre est sur la table",
+                "Je porte le livre",
+                "Au revoir",
+                "Accusatif liber"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liber sujet ; in mensa = sur la table."
+            },
+            {
+              "id": "q4",
+              "question": "Tres canes et duo feles : …",
+              "type": "single_choice",
+              "options": [
+                "Trois chiens et deux chats",
+                "Un chien",
+                "Salve animal",
+                "Lego canis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nombres + animaux."
+            },
+            {
+              "id": "q5",
+              "question": "Puella rubra togam portat : togam…",
+              "type": "single_choice",
+              "options": ["Accusatif (toge)", "Nominatif seul", "Vale", "Est"],
+              "correctAnswers": [0],
+              "explanation": "Elle porte la toge."
+            },
+            {
+              "id": "q6",
+              "question": "Amo vitam in schola : vitam…",
+              "type": "single_choice",
+              "options": [
+                "Accusatif (la vie)",
+                "Salutation",
+                "Verbe être",
+                "Nominatif puer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "J'aime la vie."
+            },
+            {
+              "id": "q7",
+              "question": "Verbum = …",
+              "type": "single_choice",
+              "options": ["Mot", "Nombre", "Couleur", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Verbum = mot."
+            },
+            {
+              "id": "q8",
+              "question": "Res = …",
+              "type": "single_choice",
+              "options": [
+                "Chose / affaire",
+                "Uniquement roi",
+                "Stylo",
+                "Salve"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Res = chose."
+            },
+            {
+              "id": "q9",
+              "question": "Hodie = …",
+              "type": "single_choice",
+              "options": ["Aujourd'hui", "Hier", "Demain", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Hodie = aujourd'hui."
+            },
+            {
+              "id": "q10",
+              "question": "Objectif unité 2 :",
+              "type": "single_choice",
+              "options": [
+                "Vocabulaire de base + nominatif/accusatif dans des phrases courtes",
+                "Oublier les cas",
+                "Tout conjuguer au passé",
+                "Ne plus saluer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mots essentiels et cas simples."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

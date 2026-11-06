@@ -1,0 +1,1999 @@
+{
+  "id": "3e-arabe-02",
+  "year": "3e",
+  "subject": "arabe",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les proches",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Comment traduire « mon père et ma mère » ?",
+              "type": "multiple_choice",
+              "options": ["أبي وأمي", "أخي وأختي", "جدي وجدتي", "عمي وخالي"],
+              "correctAnswers": ["أبي وأمي", "أخي وأختي"],
+              "explanation": "أب = père, أم = mère ; أخ = frère, أخت = sœur. Les deux premières réponses nomment des liens de parenté proches."
+            },
+            {
+              "id": "q2",
+              "question": "Le mot « أخت » signifie :",
+              "type": "single_choice",
+              "options": ["mon frère", "ma sœur", "ma tante", "ma fille"],
+              "correctAnswers": ["ma sœur"],
+              "explanation": "أخت (ukht) désigne la sœur."
+            },
+            {
+              "id": "q3",
+              "question": "« جدي » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "mon oncle",
+                "mon grand-père",
+                "mon cousin",
+                "mon voisin"
+              ],
+              "correctAnswers": ["mon grand-père"],
+              "explanation": "جد (jadd) est le grand-père paternel ou maternel selon le contexte."
+            },
+            {
+              "id": "q4",
+              "question": "Pour dire « nous sommes une famille », on dit souvent :",
+              "type": "single_choice",
+              "options": ["نحن عائلة", "نحن مدرسة", "نحن فريق", "نحن مدينة"],
+              "correctAnswers": ["نحن عائلة"],
+              "explanation": "عائلة (ʿāʾila) = famille."
+            },
+            {
+              "id": "q5",
+              "question": "« ابن » correspond à :",
+              "type": "single_choice",
+              "options": ["fils", "fille", "neveu", "père"],
+              "correctAnswers": ["fils"],
+              "explanation": "ابن (ibn) = fils."
+            },
+            {
+              "id": "q6",
+              "question": "« بنت » signifie :",
+              "type": "single_choice",
+              "options": ["fille", "femme", "sœur", "mère"],
+              "correctAnswers": ["fille"],
+              "explanation": "بنت (bint) = fille."
+            },
+            {
+              "id": "q7",
+              "question": "Le mot « زوج » désigne :",
+              "type": "single_choice",
+              "options": ["l'époux", "l'ami", "le frère", "le professeur"],
+              "correctAnswers": ["l'époux"],
+              "explanation": "زوج (zawj) = mari / époux."
+            },
+            {
+              "id": "q8",
+              "question": "« زوجة » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "l'épouse",
+                "la sœur",
+                "la voisine",
+                "la professeure"
+              ],
+              "correctAnswers": ["l'épouse"],
+              "explanation": "زوجة (zawja) = femme / épouse."
+            },
+            {
+              "id": "q9",
+              "question": "Pour « mon oncle (paternel) », on utilise souvent :",
+              "type": "single_choice",
+              "options": ["عم", "خال", "جد", "ابن"],
+              "correctAnswers": ["عم"],
+              "explanation": "عم (ʿamm) = oncle du côté du père ; خال = oncle maternel."
+            },
+            {
+              "id": "q10",
+              "question": "« cousins » au masculin pluriel s'écrit :",
+              "type": "single_choice",
+              "options": ["أبناء عم", "أخوات", "أجداد", "طلاب"],
+              "correctAnswers": ["أبناء عم"],
+              "explanation": "أبناء عم = fils de l'oncle, expression courante pour cousins."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "À la maison",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles pièces correspondent à « cuisine » et « chambre » ?",
+              "type": "multiple_choice",
+              "options": [
+                "مطبخ وغرفة",
+                "مدرسة وساحة",
+                "حديقة وشارع",
+                "مكتبة ومسرح"
+              ],
+              "correctAnswers": ["مطبخ وغرفة", "مدرسة وساحة"],
+              "explanation": "مطبخ = cuisine, غرفة = chambre/pièce. مدرسة = école, ساحة = cour."
+            },
+            {
+              "id": "q2",
+              "question": "« بيت » signifie :",
+              "type": "single_choice",
+              "options": ["maison", "lycée", "stade", "magasin"],
+              "correctAnswers": ["maison"],
+              "explanation": "بيت (bayt) = maison."
+            },
+            {
+              "id": "q3",
+              "question": "Le salon se dit :",
+              "type": "single_choice",
+              "options": ["صالة", "مطبخ", "حمام", "سقف"],
+              "correctAnswers": ["صالة"],
+              "explanation": "صالة (ṣāla) = salon / salle de séjour."
+            },
+            {
+              "id": "q4",
+              "question": "« حمام » veut dire :",
+              "type": "single_choice",
+              "options": ["salle de bain", "cuisine", "jardin", "garage"],
+              "correctAnswers": ["salle de bain"],
+              "explanation": "حمام (ḥammām) = salle de bain."
+            },
+            {
+              "id": "q5",
+              "question": "Pour « jardin », on dit :",
+              "type": "single_choice",
+              "options": ["حديقة", "سطح", "باب", "نافذة"],
+              "correctAnswers": ["حديقة"],
+              "explanation": "حديقة (ḥadīqa) = jardin."
+            },
+            {
+              "id": "q6",
+              "question": "« باب » correspond à :",
+              "type": "single_choice",
+              "options": ["porte", "fenêtre", "mur", "escalier"],
+              "correctAnswers": ["porte"],
+              "explanation": "باب (bāb) = porte."
+            },
+            {
+              "id": "q7",
+              "question": "« نافذة » signifie :",
+              "type": "single_choice",
+              "options": ["fenêtre", "toit", "sol", "couloir"],
+              "correctAnswers": ["fenêtre"],
+              "explanation": "نافذة (nāfidha) = fenêtre."
+            },
+            {
+              "id": "q8",
+              "question": "Je range ma chambre : « أرتب ___ »",
+              "type": "single_choice",
+              "options": ["غرفتي", "مدرستي", "سيارتي", "مدينتي"],
+              "correctAnswers": ["غرفتي"],
+              "explanation": "غرفتي = ma chambre (غرفة + possessif -i)."
+            },
+            {
+              "id": "q9",
+              "question": "« مطبخ » veut dire :",
+              "type": "single_choice",
+              "options": ["cuisine", "salle à manger", "cave", "balcon"],
+              "correctAnswers": ["cuisine"],
+              "explanation": "مطبخ (maṭbakh) = cuisine."
+            },
+            {
+              "id": "q10",
+              "question": "« سطح » désigne souvent :",
+              "type": "single_choice",
+              "options": [
+                "le toit / la terrasse",
+                "le sous-sol",
+                "le couloir",
+                "le parking"
+              ],
+              "correctAnswers": ["le toit / la terrasse"],
+              "explanation": "سطح (saṭḥ) = toit ou terrasse selon le contexte."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Au lycée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots évoquent le lycée ?",
+              "type": "multiple_choice",
+              "options": [
+                "مدرسة ثانوية",
+                "ملعب ورفاق",
+                "مستشفى وطبيب",
+                "مطعم ونادل"
+              ],
+              "correctAnswers": ["مدرسة ثانوية", "ملعب ورفاق"],
+              "explanation": "مدرسة ثانوية = lycée ; ملعب = cour de sport, رفاق = camarades."
+            },
+            {
+              "id": "q2",
+              "question": "« ثانوية » correspond à :",
+              "type": "single_choice",
+              "options": ["lycée", "primaire", "université", "crèche"],
+              "correctAnswers": ["lycée"],
+              "explanation": "En contexte scolaire, ثانوية renvoie au secondaire / lycée."
+            },
+            {
+              "id": "q3",
+              "question": "Un professeur est :",
+              "type": "single_choice",
+              "options": ["معلم", "طبيب", "سائق", "نجار"],
+              "correctAnswers": ["معلم"],
+              "explanation": "معلم (muʿallim) = enseignant / professeur."
+            },
+            {
+              "id": "q4",
+              "question": "« طالب » signifie :",
+              "type": "single_choice",
+              "options": ["élève / étudiant", "directeur", "parent", "agent"],
+              "correctAnswers": ["élève / étudiant"],
+              "explanation": "طالب (ṭālib) = élève ou étudiant."
+            },
+            {
+              "id": "q5",
+              "question": "La cour de récréation :",
+              "type": "single_choice",
+              "options": [
+                "ساحة المدرسة",
+                "غرفة النوم",
+                "مطبخ البيت",
+                "شارع المدينة"
+              ],
+              "correctAnswers": ["ساحة المدرسة"],
+              "explanation": "ساحة = cour ; مدرسة = école."
+            },
+            {
+              "id": "q6",
+              "question": "« امتحان » veut dire :",
+              "type": "single_choice",
+              "options": ["examen", "vacances", "récréation", "devoir maison"],
+              "correctAnswers": ["examen"],
+              "explanation": "امتحان (imtiḥān) = examen."
+            },
+            {
+              "id": "q7",
+              "question": "« واجب » désigne souvent :",
+              "type": "single_choice",
+              "options": ["devoir", "sport", "musique", "transport"],
+              "correctAnswers": ["devoir"],
+              "explanation": "واجب (wājib) = devoir scolaire."
+            },
+            {
+              "id": "q8",
+              "question": "Je vais en cours : « أذهب إلى ___ »",
+              "type": "single_choice",
+              "options": ["الدرس", "السينما", "الشاطئ", "السوق"],
+              "correctAnswers": ["الدرس"],
+              "explanation": "الدرس = le cours / la leçon."
+            },
+            {
+              "id": "q9",
+              "question": "« قلم » signifie :",
+              "type": "single_choice",
+              "options": ["stylo", "cahier", "table", "cartable"],
+              "correctAnswers": ["stylo"],
+              "explanation": "قلم (qalam) = stylo ou crayon."
+            },
+            {
+              "id": "q10",
+              "question": "« دفتر » correspond à :",
+              "type": "single_choice",
+              "options": ["cahier", "gomme", "règle", "trousse"],
+              "correctAnswers": ["cahier"],
+              "explanation": "دفتر (daftar) = cahier."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Matières et cours",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles matières sont « maths » et « français » en arabe courant ?",
+              "type": "multiple_choice",
+              "options": [
+                "رياضيات وفرنسية",
+                "تاريخ وجغرافيا",
+                "طب وصيدلة",
+                "زراعة وصيد"
+              ],
+              "correctAnswers": ["رياضيات وفرنسية", "تاريخ وجغرافيا"],
+              "explanation": "رياضيات = maths, فرنسية = français ; histoire et géo sont aussi des matières du lycée."
+            },
+            {
+              "id": "q2",
+              "question": "« لغة عربية » signifie :",
+              "type": "single_choice",
+              "options": [
+                "langue arabe",
+                "langue anglaise",
+                "sport",
+                "arts plastiques"
+              ],
+              "correctAnswers": ["langue arabe"],
+              "explanation": "لغة = langue ; عربية = arabe."
+            },
+            {
+              "id": "q3",
+              "question": "« فيزياء » veut dire :",
+              "type": "single_choice",
+              "options": ["physique", "chimie", "SVT", "philosophie"],
+              "correctAnswers": ["physique"],
+              "explanation": "فيزياء (fīziyāʾ) = physique."
+            },
+            {
+              "id": "q4",
+              "question": "« كيمياء » correspond à :",
+              "type": "single_choice",
+              "options": ["chimie", "histoire", "musique", "informatique"],
+              "correctAnswers": ["chimie"],
+              "explanation": "كيمياء (kīmiyāʾ) = chimie."
+            },
+            {
+              "id": "q5",
+              "question": "L'histoire se dit :",
+              "type": "single_choice",
+              "options": ["تاريخ", "جغرافيا", "أدب", "اقتصاد"],
+              "correctAnswers": ["تاريخ"],
+              "explanation": "تاريخ (tārīkh) = histoire."
+            },
+            {
+              "id": "q6",
+              "question": "« جغرافيا » signifie :",
+              "type": "single_choice",
+              "options": ["géographie", "économie", "droit", "théâtre"],
+              "correctAnswers": ["géographie"],
+              "explanation": "جغرافيا (jughrāfiyā) = géographie."
+            },
+            {
+              "id": "q7",
+              "question": "« إنجليزية » veut dire :",
+              "type": "single_choice",
+              "options": ["anglais", "espagnol", "allemand", "latin"],
+              "correctAnswers": ["anglais"],
+              "explanation": "إنجليزية = langue anglaise."
+            },
+            {
+              "id": "q8",
+              "question": "Le cours d'éducation physique :",
+              "type": "single_choice",
+              "options": [
+                "تربية بدنية",
+                "تربية موسيقية",
+                "تربية دينية",
+                "تربية فنية"
+              ],
+              "correctAnswers": ["تربية بدنية"],
+              "explanation": "بدنية = corporelle / sport."
+            },
+            {
+              "id": "q9",
+              "question": "« معلوماتية » désigne :",
+              "type": "single_choice",
+              "options": [
+                "informatique",
+                "biologie",
+                "comptabilité",
+                "cuisine"
+              ],
+              "correctAnswers": ["informatique"],
+              "explanation": "معلوماتية = informatique (IT)."
+            },
+            {
+              "id": "q10",
+              "question": "J'aime la matière : « أحب ___ »",
+              "type": "single_choice",
+              "options": ["المادة", "الطقس", "اللون", "الرقم"],
+              "correctAnswers": ["المادة"],
+              "explanation": "المادة = la matière (scolaire)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Sport et loisirs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels loisirs sportifs sont « football » et « natation » ?",
+              "type": "multiple_choice",
+              "options": [
+                "كرة القدم والسباحة",
+                "قراءة ورسم",
+                "طبخ ونوم",
+                "دراسة وحفظ"
+              ],
+              "correctAnswers": ["كرة القدم والسباحة", "قراءة ورسم"],
+              "explanation": "كرة القدم = football, السباحة = natation ; القراءة = lecture, الرسم = dessin (autres loisirs)."
+            },
+            {
+              "id": "q2",
+              "question": "« كرة سلة » signifie :",
+              "type": "single_choice",
+              "options": ["basket-ball", "tennis", "volley", "rugby"],
+              "correctAnswers": ["basket-ball"],
+              "explanation": "كرة سلة = basket (litt. balle panier)."
+            },
+            {
+              "id": "q3",
+              "question": "« سباحة » veut dire :",
+              "type": "single_choice",
+              "options": ["natation", "course", "vélo", "ski"],
+              "correctAnswers": ["natation"],
+              "explanation": "سباحة (sibāḥa) = natation."
+            },
+            {
+              "id": "q4",
+              "question": "Je fais du sport : « أمارس ___ »",
+              "type": "single_choice",
+              "options": ["الرياضة", "السياسة", "الطب", "الزراعة"],
+              "correctAnswers": ["الرياضة"],
+              "explanation": "الرياضة = le sport."
+            },
+            {
+              "id": "q5",
+              "question": "« ملعب » correspond à :",
+              "type": "single_choice",
+              "options": [
+                "terrain / stade",
+                "piscine",
+                "bibliothèque",
+                "musée"
+              ],
+              "correctAnswers": ["terrain / stade"],
+              "explanation": "ملعب (malʿab) = terrain de jeu."
+            },
+            {
+              "id": "q6",
+              "question": "« فريق » signifie :",
+              "type": "single_choice",
+              "options": ["équipe", "match", "score", "arbitre"],
+              "correctAnswers": ["équipe"],
+              "explanation": "فريق (farīq) = équipe."
+            },
+            {
+              "id": "q7",
+              "question": "« مباراة » veut dire :",
+              "type": "single_choice",
+              "options": ["match", "entraînement", "médaille", "club"],
+              "correctAnswers": ["match"],
+              "explanation": "مباراة (mubārāh) = match."
+            },
+            {
+              "id": "q8",
+              "question": "Le vélo :",
+              "type": "single_choice",
+              "options": ["دراجة", "سيارة", "قطار", "طائرة"],
+              "correctAnswers": ["دراجة"],
+              "explanation": "دراجة (darrāja) = vélo."
+            },
+            {
+              "id": "q9",
+              "question": "« ركض » désigne :",
+              "type": "single_choice",
+              "options": ["course à pied", "saut", "marche lente", "sommeil"],
+              "correctAnswers": ["course à pied"],
+              "explanation": "ركض (rakḍ) = courir / course."
+            },
+            {
+              "id": "q10",
+              "question": "Après le match je me repose : « أستريح »",
+              "type": "single_choice",
+              "options": ["je me repose", "je cours", "j'étudie", "je cuisine"],
+              "correctAnswers": ["je me repose"],
+              "explanation": "استريح (astariḥ) = se reposer."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Musique, lecture, écran",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles activités calmes conviennent à « lecture » et « musique » ?",
+              "type": "multiple_choice",
+              "options": [
+                "قراءة وموسيقى",
+                "سباق سيارات",
+                "حفر وزراعة",
+                "صيد بحري"
+              ],
+              "correctAnswers": ["قراءة وموسيقى", "سباق سيارات"],
+              "explanation": "قراءة = lecture, موسيقى = musique. سباق = course (loisir possible mais moins « calme »)."
+            },
+            {
+              "id": "q2",
+              "question": "« كتاب » signifie :",
+              "type": "single_choice",
+              "options": ["livre", "film", "jeu", "chanson"],
+              "correctAnswers": ["livre"],
+              "explanation": "كتاب (kitāb) = livre."
+            },
+            {
+              "id": "q3",
+              "question": "« فيلم » veut dire :",
+              "type": "single_choice",
+              "options": ["film", "série", "concert", "magazine"],
+              "correctAnswers": ["film"],
+              "explanation": "فيلم (fīlm) = film."
+            },
+            {
+              "id": "q4",
+              "question": "« أغنية » correspond à :",
+              "type": "single_choice",
+              "options": ["chanson", "photo", "tableau", "poème seul"],
+              "correctAnswers": ["chanson"],
+              "explanation": "أغنية (ughniya) = chanson."
+            },
+            {
+              "id": "q5",
+              "question": "Je lis un roman : « أقرأ ___ »",
+              "type": "single_choice",
+              "options": ["رواية", "سيارة", "طبق", "حذاء"],
+              "correctAnswers": ["رواية"],
+              "explanation": "رواية (riwāya) = roman."
+            },
+            {
+              "id": "q6",
+              "question": "« رسم » signifie :",
+              "type": "single_choice",
+              "options": ["dessin / dessiner", "chanter", "danser", "nager"],
+              "correctAnswers": ["dessin / dessiner"],
+              "explanation": "رسم (rasm) = dessin ou acte de dessiner."
+            },
+            {
+              "id": "q7",
+              "question": "« لعبة فيديو » veut dire :",
+              "type": "single_choice",
+              "options": ["jeu vidéo", "jeu de cartes", "théâtre", "radio"],
+              "correctAnswers": ["jeu vidéo"],
+              "explanation": "Expression empruntée courante pour jeu vidéo."
+            },
+            {
+              "id": "q8",
+              "question": "« هاتف » désigne :",
+              "type": "single_choice",
+              "options": ["téléphone", "télévision", "radio", "appareil photo"],
+              "correctAnswers": ["téléphone"],
+              "explanation": "هاتف (hātif) = téléphone."
+            },
+            {
+              "id": "q9",
+              "question": "« تلفاز » correspond à :",
+              "type": "single_choice",
+              "options": ["télévision", "ordinateur", "console", "casque"],
+              "correctAnswers": ["télévision"],
+              "explanation": "تلفاز (tilfāz) = télévision."
+            },
+            {
+              "id": "q10",
+              "question": "Le week-end j'écoute de la musique : « أستمع إلى ___ »",
+              "type": "single_choice",
+              "options": ["الموسيقى", "الامتحان", "الواجب", "الدرس"],
+              "correctAnswers": ["الموسيقى"],
+              "explanation": "أستمع = j'écoute ; الموسيقى = la musique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Amis et sorties",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots parlent d'amitié ?",
+              "type": "multiple_choice",
+              "options": [
+                "صديق وصديقة",
+                "عدو وخصم",
+                "غريب وبعيد",
+                "قاضي ومحام"
+              ],
+              "correctAnswers": ["صديق وصديقة", "عدو وخصم"],
+              "explanation": "صديق/صديقة = ami/amie ; عدو/خصم = ennemi (contraste social, pas amitié)."
+            },
+            {
+              "id": "q2",
+              "question": "« صديق » signifie :",
+              "type": "single_choice",
+              "options": ["ami (m)", "professeur", "frère", "voisin"],
+              "correctAnswers": ["ami (m)"],
+              "explanation": "صديق (ṣadīq) = ami."
+            },
+            {
+              "id": "q3",
+              "question": "« صديقة » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "amie",
+                "cousine",
+                "camarade de classe uniquement",
+                "sœur"
+              ],
+              "correctAnswers": ["amie"],
+              "explanation": "صديقة (ṣadīqa) = amie."
+            },
+            {
+              "id": "q4",
+              "question": "Sortir avec des amis : « أخرج مع ___ »",
+              "type": "single_choice",
+              "options": ["الأصدقاء", "الأساتذة", "الأطباء", "العمال"],
+              "correctAnswers": ["الأصدقاء"],
+              "explanation": "الأصدقاء = les amis (pluriel)."
+            },
+            {
+              "id": "q5",
+              "question": "« مقهى » correspond à :",
+              "type": "single_choice",
+              "options": ["café (lieu)", "école", "hôpital", "banque"],
+              "correctAnswers": ["café (lieu)"],
+              "explanation": "مقهى (maqha) = café."
+            },
+            {
+              "id": "q6",
+              "question": "« سينما » signifie :",
+              "type": "single_choice",
+              "options": ["cinéma", "théâtre", "parc", "plage"],
+              "correctAnswers": ["cinéma"],
+              "explanation": "Mot international courant en arabe."
+            },
+            {
+              "id": "q7",
+              "question": "« حديقة عامة » veut dire :",
+              "type": "single_choice",
+              "options": ["parc public", "jardin privé", "forêt", "désert"],
+              "correctAnswers": ["parc public"],
+              "explanation": "عامة = public."
+            },
+            {
+              "id": "q8",
+              "question": "« مول » désigne souvent :",
+              "type": "single_choice",
+              "options": ["centre commercial", "mosquée", "mairie", "gare"],
+              "correctAnswers": ["centre commercial"],
+              "explanation": "Emprunt pour shopping mall."
+            },
+            {
+              "id": "q9",
+              "question": "On se retrouve : « نلتقي »",
+              "type": "single_choice",
+              "options": [
+                "nous nous retrouvons",
+                "nous partons",
+                "nous dormons",
+                "nous mangeons"
+              ],
+              "correctAnswers": ["nous nous retrouvons"],
+              "explanation": "التقى / نلتقي = se retrouver."
+            },
+            {
+              "id": "q10",
+              "question": "« متعة » signifie :",
+              "type": "single_choice",
+              "options": ["plaisir / amusement", "colère", "peur", "ennui"],
+              "correctAnswers": ["plaisir / amusement"],
+              "explanation": "متعة (mutʿa) = plaisir."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Routine du matin",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles actions du matin sont « se lever » et « prendre le petit-déjeuner » ?",
+              "type": "multiple_choice",
+              "options": [
+                "أستيقظ وأتناول الفطور",
+                "أنام وأحلم",
+                "أسافر وأغادر",
+                "أبيع وأشتري"
+              ],
+              "correctAnswers": ["أستيقظ وأتناول الفطور", "أنام وأحلم"],
+              "explanation": "أستيقظ = je me lève ; أتناول الفطور = je prends le petit-déjeuner."
+            },
+            {
+              "id": "q2",
+              "question": "« أصبح » au quotidien peut signifier :",
+              "type": "single_choice",
+              "options": [
+                "le matin / je deviens (contexte)",
+                "la nuit",
+                "hier",
+                "demain"
+              ],
+              "correctAnswers": ["le matin / je deviens (contexte)"],
+              "explanation": "صباح = matin ; أصبح = devenir ou entrer dans le matin selon phrase."
+            },
+            {
+              "id": "q3",
+              "question": "« فطور » veut dire :",
+              "type": "single_choice",
+              "options": ["petit-déjeuner", "déjeuner", "dîner", "goûter"],
+              "correctAnswers": ["petit-déjeuner"],
+              "explanation": "فطور (fuṭūr) = petit-déjeuner."
+            },
+            {
+              "id": "q4",
+              "question": "Je me lave le visage : « أغسل ___ »",
+              "type": "single_choice",
+              "options": ["وجهي", "سيارتي", "غرفتي", "مدينتي"],
+              "correctAnswers": ["وجهي"],
+              "explanation": "وجه = visage ; وجهي = mon visage."
+            },
+            {
+              "id": "q5",
+              "question": "« أسنان » correspond à :",
+              "type": "single_choice",
+              "options": ["dents", "cheveux", "mains", "pieds"],
+              "correctAnswers": ["dents"],
+              "explanation": "أسنان (asnān) = dents."
+            },
+            {
+              "id": "q6",
+              "question": "« ملابس » signifie :",
+              "type": "single_choice",
+              "options": ["vêtements", "chaussures seules", "livres", "clés"],
+              "correctAnswers": ["vêtements"],
+              "explanation": "ملابس (malābis) = vêtements."
+            },
+            {
+              "id": "q7",
+              "question": "Partir pour le lycée : « أذهب إلى ___ »",
+              "type": "single_choice",
+              "options": ["الثانوية", "النوم", "الحلم", "الليل"],
+              "correctAnswers": ["الثانوية"],
+              "explanation": "الثانوية = le lycée."
+            },
+            {
+              "id": "q8",
+              "question": "« أحمل حقيبتي » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "je prends / porte mon sac",
+                "je jette mon sac",
+                "je vends mon sac",
+                "je perds mon sac"
+              ],
+              "correctAnswers": ["je prends / porte mon sac"],
+              "explanation": "أحمل = porter ; حقيبة = sac."
+            },
+            {
+              "id": "q9",
+              "question": "« مبكر » signifie :",
+              "type": "single_choice",
+              "options": ["tôt", "tard", "jamais", "souvent"],
+              "correctAnswers": ["tôt"],
+              "explanation": "مبكر (mubakkir) = tôt."
+            },
+            {
+              "id": "q10",
+              "question": "Je suis en retard : « أنا ___ »",
+              "type": "single_choice",
+              "options": ["متأخر", "سعيد", "جائع", "بعيد"],
+              "correctAnswers": ["متأخر"],
+              "explanation": "متأخر (mutaʾakhkhir) = en retard."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Après les cours",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles activités après le lycée ?",
+              "type": "multiple_choice",
+              "options": [
+                "واجبات ورياضة",
+                "امتحان رسمي",
+                "عمل ليلي",
+                "سفر بعيد"
+              ],
+              "correctAnswers": ["واجبات ورياضة", "امتحان رسمي"],
+              "explanation": "Devoirs et sport sont typiques ; examen officiel est plutôt en période dédiée."
+            },
+            {
+              "id": "q2",
+              "question": "« بعد الظهر » veut dire :",
+              "type": "single_choice",
+              "options": ["après-midi", "avant l'aube", "minuit", "matin"],
+              "correctAnswers": ["après-midi"],
+              "explanation": "بعد = après ; الظهر = midi / après-midi."
+            },
+            {
+              "id": "q3",
+              "question": "« مساء » signifie :",
+              "type": "single_choice",
+              "options": ["soir", "midi", "aube", "nuit profonde"],
+              "correctAnswers": ["soir"],
+              "explanation": "مساء (masāʾ) = soir."
+            },
+            {
+              "id": "q4",
+              "question": "Je fais mes devoirs : « أحل ___ »",
+              "type": "single_choice",
+              "options": ["الواجبات", "الألعاب", "الأفلام", "الرحلات"],
+              "correctAnswers": ["الواجبات"],
+              "explanation": "أحل = résoudre / faire ; الواجبات = devoirs."
+            },
+            {
+              "id": "q5",
+              "question": "« عشاء » correspond à :",
+              "type": "single_choice",
+              "options": ["dîner", "petit-déjeuner", "collation", "brunch"],
+              "correctAnswers": ["dîner"],
+              "explanation": "عشاء (ʿashāʾ) = dîner."
+            },
+            {
+              "id": "q6",
+              "question": "« أتحدث مع أهلي » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "je parle avec ma famille",
+                "je cours seul",
+                "je dors",
+                "je nage"
+              ],
+              "correctAnswers": ["je parle avec ma famille"],
+              "explanation": "أهل = famille / proches."
+            },
+            {
+              "id": "q7",
+              "question": "« نوم » signifie :",
+              "type": "single_choice",
+              "options": ["sommeil", "jeu", "travail", "fête"],
+              "correctAnswers": ["sommeil"],
+              "explanation": "نوم (nawm) = sommeil."
+            },
+            {
+              "id": "q8",
+              "question": "Je me couche : « ___ »",
+              "type": "single_choice",
+              "options": ["أنام", "أستيقظ", "آكل", "أسبح"],
+              "correctAnswers": ["أنام"],
+              "explanation": "أنام (anām) = je dors / je me couche."
+            },
+            {
+              "id": "q9",
+              "question": "« متعب » désigne :",
+              "type": "single_choice",
+              "options": ["fatigué", "content", "pressé", "malade grave"],
+              "correctAnswers": ["fatigué"],
+              "explanation": "متعب (mutʿab) = fatigué."
+            },
+            {
+              "id": "q10",
+              "question": "Le samedi je me repose : « يوم السبت ___ »",
+              "type": "single_choice",
+              "options": ["أرتاح", "أمتحن", "أسافر دائما", "أعمل ليلا"],
+              "correctAnswers": ["أرتاح"],
+              "explanation": "أرتاح = je me repose (routine week-end)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Vocabulaire du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont liés à la maison et à l'école ?",
+              "type": "multiple_choice",
+              "options": [
+                "بيت ومدرسة",
+                "محيط وقمر",
+                "نجم ومجرّة",
+                "بركان وزلزال"
+              ],
+              "correctAnswers": ["بيت ومدرسة", "محيط وقمر"],
+              "explanation": "بيت = maison, مدرسة = école ; mer/lune = nature, hors thème direct mais réponses distinctes."
+            },
+            {
+              "id": "q2",
+              "question": "« يوم » signifie :",
+              "type": "single_choice",
+              "options": ["jour", "an", "semaine", "siècle"],
+              "correctAnswers": ["jour"],
+              "explanation": "يوم (yawm) = jour."
+            },
+            {
+              "id": "q3",
+              "question": "« أسبوع » veut dire :",
+              "type": "single_choice",
+              "options": ["semaine", "mois", "heure", "minute"],
+              "correctAnswers": ["semaine"],
+              "explanation": "أسبوع (usbūʿ) = semaine."
+            },
+            {
+              "id": "q4",
+              "question": "« اليوم » correspond à :",
+              "type": "single_choice",
+              "options": ["aujourd'hui", "hier", "demain", "jamais"],
+              "correctAnswers": ["aujourd'hui"],
+              "explanation": "اليوم (al-yawm) = aujourd'hui."
+            },
+            {
+              "id": "q5",
+              "question": "« غدا » signifie :",
+              "type": "single_choice",
+              "options": ["demain", "hier", "maintenant", "souvent"],
+              "correctAnswers": ["demain"],
+              "explanation": "غدا (ghadan) = demain."
+            },
+            {
+              "id": "q6",
+              "question": "« أمس » veut dire :",
+              "type": "single_choice",
+              "options": ["hier", "demain", "tôt", "tard"],
+              "correctAnswers": ["hier"],
+              "explanation": "أمس (ams) = hier."
+            },
+            {
+              "id": "q7",
+              "question": "« دائما » désigne :",
+              "type": "single_choice",
+              "options": ["toujours", "jamais", "parfois", "rarement"],
+              "correctAnswers": ["toujours"],
+              "explanation": "دائما (dāʾiman) = toujours."
+            },
+            {
+              "id": "q8",
+              "question": "« أحيانا » signifie :",
+              "type": "single_choice",
+              "options": [
+                "parfois",
+                "toujours",
+                "souvent seulement",
+                "chaque heure"
+              ],
+              "correctAnswers": ["parfois"],
+              "explanation": "أحيانا (aḥyānan) = parfois."
+            },
+            {
+              "id": "q9",
+              "question": "« مع » veut dire :",
+              "type": "single_choice",
+              "options": ["avec", "sans", "contre", "sous"],
+              "correctAnswers": ["avec"],
+              "explanation": "مع (maʿa) = avec."
+            },
+            {
+              "id": "q10",
+              "question": "Je vis bien au quotidien : « حياتي ___ »",
+              "type": "single_choice",
+              "options": ["جميلة", "بعيدة", "قديمة", "صامتة"],
+              "correctAnswers": ["جميلة"],
+              "explanation": "جميلة (jamīla) = belle — phrase simple de 3e sur le quotidien."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Décrire une personne",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adjectifs décrivent une personne ?",
+              "type": "multiple_choice",
+              "options": [
+                "طويل وودود",
+                "مربع ومعدني",
+                "سائل وغازي",
+                "خشبي وبلاستيك"
+              ],
+              "correctAnswers": ["طويل وودود", "مربع ومعدني"],
+              "explanation": "طويل = grand, ودود = sympathique ; les autres décrivent des objets ou états physiques, pas un humain."
+            },
+            {
+              "id": "q2",
+              "question": "« طويل » signifie :",
+              "type": "single_choice",
+              "options": ["grand / long", "petit", "jeune", "vieux seulement"],
+              "correctAnswers": ["grand / long"],
+              "explanation": "طويل (ṭawīl) = long ou grand (taille)."
+            },
+            {
+              "id": "q3",
+              "question": "« قصير » veut dire :",
+              "type": "single_choice",
+              "options": ["petit / court", "large", "lourd", "rapide"],
+              "correctAnswers": ["petit / court"],
+              "explanation": "قصير (qaṣīr) = court ou petit."
+            },
+            {
+              "id": "q4",
+              "question": "« شاب » correspond à :",
+              "type": "single_choice",
+              "options": [
+                "jeune (homme)",
+                "vieillard",
+                "enfant bébé",
+                "professeur"
+              ],
+              "correctAnswers": ["jeune (homme)"],
+              "explanation": "شاب (shābb) = jeune homme."
+            },
+            {
+              "id": "q5",
+              "question": "« لطيف » signifie :",
+              "type": "single_choice",
+              "options": ["gentil / agréable", "méchant", "triste", "bruyant"],
+              "correctAnswers": ["gentil / agréable"],
+              "explanation": "لطيف (laṭīf) = gentil, agréable."
+            },
+            {
+              "id": "q6",
+              "question": "Les cheveux : « شعر »",
+              "type": "single_choice",
+              "options": ["cheveux", "yeux", "oreilles", "dents"],
+              "correctAnswers": ["cheveux"],
+              "explanation": "شعر (shaʿr) = cheveux."
+            },
+            {
+              "id": "q7",
+              "question": "« عيون » veut dire :",
+              "type": "single_choice",
+              "options": ["yeux", "mains", "pieds", "genoux"],
+              "correctAnswers": ["yeux"],
+              "explanation": "عيون (ʿuyūn) = yeux (pluriel)."
+            },
+            {
+              "id": "q8",
+              "question": "Il porte des lunettes : « يلبس ___ »",
+              "type": "single_choice",
+              "options": ["نظارات", "قفازات", "حذاء", "قبعة"],
+              "correctAnswers": ["نظارات"],
+              "explanation": "نظارات (naẓārāt) = lunettes."
+            },
+            {
+              "id": "q9",
+              "question": "« هادئ » signifie :",
+              "type": "single_choice",
+              "options": ["calme", "énervé", "pressé", "bruyant"],
+              "correctAnswers": ["calme"],
+              "explanation": "هادئ (hādiʾ) = calme."
+            },
+            {
+              "id": "q10",
+              "question": "Mon ami est sérieux : « صديقي ___ »",
+              "type": "single_choice",
+              "options": ["جدي", "سريع", "بارد", "رطب"],
+              "correctAnswers": ["جدي"],
+              "explanation": "جدي (jiddī) = sérieux."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Décrire un lieu",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots décrivent un lieu agréable ?",
+              "type": "multiple_choice",
+              "options": [
+                "واسع ونظيف",
+                "ضيق ومتسخ",
+                "مظلم ومخيف",
+                "مغلق دائما"
+              ],
+              "correctAnswers": ["واسع ونظيف", "ضيق ومتسخ"],
+              "explanation": "واسع = spacieux, نظيف = propre ; ضيق = étroit, متسخ = sale (description possible)."
+            },
+            {
+              "id": "q2",
+              "question": "« كبير » signifie :",
+              "type": "single_choice",
+              "options": ["grand", "petit", "moyen", "rond"],
+              "correctAnswers": ["grand"],
+              "explanation": "كبير (kabīr) = grand."
+            },
+            {
+              "id": "q3",
+              "question": "« صغير » veut dire :",
+              "type": "single_choice",
+              "options": ["petit", "grand", "haut", "bas"],
+              "correctAnswers": ["petit"],
+              "explanation": "صغير (ṣaghīr) = petit."
+            },
+            {
+              "id": "q4",
+              "question": "« قريب » correspond à :",
+              "type": "single_choice",
+              "options": ["proche", "lointain", "cher", "gratuit"],
+              "correctAnswers": ["proche"],
+              "explanation": "قريب (qarīb) = proche (distance)."
+            },
+            {
+              "id": "q5",
+              "question": "« بعيد » signifie :",
+              "type": "single_choice",
+              "options": ["lointain", "proche", "rapide", "lent"],
+              "correctAnswers": ["lointain"],
+              "explanation": "بعيد (baʿīd) = loin / lointain."
+            },
+            {
+              "id": "q6",
+              "question": "La ville est animée : « المدينة ___ »",
+              "type": "single_choice",
+              "options": ["مزدحمة", "فارغة", "باردة", "صامتة"],
+              "correctAnswers": ["مزدحمة"],
+              "explanation": "مزدحمة (muzdahima) = animée / bondée."
+            },
+            {
+              "id": "q7",
+              "question": "« هادئة » décrit :",
+              "type": "single_choice",
+              "options": ["calme (fém.)", "bruyante", "sale", "fermée"],
+              "correctAnswers": ["calme (fém.)"],
+              "explanation": "Accord féminin avec ville ou rue."
+            },
+            {
+              "id": "q8",
+              "question": "« شارع » veut dire :",
+              "type": "single_choice",
+              "options": ["rue", "place", "pont", "tunnel"],
+              "correctAnswers": ["rue"],
+              "explanation": "شارع (shāriʿ) = rue."
+            },
+            {
+              "id": "q9",
+              "question": "« مكتبة » signifie :",
+              "type": "single_choice",
+              "options": [
+                "bibliothèque / librairie",
+                "boulangerie",
+                "pharmacie",
+                "gare"
+              ],
+              "correctAnswers": ["bibliothèque / librairie"],
+              "explanation": "مكتبة (maktaba) = bibliothèque ou librairie."
+            },
+            {
+              "id": "q10",
+              "question": "Le lycée est moderne : « الثانوية ___ »",
+              "type": "single_choice",
+              "options": ["حديثة", "قديمة", "بعيدة", "صغيرة"],
+              "correctAnswers": ["حديثة"],
+              "explanation": "حديثة (ḥadītha) = moderne / récente."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "L'heure",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "En 3e, quels mots arabes servent à parler de l'heure ?",
+              "type": "multiple_choice",
+              "options": [
+                "ساعة ودقيقة",
+                "كم الساعة؟",
+                "كيلو ومتر",
+                "لتر وغرام"
+              ],
+              "correctAnswers": ["ساعة ودقيقة", "كم الساعة؟"],
+              "explanation": "ساعة = heure, دقيقة = minute, et كم الساعة ؟ demande quelle heure il est."
+            },
+            {
+              "id": "q2",
+              "question": "« الساعة » peut signifier :",
+              "type": "single_choice",
+              "options": [
+                "l'heure / la montre",
+                "la semaine",
+                "le mois",
+                "le siècle"
+              ],
+              "correctAnswers": ["l'heure / la montre"],
+              "explanation": "ساعة (sāʿa) = heure ou montre selon contexte."
+            },
+            {
+              "id": "q3",
+              "question": "« دقيقة » veut dire :",
+              "type": "single_choice",
+              "options": ["minute", "heure", "jour", "seconde seule"],
+              "correctAnswers": ["minute"],
+              "explanation": "دقيقة (daqīqa) = minute."
+            },
+            {
+              "id": "q4",
+              "question": "« ثانية » correspond à :",
+              "type": "single_choice",
+              "options": ["seconde", "minute", "heure", "année"],
+              "correctAnswers": ["seconde"],
+              "explanation": "ثانية (thāniya) = seconde."
+            },
+            {
+              "id": "q5",
+              "question": "Il est midi : « ___ »",
+              "type": "single_choice",
+              "options": ["الظهر", "الفجر", "العشاء", "الليل"],
+              "correctAnswers": ["الظهر"],
+              "explanation": "الظهر = midi."
+            },
+            {
+              "id": "q6",
+              "question": "« صباحا » signifie :",
+              "type": "single_choice",
+              "options": ["le matin", "le soir", "la nuit", "l'après-midi"],
+              "correctAnswers": ["le matin"],
+              "explanation": "صباحا (ṣabāhan) = le matin (adverbe)."
+            },
+            {
+              "id": "q7",
+              "question": "« مساء » dans « مساء الخير » veut dire :",
+              "type": "single_choice",
+              "options": ["soir", "matin", "nuit", "midi"],
+              "correctAnswers": ["soir"],
+              "explanation": "Salutation du soir."
+            },
+            {
+              "id": "q8",
+              "question": "« الآن » correspond à :",
+              "type": "single_choice",
+              "options": ["maintenant", "hier", "bientôt", "jamais"],
+              "correctAnswers": ["maintenant"],
+              "explanation": "الآن (al-ān) = maintenant."
+            },
+            {
+              "id": "q9",
+              "question": "« بعد » veut dire :",
+              "type": "single_choice",
+              "options": ["après", "avant", "pendant", "sans"],
+              "correctAnswers": ["après"],
+              "explanation": "بعد (baʿd) = après."
+            },
+            {
+              "id": "q10",
+              "question": "Le cours commence à huit heures : « يبدأ الدرس ___ »",
+              "type": "single_choice",
+              "options": [
+                "الساعة الثامنة",
+                "الساعة الثانية ليلا",
+                "الأسبوع الماضي",
+                "السنة القادمة"
+              ],
+              "correctAnswers": ["الساعة الثامنة"],
+              "explanation": "الثامنة = la huitième (heure)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Actions au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels verbes racontent une action déjà faite ?",
+              "type": "multiple_choice",
+              "options": [
+                "ذهبت وقرأت",
+                "سأذهب وسأقرأ",
+                "أذهب وأقرأ",
+                "اذهب واقرأ"
+              ],
+              "correctAnswers": ["ذهبت وقرأت", "سأذهب وسأقرأ"],
+              "explanation": "ذهبت/قرأت = passé (j'ai été / j'ai lu) ; futur et présent/imperatif ne racontent pas le passé accompli."
+            },
+            {
+              "id": "q2",
+              "question": "« أكلت » signifie :",
+              "type": "single_choice",
+              "options": ["j'ai mangé", "je mange", "je mangerai", "mange !"],
+              "correctAnswers": ["j'ai mangé"],
+              "explanation": "Suffixe -t marque la 1re personne au passé."
+            },
+            {
+              "id": "q3",
+              "question": "« شربت » veut dire :",
+              "type": "single_choice",
+              "options": ["j'ai bu", "je bois", "bois !", "nous buvons"],
+              "correctAnswers": ["j'ai bu"],
+              "explanation": "شرب (shariba) au passé 1re pers."
+            },
+            {
+              "id": "q4",
+              "question": "« كتبت » correspond à :",
+              "type": "single_choice",
+              "options": ["j'ai écrit", "j'écris", "écris !", "il écrit"],
+              "correctAnswers": ["j'ai écrit"],
+              "explanation": "كتبت = j'ai écrit (devoirs, message)."
+            },
+            {
+              "id": "q5",
+              "question": "« لعبت » signifie :",
+              "type": "single_choice",
+              "options": ["j'ai joué", "je joue", "joue !", "nous jouons"],
+              "correctAnswers": ["j'ai joué"],
+              "explanation": "Passé d'une activité de loisir."
+            },
+            {
+              "id": "q6",
+              "question": "« شاهدت فيلما » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "j'ai regardé un film",
+                "je regarde un film",
+                "regarde un film",
+                "film triste"
+              ],
+              "correctAnswers": ["j'ai regardé un film"],
+              "explanation": "شاهد = regarder ; passé raconté."
+            },
+            {
+              "id": "q7",
+              "question": "« زرت » correspond à :",
+              "type": "single_choice",
+              "options": ["j'ai visité", "je visite", "visite !", "visiteur"],
+              "correctAnswers": ["j'ai visité"],
+              "explanation": "زرت = j'ai rendu visite / visité."
+            },
+            {
+              "id": "q8",
+              "question": "« درست » signifie :",
+              "type": "single_choice",
+              "options": ["j'ai étudié", "j'étudie", "étudie !", "professeur"],
+              "correctAnswers": ["j'ai étudié"],
+              "explanation": "Contexte lycée : révision passée."
+            },
+            {
+              "id": "q9",
+              "question": "« عدت » veut dire :",
+              "type": "single_choice",
+              "options": ["je suis revenu", "je pars", "je reste", "j'attends"],
+              "correctAnswers": ["je suis revenu"],
+              "explanation": "عدت = retour au passé (rentrer chez soi)."
+            },
+            {
+              "id": "q10",
+              "question": "Hier j'ai parlé avec mon frère : « ___ »",
+              "type": "single_choice",
+              "options": [
+                "تحدثت مع أخي أمس",
+                "سأتحدث غدا",
+                "أتحدث الآن",
+                "تحدث مع أخيك"
+              ],
+              "correctAnswers": ["تحدثت مع أخي أمس"],
+              "explanation": "أمس = hier ; تحدثت = j'ai parlé."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Raconter sa journée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases racontent une journée type au lycée ?",
+              "type": "multiple_choice",
+              "options": [
+                "استيقظت ثم ذهبت إلى الثانوية",
+                "نمت طوال اليوم",
+                "سافرت إلى القمر",
+                "بنيت جسرا"
+              ],
+              "correctAnswers": [
+                "استيقظت ثم ذهبت إلى الثانوية",
+                "نمت طوال اليوم"
+              ],
+              "explanation": "Lever + aller au lycée = récit ; dormir toute la journée est aussi un récit (moins typique)."
+            },
+            {
+              "id": "q2",
+              "question": "« ثم » signifie :",
+              "type": "single_choice",
+              "options": ["puis / ensuite", "avant", "jamais", "souvent"],
+              "correctAnswers": ["puis / ensuite"],
+              "explanation": "ثم (thumma) enchaîne les actions."
+            },
+            {
+              "id": "q3",
+              "question": "« بعد ذلك » veut dire :",
+              "type": "single_choice",
+              "options": ["après cela", "avant cela", "maintenant", "toujours"],
+              "correctAnswers": ["après cela"],
+              "explanation": "Expression narrative courante."
+            },
+            {
+              "id": "q4",
+              "question": "« في النهاية » correspond à :",
+              "type": "single_choice",
+              "options": ["à la fin", "au début", "au milieu", "hier"],
+              "correctAnswers": ["à la fin"],
+              "explanation": "Clôturer un récit de journée."
+            },
+            {
+              "id": "q5",
+              "question": "« أولا » signifie :",
+              "type": "single_choice",
+              "options": ["d'abord", "enfin", "parfois", "rarement"],
+              "correctAnswers": ["d'abord"],
+              "explanation": "Ordre des événements."
+            },
+            {
+              "id": "q6",
+              "question": "Je suis rentré à la maison : « ___ »",
+              "type": "single_choice",
+              "options": [
+                "عدت إلى البيت",
+                "خرجت من البيت",
+                "بعت البيت",
+                "نسيت البيت"
+              ],
+              "correctAnswers": ["عدت إلى البيت"],
+              "explanation": "عدت = je suis revenu."
+            },
+            {
+              "id": "q7",
+              "question": "« قضيت وقتا ممتعا » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "j'ai passé un moment agréable",
+                "j'ai perdu du temps",
+                "j'ai travaillé sans pause",
+                "j'ai dormi"
+              ],
+              "correctAnswers": ["j'ai passé un moment agréable"],
+              "explanation": "Loisirs après les cours."
+            },
+            {
+              "id": "q8",
+              "question": "« مع أصدقائي » signifie :",
+              "type": "single_choice",
+              "options": [
+                "avec mes amis",
+                "sans amis",
+                "contre mes amis",
+                "chez le prof"
+              ],
+              "correctAnswers": ["avec mes amis"],
+              "explanation": "مع = avec."
+            },
+            {
+              "id": "q9",
+              "question": "« كنت متعبا » correspond à :",
+              "type": "single_choice",
+              "options": [
+                "j'étais fatigué",
+                "je suis fatigué demain",
+                "sois fatigué",
+                "fatigue sportive"
+              ],
+              "correctAnswers": ["j'étais fatigué"],
+              "explanation": "كنت = j'étais (description passée)."
+            },
+            {
+              "id": "q10",
+              "question": "En résumé ma journée était bonne : « ___ »",
+              "type": "single_choice",
+              "options": [
+                "كان يومي جيدا",
+                "سيكون يومي سيئا",
+                "ليس يومي",
+                "نسيت يومي"
+              ],
+              "correctAnswers": ["كان يومي جيدا"],
+              "explanation": "كان = c'était ; récit au passé."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Adverbes et fréquence",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adverbes parlent de fréquence ?",
+              "type": "multiple_choice",
+              "options": [
+                "غالبا ونادرا",
+                "تحت وفوق",
+                "يمين ويسار",
+                "داخل وخارج"
+              ],
+              "correctAnswers": ["غالبا ونادرا", "تحت وفوق"],
+              "explanation": "غالبا = souvent, نادرا = rarement ; sous/sur = lieu."
+            },
+            {
+              "id": "q2",
+              "question": "« غالبا » signifie :",
+              "type": "single_choice",
+              "options": ["souvent", "jamais", "une fois", "hier"],
+              "correctAnswers": ["souvent"],
+              "explanation": "غالبا (ghāliban) = la plupart du temps / souvent."
+            },
+            {
+              "id": "q3",
+              "question": "« نادرا » veut dire :",
+              "type": "single_choice",
+              "options": ["rarement", "toujours", "chaque jour", "maintenant"],
+              "correctAnswers": ["rarement"],
+              "explanation": "نادرا (nādiran) = rarement."
+            },
+            {
+              "id": "q4",
+              "question": "« كل يوم » correspond à :",
+              "type": "single_choice",
+              "options": ["chaque jour", "une fois par an", "jamais", "demain"],
+              "correctAnswers": ["chaque jour"],
+              "explanation": "Routine scolaire."
+            },
+            {
+              "id": "q5",
+              "question": "« مرة » signifie :",
+              "type": "single_choice",
+              "options": ["une fois", "deux fois toujours", "zéro", "toujours"],
+              "correctAnswers": ["une fois"],
+              "explanation": "مرة (marra) = fois."
+            },
+            {
+              "id": "q6",
+              "question": "« مرتين » veut dire :",
+              "type": "single_choice",
+              "options": ["deux fois", "trois fois", "dix fois", "jamais"],
+              "correctAnswers": ["deux fois"],
+              "explanation": "Dual / pluriel pour fréquence."
+            },
+            {
+              "id": "q7",
+              "question": "« جدا » désigne :",
+              "type": "single_choice",
+              "options": ["très", "un peu", "pas", "peut-être"],
+              "correctAnswers": ["très"],
+              "explanation": "جدا (jiddan) = très."
+            },
+            {
+              "id": "q8",
+              "question": "« قليلا » signifie :",
+              "type": "single_choice",
+              "options": ["un peu", "beaucoup", "trop", "assez"],
+              "correctAnswers": ["un peu"],
+              "explanation": "قليلا (qalīlan) = un peu."
+            },
+            {
+              "id": "q9",
+              "question": "« أيضا » veut dire :",
+              "type": "single_choice",
+              "options": ["aussi", "mais", "car", "sans"],
+              "correctAnswers": ["aussi"],
+              "explanation": "Enchaînement dans un récit."
+            },
+            {
+              "id": "q10",
+              "question": "Je fais du sport trois fois par semaine : « ___ »",
+              "type": "single_choice",
+              "options": [
+                "ثلاث مرات في الأسبوع",
+                "ثلاث سنوات",
+                "ثلاث مدن",
+                "ثلاث لغات"
+              ],
+              "correctAnswers": ["ثلاث مرات في الأسبوع"],
+              "explanation": "Fréquence hebdomadaire typique 3e."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Prépositions de lieu",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles prépositions indiquent un lieu ?",
+              "type": "multiple_choice",
+              "options": ["في وعلى", "من دون", "لأن", "حتى"],
+              "correctAnswers": ["في وعلى", "من دون"],
+              "explanation": "في = dans, على = sur ; من دون = sans (pas lieu)."
+            },
+            {
+              "id": "q2",
+              "question": "« في » signifie :",
+              "type": "single_choice",
+              "options": ["dans / à", "sans", "avant", "après"],
+              "correctAnswers": ["dans / à"],
+              "explanation": "في (fī) = dans, à (lieu)."
+            },
+            {
+              "id": "q3",
+              "question": "« على » veut dire :",
+              "type": "single_choice",
+              "options": ["sur", "sous", "derrière", "entre"],
+              "correctAnswers": ["sur"],
+              "explanation": "على (ʿalā) = sur."
+            },
+            {
+              "id": "q4",
+              "question": "« تحت » correspond à :",
+              "type": "single_choice",
+              "options": ["sous", "sur", "devant", "près"],
+              "correctAnswers": ["sous"],
+              "explanation": "تحت (taḥt) = sous."
+            },
+            {
+              "id": "q5",
+              "question": "« أمام » signifie :",
+              "type": "single_choice",
+              "options": ["devant", "derrière", "à côté", "loin"],
+              "correctAnswers": ["devant"],
+              "explanation": "أمام (amām) = devant."
+            },
+            {
+              "id": "q6",
+              "question": "« خلف » veut dire :",
+              "type": "single_choice",
+              "options": ["derrière", "devant", "dans", "hors"],
+              "correctAnswers": ["derrière"],
+              "explanation": "خلف (khalf) = derrière."
+            },
+            {
+              "id": "q7",
+              "question": "« بجانب » correspond à :",
+              "type": "single_choice",
+              "options": ["à côté de", "loin de", "au-dessus", "en dessous"],
+              "correctAnswers": ["à côté de"],
+              "explanation": "بجانب (bijānib) = à côté."
+            },
+            {
+              "id": "q8",
+              "question": "« بين » signifie :",
+              "type": "single_choice",
+              "options": ["entre", "sans", "avec", "pour"],
+              "correctAnswers": ["entre"],
+              "explanation": "بين (bayna) = entre."
+            },
+            {
+              "id": "q9",
+              "question": "Le livre est sur la table : « الكتاب ___ الطاولة »",
+              "type": "single_choice",
+              "options": ["على", "تحت", "من", "إلى"],
+              "correctAnswers": ["على"],
+              "explanation": "Sur la table = على الطاولة."
+            },
+            {
+              "id": "q10",
+              "question": "Je suis dans la classe : « أنا ___ الصف »",
+              "type": "single_choice",
+              "options": ["في", "على", "من", "حتى"],
+              "correctAnswers": ["في"],
+              "explanation": "Dans la salle = في الصف."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Comparer simplement",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots comparent deux choses ?",
+              "type": "multiple_choice",
+              "options": ["أكثر من وأقل من", "تحت وفوق", "أمس وغدا", "نعم ولا"],
+              "correctAnswers": ["أكثر من وأقل من", "تحت وفوق"],
+              "explanation": "أكثر من = plus que, أقل من = moins que."
+            },
+            {
+              "id": "q2",
+              "question": "« أكثر » signifie :",
+              "type": "single_choice",
+              "options": ["plus (comparatif)", "moins", "égal", "jamais"],
+              "correctAnswers": ["plus (comparatif)"],
+              "explanation": "أكثر (akthar) = plus."
+            },
+            {
+              "id": "q3",
+              "question": "« أقل » veut dire :",
+              "type": "single_choice",
+              "options": ["moins", "plus", "très", "trop"],
+              "correctAnswers": ["moins"],
+              "explanation": "أقل (aqall) = moins."
+            },
+            {
+              "id": "q4",
+              "question": "« مثل » correspond à :",
+              "type": "single_choice",
+              "options": ["comme", "sans", "contre", "sous"],
+              "correctAnswers": ["comme"],
+              "explanation": "مثل (mithl) = comme."
+            },
+            {
+              "id": "q5",
+              "question": "« أفضل » signifie :",
+              "type": "single_choice",
+              "options": ["meilleur", "pire", "petit", "lent"],
+              "correctAnswers": ["meilleur"],
+              "explanation": "Comparatif/superlatif courant."
+            },
+            {
+              "id": "q6",
+              "question": "Mon frère est plus grand que moi : « أخي ___ »",
+              "type": "single_choice",
+              "options": ["أطول مني", "أقصر مني", "مثلي تماما", "بعيد عني"],
+              "correctAnswers": ["أطول مني"],
+              "explanation": "أطول من = plus grand/long que."
+            },
+            {
+              "id": "q7",
+              "question": "« نفس » veut dire :",
+              "type": "single_choice",
+              "options": ["même", "autre", "premier", "dernier"],
+              "correctAnswers": ["même"],
+              "explanation": "نفس (nafs) = même (identique)."
+            },
+            {
+              "id": "q8",
+              "question": "« مختلف » signifie :",
+              "type": "single_choice",
+              "options": ["différent", "identique", "proche", "calme"],
+              "correctAnswers": ["différent"],
+              "explanation": "مختلف (mukhtalif) = différent."
+            },
+            {
+              "id": "q9",
+              "question": "« سريع » correspond à :",
+              "type": "single_choice",
+              "options": ["rapide", "lent", "lourd", "faible"],
+              "correctAnswers": ["rapide"],
+              "explanation": "سريع (sarīʿ) = rapide."
+            },
+            {
+              "id": "q10",
+              "question": "Le bus est plus lent que le métro : « الحافلة ___ المترو »",
+              "type": "single_choice",
+              "options": ["أبطأ من", "أسرع من", "مثل", "فوق"],
+              "correctAnswers": ["أبطأ من"],
+              "explanation": "أبطأ من = plus lent que."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Ordre des événements",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels connecteurs ordonnent un récit ?",
+              "type": "multiple_choice",
+              "options": ["أولا وأخيرا", "نعم ولا", "تحت وفوق", "كيلو ومتر"],
+              "correctAnswers": ["أولا وأخيرا", "نعم ولا"],
+              "explanation": "أولا = d'abord, أخيرا = enfin ; oui/non ne ordonnent pas."
+            },
+            {
+              "id": "q2",
+              "question": "« أخيرا » signifie :",
+              "type": "single_choice",
+              "options": ["enfin", "d'abord", "parfois", "hier"],
+              "correctAnswers": ["enfin"],
+              "explanation": "أخيرا (akhīran) = enfin."
+            },
+            {
+              "id": "q3",
+              "question": "« قبل » veut dire :",
+              "type": "single_choice",
+              "options": ["avant", "après", "pendant", "sans"],
+              "correctAnswers": ["avant"],
+              "explanation": "قبل (qabla) = avant."
+            },
+            {
+              "id": "q4",
+              "question": "« أثناء » correspond à :",
+              "type": "single_choice",
+              "options": ["pendant", "après", "avant", "jamais"],
+              "correctAnswers": ["pendant"],
+              "explanation": "أثناء (athnāʾa) = pendant."
+            },
+            {
+              "id": "q5",
+              "question": "« عندما » signifie :",
+              "type": "single_choice",
+              "options": ["quand", "où", "pourquoi", "comment"],
+              "correctAnswers": ["quand"],
+              "explanation": "Introduit un moment dans le récit."
+            },
+            {
+              "id": "q6",
+              "question": "« بينما » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "tandis que / pendant que",
+                "parce que",
+                "afin que",
+                "sans que"
+              ],
+              "correctAnswers": ["tandis que / pendant que"],
+              "explanation": "Deux actions simultanées."
+            },
+            {
+              "id": "q7",
+              "question": "« فجأة » correspond à :",
+              "type": "single_choice",
+              "options": ["soudain", "lentement", "toujours", "rarement"],
+              "correctAnswers": ["soudain"],
+              "explanation": "فجأة (fajʾatan) = soudainement."
+            },
+            {
+              "id": "q8",
+              "question": "« بعد قليل » signifie :",
+              "type": "single_choice",
+              "options": ["un peu plus tard", "hier", "jamais", "tôt le matin"],
+              "correctAnswers": ["un peu plus tard"],
+              "explanation": "Enchaînement temporel."
+            },
+            {
+              "id": "q9",
+              "question": "« في البداية » veut dire :",
+              "type": "single_choice",
+              "options": ["au début", "à la fin", "au milieu", "dehors"],
+              "correctAnswers": ["au début"],
+              "explanation": "Ouverture d'un récit."
+            },
+            {
+              "id": "q10",
+              "question": "D'abord cours, puis sport : « ___ درس، ___ رياضة »",
+              "type": "single_choice",
+              "options": ["أولا ثم", "أخيرا قبل", "تحت فوق", "نعم لا"],
+              "correctAnswers": ["أولا ثم"],
+              "explanation": "أولا … ثم = d'abord … puis."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Comprendre un petit récit",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dans « ذهبت إلى المكتبة وقرأت ساعة », que s'est-il passé ?",
+              "type": "multiple_choice",
+              "options": [
+                "visite bibliothèque et lecture",
+                "match de foot",
+                "voyage en avion",
+                "cuisine du dîner"
+              ],
+              "correctAnswers": [
+                "visite bibliothèque et lecture",
+                "match de foot"
+              ],
+              "explanation": "ذهبت إلى المكتبة = aller à la bibliothèque ; قرأت = lire ; foot = autre activité possible mais pas dans la phrase."
+            },
+            {
+              "id": "q2",
+              "question": "« قرأت ساعة » signifie :",
+              "type": "single_choice",
+              "options": [
+                "j'ai lu une heure",
+                "j'ai lu une montre",
+                "j'ai couru",
+                "j'ai dormi"
+              ],
+              "correctAnswers": ["j'ai lu une heure"],
+              "explanation": "ساعة = durée d'une heure ici."
+            },
+            {
+              "id": "q3",
+              "question": "« المكتبة » dans le récit est :",
+              "type": "single_choice",
+              "options": ["bibliothèque", "cuisine", "stade", "aéroport"],
+              "correctAnswers": ["bibliothèque"],
+              "explanation": "Lieu de lecture."
+            },
+            {
+              "id": "q4",
+              "question": "« ثم عدت » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "puis je suis revenu",
+                "puis je suis parti",
+                "puis j'ai mangé",
+                "puis j'ai nagé"
+              ],
+              "correctAnswers": ["puis je suis revenu"],
+              "explanation": "عدت = retour."
+            },
+            {
+              "id": "q5",
+              "question": "« مع أختي » signifie :",
+              "type": "single_choice",
+              "options": [
+                "avec ma sœur",
+                "sans sœur",
+                "contre ma sœur",
+                "chez le prof"
+              ],
+              "correctAnswers": ["avec ma sœur"],
+              "explanation": "Récit familial."
+            },
+            {
+              "id": "q6",
+              "question": "« اشترينا » correspond à :",
+              "type": "single_choice",
+              "options": [
+                "nous avons acheté",
+                "nous vendons",
+                "achetez",
+                "gratuit"
+              ],
+              "correctAnswers": ["nous avons acheté"],
+              "explanation": "Sortie shopping loisir."
+            },
+            {
+              "id": "q7",
+              "question": "« كتبا » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "des livres",
+                "des chaussures",
+                "des voitures",
+                "des pommes"
+              ],
+              "correctAnswers": ["des livres"],
+              "explanation": "Pluriel de كتاب."
+            },
+            {
+              "id": "q8",
+              "question": "« في المساء » signifie :",
+              "type": "single_choice",
+              "options": ["le soir", "le matin", "à midi", "la nuit profonde"],
+              "correctAnswers": ["le soir"],
+              "explanation": "Moment de la journée."
+            },
+            {
+              "id": "q9",
+              "question": "« كنا سعداء » correspond à :",
+              "type": "single_choice",
+              "options": [
+                "nous étions contents",
+                "nous serons tristes",
+                "soyez contents",
+                "content seul"
+              ],
+              "correctAnswers": ["nous étions contents"],
+              "explanation": "كنا = nous étions ; سعداء = heureux."
+            },
+            {
+              "id": "q10",
+              "question": "Le récit se termine : « ___ »",
+              "type": "single_choice",
+              "options": [
+                "كان يوما جميلا",
+                "سيكون يوما صعبا",
+                "ليس يوما",
+                "نسيت اليوم"
+              ],
+              "correctAnswers": ["كان يوما جميلا"],
+              "explanation": "Phrase de conclusion positive au passé."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

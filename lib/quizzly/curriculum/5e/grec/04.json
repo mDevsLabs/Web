@@ -1,0 +1,2398 @@
+{
+  "id": "5e-grec-04",
+  "year": "5e",
+  "subject": "grec",
+  "title": "La grammaire du grec ancien",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont au féminin ?",
+              "explanation": "ἡ (hē) est l'article féminin et γυνή (gunē) est un nom féminin.",
+              "options": [
+                "ἡ (hē)",
+                "γυνή (gunē)",
+                "ὁ (ho)",
+                "ἄνθρωπος (anthrōpos)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Article masculin nominatif singulier ?",
+              "explanation": "ὁ (ho) est l'article masculin au nominatif singulier.",
+              "options": ["ὁ (ho)", "ἡ (hē)", "τό (to)", "τόν (ton)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel article avec τὸ παιδίον (to paidion) ?",
+              "explanation": "παιδίον (paidion) est neutre : τό (to) au nominatif.",
+              "options": ["τό (to)", "ὁ (ho)", "ἡ (hē)", "τήν (tēn)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Nominatif singulier de « homme » ?",
+              "explanation": "Sujet : ἄνθρωπος (anthrōpos).",
+              "options": [
+                "ἄνθρωπος (anthrōpos)",
+                "ἄνθρωπον (anthrōpon)",
+                "τοῦ (tou)",
+                "εἰμί (eimi)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Accusatif singulier de ἄνθρωπος (anthrōpos) ?",
+              "explanation": "Accusatif en -ον (on) : ἄνθρωπον (anthrōpon).",
+              "options": [
+                "ἄνθρωπον (anthrōpon)",
+                "ἄνθρωπος (anthrōpos)",
+                "ὁ (ho)",
+                "ἡ (hē)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lequel est un article ?",
+              "explanation": "τό (to) est l'article neutre nominatif singulier.",
+              "options": [
+                "τό (to)",
+                "λόγος (logos)",
+                "θάλασσα (thalassa)",
+                "νόμος (nomos)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ὁ λόγος (ho logos) : λόγος (logos) est…",
+              "explanation": "ὁ (ho) marque le masculin.",
+              "options": ["masculin", "féminin", "neutre", "verbe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "ἡ θάλασσα (hē thalassa) : θάλασσα (thalassa) est…",
+              "explanation": "ἡ (hē) indique le féminin.",
+              "options": ["féminin", "masculin", "neutre", "accusatif"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le nominatif sert surtout de…",
+              "explanation": "Cas du sujet en phrase simple.",
+              "options": [
+                "sujet",
+                "objet direct",
+                "complément d'agent",
+                "interjection"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sujet masculin correct ?",
+              "explanation": "ὁ (ho) + nominatif : ὁ ἄνθρωπος (ho anthrōpos).",
+              "options": [
+                "ὁ ἄνθρωπος (ho anthrōpos)",
+                "τὸν ἄνθρωπον (ton anthrōpon)",
+                "ἡ ἄνθρωπος (hē anthrōpos)",
+                "τό ἄνθρωπος (to anthrōpos)"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont des articles nominatif singulier ?",
+              "explanation": "ὁ (ho) et τό (to) sont des articles au nominatif singulier.",
+              "options": [
+                "ὁ (ho)",
+                "τό (to)",
+                "ἄνθρωπος (anthrōpos)",
+                "τοῦ (tou)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Article pour ἡ νύξ (hē nux) ?",
+              "explanation": "νύξ (nux) est féminin : ἡ (hē).",
+              "options": ["ἡ (hē)", "ὁ (ho)", "τό (to)", "τόν (ton)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le genre se voit surtout avec…",
+              "explanation": "L'article qui accompagne le nom indique le genre.",
+              "options": [
+                "l'article du nom",
+                "le nombre de lettres",
+                "l'alphabet",
+                "la ponctuation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Objet direct « l'homme » : forme du nom ?",
+              "explanation": "Accusatif ἄνθρωπον (anthrōpon).",
+              "options": [
+                "ἄνθρωπον (anthrōpon)",
+                "ἄνθρωπος (anthrōpos)",
+                "ὁ (ho)",
+                "ἐστί (esti)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Bon accord nominatif ?",
+              "explanation": "οἶκος (oikos) masculin : ὁ οἶκος (ho oikos).",
+              "options": [
+                "ὁ οἶκος (ho oikos)",
+                "ἡ οἶκος (hē oikos)",
+                "τό οἶκος (to oikos)",
+                "ὁ οἶκον (ho oikon)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "τὸ ἔργον (to ergon) : genre de ἔργον (ergon) ?",
+              "explanation": "τό (to) = neutre.",
+              "options": ["neutre", "masculin", "féminin", "pluriel"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lequel n'est pas un article ?",
+              "explanation": "ψυχή (psuchē) est un nom.",
+              "options": ["ψυχή (psuchē)", "ὁ (ho)", "ἡ (hē)", "τό (to)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rôle principal de l'accusatif en 5e ?",
+              "explanation": "Complément d'objet direct.",
+              "options": ["objet direct", "sujet", "vocative", "génitif"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ὁ θεός (ho theos) et ἡ θεά (hē thea) : …",
+              "explanation": "Masculin et féminin distincts.",
+              "options": [
+                "masculin et féminin",
+                "deux neutres",
+                "deux articles seuls",
+                "accusatifs"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "τὸ δῶρον (to dōron) : cas de τό (to) ici ?",
+              "explanation": "Nominatif singulier neutre.",
+              "options": [
+                "nominatif singulier",
+                "génitif",
+                "datif",
+                "accusatif pluriel"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont masculins ?",
+              "explanation": "ὁ (ho) est l'article masculin et νόμος (nomos) est un nom masculin.",
+              "options": [
+                "ὁ (ho)",
+                "νόμος (nomos)",
+                "ἡ (hē)",
+                "τὸ παιδίον (to paidion)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Article féminin nominatif ?",
+              "explanation": "ἡ (hē) est l'article féminin singulier.",
+              "options": ["ἡ (hē)", "ὁ (ho)", "τό (to)", "τόν (ton)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ἡ ὁδός (hē hodos) : ὁδός (hodos) est…",
+              "explanation": "ἡ (hē) marque le féminin.",
+              "options": ["féminin", "masculin", "neutre", "verbe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Forme sujet pour « homme » ?",
+              "explanation": "Nominatif ἄνθρωπος (anthrōpos).",
+              "options": [
+                "ἄνθρωπος (anthrōpos)",
+                "ἄνθρωπον (anthrōpon)",
+                "τό (to)",
+                "εἰμί (eimi)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "τὸν ἄνθρωπον (ton anthrōpon) : cas du nom ?",
+              "explanation": "Terminaison -ον (on) ici en accusatif avec article τόν (ton).",
+              "options": ["accusatif", "nominatif", "génitif", "vocative"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Accord correct pour « la mer » ?",
+              "explanation": "θάλασσα (thalassa) féminin : ἡ θάλασσα (hē thalassa).",
+              "options": [
+                "ἡ θάλασσα (hē thalassa)",
+                "ὁ θάλασσα (ho thalassa)",
+                "τό θάλασσα (to thalassa)",
+                "ἡ θάλασσαν (hē thalassan)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les trois articles nominatif singulier sont…",
+              "explanation": "ὁ (ho), ἡ (hē), τό (to) couvrent les trois genres.",
+              "options": [
+                "ὁ, ἡ, τό (ho, hē, to)",
+                "τόν, τήν, τό (ton, tēn, to)",
+                "τοῦ, τῆς, τοῦ (tou, tēs, tou)",
+                "εἰμί, ἐστί, εἰσί (eimi, esti, eisi)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un nom neutre typique en -ον (on) ?",
+              "explanation": "δῶρον (dōron) « cadeau » est neutre.",
+              "options": [
+                "δῶρον (dōron)",
+                "ἄνθρωπος (anthrōpos)",
+                "γυνή (gunē)",
+                "ὁδός (hodos)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mauvais accord : lequel ?",
+              "explanation": "βίβλος (biblos) est féminin, pas ὁ (ho).",
+              "options": [
+                "ὁ βίβλος (ho biblos)",
+                "ἡ βίβλος (hē biblos)",
+                "ἡ γυνή (hē gunē)",
+                "τὸ παιδίον (to paidion)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'article grec correspond souvent au français…",
+              "explanation": "ὁ/ἡ/τό (ho/hē/to) se rendent par « le / la » selon le contexte.",
+              "options": [
+                "le ou la (défini)",
+                "un ou une seulement",
+                "de / du seulement",
+                "sans équivalent"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont des noms neutres ?",
+              "explanation": "παιδίον (paidion) et ἔργον (ergon) sont des noms neutres.",
+              "options": [
+                "παιδίον (paidion)",
+                "ἔργον (ergon)",
+                "λόγος (logos)",
+                "γυνή (gunē)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel article avec ὁ ἀνήρ (ho anēr) ?",
+              "explanation": "ἀνήρ (anēr) masculin : ὁ (ho).",
+              "options": ["ὁ (ho)", "ἡ (hē)", "τό (to)", "ἡ (hē) toujours"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Différence ἄνθρωπος / ἄνθρωπον ?",
+              "explanation": "Nominatif sujet, accusatif objet direct.",
+              "options": [
+                "sujet / objet direct",
+                "pluriel / singulier",
+                "féminin / masculin",
+                "présent / passé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "τὸ ζῷον (to zōion) : genre ?",
+              "explanation": "τό (to) annonce un neutre.",
+              "options": ["neutre", "masculin", "féminin", "article seul"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lequel est à l'accusatif ?",
+              "explanation": "ἄνθρωπον (anthrōpon) termine en -ον (on) accusatif.",
+              "options": [
+                "ἄνθρωπον (anthrōpon)",
+                "ἄνθρωπος (anthrōpos)",
+                "ὁ (ho)",
+                "ἡ (hē)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bon groupe nominatif ?",
+              "explanation": "χώρα (khōra) féminin : ἡ χώρα (hē khōra).",
+              "options": [
+                "ἡ χώρα (hē khōra)",
+                "ὁ χώρα (ho khōra)",
+                "τό χώρα (to khōra)",
+                "ἡ χώραν (hē khōran)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ὁ (ho) ne peut pas introduire…",
+              "explanation": "τὸ παιδίον (to paidion) exige τό (to), pas ὁ (ho).",
+              "options": [
+                "τὸ παιδίον (to paidion)",
+                "ὁ λόγος (ho logos)",
+                "ὁ νόμος (ho nomos)",
+                "ὁ ἀνήρ (ho anēr)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En 5e, combien de cas du nom on retient surtout ?",
+              "explanation": "Nominatif et accusatif pour commencer.",
+              "options": [
+                "deux (nominatif et accusatif)",
+                "sept d'emblée",
+                "un seul",
+                "aucun"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Transcription de ἡ (hē) ?",
+              "explanation": "La transcription usuelle est hē.",
+              "options": ["hē", "ho", "to", "ton"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Accord article + nom : règle ?",
+              "explanation": "Même genre et même cas (ici nominatif).",
+              "options": [
+                "même genre et cas",
+                "genre opposé",
+                "sans article jamais",
+                "accusatif pour le sujet"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des articles ?",
+              "explanation": "ἡ (hē) et τό (to) sont des articles ; ἄνθρωπος (anthrōpos) est un nom.",
+              "options": [
+                "ἡ (hē)",
+                "τό (to)",
+                "ἄνθρωπος (anthrōpos)",
+                "δῶρον (dōron)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Féminin : ἡ … (hē …) avec",
+              "explanation": "βίβλος (biblos) livre : ἡ βίβλος (hē biblos).",
+              "options": [
+                "βίβλος (biblos)",
+                "λόγος (logos)",
+                "ἔργον (ergon)",
+                "ἄνθρωπος (anthrōpos)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Masculin nominatif : ὁ … (ho …) ?",
+              "explanation": "ἄγγελος (angelos) masculin : ὁ ἄγγελος (ho angelos).",
+              "options": [
+                "ἄγγελος (angelos)",
+                "γυνή (gunē)",
+                "παιδίον (paidion)",
+                "θάλασσα (thalassa)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Accusatif de θάλασσα (thalassa) en 5e ?",
+              "explanation": "On retient θάλασσαν (thalassan) avec -αν (an) au féminin.",
+              "options": [
+                "θάλασσαν (thalassan)",
+                "θάλασσα (thalassa)",
+                "θαλάσσης (thalassēs)",
+                "ὁ (ho)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "τό (to) accompagne surtout…",
+              "explanation": "Les noms neutres au nominatif singulier.",
+              "options": [
+                "noms neutres",
+                "tous les masculins",
+                "tous les féminins",
+                "verbes seuls"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le sujet d'une phrase simple est au…",
+              "explanation": "Cas du sujet : nominatif.",
+              "options": [
+                "nominatif",
+                "accusatif seul",
+                "génitif seul",
+                "infinitif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle forme n'est pas nominatif singulier article ?",
+              "explanation": "τόν (ton) est masculin accusatif singulier.",
+              "options": ["τόν (ton)", "ὁ (ho)", "ἡ (hē)", "τό (to)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "ὁ πατήρ (ho patēr) : πατήρ (patēr) est…",
+              "explanation": "ὁ (ho) = masculin.",
+              "options": ["masculin", "féminin", "neutre", "pluriel"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ἡ μήτηρ (hē mētēr) : μήτηρ (mētēr) est…",
+              "explanation": "ἡ (hē) = féminin.",
+              "options": ["féminin", "masculin", "neutre", "accusatif"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour l'objet « l'homme », le nom est en…",
+              "explanation": "Accusatif ἄνθρωπον (anthrōpon).",
+              "options": ["accusatif", "nominatif", "vocative", "génitif"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels groupes sont corrects au nominatif ?",
+              "explanation": "ὁ νόμος (ho nomos) et ἡ ὁδός (hē hodos) ont article et nom accordés.",
+              "options": [
+                "ὁ νόμος (ho nomos)",
+                "ἡ ὁδός (hē hodos)",
+                "ὁ γυνή (ho gunē)",
+                "τό ἄνθρωπος (to anthrōpos)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Lettre grecque alpha transcrite ?",
+              "explanation": "α (a) se transcrit a.",
+              "options": ["a", "b", "g", "d"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lettre ω (ō) : transcription ?",
+              "explanation": "ω (ō) se lit ō.",
+              "options": ["ō", "o court seul", "a", "ē"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "τὴν θάλασσαν (tēn thalassan) : cas du nom ?",
+              "explanation": "θάλασσαν (thalassan) est accusatif féminin.",
+              "options": ["accusatif", "nominatif", "génitif", "datif"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Neutre pluriel nominatif article (aperçu) ?",
+              "explanation": "τά (ta) est l'article neutre pluriel nominatif.",
+              "options": ["τά (ta)", "οἱ (hoi)", "αἱ (hai)", "ὁ (ho)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "ὁ ἥλιος (ho hēlios) : ἥλιος (hēlios) est…",
+              "explanation": "ὁ (ho) indique masculin.",
+              "options": ["masculin", "féminin", "neutre", "verbe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ἡ σελήνη (hē selēnē) : σελήνη (selēnē) est…",
+              "explanation": "ἡ (hē) indique féminin.",
+              "options": ["féminin", "masculin", "neutre", "accusatif"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Accord : τὸ … (to …) avec",
+              "explanation": "τὸ ὄνομα (to onoma) neutre.",
+              "options": [
+                "ὄνομα (onoma)",
+                "ἄνθρωπος (anthrōpos)",
+                "γυνή (gunē)",
+                "νόμος (nomos)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sans article, le genre est…",
+              "explanation": "Plus difficile : l'article aide en lecture.",
+              "options": [
+                "plus difficile à voir",
+                "impossible toujours",
+                "toujours neutre",
+                "toujours masculin"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "τόν (ton) devant ἄνθρωπον (anthrōpon) marque…",
+              "explanation": "Article masculin accusatif singulier + nom accusatif.",
+              "options": [
+                "masculin accusatif",
+                "féminin nominatif",
+                "neutre nominatif",
+                "verbe"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles transcriptions sont correctes ?",
+              "explanation": "ὁ (ho) se lit ho et τό (to) se lit to.",
+              "options": [
+                "ho pour ὁ (ho)",
+                "to pour τό (to)",
+                "ha pour ἡ (hē)",
+                "tee pour τό (to)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "ἡ ἀρετή (hē aretē) : genre ?",
+              "explanation": "ἡ (hē) = féminin.",
+              "options": ["féminin", "masculin", "neutre", "pluriel"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ὁ στρατηγός (ho stratēgos) : genre ?",
+              "explanation": "ὁ (ho) = masculin.",
+              "options": ["masculin", "féminin", "neutre", "accusatif"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Même racine, cas sujet homme ?",
+              "explanation": "Nominatif ἄνθρωπος (anthrōpos).",
+              "options": [
+                "ἄνθρωπος (anthrōpos)",
+                "ἄνθρωπον (anthrōpon)",
+                "ἀνθρώπων (anthrōpōn)",
+                "ἀνθρώποις (anthrōpois)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "τὸ τέκνον (to teknon) : τέκνον (teknon) est…",
+              "explanation": "Neutre en -ον (on).",
+              "options": ["neutre", "masculin", "féminin", "verbe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Erreur d'accord ?",
+              "explanation": "ἡ (hē) ne va pas avec λόγος (logos) masculin.",
+              "options": [
+                "ἡ λόγος (hē logos)",
+                "ὁ λόγος (ho logos)",
+                "τὸ ἔργον (to ergon)",
+                "ἡ βίβλος (hē biblos)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'accusatif répond à quelle question en français ?",
+              "explanation": "« Qui ? » sujet ; « qui/que ? » objet → accusatif.",
+              "options": [
+                "que voit-on ? (objet)",
+                "qui est sujet ?",
+                "de qui ?",
+                "où ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "τὰ δῶρα (ta dōra) : τά (ta) est…",
+              "explanation": "Article neutre pluriel nominatif/accusatif.",
+              "options": [
+                "article neutre pluriel",
+                "masculin singulier",
+                "féminin singulier",
+                "verbe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ὁ (ho) et ἡ (hē) diffèrent par…",
+              "explanation": "Genre masculin vs féminin.",
+              "options": [
+                "le genre",
+                "le nombre seulement",
+                "le temps verbal",
+                "la ponctuation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase : sujet « l'enfant » neutre ?",
+              "explanation": "τὸ παιδίον (to paidion) nominatif.",
+              "options": [
+                "τὸ παιδίον (to paidion)",
+                "τὸν παιδίον (ton paidion)",
+                "ὁ παιδίον (ho paidion)",
+                "ἡ παιδίον (hē paidion)"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels noms sont féminins ?",
+              "explanation": "χώρα (khōra) et ψυχή (psuchē) sont féminins.",
+              "options": [
+                "χώρα (khōra)",
+                "ψυχή (psuchē)",
+                "οἶκος (oikos)",
+                "παιδίον (paidion)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Article neutre singulier ?",
+              "explanation": "τό (to).",
+              "options": ["τό (to)", "ὁ (ho)", "ἡ (hē)", "τόν (ton)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ὁ φίλος (ho philos) : φίλος (philos) signifie",
+              "explanation": "« ami » ; masculin.",
+              "options": ["ami", "mer", "loi", "cadeau"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Accusatif masc. « ami » : φίλον (philon) ou φίλον ?",
+              "explanation": "φίλον (philon) accusatif de φίλος (philos) en thème en -ος.",
+              "options": [
+                "φίλον (philon)",
+                "φίλος (philos)",
+                "φίλοι (philoi)",
+                "φίλῳ (philōi)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "τὸ ἄστυ (to astu) : genre ?",
+              "explanation": "τό (to) = neutre (ville).",
+              "options": ["neutre", "masculin", "féminin", "verbe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bon nominatif féminin ?",
+              "explanation": "ἡ τέχνη (hē technē) art/craft féminin.",
+              "options": [
+                "ἡ τέχνη (hē technē)",
+                "ὁ τέχνη (ho technē)",
+                "τό τέχνη (to technē)",
+                "ἡ τέχνην (hē technēn) au nom."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le grec écrit de…",
+              "explanation": "De gauche à droite comme le français.",
+              "options": [
+                "gauche à droite",
+                "droite à gauche",
+                "haut en bas seulement",
+                "sans ordre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Spiritus asper sur ὁ (ho) : effet ?",
+              "explanation": "Indique le souffle h sur la transcription ho.",
+              "options": [
+                "h aspiré dans ho",
+                "silence total",
+                "voyelle longue seule",
+                "accent grave seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mauvais genre article ?",
+              "explanation": "γυνή (gunē) exige ἡ (hē).",
+              "options": [
+                "ὁ γυνή (ho gunē)",
+                "ἡ γυνή (hē gunē)",
+                "τὸ παιδίον (to paidion)",
+                "ὁ νόμος (ho nomos)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Nominatif et accusatif neutre singulier souvent…",
+              "explanation": "Même forme au neutre singulier pour nom et article τό (to).",
+              "options": [
+                "identiques en forme",
+                "toujours différents",
+                "absents",
+                "verbes"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont masculins nominatif ?",
+              "explanation": "ὁ σοφός (ho sophos) sage et ὁ ποιητής (ho poiētēs) poète.",
+              "options": [
+                "ὁ σοφός (ho sophos)",
+                "ὁ ποιητής (ho poiētēs)",
+                "ἡ ποιητής (hē poiētēs)",
+                "τὸ σοφός (to sophos)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Accusatif ἄνθρωπον (anthrōpon) avec article ?",
+              "explanation": "τὸν ἄνθρωπον (ton anthrōpon).",
+              "options": [
+                "τὸν ἄνθρωπον (ton anthrōpon)",
+                "ὁ ἄνθρωπος (ho anthrōpos)",
+                "τὸ ἄνθρωπον (to anthrōpon)",
+                "ἡ ἄνθρωπον (hē anthrōpon)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ἡ νίκη (hē nikē) : νίκη (nikē) signifie",
+              "explanation": "Victoire ; féminin.",
+              "options": ["victoire", "défaite", "guerre", "loi"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "τὸ ὕδωρ (to hudōr) : genre ?",
+              "explanation": "Eau ; neutre (forme atypique).",
+              "options": ["neutre", "masculin", "féminin", "verbe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'article défini grec…",
+              "explanation": "Il précise un nom déjà identifié.",
+              "options": [
+                "détermine un nom précis",
+                "remplace toujours un verbe",
+                "marque le passé",
+                "indique le pluriel seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Forme sujet : ἡ … (hē …) ?",
+              "explanation": "ἡ ἀλήθεια (hē alētheia) vérité.",
+              "options": [
+                "ἀλήθεια (alētheia)",
+                "ἀλήθειαν (alētheian)",
+                "ἀληθής (alēthēs)",
+                "ἀληθῶς (alēthōs)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "τό (to) vs τόν (ton) : différence ?",
+              "explanation": "τό nominatif neutre ; τόν accusatif masculin.",
+              "options": [
+                "cas différent (nom. neutre / acc. masc.)",
+                "même forme toujours",
+                "féminin vs masculin",
+                "présent vs passé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Accord : ὁ … (ho …) avec",
+              "explanation": "δοῦλος (doulos) esclave masculin.",
+              "options": [
+                "δοῦλος (doulos)",
+                "δούλη (doulē)",
+                "δῶρον (dōron)",
+                "θάλασσα (thalassa)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le nominatif répond à…",
+              "explanation": "Question « qui est-ce qui… ? » pour le sujet.",
+              "options": [
+                "qui fait l'action (sujet)",
+                "que voit-on",
+                "de qui",
+                "avec qui"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "τὸ μέτρον (to metron) : genre ?",
+              "explanation": "Mesure ; neutre.",
+              "options": [
+                "neutre",
+                "masculin",
+                "féminin",
+                "pluriel obligatoire"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels articles sont au singulier ?",
+              "explanation": "ὁ (ho) et ἡ (hē) sont singuliers ; οἱ (hoi) est pluriel.",
+              "options": ["ὁ (ho)", "ἡ (hē)", "οἱ (hoi)", "ταῖς (tais)"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Révision : trois genres grecs ?",
+              "explanation": "Masculin, féminin, neutre.",
+              "options": [
+                "masculin, féminin, neutre",
+                "singulier, duel, pluriel seulement",
+                "actif, passif seulement",
+                "présent, passé seulement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Révision : nominatif de ἄνθρωπος (anthrōpos) ?",
+              "explanation": "ἄνθρωπος (anthrōpos).",
+              "options": [
+                "ἄνθρωπος (anthrōpos)",
+                "ἄνθρωπον (anthrōpon)",
+                "ἄνθρωποι (anthrōpoi)",
+                "ἀνθρώπῳ (anthrōpōi)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Révision : accusatif de ἄνθρωπος (anthrōpos) ?",
+              "explanation": "ἄνθρωπον (anthrōpon).",
+              "options": [
+                "ἄνθρωπον (anthrōpon)",
+                "ἄνθρωπος (anthrōpos)",
+                "ὁ (ho)",
+                "τό (to)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Révision : article avec οἶκος (oikos) ?",
+              "explanation": "ὁ οἶκος (ho oikos).",
+              "options": ["ὁ (ho)", "ἡ (hē)", "τό (to)", "τήν (tēn)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Révision : article avec χώρα (khōra) ?",
+              "explanation": "ἡ χώρα (hē khōra).",
+              "options": ["ἡ (hē)", "ὁ (ho)", "τό (to)", "τόν (ton)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Révision : article avec δῶρον (dōron) ?",
+              "explanation": "τὸ δῶρον (to dōron).",
+              "options": ["τό (to)", "ὁ (ho)", "ἡ (hē)", "οἱ (hoi)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Révision : mauvais accord ?",
+              "explanation": "τό (to) + masculin ἄνθρωπος (anthrōpos) est incorrect.",
+              "options": [
+                "τὸ ἄνθρωπος (to anthrōpos)",
+                "ὁ ἄνθρωπος (ho anthrōpos)",
+                "ἡ γυνή (hē gunē)",
+                "τὸ παιδίον (to paidion)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Révision : rôle de l'accusatif ?",
+              "explanation": "Complément d'objet direct.",
+              "options": ["objet direct", "sujet", "appellation", "lieu"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Révision : rôle du nominatif ?",
+              "explanation": "Sujet de la phrase.",
+              "options": ["sujet", "objet direct", "génitif", "interjection"],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des formes de « être » ?",
+              "explanation": "εἰμί (eimi) et ἐστί (esti) appartiennent au verbe εἰμί (eimi).",
+              "options": [
+                "εἰμί (eimi)",
+                "ἐστί (esti)",
+                "ἄνθρωπος (anthrōpos)",
+                "ὁ (ho)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "εἰμί (eimi) signifie…",
+              "explanation": "Première personne du singulier : je suis.",
+              "options": ["je suis", "tu es", "il est", "nous sommes"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ἐστί (esti) signifie…",
+              "explanation": "Troisième personne singulier : il/elle est.",
+              "options": ["il ou elle est", "je suis", "vous êtes", "ils sont"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "ὁ ἄνθρωπος ἐστί (ho anthrōpos esti) : traduction ?",
+              "explanation": "Sujet + verbe : « c'est un homme » / « l'homme est ».",
+              "options": [
+                "l'homme est",
+                "l'homme voit",
+                "l'homme est vu (objet)",
+                "l'homme n'est pas"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans une phrase copule, le sujet est au…",
+              "explanation": "Sujet au nominatif avec ἐστί (esti).",
+              "options": [
+                "nominatif",
+                "accusatif seul",
+                "génitif",
+                "infinitif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "εἰμὶ ἄνθρωπος (eimi anthrōpos) sans article : sens ?",
+              "explanation": "« Je suis homme » (prédicat sans article en grec simple).",
+              "options": [
+                "je suis un homme",
+                "je vois l'homme",
+                "l'homme est",
+                "tu es"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le verbe εἰμί (eimi) est…",
+              "explanation": "Verbe copule « être ».",
+              "options": [
+                "copule (être)",
+                "verbe d'action « courir »",
+                "article",
+                "nom"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "ἡ γυνή ἐστι (hē gunē esti) : sujet ?",
+              "explanation": "ἡ γυνή (hē gunē) nominatif.",
+              "options": [
+                "ἡ γυνή (hē gunē)",
+                "γυνήν (gunēn) seule",
+                "τὴν γυνήν (tēn gunēn)",
+                "ἐστί (esti)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "εἰσί (eisi) signifie…",
+              "explanation": "Troisième personne pluriel : ils/elles sont.",
+              "options": ["ils sont", "je suis", "il est", "tu es"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "τὸ παιδίον ἐστί (to paidion esti) : genre du sujet ?",
+              "explanation": "τὸ παιδίον (to paidion) neutre.",
+              "options": ["neutre", "masculin", "féminin", "verbe"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases ont ἐστί (esti) ?",
+              "explanation": "ὁ θεός ἐστι (ho theos esti) et ἡ τέχνη ἐστί (hē technē esti) contiennent ἐστί (esti).",
+              "options": [
+                "ὁ θεός ἐστι (ho theos esti)",
+                "ἡ τέχνη ἐστί (hē technē esti)",
+                "ὁ ἄνθρωπος (ho anthrōpos) seul",
+                "τό (to) seul"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ordre le plus simple sujet + être ?",
+              "explanation": "Sujet nominatif puis ἐστί (esti) est fréquent en 5e.",
+              "options": [
+                "sujet puis ἐστί (esti)",
+                "ἐστί puis sujet toujours obligé",
+                "accusatif puis ἐστί",
+                "sans sujet toujours"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ὁ λόγος ἐστὶ καλός (ho logos esti kalos) : καλός (kalos) est…",
+              "explanation": "Adjectif masculin prédicat avec copule.",
+              "options": [
+                "adjectif (beau)",
+                "verbe",
+                "article",
+                "accusatif objet"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Négation simple avec « ne… pas » en grec débutant ?",
+              "explanation": "οὐ (ou) ou οὐκ (ouk) devant le verbe (aperçu 5e).",
+              "options": [
+                "οὐ (ou) / οὐκ (ouk) devant le verbe",
+                "μή (mē) seulement au passé",
+                "sans particule",
+                "ἡ (hē)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "εἰμὶ φίλος (eimi philos) : personne ?",
+              "explanation": "εἰμί (eimi) = je suis.",
+              "options": [
+                "1re personne singulier",
+                "3e personne singulier",
+                "2e personne pluriel",
+                "infinitif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "ἐστὶν ἄνθρωπος (estin anthrōpos) : sujet ?",
+              "explanation": "ἄνθρωπος (anthrōpos) nominatif.",
+              "options": [
+                "ἄνθρωπος (anthrōpos)",
+                "ἄνθρωπον (anthrōpon)",
+                "τὸν ἄνθρωπον (ton anthrōpon)",
+                "εἰμί (eimi)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase identité : « la femme est » ?",
+              "explanation": "ἡ γυνή ἐστι (hē gunē esti).",
+              "options": [
+                "ἡ γυνή ἐστι (hē gunē esti)",
+                "τὴν γυνήν ἐστι (tēn gunēn esti)",
+                "γυνή ἐστί (gunē esti) possible aussi",
+                "ὁ γυνή ἐστι (ho gunē esti)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "εἰσὶν ἄνθρωποι (eisin anthrōpoi) : nombre ?",
+              "explanation": "Pluriel : ils sont des hommes.",
+              "options": [
+                "pluriel",
+                "singulier",
+                "dual seulement",
+                "infinitif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le prédicat nominatif avec ἐστί (esti) est au…",
+              "explanation": "Deux nominatifs autour de la copule.",
+              "options": ["nominatif", "accusatif obligé", "génitif", "datif"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "τὸ δῶρον ἐστί (to dōron esti) : sens ?",
+              "explanation": "« C'est un cadeau » / le cadeau est.",
+              "options": [
+                "c'est un cadeau / le cadeau est",
+                "je donne",
+                "cadeau accusatif",
+                "pas de verbe"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes sont 1re personne ?",
+              "explanation": "εἰμί (eimi) et εἰμὶ (eimi avec accent) = je suis.",
+              "options": [
+                "εἰμί (eimi)",
+                "εἰμὶ (eimi)",
+                "ἐστί (esti)",
+                "εἰσί (eisi)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Traduction : ἐγώ εἰμι (egō eimi) ?",
+              "explanation": "ἐγώ (egō) je + εἰμί (eimi) suis.",
+              "options": ["je suis", "tu es", "il est", "nous sommes"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ὁ πατήρ ἐστι (ho patēr esti) : πατήρ (patēr) est…",
+              "explanation": "Père ; sujet masculin.",
+              "options": ["père (sujet)", "mère", "enfant", "mer"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase : « la loi est bonne » (noyau) ?",
+              "explanation": "ὁ νόμος ἐστὶν ἀγαθός (ho nomos estin agathos).",
+              "options": [
+                "ὁ νόμος ἐστὶν ἀγαθός (ho nomos estin agathos)",
+                "τὸν νόμον ἐστί (ton nomon esti)",
+                "ἡ νόμος ἐστί (hē nomos esti)",
+                "νόμος ἐστί (nomos esti) seul faux genre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sans copule explicite, en 5e on apprend surtout…",
+              "explanation": "Phrases avec εἰμί (eimi) explicite.",
+              "options": [
+                "phrases avec εἰμί (eimi)",
+                "passé complexe",
+                "subjonctif",
+                "optatif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "ἐστὶν ἡ ὁδός (estin hē hodos) : sens ?",
+              "explanation": "« C'est la route » / la route est.",
+              "options": [
+                "la route est",
+                "je suis route",
+                "route accusatif",
+                "route sans verbe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "εἶ (ei) correspond à…",
+              "explanation": "Deuxième personne singulier : tu es.",
+              "options": ["tu es", "je suis", "ils sont", "il est"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sujet neutre + ἐστί (esti) : exemple ?",
+              "explanation": "τὸ ἔργον ἐστί (to ergon esti).",
+              "options": [
+                "τὸ ἔργον ἐστί (to ergon esti)",
+                "τὸν ἔργον ἐστί (ton ergon esti)",
+                "ὁ ἔργον ἐστί (ho ergon esti)",
+                "ἡ ἔργον ἐστί (hē ergon esti)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « X est Y », X et Y sont en…",
+              "explanation": "Copule : nominatif + nominatif.",
+              "options": [
+                "nominatif",
+                "accusatif tous deux",
+                "génitif",
+                "datif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "εἰσὶν οἱ ἄνθρωποι (eisin hoi anthrōpoi) : sens ?",
+              "explanation": "Les hommes sont / ce sont des hommes.",
+              "options": [
+                "les hommes sont",
+                "je suis homme",
+                "l'homme est",
+                "tu es"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des pronoms sujet ?",
+              "explanation": "ἐγώ (egō) je et σύ (su) tu.",
+              "options": ["ἐγώ (egō)", "σύ (su)", "ὁ (ho)", "ἐστί (esti)"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "σὺ εἶ (su ei) signifie…",
+              "explanation": "Tu es.",
+              "options": ["tu es", "je suis", "il est", "nous sommes"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ἡ σοφία ἐστί (hē sophia esti) : σοφία (sophia) ?",
+              "explanation": "Sagesse ; féminin.",
+              "options": ["sagesse", "guerre", "loi", "mer"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase simple présent : sujet + …",
+              "explanation": "Sujet + ἐστί (esti) ou εἰμί (eimi).",
+              "options": [
+                "forme de εἰμί (eimi)",
+                "accusatif seul",
+                "article seul",
+                "génitif seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ὁ ἥλιος ἐστί (ho hēlios esti) : sens ?",
+              "explanation": "Le soleil est / c'est le soleil.",
+              "options": [
+                "le soleil est",
+                "je suis soleil",
+                "soleil objet",
+                "soleil passé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "εἰμὶ μαθητής (eimi mathētēs) : μαθητής (mathētēs) ?",
+              "explanation": "Élève/disciple ; prédicat.",
+              "options": ["élève (prédicat)", "verbe", "article", "accusatif"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ἐστὶν ἀγαθόν (estin agathon) : ἀγαθόν (agathon) genre ?",
+              "explanation": "Neutre prédicat « c'est bien ».",
+              "options": ["neutre", "masculin", "féminin", "pluriel"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pluriel : « ils sont » en grec ?",
+              "explanation": "εἰσί (eisi) ou εἰσὶν (eisin).",
+              "options": [
+                "εἰσί (eisi)",
+                "εἰμί (eimi)",
+                "ἐστί (esti)",
+                "εἶ (ei)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le sujet peut être…",
+              "explanation": "Nom avec article ou pronom.",
+              "options": [
+                "nom ou pronom",
+                "accusatif seulement",
+                "verbe seulement",
+                "interjection"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "τὰ τέκνα ἐστί (ta tekna esti) : nombre sujet ?",
+              "explanation": "τέκνα (tekna) pluriel neutre.",
+              "options": [
+                "pluriel",
+                "singulier",
+                "infinitif",
+                "accusatif sujet"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles traductions conviennent à ἐστί (esti) ?",
+              "explanation": "« il est » et « elle est » (3e singulier).",
+              "options": ["il est", "elle est", "je suis", "nous sommes"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "ἡ μήτηρ ἐστί (hē mētēr esti) : sens ?",
+              "explanation": "La mère est.",
+              "options": [
+                "la mère est",
+                "je suis mère",
+                "mère objet",
+                "mère passé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "εἰμὶ ἐν τῇ οἰκίᾳ (eimi en tēi oikiai) : en 5e on retient surtout…",
+              "explanation": "Présence de εἰμί (eimi) = je suis.",
+              "options": [
+                "εἰμί (eimi) = je suis",
+                "toute la syntaxe de ἐν (en)",
+                "génitif seul",
+                "accusatif sujet"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Copule + adjectif : accord avec…",
+              "explanation": "Adjectif prédicat s'accorde avec le sujet en genre/nombre/cas.",
+              "options": [
+                "le sujet",
+                "l'objet accusatif",
+                "le verbe seul",
+                "l'article neutre seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ὁ νόμος ἐστὶ δίκαιος (ho nomos esti dikaios) : δίκαιος (dikaios) ?",
+              "explanation": "Juste ; masculin avec νόμος (nomos).",
+              "options": [
+                "juste (masc.)",
+                "juste (fém.) neutre",
+                "verbe",
+                "accusatif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phrase minimale « il est homme » ?",
+              "explanation": "ἄνθρωπός ἐστιν (anthrōpos estin) ou ὁ ἄνθρωπος ἐστί (ho anthrōpos esti).",
+              "options": [
+                "ὁ ἄνθρωπος ἐστί (ho anthrōpos esti)",
+                "τὸν ἄνθρωπον ἐστί (ton anthrōpon esti)",
+                "ἄνθρωπον ἐστί (anthrōpon esti)",
+                "εἰμί ἐστί (eimi esti)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "εἰσὶν ἀγαθαί (eisin agathai) : ἀγαθαί (agathai) accord ?",
+              "explanation": "Féminin pluriel avec sujet féminin pluriel implicite.",
+              "options": [
+                "féminin pluriel",
+                "masculin singulier",
+                "neutre singulier",
+                "accusatif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le verbe « être » en grec ancien : lemme ?",
+              "explanation": "εἰμί (eimi).",
+              "options": [
+                "εἰμί (eimi)",
+                "λέγω (legō)",
+                "ποιέω (poieō)",
+                "ἔχω (echō)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ἐγὼ εἰμὶ ἄνθρωπος (egō eimi anthrōpos) : ordre ?",
+              "explanation": "Pronom + verbe + prédicat nominatif.",
+              "options": [
+                "pronom + verbe + prédicat",
+                "verbe seul",
+                "accusatif + verbe",
+                "article seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "τὸ φῶς ἐστί (to phōs esti) : φῶς (phōs) ?",
+              "explanation": "Lumière ; neutre.",
+              "options": ["lumière (neutre)", "homme", "loi", "route"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont correctes en présent ?",
+              "explanation": "ἡ ἀλήθεια ἐστί (hē alētheia esti) et τὸ παιδίον ἐστί (to paidion esti).",
+              "options": [
+                "ἡ ἀλήθεια ἐστί (hē alētheia esti)",
+                "τὸ παιδίον ἐστί (to paidion esti)",
+                "τὸν παιδίον ἐστί (ton paidion esti)",
+                "ὁ γυνή ἐστί (ho gunē esti)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "ἐσμεν (esmen) signifie…",
+              "explanation": "Nous sommes.",
+              "options": ["nous sommes", "vous êtes", "ils sont", "je suis"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ἐστέ (este) signifie…",
+              "explanation": "Vous êtes.",
+              "options": ["vous êtes", "nous sommes", "tu es", "il est"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Identité : « c'est la vérité » ?",
+              "explanation": "ἡ ἀλήθεια ἐστί (hē alētheia esti).",
+              "options": [
+                "ἡ ἀλήθεια ἐστί (hē alētheia esti)",
+                "τὴν ἀλήθειαν ἐστί (tēn alētheian esti)",
+                "ὁ ἀλήθεια ἐστί (ho alētheia esti)",
+                "ἀλήθειαν ἐστί (alētheian esti)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Prédicat adjectif féminin avec ἡ τέχνη (hē technē) ?",
+              "explanation": "ἡ τέχνη ἐστὶ καλή (hē technē esti kalē).",
+              "options": [
+                "καλή (kalē)",
+                "καλός (kalos)",
+                "καλόν (kalon)",
+                "καλοί (kaloi)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "εἰμί (eimi) vs ἐστί (esti) : différence ?",
+              "explanation": "Personne : je suis vs il/elle est.",
+              "options": [
+                "1re vs 3e personne singulier",
+                "passé vs présent",
+                "pluriel vs singulier",
+                "accusatif vs nominatif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase : « les enfants sont » ?",
+              "explanation": "τὰ παιδία εἰσί (ta paidia eisi) (forme plurielle).",
+              "options": [
+                "τὰ παιδία εἰσί (ta paidia eisi)",
+                "τὸ παιδίον εἰσί (to paidion eisi)",
+                "ὁ παιδία εἰσί (ho paidia eisi)",
+                "παιδίον εἰμί (paidion eimi)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le sujet de ἐστί (esti) est toujours en…",
+              "explanation": "Nominatif.",
+              "options": [
+                "nominatif",
+                "accusatif",
+                "génitif obligé",
+                "datif obligé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ὑμεῖς ἐστε (humeis este) : sens ?",
+              "explanation": "Vous êtes.",
+              "options": ["vous êtes", "nous sommes", "ils sont", "tu es"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "ἡ εἰρήνη ἐστί (hē eirēnē esti) : εἰρήνη (eirēnē) ?",
+              "explanation": "Paix ; féminin.",
+              "options": ["paix", "guerre", "loi", "colère"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes sont 3e personne pluriel ?",
+              "explanation": "εἰσί (eisi) et εἰσὶν (eisin) = ils sont.",
+              "options": [
+                "εἰσί (eisi)",
+                "εἰσὶν (eisin)",
+                "εἰμί (eimi)",
+                "εἶ (ei)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Traduction : ἡ ψυχὴ ἐστί (hē psuchē esti) ?",
+              "explanation": "L'âme est / c'est l'âme.",
+              "options": [
+                "l'âme est",
+                "je suis âme",
+                "âme objet",
+                "âme passée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Prédicat neutre avec τὸ δῶρον (to dōron) ?",
+              "explanation": "τὸ δῶρον ἐστὶ καλόν (to dōron esti kalon).",
+              "options": [
+                "καλόν (kalon)",
+                "καλή (kalē)",
+                "καλός (kalos)",
+                "καλοί (kaloi)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "ἐγώ (egō) dans une phrase sert de…",
+              "explanation": "Pronom sujet « je ».",
+              "options": ["sujet", "objet direct", "article", "préposition"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ὁ δοῦλος ἐστί (ho doulos esti) : δοῦλος (doulos) ?",
+              "explanation": "Esclave ; masculin sujet.",
+              "options": ["esclave", "roi", "loi", "mer"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Forme courte de ἐστί (esti) ?",
+              "explanation": "ἐστιν (estin) avec mouvement de voyelle (aperçu).",
+              "options": [
+                "ἐστιν (estin)",
+                "εἰμί (eimi)",
+                "εἶ (ei)",
+                "εἰσί (eisi)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase : « tu es ami » ?",
+              "explanation": "σὺ φίλος εἶ (su philos ei) ou σὺ εἶ φίλος (su ei philos).",
+              "options": [
+                "σὺ εἶ φίλος (su ei philos)",
+                "σὺ φίλον εἶ (su philon ei)",
+                "ἐγὼ εἶ φίλος (egō ei philos)",
+                "ὁ φίλος εἶ (ho philos ei)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Copule : le français « est » correspond à…",
+              "explanation": "ἐστί (esti) ou εἰμί (eimi) selon la personne.",
+              "options": [
+                "formes de εἰμί (eimi)",
+                "λέγω (legō) seulement",
+                "ὁ (ho)",
+                "accusatif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ἡ νίκη ἐστί (hē nikē esti) : type de phrase ?",
+              "explanation": "Phrase nominale avec copule.",
+              "options": [
+                "phrase copule (A est B)",
+                "impératif",
+                "question sans verbe",
+                "objet direct seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "εἰμὲν (eimen) : personne ?",
+              "explanation": "Variante/nous sommes (aperçu 1re pluriel).",
+              "options": ["nous sommes", "je suis", "ils sont", "tu es"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels groupes sujet + verbe sont valides ?",
+              "explanation": "ὁ θεὸς ἐστί (ho theos esti) et ἡ γῆ ἐστί (hē gē esti).",
+              "options": [
+                "ὁ θεὸς ἐστί (ho theos esti)",
+                "ἡ γῆ ἐστί (hē gē esti)",
+                "τὸν θεὸν ἐστί (ton theon esti)",
+                "ὁ γῆ ἐστί (ho gē esti)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "ἡ γῆ ἐστί (hē gē esti) : γῆ (gē) ?",
+              "explanation": "Terre ; féminin.",
+              "options": ["terre", "ciel", "mer", "loi"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "εἰμὶ ἀγαθός (eimi agathos) : ἀγαθός (agathos) accord ?",
+              "explanation": "Masculin avec sujet « je » masculin implicite.",
+              "options": [
+                "masculin singulier",
+                "féminin",
+                "neutre pluriel",
+                "accusatif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase négative simple : οὐκ ἐστί (ouk esti) ?",
+              "explanation": "« ce n'est pas / il n'est pas ».",
+              "options": ["n'est pas", "est aussi", "toujours oui", "passé"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sujet pluriel masculin + ils sont ?",
+              "explanation": "οἱ ἄνθρωποι εἰσί (hoi anthrōpoi eisi).",
+              "options": [
+                "οἱ ἄνθρωποι εἰσί (hoi anthrōpoi eisi)",
+                "ὁ ἄνθρωποι εἰσί (ho anthrōpoi eisi)",
+                "οἱ ἄνθρωπος εἰσί (hoi anthrōpos eisi)",
+                "ἡ ἄνθρωποι εἰσί (hē anthrōpoi eisi)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "τὸ ὄνομά ἐστι (to onoma esti) : sens ?",
+              "explanation": "Le nom est / c'est le nom.",
+              "options": [
+                "le nom est",
+                "je nomme",
+                "nom accusatif sujet",
+                "verbe λέγω (legō)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ἐστὶ σοφή (esti sophē) : σοφή (sophē) ?",
+              "explanation": "Sage ; féminin prédicat.",
+              "options": ["sage (fém.)", "sage (masc.)", "verbe", "accusatif"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pronom + copule : ἡμεῖς ἐσμεν (hēmeis esmen) ?",
+              "explanation": "Nous sommes.",
+              "options": ["nous sommes", "vous êtes", "ils sont", "je suis"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La phrase grecque simple commence souvent par…",
+              "explanation": "Le sujet (nom ou pronom).",
+              "options": [
+                "le sujet",
+                "l'objet accusatif",
+                "la préposition seule",
+                "l'adverbe seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "ὁ κόσμος ἐστί (ho kosmos esti) : κόσμος (kosmos) ?",
+              "explanation": "Monde/ordre ; masculin.",
+              "options": ["monde / ordre", "guerre", "femme", "enfant neutre"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes sont le présent de « être » ?",
+              "explanation": "εἰμί (eimi) « je suis » et εἰσί (eisi) « ils sont » sont des formes de εἰμί (eimi).",
+              "options": [
+                "εἰμί (eimi)",
+                "εἰσί (eisi)",
+                "λέγω (legō)",
+                "λόγος (logos)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "ἐστί (esti) correspond à quelle personne ?",
+              "explanation": "ἐστί (esti) est la 3e personne du singulier.",
+              "options": [
+                "3e singulier (il/elle est)",
+                "1re singulier",
+                "2e pluriel",
+                "infinitif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ἡ ἀρετὴ ἐστί (hē aretē esti) : sens ?",
+              "explanation": "La vertu est.",
+              "options": [
+                "la vertu est",
+                "je suis vertu",
+                "vertu objet",
+                "vertu passée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Prédicat avec sujet féminin ἡ βίβλος (hē biblos) ?",
+              "explanation": "ἡ βίβλος ἐστὶ καλή (hē biblos esti kalē).",
+              "options": [
+                "καλή (kalē)",
+                "καλός (kalos)",
+                "καλόν (kalon)",
+                "καλοῦ (kalou)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "εἰμὶ (eimi) avec elision devient parfois…",
+              "explanation": "Enchaînement avec voyelle suivante (aperçu).",
+              "options": [
+                "εἰμ' devant voyelle (aperçu)",
+                "toujours ἐστί",
+                "accusatif",
+                "génitif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phrase : « la mer est grande » (noyau) ?",
+              "explanation": "ἡ θάλασσα ἐστὶ μεγάλη (hē thalassa esti megalē).",
+              "options": [
+                "ἡ θάλασσα ἐστὶ μεγάλη (hē thalassa esti megalē)",
+                "τὴν θάλασσαν ἐστί (tēn thalassan esti)",
+                "ὁ θάλασσα ἐστί (ho thalassa esti)",
+                "θάλασσαν ἐστί (thalassan esti)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "σὺ (su) + εἶ (ei) : sens ?",
+              "explanation": "Tu es.",
+              "options": ["tu es", "je suis", "il est", "nous sommes"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "τὸ ζῷον ἐστί (to zōion esti) : sujet cas ?",
+              "explanation": "Nominatif τὸ ζῷον (to zōion).",
+              "options": [
+                "nominatif",
+                "accusatif sujet faux",
+                "génitif",
+                "datif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les phrases simples en 5e utilisent surtout le…",
+              "explanation": "Présent indicatif de εἰμί (eimi).",
+              "options": [
+                "présent de εἰμί (eimi)",
+                "optatif",
+                "aoriste seul",
+                "infinitif seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "ἐγὼ εἰμι σοφός (egō eimi sophos) : σοφός (sophos) ?",
+              "explanation": "Sage ; masculin prédicat.",
+              "options": ["sage (masc.)", "sage (fém.)", "verbe", "accusatif"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses sont des personnes du verbe être ?",
+              "explanation": "εἶ (ei) tu es et ἐσμέν (esmen) nous sommes.",
+              "options": [
+                "εἶ (ei)",
+                "ἐσμέν (esmen)",
+                "ἄνθρωπος (anthrōpos)",
+                "δῶρον (dōron)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Révision : εἰμί (eimi) ?",
+              "explanation": "Je suis.",
+              "options": ["je suis", "il est", "tu es", "ils sont"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Révision : ἐστί (esti) ?",
+              "explanation": "Il/elle est.",
+              "options": [
+                "il ou elle est",
+                "je suis",
+                "nous sommes",
+                "vous êtes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Révision : εἰσί (eisi) ?",
+              "explanation": "Ils/elles sont.",
+              "options": ["ils sont", "je suis", "tu es", "il est"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Révision : phrase « l'homme est » ?",
+              "explanation": "ὁ ἄνθρωπος ἐστί (ho anthrōpos esti).",
+              "options": [
+                "ὁ ἄνθρωπος ἐστί (ho anthrōpos esti)",
+                "τὸν ἄνθρωπον ἐστί (ton anthrōpon esti)",
+                "ὁ ἄνθρωπον ἐστί (ho anthrōpon esti)",
+                "ἡ ἄνθρωπος ἐστί (hē anthrōpos esti)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Révision : sujet au nominatif avec copule ?",
+              "explanation": "Le sujet reste au nominatif.",
+              "options": [
+                "oui, toujours en 5e",
+                "non, accusatif",
+                "génitif",
+                "datif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Révision : « je suis homme » ?",
+              "explanation": "ἐγὼ εἰμὶ ἄνθρωπος (egō eimi anthrōpos).",
+              "options": [
+                "ἐγὼ εἰμὶ ἄνθρωπος (egō eimi anthrōpos)",
+                "ἐγὼ ἄνθρωπον εἰμί (egō anthrōpon eimi)",
+                "σὺ εἰμὶ ἄνθρωπος (su eimi anthrōpos)",
+                "ὁ ἄνθρωπος εἰμί (ho anthrōpos eimi)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Révision : prédicat adjectif s'accorde avec…",
+              "explanation": "Genre, nombre et cas du sujet (nominatif).",
+              "options": [
+                "le sujet",
+                "l'objet",
+                "le verbe seul",
+                "l'article seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Révision : τὸ παιδίον ἐστί (to paidion esti) ?",
+              "explanation": "L'enfant est / c'est l'enfant.",
+              "options": [
+                "l'enfant est",
+                "les enfants sont",
+                "je suis enfant",
+                "enfant accusatif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Révision : le chapitre « phrases simples » repose sur…",
+              "explanation": "εἰμί (eimi) et accords sujet/prédicat au nominatif.",
+              "options": [
+                "εἰμί (eimi) et nominatif",
+                "accusatif seul",
+                "génitif seul",
+                "pas de verbe"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

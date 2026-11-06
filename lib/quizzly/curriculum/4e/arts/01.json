@@ -1,0 +1,2743 @@
+{
+  "id": "4e-arts-01",
+  "year": "4e",
+  "subject": "arts",
+  "title": "Arts plastiques — l'espace",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Volume et relief",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce que le volume ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En arts plastiques, le volume désigne…",
+              "options": [
+                "L'occupation de l'espace en trois dimensions",
+                "La présence d'une forme en profondeur",
+                "La surface plate d'un dessin",
+                "Le cadre en bois d'une toile"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le volume concerne la masse et la profondeur, pas la simple surface plane."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un cube en papier plié possède…",
+              "options": [
+                "Des faces qui se rejoignent dans l'espace",
+                "Seulement une ligne",
+                "Aucune épaisseur",
+                "Uniquement de la transparence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un solide possède faces et arêtes en 3D."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Distinguer volume et surface, c'est…",
+              "options": [
+                "Opposer profondeur et simple apparence plane",
+                "Confondre dessin et sculpture",
+                "Ignorer la lumière",
+                "Supprimer le relief"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La surface est ce que l'on voit ; le volume est ce que l'objet occupe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour rendre un volume au crayon, on utilise souvent…",
+              "options": [
+                "Ombres et dégradés sur les faces",
+                "Une seule ligne sans nuance",
+                "L'effacement total du sujet",
+                "Uniquement la couleur du papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière modèle les faces et fait lire la masse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un objet plein devant nous cache…",
+              "options": [
+                "Une partie de ce qui est derrière lui",
+                "Toute notion d'espace",
+                "Uniquement les couleurs chaudes",
+                "Le format de la feuille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le plein masque et crée des relations avant/arrière."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La maquette en volume sert à…",
+              "options": [
+                "Tester une forme dans l'espace réel",
+                "Remplacer toute perspective",
+                "Effacer un croquis",
+                "Mesurer la température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Construire en 3D permet de tourner autour de la forme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un ballon gonflé illustre…",
+              "options": [
+                "Un volume arrondi sans angle vif",
+                "Uniquement un plan frontal",
+                "Un bas-relief",
+                "Une ligne d'horizon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sphère est un volume courbe classique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sculpter, c'est surtout…",
+              "options": [
+                "Travailler la matière en volume",
+                "Coller des feuilles à plat",
+                "Tracer une grille seule",
+                "Recadrer une photo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sculpture cherche forme et masse dans l'espace."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un empilement de caisses crée…",
+              "options": [
+                "Des volumes superposés",
+                "Uniquement de la perspective aérienne",
+                "Aucun premier plan",
+                "Un cadre circulaire obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque caisse est un solide distinct."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Observer un objet sous plusieurs angles…",
+              "options": [
+                "Aide à comprendre son volume",
+                "Supprime le relief",
+                "Remplace la lumière",
+                "Efface la profondeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Changer de point de vue révèle les faces cachées."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Objet et trois dimensions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un objet en trois dimensions possède…",
+              "options": [
+                "Hauteur, largeur et profondeur",
+                "Des faces qui limitent la matière",
+                "Seulement deux côtés",
+                "Uniquement une ombre sans forme"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La 3D combine trois directions et des faces qui délimitent le solide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une boîte fermée vue de face montre…",
+              "options": [
+                "Un rectangle qui suggère une face",
+                "Toutes les faces intérieures",
+                "La profondeur réelle mesurée",
+                "Un cercle obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une vue ne montre qu'une partie des faces."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'épaisseur d'une planche de bois est…",
+              "options": [
+                "Une dimension de volume",
+                "Uniquement une ligne d'horizon",
+                "Un effet de perspective seul",
+                "Le titre de l'œuvre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même mince, l'épaisseur participe au volume."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Coller des volumes sur une planche…",
+              "options": [
+                "Crée un relief par superposition",
+                "Supprime toute ombre",
+                "Empêche la lumière",
+                "Remplace le dessin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Superposer des éléments fait sortir du plan."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un cylindre possède…",
+              "options": [
+                "Une base ronde et une hauteur",
+                "Uniquement un sommet pointu",
+                "Aucune courbe",
+                "Seulement une face plate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cylindre combine cercle et hauteur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Vider l'intérieur d'une forme (creux)…",
+              "options": [
+                "Change la masse perçue du volume",
+                "Supprime la 3D",
+                "Crée une perspective à deux fuyantes",
+                "Efface le premier plan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plein et creux modifient la lecture de la masse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une sphère n'a pas…",
+              "options": [
+                "D'arête vive",
+                "De volume",
+                "De surface",
+                "De lumière possible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sphère est une forme sans angle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Assembler des papiers roulés…",
+              "options": [
+                "Construit des volumes légers",
+                "Interdit le relief",
+                "Remplace la couleur locale",
+                "Supprime l'ombre portée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rouleau devient colonne ou tige en 3D."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un objet posé sur une table occupe…",
+              "options": [
+                "L'espace au-dessus du support",
+                "Uniquement le plan du papier",
+                "Aucun lieu",
+                "Seulement l'arrière-plan du dessin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le volume se situe dans l'espace réel ou représenté."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Passer du croquis au volume en classe…",
+              "options": [
+                "Peut passer par le collage ou le modelage",
+                "Interdit toute matière",
+                "Supprime l'observation",
+                "Remplace la composition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs techniques mènent à la 3D."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Bas-relief et haut-relief",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le relief en sculpture se caractérise par…",
+              "options": [
+                "Des formes en saillie sur un fond",
+                "Une saillie par rapport au plan support",
+                "Des volumes totalement détachés du mur",
+                "Uniquement de la peinture liquide"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le relief reste attaché au support avec une saillie visible."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le bas-relief présente…",
+              "options": [
+                "Des formes peu saillantes",
+                "Des éléments très projetés",
+                "Aucune ombre possible",
+                "Uniquement des lignes gravées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En bas-relief, la saillie reste modérée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le haut-relief présente…",
+              "options": [
+                "Des éléments plus projetés du fond",
+                "Aucune ombre possible",
+                "Seulement des lignes gravées",
+                "Un point de fuite unique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La saillie plus forte rapproche de la sculpture ronde."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une médaille décorée est souvent…",
+              "options": [
+                "Un bas-relief",
+                "Une fresque murale géante",
+                "Un paysage en perspective aérienne",
+                "Un ready-made"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les monnaies et médailles utilisent le bas-relief."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le fond d'un relief sert à…",
+              "options": [
+                "Porter les formes en saillie",
+                "Remplacer la lumière",
+                "Supprimer la composition",
+                "Créer une ligne d'horizon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les motifs se détachent d'un plan support."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Graver dans une plaque, c'est…",
+              "options": [
+                "Enlever ou repousser de la matière",
+                "Coller des plumes",
+                "Peindre à l'huile seule",
+                "Photographier sans lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gravure et estampage modifient la surface en relief."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La lumière rasante sur un relief…",
+              "options": [
+                "Accentue les bosses et les creux",
+                "Efface les ombres",
+                "Supprime la profondeur",
+                "Change le sujet en plan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ombres marquées font lire la saillie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En carton on peut simuler un relief en…",
+              "options": [
+                "Superposant des couches découpées",
+                "Effaçant toutes les formes",
+                "Dessinant une seule ligne",
+                "Ignorant le fond"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les calques épaississent progressivement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Relief et sculpture ronde diffèrent surtout par…",
+              "options": [
+                "Le lien au fond et le degré de saillie",
+                "L'absence de volume en sculpture",
+                "L'interdiction de la lumière",
+                "Le format carré obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le relief reste attaché à un support."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Observer un bas-relief au musée, on regarde…",
+              "options": [
+                "Comment la lumière révèle les formes",
+                "Uniquement le cadre en bois",
+                "La signature sans l'œuvre",
+                "Seulement la couleur du mur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'éclairage fait vivre la saillie."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Modeler et graver",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Travailler le volume en classe peut passer par…",
+              "options": [
+                "Modeler une matière malléable",
+                "Graver ou creuser un support",
+                "Recadrer une photo sans forme",
+                "Ignorer toute matière"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Modeler ajoute ou déplace ; graver enlève de la matière pour le relief."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La pâte à modeler permet…",
+              "options": [
+                "Des essais rapides de volume",
+                "Uniquement du dessin sec",
+                "De supprimer la lumière",
+                "De graver dans le métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pâte se tasse, s'étire et se recombine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Graver dans une linoléum, c'est…",
+              "options": [
+                "Creuser des zones pour l'estampe",
+                "Gonfler un ballon",
+                "Coller des miroirs",
+                "Peindre à l'aquarelle seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les parties creusées n'impriment pas ou impriment moins."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un outil de modelage sert à…",
+              "options": [
+                "Lisser, creuser ou marquer la matière",
+                "Mesurer la perspective",
+                "Fixer la ligne d'horizon",
+                "Couper le cadre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les spatules et boucles modifient la surface."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Laisser sécher une forme modelée…",
+              "options": [
+                "Peut la fixer si la matière durcit",
+                "Supprime le volume",
+                "Crée automatiquement la perspective",
+                "Efface les ombres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Argile ou pâte durcie conservent la forme."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Empreinte d'un objet dans la pâte…",
+              "options": [
+                "Transfère une texture en relief",
+                "Remplace la composition",
+                "Supprime la 3D",
+                "Devient une ligne de fuite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'empreinte marque le volume."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Gravure et modelage sont…",
+              "options": [
+                "Deux façons de travailler le relief",
+                "Identiques à la photographie",
+                "Sans matière",
+                "Réservés au numérique seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'un enlève, l'autre ajoute ou déplace la matière."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Reprendre une forme modelée trop tôt…",
+              "options": [
+                "Peut l'écraser ou la déformer",
+                "Améliore toujours le détail",
+                "Crée la perspective",
+                "Supprime le premier plan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La matière molle se marque facilement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Passer du volume modelé au dessin…",
+              "options": [
+                "Aide à mémoriser les faces vues",
+                "Interdit l'observation",
+                "Remplace le relief",
+                "Efface la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Construire en 3D nourrit le croquis."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Documenter une gravure terminée…",
+              "options": [
+                "Peut se faire par estampes ou photos",
+                "Interdit toute trace",
+                "Supprime le relief",
+                "Remplace le modelage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'empreinte et la photo conservent le résultat."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Matière, masse et plein",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans une composition, on distingue…",
+              "options": [
+                "Les zones pleines occupées par la matière",
+                "Les espaces vides ou ajourés",
+                "Uniquement la ligne d'horizon",
+                "Le cadre en bois du musée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plein et vide se répondent pour équilibrer l'image."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un bloc compact en bas de l'image paraît…",
+              "options": [
+                "Plus lourd visuellement",
+                "Toujours flottant",
+                "Sans volume",
+                "Transparent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La masse basse ancre la composition."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un grand volume sombre au premier plan…",
+              "options": [
+                "Peut masquer une partie du fond",
+                "Supprime toute profondeur",
+                "Empêche la lumière réelle",
+                "Remplace la perspective"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le plein proche occupe le regard."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Équilibrer pleins et vides, c'est…",
+              "options": [
+                "Organiser la répartition des masses",
+                "Effacer tous les objets",
+                "Dessiner sans ombre",
+                "Couper la feuille en rond"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La composition repose aussi sur le vide utile."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une forme ajourée laisse voir…",
+              "options": [
+                "Ce qui traverse les trous ou les vides",
+                "Uniquement l'arrière-plan du musée",
+                "La température",
+                "Le grammage seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ajour crée des relations avec l'arrière."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Superposer plusieurs pleins…",
+              "options": [
+                "Crée des plans successifs",
+                "Supprime le volume",
+                "Interdit les ombres",
+                "Remplace le relief"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque couche peut cacher la suivante."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Alléger visuellement une masse, on peut…",
+              "options": [
+                "Utiliser des valeurs claires ou des découpes",
+                "Tout remplir de noir",
+                "Supprimer le sujet",
+                "Ignorer la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clarté et ajour diminuent la pesanteur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un volume plein en sculpture occupe…",
+              "options": [
+                "L'espace comme un bloc",
+                "Seulement une ligne",
+                "Uniquement le plan du mur",
+                "Aucun lieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sculpture ronde existe dans l'espace réel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La masse visuelle concerne surtout…",
+              "options": [
+                "Le poids apparent des formes",
+                "La température de la salle",
+                "Le prix du papier",
+                "La date du tableau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines formes semblent plus lourdes ou denses."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Plein et volume se complètent car…",
+              "options": [
+                "La matière remplit l'espace de façon tangible",
+                "La couleur remplace la forme",
+                "La perspective n'existe pas",
+                "Le relief est plat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Volume et plein décrivent la présence de la forme."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Lumière sur les formes en volume",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La lumière sur un volume produit…",
+              "options": [
+                "Des faces claires et des faces dans l'ombre",
+                "Une ombre portée sur le sol ou un plan",
+                "Uniquement une ligne d'horizon",
+                "L'absence de forme"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ombre propre et ombre portée modèlent la lecture du solide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le sommet éclairé d'une sphère forme…",
+              "options": [
+                "Un reflet ou une zone claire",
+                "Une ligne de fuite",
+                "Un bas-relief",
+                "Un plan frontal seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le point le plus proche de la source brille."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'ombre propre d'un volume…",
+              "options": [
+                "Appartient à l'objet lui-même",
+                "Est toujours sur le mur seul",
+                "Remplace la couleur",
+                "Supprime le relief"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les faces tournées de la lumière s'assombrissent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'ombre portée se projette…",
+              "options": [
+                "Sur le sol ou un autre plan",
+                "À l'intérieur du crayon",
+                "Sur la ligne d'horizon uniquement",
+                "Sans source lumineuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'objet bloque la lumière et trace une ombre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un éclairage latéral accentue…",
+              "options": [
+                "Le relief et les arêtes",
+                "L'aplat uniforme",
+                "L'effacement du sujet",
+                "La perspective atmosphérique seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les contrastes latéraux sculptent la forme."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour dessiner un volume au crayon, on pense…",
+              "options": [
+                "À une source de lumière cohérente",
+                "À mélanger au hasard clair et foncé",
+                "À effacer toutes les faces",
+                "À ignorer les arêtes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cohérence lumineuse rend la masse crédible."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une arête vive sur un cube…",
+              "options": [
+                "Sépare deux faces avec un changement net",
+                "Supprime la profondeur",
+                "Est une ligne d'horizon",
+                "Remplace la matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'arête marque la rencontre de plans."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un volume dans l'ombre générale reste…",
+              "options": [
+                "Lisible si les contrastes sont conservés",
+                "Toujours invisible",
+                "Sans forme",
+                "Uniquement linéaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même peu éclairé, le volume garde une structure."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Photographier un volume en studio…",
+              "options": [
+                "Permet de choisir la direction de la lumière",
+                "Supprime les ombres obligatoirement",
+                "Remplace l'observation",
+                "Efface le relief"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'éclairage révèle ou cache la saillie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux sources de lumière sur un volume…",
+              "options": [
+                "Peuvent adoucir ou complexifier les ombres",
+                "Suppriment toute 3D",
+                "Interdisent le dessin",
+                "Créent deux horizons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs directions éclairent plusieurs faces."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Sculpture et espace réel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une sculpture dans l'espace public…",
+              "options": [
+                "S'inscrit dans l'environnement réel",
+                "Se découvre en tournant autour",
+                "N'existe que sur papier",
+                "Ignore le spectateur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Elle occupe le lieu et se parcourt en déplacement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tourner autour d'une sculpture ronde…",
+              "options": [
+                "Montre des faces différentes",
+                "Change uniquement la couleur du ciel",
+                "Supprime la 3D",
+                "Fixe la perspective à un point"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le volume se découvre en déplacement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le socle d'une statue sert souvent à…",
+              "options": [
+                "Surélever et stabiliser l'œuvre",
+                "Remplacer la sculpture",
+                "Créer une perspective oblique",
+                "Effacer l'ombre portée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le socle sépare l'œuvre du sol."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une installation volumétrique peut…",
+              "options": [
+                "Occuper une salle entière",
+                "Se limiter à une ligne",
+                "Ne pas utiliser l'espace",
+                "Interdire le regard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'artiste pense l'espace comme matériau."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'espace négatif autour d'une sculpture…",
+              "options": [
+                "Compte dans la perception",
+                "N'existe pas",
+                "Seul le mur compte",
+                "La lumière est interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entre les formes, le vide sculpte aussi le regard."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le bronze en sculpture est…",
+              "options": [
+                "Une matière coulée puis patinée",
+                "Uniquement de la peinture",
+                "Un format A4",
+                "Une ligne de fuite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le moulage permet des formes durables."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une sculpture suspendue…",
+              "options": [
+                "Joue avec la gravité et l'espace",
+                "N'a plus de volume",
+                "Ignore le plafond",
+                "Remplace la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flotter change la perception du poids."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'ombre d'une sculpture sur le sol…",
+              "options": [
+                "Prolonge la forme dans l'espace",
+                "Supprime le relief",
+                "Est le premier plan du dessin",
+                "Remplace le socle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ombre fait partie de la présence de l'œuvre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comparer photo et vue réelle d'une sculpture…",
+              "options": [
+                "Montre comment le point de vue change la lecture",
+                "Prouve qu'il n'y a pas de volume",
+                "Supprime la matière",
+                "Efface la perspective"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La photo fixe un angle ; le déplacement en offre d'autres."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une œuvre trop grande pour la pièce…",
+              "options": [
+                "Change la relation au spectateur",
+                "Perd son volume",
+                "Devient un dessin",
+                "Supprime la matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échelle modifie l'expérience."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Relief en arts plastiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Créer un relief en classe peut utiliser…",
+              "options": [
+                "Carton découpé et superposé",
+                "Papier froissé ou corde collée",
+                "Uniquement une feuille lisse sans épaisseur",
+                "Recadrage sans matière"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Calques et textures collées construisent la saillie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le papier froissé puis aplati partiellement…",
+              "options": [
+                "Donne un relief expressif",
+                "Supprime toute texture",
+                "Crée une perspective à deux points",
+                "Remplace le volume rond"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les plis accrochent la lumière."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Coller de la corde sur une planche avant peinture…",
+              "options": [
+                "Prépare un relief à peindre",
+                "Interdit l'observation",
+                "Supprime les ombres",
+                "Devient une ligne d'horizon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La corde crée une saillie linéaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Peindre un relief en acrylique…",
+              "options": [
+                "Peut suivre les bosses avec la brosse",
+                "Efface la 3D",
+                "Interdit les ombres",
+                "Remplace la gravure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La couleur épouse la saillie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Photographier son relief pour le portfolio…",
+              "options": [
+                "Capture la lumière qui modèle la saillie",
+                "Supprime le volume",
+                "Remplace le travail en classe",
+                "Efface les textures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une bonne lumière documente le relief."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Choisir une épaisseur de carton…",
+              "options": [
+                "Influence la hauteur du relief",
+                "Définit la ligne d'horizon",
+                "Remplace la source lumineuse",
+                "Supprime la 3D"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus c'est épais, plus la saillie est forte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un relief narratif raconte…",
+              "options": [
+                "Une scène en formes saillantes",
+                "Uniquement une grille",
+                "Une perspective mathématique seule",
+                "Rien sans texte obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les motifs en relief peuvent illustrer un récit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Nettoyer les bords d'un relief…",
+              "options": [
+                "Clarifie la silhouette de l'œuvre",
+                "Supprime la lumière",
+                "Efface la composition",
+                "Remplace le modelage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des bords soignés affinent la lecture."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Relief et peinture plate sur la même planche…",
+              "options": [
+                "Peuvent coexister dans une même composition",
+                "S'excluent toujours",
+                "Interdisent le collage",
+                "Suppriment la matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mélanger techniques enrichit l'image."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un relief trop fragile…",
+              "options": [
+                "Risque de se casser au transport",
+                "Améliore toujours la perspective",
+                "Supprime le premier plan",
+                "Devient automatiquement bas-relief"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La matière doit tenir sur le support."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Volume et point de vue",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Changer de point de vue sur un volume…",
+              "options": [
+                "Modifie les faces visibles",
+                "Change la silhouette perçue",
+                "Supprime toujours la matière",
+                "Fixe la couleur en bleu"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Angle et profil transforment ce que l'on voit du solide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Vue de dessus sur des cubes…",
+              "options": [
+                "Peut réduire les formes à des carrés",
+                "Montre toujours toutes les faces",
+                "Supprime la 3D réelle",
+                "Remplace le relief"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La plongée aplatit parfois l'apparence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Vue en contre-plongée…",
+              "options": [
+                "Exagère la hauteur du volume",
+                "Efface le premier plan",
+                "Supprime les ombres",
+                "Est une perspective aérienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Regarder de bas renforce la verticalité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Croquer un volume en rotation…",
+              "options": [
+                "Entraîne à voir plusieurs faces",
+                "Interdit le modelage",
+                "Supprime la lumière",
+                "Remplace la sculpture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Série de croquis = parcours autour de l'objet."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un volume vu de trois-quarts…",
+              "options": [
+                "Montre à la fois plusieurs faces",
+                "Ne montre qu'un seul côté",
+                "Supprime la profondeur",
+                "Est toujours symétrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois-quarts est une vue classique en dessin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La silhouette d'un volume…",
+              "options": [
+                "Résume le contour vu d'un angle",
+                "Remplace la lumière",
+                "Est la ligne d'horizon",
+                "Supprime la masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le profil décrit la forme sans détail intérieur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comparer deux points de vue d'une même maquette…",
+              "options": [
+                "Aide à choisir la vue la plus expressive",
+                "Prouve qu'il n'y a pas de volume",
+                "Efface les ombres",
+                "Interdit le croquis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines vues racontent mieux la forme."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un volume petit vu de très près…",
+              "options": [
+                "Remplit le cadre comme un grand sujet",
+                "Disparaît toujours",
+                "Supprime le relief",
+                "Devient une ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La proximité change l'échelle perçue."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Photographier sous plusieurs angles…",
+              "options": [
+                "Documente le volume complet",
+                "Remplace l'observation en classe",
+                "Supprime la 3D",
+                "Crée la perspective atmosphérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les photos complètent le croquis."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le point de vue du dessinateur…",
+              "options": [
+                "Détermine quelles faces il représente",
+                "Change la couleur du papier",
+                "Supprime la matière",
+                "Remplace le socle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dessine ce que l'on voit depuis sa place."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse volume et relief",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Volume et relief en 4e, on retient…",
+              "options": [
+                "Forme dans l'espace et saillie",
+                "Rôle de la lumière sur les faces",
+                "Uniquement la perspective aérienne",
+                "L'absence de matière"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Volume, relief et lumière structurent le chapitre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Passer du plan au volume, l'élève…",
+              "options": [
+                "Observe, construit ou modelé",
+                "Ignore la matière",
+                "Supprime les ombres",
+                "Ne croque jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Observation et pratique 3D vont ensemble."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bas-relief et volume rond…",
+              "options": [
+                "Partagent la notion de forme en espace",
+                "Sont identiques au dessin plat",
+                "N'utilisent pas la lumière",
+                "Interdisent le collage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous deux traitent la présence de la matière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un portfolio de volume peut montrer…",
+              "options": [
+                "Photos, croquis et maquettes",
+                "Uniquement du texte",
+                "Aucune image",
+                "Seulement la ligne d'horizon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs traces documentent le travail."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Modeler puis dessiner le même sujet…",
+              "options": [
+                "Renforce la compréhension du volume",
+                "Est inutile",
+                "Supprime la perspective",
+                "Efface la matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La main qui forme aide l'œil qui trace."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Volume et espace réel…",
+              "options": [
+                "Se mesurent dans l'environnement",
+                "N'existent que sur papier",
+                "Ignorent le spectateur",
+                "Suppriment le premier plan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sculpture et maquette occupent la salle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Choisir entre bas-relief fort et léger…",
+              "options": [
+                "Modifie l'impact de l'œuvre",
+                "Ne change rien",
+                "Supprime la lumière",
+                "Remplace la composition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le degré de saillie est un choix expressif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le relief en arts plastiques…",
+              "options": [
+                "Sort du strict plan pictural",
+                "Interdit la sculpture",
+                "Supprime la profondeur",
+                "Remplace la couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La saillie ajoute une dimension tactile au regard."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La lumière est essentielle car…",
+              "options": [
+                "Elle révèle faces et saillie",
+                "Elle remplace le sujet",
+                "Elle supprime la 3D",
+                "Elle fixe la signature"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans lumière, le volume se lit mal."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour réviser volume et relief…",
+              "options": [
+                "On relie forme, lumière, matière et point de vue",
+                "On oublie la 3D",
+                "On ne regarde que le cadre",
+                "On supprime les croquis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions se croisent dans toute œuvre volumique."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Espace de la représentation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Représenter la profondeur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Représenter l'espace sur une feuille plate, c'est…",
+              "options": [
+                "Créer l'illusion de profondeur",
+                "Organiser premier plan et arrière-plan",
+                "Coller un objet réel sur la page",
+                "Supprimer toute ligne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le dessin suggère le lointain et le proche par des indices visuels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La profondeur se lit quand…",
+              "options": [
+                "On distingue premier plan et arrière-plan",
+                "Tout est au même niveau",
+                "Il n'y a pas de sujet",
+                "La feuille est vierge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les plans superposés organisent l'espace."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un chemin qui rétrécit dans l'image…",
+              "options": [
+                "Suggère la distance",
+                "Supprime la perspective",
+                "Est toujours horizontal",
+                "Remplace la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rétrécissement = éloignement perçu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Superposer un arbre devant une maison…",
+              "options": [
+                "Place l'arbre plus près du spectateur",
+                "Met la maison au premier plan",
+                "Supprime la 3D",
+                "Efface l'horizon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce qui masque est devant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'espace de la représentation concerne…",
+              "options": [
+                "L'organisation du monde dans l'image",
+                "Uniquement le cadre en bois",
+                "La température de l'atelier",
+                "Le prix des crayons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est l'espace fictif du tableau ou du croquis."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La diagonale dans un paysage…",
+              "options": [
+                "Peut guider vers le fond",
+                "Supprime toujours la profondeur",
+                "Remplace la couleur",
+                "Est interdite en 4e"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les diagonales mènent souvent le regard."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dessiner une salle avec sol et murs…",
+              "options": [
+                "Introduit des plans qui se croisent",
+                "Reste sans profondeur",
+                "Supprime l'horizon",
+                "N'utilise que du collage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intérieur = perspective des lignes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'espace peut être suggéré par…",
+              "options": [
+                "Taille, superposition et perspective",
+                "Uniquement le cadre",
+                "L'absence de sujet",
+                "Le vernis seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs indices construisent la profondeur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Observer une image avec profondeur…",
+              "options": [
+                "On parcourt du proche au lointain",
+                "On ignore l'arrière-plan",
+                "On ne voit qu'une ligne",
+                "On supprime les plans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le regard traverse les plans successifs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un personnage plus grand qu'un arbre lointain…",
+              "options": [
+                "Peut être une échelle expressive ou une erreur",
+                "Prouve qu'il n'y a pas de perspective",
+                "Supprime le premier plan",
+                "Interdit la ligne d'horizon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échelle doit rester cohérente sauf choix expressif."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Ligne d'horizon et point de fuite",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En perspective linéaire, on utilise…",
+              "options": [
+                "Une ligne d'horizon",
+                "Un ou plusieurs points de fuite",
+                "Uniquement la couleur du ciel",
+                "Le cadre en bois"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Horizon et fuite structurent les lignes dans la profondeur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La ligne d'horizon correspond souvent…",
+              "options": [
+                "Au niveau des yeux du spectateur dans l'image",
+                "Au bord bas de la feuille seulement",
+                "Au contour du cadre en bois",
+                "À la couleur du sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'horizon se situe à hauteur de regard."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le point de fuite est…",
+              "options": [
+                "L'endroit où les parallèles semblent se rejoindre",
+                "Le centre du cadre obligatoire",
+                "Un trou dans la feuille",
+                "La signature de l'artiste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lignes convergent vers ce point."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une route droite vue en perspective…",
+              "options": [
+                "Rétrécit vers l'horizon",
+                "S'élargit vers le fond",
+                "Disparaît sans lignes",
+                "Reste même large partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La convergence crée la profondeur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Placer le point de fuite trop bas…",
+              "options": [
+                "Change la sensation de hauteur",
+                "Supprime la profondeur",
+                "Interdit les personnages",
+                "Efface l'horizon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sa position modifie l'angle de vue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'horizon peut être…",
+              "options": [
+                "Visible ou caché par des formes",
+                "Toujours tracé en rouge",
+                "Absent de toute image",
+                "Uniquement en sculpture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même masqué, il guide les fuyantes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Des rails en perspective…",
+              "options": [
+                "Convergent vers un point lointain",
+                "Restent parallèles à l'œil",
+                "Suppriment le premier plan",
+                "Remplacent la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classique exemple de fuyantes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tracer des fuyantes au crayon…",
+              "options": [
+                "Aide à placer sol et bâtiments",
+                "Interdit le croquis libre",
+                "Supprime la couleur",
+                "Efface la superposition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La grille perspective structure l'espace."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Point de fuite hors cadre…",
+              "options": [
+                "Reste utilisable pour les lignes",
+                "Rend l'image impossible",
+                "Supprime l'horizon",
+                "Interdit la profondeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le point peut être en dehors de la feuille."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En perspective à un point, les fuyantes vont…",
+              "options": [
+                "Vers un point de fuite unique",
+                "Vers quatre points obligatoires",
+                "Nulle part",
+                "Uniquement vers le bas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un seul point structure souvent la scène."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Perspective à un point",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Perspective à un point convient souvent à…",
+              "options": [
+                "Une rue ou un couloir vus de face",
+                "Une scène avec fuyantes vers un point",
+                "Une vue sans aucune profondeur",
+                "Une sculpture ronde"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La vue frontale concentre les lignes vers une fuite."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les parallèles horizontales au premier plan…",
+              "options": [
+                "Restent horizontales",
+                "Convergent toutes vers le bas",
+                "Disparaissent",
+                "Deviennent verticales obligatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seules les profondeurs convergent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les verticales d'un bâtiment en perspective frontale…",
+              "options": [
+                "Restent généralement verticales",
+                "Penchent toutes vers un point",
+                "S'effacent",
+                "Remplacent l'horizon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En perspective frontale, murs droits restent verticaux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La grille au sol en perspective…",
+              "options": [
+                "Aide à placer des personnages à la bonne échelle",
+                "Supprime la profondeur",
+                "Interdit les ombres",
+                "Remplace la couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les carreaux rétrécissent avec la distance."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un personnage au point de fuite paraît…",
+              "options": [
+                "Plus loin",
+                "Plus grand qu'au premier plan",
+                "Sans ombre",
+                "Hors de l'image obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loin = plus petit à même échelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Oublier la convergence des lignes…",
+              "options": [
+                "Affaiblit l'illusion de profondeur",
+                "Améliore toujours le dessin",
+                "Crée du relief réel",
+                "Supprime le premier plan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parallèles visuelles aplatissent l'espace."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Perspective à un point ne signifie pas…",
+              "options": [
+                "Qu'il n'y a qu'une seule ligne dans l'image",
+                "Qu'un point organise les fuyantes",
+                "Qu'on trace un horizon",
+                "Qu'on pense au regard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un point de fuite, pas une seule ligne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Copier une photo en respectant les fuyantes…",
+              "options": [
+                "Entraîne l'œil à la perspective",
+                "Interdit le croquis",
+                "Supprime la composition",
+                "Efface la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La photo contient déjà une perspective."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une porte vue de face en perspective…",
+              "options": [
+                "Peut servir de repère de profondeur",
+                "N'a pas de lignes",
+                "Supprime l'horizon",
+                "Remplace le volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rectangle de la porte rétrécit si incliné."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En classe, la perspective à un point…",
+              "options": [
+                "S'apprend par tracés progressifs",
+                "S'impose sans observation",
+                "Remplace le volume",
+                "Supprime les croquis rapides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exercices guidés construisent l'habitude."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Perspective frontale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La perspective frontale…",
+              "options": [
+                "Place le spectateur face à la scène",
+                "Utilise souvent une fuite centrale",
+                "Supprime toute ligne d'horizon",
+                "Interdit les intérieurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vue de face et convergence centrale structurent l'espace."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un couloir en perspective frontale…",
+              "options": [
+                "Fuit vers le centre lointain",
+                "N'a pas de parois",
+                "Supprime le plafond",
+                "Ignore la profondeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Murs et plafond convergent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Perspective frontale et ligne d'horizon…",
+              "options": [
+                "Sont liées à la hauteur des yeux",
+                "S'excluent",
+                "Interdisent les personnages",
+                "Suppriment la couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le regard horizontal fixe l'horizon."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Des fenêtres alignées sur une façade qui fuit…",
+              "options": [
+                "Suivent les fuyantes",
+                "Doivent toujours être géantes",
+                "Suppriment le premier plan",
+                "Remplacent la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ouvertures obéissent à la perspective."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Erreur fréquente : fenêtre flottante sans appui…",
+              "options": [
+                "Casse l'illusion de volume du mur",
+                "Améliore la perspective",
+                "Crée du bas-relief",
+                "Supprime l'horizon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les éléments doivent tenir au plan du mur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Changer la hauteur de l'horizon en vue frontale…",
+              "options": [
+                "Simule un regard plus bas ou plus haut",
+                "Supprime les fuyantes",
+                "Efface le sol",
+                "Interdit les bâtiments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Horizon bas = vue en contre-plongée légère."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le sol en perspective frontale…",
+              "options": [
+                "Monte vers l'horizon",
+                "Reste identique du premier au dernier plan",
+                "Disparaît toujours",
+                "Remplace le ciel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La surface du sol converge."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un cube en perspective frontale…",
+              "options": [
+                "Montre une face principale et une face latérale",
+                "N'a qu'une ligne",
+                "Supprime la 3D",
+                "Ignore les arêtes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On voit souvent deux faces du cube."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Perspective frontale en BD…",
+              "options": [
+                "Structure des décors de rue",
+                "Interdit les cases",
+                "Supprime les personnages",
+                "Remplace le cadrage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les décors utilisent souvent une fuite centrale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La perspective frontale aide à…",
+              "options": [
+                "Construire des intérieurs et des rues",
+                "Sculpter dans le bois",
+                "Recadrer une photo sans lignes",
+                "Supprimer la profondeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un outil majeur de l'espace représenté."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Profondeur sans règle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "On peut suggérer la profondeur sans perspective exacte en…",
+              "options": [
+                "Superposant les formes",
+                "Réduisant ce qui est loin",
+                "Effaçant tout arrière-plan",
+                "N'utilisant qu'une ligne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Superposition et échelle suffisent parfois sans fuyantes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un personnage devant, un autre derrière…",
+              "options": [
+                "Crée deux plans sans règle",
+                "Supprime la composition",
+                "Interdit la couleur",
+                "Remplace l'horizon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chevauchement indique qui est devant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Couleurs plus pâles au loin…",
+              "options": [
+                "Simulent la distance (perspective atmosphérique)",
+                "Suppriment la profondeur",
+                "Interdisent le premier plan",
+                "Remplacent les fuyantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air voile les tons éloignés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Détails flous ou moins nets au fond…",
+              "options": [
+                "Renforcent l'idée de lointain",
+                "Placent le fond au premier plan",
+                "Suppriment la lumière",
+                "Effacent la composition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moindre précision = plus loin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Art naïf ou expressif…",
+              "options": [
+                "Peut ignorer la perspective académique",
+                "Ne montre jamais d'espace",
+                "Interdit les personnages",
+                "Supprime la couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'autres codes créent la profondeur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réduire la taille d'une rangée d'arbres…",
+              "options": [
+                "Suggère une allée qui s'enfonce",
+                "Les rapproche toutes",
+                "Supprime le sol",
+                "Remplace le volume réel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduction progressive = éloignement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Plus un objet est haut vers l'horizon…",
+              "options": [
+                "Plus il peut sembler loin",
+                "Plus il est toujours proche",
+                "Moins il compte",
+                "Plus il n'a pas de forme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vers l'horizon, les éléments se rangent au loin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Profondeur sans règle demande quand même…",
+              "options": [
+                "Une composition réfléchie",
+                "Aucune observation",
+                "L'absence de sujet",
+                "Un cadre circulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même libre, l'organisation reste importante."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mélanger perspective exacte et raccourcis expressifs…",
+              "options": [
+                "Est possible dans une même œuvre",
+                "Est toujours interdit",
+                "Supprime le regard",
+                "Efface les plans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les artistes combinent les méthodes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un bateau plus petit qu'un autre sur la mer…",
+              "options": [
+                "Peut être plus loin sur l'eau",
+                "Doit toujours être au premier plan",
+                "Supprime l'horizon",
+                "Interdit la perspective"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échelle relative situe les objets."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Plans et échelle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les plans dans une image incluent…",
+              "options": [
+                "Premier plan",
+                "Plan moyen et arrière-plan",
+                "Uniquement le cadre en bois",
+                "Les signatures"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'espace se découpe en zones de profondeur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le premier plan accueille souvent…",
+              "options": [
+                "Les éléments les plus proches du spectateur",
+                "Uniquement le ciel",
+                "Rien",
+                "La ligne de fuite seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant = détails plus grands et nets."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'échelle en perspective lie…",
+              "options": [
+                "Taille apparente et distance",
+                "Couleur et température",
+                "Cadre et vernis",
+                "Papier et gomme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus c'est loin, plus c'est petit à échelle égale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un banc au premier plan et des montagnes loin…",
+              "options": [
+                "Crée un contraste de plans",
+                "Supprime la profondeur",
+                "Met les montagnes devant",
+                "Efface l'horizon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proche et lointain se lisent ensemble."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Plan moyen…",
+              "options": [
+                "Se situe entre premier plan et fond",
+                "N'existe pas en arts",
+                "Remplace l'horizon",
+                "Supprime les personnages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zone intermédiaire de l'action."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Mettre un repère d'échelle (personnage)…",
+              "options": [
+                "Aide à juger la taille des bâtiments",
+                "Supprime la perspective",
+                "Interdit le paysage",
+                "Efface le sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un humain connu donne l'échelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Grossir un objet au premier plan…",
+              "options": [
+                "Le rapproche visuellement",
+                "L'éloigne toujours",
+                "Supprime la 3D",
+                "Remplace la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grande taille = proximité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Chevauchement de plans…",
+              "options": [
+                "Indique qui masque qui",
+                "Supprime l'espace",
+                "Interdit les fuyantes",
+                "Remplace la couleur locale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Masquer = être devant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Échelle cohérente en perspective…",
+              "options": [
+                "Respecte la réduction avec la distance",
+                "Met les lointains plus grands",
+                "Supprime l'horizon",
+                "Interdit les croquis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérence rend l'espace crédible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Plans flous au cinéma…",
+              "options": [
+                "Guident le focus du regard",
+                "Suppriment la profondeur de champ",
+                "Interdisent la caméra",
+                "Effacent la composition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Net et flou créent hiérarchie des plans."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Perspective atmosphérique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La perspective atmosphérique repose sur…",
+              "options": [
+                "Le voile de l'air sur les distances",
+                "Des valeurs plus claires au loin",
+                "La convergence des parallèles seule",
+                "Le collage de papier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'atmosphère adoucit et éclaircit le lointain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les montagnes lointaines paraissent…",
+              "options": [
+                "Plus bleutées ou pâles",
+                "Plus saturées que le premier plan",
+                "Sans forme",
+                "Toujours noires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La distance refroidit et pâlit les tons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Contraste fort au premier plan et faible au fond…",
+              "options": [
+                "Sépare les plans par la clarté",
+                "Supprime la profondeur",
+                "Interdit la perspective linéaire",
+                "Efface l'horizon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraste guide la lecture en profondeur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Brume ou brouillard dans une image…",
+              "options": [
+                "Raccourcit la visibilité et la profondeur",
+                "Élargit toujours l'horizon",
+                "Supprime le sujet",
+                "Remplace les fuyantes obligatoirement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'atmosphère dense cache le lointain."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Perspective atmosphérique complète…",
+              "options": [
+                "La perspective linéaire",
+                "Rien d'autre jamais",
+                "Le volume sculpté seul",
+                "Le cadre en bois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleur et contraste ajoutent à la géométrie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Peindre des collines de plus en plus claires…",
+              "options": [
+                "Suggère des plans successifs",
+                "Les rapproche toutes",
+                "Supprime la lumière",
+                "Interdit le croquis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plans de valeurs = profondeur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Premier plan sombre et fond très clair…",
+              "options": [
+                "Peut accentuer la profondeur",
+                "Aplatit l'image",
+                "Supprime les personnages",
+                "Remplace le volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valeurs séparent proche et loin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Photo avec brouillard…",
+              "options": [
+                "Montre moins de plans distincts",
+                "Montre toujours plus de détails loin",
+                "Supprime la 3D réelle",
+                "Interdit l'observation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La brume unifie le fond."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En dessin au crayon, l'atmosphère…",
+              "options": [
+                "Se traduit par des valeurs plus légères au loin",
+                "Interdit les ombres proches",
+                "Supprime les fuyantes",
+                "Remplace la composition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Estomper le fond éloigne visuellement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'air entre le spectateur et le loin…",
+              "options": [
+                "Modifie la couleur et le contraste perçus",
+                "Supprime la perspective",
+                "Interdit les montagnes",
+                "Remplace le point de fuite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'épaisseur d'air voile les éléments éloignés."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Perspective oblique et cavalière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La perspective oblique ou cavalière…",
+              "options": [
+                "Garde souvent les parallèles parallèles",
+                "Sert aux schémas et dessins techniques",
+                "Converge toujours comme une photo",
+                "Supprime toute profondeur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Oblique simplifie la profondeur pour la lisibilité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Perspective cavalière…",
+              "options": [
+                "Utilise des angles sans convergence réelle",
+                "Est identique à la photo",
+                "Supprime le volume",
+                "Remplace la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratique en dessin technique et schémas."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Plan isométrique…",
+              "options": [
+                "Montre trois faces sans diminution perspective",
+                "N'a pas de profondeur du tout",
+                "Interdit les cubes",
+                "Remplace le croquis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échelle égale sur les axes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Jeu vidéo en vue isométrique…",
+              "options": [
+                "Rappelle la perspective oblique",
+                "N'a aucun espace",
+                "Supprime les personnages",
+                "Interdit la couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Carte inclinée sans fuite réaliste."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Oblique vs perspective à un point…",
+              "options": [
+                "Oblique simplifie, à un point mime le regard",
+                "Sont identiques",
+                "Excluent toute composition",
+                "Suppriment l'horizon toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix selon réalisme ou clarté."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dessin d'un meuble en perspective cavalière…",
+              "options": [
+                "Montre plusieurs faces lisibles",
+                "Interdit les arêtes",
+                "Supprime la 3D",
+                "Remplace la photographie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile pour présenter un objet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Mélanger oblique et fuite réelle sans cohérence…",
+              "options": [
+                "Trouble la lecture de l'espace",
+                "Améliore toujours l'image",
+                "Crée du bas-relief",
+                "Supprime le premier plan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut un système dominant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Axonométrie en technologie…",
+              "options": [
+                "Représente un objet en 3D sur 2D",
+                "Remplace le volume réel",
+                "Supprime les cotes",
+                "Interdit le croquis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien arts / techno pour l'espace."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Perspective oblique en BD décorative…",
+              "options": [
+                "Peut styliser une ville",
+                "Interdit les cases",
+                "Supprime les personnages",
+                "Efface la narration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Style graphique choisi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir oblique ou fuite…",
+              "options": [
+                "Dépend du rendu voulu (réaliste ou schématique)",
+                "Est aléatoire",
+                "Supprime la profondeur",
+                "Remplace la matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque système a ses usages."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Point de vue du spectateur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le point de vue du spectateur…",
+              "options": [
+                "Détermine où se place l'horizon",
+                "Modifie l'impact de la scène",
+                "Supprime les plans",
+                "Remplace la couleur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Regard et hauteur des yeux transforment l'espace représenté."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Vue en plongée…",
+              "options": [
+                "Regarde de haut vers le bas",
+                "Regarde de bas vers le haut",
+                "Supprime la profondeur",
+                "Est la perspective atmosphérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plongée domine la scène."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Vue en contre-plongée sur un monument…",
+              "options": [
+                "Exagère sa verticalité",
+                "Le réduit à une ligne",
+                "Supprime le ciel",
+                "Interdit l'horizon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De bas, le bâtiment « monte »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Point de vue à hauteur d'enfant…",
+              "options": [
+                "Place l'horizon plus bas dans l'image",
+                "Supprime les personnages",
+                "Efface la perspective",
+                "Remplace le volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yeux bas = horizon bas."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Vue subjective (yeux d'un personnage)…",
+              "options": [
+                "Immerge le spectateur dans l'espace",
+                "Supprime la composition",
+                "Interdit la BD",
+                "Efface les fuyantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On voit ce que le personnage voit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Changer le point de vue sur la même rue…",
+              "options": [
+                "Change les fuyantes et l'impact",
+                "Ne change rien",
+                "Supprime la 3D",
+                "Remplace le cadre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Angle de croquis = message différent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Point de vue éloigné…",
+              "options": [
+                "Montre plus de contexte",
+                "Supprime l'arrière-plan",
+                "Interdit les petites figures",
+                "Efface l'horizon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vue large situe les éléments."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Point de vue rapproché…",
+              "options": [
+                "Isole un détail spatial",
+                "Montre toujours toute la ville",
+                "Supprime le premier plan",
+                "Interdit la perspective"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proximité = cadrage serré dans l'espace."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le spectateur devant un tableau…",
+              "options": [
+                "A un point de vue fixe face à l'image",
+                "Tourne autour comme une sculpture",
+                "Ne voit pas la profondeur",
+                "Change l'horizon du tableau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peinture = espace illusoire depuis une place."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Indiquer le point de vue dans une analyse…",
+              "options": [
+                "En parlant de plongée, hauteur des yeux, cadrage",
+                "En ignorant l'espace",
+                "En comptant les crayons",
+                "En supprimant les plans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décrire le regard aide à lire l'œuvre."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse espace et perspective",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Espace de la représentation en 4e, on relie…",
+              "options": [
+                "Perspective linéaire et plans",
+                "Point de vue et profondeur",
+                "Uniquement le cadre en bois",
+                "Volume réel et interdit du dessin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Profondeur = géométrie, atmosphère et regard."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Perspective linéaire et atmosphérique…",
+              "options": [
+                "Se complètent dans une même image",
+                "S'excluent toujours",
+                "Suppriment le premier plan",
+                "Remplacent le volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lignes et valeurs construisent le loin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Volume réel et espace représenté…",
+              "options": [
+                "Se questionnent ensemble en arts plastiques",
+                "N'ont aucun lien",
+                "Interdisent le croquis",
+                "Suppriment la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sculpture et perspective répondent à l'espace."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour un croquis de rue…",
+              "options": [
+                "On repère horizon, fuyantes et plans",
+                "On ignore la profondeur",
+                "On supprime l'arrière-plan",
+                "On n'utilise qu'une ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode rapide mais structurée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une erreur d'échelle…",
+              "options": [
+                "Casse l'illusion d'espace",
+                "Améliore toujours l'œuvre",
+                "Crée du bas-relief",
+                "Supprime la couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tailles incohérentes troublent le regard."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réviser la perspective…",
+              "options": [
+                "Refaire de petits schémas de fuyantes",
+                "Oublier l'horizon",
+                "Ne jamais observer",
+                "Supprimer les croquis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pratique du tracé fixe les notions."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'espace dans une BD…",
+              "options": [
+                "Combine cadrage et profondeur des décors",
+                "Ignore les plans",
+                "Supprime les cases",
+                "Remplace la narration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque case est un espace composé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Photo et dessin de perspective…",
+              "options": [
+                "La photo montre un cas réel à analyser",
+                "La photo n'a pas de profondeur",
+                "Le dessin ignore l'espace",
+                "Les deux sont identiques sans observation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparer photo et croquis entraîne l'œil."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Horizon caché par des bâtiments…",
+              "options": [
+                "Peut rester implicite pour les lignes",
+                "Supprime toute perspective",
+                "Interdit les personnages",
+                "Efface le sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On prolonge mentalement les fuyantes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif du chapitre espace…",
+              "options": [
+                "Représenter un monde crédible sur le plan",
+                "Supprimer le volume en classe",
+                "Ignorer le spectateur",
+                "Ne travailler que le cadre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élève apprend à construire la profondeur."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

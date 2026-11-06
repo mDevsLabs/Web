@@ -32,13 +32,11 @@ import {
   weeklyQuotaExceeded,
 } from "@/lib/chat/auth";
 import { loadMcpContext } from "@/lib/chat/mcp";
+import { buildMemoryContext } from "@/lib/chat/memory";
 import { createChatTools } from "@/lib/chat/tools";
 import { MAI_API_URL, MAI_UPGRADE_URL } from "@/lib/constants";
-import {
-  getUserMcpPrefs,
-  getUserModelPreferences,
-  recordTokenUsage,
-} from "@/lib/db/queries";
+import { getUserMcpPrefs, recordTokenUsage } from "@/lib/db/queries";
+import { getUserPreferences } from "@/lib/db/queries/users";
 import { createIntegrationSecretResolver } from "@/lib/integrations/tokens";
 import { createMcpChatTools } from "@/lib/mcp/chat-tools";
 import { toMcpRuntimePreferences } from "@/lib/mcp/policy";
@@ -239,11 +237,21 @@ export async function POST(request: Request) {
       message: "Les Wakies sont en pause. Reactivez-les dans les réglages.",
     });
   }
-  const [wakie, memories, page] = await Promise.all([
-    findWakie(auth.userId, conversation.wakieId),
-    listMemories(auth.userId),
-    pageForConversation(auth.userId, conversationId),
-  ]);
+  const [wakie, memories, page, prefsCompte, memoryContext] = await Promise.all(
+    [
+      findWakie(auth.userId, conversation.wakieId),
+      listMemories(auth.userId),
+      pageForConversation(auth.userId, conversationId),
+      getUserPreferences(auth.userId).catch(() => null),
+      buildMemoryContext({
+        effectiveAgentId: null,
+        effectiveProjectId: null,
+        isGhostMode: false,
+        tier: auth.maiUser.tier,
+        userId: auth.userId,
+      }),
+    ]
+  );
   if (!wakie) {
     return errorResponse("not_found", { message: "Wakie introuvable." });
   }
@@ -342,14 +350,11 @@ export async function POST(request: Request) {
   // modèle (le même composant que le Chat et le mode Agent), appliqué à
   // l'appel réel.
   const models = await fetchUserModels();
-  const userPrefs = await getUserModelPreferences(auth.userId).catch(
-    () => null
-  );
   const modelId = resolveWakieCatalogModel(
     filterModelsForTier(models, auth.maiUser.tier),
     conversation.model,
     wakie.model,
-    userPrefs?.defaultChatModel ?? null
+    prefsCompte?.defaultChatModel ?? null
   );
   if (
     !models.some((candidate) => candidate.id === modelId) ||
@@ -478,6 +483,11 @@ export async function POST(request: Request) {
       // Pages, Espaces et Wakies invoqués (`@`) ou réglés sur le fil (`@@`).
       documents: documentsTour,
       instructions: dessinateur.instructions,
+      instructionsCompte:
+        prefsCompte?.enabled && prefsCompte.customInstructions.trim()
+          ? prefsCompte.customInstructions.trim()
+          : null,
+      memoiresCompte: memoryContext.userMemoryLines,
       memories:
         reglage.memoryAllowed && dessinateur.memoryAllowed
           ? memories.map((memoire) => memoire.text)
@@ -787,7 +797,7 @@ export async function POST(request: Request) {
           });
 
         const chosenEffort =
-          parsed.data.reasoningLevel ?? userPrefs?.reasoningLevel ?? null;
+          parsed.data.reasoningLevel ?? prefsCompte?.reasoningLevel ?? null;
         // Le niveau préféré peut ne pas exister sur ce modèle (mAI-2-Mini
         // n'en expose aucun) : on laisse alors le fournisseur trancher au lieu
         // d'envoyer un effort qu'il refuserait.

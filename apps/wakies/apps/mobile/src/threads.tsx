@@ -60,7 +60,10 @@ export function ThreadsProvider({ children }: { children: ReactNode }) {
         setLoading(false);
       })
       .catch((e) => {
-        if (active) setError(e instanceof Error ? e.message : String(e));
+        if (active) {
+          setError(e instanceof Error ? e.message : String(e));
+          setLoading(false);
+        }
       });
     return () => {
       active = false;

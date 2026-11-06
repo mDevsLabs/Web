@@ -1,0 +1,1733 @@
+{
+  "id": "1ere-arabe-01",
+  "year": "1ere",
+  "subject": "arabe",
+  "title": "Découvrir l'arabe",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "question": "Quelles salutations arabes signifient « bonjour » ou « paix » ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["مرحبا", "مع السلامة", "السلام عليكم", "شكراً"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Marhaba » (مرحبا) accueille chaleureusement ; « As-salāmu ʿalaykum » (السلام عليكم) souhaite la paix. « Maʿa as-salāma » signifie au revoir."
+            },
+            {
+              "question": "Comment répond-on à « As-salāmu ʿalaykum » ?",
+              "type": "single_choice",
+              "options": ["وعليكم السلام", "مرحبا", "شكراً", "مع السلامة"],
+              "correctAnswers": [0],
+              "explanation": "La réponse habituelle est « Wa ʿalaykum as-salām » (وعليكم السلام), qui renvoie le souhait de paix."
+            },
+            {
+              "question": "Que signifie « Marhaba » (مرحبا) ?",
+              "type": "single_choice",
+              "options": [
+                "Bonjour / bienvenue",
+                "Au revoir",
+                "Merci",
+                "S'il vous plaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Marhaba » est une salutation courante pour dire bonjour ou bienvenue dans le monde arabe."
+            },
+            {
+              "question": "Quel mot arabe correspond à « je » ?",
+              "type": "single_choice",
+              "options": ["أنا", "أنت", "هو", "نحن"],
+              "correctAnswers": [0],
+              "explanation": "« Ana » (أنا) est le pronom personnel de la première personne du singulier."
+            },
+            {
+              "question": "Comment dit-on « mon nom est… » en arabe ?",
+              "type": "single_choice",
+              "options": ["…اسمي", "…أنا", "…من", "…هذا"],
+              "correctAnswers": [0],
+              "explanation": "« Ismī » (اسمي) signifie « mon nom est » ; on place le prénom avant ou après selon le contexte pédagogique."
+            },
+            {
+              "question": "Que signifie « Maʿa as-salāma » (مع السلامة) ?",
+              "type": "single_choice",
+              "options": [
+                "Au revoir (avec la paix)",
+                "Bonjour",
+                "Comment allez-vous ?",
+                "Enchanté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Littéralement « avec la paix », cette formule sert à prendre congé poliment."
+            },
+            {
+              "question": "Quelle phrase permet de demander « Comment tu t'appelles ? » (masculin) ?",
+              "type": "single_choice",
+              "options": ["ما اسمك؟", "من أنت؟", "كيف حالك؟", "أين أنت؟"],
+              "correctAnswers": [0],
+              "explanation": "« Mā ismuka ? » (ما اسمك؟) demande directement le nom ; « min anta ? » signifie « qui es-tu ? »."
+            },
+            {
+              "question": "Comment dit-on « enchanté » (masculin) ?",
+              "type": "single_choice",
+              "options": ["تشرفنا", "مرحبا", "شكراً", "أهلاً"],
+              "correctAnswers": [0],
+              "explanation": "« Tasharrafna » (تشرفنا) exprime le plaisir de faire connaissance, souvent après les présentations."
+            },
+            {
+              "question": "Que signifie « Ahlan » (أهلاً) ?",
+              "type": "single_choice",
+              "options": ["Salut / bienvenue", "Merci", "Pardon", "Oui"],
+              "correctAnswers": [0],
+              "explanation": "« Ahlan » (souvent « Ahlan wa sahlan ») accueille quelqu'un de façon amicale."
+            },
+            {
+              "question": "Quel pronom signifie « tu » (masculin singulier) ?",
+              "type": "single_choice",
+              "options": ["أنت", "أنا", "هي", "هم"],
+              "correctAnswers": [0],
+              "explanation": "« Anta » (أنت) s'adresse à un homme ou un garçon ; « anti » (أنتِ) à une femme ou une fille."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "question": "Quelles expressions peuvent servir à saluer quelqu'un le matin ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["صباح الخير", "مساء الخير", "مرحبا", "مع السلامة"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Ṣabāḥ al-khayr » (صباح الخير) est le bonjour du matin ; « marhaba » reste valable à tout moment."
+            },
+            {
+              "question": "Comment répond-on à « Ṣabāḥ al-khayr » ?",
+              "type": "single_choice",
+              "options": ["صباح النور", "مساء الخير", "شكراً", "السلام عليكم"],
+              "correctAnswers": [0],
+              "explanation": "On répond souvent « Ṣabāḥ an-nūr » (صباح النور), « matin de lumière »."
+            },
+            {
+              "question": "Que signifie « Masāʾ al-khayr » (مساء الخير) ?",
+              "type": "single_choice",
+              "options": ["Bonsoir", "Bonjour", "Bonne nuit", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Cette formule s'utilise en fin de journée pour saluer ou souhaiter une bonne soirée."
+            },
+            {
+              "question": "Comment dit-on « je m'appelle Marie » en structurant avec « ismī » ?",
+              "type": "single_choice",
+              "options": ["اسمي ماري", "أنا ماري اسم", "ماري أنا", "من ماري"],
+              "correctAnswers": [0],
+              "explanation": "Le modèle simple « Ismī + prénom » convient au niveau première."
+            },
+            {
+              "question": "Quelle question signifie « Comment allez-vous ? » (forme polie) ?",
+              "type": "single_choice",
+              "options": ["كيف حالك؟", "ما اسمك؟", "من أين أنت؟", "كم عمرك؟"],
+              "correctAnswers": [0],
+              "explanation": "« Kayfa ḥāluka ? » (masculin) ou « ḥāluki » (féminin) demande des nouvelles de la santé ou de la situation."
+            },
+            {
+              "question": "Que signifie « bikhayr » (بخير) dans une réponse ?",
+              "type": "single_choice",
+              "options": ["Bien / en forme", "Malade", "Fatigué", "Occupé"],
+              "correctAnswers": [0],
+              "explanation": "« Ana bikhayr » (أنا بخير) répond « je vais bien » à « kayfa ḥāluk ? »."
+            },
+            {
+              "question": "Quel mot signifie « nom » ?",
+              "type": "single_choice",
+              "options": ["اسم", "بلد", "مدينة", "عمر"],
+              "correctAnswers": [0],
+              "explanation": "« Ism » (اسم) est le nom commun ; « ismī » en est la forme « mon nom »."
+            },
+            {
+              "question": "Comment dit-on « ravi de te rencontrer » (forme courte courante) ?",
+              "type": "single_choice",
+              "options": [
+                "فرحت بلقائك",
+                "مع السلامة",
+                "لا شكر على واجب",
+                "عفواً"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Fariḥtu biliqāʾik » exprime la joie de la rencontre ; d'autres formules existent selon les régions."
+            },
+            {
+              "question": "Que signifie « Wa ʿalaykum as-salām » ?",
+              "type": "single_choice",
+              "options": [
+                "Et que la paix soit sur vous",
+                "Bonjour à tous",
+                "Merci beaucoup",
+                "À bientôt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la réponse standard au salut islamique de paix."
+            },
+            {
+              "question": "Quelle salutation est la plus neutre pour un débutant avec des amis ?",
+              "type": "single_choice",
+              "options": [
+                "مرحبا",
+                "السلام عليكم فقط",
+                "مع السلامة",
+                "تصبح على خير"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Marhaba » est universelle, familière et adaptée aux premiers échanges."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "question": "Quels mots permettent de dire qui on est ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["أنا", "اسمي", "مع السلامة", "مساء"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ana » + « ismī » structure une mini-présentation : « Je suis… / mon nom est… »."
+            },
+            {
+              "question": "Comment demande-t-on « d'où viens-tu ? » (masculin) ?",
+              "type": "single_choice",
+              "options": ["من أين أنت؟", "ما اسمك؟", "كم عمرك؟", "أين تسكن؟"],
+              "correctAnswers": [0],
+              "explanation": "« Min ayna anta ? » (من أين أنت؟) interroge l'origine géographique."
+            },
+            {
+              "question": "Comment répond-on « Je suis français » (masculin) ?",
+              "type": "single_choice",
+              "options": ["أنا فرنسي", "أنا فرنسا", "من فرنسي", "اسمي فرنسي"],
+              "correctAnswers": [0],
+              "explanation": "On utilise l'adjectif de nationalité « faransī » (فرنسي) avec « ana »."
+            },
+            {
+              "question": "Que signifie « min » (من) dans « min ayna » ?",
+              "type": "single_choice",
+              "options": ["De / depuis", "Vers", "Avec", "Sans"],
+              "correctAnswers": [0],
+              "explanation": "« Min » indique l'origine ; « ayna » signifie « où »."
+            },
+            {
+              "question": "Quelle particule introduit souvent la nationalité après « je suis » ?",
+              "type": "single_choice",
+              "options": [
+                "Aucune : adjectif direct",
+                "فقط « من »",
+                "« في » obligatoire",
+                "« إلى »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au niveau débutant : « ana + adjectif de nationalité » suffit (ana faransī / faransiyya)."
+            },
+            {
+              "question": "Comment dit-on « étudiant » (masculin) ?",
+              "type": "single_choice",
+              "options": ["طالب", "طالبة", "مدرس", "مدرسة"],
+              "correctAnswers": [0],
+              "explanation": "« Ṭālib » (طالب) ; « ṭāliba » (طالبة) est la forme féminine."
+            },
+            {
+              "question": "Que signifie « ayna » (أين) ?",
+              "type": "single_choice",
+              "options": ["Où", "Qui", "Quand", "Pourquoi"],
+              "correctAnswers": [0],
+              "explanation": "« Ayna » localise une personne ou un lieu : « où ? »."
+            },
+            {
+              "question": "Quelle phrase présente son pays ?",
+              "type": "single_choice",
+              "options": [
+                "أنا من فرنسا",
+                "أنا فرنسا اسم",
+                "من أنا فرنسا",
+                "اسمي من فرنسا"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ana min Faransā » = « Je viens de France » ; « Faransā » est le nom du pays."
+            },
+            {
+              "question": "Comment dit-on « bonne nuit » ?",
+              "type": "single_choice",
+              "options": ["تصبح على خير", "صباح الخير", "مساء الخير", "مرحبا"],
+              "correctAnswers": [0],
+              "explanation": "« Tuṣbiḥ ʿalā khayr » (تصبح على خير) souhaite une bonne nuit ou un bon réveil."
+            },
+            {
+              "question": "Quel pronom correspond à « nous » ?",
+              "type": "single_choice",
+              "options": ["نحن", "أنتم", "هم", "أنا"],
+              "correctAnswers": [0],
+              "explanation": "« Naḥnu » (نحن) est le « nous » en arabe standard."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "question": "Quelles formules sont des politesses lors d'une présentation ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["تشرفنا", "مرحبا", "مع السلامة", "لا"],
+              "correctAnswers": [0, 1],
+              "explanation": "Accueillir (« marhaba ») et marquer le plaisir (« tasharrafna ») accompagnent une présentation."
+            },
+            {
+              "question": "Comment dit-on « elle » ?",
+              "type": "single_choice",
+              "options": ["هي", "هو", "أنت", "نحن"],
+              "correctAnswers": [0],
+              "explanation": "« Hiya » (هي) est le pronom féminin singulier."
+            },
+            {
+              "question": "Comment dit-on « il » ?",
+              "type": "single_choice",
+              "options": ["هو", "هي", "أنا", "هم"],
+              "correctAnswers": [0],
+              "explanation": "« Huwa » (هو) est le pronom masculin singulier."
+            },
+            {
+              "question": "Quelle question demande l'âge ?",
+              "type": "single_choice",
+              "options": ["كم عمرك؟", "ما اسمك؟", "كيف حالك؟", "ماذا تعمل؟"],
+              "correctAnswers": [0],
+              "explanation": "« Kam ʿumruka ? » (كم عمرك؟) = « Quel est ton âge ? » (masculin)."
+            },
+            {
+              "question": "Comment répond-on « J'ai seize ans » ?",
+              "type": "single_choice",
+              "options": [
+                "عمري ستة عشر سنة",
+                "اسمي ستة عشر",
+                "أنا ستة عشر",
+                "من ستة عشر"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On utilise « ʿumrī » (mon âge est) + nombre + « sana/sanawāt » (an/s)."
+            },
+            {
+              "question": "Que signifie « kam » (كم) ?",
+              "type": "single_choice",
+              "options": ["Combien", "Quel", "Où", "Comment"],
+              "correctAnswers": [0],
+              "explanation": "« Kam » interroge une quantité ou un nombre."
+            },
+            {
+              "question": "Comment s'adresser à une fille avec « comment tu t'appelles » ?",
+              "type": "single_choice",
+              "options": [
+                "ما اسمك؟ (أنتِ)",
+                "ما اسمك؟ (أنتَ) uniquement",
+                "من هي؟",
+                "كيف هي؟"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écriture « mā ismuki » différencie le féminin ; à l'oral, la terminaison change."
+            },
+            {
+              "question": "Que signifie « ʿumr » (عمر) ?",
+              "type": "single_choice",
+              "options": ["Âge", "Nom", "Travail", "Ville"],
+              "correctAnswers": [0],
+              "explanation": "« ʿUmruka » = ton âge ; « ʿumrī » = mon âge."
+            },
+            {
+              "question": "Quelle réponse va bien après « ismī Ahmad » ?",
+              "type": "single_choice",
+              "options": [
+                "تشرفنا يا أحمد",
+                "مع السلامة",
+                "مساء الخير فقط",
+                "لا شكر"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Remercier la présentation par « tasharrafna » (+ prénom) est naturel."
+            },
+            {
+              "question": "Comment dit-on « vous » (masculin ou mixte pluriel) ?",
+              "type": "single_choice",
+              "options": ["أنتم", "أنت", "هم", "هن"],
+              "correctAnswers": [0],
+              "explanation": "« Antum » (أنتم) s'adresse à plusieurs personnes (masculin ou groupe mixte)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "question": "Quels mots appartiennent au registre du salut ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["أهلاً وسهلاً", "السلام عليكم", "كتاب", "بيت"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ahlan wa sahlan » et le salut de paix font partie du vocabulaire de contact."
+            },
+            {
+              "question": "Que signifie « sahlan » dans « ahlan wa sahlan » ?",
+              "type": "single_choice",
+              "options": [
+                "Facilement / en toute simplicité",
+                "Merci",
+                "Non",
+                "Demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expression complète signifie « bienvenue, entrez comme chez vous »."
+            },
+            {
+              "question": "Comment dit-on « au revoir » de façon courte ?",
+              "type": "single_choice",
+              "options": ["مع السلامة", "مرحبا", "صباح الخير", "تشرفنا"],
+              "correctAnswers": [0],
+              "explanation": "« Maʿa as-salāma » est la formule de départ la plus enseignée au début."
+            },
+            {
+              "question": "Quelle phrase signifie « Je suis étudiante » ?",
+              "type": "single_choice",
+              "options": ["أنا طالبة", "أنا طالب", "اسمي طالبة", "من طالبة"],
+              "correctAnswers": [0],
+              "explanation": "Accord féminin : « ṭāliba » avec « ana »."
+            },
+            {
+              "question": "Comment demander « Qui es-tu ? » (masculin) ?",
+              "type": "single_choice",
+              "options": ["من أنت؟", "ما أنت؟", "أين أنت؟", "متى أنت؟"],
+              "correctAnswers": [0],
+              "explanation": "« Min anta ? » (من أنت؟) = littéralement « de qui es-tu ? » → qui es-tu ?"
+            },
+            {
+              "question": "Que signifie « anta » (أنتَ) ?",
+              "type": "single_choice",
+              "options": ["Tu (masculin)", "Il", "Elle", "Ils"],
+              "correctAnswers": [0],
+              "explanation": "Distinct de « anti » (féminin) et « antum » (pluriel)."
+            },
+            {
+              "question": "Quelle est la traduction de « bienvenue » ?",
+              "type": "single_choice",
+              "options": ["أهلاً وسهلاً", "مع السلامة", "شكراً", "عفواً"],
+              "correctAnswers": [0],
+              "explanation": "On accueille un invité avec « ahlan wa sahlan »."
+            },
+            {
+              "question": "Comment répondre « Je vais bien, merci » (structure simple) ?",
+              "type": "single_choice",
+              "options": [
+                "أنا بخير، شكراً",
+                "مع السلامة",
+                "اسمي بخير",
+                "من بخير"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ana bikhayr, shukran » enchaîne l'état et le remerciement."
+            },
+            {
+              "question": "Quel mot signifie « paix » (dans as-salām) ?",
+              "type": "single_choice",
+              "options": ["سلام", "مرحب", "خير", "نور"],
+              "correctAnswers": [0],
+              "explanation": "« Salām » (سلام) = paix ; racine présente dans plusieurs salutations."
+            },
+            {
+              "question": "Comment dit-on « ils » (masculin) ?",
+              "type": "single_choice",
+              "options": ["هم", "هن", "نحن", "أنتم"],
+              "correctAnswers": [0],
+              "explanation": "« Hum » (هم) pour un groupe masculin ; « hunna » (هن) pour un groupe féminin."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "question": "Quelles réponses conviennent à « Kayfa ḥāluk ? » ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["بخير", "الحمد لله", "مع السلامة", "كتاب"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Bikhayr » ou « al-ḥamdu lillāh » (louange à Dieu) répondent poliment."
+            },
+            {
+              "question": "Que signifie « al-ḥamdu lillāh » dans une conversation ?",
+              "type": "single_choice",
+              "options": [
+                "Louange à Dieu (ça va)",
+                "Au revoir",
+                "Bonjour",
+                "Excusez-moi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression très fréquente pour dire que tout va bien ou remercier."
+            },
+            {
+              "question": "Comment dit-on « et toi ? » après avoir répondu ?",
+              "type": "single_choice",
+              "options": ["وأنت؟", "وأنا؟", "معك؟", "منك؟"],
+              "correctAnswers": [0],
+              "explanation": "« Wa anta ? » (masculin) ou « wa anti ? » renvoie la question."
+            },
+            {
+              "question": "Quelle particule signifie « et » dans « wa anta » ?",
+              "type": "single_choice",
+              "options": ["و (wa)", "ف (fa)", "ل (li)", "ب (bi)"],
+              "correctAnswers": [0],
+              "explanation": "« Wa » (و) coordonne : « et toi ? »."
+            },
+            {
+              "question": "Comment se présenter en deux phrases simples ?",
+              "type": "single_choice",
+              "options": [
+                "مرحبا. اسمي سارة.",
+                "مع السلامة. كتاب.",
+                "شكراً. بيت.",
+                "لا. أين؟"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Saluer puis donner son prénom est le modèle de base."
+            },
+            {
+              "question": "Que signifie « ismuka » dans « mā ismuka » ?",
+              "type": "single_choice",
+              "options": [
+                "Ton nom (masculin)",
+                "Mon nom",
+                "Son nom",
+                "Leur nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suffixe « -ka » = ton (masculin) ; « -ki » = ton (féminin)."
+            },
+            {
+              "question": "Quelle salutation utilise « khayr » (bien) ?",
+              "type": "single_choice",
+              "options": ["صباح الخير", "مرحبا فقط", "شكراً", "اسم"],
+              "correctAnswers": [0],
+              "explanation": "« Ṣabāḥ al-khayr » = bon matin (matin du bien)."
+            },
+            {
+              "question": "Comment dit-on « Ravi(e) » en réutilisant « fariḥtu » ?",
+              "type": "single_choice",
+              "options": ["فرحت", "تعبت", "نسيت", "ذهبت"],
+              "correctAnswers": [0],
+              "explanation": "« Fariḥtu » = j'ai été heureux / ravi (contexte de rencontre)."
+            },
+            {
+              "question": "Quel mot interrogatif signifie « quoi » ?",
+              "type": "single_choice",
+              "options": ["ماذا", "أين", "متى", "لماذا"],
+              "correctAnswers": [0],
+              "explanation": "« Mādhā / mā » (ماذا / ما) introduit « qu'est-ce que… ? »."
+            },
+            {
+              "question": "« Anti » (أنتِ) s'adresse à :",
+              "type": "single_choice",
+              "options": [
+                "Une fille / une femme",
+                "Un garçon",
+                "Un groupe d'hommes",
+                "Personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deuxième personne du singulier féminin."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "question": "Quels éléments forment une carte d'identité verbale ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["الاسم", "البلد", "الطاولة", "النافذة"],
+              "correctAnswers": [0, 1],
+              "explanation": "Nom (ism) et pays (balad) sont typiques lors d'une présentation."
+            },
+            {
+              "question": "Comment dit-on « France » en arabe ?",
+              "type": "single_choice",
+              "options": ["فرنسا", "فرنسي", "باريس فقط", "أوروبا"],
+              "correctAnswers": [0],
+              "explanation": "« Faransā » (فرنسا) est le pays ; « faransī » l'adjectif français."
+            },
+            {
+              "question": "Comment dit-on « Maroc » ?",
+              "type": "single_choice",
+              "options": ["المغرب", "مصر", "لبنان", "الجزائر"],
+              "correctAnswers": [0],
+              "explanation": "« Al-Maghrib » (المغرب) désigne le Maroc en arabe standard."
+            },
+            {
+              "question": "Que signifie « balad » (بلد) ?",
+              "type": "single_choice",
+              "options": ["Pays", "Ville", "Rue", "Maison"],
+              "correctAnswers": [0],
+              "explanation": "Peut aussi évoquer la patrie selon le contexte."
+            },
+            {
+              "question": "Quelle phrase dit « Elle s'appelle Layla » ?",
+              "type": "single_choice",
+              "options": ["اسمها ليلى", "اسمه ليلى", "أنا ليلى", "من ليلى"],
+              "correctAnswers": [0],
+              "explanation": "« Ismuhā » (اسمها) = son nom (à elle)."
+            },
+            {
+              "question": "Comment dit-on « Il s'appelle Omar » ?",
+              "type": "single_choice",
+              "options": ["اسمه عمر", "اسمها عمر", "اسمي عمر", "من عمر"],
+              "correctAnswers": [0],
+              "explanation": "« Ismuhu » (اسمه) avec prénom masculin."
+            },
+            {
+              "question": "Que signifie « mā » en début de question (mā ismuka) ?",
+              "type": "single_choice",
+              "options": ["Quel / qu'est-ce que", "Où", "Quand", "Pourquoi"],
+              "correctAnswers": [0],
+              "explanation": "« Mā ismuka ? » = quel est ton nom ?"
+            },
+            {
+              "question": "Quelle formule dit « à bientôt » (approximation courante) ?",
+              "type": "single_choice",
+              "options": ["إلى اللقاء", "السلام عليكم", "صباح الخير", "تشرفنا"],
+              "correctAnswers": [0],
+              "explanation": "« Ilā al-liqāʾ » = jusqu'à la prochaine rencontre."
+            },
+            {
+              "question": "Comment dit-on « fille / femme » (nom commun) ?",
+              "type": "single_choice",
+              "options": ["امرأة / بنت", "رجل فقط", "ولد فقط", "طفل فقط"],
+              "correctAnswers": [0],
+              "explanation": "« Imra'a » femme ; « bint » fille ; utile pour préciser qui on présente."
+            },
+            {
+              "question": "« Huwa min Miṣr » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Il vient d'Égypte",
+                "Elle vient d'Égypte",
+                "Je viens d'Égypte",
+                "Nous venons d'Égypte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Huwa » = il ; « Miṣr » (مصر) = Égypte."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "question": "Quelles phrases sont au registre « introduction en classe » ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "اسمي… وأنا تلميذ",
+                "مرحبا بالجميع",
+                "الكتاب على الطاولة",
+                "القطة سوداء"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Se nommer + saluer le groupe correspond à une présentation scolaire."
+            },
+            {
+              "question": "Comment dit-on « élève / écolier » (masculin) ?",
+              "type": "single_choice",
+              "options": ["تلميذ", "معلم", "مدير", "طبيب"],
+              "correctAnswers": [0],
+              "explanation": "« Tilmīdh » (تلميذ) ; « tilmi-dha » au féminin."
+            },
+            {
+              "question": "Que signifie « al-jamīʿ » dans « marḥaban bi-l-jamīʿ » ?",
+              "type": "single_choice",
+              "options": [
+                "Tous / l'ensemble",
+                "Un seul",
+                "Professeur",
+                "Devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Marḥaban bi-l-jamīʿ » ≈ bienvenue à tous."
+            },
+            {
+              "question": "Comment demander « Parlez-vous français ? » (simplifié) ?",
+              "type": "single_choice",
+              "options": [
+                "هل تتكلم الفرنسية؟",
+                "ما اسمك؟",
+                "أين الكتاب؟",
+                "كم الساعة؟"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hal tatakallam al-faransiyya ? » — « hal » marque la question oui/non."
+            },
+            {
+              "question": "Que signifie « hal » (هل) en début de phrase ?",
+              "type": "single_choice",
+              "options": [
+                "Particule de question oui/non",
+                "Négation",
+                "Merci",
+                "Nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme « est-ce que » pour une réponse na'am / lā."
+            },
+            {
+              "question": "Comment répondre « oui » ?",
+              "type": "single_choice",
+              "options": ["نعم", "لا", "شكراً", "مع السلامة"],
+              "correctAnswers": [0],
+              "explanation": "« Naʿam » (نعم) = oui (formel) ; « aywa / āh » existent à l'oral."
+            },
+            {
+              "question": "Comment répondre « non » ?",
+              "type": "single_choice",
+              "options": ["لا", "نعم", "مرحبا", "بخير"],
+              "correctAnswers": [0],
+              "explanation": "« Lā » (لا) est la négation standard."
+            },
+            {
+              "question": "Quelle phrase dit « Je ne parle pas arabe » (modèle débutant) ?",
+              "type": "single_choice",
+              "options": [
+                "لا أتكلم العربية",
+                "أتكلم العربية فقط",
+                "اسمي العربية",
+                "من العربية"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Lā atakallam al-ʿarabiyya » — utile en échange initial."
+            },
+            {
+              "question": "Que signifie « al-ʿarabiyya » ?",
+              "type": "single_choice",
+              "options": [
+                "La langue arabe",
+                "La France",
+                "L'école",
+                "La maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom de la langue avec article « al- »."
+            },
+            {
+              "question": "Comment dit-on « professeur » (masculin) ?",
+              "type": "single_choice",
+              "options": ["معلم", "تلميذ", "طالب فقط", "صديق"],
+              "correctAnswers": [0],
+              "explanation": "« Muʿallim » (معلم) enseigne ; « muʿallima » au féminin."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "question": "Quels termes désignent des personnes dans un dialogue ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["صديق", "أستاذ", "نافذة", "قلم"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ṣadīq » = ami ; « ustādh » = professeur / monsieur enseignant."
+            },
+            {
+              "question": "Comment dit-on « ami » (masculin) ?",
+              "type": "single_choice",
+              "options": ["صديق", "صديقة", "أخ", "أخت"],
+              "correctAnswers": [0],
+              "explanation": "« Ṣadīq » ; « ṣadīqa » pour une amie."
+            },
+            {
+              "question": "Que signifie « ustādh » (أستاذ) ?",
+              "type": "single_choice",
+              "options": ["Professeur / maître", "Élève", "Médecin", "Voiture"],
+              "correctAnswers": [0],
+              "explanation": "Titre respectueux pour un enseignant ou un expert."
+            },
+            {
+              "question": "Comment saluer un professeur poliment ?",
+              "type": "single_choice",
+              "options": [
+                "السلام عليكم أستاذ",
+                "مع السلامة فوراً",
+                "لا",
+                "كتاب"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salut + titre « ustādh » est approprié en classe."
+            },
+            {
+              "question": "Quelle phrase présente un ami ?",
+              "type": "single_choice",
+              "options": ["هذا صديقي", "هذا كتابي", "هذا بيتي", "هذا قلمي"],
+              "correctAnswers": [0],
+              "explanation": "« Hādhā ṣadīqī » = voici mon ami."
+            },
+            {
+              "question": "Que signifie « hādhā » (هذا) ?",
+              "type": "single_choice",
+              "options": [
+                "Ce / ceci (masculin proche)",
+                "Cela (loin)",
+                "Je",
+                "Tu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déictique pour présenter quelqu'un ou quelque chose."
+            },
+            {
+              "question": "Comment dit-on « voici ma sœur » (féminin) ?",
+              "type": "single_choice",
+              "options": ["هذه أختي", "هذا أختي", "هو أختي", "اسم أختي"],
+              "correctAnswers": [0],
+              "explanation": "« Hādhihi » (هذه) avec nom féminin « ukhtī » (أختي)."
+            },
+            {
+              "question": "Que signifie « ukht » (أخت) ?",
+              "type": "single_choice",
+              "options": ["Sœur", "Frère", "Mère", "Père"],
+              "correctAnswers": [0],
+              "explanation": "« Akh » (أخ) = frère ; « umm » = mère ; « ab » = père."
+            },
+            {
+              "question": "Comment dire « enchanté » en réponse à une présentation ?",
+              "type": "single_choice",
+              "options": ["تشرفنا", "مع السلامة", "مساء فقط", "لا أعرف"],
+              "correctAnswers": [0],
+              "explanation": "« Tasharrafna » clôt poliment l'échange de noms."
+            },
+            {
+              "question": "« Hādhihi ṣadīqatī » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Voici mon amie",
+                "Voici mon ami",
+                "Voici mon professeur",
+                "Voici mon livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ṣadīqatī » = mon amie (féminin)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "question": "Quelles expressions clôturent une conversation courte ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["مع السلامة", "إلى اللقاء", "مرحبا", "اسمي"],
+              "correctAnswers": [0, 1],
+              "explanation": "Prendre congé avec paix ou « au revoir » jusqu'à la prochaine fois."
+            },
+            {
+              "question": "Rédige mentalement : salut + nom + « je vais bien ». Quelle suite est correcte ?",
+              "type": "single_choice",
+              "options": [
+                "مرحبا، اسمي…، أنا بخير",
+                "مع السلامة، كتاب…",
+                "لا، من…",
+                "شكراً، نافذة…"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaîner salutation, identité et formule de bien-être est cohérent."
+            },
+            {
+              "question": "Quel pronom utilise-t-on pour « elles » ?",
+              "type": "single_choice",
+              "options": ["هن", "هم", "نحن", "أنتن"],
+              "correctAnswers": [0],
+              "explanation": "« Hunna » (هن) = elles ; « antunna » = vous (féminin pluriel)."
+            },
+            {
+              "question": "Comment dit-on « bonjour » en réponse au matin ?",
+              "type": "single_choice",
+              "options": [
+                "صباح الخير",
+                "تصبح على خير",
+                "مع السلامة",
+                "إلى اللقاء"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutation matinale standard."
+            },
+            {
+              "question": "Que signifie « liqāʾ » dans « ilā al-liqāʾ » ?",
+              "type": "single_choice",
+              "options": ["Rencontre", "Guerre", "Porte", "Stylo"],
+              "correctAnswers": [0],
+              "explanation": "Même racine que « liqāʾik » (ta rencontre)."
+            },
+            {
+              "question": "Quelle question complete : « … ؟ » pour demander le nom d'une fille ?",
+              "type": "single_choice",
+              "options": ["ما اسمكِ", "ما هو كتاب", "أين السيارة", "متى الغد"],
+              "correctAnswers": [0],
+              "explanation": "« Mā ismuki ? » avec marque féminine enseignée."
+            },
+            {
+              "question": "« Ana min Lubnān » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je viens du Liban",
+                "Je suis libanais seulement sans « min »",
+                "Il vient du Liban",
+                "Liban est un prénom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Min » + nom de pays = origine."
+            },
+            {
+              "question": "Quel mot signifie « frère » ?",
+              "type": "single_choice",
+              "options": ["أخ", "أخت", "اب", "ابن"],
+              "correctAnswers": [0],
+              "explanation": "« Akh » (أخ) ; « ibn » = fils."
+            },
+            {
+              "question": "Pour répondre poliment après « shukran », on dit souvent :",
+              "type": "single_choice",
+              "options": ["عفواً", "مع السلامة", "لا", "كتاب"],
+              "correctAnswers": [0],
+              "explanation": "« ʿAfwan » = de rien / je vous en prie."
+            },
+            {
+              "question": "Objectif de l'unité « Saluer et se présenter » :",
+              "type": "single_choice",
+              "options": [
+                "Échanger salutations, nom, origine et politesse de base",
+                "Conjuguer tous les verbes",
+                "Lire un roman arabe",
+                "Étudier la grammaire des cas uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les dix quiz consolident le contact social élémentaire en arabe."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "question": "Quels mots expriment la politesse de base ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["شكراً", "من فضلك", "كرسي", "حائط"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Shukran » = merci ; « min faḍlik » = s'il vous plaît (masculin)."
+            },
+            {
+              "question": "Comment dit-on « merci » ?",
+              "type": "single_choice",
+              "options": ["شكراً", "عفواً", "مرحبا", "لا"],
+              "correctAnswers": [0],
+              "explanation": "« Shukran » (شكراً) est la forme la plus répandue."
+            },
+            {
+              "question": "Comment dit-on « s'il vous plaît » (à un homme) ?",
+              "type": "single_choice",
+              "options": ["من فضلك", "من فضلكِ", "شكراً", "مع السلامة"],
+              "correctAnswers": [0],
+              "explanation": "« Min faḍlika » ; « min faḍliki » à une femme."
+            },
+            {
+              "question": "Que signifie « ʿafwan » (عفواً) ?",
+              "type": "single_choice",
+              "options": ["De rien / pardon", "Merci", "Bonjour", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Réponse à « shukran » ou excuse légère."
+            },
+            {
+              "question": "Comment dit-on « pardon / excusez-moi » ?",
+              "type": "single_choice",
+              "options": ["عفواً / آسف", "شكراً", "نعم", "بيت"],
+              "correctAnswers": [0],
+              "explanation": "« ʿAfwan » ou « āsef » (آسف) selon le contexte."
+            },
+            {
+              "question": "Que signifie « lā » (لا) ?",
+              "type": "single_choice",
+              "options": ["Non / ne… pas", "Oui", "Peut-être", "Toujours"],
+              "correctAnswers": [0],
+              "explanation": "Particule de négation essentielle."
+            },
+            {
+              "question": "Comment dit-on « oui » de façon standard ?",
+              "type": "single_choice",
+              "options": ["نعم", "لا", "قلم", "ماء"],
+              "correctAnswers": [0],
+              "explanation": "« Naʿam » (نعم)."
+            },
+            {
+              "question": "Quel mot signifie « eau » ?",
+              "type": "single_choice",
+              "options": ["ماء", "نار", "هواء", "تراب"],
+              "correctAnswers": [0],
+              "explanation": "« Māʾ » (ماء) — mot fréquent et utile."
+            },
+            {
+              "question": "Comment dit-on « pain » ?",
+              "type": "single_choice",
+              "options": ["خبز", "لحم", "فاكهة", "حليب"],
+              "correctAnswers": [0],
+              "explanation": "« Khubz » (خبز) — base alimentaire."
+            },
+            {
+              "question": "Que signifie « bayt » (بيت) ?",
+              "type": "single_choice",
+              "options": ["Maison", "École", "Voiture", "Rue"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire du lieu de vie."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "question": "Quels noms désignent des objets de classe ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["كتاب", "قلم", "شمس", "بحر"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Kitāb » = livre ; « qalam » = stylo/crayon."
+            },
+            {
+              "question": "Comment dit-on « livre » ?",
+              "type": "single_choice",
+              "options": ["كتاب", "مدرسة", "باب", "كرسي"],
+              "correctAnswers": [0],
+              "explanation": "« Kitāb » (كتاب)."
+            },
+            {
+              "question": "Comment dit-on « stylo » ?",
+              "type": "single_choice",
+              "options": ["قلم", "ورقة", "ممحاة", "حقيبة"],
+              "correctAnswers": [0],
+              "explanation": "« Qalam » (قلم) désigne aussi crayon."
+            },
+            {
+              "question": "Que signifie « madrasa » (مدرسة) ?",
+              "type": "single_choice",
+              "options": ["École", "Maison", "Hôpital", "Magasin"],
+              "correctAnswers": [0],
+              "explanation": "Lieu d'apprentissage."
+            },
+            {
+              "question": "Comment dit-on « chaise » ?",
+              "type": "single_choice",
+              "options": ["كرسي", "طاولة", "سرير", "باب"],
+              "correctAnswers": [0],
+              "explanation": "« Kursī » (كرسي)."
+            },
+            {
+              "question": "Que signifie « ṭāwila » (طاولة) ?",
+              "type": "single_choice",
+              "options": ["Table", "Fenêtre", "Mur", "Sol"],
+              "correctAnswers": [0],
+              "explanation": "Meuble de classe ou de maison."
+            },
+            {
+              "question": "Comment dit-on « porte » ?",
+              "type": "single_choice",
+              "options": ["باب", "نافذة", "سقف", "جدار"],
+              "correctAnswers": [0],
+              "explanation": "« Bāb » (باب)."
+            },
+            {
+              "question": "Que signifie « nāfida » (نافذة) ?",
+              "type": "single_choice",
+              "options": ["Fenêtre", "Porte", "Escalier", "Jardin"],
+              "correctAnswers": [0],
+              "explanation": "Ouverture dans le mur."
+            },
+            {
+              "question": "Comment dit-on « cahier / feuille » (feuille) ?",
+              "type": "single_choice",
+              "options": ["ورقة", "كتاب", "قلم", "ماء"],
+              "correctAnswers": [0],
+              "explanation": "« Waraqa » (ورقة) = feuille de papier."
+            },
+            {
+              "question": "« Ḥaqība » (حقيبة) signifie :",
+              "type": "single_choice",
+              "options": ["Sac / cartable", "Chaise", "Table", "Stylo"],
+              "correctAnswers": [0],
+              "explanation": "Objet pour transporter les affaires scolaires."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "question": "Quels mots indiquent la famille proche ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["أب", "أم", "طاولة", "قلم"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ab » = père ; « umm » = mère."
+            },
+            {
+              "question": "Comment dit-on « père » ?",
+              "type": "single_choice",
+              "options": ["أب", "أم", "جد", "عم"],
+              "correctAnswers": [0],
+              "explanation": "« Ab » (أب) ou « abī » = mon père."
+            },
+            {
+              "question": "Comment dit-on « mère » ?",
+              "type": "single_choice",
+              "options": ["أم", "أب", "أخت", "ابن"],
+              "correctAnswers": [0],
+              "explanation": "« Umm » (أم) ; « ummī » = ma mère."
+            },
+            {
+              "question": "Que signifie « ibn » (ابن) ?",
+              "type": "single_choice",
+              "options": ["Fils", "Fille", "Frère", "Oncle"],
+              "correctAnswers": [0],
+              "explanation": "« Bint » (بنت) = fille."
+            },
+            {
+              "question": "Comment dit-on « fille » ?",
+              "type": "single_choice",
+              "options": ["بنت", "ابن", "زوج", "زوجة"],
+              "correctAnswers": [0],
+              "explanation": "« Bint » (بنت)."
+            },
+            {
+              "question": "Que signifie « ahl » (أهل) ?",
+              "type": "single_choice",
+              "options": [
+                "Famille / proches",
+                "Étrangers",
+                "Professeurs",
+                "Animaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peut désigner la famille ou les gens d'un lieu."
+            },
+            {
+              "question": "Comment dit-on « grand-père » ?",
+              "type": "single_choice",
+              "options": ["جد", "جدة", "عم", "خال"],
+              "correctAnswers": [0],
+              "explanation": "« Jadd » (جد) ; « jadda » grand-mère."
+            },
+            {
+              "question": "« Ukht » signifie :",
+              "type": "single_choice",
+              "options": ["Sœur", "Frère", "Cousine", "Tante"],
+              "correctAnswers": [0],
+              "explanation": "Famille nucléaire."
+            },
+            {
+              "question": "Comment dit-on « mon père » ?",
+              "type": "single_choice",
+              "options": ["أبي", "أب", "أبو", "آباء"],
+              "correctAnswers": [0],
+              "explanation": "Suffixe possessif « -ī » : abī."
+            },
+            {
+              "question": "« Ummī » signifie :",
+              "type": "single_choice",
+              "options": ["Ma mère", "Mon père", "Ma sœur", "Mon frère"],
+              "correctAnswers": [0],
+              "explanation": "Même modèle possessif qu'« abī »."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "question": "Quels mots décrivent le temps / le jour ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["يوم", "اليوم", "كرسي", "باب"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Yawm » = jour ; « al-yawm » = aujourd'hui."
+            },
+            {
+              "question": "Comment dit-on « aujourd'hui » ?",
+              "type": "single_choice",
+              "options": ["اليوم", "غداً", "أمس", "الآن"],
+              "correctAnswers": [0],
+              "explanation": "« Al-yawm » (اليوم)."
+            },
+            {
+              "question": "Que signifie « ghadan » (غداً) ?",
+              "type": "single_choice",
+              "options": ["Demain", "Hier", "Maintenant", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe de temps futur proche."
+            },
+            {
+              "question": "Comment dit-on « hier » ?",
+              "type": "single_choice",
+              "options": ["أمس", "غداً", "اليوم", "سنة"],
+              "correctAnswers": [0],
+              "explanation": "« Ams » (أمس)."
+            },
+            {
+              "question": "Que signifie « al-ān » (الآن) ?",
+              "type": "single_choice",
+              "options": ["Maintenant", "Toujours", "Souvent", "Rarement"],
+              "correctAnswers": [0],
+              "explanation": "Moment présent."
+            },
+            {
+              "question": "Comment dit-on « matin » ?",
+              "type": "single_choice",
+              "options": ["صباح", "مساء", "ليل", "ظهر"],
+              "correctAnswers": [0],
+              "explanation": "« Ṣabāḥ » (صباح) — lié à « ṣabāḥ al-khayr »."
+            },
+            {
+              "question": "Que signifie « masāʾ » (مساء) ?",
+              "type": "single_choice",
+              "options": ["Soir", "Matin", "Nuit", "Midi"],
+              "correctAnswers": [0],
+              "explanation": "Opposé approximatif de « ṣabāḥ »."
+            },
+            {
+              "question": "Comment dit-on « nuit » ?",
+              "type": "single_choice",
+              "options": ["ليل", "نهار", "أسبوع", "شهر"],
+              "correctAnswers": [0],
+              "explanation": "« Layl » (ليل)."
+            },
+            {
+              "question": "« Sana » (سنة) signifie :",
+              "type": "single_choice",
+              "options": ["An / année", "Heure", "Minute", "Seconde"],
+              "correctAnswers": [0],
+              "explanation": "Utilisé aussi pour l'âge (« sana/sanawāt »)."
+            },
+            {
+              "question": "Comment dit-on « semaine » ?",
+              "type": "single_choice",
+              "options": ["أسبوع", "يوم", "ساعة", "دقيقة"],
+              "correctAnswers": [0],
+              "explanation": "« Usbūʿ » (أسبوع)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "question": "Quels mots concernent les couleurs de base ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["أبيض", "أسود", "باب", "قلم"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Abyaḍ » = blanc ; « aswad » = noir."
+            },
+            {
+              "question": "Comment dit-on « blanc » (masculin) ?",
+              "type": "single_choice",
+              "options": ["أبيض", "أسود", "أحمر", "أزرق"],
+              "correctAnswers": [0],
+              "explanation": "« Abyaḍ » (أبيض) — accord féminin « bayḍāʾ »."
+            },
+            {
+              "question": "Comment dit-on « noir » (masculin) ?",
+              "type": "single_choice",
+              "options": ["أسود", "أبيض", "أخضر", "أصفر"],
+              "correctAnswers": [0],
+              "explanation": "« Aswad » (أسود)."
+            },
+            {
+              "question": "Que signifie « aḥmar » (أحمر) ?",
+              "type": "single_choice",
+              "options": ["Rouge", "Vert", "Bleu", "Jaune"],
+              "correctAnswers": [0],
+              "explanation": "Couleur primaire."
+            },
+            {
+              "question": "Comment dit-on « bleu » (masculin) ?",
+              "type": "single_choice",
+              "options": ["أزرق", "أخضر", "وردي", "بني"],
+              "correctAnswers": [0],
+              "explanation": "« Azraq » (أزرق)."
+            },
+            {
+              "question": "Que signifie « akhḍar » (أخضر) ?",
+              "type": "single_choice",
+              "options": ["Vert", "Rouge", "Gris", "Orange"],
+              "correctAnswers": [0],
+              "explanation": "Couleur fréquente dans la nature."
+            },
+            {
+              "question": "Comment dit-on « jaune » ?",
+              "type": "single_choice",
+              "options": ["أصفر", "أسود", "أبيض", "بنفسجي"],
+              "correctAnswers": [0],
+              "explanation": "« Aṣfar » (أصفر)."
+            },
+            {
+              "question": "« Lawn » (لون) signifie :",
+              "type": "single_choice",
+              "options": ["Couleur", "Forme", "Taille", "Poids"],
+              "correctAnswers": [0],
+              "explanation": "Nom générique pour parler de couleurs."
+            },
+            {
+              "question": "Phrase : « al-qalam … » — le stylo est noir :",
+              "type": "single_choice",
+              "options": [
+                "القلم أسود",
+                "القلم أبيض فقط",
+                "القلم ماء",
+                "القلم شكراً"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure nom + adjectif de couleur."
+            },
+            {
+              "question": "« Al-kitāb abyad » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Le livre est blanc",
+                "Le livre est noir",
+                "Le livre est une porte",
+                "Le livre merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord masculin « abyad » avec « kitāb »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "question": "Quels noms désignent des animaux courants ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["قطة", "كلب", "طاولة", "مدرسة"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Qiṭṭa » = chat ; « kalb » = chien."
+            },
+            {
+              "question": "Comment dit-on « chat » ?",
+              "type": "single_choice",
+              "options": ["قطة", "كلب", "حصان", "طائر"],
+              "correctAnswers": [0],
+              "explanation": "« Qiṭṭ / qiṭṭa » (قطة) féminin courant."
+            },
+            {
+              "question": "Comment dit-on « chien » ?",
+              "type": "single_choice",
+              "options": ["كلب", "قطة", "سمك", "أرنب"],
+              "correctAnswers": [0],
+              "explanation": "« Kalb » (كلب)."
+            },
+            {
+              "question": "Que signifie « ṭāʾir » (طائر) ?",
+              "type": "single_choice",
+              "options": ["Oiseau", "Poisson", "Cheval", "Vache"],
+              "correctAnswers": [0],
+              "explanation": "Animal volant."
+            },
+            {
+              "question": "Comment dit-on « poisson » ?",
+              "type": "single_choice",
+              "options": ["سمك", "حليب", "لحم", "خبز"],
+              "correctAnswers": [0],
+              "explanation": "« Samak » (سمك)."
+            },
+            {
+              "question": "Que signifie « ḥayawān » (حيوان) ?",
+              "type": "single_choice",
+              "options": ["Animal", "Plante", "Voiture", "Maison"],
+              "correctAnswers": [0],
+              "explanation": "Terme générique."
+            },
+            {
+              "question": "Comment dit-on « cheval » ?",
+              "type": "single_choice",
+              "options": ["حصان", "بقرة", "دجاجة", "أسد"],
+              "correctAnswers": [0],
+              "explanation": "« Ḥiṣān » (حصان)."
+            },
+            {
+              "question": "« Asad » (أسد) signifie :",
+              "type": "single_choice",
+              "options": ["Lion", "Chat", "Chien", "Oiseau"],
+              "correctAnswers": [0],
+              "explanation": "Mot connu internationalement."
+            },
+            {
+              "question": "Comment dit-on « oiseau » autrement que ṭāʾir (synonyme courant enfant) ?",
+              "type": "single_choice",
+              "options": ["عصفور", "سمك", "قطة", "كتاب"],
+              "correctAnswers": [0],
+              "explanation": "« ʿUṣfūr » (عصفور) = petit oiseau / moineau."
+            },
+            {
+              "question": "Phrase : « al-qiṭṭa … » — la chatte est petite :",
+              "type": "single_choice",
+              "options": [
+                "القطة صغيرة",
+                "القطة كبيرة فقط",
+                "القطة مدرسة",
+                "القطة شكراً"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ṣaghīra » = petite (féminin)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "question": "Quels mots servent à localiser (prépositions simples) ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["في", "على", "شكراً", "نعم"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Fī » = dans ; « ʿalā » = sur."
+            },
+            {
+              "question": "Que signifie « fī » (في) ?",
+              "type": "single_choice",
+              "options": ["Dans / en", "Sous", "Devant", "Derrière"],
+              "correctAnswers": [0],
+              "explanation": "« Al-kitāb fī al-ḥaqība » = le livre est dans le sac."
+            },
+            {
+              "question": "Que signifie « ʿalā » (على) ?",
+              "type": "single_choice",
+              "options": ["Sur", "Dans", "Avec", "Sans"],
+              "correctAnswers": [0],
+              "explanation": "« Al-qalam ʿalā al-ṭāwila » = le stylo est sur la table."
+            },
+            {
+              "question": "Comment dit-on « sous » ?",
+              "type": "single_choice",
+              "options": ["تحت", "فوق", "أمام", "خلف"],
+              "correctAnswers": [0],
+              "explanation": "« Taḥt » (تحت) — opposé approximatif « fawq » (فوق)."
+            },
+            {
+              "question": "Que signifie « maʿa » (مع) ?",
+              "type": "single_choice",
+              "options": ["Avec", "Sans", "Pour", "Contre"],
+              "correctAnswers": [0],
+              "explanation": "« Maʿa ṣadīqī » = avec mon ami."
+            },
+            {
+              "question": "Comment dit-on « ici » ?",
+              "type": "single_choice",
+              "options": ["هنا", "هناك", "أين", "متى"],
+              "correctAnswers": [0],
+              "explanation": "« Hunā » (هنا)."
+            },
+            {
+              "question": "Que signifie « hunāka » (هناك) ?",
+              "type": "single_choice",
+              "options": ["Là-bas", "Ici", "Partout", "Nulle part"],
+              "correctAnswers": [0],
+              "explanation": "Localisation éloignée."
+            },
+            {
+              "question": "Comment dit-on « où » ?",
+              "type": "single_choice",
+              "options": ["أين", "متى", "كيف", "لماذا"],
+              "correctAnswers": [0],
+              "explanation": "« Ayna » (أين) — déjà vu en présentation."
+            },
+            {
+              "question": "Phrase : le livre est sur la table :",
+              "type": "single_choice",
+              "options": [
+                "الكتاب على الطاولة",
+                "الكتاب في الشكر",
+                "الكتاب مع السلامة",
+                "الكتاب أمس"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure : nom + ʿalā + nom défini."
+            },
+            {
+              "question": "« Al-qalam fī al-ḥaqība » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Le stylo est dans le sac",
+                "Le stylo est sur le soleil",
+                "Le stylo est hier",
+                "Le stylo merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Préposition « fī » pour l'intérieur."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "question": "Quels mots décrivent la taille ou l'état simple ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["كبير", "صغير", "باب", "قلم"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Kabīr » = grand ; « ṣaghīr » = petit."
+            },
+            {
+              "question": "Comment dit-on « grand » (masculin) ?",
+              "type": "single_choice",
+              "options": ["كبير", "صغير", "جديد", "قديم"],
+              "correctAnswers": [0],
+              "explanation": "« Kabīr » (كبير)."
+            },
+            {
+              "question": "Comment dit-on « petit » (masculin) ?",
+              "type": "single_choice",
+              "options": ["صغير", "كبير", "طويل", "قصير"],
+              "correctAnswers": [0],
+              "explanation": "« Ṣaghīr » (صغير)."
+            },
+            {
+              "question": "Que signifie « jadīd » (جديد) ?",
+              "type": "single_choice",
+              "options": ["Nouveau", "Vieux", "Beau", "Laid"],
+              "correctAnswers": [0],
+              "explanation": "Opposé « qadīm » (قديم)."
+            },
+            {
+              "question": "Comment dit-on « vieux / ancien » ?",
+              "type": "single_choice",
+              "options": ["قديم", "جديد", "سريع", "بطيء"],
+              "correctAnswers": [0],
+              "explanation": "« Qadīm » (قديم)."
+            },
+            {
+              "question": "Que signifie « ṭawīl » (طويل) ?",
+              "type": "single_choice",
+              "options": ["Long / grand (taille)", "Court", "Large", "Étroit"],
+              "correctAnswers": [0],
+              "explanation": "Pour personnes ou objets."
+            },
+            {
+              "question": "Comment dit-on « court » ?",
+              "type": "single_choice",
+              "options": ["قصير", "طويل", "كبير", "صغير"],
+              "correctAnswers": [0],
+              "explanation": "« Qaṣīr » (قصير)."
+            },
+            {
+              "question": "« Jamīl » (جميل) signifie :",
+              "type": "single_choice",
+              "options": ["Beau / belle", "Laid", "Fatigué", "Content"],
+              "correctAnswers": [0],
+              "explanation": "Adjectif de valeur esthétique."
+            },
+            {
+              "question": "Comment dit-on « bon / bien » (masculin) ?",
+              "type": "single_choice",
+              "options": ["جيد", "سيء", "بارد", "حار"],
+              "correctAnswers": [0],
+              "explanation": "« Jayyid » (جيد) — proche sémantique de « khayr »."
+            },
+            {
+              "question": "« Al-bayt kabīr » signifie :",
+              "type": "single_choice",
+              "options": [
+                "La maison est grande",
+                "La maison est un stylo",
+                "La maison est merci",
+                "La maison est hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase nominale simple sujet + adjectif."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "question": "Quels mots appartiennent à la nourriture courante ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["تفاح", "حليب", "كرسي", "نافذة"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Tuffāḥ » = pomme ; « ḥalīb » = lait."
+            },
+            {
+              "question": "Comment dit-on « pomme » ?",
+              "type": "single_choice",
+              "options": ["تفاح", "موز", "برتقال", "عنب"],
+              "correctAnswers": [0],
+              "explanation": "« Tuffāḥ » (تفاح)."
+            },
+            {
+              "question": "Comment dit-on « lait » ?",
+              "type": "single_choice",
+              "options": ["حليب", "ماء", "عصير", "قهوة"],
+              "correctAnswers": [0],
+              "explanation": "« Ḥalīb » (حليب)."
+            },
+            {
+              "question": "Que signifie « taʿām » (طعام) ?",
+              "type": "single_choice",
+              "options": [
+                "Nourriture / repas",
+                "Boisson seulement",
+                "Assiette",
+                "Fourchette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terme général."
+            },
+            {
+              "question": "Comment dit-on « viande » ?",
+              "type": "single_choice",
+              "options": ["لحم", "خبز", "أرز", "سلطة"],
+              "correctAnswers": [0],
+              "explanation": "« Laḥm » (لحم)."
+            },
+            {
+              "question": "Que signifie « faḍl / faḍlik » dans « min faḍlik » ?",
+              "type": "single_choice",
+              "options": [
+                "Faveur / gentillesse",
+                "Colère",
+                "Vitesse",
+                "Couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demander une faveur poliment."
+            },
+            {
+              "question": "Comment dit-on « thé » ?",
+              "type": "single_choice",
+              "options": ["شاي", "قهوة", "ماء", "حليب"],
+              "correctAnswers": [0],
+              "explanation": "« Shāy » (شاي) — très culturel au Maghreb et Machrek."
+            },
+            {
+              "question": "« Qahwa » (قهوة) signifie :",
+              "type": "single_choice",
+              "options": ["Café", "Thé", "Jus", "Soupe"],
+              "correctAnswers": [0],
+              "explanation": "Boisson courante."
+            },
+            {
+              "question": "Comment dit-on « je mange » (masculin, présent) ?",
+              "type": "single_choice",
+              "options": ["آكل", "أشرب", "أنام", "أمشي"],
+              "correctAnswers": [0],
+              "explanation": "« Ākul » (آكل) — verbe essentiel."
+            },
+            {
+              "question": "« Ashrab » (أشرب) signifie :",
+              "type": "single_choice",
+              "options": ["Je bois", "Je mange", "Je dors", "Je lis"],
+              "correctAnswers": [0],
+              "explanation": "Paire naturelle avec « ākul »."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "question": "Quels chiffres / nombres sont enseignés en premier ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["واحد", "اثنان", "ألف", "مليون"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Wāḥid » (1) et « ithnān » (2) font partie des bases."
+            },
+            {
+              "question": "Comment dit-on « un / une » ?",
+              "type": "single_choice",
+              "options": ["واحد", "اثنان", "ثلاثة", "عشرة"],
+              "correctAnswers": [0],
+              "explanation": "« Wāḥid » (واحد)."
+            },
+            {
+              "question": "Comment dit-on « deux » ?",
+              "type": "single_choice",
+              "options": ["اثنان", "ثلاثة", "أربعة", "خمسة"],
+              "correctAnswers": [0],
+              "explanation": "« Ithnān » (اثنان) — formes variables avec le nom."
+            },
+            {
+              "question": "Que signifie « thalātha » (ثلاثة) ?",
+              "type": "single_choice",
+              "options": ["Trois", "Cinq", "Sept", "Neuf"],
+              "correctAnswers": [0],
+              "explanation": "Suite logique après 1 et 2."
+            },
+            {
+              "question": "Comment dit-on « dix » ?",
+              "type": "single_choice",
+              "options": ["عشرة", "عشرون", "مئة", "ألف"],
+              "correctAnswers": [0],
+              "explanation": "« ʿAshara » (عشرة)."
+            },
+            {
+              "question": "« Kam » + nombre sert à :",
+              "type": "single_choice",
+              "options": [
+                "Demander une quantité",
+                "Saluer",
+                "Dire merci",
+                "Fermer la porte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Kam kitāban ? » combien de livres ? (forme avancée simplifiée ici)."
+            },
+            {
+              "question": "Comment dit-on « beaucoup » ?",
+              "type": "single_choice",
+              "options": ["كثير", "قليل", "لا", "نعم"],
+              "correctAnswers": [0],
+              "explanation": "« Kathīr » (كثير) — opposé « qalīl » (قليل)."
+            },
+            {
+              "question": "Que signifie « qalīl » (قليل) ?",
+              "type": "single_choice",
+              "options": ["Peu", "Beaucoup", "Trop", "Assez"],
+              "correctAnswers": [0],
+              "explanation": "Quantité faible."
+            },
+            {
+              "question": "Phrase utile : « un livre » (masculin) se dit souvent :",
+              "type": "single_choice",
+              "options": [
+                "كتاب واحد",
+                "واحد كتاب فقط معكوس",
+                "شكراً كتاب",
+                "كتاب لا"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom + nombre après le nom pour compter (modèle simplifié)."
+            },
+            {
+              "question": "Objectif de l'unité « Les mots essentiels » :",
+              "type": "single_choice",
+              "options": [
+                "Acquérir vocabulaire de survie : politesse, classe, famille, temps, couleurs, lieux, nourriture, nombres",
+                "Maîtriser la rhétorique classique",
+                "Ignorer les salutations",
+                "Ne apprendre que les verbes passés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cent questions de l'unité 2 consolident le lexique de première année."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

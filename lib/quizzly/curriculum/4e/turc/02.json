@@ -1,0 +1,2248 @@
+{
+  "id": "4e-turc-02",
+  "year": "4e",
+  "subject": "turc",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les membres de la famille",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Comment dit-on « mère » et « père » en turc ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["anne", "baba", "kardeş", "teyze"],
+              "correctAnswers": ["anne", "baba"],
+              "explanation": "Anne = mère, baba = père. Kardeş = frère ou sœur, teyze = tante maternelle."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie le mot turc « kardeş » ?",
+              "type": "single_choice",
+              "options": ["cousin", "frère ou sœur", "grand-mère", "oncle"],
+              "correctAnswers": ["frère ou sœur"],
+              "explanation": "Kardeş désigne un frère ou une sœur, sans préciser le genre."
+            },
+            {
+              "id": "q3",
+              "question": "« Dedem » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "mon grand-père",
+                "ma grand-mère",
+                "mon oncle",
+                "mon père"
+              ],
+              "correctAnswers": ["mon grand-père"],
+              "explanation": "Dede = grand-père ; le suffixe -m indique « mon »."
+            },
+            {
+              "id": "q4",
+              "question": "Comment se dit « ma famille » ?",
+              "type": "single_choice",
+              "options": ["ailem", "evim", "okulum", "annem"],
+              "correctAnswers": ["ailem"],
+              "explanation": "Aile = famille ; ailem = ma famille."
+            },
+            {
+              "id": "q5",
+              "question": "« Ablam » désigne :",
+              "type": "single_choice",
+              "options": [
+                "ma sœur aînée",
+                "mon frère aîné",
+                "ma mère",
+                "ma tante"
+              ],
+              "correctAnswers": ["ma sœur aînée"],
+              "explanation": "Abla = sœur aînée ; ablam = ma sœur aînée."
+            },
+            {
+              "id": "q6",
+              "question": "Que veut dire « çocuk » ?",
+              "type": "single_choice",
+              "options": [
+                "enfant",
+                "adulte",
+                "bébé uniquement",
+                "adolescent uniquement"
+              ],
+              "correctAnswers": ["enfant"],
+              "explanation": "Çocuk = enfant (au sens général)."
+            },
+            {
+              "id": "q7",
+              "question": "« Anneannem » signifie :",
+              "type": "single_choice",
+              "options": [
+                "ma grand-mère maternelle",
+                "ma grand-mère paternelle",
+                "ma mère",
+                "ma tante"
+              ],
+              "correctAnswers": ["ma grand-mère maternelle"],
+              "explanation": "Anneanne = grand-mère du côté de la mère."
+            },
+            {
+              "id": "q8",
+              "question": "Comment dit-on « mon frère cadet » ?",
+              "type": "single_choice",
+              "options": ["küçük kardeşim", "büyük kardeşim", "ablam", "babam"],
+              "correctAnswers": ["küçük kardeşim"],
+              "explanation": "Küçük = petit ; küçük kardeş = frère ou sœur cadet(te)."
+            },
+            {
+              "id": "q9",
+              "question": "« Eş » veut dire :",
+              "type": "single_choice",
+              "options": ["époux ou épouse", "ami", "voisin", "cousin"],
+              "correctAnswers": ["époux ou épouse"],
+              "explanation": "Eş = conjoint, époux ou épouse."
+            },
+            {
+              "id": "q10",
+              "question": "Dans « Babam doktor », babam c'est :",
+              "type": "single_choice",
+              "options": ["mon père", "ton père", "son père", "notre père"],
+              "correctAnswers": ["mon père"],
+              "explanation": "Le suffixe -m à la fin indique la première personne : mon père."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "À la maison",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots turcs désignent des pièces de la maison ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["mutfak", "salon", "okul", "park"],
+              "correctAnswers": ["mutfak", "salon"],
+              "explanation": "Mutfak = cuisine, salon = salon. Okul = école, park = parc."
+            },
+            {
+              "id": "q2",
+              "question": "« Ev » signifie :",
+              "type": "single_choice",
+              "options": [
+                "maison",
+                "appartement seulement",
+                "école",
+                "magasin"
+              ],
+              "correctAnswers": ["maison"],
+              "explanation": "Ev = maison ou domicile."
+            },
+            {
+              "id": "q3",
+              "question": "Où dort-on ? Le mot turc est :",
+              "type": "single_choice",
+              "options": ["yatak odası", "banyo", "mutfak", "bahçe"],
+              "correctAnswers": ["yatak odası"],
+              "explanation": "Yatak odası = chambre (litt. pièce du lit)."
+            },
+            {
+              "id": "q4",
+              "question": "« Banyo » veut dire :",
+              "type": "single_choice",
+              "options": ["salle de bain", "cuisine", "jardin", "garage"],
+              "correctAnswers": ["salle de bain"],
+              "explanation": "Banyo = salle de bain (mot emprunté, très courant)."
+            },
+            {
+              "id": "q5",
+              "question": "Comment dit-on « mon frère et moi sommes à la maison » en commençant par « Evde… » ?",
+              "type": "single_choice",
+              "options": ["Evdeyiz", "Okuldayız", "Parktayız", "Dışarıdayız"],
+              "correctAnswers": ["Evdeyiz"],
+              "explanation": "Evde = à la maison ; -yiz = nous sommes."
+            },
+            {
+              "id": "q6",
+              "question": "« Bahçe » désigne :",
+              "type": "single_choice",
+              "options": ["le jardin", "le toit", "le couloir", "le sous-sol"],
+              "correctAnswers": ["le jardin"],
+              "explanation": "Bahçe = jardin (devant ou derrière la maison)."
+            },
+            {
+              "id": "q7",
+              "question": "Que signifie « kapı » ?",
+              "type": "single_choice",
+              "options": ["porte", "fenêtre", "mur", "escalier"],
+              "correctAnswers": ["porte"],
+              "explanation": "Kapı = porte."
+            },
+            {
+              "id": "q8",
+              "question": "« Masa » en turc, c'est :",
+              "type": "single_choice",
+              "options": ["table", "chaise", "lit", "armoire"],
+              "correctAnswers": ["table"],
+              "explanation": "Masa = table."
+            },
+            {
+              "id": "q9",
+              "question": "Dans « Annem mutfakta », où est la mère ?",
+              "type": "single_choice",
+              "options": [
+                "dans la cuisine",
+                "dans le salon",
+                "à l'école",
+                "dehors"
+              ],
+              "correctAnswers": ["dans la cuisine"],
+              "explanation": "Mutfak = cuisine ; mutfakta = dans la cuisine (-ta = locatif)."
+            },
+            {
+              "id": "q10",
+              "question": "« Pencere » veut dire :",
+              "type": "single_choice",
+              "options": ["fenêtre", "porte", "miroir", "lampe"],
+              "correctAnswers": ["fenêtre"],
+              "explanation": "Pencere = fenêtre."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "L'école et la classe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots correspondent à l'école ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["okul", "sınıf", "sinema", "market"],
+              "correctAnswers": ["okul", "sınıf"],
+              "explanation": "Okul = école, sınıf = classe. Sinema = cinéma, market = supermarché."
+            },
+            {
+              "id": "q2",
+              "question": "« Öğrenci » désigne :",
+              "type": "single_choice",
+              "options": [
+                "un élève",
+                "un professeur",
+                "un directeur",
+                "un parent"
+              ],
+              "correctAnswers": ["un élève"],
+              "explanation": "Öğrenci = élève, étudiant."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « professeur » ?",
+              "type": "single_choice",
+              "options": ["öğretmen", "doktor", "polis", "aşçı"],
+              "correctAnswers": ["öğretmen"],
+              "explanation": "Öğretmen = enseignant, professeur."
+            },
+            {
+              "id": "q4",
+              "question": "« Ders » signifie :",
+              "type": "single_choice",
+              "options": ["cours, leçon", "devoir", "récréation", "examen"],
+              "correctAnswers": ["cours, leçon"],
+              "explanation": "Ders = cours ou leçon."
+            },
+            {
+              "id": "q5",
+              "question": "Que veut dire « tahta » dans la classe ?",
+              "type": "single_choice",
+              "options": ["tableau", "bureau", "chaise", "cartable"],
+              "correctAnswers": ["tableau"],
+              "explanation": "Tahta = tableau (noir ou blanc)."
+            },
+            {
+              "id": "q6",
+              "question": "« Kitap » c'est :",
+              "type": "single_choice",
+              "options": ["livre", "cahier", "stylo", "gomme"],
+              "correctAnswers": ["livre"],
+              "explanation": "Kitap = livre."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « stylo » ?",
+              "type": "single_choice",
+              "options": ["kalem", "silgi", "cetvel", "makas"],
+              "correctAnswers": ["kalem"],
+              "explanation": "Kalem = crayon ou stylo."
+            },
+            {
+              "id": "q8",
+              "question": "« Ödev » veut dire :",
+              "type": "single_choice",
+              "options": ["devoirs", "note", "vacances", "cloche"],
+              "correctAnswers": ["devoirs"],
+              "explanation": "Ödev = devoir scolaire à faire à la maison."
+            },
+            {
+              "id": "q9",
+              "question": "Dans « Okula gidiyorum », que fais-je ?",
+              "type": "single_choice",
+              "options": [
+                "je vais à l'école",
+                "je sors de l'école",
+                "je suis à la maison",
+                "je dors"
+              ],
+              "correctAnswers": ["je vais à l'école"],
+              "explanation": "Okula = à l'école ; gidiyorum = je vais."
+            },
+            {
+              "id": "q10",
+              "question": "« Sıra » en classe, c'est :",
+              "type": "single_choice",
+              "options": [
+                "un bureau d'élève",
+                "la cour",
+                "le couloir",
+                "le gymnase"
+              ],
+              "correctAnswers": ["un bureau d'élève"],
+              "explanation": "Sıra = bureau (celui de l'élève dans la classe)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Matières et emploi du temps",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles matières scolaires en turc ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["matematik", "türkçe", "futbol", "yemek"],
+              "correctAnswers": ["matematik", "türkçe"],
+              "explanation": "Matematik = maths, Türkçe = turc (langue). Futbol et yemek ne sont pas des matières ici."
+            },
+            {
+              "id": "q2",
+              "question": "« Tarih » à l'école, c'est :",
+              "type": "single_choice",
+              "options": [
+                "l'histoire",
+                "la géographie",
+                "le dessin",
+                "la musique"
+              ],
+              "correctAnswers": ["l'histoire"],
+              "explanation": "Tarih = histoire."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « anglais » (la langue) ?",
+              "type": "single_choice",
+              "options": ["İngilizce", "Fransızca", "Almanca", "Arapça"],
+              "correctAnswers": ["İngilizce"],
+              "explanation": "İngilizce = anglais ; -ce marque souvent une langue."
+            },
+            {
+              "id": "q4",
+              "question": "« Beden eğitimi » ou « beden », c'est :",
+              "type": "single_choice",
+              "options": ["EPS", "sciences", "arts plastiques", "informatique"],
+              "correctAnswers": ["EPS"],
+              "explanation": "Beden eğitimi = éducation physique et sportive."
+            },
+            {
+              "id": "q5",
+              "question": "Que signifie « teneffüs » ?",
+              "type": "single_choice",
+              "options": ["récréation", "cours du matin", "examen", "punition"],
+              "correctAnswers": ["récréation"],
+              "explanation": "Teneffüs = pause, récréation entre les cours."
+            },
+            {
+              "id": "q6",
+              "question": "« Pazartesi » est :",
+              "type": "single_choice",
+              "options": ["lundi", "mardi", "vendredi", "dimanche"],
+              "correctAnswers": ["lundi"],
+              "explanation": "Pazartesi = lundi (après pazar = dimanche)."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « mercredi » ?",
+              "type": "single_choice",
+              "options": ["çarşamba", "salı", "perşembe", "cumartesi"],
+              "correctAnswers": ["çarşamba"],
+              "explanation": "Çarşamba = mercredi."
+            },
+            {
+              "id": "q8",
+              "question": "« Sabah » veut dire :",
+              "type": "single_choice",
+              "options": ["matin", "soir", "nuit", "midi"],
+              "correctAnswers": ["matin"],
+              "explanation": "Sabah = matin."
+            },
+            {
+              "id": "q9",
+              "question": "Dans « Ders saat sekizde », à quelle heure ?",
+              "type": "single_choice",
+              "options": [
+                "à huit heures",
+                "à sept heures",
+                "à neuf heures",
+                "à midi"
+              ],
+              "correctAnswers": ["à huit heures"],
+              "explanation": "Sekiz = huit ; sekizde = à huit (heures)."
+            },
+            {
+              "id": "q10",
+              "question": "« Öğle » c'est :",
+              "type": "single_choice",
+              "options": ["midi", "matin", "après-midi tard", "soirée"],
+              "correctAnswers": ["midi"],
+              "explanation": "Öğle = midi ; öğle yemeği = déjeuner."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Loisirs du week-end",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux activités de loisir en turc :",
+              "type": "multiple_choice",
+              "options": ["sinema", "park", "sınav", "ödev"],
+              "correctAnswers": ["sinema", "park"],
+              "explanation": "Sinema = cinéma, park = parc. Sınav = examen, ödev = devoirs."
+            },
+            {
+              "id": "q2",
+              "question": "« Oyun » signifie :",
+              "type": "single_choice",
+              "options": ["jeu", "travail", "course", "dispute"],
+              "correctAnswers": ["jeu"],
+              "explanation": "Oyun = jeu."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « je joue au football » ? (football = futbol)",
+              "type": "single_choice",
+              "options": [
+                "Futbol oynuyorum",
+                "Futbol yiyorum",
+                "Futbol okuyorum",
+                "Futbol uyuyorum"
+              ],
+              "correctAnswers": ["Futbol oynuyorum"],
+              "explanation": "Oynamak = jouer ; oynuyorum = je joue."
+            },
+            {
+              "id": "q4",
+              "question": "« Müzik dinlemek » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "écouter de la musique",
+                "jouer de la musique",
+                "chanter seulement",
+                "danser seulement"
+              ],
+              "correctAnswers": ["écouter de la musique"],
+              "explanation": "Dinlemek = écouter ; müzik dinlemek = écouter de la musique."
+            },
+            {
+              "id": "q5",
+              "question": "« Yüzmek » c'est :",
+              "type": "single_choice",
+              "options": ["nager", "courir", "skier", "pédaler"],
+              "correctAnswers": ["nager"],
+              "explanation": "Yüzmek = nager."
+            },
+            {
+              "id": "q6",
+              "question": "Que veut dire « kitap okumak » ?",
+              "type": "single_choice",
+              "options": [
+                "lire un livre",
+                "écrire un livre",
+                "acheter un livre",
+                "prêter un livre"
+              ],
+              "correctAnswers": ["lire un livre"],
+              "explanation": "Okumak = lire."
+            },
+            {
+              "id": "q7",
+              "question": "« Arkadaş » désigne :",
+              "type": "single_choice",
+              "options": ["un ami", "un ennemi", "un professeur", "un frère"],
+              "correctAnswers": ["un ami"],
+              "explanation": "Arkadaş = ami(e)."
+            },
+            {
+              "id": "q8",
+              "question": "Comment dit-on « télévision » ?",
+              "type": "single_choice",
+              "options": ["televizyon", "radyo", "bilgisayar", "telefon"],
+              "correctAnswers": ["televizyon"],
+              "explanation": "Televizyon = télévision."
+            },
+            {
+              "id": "q9",
+              "question": "« Hafta sonu » signifie :",
+              "type": "single_choice",
+              "options": ["week-end", "semaine", "vacances", "lundi"],
+              "correctAnswers": ["week-end"],
+              "explanation": "Hafta = semaine ; son = fin ; hafta sonu = week-end."
+            },
+            {
+              "id": "q10",
+              "question": "Dans « Parkta yürüyorum », je :",
+              "type": "single_choice",
+              "options": [
+                "me promène au parc",
+                "cours au parc",
+                "dors au parc",
+                "mange au parc"
+              ],
+              "correctAnswers": ["me promène au parc"],
+              "explanation": "Yürümek = marcher, se promener."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Sports et équipe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux sports ou lieux sportifs : (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["basketbol", "stadyum", "mutfak", "kütüphane"],
+              "correctAnswers": ["basketbol", "stadyum"],
+              "explanation": "Basketbol = basket, stadyum = stade. Mutfak = cuisine, kütüphane = bibliothèque."
+            },
+            {
+              "id": "q2",
+              "question": "« Takım » veut dire :",
+              "type": "single_choice",
+              "options": ["équipe", "ballon", "arbitre", "score"],
+              "correctAnswers": ["équipe"],
+              "explanation": "Takım = équipe (sportive ou autre)."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « match » ?",
+              "type": "single_choice",
+              "options": ["maç", "antrenman", "turnuva", "lig"],
+              "correctAnswers": ["maç"],
+              "explanation": "Maç = match."
+            },
+            {
+              "id": "q4",
+              "question": "« Koşmak » c'est :",
+              "type": "single_choice",
+              "options": ["courir", "sauter", "lancer", "tirer"],
+              "correctAnswers": ["courir"],
+              "explanation": "Koşmak = courir."
+            },
+            {
+              "id": "q5",
+              "question": "Que signifie « antrenman » ?",
+              "type": "single_choice",
+              "options": ["entraînement", "victoire", "défaite", "mi-temps"],
+              "correctAnswers": ["entraînement"],
+              "explanation": "Antrenman = entraînement."
+            },
+            {
+              "id": "q6",
+              "question": "« Kazanmak » veut dire :",
+              "type": "single_choice",
+              "options": ["gagner", "perdre", "jouer", "arrêter"],
+              "correctAnswers": ["gagner"],
+              "explanation": "Kazanmak = gagner."
+            },
+            {
+              "id": "q7",
+              "question": "« Voleybol » en turc, c'est :",
+              "type": "single_choice",
+              "options": ["voleybol", "hentbol", "güreş", "tenis"],
+              "correctAnswers": ["voleybol"],
+              "explanation": "Le mot est quasi identique : voleybol."
+            },
+            {
+              "id": "q8",
+              "question": "Dans « Her gün spor yapıyorum », je :",
+              "type": "single_choice",
+              "options": [
+                "fais du sport chaque jour",
+                "regarde le sport à la télé",
+                "déteste le sport",
+                "ne sors jamais"
+              ],
+              "correctAnswers": ["fais du sport chaque jour"],
+              "explanation": "Spor yapmak = faire du sport ; her gün = chaque jour."
+            },
+            {
+              "id": "q9",
+              "question": "« Havuz » désigne :",
+              "type": "single_choice",
+              "options": ["piscine", "mer", "lac", "rivière"],
+              "correctAnswers": ["piscine"],
+              "explanation": "Havuz = piscine."
+            },
+            {
+              "id": "q10",
+              "question": "« Kaybetmek » signifie :",
+              "type": "single_choice",
+              "options": ["perdre", "gagner", "nager", "courir"],
+              "correctAnswers": ["perdre"],
+              "explanation": "Kaybetmek = perdre (un match, un objet…)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "L'heure au quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux mots pour parler du temps : (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["saat", "dakika", "masa", "kapı"],
+              "correctAnswers": ["saat", "dakika"],
+              "explanation": "Saat = heure ou horloge ; dakika = minute."
+            },
+            {
+              "id": "q2",
+              "question": "« Saat kaç? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Quelle heure est-il ?",
+                "Quel jour sommes-nous ?",
+                "Où es-tu ?",
+                "Comment vas-tu ?"
+              ],
+              "correctAnswers": ["Quelle heure est-il ?"],
+              "explanation": "Formule standard pour demander l'heure."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « il est trois heures » ?",
+              "type": "single_choice",
+              "options": ["Saat üç", "Saat beş", "Saat on", "Saat yedi"],
+              "correctAnswers": ["Saat üç"],
+              "explanation": "Üç = trois."
+            },
+            {
+              "id": "q4",
+              "question": "« Yarım » dans l'heure veut dire :",
+              "type": "single_choice",
+              "options": ["et demie", "moins le quart", "pile", "minuit"],
+              "correctAnswers": ["et demie"],
+              "explanation": "Yarım = moitié ; saat … yarım = … et demie."
+            },
+            {
+              "id": "q5",
+              "question": "« Geç » après l'heure indique :",
+              "type": "single_choice",
+              "options": [
+                "passé (après l'heure)",
+                "avant (moins)",
+                "exactement",
+                "demain"
+              ],
+              "correctAnswers": ["passé (après l'heure)"],
+              "explanation": "Geç = passé, en retard ; üç geç = après trois heures."
+            },
+            {
+              "id": "q6",
+              "question": "« Kala » avec l'heure signifie :",
+              "type": "single_choice",
+              "options": ["moins (il reste …)", "et quart", "midi", "minuit"],
+              "correctAnswers": ["moins (il reste …)"],
+              "explanation": "Kala = il reste ; beşe on kala = dix heures moins dix (vers 9 h 50)."
+            },
+            {
+              "id": "q7",
+              "question": "« Akşam » c'est :",
+              "type": "single_choice",
+              "options": [
+                "le soir",
+                "le matin",
+                "l'après-midi",
+                "la nuit profonde"
+              ],
+              "correctAnswers": ["le soir"],
+              "explanation": "Akşam = soir."
+            },
+            {
+              "id": "q8",
+              "question": "Comment dit-on « je me lève à sept heures » ? (kalkmak = se lever)",
+              "type": "single_choice",
+              "options": [
+                "Saat yedide kalkıyorum",
+                "Saat yedide uyuyorum",
+                "Saat yedide yemek yiyorum",
+                "Saat yedide okula gidiyorum"
+              ],
+              "correctAnswers": ["Saat yedide kalkıyorum"],
+              "explanation": "Yedide = à sept ; kalkıyorum = je me lève."
+            },
+            {
+              "id": "q9",
+              "question": "« Erken » veut dire :",
+              "type": "single_choice",
+              "options": ["tôt", "tard", "jamais", "souvent"],
+              "correctAnswers": ["tôt"],
+              "explanation": "Erken = tôt ; geç = tard."
+            },
+            {
+              "id": "q10",
+              "question": "« Gece » signifie :",
+              "type": "single_choice",
+              "options": ["nuit", "jour", "midi", "aube"],
+              "correctAnswers": ["nuit"],
+              "explanation": "Gece = nuit."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Repas et routines",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux repas en turc : (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["kahvaltı", "akşam yemeği", "ödev", "ders"],
+              "correctAnswers": ["kahvaltı", "akşam yemeği"],
+              "explanation": "Kahvaltı = petit-déjeuner ; akşam yemeği = dîner."
+            },
+            {
+              "id": "q2",
+              "question": "« Yemek » peut voulo dire :",
+              "type": "single_choice",
+              "options": [
+                "manger ou plat/repas",
+                "boire seulement",
+                "dormir",
+                "lire"
+              ],
+              "correctAnswers": ["manger ou plat/repas"],
+              "explanation": "Yemek = nom (plat) ou verbe (manger) selon le contexte."
+            },
+            {
+              "id": "q3",
+              "question": "« Su » c'est :",
+              "type": "single_choice",
+              "options": ["eau", "lait", "jus", "thé"],
+              "correctAnswers": ["eau"],
+              "explanation": "Su = eau."
+            },
+            {
+              "id": "q4",
+              "question": "Comment dit-on « j'ai faim » ?",
+              "type": "single_choice",
+              "options": ["Açım", "Tokum", "Yorgunum", "Mutluyum"],
+              "correctAnswers": ["Açım"],
+              "explanation": "Aç = affamé ; açım = j'ai faim."
+            },
+            {
+              "id": "q5",
+              "question": "« Çay » veut dire :",
+              "type": "single_choice",
+              "options": ["thé", "café", "chocolat", "soupe"],
+              "correctAnswers": ["thé"],
+              "explanation": "Çay = thé (très courant en Turquie)."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie « uyumak » ?",
+              "type": "single_choice",
+              "options": ["dormir", "manger", "parler", "étudier"],
+              "correctAnswers": ["dormir"],
+              "explanation": "Uyumak = dormir."
+            },
+            {
+              "id": "q7",
+              "question": "« Dişlerimi fırçalıyorum » : je me :",
+              "type": "single_choice",
+              "options": [
+                "brosse les dents",
+                "lave les cheveux",
+                "coupe les ongles",
+                "habille"
+              ],
+              "correctAnswers": ["brosse les dents"],
+              "explanation": "Diş = dent ; fırçalamak = brosser."
+            },
+            {
+              "id": "q8",
+              "question": "« Mutfakta kahvaltı yapıyoruz » : nous :",
+              "type": "single_choice",
+              "options": [
+                "prenons le petit-déjeuner dans la cuisine",
+                "dînons au salon",
+                "faisons les devoirs",
+                "regardons la télé"
+              ],
+              "correctAnswers": ["prenons le petit-déjeuner dans la cuisine"],
+              "explanation": "Kahvaltı yapmak = prendre le petit-déjeuner."
+            },
+            {
+              "id": "q9",
+              "question": "« Ekmek » désigne :",
+              "type": "single_choice",
+              "options": ["pain", "fromage", "viande", "salade"],
+              "correctAnswers": ["pain"],
+              "explanation": "Ekmek = pain."
+            },
+            {
+              "id": "q10",
+              "question": "« Her zaman » signifie :",
+              "type": "single_choice",
+              "options": ["toujours", "jamais", "parfois", "rarement"],
+              "correctAnswers": ["toujours"],
+              "explanation": "Her zaman = toujours."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Sentiments et descriptions simples",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux adjectifs pour se sentir : (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["mutlu", "yorgun", "masa", "kitap"],
+              "correctAnswers": ["mutlu", "yorgun"],
+              "explanation": "Mutlu = heureux ; yorgun = fatigué."
+            },
+            {
+              "id": "q2",
+              "question": "« Üzgün » veut dire :",
+              "type": "single_choice",
+              "options": ["triste", "content", "en colère", "surpris"],
+              "correctAnswers": ["triste"],
+              "explanation": "Üzgün = triste."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « je suis content(e) » ?",
+              "type": "single_choice",
+              "options": ["Mutluyum", "Üzgünüm", "Yorgunum", "Açım"],
+              "correctAnswers": ["Mutluyum"],
+              "explanation": "Mutlu + -yum = je suis heureux/content."
+            },
+            {
+              "id": "q4",
+              "question": "« Güzel » décrit souvent :",
+              "type": "single_choice",
+              "options": [
+                "beau, joli, agréable",
+                "laid seulement",
+                "petit seulement",
+                "vieux seulement"
+              ],
+              "correctAnswers": ["beau, joli, agréable"],
+              "explanation": "Güzel = beau, joli (personne, chose, moment…)."
+            },
+            {
+              "id": "q5",
+              "question": "« Büyük » c'est :",
+              "type": "single_choice",
+              "options": ["grand", "petit", "moyen", "mince"],
+              "correctAnswers": ["grand"],
+              "explanation": "Büyük = grand ; küçük = petit."
+            },
+            {
+              "id": "q6",
+              "question": "Que veut dire « seviyorum » avec un nom ?",
+              "type": "single_choice",
+              "options": ["j'aime", "je déteste", "je connais", "je vois"],
+              "correctAnswers": ["j'aime"],
+              "explanation": "Sevmek = aimer ; seviyorum = j'aime."
+            },
+            {
+              "id": "q7",
+              "question": "« Çok » renforce un adjectif et veut dire :",
+              "type": "single_choice",
+              "options": ["très", "un peu", "pas", "toujours"],
+              "correctAnswers": ["très"],
+              "explanation": "Çok = beaucoup, très."
+            },
+            {
+              "id": "q8",
+              "question": "« İyi » signifie :",
+              "type": "single_choice",
+              "options": ["bien, bon", "mal", "mauvais", "faux"],
+              "correctAnswers": ["bien, bon"],
+              "explanation": "İyi = bon/bien ; kötü = mauvais."
+            },
+            {
+              "id": "q9",
+              "question": "Dans « Arkadaşım çok komik », mon ami est :",
+              "type": "single_choice",
+              "options": [
+                "très drôle",
+                "très triste",
+                "très grand",
+                "très fatigué"
+              ],
+              "correctAnswers": ["très drôle"],
+              "explanation": "Komik = drôle, amusant."
+            },
+            {
+              "id": "q10",
+              "question": "« Nasılsın? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Comment vas-tu ?",
+                "Comment t'appelles-tu ?",
+                "Où habites-tu ?",
+                "Quel âge as-tu ?"
+              ],
+              "correctAnswers": ["Comment vas-tu ?"],
+              "explanation": "Salutation courante : comment ça va ?"
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux lieux de la journée d'un collégien : (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["okul", "ev", "ay", "deniz"],
+              "correctAnswers": ["okul", "ev"],
+              "explanation": "Okul = école, ev = maison. Ay = lune, deniz = mer (moins quotidien scolaire)."
+            },
+            {
+              "id": "q2",
+              "question": "« Bugün » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "aujourd'hui",
+                "hier",
+                "demain",
+                "maintenant seulement"
+              ],
+              "correctAnswers": ["aujourd'hui"],
+              "explanation": "Bugün = aujourd'hui."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « demain » ?",
+              "type": "single_choice",
+              "options": ["yarın", "dün", "bugün", "şimdi"],
+              "correctAnswers": ["yarın"],
+              "explanation": "Yarın = demain ; dün = hier."
+            },
+            {
+              "id": "q4",
+              "question": "« Sonra » signifie :",
+              "type": "single_choice",
+              "options": ["après, ensuite", "avant", "pendant", "jamais"],
+              "correctAnswers": ["après, ensuite"],
+              "explanation": "Sonra = après, plus tard."
+            },
+            {
+              "id": "q5",
+              "question": "« Birlikte » veut dire :",
+              "type": "single_choice",
+              "options": ["ensemble", "seul", "vite", "lentement"],
+              "correctAnswers": ["ensemble"],
+              "explanation": "Birlikte = ensemble."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie « gidiyorum » ?",
+              "type": "single_choice",
+              "options": ["je vais", "je viens", "je reste", "je mange"],
+              "correctAnswers": ["je vais"],
+              "explanation": "Gitmek = aller ; gidiyorum = je vais."
+            },
+            {
+              "id": "q7",
+              "question": "« Geliyorum » c'est :",
+              "type": "single_choice",
+              "options": ["je viens", "je pars", "je dors", "j'étudie"],
+              "correctAnswers": ["je viens"],
+              "explanation": "Gelmek = venir."
+            },
+            {
+              "id": "q8",
+              "question": "« Bazen » veut dire :",
+              "type": "single_choice",
+              "options": ["parfois", "toujours", "jamais", "souvent"],
+              "correctAnswers": ["parfois"],
+              "explanation": "Bazen = parfois."
+            },
+            {
+              "id": "q9",
+              "question": "Dans « Ailemle sinemaya gidiyoruz », nous allons :",
+              "type": "single_choice",
+              "options": [
+                "au cinéma avec ma famille",
+                "à l'école seuls",
+                "au parc sans parents",
+                "au stade"
+              ],
+              "correctAnswers": ["au cinéma avec ma famille"],
+              "explanation": "Ailemle = avec ma famille ; sinemaya = au cinéma."
+            },
+            {
+              "id": "q10",
+              "question": "« Hoşça kal » sert à :",
+              "type": "single_choice",
+              "options": [
+                "dire au revoir (celui qui part)",
+                "dire bonjour",
+                "demander l'heure",
+                "remercier"
+              ],
+              "correctAnswers": ["dire au revoir (celui qui part)"],
+              "explanation": "Formule de départ : reste bien (à toi qui restes — variante selon contexte)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le passé en -di : bases",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels suffixes indiquent le passé raconté ? (deux réponses possibles selon voyelle)",
+              "type": "multiple_choice",
+              "options": ["-di", "-dı", "-lar", "-yor"],
+              "correctAnswers": ["-di", "-dı"],
+              "explanation": "Le passé défini utilise -di/-dı/-du/-dü selon l'harmonie vocalique. -yor = présent continu."
+            },
+            {
+              "id": "q2",
+              "question": "« Geldim » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "je suis venu(e)",
+                "je viens",
+                "je viendrai",
+                "je venais souvent"
+              ],
+              "correctAnswers": ["je suis venu(e)"],
+              "explanation": "Gelmek → geldi (passé) + m (je) = je suis venu."
+            },
+            {
+              "id": "q3",
+              "question": "« Okudu » avec il/elle, c'est :",
+              "type": "single_choice",
+              "options": [
+                "il/elle a lu",
+                "il/elle lit",
+                "ils ont lu",
+                "nous avons lu"
+              ],
+              "correctAnswers": ["il/elle a lu"],
+              "explanation": "Okumak → okudu = il/elle a lu (passé)."
+            },
+            {
+              "id": "q4",
+              "question": "Comment dit-on « nous avons mangé » ? (yemek)",
+              "type": "single_choice",
+              "options": ["Yedik", "Yedi", "Yedim", "Yedin"],
+              "correctAnswers": ["Yedik"],
+              "explanation": "Yemek → yedi + k (nous) = yedik."
+            },
+            {
+              "id": "q5",
+              "question": "« Gittin » signifie :",
+              "type": "single_choice",
+              "options": [
+                "tu es allé(e)",
+                "je suis allé",
+                "il est allé",
+                "vous êtes allés"
+              ],
+              "correctAnswers": ["tu es allé(e)"],
+              "explanation": "Gitmek → gitti + n (tu) = gittin."
+            },
+            {
+              "id": "q6",
+              "question": "Le passé en -di raconte surtout :",
+              "type": "single_choice",
+              "options": [
+                "un fait terminé qu'on raconte",
+                "une action en cours",
+                "un projet futur",
+                "une habitude vague"
+              ],
+              "correctAnswers": ["un fait terminé qu'on raconte"],
+              "explanation": "Comme un passé simple ou passé composé narratif en français."
+            },
+            {
+              "id": "q7",
+              "question": "« Konuştu » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "il/elle a parlé",
+                "il/elle parle",
+                "parle !",
+                "nous parlons"
+              ],
+              "correctAnswers": ["il/elle a parlé"],
+              "explanation": "Konuşmak = parler."
+            },
+            {
+              "id": "q8",
+              "question": "« Yaptık » c'est :",
+              "type": "single_choice",
+              "options": [
+                "nous avons fait",
+                "vous avez fait",
+                "ils ont fait",
+                "j'ai fait"
+              ],
+              "correctAnswers": ["nous avons fait"],
+              "explanation": "Yapmak = faire ; yaptık = nous avons fait."
+            },
+            {
+              "id": "q9",
+              "question": "« Dinledim » : j'ai :",
+              "type": "single_choice",
+              "options": ["écouté", "regardé", "mangé", "écrit"],
+              "correctAnswers": ["écouté"],
+              "explanation": "Dinlemek = écouter."
+            },
+            {
+              "id": "q10",
+              "question": "« Baktı » signifie :",
+              "type": "single_choice",
+              "options": [
+                "il/elle a regardé",
+                "il/elle regarde",
+                "regarde !",
+                "nous regardons"
+              ],
+              "correctAnswers": ["il/elle a regardé"],
+              "explanation": "Bakmak = regarder, jeter un coup d'œil."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Hier à l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux mots utiles pour raconter hier : (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["dün", "geçen", "yarın", "hemen"],
+              "correctAnswers": ["dün", "geçen"],
+              "explanation": "Dün = hier ; geçen (hafta, ay…) = dernier / passé."
+            },
+            {
+              "id": "q2",
+              "question": "« Dün okula gittim » : hier je :",
+              "type": "single_choice",
+              "options": [
+                "suis allé(e) à l'école",
+                "reste à la maison",
+                "irai demain",
+                "n'y vais jamais"
+              ],
+              "correctAnswers": ["suis allé(e) à l'école"],
+              "explanation": "Gittim = passé de gitmek (aller)."
+            },
+            {
+              "id": "q3",
+              "question": "« Sınav vardı » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "il y avait un examen",
+                "il n'y a pas d'examen",
+                "l'examen est demain",
+                "j'aime les examens"
+              ],
+              "correctAnswers": ["il y avait un examen"],
+              "explanation": "Sınav = examen ; vardı = il y avait (passé)."
+            },
+            {
+              "id": "q4",
+              "question": "Comment dit-on « le professeur a expliqué la leçon » ? (basique)",
+              "type": "single_choice",
+              "options": [
+                "Öğretmen dersi anlattı",
+                "Öğretmen dersi yedi",
+                "Öğretmen uyudu",
+                "Öğretmen koştu"
+              ],
+              "correctAnswers": ["Öğretmen dersi anlattı"],
+              "explanation": "Anlatmak = raconter, expliquer."
+            },
+            {
+              "id": "q5",
+              "question": "« Öğle arasında » c'est :",
+              "type": "single_choice",
+              "options": [
+                "pendant la pause de midi",
+                "le matin tôt",
+                "le soir",
+                "la veille"
+              ],
+              "correctAnswers": ["pendant la pause de midi"],
+              "explanation": "Öğle arası = pause de midi."
+            },
+            {
+              "id": "q6",
+              "question": "« Arkadaşlarımla konuştum » : j'ai parlé :",
+              "type": "single_choice",
+              "options": [
+                "avec mes amis",
+                "au professeur seul",
+                "au téléphone inconnu",
+                "à voix basse interdit"
+              ],
+              "correctAnswers": ["avec mes amis"],
+              "explanation": "Arkadaşlarımla = avec mes amis."
+            },
+            {
+              "id": "q7",
+              "question": "« Çok yoruldum » signifie :",
+              "type": "single_choice",
+              "options": [
+                "je me suis beaucoup fatigué(e)",
+                "je suis très content",
+                "j'ai très faim",
+                "je suis malade"
+              ],
+              "correctAnswers": ["je me suis beaucoup fatigué(e)"],
+              "explanation": "Yorulmak = se fatiguer."
+            },
+            {
+              "id": "q8",
+              "question": "« Eve erken döndüm » : je suis :",
+              "type": "single_choice",
+              "options": [
+                "rentré(e) tôt à la maison",
+                "parti tard",
+                "resté à l'école",
+                "allé au cinéma"
+              ],
+              "correctAnswers": ["rentré(e) tôt à la maison"],
+              "explanation": "Dönmek = revenir, retourner."
+            },
+            {
+              "id": "q9",
+              "question": "« Ödevimi bitirdim » : j'ai :",
+              "type": "single_choice",
+              "options": [
+                "fini mes devoirs",
+                "commencé mes devoirs",
+                "perdu mes devoirs",
+                "oublié mes devoirs"
+              ],
+              "correctAnswers": ["fini mes devoirs"],
+              "explanation": "Bitirmek = terminer."
+            },
+            {
+              "id": "q10",
+              "question": "« Ders kolaydı » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "le cours était facile",
+                "le cours sera difficile",
+                "le cours est annulé",
+                "je n'aime pas le cours"
+              ],
+              "correctAnswers": ["le cours était facile"],
+              "explanation": "Kolay = facile ; -dı = passé (était)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Raconter un match",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux verbes au passé pour un match : (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["kazandık", "oynadık", "uyuduk", "yıkadık"],
+              "correctAnswers": ["kazandık", "oynadık"],
+              "explanation": "Kazanmak = gagner ; oynamak = jouer."
+            },
+            {
+              "id": "q2",
+              "question": "« Maçı kazandık » : nous avons :",
+              "type": "single_choice",
+              "options": [
+                "gagné le match",
+                "perdu le match",
+                "regardé seulement",
+                "annulé le match"
+              ],
+              "correctAnswers": ["gagné le match"],
+              "explanation": "Maç = match."
+            },
+            {
+              "id": "q3",
+              "question": "« Kaybettik » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "nous avons perdu",
+                "nous avons gagné",
+                "nous avons joué",
+                "nous sommes partis"
+              ],
+              "correctAnswers": ["nous avons perdu"],
+              "explanation": "Kaybetmek au passé : kaybettik."
+            },
+            {
+              "id": "q4",
+              "question": "« Gol attı » : il/elle a :",
+              "type": "single_choice",
+              "options": ["marqué un but", "raté le but", "arbitré", "chanté"],
+              "correctAnswers": ["marqué un but"],
+              "explanation": "Gol = but ; atmak = lancer, marquer."
+            },
+            {
+              "id": "q5",
+              "question": "« Stadyum doluydu » signifie :",
+              "type": "single_choice",
+              "options": [
+                "le stade était plein",
+                "le stade était vide",
+                "le stade était fermé",
+                "le stade était neuf"
+              ],
+              "correctAnswers": ["le stade était plein"],
+              "explanation": "Dolu = plein ; doluydu = était plein."
+            },
+            {
+              "id": "q6",
+              "question": "« İlk yarı zordu » : la première mi-temps était :",
+              "type": "single_choice",
+              "options": ["difficile", "facile", "annulée", "courte"],
+              "correctAnswers": ["difficile"],
+              "explanation": "İlk yarı = première mi-temps ; zor = difficile."
+            },
+            {
+              "id": "q7",
+              "question": "« Sonra tezahürat yaptık » : ensuite nous avons :",
+              "type": "single_choice",
+              "options": ["applaudi / encouragé", "dormi", "mangé", "pleuré"],
+              "correctAnswers": ["applaudi / encouragé"],
+              "explanation": "Tezahürat = encouragements, chants de supporters."
+            },
+            {
+              "id": "q8",
+              "question": "« Beraber oynadık » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "nous avons joué ensemble",
+                "nous avons regardé seuls",
+                "nous nous sommes disputés",
+                "nous sommes rentrés"
+              ],
+              "correctAnswers": ["nous avons joué ensemble"],
+              "explanation": "Beraber = ensemble."
+            },
+            {
+              "id": "q9",
+              "question": "« Çok eğlendik » : nous nous sommes :",
+              "type": "single_choice",
+              "options": [
+                "beaucoup amusés",
+                "beaucoup ennuyés",
+                "fatigués seulement",
+                "mis en colère"
+              ],
+              "correctAnswers": ["beaucoup amusés"],
+              "explanation": "Eğlenmek = s'amuser."
+            },
+            {
+              "id": "q10",
+              "question": "« Akşam yorgun geldik » : le soir nous sommes arrivés :",
+              "type": "single_choice",
+              "options": [
+                "fatigués",
+                "en retard à l'école",
+                "sans chaussures",
+                "avant le match"
+              ],
+              "correctAnswers": ["fatigués"],
+              "explanation": "Yorgun = fatigué."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Décrire une personne",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux mots pour décrire l'apparence : (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["uzun", "kısa", "dün", "sonra"],
+              "correctAnswers": ["uzun", "kısa"],
+              "explanation": "Uzun = long/grand ; kısa = court/petit."
+            },
+            {
+              "id": "q2",
+              "question": "« O çok uzun boylu » : il/elle est :",
+              "type": "single_choice",
+              "options": [
+                "très grand(e)",
+                "très petit(e)",
+                "très jeune",
+                "très vieux"
+              ],
+              "correctAnswers": ["très grand(e)"],
+              "explanation": "Boy = taille ; uzun boylu = grand."
+            },
+            {
+              "id": "q3",
+              "question": "« Saçları kısa » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "cheveux courts",
+                "cheveux longs",
+                "pas de cheveux",
+                "cheveux rouges"
+              ],
+              "correctAnswers": ["cheveux courts"],
+              "explanation": "Saç = cheveu/cheveux."
+            },
+            {
+              "id": "q4",
+              "question": "« Gözleri mavi » : les yeux sont :",
+              "type": "single_choice",
+              "options": ["bleus", "verts", "noirs", "fermés"],
+              "correctAnswers": ["bleus"],
+              "explanation": "Göz = œil ; mavi = bleu."
+            },
+            {
+              "id": "q5",
+              "question": "Comment dit-on « il/elle est gentil(le) » ?",
+              "type": "single_choice",
+              "options": ["O nazik", "O kötü", "O yorgun", "O aç"],
+              "correctAnswers": ["O nazik"],
+              "explanation": "Nazik = gentil, poli."
+            },
+            {
+              "id": "q6",
+              "question": "« Komik bir adamdı » signifie :",
+              "type": "single_choice",
+              "options": [
+                "c'était un homme drôle",
+                "c'était un homme triste",
+                "c'était un enfant",
+                "c'était un professeur"
+              ],
+              "correctAnswers": ["c'était un homme drôle"],
+              "explanation": "Adam = homme ; -dı = c'était (passé)."
+            },
+            {
+              "id": "q7",
+              "question": "« Genç » c'est :",
+              "type": "single_choice",
+              "options": ["jeune", "vieux", "grand", "petit"],
+              "correctAnswers": ["jeune"],
+              "explanation": "Genç = jeune ; yaşlı = âgé."
+            },
+            {
+              "id": "q8",
+              "question": "« Kardeşim on beş yaşında » : mon frère/sœur a :",
+              "type": "single_choice",
+              "options": ["quinze ans", "dix ans", "cinquante ans", "cinq ans"],
+              "correctAnswers": ["quinze ans"],
+              "explanation": "Yaş = âge ; yaşında = qui a … ans."
+            },
+            {
+              "id": "q9",
+              "question": "« O spor yapmayı seviyor » : il/elle :",
+              "type": "single_choice",
+              "options": [
+                "aime faire du sport",
+                "déteste le sport",
+                "regarde la télé seulement",
+                "dort toujours"
+              ],
+              "correctAnswers": ["aime faire du sport"],
+              "explanation": "Sevmek + infinitif en -mak/-mek."
+            },
+            {
+              "id": "q10",
+              "question": "« Sessiz bir kız » décrit :",
+              "type": "single_choice",
+              "options": [
+                "une fille calme / discrète",
+                "une fille bruyante",
+                "un garçon sportif",
+                "un bébé"
+              ],
+              "correctAnswers": ["une fille calme / discrète"],
+              "explanation": "Sessiz = silencieux, calme ; kız = fille."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Décrire un lieu",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux adjectifs pour un lieu : (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["sessiz", "kalabalık", "yemek", "kalem"],
+              "correctAnswers": ["sessiz", "kalabalık"],
+              "explanation": "Sessiz = calme ; kalabalık = bondé, plein de monde."
+            },
+            {
+              "id": "q2",
+              "question": "« Park güzeldi » : le parc était :",
+              "type": "single_choice",
+              "options": ["beau", "sale", "fermé", "petit seulement"],
+              "correctAnswers": ["beau"],
+              "explanation": "Güzeldi = était beau (passé)."
+            },
+            {
+              "id": "q3",
+              "question": "« Okul büyük ve yeni » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "l'école est grande et neuve",
+                "l'école est petite",
+                "l'école est ancienne seulement",
+                "l'école est fermée"
+              ],
+              "correctAnswers": ["l'école est grande et neuve"],
+              "explanation": "Yeni = neuf, nouveau."
+            },
+            {
+              "id": "q4",
+              "question": "« Burada çok ağaç var » : il y a :",
+              "type": "single_choice",
+              "options": [
+                "beaucoup d'arbres ici",
+                "beaucoup de voitures",
+                "peu de lumière",
+                "un stade"
+              ],
+              "correctAnswers": ["beaucoup d'arbres ici"],
+              "explanation": "Ağaç = arbre ; burada = ici."
+            },
+            {
+              "id": "q5",
+              "question": "« Deniz mavi ve temizdi » : la mer était :",
+              "type": "single_choice",
+              "options": ["bleue et propre", "sale", "sans eau", "gelée"],
+              "correctAnswers": ["bleue et propre"],
+              "explanation": "Temiz = propre."
+            },
+            {
+              "id": "q6",
+              "question": "« Kütüphane sessizdi » signifie :",
+              "type": "single_choice",
+              "options": [
+                "la bibliothèque était calme",
+                "la bibliothèque était bruyante",
+                "c'était un café",
+                "c'était un parc"
+              ],
+              "correctAnswers": ["la bibliothèque était calme"],
+              "explanation": "Kütüphane = bibliothèque."
+            },
+            {
+              "id": "q7",
+              "question": "« Şehir kalabalıktı » : la ville était :",
+              "type": "single_choice",
+              "options": [
+                "bondée",
+                "vide",
+                "froide seulement",
+                "nouvelle seulement"
+              ],
+              "correctAnswers": ["bondée"],
+              "explanation": "Şehir = ville."
+            },
+            {
+              "id": "q8",
+              "question": "« Evimiz küçük ama sıcak » : notre maison est :",
+              "type": "single_choice",
+              "options": [
+                "petite mais accueillante (chaleureuse)",
+                "énorme et froide",
+                "loin de l'école seulement",
+                "sans jardin"
+              ],
+              "correctAnswers": ["petite mais accueillante (chaleureuse)"],
+              "explanation": "Sıcak = chaud, chaleureux ; ama = mais."
+            },
+            {
+              "id": "q9",
+              "question": "« Orada eski bir kale vardı » : il y avait :",
+              "type": "single_choice",
+              "options": [
+                "un vieux château",
+                "un nouveau pont",
+                "un match",
+                "un cours"
+              ],
+              "correctAnswers": ["un vieux château"],
+              "explanation": "Kale = château fort ; eski = vieux."
+            },
+            {
+              "id": "q10",
+              "question": "« Manzara harikaydı » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "le paysage était magnifique",
+                "le temps était mauvais",
+                "nous avions faim",
+                "la route était longue"
+              ],
+              "correctAnswers": ["le paysage était magnifique"],
+              "explanation": "Manzara = paysage ; harika = super, magnifique."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Enchaîner avec « sonra » et « önce »",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux mots de chronologie : (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["önce", "sonra", "güzel", "büyük"],
+              "correctAnswers": ["önce", "sonra"],
+              "explanation": "Önce = avant ; sonra = après."
+            },
+            {
+              "id": "q2",
+              "question": "« Önce kahvaltı yaptım » : d'abord j'ai :",
+              "type": "single_choice",
+              "options": [
+                "pris le petit-déjeuner",
+                "dormi",
+                "joué au foot",
+                "regardé un film"
+              ],
+              "correctAnswers": ["pris le petit-déjeuner"],
+              "explanation": "Önce marque la première action."
+            },
+            {
+              "id": "q3",
+              "question": "« Sonra okula gittim » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "ensuite je suis allé(e) à l'école",
+                "avant l'école",
+                "jamais à l'école",
+                "je suis à la maison"
+              ],
+              "correctAnswers": ["ensuite je suis allé(e) à l'école"],
+              "explanation": "Sonra = ensuite, après."
+            },
+            {
+              "id": "q4",
+              "question": "« Akşamdan önce ödev bitirdim » : avant le soir j'ai :",
+              "type": "single_choice",
+              "options": [
+                "fini les devoirs",
+                "mangé le dîner",
+                "dormi",
+                "gagné un match"
+              ],
+              "correctAnswers": ["fini les devoirs"],
+              "explanation": "Bitirdim = j'ai terminé."
+            },
+            {
+              "id": "q5",
+              "question": "« Önce duş aldım, sonra giyindim » : ordre :",
+              "type": "single_choice",
+              "options": [
+                "douche puis s'habiller",
+                "s'habiller puis douche",
+                "dîner puis dormir",
+                "école puis maison"
+              ],
+              "correctAnswers": ["douche puis s'habiller"],
+              "explanation": "Duş almak = prendre une douche ; giyinmek = s'habiller."
+            },
+            {
+              "id": "q6",
+              "question": "« Ders bitince » signifie :",
+              "type": "single_choice",
+              "options": [
+                "quand le cours s'est terminé",
+                "avant le cours",
+                "pendant le cours seulement",
+                "sans cours"
+              ],
+              "correctAnswers": ["quand le cours s'est terminé"],
+              "explanation": "-ince = quand, dès que (cours fini)."
+            },
+            {
+              "id": "q7",
+              "question": "« Hemen sonra » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "juste après",
+                "longtemps avant",
+                "jamais",
+                "chaque semaine"
+              ],
+              "correctAnswers": ["juste après"],
+              "explanation": "Hemen = tout de suite."
+            },
+            {
+              "id": "q8",
+              "question": "« Önce anneme yardım ettim » : j'ai d'abord :",
+              "type": "single_choice",
+              "options": ["aidé ma mère", "appelé mon père", "joué", "dormi"],
+              "correctAnswers": ["aidé ma mère"],
+              "explanation": "Yardım etmek = aider."
+            },
+            {
+              "id": "q9",
+              "question": "« Sonra televizyon izledik » : ensuite nous avons :",
+              "type": "single_choice",
+              "options": [
+                "regardé la télé",
+                "lu un livre",
+                "nagé",
+                "couru au parc"
+              ],
+              "correctAnswers": ["regardé la télé"],
+              "explanation": "İzlemek = regarder (écran)."
+            },
+            {
+              "id": "q10",
+              "question": "« En son » dans un récit indique :",
+              "type": "single_choice",
+              "options": [
+                "enfin, à la fin",
+                "au début",
+                "jamais",
+                "hier seulement"
+              ],
+              "correctAnswers": ["enfin, à la fin"],
+              "explanation": "En son = finalement, pour finir."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Vacances racontées",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux mots de voyage : (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["tatil", "yolculuk", "sıra", "tahta"],
+              "correctAnswers": ["tatil", "yolculuk"],
+              "explanation": "Tatil = vacances ; yolculuk = voyage."
+            },
+            {
+              "id": "q2",
+              "question": "« Yaz tatilinde denize gittik » : en vacances d'été nous sommes allés :",
+              "type": "single_choice",
+              "options": [
+                "à la mer",
+                "à la montagne seulement",
+                "à l'école",
+                "au supermarché"
+              ],
+              "correctAnswers": ["à la mer"],
+              "explanation": "Yaz = été ; deniz = mer."
+            },
+            {
+              "id": "q3",
+              "question": "« Otel güzeldi » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "l'hôtel était bien",
+                "l'hôtel était mauvais",
+                "nous n'avons pas dormi",
+                "c'était l'école"
+              ],
+              "correctAnswers": ["l'hôtel était bien"],
+              "explanation": "Otel = hôtel."
+            },
+            {
+              "id": "q4",
+              "question": "« Her gün yüzdük » : chaque jour nous avons :",
+              "type": "single_choice",
+              "options": ["nagé", "skie", "lu", "écrit"],
+              "correctAnswers": ["nagé"],
+              "explanation": "Yüzmek → yüzdük = nous avons nagé."
+            },
+            {
+              "id": "q5",
+              "question": "« Fotoğraf çektik » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "nous avons pris des photos",
+                "nous avons peint",
+                "nous avons couru",
+                "nous avons dormi"
+              ],
+              "correctAnswers": ["nous avons pris des photos"],
+              "explanation": "Fotoğraf çekmek = prendre une photo."
+            },
+            {
+              "id": "q6",
+              "question": "« Ailemle tatil yaptık » : nous avons passé des vacances :",
+              "type": "single_choice",
+              "options": [
+                "avec ma famille",
+                "sans personne",
+                "à l'école",
+                "en hiver seulement"
+              ],
+              "correctAnswers": ["avec ma famille"],
+              "explanation": "Tatil yapmak = passer des vacances."
+            },
+            {
+              "id": "q7",
+              "question": "« Geç saatte geldik » signifie :",
+              "type": "single_choice",
+              "options": [
+                "nous sommes arrivés tard",
+                "nous sommes partis tôt",
+                "nous ne sommes pas venus",
+                "nous avons nagé"
+              ],
+              "correctAnswers": ["nous sommes arrivés tard"],
+              "explanation": "Geç = tard ; saat = heure."
+            },
+            {
+              "id": "q8",
+              "question": "« Çok güneşlendi » : il a :",
+              "type": "single_choice",
+              "options": ["beaucoup fait soleil", "neigé", "plu", "grêlé"],
+              "correctAnswers": ["beaucoup fait soleil"],
+              "explanation": "Güneş = soleil."
+            },
+            {
+              "id": "q9",
+              "question": "« Dondurma yedim » : j'ai :",
+              "type": "single_choice",
+              "options": [
+                "mangé une glace",
+                "bu de l'eau",
+                "lu un magazine",
+                "joué au ballon"
+              ],
+              "correctAnswers": ["mangé une glace"],
+              "explanation": "Dondurma = glace (crème glacée)."
+            },
+            {
+              "id": "q10",
+              "question": "« Tatil çabuk bitti » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "les vacances se sont terminées vite",
+                "les vacances durent encore",
+                "nous n'avons pas voyagé",
+                "l'école est fermée"
+              ],
+              "correctAnswers": ["les vacances se sont terminées vite"],
+              "explanation": "Çabuk = vite ; bitmek = finir."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Questions au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux mots interrogatifs : (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["ne", "nereye", "masa", "kitap"],
+              "correctAnswers": ["ne", "nereye"],
+              "explanation": "Ne = quoi ; nereye = où (direction)."
+            },
+            {
+              "id": "q2",
+              "question": "« Ne yaptın? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Qu'as-tu fait ?",
+                "Où vas-tu ?",
+                "Comment t'appelles-tu ?",
+                "Quelle heure est-il ?"
+              ],
+              "correctAnswers": ["Qu'as-tu fait ?"],
+              "explanation": "Yapmak = faire ; yaptın = tu as fait."
+            },
+            {
+              "id": "q3",
+              "question": "« Nereye gittiniz? » :",
+              "type": "single_choice",
+              "options": [
+                "Où êtes-vous allés ?",
+                "Qu'avez-vous mangé ?",
+                "Quand ?",
+                "Pourquoi ?"
+              ],
+              "correctAnswers": ["Où êtes-vous allés ?"],
+              "explanation": "Nereye = vers où ; gittiniz = vous êtes allés."
+            },
+            {
+              "id": "q4",
+              "question": "« Kim geldi? » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Qui est venu ?",
+                "Qui part ?",
+                "Qui dort ?",
+                "Qui mange ?"
+              ],
+              "correctAnswers": ["Qui est venu ?"],
+              "explanation": "Kim = qui ; geldi = est venu."
+            },
+            {
+              "id": "q5",
+              "question": "« Kaçta kalktın? » demande :",
+              "type": "single_choice",
+              "options": [
+                "À quelle heure t'es-tu levé(e) ?",
+                "Combien coûte ?",
+                "Quel jour ?",
+                "Quelle matière ?"
+              ],
+              "correctAnswers": ["À quelle heure t'es-tu levé(e) ?"],
+              "explanation": "Kaçta = à combien (heures) ; kalktın = tu t'es levé."
+            },
+            {
+              "id": "q6",
+              "question": "« Neden üzgünsün? » :",
+              "type": "single_choice",
+              "options": [
+                "Pourquoi es-tu triste ?",
+                "Pourquoi es-tu content ?",
+                "Où es-tu ?",
+                "Qu'as-tu lu ?"
+              ],
+              "correctAnswers": ["Pourquoi es-tu triste ?"],
+              "explanation": "Neden = pourquoi."
+            },
+            {
+              "id": "q7",
+              "question": "« Hangi filmi izledin? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Quel film as-tu regardé ?",
+                "Quel livre ?",
+                "Quel prof ?",
+                "Quel sport ?"
+              ],
+              "correctAnswers": ["Quel film as-tu regardé ?"],
+              "explanation": "Hangi = quel ; film = film."
+            },
+            {
+              "id": "q8",
+              "question": "« Kaç saat oynadınız? » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Combien de temps avez-vous joué ?",
+                "À quelle heure ?",
+                "Combien de buts ?",
+                "Quel jour ?"
+              ],
+              "correctAnswers": ["Combien de temps avez-vous joué ?"],
+              "explanation": "Kaç saat = combien d'heures."
+            },
+            {
+              "id": "q9",
+              "question": "« Kiminle konuştun? » :",
+              "type": "single_choice",
+              "options": [
+                "Avec qui as-tu parlé ?",
+                "De quoi ?",
+                "Où ?",
+                "Quand ?"
+              ],
+              "correctAnswers": ["Avec qui as-tu parlé ?"],
+              "explanation": "Kiminle = avec qui."
+            },
+            {
+              "id": "q10",
+              "question": "« Ne zaman döndün? » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Quand es-tu revenu(e) ?",
+                "Comment ?",
+                "Pourquoi ?",
+                "Avec qui ?"
+              ],
+              "correctAnswers": ["Quand es-tu revenu(e) ?"],
+              "explanation": "Ne zaman = quand ; döndün = tu es revenu."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Petit récit du samedi",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux actions du samedi passé : (deux réponses au passé)",
+              "type": "multiple_choice",
+              "options": ["uyandım", "temizlik yaptım", "yarın", "sonra"],
+              "correctAnswers": ["uyandım", "temizlik yaptım"],
+              "explanation": "Uyandım = je me suis réveillé ; temizlik yaptım = j'ai fait le ménage."
+            },
+            {
+              "id": "q2",
+              "question": "« Cumartesi geç uyandım » : samedi je me suis réveillé :",
+              "type": "single_choice",
+              "options": ["tard", "tôt", "à l'école", "sans manger"],
+              "correctAnswers": ["tard"],
+              "explanation": "Cumartesi = samedi ; geç = tard."
+            },
+            {
+              "id": "q3",
+              "question": "« Kahvaltıdan sonra arkadaşım geldi » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Après le petit-déjeuner mon ami est venu",
+                "Avant le petit-déjeuner",
+                "Mon ami est parti",
+                "Nous n'avons pas mangé"
+              ],
+              "correctAnswers": ["Après le petit-déjeuner mon ami est venu"],
+              "explanation": "Kahvaltıdan sonra = après le petit-déjeuner."
+            },
+            {
+              "id": "q4",
+              "question": "« Birlikte bisiklete bindik » : nous avons :",
+              "type": "single_choice",
+              "options": [
+                "fait du vélo ensemble",
+                "regardé la télé",
+                "dormi",
+                "étudié"
+              ],
+              "correctAnswers": ["fait du vélo ensemble"],
+              "explanation": "Bisiklete binmek = faire du vélo."
+            },
+            {
+              "id": "q5",
+              "question": "« Öğleden sonra yağmur yağdı » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Il a plu l'après-midi",
+                "Il a fait soleil",
+                "Il a neigé le matin",
+                "Il n y a pas eu de vent"
+              ],
+              "correctAnswers": ["Il a plu l'après-midi"],
+              "explanation": "Yağmur yağmak = pleuvoir."
+            },
+            {
+              "id": "q6",
+              "question": "« Eve koştuk » : nous avons :",
+              "type": "single_choice",
+              "options": [
+                "couru vers la maison",
+                "marché lentement",
+                "nagé",
+                "chanté"
+              ],
+              "correctAnswers": ["couru vers la maison"],
+              "explanation": "Koşmak = courir."
+            },
+            {
+              "id": "q7",
+              "question": "« Annem çorba yaptı » : ma mère a :",
+              "type": "single_choice",
+              "options": [
+                "préparé de la soupe",
+                "acheté du pain seulement",
+                "dormi",
+                "joué"
+              ],
+              "correctAnswers": ["préparé de la soupe"],
+              "explanation": "Çorba = soupe."
+            },
+            {
+              "id": "q8",
+              "question": "« Akşam kitap okudum » : le soir j'ai :",
+              "type": "single_choice",
+              "options": ["lu un livre", "regardé un match", "couru", "nagé"],
+              "correctAnswers": ["lu un livre"],
+              "explanation": "Okudum = j'ai lu."
+            },
+            {
+              "id": "q9",
+              "question": "« Erken yattım » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "je me suis couché(e) tôt",
+                "je me suis couché(e) tard",
+                "je n ai pas dormi",
+                "j ai travaillé"
+              ],
+              "correctAnswers": ["je me suis couché(e) tôt"],
+              "explanation": "Yatmak = se coucher."
+            },
+            {
+              "id": "q10",
+              "question": "« Gün çok güzel geçti » :",
+              "type": "single_choice",
+              "options": [
+                "la journée s'est très bien passée",
+                "la journée était triste",
+                "c'était lundi",
+                "nous avons raté le bus"
+              ],
+              "correctAnswers": ["la journée s'est très bien passée"],
+              "explanation": "Geçmek = passer (temps)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision décrire et raconter",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux formes du passé raconté : (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["gittim", "gitti", "gidiyorum", "gideceğim"],
+              "correctAnswers": ["gittim", "gitti"],
+              "explanation": "Gittim = je suis allé ; gitti = il/elle est allé. Gidiyorum = présent ; gideceğim = futur."
+            },
+            {
+              "id": "q2",
+              "question": "« Anlattı » signifie :",
+              "type": "single_choice",
+              "options": [
+                "il/elle a raconté",
+                "il/elle écoute",
+                "il/elle écrira",
+                "il/elle court"
+              ],
+              "correctAnswers": ["il/elle a raconté"],
+              "explanation": "Anlatmak = raconter."
+            },
+            {
+              "id": "q3",
+              "question": "Pour dire « hier » on utilise :",
+              "type": "single_choice",
+              "options": ["dün", "bugün", "yarın", "şimdi"],
+              "correctAnswers": ["dün"],
+              "explanation": "Dün = hier."
+            },
+            {
+              "id": "q4",
+              "question": "« Çünkü » sert à :",
+              "type": "single_choice",
+              "options": [
+                "donner une raison (car)",
+                "dire bonjour",
+                "demander l'heure",
+                "refuser"
+              ],
+              "correctAnswers": ["donner une raison (car)"],
+              "explanation": "Çünkü = car, parce que."
+            },
+            {
+              "id": "q5",
+              "question": "« Sonra sinemaya gittik » : ensuite nous :",
+              "type": "single_choice",
+              "options": [
+                "sommes allés au cinéma",
+                "sommes rentrés dormir",
+                "avons étudié",
+                "avons nagé"
+              ],
+              "correctAnswers": ["sommes allés au cinéma"],
+              "explanation": "Sinemaya = au cinéma."
+            },
+            {
+              "id": "q6",
+              "question": "« O gün mutluydum » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Ce jour-là j'étais content(e)",
+                "Aujourd'hui je suis triste",
+                "Demain je serai fatigué",
+                "Je ne me souviens pas"
+              ],
+              "correctAnswers": ["Ce jour-là j'étais content(e)"],
+              "explanation": "O gün = ce jour-là ; mutluydum = j'étais heureux."
+            },
+            {
+              "id": "q7",
+              "question": "« İlk önce » signifie :",
+              "type": "single_choice",
+              "options": ["tout d'abord", "enfin", "parfois", "jamais"],
+              "correctAnswers": ["tout d'abord"],
+              "explanation": "İlk önce = en premier lieu."
+            },
+            {
+              "id": "q8",
+              "question": "« Gördüm » c'est :",
+              "type": "single_choice",
+              "options": [
+                "j'ai vu",
+                "j'ai entendu",
+                "j'ai mangé",
+                "j'ai écrit"
+              ],
+              "correctAnswers": ["j'ai vu"],
+              "explanation": "Görmek = voir."
+            },
+            {
+              "id": "q9",
+              "question": "« Kısa bir hikâye anlattı » : il/elle a raconté :",
+              "type": "single_choice",
+              "options": [
+                "une petite histoire",
+                "un long voyage",
+                "un examen",
+                "une chanson sans paroles"
+              ],
+              "correctAnswers": ["une petite histoire"],
+              "explanation": "Hikâye = histoire ; kısa = court."
+            },
+            {
+              "id": "q10",
+              "question": "« Bitti » à la fin d'un récit indique :",
+              "type": "single_choice",
+              "options": [
+                "c'est fini (terminé)",
+                "ça commence",
+                "continue demain",
+                "c'est interdit"
+              ],
+              "correctAnswers": ["c'est fini (terminé)"],
+              "explanation": "Bitmek → bitti = c'est terminé."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

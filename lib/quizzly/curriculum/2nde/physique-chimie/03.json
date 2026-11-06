@@ -1,0 +1,2484 @@
+{
+  "id": "2nde-physique-chimie-03",
+  "year": "2nde",
+  "subject": "physique-chimie",
+  "title": "Ondes et signaux",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Émission et réception",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Notion d'onde",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles grandeurs caractérisent une onde périodique en 2nde ?",
+              "type": "multiple_choice",
+              "options": [
+                "La fréquence",
+                "La masse du milieu",
+                "La période",
+                "La couleur des yeux"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "question": "Une onde transporte surtout :",
+              "type": "single_choice",
+              "options": [
+                "De la matière",
+                "De l'énergie et une information",
+                "Uniquement de la chaleur",
+                "Des électrons libres"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "question": "La période T et la fréquence f sont liées par :",
+              "type": "single_choice",
+              "options": ["T = f", "T = 1/f", "T = f²", "T = 2f"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "question": "L'unité SI de la fréquence est :",
+              "type": "single_choice",
+              "options": ["Le mètre", "Le hertz", "Le newton", "Le joule"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "question": "Un signal sonore périodique de fréquence 440 Hz a une période de :",
+              "type": "single_choice",
+              "options": ["440 s", "0,0023 s environ", "220 s", "880 s"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "question": "La longueur d'onde λ est la distance parcourue par l'onde en :",
+              "type": "single_choice",
+              "options": [
+                "Une période",
+                "Dix périodes",
+                "Une seconde exacte",
+                "Une heure"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "La relation v = λ × f concerne :",
+              "type": "single_choice",
+              "options": [
+                "La vitesse de propagation d'une onde",
+                "La masse volumique",
+                "La pression atmosphérique",
+                "La résistance électrique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Une onde mécanique a besoin d'un :",
+              "type": "single_choice",
+              "options": [
+                "Milieu matériel",
+                "Vide absolu",
+                "Champ magnétique seul",
+                "Aucun support"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "La lumière visible est une onde :",
+              "type": "single_choice",
+              "options": [
+                "Électromagnétique",
+                "Sonore",
+                "Sismique uniquement",
+                "Gravitacionnelle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Un oscilloscope permet surtout de :",
+              "type": "single_choice",
+              "options": [
+                "Visualiser l'évolution d'un signal dans le temps",
+                "Mesurer la masse",
+                "Peser un gaz",
+                "Déterminer le pH"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Émission sonore",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels objets peuvent émettre un son audible ?",
+              "type": "multiple_choice",
+              "options": [
+                "Un haut-parleur en vibration",
+                "Une pierre immobile au silence",
+                "Une corde de guitare frappée",
+                "Un miroir sans source sonore"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "question": "Un haut-parleur transforme un signal électrique en :",
+              "type": "single_choice",
+              "options": [
+                "Onde sonore",
+                "Lumière seule",
+                "Chaleur uniquement",
+                "Courant continu sans mouvement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "La source d'un son est en général un objet qui :",
+              "type": "single_choice",
+              "options": [
+                "Vibre",
+                "Reste parfaitement immobile",
+                "Absorbe toute l'énergie",
+                "Ne touche jamais l'air"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Plus la fréquence d'un son est grande, plus il est :",
+              "type": "single_choice",
+              "options": [
+                "Aigu",
+                "Grave",
+                "Silencieux par définition",
+                "Sans période"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "L'intensité sonore perçue dépend notamment de :",
+              "type": "single_choice",
+              "options": [
+                "L'amplitude des vibrations",
+                "La couleur de la source",
+                "La forme du tableau",
+                "Le nombre de pages d'un livre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Un micro émet-il un son audible sans source extérieure ?",
+              "type": "single_choice",
+              "options": [
+                "Non, il capte et convertit le son",
+                "Oui, il est toujours une source",
+                "Oui, comme une enceinte",
+                "Il émet de la lumière seulement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Le timbre d'un son permet de distinguer :",
+              "type": "single_choice",
+              "options": [
+                "Deux instruments jouant la même note",
+                "Deux roches identiques",
+                "Deux températures",
+                "Deux masses identiques"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Un son pur est le plus souvent modélisé par :",
+              "type": "single_choice",
+              "options": [
+                "Un signal sinusoïdal",
+                "Une droite horizontale seule",
+                "Un signal aléatoire sans période",
+                "Une constante chimique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "L'émission d'un son dans l'air crée des :",
+              "type": "single_choice",
+              "options": [
+                "Variations de pression qui se propagent",
+                "Trous dans l'atmosphère",
+                "Électrons libres partout",
+                "Ondes sans fréquence"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Pour protéger l'audition, on limite surtout :",
+              "type": "single_choice",
+              "options": [
+                "L'exposition à des sons très intenses",
+                "La lecture de textes",
+                "La couleur des murs",
+                "La vitesse de la lumière"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Propagation du son",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dans quels milieux le son se propage-t-il bien ?",
+              "type": "multiple_choice",
+              "options": [
+                "L'air",
+                "L'eau",
+                "Le vide interstellaire",
+                "Un solide comme une barre métallique"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "Le son ne se propage pas dans :",
+              "type": "single_choice",
+              "options": ["Le vide", "L'air", "L'eau", "Un mur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Dans l'air à 20 °C, la vitesse du son est environ :",
+              "type": "single_choice",
+              "options": ["340 m/s", "3 m/s", "300 000 km/s", "10 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Plus le milieu est rigide, en général la vitesse du son y est :",
+              "type": "single_choice",
+              "options": [
+                "Plus grande que dans l'air",
+                "Nulle",
+                "Identique au vide",
+                "Toujours 1 m/s"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Un écho correspond à :",
+              "type": "single_choice",
+              "options": [
+                "La réflexion d'un son sur une surface",
+                "La disparition du son",
+                "La création de lumière",
+                "Une réaction chimique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "La distance d'un obstacle peut s'estimer avec un écho si on connaît :",
+              "type": "single_choice",
+              "options": [
+                "Le temps aller-retour et la vitesse du son",
+                "Uniquement la couleur",
+                "La masse molaire de l'air",
+                "Le volume d'une bouteille"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "L'atténuation d'un son signifie que :",
+              "type": "single_choice",
+              "options": [
+                "Son amplitude diminue en s'éloignant de la source",
+                "Sa fréquence devient toujours nulle",
+                "Il devient une onde lumineuse",
+                "Il accélère sans limite"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Une onde sonore se propage dans le sens de :",
+              "type": "single_choice",
+              "options": [
+                "La perturbation du milieu",
+                "Le vent uniquement",
+                "La gravité seule",
+                "Aucune direction"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Deux personnes entendent le même son avec un léger décalage si :",
+              "type": "single_choice",
+              "options": [
+                "Elles sont à des distances différentes de la source",
+                "Elles ont la même couleur de cheveux",
+                "Le son n'existe pas",
+                "Le milieu est le vide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Un sonore de fréquence trop basse ou trop haute pour l'oreille humaine est :",
+              "type": "single_choice",
+              "options": [
+                "Inaudible",
+                "Toujours très fort",
+                "Toujours de couleur rouge",
+                "Une onde radio visible"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Lumière et sources",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles sources émettent de la lumière visible ?",
+              "type": "multiple_choice",
+              "options": [
+                "Le Soleil",
+                "Une lampe LED allumée",
+                "La Lune seule sans Soleil",
+                "Une flamme"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "La lumière se propage en ligne droite dans un milieu :",
+              "type": "single_choice",
+              "options": [
+                "Homogène et transparent",
+                "Opaque partout",
+                "Vide de photons",
+                "Toujours courbe sans cause"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "La vitesse de la lumière dans le vide est environ :",
+              "type": "single_choice",
+              "options": ["3 × 10⁸ m/s", "340 m/s", "3 m/s", "300 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Un objet lumineux :",
+              "type": "single_choice",
+              "options": [
+                "Émet sa propre lumière",
+                "Ne fait que réfléchir toujours",
+                "Est toujours noir",
+                "N'existe pas en physique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Un objet éclairé visible le plus souvent :",
+              "type": "single_choice",
+              "options": [
+                "Renvoie la lumière vers nos yeux",
+                "Crée du son pur",
+                "Disparaît dans l'air",
+                "Émet des ondes radio audibles"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "La couleur d'un filtre sélectivement :",
+              "type": "single_choice",
+              "options": [
+                "Absorbe certaines couleurs et en laisse passer d'autres",
+                "Crée de la matière",
+                "Arrête toute lumière sans exception",
+                "Change la masse de l'air"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Un faisceau laser produit une lumière :",
+              "type": "single_choice",
+              "options": [
+                "Très directionnelle",
+                "Sans énergie",
+                "Sonore",
+                "Uniquement infrarouge toujours"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "La réfraction de la lumière se produit quand elle :",
+              "type": "single_choice",
+              "options": [
+                "Change de direction en passant d'un milieu à un autre",
+                "S'arrête net dans le vide",
+                "Devient un son",
+                "Perd toute fréquence"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Un miroir plat renvoie la lumière selon la loi :",
+              "type": "single_choice",
+              "options": [
+                "Angle incident = angle réfléchi",
+                "Angle incident = 90° toujours",
+                "Pas de réflexion",
+                "Réfraction obligatoire"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Pour voir un objet, il faut que de la lumière :",
+              "type": "single_choice",
+              "options": [
+                "Entre dans l'œil",
+                "Sorte uniquement de l'oreille",
+                "Reste dans le mur",
+                "Soit toujours ultraviolette"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Réception du son",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels organes ou appareils reçoivent un signal sonore ?",
+              "type": "multiple_choice",
+              "options": [
+                "L'oreille humaine",
+                "Un microphone",
+                "Un thermomètre sans son",
+                "Un capteur de température seul"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "L'oreille transforme les vibrations de l'air en :",
+              "type": "single_choice",
+              "options": [
+                "Signal nerveux interprété par le cerveau",
+                "Lumière visible",
+                "Courant continu sans variation",
+                "Chaleur seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Un microphone est un :",
+              "type": "single_choice",
+              "options": [
+                "Capteur qui convertit le son en signal électrique",
+                "Émetteur de lumière",
+                "Filtr à eau",
+                "Miroir"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "La sensibilité d'un micro indique sa capacité à :",
+              "type": "single_choice",
+              "options": [
+                "Détecter des sons faibles",
+                "Mesurer la masse",
+                "Créer du vide",
+                "Bloquer toute fréquence"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Un casque audio reçoit un signal électrique et produit :",
+              "type": "single_choice",
+              "options": [
+                "Des vibrations sonores",
+                "Uniquement de la lumière",
+                "De la glace",
+                "Du courant sans effet"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Pour enregistrer un son, on utilise souvent :",
+              "type": "single_choice",
+              "options": [
+                "Micro + convertisseur numérique",
+                "Balance seule",
+                "pH-mètre",
+                "Éprouvette vide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Le seuil d'audition correspond au son :",
+              "type": "single_choice",
+              "options": [
+                "Le plus faible encore perceptible",
+                "Le plus fort possible",
+                "Sans fréquence",
+                "Uniquement ultrason"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Deux micros placés loin l'un de l'autre permettent parfois de :",
+              "type": "single_choice",
+              "options": [
+                "Localiser une source sonore",
+                "Mesurer la vitesse de la lumière dans l'eau",
+                "Créer du vide",
+                "Supprimer toute onde"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Un écouteur endommagé peut fausser la réception car :",
+              "type": "single_choice",
+              "options": [
+                "Les vibrations ne sont plus fidèles",
+                "La gravité change",
+                "L'air devient vide",
+                "La fréquence devient toujours nulle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Réception fidèle signifie que le signal reçu :",
+              "type": "single_choice",
+              "options": [
+                "Ressemble au signal émis",
+                "Est toujours plus fort",
+                "Disparaît instantanément",
+                "Devient toujours lumineux"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Réception de la lumière",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels éléments captent la lumière visible ?",
+              "type": "multiple_choice",
+              "options": [
+                "La rétine de l'œil",
+                "Une cellule photovoltaïque",
+                "Un haut-parleur",
+                "Un capteur sonore"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "L'œil forme une image sur :",
+              "type": "single_choice",
+              "options": [
+                "La rétine",
+                "La cornée externe seule",
+                "L'air extérieur",
+                "Le cristallin sans rétine"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Une caméra numérique convertit la lumière en :",
+              "type": "single_choice",
+              "options": [
+                "Signal électrique puis fichier image",
+                "Son pur",
+                "Chaleur sans enregistrement",
+                "Courant continu fixe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Un capteur CCD ou CMOS est sensible à :",
+              "type": "single_choice",
+              "options": [
+                "L'intensité lumineuse",
+                "La pression atmosphérique seule",
+                "Le pH",
+                "Les ondes sismiques uniquement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Pour photographier une scène sombre, on augmente souvent :",
+              "type": "single_choice",
+              "options": [
+                "Le temps d'exposition ou la sensibilité",
+                "La masse de l'appareil",
+                "La vitesse du son",
+                "Le volume d'eau"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Les couleurs perçues dépendent de la longueur d'onde de la lumière :",
+              "type": "single_choice",
+              "options": [
+                "Reçue par l'œil",
+                "Absente de tout signal",
+                "Uniquement sonore",
+                "Toujours identique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Une fibre optique guide la lumière par :",
+              "type": "single_choice",
+              "options": [
+                "Réflexions internes répétées",
+                "Propagation du son",
+                "Conduction thermique seule",
+                "Absorption totale"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Un photodétecteur sert à :",
+              "type": "single_choice",
+              "options": [
+                "Mesurer ou utiliser un flux lumineux",
+                "Émettre uniquement du son",
+                "Peser un gaz",
+                "Mesurer la masse molaire"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Sans lumière entrante, l'œil ne voit pas car :",
+              "type": "single_choice",
+              "options": [
+                "Aucun signal lumineux n'atteint la rétine",
+                "La rétine émet du son",
+                "Les ondes sonores remplacent la lumière",
+                "La vitesse c est nulle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "La réception d'un signal lumineux modulé peut transporter :",
+              "type": "single_choice",
+              "options": [
+                "De l'information",
+                "Uniquement de la matière",
+                "Du vide",
+                "Des roches"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Signaux et chaînes",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Une chaîne émission-transmission-réception comprend :",
+              "type": "multiple_choice",
+              "options": [
+                "Un émetteur",
+                "Un récepteur",
+                "Uniquement un miroir sans source",
+                "Rien si le milieu est le vide pour le son"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "Dans une radio FM, l'antenne émet ou reçoit surtout :",
+              "type": "single_choice",
+              "options": [
+                "Des ondes électromagnétiques",
+                "Des ondes sonores dans le vide",
+                "De l'eau",
+                "Des courants sans onde"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Un signal analogique varie :",
+              "type": "single_choice",
+              "options": [
+                "De façon continue en général",
+                "Par paliers 0 et 1 seulement",
+                "Sans temps",
+                "Sans amplitude"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Convertir un son en fichier numérique nécessite :",
+              "type": "single_choice",
+              "options": [
+                "Échantillonnage et codage",
+                "Uniquement un miroir",
+                "Du vide",
+                "Aucune mesure"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "La télévision par câble transporte l'information par :",
+              "type": "single_choice",
+              "options": [
+                "Un signal électrique ou optique dans le câble",
+                "Des ondes sonores dans le vide",
+                "Des pierres",
+                "La gravité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Un satellite de communication reçoit et :",
+              "type": "single_choice",
+              "options": [
+                "Renvoie des signaux vers la Terre",
+                "Absorbe toute lumière",
+                "Crée du son dans l'espace",
+                "Mesure le pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Le décalage entre émission et réception d'un signal lumineux sur Terre est en général :",
+              "type": "single_choice",
+              "options": [
+                "Négligeable à l'échelle humaine",
+                "De plusieurs minutes pour 1 m",
+                "Infini pour tout",
+                "Toujours une heure"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Amplifier un signal faible sert à :",
+              "type": "single_choice",
+              "options": [
+                "Le rendre exploitable par un récepteur",
+                "Le transformer en roche",
+                "Supprimer l'information",
+                "Créer du vide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Un émetteur-récepteur bidirectionnel permet :",
+              "type": "single_choice",
+              "options": [
+                "D'échanger dans les deux sens",
+                "Uniquement d'émettre",
+                "Uniquement d'absorber la lumière",
+                "De supprimer le bruit sans réception"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "La synchronisation émetteur-récepteur est importante pour :",
+              "type": "single_choice",
+              "options": [
+                "Décoder correctement l'information",
+                "Changer la masse atomique",
+                "Créer un écho obligatoire",
+                "Mesurer la température seule"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Réflexion et diffusion",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels phénomènes modifient la propagation de la lumière ou du son ?",
+              "type": "multiple_choice",
+              "options": [
+                "La réflexion",
+                "La diffusion",
+                "La disparition de toute énergie sans trace",
+                "L'absorption partielle"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "Une surface lisse renvoie une lumière directionnelle : c'est la :",
+              "type": "single_choice",
+              "options": [
+                "Réflexion spéculaire",
+                "Diffusion totale isotrope toujours",
+                "Réfraction dans le vide",
+                "Émission sonore"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Le papier blanc diffuse la lumière car :",
+              "type": "single_choice",
+              "options": [
+                "Sa surface rugueuse renvoie dans plusieurs directions",
+                "Il absorbe tout",
+                "Il est une source laser",
+                "Il ne réfléchit jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une surface mate renvoie la lumière dans plusieurs directions."
+            },
+            {
+              "id": "q4",
+              "question": "Un écho sonore est un exemple de :",
+              "type": "single_choice",
+              "options": [
+                "Réflexion du son",
+                "Réfraction lumineuse",
+                "Fusion nucléaire",
+                "Oxydation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Les matériaux absorbants diminuent l'intensité reçue car ils :",
+              "type": "single_choice",
+              "options": [
+                "Transforment une partie de l'énergie en chaleur",
+                "Créent du vide",
+                "Augmentent c",
+                "Suppriment la fréquence"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Un son réfléchi peut arriver après le son direct :",
+              "type": "single_choice",
+              "options": [
+                "Oui, avec un retard",
+                "Non, jamais",
+                "Seulement sans air",
+                "Uniquement en lumière"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Pour limiter les échos dans une salle, on utilise parfois :",
+              "type": "single_choice",
+              "options": [
+                "Des panneaux absorbants",
+                "Des miroirs partout",
+                "Du métal lisse uniquement",
+                "Du vide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "La réflexion de la lumière sur l'eau permet de voir :",
+              "type": "single_choice",
+              "options": [
+                "Une image du paysage",
+                "Un son pur",
+                "Un courant électrique",
+                "Une réaction acido-basique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Un radar envoie une onde et analyse le signal :",
+              "type": "single_choice",
+              "options": [
+                "Réfléchi",
+                "Uniquement absorbé sans retour",
+                "Sonore dans le vide",
+                "Chimique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Diffusion et réflexion dispersent ou renvoient l'énergie sans :",
+              "type": "single_choice",
+              "options": [
+                "Créer une nouvelle source primaire",
+                "Conserver la fréquence en général",
+                "Interagir avec la matière",
+                "Exister en physique"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Mesures et capteurs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels appareils mesurent ou visualisent un signal ?",
+              "type": "multiple_choice",
+              "options": [
+                "Oscilloscope",
+                "Sonomètre",
+                "Éprouvette graduée pour le pH seul",
+                "Balance sans lien avec les ondes"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "Un sonomètre mesure le niveau :",
+              "type": "single_choice",
+              "options": [
+                "Sonore",
+                "Lumineux uniquement",
+                "De température",
+                "De masse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Sur un oscilloscope, l'axe horizontal représente souvent :",
+              "type": "single_choice",
+              "options": ["Le temps", "La masse", "La pression seule", "Le pH"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "La période d'un signal se lit sur l'oscilloscope en mesurant :",
+              "type": "single_choice",
+              "options": [
+                "La durée d'un cycle complet",
+                "La couleur du trace",
+                "La masse du câble",
+                "Le volume d'eau"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Un luxmètre mesure :",
+              "type": "single_choice",
+              "options": [
+                "L'éclairement lumineux",
+                "Le son",
+                "La vitesse du vent seule",
+                "La conductivité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Pour mesurer la fréquence d'un son, on peut compter :",
+              "type": "single_choice",
+              "options": [
+                "Le nombre de cycles par seconde",
+                "Les kilogrammes",
+                "Les moles",
+                "Les degrés Celsius seuls"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Un capteur ultrasonique en échographie envoie des :",
+              "type": "single_choice",
+              "options": [
+                "Ultrasons",
+                "Ondes radio audibles",
+                "Lumière visible seule",
+                "Courants sans onde"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Calibrer un capteur signifie :",
+              "type": "single_choice",
+              "options": [
+                "Ajuster sa réponse à une référence connue",
+                "Le casser",
+                "Le placer dans le vide pour le son",
+                "Ignorer les unités"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Un multimètre en mode AC peut mesurer une composante :",
+              "type": "single_choice",
+              "options": [
+                "Alternative d'un signal électrique",
+                "Massique d'un gaz",
+                "Optique sans sonde",
+                "Gravitationnelle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Documenter une mesure de signal inclut :",
+              "type": "single_choice",
+              "options": [
+                "Unités et conditions d'expérience",
+                "Uniquement une dessin",
+                "Aucune fréquence",
+                "Le nom d'un rocher"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan émission-réception",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour qu'un message sonore soit entendu de l'émetteur au récepteur, il faut :",
+              "type": "multiple_choice",
+              "options": [
+                "Un milieu pour le son",
+                "Une source qui vibre",
+                "Le vide complet",
+                "Aucune conversion d'énergie"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "La lumière du Soleil met environ 8 minutes pour nous parvenir : cela montre :",
+              "type": "single_choice",
+              "options": [
+                "Une propagation à vitesse finie",
+                "Une vitesse nulle",
+                "Un transport de matière",
+                "Un son dans l'espace"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Émettre puis recevoir le même type d'onde permet :",
+              "type": "single_choice",
+              "options": [
+                "La télécommunication",
+                "La création de masse",
+                "La fusion",
+                "L'absence d'énergie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Un signal trop faible à la réception peut être :",
+              "type": "single_choice",
+              "options": [
+                "Amplifié ou perdu dans le bruit",
+                "Toujours parfait",
+                "Transformé en roche",
+                "Sans importance"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Choisir la bonne fréquence pour une radio évite :",
+              "type": "single_choice",
+              "options": [
+                "Les interférences avec d'autres stations",
+                "Toute propagation",
+                "La réception",
+                "L'existence des ondes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "La portée d'un émetteur dépend entre autres de :",
+              "type": "single_choice",
+              "options": [
+                "Sa puissance et des obstacles",
+                "La couleur des murs seule",
+                "Le nombre de pages d'un manuel",
+                "Le pH de l'air"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Un récepteur doit être adapté au type de :",
+              "type": "single_choice",
+              "options": ["Signal reçu", "Roche", "Acide", "Métal pur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Sans récepteur, l'information transportée par une onde :",
+              "type": "single_choice",
+              "options": [
+                "N'est pas exploitée",
+                "Disparaît de l'univers",
+                "Devient toujours chimique",
+                "Crée du son dans le vide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "La sécurité laser impose de ne pas diriger le faisceau vers :",
+              "type": "single_choice",
+              "options": [
+                "Les yeux",
+                "Un détecteur prévu",
+                "Un écran diffusant prévu",
+                "Un capteur labo protégé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "En 2nde, étudier émission et réception sert surtout à :",
+              "type": "single_choice",
+              "options": [
+                "Comprendre comment l'information voyage",
+                "Calculer des orbitales atomiques",
+                "Réécrire la tableau périodique",
+                "Ignorer les ondes"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Information et bruit",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Signal informatif",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Un signal porteur d'information peut être :",
+              "type": "multiple_choice",
+              "options": [
+                "Électrique",
+                "Lumineux modulé",
+                "Uniquement une pierre immobile",
+                "Sans variation dans le temps"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "Information signifie ici :",
+              "type": "single_choice",
+              "options": [
+                "Un message ou une donnée utile",
+                "Uniquement du bruit",
+                "De la matière transportée",
+                "Le vide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Moduler un signal consiste à :",
+              "type": "single_choice",
+              "options": [
+                "Faire varier une caractéristique pour coder un message",
+                "Supprimer toute fréquence",
+                "Créer du vide",
+                "Geler l'amplitude"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Un morse utilise des impulsions pour représenter :",
+              "type": "single_choice",
+              "options": [
+                "Des lettres",
+                "Des couleurs uniquement",
+                "Des masses",
+                "Des volumes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Plus un canal est bruyant, plus le message risque d'être :",
+              "type": "single_choice",
+              "options": [
+                "Déformé ou illisible",
+                "Toujours parfait",
+                "Sans énergie",
+                "Plus lumineux"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Un bit en numérique vaut :",
+              "type": "single_choice",
+              "options": [
+                "0 ou 1",
+                "Toujours 2",
+                "Une fréquence en hertz",
+                "Une masse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "La bande passante d'un canal limite :",
+              "type": "single_choice",
+              "options": [
+                "La quantité d'information transmissible",
+                "La masse de l'émetteur",
+                "La couleur du ciel",
+                "Le pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Compresser un fichier audio réduit souvent :",
+              "type": "single_choice",
+              "options": [
+                "La taille des données",
+                "La vitesse de la lumière",
+                "Le nombre d'atomes",
+                "La gravité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Décoder un signal reçu, c'est :",
+              "type": "single_choice",
+              "options": [
+                "Retrouver le message d'origine",
+                "Créer du bruit volontairement",
+                "Supprimer le récepteur",
+                "Mesurer le pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Un QR code transporte de l'information par :",
+              "type": "single_choice",
+              "options": [
+                "Un motif optique scannable",
+                "Un son dans le vide",
+                "Une réaction chimique seule",
+                "Une masse variable"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Codage et échantillonnage",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour numériser un son, on utilise :",
+              "type": "multiple_choice",
+              "options": [
+                "L'échantillonnage",
+                "Le codage binaire",
+                "La combustion",
+                "La distillation"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "Échantillonner, c'est mesurer le signal à :",
+              "type": "single_choice",
+              "options": [
+                "Intervalles réguliers",
+                "Une seule fois",
+                "Jamais",
+                "Des fréquences aléatoires sans temps"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Un échantillon est une :",
+              "type": "single_choice",
+              "options": [
+                "Valeur du signal à un instant donné",
+                "Roche",
+                "Couleur pure",
+                "Force gravitationnelle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Augmenter la fréquence d'échantillonnage améliore en général :",
+              "type": "single_choice",
+              "options": [
+                "La fidélité du son reconstitué",
+                "La masse du fichier en kg physiques",
+                "La vitesse du son dans le vide",
+                "Le pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Le codage binaire représente l'information avec :",
+              "type": "single_choice",
+              "options": [
+                "Des 0 et des 1",
+                "Des lettres grecques seules",
+                "Des couleurs sans nombre",
+                "Du vide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "La quantification assigne à chaque échantillon :",
+              "type": "single_choice",
+              "options": [
+                "Une valeur numérique discrète",
+                "Une masse",
+                "Une température obligatoire",
+                "Un pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Un CD audio utilise un échantillonnage d'environ 44,1 kHz pour :",
+              "type": "single_choice",
+              "options": [
+                "Couvrir la gamme audible",
+                "Mesurer la pression",
+                "Créer des ultrasons audibles",
+                "Supprimer le timbre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Une erreur de codage peut produire :",
+              "type": "single_choice",
+              "options": [
+                "Du bruit ou des distorsions",
+                "Plus de matière",
+                "Du vide sonore",
+                "Une vitesse supérieure à c"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "La compression avec perte enlève :",
+              "type": "single_choice",
+              "options": [
+                "Des détails peu perceptibles",
+                "Toute l'information",
+                "La lumière",
+                "Les électrons du câble"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Retrouver le signal analogique à partir du numérique demande :",
+              "type": "single_choice",
+              "options": [
+                "Une conversion digital-analogique",
+                "Un miroir seul",
+                "Du vide",
+                "Une pesée"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Transmission de l'information",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Les supports de transmission incluent :",
+              "type": "multiple_choice",
+              "options": [
+                "Câble électrique",
+                "Onde radio",
+                "Aucun milieu pour la fibre optique",
+                "Fibre optique"
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "question": "La fibre optique transporte surtout :",
+              "type": "single_choice",
+              "options": [
+                "Des impulsions lumineuses",
+                "Du son pur",
+                "De l'eau",
+                "Des roches"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Le Wi-Fi utilise des ondes :",
+              "type": "single_choice",
+              "options": [
+                "Électromagnétiques radio",
+                "Sonores dans le vide",
+                "Sismiques",
+                "Gravitationnelles"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Multiplexage signifie parfois :",
+              "type": "single_choice",
+              "options": [
+                "Plusieurs signaux sur un même canal",
+                "Un seul bit par câble",
+                "Aucune fréquence",
+                "Suppression du récepteur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Une perte de paquets en Internet peut causer :",
+              "type": "single_choice",
+              "options": [
+                "Coupures ou ralentissements",
+                "Augmentation de c",
+                "Création de masse",
+                "Son dans le vide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "La latence est :",
+              "type": "single_choice",
+              "options": [
+                "Le délai de transmission",
+                "La couleur du câble",
+                "La masse d'un photon",
+                "Le pH du signal"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Répéter un signal sur un long câble sert à :",
+              "type": "single_choice",
+              "options": [
+                "Compenser l'atténuation",
+                "Créer du bruit volontaire",
+                "Arrêter l'information",
+                "Mesurer la température seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Chiffrer un message vise à :",
+              "type": "single_choice",
+              "options": [
+                "Le rendre illisible sans clé",
+                "Augmenter le bruit thermique",
+                "Supprimer l'émetteur",
+                "Créer des ondes sonores dans l'espace"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Une antenne parabolique concentre les ondes pour :",
+              "type": "single_choice",
+              "options": [
+                "Améliorer la réception",
+                "Mesurer le pH",
+                "Créer du vide",
+                "Bloquer toute information"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "La redondance dans un code peut permettre :",
+              "type": "single_choice",
+              "options": [
+                "De corriger certaines erreurs",
+                "D'augmenter le bruit volontairement",
+                "De supprimer le décodage",
+                "De changer la vitesse c"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Qu'est-ce que le bruit ?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le bruit dans un système de communication est :",
+              "type": "multiple_choice",
+              "options": [
+                "Un signal parasite",
+                "Une perturbation indésirable",
+                "Toujours le message utile",
+                "Uniquement la lumière du Soleil"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "Le bruit blanc contient en idée :",
+              "type": "single_choice",
+              "options": [
+                "De nombreuses fréquences",
+                "Une seule fréquence pure",
+                "Aucune énergie",
+                "Uniquement du silence parfait"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Un grésillement sur une radio FM est souvent du :",
+              "type": "single_choice",
+              "options": [
+                "Bruit",
+                "Message codé",
+                "Silence utile",
+                "Signal parfait"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Le bruit thermique provient des :",
+              "type": "single_choice",
+              "options": [
+                "Agitations aléatoires des charges",
+                "Ondes gravitationnelles seules",
+                "Réactions nucléaires dans l'antenne",
+                "Couleurs du ciel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Une interférence arrive quand deux signaux :",
+              "type": "single_choice",
+              "options": [
+                "Se superposent",
+                "Disparaissent",
+                "Créent de la matière",
+                "Mesurent le pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Le bruit de fond d'un micro enregistre :",
+              "type": "single_choice",
+              "options": [
+                "Même sans parler",
+                "Uniquement le silence absolu sans électron",
+                "Rien jamais",
+                "Seulement la lumière"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Un parasite sur une ligne électrique peut perturber :",
+              "type": "single_choice",
+              "options": [
+                "Un signal audio ou numérique",
+                "La masse des atomes",
+                "La vitesse de la lumière",
+                "Le numéro atomique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Réduire le bruit améliore :",
+              "type": "single_choice",
+              "options": [
+                "La lisibilité du message",
+                "La création de vide",
+                "La fusion",
+                "Le pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Un bruit impulsionnel peut venir d'un :",
+              "type": "single_choice",
+              "options": [
+                "Éclair ou allumage moteur",
+                "Photon stable seul",
+                "Atome immobile",
+                "Silence parfait"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Distinguer signal et bruit repose sur :",
+              "type": "single_choice",
+              "options": [
+                "Ce qui porte le message voulu",
+                "La couleur des fils seule",
+                "La masse du récepteur",
+                "Le nom de la ville"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Rapport signal sur bruit",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Un bon rapport signal/bruit signifie :",
+              "type": "multiple_choice",
+              "options": [
+                "Signal nettement plus fort que le bruit",
+                "Message facile à interpréter",
+                "Bruit toujours plus fort que le signal",
+                "Absence totale de signal"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "Si le bruit augmente à signal constant, la qualité :",
+              "type": "single_choice",
+              "options": [
+                "Diminue",
+                "Augmente toujours",
+                "Reste parfaite",
+                "Devient chimique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Le SNR compare en général les :",
+              "type": "single_choice",
+              "options": [
+                "Puissances ou amplitudes",
+                "Masses molaires",
+                "Volumes de gaz",
+                "Couleurs"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Parler plus près du micro augmente souvent le :",
+              "type": "single_choice",
+              "options": ["Signal utile capté", "Bruit cosmique", "Vide", "pH"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Un enregistrement saturé distord le signal car :",
+              "type": "single_choice",
+              "options": [
+                "L'amplitude dépasse la plage du capteur",
+                "La fréquence devient nulle",
+                "Il n'y a plus d'air",
+                "La lumière disparaît"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Écouter un podcast avec un mauvais SNR donne :",
+              "type": "single_choice",
+              "options": [
+                "Une voix noyée dans le bruit",
+                "Une image HD",
+                "Une réaction chimique",
+                "Un vide sonore"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Amplifier uniquement le bruit sans le signal dégrade :",
+              "type": "single_choice",
+              "options": [
+                "Le rapport signal/bruit",
+                "La vitesse c",
+                "La masse",
+                "Le tableau périodique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Un filtre peut améliorer le SNR en supprimant :",
+              "type": "single_choice",
+              "options": [
+                "Des fréquences parasites",
+                "Tout le message",
+                "La matière",
+                "Les photons utiles seuls"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Mesurer le niveau sonore en dB permet de :",
+              "type": "single_choice",
+              "options": [
+                "Comparer des intensités",
+                "Mesurer la masse",
+                "Calculer le pH",
+                "Voir les atomes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Pour une communication fiable, on vise un SNR :",
+              "type": "single_choice",
+              "options": [
+                "Suffisamment élevé",
+                "Nul",
+                "Toujours négatif sans limite",
+                "Sans signal"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Analogique et numérique",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Un signal numérique se distingue par :",
+              "type": "multiple_choice",
+              "options": [
+                "Des valeurs discrètes",
+                "Des niveaux codés en bits",
+                "Une courbe toujours continue sans saut",
+                "L'absence de récepteur"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "Avantage du numérique pour stocker de la musique :",
+              "type": "single_choice",
+              "options": [
+                "Copie sans dégradation théorique",
+                "Transport de roches",
+                "Son dans le vide",
+                "Perte obligatoire à chaque lecture"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Un signal analogique peut prendre :",
+              "type": "single_choice",
+              "options": [
+                "Une infinité de valeurs entre deux bornes",
+                "Seulement 0 et 1",
+                "Aucune amplitude",
+                "Uniquement des couleurs"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "La conversion analogique-numérique introduit parfois :",
+              "type": "single_choice",
+              "options": [
+                "Une erreur de quantification",
+                "Une vitesse supérieure à c",
+                "De la matière",
+                "Du vide sonore"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Transmettre en numérique facilite :",
+              "type": "single_choice",
+              "options": [
+                "La correction d'erreurs",
+                "La disparition de toute information",
+                "Le bruit thermique infini",
+                "Le pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Un câble HDMI transporte surtout des données :",
+              "type": "single_choice",
+              "options": [
+                "Numériques",
+                "Uniquement analogiques sans codage",
+                "Sonores dans le vide",
+                "Gravitationnelles"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Un vinyle est un support :",
+              "type": "single_choice",
+              "options": ["Analogique", "Numérique binaire", "Optique", "Vide"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Le bruit s'accumule facilement sur une longue chaîne :",
+              "type": "single_choice",
+              "options": [
+                "Analogique",
+                "Numérique avec régénération",
+                "Sans signal",
+                "Sans émetteur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Régénérer un signal numérique permet de :",
+              "type": "single_choice",
+              "options": [
+                "Reconstruire les niveaux 0/1",
+                "Créer du bruit obligatoire",
+                "Supprimer le décodage",
+                "Changer la masse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "En 2nde, comparer analogique et numérique aide à comprendre :",
+              "type": "single_choice",
+              "options": [
+                "Les modernes moyens de communication",
+                "La structure du noyau",
+                "Les orbitales",
+                "La combustion"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Filtrage et protection",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Un filtre peut :",
+              "type": "multiple_choice",
+              "options": [
+                "Laisser passer certaines fréquences",
+                "Atténuer d'autres fréquences",
+                "Créer du vide sonore",
+                "Supprimer toute lumière du Soleil"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "Un filtre passe-bas laisse surtout passer les :",
+              "type": "single_choice",
+              "options": [
+                "Basses fréquences",
+                "Hautes fréquences seules",
+                "Couleurs",
+                "Masses"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Un filtre passe-haut supprime en grande partie les :",
+              "type": "single_choice",
+              "options": [
+                "Basses fréquences",
+                "Hautes fréquences",
+                "Photons",
+                "Électrons du noyau"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Un blindage sur un câble réduit :",
+              "type": "single_choice",
+              "options": [
+                "Les parasites électromagnétiques",
+                "La vitesse de la lumière",
+                "La masse atomique",
+                "Le pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Une alimentation stabilisée limite :",
+              "type": "single_choice",
+              "options": [
+                "Les variations parasites du courant",
+                "L'information utile volontairement",
+                "Toute fréquence utile",
+                "La réception optique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Écouter avec un casque à réduction de bruit atténue :",
+              "type": "single_choice",
+              "options": [
+                "Le bruit ambiant",
+                "La gravité",
+                "Le numéro atomique",
+                "La lumière du Soleil entière"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Un filtre notch peut enlever :",
+              "type": "single_choice",
+              "options": [
+                "Une fréquence parasite précise",
+                "Tout le signal utile sans exception",
+                "La matière",
+                "Les photons du vide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Mise à la terre d'un appareil sert à :",
+              "type": "single_choice",
+              "options": [
+                "Évacuer des courants parasites",
+                "Créer des ondes sonores",
+                "Mesurer le pH",
+                "Amplifier le bruit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Trop filtrer peut aussi :",
+              "type": "single_choice",
+              "options": [
+                "Couper une partie du message",
+                "Améliorer toujours sans limite",
+                "Créer de la matière",
+                "Arrêter c"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Protéger un signal sensible commence souvent par :",
+              "type": "single_choice",
+              "options": [
+                "Limiter les sources de bruit",
+                "Augmenter les parasites",
+                "Couper le récepteur",
+                "Ignorer la masse"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Canaux et débit",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le débit d'information mesure :",
+              "type": "multiple_choice",
+              "options": [
+                "La quantité de données par seconde",
+                "La vitesse de traitement utile",
+                "La masse d'un câble",
+                "Le pH d'une solution"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "Le bit par seconde (bit/s) est une unité de :",
+              "type": "single_choice",
+              "options": ["Débit", "Force", "Température", "Pression"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Une vidéo HD demande en général un débit :",
+              "type": "single_choice",
+              "options": [
+                "Plus élevé qu'une simple voix",
+                "Nul",
+                "Inférieur à un bit/s",
+                "Égal au pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Saturation d'un canal se produit si :",
+              "type": "single_choice",
+              "options": [
+                "On dépasse sa capacité",
+                "Il n'y a aucun signal",
+                "Le vide transporte le son",
+                "La lumière s'arrête"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Le débit utile est inférieur au débit brut à cause :",
+              "type": "single_choice",
+              "options": [
+                "Des en-têtes et corrections",
+                "De la vitesse c",
+                "De la masse",
+                "Du pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Une connexion filaire stable limite parfois moins le débit que :",
+              "type": "single_choice",
+              "options": [
+                "Un Wi-Fi très encombré",
+                "Un câble optique neuf",
+                "Une fibre courte",
+                "Un signal laser"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Compresser une vidéo réduit le débit en échange de :",
+              "type": "single_choice",
+              "options": [
+                "Une possible perte de qualité",
+                "Une augmentation de c",
+                "De la matière",
+                "Du son dans le vide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Le choix du protocole influence :",
+              "type": "single_choice",
+              "options": [
+                "La fiabilité et le débit",
+                "La masse molaire",
+                "La couleur des atomes",
+                "Le numéro atomique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Un goulot d'étranglement ralentit :",
+              "type": "single_choice",
+              "options": [
+                "La transmission globale",
+                "La lumière dans le vide",
+                "La gravité",
+                "Le pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Mesurer le débit permet de vérifier si un canal suffit pour :",
+              "type": "single_choice",
+              "options": [
+                "Un service (voix, vidéo, jeu)",
+                "Peser un gaz",
+                "Créer du vide",
+                "Ignorer le bruit"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Erreurs et correction",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Les erreurs de transmission peuvent venir de :",
+              "type": "multiple_choice",
+              "options": [
+                "Du bruit",
+                "D'une interférence",
+                "D'une absence totale de récepteur seule",
+                "D'une réaction chimique dans l'air"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "Un bit flip signifie qu'un bit :",
+              "type": "single_choice",
+              "options": [
+                "Change de 0 à 1 ou inversement",
+                "Devient une masse",
+                "Disparaît de l'univers",
+                "Mesure le pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Un code de détection d'erreur permet de :",
+              "type": "single_choice",
+              "options": [
+                "Savoir qu'une erreur s'est produite",
+                "Créer du bruit volontaire",
+                "Supprimer le message",
+                "Arrêter c"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Un code correcteur peut :",
+              "type": "single_choice",
+              "options": [
+                "Réparer certaines erreurs sans renvoi",
+                "Créer du vide",
+                "Mesurer la température seule",
+                "Transformer le son en lumière"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Renvoyer un paquet perdu est une forme de :",
+              "type": "single_choice",
+              "options": [
+                "Correction par retransmission",
+                "Filtrage optique",
+                "Fusion",
+                "Oxydation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Plus le canal est bruyant, plus il faut souvent :",
+              "type": "single_choice",
+              "options": ["De redondance", "De vide", "De roches", "De pH"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Une somme de contrôle (checksum) vérifie :",
+              "type": "single_choice",
+              "options": [
+                "L'intégrité des données",
+                "La couleur",
+                "La masse",
+                "Le vent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Sans correction, des erreurs rendent le message :",
+              "type": "single_choice",
+              "options": [
+                "Faux ou incompréhensible",
+                "Toujours parfait",
+                "Plus lumineux",
+                "Sonore dans le vide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Le bruit limite le taux d'erreur minimal atteignable à :",
+              "type": "single_choice",
+              "options": [
+                "Un certain niveau",
+                "Zéro absolu toujours",
+                "Infini sans limite",
+                "Une masse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Tester un canal consiste à envoyer des :",
+              "type": "single_choice",
+              "options": [
+                "Messages de référence",
+                "Rochers",
+                "Acides",
+                "Photons sans récepteur"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan information et bruit",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour une communication de qualité, on combine :",
+              "type": "multiple_choice",
+              "options": [
+                "Un signal clair",
+                "Une limitation du bruit",
+                "Uniquement du bruit maximal",
+                "Aucun récepteur"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "Le bruit est inevitable dans une chaîne réelle car :",
+              "type": "single_choice",
+              "options": [
+                "Des perturbations existent toujours",
+                "La lumière n'existe pas",
+                "Le son voyage dans le vide",
+                "Les atomes disparaissent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Numériser aide à combattre le bruit car on peut :",
+              "type": "single_choice",
+              "options": [
+                "Régénérer et corriger",
+                "Créer du vide sonore",
+                "Supprimer les photons",
+                "Ignorer le décodage"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Une mauvaise connexion Internet illustre :",
+              "type": "single_choice",
+              "options": [
+                "Signal faible et bruit ou pertes",
+                "Une réaction chimique",
+                "Un son dans l'espace",
+                "Une masse variable"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Le choix du micro influence :",
+              "type": "single_choice",
+              "options": [
+                "Le niveau de bruit capté",
+                "La constante c",
+                "Le pH",
+                "La fusion"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "L'information utile doit rester :",
+              "type": "single_choice",
+              "options": [
+                "Au-dessus du bruit de fond",
+                "Toujours plus faible que le bruit",
+                "Sans codage",
+                "Sans émetteur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Étudier le bruit en 2nde prépare à :",
+              "type": "single_choice",
+              "options": [
+                "Comprendre les limites des technologies",
+                "Ignorer les ondes",
+                "Supprimer la physique",
+                "Mesurer seulement le pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Un enregistrement propre en studio profite d'un :",
+              "type": "single_choice",
+              "options": [
+                "Environnement peu bruyant",
+                "Vacuum pour le son",
+                "Miroir seul",
+                "Thermomètre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "La sécurité des données ajoute parfois du :",
+              "type": "single_choice",
+              "options": [
+                "Codage qui n'est pas du bruit parasite",
+                "Bruit thermique volontaire infini",
+                "Son dans le vide",
+                "Masse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "En résumé, ondes et signaux en 2nde relient :",
+              "type": "single_choice",
+              "options": [
+                "Émission, propagation, réception et qualité de l'information",
+                "Uniquement la chimie organique",
+                "Les orbitales seules",
+                "La combustion"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

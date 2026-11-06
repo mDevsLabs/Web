@@ -57,6 +57,9 @@ export function AgentChannelNotice({
   className?: string;
 }) {
   const info = getAgentChannelInfo(channel);
+  if (!info.notice) {
+    return null;
+  }
 
   return (
     <p

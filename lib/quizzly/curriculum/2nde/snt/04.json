@@ -1,0 +1,2578 @@
+{
+  "id": "2nde-snt-04",
+  "year": "2nde",
+  "subject": "snt",
+  "title": "Internet",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Réseaux",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Architecture physique et topologies de réseau",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels équipements physiques permettent d'interconnecter des ordinateurs au sein d'un réseau local ?",
+              "options": [
+                "Le commutateur (switch)",
+                "Le routeur",
+                "L'écran d'affichage",
+                "Le haut-parleur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le commutateur (switch) et le routeur sont des équipements matériels d'interconnexion réseau, contrairement aux périphériques de sortie audio ou vidéo."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle topologie réseau relie tous les nœuds directement à un équipement central ?",
+              "options": [
+                "Topologie en étoile",
+                "Topologie en bus",
+                "Topologie en anneau",
+                "Topologie maillée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une topologie en étoile, tous les ordinateurs sont connectés à un commutateur ou concentrateur central."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel support de transmission physique offre le débit le plus élevé et la plus faible atténuation sur de longues distances ?",
+              "options": [
+                "La fibre optique",
+                "Le câble coaxial",
+                "Le câble à paires torsadées",
+                "Le signal Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fibre optique propage des signaux lumineux avec une très grande bande passante et de faibles pertes sur de grandes distances."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la portée typique d'un réseau local (LAN) ?",
+              "options": [
+                "Un bâtiment ou un domicile",
+                "Un continent entier",
+                "Une ville métropole",
+                "La Terre entière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un LAN (Local Area Network) est restreint à une zone géographique limitée, comme une maison, une école ou une entreprise."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel composant matériel est indispensable dans un ordinateur pour le relier à un réseau ?",
+              "options": [
+                "Une carte réseau (NIC)",
+                "Une carte son dédiée",
+                "Un lecteur de disquettes",
+                "Un processeur graphique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La carte d'interface réseau (NIC) permet à l'ordinateur d'émettre et de recevoir des signaux sur le réseau physique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la particularité d'un réseau maillé (mesh) ?",
+              "options": [
+                "Plusieurs chemins relient les nœuds",
+                "Une seule panne coupe tout le réseau",
+                "Tous les nœuds forment un cercle fermé",
+                "Il n'utilise aucun fil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un réseau maillé, les nœuds sont reliés par de multiples chemins redondants, ce qui le rend très résilient aux pannes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que désigne l'acronyme WAN en informatique ?",
+              "options": [
+                "Wide Area Network",
+                "Wireless Access Node",
+                "Web Application Network",
+                "Worldwide Audio Network"
+              ],
+              "correctAnswers": [0],
+              "explanation": "WAN (Wide Area Network) désigne un réseau étendu couvrant de grandes distances régionales, nationales ou mondiales."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle onde électromagnétique est principalement employée par le Wi-Fi ?",
+              "options": [
+                "Les ondes radio",
+                "Les rayons X",
+                "Les rayons gamma",
+                "Les ultraviolets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Wi-Fi utilise des ondes radio, généralement dans les bandes de fréquences 2,4 GHz, 5 GHz ou 6 GHz."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle adresse physique unique est gravée sur une carte réseau par son fabricant ?",
+              "options": [
+                "L'adresse MAC",
+                "L'adresse IP",
+                "Le port TCP",
+                "Le masque de sous-réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adresse MAC (Media Access Control) est l'identifiant physique unique attribué à la carte réseau en usine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "À quoi sert principalement un commutateur (switch) dans un réseau Ethernet ?",
+              "options": [
+                "Aiguiller les trames vers la machine destinataire",
+                "Attribuer des noms de domaine",
+                "Bloquer les virus informatiques",
+                "Chiffrer le contenu des disques durs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le commutateur lit l'adresse MAC de destination pour envoyer la trame uniquement au port du destinataire concerné."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Le modèle en couches et les protocoles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments sont des protocoles majeurs utilisés sur Internet ?",
+              "options": ["TCP", "IP", "PDF", "JPEG"],
+              "correctAnswers": [0, 1],
+              "explanation": "TCP et IP sont des protocoles de communication réseau fondamentaux, tandis que PDF et JPEG sont des formats de fichiers."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un protocole de communication en réseau ?",
+              "options": [
+                "Un ensemble de règles régissant les échanges",
+                "Un câble de connexion physique",
+                "Un logiciel antivirus payant",
+                "Une marque de routeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un protocole définit le format, la syntaxe et la séquence des messages échangés entre machines communicantes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans le modèle TCP/IP, quelle couche est responsable du choix de la route et de l'adressage logique ?",
+              "options": [
+                "La couche Internet (Réseau)",
+                "La couche Application",
+                "La couche Accès réseau",
+                "La couche Présentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La couche Internet (ou Réseau) gère l'adressage IP et l'acheminement des paquets à travers les réseaux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À quelle couche du modèle TCP/IP appartient le protocole HTTP ?",
+              "options": [
+                "Couche Application",
+                "Couche Transport",
+                "Couche Internet",
+                "Couche Accès réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "HTTP est un protocole de la couche Application qui permet la transmission des pages web."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien de couches comporte le modèle de référence OSI ?",
+              "options": ["7 couches", "4 couches", "3 couches", "10 couches"],
+              "correctAnswers": [0],
+              "explanation": "Le modèle OSI (Open Systems Interconnection) comporte exactement 7 couches standardisées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le principal avantage de concevoir une architecture réseau en couches ?",
+              "options": [
+                "Rendre les couches indépendantes et modulaires",
+                "Obliger l'achat d'un matériel unique",
+                "Augmenter la taille des câbles",
+                "Interdire les connexions sans fil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La modularité en couches permet de modifier ou d'améliorer une couche sans devoir réécrire l'ensemble des autres couches."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle couche s'assure du bon séquençage et de l'intégrité de bout en bout des flux de données ?",
+              "options": [
+                "La couche Transport",
+                "La couche Physique",
+                "La couche Liaison",
+                "La couche Matérielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La couche Transport (avec des protocoles comme TCP) gère le contrôle de flux, le réordonnancement et les réémissions d'erreurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel protocole de la couche transport privilégie la rapidité sans garantir la livraison des paquets ?",
+              "options": ["UDP", "TCP", "HTTP", "FTP"],
+              "correctAnswers": [0],
+              "explanation": "UDP est un protocole non connecté, rapide et sans accusé de réception, souvent utilisé pour le streaming vidéo ou les jeux en direct."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que fait un protocole lors de la réception des données pour remonter les couches ?",
+              "options": [
+                "Il effectue la désencapsulation",
+                "Il formate le disque dur",
+                "Il détruit la carte réseau",
+                "Il crée un nouveau câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la réception, chaque couche retire l'en-tête qui lui était destiné : c'est la désencapsulation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel organisme international édite et publie les RFC (Request For Comments) qui standardisent les protocoles d'Internet ?",
+              "options": ["L'IETF", "La FIFA", "L'UNESCO", "La NASA"],
+              "correctAnswers": [0],
+              "explanation": "L'IETF (Internet Engineering Task Force) développe et promeut les normes ouvertes d'Internet sous forme de RFC."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le protocole IP et l'adressage IPv4 et IPv6",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies concernant une adresse IPv4 ?",
+              "options": [
+                "Elle est codée sur 32 bits",
+                "Elle est généralement notée en décimal pointé",
+                "Elle comporte 128 octets",
+                "Elle est uniquement composée de lettres"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une adresse IPv4 est codée sur 32 bits (4 octets) et s'écrit sous la forme de 4 nombres décimaux séparés par des points (ex : 192.168.1.1)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien d'adresses différentes l'espace d'adressage IPv4 permet-il théoriquement d'attribuer ?",
+              "options": [
+                "Environ 4,3 milliards",
+                "Environ 256 millions",
+                "Environ 1 000 milliards",
+                "Infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2 puissance 32 équivaut à environ 4,29 milliards d'adresses uniques en IPv4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sur combien de bits est codée une adresse IPv6 ?",
+              "options": ["128 bits", "32 bits", "64 bits", "16 bits"],
+              "correctAnswers": [0],
+              "explanation": "IPv6 a été conçu avec un espace d'adressage de 128 bits pour pallier la pénurie d'adresses IPv4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment sont séparés les blocs hexadécimaux dans une adresse IPv6 ?",
+              "options": [
+                "Par des deux-points (:)",
+                "Par des points (.)",
+                "Par des tirets (-)",
+                "Par des barres obliques (/)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les adresses IPv6 sont écrites en notation hexadécimale, en groupant les chiffres par blocs de 4 séparés par le symbole deux-points (ex: 2001:db8::1)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle adresse IPv4 correspond conventionnellement à l'adresse de bouclage local (localhost) ?",
+              "options": [
+                "127.0.0.1",
+                "192.168.0.1",
+                "255.255.255.255",
+                "0.0.0.0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "127.0.0.1 désigne la machine elle-même (bouclage local ou localhost)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la plage de valeurs possibles pour chacun des 4 octets d'une adresse IPv4 en décimal ?",
+              "options": [
+                "De 0 à 255",
+                "De 1 à 100",
+                "De 0 à 1024",
+                "De 0 à 999"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un octet est composé de 8 bits, ce qui permet de coder 256 valeurs distinctes, allant de 0 à 255."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel protocole permet d'attribuer automatiquement une configuration IP aux machines d'un réseau ?",
+              "options": ["DHCP", "DNS", "SSH", "SMTP"],
+              "correctAnswers": [0],
+              "explanation": "Le serveur DHCP (Dynamic Host Configuration Protocol) délivre automatiquement une adresse IP, un masque et une passerelle aux hôtes clients."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une adresse IP privée ?",
+              "options": [
+                "Une adresse utilisable uniquement dans un réseau local",
+                "Une adresse payante sur Internet",
+                "Une adresse réservée à l'armée",
+                "Une adresse invisible par l'ordinateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les adresses IP privées (comme 192.168.x.x ou 10.x.x.x) ne sont pas routables sur l'Internet public et s'utilisent en réseau local."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mécanisme sur une box Internet permet à plusieurs appareils de partager une seule adresse IP publique ?",
+              "options": [
+                "Le NAT (Network Address Translation)",
+                "Le chiffrement RSA",
+                "Le câble optique",
+                "Le bus PCI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le NAT traduit les adresses IP privées des ordinateurs locaux en une adresse IP publique unique visible sur Internet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la raison essentielle du déploiement progressif du protocole IPv6 ?",
+              "options": [
+                "L'épuisement des adresses IPv4 disponibles",
+                "L'interdiction légale du câble Ethernet",
+                "Le passage obligatoire au sans-fil",
+                "La suppression des navigateurs web"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nombre colossal d'appareils connectés a épuisé le réservoir d'adresses IPv4, rendant indispensable l'adoption d'IPv6."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le protocole TCP et le transport des données",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fonctionnalités sont assurées par le protocole TCP ?",
+              "options": [
+                "Vérification de l'ordre d'arrivée des paquets",
+                "Réémission en cas de paquet perdu",
+                "Fabrication des puces en silicium",
+                "Gestion du signal optique sous la mer"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "TCP garantit la remise ordonnée, sans erreur et sans duplication des données grâce aux numéros de séquence et aux acquittements."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le mécanisme d'établissement de connexion en trois étapes utilisé par TCP ?",
+              "options": [
+                "La poignée de main à trois voies (Three-way handshake)",
+                "Le double clic sécurisé",
+                "La boucle fermée",
+                "Le saut de puce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TCP établit une connexion fiable via l'échange SYN, SYN-ACK, puis ACK entre l'émetteur et le récepteur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que renvoie le récepteur TCP pour confirmer la bonne réception d'un segment ?",
+              "options": [
+                "Un acquittement (ACK)",
+                "Un signal de déconnexion",
+                "Une image GIF",
+                "Une adresse MAC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accusé de réception (ACK) informe l'émetteur que les octets ont été correctement reçus."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que fait TCP si un paquet n'a pas été acquitté après un certain délai d'attente (timeout) ?",
+              "options": [
+                "Il réémet le paquet manquant",
+                "Il éteint l'ordinateur récepteur",
+                "Il supprime la connexion Internet",
+                "Il envoie un courrier postal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si l'émetteur ne reçoit pas d'ACK dans le temps imparti, il réémet automatiquement le segment présumé perdu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À quoi sert le numéro de port associé à une adresse IP dans un en-tête TCP ?",
+              "options": [
+                "Identifier l'application ou le service communicant",
+                "Indiquer le numéro de série de l'écran",
+                "Mesurer la tension électrique du câble",
+                "Augmenter la vitesse du disque dur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le numéro de port (par exemple 80 pour HTTP ou 443 pour HTTPS) permet au système d'exploitation de diriger les données vers la bonne application."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel numéro de port standard est couramment associé au protocole sécurisé HTTPS ?",
+              "options": ["443", "80", "21", "25"],
+              "correctAnswers": [0],
+              "explanation": "Le port standard 443 est réservé aux communications web sécurisées par TLS/SSL (HTTPS)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel protocole de transport est préféré à TCP pour la visioconférence en direct où un léger retard est pire qu'une image perdue ?",
+              "options": ["UDP", "HTTP", "SMTP", "IMAP"],
+              "correctAnswers": [0],
+              "explanation": "UDP est sans connexion ni réémission, ce qui évite les gels d'image ou les décalages audio dus à l'attente de paquets perdus."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'unité de données de protocole (PDU) manipulée par la couche TCP ?",
+              "options": ["Le segment", "La trame", "Le bit", "Le câble"],
+              "correctAnswers": [0],
+              "explanation": "Au niveau de la couche transport (TCP), les données découpées sont appelées des segments."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mécanisme de TCP permet d'adapter le débit de transmission à la capacité du réseau et du récepteur ?",
+              "options": [
+                "Le contrôle de congestion et de flux",
+                "Le filtrage par adresse MAC",
+                "Le formatage de disque",
+                "La compression de fichiers zip"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TCP surveille la perte de paquets et la fenêtre de réception pour moduler le débit et éviter l'engorgement du réseau."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que contient l'en-tête TCP pour vérifier qu'aucune corruption binaire n'a altéré le segment en transit ?",
+              "options": [
+                "Une somme de contrôle (checksum)",
+                "Une signature manuscrite",
+                "Le nom de l'utilisateur",
+                "Une photo d'identité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le champ checksum permet de détecter les erreurs de transmission qui auraient modifié des bits pendant le transport."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Le découpage en paquets et encapsulation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels avantages apporte la transmission de données par découpage en paquets plutôt qu'en un seul bloc massif ?",
+              "options": [
+                "Partage équitable de la bande passante",
+                "Réémission ciblée du seul paquet défectueux",
+                "Impossibilité absolue d'interception",
+                "Suppression du besoin de câbles"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le découpage en paquets permet d'entrelacer les flux de multiples utilisateurs et de ne retransmettre que les morceaux perdus."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'encapsulation des données en réseau ?",
+              "options": [
+                "L'ajout d'en-têtes successifs par chaque couche",
+                "L'enfermement des câbles sous terre",
+                "La compression d'images numériques",
+                "La destruction physique des ordinateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'encapsulation consiste à envelopper les données d'une couche supérieure avec les métadonnées (en-tête) de la couche inférieure."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans quel ordre s'effectue l'encapsulation lors de l'émission d'un message ?",
+              "options": [
+                "Application, Transport, Internet, Accès réseau",
+                "Accès réseau, Internet, Transport, Application",
+                "Internet, Application, Transport, Accès réseau",
+                "Transport, Accès réseau, Application, Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les données descendent la pile : d'abord l'application, puis transport (TCP), puis internet (IP), et enfin accès réseau (trame physique)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment s'appelle l'unité de données au niveau de la couche Internet (IP) ?",
+              "options": ["Le paquet", "La trame", "Le segment", "Le signal"],
+              "correctAnswers": [0],
+              "explanation": "Au niveau de la couche Internet (IP), la structure de données est appelée un paquet (ou datagramme IP)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que trouve-t-on obligatoirement dans l'en-tête d'un paquet IP ?",
+              "options": [
+                "L'adresse IP source et destination",
+                "La photo de l'expéditeur",
+                "Le numéro de carte bancaire",
+                "La marque de l'ordinateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'en-tête IP contient au minimum les adresses IP de l'émetteur et du destinataire afin de permettre le routage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle valeur limite le nombre de routeurs qu'un paquet IP peut traverser avant d'être supprimé pour éviter les boucles infinies ?",
+              "options": [
+                "Le TTL (Time To Live)",
+                "La fréquence d'horloge",
+                "Le numéro de série",
+                "Le nom de domaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le TTL (ou Hop Limit en IPv6) est décrémenté par chaque routeur traversé ; arrivé à zéro, le paquet est détruit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'unité de données au niveau de la couche liaison / accès réseau (Ethernet) ?",
+              "options": ["La trame", "Le segment", "Le fichier", "La requête"],
+              "correctAnswers": [0],
+              "explanation": "La trame (frame) est l'enveloppe finale qui contient les adresses MAC et circule sur le support physique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si un paquet IP est plus grand que la taille maximale autorisée (MTU) sur un lien réseau ?",
+              "options": [
+                "Il peut être fragmenté en plusieurs sous-paquets",
+                "Il détruit immédiatement le routeur",
+                "Il se transforme en onde sonore",
+                "Il efface le disque dur local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fragmentation IP permet de scinder un paquet volumineux en plusieurs fragments compatibles avec le MTU du réseau emprunté."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que fait le destinataire final lorsqu'il reçoit une trame réseau ?",
+              "options": [
+                "Il désencapsule les données en retirant les en-têtes successifs",
+                "Il renvoie immédiatement le câble à l'usine",
+                "Il détruit les données reçues",
+                "Il change son adresse MAC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le récepteur effectue la désencapsulation : chaque couche lit, vérifie et retire son en-tête avant de transmettre la charge utile à la couche supérieure."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sur Internet, est-il garanti que tous les paquets d'un même message empruntent le même chemin ?",
+              "options": [
+                "Non, les paquets peuvent suivre des itinéraires différents",
+                "Oui, ils doivent obligatoirement se suivre en file indienne",
+                "Oui, il n'existe qu'un seul câble mondial",
+                "Non, seuls les virus changent de route"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Internet est un réseau à commutation de paquets : chaque paquet est routé indépendamment et peut suivre un chemin différent selon l'état du réseau."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Le routage et les tables de routage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels critères un algorithme de routage peut-il prendre en compte pour déterminer le meilleur chemin ?",
+              "options": [
+                "Le nombre de sauts de routeurs",
+                "La bande passante disponible sur les liens",
+                "Le prix du clavier de l'utilisateur",
+                "La couleur du boîtier de l'ordinateur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les métriques de routage s'appuient sur des données techniques comme le nombre de sauts (distance), le débit, le délai ou la charge des liaisons."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le rôle principal d'un routeur dans un réseau informatique ?",
+              "options": [
+                "Interconnecter des réseaux et acheminer les paquets",
+                "Remplacer l'écran de l'ordinateur",
+                "Imprimer des documents en couleur",
+                "Alimenter la batterie des téléphones"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un routeur relie au moins deux réseaux distincts et sélectionne l'interface de sortie appropriée pour chaque paquet reçu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le tableau dans lequel un routeur consulte les directions possibles pour chaque destination ?",
+              "options": [
+                "Une table de routage",
+                "Une feuille de calcul Excel",
+                "Un journal d'appels",
+                "Un carnet d'adresses email"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La table de routage recense les réseaux de destination connus, les masques et les passerelles ou interfaces de sortie associées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans une table de routage, quelle entrée est utilisée lorsqu'aucun chemin spécifique ne correspond à l'adresse de destination ?",
+              "options": [
+                "La route par défaut (passerelle par défaut)",
+                "La boucle infinie",
+                "L'arrêt d'urgence",
+                "Le lien fantôme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La passerelle par défaut (route 0.0.0.0/0) est empruntée pour expédier tous les paquets dont la destination n'est pas répertoriée localement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel algorithme classique de graphe, souvent vu en informatique, est utilisé pour calculer le plus court chemin dans un réseau ?",
+              "options": [
+                "L'algorithme de Dijkstra",
+                "L'algorithme de tri à bulles",
+                "L'algorithme du minimax",
+                "L'algorithme de dichotomie simple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'algorithme de Dijkstra permet de trouver le chemin de coût minimal entre des nœuds dans un graphe pondéré, comme dans le protocole OSPF."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle commande terminale permet de visualiser la suite de routeurs traversés par un paquet jusqu'à une destination ?",
+              "options": [
+                "traceroute (ou tracert sous Windows)",
+                "pingpong",
+                "format c:",
+                "copy con"
+              ],
+              "correctAnswers": [0],
+              "explanation": "traceroute (tracert sous Windows) envoie des paquets avec un TTL incrémenté pour identifier chaque routeur intermédiaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle commande réseau envoie des requêtes ICMP pour tester si une machine distante est joignable et mesurer le temps d'aller-retour ?",
+              "options": ["ping", "cd", "ls", "grep"],
+              "correctAnswers": [0],
+              "explanation": "La commande ping envoie des paquets 'Echo Request' et attend un 'Echo Reply' pour mesurer le temps de latence (Round-Trip Time)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les protocoles où les routeurs mettent à jour automatiquement leurs tables en échangeant des informations ?",
+              "options": [
+                "Protocoles de routage dynamique",
+                "Protocoles de chiffrement asymétrique",
+                "Protocoles de messagerie vocale",
+                "Protocoles d'impression USB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le routage dynamique (ex : RIP, OSPF, BGP) permet aux routeurs d'adapter automatiquement leurs tables en fonction des pannes ou des congestions."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel protocole de routage inter-domaines est le pilier d'Internet pour relier les systèmes autonomes (AS) entre eux ?",
+              "options": [
+                "BGP (Border Gateway Protocol)",
+                "DHCP",
+                "FTP",
+                "POP3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "BGP gère l'échange des routes entre les grands opérateurs et fournisseurs d'accès constituant les systèmes autonomes mondiaux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si un routeur sur le chemin d'un paquet tombe en panne, que permet la conception maillée d'Internet ?",
+              "options": [
+                "Le paquet est rerouté via un autre itinéraire disponible",
+                "Tout le trafic mondial s'arrête définitivement",
+                "Le câble physique fond sous l'effet de la chaleur",
+                "L'émetteur doit réinstaller son système d'exploitation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce à la redondance des liens et au routage dynamique, le trafic contourne automatiquement le routeur en panne."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Le système des noms de domaine (DNS)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont des exemples d'extensions de domaines de premier niveau (TLD) ?",
+              "options": [".fr", ".org", "https://", "www"],
+              "correctAnswers": [0, 1],
+              "explanation": ".fr (domaine national) et .org (domaine générique) sont des extensions TLD situées au sommet de la hiérarchie DNS."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le rôle fondamental du système DNS (Domain Name System) ?",
+              "options": [
+                "Traduire un nom de domaine en adresse IP",
+                "Augmenter la vitesse du processeur",
+                "Sauvegarder les fichiers dans le cloud",
+                "Créer des animations graphiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le DNS agit comme l'annuaire d'Internet en associant des noms de domaine mémorisables (ex: exemple.fr) à des adresses IP numériques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la structure de l'espace de noms DNS ?",
+              "options": [
+                "Une arborescence hiérarchique inversée",
+                "Une liste linéaire non ordonnée",
+                "Un cercle fermé sans début ni fin",
+                "Un tableau à deux colonnes fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le DNS est organisé sous forme d'arbre hiérarchique, partant de la racine invisible (représentée par un point final)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les serveurs situés tout en haut de la hiérarchie DNS mondiale ?",
+              "options": [
+                "Les serveurs racines (root servers)",
+                "Les serveurs terminaux",
+                "Les serveurs d'impression",
+                "Les clients DHCP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il existe 13 adresses IP de serveurs racines de référence (lettres de A à M), répliquées mondialement par anycast."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel type d'enregistrement DNS fait correspondre un nom de domaine à une adresse IPv4 ?",
+              "options": [
+                "L'enregistrement A",
+                "L'enregistrement AAAA",
+                "L'enregistrement MX",
+                "L'enregistrement TXT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'enregistrement 'A' (Address) relie un nom d'hôte à une adresse IPv4 de 32 bits."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel type d'enregistrement DNS fait correspondre un nom de domaine à une adresse IPv6 ?",
+              "options": [
+                "L'enregistrement AAAA",
+                "L'enregistrement A",
+                "L'enregistrement CNAME",
+                "L'enregistrement PTR"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'enregistrement 'AAAA' (quad-A) est spécifique à la résolution vers une adresse IPv6 sur 128 bits."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À quoi sert le cache DNS présent sur votre ordinateur ou votre box Internet ?",
+              "options": [
+                "Conserver les résolutions récentes pour éviter de redemander au serveur",
+                "Stocker les mots de passe de boîte mail",
+                "Télécharger automatiquement des jeux vidéo",
+                "Empêcher l'ordinateur de chauffer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cache DNS mémorise temporairement les correspondances nom-IP pour réduire la latence lors de futures visites."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment s'appelle l'attaque consistant à injecter de fausses adresses IP dans un cache DNS pour tromper l'utilisateur ?",
+              "options": [
+                "L'empoisonnement de cache DNS (DNS Cache Poisoning)",
+                "L'attaque par force brute",
+                "Le déni de service physique",
+                "L'écoute clandestine passive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le DNS poisoning redirige les internautes vers de faux sites malveillants à leur insu en falsifiant le cache du résolveur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle extension de sécurité apporte l'authentification et l'intégrité aux réponses DNS à l'aide de signatures cryptographiques ?",
+              "options": ["DNSSEC", "HTTPS", "WPA3", "POP3S"],
+              "correctAnswers": [0],
+              "explanation": "DNSSEC (Domain Name System Security Extensions) signe cryptographiquement les données DNS pour garantir leur authenticité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans l'adresse 'eduscol.education.fr', que représente '.fr' ?",
+              "options": [
+                "Le domaine de premier niveau (TLD)",
+                "Le sous-domaine",
+                "Le nom d'hôte de la machine",
+                "Le protocole de transport"
+              ],
+              "correctAnswers": [0],
+              "explanation": ".fr est le TLD (Top-Level Domain) correspondant au code pays français géré par l'Afnic."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "L'interconnexion mondiale et les câbles sous-marins",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles infrastructures physiques majeures assurent le transport des données à l'échelle planétaire ?",
+              "options": [
+                "Les câbles sous-marins en fibre optique",
+                "Les liaisons par satellites de télécommunication",
+                "Les disques durs envoyés par pigeons",
+                "Les ondes sonores sous-marines"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'immense majorité du trafic transcontinental circule dans les câbles sous-marins, complétée par les constellations satellites."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle part approximative du trafic intercontinental Internet passe par les câbles sous-marins en fibre optique ?",
+              "options": [
+                "Plus de 95 %",
+                "Moins de 10 %",
+                "Environ 25 %",
+                "Exactement 50 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement à une idée reçue privilégiant les satellites, plus de 98 % des échanges intercontinentaux empruntent les câbles sous-marins."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un point d'échange Internet (IXP - Internet Exchange Point) ?",
+              "options": [
+                "Un lieu physique où différents fournisseurs d'accès s'interconnectent",
+                "Un magasin vendant des ordinateurs",
+                "Un site de téléchargement de musiques",
+                "Une antenne relais pour téléphones portables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un IXP permet aux opérateurs de réseau (FAI, hébergeurs, CDN) d'échanger directement du trafic sans payer de transit tiers."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un système autonome (Autonomous System - AS) dans l'architecture mondiale d'Internet ?",
+              "options": [
+                "Un ensemble de réseaux sous la gestion d'une seule entité technique",
+                "Un robot équipé d'une batterie solaire",
+                "Un ordinateur sans connexion réseau",
+                "Un antivirus fonctionnant sans mise à jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un AS est un ensemble de routeurs et de réseaux IP administré par une même organisation (opérateur, université, GAFAM) avec une politique de routage commune."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel dispositif présent le long des câbles sous-marins permet de réamplifier le signal optique affaibli par la distance ?",
+              "options": [
+                "Des répéteurs optiques",
+                "Des batteries de voiture",
+                "Des antennes paraboliques",
+                "Des compresseurs d'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des répéteurs optiques sont installés tous les 50 à 100 km environ sur le fond marin pour amplifier la lumière sans la convertir en électricité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle organisation mondiale à but non lucratif coordonne l'attribution des adresses IP et la gestion des noms de domaine de premier niveau ?",
+              "options": ["L'ICANN", "L'OTAN", "L'OMS", "Le FMI"],
+              "correctAnswers": [0],
+              "explanation": "L'ICANN (Internet Corporation for Assigned Names and Numbers) supervise au niveau mondial les identifiants uniques d'Internet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que désigne la 'latence' (ou temps de propagation) sur un réseau mondial ?",
+              "options": [
+                "Le temps mis par un signal pour aller de l'émetteur au récepteur",
+                "Le poids physique du câble en kilogrammes",
+                "Le nombre total de vidéos en ligne",
+                "Le prix mensuel de l'abonnement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La latence mesure le délai nécessaire à un paquet pour parcourir la distance physique et traverser les équipements jusqu'à destination."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle contrainte physique fondamentale limite la vitesse minimale de latence sur de très longues distances ?",
+              "options": [
+                "La vitesse de la lumière dans le milieu de propagation",
+                "Le sens du vent sur les océans",
+                "La température de l'écran d'ordinateur",
+                "L'épaisseur des câbles d'alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière voyage à environ 200 000 km/s dans le verre de la fibre optique, imposant une limite physique incompressible à la transmission."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les câbles sous-marins sont-ils particulièrement renforcés et blindés près des côtes ?",
+              "options": [
+                "Pour résister aux ancres de bateaux et aux activités de pêche",
+                "Pour éviter d'attirer les poissons migrateurs",
+                "Pour empêcher l'eau de s'évaporer",
+                "Pour augmenter le contraste de l'image"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Près du littoral, les câbles sont enterrés et protégés par de multiples armures en acier pour éviter d'être sectionnés par les chaluts et ancres."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si un câble sous-marin majeur est accidentellement coupé par un séisme ou une ancre ?",
+              "options": [
+                "Le trafic est automatiquement redirigé vers d'autres câbles sous-marins",
+                "Toutes les connexions de la Terre s'arrêtent",
+                "Les ordinateurs du pays explosent",
+                "Les adresses IP du monde entier sont réinitialisées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La redondance du maillage mondial permet aux routeurs de dérouter les données par d'autres câbles en attendant la réparation par un navire câblier."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Réseaux pair-à-pair et architecture client-serveur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels modèles d'architecture logique sont couramment employés pour échanger des données sur Internet ?",
+              "options": [
+                "Le modèle client-serveur",
+                "Le modèle pair-à-pair (P2P)",
+                "Le modèle pyramide inversée mécanique",
+                "Le modèle roue à aubes hydraulique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le modèle client-serveur et le modèle pair-à-pair sont les deux architectures logicielles prédominantes pour distribuer des services et fichiers."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans l'architecture client-serveur classique, quel est le rôle du serveur ?",
+              "options": [
+                "Attendre des requêtes et fournir des ressources ou services",
+                "Envoyer des requêtes sans jamais répondre",
+                "Formater les disques des visiteurs",
+                "Agir comme un simple câble Ethernet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le serveur est un programme (ou machine) toujours à l'écoute qui délivre des données (pages web, mails) en réponse aux demandes des clients."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un réseau pair-à-pair (P2P), quelle est la caractéristique principale de chaque machine (nœud) ?",
+              "options": [
+                "Elle peut être à la fois cliente et serveuse",
+                "Elle doit obligatoirement être un supercalculateur",
+                "Elle ne peut recevoir que des images",
+                "Elle est contrôlée directement par l'État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En P2P, chaque nœud (peer) partage directement ses ressources et télécharge auprès d'autres nœuds sans passer par un serveur central."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel protocole emblématique de partage de fichiers utilise l'architecture pair-à-pair ?",
+              "options": ["BitTorrent", "HTTP", "SMTP", "IMAP"],
+              "correctAnswers": [0],
+              "explanation": "BitTorrent découpe les fichiers en morceaux que chaque utilisateur télécharge et redistribue simultanément aux autres participants de l'essaim."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le principal point de vulnérabilité (Single Point of Failure) d'une architecture client-serveur centralisée ?",
+              "options": [
+                "Si le serveur tombe en panne, le service devient inaccessible pour tous",
+                "Les clients consomment trop d'électricité",
+                "Les câbles deviennent trop courts",
+                "Le clavier des clients se bloque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un système centralisé, la panne ou la surcharge du serveur central prive l'ensemble des clients du service."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel avantage apporte le pair-à-pair lors de la diffusion d'un fichier très populaire auprès de millions d'utilisateurs ?",
+              "options": [
+                "Plus il y a de participants, plus la bande passante globale disponible augmente",
+                "Le fichier devient de plus en plus petit",
+                "Le fichier change automatiquement de langue",
+                "Tous les ordinateurs deviennent invisibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque téléchargeur devenant également émetteur, la capacité globale de distribution croît naturellement avec le nombre d'utilisateurs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle technologie décentralisée et sécurisée repose sur un réseau pair-à-pair pour valider des transactions sans organe central ?",
+              "options": [
+                "La blockchain",
+                "Le serveur FTP",
+                "La messagerie vocale",
+                "Le ruban magnétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La blockchain utilise un réseau P2P et des mécanismes de consensus pour maintenir un registre partagé infalsifiable sans autorité centrale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans une application web moderne, quel élément joue le rôle de 'client' ?",
+              "options": [
+                "Le navigateur web sur le terminal de l'utilisateur",
+                "Le datacenter de l'hébergeur",
+                "Le câble sous-marin",
+                "Le serveur de base de données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le navigateur web (Chrome, Firefox, Safari) est le client qui émet des requêtes HTTP pour afficher les pages à l'utilisateur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les réseaux P2P sont-ils particulièrement résistants à la censure et aux pannes ?",
+              "options": [
+                "Il n'y a pas d'autorité centrale unique dont la fermeture détruit le réseau",
+                "Ils utilisent des câbles secrets inconnus",
+                "Ils ne transportent aucun bit",
+                "Ils sont protégés par des lois magiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absence de serveur central permet au réseau P2P de continuer à fonctionner tant qu'au moins deux nœuds communiquent entre eux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un CDN (Content Delivery Network) par rapport à l'architecture client-serveur ?",
+              "options": [
+                "Un ensemble de serveurs relais répartis géographiquement pour servir le contenu au plus près",
+                "Un réseau de câbles sous terre non branchés",
+                "Un nouveau langage de programmation",
+                "Un type d'imprimante réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un CDN met en cache les contenus statiques sur des serveurs proxy proches des utilisateurs afin d'accélérer l'affichage et soulager le serveur central."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Sécurité et neutralité du réseau Internet",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels principes fondamentaux caractérisent la neutralité du Net ?",
+              "options": [
+                "Égalité de traitement de tous les flux de données",
+                "Non-discrimination selon l'émetteur ou le contenu",
+                "Tarification selon le type de vidéo regardée",
+                "Blocage obligatoire des sites éducatifs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La neutralité du Net garantit que les opérateurs acheminent les paquets sans discrimination de source, de destination ou de type d'application."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une attaque par déni de service distribué (DDoS) ?",
+              "options": [
+                "Submerger un serveur sous des millions de requêtes provenant de machines infectées",
+                "Voler physiquement le disque dur d'un utilisateur",
+                "Deviner le mot de passe par simple déduction",
+                "Couper l'électricité dans une maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une attaque DDoS utilise un réseau de machines zombies (botnet) pour saturer les ressources d'un serveur et le rendre indisponible."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le rôle d'un pare-feu (firewall) dans un réseau ?",
+              "options": [
+                "Filtrer les paquets entrants et sortants selon des règles de sécurité",
+                "Éteindre les départs d'incendie dans les serveurs",
+                "Accélérer la rotation des ventilateurs",
+                "Créer des pages web automatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pare-feu analyse le trafic (adresses IP, ports, protocoles) et bloque les connexions non autorisées pour protéger le réseau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on un ensemble d'ordinateurs piratés et contrôlés à distance à l'insu de leurs propriétaires ?",
+              "options": [
+                "Un botnet",
+                "Un switch",
+                "Un cluster de calcul",
+                "Un intranet scolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un botnet est un réseau de machines infectées par un logiciel malveillant, prêtes à exécuter des ordres d'attaque en masse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si la neutralité du Net n'était pas respectée par un opérateur, que pourrait-il faire ?",
+              "options": [
+                "Ralentir délibérément les services concurrents au profit de ses partenaires",
+                "Remplacer l'alphabet français par des chiffres",
+                "Changer la marque de l'ordinateur de l'abonné",
+                "Empêcher le soleil d'éclairer la fibre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans neutralité du Net, les FAI pourraient instaurer un Internet à plusieurs vitesses en privilégiant ou bridant certains contenus payants."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En France, quelle autorité indépendante veille notamment à la régulation des télécoms et à la neutralité du Net ?",
+              "options": ["L'ARCEP", "L'INSEE", "La SACEM", "La SNCF"],
+              "correctAnswers": [0],
+              "explanation": "L'ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) est le gendarme des télécoms en France."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est l'objectif du chiffrement de bout en bout dans une communication réseau ?",
+              "options": [
+                "Garantir que seuls l'émetteur et le destinataire peuvent lire le message",
+                "Compresser le fichier pour qu'il pèse zéro octet",
+                "Traduire automatiquement le texte en anglais",
+                "Accélérer la vitesse des ondes radio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chiffrement de bout en bout chiffre les données dès l'émetteur et ne les déchiffre qu'au récepteur, empêchant l'espionnage par les intermédiaires."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'usurpation d'une adresse IP par un attaquant pour masquer son identité ou tromper un récepteur ?",
+              "options": [
+                "L'usurpation d'adresse IP (IP spoofing)",
+                "Le phishing par email",
+                "Le ransomware",
+                "L'injection SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'IP spoofing consiste à falsifier l'adresse IP source contenue dans l'en-tête du paquet pour tromper les systèmes d'authentification."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que permet un réseau privé virtuel (VPN - Virtual Private Network) ?",
+              "options": [
+                "Créer un tunnel chiffré sécurisé sur un réseau public",
+                "Augmenter physiquement la taille de l'écran",
+                "Supprimer les virus déjà présents sur le disque dur",
+                "Se connecter sans carte réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un VPN encapsule et chiffre tout le trafic entre l'utilisateur et un serveur distant, masquant son IP réelle et sécurisant la liaison."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel risque présente la connexion à un réseau Wi-Fi public non sécurisé (ouvert sans mot de passe) ?",
+              "options": [
+                "L'interception possible des données non chiffrées par des tiers situés à proximité",
+                "Le reformatage instantané du système d'exploitation",
+                "L'explosion de la batterie de l'ordinateur",
+                "La perte définitive de tous ses contacts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur un réseau Wi-Fi ouvert, les paquets non protégés par HTTPS peuvent être capturés et lus par n'importe qui sur le même canal radio."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Le Web",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Histoire et fondements du World Wide Web",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments sont des piliers historiques constitutifs du Web dès son origine ?",
+              "options": [
+                "Le langage HTML",
+                "Le protocole HTTP",
+                "L'intelligence artificielle générative",
+                "Le réseau social TikTok"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le Web a été fondé sur trois piliers majeurs : le langage HTML, le protocole HTTP et le système d'adresses URL."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qui est le principal inventeur du World Wide Web ?",
+              "options": [
+                "Tim Berners-Lee",
+                "Bill Gates",
+                "Alan Turing",
+                "Steve Jobs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tim Berners-Lee, chercheur au CERN, a inventé le Web en 1989 pour faciliter le partage de documents entre scientifiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans quelle institution européenne de recherche scientifique le Web a-t-il été conçu à la fin des années 1980 ?",
+              "options": [
+                "Au CERN à Genève",
+                "Au CNRS à Paris",
+                "À l'Agence spatiale européenne",
+                "À l'Institut Pasteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CERN (Organisation européenne pour la recherche nucléaire) est le berceau historique du World Wide Web."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En quelle année le CERN a-t-il placé les logiciels et technologies du Web dans le domaine public sans aucune redevance ?",
+              "options": ["1993", "1975", "2005", "2018"],
+              "correctAnswers": [0],
+              "explanation": "Le 30 avril 1993, le CERN a libéré le code source du Web dans le domaine public, permettant son explosion mondiale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre Internet et le Web ?",
+              "options": [
+                "Internet est le réseau sous-jacent, le Web est un service parmi d'autres qui l'utilise",
+                "C'est exactement la même chose",
+                "Le Web est le câble physique et Internet est l'écran",
+                "Internet n'existe plus depuis l'arrivée du Web"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Internet est l'infrastructure réseau mondiale, tandis que le Web est une application s'appuyant sur Internet, comme le courrier électronique ou le streaming."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le concept clé permettant de naviguer d'un document à un autre en cliquant sur un mot ou un élément ?",
+              "options": [
+                "L'hypertexte",
+                "Le code binaire pur",
+                "La compression MP3",
+                "L'algorithme de tri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hypertexte est un texte enrichi de liens (hyperliens) permettant au lecteur de passer d'une page à une autre non séquentiellement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le nom du tout premier navigateur et éditeur web développé par Tim Berners-Lee sur une machine NeXT ?",
+              "options": [
+                "WorldWideWeb",
+                "Google Chrome",
+                "Mozilla Firefox",
+                "Internet Explorer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tout premier navigateur web s'appelait 'WorldWideWeb' (rebaptisé plus tard Nexus pour éviter la confusion avec le réseau mondial)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel navigateur sorti en 1993 a popularisé le Web auprès du grand public grâce à l'affichage d'images dans le texte ?",
+              "options": ["NCSA Mosaic", "Safari", "Edge", "Opera"],
+              "correctAnswers": [0],
+              "explanation": "Mosaic a été le premier navigateur graphique grand public capable d'afficher directement les images au sein des pages web."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle organisation internationale de standardisation veille au développement des standards ouverts du Web ?",
+              "options": [
+                "Le W3C (World Wide Web Consortium)",
+                "La NASA",
+                "Le FBI",
+                "L'ISO de la mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le W3C, fondé par Tim Berners-Lee en 1994, édite les recommandations officielles pour HTML, CSS et l'accessibilité du Web."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie l'expression 'Web 2.0' apparue au début des années 2000 ?",
+              "options": [
+                "L'avènement d'un Web participatif où les utilisateurs produisent et partagent du contenu",
+                "Le remplacement de tous les câbles en cuivre par des satellites",
+                "L'abandon complet du langage HTML",
+                "La fin de l'accès gratuit à Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Web 2.0 désigne l'évolution vers l'interactivité, les plateformes sociales, les wikis et les blogs où les internautes deviennent acteurs."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La structure des pages avec HTML",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles balises HTML délimitent des sections sémantiques dans une page web moderne ?",
+              "options": ["<header>", "<article>", "<font>", "<blink>"],
+              "correctAnswers": [0, 1],
+              "explanation": "<header> et <article> sont des balises sémantiques introduites avec HTML5, tandis que <font> et <blink> sont obsolètes et dépréciées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie l'acronyme HTML ?",
+              "options": [
+                "HyperText Markup Language",
+                "High Transfer Machine Language",
+                "Home Tool Made Logic",
+                "Hyperlink Textual Modeler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "HTML signifie HyperText Markup Language : c'est un langage de balisage conçu pour structurer les documents hypertextes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle balise est utilisée pour insérer un lien hypertexte vers une autre page en HTML ?",
+              "options": ["<a>", "<link>", "<href>", "<url>"],
+              "correctAnswers": [0],
+              "explanation": "La balise <a> (pour anchor) associée à l'attribut href permet de créer un lien hypertexte."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel attribut obligatoire de la balise <img> fournit une description textuelle de l'image pour l'accessibilité ?",
+              "options": ["alt", "src", "title", "href"],
+              "correctAnswers": [0],
+              "explanation": "L'attribut alt décrit l'image pour les lecteurs d'écran utilisés par les personnes malvoyantes et s'affiche si l'image ne charge pas."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans quelle partie d'un document HTML place-t-on le titre de l'onglet, l'encodage des caractères et les métadonnées ?",
+              "options": [
+                "Dans la balise <head>",
+                "Dans la balise <body>",
+                "Dans la balise <footer>",
+                "Dans la balise <table>"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La section <head> contient les métadonnées et configurations de la page, invisibles directement dans le corps d'affichage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle balise permet de définir le titre de niveau hiérarchique le plus important dans une page web ?",
+              "options": ["<h1>", "<h6>", "<p>", "<head>"],
+              "correctAnswers": [0],
+              "explanation": "<h1> représente le titre principal de niveau 1 d'une page, <h6> étant le niveau de sous-titre le plus bas."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment écrit-on un commentaire en langage HTML qui ne sera pas affiché à l'écran par le navigateur ?",
+              "options": [
+                "<!-- Ceci est un commentaire -->",
+                "// Ceci est un commentaire",
+                "# Ceci est un commentaire",
+                "/* Ceci est un commentaire */"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En HTML, la syntaxe d'un commentaire débute par <!-- et se termine par -->."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle balise est utilisée pour créer une liste à puces non ordonnée ?",
+              "options": ["<ul>", "<ol>", "<li>", "<dl>"],
+              "correctAnswers": [0],
+              "explanation": "<ul> (Unordered List) crée une liste non ordonnée à puces, chaque élément étant défini par <li> (List Item)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle déclaration informe le navigateur qu'il doit interpréter le document selon les normes HTML5 ?",
+              "options": [
+                "<!DOCTYPE html>",
+                "<html version='5'>",
+                "<start html>",
+                "<xml type='html5'>"
+              ],
+              "correctAnswers": [0],
+              "explanation": "<!DOCTYPE html> tout en haut du fichier signale au navigateur qu'il s'agit d'un document HTML5 standard."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel encodage universel de caractères est indispensable pour afficher correctement les accents en français dans une balise <meta charset=...> ?",
+              "options": ["UTF-8", "ASCII pur 7-bit", "Windows-1252", "EBCDIC"],
+              "correctAnswers": [0],
+              "explanation": "UTF-8 est le standard mondial qui prend en charge tous les caractères et symboles de l'ensemble des langues écrites."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La mise en forme graphique avec CSS",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments sont des propriétés CSS valides pour styliser un texte ?",
+              "options": ["color", "font-size", "text-speed", "pixel-volume"],
+              "correctAnswers": [0, 1],
+              "explanation": "color (couleur du texte) et font-size (taille de police) sont des propriétés CSS courantes, contrairement aux fantaisistes text-speed ou pixel-volume."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le sigle CSS en informatique ?",
+              "options": [
+                "Cascading Style Sheets",
+                "Creative Software System",
+                "Computer Styling Source",
+                "Central Screen Standard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CSS signifie Cascading Style Sheets (Feuilles de style en cascade)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le rôle principal du langage CSS par rapport au HTML ?",
+              "options": [
+                "Séparer la présentation visuelle du contenu et de la structure",
+                "Sauvegarder des données dans une base SQL",
+                "Gérer les connexions TCP/IP",
+                "Compiler le code source en binaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "HTML structure le contenu tandis que CSS définit l'apparence visuelle (couleurs, polices, mise en page, animations)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En CSS, quel symbole préfixe un sélecteur d'identifiant unique (id) ?",
+              "options": [
+                "Le dièse (#)",
+                "Le point (.)",
+                "L'arobase (@)",
+                "Le dollar ($)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un sélecteur d'identifiant commence par # (ex : #monTitre), tandis qu'un sélecteur de classe commence par un point."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En CSS, quel symbole préfixe un sélecteur de classe réutilisable ?",
+              "options": [
+                "Le point (.)",
+                "Le dièse (#)",
+                "L'étoile (*)",
+                "Le pourcentage (%)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le point (.) désigne une classe CSS (ex : .bouton-bleu), pouvant être appliquée à plusieurs éléments HTML différents."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans le modèle de boîte CSS (Box Model), que désigne la propriété 'padding' ?",
+              "options": [
+                "L'espace intérieur entre le contenu et la bordure",
+                "L'espace extérieur entre la bordure et les voisins",
+                "L'épaisseur du trait de contour",
+                "La largeur de la page web"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le padding est la marge intérieure séparant le contenu de son élément de sa propre bordure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans le modèle de boîte CSS, que désigne la propriété 'margin' ?",
+              "options": [
+                "L'espace extérieur entourant la boîte par rapport aux autres éléments",
+                "L'espace entre le texte et la bordure intérieure",
+                "La couleur de fond du texte",
+                "L'arrondi des angles de la bordure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La marge (margin) est l'espace extérieur séparant l'élément de ses voisins ou du conteneur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle technique CSS permet d'adapter la mise en page à la taille de l'écran (Responsive Web Design) ?",
+              "options": [
+                "Les Media Queries (@media)",
+                "Les balises <table> imbriquées",
+                "Le zoom matériel du moniteur",
+                "L'impression papier en continu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les Media Queries appliquent des règles de style conditionnelles en fonction de la résolution ou de la largeur d'écran de l'appareil."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle balise HTML permet de lier une feuille de style CSS externe dans le <head> d'un document ?",
+              "options": [
+                "<link rel='stylesheet' href='style.css'>",
+                "<style src='style.css'>",
+                "<css href='style.css'>",
+                "<script href='style.css'>"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La balise <link rel='stylesheet' href='...'> importe une feuille de style externe pour l'appliquer au document."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle valeur hexadécimale CSS correspond à la couleur blanche pure ?",
+              "options": ["#FFFFFF", "#000000", "#FF0000", "#00FF00"],
+              "correctAnswers": [0],
+              "explanation": "En synthèse additive RVB, #FFFFFF (ou #FFF) correspond au niveau maximal de rouge, vert et bleu, donnant le blanc."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "L'interactivité côté client avec JavaScript",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles actions peuvent être réalisées dans une page web grâce à JavaScript côté client ?",
+              "options": [
+                "Modifier dynamiquement le contenu du DOM",
+                "Réagir à un clic de souris de l'utilisateur",
+                "Réparer physiquement un câble réseau cassé",
+                "Augmenter la quantité de RAM de la machine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "JavaScript modifie le DOM en temps réel et écoute les événements utilisateurs (clics, frappe au clavier), mais n'agit pas sur le matériel physique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans quel environnement s'exécute le code JavaScript d'une page web standard ?",
+              "options": [
+                "Dans le navigateur web de l'utilisateur",
+                "Dans le câble réseau sous-marin",
+                "Dans l'antenne satellite",
+                "Dans le clavier de l'ordinateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "JavaScript est interprété directement par le moteur JS du navigateur de l'internaute (environnement côté client)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que représente l'acronyme DOM en développement web ?",
+              "options": [
+                "Document Object Model",
+                "Data Online Module",
+                "Digital Output Machine",
+                "Direct Operating Method"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le DOM est l'arborescence d'objets représentant la structure HTML de la page, manipulable dynamiquement en JavaScript."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle balise HTML permet d'intégrer ou de charger du code JavaScript dans une page ?",
+              "options": ["<script>", "<js>", "<program>", "<codejs>"],
+              "correctAnswers": [0],
+              "explanation": "La balise <script> (avec ou sans attribut src) permet d'insérer du code JavaScript dans une page HTML."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle méthode JavaScript permet d'afficher un message d'information dans la console de développement du navigateur ?",
+              "options": [
+                "console.log()",
+                "print.screen()",
+                "system.write()",
+                "alert.terminal()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "console.log() est la méthode standard pour écrire des messages de débogage dans la console des outils de développement web."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mot-clé JavaScript moderne permet de déclarer une variable dont la valeur ne sera jamais réassignée ?",
+              "options": ["const", "let", "var", "fixe"],
+              "correctAnswers": [0],
+              "explanation": "const déclare une constante en mémoire qui ne peut pas être réaffectée après son initialisation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une fonction qui s'exécute en réponse à une action de l'internaute (comme un clic ou le survol d'un bouton) ?",
+              "options": [
+                "Un gestionnaire d'événement (event listener)",
+                "Une boucle infinie",
+                "Un virus cheval de Troie",
+                "Un protocole de routage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un gestionnaire d'événement (addEventListener) surveille une action spécifique et déclenche une fonction en retour."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle fonction intégrée affiche une boîte de dialogue modale d'avertissement au visiteur ?",
+              "options": ["alert()", "prompt()", "popup()", "message()"],
+              "correctAnswers": [0],
+              "explanation": "alert('message') bloque temporairement l'interaction et affiche une fenêtre modale d'alerte dans le navigateur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel type de données JavaScript est utilisé pour stocker une valeur vraie ou fausse ?",
+              "options": [
+                "Un booléen (boolean)",
+                "Une chaîne (string)",
+                "Un nombre (number)",
+                "Un tableau (array)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les booléens n'acceptent que deux valeurs logiques : true (vrai) ou false (faux)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi est-il déconseillé d'effectuer des calculs de sécurité sensibles (comme le contrôle d'accès) exclusivement en JavaScript côté client ?",
+              "options": [
+                "L'utilisateur peut inspecter et modifier le code dans son navigateur",
+                "JavaScript ne fonctionne jamais sur téléphone portable",
+                "Le code JavaScript est payant à chaque ligne exécutée",
+                "Les ordinateurs récents ne supportent plus JavaScript"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le code client étant entièrement accessible et modifiable par l'utilisateur, toute vérification critique doit être validée côté serveur."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Le protocole HTTP et HTTPS",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont des méthodes (verbes) standard définies par le protocole HTTP ?",
+              "options": ["GET", "POST", "SEARCH_ALL", "DOWNLOAD_ZIP"],
+              "correctAnswers": [0, 1],
+              "explanation": "GET (demander une ressource) et POST (envoyer des données) sont des méthodes fondamentales du protocole HTTP."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le sigle HTTP ?",
+              "options": [
+                "HyperText Transfer Protocol",
+                "High Technology Test Port",
+                "Hyperlink Textual Private Program",
+                "Home Technical Transport Page"
+              ],
+              "correctAnswers": [0],
+              "explanation": "HTTP (HyperText Transfer Protocol) est le protocole de communication client-serveur utilisé pour échanger des ressources web."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie le 'S' final dans l'acronyme HTTPS ?",
+              "options": ["Secure", "Simple", "System", "Server"],
+              "correctAnswers": [0],
+              "explanation": "HTTPS signifie HyperText Transfer Protocol Secure : les communications sont chiffrées par le protocole cryptographique TLS."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel code de statut HTTP indique que la ressource demandée a été trouvée et transmise avec succès ?",
+              "options": [
+                "200 OK",
+                "404 Not Found",
+                "500 Internal Error",
+                "301 Moved"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le code 200 indique une réussite complète : le serveur a traité la requête et renvoie le contenu demandé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel code de statut HTTP informe le client que le fichier ou la page demandée est introuvable sur le serveur ?",
+              "options": [
+                "404 Not Found",
+                "200 OK",
+                "302 Found",
+                "403 Forbidden"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'erreur 404 signale que le serveur n'a rien trouvé à l'URL demandée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle méthode HTTP est couramment employée par un navigateur pour soumettre un formulaire contenant un mot de passe ?",
+              "options": ["POST", "GET", "DELETE", "HEAD"],
+              "correctAnswers": [0],
+              "explanation": "La méthode POST transmet les données dans le corps (body) de la requête plutôt que dans l'URL visible, évitant leur présence dans l'historique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que le protocole HTTP est 'sans état' (stateless) ?",
+              "options": [
+                "Chaque requête est indépendante et le serveur n'en conserve pas la mémoire par défaut",
+                "Il ne fonctionne dans aucun pays particulier",
+                "Il ne peut pas afficher de photos",
+                "Il s'arrête dès que la batterie faiblit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "HTTP est stateless : le serveur traite chaque requête isolément sans garder le souvenir automatique des interactions précédentes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel code de statut de la série 500 (comme 500 ou 503) indique généralement une anomalie ?",
+              "options": [
+                "Une erreur provenant du serveur lui-même",
+                "Une erreur de frappe de l'internaute dans l'URL",
+                "Un succès total sans contenu",
+                "Une redirection automatique vers la page d'accueil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les codes 5xx signalent que le serveur a rencontré une erreur interne ou une surcharge l'empêchant de satisfaire la demande."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel protocole cryptographique moderne garantit la confidentialité et l'intégrité des échanges dans HTTPS ?",
+              "options": [
+                "TLS (Transport Layer Security)",
+                "POP3",
+                "FTP",
+                "DNS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TLS (qui succède au protocole historique SSL) chiffre les données de la couche application entre le navigateur et le serveur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un en-tête (header) dans une requête ou une réponse HTTP ?",
+              "options": [
+                "Un ensemble de métadonnées fournissant des informations sur la transaction",
+                "La première image affichée en haut de l'écran",
+                "Le nom du propriétaire de l'ordinateur",
+                "Un câble de liaison réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les en-têtes HTTP transmettent des paramètres essentiels : type de contenu (Content-Type), langue, cookies, encodage ou logiciel utilisé."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Les URL et les hyperliens",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments font partie intégrante d'une URL complète comme 'https://www.exemple.fr:443/page.html?tri=date#section1' ?",
+              "options": [
+                "Le protocole (https)",
+                "Le nom de domaine ou hôte (www.exemple.fr)",
+                "L'empreinte digitale de l'utilisateur",
+                "Le numéro de série de la carte graphique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une URL se compose du schéma/protocole, de l'hôte, du port optionnel, du chemin, des paramètres de requête et d'un fragment."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le sigle URL ?",
+              "options": [
+                "Uniform Resource Locator",
+                "Universal Routing Line",
+                "United Resource Link",
+                "User Request Language"
+              ],
+              "correctAnswers": [0],
+              "explanation": "URL signifie Uniform Resource Locator (Localisateur Uniforme de Ressource) : c'est l'adresse unique d'un fichier ou service sur le Web."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans l'adresse 'https://www.exemple.com/articles/index.html', que représente '/articles/index.html' ?",
+              "options": [
+                "Le chemin d'accès (path) vers la ressource",
+                "Le protocole de sécurité",
+                "Le sous-domaine",
+                "Le mot de passe administrateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chemin (path) indique l'arborescence et le nom du fichier ciblé sur le serveur web distant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans l'URL 'https://moteur.fr/recherche?q=internet', que représente la partie '?q=internet' ?",
+              "options": [
+                "Les paramètres de requête (query string)",
+                "Le protocole",
+                "Le fragment d'ancre",
+                "Le nom de la machine cliente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chaîne de requête (query string) commence par un point d'interrogation et transmet des paires clé=valeur au serveur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans une URL, quel caractère introduit une ancre (fragment) renvoyant vers un endroit précis au sein de la page ?",
+              "options": [
+                "Le dièse (#)",
+                "L'arobase (@)",
+                "Le dollar ($)",
+                "L'astérisque (*)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fragment '#' permet au navigateur de faire défiler directement la page jusqu'à l'élément portant l'identifiant correspondant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un lien hypertexte brisé (lien mort) ?",
+              "options": [
+                "Un lien menant vers une ressource supprimée ou déplacée (erreur 404)",
+                "Un câble Ethernet physiquement coupé",
+                "Un bouton qui refuse d'être cliqué",
+                "Un lien qui télécharge un virus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un lien mort pointe vers une URL qui ne répond plus ou dont la page n'existe plus sur le serveur cible."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la différence entre une URL absolue et une URL relative ?",
+              "options": [
+                "L'absolue contient le protocole et le domaine, la relative dépend de l'emplacement courant",
+                "L'absolue est réservée aux payants, la relative est gratuite",
+                "L'absolue est écrite en minuscules, la relative en majuscules",
+                "L'absolue fonctionne sans connexion Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une URL absolue spécifie l'adresse complète (ex: https://site.com/doc.pdf), alors qu'une URL relative s'écrit par rapport au fichier en cours (ex: ./doc.pdf)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que risque un internaute qui clique sans précaution sur un lien hypertexte trompeur dans un email suspect ?",
+              "options": [
+                "Être victime d'hameçonnage (phishing) vers un faux site",
+                "Remplir automatiquement son disque dur d'eau",
+                "Détruire physiquement sa box Internet",
+                "Changer la marque de son écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hameçonnage incite l'utilisateur à saisir ses identifiants ou coordonnées bancaires sur une imitation frauduleuse d'un site légitime."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les caractères spéciaux comme les espaces ou les lettres accentuées sont-ils convertis (ex: %20) dans une URL ?",
+              "options": [
+                "Le standard des URL exige un encodage en caractères ASCII stricts",
+                "C'est une obligation légale sous peine d'amende",
+                "Pour économiser la mémoire vive de l'écran",
+                "Pour bloquer l'accès aux téléphones portables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'encodage pourcent (URL encoding) remplace les caractères non-ASCII ou réservés par leur code hexadécimal préfixé par %."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel attribut HTML de la balise <a> permet d'ouvrir un lien dans un nouvel onglet du navigateur ?",
+              "options": [
+                "target='_blank'",
+                "target='_newtab'",
+                "window='open'",
+                "href='new'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "target='_blank' ordonne au navigateur d'ouvrir le document lié dans un nouveau contexte de navigation (un nouvel onglet ou fenêtre)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Moteurs de recherche et indexation du Web",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les étapes principales de fonctionnement d'un moteur de recherche web ?",
+              "options": [
+                "L'exploration par des robots (crawling)",
+                "L'indexation et le classement des pages",
+                "L'envoi par courrier des résultats imprimés",
+                "La suppression définitive des sites visités"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un moteur de recherche envoie des robots collecter les pages (crawl), construit un gigantesque index, puis applique un algorithme de classement lors d'une requête."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les programmes automatisés d'un moteur de recherche qui parcourent le Web en suivant les liens ?",
+              "options": [
+                "Des robots d'exploration (spiders ou crawlers)",
+                "Des pirates informatiques",
+                "Des virus destructeurs",
+                "Des câbles intelligents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les crawlers ou spiders (comme Googlebot) scannent en permanence le Web de lien en lien pour découvrir de nouvelles pages."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel fichier placé à la racine d'un site web indique aux moteurs de recherche les pages qu'ils ont ou non le droit d'explorer ?",
+              "options": [
+                "robots.txt",
+                "sitemap.css",
+                "index.html",
+                "config.exe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fichier robots.txt donne des instructions aux robots d'indexation sur les répertoires ou URL à ne pas visiter."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le rôle d'un 'index inversé' dans un moteur de recherche ?",
+              "options": [
+                "Associer chaque mot-clé à la liste des documents où il apparaît",
+                "Trier les ordinateurs par date de fabrication",
+                "Inverser les lettres des mots pour les chiffrer",
+                "Afficher la page web à l'envers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'index inversé permet de retrouver en quelques millisecondes toutes les pages web contenant un terme de recherche donné."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel algorithme historique fondé sur la popularité des liens entrants a fait le succès initial de Google ?",
+              "options": [
+                "Le PageRank",
+                "L'algorithme de Dijkstra",
+                "Le tri rapide (quicksort)",
+                "L'algorithme MD5"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PageRank, conçu par Larry Page et Sergey Brin, mesure l'importance d'une page d'après le nombre et la réputation des hyperliens qui pointent vers elle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que désigne le sigle SEO en matière de sites internet ?",
+              "options": [
+                "Search Engine Optimization (Optimisation pour les moteurs de recherche)",
+                "System Execution Operating",
+                "Security Encryption Online",
+                "Social Email Organization"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le SEO (référencement naturel) regroupe l'ensemble des techniques visant à améliorer le positionnement d'une page dans les résultats d'un moteur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une 'bulle de filtres' générée par la personnalisation des algorithmes de recherche ?",
+              "options": [
+                "L'enfermement de l'utilisateur dans des contenus confortant ses opinions préalables",
+                "Un filtre qui nettoie physiquement l'écran",
+                "Une protection totale contre tous les virus",
+                "La mise en veille automatique de l'ordinateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La bulle de filtres isole l'internaute en lui proposant des résultats ultra-ciblés sur son profil, masquant la diversité des autres points de vue."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la principale source de revenus des grands moteurs de recherche commerciaux ?",
+              "options": [
+                "La publicité ciblée aux enchères de mots-clés",
+                "La vente de matériel informatique",
+                "L'abonnement payant obligatoire des internautes",
+                "Les subventions des musées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les moteurs financent leur infrastructure principalement grâce aux liens sponsorisés et annonces publicitaires ciblées affichées en tête de résultats."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel moteur de recherche met en avant la protection de la vie privée en ne traçant pas ses utilisateurs ?",
+              "options": [
+                "DuckDuckGo (ou Qwant)",
+                "Google Search",
+                "Yahoo!",
+                "Bing Ads"
+              ],
+              "correctAnswers": [0],
+              "explanation": "DuckDuckGo et Qwant se distinguent en garantissant l'absence de pistage publicitaire et la neutralité des résultats de recherche."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une recherche web, que permet l'utilisation des guillemets autour d'une expression (ex : \"effet de serre\") ?",
+              "options": [
+                "Chercher exactement l'expression avec les mots dans cet ordre précis",
+                "Supprimer tous les résultats contenant ces mots",
+                "Traduire la recherche en latin",
+                "Obliger le moteur à afficher des images uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les guillemets forcent le moteur à chercher l'expression exacte et continue, sans séparer les termes."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Sécurité, HTTPS et certificats SSL/TLS",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels objectifs de sécurité fondamentaux sont garantis par le protocole HTTPS ?",
+              "options": [
+                "Confidentialité des échanges",
+                "Authentification du serveur",
+                "Garantie que le site web est exempt de fausses informations",
+                "Augmentation de la vitesse de calcul du processeur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "HTTPS protège contre l'espionnage (confidentialité) et valide l'identité du serveur (certificat), mais ne certifie pas la véracité du contenu publié."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que voit un pirate qui intercepte les paquets d'une connexion HTTP non sécurisée ?",
+              "options": [
+                "Le texte en clair, y compris mots de passe et données transmises",
+                "Uniquement des étoiles (****)",
+                "Rien car les paquets s'effacent automatiquement",
+                "Une vidéo publicitaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En HTTP simple, toutes les données transitent en texte clair non chiffré, lisibles par quiconque écoute le trafic réseau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel symbole visuel apparaît généralement dans la barre d'adresse du navigateur pour indiquer une connexion HTTPS valide ?",
+              "options": [
+                "Un cadenas fermé",
+                "Un drapeau rouge",
+                "Une clé USB clignotante",
+                "Un sablier d'attente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cadenas fermé signale que la connexion est sécurisée par un certificat TLS valide et que le trafic est chiffré."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qui délivre un certificat électronique officiel pour attester de l'identité d'un site web ?",
+              "options": [
+                "Une autorité de certification (CA - Certificate Authority)",
+                "Le fabricant de la souris d'ordinateur",
+                "L'internaute qui visite le site",
+                "La mairie de la commune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une autorité de certification reconnue (comme Let's Encrypt ou DigiCert) vérifie la propriété du domaine et signe cryptographiquement le certificat."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel type de cryptographie repose sur une paire de clés : une clé publique partagée et une clé privée gardée secrète ?",
+              "options": [
+                "La cryptographie asymétrique",
+                "La cryptographie symétrique",
+                "Le code César par décalage de 3",
+                "Le code Morse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la cryptographie asymétrique, ce qui est chiffré avec la clé publique ne peut être déchiffré qu'avec la clé privée correspondante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une attaque où un cybercriminel s'interpose secrètement entre le client et le serveur pour intercepter ou altérer les messages ?",
+              "options": [
+                "L'attaque de l'homme du milieu (Man-In-The-Middle / MITM)",
+                "L'attaque par phishing",
+                "Le cheval de Troie",
+                "Le ver informatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'attaque MITM consiste à relayer clandestinement les communications en trompant les deux parties, ce contre quoi HTTPS protège."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si la date de validité d'un certificat SSL/TLS est expirée lorsque vous tentez d'accéder à un site ?",
+              "options": [
+                "Le navigateur affiche un avertissement de sécurité bloquant",
+                "L'ordinateur supprime son système d'exploitation",
+                "Le site web devient écrit à l'envers",
+                "L'écran s'éteint automatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le navigateur refuse d'accorder sa confiance et alerte l'utilisateur par un écran d'avertissement de sécurité majeur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel projet libre et gratuit a démocratisé l'adoption massive du HTTPS en automatisant la délivrance de certificats TLS ?",
+              "options": [
+                "Let's Encrypt",
+                "OpenOffice",
+                "VLC Media Player",
+                "Wikipedia"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Let's Encrypt est une autorité de certification gratuite et automatisée qui a permis de généraliser HTTPS sur le Web mondial."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que contient principalement un certificat numérique de site web ?",
+              "options": [
+                "La clé publique du serveur et l'identité du propriétaire",
+                "Le mot de passe administrateur du serveur",
+                "Les adresses IP de tous les visiteurs passés",
+                "Le code source complet du site"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le certificat embarque le nom de domaine, les dates de validité, la clé publique du site et la signature de l'autorité de certification."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un cadenas HTTPS vert ou fermé garantit-il à lui seul que le propriétaire du site n'est pas un escroc ?",
+              "options": [
+                "Non, il garantit seulement la sécurité technique de la liaison et non l'honnêteté du site",
+                "Oui, un site frauduleux ne peut jamais avoir de cadenas",
+                "Oui, la police inspecte chaque site avec cadenas",
+                "Oui, cela prouve que le site appartient à l'État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "HTTPS garantit que les données ne sont pas interceptées entre vous et le site, mais un cybercriminel peut créer un site de phishing sécurisé en HTTPS."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Cookies, traçage et données personnelles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels usages courants peuvent avoir les cookies déposés par un site web ?",
+              "options": [
+                "Mémoriser les articles dans un panier d'achat",
+                "Conserver la session connectée d'un compte",
+                "Nettoyer la poussière sur le processeur",
+                "Augmenter la taille du disque dur physique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les cookies sont de petits fichiers texte servant à maintenir l'état (panier, session, préférences), sans aucune interaction physique avec le matériel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un cookie informatique dans le contexte du Web ?",
+              "options": [
+                "Un petit fichier texte stocké par le navigateur à la demande d'un serveur",
+                "Un biscuit numérique à déguster",
+                "Un virus qui détruit les fichiers système",
+                "Un composant matériel soudé sur la carte mère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un cookie est un petit bloc de données transmis par le serveur web et mémorisé sur l'appareil de l'internaute."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la différence majeure entre un cookie interne (first-party) et un cookie tiers (third-party) ?",
+              "options": [
+                "Le cookie tiers est déposé par un domaine différent de celui que vous visitez",
+                "Le cookie tiers est payant pour l'utilisateur",
+                "Le cookie interne est obligatoirement un virus",
+                "Il n'y a aucune différence technique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un cookie tiers provient d'un service externe (comme une régie publicitaire) intégré sur la page consultée, permettant de pister la navigation sur plusieurs sites."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À quoi sert le pistage (traçage) des internautes à travers différents sites web ?",
+              "options": [
+                "Établir un profil publicitaire ciblé basé sur les centres d'intérêt",
+                "Augmenter la résolution des photos de l'écran",
+                "Supprimer les publicités indésirables",
+                "Accélérer la frappe au clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le traçage permet aux régies d'analyser les habitudes de navigation pour diffuser des annonces hautement personnalisées."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle législation européenne entrée en vigueur en 2018 protège les données personnelles et encadre l'utilisation des cookies ?",
+              "options": [
+                "Le RGPD (Règlement Général sur la Protection des Données)",
+                "Le Traité de Rome",
+                "La convention de Genève",
+                "La charte des télécoms"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le RGPD (ou GDPR en anglais) impose aux sites de recueillir le consentement explicite de l'utilisateur avant tout dépôt de traceurs non essentiels."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En France, quelle commission indépendante contrôle le respect de la vie privée numérique et sanctionne les abus ?",
+              "options": [
+                "La CNIL (Commission Nationale de l'Informatique et des Libertés)",
+                "La SNCF",
+                "L'Académie française",
+                "Le Conseil économique et social"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La CNIL veille à la protection des données personnelles et inflige des sanctions financières aux éditeurs ne respectant pas les règles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que permet le mode 'navigation privée' offert par les navigateurs modernes ?",
+              "options": [
+                "Ne pas enregistrer l'historique ni les cookies localement après fermeture",
+                "Rendre l'internaute totalement invisible pour son fournisseur d'accès",
+                "Rendre impossible tout piratage par des criminels",
+                "Télécharger gratuitement tous les films en ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La navigation privée efface l'historique local, le cache et les cookies à la fermeture, mais ne rend pas anonyme vis-à-vis du réseau ou des sites visités."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle technique de pistage sans cookie collecte les caractéristiques de l'appareil (police, écran, plugins) pour créer une empreinte unique ?",
+              "options": [
+                "L'empreinte de navigateur (browser fingerprinting)",
+                "Le scan de rétine à distance",
+                "L'écoute par le micro éteint",
+                "Le formatage par onde radio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fingerprinting combine de multiples paramètres de configuration du navigateur pour identifier un utilisateur de façon unique sans stocker de cookie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une donnée à caractère personnel selon le RGPD ?",
+              "options": [
+                "Toute information se rapportant à une personne physique identifiée ou identifiable",
+                "Uniquement le mot de passe bancaire",
+                "Uniquement le nom de famille",
+                "Seulement les photos d'identité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une donnée personnelle est toute information permettant d'identifier directement ou indirectement une personne (nom, IP, localisation, mail, etc.)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel droit conféré par le RGPD permet à un citoyen d'exiger la suppression de ses données d'une plateforme en ligne ?",
+              "options": [
+                "Le droit à l'effacement (droit à l'oubli)",
+                "Le droit de propriété intellectuelle",
+                "Le droit de vote",
+                "Le droit de grève"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article 17 du RGPD garantit le droit à l'effacement, obligeant les responsables de traitement à effacer les données personnelles sur demande."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Économie, droits d'auteur et accessibilité du Web",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels modèles économiques financent couramment la mise à disposition de services sur le Web ?",
+              "options": [
+                "La publicité ciblée et la monétisation des données",
+                "L'abonnement (modèle freemium ou paywall)",
+                "L'impôt universel sur le clic de souris",
+                "Le troc de denrées alimentaires"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La publicité, l'abonnement et la vente de données constituent les modèles économiques prédominants des services web."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que désignent les licences 'Creative Commons' pour les créateurs de contenus web ?",
+              "options": [
+                "Des contrats modulables autorisant le public à réutiliser une œuvre sous certaines conditions",
+                "Des brevets industriels interdisant toute copie",
+                "Des taxes payées directement aux moteurs de recherche",
+                "Des diplômes universitaires de programmation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les licences Creative Commons offrent un cadre juridique souple pour partager et autoriser la réutilisation légale d'œuvres numériques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans une licence Creative Commons, que signifie la condition 'BY' (Attribution) ?",
+              "options": [
+                "Obligation de créditer et citer l'auteur original de l'œuvre",
+                "Interdiction d'utiliser l'œuvre en France",
+                "Obligation de payer une redevance en monnaie locale",
+                "Autorisation de modifier l'œuvre sans rien dire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clause BY exige de mentionner le nom de l'auteur d'origine lors de toute diffusion ou réutilisation de son travail."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la clause 'NC' (Non-Commercial) dans une licence de contenu web ?",
+              "options": [
+                "Interdiction de tirer un profit commercial de la réutilisation de l'œuvre",
+                "Obligation de créer une entreprise commerciale",
+                "Interdiction de consulter l'œuvre sur un téléphone",
+                "Autorisation de vendre l'œuvre aux enchères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mention NC interdit toute exploitation commerciale ou lucrative de l'œuvre sans accord préalable explicite."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'accessibilité du Web (Web Accessibility / a11y) ?",
+              "options": [
+                "La conception de sites utilisables par tous, y compris les personnes en situation de handicap",
+                "La gratuité de tous les abonnements à Internet",
+                "L'obligation d'avoir une connexion à la fibre optique",
+                "La possibilité d'ouvrir un site depuis une télévision uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accessibilité permet aux personnes handicapées (visuelles, motrices, auditives, cognitives) de percevoir, comprendre et naviguer sur le Web."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel standard international établi par le W3C définit les règles d'accessibilité des contenus web ?",
+              "options": [
+                "Le WCAG (Web Content Accessibility Guidelines)",
+                "Le protocole POP3",
+                "La norme ISO 9001",
+                "La RFC 791"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les WCAG fournissent des critères précis (contrastes de couleurs, navigation clavier, alternatives textuelles) pour rendre le Web accessible."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le modèle économique offrant une version de base gratuite et des fonctionnalités avancées payantes ?",
+              "options": [
+                "Le modèle Freemium",
+                "Le modèle Open Source",
+                "Le modèle du mécénat royal",
+                "Le modèle du péage autoroutier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le terme 'freemium' associe 'free' (gratuit) et 'premium' (options payantes), très répandu dans les applications web."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi est-il interdit de copier librement une image trouvée sur un moteur de recherche pour l'illustrer sur son site commercial ?",
+              "options": [
+                "Elle est protégée par le droit d'auteur par le seul fait de sa création",
+                "Les images du Web perdent leurs couleurs lorsqu'on les copie",
+                "C'est techniquement impossible à enregistrer",
+                "Tous les serveurs bloquent le clic droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En droit d'auteur, toute œuvre originale est protégée dès sa création sans formalité : son exploitation requiert l'accord des ayants droit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi est-il indispensable d'assurer un contraste de couleur suffisant entre le texte et le fond d'une page web ?",
+              "options": [
+                "Pour permettre une lecture facile aux personnes malvoyantes ou daltoniennes",
+                "Pour réduire la consommation de papier lors de l'impression",
+                "Pour éviter que l'ordinateur ne surchauffe",
+                "Pour que le texte disparaisse la nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un contraste élevé est une exigence d'accessibilité indispensable pour la lisibilité de tous les utilisateurs, particulièrement ceux ayant des troubles visuels."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que désigne le concept de 'Dark Pattern' (piège à conviction) sur certains sites marchands ?",
+              "options": [
+                "Une interface trompeuse conçue pour manipuler l'utilisateur et l'inciter à acheter ou consentir",
+                "Un mode sombre qui repose les yeux",
+                "Un site web qui ne s'ouvre que la nuit",
+                "Un virus qui éteint l'écran de l'ordinateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les dark patterns exploitent des biais cognitifs (cases précochées trompeuses, désinscription complexe) pour forcer le comportement de l'internaute."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

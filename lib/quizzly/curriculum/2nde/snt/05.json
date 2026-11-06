@@ -1,0 +1,2673 @@
+{
+  "id": "2nde-snt-05",
+  "year": "2nde",
+  "subject": "snt",
+  "title": "Les données structurées",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Structurer",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Introduction aux données et métadonnées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une donnée en informatique ?",
+              "options": [
+                "Un élément d'information brut codé sous forme numérique",
+                "Un composant matériel de l'ordinateur",
+                "Un mot de passe chiffré",
+                "Une application de retouche d'image"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une donnée est un élément brut codé sous forme numérique, représentant un fait, une valeur ou une observation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la définition exacte d'une métadonnée ?",
+              "options": [
+                "Une donnée qui décrit ou apporte des informations sur une autre donnée",
+                "Une donnée détruite par un virus",
+                "Une unité de mesure de la vitesse d'un processeur",
+                "Un réseau social dédié au partage de fichiers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une métadonnée est une donnée qui sert à décrire une autre donnée (date, auteur, taille, géolocalisation)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Parmi ces éléments, lequel est une métadonnée typique d'une photographie numérique ?",
+              "options": [
+                "La date et l'heure de la prise de vue",
+                "La marque du processeur du serveur de stockage",
+                "Le nom du fournisseur d'électricité",
+                "Le système d'exploitation du destinataire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les métadonnées EXIF d'une image contiennent la date, l'heure, l'appareil utilisé et parfois la position géographique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi les données doivent-elles être structurées ?",
+              "options": [
+                "Pour faciliter leur stockage, leur recherche et leur traitement automatisé",
+                "Pour empêcher tout être humain de les consulter",
+                "Pour doubler la taille physique des disques durs",
+                "Pour bloquer l'accès à Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structurer les données permet d'automatiser leur lecture, leur tri et leur analyse par des programmes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre une donnée et une information ?",
+              "options": [
+                "L'information est une donnée contextualisée ayant un sens pour l'utilisateur",
+                "La donnée est toujours fausse alors que l'information est toujours vraie",
+                "Il n'existe aucune différence, les deux termes sont synonymes",
+                "Une information est nécessairement stockée sur une clé USB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une information naît lorsqu'une donnée brute est interprétée dans un contexte précis."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel format de métadonnées est couramment intégré aux photos JPEG prises par les smartphones ?",
+              "options": [
+                "Le format EXIF",
+                "Le format MP3",
+                "Le format HTML",
+                "Le format ZIP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le standard EXIF (Exchangeable Image File Format) enregistre les réglages optiques et les métadonnées de l'image."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Parmi ces exemples, lequel correspond à une donnée non structurée ?",
+              "options": [
+                "Un enregistrement audio brut d'une conversation",
+                "Un carnet d'adresses au format CSV",
+                "Une table d'élèves avec noms et dates de naissance",
+                "Un relevé de notes au format tableur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un enregistrement audio ou un texte libre n'a pas de structure de champs prédéfinie, c'est du non-structuré."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que permet la métadonnée de géolocalisation associée à une publication en ligne ?",
+              "options": [
+                "Identifier l'endroit géographique où la publication a été générée",
+                "Accélérer le débit de connexion réseau du serveur",
+                "Convertir automatiquement le texte dans une autre langue",
+                "Chiffrer le mot de passe de l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La géolocalisation enregistre les coordonnées spatiales (latitude et longitude) associées à un contenu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le volume gigantesque de données numériques produites en continu ?",
+              "options": [
+                "Les mégadonnées ou Big Data",
+                "Le microprocesseur",
+                "Le réseau local",
+                "La bande passante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le terme Big Data (ou mégadonnées) désigne des ensembles de données si volumineux qu'ils nécessitent des outils spécifiques."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels éléments constituent des métadonnées lors de l'envoi d'un courriel ?",
+              "options": [
+                "L'adresse de l'expéditeur et du destinataire",
+                "La date et l'heure d'envoi du message",
+                "Le modèle de clavier utilisé pour écrire",
+                "L'adresse IP du serveur d'expédition"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les en-têtes d'un courriel contiennent l'expéditeur, le destinataire, l'horodatage et les adresses IP de transit."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Formats de données et fichiers textes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un fichier en texte brut (plain text) ?",
+              "options": [
+                "Un fichier contenant uniquement des caractères encodés sans mise en forme visuelle",
+                "Un fichier vidéo compressé haute résolution",
+                "Un document comportant obligatoirement des images couleur",
+                "Un programme informatique exécutable directement par le processeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le texte brut ne contient que les caractères (lettres, chiffres, symboles) sans polices, couleurs ni gras."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel encodage de caractères est aujourd'hui le plus utilisé sur le Web et gère les accents universellement ?",
+              "options": ["UTF-8", "ASCII 7 bits", "Baudot", "Morse"],
+              "correctAnswers": [0],
+              "explanation": "UTF-8 est le standard mondial permettant de représenter tous les caractères de toutes les langues vivantes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de caractères différents la table ASCII historique standard à 7 bits permet-elle de coder ?",
+              "options": ["128", "256", "1024", "65536"],
+              "correctAnswers": [0],
+              "explanation": "Avec 7 bits, on dispose de 2 exposant 7 combinaisons, soit exactement 128 caractères codés de 0 à 127."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle extension de fichier est typique d'un fichier texte brut ?",
+              "options": [".txt", ".exe", ".mp4", ".png"],
+              "correctAnswers": [0],
+              "explanation": "L'extension .txt identifie un fichier texte générique lisible par n'importe quel éditeur de texte basique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi un fichier texte brut est-il qualifié d'interopérable ?",
+              "options": [
+                "Il peut être ouvert et traité sur tout système d'exploitation sans logiciel propriétaire",
+                "Il ne fonctionne que sur un modèle particulier d'ordinateur",
+                "Il s'efface automatiquement après 24 heures de stockage",
+                "Il bloque les copies d'écran illégales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'interopérabilité garantit qu'un format peut être lu et manipulé par des logiciels et systèmes divers."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si un texte écrit en UTF-8 contenant des accents est affiché avec un décodeur ASCII obsolète ?",
+              "options": [
+                "Des caractères étranges comme 'Ã©' apparaissent à la place des accents",
+                "L'ordinateur redémarre instantanément sans avertissement",
+                "Le fichier se transforme définitivement en fichier son",
+                "Toutes les lettres sont automatiquement passées en majuscules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un conflit d'encodage (mojibake) produit des glyphes incohérents en tentant d'interpréter 2 octets en 1 seul."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel caractère invisible signale généralement le passage à la ligne suivante dans un fichier texte ?",
+              "options": [
+                "Le retour chariot ou saut de ligne (CR / LF)",
+                "L'espace insécable",
+                "L'esperluette (&)",
+                "L'arobase (@)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le saut de ligne est représenté par les caractères de contrôle LF ('\\n') ou CRLF ('\\r\\n') selon les systèmes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la particularité d'un format ouvert (open format) ?",
+              "options": [
+                "Ses spécifications techniques sont publiques et libres d'accès pour tous",
+                "Il ne peut être lu que par les agents du gouvernement",
+                "Il nécessite l'achat d'une licence commerciale annuelle obligatoire",
+                "Il interdit l'enregistrement de texte chiffré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un format ouvert a une norme publique accessible garantissant la pérennité et l'indépendance technologique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Parmi ces formats, lequel est un format fermé ou propriétaire non libre par excellence ?",
+              "options": [
+                "Un format binaire dont la structure interne est tenue secrète par son éditeur",
+                "Le format CSV standard",
+                "Le format TXT encodé en UTF-8",
+                "Le format JSON open-source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un format fermé est la propriété exclusive d'une société qui n'en publie pas les spécifications complètes."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels formats parmi les suivants sont basés sur du texte brut structuré ?",
+              "options": [
+                "Le format CSV",
+                "Le format JSON",
+                "Le format XML",
+                "Le format binaire exécutable .EXE"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "CSV, JSON et XML sont des formats textuels structurés éditables avec un simple éditeur de texte."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le format CSV et ses séparateurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le sigle CSV en informatique ?",
+              "options": [
+                "Comma-Separated Values",
+                "Computer Structured Variables",
+                "Central System Vector",
+                "Common Server Virtualization"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CSV signifie 'Comma-Separated Values', soit des valeurs séparées par des virgules."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un fichier CSV, que représente généralement chaque ligne du fichier ?",
+              "options": [
+                "Un enregistrement (ou une ligne de données)",
+                "Le nom du dossier contenant le fichier",
+                "La signature numérique de l'administrateur",
+                "Une image vectorielle miniature"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un fichier CSV, chaque saut de ligne délimite un enregistrement distinct de la table."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel séparateur est fréquemment utilisé dans les pays francophones à la place de la virgule dans les fichiers CSV ?",
+              "options": [
+                "Le point-virgule (;)",
+                "Le point d'exclamation (!)",
+                "L'étoile (*)",
+                "Le signe plus (+)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme la virgule est le séparateur décimal en français (ex: 12,5), le point-virgule évite les ambiguïtés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que contient généralement la première ligne d'un fichier CSV bien conçu ?",
+              "options": [
+                "Les noms des descripteurs (en-têtes de colonnes)",
+                "Le mot de passe de l'utilisateur",
+                "L'heure précise de dernière modification",
+                "Le nombre total de caractères du document"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La première ligne (ligne d'en-tête) fournit les étiquettes nommant chacune des colonnes de données."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment délimite-t-on une valeur textuelle contenant elle-même le caractère séparateur dans un CSV ?",
+              "options": [
+                "En entourant le texte de guillemets doubles (ex: \"Paris, France\")",
+                "En supprimant immédiatement tous les espaces",
+                "En remplaçant les lettres par des zéros",
+                "En ajoutant trois points d'interrogation à la fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les guillemets doubles permettent d'indiquer que le séparateur fait partie intégrante du texte de la cellule."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le principal atout du format CSV ?",
+              "options": [
+                "Sa grande simplicité et sa compatibilité universelle entre tous les logiciels",
+                "Sa capacité à intégrer des vidéos en haute définition",
+                "Son cryptage inviolable automatique",
+                "Son interface tactile intégrée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le format CSV est universel : lisible par les tableurs, les bases de données et les langages de programmation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle limitation technique présente le format CSV par rapport à un classeur de tableur natif (.xlsx) ?",
+              "options": [
+                "Il ne conserve ni les formules de calcul, ni la couleur, ni les graphiques",
+                "Il ne peut pas être transféré par courrier électronique",
+                "Il refuse de stocker plus de 10 mots",
+                "Il est interdit d'usage sur les ordinateurs portables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le format CSV n'est que du texte brut : il ne sauvegarde aucune mise en forme, formule ou graphique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel autre séparateur courant est parfois utilisé dans les fichiers similaires appelés TSV ?",
+              "options": [
+                "La tabulation",
+                "Le symbole dollar ($)",
+                "Le tilde (~)",
+                "Le slash (/)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un fichier TSV (Tab-Separated Values), les colonnes sont séparées par une tabulation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Soit la ligne CSV suivante : 'Dupont;Marc;16;Nantes'. Quelle est la valeur de la 3e colonne ?",
+              "options": ["16", "Marc", "Dupont", "Nantes"],
+              "correctAnswers": [0],
+              "explanation": "En découpant selon le point-virgule, l'ordre est 1: Dupont, 2: Marc, 3: 16, 4: Nantes."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels logiciels sont capables d'ouvrir et de modifier nativement un fichier CSV ?",
+              "options": [
+                "Un tableur (LibreOffice Calc, Excel)",
+                "Un éditeur de texte brut (Bloc-notes, VS Code)",
+                "Un script Python avec le module csv",
+                "Un lecteur de carte bancaire sans écran"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les tableurs, les éditeurs de texte et les langages de programmation peuvent tous manipuler du CSV."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Descripteurs et types de données",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans une table de données, qu'appelle-t-on un descripteur (ou attribut) ?",
+              "options": [
+                "Le nom donné à une colonne définissant une propriété observée",
+                "Le nom de l'utilisateur qui a créé le fichier",
+                "La taille en octets du disque dur",
+                "Le câble qui relie l'ordinateur à l'écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un descripteur (ou attribut) correspond à une colonne et précise la nature des informations enregistrées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel type de données convient le mieux pour stocker l'âge d'un élève ?",
+              "options": [
+                "Entier (Integer)",
+                "Booléen (Boolean)",
+                "Image vectorielle",
+                "Flottant haute précision"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'âge en années se compte en nombres entiers positifs (14, 15, 16 ans, etc.)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel type de données utilise-t-on pour stocker une valeur qui ne peut être que VRAI ou FAUX ?",
+              "options": [
+                "Booléen",
+                "Chaîne de caractères",
+                "Nombre à virgule flottante",
+                "Matrice tridimensionnelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le type booléen ne prend que deux états logiques possibles : Vrai (True) ou Faux (False)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on le type de données servant à représenter un texte comme un nom ou une adresse ?",
+              "options": [
+                "Chaîne de caractères (string)",
+                "Entier signé",
+                "Date calendaire",
+                "Octet flottant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une séquence de lettres, chiffres et symboles textuels est modélisée par une chaîne de caractères."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi est-il crucial de typer correctement chaque colonne d'une table de données ?",
+              "options": [
+                "Pour permettre les calculs pertinents et garantir la cohérence des opérations",
+                "Pour obliger l'ordinateur à changer la couleur d'affichage",
+                "Pour diviser par deux la consommation électrique",
+                "Pour interdire l'utilisation de la souris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le typage évite d'additionner des mots ou de trier des nombres comme du texte (où '10' vient avant '2')."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le risque de stocker un code postal sous la forme d'un nombre entier ?",
+              "options": [
+                "Le zéro initial risque de disparaître (ex: 06000 devenant 6000)",
+                "L'ordinateur supprime la ville correspondante",
+                "Le document devient illisible sous Linux",
+                "Le fichier se verrouille par un mot de passe aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les entiers n'affichent pas les zéros initiaux. Un code postal doit donc être stocké comme une chaîne de caractères."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel type convient pour enregistrer le prix d'un produit avec centimes (ex: 19,99 €) ?",
+              "options": [
+                "Nombre décimal ou flottant (Float)",
+                "Booléen",
+                "Caractère unique",
+                "Tableau vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les nombres réels ou à virgule sont représentés en informatique par le type décimal ou flottant (float)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans une colonne de type Date, quel est le format international standardisé (norme ISO 8601) ?",
+              "options": [
+                "AAAA-MM-JJ (ex: 2026-05-14)",
+                "JJ/MM/AAAA (ex: 14/05/2026)",
+                "MM-JJ-AAAA (ex: 05-14-2026)",
+                "AAAA/JJ/MM (ex: 2026/14/05)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La norme ISO 8601 préconise l'ordre Année-Mois-Jour (YYYY-MM-DD), facilitant le tri chronologique automatique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que désigne le domaine de valeurs d'un descripteur ?",
+              "options": [
+                "L'ensemble des valeurs admissibles et valides pour cette colonne",
+                "L'adresse URL du serveur de l'entreprise",
+                "La distance physique entre les disques durs",
+                "Le nombre de ventilateurs de l'unité centrale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le domaine de valeurs définit les contraintes et valeurs autorisées pour un attribut donné (ex: note entre 0 et 20)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles données parmi les suivantes devraient être impérativement stockées sous forme de chaînes de caractères ?",
+              "options": [
+                "Un numéro de téléphone",
+                "Un numéro de sécurité sociale",
+                "Le nombre de frères et sœurs",
+                "Un identifiant comportant des lettres et des chiffres"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Téléphone, sécurité sociale et identifiants alphanumériques ne sont pas destinés à des calculs arithmétiques."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Les tables de données relationnelles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans le modèle relationnel, quelle est la structure géométrique de base servant à organiser les données ?",
+              "options": [
+                "Une table bidimensionnelle composée de lignes et de colonnes",
+                "Un cercle concentrique de pointeurs",
+                "Une chaîne linéaire d'instructions binaires",
+                "Une arborescence sans aucun lien transversal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une relation (ou table) se représente sous forme d'un tableau à deux dimensions (lignes et colonnes)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel synonyme mathématique désigne une ligne dans une table relationnelle ?",
+              "options": [
+                "Un n-uplet (ou tuple)",
+                "Un sommet",
+                "Un vecteur propre",
+                "Une médiane"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En théorie relationnelle (définie par Edgar F. Codd), une ligne correspond à un n-uplet ou tuple."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que représente concrètement chaque ligne d'une table d'une base de données d'un lycée ?",
+              "options": [
+                "Un enregistrement unique décrivant une entité particulière (ex: un élève)",
+                "Le titre du manuel scolaire",
+                "La liste de tous les professeurs réunis",
+                "Le plan du bâtiment administratif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque ligne rassemble l'ensemble des données d'un objet ou individu spécifique du monde réel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle condition fondamentale doit respecter chaque cellule d'une table relationnelle bien formée ?",
+              "options": [
+                "Elle doit contenir une valeur atomique (une seule information indivisible)",
+                "Elle doit contenir obligatoirement au moins trois phrases",
+                "Elle doit être coloriée en rouge ou en vert",
+                "Elle doit changer de valeur à chaque consultation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le principe d'atomicité impose qu'une cellule contienne une valeur élémentaire unique, non décomposable."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le logiciel spécialisé chargé de gérer, sécuriser et interroger les tables de données ?",
+              "options": [
+                "Un SGBD (Système de Gestion de Bases de Données)",
+                "Un navigateur web personnel",
+                "Un lecteur multimédia portable",
+                "Un compilateur C++"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un SGBD (DBMS en anglais) permet de stocker, modifier et interroger des bases de données de façon sécurisée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Parmi les logiciels suivants, lequel est un exemple de SGBD relationnel ?",
+              "options": [
+                "PostgreSQL",
+                "VLC Media Player",
+                "Adobe Photoshop",
+                "Mozilla Firefox"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PostgreSQL, MySQL, SQLite et Oracle sont des systèmes de gestion de bases de données relationnelles réputés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi évite-t-on de répéter les mêmes informations textuelles sur plusieurs lignes d'une table ?",
+              "options": [
+                "Pour éviter la redondance et éliminer les risques d'incohérence lors des mises à jour",
+                "Parce que les disques durs refusent d'écrire deux fois le même mot",
+                "Pour obliger l'utilisateur à taper plus vite au clavier",
+                "Pour masquer les données aux pirates"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éviter la redondance préserve la cohérence : modifier une valeur à un seul endroit met à jour l'information partout."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment organise-t-on les données lorsque des élèves sont inscrits dans plusieurs clubs d'activités ?",
+              "options": [
+                "On crée plusieurs tables reliées entre elles par des identifiants",
+                "On écrit tous les clubs dans une seule case séparés par des tirets",
+                "On duplique le fichier sur dix disques différents",
+                "On supprime les élèves ayant plus d'un club"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le modèle relationnel répartit les données en plusieurs tables distinctes reliées par des clés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que désigne la 'cardinalité' d'une table relationnelle ?",
+              "options": [
+                "Le nombre total de lignes (enregistrements) présentes dans la table",
+                "Le nombre de colonnes uniquement",
+                "Le poids en mégaoctets du fichier",
+                "La vitesse de rotation du ventilateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cardinalité d'une table est le nombre de n-uplets (lignes) qu'elle contient à un instant donné."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels sont les avantages d'une base de données relationnelle par rapport à un simple fichier texte ?",
+              "options": [
+                "Gestion efficace des accès simultanés par plusieurs utilisateurs",
+                "Intégrité et sécurité des données garanties",
+                "Recherches et requêtes très rapides même sur des millions de lignes",
+                "Impossibilité totale d'être consultée sur un réseau"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Un SGBD garantit la concurrence d'accès, la sécurité transactionnelle et des performances d'indexation optimales."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Clés primaires et intégrité des données",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une clé primaire dans une table de base de données ?",
+              "options": [
+                "Un attribut dont la valeur identifie de manière unique chaque enregistrement",
+                "Le mot de passe administrateur pour démarrer le serveur",
+                "Le numéro de série de la carte mère de l'ordinateur",
+                "La première colonne contenant obligatoirement du texte en majuscules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clé primaire garantit que chaque ligne est distincte de toutes les autres sans la moindre ambiguïté."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle condition une clé primaire doit-elle impérativement respecter pour chaque ligne ?",
+              "options": [
+                "Elle doit être unique et non nulle (NOT NULL)",
+                "Elle doit contenir au moins vingt caractères",
+                "Elle doit être modifiée toutes les dix minutes",
+                "Elle doit être composée uniquement de voyelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une clé primaire ne peut jamais être vide (nulle) et chaque valeur doit être strictement unique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Parmi ces attributs, lequel ferait une bonne clé primaire pour un citoyen français ?",
+              "options": [
+                "Le numéro de sécurité sociale (NIR)",
+                "Le prénom d'usage",
+                "Le nom de famille",
+                "La couleur des yeux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux personnes peuvent avoir les mêmes nom et prénom, mais le numéro de sécurité sociale est strictement individuel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on une clé étrangère (foreign key) ?",
+              "options": [
+                "Un attribut d'une table qui fait référence à la clé primaire d'une autre table",
+                "Un mot de passe traduit dans une langue étrangère",
+                "Une clé USB fabriquée dans un autre pays",
+                "Un virus informatique provenant de l'étranger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clé étrangère établit le lien logique entre deux tables en pointant vers la clé primaire d'une table cible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi évite-t-on d'utiliser le nom de famille comme clé primaire dans une base d'élèves ?",
+              "options": [
+                "À cause du risque d'homonymes (plusieurs élèves portant le même nom)",
+                "Parce que les noms sont trop difficiles à prononcer pour le SGBD",
+                "Parce qu'un nom de famille change automatiquement tous les ans",
+                "Parce que la loi interdit d'enregistrer des lettres dans une base"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux élèves peuvent porter le même nom (ex: Martin), ce qui violerait la règle d'unicité de la clé primaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que garantit la contrainte d'intégrité référentielle ?",
+              "options": [
+                "Qu'une clé étrangère fait toujours référence à un enregistrement existant dans l'autre table",
+                "Que tous les disques durs ont la même vitesse de rotation",
+                "Que le système est protégé contre les pannes d'électricité",
+                "Que le serveur est connecté en fibre optique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intégrité référentielle empêche de créer des liens orphelins pointant vers des lignes inexistantes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une clé primaire artificielle (ou substitution) ?",
+              "options": [
+                "Un identifiant numérique généré automatiquement (comme id_eleve = 1, 2, 3...)",
+                "Un faux mot de passe pour piéger les espions",
+                "Une formule mathématique imaginaire",
+                "Une étiquette autocollante posée sur le serveur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une clé artificielle (ex: un compteur auto-incrémenté) est créée spécialement pour servir d'identifiant unique simple."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si l'on tente d'insérer une ligne avec une clé primaire déjà présente dans la table ?",
+              "options": [
+                "Le SGBD rejette l'opération et signale une erreur de violation d'unicité",
+                "Le SGBD formate immédiatement le disque dur",
+                "La ligne existante est supprimée sans avertissement",
+                "Le système ignore l'erreur et fusionne les deux lignes au hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le SGBD bloque l'insertion pour préserver l'intégrité de la table dès qu'un doublon de clé primaire survient."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une clé primaire peut-elle être composée de plusieurs attributs associés ?",
+              "options": [
+                "Oui, on parle alors de clé primaire composite",
+                "Non, une clé primaire est obligatoirement constituée d'une seule colonne",
+                "Uniquement si la table contient moins de dix lignes",
+                "Uniquement si l'ordinateur possède deux écrans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une clé composite rassemble deux colonnes ou plus (ex: code_cours et id_eleve) pour assurer l'unicité."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés caractérisent obligatoirement une clé primaire valide ?",
+              "options": [
+                "L'unicité de sa valeur pour chaque enregistrement",
+                "L'interdiction formelle de posséder une valeur nulle (NOT NULL)",
+                "L'obligation d'être écrite en lettres majuscules",
+                "L'invariabilité idéale dans le temps pour un enregistrement donné"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Une clé primaire doit être unique, jamais nulle, et stable dans le temps pour éviter de rompre les relations."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Données ouvertes et Open Data",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'Open Data (données ouvertes) ?",
+              "options": [
+                "Des données numériques publiques, librement accessibles et réutilisables par tous sans restriction technique ou financière",
+                "Des dossiers médicaux confidentiels publiés par erreur sur le Dark Web",
+                "Un logiciel payant de comptabilité d'entreprise",
+                "Un protocole de réseau militaire ultraconfidentiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Open Data désigne des données produites par des organismes publics ou privés mises à disposition de tous."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle plateforme nationale française regroupe les données publiques ouvertes de l'État ?",
+              "options": [
+                "data.gouv.fr",
+                "impots.gouv.fr",
+                "legifrance.gouv.fr",
+                "service-public.fr"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le portail data.gouv.fr centralise et publie les jeux de données ouvertes mis à disposition par les services publics."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Parmi les formats suivants, lequel est privilégié pour diffuser des données ouvertes interopérables ?",
+              "options": [
+                "Le format CSV ouvert et standardisé",
+                "Un format propriétaire fermé nécessitant un logiciel payant",
+                "Une capture d'écran au format image fixe non indexable",
+                "Un fichier binaire chiffré sans documentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Open Data exige des formats ouverts, textuels et documentés comme CSV ou JSON pour faciliter la réutilisation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelles données ne doivent JAMAIS être publiées en Open Data sans anonymisation préalable ?",
+              "options": [
+                "Les données à caractère personnel identifiant des personnes physiques",
+                "Les horaires de passage des trains et bus",
+                "La liste des monuments historiques nationaux",
+                "Les relevés météorologiques des stations publiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vie privée est protégée par la loi : les données nominatives ou sensibles ne peuvent pas être publiées sans anonymisation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En quoi consiste l'anonymisation d'un jeu de données ?",
+              "options": [
+                "Supprimer ou masquer toute information permettant d'identifier directement ou indirectement un individu",
+                "Traduire toutes les données en langue espéranto",
+                "Réduire la résolution de l'écran du lecteur",
+                "Compresser le fichier au format ZIP avec mot de passe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anonymisation garantit qu'il est impossible de réidentifier une personne physique à partir des données publiées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est un exemple classique de réutilisation citoyenne des données ouvertes ?",
+              "options": [
+                "Une application mobile calculant le meilleur itinéraire de transports urbains en temps réel",
+                "Le piratage du compte bancaire d'un élu local",
+                "La destruction des archives municipales",
+                "Le blocage du réseau téléphonique d'une ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les applications d'itinéraires et de cartographie exploitent les données ouvertes des transports publics."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que définit la licence d'un jeu de données ouvertes (ex: Licence Ouverte ou ODbL) ?",
+              "options": [
+                "Les droits et conditions de réutilisation, de modification et de diffusion accordés à l'utilisateur",
+                "Le prix de vente obligatoire de chaque téléchargement",
+                "L'adresse physique du serveur hébergeur",
+                "La liste des marques de disques durs autorisées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La licence fixe les règles du jeu (obligation de citer la source, partage sous conditions identiques, etc.)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la publication en Open Data favorise-t-elle la démocratie et la transparence ?",
+              "options": [
+                "Elle permet aux citoyens, chercheurs et journalistes de vérifier et d'analyser l'action publique",
+                "Elle remplace les élections par des algorithmes",
+                "Elle rend obligatoire le vote par smartphone",
+                "Elle interdit les débats politiques dans les médias"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accès aux données publiques permet un contrôle citoyen éclairé sur la gestion des deniers et services publics."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi scanner un tableau imprimé sur papier et le publier en PDF n'est-il pas une bonne pratique d'Open Data ?",
+              "options": [
+                "Parce que les données sous forme d'image ne sont pas directement exploitables par un programme informatique",
+                "Parce que le format PDF est interdit en France",
+                "Parce que le scanner consomme trop d'électricité",
+                "Parce qu'un document scanné s'efface au bout d'une semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Open Data exige des données lisibles par machine (machine-readable) afin de permettre les calculs automatiques."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi ces types de données, lesquels sont couramment diffusés en Open Data par les collectivités territoriales ?",
+              "options": [
+                "Les horaires et trajets du réseau de bus municipal",
+                "Les emplacements des défibrillateurs cardiaques en ville",
+                "Les relevés bancaires personnels du maire",
+                "Les menus des cantines scolaires de la semaine"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Transports, équipements d'urgence et cantines scolaires sont des données publiques d'intérêt général."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Formats XML et JSON",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie l'acronyme JSON ?",
+              "options": [
+                "JavaScript Object Notation",
+                "Java System Operator Network",
+                "Joint Socket Open Node",
+                "Jupiter Scientific Optical Number"
+              ],
+              "correctAnswers": [0],
+              "explanation": "JSON signifie JavaScript Object Notation. C'est un format textuel léger d'échange de données très populaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels symboles délimitent un objet contenant des paires clé/valeur en format JSON ?",
+              "options": [
+                "Les accolades { }",
+                "Les crochets [ ]",
+                "Les chevrons < >",
+                "Les barres obliques / /"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En JSON, les accolades { } encadrent un objet composé de paires 'clé': valeur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quels symboles délimitent une liste ordonnée (tableau) de valeurs en format JSON ?",
+              "options": [
+                "Les crochets [ ]",
+                "Les accolades { }",
+                "Les parenthèses ( )",
+                "Les dièses # #"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En JSON, les crochets [ ] définissent un tableau (array) ordonné d'éléments."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment les clés d'un objet JSON doivent-elles obligatoirement être écrites ?",
+              "options": [
+                "Entre guillemets doubles (ex: \"nom\")",
+                "En lettres capitales sans guillemets",
+                "Entre simples apostrophes",
+                "Précédées du symbole dollar ($)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La norme JSON stricte impose que toutes les clés soient des chaînes encadrées de guillemets doubles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie l'acronyme XML ?",
+              "options": [
+                "Extensible Markup Language",
+                "Extended Matrix Logic",
+                "Extra Mega Link",
+                "Executive Memory Level"
+              ],
+              "correctAnswers": [0],
+              "explanation": "XML signifie Extensible Markup Language. C'est un langage de balisage utilisé pour structurer des documents."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la structure syntaxique fondamentale utilisée en XML pour délimiter une donnée ?",
+              "options": [
+                "Des balises ouvrantes et fermantes (ex: <ville>Lyon</ville>)",
+                "Des tirets du bas successifs",
+                "Des pourcentages de chaque côté du mot",
+                "Des points d'exclamation répétés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme en HTML, XML structure les données à l'aide de balises imbriquées <balise>contenu</balise>."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le grand avantage de JSON par rapport au format CSV plat ?",
+              "options": [
+                "Il permet de représenter facilement des données hiérarchiques et imbriquées",
+                "Il ne s'affiche qu'en trois dimensions",
+                "Il est impossible à lire pour un être humain",
+                "Il réduit la taille des disques de stockage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "JSON gère naturellement les arborescences et objets imbriqués, contrairement à la grille plate du CSV."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle valeur booléenne valide peut-on écrire en JSON ?",
+              "options": [
+                "true ou false (en minuscules sans guillemets)",
+                "VRAI ou FAUX en français",
+                "YES ou NO en majuscules",
+                "1 ou 0 obligatoirement entre guillemets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En JSON, les valeurs booléennes littérales sont true et false en minuscules."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel format est aujourd'hui le plus couramment utilisé dans les API web modernes pour échanger des données ?",
+              "options": [
+                "JSON",
+                "Format disquette 3.5 pouces",
+                "PostScript brut",
+                "Fichier audio WAV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "JSON est devenu le standard de fait pour l'échange de données entre les applications web et les serveurs (API REST)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi ces types de données, lesquels sont nativement reconnus et acceptés dans la spécification standard de JSON ?",
+              "options": [
+                "Les nombres (entiers et décimaux)",
+                "Les chaînes de caractères délimitées par des guillemets",
+                "Les fonctions programmables en langage C",
+                "La valeur nulle représentée par null"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "JSON supporte les chaînes, nombres, booléens, tableaux, objets et la valeur spéciale null."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Modélisation et schémas relationnels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le schéma d'une relation (ou table) en informatique ?",
+              "options": [
+                "La description formelle de son nom et de l'ensemble de ses attributs avec leurs types",
+                "Le dessin du logo de l'entreprise qui héberge le serveur",
+                "Le schéma de câblage électrique du centre de données",
+                "L'organigramme des employés du service informatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le schéma d'une relation définit la structure théorique : nom de la table, colonnes, types et contraintes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans l'écriture textuelle d'un schéma relationnel, comment signale-t-on traditionnellement la clé primaire ?",
+              "options": [
+                "En soulignant le nom de l'attribut (ou en le préfixant par #)",
+                "En barrant le mot avec une croix",
+                "En écrivant le nom à l'envers",
+                "En le surlignant obligatoirement en jaune fluo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La convention académique consiste à souligner l'attribut clé primaire dans le schéma de la relation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Considérons le schéma : Eleve(id_eleve, nom, prenom, classe). Que représente 'id_eleve' ?",
+              "options": [
+                "La clé primaire identifiant chaque élève de façon unique",
+                "Le numéro de téléphone du lycée",
+                "Le nombre total d'élèves de l'établissement",
+                "La moyenne générale de l'élève"
+              ],
+              "correctAnswers": [0],
+              "explanation": "id_eleve est l'identifiant unique servant de clé primaire pour chaque ligne de la table Eleve."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi décompose-t-on une grande table contenant toutes les données en plusieurs tables plus petites ?",
+              "options": [
+                "Pour normaliser les données et supprimer les redondances et anomalies de modification",
+                "Pour ralentir volontairement les recherches sur le serveur",
+                "Pour obliger l'achat de plusieurs disques durs",
+                "Pour compliquer la tâche des élèves en cours de SNT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La décomposition en tables reliées (normalisation) évite de répéter des informations et préserve la cohérence."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment modélise-t-on une relation où un élève emprunte un livre dans une table 'Emprunt' ?",
+              "options": [
+                "En intégrant la clé primaire de l'élève et la clé primaire du livre comme clés étrangères",
+                "En copiant l'intégralité du texte du livre dans la fiche de l'élève",
+                "En effaçant l'élève de la table tant qu'il n'a pas rendu le livre",
+                "En créant un nouveau document texte sur le bureau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La table d'association stocke les clés étrangères id_eleve et id_livre ainsi que la date d'emprunt."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la notion d'indépendance logique et physique des données dans un SGBD ?",
+              "options": [
+                "La façon dont les données sont organisées logiquement ne dépend pas de leur mode de stockage physique sur le disque",
+                "Le disque dur peut fonctionner sans être alimenté en électricité",
+                "Les données peuvent s'effacer toutes seules sans prévenir",
+                "L'écran de l'ordinateur fonctionne sans carte graphique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'utilisateur manipule des tables logiques sans avoir à se soucier des blocs et secteurs physiques du disque."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une anomalie de suppression dans une base mal modélisée sans relations ?",
+              "options": [
+                "La perte involontaire d'une information précieuse lors de la suppression d'une ligne",
+                "Une panne du bouton de la souris",
+                "Une coupure de connexion Internet",
+                "Le blocage du ventilateur du processeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si l'on supprime le dernier élève d'une classe dans une table non normalisée, les infos de la classe disparaissent aussi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans un diagramme entité-association, comment représente-t-on visuellement les relations entre deux tables ?",
+              "options": [
+                "Par des liens (traits) fléchés reliant les clés primaires et étrangères",
+                "Par des cercles rouges qui clignotent",
+                "Par des photographies des administrateurs réseau",
+                "Par des sons enregistrés sous forme d'ondes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les liens du diagramme symbolisent les relations et contraintes d'intégrité entre clés primaires et clés étrangères."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que représente la valeur spéciale NULL dans une table relationnelle ?",
+              "options": [
+                "L'absence d'information, une valeur inconnue ou non applicable",
+                "Le chiffre zéro (0)",
+                "Une chaîne de caractères vide contenant une espace",
+                "Une faute d'orthographe de l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "NULL exprime l'absence de valeur ou une valeur inconnue, ce qui est conceptuellement différent de 0 ou d'un texte vide."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels objectifs poursuit une bonne modélisation de base de données relationnelle ?",
+              "options": [
+                "Minimiser les duplications d'informations inutiles",
+                "Garantir la cohérence et l'intégrité des enregistrements",
+                "Faciliter les évolutions futures de la structure des données",
+                "Empêcher définitivement l'ajout de nouveaux utilisateurs"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Un schéma bien conçu élimine les redondances, garantit l'intégrité et permet de faire évoluer la base facilement."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Sécurité et protection des données personnelles (RGPD)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une donnée à caractère personnel selon la loi ?",
+              "options": [
+                "Toute information relative à une personne physique identifiée ou identifiable directement ou indirectement",
+                "Le numéro de série d'une imprimante de bureau",
+                "La température de la salle des serveurs",
+                "La liste des composants chimiques de l'eau minérale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un nom, un numéro de téléphone, une adresse IP ou une plaque d'immatriculation sont des données personnelles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le sigle RGPD ?",
+              "options": [
+                "Règlement Général sur la Protection des Données",
+                "Réseau Global de Partage de Documents",
+                "Registre Général des Programmes Décentralisés",
+                "Rassemblement Géographique pour la Protection Digitale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le RGPD est le règlement européen encadrant le traitement des données personnelles au sein de l'Union européenne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle autorité administrative indépendante veille en France à la protection des données personnelles ?",
+              "options": [
+                "La CNIL (Commission Nationale de l'Informatique et des Libertés)",
+                "L'Arcom (ex-CSA)",
+                "La Banque de France",
+                "Météo France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La CNIL est le régulateur français chargé de protéger la vie privée et les libertés individuelles numériques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel droit fondamental permet à un citoyen d'exiger la suppression de ses données sur une plateforme en ligne ?",
+              "options": [
+                "Le droit à l'effacement (ou droit à l'oubli)",
+                "Le droit de propriété intellectuelle sur les câbles",
+                "Le droit de pirater le serveur en représailles",
+                "Le droit d'accès payant prioritaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le droit à l'effacement permet à toute personne de demander la suppression de ses données sous certaines conditions."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'impose le principe de minimisation des données garanti par le RGPD ?",
+              "options": [
+                "De ne collecter que les données strictement nécessaires à la finalité du service proposé",
+                "D'écrire toutes les données avec une police de taille 6",
+                "De limiter le nombre d'utilisateurs d'un site à 100 personnes",
+                "De supprimer toutes les données tous les soirs à minuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le responsable de traitement ne doit pas collecter d'informations superflues par rapport à l'objectif recherché."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que doit faire une entreprise en cas de fuite ou de vol massif de données personnelles de ses clients ?",
+              "options": [
+                "Notifier la violation à la CNIL et informer les personnes concernées dans les meilleurs délais",
+                "Cacher l'incident et nier toute responsabilité publique",
+                "Supprimer son site web pour faire disparaître les preuves",
+                "Augmenter immédiatement les tarifs de ses abonnements"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le RGPD impose de signaler toute fuite de données à l'autorité compétente (la CNIL) sous 72 heures."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une donnée sensible au sens du RGPD nécessitant une protection renforcée ?",
+              "options": [
+                "Une donnée révélant l'état de santé, les opinions politiques ou les convictions religieuses",
+                "La météo observée un mardi matin",
+                "Le nombre de pages d'un dictionnaire",
+                "L'altitude maximale du mont Blanc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les données de santé, génétiques, biométriques, politiques ou religieuses sont soumises à une interdiction de principe de collecte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que permet le droit d'accès garanti par le RGPD ?",
+              "options": [
+                "Obtenir la confirmation que ses données sont traitées et en recevoir une copie complète",
+                "Entrer gratuitement dans les locaux physiques de l'entreprise",
+                "Prendre le contrôle du compte des autres utilisateurs",
+                "Consulter les mots de passe des administrateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le droit d'accès permet à chacun de savoir quelles données sont détenues sur lui et l'usage qui en est fait."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel rôle joue le Délégué à la Protection des Données (DPO) dans un organisme ?",
+              "options": [
+                "Il conseille l'organisme et contrôle sa conformité avec le RGPD",
+                "Il conçoit les campagnes publicitaires sur les réseaux sociaux",
+                "Il répare les pannes matérielles des ordinateurs portables",
+                "Il rédige les contrats de vente commerciale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le DPO (Data Protection Officer) est le garant interne de la légalité des traitements de données personnelles."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les suivants, quels droits font partie des droits des personnes garantis par le RGPD ?",
+              "options": [
+                "Le droit de rectification des données inexactes",
+                "Le droit à la portabilité de ses données vers un autre service",
+                "Le droit d'opposition à certains traitements de profilage",
+                "Le droit de revendre les données de ses camarades de classe"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Rectification, portabilité, opposition, effacement et accès forment le socle des droits fondamentaux du citoyen."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Traiter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Recherche et tri dans une table",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En quoi consiste l'opération de tri dans une table de données ?",
+              "options": [
+                "Réorganiser l'ordre des lignes selon les valeurs d'une ou plusieurs colonnes",
+                "Effacer définitivement toutes les valeurs impaires",
+                "Colorer une cellule sur deux en bleu",
+                "Changer l'encodage du fichier en code morse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trier consiste à réordonner les enregistrements selon un critère précis (alphabétique, numérique, chronologique)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie un tri par ordre croissant pour une colonne contenant des dates de naissance ?",
+              "options": [
+                "De la date la plus ancienne vers la date la plus récente (les plus âgés d'abord)",
+                "De la date la plus récente vers la date la plus ancienne",
+                "Par ordre alphabétique des jours de la semaine",
+                "Dans un ordre aléatoire déterminé au hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour des dates, l'ordre croissant progresse dans le temps : de la date la plus reculée vers la plus proche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si l'on trie alphabétiquement les nombres '10', '2', '100' stockés sous forme de texte ?",
+              "options": [
+                "L'ordre obtenu sera '10', '100', '2'",
+                "L'ordre obtenu sera '2', '10', '100'",
+                "Le logiciel signale une division par zéro",
+                "Tous les chiffres sont automatiquement convertis en lettres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un tri lexicographique (texte), le caractère '1' précédant '2', '10' et '100' arrivent avant '2'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En quoi consiste un tri multi-critères (ou tri à plusieurs niveaux) ?",
+              "options": [
+                "Trier selon une première colonne, puis départager les ex æquo avec une deuxième colonne",
+                "Appliquer trois tris sur trois ordinateurs différents",
+                "Supprimer une ligne sur deux à chaque étape",
+                "Mélanger les noms des colonnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : trier d'abord par classe, puis par nom de famille pour les élèves d'une même classe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel algorithme de recherche examine les lignes une par une du début à la fin de la table ?",
+              "options": [
+                "La recherche séquentielle (ou linéaire)",
+                "La recherche dichotomique",
+                "Le tri fusion",
+                "Le hachage cryptographique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La recherche linéaire inspecte chaque élément consécutivement jusqu'à trouver la cible ou atteindre la fin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle condition préalable est impérative pour pouvoir utiliser une recherche dichotomique ultra-rapide ?",
+              "options": [
+                "Les données doivent être préalablement triées selon la clé de recherche",
+                "La table doit comporter exactement 100 lignes",
+                "L'ordinateur doit être relié à Internet par câble",
+                "Le fichier doit être au format PNG"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dichotomie divise par deux l'espace de recherche à chaque étape, ce qui exige des données strictement ordonnées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que permet la création d'un index dans un Système de Gestion de Bases de Données (SGBD) ?",
+              "options": [
+                "Accélérer considérablement les recherches de lignes sans parcourir toute la table",
+                "Changer la langue du système d'exploitation",
+                "Imprimer automatiquement les résultats sur papier",
+                "Réduire de moitié la facture d'électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un index fonctionne comme l'index d'un livre : il pointe directement vers l'emplacement physique des enregistrements."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un tri qui conserve l'ordre relatif initial des éléments ayant la même valeur ?",
+              "options": [
+                "Un tri stable",
+                "Un tri binaire",
+                "Un tri éphémère",
+                "Un tri réversible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un algorithme de tri est dit stable s'il préserve l'ordre initial des enregistrements possédant des clés égales."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans un tableur, que risque-t-on si l'on trie une seule colonne sans étendre la sélection à toute la table ?",
+              "options": [
+                "Dissocier les données et mélanger les attributs des personnes (incohérence totale)",
+                "Provoquer une explosion du disque dur",
+                "Changer définitivement la langue du clavier",
+                "Effacer le système d'exploitation Windows"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne trier qu'une colonne sans déplacer le reste de la ligne associe le nom de quelqu'un à l'âge d'un autre."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels types de tris peuvent être appliqués sur une table d'élèves ?",
+              "options": [
+                "Tri alphabétique croissant sur le nom de famille",
+                "Tri numérique décroissant sur la moyenne générale",
+                "Tri chronologique croissant sur la date de naissance",
+                "Tri aléatoire destructif supprimant les voyelles"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les tris alphabétiques, numériques et chronologiques sont les tris standards utilisés sur les données structurées."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Filtrage et sélection conditionnelle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En quoi consiste l'opération de filtrage (ou sélection) sur une table de données ?",
+              "options": [
+                "Conserver uniquement les lignes qui satisfont une condition ou un critère donné",
+                "Remplacer les lettres par des images de filtre à café",
+                "Changer la couleur du texte à l'écran",
+                "Ajouter cinq lignes vides au hasard dans le fichier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtrer extrait un sous-ensemble d'enregistrements répondant à une condition logique précise (ex: ville = 'Lyon')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel opérateur logique utilise-t-on pour filtrer les lignes satisfaisant simultanément deux conditions indispensables ?",
+              "options": [
+                "L'opérateur ET (AND)",
+                "L'opérateur OU (OR)",
+                "L'opérateur NON (NOT)",
+                "L'opérateur DIVISION"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conjonction logique ET (AND) exige que les deux conditions soient vérifiées ensemble pour retenir la ligne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel opérateur logique utilise-t-on pour retenir une ligne si au moins une des conditions parmi plusieurs est vraie ?",
+              "options": [
+                "L'opérateur OU (OR)",
+                "L'opérateur ET (AND)",
+                "L'opérateur IDENTIQUE",
+                "L'opérateur MULTIPLIÉ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La disjonction logique OU (OR) retient la ligne dès que l'une au moins des conditions spécifiées est satisfaite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que sélectionne le filtre conditionnel 'age >= 16' appliqué à une table d'élèves ?",
+              "options": [
+                "Tous les élèves ayant 16 ans révolus ou plus",
+                "Uniquement les élèves qui ont exactement 15 ans",
+                "Tous les élèves ayant strictement moins de 16 ans",
+                "Les élèves dont le prénom commence par la lettre A"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le symbole >= signifie 'supérieur ou égal à'. Il sélectionne donc les valeurs de 16, 17, 18, etc."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que fait l'opérateur logique de négation NON (NOT) dans un filtre ?",
+              "options": [
+                "Il inverse la condition en sélectionnant les lignes pour lesquelles le critère est faux",
+                "Il supprime définitivement le disque dur",
+                "Il double le nombre de colonnes affichées",
+                "Il demande une confirmation vocale au micro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La négation NOT retient tous les enregistrements qui ne respectent pas le prédicat spécifié."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Soit la condition : (ville = 'Paris') OU (ville = 'Lyon' ET age < 18). Une personne de 20 ans habitant Paris est-elle retenue ?",
+              "options": [
+                "Oui, car la première partie (ville = 'Paris') est vraie",
+                "Non, car elle a plus de 18 ans",
+                "Non, car elle n'habite pas à Lyon",
+                "Impossible à déterminer sans le code postal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec un OU principal, il suffit que l'une des branches soit vraie. Ici, ville = 'Paris' est vrai, donc la ligne est retenue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle opération géométrique sur une table correspond au choix de certaines colonnes spécifiques sans filtrer les lignes ?",
+              "options": [
+                "La projection",
+                "La sélection",
+                "Le tri rapide",
+                "La concaténation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sélection filtre horizontalement les lignes (tuples), tandis que la projection filtre verticalement les colonnes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel symbole d'inégalité utilise-t-on couramment en informatique pour signifier 'différent de' ?",
+              "options": ["!= ou <>", "==", "=>", "++"],
+              "correctAnswers": [0],
+              "explanation": "L'inégalité se note != en Python/C ou <> dans les standards SQL traditionnels."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que produit un filtre dont aucun enregistrement de la table ne remplit les critères ?",
+              "options": [
+                "Une table vide (résultat à zéro ligne)",
+                "Une panne du système d'exploitation",
+                "La suppression irréversible du fichier d'origine",
+                "L'affichage de faux enregistrements inventés par le logiciel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si aucun tuple ne valide la condition booléenne, la requête renvoie simplement un ensemble de résultats vide."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels exemples constituent des conditions de filtrage valides pour une table de météo ?",
+              "options": [
+                "temperature > 25 AND pluie == False",
+                "ville == 'Bordeaux' OR ville == 'Toulouse'",
+                "vitesse_vent <= 50 AND humidite >= 80",
+                "clavier == 'AZERTY' AND souris == 3"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les trois premières propositions portent sur des attributs météorologiques réalistes et des conditions logiques valides."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Calculs statistiques et agrégations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une fonction d'agrégation appliquée à une colonne d'une table ?",
+              "options": [
+                "Une fonction calculant une valeur synthétique unique à partir d'un ensemble de valeurs de la colonne",
+                "Une commande pour formater le disque dur",
+                "Un outil pour colorier les bordures du tableau",
+                "Un filtre bloquant les connexions Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une fonction d'agrégation (comme la moyenne ou la somme) résume un ensemble de données en une seule valeur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle fonction d'agrégation calcule la somme de toutes les valeurs numériques d'une colonne ?",
+              "options": [
+                "SOMME (SUM)",
+                "MOYENNE (AVG)",
+                "COMPTE (COUNT)",
+                "MAXIMUM (MAX)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction SUM additionne toutes les valeurs de la colonne spécifiée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que calcule la fonction d'agrégation COUNT appliquée à une colonne ?",
+              "options": [
+                "Le nombre de lignes (ou d'éléments) non nuls dans la sélection",
+                "Le prix de vente total des produits",
+                "Le quotient de la division euclidienne",
+                "L'écart-type de la population"
+              ],
+              "correctAnswers": [0],
+              "explanation": "COUNT dénombre le nombre d'occurrences ou d'enregistrements répondant aux critères."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la définition de la médiane d'une série statistique de notes ordonnées ?",
+              "options": [
+                "La valeur qui partage la série ordonnée en deux groupes comprenant le même nombre d'éléments",
+                "La moyenne arithmétique de toutes les valeurs réunies",
+                "La note obtenue par le premier élève alphabétiquement",
+                "La différence entre la meilleure note et la moins bonne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La médiane sépare la série ordonnée en deux moitiés égales (50 % des valeurs au-dessus, 50 % en dessous)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi la médiane est-elle parfois préférée à la moyenne pour étudier les salaires d'une entreprise ?",
+              "options": [
+                "Elle n'est pas faussée par les quelques salaires extrêmement élevés des dirigeants",
+                "Elle est toujours égale à zéro",
+                "Elle permet de payer moins d'impôts sur les bénéfices",
+                "Elle ne s'applique qu'aux salaires écrits en euros"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La médiane est un indicateur robuste insensible aux valeurs extrêmes (outliers) qui tirent la moyenne vers le haut."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on l'étendue d'une série statistique de températures ?",
+              "options": [
+                "En soustrayant la valeur minimale de la valeur maximale observée",
+                "En divisant la température moyenne par deux",
+                "En comptant le nombre de jours de pluie",
+                "En multipliant toutes les valeurs entre elles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'étendue mesure la dispersion globale : Étendue = Valeur Max - Valeur Min."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que permet l'opération de regroupement (GROUP BY en base de données) ?",
+              "options": [
+                "Calculer des statistiques agrégées séparément pour chaque catégorie ou groupe de données",
+                "Supprimer toutes les catégories sauf la première",
+                "Afficher le texte en police grasse",
+                "Fusionner les disques de l'ordinateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le regroupement partitionne la table par catégorie (ex: par classe) pour calculer la moyenne de chaque groupe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si une colonne contient les notes 10, 12, 14 et une valeur manquante (NULL), comment le SGBD calcule-t-il la moyenne ?",
+              "options": [
+                "Il calcule (10 + 12 + 14) / 3 = 12 en ignorant la valeur NULL",
+                "Il remplace automatiquement la valeur manquante par 20",
+                "Il signale un blocage critique et refuse de répondre",
+                "Il remplace la valeur manquante par -1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par défaut, les fonctions d'agrégation standard (comme AVG) ignorent purement et simplement les valeurs NULL."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le mode d'une série statistique ?",
+              "options": [
+                "La valeur qui apparaît le plus grand nombre de fois dans la série (la plus fréquente)",
+                "La dernière valeur entrée dans le tableau",
+                "La racine carrée de la moyenne",
+                "Le format d'enregistrement sur disquette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mode est la valeur de la variable dont l'effectif associé est le plus grand."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions parmi les suivantes sont des fonctions d'agrégation mathématiques courantes ?",
+              "options": [
+                "MIN (recherche du minimum)",
+                "MAX (recherche du maximum)",
+                "AVG (calcul de la moyenne arithmétique)",
+                "PRINT_PAPER (impression papier)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "MIN, MAX et AVG sont des fonctions d'agrégation universellement disponibles dans les SGBD et tableurs."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Découverte du langage SQL et requêtes SELECT",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le sigle SQL en informatique ?",
+              "options": [
+                "Structured Query Language",
+                "Simple Quick Logic",
+                "Server Quality Level",
+                "Synchronized Queue Language"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SQL (Structured Query Language) est le langage standard universel de communication avec les bases relationnelles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel mot-clé SQL est utilisé pour lire et extraire des données d'une table ?",
+              "options": ["SELECT", "GET_DATA", "OPEN_FILE", "DISPLAY_NOW"],
+              "correctAnswers": [0],
+              "explanation": "L'instruction SELECT est la commande de base en SQL pour interroger et extraire des informations d'une base."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot-clé SQL permet de spécifier la table dans laquelle on souhaite puiser les données ?",
+              "options": ["FROM", "INTO", "TABLE_IS", "ORIGIN"],
+              "correctAnswers": [0],
+              "explanation": "La clause FROM indique la source des données, c'est-à-dire le nom de la relation (table) ciblée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie le caractère étoile (*) dans une requête : SELECT * FROM Eleves ; ?",
+              "options": [
+                "Sélectionner et afficher toutes les colonnes de la table",
+                "Sélectionner uniquement les élèves dont le nom commence par une voyelle",
+                "Multiplier tous les nombres par dix",
+                "Mettre le texte en caractères gras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'étoile (*) est un joker signifiant 'toutes les colonnes existantes' sans avoir à les lister une à une."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle requête SQL permet d'extraire uniquement le nom et le prénom de tous les enregistrements de la table 'Eleves' ?",
+              "options": [
+                "SELECT nom, prenom FROM Eleves ;",
+                "FROM Eleves DISPLAY nom AND prenom ;",
+                "GET nom, prenom IN Eleves ;",
+                "EXTRACT ALL (nom, prenom) ON Eleves ;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La syntaxe rigoureuse est SELECT liste_colonnes FROM nom_table ;."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel symbole termine obligatoirement chaque instruction SQL selon la norme standard ?",
+              "options": [
+                "Le point-virgule (;)",
+                "Le point d'interrogation (?)",
+                "Le double slash (//)",
+                "Le dièse (#)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le point-virgule (;) marque la fin de l'instruction et autorise l'exécution de la requête par le SGBD."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le langage SQL est-il sensible à la casse (majuscules/minuscules) pour ses mots-clés réservés ?",
+              "options": [
+                "Non, select, SELECT ou Select sont équivalents, mais les majuscules sont recommandées pour la lisibilité",
+                "Oui, l'écriture en minuscules provoque systématiquement une erreur de syntaxe",
+                "Oui, seuls les mots écrits avec un mélange majuscule/minuscule sont autorisés",
+                "Le SQL ne fonctionne qu'avec des nombres binaires 0 et 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SQL est insensible à la casse pour ses mots-clés, mais la convention d'écriture préconise les majuscules."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel mot-clé SQL facultatif placé après SELECT permet d'éliminer automatiquement les doublons dans le résultat ?",
+              "options": ["DISTINCT", "UNIQUE_ONLY", "NO_REPEAT", "CLEAN"],
+              "correctAnswers": [0],
+              "explanation": "SELECT DISTINCT nom_colonne FROM table ; ne renvoie qu'une seule fois chaque valeur différente."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que renvoie la requête suivante : SELECT COUNT(*) FROM Villes ; ?",
+              "options": [
+                "Le nombre total de lignes présentes dans la table Villes",
+                "La liste alphabétique de toutes les villes",
+                "Le nom de la plus grande ville de France",
+                "Une copie complète de la table sur le bureau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction COUNT(*) compte et retourne le nombre total d'enregistrements contenus dans la table ciblée."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles instructions SQL parmi les suivantes font partie du langage de manipulation de données (LMD) ?",
+              "options": [
+                "SELECT (interrogation et lecture)",
+                "INSERT (insertion de nouvelles lignes)",
+                "UPDATE (mise à jour de valeurs existantes)",
+                "POWER_OFF (extinction de l'ordinateur)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "SELECT, INSERT, UPDATE et DELETE composent le cœur du langage de manipulation de données en SQL."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Clauses WHERE et opérateurs logiques en SQL",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "À quoi sert la clause WHERE dans une requête SQL ?",
+              "options": [
+                "À spécifier des conditions de filtrage pour ne retenir que les lignes qui les vérifient",
+                "À indiquer l'adresse IP du serveur de base de données",
+                "À changer le mot de passe de l'administrateur",
+                "À choisir le dossier où enregistrer le fichier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clause WHERE introduit un prédicat logique ; seules les lignes pour lesquelles la condition est VRAIE sont renvoyées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment délimite-t-on une valeur textuelle dans une condition WHERE en SQL standard ?",
+              "options": [
+                "Avec des apostrophes simples (ex: WHERE ville = 'Marseille')",
+                "Avec des chevrons (ex: WHERE ville = <Marseille>)",
+                "Avec des dièses (ex: WHERE ville = #Marseille#)",
+                "Sans aucun symbole de ponctuation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chaînes littérales de caractères sont obligatoirement encadrées d'apostrophes simples ('...')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle requête SQL sélectionne tous les élèves âgés strictement de plus de 15 ans ?",
+              "options": [
+                "SELECT * FROM Eleves WHERE age > 15 ;",
+                "SELECT ALL Eleves IF age > 15 ;",
+                "WHERE age > 15 OPEN Eleves ;",
+                "FILTER Eleves WITH age > 15 ;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La syntaxe exacte associe SELECT * FROM Eleves à la condition WHERE age > 15 ;."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot-clé combine deux conditions qui doivent être simultanément vraies en SQL ?",
+              "options": ["AND", "OR", "WITH", "ALSO"],
+              "correctAnswers": [0],
+              "explanation": "L'opérateur AND impose la validation conjointe des deux prédicats pour chaque ligne retenue."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot-clé SQL permet de tester si la valeur d'une colonne est comprise dans un intervalle fermé borné ?",
+              "options": [
+                "BETWEEN (ex: WHERE note BETWEEN 10 AND 20)",
+                "INSIDE",
+                "INTERVAL_OF",
+                "MIDDLE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "BETWEEN a AND b équivaut à la double condition inclusive (valeur >= a AND valeur <= b)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel opérateur SQL permet de tester l'égalité avec l'une des valeurs d'une liste (ex: ville parmi plusieurs) ?",
+              "options": [
+                "IN (ex: WHERE ville IN ('Paris', 'Lyon', 'Nice'))",
+                "AMONG",
+                "LIST",
+                "CONTAINS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opérateur IN évite d'écrire une longue chaîne de conditions OU successives."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel opérateur de recherche de motif textuel utilise le caractère joker % pour remplacer n'importe quelle séquence de lettres ?",
+              "options": [
+                "LIKE (ex: WHERE nom LIKE 'Du%')",
+                "SIMILAR",
+                "MATCHES",
+                "EQUALS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "LIKE 'Du%' trouve tous les noms débutant par 'Du' (Dupont, Durand, Duval, etc.)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment teste-t-on correctement en SQL qu'une colonne ne contient aucune donnée (valeur manquante) ?",
+              "options": [
+                "WHERE colonne IS NULL",
+                "WHERE colonne = NULL",
+                "WHERE colonne == 0",
+                "WHERE colonne = 'rien'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme NULL représente une valeur inconnue, on doit utiliser le prédicat IS NULL et jamais = NULL."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle requête sélectionne les produits dont le prix est inférieur à 10 € OU dont le stock est supérieur à 100 ?",
+              "options": [
+                "SELECT * FROM Produits WHERE prix < 10 OR stock > 100 ;",
+                "SELECT * FROM Produits WHERE prix < 10 AND stock > 100 ;",
+                "SELECT * FROM Produits WHERE prix < 10 NOR stock > 100 ;",
+                "SELECT * FROM Produits WHERE prix < 10 XOR stock > 100 ;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opérateur OR retient les enregistrements vérifiant l'une ou l'autre des conditions (ou les deux)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels opérateurs de comparaison sont syntaxiquement valides dans une clause WHERE en SQL ?",
+              "options": [
+                "= (égalité)",
+                "!= ou <> (différence)",
+                ">= (supérieur ou égal)",
+                "==> (implication géométrique)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "=, !=, <>, <, <=, >, >= sont les comparateurs usuels supportés par tous les moteurs SQL."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Tris et limites avec ORDER BY en SQL",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle clause SQL permet de trier les résultats renvoyés par une requête ?",
+              "options": ["ORDER BY", "SORT BY", "ARRANGE", "RANK"],
+              "correctAnswers": [0],
+              "explanation": "La clause ORDER BY nom_colonne classe les lignes du résultat selon l'ordre choisi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel mot-clé SQL facultatif indique explicitement un tri par ordre croissant ?",
+              "options": ["ASC", "UP", "INCREASE", "TOP"],
+              "correctAnswers": [0],
+              "explanation": "ASC (pour Ascending) trie par ordre croissant. C'est le sens par défaut si rien n'est précisé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot-clé SQL indique un tri par ordre décroissant ?",
+              "options": ["DESC", "DOWN", "BOTTOM", "REVERSE"],
+              "correctAnswers": [0],
+              "explanation": "DESC (pour Descending) trie les valeurs du plus grand au plus petit ou de Z à A."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans une requête comportant WHERE et ORDER BY, dans quel ordre ces clauses doivent-elles obligatoirement être écrites ?",
+              "options": [
+                "WHERE d'abord pour filtrer, puis ORDER BY pour trier les résultats",
+                "ORDER BY d'abord, puis WHERE ensuite",
+                "L'ordre n'a strictement aucune importance",
+                "Elles doivent être séparées par le mot FIN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En grammaire SQL, la clause de filtrage WHERE précède toujours la clause d'ordonnancement ORDER BY."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que réalise la clause : ORDER BY nom ASC, prenom ASC ?",
+              "options": [
+                "Un tri par nom croissant, puis par prénom croissant pour les personnes ayant le même nom",
+                "Une fusion des deux colonnes en un seul mot",
+                "La suppression des élèves sans prénom",
+                "L'affichage aléatoire des résultats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un tri multi-critères : la deuxième colonne départage les éventuels ex æquo de la première."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle clause SQL permet de limiter le nombre de lignes renvoyées par le résultat ?",
+              "options": ["LIMIT (ex: LIMIT 5)", "STOP", "MAX_ROWS", "CUT"],
+              "correctAnswers": [0],
+              "explanation": "LIMIT n indique au SGBD de ne conserver que les n premières lignes du résultat final."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment afficher les 3 élèves ayant obtenu les meilleures notes d'un contrôle ?",
+              "options": [
+                "SELECT * FROM Notes ORDER BY note DESC LIMIT 3 ;",
+                "SELECT * FROM Notes ORDER BY note ASC LIMIT 3 ;",
+                "SELECT * FROM Notes WHERE note = 3 ;",
+                "SELECT FIRST 3 FROM Notes ;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trier les notes par ordre décroissant (DESC) place les meilleures en tête, et LIMIT 3 ne garde que le podium."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si l'on applique ORDER BY sur une colonne de dates avec DESC ?",
+              "options": [
+                "Les événements les plus récents s'affichent en premier",
+                "Les événements les plus anciens s'affichent en premier",
+                "Toutes les dates sont converties en chiffres romains",
+                "Le SGBD renvoie une erreur de type incompatible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre décroissant chronologique va du plus récent (valeur temporelle la plus élevée) vers le plus ancien."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La clause ORDER BY modifie-t-elle l'ordre physique des données enregistrées sur le disque dur ?",
+              "options": [
+                "Non, elle modifie uniquement la présentation du résultat renvoyé à l'écran",
+                "Oui, elle réécrit entièrement la table sur le disque à chaque fois",
+                "Oui, elle déplace les têtes de lecture physiques du disque",
+                "Uniquement si l'ordinateur est branché sur secteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une requête SELECT est une simple consultation en lecture qui ne modifie jamais les données stockées."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles requêtes SQL parmi les suivantes sont syntaxiquement valides ?",
+              "options": [
+                "SELECT ville, population FROM Communes ORDER BY population DESC ;",
+                "SELECT nom FROM Eleves WHERE classe = '2nde 1' ORDER BY nom ASC ;",
+                "SELECT titre, prix FROM Livres ORDER BY prix ASC LIMIT 10 ;",
+                "ORDER BY SELECT nom FROM Eleves LIMIT 5 ;"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La clause ORDER BY se place toujours après FROM et WHERE, jamais avant SELECT."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Croisement de tables et jointures élémentaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En quoi consiste l'opération de jointure entre deux tables de données ?",
+              "options": [
+                "Associer les lignes de deux tables différentes en reliant une clé étrangère à une clé primaire correspondante",
+                "Coller deux disques durs avec du ruban adhésif",
+                "Additionner toutes les valeurs numériques des deux fichiers",
+                "Supprimer la moitié des colonnes de chaque table"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une jointure croise les données de deux tables en faisant correspondre les valeurs d'un champ commun."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel mot-clé SQL standard est utilisé pour réaliser explicitement une jointure entre deux tables ?",
+              "options": [
+                "JOIN (ou INNER JOIN)",
+                "MERGE_FILES",
+                "LINK_TABLES",
+                "COMBINE_ALL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clause JOIN permet d'associer deux tables selon une condition de correspondance spécifiée avec ON."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot-clé introduit la condition d'égalité des clés lors d'une jointure explicite ?",
+              "options": [
+                "ON (ex: JOIN Classes ON Eleves.id_classe = Classes.id)",
+                "WHERE_KEY",
+                "SAME_AS",
+                "LINKED_BY"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clause ON définit le critère de jointure, typiquement l'égalité entre clé étrangère et clé primaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment lève-t-on l'ambiguïté si deux tables jointes possèdent une colonne portant exactement le même nom ?",
+              "options": [
+                "En préfixant le nom de la colonne par le nom de sa table (ex: Eleves.nom)",
+                "En supprimant immédiatement la colonne dans l'une des tables",
+                "En renommant la table avec un numéro aléatoire",
+                "En écrivant le nom de la colonne en caractères chinois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La notation pointée NomTable.NomColonne précise sans équivoque l'origine exacte de l'attribut."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que produit le produit cartésien de deux tables de 10 lignes et 20 lignes sans condition de jointure ?",
+              "options": [
+                "Une gigantesque table de 200 lignes associant chaque ligne de la première à toutes les lignes de la seconde",
+                "Une table de 30 lignes exactement",
+                "Une erreur critique de dépassement de pile",
+                "Un fichier totalement vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans condition de liaison, chaque enregistrement de la table A est croisé avec tous ceux de la table B (10 x 20 = 200)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la principale utilité pratique des jointures dans une application de gestion de lycée ?",
+              "options": [
+                "Afficher le nom de l'élève à côté du nom de sa classe et du nom de son professeur principal",
+                "Effacer les devoirs non rendus le soir",
+                "Accélérer la sonnerie de fin de cours",
+                "Imprimer des affiches pour les couloirs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La jointure rassemble des données dispersées logiquement pour recomposer une vue globale cohérente et lisible."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que retient une jointure interne (INNER JOIN) entre deux tables ?",
+              "options": [
+                "Uniquement les lignes pour lesquelles la condition de correspondance est vérifiée dans les deux tables",
+                "Toutes les lignes sans exception, même sans correspondance",
+                "Uniquement les lignes qui ne correspondent à rien",
+                "Les cinq premières lignes du fichier seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une jointure interne exclut les enregistrements orphelins qui ne trouvent aucun équivalent dans l'autre table."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Peut-on combiner une jointure (JOIN) avec des filtres (WHERE) et un tri (ORDER BY) dans la même requête ?",
+              "options": [
+                "Oui, toutes ces clauses se combinent harmonieusement dans une requête SQL complète",
+                "Non, SQL interdit d'utiliser plus de deux mots-clés par fichier",
+                "Uniquement les jours pairs du calendrier",
+                "Seulement si la base de données ne contient aucun chiffre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La puissance de SQL réside dans la combinaison de SELECT, FROM, JOIN, ON, WHERE, ORDER BY et LIMIT."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Soit la requête : SELECT Eleves.nom, Clubs.nom_club FROM Eleves JOIN Clubs ON Eleves.id_club = Clubs.id ; Que fait-elle ?",
+              "options": [
+                "Elle associe chaque élève au nom du club auquel il appartient",
+                "Elle supprime tous les clubs sportifs du lycée",
+                "Elle crée un nouveau club pour chaque élève",
+                "Elle compte le nombre total de professeurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle joint la table des élèves et celle des clubs grâce à l'identifiant id_club pour afficher le club correspondant."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels éléments sont indispensables pour réussir une jointure logique entre deux tables ?",
+              "options": [
+                "Un champ commun servant de point de liaison (clé primaire et clé étrangère)",
+                "Une condition d'association explicite reliant les deux clés",
+                "Deux tables distinctes partageant une relation sémantique",
+                "L'obligation d'avoir exactement le même nombre de lignes dans les deux tables"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Deux tables reliées n'ont pas besoin d'avoir la même taille (une classe peut regrouper 30 élèves distincts)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Traitement de données en Python (tableaux et dictionnaires)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En Python, quel type de structure native est couramment utilisé pour modéliser une ligne de données avec ses descripteurs ?",
+              "options": [
+                "Un dictionnaire (dict)",
+                "Un entier (int)",
+                "Un booléen (bool)",
+                "Une fonction vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un dictionnaire associe chaque nom de descripteur (clé) à sa valeur (ex: {'nom': 'Dupont', 'age': 15})."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment modélise-t-on généralement une table complète de données en Python ?",
+              "options": [
+                "Par une liste de dictionnaires (chaque dictionnaire représentant une ligne)",
+                "Par une chaîne de caractères de trois lettres",
+                "Par une seule variable numérique entière",
+                "Par une boucle infinie sans condition d'arrêt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une table se représente comme une liste ordonnée dont chaque élément est un dictionnaire décrivant un enregistrement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Soit la variable eleve = {'nom': 'Alice', 'note': 18}. Comment accède-t-on à la note d'Alice en Python ?",
+              "options": [
+                "eleve['note']",
+                "eleve.note()",
+                "eleve(note)",
+                "eleve->note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En Python, on accède à la valeur d'une clé d'un dictionnaire avec la syntaxe crochet dictionnaire[cle]."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel module standard de Python permet de lire et d'écrire facilement des fichiers au format CSV ?",
+              "options": ["csv", "math", "random", "turtle"],
+              "correctAnswers": [0],
+              "explanation": "Le module standard 'csv' fournit des fonctions comme csv.reader ou csv.DictReader spécialement conçues pour cela."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que renvoie l'itérateur csv.DictReader lorsqu'on parcourt un fichier CSV en Python ?",
+              "options": [
+                "Un dictionnaire pour chaque ligne, avec les en-têtes de colonnes comme clés",
+                "Une image numérique de la table",
+                "Le nombre total de mots du dictionnaire Larousse",
+                "Un fichier audio de synthèse vocale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "csv.DictReader utilise la première ligne du CSV comme clés pour créer un dictionnaire par ligne de données."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lorsqu'on lit un fichier CSV avec Python, quel est le type par défaut de toutes les données importées ?",
+              "options": [
+                "Chaîne de caractères (str)",
+                "Entier (int)",
+                "Flottant (float)",
+                "Booléen (bool)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un fichier texte ne contenant que des caractères, Python importe initialement toutes les valeurs sous forme de chaînes (str)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment convertir la chaîne '15' en un nombre entier pour pouvoir effectuer un calcul en Python ?",
+              "options": [
+                "int('15')",
+                "str('15')",
+                "float_to_text(15)",
+                "convert(15)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction int() convertit une chaîne représentant un entier valide en véritable nombre de type entier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que produit l'expression en compréhension : [e for e in table if e['ville'] == 'Lyon'] ?",
+              "options": [
+                "Une nouvelle liste filtrée contenant uniquement les enregistrements dont la ville est Lyon",
+                "La suppression de la ville de Lyon sur la carte",
+                "Le renommage de toutes les villes en Lyon",
+                "Une erreur de syntaxe fatale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les listes en compréhension permettent de filtrer élégamment les données selon un prédicat booléen en Python."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on la moyenne d'une liste de nombres notes = [12, 14, 16] en Python ?",
+              "options": [
+                "sum(notes) / len(notes)",
+                "avg(notes) * len(notes)",
+                "notes.moyenne()",
+                "count(notes) / sum(notes)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On additionne les notes avec sum() et on divise par le nombre d'éléments renvoyé par len()."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles opérations de traitement de données peuvent être programmées en Python sur une table ?",
+              "options": [
+                "Filtrer les enregistrements selon des critères numériques ou textuels",
+                "Trier la liste de données avec la fonction sorted() et une clé personnalisée",
+                "Calculer des indicateurs statistiques (somme, moyenne, médiane)",
+                "Téléporter physiquement l'ordinateur dans une autre ville"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Python excelle dans le filtrage, le tri et le calcul statistique automatisé sur les structures de données."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Nettoyage et validation de données",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le nettoyage de données (data cleaning) ?",
+              "options": [
+                "Le processus de détection et de correction (ou suppression) des erreurs, doublons et incohérences dans un jeu de données",
+                "Le dépoussiérage physique des circuits imprimés de l'ordinateur",
+                "L'effacement complet et définitif de tout le disque dur",
+                "Le lavage des câbles réseau avec de l'eau savonneuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nettoyage des données fiabilise les données brutes avant leur analyse ou leur intégration en base."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi la présence de doublons dans une table de clients est-elle problématique ?",
+              "options": [
+                "Elle fausse les statistiques de vente et peut provoquer des envois multiples inutiles",
+                "Elle empêche l'écran de l'ordinateur de s'allumer",
+                "Elle fait baisser la vitesse du ventilateur",
+                "Elle transforme automatiquement les euros en dollars"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les doublons biaisent les analyses quantitatives et entraînent des coûts opérationnels superflus."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel problème fréquent survient lors de la saisie libre d'un nom de ville par des utilisateurs humains ?",
+              "options": [
+                "Des variations d'orthographe et de casse (ex: saint-etienne, St-Étienne, Saint Etienne)",
+                "Le verrouillage immédiat du clavier de l'utilisateur",
+                "Le changement d'heure automatique du système",
+                "La déconnexion de l'imprimante réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La saisie humaine non contrôlée génère des fautes de frappe, accents oubliés et abréviations hétérogènes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En quoi consiste la normalisation de casse sur une colonne textuelle lors d'un traitement préalable ?",
+              "options": [
+                "Convertir tous les textes en minuscules (ou en majuscules) pour pouvoir les comparer fidèlement",
+                "Remplacer toutes les lettres par le chiffre 1",
+                "Écrire les mots à l'envers",
+                "Ajouter trois points d'exclamation après chaque mot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passer tout en minuscules (ex: avec .lower() en Python) évite de considérer 'Paris' et 'paris' comme deux villes distinctes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on une valeur aberrante (outlier) dans une colonne d'âges d'élèves de seconde ?",
+              "options": [
+                "Une valeur manifestement erronée ou invraisemblable comme un âge de 250 ans",
+                "Un âge de 15 ans",
+                "Un âge de 16 ans",
+                "La présence du prénom de l'élève"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une valeur aberrante s'éloigne tellement des limites réalistes qu'elle trahit une erreur de saisie ou de mesure."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment peut-on gérer une valeur manquante dans une table lors d'une étude statistique ?",
+              "options": [
+                "En supprimant la ligne incomplète ou en imputant une valeur raisonnable (comme la moyenne de la colonne)",
+                "En éteignant l'ordinateur immédiatement",
+                "En inventant des noms de personnes au hasard",
+                "En remplaçant toute la table par des zéros"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut soit écarter les lignes incomplètes, soit imputer les données manquantes selon des méthodes statistiques validées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une contrainte de domaine mise en place pour valider la saisie d'une note scolaire ?",
+              "options": [
+                "Une règle imposant que la note saisie soit un nombre réel compris entre 0 et 20",
+                "L'obligation de taper la note avec la main gauche",
+                "L'interdiction de donner une note inférieure à 15",
+                "Le blocage du logiciel après 18 heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La contrainte de validation vérifie à la saisie que la valeur appartient au domaine admissible (ex: 0 <= note <= 20)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que désigne l'expression 'Garbage In, Garbage Out' (GIGO) en science des données ?",
+              "options": [
+                "Si les données d'entrée sont corrompues ou de mauvaise qualité, les résultats produits seront inévitablement faux",
+                "Les vieux ordinateurs doivent être jetés à la poubelle",
+                "Il faut recycler le papier des imprimantes de bureau",
+                "Les câbles informatiques doivent être lavés chaque mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même le meilleur des algorithmes produira des conclusions erronées si les données fournies sont fausses ou biaisées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi retire-t-on souvent les espaces superflus en début et fin de chaîne (opération 'strip') ?",
+              "options": [
+                "Pour éviter que ' Alice' ne soit considérée comme différente de 'Alice'",
+                "Pour faire de la place sur le disque dur",
+                "Pour supprimer les voyelles du prénom",
+                "Pour empêcher la lecture du fichier par d'autres utilisateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les espaces parasites invisibles en début ou fin de mot compromettent les tests d'égalité et les tris."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles étapes font couramment partie du nettoyage et de la préparation d'un jeu de données ?",
+              "options": [
+                "Suppression des lignes en double (dédoublonnage)",
+                "Standardisation des formats de dates (ex: format ISO AAAA-MM-JJ)",
+                "Traitement des valeurs manquantes ou nulles",
+                "Chiffrement militaire obligatoire de tous les chiffres"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Dédoublonnage, standardisation des formats et gestion des données manquantes constituent la base du nettoyage de données."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Enjeux éthiques, biais et stockage dans le cloud",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un biais dans un jeu de données ?",
+              "options": [
+                "Une distorsion systématique qui ne représente pas fidèlement la réalité de la population étudiée",
+                "Un virus qui efface les fichiers audio",
+                "Un connecteur réseau mal branché",
+                "Une police de caractères penchée vers la droite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un biais d'échantillonnage sélectionne préférentiellement une sous-population, faussant l'analyse globale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le danger d'entraîner une intelligence artificielle d'embauche avec des données historiques biaisées ?",
+              "options": [
+                "L'IA reproduira et amplifiera les discriminations passées à l'encontre de certaines minorités",
+                "L'ordinateur refusera de s'allumer le matin",
+                "Les salaires seront tous divisés par deux",
+                "Les imprimantes cesseront définitivement de fonctionner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les algorithmes formés sur des données du passé reproduisent fidèlement les préjugés et inégalités qui y figurent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le cloud computing (stockage dans le nuage) ?",
+              "options": [
+                "L'accès à distance à des serveurs de stockage et de calcul via le réseau Internet",
+                "Le stockage de données dans des satellites météo situés au milieu des nuages",
+                "Une technologie pour faire pleuvoir grâce aux ondes Wi-Fi",
+                "Un disque dur portable fonctionnant à l'énergie solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cloud déporte le stockage et le calcul sur des serveurs distants gérés dans des centres de données (data centers)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le principal avantage du stockage de données dans le cloud pour un particulier ou une entreprise ?",
+              "options": [
+                "La disponibilité des données depuis n'importe quel appareil connecté et la sauvegarde externalisée",
+                "La garantie que les données ne consomment aucune électricité dans le monde",
+                "L'anonymat absolu et l'interdiction de toute loi nationale",
+                "L'augmentation immédiate de la vitesse du processeur local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cloud permet la synchronisation permanente et protège les données contre la perte matérielle locale (vol, incendie)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le problème environnemental majeur posé par la multiplication exponentielle des données numériques ?",
+              "options": [
+                "L'importante consommation d'énergie électrique et d'eau de refroidissement des centres de données mondiaux",
+                "La production de gaz toxiques directement par les écrans de smartphone",
+                "La destruction de la couche d'ozone par les câbles optiques sous-marins",
+                "La transformation des forêts en disquettes magnétiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les centres de données et réseaux consomment d'importantes quantités d'électricité et d'eau pour leur refroidissement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la souveraineté numérique dans le contexte du stockage des données ?",
+              "options": [
+                "La capacité d'un État à contrôler et protéger ses données sous sa propre législation sans dépendre de puissances étrangères",
+                "Le couronnement du meilleur informaticien de l'année",
+                "L'obligation d'utiliser des logiciels datant d'avant l'an 2000",
+                "L'interdiction de communiquer avec d'autres pays sur le Web"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La souveraineté numérique garantit que les données des citoyens et institutions ne sont pas soumises aux lois extraterritoriales."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi la réidentification d'un individu est-elle possible même à partir d'une base de données prétendument anonymisée ?",
+              "options": [
+                "En croisant plusieurs critères apparemment anodins comme la date de naissance, le code postal et le sexe",
+                "Parce que les ordinateurs peuvent lire dans les pensées",
+                "Parce que les mots de passe sont visibles en transparence à l'écran",
+                "Parce que le prénom est toujours affiché en fond d'écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le croisement de jeux de données (attaque par corrélation) permet souvent de réidentifier un profil avec seulement 3 ou 4 indices."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En quoi consiste le profilage algorithmique sur les réseaux sociaux ?",
+              "options": [
+                "Analyser l'ensemble des interactions d'un utilisateur pour déduire ses préférences, opinions et vulnérabilités",
+                "Mesurer la largeur de son visage sur sa photo de profil",
+                "Changer la photo de couverture chaque semaine",
+                "Vérifier la marque de son écran d'ordinateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le profilage exploite les traces numériques pour cibler des publicités ou influencer les comportements des utilisateurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel geste numérique permet de réduire son empreinte écologique liée au stockage des données ?",
+              "options": [
+                "Supprimer régulièrement les courriels inutiles et nettoyer les fichiers stockés dans le cloud",
+                "Laisser tourner des vidéos haute définition en boucle sans les regarder",
+                "Acheter un nouveau smartphone tous les six mois",
+                "Multiplier les sauvegardes dupliquées sur dix services cloud différents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sobriété numérique implique de supprimer les données superflues qui consomment de l'énergie de stockage en continu."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels sont les risques éthiques et juridiques majeurs liés à la collecte massive de données (Big Data) ?",
+              "options": [
+                "L'atteinte à la vie privée et à l'intimité des individus",
+                "La discrimination algorithmique fondée sur des prédictions opaques",
+                "Le piratage et l'exposition publique de données confidentielles",
+                "L'obligation de vivre sans électricité ni téléphone portable"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Vie privée, discriminations algorithmiques et cyberattaques sont les défis éthiques centraux de l'ère du Big Data."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2183 @@
+{
+  "id": "2nde-allemand-04",
+  "year": "2nde",
+  "subject": "allemand",
+  "title": "La grammaire de l'allemand",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le nominatif et l'article défini",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels articles définis correspondent au cas nominatif singulier en allemand ?",
+              "options": ["der", "das", "den", "dem"],
+              "correctAnswers": [0, 1],
+              "explanation": "Au nominatif singulier, on trouve der (masculin), die (féminin) et das (neutre). Den et dem sont à d'autres cas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le rôle principal du cas nominatif dans la phrase ?",
+              "options": [
+                "Sujet du verbe",
+                "Complément d'objet direct",
+                "Complément d'objet indirect",
+                "Complément de lieu avec déplacement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nominatif est avant tout le cas du sujet et de l'attribut du sujet en allemand."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : « ___ Hund schläft im Garten. » (le chien, masculin)",
+              "options": ["Der", "Den", "Dem", "Des"],
+              "correctAnswers": [0],
+              "explanation": "Hund est masculin singulier et sujet de la phrase, il prend donc l'article 'Der' au nominatif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : « ___ Frau arbeitet heute im Büro. » (la femme, féminin)",
+              "options": ["Die", "Der", "Den", "Das"],
+              "correctAnswers": [0],
+              "explanation": "Frau est un nom féminin au nominatif sujet, son article défini est 'Die'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : « ___ Kind spielt im Park. » (l'enfant, neutre)",
+              "options": ["Das", "Dem", "Den", "Der"],
+              "correctAnswers": [0],
+              "explanation": "Kind est neutre singulier. Au nominatif sujet, son article défini est 'Das'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est l'article défini pluriel au nominatif pour tous les genres ?",
+              "options": ["die", "der", "den", "das"],
+              "correctAnswers": [0],
+              "explanation": "Au nominatif pluriel, l'article défini est toujours 'die', quel que soit le genre du nom."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « Das ist ein Tisch », quel est le cas de « ein Tisch » ?",
+              "options": ["Nominatif", "Accusatif", "Datif", "Génitif"],
+              "correctAnswers": [0],
+              "explanation": "Avec le verbe sein (être), le groupe nominal est attribut du sujet et se met donc au nominatif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « ___ Bücher liegen auf dem Tisch. » (les livres, pluriel)",
+              "options": ["Die", "Den", "Der", "Das"],
+              "correctAnswers": [0],
+              "explanation": "Bücher est au pluriel nominatif sujet, l'article est donc 'Die'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle question permet de trouver le sujet au nominatif ?",
+              "options": ["Wer oder was?", "Wen oder was?", "Wem?", "Wessen?"],
+              "correctAnswers": [0],
+              "explanation": "Pour identifier le sujet au nominatif, on pose la question 'Wer oder was?' (Qui ou qu'est-ce qui ?)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : « Ist ___ Lehrer freundlich? » (l'enseignant, masculin)",
+              "options": ["der", "den", "dem", "die"],
+              "correctAnswers": [0],
+              "explanation": "Lehrer est masculin singulier et sujet de la phrase, on utilise 'der' au nominatif."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "L'accusatif et l'article défini",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels articles définis restent identiques entre le nominatif et l'accusatif singulier ?",
+              "options": ["das", "die", "der", "den"],
+              "correctAnswers": [0, 1],
+              "explanation": "Au féminin (die) et au neutre (das), l'article ne change pas entre nominatif et accusatif. Seul le masculin passe de der à den."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'article défini masculin singulier à l'accusatif ?",
+              "options": ["den", "der", "dem", "des"],
+              "correctAnswers": [0],
+              "explanation": "À l'accusatif singulier, l'article défini masculin 'der' se transforme en 'den'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : « Ich sehe ___ Hund im Garten. » (le chien, masculin)",
+              "options": ["den", "der", "dem", "das"],
+              "correctAnswers": [0],
+              "explanation": "Hund est COD du verbe sehen (accusatif) et masculin singulier, on emploie donc 'den'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : « Er liest ___ Zeitung. » (le journal, féminin : die Zeitung)",
+              "options": ["die", "der", "den", "das"],
+              "correctAnswers": [0],
+              "explanation": "Zeitung est féminin. À l'accusatif singulier, l'article reste 'die'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : « Wir kaufen ___ Buch. » (le livre, neutre : das Buch)",
+              "options": ["das", "den", "dem", "der"],
+              "correctAnswers": [0],
+              "explanation": "Buch est neutre. À l'accusatif singulier, l'article défini reste 'das'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle question pose-t-on pour trouver le COD à l'accusatif ?",
+              "options": ["Wen oder was?", "Wer oder was?", "Wem?", "Wo?"],
+              "correctAnswers": [0],
+              "explanation": "L'accusatif répond à la question 'Wen oder was?' (Qui ou quoi ?)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « Sie sucht ___ Schlüssel (pluriel). »",
+              "options": ["die", "den", "der", "dem"],
+              "correctAnswers": [0],
+              "explanation": "Au pluriel à l'accusatif, l'article défini est 'die'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Laquelle de ces prépositions est TOUJOURS suivie de l'accusatif ?",
+              "options": ["für", "mit", "bei", "nach"],
+              "correctAnswers": [0],
+              "explanation": "La préposition 'für' régit toujours l'accusatif (tout comme durch, gegen, ohne, um)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « Das Geschenk ist für ___ Vater. » (le père, masculin)",
+              "options": ["den", "der", "dem", "des"],
+              "correctAnswers": [0],
+              "explanation": "'Für' exige l'accusatif. Vater étant masculin, on écrit 'für den Vater'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Paul kauft den Apfel », quelle est la fonction de « den Apfel » ?",
+              "options": [
+                "Complément d'objet direct (accusatif)",
+                "Sujet (nominatif)",
+                "Complément d'attribution (datif)",
+                "Complément du nom (génitif)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'den Apfel' est le COD du verbe kaufen, il est donc à l'accusatif masculin."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le datif et l'article défini",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes d'articles définis correspondent au datif singulier ?",
+              "options": ["dem", "der", "den", "das"],
+              "correctAnswers": [0, 1],
+              "explanation": "Au datif singulier, on a 'dem' pour le masculin et le neutre, et 'der' pour le féminin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'article défini masculin au datif singulier ?",
+              "options": ["dem", "den", "der", "des"],
+              "correctAnswers": [0],
+              "explanation": "L'article défini masculin au datif singulier est 'dem'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est l'article défini féminin au datif singulier ?",
+              "options": ["der", "die", "den", "dem"],
+              "correctAnswers": [0],
+              "explanation": "Au datif singulier, l'article défini féminin 'die' devient 'der'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : « Ich helfe ___ Kind. » (l'enfant, neutre)",
+              "options": ["dem", "den", "das", "der"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe helfen se construit avec le datif. Au neutre singulier, l'article est 'dem'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : « Er gibt ___ Mann einen Apfel. » (l'homme, masculin)",
+              "options": ["dem", "den", "der", "des"],
+              "correctAnswers": [0],
+              "explanation": "'Mann' est le destinataire (COI au datif). Au masculin singulier, l'article est 'dem'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle particularité prend le nom au pluriel au datif ?",
+              "options": [
+                "Il prend souvent une terminaison -n s'il n'en a pas déjà",
+                "Il prend toujours un -s final",
+                "Il ne change jamais",
+                "Il prend une terminaison -en obligatoire pour tous les mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au datif pluriel, les noms ajoutent un -n (sauf si le pluriel se termine déjà par -n ou par -s)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est l'article défini au datif pluriel ?",
+              "options": ["den", "die", "der", "dem"],
+              "correctAnswers": [0],
+              "explanation": "Au datif pluriel, l'article défini est toujours 'den'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « Wir fahren mit ___ Bus. » (le bus, masculin)",
+              "options": ["dem", "den", "der", "das"],
+              "correctAnswers": [0],
+              "explanation": "La préposition 'mit' régit toujours le datif. Bus étant masculin, on a 'mit dem Bus'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle préposition parmi les suivantes est TOUJOURS suivie du datif ?",
+              "options": ["aus", "durch", "für", "gegen"],
+              "correctAnswers": [0],
+              "explanation": "'Aus' fait partie des prépositions toujours suivies du datif (avec bei, mit, nach, seit, von, zu)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle question pose-t-on pour trouver le complément au datif ?",
+              "options": ["Wem?", "Wen?", "Wer?", "Was?"],
+              "correctAnswers": [0],
+              "explanation": "Le datif répond à la question 'Wem?' (À qui ?)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les articles indéfinis au nominatif et accusatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes d'articles indéfinis sont correctes au nominatif ?",
+              "options": ["ein", "eine", "einen", "einem"],
+              "correctAnswers": [0, 1],
+              "explanation": "Au nominatif, on utilise 'ein' (masculin et neutre) et 'eine' (féminin). 'Einen' est à l'accusatif masculin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète au nominatif : « Da steht ___ Tisch. » (un tableau/table, masculin)",
+              "options": ["ein", "eine", "einen", "einer"],
+              "correctAnswers": [0],
+              "explanation": "Tisch est masculin. Au nominatif, l'article indéfini est 'ein'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète au nominatif : « Das ist ___ Lampe. » (une lampe, féminin)",
+              "options": ["eine", "ein", "einen", "einer"],
+              "correctAnswers": [0],
+              "explanation": "Lampe est féminin. Au nominatif, l'article indéfini est 'eine'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète au nominatif : « Hier ist ___ Auto. » (une voiture, neutre)",
+              "options": ["ein", "eine", "eines", "einen"],
+              "correctAnswers": [0],
+              "explanation": "Auto est neutre. Au nominatif, l'article indéfini est 'ein'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est l'article indéfini masculin singulier à l'accusatif ?",
+              "options": ["einen", "ein", "eine", "einem"],
+              "correctAnswers": [0],
+              "explanation": "À l'accusatif masculin, l'article indéfini prend la marque -en et devient 'einen'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète à l'accusatif : « Ich habe ___ Bruder. » (un frère, masculin)",
+              "options": ["einen", "ein", "eine", "einem"],
+              "correctAnswers": [0],
+              "explanation": "Bruder est masculin singulier et COD du verbe haben, on écrit 'einen Bruder'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète à l'accusatif : « Sie kauft ___ Tasche. » (un sac, féminin)",
+              "options": ["eine", "einen", "ein", "einer"],
+              "correctAnswers": [0],
+              "explanation": "Au féminin, l'article indéfini reste 'eine' à l'accusatif comme au nominatif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète à l'accusatif : « Er liest ___ Buch. » (un livre, neutre)",
+              "options": ["ein", "einen", "eine", "einem"],
+              "correctAnswers": [0],
+              "explanation": "Au neutre, l'article indéfini reste 'ein' à l'accusatif comme au nominatif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Existe-t-il un article indéfini pluriel en allemand ?",
+              "options": [
+                "Non, on emploie l'absence d'article (article zéro)",
+                "Oui, c'est 'einen'",
+                "Oui, c'est 'eine'",
+                "Oui, c'est 'einig'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il n'y a pas d'article indéfini pluriel en allemand. On utilise l'article zéro (ex: 'Ich kaufe Äpfel')."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : « Paul sucht ___ Stift (masculin). »",
+              "options": ["einen", "ein", "eine", "einem"],
+              "correctAnswers": [0],
+              "explanation": "Stift est masculin et COD du verbe suchen, il prend donc 'einen' à l'accusatif."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Articles au datif et négation kein",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes correspondent à l'article indéfini au datif singulier ?",
+              "options": ["einem", "einer", "einen", "eines"],
+              "correctAnswers": [0, 1],
+              "explanation": "Au datif singulier, on a 'einem' (masculin et neutre) et 'einer' (féminin)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : « Ich spreche mit ___ Freund. » (un ami, masculin)",
+              "options": ["einem", "einen", "einer", "ein"],
+              "correctAnswers": [0],
+              "explanation": "'Mit' exige le datif. Freund est masculin, on emploie 'einem'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : « Sie antwortet ___ Lehrerin. » (une enseignante, féminin)",
+              "options": ["einer", "einem", "eine", "einen"],
+              "correctAnswers": [0],
+              "explanation": "Antworten se construit avec le datif. Lehrerin est féminin, l'article est 'einer'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : « Er wohnt in ___ Haus. » (une maison, neutre)",
+              "options": ["einem", "einer", "einen", "ein"],
+              "correctAnswers": [0],
+              "explanation": "Le datif neutre prend la marque -em, d'où 'in einem Haus'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment se décline le mot de négation « kein » ?",
+              "options": [
+                "Exactement comme l'article indéfini ein (avec un pluriel en keine)",
+                "Comme l'article défini der/die/das",
+                "Il est invariable",
+                "Comme un adjectif qualificatif isolé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kein se décline comme 'ein' au singulier, et prend les terminaisons de l'article défini au pluriel (keine, keinen...)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « Ich habe ___ Zeit. » (le temps, féminin : die Zeit)",
+              "options": ["keine", "kein", "keinen", "keiner"],
+              "correctAnswers": [0],
+              "explanation": "Zeit est féminin et COD (accusatif), la négation est 'keine'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « Er hat ___ Hund. » (le chien, masculin)",
+              "options": ["keinen", "kein", "keine", "keinem"],
+              "correctAnswers": [0],
+              "explanation": "Hund est masculin singulier et COD à l'accusatif, on utilise 'keinen'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « Wir haben ___ Auto. » (la voiture, neutre)",
+              "options": ["kein", "keinen", "keine", "keinem"],
+              "correctAnswers": [0],
+              "explanation": "Auto est neutre singulier. À l'accusatif, la négation reste 'kein'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « Ich sehe ___ Kinder auf der Straße. » (les enfants, pluriel)",
+              "options": ["keine", "kein", "keinen", "keiner"],
+              "correctAnswers": [0],
+              "explanation": "Kinder est au pluriel accusatif, la négation est 'keine'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : « Er hilft ___ Mann. » (aucun homme, datif masculin)",
+              "options": ["keinem", "keinen", "keiner", "kein"],
+              "correctAnswers": [0],
+              "explanation": "Helfen exige le datif. Au masculin singulier, la terminaison est -em, donc 'keinem'."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "L'adjectif épithète après article défini",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les deux seules terminaisons possibles pour l'adjectif après un article défini (déclinaison faible) ?",
+              "options": ["-e", "-en", "-er", "-es"],
+              "correctAnswers": [0, 1],
+              "explanation": "Après un article défini (der, die, das...), l'adjectif ne prend que deux terminaisons possibles : -e ou -en."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète au nominatif : « Der neu___ Schüler kommt aus Berlin. » (masculin)",
+              "options": ["-e", "-en", "-er", "-es"],
+              "correctAnswers": [0],
+              "explanation": "Au nominatif singulier (masculin, féminin, neutre), l'adjectif après l'article défini prend toujours -e."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète au nominatif : « Die schön___ Blume blüht. » (féminin)",
+              "options": ["-e", "-en", "-er", "-es"],
+              "correctAnswers": [0],
+              "explanation": "Au nominatif féminin singulier après 'die', l'adjectif prend la terminaison -e."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète au nominatif : « Das klein___ Kind schläft. » (neutre)",
+              "options": ["-e", "-en", "-es", "-er"],
+              "correctAnswers": [0],
+              "explanation": "Au nominatif neutre singulier après 'das', l'adjectif prend la terminaison -e."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète à l'accusatif masculin : « Ich sehe den alt___ Baum. »",
+              "options": ["-en", "-e", "-er", "-em"],
+              "correctAnswers": [0],
+              "explanation": "À l'accusatif masculin après 'den', l'adjectif prend toujours la terminaison -en."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète à l'accusatif neutre : « Er liest das interessant___ Buch. »",
+              "options": ["-e", "-en", "-es", "-er"],
+              "correctAnswers": [0],
+              "explanation": "À l'accusatif neutre après 'das', l'adjectif garde la terminaison -e (comme au nominatif neutre)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète au datif masculin : « Ich spreche mit dem neu___ Lehrer. »",
+              "options": ["-en", "-e", "-em", "-er"],
+              "correctAnswers": [0],
+              "explanation": "Au datif (singulier et pluriel), l'adjectif après l'article défini prend systématiquement -en."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète au nominatif pluriel : « Die groß___ Häuser stehen dort. »",
+              "options": ["-en", "-e", "-er", "-es"],
+              "correctAnswers": [0],
+              "explanation": "Au pluriel après 'die', l'adjectif prend toujours la terminaison -en à tous les cas."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète au datif pluriel : « Er hilft den alt___ Leuten. »",
+              "options": ["-en", "-e", "-er", "-em"],
+              "correctAnswers": [0],
+              "explanation": "Au datif pluriel après 'den', l'adjectif se termine par -en."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Ich kenne die neue Schülerin », quelle est la fonction de « neue » ?",
+              "options": [
+                "Adjectif épithète à l'accusatif",
+                "Adjectif attribut",
+                "Adverbe de manière",
+                "Complément du nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'neue' est placé directement avant le nom 'Schülerin' : c'est un adjectif épithète accordé."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "L'adjectif épithète après article indéfini",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles terminaisons d'adjectif trouve-t-on au nominatif après l'article indéfini 'ein' ?",
+              "options": [
+                "-er (masculin)",
+                "-es (neutre)",
+                "-en (masculin)",
+                "-em (neutre)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Comme 'ein' ne porte pas la marque du genre au nominatif, l'adjectif prend la marque forte : -er au masculin et -es au neutre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète au nominatif : « Das ist ein schön___ Tag. » (masculin)",
+              "options": ["-er", "-en", "-e", "-es"],
+              "correctAnswers": [0],
+              "explanation": "Tag est masculin. Au nominatif, après 'ein', l'adjectif prend la marque forte -er : 'ein schöner Tag'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète au nominatif : « Hier ist ein klein___ Haus. » (neutre)",
+              "options": ["-es", "-er", "-e", "-en"],
+              "correctAnswers": [0],
+              "explanation": "Haus est neutre. Au nominatif, après 'ein', l'adjectif prend la marque forte -es : 'ein kleines Haus'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète au nominatif : « Sie ist eine gut___ Freundin. » (féminin)",
+              "options": ["-e", "-en", "-er", "-es"],
+              "correctAnswers": [0],
+              "explanation": "Après 'eine', le féminin est déjà marqué, l'adjectif prend la terminaison -e : 'eine gute Freundin'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète à l'accusatif : « Ich kaufe einen neu___ Computer. » (masculin)",
+              "options": ["-en", "-er", "-e", "-es"],
+              "correctAnswers": [0],
+              "explanation": "À l'accusatif masculin, après 'einen', l'adjectif prend la terminaison faible -en."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète à l'accusatif : « Er hat ein spannend___ Buch. » (neutre)",
+              "options": ["-es", "-en", "-e", "-er"],
+              "correctAnswers": [0],
+              "explanation": "À l'accusatif neutre, l'article 'ein' ne porte pas la marque, l'adjectif garde donc -es : 'ein spannendes Buch'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète au datif : « Sie spricht mit einem alt___ Mann. » (masculin)",
+              "options": ["-en", "-em", "-er", "-e"],
+              "correctAnswers": [0],
+              "explanation": "Au datif masculin après 'einem', l'adjectif prend la terminaison faible -en."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète au datif : « Er wohnt bei einer nett___ Familie. » (féminin)",
+              "options": ["-en", "-e", "-er", "-em"],
+              "correctAnswers": [0],
+              "explanation": "Au datif féminin après 'einer', l'adjectif prend la terminaison faible -en."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Après les possessifs (mein, dein...) et 'kein', l'adjectif se décline…",
+              "options": [
+                "exactement comme après l'article indéfini ein",
+                "comme après l'article défini",
+                "sans aucune terminaison",
+                "toujours avec la terminaison -er"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les adjectifs possessifs et 'kein' suivent exactement la déclinaison mixte (comme l'article indéfini ein)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : « Meine neu___ Schuhe sind bequem. » (pluriel nominatif)",
+              "options": ["-en", "-e", "-er", "-es"],
+              "correctAnswers": [0],
+              "explanation": "Au pluriel après un possessif ou 'keine', l'adjectif prend toujours la terminaison -en."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les pronoms personnels aux trois cas",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels pronoms sont à la forme de l'accusatif ?",
+              "options": ["mich", "ihn", "mir", "ihm"],
+              "correctAnswers": [0, 1],
+              "explanation": "'mich' (moi) et 'ihn' (lui) sont à l'accusatif. 'mir' et 'ihm' sont au datif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la forme au datif du pronom personnel « ich » ?",
+              "options": ["mir", "mich", "meiner", "mein"],
+              "correctAnswers": [0],
+              "explanation": "Le pronom personnel 'ich' devient 'mich' à l'accusatif et 'mir' au datif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : « Wie geht es ___? — Danke, gut! » (à toi)",
+              "options": ["dir", "dich", "du", "dein"],
+              "correctAnswers": [0],
+              "explanation": "L'expression 'Wie geht es...' demande le datif. Pour 'tu', la forme au datif est 'dir'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : « Ich liebe ___! » (toi, accusatif)",
+              "options": ["dich", "dir", "du", "dein"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe lieben attend un COD à l'accusatif : pour 'du', la forme est 'dich'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la forme à l'accusatif de « er » (il) ?",
+              "options": ["ihn", "ihm", "ihr", "es"],
+              "correctAnswers": [0],
+              "explanation": "Le pronom 'er' devient 'ihn' à l'accusatif (COD) et 'ihm' au datif (COI)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme au datif de « er » (il/lui) ?",
+              "options": ["ihm", "ihn", "ihr", "ihnen"],
+              "correctAnswers": [0],
+              "explanation": "Au datif, le pronom personnel masculin singulier est 'ihm'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « Ich helfe ___ gern. » (à elle, datif de sie)",
+              "options": ["ihr", "sie", "ihm", "ihnen"],
+              "correctAnswers": [0],
+              "explanation": "Helfen exige le datif. Pour 'sie' (elle), la forme au datif est 'ihr'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelles sont les formes accusatif et datif du pronom « wir » (nous) ?",
+              "options": [
+                "uns pour les deux cas",
+                "uns à l'accusatif et unser au datif",
+                "unser à l'accusatif et uns au datif",
+                "euch pour les deux cas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour 'wir', la forme est 'uns' à la fois à l'accusatif et au datif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « Er lädt ___ zur Party ein. » (vous, pluriel informel : ihr)",
+              "options": ["euch", "ihr", "uns", "sie"],
+              "correctAnswers": [0],
+              "explanation": "Le pronom 'ihr' a pour forme accusatif (et datif) 'euch'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la forme au datif de politesse « Sie » ?",
+              "options": ["Ihnen", "Sie", "Ihr", "Ihre"],
+              "correctAnswers": [0],
+              "explanation": "Au datif, la forme de politesse 'Sie' devient 'Ihnen' (avec une majuscule obligatoire)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Les déterminants possessifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels déterminants possessifs correspondent à la 3e personne du singulier ?",
+              "options": [
+                "sein (son, possesseur masculin/neutre)",
+                "ihr (son, possesseur féminin)",
+                "mein (mon)",
+                "dein (ton)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "À la 3e personne du singulier, le possessif dépend du possesseur : 'sein' pour un homme/neutre et 'ihr' pour une femme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : « Paul sucht ___ Schlüssel (masculin singulier, accusatif). »",
+              "options": ["seinen", "sein", "seine", "seinem"],
+              "correctAnswers": [0],
+              "explanation": "Le possesseur est Paul (sein) et l'objet possédé est masculin à l'accusatif (-en), d'où 'seinen Schlüssel'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : « Maria liebt ___ Katze. » (sa chatte, féminin accusatif)",
+              "options": ["ihre", "ihr", "seine", "sein"],
+              "correctAnswers": [0],
+              "explanation": "Le possesseur est Maria (ihr). Au féminin accusatif, on ajoute la terminaison -e : 'ihre Katze'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel possessif correspond à « nous » (wir) ?",
+              "options": ["unser", "euer", "ihr", "mein"],
+              "correctAnswers": [0],
+              "explanation": "Le déterminant possessif pour la première personne du pluriel 'wir' est 'unser'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle particularité orthographique présente « euer » lorsqu'on lui ajoute une terminaison ?",
+              "options": [
+                "Il perd souvent son -e intérieur (ex: eure, euren)",
+                "Il double son r (eurer)",
+                "Il prend une majuscule",
+                "Il devient eures sans changement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au contact d'une terminaison vocalique, 'euer' s'élide couramment en 'eure', 'euren', 'eurem'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « Ist das ___ Tasche, Frau Müller? » (votre sac, politesse)",
+              "options": ["Ihre", "eure", "seine", "deine"],
+              "correctAnswers": [0],
+              "explanation": "Pour le vouvoiement (politesse), le possessif prend toujours une majuscule : 'Ihre Tasche'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète au datif masculin : « Ich fahre mit ___ Vater. » (mon)",
+              "options": ["meinem", "meinen", "meiner", "mein"],
+              "correctAnswers": [0],
+              "explanation": "'Mit' régit le datif. Au masculin singulier, le possessif prend la terminaison -em : 'meinem Vater'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète au datif féminin : « Er hilft ___ Schwester. » (sa sœur, possesseur masculin)",
+              "options": ["seiner", "seinem", "seine", "seinen"],
+              "correctAnswers": [0],
+              "explanation": "Le possesseur est masculin (sein). Au datif féminin, le possessif prend la marque -er : 'seiner Schwester'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « Wo sind ___ Bücher? » (tes livres, pluriel nominatif)",
+              "options": ["deine", "dein", "deinen", "deiner"],
+              "correctAnswers": [0],
+              "explanation": "Au pluriel nominatif, le possessif prend la marque -e : 'deine Bücher'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la règle d'or pour choisir entre « sein » et « ihr » ?",
+              "options": [
+                "La forme de base dépend du possesseur, et la terminaison dépend du genre et cas du nom possédé",
+                "La forme dépend uniquement du mot qui suit",
+                "La forme dépend uniquement du sujet de la phrase",
+                "Sein s'utilise pour les objets et ihr pour les personnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le radical (sein/ihr) reflète le possesseur, tandis que la terminaison s'accorde en genre, nombre et cas avec le nom possédé."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Le pluriel des noms et ses marques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles marques de pluriel sont fréquentes pour les noms féminins en allemand ?",
+              "options": [
+                "-(e)n",
+                "-nen (pour les métiers en -in)",
+                "-s (pour tous les noms d'origine germanique)",
+                "-er avec tréma systématique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La grande majorité des noms féminins forment leur pluriel en -(e)n (die Frau -> die Frauen) ou -nen (die Lehrerin -> die Lehrerinnen)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le pluriel du mot masculin « der Tisch » ?",
+              "options": [
+                "die Tische",
+                "die Tischen",
+                "die Tischer",
+                "die Tischs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nom 'der Tisch' forme son pluriel régulier en ajoutant un -e : 'die Tische'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le pluriel du mot neutre « das Buch » ?",
+              "options": ["die Bücher", "die Buche", "die Büchen", "die Buchs"],
+              "correctAnswers": [0],
+              "explanation": "Beaucoup de noms neutres courts forment leur pluriel en -er avec tréma (Umlaut) : 'die Bücher'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le pluriel du mot féminin « die Blume » (la fleur) ?",
+              "options": [
+                "die Blumen",
+                "die Blume",
+                "die Blümer",
+                "die Blümen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noms féminins terminés par -e ajoutent simplement un -n au pluriel : 'die Blumen'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le pluriel du mot « das Auto » ?",
+              "options": ["die Autos", "die Auto", "die Auton", "die Auten"],
+              "correctAnswers": [0],
+              "explanation": "Les mots d'emprunt ou abrégés terminés par une voyelle autre que -e prennent un -s au pluriel : 'die Autos'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « der Lehrer » (le professeur) ?",
+              "options": [
+                "die Lehrer",
+                "die Lehrere",
+                "die Lehrern",
+                "die Lehrers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noms masculins terminés par -er, -el, -en ne prennent pas de terminaison au pluriel (pluriel zéro) : 'die Lehrer'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « der Apfel » (la pomme) ?",
+              "options": [
+                "die Äpfel",
+                "die Apfeln",
+                "die Apfele",
+                "die Äpfler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains noms masculins terminés par -el ou -er prennent uniquement un tréma au pluriel : 'die Äpfel'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète au datif pluriel : « Ich spreche mit den Schülern. » Pourquoi le mot Schülern a-t-il un -n ?",
+              "options": [
+                "Car tous les noms au datif pluriel prennent un -n final sauf ceux finissant déjà par -n ou -s",
+                "Car c'est un mot féminin",
+                "Car Schüler est un verbe à l'infinitif",
+                "Car l'article den oblige le mot à rimer avec lui"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle du datif pluriel : tous les noms prennent un -n final (die Schüler -> mit den Schülern)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « das Mädchen » (la jeune fille) ?",
+              "options": [
+                "die Mädchen",
+                "die Mädchens",
+                "die Mädchene",
+                "die Mädchener"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les diminutifs en -chen ou -lein sont invariables au pluriel : 'die Mädchen'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « die Stadt » (la ville) ?",
+              "options": [
+                "die Städte",
+                "die Stadten",
+                "die Städter",
+                "die Stadts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'die Stadt' fait partie des noms féminins monosyllabiques qui prennent un tréma et un -e au pluriel : 'die Städte'."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La place du verbe conjugué (V2)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases respectent la règle du verbe conjugué en 2e position (V2) ?",
+              "options": [
+                "Heute lerne ich Deutsch.",
+                "Ich lerne heute Deutsch.",
+                "Heute ich lerne Deutsch.",
+                "Deutsch ich heute lerne."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En proposition principale affirmative, le verbe conjugué occupe toujours la deuxième position syntaxique, quel que soit l'élément placé en première position."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle place occupe TOUJOURS le verbe conjugué dans une proposition indépendante déclarative ?",
+              "options": [
+                "La 2e position",
+                "La 1re position",
+                "La dernière position",
+                "La 3e position"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La règle d'or de la syntaxe allemande en proposition déclarative est le verbe en deuxième position (V2)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si un complément de temps est placé en tête de phrase (ex: « Am Montag »), où se place le sujet ?",
+              "options": [
+                "Juste après le verbe conjugué (inversion sujet-verbe)",
+                "En toute fin de phrase",
+                "Avant le complément de temps",
+                "Entre les deux parties du verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour maintenir le verbe en position 2, le sujet passe immédiatement après le verbe : 'Am Montag (1) spiele (2) ich (sujet) Tennis'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Laquelle de ces phrases est correctement ordonnée ?",
+              "options": [
+                "Morgen fahren wir nach Berlin.",
+                "Morgen wir fahren nach Berlin.",
+                "Fahren morgen wir nach Berlin.",
+                "Nach Berlin morgen wir fahren."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Morgen' occupe le premier créneau (Vorfeld), le verbe conjugué 'fahren' est en 2e position, suivi du sujet 'wir'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « Oft liest er abends Bücher », quel élément occupe la position 1 ?",
+              "options": [
+                "L'adverbe « Oft »",
+                "Le verbe « liest »",
+                "Le pronom « er »",
+                "Le complément « abends Bücher »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Oft' est placé en position 1, ce qui place le verbe 'liest' en position 2 et le sujet 'er' en position 3."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Peut-on mettre un groupe nominal étendu en première position (ex: « Meine kleine Schwester ») ?",
+              "options": [
+                "Oui, tout le groupe nominal compte comme un seul bloc en position 1",
+                "Non, un seul mot est autorisé en position 1",
+                "Non, le sujet doit obligatoirement être un pronom",
+                "Oui, mais le verbe doit alors se mettre au pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La 'position 1' est un bloc syntaxique : qu'il fasse un ou dix mots, il compte pour une seule place devant le verbe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « Mein kleiner Bruder spielt im Garten », quelle est la position du verbe « spielt » ?",
+              "options": [
+                "2e position",
+                "3e position",
+                "4e position",
+                "1re position"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Mein kleiner Bruder' forme un seul bloc en 1re position. 'spielt' est donc bien en 2e position."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Remets dans l'ordre : (im Sommer / wir / nach Spanien / reisen)",
+              "options": [
+                "Im Sommer reisen wir nach Spanien.",
+                "Im Sommer wir reisen nach Spanien.",
+                "Nach Spanien im Sommer wir reisen.",
+                "Reisen wir im Sommer nach Spanien."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Im Sommer' en position 1 impose le verbe 'reisen' en position 2, suivi du sujet 'wir'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la phrase « Gestern ich habe meine Hausaufgaben gemacht » est-elle incorrecte ?",
+              "options": [
+                "Car le verbe conjugué 'habe' est en 3e position au lieu de la 2e",
+                "Car le participe passé est mal formé",
+                "Car Gestern doit toujours être en fin de phrase",
+                "Car le verbe haben ne peut pas être employé au présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inversion est obligatoire après un élément en position 1 : il faut dire 'Gestern habe ich...'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète correctement : « Jetzt ___ wir eine Pause. »",
+              "options": ["machen", "wir machen", "gemacht", "zu machen"],
+              "correctAnswers": [0],
+              "explanation": "'Jetzt' est en position 1, le verbe 'machen' vient immédiatement en position 2 avant le sujet 'wir'."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La question fermée (Ja/Nein-Frage)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont des questions fermées (Ja/Nein-Fragen) correctes ?",
+              "options": [
+                "Kommst du heute mit?",
+                "Hast du deine Hausaufgaben gemacht?",
+                "Wann kommst du nach Hause?",
+                "Warum lernst du Deutsch?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les questions fermées appellent 'oui' ou 'non' et commencent directement par le verbe conjugué (V1). Les deux autres sont des questions ouvertes avec mot interrogatif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où se place le verbe conjugué dans une question fermée (sans mot interrogatif) ?",
+              "options": [
+                "En 1re position (V1)",
+                "En 2e position",
+                "En dernière position",
+                "Après le sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une question globale/fermée en allemand, le verbe conjugué se place en toute première position."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Où se place le sujet dans une question fermée ?",
+              "options": [
+                "Immédiatement après le verbe conjugué (en 2e position)",
+                "Avant le verbe",
+                "À la fin de la phrase",
+                "En complément d'objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe étant en première position, le sujet le suit immédiatement en deuxième position (ex: 'Kommst (1) du (2)...')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Transforme en question fermée : « Du trinkst Tee. »",
+              "options": [
+                "Trinkst du Tee?",
+                "Du trinkst Tee?",
+                "Trinkst Tee du?",
+                "Tee trinkst du?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On place le verbe conjugué en tête : 'Trinkst du Tee?'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment répond-on par l'affirmative à une question négative (ex: « Lernst du nicht? ») ?",
+              "options": ["Doch!", "Ja!", "Nein!", "Bitte!"],
+              "correctAnswers": [0],
+              "explanation": "Pour contredire une question négative et affirmer le contraire (équivalent du 'si' français), on utilise 'Doch!'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réponds à : « Hast du kein Geld? — ___, ich habe zehn Euro. »",
+              "options": ["Doch", "Ja", "Nein", "Nicht"],
+              "correctAnswers": [0],
+              "explanation": "La question contient la négation 'kein Geld'. Pour affirmer qu'on a bien de l'argent, on répond 'Doch'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Laquelle de ces phrases est une question fermée correcte ?",
+              "options": [
+                "Wohnst du in München?",
+                "Wo wohnst du in München?",
+                "In München du wohnst?",
+                "Du wohnst in München?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Wohnst du in München?' place le verbe en première position et appelle une réponse par oui ou par non."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète la question : « ___ ihr heute Zeit für einen Film? »",
+              "options": ["Habt", "Haben", "Hat", "Hast"],
+              "correctAnswers": [0],
+              "explanation": "Le sujet est 'ihr' (2e personne du pluriel). La forme correspondante du verbe haben est 'Habt'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « ___ du schon einmal in Deutschland gewesen? »",
+              "options": ["Bist", "Hast", "Ist", "Warst"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe sein forme son parfait avec l'auxiliaire sein : 'Bist du... gewesen?'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle intonation caractérise généralement la question fermée en allemand ?",
+              "options": [
+                "Une intonation montante en fin de phrase",
+                "Une intonation descendante constante",
+                "Une voix plate et monocorde",
+                "Une intonation montante uniquement sur le premier mot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme en français, les questions fermées se terminent le plus souvent par une intonation montante."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La question ouverte (W-Fragen)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels pronoms interrogatifs permettent de questionner sur le lieu ?",
+              "options": [
+                "Wo? (lieu où l'on est)",
+                "Wohin? (lieu où l'on va)",
+                "Wann? (temps)",
+                "Warum? (cause)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Wo?' indique la localisation sans déplacement (avec datif), tandis que 'Wohin?' indique la direction vers laquelle on se déplace (avec accusatif)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle place occupe le verbe conjugué dans une question introduite par un mot en W (W-Frage) ?",
+              "options": [
+                "En 2e position, juste après le mot interrogatif",
+                "En 1re position avant le mot interrogatif",
+                "En dernière position",
+                "Après le sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot en W occupe la position 1, et le verbe conjugué se place en 2e position : 'Wo (1) wohnst (2) du (3)?'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif utilise-t-on pour demander « d'où viens-tu ? » ?",
+              "options": ["Woher", "Wohin", "Wo", "Wie"],
+              "correctAnswers": [0],
+              "explanation": "'Woher' exprime la provenance (d'où) : 'Woher kommst du?'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif signifie « quand ? » ?",
+              "options": ["Wann", "Warum", "Wer", "Wie"],
+              "correctAnswers": [0],
+              "explanation": "'Wann' sert à interroger sur le moment ou le temps : 'Wann beginnt der Unterricht?'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif signifie « pourquoi ? » ?",
+              "options": ["Warum", "Was", "Wie", "Wo"],
+              "correctAnswers": [0],
+              "explanation": "'Warum' (ou wieso / weshalb) interroge sur la cause ou le motif : 'Pourquoi ?'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle forme prend le pronom interrogatif 'wer' à l'accusatif (pour une personne COD) ?",
+              "options": ["Wen", "Wem", "Wessen", "Wer"],
+              "correctAnswers": [0],
+              "explanation": "Wer se décline : Wer (nominatif) -> Wen (accusatif) -> Wem (datif) -> Wessen (génitif)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « ___ hilfst du? — Ich helfe meiner Mutter. »",
+              "options": ["Wem", "Wen", "Wer", "Was"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe helfen se construit avec le datif : on demande 'Wem hilfst du?' (À qui aides-tu ?)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « ___ alt bist du? »",
+              "options": ["Wie", "Was", "Wo", "Wann"],
+              "correctAnswers": [0],
+              "explanation": "Pour demander l'âge, la taille ou le prix, on associe 'Wie' à un adjectif : 'Wie alt bist du?'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « ___ kostet dieses Buch? »",
+              "options": ["Wie viel", "Wie viele", "Was für", "Wo"],
+              "correctAnswers": [0],
+              "explanation": "'Wie viel' (combien) s'emploie pour les quantités non comptables ou les prix : 'Wie viel kostet dieses Buch?'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Laquelle de ces questions est correctement construite ?",
+              "options": [
+                "Warum kommst du heute nicht?",
+                "Warum du kommst heute nicht?",
+                "Warum nicht du kommst heute?",
+                "Kommst warum du heute nicht?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Warum' est en position 1, le verbe conjugué 'kommst' est en position 2, suivi du sujet 'du'."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les verbes à particule séparable",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels préfixes sont TOUJOURS séparables en allemand ?",
+              "options": ["auf-", "mit-", "be-", "ver-"],
+              "correctAnswers": [0, 1],
+              "explanation": "Les préfixes accentués comme auf-, mit-, an-, ab-, ein-, aus- sont séparables. Les préfixes be-, ge-, ent-, emp-, er-, ver-, zer-, miss- sont inséparables."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans une proposition principale au présent, où va la particule séparable ?",
+              "options": [
+                "En toute fin de proposition",
+                "Juste après le verbe conjugué",
+                "Avant le verbe conjugué",
+                "Devant le sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la phrase simple, le radical verbal est en 2e position et la particule séparable est rejetée tout à la fin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète avec 'aufstehen' (se lever) : « Ich ___ jeden Morgen um 7 Uhr ___. »",
+              "options": [
+                "stehe ... auf",
+                "aufstehe ... -",
+                "stehe auf ... -",
+                "stehst ... auf"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe 'aufstehen' se sépare : le radical 'stehe' se conjugue en position 2 et la particule 'auf' va en fin de phrase."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète avec 'fernsehen' (regarder la télé) : « Er ___ heute Abend ___. »",
+              "options": [
+                "sieht ... fern",
+                "sieht fern ... -",
+                "fernsieht ... -",
+                "seht ... fern"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe fernsehen a un radical fort (sehen -> er sieht) et sa particule 'fern' est rejetée à la fin : 'Er sieht ... fern'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète avec 'einkaufen' (faire des courses) : « Wir ___ im Supermarkt ___. »",
+              "options": [
+                "kaufen ... ein",
+                "einkaufen ... -",
+                "kaufen ein ... -",
+                "kauft ... ein"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le radical 'kaufen' se place en 2e position et 'ein' se place tout à la fin de la phrase."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment reconnaît-on à l'oral une particule séparable à l'infinitif ?",
+              "options": [
+                "La particule porte l'accent tonique principal",
+                "La particule n'est jamais accentuée",
+                "Elle se prononce plus doucement que le verbe",
+                "Elle est précédée d'un silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En allemand, les préfixes séparables portent l'accent tonique (ex: ÁUFräumen, MÍTkommen)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Laquelle de ces phrases contient un verbe INSÉPARABLE ?",
+              "options": [
+                "Er versteht die Frage.",
+                "Er steht um 7 Uhr auf.",
+                "Er ruft seinen Freund an.",
+                "Er kauft im Supermarkt ein."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'verstehen' comporte le préfixe inséparable 'ver-', il ne se sépare jamais (pas de rejet en fin de phrase)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Transforme en question : (du / anrufen / deinen Freund / ?) ",
+              "options": [
+                "Rufst du deinen Freund an?",
+                "Anrufst du deinen Freund?",
+                "Du rufst deinen Freund an?",
+                "Rufst an du deinen Freund?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En question fermée, le verbe conjugué 'Rufst' est en tête et la particule 'an' va à la fin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète avec 'mitkommen' (venir avec) : « Kommst du ins Kino ___? »",
+              "options": ["mit", "aus", "an", "ab"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe est mitkommen, la particule rejetée à la fin est 'mit'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Wann fängt der Film an? », quel est l'infinitif du verbe employé ?",
+              "options": ["anfangen", "fangen", "aufangen", "anfängen"],
+              "correctAnswers": [0],
+              "explanation": "Le radical 'fängt' (avec métaphonie) et la particule 'an' correspondent à l'infinitif 'anfangen' (commencer)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "L'ordre des compléments et règle TeKaMoLo",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Que signifient les lettres de la règle mnémonique TeKaMoLo pour l'ordre des compléments circonstanciels ?",
+              "options": [
+                "Temporal (temps) et Kausal (cause)",
+                "Modal (manière) et Lokal (lieu)",
+                "Komparativ (comparaison) et Modal",
+                "Logisch (logique) et Textuell"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "TeKaMoLo signifie : Temporal (quand ?), Kausal (pourquoi ?), Modal (comment ?), Lokal (où ?)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel type de complément circonstanciel vient en PREMIER selon la règle TeKaMoLo ?",
+              "options": [
+                "Le complément de temps (Temporal)",
+                "Le complément de lieu (Lokal)",
+                "Le complément de manière (Modal)",
+                "Le complément de cause (Kausal)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la zone centrale (Mittelfeld), le complément de temps (Temporal) précède tous les autres."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel type de complément circonstanciel vient en DERNIER selon la règle TeKaMoLo ?",
+              "options": [
+                "Le complément de lieu (Lokal)",
+                "Le complément de temps (Temporal)",
+                "Le complément de manière (Modal)",
+                "Le complément de cause (Kausal)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le complément de lieu (Lokal) se place à la fin de la suite de compléments circonstanciels."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase respecte l'ordre TeKaMoLo ?",
+              "options": [
+                "Ich fahre heute (Te) mit dem Zug (Mo) nach Berlin (Lo).",
+                "Ich fahre nach Berlin (Lo) heute (Te) mit dem Zug (Mo).",
+                "Ich fahre mit dem Zug (Mo) heute (Te) nach Berlin (Lo).",
+                "Ich fahre nach Berlin (Lo) mit dem Zug (Mo) heute (Te)."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Temps (heute) précède Manière (mit dem Zug), qui précède Lieu (nach Berlin)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « Er geht wegen des Regens zu Fuß zur Schule », quel complément correspond à 'Kausal' ?",
+              "options": [
+                "wegen des Regens",
+                "zu Fuß",
+                "zur Schule",
+                "Er geht"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'wegen des Regens' (à cause de la pluie) indique la cause (Kausal)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quand on a deux noms compléments (un datif et un accusatif), quel est l'ordre habituel ?",
+              "options": [
+                "Le nom au datif précède le nom à l'accusatif",
+                "Le nom à l'accusatif précède le nom au datif",
+                "L'ordre est totalement libre et aléatoire",
+                "Le nom le plus court se place toujours en premier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle des deux noms : le complément d'attribution au datif se place avant le COD à l'accusatif ('Ich gebe dem Mann das Buch')."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quand les deux compléments sont des PRONOMS (un datif et un accusatif), quel est l'ordre obligatoire ?",
+              "options": [
+                "Le pronom à l'accusatif précède le pronom au datif",
+                "Le pronom au datif précède le pronom à l'accusatif",
+                "L'accusatif se met toujours en fin de phrase",
+                "Le datif se place obligatoirement en 1re position"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle des deux pronoms : le pronom accusatif précède impérativement le pronom datif ('Ich gebe es ihm')."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Remplace les noms par des pronoms dans « Er schenkt der Mutter (datif) die Blumen (accusatif) » :",
+              "options": [
+                "Er schenkt sie ihr.",
+                "Er schenkt ihr sie.",
+                "Er schenkt es ihr.",
+                "Er schenkt ihr es."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux compléments deviennent pronoms : sie (accusatif) précède ihr (datif) -> 'Er schenkt sie ihr'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'un des éléments de TeKaMoLo est déplacé en position 1, que deviennent les autres ?",
+              "options": [
+                "Ils conservent leur ordre relatif dans le reste de la phrase",
+                "Ils doivent tous être inversés",
+                "Ils sont obligatoirement supprimés",
+                "Ils doivent être reliés par une conjonction de coordination"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même si le lieu ou le temps passe en position 1, les éléments restants dans la phrase gardent la hiérarchie TeKaMoLo."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : « Paul fliegt morgen ___ nach London. » (très vite, manière)",
+              "options": ["sehr schnell", "am Bahnhof", "gestern", "im Sommer"],
+              "correctAnswers": [0],
+              "explanation": "Entre le temps (morgen) et le lieu (nach London), on insère la manière (Modal) : 'sehr schnell'."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "La négation avec nicht et sa place",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans quels cas utilise-t-on 'nicht' plutôt que 'kein' pour nier ?",
+              "options": [
+                "Pour nier un verbe ou toute l'action",
+                "Pour nier un adjectif ou un adverbe",
+                "Pour nier un nom précédé d'un article indéfini",
+                "Pour nier un nom sans aucun déterminant"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'nicht' s'utilise pour nier un verbe, un adjectif, un adverbe ou un nom défini. 'kein' remplace l'article indéfini (ein) ou l'article zéro."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où se place 'nicht' quand il porte sur la phrase entière et qu'il n'y a qu'un verbe conjugué simple ?",
+              "options": [
+                "En fin de proposition",
+                "Juste après le sujet",
+                "En 1re position",
+                "Avant le verbe conjugué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand 'nicht' nie l'ensemble de l'action d'un verbe simple, il se place en toute fin de proposition ('Ich schlafe nicht')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Où se place 'nicht' par rapport à une particule séparable ou un infinitif en fin de phrase ?",
+              "options": [
+                "Juste avant la particule ou l'infinitif",
+                "Après la particule",
+                "En tête de phrase",
+                "Entre le sujet et le verbe conjugué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'nicht' se place juste avant le second élément verbal en fin de phrase ('Er steht heute nicht auf')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Où se place 'nicht' quand il nie un adjectif attribut ?",
+              "options": [
+                "Directement devant l'adjectif",
+                "Après l'adjectif",
+                "En 2e position de la phrase",
+                "En fin de phrase après tout le reste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour nier un élément précis comme un adjectif, 'nicht' se place immédiatement devant lui ('Das Buch ist nicht interessant')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : « Er kommt heute ___ zur Schule. » (négation de lieu)",
+              "options": ["nicht", "kein", "keine", "nichts"],
+              "correctAnswers": [0],
+              "explanation": "Devant un groupe prépositionnel (zur Schule), on emploie la négation 'nicht'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Laquelle de ces phrases est correcte pour dire « Je ne sais pas » ?",
+              "options": [
+                "Ich weiß es nicht.",
+                "Ich weiß nicht es.",
+                "Nicht ich weiß es.",
+                "Ich nicht es weiß."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pronom complément 'es' précède la négation 'nicht' qui termine la phrase."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « Wir spielen heute ___, sondern morgen. »",
+              "options": ["nicht", "kein", "nie", "nichts"],
+              "correctAnswers": [0],
+              "explanation": "L'opposition 'nicht ..., sondern ...' (non pas ... mais ...) exige l'adverbe 'nicht'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Das ist nicht mein Buch », pourquoi emploie-t-on 'nicht' et non 'kein' ?",
+              "options": [
+                "Car le nom est précédé d'un déterminant possessif (mein)",
+                "Car Buch est un nom masculin",
+                "Car le verbe sein interdit toujours kein",
+                "Car la phrase est au passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant un déterminant défini ou possessif, on utilise 'nicht' et non pas 'kein'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Où place-t-on 'nicht' par rapport à un complément prépositionnel fixe ?",
+              "options": [
+                "Généralement juste avant la préposition",
+                "Après le nom du complément",
+                "Au tout début de la phrase",
+                "Après le verbe à l'infinitif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'nicht' se place typiquement devant le groupe prépositionnel ('Ich warte nicht auf ihn')."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète avec la négation appropriée : « Er versteht den Satz ___. »",
+              "options": ["nicht", "kein", "keinen", "nichts"],
+              "correctAnswers": [0],
+              "explanation": "Le nom 'den Satz' a déjà un article défini, on nie l'action du verbe avec 'nicht' en fin de phrase."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Les verbes de modalité au présent",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les particularités des verbes modaux au présent du singulier ?",
+              "options": [
+                "Changement de voyelle du radical aux 3 personnes du singulier (sauf sollen)",
+                "Absence de terminaison à la 1re et 3e personne du singulier (- et -)",
+                "Terminaison régulière en -e et -t comme les autres verbes",
+                "Ils se placent toujours à la fin de la proposition principale"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Au singulier, le radical change (ex: können -> ich kann, du kannst, er kann) et les 1re et 3e personnes n'ont pas de terminaison (-)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la structure de la phrase simple avec un verbe modal et un infinitif ?",
+              "options": [
+                "Modal conjugué en 2e position, infinitif rejeté en toute fin de phrase",
+                "Modal et infinitif collés l'un à l'autre en 2e position",
+                "Infinitif en 2e position et modal en fin de phrase",
+                "Les deux verbes sont conjugués en tête de phrase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la structure en accolade (Satzklammer) : le verbe modal est en 2e position et l'infinitif en fin de phrase."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète avec 'können' (pouvoir/capacité) : « Er ___ sehr gut Deutsch sprechen. »",
+              "options": ["kann", "könnt", "kannst", "können"],
+              "correctAnswers": [0],
+              "explanation": "À la 3e personne du singulier, können devient 'er kann' (sans -t final)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète avec 'müssen' (obligation) : « Wir ___ für die Prüfung lernen. »",
+              "options": ["müssen", "muss", "müsst", "musst"],
+              "correctAnswers": [0],
+              "explanation": "À la 1re personne du pluriel 'wir', les verbes modaux reprennent le radical de l'infinitif : 'wir müssen'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle nuance exprime le verbe modal « dürfen » ?",
+              "options": [
+                "L'autorisation ou la permission (avoir le droit de)",
+                "La capacité physique",
+                "La volonté ferme",
+                "L'obligation morale stricte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'dürfen' exprime la permission : 'Hier darf man parken' (On a le droit de se garer ici)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie « Man darf hier nicht rauchen » ?",
+              "options": [
+                "Il est interdit de fumer ici (défense absolue)",
+                "On ne doit pas forcément fumer",
+                "On ne peut pas fumer par manque de feu",
+                "On veut fumer dehors"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'nicht dürfen' exprime l'interdiction stricte : ne pas avoir le droit de faire quelque chose."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète avec 'wollen' (volonté) : « Was ___ du am Wochenende machen? »",
+              "options": ["willst", "wollt", "will", "wollen"],
+              "correctAnswers": [0],
+              "explanation": "Avec 'du', wollen devient 'du willst' (changement de voyelle o -> i)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète avec 'mögen / möchten' (souhait poli) : « Ich ___ einen Apfelsaft trinken. »",
+              "options": ["möchte", "mag", "möchtet", "möchten"],
+              "correctAnswers": [0],
+              "explanation": "'ich möchte' (je voudrais / j'aimerais) exprime le souhait poli au subjonctif II."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète avec 'sollen' (conseil, devoir moral) : « Du ___ mehr schlafen. »",
+              "options": ["sollst", "sollt", "soll", "sollen"],
+              "correctAnswers": [0],
+              "explanation": "'sollen' est le seul modal qui garde sa voyelle 'o' au singulier : 'du sollst'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Laquelle de ces phrases respecte l'ordre syntaxique avec verbe modal ?",
+              "options": [
+                "Ich will heute einen neuen Film sehen.",
+                "Ich will sehen heute einen neuen Film.",
+                "Ich heute will einen neuen Film sehen.",
+                "Ich sehen will heute einen neuen Film."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modal 'will' en position 2, infinitif 'sehen' rejeté en fin de proposition."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "La coordination avec ADUSO",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles conjonctions font partie de l'acronyme mnémotechnique ADUSO (position 0) ?",
+              "options": [
+                "aber (mais) et denn (car)",
+                "und (et) et oder (ou)",
+                "weil (parce que)",
+                "dass (que)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "ADUSO regroupe les 5 conjonctions de coordination neutres : Aber, Denn, Und, Sondern, Oder. Weil et dass sont des conjonctions de subordination."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel impact les conjonctions ADUSO ont-elles sur la position des mots dans la proposition qui suit ?",
+              "options": [
+                "Aucun impact (elles occupent la position 0)",
+                "Elles rejettent le verbe conjugué à la fin",
+                "Elles obligent le verbe à passer en position 1",
+                "Elles demandent le datif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les conjonctions de coordination (ADUSO) comptent pour la position 'zéro' : après elles, l'ordre normal (Sujet en 1, Verbe en 2) s'applique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : « Ich bleibe zu Hause, ___ ich bin krank. » (car)",
+              "options": ["denn", "weil", "deshalb", "obwohl"],
+              "correctAnswers": [0],
+              "explanation": "Comme le verbe 'bin' reste en 2e position après le sujet 'ich', on doit utiliser 'denn' (position 0) et non pas 'weil'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la différence d'emploi entre 'aber' et 'sondern' ?",
+              "options": [
+                "'sondern' s'utilise uniquement après une proposition négative pour rectifier",
+                "'aber' ne s'utilise jamais en début de phrase",
+                "'sondern' signifie toujours 'parce que'",
+                "'aber' rejette le verbe à la fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'sondern' (mais au contraire) exige une négation préalable (nicht/kein) pour apporter une correction."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : « Er lernt nicht Französisch, ___ Spanisch. »",
+              "options": ["sondern", "aber", "denn", "oder"],
+              "correctAnswers": [0],
+              "explanation": "Il y a une négation ('nicht Französisch') suivie d'une rectification : on emploie 'sondern'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « Wir wollen ins Kino gehen, ___ wir haben kein Geld. » (mais)",
+              "options": ["aber", "denn", "und", "sondern"],
+              "correctAnswers": [0],
+              "explanation": "'aber' exprime une restriction ou opposition sans réfuter une négation précédente : 'mais nous n'avons pas d'argent'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle conjonction signifie « ou » ?",
+              "options": ["oder", "und", "denn", "wo"],
+              "correctAnswers": [0],
+              "explanation": "'oder' est la conjonction de coordination marquant l'alternative (ou / ou bien)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Und dann fahren wir los », pourquoi le verbe 'fahren' est-il avant 'wir' ?",
+              "options": [
+                "Car 'Und' est en position 0 et 'dann' est en position 1",
+                "Car 'Und' oblige l'inversion",
+                "Car 'dann' est un verbe",
+                "Car la phrase est une question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Und' compte pour la position 0. 'dann' occupe la position 1, donc le verbe 'fahren' vient immédiatement en position 2."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Laquelle de ces phrases coordonnées est correcte ?",
+              "options": [
+                "Ich mag Pizza, aber mein Bruder isst lieber Nudeln.",
+                "Ich mag Pizza, aber isst mein Bruder lieber Nudeln.",
+                "Ich mag Pizza, aber mein Bruder lieber Nudeln isst.",
+                "Ich mag Pizza, aber lieber mein Bruder isst Nudeln."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après 'aber' (position 0), la proposition suit l'ordre standard : sujet 'mein Bruder' (1), verbe 'isst' (2)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que relie la conjonction 'und' dans une phrase ?",
+              "options": [
+                "Deux mots, deux groupes de mots ou deux propositions de même nature",
+                "Uniquement deux verbes au subjonctif",
+                "Toujours un adjectif et un nom masculin",
+                "Uniquement des propositions subordonnées relatives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'und' relie des éléments de même niveau syntaxique (mots, groupes ou phrases complètes)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "L'impératif régulier et de politesse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes d'impératif n'expriment JAMAIS le pronom personnel sujet ?",
+              "options": [
+                "L'impératif avec 'du' (2e pers. du singulier)",
+                "L'impératif avec 'ihr' (2e pers. du pluriel)",
+                "L'impératif de politesse avec 'Sie'",
+                "L'impératif avec 'wir'"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Aux 2es personnes du tutoiement (du et ihr), le pronom sujet disparaît : 'Komm!' et 'Kommt!'. Avec Sie et wir, le pronom est conservé : 'Kommen Sie!' et 'Gehen wir!'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment forme-t-on l'impératif pour « du » avec un verbe régulier comme « machen » ?",
+              "options": [
+                "Radical du présent sans pronom ni terminaison (Mach!)",
+                "Infinitif complet (Machen!)",
+                "Forme conjuguée avec pronom (Machst du!)",
+                "Participe passé (Gemacht!)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour tutoyer une personne, on prend le radical du verbe : 'Mach!' (parfois 'Mache!'). Le pronom 'du' et la terminaison -st disparaissent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment forme-t-on l'impératif pour « ihr » (groupe d'amis/camarades) ?",
+              "options": [
+                "Forme conjuguée avec ihr mais sans le pronom (Kommt!)",
+                "Infinitif avec ihr (Kommen ihr!)",
+                "Radical seul (Komm!)",
+                "Forme en -en avec point d'exclamation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour s'adresser à plusieurs personnes qu'on tutoie, on utilise la forme en -t sans le pronom : 'Macht!', 'Kommt!'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment forme-t-on l'impératif de politesse avec « Sie » ?",
+              "options": [
+                "Infinitif suivi du pronom Sie inversé (Kommen Sie!)",
+                "Radical seul sans Sie (Komm Sie!)",
+                "Forme en -t avec Sie (Kommt Sie!)",
+                "Le verbe à la fin de la phrase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'impératif de vouvoiement inverse le verbe et le pronom de politesse : 'Kommen Sie, bitte!'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est l'impératif singulier (du) du verbe à changement de voyelle « lesen » (du liest) ?",
+              "options": ["Lies!", "Lese!", "Liest!", "Les!"],
+              "correctAnswers": [0],
+              "explanation": "Les verbes changeant leur voyelle de 'e' en 'i' ou 'ie' conservent ce changement à l'impératif singulier : 'Lies!'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les verbes en 'a' qui prennent un Umlaut (ex: fahren -> du fährst) gardent-ils le tréma à l'impératif ?",
+              "options": [
+                "Non, ils perdent toujours le tréma (Fahr!)",
+                "Oui, ils gardent toujours le tréma (Fähr!)",
+                "Uniquement au pluriel",
+                "C'est facultatif selon la région"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle importante : les verbes à tréma au présent perdent le tréma à l'impératif singulier : 'Fahr!' (et non Fähr)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est l'impératif singulier (du) du verbe « sein » (être) ?",
+              "options": ["Sei!", "Bist!", "Sein!", "Seid!"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe sein est irrégulier à l'impératif : 'Sei!' (du), 'Seid!' (ihr), 'Seien Sie!' (Sie)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est l'impératif de politesse (Sie) du verbe « sein » ?",
+              "options": ["Seien Sie!", "Sind Sie!", "Seid Sie!", "Wesen Sie!"],
+              "correctAnswers": [0],
+              "explanation": "La formule de politesse pour sein est 'Seien Sie!' (ex: 'Seien Sie vorsichtig!')."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Où va la particule séparable à l'impératif (ex: aufstehen) ?",
+              "options": [
+                "En fin de proposition (Steh auf!)",
+                "Collée devant le verbe (Aufsteh!)",
+                "Avant le sujet",
+                "Elle est toujours supprimée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La particule séparable est rejetée après le verbe, en fin de proposition : 'Steh bitte auf!'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel petit mot ajoute-t-on très couramment en allemand pour adoucir un ordre et le rendre poli ?",
+              "options": ["bitte ou mal", "sehr", "nicht", "auch"],
+              "correctAnswers": [0],
+              "explanation": "'bitte' (s'il vous plaît) ou les particules modales comme 'mal' ou 'doch' rendent l'ordre bienveillant et poli."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan : structures de phrases simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propositions placent le verbe conjugué en PREMIÈRE position (V1) ?",
+              "options": [
+                "Les questions fermées (Ja/Nein-Fragen)",
+                "Les phrases à l'impératif",
+                "Les phrases déclaratives standard",
+                "Les questions ouvertes en W (W-Fragen)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le verbe conjugué est en tête (V1) dans les questions fermées ('Kommst du?') et dans les phrases injonctives à l'impératif ('Komm hierher!')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans une proposition principale déclarative, si l'on commence par « Am Wochenende », quelle est la suite correcte ?",
+              "options": [
+                "besuche ich meine Großeltern.",
+                "ich besuche meine Großeltern.",
+                "ich meine Großeltern besuche.",
+                "meine Großeltern ich besuche."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle V2 : 'Am Wochenende' (1), verbe conjugué 'besuche' (2), sujet 'ich' (3)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle phrase est parfaitement construite avec un verbe de modalité ?",
+              "options": [
+                "Morgen kann ich leider nicht kommen.",
+                "Morgen ich kann leider nicht kommen.",
+                "Morgen kann kommen ich leider nicht.",
+                "Morgen ich leider nicht kommen kann."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe modal en position 2 ('kann'), inversion du sujet ('ich'), et infinitif en fin de phrase ('kommen')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase est correctement ordonnée avec la négation et un verbe séparable ?",
+              "options": [
+                "Er ruft heute seine Freundin nicht an.",
+                "Er ruft an heute seine Freundin nicht.",
+                "Er anruft heute nicht seine Freundin.",
+                "Er nicht anruft heute seine Freundin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe 'ruft' est en 2, le COD 'seine Freundin' et 'nicht' suivent, et la particule 'an' ferme la phrase."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « Wer hat diesen Kuchen gebacken? », quel est le temps du verbe ?",
+              "options": [
+                "Le parfait (passé composé)",
+                "Le présent",
+                "Le prétérit",
+                "Le futur I"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'auxiliaire haben conjugué ('hat') + participe passé en fin de phrase ('gebacken') forment le parfait."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phrase combine correctement 'denn' et l'ordre des mots ?",
+              "options": [
+                "Ich lerne fleißig, denn ich will gute Noten bekommen.",
+                "Ich lerne fleißig, denn will ich gute Noten bekommen.",
+                "Ich lerne fleißig, denn ich gute Noten will bekommen.",
+                "Ich lerne fleißig, denn gute Noten ich will bekommen."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'denn' compte pour zéro. La proposition suit l'ordre Sujet (ich) + Verbe modal (will) + reste + Infinitif (bekommen)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle forme impérative est correcte pour dire à des camarades de faire attention ?",
+              "options": [
+                "Passt auf!",
+                "Passen auf!",
+                "Pass auf ihr!",
+                "Aufpasst!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour le tutoiement pluriel (ihr), on utilise le radical en -t sans pronom, avec particule rejetée : 'Passt auf!'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans une question ouverte comme « Wohin fährst du im Sommer? », où se trouve l'adverbe interrogatif ?",
+              "options": [
+                "En 1re position (Vorfeld)",
+                "En 2e position après le verbe",
+                "À la fin de la phrase",
+                "Juste avant le sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot interrogatif (W-Wort) ouvre obligatoirement la phrase en toute première position."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on en grammaire allemande la structure où les deux parties du verbe encadrent les compléments ?",
+              "options": [
+                "La pince verbale ou accolade (Satzklammer)",
+                "L'inversion totale",
+                "La règle de proximité",
+                "L'ellipse verbale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La 'Satzklammer' (accolade verbale) encadre le cœur de la proposition (Mittelfeld) entre le verbe conjugué et le verbe rejeté."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la règle absolue sur la place du verbe conjugué dans TOUTE proposition principale affirmative en allemand ?",
+              "options": [
+                "Il occupe toujours la 2e position syntaxique",
+                "Il est toujours en première position",
+                "Il est toujours repoussé en fin de phrase",
+                "Il s'accorde toujours avec le premier mot de la phrase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est le principe fondamental de la grammaire allemande : dans toute proposition principale affirmative, le verbe conjugué est en position 2."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

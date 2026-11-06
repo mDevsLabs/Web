@@ -1,0 +1,2728 @@
+{
+  "id": "3e-arts-04",
+  "year": "3e",
+  "subject": "arts",
+  "title": "La couleur et la lumière",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Mélanges et nuances",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : Primaires, secondaires et tertiaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En peinture et en synthèse soustractive, quelles sont les trois couleurs primaires fondamentales ?",
+              "options": [
+                "Cyan, magenta et jaune primaire",
+                "Rouge, vert et bleu",
+                "Bleu marine, rouge vermillon et jaune d'or",
+                "Orange, vert et violet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En synthèse soustractive (peinture, encres), les primaires sont le cyan, le magenta et le jaune primaire : elles ne peuvent pas être obtenues par mélange."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle couleur secondaire obtient-on en mélangeant à parts égales du cyan et du jaune ?",
+              "options": ["Le vert", "L'orange", "Le violet", "Le marron"],
+              "correctAnswers": [0],
+              "explanation": "Le mélange à parts égales des deux couleurs primaires cyan et jaune produit la couleur secondaire verte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mélange de couleurs primaires produit la couleur secondaire violette ?",
+              "options": [
+                "Magenta et cyan",
+                "Cyan et jaune",
+                "Magenta et jaune",
+                "Jaune et noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le violet s'obtient en associant le magenta (rouge primaire) et le cyan (bleu primaire)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle couleur secondaire résulte de l'association du magenta et du jaune primaire ?",
+              "options": [
+                "L'orange",
+                "Le turquoise",
+                "Le vert olive",
+                "L'indigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'orange est la couleur secondaire obtenue en mélangeant du magenta et du jaune primaire."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles sont les trois couleurs primaires de la matière en synthèse soustractive ?",
+              "options": [
+                "Le cyan",
+                "Le magenta",
+                "Le jaune primaire",
+                "Le vert émeraude"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le cyan, le magenta et le jaune primaire constituent la triade primaire fondamentale en synthèse soustractive. Le vert est une couleur secondaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une couleur obtenue en mélangeant une primaire et une secondaire voisine ?",
+              "options": [
+                "Une couleur tertiaire ou intermédiaire",
+                "Une couleur spectrale pure",
+                "Une couleur achromatique",
+                "Une couleur fluorescente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une couleur tertiaire (ou intermédiaire) résulte du mélange d'une couleur primaire avec une couleur secondaire adjacente (ex. bleu-vert, rouge-orangé)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Parmi les propositions suivantes, laquelle désigne une couleur tertiaire ?",
+              "options": [
+                "Le jaune-vert",
+                "Le magenta pur",
+                "Le violet pur",
+                "Le blanc pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le jaune-vert est une couleur tertiaire, née de la combinaison du jaune primaire et de la couleur secondaire verte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que produit théoriquement le mélange des trois couleurs primaires en quantités égales en peinture ?",
+              "options": [
+                "Un brun très sombre ou noir chromatique",
+                "Un blanc éclatant",
+                "Un bleu ciel lumineux",
+                "Un jaune citron pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En synthèse soustractive, mélanger les trois primaires absorbe la quasi-totalité de la lumière et donne un noir chromatique ou brun très foncé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on les teintes obtenues en rompant une couleur avec sa complémentaire ou de la terre d'ombre ?",
+              "options": [
+                "Des tons rompus ou rabattus",
+                "Des teintes fluorescentes",
+                "Des tons néon",
+                "Des lumières additives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les tons rompus ou rabattus sont des couleurs atténuées, grisées ou assombries par l'ajout de leur complémentaire, de noir ou d'ocres."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels mélanges produisent effectivement une couleur secondaire ?",
+              "options": [
+                "Cyan + Jaune (donne du vert)",
+                "Magenta + Jaune (donne de l'orange)",
+                "Bleu + Vert (donne du bleu-vert)",
+                "Noir + Blanc (donne du gris)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le vert et l'orange sont des couleurs secondaires issues de deux primaires. Le bleu-vert est une couleur tertiaire, et le gris est une valeur achromatique."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Synthèse additive et synthèse soustractive",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel principe régit le mélange des lumières colorées ?",
+              "options": [
+                "La synthèse additive",
+                "La synthèse soustractive",
+                "La sédimentation picturale",
+                "Le modelage tactile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La synthèse additive concerne le mélange de faisceaux lumineux : la superposition des lumières ajoute de la clarté."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles sont les trois couleurs primaires de la synthèse additive (lumière) ?",
+              "options": [
+                "Rouge, Vert et Bleu (RVB)",
+                "Cyan, Magenta et Jaune (CMJ)",
+                "Jaune, Bleu et Rouge carmin",
+                "Orange, Violet et Vert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les trois primaires de la lumière sont le Rouge, le Vert et le Bleu, désignées par le sigle RVB (ou RGB en anglais)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que produit la superposition à intensité maximale des trois lumières primaires RVB ?",
+              "options": [
+                "La lumière blanche",
+                "L'obscurité totale (le noir)",
+                "Un faisceau gris moyen",
+                "Un éclat doré ambré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En synthèse additive, l'addition de toutes les longueurs d'onde du spectre visible reconstitue la lumière blanche."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel appareil d'usage quotidien fonctionne selon le principe de la synthèse additive ?",
+              "options": [
+                "L'écran de smartphone ou de télévision",
+                "Le livre imprimé relié",
+                "L'aquarelle sur papier à grain",
+                "La fresque murale à la chaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les écrans émettent de la lumière au moyen de minuscules sous-pixels rouges, verts et bleus qui se mélangent additivement dans l'œil."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels dispositifs fonctionnent grâce à la synthèse additive de la lumière ?",
+              "options": [
+                "Les vidéoprojecteurs numériques",
+                "Les projecteurs d'éclairage scénique",
+                "Les affiches imprimées en quadrichromie",
+                "Les gouaches sur papier kraft"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les vidéoprojecteurs et l'éclairage de scène manipulent des flux lumineux (synthèse additive), tandis que l'imprimerie et la gouache absorbent la lumière (synthèse soustractive)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la peinture est-elle qualifiée de synthèse « soustractive » ?",
+              "options": [
+                "Parce que les pigments absorbent et soustraient une part de la lumière ambiante",
+                "Parce qu'elle retire de la matière au support au séchage",
+                "Parce qu'elle efface les tracés préparatoires au fusain",
+                "Parce qu'elle diminue le poids de la toile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque couche de matière ou de pigment absorbe (soustrait) certaines longueurs d'onde de la lumière blanche et ne réfléchit que celles que nous voyons."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que désigne l'acronyme CMJN utilisé dans le domaine de l'imprimerie ?",
+              "options": [
+                "Cyan, Magenta, Jaune et Noir",
+                "Carmin, Marron, Jaune et Nacre",
+                "Chrome, Mauve, Jade et Noirceur",
+                "Cobalt, Minium, Jonquille et Nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CMJN correspond aux trois encres primaires soustractives (Cyan, Magenta, Jaune) complétées par le Noir pour apporter densité et contraste."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi ajoute-t-on une cartouche noire (N) aux trois primaires en quadrichromie ?",
+              "options": [
+                "Pour obtenir des noirs profonds, nets et économiser les encres primaires",
+                "Pour éclaircir les nuances de jaune pâle",
+                "Pour accélérer le séchage du papier glacé",
+                "Pour rendre les encres brillantes et vernies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mélange C+M+J donne un brun foncé coûteux en encre ; le noir dédié garantit une netteté parfaite des textes et des ombres denses."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si une pomme rouge est éclairée par une lumière purement bleue, quelle teinte apparente prend-elle ?",
+              "options": [
+                "Elle paraît noire ou très sombre car elle absorbe la lumière bleue",
+                "Elle brille d'un rouge écarlate étincelant",
+                "Elle devient entièrement jaune vif",
+                "Elle devient blanche et lumineuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pomme rouge absorbe les composantes bleues et vertes. Privée de lumière rouge à réfléchir, elle apparaît quasiment noire."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels médiums relèvent du domaine de la synthèse soustractive ?",
+              "options": [
+                "L'aquarelle transparente sur papier",
+                "L'encre d'imprimerie sur carton",
+                "La dalle lumineuse d'un écran OLED",
+                "Le faisceau laser d'un spectacle nocturne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'aquarelle et l'encre d'imprimerie sont des matières absorbant la lumière (synthèse soustractive), contrairement aux écrans OLED et lasers qui émettent des photons (synthèse additive)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : Camaïeu, dégradés et nuances",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un camaïeu en arts plastiques ?",
+              "options": [
+                "Une peinture réalisée à partir des variations de valeurs d'une seule couleur",
+                "Un tableau associant toutes les couleurs vives du spectre",
+                "Une sculpture en bronze poli sans aucune trace de couleur",
+                "Un collage associant des papiers peints disparates"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le camaïeu est une composition picturale monochrome explorant différentes valeurs d'intensité, de clarté ou d'obscurité d'une seule et même teinte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on un camaïeu composé exclusivement de noir, de blanc et de gris ?",
+              "options": [
+                "Une grisaille",
+                "Un glacis",
+                "Une enluminure",
+                "Un pastel sec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La grisaille est une technique monochrome utilisant des nuances de gris pour imiter le bas-relief ou servir de sous-couche préparatoire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le passage progressif et insensible d'une couleur à une autre ou du clair au foncé ?",
+              "options": [
+                "Un dégradé",
+                "Un aplat géométrique",
+                "Un cerne graphique",
+                "Une réserve blanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dégradé désigne une transition continue, douce et sans rupture visuelle entre deux tons ou deux valeurs lumineuses."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la définition précise d'une « nuance » par rapport à une couleur ?",
+              "options": [
+                "Une variation légère et subtile de la teinte, de la clarté ou de la pureté",
+                "Un changement radical de sujet dans une composition",
+                "L'épaisseur physique de la pâte sur le tableau",
+                "La marque du vernis protecteur final"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une nuance est une gradation ténue au sein d'une même famille de couleur (ex. bleu ciel, bleu roi, bleu nuit, bleu canard)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels mélanges permettent de créer des nuances distinctes à partir d'un bleu d'origine ?",
+              "options": [
+                "L'ajout d'une pointe de jaune pour tirer vers le turquoise",
+                "L'ajout d'une pointe de magenta pour tirer vers l'indigo",
+                "L'adjonction d'un cadre doré autour de la toile",
+                "Le nettoyage immédiat du pinceau à l'essence de térébenthine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En variant les proportions de jaune ou de magenta ajoutées au bleu, on obtient des nuances subtiles allant du turquoise au bleu pervenche."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment réalise-t-on traditionnellement des nuances de valeurs dans la technique du lavis ?",
+              "options": [
+                "En dosant la quantité d'eau ajoutée pour diluer l'encre",
+                "En mélangeant l'encre avec du plâtre à modeler",
+                "En chauffant la feuille de papier au fer à repasser",
+                "En superposant des morceaux de carton épais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le lavis, la transparence et la clarté des nuances s'obtiennent en modulant la dilution de l'encre de Chine avec de l'eau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel artiste célèbre de la Renaissance a porté l'art du fondu vaporeux (sfumato) à son apogée ?",
+              "options": [
+                "Léonard de Vinci",
+                "Sandro Botticelli",
+                "Giotto di Bondone",
+                "Piero della Francesca"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Léonard de Vinci a rendu célèbre le sfumato dans La Joconde, un fondu dégradé subtil éliminant les lignes nettes pour créer de la buée atmosphérique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle différence fondamentale distingue un bleu outremer d'un bleu de Prusse ?",
+              "options": [
+                "Leur nuance et tonalité chimique (l'un chaud et violacé, l'autre froid et verdâtre)",
+                "L'un est obligatoirement solide et l'autre liquide",
+                "L'un est réservé à la fresque et l'autre au dessin au crayon",
+                "L'un s'efface totalement à la gomme et pas l'autre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bleu outremer a une sous-teinte chaude tirant sur le violet, tandis que le bleu de Prusse est une nuance sombre, dense et légèrement verdâtre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie peindre en « aplat » par opposition au dégradé ?",
+              "options": [
+                "Appliquer une couleur de manière parfaitement uniforme, sans nuance ni relief",
+                "Peindre la toile posée à plat par terre sans chevalet",
+                "Écraser la peinture avec un rouleau compresseur d'atelier",
+                "Diluer la couleur jusqu'à la rendre invisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un aplat est une surface colorée homogène, d'intensité égale, sans trace visible de brosse ni modulation de valeur."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques définissent rigoureusement un camaïeu ?",
+              "options": [
+                "La déclinaison d'une dominante chromatique unique",
+                "La variation des valeurs claires, moyennes et sombres",
+                "La juxtaposition de contrastes criards entre rouge vif et vert pur",
+                "L'usage obligatoire de feuilles d'or véritable sur le fond"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le camaïeu explore les richesses d'une seule teinte modulée du clair au foncé, sans recourir à d'autres couleurs franches du cercle chromatique."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : Valeur, tonalité, saturation et luminosité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En arts plastiques, qu'appelle-t-on la « valeur » d'une couleur ?",
+              "options": [
+                "Son degré relatif de clarté ou d'obscurité, indépendamment de sa teinte",
+                "Le prix financier d'un tube de pigment précieux",
+                "L'ancienneté historique de la formule de peinture",
+                "Le temps de séchage complet sur le châssis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La valeur correspond au niveau de luminosité (du blanc le plus lumineux au noir le plus sombre) que possède une couleur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que désigne la « saturation » (ou pureté chromatique) d'une couleur ?",
+              "options": [
+                "L'intensité, la vivacité et la fraîcheur d'une couleur non ternie",
+                "L'humidité maximale avant que la peinture ne goutte",
+                "La quantité d'huile absorbée par le vernis de retouche",
+                "Le nombre de couches superposées sur le support"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La saturation caractérise la pureté d'une couleur : au maximum, elle est vive et éclatante ; au minimum, elle tend vers le gris neutre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment peut-on désaturer un rouge vermillon pur sans modifier sa famille de teinte ?",
+              "options": [
+                "En lui ajoutant une petite touche de gris neutre ou de sa couleur complémentaire",
+                "En augmentant l'éclairage de la pièce d'exposition",
+                "En l'étalant exclusivement sur une feuille de papier calque",
+                "En ajoutant du solvant sans aucun pigment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour désaturer une teinte (la rendre plus sobre ou rompue), on lui mélange du gris neutre ou une pointe de sa couleur complémentaire (le vert)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que désigne la « teinte » (ou tonalité) dans la description scientifique d'une couleur ?",
+              "options": [
+                "La nature précise de la couleur liée à sa longueur d'onde dominante (ex. rouge, bleu, jaune)",
+                "L'odeur caractéristique de l'huile de lin de broyage",
+                "La rugosité de la surface picturale après séchage",
+                "La dimension du cadre en bois supportant la toile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La teinte est le nom précis qui identifie la couleur sur le cercle chromatique selon la longueur d'onde perçue."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles manipulations ont pour effet de diminuer la saturation d'un jaune pur ?",
+              "options": [
+                "L'ajout d'une pointe de violet (sa complémentaire)",
+                "L'ajout d'une nuance de gris moyen",
+                "L'application d'un vernis ultra-brillant protecteur",
+                "La signature de l'artiste en bas à droite de l'œuvre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'ajout de gris ou de la couleur complémentaire (le violet) neutralise la vivacité chromatique du jaune et abaisse sa saturation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si l'on prend une photographie en noir et blanc d'un tableau coloré, quelle dimension de la couleur reste perceptible ?",
+              "options": [
+                "La valeur (les clairs et les foncés)",
+                "La teinte (le rouge ou le vert)",
+                "La saturation chromatique pure",
+                "La température thermique réelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'image en noir et blanc élimine les informations de teinte et de saturation pour ne conserver que l'échelle des valeurs (du blanc au noir)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on une couleur « rabattue » en peinture ?",
+              "options": [
+                "Une couleur assombrie par l'adjonction d'une petite proportion de noir",
+                "Une peinture dont le couvercle de tube a été refermé",
+                "Une toile qui a été pliée en deux pendant le transport",
+                "Une couleur réservée au dos du tableau d'exposition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une couleur rabattue est une teinte dont la valeur a été abaissée (assombrie) par l'ajout de noir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on une couleur « rompue » ?",
+              "options": [
+                "Une couleur neutralisée ou adoucie par l'ajout de sa couleur complémentaire",
+                "Un pigment cristallisé cassé au marteau",
+                "Une toile déchirée volontairement au cutter",
+                "Une couche de peinture écaillée par le vieillissement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une couleur est dite « rompue » quand son éclat vif est assourdi par un apport mesuré de sa complémentaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle différence existe-t-il entre un jaune pur et un jaune pastel ?",
+              "options": [
+                "Le jaune pastel contient une grande proportion de blanc, sa valeur est plus claire et sa saturation plus faible",
+                "Le jaune pastel ne peut être appliqué qu'avec les doigts nus",
+                "Le jaune pur sèche dix fois plus lentement que le jaune pastel",
+                "Le jaune pastel est invisible à la lumière du jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ajout de blanc augmente la clarté (valeur haute) tout en diminuant la saturation, créant un ton pastel doux."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles sont les trois composantes fondamentales utilisées pour définir complètement une couleur en colorimétrie ?",
+              "options": [
+                "La teinte (tonalité)",
+                "La saturation (pureté)",
+                "La valeur ou luminosité (clarté)",
+                "La viscosité mesurée en laboratoire"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'espace colorimétrique standard (TSL ou HSL) repose sur le trio fondamental : Teinte, Saturation et Luminosité (Valeur)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : Le cercle chromatique et les relations de tons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un cercle chromatique ?",
+              "options": [
+                "Une organisation ordonnée et circulaire des couleurs du spectre visible",
+                "Un compas spécial pour tracer des cercles parfaits à l'huile",
+                "Une palette de bois réservée aux peintres portraitistes",
+                "Une lentille de verre grossissante pour restaurateur d'art"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cercle chromatique est la disposition circulaire géométrique des couleurs primaires, secondaires et tertiaires selon leur continuité spectrale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où sont situées deux couleurs complémentaires sur le cercle chromatique ?",
+              "options": [
+                "Diamétralement opposées l'une à l'autre à 180 degrés",
+                "Côte à côte dans le même secteur",
+                "Au centre exact du cercle blanc",
+                "Sur le bord extérieur le plus éloigné"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux couleurs complémentaires occupent des positions diamétralement opposées sur le cercle chromatique (ex. rouge et vert, bleu et orange)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel savant a été le premier à décomposer la lumière blanche par un prisme et à l'ordonner en boucle chromatique au XVIIe siècle ?",
+              "options": [
+                "Isaac Newton",
+                "Galilée",
+                "René Descartes",
+                "Albert Einstein"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 1666, Isaac Newton a prouvé que la lumière blanche contient toutes les couleurs du spectre et a conçu le premier disque chromatique circulaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on des couleurs voisines situées les unes à côté des autres sur le cercle chromatique ?",
+              "options": [
+                "Des couleurs analogues ou adjacentes",
+                "Des couleurs divergentes",
+                "Des couleurs antinomiques",
+                "Des couleurs polarisées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les couleurs analogues (comme jaune, jaune-orangé et orange) se jouxtent sur le cercle et forment des harmonies douces et naturelles."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels couples de couleurs forment des paires complémentaires directes ?",
+              "options": [
+                "Jaune et Violet",
+                "Bleu et Orange",
+                "Rouge et Vert",
+                "Vert et Jaune"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Sur le cercle chromatique standard, les trois couples de complémentaires fondamentaux sont Jaune-Violet, Bleu-Orange et Rouge-Vert."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la couleur complémentaire exacte du bleu primaire ?",
+              "options": ["L'orange", "Le magenta", "Le vert olive", "Le noir"],
+              "correctAnswers": [0],
+              "explanation": "L'orange (mélange de jaune et de magenta) est le vis-à-vis diamétral et la complémentaire du bleu sur le cercle chromatique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on une harmonie « triadique » sur le cercle chromatique ?",
+              "options": [
+                "L'association de trois couleurs équidistantes formant un triangle équilatéral",
+                "L'utilisation exclusive de trois nuances de gris clair",
+                "L'application de trois couches de vernis sur la toile",
+                "Un tableau peint à trois mains par trois artistes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une harmonie triadique relie trois couleurs réparties à intervalles égaux (à 120°), comme les trois primaires ou les trois secondaires."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel théoricien suisse et enseignant au Bauhaus a popularisé le cercle chromatique à 12 zones dans son ouvrage « L'Art de la couleur » ?",
+              "options": [
+                "Johannes Itten",
+                "Paul Cézanne",
+                "Marcel Duchamp",
+                "Walter Gropius"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Johannes Itten a créé pour les élèves du Bauhaus un cercle à 12 sections devenu la référence de l'enseignement des harmonies et contrastes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une harmonie de couleurs analogues, quel est le risque visuel si les valeurs ne sont pas contrastées ?",
+              "options": [
+                "Une certaine monotonie ou un manque de lisibilité",
+                "Une explosion immédiate de la toile",
+                "Une transformation chimique des pigments",
+                "L'apparition de fissures dans le bois du châssis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des couleurs analogues créent une atmosphère unifiée et apaisante, mais sans contraste de valeur, la composition peut paraître plate et monotone."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels ensembles forment des familles de couleurs analogues (voisines sur le cercle) ?",
+              "options": [
+                "Jaune, jaune-orangé et orange",
+                "Bleu, bleu-vert et vert",
+                "Rouge, vert et bleu ciel",
+                "Violet, jaune vif et blanc"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les familles (jaune, jaune-orangé, orange) et (bleu, bleu-vert, vert) sont constituées de teintes voisines sur le cercle chromatique, partageant une nuance commune."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : Pigments, liants et alchimie de la couleur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un « pigment » en peinture ?",
+              "options": [
+                "Une fine poudre colorée insoluble dans le milieu de dispersion",
+                "Un liquide transparent servant à nettoyer les pinceaux",
+                "Une toile de lin tendue sur un cadre en bois",
+                "Un manche de couteau à peindre en corne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pigment est la substance colorante solide réduite en poudre fine d'origine minérale, végétale, animale ou synthétique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le rôle indispensable du « liant » mélangé au pigment ?",
+              "options": [
+                "Agglutiner les particules de pigment entre elles et les fixer durablement au support",
+                "Empêcher les insectes de s'approcher du tableau",
+                "Donner une odeur parfumée à la peinture d'atelier",
+                "Augmenter le poids de la toile pour le transport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le liant permet de former une pâte malléable et assure l'adhérence et la cohésion du film de peinture après séchage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel liant traditionnel utilise-t-on pour fabriquer de la peinture à l'huile ?",
+              "options": [
+                "L'huile de lin ou d'œillette",
+                "L'eau de source distillée pure",
+                "La cire de bougie liquide",
+                "L'alcool à brûler ménager"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'huile de lin polymérise à l'air (siccativation) pour créer un film souple, résistant et transparent idéal pour la peinture à l'huile."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel liant moderne caractérise la peinture acrylique inventée au XXe siècle ?",
+              "options": [
+                "Une émulsion de résines synthétiques polymères dans l'eau",
+                "Du miel d'acacia bouilli avec de la résine de pin",
+                "De la gélatine d'os de bœuf séchée",
+                "Du blanc d'œuf frais battu en neige"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La peinture acrylique utilise une résine polymère en émulsion aqueuse, alliant dilution à l'eau, séchage très rapide et indélébilité finale."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels pigments historiques célèbres proviennent de minéraux naturels broyés ?",
+              "options": [
+                "Le bleu outremer extrait du lapis-lazuli",
+                "L'ocre rouge et jaune tirée des terres argileuses ferrugineuses",
+                "Le plastique polyéthylène teinté",
+                "Le nylon fluoré industriel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le lapis-lazuli précieux fournissait le bleu outremer des manuscrits et toiles de maîtres, tandis que les ocres sont issues de terres minérales naturelles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel liant naturel utilise la technique médiévale de la tempera (ou détrempe) ?",
+              "options": [
+                "Le jaune d'œuf émulsionné à l'eau",
+                "L'huile de moteur minérale",
+                "La colle forte de menuisier",
+                "Le jus de citron vert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tempera traditionnelle des primitifs italiens utilisait le jaune d'œuf comme émulsion naturelle liant les pigments broyés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel liant végétal soluble dans l'eau entre dans la composition de l'aquarelle ?",
+              "options": [
+                "La gomme arabique (sève d'acacia)",
+                "Le goudron de pin maritime",
+                "La résine époxy bicomposant",
+                "La farine de blé blanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La gomme arabique lie les pigments de l'aquarelle tout en restant réactivable à l'eau sur la palette et le papier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle innovation technique majeure des années 1840 a permis aux peintres impressionnistes de peindre en plein air ?",
+              "options": [
+                "L'invention du tube de peinture souple en étain refermable",
+                "L'invention du pinceau en fibre de carbone",
+                "L'éclairage fluorescent électrique portable",
+                "L'appareil photo reflex instantané"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tube souple invented par John Goffe Rand en 1841 a libéré les peintres de la préparation fastidieuse en atelier et a encouragé la peinture sur le motif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel artiste a déposé la formule de l'IKB (International Klein Blue) en associant un liant synthétique à un pigment bleu outremer pur ?",
+              "options": [
+                "Yves Klein",
+                "Henri Matisse",
+                "Pablo Picasso",
+                "Andy Warhol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yves Klein a breveté l'IKB en 1960 avec un liant polymère (le Rhodopas) qui préserve l'aspect mat, pulvérulent et éclatant du pigment bleu sec."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels médiums picturaux se diluent et se nettoient à l'eau au moment de leur utilisation ?",
+              "options": [
+                "La gouache",
+                "L'aquarelle",
+                "La peinture à l'huile traditionnelle",
+                "L'encaustique à la cire chaude"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La gouache et l'aquarelle sont des peintures hydrosolubles. La peinture à l'huile nécessite des essences végétales ou des solvants minéraux."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Le mélange optique et le divisionnisme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En quoi consiste le principe fondamental du « mélange optique » en peinture ?",
+              "options": [
+                "La fusion des couleurs se fait directement dans l'œil du spectateur et non sur la palette",
+                "Le peintre utilise une loupe binoculaire pour peindre des miniatures",
+                "La toile est observée à travers un filtre en verre rouge teinté",
+                "Le tableau change magiquement de couleur quand on allume une bougie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mélange optique juxtapose de fines touches de couleurs pures que la rétine et le cerveau du spectateur fusionnent à distance."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel peintre français est le chef de file du pointillisme avec son chef-d'œuvre « Un dimanche à la Grande Jatte » ?",
+              "options": [
+                "Georges Seurat",
+                "Gustave Courbet",
+                "Eugène Delacroix",
+                "Édouard Manet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Georges Seurat a fondé le mouvement néo-impressionniste en appliquant une méthode scientifique rigoureuse de points de couleurs pures juxtaposés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle théorie scientifique sur la perception a profondément guidé les recherches de Seurat et Paul Signac ?",
+              "options": [
+                "La loi du contraste simultané des couleurs de Michel-Eugène Chevreul",
+                "La théorie de la relativité générale",
+                "La théorie de la dérive des continents",
+                "La découverte de la radioactivité par Marie Curie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les travaux du chimiste Chevreul sur la façon dont les couleurs voisines s'influencent ont constitué le socle théorique du néo-impressionnisme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel autre terme plus rigoureux que « pointillisme » les artistes de ce mouvement préféraient-ils employer ?",
+              "options": [
+                "Le divisionnisme",
+                "Le cubisme analytique",
+                "L'art informel",
+                "Le suprématisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paul Signac et Georges Seurat préféraient le terme de « divisionnisme », soulignant la division méthodique de la touche et de la couleur."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels artistes sont des figures majeures du mouvement divisionniste et néo-impressionniste ?",
+              "options": [
+                "Georges Seurat",
+                "Paul Signac",
+                "Camille Pissarro (durant sa période divisionniste)",
+                "Jacques-Louis David"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Seurat et Signac ont théorisé le mouvement, rejoints un temps par Camille Pissarro. Jacques-Louis David est un maître néoclassique du XVIIIe siècle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si un peintre divisionniste pose côte à côte une multitude de points bleus et jaunes, quelle nuance l'œil perçoit-il avec du recul ?",
+              "options": [
+                "Un vert vibrant et lumineux",
+                "Un noir opaque et éteint",
+                "Un rouge pourpre éclatant",
+                "Un blanc immaculé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À distance, la rétine fusionne les points jaunes et bleus, créant la sensation optique d'un vert bien plus vibrant qu'un mélange physique sur palette."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi les néo-impressionnistes évitaient-ils de triturer et mélanger leurs pâtes de couleur sur la palette ?",
+              "options": [
+                "Car le mélange physique de pigments assombrit la couleur et éteint sa luminosité",
+                "Car les pigments risquaient d'exploser chimiquement au contact de l'air",
+                "Car les brosses rondes étaient trop fragiles pour supporter le mélange",
+                "Parce qu'ils n'avaient pas de couteau de peintre à disposition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque mélange pigmentaire soustrait de la lumière et salit la teinte ; le mélange optique permet de préserver l'éclat lumineux d'origine."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle impression visuelle singulière donne un tableau divisionniste lorsqu'on s'en approche puis s'en éloigne ?",
+              "options": [
+                "Une vibration scintillante et un fourmillement lumineux de la surface",
+                "Une sensation d'effacement complet des formes",
+                "Une surface parfaitement lisse et glissante comme du verre",
+                "Une odeur persistante d'huile de poisson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La juxtaposition des petites touches pures produit un miroitement optique vivant que le spectateur recompose activement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle technologie graphique contemporaine applique le même principe de trame de points que le pointillisme ?",
+              "options": [
+                "La trame d'impression offset ou les pixels d'affichage numérique",
+                "La découpe laser sur tôle d'acier",
+                "Le moulage par injection de résine",
+                "Le gaufrage à sec du papier aquarelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La trame d'imprimerie et les écrans décomposent les images en millions de minuscules points que l'œil humain fusionne en dégradés continus."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles règles caractérisent la démarche plastique du divisionnisme ?",
+              "options": [
+                "L'application systématique de touches distinctes et séparées",
+                "Le recours aux lois scientifiques de la vision et des complémentaires",
+                "L'utilisation de coulures aléatoires de peinture liquide",
+                "Le recouvrement uniforme de la toile par une seule couche de vernis noir"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le divisionnisme se fonde sur la séparation méthodique des touches et l'exploitation calculée des contrastes de complémentaires formulés par Chevreul."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : Température de couleur : tons chauds et tons froids",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelles couleurs composent traditionnellement la famille des tons chauds ?",
+              "options": [
+                "Les rouges, oranges, ocres et jaunes",
+                "Les bleus marine, turquoises et cyans",
+                "Les gris neutres, noirs et blancs",
+                "Les verts sapin et émeraudes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les couleurs chaudes sont associées au soleil, au feu et à la chaleur : elles englobent les gammes de jaunes, d'oranges, de rouges et de terres chaudes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles couleurs constituent traditionnellement la famille des tons froids ?",
+              "options": [
+                "Les bleus, les cyans, les verts d'eau et les violets bleutés",
+                "Les carmins, vermillons et écarlates",
+                "Les jaunes d'or et orangés vifs",
+                "Les bruns chocolat et terres de Sienne brûlée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les couleurs froides rappellent l'eau, le ciel, la glace et l'ombre : elles regroupent principalement les bleus et les verts bleutés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel effet spatial une couleur chaude produit-elle généralement par rapport à une couleur froide ?",
+              "options": [
+                "Elle donne l'impression d'avancer vers le spectateur au premier plan",
+                "Elle semble fuir très loin dans l'arrière-plan du tableau",
+                "Elle fait disparaître instantanément la sensation de volume",
+                "Elle rend la surface transparente comme une vitre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la perception de l'espace, les couleurs chaudes ont un caractère saillant (elles avancent) alors que les couleurs froides sont fuyantes (elles reculent)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la technique paysagère où les lointains deviennent plus bleutés et froids pour marquer la distance ?",
+              "options": [
+                "La perspective atmosphérique (ou aérienne)",
+                "La perspective cavalière médiévale",
+                "Le trompe-l'œil architectural en marbre",
+                "L'anamorphose géométrique au compas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La perspective atmosphérique traduit l'épaisseur de l'air : les plans lointains perdent leurs contrastes et se teintent de nuances bleutées et froides."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles couleurs sont incontestablement classées parmi les couleurs chaudes pures ?",
+              "options": [
+                "Le rouge vermillon",
+                "L'orange de cadmium",
+                "Le bleu cobalt",
+                "Le vert glacier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le rouge vermillon et l'orange de cadmium sont des archétypes de couleurs chaudes, tandis que le bleu cobalt et le vert glacier sont froids."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que la température d'une couleur est toujours relative en peinture ?",
+              "options": [
+                "Parce qu'un vert bleuté paraît froid à côté d'un orange, mais chaud à côté d'un bleu nuit",
+                "Parce que la toile chauffe physiquement sous les projecteurs du musée",
+                "Parce que les couleurs changent selon la température mesurée en degrés Celsius",
+                "Parce que les peintres travaillent toujours les fenêtres ouvertes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La température n'est pas absolue : la perception chaude ou froide d'une nuance dépend des teintes qui l'environnent directement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle révolution picturale les impressionnistes ont-ils apportée dans le rendu des ombres en extérieur ?",
+              "options": [
+                "Ils ont banni le noir bitumineux pour peindre des ombres colorées, bleutées et fraîches",
+                "Ils ont peint toutes les ombres en blanc opaque",
+                "Ils ont supprimé totalement les ombres de leurs toiles",
+                "Ils ont peint les ombres avec de la poudre de charbon de bois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monet et ses pairs ont observé que les ombres en plein soleil ne sont pas noires, mais illuminées de reflets froids et bleutés du ciel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel artiste postimpressionniste modulait le volume de ses fruits uniquement par alternance de touches chaudes et froides ?",
+              "options": [
+                "Paul Cézanne",
+                "Auguste Rodin",
+                "Théodore Géricault",
+                "Jean Auguste Dominique Ingres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cézanne a substitué au modelé traditionnel au noir une modulation chromatique : un passage subtil du chaud (face à la lumière) au froid (vers l'ombre)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel tableau d'Edvard Munch emploie un ciel tourbillonnant d'oranges et de rouges incandescents pour exprimer une angoisse existentielle ?",
+              "options": [
+                "Le Cri",
+                "La Nuit étoilée",
+                "Impression, soleil levant",
+                "Les Nymphéas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans Le Cri (1893), Edvard Munch utilise la violence thermique d'un ciel rouge-orangé heurtant le bleu-noir du fjord pour matérialiser l'angoisse."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles tonalités sont traditionnellement rattachées à la famille des tons froids ?",
+              "options": [
+                "Le bleu outremer",
+                "Le vert turquoise",
+                "Le jaune bouton d'or",
+                "Le rouge garance vif"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le bleu outremer et le vert turquoise appartiennent au registre des tons froids, évocateurs de fraîcheur, d'ombre et de lointain."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Transparences, glacis et empâtements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un « glacis » dans la technique traditionnelle de la peinture à l'huile ?",
+              "options": [
+                "Une fine couche de couleur transparente ou translucide posée sur une couche déjà sèche",
+                "Une couche de vernis protecteur épais appliquée au pistolet",
+                "Une découpe au rasoir dans la toile pour faire passer l'air",
+                "Une couche de colle de peau animale sur le châssis brut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le glacis est un voile transparent riche en liant qui modifie la couleur sous-jacente tout en laissant passer et réfléchir la lumière en profondeur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel effet optique incomparable procure la superposition de glacis successifs ?",
+              "options": [
+                "Une impression de profondeur lumineuse, d'éclat soyeux et de transparence de la chair",
+                "Un relief rugueux de plusieurs centimètres d'épaisseur",
+                "Un blanchiment immédiat de toutes les zones sombres",
+                "Une surface collante attirant la poussière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les maîtres flamands et vénitiens (Van Eyck, Titien) obtenaient grâce aux glacis des veloutés, des drapés somptueux et une lumière intérieure inégalée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel terme désigne la matière picturale généreuse et épaisse déposée en relief sur le tableau ?",
+              "options": [
+                "L'empâtement (ou impasto)",
+                "Le filigrane",
+                "Le vernis craquelé",
+                "La gouache délayée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'empâtement consiste à appliquer la peinture en couche épaisse et texturée au couteau ou à la brosse, conservant les traces physiques du geste."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel artiste postimpressionniste est mondialement célèbre pour ses empâtements tourbillonnants et expressifs posés directement au tube ?",
+              "options": [
+                "Vincent van Gogh",
+                "Jean-Baptiste Siméon Chardin",
+                "Nicolas Poussin",
+                "Fra Angelico"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vincent van Gogh sculptait littéralement la matière picturale sur la toile avec d'énergiques empâtements en relief captant la lumière réelle."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels outils sont fréquemment utilisés par les peintres pour appliquer des empâtements vigoureux ?",
+              "options": [
+                "Le couteau à peindre (spatule souple métallique)",
+                "La brosse dure en soie de porc",
+                "Le stylo-plume à encre bleue",
+                "Le tire-ligne de dessin technique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le couteau à peindre et les brosses fermes en soies de porc permettent de manipuler des pâtes denses et de sculpter des reliefs visibles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on l'« opacité » d'une pâte ou d'un pigment en peinture ?",
+              "options": [
+                "Son pouvoir couvrant, c'est-à-dire sa capacité à masquer entièrement les couches inférieures",
+                "Son refus de sécher même après plusieurs semaines d'attente",
+                "Sa propension à faire couler des gouttes sur le parquet",
+                "La couleur du bouchon du récipient de stockage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une peinture opaque (comme le blanc de titane ou le jaune de cadmium) arrête les rayons lumineux et dissimule totalement le fond."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans la technique de l'aquarelle classique, comment fait-on apparaître le blanc éclatant et les hautes lumières ?",
+              "options": [
+                "En préservant le blanc originel du papier sans y déposer de peinture (la réserve)",
+                "En grattant le papier avec une ponceuse mécanique",
+                "En appliquant une épaisse couche de pâte à modeler",
+                "En ajoutant du sel de cuisine sur toute la feuille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'aquarelle pure ne recourt pas à la gouache blanche : la lumière vient de la blancheur du papier préservé par des réserves délicates."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un « repentir » révélé parfois par la transparence grandissante des couches anciennes ou par radiographie ?",
+              "options": [
+                "Une modification de tracé apportée par le peintre et recouverte par la suite",
+                "Une signature falsifiée par un marchand d'art malhonnête",
+                "Une fente accidentelle dans la boiserie du châssis",
+                "Un mot d'excuse écrit par l'artiste au dos du cadre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le repentir est un changement de composition (déplacement d'un bras, d'un profil) opéré par l'artiste en cours de création puis masqué."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle technique consiste à frotter un pinceau peu chargé et presque sec sur les reliefs du support pour créer des effets texturés ?",
+              "options": [
+                "Le frottis (ou brosse sèche)",
+                "Le marouflage sur toile",
+                "La détrempe à la colle",
+                "Le thermoformage plastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le frottis dépose la couleur uniquement sur la crête des grains de la toile ou du papier, produisant des effets semi-transparents et vibrants."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles techniques jouent délibérément sur la transparence des couches picturales ?",
+              "options": [
+                "Le glacis à l'huile",
+                "Le lavis d'encre diluée",
+                "L'enduit au plâtre ciré complètement opaque",
+                "Le pochoir au spray bitumineux noir pur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le glacis à l'huile et le lavis exploitent la translucidité de la matière et la réflexion de la lumière traversant plusieurs couches fines."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Symbolique et perception des nuances",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Au Moyen Âge chrétien en Occident, quelle couleur rare et onéreuse est devenue l'emblème de la pureté divine et du manteau de la Vierge ?",
+              "options": [
+                "Le bleu outremer extrait du lapis-lazuli",
+                "Le vert olive sombre",
+                "Le jaune safran terrestre",
+                "Le marron de terre de Sienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bleu outremer, issu du lapis-lazuli importé d'Afghanistan à prix d'or, a été réservé par l'Église aux représentations sacrées de la Vierge Marie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle nuance pourpre précieuse était réservée aux empereurs romains et aux cardinaux de l'Église ?",
+              "options": [
+                "La pourpre impériale issue de la sécrétion du murex marin",
+                "L'orange cuivré issu de rouille de fer",
+                "Le blanc d'argent issu du plomb",
+                "Le noir de fumée de bois de chêne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pourpre de Tyr, tirée de milliers de coquillages murex, était le symbole suprême de l'autorité impériale romaine et de la dignité souveraine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans l'Europe médiévale, quelle couleur a longtemps été chargée d'une symbolique négative liée à la trahison (Judas) ou à l'hérésie ?",
+              "options": [
+                "Le jaune",
+                "Le bleu céleste",
+                "Le blanc pur",
+                "Le rose bonbon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'historien Michel Pastoureau montre que le jaune fut longtemps dévalorisé en Occident, associé à la trahison, au mensonge et à la félonie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans la tradition culturelle chinoise, que symbolise en premier lieu la couleur rouge éclatante ?",
+              "options": [
+                "Le bonheur, la prospérité, la vitalité et la chance",
+                "Le deuil national et la tristesse des défunts",
+                "La timidité et l'effacement personnel",
+                "La sécheresse et la pénurie alimentaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En Chine, le rouge est la couleur propitiatoire omniprésente lors des mariages et du Nouvel An, symbolisant la vie, la fortune et la joie."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles significations symboliques positives sont traditionnellement attachées au vert en Occident ?",
+              "options": [
+                "La renaissance de la nature et le printemps",
+                "L'espérance et le renouveau",
+                "La richesse matérielle des pièces d'or fondues",
+                "Le deuil strict des monarques"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le vert renvoie à la vigueur végétale, aux bourgeons printaniers, à la régénération et, par extension humaniste, à l'espérance."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la « synesthésie », phénomène neurologique et créatif ressenti notamment par le peintre Vassily Kandinsky ?",
+              "options": [
+                "L'association sensorielle involontaire entre deux sens différents (ex. entendre une note de musique en voyant une couleur)",
+                "L'incapacité médicale totale de distinguer le rouge du vert",
+                "La perte subite de la vision lors d'un travail nocturne prolongé",
+                "Le tremblement convulsif de la main tenant le crayon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kandinsky éprouvait une synesthésie chromato-acoustique : les teintes éveillaient chez lui des timbres d'instruments (ex. le jaune comme une trompette)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phase de la jeunesse de Pablo Picasso (1901-1904) traduit son deuil et sa tristesse par des toiles monochromes froides ?",
+              "options": [
+                "La Période bleue",
+                "La Période rose",
+                "L'Époque cubiste",
+                "L'Époque néoclassique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Affecté par le suicide de son ami Casagemas, Picasso a peint la pauvreté, la solitude et la peine dans une gamme presque exclusive de bleus froids."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel historien médiéviste contemporain a révolutionné l'étude culturelle des couleurs à travers ses monographies réputées ?",
+              "options": [
+                "Michel Pastoureau",
+                "Georges Duby",
+                "Fernand Braudel",
+                "Jacques Le Goff"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Michel Pastoureau a consacré des ouvrages majeurs et passionnants à l'histoire sociale, artistique et symbolique de chaque couleur (Bleu, Noir, Vert, Rouge, Jaune)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la symbolique des couleurs ne peut-elle pas être considérée comme universelle ou immuable ?",
+              "options": [
+                "Parce qu'elle est une construction culturelle et historique variant selon les époques et les sociétés",
+                "Parce que les couleurs changent de nom chaque année selon une loi internationale",
+                "Parce que les yeux des humains changent de couleur de rétine au fil des siècles",
+                "Parce que les pigments perdent leur signification après un siècle d'exposition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La signification d'une couleur n'est pas inscrite dans la nature mais découle des croyances, des mythes et des conventions sociales d'un groupe humain à une époque donnée."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels peintres pionniers de l'art abstrait ont écrit des traités théoriques sur la puissance spirituelle et émotionnelle des couleurs ?",
+              "options": [
+                "Vassily Kandinsky (Du spirituel dans l'art)",
+                "Johannes Itten (L'Art de la couleur)",
+                "Gustave Courbet",
+                "Jacques-Louis David"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Kandinsky et Itten ont développé des théories capitales sur les résonances intérieures, psychologiques et spirituelles des formes et des couleurs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Contrastes",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : Le contraste de la couleur en soi",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le « contraste de la couleur en soi » selon la classification de Johannes Itten ?",
+              "options": [
+                "La confrontation de couleurs pures, saturées et éclatantes dans leur plus grande intensité",
+                "L'opposition d'un ton pastel et d'un ton terreux très délavé",
+                "La disparition des couleurs au profit d'un noir et blanc intégral",
+                "L'éclairage d'une sculpture par deux bougies blanches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contraste de la couleur en soi est le plus simple et le plus direct de tous : il naît de la juxtaposition de couleurs pures portées à leur intensité maximale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel trio de couleurs permet d'exprimer le contraste de couleur en soi avec la plus grande force et franchise ?",
+              "options": [
+                "Jaune pur, Rouge carmin et Bleu primaire",
+                "Gris perle, Blanc crème et Beige lin",
+                "Kaki militaire, Ocre jaune et Terre d'ombre",
+                "Mauve pâle, Rose poudré et Bleu pastel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accord de base Jaune-Rouge-Bleu pur représente le degré le plus fort et indomptable de ce contraste élémentaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel artiste pionnier du néoplasticisme au XXe siècle a fondé ses compositions orthogonales sur les primaires pures ?",
+              "options": [
+                "Piet Mondrian",
+                "Claude Monet",
+                "Caspar David Friedrich",
+                "Gustave Moreau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Piet Mondrian utilisait de rigoureux aplats de jaune, rouge et bleu purs, cernés de grilles noires sur fond blanc, incarnant ce contraste à la perfection."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel sentiment d'ensemble ou effet visuel le contraste de couleur en soi procure-t-il au spectateur ?",
+              "options": [
+                "Une impression de vitalité, de fête, d'énergie vigoureuse et d'évidence joyeuse",
+                "Une sensation d'effroi lugubre et de nuit glaciale",
+                "Une mélancolie nostalgique et brumeuse",
+                "Une neutralité froide et silencieuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les couleurs pures non mélangées créent une sensation de franchise éclatante, d'optimisme, de jeunesse et de fête populaire."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes d'art ou œuvres célèbres illustrent spectaculairement le contraste de la couleur en soi ?",
+              "options": [
+                "Les compositions néoplastiques de Piet Mondrian",
+                "Les vitraux romans et gothiques aux verres bleus, rouges et jaunes éclatants",
+                "Les toiles abstraites en camaïeu de gris de Pierre Soulages",
+                "Les eaux-fortes monochromes à l'encre noire de Rembrandt"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mondrian et les maîtres verriers médiévaux juxtaposent des couleurs franches sans nuances adoucies pour délivrer une puissance visuelle directe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment les artistes tempèrent-ils parfois l'agressivité visuelle du contraste entre couleurs pures ?",
+              "options": [
+                "En isolant les aplats par des lignes neutres de noir ou de blanc",
+                "En recouvrant l'ensemble d'une couche d'huile de friture",
+                "En peignant uniquement dans une obscurité complète",
+                "En réduisant la taille du châssis à trois centimètres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des contours blancs ou noirs (comme le cerne noir chez Mondrian ou le plomb des vitraux) permettent à chaque couleur pure d'exister sans heurter ses voisines."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mouvement pictural d'avant-garde de 1905, réuni autour de Matisse et Derain, exaltait la sauvagerie des couleurs pures sorties du tube ?",
+              "options": [
+                "Le fauvisme",
+                "Le romantisme",
+                "Le préraphaélisme",
+                "L'art pompier académique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les Fauves (« cages aux fauves ») ont scandalisé le public du Salon d'automne en 1905 par la violence de leurs aplats de couleurs pures juxtaposées sans mélange."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans le fauvisme, comment la couleur est-elle utilisée par rapport à la réalité observée ?",
+              "options": [
+                "De façon autonome et expressive, libérée de l'obligation d'imiter fidèlement la nature",
+                "Comme une copie photographique scientifique rigoureuse",
+                "Uniquement pour tracer les contours de perspective linéaire",
+                "Dans un respect absolu des teintes naturelles des objets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chez les Fauves, un arbre peut être rouge écarlate et un visage strié de vert : la couleur exprime l'émotion subjective de l'artiste."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que devient l'intensité du contraste de couleur en soi si l'on éclaircit ou rompt les couleurs primaires ?",
+              "options": [
+                "Son caractère spécifique s'affaiblit au profit d'autres types de contrastes",
+                "Il devient infiniment plus éclatant et violent",
+                "Il se transforme automatiquement en peinture à l'aérographe",
+                "Il ne subit absolument aucune altération"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dès qu'une teinte est rompue, ternie ou éclaircie de blanc, elle perd sa pureté et fait entrer la composition dans le contraste de qualité ou de clair-obscur."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels peintres sont emblématiques de l'usage audacieux et direct de la couleur pure éclatante ?",
+              "options": [
+                "Henri Matisse",
+                "André Derain",
+                "Eugène Carrière (peintre de grisailles vaporeuses)",
+                "Théodore Chassériau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Matisse et Derain ont posé les fondations du fauvisme en faisant éclater des accords purs de jaune, rouge, outremer et vert vif."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Le contraste clair-obscur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le « clair-obscur » (chiaroscuro en italien) en peinture ?",
+              "options": [
+                "Une technique opposant de fortes zones lumineuses à des ombres profondes pour modeler les volumes et dramatiser la scène",
+                "L'action de peindre les yeux bandés dans un atelier sans fenêtre",
+                "L'utilisation d'une peinture phosphorescente invisible de jour",
+                "Un vernis brillant qui reflète le spectateur comme un miroir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le clair-obscur modèle le relief des corps et l'espace par des gradations ou des ruptures marquées entre lumière et obscurité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel peintre italien révolutionnaire du début du XVIIe siècle a poussé le clair-obscur jusqu'au « ténébrisme » ?",
+              "options": [
+                "Le Caravage (Michelangelo Merisi da Caravaggio)",
+                "Raphaël Sanzio",
+                "Sandro Botticelli",
+                "Fra Angelico"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Caravage a marqué l'histoire de l'art par un éclairage latéral impitoyable plongeant les arrière-plans dans une nuit opaque et faisant jaillir les personnages sacrés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel effet narratif et émotionnel le ténébrisme produit-il dans un tableau religieux ou dramatique ?",
+              "options": [
+                "Il focalise l'attention sur l'instant crucial et renforce l'intensité dramatique théâtrale",
+                "Il détend l'atmosphère et invite à la sieste",
+                "Il donne un aspect comique et burlesque à tous les visages",
+                "Il masque tous les détails sans laisser rien de visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En supprimant le décor inutile dans l'ombre, le Caravage braque un faisceau quasi théâtral sur la violence, la douleur ou l'extase des protagonistes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel maître hollandais du XVIIe siècle a exploré un clair-obscur intime, vibrant et doré dans ses autoportraits ?",
+              "options": [
+                "Rembrandt van Rijn",
+                "Johannes Vermeer",
+                "Frans Hals",
+                "Jan van Eyck"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rembrandt utilise une lumière d'or enveloppante et spirituelle émergeant d'ombres transparentes d'une immense humanité."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels artistes sont réputés pour leur maîtrise magistrale du clair-obscur dramatique ?",
+              "options": [
+                "Le Caravage",
+                "Georges de La Tour",
+                "Piet Mondrian",
+                "Yves Klein"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le Caravage et Georges de La Tour sont deux géants du clair-obscur baroque, à l'opposé de l'art abstrait épuré et sans ombre de Mondrian et Klein."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la source lumineuse intime fréquemment peinte par Georges de La Tour dans ses scènes nocturnes ?",
+              "options": [
+                "La flamme d'une bougie ou d'un lumignon cachée en partie par une main",
+                "Un spot halogène contemporain",
+                "Un flash photographique aveuglant",
+                "La pleine lune à travers une coupole brisée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Georges de La Tour place souvent la bougie au centre de la composition, la lumière chaude filtrant entre les doigts pour éclairer visages et méditations."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel rôle technique le contraste clair-obscur joue-t-il dans une esquisse au fusain ou à la sanguine ?",
+              "options": [
+                "Il donne l'illusion saisissante du volume tridimensionnel sur un support en deux dimensions",
+                "Il efface automatiquement les traits de construction ratés",
+                "Il augmente l'adhérence du papier sur le carton à dessin",
+                "Il permet de colorer la feuille sans aucun pigment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par la distribution rigoureuse de la lumière, des ombres propres et des ombres portées, le clair-obscur crée l'illusion du relief plastique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel cinéaste du cinéma expressionniste allemand a transposé le clair-obscur pictural sur pellicule dans « Le Cabinet du docteur Caligari » ?",
+              "options": [
+                "Robert Wiene",
+                "Charlie Chaplin",
+                "Georges Méliès",
+                "Walt Disney"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expressionnisme allemand (Wiene, Lang, Murnau) a utilisé des ombres peintes géométriques et des contrastes lumineux brutaux pour exprimer le délire et la folie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En gravure sur cuivre ou bois, comment l'artiste produit-il la transition du clair au foncé ?",
+              "options": [
+                "Par la densité, l'épaisseur et le croisement des hachures gravées",
+                "En appuyant plus fort sur la feuille lors de l'encadrement",
+                "En plongeant la plaque dans un bain de soude caustique pure",
+                "En peignant directement avec ses doigts sur le papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En gravure, le noir provient de l'encre retenue dans les incisions : plus les hachures sont serrées et croisées, plus la valeur obtenue paraît sombre."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions fondamentales le clair-obscur assure-t-il dans une peinture figurative ?",
+              "options": [
+                "Modeler le volume et la corpulence des figures",
+                "Créer une atmosphère dramatique, sacrée ou mystérieuse",
+                "Garantir le séchage ultra-rapide des pigments minéraux",
+                "Empêcher les insectes de se poser sur les parties claires"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le clair-obscur combine une fonction plastique essentielle (illusion du volume) et une puissante portée narrative et émotionnelle."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : Le contraste chaud-froid",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En quoi consiste le « contraste chaud-froid » selon Johannes Itten ?",
+              "options": [
+                "La confrontation expressive de teintes ressenties psychologiquement comme chaudes et froides",
+                "La cuisson d'un tableau dans un four de céramiste puis sa trempe dans l'eau glacée",
+                "La conservation des tubes de peinture dans un réfrigérateur d'atelier",
+                "L'alternance entre une journée de canicule et une nuit polaire sur le motif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contraste chaud-froid oppose des sensations chromatiques thermiques pour susciter des vibrations visuelles et des effets d'éloignement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel couple de couleurs incarne le contraste polaire chaud-froid le plus parfait selon Itten ?",
+              "options": [
+                "Rouge-orangé et Bleu-vert",
+                "Jaune citron et Vert pomme",
+                "Noir bitume et Brun sépia",
+                "Gris souris et Blanc d'argent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rouge-orangé (couleur du feu et de la braise) et le bleu-vert (couleur de la glace et de l'eau) forment les deux pôles thermiques extrêmes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment le contraste chaud-froid est-il exploité pour créer la profondeur dans un paysage ?",
+              "options": [
+                "Les tons chauds avancent au premier plan tandis que les tons froids reculent vers l'horizon",
+                "Les tons froids écrasent la composition et suppriment toute profondeur",
+                "Les tons chauds sont toujours placés dans le ciel et les tons froids au sol",
+                "Il oblige l'artiste à tracer une grille de fils de fer tendus sur le paysage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La perspective chromatique s'appuie sur la propriété optique des teintes : le chaud attire et s'approche, le froid s'évade vers l'infini."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle découverte capitale Claude Monet a-t-il illustrée dans sa série des « Meules » et de la « Cathédrale de Rouen » ?",
+              "options": [
+                "La lumière chaude du soleil couchant s'oppose à des ombres bleutées ou violacées fraîches",
+                "La pierre des cathédrales est totalement transparente à midi",
+                "La paille des meules devient vert émeraude sous la canicule",
+                "Le noir absolu est indispensable pour réussir un ciel d'été"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monet démontre que chaque illumination chaude directe engendre sur le motif une réaction complémentaire et froide dans les zones d'ombre."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles combinaisons colorées exploitent efficacement le contraste chaud-froid ?",
+              "options": [
+                "Un éclat orangé chaleureux posé au cœur d'un sous-bois bleuté et ombragé",
+                "Des touches de jaune soleil illuminant une façade baignée d'un ciel azur froid",
+                "Une juxtaposition exclusive d'un blanc cassé et d'un gris très pâle",
+                "Un aplat uniforme de noir d'ivoire sur toute la surface"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'association de tons incandescents (orange, jaune d'or) et de tonalités aquatiques ou aériennes (bleus, cyans) crée une tension thermique spectaculaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle réaction physiologique et psychologique des expériences en laboratoire ont-elles mise en évidence ?",
+              "options": [
+                "Des sujets dans une pièce peinte en bleu-vert ressentent le froid 3 à 4 °C plus tôt que dans une pièce rouge-orangé",
+                "Les pièces peintes en rouge font perdre définitivement l'équilibre",
+                "Les murs bleus doublent la taille apparente des meubles",
+                "La peinture jaune stoppe immédiatement les battements du cœur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Johannes Itten rapporte des tests démontrant qu'une ambiance chromatique froide abaisse la sensation thermique corporelle subjective de plusieurs degrés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans une nature morte de Paul Cézanne, pourquoi les contours des fruits ne sont-ils jamais dessinés d'un trait noir rigide ?",
+              "options": [
+                "Parce qu'il modèle le passage du relief par une succession de modulations du chaud au froid",
+                "Parce qu'il n'avait plus de peinture noire dans son atelier d'Aix-en-Provence",
+                "Parce que le fusain refusait d'adhérer sur sa toile préparée",
+                "Parce qu'il voulait que les spectateurs devinent la forme au hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cézanne disait : « La forme est à son plein quand la couleur est à sa richesse. » Il fait tourner le volume par des touches alternées chaudes et froides."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle ambiance chromatique associe-t-on couramment aux scènes d'intérieur intimistes éclairées au coin du feu ?",
+              "options": [
+                "Une dominante chaude d'ocres, de bruns dorés, de carmins et d'ambres",
+                "Une lumière froide au néon bleu clinique",
+                "Un camaïeu de verts d'eau et de turquoises polaires",
+                "Une dominante achromatique de gris métallique pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les intérieurs intimes et chaleureux (chez Georges de La Tour ou les peintres hollandais) baignent dans des harmonies d'ocres et de rouges embrasés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les sommets montagneux lointains peints par Caspar David Friedrich paraissent-ils bleutés et diaphanes ?",
+              "options": [
+                "En raison de la diffusion de la lumière dans l'atmosphère qui bleuit et refroidit les horizons lointains",
+                "Parce que les rochers des Alpes sont naturellement en saphir bleu pur",
+                "Parce que le peintre a renversé son flacon d'encre bleue sur la partie haute",
+                "Parce que Friedrich ne voyait que la couleur bleue dans la nature"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La perspective atmosphérique enrichit le contraste en teintant de bleu froid les plans éloignés par rapport aux premiers plans chauds et terreux."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels effets plastiques majeurs le contraste chaud-froid permet-il d'obtenir avec brio ?",
+              "options": [
+                "Suggérer la profondeur de l'espace sans recourir aux lignes de fuite géométriques",
+                "Exprimer les variations atmosphériques entre ombre fraîche et plein soleil",
+                "Supprimer tout intérêt esthétique pour le tableau",
+                "Empêcher le séchage uniforme de la matière picturale"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le contraste thermique est l'un des outils les plus subtils pour donner de l'air, de la respiration et de l'espace vibrant à une composition."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : Le contraste des complémentaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que se passe-t-il visuellement lorsque deux couleurs complémentaires sont placées immédiatement côte à côte ?",
+              "options": [
+                "Elles se renforcent et exaltent mutuellement leur éclat sans changer de teinte",
+                "Elles s'effacent instantanément et deviennent complètement transparentes",
+                "Elles se transforment en une boue grise délavée sur la toile",
+                "Elles attirent la lumière ultraviolette de la pièce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Juxtaposées, deux complémentaires se dynamisent réciproquement et atteignent leur plus haut niveau de luminosité et de vivacité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la couleur complémentaire du rouge primaire ?",
+              "options": ["Le vert", "L'orange", "Le violet", "Le jaune"],
+              "correctAnswers": [0],
+              "explanation": "Le vert (mélange des deux autres primaires : cyan et jaune) est le complémentaire parfait du rouge."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que se produit-il au contraire si l'on mélange physiquement sur la palette deux couleurs complémentaires ?",
+              "options": [
+                "Elles s'annihilent et forment un gris neutre ou un brun sourd",
+                "Elles produisent une étincelle lumineuse blanche éclatante",
+                "Elles forment immédiatement une couleur primaire pure",
+                "Elles se séparent spontanément en deux couches d'eau et d'huile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mélangées dans le même récipient, deux complémentaires soustractives s'annulent optiquement et donnent un gris neutre ou un noir rompu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel tableau de Claude Monet exploite à merveille le contraste rouge/vert par des touches vermillon éparpillées dans l'herbe ?",
+              "options": [
+                "Les Coquelicots (ou Champ de coquelicots à Argenteuil)",
+                "Impression, soleil levant",
+                "Le Déjeuner sur l'herbe",
+                "Gare Saint-Lazare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans Les Coquelicots (1873), les taches d'un rouge écarlate pur jaillissent avec une vivacité intense sur le tapis vert prairie de la colline."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles associations représentent rigoureusement des paires de couleurs complémentaires ?",
+              "options": [
+                "Bleu et Orange",
+                "Jaune et Violet",
+                "Rouge et Vert",
+                "Bleu et Vert"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les trois couples fondamentaux de complémentaires sont Bleu/Orange, Jaune/Violet et Rouge/Vert. Bleu et Vert sont des couleurs analogues voisines."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans « Le Café de nuit » d'Arles, quel peintre utilise des heurts violents de rouge sang et de vert bouteille pour exprimer les « terribles passions humaines » ?",
+              "options": [
+                "Vincent van Gogh",
+                "Auguste Renoir",
+                "Paul Gauguin",
+                "Edgar Degas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vincent van Gogh écrivait à son frère Théo qu'il cherchait à traduire le malaise et le drame par le conflit agressif du rouge et du vert dans ce tableau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi le contraste de complémentaires est-il omniprésent dans la signalétique, les logos et la publicité moderne ?",
+              "options": [
+                "Parce qu'il offre la plus grande visibilité, le plus fort impact rétinien et une mémorisation rapide",
+                "Parce que ces encres sont beaucoup moins chères à fabriquer en usine",
+                "Parce que la loi interdit d'associer d'autres couleurs sur les panneaux",
+                "Parce qu'il rend les textes volontairement illisibles de loin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'exaltation mutuelle des complémentaires attire instantanément l'œil humain et détache parfaitement les symboles de leur fond."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel phénomène visuel désagréable peut apparaître si deux complémentaires très saturées se touchent sur une grande surface ?",
+              "options": [
+                "Une vibration visuelle ou scintillement fatiguant pour la rétine à la lisière des deux couleurs",
+                "La décoloration progressive de la peinture en moins d'une heure",
+                "Une odeur chimique piquante émanant de la toile",
+                "L'inversion spontanée du sens de lecture de l'image"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rivalité rétinienne à la frontière de deux complémentaires saturées crée un effet de vibration optique qui peut fatiguer l'œil."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la couleur complémentaire du jaune-orangé sur le cercle chromatique à 12 zones ?",
+              "options": [
+                "Le bleu-violet",
+                "Le vert olive",
+                "Le rouge magenta",
+                "Le jaune d'or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La couleur diamétralement opposée au jaune-orangé sur le cercle chromatique est le bleu-violet."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés caractérisent deux couleurs complémentaires en peinture ?",
+              "options": [
+                "Elles contiennent à elles deux l'ensemble des trois primaires fondamentales",
+                "Leur juxtaposition produit un équilibre harmonieux complet pour l'œil humain",
+                "Elles doivent toujours être appliquées avec le même pinceau sans le rincer",
+                "Elles ne peuvent jamais être utilisées ensemble dans un tableau figuratif"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une couleur complémentaire rassemble les deux primaires absentes de l'autre (ex. vert = cyan + jaune face au rouge). Ensemble, elles satisfont l'équilibre total de l'œil."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : Le contraste simultané et l'effet Chevreul",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le « contraste simultané » découvert et théorisé par Michel-Eugène Chevreul ?",
+              "options": [
+                "Le phénomène optique par lequel notre œil exige et projette automatiquement la couleur complémentaire sur toute teinte voisine",
+                "L'action de peindre deux tableaux en même temps avec les deux mains",
+                "La projection simultanée de deux diapositives sur le même écran",
+                "L'apparition de deux signatures identiques sur une toile ancienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chevreul a démontré en 1839 que notre système visuel ne perçoit jamais une couleur isolée : l'œil modifie la couleur observée en lui associant sa complémentaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si l'on pose un carré gris parfaitement neutre sur un fond rouge vermillon intense, comment le gris paraît-il à nos yeux ?",
+              "options": [
+                "Il semble légèrement teinté d'un voile vert",
+                "Il paraît d'un jaune citron éclatant",
+                "Il devient rose bonbon brillant",
+                "Il disparaît entièrement et devient transparent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stimulée par le rouge du fond, la rétine projette sa complémentaire (le vert) sur la surface neutre du carré gris."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle était la fonction officielle de Michel-Eugène Chevreul lorsqu'il fit cette découverte historique ?",
+              "options": [
+                "Directeur des teintures de la Manufacture royale des Gobelins",
+                "Ministre de la Culture sous Napoléon III",
+                "Conservateur en chef du Musée du Louvre",
+                "Architecte en chef de la cathédrale Notre-Dame de Paris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Saisi des plaintes des tapissiers qui jugeaient les laines noires trop fades à côté des laines colorées, Chevreul comprit que le problème était optique et non chimique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'« image rémanente » (ou post-image) que l'on observe en fixant un rond rouge pendant trente secondes puis en regardant un mur blanc ?",
+              "options": [
+                "Un cercle fantôme de couleur verte qui flotte sur le mur blanc",
+                "Un rond rouge qui continue de grossir indéfiniment",
+                "Une tache noire indélébile qui brûle la rétine",
+                "L'apparition d'un éclair bleu électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les récepteurs rétiniens fatigués par le rouge laissent s'exprimer la composante complémentaire (le vert) sur le fond blanc neutre."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels artistes modernes ont expressément placé les lois du contraste simultané au cœur de leurs recherches picturales ?",
+              "options": [
+                "Robert Delaunay",
+                "Sonia Delaunay",
+                "Georges Seurat",
+                "Caspar David Friedrich"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Seurat avec le divisionnisme, puis Robert et Sonia Delaunay avec le simultanéisme (orphisme), ont fait du contraste simultané leur moteur créatif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment Robert Delaunay a-t-il baptisé ses toiles non figuratives composées de disques et d'arches de couleurs pures en mouvement ?",
+              "options": [
+                "Les Formes circulaires et Disques simultanés",
+                "Les Nymphéas abstraits",
+                "Les Ready-mades cinétiques",
+                "Les Compositions suprématistes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Delaunay a créé la série des Formes circulaires cosmiques basées sur le dynamisme lumineux et la pulsation du contraste simultané."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel nom le poète Guillaume Apollinaire a-t-il donné à cette peinture lumineuse et pure inventée par Delaunay ?",
+              "options": [
+                "L'orphisme",
+                "Le dadaïsme",
+                "Le surréalisme",
+                "L'art brut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apollinaire a forgé le terme d'« orphisme » (en référence à Orphée) pour célébrer une peinture pure, lumineuse et musicale affranchie du sujet réel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si l'on place une bande grise identique sur un fond noir puis sur un fond blanc, quelle illusion de valeur subit-elle ?",
+              "options": [
+                "Elle paraît nettement plus claire sur le fond noir que sur le fond blanc",
+                "Elle paraît beaucoup plus sombre sur le fond noir",
+                "Elle garde exactement le même aspect visuel sans aucune variation",
+                "Elle devient entièrement invisible sur le fond noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est le contraste simultané de valeur : le fond noir exalte la clarté du gris, tandis que le fond blanc le fait paraître plus terne et sombre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment un peintre peut-il empêcher un gris d'avoir l'air verdâtre lorsqu'il est entouré d'une zone rouge écarlate ?",
+              "options": [
+                "En ajoutant au gris une infime pointe de rouge pour neutraliser la réaction de l'œil",
+                "En passant trois couches de vernis noir sur le gris",
+                "En découpant un trou dans la toile au milieu du gris",
+                "En augmentant la proportion de pigments verts dans le gris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour qu'un gris paraisse neutre dans un environnement coloré, il faut tricher optiquement en lui incorporant un soupçon de la couleur du fond."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles vérités sur la vision humaine la découverte du contraste simultané a-t-elle établies ?",
+              "options": [
+                "Une couleur n'est jamais perçue de façon absolue mais toujours en relation avec ce qui l'entoure",
+                "L'œil humain cherche constamment à rétablir la totalité de l'équilibre chromatique",
+                "Les yeux humains fonctionnent comme des scanners numériques insensibles au contexte",
+                "Les couleurs perdent leur signification dès qu'on les regarde plus de trois secondes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le contraste simultané prouve que la perception de la couleur est un processus cérébral dynamique, interactif et relationnel."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : Le contraste de qualité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le « contraste de qualité » selon Johannes Itten ?",
+              "options": [
+                "L'opposition entre des couleurs saturées, éclatantes et pures et des couleurs ternes, rompues ou grisées",
+                "La différence de prix entre des pigments bon marché et des pigments haut de gamme",
+                "Le jugement esthétique subjectif entre un bon et un mauvais tableau",
+                "La qualité de la toile de lin comparée à un tissu de coton synthétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contraste de qualité repose sur le degré de pureté, de saturation et de vivacité lumineuse des teintes confrontées à des tons amortis."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment peut-on modifier la « qualité » (pureté) d'une couleur sans recourir au noir pur ?",
+              "options": [
+                "En y ajoutant sa couleur complémentaire, du blanc ou un gris neutre",
+                "En soufflant de l'air chaud sur le tube de couleur",
+                "En peignant uniquement les jours de pluie",
+                "En essuyant la toile avec du papier absorbant sec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La saturation d'une couleur diminue dès qu'on la rompt avec une pointe de complémentaire, qu'on la voile de gris ou qu'on la dilue de blanc."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel effet saisissant produit une petite touche de couleur pure placée au milieu d'un vaste espace terne ou grisaillé ?",
+              "options": [
+                "Elle rayonne avec un éclat exceptionnel, tel un joyau brillant dans la pénombre",
+                "Elle est immédiatement étouffée et devient totalement invisible",
+                "Elle transforme l'ensemble du tableau en une grisaille uniforme",
+                "Elle donne au spectateur une sensation immédiate de fatigue oculaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entourée de tons neutres ou rompus, la couleur saturée concentre toute l'attention visuelle et brille avec une intensité décuplée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi une composition composée uniquement de couleurs saturées au maximum risque-t-elle d'être visuellement fatigante ?",
+              "options": [
+                "Parce que les couleurs hurlent toutes ensemble, se neutralisent et rendent l'espace confus sans hiérarchie",
+                "Parce que la peinture risque de fondre sous son propre éclat",
+                "Parce que cela provoque une surchauffe immédiate des lampes de la galerie",
+                "Parce que le support se déchire sous la tension chromatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contraste de qualité permet de créer des respirations, des zones de repos et de mettre en valeur les points forts de la composition."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels maîtres classiques espagnols excellaient dans l'art de faire chanter des rubans de carmin ou d'or au milieu de gris et de bruns subtils ?",
+              "options": [
+                "Diego Vélasquez",
+                "Francisco de Goya",
+                "Piet Mondrian",
+                "Kasimir Malevitch"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vélasquez (Les Ménines) et Goya détachaient avec une suprême élégance des touches éclatantes d'or ou de carmin sur des fonds de soies grises et de terres raffinées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on une couleur dont la pureté a été atténuée par l'ajout d'une grande quantité de blanc ?",
+              "options": [
+                "Une couleur pastel ou délavée",
+                "Une couleur phosphorescente",
+                "Une couleur bitumineuse",
+                "Une couleur primordiale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ajout de blanc éclaircit la valeur mais assourdit la force chromatique, produisant des tonalités pastel douces et désaturées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle atmosphère psychologique se dégage traditionnellement d'une œuvre dominée par des couleurs rompues, cendrées et sourdes ?",
+              "options": [
+                "Une atmosphère de calme, de sobriété, de recueillement ou de mélancolie",
+                "Une excitation festive et carnavalesque délirante",
+                "Une sensation d'agressivité violente immédiate",
+                "Un sentiment de vitesse cinétique vertigineuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les tonalités sourdes, rompues et peu saturées suggèrent la retenue, l'introspection, le silence et l'intimité méditative."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans le domaine du design graphique ou de la mode, que permet d'obtenir un judicieux contraste de qualité ?",
+              "options": [
+                "Une élégance raffinée où une touche éclatante réveille une tenue ou une maquette sobre",
+                "L'obligation de jeter tous les vêtements après une seule utilisation",
+                "L'impossibilité d'imprimer des affiches sur papier glacé",
+                "Une réduction obligatoire de moitié de la taille des typographies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un fond neutre (anthracite, beige, écru) rehaussé d'une pointe de couleur vive (jaune safran, corail) est l'archétype de l'équilibre graphique élégant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Peut-on réaliser un contraste de qualité en associant un bleu outremer pur et un bleu marine très assombri et grisâtre ?",
+              "options": [
+                "Oui, car la différence porte sur la pureté et la vivacité de la même famille de teinte",
+                "Non, car ils appartiennent obligatoirement à la même famille de bleu",
+                "Non, car le contraste de qualité exige obligatoirement du rouge vermillon",
+                "Non, car cela détruirait immédiatement l'harmonie du tableau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contraste de qualité peut parfaitement s'exercer au sein d'une seule famille chromatique, en confrontant sa nuance pure et sa déclinaison rompue."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propositions caractérisent exactement le contraste de qualité ?",
+              "options": [
+                "Il oppose le lumineux (saturé) à l'éteint (désaturé)",
+                "Il permet d'éviter la cacophonie visuelle des aplats trop vifs",
+                "Il repose sur le décompte en grammes des tubes de peinture",
+                "Il nécessite l'utilisation exclusive d'encres d'imprimerie fluorescentes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le contraste de qualité joue sur le degré d'intensité lumineuse intrinsèque du pigment pur face aux nuances ternies, offrant équilibre et élégance."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Le contraste de quantité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le « contraste de quantité » dans la théorie des couleurs formulée par Goethe et Itten ?",
+              "options": [
+                "Le rapport de surface et de proportion entre deux ou plusieurs étendues de couleur",
+                "Le nombre de pots de peinture achetés au magasin de fournitures",
+                "Le nombre de spectateurs admis simultanément dans la salle du musée",
+                "Le poids total de la toile encadrée sur la balance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contraste de quantité traite des relations de dimension et de proportion spatiale entre les taches de couleur pour atteindre un équilibre visuel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "D'après Johann Wolfgang von Goethe, quelle couleur possède la plus grande force d'éclat lumineux intrinsèque ?",
+              "options": [
+                "Le jaune",
+                "Le violet sombre",
+                "Le bleu marine",
+                "Le vert olive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Goethe attribue au jaune la valeur lumineuse la plus éclatante (valeur 9), tandis que le violet est le plus sombre (valeur 3)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Selon les rapports harmoniques de Goethe, quelle proportion de surface jaune suffit à équilibrer une surface violette ?",
+              "options": [
+                "1 part de jaune pour 3 parts de violet (rapport de surface 1/4 contre 3/4)",
+                "3 parts de jaune pour 1 part de violet",
+                "Des surfaces exactement égales de jaune et de violet",
+                "10 parts de jaune pour aucune part de violet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le jaune étant trois fois plus lumineux que le violet, il doit occuper une surface trois fois plus petite pour être en équilibre harmonique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le rapport de surface harmonieux entre le rouge et le vert selon Goethe ?",
+              "options": [
+                "Surfaces égales (1 pour 1), car ils possèdent une luminosité équivalente",
+                "1 part de rouge pour 5 parts de vert",
+                "4 parts de rouge pour 1 part de vert",
+                "Le rouge doit toujours occuper tout le tableau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Goethe attribue la même valeur de clarté (valeur 6) au rouge et au vert : leurs surfaces doivent être égales (1/2 et 1/2) pour se neutraliser harmonieusement."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles couleurs ont besoin d'une surface spatiale plus vaste pour compenser la vivacité de leur complémentaire ?",
+              "options": [
+                "Le violet face au jaune",
+                "Le bleu face à l'orange",
+                "Le jaune face au violet",
+                "L'orange face au bleu"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le violet et le bleu étant des couleurs sombres de faible luminosité, elles doivent occuper de plus grandes surfaces pour équilibrer la clarté du jaune ou de l'orange."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se passe-t-il visuellement si un artiste rompt volontairement les proportions harmoniques en isolant un minuscule point jaune sur un immense fond sombre ?",
+              "options": [
+                "Le point jaune attire irrésistiblement le regard et devient un point focal d'une puissance spectaculaire",
+                "Le point jaune disparaît définitivement et devient noir",
+                "L'ensemble du fond sombre devient subitement jaune éclatant",
+                "Le tableau perd toute tension dramatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rompre l'équilibre de quantité permet de créer des hiérarchies visuelles fortes et de magnétiser l'attention du spectateur sur un détail clé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel terme désigne la couleur qui occupe la plus grande part de surface et donne son ambiance générale à l'œuvre ?",
+              "options": [
+                "La couleur dominante",
+                "La couleur subordonnée",
+                "La couleur intruse",
+                "La couleur clandestine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dominante chromatique s'étend sur la plus vaste surface et crée l'atmosphère thermique et lumineuse globale du tableau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "D'après les tables de Goethe, quel est le rapport de surface d'équilibre entre l'orange et le bleu ?",
+              "options": [
+                "1 part d'orange pour 2 parts de bleu (rapport 1/3 contre 2/3)",
+                "2 parts d'orange pour 1 part de bleu",
+                "Surfaces parfaitement identiques 1 pour 1",
+                "5 parts d'orange pour 1 part de bleu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'orange a une valeur lumineuse de 8 et le bleu de 4 : il faut donc une surface deux fois plus grande de bleu pour équilibrer l'orange."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel peintre romantique allemand ami de Goethe a conçu en 1810 la « Sphère des couleurs » en trois dimensions ?",
+              "options": [
+                "Philipp Otto Runge",
+                "Caspar David Friedrich",
+                "Karl Friedrich Schinkel",
+                "Albrecht Dürer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Philipp Otto Runge a modélisé la sphère des couleurs, reliant les pôles noir et blanc à l'équateur chromatique dans une vision unifiée."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels rôles majeurs le contraste de quantité joue-t-il dans une composition réussie ?",
+              "options": [
+                "Hiérarchiser l'information visuelle et guider le parcours du regard",
+                "Créer des tensions dramatiques en opposant une dominante et des accents ponctuels",
+                "Mesurer le coût financier des encres au centime près",
+                "Obliger le peintre à utiliser des pinceaux de taille proportionnelle à la surface"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le contraste de quantité est l'outil fondamental de la composition : il permet de doser les étendues pour instaurer une hiérarchie et un rythme visuel."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : Ombres propres, ombres portées et éclairage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'« ombre propre » d'un volume éclairé ?",
+              "options": [
+                "La zone du corps lui-même qui ne reçoit pas directement les rayons de la source lumineuse",
+                "L'ombre qui se projette sur le sol ou sur les murs voisins",
+                "L'ombre découpée dans du carton noir pour un théâtre d'ombres",
+                "Une ombre qui a été nettoyée avec une éponge humide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ombre propre est située sur l'objet même, sur sa face opposée ou soustraite à la source de lumière."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'« ombre portée » créée par un objet ?",
+              "options": [
+                "La projection de la silhouette obscure de l'objet sur la surface sur laquelle il repose ou sur un obstacle voisin",
+                "La trace de peinture accidentelle laissée sous le cadre",
+                "L'ombre du pinceau de l'artiste pendant qu'il travaille",
+                "La diminution de taille d'un objet en perspective cavalière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ombre portée est la projection spatiale de l'obscurité causée par l'interception des rayons lumineux par l'objet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la zone de transition floue et adoucie à la lisière d'une ombre portée créée par une source de lumière diffuse ?",
+              "options": [
+                "La pénombre",
+                "L'antimatière",
+                "Le point de fuite",
+                "L'éclipse totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pénombre entoure l'ombre portée lorsque la source lumineuse est étendue (comme le ciel ou une fenêtre), adoucissant les contours."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on un éclairage en « lumière rasante » ?",
+              "options": [
+                "Une lumière orientée presque parallèlement à la surface qui en accentue violemment les moindres reliefs et aspérités",
+                "Un coup de rasoir donné dans la toile peinte pour créer une ombre",
+                "Un éclairage descendant verticalement à midi en plein été",
+                "Une lampe de bureau éteinte à moitié"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière rasante effleure la surface sous un angle très faible, allongeant démesurément les ombres et soulignant textures et défauts."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels éléments composent traditionnellement l'étude du rendu d'une sphère éclairée par une source unique ?",
+              "options": [
+                "Le point culminant de lumière (le rehaut ou reflet brillant)",
+                "L'ombre propre et le reflet renvoyé par le support",
+                "L'ombre portée sur la table",
+                "La découpe géométrique au compas en deux hémisphères métalliques"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'analyse classique comprend : les hautes lumières (rehaut), la demi-teinte, l'ombre propre, le reflet de surface et l'ombre portée avec sa pénombre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un « rehaut » en dessin ou en peinture ?",
+              "options": [
+                "Une touche de blanc ou de ton très clair marquant le point de plus forte intensité lumineuse",
+                "Une couche de peinture arrachée au grattoir",
+                "L'agrandissement de la hauteur d'un chevalet d'atelier",
+                "Le fait de rehausser le prix d'un tableau lors d'une vente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rehaut (souvent posé à la craie blanche ou à la gouache) fait jaillir l'éclat lumineux suprême sur le sommet d'un volume."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel effet produit un éclairage purement « frontal » (situé dans l'axe exact du regard de l'observateur) sur un visage ?",
+              "options": [
+                "Il écrase les volumes, supprime presque les ombres modelantes et aplatit les traits",
+                "Il creuse démesurément les joues et les orbites",
+                "Il allonge le nez d'une immense ombre noire portée",
+                "Il transforme le visage en une sculpture cubiste en relief"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière frontale (comme celle d'un flash direct) élimine les ombres latérales modelantes et rend le sujet plat et sans profondeur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la situation où la source de lumière est située directement derrière le sujet face à l'artiste ?",
+              "options": [
+                "Le contre-jour",
+                "Le grand angle",
+                "Le travelling avant",
+                "La plongée totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contre-jour détache la silhouette sombre du sujet sur un fond éblouissant, créant un liseré lumineux étincelant sur ses contours."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "D'où provient la lueur plus claire souvent visible dans le bas de l'ombre propre d'une pomme posée sur une nappe blanche ?",
+              "options": [
+                "De la lumière réfléchie par la nappe blanche vers la face inférieure du fruit",
+                "D'une luciole enfermée à l'intérieur de la pomme",
+                "D'une transparence magique du trognon",
+                "D'une erreur de débutant qu'il faut immédiatement corriger au noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la lumière diffuse réfléchie par l'environnement qui éclaire subtilement l'ombre propre et empêche celle-ci d'être un noir bouché."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles informations capitales l'ombre portée apporte-t-elle dans un dessin figuratif ?",
+              "options": [
+                "Elle ancre l'objet sur son support et évite qu'il semble léviter dans le vide",
+                "Elle indique précisément la direction, la hauteur et la puissance de la source de lumière",
+                "Elle permet de cacher les éventuelles erreurs d'anatomie sous un voile noir",
+                "Elle garantit que la feuille de papier ne s'envolera pas"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'ombre portée situe immédiatement le volume dans l'espace tridimensionnel et informe l'œil sur la position invisible de la lumière."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : La lumière comme médium : vitrail, néon et art cinétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans quel style architectural médiéval le vitrail est-il devenu un élément majeur transformant la lumière naturelle en symbole divin ?",
+              "options": [
+                "L'art gothique",
+                "L'art roman primitif",
+                "L'art néoclassique",
+                "Le brutalisme en béton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce aux croisées d'ogives libérant les murs, l'art gothique (Sainte-Chapelle, Chartres) a fait entrer une lumière colorée transcendante et céleste."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment le vitrail traditionnel obtient-il ses couleurs vives et inaltérables à la lumière ?",
+              "options": [
+                "Par adjonction d'oxydes métalliques dans la pâte de verre en fusion teintée dans la masse",
+                "En collant des feuilles de plastique coloré sur des vitres ordinaires",
+                "En peignant la vitre avec de la gouache ordinaire à l'eau",
+                "En trempant le verre refroidi dans du jus de betterave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verre est teinté dans sa masse au four grâce à des oxydes minéraux (cuivre pour le rouge, cobalt pour le bleu, fer pour le vert)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel artiste minimaliste américain des années 1960 a fait des tubes néon fluorescents industriels son matériau artistique unique ?",
+              "options": [
+                "Dan Flavin",
+                "Andy Warhol",
+                "Jackson Pollock",
+                "Roy Lichtenstein"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dan Flavin composait des sculptures et des environnements spatiaux exclusivement avec des tubes fluorescents de couleur du commerce."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel artiste contemporain américain sculpte la lumière naturelle et céleste dans d'immenses installations immersives (les « Skyspaces ») et dans le cratère Roden ?",
+              "options": [
+                "James Turrell",
+                "Jeff Koons",
+                "Keith Haring",
+                "Jean-Michel Basquiat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "James Turrell crée des espaces où la lumière semble acquérir une présence physique et tangible, faisant perdre au spectateur ses repères spatiaux."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels artistes contemporains utilisent directement la lumière artificielle ou électrique comme médium premier ?",
+              "options": [
+                "Dan Flavin (tubes fluorescents colorés)",
+                "James Turrell (environnements lumineux perceptuels)",
+                "Auguste Rodin (bronze et marbre)",
+                "Paul Cézanne (peinture à l'huile sur toile)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dan Flavin et James Turrell ont abandonné les pigments traditionnels pour sculpter directement l'espace à l'aide de photons et de flux lumineux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle artiste japonaise crée des « Infinity Mirror Rooms », pièces de miroirs démultipliant à l'infini des lampions et des guirlandes LED étincelantes ?",
+              "options": [
+                "Yayoi Kusama",
+                "Yoko Ono",
+                "Mariko Mori",
+                "Chiharu Shiota"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yayoi Kusama plonge les visiteurs dans des espaces infinis où des centaines de diodes lumineuses se reflètent à perte de vue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel artiste dano-islandais a installé en 2003 un gigantesque soleil artificiel brumeux dans le hall de la Tate Modern (« The Weather Project ») ?",
+              "options": [
+                "Olafur Eliasson",
+                "Christo",
+                "Anish Kapoor",
+                "Ai Weiwei"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Olafur Eliasson a recréé un soleil doré envoûtant avec des lampes au sodium à basse pression et de la brume artificielle sous un plafond miroir géant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel courant artistique international des années 1950-1960 mettait en jeu des œuvres intégrant du mouvement réel, des miroirs et des flux lumineux ?",
+              "options": [
+                "L'art cinétique et optique (Op Art)",
+                "Le romantisme noir",
+                "Le réalisme socialiste soviétique",
+                "L'art pompier académique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'art cinétique (Le Parc, Cruz-Diez, Soto, Vasarely) sollicite la participation active de l'œil par des effets d'optique et des jeux de lumière en mouvement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans un vitrail, quel rôle plastique essentiel jouent les réseaux de baguettes de plomb sombre enserrant les verres ?",
+              "options": [
+                "Ils séparent les verres et rehaussent l'intensité lumineuse des couleurs par un cerne noir contrastant",
+                "Ils absorbent toute l'humidité de la cathédrale",
+                "Ils empêchent le verre de fondre sous le soleil d'été",
+                "Ils servent uniquement à cacher des fissures accidentelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le plomb noir dessine la silhouette des figures et empêche la dispersion optique, faisant jaillir la lumière colorée par contraste absolu."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels artistes modernes majeurs ont réalisé des vitraux novateurs pour des édifices religieux ?",
+              "options": [
+                "Marc Chagall (vitraux des cathédrales de Metz et Reims)",
+                "Henri Matisse (vitraux de la Chapelle du Rosaire à Vence)",
+                "Fernand Léger (vitraux de l'église d'Audincourt)",
+                "Marcel Duchamp (uniquement avec des urinoirs en porcelaine)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Chagall, Matisse et Léger ont magnifiquement renouvelé l'art sacré du vitrail au XXe siècle par leur sens magistral de la couleur traversée de lumière."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Le noir, le blanc et les contrastes extrêmes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel peintre français contemporain mondialement célèbre a créé l'« Outrenoir » en travaillant la lumière réfléchie sur des pâtes noires texturées ?",
+              "options": [
+                "Pierre Soulages",
+                "Yves Klein",
+                "Jean Dubuffet",
+                "Claude Viallat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pierre Soulages a exploré à partir de 1979 l'Outrenoir : un univers où le noir cesse d'être une couleur sombre pour devenir un révélateur actif de lumière."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment la lumière naît-elle dans les toiles d'Outrenoir de Pierre Soulages sans aucun pigment coloré ?",
+              "options": [
+                "Par la réflexion de la lumière réelle sur les stries, les entailles et les alternances de mat et de brillant sculptées dans la matière noire",
+                "Par l'incorporation de petites ampoules électriques dissimulées sous le châssis",
+                "Par l'application d'une peinture phosphorescente radioactive",
+                "Par la transparence de la toile blanche laissée à nu par endroits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En labourant la pâte noire avec des brosses et des lames, Soulages crée des reliefs qui accrochent la lumière ambiante et la réfléchissent vers le spectateur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel peintre russe a peint en 1915 le célèbre « Carré noir sur fond blanc », acte de naissance radical du suprématisme ?",
+              "options": [
+                "Kasimir Malevitch",
+                "Wassily Kandinsky",
+                "Marc Chagall",
+                "Ilia Repine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Malevitch a exposé Carré noir sur fond blanc en 1915 comme le « degré zéro de la peinture », libérant l'art de toute imitation du monde visible."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel tableau de Malevitch peint en 1918 a poussé la dématérialisation et le contraste subtil de blanc sur blanc à son paroxysme ?",
+              "options": [
+                "Carré blanc sur fond blanc",
+                "Le Cheval rouge dans la neige",
+                "Cercle rouge sur fond jaune",
+                "Autoportrait au chapeau blanc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec Carré blanc sur fond blanc, Malevitch explore une nuance subtile de blanc chaud inclinée sur un blanc froid, atteignant l'infini mystique de l'abstraction."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles œuvres monumentales tirent leur puissance émotionnelle d'un refus total de la couleur au profit du noir, du blanc et du gris ?",
+              "options": [
+                "Guernica de Pablo Picasso (1937)",
+                "Les gravures sur bois expressionnistes de Käthe Kollwitz",
+                "La Danse d'Henri Matisse",
+                "Les Meules sous le soleil couchant de Claude Monet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Picasso pour Guernica et Kollwitz dans ses estampes déchireuses ont banni la couleur pour dire l'horreur de la guerre par le tragique absolu du noir et blanc."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi Pablo Picasso a-t-il délibérément choisi de peindre son immense chef-d'œuvre « Guernica » uniquement en nuances de gris, noir et blanc ?",
+              "options": [
+                "Pour évoquer la sobriété tragique des photos de presse d'époque et traduire le deuil sans séduction décorative",
+                "Parce qu'il n'avait plus de couleurs dans son atelier parisien pendant la guerre",
+                "Pour que le tableau soit plus rapide à peindre avant la fermeture de l'Exposition",
+                "Parce que le gouvernement républicain espagnol lui avait interdit la couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le refus de la couleur dans Guernica confère au drame la rigueur documentaire d'un journal d'actualité et la solennité tragique d'un monument funéraire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une œuvre d'art réalisée sans aucune couleur chromatique, uniquement avec les valeurs de blanc, gris et noir ?",
+              "options": [
+                "Une œuvre achromatique",
+                "Une œuvre polychrome",
+                "Une œuvre kaléidoscopique",
+                "Une œuvre panchromatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Achromatique » signifie littéralement « sans couleur », désignant le champ du blanc, du noir et de toute l'échelle des gris intermédiaires."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel matériau révolutionnaire à base de nanotubes de carbone, conçu au XXIe siècle, absorbe 99,96 % de la lumière visible ?",
+              "options": [
+                "Le Vantablack",
+                "Le Titane blanc",
+                "Le Carbone diamant",
+                "Le Graphène doré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Vantablack piège tellement la lumière que tout objet tridimensionnel recouvert de cette substance semble se transformer en un trou noir plat sans aucun relief visible."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel artiste contemporain réputé a suscité une vive polémique dans le monde de l'art en achetant les droits exclusifs d'utilisation artistique du Vantablack ?",
+              "options": [
+                "Anish Kapoor",
+                "Banksy",
+                "Damien Hirst",
+                "Maurizio Cattelan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 2016, Anish Kapoor s'est réservé l'usage exclusif du Vantablack à des fins artistiques, déclenchant la colère de nombreux créateurs à travers le monde."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles forces expressives le contraste extrême entre le noir absolu et le blanc pur permet-il de déployer ?",
+              "options": [
+                "Une lisibilité graphique maximale et un impact visuel percutant",
+                "Une charge symbolique dramatique puissante (vie/mort, lumière/ténèbres, bien/mal)",
+                "Une décomposition spectrale immédiate en arcs-en-ciel chatoyants",
+                "Une disparition totale de la notion de composition spatiale"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'opposition polaire du blanc et du noir représente le contraste de valeur le plus absolu qui soit, alliant efficacité graphique tranchante et profondeur métaphysique."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2348 @@
+{
+  "id": "5e-physique-chimie-06",
+  "year": "5e",
+  "subject": "physique-chimie",
+  "title": "Transformations chimiques",
+  "order": 6,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Réaction",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces phénomènes, lesquels sont des transformations chimiques ?",
+              "options": [
+                "La glace fond dans un verre",
+                "Une bougie brûle",
+                "Le fer rouille",
+                "L'eau s'évapore au soleil"
+              ],
+              "correctAnswers": [1, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quand la cire d'une bougie fond, s'agit-il d'une transformation chimique ?",
+              "options": [
+                "Non, c'est un changement d'état",
+                "Oui, de nouvelles substances apparaissent",
+                "Oui, la cire disparaît définitivement",
+                "Non, la cire devient un gaz définitif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La flamme d'une bougie indique surtout :",
+              "options": [
+                "Un simple changement d'état",
+                "Une transformation chimique avec la lumière",
+                "Une évaporation sans réaction",
+                "Un refroidissement de la cire"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les réactifs, dans une réaction, sont :",
+              "options": [
+                "Les substances présentes au départ",
+                "Les substances obtenues à la fin",
+                "Uniquement les liquides",
+                "Les gaz produits"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les produits d'une réaction chimique sont :",
+              "options": [
+                "Les matières consommées",
+                "Les nouvelles substances formées",
+                "Les outils du laboratoire",
+                "Les changements de température seuls"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "On verse du vinaigre sur de la craie. Des bulles apparaissent. Cela montre :",
+              "options": [
+                "Un changement d'état de l'eau",
+                "Une transformation chimique",
+                "Une simple dissolution",
+                "Un mélange sans réaction"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le gaz qui fait les bulles avec vinaigre et craie est surtout :",
+              "options": [
+                "De l'oxygène",
+                "Du dioxyde de carbone",
+                "De l'azote",
+                "De l'hydrogène pur"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Après vinaigre et craie, la craie initiale :",
+              "options": [
+                "Reste identique en masse totale seule",
+                "A été transformée en d'autres substances",
+                "Devient seulement de l'eau liquide",
+                "Ne change pas du tout"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un indice de transformation chimique est :",
+              "options": [
+                "La couleur qui ne change jamais",
+                "L'apparition d'une odeur ou d'un gaz nouveau",
+                "Le simple passage solide → liquide",
+                "Le refroidissement sans mélange"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Brûler du papier produit des cendres et de la fumée. On parle de :",
+              "options": [
+                "Changement d'état",
+                "Transformation chimique",
+                "Mélange mécanique",
+                "Condensation"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels exemples correspondent à un changement d'état ?",
+              "options": [
+                "Neige qui fond",
+                "Sucre qui caramélise",
+                "Alcool qui s'évapore",
+                "Papier qui brûle"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'eau qui bout dans une casserole : changement d'état ou réaction chimique ?",
+              "options": [
+                "Changement d'état",
+                "Réaction chimique",
+                "Les deux à la fois",
+                "Aucun des deux"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour une bougie, la combustion concerne surtout :",
+              "options": [
+                "La cire liquide qui coule",
+                "Les substances qui réagissent avec l'air",
+                "Le verre du porte-bougie",
+                "La mèche avant allumage seule"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'air apporte à la combustion un gaz nécessaire appelé :",
+              "options": [
+                "Dioxyde de carbone",
+                "Dioxygène",
+                "Hélium",
+                "Vapeur d'eau seule"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si on couvre une flamme avec un bocal, elle s'éteint car :",
+              "options": [
+                "Il n'y a plus assez de dioxygène",
+                "La cire devient solide",
+                "La lumière disparaît d'abord",
+                "L'eau s'évapore trop vite"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans « vinaigre + craie », les réactifs sont :",
+              "options": [
+                "Vinaigre et craie",
+                "Bulles et eau seulement",
+                "Le verre du récipient",
+                "L'air ambiant uniquement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La craie contient une substance qui réagit avec le vinaigre : le :",
+              "options": [
+                "Sel de table pur",
+                "Carbonate de calcium",
+                "Sucre",
+                "Fer"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "On ne peut pas « récupérer » la craie d'origine après la réaction car :",
+              "options": [
+                "Elle a été physiquement séparée",
+                "Une transformation chimique l'a modifiée",
+                "Elle s'est évaporée",
+                "Elle est devenue de la glace"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une transformation chimique est souvent :",
+              "options": [
+                "Facilement réversible en mélangeant",
+                "Difficile à annuler simplement",
+                "Identique à fondre du beurre",
+                "Sans échange avec l'air"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le mot « réactif » désigne :",
+              "options": [
+                "Une substance qui disparaît avant la réaction",
+                "Une substance qui entre dans la réaction",
+                "Un produit final",
+                "Un thermomètre"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels signes peuvent indiquer une réaction chimique ?",
+              "options": [
+                "Formation de bulles",
+                "Changement de couleur durable",
+                "Passage de l'eau liquide à glace",
+                "Dépôt de givre sur une vitre"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Faire fondre du chocolat au bain-marie est :",
+              "options": [
+                "Une transformation chimique",
+                "Un changement d'état",
+                "Une combustion",
+                "Une corrosion"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La mèche d'une bougie sert surtout à :",
+              "options": [
+                "Porter la chaleur pour entretenir la flamme",
+                "Empêcher toute réaction",
+                "Transformer la cire en glace",
+                "Consommer le dioxygène du verre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les produits de combustion d'une bougie incluent notamment :",
+              "options": [
+                "Dioxyde de carbone et vapeur d'eau",
+                "Uniquement de la cire liquide",
+                "De l'azote liquide",
+                "Rien du tout"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mélanger de l'eau et du sel jusqu'à dissolution :",
+              "options": [
+                "Crée une nouvelle substance chimique",
+                "Forme un mélange récupérable par évaporation",
+                "Est une combustion",
+                "Produit toujours des bulles"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Vinaigre + bicarbonate produit des bulles comme avec la craie car :",
+              "options": [
+                "Il y a aussi un gaz libéré",
+                "C'est seulement un changement d'état",
+                "Le verre réagit",
+                "L'air se liquéfie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Identifier les réactifs, c'est repérer :",
+              "options": [
+                "Ce qu'on avait au début du mélange réactif",
+                "Ce qu'on mesure avec la règle",
+                "La température finale seule",
+                "La couleur du laboratoire"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La rouille du fer est une transformation :",
+              "options": [
+                "Physique réversible",
+                "Chimique lente avec l'air",
+                "Changement d'état",
+                "Fusion"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une flamme est un signe de :",
+              "options": [
+                "Réaction chimique exothermique",
+                "Simple condensation",
+                "Solidification",
+                "Décantation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le vinaigre est acide ; avec la craie, on observe une réaction avec :",
+              "options": [
+                "Effervescence",
+                "Seulement un changement de couleur du verre",
+                "Aucun signe",
+                "Formation de glace"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lesquelles sont des transformations physiques ?",
+              "options": [
+                "Distillation de l'eau",
+                "Cuisson du blanc d'œuf",
+                "Broyage du sucre",
+                "Ternissement de l'argent"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La cire qui coule le long d'une bougie non allumée :",
+              "options": [
+                "Prouve une combustion",
+                "Est un changement d'état dû à la chaleur ambiante",
+                "Crée du dioxyde de carbone",
+                "Forme de la craie"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour qu'une combustion continue, il faut :",
+              "options": [
+                "Du combustible, du dioxygène et une température suffisante",
+                "Seulement de l'eau",
+                "Uniquement de la lumière",
+                "Absence totale d'air"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le combustible d'une bougie est surtout :",
+              "options": [
+                "La cire (et la mèche)",
+                "Le dioxygène",
+                "Le dioxyde de carbone",
+                "L'azote"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Après combustion, on ne retrouve pas la cire d'origine car :",
+              "options": [
+                "Elle s'est transformée chimiquement",
+                "Elle est cachée dans le verre",
+                "Elle est devenue de l'eau glacée",
+                "Elle n'a pas changé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "On teste du vinaigre sur de la craie en poudre pour :",
+              "options": [
+                "Observer une réaction avec effervescence",
+                "Mesurer uniquement la masse du verre",
+                "Geler le liquide",
+                "Séparer par filtration sans réaction"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les produits d'une réaction sont repérables :",
+              "options": [
+                "À la fin, quand la réaction a eu lieu",
+                "Avant de verser le vinaigre",
+                "Uniquement sur l'étiquette",
+                "Jamais en 5e"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un changement d'état conserve :",
+              "options": [
+                "La nature chimique de la substance",
+                "Toujours une odeur de brûlé",
+                "Des cendres",
+                "Une réaction avec l'oxygène"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Brûler du bois diffère de faire sécher du bois car brûler :",
+              "options": [
+                "Transforme chimiquement la matière",
+                "Ne change que l'état de l'eau",
+                "Ne produit pas de gaz",
+                "Est réversible facilement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une réaction, les réactifs sont transformés en :",
+              "options": [
+                "Produits",
+                "États purs sans mélange",
+                "Uniquement de la chaleur",
+                "Rien de visible"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mélanges peuvent provoquer une réaction chimique en 5e ?",
+              "options": [
+                "Vinaigre et craie",
+                "Eau et huile",
+                "Vinaigre et bicarbonate",
+                "Eau et sable"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'évaporation de l'eau d'une flaque laisse du sel : c'est :",
+              "options": [
+                "Récupération d'un mélange",
+                "Combustion du sel",
+                "Réaction vinaigre-craie",
+                "Corrosion"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La flamme bleue en bas, jaune en haut montre :",
+              "options": [
+                "Des zones de combustion",
+                "Un changement d'état de la mèche seule",
+                "Absence de réaction",
+                "Formation de glace"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le dioxyde de carbone produit par vinaigre et craie :",
+              "options": [
+                "Sort sous forme de bulles",
+                "Reste invisible sans effet",
+                "Devient de l'oxygène pur",
+                "Solidifie le vinaigre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réactifs puis produits : l'ordre logique est :",
+              "options": [
+                "On part des réactifs, on obtient des produits",
+                "On part des produits, on crée des réactifs",
+                "Il n'y a pas d'ordre",
+                "Seuls les gaz comptent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Faire griller du pain brunît la croûte : transformation surtout :",
+              "options": [
+                "Chimique",
+                "Changement d'état de l'eau seule",
+                "Mélange mécanique",
+                "Condensation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La craie en morceaux réagit avec le vinaigre ; les morceaux :",
+              "options": [
+                "Diminuent progressivement",
+                "Deviennent de la glace",
+                "Ne changent pas",
+                "Fondent comme de la cire sans gaz"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Distinguer physique et chimique : poser la question :",
+              "options": [
+                "La matière reste-t-elle la même substance ?",
+                "Le verre est-il propre ?",
+                "La couleur du labo change-t-elle ?",
+                "A-t-on une règle ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une bougie éteinte refroidie : la cire redevient solide, c'est :",
+              "options": [
+                "Changement d'état",
+                "Nouvelle combustion",
+                "Réaction acide-base",
+                "Oxydation du fer"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les produits de la réaction vinaigre-craie restent dans le :",
+              "options": [
+                "Récipient (solution et gaz)",
+                "Uniquement l'atmosphère lointaine",
+                "Mèche de bougie",
+                "Thermomètre"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Combustion : quelles affirmations sont correctes ?",
+              "options": [
+                "Elle libère de l'énergie",
+                "Elle consomme du dioxygène",
+                "Elle est un simple changement d'état",
+                "Elle ne produit jamais de gaz"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Givre sur une vitre : principalement :",
+              "options": [
+                "Changement d'état de l'eau",
+                "Combustion",
+                "Réaction vinaigre-craie",
+                "Rouille"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sans air, une bougie allumée sous cloche :",
+              "options": [
+                "S'éteint",
+                "Brûle plus fort",
+                "Produit de la craie",
+                "Gèle la cire"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le terme « transformation chimique » signifie :",
+              "options": [
+                "Création de nouvelles substances",
+                "Changement de forme seulement",
+                "Tri de granules",
+                "Filtration"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Verser du vinaigre sur de la craie : réactif liquide, réactif solide — exemple de :",
+              "options": [
+                "Réaction entre deux réactifs",
+                "Changement d'état du verre",
+                "Combustion",
+                "Décantation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'odeur après brûlure de papier vient :",
+              "options": [
+                "De substances formées par la réaction",
+                "Du seul changement d'état",
+                "De l'eau pure",
+                "De l'azote inerte"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La solidification de la cire refroidie est :",
+              "options": [
+                "Physique",
+                "Chimique irreversible",
+                "Combustion",
+                "Oxydation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Bulles dans vinaigre + craie : le gaz formé est un :",
+              "options": [
+                "Produit",
+                "Réactif initial",
+                "Changement d'état",
+                "Instrument"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour observer une réaction, on note souvent :",
+              "options": [
+                "Signes visuels, gaz, chaleur",
+                "Uniquement la couleur du bureau",
+                "La marque du stylo",
+                "Le numéro de la salle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La flamme d'une bougie consomme des réactifs présents dans :",
+              "options": [
+                "La cire, la mèche et l'air",
+                "Seulement l'eau du sol",
+                "Le métal du porte-bougie",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels phénomènes impliquent l'air ?",
+              "options": [
+                "Combustion d'une bougie",
+                "Rouille du fer",
+                "Fusion de la glace",
+                "Évaporation sans réaction"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La craie blanche après réaction avec vinaigre :",
+              "options": [
+                "N'est plus là entièrement",
+                "Reste identique en tout",
+                "Devient du fer",
+                "Gèle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Changement d'état : même substance, exemple :",
+              "options": [
+                "Eau → vapeur",
+                "Bois → cendres",
+                "Craie → gaz CO₂ seul",
+                "Fer → rouille"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Réaction chimique : exemple typique en cours :",
+              "options": [
+                "Vinaigre sur craie",
+                "Couper la craie en morceaux",
+                "Peser la craie",
+                "Regarder la craie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les réactifs de la combustion de la cire incluent :",
+              "options": [
+                "Cire et dioxygène",
+                "Seulement de l'azote",
+                "Uniquement de l'eau",
+                "Le verre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Effervescence =",
+              "options": [
+                "Dégagement de gaz en bulles",
+                "Solidification",
+                "Décantation",
+                "Broyage"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Mélange eau + huile sans réaction :",
+              "options": [
+                "Mélange, pas transformation chimique",
+                "Réaction vinaigre-craie",
+                "Combustion",
+                "Oxydation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Produit gazeux de vinaigre et craie, non inflammable comme le méthane scolaire :",
+              "options": [
+                "Dioxyde de carbone",
+                "Dioxygène pur",
+                "Chlorure",
+                "Or"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Allumer une bougie : la flamme apparaît quand :",
+              "options": [
+                "La combustion démarre",
+                "La cire devient glace",
+                "L'air disparaît",
+                "La mèche fond sans réaction"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réactif = substance ; produit = substance :",
+              "options": [
+                "Consommée / formée",
+                "Formée / consommée",
+                "Toujours liquide / gaz",
+                "Identiques"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Signes d'une réaction (pas d'un simple changement d'état) :",
+              "options": [
+                "Dégagement gazeux inattendu",
+                "Changement de couleur permanent",
+                "Liquéfaction de l'air seul",
+                "Fragmentation mécanique"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La cire liquide d'une bougie peut refiger : même substance, donc :",
+              "options": [
+                "Changement d'état",
+                "Réaction chimique",
+                "Combustion",
+                "Corrosion"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans la combustion, l'énergie lumineuse vient :",
+              "options": [
+                "De la réaction chimique",
+                "De la condensation",
+                "Du refroidissement",
+                "De la décantation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Vinaigre : acide ; craie : base solide — réaction avec :",
+              "options": [
+                "Gaz et dissolution de la craie",
+                "Formation de fer",
+                "Gel total",
+                "Aucun signe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "On dit que les réactifs « disparaissent » en partie car ils :",
+              "options": [
+                "Se transforment en produits",
+                "Devient de l'air pur",
+                "Ne changent jamais",
+                "S'évaporent comme l'eau sans réaction"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cuire un œuf : transformation surtout :",
+              "options": [
+                "Chimique",
+                "Changement d'état de l'eau seule",
+                "Mélange sable-eau",
+                "Distillation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bougie : la cire fondue monte par capillarité dans la mèche puis :",
+              "options": [
+                "Peut brûler en flamme",
+                "Devient de la craie",
+                "Gèle instantanément",
+                "Ne réagit jamais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Filtrer un mélange terre-eau sans réaction chimique :",
+              "options": [
+                "Séparation physique",
+                "Transformation chimique",
+                "Combustion",
+                "Oxydation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le mot « produit » en chimie désigne :",
+              "options": [
+                "Ce qui est obtenu après réaction",
+                "Ce qu'on verse au début",
+                "Le laboratoire",
+                "La balance seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Transformation chimique ≠ changement d'état car la substance :",
+              "options": [
+                "Change de nature",
+                "Reste toujours identique",
+                "Ne change jamais de température",
+                "Ne mélange jamais"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Exemples de combustibles vus en classe :",
+              "options": ["Cire de bougie", "Bois", "Glace", "Sel dissous"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La vapeur d'eau au-dessus d'une bougie est surtout un :",
+              "options": [
+                "Produit de combustion",
+                "Réactif de la craie",
+                "Changement d'état du fer",
+                "Mélange huile-eau"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Poudre de craie + vinaigre : réaction plus rapide si :",
+              "options": [
+                "Surface de contact plus grande",
+                "Absence totale de vinaigre",
+                "Pas de mélange",
+                "Verre fermé hermétiquement sans gaz"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Changement d'état réversible exemple :",
+              "options": [
+                "Eau ↔ glace",
+                "Papier ↔ cendres",
+                "Craie ↔ produits acide-base",
+                "Fer ↔ rouille"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réaction chimique irréversible simple :",
+              "options": [
+                "Brûler du papier",
+                "Fondre du beurre",
+                "Geler de l'eau",
+                "Dissoudre du sucre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les bulles de CO₂ montent car le gaz est :",
+              "options": [
+                "Moins dense que le liquide",
+                "Plus dense que la craie solide",
+                "Solide",
+                "Magnétique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réactifs de vinaigre + craie : on les nomme avant :",
+              "options": [
+                "De mélanger",
+                "D'ouvrir la fenêtre seulement",
+                "De peser le bureau",
+                "D'éteindre la lumière"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La combustion est une réaction avec :",
+              "options": [
+                "L'oxygène de l'air",
+                "Seulement de l'azote",
+                "Uniquement de l'eau",
+                "Sans gaz"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Observer la flamme : on voit une zone où se produit :",
+              "options": [
+                "La transformation chimique",
+                "Uniquement fusion sans réaction",
+                "La rouille",
+                "La filtration"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Produits de vinaigre et craie incluent une solution et :",
+              "options": [
+                "Un gaz",
+                "Uniquement la mèche",
+                "De la glace",
+                "Du fer neuf"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Affirmations vraies sur les réactions en 5e :",
+              "options": [
+                "Réactifs → produits",
+                "Une combustion est chimique",
+                "Fondre reste la même substance",
+                "Brûler récupère la matière identique"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Synthèse : vinaigre + craie, les réactifs sont le vinaigre et :",
+              "options": [
+                "La craie",
+                "Le dioxygène seul",
+                "La flamme",
+                "L'eau glacée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Synthèse : bougie allumée, transformation chimique surtout à :",
+              "options": [
+                "La flamme",
+                "La cire froide",
+                "Le support métallique seul",
+                "L'air sans mélange"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Changement d'état : l'eau de la flaque sèche, reste de l'eau en :",
+              "options": ["Vapeur dans l'air", "Cendres", "Craie", "Rouille"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour classer un phénomène, on demande si de nouvelles substances :",
+              "options": [
+                "Apparaissent",
+                "Ne changent jamais",
+                "Sont toujours liquides",
+                "Viennent du stylo"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réaction avec effervescence en TP courant :",
+              "options": [
+                "Vinaigre et craie",
+                "Eau et sable",
+                "Huile et eau",
+                "Sel et eau sans bulles"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combustion bougie : produits gazeux incluent CO₂ et :",
+              "options": ["Vapeur d'eau", "Craie solide", "Fer", "Glace"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les produits peuvent être solides, liquides ou :",
+              "options": [
+                "Gazeux",
+                "Uniquement magnétiques",
+                "Toujours invisibles",
+                "Toujours réactifs initiaux"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Différence clé 5e : même substance ou :",
+              "options": [
+                "Nouvelles substances",
+                "Nouveau numéro de page",
+                "Nouveau bureau",
+                "Nouvelle salle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Unité Réaction : vocabulaire essentiel — réactifs, produits, transformation :",
+              "options": [
+                "Chimique",
+                "Uniquement mécanique",
+                "Sans air",
+                "Sans signes"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Bilan",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un bilan simple de réaction, on indique souvent :",
+              "options": [
+                "Les réactifs",
+                "Les produits",
+                "La couleur des chaises",
+                "Le numéro de téléphone"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un bilan décrit ce qui entre et ce qui :",
+              "options": [
+                "Sort de la réaction",
+                "Reste dans le tiroir",
+                "Décorre la salle",
+                "Ne se passe jamais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Vinaigre + craie : dans le bilan, les réactifs sont vinaigre et :",
+              "options": ["Craie", "Flamme", "Glace", "Sable seul"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un produit gazeux du bilan vinaigre-craie est le :",
+              "options": [
+                "Dioxyde de carbone",
+                "Dioxygène pur",
+                "Or",
+                "Sel non transformé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La masse totale des réactifs et produits (système fermé) reste :",
+              "options": [
+                "La même",
+                "Toujours nulle",
+                "Doublée",
+                "Immesurable en 5e"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si un gaz s'échappe du récipient ouvert, la masse pesée du contenu :",
+              "options": [
+                "Peut diminuer",
+                "Augmente toujours",
+                "Reste strictement identique sans explication",
+                "Devient infinie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combustion bougie : le dioxygène de l'air est un :",
+              "options": [
+                "Réactif",
+                "Produit final",
+                "Instrument",
+                "Change d'état"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combustion : le dioxyde de carbone formé est un :",
+              "options": [
+                "Produit",
+                "Réactif de départ",
+                "Mélange sable-eau",
+                "Givre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bilan qualitatif = on nomme les espèces sans :",
+              "options": [
+                "Coefficients compliqués",
+                "Réactifs",
+                "Produits",
+                "Observation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Flèche dans un schéma bilan signifie :",
+              "options": [
+                "Se transforme en",
+                "Reste identique",
+                "Change d'état seulement",
+                "Disparaît du cours"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Produits possibles de combustion de cire (avec air) :",
+              "options": [
+                "Dioxyde de carbone",
+                "Vapeur d'eau",
+                "Craie intacte",
+                "Glace"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Avant réaction vinaigre-craie, on liste les :",
+              "options": ["Réactifs", "Produits finaux", "Chaises", "Stylos"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Après réaction, la craie n'est plus présente entièrement : elle a été :",
+              "options": [
+                "Consommée en partie",
+                "Uniquement fondue",
+                "Gelée",
+                "Filtrée sans réaction"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Conservation de la masse : l'atome ne :",
+              "options": [
+                "Ne disparaît pas",
+                "Devient toujours or",
+                "Double à chaque réaction",
+                "N'existe pas"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Peser avant/après dans un bécher ouvert avec gaz qui s'échappe : masse du bécher :",
+              "options": [
+                "Peut baisser",
+                "Augmente toujours",
+                "Ne change jamais",
+                "Devient négative"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bilan de la combustion : cire + dioxygène → … + …",
+              "options": [
+                "CO₂ et eau (vapeur)",
+                "Craie et sel",
+                "Glace et sable",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le vinaigre diminue car il est :",
+              "options": [
+                "Réactif consommé",
+                "Produit formé",
+                "Change d'état",
+                "Décantation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Schéma : réactifs à gauche, produits à :",
+              "options": ["Droite", "Plafond", "Cour", "Casier"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un bilan en 5e évite :",
+              "options": [
+                "Équations très équilibrées",
+                "Nommer les réactifs",
+                "Observer les signes",
+                "Utiliser des flèches"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Masse de tout ce qui réagit (système fermé) égale masse de :",
+              "options": [
+                "Tout ce qui est formé",
+                "Seulement le gaz perdu",
+                "Zéro",
+                "La craie seule"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Réactifs dans combustion du bois :",
+              "options": [
+                "Bois",
+                "Dioxygène",
+                "Eau liquide seule",
+                "Sel dissous"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Produit solide visible après combustion papier :",
+              "options": ["Cendres", "Craie", "Glace", "Huile"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Vinaigre-craie : le liquide après réaction contient des :",
+              "options": [
+                "Produits dissous",
+                "Uniquement craie intacte",
+                "Fer",
+                "Givre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour un bilan, compter les réactifs signifie :",
+              "options": [
+                "Les substances de départ",
+                "Les outils",
+                "Les fenêtres",
+                "Les produits finaux seulement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Gaz capturé dans un ballon au-dessus de la réaction : masse totale système :",
+              "options": [
+                "Se conserve",
+                "Disparaît",
+                "Devient nulle",
+                "Ignore la chimie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bougie : masse totale cire + air consommé … masse produits (concept) :",
+              "options": [
+                "Correspond en système fermé",
+                "Toujours différente sans raison",
+                "N'a pas de sens",
+                "Double"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bilan qualitatif vinaigre-craie mentionne un gaz :",
+              "options": ["CO₂", "O₂ pur produit", "N₂ seul", "He"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le signe « + » entre réactifs signifie :",
+              "options": [
+                "Ils sont présents ensemble",
+                "Division",
+                "Changement d'état",
+                "Fin du cours"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si la craie reste en excès, le vinaigre peut être :",
+              "options": [
+                "Entièrement consommé",
+                "Toujours illimité",
+                "Un produit",
+                "Un gaz"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan : l'air apporte l'oxygène, donc l'air participe comme :",
+              "options": [
+                "Source de réactif",
+                "Produit final seul",
+                "Change d'état",
+                "Décoration"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Indicateurs qu'un réactif a été consommé :",
+              "options": [
+                "Diminution de sa masse",
+                "Disparition progressive (craie)",
+                "Couleur du tableau",
+                "Numéro de classe"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Produit formé lors combustion : gaz invisible incluant :",
+              "options": ["CO₂", "Craie", "Poudre de fer", "Glace"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lavoisier (idée 5e) : rien ne se perd, rien ne se …",
+              "options": ["Crée de matière", "Pèse", "Observe", "Nomme"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Bécher ouvert, bulles de CO₂ partent : masse restante dans le bécher :",
+              "options": [
+                "Diminue",
+                "Augmente",
+                "Double",
+                "Inchangeable sans gaz"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réactif « consommé » veut dire :",
+              "options": [
+                "Transformé en produit",
+                "Reste identique",
+                "Devient glace",
+                "Ne participe pas"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bilan combustion : eau produite sous forme de :",
+              "options": ["Vapeur", "Glace", "Craie", "Sable"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vinaigre en excès, craie limitée : réactif limitant souvent :",
+              "options": ["Craie", "Vinaigre", "Air", "Stylo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lister produits = substances :",
+              "options": ["Obtenues", "De départ", "Du mobilier", "Du couloir"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Masse des atomes se redistribue dans les :",
+              "options": ["Produits", "Chaises", "Murs", "Cahiers vides"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Schéma bilan bougie : cire + O₂ → CO₂ + H₂O (vapeur) est :",
+              "options": [
+                "Qualitatif simplifié",
+                "Trop complexe interdit",
+                "Changement d'état seul",
+                "Sans réactifs"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour vérifier conservation masse, on peut :",
+              "options": [
+                "Fermer le système",
+                "Peser avant et après",
+                "Ignorer les gaz",
+                "Ne rien noter"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Réactifs vinaigre-craie : acide acétique (vinaigre) + carbonate (craie) → produits dont :",
+              "options": ["CO₂", "O₂ seul", "Fer", "Sel intact identique"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combustion incomplète peut laisser :",
+              "options": [
+                "Résidus solides",
+                "Craie neuve",
+                "Glace",
+                "Eau sans réaction"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Bilan : flèche unique signifie sens :",
+              "options": [
+                "Réactifs vers produits",
+                "Produits vers réactifs toujours",
+                "Aléatoire",
+                "Sans transformation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Masse totale avant = masse totale après si rien ne :",
+              "options": ["Sort du système", "Existe", "Réagit", "Se pèse"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dioxygène consommé lors combustion est un :",
+              "options": ["Réactif", "Produit", "Solvant sans rôle", "Givre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Après vinaigre-craie, masse du liquide + gaz capturé (fermé) vs masse initiale :",
+              "options": ["Égale", "Toujours moitié", "Nulle", "Sans lien"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Produit « formé » = apparaît :",
+              "options": [
+                "Pendant la réaction",
+                "Avant mélange",
+                "Jamais",
+                "Seulement sur papier"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bilan sans coefficients : niveau :",
+              "options": [
+                "5e",
+                "Terminale seule",
+                "Sans réactifs",
+                "Sans produits"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combustion bougie : masse de la bougie diminue car matière part en :",
+              "options": [
+                "Produits gazeux et énergie",
+                "Glace",
+                "Craie",
+                "Sable"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Éléments d'un schéma de bilan :",
+              "options": [
+                "Noms des réactifs",
+                "Flèche",
+                "Couleur des chaussures",
+                "Heure de la récréation"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Vinaigre-craie : si on pèse seulement le bécher ouvert, on peut croire à une « perte » car :",
+              "options": [
+                "Le gaz est parti",
+                "Les atomes disparaissent",
+                "La gravité annule la chimie",
+                "La craie grossit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réactif gaz dans combustion :",
+              "options": [
+                "Dioxygène",
+                "Dioxyde de carbone au départ",
+                "Craie",
+                "Vinaigre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Produits gazeux combustion : CO₂ et :",
+              "options": ["Vapeur d'eau", "Craie", "Sel pur", "Sable"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Bilan : même nombre d'atomes de carbone côté produits que côté réactifs (idée) :",
+              "options": [
+                "Oui, redistribués",
+                "Non, ils disparaissent",
+                "Uniquement pour l'eau",
+                "Jamais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Craie consommée : masse de craie restante :",
+              "options": [
+                "Diminue",
+                "Double",
+                "Devient infinie",
+                "Ne change jamais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bougie brûle : bilan inclut comburant = :",
+              "options": ["Oxygène", "Azote seul", "Hélium", "Craie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Transformation chimique bilan : réactifs ≠ produits en :",
+              "options": [
+                "Nature",
+                "Couleur du stylo",
+                "Numéro de page",
+                "Heure"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Système ouvert : masse peut varier car échange avec :",
+              "options": ["L'extérieur", "Le passé", "Rien", "Les cahiers"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Écrire le bilan vinaigre + craie → … + … + CO₂, on complète avec des :",
+              "options": [
+                "Produits en solution",
+                "Chaises",
+                "Stylos",
+                "Givres"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Produits de vinaigre et craie (niveau 5e) :",
+              "options": [
+                "Dioxyde de carbone",
+                "Nouvelle solution aqueuse",
+                "Craie identique en totalité",
+                "Glace"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Conservation masse : la matière se :",
+              "options": [
+                "Transforme",
+                "Crée ex nihilo",
+                "Détruit totalement",
+                "Ignore les atomes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combustion : réactif solide/liquide + gaz → produits dont :",
+              "options": [
+                "Gaz et parfois solides",
+                "Uniquement craie",
+                "Eau glacée seule",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Bilan qualitatif bougie : combustible + … → CO₂ + eau",
+              "options": ["Dioxygène", "Craie", "Sable", "Sel"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pesée : balance indique masse ; si gaz échappe, masse affichée :",
+              "options": [
+                "Peut diminuer",
+                "Augmente toujours",
+                "Devient zéro obligatoire",
+                "Ignore le gaz"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réactif limitant : celui qui s'épuise :",
+              "options": [
+                "En premier",
+                "Jamais",
+                "Toujours le verre",
+                "Toujours l'air entier"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bilan : produits à droite car convention :",
+              "options": [
+                "Lecture gauche→droite",
+                "Hasard",
+                "Sans réactifs",
+                "Physique seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vinaigre réagit jusqu'à épuisement si craie en :",
+              "options": ["Grand excès", "Absence", "Glace", "Fer"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Atomes dans craie se retrouvent en partie dans le :",
+              "options": ["Gaz CO₂", "Stylo", "Bureau", "Couloir"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan global : somme masses réactifs = somme masses produits si système :",
+              "options": [
+                "Fermé",
+                "Ouvert sans limite",
+                "Sans balance",
+                "Sans air"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Réactifs consommés lors combustion papier :",
+              "options": ["Papier", "Dioxygène", "Eau de pluie seule", "Craie"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Produit solide cendres = partie des :",
+              "options": [
+                "Produits",
+                "Réactifs initiaux intacts",
+                "Chaises",
+                "Stylos"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bilan vinaigre-craie : le gaz fait partie du :",
+              "options": [
+                "Bilan des produits",
+                "Mobilier",
+                "Change d'état eau",
+                "Décantation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Masse bougie après longue combustion :",
+              "options": [
+                "Diminue",
+                "Augmente",
+                "Double",
+                "Inchangée sans raison"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour inclure le gaz dans la pesée, on utilise un récipient :",
+              "options": [
+                "Fermé",
+                "Sans fond",
+                "Trop petit ouvert",
+                "Sans balance"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bilan : « + » entre produits signifie :",
+              "options": [
+                "Plusieurs substances formées",
+                "Division",
+                "Fusion",
+                "Givre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Oxygène de l'air entre dans le bilan combustion comme :",
+              "options": ["Réactif", "Produit", "Inerte toujours", "Craie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vinaigre-craie : masse totale (fermé) constante car atomes :",
+              "options": ["Conservés", "Créés", "Détruits", "Ignorés"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bilan simplifié 5e : pas besoin de :",
+              "options": [
+                "Équilibrer avec grands coefficients",
+                "Nommer réactifs",
+                "Flèche",
+                "Produits"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combustion : énergie libérée n'annule pas la conservation de la :",
+              "options": ["Masse", "Couleur du stylo", "Heure", "Salle"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Ce qui augmente côté produits (vinaigre-craie) :",
+              "options": [
+                "Quantité de CO₂",
+                "Masse de solution formée",
+                "Masse de craie intacte totale",
+                "Nombre de chaises"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bilan : réactif « en excès » = il reste après :",
+              "options": [
+                "La réaction",
+                "La pesée du stylo",
+                "La récréation",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combustion bougie : produits partent dans l'air, masse bougie :",
+              "options": ["Baisse", "Monte", "Double", "Devient craie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Schéma : craie + vinaigre → sel soluble + eau + …",
+              "options": ["CO₂", "O₂", "Fer", "Glace"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Conservation : total atomes carbone avant = après dans système :",
+              "options": [
+                "Fermé",
+                "Ouvert sans limite",
+                "Sans réaction",
+                "Sans craie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réactifs écrits ensemble signifient qu'ils :",
+              "options": [
+                "Coexistent au départ",
+                "Ne se rencontrent jamais",
+                "Sont produits",
+                "Sont gaz toujours"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bilan combustion : le bois disparaît en partie car transformé en :",
+              "options": ["Gaz et cendres", "Glace", "Craie", "Huile"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Masse perdue du bécher ouvert ≈ masse de :",
+              "options": ["Gaz échappé", "Atomes détruits", "Stylo", "Bureau"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Produit gazeux plus lourd que l'air ? CO₂ peut s'accumuler en bas (démo) mais dans bilan il est :",
+              "options": ["Produit", "Réactif", "Craie", "Stylo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif bilan en 5e : décrire transformation avec réactifs, produits et idée de :",
+              "options": [
+                "Conservation masse",
+                "Couleur chaises",
+                "Numéro téléphone",
+                "Sans observation"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Récap bilan chapitre : vrai ?",
+              "options": [
+                "Réactifs consommés → produits formés",
+                "Masse se conserve (système fermé)",
+                "Brûler ne change pas la matière",
+                "Gaz échappé n'a pas de masse"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Vinaigre + craie → produits + CO₂ ; réactifs : vinaigre et :",
+              "options": ["Craie", "Flamme", "Givre", "Sable seul"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Cire + O₂ → CO₂ + H₂O ; bilan type :",
+              "options": [
+                "Combustion",
+                "Changement d'état seul",
+                "Mélange sable",
+                "Décantation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si tout le gaz reste dans le flacon, pesée avant/après : masse :",
+              "options": [
+                "Quasi identique",
+                "Toujours zéro",
+                "Double",
+                "Sans sens"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Bilan qualitatif : on cite les noms sans :",
+              "options": [
+                "Multiplier par 12 partout",
+                "Flèche",
+                "Réactifs",
+                "Produits"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Unité Bilan : mot clé « conservation » concerne la :",
+              "options": [
+                "Masse",
+                "Couleur stylo",
+                "Heure cours",
+                "Marque cahier"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Produits formés pendant vinaigre-craie : gaz + liquide contenant des :",
+              "options": [
+                "Espèces nouvelles",
+                "Craie identique totale",
+                "Fer",
+                "Glace"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combustion : bilan montre que l'air n'est pas « inutile », il apporte :",
+              "options": ["Oxygène réactif", "Craie", "Sel", "Sable"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Erreur fréquente : croire que les atomes disparaissent ; en réalité ils :",
+              "options": [
+                "Se réorganisent",
+                "Devient stylo",
+                "S'évaporent comme eau sans réaction",
+                "Ne participent pas"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Chapitre Transformations chimiques : u2 Bilan résume réactifs, produits et :",
+              "options": [
+                "Conservation de la masse",
+                "Couleur des murs",
+                "Sans flamme",
+                "Sans gaz"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

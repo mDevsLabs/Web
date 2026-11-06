@@ -1,0 +1,2273 @@
+{
+  "id": "5e-svt-04",
+  "year": "5e",
+  "subject": "svt",
+  "title": "La cellule et l'organisme",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Organisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le corps humain est organisé à partir de quelles idées correctes ?",
+              "options": [
+                "Il est fait de cellules",
+                "Il est entièrement fait de métal",
+                "Les organes regroupent des cellules",
+                "Il n'a aucune organisation"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Cellules puis organes puis organisme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La plus petite unité de base du corps vivant est :",
+              "options": [
+                "La cellule",
+                "La planète",
+                "Le kilogramme",
+                "Le nuage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cellule est l'unité fondamentale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un organe est :",
+              "options": [
+                "Un ensemble de cellules pour une fonction",
+                "Une goutte d'eau",
+                "Du plastique",
+                "Un astéroïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cœur, poumons, estomac sont des organes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le cœur est :",
+              "options": ["Un organe", "Un minéral", "Un gaz", "Une étoile"],
+              "correctAnswers": [0],
+              "explanation": "Il bat et fait circuler le sang."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les poumons se trouvent :",
+              "options": [
+                "Dans le thorax",
+                "Dans les dents",
+                "Sous les ongles",
+                "Dans les cheveux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cage thoracique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'estomac appartient au système :",
+              "options": ["Digestif", "Solaire", "Lunaire", "Volcanique"],
+              "correctAnswers": [0],
+              "explanation": "Il traite les aliments."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour voir des cellules :",
+              "options": [
+                "Un microscope",
+                "Un marteau",
+                "Une perceuse",
+                "Un sifflet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trop petites pour l'œil nu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un organisme, c'est :",
+              "options": [
+                "L'être vivant entier",
+                "Un grain de sel",
+                "Un fil",
+                "Une ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corps complet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La peau :",
+              "options": [
+                "Protège le corps",
+                "Est une roche",
+                "Sans cellules",
+                "Liquide pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organe de protection."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cellules du muscle et de l'os :",
+              "options": [
+                "Rôles différents",
+                "Toujours identiques",
+                "Inexistantes",
+                "Du sable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spécialisation."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont des organes du corps ?",
+              "options": ["Le cœur", "Les poumons", "La Lune", "L'estomac"],
+              "correctAnswers": [0, 1],
+              "explanation": "Cœur et poumons ; l'estomac aussi mais deux réponses suffisent ici."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le sang circule grâce au :",
+              "options": ["Cœur", "Cheveu", "Ongle", "Cil"],
+              "correctAnswers": [0],
+              "explanation": "Pompe sanguine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le squelette :",
+              "options": [
+                "Soutient le corps",
+                "Remplace le cerveau",
+                "Est un liquide",
+                "Sans cellules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Os et cartilages."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le cerveau est dans le :",
+              "options": [
+                "Système nerveux",
+                "Système solaire",
+                "Système lunaire",
+                "Système rocheux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coordination du corps."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les reins filtrent :",
+              "options": ["Le sang", "L'air", "La lumière", "Le bruit"],
+              "correctAnswers": [0],
+              "explanation": "Appareil urinaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'intestin grêle :",
+              "options": [
+                "Absorbe les nutriments",
+                "Respire",
+                "Entend",
+                "Voit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après l'estomac."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La bouche commence :",
+              "options": [
+                "La digestion",
+                "La photosynthèse",
+                "L'hibernation",
+                "La fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mâcher et salive."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La peau est :",
+              "options": ["Un organe", "Une planète", "Inexistante", "Verre"],
+              "correctAnswers": [0],
+              "explanation": "Fait de cellules."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Du plus petit au plus grand :",
+              "options": [
+                "Cellules, organes, organisme",
+                "Organisme seul",
+                "Rien",
+                "Sable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveaux d'organisation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le foie :",
+              "options": [
+                "Traite des substances du sang",
+                "Pompe l'air",
+                "Remplace poumons",
+                "Os du bras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organe digestif et autre."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vrai sur les cellules ?",
+              "options": [
+                "Invisibles à l'œil nu en général",
+                "Composent les organes",
+                "Sont des pierres",
+                "N'existent que dans l'eau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Microscopiques et bâtissent les organes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une cellule humaine est :",
+              "options": [
+                "Microscopique",
+                "Comme un ballon",
+                "Comme une maison",
+                "Comme un fruit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Microscope nécessaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Muscle = cellules :",
+              "options": ["Musculaires", "De roche", "Plastique", "Air pur"],
+              "correctAnswers": [0],
+              "explanation": "Contraction."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Os = cellules :",
+              "options": ["Osseuses", "De feu", "Glace", "Métal"],
+              "correctAnswers": [0],
+              "explanation": "Tissu vivant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dents :",
+              "options": [
+                "Broyent les aliments",
+                "Pompent sang",
+                "Filtrent air",
+                "Font O2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Début digestion."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Trachée mène air vers :",
+              "options": ["Poumons", "Estomac", "Foie", "Reins"],
+              "correctAnswers": [0],
+              "explanation": "Voie aérienne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Diaphragme aide à :",
+              "options": [
+                "Respirer",
+                "Digérer os",
+                "Pousser Terre",
+                "Filtrer urine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Muscle respiratoire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vaisseaux transportent :",
+              "options": ["Sang", "Pluie", "Lumière", "Son"],
+              "correctAnswers": [0],
+              "explanation": "Artères et veines."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Cellules = briques de :",
+              "options": ["Le corps", "La Lune", "La rue", "Le toit seul"],
+              "correctAnswers": [0],
+              "explanation": "Image pédagogique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Chaque organe a :",
+              "options": [
+                "Une fonction",
+                "Zéro cellule",
+                "Forme de caillou",
+                "Aucun rôle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spécialisation."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Appartient au corps humain ?",
+              "options": ["Organes", "Cellules", "Cratères lunaires", "Sang"],
+              "correctAnswers": [0, 1],
+              "explanation": "Organes et cellules ; le sang aussi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Langue :",
+              "options": [
+                "Goût et avaler",
+                "Pompe cœur",
+                "Filtre urine",
+                "Fait os"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Digestion."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Œsophage relie :",
+              "options": [
+                "Bouche et estomac",
+                "Poumons et cœur",
+                "Reins et peau",
+                "Yeux et oreilles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tube digestif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Globules rouges dans :",
+              "options": ["Sang", "Air poumons", "Cheveux", "Ongles"],
+              "correctAnswers": [0],
+              "explanation": "Transport de gaz."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Organe =",
+              "options": [
+                "Millions de cellules",
+                "Une cellule toujours",
+                "Sans cellule",
+                "Air seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multicellulaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cage thoracique protège :",
+              "options": ["Cœur et poumons", "Estomac", "Cheveux", "Ongles"],
+              "correctAnswers": [0],
+              "explanation": "Côtes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Abdomen = surtout :",
+              "options": ["Digestion", "Respiration", "Audition", "Vision"],
+              "correctAnswers": [0],
+              "explanation": "Estomac, intestins."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Nutriments aux cellules via :",
+              "options": ["Sang", "Nuages", "Miroirs", "Cartes"],
+              "correctAnswers": [0],
+              "explanation": "Circulation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Organisation permet :",
+              "options": [
+                "Rôles différents",
+                "Rien ne marche",
+                "Corps roche",
+                "Sans cellules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fonctionnement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pancréas :",
+              "options": ["Sucs digestifs", "Air poumons", "Os", "Lumière"],
+              "correctAnswers": [0],
+              "explanation": "Aide digestion."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Cœur et poumons :",
+              "options": [
+                "Sont des organes",
+                "Contiennent des cellules",
+                "Sont plastique",
+                "Immobiles toujours"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Organes vivants."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Battements cœur :",
+              "options": [
+                "Poussent sang",
+                "Arrêtent digestion",
+                "Font lumière",
+                "Remplacent peau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Circulation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Poumons échangent avec :",
+              "options": ["Air", "Roche", "Pétrole", "Bois"],
+              "correctAnswers": [0],
+              "explanation": "Respiration."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Estomac secrète :",
+              "options": ["Suc digestif", "Air", "Sang", "Lumière"],
+              "correctAnswers": [0],
+              "explanation": "Digestion chimique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Cellules partout identiques ?",
+              "options": ["Non", "Oui", "Aucune", "Dans chaussures"],
+              "correctAnswers": [0],
+              "explanation": "Spécialisation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Nombre de cellules :",
+              "options": ["Très grand", "Zéro", "Une seule", "Air seul"],
+              "correctAnswers": [0],
+              "explanation": "Milliards."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Peau au microscope :",
+              "options": ["Cellules", "Planètes", "Vide", "Bois"],
+              "correctAnswers": [0],
+              "explanation": "Tissu cellulaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Yeux :",
+              "options": ["Voir", "Pomper sang", "Digérer", "Filtrer urine"],
+              "correctAnswers": [0],
+              "explanation": "Organe des sens."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Corps entier =",
+              "options": ["Organisme", "Atome", "Galaxie", "Eau seule"],
+              "correctAnswers": [0],
+              "explanation": "Individu vivant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans cellules :",
+              "options": [
+                "Pas de vie normale",
+                "Plus fort",
+                "Sans organes",
+                "Sans sang"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indispensables."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Circulation du sang :",
+              "options": ["Cœur", "Vaisseaux", "Cheveux", "Poumons seuls"],
+              "correctAnswers": [0, 1],
+              "explanation": "Cœur + vaisseaux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Artères et veines :",
+              "options": ["Vaisseaux", "Os crâne", "Dents", "Jambes seules"],
+              "correctAnswers": [0],
+              "explanation": "Transport sang."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Moelle osseuse forme cellules du :",
+              "options": ["Sang", "Soleil", "Plastique", "Verre"],
+              "correctAnswers": [0],
+              "explanation": "Simplifié 5e."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Cartilage nez :",
+              "options": [
+                "Tissu corps",
+                "Planète",
+                "Liquide magique",
+                "Organe qui bat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souple."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Bras = cellules :",
+              "options": ["Musculaires", "Sable", "Air", "Métal"],
+              "correctAnswers": [0],
+              "explanation": "Mouvement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Estomac forme :",
+              "options": ["Poche", "Cube", "Triangle", "Ligne"],
+              "correctAnswers": [0],
+              "explanation": "Sac musculaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Gros intestin récupère :",
+              "options": ["Eau", "O2 pur", "Lumière", "Son"],
+              "correctAnswers": [0],
+              "explanation": "Avant selles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Narines :",
+              "options": ["Entrent air", "Entrent sang", "Os", "Dents"],
+              "correctAnswers": [0],
+              "explanation": "Voies aériennes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Organe vs cellule :",
+              "options": [
+                "Organe regroupe cellules",
+                "Cellule plus grosse",
+                "Sans fonction",
+                "Cellule morte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveaux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Vessie stocke :",
+              "options": ["Urine", "Air", "Lait", "Aliments"],
+              "correctAnswers": [0],
+              "explanation": "Urinaire."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Organes digestifs :",
+              "options": ["Estomac", "Intestin", "Poumons seuls", "Rien"],
+              "correctAnswers": [0, 1],
+              "explanation": "Tube digestif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Salive :",
+              "options": [
+                "Humecte et digère début",
+                "Pompe sang",
+                "Remplace poumons",
+                "Fait os"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bouche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Après estomac vers :",
+              "options": ["Intestin grêle", "Oreilles", "Yeux", "Cheveux"],
+              "correctAnswers": [0],
+              "explanation": "Suite digestion."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Cœur taille :",
+              "options": ["Poing", "Bus", "Montagne", "Riz seul"],
+              "correctAnswers": [0],
+              "explanation": "Repère."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Poumons humain :",
+              "options": ["Deux", "Un", "Zéro", "Cinq"],
+              "correctAnswers": [0],
+              "explanation": "Droit et gauche."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rate est :",
+              "options": ["Organe", "Roche", "Nuage", "Cheveu"],
+              "correctAnswers": [0],
+              "explanation": "Défense simplifiée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Muqueuse estomac :",
+              "options": [
+                "Protège et sécrète",
+                "Pierre",
+                "Morte",
+                "Comme cheveu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Revêtement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sang :",
+              "options": [
+                "Liquide avec cellules",
+                "Marbre",
+                "Absent",
+                "Air seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plasma + cellules."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Crâne protège :",
+              "options": ["Cerveau", "Estomac", "Poumons", "Reins"],
+              "correctAnswers": [0],
+              "explanation": "Boîte osseuse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cellules ont besoin :",
+              "options": ["Eau et nutriments", "Silence", "Essence", "Ciment"],
+              "correctAnswers": [0],
+              "explanation": "Via sang."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Appareils du corps :",
+              "options": ["Digestif", "Respiratoire", "Lunaire", "Solaire"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ensembles d'organes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Respiratoire =",
+              "options": ["Poumons trachée", "Estomac foie", "Dents", "Reins"],
+              "correctAnswers": [0],
+              "explanation": "Air."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Digestif commence :",
+              "options": ["Bouche", "Pieds", "Coudes", "Crâne"],
+              "correctAnswers": [0],
+              "explanation": "Ingestion."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Enveloppe cellule :",
+              "options": ["Membrane", "Noix", "Tortue", "Fer"],
+              "correctAnswers": [0],
+              "explanation": "Limite simple."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Centre cellule :",
+              "options": ["Noyau", "Volcan", "Roue", "Diesel"],
+              "correctAnswers": [0],
+              "explanation": "Sans détail lycée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Partie liquide sang :",
+              "options": ["Plasma", "Béton", "Huile", "Sable"],
+              "correctAnswers": [0],
+              "explanation": "Transport."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Capillaires :",
+              "options": ["Fins vaisseaux", "Os", "Dents", "Poumons"],
+              "correctAnswers": [0],
+              "explanation": "Contact cellules."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vessie dans :",
+              "options": ["Bas-ventre", "Crâne", "Poumons", "Oreilles"],
+              "correctAnswers": [0],
+              "explanation": "Urinaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Coopération :",
+              "options": [
+                "Cœur et vaisseaux",
+                "Estomac Lune",
+                "Poumons roche",
+                "Reins plastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organes liés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cellules d'un organe :",
+              "options": [
+                "Même fonction organe",
+                "Sans lien",
+                "De Mars",
+                "Minéraux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spécialisation."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans le thorax :",
+              "options": ["Cœur", "Poumons", "Estomac surtout", "Reins"],
+              "correctAnswers": [0, 1],
+              "explanation": "Poitrine."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Abdomen : estomac",
+              "options": ["Oui", "Non jamais", "C'est crâne", "C'est œil"],
+              "correctAnswers": [0],
+              "explanation": "Ventre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Côtes :",
+              "options": ["Os", "Liquide", "Gaz", "Plantes"],
+              "correctAnswers": [0],
+              "explanation": "Protection."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Coupure peau guérit :",
+              "options": [
+                "Cellules se renouvellent",
+                "Sans cellules",
+                "Cœur arrête",
+                "Poumons partent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peau vivante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tendon relie :",
+              "options": [
+                "Muscle et os",
+                "Poumon estomac",
+                "Dent cheveu",
+                "Lune Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mouvement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Colonne vertébrale :",
+              "options": [
+                "Protège moelle",
+                "Pompe air",
+                "Digère",
+                "Remplace reins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Squelette."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Cellules nerveuses :",
+              "options": ["Cerveau nerfs", "Cheveux morts", "Ongles", "Roche"],
+              "correctAnswers": [0],
+              "explanation": "Nerveux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Estomac après :",
+              "options": ["Œsophage", "Poumons", "Yeux", "Oreilles"],
+              "correctAnswers": [0],
+              "explanation": "Ordre digestif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Goutte sang microscope :",
+              "options": ["Cellules", "Rien", "Étoiles", "Bois"],
+              "correctAnswers": [0],
+              "explanation": "Globules."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Corps est :",
+              "options": [
+                "Organisé vivant",
+                "Caillou",
+                "Sans organes",
+                "Sans cellules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organisation."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Organisation 5e :",
+              "options": [
+                "Cellules forment organes",
+                "Organisme = corps entier",
+                "Organes sans cellules",
+                "Organes remplacent cellules"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "De la cellule à l'organisme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Cœur avec :",
+              "options": [
+                "Poumons",
+                "Dents mâcher",
+                "Cheveux respirer",
+                "Ongles digérer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Circulation-respiration."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Estomac avec :",
+              "options": [
+                "Intestin foie",
+                "Poumons seuls",
+                "Crâne",
+                "Cœur digère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne digestive."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Biopsie :",
+              "options": [
+                "Prélèvement tissu",
+                "Mars",
+                "Respiration",
+                "Battement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Observer cellules."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Organes protégés par :",
+              "options": ["Os muscles peau", "Rien", "Air", "Plastique"],
+              "correctAnswers": [0],
+              "explanation": "Enveloppes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Taille adulte :",
+              "options": [
+                "Cellules se multiplient",
+                "Sans cellules",
+                "Roche",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Croissance."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Poumons spongieux :",
+              "options": [
+                "Échanges air",
+                "Stock aliments",
+                "Pompe sang",
+                "Fait os"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respiration."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Organes nourris par :",
+              "options": ["Sang", "Lumière seule", "Vent", "Cartes"],
+              "correctAnswers": [0],
+              "explanation": "O2 nutriments."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Modèle organes aide :",
+              "options": [
+                "Comprendre fonctions",
+                "Oublier cellule",
+                "Nier respiration",
+                "Ignorer digestion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pédagogie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cellule explique :",
+              "options": [
+                "Corps vivant",
+                "Terre plate",
+                "Métal pousse",
+                "Eau sèche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unité vivante."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Fonctions",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Respiration corporelle :",
+              "options": [
+                "Prend O2 dans l'air",
+                "Rejette CO2",
+                "Fabrique roches",
+                "Digère pain seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Échanges poumons."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Air entre par :",
+              "options": ["Nez ou bouche", "Cheveux", "Os", "Ongles"],
+              "correctAnswers": [0],
+              "explanation": "Voies aériennes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "O2 poumons vers :",
+              "options": ["Sang", "Dents", "Cheveux", "Bois"],
+              "correctAnswers": [0],
+              "explanation": "Échange."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Cœur envoie sang :",
+              "options": [
+                "Partout",
+                "Cheveux seuls",
+                "Estomac sans retour",
+                "Nulle part"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Circulation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Digestion donne :",
+              "options": ["Nutriments", "Roche", "Plastique", "Air pur"],
+              "correctAnswers": [0],
+              "explanation": "Pour cellules."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Mâcher aide :",
+              "options": ["Digestion", "Poumons", "Crâne seul", "Vue"],
+              "correctAnswers": [0],
+              "explanation": "Mécanique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Estomac mélange avec :",
+              "options": [
+                "Suc gastrique",
+                "Air poumons",
+                "Sang direct",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chimie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Nutriments passent dans :",
+              "options": ["Sang", "Poumons", "Cheveux", "Ciel"],
+              "correctAnswers": [0],
+              "explanation": "Transport."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Inspirer expirer =",
+              "options": [
+                "Cycle respiratoire",
+                "Digestion complète",
+                "Circulation arrêt",
+                "Mastication"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mouvement air."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans O2 cellules :",
+              "options": [
+                "Mal fonctionnent",
+                "Deviennent roches",
+                "Sans sang",
+                "Digèrent mieux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Besoin vital."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Fonction estomac :",
+              "options": [
+                "Mélanger aliments",
+                "Secréter suc",
+                "Pomper sang vers poumons",
+                "Produire urine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mécanique et chimique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "CO2 quitte le corps par :",
+              "options": ["Expiration", "Cheveux", "Os", "Ongles"],
+              "correctAnswers": [0],
+              "explanation": "Air expiré."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Cœur côté gauche envoie sang vers :",
+              "options": [
+                "Corps via aorte",
+                "Estomac seul",
+                "Dents",
+                "Peau morte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simplifié 5e."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Aliments solides deviennent dans estomac :",
+              "options": ["Pâte liquide", "Air", "Os", "Plastique"],
+              "correctAnswers": [0],
+              "explanation": "Chyme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sport augmente :",
+              "options": [
+                "Fréquence respiratoire",
+                "Taille estomac vide",
+                "Nombre d'os",
+                "Couleur cheveux instant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus d'air."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Eau boire :",
+              "options": [
+                "Absorbée surtout intestin",
+                "Respirée poumons",
+                "Digérée dents",
+                "Filtrée cheveux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hydratation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sang oxygéné va des poumons vers :",
+              "options": ["Cœur puis corps", "Estomac", "Dents", "Ongles"],
+              "correctAnswers": [0],
+              "explanation": "Circulation pulmonaire simplifiée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Fibres alimentaires aident :",
+              "options": [
+                "Transit intestinal",
+                "Respiration",
+                "Battements",
+                "Vue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Digestion."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bouchée trop grosse :",
+              "options": [
+                "Mâcher plus",
+                "Respirer moins",
+                "Arrêter cœur",
+                "Fermer poumons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité digestion."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Nutriments utilisés par :",
+              "options": ["Cellules", "Roche", "Plastique", "Lune"],
+              "correctAnswers": [0],
+              "explanation": "Énergie croissance."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Poumons servent à :",
+              "options": [
+                "Échanger gaz avec air",
+                "Apporter O2 au sang",
+                "Fabriquer dents",
+                "Digérer viande seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Respiration."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ordre air :",
+              "options": [
+                "Nez trachée poumons",
+                "Poumons estomac",
+                "Estomac nez",
+                "Dents poumons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trajet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ordre aliment :",
+              "options": [
+                "Bouche estomac intestin",
+                "Intestin bouche",
+                "Poumons bouche",
+                "Cœur bouche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tube digestif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pouls =",
+              "options": ["Battements cœur", "Mâcher", "Avaler", "Expirer"],
+              "correctAnswers": [0],
+              "explanation": "Fréquence cardiaque."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Glucose entre cellules via :",
+              "options": ["Sang", "Air", "Cheveux", "Lumière"],
+              "correctAnswers": [0],
+              "explanation": "Sucre nutrient."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Après effort, on :",
+              "options": [
+                "Respire plus fort",
+                "Ne respire plus",
+                "Digère plus lent toujours",
+                "Arrête cœur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Besoin O2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Foie stocke parfois :",
+              "options": ["Énergie sucre", "Air pur", "Os", "Dents"],
+              "correctAnswers": [0],
+              "explanation": "Réserve simplifiée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vomir si estomac irrité :",
+              "options": [
+                "Rejette contenu",
+                "Améliore respiration",
+                "Pompe sang",
+                "Ferme poumons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Reins éliminent déchets dans :",
+              "options": ["Urine", "Air", "Salive", "Cheveux"],
+              "correctAnswers": [0],
+              "explanation": "Filtration sang."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Digestion + respiration =",
+              "options": [
+                "Fonctions vitales",
+                "Inutiles",
+                "Remplacent cellules",
+                "Arrêtent sang"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maintien vie."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Cœur fonction :",
+              "options": [
+                "Pomper sang",
+                "Relier poumons estomac",
+                "Battre régulièrement",
+                "Fabriquer salive"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Pompe musculaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Veines ramènent sang vers :",
+              "options": ["Cœur", "Poumons seuls", "Dents", "Cheveux"],
+              "correctAnswers": [0],
+              "explanation": "Retour veineux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Artères partent du :",
+              "options": ["Cœur", "Estomac", "Peau", "Ongle"],
+              "correctAnswers": [0],
+              "explanation": "Distribution."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Bile aide digestions des :",
+              "options": ["Graisses", "Roche", "Air", "Bois"],
+              "correctAnswers": [0],
+              "explanation": "Foie vésicule simplifié."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Apnée =",
+              "options": [
+                "Retenir respiration",
+                "Mâcher vite",
+                "Avaler air",
+                "Digérer os"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pause respiration."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Faim = signal :",
+              "options": [
+                "Besoin énergie",
+                "Besoin dormir poumons",
+                "Arrêt cœur",
+                "Fermer intestin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alimentation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sang vers muscles apporte :",
+              "options": ["O2 et nutriments", "Roche", "Plastique", "CO2 seul"],
+              "correctAnswers": [0],
+              "explanation": "Effort."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Intestin villosités :",
+              "options": [
+                "Surface absorption",
+                "Pompent air",
+                "Battent",
+                "Produisent urine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nutriments."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Toux expulse :",
+              "options": ["Mucus poussière", "Aliments", "Sang", "Os"],
+              "correctAnswers": [0],
+              "explanation": "Nettoyage airways."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Éternuement protège :",
+              "options": ["Voies nasales", "Estomac", "Cœur", "Reins"],
+              "correctAnswers": [0],
+              "explanation": "Reflexe."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Digestion inclut :",
+              "options": [
+                "Transformation aliments",
+                "Absorption nutriments",
+                "Respiration poumons",
+                "Pompe cœur seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chimique et absorption."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Enzymes :",
+              "options": [
+                "Accélèrent digestion",
+                "Pompent sang",
+                "Font os",
+                "Produisent air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Catalyse simplifiée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Proteins digérées d'abord :",
+              "options": ["Estomac intestin", "Poumons", "Peau", "Cheveux"],
+              "correctAnswers": [0],
+              "explanation": "Suc gastrique puis suite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "O2 utilisé cellules pour :",
+              "options": [
+                "Libérer énergie",
+                "Fabriquer roche",
+                "Remplacer eau",
+                "Stopper sang"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respiration cellulaire 5e."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Alcool estomac :",
+              "options": [
+                "Absorbé partiellement vite",
+                "Respiré poumons direct",
+                "Stocké os",
+                "Filtré cheveux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attention santé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Selles =",
+              "options": [
+                "Déchets solides digestion",
+                "Air expiré",
+                "Sueur seule",
+                "Sang"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Excrétion digestive."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sueur aide :",
+              "options": ["Refroidir corps", "Digérer", "Respirer", "Pomper"],
+              "correctAnswers": [0],
+              "explanation": "Thermorégulation simple."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Bronches mènent air :",
+              "options": ["Dans poumons", "Estomac", "Foie", "Reins"],
+              "correctAnswers": [0],
+              "explanation": "Arborescence."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mauvaise alimentation peut :",
+              "options": [
+                "Gêner digestion",
+                "Renforcer poumons magiquement",
+                "Arrêter cellules",
+                "Créer os instant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équilibre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sang relie :",
+              "options": [
+                "Digestion et respiration aux cellules",
+                "Lune Soleil",
+                "Rien",
+                "Plastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transport."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Expirer contient plus :",
+              "options": [
+                "CO2",
+                "Moins O2 qu'air inspiré",
+                "Plus O2 qu'inspiré",
+                "Rien"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Air expiré riche CO2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Inspirer contient surtout :",
+              "options": ["O2 et azote", "Roche", "Plastique", "Sang"],
+              "correctAnswers": [0],
+              "explanation": "Air."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Estomac vide bruit :",
+              "options": [
+                "Normal parfois",
+                "Signe poumons",
+                "Arrêt cœur",
+                "Fin digestion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Muscles estomac."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lait digestion :",
+              "options": [
+                "Lactose intestin",
+                "Poumons",
+                "Dents seules",
+                "Cheveux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intolérance possible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Marche rapide :",
+              "options": [
+                "Cœur plus rapide",
+                "Estomac arrête",
+                "Poumons ferment",
+                "Sans O2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effort."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Vitamine C fruits :",
+              "options": ["Nutriment", "Air", "CO2", "Os"],
+              "correctAnswers": [0],
+              "explanation": "Alimentation variée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Déchets CO2 transportés par :",
+              "options": ["Sang vers poumons", "Cheveux", "Os", "Dents"],
+              "correctAnswers": [0],
+              "explanation": "Élimination."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Médicament comprimé avalé :",
+              "options": [
+                "Dissous estomac intestin",
+                "Respiré",
+                "Cheveux",
+                "Ongles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Absorption."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Respiration nasale filtre :",
+              "options": ["Poussière", "Aliments", "Sang", "Os"],
+              "correctAnswers": [0],
+              "explanation": "Muqueuses."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cellule muscle contracte avec :",
+              "options": ["Énergie O2 nutriments", "Roche", "Silence", "Carte"],
+              "correctAnswers": [0],
+              "explanation": "Fonction."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Fonctions organes cités :",
+              "options": [
+                "Cœur circulation",
+                "Poumons respiration",
+                "Estomac digestion",
+                "Lune gravité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Trois fonctions clés ; estomac aussi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Palpitations après peur :",
+              "options": [
+                "Cœur plus vite",
+                "Estomac digère mieux",
+                "Poumons arrêt",
+                "Sans sang"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adrénaline simplifiée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Nourriture trop grasse :",
+              "options": [
+                "Estomac foie travaillent",
+                "Poumons digèrent",
+                "Cœur mâche",
+                "Reins respirent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Digestion graisses."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Anémie = moins :",
+              "options": ["Globules rouges O2", "Dents", "Cheveux", "Ongles"],
+              "correctAnswers": [0],
+              "explanation": "Fatigue possible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Hydrater aide :",
+              "options": [
+                "Sang liquide",
+                "Respiration stop",
+                "Digestion stop",
+                "Cellules disparaissent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau corps."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Béance bloque :",
+              "options": ["Partie air", "Digestion totale", "Cœur", "Reins"],
+              "correctAnswers": [0],
+              "explanation": "Secours respiration bouche."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Régurgitation bébé :",
+              "options": ["Estomac immature", "Poumons", "Cœur", "Os"],
+              "correctAnswers": [0],
+              "explanation": "Normal parfois."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Jejun =",
+              "options": [
+                "Sans manger",
+                "Sans respirer",
+                "Sans cœur",
+                "Sans cellules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Estomac vide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Oxygène montagne rare :",
+              "options": [
+                "Respiration plus difficile",
+                "Digestion plus facile",
+                "Cœur arrête",
+                "Estomac grandit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Air rarefié."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Équilibre repas :",
+              "options": [
+                "Varier aliments",
+                "Uniquement sucre",
+                "Rien boire",
+                "Stopper respiration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Santé."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Système digestif produit :",
+              "options": [
+                "Énergie cellules",
+                "Déchets solides",
+                "Air pur poumons",
+                "Roche"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nutriments et selles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Système respiratoire échange :",
+              "options": [
+                "O2 et CO2",
+                "Pain et eau",
+                "Sang et os",
+                "Dents langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gaz."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Cœur repos bat :",
+              "options": [
+                "Régulièrement",
+                "Une fois jour",
+                "Jamais",
+                "Seulement manger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Menthe après repas :",
+              "options": [
+                "Fresheur bouche",
+                "Remplace digestion",
+                "Stoppe cœur",
+                "Ferme poumons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas remède magique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Glucides pain :",
+              "options": ["Énergie rapide", "O2 pur", "CO2 seul", "Os"],
+              "correctAnswers": [0],
+              "explanation": "Nutriments."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Apnée sommeil :",
+              "options": [
+                "Pauses respiration",
+                "Mâche nuit",
+                "Digère nuit stop",
+                "Cœur arrêt total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pathologie mention légère."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Rugissement estomac :",
+              "options": ["Muscles gaz", "Poumons", "Cœur", "Reins"],
+              "correctAnswers": [0],
+              "explanation": "Normal."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Plante ne respire pas comme nous :",
+              "options": [
+                "Photosynthèse aussi",
+                "Identique",
+                "Sans échange",
+                "Sans cellules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraste cours."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Poison estomac :",
+              "options": [
+                "Vomissement protection",
+                "Améliore O2",
+                "Renforce cœur",
+                "Ferme poumons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réflexe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sang capillaires :",
+              "options": [
+                "Livre O2 cellules",
+                "Digère",
+                "Respire",
+                "Produit bile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fin transport."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Après sport :",
+              "options": [
+                "Fréquence cardiaque monte",
+                "Respiration accélère",
+                "Estomac digère pierre",
+                "Poumons disparaissent"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Adaptation effort."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Échauffement :",
+              "options": [
+                "Prépare muscles respiration",
+                "Stoppe cœur",
+                "Ferme estomac",
+                "Sans O2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Progressif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Crampes effort parfois :",
+              "options": [
+                "Manque eau O2 muscle",
+                "Excès poumons",
+                "Trop dormir",
+                "Sans cellules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simplifié."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Repas copieux avant course :",
+              "options": [
+                "Gêne digestion respiration",
+                "Améliore toujours",
+                "Arrête cœur",
+                "Ferme poumons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Timing repas."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Alcool tabac :",
+              "options": [
+                "Nuisent poumons circulation",
+                "Renforcent cœur",
+                "Améliorent cellules",
+                "Obligatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévention santé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sommeil répare :",
+              "options": [
+                "Organes cellules",
+                "Remplace respiration",
+                "Supprime digestion",
+                "Enlève sang"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repos."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Fièvre :",
+              "options": [
+                "Corps combat microbe",
+                "Stoppe respiration",
+                "Digère plus",
+                "Cœur arrête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Immunité simple."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Antibiotique estomac :",
+              "options": [
+                "Peut perturber flore",
+                "Remplace poumons",
+                "Fait os",
+                "Produit O2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équilibre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Yoga respiration :",
+              "options": [
+                "Calme rythme",
+                "Digère os",
+                "Pompe sang moins toujours mal",
+                "Ferme cellules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrôle souffle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cellules intestin renouvellent :",
+              "options": ["Rapidement", "Jamais", "En roche", "Sans O2"],
+              "correctAnswers": [0],
+              "explanation": "Tissu actif."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Chapitre cellule organisme :",
+              "options": [
+                "Organisation cellules organes",
+                "Fonctions respiration digestion",
+                "Terre plate",
+                "Métal vivant"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux unités u1 u2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sans digestion :",
+              "options": [
+                "Cellules manquent nutriments",
+                "Plus O2",
+                "Meilleur sang",
+                "Poumons plus grands"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apport énergie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sans respiration :",
+              "options": [
+                "Cellules manquent O2",
+                "Meilleure digestion",
+                "Cœur inutile",
+                "Estomac grandit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gaz vital."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Cœur poumons estomac :",
+              "options": [
+                "Travaillent ensemble",
+                "Isolés inutiles",
+                "Remplacent cellules",
+                "Sans fonction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organisme intégré."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Microscope cellule + organes :",
+              "options": [
+                "Deux échelles liées",
+                "Sans lien",
+                "Organes fictifs",
+                "Cellules roche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organisation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Santé =",
+              "options": [
+                "Bon fonctionnement organes",
+                "Arrêt respiration",
+                "Stop digestion",
+                "Zero cellule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ensemble."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bilan : sang transporte :",
+              "options": ["O2 et nutriments", "Roche", "Plastique", "Lumière"],
+              "correctAnswers": [0],
+              "explanation": "Lien fonctions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Bilan : estomac prépare :",
+              "options": [
+                "Nutriments sang",
+                "Air poumons",
+                "Urine reins",
+                "Os crâne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Digestion."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bilan : poumons apportent :",
+              "options": ["O2 sang", "Pain estomac", "Eau seule", "Selles"],
+              "correctAnswers": [0],
+              "explanation": "Respiration."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Message clé 5e :",
+              "options": [
+                "Corps cellules organes fonctions",
+                "Corps sans organisation",
+                "Organes sans cellules",
+                "Vivant = métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse chapitre."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

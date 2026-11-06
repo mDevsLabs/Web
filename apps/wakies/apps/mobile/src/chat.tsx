@@ -486,7 +486,10 @@ export function ChatScreen({
   const visible = messages.filter((m) => m.role === "user" || m.role === "assistant");
   const latestDesktop = messages
     .flatMap((m) => ("toolCalls" in m ? m.toolCalls || [] : []))
-    .filter((call) => call.function.name === "use_desktop")
+    .filter((call) => {
+      const named = call as { function?: { name?: string }; name?: string };
+      return (named.function?.name ?? named.name) === "use_desktop";
+    })
     .at(-1)?.id;
   const replying = busy || agent.isRunning;
   return (

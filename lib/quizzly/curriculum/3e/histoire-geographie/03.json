@@ -1,0 +1,2693 @@
+{
+  "id": "3e-histoire-geographie-03",
+  "year": "3e",
+  "subject": "histoire-geographie",
+  "title": "La France et l'Union européenne",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Le territoire français",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les régions en France",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles propositions décrivent l'Île-de-France ?",
+              "type": "multiple_choice",
+              "options": [
+                "Région très peuplée",
+                "DROM dans l'océan Indien",
+                "Capitale Paris",
+                "Seule région sans agriculture"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'Île-de-France est dense et abrite Paris ; ce n'est pas un territoire ultramarin."
+            },
+            {
+              "id": "q2",
+              "question": "Depuis 2016, combien de régions en métropole ?",
+              "type": "single_choice",
+              "options": ["13", "18", "22", "27"],
+              "correctAnswers": [0],
+              "explanation": "Le regroupement de 2016 fixe 13 régions métropolitaines."
+            },
+            {
+              "id": "q3",
+              "question": "Auvergne-Rhône-Alpes est surtout :",
+              "type": "single_choice",
+              "options": [
+                "Montagne et métropole Lyon",
+                "Désert polaire",
+                "Territoire britannique",
+                "Zone sans routes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sud-est combine Alpes et pôle lyonnais."
+            },
+            {
+              "id": "q4",
+              "question": "Plus grande région métropolitaine par la superficie :",
+              "type": "single_choice",
+              "options": [
+                "Nouvelle-Aquitaine",
+                "Bretagne",
+                "Corse seule",
+                "Mayotte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nouvelle-Aquitaine est la plus vaste région métropolitaine."
+            },
+            {
+              "id": "q5",
+              "question": "Une métropole régionale :",
+              "type": "single_choice",
+              "options": [
+                "Structure l'espace autour d'une grande ville",
+                "Est toujours une île",
+                "N'a pas d'emplois",
+                "Remplace l'État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle concentre services et influence un territoire large."
+            },
+            {
+              "id": "q6",
+              "question": "PACA est connue pour :",
+              "type": "single_choice",
+              "options": [
+                "Littoral méditerranéen",
+                "Banquise permanente",
+                "Statut de DROM",
+                "Capitale Bruxelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tourisme et économie liés à la Méditerranée."
+            },
+            {
+              "id": "q7",
+              "question": "Les Hauts-de-France se situent :",
+              "type": "single_choice",
+              "options": [
+                "Au nord, proche Belgique",
+                "En Océan Pacifique",
+                "En Antarctique",
+                "Au centre de l'Afrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Région du nord face à la mer du Nord."
+            },
+            {
+              "id": "q8",
+              "question": "La Corse est :",
+              "type": "single_choice",
+              "options": [
+                "Collectivité insulaire en Méditerranée",
+                "Département en Guyane",
+                "Région sans habitants",
+                "Pays indépendant de l'UE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Île française avec statut particulier."
+            },
+            {
+              "id": "q9",
+              "question": "Comparer les régions sert à :",
+              "type": "single_choice",
+              "options": [
+                "Comprendre inégalités territoriales",
+                "Effacer toutes les différences",
+                "Changer le climat",
+                "Supprimer les villes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La comparaison géographique explique disparités."
+            },
+            {
+              "id": "q10",
+              "question": "Le Grand Est est frontalière avec :",
+              "type": "single_choice",
+              "options": ["Allemagne et Belgique", "Chili", "Chine", "Nigeria"],
+              "correctAnswers": [0],
+              "explanation": "Position est de la France en Europe."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Métropoles françaises",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "À propos de Marseille, quelles réponses sont vraies ?",
+              "type": "multiple_choice",
+              "options": [
+                "Grand port méditerranéen",
+                "Ville sans population",
+                "Métropole économique",
+                "Capitale de l'UE"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Marseille est port majeur et métropole du sud."
+            },
+            {
+              "id": "q2",
+              "question": "Paris est une métropole mondiale car :",
+              "type": "single_choice",
+              "options": [
+                "Flux internationaux économiques et culturels",
+                "Seule ferme de France",
+                "Hors UE",
+                "Sans transports"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rayonnement global dans plusieurs domaines."
+            },
+            {
+              "id": "q3",
+              "question": "Les villes moyennes aident à :",
+              "type": "single_choice",
+              "options": [
+                "Équilibrer le territoire",
+                "Vider toute la campagne",
+                "Fermer les ports",
+                "Quitter l'euro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles offrent services hors des très grandes villes."
+            },
+            {
+              "id": "q4",
+              "question": "Lille est frontalière avec :",
+              "type": "single_choice",
+              "options": [
+                "La Belgique",
+                "Le Canada",
+                "Le Maroc métropolitain",
+                "La Russie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eurodistrict avec la Flandre belge."
+            },
+            {
+              "id": "q5",
+              "question": "Toulouse est un pôle de :",
+              "type": "single_choice",
+              "options": [
+                "Aéronautique et espace",
+                "Whaling uniquement",
+                "Aucune recherche",
+                "Monnaie yen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Industrie aérospatiale majeure."
+            },
+            {
+              "id": "q6",
+              "question": "La diagonale du vide correspond à :",
+              "type": "single_choice",
+              "options": [
+                "Une faible densité du nord-est au sud-ouest",
+                "Le métro parisien",
+                "Schengen",
+                "Le Parlement européen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bande moins peuplée à travers le Massif central."
+            },
+            {
+              "id": "q7",
+              "question": "Le TGV renforce surtout :",
+              "type": "single_choice",
+              "options": [
+                "Les liens entre métropoles",
+                "L'isolement des régions",
+                "La fin de l'UE",
+                "L'absence de tourisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Raccourcit les temps entre grandes villes."
+            },
+            {
+              "id": "q8",
+              "question": "Une agglomération, c'est :",
+              "type": "single_choice",
+              "options": [
+                "Communes urbanisées liées",
+                "Un traité de paix",
+                "Un océan",
+                "Une monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ensemble fonctionnel autour d'un centre urbain."
+            },
+            {
+              "id": "q9",
+              "question": "Strasbourg accueille :",
+              "type": "single_choice",
+              "options": [
+                "Le Parlement européen",
+                "La NASA",
+                "L'ONU à New York",
+                "Le Kremlin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Institution clé de l'Union européenne."
+            },
+            {
+              "id": "q10",
+              "question": "Gentrification peut provoquer :",
+              "type": "single_choice",
+              "options": [
+                "Hausse des loyers",
+                "Disparition de la France",
+                "Fin de l'euro",
+                "Élargissement Schengen automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rénovation urbaine parfois chasse certains habitants."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "DROM et territoires ultramarins",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels territoires sont des DROM français ?",
+              "type": "multiple_choice",
+              "options": [
+                "La Guadeloupe",
+                "La Lorraine",
+                "La Martinique",
+                "L'Alsace"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Guadeloupe et Martinique sont des DROM ; Lorraine et Alsace sont en métropole."
+            },
+            {
+              "id": "q2",
+              "question": "DROM signifie :",
+              "type": "single_choice",
+              "options": [
+                "Département et région d'outre-mer",
+                "Direction des routes métropolitaines",
+                "Devise régionale obligatoire",
+                "Droit romain moderne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statut pour certains départements ultramarins."
+            },
+            {
+              "id": "q3",
+              "question": "La Réunion se trouve :",
+              "type": "single_choice",
+              "options": [
+                "Dans l'océan Indien",
+                "En Méditerranée",
+                "Au pôle Nord",
+                "En Allemagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Île française de l'océan Indien, DROM."
+            },
+            {
+              "id": "q4",
+              "question": "La Guyane est :",
+              "type": "single_choice",
+              "options": [
+                "Un DROM en Amérique du Sud",
+                "Un pays de l'OTAN",
+                "Une région sans forêt",
+                "Hors de la France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grand territoire forestier français en Amazonie."
+            },
+            {
+              "id": "q5",
+              "question": "Mayotte est située :",
+              "type": "single_choice",
+              "options": [
+                "Dans le canal du Mozambique",
+                "Dans les Alpes",
+                "En Bretagne",
+                "Au centre de Paris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Archipel de l'océan Indien, devenu DROM."
+            },
+            {
+              "id": "q6",
+              "question": "La Polynésie française est :",
+              "type": "single_choice",
+              "options": [
+                "Une collectivité d'outre-mer",
+                "Une région métropolitaine",
+                "Un État membre de l'UE séparé",
+                "Un département en Espagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statut COM avec large autonomie."
+            },
+            {
+              "id": "q7",
+              "question": "Les DROM utilisent en général :",
+              "type": "single_choice",
+              "options": [
+                "L'euro",
+                "Le dollar seul",
+                "Le yen",
+                "Aucune monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme la métropole, l'euro y circule."
+            },
+            {
+              "id": "q8",
+              "question": "La France d'outre-mer élargit surtout :",
+              "type": "single_choice",
+              "options": [
+                "La présence française dans plusieurs océans",
+                "La frontière avec la Pologne",
+                "Le désert du Sahara métropolitain",
+                "Le retrait de l'UE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Territoires dispersés sur plusieurs mers."
+            },
+            {
+              "id": "q9",
+              "question": "Un enjeu des DROM est :",
+              "type": "single_choice",
+              "options": [
+                "Le coût de la vie et l'éloignement",
+                "L'absence de population",
+                "Le refus de l'euro",
+                "Le statut de capitale UE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éloignement et dépendance aux importations posent des défis."
+            },
+            {
+              "id": "q10",
+              "question": "Saint-Pierre-et-Miquelon est :",
+              "type": "single_choice",
+              "options": [
+                "Une collectivité près du Canada",
+                "Un DROM tropical",
+                "En Corse",
+                "Capitale Schengen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Archipel français de l'Atlantique Nord."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Aménager le territoire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels objectifs relèvent de l'aménagement du territoire ?",
+              "type": "multiple_choice",
+              "options": [
+                "Réduire certaines inégalités",
+                "Interdire toute ville",
+                "Développer des équipements",
+                "Supprimer l'Union européenne"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'aménagement vise un développement plus équilibré avec des équipements."
+            },
+            {
+              "id": "q2",
+              "question": "Un exemple d'aménagement est :",
+              "type": "single_choice",
+              "options": [
+                "Construire une ligne de train",
+                "Effacer une région",
+                "Quitter Schengen",
+                "Créer une monnaie locale obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les infrastructures structurent les territoires."
+            },
+            {
+              "id": "q3",
+              "question": "La DATAR puis l'ANCT concernent :",
+              "type": "single_choice",
+              "options": [
+                "La planification territoriale en France",
+                "La météo uniquement",
+                "Les Jeux olympiques grecs",
+                "La monnaie britannique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organismes liés à la politique d'aménagement."
+            },
+            {
+              "id": "q4",
+              "question": "Une ZRR désigne souvent :",
+              "type": "single_choice",
+              "options": [
+                "Zone rurale avec handicaps naturels",
+                "Zone sans habitants en Europe",
+                "Zone euro uniquement",
+                "Zone Schengen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aides pour territoires ruraux en difficulté."
+            },
+            {
+              "id": "q5",
+              "question": "Décentraliser, c'est :",
+              "type": "single_choice",
+              "options": [
+                "Donner plus de pouvoirs aux collectivités",
+                "Supprimer toutes les régions",
+                "Quitter l'UE",
+                "Fermer les ports"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les régions et communes gèrent des compétences locales."
+            },
+            {
+              "id": "q6",
+              "question": "Un parc naturel régional vise à :",
+              "type": "single_choice",
+              "options": [
+                "Protéger et faire vivre un territoire",
+                "Interdire toute agriculture",
+                "Remplacer le Parlement européen",
+                "Créer une frontière Schengen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concilie protection et activités humaines."
+            },
+            {
+              "id": "q7",
+              "question": "La politique de la ville cible surtout :",
+              "type": "single_choice",
+              "options": [
+                "Quartiers en difficulté",
+                "Océans sans îles",
+                "Capitales étrangères",
+                "Monnaies asiatiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rénovation et insertion dans les banlieues."
+            },
+            {
+              "id": "q8",
+              "question": "Un hub aéroportuaire comme Roissy :",
+              "type": "single_choice",
+              "options": [
+                "Attire flux de passagers et fret",
+                "Isole la région",
+                "Supprime l'euro",
+                "Est en Polynésie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grands aéroports sont des portes d'entrée internationales."
+            },
+            {
+              "id": "q9",
+              "question": "Le canal Seine-Nord Europe sert à :",
+              "type": "single_choice",
+              "options": [
+                "Relier bassins fluviaux pour le fret",
+                "Déplacer le Parlement",
+                "Créer Schengen",
+                "Remplacer les DROM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Projet de liaison fluviale pour l'économie."
+            },
+            {
+              "id": "q10",
+              "question": "Aménager demande de :",
+              "type": "single_choice",
+              "options": [
+                "Concilier développement et environnement",
+                "Ignorer les habitants",
+                "Supprimer toutes les routes",
+                "Quitter l'ONU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix publics entre croissance, équité et écologie."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Inégalités territoriales",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels exemples illustrent une inégalité territoriale ?",
+              "type": "multiple_choice",
+              "options": [
+                "Taux de chômage plus élevé dans certains départements",
+                "Même densité partout",
+                "Accès inégal aux hôpitaux selon les zones",
+                "Climat identique sur tout le globe"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Emploi et services varient selon les territoires."
+            },
+            {
+              "id": "q2",
+              "question": "La métropolisation signifie :",
+              "type": "single_choice",
+              "options": [
+                "Concentration des richesses dans les grandes villes",
+                "Disparition de Paris",
+                "Fin de l'euro",
+                "Élargissement Schengen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les métropoles attirent emplois et population."
+            },
+            {
+              "id": "q3",
+              "question": "Des « territoires perdants » peuvent :",
+              "type": "single_choice",
+              "options": [
+                "Perdre habitants et services",
+                "Devenir tous capitales UE",
+                "Adopter le dollar",
+                "Quitter la planète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Désindustrialisation ou isolement fragilisent certains espaces."
+            },
+            {
+              "id": "q4",
+              "question": "Le revenu médian varie :",
+              "type": "single_choice",
+              "options": [
+                "Entre régions et départements",
+                "Identiquement partout",
+                "Seulement à Bruxelles",
+                "Uniquement en Antarctique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les disparités économiques se cartographient."
+            },
+            {
+              "id": "q5",
+              "question": "La fracture numérique touche surtout :",
+              "type": "single_choice",
+              "options": [
+                "Zones mal couvertes par internet",
+                "Tous les satellites",
+                "Le Parlement européen seul",
+                "Schengen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accès inégal au haut débit renforce exclusions."
+            },
+            {
+              "id": "q6",
+              "question": "Des déserts médicaux désignent :",
+              "type": "single_choice",
+              "options": [
+                "Manque de médecins dans certaines zones",
+                "Déserts du Sahara en Normandie",
+                "Absence de l'UE",
+                "Zone sans euro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Difficulté à consulter près de chez soi."
+            },
+            {
+              "id": "q7",
+              "question": "L'indicateur de développement humain permet :",
+              "type": "single_choice",
+              "options": [
+                "Comparer niveau de vie et éducation",
+                "Mesurer uniquement la pluie",
+                "Fixer le taux Schengen",
+                "Choisir la capitale allemande"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indicateur composite de bien-être."
+            },
+            {
+              "id": "q8",
+              "question": "Les banlieues sensibles peuvent cumuler :",
+              "type": "single_choice",
+              "options": [
+                "Pauvreté et manque de services",
+                "Uniquement des palaces",
+                "Capitale européenne",
+                "Monnaie yen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quartiers où se concentrent des difficultés sociales."
+            },
+            {
+              "id": "q9",
+              "question": "Réduire les inégalités peut passer par :",
+              "type": "single_choice",
+              "options": [
+                "Investissements ciblés et transports",
+                "Fermer toutes les écoles",
+                "Supprimer les DROM",
+                "Quitter l'UE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politiques publiques pour équilibrer les territoires."
+            },
+            {
+              "id": "q10",
+              "question": "Cartographier le chômage sert à :",
+              "type": "single_choice",
+              "options": [
+                "Visualiser disparités géographiques",
+                "Créer Schengen",
+                "Imprimer l'euro",
+                "Élargir la NATO"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cartes rendent visibles les inégalités."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Littoral, montagne et campagne",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels espaces français attirent fortement le tourisme ?",
+              "type": "multiple_choice",
+              "options": [
+                "Le littoral méditerranéen",
+                "Les sommets alpins",
+                "Le pôle Sud antarctique français libre",
+                "La lune"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mer et montagne sont des atouts touristiques majeurs."
+            },
+            {
+              "id": "q2",
+              "question": "La loi littoral vise surtout à :",
+              "type": "single_choice",
+              "options": [
+                "Protéger le bord de mer",
+                "Supprimer les plages",
+                "Créer Schengen",
+                "Remplacer l'euro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Encadre l'urbanisation en zone côtière."
+            },
+            {
+              "id": "q3",
+              "question": "Une station de ski dépend :",
+              "type": "single_choice",
+              "options": [
+                "De l'enneigement et des remontées",
+                "Du Parlement européen",
+                "De la monnaie peso",
+                "De l'absence de montagnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Activité liée au climat et aux infrastructures."
+            },
+            {
+              "id": "q4",
+              "question": "La ruralité concerne :",
+              "type": "single_choice",
+              "options": [
+                "Espaces à faible densité hors grandes villes",
+                "Uniquement Paris",
+                "Schengen",
+                "Commission européenne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Campagnes, petites villes et activités agricoles."
+            },
+            {
+              "id": "q5",
+              "question": "L'érosion côtière menace :",
+              "type": "single_choice",
+              "options": [
+                "Certaines falaises et dunes",
+                "Le centre de l'Asie",
+                "Le siège de l'UE à Strasbourg",
+                "Toutes les monnaies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mer et tempêtes grignotent le littoral."
+            },
+            {
+              "id": "q6",
+              "question": "Un parc national protège :",
+              "type": "single_choice",
+              "options": [
+                "Des espaces naturels remarquables",
+                "Uniquement des bureaux",
+                "La frontière Schengen",
+                "Le dollar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règles strictes pour la biodiversité."
+            },
+            {
+              "id": "q7",
+              "question": "La déprise agricole signifie :",
+              "type": "single_choice",
+              "options": [
+                "Abandon de terres cultivées",
+                "Triplement des récoltes partout",
+                "Création de l'euro",
+                "Élargissement UE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines campagnes perdent activité agricole."
+            },
+            {
+              "id": "q8",
+              "question": "Le tourisme vert développe :",
+              "type": "single_choice",
+              "options": [
+                "Séjours respectueux de l'environnement",
+                "Pollution maximale",
+                "Fin de l'UE",
+                "Guerre commerciale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valorise nature sans la dégrader."
+            },
+            {
+              "id": "q9",
+              "question": "Les espaces montagneux connaissent :",
+              "type": "single_choice",
+              "options": [
+                "Contraintes de relief et d'accessibilité",
+                "Aucun habitant",
+                "Capitale européenne",
+                "Monnaie unique yen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Routes et services coûtent plus cher."
+            },
+            {
+              "id": "q10",
+              "question": "La France hexagonale désigne :",
+              "type": "single_choice",
+              "options": [
+                "La métropole continentale",
+                "Tous les DROM",
+                "L'Union européenne",
+                "Schengen seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partie européenne de la France sans outre-mer."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Frontières et voisinages",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels pays voisins touchent la France métropolitaine ?",
+              "type": "multiple_choice",
+              "options": [
+                "L'Espagne",
+                "Le Brésil",
+                "La Belgique",
+                "L'Australie"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La France métropolitaine partage une frontière terrestre avec l'Espagne et la Belgique, entre autres ; le Brésil et l'Australie ne sont pas voisins."
+            },
+            {
+              "id": "q2",
+              "question": "Le Mont-Blanc se situe :",
+              "type": "single_choice",
+              "options": [
+                "À la frontière franco-italienne",
+                "En Guyane",
+                "À Schengen",
+                "Au Parlement européen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus haut sommet des Alpes, frontière partagée."
+            },
+            {
+              "id": "q3",
+              "question": "L'eurodistrict regroupe :",
+              "type": "single_choice",
+              "options": [
+                "Zones de coopération transfrontalière",
+                "Uniquement des océans",
+                "Les États-Unis",
+                "La lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Villes de pays voisins travaillent ensemble."
+            },
+            {
+              "id": "q4",
+              "question": "La frontière franco-espagnole traverse :",
+              "type": "single_choice",
+              "options": [
+                "Les Pyrénées",
+                "La Seine à Paris",
+                "Mayotte",
+                "Bruxelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne montagneuse entre les deux pays."
+            },
+            {
+              "id": "q5",
+              "question": "Le tunnel sous la Manche relie :",
+              "type": "single_choice",
+              "options": [
+                "France et Royaume-Uni",
+                "France et Chine",
+                "UE et Mars",
+                "Schengen et yen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liaison ferroviaire transmanche."
+            },
+            {
+              "id": "q6",
+              "question": "Une frontière Schengen intérieure :",
+              "type": "single_choice",
+              "options": [
+                "Peut être traversée sans contrôle systématique",
+                "Interdit tout échange",
+                "Remplace l'euro",
+                "Supprime la France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Libre circulation dans l'espace Schengen."
+            },
+            {
+              "id": "q7",
+              "question": "Le Rhin est une frontière avec :",
+              "type": "single_choice",
+              "options": ["L'Allemagne", "L'Australie", "La Lune", "Mayotte"],
+              "correctAnswers": [0],
+              "explanation": "Fleuve frontalier à l'est."
+            },
+            {
+              "id": "q8",
+              "question": "La coopération transfrontalière peut concerner :",
+              "type": "single_choice",
+              "options": [
+                "Transports et emploi",
+                "Uniquement la météo lunaire",
+                "Suppression de l'UE",
+                "Monnaie peso obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Projets communs entre régions voisines."
+            },
+            {
+              "id": "q9",
+              "question": "Andorre est :",
+              "type": "single_choice",
+              "options": [
+                "Un micro-État entre France et Espagne",
+                "Un DROM",
+                "Capitale de l'UE",
+                "Zone eurodollar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Petit État des Pyrénées."
+            },
+            {
+              "id": "q10",
+              "question": "Géographiquement, la France est :",
+              "type": "single_choice",
+              "options": [
+                "Un pays d'Europe occidentale",
+                "Un pays d'Asie centrale",
+                "Un continent seul",
+                "Hors de toute mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Position en Europe avec façades maritimes."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Collectivités et compétences",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles collectivités existent en France ?",
+              "type": "multiple_choice",
+              "options": [
+                "Communes",
+                "Régions",
+                "Planètes indépendantes",
+                "États fédérés américains"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Communes, départements, régions et statuts particuliers structurent le pays."
+            },
+            {
+              "id": "q2",
+              "question": "Le maire gère surtout :",
+              "type": "single_choice",
+              "options": [
+                "La commune",
+                "Toute l'Union européenne",
+                "Schengen mondial",
+                "La Banque centrale européenne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échelon local : voirie, écoles, état civil."
+            },
+            {
+              "id": "q3",
+              "question": "Une région compétente en :",
+              "type": "single_choice",
+              "options": [
+                "Lycées et transports régionaux",
+                "Politique monétaire euro",
+                "Guerre nucléaire seule",
+                "Siège Parlement mondial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétences régionales définies par la loi."
+            },
+            {
+              "id": "q4",
+              "question": "Le département intervient notamment pour :",
+              "type": "single_choice",
+              "options": [
+                "Collèges et aide sociale",
+                "Imprimer les billets en dollars",
+                "Élargir l'UE seul",
+                "Contrôler Schengen seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échelon départemental pour l'éducation et le social."
+            },
+            {
+              "id": "q5",
+              "question": "L'intercommunalité sert à :",
+              "type": "single_choice",
+              "options": [
+                "Faire coopérer plusieurs communes",
+                "Supprimer l'État",
+                "Quitter l'euro",
+                "Fermer l'UE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "EPCI pour piscines, déchets, etc."
+            },
+            {
+              "id": "q6",
+              "question": "Paris est aussi :",
+              "type": "single_choice",
+              "options": [
+                "Une collectivité à statut particulier",
+                "Un pays hors UE",
+                "Un DROM",
+                "Zone Schengen extérieure seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ville-département avec organisation propre."
+            },
+            {
+              "id": "q7",
+              "question": "Les citoyens élisent aux niveaux :",
+              "type": "single_choice",
+              "options": [
+                "Municipal, départemental, régional, européen",
+                "Uniquement sur Mars",
+                "Seulement la BCE",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs scrutins pour différents échelons."
+            },
+            {
+              "id": "q8",
+              "question": "La préfecture représente :",
+              "type": "single_choice",
+              "options": [
+                "L'État dans le département",
+                "La Commission européenne seule",
+                "Schengen",
+                "L'OTAN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autorité de l'État au niveau local."
+            },
+            {
+              "id": "q9",
+              "question": "Un conseil régional vote :",
+              "type": "single_choice",
+              "options": [
+                "Le budget régional",
+                "La constitution américaine",
+                "Le retrait de l'euro",
+                "La carte Schengen mondiale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Délibère sur projets et finances régionales."
+            },
+            {
+              "id": "q10",
+              "question": "La décentralisation renforce :",
+              "type": "single_choice",
+              "options": [
+                "Le rôle des élus locaux",
+                "L'absence de démocratie",
+                "La fin de la France",
+                "Le dollar obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétences et responsabilités plus proches des citoyens."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "France, Europe et mondialisation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels liens relient la France au reste du monde ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ports et aéroports internationaux",
+                "Isolement total",
+                "Membership de l'Union européenne",
+                "Absence de commerce"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Infrastructures et UE connectent la France."
+            },
+            {
+              "id": "q2",
+              "question": "Le Havre est surtout :",
+              "type": "single_choice",
+              "options": [
+                "Un grand port maritime",
+                "Capitale Schengen",
+                "Siège BCE",
+                "DROM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Port majeur de la Manche pour le commerce."
+            },
+            {
+              "id": "q3",
+              "question": "La mondialisation accentue :",
+              "type": "single_choice",
+              "options": [
+                "Échanges et concurrence entre territoires",
+                "Fin de toute frontière",
+                "Disparition de Paris",
+                "Interdiction de l'euro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Économies liées à l'échelle planétaire."
+            },
+            {
+              "id": "q4",
+              "question": "Une firme multinationale peut :",
+              "type": "single_choice",
+              "options": [
+                "Implanter usines dans plusieurs pays",
+                "Exister seulement dans un village",
+                "Imposer Schengen",
+                "Créer la lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Production répartie mondialement."
+            },
+            {
+              "id": "q5",
+              "question": "La France exporte notamment :",
+              "type": "single_choice",
+              "options": [
+                "Produits agricoles et industriels",
+                "Uniquement de la neige artificielle",
+                "Rien du tout",
+                "Seulement des billets yen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commerce extérieur diversifié."
+            },
+            {
+              "id": "q6",
+              "question": "Roissy-CDG est un nœud pour :",
+              "type": "single_choice",
+              "options": [
+                "Aviation internationale",
+                "Pêche en Antarctique seule",
+                "Parlement UE",
+                "Monnaie peso"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Principal aéroport français pour le long-courrier."
+            },
+            {
+              "id": "q7",
+              "question": "L'appartenance à l'UE facilite :",
+              "type": "single_choice",
+              "options": [
+                "Marché unique et libre circulation",
+                "Guerre commerciale avec l'Allemagne",
+                "Fin des régions",
+                "Suppression de l'euro automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règles communes pour échanges et mobilité."
+            },
+            {
+              "id": "q8",
+              "question": "Des métropoles françaises accueillent :",
+              "type": "single_choice",
+              "options": [
+                "Sièges d'entreprises et universités",
+                "Aucun étudiant",
+                "Uniquement Schengen",
+                "Capitale Australie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pôles d'innovation et de formation."
+            },
+            {
+              "id": "q9",
+              "question": "La fracture territoriale avec l'Europe du Nord peut concerner :",
+              "type": "single_choice",
+              "options": [
+                "Niveau de richesse et d'emploi",
+                "Couleur des océans sur Mars",
+                "Taille de Schengen",
+                "Langue officielle de la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au sein de l'UE, les régions restent inégales."
+            },
+            {
+              "id": "q10",
+              "question": "Cartographier flux et réseaux montre :",
+              "type": "single_choice",
+              "options": [
+                "Comment la France s'insère globalement",
+                "Que la France est isolée",
+                "Schengen disparu",
+                "Fin des DROM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux de personnes, marchandises et informations."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse du territoire français",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels éléments caractérisent la France aujourd'hui ?",
+              "type": "multiple_choice",
+              "options": [
+                "Diversité des paysages et régions",
+                "Territoire uniquement urbain",
+                "Présence métropolitaine et ultramarine",
+                "Absence de politiques publiques"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "France variée, hexagone plus outre-mer, avec aménagement public."
+            },
+            {
+              "id": "q2",
+              "question": "La population française est :",
+              "type": "single_choice",
+              "options": [
+                "Environ 68 millions d'habitants",
+                "Deux cents personnes",
+                "Uniquement en DROM",
+                "Sans citoyens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre de grandeur démographique actuel."
+            },
+            {
+              "id": "q3",
+              "question": "Un enjeu majeur du territoire est :",
+              "type": "single_choice",
+              "options": [
+                "Transition écologique et équité",
+                "Supprimer toutes les villes",
+                "Quitter Schengen demain",
+                "Abandonner l'euro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concilier environnement, développement et justice spatiale."
+            },
+            {
+              "id": "q4",
+              "question": "La France en Europe occidentale :",
+              "type": "single_choice",
+              "options": [
+                "Participe à l'intégration européenne",
+                "Est totalement isolée",
+                "N'a pas de frontières",
+                "Refuse tout échange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Membre fondateur de l'UE."
+            },
+            {
+              "id": "q5",
+              "question": "Les cartes de densité montrent :",
+              "type": "single_choice",
+              "options": [
+                "Concentrations urbaines et espaces peu denses",
+                "Uniformité parfaite",
+                "Schengen seul",
+                "Siège BCE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture spatiale de la répartition humaine."
+            },
+            {
+              "id": "q6",
+              "question": "L'aménagement du territoire répond à :",
+              "type": "single_choice",
+              "options": [
+                "Besoins des habitants et économie",
+                "Uniquement à la météo lunaire",
+                "Fin de l'UE",
+                "Interdiction DROM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politiques pour services, emploi et environnement."
+            },
+            {
+              "id": "q7",
+              "question": "Les métropoles et les campagnes :",
+              "type": "single_choice",
+              "options": [
+                "Coexistent avec des logiques différentes",
+                "Ont disparu",
+                "Sont identiques partout",
+                "Ignorent l'UE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ville et ruralité complètent le territoire."
+            },
+            {
+              "id": "q8",
+              "question": "Les DROM enrichissent la France par :",
+              "type": "single_choice",
+              "options": [
+                "Biodiversité et position géostratégique",
+                "Absence de mer",
+                "Retrait de l'euro",
+                "Schengen fermé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présence dans plusieurs bassins océaniques."
+            },
+            {
+              "id": "q9",
+              "question": "Réduire les inégalités territoriales, c'est :",
+              "type": "single_choice",
+              "options": [
+                "Un objectif de la République et de l'UE",
+                "Interdit",
+                "Sans lien avec l'école",
+                "Uniquement théorique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohésion nationale et européenne."
+            },
+            {
+              "id": "q10",
+              "question": "Étudier le territoire français en 3e permet :",
+              "type": "single_choice",
+              "options": [
+                "Comprendre enjeux locaux et européens",
+                "Oublier la géographie",
+                "Supprimer les régions",
+                "Ignorer Schengen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien entre espace national et construction européenne."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "L'Europe politique",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Naissance et élargissement de l'UE",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels faits concernent les débuts de l'intégration européenne ?",
+              "type": "multiple_choice",
+              "options": [
+                "Traité de Rome en 1957",
+                "Création immédiate de 50 États en 1951",
+                "Communauté économique européenne",
+                "Union avec la Lune"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Après la CECA, le traité de Rome fonde la CEE."
+            },
+            {
+              "id": "q2",
+              "question": "Combien d'États membres l'UE compte-t-elle environ en 2024 ?",
+              "type": "single_choice",
+              "options": ["27", "12", "50", "4"],
+              "correctAnswers": [0],
+              "explanation": "Après le Brexit, 27 membres."
+            },
+            {
+              "id": "q3",
+              "question": "Le Brexit signifie :",
+              "type": "single_choice",
+              "options": [
+                "Sortie du Royaume-Uni de l'UE",
+                "Entrée de la Russie",
+                "Création de l'euro",
+                "Fin de Schengen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Référendum et retrait effectif en 2020."
+            },
+            {
+              "id": "q4",
+              "question": "Un élargissement de l'UE :",
+              "type": "single_choice",
+              "options": [
+                "Ajoute de nouveaux États membres",
+                "Supprime la France",
+                "Interdit l'euro",
+                "Ferme Schengen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négociations et adhésion de pays candidats."
+            },
+            {
+              "id": "q5",
+              "question": "La France est :",
+              "type": "single_choice",
+              "options": [
+                "Membre fondateur",
+                "Jamais entrée",
+                "Hors continent",
+                "Sans vote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Six pays fondateurs dont la France."
+            },
+            {
+              "id": "q6",
+              "question": "L'élargissement de 2004 a surtout intégré :",
+              "type": "single_choice",
+              "options": [
+                "Pays d'Europe centrale et orientale",
+                "États américains",
+                "Antarctique",
+                "Mars"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dix pays, dont Pologne et Hongrie."
+            },
+            {
+              "id": "q7",
+              "question": "Un candidat à l'adhésion doit :",
+              "type": "single_choice",
+              "options": [
+                "Respecter critères démocratiques et économiques",
+                "Quitter l'ONU",
+                "Adopter le yen",
+                "Refuser Schengen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critères de Copenhague."
+            },
+            {
+              "id": "q8",
+              "question": "Le traité de Maastricht (1992) :",
+              "type": "single_choice",
+              "options": [
+                "Crée l'Union européenne",
+                "Supprime toutes les frontières mondiales",
+                "Remplace la France",
+                "Interdit l'euro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "UE politique et préparation de l'euro."
+            },
+            {
+              "id": "q9",
+              "question": "L'UE vise aussi la paix car :",
+              "type": "single_choice",
+              "options": [
+                "Coopération remplace guerres répétées",
+                "Elle possède la Lune",
+                "Elle supprime l'OTAN automatiquement",
+                "Elle interdit l'éducation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Projet de réconciliation après conflits."
+            },
+            {
+              "id": "q10",
+              "question": "Le drapeau européen montre :",
+              "type": "single_choice",
+              "options": [
+                "Douze étoiles en cercle",
+                "Une seule étoile rouge",
+                "Schengen",
+                "Carte de France seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symbole d'unité, pas un nombre d'États."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Institutions européennes",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles institutions font partie de l'UE ?",
+              "type": "multiple_choice",
+              "options": [
+                "Parlement européen",
+                "Commission européenne",
+                "OTAN comme organe de l'UE",
+                "Conseil de l'ONU"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Parlement, Commission, Conseil européen et Conseil de l'UE sont clés."
+            },
+            {
+              "id": "q2",
+              "question": "Le Parlement européen est élu :",
+              "type": "single_choice",
+              "options": [
+                "Au suffrage universel européen",
+                "Par les maires seuls",
+                "Par la Lune",
+                "Sans citoyens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eurodéputés élus tous les cinq ans."
+            },
+            {
+              "id": "q3",
+              "question": "La Commission européenne :",
+              "type": "single_choice",
+              "options": [
+                "Propose des lois et veille au traité",
+                "Commande toutes les armées du monde",
+                "Imprime le dollar",
+                "Gère Schengen seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exécutif collégial de l'UE."
+            },
+            {
+              "id": "q4",
+              "question": "Strasbourg accueille :",
+              "type": "single_choice",
+              "options": [
+                "Le Parlement européen",
+                "La BCE seule",
+                "Schengen",
+                "Capitale Australie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Siège du Parlement avec Bruxelles."
+            },
+            {
+              "id": "q5",
+              "question": "Bruxelles concentre surtout :",
+              "type": "single_choice",
+              "options": [
+                "Commission et Conseil",
+                "Parlement seul uniquement",
+                "Banque du Japon",
+                "DROM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capitale politique de l'UE."
+            },
+            {
+              "id": "q6",
+              "question": "Le Conseil européen réunit :",
+              "type": "single_choice",
+              "options": [
+                "Chefs d'État et de gouvernement",
+                "Uniquement écoliers",
+                "NASA",
+                "Pêcheurs seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orientations politiques majeures."
+            },
+            {
+              "id": "q7",
+              "question": "La Cour de justice de l'UE :",
+              "type": "single_choice",
+              "options": [
+                "Veille à l'application du droit européen",
+                "Fabrique l'euro",
+                "Remplace maires",
+                "Contrôle Schengen physique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À Luxembourg, interprète le droit UE."
+            },
+            {
+              "id": "q8",
+              "question": "Un eurodéputé représente :",
+              "type": "single_choice",
+              "options": [
+                "Les citoyens européens",
+                "Uniquement sa rue",
+                "La Banque centrale",
+                "Schengen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mandat au niveau européen."
+            },
+            {
+              "id": "q9",
+              "question": "Le Conseil de l'UE réunit :",
+              "type": "single_choice",
+              "options": [
+                "Ministres des États membres",
+                "Astronautes seuls",
+                "Gouverneurs US",
+                "Sans États"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négocie et adopte avec le Parlement."
+            },
+            {
+              "id": "q10",
+              "question": "Le droit européen :",
+              "type": "single_choice",
+              "options": [
+                "Complète le droit national",
+                "Efface toute loi française automatiquement",
+                "N'existe pas",
+                "Remplace Schengen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règlements et directives s'appliquent aux membres."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La monnaie euro",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels pays utilisent l'euro comme monnaie officielle ?",
+              "type": "multiple_choice",
+              "options": [
+                "La France",
+                "Le Royaume-Uni après Brexit",
+                "L'Allemagne",
+                "Le Japon"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Zone euro : France, Allemagne et autres ; le Royaume-Uni a la livre."
+            },
+            {
+              "id": "q2",
+              "question": "L'euro est entré en circulation en :",
+              "type": "single_choice",
+              "options": ["2002", "1950", "1990", "1889"],
+              "correctAnswers": [0],
+              "explanation": "Pièces et billets en 2002."
+            },
+            {
+              "id": "q3",
+              "question": "La Banque centrale européenne veille à :",
+              "type": "single_choice",
+              "options": [
+                "La stabilité des prix",
+                "La météo",
+                "Schengen seul",
+                "Élections municipales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique monétaire de la zone euro."
+            },
+            {
+              "id": "q4",
+              "question": "La BCE est située à :",
+              "type": "single_choice",
+              "options": ["Francfort", "Paris seul", "Mayotte", "Sydney"],
+              "correctAnswers": [0],
+              "explanation": "Siège en Allemagne."
+            },
+            {
+              "id": "q5",
+              "question": "L'euro facilite :",
+              "type": "single_choice",
+              "options": [
+                "Comparaisons de prix et échanges",
+                "Guerre commerciale interne",
+                "Fin de l'UE",
+                "Interdiction de voyager"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monnaie unique pour le marché intérieur."
+            },
+            {
+              "id": "q6",
+              "question": "Tous les membres de l'UE :",
+              "type": "single_choice",
+              "options": [
+                "N'utilisent pas obligatoirement l'euro",
+                "Doivent utiliser le yen",
+                "N'ont pas de monnaie",
+                "Utilisent le dollar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains gardent leur monnaie nationale."
+            },
+            {
+              "id": "q7",
+              "question": "Un avantage pour les voyageurs :",
+              "type": "single_choice",
+              "options": [
+                "Pas de change dans la zone euro",
+                "Interdiction de payer",
+                "Schengen supprimé",
+                "Frontières partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même monnaie dans les pays de la zone."
+            },
+            {
+              "id": "q8",
+              "question": "L'euro est symbole de :",
+              "type": "single_choice",
+              "options": [
+                "Intégration économique",
+                "Isolement",
+                "Fin du Parlement",
+                "Retrait DROM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Projet monétaire partagé."
+            },
+            {
+              "id": "q9",
+              "question": "Les pièces euro ont :",
+              "type": "single_choice",
+              "options": [
+                "Une face nationale et une face commune",
+                "Uniquement drapeau français",
+                "Pas de valeur",
+                "Forme carrée obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Design européen plus motif national."
+            },
+            {
+              "id": "q10",
+              "question": "Crise de la dette en zone euro a montré :",
+              "type": "single_choice",
+              "options": [
+                "Interdépendance des économies",
+                "Fin de l'Europe",
+                "Suppression Schengen",
+                "Absence d'euro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Solidarité et règles budgétaires discutées."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Espace Schengen",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Que permet l'espace Schengen ?",
+              "type": "multiple_choice",
+              "options": [
+                "La libre circulation des personnes entre les États membres",
+                "Des contrôles allégés aux frontières intérieures",
+                "La guerre entre pays voisins",
+                "La suppression de toutes les lois"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Schengen porte sur la circulation, pas sur l'euro ni sur l'abolition des lois."
+            },
+            {
+              "id": "q2",
+              "question": "L'accord de Schengen date des années :",
+              "type": "single_choice",
+              "options": ["1985", "1789", "2002", "2025"],
+              "correctAnswers": [0],
+              "explanation": "Signé en Luxembourg en 1985."
+            },
+            {
+              "id": "q3",
+              "question": "Schengen concerne :",
+              "type": "single_choice",
+              "options": [
+                "Contrôles aux frontières intérieures",
+                "Climat uniquement",
+                "Parlement seul",
+                "DROM seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coopération policière et visas."
+            },
+            {
+              "id": "q4",
+              "question": "La France fait partie :",
+              "type": "single_choice",
+              "options": [
+                "De l'espace Schengen",
+                "D'un espace sans aucun échange",
+                "De l'OTAN uniquement",
+                "De la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Membre de Schengen."
+            },
+            {
+              "id": "q5",
+              "question": "Un pays peut rétablir temporairement des contrôles si :",
+              "type": "single_choice",
+              "options": [
+                "Menace grave pour l'ordre public",
+                "Envie sans motif",
+                "Fin de l'euro",
+                "Élections lunaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clause de sauvegarde prévue."
+            },
+            {
+              "id": "q6",
+              "question": "Schengen n'est pas identique à :",
+              "type": "single_choice",
+              "options": [
+                "L'Union européenne entière",
+                "Libre circulation",
+                "Coopération policière",
+                "Visa Schengen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains pays UE hors Schengen ; certains associés hors UE."
+            },
+            {
+              "id": "q7",
+              "question": "Le visa Schengen permet :",
+              "type": "single_choice",
+              "options": [
+                "Voyager dans plusieurs pays signataires",
+                "Aller sur Mars",
+                "Imprimer l'euro",
+                "Voter aux USA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un visa pour de nombreux pays."
+            },
+            {
+              "id": "q8",
+              "question": "Frontex aide à :",
+              "type": "single_choice",
+              "options": [
+                "Sécuriser les frontières extérieures",
+                "Supprimer l'UE",
+                "Remplacer maires",
+                "Créer DROM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agence européenne des frontières."
+            },
+            {
+              "id": "q9",
+              "question": "Libre circulation profite :",
+              "type": "single_choice",
+              "options": [
+                "Travailleurs, étudiants, touristes",
+                "Personne",
+                "Uniquement banques",
+                "Schengen seul sans humains"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mobilité dans l'espace."
+            },
+            {
+              "id": "q10",
+              "question": "Schengen se négocie :",
+              "type": "single_choice",
+              "options": [
+                "Entre États participants",
+                "Par la Lune",
+                "Sans règles",
+                "Contre l'euro obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accords intergouvernementaux intégrés au droit UE."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Citoyenneté et droits en Europe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "La citoyenneté européenne offre :",
+              "type": "multiple_choice",
+              "options": [
+                "Droit de circuler dans l'UE",
+                "Droit de vote aux élections américaines",
+                "Droit de résider dans un autre État membre",
+                "Immunité contre toutes les lois"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Attachée à la nationalité d'un membre, avec droits de mobilité."
+            },
+            {
+              "id": "q2",
+              "question": "On devient citoyen européen en étant :",
+              "type": "single_choice",
+              "options": [
+                "Ressortissant d'un pays membre",
+                "Citoyen martien",
+                "Sans nationalité",
+                "Hors UE toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complète la citoyenneté nationale."
+            },
+            {
+              "id": "q3",
+              "question": "Les élections européennes servent à :",
+              "type": "single_choice",
+              "options": [
+                "Élire le Parlement européen",
+                "Choisir maire de Tokyo",
+                "Imprimer yen",
+                "Fermer Schengen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scrutin transnational tous les cinq ans."
+            },
+            {
+              "id": "q4",
+              "question": "La Charte des droits fondamentaux :",
+              "type": "single_choice",
+              "options": [
+                "Protège droits civiques en UE",
+                "Supprime écoles",
+                "Interdit l'euro",
+                "Crée DROM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Texte de référence pour l'Union."
+            },
+            {
+              "id": "q5",
+              "question": "Erasmus favorise :",
+              "type": "single_choice",
+              "options": [
+                "Mobilité des étudiants",
+                "Guerre",
+                "Isolement",
+                "Fin Parlement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Programme d'échanges universitaires."
+            },
+            {
+              "id": "q6",
+              "question": "Un travailleur européen peut :",
+              "type": "single_choice",
+              "options": [
+                "Postuler dans un autre État membre",
+                "Uniquement sur la Lune",
+                "Sans contrat jamais",
+                "Refuser toute loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Libre circulation des travailleurs."
+            },
+            {
+              "id": "q7",
+              "question": "Pétition européenne permet :",
+              "type": "single_choice",
+              "options": [
+                "Saisir le Parlement sur un sujet",
+                "Dissoudre la France",
+                "Quitter Schengen seul",
+                "Créer monnaie locale obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Participation démocratique."
+            },
+            {
+              "id": "q8",
+              "question": "La laïcité en France et règles UE :",
+              "type": "single_choice",
+              "options": [
+                "Coexistent avec droits fondamentaux",
+                "Interdisent toute école",
+                "Suppriment Parlement",
+                "Effacent Schengen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équilibre entre principes nationaux et droit UE."
+            },
+            {
+              "id": "q9",
+              "question": "Non-discrimination est :",
+              "type": "single_choice",
+              "options": [
+                "Principe clé de l'UE",
+                "Absent des traités",
+                "Contre Schengen",
+                "Uniquement pour l'euro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Égalité inscrite dans le droit européen."
+            },
+            {
+              "id": "q10",
+              "question": "Jeunes et Europe :",
+              "type": "single_choice",
+              "options": [
+                "Bénéficient de programmes d'échange",
+                "Interdits de voyager",
+                "Sans droits",
+                "Hors citoyenneté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erasmus+, découverte des cultures."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Politiques communes de l'UE",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles politiques sont menées au niveau européen ?",
+              "type": "multiple_choice",
+              "options": [
+                "Politique agricole commune",
+                "Politique lunaire obligatoire",
+                "Soutien à la recherche",
+                "Suppression de toutes les régions"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "PAC, cohésion, recherche Horizon, etc."
+            },
+            {
+              "id": "q2",
+              "question": "La PAC concerne surtout :",
+              "type": "single_choice",
+              "options": [
+                "Agriculture et ruralité",
+                "Schengen seul",
+                "Parlement seul",
+                "DROM uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soutien aux agriculteurs et sécurité alimentaire."
+            },
+            {
+              "id": "q3",
+              "question": "Fonds de cohésion visent à :",
+              "type": "single_choice",
+              "options": [
+                "Réduire écarts entre régions",
+                "Agrandir la Lune",
+                "Fin euro",
+                "Fermer ports"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Investissements dans régions moins riches."
+            },
+            {
+              "id": "q4",
+              "question": "Marché unique signifie :",
+              "type": "single_choice",
+              "options": [
+                "Libre circulation des biens, services, capitaux",
+                "Interdiction de commerce",
+                "Guerre tarifaire interne",
+                "Fin Schengen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base économique de l'UE."
+            },
+            {
+              "id": "q5",
+              "question": "Politique climatique européenne vise :",
+              "type": "single_choice",
+              "options": [
+                "Réduire émissions de gaz à effet de serre",
+                "Augmenter pollution",
+                "Supprimer forêts",
+                "Quitter Paris climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectifs de neutralité carbone."
+            },
+            {
+              "id": "q6",
+              "question": "Horizon Europe finance :",
+              "type": "single_choice",
+              "options": [
+                "Recherche et innovation",
+                "Stades de football seulement",
+                "Schengen",
+                "Monnaie peso"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Programme de R&D."
+            },
+            {
+              "id": "q7",
+              "question": "Politique commune de pêche gère :",
+              "type": "single_choice",
+              "options": [
+                "Quotas et ressources marines",
+                "Routes terrestres seules",
+                "Parlement US",
+                "DROM seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durabilité des stocks halieutiques."
+            },
+            {
+              "id": "q8",
+              "question": "L'UE négocie commercialement :",
+              "type": "single_choice",
+              "options": [
+                "Avec des pays tiers en bloc",
+                "Uniquement avec Mars",
+                "Sans accords",
+                "Contre la France seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commerce extérieur commun."
+            },
+            {
+              "id": "q9",
+              "question": "Subventions européennes peuvent financer :",
+              "type": "single_choice",
+              "options": [
+                "Routes, énergie, formation",
+                "Uniquement palais privés",
+                "Fin Schengen",
+                "Guerre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Projets locaux cofinancés."
+            },
+            {
+              "id": "q10",
+              "question": "Politiques communes montrent :",
+              "type": "single_choice",
+              "options": [
+                "Solidarité entre États et régions",
+                "Isolement total",
+                "Absence d'euro",
+                "Fin élargissement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Action collective pour défis partagés."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Géographie de l'Union européenne",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels traits décrivent l'espace UE ?",
+              "type": "multiple_choice",
+              "options": [
+                "Variété de climats et reliefs",
+                "Un seul désert sans habitants",
+                "Frontières intérieures ouvertes en Schengen",
+                "Territoire uniquement insulaire"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Continental, divers, avec intégration Schengen."
+            },
+            {
+              "id": "q2",
+              "question": "Capitale de l'Irlande membre UE :",
+              "type": "single_choice",
+              "options": ["Dublin", "Paris", "Berlin", "Tokyo"],
+              "correctAnswers": [0],
+              "explanation": "État insulaire à l'ouest."
+            },
+            {
+              "id": "q3",
+              "question": "L'Espagne et la France partagent :",
+              "type": "single_choice",
+              "options": [
+                "Une frontière terrestre",
+                "Un océan sans contact",
+                "Schengen interdit",
+                "Monnaie yen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pyrénées communes."
+            },
+            {
+              "id": "q4",
+              "question": "Pays baltes en UE incluent :",
+              "type": "single_choice",
+              "options": [
+                "Estonie, Lettonie, Lituanie",
+                "Brésil",
+                "Canada",
+                "Inde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Région nord-est de l'UE."
+            },
+            {
+              "id": "q5",
+              "question": "La Méditerranée borde :",
+              "type": "single_choice",
+              "options": [
+                "Plusieurs États membres du sud",
+                "Aucun pays UE",
+                "Schengen seul",
+                "BCE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Italie, Espagne, Grèce, etc."
+            },
+            {
+              "id": "q6",
+              "question": "L'UE s'étend vers l'est après élargissements :",
+              "type": "single_choice",
+              "options": [
+                "Jusqu'en Pologne et au-delà",
+                "Jusqu'en Antarctique",
+                "Uniquement Paris",
+                "Sans carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intégration Europe centrale et orientale."
+            },
+            {
+              "id": "q7",
+              "question": "Des métropoles européennes comme Francfort :",
+              "type": "single_choice",
+              "options": [
+                "Concentrent services financiers",
+                "Sont hors UE",
+                "Interdisent euro",
+                "Fermeture Schengen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseau urbain global."
+            },
+            {
+              "id": "q8",
+              "question": "Le Rhin et le Danube :",
+              "type": "single_choice",
+              "options": [
+                "Structurent axes de transport",
+                "N'existent pas",
+                "Remplacent Parlement",
+                "Suppriment DROM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voies fluviales majeures."
+            },
+            {
+              "id": "q9",
+              "question": "Inégalités à l'intérieur de l'UE :",
+              "type": "single_choice",
+              "options": [
+                "Persistent entre régions",
+                "Ont totalement disparu",
+                "Concernent Schengen seul",
+                "Ignorent l'euro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Est et sud parfois moins riches."
+            },
+            {
+              "id": "q10",
+              "question": "Cartographier l'UE aide à :",
+              "type": "single_choice",
+              "options": [
+                "Visualiser intégration et voisinages",
+                "Oublier élargissements",
+                "Supprimer France",
+                "Fin citoyenneté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture spatiale du projet européen."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Défis et débats européens",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels défis l'UE affronte ?",
+              "type": "multiple_choice",
+              "options": [
+                "Migration et asile",
+                "Climat",
+                "Absence totale de démocratie",
+                "Guerre sur la Lune"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Migrations, climat, sécurité, cohésion sont des enjeux."
+            },
+            {
+              "id": "q2",
+              "question": "Populisme et euroscepticisme :",
+              "type": "single_choice",
+              "options": [
+                "Remettent en cause l'intégration",
+                "Renforcent toujours l'euro",
+                "Créent Schengen",
+                "Élargissent automatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débats sur souveraineté et UE."
+            },
+            {
+              "id": "q3",
+              "question": "Solidarité entre États peut signifier :",
+              "type": "single_choice",
+              "options": [
+                "Aide en cas de crise",
+                "Isolement",
+                "Fin Parlement",
+                "Suppression euro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plans de relance ou aide humanitaire."
+            },
+            {
+              "id": "q4",
+              "question": "Sécurité énergétique en UE :",
+              "type": "single_choice",
+              "options": [
+                "Diversifier approvisionnements",
+                "Ignorer électricité",
+                "Quitter terre",
+                "Fin Schengen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduire dépendance et développer renouvelables."
+            },
+            {
+              "id": "q5",
+              "question": "Démocratie européenne se renforce par :",
+              "type": "single_choice",
+              "options": [
+                "Participation aux élections européennes",
+                "Absence de vote",
+                "Fin citoyenneté",
+                "Schengen seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parlement plus visible et débats publics."
+            },
+            {
+              "id": "q6",
+              "question": "Fake news sur l'UE :",
+              "type": "single_choice",
+              "options": [
+                "Nécessitent esprit critique",
+                "Sont toujours vraies",
+                "Remplacent traités",
+                "Créent DROM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vérifier sources fiables."
+            },
+            {
+              "id": "q7",
+              "question": "Coopération policière Schengen aide à :",
+              "type": "single_choice",
+              "options": [
+                "Lutter contre criminalité transfrontalière",
+                "Supprimer lois",
+                "Fin euro",
+                "Fermer écoles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échange d'informations entre polices."
+            },
+            {
+              "id": "q8",
+              "question": "Vieillissement démographique en Europe :",
+              "type": "single_choice",
+              "options": [
+                "Pose défi aux retraites et soins",
+                "Disparaît demain",
+                "Concerne Schengen seul",
+                "Interdit élargissement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pyramide des âges se creuse."
+            },
+            {
+              "id": "q9",
+              "question": "L'UE et la paix en Ukraine montrent :",
+              "type": "single_choice",
+              "options": [
+                "Importance sécurité continentale",
+                "Fin géographie",
+                "Suppression France",
+                "Monnaie yen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guerre proche rappelle enjeux de défense."
+            },
+            {
+              "id": "q10",
+              "question": "Débats sur élargissement future :",
+              "type": "single_choice",
+              "options": [
+                "Pèsent capacité d'accueil de l'UE",
+                "Interdisent tout candidat",
+                "Suppriment Parlement",
+                "Effacent euro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réformes et critères discutés."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "France dans l'Union européenne",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quel rôle la France joue-t-elle dans l'UE ?",
+              "type": "multiple_choice",
+              "options": [
+                "Membre fondateur",
+                "État absent",
+                "Poids politique et économique important",
+                "Pays sans vote"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "France influente depuis les traités fondateurs."
+            },
+            {
+              "id": "q2",
+              "question": "Franco-allemand désigne :",
+              "type": "single_choice",
+              "options": [
+                "Couple moteur de coopération",
+                "Guerre permanente",
+                "Fin Schengen",
+                "Monnaie yen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alliance clé pour décisions européennes."
+            },
+            {
+              "id": "q3",
+              "question": "La France utilise :",
+              "type": "single_choice",
+              "options": ["L'euro", "La livre", "Le peso", "Aucune monnaie"],
+              "correctAnswers": [0],
+              "explanation": "Membre de la zone euro."
+            },
+            {
+              "id": "q4",
+              "question": "Des régions françaises reçoivent :",
+              "type": "single_choice",
+              "options": [
+                "Fonds européens de cohésion",
+                "Rien jamais",
+                "Schengen seul",
+                "Siège BCE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soutien pour développement local."
+            },
+            {
+              "id": "q5",
+              "question": "Présidence tournante du Conseil :",
+              "type": "single_choice",
+              "options": [
+                "Permet à chaque État d'animer l'agenda",
+                "Durée unique française",
+                "Supprime Parlement",
+                "Ferme DROM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque pays président six mois."
+            },
+            {
+              "id": "q6",
+              "question": "Agriculteurs français sont concernés par :",
+              "type": "single_choice",
+              "options": ["La PAC", "Schengen seul", "Parlement US", "Lune"],
+              "correctAnswers": [0],
+              "explanation": "Politique agricole commune."
+            },
+            {
+              "id": "q7",
+              "question": "Frontaliers français en UE profitent de :",
+              "type": "single_choice",
+              "options": [
+                "Travail et commerces transfrontaliers",
+                "Interdiction de bouger",
+                "Fin euro",
+                "Retrait DROM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mobilité Schengen et marché unique."
+            },
+            {
+              "id": "q8",
+              "question": "La France défend parfois :",
+              "type": "single_choice",
+              "options": [
+                "Intérêts nationaux dans négociations UE",
+                "Isolement total",
+                "Sortie automatique",
+                "Suppression régions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équilibre entre national et européen."
+            },
+            {
+              "id": "q9",
+              "question": "Jeunes français peuvent :",
+              "type": "single_choice",
+              "options": [
+                "Participer à Erasmus",
+                "Jamais quitter leur rue",
+                "Voter au Japon",
+                "Imprimer dollar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mobilité étudiante européenne."
+            },
+            {
+              "id": "q10",
+              "question": "Comprendre l'UE en 3e depuis la France :",
+              "type": "single_choice",
+              "options": [
+                "Relie cours de géo et citoyenneté",
+                "Ignore territoire",
+                "Supprime euro",
+                "Efface Schengen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double appartenance nationale et européenne."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse Europe politique",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "L'Union européenne combine :",
+              "type": "multiple_choice",
+              "options": [
+                "Coopération politique",
+                "Marché économique intégré",
+                "Suppression de tous les États",
+                "Guerre entre membres"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Projet politique et économique sans fusion totale des États."
+            },
+            {
+              "id": "q2",
+              "question": "Institutions clés à retenir :",
+              "type": "single_choice",
+              "options": [
+                "Parlement, Commission, Conseil",
+                "NASA seule",
+                "Schengen seul",
+                "DROM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Triangle décisionnel européen."
+            },
+            {
+              "id": "q3",
+              "question": "L'euro concerne :",
+              "type": "single_choice",
+              "options": [
+                "Zone monétaire spécifique",
+                "Tous pays du monde",
+                "Schengen uniquement",
+                "Antarctique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinct de l'ensemble des membres UE."
+            },
+            {
+              "id": "q4",
+              "question": "Schengen concerne surtout :",
+              "type": "single_choice",
+              "options": [
+                "Personnes et frontières",
+                "Monnaie obligatoire",
+                "Parlement seul",
+                "PAC seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Espace de libre circulation."
+            },
+            {
+              "id": "q5",
+              "question": "Élargissements montrent :",
+              "type": "single_choice",
+              "options": [
+                "UE ouverte sous conditions",
+                "UE fermée",
+                "Fin France",
+                "Suppression euro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Candidats doivent réformer pour adhérer."
+            },
+            {
+              "id": "q6",
+              "question": "Citoyenneté européenne complète :",
+              "type": "single_choice",
+              "options": [
+                "Citoyenneté nationale",
+                "Remplace identité locale totalement",
+                "Interdit régions",
+                "Supprime DROM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Droits supplémentaires, pas substitution."
+            },
+            {
+              "id": "q7",
+              "question": "Défis actuels incluent :",
+              "type": "single_choice",
+              "options": [
+                "Climat, sécurité, cohésion",
+                "Absence de débat",
+                "Fin géographie",
+                "Monnaie lunaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Action collective nécessaire."
+            },
+            {
+              "id": "q8",
+              "question": "La France et l'UE :",
+              "type": "single_choice",
+              "options": [
+                "S'influencent mutuellement",
+                "Sans lien",
+                "France hors continent",
+                "UE sans France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Membre actif depuis l'origine."
+            },
+            {
+              "id": "q9",
+              "question": "Cartes et chronologies aident à :",
+              "type": "single_choice",
+              "options": [
+                "Mémoriser élargissements et institutions",
+                "Oublier Schengen",
+                "Supprimer euro",
+                "Ignorer territoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outils de géographie et histoire."
+            },
+            {
+              "id": "q10",
+              "question": "En 3e, étudier l'Europe politique sert à :",
+              "type": "single_choice",
+              "options": [
+                "Devenir citoyen informé",
+                "Refuser démocratie",
+                "Ignorer aménagement",
+                "Effacer DROM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre enjeux du continent et de la France."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

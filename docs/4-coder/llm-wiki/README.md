@@ -1,23 +1,34 @@
 # Wiki technique mAI Coder
 
-Ce Wiki fournit des points d’entrée vers l’architecture et les modules importants de apps/coder/. Il réduit le temps de recherche sans remplacer la lecture du code. En cas d’écart, la source active et les types distribués font foi ; documentez ensuite la correction.
+Points d'entrée vers l'architecture et les modules de `apps/coder/`. Ce wiki
+réduit le temps de recherche ; il ne remplace **pas** la lecture du code. En cas
+d'écart, la source active et les types distribués font foi, puis la page est
+corrigée dans le même mouvement.
 
 ## Navigation
 
-- [Vue d’ensemble du projet](project-overview.md)
-- [Carte du dépôt](repo-map.md)
-- [Architecture des processus et IPC](architecture/runtime-architecture.md)
-- [Carte des canaux IPC](architecture/ipc-channel-map.md)
-- [Agent et orchestration d’équipe](architecture/agent-system.md)
-- [État et persistance](architecture/state-and-memory.md)
-- [Recherche dans le workspace, LSP et navigateur](architecture/workspace-intelligence.md)
-- [Index des pages de modules](modules/README.md)
-- [Développement et publication](operations/dev-workflow.md)
-- [Maintenance du Wiki](meta/maintenance-playbook.md)
-- [Questions et contradictions connues](meta/contradictions-and-open-questions.md)
+| Niveau | Pages |
+| --- | --- |
+| Vue d'ensemble | [project-overview.md](project-overview.md) · [repo-map.md](repo-map.md) |
+| Architecture | [runtime-architecture.md](architecture/runtime-architecture.md) · [ipc-channel-map.md](architecture/ipc-channel-map.md) · [agent-system.md](architecture/agent-system.md) · [state-and-memory.md](architecture/state-and-memory.md) · [workspace-intelligence.md](architecture/workspace-intelligence.md) |
+| Modules | [Index des pages de modules](modules/README.md) |
+| Opérations | [dev-workflow.md](operations/dev-workflow.md) |
+| Métrologie du wiki | [maintenance-playbook.md](meta/maintenance-playbook.md) · [preload-main-invoke-checklist.md](meta/preload-main-invoke-checklist.md) · [contradictions-and-open-questions.md](meta/contradictions-and-open-questions.md) |
+
+## Périmètre
+
+Ce wiki décrit **mAI Coder uniquement**. Ni l'application Next mAI Web, ni les
+sources autonomes Vibe, Wakies et Site, ni le jeu Blackline.
 
 ## Maintenir les pages
 
-Lorsqu’un comportement évolue, mettez à jour la page de domaine et les fiches des modules concernés. Retirez les conclusions devenues fausses au lieu d’empiler des historiques contradictoires. Indiquez les sources examinées et les limites encore ouvertes.
+Quand un comportement évolue, mettre à jour la page d'architecture **et** les
+fiches des modules concernés. Retirer les conclusions devenues fausses plutôt
+que d'empiler des historiques contradictoires : [le registre des
+contradictions](meta/contradictions-and-open-questions.md) signale déjà les
+cartes incomplètes (les canaux IPC y sont couverts partiellement) et les
+questions ouvertes. Indiquer les sources examinées et les limites restantes.
 
-Le Wiki décrit mAI Coder dans apps/coder/. Il ne décrit pas l’application Next mAI Web, ni les applications autonomes Vibe, Wakies et Site.
+Le point d'entrée d'une modification du pont Main/Renderer est la
+[checklist preload ↔ Main](meta/preload-main-invoke-checklist.md) : un canal non
+déclaré des deux côtés ne casse pas au build, mais à l'exécution.

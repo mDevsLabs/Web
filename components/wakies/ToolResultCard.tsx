@@ -1,8 +1,11 @@
 "use client";
 
+import { ChevronDownIcon } from "@mdevs/icons/arrows/chevron-down";
+import { ChevronRightIcon } from "@mdevs/icons/arrows/chevron-right";
+import { CopyIcon } from "@mdevs/icons/misc/copy";
+import { SparklesIcon } from "@mdevs/icons/misc/sparkles";
 /** Port des cartes de résultats OpenMuse : le format AI SDK est interprété explicitement, sans exécuter le contenu retourné. */
 import type { UIMessage } from "ai";
-import { ChevronDownIcon, ChevronRightIcon, SparklesIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Markdown } from "@/components/wakies/markdown";
 import { PluginToolLogo } from "@/lib/integrations/logo";
@@ -38,24 +41,43 @@ function WakiesReasoningCard({
   }, [isFinished]);
 
   const text = part.text ?? part.reasoning ?? "";
+  const [copied, setCopied] = useState(false);
   if (!text) return null;
 
   return (
     <div className="wakies-reasoning">
-      <button
-        aria-expanded={isOpen}
-        className="wakies-reasoning-trigger"
-        onClick={() => setIsOpen((prev) => !prev)}
-        type="button"
-      >
-        {isOpen ? (
-          <ChevronDownIcon size={13} />
-        ) : (
-          <ChevronRightIcon size={13} />
-        )}
-        <SparklesIcon className="opacity-70" size={12} />
-        <span>{isFinished ? "A réfléchi" : "Réflexion en cours…"}</span>
-      </button>
+      <div className="wakies-reasoning-head">
+        <button
+          aria-expanded={isOpen}
+          className="wakies-reasoning-trigger"
+          onClick={() => setIsOpen((prev) => !prev)}
+          type="button"
+        >
+          {isOpen ? (
+            <ChevronDownIcon size={13} />
+          ) : (
+            <ChevronRightIcon size={13} />
+          )}
+          <SparklesIcon className="opacity-70" size={12} />
+          <span>{isFinished ? "A réfléchi" : "Réflexion en cours…"}</span>
+        </button>
+        <button
+          className="wakies-reasoning-copy"
+          onClick={() => {
+            navigator.clipboard
+              .writeText(text)
+              .then(() => {
+                setCopied(true);
+                window.setTimeout(() => setCopied(false), 2000);
+              })
+              .catch(() => {});
+          }}
+          type="button"
+        >
+          <CopyIcon size={12} />
+          {copied ? "Copié" : "Copier"}
+        </button>
+      </div>
       {isOpen ? (
         <div className="wakies-reasoning-content">
           <Markdown>{text}</Markdown>

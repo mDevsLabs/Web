@@ -1,0 +1,2493 @@
+{
+  "id": "3e-italien-02",
+  "year": "3e",
+  "subject": "italien",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La mia famiglia",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent des membres proches de la famille ?",
+              "type": "multiple_choice",
+              "options": [
+                "il fratello",
+                "la professoressa",
+                "la sorella",
+                "il bidello"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Fratello et sorella sont frère et sœur ; professoressa et bidello appartiennent à l'école."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « mes parents » ?",
+              "type": "single_choice",
+              "options": [
+                "i miei genitori",
+                "i miei cugini",
+                "i miei compagni",
+                "i miei vicini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Genitori = parents ; cugini = cousins, compagni = camarades."
+            },
+            {
+              "id": "q3",
+              "question": "« Ho due nonni » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai deux grands-parents",
+                "J'ai deux oncles",
+                "J'ai deux enfants",
+                "J'ai deux cousins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nonni = grands-parents ; ho = j'ai."
+            },
+            {
+              "id": "q4",
+              "question": "Quel mot correspond à « le fils » ?",
+              "type": "single_choice",
+              "options": ["il figlio", "la figlia", "lo zio", "il nipote"],
+              "correctAnswers": [0],
+              "explanation": "Figlio = fils ; figlia = fille ; zio = oncle ; nipote = neveu/neveu ou petit-enfant selon le contexte."
+            },
+            {
+              "id": "q5",
+              "question": "« Mia madre lavora in ufficio » : où travaille la mère ?",
+              "type": "single_choice",
+              "options": [
+                "Au bureau",
+                "À l'école",
+                "Au supermercato",
+                "In ospedale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ufficio = bureau."
+            },
+            {
+              "id": "q6",
+              "question": "Comment dit-on « mon oncle » ?",
+              "type": "single_choice",
+              "options": ["mio zio", "mia zia", "mio cugino", "mio nonno"],
+              "correctAnswers": [0],
+              "explanation": "Zio = oncle ; zia = tante."
+            },
+            {
+              "id": "q7",
+              "question": "« Siamo una famiglia numerosa » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Nous sommes une famille nombreuse",
+                "Nous sommes une petite famille",
+                "Nous sommes en vacances",
+                "Nous sommes en retard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Numerosa = nombreuse."
+            },
+            {
+              "id": "q8",
+              "question": "Quel mot est féminin ?",
+              "type": "single_choice",
+              "options": ["la nonna", "il nonno", "il padre", "lo zio"],
+              "correctAnswers": [0],
+              "explanation": "Nonna = grand-mère (féminin)."
+            },
+            {
+              "id": "q9",
+              "question": "« Abito con i miei genitori » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je vis avec mes parents",
+                "Je parle avec mes parents",
+                "Je voyage avec mes parents",
+                "Je mange avec mes parents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abitare con = vivre avec."
+            },
+            {
+              "id": "q10",
+              "question": "Comment dit-on « la tante » ?",
+              "type": "single_choice",
+              "options": ["la zia", "lo zio", "la cugina", "la nonna"],
+              "correctAnswers": [0],
+              "explanation": "Zia = tante."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "A scuola",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont liés au collège ?",
+              "type": "multiple_choice",
+              "options": ["l'aula", "il mercato", "la lezione", "la spiaggia"],
+              "correctAnswers": [0, 2],
+              "explanation": "Aula = salle de classe, lezione = cours ; mercato et spiaggia ne sont pas scolaires."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « le professeur de maths » ?",
+              "type": "single_choice",
+              "options": [
+                "il professore di matematica",
+                "il medico di matematica",
+                "il cuoco di matematica",
+                "il postino di matematica"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Professore di… = professeur de…"
+            },
+            {
+              "id": "q3",
+              "question": "« Ho matematica il lunedì » : quand a-t-on maths ?",
+              "type": "single_choice",
+              "options": ["Le lundi", "Le mardi", "Le vendredi", "Le dimanche"],
+              "correctAnswers": [0],
+              "explanation": "Lunedì = lundi."
+            },
+            {
+              "id": "q4",
+              "question": "Que signifie « l'intervallo » ?",
+              "type": "single_choice",
+              "options": [
+                "La récréation",
+                "L'examen",
+                "Le devoir",
+                "La cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intervallo = pause/récréation à l'école."
+            },
+            {
+              "id": "q5",
+              "question": "« Devo studiare per l'esame » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je dois réviser pour l'examen",
+                "Je dois manger à la cantine",
+                "Je dois jouer au foot",
+                "Je dois dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Studiare per l'esame = réviser pour l'examen."
+            },
+            {
+              "id": "q6",
+              "question": "Comment dit-on « les camarades de classe » ?",
+              "type": "single_choice",
+              "options": [
+                "i compagni di classe",
+                "i fratelli di classe",
+                "i vicini di classe",
+                "i cugini di classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compagni di classe = camarades de classe."
+            },
+            {
+              "id": "q7",
+              "question": "« La mensa è alle dodici » : à quelle heure la cantine ?",
+              "type": "single_choice",
+              "options": [
+                "À midi",
+                "À huit heures",
+                "À quinze heures",
+                "À vingt heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dodici = douze (midi)."
+            },
+            {
+              "id": "q8",
+              "question": "Quel mot désigne « la salle de classe » ?",
+              "type": "single_choice",
+              "options": [
+                "l'aula",
+                "la palestra",
+                "la biblioteca",
+                "la cucina"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aula = salle de classe."
+            },
+            {
+              "id": "q9",
+              "question": "« Prendo l'autobus per andare a scuola » : comment va-t-on au collège ?",
+              "type": "single_choice",
+              "options": ["En bus", "À vélo", "En avion", "En bateau"],
+              "correctAnswers": [0],
+              "explanation": "Autobus = bus."
+            },
+            {
+              "id": "q10",
+              "question": "Comment dit-on « j'ai une interrogation » ?",
+              "type": "single_choice",
+              "options": [
+                "Ho un'interrogazione",
+                "Ho un gelato",
+                "Ho un libro di sport",
+                "Ho un cinema"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interrogazione = contrôle oral/interro."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "L'orario",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases parlent de l'heure ?",
+              "type": "multiple_choice",
+              "options": [
+                "Sono le otto",
+                "Mi piace la pizza",
+                "È mezzogiorno",
+                "Ho un cane"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Sono le otto et È mezzogiorno indiquent l'heure."
+            },
+            {
+              "id": "q2",
+              "question": "« Sono le sette e mezza » : quelle heure ?",
+              "type": "single_choice",
+              "options": [
+                "Sept heures et demie",
+                "Sept heures moins le quart",
+                "Huit heures",
+                "Six heures et demie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "E mezza = et demie."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « il est midi » ?",
+              "type": "single_choice",
+              "options": [
+                "È mezzogiorno",
+                "È mezzanotte",
+                "Sono le dodici di notte",
+                "Sono le sei"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mezzogiorno = midi."
+            },
+            {
+              "id": "q4",
+              "question": "« A che ora inizia la lezione ? » demande :",
+              "type": "single_choice",
+              "options": [
+                "À quelle heure commence le cours ?",
+                "Où est le cours ?",
+                "Qui enseigne ?",
+                "Combien coûte le cours ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A che ora = à quelle heure."
+            },
+            {
+              "id": "q5",
+              "question": "« Sono le quindici e un quart » correspond à :",
+              "type": "single_choice",
+              "options": ["15 h 15", "15 h 45", "14 h 15", "16 h 15"],
+              "correctAnswers": [0],
+              "explanation": "En italien on dit souvent le quart après l'heure (15 h 15)."
+            },
+            {
+              "id": "q6",
+              "question": "Comment dit-on « demi » après l'heure ?",
+              "type": "single_choice",
+              "options": ["e mezza", "e un quart", "meno un quart", "in punto"],
+              "correctAnswers": [0],
+              "explanation": "E mezza = et demie."
+            },
+            {
+              "id": "q7",
+              "question": "« La scuola finisce alle sedici » : fin à quelle heure ?",
+              "type": "single_choice",
+              "options": ["16 h", "14 h", "18 h", "12 h"],
+              "correctAnswers": [0],
+              "explanation": "Sedici = seize."
+            },
+            {
+              "id": "q8",
+              "question": "« Sono le dieci meno dieci » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Neuf heures cinquante",
+                "Dix heures dix",
+                "Huit heures cinquante",
+                "Dix heures moins dix (9 h 50)"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Meno dieci = moins dix minutes (9 h 50)."
+            },
+            {
+              "id": "q9",
+              "question": "Comment demander l'heure poliment ?",
+              "type": "single_choice",
+              "options": [
+                "Che ore sono?",
+                "Che cosa mangi?",
+                "Dove abiti?",
+                "Quanti anni hai?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Che ore sono ? = Quelle heure est-il ?"
+            },
+            {
+              "id": "q10",
+              "question": "« Mi alzo alle sette » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je me lève à sept heures",
+                "Je me couche à sept heures",
+                "Je déjeune à sept heures",
+                "Je rentre à sept heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alzarsi = se lever."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "I compiti",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots concernent les devoirs ?",
+              "type": "multiple_choice",
+              "options": [
+                "i compiti",
+                "il compito a casa",
+                "la partita",
+                "l'esercizio di matematica"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Compiti et compito a casa = devoirs ; partita = match (sport). L'exercice peut être un devoir mais la consigne demande deux réponses liées aux devoirs — compiti et compito a casa sont les plus directs."
+            },
+            {
+              "id": "q2",
+              "question": "« Devo fare i compiti » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je dois faire mes devoirs",
+                "Je dois faire du sport",
+                "Je dois dormir",
+                "Je dois cuisiner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fare i compiti = faire les devoirs."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « après les cours » ?",
+              "type": "single_choice",
+              "options": [
+                "dopo le lezioni",
+                "prima delle lezioni",
+                "durante le lezioni",
+                "senza lezioni"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dopo = après."
+            },
+            {
+              "id": "q4",
+              "question": "« Ho finito i compiti » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "J'ai fini mes devoirs",
+                "J'ai commencé mes devoirs",
+                "Je n'ai pas de devoirs",
+                "J'ai perdu mes devoirs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Finire = finir."
+            },
+            {
+              "id": "q5",
+              "question": "Où travaille-t-on souvent le soir ?",
+              "type": "single_choice",
+              "options": ["a casa", "in piscina", "al cinema", "in montagna"],
+              "correctAnswers": [0],
+              "explanation": "A casa = à la maison."
+            },
+            {
+              "id": "q6",
+              "question": "« Devo imparare le regole » : que faut-il faire ?",
+              "type": "single_choice",
+              "options": [
+                "Apprendre les règles",
+                "Oublier les règles",
+                "Jeter le cahier",
+                "Regarder la télé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Imparare = apprendre."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « c'est difficile » ?",
+              "type": "single_choice",
+              "options": ["È difficile", "È facile", "È noioso", "È veloce"],
+              "correctAnswers": [0],
+              "explanation": "Difficile = difficile."
+            },
+            {
+              "id": "q8",
+              "question": "« Chiedo aiuto a mia madre » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je demande de l'aide à ma mère",
+                "Je parle au professeur",
+                "Je joue avec ma mère",
+                "Je cuisine avec ma mère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chiedere aiuto = demander de l'aide."
+            },
+            {
+              "id": "q9",
+              "question": "« Uso il dizionario » : quel objet utilise-t-on ?",
+              "type": "single_choice",
+              "options": [
+                "Le dictionnaire",
+                "Le téléphone",
+                "Le ballon",
+                "La guitare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dizionario = dictionnaire."
+            },
+            {
+              "id": "q10",
+              "question": "« Domani consegno il compito » : quand rend-on le devoir ?",
+              "type": "single_choice",
+              "options": [
+                "Demain",
+                "Aujourd'hui",
+                "Hier",
+                "La semaine prochaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Domani = demain ; consegnare = rendre/remettre."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Sport e tempo libero",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles activités sont des loisirs ?",
+              "type": "multiple_choice",
+              "options": [
+                "giocare a calcio",
+                "ascoltare musica",
+                "fare l'esame",
+                "andare in biblioteca scolastica obbligatoria"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Calcio et musica sont des loisirs ; l'examen n'est pas un loisir."
+            },
+            {
+              "id": "q2",
+              "question": "« Mi piace nuotare » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'aime nager",
+                "Je déteste nager",
+                "Je nage demain seulement",
+                "Je nage à l'école obligatoirement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mi piace + infinitif = j'aime…"
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « jouer au basket » ?",
+              "type": "single_choice",
+              "options": [
+                "giocare a basket",
+                "giocare a scuola",
+                "giocare a compiti",
+                "giocare a lezione"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Giocare a + sport."
+            },
+            {
+              "id": "q4",
+              "question": "« Vado in palestra il martedì » : où va-t-on ?",
+              "type": "single_choice",
+              "options": [
+                "À la salle de sport",
+                "À la plage",
+                "Au musée",
+                "À l'église"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Palestra = salle de gym/sport."
+            },
+            {
+              "id": "q5",
+              "question": "« Leggo un fumetto » : que lit-on ?",
+              "type": "single_choice",
+              "options": [
+                "Une bande dessinée",
+                "Un dictionnaire",
+                "Un horaire",
+                "Un examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fumetto = BD."
+            },
+            {
+              "id": "q6",
+              "question": "Comment dit-on « écouter de la musique » ?",
+              "type": "single_choice",
+              "options": [
+                "ascoltare musica",
+                "mangiare musica",
+                "scrivere musica",
+                "dormire musica"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ascoltare = écouter."
+            },
+            {
+              "id": "q7",
+              "question": "« Faccio una passeggiata con il cane » : avec qui ?",
+              "type": "single_choice",
+              "options": [
+                "Avec le chien",
+                "Avec le prof",
+                "Avec le bus",
+                "Avec le livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cane = chien ; passeggiata = promenade."
+            },
+            {
+              "id": "q8",
+              "question": "Quel sport est « il calcio » ?",
+              "type": "single_choice",
+              "options": ["Le football", "Le tennis", "La natation", "Le ski"],
+              "correctAnswers": [0],
+              "explanation": "Calcio = football en italien."
+            },
+            {
+              "id": "q9",
+              "question": "« Nel tempo libero guardo serie TV » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Pendant mon temps libre je regarde des séries",
+                "À l'école je regarde la télé",
+                "Je ne regarde jamais la télé",
+                "Je fais mes devoirs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tempo libre = temps libre."
+            },
+            {
+              "id": "q10",
+              "question": "Comment dit-on « sortir avec des amis » ?",
+              "type": "single_choice",
+              "options": [
+                "uscire con gli amici",
+                "entrare con gli amici",
+                "studiare con gli amici",
+                "dormire con gli amici"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Uscire = sortir."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Amici e telefono",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases concernent les amis ou le téléphone ?",
+              "type": "multiple_choice",
+              "options": [
+                "Il mio amico mi chiama",
+                "Ho lezione di storia",
+                "Scrivo un messaggio",
+                "Vado a dormire alle otto di mattina"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Chiama et messaggio = téléphone/amis."
+            },
+            {
+              "id": "q2",
+              "question": "« Ho un gruppo WhatsApp con i compagni » : c'est quoi ?",
+              "type": "single_choice",
+              "options": [
+                "Un groupe de messagerie avec les camarades",
+                "Un club de sport",
+                "Un devoir de maths",
+                "Une salle de classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gruppo WhatsApp = groupe de chat."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « envoyer un message » ?",
+              "type": "single_choice",
+              "options": [
+                "inviare un messaggio",
+                "mangiare un messaggio",
+                "cancellare la scuola",
+                "aprire un libro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inviare = envoyer."
+            },
+            {
+              "id": "q4",
+              "question": "« Ti chiamo stasera » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je t'appelle ce soir",
+                "Je t'écris demain",
+                "Je te vois à midi",
+                "Je pars maintenant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stasera = ce soir ; chiamare = appeler."
+            },
+            {
+              "id": "q5",
+              "question": "« La mia migliore amica si chiama Giulia » : qui est Giulia ?",
+              "type": "single_choice",
+              "options": [
+                "La meilleure amie",
+                "La professeure",
+                "La sœur du prof",
+                "La voisine uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Migliore amica = meilleure amie."
+            },
+            {
+              "id": "q6",
+              "question": "Comment dit-on « nous nous retrouvons au parc » ?",
+              "type": "single_choice",
+              "options": [
+                "Ci vediamo al parco",
+                "Ci studiamo al parco",
+                "Ci dormiamo al parco",
+                "Ci esaminiamo al parco"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ci vediamo = on se voit / rendez-vous."
+            },
+            {
+              "id": "q7",
+              "question": "« Non rispondo al telefono in classe » : pourquoi ?",
+              "type": "single_choice",
+              "options": [
+                "Parce qu'en cours on ne répond pas",
+                "Parce qu'il n'y a pas de téléphone",
+                "Parce que c'est minuit",
+                "Parce que c'est dimanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In classe = en cours."
+            },
+            {
+              "id": "q8",
+              "question": "Quel mot signifie « ami » (masculin) ?",
+              "type": "single_choice",
+              "options": [
+                "l'amico",
+                "l'amica",
+                "il nemico",
+                "il compagno di banco seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amico = ami (m) ; amica = amie (f)."
+            },
+            {
+              "id": "q9",
+              "question": "« Condivido una foto » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Je partage une photo",
+                "Je mange une photo",
+                "J'efface une photo",
+                "Je perds une photo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Condividere = partager."
+            },
+            {
+              "id": "q10",
+              "question": "« Ci sentiamo domani » signifie :",
+              "type": "single_choice",
+              "options": [
+                "On se parle demain",
+                "On ne se parle jamais",
+                "On est en cours",
+                "On est en vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ci sentiamo = on se contacte / à demain (au téléphone)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "La casa",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont des pièces ou lieux de la maison ?",
+              "type": "multiple_choice",
+              "options": [
+                "la cucina",
+                "il bagno",
+                "il campo di calcio",
+                "la camera da letto"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cucina, bagno, camera da letto = maison ; campo di calcio = terrain de foot (dehors)."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « ma chambre » ?",
+              "type": "single_choice",
+              "options": [
+                "la mia camera",
+                "la mia lezione",
+                "la mia classe",
+                "la mia mensa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Camera (da letto) = chambre."
+            },
+            {
+              "id": "q3",
+              "question": "« In salotto guardiamo la TV » : dans quelle pièce ?",
+              "type": "single_choice",
+              "options": [
+                "Le salon",
+                "La cuisine",
+                "La salle de bain",
+                "Le garage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salotto = salon."
+            },
+            {
+              "id": "q4",
+              "question": "« Aiuto mia madre in cucina » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'aide ma mère dans la cuisine",
+                "Je dors dans la cuisine",
+                "Je fais du sport",
+                "Je vais au collège"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cucina = cuisine."
+            },
+            {
+              "id": "q5",
+              "question": "Quel mot désigne « la salle de bain » ?",
+              "type": "single_choice",
+              "options": [
+                "il bagno",
+                "il balcone",
+                "il giardino",
+                "il corridoio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bagno = salle de bain."
+            },
+            {
+              "id": "q6",
+              "question": "« Il mio quartiere è tranquillo » : comment est le quartier ?",
+              "type": "single_choice",
+              "options": [
+                "Calme",
+                "Très bruyant",
+                "Loin de la maison",
+                "À l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tranquillo = calme."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « le jardin » ?",
+              "type": "single_choice",
+              "options": [
+                "il giardino",
+                "il giardiniere",
+                "il mercato",
+                "il palazzo scolastico"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Giardino = jardin."
+            },
+            {
+              "id": "q8",
+              "question": "« Abito in un appartamento al terzo piano » : où habite-t-on ?",
+              "type": "single_choice",
+              "options": [
+                "Dans un appartement au 3e étage",
+                "Dans une maison à la campagne",
+                "À l'hôtel",
+                "À l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appartamento al terzo piano = appartement 3e étage."
+            },
+            {
+              "id": "q9",
+              "question": "« Pulisco la mia stanza il sabato » : que fait-on le samedi ?",
+              "type": "single_choice",
+              "options": [
+                "On nettoie sa chambre",
+                "On va en classe",
+                "On passe un examen",
+                "On nage à la piscine obligatoirement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pulire = nettoyer ; stanza = chambre/pièce."
+            },
+            {
+              "id": "q10",
+              "question": "Comment dit-on « la table » (meuble) ?",
+              "type": "single_choice",
+              "options": [
+                "il tavolo",
+                "la tavola (le table du repas)",
+                "il banco scolastico",
+                "il quaderno"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tavolo = table (meuble) ; tavola peut désigner la table mise pour manger."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Il fine settimana",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles activités typiques du week-end ?",
+              "type": "multiple_choice",
+              "options": [
+                "dormire fino a tardi",
+                "andare al cinema",
+                "fare l'interrogazione il sabato mattina in classe obbligatoire",
+                "passare tempo in famiglia"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Dormir tard et temps en famille sont typiques ; interrogation obligatoire samedi matin n'est pas un loisir classique."
+            },
+            {
+              "id": "q2",
+              "question": "« Il sabato vado al parco » : quel jour ?",
+              "type": "single_choice",
+              "options": ["Samedi", "Dimanche", "Lundi", "Mercredi"],
+              "correctAnswers": [0],
+              "explanation": "Sabato = samedi."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « dimanche » ?",
+              "type": "single_choice",
+              "options": ["domenica", "domani", "dodici", "differenza"],
+              "correctAnswers": [0],
+              "explanation": "Domenica = dimanche ; domani = demain."
+            },
+            {
+              "id": "q4",
+              "question": "« Domenica pranziamo dai nonni » : où déjeune-t-on ?",
+              "type": "single_choice",
+              "options": [
+                "Chez les grands-parents",
+                "À l'école",
+                "Au stade",
+                "À la gare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dai nonni = chez les grands-parents."
+            },
+            {
+              "id": "q5",
+              "question": "« Non c'è scuola nel week-end » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Il n'y a pas école le week-end",
+                "L'école est ouverte samedi",
+                "On a cours dimanche matin",
+                "On a examen samedi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Week-end = pas de cours (en général)."
+            },
+            {
+              "id": "q6",
+              "question": "Comment dit-on « se reposer » ?",
+              "type": "single_choice",
+              "options": ["riposarsi", "correre", "studiare", "urlare"],
+              "correctAnswers": [0],
+              "explanation": "Riposarsi = se reposer."
+            },
+            {
+              "id": "q7",
+              "question": "« Andiamo in pizzeria stasera » : où va-t-on ?",
+              "type": "single_choice",
+              "options": [
+                "À la pizzeria",
+                "À la piscine",
+                "En classe",
+                "Au bureau du prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pizzeria = pizzeria."
+            },
+            {
+              "id": "q8",
+              "question": "« Il fine settimana passa veloce » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Le week-end passe vite",
+                "Le week-end est très long",
+                "La semaine passe vite",
+                "L'école passe vite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Veloce = vite."
+            },
+            {
+              "id": "q9",
+              "question": "« Preparo lo zaino per lunedì » : pourquoi ?",
+              "type": "single_choice",
+              "options": [
+                "Pour être prêt pour la rentrée lundi",
+                "Pour aller à la plage",
+                "Pour dormir",
+                "Pour jeter les cahiers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zaino = sac à dos ; lunedì = lundi."
+            },
+            {
+              "id": "q10",
+              "question": "Comment dit-on « s'amuser » ?",
+              "type": "single_choice",
+              "options": [
+                "divertirsi",
+                "annoiarsi",
+                "lavorare",
+                "dormire in classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Divertirsi = s'amuser."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Che ore sono?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles réponses donnent une heure ?",
+              "type": "multiple_choice",
+              "options": [
+                "Sono le nove",
+                "Sono stanco",
+                "Sono le diciotto in punto",
+                "Ho fame"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Sono le nove et diciotto in punto = heures."
+            },
+            {
+              "id": "q2",
+              "question": "« Sono le tredici » en style 24 h :",
+              "type": "single_choice",
+              "options": ["13 h", "3 h", "23 h", "1 h"],
+              "correctAnswers": [0],
+              "explanation": "Tredici = treize."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « pile » (heure exacte) ?",
+              "type": "single_choice",
+              "options": ["in punto", "in ritardo", "in anticipo", "in classe"],
+              "correctAnswers": [0],
+              "explanation": "In punto = pile / exactement."
+            },
+            {
+              "id": "q4",
+              "question": "« Mi sveglio alle sei e un quarto » : à quelle heure ?",
+              "type": "single_choice",
+              "options": ["6 h 15", "6 h 45", "5 h 15", "7 h 15"],
+              "correctAnswers": [0],
+              "explanation": "Un quart après six = 6 h 15."
+            },
+            {
+              "id": "q5",
+              "question": "« Cena alle venti » : l'heure du dîner ?",
+              "type": "single_choice",
+              "options": ["20 h", "8 h du matin", "12 h", "2 h"],
+              "correctAnswers": [0],
+              "explanation": "Venti = vingt (heures)."
+            },
+            {
+              "id": "q6",
+              "question": "Comment dit-on « en retard » ?",
+              "type": "single_choice",
+              "options": [
+                "in ritardo",
+                "in punto",
+                "in anticipo",
+                "in palestra"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In ritardo = en retard."
+            },
+            {
+              "id": "q7",
+              "question": "« L'autobus passa alle sette e mezza » :",
+              "type": "single_choice",
+              "options": [
+                "Le bus passe à 7 h 30",
+                "Le bus passe à 7 h 15",
+                "Le bus passe à 8 h 00",
+                "Le bus ne passe jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sette e mezza = sept heures et demie."
+            },
+            {
+              "id": "q8",
+              "question": "« Quanto dura la lezione? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Combien de temps dure le cours ?",
+                "Où est le cours ?",
+                "Qui est absent ?",
+                "Quel est le devoir ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quanto dura = combien de temps dure."
+            },
+            {
+              "id": "q9",
+              "question": "« Sono le undici meno un quarto » ≈",
+              "type": "single_choice",
+              "options": ["10 h 45", "11 h 15", "11 h 45", "9 h 45"],
+              "correctAnswers": [0],
+              "explanation": "Meno un quarto = moins le quart (10 h 45)."
+            },
+            {
+              "id": "q10",
+              "question": "« A che ora ti alzi? » signifie :",
+              "type": "single_choice",
+              "options": [
+                "À quelle heure te lèves-tu ?",
+                "Où te lèves-tu ?",
+                "Pourquoi te lèves-tu ?",
+                "Avec qui te lèves-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alzarsi = se lever."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Recapitolo famiglia e scuola",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots mélangent famille et école ?",
+              "type": "multiple_choice",
+              "options": [
+                "i genitori e i compagni",
+                "il fratello e l'aula",
+                "la pizza e il cinema",
+                "il cane e la montagna"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Genitori/compagni et fratello/aula relient vie familiale et scolaire."
+            },
+            {
+              "id": "q2",
+              "question": "« Mio padre mi accompagna a scuola » : qui conduit ?",
+              "type": "single_choice",
+              "options": [
+                "Mon père",
+                "Mon frère uniquement",
+                "Le prof",
+                "Le bus seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Padre = père ; accompagnare = accompagner."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « la cantine scolaire » ?",
+              "type": "single_choice",
+              "options": ["la mensa", "la mensola", "la lezione", "la lavagna"],
+              "correctAnswers": [0],
+              "explanation": "Mensa = cantine."
+            },
+            {
+              "id": "q4",
+              "question": "« Dopo scuola faccio sport » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Après les cours je fais du sport",
+                "Avant les cours je fais du sport",
+                "Pendant le cours je fais du sport",
+                "Je ne fais jamais de sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dopo scuola = après l'école."
+            },
+            {
+              "id": "q5",
+              "question": "« Ho un fratello più grande » : le frère est :",
+              "type": "single_choice",
+              "options": ["Plus âgé", "Plus jeune", "Identique", "Professeur"],
+              "correctAnswers": [0],
+              "explanation": "Più grande = plus grand/plus âgé."
+            },
+            {
+              "id": "q6",
+              "question": "Comment dit-on « récréation » ?",
+              "type": "single_choice",
+              "options": [
+                "intervallo",
+                "interrogazione",
+                "intervento",
+                "internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intervallo = pause/récréation."
+            },
+            {
+              "id": "q7",
+              "question": "« Studio italiano e inglese » : quelles matières ?",
+              "type": "single_choice",
+              "options": [
+                "Italien et anglais",
+                "Maths et sport",
+                "Histoire seule",
+                "Musique seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Italiano e inglese."
+            },
+            {
+              "id": "q8",
+              "question": "« La mia famiglia mi aiuta con i compiti » : qui aide ?",
+              "type": "single_choice",
+              "options": [
+                "La famille",
+                "Les inconnus",
+                "Le directeur seul",
+                "Personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Famiglia = famille."
+            },
+            {
+              "id": "q9",
+              "question": "« Vado a letto alle ventidue » : heure du coucher ?",
+              "type": "single_choice",
+              "options": ["22 h", "20 h", "12 h", "2 h"],
+              "correctAnswers": [0],
+              "explanation": "Ventidue = vingt-deux."
+            },
+            {
+              "id": "q10",
+              "question": "« Mi piace la mia scuola » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'aime mon collège/école",
+                "Je déteste l'école",
+                "Je rate l'école",
+                "Je ferme l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mi piace = j'aime."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Aggettivi e descrizione",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adjectifs décrivent une personne positivement ?",
+              "type": "multiple_choice",
+              "options": ["simpatico", "noioso", "gentile", "triste"],
+              "correctAnswers": [0, 2],
+              "explanation": "Simpatico et gentile sont positifs ; noioso/triste sont négatifs ou neutres selon le contexte."
+            },
+            {
+              "id": "q2",
+              "question": "« Marco è alto e magro » : comment est Marco ?",
+              "type": "single_choice",
+              "options": [
+                "Grand et mince",
+                "Petit et fort",
+                "Jeune et enfant",
+                "Professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alto = grand, magro = mince."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « elle est intelligente » ?",
+              "type": "single_choice",
+              "options": [
+                "Lei è intelligente",
+                "Lui è intelligente",
+                "Noi intelligente",
+                "Io intelligente senza verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lei è + adjectif."
+            },
+            {
+              "id": "q4",
+              "question": "« La mia classe è rumorosa » : la classe est :",
+              "type": "single_choice",
+              "options": ["Bruyante", "Silencieuse", "Vide", "Fermée"],
+              "correctAnswers": [0],
+              "explanation": "Rumorosa = bruyante."
+            },
+            {
+              "id": "q5",
+              "question": "Féminin de « simpatico » ?",
+              "type": "single_choice",
+              "options": [
+                "simpatica",
+                "simpatico",
+                "simpatici",
+                "simpatiche seulement au pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simpatica = féminin singulier."
+            },
+            {
+              "id": "q6",
+              "question": "« Il tempo è bello oggi » parle de :",
+              "type": "single_choice",
+              "options": ["La météo", "L'heure exacte", "Le devoir", "Le foot"],
+              "correctAnswers": [0],
+              "explanation": "Tempo = temps/météo ici."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « fatigué » (masculin) ?",
+              "type": "single_choice",
+              "options": ["stanco", "stanca", "stanchi", "stanche"],
+              "correctAnswers": [0],
+              "explanation": "Stanco = fatigué (m)."
+            },
+            {
+              "id": "q8",
+              "question": "« Mia sorella ha i capelli lunghi » : cheveux :",
+              "type": "single_choice",
+              "options": [
+                "Longs",
+                "Courts",
+                "Rouges obligatoirement",
+                "Absents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lunghi = longs."
+            },
+            {
+              "id": "q9",
+              "question": "« Siamo contenti del voto » : sentiment ?",
+              "type": "single_choice",
+              "options": [
+                "Contents de la note",
+                "Tristes",
+                "En colère contre le prof obligatoirement",
+                "Absents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contenti = contents ; voto = note."
+            },
+            {
+              "id": "q10",
+              "question": "Pluriel de « una ragazza alta » ?",
+              "type": "single_choice",
+              "options": [
+                "ragazze alte",
+                "ragazza alti",
+                "ragazzi alta",
+                "ragazze alto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord au féminin pluriel : ragazze alte."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Passato prossimo: avere",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formes utilisent l'auxiliaire « avere » au passato prossimo ?",
+              "type": "multiple_choice",
+              "options": [
+                "ho mangiato",
+                "sono andato",
+                "hai studiato",
+                "sono nato"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Mangiare et studiare → avere ; andare/nascere → essere."
+            },
+            {
+              "id": "q2",
+              "question": "« Ho fatto i compiti » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai fait mes devoirs",
+                "Je fais mes devoirs",
+                "Je ferai mes devoirs",
+                "Je n'ai pas de devoirs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passato prossimo de fare : ho fatto."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « j'ai mangié une pizza » ?",
+              "type": "single_choice",
+              "options": [
+                "Ho mangiato una pizza",
+                "Sono mangiato una pizza",
+                "Ho mangiare una pizza",
+                "Mangio una pizza ieri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mangiare → ho mangiato."
+            },
+            {
+              "id": "q4",
+              "question": "« Hai guardato il film? » : temps ?",
+              "type": "single_choice",
+              "options": [
+                "Passé récent (passato prossimo)",
+                "Futur",
+                "Présent seulement",
+                "Impératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hai guardato = as-tu regardé (passé)."
+            },
+            {
+              "id": "q5",
+              "question": "Participé passé de « comprare » avec « ho » ?",
+              "type": "single_choice",
+              "options": ["comprato", "comprata", "comprati", "comprare"],
+              "correctAnswers": [0],
+              "explanation": "Comprare → comprato."
+            },
+            {
+              "id": "q6",
+              "question": "« Non ho capito la domanda » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je n'ai pas compris la question",
+                "Je comprends toujours",
+                "Je comprendrai demain",
+                "J'ai compris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Non ho capito = je n'ai pas compris."
+            },
+            {
+              "id": "q7",
+              "question": "« Abbiamo giocato a calcio » : auxiliaire ?",
+              "type": "single_choice",
+              "options": [
+                "avere (abbiamo)",
+                "essere (siamo)",
+                "nulla",
+                "futuro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Giocare → avere : abbiamo giocato."
+            },
+            {
+              "id": "q8",
+              "question": "« Ho sentito una canzone » : sentito vient de :",
+              "type": "single_choice",
+              "options": [
+                "sentire",
+                "sentare",
+                "sentito",
+                "ascoltare seulement présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sentire → sentito."
+            },
+            {
+              "id": "q9",
+              "question": "Forme correcte : « Ieri ___ (bere) un succo »",
+              "type": "single_choice",
+              "options": ["ho bevuto", "sono bevuto", "ho bere", "bevo"],
+              "correctAnswers": [0],
+              "explanation": "Bere → ho bevuto."
+            },
+            {
+              "id": "q10",
+              "question": "« Hanno finito l'esercizio » : sujet ?",
+              "type": "single_choice",
+              "options": ["Ils/elles", "Je", "Tu", "Nous"],
+              "correctAnswers": [0],
+              "explanation": "Hanno = ils/elles ont."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Passato prossimo: essere",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels verbes au passato prossimo utilisent « essere » ?",
+              "type": "multiple_choice",
+              "options": ["sono andato", "ho parlato", "è nato", "ho dormito"],
+              "correctAnswers": [0, 2],
+              "explanation": "Andare et nascere → essere ; parlare/dormire → avere."
+            },
+            {
+              "id": "q2",
+              "question": "« Sono andata a scuola » : genre du sujet ?",
+              "type": "single_choice",
+              "options": [
+                "Féminin (je)",
+                "Masculin",
+                "Toujours masculin avec andato",
+                "Pluriel seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Andata = participé féminin → sujet je (f)."
+            },
+            {
+              "id": "q3",
+              "question": "« Lui è uscito con gli amici » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Il est sorti avec des amis",
+                "Il sort maintenant",
+                "Il sortira demain",
+                "Il mange avec des amis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Uscire → è uscito."
+            },
+            {
+              "id": "q4",
+              "question": "Accord : « Le ragazze sono ___ (andare) al cinema »",
+              "type": "single_choice",
+              "options": ["andate", "andato", "andati", "andata"],
+              "correctAnswers": [0],
+              "explanation": "Féminin pluriel : andate."
+            },
+            {
+              "id": "q5",
+              "question": "« Siamo arrivati in ritardo » : auxiliaire ?",
+              "type": "single_choice",
+              "options": [
+                "essere",
+                "avere",
+                "avere ou être indifférent",
+                "futuro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arrivare → essere."
+            },
+            {
+              "id": "q6",
+              "question": "« Sei stato a Roma? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Tu as été / tu es allé à Rome ?",
+                "Tu es à Rome maintenant ?",
+                "Tu iras à Rome ?",
+                "Tu habites Rome ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stare/essere + stato : être allé/être resté selon contexte — ici visite passée."
+            },
+            {
+              "id": "q7",
+              "question": "Participé de « venire » avec « sono » :",
+              "type": "single_choice",
+              "options": ["venuto/venuta", "venato", "venire", "vinto"],
+              "correctAnswers": [0],
+              "explanation": "Venire → venuto/venuta."
+            },
+            {
+              "id": "q8",
+              "question": "« Maria è tornata a casa » : Maria :",
+              "type": "single_choice",
+              "options": [
+                "Est rentrée à la maison",
+                "Part en voyage",
+                "Mange à la cantine",
+                "Dort en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tornare → essere ; tornata = f."
+            },
+            {
+              "id": "q9",
+              "question": "Pourquoi « sono caduto » et pas « ho caduto » ?",
+              "type": "single_choice",
+              "options": [
+                "Cadere se conjugue avec essere",
+                "Tous les verbes avec essere",
+                "C'est un verbe avoir",
+                "C'est du futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadere appartient au groupe essere."
+            },
+            {
+              "id": "q10",
+              "question": "« Ieri siamo ___ (partire) alle otto »",
+              "type": "single_choice",
+              "options": ["partiti", "partito", "partita", "partire"],
+              "correctAnswers": [0],
+              "explanation": "Partire → siamo partiti (m.pl. ou mixte pluriel)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Ieri a scuola",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases situent l'action hier à l'école ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ieri ho avuto un'interrogazione",
+                "Domani vado a scuola",
+                "Ieri siamo usciti dall'aula alle sedici",
+                "Ogni giorno dormo"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ieri + scuola/aula ; domani = futur."
+            },
+            {
+              "id": "q2",
+              "question": "« Ieri il prof ha spiegato la lezione » : quand ?",
+              "type": "single_choice",
+              "options": ["Hier", "Demain", "Aujourd'hui seulement", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Ieri = hier."
+            },
+            {
+              "id": "q3",
+              "question": "« Ho preso un brutto voto » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai eu une mauvaise note",
+                "J'aurai une bonne note",
+                "Je prends le bus",
+                "Je mange à la cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Preso un voto = obtenu une note."
+            },
+            {
+              "id": "q4",
+              "question": "« Siamo rimasti in classe cinque minuti » :",
+              "type": "single_choice",
+              "options": [
+                "On est restés en classe cinq minutes",
+                "On part tout de suite",
+                "On n'est jamais allés en classe",
+                "On dort cinq minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rimanere → essere : siamo rimasti."
+            },
+            {
+              "id": "q5",
+              "question": "« Non ho sentito la campanella » : quoi ?",
+              "type": "single_choice",
+              "options": [
+                "Je n'ai pas entendu la sonnerie",
+                "J'ai entendu la musique",
+                "J'ai vu le prof",
+                "J'ai fini le devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Campanella = sonnerie."
+            },
+            {
+              "id": "q6",
+              "question": "Comment dit-on « hier j'ai oublié mon cahier » ?",
+              "type": "single_choice",
+              "options": [
+                "Ieri ho dimenticato il quaderno",
+                "Ieri dimentico il quaderno",
+                "Domani ho dimenticato",
+                "Ho dimenticare ieri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dimenticare → ho dimenticato."
+            },
+            {
+              "id": "q7",
+              "question": "« Abbiamo lavorato in gruppo » : comment ?",
+              "type": "single_choice",
+              "options": ["En groupe", "Seuls", "De nuit", "Au foot"],
+              "correctAnswers": [0],
+              "explanation": "In gruppo = en groupe."
+            },
+            {
+              "id": "q8",
+              "question": "« La maestra ci ha lodato » : action du prof ?",
+              "type": "single_choice",
+              "options": [
+                "Il/elle nous a félicités",
+                "Il/elle nous a punis",
+                "Il/elle est partie",
+                "Il/elle dort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lodare = féliciter/louer."
+            },
+            {
+              "id": "q9",
+              "question": "« Ho risposto a due domande » : combien ?",
+              "type": "single_choice",
+              "options": [
+                "Deux questions",
+                "Dix questions",
+                "Aucune",
+                "Une seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Due domande = deux questions."
+            },
+            {
+              "id": "q10",
+              "question": "« Ieri c'era un compito di italiano » : matière ?",
+              "type": "single_choice",
+              "options": ["Italien", "Sport", "Musique seule", "Maths seule"],
+              "correctAnswers": [0],
+              "explanation": "Compito di italiano."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Raccontare la giornata",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases racontent une journée passée ?",
+              "type": "multiple_choice",
+              "options": [
+                "Stamattina ho fatto colazione presto",
+                "Stanotte ho dormito bene",
+                "Domani studio",
+                "Adesso mangio"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Stamattina/stanotte + passato ; domani/adesso = autre temps."
+            },
+            {
+              "id": "q2",
+              "question": "« Mi sono svegliato alle sette » : première action ?",
+              "type": "single_choice",
+              "options": [
+                "Je me suis réveillé à sept heures",
+                "Je me couche",
+                "Je mange le dîner",
+                "Je vais au cinéma demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Svegliarsi → mi sono svegliato."
+            },
+            {
+              "id": "q3",
+              "question": "Ordre logique : matin → collège → soir. Phrase du soir ?",
+              "type": "single_choice",
+              "options": [
+                "Sera ho riposato",
+                "Mattina ho riposato la lezione",
+                "Pomeriggio ho dormito la scuola",
+                "Notte ho studiato il bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sera = soir, riposato = reposé."
+            },
+            {
+              "id": "q4",
+              "question": "« Dopo pranzo ho fatto un riposino » : après quoi ?",
+              "type": "single_choice",
+              "options": [
+                "Après le déjeuner",
+                "Avant le petit-déjeuner",
+                "Après minuit seulement",
+                "Pendant le cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dopo pranzo = après le déjeuner."
+            },
+            {
+              "id": "q5",
+              "question": "« Ho raccontato la mia giornata ai genitori » : à qui ?",
+              "type": "single_choice",
+              "options": [
+                "Aux parents",
+                "Au prof seulement",
+                "Au chien",
+                "Aux inconnus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Genitori = parents."
+            },
+            {
+              "id": "q6",
+              "question": "Comment dit-on « ce matin » ?",
+              "type": "single_choice",
+              "options": [
+                "stamattina",
+                "stasera",
+                "stanotte",
+                "domani mattina"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stamattina = ce matin."
+            },
+            {
+              "id": "q7",
+              "question": "« Sono tornato a casa stanco » : état ?",
+              "type": "single_choice",
+              "options": [
+                "Fatigué en rentrant",
+                "Content obligatoirement",
+                "En classe",
+                "En vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stanco = fatigué."
+            },
+            {
+              "id": "q8",
+              "question": "« Ho passato un bel pomeriggio » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai passé un bel après-midi",
+                "Je passe un mauvais matin",
+                "Je passerai demain",
+                "Je suis en cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passato prossimo : ho passato."
+            },
+            {
+              "id": "q9",
+              "question": "« Prima ho studiato, poi ho giocato » : ordre ?",
+              "type": "single_choice",
+              "options": [
+                "D'abord étudier, puis jouer",
+                "D'abord jouer, puis dormir",
+                "Seulement jouer",
+                "Seulement dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prima… poi… = d'abord… ensuite…"
+            },
+            {
+              "id": "q10",
+              "question": "« La giornata è finita alle ventidue » : fin quand ?",
+              "type": "single_choice",
+              "options": ["À 22 h", "À 12 h", "À 7 h", "À 15 h"],
+              "correctAnswers": [0],
+              "explanation": "Ventidue = 22 h."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Andare e venire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formes passées de mouvement avec « essere » ?",
+              "type": "multiple_choice",
+              "options": [
+                "sono andato in città",
+                "sono venuta a lezione",
+                "ho andato",
+                "ho venuto"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Andare/venire → essere ; ho andato/venuto incorrect."
+            },
+            {
+              "id": "q2",
+              "question": "« Sono andato al parco » : où ?",
+              "type": "single_choice",
+              "options": [
+                "Au parc",
+                "À l'école seulement",
+                "Au supermarché",
+                "En avion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parco = parc."
+            },
+            {
+              "id": "q3",
+              "question": "« Siamo venuti con l'autobus » : transport ?",
+              "type": "single_choice",
+              "options": [
+                "Bus",
+                "Vélo",
+                "Bateau",
+                "Train seulement interdit ici"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autobus = bus."
+            },
+            {
+              "id": "q4",
+              "question": "Féminin : « Io ___ (andare) a scuola ieri »",
+              "type": "single_choice",
+              "options": [
+                "sono andata",
+                "sono andato",
+                "ho andata",
+                "ho andato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Andare + essere, accord féminin : andata."
+            },
+            {
+              "id": "q5",
+              "question": "« Non sono andato in palestra » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je ne suis pas allé à la salle de sport",
+                "Je suis allé à la gym",
+                "J'irai demain",
+                "Je suis prof de gym"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Non sono andato = je ne suis pas allé."
+            },
+            {
+              "id": "q6",
+              "question": "« Vieni a casa mia stasera? » au passé on dirait « ___ » ?",
+              "type": "single_choice",
+              "options": [
+                "Sei venuto a casa mia ieri?",
+                "Ho venuto ieri?",
+                "Andato venuto?",
+                "Vengo ieri?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Venire → sei venuto (tu)."
+            },
+            {
+              "id": "q7",
+              "question": "« Sono entrato in classe in ritardo » :",
+              "type": "single_choice",
+              "options": [
+                "Je suis entré en classe en retard",
+                "Je sors de classe",
+                "Je dors en classe",
+                "Je mange en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entrare → sono entrato."
+            },
+            {
+              "id": "q8",
+              "question": "« Siamo uscite dal cinema » : sujet ?",
+              "type": "single_choice",
+              "options": [
+                "Nous (filles ou mixte f.)",
+                "Lui seul",
+                "Il bus",
+                "Le prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Uscite = participé féminin pluriel."
+            },
+            {
+              "id": "q9",
+              "question": "Préposition : « andare ___ scuola »",
+              "type": "single_choice",
+              "options": ["a", "di", "da", "in il"],
+              "correctAnswers": [0],
+              "explanation": "Andare a scuola."
+            },
+            {
+              "id": "q10",
+              "question": "« Ieri Luca è andato dal dentista » : Luca :",
+              "type": "single_choice",
+              "options": [
+                "Est allé chez le dentiste",
+                "A mangié une pizza",
+                "A dormi en classe",
+                "Est resté à la maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dal dentista = chez le dentiste."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Mangiare e bere",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases utilisent mangiare/bere au passato prossimo ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ho mangiato la pasta",
+                "Ho bevuto acqua",
+                "Sono mangiato",
+                "Sono bevuto"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mangiare/bere → avere."
+            },
+            {
+              "id": "q2",
+              "question": "« Abbiamo pranzato alla mensa » : où ?",
+              "type": "single_choice",
+              "options": [
+                "À la cantine",
+                "Au cinéma",
+                "En classe de maths",
+                "À la plage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mensa = cantine ; pranzare = déjeuner."
+            },
+            {
+              "id": "q3",
+              "question": "« Ho mangiato un panino » : quoi ?",
+              "type": "single_choice",
+              "options": [
+                "Un sandwich",
+                "Un gâteau entier",
+                "Un livre",
+                "Un devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Panino = sandwich."
+            },
+            {
+              "id": "q4",
+              "question": "« Non ho bevuto caffè » :",
+              "type": "single_choice",
+              "options": [
+                "Je n'ai pas bu de café",
+                "J'ai bu du café",
+                "Je boirai du thé",
+                "Je mange du café"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Non ho bevuto = je n'ai pas bu."
+            },
+            {
+              "id": "q5",
+              "question": "Participé de « mangiare » :",
+              "type": "single_choice",
+              "options": [
+                "mangiato",
+                "mangiata",
+                "mangiare",
+                "mangiato/a selon sujet avec essere"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec avere, participé invariable souvent ; mangiato."
+            },
+            {
+              "id": "q6",
+              "question": "« Ieri sera abbiamo cenato tardi » :",
+              "type": "single_choice",
+              "options": [
+                "Hier soir on a dîné tard",
+                "Demain on dîne",
+                "On ne mange pas",
+                "On déjeune à midi seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cenare = dîner ; ieri sera = hier soir."
+            },
+            {
+              "id": "q7",
+              "question": "« Ho assaggiato il gelato al cioccolato » :",
+              "type": "single_choice",
+              "options": [
+                "J'ai goûté une glace au chocolat",
+                "J'ai acheté un livre",
+                "J'ai couru",
+                "J'ai dormi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Assaggiare = goûter."
+            },
+            {
+              "id": "q8",
+              "question": "« Hai mangiato troppo? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Tu as trop mangé ?",
+                "Tu manges maintenant ?",
+                "Tu cuis ?",
+                "Tu as bu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Troppo = trop."
+            },
+            {
+              "id": "q9",
+              "question": "« Ho bevuto un succo di frutta » : boisson ?",
+              "type": "single_choice",
+              "options": [
+                "Jus de fruit",
+                "Café",
+                "Eau gazeuse seulement",
+                "Soupe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Succo di frutta = jus de fruit."
+            },
+            {
+              "id": "q10",
+              "question": "Après « ho mangiato », on ajoute souvent :",
+              "type": "single_choice",
+              "options": [
+                "l'objet (cosa)",
+                "sempre essere",
+                "futuro",
+                "imperativo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ho mangiato una mela : COD."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Fare e dire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formes passées avec « avere » ici ?",
+              "type": "multiple_choice",
+              "options": ["ho detto", "ho fatto", "sono detto", "sono fatto"],
+              "correctAnswers": [0, 1],
+              "explanation": "Dire/fare → avere : detto, fatto."
+            },
+            {
+              "id": "q2",
+              "question": "« Ho detto la verità al prof » : quoi ?",
+              "type": "single_choice",
+              "options": [
+                "J'ai dit la vérité au prof",
+                "J'ai menti",
+                "Je parle italien",
+                "Je dors"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verità = vérité."
+            },
+            {
+              "id": "q3",
+              "question": "« Abbiamo fatto un progetto » :",
+              "type": "single_choice",
+              "options": [
+                "On a fait un projet",
+                "On fera demain",
+                "On mange un projet",
+                "On est allés au cinéma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fare → fatto."
+            },
+            {
+              "id": "q4",
+              "question": "« Non ho detto niente » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je n'ai rien dit",
+                "J'ai tout dit",
+                "Je crie",
+                "Je parle maintenant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niente = rien."
+            },
+            {
+              "id": "q5",
+              "question": "« Ho fatto una domanda » :",
+              "type": "single_choice",
+              "options": [
+                "J'ai posé une question",
+                "J'ai répondu",
+                "J'ai effacé",
+                "J'ai couru"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fare una domanda = poser une question."
+            },
+            {
+              "id": "q6",
+              "question": "Participé de « dire » :",
+              "type": "single_choice",
+              "options": ["detto", "dito", "dire", "detta avec essere"],
+              "correctAnswers": [0],
+              "explanation": "Dire → detto."
+            },
+            {
+              "id": "q7",
+              "question": "« Hai fatto i compiti? » :",
+              "type": "single_choice",
+              "options": [
+                "As-tu fait tes devoirs ?",
+                "Manges-tu ?",
+                "Dors-tu ?",
+                "Pars-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compiti = devoirs."
+            },
+            {
+              "id": "q8",
+              "question": "« Ho detto « ciao » ai compagni » : à qui ?",
+              "type": "single_choice",
+              "options": [
+                "Aux camarades",
+                "Au directeur seul",
+                "Au chien",
+                "Personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compagni = camarades."
+            },
+            {
+              "id": "q9",
+              "question": "« Abbiamo fatto sport dopo scuola » : quand ?",
+              "type": "single_choice",
+              "options": [
+                "Après les cours",
+                "Pendant la nuit",
+                "Avant de naître",
+                "En classe pendant l'examen oral obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dopo scuola."
+            },
+            {
+              "id": "q10",
+              "question": "« Mi ha detto di studiare » : conseil ?",
+              "type": "single_choice",
+              "options": [
+                "Il/elle m'a dit d'étudier",
+                "Il/elle m'a dit de dormir",
+                "Il/elle est parti",
+                "Il/elle a mangé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Di + infinitif : de + verbe."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Un week-end raccontato",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles actions racontent un week-end passé ?",
+              "type": "multiple_choice",
+              "options": [
+                "Sabato sono andato al cinema",
+                "Domenica ho visitato mia nonna",
+                "Lunedì vado a scuola",
+                "Oggi studio il futuro"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sabato/domenica + passé ; lunedì futur/présent scolaire."
+            },
+            {
+              "id": "q2",
+              "question": "« Ho passato il week-end con la famiglia » : avec qui ?",
+              "type": "single_choice",
+              "options": [
+                "La famille",
+                "Le prof",
+                "Les étrangers seulement",
+                "Personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Famiglia = famille."
+            },
+            {
+              "id": "q3",
+              "question": "« Siamo andati in montagna domenica » : où ?",
+              "type": "single_choice",
+              "options": [
+                "À la montagne",
+                "À la mer seulement",
+                "En classe",
+                "Au supermarché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Montagna = montagne."
+            },
+            {
+              "id": "q4",
+              "question": "« Ho comprato un regalo per mia sorella » : pour qui ?",
+              "type": "single_choice",
+              "options": ["Ma sœur", "Mon prof", "Le bus", "L'école"],
+              "correctAnswers": [0],
+              "explanation": "Regalo = cadeau ; sorella = sœur."
+            },
+            {
+              "id": "q5",
+              "question": "« Non siamo usciti sabato perché pioveva » : pourquoi ?",
+              "type": "single_choice",
+              "options": [
+                "Parce qu'il pleuvait",
+                "Parce qu'il faisait soleil",
+                "Parce que c'était lundi",
+                "Parce que c'était cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Piovve (pioveva) = il pleuvait."
+            },
+            {
+              "id": "q6",
+              "question": "« Abbiamo guardato una partita in TV » :",
+              "type": "single_choice",
+              "options": [
+                "On a regardé un match à la télé",
+                "On a joué sur le terrain",
+                "On a étudié",
+                "On a dormi en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partita = match."
+            },
+            {
+              "id": "q7",
+              "question": "« Sono rientrato tardi domenica sera » :",
+              "type": "single_choice",
+              "options": [
+                "Je suis rentré tard dimanche soir",
+                "Je suis parti le matin",
+                "Je suis prof",
+                "Je mange à midi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rientrare = rentrer."
+            },
+            {
+              "id": "q8",
+              "question": "« Ho dormito fino alle dieci » :",
+              "type": "single_choice",
+              "options": [
+                "J'ai dormi jusqu'à dix heures",
+                "Je me lève à six",
+                "Je cours",
+                "Je fais devoirs à huit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dormire → ho dormito."
+            },
+            {
+              "id": "q9",
+              "question": "« Ci siamo divertiti molto » : sentiment ?",
+              "type": "single_choice",
+              "options": [
+                "On s'est beaucoup amusés",
+                "On s'est ennuyés",
+                "On a pleuré",
+                "On a travaillé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Divertirsi → ci siamo divertiti."
+            },
+            {
+              "id": "q10",
+              "question": "« Lunedì ho raccontato il week-end » : quand raconte-t-on ?",
+              "type": "single_choice",
+              "options": [
+                "Lundi",
+                "Samedi",
+                "Dimanche soir seulement",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lunedì = lundi, passato raccontato."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Recapitolo passato prossimo",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases sont au passato prossimo correct ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ieri ho mangiato tardi",
+                "Ieri sono andato a scuola",
+                "Ieri ho andato a scuola",
+                "Ieri sono mangiato"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mangiare→avere, andare→essere ; ho andato/sono mangiato faux."
+            },
+            {
+              "id": "q2",
+              "question": "Auxiliaire de « nascere » :",
+              "type": "single_choice",
+              "options": ["essere", "avere", "avere ou essere", "futuro"],
+              "correctAnswers": [0],
+              "explanation": "Nascere → sono nato/nata."
+            },
+            {
+              "id": "q3",
+              "question": "« Lei ha scritto un messaggio » : verbe ?",
+              "type": "single_choice",
+              "options": ["scrivere", "andare", "dormire", "nascere"],
+              "correctAnswers": [0],
+              "explanation": "Scritto ← scrivere."
+            },
+            {
+              "id": "q4",
+              "question": "« Noi siamo stati contenti » : verbe ?",
+              "type": "single_choice",
+              "options": ["essere (stati)", "avere", "andare", "mangiare"],
+              "correctAnswers": [0],
+              "explanation": "Stato/stati de essere."
+            },
+            {
+              "id": "q5",
+              "question": "Accord : « Giulia e Sara sono ___ (partire) ieri »",
+              "type": "single_choice",
+              "options": ["partite", "partito", "partiti", "partire"],
+              "correctAnswers": [0],
+              "explanation": "Deux filles → partite."
+            },
+            {
+              "id": "q6",
+              "question": "« Ho ascoltato musica e ho ballato » : combien d'actions avec avere ?",
+              "type": "single_choice",
+              "options": ["Deux", "Zéro", "Une seule", "Trois avec essere"],
+              "correctAnswers": [0],
+              "explanation": "Ascoltare et ballare → avere."
+            },
+            {
+              "id": "q7",
+              "question": "« Sei andato in biblioteca? » réponse positive :",
+              "type": "single_choice",
+              "options": [
+                "Sì, ci sono andato",
+                "Sì, ho andato",
+                "Sì, sono andato la biblioteca",
+                "Sì, andato ho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Andare → sono andato ; ci = y."
+            },
+            {
+              "id": "q8",
+              "question": "« Non abbiamo capito » : verbe ?",
+              "type": "single_choice",
+              "options": ["capire", "partire", "uscire", "venire"],
+              "correctAnswers": [0],
+              "explanation": "Capito ← capire (avere)."
+            },
+            {
+              "id": "q9",
+              "question": "Marqueur temporel passé :",
+              "type": "single_choice",
+              "options": ["ieri", "domani", "adesso", "presto (futur proche)"],
+              "correctAnswers": [0],
+              "explanation": "Ieri = hier."
+            },
+            {
+              "id": "q10",
+              "question": "Phrase modèle 3e : raconte école + passé",
+              "type": "single_choice",
+              "options": [
+                "Ieri ho studiato e sono andato a casa alle sedici",
+                "Domani ho studiato ieri",
+                "Sono mangiato a scuola",
+                "Ho andato con essere"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Studiare (avere) + andare (essere) : phrase cohérente."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2398 @@
+{
+  "id": "terminale-physique-chimie-03",
+  "year": "terminale",
+  "subject": "physique-chimie",
+  "title": "Énergie et transferts",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Conversions",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Formes d'énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi les grandeurs suivantes, lesquelles sont des énergies ou s'expriment en joules ?",
+              "options": [
+                "Énergie cinétique",
+                "Puissance",
+                "Énergie potentielle de pesanteur",
+                "Intensité électrique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Seules les énergies s'expriment en J ; la puissance est en W et l'intensité en A."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'énergie cinétique vaut Ec =",
+              "options": ["m v", "½ m v²", "m g h", "P t"],
+              "correctAnswers": [1],
+              "explanation": "Ec = ½ m v² avec m en kg et v en m·s⁻¹."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ep pour m = 2 kg, h = 5 m, g = 10 m·s⁻² vaut",
+              "options": ["10 J", "50 J", "100 J", "25 J"],
+              "correctAnswers": [2],
+              "explanation": "Ep = m g h = 2 × 10 × 5 = 100 J."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Unité SI de la puissance :",
+              "options": ["J", "W", "N", "V"],
+              "correctAnswers": [1],
+              "explanation": "1 W = 1 J·s⁻¹."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "P = 1200 W pendant 30 min : énergie E =",
+              "options": ["600 J", "36 000 J", "2,16 × 10⁶ J", "400 J"],
+              "correctAnswers": [2],
+              "explanation": "Δt = 1800 s ; E = 1200 × 1800 = 2,16 × 10⁶ J."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "1 kWh vaut en joules :",
+              "options": ["1000 J", "3,6 × 10⁶ J", "3600 J", "1 J"],
+              "correctAnswers": [1],
+              "explanation": "1 kWh = 1000 W × 3600 s = 3,6 × 10⁶ J."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combustion : conversion principale",
+              "options": [
+                "Stockage sans conversion",
+                "Chimique → thermique",
+                "Création d'énergie",
+                "Chimique → cinétique seule"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La combustion libère surtout de l'énergie thermique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Chute libre sans frottement : Ec + Ep",
+              "options": ["Augmente", "Diminue", "Reste constante", "Nulle"],
+              "correctAnswers": [2],
+              "explanation": "Conservation de l'énergie mécanique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Énergie électrique reçue : E =",
+              "options": ["U / I", "U I Δt", "I² R seul", "P / Δt"],
+              "correctAnswers": [1],
+              "explanation": "E = P Δt = U I Δt."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Rendement η =",
+              "options": [
+                "E_perdue / E_reçue",
+                "E_utile / E_reçue",
+                "E_reçue / E_utile",
+                "P × t"
+              ],
+              "correctAnswers": [1],
+              "explanation": "η compare énergie utile et énergie fournie."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Puissance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Affirmations correctes sur P et E :",
+              "options": [
+                "P = E/Δt si P constante",
+                "P et E ont la même unité",
+                "1 W = 1 J·s⁻¹",
+                "E = PΔt réservé aux gaz"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "P = E/Δt et 1 W = 1 J·s⁻¹ ; E en J, P en W."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "2000 W pendant 2 h : E en kWh",
+              "options": ["1", "2", "4", "0,5"],
+              "correctAnswers": [2],
+              "explanation": "E = 2 kW × 2 h = 4 kWh."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "P mécanique (F ∥ v) :",
+              "options": ["F/v", "F v", "m v", "F d"],
+              "correctAnswers": [1],
+              "explanation": "P = F v si F parallèle à v."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "500 W consommés, 400 W utiles : η",
+              "options": ["125 %", "80 %", "20 %", "0,8 J"],
+              "correctAnswers": [1],
+              "explanation": "η = 400/500 = 80 %."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "5 kWh en joules :",
+              "options": ["5 × 10³ J", "1,8 × 10⁷ J", "5 × 10⁶ J", "18 000 J"],
+              "correctAnswers": [1],
+              "explanation": "5 × 3,6 × 10⁶ = 1,8 × 10⁷ J."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "U = 230 V, I = 10 A : P =",
+              "options": ["23 W", "2300 W", "230 W", "2,3 kW"],
+              "correctAnswers": [1],
+              "explanation": "P = U I = 2300 W."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Énergie Joule dans R pendant Δt :",
+              "options": ["R I Δt", "R I² Δt", "U Δt", "I/R"],
+              "correctAnswers": [1],
+              "explanation": "E = R I² Δt."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "10 MJ en 5000 s : P moyenne",
+              "options": ["2000 W", "50 W", "500 W", "20 kW"],
+              "correctAnswers": [0],
+              "explanation": "P = 10⁷/5000 = 2000 W."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le kWh mesure :",
+              "options": ["Puissance", "Énergie", "Force", "Débit"],
+              "correctAnswers": [1],
+              "explanation": "kWh = unité d'énergie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "η = 40 %, E_reçue = 1000 J : E_utile",
+              "options": ["400 J", "2500 J", "600 J", "40 J"],
+              "correctAnswers": [0],
+              "explanation": "E_utile = 0,4 × 1000 = 400 J."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Énergie mécanique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sans frottements, quelles grandeurs restent constantes ?",
+              "options": [
+                "Énergie mécanique (Ec + Ep)",
+                "Énergie cinétique seule toujours",
+                "Somme Ec + Ep",
+                "Énergie potentielle seule toujours"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ec + Ep est constant ; Ec et Ep seules varient en général."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "m = 0,5 kg, v = 4 m·s⁻¹ : Ec",
+              "options": ["2 J", "4 J", "8 J", "1 J"],
+              "correctAnswers": [1],
+              "explanation": "Ec = ½ × 0,5 × 16 = 4 J."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En présence de frottements, Em",
+              "options": ["Augmente", "Diminue", "Constante", "Double"],
+              "correctAnswers": [1],
+              "explanation": "Une partie devient énergie thermique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Au plus bas d'une trajectoire sans frottement, Ep est",
+              "options": [
+                "Maximale",
+                "Minimale",
+                "Nulle toujours",
+                "Égale à Em"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ep minimal en bas si référence au sol."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Travail de pesanteur (référence verticale) : W =",
+              "options": ["m g h", "m v²", "F d cos θ général", "P t"],
+              "correctAnswers": [0],
+              "explanation": "W_pes = m g h pour déplacement vertical."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "ΔEm = W forces extérieures signifie",
+              "options": [
+                "Em toujours nulle",
+                "Variation Em = travail non conservatif net",
+                "Ec constante",
+                "Ep n'existe pas"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Théorème de l'énergie mécanique avec frottements."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "m = 1 kg lancé à 6 m·s⁻¹ : Ec",
+              "options": ["6 J", "18 J", "36 J", "3 J"],
+              "correctAnswers": [1],
+              "explanation": "Ec = ½ × 1 × 36 = 18 J."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Référence Ep = 0 au sol, m = 3 kg à 2 m : Ep",
+              "options": ["6 J", "30 J", "60 J", "3 J"],
+              "correctAnswers": [2],
+              "explanation": "Ep = 3 × 10 × 2 = 60 J (g = 10)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Conversion Ec → Ep sans frottement lors d'une montée",
+              "options": [
+                "Impossible",
+                "Ec diminue, Ep augmente",
+                "Les deux diminuent",
+                "Em disparaît"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Échange entre formes cinétique et potentielle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Unité du travail W :",
+              "options": ["W", "J", "N", "Pa"],
+              "correctAnswers": [1],
+              "explanation": "Le travail s'exprime en joules."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Énergie électrique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Relations correctes en régime continu :",
+              "options": [
+                "P = U I",
+                "E = U I Δt",
+                "U = R I (loi d'Ohm)",
+                "P = U / I pour tout dipôle ohmique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "P = UI et E = U I Δt ; U = RI séparément ; P ≠ U/I en général."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "R = 10 Ω, I = 2 A : P Joule",
+              "options": ["20 W", "40 W", "5 W", "200 W"],
+              "correctAnswers": [1],
+              "explanation": "P = R I² = 10 × 4 = 40 W."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Générateur idéal : conversion",
+              "options": [
+                "Électrique → chimique",
+                "Chimique/mécanique → électrique",
+                "Thermique → rien",
+                "Lumière → électrique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un générateur fournit de l'énergie électrique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "U = 12 V, I = 5 A pendant 10 min : E",
+              "options": ["600 J", "3600 J", "36 000 J", "720 J"],
+              "correctAnswers": [2],
+              "explanation": "E = 12 × 5 × 600 = 36 000 J."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lampe 60 W sous 230 V : I ≈",
+              "options": ["0,26 A", "2,6 A", "26 A", "3,8 A"],
+              "correctAnswers": [0],
+              "explanation": "I = P/U ≈ 60/230 ≈ 0,26 A."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Compteur kWh mesure",
+              "options": [
+                "Intensité instantanée",
+                "Énergie cumulée",
+                "Résistance",
+                "Fréquence"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le compteur totalise l'énergie consommée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "P = U²/R pour R = 100 Ω, U = 20 V",
+              "options": ["2 W", "4 W", "2000 W", "0,25 W"],
+              "correctAnswers": [1],
+              "explanation": "P = 400/100 = 4 W."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Récepteur passif : énergie reçue",
+              "options": [
+                "Négative toujours",
+                "Positive (convertie/dissipée)",
+                "Nulle",
+                "Sans unité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le récepteur absorbe de l'énergie électrique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "2 kWh consommés : énergie en J",
+              "options": ["7200 J", "7,2 × 10⁶ J", "2000 J", "3,6 × 10³ J"],
+              "correctAnswers": [1],
+              "explanation": "2 × 3,6 × 10⁶ = 7,2 × 10⁶ J."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Fusion de fil : cause typique",
+              "options": [
+                "U trop faible",
+                "Effet Joule excessif (I élevé)",
+                "Absence de courant",
+                "Condensateur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Surintensité → échauffement Joule."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Rendement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur le rendement η d'un convertisseur :",
+              "options": [
+                "η ≤ 1",
+                "η = P_utile/P_reçue",
+                "η peut dépasser 100 % en usage normal",
+                "P_perdue = P_reçue − P_utile"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "η ≤ 1 et η = P_utile/P_reçue ; les pertes complètent le bilan."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "P_reçue = 800 W, η = 25 % : P_utile",
+              "options": ["200 W", "3200 W", "600 W", "25 W"],
+              "correctAnswers": [0],
+              "explanation": "P_utile = 0,25 × 800 = 200 W."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Chaîne : η1 = 0,9 et η2 = 0,8 : η_total",
+              "options": ["1,7", "0,72", "0,1", "0,9"],
+              "correctAnswers": [1],
+              "explanation": "η_total = 0,9 × 0,8 = 0,72."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pertes thermiques dans un moteur",
+              "options": [
+                "Augmentent le rendement",
+                "Diminuent le rendement",
+                "Sans effet",
+                "Créent de l'énergie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les pertes réduisent la fraction utile."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "E_reçue = 500 J, E_utile = 350 J : η",
+              "options": ["70 %", "30 %", "143 %", "0,7 J"],
+              "correctAnswers": [0],
+              "explanation": "η = 350/500 = 0,70."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rendement d'une LED vs ampoule incandescente",
+              "options": [
+                "LED plus faible",
+                "LED généralement plus élevé pour la lumière",
+                "Identiques",
+                "Incandescence meilleure"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Moins de pertes thermiques pour même flux lumineux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "η = 60 %, E_utile = 120 J : E_reçue",
+              "options": ["72 J", "200 J", "180 J", "120 J"],
+              "correctAnswers": [1],
+              "explanation": "E_reçue = 120/0,6 = 200 J."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Bilan énergétique : E_reçue =",
+              "options": [
+                "E_utile − E_perdue",
+                "E_utile + E_perdue",
+                "E_perdue seule",
+                "E_utile × η"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Conservation : reçue = utile + dissipée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Panneau solaire η = 20 %, flux 1000 W·m⁻², surface 2 m² : P_utile max",
+              "options": ["200 W", "400 W", "2000 W", "40 W"],
+              "correctAnswers": [1],
+              "explanation": "P_reçue = 2000 W ; P_utile = 0,2 × 2000 = 400 W."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Améliorer η signifie",
+              "options": [
+                "Plus de pertes",
+                "Plus d'énergie utile à énergie reçue égale",
+                "Moins de travail utile",
+                "η > 1"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Même entrée, plus de sortie utile."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Sources et conversions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Exemples de conversions d'énergie réelles :",
+              "options": [
+                "Pile : chimique → électrique",
+                "Alternateur : mécanique → électrique",
+                "Photovoltaïque : lumière → électrique",
+                "Résistance : électrique → mécanique utile"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pile et alternateur ; le PV convertit lumière → électrique ; la résistance surtout en chaleur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Centrale thermique : enchaînement typique",
+              "options": [
+                "Électrique → thermique",
+                "Thermique → mécanique → électrique",
+                "Nucléaire → chimique direct",
+                "Cinétique → lumière seule"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Vapeur entraîne turbine puis alternateur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Éolienne : énergie initiale",
+              "options": [
+                "Solaire dans le panneau",
+                "Cinétique du vent",
+                "Géothermique",
+                "Chimique du gaz"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le vent possède une énergie cinétique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Barrage hydroélectrique : conversion dominante",
+              "options": [
+                "Potentielle gravitaire → électrique",
+                "Nucléaire → électrique",
+                "Thermique → chimique",
+                "Son → électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chute d'eau : Ep → mécanique → électrique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Moteur à combustion : énergie chimique → surtout",
+              "options": [
+                "Lumière seule",
+                "Mécanique (avec pertes thermiques)",
+                "Électrique directe",
+                "Potentielle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Travail mécanique utile, reste en chaleur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Source renouvelable :",
+              "options": [
+                "Charbon",
+                "Pétrole",
+                "Solaire photovoltaïque",
+                "Uranium seul"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le flux solaire est renouvelable à l'échelle humaine."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Transformateur (modèle idéal) : rôle",
+              "options": [
+                "Créer de l'énergie",
+                "Adapter tension/courant",
+                "Convertir AC en DC toujours",
+                "Stocker kWh"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Transfert de puissance avec changement U/I."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Freinage régénératif (véhicule électrique) :",
+              "options": [
+                "Cinétique → électrique",
+                "Électrique → chimique du frein",
+                "Thermique → cinétique",
+                "Aucune conversion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le moteur en génératrice recharge partiellement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combustible fossile : énergie stockée sous forme",
+              "options": [
+                "Cinétique",
+                "Chimique",
+                "Nucléaire libre",
+                "Magnétique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Liaisons chimiques des molécules organiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pertes inévitables dans conversions réelles",
+              "options": [
+                "Violent la conservation totale",
+                "Sont surtout de la chaleur",
+                "Disparaissent",
+                "Rend η > 1"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'énergie totale se conserve ; part utile diminue."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Bilans énergétiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Principes du 1er principe (système fermé, convention travail reçu) :",
+              "options": [
+                "L'énergie totale se conserve",
+                "On peut créer de l'énergie",
+                "ΔE = W + Q",
+                "Seule l'énergie cinétique existe"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Conservation ; échanges W et Q selon la convention."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Système reçoit W = 100 J, Q = −30 J (perd chaleur) : ΔE",
+              "options": ["70 J", "130 J", "−130 J", "30 J"],
+              "correctAnswers": [0],
+              "explanation": "ΔE = 100 + (−30) = 70 J."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Chauffe-eau : énergie électrique devient surtout",
+              "options": [
+                "Énergie chimique",
+                "Énergie interne de l'eau",
+                "Énergie nucléaire",
+                "Énergie gravitationnelle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Échauffement = augmentation température / énergie interne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Diagramme de Sankey : largeur des flèches",
+              "options": [
+                "Temps",
+                "Puissance ou débit d'énergie",
+                "Masse",
+                "Volume"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Représente les flux d'énergie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "10 kJ utiles pour 25 kJ fournis : énergie perdue",
+              "options": ["15 kJ", "35 kJ", "2,5 kJ", "10 kJ"],
+              "correctAnswers": [0],
+              "explanation": "25 − 10 = 15 kJ dissipés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Isolation d'un logement vise à réduire",
+              "options": [
+                "La masse",
+                "Les transferts thermiques vers l'extérieur",
+                "La gravité",
+                "La tension secteur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Limiter les pertes par parois."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Consommation annuelle 3500 kWh : ordre de grandeur en J",
+              "options": ["10⁷ J", "10¹⁰ J", "10¹³ J", "10³ J"],
+              "correctAnswers": [1],
+              "explanation": "3500 × 3,6 × 10⁶ ≈ 1,26 × 10¹⁰ J."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "P = 3 kW pendant 20 min : E",
+              "options": ["60 kJ", "3600 kJ", "3,6 MJ", "100 kJ"],
+              "correctAnswers": [2],
+              "explanation": "E = 3000 × 1200 = 3,6 × 10⁶ J = 3,6 MJ."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Efficacité énergétique globale d'un pays",
+              "options": [
+                "Rapport énergie utile / énergie primaire consommée",
+                "Nombre de watts",
+                "Température moyenne",
+                "Masse totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesure l'utilisation de l'énergie primaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réduire la consommation sans baisser le service rendu",
+              "options": [
+                "Augmenter les pertes",
+                "Améliorer rendements et sobriété",
+                "Ignorer l'isolation",
+                "η > 1"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Même confort avec moins d'énergie primaire."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Capacité thermique massique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour Q = m c ΔT (chauffage sensible) :",
+              "options": [
+                "c s'exprime en J·kg⁻¹·K⁻¹",
+                "Q est une énergie en joules",
+                "ΔT est un écart de température",
+                "Q = m L"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Relation sensible ; Q = mL concerne les changements d'état."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "m = 200 g, c = 4180 J·kg⁻¹·K⁻¹, ΔT = 10 K : Q",
+              "options": ["836 J", "8360 J", "418 J", "83,6 J"],
+              "correctAnswers": [1],
+              "explanation": "Q = 0,2 × 4180 × 10 = 8360 J."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Même Q pour eau et cuivre (m, ΔT identiques) : c_eau",
+              "options": ["Plus petit", "Plus grand", "Égal", "Nul"],
+              "correctAnswers": [1],
+              "explanation": "L'eau a une capacité thermique massique élevée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Chauffage sensible : pas de",
+              "options": [
+                "Variation de T",
+                "Changement d'état",
+                "Apport Q",
+                "Transfert thermique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sans fusion/vaporisation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Q = 5000 J, m = 0,5 kg, c = 1000 J·kg⁻¹·K⁻¹ : ΔT",
+              "options": ["10 K", "5 K", "2,5 K", "25 K"],
+              "correctAnswers": [0],
+              "explanation": "ΔT = Q/(m c) = 5000/500 = 10 K."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Énergie interne d'un corps liée surtout à",
+              "options": [
+                "Vitesse de translation seule",
+                "Agitation microscopique et liaisons",
+                "Couleur",
+                "Forme macroscopique seule"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Modèle microscopique de l'énergie interne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calorimètre : principe",
+              "options": [
+                "Créer de la chaleur",
+                "Q reçu + Q cédé ≈ 0 (système isolé)",
+                "Mesurer la masse molaire",
+                "η > 1"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Conservation dans l'ensemble isolé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Double vitrage réduit surtout",
+              "options": [
+                "Transferts par le gaz intercalé",
+                "Masse de l'air extérieur",
+                "La gravité",
+                "La capacité thermique de la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couche de gaz limite conduction et convection."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "1 cal ≈ 4,18 J : 100 cal valent",
+              "options": ["418 J", "41,8 J", "4180 J", "0,418 J"],
+              "correctAnswers": [0],
+              "explanation": "100 × 4,18 ≈ 418 J."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réchauffer 1 kg d'eau de 20 °C à 30 °C : Q (c = 4180)",
+              "options": ["4180 J", "41 800 J", "836 J", "418 J"],
+              "correctAnswers": [1],
+              "explanation": "Q = 1 × 4180 × 10 = 41 800 J."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Changements d'état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pendant un changement d'état d'un corps pur :",
+              "options": [
+                "La température reste constante",
+                "Q = m L",
+                "T augmente toujours",
+                "L s'exprime en J·kg⁻¹"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plateau thermique ; chaleur latente massique en J·kg⁻¹."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "m = 0,2 kg, L_fusion = 3,34 × 10⁵ J·kg⁻¹ : Q fusion",
+              "options": ["66,8 kJ", "668 J", "6,68 MJ", "3340 J"],
+              "correctAnswers": [0],
+              "explanation": "Q = 0,2 × 334000 = 66 800 J = 66,8 kJ."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Vaporisation de l'eau à 100 °C sous 1 atm :",
+              "options": [
+                "T monte pendant vaporisation",
+                "T plateau, Q = m L_v",
+                "Pas d'énergie",
+                "Solidification"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Plateau à température d'ébullition."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Condensation : pour le gaz qui condense, Q est",
+              "options": [
+                "Reçu positif",
+                "Cédé (transfert sortant)",
+                "Toujours nul",
+                "Sans unité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le gaz cède la chaleur latente."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L_v eau ≈ 2,26 × 10⁶ J·kg⁻¹, m = 0,1 kg : Q",
+              "options": ["226 kJ", "22,6 kJ", "2,26 kJ", "2260 MJ"],
+              "correctAnswers": [0],
+              "explanation": "Q = 0,1 × 2,26 × 10⁶ = 226 000 J."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Courbe de chauffage : palier horizontal =",
+              "options": [
+                "Changement d'état",
+                "Erreur de mesure seule",
+                "c = 0",
+                "Refroidissement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie pour changer d'état sans ΔT."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Glace à 0 °C fondant : T du mélange glace/eau",
+              "options": [
+                "0 °C pendant fusion",
+                "Monte immédiatement",
+                "−10 °C fixe",
+                "100 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plateau de fusion à 0 °C (1 atm)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sublimation : passage",
+              "options": [
+                "Solide → liquide",
+                "Solide → gaz",
+                "Liquide → solide",
+                "Gaz → liquide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Passage direct solide → gaz."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Énergie pour fondre puis chauffer l'eau liquide :",
+              "options": [
+                "Q = m c ΔT seulement",
+                "Q_fusion + Q_sensible",
+                "Toujours nulle",
+                "Uniquement L_v"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Somme des étapes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Unité de L (chaleur latente massique) :",
+              "options": ["J·K⁻¹", "J·kg⁻¹", "W·m⁻¹", "Pa·s"],
+              "correctAnswers": [1],
+              "explanation": "Énergie par unité de masse."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse conversions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Conversions possibles dans la vie courante :",
+              "options": [
+                "Micro-onde : électrique → thermique",
+                "Voiture thermique : chimique → mécanique",
+                "Panneau PV : électrique → lumière",
+                "Haut-parleur : électrique → mécanique (onde)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Four et moteur ; le PV convertit lumière → électrique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ordre de grandeur Ec voiture 1000 kg à 20 m·s⁻¹",
+              "options": ["200 kJ", "2 MJ", "20 J", "200 MJ"],
+              "correctAnswers": [0],
+              "explanation": "Ec = ½ × 1000 × 400 = 200 000 J = 200 kJ."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Facteur le plus direct pour réduire facture kWh",
+              "options": [
+                "Augmenter durée veille",
+                "Baisser puissance moyenne et temps d'usage",
+                "η > 1",
+                "Refroidir le compteur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "E = P × t."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "P = 100 W, E = 1,8 × 10⁶ J : durée",
+              "options": ["5 h", "18000 s", "5 h (18000 s)", "18 s"],
+              "correctAnswers": [2],
+              "explanation": "Δt = E/P = 18000 s = 5 h."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Conservation de l'énergie totale d'un système isolé",
+              "options": [
+                "Faux",
+                "Vrai",
+                "Vrai seulement pour Ec",
+                "Dépend de η"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Principe fondamental."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "η_moteur = 35 %, E_chim = 1 MJ : E_méca max utile",
+              "options": ["350 kJ", "650 kJ", "35 kJ", "1,35 MJ"],
+              "correctAnswers": [0],
+              "explanation": "0,35 × 10⁶ = 350 kJ."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Travail d'une force électrique dans un circuit",
+              "options": [
+                "Lié au déplacement de charges",
+                "Toujours nul",
+                "Unité : watt seule",
+                "Crée de la matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "W = q U ; P = U I."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "3,6 kWh =",
+              "options": ["3,6 J", "1,296 × 10⁷ J", "3600 J", "10⁶ J"],
+              "correctAnswers": [1],
+              "explanation": "3,6 × 3,6 × 10⁶ = 1,296 × 10⁷ J."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dissipation par frottement : énergie mécanique devient",
+              "options": [
+                "Potentielle gravitaire",
+                "Thermique (interne)",
+                "Disparaît",
+                "Chimique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Échauffement microscopique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choix d'une source : critère écologique fréquent",
+              "options": [
+                "Émissions de CO₂ et ressource",
+                "Couleur du câble",
+                "Forme du watt",
+                "Masse du joule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Empreinte carbone et durabilité."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Transferts thermiques",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Modes de transfert",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Modes de transfert thermique dans la matière ou le vide :",
+              "options": [
+                "Conduction",
+                "Convection",
+                "Rayonnement",
+                "Conduction à travers le vide sans matière"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Conduction et convection nécessitent un milieu matériel ; le rayonnement traverse le vide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Conduction : nécessite",
+              "options": [
+                "Matière",
+                "Vide",
+                "Uniquement lumière",
+                "Gravité nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transfert par contact entre particules."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Convection : fluide",
+              "options": [
+                "Immobile",
+                "En mouvement macroscopique",
+                "Solide rigide",
+                "Vide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Transport de chaleur par déplacement de fluide."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rayonnement solaire traverse",
+              "options": [
+                "Le vide",
+                "Un mur épais opaque seul",
+                "Rien",
+                "Uniquement l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ondes EM sans support matériel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Poêle : main près sans toucher : surtout",
+              "options": [
+                "Conduction",
+                "Convection + rayonnement",
+                "Conduction dans le vide",
+                "Aucun transfert"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Air chaud et IR."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cuillère métallique dans café chaud : tige s'échauffe par",
+              "options": [
+                "Conduction",
+                "Convection interne du métal seule",
+                "Fusion",
+                "Radioactivité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conduction dans le solide."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Thermos limite",
+              "options": [
+                "Conduction, convection et rayonnement",
+                "Seulement la masse",
+                "La lumière visible seule",
+                "La gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vide intercalé + surfaces réfléchissantes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Convection naturelle : due à",
+              "options": [
+                "Différences de masse volumique",
+                "Couleur",
+                "Pression nulle",
+                "Conduction seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fluide chaud moins dense monte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Unité SI du flux thermique φ (puissance thermique) :",
+              "options": ["J", "W", "W·m⁻¹·K⁻¹", "K"],
+              "correctAnswers": [1],
+              "explanation": "φ = dQ/dt en watts."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sens spontané de la chaleur",
+              "options": [
+                "Corps froid → chaud",
+                "Corps chaud → froid",
+                "Aléatoire sans gradient",
+                "Jamais"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Second principe : équilibrage des températures."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Conduction",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Loi de Fourier (conduction stationnaire, une dimension) :",
+              "options": [
+                "φ = λ S ΔT / e",
+                "φ = λ S e / ΔT",
+                "R_th = e / (λ S)",
+                "φ = m c ΔT"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Flux φ = λ S ΔT/e ; résistance R_th = e/(λS)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "λ s'exprime en",
+              "options": ["W·m⁻¹·K⁻¹", "J·kg⁻¹", "Pa", "W·K"],
+              "correctAnswers": [0],
+              "explanation": "Conductivité thermique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "λ_cuivre > λ_bois : pour même géométrie",
+              "options": [
+                "Cuivre conduit mieux",
+                "Bois conduit mieux",
+                "Identique",
+                "Aucun flux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Métaux bons conducteurs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "S = 1 m², e = 0,1 m, ΔT = 20 K, λ = 0,5 W·m⁻¹·K⁻¹ : φ",
+              "options": ["100 W", "10 W", "1 W", "0,5 W"],
+              "correctAnswers": [0],
+              "explanation": "φ = 0,5 × 1 × 20 / 0,1 = 100 W."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Double épaisseur e (autres égaux) : φ",
+              "options": ["Double", "Divisé par 2", "Quadruple", "Inchangé"],
+              "correctAnswers": [1],
+              "explanation": "φ ∝ 1/e."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Isolant typique : λ",
+              "options": ["Faible", "Très élevé", "Infini", "Négatif"],
+              "correctAnswers": [0],
+              "explanation": "Laine de verre, polystyrène : faible λ."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Résistance thermique R_th = e/(λ S) : unité",
+              "options": ["K·W⁻¹", "W", "J", "m²"],
+              "correctAnswers": [0],
+              "explanation": "Analogie avec loi d'Ohm thermique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Murs en série : R_totale",
+              "options": ["Somme des R", "Produit", "Moyenne seule", "Nulle"],
+              "correctAnswers": [0],
+              "explanation": "Résistances thermiques s'additionnent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Métal à T ambiante semble plus froid que bois car",
+              "options": [
+                "T plus basse",
+                "Conductivité élevée → peau se refroidit vite",
+                "Pas de transfert",
+                "Rayonnement nul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Même T ambiante, flux cutané plus fort."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Augmenter S (surface d'échange) à ΔT constant : φ",
+              "options": ["Augmente", "Diminue", "Nul", "Divisé par S"],
+              "correctAnswers": [0],
+              "explanation": "φ proportionnel à S."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Convection",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La convection thermique :",
+              "options": [
+                "Implique un fluide",
+                "Peut être forcée (ventilateur)",
+                "Se produit dans un barreau de bronze sans fluide",
+                "Transporte l'énergie par déplacement de matière fluide"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fluide en mouvement ; pas de convection dans un solide pur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Radiateur chauffe pièce surtout par",
+              "options": [
+                "Convection de l'air",
+                "Conduction dans le mur seule",
+                "Aucun mode",
+                "Fusion air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Air chaud circule (et IR)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Courants de convection dans l'atmosphère",
+              "options": [
+                "Liés aux différences de T",
+                "Impossibles",
+                "Uniquement conduction",
+                "Sans énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Météo et brises."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ventilateur PC : convection",
+              "options": [
+                "Forcée",
+                "Naturelle seule",
+                "Rayonnement",
+                "Conduction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convection forcée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Eau chauffée en bas d'un récipient :",
+              "options": [
+                "Eau chaude monte",
+                "Eau chaude reste en bas",
+                "Gèle",
+                "Pas de mouvement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convection naturelle ascendante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Air stagnant entre vitres :",
+              "options": [
+                "Conduction limitée, convection réduite si espace étroit",
+                "Flux infini",
+                "Nul toujours",
+                "Rayonnement interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double vitrage limite les échanges."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Plume vs brique même masse : refroidissement air",
+              "options": [
+                "Plume plus rapide (surface/volume)",
+                "Brique plus rapide",
+                "Identique",
+                "Aucun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échange surface favorise la plume."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mer : vent sur surface",
+              "options": [
+                "Renforce convection",
+                "Stoppe tout transfert",
+                "Fusion",
+                "Conduction vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convection forcée côté surface."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Chaleur du Soleil vers Terre traverse espace par",
+              "options": [
+                "Convection",
+                "Rayonnement",
+                "Conduction",
+                "Convection air interplanétaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Vide : pas de matière pour conduction/convection."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Brasseur dans une casserole homogénise",
+              "options": [
+                "Température par convection forcée",
+                "Masse molaire",
+                "Couleur",
+                "Pression seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mélange du fluide."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Rayonnement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Rayonnement thermique :",
+              "options": [
+                "Ondes électromagnétiques",
+                "Nécessite un fluide obligatoirement",
+                "Se propage dans le vide",
+                "Tout corps à T > 0 K émet"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "EM sans milieu ; émission liée à T."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Corps noir idéal :",
+              "options": [
+                "Absorbe tout le rayonnement incident",
+                "Réfléchit tout",
+                "Transparent",
+                "T = 0 K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle d'absorption totale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Surface mate sombre au Soleil",
+              "options": [
+                "Absorbe plus que surface claire polie",
+                "Absorbe moins",
+                "Identique",
+                "Réfléchit tout IR"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleur et état de surface modifient l'absorption."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Puissance rayonnée ∝ T⁴ (Stefan-Boltzmann) : doubler T (en K)",
+              "options": ["Puissance × 16", "× 2", "× 4", "× 8"],
+              "correctAnswers": [0],
+              "explanation": "2⁴ = 16."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Effet de serre simplifié :",
+              "options": [
+                "Vitre transparente visible + rétention partielle IR",
+                "Conduction lunaire",
+                "Fusion vitre",
+                "Convection dans le vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle pédagogique de rétention."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Thermographie IR mesure",
+              "options": [
+                "Rayonnement émis",
+                "Masse",
+                "pH",
+                "Intensité électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cartographie de température surface."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Feu : chaleur ressentie sans contact par",
+              "options": [
+                "Rayonnement IR",
+                "Conduction air seule",
+                "Convection dans le vide",
+                "Aucun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "IR dominant à distance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "ε émissivité : surface mate",
+              "options": [
+                "ε souvent plus élevé que métal poli",
+                "ε = 0 toujours",
+                "Sans effet",
+                "ε > 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surfaces mates émettent mieux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Protection solaire réfléchissante :",
+              "options": [
+                "Renvoie une partie du rayonnement",
+                "Crée de la chaleur",
+                "Conduction seule",
+                "Baisse g"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduction flux absorbé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "0 K : émission thermique",
+              "options": [
+                "Nulle (limite thermodynamique)",
+                "Maximale",
+                "Infinie",
+                "Seulement visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas d'agitation à 0 K."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Flux et bilan",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Flux thermique φ (en W) :",
+              "options": [
+                "φ = Q/Δt si φ constant",
+                "Plus φ est grand, plus de chaleur par seconde",
+                "φ s'exprime en joules",
+                "Q = φ × Δt"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Analogie puissance ; Q = φΔt."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "φ = 500 W pendant 1 h : Q",
+              "options": ["500 J", "1,8 MJ", "1800 J", "50 kJ"],
+              "correctAnswers": [1],
+              "explanation": "Q = 500 × 3600 = 1,8 × 10⁶ J."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Paroi ΔT = 15 K, R_th = 0,5 K·W⁻¹ : φ",
+              "options": ["30 W", "7,5 W", "0,033 W", "300 W"],
+              "correctAnswers": [0],
+              "explanation": "φ = ΔT/R = 15/0,5 = 30 W."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Isolation : R_th",
+              "options": ["Augmente", "Diminue", "Nul", "En J"],
+              "correctAnswers": [0],
+              "explanation": "Plus R, moins φ pour même ΔT."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux parois identiques en parallèle (même ΔT) : φ_total",
+              "options": ["Somme des φ", "Moyenne", "Produit", "Nul"],
+              "correctAnswers": [0],
+              "explanation": "Chemins parallèles s'additionnent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pont thermique :",
+              "options": [
+                "Zone de faible R locale",
+                "Améliore isolation",
+                "Vide parfait",
+                "λ = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fuites de chaleur localisées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Régime stationnaire : T aux points",
+              "options": [
+                "Constantes dans le temps",
+                "Changent toujours",
+                "T = 0",
+                "Sans flux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Profil de T fixe, flux constant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "ΔT double, même paroi : φ",
+              "options": ["Double", "Divisé par 2", "Quadruple", "Nul"],
+              "correctAnswers": [0],
+              "explanation": "Loi linéaire en ΔT."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Compteur énergie chauffage : mesure surtout",
+              "options": ["Q cumulée (kWh)", "λ", "Vitesse vent", "pH"],
+              "correctAnswers": [0],
+              "explanation": "Énergie thermique ou électrique convertie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "DPE logement : classe liée à",
+              "options": [
+                "Consommation énergétique / isolation",
+                "Couleur toit seule",
+                "Nombre de fenêtres sans U",
+                "Masse seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Performance énergétique globale."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Échanges et température",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Équilibre thermique entre deux corps :",
+              "options": [
+                "Même température macroscopique",
+                "Flux net nul",
+                "Impossible",
+                "T = 0 °C obligatoire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plus d'échange net quand les T sont égales."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Deux corps en contact isolé de l'extérieur : T_fin",
+              "options": [
+                "Intermédiaire (bilan Q)",
+                "T du plus chaud initial",
+                "0 K",
+                "100 °C toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conservation énergie sensible."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "m1=0,2 kg c=400 J·kg⁻¹·K⁻¹ T1=80 ; m2=0,2 kg c=400 T2=20 ; T_eq",
+              "options": ["50 °C", "40 °C", "60 °C", "80 °C"],
+              "correctAnswers": [0],
+              "explanation": "Masses et c égales : moyenne (80+20)/2 = 50."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Contact parfait solide-solide (stationnaire) : à l'interface",
+              "options": [
+                "Continuité de T",
+                "Flux toujours nul",
+                "Pression nulle",
+                "Vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même température à l'interface."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Peau 33 °C, air 20 °C : chaleur",
+              "options": ["Corps → air", "Air → corps", "Aucun", "Aléatoire"],
+              "correctAnswers": [0],
+              "explanation": "Du plus chaud au plus froid."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Coefficient h (convection) unité typique",
+              "options": ["W·m⁻²·K⁻¹", "J·kg⁻¹", "Pa", "m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "φ = h S ΔT."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Glace dans l'eau à 0 °C : T mélange",
+              "options": [
+                "0 °C tant que glace reste",
+                "10 °C",
+                "100 °C",
+                "−10 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plateau de fusion."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Thermostat : régule",
+              "options": [
+                "T ambiante par coupure chauffage",
+                "λ",
+                "Masse air",
+                "Couleur mur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boucle de régulation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sensation au toucher vs T réelle : dépend de",
+              "options": [
+                "Conductivité et capacité thermique contact",
+                "Masse lunaire",
+                "pH",
+                "Fréquence radio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux tactile."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Unité de ΔT en SI pour formules",
+              "options": ["K (écart identique en °C)", "kg", "mol", "cd"],
+              "correctAnswers": [0],
+              "explanation": "1 K = 1 °C d'écart."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Isolation bâtiment",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bonne isolation thermique d'une paroi :",
+              "options": [
+                "Faible λ",
+                "Épaisseur e augmentée",
+                "Ponts thermiques réduits",
+                "λ métallique élevé partout"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Matériaux isolants épais ; limiter les ponts."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Coefficient U (transmission) :",
+              "options": [
+                "Plus U petit, mieux isolé",
+                "U en J",
+                "U = λ toujours",
+                "U sans lien avec φ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "U = φ/(S ΔT) ; faible U souhaité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Laine de verre vs béton :",
+              "options": [
+                "Laine λ plus faible",
+                "Béton meilleur isolant",
+                "Identiques",
+                "Béton λ nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fibres piègent l'air."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "RE2020 vise",
+              "options": [
+                "Limiter consommation et confort été-hiver",
+                "Augmenter ponts thermiques",
+                "Interdire vitrage",
+                "η > 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réglementation thermique française."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "VMC :",
+              "options": [
+                "Renouvelle air avec récupération possible",
+                "Supprime convection",
+                "Vide interstellaire",
+                "Fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ventilation mécanique contrôlée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Fenêtre U_glass bas :",
+              "options": [
+                "Moins de pertes par vitre",
+                "Plus de pertes",
+                "λ infini",
+                "Pas de rayonnement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vitrage performant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combles non isolés : perte typique",
+              "options": [
+                "Importante (air chaud monte)",
+                "Nulle",
+                "Refroidit la Terre",
+                "Uniquement été"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toiture : chemin de fuite majeur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Étanchéité à l'air réduit",
+              "options": [
+                "Infiltrations non contrôlées",
+                "Conduction lunaire",
+                "Masse",
+                "c eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fuites d'air chaud/humide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Inertie thermique (lourdeur) aide à",
+              "options": [
+                "Lisser variations T intérieure",
+                "Augmenter λ air",
+                "Bloquer rayonnement seul",
+                "η > 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stockage sensible dans matériaux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Audit thermique : objectif",
+              "options": [
+                "Identifier déperditions et travaux",
+                "Mesurer c",
+                "Changer unité joule",
+                "Supprimer convection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diagnostic énergétique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Applications industrielles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Refroidissement d'un processeur :",
+              "options": [
+                "Dissipe chaleur Joule",
+                "Radiateur + convection air",
+                "Peut utiliser conduction",
+                "Crée de l'énergie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Évacuer chaleur par conduction puis convection."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pâte thermique entre CPU et radiateur :",
+              "options": [
+                "Améliore contact (↓ résistance)",
+                "Isolant",
+                "Augmente λ air",
+                "Fusion CPU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combler micro-aspérités."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Échangeur thermique :",
+              "options": [
+                "Transfert entre deux fluides sans mélange",
+                "Mélange total",
+                "Uniquement rayonnement",
+                "Vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paroi séparatrice."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Centrale : condenseur refroidi par eau",
+              "options": [
+                "Convection + conduction",
+                "Seulement fusion",
+                "Rayonnement seul dans le vide",
+                "Aucun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rejet chaleur fatale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Isolation tuyauterie vapeur :",
+              "options": ["Réduit pertes φ", "Augmente φ", "Change c", "η > 1"],
+              "correctAnswers": [0],
+              "explanation": "Économie énergie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Four industriel paroi épaisse :",
+              "options": [
+                "Réduit φ sortant",
+                "Augmente pertes",
+                "λ infini",
+                "T extérieure = T four"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résistance thermique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Flacon Dewar limite",
+              "options": [
+                "Transferts vers l'extérieur",
+                "Masse helium seule",
+                "Gravité",
+                "Couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Isotherme cryogénique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Soudure : apport Q sert à",
+              "options": [
+                "Fusion localisée",
+                "Baisser c",
+                "Convection lunaire",
+                "Rayonnement nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaleur latente + sensible."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mesure λ matériau : méthode stationnaire",
+              "options": [
+                "Flux à travers échantillon calibré",
+                "Mesure pH",
+                "Spectro UV seule",
+                "Pesée seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthodes de plaque ou flux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Surface métallique > 60 °C :",
+              "options": [
+                "Risque brûlure (conduction rapide)",
+                "Sans danger",
+                "Refroidit",
+                "Fusion air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brûlures au contact."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Environnement et climat",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bilan radiatif moyen de la Terre (long terme) :",
+              "options": [
+                "Reçoit rayonnement solaire",
+                "Émet IR vers l'espace",
+                "Convection interplanétaire dominante",
+                "Énergie reçue ≈ énergie émise"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Équilibre radiatif ; pas de fluide dans l'espace."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Gaz à effet de serre :",
+              "options": [
+                "Absorbent/réémettent IR",
+                "Transparent à tout",
+                "Refroidissent seuls",
+                "Bloquent tout visible entrant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Piégeage partiel IR."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Albédo élevé (neige) :",
+              "options": [
+                "Réfléchit plus le solaire",
+                "Absorbe tout",
+                "λ infini",
+                "Convection vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins d'absorption surface."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Canicule urbaine : îlot de chaleur lié à",
+              "options": [
+                "Surfaces absorbantes + faible végétation",
+                "λ glace",
+                "T = 0 K",
+                "Fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stockage et réémission."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Océan : rôle thermique",
+              "options": [
+                "Stockage chaleur (capacité)",
+                "Aucun",
+                "T fixe 0 °C",
+                "Uniquement conduction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inertie climatique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Fonte glace : Q utilisée pour",
+              "options": [
+                "Chaleur latente fusion",
+                "Augmenter c air",
+                "Rayonnement nul",
+                "Conduction vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Changement d'état."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réchauffement climatique : énergie supplémentaire retenue",
+              "options": [
+                "Système Terre-atmosphère",
+                "Crée violation 1er principe",
+                "Disparaît",
+                "Uniquement mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déséquilibre radiatif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vent : transport",
+              "options": [
+                "Chaleur et humidité (convection)",
+                "Seulement masse solide",
+                "λ",
+                "Électrons libres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Advection."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "T globale : observations combinent",
+              "options": [
+                "Satellites + stations + océanographie",
+                "pH seul",
+                "λ bois",
+                "Compteur kWh maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseaux d'observation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Atténuation changement climatique : réduire",
+              "options": [
+                "Émissions GES et améliorer efficacité",
+                "λ cuivre",
+                "c eau",
+                "Gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mitigation énergétique."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse transferts",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour limiter pertes d'un fluide chaud dans une tuyauterie :",
+              "options": [
+                "Isoler (faible λ)",
+                "Augmenter épaisseur isolant",
+                "Augmenter surface nu sans isolation",
+                "Réduire ΔT avec extérieur si possible"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Isolation épaisse ; surface nue accroît les échanges."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "λ = 0,04, S = 10 m², e = 0,08 m, ΔT = 25 K : φ",
+              "options": ["125 W", "12,5 W", "1250 W", "1,25 W"],
+              "correctAnswers": [0],
+              "explanation": "φ = 0,04×10×25/0,08 = 125 W."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deux modes simultanés à une surface : flux total",
+              "options": [
+                "Somme des contributions (modèle)",
+                "Toujours nul",
+                "Produit seulement",
+                "Sans unité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Superposition souvent additive."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "R_th = 2 K·W⁻¹, ΔT = 10 K : φ",
+              "options": ["5 W", "20 W", "200 W", "0,5 W"],
+              "correctAnswers": [0],
+              "explanation": "φ = 10/2 = 5 W."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calorimétrie isolée : Q_perdu par eau chaude =",
+              "options": [
+                "Q_gagné par eau froide",
+                "Toujours 0",
+                "Infini",
+                "Sans conservation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan énergétique isolé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phase change dans un échangeur (corps pur) : T",
+              "options": ["Plateau", "Monte sans limite", "0 K", "Sans Q"],
+              "correctAnswers": [0],
+              "explanation": "Latent à T constante."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "φ = 80 W, 2 h : Q",
+              "options": ["576 kJ", "160 J", "57,6 kJ", "5,76 MJ"],
+              "correctAnswers": [0],
+              "explanation": "Q = 80 × 7200 = 576 000 J."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Meilleur conducteur parmi : air, cuivre, polystyrène, bois sec",
+              "options": ["Cuivre", "Air", "Polystyrène", "Bois"],
+              "correctAnswers": [0],
+              "explanation": "Métaux λ élevé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Second principe (énoncé simplifié) : chaleur ne passe pas spontanément",
+              "options": [
+                "Du froid vers le chaud",
+                "Du chaud vers le froid",
+                "Jamais",
+                "Sans gradient"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sens naturel hot → cold."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En pratique, conduction, convection et rayonnement",
+              "options": [
+                "Coexistent souvent",
+                "Impossible",
+                "Un seul mode",
+                "Vide seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les trois modes se combinent."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

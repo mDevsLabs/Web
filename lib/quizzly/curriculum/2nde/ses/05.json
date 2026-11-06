@@ -1,0 +1,2733 @@
+{
+  "id": "2nde-ses-05",
+  "year": "2nde",
+  "subject": "ses",
+  "title": "Monnaie et financement",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Rôles de la monnaie",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les limites du troc et la naissance de la monnaie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment définit-on traditionnellement le troc ?",
+              "options": [
+                "L'échange direct d'un bien ou d'un service contre un autre sans monnaie",
+                "Le paiement d'un service au moyen d'un chèque bancaire",
+                "L'achat de marchandises à crédit remboursable sur plusieurs mois",
+                "La vente de biens exclusivement par voie électronique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le troc désigne une transaction directe entre deux biens ou services sans intermédiaire monétaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel obstacle majeur caractérise l'économie de troc selon les économistes ?",
+              "options": [
+                "L'obligation de détenir des pièces d'or certifiées",
+                "La nécessité d'une double coïncidence des besoins",
+                "Le plafonnement légal de la quantité de biens échangés",
+                "L'interdiction formelle du commerce à longue distance"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pour qu'un troc aboutisse, chaque partenaire doit désirer exactement ce que l'autre propose au même moment."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel problème survient dans le troc lorsqu'un bien ne peut pas être découpé en fractions ?",
+              "options": [
+                "L'indivisibilité des biens échangés",
+                "L'hyperinflation des prix relatifs",
+                "Le cours forcé des marchandises",
+                "La faillite de la banque centrale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'indivisibilité empêche d'échanger un bien de forte valeur (comme un cheval) contre un bien de faible valeur (comme du pain)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on les coûts liés au temps et aux efforts nécessaires pour trouver un partenaire d'échange dans le troc ?",
+              "options": [
+                "Les coûts de transaction",
+                "Les intérêts intercalaires",
+                "Les dividendes d'opportunité",
+                "Les taxes de compensation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les coûts de transaction englobent la recherche d'informations, la négociation et l'organisation de l'échange."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont les inconvénients majeurs d'une économie reposant exclusivement sur le troc ?",
+              "options": [
+                "La multiplication des prix relatifs entre chaque couple de biens",
+                "L'obligation d'avoir une double coïncidence des désirs",
+                "L'impossibilité de fixer des taux d'intérêt négatifs",
+                "La difficulté de conserver des biens périssables pour épargner"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Le troc impose une double coïncidence, complique le calcul des prix relatifs et rend l'épargne difficile avec des denrées périssables."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans une économie sans monnaie comportant 10 biens, combien de prix relatifs faudrait-il déterminer pour échanger ?",
+              "options": [
+                "45 prix relatifs",
+                "10 prix relatifs",
+                "100 prix relatifs",
+                "5 prix relatifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule du nombre de prix relatifs dans le troc est n(n-1)/2, soit 10 × 9 / 2 = 45 rapports d'échange."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En introduisant la monnaie, combien de prix suffisent pour exprimer la valeur de 10 biens ?",
+              "options": [
+                "10 prix monétaires",
+                "45 prix monétaires",
+                "90 prix monétaires",
+                "1 prix monétaire unique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec la monnaie comme étalon, chaque bien a un seul prix exprimé dans l'unité monétaire commune."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel effet principal a eu l'apparition de la monnaie sur les échanges économiques ?",
+              "options": [
+                "La réduction des coûts de transaction et la fluidification des échanges",
+                "La disparition définitive de toute forme de commerce international",
+                "L'obligation pour chaque citoyen de produire lui-même tous ses biens",
+                "L'interdiction de revendre un bien acheté antérieurement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monnaie simplifie les échanges, réduit les coûts de transaction et permet le développement de la division du travail."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la division du travail s'est-elle accélérée avec l'adoption de la monnaie ?",
+              "options": [
+                "Parce que les individus peuvent se spécialiser et vendre leur production sans chercher de troc direct",
+                "Parce que la loi obligeait les artisans à embaucher des apprentis rémunérés en bétail",
+                "Parce que les banques centrales interdisaient l'agriculture vivrière",
+                "Parce que la monnaie rendait obligatoire le travail en manufacture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En garantissant la vente contre monnaie, chacun peut se spécialiser dans son métier et acheter ce dont il a besoin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle condition essentielle a permis à certains biens (sel, coquillages, métaux) de devenir les premières monnaies ?",
+              "options": [
+                "L'acceptation unanime et la confiance partagée par la communauté",
+                "Leur fragilité extrême face aux intempéries",
+                "Leur abondance infinie et gratuite dans la nature",
+                "Une décision unilatérale prise par le Fonds monétaire international"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un bien devient monnaie lorsque l'ensemble des membres d'un groupe social accepte de le recevoir en paiement avec confiance."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les trois fonctions économiques de la monnaie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel philosophe grec de l'Antiquité a le premier défini les fonctions canoniques de la monnaie ?",
+              "options": ["Aristote", "Platon", "Socrate", "Héraclite"],
+              "correctAnswers": [0],
+              "explanation": "Dans son 'Éthique à Nicomaque', Aristote explicite les fonctions fondamentales d'intermédiaire et de mesure de la monnaie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle fonction permet de mesurer et d'exprimer la valeur économique de biens hétérogènes ?",
+              "options": [
+                "L'unité de compte",
+                "La réserve de valeur",
+                "L'intermédiaire des échanges",
+                "L'obligation légale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'unité de compte sert d'étalon universel pour chiffrer et comparer la valeur de biens différents."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle fonction permet d'acheter un bien sans avoir à fournir en échange direct un autre bien ?",
+              "options": [
+                "L'intermédiaire des échanges",
+                "L'unité de compte",
+                "La réserve de valeur",
+                "L'assurance financière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monnaie est acceptée par tous les vendeurs, ce qui en fait l'intermédiaire général des échanges."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle fonction permet de reporter un pouvoir d'achat dans le futur en épargnant ?",
+              "options": [
+                "La réserve de valeur",
+                "L'unité de compte",
+                "L'intermédiaire des échanges",
+                "La compensation bancaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En tant que réserve de valeur, la monnaie transfère du pouvoir d'achat d'une période présente vers une période future."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles sont les trois fonctions économiques traditionnelles de la monnaie ?",
+              "options": [
+                "Unité de compte",
+                "Intermédiaire des échanges",
+                "Réserve de valeur",
+                "Garantie hypothécaire obligatoire"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les trois fonctions traditionnelles sont : unité de compte, intermédiaire des échanges et réserve de valeur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un magasin affiche une étiquette indiquant 'Pantalon : 40 €'. Quelle fonction est illustrée ?",
+              "options": [
+                "Unité de compte",
+                "Réserve de valeur",
+                "Intermédiaire des échanges",
+                "Régulation macroéconomique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'affichage des prix traduit directement la monnaie comme unité de mesure de la valeur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vous donnez un billet de 20 € pour acheter une place de concert. Quelle fonction est exercée ?",
+              "options": [
+                "Intermédiaire des échanges",
+                "Unité de compte",
+                "Réserve de valeur",
+                "Étalon monétaire différé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le règlement effectif d'un achat illustre le rôle de moyen de paiement et d'intermédiaire des échanges."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un épargnant dépose 100 € sur son livret bancaire pour financer ses prochaines vacances. Quelle fonction est à l'œuvre ?",
+              "options": [
+                "Réserve de valeur",
+                "Unité de compte",
+                "Intermédiaire des échanges",
+                "Création monétaire brute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conserver de l'argent pour des dépenses futures correspond à la fonction de réserve de valeur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la capacité d'un actif à être transformé immédiatement et sans coût en moyen de paiement ?",
+              "options": [
+                "La liquidité",
+                "La solvabilité",
+                "La rentabilité",
+                "La divisibilité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liquidité désigne la facilité avec laquelle un actif peut être utilisé immédiatement pour régler un achat."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la monnaie est-elle considérée comme l'actif le plus liquide de l'économie ?",
+              "options": [
+                "Parce qu'elle est immédiatement disponible et acceptée sans conversion préalable",
+                "Parce qu'elle rapporte le taux d'intérêt le plus élevé du marché",
+                "Parce que sa valeur physique ne s'use jamais avec le temps",
+                "Parce qu'elle est garantie par une réserve intégrale de diamants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monnaie est la liquidité par excellence : elle s'utilise directement pour toute transaction sans délai ni frais de change."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La monnaie comme unité de compte",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le fait que la monnaie sert d'étalon de mesure ?",
+              "options": [
+                "Elle permet d'exprimer tous les prix dans une référence commune et comparable",
+                "Elle garantit que les prix ne changeront jamais au fil des saisons",
+                "Elle oblige les commerçants à vendre leurs produits à perte",
+                "Elle sert uniquement à mesurer la masse et le volume des biens matériels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout comme le mètre mesure les longueurs, la monnaie comme unité de compte mesure la valeur économique des biens."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si un cahier coûte 2 € et un livre 10 €, quel est le prix relatif du livre par rapport au cahier ?",
+              "options": ["5 cahiers", "8 euros", "20 cahiers", "0,2 livre"],
+              "correctAnswers": [0],
+              "explanation": "Le prix relatif est le rapport des prix : 10 € / 2 € = 5 cahiers. Un livre vaut 5 cahiers."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle opération essentielle de gestion la monnaie comme unité de compte rend-elle possible pour les entreprises ?",
+              "options": [
+                "La tenue d'une comptabilité rigoureuse et le calcul du résultat économique",
+                "La suppression des cotisations sociales sur les salaires",
+                "La distribution gratuite de dividendes illimités",
+                "L'annulation automatique des dettes fournisseurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'unité de compte permet d'additionner des coûts hétérogènes (salaires, matières, loyers) et de calculer le bénéfice."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est l'unité de compte légale adoptée par les pays membres de la zone euro depuis 1999/2002 ?",
+              "options": [
+                "L'euro",
+                "Le franc suisse",
+                "Le dollar américain",
+                "Le droit de tirage spécial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'euro est la monnaie et l'unité de compte officielle commune des pays de la zone euro."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles situations concrètes illustrent directement la fonction d'unité de compte ?",
+              "options": [
+                "L'établissement du devis d'un artisan électricien en euros",
+                "La comparaison des tarifs de plusieurs forfaits téléphoniques",
+                "L'évaluation du Produit Intérieur Brut (PIB) d'un pays",
+                "Le stockage de pièces d'or dans un coffre-fort sans jamais les dépenser"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Un devis, un comparatif de tarifs et le PIB utilisent la monnaie pour chiffrer et mesurer des valeurs économiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une monnaie servant d'unité de compte sans exister sous forme physique de pièces ou billets ?",
+              "options": [
+                "Une monnaie de compte",
+                "Une monnaie divisionnaire",
+                "Une monnaie métallique",
+                "Une monnaie de papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écu européen (ECU) avant 1999 était un exemple typique de monnaie de compte servant aux calculs interbancaires."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se passerait-il pour un consommateur si chaque magasin utilisait sa propre unité de mesure arbitraire ?",
+              "options": [
+                "La comparaison rationnelle des prix deviendrait extrêmement complexe et coûteuse",
+                "Les prix de tous les articles deviendraient immédiatement nuls",
+                "La concurrence entre commerces deviendrait instantanément parfaite",
+                "Les salaires des employés augmenteraient automatiquement de moitié"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une unité de compte universelle garantit la transparence de l'information et facilite les arbitrages d'achat."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que l'unité de compte est un bien public ?",
+              "options": [
+                "Parce qu'elle bénéficie à l'ensemble de la société sans que son utilisation par un agent ne prive les autres",
+                "Parce qu'elle appartient exclusivement aux ministres de l'Économie",
+                "Parce qu'elle est fabriquée uniquement à partir de matériaux recyclés",
+                "Parce qu'elle ne peut servir qu'à acheter des biens dans le secteur public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'étalon monétaire est une convention collective non rivale et non exclusive dont profite toute l'économie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lorsque l'inflation est extrêmement forte (hyperinflation), quel problème subit l'unité de compte ?",
+              "options": [
+                "Elle perd sa stabilité et ne permet plus de comparer convenablement les prix dans le temps",
+                "Elle oblige les banques à fermer définitivement tous les comptes",
+                "Elle transforme les billets de banque en pièces de cuivre",
+                "Elle interdit aux entreprises d'exporter des marchandises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand les prix changent d'heure en heure, l'unité de compte perd son rôle de repère stable de la valeur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel avantage l'adoption de l'euro a-t-elle apporté aux consommateurs voyageant dans la zone euro ?",
+              "options": [
+                "La possibilité de comparer directement les prix sans frais ni calculs de conversion de change",
+                "La gratuité totale de tous les hébergements hôteliers",
+                "L'obligation de payer les repas uniquement en espèces",
+                "L'annulation des taxes sur la valeur ajoutée dans tous les commerces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une même unité de compte dans plusieurs pays permet de comparer immédiatement les prix sans calcul de change."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "La monnaie comme intermédiaire des échanges",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment la monnaie simplifie-t-elle l'acte d'échange par rapport au troc ?",
+              "options": [
+                "En scindant l'échange en deux opérations distinctes : une vente puis un achat",
+                "En obligeant chaque acheteur à négocier durant plusieurs jours",
+                "En exigeant un accord écrit signé devant un tribunal pour chaque achat",
+                "En interdisant les achats de produits alimentaires le week-end"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec la monnaie, un producteur vend son bien contre de l'argent, puis utilise cet argent pour acheter ce qu'il souhaite."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le concept de 'pouvoir libératoire' de la monnaie ?",
+              "options": [
+                "Le fait que son acceptation par le créancier éteint juridiquement et définitivement la dette",
+                "La possibilité pour les banques de refuser tout nouveau client",
+                "L'obligation de libérer les prisonniers qui possèdent un compte bancaire",
+                "Le droit de voyager sans passeport dans le monde entier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une monnaie à pouvoir libératoire éteint définitivement la dette de l'acheteur dès qu'elle est remise au vendeur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi un boulanger accepte-t-il la monnaie d'un client au lieu d'exiger des vêtements en échange de son pain ?",
+              "options": [
+                "Parce qu'il sait qu'il pourra réutiliser cette monnaie auprès de n'importe quel autre commerçant",
+                "Parce que la loi lui interdit formellement de porter des vêtements neufs",
+                "Parce que les vêtements n'ont aucune utilité dans la société",
+                "Parce qu'il est contraint par les fabricants de farine de stocker du métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La certitude que la monnaie sera acceptée par les autres acteurs économiques fonde son statut d'intermédiaire universel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qui caractérise l'efficacité de la monnaie dans les transactions quotidiennes ?",
+              "options": [
+                "Son acceptabilité immédiate et générale sur l'ensemble du territoire",
+                "La nécessité de peser chaque pièce avant de payer son café",
+                "Le besoin de faire tester chimiquement les billets par le marchand",
+                "L'obligation d'avoir une autorisation préfectorale pour chaque dépense"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'acceptabilité générale et immédiate fait de la monnaie l'intermédiaire le plus pratique et rapide."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels bénéfices directs découle de la monnaie en tant qu'intermédiaire des échanges ?",
+              "options": [
+                "Élimination du problème de la double coïncidence des besoins",
+                "Gain de temps considérable lors de la réalisation des transactions",
+                "Facilitation du commerce à grande échelle géographique",
+                "Suppression définitive des risques de faillite d'entreprises"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La monnaie supprime la double coïncidence des besoins, réduit le temps de transaction et favorise les échanges commerciaux étendus."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si la monnaie ne jouait plus son rôle d'intermédiaire des échanges lors d'une crise grave, que verrait-on réapparaître ?",
+              "options": [
+                "Le troc et l'usage de devises étrangères plus stables",
+                "Une baisse immédiate de la production industrielle mondiale",
+                "Une hausse spontanée des dons philanthropiques universels",
+                "L'obligation de payer les biens en actions d'entreprises locales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En cas de rejet d'une monnaie dévaluée, les agents économiques se tournent vers le troc ou des monnaies de substitution fiables."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la propriété d'un bien qui est reconnu par la loi comme moyen de paiement obligatoire ?",
+              "options": [
+                "Le cours légal",
+                "Le cours forcé",
+                "Le cours flottant",
+                "Le taux préférentiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cours légal impose que nul ne peut refuser de recevoir la monnaie nationale officielle en paiement d'une dette."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel impact a la monnaie sur la liberté de choix du consommateur ?",
+              "options": [
+                "Elle lui permet de choisir librement quand, où et auprès de qui dépenser son pouvoir d'achat",
+                "Elle l'oblige à acheter uniquement les biens produits dans sa commune de résidence",
+                "Elle restreint ses achats aux seuls produits subventionnés par l'État",
+                "Elle lui impose de dépenser l'intégralité de son salaire dans les 24 heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Disposer de monnaie offre une liberté totale quant au choix des biens achetés, des fournisseurs et du moment de la dépense."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle métaphore l'économiste classique Adam Smith utilisait-il pour décrire la monnaie dans l'économie ?",
+              "options": [
+                "Une grande route qui facilite la circulation des marchandises",
+                "Un poison lent qui détruit la moralité des citoyens",
+                "Une barrière douanière protégeant les producteurs nationaux",
+                "Une cage de fer enfermant les travailleurs agricoles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adam Smith compare la monnaie à une grande route accélérant et fluidifiant le transport des productions dans l'économie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans le commerce international, comment appelle-t-on une monnaie largement acceptée comme intermédiaire des échanges entre pays tiers ?",
+              "options": [
+                "Une monnaie internationale ou devise clé",
+                "Une monnaie divisionnaire locale",
+                "Une obligation souveraine dépréciée",
+                "Un chèque de voyage national"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dollar américain est la principale devise clé utilisée pour facturer et régler les échanges mondiaux."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "La monnaie comme réserve de valeur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie la fonction de réserve de valeur assurée par la monnaie ?",
+              "options": [
+                "La possibilité de différer l'utilisation du pouvoir d'achat dans le temps sans perte immédiate",
+                "L'obligation de stocker des céréales dans les entrepôts de l'État",
+                "L'interdiction de dépenser de l'argent avant l'âge de la retraite",
+                "Le droit exclusif des banques de conserver l'or dans leurs coffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réserve de valeur permet de conserver une partie de ses revenus sous forme liquide pour les consommer plus tard."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel phénomène économique érode directement le pouvoir d'achat de la monnaie conservée sous forme liquide ?",
+              "options": [
+                "L'inflation",
+                "La déflation",
+                "La croissance économique",
+                "L'augmentation des taux d'épargne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inflation correspond à une hausse générale et durable des prix, ce qui réduit le pouvoir d'achat d'une somme d'argent fixe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si l'inflation est de 10 % sur un an, que devient le pouvoir d'achat d'un billet de 100 € gardé dans un tiroir ?",
+              "options": [
+                "Il diminue d'environ 10 % : on peut acheter moins de biens qu'un an auparavant",
+                "Il augmente de 10 % grâce aux intérêts versés par le tiroir",
+                "Il reste strictement identique en termes de biens réels achetables",
+                "Il est multiplié par deux du fait de la rareté des billets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 10 % d'inflation, les biens coûtent plus cher : les 100 € nominaux permettent d'acheter moins de produits réels."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre la valeur nominale et la valeur réelle de la monnaie ?",
+              "options": [
+                "La valeur nominale est le montant inscrit sur le billet, la valeur réelle est le pouvoir d'achat effectif corrigé de l'inflation",
+                "La valeur nominale varie tous les jours selon la météo, la valeur réelle est fixée par le parlement",
+                "La valeur nominale s'applique aux pièces métalliques, la valeur réelle s'applique uniquement aux chèques",
+                "La valeur nominale est réservée aux entreprises, la valeur réelle est réservée aux ménages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le montant facial (nominal) ne change pas, mais la quantité de biens réels qu'il permet d'acquérir dépend du niveau des prix."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels actifs constituent des réserves de valeur concurrentes de la monnaie liquide ?",
+              "options": [
+                "Un bien immobilier (appartement ou maison)",
+                "Des actions d'entreprises cotées en bourse",
+                "Des lingots ou pièces d'or d'investissement",
+                "Un billet de train non remboursable périmé depuis six mois"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'immobilier, les actions et l'or permettent de conserver du patrimoine dans le temps, contrairement à un titre de transport expiré."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'action de conserver de la monnaie chez soi sans la placer ni la dépenser ?",
+              "options": [
+                "La thésaurisation",
+                "La titrisation",
+                "L'affacturage",
+                "Le cautionnement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La thésaurisation consiste à amasser de l'argent liquide hors du circuit économique et bancaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel avantage décisif la monnaie conserve-t-elle par rapport à l'immobilier comme réserve de valeur ?",
+              "options": [
+                "Une disponibilité immédiate (liquidité parfaite) sans délai ni frais de vente",
+                "Un rendement annuel garanti systématiquement supérieur à 15 %",
+                "Une protection absolue contre tout risque d'inflation",
+                "L'impossibilité physique de la perdre ou de se la faire voler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vendre un appartement prend plusieurs mois, alors que la monnaie est liquide et utilisable à la seconde."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi les ménages placent-ils leur épargne sur des livrets bancaires rémunérés plutôt que de garder des billets ?",
+              "options": [
+                "Pour percevoir un taux d'intérêt qui compense en partie ou totalement les effets de l'inflation",
+                "Parce que la loi interdit formellement de détenir plus de 10 € en liquide chez soi",
+                "Pour permettre à l'État de confisquer automatiquement leurs économies chaque mois",
+                "Parce que les billets de banque perdent leur validité après 30 jours sans utilisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rémunération par un taux d'intérêt vise à préserver le pouvoir d'achat de l'épargne face à la hausse des prix."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Selon John Maynard Keynes, quel motif pousse les agents à détenir de la monnaie pour faire face aux dépenses imprévues ?",
+              "options": [
+                "Le motif de précaution",
+                "Le motif de transaction",
+                "Le motif de spéculation",
+                "Le motif d'ostentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Keynes identifie trois motifs de demande de monnaie : la transaction (dépenses courantes), la précaution (imprévus) et la spéculation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que font typiquement les agents économiques lorsque l'inflation devient incontrôlable (hyperinflation) ?",
+              "options": [
+                "Ils fuient la monnaie nationale et convertissent immédiatement leurs revenus en biens durables ou devises fortes",
+                "Ils accumulent le plus grand nombre possible de billets de la monnaie nationale sous leur matelas",
+                "Ils refusent d'acheter toute nourriture et arrêtent de consommer",
+                "Ils demandent à être payés une seule fois tous les dix ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Face à l'effondrement de la réserve de valeur, les agents se débarrassent de la monnaie au plus vite : c'est la 'fuite devant la monnaie'."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Des monnaies-marchandises à la monnaie métallique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une monnaie-marchandise ?",
+              "options": [
+                "Un bien économique ayant une valeur d'usage propre et choisi par une communauté comme moyen d'échange",
+                "Une carte de crédit prépayée délivrée par un supermarché",
+                "Une action d'une entreprise commerciale cotée à la bourse de Paris",
+                "Une cryptomonnaie adossée à des serveurs informatiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une monnaie-marchandise est un bien tangible (sel, coquillages, bétail, thé) qui sert de moyen d'échange reconnu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Parmi ces exemples historiques, lequel a fréquemment été utilisé comme monnaie-marchandise dans l'Antiquité ?",
+              "options": [
+                "Le sel",
+                "Le pétrole brut",
+                "Le plastique recyclé",
+                "L'uranium enrichi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sel était une denrée précieuse et recherchée, à l'origine du mot 'salaire' (salarium en latin)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour quelle raison principale les métaux précieux (or et argent) se sont-ils progressivement imposés comme monnaie ?",
+              "options": [
+                "Leur durabilité, leur inaltérabilité, leur divisibilité et leur grande valeur sous un faible volume",
+                "Leur abondance illimitée dans tous les jardins d'Europe",
+                "Leur capacité à se dissoudre facilement dans l'eau pour les repas",
+                "Leur interdiction totale dans la fabrication de bijoux religieux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'or et l'argent ne pourrissent pas, sont faciles à diviser et concentrent beaucoup de valeur dans un poids réduit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans le système de la monnaie métallique pesée, quel inconvénient ralentissait les transactions ?",
+              "options": [
+                "L'obligation de peser le métal et de vérifier son titre de pureté à chaque échange",
+                "L'obligation de traduire les contrats en trois langues mortes",
+                "L'interdiction de commercer en dehors des jours de pleine lune",
+                "L'obligation de faire bénir chaque lingot par une autorité cléricale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avant l'invention des pièces standardisées, peser et tester la pureté du métal prenait un temps considérable."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles qualités techniques faisaient des métaux précieux d'excellents supports monétaires ?",
+              "options": [
+                "Leur homogénéité et leur parfaite divisibilité sans perte de valeur",
+                "Leur inaltérabilité dans le temps face à la corrosion",
+                "Leur relative rareté garantissant une forte valeur unitaire",
+                "Leur biodégradabilité rapide en quelques semaines"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'homogénéité, la divisibilité, l'inaltérabilité et la rareté sont les caractéristiques clés des métaux précieux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle innovation a permis d'éviter la pesée systématique du métal précieux lors des transactions ?",
+              "options": [
+                "La frappe de pièces de monnaie standardisées par une autorité souveraine",
+                "L'invention du virement bancaire sur smartphone",
+                "La création de la monnaie en chocolat",
+                "L'utilisation exclusive de chèques en parchemin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'autorité (le roi, la cité) garantissait le poids et le titre du métal en apposant son sceau officiel sur la pièce."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le 'rognage' des pièces métalliques pratiqué autrefois par des particuliers fraudeurs ?",
+              "options": [
+                "Le fait de limer légèrement le contour des pièces pour récupérer de la poudre d'or ou d'argent",
+                "Le fait de peindre les pièces de monnaie en bleu pour en changer la valeur",
+                "La fonte complète des cloches d'églises pour fabriquer de la fausse monnaie",
+                "L'obligation légale de percer un trou au milieu des pièces neuves"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rognage consistait à récupérer discrètement du métal précieux sur les bords des pièces, réduisant leur poids réel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle distinction fait-on entre la valeur faciale et la valeur intrinsèque d'une pièce métallique ancienne ?",
+              "options": [
+                "La valeur faciale est le montant officiel gravé sur la pièce, la valeur intrinsèque est le prix du métal précieux qu'elle contient",
+                "La valeur faciale est le poids en grammes, la valeur intrinsèque est le diamètre en millimètres",
+                "La valeur faciale dépend de l'âge de l'acheteur, la valeur intrinsèque dépend de l'âge du vendeur",
+                "La valeur faciale est fixée par les clients, la valeur intrinsèque est fixée par les douanes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une pièce de 20 francs or avait une valeur faciale de 20 francs et une valeur intrinsèque égale à son poids d'or fin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle célèbre loi économique résume l'adage 'la mauvaise monnaie chasse la bonne' ?",
+              "options": [
+                "La loi de Gresham",
+                "La loi d'Okun",
+                "La loi des rendements décroissants",
+                "La loi de Say"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon Thomas Gresham, lorsque deux monnaies circulent avec la même valeur légale, les agents gardent la bonne et paient avec la mauvaise."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle région historique de la Grèce antique (Asie Mineure) est réputée pour avoir frappé les premières pièces de monnaie vers le VIIe siècle av. J.-C. ?",
+              "options": [
+                "Le royaume de Lydie",
+                "L'île de Crète",
+                "La région de Sparte",
+                "La ville de Carthage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le roi Crésus de Lydie est célèbre pour avoir fait frapper les premières pièces standardisées en électrum (alliage d'or et d'argent)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "La monnaie fiduciaire moderne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "De quel mot latin provient le terme 'fiduciaire' ?",
+              "options": [
+                "Fides, qui signifie la foi ou la confiance",
+                "Fiscus, qui désigne le panier de collecte des impôts",
+                "Filius, qui signifie le fils ou l'héritier",
+                "Finis, qui signifie la frontière ou la fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monnaie fiduciaire repose étymologiquement sur la confiance ('fides') que ses utilisateurs lui accordent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels éléments composent matériellement la monnaie fiduciaire aujourd'hui ?",
+              "options": [
+                "Les billets de banque et les pièces de monnaie (monnaie divisionnaire)",
+                "Les cartes bancaires et les téléphones équipés de la puce NFC",
+                "Les contrats d'assurance-vie et les livrets d'épargne logement",
+                "Les actions en bourse et les obligations du Trésor public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monnaie fiduciaire regroupe l'argent sous forme physique : les billets de banque et les pièces divisionnaires."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la particularité de la valeur intrinsèque d'un billet de 100 € par rapport à sa valeur faciale ?",
+              "options": [
+                "Sa valeur intrinsèque (papier et encre) est presque nulle comparée aux 100 € qu'il représente",
+                "Sa valeur intrinsèque est exactement égale au cours de 100 grammes d'or pur",
+                "Sa valeur intrinsèque augmente automatiquement de 10 % chaque année",
+                "Sa valeur intrinsèque est supérieure à sa valeur faciale en raison du filigrane"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le papier et l'encre d'un billet ne coûtent que quelques centimes : sa valeur repose entièrement sur la convention collective."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le 'cours forcé' historiquement décrété pour les billets de banque ?",
+              "options": [
+                "La suppression de la convertibilité des billets en or ou en argent auprès de la banque centrale",
+                "L'obligation d'acheter des billets neufs chaque début de semaine",
+                "L'interdiction de transporter des billets dans les transports en commun",
+                "L'obligation de payer les impôts exclusivement en lingots de cuivre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cours forcé met fin à la possibilité d'échanger ses billets de banque contre du métal précieux au guichet de la banque."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles institutions jouent un rôle officiel dans l'émission et le contrôle des billets en euros ?",
+              "options": [
+                "La Banque centrale européenne (BCE)",
+                "Les banques centrales nationales comme la Banque de France",
+                "L'Eurosystème",
+                "Les supermarchés et grandes surfaces commerciales"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La BCE autorise l'émission des billets, tandis que les banques centrales nationales de l'Eurosystème les fabriquent et les mettent en circulation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle part approximative la monnaie fiduciaire représente-t-elle dans la masse monétaire totale actuelle dans la zone euro ?",
+              "options": [
+                "Environ 5 % à 10 %",
+                "Plus de 95 %",
+                "Exactement 50 %",
+                "Moins de 0,01 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'immense majorité de la monnaie est scripturale (comptes bancaires) ; la monnaie fiduciaire ne représente qu'une part minoritaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En France, un commerçant peut-il refuser un paiement en espèces s'il s'agit de monnaie en euros ?",
+              "options": [
+                "Non en principe, car les billets ont cours légal, sauf cas exceptionnels prévus par la loi",
+                "Oui toujours, les commerçants ont l'interdiction légale de toucher des espèces",
+                "Oui, car seul le troc de biens équivalents est autorisé par le Code de commerce",
+                "Non, mais uniquement si le client achète pour plus de 50 000 € de marchandises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le refus d'espèces ayant cours légal est puni par la loi, sauf si le client paie avec plus de 50 pièces ou ne fait pas l'appoint."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi existe-t-il un plafond légal pour les paiements en espèces entre particuliers et professionnels en France (ex. 1 000 €) ?",
+              "options": [
+                "Pour lutter contre la fraude fiscale, le blanchiment d'argent et le travail non déclaré",
+                "Pour économiser l'encre et le papier servant à fabriquer les billets",
+                "Pour forcer tous les citoyens à acheter des actions en bourse",
+                "Pour empêcher les banques commerciales de faire faillite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limiter les paiements en liquide permet une meilleure traçabilité des flux financiers et réduit la fraude."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel dispositif de sécurité visible par transparence permet d'authentifier un vrai billet de banque en euros ?",
+              "options": [
+                "Le filigrane",
+                "La puce électronique en silicium",
+                "La signature manuscrite du client",
+                "Le code-barres adhésif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filigrane est un dessin inséré dans l'épaisseur du papier du billet, visible quand on regarde le billet par transparence."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la méthode recommandée par la Banque centrale européenne pour vérifier rapidement l'authenticité d'un billet ?",
+              "options": [
+                "Toucher, regarder, incliner",
+                "Peser, brûler, mesurer",
+                "Goûter, sentir, plier",
+                "Numériser, découper, timbrer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méthode 'Toucher, regarder, incliner' permet de vérifier le relief de l'encre, le filigrane et les reflets holographiques."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "La monnaie scripturale contemporaine",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment définit-on la monnaie scripturale ?",
+              "options": [
+                "La monnaie inscrite sur des comptes bancaires sous forme d'écritures comptables",
+                "Les pièces de collection frappées en platine pur",
+                "Les bons d'achat papier distribués par les comités d'entreprise",
+                "Les pièces de monnaie antiques trouvées lors de fouilles archéologiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monnaie scripturale (du latin 'scriptura', écriture) existe sous la forme d'un solde créditeur sur un compte bancaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle part approximative de la monnaie en circulation dans les pays développés représente la monnaie scripturale ?",
+              "options": [
+                "Environ 90 % à 95 %",
+                "Moins de 10 %",
+                "Exactement 25 %",
+                "Moins de 1 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'immense majorité des transactions et des avoirs monétaires existe sous forme d'écritures bancaires informatisées."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Où réside physiquement la monnaie scripturale d'un ménage ?",
+              "options": [
+                "Dans les bases de données et serveurs informatiques sécurisés de sa banque",
+                "Dans un tiroir spécial situé au domicile du client",
+                "Dans un coffre de la mairie de sa commune",
+                "Dans les cartes à puce en plastique rangées dans son portefeuille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monnaie scripturale est dématérialisée : elle correspond à des lignes d'écriture dans les serveurs de la banque."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le compte bancaire sur lequel les fonds sont immédiatement disponibles pour les paiements quotidiens ?",
+              "options": [
+                "Le compte courant (ou dépôt à vue)",
+                "Le compte à terme bloqué sur 10 ans",
+                "Le plan d'épargne retraite obligatoire",
+                "Le compte d'affacturage interbancaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les dépôts à vue sur compte courant sont de la monnaie scripturale utilisable instantanément par carte, chèque ou virement."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques expliquent la domination massive de la monnaie scripturale dans l'économie moderne ?",
+              "options": [
+                "Une sécurité renforcée contre les pertes physiques et vols d'espèces",
+                "Une rapidité et une simplicité accrues pour effectuer des paiements à distance",
+                "Une conservation et une gestion facilitées pour des montants très élevés",
+                "L'absence totale de tout système informatique de suivi bancaire"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La monnaie scripturale est sûre, rapide pour payer à distance et idéale pour transférer des sommes considérables."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se passe-t-il concrètement lorsqu'un client paie 30 € par carte bancaire chez son libraire ?",
+              "options": [
+                "Le compte du client est débité de 30 € et celui du libraire est crédité de 30 € par un jeu d'écritures",
+                "La banque envoie un transporteur de fonds avec 30 pièces de 1 € au domicile du libraire",
+                "Le montant est détruit puis recréé par la banque centrale le mois suivant",
+                "Le libraire reçoit une reconnaissance de dette imprimée sur papyrus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La circulation scripturale opère par virement d'écritures : débit du compte de l'acheteur, crédit du compte du vendeur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle distinction capitale doit-on faire entre la monnaie scripturale et la carte bancaire ?",
+              "options": [
+                "La monnaie scripturale est l'argent lui-même sur le compte, la carte est seulement l'outil technique qui la fait circuler",
+                "La carte bancaire est de la monnaie fiduciaire, alors que le compte est un emprunt d'État",
+                "Il n'y a aucune différence, la carte en plastique contient physiquement des billets miniaturisés",
+                "La monnaie scripturale ne sert qu'à l'étranger, alors que la carte ne fonctionne qu'en France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La carte bancaire n'est pas de la monnaie : c'est un instrument de paiement permettant de mobiliser la monnaie scripturale du compte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lorsqu'un particulier retire 50 € en billets à un distributeur automatique (DAB), que se produit-il ?",
+              "options": [
+                "Une conversion de 50 € de monnaie scripturale en 50 € de monnaie fiduciaire",
+                "Une création nette de 50 € supplémentaires dans la masse monétaire",
+                "Une destruction irréversible de 50 € de pouvoir d'achat",
+                "Une transaction de troc entre le client et la machine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le retrait au distributeur change la forme de la monnaie (de scripturale à fiduciaire) sans modifier la quantité totale possédée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle institution gère la tenue des comptes de dépôts des particuliers et des entreprises privées ?",
+              "options": [
+                "Les banques de second rang (banques commerciales)",
+                "Le ministère de la Défense",
+                "L'Organisation mondiale du commerce",
+                "La Cour des comptes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les banques commerciales (banques de second rang) créent et gèrent les comptes courants et la monnaie scripturale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le mécanisme par lequel les banques règlent quotidiennement leurs dettes croisées résultant des paiements de leurs clients ?",
+              "options": [
+                "La compensation interbancaire",
+                "Le moratoire obligataire",
+                "Le titrisage des créances",
+                "La liquidation judiciaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La compensation (clearing) permet d'annuler les créances et dettes réciproques entre banques et de ne régler que les soldes nets."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Les instruments de paiement scripturaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un instrument de paiement ?",
+              "options": [
+                "Un moyen technique ou support permettant de transférer de la monnaie d'un compte à un autre",
+                "Un métal précieux certifié par un laboratoire d'État",
+                "Une loi votée par le parlement fixant le montant des salaires",
+                "Un impôt direct prélevé sur les bénéfices des entreprises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les instruments de paiement (chèques, cartes, virements) permettent de mobiliser et faire circuler la monnaie scripturale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Lequel de ces éléments constitue un instrument de paiement scriptural traditionnel ?",
+              "options": [
+                "Le chèque bancaire",
+                "Le lingot d'argent de 500 grammes",
+                "Le billet de 20 euros",
+                "La pièce de 2 euros"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chèque est un ordre écrit donné à sa banque de payer une somme déterminée prélevée sur son compte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment fonctionne un virement bancaire ?",
+              "options": [
+                "Le titulaire d'un compte ordonne à sa banque de transférer une somme vers le compte d'un bénéficiaire",
+                "Le créancier retire l'argent liquide lui-même au domicile de son débiteur",
+                "La banque centrale imprime des billets supplémentaires portant le nom du destinataire",
+                "Le tribunal de commerce saisit un bien meuble pour le vendre aux enchères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le virement est une opération directe d'envoi de fonds d'un compte émetteur vers un compte récepteur identifié par son IBAN."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un prélèvement automatique (mandat SEPA) ?",
+              "options": [
+                "Une autorisation donnée par le débiteur à son créancier de débiter régulièrement son compte (ex. facture d'électricité)",
+                "Une amende infligée par la police municipale pour stationnement interdit",
+                "Un impôt exceptionnel prélevé en cas de guerre",
+                "Un retrait d'argent forcé effectué par des pirates informatiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le prélèvement est initié par le créancier après accord formel du débiteur, très utilisé pour les abonnements et factures récurrentes."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont des instruments de paiement permettant de mobiliser de la monnaie scripturale ?",
+              "options": [
+                "La carte bancaire de débit ou de crédit",
+                "Le virement bancaire SEPA",
+                "Le chèque bancaire",
+                "Le billet de 50 euros"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Carte, virement et chèque sont des instruments scripturaux. Le billet de 50 € est de la monnaie fiduciaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel instrument de paiement scriptural est aujourd'hui le plus utilisé au quotidien par les Français pour leurs achats ?",
+              "options": [
+                "La carte bancaire",
+                "Le chèque papier",
+                "Le mandat postal",
+                "La lettre de change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La carte bancaire représente la majorité écrasante des transactions de paiement du quotidien en France."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que risque une personne qui émet un chèque alors que le solde de son compte bancaire est insuffisant ('chèque sans provision') ?",
+              "options": [
+                "Des frais bancaires, l'interdiction bancaire d'émettre des chèques et d'éventuelles poursuites judiciaires",
+                "Une promotion professionnelle immédiate dans le secteur financier",
+                "L'attribution automatique d'une médaille du mérite économique",
+                "L'annulation immédiate de toutes ses dettes passées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Émettre un chèque sans provision expose à l'interdiction bancaire et à l'inscription au fichier central des chèques de la Banque de France."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que permet la norme européenne SEPA (Single Euro Payments Area) ?",
+              "options": [
+                "D'effectuer des virements et prélèvements en euros entre pays membres avec la même simplicité et sécurité qu'au niveau national",
+                "D'obliger tous les Européens à avoir exactement le même salaire mensuel",
+                "D'interdire l'usage de la langue anglaise dans les contrats commerciaux",
+                "De rendre gratuits tous les transports ferroviaires en Europe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'espace SEPA harmonise les moyens de paiement scripturaux en euros à l'échelle de toute l'Europe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le paiement sans contact par smartphone (ex. Apple Pay, Google Pay) crée-t-il une nouvelle forme de monnaie ?",
+              "options": [
+                "Non, c'est simplement un nouvel instrument technologique qui mobilise la monnaie scripturale du compte bancaire",
+                "Oui, cela crée une monnaie privée indépendante des banques et des lois",
+                "Oui, ces paiements créent des pièces métalliques virtuelles dorées",
+                "Non, cela constitue une opération de troc direct d'octets informatiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le smartphone agit comme une déclinaison dématérialisée de la carte bancaire pour mobiliser la monnaie scripturale existante."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que désigne le code IBAN figurant sur un relevé d'identité bancaire (RIB) ?",
+              "options": [
+                "L'identifiant international normalisé d'un compte bancaire",
+                "Le mot de passe secret de la carte bancaire du client",
+                "Le numéro d'immatriculation fiscale d'une entreprise",
+                "Le cours officiel de l'or à la clôture de la bourse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'IBAN (International Bank Account Number) identifie de façon unique et standardisée un compte bancaire dans le monde."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "La confiance, fondement de la monnaie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que la monnaie est une convention sociale reposant sur la confiance ?",
+              "options": [
+                "Parce qu'elle n'a de valeur que si chacun a la certitude que les autres membres de la société continueront à l'accepter",
+                "Parce que les billets de banque sont fabriqués à partir d'arbres sacrés",
+                "Parce que la police vérifie les sentiments de chaque acheteur dans les magasins",
+                "Parce qu'une formule magique est prononcée lors de l'impression des billets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monnaie fonctionne parce que tous les agents croient en son acceptation future : la confiance partagée crée sa valeur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Selon les économistes Michel Aglietta et André Orléan, quelle forme de confiance découle de la routine quotidienne des échanges ?",
+              "options": [
+                "La confiance méthodique",
+                "La confiance hiérarchique",
+                "La confiance éthique",
+                "La confiance aveugle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La confiance méthodique naît de l'habitude : on accepte la monnaie aujourd'hui parce qu'elle a toujours été acceptée hier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle forme de confiance repose sur la crédibilité de l'État et de la Banque centrale qui garantissent les règles du jeu monétaire ?",
+              "options": [
+                "La confiance hiérarchique",
+                "La confiance méthodique",
+                "La confiance poétique",
+                "La confiance mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La confiance hiérarchique s'appuie sur l'autorité de l'État et des institutions de régulation (banque centrale)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle forme de confiance renvoie à l'adhésion aux valeurs communes et au projet politique de la communauté ?",
+              "options": [
+                "La confiance éthique (ou symbolique)",
+                "La confiance méthodique",
+                "La confiance hiérarchique",
+                "La confiance technologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La confiance éthique repose sur le sentiment d'appartenance à un même corps social et au respect de ses règles de justice."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles sont les trois formes de confiance distinguées par la théorie institutionnaliste de la monnaie (Aglietta et Orléan) ?",
+              "options": [
+                "La confiance méthodique",
+                "La confiance hiérarchique",
+                "La confiance éthique",
+                "La confiance algorithmique obligatoire"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Aglietta et Orléan théorisent la monnaie autour de trois piliers indissociables : confiance méthodique, hiérarchique et éthique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lorsque la population perd totalement confiance dans sa monnaie nationale lors d'une crise politique majeure ?",
+              "options": [
+                "Les agents refusent la monnaie, provoquant l'effondrement de sa valeur et l'adoption de devises étrangères",
+                "La production de biens matériels triple instantanément par enchantement",
+                "Le taux de chômage tombe immédiatement à zéro dans tout le pays",
+                "La monnaie nationale devient la référence de réserve mondiale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans confiance, la monnaie ne vaut plus rien : c'est la crise de défiance qui conduit au rejet de la monnaie nationale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi la monnaie est-elle considérée comme un lien social et une institution politique majeure ?",
+              "options": [
+                "Parce qu'elle unit les membres d'une communauté sous une même règle de droit et d'échange mutuel",
+                "Parce qu'elle permet aux citoyens de ne plus jamais payer d'impôts",
+                "Parce qu'elle interdit les désaccords électoraux entre partis politiques",
+                "Parce qu'elle est distribuée gratuitement à volonté par les maires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monnaie n'est pas un simple outil neutre : elle exprime la souveraineté collective et crée du lien social entre tous les citoyens."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Historiquement, qu'est-il arrivé à la monnaie allemande (le mark) en 1923 sous la République de Weimar ?",
+              "options": [
+                "Une hyperinflation dramatique où il fallait des milliards de marks pour acheter un pain suite à l'effondrement de la confiance",
+                "Une stabilité parfaite des prix qui a enrichi l'ensemble des ouvriers",
+                "La transformation de tous les billets en pièces d'or massif",
+                "L'interdiction légale de faire du commerce avec les pays voisins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 1923, l'Allemagne a subi une hyperinflation historique : la monnaie papier ne valait plus rien et servait de combustible."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les crypto-actifs très volatils (comme le Bitcoin) ne sont-ils généralement pas considérés comme de véritables monnaies par les économistes ?",
+              "options": [
+                "Parce que leur forte volatilité empêche de servir d'unité de compte stable et qu'ils n'ont pas cours légal",
+                "Parce qu'il est physiquement impossible de les échanger sur un ordinateur",
+                "Parce que leur utilisation est interdite dans tous les pays sans exception",
+                "Parce qu'ils sont émis en quantité infinie par les banques centrales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Leur instabilité de prix extrême les empêche de remplir sereinement les fonctions d'unité de compte et d'intermédiaire quotidien."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel garant institutionnel ultime veille aujourd'hui sur la valeur et la stabilité de l'euro ?",
+              "options": [
+                "La Banque centrale européenne (BCE)",
+                "L'Organisation des Nations Unies (ONU)",
+                "La Bourse de New York (Wall Street)",
+                "L'Organisation mondiale de la santé (OMS)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La BCE a pour mission fondamentale de maintenir la stabilité des prix et de garantir la confiance dans l'euro."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Crédit",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Agents à besoin et à capacité de financement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment définit-on un agent économique à capacité de financement ?",
+              "options": [
+                "Un agent dont l'épargne est supérieure à ses dépenses d'investissement",
+                "Un agent qui a plus de dettes que de patrimoine immobilier",
+                "Une entreprise qui est dans l'obligation de fermer ses usines",
+                "Un ménage qui dépense systématiquement l'intégralité de son revenu chaque jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un agent à capacité de financement dégage une épargne supérieure à ses investissements et peut prêter ses ressources excédentaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment définit-on un agent économique à besoin de financement ?",
+              "options": [
+                "Un agent dont l'épargne brute est insuffisante pour couvrir ses dépenses d'investissement",
+                "Un agent qui refuse tout prêt bancaire par principe moral",
+                "Une banque qui dispose de réserves d'or colossales et inutilisées",
+                "Un consommateur qui achète uniquement des biens d'occasion en liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un agent à besoin de financement doit recourir à des ressources extérieures pour financer ses projets d'investissement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En France, quel secteur institutionnel présente globalement et structurellement une capacité de financement ?",
+              "options": [
+                "Les ménages",
+                "Les sociétés non financières (entreprises)",
+                "Les administrations publiques (l'État)",
+                "Les collectivités territoriales en déficit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au niveau macroéconomique, les ménages épargnent plus qu'ils n'investissent : ils financent les autres agents de l'économie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel secteur institutionnel a structurellement besoin de financement pour développer ses capacités de production ?",
+              "options": [
+                "Les sociétés non financières (entreprises)",
+                "Les banques centrales indépendantes",
+                "Les compagnies d'assurance-vie",
+                "Les associations de consommateurs bénévoles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les entreprises investissent massivement (machines, bâtiments, recherche) et ont besoin d'emprunter pour financer leur croissance."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels agents économiques sont très fréquemment en situation de besoin de financement ?",
+              "options": [
+                "Les entreprises réalisant d'importants investissements d'extension",
+                "L'État et les administrations publiques en situation de déficit budgétaire",
+                "Un jeune ménage qui achète son premier logement avec peu d'épargne",
+                "Un rentier multimillionnaire qui dépense le dixième de ses rentes"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Entreprises en croissance, États en déficit et ménages primo-accédants ont tous besoin de financement externe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle formule simple définit l'épargne brute d'un ménage ?",
+              "options": [
+                "Revenu disponible brut moins la consommation finale",
+                "Salaire net multiplié par le taux d'imposition",
+                "Dépenses de consommation additionnées aux impôts locaux",
+                "Valeur du patrimoine immobilier divisée par le nombre d'enfants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'épargne est la part du revenu disponible qui n'est pas consacrée à la consommation immédiate."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la situation où les recettes publiques d'un État sont inférieures à ses dépenses annuelles ?",
+              "options": [
+                "Le déficit budgétaire public",
+                "L'excédent brut d'exploitation",
+                "La capacité d'autofinancement nette",
+                "L'équilibre souverain consolidé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand l'État dépense plus qu'il ne perçoit d'impôts, il est en déficit budgétaire et doit émettre des obligations pour emprunter."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le rôle fondamental du système financier dans une économie ?",
+              "options": [
+                "Mettre en relation les agents à capacité de financement et les agents à besoin de financement",
+                "Empêcher les citoyens de dépenser leur argent dans des loisirs",
+                "Fixer le prix de vente de tous les produits dans les supermarchés",
+                "Distribuer gratuitement des billets de banque à chaque naissance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système financier canalise l'épargne disponible vers les investissements productifs nécessaires à l'économie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le financement où les agents échangent directement des titres sur les marchés financiers sans passer par le bilan d'une banque ?",
+              "options": [
+                "Le financement direct (ou désintermédié)",
+                "Le financement indirect bancaire",
+                "L'autofinancement interne exclusif",
+                "Le prêt sur gage institutionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur les marchés financiers, les entreprises émettent des actions ou obligations directement achetées par les épargnants."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le financement assuré par l'intermédiaire des banques qui collectent des dépôts et accordent des crédits ?",
+              "options": [
+                "Le financement intermédié (ou indirect)",
+                "Le financement désintermédié de marché",
+                "Le financement participatif informel",
+                "L'emprunt d'État perpétuel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le financement intermédié, la banque s'interpose entre les déposants et les emprunteurs en transformant les échéances et les risques."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Le mécanisme du crédit bancaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une opération de crédit bancaire ?",
+              "options": [
+                "Une mise à disposition de fonds par un créancier à un débiteur contre promesse de remboursement futur avec intérêt",
+                "Un don d'argent sans condition accordé par une œuvre de charité",
+                "L'échange définitif d'une voiture contre des meubles sans contrat",
+                "Une taxe obligatoire prélevée par les services fiscaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le crédit est un contrat financier où le prêteur avance des fonds et l'emprunteur s'engage à les rembourser selon un échéancier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la somme d'argent initialement prêtée par la banque, hors intérêts et frais ?",
+              "options": [
+                "Le capital emprunté (ou principal)",
+                "L'annuité de garantie",
+                "L'agio forfaitaire",
+                "Le dividende d'émission"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le principal (ou capital) désigne le montant brut prêté que l'emprunteur s'engage à restituer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le tableau qui récapitule mois par mois le montant remboursé, la part de capital et la part d'intérêts ?",
+              "options": [
+                "Le tableau d'amortissement (ou échéancier)",
+                "Le bilan comptable d'ouverture",
+                "Le relevé d'identité bancaire",
+                "L'avis d'imposition sur le revenu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tableau d'amortissement détaille chaque mensualité avec la part dédiée au remboursement du capital et aux intérêts."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que représente la durée (ou maturité) d'un crédit ?",
+              "options": [
+                "Le temps convenu entre la mise à disposition des fonds et la date de la dernière échéance de remboursement",
+                "L'âge limite pour ouvrir un compte bancaire en France",
+                "Le délai légal accordé au client pour contester un ticket de caisse",
+                "La période de garantie décennale d'une maison neuve"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La maturité est l'horizon temporel sur lequel s'étale le remboursement du prêt (ex. 5 ans, 20 ans)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont les engagements réciproques fondamentaux dans un contrat de crédit ?",
+              "options": [
+                "Le prêteur s'engage à verser les fonds convenus à l'emprunteur",
+                "L'emprunteur s'engage à rembourser le capital selon les échéances fixées",
+                "L'emprunteur s'engage à verser les intérêts rémunérant le prêt",
+                "Le prêteur s'engage à léguer ses locaux commerciaux à l'emprunteur"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le prêteur avance les fonds, tandis que l'emprunteur s'engage à rembourser le principal et à payer les intérêts prévus."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la définition juridique d'un créancier ?",
+              "options": [
+                "La personne ou institution à qui une somme d'argent est due",
+                "La personne qui a une dette et doit rembourser de l'argent",
+                "Le juge qui préside les audiences du tribunal de commerce",
+                "Le fonctionnaire qui imprime les billets de banque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le créancier détient une créance : il a le droit d'exiger le remboursement de la dette par son débiteur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi qualifie-t-on souvent le crédit d''anticipation de revenus futurs' ?",
+              "options": [
+                "Parce qu'il permet de consommer ou d'investir immédiatement en s'engageant à prélever sur ses revenus à venir",
+                "Parce qu'il oblige l'emprunteur à changer de métier immédiatement",
+                "Parce qu'il garantit que l'emprunteur gagnera deux fois plus dans dix ans",
+                "Parce qu'il supprime définitivement l'obligation de travailler à l'avenir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emprunter permet de disposer tout de suite d'un pouvoir d'achat financé par le travail et les revenus des années suivantes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans le remboursement d'un prêt immobilier à mensualités constantes, comment évolue la part des intérêts au fil des mois ?",
+              "options": [
+                "Elle diminue progressivement, car les intérêts sont calculés sur le capital restant dû qui décroît",
+                "Elle augmente constamment jusqu'à la dernière mensualité",
+                "Elle reste strictement identique du premier au dernier mois",
+                "Elle tombe à zéro dès le deuxième mois de remboursement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le capital restant dû diminuant avec chaque mensualité, le montant des intérêts baisse, au profit d'une part de capital croissante."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un remboursement anticipé d'un crédit ?",
+              "options": [
+                "Le fait pour l'emprunteur de rembourser tout ou partie de sa dette avant la date d'échéance finale prévue",
+                "Le refus définitif de payer ses mensualités à la banque",
+                "La demande de prolonger la durée du prêt de dix années supplémentaires",
+                "L'annulation de la dette par décision d'un tirage au sort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'emprunteur solde sa dette par anticipation, ce qui réduit le coût total des intérêts futurs (parfois avec indemnité)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi le crédit est-il un levier indispensable pour l'achat de biens immobiliers par les ménages ?",
+              "options": [
+                "Parce que le prix d'un logement représente plusieurs années de salaire impossible à accumuler facilement au préalable",
+                "Parce que la loi interdit formellement d'acheter une maison avec ses propres économies",
+                "Parce que les notaires n'ont pas le droit de recevoir des paiements sans crédit",
+                "Parce que les banques sont les propriétaires exclusives de tous les terrains constructibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le montant élevé des logements rend l'emprunt à long terme incontournable pour la très grande majorité des ménages."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le taux d'intérêt, coût et rémunération du prêt",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le taux d'intérêt du point de vue de l'emprunteur ?",
+              "options": [
+                "Le prix qu'il paie pour disposer immédiatement d'un capital prêté (le coût du crédit)",
+                "La prime reçue de la banque pour le féliciter d'avoir emprunté",
+                "Le montant de l'impôt sur la fortune immobilière",
+                "Le pourcentage de réduction obtenu lors des soldes d'hiver"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour l'emprunteur, le taux d'intérêt est le coût financier du service rendu : c'est le loyer de l'argent emprunté."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le taux d'intérêt du point de vue du prêteur ?",
+              "options": [
+                "La rémunération de son renoncement à la liquidité immédiate et de la prise de risque",
+                "Une amende infligée par la banque centrale pour excès de zèle",
+                "La taxe d'apprentissage prélevée sur les entreprises du secteur privé",
+                "La part des bénéfices versée aux clients mécontents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le taux d'intérêt compense pour le prêteur la privation de son argent pendant la durée du prêt et le risque de non-remboursement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un crédit à taux fixe ?",
+              "options": [
+                "Un prêt dont le taux d'intérêt reste identique pendant toute la durée du contrat",
+                "Un prêt dont le taux d'intérêt change automatiquement chaque semaine selon la météo",
+                "Un crédit qui ne peut être accordé qu'aux personnes habitant dans une ville fixe",
+                "Un prêt dont le montant est obligatoirement bloqué à 1 000 euros"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec un taux fixe, les mensualités et le taux d'intérêt sont déterminés à l'avance et ne varient jamais."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un crédit à taux variable (ou révisable) ?",
+              "options": [
+                "Un prêt dont le taux d'intérêt peut évoluer à la hausse ou à la baisse selon un indice de référence de marché",
+                "Un prêt que l'emprunteur peut décider unilatéralement de ne plus rembourser",
+                "Un crédit dont la devise de remboursement change à chaque mensualité",
+                "Un prêt réservé exclusivement aux travailleurs saisonniers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un taux variable fluctue selon les conditions de marché (ex. Euribor), faisant monter ou baisser les mensualités futures."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels facteurs déterminent le niveau du taux d'intérêt proposé par une banque à un emprunteur ?",
+              "options": [
+                "Le niveau des taux directeurs fixés par la banque centrale",
+                "La durée du crédit (plus c'est long, plus le risque est élevé)",
+                "Le profil de risque et la solvabilité financière de l'emprunteur",
+                "Le signe astrologique de l'emprunteur"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les taux de marché, la maturité du prêt et la solidité du dossier de l'emprunteur déterminent le niveau du taux proposé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la formule approximative de calcul du taux d'intérêt réel ?",
+              "options": [
+                "Taux d'intérêt nominal moins le taux d'inflation",
+                "Taux d'intérêt nominal multiplié par le taux de chômage",
+                "Taux d'intérêt nominal additionné au taux de croissance du PIB",
+                "Taux d'intérêt nominal divisé par le nombre de banques concurrentes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équation de Fisher indique que le taux réel est approximativement égal au taux nominal moins l'inflation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si une banque prête à un taux nominal de 5 % et que l'inflation est de 3 %, quel est le taux d'intérêt réel pour le prêteur ?",
+              "options": [
+                "Environ 2 %",
+                "Exactement 8 %",
+                "Moins de -2 %",
+                "Environ 15 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "5 % (nominal) - 3 % (inflation) = 2 % de gain réel en termes de pouvoir d'achat pour le prêteur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que mesure le TAEG (Taux Annuel Effectif Global) obligatoirement mentionné dans les offres de prêt ?",
+              "options": [
+                "Le coût total réel du crédit incluant le taux d'intérêt, les frais de dossier, l'assurance et les garanties",
+                "La part des bénéfices que la banque reversera au client à la fin de l'année",
+                "Le taux de croissance économique anticipé par le gouvernement pour l'année à venir",
+                "Le taux de TVA applicable sur les opérations de paiement par carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le TAEG intègre tous les coûts obligatoires liés au prêt et permet de comparer objectivement différentes offres bancaires."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lorsque la banque centrale augmente fortement ses taux, quelle réaction observe-t-on généralement sur la demande de crédit ?",
+              "options": [
+                "La demande de crédit diminue car emprunter devient plus cher pour les ménages et les entreprises",
+                "La demande de crédit explose car tout le monde souhaite s'endetter au prix fort",
+                "La demande de crédit reste strictement inchangée quoi qu'il arrive",
+                "Les banques commerciales arrêtent d'ouvrir des comptes bancaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une hausse des taux renchérit le coût du crédit, ce qui décourage les emprunts et ralentit l'investissement et la consommation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la prime de risque intégrée par une banque dans le taux d'intérêt d'un prêt ?",
+              "options": [
+                "Une majoration du taux destinée à compenser la probabilité de non-remboursement par l'emprunteur",
+                "Un cadeau financier versé aux clients qui ont remboursé leur dette sans incident",
+                "Une taxe écologique sur les crédits servant à acheter du carburant",
+                "La commission versée à l'État pour chaque nouveau compte créé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus le projet ou le profil de l'emprunteur est risqué, plus la banque exige un taux élevé pour couvrir les pertes potentielles."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les crédits aux ménages et le risque de surendettement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel type de crédit un ménage contracte-t-il pour financer l'acquisition d'un appartement ou d'un terrain ?",
+              "options": [
+                "Le crédit immobilier",
+                "Le crédit à la consommation",
+                "La facilité de caisse",
+                "Le crédit documentaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le crédit immobilier porte sur l'achat de biens immobiliers (maison, appartement) sur des durées longues (15 à 25 ans)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel crédit sert à financer l'achat de biens d'équipement, d'une automobile ou des dépenses courantes ?",
+              "options": [
+                "Le crédit à la consommation",
+                "Le crédit bail immobilier",
+                "L'emprunt obligataire d'État",
+                "Le prêt souverain bilatéral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le crédit à la consommation finance les biens durables (voitures, électroménager) ou des besoins de trésorerie des ménages."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on 'l'apport personnel' lors d'une demande de crédit immobilier ?",
+              "options": [
+                "La part du prix du logement financée par l'épargne propre de l'emprunteur sans recourir au prêt",
+                "Le salaire du garant qui s'engage à payer en cas de défaillance",
+                "La subvention directe accordée par la mairie du lieu d'achat",
+                "La réduction de prix accordée par l'agence immobilière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'apport personnel provient de l'épargne préalable de l'acquéreur (ex. 10 % ou 20 % du coût total de l'opération)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le taux d'endettement maximal couramment fixé par les autorités financières (HCSF) pour protéger les ménages en France ?",
+              "options": [
+                "Environ 35 % des revenus nets de l'emprunteur (assurance comprise)",
+                "Exactement 95 % des revenus mensuels",
+                "Moins de 5 % des revenus annuels bruts",
+                "100 % des revenus plus le patrimoine des grands-parents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Haut Conseil de stabilité financière limite le taux d'endettement à 35 % pour laisser un 'reste à vivre' suffisant au ménage."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels événements imprévus de la vie peuvent précipiter un ménage dans une situation de surendettement ?",
+              "options": [
+                "La perte soudaine d'un emploi et le chômage prolongé",
+                "Une séparation, un divorce ou le décès d'un conjoint",
+                "Un accident grave de santé entraînant une perte de revenus",
+                "Une baisse spectaculaire des prix des produits de première nécessité"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Chômage, maladie et séparation constituent les causes majeures d'accident de la vie menant au surendettement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment définit-on légalement la situation de surendettement d'un particulier ?",
+              "options": [
+                "L'impossibilité manifeste de faire face à l'ensemble de ses dettes non professionnelles exigibles",
+                "Le fait d'oublier de payer son abonnement de streaming un mois",
+                "La décision de faire des achats dans un supermarché concurrent",
+                "Le choix d'avoir plusieurs livrets d'épargne dans des banques différentes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le surendettement est caractérisé quand les ressources du débiteur ne lui permettent plus d'honorer ses échéances de prêt et charges courantes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle commission publique traite les dossiers des ménages en situation de surendettement en France ?",
+              "options": [
+                "La commission de surendettement, sous l'égide de la Banque de France",
+                "La commission européenne de la concurrence",
+                "Le conseil des prud'hommes",
+                "L'Autorité des marchés financiers (AMF)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présente dans chaque département, la commission de surendettement aide à rééchelonner ou effacer les dettes des ménages en difficulté."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel type de crédit à la consommation, fonctionnant comme une réserve d'argent renouvelable à taux élevé, présente un risque important de surendettement ?",
+              "options": [
+                "Le crédit renouvelable (ou crédit revolving)",
+                "Le prêt à taux zéro (PTZ) soutenu par l'État",
+                "Le prêt épargne logement réglementé",
+                "L'emprunt obligataire à coupon zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le crédit renouvelable est facile d'accès mais comporte des taux d'intérêt très élevés qui peuvent piéger les ménages fragiles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que garantit l'assurance emprunteur obligatoirement exigée lors de la signature d'un prêt immobilier ?",
+              "options": [
+                "La prise en charge du remboursement des mensualités en cas de décès, d'invalidité ou d'incapacité de travail de l'emprunteur",
+                "Le remboursement immédiat de tous les impôts payés au cours de sa vie",
+                "La reconstruction gratuite de la maison en cas de tremblement de terre à l'étranger",
+                "L'achat gratuit de meubles neufs chaque année par la banque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'assurance protège la banque et la famille de l'emprunteur en payant les échéances en cas de drame de santé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le 'reste à vivre' analysé par une banque lors de l'étude d'un prêt ?",
+              "options": [
+                "La somme d'argent dont dispose le foyer après déduction de toutes les mensualités de crédit pour payer ses dépenses courantes",
+                "Le nombre d'années d'espérance de vie restant à l'emprunteur",
+                "Le montant maximal de liquide qu'un ménage a le droit de garder chez lui",
+                "Le total des dons versés à des associations caritatives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le reste à vivre garantit que le ménage conserve assez de ressources pour se nourrir, se loger, se chauffer et s'habiller dignement."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Financement des entreprises : autofinancement et emprunt",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'autofinancement pour une entreprise ?",
+              "options": [
+                "Le financement de ses investissements grâce à ses propres ressources dégagées par son activité et non distribuées",
+                "La souscription d'un emprunt auprès d'un consortium de banques internationales",
+                "L'obtention d'une subvention publique accordée par l'Union européenne",
+                "L'émission de nouvelles actions sur le marché boursier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'autofinancement désigne la capacité d'une entreprise à financer elle-même ses projets grâce à ses bénéfices mis en réserve et ses amortissements."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel indicateur de profitabilité de l'entreprise sert de base au calcul de son autofinancement ?",
+              "options": [
+                "L'excédent brut d'exploitation (EBE) et la capacité d'autofinancement (CAF)",
+                "Le chiffre d'affaires brut avant déduction des charges",
+                "Le montant total des impôts sur les sociétés",
+                "Le nombre de brevets déposés à l'INPI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La CAF (Capacité d'Autofinancement), issue de l'EBE après charges financières et impôts, représente le flux de trésorerie disponible."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le principal avantage de l'autofinancement pour une entreprise ?",
+              "options": [
+                "Il préserve son indépendance financière et évite de payer des intérêts bancaires",
+                "Il oblige les actionnaires à renoncer à tous leurs droits de vote",
+                "Il permet de ne plus payer aucun salaire aux employés",
+                "Il garantit des ventes sans aucune concurrence sur le marché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "S'autofinancer évite l'endettement, préserve l'autonomie stratégique de l'entreprise et n'engendre aucun frais d'intérêt."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi une entreprise ne peut-elle pas toujours se reposer uniquement sur l'autofinancement ?",
+              "options": [
+                "Parce que ses profits accumulés peuvent être insuffisants pour réaliser de grands investissements indispensables et rapides",
+                "Parce que la loi interdit strictement aux entreprises rentables d'avoir des réserves",
+                "Parce que les clients refusent d'acheter des produits fabriqués sans crédit bancaire",
+                "Parce que les banques centrales ferment les entreprises qui ne s'endettent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les projets industriels d'envergure dépassent souvent la trésorerie disponible et exigent des financements externes pour saisir des opportunités."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles sont les sources de financement externe dont dispose une entreprise en besoin de financement ?",
+              "options": [
+                "L'emprunt bancaire à moyen ou long terme",
+                "L'émission d'obligations sur les marchés financiers (pour les grandes entreprises)",
+                "L'augmentation de capital par émission de nouvelles actions",
+                "La baisse rétroactive des salaires des années précédentes"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les crédits bancaires, les obligations (dette) et les actions (fonds propres) constituent les trois piliers du financement externe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un crédit d'investissement consenti à une entreprise ?",
+              "options": [
+                "Un prêt à moyen ou long terme destiné à financer l'achat de machines, d'outils, d'usines ou de logiciels",
+                "Une autorisation de découvert accordée pour trois jours en fin de mois",
+                "Une avance financière remboursable en fournitures de bureau",
+                "Un don d'actions réservé aux cadres dirigeants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le crédit d'investissement sert à financer l'outil de production durable de l'entreprise sur plusieurs années."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un crédit de trésorerie (ou facilité de caisse) pour une entreprise ?",
+              "options": [
+                "Un financement à très court terme pour combler un décalage passager entre les encaissements et les décaissements",
+                "Un prêt sur 30 ans pour construire le siège social de la société",
+                "Une prime versée aux clients payant en espèces au guichet",
+                "Une subvention publique pour embaucher des stagiaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le crédit de trésorerie finance le besoin en fonds de roulement face aux décalages de paiement des clients."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le taux d'autofinancement d'une entreprise ?",
+              "options": [
+                "(Épargne brute / Dépenses d'investissement) × 100",
+                "(Chiffre d'affaires / Nombre de salariés) × 100",
+                "(Dettes financières / Capital social) × 100",
+                "(Bénéfice net / Impôt payé) × 100"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le taux d'autofinancement mesure la proportion de l'investissement financée par les ressources internes de l'entreprise."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce que 'l'effet de levier' financier de l'endettement pour une entreprise ?",
+              "options": [
+                "L'accroissement de la rentabilité des capitaux propres grâce à l'endettement lorsque le coût de l'emprunt est inférieur à la rentabilité économique",
+                "L'obligation de licencier la moitié des effectifs pour rembourser un prêt",
+                "Le mécanisme par lequel une entreprise rachète l'ensemble de ses fournisseurs",
+                "L'utilisation d'une grue pour moderniser les entrepôts de stockage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si l'investissement rapporte plus qu'il ne coûte en intérêts, l'emprunt dope la rentabilité financière des actionnaires."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel risque majeur fait peser un endettement excessif sur une entreprise si la conjoncture économique se dégrade ?",
+              "options": [
+                "L'incapacité à payer ses charges d'intérêts et le risque de cessation de paiement (faillite)",
+                "L'obligation de doubler le salaire de tous les employés de l'usine",
+                "La perte automatique de la nationalité de tous les actionnaires",
+                "Une baisse forcée du prix de l'électricité fournie à l'usine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un fardeau de dette trop lourd fragilise l'entreprise : en cas de chute des ventes, elle ne peut plus payer ses dettes et risque la faillite."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "La création monétaire par les banques commerciales",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle formule célèbre des économistes résume la création monétaire contemporaine ?",
+              "options": [
+                "Les crédits font les dépôts",
+                "Les dépôts font les crédits",
+                "L'or fait la richesse",
+                "Les impôts créent les billets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement à l'intuition commune, ce n'est pas l'épargne préalable qui permet le crédit : l'octroi d'un crédit crée un nouveau dépôt."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que fait concrètement une banque commerciale lorsqu'elle accorde un crédit à un particulier ?",
+              "options": [
+                "Elle crédite le compte du client par un simple jeu d'écritures comptables en créant de la nouvelle monnaie scripturale",
+                "Elle prend des billets physiques dans le coffre d'un autre client pour les donner au nouvel emprunteur",
+                "Elle demande à l'imprimerie nationale de fabriquer de nouveaux billets en papier",
+                "Elle achète un lingot d'or auprès d'une mine située en Afrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La banque crédite le compte de l'emprunteur en contrepartie d'une créance sur ce dernier : de la monnaie scripturale neuve apparaît."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que les banques commerciales créent de la monnaie 'ex nihilo' ?",
+              "options": [
+                "Parce que la monnaie est créée à partir de rien d'autre que la créance née du contrat de prêt",
+                "Parce que la monnaie est créée exclusivement pendant les nuits de pleine lune",
+                "Parce que la création monétaire nécessite une autorisation signée de tous les citoyens",
+                "Parce que les billets sont faits à base de fibres synthétiques importées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Ex nihilo' signifie 'à partir de rien' : la banque n'a pas besoin de posséder préalablement la somme prêtée pour créer le dépôt."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la 'monétisation d'une créance' par le système bancaire ?",
+              "options": [
+                "La transformation d'une promesse de paiement futur (créance) en pouvoir d'achat immédiatement utilisable (monnaie)",
+                "L'échange de pièces métalliques contre des billets de train",
+                "La vente aux enchères d'œuvres d'art appartenant à un musée",
+                "Le paiement d'un loyer par virement électronique différé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La banque transforme une reconnaissance de dette illiquide en monnaie parfaitement liquide utilisable par l'emprunteur."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent correctement le fonctionnement de la création monétaire bancaire ?",
+              "options": [
+                "L'octroi d'un crédit par une banque augmente la masse monétaire en circulation",
+                "Le remboursement du capital d'un emprunt détruit la monnaie précédemment créée",
+                "Les banques commerciales sont les principales créatrices de monnaie dans l'économie moderne",
+                "Une banque commerciale ne peut prêter que les pièces d'or stockées dans ses sous-sols"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le crédit crée de la monnaie, son remboursement la détruit, et les banques commerciales créent la majorité de la monnaie en circulation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se passe-t-il sur le plan monétaire lorsque l'emprunteur rembourse sa mensualité de capital à sa banque ?",
+              "options": [
+                "Il y a une destruction monétaire : la monnaie scripturale remboursée cesse d'exister",
+                "La monnaie remboursée est immédiatement envoyée par colis postal à la banque centrale",
+                "La banque commerciale double le montant remboursé pour féliciter le client",
+                "L'argent est automatiquement transféré sur le compte de la mairie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le remboursement du capital annule la créance et supprime le dépôt : c'est le phénomène symétrique de destruction monétaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quand observe-t-on une croissance nette de la masse monétaire dans une économie ?",
+              "options": [
+                "Lorsque le flux des nouveaux crédits accordés est supérieur au flux des crédits remboursés",
+                "Lorsque tous les ménages arrêtent définitivement d'emprunter",
+                "Lorsque la banque centrale brûle des billets de 500 euros",
+                "Lorsque les taux d'intérêt atteignent 50 % par an"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si les créations monétaires dépassent les destructions (remboursements), la masse monétaire totale augmente."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la nature des intérêts perçus par la banque lors du remboursement d'un crédit ?",
+              "options": [
+                "Ils constituent le chiffre d'affaires et la rémunération de la banque, ils ne sont pas détruits",
+                "Ils sont obligatoirement détruits de la même façon que le capital remboursé",
+                "Ils sont systématiquement reversés à 100 % sous forme d'impôts à l'Union européenne",
+                "Ils sont transformés en bons d'achat valables dans les librairies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seul le capital remboursé est détruit comptablement ; les intérêts rémunèrent la banque pour son service et couvrent ses coûts."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En dehors des crédits aux ménages et entreprises, quelle autre opération bancaire crée de la monnaie ?",
+              "options": [
+                "L'achat de devises étrangères ou de titres financiers par une banque à un agent non bancaire",
+                "Le paiement du loyer d'une agence bancaire à son propriétaire",
+                "L'achat de fournitures de bureau par les employés de la banque",
+                "La fermeture d'un compte courant inactif depuis plusieurs années"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand une banque achète des devises ou des obligations à un ménage ou une entreprise, elle crédite son compte et crée de la monnaie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel risque économique surviendrait si les banques créaient de la monnaie sans limite et sans contrepartie productive ?",
+              "options": [
+                "Une inflation excessive et une dépréciation brutale de la valeur de la monnaie",
+                "Une baisse définitive de tous les prix des biens de consommation",
+                "Une disparition totale de toutes les pièces métalliques de circulation",
+                "Une réduction immédiate de la dette souveraine de l'ensemble des pays"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si la quantité de monnaie augmente beaucoup plus vite que la production réelle de biens, les prix flambent (inflation)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Les limites de la création monétaire bancaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pourquoi les banques commerciales ne peuvent-elles pas créer de la monnaie à l'infini ?",
+              "options": [
+                "Parce qu'elles font face à des fuites de liquidités et à des contraintes réglementaires strictes",
+                "Parce que la loi leur interdit d'accorder plus de 10 crédits par an",
+                "Parce que les ordinateurs bancaires manquent d'espace de stockage numérique",
+                "Parce que les clients refusent systématiquement d'acheter des logements neufs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les banques doivent gérer leurs besoins en liquidités (billets, réserves, paiements vers d'autres banques) et respecter des règles prudentielles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la 'fuite en billets' pour une banque commerciale ?",
+              "options": [
+                "La demande de ses clients de convertir leurs dépôts scripturaux en espèces fiduciaires au distributeur",
+                "Le vol physique de billets par des cambrioleurs dans ses coffres",
+                "L'envoi illégal de valises de billets vers des pays étrangers",
+                "L'usure naturelle des billets de banque qui doivent être remplacés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La banque commerciale ne fabrique pas de billets : pour approvisionner ses distributeurs, elle doit acheter de la monnaie centrale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que sont les 'réserves obligatoires' imposées aux banques commerciales ?",
+              "options": [
+                "Un pourcentage des dépôts de leurs clients que les banques doivent obligatoirement déposer sur leur compte à la Banque centrale",
+                "Des réserves de nourriture stockées dans les caves des agences en cas de siège",
+                "Des lingots de plomb conservés pour fabriquer de futures munitions militaires",
+                "Des actions gratuites réservées aux dix meilleurs clients de chaque agence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Banque centrale impose aux banques de bloquer une fraction de leurs dépôts sous forme de réserves en monnaie centrale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle 'fuite interbancaire' subit une banque lorsqu'un emprunteur utilise son crédit pour payer un fournisseur ayant son compte dans une banque concurrente ?",
+              "options": [
+                "Elle doit transférer de la monnaie centrale à la banque concurrente lors de la compensation interbancaire",
+                "Elle doit racheter l'ensemble des actions de la banque concurrente",
+                "Elle doit fermer l'agence bancaire la plus proche du fournisseur",
+                "Elle est obligée de dénoncer le contrat de prêt auprès des tribunaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les transferts de fonds entre clients de banques différentes se règlent en monnaie centrale sur le marché interbancaire."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels éléments constituent des freins effectifs à la création monétaire par une banque commerciale ?",
+              "options": [
+                "L'obligation de détenir de la monnaie centrale (réserves obligatoires et retraits en billets)",
+                "Le risque de défaut de paiement (insolvabilité de l'emprunteur)",
+                "Les réglementations prudentielles internationales sur les fonds propres (règles de Bâle)",
+                "L'obligation d'avoir l'accord unanime de tous les habitants de la commune"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Besoins en monnaie centrale, risque de non-remboursement et ratios de fonds propres limitent rigoureusement la création de crédit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle monnaie unique les banques commerciales doivent-elles détenir pour régler leurs soldes réciproques ?",
+              "options": [
+                "La monnaie centrale (émise par la Banque centrale)",
+                "La monnaie scripturale privée des supermarchés",
+                "Les devises numériques émises par les réseaux sociaux",
+                "Les jetons de casino enregistrés auprès des douanes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monnaie centrale est la monnaie ultime reconnue entre banques pour liquider leurs créances et dettes lors de la compensation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le marché interbancaire ?",
+              "options": [
+                "Le marché réservé aux banques où elles se prêtent et s'empruntent de la monnaie centrale au jour le jour",
+                "Le guichet où les particuliers achètent des actions bancaires avec une réduction",
+                "Le site internet où les clients comparent les frais de tenue de compte",
+                "Le lieu où se négocient les prix des distributeurs automatiques de billets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur le marché interbancaire, les banques excédentaires en liquidités prêtent aux banques déficitaires pour équilibrer leurs comptes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que risque une banque commerciale qui accorderait beaucoup plus de crédits que l'ensemble de ses concurrentes ?",
+              "options": [
+                "Un déficit massif de compensation et une crise aiguë de liquidité pour régler ses dettes aux autres banques",
+                "L'attribution obligatoire du titre de première banque du monde par l'ONU",
+                "Une amende infligée par le ministère de l'Agriculture",
+                "La disparition de tous les ordinateurs de ses agences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ses clients effectuant des virements vers les autres banques, elle subirait d'énormes fuites de liquidités en monnaie centrale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que vérifie impérativement une banque avant d'accorder un crédit pour limiter son risque ?",
+              "options": [
+                "La capacité de remboursement, la stabilité des revenus et les garanties présentées par l'emprunteur",
+                "L'appartenance politique et syndicale de l'emprunteur",
+                "La couleur des vêtements portés lors du rendez-vous",
+                "Le nombre d'amis de l'emprunteur sur les réseaux sociaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solvabilité du client et ses garanties sont systématiquement analysées pour éviter les impayés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que prévoient les accords prudentiels internationaux dits de 'Bâle III' ?",
+              "options": [
+                "L'obligation pour les banques de détenir un montant minimal de fonds propres proportionnel aux risques de leurs crédits",
+                "L'interdiction formelle de prêter de l'argent aux personnes de moins de 30 ans",
+                "La fermeture définitive de toutes les agences bancaires physiques en Europe",
+                "L'obligation de fabriquer tous les chéquiers en papier recyclé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ratios de solvabilité imposent aux banques d'avoir suffisamment de capitaux propres pour absorber d'éventuelles pertes de crédit."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Le rôle de la Banque centrale et le refinancement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on traditionnellement la Banque centrale dans son rapport aux banques commerciales ?",
+              "options": [
+                "La banque des banques",
+                "La banque des particuliers fortunés",
+                "Le tribunal du commerce extérieur",
+                "Le syndicat des employés de banque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Banque centrale ne gère pas les comptes des citoyens ordinaires, mais supervise et alimente les banques commerciales en liquidités."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle institution supranationale conduit la politique monétaire pour l'ensemble des pays de la zone euro ?",
+              "options": [
+                "La Banque centrale européenne (BCE), basée à Francfort",
+                "La Réserve fédérale américaine (Fed), basée à Washington",
+                "La Banque mondiale, basée à Genève",
+                "Le Conseil économique, social et environnemental (CESE)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La BCE est l'institution clé responsable de la politique monétaire et de la stabilité de l'euro."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'opération de 'refinancement' pour une banque commerciale ?",
+              "options": [
+                "L'emprunt de monnaie centrale auprès de la Banque centrale pour satisfaire ses besoins en liquidités",
+                "La vente de ses locaux d'agences à une société immobilière",
+                "La demande de dons financiers auprès de ses déposants",
+                "L'embauche de nouveaux conseillers financiers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le refinancement permet à une banque d'obtenir de la monnaie centrale auprès de la banque centrale en apportant des garanties."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que sont les 'taux directeurs' fixés par la Banque centrale ?",
+              "options": [
+                "Les taux d'intérêt auxquels la Banque centrale prête ses liquidités aux banques commerciales",
+                "Les taux d'imposition sur les bénéfices des grandes surfaces",
+                "Le salaire horaire minimum obligatoire pour les directeurs d'agence",
+                "Le pourcentage de réduction accordé sur les péages d'autoroute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les taux directeurs déterminent le coût auquel les banques se procurent de la monnaie centrale, influençant tous les taux de l'économie."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont les objectifs et missions prioritaires de la Banque centrale européenne (BCE) ?",
+              "options": [
+                "Maintenir la stabilité des prix (maîtriser l'inflation)",
+                "Soutenir les politiques économiques générales de l'Union européenne sans préjudice de la stabilité des prix",
+                "Superviser la solidité prudentielle des grandes banques de la zone euro",
+                "Fixer le prix de vente des carburants et du gaz à la pompe"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le mandat principal de la BCE fixé par les traités est la stabilité des prix, complété par la supervision bancaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la cible chiffrée d'inflation à moyen terme visée par la Banque centrale européenne ?",
+              "options": [
+                "2 % par an",
+                "15 % par an",
+                "0 % absolu par an",
+                "-5 % par an (déflation)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La BCE vise une inflation de 2 % à moyen terme, niveau jugé optimal pour dynamiser l'économie tout en évitant la déflation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que fait la Banque centrale lorsqu'elle souhaite freiner une inflation excessive dans l'économie ?",
+              "options": [
+                "Elle augmente ses taux directeurs pour rendre le crédit plus cher et ralentir la demande globale",
+                "Elle baisse ses taux directeurs à zéro pour encourager la spéculation",
+                "Elle distribue des chèques cadeaux de 1 000 euros à toute la population",
+                "Elle oblige les entreprises à vendre tous leurs stocks à prix coûtant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une hausse des taux directeurs renchérit le refinancement bancaire, ce qui freine la création de crédit et calme la surchauffe des prix."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie le rôle de 'prêteur en dernier ressort' exercé par la Banque centrale en période de crise ?",
+              "options": [
+                "Fournir des liquidités d'urgence aux banques solvables mais en crise de liquidité pour éviter un effondrement du système financier",
+                "Prêter de l'argent aux particuliers qui ont épuisé tous leurs droits à découvert",
+                "Acheter toutes les maisons invendues sur le marché immobilier",
+                "Financer directement les campagnes électorales des candidats politiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En cas de panique financière, la banque centrale injecte massivement des liquidités pour éviter la faillite en chaîne des établissements sains."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les traités européens garantissent-ils l'indépendance de la BCE vis-à-vis des gouvernements politiques ?",
+              "options": [
+                "Pour éviter que les gouvernements ne fassent tourner la 'planche à billets' pour financer leurs dépenses électorales",
+                "Pour permettre aux banquiers centraux de ne jamais payer d'impôts personnels",
+                "Pour empêcher les citoyens de voter lors des élections européennes",
+                "Pour interdire aux ministres de l'Économie de voyager à l'étranger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'indépendance protège la politique monétaire des pressions électorales de court terme qui alimenteraient l'inflation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le 'collatéral' exigé par la Banque centrale lorsqu'elle prête des liquidités à une banque commerciale ?",
+              "options": [
+                "Des actifs financiers de haute qualité (titres de dettes publiques ou privées) apportés en garantie",
+                "La promesse orale du directeur général de la banque commerciale",
+                "Des billets de loterie nationale non grattés",
+                "La signature d'un chèque en blanc sur papier libre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La banque centrale ne prête jamais sans garantie : la banque emprunteuse doit gager des obligations de grande sécurité (collatéral)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Risque de crédit, solvabilité et garanties",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le risque de crédit (ou risque de contrepartie) pour une banque ?",
+              "options": [
+                "Le risque que l'emprunteur ne rembourse pas sa dette aux échéances convenues",
+                "Le risque de voir le bâtiment de l'agence bancaire inondé par un orage",
+                "Le risque de panne informatique lors de l'impression d'un relevé de compte",
+                "Le risque de recevoir de faux avis de clients sur internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le risque de crédit est le danger financier majeur des banques : la défaillance (défaut) de l'emprunteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la solvabilité d'un emprunteur ?",
+              "options": [
+                "Sa capacité financière globale à faire face à ses engagements et à rembourser ses dettes à terme",
+                "Sa rapidité à répondre aux courriers électroniques de sa banque",
+                "Le montant d'argent liquide présent dans son portefeuille au moment du rendez-vous",
+                "Le nombre d'années d'études supérieures validées sur son diplôme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Être solvable signifie posséder un revenu suffisant et un patrimoine net positif permettant d'éteindre ses dettes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une hypothèque dans le cadre d'un crédit immobilier ?",
+              "options": [
+                "Une garantie réelle accordée à la banque lui permettant de faire saisir et vendre le bien immobilier si l'emprunteur ne paie pas",
+                "Une taxe annuelle prélevée par la mairie sur les balcons fleuris",
+                "Une assurance obligatoire qui rembourse les travaux de peinture intérieure",
+                "Un contrat de location temporaire signé avec les voisins de palier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hypothèque est une sûreté réelle portant sur le logement financé : en cas de défaut persistant, le bien est saisi et vendu pour payer la dette."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une caution personnelle apportée lors de la souscription d'un prêt ?",
+              "options": [
+                "L'engagement écrit d'une tierce personne (ou organisme) de payer la dette à la place de l'emprunteur en cas de défaillance",
+                "Une somme d'argent liquide versée au directeur de l'agence pour obtenir un rendez-vous",
+                "L'obligation de déposer ses bijoux de famille dans le coffre d'un notaire",
+                "Un mot d'excuse rédigé par un employeur justifiant un retard de paiement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La caution (souvent un proche ou un organisme spécialisé comme Crédit Logement) se substitue à l'emprunteur défaillant."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels critères une banque examine-t-elle pour évaluer la solvabilité d'un demandeur de crédit ?",
+              "options": [
+                "Le niveau et la régularité des revenus professionnels (CDI, ancienneté)",
+                "Le taux d'endettement actuel et les crédits déjà en cours de remboursement",
+                "La tenue des comptes bancaires passés (absence de découverts répétés et d'incidents)",
+                "L'équipe sportive favorite soutenue par le demandeur"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Revenus stables, taux d'endettement modéré et bonne gestion passée des comptes sont les trois clés de l'accord de prêt."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le 'défaut de paiement' d'un débiteur ?",
+              "options": [
+                "Le non-respect d'une ou plusieurs échéances de remboursement du crédit",
+                "Le paiement d'une facture avec un jour d'avance sur l'échéance",
+                "L'utilisation d'une carte bancaire dont la puce est légèrement rayée",
+                "Le choix de payer ses achats par virement plutôt que par chèque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le défaut survient dès qu'un emprunteur ne verse pas les sommes prévues à la date fixée par le contrat."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on en économie la situation où l'emprunteur connaît mieux sa situation financière réelle que le banquier qui examine son dossier ?",
+              "options": [
+                "L'asymétrie d'information",
+                "La concurrence parfaite",
+                "La transparence de marché",
+                "L'équilibre de Nash parfait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'asymétrie d'information désigne la situation où l'une des parties à la transaction détient plus d'informations pertinentes que l'autre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce que 'l'aléa moral' (ou risque moral) dans le domaine du crédit bancaire ?",
+              "options": [
+                "Le fait qu'un emprunteur prenne des risques excessifs une fois le prêt obtenu, sachant que les pertes potentielles seront supportées par d'autres",
+                "L'obligation morale de donner 10 % de ses gains à des associations de quartier",
+                "La mauvaise humeur d'un banquier qui refuse d'accueillir un client avec le sourire",
+                "Le risque d'annulation d'un prêt en cas de changement de gouvernement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'aléa moral survient après la signature : protégé par le contrat ou une assurance, l'agent peut adopter un comportement plus imprudent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que doit comptabiliser une banque commerciale lorsqu'elle constate qu'un crédit a de fortes chances de ne pas être remboursé (créance douteuse) ?",
+              "options": [
+                "Une provision pour risque (qui vient réduire son bénéfice annuel)",
+                "Un dividende exceptionnel versé aux actionnaires",
+                "Une prime d'encouragement versée à l'emprunteur défaillant",
+                "Une augmentation automatique de ses tarifs de tenue de compte pour tous les clients"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La banque passe des provisions comptables pour anticiper la perte probable, ce qui ampute son résultat financier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En France, quel fichier géré par la Banque de France recense les personnes ayant connu des incidents de remboursement de crédit ?",
+              "options": [
+                "Le FICP (Fichier des incidents de remboursement des crédits aux particuliers)",
+                "Le casier judiciaire central du ministère de la Justice",
+                "Le registre des métiers et de l'artisanat",
+                "Le fichier électoral des mairies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les banques consultent obligatoirement le FICP avant d'accorder un nouveau crédit afin de prévenir le surendettement."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Crédit et régulation de l'activité économique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel rôle macroéconomique majeur le crédit bancaire joue-t-il dans l'économie ?",
+              "options": [
+                "Il stimule la demande globale en permettant la consommation des ménages et l'investissement des entreprises",
+                "Il oblige l'État à supprimer tous les services hospitaliers publics",
+                "Il empêche l'innovation technologique en favorisant les industries anciennes",
+                "Il supprime totalement le commerce avec les pays étrangers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le crédit est le carburant de l'économie moderne : il finance les projets productifs et soutient le niveau d'activité global."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment le crédit bancaire contribue-t-il à la croissance économique à long terme ?",
+              "options": [
+                "En finançant les investissements de modernisation, la recherche-développement et les infrastructures productives",
+                "En incitant les entreprises à détruire régulièrement leurs machines neuves",
+                "En interdisant aux jeunes diplômés d'entrer sur le marché du travail",
+                "En forçant les agriculteurs à abandonner les récoltes non vendues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'investissement financé par le crédit accroît le stock de capital et améliore la productivité de l'économie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on une 'bulle spéculative' alimentée par une expansion excessive du crédit ?",
+              "options": [
+                "Une hausse artificielle et déconnectée de la valeur réelle des prix d'actifs (actions, immobilier) stimulée par des emprunts faciles",
+                "Une invention scientifique dans le domaine de la chimie des gaz nobles",
+                "Un accord commercial signé entre les pays producteurs de café",
+                "Une foire commerciale organisée chaque printemps pour les artisans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand le crédit abonde, les agents empruntent massivement pour acheter des actifs, faisant monter artificiellement leurs cours jusqu'à l'éclatement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le phénomène de 'credit crunch' (ou resserrement du crédit) lors d'une crise bancaire ?",
+              "options": [
+                "Un gel ou une réduction drastique de la distribution de crédits par les banques frileuses, qui paralyse l'économie",
+                "Une campagne publicitaire agressive incitant les étudiants à s'endetter",
+                "Une fusion générale de toutes les banques commerciales en une seule entreprise",
+                "La distribution gratuite de cartes de paiement à puce biométrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En période de panique, les banques cessent de prêter : l'économie manque de financements, ce qui amplifie la récession."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont les impacts positifs majeurs d'un système de crédit bancaire sain et efficace ?",
+              "options": [
+                "Faciliter l'accès à la propriété immobilière pour les ménages",
+                "Permettre aux entreprises innovantes de financer leur croissance sans attendre des années d'épargne",
+                "Aider à lisser la consommation des individus au cours des différentes étapes de leur vie",
+                "Garantir que le cours de l'or ne changera plus jamais"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le crédit permet l'accès au logement, soutient l'innovation et permet aux ménages d'étaler leurs dépenses lourdes dans le temps."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi un endettement excessif de l'ensemble des agents économiques peut-il menacer la stabilité financière globale ?",
+              "options": [
+                "Parce qu'en cas de choc économique, des faillites en chaîne peuvent submerger le système bancaire et bloquer l'activité",
+                "Parce que la monnaie métallique commence à fondre sous l'effet de la chaleur",
+                "Parce que les traités internationaux interdisent d'avoir plus de 10 banques dans un pays",
+                "Parce que cela provoque une pénurie mondiale de papier pour imprimer les relevés de compte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le surendettement généralisé rend le système vulnérable : si les débiteurs ne peuvent plus payer, les banques vacillent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle crise financière mondiale majeure a éclaté en 2007-2008 suite à la distribution imprudente de crédits immobiliers risqués aux États-Unis ?",
+              "options": [
+                "La crise des subprimes",
+                "Le choc pétrolier de 1973",
+                "La crise de la tulipe hollandaise de 1637",
+                "La crise de la dette latino-américaine de 1982"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les prêts subprimes accordés à des ménages insolvables et titrisés ont déclenché la crise financière mondiale de 2008."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le rôle des politiques macroprudentielles mises en place après les crises financières ?",
+              "options": [
+                "Surveiller et réguler l'ensemble du système financier pour prévenir l'accumulation de risques systémiques collectifs",
+                "Fixer le taux d'imposition personnel des sportifs professionnels",
+                "Réguler le temps d'antenne des journalistes économiques à la radio",
+                "Interdire aux citoyens d'épargner plus de 10 % de leur salaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La régulation macroprudentielle veille à la solidité de tout l'écosystème bancaire (ex. coussins de fonds propres, plafonds d'endettement)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment le recours au crédit public (emprunt d'État) peut-il aider l'économie lors d'une récession brutale ?",
+              "options": [
+                "En finançant un plan de relance (investissements, aides) pour soutenir l'activité quand le secteur privé réduit ses dépenses",
+                "En confisquant l'ensemble des dépôts des épargnants sans compensation",
+                "En interdisant les importations de produits médicaux étrangers",
+                "En forçant les banques commerciales à licencier leurs analystes de crédit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'emprunt d'État permet de mener des politiques budgétaires contracycliques de relance pour amortir les récessions."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En définitive, quel équilibre délicat les autorités de régulation cherchent-elles à préserver dans la distribution du crédit ?",
+              "options": [
+                "Permettre un financement dynamique et fluide de l'économie sans encourager de bulles spéculatives ni de surendettement",
+                "Supprimer totalement le crédit bancaire pour revenir obligatoirement au troc traditionnel",
+                "Obliger chaque citoyen à s'endetter au maximum de ses capacités chaque début d'année",
+                "Confier la distribution des prêts exclusivement à des algorithmes de jeux vidéo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La bonne régulation monétaire et financière favorise l'investissement productif tout en prévenant les dérives spéculatives et les crises d'insolvabilité."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

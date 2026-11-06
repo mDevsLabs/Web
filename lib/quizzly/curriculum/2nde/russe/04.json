@@ -1,0 +1,2368 @@
+{
+  "id": "2nde-russe-04",
+  "year": "2nde",
+  "subject": "russe",
+  "title": "La grammaire du russe",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "L'absence d'articles et la détermination",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Le russe possède-t-il des articles définis ou indéfinis ?",
+              "options": [
+                "Non, il n'existe aucun article en russe",
+                "Oui, seulement des articles définis",
+                "Oui, seulement des articles indéfinis",
+                "Oui, des articles définis et indéfinis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La langue russe ne possède aucun article. Le caractère défini ou indéfini d'un nom est exprimé par l'ordre des mots, l'intonation ou des pronoms."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on isolément « un livre » ou « le livre » en russe ?",
+              "options": ["Книга", "Один книга", "Тот книга", "Это книга"],
+              "correctAnswers": [0],
+              "explanation": "En l'absence d'article, le mot « книга » suffit pour traduire aussi bien « un livre » que « le livre »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel procédé compense souvent l'absence d'article pour distinguer le connu de l'inconnu ?",
+              "options": [
+                "L'ordre des mots dans la phrase",
+                "Le redoublement de la voyelle initiale",
+                "L'ajout d'une consonne finale invariable",
+                "Le changement de genre du nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En russe, l'information connue (définie) se place généralement au début de la phrase, et l'information nouvelle (indéfinie) à la fin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « На столе лежит книга », quelle est la nuance apportée par « книга » placé en fin de phrase ?",
+              "options": [
+                "Une valeur indéfinie (« il y a un livre sur la table »)",
+                "Une valeur obligatoirement définie (« le livre précis »)",
+                "Une négation de l'existence du livre",
+                "Une possession obligatoire du livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Placé en fin de phrase, « книга » représente l'information nouvelle, ce qui correspond à l'article indéfini « un livre » en français."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « Книга лежит на столе », quelle valeur prend le mot « книга » placé en début de phrase ?",
+              "options": [
+                "Une valeur définie (« le livre est sur la table »)",
+                "Une valeur indéfinie (« un livre quelconque »)",
+                "Une valeur de pluriel indéterminé",
+                "Une absence totale d'objet réel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Placé en tête d'énoncé, « книга » est le thème connu des interlocuteurs, équivalent à « le livre » en français."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel démonstratif masculin permet d'insister sur la valeur définie (« ce livre-ci ») ?",
+              "options": ["Этот", "Такой", "Весь", "Наш"],
+              "correctAnswers": [0],
+              "explanation": "Le démonstratif « этот » sert à désigner précisément un objet proche ou déjà mentionné."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel adjectif numéral peut occasionnellement marquer une valeur indéfinie (« un certain... ») ?",
+              "options": ["Один", "Первый", "Два", "Сам"],
+              "correctAnswers": [0],
+              "explanation": "« Один » (au féminin « одна », au neutre « одно ») peut traduire la nuance de « un certain » ou « un quelconque »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment le contexte permet-il de savoir si un objet est défini ?",
+              "options": [
+                "Par la situation d'énonciation et les connaissances partagées",
+                "Par une terminaison casuelle supplémentaire",
+                "Par l'obligation d'un adverbe temporel",
+                "Par la modification de la classe du verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La situation de communication indique immédiatement si l'on parle d'un objet précis ou générique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle affirmation est exacte concernant le système grammatical russe ?",
+              "options": [
+                "Le système grammatical ne comporte aucun morphème d'article",
+                "Les articles existent uniquement au pluriel",
+                "Les articles sont réservés au registre poétique",
+                "Le russe a abandonné ses articles au XIXe siècle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le russe ne possède structurellement pas la catégorie grammaticale de l'article."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels moyens la langue russe utilise-t-elle pour exprimer les nuances des articles français ?",
+              "options": [
+                "L'ordre des mots dans la phrase",
+                "L'emploi de pronoms démonstratifs ou indéfinis",
+                "L'intonation et le contexte de la situation",
+                "L'ajout d'un article affixé à la fin des verbes"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le russe combine l'ordre des mots, l'emploi de démonstratifs/indéfinis et l'intonation pour exprimer la détermination."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Le genre des noms : le masculin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la finale la plus fréquente d'un nom masculin au nominatif singulier ?",
+              "options": [
+                "Une consonne dure",
+                "La voyelle -а",
+                "La voyelle -о",
+                "La voyelle -е"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noms masculins à radical dur se terminent par une consonne dure au nominatif singulier (ex: дом, стол)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Parmi ces mots, lequel est du genre masculin ?",
+              "options": [
+                "Стол (table)",
+                "Лампа (lampe)",
+                "Окно (fenêtre)",
+                "Море (mer)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Стол » se termine par une consonne dure, c'est un nom masculin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison d'un nom masculin à radical mou ?",
+              "options": [
+                "La consonne -й ou un signe mou -ь",
+                "La voyelle -ы",
+                "La voyelle -у",
+                "Le suffixe -ая"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les masculins à radical mou se terminent par la consonne -й (музей) ou par le signe mou -ь (словарь)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le mot « музей » (musée) appartient à quel genre ?",
+              "options": [
+                "Masculin",
+                "Féminin",
+                "Neutre",
+                "Pluriel invariable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Se terminant par -й, « музей » est un nom masculin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le genre du mot « чай » (thé) ?",
+              "options": [
+                "Masculin",
+                "Féminin",
+                "Neutre",
+                "Collectif sans genre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Чай » se termine par -й, ce qui en fait un nom masculin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Parmi ces noms terminés par -ь, lequel est masculin ?",
+              "options": [
+                "Словарь (dictionnaire)",
+                "Тетрадь (cahier)",
+                "Площадь (place)",
+                "Дверь (porte)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Словарь » est masculin (он мой словарь), tandis que тетрадь, площадь et дверь sont féminins."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les noms de parenté masculins en -а comme « папа » (papa) et « дедушка » (papy) sont :",
+              "options": [
+                "Masculins en raison de leur sens naturel",
+                "Féminins à cause de la terminaison en -а",
+                "Neutres car ce sont des hypocoristiques",
+                "Invariables en genre grammatical"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noms désignant des êtres masculins terminés par -а/-я ont un accord masculin (мой папа, старый дедушка)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le genre du prénom « Саша » lorsqu'il désigne un garçon ?",
+              "options": ["Masculin", "Féminin", "Neutre", "Sans genre"],
+              "correctAnswers": [0],
+              "explanation": "Désignant une personne de sexe masculin, Саша s'accorde au masculin (наш Саша)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le mot « брат » (frère) est masculin parce que :",
+              "options": [
+                "Il se termine par une consonne dure et désigne un homme",
+                "Il s'accorde toujours au neutre",
+                "Il possède une désinence -а cachée",
+                "Il est invariable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Брат » se termine par la consonne dure « т » et désigne une personne masculine."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels noms parmi les suivants sont du genre masculin ?",
+              "options": [
+                "Город (ville)",
+                "Рубль (rouble)",
+                "Мужчина (homme)",
+                "Комната (chambre)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Город (consonne), рубль (masculin en -ь) et мужчина (sens masculin malgré -а) sont masculins. Комната est féminin."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le genre des noms : le féminin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelles sont les voyelles typiques des noms féminins au nominatif singulier ?",
+              "options": ["-а et -я", "-о et -е", "-ы et -и", "-у et -ю"],
+              "correctAnswers": [0],
+              "explanation": "La grande majorité des noms féminins russes se terminent par -а (dur) ou -я (mou)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Parmi les mots suivants, lequel est du genre féminin ?",
+              "options": [
+                "Газета (journal)",
+                "Журнал (magazine)",
+                "Письмо (lettre)",
+                "Театр (théâtre)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Газета » se termine par -а, c'est un nom féminin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le mot « Россия » (Russie) est féminin car il se termine par :",
+              "options": [
+                "-я",
+                "-а",
+                "Une consonne douce",
+                "Un suffixe neutre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noms en -ия comme « Россия » ou « станция » sont féminins."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le genre du mot « песня » (chanson) ?",
+              "options": ["Féminin", "Masculin", "Neutre", "Pluriel"],
+              "correctAnswers": [0],
+              "explanation": "Se terminant par -я, « песня » est un nom féminin à radical mou."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Parmi ces noms en signe mou (-ь), lequel est féminin ?",
+              "options": [
+                "Ночь (nuit)",
+                "День (jour)",
+                "Конь (cheval)",
+                "Дождь (pluie)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ночь » est féminin (эта тёмная ночь). День, конь et дождь sont masculins."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les noms féminins terminés par une chuintante (ж, ч, ш, щ) au nominatif singulier prennent obligatoirement :",
+              "options": [
+                "Un signe mou (-ь) final",
+                "La voyelle -о",
+                "Une consonne double",
+                "Un accent circonflexe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les féminins en chuintante s'écrivent avec un signe mou (ex: ночь, мышь, вещь), contrairement aux masculins (нож, карандаш)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le mot « сестра » (sœur) appartient au genre :",
+              "options": ["Féminin", "Masculin", "Neutre", "Collectif"],
+              "correctAnswers": [0],
+              "explanation": "« Сестра » se termine par -а et désigne une personne de sexe féminin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle terminaison prend l'adjectif qualificatif dur associé à « школа » ?",
+              "options": ["-ая", "-ый", "-ое", "-ые"],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif dur au féminin singulier prend la terminaison -ая (новая школа)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le mot « станция » (station / gare) est du genre :",
+              "options": ["Féminin", "Masculin", "Neutre", "Invariable"],
+              "correctAnswers": [0],
+              "explanation": "Les noms terminés par -ия sont du genre féminin."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels noms parmi les suivants sont du genre féminin ?",
+              "options": [
+                "Тетрадь (cahier)",
+                "Вода (eau)",
+                "Деревня (village)",
+                "Поезд (train)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Тетрадь (féminin en -ь), вода (-а) et деревня (-я) sont féminins. Поезд est masculin."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le genre des noms : le neutre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelles sont les terminaisons typiques d'un nom neutre régulier au nominatif singulier ?",
+              "options": [
+                "-о et -е",
+                "-а et -я",
+                "-ы et -и",
+                "Consonne dure et -й"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noms neutres réguliers se terminent par -о (dur) ou -е (mou)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Parmi les mots suivants, lequel est du genre neutre ?",
+              "options": [
+                "Окно (fenêtre)",
+                "Стенка (mur)",
+                "Карандаш (crayon)",
+                "Ручка (stylo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Окно » se termine par -о, c'est un nom neutre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le genre du mot « море » (mer) ?",
+              "options": ["Neutre", "Féminin", "Masculin", "Pluriel"],
+              "correctAnswers": [0],
+              "explanation": "« Море » se termine par -е, c'est un nom neutre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le mot « здание » (bâtiment) est du genre :",
+              "options": ["Neutre", "Masculin", "Féminin", "Invariable"],
+              "correctAnswers": [0],
+              "explanation": "Les noms terminés par -ие comme « здание » ou « упражнение » sont neutres."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les noms en « -мя » comme « время » (le temps) et « имя » (le prénom) sont :",
+              "options": [
+                "Du genre neutre",
+                "Du genre féminin",
+                "Du genre masculin",
+                "Invariables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les 10 noms russes en -мя (время, имя, знамя...) sont du genre neutre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le genre du mot « молоко » (lait) ?",
+              "options": ["Neutre", "Masculin", "Féminin", "Pluriel"],
+              "correctAnswers": [0],
+              "explanation": "« Молоко » se termine par -о, c'est un nom neutre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les emprunts indéclinables terminés par une voyelle comme « метро » ou « пальто » sont :",
+              "options": ["Neutres", "Masculins", "Féminins", "Sans genre"],
+              "correctAnswers": [0],
+              "explanation": "La plupart des noms inanimés d'origine étrangère finissant par une voyelle sont neutres."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le mot « фото » (photo) est du genre :",
+              "options": [
+                "Neutre",
+                "Masculin",
+                "Féminin",
+                "Pluriel uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Фото » est un nom d'origine étrangère indéclinable neutre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le mot « письмо » (lettre) appartient au genre :",
+              "options": ["Neutre", "Masculin", "Féminin", "Pluriel"],
+              "correctAnswers": [0],
+              "explanation": "« Письмо » se termine par -о, c'est un nom neutre."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels noms parmi les suivants sont du genre neutre ?",
+              "options": [
+                "Солнце (soleil)",
+                "Поле (champ)",
+                "Время (temps)",
+                "Автобус (bus)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Солнце (-е), поле (-е) et время (-мя) sont neutres. Автобус est masculin."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Accords de base de l'adjectif qualificatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En quoi l'adjectif qualificatif s'accorde-t-il avec le nom ?",
+              "options": [
+                "En genre, en nombre et en cas",
+                "Uniquement en nombre",
+                "Uniquement en genre",
+                "Il ne s'accorde jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif russe s'accorde en genre, en nombre et en cas avec le nom qu'il qualifie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison habituelle d'un adjectif dur au masculin singulier ?",
+              "options": ["-ый (ou -ой si accentué)", "-ая", "-ое", "-ые"],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif dur au masculin singulier prend -ый (новый) ou -ой sous l'accent (молодой)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la désinence d'un adjectif dur au féminin singulier ?",
+              "options": ["-ая", "-ый", "-ое", "-ее"],
+              "correctAnswers": [0],
+              "explanation": "Au féminin singulier, l'adjectif dur se termine par -ая (новая)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la désinence d'un adjectif dur au neutre singulier ?",
+              "options": ["-ое", "-ая", "-ый", "-ий"],
+              "correctAnswers": [0],
+              "explanation": "Au neutre singulier, l'adjectif dur se termine par -ое (новое)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « ... дом » (une nouvelle maison).",
+              "options": ["Новый", "Новая", "Новое", "Новые"],
+              "correctAnswers": [0],
+              "explanation": "« Дом » étant masculin, l'adjectif prend la forme masculine « новый »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « ... машина » (une nouvelle voiture).",
+              "options": ["Новая", "Новый", "Новое", "Новые"],
+              "correctAnswers": [0],
+              "explanation": "« Машина » étant féminin, l'adjectif prend la forme féminine « новая »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « ... здание » (un nouveau bâtiment).",
+              "options": ["Новое", "Новый", "Новая", "Новые"],
+              "correctAnswers": [0],
+              "explanation": "« Здание » étant neutre, l'adjectif prend la forme neutre « новое »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la bonne combinaison pour « красивый » avec « комната » ?",
+              "options": [
+                "Красивая комната",
+                "Красивый комната",
+                "Красивое комната",
+                "Красивые комната"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Комната » est féminin, l'accord donne « красивая комната »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la bonne combinaison pour « белый » avec « молоко » ?",
+              "options": [
+                "Белое молоко",
+                "Белый молоко",
+                "Белая молоко",
+                "Белые молоко"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Молоко » est neutre, l'accord donne « белое молоко »."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels groupes adjectif + nom sont correctement accordés au nominatif singulier ?",
+              "options": [
+                "Старый город (masculin)",
+                "Чистая вода (féminin)",
+                "Тёплое море (neutre)",
+                "Новый газета (féminin)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Старый город, чистая вода et тёплое море respectent les accords de genre. On doit dire « новая газета »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Adjectifs : particularités et règles d'orthographe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison masculine d'un adjectif dont la désinence est accentuée (ex: большой) ?",
+              "options": ["-ой", "-ый", "-ий", "-ей"],
+              "correctAnswers": [0],
+              "explanation": "Quand l'accent tonique tombe sur la terminaison au masculin singulier, elle s'écrit -ой (большой, молодой)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi écrit-on « русский » avec -ий et non -ый ?",
+              "options": [
+                "La règle des 7 lettres interdit « ы » après г, к, х, ж, ч, ш, щ",
+                "C'est une exception pour la nationalité russe",
+                "Parce que le radical est féminin",
+                "Pour distinguer l'adjectif du nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après les vélaires (г, к, х) et les chuintantes (ж, ч, ш, щ), la lettre « ы » est remplacée par « и »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment accorde-t-on l'adjectif « хороший » avec le nom masculin « друг » ?",
+              "options": [
+                "Хороший друг",
+                "Хорошый друг",
+                "Хорошая друг",
+                "Хорошое друг"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après la chuintante ш, on écrit obligatoirement -ий : « хороший друг »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la forme neutre de « хороший » dans « ... утро » (bonne matinée) ?",
+              "options": [
+                "Хорошее утро",
+                "Хорошое утро",
+                "Хороший утро",
+                "Хорошая утро"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après une chuintante, un « o » non accentué s'écrit « e », d'où la terminaison neutre -ее : « хорошее утро »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison féminine des adjectifs à radical mou comme « синий » (bleu foncé) ?",
+              "options": [
+                "-яя (синяя)",
+                "-ая (синая)",
+                "-ее (синее)",
+                "-ия (синия)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les adjectifs mous prennent -яя au féminin singulier (синяя книга)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme neutre de l'adjectif mou « синий » ?",
+              "options": ["Синее", "Синое", "Синяя", "Синий"],
+              "correctAnswers": [0],
+              "explanation": "Les adjectifs mous prennent -ее au neutre singulier (синее море)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « горячий чай » (thé chaud), pourquoi l'adjectif se termine-t-il par -ий ?",
+              "options": [
+                "À cause de la chuintante ч interdisant la lettre ы",
+                "Parce que le thé est liquide",
+                "Parce que чай est un nom neutre",
+                "Parce que l'accent est sur la première syllabe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chuintante « ч » interdit la lettre « ы » et impose « и »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment accorde-t-on l'adjectif « маленький » avec « девочка » (fille) ?",
+              "options": [
+                "Маленькая девочка",
+                "Маленький девочка",
+                "Маленькое девочка",
+                "Маленькие девочка"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Девочка » est féminin, la terminaison est -ая : « маленькая девочка »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment accorde-t-on l'adjectif « большой » avec « окно » (fenêtre) ?",
+              "options": [
+                "Большое окно",
+                "Большее окно",
+                "Большой окно",
+                "Большая окно"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accent étant sur la terminaison (большо́е), on garde le « о » au neutre."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs prennent la terminaison « -ий » au nominatif masculin singulier ?",
+              "options": [
+                "Маленький (petit)",
+                "Русский (russe)",
+                "Синий (bleu foncé)",
+                "Красный (rouge)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Маленький et русский prennent -ий à cause de к, синий car il est mou. Красный prend -ый car son radical est dur."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Les pronoms démonstratifs et accords",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel démonstratif s'accorde avec un nom masculin singulier ?",
+              "options": ["Этот", "Эта", "Это", "Эти"],
+              "correctAnswers": [0],
+              "explanation": "« Этот » est la forme masculine singulière du démonstratif (ce/cet)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel démonstratif s'accorde avec un nom féminin singulier ?",
+              "options": ["Эта", "Этот", "Это", "Эти"],
+              "correctAnswers": [0],
+              "explanation": "« Эта » est la forme féminine singulière du démonstratif (cette)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel démonstratif s'accorde avec un nom neutre singulier ?",
+              "options": ["Это", "Этот", "Эта", "Эти"],
+              "correctAnswers": [0],
+              "explanation": "« Это » est la forme neutre singulière du démonstratif (ce/cette)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel démonstratif utilise-t-on au pluriel pour tous les genres ?",
+              "options": ["Эти", "Этот", "Эта", "Это"],
+              "correctAnswers": [0],
+              "explanation": "« Эти » est la forme plurielle unique pour le masculin, le féminin et le neutre (ces)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « ... дом старый » (cette maison est vieille).",
+              "options": ["Этот", "Эта", "Это", "Эти"],
+              "correctAnswers": [0],
+              "explanation": "« Дом » est masculin, on emploie « этот дом »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « ... книга интересная » (ce livre est intéressant).",
+              "options": ["Эта", "Этот", "Это", "Эти"],
+              "correctAnswers": [0],
+              "explanation": "« Книга » est féminin, on emploie « эта книга »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « ... письмо длинное » (cette lettre est longue).",
+              "options": ["Это", "Этот", "Эта", "Эти"],
+              "correctAnswers": [0],
+              "explanation": "« Письмо » est neutre, on emploie « это письмо »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « ... студенты говорят по-русски » (ces étudiants parlent russe).",
+              "options": ["Эти", "Этот", "Эта", "Это"],
+              "correctAnswers": [0],
+              "explanation": "« Студенты » est au pluriel, on emploie « эти »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la différence entre « Это дом » et « Этот дом » ?",
+              "options": [
+                "« Это дом » signifie « C'est une maison » ; « Этот дом » signifie « Cette maison »",
+                "« Этот дом » est féminin et « Это дом » est masculin",
+                "Les deux expressions sont strictement synonymes",
+                "« Это дом » s'utilise uniquement au pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Это » invariable sert de présentatif (« c'est... »), tandis que « этот » est un adjectif démonstratif qui qualifie un nom."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Dans quelles phrases le démonstratif joue-t-il le rôle d'adjectif accordé avec le nom ?",
+              "options": [
+                "Этот человек врач",
+                "Эта комната светлая",
+                "Эти книги новые",
+                "Это мой брат"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Dans les trois premières, le démonstratif détermine le nom. Dans « Это мой брат », c'est le présentatif invariable « c'est »."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les pronoms possessifs (мой, твой, наш, ваш)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment dit-on « mon frère » en russe ?",
+              "options": ["Мой брат", "Моя брат", "Моё брат", "Мои брат"],
+              "correctAnswers": [0],
+              "explanation": "« Брат » étant masculin, le possessif prend la forme masculine « мой »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la forme féminine de « mon / ma » ?",
+              "options": ["Моя", "Мой", "Моё", "Мои"],
+              "correctAnswers": [0],
+              "explanation": "Au féminin singulier, on emploie « моя » (моя комната)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la forme neutre de « mon / ma » ?",
+              "options": ["Моё", "Мой", "Моя", "Мои"],
+              "correctAnswers": [0],
+              "explanation": "Au neutre singulier, on emploie « моё » (моё окно)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la forme féminine de « ton / ta » ?",
+              "options": ["Твоя", "Твой", "Твоё", "Твои"],
+              "correctAnswers": [0],
+              "explanation": "Au féminin singulier, « твой » devient « твоя » (твоя книга)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment dit-on « notre ville » (город étant masculin) ?",
+              "options": [
+                "Наш город",
+                "Наша город",
+                "Наше город",
+                "Наши город"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Город » est masculin, on utilise la forme « наш »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme neutre de « notre » au nominatif ?",
+              "options": ["Наше", "Наш", "Наша", "Наши"],
+              "correctAnswers": [0],
+              "explanation": "Au neutre singulier, « notre » se dit « наше » (наше общежитие)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on « votre famille » (семья étant féminin) ?",
+              "options": [
+                "Ваша семья",
+                "Ваш семья",
+                "Ваше семья",
+                "Ваши семья"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Семья » est féminin, on utilise « ваша семья »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « Где ... пальто? » (пальто est neutre).",
+              "options": ["Твоё", "Твой", "Твоя", "Твои"],
+              "correctAnswers": [0],
+              "explanation": "« Пальто » est un nom neutre, on emploie « твоё »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la forme plurielle de « мой » pour tous les genres ?",
+              "options": ["Мои", "Мой", "Моя", "Моё"],
+              "correctAnswers": [0],
+              "explanation": "Au nominatif pluriel, « мой » devient « мои » (мои друзья, мои книги)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels possessifs s'accordent en genre et en nombre avec le nom possédé ?",
+              "options": [
+                "Мой / моя / моё / мои",
+                "Наш / наша / наше / наши",
+                "Ваш / ваша / ваше / ваши",
+                "Его / её / их"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les possessifs de 1re et 2e personnes s'accordent en genre/nombre. Ceux de 3e personne (его, её, их) sont invariables."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Les possessifs de 3e personne et leur invariabilité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment traduit-on « son / sa » quand le possesseur est masculin singulier (lui) ?",
+              "options": ["Его", "Её", "Их", "Свой"],
+              "correctAnswers": [0],
+              "explanation": "Quand le possesseur est masculin (ou neutre), le possessif de 3e personne est « его »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on « son / sa » quand le possesseur est féminin singulier (elle) ?",
+              "options": ["Её", "Его", "Их", "Наш"],
+              "correctAnswers": [0],
+              "explanation": "Quand le possesseur est une femme, le possessif de 3e personne est « её »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « leur / leurs » quand les possesseurs sont au pluriel ?",
+              "options": ["Их", "Его", "Её", "Свой"],
+              "correctAnswers": [0],
+              "explanation": "Quand les possesseurs sont au pluriel, on emploie « их »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les possessifs « его », « её » et « их » s'accordent-ils avec le nom de l'objet possédé ?",
+              "options": [
+                "Non, ils sont totalement invariables",
+                "Oui, ils s'accordent en genre",
+                "Oui, ils s'accordent en nombre",
+                "Oui, ils prennent une marque de cas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces possessifs sont d'anciens génitifs du pronom personnel ; ils restent invariables quel que soit l'objet possédé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment dit-on « sa sœur » si la sœur est celle d'Ivan ?",
+              "options": [
+                "Его сестра",
+                "Её сестра",
+                "Евой сестра",
+                "Их сестра"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le possesseur étant Ivan (masculin), on emploie « его » : « его сестра »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « son frère » si le frère est celui d'Anna ?",
+              "options": ["Её брат", "Его брат", "Еин брат", "Их брат"],
+              "correctAnswers": [0],
+              "explanation": "Le possesseur étant Anna (féminin), on emploie « её » : « её брат »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on correctement « leur maison » et « leurs amis » en russe standard ?",
+              "options": [
+                "Их дом, их друзья",
+                "Их дом, ихние друзья",
+                "Ихний дом, ихние друзья",
+                "Ево дом, ево друзья"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Их » est invariable devant tout nom (singulier ou pluriel). La forme « ихний » est populaire et incorrecte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment se prononce la lettre « г » dans le mot « его » ?",
+              "options": [
+                "Comme un « v »",
+                "Comme un « g » dur",
+                "Comme un « r »",
+                "Elle est muette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la terminaison -ого/-его, la lettre « г » se prononce toujours [v] (se lit « yévo »)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « его комната », pourquoi « его » ne prend-il pas de marque féminine ?",
+              "options": [
+                "Parce qu'il indique le genre du possesseur et reste invariable",
+                "Parce que комната est masculin en russe",
+                "Parce que la lettre г interdit le féminin",
+                "C'est une irrégularité réservée à комната"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Его » renvoie au possesseur masculin et ne change jamais selon le mot qui suit."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernant « его », « её » et « их » sont exactes ?",
+              "options": [
+                "Ils correspondent aux possesseurs de 3e personne",
+                "Ils ne changent jamais de forme en fonction du nom possédé",
+                "La forme populaire « ихний » est proscrite en norme standard",
+                "Ils s'accordent en cas avec le nom qu'ils précédent"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Ces trois pronoms indiquent la 3e personne, sont invariables, et la forme familière « ихний » est incorrecte."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Le pluriel des noms et l'accord des adjectifs au nominatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison habituelle des noms masculins durs au nominatif pluriel ?",
+              "options": ["-ы", "-а", "-о", "-е"],
+              "correctAnswers": [0],
+              "explanation": "Les masculins durs forment généralement leur nominatif pluriel en -ы (стол -> столы)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison des noms féminins durs au nominatif pluriel (ex: газета) ?",
+              "options": ["-ы", "-и", "-е", "-я"],
+              "correctAnswers": [0],
+              "explanation": "Les féminins en -а prennent -ы au nominatif pluriel (газета -> газеты)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi le pluriel de « книга » est-il « книги » avec un « и » final ?",
+              "options": [
+                "En raison de la règle orthographique après la consonne « г »",
+                "Parce que книга est d'origine étrangère",
+                "Parce que les livres sont toujours féminins",
+                "Parce que l'accent tonique tombe sur la fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après г, к, х et les chuintantes, la lettre « ы » est interdite et remplacée par « и »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison régulière des noms neutres en -о au nominatif pluriel (ex: окно) ?",
+              "options": ["-а", "-ы", "-и", "-е"],
+              "correctAnswers": [0],
+              "explanation": "Les neutres en -о font leur pluriel en -а (окно -> окна)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le pluriel régulier du nom neutre « письмо » (lettre) ?",
+              "options": ["Письма", "Письмы", "Письме", "Письмои"],
+              "correctAnswers": [0],
+              "explanation": "Le neutre « письмо » fait « письма » au nominatif pluriel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison des adjectifs durs au nominatif pluriel (pour tous les genres) ?",
+              "options": ["-ые", "-ие", "-ая", "-ое"],
+              "correctAnswers": [0],
+              "explanation": "Au nominatif pluriel, les adjectifs à radical dur prennent la terminaison -ые quel que soit le genre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison des adjectifs après г, к, х, ж, ч, ш, щ au pluriel ?",
+              "options": ["-ие", "-ые", "-ее", "-ая"],
+              "correctAnswers": [0],
+              "explanation": "La règle des 7 lettres impose la terminaison -ие (русские, хорошие, маленькие)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment accorde-t-on l'adjectif « новый » au pluriel avec « столы » ?",
+              "options": [
+                "Новые столы",
+                "Новый столы",
+                "Новая столы",
+                "Новии столы"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au nominatif pluriel dur, l'adjectif prend -ые : « новые столы »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment accorde-t-on l'adjectif « русский » au pluriel avec « студенты » ?",
+              "options": [
+                "Русские студенты",
+                "Русскые студенты",
+                "Русский студенты",
+                "Русская студенты"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après « к », on écrit -ие : « русские студенты »."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels groupes nominaux sont correctement accordés au nominatif pluriel ?",
+              "options": [
+                "Большие города (grandes villes)",
+                "Новые книги (nouveaux livres)",
+                "Красивые здания (beaux bâtiments)",
+                "Новый столы (nouvelles tables)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Большие города, новые книги et красивые здания sont corrects. Avec столы, il faut « новые »."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La phrase nominale et l'absence du verbe être",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Je suis étudiant » en russe au présent ?",
+              "options": [
+                "Я студент",
+                "Я есть студент",
+                "Я быть студент",
+                "Я был студент"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au présent, le verbe être (быть) est sous-entendu et omis : « Я студент »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que devient le verbe « быть » (être) au présent dans une phrase déclarative ordinaire ?",
+              "options": [
+                "Il est systématiquement omis",
+                "Il prend la forme obligatoire « есмь »",
+                "Il se place toujours à la fin",
+                "Il est remplacé par un préfixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En russe contemporain, la copule « être » au présent n'est pas exprimée dans les phrases attributives simples."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que place-t-on souvent à l'écrit entre deux noms dans une phrase comme « Антон — врач » ?",
+              "options": [
+                "Un tiret pour marquer la pause",
+                "Une virgule obligatoire",
+                "Un point d'interrogation",
+                "Un astérisque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand le sujet et l'attribut sont tous deux des noms au nominatif, on insère un tiret (тире) pour marquer la liaison."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « C'est une table » en russe ?",
+              "options": ["Это стол", "Он стол", "Стол есть", "Тут быть стол"],
+              "correctAnswers": [0],
+              "explanation": "La formule « Это + nom au nominatif » permet d'identifier un objet sans verbe : « Это стол »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Moscou est une belle ville » ?",
+              "options": [
+                "Москва — красивый город",
+                "Москва есть красивый город",
+                "Москва быть красивый город",
+                "Москва этот красивый город"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On utilise la structure nominale avec tiret : « Москва — красивый город »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans « Анна дома », quel verbe français est sous-entendu ?",
+              "options": [
+                "Le verbe être (« Anna est à la maison »)",
+                "Le verbe aller (« Anna va à la maison »)",
+                "Le verbe habiter (« Anna habite à la maison »)",
+                "Le verbe acheter (« Anna achète la maison »)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adverbe « дома » (à la maison) est directement relié au sujet par l'ellipse du verbe être."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Nous sommes amis » en russe ?",
+              "options": [
+                "Мы друзья",
+                "Мы есть друзья",
+                "Мы будем друзья",
+                "Мы быть друзья"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On juxtapose le pronom sujet et l'attribut au nominatif : « Мы друзья »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans quel emploi le mot « есть » est-il régulièrement conservé au présent ?",
+              "options": [
+                "Pour affirmer l'existence ou la possession (« у меня есть »)",
+                "Pour relier un sujet à un adjectif de couleur",
+                "Uniquement dans les phrases interrogatives en кто",
+                "Il a totalement disparu du russe moderne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Есть » s'emploie principalement pour affirmer l'existence ou dans les structures possessives."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Ce musée est intéressant » ?",
+              "options": [
+                "Этот музей интересный",
+                "Этот музей есть интересный",
+                "Этот музей быть интересный",
+                "Этот музей было интересный"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On associe directement le sujet et l'adjectif qualificatif au nominatif : « Этот музей интересный »."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont des phrases nominales russes correctes au présent ?",
+              "options": [
+                "Мой папа — инженер",
+                "Сегодня хорошая погода",
+                "Они сейчас в парке",
+                "Я есть врач в больнице"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les trois premières phrases illustrent la phrase nominale sans copule. « Я есть врач » est incorrect en russe contemporain."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "L'ordre des mots et l'intonation affirmative",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment caractérise-t-on l'ordre des mots en russe ?",
+              "options": [
+                "Relativement libre grâce aux désinences casuelles",
+                "Strictement figé selon le schéma Sujet-Verbe-Objet",
+                "Obligatoirement Verbe-Sujet-Objet",
+                "Totalement dépourvu de règles de sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les déclinaisons indiquant la fonction grammaticale des mots, l'ordre des mots sert surtout à organiser l'information (thème/propos)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel ordre des mots correspond à l'énoncé déclaratif le plus neutre en russe ?",
+              "options": [
+                "Sujet - Verbe - Complément (SVO)",
+                "Complément - Verbe - Sujet (OVS)",
+                "Verbe - Sujet - Complément (VSO)",
+                "Verbe - Complément - Sujet (VOS)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre non marqué le plus standard est SVO : « Иван читает книгу »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Où se place généralement l'information nouvelle (le propos / le rhème) dans la phrase ?",
+              "options": [
+                "En fin de proposition",
+                "Toujours au premier mot",
+                "Strictement entre sujet et verbe",
+                "Dans une incise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La progression informative standard va du connu (thème en tête) vers le nouveau (rhème en fin de phrase)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « Книгу читает Иван », quelle information est mise en valeur comme nouvelle ?",
+              "options": [
+                "C'est Ivan qui lit le livre",
+                "Le livre est un roman",
+                "Ivan achète le livre",
+                "La lecture est difficile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Placé en fin de phrase, « Иван » répond à la question sous-jacente « qui lit le livre ? »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel modèle de construction intonative (IK) correspond à l'affirmation neutre ?",
+              "options": [
+                "L'IK-1 (abaissement régulier du ton)",
+                "L'IK-3 (montée aiguë brusque)",
+                "L'IK-4 (intonation descendante-ascendante)",
+                "L'IK-6 (intonation suraiguë)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'IK-1 est la mélodie déclarative neutre : le ton s'abaisse sur la syllabe accentuée du centre intonatif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment évolue la hauteur de voix sur le centre intonatif dans une phrase en IK-1 ?",
+              "options": [
+                "La voix descend sur la syllabe accentuée du mot clé",
+                "La voix monte de façon abrupte",
+                "La voix oscille rapidement",
+                "La voix devient inaudible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'IK-1 se caractérise par une baisse de ton sur la voyelle accentuée du mot portant le sens principal."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « Утром мы пьём чай », quel élément pose le cadre contextuel (le thème) ?",
+              "options": [
+                "Утром (le matin)",
+                "Мы (nous)",
+                "Пьём (buvons)",
+                "Чай (thé)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Утром » en début d'énoncé sert de cadre de référence temporel connu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la phrase « Студента слушает профессор » signifie-t-elle que le professeur écoute l'étudiant ?",
+              "options": [
+                "Parce que « студента » est à l'accusatif et « профессор » au nominatif",
+                "Parce que le professeur est toujours plus âgé",
+                "Parce que le verbe s'accorde avec le premier mot",
+                "C'est un contre-sens, c'est l'étudiant qui écoute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la désinence casuelle qui détermine la fonction : « профессор » (nominatif = sujet), « студента » (accusatif = COD)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Анна любит музыку » ?",
+              "options": [
+                "Anna aime la musique",
+                "La musique aime Anna",
+                "Anna joue de la musique",
+                "Anna écoute de la musique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure SVO classique : « Анна » (sujet), « любит » (verbe), « музыку » (accusatif COD)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases indiquent toutes que c'est le professeur qui écoute l'étudiant ?",
+              "options": [
+                "Профессор слушает студента",
+                "Студента слушает профессор",
+                "Слушает профессор студента",
+                "Студент слушает профессора"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Dans les 3 premières phrases, professeur est au nominatif et студента à l'accusatif. Dans la 4e, les rôles sont inversés."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La négation simple avec « не » et « нет »",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Où place-t-on la particule négative « не » pour nier une action verbale ?",
+              "options": [
+                "Juste devant le verbe",
+                "Juste après le verbe",
+                "En toute fin de phrase",
+                "Entre le complément et le sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La particule négative « не » se place immédiatement devant le verbe qu'elle modifie (не знаю, не читает)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Je ne comprends pas » en russe ?",
+              "options": [
+                "Я не понимаю",
+                "Я нет понимаю",
+                "Я понимаю не",
+                "Не я понимаю"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Не » précède le verbe : « Я не понимаю »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le rôle du mot « нет » ?",
+              "options": [
+                "Répondre « non » ou exprimer l'absence",
+                "Nier un verbe au sein d'une phrase affirmative",
+                "Remplacer les adjectifs possessifs",
+                "Introduire une comparaison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Нет » s'utilise comme mot-phrase de réponse (« non ») ou pour signifier l'inexistence/absence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Non, je ne travaille pas aujourd'hui » ?",
+              "options": [
+                "Нет, я сегодня не работаю",
+                "Не, я сегодня нет работаю",
+                "Нет, я сегодня ни работаю",
+                "Ни, я сегодня не работаю"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Нет » pour le mot-phrase « non », et « не » devant le verbe : « Нет, я сегодня не работаю »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie le mot « нет » employé seul en réponse à une question ?",
+              "options": ["Non", "Oui", "Peut-être", "Certainement"],
+              "correctAnswers": [0],
+              "explanation": "« Нет » est l'équivalent direct du mot français « non »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Ce n'est pas mon manteau » ?",
+              "options": [
+                "Это не моё пальто",
+                "Это нет моё пальто",
+                "Это ни моё пальто",
+                "Не это моё пальто"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La particule « не » porte sur le possessif : « Это не моё пальто »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « Он не студент, а школьник », que nie la particule « не » ?",
+              "options": [
+                "L'attribut « студент » (négation partielle)",
+                "Toute la proposition de manière globale",
+                "Le mot « школьник »",
+                "Le pronom personnel « он »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Placé devant « студент », « не » nie spécifiquement cette qualité pour opposer « а школьник »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Elle ne parle pas russe » ?",
+              "options": [
+                "Она не говорит по-русски",
+                "Она нет говорит по-русски",
+                "Она говорит не по-русски",
+                "Она ни говорит по-русски"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Не » précède le verbe : « Она не говорит по-русски »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie l'expression courante « Я не знаю » ?",
+              "options": [
+                "Je ne sais pas",
+                "Je ne veux pas",
+                "Je ne peux pas",
+                "Je ne vois pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe « знать » signifie savoir/connaître : « Я не знаю » = « Je ne sais pas »."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases négatives sont correctement construites en russe ?",
+              "options": [
+                "Мы не смотрим телевизор",
+                "Это не правда",
+                "Нет, он не дома",
+                "Я нет люблю кофе"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les trois premières phrases utilisent correctement « не » et « нет ». « Я нет люблю » est une faute ; il faut dire « Я не люблю »."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les phrases interrogatives avec mot interrogatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif utilise-t-on pour demander « Qui ? » ?",
+              "options": ["Кто", "Что", "Где", "Как"],
+              "correctAnswers": [0],
+              "explanation": "« Кто » interroge sur les êtres animés (qui)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif utilise-t-on pour demander « Quoi ? / Que ? » ?",
+              "options": ["Что", "Кто", "Куда", "Когда"],
+              "correctAnswers": [0],
+              "explanation": "« Что » (prononcé « chto » avec un son ch) interroge sur les inanimés (quoi / que)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif interroge sur le lieu où l'on est (statique) ?",
+              "options": ["Где", "Куда", "Откуда", "Зачем"],
+              "correctAnswers": [0],
+              "explanation": "« Где » signifie « où » sans idée de déplacement (ex: Где ты?)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif interroge sur la direction où l'on va (avec mouvement) ?",
+              "options": ["Куда", "Где", "Откуда", "Почему"],
+              "correctAnswers": [0],
+              "explanation": "« Куда » signifie « où / vers où » avec verbe de mouvement (ex: Куда ты идёшь?)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif correspond à « Quand ? » en russe ?",
+              "options": ["Когда", "Куда", "Как", "Сколько"],
+              "correctAnswers": [0],
+              "explanation": "« Когда » exprime l'interrogation temporelle (quand)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif correspond à « Pourquoi ? » (pour quelle cause) ?",
+              "options": ["Почему", "Зачем", "Потому что", "Как"],
+              "correctAnswers": [0],
+              "explanation": "« Почему » interroge sur la cause (« pourquoi »). « Зачем » interroge sur le but (« dans quelle intention »)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif signifie « Comment ? » ?",
+              "options": ["Как", "Где", "Кто", "Что"],
+              "correctAnswers": [0],
+              "explanation": "« Как » est l'adverbe interrogatif de manière (comment)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Qui est-ce ? » en russe ?",
+              "options": ["Кто это?", "Что это?", "Где это?", "Как это?"],
+              "correctAnswers": [0],
+              "explanation": "Pour identifier une personne : « Кто это? »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Qu'est-ce que c'est ? » pour une chose ?",
+              "options": ["Что это?", "Кто это?", "Куда это?", "Когда это?"],
+              "correctAnswers": [0],
+              "explanation": "Pour identifier une chose : « Что это? »."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels mots interrogatifs portent sur l'espace et les déplacements ?",
+              "options": [
+                "Где (où, lieu)",
+                "Куда (vers où, direction)",
+                "Откуда (d'où, provenance)",
+                "Когда (quand, temps)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Где, куда et откуда interrogent sur le lieu et l'espace. Когда interroge sur le temps."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "L'interrogation sans mot interrogatif (l'intonation IK-3)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment transforme-t-on « Ты студент » en question sans changer l'ordre des mots ?",
+              "options": [
+                "En utilisant l'intonation interrogative IK-3",
+                "En inversant obligatoirement le verbe et le sujet",
+                "En ajoutant une formule équivalente à « est-ce que »",
+                "En modifiant la désinence du nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En russe, l'intonation IK-3 suffit à transformer une phrase déclarative en question totale sans mot interrogatif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle courbe mélodique caractérise l'IK-3 sur le mot interrogé ?",
+              "options": [
+                "Une montée nette et abrupte de la hauteur de voix",
+                "Une chute brutale de la voix vers les graves",
+                "Un ton parfaitement monotone",
+                "Un chuchotement prolongé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'IK-3 se caractérise par une montée brusque de la voix sur la voyelle accentuée du centre intonatif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans « Ты читаешь книгу? », si la voix monte sur « читаешь », sur quoi porte la question ?",
+              "options": [
+                "Sur l'action (est-ce bien en train de lire que tu es ?)",
+                "Sur la nature de l'objet (est-ce un livre ou un journal ?)",
+                "Sur la personne (est-ce toi ou quelqu'un d'autre ?)",
+                "Sur le prix du livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le centre intonatif en IK-3 indique précisément l'élément soumis à confirmation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « Ты читаешь книгу? », si la voix monte sur « книгу », sur quoi porte la question ?",
+              "options": [
+                "Sur l'objet (est-ce bien un livre que tu lis ?)",
+                "Sur la capacité à lire",
+                "Sur le lieu de lecture",
+                "Sur l'heure de la journée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En plaçant le pic mélodique sur « книгу », le locuteur interroge sur l'objet lu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle particule interrogative s'emploie parfois dans un registre plus formel pour poser une question totale ?",
+              "options": ["Ли", "Же", "Ведь", "То"],
+              "correctAnswers": [0],
+              "explanation": "La particule « ли » s'emploie pour interroger (ex: Знаете ли вы?)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Où se place la particule « ли » dans la phrase interrogative ?",
+              "options": [
+                "Juste après le premier mot de la phrase sur lequel porte la question",
+                "Au tout début de la phrase",
+                "En toute fin de phrase",
+                "Entre le sujet et le complément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ли » est une enclitique qui se place immédiatement après le premier mot de l'interrogation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans la conversation courante, la particule « ли » est-elle indispensable ?",
+              "options": [
+                "Non, l'intonation IK-3 est largement suffisante",
+                "Oui, la phrase serait incompréhensible sans elle",
+                "Oui, son omission est une faute de grammaire",
+                "Uniquement lorsqu'on vouvoie son interlocuteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intonation IK-3 est le moyen le plus naturel et universel de poser une question fermée à l'oral."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Êtes-vous prêts ? » à l'oral courant ?",
+              "options": [
+                "Вы готовы? (avec l'intonation IK-3)",
+                "Готовы ли вы есть?",
+                "Ли вы готовы?",
+                "Есть вы готовы?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Вы готовы? » avec montée de la voix sur « готовы » est la tournure usuelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « Это твой брат? » prononcée avec l'intonation IK-3 ?",
+              "options": [
+                "Est-ce ton frère ?",
+                "C'est ton frère.",
+                "Voici ton frère.",
+                "Quel frère as-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intonation montante transforme l'énoncé en question fermée : « Est-ce ton frère ? »."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur l'intonation interrogative IK-3 sont vraies ?",
+              "options": [
+                "L'ordre des mots peut rester identique à celui de l'affirmation",
+                "Le mot visé par l'interrogation porte une brusque montée de voix",
+                "Déplacer le centre mélodique modifie la nuance de la question",
+                "L'inversion du sujet et du verbe est obligatoire à l'écrit"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'IK-3 permet de poser une question sans modifier l'ordre des mots ni inverser le sujet et le verbe."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Exprimer la possession avec « У меня есть... »",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la structure de base la plus courante pour dire « J'ai... » en russe ?",
+              "options": [
+                "У меня есть...",
+                "Я имею...",
+                "Для меня есть...",
+                "Мой есть..."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tournure standard pour exprimer la possession au présent est « У + génitif + есть + nominatif »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel cas grammatical régit la préposition « у » pour désigner le possesseur ?",
+              "options": [
+                "Le génitif",
+                "L'accusatif",
+                "Le datif",
+                "L'instrumental"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La préposition « у » exige toujours le cas génitif (у меня, у тебя, у Антона)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À quel cas grammatical se met l'objet possédé dans « У меня есть... » ?",
+              "options": [
+                "Au nominatif",
+                "À l'accusatif",
+                "Au génitif",
+                "Au locatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'objet possédé est le sujet grammatical de la phrase, il est donc au nominatif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Tu as une voiture » en russe ?",
+              "options": [
+                "У тебя есть машина",
+                "У тебе есть машина",
+                "У тобой есть машина",
+                "Ты имеешь машина"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pronom « ты » devient « тебя » au génitif : « У тебя есть машина »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Nous avons un chien » en russe ?",
+              "options": [
+                "У нас есть собака",
+                "У нам есть собака",
+                "У нами есть собака",
+                "Мы есть собака"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pronom « мы » devient « нас » au génitif : « У нас есть собака »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « Ivan a un vélo » ?",
+              "options": [
+                "У Ивана есть велосипед",
+                "У Иван есть велосипед",
+                "Иван есть велосипед",
+                "К Ивану есть велосипед"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Иван » prend la désinence -а du génitif masculin : « У Ивана есть велосипед »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on « Anna a un chat » ?",
+              "options": [
+                "У Анны есть кот",
+                "У Анна есть кот",
+                "У Анне есть кот",
+                "Анна имеет кот"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Анна » prend la désinence -ы du génitif féminin : « У Анны есть кот »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quand omet-on généralement le mot « есть » dans la tournure de possession ?",
+              "options": [
+                "Quand l'attention porte sur la qualité ou description de l'objet (ex: У меня новая машина)",
+                "Quand l'objet est un animal domestique",
+                "Quand le possesseur est au pluriel",
+                "Uniquement dans les phrases interrogatives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si l'objet est qualifié par un adjectif descriptif, l'existence de l'objet est admise et « есть » est fréquemment omis."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Ils ont une grande maison » (accent sur la taille) ?",
+              "options": [
+                "У них большой дом",
+                "Они имеют большой дом",
+                "У ими есть большой дом",
+                "У ихний большой дом"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accent portant sur la description, on omet « есть » : « У них большой дом »."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases expriment correctement la possession en russe ?",
+              "options": [
+                "У меня есть брат",
+                "У сестры есть кошка",
+                "У нас новая квартира",
+                "Я имею один брат"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les trois premières expressions respectent la syntaxe possessive russe. « Я имею... » est un calque artificiel à éviter."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "La phrase impersonnelle et adverbes de modalité/état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on l'état climatique « Il fait froid » en russe ?",
+              "options": [
+                "Холодно",
+                "Он холодный",
+                "Есть холодно",
+                "Оно холодно"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le russe emploie un adverbe d'état impersonnel terminé en -о sans sujet : « Холодно »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le mot prédicatif « можно » ?",
+              "options": [
+                "On peut / il est permis",
+                "Il est interdit / impossible",
+                "Il faut absolument",
+                "Il fait très chaud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Можно » exprime la possibilité ou la permission (on peut)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie le mot prédicatif « нельзя » ?",
+              "options": [
+                "Il est interdit / on ne peut pas",
+                "C'est facile",
+                "Il est recommandé",
+                "On a le droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Нельзя » exprime l'interdiction ou l'impossibilité (on ne peut pas / il ne faut pas)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot prédicatif exprime l'obligation ou la nécessité (« il faut ») ?",
+              "options": ["Надо (ou нужно)", "Можно", "Нельзя", "Хорошо"],
+              "correctAnswers": [0],
+              "explanation": "« Надо » ou « нужно » traduisent « il faut / il est nécessaire »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À quel cas grammatical met-on la personne qui éprouve une sensation dans une phrase impersonnelle ?",
+              "options": [
+                "Au datif",
+                "Au génitif",
+                "À l'accusatif",
+                "Au nominatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bénéficiaire ou l'expérimentateur de l'état se met au datif (мне, тебе, ему, ей...)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on « J'ai froid » (littéralement : à moi [il fait] froid) ?",
+              "options": [
+                "Мне холодно",
+                "Я холодно",
+                "У меня холодно",
+                "Меня холодно"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sujet d'état se met au datif : « Мне холодно »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment demande-t-on poliment « Peut-on entrer ? » ?",
+              "options": [
+                "Можно войти?",
+                "Надо войти?",
+                "Нельзя войти?",
+                "Холодно войти?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Можно войти? » est la formule rituelle pour demander la permission d'entrer."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Il est interdit de fumer ici » ?",
+              "options": [
+                "Здесь нельзя курить",
+                "Здесь можно курить",
+                "Здесь надо курить",
+                "Здесь жарко курить"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Нельзя » exprime l'interdiction : « Здесь нельзя курить »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « Здесь очень интересно » ?",
+              "options": [
+                "C'est très intéressant ici",
+                "Ici tout est difficile",
+                "On s'ennuie beaucoup ici",
+                "Ici il fait très sombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Интересно » est l'adverbe d'état impersonnel signifiant « [c'est] intéressant »."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels termes sont des prédicats impersonnels exprimant une modalité ou un état ?",
+              "options": [
+                "Можно (on peut)",
+                "Надо (il faut)",
+                "Тепло (il fait bon/chaud)",
+                "Очень (très)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Можно, надо et тепло sont des mots prédicatifs servant de noyau à des phrases impersonnelles. Очень est un simple adverbe d'intensité."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "La coordination simple (и, а, но)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle conjonction utilise-t-on pour une addition pure et simple (« et ») ?",
+              "options": ["И", "А", "Но", "Или"],
+              "correctAnswers": [0],
+              "explanation": "La conjonction « и » marque la liaison ou l'addition sans opposition."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle conjonction exprime une opposition nette (« mais ») ?",
+              "options": ["Но", "И", "Да", "Ли"],
+              "correctAnswers": [0],
+              "explanation": "« Но » exprime une contradiction ou une restriction (« mais »)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la valeur propre de la conjonction « а » ?",
+              "options": [
+                "Elle marque un contraste, une mise en regard ou une nuance (« et / quant à / mais »)",
+                "Elle exprime une cause absolue (« car »)",
+                "Elle marque une conséquence stricte (« donc »)",
+                "Elle est un synonyme exact de « и » sans nuance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« А » sert à contraster deux faits ou deux sujets mis en parallèle sans opposition agressive."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « Я говорю по-французски, ... он говорит по-русски ».",
+              "options": ["А", "И", "Но", "Что"],
+              "correctAnswers": [0],
+              "explanation": "On met en contraste deux personnes faisant des actions distinctes : « а » est requis."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « Я хочу пойти в кино, ... у меня нет времени » (opposition : mais).",
+              "options": ["Но", "И", "А", "Или"],
+              "correctAnswers": [0],
+              "explanation": "Il y a un obstacle empêchant l'action, l'opposition forte « но » s'impose."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel signe de ponctuation doit obligatoirement précéder « а » et « но » dans une phrase complexe ?",
+              "options": ["Une virgule", "Un point", "Un tiret", "Aucun signe"],
+              "correctAnswers": [0],
+              "explanation": "En russe, la virgule est obligatoire devant les conjonctions d'opposition et de contraste comme « а » et « но »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « Мама ... папа дома » (addition simple).",
+              "options": ["И", "А", "Но", "Если"],
+              "correctAnswers": [0],
+              "explanation": "Pour associer deux sujets dans une même situation : « Мама и папа дома »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Это не чай, а кофе », quel est le rôle de « а » ?",
+              "options": [
+                "Rectifier une négation (« ce n'est pas du thé, mais du café »)",
+                "Additionner le thé et le café",
+                "Poser une interrogation",
+                "Indiquer une heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après une négation, la formule « не..., а... » exprime la rectification (« non pas..., mais bien... »)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la question usuelle « А ты? » ?",
+              "options": [
+                "Et toi ? (Et quant à toi ?)",
+                "Qui es-tu ?",
+                "Pourquoi toi ?",
+                "Es-tu là ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« А ты? » renvoie la question à son interlocuteur par contraste."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent correctement la conjonction « а » pour contraster deux éléments ?",
+              "options": [
+                "Антон учится, а Анна работает",
+                "Это не карандаш, а ручка",
+                "Я дома, а где ты?",
+                "Мама а папа гуляют в парке"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les 3 premières phrases illustrent un contraste, une rectification ou un renvoi. La 4e est fausse car l'addition exige « и » (Мама и папа)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Les verbes du 1er groupe au présent",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison d'infinitif la plus commune des verbes du 1er groupe ?",
+              "options": ["-ать (ou -ять)", "-ить", "-ти", "-чь"],
+              "correctAnswers": [0],
+              "explanation": "La plupart des verbes réguliers du premier groupe se terminent par -ать ou -ять à l'infinitif (читать, знать, понимать)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment se conjugue « читать » (lire) avec le pronom « я » au présent ?",
+              "options": ["Я читаю", "Я читаешь", "Я читает", "Я читают"],
+              "correctAnswers": [0],
+              "explanation": "La 1re personne du singulier des verbes en -ать se termine en -ю : « Я читаю »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment se conjugue « читать » avec « ты » au présent ?",
+              "options": ["Ты читаешь", "Ты читает", "Ты читаем", "Ты читаете"],
+              "correctAnswers": [0],
+              "explanation": "La désinence de 2e personne du singulier du 1er groupe est -ешь : « Ты читаешь »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment se conjugue « понимать » (comprendre) avec « он/она » ?",
+              "options": [
+                "Он понимает",
+                "Он понимаю",
+                "Он понимаешь",
+                "Он понимают"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La 3e personne du singulier du 1er groupe prend -ет : « Он понимает »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la désinence de 1re personne du pluriel (« мы ») pour le 1er groupe ?",
+              "options": ["-ем", "-ете", "-ут", "-ешь"],
+              "correctAnswers": [0],
+              "explanation": "Avec « мы », le verbe prend la désinence -ем (мы читаем, мы знаем)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment se conjugue « знать » (savoir) avec « вы » ?",
+              "options": ["Вы знаете", "Вы знаем", "Вы знают", "Вы знаешь"],
+              "correctAnswers": [0],
+              "explanation": "Avec « вы », la désinence est -ете : « Вы знаете »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment se conjugue « работать » (travailler) avec « они » ?",
+              "options": [
+                "Они работают",
+                "Они работает",
+                "Они работаем",
+                "Они работаете"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La 3e personne du pluriel du 1er groupe prend -ют : « Они работают »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « Мы хорошо ... по-русски » (verbe понимать).",
+              "options": ["Понимаем", "Понимаю", "Понимает", "Понимают"],
+              "correctAnswers": [0],
+              "explanation": "Avec « мы », la terminaison est -ем : « Мы хорошо понимаем по-русски »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « Что ты ...? » (verbe делать).",
+              "options": ["Делаешь", "Делаете", "Делает", "Делаем"],
+              "correctAnswers": [0],
+              "explanation": "Avec « ты », la forme correcte est « делаешь »."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles formes verbales appartiennent à la conjugaison au présent de « знать » (savoir) ?",
+              "options": ["Я знаю", "Мы знаем", "Они знают", "Он знаит"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Я знаю, мы знаем et они знают sont correctes. La 3e personne est « он знает » (avec e et non и)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan de syntaxe : la phrase simple complète",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans « Студент читает новую книгу », quelle est la fonction grammaticale de « новую книгу » ?",
+              "options": [
+                "Complément d'objet direct à l'accusatif",
+                "Sujet au nominatif",
+                "Complément de lieu au prépositionnel",
+                "Attribut du sujet au datif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Новую книгу » est le COD à l'accusatif singulier du verbe transitif « читать »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Où habitez-vous ? » en vouvoyant son interlocuteur ?",
+              "options": [
+                "Где вы живёте?",
+                "Куда вы живёте?",
+                "Откуда вы живёте?",
+                "Кто вы живёте?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'interrogation statique de lieu demande « Где » : « Где вы живёте? »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Aujourd'hui il fait beau et nous nous promenons » ?",
+              "options": [
+                "Сегодня хорошая погода, и мы гуляем",
+                "Сегодня есть хорошая погода, но мы гуляем",
+                "Погода сегодня холодно, а мы гуляем",
+                "Сегодня мы погода и гуляем"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phrase nominale « Сегодня хорошая погода » est coordonnée par « и » à la proposition verbale « мы гуляем »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « Мой брат работает в Москве », quel est le sujet grammatical ?",
+              "options": ["Мой брат", "Работает", "В Москве", "Москве"],
+              "correctAnswers": [0],
+              "explanation": "« Мой брат » (au nominatif) régit l'accord du verbe « работает »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase signifie « Qui comprend cette question ? » ?",
+              "options": [
+                "Кто понимает этот вопрос?",
+                "Что понимает этот вопрос?",
+                "Где понимает этот вопрос?",
+                "Как понимает этот вопрос?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Кто » interroge sur la personne : « Кто понимает этот вопрос? »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on « J'écoute de la musique classique » ?",
+              "options": [
+                "Я слушаю классическую музыку",
+                "Я слушает классическая музыка",
+                "Я слушать классическую музыку",
+                "Меня слушает классическая музыка"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Слушать » régit l'accusatif : « Я слушаю классическую музыку »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « Сейчас мы обедаем дома » ?",
+              "options": [
+                "Maintenant nous déjeunons à la maison",
+                "Hier nous avons dîné dehors",
+                "Demain nous mangerons au restaurant",
+                "Nous préparons le repas chez nous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Сейчас » (maintenant), « обедаем » (déjeunons), « дома » (à la maison)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Ce film est très intéressant » ?",
+              "options": [
+                "Этот фильм очень интересный",
+                "Это фильм очень интересное",
+                "Эта фильм очень интересная",
+                "Этот фильм есть интересное"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Фильм » étant masculin, l'adjectif et le démonstratif s'accordent au masculin sans copule."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle proposition constitue une réponse adaptée à « Где Антон? » ?",
+              "options": [
+                "Он сейчас на работе",
+                "Он вчера работал",
+                "Он очень высокий",
+                "Он не знает Антона"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Где » demande un lieu présent : « Он сейчас на работе » (Il est au travail)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont des phrases simples russes grammaticalement correctes ?",
+              "options": [
+                "Утром я пью чай и читаю новости",
+                "Моя сестра учится в университете",
+                "Почему ты не отвечаешь на письмо?",
+                "Я есть читать книга на стол"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les 3 premières sont des phrases simples modèles. La 4e est agrammaticale en russe contemporain."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

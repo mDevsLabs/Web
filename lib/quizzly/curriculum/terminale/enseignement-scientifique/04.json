@@ -1,0 +1,2688 @@
+{
+  "id": "terminale-enseignement-scientifique-04",
+  "year": "terminale",
+  "subject": "enseignement-scientifique",
+  "title": "La matière et les rayonnements",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Atomes et noyaux",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Découverte et nature de la radioactivité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels scientifiques ont joué un rôle pionnier majeur dans la découverte de la radioactivité ?",
+              "options": [
+                "Henri Becquerel",
+                "Marie Curie",
+                "Isaac Newton",
+                "James Clerk Maxwell"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Henri Becquerel a découvert la radioactivité en 1896, et Pierre et Marie Curie ont isolé le polonium et le radium."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel minéral d'uranium a permis à Becquerel d'observer pour la première fois le phénomène de radioactivité ?",
+              "options": [
+                "La pechblende (sel d'uranyle)",
+                "La bauxite",
+                "Le quartz pur",
+                "La pyrite de fer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Becquerel a utilisé des sels d'uranium posés sur des plaques photographiques vierges enveloppées de papier noir."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la radioactivité à l'échelle d'un noyau individuel ?",
+              "options": [
+                "Un phénomène aléatoire et spontané",
+                "Une réaction purement déterministe",
+                "Un processus déclenché par la température ambiante",
+                "Une transformation provoquée par des réactions chimiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La désintégration radioactive est spontanée, inéluctable et strictement aléatoire au niveau microscopique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un isotope en physique nucléaire ?",
+              "options": [
+                "Un noyau de même numéro atomique Z mais de nombre de nucléons A différent",
+                "Un atome ayant perdu ou gagné un ou plusieurs électrons",
+                "Un noyau ayant le même nombre de neutrons mais un nombre de protons différent",
+                "Une molécule possédant des liaisons chimiques covalentes polaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des isotopes partagent le même numéro atomique Z (même nombre de protons) mais ont un nombre de neutrons différent (donc A différent)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel rayonnement électromagnétique de très haute énergie accompagne souvent les désintégrations radioactives ?",
+              "options": [
+                "Le rayonnement gamma",
+                "Les ondes radio",
+                "Le rayonnement infrarouge",
+                "La lumière visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rayonnement gamma est une onde électromagnétique de haute fréquence émise lors de la désexcitation d'un noyau fils."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans le symbole d'un noyau X noté avec A en haut et Z en bas, que représente le nombre Z ?",
+              "options": [
+                "Le nombre de protons (numéro atomique)",
+                "Le nombre total de neutrons",
+                "Le nombre total de nucléons",
+                "La charge électrique totale en coulombs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Z est le numéro atomique, représentant le nombre de protons dans le noyau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle force fondamentale maintient la cohésion des protons et neutrons au sein du noyau atomique ?",
+              "options": [
+                "L'interaction forte",
+                "L'interaction gravitationnelle",
+                "La force électrostatique répulsive",
+                "La force de Coriolis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'interaction forte surmonte la répulsion coulombienne entre les protons et assure la stabilité nucléaire à très courte portée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle particule élémentaire neutre a été découverte par James Chadwick en 1932 ?",
+              "options": ["Le neutron", "Le positon", "L'électron", "Le muon"],
+              "correctAnswers": [0],
+              "explanation": "James Chadwick a mis en évidence le neutron, particule neutre de masse voisine de celle du proton."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la radioactivité naturelle ?",
+              "options": [
+                "La radioactivité issue des isotopes présents naturellement sur Terre et dans le cosmos",
+                "Une radioactivité créée uniquement dans les centrales nucléaires",
+                "Une forme d'énergie produite exclusivement par les orages",
+                "L'émission de lumière par les végétaux chlorophylliens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La radioactivité naturelle provient de radionucléides telluriques (radon, uranium) et du rayonnement cosmique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel gaz radioactif naturel issu de la chaîne de l'uranium s'accumule fréquemment dans les sous-sols ?",
+              "options": [
+                "Le radon 222",
+                "L'argon 40",
+                "Le xénon 133",
+                "Le néon 20"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le radon 222 est un gaz radioactif émetteur alpha qui s'infiltre dans les habitations depuis les sols granitiques."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les différents types de désintégration",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles particules peuvent constituer un rayonnement issu directement d'une désintégration nucléaire bêta ?",
+              "options": [
+                "Un électron (bêta moins)",
+                "Un positon (bêta plus)",
+                "Un noyau d'hélium 4",
+                "Un photon de faible longueur d'onde"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La désintégration bêta émet soit un électron (bêta-), soit son antiparticule, un positon (bêta+)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "De quoi est exactement constituée une particule émise lors d'une désintégration alpha ?",
+              "options": [
+                "D'un noyau d'hélium 4 (deux protons et deux neutrons)",
+                "D'un neutron isolé à haute vitesse",
+                "D'un électron issu du cortège électronique",
+                "D'un photon ultra-énergétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une particule alpha est un noyau d'hélium 4 comportant 2 protons et 2 neutrons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lors d'une désintégration alpha d'un noyau père (A, Z), que deviennent les nombres A et Z du noyau fils ?",
+              "options": [
+                "A diminue de 4 et Z diminue de 2",
+                "A reste constant et Z augmente de 1",
+                "A diminue de 2 et Z diminue de 4",
+                "A augmente de 2 et Z augmente de 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'émission d'un noyau d'hélium (A=4, Z=2) impose que le noyau fils ait pour caractéristiques A-4 et Z-2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle transformation interne au noyau se produit lors d'une radioactivité bêta moins ?",
+              "options": [
+                "Un neutron se transforme en proton avec émission d'un électron",
+                "Un proton se transforme en neutron avec émission d'un positon",
+                "Deux protons fusionnent pour créer un hélium",
+                "Le cortège électronique perd deux couches externes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En radioactivité bêta-, un neutron se convertit en proton en expulsant un électron et un antineutrino."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle transformation interne au noyau se produit lors d'une radioactivité bêta plus ?",
+              "options": [
+                "Un proton se transforme en neutron avec émission d'un positon",
+                "Un neutron se transforme en proton avec émission d'un électron",
+                "Un proton absorbe un neutron sans émission",
+                "Le noyau se scinde en deux fragments égaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En radioactivité bêta+, un proton excédentaire se convertit en neutron en émettant un positon (et un neutrino)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que stipulent les lois de conservation de Soddy dans toute équation de réaction nucléaire ?",
+              "options": [
+                "La conservation du nombre de nucléons A et de la charge électrique totale Z",
+                "La conservation exclusive de la masse macroscopique totale",
+                "La conservation de la vitesse moyenne de chaque particule",
+                "La conservation du volume géométrique des noyaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lois de Soddy imposent la conservation du nombre total de nucléons A et de la charge Z globale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel matériau suffit généralement pour stopper complètement un faisceau de particules alpha ?",
+              "options": [
+                "Une simple feuille de papier ou la couche superficielle de la peau",
+                "Une plaque de plomb de 10 cm d'épaisseur",
+                "Une épaisse cuve d'eau lourde",
+                "Un blindage magnétique supraconducteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les particules alpha ont un très faible pouvoir de pénétration et sont arrêtées par une feuille de papier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel type d'écran permet d'atténuer efficacement un rayonnement gamma ?",
+              "options": [
+                "Un mur épais de béton dense ou un blindage en plomb",
+                "Une mince feuille d'aluminium de 1 mm",
+                "Un tissu en coton fin",
+                "Une feuille de carton ondulé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rayonnement gamma étant très pénétrant, il nécessite des matériaux denses comme le plomb ou le béton pour être absorbé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que représente l'astérisque dans la notation X* d'un noyau ?",
+              "options": [
+                "Le noyau est dans un état excité et va libérer de l'énergie",
+                "Le noyau possède une charge électrique nette positive",
+                "L'atome est un cation doublement ionisé",
+                "Le noyau a capturé un électron libre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'astérisque signale un niveau d'énergie excité qui se désexcite en émettant un photon gamma."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lors d'une désintégration bêta moins, que devient le numéro atomique Z du noyau fils ?",
+              "options": [
+                "Il augmente de 1",
+                "Il diminue de 1",
+                "Il diminue de 2",
+                "Il reste rigoureusement inchangé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque Z(fils) + Z(électron) = Z(père) avec Z(électron) = -1, le numéro Z du fils vaut Z + 1."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Loi de décroissance radioactive et demi-vie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies concernant la demi-vie (ou période radioactive) d'un isotope ?",
+              "options": [
+                "C'est la durée au bout de laquelle la moitié des noyaux radioactifs initiaux s'est désintégrée",
+                "Elle est caractéristique d'un radionucléide donné et indépendante des conditions extérieures",
+                "Elle diminue fortement si l'on chauffe l'échantillon à plus de 1000 °C",
+                "Elle dépend de la quantité initiale de matière présente dans l'échantillon"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La demi-vie est constante pour un isotope donné et ne dépend ni de la température, ni de la pression, ni de la masse initiale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle fraction du nombre initial de noyaux radioactifs subsiste après une durée égale à deux demi-vies (2 T1/2) ?",
+              "options": [
+                "Un quart (25 %)",
+                "La moitié (50 %)",
+                "Trois quarts (75 %)",
+                "Zéro (0 %)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après 1 demi-vie il reste 1/2 des noyaux, et après 2 demi-vies il en reste (1/2) * (1/2) = 1/4 (25 %)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est l'unité légale de l'activité d'une source radioactive dans le Système International ?",
+              "options": [
+                "Le becquerel (Bq)",
+                "Le sievert (Sv)",
+                "Le gray (Gy)",
+                "Le curie (Ci)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'activité se mesure en becquerels (Bq), où 1 Bq correspond à une désintégration par seconde."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la forme mathématique de la loi d'évolution temporelle du nombre de noyaux N(t) ?",
+              "options": [
+                "Une fonction exponentielle décroissante N(t) = N0 * exp(-lambda * t)",
+                "Une fonction affine linéaire N(t) = N0 - k * t",
+                "Une fonction logarithmique N(t) = N0 * ln(t)",
+                "Une fonction polynomiale du second degré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La désintégration radioactive suit une loi exponentielle décroissante caractérisée par la constante radioactive lambda."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle relation relie la demi-vie T1/2 et la constante radioactive lambda ?",
+              "options": [
+                "T1/2 = ln(2) / lambda",
+                "T1/2 = lambda * ln(2)",
+                "T1/2 = 1 / (2 * lambda)",
+                "T1/2 = exp(lambda)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En posant N(T1/2) = N0/2, on obtient exp(-lambda * T1/2) = 1/2, d'où T1/2 = ln(2) / lambda."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un échantillon possède une activité de 800 Bq. Quelle sera son activité après 3 demi-vies ?",
+              "options": ["100 Bq", "200 Bq", "400 Bq", "50 Bq"],
+              "correctAnswers": [0],
+              "explanation": "Après 1 demi-vie : 400 Bq ; après 2 demi-vies : 200 Bq ; après 3 demi-vies : 100 Bq (division par 2^3 = 8)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'activité A(t) d'un échantillon radioactif est proportionnelle à :",
+              "options": [
+                "Au nombre N(t) de noyaux radioactifs présents à cet instant",
+                "Au volume total occupé par l'échantillon",
+                "À la température absolue en kelvins",
+                "À la pression atmosphérique extérieure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'activité est donnée par la relation fondamentale A(t) = lambda * N(t)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si la demi-vie de l'iode 131 est d'environ 8 jours, combien de temps faut-il pour diviser son activité par 16 ?",
+              "options": ["32 jours", "16 jours", "24 jours", "64 jours"],
+              "correctAnswers": [0],
+              "explanation": "16 = 2^4, il faut donc 4 demi-vies : 4 * 8 jours = 32 jours."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la décroissance radioactive est-elle qualifiée de processus à temps continu en physique macroscopique ?",
+              "options": [
+                "Parce que le nombre de noyaux est si grand que la loi statistique apparaît continue",
+                "Parce que chaque noyau prévient avant de se désintégrer",
+                "Parce que les désintégrations sont cadencées par une horloge quantique périodique",
+                "Parce que la désintégration ne s'arrête jamais même après l'infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce à la loi des grands nombres sur des milliards de noyaux, le comportement probabiliste se traduit par une courbe lisse continue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle fraction du nombre initial de noyaux radioactifs s'est désintégrée après une demi-vie ?",
+              "options": ["50 %", "25 %", "75 %", "100 %"],
+              "correctAnswers": [0],
+              "explanation": "Par définition, la moitié (50 %) des noyaux radioactifs s'est désintégrée au bout d'une demi-vie."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Datation par la radioactivité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels couples d'éléments ou isotopes sont couramment utilisés en géochronologie et archéologie ?",
+              "options": [
+                "Carbone 14 / Azote 14 (matière organique récente)",
+                "Uranium 238 / Plomb 206 (roches très anciennes)",
+                "Sodium 23 / Chlore 35 (sel marin)",
+                "Fer 56 / Cuivre 63 (métallurgie)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le carbone 14 date les restes organiques jusqu'à ~50 000 ans, et le couple uranium-plomb date les roches sur des milliards d'années."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la demi-vie approximative du carbone 14 ?",
+              "options": [
+                "Environ 5 730 ans",
+                "Environ 4,5 milliards d'années",
+                "Environ 30 jours",
+                "Environ 100 ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La période radioactive du carbone 14 est d'environ 5 730 ans, ce qui en fait un chronomètre idéal pour l'archéologie préhistorique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi le rapport isotopique 14C / 12C reste-t-il constant dans un organisme vivant ?",
+              "options": [
+                "L'organisme échange en permanence du carbone avec son environnement (alimentation, respiration)",
+                "Le carbone 14 ne se désintègre pas à l'intérieur d'un être vivant",
+                "La photosynthèse détruit systématiquement les noyaux de carbone 14",
+                "L'ADN bloque la décroissance radioactive naturelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tant qu'un être vivant est en vie, les échanges constants avec l'atmosphère maintiennent un rapport 14C/12C constant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que se passe-t-il pour le rapport 14C / 12C après la mort d'un organisme biologique ?",
+              "options": [
+                "Il diminue au cours du temps selon la loi de décroissance radioactive",
+                "Il augmente car le carbone 12 disparaît plus vite",
+                "Il reste strictement identique à l'instant de la mort",
+                "Il oscille en fonction des saisons géologiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la mort, les échanges cessent : le 14C se désintègre sans être renouvelé, donc le rapport 14C/12C décroît de manière exponentielle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la limite temporelle maximale d'utilisation de la datation par le carbone 14 ?",
+              "options": [
+                "Environ 50 000 ans",
+                "Environ 4,5 milliards d'années",
+                "Environ 500 ans",
+                "Environ 2 millions d'années"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au-delà d'environ 50 000 ans (environ 10 demi-vies), la quantité résiduelle de 14C devient trop faible pour être mesurée précisément."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle méthode permet de dater des minéraux de roches magmatiques lunaires ou terrestres très anciennes ?",
+              "options": [
+                "La méthode potassium-argon ou uranium-plomb",
+                "La datation exclusive par le carbone 14",
+                "Le comptage des électrons de valence du quartz",
+                "La pesée globale des fossiles marins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les méthodes uranium-plomb ou potassium-argon utilisent des isotopes à longue période adaptés aux échelles géologiques (milliards d'années)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans la méthode potassium 40 / argon 40, quel phénomène démarre le chronomètre lors du refroidissement d'une lave ?",
+              "options": [
+                "La solidification de la roche emprisonne le gaz argon 40 produit",
+                "L'évaporation complète du potassium sous forme gazeuse",
+                "L'activation du potassium par les rayons ultraviolets solaires",
+                "L'arrêt spontané de la radioactivité du potassium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'état liquide, l'argon s'échappe ; lors de la cristallisation, l'argon 40 radiogénique reste piégé dans le réseau cristallin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment le carbone 14 est-il produit continuellement dans la haute atmosphère terrestre ?",
+              "options": [
+                "Par collision de neutrons cosmiques avec des noyaux d'azote 14",
+                "Par la combustion des énergies fossiles dans l'industrie",
+                "Par les éruptions volcaniques sous-marines profondes",
+                "Par l'action directe des micro-ondes solaires sur l'ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les neutrons des rayons cosmiques heurtent l'azote 14 selon la réaction nucléaire : 14N + n -> 14C + p."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel âge approximatif a pu être attribué à la Terre grâce à la datation isotopique des météorites par Clair Patterson ?",
+              "options": [
+                "4,55 milliards d'années",
+                "6 000 ans",
+                "13,8 milliards d'années",
+                "65 millions d'années"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 1953, Clair Patterson a déterminé l'âge de la Terre à 4,55 milliards d'années en datant les météorites par le plomb."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour dater un objet par radioactivité, quelle condition sur le système est indispensable ?",
+              "options": [
+                "Le système doit être resté fermé (aucun apport ni fuite d'éléments parents ou fils)",
+                "L'objet doit avoir été conservé au contact direct de l'eau liquide",
+                "L'échantillon doit obligatoirement peser plus de 10 kilogrammes",
+                "Le milieu environnant doit être maintenu sous vide absolu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hypothèse du système fermé garantit que seules les désintégrations nucléaires ont modifié la proportion des isotopes."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Équivalence masse-énergie et défaut de masse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Concernant la relation d'Einstein E = m * c^2, quelles propositions sont rigoureusement exactes ?",
+              "options": [
+                "Elle établit l'équivalence entre masse au repos et énergie",
+                "c désigne la célérité de la lumière dans le vide (environ 3 * 10^8 m/s)",
+                "Elle ne s'applique qu'aux réactions chimiques de combustion",
+                "La masse d'un système isolé augmente toujours lors d'une réaction exothermique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "E = m * c^2 montre que la matière possède une énergie au repos considérable liée à la célérité de la lumière c."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le 'défaut de masse' delta(m) d'un noyau atomique au repos ?",
+              "options": [
+                "La différence entre la masse totale des nucléons isolés et la masse réelle du noyau formé",
+                "La masse perdue par évaporation des électrons périphériques",
+                "L'erreur systématique de mesure sur une balance de haute précision",
+                "La masse des neutrinos émis lors de la formation du cortège électronique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La masse d'un noyau stable est toujours inférieure à la somme des masses de ses protons et neutrons isolés : c'est le défaut de masse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on l'énergie de liaison El d'un noyau à partir de son défaut de masse delta(m) ?",
+              "options": [
+                "El = delta(m) * c^2",
+                "El = delta(m) / c",
+                "El = (1/2) * delta(m) * c^2",
+                "El = delta(m) * c"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie de liaison nucléaire est l'énergie équivalente au défaut de masse selon la formule El = delta(m) * c^2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle grandeur physique permet de comparer directement la stabilité de noyaux de tailles différentes ?",
+              "options": [
+                "L'énergie de liaison par nucléon (El / A)",
+                "L'énergie de liaison totale El",
+                "Le nombre de masse A uniquement",
+                "Le rayon géométrique du noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus l'énergie de liaison par nucléon (El/A) est élevée, plus le noyau est fortement lié et donc stable."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sur la courbe d'Aston représentant -El/A en fonction de A, quels noyaux sont situés au fond du puits de stabilité ?",
+              "options": [
+                "Les noyaux moyens comme le fer 56 et le nickel 62",
+                "Les noyaux très légers comme l'hydrogène 1",
+                "Les noyaux très lourds comme l'uranium 238",
+                "Les noyaux transuraniens artificiels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noyaux autour de A = 56-62 (fer, nickel) possèdent l'énergie de liaison par nucléon la plus élevée (~8,8 MeV/nucléon)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans toute réaction nucléaire spontanée libérant de l'énergie vers l'extérieur, que vérifient les masses totale initiale et finale ?",
+              "options": [
+                "La masse totale des produits est inférieure à la masse totale des réactifs",
+                "La masse totale des produits est strictement supérieure à celle des réactifs",
+                "La masse totale se conserve rigoureusement au microgramme près",
+                "La masse des neutrons double systématiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie libérée provient d'une perte de masse : Delta E = (m_produits - m_reactifs) * c^2 < 0."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans le Système International, si la perte de masse d'une réaction vaut 1 microgramme (10^-9 kg), quelle énergie est libérée ?",
+              "options": [
+                "9 * 10^7 joules (90 mégajoules)",
+                "3 * 10^8 joules",
+                "9 * 10^-9 joules",
+                "3 * 10^-1 joules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "E = m * c^2 = 10^-9 kg * (3 * 10^8 m/s)^2 = 10^-9 * 9 * 10^16 = 9 * 10^7 J."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle unité d'énergie est particulièrement commode et usuelle en physique subatomique et nucléaire ?",
+              "options": [
+                "L'électronvolt (eV) et le mégaélectronvolt (MeV)",
+                "Le kilowatt-heure (kWh)",
+                "La calorie alimentaire (kcal)",
+                "Le newton-mètre (N.m)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 eV correspond à 1,602 * 10^-19 J ; 1 MeV vaut 10^6 eV, échelle typique des énergies de liaison nucléaires."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que représente concrètement l'énergie de liaison d'un noyau atomique ?",
+              "options": [
+                "L'énergie minimale qu'il faut fournir au noyau pour séparer tous ses nucléons au repos",
+                "L'énergie cinétique totale des électrons orbitaux",
+                "L'énergie gravitationnelle d'attraction de la Terre sur le noyau",
+                "L'énergie thermique dégagée par le mouvement brownien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est l'énergie qu'il faut injecter pour disloquer entièrement le noyau en protons et neutrons isolés et immobiles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la variation de masse n'est-elle jamais mesurable dans une réaction chimique ordinaire ?",
+              "options": [
+                "La perte de masse associée aux énergies chimiques (quelques eV) est infime et indétectable avec les balances courantes",
+                "Les réactions chimiques n'impliquent absolument aucune transformation d'énergie",
+                "La vitesse de la lumière n'intervient pas en chimie",
+                "Les liaisons chimiques créent de la masse ex nihilo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les énergies chimiques sont de l'ordre de l'eV, rendant la perte de masse relative de l'ordre de 10^-10, impossible à peser directement."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Fission nucléaire et réacteurs nucléaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques s'appliquent à la réaction de fission de l'uranium 235 ?",
+              "options": [
+                "C'est une réaction nucléaire provoquée par la capture d'un neutron",
+                "Elle libère de l'énergie et émet en moyenne 2 à 3 nouveaux neutrons",
+                "Elle ne produit aucun déchet radioactif",
+                "Elle nécessite une température de 100 millions de kelvins pour s'amorcer"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La fission d'un noyau lourd comme l'uranium 235 est induite par un neutron thermique et produit de l'énergie ainsi que de nouveaux neutrons."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi la fission nucléaire peut-elle donner lieu à une réaction en chaîne auto-entretenue ?",
+              "options": [
+                "Les neutrons émis lors de chaque fission peuvent à leur tour induire la fission d'autres noyaux fissiles",
+                "Les photons gamma accélèrent spontanément les électrons du modérateur",
+                "La chaleur produite crée de nouveaux noyaux d'uranium",
+                "Les atomes d'eau lourde se transforment en combustible fissile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque fission libérant 2 à 3 neutrons, ceux-ci peuvent percuter d'autres noyaux d'uranium 235 et propager la réaction."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un réacteur nucléaire à eau pressurisée (REP), quel est le rôle du fluide modérateur ?",
+              "options": [
+                "Ralentir les neutrons rapides pour augmenter leur probabilité de captation par l'uranium 235",
+                "Accélérer les neutrons pour franchir la barrière coulombienne",
+                "Absorber tous les neutrons pour stopper instantanément la réaction",
+                "Isoler magnétiquement le cœur du réacteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau sert de modérateur : par collisions élastiques, elle ralentit les neutrons rapides jusqu'au domaine thermique (~0,025 eV)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel composant mobile permet de contrôler ou d'arrêter la réaction en chaîne dans le cœur d'un réacteur ?",
+              "options": [
+                "Les barres de contrôle contenant du bore ou du cadmium (absorbeurs de neutrons)",
+                "Les pales de la turbine à vapeur",
+                "Les condensateurs en cuivre",
+                "Les échangeurs de chaleur cryogéniques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les barres de commande en cadmium ou bore absorbent les neutrons excédentaires pour stabiliser le facteur de multiplication à k = 1."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel isotope constitue la quasi-totalité de l'uranium naturel extrait des mines ?",
+              "options": [
+                "L'uranium 238 (~99,3 %)",
+                "L'uranium 235 (~0,7 %)",
+                "L'uranium 234 (~50 %)",
+                "Le plutonium 239 (~10 %)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'uranium naturel comprend environ 99,3 % d'uranium 238 non fissile par neutrons thermiques et seulement 0,7 % d'uranium 235."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En quoi consiste l'enrichissement de l'uranium pour les réacteurs à eau pressurisée civils ?",
+              "options": [
+                "Augmenter la proportion d'uranium 235 jusqu'à environ 3 à 5 %",
+                "Augmenter la proportion d'uranium 238 jusqu'à 100 %",
+                "Convertir tout l'uranium en thorium liquide",
+                "Retirer tous les neutrons des noyaux d'uranium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour fonctionner en filière REP, le combustible est enrichi à environ 3 à 5 % d'uranium 235 fissile."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans une centrale électronucléaire, quelle machine transforme l'énergie mécanique de la turbine en électricité ?",
+              "options": [
+                "L'alternateur",
+                "Le compresseur à piston",
+                "Le transformateur abaisseur",
+                "Le tube de Pitot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La turbine entraîne le rotor d'un alternateur qui convertit l'énergie mécanique de rotation en énergie électrique par induction."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel élément chimique artificiel fissile est produit dans le combustible par capture neutronique sur l'uranium 238 ?",
+              "options": [
+                "Le plutonium 239",
+                "Le césium 137",
+                "Le plomb 208",
+                "Le deutérium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'uranium 238 capture un neutron et subit deux désintégrations bêta- pour former du plutonium 239."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le rôle du circuit secondaire dans une centrale nucléaire de type REP ?",
+              "options": [
+                "Produire de la vapeur grâce à la chaleur du circuit primaire pour faire tourner la turbine",
+                "Refroidir directement les barres de combustible nucléaire",
+                "Injecter de l'air comprimé dans l'enceinte de confinement",
+                "Filtrer les isotopes de l'uranium par centrifugation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le circuit primaire transmet sa chaleur au circuit secondaire dans le générateur de vapeur, sans mélange des fluides."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les noyaux résiduels de masse moyenne très radioactifs issus de la coupure de l'uranium ?",
+              "options": [
+                "Les produits de fission",
+                "Les isotopes parents",
+                "Les particules alpha libres",
+                "Les éléments transuraniens stables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cassure du noyau d'uranium génère deux fragments de fission (comme l'iode 131, le césium 137 ou le strontium 90) hautement radioactifs."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Fusion thermonucléaire au cœur des étoiles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles conditions physiques extrêmes sont indispensables pour déclencher la fusion de noyaux légers ?",
+              "options": [
+                "Une température de plusieurs dizaines de millions de kelvins",
+                "Une pression et une densité de matière considérables",
+                "Une absence totale de champ de gravitation",
+                "Un refroidissement cryogénique proche du zéro absolu"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pour vaincre la répulsion coulombienne entre protons chargés positivement, il faut une agitation thermique extrême et une forte pression."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle réaction de fusion globale prédomine au cœur du Soleil et des étoiles de la séquence principale ?",
+              "options": [
+                "La fusion de quatre protons (hydrogène) en un noyau d'hélium 4",
+                "La fission de l'uranium en krypton et baryum",
+                "La combustion du carbone avec l'oxygène moléculaire",
+                "La transformation du plomb en or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au cœur du Soleil, la chaîne proton-proton fusionne 4 noyaux d'hydrogène pour former un noyau d'hélium 4 avec émission d'énergie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle réaction de fusion est privilégiée pour les futurs réacteurs expérimentaux de fusion sur Terre (comme ITER) ?",
+              "options": [
+                "La fusion deutérium - tritium (2H + 3H)",
+                "La fusion fer - nickel",
+                "La fusion hélium 4 - carbone 12",
+                "La fusion proton - antiproton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réaction deutérium-tritium présente la plus grande section efficace à la température la plus accessible (~150 millions de degrés)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un plasma en physique des hautes énergies ?",
+              "options": [
+                "Un gaz ionisé formé d'ions positifs et d'électrons libres découplés",
+                "Un liquide visqueux contenant des polymères lourds",
+                "Un solide cristallin à basse température",
+                "Un vide quantique sans aucune particule chargée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le plasma est le quatrième état de la matière : sous l'agitation thermique extrême, les atomes perdent tous leurs électrons."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi la fusion thermonucléaire ne peut-elle pas s'emballer de manière explosive dans un réacteur de type tokamak ?",
+              "options": [
+                "La quantité de combustible présent dans la chambre à un instant donné est infime (quelques grammes)",
+                "Le réacteur est immergé en permanence dans de l'azote liquide",
+                "Les barres de graphite absorbent instantanément tout le plasma",
+                "Le champ magnétique attire tous les neutrons vers l'extérieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En cas de dysfonctionnement, le plasma se refroidit et la réaction s'éteint spontanément sans risque d'emballement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment le Soleil compense-t-il l'attraction gravitationnelle qui tend à l'effondrer sur lui-même ?",
+              "options": [
+                "Par la pression de rayonnement et la pression thermique issues des réactions de fusion",
+                "Par la force centrifuge due à sa rotation très rapide",
+                "Par la répulsion électrique de ses couches externes",
+                "Par la rigidité mécanique de son noyau en fer solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équilibre hydrostatique d'une étoile résulte de la compensation exacte entre la force gravitationnelle et la pression thermique interne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "D'où provient le deutérium nécessaire comme combustible pour la fusion sur Terre ?",
+              "options": [
+                "De l'eau des océans, où il est naturellement présent en abondance",
+                "De la distillation du pétrole brut",
+                "De mines de roche sédimentaire rare",
+                "Des retombées directes de la poussière lunaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le deutérium (isotope lourd de l'hydrogène) est présent dans l'eau à raison d'environ 1 atome pour 6 000 atomes d'hydrogène."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel isotope radioactif instable de l'hydrogène doit être produit par régénération in situ dans un réacteur de fusion ?",
+              "options": [
+                "Le tritium (3H)",
+                "Le carbone 14",
+                "Le radon 222",
+                "Le potassium 40"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tritium a une demi-vie de 12,3 ans : il doit être régénéré dans la couverture du réacteur par réaction des neutrons sur du lithium."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle méthode de confinement utilise un champ magnétique intense en forme de tore dans un réacteur tokamak ?",
+              "options": [
+                "Le confinement magnétique",
+                "Le confinement inertiel par faisceaux laser",
+                "Le confinement gravitationnel naturel",
+                "Le confinement acoustique ultrasonore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tokamak emploie des bobines magnétiques supraconductrices pour guider et confiner les particules chargées du plasma sans contact avec les parois."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "À masse égale de réactifs, comment se compare l'énergie libérée par la fusion par rapport à la fission nucléaire ?",
+              "options": [
+                "La fusion libère environ 4 fois plus d'énergie par unité de masse que la fission",
+                "La fusion libère 1000 fois moins d'énergie que la fission",
+                "L'énergie libérée par unité de masse est rigoureusement identique",
+                "La fusion consomme de l'énergie nette sans en dégager"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rapportée à la masse de réactifs consommée, la fusion libère environ 4 fois plus d'énergie que la fission de l'uranium."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Bilan d'énergie des réactions nucléaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sous quelles formes l'énergie libérée par une réaction nucléaire se dissipe-t-elle principalement ?",
+              "options": [
+                "Sous forme d'énergie cinétique des particules émises",
+                "Sous forme de rayonnement électromagnétique gamma",
+                "Sous forme d'ondes sonores audibles dans le vide spatial",
+                "Sous forme d'énergie potentielle gravitationnelle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'énergie libérée par la perte de masse se convertit en vitesse des fragments (énergie cinétique) et en photons gamma très énergétiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si la variation de masse Delta(m) = m_produits - m_reactifs est négative, que peut-on affirmer sur la réaction ?",
+              "options": [
+                "La réaction est exothermique (elle libère de l'énergie vers l'extérieur)",
+                "La réaction est endothermique (elle absorbe obligatoirement de la chaleur)",
+                "La réaction est impossible selon les lois de la physique",
+                "La réaction détruit définitivement la charge électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une perte de masse (Delta m < 0) correspond à une libération d'énergie E_lib = |Delta m| * c^2 transmise au milieu extérieur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel ordre de grandeur d'énergie est typiquement libéré par la fission d'un seul noyau d'uranium 235 ?",
+              "options": [
+                "Environ 200 MeV",
+                "Environ 13,6 eV",
+                "Environ 10^12 joules",
+                "Environ 1 kilojoule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fission d'un noyau d'uranium 235 libère environ 200 MeV d'énergie, soit environ 3,2 * 10^-11 J par événement individuel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on la puissance thermique P_th d'un réacteur nucléaire à partir de l'énergie libérée Delta E par seconde ?",
+              "options": [
+                "P_th = Delta E / Delta t",
+                "P_th = Delta E * c^2",
+                "P_th = Delta E * Delta t",
+                "P_th = (Delta E)^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La puissance est l'énergie transférée par unité de temps : 1 watt = 1 joule par seconde (P = E / t)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si une centrale nucléaire produit 3 000 MW thermiques avec un rendement de 33 %, quelle est sa puissance électrique nette ?",
+              "options": ["1 000 MW", "3 000 MW", "990 MW", "100 MW"],
+              "correctAnswers": [0],
+              "explanation": "P_elec = Rendement * P_th = 0,33 * 3 000 MW = 1 000 MW électriques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle masse d'uranium 235 subissant la fission complète produit environ autant d'énergie que 2 000 tonnes de charbon ?",
+              "options": [
+                "Environ 1 kilogramme d'uranium 235",
+                "Environ 500 kilogrammes d'uranium 235",
+                "Environ 50 tonnes d'uranium 235",
+                "Environ 1 gramme d'azote 14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La densité énergétique du nucléaire est gigantesque : 1 kg d'uranium 235 libère autant d'énergie que ~2 000 tonnes de charbon de haute qualité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle particule élémentaire quasi sans masse emporte une fraction d'énergie lors des désintégrations bêta sans interagir avec la cuve ?",
+              "options": [
+                "Le neutrino (ou antineutrino)",
+                "Le muon lourd",
+                "Le gluon",
+                "Le graviton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les neutrinos et antineutrinos interagissent extrêmement peu avec la matière et évacuent une partie de l'énergie sous forme cinétique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour une réaction de fusion deutérium-tritium libérant 17,6 MeV, quelle particule emporte la majorité (environ 80 %) de l'énergie ?",
+              "options": [
+                "Le neutron émis (environ 14,1 MeV)",
+                "Le noyau d'hélium 4 (particule alpha)",
+                "Le photon gamma de désexcitation",
+                "L'électron de conversion interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par conservation de la quantité de mouvement, la particule la plus légère (le neutron) emporte 4/5 de l'énergie cinétique totale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que devient l'énergie thermique non convertie en électricité dans les tours aéro-réfrigérantes des centrales ?",
+              "options": [
+                "Elle est évacuée dans l'environnement (atmosphère ou cours d'eau sous forme de chaleur résiduelle)",
+                "Elle est réinjectée dans les barres d'uranium pour les recharger",
+                "Elle est convertie en lumière laser dans le condenseur",
+                "Elle est stockée dans des batteries chimiques géantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conformément au second principe de la thermodynamique (Carnot), la chaleur résiduelle (~67 %) est rejetée à la source froide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle relation mathématique relie la constante de Planck h, la fréquence nu et l'énergie E d'un photon gamma émis ?",
+              "options": [
+                "E = h * nu",
+                "E = h / nu",
+                "E = (1/2) * h * nu^2",
+                "E = nu / h"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule de Planck-Einstein stipule que l'énergie d'un quantum électromagnétique vaut E = h * nu."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Rayonnements ionisants et radioprotection",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels rayonnements sont classés comme ionisants en raison de leur capacité à arracher des électrons aux atomes ?",
+              "options": [
+                "Les rayons X et rayons gamma",
+                "Les particules alpha et bêta",
+                "Les ondes radioélectriques FM",
+                "La lumière visible des lampes à incandescence"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les rayonnements alpha, bêta, X et gamma ont une énergie suffisante (> 13,6 eV) pour ioniser les molécules vivantes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle grandeur physique et quelle unité mesurent l'énergie absorbée par unité de masse de matière vivante ?",
+              "options": [
+                "La dose absorbée, mesurée en grays (1 Gy = 1 J/kg)",
+                "L'activité, mesurée en becquerels",
+                "La dose équivalente, mesurée en newtons",
+                "La puissance surfacique, mesurée en watts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dose absorbée D représente l'énergie déposée par kilogramme de matière et s'exprime en grays (Gy)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle unité prend en compte l'impact biologique des différents rayonnements sur les tissus vivants ?",
+              "options": [
+                "Le sievert (Sv)",
+                "Le becquerel (Bq)",
+                "Le lumen (lm)",
+                "Le coulomb (C)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dose équivalente et la dose efficace se mesurent en sieverts (Sv) en pondérant la dose absorbée par l'effet nocif biologique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quels sont les trois principes fondamentaux de protection contre une source externe de rayonnements ionisants ?",
+              "options": [
+                "Le temps d'exposition minimal, la distance maximale et l'écran de protection",
+                "La pression élevée, l'altitude et le champ magnétique",
+                "La température basse, le vide d'air et l'humidité",
+                "La lumière ambiante, la ventilation et la vitesse de déplacement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour réduire l'exposition, il faut réduire le temps, s'éloigner au maximum de la source et interposer un écran adapté."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment décroît l'intensité d'un rayonnement émis par une source ponctuelle en fonction de la distance d ?",
+              "options": [
+                "Elle décroît comme l'inverse du carré de la distance (1 / d^2)",
+                "Elle décroît de manière purement linéaire (1 / d)",
+                "Elle reste constante quelle que soit la distance",
+                "Elle augmente avec le cube de la distance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La surface d'une sphère augmentant en d^2, le flux par unité de surface diminue en 1/d^2."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle molécule biologique essentielle est particulièrement vulnérable aux cassures induites par les rayonnements ionisants ?",
+              "options": [
+                "L'acide désoxyribonucléique (ADN)",
+                "L'hémoglobine du sang",
+                "Le cholestérol membranaire",
+                "Le glycogène musculaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rayonnements ionisants peuvent briser les brins d'ADN, provoquant des mutations génétiques ou la mort cellulaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un effet biologique stochastique (aléatoire) des faibles doses de rayonnement ?",
+              "options": [
+                "Un effet à long terme (comme un cancer) dont la probabilité augmente avec la dose sans seuil certain",
+                "Une brûlure cutanée immédiate apparaissant obligatoirement au-dessus d'un seuil",
+                "Une perte de poids immédiate due à la déshydratation",
+                "Une élévation passagère de la température corporelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les effets stochastiques (cancers, mutations) sont probabilistes et peuvent survenir des années après l'exposition même à faible dose."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel instrument portatif permet de détecter en temps réel les impulsions ionisantes dues à la radioactivité ?",
+              "options": [
+                "Le compteur Geiger-Müller",
+                "L'oscilloscope cathodique",
+                "Le spectromètre RMN",
+                "L'ampèremètre thermique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tube Geiger-Müller détecte l'ionisation d'un gaz sous l'impact d'une particule et génère un signal électrique comptabilisé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la limite de dose efficace annuelle maximale fixée en France pour le public (hors irradiation médicale et naturelle) ?",
+              "options": [
+                "1 millisievert par an (1 mSv/an)",
+                "1 sievert par an (1 Sv/an)",
+                "50 millisieverts par an",
+                "100 micrograys par an"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La limite réglementaire d'exposition pour le public général est de 1 mSv par an au-delà du fond naturel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi les émetteurs alpha sont-ils particulièrement dangereux en cas de contamination interne (inhalation ou ingestion) ?",
+              "options": [
+                "Leur fort pouvoir ionisant dépose une énorme dose d'énergie sur une distance microscopique dans les cellules",
+                "Ils traversent le corps entier sans être arrêtés",
+                "Ils transforment l'eau des cellules en mercure",
+                "Ils provoquent la combustion spontanée des graisses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arrêtées en quelques micromètres dans les tissus vivants, les particules alpha délivrent toute leur énergie directement aux cellules voisines."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Applications médicales et technologiques du nucléaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles techniques médicales exploitent directement les propriétés des isotopes radioactifs ou des rayonnements ionisants ?",
+              "options": [
+                "La tomographie par émission de positons (TEP)",
+                "La radiothérapie externe ciblant les tumeurs",
+                "L'échographie Doppler foetale",
+                "L'électrocardiogramme d'effort"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La TEP (imagerie métabolique) et la radiothérapie (destruction ciblée de cellules cancéreuses) utilisent des rayonnements ionisants."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans la caméra TEP, quel phénomène physique produit les deux photons gamma détectés en coïncidence ?",
+              "options": [
+                "L'annihilation d'un positon émis par le traceur avec un électron de la matière",
+                "La capture d'un neutron par un proton",
+                "La réflexion totale interne d'un laser ultraviolet",
+                "La diffraction des rayons X sur l'os"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le positon émis rencontre un électron du corps : ils s'annihilent en émettant 2 photons gamma de 511 keV à 180° l'un de l'autre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel radio-isotope émetteur gamma pur de courte demi-vie (6 heures) est le plus utilisé en scintigraphie hospitalière ?",
+              "options": [
+                "Le technétium 99m",
+                "Le césium 137",
+                "Le polonium 210",
+                "Le plutonium 238"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le technétium 99m est le traceur roi en médecine nucléaire en raison de sa période courte (6 h) et de son gamma de 140 keV."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel isotope radioactif est administré pour diagnostiquer ou traiter spécifiquement les affections de la glande thyroïde ?",
+              "options": [
+                "L'iode 131 (ou iode 123)",
+                "Le phosphore 32",
+                "Le radon 222",
+                "L'argent 110"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La thyroïde fixe naturellement l'iode, ce qui permet à l'iode 131 de cibler et détruire sélectivement les cellules thyroïdiennes hyperactives ou cancéreuses."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En quoi consiste la curiethérapie (ou brachythérapie) en oncologie ?",
+              "options": [
+                "Implanter des sources radioactives scellées au contact direct ou à l'intérieur de la tumeur",
+                "Injecter un vaccin biologique par voie intraveineuse",
+                "Exposer le patient à des ondes radiofréquences modulées",
+                "Appliquer des compresses froides sur la région malade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La curiethérapie place de minuscules grains radioactifs (ex: iode 125, iridium 192) directement dans la tumeur pour préserver les tissus sains."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle application industrielle utilise l'irradiation gamma pour conserver des denrées alimentaires ou stériliser du matériel chirurgical ?",
+              "options": [
+                "L'ionisation (radappertisation / pasteurisation à froid)",
+                "Le craquage catalytique",
+                "La lyophilisation sous vide",
+                "L'électrolyse de saumure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ionisation élimine micro-organismes et bactéries des outils médicaux ou des aliments sans chauffer ni rendre la matière radioactive."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment fonctionne la gammagraphie dans le contrôle non destructif des soudures industrielles (oléoducs, réacteurs) ?",
+              "options": [
+                "Les rayons gamma traversent la soudure et révèlent les fissures internes sur un film ou capteur",
+                "Les rayons gamma font fondre localement le métal pour le ressouder",
+                "Les rayons gamma magnétisent les impuretés pour les extraire",
+                "Les rayons gamma colorent le métal défectueux en vert fluo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Similaire à une radiographie médicale, la gammagraphie utilise une source radioactive pour radiographier l'intérieur des pièces métalliques épaisses."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel générateur d'électricité alimente les sondes spatiales lointaines comme Voyager ou le rover Curiosity sur Mars ?",
+              "options": [
+                "Le générateur thermoélectrique à radio-isotope (RTG au plutonium 238)",
+                "Des panneaux photovoltaïques à concentration solaire",
+                "Des piles alcalines jetables de grande capacité",
+                "Une petite éolienne de bord exploitant le vent solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un RTG convertit la chaleur dégagée par la désintégration naturelle du plutonium 238 en électricité via l'effet Seebeck."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle propriété d'un traceur radioactif en médecine nucléaire garantit la sécurité optimale du patient ?",
+              "options": [
+                "Une demi-vie biologique et physique courte afin de s'éliminer rapidement de l'organisme",
+                "Une demi-vie physique supérieure à 1 000 ans pour persister dans le sang",
+                "Une masse volumique supérieure à celle du mercure",
+                "L'émission exclusive de particules alpha à haute énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le radio-traceur doit posséder une demi-vie de quelques heures pour limiter au strict minimum la dose reçue par le patient."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi un aliment stérilisé par rayons gamma ne présente-t-il aucun danger de radioactivité induite ?",
+              "options": [
+                "L'énergie des photons gamma employés détruit l'ADN des bactéries sans modifier les noyaux atomiques de l'aliment",
+                "L'aliment est immédiatement lavé dans une solution d'eau oxygénée",
+                "Les neutrons sont absorbés par l'emballage en plastique",
+                "Les rayons gamma ne sont composés que de dioxyde de carbone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les photons gamma ne transmutent pas les noyaux : la matière est irradiée mais ne devient pas radioactive."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Lumière et spectre",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le photon et la quantification de l'énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations caractérisent le photon selon la théorie quantique de la lumière ?",
+              "options": [
+                "C'est le quantum d'énergie électromagnétique de masse au repos nulle",
+                "Son énergie est proportionnelle à la fréquence du rayonnement électromagnétique",
+                "Sa charge électrique est égale à +1 coulomb",
+                "Sa vitesse dans le vide dépend de l'intensité lumineuse de la source"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le photon est une particule de masse nulle et de charge nulle qui transporte un quantum d'énergie E = h * nu à la vitesse c."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle formule relie l'énergie E d'un photon à sa longueur d'onde lambda dans le vide ?",
+              "options": [
+                "E = (h * c) / lambda",
+                "E = h * c * lambda",
+                "E = lambda / (h * c)",
+                "E = (1/2) * h * lambda^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec nu = c / lambda, la formule de Planck-Einstein devient E = (h * c) / lambda."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel physicien a introduit pour la première fois la constante h pour expliquer le rayonnement du corps noir en 1900 ?",
+              "options": [
+                "Max Planck",
+                "Albert Einstein",
+                "Niels Bohr",
+                "Louis de Broglie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Max Planck a émis l'hypothèse audacieuse que les échanges d'énergie entre matière et rayonnement se font par paquets discrets (quanta)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel phénomène expérimental Albert Einstein a-t-il expliqué en 1905 grâce au concept de photon (prix Nobel 1921) ?",
+              "options": [
+                "L'effet photoélectrique",
+                "La radioactivité naturelle",
+                "La supraconductivité",
+                "L'effet Doppler acoustique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Einstein a montré que l'extraction d'électrons d'un métal par la lumière s'explique par l'absorption d'un photon individuel d'énergie E >= W_extraction."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Entre un photon rouge (lambda = 700 nm) et un photon bleu (lambda = 450 nm), lequel possède la plus grande énergie ?",
+              "options": [
+                "Le photon bleu, car sa longueur d'onde est plus courte donc sa fréquence plus élevée",
+                "Le photon rouge, car sa couleur est plus chaude",
+                "Ils ont exactement la même énergie dans le vide",
+                "Leur énergie dépend de la puissance du faisceau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie est inversement proportionnelle à la longueur d'onde : plus lambda est petite, plus l'énergie du photon est élevée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la valeur approximative de la constante de Planck h dans le Système International ?",
+              "options": [
+                "6,63 * 10^-34 J.s",
+                "3,00 * 10^8 m/s",
+                "1,60 * 10^-19 C",
+                "9,81 m/s^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La constante fondamentale de Planck vaut h = 6,626 * 10^-34 J.s."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans le domaine visible, quel ordre de grandeur représente l'énergie d'un photon individuel ?",
+              "options": [
+                "Entre 1,8 et 3,1 eV (quelques 10^-19 J)",
+                "Environ 500 kWh",
+                "Environ 10 MeV",
+                "Moins de 10^-50 J"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les photons du spectre visible ont des énergies comprises entre environ 1,8 eV (rouge) et 3,1 eV (violet)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la quantification des grandeurs à l'échelle microscopique ?",
+              "options": [
+                "Ces grandeurs ne peuvent prendre que des valeurs discrètes et discontinues",
+                "Ces grandeurs varient de manière strictement continue et infiniment fluide",
+                "Ces grandeurs s'annulent dès qu'on essaie de les mesurer",
+                "Ces grandeurs sont identiques pour tous les éléments chimiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La quantification implique que seules certaines valeurs d'énergie bien définies sont permises dans le système quantique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel domaine du spectre électromagnétique correspond aux photons les plus énergétiques ?",
+              "options": [
+                "Les rayons gamma",
+                "Les micro-ondes",
+                "Les infrarouges lointains",
+                "Les ondes hertziennes hectométriques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rayons gamma possèdent les fréquences les plus élevées (> 10^19 Hz) et donc les énergies photoniques les plus colossales."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle propriété ondulatoire la lumière conserve-t-elle malgré sa nature corpusculaire photonique ?",
+              "options": [
+                "L'interférence et la diffraction",
+                "L'évaporation et la condensation",
+                "L'attraction coulombienne des corps",
+                "La viscosité cinématique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière manifeste une dualité onde-corpuscule : elle se propage comme une onde (diffraction, interférences) et échange de l'énergie comme une particule."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Spectres atomiques et transitions énergétiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies concernant les niveaux d'énergie d'un atome isolé ?",
+              "options": [
+                "L'état d'énergie minimale est appelé l'état fondamental",
+                "Un atome ne peut absorber ou émettre qu'un photon dont l'énergie est exactement égale à la différence entre deux niveaux",
+                "Les niveaux d'énergie forment un spectre continu de toutes les valeurs possibles",
+                "L'énergie d'un atome peut croître indéfiniment sans ionisation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les niveaux d'énergie d'un atome sont discrets ; l'absorption et l'émission respectent la condition Delta E = |E_final - E_initial| = h * nu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lors de l'émission spontanée d'un photon par un atome ?",
+              "options": [
+                "L'atome passe d'un niveau d'énergie supérieur E2 à un niveau inférieur E1",
+                "L'atome passe d'un niveau d'énergie inférieur E1 à un niveau supérieur E2",
+                "L'électron est définitivement éjecté de l'atome",
+                "Le noyau atomique perd deux protons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsqu'un atome excité se désexcite vers un niveau plus stable et moins énergétique, il émet un photon d'énergie E2 - E1."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel type de spectre optique observe-t-on lorsqu'on décompose la lumière émise par un gaz atomique chaud sous basse pression ?",
+              "options": [
+                "Un spectre de raies d'émission discrètes et colorées",
+                "Un spectre continu arc-en-ciel sans interruption",
+                "Une bande totalement noire sans aucune lumière",
+                "Un réseau géométrique de cercles concentriques blancs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un gaz chaud à basse pression émet des photons de longueurs d'onde caractéristiques, formant un spectre de raies d'émission."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que visualise-t-on lorsqu'une lumière blanche traverse un gaz froid sous basse pression ?",
+              "options": [
+                "Un spectre d'absorption constitué de raies noires sur fond continu coloré",
+                "Un faisceau monochromatique ultraviolet pur",
+                "Une réflexion totale de toutes les couleurs",
+                "Une extinction complète de la lumière rouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les atomes du gaz absorbent les photons correspondant précisément à leurs transitions, laissant des raies sombres (raies d'absorption)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que le spectre de raies d'un atome constitue sa 'carte d'identité' chimique ?",
+              "options": [
+                "Chaque élément chimique possède un ensemble unique de niveaux d'énergie et donc de longueurs d'onde caractéristiques",
+                "Les raies changent de couleur à chaque heure du jour",
+                "Tous les métaux ont rigoureusement les mêmes raies spectrales",
+                "Le spectre dépend de la vitesse de la Terre autour du Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure des niveaux d'énergie étant spécifique à chaque élément, les raies spectrales permettent d'identifier sans ambiguïté les atomes présents."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'énergie minimale nécessaire pour arracher complètement un électron à un atome dans son état fondamental ?",
+              "options": [
+                "L'énergie d'ionisation",
+                "L'énergie cinétique moyenne",
+                "L'énergie de résonance magnétique",
+                "L'énergie d'enthalpie standard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie d'ionisation correspond à la transition de l'état fondamental (n=1) jusqu'à l'état libre non lié (n infini, E=0)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour l'atome d'hydrogène, quelle est la valeur de l'énergie d'ionisation depuis l'état fondamental (E1 = -13,6 eV) ?",
+              "options": ["+13,6 eV", "0 eV", "-13,6 eV", "+1,51 eV"],
+              "correctAnswers": [0],
+              "explanation": "L'énergie à fournir pour passer de E1 = -13,6 eV à E_infini = 0 eV vaut Delta E = 0 - (-13,6) = +13,6 eV."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans le modèle de Bohr pour l'atome d'hydrogène, à quoi correspondent les orbites électroniques permises ?",
+              "options": [
+                "À des orbites stationnaires où le moment cinétique orbital est un multiple entier de h / (2 * pi)",
+                "À des trajectoires elliptiques chaotiques aléatoires",
+                "À des spirales convergeant inévitablement vers le proton",
+                "À des plans perpendiculaires au champ magnétique terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bohr a postulé que les électrons ne rayonnent pas sur des orbites circulaires stationnaires stabilisées par quantification du moment cinétique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la série de raies d'émission de l'hydrogène située dans le domaine visible ?",
+              "options": [
+                "La série de Balmer (transitions vers n = 2)",
+                "La série de Lyman (transitions vers n = 1 dans l'UV)",
+                "La série de Paschen (transitions vers n = 3 dans l'IR)",
+                "La série de Brackett (dans l'infrarouge lointain)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La série de Balmer rassemble les transitions radiatives se terminant sur le niveau n = 2, émettant des photons dans le spectre visible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si un atome absorbe un photon d'énergie Delta E = 2,5 eV, que vaut l'énergie du photon réémis lors de la désexcitation directe ?",
+              "options": ["Exactement 2,5 eV", "5,0 eV", "1,25 eV", "0 eV"],
+              "correctAnswers": [0],
+              "explanation": "Par conservation de l'énergie, la désexcitation ramenant l'atome à son niveau d'origine libère exactement 2,5 eV."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le rayonnement thermique et loi de Wien",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propositions sont vraies à propos du rayonnement émis par un 'corps noir' idéal en équilibre thermique ?",
+              "options": [
+                "Son spectre est continu et ne dépend que de sa température absolue T",
+                "Il absorbe la totalité des rayonnements électromagnétiques incidents sans rien réfléchir",
+                "Il émet uniquement dans les fréquences micro-ondes quelle que soit la température",
+                "Son intensité totale émise diminue quand sa température augmente"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le corps noir absorbe tout rayonnement incident et émet un spectre d'émission thermique continu universel dépendant uniquement de sa température T."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'énoncé de la loi du déplacement de Wien reliant la longueur d'onde du maximum d'émission lambda_max et la température T ?",
+              "options": [
+                "lambda_max * T = constante (environ 2,898 * 10^-3 m.K)",
+                "lambda_max / T = constante",
+                "lambda_max * T^4 = constante",
+                "lambda_max = constante * T^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi de Wien énonce que lambda_max * T = b, où b est la constante de Wien (~2,9 * 10^-3 m.K)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lorsque la température d'un corps chaud augmente, comment évolue la longueur d'onde lambda_max où son émission est maximale ?",
+              "options": [
+                "Elle diminue (le pic spectral se décale vers les courtes longueurs d'onde)",
+                "Elle augmente vers les grandes longueurs d'onde",
+                "Elle reste rigoureusement immobile à 500 nm",
+                "Elle s'annule immédiatement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque le produit lambda_max * T est constant, une hausse de température déplace le maximum vers les longueurs d'onde plus courtes (vers le bleu)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la couleur dominante apparente d'un métal chauffé successivement à 800 °C, puis 1 500 °C, puis plus de 3 000 °C ?",
+              "options": [
+                "Rouge sombre, puis jaune orangé, puis blanc éclatant",
+                "Bleu profond, puis vert, puis rougeoyant",
+                "Violet sombre, puis noir, puis blanc",
+                "Vert fluorescent à toute température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En chauffant, l'émission thermique s'enrichit d'abord en rouge, puis en jaune et vert, jusqu'à stimuler tous les photorécepteurs (lumière blanche)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que stipule la loi de Stefan-Boltzmann pour la puissance totale surfacique P/S rayonnée par un corps noir ?",
+              "options": [
+                "Elle est proportionnelle à la puissance quatrième de sa température absolue (T^4)",
+                "Elle est proportionnelle au carré de la température (T^2)",
+                "Elle est inversement proportionnelle à la température (1/T)",
+                "Elle est indépendante de la surface du corps émetteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi de Stefan-Boltzmann exprime la puissance émise par unité de surface : M = sigma * T^4, où sigma est la constante de Stefan."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si la température absolue T d'un corps noir est multipliée par 2, par quel facteur sa puissance rayonnée par m^2 est-elle multipliée ?",
+              "options": ["16 (car 2^4 = 16)", "2", "4", "8"],
+              "correctAnswers": [0],
+              "explanation": "La puissance surfacique varie en T^4 : doubler la température multiplie l'énergie émise par 2^4 = 16."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un corps noir a une température de 2 900 K. Quelle est la valeur de sa longueur d'onde de pic d'émission lambda_max ?",
+              "options": [
+                "1,0 micromètre (1 000 nm, dans le proche infrarouge)",
+                "500 nanomètres (vert)",
+                "10 nanomètres (rayons X)",
+                "10 centimètres (ondes radio)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "lambda_max = b / T = (2,9 * 10^-3 m.K) / 2 900 K = 1,0 * 10^-6 m = 1 micromètre (infrarouge)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans quel domaine spectral le corps humain (à environ 37 °C, soit 310 K) rayonne-t-il la majorité de son énergie ?",
+              "options": [
+                "Dans l'infrarouge lointain (vers 9,3 micromètres)",
+                "Dans le domaine ultraviolet",
+                "Dans la lumière verte visible",
+                "Dans les rayons X doux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À 310 K, lambda_max = 2,9 * 10^-3 / 310 ~ 9,3 * 10^-6 m (infrarouge thermique détecté par les caméras thermiques)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle était l'anomalie théorique que la physique classique prédisait aux hautes fréquences et que Planck a résolue ?",
+              "options": [
+                "La catastrophe ultraviolette",
+                "La rupture de symétrie CP",
+                "Le paradoxe des jumeaux de Langevin",
+                "L'onde gravitationnelle primordiale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La physique classique prédisait une puissance émise infinie dans les courtes longueurs d'onde ('catastrophe ultraviolette'), résolue par la quantification."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle unité doit impérativement être utilisée pour la température T dans la formule de la loi de Wien ?",
+              "options": [
+                "Le kelvin (K)",
+                "Le degré Celsius (°C)",
+                "Le degré Fahrenheit (°F)",
+                "Le radian par seconde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La température dans les lois thermodynamiques de Wien et Stefan-Boltzmann doit toujours être exprimée en kelvins (K = °C + 273,15)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Spectre et température de surface des étoiles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles informations fondamentales sur une étoile son spectre de lumière permet-il de déterminer ?",
+              "options": [
+                "Sa température de surface (photosphère)",
+                "La composition chimique de son atmosphère stellaire",
+                "Le nombre exact de planètes telluriques en orbite",
+                "L'âge exact de ses météorites au jour près"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le profil continu indique la température de surface par la loi de Wien, et les raies d'absorption révèlent les gaz de son atmosphère."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le spectre solaire présente un fond continu surmonté de milliers de raies sombres. Comment nomme-t-on ces raies ?",
+              "options": [
+                "Les raies de Fraunhofer",
+                "Les raies de Balmer",
+                "Les franges d'Young",
+                "Les raies de diffraction d'Airy"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Joseph von Fraunhofer a répertorié les centaines de raies d'absorption sombres créées par les gaz de l'atmosphère solaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le Soleil présente un maximum d'émission spectrale autour de lambda_max = 500 nm. Quelle est sa température de surface approximative ?",
+              "options": [
+                "Environ 5 800 K",
+                "Environ 15 millions de kelvins",
+                "Environ 1 200 K",
+                "Environ 50 000 K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par la loi de Wien : T = b / lambda_max = (2,9 * 10^-3) / (500 * 10^-9) = 5 800 K (température de la photosphère solaire)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle étoile possède une température de surface plus élevée : une étoile bleue comme Rigel ou une géante rouge comme Bételgeuse ?",
+              "options": [
+                "L'étoile bleue (environ 12 000 K à 25 000 K)",
+                "L'étoile rouge (environ 3 000 K)",
+                "Leur température est identique car elles sont toutes deux des étoiles",
+                "La géante rouge car la couleur rouge indique une chaleur maximale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon la loi de Wien, plus la lumière dominante est décalée vers le bleu (courte longueur d'onde), plus la surface de l'étoile est chaude."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel élément chimique a été découvert pour la première fois dans le spectre solaire en 1868 avant d'être trouvé sur Terre ?",
+              "options": [
+                "L'hélium (du grec hélios, soleil)",
+                "Le fer",
+                "L'uranium",
+                "Le néon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jules Janssen et Norman Lockyer ont repéré une raie jaune inconnue dans le spectre de la couronne solaire, baptisée hélium."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel décalage des raies spectrales (effet Doppler-Fizeau) observe-t-on si une étoile s'éloigne de la Terre ?",
+              "options": [
+                "Un décalage vers les plus grandes longueurs d'onde (décalage vers le rouge ou redshift)",
+                "Un décalage vers le bleu et l'ultraviolet (blueshift)",
+                "Une disparition totale de toutes les raies spectrales",
+                "Un dédoublement périodique sans variation de longueur d'onde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque la source s'éloigne, les longueurs d'onde perçues augmentent, décalant les raies vers le rouge."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que permet de modéliser avec une excellente approximation le spectre global d'émission continu d'une étoile ?",
+              "options": [
+                "Le modèle du rayonnement du corps noir",
+                "Le modèle du dipôle électrostatique parfait",
+                "Le modèle du gaz parfait monoatomique sans photons",
+                "Le modèle du laser femtoseconde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bien qu'étoile gazeuse, la photosphère stellaire dense rayonne un spectre continu très proche de celui d'un corps noir à la même température."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle classification spectrale des étoiles classe les types spectraux du plus chaud au plus froid (O, B, A, F, G, K, M) ?",
+              "options": [
+                "La classification de Harvard",
+                "L'échelle de Richter",
+                "La classification périodique de Mendeleïev",
+                "Le diagramme d'Ellingham"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La classification de Harvard (O B A F G K M) classe les étoiles par température de surface décroissante (les O sont bleues, les M sont rouges)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À quel type spectral de la classification de Harvard le Soleil appartient-il ?",
+              "options": [
+                "Type G (étoile naine jaune)",
+                "Type O (supergéante bleue)",
+                "Type M (naine rouge)",
+                "Type A (étoile blanche)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Soleil est une étoile naine jaune de type spectral G2V, avec une température de photosphère d'environ 5 778 K."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle couche extérieure du Soleil, visible lors des éclipses totales, produit les raies d'absorption du spectre solaire ?",
+              "options": [
+                "L'atmosphère solaire (chromosphère et basse couronne)",
+                "Le noyau thermonucléaire central",
+                "La zone radiative profonde",
+                "La zone convective opaque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le spectre continu issu de la photosphère traverse les gaz plus froids de la chromosphère qui absorbent des longueurs d'onde spécifiques."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "L'effet photovoltaïque et semi-conducteurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels matériaux sont couramment utilisés comme semi-conducteurs dans la fabrication des cellules photovoltaïques ?",
+              "options": [
+                "Le silicium cristallin (monocristallin ou polycristallin)",
+                "L'arséniure de gallium (GaAs) et les pérovskites",
+                "Le fer pur non allié",
+                "Le plastique polyéthylène transparent"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le silicium est le semi-conducteur ultra-majoritaire, complété par les technologies à haut rendement comme le GaAs ou les pérovskites."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel physicien français a découvert l'effet photovoltaïque en 1839 ?",
+              "options": [
+                "Alexandre-Edmond Becquerel",
+                "André-Marie Ampère",
+                "Nicolas Léonard Sadi Carnot",
+                "Louis Pasteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Edmond Becquerel (père d'Henri Becquerel) a observé à l'âge de 19 ans l'apparition d'un courant électrique sous l'effet de la lumière."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le 'gap' (ou bande interdite) énergétique d'un matériau semi-conducteur ?",
+              "options": [
+                "L'énergie minimale qu'un photon doit apporter pour faire passer un électron de la bande de valence à la bande de conduction",
+                "L'espace physique entre deux cellules photovoltaïques sur un panneau",
+                "L'épaisseur de la vitre protectrice en verre trempé",
+                "La distance entre l'onduleur et le compteur électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gap (Eg) sépare la bande de valence pleine de la bande de conduction vide : un électron ne peut être libéré que si E_photon >= Eg."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la valeur approximative du gap du silicium à température ambiante ?",
+              "options": [
+                "Environ 1,1 eV",
+                "Environ 500 eV",
+                "Environ 0,001 eV",
+                "Environ 50 MeV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le silicium possède une bande interdite de 1,12 eV, ce qui correspond à une longueur d'onde seuil d'environ 1,1 micromètre dans le proche infrarouge."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si l'énergie d'un photon incident est strictement inférieure à la largeur de bande interdite Eg du semi-conducteur ?",
+              "options": [
+                "Le photon traverse le matériau sans être absorbé et ne produit aucun électron libre",
+                "Le photon est absorbé et génère dix paires électron-trou",
+                "Le matériau entre immédiatement en fusion",
+                "La cellule produit une tension électrique négative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si E_photon < Eg, le matériau est transparent à ce rayonnement : aucune excitation électronique n'a lieu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que devient l'énergie excédentaire (E_photon - Eg) lorsqu'un photon très énergétique (ex: bleu ou UV) est absorbé ?",
+              "options": [
+                "Elle est dissipée sous forme de chaleur par thermalisation dans le réseau cristallin",
+                "Elle est convertie en un second électron supplémentaire",
+                "Elle est stockée indéfiniment dans les liaisons chimiques",
+                "Elle produit un champ magnétique supraconducteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie excédentaire par rapport au gap se dissipe rapidement sous forme de vibrations thermiques (phonons), chauffant la cellule."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En quoi consiste le 'dopage' du silicium dans une cellule photovoltaïque ?",
+              "options": [
+                "Introduire d'infimes quantités d'atomes impuretés (phosphore ou bore) pour modifier la conduction électrique",
+                "Laver le cristal avec des solvants chlorés pour le polir",
+                "Augmenter la masse du silicium en ajoutant du plomb lourd",
+                "Chauffer le silicium jusqu'à vaporisation complète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dopage N (avec le phosphore) apporte des électrons, et le dopage P (avec le bore) crée des trous positifs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le rôle fondamental de la 'jonction P-N' au cœur d'une cellule photovoltaïque ?",
+              "options": [
+                "Créer un champ électrique interne qui sépare les électrons et les trous créés par la lumière",
+                "Refroidir le panneau solaire en absorbant les infrarouges",
+                "Empêcher la poussière de pénétrer dans le silicium",
+                "Convertir le courant continu en courant alternatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La jonction P-N génère une zone de charge d'espace et un champ électrique qui propulse les électrons vers la zone N et les trous vers la zone P."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel courant électrique une cellule photovoltaïque produit-elle directement lorsqu'elle est éclairée ?",
+              "options": [
+                "Un courant continu (DC)",
+                "Un courant alternatif sinusoïdal 50 Hz",
+                "Un courant triphasé haute tension",
+                "Une onde radio modulée en fréquence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une cellule solaire génère un courant continu (les électrons circulent continuellement dans le même sens dans le circuit fermé)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel appareil électronique est indispensable pour injecter l'électricité d'une installation solaire sur le réseau public 230 V ?",
+              "options": [
+                "Un onduleur",
+                "Un transformateur statique passif simple",
+                "Un alternateur synchrone",
+                "Un rhéostat de démarrage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'onduleur convertit le courant continu produit par les modules photovoltaïques en courant alternatif compatible avec le réseau électrique."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Caractéristiques et rendement des panneaux solaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels paramètres physiques influencent directement la caractéristique courant-tension (I-U) d'une cellule photovoltaïque ?",
+              "options": [
+                "L'éclairement lumineux reçu (irradiance en W/m^2)",
+                "La température de fonctionnement de la cellule",
+                "La couleur de la peinture du cadre extérieur du panneau",
+                "Le sens de rotation de la Terre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le courant de court-circuit Icc dépend de l'éclairement, et la tension à vide Uco diminue significativement avec l'élévation de température."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment définit-on le rendement de conversion énergétique eta d'une cellule photovoltaïque ?",
+              "options": [
+                "eta = Puissance électrique maximale produite / Puissance lumineuse totale incidente reçue",
+                "eta = Tension à vide * Courant de court-circuit",
+                "eta = Puissance lumineuse réfléchie / Puissance absorbée",
+                "eta = Surface du panneau / Poids total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rendement est le rapport entre la puissance électrique maximale délivrée (Pmax) et la puissance du flux solaire incident (P_lum = E * Surface)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur du rendement commercial moyen des panneaux photovoltaïques au silicium actuels ?",
+              "options": [
+                "Entre 18 % et 23 %",
+                "Près de 95 %",
+                "Moins de 2 %",
+                "Exactement 50 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les modules photovoltaïques commerciaux standard au silicium cristallin affichent couramment des rendements de l'ordre de 18 à 22 %."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle limite théorique fondamentale (limite de Shockley-Queisser) plafonne le rendement d'une cellule à simple jonction silicium ?",
+              "options": [
+                "Environ 33 %",
+                "Exactement 10 %",
+                "Environ 75 %",
+                "100 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La limite de Shockley-Queisser (~33 %) résulte de la non-absorption des photons d'énergie inférieure au gap et de la thermalisation des photons énergétiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que désigne le point de puissance maximale (noté MPP) sur la courbe I = f(U) d'un panneau solaire ?",
+              "options": [
+                "Le point de fonctionnement où le produit U * I atteint sa valeur la plus grande",
+                "Le point où la tension aux bornes est nulle",
+                "Le point où le courant électrique s'annule complètement",
+                "Le point où la température de la cellule dépasse 100 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le MPP (Maximum Power Point) correspond au couple tension-courant (Umpp, Impp) qui maximise la puissance électrique P = U * I."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle technologie permet à l'onduleur de se caler en temps réel sur le point de puissance maximale du panneau ?",
+              "options": [
+                "Le tracker MPPT (Maximum Power Point Tracking)",
+                "Le pont redresseur de Graetz",
+                "Le disjoncteur différentiel 30 mA",
+                "Le potentiomètre mécanique rotatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'algorithme MPPT ajuste continuellement l'impédance de charge vue par le panneau pour extraire le maximum d'énergie possible."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est l'impact d'une hausse importante de température sur l'efficacité d'un panneau photovoltaïque au silicium ?",
+              "options": [
+                "Le rendement et la puissance maximale diminuent (environ -0,4 % par degré Celsius au-dessus de 25 °C)",
+                "Le rendement augmente considérablement car le silicium conduit mieux le courant",
+                "La puissance électrique double dès que la température dépasse 40 °C",
+                "La température n'a rigoureusement aucun impact mesurable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chaleur réduit la tension à vide de la jonction, ce qui diminue la puissance fournie (coefficient de température typique de -0,35 à -0,45 %/°C)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un panneau solaire de 1,5 m^2 reçoit un ensoleillement de 1 000 W/m^2. S'il produit 300 W électriques, quel est son rendement ?",
+              "options": ["20 %", "15 %", "30 %", "45 %"],
+              "correctAnswers": [0],
+              "explanation": "Puissance lumineuse reçue : 1 000 W/m^2 * 1,5 m^2 = 1 500 W. Rendement : 300 / 1 500 = 0,20 = 20 %."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans quelles conditions d'essai standardisées (STC) la puissance crête (en watt-crête, Wc) d'un panneau solaire est-elle mesurée ?",
+              "options": [
+                "Éclairement de 1 000 W/m^2, température de cellule de 25 °C et spectre solaire AM 1,5",
+                "Éclairement de 500 W/m^2 à une température de 0 °C dans le noir",
+                "Plein midi au pôle Sud pendant le solstice d'hiver",
+                "Température ambiante de 50 °C sous lumière monochromatique verte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les conditions STC sont définies par une irradiance de 1 000 W/m^2, une température de jonction de 25 °C et un spectre AM 1,5."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le temps de retour énergétique moyen d'un panneau solaire moderne (durée pour produire l'énergie nécessaire à sa fabrication) ?",
+              "options": [
+                "Environ 1 à 3 ans (pour une durée de vie supérieure à 25 ans)",
+                "Plus de 50 ans",
+                "Moins de 2 heures",
+                "Exactement 12 mois sous tous les climats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un panneau photovoltaïque compense l'énergie grise consommée pour son extraction et sa fabrication en 1 à 3 ans de fonctionnement."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Lumière, couleurs et perception visuelle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles cellules photoréceptrices de la rétine humaine permettent la vision des couleurs en condition diurne ?",
+              "options": [
+                "Les cônes sensibles aux courtes longueurs d'onde (bleu)",
+                "Les cônes sensibles aux moyennes et grandes longueurs d'onde (vert et rouge)",
+                "Les bâtonnets exclusivement actifs en vision scotopique nocturne",
+                "Les cellules ciliées de la cochlée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La rétine possède trois types de cônes (S, M, L) sensibles respectivement au bleu, au vert et au rouge, assurant la vision trichromatique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles sont les trois couleurs primaires utilisées dans la synthèse additive des couleurs (écrans, projecteurs) ?",
+              "options": [
+                "Rouge, vert et bleu (RVB)",
+                "Cyan, magenta et jaune (CMJ)",
+                "Rouge, jaune et bleu",
+                "Blanc, gris et noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La synthèse additive superpose des lumières : l'addition des trois primaires Rouge, Vert et Bleu produit la lumière blanche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En synthèse additive, quelle couleur obtient-on en superposant sur un écran une lumière rouge et une lumière verte d'égale intensité ?",
+              "options": ["Du jaune", "Du cyan", "Du magenta", "Du blanc"],
+              "correctAnswers": [0],
+              "explanation": "En synthèse additive : Rouge + Vert = Jaune ; Vert + Bleu = Cyan ; Rouge + Bleu = Magenta."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelles sont les trois couleurs primaires utilisées en synthèse soustractive (peinture, imprimerie) ?",
+              "options": [
+                "Cyan, magenta et jaune (CMJ)",
+                "Rouge, vert et bleu (RVB)",
+                "Orange, violet et vert",
+                "Blanc, noir et ocre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En synthèse soustractive, les pigments absorbent une fraction de la lumière : les primaires sont le cyan, le magenta et le jaune."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle lumière un filtre optique cyan laisse-t-il passer lorsqu'il est éclairé en lumière blanche ?",
+              "options": [
+                "Le vert et le bleu (il absorbe la composante rouge)",
+                "Le rouge exclusivement",
+                "Uniquement la lumière jaune",
+                "Toutes les couleurs sans aucune absorption"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La couleur cyan étant complémentaire du rouge, le filtre cyan absorbe la lumière rouge et transmet les lumières verte et bleue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sous un éclairage monochromatique rouge pur, de quelle couleur apparaît un objet qui est bleu en lumière blanche ?",
+              "options": ["Noir", "Bleu éclatant", "Rouge vif", "Blanc"],
+              "correctAnswers": [0],
+              "explanation": "L'objet bleu n'absorbe pas le bleu mais absorbe le rouge. Éclairé uniquement en rouge, il n'en diffuse rien et paraît noir."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle anomalie congénitale fréquente de la vision des couleurs est liée à une déficience d'un des types de cônes rétiniens ?",
+              "options": [
+                "Le daltonisme (dyschromatopsie)",
+                "La myopie axile",
+                "La presbytie",
+                "L'astigmatisme cornéen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le daltonisme est une anomalie génétique récessive liée au chromosome X qui altère la distinction entre certaines couleurs (souvent rouge et vert)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que désigne la couleur complémentaire d'une couleur donnée en optique ?",
+              "options": [
+                "La couleur qui, ajoutée à la première en synthèse additive, donne de la lumière blanche",
+                "La couleur la plus sombre du cercle chromatique",
+                "La couleur obtenue en éteignant la source lumineuse",
+                "Une couleur réservée aux longueurs d'onde invisibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux couleurs sont complémentaires si leur addition en proportions adéquates reconstitue une lumière blanche (ex: bleu et jaune)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel pigment photosensible présent dans les bâtonnets rétiniens permet la vision crépusculaire en noir et blanc ?",
+              "options": [
+                "La rhodopsine",
+                "La mélanine",
+                "La chlorophylle a",
+                "Le carotène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rhodopsine est le pigment photosensible hautement réactif des bâtonnets, permettant la détection d'infimes quantités de lumière la nuit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le phénomène optique par lequel la couleur perçue d'un objet dépend de l'environnement coloré qui l'entoure ?",
+              "options": [
+                "Le contraste simultané des couleurs",
+                "La réfraction chromatique",
+                "L'aberration de sphéricité",
+                "La diffusion Rayleigh"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formulé par Michel-Eugène Chevreul, le contraste simultané montre que le cerveau évalue la teinte d'une zone en comparaison avec les zones contiguës."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Le spectre solaire et l'atmosphère terrestre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels gaz atmosphériques sont les principaux absorbeurs de rayonnements infrarouges réémis par la surface terrestre ?",
+              "options": [
+                "La vapeur d'eau (H2O)",
+                "Le dioxyde de carbone (CO2) et le méthane (CH4)",
+                "Le diazote (N2)",
+                "L'argon (Ar)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les molécules polyatomiques comme H2O, CO2 et CH4 absorbent le rayonnement infrarouge thermique terrestre, créant l'effet de serre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle couche gazeuse de la haute atmosphère absorbe la grande majorité des rayonnements ultraviolets solaires nocifs (UV-B et UV-C) ?",
+              "options": [
+                "La couche d'ozone stratosphérique (O3)",
+                "La troposphère riche en azote",
+                "L'ionosphère riche en hélium",
+                "La magnétosphère externe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ozone stratosphérique absorbe les photons UV énergétiques en se dissociant selon le cycle photochimique de Chapman."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel phénomène de diffusion optique par les molécules d'air explique la couleur bleue du ciel en plein jour ?",
+              "options": [
+                "La diffusion de Rayleigh",
+                "La diffusion de Mie par les grosses gouttes d'eau",
+                "La réfraction totale dans l'atmosphère",
+                "L'effet Raman inélastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La diffusion de Rayleigh est inversement proportionnelle à la puissance 4 de la longueur d'onde (1/lambda^4), diffusant bien plus le bleu que le rouge."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi le Soleil couchant apparaît-il rougeoyant à l'horizon ?",
+              "options": [
+                "La lumière solaire traverse une couche d'atmosphère beaucoup plus épaisse, éliminant les longueurs d'onde courtes par diffusion",
+                "La température de surface du Soleil baisse en fin de journée",
+                "L'atmosphère terrestre émet son propre rayonnement laser rouge",
+                "Les nuages absorbent uniquement la lumière orange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur une grande épaisseur d'air, le bleu est presque entièrement diffusé hors de la ligne de visée : seuls les rayons rouges et orangés parviennent à l'œil."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'albédo moyen de la planète Terre ?",
+              "options": [
+                "La fraction de la puissance solaire totale incidente qui est directement réfléchie et diffusée vers l'espace (environ 0,30)",
+                "La quantité totale d'énergie fossile stockée dans la croûte",
+                "La température moyenne de surface de la planète en kelvins",
+                "La vitesse moyenne des vents dans la haute troposphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'albédo terrestre moyen est d'environ 0,30 (30 % du rayonnement solaire incident est renvoyé directement vers l'espace par les nuages, glaces et sols)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de la constante solaire (puissance surfacique reçue perpendiculairement hors de l'atmosphère terrestre à 1 UA) ?",
+              "options": [
+                "Environ 1 361 W/m^2",
+                "Environ 50 W/m^2",
+                "Environ 100 000 W/m^2",
+                "Exactement 300 W/m^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La constante solaire mesure la puissance reçue du Soleil par m^2 au sommet de l'atmosphère terrestre, soit environ 1 361 W/m^2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle serait la température moyenne à la surface de la Terre en l'absence totale d'effet de serre naturel atmosphérique ?",
+              "options": [
+                "Environ -18 °C (au lieu des +15 °C actuels)",
+                "Environ -150 °C",
+                "Environ 0 °C pile",
+                "Environ +40 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans l'effet de serre naturel qui piège les infrarouges thermiques, la température d'équilibre radiatif de la Terre serait d'environ 255 K (-18 °C)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans quelle région du spectre électromagnétique la surface de la Terre émet-elle la quasi-totalité de son rayonnement thermique ?",
+              "options": [
+                "Dans l'infrarouge thermique (autour de 10 micromètres)",
+                "Dans le visible vert",
+                "Dans l'ultraviolet lointain",
+                "Dans les rayons X mous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À une température moyenne d'environ 288 K (15 °C), la loi de Wien donne un pic d'émission vers lambda = 10 micromètres, dans l'infrarouge thermique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que désigne la 'fenêtre atmosphérique' en météorologie et télédétection spatiale ?",
+              "options": [
+                "Une plage de longueurs d'onde infrarouges (8 à 14 micromètres) où l'atmosphère absorbe très peu le rayonnement thermique",
+                "Un trou permanent dans la couche d'ozone au-dessus de l'équateur",
+                "Une ouverture mécanique dans la coupole d'un observatoire",
+                "Un couloir sans nuages créé par les avions de ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fenêtre atmosphérique permet à une partie du rayonnement infrarouge émis par le sol terrestre de s'échapper directement vers l'espace."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la neige fraîche et la banquise possèdent-elles un albédo particulièrement élevé (0,7 à 0,9) ?",
+              "options": [
+                "Leur surface blanche et cristalline diffuse et réfléchit la quasi-totalité de la lumière visible incidente",
+                "Elles absorbent toute la lumière pour maintenir leur état solide",
+                "Elles émettent de la lumière verte par phosphorescence naturelle",
+                "Leur température négative repousse les photons par effet miroir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La neige fraîche renvoie jusqu'à 90 % du flux lumineux solaire reçu, limitant très fortement son réchauffement direct par la lumière."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Le laser et l'émission stimulée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques physiques remarquables distinguent un faisceau laser d'une source de lumière classique ?",
+              "options": [
+                "Une très grande cohérence spatiale et temporelle (monochromaticité extrême)",
+                "Une très faible divergence angulaire et une directivité quasi parfaite",
+                "Une émission polychromatique recouvrant tout le spectre électromagnétique",
+                "Une vitesse de propagation dans le vide deux fois supérieure à c"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La lumière laser est hautement monochromatique, cohérente, unidirectionnelle et concentre une très grande densité de puissance."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel principe physique fondamental, théorisé par Albert Einstein en 1917, est au cœur du fonctionnement du laser ?",
+              "options": [
+                "L'émission stimulée (ou induite)",
+                "L'annihilation matière-antimatière",
+                "L'effet Doppler acoustique",
+                "La diffusion Compton inverse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 1917, Einstein a montré qu'un photon incident de bonne énergie peut forcer un atome excité à émettre un second photon strictement identique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle relation existe-t-il entre le photon incident et le photon émis par émission stimulée ?",
+              "options": [
+                "Ils ont exactement la même énergie, même phase, même polarisation et même direction de propagation",
+                "Le photon émis a une énergie deux fois plus grande et part à angle droit",
+                "Le photon incident est absorbé et détruit sans rien créer",
+                "Leur phase est décalée de 180 degrés systématiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le photon produit par émission stimulée est un clone parfait du photon incident : même fréquence, même phase, même direction."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie le sigle acronyme 'LASER' en anglais ?",
+              "options": [
+                "Light Amplification by Stimulated Emission of Radiation",
+                "Linear Acceleration of Solar Energy Rays",
+                "Luminescent Absorption of Systemic Electron Resonance",
+                "Low Amplitude Spectral Emission Radar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "LASER signifie 'Amplification de la lumière par émission stimulée de rayonnement'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle condition indispensable sur la population des atomes (inversion de population) est requise pour obtenir l'effet laser ?",
+              "options": [
+                "Le niveau d'énergie excité doit être plus peuplé que le niveau d'énergie inférieur",
+                "Tous les atomes doivent impérativement être dans leur état fondamental",
+                "Le nombre de neutrons doit dépasser le nombre de protons",
+                "Les atomes doivent être totalement ionisés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'équilibre thermique, l'état fondamental est le plus peuplé ; pour que l'émission stimulée l'emporte sur l'absorption, il faut réaliser une inversion de population."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le dispositif qui injecte de l'énergie dans le milieu amplificateur pour créer l'inversion de population ?",
+              "options": [
+                "Le système de pompage (optique, électrique ou chimique)",
+                "La lentille divergente de collimation",
+                "Le diaphragme de champ",
+                "L'oscillateur piézoélectrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pompage (par flash lumineux, courant électrique ou réaction) apporte l'énergie nécessaire pour exciter massivement les atomes du milieu actif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "De quoi est constituée la cavité résonante optique (cavité de Fabry-Pérot) qui piège les photons dans un laser ?",
+              "options": [
+                "De deux miroirs parallèles se faisant face, dont l'un est totalement réfléchissant et l'autre semi-réfléchissant",
+                "D'une sphère de verre teinté opaque aux rayons gamma",
+                "D'un cylindre en cuivre massif sous haute pression",
+                "D'un prisme à dispersion variable motorisé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les miroirs font faire des allers-retours aux photons dans le milieu actif pour amplifier le faisceau, dont une fraction sort par le miroir semi-transparent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel physicien américain a fait fonctionner le tout premier laser opérationnel (à rubis) en 1960 ?",
+              "options": [
+                "Theodore Maiman",
+                "Richard Feynman",
+                "Enrico Fermi",
+                "Robert Oppenheimer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Theodore Maiman a conçu le premier laser en mai 1960 aux laboratoires de recherche Hughes en utilisant un barreau de rubis synthétique pompé par un flash."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle application de télécommunications exploite la lumière laser modulée pour transmettre des téraoctets de données ?",
+              "options": [
+                "Les réseaux dorsaux de fibres optiques",
+                "Les câbles coaxiaux en cuivre",
+                "Les antennes hertziennes grandes ondes",
+                "Les lignes électriques à haute tension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des diodes laser infrarouges injectent des impulsions ultra-rapides guidées par réflexion totale interne dans les fibres de silice."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle expérience historique a mesuré la distance Terre-Lune à quelques millimètres près grâce à un laser ?",
+              "options": [
+                "Le tir laser sur les réflecteurs rétro-miroirs déposés par les missions Apollo et Lunokhod",
+                "La réflexion d'ondes radar sur la poussière du cratère Tycho",
+                "L'écoute des échos acoustiques lunaires",
+                "La mesure du temps de transit de la lumière d'une fusée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En chronométrant l'aller-retour d'impulsions laser ultra-brèves vers des réflecteurs catadioptres sur la Lune, la distance est connue au centimètre près."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Spectroscopie astronomique et composition de l'Univers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments chimiques constituent la très grande majorité de la matière ordinaire baryonique dans l'Univers ?",
+              "options": [
+                "L'hydrogène (~74 % de la masse)",
+                "L'hélium (~24 % de la masse)",
+                "Le fer pur et le silicium",
+                "L'or et le platine natifs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'Univers observable est composé à plus de 98 % d'hydrogène et d'hélium formés lors de la nucléosynthèse primordiale post-Big Bang."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle astronome américaine a démontré en 1925 dans sa thèse pionnière que l'hydrogène et l'hélium dominent la composition des étoiles ?",
+              "options": [
+                "Cecilia Payne-Gaposchkin",
+                "Henrietta Leavitt",
+                "Vera Rubin",
+                "Jocelyn Bell Burnell"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cecilia Payne a appliqué la théorie de l'ionisation de Saha aux spectres stellaires et prouvé l'écrasante surabondance de l'hydrogène."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que démontre la loi de Hubble-Lemaître établie grâce au décalage vers le rouge (redshift) du spectre des galaxies lointaines ?",
+              "options": [
+                "L'expansion globale de l'Univers observable",
+                "La rotation uniforme de notre galaxie sur elle-même",
+                "Le ralentissement de la vitesse de la lumière avec le temps",
+                "La diminution de la masse des étoiles avec la distance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le redshift systématique proportionnel à la distance prouve que l'espace entre les galaxies se dilate continuellement (expansion de l'Univers)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le rayonnement fossile micro-onde émis environ 380 000 ans après le Big Bang, détecté à 2,725 K ?",
+              "options": [
+                "Le fond diffus cosmologique (CMB)",
+                "La nébuleuse du Crabe",
+                "Le vent stellaire coronal",
+                "L'onde gravitationnelle binaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fond diffus cosmologique est le rayonnement électromagnétique de corps noir le plus parfait connu, vestige du découplage matière-lumière."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Où sont synthétisés les éléments chimiques plus lourds que l'hydrogène et l'hélium jusqu'au fer dans l'Univers ?",
+              "options": [
+                "Au cœur des étoiles massives par nucléosynthèse stellaire",
+                "Dans l'espace vide interstellaire à basse température",
+                "Dans les océans des planètes telluriques",
+                "Dans la haute atmosphère de la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les réactions de fusion thermonucléaire successives au cœur des étoiles fabriquent le carbone, l'oxygène, le néon, le silicium jusqu'au fer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quels événements cosmiques cataclysmiques forgent les éléments les plus lourds de l'Univers comme l'or et le platine (processus r) ?",
+              "options": [
+                "Les explosions de supernovas et les fusions d'étoiles à neutrons (kilonovas)",
+                "Les aurores polaires boréales terrestres",
+                "Le passage périodique des comètes glacées",
+                "La désintégration spontanée de l'hélium stellaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La capture rapide de neutrons (processus r) lors des kilonovas (collisions d'étoiles à neutrons) et supernovas engendre les métaux lourds (or, uranium)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment la spectroscopie permet-elle de sonder l'atmosphère d'une exoplanète lors de son transit devant son étoile hôte ?",
+              "options": [
+                "En analysant les raies d'absorption supplémentaires imprimées par l'atmosphère planétaire dans la lumière stellaire transmise",
+                "En envoyant un écho radar depuis la Terre vers l'exoplanète",
+                "En captant les ondes sonores générées par le vent planétaire",
+                "En mesurant la variation de masse gravitationnelle de l'exoplanète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lors du transit, la lumière de l'étoile filtre à travers l'atmosphère de l'exoplanète, qui y laisse ses signatures moléculaires (H2O, CO2, CH4)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel télescope spatial infrarouge lancé fin 2021 révolutionne l'analyse spectroscopique des galaxies les plus primitives de l'Univers ?",
+              "options": [
+                "Le James Webb Space Telescope (JWST)",
+                "Le télescope Kepler",
+                "L'observatoire spatial Gaia",
+                "Le télescope spatial Planck"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le télescope spatial James Webb scrute l'infrarouge proche et moyen avec des spectrographes de pointe pour étudier les premières étoiles et galaxies."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle raie spectrale radio d'émission hyperfine de l'hydrogène neutre (HI) permet de cartographier les bras spiraux de la Voie Lactée ?",
+              "options": [
+                "La raie à 21 centimètres (fréquence 1 420 MHz)",
+                "La raie Lyman alpha à 121 nm",
+                "La raie verte du magnésium",
+                "La raie D du sodium à 589 nm"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La transition de spin de l'hydrogène à 21 cm traverse les poussières galactiques sans être absorbée, dévoilant la structure de la galaxie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que 'nous sommes tous des poussières d'étoiles' selon la célèbre formule de Hubert Reeves ?",
+              "options": [
+                "Tous les atomes de carbone, d'azote, d'oxygène et de fer de notre corps ont été fabriqués au cœur d'étoiles aujourd'hui disparues",
+                "Notre corps est composé exclusivement de poussières de roches lunaires",
+                "Les êtres vivants tombent du ciel sous forme de comètes microscopiques",
+                "Les cellules humaines brillent dans le noir par émission stimulée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'exception de l'hydrogène primordial, tous les atomes lourds qui constituent notre organisme et notre planète proviennent de la nucléosynthèse stellaire."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

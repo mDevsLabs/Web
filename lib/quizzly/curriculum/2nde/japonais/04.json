@@ -1,0 +1,2698 @@
+{
+  "id": "2nde-japonais-04",
+  "year": "2nde",
+  "subject": "japonais",
+  "title": "La grammaire du japonais",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Particules et absence d'articles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies concernant les articles (le, la, un, une) en japonais ?",
+              "options": [
+                "Il n'existe pas d'article défini ou indéfini en japonais.",
+                "Le rôle des articles et prépositions est souvent joué par des particules.",
+                "Chaque nom doit obligatoirement être précédé d'un article en japonais.",
+                "Le mot « un » s'accorde toujours en genre avec le nom qui suit."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le japonais ne possède pas d'articles comme le français. Ce sont les particules (wa, ga, o, etc.) placées après les mots qui indiquent leur fonction grammaticale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où se place une particule grammaticale japonaise par rapport au mot qu'elle accompagne ?",
+              "options": [
+                "Toujours juste après le mot (postposition)",
+                "Toujours juste avant le mot (préposition)",
+                "Au tout début de la phrase",
+                "À la fin absolue du verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les particules japonaises sont des postpositions : elles se placent immédiatement après le mot ou le groupe de mots auquel elles s'appliquent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « le livre » ou « un livre » en japonais selon le contexte ?",
+              "options": [
+                "本 (hon), sans article",
+                "le 本 (le hon)",
+                "一 本 (ichi hon obligatoirement)",
+                "本 は (hon wa obligatoirement)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En japonais, le mot 本 (hon) signifie « livre », « le livre » ou « un livre » selon le contexte, sans nécessiter d'article."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle particule marque le thème général dont on parle dans la phrase ?",
+              "options": [
+                "は (se prononce wa)",
+                "を (se prononce o)",
+                "で (de)",
+                "へ (e)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La particule は (écrite ha mais prononcée wa) sert à introduire le thème ou sujet de conversation : « Quant à... »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle particule marque le complément d'objet direct (COD) d'un verbe d'action ?",
+              "options": [
+                "を (se prononce o)",
+                "は (wa)",
+                "に (ni)",
+                "も (mo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La particule を (hiragana wo, prononcé o) marque l'objet direct sur lequel porte l'action du verbe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la particule は s'écrit-elle avec le hiragana « ha » ?",
+              "options": [
+                "C'est une règle historique d'orthographe où « ha » se prononce « wa » comme particule",
+                "C'est une simple erreur typographique admise",
+                "Parce qu'elle se prononce toujours « ha » en japonais moderne",
+                "Pour la différencier du verbe être"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Historiquement, la particule s'écrivait は et a conservé cette graphie, même si sa prononciation est devenue « wa »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En japonais, le nom varie-t-il selon le genre (masculin/féminin) ?",
+              "options": [
+                "Non, il n'y a pas de genre grammatical pour les noms",
+                "Oui, tous les noms ont un genre masculin ou féminin",
+                "Seuls les noms de pays ont un genre",
+                "Oui, le féminin se forme en ajoutant -ko à tous les mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le japonais n'a pas de distinction de genre grammatical (masculin/féminin) pour les noms ou adjectifs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que remplace la particule dans la grammaire japonaise par rapport aux langues européennes ?",
+              "options": [
+                "Les prépositions et les marques de cas grammaticaux",
+                "Les temps des verbes uniquement",
+                "Les signes de ponctuation",
+                "Les pronoms personnels sujets obligatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les particules jouent le rôle des prépositions (à, de, dans, vers) et indiquent les cas grammaticaux (sujet, objet, thème)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « 猫が好きです » (Neko ga suki desu), que fait la particule が (ga) ?",
+              "options": [
+                "Elle identifie précisément ce qui est aimé (l'objet du sentiment)",
+                "Elle indique le lieu de l'action",
+                "Elle marque le temps futur",
+                "Elle signifie « et » entre deux noms"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec les adjectifs exprimant les goûts comme 好き (suki), が (ga) désigne l'élément apprécié."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Peut-on omettre certaines particules dans une conversation familière très courante ?",
+              "options": [
+                "Oui, à l'oral informel certaines particules évidentes sont souvent omises",
+                "Non, omission d'une particule rend la phrase incompréhensible",
+                "Uniquement la particule ka à la fin",
+                "Jamais, c'est formellement interdit par la loi linguistique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'oral familier entre proches, les Japonais omettent fréquemment les particules évidentes comme wa ou o."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les particules は (wa) et が (ga)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations distinguent correctement la particule は (wa) de が (ga) ?",
+              "options": [
+                "は (wa) met en avant le thème général (« quant à... »).",
+                "が (ga) marque le sujet grammatical précis et met l'accent sur celui-ci.",
+                "が (ga) sert uniquement à poser une question en fin de phrase.",
+                "は (wa) ne peut jamais être employé avec une personne."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "は présente le thème connu dont on va parler (« en ce qui concerne »), tandis que が identifie le sujet spécifique ou apporte une information nouvelle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans « 私は田中です » (Watashi wa Tanaka desu), quel est le rôle de は ?",
+              "options": [
+                "Poser « moi » comme thème de la phrase",
+                "Marquer le complément de temps",
+                "Indiquer la négation",
+                "Exprimer une direction vers Tanaka"
+              ],
+              "correctAnswers": [0],
+              "explanation": "は pose « わたし » (moi) comme thème : « En ce qui me concerne, je suis Tanaka »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle particule utilise-t-on pour répondre à la question « 誰が来ましたか » (Dare ga kimashita ka - Qui est venu ?) ?",
+              "options": [
+                "が (ga), pour désigner précisément la personne qui est venue",
+                "は (wa), pour créer un contraste",
+                "を (o), car c'est un complément d'objet",
+                "で (de), car c'est le moyen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand la question porte sur le sujet avec 誰が (dare ga), la réponse reprend が : « 田中さんが来ました » (Tanaka-san ga kimashita)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans une description d'un phénomène naturel observé (« Il pleut » : 雨...降っています), quelle particule marque le sujet ?",
+              "options": [
+                "が (ga) : 雨が降っています",
+                "は (wa) : 雨は降っています",
+                "を (o) : 雨を降っています",
+                "に (ni) : 雨に降っています"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les constats immédiats et les phénomènes naturels, on utilise が (Ame ga futte imasu)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle nuance apporte は lorsqu'il est utilisé en contraste (« Le thé, j'en bois, mais le café... ») ?",
+              "options": [
+                "Une nuance de comparaison ou de restriction par rapport à autre chose",
+                "Une certitude mathématique absolue",
+                "Une politesse excessive envers l'auditeur",
+                "Une marque d'interrogation obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La particule は a souvent une valeur de contraste : elle isole un élément pour le distinguer des autres."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Peut-on utiliser は après un mot interrogatif sujet comme « だれ » (qui) ou « なに » (quoi) ?",
+              "options": [
+                "Non, on utilise が (ex : だれが, なにが)",
+                "Oui, だれは est très courant",
+                "Oui, uniquement le matin",
+                "Oui, si le verbe est au passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un mot interrogatif inconnu ne peut pas être un thème déjà posé ; on doit donc utiliser が (dare ga, nani ga)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans la structure « A は B が [adjectif] です » (ex: 象は鼻が長いです - L'éléphant a une longue trompe), que représente B が ?",
+              "options": [
+                "La partie spécifique ou caractéristique attribuée au thème A",
+                "Le lieu où se trouve l'éléphant",
+                "L'objet direct d'une action",
+                "Le complément circonstanciel de temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette structure classique pose A comme thème général (l'éléphant) et B が comme sujet de la caractéristique (la trompe est longue)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment se prononce la particule は ?",
+              "options": ["wa", "ha", "ba", "pa"],
+              "correctAnswers": [0],
+              "explanation": "Bien qu'écrite avec le hiragana は (ha), elle se prononce toujours « wa » en tant que particule."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « 私がやります » (Watashi ga yarimasu), quelle est la nuance apportée par が ?",
+              "options": [
+                "« C'est moi (et pas un autre) qui vais le faire »",
+                "« Je ne veux pas le faire »",
+                "« Peut-être que quelqu'un d'autre le fera »",
+                "« Je le faisais autrefois »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "が met l'accent sur le sujet : il souligne que c'est précisément « moi » qui prend en charge l'action."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une subordonnée relative, quelle particule marque généralement le sujet du verbe de la relative ?",
+              "options": ["が (ga)", "は (wa)", "よ (yo)", "ね (ne)"],
+              "correctAnswers": [0],
+              "explanation": "Dans les propositions subordonnées, le sujet prend presque toujours が (ga) au lieu de は (wa)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La particule d'objet を (o / wo)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent correctement la particule を pour marquer un objet direct ?",
+              "options": [
+                "りんごを食べます (Ringo o tabemasu - Je mange une pomme)",
+                "水を飲みます (Mizu o nomimasu - Je bois de l'eau)",
+                "学校を行きます (Gakkou o ikimasu - Je vais à l'école)",
+                "日本を住んでいます (Nihon o sunde imasu - J'habite au Japon)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "を食べます et を飲みます sont des constructions transitives directes avec を. Aller à l'école utilise に/へ et habiter utilise に."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment se prononce le hiragana を en japonais standard moderne ?",
+              "options": ["o", "wo", "yo", "ro"],
+              "correctAnswers": [0],
+              "explanation": "Le hiragana を s'écrit « wo » au clavier mais se prononce simplement « o » en japonais moderne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À quoi sert exclusivement le hiragana を de nos jours ?",
+              "options": [
+                "À servir de particule grammaticale (marqueur d'objet)",
+                "À écrire des noms de fruits",
+                "À former des pluriels réguliers",
+                "À conjuguer les verbes au passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la langue moderne, を n'est utilisé que comme particule grammaticale et n'apparaît pas à l'intérieur des mots courants."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « パン___食べます » (Je mange du pain).",
+              "options": ["を (o)", "で (de)", "に (ni)", "へ (e)"],
+              "correctAnswers": [0],
+              "explanation": "Le pain (パン) est le complément d'objet direct du verbe manger (食べます), on utilise donc を."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « 公園を散歩します » (Kōen o sanpo shimasu), que marque を avec un verbe de déplacement ?",
+              "options": [
+                "Le lieu que l'on traverse ou parcourt",
+                "La destination finale",
+                "Le point de départ uniquement",
+                "L'instrument de marche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec des verbes de mouvement (marcher, voler, traverser), を indique l'espace ou le lieu parcouru."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « 日本語___勉強します » (J'étudie le japonais).",
+              "options": [
+                "を (o)",
+                "は (wa) obligatoirement",
+                "と (to)",
+                "から (kara)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le japonais (日本語) est l'objet de l'action d'étudier (勉強します), marqué par を."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Avec le verbe « 降ります » (orimasu - descendre d'un véhicule), quelle particule indique le véhicule quitté ?",
+              "options": [
+                "を (ex: 電車を降ります)",
+                "で (de)",
+                "に (ni)",
+                "へ (e)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le point ou le moyen de transport que l'on quitte s'indique avec を (ex: 電車を降ります = descendre du train)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Peut-on mettre la particule を après un verbe ?",
+              "options": [
+                "Non, elle se place après un nom",
+                "Oui, toujours après le verbe principal",
+                "Uniquement si le verbe est négatif",
+                "Oui, pour remplacer le point final"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les particules de cas comme を se placent toujours immédiatement après le nom ou groupe nominal qu'elles régissent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « 音楽を聞きます » (Ongaku o kikimasu), que signifie cette phrase ?",
+              "options": [
+                "J'écoute de la musique",
+                "Je joue d'un instrument",
+                "La musique est belle",
+                "J'achète un disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "音楽 (ongaku = musique) + を + 聞きます (kikimasu = écouter) signifie « J'écoute de la musique »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avec les verbes intransitifs comme « aller » (行く iku), utilise-t-on を pour la destination ?",
+              "options": [
+                "Non, on utilise に ou へ",
+                "Oui, obligatoirement を",
+                "Oui, si on y va à pied",
+                "Seulement si la destination est une ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La destination d'un déplacement est marquée par に (ni) ou へ (e), jamais par を."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les particules de lieu et de temps に (ni) et で (de)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases emploient correctement les particules に et で selon leur rôle ?",
+              "options": [
+                "図書館で勉強します (J'étudie à la bibliothèque - lieu d'action avec で)",
+                "七時に起きます (Je me réveille à 7 heures - heure précise avec に)",
+                "レストランに行きます (Je mange au restaurant avec に pour l'action)",
+                "部屋で猫がいます (Il y a un chat dans la chambre avec で pour la présence)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "で marque le lieu où se déroule une action active (étudier). に marque un point temporel précis (7h) ou la présence statique (imasu/arimasu)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle particule indique le lieu où se déroule une action dynamique (ex: manger dans un restaurant) ?",
+              "options": ["で (de)", "に (ni)", "へ (e)", "を (o)"],
+              "correctAnswers": [0],
+              "explanation": "で indique le cadre spatial dans lequel une action s'exécute : レストランで食べます."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle particule s'associe à un verbe d'existence statique (います / あります) pour indiquer le lieu où se trouve quelque chose ?",
+              "options": ["に (ni)", "で (de)", "を (o)", "へ (e)"],
+              "correctAnswers": [0],
+              "explanation": "Le lieu d'existence ou de présence (statique) est toujours marqué par に : 部屋にいます (Je suis dans la chambre)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Met-on la particule に après des mots de temps relatifs comme « 今日 » (kyō - aujourd'hui) ou « 明日 » (ashita - demain) ?",
+              "options": [
+                "Non, on ne met pas に après les repères temporels relatifs",
+                "Oui, に est obligatoire après tous les mots temporels",
+                "Uniquement si l'action a lieu le matin",
+                "Oui, mais seulement le week-end"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les repères temporels relatifs (aujourd'hui, demain, hier, chaque jour) s'emploient sans particule に."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle particule utilise-t-on avec une heure précise (ex: 8 heures) ?",
+              "options": [
+                "に (ni) : 八時に (hachi-ji ni)",
+                "で (de) : 八時で",
+                "を (o) : 八時を",
+                "へ (e) : 八時へ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une heure précise, un jour précis de la semaine ou une date calendaire prend la particule に."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel autre rôle majeur la particule で remplit-elle (ex: バンダで, バスで) ?",
+              "options": [
+                "Indiquer le moyen ou l'instrument (en bus, avec un stylo)",
+                "Indiquer la personne qui reçoit un cadeau",
+                "Poser le thème principal de la conversation",
+                "Marquer le temps passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "で sert également à indiquer le moyen, le transport ou l'instrument : バスで行きます (J'y vais en bus), ペンで書きます (J'écris au stylo)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « 家___帰ります » (Je rentre chez moi / à la maison).",
+              "options": [
+                "に (ni) ou へ (e)",
+                "で (de) uniquement",
+                "を (o) uniquement",
+                "から (kara) pour la destination"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le point d'arrivée ou la destination d'un verbe de mouvement prend に ou へ : 家に帰ります."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « 友達に会います » (Tomodachi ni aimasu - Je rencontre un ami), pourquoi utilise-t-on に ?",
+              "options": [
+                "Parce que le verbe 会います régit la particule に pour la personne rencontrée",
+                "Parce que l'ami est un objet inanimé",
+                "Parce que c'est une action faite par l'ami",
+                "Parce que に remplace le mot ami"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe 会う (rencontrer) demande la particule に pour désigner le partenaire de rencontre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « 日本語___話します » (Je parle en japonais).",
+              "options": [
+                "で (de) - moyen / langue employée",
+                "に (ni)",
+                "を (o) obligatoirement",
+                "へ (e)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour indiquer la langue utilisée comme moyen d'expression, on utilise で : 日本語で (en japonais)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase signifie « Il y a un livre sur la table » ?",
+              "options": [
+                "机の上に本があります (Tsukue no ue ni hon ga arimasu)",
+                "机の上で本があります",
+                "机の上を本があります",
+                "机の上へ本があります"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lieu où se trouve un objet inanimé avec あります prend la particule に : 机の上に (sur la table)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "La particule de liaison et possession の (no)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions peuvent être remplies par la particule の (no) ?",
+              "options": [
+                "Exprimer la possession (ex: mon livre).",
+                "Relier deux noms pour qualifier le second par le premier (ex: professeur de japonais).",
+                "Marquer le complément d'objet direct d'une action.",
+                "Indiquer obligatoirement la négation d'un verbe."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "の sert à exprimer la possession (A の B = le B de A) et à relier des noms où A qualifie B (ex: 日本語の先生)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans la construction « A の B », quel est l'ordre des éléments par rapport au français « le B de A » ?",
+              "options": [
+                "L'ordre est inversé : le possesseur / déterminant A vient en premier",
+                "L'ordre est identique au français",
+                "B se place toujours avant A",
+                "L'ordre est aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En japonais, le modifieur précède toujours le mot modifié : « le livre de Marie » se dit « マリーさんの本 » (Marie-san no hon)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « mon livre » en japonais ?",
+              "options": [
+                "私の本 (Watashi no hon)",
+                "本私 (Hon watashi)",
+                "本の私 (Hon no watashi)",
+                "私本 (Watashi hon)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Moi » (私) + の + « livre » (本) = « mon livre »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on « un professeur de japonais » ?",
+              "options": [
+                "日本語の先生 (Nihongo no sensei)",
+                "先生の日本語 (Sensei no nihongo)",
+                "日本語先生 (Nihongo sensei sans particule)",
+                "日本への先生 (Nihon e no sensei)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "日本語 (la langue japonaise) qualifie 先生 (professeur) par l'intermédiaire de の."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Peut-on utiliser の comme pronom pour remplacer un nom déjà mentionné (comme « le mien », « celui-ci ») ?",
+              "options": [
+                "Oui, ex: « これは私のです » (Kore wa watashi no desu - C'est le mien)",
+                "Non, c'est totalement impossible",
+                "Uniquement pour les animaux",
+                "Seulement à l'écrit soutenu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "の peut avoir une valeur pronominale : 私の (watashi no) peut signifier « le mien / la mienne »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on la provenance ou nationalité d'un objet (ex: une voiture japonaise) avec の ?",
+              "options": [
+                "日本の車 (Nihon no kuruma)",
+                "車の日本 (Kuruma no nihon)",
+                "日本人車 (Nihonjin kuruma)",
+                "日本車で (Nihon kuruma de)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux noms s'associent avec の : 日本 (Japon) + の + 車 (voiture) = une voiture japonaise."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « 友だちの車 » (Tomodachi no kuruma) ?",
+              "options": [
+                "La voiture d'un ami",
+                "L'ami de la voiture",
+                "Un ami en voiture",
+                "Conduire avec un ami"
+              ],
+              "correctAnswers": [0],
+              "explanation": "友だち (tomodachi = ami) + の + 車 (kuruma = voiture) exprime la possession : la voiture de l'ami."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Peut-on enchaîner plusieurs particules の dans une même phrase (ex: 私の友だちの家) ?",
+              "options": [
+                "Oui, on peut empiler plusieurs の de manière très naturelle",
+                "Non, il est interdit d'en mettre plus d'une par phrase",
+                "Seulement deux au maximum",
+                "Uniquement dans les poèmes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut enchaîner les compléments : 私の友だちの家 (watashi no tomodachi no ie = la maison de mon ami)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la particule の en fin de phrase dans une conversation informelle familière (ex: どこに行くの？) ?",
+              "options": [
+                "Elle marque une question douce ou une demande d'explication",
+                "Elle indique que la phrase est un ordre strict",
+                "Elle signifie que le locuteur est en colère",
+                "Elle remplace la négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En fin de phrase à l'oral familier, の sert de marqueur interrogatif ou explicatif intime."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment traduit-on « le chat de Tanaka » ?",
+              "options": [
+                "田中さんの猫 (Tanaka-san no neko)",
+                "猫の田中さん (Neko no Tanaka-san)",
+                "田中さん猫 (Tanaka-san neko)",
+                "猫田中さん (Neko Tanaka-san)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le possesseur 田中さん précède le possédé 猫 relié par の : 田中さんの猫."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Direction et accompagnement avec へ (e) et と (to)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont exactes concernant les particules へ (e) et と (to) ?",
+              "options": [
+                "へ (écrit he) indique la direction ou l'orientation d'un déplacement.",
+                "と relie deux noms pour signifier « et », ou indique l'accompagnement (« avec »).",
+                "へ remplace toujours obligatoirement le verbe de la phrase.",
+                "と s'utilise uniquement pour poser une question en fin de phrase."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "へ marque la direction d'un mouvement vers un lieu, tandis que と relie exhaustivement deux noms (« et ») ou indique la personne avec qui on agit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment se prononce le hiragana へ lorsqu'il sert de particule de direction ?",
+              "options": ["e", "he", "we", "te"],
+              "correctAnswers": [0],
+              "explanation": "Comme particule, へ s'écrit avec le hiragana « he » mais se prononce toujours « e »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle nuance distingue へ (e) de に (ni) avec un verbe de déplacement ?",
+              "options": [
+                "へ met l'accent sur la direction/le trajet, tandis que に vise la destination précise",
+                "へ s'utilise seulement pour les pays lointains",
+                "に s'utilise uniquement si l'on voyage à cheval",
+                "Il n'y a aucune différence et l'un des deux est banni"
+              ],
+              "correctAnswers": [0],
+              "explanation": "へ souligne l'orientation et l'élan vers une direction, alors que に marque le point d'aboutissement ou la destination finale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « 友だち___映画を見ました » (J'ai regardé un film avec un ami).",
+              "options": [
+                "と (to)",
+                "へ (e)",
+                "を (o)",
+                "に (ni) pour le sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La particule と marque l'accompagnateur de l'action : 友だちと (avec un ami)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment traduit-on « du thé et du café » de façon exhaustive ?",
+              "options": [
+                "お茶とコーヒー (Ocha to kōhī)",
+                "お茶へコーヒー (Ocha e kōhī)",
+                "お茶をコーヒー (Ocha o kōhī)",
+                "お茶にコーヒー (Ocha ni kōhī)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "と relie deux noms dans une énumération complète : A と B = A et B."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « 日本へ行きます » (Nihon e ikimasu) ?",
+              "options": [
+                "Je vais au Japon / vers le Japon",
+                "Je viens du Japon",
+                "J'habite au Japon",
+                "J'aime le Japon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "日本 (Japon) + へ (vers) + 行きます (aller) = Je vais vers / au Japon."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment demande-t-on « Avec qui allez-vous ? » en japonais ?",
+              "options": [
+                "だれと行きますか (Dare to ikimasu ka)",
+                "だれへ行きますか (Dare e ikimasu ka)",
+                "だれを行きますか (Dare o ikimasu ka)",
+                "だれで行きますか (pour une personne)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "だれ (qui) + と (avec) = だれと (avec qui)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel mot s'associe très souvent à la particule と pour renforcer le sens de « ensemble » ?",
+              "options": [
+                "いっしょに (issho ni)",
+                "いつも (itsumo)",
+                "あまり (amari)",
+                "とても (totemo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« と いっしょに » (to issho ni) est une locution très fréquente signifiant « ensemble avec »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle différence existe entre « と » (to) et « や » (ya) pour relier des noms ?",
+              "options": [
+                "と liste tous les éléments cités, tandis que や implique une liste non exhaustive",
+                "と est familier et や est formel",
+                "や ne relie que des verbes",
+                "と ne s'utilise qu'avec des chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "と est exhaustif (A et B, rien d'autre), alors que や sous-entend « entre autres » (ex: A et B, etc.)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « 一人で行きます » (Hitori de ikimasu), pourquoi n'utilise-t-on pas と ?",
+              "options": [
+                "Car « seul » s'exprime avec で (état / condition), il n'y a pas d'accompagnateur",
+                "Car と est interdit avec le chiffre un",
+                "Parce que le verbe ikimasu refuse と",
+                "C'est une exception réservée aux voyages scolaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand on agit seul, il n'y a pas d'accompagnateur avec qui partager l'action : on dit 一人で (hitori de = tout seul)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Particules d'inclusion et d'interrogation も (mo) et か (ka)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques s'appliquent à la particule も (mo) ?",
+              "options": [
+                "Elle signifie « aussi » ou « également » dans une phrase affirmative.",
+                "Elle remplace directement les particules は (wa) et を (o) sans se cumuler.",
+                "Elle se place toujours avant le sujet au début de la phrase.",
+                "Elle sert uniquement à exprimer le futur lointain."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "も signifie « aussi » ou « non plus ». Elle se substitue aux particules de cas primaires comme は et を."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « Moi aussi, je suis lycéen » ?",
+              "options": [
+                "私も高校生です (Watashi mo kōkōsei desu)",
+                "私はも高校生です (Watashi wa mo kōkōsei desu)",
+                "も私高校生です (Mo watashi kōkōsei desu)",
+                "私高校生もです (Watashi kōkōsei mo desu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "も remplace は après 私 : 私も高校生です (Moi aussi je suis lycéen)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle particule placée en fin de phrase transforme une affirmation en question ?",
+              "options": ["か (ka)", "よ (yo)", "ね (ne)", "わ (wa)"],
+              "correctAnswers": [0],
+              "explanation": "La particule finale か équivaut au point d'interrogation et marque la question polie en japonais."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie « なにか » (nanika) formé d'un mot interrogatif et de か ?",
+              "options": [
+                "Quelque chose",
+                "Quoi donc ?",
+                "Rien du tout",
+                "Chaque chose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un mot interrogatif combiné à か exprime l'indéfini : なに (quoi) + か = なにか (quelque chose)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « だれか » (dareka) ?",
+              "options": [
+                "Quelqu'un",
+                "Qui est-ce ?",
+                "Personne",
+                "Tout le monde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "だれ (qui) + か = だれか (quelqu'un)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on « rien » avec なに, la particule も et un verbe négatif ?",
+              "options": [
+                "なにも [verbe négatif] (ex: なにも食べません)",
+                "なにか [verbe affirmatif]",
+                "なにを [verbe négatif]",
+                "なにが [verbe au passé]"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot interrogatif + も + verbe à la forme négative exprime la négation totale : なにも食べません (Je ne mange rien)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans une phrase japonaise formelle avec « か », est-il indispensable de mettre un « ? » à l'écrit ?",
+              "options": [
+                "Non, la particule か marque déjà grammaticalement l'interrogation",
+                "Oui, sans « ? » la phrase devient une insulte",
+                "Oui, deux points d'interrogation sont exigés",
+                "Uniquement si la question est posée à un aîné"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En japonais standard traditionnel, un simple point rond (。) suffit après か car la particule porte en elle l'interrogation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie « A も B も » dans une même phrase ?",
+              "options": [
+                "Aussi bien A que B / à la fois A et B",
+                "Ni A ni B obligatoirement",
+                "Soit A, soit B",
+                "A plus que B"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La répétition de も relie les éléments en affirmant les deux : « A aussi bien que B »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que devient l'association de la particule de lieu に et de la particule も ?",
+              "options": [
+                "にも (ni mo - « à ... aussi »)",
+                "もに (mo ni)",
+                "にのみ (ni nomi)",
+                "La combinaison est impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement à は et を qui disparaissent devant も, les particules comme に ou で se combinent : 日本にも (au Japon aussi)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie « どこかへ行きましたか » (Dokoka e ikimashita ka) ?",
+              "options": [
+                "Êtes-vous allé quelque part ?",
+                "Où êtes-vous allé ?",
+                "Pourquoi êtes-vous parti ?",
+                "Quand partez-vous en vacances ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "どこか (quelque part) + へ (direction) + 行きましたか (êtes-vous allé ?) = Êtes-vous allé quelque part ?"
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Absence de genre et pluriel en japonais",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations caractérisent le nombre et le genre des noms en japonais ?",
+              "options": [
+                "Les noms japonais sont invariables en genre (pas de masculin/féminin).",
+                "La plupart des noms ne changent pas de forme entre le singulier et le pluriel.",
+                "Chaque nom pluriel prend la terminaison -s comme en français.",
+                "Tous les noms d'objets deviennent féminins au pluriel."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En japonais, les noms ne possèdent ni genre grammatical ni marque systématique de pluriel. Le contexte clarifie le nombre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que peut signifier le mot « ねこ » (neko) employé seul dans une phrase ?",
+              "options": [
+                "« Un chat », « le chat », « des chats » ou « les chats » selon le contexte",
+                "Uniquement un chat mâle",
+                "Uniquement plusieurs chats femelles",
+                "Exactement deux chatons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans déterminant ou contexte chiffré, ねこ peut désigner un ou plusieurs chats indifféremment."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel suffixe peut-on accoler à un nom ou pronom de personne pour indiquer un groupe (« et ses compagnons ») ?",
+              "options": [
+                "〜たち (~tachi)",
+                "〜さん (~san)",
+                "〜じん (~jin)",
+                "〜ご (~go)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "〜たち (~tachi) indique la pluralité pour les êtres humains : 私たち (watashitachi = nous), 学生たち (les étudiants)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « nous » à partir du pronom singulier « わたし » (watashi) ?",
+              "options": [
+                "わたしたち (watashitachi)",
+                "わたしらさん (watashirasan)",
+                "わたしず (watashizu)",
+                "わたしたちご (watashitachigo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "わたし + たち = わたしたち (watashitachi = nous)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le pluriel courant de « 子供 » (kodomo - enfant) ?",
+              "options": [
+                "子供たち (kodomotachi)",
+                "子供ら (kodomora)",
+                "子供子供 (kodomokodomo)",
+                "子供びと (kodomobito)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "子供たち (kodomotachi) est la façon standard de dire « les enfants »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Peut-on ajouter le suffixe 〜たち à des objets inanimés comme des stylos ou des tables ?",
+              "options": [
+                "Non, il s'emploie principalement avec les personnes (et parfois animaux familiers)",
+                "Oui, c'est obligatoire pour tous les objets pluriels",
+                "Oui, si l'objet coûte plus de 1000 yens",
+                "Seulement pour les voitures de sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "〜たち s'applique aux êtres animés (personnes, parfois animaux humanisés), jamais aux objets matériels inanimés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel procédé traditionnel forme le pluriel de certains mots par répétition (ex: 人 hito -> 人々 hitobito) ?",
+              "options": [
+                "La réduplication avec le signe d'itération 々",
+                "L'ajout d'une lettre latine finale",
+                "Le changement de radical verbal",
+                "L'inversion des syllabes du mot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réduplication redouble le kanji grâce au signe 々 (ex: 人々 hitobito = les gens, 山々 yamayama = les montagnes)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les adjectifs japonais s'accordent-ils en genre et en nombre avec le nom qu'ils qualifient ?",
+              "options": [
+                "Non, les adjectifs ne s'accordent ni en genre ni en nombre",
+                "Oui, ils prennent un -e au féminin et un -s au pluriel",
+                "Oui, uniquement au pluriel masculin",
+                "Oui, si le nom est un animal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les adjectifs japonais ne varient jamais en genre ni en nombre ; ils se conjuguent uniquement en temps et en polarité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quels pronoms de 3e personne sont apparus à l'ère moderne pour traduire « il » et « elle » ?",
+              "options": [
+                "彼 (kare = il) et 彼女 (kanojo = elle)",
+                "これ (kore) et それ (sore)",
+                "あなた (anata) et わたし (watashi)",
+                "だれ (dare) et どなた (donata)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "彼 (kare) et 彼女 (kanojo) ont été popularisés pour traduire les pronoms occidentaux « il » et « elle »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si l'on veut préciser exactement le nombre d'objets en japonais, que doit-on employer ?",
+              "options": [
+                "Un chiffre accompagné du classificateur numérique approprié",
+                "La marque du pluriel -s",
+                "Un article indéfini féminin",
+                "Un point d'exclamation répété"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La quantité exacte s'exprime obligatoirement par des chiffres suivis de compteurs spécifiques (classificateurs)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Les classificateurs et compteurs numériques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels principes régissent le comptage des objets en japonais ?",
+              "options": [
+                "On associe un chiffre à un compteur spécifique selon la forme ou nature de l'objet.",
+                "Il existe une série de nombres universels japonais (hitotsu, futatsu...) jusqu'à dix.",
+                "Tous les objets sans exception se comptent uniquement avec le mot « ko ».",
+                "On ajoute simplement le chiffre en chiffres romains sans suffixe."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En japonais, on utilise des classificateurs selon la catégorie (objets plats, longs, personnes...) ou la série autochtone hitotsu, futatsu..."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel classificateur utilise-t-on pour compter les personnes ?",
+              "options": [
+                "〜人 (nin / ri)",
+                "〜本 (hon)",
+                "〜枚 (mai)",
+                "〜匹 (hiki)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les personnes, on emploie le compteur 人 : ひとり (1 personne), ふたり (2 personnes), さんにん (3 personnes), etc."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « une personne » et « deux personnes » de façon irrégulière ?",
+              "options": [
+                "一人 (hitori) et 二人 (futari)",
+                "いちにん (ichinin) et ににん (ninin)",
+                "ひとつ (hitotsu) et ふたつ (futatsu)",
+                "いっぽん (ippon) et にほん (nihon)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 et 2 personnes ont des lectures japonaises autochtones irrégulières : hitori (一人) et futari (二人)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel compteur utilise-t-on pour les objets plats et minces (feuilles de papier, timbres, chemises, assiettes) ?",
+              "options": [
+                "〜枚 (まい - mai)",
+                "〜本 (ほん - hon)",
+                "〜冊 (さつ - satsu)",
+                "〜台 (だい - dai)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "〜枚 (mai) sert pour tout ce qui est plat et mince : 紙が二枚 (deux feuilles de papier)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel compteur s'applique aux objets longs et cylindriques (stylos, bouteilles, parapluies, arbres) ?",
+              "options": [
+                "〜本 (ほん - hon / pon / bon)",
+                "〜枚 (まい - mai)",
+                "〜匹 (ひき - hiki)",
+                "〜階 (かい - kai)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "〜本 (hon) compte les objets allongés : ペンが三本 (trois stylos)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel compteur utilise-t-on pour les livres, cahiers et dictionnaires reliés ?",
+              "options": [
+                "〜冊 (さつ - satsu)",
+                "〜枚 (まい - mai)",
+                "〜杯 (はい - hai)",
+                "〜歳 (さい - sai)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "〜冊 (satsu) est le compteur spécifique des ouvrages reliés : 本を一冊 (un livre)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel compteur emploie-t-on pour les petits animaux (chats, chiens, poissons) ?",
+              "options": [
+                "〜匹 (ひき - hiki / piki / biki)",
+                "〜頭 (とう - tō pour gros animaux)",
+                "〜羽 (わ - wa pour oiseaux)",
+                "〜人 (にん - nin)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "〜匹 (hiki) est le classificateur usuel pour les petits et moyens animaux : 猫が二匹 (deux chats)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel compteur s'applique aux véhicules (voitures, vélos) et appareils électroménagers ou machines ?",
+              "options": [
+                "〜台 (だい - dai)",
+                "〜本 (ほん - hon)",
+                "〜個 (こ - ko)",
+                "〜枚 (まい - mai)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "〜台 (dai) compte les véhicules mécaniques et les machines : 車が一台 (une voiture)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment se dit « trois objets » dans la série universelle autochtone (sans compteur spécifique) ?",
+              "options": [
+                "みっつ (mittsu)",
+                "ひとつ (hitotsu)",
+                "ふたつ (futatsu)",
+                "よっつ (yottsu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La série japonaise est : ひとつ (1), ふたつ (2), みっつ (3), よっつ (4), いつつ (5)..."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Où se place généralement le nombre avec son compteur dans une phrase comme « J'ai acheté deux pommes » ?",
+              "options": [
+                "Juste après la particule d'objet : りんごを二個買いました",
+                "Au début avant le sujet obligatoirement",
+                "À la fin après le verbe conjugué",
+                "Entre le radical du verbe et la terminaison masu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le groupe quantitatif [nombre + compteur] se place très couramment en position adverbiale, juste après la particule de l'objet."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Les déterminants et démonstratifs (kono, sono, ano, dono)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations caractérisent le système ko-so-a-do des démonstratifs japonais ?",
+              "options": [
+                "« ko » fait référence à ce qui est proche du locuteur.",
+                "« so » fait référence à ce qui est proche de l'interlocuteur.",
+                "« a » fait référence à ce qui est éloigné à la fois du locuteur et de l'interlocuteur.",
+                "« do » sert uniquement à formuler des phrases affirmatives."
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le système ko-so-a-do structure l'espace : ko (ici / près de moi), so (près de toi), a (là-bas / loin des deux), do (interrogatif / lequel ?)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre « これ » (kore) et « この » (kono) ?",
+              "options": [
+                "これ est un pronom (ceci), alors que この est un déterminant obligatoirement suivi d'un nom",
+                "これ s'utilise uniquement pour les personnes",
+                "この ne s'utilise qu'au passé",
+                "Il n'y a aucune différence d'emploi grammatical"
+              ],
+              "correctAnswers": [0],
+              "explanation": "これ (kore) fonctionne seul comme pronom (Ceci est un livre), tandis que この (kono) exige un nom immédiat (Ce livre-ci)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Peut-on dire simplement « このです » (Kono desu) sans nom après « この » ?",
+              "options": [
+                "Non, この doit impérativement être suivi d'un nom (ex: この本です)",
+                "Oui, c'est parfaitement correct",
+                "Uniquement si l'on montre du doigt",
+                "Oui, mais seulement le soir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les démonstratifs en -no (kono, sono, ano, dono) sont des adjectifs démonstratifs : ils doivent être suivis d'un substantif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on « ce livre (près de vous) » ?",
+              "options": [
+                "その本 (sono hon)",
+                "この本 (kono hon)",
+                "あの本 (ano hon)",
+                "どの本 (dono hon)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "その (sono) se réfère à un objet proche de la personne à qui l'on parle : その本 (ce livre près de vous)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment désigne-t-on un bâtiment situé au loin, visible par les deux interlocuteurs ?",
+              "options": [
+                "あの建物 (ano tatemono)",
+                "この建物 (kono tatemono)",
+                "その建物 (sono tatemono)",
+                "どの建物 (dono tatemono)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あの (ano) s'emploie pour ce qui est éloigné à la fois du locuteur et de son interlocuteur : « ce bâtiment là-bas »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel déterminant interrogatif signifie « quel / lequel (+ nom) » parmi un choix ?",
+              "options": [
+                "どの (dono)",
+                "どれ (dore)",
+                "どこ (doko)",
+                "どう (dō)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "どの (dono) est le déterminant interrogatif suivi d'un nom : どの本ですか (Quel livre est-ce ?)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quels sont les pronoms démonstratifs de lieu correspondant à la série ko-so-a-do ?",
+              "options": [
+                "ここ (ici), そこ (là), あそこ (là-bas), どこ (où)",
+                "これ, それ, あれ, どれ",
+                "この, その, あの, どの",
+                "こちら, そちら, あちら, どちら (forme très familière)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pronoms de lieu sont ここ (ici près de moi), そこ (là près de toi), あそこ (là-bas) et どこ (où ?)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « その傘は私のです » (Sono kasa wa watashi no desu), que signifie la phrase ?",
+              "options": [
+                "Ce parapluie (près de vous) est le mien",
+                "Ce parapluie ici est à mon frère",
+                "Quel parapluie voulez-vous ?",
+                "Je n'ai pas de parapluie aujourd'hui"
+              ],
+              "correctAnswers": [0],
+              "explanation": "その傘 (ce parapluie près de vous) + は + 私のです (est le mien)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment demande-t-on poliment « De quelle personne s'agit-il ? » avec le mot « 方 » (kata - personne) ?",
+              "options": [
+                "どの方ですか (Dono kata desu ka)",
+                "どの人です (Dono hito desu)",
+                "どれ方ですか (Dore kata desu ka)",
+                "どこ方ですか (Doko kata desu ka)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "どの (quel) + 方 (kata = personne polie) = どの方ですか (De quelle personne s'agit-il ?)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la forme plus polie ou directionnelle de « ここ / そこ / あそこ / どこ » ?",
+              "options": [
+                "こちら / そちら / あちら / どちら",
+                "こっち / そっち / あっち / どっち",
+                "この / その / あの / どの",
+                "これ / それ / あれ / どれ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La série en -chira (kochira, sochira, achira, dochira) exprime la direction ou sert de forme polie pour le lieu et la personne."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Structure SOV et ordre des mots",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques définissent l'ordre des mots dans une phrase simple en japonais ?",
+              "options": [
+                "Le verbe se place obligatoirement à la toute fin de la proposition.",
+                "La structure de base suit l'ordre SOV (Sujet - Objet - Verbe).",
+                "Le verbe doit obligatoirement précéder son complément d'objet.",
+                "L'ordre des mots est strictement identique à celui du français."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le japonais est une langue SOV : le verbe se place toujours en position finale, tandis que le sujet et les compléments le précèdent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans la phrase « 私はりんごを食べます », quel est le verbe et où est-il placé ?",
+              "options": [
+                "食べます (tabemasu), situé à la fin de la phrase",
+                "りんご (ringo), situé au milieu",
+                "私は (watashi wa), situé au tout début",
+                "Il n'y a pas de verbe dans cette phrase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "食べます (tabemasu = manger) est le verbe d'action, positionné en conclusion de la phrase selon la règle SOV."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi l'ordre des compléments avant le verbe est-il relativement souple en japonais ?",
+              "options": [
+                "Parce que chaque mot est suivi d'une particule qui définit sans équivoque sa fonction",
+                "Parce que les Japonais ne prêtent aucune attention au sens des phrases",
+                "Parce que les phrases n'ont jamais de compléments d'objet",
+                "Parce que la ponctuation remplace la grammaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les particules postposées (wa, o, ni, de) identifient le rôle grammatical de chaque constituant, permettant une flexibilité d'agencement avant le verbe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que se passe-t-il très souvent avec le sujet (ex: わたしは) quand il est évident d'après la situation ?",
+              "options": [
+                "Il est omis pour rendre l'expression plus naturelle et fluide",
+                "Il est répété trois fois à voix haute",
+                "Il est remplacé par un point d'exclamation",
+                "L'omission du sujet est une faute éliminatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le japonais est une langue à omission du sujet : dès que le contexte permet de savoir de qui on parle, le pronom sujet est omis."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Traduisez mot à mot l'ordre japonais de « 田中さんは図書館で本を読みます ».",
+              "options": [
+                "Tanaka [thème] bibliothèque [lieu] livre [objet] lit [verbe]",
+                "Tanaka lit un livre dans la bibliothèque [ordre SVO]",
+                "Lit Tanaka un livre à la bibliothèque [ordre VSO]",
+                "Un livre lit Tanaka à la bibliothèque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre japonais est rigoureusement Thème/Sujet + Circonstance de lieu + Objet + Verbe en fin de phrase."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans une proposition simple, quel élément ne peut JAMAIS se trouver après le verbe principal ?",
+              "options": [
+                "Le complément d'objet direct marqué par を",
+                "La particule finale de politesse ou d'interrogation (か, ね, よ)",
+                "La particule de fin de phrase",
+                "Le point final de ponctuation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les compléments nominaux et leurs particules doivent impérativement précéder le verbe ; seules les particules finales énonciatives (ka, ne, yo) suivent le verbe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment ordonne-t-on habituellement le temps et le lieu dans une phrase comme « Demain j'étudie à l'école » ?",
+              "options": [
+                "Temps (明日) puis Lieu (学校で) puis Verbe (勉強します)",
+                "Verbe puis Lieu puis Temps",
+                "Lieu puis Verbe puis Temps",
+                "Objet puis Verbe puis Temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre naturel et privilégié place l'indication temporelle au début de la proposition : 明日 学校で 勉強します."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la phrase sans sujet explicite « 朝ご飯を食べました » ?",
+              "options": [
+                "J'ai mangé le petit-déjeuner (ou « Il / Elle a mangé » selon contexte)",
+                "Le petit-déjeuner mange quelqu'un",
+                "Qui mange le petit-déjeuner ?",
+                "Il n'y a pas de petit-déjeuner ce matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sujet est implicite : la phrase signifie « (J')ai mangé le petit-déjeuner »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'on inverse l'objet et le lieu : « 本を図書館で読みます » au lieu de « 図書館で本を読みます », la phrase reste-t-elle correcte ?",
+              "options": [
+                "Oui, le sens reste compréhensible et correct grâce aux particules を et で",
+                "Non, c'est incompréhensible et totalement faux",
+                "Seulement si le livre est écrit en kanji",
+                "Uniquement si l'on crie la phrase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce aux particules, l'ordre des compléments précédant le verbe peut varier légèrement sans altérer le sens grammatical fondamental."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle ponctuation termine traditionnellement une phrase japonaise complète ?",
+              "options": [
+                "Le point rond japonais « 。» (maru)",
+                "Le point virgule latin « ; »",
+                "Un tiret cadratin « — »",
+                "Une virgule montante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le point de fin de phrase japonais est un petit cercle nommé 句点 (kuten) ou まる (maru) : « 。»."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La copule です (desu) et sa négation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies concernant la copule « です » (desu) ?",
+              "options": [
+                "Elle relie un sujet à un attribut du sujet (nom ou adjectif) avec politesse.",
+                "Sa forme négative polie courante est « ではありません » ou « じゃありません ».",
+                "Elle se conjugue comme un verbe régulier en -masu.",
+                "Elle signifie obligatoirement « manger » ou « boire »."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "です est la copule de politesse (équivalent du verbe être avec un attribut). Sa négation est ではありません ou じゃありません."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment se prononce couramment « です » dans la conversation standard de Tokyo ?",
+              "options": [
+                "« dess » (avec la voyelle « u » assourdie)",
+                "« dé-su-ou » très appuyé",
+                "« daze »",
+                "« dis »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La voyelle finale « u » de desu est dévoisée (assourdie), de sorte que le mot s'entend presque comme « dess »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment transforme-t-on « 学生です » (Je suis étudiant) à la forme négative polie ?",
+              "options": [
+                "学生ではありません (Gakusei dewa arimasen)",
+                "学生ます (Gakusei masu)",
+                "学生ないです (Gakusei naidesu obligatoire)",
+                "学生でした (Gakusei deshita)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La négation polie standard de です après un nom est ではありません (ou plus familièrement じゃありません)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la différence de registre entre « ではありません » et « じゃありません » ?",
+              "options": [
+                "ではありません est plus soutenu et écrit, じゃありません est plus spontané et oral",
+                "じゃありません est réservé aux personnes âgées",
+                "ではありません est une forme archaïque interdite au lycée",
+                "Il n'y a aucune différence de registre ou d'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« じゃ » est la contraction orale de « では ». ではありません convient aux contextes formels et à l'écrit, じゃありません à la conversation courante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase signifie exactement « Je suis français » ?",
+              "options": [
+                "私はフランス人です (Watashi wa Furansujin desu)",
+                "私はフランス語です (Watashi wa Furansugo desu)",
+                "私はフランスに行きます (Watashi wa Furansu ni ikimasu)",
+                "私はフランス人があります (Watashi wa Furansujin ga arimasu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "フランス人 (Furansujin = citoyen français) + です (être) = « Je suis français »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme passée affirmative de « です » (ex: « C'était un chat ») ?",
+              "options": [
+                "でした (deshita)",
+                "ですた (desuta)",
+                "でしたり (deshitari)",
+                "だったです (dattadesu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passé poli de です est でした (deshita) : 猫でした (C'était un chat)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la forme passée négative polie de « です » ?",
+              "options": [
+                "ではありませんでした (dewa arimasen deshita)",
+                "でしたではありません (deshita dewa arimasen)",
+                "でないでした (denai deshita)",
+                "ありませんでしたです (arimasen deshita desu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour le passé négatif poli, on combine la négation avec deshita : ではありませんでした (ou じゃありませんでした)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Peut-on accoler « です » directement après un verbe déjà conjugué en « ます » (ex: 食べますです) ?",
+              "options": [
+                "Non, c'est redondant et grammaticalement incorrect",
+                "Oui, cela renforce la politesse à l'infini",
+                "Uniquement devant le directeur d'école",
+                "Oui, si le verbe est au présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La terminaison verbale en -masu porte déjà la politesse ; ajouter desu après un verbe en -masu est une faute de grammaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduisez : « Hier était dimanche ».",
+              "options": [
+                "昨日は日曜日でした (Kinō wa nichiyōbi deshita)",
+                "昨日は日曜日です (Kinō wa nichiyōbi desu)",
+                "明日は日曜日でした (Ashita wa nichiyōbi deshita)",
+                "今日は日曜日ではありません (Kyō wa nichiyōbi dewa arimasen)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨日 (hier) impose le passé poli でした : 昨日は日曜日でした."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment pose-t-on la question « Êtes-vous professeur ? » avec です ?",
+              "options": [
+                "先生ですか (Sensei desu ka)",
+                "先生です (Sensei desu sans ka)",
+                "先生かです (Sensei ka desu)",
+                "先生にですか (Sensei ni desu ka)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour interroger avec la copule, on ajoute la particule finale か : 先生ですか."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les verbes réguliers à la forme polie en -masu (~ます)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques s'appliquent à la forme verbale en « 〜ます » (-masu) ?",
+              "options": [
+                "Elle constitue la forme de politesse courante (teineigo) envers un interlocuteur.",
+                "Elle exprime à la fois le présent habituel/vérité générale et les actions futures.",
+                "Elle ne s'utilise que pour les actions passées terminées.",
+                "Elle transforme automatiquement tout verbe en nom commun."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La forme en -masu est le présent/futur poli usuel en japonais. Le japonais ne dispose pas d'un temps futur morphologique distinct du présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment distingue-t-on le présent (« Je mange ») du futur (« Je mangerai ») avec la forme en -masu ?",
+              "options": [
+                "Grâce aux compléments de temps (demain, bientôt) et au contexte de la conversation",
+                "En ajoutant un deuxième verbe à la fin",
+                "En changeant la terminaison masu en masuro",
+                "Par la couleur de l'encre utilisée à l'écrit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La forme en -masu est un inaccompli (présent/futur). Ce sont les marqueurs temporels comme « 明日 » (demain) qui explicitent le futur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En combien de groupes principaux classe-t-on les verbes japonais pour leur conjugaison ?",
+              "options": [
+                "Trois groupes (Groupe 1 / Godan, Groupe 2 / Ichidan, Groupe 3 / Irréguliers)",
+                "Dix groupes distincts",
+                "Un seul groupe unique sans exception",
+                "Cinq groupes masculins et cinq féminins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On distingue 3 groupes : les verbes du 1er groupe (Godan), du 2e groupe (Ichidan) et les deux verbes irréguliers du 3e groupe (suru et kuru)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la forme en -masu du verbe du 2e groupe « 食べる » (taberu - manger) ?",
+              "options": [
+                "食べます (tabemasu)",
+                "食します (shokushimasu)",
+                "食べります (taberimasu)",
+                "食べたます (tabetamasu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les verbes Ichidan (groupe 2) terminés par -eru ou -iru, on retire -ru et on ajoute -masu : taberu -> tabemasu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la forme en -masu du verbe du 1er groupe « 飲む » (nomu - boire) ?",
+              "options": [
+                "飲みます (nomimasu)",
+                "飲ます (nomasu)",
+                "飲みます (nomemasu)",
+                "飲むます (nomumasu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les verbes Godan (groupe 1), la voyelle finale en -u passe au son -i avant -masu : nomu -> nomi-masu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quels sont les deux seuls verbes irréguliers du 3e groupe en japonais ?",
+              "options": [
+                "する (suru - faire) et 来る (kuru - venir)",
+                "行く (iku) et 帰る (kaeru)",
+                "見る (miru) et 聞く (kiku)",
+                "話す (hanasu) et 待つ (matsu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le 3e groupe ne compte que deux verbes irréguliers essentiels : する (faire -> します) et 来る (venir -> きます)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la forme en -masu du verbe « 行く » (iku - aller) ?",
+              "options": [
+                "行きます (ikimasu)",
+                "行けます (ikemasu)",
+                "行くます (ikumasu)",
+                "行します (ishimasu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe Godan 行く (iku) voit sa syllabe ku passer en ki : 行きます (ikimasu)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la forme en -masu du verbe « 見る » (miru - regarder/voir), verbe du 2e groupe ?",
+              "options": [
+                "見ます (mimasu)",
+                "見ります (mirimasu)",
+                "見えます (miemasu pour l'action)",
+                "見きます (mikimasu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "見る est un verbe Ichidan en -iru : on remplace -ru par -masu, soit 見ます (mimasu)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « 毎朝新聞を___ » (Chaque matin je lis le journal) avec le verbe 読む (yomu).",
+              "options": [
+                "読みます (yomimasu)",
+                "読みました (yomimashita)",
+                "読むます (yomumasu)",
+                "読めます (yomemasu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une habitude régulière au présent se formule au présent poli : 読みます (yomimasu)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la forme en -masu du verbe « 書く » (kaku - écrire) ?",
+              "options": [
+                "書きます (kakimasu)",
+                "書くます (kakumasu)",
+                "書けます (kakemasu)",
+                "書します (kashimasu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe Godan 書く (kaku) devient 書きます (kakimasu)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "La négation des verbes en -masen (~ません)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont correctes concernant la terminaison « 〜ません » (-masen) ?",
+              "options": [
+                "Elle remplace la terminaison « 〜ます » pour former le présent/futur négatif poli.",
+                "Elle s'applique de la même manière à tous les groupes de verbes une fois sur la base en -i.",
+                "Elle ne s'utilise que si le sujet est féminin pluriel.",
+                "Elle transforme le verbe en passé composé affirmatif."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pour former la négation polie, on remplace simplement la terminaison -masu par -masen, quel que soit le verbe (ex: tabemasu -> tabemasen)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la forme négative polie de « 飲みます » (nomimasu - je bois) ?",
+              "options": [
+                "飲みません (nomimasen)",
+                "飲まないです (uniquement à l'écrit soutenu)",
+                "飲めます (nomemasu)",
+                "飲ましません (nomashimasen)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "飲みます devient 飲みません (nomimasen = je ne bois pas)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « Je ne mange pas de viande » ?",
+              "options": [
+                "肉を食べません (Niku o tabemasen)",
+                "肉を食べます (Niku o tabemasu)",
+                "肉を飲みません (Niku o nomimasen)",
+                "肉を食べませんでした (au présent)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "肉 (niku = viande) + を + 食べません (tabemasen = ne mange pas)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la forme négative de « します » (shimasu - faire) ?",
+              "options": [
+                "しません (shimasen)",
+                "すりません (surimasen)",
+                "されません (saremasen)",
+                "しなくます (shinakumasu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe irrégulier します (faire) devient しません (shimasen = ne pas faire)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la forme négative de « 来ます » (kimasu - venir) ?",
+              "options": [
+                "来ません (kimasen)",
+                "きりません (kirimasen)",
+                "くません (kumasen)",
+                "こないます (konaimasu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "来ます (kimasu) devient 来ません (kimasen = ne vient pas)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Traduisez : « Demain, je ne vais pas au lycée ».",
+              "options": [
+                "明日、高校へ行きません (Ashita, kōkō e ikimasen)",
+                "明日、高校へ行きます (Ashita, kōkō e ikimasu)",
+                "昨日、高校へ行きませんでした (Kinō, kōkō e ikimasen deshita)",
+                "高校へ行きましょう (Kōkō e ikimashō)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明日 (demain) + 高校へ (vers le lycée) + 行きません (je n'irai pas)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle nuance exprime la formule « 〜ませんか » (-masen ka) lorsqu'on s'adresse à quelqu'un ?",
+              "options": [
+                "Une invitation cordiale (« Ne voulez-vous pas... ? / Si on faisait... ? »)",
+                "Un ordre militaire impératif",
+                "Une interdiction légale stricte",
+                "Un regret sur le passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tournure interrogative négative -masen ka sert d'invitation polie et respectueuse : お茶を飲みませんか (Ne prendriez-vous pas un thé ?)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la forme négative polie de « 話します » (hanashimasu - parler) ?",
+              "options": [
+                "話しません (hanashimasen)",
+                "話せません (hanasemasen pour le refus)",
+                "話さないです (hanasanaidesu exclusivement)",
+                "話しありません (hanashiarimasen)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "話します remplace simplement -masu par -masen : 話しません (hanashimasen)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « 日本語が分かりません » (Nihongo ga wakarimasen), que signifie cette expression très utile ?",
+              "options": [
+                "Je ne comprends pas le japonais",
+                "Je ne parle pas français",
+                "Je déteste la langue japonaise",
+                "Le cours de japonais est terminé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "分かりません (wakarimasen) signifie « je ne comprends pas » : 日本語が分かりません = Je ne comprends pas le japonais."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que répond-on poliment par la négative à la question « 朝ご飯を食べましたか » ?",
+              "options": [
+                "いいえ、食べませんでした (Non, je n'ai pas mangé)",
+                "はい、食べません (Oui, je ne mange pas)",
+                "いいえ、食べます (Non, je mange)",
+                "いいえ、食べでした (Non, c'était mangé)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À une question portant sur le passé, la réponse négative est au passé : いいえ、食べませんでした."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Le passé des verbes (-mashita / -masen deshita)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes expriment le passé dans la conjugaison verbale polie ?",
+              "options": [
+                "« 〜ました » (-mashita) pour le passé affirmatif.",
+                "« 〜ませんでした » (-masen deshita) pour le passé négatif.",
+                "« 〜ますでした » (-masu deshita) pour le futur antérieur.",
+                "« 〜ましたせん » (-mashitasen) pour l'impératif passé."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le passé poli s'exprime par -mashita à l'affirmatif et -masen deshita au négatif (combinaison de la négation et du passé de desu)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la forme passée affirmative de « 買います » (kaimasu - acheter) ?",
+              "options": [
+                "買いました (kaimashita)",
+                "買いましたです (kaimashitadesu)",
+                "買うました (kaumashita)",
+                "買いでした (kaideshita)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "買います devient 買いました (kaimashita = j'ai acheté / achetai)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la forme passée négative de « 買います » ?",
+              "options": [
+                "買いませんでした (kaimasen deshita)",
+                "買いましたではありません (kaimashita dewa arimasen)",
+                "買わなかったです (uniquement)",
+                "買いましたない (kaimashitanai)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passé négatif régulier poli est 買いませんでした (kaimasen deshita = je n'ai pas acheté)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « 昨日、日本語を___ » (Hier, j'ai étudié le japonais).",
+              "options": [
+                "勉強しました (benkyō shimashita)",
+                "勉強します (benkyō shimasu)",
+                "勉強しません (benkyō shimasen)",
+                "勉強するでした (benkyō suru deshita)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨日 (hier) exige le passé affirmatif : 勉強しました (benkyō shimashita)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la forme passée de « 行きます » (ikimasu - aller) ?",
+              "options": [
+                "行きました (ikimashita)",
+                "行ったます (ittamasu)",
+                "行きでした (ikideshita)",
+                "行きますた (ikimasuta)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "行きます devient 行きました (ikimashita = je suis allé)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme passée de « 食べます » (tabemasu - manger) ?",
+              "options": [
+                "食べました (tabemashita)",
+                "食べたでした (tabetadeshita)",
+                "食べるました (taberumashita)",
+                "食べますた (tabemasuta)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "食べます devient 食べました (tabemashita = j'ai mangé)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Traduisez : « Hier soir, je n'ai pas regardé la télévision ».",
+              "options": [
+                "昨夜、テレビを見ませんでした (Sakuya, terebi o mimasen deshita)",
+                "昨夜、テレビを見ました (Sakuya, terebi o mimashita)",
+                "今夜、テレビを見ません (Kon'ya, terebi o mimasen)",
+                "昨夜、テレビを見ます (Sakuya, terebi o mimasu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨夜 (hier soir) + テレビを + 見ませんでした (passé négatif de miru)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la forme passée affirmative de « 来ます » (kimasu - venir) ?",
+              "options": [
+                "来ました (kimashita)",
+                "くました (kumashita)",
+                "きましたです (kimashitadesu)",
+                "こました (komashita)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "来ます (kimasu) devient 来ました (kimashita = est venu)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle question signifie « Où êtes-vous allé le week-end dernier ? » ?",
+              "options": [
+                "先週末、どこへ行きましたか (Senshūmatsu, doko e ikimashita ka)",
+                "今週末、どこへ行きますか (Konshūmatsu, doko e ikimasu ka)",
+                "来週末、どこへ行きたいですか (Raishūmatsu, doko e ikitai desu ka)",
+                "先週末、だれと行きましたか (qui)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "先週末 (le week-end dernier) + どこへ (où vers) + 行きましたか (êtes-vous allé ?)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle forme verbale utilise-t-on pour proposer une action collective (« Faisons... ! / Allons-y ! ») ?",
+              "options": [
+                "〜ましょう (-mashō, ex: 行きましょう)",
+                "〜ました (-mashita)",
+                "〜ません (-masen)",
+                "〜ますか (-masu ka)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La forme volitive polie en -mashō sert à proposer ou inviter à agir ensemble : 行きましょう (Allons-y !)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Questions simples avec la particule か (ka)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Comment formule-t-on une question simple et polie en japonais ?",
+              "options": [
+                "On ajoute la particule « か » (ka) à la toute fin de la phrase affirmative.",
+                "L'ordre des mots (sujet, compléments, verbe) reste strictement inchangé.",
+                "On inverse obligatoirement la place du sujet et du verbe conjugué.",
+                "On doit obligatoirement crier le premier mot de la phrase."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pour interroger poliment en japonais, on maintient l'ordre exact des mots et on appose la particule か à la fin du verbe ou de la copule sans inversion."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Y a-t-il une inversion sujet-verbe pour poser une question en japonais ?",
+              "options": [
+                "Non, il n'y a jamais d'inversion syntaxique",
+                "Oui, le verbe passe toujours en tête de phrase",
+                "Uniquement si l'on s'adresse à un étranger",
+                "Oui, si la réponse attendue est négative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement au français qui pratique l'inversion (ex: « Viens-tu ? »), le japonais ne change jamais l'ordre de ses constituants dans l'interrogation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment demande-t-on « Qu'est-ce que c'est ? » en montrant un objet près de soi ?",
+              "options": [
+                "これは何ですか (Kore wa nan desu ka)",
+                "それは何ですか (Sore wa nan desu ka)",
+                "あれは何ですか (Are wa nan desu ka)",
+                "何がこれですか (Nan ga kore desu ka)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "これ (ceci près de moi) + は + 何ですか (qu'est-ce que c'est ?) = これは何ですか."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment demande-t-on « Quelle heure est-il maintenant ? » ?",
+              "options": [
+                "今何時ですか (Ima nan-ji desu ka)",
+                "今日何日ですか (Kyō nan-nichi desu ka)",
+                "何分ですか今 (Nan-pun desu ka ima)",
+                "時間がありますか (Jikan ga arimasu ka)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "今 (ima = maintenant) + 何時ですか (nan-ji desu ka = quelle heure est-il ?)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quels sont les mots standards pour répondre « Oui » et « Non » en japonais poli ?",
+              "options": [
+                "はい (hai) et いいえ (iie)",
+                "うん (un) et ううん (uun) pour le registre officiel",
+                "そう (sō) et だめ (dame) uniquement",
+                "どうぞ (dōzo) et どうも (dōmo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "はい (hai) signifie « oui » et いいえ (iie) signifie « non » dans le registre poli standard."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment demande-t-on poliment « Où sont les toilettes ? » ?",
+              "options": [
+                "トイレはどこですか (Toire wa doko desu ka)",
+                "トイレは何ですか (Toire wa nan desu ka)",
+                "トイレはだれですか (Toire wa dare desu ka)",
+                "トイレはいつですか (Toire wa itsu desu ka)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "トイレ (toilettes) + は + どこですか (où est-ce ?)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif japonais signifie « quand » ?",
+              "options": [
+                "いつ (itsu)",
+                "いくら (ikura)",
+                "いくつ (ikutsu)",
+                "どうして (dōshite)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "いつ (itsu) est le mot interrogatif pour demander « quand » (ex: 誕生日はいつですか = C'est quand ton anniversaire ?)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle intonation adopte-t-on à l'oral en prononçant une question avec « か » ?",
+              "options": [
+                "Une intonation légèrement montante sur la particule finale か",
+                "Une intonation descendant brusquement vers les graves",
+                "Une voix chuchotée monotone sans modulation",
+                "Une voix robotique uniforme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme dans la plupart des langues, la mélodie interrogative s'élève légèrement sur la finale か."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment formule-t-on une question alternative (« Est-ce du thé ou du café ? ») ?",
+              "options": [
+                "お茶ですか、コーヒーですか (Ocha desu ka, kōhī desu ka)",
+                "お茶かコーヒーですかです",
+                "お茶とコーヒーですか (pour choisir l'un)",
+                "お茶でもコーヒーですか"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'interrogation alternative juxtapose deux propositions interrogatives complètes : [A ですか、B ですか]."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment demande-t-on « À qui est ce stylo ? » ?",
+              "options": [
+                "このペンはだれのですか (Kono pen wa dare no desu ka)",
+                "このペンは何ですか (Kono pen wa nan desu ka)",
+                "だれはこのペンですか (Dare wa kono pen desu ka)",
+                "このペンはどこですか (Kono pen wa doko desu ka)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "だれの (dare no = de qui / à qui) + ですか (est-ce ?) : このペンはだれのですか."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Les adjectifs en -i (い) au présent",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations caractérisent les adjectifs en « -i » (い形容詞) en japonais ?",
+              "options": [
+                "Leur forme du dictionnaire se termine obligatoirement par la syllabe hiragana « い ».",
+                "Ils fonctionnent comme de véritables prédicats capables de se conjuguer eux-mêmes.",
+                "Ils prennent la marque du pluriel -s lorsqu'ils qualifient plusieurs objets.",
+                "Ils doivent obligatoirement être précédés d'un article indéfini."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les adjectifs en -i sont des adjectifs verbaux autonomes se terminant par い : ils se conjuguent au passé, au négatif et qualifient directement les noms."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment forme-t-on la négation d'un adjectif en -i (ex: 高い takai - cher) ?",
+              "options": [
+                "On remplace le « い » final par « くない » (takakunai / takakunai desu)",
+                "On ajoute simplement « ではありません » après takai",
+                "On remplace le « い » final par « ません »",
+                "On place le mot « non » devant l'adjectif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour la négation, le い final devient くない : 高い (cher) -> 高くない / 高くないです (pas cher)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la forme négative polie de l'adjectif irrégulier « いい » (ii - bon/bien) ?",
+              "options": [
+                "よくないです / よくありません (yokunai desu / yoku arimasen)",
+                "いくないです (ikunai desu)",
+                "いいではありません (ii dewa arimasen)",
+                "いかありません (ika arimasen)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif « いい » reprend sa forme historique « よい » (yoi) dès qu'il se conjugue : よくないです ou よくありません."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on directement un nom avec un adjectif en -i (ex: une pomme délicieuse) ?",
+              "options": [
+                "L'adjectif se place directement devant le nom sans particule : おいしいりんご",
+                "On doit obligatoirement ajouter « の » : おいしいのりんご",
+                "On doit obligatoirement ajouter « な » : おいしいなりんご",
+                "L'adjectif se place toujours après le nom : りんごおいしい"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif en -i qualifie un nom en se plaçant directement devant lui sans aucune particule intermédiaire : おいしいりんご."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase signifie « Cette voiture est chère » avec politesse ?",
+              "options": [
+                "この車は高いです (Kono kuruma wa takai desu)",
+                "この車は高いだ (Kono kuruma wa takai da)",
+                "この車は高います (Kono kuruma wa takaimasu)",
+                "この車は高くだ (Kono kuruma wa takaku da)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au prédicat poli, l'adjectif en -i reçoit simplement です en fin de phrase pour marquer la politesse : 高いです."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi ajoute-t-on « です » après un adjectif en -i (ex: 大きいです) ?",
+              "options": [
+                "Uniquement pour apporter la marque de politesse envers l'auditeur",
+                "Car l'adjectif n'a pas de sens sans desu",
+                "Pour indiquer que l'objet est masculin",
+                "Pour transformer la phrase en question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque l'adjectif en -i est déjà un prédicat complet en soi, l'ajout de です sert uniquement d'auxiliaire de courtoisie (teineigo)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la négation polie de « 暑い » (atsui - chaud) ?",
+              "options": [
+                "暑くないです (atsukunai desu)",
+                "暑いではありません (atsui dewa arimasen)",
+                "暑くません (atsukumasen)",
+                "暑いません (atsuimasen)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "暑い (chaud) perd son -i et prend -kunai desu : 暑くないです (il ne fait pas chaud)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie « 日本語は面白いです » (Nihongo wa omoshiroi desu) ?",
+              "options": [
+                "Le japonais est intéressant / amusant",
+                "Le japonais est difficile",
+                "Le japonais est ennuyeux",
+                "Je parle japonais tous les jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "面白い (omoshiroi) signifie « intéressant » ou « amusant » : Le japonais est intéressant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel adverbe de degré place-t-on devant un adjectif pour dire « très » (ex: très grand) ?",
+              "options": [
+                "とても (totemo) : とても大きいです",
+                "あまり (amari)",
+                "全然 (zenzen)",
+                "たくさん (takusan devant adjectif)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "とても (totemo) signifie « très » et modifie les adjectifs affirmatifs : とても大きいです (c'est très grand)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel adverbe s'associe obligatoirement à une forme négative pour signifier « pas très... » ?",
+              "options": [
+                "あまり (amari) : あまり高くありません",
+                "とても (totemo)",
+                "いつも (itsumo)",
+                "一番 (ichiban)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あまり suivi d'un adjectif négatif signifie « pas tellement / pas très » : あまり高くありません (ce n'est pas très cher)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les adjectifs en -na (な) avec です",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles règles s'appliquent aux adjectifs en « -na » (な形容詞) ?",
+              "options": [
+                "Ils nécessitent l'intercalation de « な » pour qualifier un nom placé immédiatement après.",
+                "En position de prédicat final, ils se combinent directement avec la copule « です » sans « な ».",
+                "Leur négation se forme en retirant -na et en ajoutant -kunai.",
+                "Ils s'accordent en genre avec le sujet de la phrase."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les adjectifs en -na prennent « na » devant un nom (静かな町) et s'emploient avec la copule です au prédicat (静かです / 静かではありません)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « une ville calme » avec l'adjectif 静か (shizuka) et le nom 町 (machi) ?",
+              "options": [
+                "静かな町 (shizuka na machi)",
+                "静か町 (shizuka machi)",
+                "静かの町 (shizuka no machi)",
+                "静かい町 (shizukai machi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant un nom, l'adjectif en -na exige la particule de liaison な : 静かな町."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « Cette ville est calme » en position de prédicat poli ?",
+              "options": [
+                "この町は静かです (Kono machi wa shizuka desu)",
+                "この町は静かなです (Kono machi wa shizuka na desu)",
+                "この町は静かます (Kono machi wa shizukamasu)",
+                "この町は静かいです (Kono machi wa shizukai desu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au prédicat avec です, on n'ajoute pas « na » : on accole directement です au radical de l'adjectif (静かです)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la forme négative polie de « 静かです » (shizuka desu) ?",
+              "options": [
+                "静かではありません (shizuka dewa arimasen)",
+                "静かくないです (shizukakunai desu)",
+                "静かません (shizukamasen)",
+                "静かなないです (shizuka na naidesu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les adjectifs en -na adoptent la négation de la copule : 静かではありません ou 静かじゃありません."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Bien qu'il se termine phonétiquement par « i », à quelle catégorie appartient « きれい » (kirei - beau/propre) ?",
+              "options": [
+                "Adjectif en -na (on dit きれいな / きれいです)",
+                "Adjectif en -i",
+                "Verbe du 2e groupe",
+                "Particule interrogative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "きれい (kirei) s'écrit 綺麗 et fait partie des faux adjectifs en -i : c'est un adjectif en -na (きれいな人, きれいではありません)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « une jolie fleur » avec « きれい » (kirei) et « 花 » (hana - fleur) ?",
+              "options": [
+                "きれいな花 (kirei na hana)",
+                "きれいの花 (kirei no hana)",
+                "きれいく花 (kireiku hana)",
+                "きれい花 (kirei hana)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme きれい est un adjectif en -na, on intercale な : きれいな花."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel autre adjectif très célèbre se terminant par « i » est en réalité un adjectif en -na ?",
+              "options": [
+                "有名 (ゆうめい - yūmei : célèbre)",
+                "高い (たかい - takai)",
+                "大きい (おおきい - ōkii)",
+                "新しい (あたらしい - atarashii)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "有名 (yūmei = célèbre) est un adjectif en -na : 有名な人 (une personne célèbre), 有名ではありません."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la salutation quotidienne « お元気ですか » (O-genki desu ka) ?",
+              "options": [
+                "Comment allez-vous ? / Êtes-vous en forme ?",
+                "Quel est votre nom ?",
+                "Où travaillez-vous ?",
+                "Quel temps fait-il ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "元気 (genki) est un adjectif en -na signifiant « en forme / plein d'énergie ». お元気ですか est la salutation de politesse usuelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Ce métro est très pratique » avec « 便利 » (benri - pratique) ?",
+              "options": [
+                "この地下鉄はとても便利です (Kono chikatetsu wa totemo benri desu)",
+                "この地下鉄はとても便利なんです",
+                "この地下鉄はとても便利ます",
+                "この地下鉄はとても便利くありません"
+              ],
+              "correctAnswers": [0],
+              "explanation": "便利 (benri) est un adjectif en -na : とても便利です (très pratique)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la forme passée affirmative de « 暇です » (hima desu - avoir du temps libre) ?",
+              "options": [
+                "暇でした (hima deshita)",
+                "暇かったです (himakatta desu)",
+                "暇でしたり (hima deshitari)",
+                "暇たです (hima tadesu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passé des adjectifs en -na emprunte le passé de la copule : でした (hima deshita = j'avais du temps libre)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Les verbes d'existence あります (arimasu) et います (imasu)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles règles régissent la distinction fondamentale entre あります et います ?",
+              "options": [
+                "あります s'utilise pour les objets inanimés, les plantes et les concepts abstraits.",
+                "います s'utilise pour les êtres vivants doués de mouvement autonome (humains, animaux).",
+                "あります s'utilise uniquement pour les voitures de course.",
+                "います s'utilise exclusivement au passé composé."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le japonais sépare rigoureusement l'existence selon le caractère animé : います pour les personnes et animaux, あります pour les choses inanimées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel verbe utilise-t-on dans la phrase « Il y a un chat dans le jardin » (庭に猫が___) ?",
+              "options": [
+                "います (imasu) : 庭に猫がいます",
+                "あります (arimasu)",
+                "します (shimasu)",
+                "行きます (ikimasu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chat étant un animal (être animé), on emploie obligatoirement います : 猫がいます."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel verbe utilise-t-on dans la phrase « Il y a un dictionnaire sur la table » (机の上に辞書が___) ?",
+              "options": [
+                "あります (arimasu) : 机の上に辞書があります",
+                "います (imasu)",
+                "なります (narimasu)",
+                "取ります (torimasu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dictionnaire étant un objet inanimé, on utilise あります : 辞書があります."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle particule marque l'élément (la personne ou l'objet) dont on signale l'existence avec あります / います ?",
+              "options": ["が (ga)", "を (o)", "で (de)", "へ (e)"],
+              "correctAnswers": [0],
+              "explanation": "Le sujet d'existence est introduit par が : [Chose/Personne] が あります / います."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle particule marque le lieu où se trouve l'être ou l'objet dans cette construction statique ?",
+              "options": [
+                "に (ni)",
+                "で (de)",
+                "を (o)",
+                "から (kara) obligatoirement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lieu d'existence statique est toujours marqué par に : 部屋に (dans la pièce), 机の上に (sur la table)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme négative de « あります » (il n'y a pas d'objet) ?",
+              "options": [
+                "ありません (arimasen)",
+                "ありないです (arinai desu)",
+                "あらないです (aranai desu)",
+                "ありしません (arishimasen)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あります devient ありません (arimasen = il n'y a pas)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la forme négative de « います » (il n'y a personne) ?",
+              "options": [
+                "いません (imasen)",
+                "いないです (uniquement au passif)",
+                "いりません (irimasen pour l'existence)",
+                "いしません (ishimasen)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "います devient いません (imasen = il n'y a pas d'être animé)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel verbe emploie-t-on pour parler d'un arbre enraciné dans la cour ?",
+              "options": [
+                "あります (arimasu), car les végétaux sont traités comme inanimés",
+                "います (imasu), car les arbres sont vivants",
+                "します (shimasu)",
+                "来ます (kimasu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En grammaire japonaise, les plantes et arbres immobiles sont classés avec les inanimés et prennent あります : 木があります."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « 兄弟がいますか » (Kyōdai ga imasu ka) ?",
+              "options": [
+                "Avez-vous des frères et sœurs ?",
+                "Où habitent vos parents ?",
+                "Avez-vous un animal de compagnie ?",
+                "Qui est votre frère aîné ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec des personnes comme la famille, います exprime la possession/l'existence : Avez-vous des frères et sœurs ?"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on « J'ai du temps libre aujourd'hui » avec あります ?",
+              "options": [
+                "今日、時間があります (Kyō, jikan ga arimasu)",
+                "今日、時間がいます (Kyō, jikan ga imasu)",
+                "今日、時間を行きます (Kyō, jikan o ikimasu)",
+                "今日、時間はします (Kyō, jikan wa shimasu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "時間 (le temps) étant abstrait et inanimé, on utilise あります : 時間があります (J'ai du temps)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Exprimer les goûts et préférences (好き suki / 嫌い kirai)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles particularités grammaticales caractérisent l'expression des goûts avec « 好き » (suki) et « 嫌い » (kirai) ?",
+              "options": [
+                "Ce sont grammaticalement des adjectifs en -na et non des verbes transitifs.",
+                "L'élément aimé ou détesté est marqué par la particule « が » (ga) et non par « を ».",
+                "Ce sont des verbes réguliers du premier groupe qui prennent la terminaison -masu.",
+                "Ils s'accordent obligatoirement en nombre avec la chose aimée."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "好き et 嫌い sont des adjectifs en -na : l'objet de l'appréciation est considéré comme le sujet de l'état affectif, donc marqué par が (ex: りんごが好きです)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle particule remplit l'espace : « 私は猫___好きです » (J'aime les chats) ?",
+              "options": [
+                "が (ga)",
+                "を (o)",
+                "で (de)",
+                "に (ni) pour le COD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chose appréciée avec 好き prend la particule が : 猫が好きです."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on avec enthousiasme « J'adore / J'aime énormément le japonais » ?",
+              "options": [
+                "日本語が大好きです (Nihongo ga daisuki desu)",
+                "日本語が大好きます (Nihongo ga daisukimasu)",
+                "日本語を大好きます (Nihongo o daisukimasu)",
+                "日本語の大好きです (Nihongo no daisuki desu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On préfixe 大 (dai = grand) devant 好き : 大好きです (daisuki desu = j'adore)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la forme négative polie de « 好きです » (suki desu) ?",
+              "options": [
+                "好きではありません / 好きじゃありません",
+                "好きくないです (sukikunai desu)",
+                "好きません (sukimasen)",
+                "好かないです (sukanaidesu uniquement)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme 好き est un adjectif en -na, sa négation régulière est 好きではありません ou 好きじゃありません."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on poliment « Je n'aime pas trop... » pour adoucir son refus ?",
+              "options": [
+                "あまり好きではありません (amari suki dewa arimasen)",
+                "とても嫌いです (totemo kirai desu de façon brute)",
+                "全然好きです (zenzen suki desu)",
+                "大嫌いです (daikirai desu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« あまり好きではありません » permet d'exprimer un désintérêt avec tact et politesse sans blesser son interlocuteur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie « 嫌い » (kirai) ?",
+              "options": [
+                "Ne pas aimer / détester",
+                "Aimer passionnément",
+                "Trouver joli",
+                "Vouloir acheter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "嫌い (kirai) signifie « détester » ou « ne pas aimer »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment demande-t-on « Quelle sorte de sport aimez-vous ? » ?",
+              "options": [
+                "どんなスポーツが好きですか (Donna supōtsu ga suki desu ka)",
+                "何のスポーツが好きですか (Nan no supōtsu ga suki desu ka exclusivement)",
+                "どうしてスポーツが好きですか (Dōshite supōtsu ga suki desu ka)",
+                "どのスポーツを好きますか (Dono supōtsu o sukimasu ka)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "どんな (quelle sorte de) + nom + が好きですか : どんなスポーツが好きですか."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle expression signifie « C'est ce que j'aime le plus / C'est mon préféré » ?",
+              "options": [
+                "一番好きです (Ichiban suki desu)",
+                "一つ好きです (Hitotsu suki desu)",
+                "いつも好きです (Itsumo suki desu)",
+                "もっと好きです (Motto suki desu pour le superlatif absolu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一番 (ichiban = numéro un / le plus) + 好きです = 一番好きです (c'est mon préféré)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « 日本料理が好きです » (Nihon ryōri ga suki desu) ?",
+              "options": [
+                "J'aime la cuisine japonaise",
+                "Je cuisine japonais tous les soirs",
+                "Le restaurant japonais est fermé",
+                "Je commande un plat japonais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "日本料理 (cuisine japonaise) + が好きです = J'aime la cuisine japonaise."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « 私は魚が好きですが、肉は嫌いです », quel est le sens de « が » après 好きです ?",
+              "options": [
+                "C'est la conjonction d'opposition « mais » reliant deux propositions",
+                "C'est la particule de sujet de la viande",
+                "C'est un point d'interrogation caché",
+                "C'est une particule marquant le moyen de transport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Placée entre deux propositions après un prédicat, が sert de conjonction de coordination adversative signifiant « mais »."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

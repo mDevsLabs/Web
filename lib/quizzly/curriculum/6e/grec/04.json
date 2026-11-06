@@ -1,0 +1,2423 @@
+{
+  "id": "6e-grec-04",
+  "year": "6e",
+  "subject": "grec",
+  "title": "La grammaire du grec ancien",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Article masculin ὁ",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quels articles sont masculins ?",
+              "options": [
+                "ὁ (ho) singulier",
+                "ἡ (hē)",
+                "οἱ (hoi) pluriel",
+                "τό (to)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ὁ et οἱ masculins ; ἡ féminin, τό neutre."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Article devant θεός (theos) dieu :",
+              "options": ["ὁ (ho)", "ἡ (hē)", "τό (to)", "αἱ (hai)"],
+              "correctAnswers": [0],
+              "explanation": "Θεός masculin."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Transcription ὁ :",
+              "options": ["ho", "hē", "to", "hai"],
+              "correctAnswers": [0],
+              "explanation": "Ὁ = ho."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "ὁ ἄνθρωπος (ho anthrōpos) : anthrōpos =",
+              "options": ["homme / humain", "femme", "eau", "loi"],
+              "correctAnswers": [0],
+              "explanation": "Ἄνθρωπος = homme."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Article défini grec ≈",
+              "options": ["le / la / les", "un / une", "de / du", "mon / ma"],
+              "correctAnswers": [0],
+              "explanation": "Défini."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Accord correct :",
+              "options": [
+                "ὁ πατήρ (ho patēr)",
+                "ἡ πατήρ",
+                "τὸ πατήρ",
+                "αἱ πατήρ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Πατήρ masculin."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Féminin singulier :",
+              "options": ["ἡ (hē)", "ὁ (ho)", "τό (to)", "οἱ (hoi)"],
+              "correctAnswers": [0],
+              "explanation": "Ἡ = la (fém.)."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "ὁ οἶκος (ho oikos) : oikos =",
+              "options": ["demeure / foyer", "mer", "nuit", "cadeau"],
+              "correctAnswers": [0],
+              "explanation": "Οἶκος = maison."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Aspiration ὁ :",
+              "options": ["h", "aucune", "ch", "ps"],
+              "correctAnswers": [0],
+              "explanation": "Esprit dur."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Bon masculin :",
+              "options": [
+                "ὁ νόμος (ho nomos)",
+                "ἡ νόμος",
+                "τὸ νόμος",
+                "αἱ νόμος"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Νόμος masculin."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Article féminin ἡ",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Articles féminins :",
+              "options": ["ἡ (hē)", "αἱ (hai)", "ὁ (ho)", "τά (ta)"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ἡ et αἱ."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Devant θεά (thea) :",
+              "options": ["ἡ (hē)", "ὁ (ho)", "τό (to)", "οἱ (hoi)"],
+              "correctAnswers": [0],
+              "explanation": "Θεά féminin."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Transcription ἡ :",
+              "options": ["hē", "ho", "hai", "to"],
+              "correctAnswers": [0],
+              "explanation": "Ἡ = hē."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "ἡ ψυχή (hē psuchē) =",
+              "options": ["l'âme", "le corps", "le vent", "la loi"],
+              "correctAnswers": [0],
+              "explanation": "Ψυχή = âme."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Nom féminin :",
+              "options": [
+                "χώρα (chōra)",
+                "θεός (theos)",
+                "δῶρον (dōron)",
+                "πατήρ (patēr)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Χώρα féminin."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "ἡ indique",
+              "options": [
+                "féminin singulier défini",
+                "masculin",
+                "neutre",
+                "verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Article féminin."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Erreur :",
+              "options": [
+                "ὁ ἡμέρα",
+                "ἡ ἡμέρα (hē hēmera)",
+                "ἡ νύξ (nux)",
+                "ἡ γῆ (gē)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ἡμέρα féminin."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "αἱ (hai) est",
+              "options": [
+                "féminin pluriel",
+                "masculin singulier",
+                "neutre",
+                "verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel féminin."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "ἡ γῆ (hē gē) : γῆ =",
+              "options": ["terre", "ciel", "feu", "eau"],
+              "correctAnswers": [0],
+              "explanation": "Γῆ = terre."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "La déesse :",
+              "options": ["ἡ θεά (hē thea)", "ὁ θεά", "τὸ θεά", "ὁ θεός"],
+              "correctAnswers": [0],
+              "explanation": "Ἡ θεά."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Article neutre τό",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Articles neutres :",
+              "options": ["τό (to)", "τά (ta)", "ὁ (ho)", "ἡ (hē)"],
+              "correctAnswers": [0, 1],
+              "explanation": "Τό singulier, τά pluriel neutres."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Devant δῶρον (dōron) cadeau :",
+              "options": ["τό (to)", "ὁ (ho)", "ἡ (hē)", "αἱ (hai)"],
+              "correctAnswers": [0],
+              "explanation": "Δῶρον neutre."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Transcription τό :",
+              "options": ["to", "ho", "ta", "hē"],
+              "correctAnswers": [0],
+              "explanation": "Τό = to."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "τὸ ἔργον (to ergon) =",
+              "options": [
+                "le travail / l'œuvre",
+                "la guerre",
+                "la mer",
+                "la mère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ἔργον neutre."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Neutre singulier défini :",
+              "options": ["τό", "ὁ", "ἡ", "οἱ"],
+              "correctAnswers": [0],
+              "explanation": "Τό neutre."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Mot neutre :",
+              "options": [
+                "τέκνον (teknon)",
+                "θεός (theos)",
+                "γυνή (gunē)",
+                "ἀνήρ (anēr)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Τέκνον neutre."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "τὸ δῶρον est correct car δῶρον est",
+              "options": ["neutre", "masculin", "féminin", "verbe"],
+              "correctAnswers": [0],
+              "explanation": "Accord en genre."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "τά (ta) accompagne",
+              "options": [
+                "neutre pluriel",
+                "masculin singulier",
+                "féminin singulier",
+                "verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Τά = les (neutre pl.)."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "τὸ ὕδωρ (to hudōr) : ὕδωρ =",
+              "options": ["eau", "feu", "air", "pierre"],
+              "correctAnswers": [0],
+              "explanation": "Ὕδωρ = eau."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Forme incorrecte :",
+              "options": ["ὁ δῶρον", "τὸ δῶρον", "τὸ ἔργον", "τὸ τέκνον"],
+              "correctAnswers": [0],
+              "explanation": "Δῶρον neutre : pas ὁ."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Choisir l'article",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Articles singuliers définis :",
+              "options": ["ὁ (ho)", "ἡ (hē)", "τό (to)", "αἱ (hai)"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ὁ masculin et ἡ féminin singuliers ; τό aussi neutre singulier."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "γυνή (gunē) femme :",
+              "options": ["ἡ (hē)", "ὁ (ho)", "τό (to)", "οἱ (hoi)"],
+              "correctAnswers": [0],
+              "explanation": "Γυνή féminin."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "λόγος (logos) mot, discours :",
+              "options": ["ὁ (ho)", "ἡ (hē)", "τό (to)", "τά (ta)"],
+              "correctAnswers": [0],
+              "explanation": "Λόγος masculin."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "ἄστρον (astron) étoile :",
+              "options": ["τό (to)", "ὁ (ho)", "ἡ (hē)", "αἱ (hai)"],
+              "correctAnswers": [0],
+              "explanation": "Ἄστρον neutre."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Le genre se voit souvent avec",
+              "options": ["l'article", "la ponctuation", "l'heure", "rien"],
+              "correctAnswers": [0],
+              "explanation": "L'article indique le genre."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "πόλις (polis) cité :",
+              "options": ["ἡ (hē)", "ὁ (ho)", "τό (to)", "τά (ta)"],
+              "correctAnswers": [0],
+              "explanation": "Πόλις féminin."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "παιδίον (paidion) :",
+              "options": ["τό (to)", "ἡ (hē)", "ὁ (ho)", "αἱ (hai)"],
+              "correctAnswers": [0],
+              "explanation": "Παιδίον neutre."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Trois genres en grec :",
+              "options": [
+                "masculin, féminin, neutre",
+                "deux seulement",
+                "singulier/pluriel",
+                "aucun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme en latin."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Accord correct :",
+              "options": ["ἡ τέχνη (technē)", "ὁ τέχνη", "τὸ τέχνη", "ὁ γυνή"],
+              "correctAnswers": [0],
+              "explanation": "Τέχνη féminin."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "ὁ indique",
+              "options": [
+                "masculin singulier",
+                "féminin",
+                "neutre",
+                "pluriel féminin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Masculin singulier défini."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Alphabet et lecture",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Voyelles grecques simples :",
+              "options": ["α (a)", "ε (e)", "β (b)", "γ (g)"],
+              "correctAnswers": [0, 1],
+              "explanation": "Α et ε sont des voyelles."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "α (alpha) se transcrit",
+              "options": ["a", "b", "th", "ps"],
+              "correctAnswers": [0],
+              "explanation": "Alpha = a."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "θ dans θεός (theos) =",
+              "options": ["th", "t", "d", "s"],
+              "correctAnswers": [0],
+              "explanation": "Theta = th."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "καὶ (kai) signifie",
+              "options": ["et", "ou", "mais", "donc"],
+              "correctAnswers": [0],
+              "explanation": "Καί = et."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "L'accent grec marque",
+              "options": [
+                "la syllabe accentuée",
+                "le genre seul",
+                "le pluriel",
+                "le passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accent tonique."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "οὐ (ou) exprime",
+              "options": ["ne … pas", "oui", "peut-être", "toujours"],
+              "correctAnswers": [0],
+              "explanation": "Négation οὐ."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "ἡ se lit",
+              "options": ["hē", "ho", "kai", "to"],
+              "correctAnswers": [0],
+              "explanation": "Esprit + ē."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Mot écrit en grec :",
+              "options": ["εἰμί (eimi)", "theos en latin", "ho mixte", "abc"],
+              "correctAnswers": [0],
+              "explanation": "Εἰμί en alphabet grec."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "λ (lambda) =",
+              "options": ["l", "r", "n", "m"],
+              "correctAnswers": [0],
+              "explanation": "Lambda = l."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "En 6e, lire le grec avec",
+              "options": [
+                "alphabet et transcription",
+                "cyrillique",
+                "sans voyelles",
+                "latin seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Graphie + transcription latine."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Accord article et nom",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Accords corrects :",
+              "options": [
+                "ὁ θεός (ho theos)",
+                "ἡ θεά (hē thea)",
+                "τὸ δῶρον (to dōron)",
+                "τὸ θεός"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Τὸ θεός est incorrect (genre)."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Article et nom s'accordent en",
+              "options": ["genre (et nombre)", "couleur", "longueur", "temps"],
+              "correctAnswers": [0],
+              "explanation": "Genre et nombre."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Erreur d'accord :",
+              "options": ["ὁ πόλις", "ἡ πόλις", "τὸ ἔργον", "ὁ λόγος"],
+              "correctAnswers": [0],
+              "explanation": "Πόλις féminin."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "ὁ ἥλιος (hēlios) soleil : accord",
+              "options": ["correct", "féminin", "neutre", "sans article"],
+              "correctAnswers": [0],
+              "explanation": "Masculin + ὁ."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "τό devant un nom indique",
+              "options": [
+                "neutre singulier",
+                "masculin",
+                "féminin pluriel",
+                "verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Neutre singulier."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Bon accord :",
+              "options": [
+                "ἡ θάλασσα (thalassa)",
+                "ὁ θάλασσα",
+                "τὸ θάλασσα",
+                "οἱ θάλασσα"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Θάλασσα féminin."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Bon accord :",
+              "options": [
+                "τὸ βιβλίον (biblion)",
+                "ἡ βιβλίον",
+                "ὁ βιβλίον",
+                "αἱ βιβλίον"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Βιβλίον neutre."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "L'article montre",
+              "options": [
+                "genre et définitude",
+                "l'âge",
+                "la ville",
+                "la couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fonction de l'article défini."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "ὁ ναύτης (nautēs) marin : genre",
+              "options": ["masculin", "féminin", "neutre", "adverbe"],
+              "correctAnswers": [0],
+              "explanation": "Indiqué par ὁ."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Corriger τὸ θεά :",
+              "options": ["ἡ θεά (hē thea)", "ὁ θεά", "τὸ θεός", "ὁ θεά"],
+              "correctAnswers": [0],
+              "explanation": "Θεά féminin."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Pluriel des articles",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Articles pluriels définis (choix parmi) :",
+              "options": [
+                "οἱ (hoi) masculin",
+                "αἱ (hai) féminin",
+                "τά (ta) neutre",
+                "ὁ (ho) singulier"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Οἱ masc. pl. et τά neutre pl. ; ὁ est singulier."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "οἱ (hoi) accompagne",
+              "options": [
+                "masculin pluriel",
+                "féminin singulier",
+                "neutre singulier",
+                "verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les (masculin pluriel)."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "οἱ ἄνθρωποι (hoi anthrōpoi) =",
+              "options": ["les hommes", "l'homme", "la femme", "le cadeau"],
+              "correctAnswers": [0],
+              "explanation": "Pluriel masculin."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "αἱ (hai) traduit souvent",
+              "options": ["les (féminin pluriel)", "le", "la", "un"],
+              "correctAnswers": [0],
+              "explanation": "Article féminin pluriel."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "τὰ δῶρα (ta dōra) : article",
+              "options": ["τά (ta)", "τό (to)", "οἱ (hoi)", "ἡ (hē)"],
+              "correctAnswers": [0],
+              "explanation": "Neutre pluriel."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Au pluriel, article et nom ont",
+              "options": [
+                "même genre et nombre",
+                "toujours neutre",
+                "pas d'accent",
+                "même graphie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord en genre et nombre."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "τά se transcrit",
+              "options": ["ta", "to", "hai", "hoi"],
+              "correctAnswers": [0],
+              "explanation": "Τά = ta."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "αἱ πόλεις (hai poleis) =",
+              "options": ["les cités", "la cité", "le citoyen", "les cadeaux"],
+              "correctAnswers": [0],
+              "explanation": "Πόλεις pluriel féminin."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "ὁ au pluriel masculin devient",
+              "options": ["οἱ (hoi)", "αἱ (hai)", "τά (ta)", "τό (to)"],
+              "correctAnswers": [0],
+              "explanation": "Paire ὁ / οἱ."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Pluriel correct :",
+              "options": ["οἱ θεοί (hoi theoi)", "ὁ θεός", "ἡ θεά", "τὸ θεόν"],
+              "correctAnswers": [0],
+              "explanation": "Θεοί pluriel masculin."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Adjectif et article",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Dans ὁ ἀγαθὸς ἀνήρ (ho agathos anēr), mots masculins :",
+              "options": [
+                "ὁ (ho)",
+                "ἀνήρ (anēr)",
+                "ἀγαθὸς (agathos)",
+                "τό (to)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ὁ et ἀνήρ masculins ; ἀγαθὸς aussi (ici deux réponses : article et nom)."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "L'adjectif s'accorde avec",
+              "options": [
+                "le nom qu'il décrit",
+                "le verbe seulement",
+                "rien",
+                "l'article seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme en français."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "ἡ καλὴ χώρα (kalē chōra) : καλὴ est",
+              "options": ["féminin", "masculin", "neutre", "verbe"],
+              "correctAnswers": [0],
+              "explanation": "Accord avec χώρα."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "ἀγαθός (agathos) =",
+              "options": ["bon", "mauvais", "petit", "noir"],
+              "correctAnswers": [0],
+              "explanation": "Ἀγαθός = bon."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "καλός (kalos) =",
+              "options": ["beau, bon", "laide", "lent", "froid"],
+              "correctAnswers": [0],
+              "explanation": "Καλός = beau."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "En phrase courte, adjectif et nom",
+              "options": [
+                "se placent près de l'article",
+                "sont interdits",
+                "remplacent εἰμί",
+                "forment le verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre flexible en grec."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "τὸ καλὸν δῶρον (kalon dōron) : καλὸν est",
+              "options": ["neutre", "masculin", "féminin", "pluriel"],
+              "correctAnswers": [0],
+              "explanation": "Accord avec δῶρον."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Avec ἡ, un adjectif en -η (καλὴ) est",
+              "options": ["cohérent", "masculin", "neutre", "verbe"],
+              "correctAnswers": [0],
+              "explanation": "Même genre que le nom."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "μικρός (mikros) =",
+              "options": ["petit", "grand", "vieux", "beau"],
+              "correctAnswers": [0],
+              "explanation": "Μικρός = petit."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "ὁ καλὸς θεός (kalos theos) : accord",
+              "options": ["correct", "incorrect", "neutre", "sans nom"],
+              "correctAnswers": [0],
+              "explanation": "Masculin singulier."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Révision articles",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Bonnes associations (singulier) :",
+              "options": [
+                "ὁ → masculin",
+                "ἡ → féminin",
+                "τό → neutre",
+                "τά → masculin singulier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Τά est neutre pluriel, pas masculin singulier."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Article dans ἡ θεά :",
+              "options": ["ἡ (hē)", "ὁ (ho)", "τό (to)", "οἱ (hoi)"],
+              "correctAnswers": [0],
+              "explanation": "Féminin singulier."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Article dans τὸ παιδίον :",
+              "options": ["τό (to)", "ὁ (ho)", "ἡ (hē)", "αἱ (hai)"],
+              "correctAnswers": [0],
+              "explanation": "Neutre singulier."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Les dieux :",
+              "options": ["οἱ θεοί (hoi theoi)", "ὁ θεός", "ἡ θεοί", "τὸ θεοί"],
+              "correctAnswers": [0],
+              "explanation": "Pluriel masculin."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Faux accord :",
+              "options": ["τὸ λόγος", "ὁ λόγος", "ἡ γῆ", "τὸ ἔργον"],
+              "correctAnswers": [0],
+              "explanation": "Λόγος masculin."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "ὁ θεός en français :",
+              "options": ["le dieu", "la déesse", "les dieux", "une déesse"],
+              "correctAnswers": [0],
+              "explanation": "Défini masculin."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Les cadeaux :",
+              "options": ["τὰ δῶρα (ta dōra)", "τὸ δῶρον", "οἱ δῶρα", "ἡ δῶρα"],
+              "correctAnswers": [0],
+              "explanation": "Neutre pluriel."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Trois genres existent aussi en",
+              "options": [
+                "latin",
+                "français pour chaque nom",
+                "aucune langue",
+                "japonais seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Latin : m., f., n."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Triplet singulier appris :",
+              "options": [
+                "ὁ, ἡ, τό",
+                "οἱ, αἱ, τά seuls",
+                "εἰμί seul",
+                "καί seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Articles de base."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "But de l'unité 1 :",
+              "options": [
+                "choisir l'article selon le nom",
+                "tous les cas du grec",
+                "l'Iliade entière",
+                "oublier la transcription"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accords et articles en 6e."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse accords",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Articles corrects :",
+              "options": [
+                "ὁ πατήρ (ho patēr)",
+                "ἡ μήτηρ (hē mētēr)",
+                "τὸ τέκνον (to teknon)",
+                "τὸ μήτηρ"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Μήτηρ féminin : τὸ μήτηρ est faux."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "μήτηρ (mētēr) =",
+              "options": ["mère", "père", "frère", "fille"],
+              "correctAnswers": [0],
+              "explanation": "Μήτηρ = mère."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "πατήρ (patēr) avec article :",
+              "options": ["ὁ πατήρ", "ἡ πατήρ", "τὸ πατήρ", "αἱ πατήρ"],
+              "correctAnswers": [0],
+              "explanation": "Masculin."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "La loi (νόμος, nomos) :",
+              "options": [
+                "ὁ νόμος (ho nomos)",
+                "ἡ νόμος",
+                "τὸ νόμος",
+                "τά νόμος"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Νόμος masculin."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "La sagesse (σοφία, sophia) :",
+              "options": [
+                "ἡ σοφία (hē sophia)",
+                "ὁ σοφία",
+                "τὸ σοφία",
+                "οἱ σοφία"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Σοφία féminin."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Le livre (βιβλίον, biblion) :",
+              "options": [
+                "τὸ βιβλίον (to biblion)",
+                "ὁ βιβλίον",
+                "ἡ βιβλίον",
+                "αἱ βιβλίον"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Neutre."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "L'article grec est lié au",
+              "options": ["genre", "temps verbal", "préposition", "adverbe"],
+              "correctAnswers": [0],
+              "explanation": "Système de genre."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Les femmes (pluriel féminin) : article",
+              "options": ["αἱ (hai)", "ὁ (ho)", "τό (to)", "οἱ (hoi)"],
+              "correctAnswers": [0],
+              "explanation": "αἱ pluriel féminin."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "οἱ se transcrit",
+              "options": ["hoi", "ho", "hai", "ta"],
+              "correctAnswers": [0],
+              "explanation": "Οἱ = hoi."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Fin unité 1 : tu sais",
+              "options": [
+                "reconnaître ὁ ἡ τό et pluriels",
+                "tous les cas",
+                "le sanscrit",
+                "rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveau 6e."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Le verbe εἰμί",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Que désigne εἰμί (eimi) ?",
+              "options": [
+                "un verbe (être)",
+                "la forme « je suis »",
+                "un article défini",
+                "la conjonction « et »"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Εἰμί = verbe être, 1re personne je suis."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "εἰμί correspond à",
+              "options": ["je suis", "tu es", "il est", "nous sommes"],
+              "correctAnswers": [0],
+              "explanation": "1re personne singulier."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Transcription εἰμί :",
+              "options": ["eimi", "eime", "imi", "heimi"],
+              "correctAnswers": [0],
+              "explanation": "Ει + μι → eimi."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "εἰμί sert à",
+              "options": [
+                "dire ce qu'est quelqu'un",
+                "former le pluriel seul",
+                "remplacer les articles",
+                "marquer le passé français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe copule."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "ἐγώ εἰμι (egō eimi) signifie",
+              "options": ["je suis", "tu es", "il est", "je ne suis pas"],
+              "correctAnswers": [0],
+              "explanation": "Ἐγώ = je ; εἰμί = suis."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "ἐγώ (egō) signifie",
+              "options": ["je", "tu", "il", "nous"],
+              "correctAnswers": [0],
+              "explanation": "Pronom je."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Une phrase avec εἰμί contient souvent",
+              "options": [
+                "sujet + copule + attribut",
+                "article seul",
+                "sans verbe",
+                "préposition seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure simple sujet–verbe."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "εἰμί est",
+              "options": [
+                "irrégulier et très fréquent",
+                "absent du grec",
+                "un adjectif",
+                "un article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe essentiel."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "εἰμί est grammaticalement",
+              "options": ["un verbe", "un nom", "un article", "une particule"],
+              "correctAnswers": [0],
+              "explanation": "Copule."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Forme de base « être » apprise :",
+              "options": ["εἰμί (eimi)", "ὁ (ho)", "καὶ (kai)", "γῆ (gē)"],
+              "correctAnswers": [0],
+              "explanation": "Point de départ du verbe."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Tu es : εἶ",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Formes « tu es » en 6e :",
+              "options": [
+                "εἶ (ei)",
+                "σὺ … εἶ (su ei)",
+                "εἰμί (je suis)",
+                "ἐστί (il est)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Εἶ = tu es ; avec σύ (tu)."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "εἶ (ei) signifie",
+              "options": ["tu es", "je suis", "il est", "vous êtes"],
+              "correctAnswers": [0],
+              "explanation": "2e personne singulier."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "σύ (su) signifie",
+              "options": ["tu", "je", "il", "nous"],
+              "correctAnswers": [0],
+              "explanation": "Pronom tu."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "σὺ εἶ (su ei) signifie",
+              "options": ["tu es", "je suis", "il est", "tu n'es pas"],
+              "correctAnswers": [0],
+              "explanation": "Pronom + verbe."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Transcription εἶ :",
+              "options": ["ei", "eimi", "esti", "egō"],
+              "correctAnswers": [0],
+              "explanation": "Εἶ = ei."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "εἰμί et εἶ diffèrent par",
+              "options": [
+                "la personne (je / tu)",
+                "le genre du nom",
+                "l'article",
+                "le pluriel seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Je suis vs tu es."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Idée « tu es bon » (masculin) :",
+              "options": [
+                "σὺ ἀγαθὸς εἶ (su agathos ei)",
+                "ἐγὼ εἰμί",
+                "ὁ ἀγαθός seul",
+                "τὸ ἀγαθόν"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet + adjectif + εἶ."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "εἶ est",
+              "options": [
+                "une forme du verbe εἰμί",
+                "un nom",
+                "un article",
+                "une préposition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2e personne."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Avec σύ (tu), le verbe attendu est",
+              "options": ["εἶ", "εἰμί", "ἐστί seul", "ὁ"],
+              "correctAnswers": [0],
+              "explanation": "Accord de personne."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« Tu es » en grec court :",
+              "options": ["εἶ (ei)", "εἰμί", "ἐστί", "καί"],
+              "correctAnswers": [0],
+              "explanation": "Forme apprise en 6e."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Il est : ἐστί",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Formes du verbe être (6e) :",
+              "options": [
+                "ἐστί (esti) il/elle est",
+                "εἰμί (eimi) je suis",
+                "ὁ (ho) article",
+                "καὶ (kai) et"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ἐστί et εἰμί : deux personnes du verbe être."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "ἐστί (esti) signifie",
+              "options": ["il/elle est", "je suis", "tu es", "nous sommes"],
+              "correctAnswers": [0],
+              "explanation": "3e personne singulier."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "ὁ θεός ἐστι (ho theos esti) évoque",
+              "options": [
+                "le dieu est / c'est le dieu",
+                "tu es dieu",
+                "je suis dieu",
+                "pas de verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet + copule 3e pers."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Transcription ἐστί :",
+              "options": ["esti", "eimi", "ei", "egō"],
+              "correctAnswers": [0],
+              "explanation": "Ἐστί = esti."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "ἡ θεά ἐστι (hē thea esti) =",
+              "options": [
+                "elle est déesse / la déesse est",
+                "il est",
+                "tu es",
+                "nous sommes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Féminin + ἐστί."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "τὸ δῶρον ἐστι (to dōron esti) =",
+              "options": [
+                "c'est le cadeau / le cadeau est",
+                "les cadeaux",
+                "tu es cadeau",
+                "sans copule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Neutre + ἐστί."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "ἐστί vs εἰμί :",
+              "options": [
+                "il/elle vs je",
+                "même personne",
+                "deux noms",
+                "deux articles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Personne verbale différente."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Phrase courte avec ἐστί :",
+              "options": ["nom + ἐστί", "article seul", "καὶ seul", "οὐ seul"],
+              "correctAnswers": [0],
+              "explanation": "Sujet + copule."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "ἐστί est",
+              "options": [
+                "un verbe (copule)",
+                "un adjectif",
+                "un article",
+                "une conjonction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme de εἰμί."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« Il est » (3e singulier) :",
+              "options": ["ἐστί (esti)", "εἶ", "εἰμί", "σύ"],
+              "correctAnswers": [0],
+              "explanation": "3e personne."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Pronoms ἐγώ et σύ",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Pronoms personnels 1re et 2e :",
+              "options": ["ἐγώ (egō) je", "σύ (su) tu", "ὁ (ho)", "τό (to)"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ἐγώ et σύ ; ὁ et τό sont des articles."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "ἐγώ (egō) =",
+              "options": ["je", "tu", "il", "nous"],
+              "correctAnswers": [0],
+              "explanation": "1re personne."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "σύ (su) =",
+              "options": ["tu", "je", "il", "ils"],
+              "correctAnswers": [0],
+              "explanation": "2e personne."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "ἐγὼ … εἰμί signifie",
+              "options": ["je suis", "tu es", "il est", "nous sommes"],
+              "correctAnswers": [0],
+              "explanation": "Pronom + verbe 1re pers."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "σὺ … εἶ signifie",
+              "options": ["tu es", "je suis", "il est", "vous êtes"],
+              "correctAnswers": [0],
+              "explanation": "Pronom + verbe 2e pers."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Le pronom sujet en grec",
+              "options": [
+                "peut être exprimé (ἐγώ, σύ)",
+                "n'existe pas",
+                "remplace l'article",
+                "est toujours omis sans sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souvent présent dans les phrases apprises."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "ἐγώ et σύ opposent",
+              "options": [
+                "je et tu",
+                "il et elle",
+                "nous et vous",
+                "article et nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux personnes."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Transcription σύ :",
+              "options": ["su", "egō", "ei", "esti"],
+              "correctAnswers": [0],
+              "explanation": "Σύ = su."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Paire pronom–verbe « je » :",
+              "options": ["ἐγώ / εἰμί", "σύ / εἶ", "θεός / ὁ", "δῶρον / τό"],
+              "correctAnswers": [0],
+              "explanation": "1re personne."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Paire « tu » :",
+              "options": ["σύ / εἶ", "ἐγώ / εἰμί", "ἐστί / il", "καὶ / et"],
+              "correctAnswers": [0],
+              "explanation": "2e personne."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Phrases avec nom",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Phrases nom + ἐστί correctes :",
+              "options": [
+                "ὁ θεός ἐστι (ho theos esti)",
+                "ἡ θεά ἐστι (hē thea esti)",
+                "καὶ seul",
+                "οὐ seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sujet défini + copule ; καὶ et οὐ ne font pas une phrase complète seuls."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Le dieu est » :",
+              "options": [
+                "ὁ θεός ἐστι (ho theos esti)",
+                "ἡ θεός ἐστι",
+                "τὸ θεός ἐστι",
+                "ὁ θεός εἰμί"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Masculin + ἐστί."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« L'âme est » (ψυχή féminin) :",
+              "options": [
+                "ἡ ψυχή ἐστι (hē psuchē esti)",
+                "ὁ ψυχή ἐστι",
+                "τὸ ψυχή ἐστι",
+                "ἡ ψυχή εἶ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ἡ ψυχή + ἐστί."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Le cadeau est » :",
+              "options": [
+                "τὸ δῶρον ἐστι (to dōron esti)",
+                "ὁ δῶρον ἐστι",
+                "ἡ δῶρον ἐστι",
+                "τὸ δῶρον εἶ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Neutre + ἐστί."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "La copule dans une phrase nominale",
+              "options": [
+                "lie le sujet à l'attribut",
+                "remplace le nom",
+                "forme le pluriel",
+                "est un article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe être."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "ἐγὼ ἄνθρωπός εἰμι (egō anthrōpos eimi) ≈",
+              "options": [
+                "je suis homme",
+                "tu es homme",
+                "il est homme",
+                "je suis dieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ἐγώ + εἰμί + nom."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "En 6e, on apprend surtout des phrases",
+              "options": [
+                "avec εἰμί / ἐστί",
+                "sans verbe",
+                "sans article",
+                "sans transcription"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Copule obligatoire dans les modèles."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« La terre est » (γῆ féminin) :",
+              "options": [
+                "ἡ γῆ ἐστι (hē gē esti)",
+                "ὁ γῆ ἐστι",
+                "τὸ γῆ ἐστι",
+                "ἡ γῆ εἶ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Γῆ féminin."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "τὸ ἔργον ἐστι (to ergon esti)",
+                "τὸ ἔργον εἰμί",
+                "ὁ ἔργον ἐστι",
+                "ἡ ἔργον ἐστι"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ἔργον neutre."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Sujet défini + ἐστί sert à",
+              "options": [
+                "affirmer une identité ou qualité",
+                "nier",
+                "coordination seule",
+                "pluriel seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase affirmative simple."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Ordre des mots",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Repères dans une phrase simple :",
+              "options": [
+                "sujet (nom ou pronom)",
+                "verbe εἰμί / ἐστί / εἶ",
+                "l'article suffit seul",
+                "οὐ remplace le sujet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On repère le sujet puis la copule ; l'article accompagne le nom."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Ordre fréquent en 6e :",
+              "options": [
+                "sujet + verbe (+ attribut)",
+                "verbe seul sans sujet toujours",
+                "article en fin",
+                "préposition obligatoire en tête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle sujet puis verbe."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "ἐγὼ εἰμί (egō eimi) : mot initial souvent",
+              "options": [
+                "ἐγώ (egō)",
+                "εἰμί seul parfois",
+                "καὶ (kai)",
+                "οὐ (ou)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pronom en tête possible."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "ὁ θεός ἐστι : le sujet est",
+              "options": ["ὁ θεός (ho theos)", "ἐστί", "τό (to)", "καί (kai)"],
+              "correctAnswers": [0],
+              "explanation": "Groupe nominal sujet."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "En 6e, le verbe copule se place",
+              "options": [
+                "souvent après le sujet",
+                "toujours avant l'article",
+                "jamais dans la phrase",
+                "à la place du nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre pédagogique simple."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "καὶ (kai) entre deux mots",
+              "options": [
+                "relie (et)",
+                "nie",
+                "remplace εἰμί",
+                "est un article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conjonction « et »."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Phrase « je suis » apprise :",
+              "options": ["ἐγὼ εἰμί (egō eimi)", "σὺ εἶ", "ὁ εἰμί", "τὸ εἰμί"],
+              "correctAnswers": [0],
+              "explanation": "Pronom + copule."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Groupe sujet masculin :",
+              "options": [
+                "ὁ + nom (ho …)",
+                "τὸ + nom masculin",
+                "ἡ + nom masculin",
+                "verbe seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Article masculin + nom."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Verbe copule en phrase courte :",
+              "options": [
+                "εἰμί / εἶ / ἐστί",
+                "ὁ / ἡ / τό seuls",
+                "οὐ seul",
+                "λόγος (logos) seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formes du verbe être."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Lire une phrase grecque, c'est",
+              "options": [
+                "repérer sujet puis verbe",
+                "ignorer les articles",
+                "lire de droite à gauche",
+                "oublier la transcription"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode de lecture 6e."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Négation οὐ",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Mots de phrase simple (6e) :",
+              "options": [
+                "οὐ (ou) ne … pas",
+                "καὶ (kai) et",
+                "ὁ (ho) article",
+                "εἰμί verbe"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Οὐ nie ; καὶ coordonne."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "οὐ (ou) signifie",
+              "options": ["ne … pas", "et", "le", "je suis"],
+              "correctAnswers": [0],
+              "explanation": "Négation."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Variante devant voyelle (aperçu) :",
+              "options": ["οὐκ (ouk)", "καὶ (kai)", "ὁ (ho)", "εἰμί (eimi)"],
+              "correctAnswers": [0],
+              "explanation": "Assimilation simple οὐ → οὐκ."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Idée « je ne suis pas » :",
+              "options": [
+                "οὐ … εἰμί (structure)",
+                "καὶ εἰμί",
+                "ὁ εἰμί",
+                "εἶ seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation + copule."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Phrase affirmative :",
+              "options": [
+                "ἐγὼ εἰμί (egō eimi)",
+                "οὐ ἐγὼ εἰμί",
+                "καὶ seul",
+                "τό seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans οὐ."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "οὐ dans une phrase courte",
+              "options": [
+                "nie le verbe / la proposition",
+                "ajoute « et »",
+                "remplace le sujet",
+                "forme le pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rôle négatif."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Transcription οὐ :",
+              "options": ["ou", "kai", "ho", "ei"],
+              "correctAnswers": [0],
+              "explanation": "Οὐ = ou."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Affirmation « il est » :",
+              "options": ["ἐστί (esti)", "οὐ ἐστί", "καὶ ἐστί", "τὸ ἐστί"],
+              "correctAnswers": [0],
+              "explanation": "Positif sans οὐ."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Négation apprise avec",
+              "options": [
+                "εἰμί / ἐστί",
+                "articles seuls",
+                "alphabet seul",
+                "pluriel seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Copule + οὐ."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "οὐ s'oppose à",
+              "options": [
+                "une phrase affirmative",
+                "l'article défini",
+                "la transcription",
+                "le féminin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Affirmation vs négation."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Et : καί",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Petits mots fréquents :",
+              "options": [
+                "καὶ (kai) et",
+                "οὐ (ou) ne … pas",
+                "εἰμί (eimi) je suis",
+                "ὁ (ho) le"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Καὶ = et ; οὐ = ne pas."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "καὶ (kai) signifie",
+              "options": ["et", "ou", "mais", "donc"],
+              "correctAnswers": [0],
+              "explanation": "Conjonction et."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Dieu et déesse » (idée) :",
+              "options": [
+                "θεὸς καὶ θεά (theos kai thea)",
+                "οὐ θεός",
+                "εἰμί μόνον",
+                "τὸ καὶ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux noms liés par καί."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "καὶ entre deux noms",
+              "options": ["addition (et)", "négation", "copule", "article"],
+              "correctAnswers": [0],
+              "explanation": "Coordination."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Transcription καὶ :",
+              "options": ["kai", "ou", "ho", "esti"],
+              "correctAnswers": [0],
+              "explanation": "Καί = kai."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "καὶ peut",
+              "options": [
+                "relier deux groupes de mots",
+                "remplacer εἰμί",
+                "supprimer l'article",
+                "former le pluriel seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coordination simple."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "ὁ θεὸς καὶ ἡ θεά (ho theos kai hē thea) ≈",
+              "options": [
+                "le dieu et la déesse",
+                "ne pas dieu",
+                "verbe seul",
+                "négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Masculin et féminin coordonnés."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "καὶ vs οὐ",
+              "options": ["et vs ne … pas", "même sens", "articles", "pluriel"],
+              "correctAnswers": [0],
+              "explanation": "Sens opposés (coordination / négation)."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Mot grec « et » :",
+              "options": ["καὶ (kai)", "οὐ (ou)", "ἐγώ (egō)", "τό (to)"],
+              "correctAnswers": [0],
+              "explanation": "Καί."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Relier deux mots avec « et » en grec :",
+              "options": ["καί (kai)", "εἰμί (eimi)", "ἐστί (esti)", "ὁ (ho)"],
+              "correctAnswers": [0],
+              "explanation": "Conjonction καὶ."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Phrases à traduire",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Traductions correctes :",
+              "options": [
+                "ἐγὼ εἰμί = je suis",
+                "σὺ εἶ = tu es",
+                "ὁ = verbe être",
+                "τό = je suis"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pronom + copule ; ὁ et τό sont articles."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Je suis » :",
+              "options": [
+                "ἐγὼ εἰμί (egō eimi)",
+                "σὺ εἶ (su ei)",
+                "ἐστί (esti)",
+                "ὁ εἰμί"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1re personne."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Tu es » :",
+              "options": ["σὺ εἶ (su ei)", "ἐγὼ εἰμί", "ὁ θεός", "τὸ δῶρον"],
+              "correctAnswers": [0],
+              "explanation": "2e personne."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Il est » (3e) :",
+              "options": ["ἐστί (esti)", "εἰμί (eimi)", "εἶ (ei)", "ἐγώ (egō)"],
+              "correctAnswers": [0],
+              "explanation": "3e singulier."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Le dieu est » :",
+              "options": [
+                "ὁ θεός ἐστι (ho theos esti)",
+                "ἡ θεός ἐστι",
+                "τὸ θεός εἰμί",
+                "καὶ θεός"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet masc. + ἐστί."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« La déesse est » :",
+              "options": [
+                "ἡ θεά ἐστι (hē thea esti)",
+                "ὁ θεά ἐστι",
+                "τὸ θεά εἶ",
+                "οὐ θεά"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet fém. + ἐστί."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« C'est le cadeau » (idée) :",
+              "options": [
+                "τὸ δῶρον ἐστι (to dōron esti)",
+                "ὁ δῶρον εἰμί",
+                "ἡ δῶρον",
+                "καὶ δῶρον seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Neutre + ἐστί."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Dans θεὸς καὶ θεά (theos kai thea), « et » =",
+              "options": ["καί (kai)", "οὐ (ou)", "εἰμί (eimi)", "ἐστί (esti)"],
+              "correctAnswers": [0],
+              "explanation": "Καί."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Ne … pas » (mot grec) :",
+              "options": ["οὐ (ou)", "καὶ (kai)", "ὁ (ho)", "σύ (su)"],
+              "correctAnswers": [0],
+              "explanation": "Οὐ."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Forme courte « je suis » :",
+              "options": [
+                "εἰμί (eimi) ou ἐγὼ εἰμί",
+                "ὁ ἡ τό",
+                "τὰ δῶρα (ta dōra)",
+                "οἱ θεοί (hoi theoi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Copule seule ou avec ἐγώ."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse phrases",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Révision copule :",
+              "options": [
+                "εἰμί = je suis",
+                "ἐστί = il/elle est",
+                "ὁ = verbe être",
+                "καὶ = ne … pas"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Εἰμί et ἐστί ; καὶ = et."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Article + nom + ἐστί sert à",
+              "options": [
+                "« le/la X est »",
+                "pluriel seul",
+                "négation seule",
+                "alphabet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase nominale."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "ἡ γῆ ἐστι (hē gē esti)",
+                "ὁ γῆ ἐστι",
+                "τὸ γῆ εἶ",
+                "ἡ γῆ εἰμί"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Γῆ féminin."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Pronom je + verbe :",
+              "options": [
+                "ἐγὼ εἰμί (egō eimi)",
+                "σὺ εἶ",
+                "ἐστί seul pour je",
+                "ὁ εἰμί"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1re personne."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Objectif unité 2 :",
+              "options": [
+                "phrases simples avec εἰμί",
+                "déclinaison complète",
+                "Homère intégral",
+                "sans transcription"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrases courtes 6e."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Trois formes du verbe être (sing.) :",
+              "options": [
+                "εἰμί, εἶ, ἐστί",
+                "ὁ, ἡ, τό",
+                "οὐ, καὶ, σύ",
+                "α, β, γ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Je / tu / il-elle."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "σύ (su) s'accorde avec",
+              "options": ["εἶ (ei)", "εἰμί", "ἐστί", "ὁ"],
+              "correctAnswers": [0],
+              "explanation": "2e personne."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "ἐγώ (egō) avec",
+              "options": ["εἰμί", "εἶ", "ἐστί pour je", "τό"],
+              "correctAnswers": [0],
+              "explanation": "1re personne."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Négation (idée) :",
+              "options": [
+                "οὐ + verbe",
+                "καὶ + verbe = et",
+                "ὁ + verbe",
+                "τό remplace verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Οὐ nie."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Fin du chapitre : tu peux",
+              "options": [
+                "lire des phrases courtes (articles + εἰμί)",
+                "tous les cas grecs",
+                "sans alphabet",
+                "sans français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grammaire 6e grec."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

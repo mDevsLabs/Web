@@ -109,7 +109,10 @@ export function AgendaRow({
       <View style={{ flex: 1, gap: 3 }}>
         <Text style={[s.text, { fontSize: 13, fontWeight: "500" }]}>{e.title}</Text>
         <Text numberOfLines={1} style={[s.small, { fontSize: 11 }]}>
-          {e.location || (e.attendees.length ? `${e.attendees.length} attendees` : "Time for you")}
+          {e.location ||
+            ((e.attendees?.length ?? 0) > 0
+              ? `${e.attendees?.length} attendees`
+              : "Time for you")}
         </Text>
       </View>
       <ChevronRight size={14} color={colors.muted} />

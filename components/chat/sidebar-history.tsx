@@ -25,6 +25,10 @@ import {
   SidebarMenu,
   useSidebar,
 } from "@/components/ui/sidebar";
+import {
+  revalidateChatHistories,
+  useChatHistoryReset,
+} from "@/hooks/revalidate-chat-histories";
 import { useProjects } from "@/hooks/use-projects";
 import type { Chat } from "@/lib/db/schema";
 import { fetcher } from "@/lib/utils";
@@ -129,6 +133,10 @@ export function SidebarHistory({
     fetcher,
     { revalidateOnFocus: false }
   );
+  const resetHistoryPage = useCallback(() => {
+    setSize(1);
+  }, [setSize]);
+  useChatHistoryReset(resetHistoryPage);
 
   const router = useRouter();
   const [deleteId, setDeleteId] = useState<string | null>(null);
@@ -156,6 +164,9 @@ export function SidebarHistory({
 
   const handleDelete = useCallback(() => {
     const chatToDelete = deleteId;
+    if (!chatToDelete) {
+      return;
+    }
     const isCurrentChat = pathname === `/chat/${chatToDelete}`;
 
     setShowDeleteDialog(false);
@@ -164,22 +175,23 @@ export function SidebarHistory({
       router.replace("/");
     }
 
-    mutate((chatHistories) => {
-      if (chatHistories) {
-        return chatHistories.map((chatHistory) => ({
-          ...chatHistory,
-          chats: chatHistory.chats.filter((chat) => chat.id !== chatToDelete),
-        }));
+    void (async () => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chat?id=${chatToDelete}`,
+          { method: "DELETE" }
+        );
+        if (!res.ok) {
+          toast.error("Erreur lors de la suppression");
+          return;
+        }
+        toast.success("Discussion supprimée");
+        await revalidateChatHistories();
+      } catch {
+        toast.error("Erreur lors de la suppression");
       }
-    });
-
-    fetch(
-      `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chat?id=${chatToDelete}`,
-      { method: "DELETE" }
-    );
-
-    toast.success("Discussion supprimée");
-  }, [deleteId, mutate, pathname, router]);
+    })();
+  }, [deleteId, pathname, router]);
 
   const handleShowDeleteDialog = useCallback((chatId: string) => {
     setDeleteId(chatId);

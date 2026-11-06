@@ -1,0 +1,2588 @@
+{
+  "id": "3e-physique-chimie-04",
+  "year": "3e",
+  "subject": "physique-chimie",
+  "title": "La matière",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Constituants",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Structure générale de l'atome",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "De quoi est constitué un atome ?",
+              "options": [
+                "D'un noyau central et d'un nuage d'électrons",
+                "D'une sphère pleine et indivisible",
+                "Uniquement de neutrons",
+                "D'un liquide chargé positivement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un atome est constitué d'un noyau central minuscule et dense autour duquel évoluent des électrons formant un nuage électronique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où se concentre la quasi-totalité de la masse d'un atome ?",
+              "options": [
+                "Dans son noyau",
+                "Dans ses électrons",
+                "Dans le vide atomique",
+                "Elle est répartie équitablement partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les nucléons du noyau sont environ 2000 fois plus massifs que les électrons : plus de 99,9 % de la masse de l'atome réside dans le noyau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la charge électrique d'un électron ?",
+              "options": [
+                "Une charge négative",
+                "Une charge positive",
+                "Une charge neutre (nulle)",
+                "Une charge variable selon le milieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque électron porte une charge élémentaire négative, notée -e, égale à environ -1,6 × 10⁻¹⁹ C."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi qualifie-t-on la structure de l'atome de lacunaire ?",
+              "options": [
+                "Parce qu'il est principalement constitué de vide",
+                "Parce qu'il perd régulièrement des particules",
+                "Parce que son noyau est percé de cavités",
+                "Parce qu'il lui manque toujours un électron"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entre le noyau et les électrons, il n'y a que du vide : l'atome présente donc une structure essentiellement lacunaire."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles particules composent directement un atome ?",
+              "options": [
+                "Les électrons du nuage électronique",
+                "Les nucléons situés dans le noyau",
+                "Les molécules d'eau",
+                "Les cellules vivantes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un atome est formé d'électrons périphériques et d'un noyau central contenant des nucléons (protons et neutrons)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur du diamètre d'un atome ?",
+              "options": [
+                "10⁻¹⁰ m (0,1 nanomètre)",
+                "10⁻⁶ m (1 micromètre)",
+                "10⁻³ m (1 millimètre)",
+                "10⁻¹⁵ m (1 femtomètre)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le diamètre d'un atome est de l'ordre du dixième de nanomètre, soit environ 10⁻¹⁰ mètre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment se déplacent les électrons autour du noyau ?",
+              "options": [
+                "En formant un nuage électronique",
+                "Sur des orbites rigides et circulaires fixes",
+                "En ligne droite vers l'extérieur",
+                "En restant complètement immobiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les électrons se meuvent à très grande vitesse autour du noyau, formant une zone probabiliste appelée nuage électronique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Par rapport à son noyau, la taille globale de l'atome est environ :",
+              "options": [
+                "100 000 fois plus grande",
+                "2 fois plus grande",
+                "100 fois plus petite",
+                "Strictement identique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'atome mesure environ 10⁻¹⁰ m tandis que son noyau mesure 10⁻¹⁵ m : l'atome est environ 100 000 fois plus grand."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que trouve-t-on dans l'espace situé entre le noyau et les électrons ?",
+              "options": [
+                "Du vide",
+                "De l'air sous pression",
+                "De l'eau pure",
+                "Un gel conducteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il n'y a aucune matière entre le noyau et les électrons : c'est le vide le plus complet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel scientifique a découvert l'existence du noyau atomique en 1911 ?",
+              "options": [
+                "Ernest Rutherford",
+                "Albert Einstein",
+                "Isaac Newton",
+                "Dmitri Mendeleïev"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ernest Rutherford a mis en évidence le noyau atomique grâce à sa célèbre expérience de bombardement d'une feuille d'or par des particules alpha."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Le noyau atomique : protons et neutrons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on les constituants du noyau atomique ?",
+              "options": [
+                "Les nucléons",
+                "Les électrons",
+                "Les ions",
+                "Les molécules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot nucléon désigne indifféremment les protons et les neutrons contenus dans le noyau atomique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la charge électrique d'un proton ?",
+              "options": [
+                "Positive (+e)",
+                "Négative (-e)",
+                "Nulle (neutre)",
+                "Doublement négative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le proton porte une charge élémentaire positive notée +e (+1,6 × 10⁻¹⁹ C)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la charge électrique d'un neutron ?",
+              "options": [
+                "Nulle (il est neutre)",
+                "Positive (+e)",
+                "Négative (-e)",
+                "Variable selon l'atome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme son nom l'indique, le neutron ne possède aucune charge électrique : sa charge est nulle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que représente le numéro atomique Z d'un atome ?",
+              "options": [
+                "Le nombre de protons",
+                "Le nombre de neutrons",
+                "Le nombre total de nucléons",
+                "La masse totale de l'atome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le numéro atomique Z correspond au nombre de protons présents dans le noyau atomique."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles particules trouve-t-on à l'intérieur du noyau atomique ?",
+              "options": [
+                "Les protons",
+                "Les neutrons",
+                "Les électrons",
+                "Les ions sodium"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le noyau atomique est uniquement composé de protons (chargés positivement) et de neutrons (neutres)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que représente le nombre de masse A d'un atome ?",
+              "options": [
+                "Le nombre total de nucléons (protons + neutrons)",
+                "Le nombre d'électrons périphériques",
+                "La charge électrique globale",
+                "Le volume occupé par le noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nombre de masse A indique le nombre total de nucléons contenus dans le noyau (A = Z + N)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le nombre de neutrons N dans un noyau ?",
+              "options": ["N = A - Z", "N = A + Z", "N = Z - A", "N = A × Z"],
+              "correctAnswers": [0],
+              "explanation": "Le nombre de neutrons N s'obtient en soustrayant le nombre de protons Z au nombre total de nucléons A : N = A - Z."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un noyau possède Z = 6 et A = 14. Combien contient-il de neutrons ?",
+              "options": [
+                "8 neutrons",
+                "6 neutrons",
+                "14 neutrons",
+                "20 neutrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "N = A - Z = 14 - 6 = 8 neutrons (il s'agit de l'isotope carbone 14)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la charge électrique globale du noyau d'un atome ?",
+              "options": [
+                "Toujours positive",
+                "Toujours négative",
+                "Nulle",
+                "Alternativement positive et négative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le noyau contient des protons positifs et des neutrons neutres : sa charge globale est donc toujours positive."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on deux atomes possédant le même Z mais un A différent ?",
+              "options": [
+                "Des isotopes",
+                "Des isomères",
+                "Des ions",
+                "Des molécules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des isotopes ont le même nombre de protons Z mais un nombre de neutrons différent (donc un nombre de masse A différent)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Neutralité électrique de l'atome",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la charge électrique globale d'un atome neutre ?",
+              "options": [
+                "Elle est nulle",
+                "Elle est positive",
+                "Elle est négative",
+                "Elle dépend de la température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un atome est toujours électriquement neutre dans son état fondamental : sa charge globale est nulle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un atome neutre, le nombre d'électrons est obligatoirement égal au nombre de :",
+              "options": [
+                "Protons",
+                "Neutrons",
+                "Nucléons",
+                "Molécules voisines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour compenser exactement la charge positive des protons, l'atome neutre possède autant d'électrons que de protons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'atome d'azote possède 7 protons. Combien possède-t-il d'électrons ?",
+              "options": [
+                "7 électrons",
+                "14 électrons",
+                "0 électron",
+                "3 électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'atome étant électriquement neutre, il comporte 7 électrons pour équilibrer la charge de ses 7 protons."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi la charge d'un atome est-elle neutre ?",
+              "options": [
+                "Car la charge positive du noyau compense la charge négative du nuage électronique",
+                "Car chaque particule de l'atome est individuellement neutre",
+                "Car les électrons absorbent la charge des protons",
+                "Car les neutrons annulent la masse de l'atome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La somme des charges positives des protons (+Z·e) et des charges négatives des électrons (-Z·e) donne une charge totale nulle."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernant la neutralité de l'atome sont exactes ?",
+              "options": [
+                "Le nombre d'électrons est égal au numéro atomique Z",
+                "La charge électrique totale de l'atome vaut zéro",
+                "Le nombre de neutrons est toujours égal au nombre d'électrons",
+                "Le noyau possède une charge électrique globale négative"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dans un atome neutre, il y a Z électrons et Z protons, ce qui donne une charge totale nulle. Le nombre de neutrons n'est pas forcément égal à Z."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un atome possède 17 électrons. Quel est son numéro atomique Z ?",
+              "options": ["Z = 17", "Z = 35", "Z = 8", "Z = 1"],
+              "correctAnswers": [0],
+              "explanation": "Dans un atome neutre, le nombre d'électrons est égal au nombre de protons Z, donc Z = 17 (il s'agit du chlore)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de la charge électrique élémentaire notée e ?",
+              "options": [
+                "1,6 × 10⁻¹⁹ Coulomb",
+                "1,0 Coulomb",
+                "9,1 × 10⁻³¹ Coulomb",
+                "6,02 × 10²³ Coulomb"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La charge élémentaire e vaut environ 1,6 × 10⁻¹⁹ Coulomb (C)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle charge globale porte le nuage électronique d'un atome à 8 protons ?",
+              "options": ["-8 e", "+8 e", "0", "-16 e"],
+              "correctAnswers": [0],
+              "explanation": "Ayant 8 électrons de charge -e chacun, le nuage électronique porte une charge globale de -8e."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'arrive-t-il à la neutralité si un atome perd un électron ?",
+              "options": [
+                "L'atome devient un ion chargé positivement",
+                "L'atome reste neutre en fabricant un neutron",
+                "L'atome devient un ion négatif",
+                "L'atome se désintègre instantanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En perdant un électron, les protons positifs deviennent majoritaires : l'atome devient un ion positif (cation)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle force maintient les électrons liés au noyau ?",
+              "options": [
+                "L'interaction électrostatique d'attraction",
+                "La force de gravité uniquement",
+                "La force magnétique terrestre",
+                "La pression de l'atmosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les charges de signes opposés s'attirent : le noyau positif retient les électrons négatifs grâce à l'interaction électrostatique."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Molécules et formules chimiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une molécule ?",
+              "options": [
+                "Un groupe d'atomes liés entre eux",
+                "Un atome ayant perdu ses électrons",
+                "Une particule du noyau de l'atome",
+                "Un mélange liquide hétérogène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une molécule est un ensemble électriquement neutre d'au moins deux atomes unis par des liaisons chimiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la formule chimique de l'eau ?",
+              "options": ["H₂O", "CO₂", "CH₄", "O₂"],
+              "correctAnswers": [0],
+              "explanation": "L'eau est formée de 2 atomes d'hydrogène et d'un atome d'oxygène, d'où la formule H₂O."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie le chiffre 2 en indice dans la formule H₂O ?",
+              "options": [
+                "Il y a 2 atomes d'hydrogène",
+                "Il y a 2 molécules d'eau",
+                "L'oxygène possède 2 liaisons doubles",
+                "Il y a 2 atomes d'oxygène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un indice placé en bas à droite d'un symbole chimique indique le nombre d'atomes de cet élément dans la molécule."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la composition de la molécule de dioxyde de carbone CO₂ ?",
+              "options": [
+                "1 atome de carbone et 2 atomes d'oxygène",
+                "2 atomes de carbone et 1 atome d'oxygène",
+                "1 atome de cobalt et 2 atomes d'oxygène",
+                "1 atome de chlore et 2 atomes d'oxygène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CO₂ comporte 1 atome de carbone (C) et 2 atomes d'oxygène (O)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formules représentent des molécules courantes ?",
+              "options": [
+                "CH₄ (méthane)",
+                "N₂ (diazote)",
+                "Fe (fer métallique isolé)",
+                "Na⁺ (ion sodium)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "CH₄ et N₂ sont des molécules. Fe représente un atome ou cristal métallique et Na⁺ est un ion."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la formule chimique du méthane ?",
+              "options": ["CH₄", "C₂H₆", "CO", "NH₃"],
+              "correctAnswers": [0],
+              "explanation": "Le méthane est composé d'un atome de carbone et de quatre atomes d'hydrogène : CH₄."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la formule du dioxygène indispensable à notre respiration ?",
+              "options": ["O₂", "O₃", "CO₂", "H₂O"],
+              "correctAnswers": [0],
+              "explanation": "Le gaz dioxygène présent dans l'air est formé de deux atomes d'oxygène liés : O₂."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la charge électrique globale d'une molécule ?",
+              "options": [
+                "Nulle (elle est neutre)",
+                "Positive",
+                "Négative",
+                "Variable selon sa masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une molécule est obligatoirement un édifice électriquement neutre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans les modèles moléculaires, quelle couleur représente classiquement l'atome de carbone ?",
+              "options": ["Noir", "Rouge", "Blanc", "Bleu"],
+              "correctAnswers": [0],
+              "explanation": "Par convention internationale, l'atome de carbone est représenté par une sphère noire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans les modèles moléculaires, quelle couleur représente l'atome d'oxygène ?",
+              "options": ["Rouge", "Blanc", "Bleu", "Vert"],
+              "correctAnswers": [0],
+              "explanation": "L'atome d'oxygène est représenté par une sphère rouge (l'hydrogène étant blanc et l'azote bleu)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Les ions : anions et cations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un ion ?",
+              "options": [
+                "Un atome ayant gagné ou perdu un ou plusieurs électrons",
+                "Un atome ayant gagné des neutrons",
+                "Un atome dont le noyau s'est scindé",
+                "Une particule de lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un ion est une espèce chimique chargée issue d'un atome (ou groupe d'atomes) ayant gagné ou perdu des électrons."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on un ion chargé positivement ?",
+              "options": ["Un cation", "Un anion", "Un isotope", "Un neutrino"],
+              "correctAnswers": [0],
+              "explanation": "Un cation est un ion qui porte une ou plusieurs charges positives."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on un ion chargé négativement ?",
+              "options": ["Un anion", "Un cation", "Un positon", "Un proton"],
+              "correctAnswers": [0],
+              "explanation": "Un anion est un ion qui porte une ou plusieurs charges négatives."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment se forme le cation sodium Na⁺ à partir de l'atome de sodium ?",
+              "options": [
+                "L'atome perd 1 électron",
+                "L'atome gagne 1 électron",
+                "L'atome gagne 1 proton",
+                "L'atome perd 1 neutron"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En perdant un électron négatif, l'atome de sodium se retrouve avec un excès d'une charge positive : Na⁺."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi les ions suivants, lesquels sont des cations ?",
+              "options": [
+                "Cu²⁺ (ion cuivre II)",
+                "Ca²⁺ (ion calcium)",
+                "Cl⁻ (ion chlorure)",
+                "SO₄²⁻ (ion sulfate)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cu²⁺ et Ca²⁺ portent des charges positives : ce sont des cations. Cl⁻ et SO₄²⁻ sont des anions."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment se forme l'ion chlorure Cl⁻ à partir de l'atome de chlore ?",
+              "options": [
+                "En gagnant 1 électron",
+                "En perdant 1 électron",
+                "En perdant 1 proton",
+                "En gagnant 1 neutron"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'atome de chlore gagne 1 électron négatif pour former l'anion chlorure Cl⁻."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'atome de fer Fe possède 26 protons. Combien d'électrons possède l'ion Fe²⁺ ?",
+              "options": [
+                "24 électrons",
+                "26 électrons",
+                "28 électrons",
+                "2 électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ion Fe²⁺ a perdu 2 électrons par rapport à l'atome neutre : 26 - 2 = 24 électrons."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lors de la formation d'un ion, le nombre de protons dans le noyau :",
+              "options": [
+                "Ne change jamais",
+                "Augmente toujours",
+                "Diminue obligatoirement",
+                "S'annule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les transformations chimiques n'affectent que le cortège électronique périphérique : le noyau et ses protons restent intacts."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien d'électrons ont été échangés pour former l'ion aluminium Al³⁺ ?",
+              "options": [
+                "Perte de 3 électrons",
+                "Gain de 3 électrons",
+                "Gain de 3 protons",
+                "Perte de 3 protons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Al³⁺ possède un excès de 3 charges positives car l'atome d'aluminium a cédé 3 électrons."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la formule de l'ion hydroxyde ?",
+              "options": ["HO⁻", "H⁺", "O²⁻", "H₃O⁺"],
+              "correctAnswers": [0],
+              "explanation": "L'ion hydroxyde (ou oxhydrile) a pour formule chimique HO⁻ (ou OH⁻)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Solutions aqueuses et conduction du courant",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel liquide joue le rôle de solvant dans une solution aqueuse ?",
+              "options": [
+                "L'eau",
+                "L'huile végétale",
+                "L'alcool pur",
+                "L'essence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une solution est dite aqueuse lorsque le solvant majoritaire est l'eau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'eau pure distillée conduit-elle efficacement le courant électrique ?",
+              "options": [
+                "Non, c'est un très mauvais conducteur (isolant)",
+                "Oui, aussi bien qu'un fil de cuivre",
+                "Oui, car elle contient des métaux",
+                "Seulement sous une très forte lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau pure contient extrêmement peu d'ions libres : elle ne conduit pratiquement pas le courant électrique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi une solution d'eau salée conduit-elle le courant ?",
+              "options": [
+                "Grâce au déplacement des ions en solution",
+                "Grâce aux électrons libres circulant dans l'eau",
+                "Grâce aux molécules d'eau qui vibrent",
+                "Grâce à la transparence du liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le courant électrique dans un liquide conducteur est assuré par la migration ordonnée des ions dissous."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quels sont les porteurs de charge électrique dans une solution aqueuse conductrice ?",
+              "options": [
+                "Les ions",
+                "Les électrons libres",
+                "Les atomes neutres",
+                "Les neutrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement aux métaux où le courant est un flux d'électrons libres, dans une solution ce sont les ions qui se déplacent."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles substances dissoutes dans l'eau produisent une solution conductrice ?",
+              "options": [
+                "Le chlorure de sodium (sel)",
+                "Le sulfate de cuivre",
+                "Le sucre de table (saccharose)",
+                "L'alcool éthylique pur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le sel et le sulfate de cuivre se dissocient en ions (Na⁺, Cl⁻, Cu²⁺, SO₄²⁻), contrairement au sucre et à l'alcool qui restent sous forme de molécules neutres."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Vers quelle électrode se déplacent les cations (positifs) dans un électrolyseur ?",
+              "options": [
+                "Vers la cathode (électrode négative)",
+                "Vers l'anode (électrode positive)",
+                "Vers le fond du récipient",
+                "Ils ne bougent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cations positifs sont attirés par l'électrode reliée à la borne négative du générateur : la cathode."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vers quelle électrode se déplacent les anions (négatifs) ?",
+              "options": [
+                "Vers l'anode (électrode positive)",
+                "Vers la cathode (électrode négative)",
+                "Vers la surface du liquide",
+                "Vers le pôle sud magnétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les anions négatifs sont attirés par l'électrode reliée à la borne positive du générateur : l'anode."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une solution d'eau sucrée conduit-elle le courant ?",
+              "options": [
+                "Non, car le sucre reste sous forme de molécules neutres",
+                "Oui, car le sucre libère des ions glucose",
+                "Oui, car le sucre est un sel minéral",
+                "Seulement si l'eau est glacée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dissolution du sucre ne produit aucun ion : la solution sucrée est donc un isolant électrique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la règle d'électroneutralité d'une solution ionique ?",
+              "options": [
+                "La somme des charges positives compense exactement celle des charges négatives",
+                "Il y a toujours un nombre égal d'anions et de cations",
+                "Il y a autant d'ions que de molécules d'eau",
+                "La solution doit toujours avoir un pH de 7"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une solution ionique est globalement neutre : le total des charges positives apportées par les cations égale le total des charges négatives des anions."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une solution de chlorure de fer III (Fe³⁺ + 3 Cl⁻), combien de Cl⁻ équilibrent un Fe³⁺ ?",
+              "options": [
+                "3 ions Cl⁻",
+                "1 ion Cl⁻",
+                "2 ions Cl⁻",
+                "6 ions Cl⁻"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour compenser les 3 charges positives de Fe³⁺, il faut 3 ions chlorure portant chacun une charge négative (-1)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Le pH et les ions H⁺ / HO⁻",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que mesure le pH d'une solution aqueuse ?",
+              "options": [
+                "L'acidité ou la basicité de la solution",
+                "La masse volumique du liquide",
+                "La concentration en sel marin",
+                "La température d'ébullition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pH (potentiel Hydrogène) mesure la concentration en ions hydrogène et indique si une solution est acide, neutre ou basique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur quelle échelle s'étend couramment la valeur du pH ?",
+              "options": [
+                "De 0 à 14",
+                "De -10 à +10",
+                "De 1 à 100",
+                "De 0 à 7"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans les solutions aqueuses diluées à 25 °C, le pH varie entre 0 et 14."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la valeur du pH d'une solution neutre à 25 °C ?",
+              "options": ["7", "0", "14", "1"],
+              "correctAnswers": [0],
+              "explanation": "Une solution neutre possède un pH exactement égal à 7."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une solution dont le pH vaut 2,5 est qualifiée de :",
+              "options": [
+                "Solution acide",
+                "Solution basique",
+                "Solution neutre",
+                "Solution alcaline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute solution dont le pH est strictement inférieur à 7 est une solution acide."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques correspondent à une solution acide ?",
+              "options": [
+                "Son pH est strictement inférieur à 7",
+                "Elle contient plus d'ions H⁺ que d'ions HO⁻",
+                "Son pH est supérieur à 10",
+                "Elle est obligatoirement incolore"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une solution acide a un pH < 7 et une concentration en ions H⁺ supérieure à celle des ions HO⁻."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel ion est responsable du caractère acide d'une solution ?",
+              "options": [
+                "L'ion hydrogène H⁺",
+                "L'ion hydroxyde HO⁻",
+                "L'ion sodium Na⁺",
+                "L'ion chlorure Cl⁻"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce sont les ions hydrogène H⁺ qui confèrent à une solution son caractère acide."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel ion est responsable du caractère basique d'une solution ?",
+              "options": [
+                "L'ion hydroxyde HO⁻",
+                "L'ion hydrogène H⁺",
+                "L'ion sulfate SO₄²⁻",
+                "L'ion ferreux Fe²⁺"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce sont les ions hydroxyde HO⁻ qui rendent une solution basique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que se passe-t-il quand on dilue une solution acide avec de l'eau pure ?",
+              "options": [
+                "Son pH augmente et se rapproche de 7",
+                "Son pH diminue et tend vers 0",
+                "Son pH devient instantanément égal à 14",
+                "Son pH reste strictement identique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dilution diminue la concentration en ions H⁺ : la solution devient moins acide et son pH se rapproche de 7 sans le dépasser."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel appareil permet la mesure la plus précise de la valeur du pH ?",
+              "options": [
+                "Le pH-mètre",
+                "Le papier pH",
+                "Le thermomètre digital",
+                "Le tube à essai gradué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pH-mètre électronique donne une mesure précise au dixième ou centième d'unité, là où le papier pH donne une estimation visuelle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle précaution de sécurité essentielle doit-on respecter pour diluer un acide concentré ?",
+              "options": [
+                "Verser l'acide dans l'eau lentement, jamais l'eau dans l'acide",
+                "Verser brutalement l'eau dans l'acide",
+                "Chauffer l'acide avant d'ajouter l'eau",
+                "Travailler sans gants ni lunettes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verser de l'eau dans un acide concentré peut provoquer des projections brûlantes violentes dues à un fort dégagement de chaleur."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les métaux et leurs propriétés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel métal usuel se reconnaît immédiatement à sa couleur rouge-orangée ?",
+              "options": ["Le cuivre", "Le fer", "L'aluminium", "Le zinc"],
+              "correctAnswers": [0],
+              "explanation": "Le cuivre est le seul métal courant présentant une teinte rouge-orangée très distinctive."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel métal du quotidien est attiré par un aimant ordinaire ?",
+              "options": ["Le fer", "Le cuivre", "L'aluminium", "L'argent"],
+              "correctAnswers": [0],
+              "explanation": "Le fer (ainsi que la plupart des aciers) est ferromagnétique et est fortement attiré par un aimant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel métal est particulièrement choisi en aéronautique pour sa très faible masse volumique ?",
+              "options": ["L'aluminium", "Le plomb", "Le cuivre", "L'or"],
+              "correctAnswers": [0],
+              "explanation": "L'aluminium a une faible masse volumique (2,7 g/cm³), ce qui en fait un métal très léger idéal pour les transports."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que forme le fer lorsqu'il s'oxyde en présence d'air humide ?",
+              "options": [
+                "De la rouille",
+                "Du vert-de-gris",
+                "Du calcaire",
+                "De l'alumine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La corrosion du fer à l'air humide forme de la rouille, un oxyde de fer poreux qui détruit le métal en profondeur."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés sont caractéristiques de tous les métaux ?",
+              "options": [
+                "Bonne conduction du courant électrique",
+                "Bonne conduction de la chaleur",
+                "Attraction systématique par un aimant",
+                "Transparence à la lumière visible"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tous les métaux conduisent bien l'électricité et la chaleur. En revanche, seul le fer est magnétique parmi les métaux courants."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel métal a la particularité d'être liquide à température ambiante (20 °C) ?",
+              "options": ["Le mercure", "Le plomb", "Le gallium", "L'étain"],
+              "correctAnswers": [0],
+              "explanation": "Le mercure est le seul métal élémentaire liquide à température ambiante (il fond à -39 °C)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un alliage métallique ?",
+              "options": [
+                "Un mélange homogène d'un métal avec d'autres éléments",
+                "Un atome de métal pur sous vide",
+                "Une molécule d'eau solidifiée",
+                "Un plastique imitant le métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un alliage (comme l'acier, le bronze ou le laiton) est obtenu en mélangeant un métal de base avec un ou plusieurs autres éléments."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "De quoi est composé l'acier ?",
+              "options": [
+                "De fer et d'une petite proportion de carbone",
+                "De cuivre et d'étain",
+                "D'aluminium et d'or",
+                "De zinc et de plomb"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'acier est un alliage composé majoritairement de fer avec moins de 2 % de carbone."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que produit la réaction entre le fer et l'acide chlorhydrique ?",
+              "options": [
+                "Du gaz dihydrogène et des ions fer II",
+                "Du dioxyde de carbone et de l'eau",
+                "De l'or et du chlore gazeux",
+                "Aucune réaction n'a lieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'acide attaque le fer en dégageant du gaz dihydrogène (H₂) et en formant des ions fer II (Fe²⁺) en solution."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment caractérise-t-on le gaz dihydrogène H₂ produit lors d'une réaction ?",
+              "options": [
+                "Il produit une petite détonation caractéristique à la flamme",
+                "Il trouble l'eau de chaux",
+                "Il rallume une bûchette incandescente",
+                "Il dégage une odeur d'œuf pourri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le test d'identification du dihydrogène consiste à approcher une flamme : une petite détonation (cri du chien) se fait entendre."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Tests d'identification des ions en solution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel réactif utilise-t-on pour détecter la présence des ions chlorure Cl⁻ ?",
+              "options": [
+                "Le nitrate d'argent",
+                "La soude (hydroxyde de sodium)",
+                "L'eau de chaux",
+                "La liqueur de Fehling"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réactif caractéristique des ions chlorure est une solution aqueuse de nitrate d'argent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel résultat visuel confirme la présence d'ions chlorure avec le nitrate d'argent ?",
+              "options": [
+                "Un précipité blanc qui noircit à la lumière",
+                "Un précipité bleu turquoise",
+                "Un précipité vert pomme",
+                "Une coloration rouge sang sans solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chlorure d'argent formé donne un précipité blanc qui a la particularité de noircir sous l'effet de la lumière."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel réactif courant permet d'identifier la plupart des ions métalliques (Cu²⁺, Fe²⁺, Fe³⁺, Zn²⁺) ?",
+              "options": [
+                "La soude (hydroxyde de sodium)",
+                "Le nitrate d'argent",
+                "L'acide chlorhydrique pur",
+                "L'eau distillée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La soude (contenant des ions HO⁻) réagit avec les cations métalliques pour former des précipités d'hydroxydes aux couleurs variées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la couleur du précipité formé par les ions cuivre II Cu²⁺ avec la soude ?",
+              "options": ["Bleu", "Rouille", "Vert", "Blanc"],
+              "correctAnswers": [0],
+              "explanation": "Les ions Cu²⁺ réagissent avec la soude pour former un précipité bleu caractéristique d'hydroxyde de cuivre II."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels couples [ion métallique / couleur du précipité avec la soude] sont corrects ?",
+              "options": [
+                "Fe²⁺ donne un précipité vert",
+                "Fe³⁺ donne un précipité rouille",
+                "Cu²⁺ donne un précipité noir",
+                "Zn²⁺ donne un précipité rouge vif"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fe²⁺ donne un précipité vert (hydroxyde de fer II) et Fe³⁺ donne un précipité couleur rouille (hydroxyde de fer III)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la couleur du précipité d'hydroxyde de fer II (avec les ions Fe²⁺) ?",
+              "options": ["Vert", "Bleu", "Rouille", "Blanc"],
+              "correctAnswers": [0],
+              "explanation": "En présence de soude, les ions fer II (Fe²⁺) forment un précipité vert qui s'oxyde lentement à l'air."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la couleur du précipité d'hydroxyde de fer III (avec les ions Fe³⁺) ?",
+              "options": ["Rouille", "Vert foncé", "Bleu ciel", "Jaune citron"],
+              "correctAnswers": [0],
+              "explanation": "Les ions Fe³⁺ forment avec la soude un précipité brun-orangé appelé précipité rouille."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle couleur de précipité obtient-on avec les ions zinc Zn²⁺ en ajoutant de la soude ?",
+              "options": ["Blanc", "Bleu", "Vert", "Rouille"],
+              "correctAnswers": [0],
+              "explanation": "Les ions zinc Zn²⁺ forment avec la soude un précipité blanc d'hydroxyde de zinc."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un précipité en chimie ?",
+              "options": [
+                "Un solide insoluble apparaissant dans un liquide suite à une réaction",
+                "Un gaz très dense qui descend au fond",
+                "Une étincelle sous-marine",
+                "Un liquide qui refuse de se mélanger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un précipité est un composé solide qui se sépare d'une solution lors d'une réaction chimique entre deux solutions limpides."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi rince-t-on la verrerie à l'eau distillée avant d'effectuer un test d'ions ?",
+              "options": [
+                "Pour éliminer les ions parasites de l'eau du robinet",
+                "Pour faire baisser la température du tube",
+                "Pour accélérer la réaction chimique",
+                "Pour rendre le verre stérile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau du robinet contient des ions (chlorure, calcium, etc.) qui fausseraient complètement les tests d'identification."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Échelles et ordres de grandeur de la matière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la taille approximative d'un atome en mètre ?",
+              "options": ["10⁻¹⁰ m", "10⁻⁶ m", "10⁻³ m", "10⁻¹⁵ m"],
+              "correctAnswers": [0],
+              "explanation": "La taille d'un atome est de l'ordre de 10⁻¹⁰ mètre (soit 0,1 nanomètre)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la taille approximative du noyau atomique ?",
+              "options": ["10⁻¹⁵ m", "10⁻¹⁰ m", "10⁻⁶ m", "10⁻² m"],
+              "correctAnswers": [0],
+              "explanation": "Le noyau de l'atome est environ cent mille fois plus petit que l'atome lui-même, mesurant environ 10⁻¹⁵ mètre (1 femtomètre)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel préfixe du système international correspond au facteur 10⁻⁹ ?",
+              "options": ["Nano (n)", "Micro (µ)", "Milli (m)", "Pico (p)"],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe nano (symbole n) correspond à un facteur multiplicatif de 10⁻⁹ (un milliardième)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel préfixe correspond au facteur 10⁻⁶ ?",
+              "options": ["Micro (µ)", "Milli (m)", "Nano (n)", "Centi (c)"],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe micro (symbole µ) correspond à un millionième, soit 10⁻⁶."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels objets appartiennent au domaine de l'infiniment petit ?",
+              "options": [
+                "Le noyau d'un atome",
+                "La molécule d'eau",
+                "Une planète du système solaire",
+                "Une galaxie spirale"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le noyau atomique (10⁻¹⁵ m) et la molécule d'eau (quelques dixièmes de nanomètre) relèvent de l'infiniment petit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si le noyau atomique avait la taille d'une bille de 1 cm, l'atome entier mesurerait environ :",
+              "options": [
+                "1 kilomètre",
+                "1 mètre",
+                "10 centimètres",
+                "1 millimètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le facteur étant de 100 000 : 1 cm × 100 000 = 100 000 cm = 1 000 mètres = 1 kilomètre !"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Laquelle de ces particules est considérée comme élémentaire (non composée d'autres sous-particules) ?",
+              "options": [
+                "L'électron",
+                "Le proton",
+                "Le neutron",
+                "L'atome d'hélium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le modèle standard de la physique, l'électron n'a pas de sous-structure connue, contrairement au proton composé de quarks."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "De quelles particules plus fondamentales sont composés les protons et les neutrons ?",
+              "options": [
+                "De quarks",
+                "D'électrons comprimés",
+                "D'ondes sonores",
+                "De photons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les protons et les neutrons sont chacun formés d'un assemblage de trois particules élémentaires appelées quarks."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel microscope permet d'observer et de manipuler des atomes individuels à la surface d'un solide ?",
+              "options": [
+                "Le microscope à effet tunnel",
+                "La loupe binoculaire",
+                "Le microscope optique scolaire",
+                "Le télescope réflecteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le microscope à effet tunnel (STM), inventé dans les années 1980, permet d'imager la matière à l'échelle atomique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel rapport de taille sépare le diamètre de l'atome de celui de son noyau ?",
+              "options": [
+                "10⁵ (100 000)",
+                "10² (100)",
+                "10⁹ (un milliard)",
+                "10 (dix)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "10⁻¹⁰ m / 10⁻¹⁵ m = 10⁵ = 100 000. Le diamètre de l'atome est environ 100 000 fois plus étendu que celui de son noyau."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Changements d'état",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les trois états de la matière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels sont les trois états physiques fondamentaux de la matière observables au quotidien ?",
+              "options": [
+                "Solide, liquide et gazeux",
+                "Terre, air et feu",
+                "Chaud, tiède et froid",
+                "Dur, mou et transparent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les trois états physiques usuels de la matière sur Terre sont l'état solide, l'état liquide et l'état gazeux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la propriété de forme d'un solide compact ?",
+              "options": [
+                "Il possède une forme propre",
+                "Il prend la forme du récipient",
+                "Il occupe tout l'espace disponible",
+                "Sa forme se déforme spontanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un solide compact conserve sa forme propre quel que soit le récipient dans lequel on le place."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle forme prend la surface libre d'un liquide au repos ?",
+              "options": [
+                "Plane et horizontale",
+                "Bombée et inclinée",
+                "Verticale",
+                "Irrégulière et ondulée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous l'action de la gravité, la surface d'un liquide au repos en contact avec l'air est toujours plane et horizontale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on qu'un gaz est expansible et compressible ?",
+              "options": [
+                "Il occupe tout le volume disponible et on peut facilement réduire son volume",
+                "Il change de couleur quand on le comprime",
+                "Sa masse s'annule quand on le chauffe",
+                "Il ne pèse rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un gaz n'a pas de volume propre : il se dilate pour occuper tout l'espace offert et son volume se réduit sous l'effet d'une pression."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés correspondent à l'état liquide ?",
+              "options": [
+                "Il possède un volume propre déterminé",
+                "Il ne possède pas de forme propre",
+                "Il occupe tout l'espace du récipient",
+                "Il est très facilement compressible comme un gaz"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un liquide a un volume propre invariable (il est quasiment incompressible) mais n'a pas de forme propre : il prend la forme de son contenant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi un solide divisé (comme le sable) n'a-t-il pas de surface horizontale au repos ?",
+              "options": [
+                "Car il est composé d'une multitude de petits solides indépendants",
+                "Car c'est en réalité un liquide",
+                "Car la gravité ne s'applique pas au sable",
+                "Car il ne contient aucun atome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque grain de sable est un solide compact avec sa propre forme. Leur empilement forme un tas et non une surface plane."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les liquides sont-ils facilement compressibles ?",
+              "options": [
+                "Non, ils sont pratiquement incompressibles",
+                "Oui, aussi facilement que les gaz",
+                "Oui, uniquement à haute température",
+                "Oui, si on les remue vigoureusement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les molécules d'un liquide étant déjà en contact étroit, leur volume est pratiquement impossible à réduire par pression."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel état de la matière se diffuse spontanément pour occuper tout le volume d'une pièce ?",
+              "options": [
+                "L'état gazeux",
+                "L'état solide",
+                "L'état liquide",
+                "L'état visqueux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les molécules d'un gaz sont libres et très agitées : elles se dispersent spontanément dans tout l'espace disponible."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment désigne-t-on l'eau à l'état gazeux ?",
+              "options": [
+                "La vapeur d'eau",
+                "La buée",
+                "Le brouillard",
+                "La rosée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gaz d'eau est la vapeur d'eau. La buée, le brouillard et la rosée sont déjà des gouttelettes d'eau liquide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La vapeur d'eau pure est-elle visible à l'œil nu ?",
+              "options": [
+                "Non, c'est un gaz rigoureusement invisible et incolore",
+                "Oui, c'est la fumée blanche au-dessus de la casserole",
+                "Oui, elle a une couleur bleutée",
+                "Seulement dans l'obscurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vapeur d'eau est totalement invisible. Le nuage blanc visible au-dessus d'une casserole est formé de minuscules gouttelettes d'eau liquide condensée."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Vocabulaire des changements d'état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le passage de l'état solide à l'état liquide ?",
+              "options": [
+                "La fusion",
+                "La solidification",
+                "La vaporisation",
+                "La condensation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fusion est la transition physique de l'état solide vers l'état liquide (ex : la glace qui fond)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le passage de l'état liquide à l'état solide ?",
+              "options": [
+                "La solidification",
+                "La fusion",
+                "La liquéfaction",
+                "La sublimation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solidification est la transition de l'état liquide vers l'état solide (ex : l'eau qui gèle)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel terme désigne le passage de l'état liquide à l'état gazeux ?",
+              "options": [
+                "La vaporisation",
+                "La liquéfaction",
+                "La fusion",
+                "La sublimation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vaporisation désigne le passage du liquide au gaz (qu'il s'agisse d'une évaporation lente ou d'une ébullition vive)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le passage direct de l'état solide à l'état gazeux sans passer par le liquide ?",
+              "options": [
+                "La sublimation",
+                "La vaporisation",
+                "La fusion",
+                "La dissolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sublimation est le passage direct du solide au gaz (ex : la glace carbonique à l'air libre)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels changements d'état nécessitent un apport de chaleur (endothermiques) ?",
+              "options": [
+                "La fusion",
+                "La vaporisation",
+                "La solidification",
+                "La liquéfaction"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pour fondre ou se vaporiser, la matière doit absorber de l'énergie thermique du milieu extérieur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le passage de l'état gazeux à l'état liquide ?",
+              "options": [
+                "La liquéfaction",
+                "L'évaporation",
+                "La sublimation",
+                "La fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liquéfaction (ou condensation liquide) est le passage d'un gaz à l'état liquide."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre l'évaporation et l'ébullition ?",
+              "options": [
+                "L'évaporation se fait en surface à toute température, l'ébullition dans toute la masse à température fixe",
+                "L'ébullition ne produit aucune vapeur",
+                "L'évaporation ne concerne que les métaux",
+                "Il n'y a aucune différence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'évaporation est un phénomène de surface lent pouvant se produire à toute température, tandis que l'ébullition a lieu dans toute la masse à une température précise."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le passage direct de l'état gazeux à l'état solide ?",
+              "options": [
+                "La condensation solide (ou déposition)",
+                "La vaporisation",
+                "La fusion",
+                "La liquéfaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passage direct du gaz au solide s'appelle la condensation solide ou déposition (ex : le givre en hiver)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lors de la formation de la buée sur une vitre froide ?",
+              "options": [
+                "La vapeur d'eau de l'air se liquéfie",
+                "L'air solide fond",
+                "L'eau de la vitre s'évapore",
+                "Le verre se sublime"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au contact du verre froid, la vapeur d'eau invisible contenue dans l'air se liquéfie en micro-gouttelettes d'eau liquide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Attention à ne pas confondre fusion et dissolution : que fait un sucre dans l'eau ?",
+              "options": [
+                "Il se dissout (dissolution)",
+                "Il fond (fusion)",
+                "Il se solidifie",
+                "Il s'évapore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sucre se dissout dans l'eau (mélange avec le solvant). Pour fondre, le sucre solide devrait être chauffé seul au-dessus de 186 °C."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Conservation de la masse lors d'un changement d'état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que devient la masse d'un glaçon lorsqu'il fond dans un verre fermé et étanche ?",
+              "options": [
+                "La masse reste exactement la même",
+                "La masse augmente de 10 %",
+                "La masse diminue car l'eau liquide est fluide",
+                "La masse devient nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lors d'un changement d'état physique, la masse se conserve rigoureusement dans un système fermé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi la masse se conserve-t-elle lors d'un changement d'état ?",
+              "options": [
+                "Car le nombre et la nature des molécules ne changent pas",
+                "Car le volume reste identique",
+                "Car la température ne varie jamais",
+                "Car les atomes perdent leurs électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les molécules s'agencent différemment mais leur nombre et leur masse individuelle restent strictement identiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si 150 g d'eau liquide se vaporisent entièrement dans un récipient clos, quelle est la masse de vapeur obtenue ?",
+              "options": [
+                "150 g",
+                "100 g",
+                "0 g car un gaz ne pèse rien",
+                "300 g"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La matière ne disparaît pas : les 150 g de molécules d'eau liquide se retrouvent intégralement dans les 150 g de vapeur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "On fait geler 200 g d'eau liquide dans une bouteille fermée. Quelle est la masse de glace obtenue ?",
+              "options": [
+                "200 g",
+                "220 g car la glace gonfle",
+                "180 g",
+                "20 g"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bien que le volume de la glace soit supérieur à celui de l'eau liquide, la masse reste inchangée : 200 g."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles grandeurs physiques se conservent lors du changement d'état d'un corps pur en milieu fermé ?",
+              "options": [
+                "La masse totale",
+                "Le nombre total de molécules",
+                "Le volume occupé",
+                "La masse volumique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La masse et le nombre de molécules restent constants, tandis que le volume et la masse volumique changent lors de la transition."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel célèbre chimiste a formulé le principe de conservation de la masse : 'Rien ne se perd, rien ne se crée, tout se transforme' ?",
+              "options": [
+                "Antoine de Lavoisier",
+                "Dmitri Mendeleïev",
+                "Marie Curie",
+                "Louis Pasteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Antoine de Lavoisier a établi la loi fondamentale de conservation de la masse à la fin du XVIIIe siècle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si l'on pèse une bouteille d'eau avant et après ébullition à l'air libre sans couvercle, la masse mesurée :",
+              "options": [
+                "Diminue car de la vapeur s'est échappée dans l'air",
+                "Reste exactement la même",
+                "Augmente par absorption d'air",
+                "Double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un système ouvert, une partie de la matière quitte le récipient sous forme de vapeur : la masse du liquide restant diminue."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "D'où provient l'eau liquide qui ruisselle sur une canette très froide sortie du réfrigérateur ?",
+              "options": [
+                "De la vapeur d'eau de l'air ambiant qui s'est liquéfiée",
+                "De la boisson qui s'est infiltrée à travers l'aluminium",
+                "De la canette qui transpire",
+                "D'une réaction chimique créant de l'eau ex nihilo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La paroi froide refroidit l'air environnant : la vapeur d'eau présente dans l'air se liquéfie à sa surface."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un morceau de fer de 500 g est chauffé jusqu'à fusion complète. Quelle est la masse du fer liquide obtenu ?",
+              "options": ["500 g", "450 g", "550 g", "0 g"],
+              "correctAnswers": [0],
+              "explanation": "La fusion est un changement d'état physique : la masse de fer liquide est identique à la masse de fer solide (500 g)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La conservation de la masse est-elle universelle pour tout changement d'état dans un système clos ?",
+              "options": [
+                "Oui, pour toute substance et tout changement d'état",
+                "Non, seulement pour l'eau pure",
+                "Non, uniquement à 0 °C",
+                "Non, les gaz perdent leur masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans tout système fermé sans échange de matière avec l'extérieur, la masse se conserve rigoureusement pour n'importe quelle substance."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Variation du volume et masse volumique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que fait généralement le volume de la plupart des substances lorsqu'elles se solidifient ?",
+              "options": [
+                "Le volume diminue légèrement",
+                "Le volume augmente fortement",
+                "Le volume reste strictement inchangé",
+                "Le volume est multiplié par dix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour la quasi-totalité des corps, le passage du liquide au solide s'accompagne d'un rapprochement des molécules et donc d'une diminution de volume."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle particularité remarquable présente l'eau lors de sa solidification en glace ?",
+              "options": [
+                "Son volume augmente d'environ 9 %",
+                "Son volume diminue de moitié",
+                "Sa masse double",
+                "Elle devient instantanément compressible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau présente une anomalie dilatométrique : la structure cristalline de la glace est plus aérée que l'eau liquide, son volume augmente d'environ 9 %."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi une bouteille en verre remplie d'eau à ras bord éclate-t-elle au congélateur ?",
+              "options": [
+                "L'eau augmente de volume en gelant et exerce une pression immense",
+                "Le verre se contracte jusqu'à s'effondrer",
+                "L'eau produit un gaz explosif",
+                "Le froid dissout le verre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En gelant, l'eau se dilate et nécessite plus d'espace : les parois rigides en verre finissent par céder sous la poussée de la glace."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi les icebergs et les glaçons flottent-ils sur l'eau liquide ?",
+              "options": [
+                "La masse volumique de la glace est plus faible que celle de l'eau liquide",
+                "La glace n'a pas de masse",
+                "L'eau liquide repousse le froid vers le haut",
+                "La glace contient de l'air emprisonné obligatoirement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La glace ayant un volume plus grand pour une même masse, sa masse volumique est plus faible (0,92 g/cm³ contre 1 g/cm³), ce qui la fait flotter."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles relations mathématiques lient correctement la masse volumique ρ, la masse m et le volume V ?",
+              "options": ["ρ = m / V", "m = ρ × V", "ρ = m × V", "V = ρ × m"],
+              "correctAnswers": [0, 1],
+              "explanation": "Par définition, la masse volumique est le quotient de la masse par le volume : ρ = m / V, ce qui donne aussi m = ρ × V."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la masse volumique de l'eau liquide à 4 °C ?",
+              "options": [
+                "1 g/cm³ (soit 1000 kg/m³)",
+                "10 g/cm³",
+                "0,1 g/cm³",
+                "100 kg/m³"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau liquide a une masse volumique de référence égale à 1 g/cm³ ou 1 kg/L (soit 1000 kg/m³)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la masse volumique approximative de la glace d'eau ?",
+              "options": [
+                "Environ 0,92 g/cm³",
+                "Exactement 1,00 g/cm³",
+                "Environ 1,25 g/cm³",
+                "Environ 0,10 g/cm³"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La glace a une masse volumique d'environ 0,92 g/cm³, c'est-à-dire 920 kg/m³."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel volume occupe une masse de 1 kg d'eau liquide ?",
+              "options": [
+                "1 litre (1 dm³)",
+                "10 litres",
+                "0,1 litre",
+                "100 millilitres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque la masse volumique de l'eau est de 1 kg/L, 1 kg d'eau liquide occupe un volume d'exactement 1 litre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lorsqu'un litre d'eau liquide se vaporise en vapeur d'eau à pression ambiante, le volume occupé devient environ :",
+              "options": [
+                "Environ 1700 litres",
+                "Exactement 1 litre",
+                "Environ 10 litres",
+                "Environ 2 litres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'état gazeux, les molécules sont très espacées : un litre d'eau liquide produit environ 1700 litres de vapeur d'eau à 100 °C."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un morceau de métal a une masse de 81 g et un volume de 30 cm³. Quelle est sa masse volumique ?",
+              "options": ["2,7 g/cm³", "0,37 g/cm³", "2430 g/cm³", "1,5 g/cm³"],
+              "correctAnswers": [0],
+              "explanation": "ρ = m / V = 81 g / 30 cm³ = 2,7 g/cm³ (il s'agit d'un échantillon d'aluminium)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Températures et paliers de changement d'état d'un corps pur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "À quelle température l'eau pure gèle-t-elle et fond-elle sous la pression atmosphérique normale ?",
+              "options": ["0 °C", "100 °C", "-10 °C", "20 °C"],
+              "correctAnswers": [0],
+              "explanation": "Sous la pression normale de 1013 hPa, la température de fusion et de solidification de l'eau pure est de 0 °C."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quelle température l'eau pure bout-elle sous la pression atmosphérique normale ?",
+              "options": ["100 °C", "0 °C", "80 °C", "200 °C"],
+              "correctAnswers": [0],
+              "explanation": "La température d'ébullition de l'eau pure au niveau de la mer est de 100 °C."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'observe-t-on sur la courbe de température lors du changement d'état d'un corps pur ?",
+              "options": [
+                "Un palier de température (la température reste constante)",
+                "Une montée en flèche continue",
+                "Une chute brutale à zéro",
+                "Une oscillation imprévisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tant que les deux états coexistent chez un corps pur, la température reste rigoureusement constante : c'est le palier de changement d'état."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tant qu'il reste à la fois de la glace et de l'eau liquide dans un récipient sous pression normale, la température mesurée est de :",
+              "options": ["0 °C", "4 °C", "-5 °C", "10 °C"],
+              "correctAnswers": [0],
+              "explanation": "Pendant toute la durée de la fusion de l'eau pure, le mélange eau-glace reste fixé à 0 °C."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels critères caractérisent le changement d'état d'un corps pur sous pression fixée ?",
+              "options": [
+                "La présence d'un palier de température horizontal",
+                "Une température de changement d'état fixe et caractéristique",
+                "Une disparition spontanée de la masse",
+                "Un changement de composition chimique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un corps pur présente un palier thermique horizontal et une température de fusion/ébullition constante et reproductible."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que fait la température de l'eau pure qui bout vigoureusement dans une casserole ouverte ?",
+              "options": [
+                "Elle reste constante à 100 °C",
+                "Elle monte progressivement jusqu'à 150 °C",
+                "Elle redescend vers 80 °C",
+                "Elle double chaque minute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute l'énergie thermique apportée sert à vaporiser l'eau : la température de l'eau liquide reste bloquée à 100 °C."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un liquide chauffe et change d'état sans présenter de palier de température fixe, on en conclut que :",
+              "options": [
+                "C'est un mélange et non un corps pur",
+                "C'est un corps pur d'une pureté exceptionnelle",
+                "Le thermomètre est obligatoirement cassé",
+                "La substance est indestructible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absence de palier de température lors d'un changement d'état est la signature expérimentale d'un mélange."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel instrument de mesure utilise-t-on pour enregistrer une courbe de changement d'état ?",
+              "options": [
+                "Un thermomètre associé à un chronomètre",
+                "Un baromètre seul",
+                "Un dynamomètre gradué",
+                "Un oscilloscope cathodique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour tracer la courbe de changement d'état (T = f(t)), on relève la température à intervalles de temps réguliers."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la valeur du zéro absolu en degrés Celsius ?",
+              "options": ["-273,15 °C", "0 °C", "-100 °C", "-1000 °C"],
+              "correctAnswers": [0],
+              "explanation": "Le zéro absolu correspond à 0 Kelvin, soit -273,15 °C, température théorique où l'agitation thermique s'arrête."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi jette-t-on du sel sur les routes verglacées en hiver ?",
+              "options": [
+                "Car le mélange eau-sel fond à une température inférieure à 0 °C",
+                "Car le sel produit une flamme invisible",
+                "Car le sel détruit chimiquement les molécules d'eau",
+                "Car le sel absorbe l'air froid"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau salée est un mélange dont la température de solidification est bien inférieure à 0 °C (jusqu'à environ -21 °C), ce qui fait fondre le verglas."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Changements d'état des mélanges",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un mélange par opposition à un corps pur ?",
+              "options": [
+                "Une matière constituée de plusieurs espèces chimiques différentes",
+                "Une matière composée d'une seule et unique espèce chimique",
+                "Un solide obligatoirement transparent",
+                "Une substance qui ne contient aucun atome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un mélange contient au moins deux espèces chimiques distinctes (ex : eau + sel), tandis qu'un corps pur n'en contient qu'une seule."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment évolue la température lors de la solidification ou de l'ébullition d'un mélange ?",
+              "options": [
+                "Elle varie continuellement sans palier de température horizontal",
+                "Elle reste parfaitement constante sur un palier horizontal",
+                "Elle tombe instantanément à -50 °C",
+                "Elle reste bloquée exactement à 0 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour un mélange, le changement d'état se produit sur une plage de température variable : la courbe ne présente aucun palier horizontal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'air qui nous entoure est :",
+              "options": [
+                "Un mélange gazeux",
+                "Un corps pur gazeux",
+                "Un liquide invisible",
+                "Un solide dispersé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air est un mélange composé d'environ 78 % de diazote, 21 % de dioxygène et 1 % d'autres gaz."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Peut-on liquéfier l'air atmosphérique ?",
+              "options": [
+                "Oui, en le comprimant et en le refroidissant sous environ -190 °C",
+                "Non, l'air ne peut jamais devenir liquide",
+                "Non, car l'air brûle dès qu'on le refroidit",
+                "Seulement sous la lumière d'un laser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air liquide s'obtient industriellement en comprimant et refroidissant l'air en dessous de -190 °C."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi les matières suivantes, lesquelles sont des mélanges ?",
+              "options": [
+                "L'eau de mer (eau et sels minéraux)",
+                "L'air atmosphérique",
+                "L'eau pure distillée",
+                "Le dioxygène pur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'eau de mer et l'air comportent plusieurs espèces chimiques (mélanges). L'eau distillée et le dioxygène pur sont des corps purs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lorsqu'on distille de l'eau salée, que recueille-t-on après condensation des vapeurs ?",
+              "options": [
+                "De l'eau pure (distillat)",
+                "De l'eau encore plus salée",
+                "Du sel de table liquide",
+                "Du chlore gazeux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seule l'eau s'évapore à 100 °C : le sel reste dans le ballon et la vapeur condensée fournit de l'eau pure (le distillat)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi l'eau minérale en bouteille n'est-elle pas un corps pur ?",
+              "options": [
+                "Car elle contient des minéraux et des ions dissous",
+                "Car elle est toujours gazeuse",
+                "Car elle ne contient pas de molécules H₂O",
+                "Car elle est acide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau minérale est un mélange homogène d'eau et de sels minéraux dissous (calcium, magnésium, sulfates...)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "À quelle température commence à bouillir une eau fortement salée à pression normale ?",
+              "options": [
+                "À une température légèrement supérieure à 100 °C",
+                "À exactement 100 °C",
+                "À exactement 0 °C",
+                "À 50 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La présence de sel dissous élève la température d'ébullition : l'eau salée commence à bouillir au-delà de 100 °C (ex : 102 °C)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que reste-t-il dans une coupelle d'eau salée après évaporation complète de l'eau ?",
+              "options": [
+                "Des cristaux de sel solide",
+                "Rien du tout",
+                "Une flaque d'huile",
+                "De la glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau s'évapore dans l'air sous forme de gaz tandis que le sel non volatil cristallise et reste au fond."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la méthode séparant les liquides d'un mélange selon leur température d'ébullition ?",
+              "options": [
+                "La distillation",
+                "La filtration",
+                "La décantation",
+                "Le tamisage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La distillation exploite les différences de température d'ébullition des constituants d'un mélange pour les séparer."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Énergie thermique et transferts de chaleur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pour faire fondre de la glace ou faire bouillir de l'eau liquide, il faut lui apporter :",
+              "options": [
+                "De l'énergie thermique (chaleur)",
+                "De l'énergie électrique directe obligatoirement",
+                "De la lumière verte",
+                "De la pression négative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fusion et la vaporisation nécessitent un apport continu d'énergie thermique pour briser les liaisons intermoléculaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que fait un liquide lorsqu'il se solidifie ou qu'un gaz se liquéfie ?",
+              "options": [
+                "Il cède de l'énergie thermique au milieu extérieur",
+                "Il absorbe de l'énergie thermique",
+                "Il détruit de l'énergie",
+                "Il crée de la matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solidification et la liquéfaction libèrent de la chaleur vers l'environnement (phénomènes exothermiques)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi ressent-on du froid lorsqu'on sort de l'eau avec la peau mouillée en plein vent ?",
+              "options": [
+                "L'eau qui s'évapore absorbe de l'énergie thermique de notre corps",
+                "Le vent injecte de la glace dans la peau",
+                "L'eau liquide sur la peau gèle instantanément",
+                "Le corps perd ses molécules d'oxygène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'évaporation de l'eau est endothermique : elle puise l'énergie thermique nécessaire directement sur notre peau, d'où le frisson."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une transformation physique qui absorbe de l'énergie thermique ?",
+              "options": [
+                "Endothermique",
+                "Exothermique",
+                "Athermique",
+                "Électrostatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une transformation endothermique nécessite un apport de chaleur du milieu extérieur pour se produire."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels changements d'état libèrent de l'énergie thermique vers l'extérieur (exothermiques) ?",
+              "options": [
+                "La solidification",
+                "La liquéfaction",
+                "La fusion",
+                "La vaporisation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La solidification (liquide vers solide) et la liquéfaction (gaz vers liquide) libèrent de l'énergie vers le milieu environnant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est l'unité du Système International (SI) mesurant l'énergie thermique transférée ?",
+              "options": [
+                "Le Joule (J)",
+                "Le Watt (W)",
+                "Le Degré Celsius (°C)",
+                "Le Newton (N)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie thermique (chaleur) est une forme d'énergie et s'exprime en Joules (J)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pendant le palier de fusion de l'eau pure, à quoi sert l'énergie thermique apportée alors que la température ne monte pas ?",
+              "options": [
+                "À rompre les liaisons entre molécules dans le réseau solide",
+                "Elle est détruite par la glace",
+                "Elle sert à chauffer le thermomètre uniquement",
+                "Elle est réfléchie vers l'extérieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durant le palier, l'énergie absorbée sert exclusivement à désorganiser le réseau cristallin solide et non à augmenter la température."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment un réfrigérateur parvient-il à refroidir son compartiment intérieur ?",
+              "options": [
+                "Un fluide frigorigène s'y évapore en absorbant la chaleur, puis se liquéfie dehors",
+                "Il fabrique du froid par réaction chimique",
+                "Il bloque les vibrations des atomes par magnétisme",
+                "Il injecte de l'eau glacée en continu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fluide s'évapore à l'intérieur en pompant la chaleur des aliments, puis est comprimé pour se liquéfier dans la grille arrière en rejetant la chaleur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que libère la vapeur d'eau lorsqu'elle se condense en gouttelettes pour former un nuage ?",
+              "options": [
+                "De l'énergie thermique qui réchauffe l'air environnant",
+                "De la lumière ultraviolette",
+                "Des étincelles électriques",
+                "De l'azote liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liquéfaction libère de la chaleur latente dans l'atmosphère, fournissant une énergie colossale qui alimente les orages."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi une brûlure à la vapeur d'eau à 100 °C est-elle plus sévère qu'à l'eau liquide à 100 °C ?",
+              "options": [
+                "La vapeur libère une énorme quantité d'énergie en se liquéfiant sur la peau",
+                "La vapeur est chimiquement très acide",
+                "La vapeur pénètre dans le sang",
+                "L'eau liquide refroidit instantanément à 0 °C au toucher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En se liquéfiant sur la peau, la vapeur cède son énergie de changement d'état (très élevée) avant même que l'eau liquide ne commence à refroidir."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Modélisation microscopique des changements d'état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment sont disposées les molécules dans un solide cristallin à l'échelle microscopique ?",
+              "options": [
+                "Proches les unes des autres, fortement liées et ordonnées",
+                "Très espacées et en mouvement rapide",
+                "Faiblement liées et glissant les unes sur les autres",
+                "Dispersées dans le vide sans aucune liaison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'état solide compact et ordonné, les molécules sont très proches, ordonnées dans un réseau géométrique et vibrent sur place."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment sont disposées les molécules à l'état liquide ?",
+              "options": [
+                "Proches, faiblement liées et mobiles les unes par rapport aux autres",
+                "Totalement immobiles et figées",
+                "Séparées par de très grands espaces vides",
+                "Détruites en atomes isolés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'état liquide est compact mais désordonné : les molécules se touchent mais ont assez de liberté pour glisser les unes sur les autres."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment sont disposées les molécules à l'état gazeux ?",
+              "options": [
+                "Très éloignées les unes des autres et en mouvement rapide et désordonné",
+                "Soudées les unes aux autres en blocs rigides",
+                "Alignées en une seule couche au fond du récipient",
+                "Immobiles et parfaitement ordonnées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'état gazeux est un état dispersé et très désordonné : les molécules se déplacent à vive allure dans toutes les directions."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'arrive-t-il à l'agitation des molécules quand la température d'une substance s'élève ?",
+              "options": [
+                "L'agitation thermique des molécules augmente",
+                "L'agitation des molécules diminue",
+                "Les molécules cessent tout mouvement",
+                "Les molécules deviennent plus lourdes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La température est la mesure directe de l'agitation désordonnée des molécules : plus il fait chaud, plus elles bougent vite."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels qualificatifs décrivent l'état gazeux au niveau microscopique ?",
+              "options": [
+                "Dispersé (grand espace vide entre particules)",
+                "Désordonné (mouvements continuels dans tous les sens)",
+                "Compact (particules collées les unes aux autres)",
+                "Ordonné (réseau géométrique régulier)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'état gazeux est qualifié de dispersé (beaucoup de vide entre les molécules) et de désordonné (trajectoires aléatoires)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que deviennent les liaisons entre molécules d'eau lors de la fusion d'un glaçon ?",
+              "options": [
+                "Certaines liaisons se brisent, permettant aux molécules de glisser",
+                "Toutes les molécules sont cassées en atomes H et O",
+                "Les liaisons se renforcent considérablement",
+                "Les molécules fusionnent en une seule particule géante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'agitation thermique affaiblit le réseau solide : les liaisons rigides cèdent et les molécules deviennent mobiles à l'état liquide."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les molécules d'eau H₂O sont-elles modifiées chimiquement lors d'une vaporisation ?",
+              "options": [
+                "Non, ce sont toujours des molécules H₂O intactes",
+                "Oui, elles se transforment en gaz O₂ et H₂",
+                "Oui, elles perdent leurs liaisons chimiques internes",
+                "Oui, elles deviennent acides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un changement d'état est une transformation physique, pas chimique : la molécule H₂O reste strictement identique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on l'état solide cristallin à l'échelle moléculaire ?",
+              "options": [
+                "Compact et ordonné",
+                "Dispersé et désordonné",
+                "Fluide et élastique",
+                "Gazeux et dilaté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'état solide est compact (les molécules se touchent) et ordonné (elles sont alignées selon une structure géométrique fixe)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi un gaz est-il facilement compressible au niveau microscopique ?",
+              "options": [
+                "Parce qu'il y a d'immenses espaces vides entre les molécules",
+                "Parce que les molécules rétrécissent sous l'effet de la force",
+                "Parce que les molécules fusionnent entre elles",
+                "Parce que les atomes perdent leurs électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un gaz, la matière est dispersée : lorsqu'on comprime un gaz, on rapproche simplement les molécules en chassant le vide entre elles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le mouvement erratique de grains de pollen dans l'eau causé par les chocs moléculaires ?",
+              "options": [
+                "Le mouvement brownien",
+                "L'effet Doppler",
+                "L'oscillation quantique",
+                "L'onde gravitationnelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Observé par Robert Brown en 1827 et expliqué par Albert Einstein en 1905, le mouvement brownien prouve l'existence des chocs moléculaires."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Pression et changements d'état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de la pression atmosphérique normale au niveau de la mer ?",
+              "options": [
+                "Environ 1013 hPa (soit 1 atmosphère)",
+                "Environ 50 hPa",
+                "Environ 10 000 hPa",
+                "Environ 0 hPa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pression atmosphérique normale moyenne au niveau de la mer est de 1013 hectopascals (hPa), soit 101 300 Pa ou 1 atm."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment varie la pression atmosphérique lorsqu'on s'élève en altitude en montagne ?",
+              "options": [
+                "Elle diminue régulièrement",
+                "Elle augmente fortement",
+                "Elle reste strictement constante",
+                "Elle tombe instantanément à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En altitude, la colonne d'air située au-dessus de nous est moins haute et l'air se raréfie : la pression atmosphérique diminue."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À quelle température l'eau pure bout-elle au sommet de l'Everest (environ 8848 m d'altitude) ?",
+              "options": [
+                "À environ 72 °C",
+                "À exactement 100 °C",
+                "À plus de 150 °C",
+                "À 0 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pression atmosphérique étant très basse au sommet de l'Everest (environ 300 hPa), l'eau entre en ébullition dès 72 °C environ."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le principe de l'autocuiseur (cocotte-minute) pour accélérer la cuisson des aliments ?",
+              "options": [
+                "Augmenter la pression pour que l'eau liquide bout vers 120 °C",
+                "Empêcher l'eau de bouillir pour qu'elle reste froide",
+                "Créer du vide pour évaporer l'eau sans chauffer",
+                "Envoyer des ondes électromagnétiques destructrices"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un récipient hermétique, la vapeur augmente la pression : l'eau bout alors à plus haute température (vers 120 °C), cuisant les aliments plus vite."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels paramètres influencent directement la température d'ébullition d'un corps pur ?",
+              "options": [
+                "La pression exercée au-dessus du liquide",
+                "La nature chimique de la substance",
+                "La couleur du récipient utilisé",
+                "La marque du thermomètre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La température d'ébullition dépend intimement de la nature chimique du corps pur et de la pression environnante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si l'on place un verre d'eau tiède (30 °C) sous une cloche à vide et qu'on pompe l'air ?",
+              "options": [
+                "L'eau se met à bouillir spontanément à température ambiante",
+                "L'eau gèle en dégageant des flammes",
+                "L'eau disparaît instantanément",
+                "L'eau devient solide et chaude"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En diminuant la pression sous la cloche, la température d'ébullition baisse jusqu'à atteindre la température ambiante : l'eau bout sans être chauffée !"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel instrument de mesure permet de mesurer la pression atmosphérique ?",
+              "options": [
+                "Le baromètre",
+                "Le thermomètre",
+                "Le voltmètre",
+                "Le dynamomètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le baromètre est l'instrument dédié à la mesure de la pression atmosphérique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la cuisson des pâtes dans l'eau bouillante est-elle plus longue en haute montagne ?",
+              "options": [
+                "Car l'eau bouillante y est moins chaude qu'en plaine",
+                "Car le sel ne fond plus en altitude",
+                "Car la gravité est trop forte",
+                "Car les pâtes absorbent l'azote de l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau bout à une température inférieure à 100 °C en raison de la faible pression : les aliments cuisent donc à une température plus basse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est l'unité de mesure de la pression dans le Système International ?",
+              "options": [
+                "Le Pascal (Pa)",
+                "Le Bar",
+                "Le Millimètre de mercure",
+                "Le Newton (N)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'unité officielle du Système International pour la pression est le Pascal (1 Pa = 1 N/m²)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans les briquets transparents rechargeables, sous quel état le butane est-il stocké ?",
+              "options": [
+                "Liquide sous pression",
+                "Gazeux sous vide",
+                "Solide comme une cire",
+                "Plasma lumineux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le butane est maintenu sous une pression modérée (environ 2 bars), ce qui suffit à le maintenir à l'état liquide à température ambiante."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Applications et cycle naturel de l'eau",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel changement d'état permet à l'eau des océans de rejoindre l'atmosphère dans le cycle de l'eau ?",
+              "options": [
+                "L'évaporation",
+                "La solidification",
+                "La sublimation",
+                "La liquéfaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chauffée par le Soleil, l'eau de surface des océans et des lacs s'évapore et monte dans l'atmosphère sous forme de vapeur invisible."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment se forment les nuages dans le ciel ?",
+              "options": [
+                "Par liquéfaction de la vapeur d'eau en altitude au contact de l'air froid",
+                "Par ébullition des masses d'air chaud",
+                "Par solidification complète de l'air",
+                "Par la fumée produite par les forêts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En prenant de l'altitude, la vapeur d'eau se refroidit et se liquéfie en myriades de gouttelettes liquides formant les nuages."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sous quelle forme se font les précipitations lorsque la température de l'air est négative ?",
+              "options": [
+                "La neige ou la grêle (glace solide)",
+                "La vapeur d'eau",
+                "La rosée liquide tiède",
+                "Le brouillard compact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si la température est sous 0 °C, les gouttelettes d'eau gèlent pour former des cristaux de neige ou des grêlons solides."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la lyophilisation employée pour conserver le café ou les vaccins ?",
+              "options": [
+                "Une congélation suivie d'une sublimation de l'eau sous vide",
+                "Une cuisson à la flamme vive",
+                "Un trempage dans l'alcool bouillant",
+                "Une compression hydraulique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lyophilisation consiste à congeler le produit puis à extraire l'eau par sublimation directe de la glace sous faible pression."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles étapes du cycle naturel de l'eau impliquent un changement d'état physique de l'eau ?",
+              "options": [
+                "L'évaporation au-dessus des mers",
+                "La liquéfaction formant les nuages",
+                "Le ruissellement dans les fleuves",
+                "L'infiltration dans les nappes souterraines"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'évaporation (liquide vers gaz) et la condensation/liquéfaction (gaz vers liquide) sont des changements d'état. L'écoulement et l'infiltration sont de simples déplacements de liquide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le rejet de vapeur d'eau par les feuilles des arbres ?",
+              "options": [
+                "L'évapotranspiration",
+                "La photosynthèse gazeuse",
+                "La condensation foliaire",
+                "La liquéfaction végétale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'évapotranspiration combine l'évaporation du sol et la transpiration des végétaux, alimentant grandement l'humidité de l'air."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel procédé industriel fondé sur les changements d'état permet de séparer les constituants du pétrole brut ?",
+              "options": [
+                "La distillation fractionnée",
+                "La filtration sous presse",
+                "L'électrolyse de surface",
+                "La décantation centrifuge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une tour de raffinage, le pétrole est vaporisé puis ses fractions se liquéfient à différentes hauteurs selon leur température d'ébullition."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi souffler sur une cuillère de soupe chaude permet-il de la refroidir plus vite ?",
+              "options": [
+                "Cela accélère l'évaporation de surface qui consomme de la chaleur",
+                "Cela transforme la soupe en gaz froid",
+                "Cela augmente la pression au-dessus de la cuillère",
+                "Cela détruit les atomes d'eau bouillants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souffler chasse la vapeur saturée au-dessus de la soupe et accélère l'évaporation, laquelle pompe de l'énergie thermique au liquide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la fonte des calottes glaciaires terrestres (Groenland, Antarctique) entraîne-t-elle la montée du niveau des mers ?",
+              "options": [
+                "Elle apporte de l'eau nouvelle qui était jusqu'alors stockée sur les continents",
+                "La glace continentale était déjà immergée",
+                "La fonte modifie la gravité de la Terre",
+                "La glace continentale est plus lourde que l'eau liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les glaces continentales reposent sur la terre ferme : en fondant, cette eau s'ajoute directement au volume des océans."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la fonte de la banquise (glace de mer flottante) ne fait-elle pas monter le niveau de l'eau ?",
+              "options": [
+                "En vertu du principe d'Archimède, la glace flottante déplace déjà un volume d'eau équivalent à sa masse",
+                "Car la banquise s'évapore directement dans l'espace",
+                "Car l'eau de mer ne peut pas absorber d'eau douce",
+                "Car la banquise ne contient pas de matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'après la poussée d'Archimède, un corps flottant déplace un volume d'eau dont le poids égale son propre poids : en fondant, la banquise occupe exactement la place de sa partie immergée."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

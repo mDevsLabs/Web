@@ -1,11 +1,26 @@
 # Notes de version
 
+## 0.9.3
+
+### Nouveautés
+
+* **Quizzly 2.0** : introduction de Quizzly 2.0 : Quizzly devient une vraie application, pas un simple plugin ! Apprenez, accompagnez vous d'mAI pour des explications et progressez dans vos études et apprentissages. Sachez que l'intelligence artificielle a été amplement utilisée pour la conception de ces quiz. Nous tenions à être clair sur ce point. Pour plus d'informations, fiez vous à l'article de blog d'introduction de Quizzly.
+* **Pages** : écrivez plus rapidement et plus intelligemment avec mAI ! Rédigez dans un éditeur moderne puis téléchargez vos documents !
+
+### Améliorations
+
+* **Performances et chargement** : optimisation du chargement des ressources et performances accrues.
+
+### Corrections
+
+* **Nombreuses corrections** : application de nombreuses corrections dans l'interface et les plugins
+
 ## 0.9.2
 
 ### Nouveautés
 
-* **Blackline** : intégration de BlackLine, un jeu vidéo divertissant pour attendre vos agents en jouant ! Disponible pour tous les plans et sur toutes les platformes.
-* **Conversations sécurisées** : introduction de la fonctionnalité Locked Chats dans mAI pour vous permettre de verrouiller les conversations publiques avec un code PIN à 4 chiffres. Disponible pour tous les plans et sur toutes les platformes mais uniquement dans mAI Web.
+* **Blackline** : intégration de BlackLine, un jeu vidéo divertissant pour attendre vos agents en jouant ! Disponible pour tous les plans et sur toutes les plateformes.
+* **Conversations sécurisées** : introduction de la fonctionnalité Locked Chats dans mAI pour vous permettre de verrouiller les conversations publiques avec un code PIN à 4 chiffres. Disponible pour tous les plans et sur toutes les plateformes mais uniquement dans mAI Web.
 
 
 ### Améliorations
@@ -38,7 +53,7 @@
 * **Réflexion par répondant** : dans un fil Wakies, chaque assistant expose sa propre réflexion. Le niveau d’effort proposé correspond à ce que le modèle sait réellement faire.
 * **Sélecteur de modèle unifié** : Wakies réutilise le sélecteur du Chat et de l’Agent, avec la même recherche et le même sous-menu de réflexion.
 * **Modèle par défaut** : quand ni la conversation ni le Wakie n’imposent de modèle, la préférence enregistrée de l’utilisateur s’applique, comme dans les autres espaces.
-* **Enregistrement du déploiement** : les applications natives identifient la build Web courante sans mise en cache, et la version de Coder embarquée est vérifiée avant tout lancement.
+* **Enregistrement du déploiement** : les applications natives identifient le déploiement Web courante sans mise en cache, et la version de Coder embarquée est vérifiée avant tout lancement.
 * **Journalisation de l’usage** : la traduction et les commentaires IA de Vibe sont désormais comptés dans les quotas, au lieu d’être ignorés ou estimés.
 * **Modèles audio** : l’accès ne dépend plus du suffixe « gratuit » mais du forfait, et un jeu de repli évite un sélecteur vide.
 
@@ -50,7 +65,7 @@
 * **Terminal local** : un module natif manquant affiche un message explicite au lieu d’arrêter l’application, et la détection du CLI ne confond plus l’exécutable de mAI Desktop avec celui du CLI.
 * **Boucle de redirection** : la bascule entre la connexion et l’éditeur de Coder ne boucle plus.
 * **Palette de réactions des Wakies** : le serveur et l’interface proposent la même liste d’émojis. Quatre réactions acceptées par l’interface étaient refusées par le serveur.
-* **Auto-réaction** : un compte ne peut plus réagir à son propre message.
+* **Auto réaction** : un compte ne peut plus réagir à son propre message.
 * **Réflexion interrompue** : la collecte du raisonnement est plafonnée sans jamais tronquer son affichage, et les réponses cumulatives ne sont plus dupliquées.
 * **Modèles en double** : la liste des modèles ne contient plus de doublons, ni dans l’application Web ni dans Coder, et les surcharges d’administration survivent à la synchronisation.
 * **Double adresse d’API** : dans Coder, le fournisseur, le compte et les modèles visent le même hôte.
@@ -76,7 +91,7 @@
 
 ### Améliorations
 
-* Centralisation de la validation et dérivation d’identité utilisateur sur toutes les routes API (`requireUser`).
+* Centralisation de la validation et dérivation d’identité utilisateur sur toutes les routes API.
 * Renforcement de la sécurité : rapport des violations CSP, protection anti-clickjacking et limitation de débit sur les routes API coûteuses.
 * Ajout de squelettes de chargement sur toutes les pages de l’espace de travail pour fluidifier la navigation sans écran blanc.
 * Ordonnancement automatique unifié par tick régulier pour les tâches de l’Agent, du planning, de Wakies et de Vibe.

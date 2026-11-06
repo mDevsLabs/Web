@@ -1,8 +1,8 @@
-import { overlay, isMounted, toggleRootClass } from './root.ts';
+import { overlay, isMounted, root, toggleRootClass } from './root.ts';
 export function portraitViewport(mobile:boolean,width:number,height:number){return mobile&&Number.isFinite(width)&&Number.isFinite(height)&&width>0&&height>width;}
 export function landscapeBlocked(mobile:boolean){if(!mobile||typeof window==='undefined')return false;const orientation=window.screen?.orientation?.type;if(orientation?.startsWith('portrait'))return true;return portraitViewport(mobile,window.innerWidth,window.innerHeight);}
 export async function requestLandscape(){
-  try{if(!document.fullscreenElement&&document.documentElement.requestFullscreen)await document.documentElement.requestFullscreen();}catch{ /* The rotation overlay still enforces landscape. */ }
+  try{const host=root();if(!document.fullscreenElement&&host.requestFullscreen)await host.requestFullscreen();}catch{ /* The rotation overlay still enforces landscape. */ }
   const orientation=typeof window!=='undefined'?(window.screen?.orientation as ScreenOrientation&{lock?:(orientation:string)=>Promise<void>}|undefined):undefined;
   try{await orientation?.lock?.('landscape');}catch{ /* Rotate the device when browser locking is unavailable. */ }
 }

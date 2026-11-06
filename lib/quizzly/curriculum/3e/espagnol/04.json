@@ -1,0 +1,2073 @@
+{
+  "id": "3e-espagnol-04",
+  "year": "3e",
+  "subject": "espagnol",
+  "title": "La grammaire de l'espagnol",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les articles définis et les contractions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'article défini masculin singulier en espagnol ?",
+              "options": ["el", "lo", "le", "al"],
+              "correctAnswers": [0],
+              "explanation": "En espagnol, l'article défini masculin singulier est 'el' (ex. 'el libro'). Attention à ne pas le confondre avec 'él' qui signifie 'lui/il'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'article défini féminin pluriel ?",
+              "options": ["las", "los", "les", "unas"],
+              "correctAnswers": [0],
+              "explanation": "L'article défini féminin pluriel est 'las' (ex. 'las casas'). 'Los' est le masculin pluriel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la contraction obligatoire formée par la préposition 'a' et l'article 'el' ?",
+              "options": ["al", "del", "ael", "alla"],
+              "correctAnswers": [0],
+              "explanation": "La préposition 'a' suivie de l'article masculin 'el' se contracte obligatoirement en 'al' (a + el = al)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la contraction obligatoire formée par la préposition 'de' et l'article 'el' ?",
+              "options": ["del", "al", "d'el", "dele"],
+              "correctAnswers": [0],
+              "explanation": "'de' + 'el' donne toujours la contraction 'del' (ex. 'el libro del profesor'). L'espagnol ne possède que deux contractions : 'al' et 'del'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases contiennent une contraction obligatoire correcte en espagnol ?",
+              "options": [
+                "Voy al cine con mis amigos.",
+                "El perro del vecino ladra mucho.",
+                "Voy a el parque esta tarde.",
+                "Vengo de el colegio ahora mismo."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les contractions 'al' (a + el) et 'del' (de + el) sont obligatoires en espagnol. On ne peut pas écrire 'a el' ni 'de el'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel article défini emploie-t-on devant le nom féminin singulier 'agua' ?",
+              "options": ["el", "la", "un", "lo"],
+              "correctAnswers": [0],
+              "explanation": "Devant un nom féminin singulier commençant par un 'a' ou un 'ha' tonique, on emploie 'el' au singulier pour éviter le hiatus (ex. 'el agua limpia')."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel article défini emploie-t-on devant 'águilas' (aigles) au pluriel ?",
+              "options": ["las", "los", "el", "unas"],
+              "correctAnswers": [0],
+              "explanation": "Au pluriel, la règle du 'a' tonique ne s'applique plus : on retrouve l'article féminin pluriel régulier 'las' (las águilas)."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quels noms féminins singuliers prennent l'article 'el' pour des raisons euphoniques ?",
+              "options": ["el hacha", "el águila", "el amiga", "el ventana"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Hacha' et 'águila' sont féminins mais commencent par un 'a' ou 'ha' tonique, d'où l'emploi de 'el' au singulier. Pour 'amiga', l'accent n'est pas sur le premier 'a'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Los domingos vamos ___ museo.'",
+              "options": ["al", "a el", "del", "el"],
+              "correctAnswers": [0],
+              "explanation": "On contracte la préposition 'a' et l'article 'el' devant le nom masculin 'museo' : 'vamos al museo'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Este es el cuaderno ___ chico nuevo.'",
+              "options": ["del", "de el", "al", "de la"],
+              "correctAnswers": [0],
+              "explanation": "'de' + 'el chico' donne la contraction obligatoire 'del chico'."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les articles indéfinis et l'article neutre lo",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'article indéfini masculin pluriel en espagnol ?",
+              "options": ["unos", "los", "unes", "algunos"],
+              "correctAnswers": [0],
+              "explanation": "L'article indéfini masculin pluriel est 'unos' (ex. 'unos libros' = des livres / quelques livres)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'article indéfini féminin pluriel ?",
+              "options": ["unas", "las", "unes", "algunas"],
+              "correctAnswers": [0],
+              "explanation": "L'article indéfini féminin pluriel est 'unas' (ex. 'unas casas' = des maisons)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot correspond à l'article neutre servant à substantiver un adjectif ?",
+              "options": ["lo", "el", "le", "la"],
+              "correctAnswers": [0],
+              "explanation": "'Lo' est un article neutre qui, placé devant un adjectif ou un participe, permet d'exprimer une notion abstraite (ex. 'lo bueno' = ce qui est bon)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie l'expression 'lo importante' ?",
+              "options": [
+                "ce qui est important",
+                "la personne importante",
+                "les choses importantes",
+                "l'homme important"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Lo' suivi d'un adjectif traduit 'ce qui est...' ou le côté abstrait de la notion."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent correctement l'article neutre 'lo' ?",
+              "options": [
+                "Lo mejor es descansar hoy.",
+                "No entiendo lo difícil de este ejercicio.",
+                "Lo libro está sobre la mesa.",
+                "Lo chica es muy simpática."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Lo' ne s'emploie jamais devant un nom commun ('lo libro' est faux). Il s'utilise avec des adjectifs, des adverbes ou des propositions relatives."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que peut signifier 'unos' devant un chiffre (ex. 'Tiene unos quince años') ?",
+              "options": ["environ", "exactement", "plus de", "moins de"],
+              "correctAnswers": [0],
+              "explanation": "Devant un numéral, 'unos / unas' a souvent la valeur d'approximation : 'environ' ou 'à peu près'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on : 'J'ai acheté des pommes' ?",
+              "options": [
+                "He comprado unas manzanas.",
+                "He comprado lo manzanas.",
+                "He comprado del manzanas.",
+                "He comprado de las manzanas."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article indéfini pluriel 'unas' correspond au français 'des' devant un nom féminin pluriel."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quelles sont les formes des articles indéfinis en espagnol ?",
+              "options": ["un", "unas", "del", "al"],
+              "correctAnswers": [0, 1],
+              "explanation": "Les articles indéfinis sont 'un', 'una', 'unos', 'unas'. 'Al' et 'del' sont des articles définis contractés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète la phrase : '___ que dices es muy interesante.'",
+              "options": ["Lo", "El", "Un", "Los"],
+              "correctAnswers": [0],
+              "explanation": "'Lo que' signifie 'ce que / ce qui' pour introduire une idée ou une proposition relative neutre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel article indéfini met-on devant 'hacha' au singulier ?",
+              "options": ["un", "una", "unas", "unos"],
+              "correctAnswers": [0],
+              "explanation": "Comme pour l'article défini 'el', on utilise 'un' devant un nom féminin singulier commençant par 'a/ha' tonique (ex. 'un hacha afilada')."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le genre et le nombre des noms",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison la plus fréquente des noms féminins en espagnol ?",
+              "options": ["-a", "-o", "-e", "-i"],
+              "correctAnswers": [0],
+              "explanation": "Généralement, les noms terminés par '-a' sont féminins (ex. 'la casa', 'la mesa'), sauf exceptions d'origine grecque comme 'el problema'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le pluriel du nom 'el papel' ?",
+              "options": [
+                "los papeles",
+                "los papels",
+                "los papieles",
+                "los papeleses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noms se terminant par une consonne forment leur pluriel en ajoutant '-es' (papel -> papeles)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de 'la voz' ?",
+              "options": ["las voces", "las vozes", "las vozs", "las vozces"],
+              "correctAnswers": [0],
+              "explanation": "Les mots terminés par '-z' transforment le 'z' en 'c' devant la terminaison '-es' du pluriel : 'la voz' -> 'las voces'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le genre du mot 'el problema' ?",
+              "options": ["masculin", "féminin", "neutre", "variable"],
+              "correctAnswers": [0],
+              "explanation": "'El problema' est masculin, comme de nombreux mots d'origine grecque terminés par '-ma' (el tema, el sistema, el idioma)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels noms terminés par '-a' sont masculins en espagnol ?",
+              "options": ["el día", "el mapa", "la playa", "la mesa"],
+              "correctAnswers": [0, 1],
+              "explanation": "'El día' et 'el mapa' sont deux exceptions très courantes : bien que terminés par '-a', ils sont masculins."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le féminin du mot 'el actor' ?",
+              "options": ["la actriz", "la actora", "la actrice", "la actrita"],
+              "correctAnswers": [0],
+              "explanation": "Le féminin de 'actor' est 'actriz', tout comme en français 'acteur' donne 'actrice'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment forme-t-on le pluriel d'un mot terminé par une voyelle non accentuée ?",
+              "options": [
+                "On ajoute -s",
+                "On ajoute -es",
+                "Le mot ne change pas",
+                "On remplace la voyelle par -os"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mots terminés par une voyelle non accentuée forment simplement leur pluriel en ajoutant '-s' (casa -> casas, libro -> libros)."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quels mots transforment leur 'z' finale en 'c' au pluriel ?",
+              "options": ["el pez", "la luz", "el mes", "el sol"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Pez' devient 'peces' et 'luz' devient 'luces'. 'Mes' (meses) et 'sol' (soles) ne se terminent pas par un 'z'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le genre du mot 'la mano' (la main) ?",
+              "options": ["féminin", "masculin", "neutre", "indéterminé"],
+              "correctAnswers": [0],
+              "explanation": "'La mano' est une exception classique : bien que terminé par '-o', ce mot est féminin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le pluriel régulier de 'el rey' ?",
+              "options": ["los reyes", "los reys", "los reyeses", "los reies"],
+              "correctAnswers": [0],
+              "explanation": "Les mots terminés par un 'y' consonne forment leur pluriel en '-es' : 'el rey' -> 'los reyes', 'la ley' -> 'las leyes'."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "L'accord des adjectifs qualificatifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment s'accorde un adjectif qualificatif en espagnol ?",
+              "options": [
+                "En genre et en nombre avec le nom",
+                "Uniquement en nombre",
+                "Uniquement en genre",
+                "Il reste toujours invariable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme en français, l'adjectif qualificatif s'accorde obligatoirement en genre (masculin/féminin) et en nombre (singulier/pluriel) avec le nom qu'il qualifie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le féminin de l'adjectif 'trabajador' (travailleur) ?",
+              "options": [
+                "trabajadora",
+                "trabajador",
+                "trabajadriz",
+                "trabajadores"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les adjectifs terminés par '-or' forment leur féminin en ajoutant '-a' : 'trabajador' -> 'trabajadora'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le féminin singulier de l'adjectif 'fácil' (facile) ?",
+              "options": ["fácil", "fácila", "fácile", "fácilada"],
+              "correctAnswers": [0],
+              "explanation": "Les adjectifs terminés par une consonne autre que '-or' ou de nationalité sont invariables en genre : 'un examen fácil', 'una prueba fácil'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le féminin pluriel de l'adjectif de nationalité 'español' ?",
+              "options": ["españolas", "españoles", "españols", "españolitas"],
+              "correctAnswers": [0],
+              "explanation": "Les adjectifs de nationalité terminés par une consonne prennent '-a' au féminin (española), puis '-s' au pluriel (españolas)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs ont la même forme au masculin et au féminin singulier ?",
+              "options": ["verde", "difícil", "rojo", "bueno"],
+              "correctAnswers": [0, 1],
+              "explanation": "Les adjectifs terminés par '-e' (verde, inteligente) ou par une consonne non nationale (difícil, azul) ont une forme unique au singulier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Las chicas son muy ___ (inteligente).'",
+              "options": [
+                "inteligentes",
+                "inteligentas",
+                "inteligente",
+                "inteligentos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif 'inteligente' se termine par '-e'. Au pluriel, il prend un '-s' : 'inteligentes', pour le masculin comme pour le féminin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de l'adjectif 'feliz' (heureux) ?",
+              "options": ["felices", "felizes", "felizs", "felicess"],
+              "correctAnswers": [0],
+              "explanation": "La terminaison en '-z' se transforme en '-c' devant '-es' : 'feliz' -> 'felices'."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quelles phrases présentent des accords adjectif-nom parfaitement corrects ?",
+              "options": [
+                "Ellas tienen unas casas blancas.",
+                "Los alumnos son muy trabajadores.",
+                "Las chicas son españolos.",
+                "Unos exámenes muy difíceles."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Casas blancas' et 'alumnos trabajadores' sont bien accordés. 'Españolos' et 'difíceles' contiennent des erreurs morphologiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Una película ___ (interesante).'",
+              "options": [
+                "interesante",
+                "interesanta",
+                "interesanto",
+                "interesantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif 'interesante' est invariable en genre au singulier : 'una película interesante'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le féminin singulier de l'adjectif 'burlón' (moqueur) ?",
+              "options": ["burlona", "burlón", "burlone", "burlonta"],
+              "correctAnswers": [0],
+              "explanation": "Les adjectifs terminés par '-ón' ajoutent '-a' au féminin et perdent leur accent écrit : 'burlón' -> 'burlona'."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Les adjectifs et pronoms possessifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel adjectif possessif (forme atone devant le nom) traduit 'mon / ma' ?",
+              "options": ["mi", "mío", "me", "mis"],
+              "correctAnswers": [0],
+              "explanation": "Devant le nom au singulier, on emploie 'mi' pour le masculin comme pour le féminin (ex. 'mi padre', 'mi madre')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'adjectif possessif pour 'notre' devant un nom féminin singulier ?",
+              "options": ["nuestra", "nuestro", "nos", "mi"],
+              "correctAnswers": [0],
+              "explanation": "'Nuestro / nuestra' s'accorde en genre et en nombre avec le nom possédé : 'nuestra casa' (notre maison)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel adjectif possessif correspond à la 3e personne du singulier (son/sa/ses) devant un nom pluriel ?",
+              "options": ["sus", "su", "suyos", "se"],
+              "correctAnswers": [0],
+              "explanation": "Devant un nom pluriel, 'su' devient 'sus' (ex. 'sus libros' = ses livres / leurs livres)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les adjectifs possessifs 'mi, tu, su' s'accordent-ils en genre ?",
+              "options": [
+                "Non, ils s'accordent seulement en nombre",
+                "Oui, ils ont une forme féminine spécifique",
+                "Non, ils sont totalement invariables",
+                "Oui, uniquement devant un nom féminin pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Mi, tu, su' ne changent pas selon le genre : 'mi hermano', 'mi hermana'. Ils ne varient qu'en nombre (mis, tus, sus)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes correspondent à des pronoms possessifs ou formes toniques (le mien, le tien...) ?",
+              "options": ["mío", "tuyo", "mi", "tu"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Mío' (le mien) et 'tuyo' (le tien) sont des formes toniques employées comme pronoms ou après le nom. 'Mi' et 'tu' sont les formes atones."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète la phrase : '___ amigos viven en Sevilla (Mes).'",
+              "options": ["Mis", "Mi", "Míos", "Me"],
+              "correctAnswers": [0],
+              "explanation": "Devant un nom au pluriel ('amigos'), 'mi' prend un 's' : 'Mis amigos'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on : 'Ce livre est le mien' ?",
+              "options": [
+                "Este libro es mío.",
+                "Este libro es mi.",
+                "Este libro es de mi.",
+                "Este libro es me."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après le verbe 'ser', on emploie la forme tonique : 'es mío' (ou 'el mío')."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs possessifs s'accordent en genre et en nombre devant le nom ?",
+              "options": [
+                "nuestro / nuestra",
+                "vuestro / vuestra",
+                "mi / mis",
+                "tu / tus"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Seuls 'nuestro' et 'vuestro' possèdent une variation en genre (masculin/féminin) devant le nom."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète la phrase : '¿Dónde están ___ gafas? (tes)'",
+              "options": ["tus", "tu", "tuyas", "te"],
+              "correctAnswers": [0],
+              "explanation": "Devant le nom féminin pluriel 'gafas', l'adjectif possessif de 2e personne est 'tus'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase traduit correctement : 'C'est notre maison' ?",
+              "options": [
+                "Es nuestra casa.",
+                "Es nuestro casa.",
+                "Es su casa de nosotros.",
+                "Es la mía casa."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Casa' étant féminin, on accorde l'adjectif possessif : 'nuestra casa'."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Les adjectifs et pronoms démonstratifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel démonstratif désigne un objet très proche de la personne qui parle ('ici') ?",
+              "options": ["este", "ese", "aquel", "eso"],
+              "correctAnswers": [0],
+              "explanation": "'Este, esta, estos, estas' désignent ce qui est proche du locuteur dans l'espace ou dans le présent (aquí / acá)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel démonstratif désigne un objet proche de la personne à qui l'on parle ('là') ?",
+              "options": ["ese", "este", "aquel", "esto"],
+              "correctAnswers": [0],
+              "explanation": "'Ese, esa, esos, esas' renvoient à ce qui se trouve près de l'interlocuteur ou à moyenne distance (ahí)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel démonstratif désigne un objet éloigné des deux interlocuteurs ('là-bas') ?",
+              "options": ["aquel", "ese", "este", "aquello"],
+              "correctAnswers": [0],
+              "explanation": "'Aquel, aquella, aquellos, aquellas' désignent l'éloignement spatial ou temporel (allí / allá)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le pluriel masculin de l'adjectif démonstratif 'este' ?",
+              "options": ["estos", "estes", "estosel", "estosas"],
+              "correctAnswers": [0],
+              "explanation": "Attention au piège : 'este' donne 'estos' au pluriel (et non 'estes')."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes correspondent à des pronoms démonstratifs neutres en espagnol ?",
+              "options": ["esto", "eso", "este", "ese"],
+              "correctAnswers": [0, 1],
+              "explanation": "Les pronoms démonstratifs neutres sont 'esto', 'eso' et 'aquello'. Ils ne s'emploient jamais devant un nom."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le féminin pluriel de 'aquel' ?",
+              "options": ["aquellas", "aquellos", "aqueles", "aquels"],
+              "correctAnswers": [0],
+              "explanation": "Le féminin pluriel de 'aquel' est 'aquellas' (ex. 'aquellas montañas lejanas')."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète la phrase : '___ bolígrafo que tengo aquí en la mano es azul.'",
+              "options": ["Este", "Ese", "Aquel", "Esto"],
+              "correctAnswers": [0],
+              "explanation": "Puisque l'objet est 'aquí en la mano' (très proche), on emploie 'este'."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quelles phrases expriment correctement l'éloignement avec 'aquel / aquella' ?",
+              "options": [
+                "Aquellos años fueron maravillosos.",
+                "Mira aquella montaña allá a lo lejos.",
+                "Pásame este libro que está allí lejos.",
+                "Esto chica es muy simpática."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Aquellos años' (éloignement dans le temps) et 'aquella montaña allá' (éloignement dans l'espace) sont parfaitement corrects."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le pluriel masculin de 'ese' ?",
+              "options": ["esos", "eses", "esosel", "aquellos"],
+              "correctAnswers": [0],
+              "explanation": "Comme 'este' donne 'estos', 'ese' donne 'esos' au pluriel masculin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie le pronom neutre 'esto' ?",
+              "options": ["ceci", "cet homme", "ces choses", "celui-ci"],
+              "correctAnswers": [0],
+              "explanation": "'Esto' est neutre et signifie 'ceci' pour désigner une chose non identifiée, une idée ou une phrase complète."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "L'apocope des adjectifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'apocope en grammaire espagnole ?",
+              "options": [
+                "La perte d'une voyelle ou d'une syllabe finale devant un nom",
+                "L'ajout d'une lettre à la fin d'un mot",
+                "Le changement de genre d'un nom",
+                "Le redoublement de la consonne finale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'apocope est le raccourcissement de certains adjectifs placés directement devant un nom (ex. 'bueno' devient 'buen')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que devient l'adjectif 'bueno' devant un nom masculin singulier ?",
+              "options": ["buen", "bien", "bue", "buena"],
+              "correctAnswers": [0],
+              "explanation": "Devant un nom masculin singulier, 'bueno' s'apocope en 'buen' (ex. 'un buen amigo')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que devient 'malo' devant un nom masculin singulier ?",
+              "options": ["mal", "malo", "mala", "male"],
+              "correctAnswers": [0],
+              "explanation": "'Malo' perd son '-o' final devant un nom masculin singulier : 'un mal ejemplo'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que devient 'grande' devant un nom singulier (masculin ou féminin) ?",
+              "options": ["gran", "grand", "grando", "grandi"],
+              "correctAnswers": [0],
+              "explanation": "Devant un nom singulier masculin ou féminin, 'grande' s'apocope en 'gran' et prend souvent le sens de 'grand par la qualité' (un grand homme = un gran hombre)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs ordinaux subissent l'apocope devant un nom masculin singulier ?",
+              "options": ["primero", "tercero", "segundo", "cuarto"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Primero' devient 'primer' (el primer día) et 'tercero' devient 'tercer' (el tercer piso). 'Segundo' et 'cuarto' ne s'apocopent pas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Hoy hace un ___ día.'",
+              "options": ["buen", "bueno", "bien", "buena"],
+              "correctAnswers": [0],
+              "explanation": "Devant le nom masculin singulier 'día', 'bueno' devient 'buen'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Madrid es una ___ ciudad.'",
+              "options": ["gran", "grande", "grano", "buen"],
+              "correctAnswers": [0],
+              "explanation": "Devant un nom singulier (ici 'ciudad', féminin), 'grande' s'apocope en 'gran'."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Dans quels cas l'adjectif 'grande' ne s'apocope PAS ?",
+              "options": [
+                "Quand il est placé après le nom (una casa grande)",
+                "Quand il est au pluriel (grandes ciudades)",
+                "Quand il est devant un nom féminin singulier",
+                "Quand il est devant un nom masculin singulier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'apocope de 'grande' en 'gran' n'a lieu que devant un nom singulier. Après le nom ou au pluriel, il garde sa forme complète."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que devient le mot 'santo' devant la plupart des prénoms de saints masculins ?",
+              "options": ["San", "Sant", "Santo", "Santa"],
+              "correctAnswers": [0],
+              "explanation": "'Santo' s'apocope en 'San' devant la plupart des noms de saints masculins (ex. San Martín), sauf ceux commençant par Do- ou To- (Santo Domingo, Santo Tomás)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Vivo en el ___ piso (troisième).'",
+              "options": ["tercer", "tercero", "tres", "tercera"],
+              "correctAnswers": [0],
+              "explanation": "Devant le nom masculin singulier 'piso', 'tercero' s'apocope en 'tercer'."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les pronoms personnels sujets et compléments",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le pronom personnel sujet de vouvoiement singulier en espagnol ?",
+              "options": ["usted", "tú", "vosotros", "ustedes"],
+              "correctAnswers": [0],
+              "explanation": "'Usted' est la formule de politesse au singulier (équivalent de 'vous' poli s'adressant à une seule personne) et se conjugue à la 3e personne du singulier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel pronom COD remplace un nom masculin singulier (ex. 'el libro') ?",
+              "options": ["lo", "le", "la", "el"],
+              "correctAnswers": [0],
+              "explanation": "Le pronom complément d'objet direct (COD) masculin singulier de 3e personne est 'lo' (ex. 'Lo compro' = Je l'achète)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel pronom COD remplace un nom féminin pluriel (ex. 'las manzanas') ?",
+              "options": ["las", "los", "les", "se"],
+              "correctAnswers": [0],
+              "explanation": "Le pronom COD féminin pluriel est 'las' (ex. 'Las como' = Je les mange)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le pronom complément d'objet indirect (COI) pour 'nous' ?",
+              "options": ["nos", "nosotros", "les", "se"],
+              "correctAnswers": [0],
+              "explanation": "Le pronom COI (et COD) pour la 1re personne du pluriel est 'nos' (ex. 'Nos da un consejo')."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont les pronoms compléments d'objet direct (COD) de troisième personne ?",
+              "options": ["lo / la", "los / las", "le / les", "yo / tú"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Lo, la, los, las' sont les pronoms COD de 3e personne. 'Le / les' sont les pronoms COI."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que devient le pronom COI 'le' ou 'les' lorsqu'il est suivi d'un pronom COD de 3e personne (lo, la, los, las) ?",
+              "options": ["se", "te", "me", "les"],
+              "correctAnswers": [0],
+              "explanation": "Pour éviter la cacophonie ('le lo doy'), le pronom COI 'le/les' se transforme en 'se' : 'Se lo doy'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Où se place généralement le pronom complément avec un verbe conjugué à un temps simple ?",
+              "options": [
+                "Devant le verbe conjugué",
+                "Après le verbe soudé à la fin",
+                "Après le participe",
+                "À la fin de la phrase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec un verbe conjugué simple à l'indicatif, le pronom se place devant le verbe en un mot séparé (proclise) : 'Te llamo'."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Avec quelles formes verbales le pronom complément se soude-t-il obligatoirement à la fin (enclise) ?",
+              "options": [
+                "L'infinitif",
+                "L'impératif affirmatif",
+                "Le présent de l'indicatif",
+                "Le passé composé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'enclise est obligatoire avec l'infinitif (comprarlo), le gérondif (comprándolo) et l'impératif affirmatif (¡cómpralo!)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on : 'Je le vois' (en parlant d'un film) ?",
+              "options": ["Lo veo.", "Le veo.", "Veo lo.", "Yo veo él."],
+              "correctAnswers": [0],
+              "explanation": "'El film' est un nom de chose masculin singulier, remplacé par le pronom COD 'lo' placé devant le verbe : 'Lo veo'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'A María ___ gusta bailar salsa.'",
+              "options": ["le", "la", "se", "lo"],
+              "correctAnswers": [0],
+              "explanation": "Avec les verbes de goût comme 'gustar', on emploie un pronom COI : pour María (3e personne singulier), c'est 'le'."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Les quantificateurs et indéfinis",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie 'mucho / mucha' employé devant un nom ?",
+              "options": ["beaucoup de", "un peu de", "trop de", "assez de"],
+              "correctAnswers": [0],
+              "explanation": "'Mucho / mucha / muchos / muchas' s'accorde avec le nom et signifie 'beaucoup de' (ex. 'mucho dinero', 'muchas gracias')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que devient 'alguno' placé directement devant un nom masculin singulier ?",
+              "options": ["algún", "algun", "algo", "algunos"],
+              "correctAnswers": [0],
+              "explanation": "'Alguno' subit une apocope et prend un accent écrit sur le 'u' : 'algún' (ex. 'algún día')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que devient 'ninguno' placé directement devant un nom masculin singulier ?",
+              "options": ["ningún", "ningun", "nada", "ningunos"],
+              "correctAnswers": [0],
+              "explanation": "Tout comme 'alguno', 'ninguno' devient 'ningún' avec accent écrit (ex. 'ningún problema')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment s'accorde l'indéfini 'todo' dans : '___ los alumnos están en clase.' ?",
+              "options": ["Todos", "Todo", "Toda", "Todas"],
+              "correctAnswers": [0],
+              "explanation": "'Todo' s'accorde en genre et en nombre avec le groupe nominal : 'Todos los alumnos'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels indéfinis subissent une apocope devant un nom masculin singulier ?",
+              "options": ["alguno", "ninguno", "mucho", "poco"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Alguno' devient 'algún' et 'ninguno' devient 'ningún'. 'Mucho' et 'poco' ne s'apocopent pas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la règle d'emploi de 'muy' par rapport à 'mucho' ?",
+              "options": [
+                "'Muy' s'emploie devant un adjectif ou adverbe, 'mucho' avec un verbe ou un nom",
+                "'Mucho' s'emploie uniquement devant les adjectifs",
+                "'Muy' s'emploie toujours après un verbe",
+                "Les deux sont interchangeables sans aucune règle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dit 'muy simpático' (très + adjectif) et 'muy bien' (très + adverbe), mais 'trabaja mucho' (beaucoup après verbe) et 'mucho trabajo' (beaucoup de + nom)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Esta chica es ___ simpática.'",
+              "options": ["muy", "mucho", "mucha", "más"],
+              "correctAnswers": [0],
+              "explanation": "Devant l'adjectif 'simpática', on utilise l'adverbe invariable 'muy' (très)."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent correctement 'muy' ou 'mucho' ?",
+              "options": [
+                "Estoy muy contento hoy.",
+                "Mi hermano come mucho.",
+                "Estoy mucho contento hoy.",
+                "Mi hermano come muy."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Muy contento' (très + adjectif) et 'come mucho' (verbe + beaucoup) sont les constructions correctes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'No tengo ___ duda (aucune).'",
+              "options": ["ninguna", "ningún", "nada", "nadie"],
+              "correctAnswers": [0],
+              "explanation": "'Duda' étant féminin singulier, l'indéfini s'accorde au féminin : 'ninguna duda'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie l'expression 'cada día' ?",
+              "options": [
+                "chaque jour",
+                "tous les deux jours",
+                "certains jours",
+                "aucun jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Cada' est invariable et signifie 'chaque' (cada día = chaque jour, cada persona = chaque personne)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan et synthèse : accords du groupe nominal et articles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel groupe nominal est parfaitement accordé pour 'une grande maison blanche' ?",
+              "options": [
+                "una gran casa blanca",
+                "una grande casa blanca",
+                "un gran casa blanco",
+                "una gran casa blanco"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Casa' est féminin singulier : 'una', 'gran' (apocope de grande devant le nom), et 'blanca' au féminin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel article défini convient devant 'águila negra' au singulier ?",
+              "options": ["el", "la", "las", "lo"],
+              "correctAnswers": [0],
+              "explanation": "'Águila' commence par un 'a' tonique : on dit 'el águila negra' (l'adjectif 'negra' reste au féminin !)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quand un adjectif qualifie deux noms de genres différents, quel est l'accord général ?",
+              "options": [
+                "Au masculin pluriel",
+                "Au féminin pluriel",
+                "Avec le nom le plus proche uniquement",
+                "L'adjectif reste au singulier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme en français, le masculin l'emporte : 'el chico y la chica son simpáticos'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le pluriel régulier de 'el lápiz azul' ?",
+              "options": [
+                "los lápices azules",
+                "los lápizs azules",
+                "los lápizes azuls",
+                "los lápices azuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Lápiz' fait 'lápices' (z -> c + es) et 'azul' fait 'azules' (consonne + es)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases comportent des accords du groupe nominal parfaitement corrects ?",
+              "options": [
+                "Tengo unos amigos españoles muy amables.",
+                "Es el primer día de las vacaciones.",
+                "Es el primero día de las vacaciones.",
+                "Tengo unos amigos españols muy amablos."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Unos amigos españoles' et 'el primer día' (avec apocope de primero) respectent rigoureusement les règles d'accord."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète la phrase : '___ aguas de este lago son cristalinas.'",
+              "options": ["Las", "Los", "El", "La"],
+              "correctAnswers": [0],
+              "explanation": "Au pluriel, la règle du 'a' tonique ne s'applique plus : on retrouve 'las aguas'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Es un ___ escritor reconocido mundialmente.'",
+              "options": ["gran", "grande", "grano", "mayor"],
+              "correctAnswers": [0],
+              "explanation": "Devant un nom masculin singulier, 'grande' devient 'gran' pour désigner la grandeur morale ou le talent."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quels groupes nominaux présentent une apocope correcte de l'adjectif ?",
+              "options": [
+                "un buen viaje",
+                "el tercer capítulo",
+                "un bueno viaje",
+                "el tercero capítulo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Bueno' et 'tercero' s'apocopent obligatoirement en 'buen' et 'tercer' devant un nom masculin singulier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Sus ideas son muy ___ (intéressant).'",
+              "options": [
+                "interesantes",
+                "interesantas",
+                "interesante",
+                "interesantos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Ideas' est féminin pluriel ; l'adjectif terminé par '-e' prend simplement un '-s' : 'interesantes'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel groupe nominal est correctement orthographié au pluriel ?",
+              "options": [
+                "unas ciudades grandes",
+                "unas ciudads grandes",
+                "unas ciudades gran",
+                "unas ciudaddes grandes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Ciudad' se termine par une consonne -> 'ciudades'. Placé après le nom, 'grande' prend un '-s' -> 'grandes'."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Ser et Estar : emplois et nuances",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel verbe utilise-t-on pour exprimer la nationalité ou l'origine ?",
+              "options": ["ser", "estar", "haber", "tener"],
+              "correctAnswers": [0],
+              "explanation": "On emploie 'ser' pour exprimer l'origine ou la nationalité : 'Soy francés', 'Ella es de Madrid'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel verbe utilise-t-on pour situer une personne ou un objet dans l'espace ?",
+              "options": ["estar", "ser", "haber", "quedar"],
+              "correctAnswers": [0],
+              "explanation": "'Estar' sert à localiser dans l'espace : 'Madrid está en España', 'Estoy en casa'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel verbe utilise-t-on pour exprimer une caractéristique essentielle ou permanente ?",
+              "options": ["ser", "estar", "haber", "hacer"],
+              "correctAnswers": [0],
+              "explanation": "'Ser' exprime les caractéristiques inhérentes ou durables : 'La nieve es blanca', 'Mi hermano es alto'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel verbe utilise-t-on pour exprimer un état passager ou une humeur du moment ?",
+              "options": ["estar", "ser", "parecer", "tener"],
+              "correctAnswers": [0],
+              "explanation": "'Estar' exprime un état temporaire ou le résultat d'un changement : 'Estoy cansado', 'La sopa está fría'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases emploient correctement le verbe 'estar' pour un état ou une localisation ?",
+              "options": [
+                "Mi hermano está enfermo hoy.",
+                "El colegio está cerca del parque.",
+                "Mi hermano es enfermo hoy.",
+                "El colegio es cerca del parque."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Être malade de façon passagère ('estar enfermo') et localiser un lieu ('estar cerca') nécessitent tous deux le verbe 'estar'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie 'ser listo' par opposition à 'estar listo' ?",
+              "options": [
+                "être intelligent / être prêt",
+                "être prêt / être intelligent",
+                "être rapide / être lent",
+                "être fatigué / être guéri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Ser listo' signifie être intelligent/rusé, alors qu''estar listo' signifie être prêt."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Madrid ___ la capital de España.'",
+              "options": ["es", "está", "son", "hay"],
+              "correctAnswers": [0],
+              "explanation": "Pour définir l'identité ou le statut d'une ville, on emploie 'ser' : 'Madrid es la capital'."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent correctement le verbe 'ser' ?",
+              "options": [
+                "Hoy es martes.",
+                "Somos estudiantes de tercero.",
+                "Hoy está martes.",
+                "Estamos estudiantes de tercero."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pour donner la date/le jour ('hoy es martes') et indiquer une profession ou un statut ('somos estudiantes'), on emploie 'ser'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Hoy Juan ___ muy contento con sus notas.'",
+              "options": ["está", "es", "hay", "tiene"],
+              "correctAnswers": [0],
+              "explanation": "La joie est une humeur ou un état d'esprit passager, on emploie donc 'estar' : 'está muy contento'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète la phrase : '¿Dónde ___ la biblioteca municipal?'",
+              "options": ["está", "es", "hay", "queda"],
+              "correctAnswers": [0],
+              "explanation": "Pour situer un lieu précis et défini, on emploie 'estar' : '¿Dónde está la biblioteca?'."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Hay vs Estar : existence et localisation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle forme impersonnelle emploie-t-on pour constater l'existence de quelque chose d'indéterminé ?",
+              "options": ["hay", "está", "es", "tiene"],
+              "correctAnswers": [0],
+              "explanation": "'Hay' (du verbe haber) est la forme impersonnelle qui traduit 'il y a' pour constater l'existence."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel verbe utilise-t-on pour situer un élément déterminé précédé d'un article défini (el, la, los, las) ?",
+              "options": ["estar", "hay", "ser", "haber"],
+              "correctAnswers": [0],
+              "explanation": "Pour situer un sujet défini (avec el, la, los, las ou un nom propre), on emploie 'estar' : 'El libro está en la mesa'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que trouve-t-on généralement après la forme 'hay' ?",
+              "options": [
+                "Un article indéfini, un nombre ou aucun article",
+                "Un article défini (el, la, los, las)",
+                "Un pronom personnel sujet",
+                "Un adjectif démonstratif (este, ese)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Hay' est toujours suivi d'éléments indéterminés : 'un / una', un numéral (tres libros) ou un nom sans article (hay pan)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "De quel verbe 'hay' est-il la forme au présent de l'indicatif ?",
+              "options": ["haber", "hacer", "hallar", "hablar"],
+              "correctAnswers": [0],
+              "explanation": "'Hay' est la forme impersonnelle spéciale du verbe 'haber' au présent de l'indicatif."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases emploient correctement la forme impersonnelle 'hay' ?",
+              "options": [
+                "En esta calle hay muchos coches.",
+                "En la nevera no hay leche.",
+                "En la mesa hay el libro de María.",
+                "¿Dónde hay mi cuaderno?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Hay' s'utilise avec des indéfinis ('muchos coches') ou sans article ('leche'). Il ne peut pas être suivi de 'el' ou 'mi'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'En mi estuche ___ tres bolígrafos y una regla.'",
+              "options": ["hay", "están", "es", "son"],
+              "correctAnswers": [0],
+              "explanation": "On constate l'existence d'éléments indéterminés quantifiés par un chiffre : on emploie 'hay'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Los bolígrafos ___ dentro del estuche.'",
+              "options": ["están", "hay", "son", "es"],
+              "correctAnswers": [0],
+              "explanation": "Le sujet est déterminé par l'article défini 'los bolígrafos', on emploie donc le verbe 'estar' au pluriel : 'están'."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent correctement 'estar' pour localiser un sujet précis ?",
+              "options": [
+                "Mi casa está al lado de la estación.",
+                "El profesor está en el aula.",
+                "Al lado de la estación está una casa.",
+                "En el aula está muchos alumnos."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Mi casa' et 'el profesor' sont des sujets déterminés, correctement localisés avec 'está'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'En este pueblo no ___ cine.'",
+              "options": ["hay", "está", "es", "son"],
+              "correctAnswers": [0],
+              "explanation": "Pour exprimer l'inexistence d'un élément (il n'y a pas de cinéma), on emploie 'no hay'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète la phrase : '¿Dónde ___ el hospital central?'",
+              "options": ["está", "hay", "es", "tiene"],
+              "correctAnswers": [0],
+              "explanation": "On demande la localisation d'un lieu déterminé ('el hospital central') : on emploie 'está'."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le verbe Gustar et les verbes affectifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Avec quoi s'accorde le verbe 'gustar' ?",
+              "options": [
+                "Avec la chose aimée (le sujet réel placé après)",
+                "Avec la personne qui aime (le sujet pensant)",
+                "Il reste toujours à la 1re personne",
+                "Avec le pronom complément 'me, te, le...'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En espagnol, 'gustar' fonctionne comme 'plaire' : la chose aimée est le sujet grammatical avec lequel s'accorde le verbe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si la chose aimée est au pluriel, quelle forme prend le verbe 'gustar' au présent ?",
+              "options": ["gustan", "gusta", "gustamos", "gustas"],
+              "correctAnswers": [0],
+              "explanation": "Devant un nom pluriel (ex. 'los libros'), le verbe s'accorde à la 3e personne du pluriel : 'gustan'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel pronom COI emploie-t-on pour la 1re personne du singulier avec 'gustar' ?",
+              "options": ["me", "yo", "mí", "se"],
+              "correctAnswers": [0],
+              "explanation": "On utilise le pronom COI 'me' : 'Me gusta la música' (La musique me plaît)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel pronom COI emploie-t-on pour 'nous' avec le verbe 'gustar' ?",
+              "options": ["nos", "nosotros", "les", "os"],
+              "correctAnswers": [0],
+              "explanation": "Le pronom COI correspondant à 'nous' est 'nos' : 'Nos gusta viajar'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels verbes fonctionnent selon la même structure que 'gustar' ?",
+              "options": ["encantar", "doler", "comer", "hablar"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Encantar' (adorer) et 'doler' (faire mal) se construisent exactement comme 'gustar' avec un pronom COI et accord avec le sujet postposé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'A mí me ___ los bombones de chocolate.'",
+              "options": ["gustan", "gusta", "gusto", "gustas"],
+              "correctAnswers": [0],
+              "explanation": "Le sujet réel est 'los bombones' (pluriel), donc le verbe s'accorde au pluriel : 'me gustan'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'A nosotros nos ___ leer novelas policiacas.'",
+              "options": ["gusta", "gustan", "gustamos", "gusto"],
+              "correctAnswers": [0],
+              "explanation": "Devant un verbe à l'infinitif ('leer'), 'gustar' reste toujours à la 3e personne du singulier : 'nos gusta leer'."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont correctement construites avec des verbes affectifs ?",
+              "options": [
+                "A mis padres les encanta la música clásica.",
+                "Me duele la cabeza desde esta mañana.",
+                "Yo gusto mucho el chocolate.",
+                "A mis amigos les encantan viajar."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Les encanta la música' et 'me duele la cabeza' sont corrects. On ne dit jamais 'yo gusto...' en espagnol."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète la préposition d'insistance : '___ ti te gustan los deportes.'",
+              "options": ["A", "De", "En", "Por"],
+              "correctAnswers": [0],
+              "explanation": "La formule d'insistance est introduite par la préposition 'a' : 'A ti te gustan', 'A mí me gusta'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la phrase : 'A Juan le interesan las ciencias' ?",
+              "options": [
+                "Les sciences intéressent Juan",
+                "Juan étudie les sciences",
+                "Les sciences sont difficiles pour Juan",
+                "Juan déteste les sciences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Interesar' fonctionne comme 'gustar' : les sciences (sujet pluriel) intéressent Juan (COI 'le')."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "La structure de la phrase déclarative et l'ordre des mots",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Le pronom personnel sujet est-il obligatoire dans une phrase déclarative en espagnol ?",
+              "options": [
+                "Non, la terminaison du verbe suffit généralement à identifier le sujet",
+                "Oui, il est obligatoire comme en français",
+                "Oui, mais uniquement à l'écrit",
+                "Non, sauf à la 3e personne du singulier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'espagnol est une langue à sujet nul : la terminaison verbale indique clairement la personne, le pronom sujet n'est exprimé que pour insister ou lever une ambiguïté."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle préposition doit obligatoirement précéder un complément d'objet direct (COD) désignant une personne déterminée ?",
+              "options": ["a", "de", "en", "para"],
+              "correctAnswers": [0],
+              "explanation": "C'est la règle du 'a' personnel : devant un COD désignant une personne précise ou un animal familier, on met la préposition 'a' (ex. 'Veo a Pedro')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans la phrase 'Veo a mi hermano', pourquoi trouve-t-on la préposition 'a' ?",
+              "options": [
+                "Parce que 'mi hermano' est un COD de personne déterminée",
+                "Parce que le verbe 'ver' exige toujours 'a'",
+                "Parce que c'est un complément de lieu",
+                "Parce que c'est un complément d'objet indirect"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En espagnol, tout COD de personne définie doit obligatoirement être introduit par la préposition 'a'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment commence obligatoirement une phrase interrogative ou exclamative à l'écrit en espagnol ?",
+              "options": [
+                "Par un point d'interrogation ou d'exclamation inversé (¿ ou ¡)",
+                "Par une majuscule soulignée",
+                "Par deux tirets d'ouverture",
+                "Par une virgule spécifique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'espagnol ouvre toute question par un point d'interrogation inversé '¿' et toute exclamation par '¡'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases comportent correctement la préposition 'a' de personne ?",
+              "options": [
+                "Busco a mi amigo en la fiesta.",
+                "Esperamos al profesor de matemáticas.",
+                "Busco a un libro interesante.",
+                "Compro a una manzana roja."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On met 'a' devant les personnes ('a mi amigo', 'al profesor'). On ne met pas de 'a' devant des objets inanimés comme 'un libro' ou 'una manzana'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Escucho ___ profesor con mucha atención.'",
+              "options": ["al", "el", "a la", "del"],
+              "correctAnswers": [0],
+              "explanation": "'a' + 'el profesor' se contracte en 'al profesor' (COD de personne masculin singulier)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on : 'Nous habitons à Séville' ?",
+              "options": [
+                "Vivimos en Sevilla.",
+                "Nosotros habitamos a Sevilla.",
+                "Vivimos a Sevilla.",
+                "Nosotros vivimos de Sevilla."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour indiquer la ville où l'on réside, on emploie la préposition 'en' : 'Vivimos en Sevilla'."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont syntaxiquement naturelles et correctes sans pronom sujet ?",
+              "options": [
+                "Hablamos español muy bien.",
+                "Tienes una casa muy bonita.",
+                "Hablamos nosotros español muy bien siempre.",
+                "Tú tienes casa bonita sin verbo."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En espagnol courant, l'omission du pronom sujet ('Hablamos', 'Tienes') est la norme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Où place-t-on le plus souvent l'adjectif qualificatif dans la phrase espagnole ?",
+              "options": [
+                "Après le nom",
+                "Avant le nom",
+                "Toujours en tête de phrase",
+                "Entre le sujet et le verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif qualificatif se place le plus couramment après le nom qu'il qualifie (ex. 'un coche rojo', 'una casa grande')."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Invito ___ mis compañeros a mi fiesta de cumpleaños.'",
+              "options": ["a", "en", "de", "con"],
+              "correctAnswers": [0],
+              "explanation": "Le COD 'mis compañeros' désigne des personnes déterminées, on emploie obligatoirement 'a'."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Les phrases interrogatives et les pronoms interrogatifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif utilise-t-on pour demander le lieu ('où') ?",
+              "options": ["¿Dónde?", "¿Cuándo?", "¿Cómo?", "¿Por qué?"],
+              "correctAnswers": [0],
+              "explanation": "'¿Dónde?' signifie 'où ?'. Si l'on exprime un mouvement vers un lieu, on dit '¿Adónde?'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif utilise-t-on pour demander le moment ou la date ('quand') ?",
+              "options": ["¿Cuándo?", "¿Cuánto?", "¿Cuál?", "¿Quién?"],
+              "correctAnswers": [0],
+              "explanation": "'¿Cuándo?' signifie 'quand ?' (ex. '¿Cuándo empiezan las vacaciones?')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif utilise-t-on pour demander l'identité d'une personne au singulier ('qui') ?",
+              "options": ["¿Quién?", "¿Qué?", "¿Cuál?", "¿Cómo?"],
+              "correctAnswers": [0],
+              "explanation": "'¿Quién?' signifie 'qui ?' au singulier. Au pluriel, il devient '¿Quiénes?'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que portent obligatoirement tous les mots interrogatifs en espagnol ?",
+              "options": [
+                "Un accent écrit (tilde)",
+                "Une majuscule au milieu du mot",
+                "Un double 'l'",
+                "Un tréma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous les pronoms et adverbes interrogatifs portent un accent écrit : qué, quién, cuándo, cómo, dónde, cuál, cuánto."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels mots interrogatifs varient en nombre (singulier/pluriel) ?",
+              "options": [
+                "¿quién? / ¿quiénes?",
+                "¿cuál? / ¿cuáles?",
+                "¿dónde?",
+                "¿cómo?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Quién' devient 'quiénes' et 'cuál' devient 'cuáles'. 'Dónde' et 'cómo' sont des adverbes invariables."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète la question : '¿___ te llamas?'",
+              "options": ["Cómo", "Qué", "Quién", "Cuál"],
+              "correctAnswers": [0],
+              "explanation": "Pour demander le prénom ou la manière, on emploie '¿Cómo?' : '¿Cómo te llamas?'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète la question : '¿___ cuesta este libro?'",
+              "options": ["Cuánto", "Cómo", "Qué", "Cuál"],
+              "correctAnswers": [0],
+              "explanation": "Pour demander le prix ou la quantité, on emploie '¿Cuánto?' : '¿Cuánto cuesta?'."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quelles questions interrogent sur la cause ou le motif d'une action ?",
+              "options": [
+                "¿Por qué estudias español?",
+                "¿Por qué no vienes con nosotros?",
+                "¿Para qué sirve esto?",
+                "¿Dónde vives ahora?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'¿Por qué?' (en deux mots avec accent sur qué) demande la cause ('pourquoi ?'). '¿Para qué?' interroge sur le but."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif utilise-t-on pour 'qui' s'adressant à plusieurs personnes ?",
+              "options": ["¿Quiénes?", "¿Quién?", "¿Cuáles?", "¿Cuántos?"],
+              "correctAnswers": [0],
+              "explanation": "Quand le sujet de la question est pluriel, 'quién' devient 'quiénes' : '¿Quiénes son esos chicos?'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète la question : '¿___ es tu número de teléfono?'",
+              "options": ["Cuál", "Qué", "Quién", "Cómo"],
+              "correctAnswers": [0],
+              "explanation": "Pour demander de choisir ou d'identifier parmi plusieurs possibilités sans définir la notion, on emploie '¿Cuál?' et non '¿Qué?'."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "La négation dans la phrase simple",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Où se place le mot négatif 'no' dans une phrase négative simple ?",
+              "options": [
+                "Directement devant le verbe conjugué",
+                "Après le verbe",
+                "À la toute fin de la phrase",
+                "Entre le sujet et le COD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la négation simple, 'no' se place immédiatement devant le verbe conjugué (ex. 'No hablo inglés')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on le mot négatif 'jamais' en espagnol ?",
+              "options": ["nunca", "nada", "nadie", "tampoco"],
+              "correctAnswers": [0],
+              "explanation": "'Nunca' (ou 'jamás') signifie 'jamais' (ex. 'Nunca llego tarde')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on le mot négatif 'personne' en espagnol ?",
+              "options": ["nadie", "nada", "ninguno", "alguien"],
+              "correctAnswers": [0],
+              "explanation": "'Nadie' signifie 'personne' pour désigner l'absence d'êtres humains."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on le mot négatif 'rien' en espagnol ?",
+              "options": ["nada", "nadie", "nunca", "ninguno"],
+              "correctAnswers": [0],
+              "explanation": "'Nada' est le pronom indéfini négatif signifiant 'rien'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases appliquent correctement la règle de la double négation en espagnol ?",
+              "options": [
+                "No veo a nadie en el patio.",
+                "No tengo nada que decir.",
+                "No veo a persona en el patio.",
+                "Nadie no viene hoy."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Quand le mot négatif (nadie, nada, nunca) est placé après le verbe, il faut obligatoirement mettre 'no' devant le verbe : 'No veo a nadie'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si le mot négatif (nunca, nadie, nada) est placé AVANT le verbe ?",
+              "options": [
+                "On n'utilise PAS le mot 'no'",
+                "On doit obligatoirement ajouter 'no'",
+                "Le verbe se met au subjonctif",
+                "La phrase devient affirmative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si le terme négatif précède le verbe, 'no' disparaît : 'Nunca fumo' (et non 'Nunca no fumo')."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'moi non plus' en espagnol ?",
+              "options": [
+                "yo tampoco",
+                "yo también no",
+                "yo nunca",
+                "a mí no más"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Tampoco' est le pendant négatif de 'también' : 'Moi non plus' se dit 'Yo tampoco' (ou 'A mí tampoco')."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quelles phrases expriment correctement une négation en espagnol ?",
+              "options": [
+                "Nunca como carne.",
+                "No como carne nunca.",
+                "Nunca no como carne.",
+                "No como carne nadie."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On peut dire 'Nunca como...' (mot négatif avant verbe sans 'no') ou 'No como... nunca' (double négation avec mot négatif après verbe)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'No quiero comer ___ ahora mismo (rien).'",
+              "options": ["nada", "nadie", "nunca", "ninguno"],
+              "correctAnswers": [0],
+              "explanation": "'Rien' se traduit par 'nada' : 'No quiero comer nada'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'En la sala no hay ___ (personne).'",
+              "options": ["nadie", "nada", "alguien", "ninguno"],
+              "correctAnswers": [0],
+              "explanation": "Pour désigner l'absence de personnes, on utilise 'nadie' : 'No hay nadie'."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Les phrases exclamatives",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel mot exclamatif emploie-t-on dans '¡___ bonito!' pour traduire 'Comme c'est beau !' ?",
+              "options": ["Qué", "Cómo", "Cuánto", "Cuál"],
+              "correctAnswers": [0],
+              "explanation": "'¡Qué...!' suivi d'un adjectif ou d'un adverbe traduit 'Comme c'est...' ou 'Que...' (ex. '¡Qué bonito!')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les mots exclamatifs espagnols portent-ils un accent écrit (tilde) ?",
+              "options": [
+                "Oui, toujours",
+                "Non, jamais",
+                "Uniquement s'ils sont en fin de phrase",
+                "Seulement 'cuánto'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout comme dans les interrogatives, les mots exclamatifs portent systématiquement un accent écrit : ¡Qué!, ¡Cómo!, ¡Cuánto!..."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot exclamatif exprime la quantité devant un nom (ex. 'Que de bruit !') ?",
+              "options": ["¡Cuánto...!", "¡Qué...!", "¡Cómo...!", "¡Quién...!"],
+              "correctAnswers": [0],
+              "explanation": "'¡Cuánto / cuánta / cuántos / cuántas!' s'accorde avec le nom pour exprimer une grande quantité admirative ou indignée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment s'accorde 'cuánto' devant le nom féminin singulier 'gente' (monde/gens) ?",
+              "options": ["cuánta", "cuánto", "cuántas", "cuántos"],
+              "correctAnswers": [0],
+              "explanation": "'Gente' est un nom féminin singulier en espagnol : '¡Cuánta gente hay aquí!'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont des exclamations correctement construites en espagnol ?",
+              "options": [
+                "¡Qué sorpresa tan agradable!",
+                "¡Cómo canta esta chica!",
+                "¡Que sorpresa tan agradable!",
+                "¡Como canta esta chica!"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les exclamatives s'ouvrent par '¡' et les mots exclamatifs portent l'accent écrit : '¡Qué...!' et '¡Cómo...!'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète l'exclamation : '¡___ inteligente es este alumno!'",
+              "options": ["Qué", "Cómo", "Cuánto", "Cuál"],
+              "correctAnswers": [0],
+              "explanation": "Devant un adjectif qualificatif ('inteligente'), on utilise '¡Qué!' : '¡Qué inteligente!'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète l'exclamation : '¡___ libros tienes en tu estantería!'",
+              "options": ["Cuántos", "Cuánto", "Qué", "Cómo"],
+              "correctAnswers": [0],
+              "explanation": "Devant le nom masculin pluriel 'libros', l'adjectif exclamatif s'accorde : '¡Cuántos libros!'."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quelles expressions exclamatives traduisent 'Quel dommage !' ou 'Quelle chance !' ?",
+              "options": [
+                "¡Qué lástima!",
+                "¡Qué suerte!",
+                "¡Cómo lástima!",
+                "¡Cuánto suerte!"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Devant un nom sans verbe, on utilise '¡Qué!' : '¡Qué lástima!' (quel dommage) et '¡Qué suerte!' (quelle chance)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète l'exclamation : '¡___ bien hablas español!'",
+              "options": ["Qué", "Cómo", "Cuánto", "Cuál"],
+              "correctAnswers": [0],
+              "explanation": "Devant un adverbe ('bien'), on utilise '¡Qué!' : '¡Qué bien hablas!' (Comme tu parles bien !)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie l'exclamation courante : '¡Qué calor hace hoy!' ?",
+              "options": [
+                "Comme il fait chaud aujourd'hui !",
+                "Fait-il chaud aujourd'hui ?",
+                "Il ne fait pas chaud aujourd'hui.",
+                "Combien de chaleur aujourd'hui ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'¡Qué calor hace!' exprime avec vivacité la forte sensation de chaleur ressentie."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les prépositions essentielles dans la phrase simple",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle préposition indique la direction ou le déplacement vers un lieu ?",
+              "options": ["a", "en", "de", "con"],
+              "correctAnswers": [0],
+              "explanation": "La préposition 'a' exprime le mouvement et la direction vers un endroit : 'Voy a la playa'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle préposition exprime l'origine, la provenance ou la matière ?",
+              "options": ["de", "en", "a", "por"],
+              "correctAnswers": [0],
+              "explanation": "'De' indique la provenance ('vengo de Francia') ou la matière ('una mesa de madera')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle préposition exprime la localisation sans mouvement ou le moyen de transport ?",
+              "options": ["en", "a", "de", "por"],
+              "correctAnswers": [0],
+              "explanation": "'En' indique le lieu où l'on est ('estoy en casa') et le moyen de transport fermé ('viajar en tren', 'ir en coche')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle préposition traduit 'avec' en espagnol ?",
+              "options": ["con", "sin", "de", "por"],
+              "correctAnswers": [0],
+              "explanation": "'Con' traduit 'avec' (ex. 'Voy con mis amigos'). Son contraire est 'sin' (sans)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes spéciales fusionnent la préposition 'con' et un pronom personnel ?",
+              "options": ["conmigo", "contigo", "conyo", "contú"],
+              "correctAnswers": [0, 1],
+              "explanation": "On ne dit pas 'con mí' ni 'con ti', mais 'conmigo' (avec moi), 'contigo' (avec toi) et 'consigo' (avec soi)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Los estudiantes vienen ___ París.'",
+              "options": ["de", "en", "a", "con"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe 'venir' exprime la provenance, introduite par la préposition 'de'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète la phrase : '¿Quieres venir ___ al cine esta tarde? (avec moi)'",
+              "options": ["conmigo", "con mí", "con me", "con yo"],
+              "correctAnswers": [0],
+              "explanation": "'Avec moi' se dit de manière contractée et indissociable 'conmigo'."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quelles phrases emploient correctement les prépositions de lieu 'a' et 'en' ?",
+              "options": [
+                "Voy a la piscina por la tarde.",
+                "Estoy en la biblioteca estudiando.",
+                "Voy en la piscina por la tarde.",
+                "Estoy a la biblioteca estudiando."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le verbe de mouvement 'ir' commande 'a' ('voy a'), tandis que le verbe d'état 'estar' commande 'en' ('estoy en')."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Siempre viajamos ___ avión para ir a Canarias.'",
+              "options": ["en", "con", "a", "de"],
+              "correctAnswers": [0],
+              "explanation": "Pour les moyens de transport (sauf à pied / à cheval qui prennent 'a'), on utilise 'en' : 'en avión', 'en autobús'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Este regalo es ___ ti (pour toi).'",
+              "options": ["para", "por", "de", "con"],
+              "correctAnswers": [0],
+              "explanation": "Pour désigner le destinataire d'un objet, on emploie la préposition 'para' : 'para ti'."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Les verbes à diphtongue et à affaiblissement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En quoi consiste la diphtongue 'e -> ie' au présent de l'indicatif (ex. querer) ?",
+              "options": [
+                "Le 'e' du radical se transforme en 'ie' aux personnes accentuées",
+                "Le verbe prend un accent tonique sur la dernière lettre",
+                "Le verbe change complètement de radical à toutes les personnes",
+                "La consonne du radical est supprimée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La diphtongue transforme la voyelle du radical (e -> ie) quand celle-ci reçoit l'accent tonique (1re, 2e, 3e du singulier et 3e du pluriel)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles personnes ne diphtonguent JAMAIS au présent de l'indicatif ?",
+              "options": [
+                "nosotros et vosotros",
+                "yo et tú",
+                "él et ellos",
+                "uniquement vosotros"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accent tonique portant sur la terminaison à 'nosotros' et 'vosotros', le radical ne diphtongue jamais (ex. queremos, queréis)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En quoi consiste la diphtongue 'o -> ue' (ex. poder) ?",
+              "options": [
+                "Le 'o' du radical devient 'ue' aux personnes 1, 2, 3 et 6",
+                "Le 'o' devient 'u' uniquement à la 1re personne",
+                "Le verbe devient régulier au pluriel",
+                "Le 'o' est remplacé par 'ou'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les verbes comme 'poder' ou 'dormir', le 'o' devient 'ue' sous l'accent : puedo, puedes, puede, podemos, podéis, pueden."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En quoi consiste l'affaiblissement 'e -> i' (ex. pedir) ?",
+              "options": [
+                "Le 'e' du radical devient un 'i' aux personnes 1, 2, 3 et 6",
+                "Le verbe s'abrège d'une lettre",
+                "Le 'e' disparaît totalement",
+                "Le 'e' devient 'ie' à l'oral uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'affaiblissement vocalique ferme la voyelle : le 'e' s'affaiblit en 'i' (pido, pides, pide, pedimos, pedís, piden)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels verbes diphtonguent en 'e -> ie' au présent de l'indicatif ?",
+              "options": ["pensar", "empezar", "comer", "vivir"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Pensar' (pienso) et 'empezar' (empiezo) diphtonguent en 'ie'. 'Comer' et 'vivir' sont des verbes réguliers."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Conjugue le verbe 'querer' à la 1re personne du singulier au présent :",
+              "options": ["quiero", "quero", "quiro", "quiere"],
+              "correctAnswers": [0],
+              "explanation": "Le 'e' devient 'ie' sous l'accent tonique : 'Yo quiero'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Conjugue le verbe 'dormir' à la 3e personne du singulier au présent :",
+              "options": ["duerme", "dorme", "durme", "duermo"],
+              "correctAnswers": [0],
+              "explanation": "'Dormir' diphtongue en 'ue' : él / ella 'duerme'."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quels verbes subissent un affaiblissement 'e -> i' au présent ?",
+              "options": ["pedir", "repetir", "entender", "volver"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Pedir' (pido) et 'repetir' (repito) s'affaiblissent en 'i'. 'Entender' diphtongue en 'ie' et 'volver' diphtongue en 'ue'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Conjugue le verbe 'pedir' à la 1re personne du singulier au présent :",
+              "options": ["pido", "piedo", "pedo", "pida"],
+              "correctAnswers": [0],
+              "explanation": "'Pedir' subit l'affaiblissement (e -> i) : 'Yo pido ayuda'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Conjugue le verbe 'poder' avec 'nosotros' au présent :",
+              "options": ["podemos", "puedemos", "podémos", "pudemos"],
+              "correctAnswers": [0],
+              "explanation": "À 'nosotros', le radical ne diphtongue jamais car l'accent est sur la terminaison : 'podemos'."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan et synthèse : construction des phrases simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle phrase est parfaitement construite et correcte en espagnol ?",
+              "options": [
+                "Hoy voy al cine con mis primos.",
+                "Hoy voy a el cine con mis primos.",
+                "Hoy voy en el cine con mis primos.",
+                "Hoy soy al cine con mis primos."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Ir a' + 'el cine' donne la contraction obligatoire 'al cine' : 'Voy al cine con mis primos'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'A mis hermanos les ___ los videojuegos.'",
+              "options": ["gustan", "gusta", "gustamos", "gusto"],
+              "correctAnswers": [0],
+              "explanation": "Le sujet réel est 'los videojuegos' (pluriel), le verbe 'gustar' s'accorde donc à la 3e personne du pluriel : 'gustan'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'En mi colegio ___ muchos profesores simpáticos.'",
+              "options": ["hay", "están", "son", "es"],
+              "correctAnswers": [0],
+              "explanation": "Pour constater l'existence d'éléments indéfinis ('muchos profesores'), on emploie la forme impersonnelle 'hay'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Mi tía ___ médica en un hospital público.'",
+              "options": ["es", "está", "hay", "tiene"],
+              "correctAnswers": [0],
+              "explanation": "Pour exprimer la profession ou le métier, on emploie le verbe 'ser' : 'es médica'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases respectent rigoureusement toutes les règles grammaticales de la phrase simple ?",
+              "options": [
+                "No conozco a nadie en esta ciudad.",
+                "¿Dónde compraste este libro tan interesante?",
+                "No conozco nadie en esta ciudad.",
+                "¿Donde compraste este libro tan interesante?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'No conozco a nadie' (double négation + 'a' devant nadie) et la question avec '¿Dónde...?' accentué sont parfaitement correctes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Por la mañana veo ___ mi profesora en la entrada.'",
+              "options": ["a", "en", "de", "con"],
+              "correctAnswers": [0],
+              "explanation": "Le complément d'objet direct 'mi profesora' désigne une personne définie : la préposition 'a' est obligatoire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète la question : '¿___ vas este fin de semana?'",
+              "options": ["Adónde", "Dónde", "Quién", "Cuál"],
+              "correctAnswers": [0],
+              "explanation": "Avec le verbe de mouvement 'ir' (vas), on utilise '¿Adónde?' pour indiquer la destination."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quelles phrases traduisent correctement 'Je n'ai rien à manger' ?",
+              "options": [
+                "No tengo nada para comer.",
+                "Nada tengo para comer.",
+                "No tengo nadie para comer.",
+                "Nunca tengo nada a comer."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On peut placer 'nada' après le verbe avec 'no' ('No tengo nada') ou en tête de phrase sans 'no' ('Nada tengo')."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète la phrase : 'Los alumnos ___ en el patio durante el recreo.'",
+              "options": ["están", "son", "hay", "quedan"],
+              "correctAnswers": [0],
+              "explanation": "Pour situer des personnes dans l'espace, on emploie le verbe 'estar' : 'están en el patio'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète l'exclamation : '¡___ bonito día pasamos juntos!'",
+              "options": ["Qué", "Cómo", "Cuánto", "Cuál"],
+              "correctAnswers": [0],
+              "explanation": "Devant un groupe adjectif-nom ('bonito día'), on emploie '¡Qué!' : '¡Qué bonito día!'."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

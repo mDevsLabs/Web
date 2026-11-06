@@ -1,0 +1,1678 @@
+{
+  "id": "terminale-arabe-02",
+  "year": "terminale",
+  "subject": "arabe",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Vocabulaire familial",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels mots arabes désignent des parents proches ?",
+              "options": ["أُمّ", "مكتبة", "أَب", "مطعم"],
+              "correctAnswers": [0, 2],
+              "explanation": "أُمّ signifie « mère » et أَب « père » ; ce sont les deux parents directs."
+            },
+            {
+              "type": "single_choice",
+              "question": "Comment dit-on « frère » en arabe standard ?",
+              "options": ["أَخ", "أُخت", "عَمّ", "خال"],
+              "correctAnswers": [0],
+              "explanation": "أَخ est le terme courant pour « frère » ; أُخت est « sœur »."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot جَدّ correspond à :",
+              "options": ["grand-mère", "grand-père", "oncle", "cousin"],
+              "correctAnswers": [1],
+              "explanation": "جَدّ désigne le grand-père ; la grand-mère se dit جَدَّة."
+            },
+            {
+              "type": "single_choice",
+              "question": "Quelle est la traduction de « famille » ?",
+              "options": ["مدرسة", "عائلة", "صديق", "جارة"],
+              "correctAnswers": [1],
+              "explanation": "عائلة / أسرة signifient « famille » selon le registre."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le pluriel de « ابن » (fils) est :",
+              "options": ["بنات", "أبناء", "إخوة", "أمهات"],
+              "correctAnswers": [1],
+              "explanation": "Le pluriel masculin sound de « fils » est أبناء."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Ma sœur » se dit :",
+              "options": ["أَخي", "أُختي", "أَبي", "زوجي"],
+              "correctAnswers": [1],
+              "explanation": "أُخت + pronom possessif -ي donne « ma sœur »."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot زَوج signifie :",
+              "options": ["ami", "voisin", "époux", "enfant"],
+              "correctAnswers": [2],
+              "explanation": "زَوج = époux ; زَوجة = épouse."
+            },
+            {
+              "type": "single_choice",
+              "question": "Comment traduire « les enfants » (masculin pluriel) ?",
+              "options": ["أطفال", "كبار", "آباء", "أجداد"],
+              "correctAnswers": [0],
+              "explanation": "أطفال / أولاد désignent les enfants au quotidien."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le terme « oncle paternel » est :",
+              "options": ["خال", "عَمّ", "ابن", "جَدّ"],
+              "correctAnswers": [1],
+              "explanation": "عَمّ = oncle du côté du père ; خال du côté de la mère."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Notre maison » s'exprime avec :",
+              "options": ["بيتنا", "بيتكم", "بيته", "بيتها"],
+              "correctAnswers": [0],
+              "explanation": "بيت + -نا = « notre maison » (1re personne du pluriel)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "À l'école",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels mots renvoient à l'école ou à la classe ?",
+              "options": ["مدرسة", "فصل", "مطبخ", "حديقة"],
+              "correctAnswers": [0, 1],
+              "explanation": "مدرسة = école ; فصل = salle de classe."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Professeur » (m.) s'écrit le plus souvent :",
+              "options": ["طالب", "مُعَلِّم", "كتاب", "قلم"],
+              "correctAnswers": [1],
+              "explanation": "مُعَلِّم / أُستاذ désignent l'enseignant."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot طالب signifie :",
+              "options": ["élève", "crayon", "table", "cours"],
+              "correctAnswers": [0],
+              "explanation": "طالب / طالبة = élève (m./f.)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Devoir » (scolaire) se traduit souvent par :",
+              "options": ["واجب", "لعبة", "فطور", "سفر"],
+              "correctAnswers": [0],
+              "explanation": "واجب منزلي = devoirs à la maison."
+            },
+            {
+              "type": "single_choice",
+              "question": "Quel mot désigne « leçon » ?",
+              "options": ["درس", "ليل", "باب", "شارع"],
+              "correctAnswers": [0],
+              "explanation": "درس = leçon / cours."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Bibliothèque » en arabe :",
+              "options": ["مكتبة", "مستشفى", "مسجد", "مطار"],
+              "correctAnswers": [0],
+              "explanation": "مكتبة = bibliothèque (ou librairie selon le contexte)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot امتحان signifie :",
+              "options": ["examen", "vacances", "récréation", "cantine"],
+              "correctAnswers": [0],
+              "explanation": "امتحان / اختبار = examen, contrôle."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Je lis » à la 1re personne :",
+              "options": ["أقرأ", "يقرأ", "تقرأ", "نقرأ"],
+              "correctAnswers": [0],
+              "explanation": "أقرأ = je lis (présent de قَرَأَ)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Stylo » se dit :",
+              "options": ["قلم", "كرسي", "نافذة", "سقف"],
+              "correctAnswers": [0],
+              "explanation": "قلم = stylo / crayon ; قلم حبر = stylo à encre."
+            },
+            {
+              "type": "single_choice",
+              "question": "La matière « mathématiques » :",
+              "options": ["رياضيات", "تاريخ", "جغرافيا", "فن"],
+              "correctAnswers": [0],
+              "explanation": "رياضيات = mathématiques."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Loisirs et sport",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels mots évoquent des loisirs actifs ?",
+              "options": ["رياضة", "سباحة", "واجب", "امتحان"],
+              "correctAnswers": [0, 1],
+              "explanation": "رياضة = sport ; سباحة = natation."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Je joue au football » contient le verbe :",
+              "options": ["ألعب", "آكل", "أنام", "أكتب"],
+              "correctAnswers": [0],
+              "explanation": "لَعِبَ → ألعب = je joue."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot سينما signifie :",
+              "options": ["cinéma", "théâtre", "musée", "parc"],
+              "correctAnswers": [0],
+              "explanation": "سينما / مُسْتَقْرَ سينمائي = cinéma."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Musique » :",
+              "options": ["موسيقى", "طبخ", "نوم", "دراسة"],
+              "correctAnswers": [0],
+              "explanation": "موسيقى = musique."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Je regarde la télévision » :",
+              "options": [
+                "أشاهد التلفاز",
+                "أغسل الصحون",
+                "أذهب إلى المدرسة",
+                "أقرأ القرآن فقط"
+              ],
+              "correctAnswers": [0],
+              "explanation": "شاهَدَ → أشاهد ; التلفاز = télévision."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot رحلة signifie souvent :",
+              "options": ["voyage / sortie", "colère", "maladie", "guerre"],
+              "correctAnswers": [0],
+              "explanation": "رحلة = voyage, excursion."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Parc » / jardin public :",
+              "options": ["حديقة", "مطبخ", "سجن", "مصنع"],
+              "correctAnswers": [0],
+              "explanation": "حديقة = jardin, parc."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Je nage » :",
+              "options": ["أسبح", "أجري", "أرسم", "أغني"],
+              "correctAnswers": [0],
+              "explanation": "سَبَحَ → أسبح = je nage."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot لعبة signifie :",
+              "options": ["jeu", "pain", "route", "pluie"],
+              "correctAnswers": [0],
+              "explanation": "لعبة = jeu ; لَعِب = jouer."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Dessin / peinture » (activité) :",
+              "options": ["رسم", "طبخ", "غسيل", "بيع"],
+              "correctAnswers": [0],
+              "explanation": "رسم = dessin ; يرسم = il dessine."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Routine quotidienne",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels verbes décrivent le matin typique ?",
+              "options": ["أستيقظ", "أتناول الفطور", "أنام", "أحلم"],
+              "correctAnswers": [0, 1],
+              "explanation": "أستيقظ = je me réveille ; أتناول الفطور = je prends le petit-déjeuner."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Je me lève » :",
+              "options": ["أقوم", "أجلس", "أنام", "أبكي"],
+              "correctAnswers": [0],
+              "explanation": "قامَ → أقوم = je me lève."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot صباح signifie :",
+              "options": ["matin", "soir", "nuit", "midi"],
+              "correctAnswers": [0],
+              "explanation": "صباح = matin ; صباح الخير = bonjour."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Dîner / souper » (repas du soir) :",
+              "options": ["عشاء", "فطور", "غداء", "حلوى"],
+              "correctAnswers": [0],
+              "explanation": "عشاء = dîner ; غداء = déjeuner ; فطور = petit-déjeuner."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Je vais au lit » :",
+              "options": [
+                "أذهب إلى الفراش",
+                "أذهب إلى السوق",
+                "أذهب إلى الشاطئ",
+                "أذهب إلى العمل"
+              ],
+              "correctAnswers": [0],
+              "explanation": "الفراش / السرير = lit."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot دائماً signifie :",
+              "options": ["toujours", "jamais", "parfois", "hier"],
+              "correctAnswers": [0],
+              "explanation": "دائماً = toujours ; أبداً = jamais."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Souvent » :",
+              "options": ["غالباً", "أبداً", "مرة واحدة", "أمس"],
+              "correctAnswers": [0],
+              "explanation": "غالباً / كثيراً = souvent."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Je me brosse les dents » utilise :",
+              "options": ["أفرش", "آكل", "أشرب", "أركض"],
+              "correctAnswers": [0],
+              "explanation": "فرشاة = brosse ; يفرش = il brosse."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot مساء signifie :",
+              "options": ["soir", "aube", "hiver", "printemps"],
+              "correctAnswers": [0],
+              "explanation": "مساء = soir ; مساء الخير = bonsoir."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Aujourd'hui » :",
+              "options": ["اليوم", "غداً", "أمس", "الأسبوع"],
+              "correctAnswers": [0],
+              "explanation": "اليوم = aujourd'hui ; غداً = demain ; أمس = hier."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Maison et quartier",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels mots désignent des pièces ou espaces de la maison ?",
+              "options": ["مطبخ", "غرفة", "مطار", "ميناء"],
+              "correctAnswers": [0, 1],
+              "explanation": "مطبخ = cuisine ; غرفة = chambre / pièce."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Salon / séjour » :",
+              "options": ["صالة", "حمام", "سقف", "جدار"],
+              "correctAnswers": [0],
+              "explanation": "صالة = salon ; مجلس = salon de réception."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot جار signifie :",
+              "options": ["voisin", "voleur", "médecin", "pilot"],
+              "correctAnswers": [0],
+              "explanation": "جار / جارة = voisin / voisine."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Rue » :",
+              "options": ["شارع", "بحر", "جبل", "سماء"],
+              "correctAnswers": [0],
+              "explanation": "شارع = rue."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Marché » :",
+              "options": ["سوق", "مدرسة", "مسجد", "مكتب"],
+              "correctAnswers": [0],
+              "explanation": "سوق = marché."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot باب signifie :",
+              "options": ["porte", "fenêtre", "toit", "sol"],
+              "correctAnswers": [0],
+              "explanation": "باب = porte ; نافذة = fenêtre."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Salle de bain » :",
+              "options": ["حمام", "مطبخ", "مخزن", "شرفة"],
+              "correctAnswers": [0],
+              "explanation": "حمام = salle de bain / bain."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Balcon » :",
+              "options": ["شرفة", "قبو", "سرداب", "ممر"],
+              "correctAnswers": [0],
+              "explanation": "شرفة / بلكونة = balcon."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot مدينة signifie :",
+              "options": ["ville", "village", "pays", "continent"],
+              "correctAnswers": [0],
+              "explanation": "مدينة = ville ; قرية = village."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Proche / près de » (préposition) :",
+              "options": ["قريب من", "بعيد عن", "فوق", "تحت"],
+              "correctAnswers": [0],
+              "explanation": "قريب من = près de ; بعيد عن = loin de."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Nourriture et repas",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels aliments de base sont courants au quotidien ?",
+              "options": ["خبز", "ماء", "حاسوب", "كرسي"],
+              "correctAnswers": [0, 1],
+              "explanation": "خبز = pain ; ماء = eau."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Je mange » :",
+              "options": ["آكل", "أشرب", "أنام", "أمشي"],
+              "correctAnswers": [0],
+              "explanation": "أكلَ → آكل = je mange."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot فاكهة signifie :",
+              "options": ["fruit", "légume", "viande", "poisson"],
+              "correctAnswers": [0],
+              "explanation": "فاكهة = fruit ; خضار = légumes."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Thé » :",
+              "options": ["شاي", "قهوة", "حليب", "عصير"],
+              "correctAnswers": [0],
+              "explanation": "شاي = thé ; قهوة = café."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot مطعم signifie :",
+              "options": ["restaurant", "hôpital", "banque", "poste"],
+              "correctAnswers": [0],
+              "explanation": "مطعم = restaurant."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Délicieux » (m.) :",
+              "options": ["لذيذ", "كريه", "بارد", "قديم"],
+              "correctAnswers": [0],
+              "explanation": "لذيذ = délicieux ; طيب aussi pour la nourriture."
+            },
+            {
+              "type": "single_choice",
+              "question": "« J'ai faim » :",
+              "options": ["أنا جائع", "أنا عطشان", "أنا سعيد", "أنا متعب"],
+              "correctAnswers": [0],
+              "explanation": "جائع = affamé ; عطشان = assoiffé."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot طبخ signifie :",
+              "options": ["cuisine (action)", "lavage", "course", "lecture"],
+              "correctAnswers": [0],
+              "explanation": "طبخ = cuisson / cuisine ; يطبخ = il cuisine."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Riz » :",
+              "options": ["أرز", "دجاج", "جبن", "بيض"],
+              "correctAnswers": [0],
+              "explanation": "أرز = riz."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Invite / invité » (à table) :",
+              "options": ["ضيف", "عدو", "غريب", "لص"],
+              "correctAnswers": [0],
+              "explanation": "ضيف = invité ; ضيافة = hospitalité."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Relations et sentiments",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels mots expriment des sentiments positifs courants ?",
+              "options": ["سعيد", "محب", "غاضب", "حزين"],
+              "correctAnswers": [0, 1],
+              "explanation": "سعيد = heureux ; محب = affectionné / qui aime."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Ami » (m.) :",
+              "options": ["صديق", "عدو", "غريب", "زبون"],
+              "correctAnswers": [0],
+              "explanation": "صديق = ami ; صديقة = amie."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot حب signifie :",
+              "options": ["amour", "haine", "peur", "colère"],
+              "correctAnswers": [0],
+              "explanation": "حب = amour ; كره = haine."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Je suis triste » :",
+              "options": ["أنا حزين", "أنا غني", "أنا طويل", "أنا سريع"],
+              "correctAnswers": [0],
+              "explanation": "حزين = triste."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Merci » :",
+              "options": ["شكراً", "عفواً", "مرحباً", "وداعاً"],
+              "correctAnswers": [0],
+              "explanation": "شكراً = merci ; عفواً = de rien."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot احترام signifie :",
+              "options": ["respect", "insulte", "mensonge", "trahison"],
+              "correctAnswers": [0],
+              "explanation": "احترام = respect."
+            },
+            {
+              "type": "single_choice",
+              "question": "« S'il te plaît » (formule) :",
+              "options": [
+                "من فضلك",
+                "لا شكر على واجب",
+                "تصبح على خير",
+                "مع السلامة"
+              ],
+              "correctAnswers": [0],
+              "explanation": "من فضلك / رجاءً = s'il te plaît."
+            },
+            {
+              "type": "single_choice",
+              "question": "« En colère » :",
+              "options": ["غاضب", "هادئ", "خجول", "جائع"],
+              "correctAnswers": [0],
+              "explanation": "غاضب = en colère ; هادئ = calme."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot مساعدة signifie :",
+              "options": ["aide", "obstacle", "punition", "silence"],
+              "correctAnswers": [0],
+              "explanation": "مساعدة = aide ; يساعد = il aide."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Je t'aime » (familier courant) :",
+              "options": ["أحبك", "أكرهك", "أنساك", "أتجاهلك"],
+              "correctAnswers": [0],
+              "explanation": "أحب + ك = je t'aime."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Grammaire : possessifs et pluriels",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles formes sont des suffixes possessifs valides ?",
+              "options": ["ـي (mon/ma)", "ـنا (notre)", "ـهم (leur)", "ـXYZ"],
+              "correctAnswers": [0, 1],
+              "explanation": "ـي = mon/ma ; ـنا = notre ; ce sont des marques possessives standard."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Ton livre » (m. sing.) :",
+              "options": ["كتابك", "كتابي", "كتابها", "كتابنا"],
+              "correctAnswers": [0],
+              "explanation": "كتاب + ـك = ton livre (à toi m.)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Pluriel sound de « مُعَلِّم » :",
+              "options": ["مُعَلِّمون", "مُعَلِّمات", "مُعَلِّمان", "مُعَلِّمين"],
+              "correctAnswers": [0],
+              "explanation": "Pluriel masculin sound en -ون : مُعَلِّمون."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Mes amis » (m. pl.) :",
+              "options": ["أصدقائي", "صديقي", "صديقك", "صديقها"],
+              "correctAnswers": [0],
+              "explanation": "أصدقاء + ـي = mes amis."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le dual de « كتاب » est :",
+              "options": ["كتابان", "كتب", "كتابون", "كتابات"],
+              "correctAnswers": [0],
+              "explanation": "Le duel se marque en -ان : كتابان."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Leur maison » :",
+              "options": ["بيتهم", "بيتنا", "بيتك", "بيتي"],
+              "correctAnswers": [0],
+              "explanation": "بيت + ـهم = leur maison (m. pl.)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Féminin de « طالب » :",
+              "options": ["طالبة", "طالبون", "طالب", "طلاب"],
+              "correctAnswers": [0],
+              "explanation": "On ajoute ة : طالبة."
+            },
+            {
+              "type": "single_choice",
+              "question": "Pluriel broken de « كتاب » :",
+              "options": ["كتب", "كتابان", "كتابون", "كتابة"],
+              "correctAnswers": [0],
+              "explanation": "كتب est le pluriel cassé courant de « livre »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Votre école » (m. pl. poli) :",
+              "options": ["مدرستكم", "مدرستنا", "مدرستك", "مدرستي"],
+              "correctAnswers": [0],
+              "explanation": "مدرسة + ـكم = votre école (à vous pl.)."
+            },
+            {
+              "type": "single_choice",
+              "question": "L'article défini « the » s'exprime par :",
+              "options": [
+                "الـ + nom",
+                "un + nom",
+                "sans marque toujours",
+                "فقط en fin de mot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article défini arabe est ال préfixé au nom."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Communication quotidienne",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles salutations sont adaptées le matin ?",
+              "options": [
+                "صباح الخير",
+                "صباح النور",
+                "تصبح على خير",
+                "مع السلامة"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "صباح الخير / صباح النور se disent le matin."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Bonsoir » (salutation) :",
+              "options": ["مساء الخير", "صباح الخير", "مرحباً", "إلى اللقاء"],
+              "correctAnswers": [0],
+              "explanation": "مساء الخير = bonsoir."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Au revoir » :",
+              "options": ["مع السلامة", "أهلاً", "تفضل", "كيف حالك"],
+              "correctAnswers": [0],
+              "explanation": "مع السلامة = au revoir (que la paix soit avec toi)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Comment vas-tu ? » :",
+              "options": ["كيف حالك؟", "ما اسمك؟", "من أين أنت؟", "كم عمرك؟"],
+              "correctAnswers": [0],
+              "explanation": "كيف حالك؟ = comment vas-tu ?"
+            },
+            {
+              "type": "single_choice",
+              "question": "Réponse courante « Bien, merci » :",
+              "options": ["بخير، شكراً", "سيء جداً", "لا أعرف", "لا شيء"],
+              "correctAnswers": [0],
+              "explanation": "بخير = bien ; avec شكراً = merci."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Téléphone » :",
+              "options": ["هاتف", "حاسوب", "تلفاز", "راديو"],
+              "correctAnswers": [0],
+              "explanation": "هاتف / جوال = téléphone / portable."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Message / SMS » (courant) :",
+              "options": ["رسالة", "كتاب", "صحيفة", "مجلة"],
+              "correctAnswers": [0],
+              "explanation": "رسالة = message, lettre."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Je t'appelle » :",
+              "options": ["أتصل بك", "أكتب إليك", "أرسل لك", "أزورك"],
+              "correctAnswers": [0],
+              "explanation": "اتصل بـ = appeler quelqu'un."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot اجتماع signifie :",
+              "options": ["réunion", "vacances", "match", "film"],
+              "correctAnswers": [0],
+              "explanation": "اجتماع = réunion."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Excusez-moi » :",
+              "options": ["عذراً", "مبروك", "بالتوفيق", "عيد سعيد"],
+              "correctAnswers": [0],
+              "explanation": "عذراً / آسف = excuse-moi / pardon."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse unité 1",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles phrases décrivent correctement la vie quotidienne ?",
+              "options": [
+                "أذهب إلى المدرسة كل يوم",
+                "ألعب مع أصدقائي بعد الظهر",
+                "أطير إلى القمر كل صباح",
+                "لا آكل أبداً"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Aller à l'école et jouer avec des amis l'après-midi sont des routines plausibles."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Chaque jour » :",
+              "options": ["كل يوم", "مرة واحدة", "أبداً", "أحياناً"],
+              "correctAnswers": [0],
+              "explanation": "كل يوم = chaque jour."
+            },
+            {
+              "type": "single_choice",
+              "question": "Ordre logique : réveil → … → école",
+              "options": ["فطور", "عشاء", "نوم", "حلم"],
+              "correctAnswers": [0],
+              "explanation": "Après le réveil vient le petit-déjeuner avant l'école."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Mes devoirs » :",
+              "options": ["واجباتي", "واجباتك", "واجباتهم", "واجباتها"],
+              "correctAnswers": [0],
+              "explanation": "واجبات + ـي = mes devoirs."
+            },
+            {
+              "type": "single_choice",
+              "question": "Antonyme de « كبير » (grand) :",
+              "options": ["صغير", "طويل", "عريض", "ثقيل"],
+              "correctAnswers": [0],
+              "explanation": "صغير = petit, opposé de grand."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Nous habitons » :",
+              "options": ["نسكن", "يسكن", "تسكن", "أسكن"],
+              "correctAnswers": [0],
+              "explanation": "سكنَ → نسكن = nous habitons."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot وقت signifie :",
+              "options": ["temps / moment", "lieu", "couleur", "nombre"],
+              "correctAnswers": [0],
+              "explanation": "وقت = temps, moment."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Après-midi » :",
+              "options": ["بعد الظهر", "قبل الفجر", "منتصف الليل", "الفجر"],
+              "correctAnswers": [0],
+              "explanation": "بعد الظهر = après-midi."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Ensemble » :",
+              "options": ["معاً", "منفرداً", "بعيداً", "سريعاً"],
+              "correctAnswers": [0],
+              "explanation": "معاً = ensemble."
+            },
+            {
+              "type": "single_choice",
+              "question": "Verbe « aller » à la 1re pers. sing. :",
+              "options": ["أذهب", "يذهب", "تذهب", "نذهب"],
+              "correctAnswers": [0],
+              "explanation": "ذهبَ → أذهب = je vais."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Adjectifs et description",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels adjectifs décrivent une personne agréable ?",
+              "options": ["لطيف", "ودود", "قاسٍ", "كسول"],
+              "correctAnswers": [0, 1],
+              "explanation": "لطيف = gentil ; ودود = chaleureux / amical."
+            },
+            {
+              "type": "single_choice",
+              "question": "Accord : « une fille tall » →",
+              "options": ["فتاة طويلة", "فتاة طويل", "فتى طويلة", "فتى طويل"],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif s'accorde en genre : طويلة au féminin."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Il est jeune » :",
+              "options": ["هو شاب", "هي شابة", "هم شبان", "هن شابات"],
+              "correctAnswers": [0],
+              "explanation": "شاب = jeune (homme) avec هو."
+            },
+            {
+              "type": "single_choice",
+              "question": "Antonyme de « جميل » :",
+              "options": ["قبيح", "كبير", "سريع", "قديم"],
+              "correctAnswers": [0],
+              "explanation": "قبيح = laid ; جميل = beau."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Vieux » (m.) :",
+              "options": ["عجوز / كبير في السن", "صغير", "جديد", "حلو"],
+              "correctAnswers": [0],
+              "explanation": "عجوز ou كبير في السن = vieux."
+            },
+            {
+              "type": "single_choice",
+              "question": "« La maison est grande » :",
+              "options": [
+                "البيت كبير",
+                "البيت كبيرة",
+                "البيت كبار",
+                "البيت كبر"
+              ],
+              "correctAnswers": [0],
+              "explanation": "بيت masculin → كبير sans ة."
+            },
+            {
+              "type": "single_choice",
+              "question": "Couleur « bleu » (m.) :",
+              "options": ["أزرق", "حمراء", "خضراء", "صفراء"],
+              "correctAnswers": [0],
+              "explanation": "أزرق = bleu ; azraq au masculin."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Il fait chaud » (météo) :",
+              "options": ["الجو حار", "الجو بارداً", "الجو ممطر", "الجو ثلجي"],
+              "correctAnswers": [0],
+              "explanation": "حار = chaud pour le temps."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Riche » (m.) :",
+              "options": ["غني", "فقير", "ضعيف", "مريض"],
+              "correctAnswers": [0],
+              "explanation": "غني = riche ; فقير = pauvre."
+            },
+            {
+              "type": "single_choice",
+              "question": "Superlatif courant « très beau » :",
+              "options": ["جميل جداً", "جميل قليلاً", "قبيح جداً", "بارد جداً"],
+              "correctAnswers": [0],
+              "explanation": "جداً renforce l'adjectif : très."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Passé : raconter hier",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels marqueurs situent l'action dans le passé ?",
+              "options": ["أمس", "البارحة", "غداً", "الآن"],
+              "correctAnswers": [0, 1],
+              "explanation": "أمس et البارحة = hier ; غداً et الآن = futur/présent."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Il est allé » (verbe ذهب) :",
+              "options": ["ذهب", "يذهب", "اذهب", "سوف يذهب"],
+              "correctAnswers": [0],
+              "explanation": "Parfait/suffixe passé : ذهبَ = il est allé."
+            },
+            {
+              "type": "single_choice",
+              "question": "« J'ai mangé » :",
+              "options": ["أكلت", "آكل", "سآكل", "كُل"],
+              "correctAnswers": [0],
+              "explanation": "أكلت = j'ai mangé (1re pers.)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Elle a écrit » :",
+              "options": ["كتبت", "يكتب", "اكتب", "سيكتب"],
+              "correctAnswers": [0],
+              "explanation": "كتبت avec elle : كتبتْ (contexte) ; forme كتبت pour « j'ai écrit » ou avec sujet elle كتبت."
+            },
+            {
+              "type": "single_choice",
+              "question": "Négation passée « je n'ai pas vu » :",
+              "options": ["لم أر", "لا أرى", "لن أرى", "ما أرى"],
+              "correctAnswers": [0],
+              "explanation": "لم + jussif = négation du passé proche : لم أر."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Soudain » (narration) :",
+              "options": ["فجأة", "دائماً", "أبداً", "ببطء"],
+              "correctAnswers": [0],
+              "explanation": "فجأة = soudainement."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Ensuite / puis » :",
+              "options": ["ثم", "قبل", "أولاً", "أخيراً"],
+              "correctAnswers": [0],
+              "explanation": "ثم = puis, ensuite."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Il a rencontré son ami » verbe rencontrer :",
+              "options": ["التقى", "يلتقي", "التق", "سيلتقي"],
+              "correctAnswers": [0],
+              "explanation": "التقى = il a rencontré."
+            },
+            {
+              "type": "single_choice",
+              "question": "« La semaine dernière » :",
+              "options": [
+                "الأسبوع الماضي",
+                "الأسبوع القادم",
+                "هذا الأسبوع",
+                "كل أسبوع"
+              ],
+              "correctAnswers": [0],
+              "explanation": "الماضي = dernier (passé) ; القادم = prochain."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Finalement » :",
+              "options": ["أخيراً", "أولاً", "بداية", "وسط"],
+              "correctAnswers": [0],
+              "explanation": "أخيراً = enfin, finalement."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Connecteurs narratifs",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels connecteurs introduisent une suite logique ?",
+              "options": ["ثم", "بعد ذلك", "لكن", "مع أن"],
+              "correctAnswers": [0, 1],
+              "explanation": "ثم et بعد ذلك enchaînent les événements."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Mais » (opposition) :",
+              "options": ["لكن / ولكن", "و", "أو", "لأن"],
+              "correctAnswers": [0],
+              "explanation": "لكن / ولكن = mais."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Parce que » :",
+              "options": ["لأن", "رغم", "حتى", "كي"],
+              "correctAnswers": [0],
+              "explanation": "لأن = parce que."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Quand » (temporel) :",
+              "options": ["عندما / لما", "حيث", "كيف", "لماذا"],
+              "correctAnswers": [0],
+              "explanation": "عندما = quand (événement)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« D'abord » :",
+              "options": ["أولاً", "أخيراً", "أحياناً", "قليلاً"],
+              "correctAnswers": [0],
+              "explanation": "أولاً = d'abord."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Pendant que » :",
+              "options": ["بينما", "بعد", "قبل", "منذ"],
+              "correctAnswers": [0],
+              "explanation": "بينما = pendant que."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Donc / alors » :",
+              "options": ["إذن / فـ", "لكن", "رغم", "بدون"],
+              "correctAnswers": [0],
+              "explanation": "إذن / فـ marquent la conclusion."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Si » (condition) :",
+              "options": ["إذا / إن", "لكن", "حتى", "مع"],
+              "correctAnswers": [0],
+              "explanation": "إذا / إن = si (condition)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Avant » :",
+              "options": ["قبل", "بعد", "أثناء", "منذ"],
+              "correctAnswers": [0],
+              "explanation": "قبل = avant."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Après » :",
+              "options": ["بعد", "قبل", "عند", "خلال"],
+              "correctAnswers": [0],
+              "explanation": "بعد = après."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Décrire un lieu",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels termes servent à situer dans l'espace ?",
+              "options": ["فوق", "تحت", "أمس", "غداً"],
+              "correctAnswers": [0, 1],
+              "explanation": "فوق = au-dessus ; تحت = en dessous."
+            },
+            {
+              "type": "single_choice",
+              "question": "« À côté de » :",
+              "options": ["بجانب", "داخل", "خارج", "وراء"],
+              "correctAnswers": [0],
+              "explanation": "بجانب = à côté de."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Derrière » :",
+              "options": ["وراء", "أمام", "فوق", "تحت"],
+              "correctAnswers": [0],
+              "explanation": "وراء = derrière ; أمام = devant."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Il y a » (existence) :",
+              "options": ["يوجد / هناك", "ليس", "كان", "سيكون"],
+              "correctAnswers": [0],
+              "explanation": "يوجد / هناك = il y a."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Paysage / nature » :",
+              "options": ["منظر طبيعي", "مبنى", "سيارة", "هاتف"],
+              "correctAnswers": [0],
+              "explanation": "منظر طبيعي = paysage naturel."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Plage » :",
+              "options": ["شاطئ", "جبل", "صحراء", "غابة"],
+              "correctAnswers": [0],
+              "explanation": "شاطئ = plage."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Bruyant » (endroit) :",
+              "options": ["صاخب", "هادئ", "فارغ", "نظيف"],
+              "correctAnswers": [0],
+              "explanation": "صاخب = bruyant ; هادئ = calme."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Propre » :",
+              "options": ["نظيف", "وسخ", "قديم", "ضيق"],
+              "correctAnswers": [0],
+              "explanation": "نظيف = propre ; وسخ = sale."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Loin » (adverbe) :",
+              "options": ["بعيد", "قريب", "هنا", "هناك"],
+              "correctAnswers": [0],
+              "explanation": "بعيد = loin ; قريب = près."
+            },
+            {
+              "type": "single_choice",
+              "question": "Phrase : « La ville est belle » :",
+              "options": [
+                "المدينة جميلة",
+                "المدينة جميل",
+                "المدينة جمال",
+                "المدينة أجمل"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مدينة féminin → جميلة."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Décrire une personne",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels traits décrivent l'apparence physique ?",
+              "options": ["طويل", "قصير", "كريم", "شجاع"],
+              "correctAnswers": [0, 1],
+              "explanation": "طويل / قصير = grand / petit (taille)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Cheveux » :",
+              "options": ["شعر", "عين", "أنف", "فم"],
+              "correctAnswers": [0],
+              "explanation": "شعر = cheveux / cheveu."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Yeux bleus » (accord) :",
+              "options": ["عيون زرقاء", "عيون زرق", "عين زرقاء", "عيون زرقاءة"],
+              "correctAnswers": [0],
+              "explanation": "Pluriel + féminin pluriel : عيون زرقاء."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Il porte » (vêtement) :",
+              "options": ["يلبس", "يأكل", "يشرب", "ينام"],
+              "correctAnswers": [0],
+              "explanation": "يلبس = il porte (vêtements)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Barbe » :",
+              "options": ["لحية", "شارب", "رأس", "يد"],
+              "correctAnswers": [0],
+              "explanation": "لحية = barbe."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Âge : vingt ans » :",
+              "options": [
+                "عمره عشرون سنة",
+                "طوله عشرون",
+                "وزنه عشرون",
+                "اسمه عشرون"
+              ],
+              "correctAnswers": [0],
+              "explanation": "عمر = âge ; سنة = an."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Intelligent » (m.) :",
+              "options": ["ذكي", "غبي", "كسول", "بطيء"],
+              "correctAnswers": [0],
+              "explanation": "ذكي = intelligent."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Elle sourit » :",
+              "options": ["تبتسم", "تبكي", "تصرخ", "تركض"],
+              "correctAnswers": [0],
+              "explanation": "ابتسم → تبتسم = elle sourit."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Corpulent / gros » (neutre courant) :",
+              "options": ["سمين", "نحيف", "طويل", "قصير"],
+              "correctAnswers": [0],
+              "explanation": "سمين = corpulent ; نحيف = mince."
+            },
+            {
+              "type": "single_choice",
+              "question": "Question « À quoi ressemble-t-il ? » :",
+              "options": ["كيف يبدو؟", "أين يذهب؟", "متى يأتي؟", "لماذا يرحل؟"],
+              "correctAnswers": [0],
+              "explanation": "كيف يبدو؟ = comment paraît-il ?"
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Imparfait et habitude passée",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles formes expriment l'habitude dans le passé ?",
+              "options": ["كنت أذهب", "كان يقرأ", "سأذهب", "أذهب الآن"],
+              "correctAnswers": [0, 1],
+              "explanation": "كان/كنت + présent = imparfait arabe (habitude ou description passée)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« J'étais étudiant » :",
+              "options": [
+                "كنت طالباً",
+                "أصبحت طالباً",
+                "سأكون طالباً",
+                "أنا طالب"
+              ],
+              "correctAnswers": [0],
+              "explanation": "كنت + nom = j'étais…"
+            },
+            {
+              "type": "single_choice",
+              "question": "« Il lisait chaque soir » :",
+              "options": [
+                "كان يقرأ كل مساء",
+                "قرأ كل مساء",
+                "سيقرأ",
+                "لا يقرأ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "كان يقرأ = il lisait (durée/habitude)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Autrefois » :",
+              "options": ["في القديم / سابقاً", "الآن", "غداً", "قريباً"],
+              "correctAnswers": [0],
+              "explanation": "سابقاً / في الماضي = autrefois."
+            },
+            {
+              "type": "single_choice",
+              "question": "Contraste passé/présent « avant… maintenant » :",
+              "options": [
+                "سابقاً… الآن",
+                "غداً… أمس",
+                "دائماً… أبداً",
+                "هنا… هناك"
+              ],
+              "correctAnswers": [0],
+              "explanation": "سابقاً vs الآن marque le changement."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Nous vivions » :",
+              "options": ["كنا نعيش", "نعيش", "سنعيش", "عشنا"],
+              "correctAnswers": [0],
+              "explanation": "كنا نعيش = nous vivions."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Pendant mon enfance » :",
+              "options": ["في طفولتي", "في شيخوختي", "في عملي", "في سفري"],
+              "correctAnswers": [0],
+              "explanation": "طفولة = enfance."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Souvent (passé) » avec كان :",
+              "options": [
+                "سأذهب غالباً",
+                "كنت أذهب غالباً",
+                "أذهب الآن",
+                "ذهبت مرة"
+              ],
+              "correctAnswers": [1],
+              "explanation": "كنت أذهب غالباً = j'allais souvent."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Le temps était beau » :",
+              "options": [
+                "كان الجو جميلاً",
+                "الجو جميل",
+                "سيكون الجو جميلاً",
+                "ليس الجو جميلاً"
+              ],
+              "correctAnswers": [0],
+              "explanation": "كان الجو… = le temps était…"
+            },
+            {
+              "type": "single_choice",
+              "question": "Négation imparfaite « il ne jouait pas » :",
+              "options": ["لم يكن يلعب / ما كان يلعب", "يلعب", "لعب", "سيلعب"],
+              "correctAnswers": [0],
+              "explanation": "ما كان يلعب ou لم يكن يلعب selon registre."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Raconter une visite",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels verbes conviennent pour raconter une visite ?",
+              "options": ["زار", "استقبل", "نام", "نسي"],
+              "correctAnswers": [0, 1],
+              "explanation": "زار = il a visité ; استقبل = il a accueilli."
+            },
+            {
+              "type": "single_choice",
+              "question": "« J'ai visité ma grand-mère » :",
+              "options": ["زرت جدتي", "زرت جدي", "نسيت جدتي", "تركت جدتي"],
+              "correctAnswers": [0],
+              "explanation": "زرت = j'ai visité ; جدتي = ma grand-mère."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Nous sommes arrivés » :",
+              "options": ["وصلنا", "خرجنا", "عدنا", "تأخرنا"],
+              "correctAnswers": [0],
+              "explanation": "وصلنا = nous sommes arrivés."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Cadeau » :",
+              "options": ["هدية", "رسالة", "طعام", "كرسي"],
+              "correctAnswers": [0],
+              "explanation": "هدية = cadeau."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Nous avons passé une bonne journée » :",
+              "options": [
+                "قضينا يوماً سعيداً",
+                "ضيعنا يوماً",
+                "نسينا اليوم",
+                "ألغينا اليوم"
+              ],
+              "correctAnswers": [0],
+              "explanation": "قضى = passer (du temps) ; يوماً سعيداً = bonne journée."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Inviter » :",
+              "options": ["دعا", "طرد", "منع", "نسي"],
+              "correctAnswers": [0],
+              "explanation": "دعا = il a invité."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Retourner chez soi » :",
+              "options": ["عاد إلى البيت", "ذهب إلى السوق", "سافر", "بقي"],
+              "correctAnswers": [0],
+              "explanation": "عاد = il est retourné."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Raconter / narrer » :",
+              "options": ["روى / حكى", "كتب", "قرأ", "سمع"],
+              "correctAnswers": [0],
+              "explanation": "روى / حكى = raconter."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Événement » :",
+              "options": ["حدث", "شيء", "كلمة", "حرف"],
+              "correctAnswers": [0],
+              "explanation": "حدث = événement."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Je me souviens » :",
+              "options": ["أتذكر", "أنسى", "أجهل", "أكذب"],
+              "correctAnswers": [0],
+              "explanation": "أتذكر = je me souviens ; نسيت = j'ai oublié."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Comparer et opposer",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles structures expriment la comparaison ?",
+              "options": ["أكثر من", "أقل من", "لكن", "لأن"],
+              "correctAnswers": [0, 1],
+              "explanation": "أكثر من = plus que ; أقل من = moins que."
+            },
+            {
+              "type": "single_choice",
+              "question": "Comparatif « plus grand que » :",
+              "options": ["أكبر من", "أصغر من", "مثل", "بدون"],
+              "correctAnswers": [0],
+              "explanation": "أكبر من = plus grand que."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Comme / semblable à » :",
+              "options": ["مثل", "ضد", "مع", "على"],
+              "correctAnswers": [0],
+              "explanation": "مثل = comme, semblable."
+            },
+            {
+              "type": "single_choice",
+              "question": "Superlatif « le plus beau » :",
+              "options": ["الأجمل", "أجمل من", "جميل", "قبيح"],
+              "correctAnswers": [0],
+              "explanation": "الأجمل = le plus beau (elatif défini)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Au contraire » :",
+              "options": ["بالعكس", "أيضاً", "كذلك", "معاً"],
+              "correctAnswers": [0],
+              "explanation": "بالعكس = au contraire."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Même si » :",
+              "options": ["رغم أن", "لأن", "حتى", "كي"],
+              "correctAnswers": [0],
+              "explanation": "رغم أن = bien que, même si."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Différent » :",
+              "options": ["مختلف", "مماثل", "متطابق", "مثل"],
+              "correctAnswers": [0],
+              "explanation": "مختلف = différent."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Préférer » :",
+              "options": ["يفضل", "يكره", "يتجاهل", "ينسى"],
+              "correctAnswers": [0],
+              "explanation": "يفضل = il préfère."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Meilleur » (comparatif) :",
+              "options": ["أفضل", "أسوأ", "أكبر", "أصغر"],
+              "correctAnswers": [0],
+              "explanation": "أفضل = meilleur."
+            },
+            {
+              "type": "single_choice",
+              "question": "Phrase : « Il est aussi grand que son frère » :",
+              "options": [
+                "هو طويل مثل أخيه",
+                "هو أقصر من أخيه",
+                "هو بعيد عن أخيه",
+                "هو أخ أخيه"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مثل = aussi… que / comme."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Futur et projets",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels marqueurs introduisent le futur proche ?",
+              "options": ["سوف", "سـ (préfixe)", "أمس", "كان"],
+              "correctAnswers": [0, 1],
+              "explanation": "سوف et le préfixe سـ indiquent le futur."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Je voyagerai » :",
+              "options": ["سأسافر", "سافرت", "أسافر", "لا أسافر"],
+              "correctAnswers": [0],
+              "explanation": "س + أُسافر → سأسافر = je voyagerai."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Demain » :",
+              "options": ["غداً", "أمس", "اليوم", "الآن"],
+              "correctAnswers": [0],
+              "explanation": "غداً = demain."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Projet / projet futur » :",
+              "options": ["مشروع", "ذكرى", "حادث", "خطأ"],
+              "correctAnswers": [0],
+              "explanation": "مشروع = projet."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Je compte / j'ai l'intention » :",
+              "options": ["أنوي", "أنسى", "أرفض", "أتردد"],
+              "correctAnswers": [0],
+              "explanation": "نوى → أنوي = j'ai l'intention."
+            },
+            {
+              "type": "single_choice",
+              "question": "« La semaine prochaine » :",
+              "options": [
+                "الأسبوع القادم",
+                "الأسبوع الماضي",
+                "كل أسبوع",
+                "هذا الصباح"
+              ],
+              "correctAnswers": [0],
+              "explanation": "القادم = prochain."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Peut-être » :",
+              "options": ["ربما", "بالتأكيد", "أبداً", "دائماً"],
+              "correctAnswers": [0],
+              "explanation": "ربما = peut-être."
+            },
+            {
+              "type": "single_choice",
+              "question": "« J'espère » :",
+              "options": ["آمل", "أخاف", "أكره", "أندم"],
+              "correctAnswers": [0],
+              "explanation": "آمل = j'espère."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Bientôt » :",
+              "options": ["قريباً", "بعيداً", "أبداً", "سابقاً"],
+              "correctAnswers": [0],
+              "explanation": "قريباً = bientôt."
+            },
+            {
+              "type": "single_choice",
+              "question": "Négation future « je ne partirai pas » :",
+              "options": ["لن أذهب", "لم أذهب", "لا أذهب", "ذهبت"],
+              "correctAnswers": [0],
+              "explanation": "لن + présent = futur négatif : لن أذهب."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse : récit complet",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels éléments structurent un récit au passé ?",
+              "options": [
+                "مقدمة مع كان",
+                "ثم / أخيراً",
+                "فقط des noms",
+                "sans verbes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Contexte avec كان et connecteurs temporels structurent le récit."
+            },
+            {
+              "type": "single_choice",
+              "question": "Ordre narratif logique :",
+              "options": [
+                "أولاً … ثم … أخيراً",
+                "أخيراً … أولاً … ثم",
+                "ثم فقط",
+                "بدون ترتيب"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'abord, puis, enfin est l'ordre canonique."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Il m'a raconté une histoire » :",
+              "options": ["حكى لي قصة", "نسي قصة", "كتب قصة فقط", "سمع قصة"],
+              "correctAnswers": [0],
+              "explanation": "حكى لي = il m'a raconté."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Soudain il pleuvait » (style) :",
+              "options": ["فجأة بدأ المطر", "دائماً مطر", "لا مطر", "مطر غداً"],
+              "correctAnswers": [0],
+              "explanation": "فجأة بدأ = soudain il a commencé à pleuvoir."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Fin de l'histoire » :",
+              "options": [
+                "نهاية القصة",
+                "بداية القصة",
+                "وسط القصة",
+                "عنوان القصة"
+              ],
+              "correctAnswers": [0],
+              "explanation": "نهاية = fin ; بداية = début."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Personnage principal » :",
+              "options": [
+                "البطل / الشخصية الرئيسية",
+                "الخلفية",
+                "العنوان",
+                "الفهرس"
+              ],
+              "correctAnswers": [0],
+              "explanation": "شخصية رئيسية = personnage principal."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Moral / leçon » (conte) :",
+              "options": ["عبرة", "لون", "رقم", "تاريخ"],
+              "correctAnswers": [0],
+              "explanation": "عبرة = leçon morale."
+            },
+            {
+              "type": "single_choice",
+              "question": "Reformulation : passé → présent descriptif « il décrit » :",
+              "options": ["يصف", "وصف", "سوف يصف", "لا يصف"],
+              "correctAnswers": [0],
+              "explanation": "يصف = il décrit (présent narratif/descriptif)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« En résumé » :",
+              "options": ["باختصار / ملخصاً", "بالتفصيل", "بطول", "بلا معنى"],
+              "correctAnswers": [0],
+              "explanation": "باختصار = en résumé."
+            },
+            {
+              "type": "single_choice",
+              "question": "Phrase terminale « C'était une belle expérience » :",
+              "options": [
+                "كانت تجربة جميلة",
+                "ستكون تجربة",
+                "ليست تجربة",
+                "تجربة قبيحة"
+              ],
+              "correctAnswers": [0],
+              "explanation": "كانت = c'était ; تجربة جميلة = belle expérience."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

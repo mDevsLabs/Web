@@ -1,0 +1,2368 @@
+{
+  "id": "6e-francais-10",
+  "year": "6e",
+  "subject": "francais",
+  "title": "Bilan de français",
+  "order": 10,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Synthèse",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Dans la phrase  Les enfants jouent dans la cour , quels mots sont d…",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans la phrase « Les enfants jouent dans la cour », quels mots sont des noms ?",
+              "options": ["enfants", "jouent", "dans", "cour"],
+              "correctAnswers": [0, 3],
+              "explanation": "« Enfants » et « cour » désignent des personnes ou un lieu : ce sont des noms. « Jouent » est un verbe et « dans » une préposition."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le sujet du verbe « chantent » dans : « Mes sœurs chantent une chanson » ?",
+              "options": ["Mes sœurs", "chantent", "une", "chanson"],
+              "correctAnswers": [0],
+              "explanation": "Le sujet est celui qui fait l'action : « mes sœurs »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot est un adjectif qualificatif dans « une robe rouge » ?",
+              "options": ["une", "robe", "rouge", "est"],
+              "correctAnswers": [2],
+              "explanation": "« Rouge » qualifie le nom « robe »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « Il marche lentement », le mot « lentement » est :",
+              "options": ["un nom", "un verbe", "un adverbe", "un déterminant"],
+              "correctAnswers": [2],
+              "explanation": "« Lentement » précise la manière de marcher : adverbe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase est à l'imparfait ?",
+              "options": [
+                "Je mange une pomme.",
+                "Nous chantions hier.",
+                "Tu finiras demain.",
+                "Elle est partie."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Chantions » est à l'imparfait (nous)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un conte se reconnaît souvent par :",
+              "options": [
+                "une fiction avec des personnages et une intrigue",
+                "un mode d'emploi",
+                "un horaire de train",
+                "une facture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le conte raconte une histoire imaginaire, parfois merveilleuse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans la fable « Le Corbeau et le Renard », la morale apprend surtout à :",
+              "options": [
+                "courir vite",
+                "ne pas se laisser flatter",
+                "manger des fromages",
+                "chanter le matin"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le renard flatte le corbeau pour lui voler le fromage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel mot complète « une fleur … » au féminin singulier ?",
+              "options": ["bleu", "bleue", "bleus", "bleues"],
+              "correctAnswers": [1],
+              "explanation": "Avec « une fleur », l'adjectif prend -e : « bleue »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel signe termine une phrase déclarative ?",
+              "options": [
+                "La virgule seule",
+                "Le point",
+                "Le tiret de dialogue",
+                "Deux points au milieu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le point marque la fin de la phrase."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Des vers qui se terminent par le même son forment :",
+              "options": [
+                "un paragraphe",
+                "une rime",
+                "un chapitre",
+                "un index"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La rime répète un son en fin de vers."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Quels mots sont des verbes à l'infinitif ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des verbes à l'infinitif ?",
+              "options": ["chanter", "table", "manger", "bleu"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Chanter » et « manger » sont à l'infinitif. « Table » est un nom, « bleu » un adjectif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Le » dans « le chat » est :",
+              "options": [
+                "un pronom",
+                "un déterminant article défini",
+                "une conjonction",
+                "un adverbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Le » précède et détermine le nom « chat »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle phrase contient une métaphore ?",
+              "options": [
+                "Il court comme le vent.",
+                "Ses yeux sont des étoiles.",
+                "Le ciel est bleu.",
+                "Je lis un livre."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Identifier les yeux à des étoiles, sans « comme », c'est une métaphore."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le pluriel de « cheval » est :",
+              "options": ["chevals", "chevaux", "chevales", "chevaulx"],
+              "correctAnswers": [1],
+              "explanation": "Pluriel en -aux : chevaux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « Les filles sont contentes », « contentes » s'accorde avec :",
+              "options": ["le verbe seulement", "les filles", "sont", "Les"],
+              "correctAnswers": [1],
+              "explanation": "Adjectif attribut : accord avec le sujet féminin pluriel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un récit raconte surtout :",
+              "options": [
+                "une suite d'événements",
+                "un tableau de multiplication seul",
+                "un plan de métro sans texte",
+                "une liste de sigles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le récit organise une intrigue dans le temps."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mot est une préposition dans « Je vais à l'école » ?",
+              "options": ["Je", "vais", "à", "école"],
+              "correctAnswers": [2],
+              "explanation": "« À » introduit le complément de lieu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Au présent : « nous (finir) » donne :",
+              "options": [
+                "nous finis",
+                "nous finissons",
+                "nous finissez",
+                "nous finirons"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Verbe du 2e groupe : nous finissons."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans un dialogue, les répliques commencent souvent par :",
+              "options": [
+                "un tiret",
+                "un dièse",
+                "un pourcentage",
+                "trois points seuls en début de ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tiret marque chaque prise de parole."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le féminin de « acteur » est :",
+              "options": ["acteure", "actrice", "acteuse", "actorine"],
+              "correctAnswers": [1],
+              "explanation": "Acteur → actrice."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Quels mots sont des déterminants dans  ces jolies maisons  ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des déterminants dans « ces jolies maisons » ?",
+              "options": ["ces", "jolies", "maisons", "sous"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ces » est démonstratif, « jolies » déterminant adjectif. « Maisons » est le nom."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle phrase est au futur simple ?",
+              "options": [
+                "Tu manges.",
+                "Tu mangeras demain.",
+                "Tu mangeais.",
+                "Tu as mangé."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Mangeras » exprime le futur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans « Pierre et Marie partent », « partent » est au :",
+              "options": ["singulier", "pluriel", "infinitif", "impératif"],
+              "correctAnswers": [1],
+              "explanation": "Sujet pluriel : terminaison -ent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un texte en vers avec des strophes relève surtout de :",
+              "options": [
+                "la poésie",
+                "la fiche technique",
+                "le mail",
+                "l'horaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La poésie se compose de vers."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "COD dans « Paul lit un roman » :",
+              "options": ["Paul", "lit", "un roman", "dans"],
+              "correctAnswers": [2],
+              "explanation": "Paul lit quoi ? → un roman."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Relier deux propositions peut se faire avec :",
+              "options": [
+                "une conjonction",
+                "un chiffre seul",
+                "un emoji obligatoire",
+                "rien du tout toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Et, mais, car, ou… relient des propositions."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Très » dans « très grand » est :",
+              "options": [
+                "un adverbe d'intensité",
+                "un nom",
+                "un verbe",
+                "un article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Très » modifie l'adjectif « grand »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase a un accord sujet-verbe correct ?",
+              "options": [
+                "Le chien aboie.",
+                "Les oiseau chantent.",
+                "Ma sœur chantent.",
+                "Les fleurs pousse."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet singulier et verbe singulier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une fable, les personnages sont souvent :",
+              "options": [
+                "des animaux humanisés",
+                "des planètes",
+                "des formules",
+                "des robots seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fable met en scène des bêtes qui pensent et parlent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Passé composé de « je (aller) » :",
+              "options": ["j'alle", "je suis allé", "j'irai", "j'allais"],
+              "correctAnswers": [1],
+              "explanation": "Auxiliaire être : je suis allé."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Quels mots sont des pronoms personnels sujets ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des pronoms personnels sujets ?",
+              "options": ["il", "maison", "nous", "rapidement"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Il » et « nous » peuvent être sujets."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Antonyme de « jour » :",
+              "options": ["matin", "nuit", "soleil", "heure"],
+              "correctAnswers": [1],
+              "explanation": "Jour / nuit s'opposent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sujet de « La petite fille sourit » :",
+              "options": ["sourit", "La petite fille", "petite", "filles"],
+              "correctAnswers": [1],
+              "explanation": "Le groupe nominal sujet est « La petite fille »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Nature de « et » dans « pain et beurre » :",
+              "options": [
+                "conjonction de coordination",
+                "préposition",
+                "adverbe",
+                "déterminant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Et » coordonne deux noms."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un récit situe l'action avec :",
+              "options": [
+                "des repères de temps et de lieu",
+                "uniquement des chiffres",
+                "des tableaux vides",
+                "des sigles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hier, soudain, dans la forêt… orientent le lecteur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Forme au participe passé :",
+              "options": ["mangé", "mange", "manger", "mangeons"],
+              "correctAnswers": [0],
+              "explanation": "« Mangé » est le participe passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Des » dans « des livres » est :",
+              "options": [
+                "article indéfini pluriel",
+                "verbe",
+                "adjectif",
+                "interjection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Article indéfini pluriel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« heureux » avec « les garçons » :",
+              "options": ["heureux", "heureuse", "heureuses", "heureus"],
+              "correctAnswers": [0],
+              "explanation": "Masculin pluriel : heureux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lire à voix haute aide à :",
+              "options": [
+                "respecter ponctuation et rythme",
+                "effacer le texte",
+                "changer l'auteur",
+                "supprimer les verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On marque les pauses et la mélodie du texte."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Qui frappe à la porte ? », « Qui » est :",
+              "options": [
+                "pronom interrogatif",
+                "article",
+                "préposition",
+                "adjectif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Qui » introduit une question sur une personne."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Quels genres littéraires sont des récits ou textes étudiés en 6e ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels genres littéraires sont des récits ou textes étudiés en 6e ?",
+              "options": ["conte", "fable", "notice de lavage", "poésie"],
+              "correctAnswers": [0, 3],
+              "explanation": "Conte et poésie sont deux genres majeurs au collège ; la fable l'est aussi, ici conte et poésie sont les deux bonnes réponses demandées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Il (pouvoir) au présent :",
+              "options": ["peut", "peu", "peux", "peuvent"],
+              "correctAnswers": [0],
+              "explanation": "3e personne du singulier : il peut."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Champ lexical de la peur :",
+              "options": [
+                "frissonner, trembler, effrayé",
+                "manger, cuire, assiette",
+                "chanter, mélodie, piano",
+                "nager, piscine, brasses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces mots évoquent la peur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Mon » dans « mon cartable » est :",
+              "options": [
+                "déterminant possessif",
+                "verbe",
+                "préposition",
+                "adverbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indique la possession."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Phrase exclamative :",
+              "options": [
+                "Quelle surprise !",
+                "Ferme la porte.",
+                "Est-ce que tu viens ?",
+                "Il pleut."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Point d'exclamation et ton exclamatif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Radical de « chanter » :",
+              "options": ["chant-", "ter", "-er", "chanterons"],
+              "correctAnswers": [0],
+              "explanation": "On retire -er à l'infinitif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Il était une fois » annonce :",
+              "options": [
+                "un récit fictif",
+                "l'heure légale",
+                "un article de loi",
+                "une signature"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule d'ouverture du conte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mot invariable :",
+              "options": ["toujours", "belle", "chat", "grands"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe invariable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Synonyme de « commence » :",
+              "options": ["débute", "termine", "ferme", "oublie"],
+              "correctAnswers": [0],
+              "explanation": "Débute ≈ commence."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Présent de « ils (avoir) » :",
+              "options": ["ils ont", "ils ontent", "ils avons", "ils avaient"],
+              "correctAnswers": [0],
+              "explanation": "Ils ont."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Quels mots sont des noms propres ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des noms propres ?",
+              "options": ["Paris", "ville", "Marie", "maison"],
+              "correctAnswers": [0, 2],
+              "explanation": "Paris et Marie désignent un lieu ou une personne précis."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Texte : « Le soleil brille. Les oiseaux gazouillent. » Temps verbal principal :",
+              "options": [
+                "présent",
+                "passé simple",
+                "futur antérieur",
+                "subjonctif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brille et gazouillent sont au présent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Où habites-tu ? » est une phrase :",
+              "options": [
+                "interrogative",
+                "impérative",
+                "négative",
+                "sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle pose une question."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Féminin pluriel de « sportif » :",
+              "options": ["sportives", "sportifs", "sportive", "sportifes"],
+              "correctAnswers": [0],
+              "explanation": "Sportif → sportive → sportives."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Erreur dans « Nous écoutons la professeur » :",
+              "options": [
+                "« la » avec « professeur » masculin",
+                "verbe à l'infinitif",
+                "absence de sujet",
+                "trop de virgules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dit le professeur ou la professeure."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Personnage type de conte :",
+              "options": [
+                "la fée",
+                "un ticket de caisse",
+                "un paragraphe de loi",
+                "un numéro de série"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fée, ogre, prince… sont des archétypes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Ne … pas » forme :",
+              "options": [
+                "la négation",
+                "le futur",
+                "le pluriel du nom",
+                "une rime"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation standard en français."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « ma-i-son », combien de syllabes ?",
+              "options": ["3", "1", "5", "12"],
+              "correctAnswers": [0],
+              "explanation": "Ma-i-son : trois syllabes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Narrateur qui dit « je » :",
+              "options": [
+                "première personne",
+                "troisième personne seulement",
+                "dictionnaire",
+                "index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « je » narrativeur = 1re personne."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Les chats … sur le toit » (dormir, présent) :",
+              "options": ["dort", "dormons", "dorment", "dormir"],
+              "correctAnswers": [2],
+              "explanation": "Sujet pluriel : dorment."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Quelles fins conviennent à une phrase déclarative ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fins conviennent à une phrase déclarative ?",
+              "options": [
+                "point",
+                "point d'interrogation",
+                "virgule seule en fin",
+                "point d'exclamation si ton fort"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Déclaration : point ; exclamation possible avec !. ? = question ; virgule ne clôt pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Leur » dans « leur maison » (une maison) :",
+              "options": [
+                "déterminant possessif",
+                "verbe",
+                "nom propre",
+                "conjonction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possessif pluriel devant nom singulier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Famille de mots de « mer » :",
+              "options": [
+                "marin, maritime",
+                "forêt, bois",
+                "mont, sommet",
+                "route, autoroute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marin et maritime relient la mer."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un vers de poésie se mesure souvent en :",
+              "options": ["syllabes", "pages", "chapitres", "colonnes Excel"],
+              "correctAnswers": [0],
+              "explanation": "Le mètre compte les syllabes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Phrase avec « a » (avoir) :",
+              "options": [
+                "Il a faim.",
+                "Il va à Paris.",
+                "Donne à manger.",
+                "Pense à demain."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« A » = verbe avoir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Schéma du récit :",
+              "options": [
+                "situation initiale, péripéties, dénouement",
+                "liste sans fin",
+                "index seul",
+                "tableau vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure narrative classique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Ce » dans « ce garçon » :",
+              "options": [
+                "déterminant démonstratif",
+                "verbe",
+                "adverbe",
+                "interjection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Montre le nom « garçon »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pluriel de « journal » :",
+              "options": ["journaux", "journals", "journales", "journal"],
+              "correctAnswers": [0],
+              "explanation": "Journal → journaux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "COD dans « La lune éclaire la nuit » :",
+              "options": ["La lune", "éclaire", "la nuit", "La"],
+              "correctAnswers": [2],
+              "explanation": "Éclaire quoi ? la nuit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une fable est :",
+              "options": [
+                "courte, avec une morale",
+                "un roman de 800 pages",
+                "un bail",
+                "un manuel de gym seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Récit bref et leçon finale."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Mots du champ lexical de la mer :",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Mots du champ lexical de la mer :",
+              "options": ["vague", "forêt", "marée", "montagne"],
+              "correctAnswers": [0, 2],
+              "explanation": "Vague et marée appartiennent à la mer."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Imparfait de « je (être) » :",
+              "options": ["je suis", "j'étais", "je serai", "j'ai été"],
+              "correctAnswers": [1],
+              "explanation": "J'étais."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comparaison avec « comme » :",
+              "options": [
+                "Il est fort comme un lion.",
+                "Il mange.",
+                "Demain.",
+                "Silence !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Comme » rapproche deux termes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Quelques » est :",
+              "options": [
+                "déterminant indéfini pluriel",
+                "verbe",
+                "préposition",
+                "nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Petite quantité devant nom pluriel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Passé composé « nous (voir) » :",
+              "options": [
+                "nous avons vu",
+                "nous sommes vu",
+                "nous voyons",
+                "nous verrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Auxiliaire avoir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Fin possible d'un conte :",
+              "options": [
+                "… et ils vécurent heureux",
+                "article 12",
+                "facture n°45",
+                "fin du stock"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule de happy end traditionnelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« belles » dans « Les robes sont belles » s'accorde avec :",
+              "options": ["robes", "sont", "Les", "est"],
+              "correctAnswers": [0],
+              "explanation": "Attribut du sujet féminin pluriel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ferme la fenêtre. » est :",
+              "options": [
+                "impérative",
+                "interrogative",
+                "passive",
+                "sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre ou conseil."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« La » dans « la fille » :",
+              "options": [
+                "article défini féminin singulier",
+                "indéfini masculin",
+                "partitif",
+                "verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La = article défini."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le titre d'un texte sert à :",
+              "options": [
+                "annoncer le thème",
+                "effacer le contenu",
+                "changer les personnages",
+                "supprimer les verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il oriente la lecture."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Conjonctions de coordination :",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Conjonctions de coordination :",
+              "options": ["mais", "sous", "ou", "chez"],
+              "correctAnswers": [0, 2],
+              "explanation": "Mais et ou coordonnent. Sous et chez sont prépositions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Hier » dans « Hier, il a plu » :",
+              "options": ["repère de temps", "verbe", "article", "conjonction"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe ou complément de temps."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Masculin de « actrice » :",
+              "options": ["acteur", "acteure", "actor", "actrices"],
+              "correctAnswers": [0],
+              "explanation": "Actrice / acteur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Tes » dans « Tu fais tes devoirs » :",
+              "options": [
+                "déterminant possessif",
+                "verbe",
+                "nom",
+                "pronom sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possession : tes devoirs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un alexandrin compte :",
+              "options": [
+                "12 syllabes",
+                "5 syllabes",
+                "20 syllabes",
+                "2 syllabes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vers de douze syllabes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "Ma mère et moi allons au marché.",
+                "Ma mère et moi va au marché.",
+                "Ma mère et moi allons au marchés.",
+                "Ma mère et moi iront hier passé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet pluriel, verbe pluriel, marché singulier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Morale d'une fable :",
+              "options": [
+                "leçon pour le lecteur",
+                "nombre de pages",
+                "couverture",
+                "ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enseignement du récit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Plus » dans « plus grand » :",
+              "options": ["adverbe de comparaison", "nom", "verbe", "article"],
+              "correctAnswers": [0],
+              "explanation": "Degré supérieur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Soudain » dans un récit marque :",
+              "options": [
+                "un changement brusque",
+                "une couleur",
+                "un goût",
+                "une température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur temporel d'action rapide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Finir » est du :",
+              "options": [
+                "2e groupe",
+                "1er groupe -er",
+                "groupe des noms",
+                "3e groupe seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbes en -ir du 2e groupe."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "La poésie se caractérise par :",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La poésie se caractérise par :",
+              "options": [
+                "des vers",
+                "l'absence totale d'images",
+                "des rimes possibles",
+                "un formulaire administratif"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Vers et rimes (souvent) ; figures de style possibles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Présent : « ils (être) contents » :",
+              "options": ["ils es", "ils sont", "ils seront", "ils étaient"],
+              "correctAnswers": [1],
+              "explanation": "Ils sont."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Du voisin » dans « Le chien du voisin aboie » complète :",
+              "options": ["chien", "aboie", "Le", "rien"],
+              "correctAnswers": [0],
+              "explanation": "Complément du nom chien."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Récit à la 3e personne utilise :",
+              "options": [
+                "il, elle, ils, elles",
+                "uniquement je",
+                "chiffres romains seuls",
+                "symboles chimiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Narrateur extérieur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Homophones proches de « vert » (couleur) :",
+              "options": [
+                "verre",
+                "vers",
+                "ver",
+                "tous peuvent se confondre à l'oral"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Vert, ver, vers, verre : attention à l'orthographe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Elle » pour « Marie » : Marie est :",
+              "options": [
+                "l'antécédent",
+                "un adverbe",
+                "un article",
+                "une préposition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom remplacé par le pronom."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Résumer un texte, c'est :",
+              "options": [
+                "condenser l'essentiel",
+                "copier tout mot à mot",
+                "inventer une autre histoire",
+                "supprimer le titre toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de mots, idées principales."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase négative :",
+              "options": [
+                "Je ne comprends pas.",
+                "Je comprends.",
+                "Comprends-tu ?",
+                "Comprends !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne … pas."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Objet magique dans un conte sert à :",
+              "options": [
+                "aider le héros",
+                "payer les impôts",
+                "mesurer la pression",
+                "compiler du code"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fait avancer l'intrigue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour le bilan de 6e, il faut surtout :",
+              "options": [
+                "lire, écrire, connaître les classes de mots",
+                "ignorer les accords",
+                "ne jamais relire",
+                "éviter la littérature"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bases : lecture, écriture, grammaire simple."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Entraînement",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Quels mots sont des adverbes ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des adverbes ?",
+              "options": ["demain", "maison", "souvent", "chat"],
+              "correctAnswers": [0, 2],
+              "explanation": "Demain et souvent modifient un verbe ou une phrase. Maison et chat sont des noms."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Texte : « La cloche sonne. Les élèves entrent. » Le narrateur :",
+              "options": [
+                "décrit une scène au présent",
+                "donne un ordre",
+                "pose une question",
+                "liste des sigles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Description d'actions au présent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Est-ce que tu viens ? » est :",
+              "options": [
+                "interrogative",
+                "impérative",
+                "exclamative",
+                "sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme interrogative avec est-ce que."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pluriel de « animal » :",
+              "options": ["animaux", "animals", "animales", "animal"],
+              "correctAnswers": [0],
+              "explanation": "Animal → animaux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Mes amis sont gentils » : « gentils » s'accorde avec :",
+              "options": ["amis", "sont", "Mes", "gentil"],
+              "correctAnswers": [0],
+              "explanation": "Masculin pluriel avec amis."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un conte, le héros affronte souvent :",
+              "options": [
+                "des épreuves",
+                "un tableur vide",
+                "un contrat de location",
+                "un index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Épreuves et obstacles structurent l'intrigue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Sans » dans « sans bruit » est :",
+              "options": ["préposition", "verbe", "article", "conjonction"],
+              "correctAnswers": [0],
+              "explanation": "Introduit un complément."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Futur de « je (manger) » :",
+              "options": [
+                "je mange",
+                "je mangerai",
+                "je mangeais",
+                "j'ai mangé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Je mangerai."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux-points servent souvent à :",
+              "options": [
+                "introduire une énumération ou une citation",
+                "terminer toute phrase",
+                "remplacer le point",
+                "supprimer les verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Annonce ce qui suit (liste, parole)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Feminin de « lion » (animal) :",
+              "options": ["lionne", "lione", "lionnesse", "lionette"],
+              "correctAnswers": [0],
+              "explanation": "Lion → lionne."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Quels mots sont des verbes conjugués au présent ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des verbes conjugués au présent ?",
+              "options": ["parle", "parler", "marchons", "marche"],
+              "correctAnswers": [0, 2],
+              "explanation": "Parle et marchons sont conjugués. Parler est infinitif ; marche peut être nom ou verbe — ici parle et marchons sont clairement présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Cette » dans « cette fille » :",
+              "options": [
+                "déterminant démonstratif",
+                "verbe",
+                "adverbe",
+                "pronom sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déterminant démonstratif féminin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Texte : « Le loup gronde. La fille recule. » On peut dire que :",
+              "options": [
+                "la tension monte",
+                "il s'agit d'une recette",
+                "c'est un horaire",
+                "c'est une facture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement d'actions dans un récit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Un » dans « un livre » :",
+              "options": [
+                "article indéfini singulier",
+                "verbe",
+                "conjonction",
+                "adverbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Article indéfini masculin singulier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Passé composé « elles (finir) » :",
+              "options": [
+                "elles ont fini",
+                "elles ont finies",
+                "elles finissent",
+                "elles finiront"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avoir + participe passé fini (invariable ici)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La Fontaine est surtout auteur de :",
+              "options": [
+                "fables",
+                "modes d'emploi",
+                "horaires SNCF",
+                "catalogues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jean de La Fontaine : fables célèbres."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Beaucoup » dans « beaucoup de neige » :",
+              "options": [
+                "adverbe ou déterminant selon construction",
+                "verbe",
+                "article défini",
+                "interjection seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indique une grande quantité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase avec accord correct :",
+              "options": [
+                "La fille danse.",
+                "La fille dansent.",
+                "Les fille danse.",
+                "La filles danse."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet singulier, verbe singulier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Strophe en poésie, c'est :",
+              "options": [
+                "un groupe de vers",
+                "un paragraphe en prose seule",
+                "une page de garde",
+                "un chapitre de roman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vers regroupés formant une strophe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Présent « tu (prendre) » :",
+              "options": ["tu prends", "tu prend", "tu prenez", "tu prendras"],
+              "correctAnswers": [0],
+              "explanation": "Tu prends (3e groupe)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Quels mots sont des prépositions ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des prépositions ?",
+              "options": ["avec", "grand", "pour", "manger"],
+              "correctAnswers": [0, 2],
+              "explanation": "Avec et pour introduisent un complément."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Lecture : « Le renard est rusé. » « rusé » qualifie :",
+              "options": ["renard", "est", "Le", "rusé seulement"],
+              "correctAnswers": [0],
+              "explanation": "Adjectif épithète ou attribut lié au renard."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Imparfait « nous (chanter) » :",
+              "options": [
+                "nous chantions",
+                "nous chantons",
+                "nous chanterons",
+                "nous avons chanté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nous chantions."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ils » remplace « Paul et Léa » : « Ils » est :",
+              "options": [
+                "pronom personnel sujet",
+                "article",
+                "adverbe",
+                "déterminant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pronom sujet pluriel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Conte et fable : point commun :",
+              "options": [
+                "récit avec personnages",
+                "texte sans verbes",
+                "liste de courses",
+                "tableau Excel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux formes narratives."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Peu » dans « peu de temps » indique :",
+              "options": [
+                "petite quantité",
+                "futur",
+                "pluriel",
+                "comparaison avec comme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quantité faible."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Orthographe correcte :",
+              "options": [
+                "apporté",
+                "aporté",
+                "aporter",
+                "apportée toujours avec e final"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Participe passé de apporter : apporté."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Type de phrase « Comme c'est beau ! » :",
+              "options": [
+                "exclamative",
+                "interrogative",
+                "impérative",
+                "négative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exclamation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complément de lieu dans « Il dort dans sa chambre » :",
+              "options": ["dans sa chambre", "Il", "dort", "sa"],
+              "correctAnswers": [0],
+              "explanation": "Où dort-il ? dans sa chambre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "1er groupe : infinitif en :",
+              "options": ["-er", "-ir", "-re seulement", "-oir toujours"],
+              "correctAnswers": [0],
+              "explanation": "Chanter, parler… -er."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Quels mots sont des noms communs ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des noms communs ?",
+              "options": ["arbre", "France", "fenêtre", "Lucas"],
+              "correctAnswers": [0, 2],
+              "explanation": "Arbre et fenêtre sont communs. France et Lucas sont propres."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Texte : « Une princesse habite un château. » Genre :",
+              "options": [
+                "conte ou récit fictionnel",
+                "mode d'emploi",
+                "mail",
+                "ticket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Univers merveilleux typique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« On » dans « On part » est :",
+              "options": [
+                "pronom indéfini",
+                "article",
+                "préposition",
+                "adjectif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pronom sujet indéfini."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Feminin pluriel de « heureux » :",
+              "options": ["heureuses", "heureux", "heureuse", "heureus"],
+              "correctAnswers": [0],
+              "explanation": "Heureux → heureuse → heureuses."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Car » dans « Je reste, car il pleut » :",
+              "options": [
+                "conjonction de coordination",
+                "préposition",
+                "adverbe",
+                "nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Explique la cause."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rime en poésie :",
+              "options": [
+                "même son en fin de vers",
+                "même auteur que le conte",
+                "même nombre de pages",
+                "même ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répétition de sons."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Passé composé « tu (être) » (masculin) :",
+              "options": ["tu as été", "tu es", "tu étais", "tu seras"],
+              "correctAnswers": [0],
+              "explanation": "Tu as été (passé composé)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« De » dans « gâteau de chocolat » :",
+              "options": ["préposition", "verbe", "article", "conjonction"],
+              "correctAnswers": [0],
+              "explanation": "Relie gâteau et chocolat."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Reformuler une phrase, c'est :",
+              "options": [
+                "dire la même idée autrement",
+                "effacer le sens",
+                "changer le thème",
+                "supprimer le verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autre formulation, même sens."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Présent « elles (faire) » :",
+              "options": [
+                "elles font",
+                "elles fais",
+                "elles faisons",
+                "elles feront"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles font."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Accords corrects (adjectif + nom) :",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Accords corrects (adjectif + nom) :",
+              "options": [
+                "une pomme verte",
+                "des pommes vertes",
+                "un pomme vert",
+                "des pomme vertes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Verte avec pomme féminine ; vertes avec pommes pluriel féminin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Fable : le renard est décrit comme :",
+              "options": ["malin", "muet toujours", "sans jambes", "invisible"],
+              "correctAnswers": [0],
+              "explanation": "Ruse du renard dans les fables."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Lui » dans « Je lui parle » :",
+              "options": [
+                "pronom personnel complément",
+                "article",
+                "adverbe",
+                "conjonction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "COI remplacé par lui."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pluriel de « bleu » (nom de couleur) :",
+              "options": [
+                "bleus",
+                "bleux",
+                "bleues seulement toujours",
+                "bleu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bleus (nom masculin pluriel possible)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Texte : « Au matin, la brume se lève. » « Au matin » indique :",
+              "options": ["le moment", "la couleur", "le nombre", "le genre"],
+              "correctAnswers": [0],
+              "explanation": "Repère temporel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Virgule sert à :",
+              "options": [
+                "marquer une pause dans la phrase",
+                "terminer la phrase",
+                "remplacer le point",
+                "introduire une question seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pause plus légère que le point."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Verbe « dire » au présent « nous » :",
+              "options": [
+                "nous disons",
+                "nous dire",
+                "nous dites",
+                "nous dirons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nous disons."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Antonyme de « grand » :",
+              "options": ["petit", "gros", "long", "haut"],
+              "correctAnswers": [0],
+              "explanation": "Grand / petit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Poème en vers libres :",
+              "options": [
+                "vers sans rime obligatoire",
+                "prose sans verbes",
+                "liste de courses",
+                "contrat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de rime imposée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Sa » dans « sa voiture » :",
+              "options": [
+                "déterminant possessif",
+                "verbe",
+                "préposition",
+                "nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possession (il/elle)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Marqueurs du passé dans un récit :",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Marqueurs du passé dans un récit :",
+              "options": ["autrefois", "demain", "hier", "bientôt au futur"],
+              "correctAnswers": [0, 2],
+              "explanation": "Autrefois et hier situent le passé. Demain et bientôt orientent vers l'avenir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Les » dans « les enfants » :",
+              "options": [
+                "article défini pluriel",
+                "verbe",
+                "adverbe",
+                "interjection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Article défini pluriel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Texte : « Tortue et lièvre courent. » Personnages :",
+              "options": [
+                "animaux d'une fable possible",
+                "planètes",
+                "villes",
+                "sigles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Référence au récit classique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Futur « ils (partir) » :",
+              "options": [
+                "ils partiront",
+                "ils partent",
+                "ils partaient",
+                "ils sont partis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils partiront."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Nature de « bon » dans « un bon repas » :",
+              "options": [
+                "adjectif qualificatif",
+                "adverbe",
+                "verbe",
+                "préposition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualifie repas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Point d'interrogation termine :",
+              "options": [
+                "une question",
+                "toute déclaration",
+                "un dialogue sans réplique",
+                "un titre seul toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase interrogative."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Imparfait « il (avoir) » :",
+              "options": ["il avait", "il a", "il aura", "il eu"],
+              "correctAnswers": [0],
+              "explanation": "Il avait."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Champ lexical de l'école :",
+              "options": [
+                "cours, professeur, classe",
+                "vague, marée, port",
+                "neige, ski, piste",
+                "four, recette, gâteau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mots liés à l'école."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Me » dans « Il me regarde » :",
+              "options": ["pronom complément", "article", "conjonction", "nom"],
+              "correctAnswers": [0],
+              "explanation": "Pronom personnel COI ou COD."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Conte : rôle de la fée parfois :",
+              "options": [
+                "aider ou punir avec magie",
+                "rédiger la loi",
+                "vendre des billets",
+                "mesurer le vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Personnage surnaturel."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Verbes du 1er groupe :",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Verbes du 1er groupe :",
+              "options": ["chanter", "finir", "marcher", "prendre"],
+              "correctAnswers": [0, 2],
+              "explanation": "Chanter et marcher en -er. Finir est 2e groupe, prendre 3e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Lecture : « La pluie tombe. Le vent souffle. » Atmosphère :",
+              "options": [
+                "temps agité ou mélancolique possible",
+                "recette de cuisine",
+                "horaire",
+                "facture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Description météo dans un récit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ou » dans « thé ou café » :",
+              "options": ["conjonction", "préposition", "article", "verbe"],
+              "correctAnswers": [0],
+              "explanation": "Choix alternatif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Passé composé avec être « elle (partir) » :",
+              "options": [
+                "elle est partie",
+                "elle a partie",
+                "elle part",
+                "elle partira"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partir avec être, accord féminin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Synonyme de « rapidement » :",
+              "options": ["vite", "lentement", "demain", "hier"],
+              "correctAnswers": [0],
+              "explanation": "Vite ≈ rapidement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Figure « il pleut des cordes » suggère :",
+              "options": [
+                "forte pluie (expression)",
+                "cords musicaux",
+                "corde à sauter seule",
+                "recette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression imagée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Tout » invariable devant nom masculin singulier :",
+              "options": [
+                "tout le monde",
+                "toute le monde",
+                "touts",
+                "toutes le"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout le monde (locution)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Présent « je (être) » :",
+              "options": ["je suis", "je es", "je serai", "j'étais"],
+              "correctAnswers": [0],
+              "explanation": "Je suis."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dénouement d'un récit :",
+              "options": [
+                "résolution de l'intrigue",
+                "première phrase",
+                "liste des personnages seule",
+                "couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fin qui répond aux problèmes posés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Aux » dans « aux enfants » vient de :",
+              "options": ["à + les", "de + les", "un + les", "le + le"],
+              "correctAnswers": [0],
+              "explanation": "Contraction à les → aux."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Genres narratifs ou poétiques en 6e :",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Genres narratifs ou poétiques en 6e :",
+              "options": ["conte", "fable", "notice fiscale", "poésie"],
+              "correctAnswers": [0, 1],
+              "explanation": "Conte et fable ; poésie aussi mais deux réponses : conte et fable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Texte : « Le héros trébuchait. Il avait peur. » Temps :",
+              "options": [
+                "imparfait puis passé composé ou mixte passé",
+                "futur seul",
+                "présent seul",
+                "infinitif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trébuchait = imparfait ; avait = imparfait aussi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Moins » dans « moins grand » :",
+              "options": ["adverbe de comparaison", "nom", "verbe", "article"],
+              "correctAnswers": [0],
+              "explanation": "Degré inférieur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Orthographe : « ces » (démonstratif) / « ses » (possessif) :",
+              "options": [
+                "« Ces livres sont à Paul » → ces",
+                "« Ses livres » → ces toujours",
+                "aucune différence",
+                "ses = pluriel de ce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces = démonstratif ; ses = possession."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "COD dans « Elle mange une pomme » :",
+              "options": ["une pomme", "Elle", "mange", "une"],
+              "correctAnswers": [0],
+              "explanation": "Mange quoi ? une pomme."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Poésie : vers et strophe, la strophe c'est :",
+              "options": [
+                "ensemble de vers",
+                "un seul mot",
+                "un chapitre de roman",
+                "une loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Groupe de vers."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Impératif « (nous) (partir) » :",
+              "options": ["partons", "partez", "partir", "partions"],
+              "correctAnswers": [0],
+              "explanation": "Partons !"
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Puis » dans un récit enchaîne :",
+              "options": [
+                "les événements",
+                "les chapitres d'un dictionnaire",
+                "les pages blanches",
+                "les sigles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur d'enchaînement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Féminin de « ami » :",
+              "options": ["amie", "amée", "amiesse", "amit"],
+              "correctAnswers": [0],
+              "explanation": "Ami → amie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Relire son texte permet de :",
+              "options": [
+                "corriger fautes et améliorer clarté",
+                "effacer le sens",
+                "changer l'auteur",
+                "supprimer le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relecture = correction."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Pronoms sujets :",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pronoms sujets :",
+              "options": ["je", "moi seul complément", "tu", "chez"],
+              "correctAnswers": [0, 2],
+              "explanation": "Je et tu sont sujets. Moi souvent complément ; chez préposition."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Texte : « La cigale chante. La fourmi travaille. » Thème possible :",
+              "options": [
+                "fable sur le travail et l'été",
+                "mode d'emploi",
+                "horaire",
+                "ticket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évocation de La Fontaine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pluriel de « jeu » :",
+              "options": ["jeux", "jeus", "jeues", "jeu"],
+              "correctAnswers": [0],
+              "explanation": "Jeu → jeux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Bientôt » est :",
+              "options": ["adverbe de temps", "nom", "verbe", "article"],
+              "correctAnswers": [0],
+              "explanation": "Indique un moment proche."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Passé composé « nous (être) » :",
+              "options": [
+                "nous avons été",
+                "nous sommes",
+                "nous étions",
+                "nous serons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nous avons été."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Conte : ogre est souvent :",
+              "options": [
+                "personnage effrayant",
+                "professeur de maths",
+                "facture",
+                "index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Antagoniste type."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Elle » féminin singulier remplace :",
+              "options": [
+                "un nom féminin singulier",
+                "toujours un masculin",
+                "un verbe",
+                "une préposition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord en genre et nombre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Présent « vous (avoir) » :",
+              "options": [
+                "vous avez",
+                "vous avons",
+                "vous avezs",
+                "vous aviez"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vous avez."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Paragraphe en prose :",
+              "options": [
+                "bloc de phrases, pas de vers obligatoires",
+                "12 syllabes par ligne",
+                "rime obligatoire",
+                "morale en fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prose ≠ vers."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Dans » + « le » donne :",
+              "options": ["dans le", "du", "des", "au"],
+              "correctAnswers": [0],
+              "explanation": "Pas de contraction pour dans + le."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Classes de mots étudiées en 6e :",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Classes de mots étudiées en 6e :",
+              "options": ["nom", "verbe", "nombre décimal seul", "adjectif"],
+              "correctAnswers": [0, 1],
+              "explanation": "Nom et verbe sont centrales ; adjectif aussi — ici nom et verbe comme deux réponses."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bilan lecture : comprendre un texte, c'est :",
+              "options": [
+                "saisir sens et informations",
+                "recopier sans lire",
+                "ignorer le titre",
+                "supprimer les verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compréhension = sens global et détails."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Texte : « Enfin, le prince triompha. » « Enfin » marque :",
+              "options": [
+                "arrivée du dénouement",
+                "début du conte",
+                "une question",
+                "une liste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur de conclusion."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Avant » dans « avant la nuit » :",
+              "options": [
+                "préposition ou adverbe de temps",
+                "verbe",
+                "article",
+                "conjonction seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère temporel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Accord : « des fleurs (blanc) » :",
+              "options": ["blanches", "blanc", "blancs", "blancse"],
+              "correctAnswers": [0],
+              "explanation": "Féminin pluriel : blanches."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Fable vs conte : la fable a souvent :",
+              "options": [
+                "une morale explicite",
+                "800 chapitres",
+                "un mode d'emploi",
+                "des horaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Morale en fin de fable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Présent « ils (aller) » :",
+              "options": ["ils vont", "ils vonts", "ils allons", "ils iront"],
+              "correctAnswers": [0],
+              "explanation": "Ils vont."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Écrire une description, c'est :",
+              "options": [
+                "faire voir personnages ou lieux",
+                "lister des sigles",
+                "effacer le récit",
+                "supprimer les adjectifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Description = portrait spatial ou caractère."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Poésie : rythme, c'est :",
+              "options": [
+                "musicalité du texte",
+                "nombre de pages",
+                "couleur de couverture",
+                "ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alternance syllabes, accents."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif du chapitre « Bilan de français » :",
+              "options": [
+                "réviser grammaire, lecture et écriture de 6e",
+                "abandonner l'orthographe",
+                "ne plus lire",
+                "ignorer les genres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse des acquis de l'année."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

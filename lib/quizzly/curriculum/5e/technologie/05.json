@@ -1,0 +1,2493 @@
+{
+  "id": "5e-technologie-05",
+  "year": "5e",
+  "subject": "technologie",
+  "title": "Matériaux et procédés",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Choix d'un matériau",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels matériaux sont souvent utilisés pour fabriquer une gourde réutilisable ?",
+              "options": ["Plastique", "Papier journal", "Métal", "Terre crue"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi choisit-on parfois l'aluminium pour une boîte à lunch ?",
+              "options": [
+                "Il est léger et résistant",
+                "Il fond facilement au soleil",
+                "Il laisse passer l'eau",
+                "Il est toujours transparent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le bois est un matériau adapté pour une étagère murale car il est…",
+              "options": [
+                "Solide et facile à travailler",
+                "Toujours étanche comme une bouteille",
+                "Plus léger que l'air",
+                "Impossible à percer"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel matériau convient le mieux pour une fenêtre laissant entrer la lumière ?",
+              "options": ["Verre", "Béton", "Carton épais", "Tissu opaque"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "On préfère le plastique pour un boîtier de télécommande parce qu'il…",
+              "options": [
+                "Est léger et isolant l'électricité",
+                "Rouille au contact de l'eau",
+                "Est aussi dur que le diamant",
+                "Devient liquide à température ambiante"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour protéger un livre de la pluie, quel matériau d'enveloppe est le plus adapté ?",
+              "options": [
+                "Plastique étanche",
+                "Papier absorbant",
+                "Tissu non traité",
+                "Bois brut"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le métal est choisi pour une clé de vélo surtout parce qu'il est…",
+              "options": [
+                "Résistant à la torsion",
+                "Très poreux",
+                "Transparent",
+                "Facilement déchirable"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comparer plusieurs matériaux avant de fabriquer un objet, c'est…",
+              "options": [
+                "Vérifier leurs propriétés et leur usage",
+                "Choisir au hasard",
+                "Ignorer le poids",
+                "Ne regarder que la couleur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un objet doit flotter : on privilégie un matériau…",
+              "options": [
+                "Léger et peu dense",
+                "Très lourd",
+                "Plein de trous d'eau",
+                "Uniquement en verre épais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le verre est peu adapté pour un ballon de foot car il…",
+              "options": [
+                "Peut se casser et est lourd",
+                "Est trop souple",
+                "Absorbe toute l'eau",
+                "Ne laisse jamais passer la lumière"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés recherche-t-on pour la coque d'un casque de vélo ?",
+              "options": [
+                "Légèreté",
+                "Transparence totale",
+                "Bonne résistance aux chocs",
+                "Facilité à se dissoudre dans l'eau"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le carton est choisi pour un emballage de céréales car il est…",
+              "options": [
+                "Léger et recyclable",
+                "Étanche comme une bouteille",
+                "Plus solide que l'acier",
+                "Toujours transparent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour une poignée de casserole qui reste froide, on utilise souvent…",
+              "options": [
+                "Plastique ou bois",
+                "Métal conducteur seul",
+                "Verre fin",
+                "Papier humide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un matériau « étanche » signifie qu'il…",
+              "options": [
+                "Empêche l'eau de traverser",
+                "Laisse toujours passer l'air",
+                "Change de couleur avec l'eau",
+                "Devient liquide au contact de l'eau"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le bois traité pour l'extérieur sert à…",
+              "options": [
+                "Résister un peu mieux à l'humidité",
+                "Devenir invisible",
+                "Remplacer le verre",
+                "Fondre sous la pluie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour une règle graduée, le plastique rigide est pratique car il…",
+              "options": [
+                "Ne se plie pas facilement",
+                "Absorbe l'encre comme une éponge",
+                "Est toujours magnétique",
+                "Se casse au moindre contact"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Choisir un matériau « solide » pour une chaise, c'est s'assurer qu'il…",
+              "options": [
+                "Supporte le poids sans se casser vite",
+                "Flotte sur l'eau uniquement",
+                "Ne peut jamais être scié",
+                "Reste toujours froid"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'inox est un métal utilisé pour des couverts car il…",
+              "options": [
+                "Résiste bien à la rouille",
+                "Se dissout dans le jus de fruit",
+                "Est plus léger que le papier",
+                "Devient mou au réfrigérateur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un objet de décoration en verre coloré est choisi surtout pour…",
+              "options": [
+                "Laisser passer la lumière et la couleur",
+                "Être incassable",
+                "Flotter sans aide",
+                "Conduire l'électricité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avant de choisir un matériau, on peut lister…",
+              "options": [
+                "Les contraintes de l'objet à fabriquer",
+                "Uniquement la mode du moment",
+                "Seulement le prix le plus bas sans réfléchir",
+                "Rien du tout"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour une bouteille d'eau de sport, quels critères comptent souvent ?",
+              "options": [
+                "Légèreté",
+                "Étanchéité",
+                "Être comestible comme un gâteau",
+                "Résistance aux chocs modérés"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le métal fer rouille facilement ; on peut alors préférer…",
+              "options": [
+                "Un métal protégé ou de l'inox",
+                "Du papier mouillé",
+                "Du sable sec",
+                "De la ouate"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un jouet pour jeune enfant évite souvent le verre car…",
+              "options": [
+                "Il peut se briser en morceaux tranchants",
+                "Il est toujours trop lourd pour flotter",
+                "Il ne peut pas être coloré",
+                "Il fond à 20 °C"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le plastique souple convient à un étui de téléphone car il…",
+              "options": [
+                "Absorbe un peu les chocs",
+                "Est rigide comme le béton",
+                "Laisse passer l'eau librement",
+                "Disparaît au soleil en une heure"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour une planche à découper en cuisine, le bois ou le plastique dur est choisi car…",
+              "options": [
+                "La surface résiste aux coups de couteau",
+                "Le matériau doit être transparent",
+                "Il doit rouiller",
+                "Il doit fondre au contact des légumes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un matériau « léger » est intéressant pour…",
+              "options": [
+                "Un sac à dos qu'on porte longtemps",
+                "Les fondations d'un immeuble",
+                "Un marteau de forge",
+                "Une enclume"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le verre est utilisé pour un miroir car on y dépose…",
+              "options": [
+                "Une couche réfléchissante derrière le verre",
+                "De l'eau à l'intérieur",
+                "Du bois collé au milieu",
+                "Du sable pour le lest"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comparer le bois et le métal pour un pied de table, on note que le métal est souvent…",
+              "options": [
+                "Plus dense et plus lourd à volume égal",
+                "Toujours plus mou que le bois",
+                "Impossible à peindre",
+                "Transparent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un emballage alimentaire doit souvent être…",
+              "options": [
+                "Propre et adapté au contact des aliments",
+                "Plein de trous",
+                "Fait uniquement de verre pilé",
+                "Toujours en béton"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le critère « recyclable » aide à choisir un matériau pour…",
+              "options": [
+                "Limiter les déchets après usage",
+                "Rendre l'objet invisible",
+                "Empêcher toute réparation",
+                "Augmenter la casse"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels matériaux peuvent servir à fabriquer un cadre photo mural ?",
+              "options": ["Bois", "Métal fin", "Gaz invisible", "Plastique"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour une rampe de skate en extérieur, on privilégie un matériau…",
+              "options": [
+                "Résistant à l'usure et aux intempéries",
+                "Qui se déchire comme du papier",
+                "Qui fond sous la pluie",
+                "Toujours en ouate"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le plastique transparent type PET est choisi pour une bouteille car…",
+              "options": [
+                "On voit le liquide à l'intérieur",
+                "Il est opaque comme le métal",
+                "Il laisse toujours passer l'eau",
+                "Il se casse comme le verre au moindre choc"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un couvercle en métal pour un bocal est choisi car le métal peut…",
+              "options": [
+                "Former un bord qui se visse",
+                "Devenir liquide à température ambiante",
+                "Laisser passer l'air partout",
+                "Remplacer le verre de la vitrine"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le bois massif pour un tabouret convient car il…",
+              "options": [
+                "Supporte le poids d'une personne assise",
+                "Flotte sans jamais couler",
+                "Est aussi souple que du caoutchouc mou",
+                "Ne peut pas être poncé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour éviter les coupures, on évite le verre non traité pour…",
+              "options": [
+                "Une protection d'écran de téléphone",
+                "Une vitre de fenêtre",
+                "Un bol de cuisine épais",
+                "Une loupe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un matériau conducteur comme le cuivre est utile pour…",
+              "options": [
+                "Des fils électriques",
+                "Un flotteur de piscine",
+                "Un coussin moelleux",
+                "Un pare-soleil en tissu"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Choisir du plastique plutôt que du verre pour un gobelet de cantine, c'est surtout pour…",
+              "options": [
+                "Limiter le risque de casse",
+                "Rendre le gobelet invisible",
+                "Empêcher de boire",
+                "Augmenter le poids"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La propriété « isolant thermique » du bois explique son usage pour…",
+              "options": [
+                "Certaines menuiseries et outils sans brûlure",
+                "Fil électrique nu",
+                "Radiateur en métal",
+                "Clé en cuivre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un tableau de contraintes aide à…",
+              "options": [
+                "Classer les matériaux selon les besoins du projet",
+                "Peindre sans préparation",
+                "Oublier la sécurité",
+                "Choisir au hasard"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour une boîte à outils scolaire, quels matériaux sont réalistes ?",
+              "options": [
+                "Plastique rigide",
+                "Plume de canard seule",
+                "Métal pour certaines charnières",
+                "Brouillard"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le verre trempé pour une tablette protégée est choisi car il…",
+              "options": [
+                "Résiste mieux aux rayures qu'un verre ordinaire fin",
+                "Est mou comme du gel",
+                "Absorbe l'électricité",
+                "Flotte sur l'huile"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un filet en plastique pour un ballon est préféré au métal car…",
+              "options": [
+                "Il est souple et léger",
+                "Il rouille au soleil",
+                "Il est opaque comme le plomb",
+                "Il fond à 10 °C"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour une porte de placard, le panneau en bois aggloméré est utilisé car…",
+              "options": [
+                "Il est économique et suffisamment rigide",
+                "Il est liquide à la sortie de l'usine",
+                "Il laisse toujours passer la lumière",
+                "Il ne se perce jamais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un objet exposé à la pluie demande un matériau…",
+              "options": [
+                "Qui ne se dégrade pas trop vite avec l'eau",
+                "Qui se dissolve volontairement",
+                "Toujours en sucre",
+                "Toujours en papier non protégé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le métal est magnétique pour le fer ; cela sert par exemple pour…",
+              "options": [
+                "Une fermeture magnétique de sac",
+                "Une vitre transparente",
+                "Un verre à boire",
+                "Une éponge"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le plastique PEHD est souvent choisi pour des bouteilles car il est…",
+              "options": [
+                "Léger et résistant aux chocs",
+                "Cassant comme la porcelaine fine",
+                "Toujours poreux",
+                "Radioactif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour une règle en classe, éviter le verre, c'est penser à…",
+              "options": [
+                "La sécurité en cas de chute",
+                "La couleur de la craie",
+                "Le bruit du radiateur",
+                "La vitesse du vent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un matériau « opaque » ne laisse pas passer…",
+              "options": [
+                "La lumière",
+                "Le son uniquement",
+                "La gravité",
+                "Le temps"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tester un échantillon de matériau en atelier peut montrer…",
+              "options": [
+                "S'il se plie, casse ou flotte",
+                "La météo de demain",
+                "Le nombre d'élèves en classe",
+                "L'âge du professeur"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels critères expliquent le choix du bois pour une maquette de pont ?",
+              "options": [
+                "Facile à scier en classe",
+                "Doit être liquide",
+                "Assez rigide pour tenir debout",
+                "Doit briller comme un miroir obligatoirement"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une gomme en caoutchouc est choisie car le matériau…",
+              "options": [
+                "Efface le graphite sans rayer fortement la feuille",
+                "Coupe le papier",
+                "Conduit le courant",
+                "Est dur comme l'acier"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le métal pour une vis est adapté car il…",
+              "options": [
+                "Peut être fileté et rester solide",
+                "Se casse comme du verre fin",
+                "Flotte toujours",
+                "Devient pâte à modeler"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour une lampe de bureau, le plastique de l'abat-jour est choisi car il…",
+              "options": [
+                "Diffuse la lumière et isole les doigts de la chaleur",
+                "Fond à 30 °C",
+                "Est toujours métallique",
+                "Bloque toute lumière"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un pot de fleurs en terre cuite laisse un peu passer l'eau ; on le choisit car…",
+              "options": [
+                "Les racines respirent mieux qu'avec un plastique totalement étanche",
+                "Il est en verre",
+                "Il flotte sur l'eau salée",
+                "Il est magnétique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le verre pour une ampoule protège la fibre car il…",
+              "options": [
+                "Isole de l'air et supporte la chaleur modérée",
+                "Est mou",
+                "Absorbe toute l'électricité",
+                "Disparaît la nuit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Choisir un matériau local ou recyclable répond à une contrainte…",
+              "options": [
+                "Environnementale",
+                "De couleur uniquement",
+                "De musique",
+                "De vitesse de course"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un revêtement anti-dérapant sur un escalier ajoute…",
+              "options": [
+                "Une propriété de sécurité au sol",
+                "De la transparence",
+                "De la rouille",
+                "De l'eau dans le métal"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le plastique ABS pour des pièces de LEGO est choisi car il est…",
+              "options": [
+                "Rigide et tient bien les formes",
+                "Liquide à la fabrication du jouet",
+                "Toujours transparent",
+                "Soluble dans l'eau du bain"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si l'objet doit être lavé souvent, on évite…",
+              "options": [
+                "Un matériau qui se déforme ou pourrit avec l'eau",
+                "L'inox pour une cuillère",
+                "Le plastique alimentaire",
+                "Le verre pour un bol"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour une coque de stylo, quels matériaux sont courants ?",
+              "options": [
+                "Plastique",
+                "Plume seule sans support",
+                "Métal pour certains modèles",
+                "Vapeur d'eau"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le bois pour une cuillère à mélanger est acceptable car…",
+              "options": [
+                "Il ne raye pas les casseroles en métal",
+                "Il fond dans la soupe chaude",
+                "Il est toujours magnétique",
+                "Il devient verre au four"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un matériau « fragile » comme la porcelaine fine convient mieux pour…",
+              "options": [
+                "Une tasse à thé utilisée avec précaution",
+                "Un marteau de chantier",
+                "Un casque de chantier",
+                "Une enclume"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le métal aluminium pour une canette est choisi car il est…",
+              "options": [
+                "Léger et recyclable",
+                "Plus lourd que le plomb",
+                "Toujours rouillé",
+                "Transparent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour une montre étanche, le joint en caoutchouc ou silicone sert à…",
+              "options": [
+                "Bloquer l'entrée d'eau au raccord",
+                "Rendre la montre magnétique",
+                "Casser le verre",
+                "Alourdir le bracelet"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le verre borosilicate pour une casserole en verre supporte mieux…",
+              "options": [
+                "Les chocs thermiques modérés",
+                "Les coups de marteau",
+                "La flexion comme du caoutchouc",
+                "La dissolution dans l'eau froide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un objet doit être transparent : on écarte le…",
+              "options": [
+                "Bois massif opaque",
+                "Verre clair",
+                "Plastique transparent",
+                "Acrylique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le choix d'un matériau dépend aussi du…",
+              "options": [
+                "Coût et de la facilité à le trouver",
+                "Signe astrologique",
+                "Numéro de maillot",
+                "Jour de la semaine uniquement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le plastique mou pour une poignée de tournevis améliore…",
+              "options": [
+                "La prise en main",
+                "La conduction électrique du manche",
+                "La transparence du manche",
+                "La rouille"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Associer « matériau » et « usage », c'est…",
+              "options": [
+                "Relier propriétés et fonction de l'objet",
+                "Ignorer la sécurité",
+                "Ne regarder que la forme",
+                "Choisir toujours le plus lourd"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour une serre scolaire miniature, quels matériaux conviennent pour la structure ?",
+              "options": [
+                "Bois",
+                "Verre ou plastique transparent pour la lumière",
+                "Béton liquide seul",
+                "Métal pour certaines armatures"
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le métal pour une grille de four protège car il…",
+              "options": [
+                "Supporte la chaleur sans brûler comme du bois sec",
+                "Fond à 50 °C",
+                "Devient papier",
+                "Absorbe toute la lumière"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un sac en tissu avec enduction plastique est choisi pour être…",
+              "options": [
+                "Plus résistant à la pluie qu'un tissu nu",
+                "Toujours rigide comme une planche",
+                "Magnétique",
+                "Invisible"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le bois contreplaqué pour un plateau de maquette est pratique car…",
+              "options": [
+                "Il est plan et se découpe facilement",
+                "Il est liquide",
+                "Il brille comme un miroir sans traitement",
+                "Il flotte dans l'air"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour un carnet, le papier est choisi car il…",
+              "options": [
+                "Accepte l'écriture et se plie",
+                "Est étanche comme une bouteille",
+                "Est aussi dur que l'acier",
+                "Conduit le courant"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un matériau « souple » comme le caoutchouc convient pour…",
+              "options": [
+                "Une semelle de chaussure",
+                "Une vitre de fenêtre",
+                "Un couteau tranchant",
+                "Une enclume"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le plastique pour un boîtier de prise murale isole car il…",
+              "options": [
+                "N'est pas conducteur comme le cuivre nu",
+                "Est toujours métallique",
+                "Attire la foudre volontairement",
+                "Fond au toucher"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Choisir du verre pour une loupe utilise sa propriété de…",
+              "options": [
+                "Réfraction de la lumière",
+                "Flexibilité extrême",
+                "Flottabilité dans le mercure",
+                "Magnétisme"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un objet doit résister aux UV dehors : on évite un plastique qui…",
+              "options": [
+                "Jaunit et se fragilise au soleil",
+                "Est prévu pour l'extérieur",
+                "Est peint",
+                "Est fixé avec des vis"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La fiche matériau indique souvent…",
+              "options": [
+                "Masse volumique, couleur, origine",
+                "Le menu de la cantine",
+                "Les notes de sport",
+                "L'emploi du temps"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels matériaux peuvent entrer dans la fabrication d'une règle double décimètre ?",
+              "options": [
+                "Plastique",
+                "Bois",
+                "Nuage",
+                "Métal pour un modèle pliable"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour un pare-boue de vélo, on choisit souvent un plastique souple car il…",
+              "options": [
+                "Se fixe et résiste aux projections d'eau",
+                "Rouille",
+                "Est transparent comme une vitre",
+                "Fond au contact de la boue"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le métal pour une chainette de clés est choisi car il…",
+              "options": [
+                "Ne se casse pas facilement en usage normal",
+                "Se déchire comme du papier",
+                "Absorbe l'eau",
+                "Devient liquide au pocket"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un matériau « alimentaire » pour une gourde signifie qu'il…",
+              "options": [
+                "Ne libère pas de substances dangereuses dans la boisson",
+                "Change le goût en poison",
+                "Doit être en béton",
+                "Doit être opaque obligatoirement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le bois pour une mallette à dessin est agréable car il…",
+              "options": [
+                "Est rigide et peut être verni",
+                "Est mou comme une éponge",
+                "Conduit l'électricité",
+                "Flotte dans le vide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le verre pour une bouteille de parfum est choisi aussi pour…",
+              "options": [
+                "Ne pas laisser passer les odeurs facilement",
+                "Être incassable",
+                "Flotter sur l'essence",
+                "Rouiller"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comparer la masse de deux plaques de même taille aide à juger si un matériau est…",
+              "options": [
+                "Plus ou moins dense",
+                "Plus ou moins magique",
+                "Plus ou moins musical",
+                "Plus ou moins ancien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un objet scolaire doit respecter des normes de sécurité : on évite alors…",
+              "options": [
+                "Des bords métalliques tranchants non protégés",
+                "Des coins arrondis en plastique",
+                "Des peintures sans plomb",
+                "Des vis bien serrées"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le plastique expansé (polystyrène) pour un casque d'emballage est choisi car il…",
+              "options": [
+                "Amortit les chocs",
+                "Est dur comme le diamant",
+                "Est toujours étanche longtemps",
+                "Conduit le courant"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Justifier le choix d'un matériau, c'est expliquer…",
+              "options": [
+                "Pourquoi ses propriétés conviennent au besoin",
+                "Uniquement la marque",
+                "La couleur préférée du voisin",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour un porte-manteau mural en classe, quels matériaux sont adaptés ?",
+              "options": [
+                "Bois ou panneau aggloméré",
+                "Métal pour les crochets",
+                "Glace fondue",
+                "Plastique pour certains crochets"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le métal peint pour un radiateur évite surtout…",
+              "options": [
+                "La rouille directe sur l'acier",
+                "La chaleur",
+                "Le passage de l'eau chaude",
+                "La couleur blanche"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un matériau biodégradable comme le papier convient pour…",
+              "options": [
+                "Un emballage jetable à courte durée",
+                "Une coque de téléphone durable",
+                "Une lame de scie",
+                "Un châssis de vélo"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le verre pour une vitrine de musée protège les œuvres car il est…",
+              "options": [
+                "Transparent et assez dur",
+                "Mou",
+                "Toujours poreux",
+                "Magnétique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Choisir du bois certifié peut répondre à un critère…",
+              "options": [
+                "De gestion durable des forêts",
+                "De vitesse de lumière",
+                "De couleur du ciel",
+                "De nombre de pages"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le plastique pour un seau de plage est choisi car il est…",
+              "options": [
+                "Léger, étanche et coloré",
+                "Toujours en verre",
+                "Toujours en fer rouillé",
+                "Liquide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un matériau qui « conducteur » de chaleur comme l'aluminium convient pour…",
+              "options": [
+                "Une poêle",
+                "Un manche isolant",
+                "Un coussin",
+                "Une housse en mousse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour un prototype rapide, le carton est intéressant car il…",
+              "options": [
+                "Se découpe et se plie facilement",
+                "Coûte comme l'or",
+                "Est aussi rigide que l'acier",
+                "Ne se colle jamais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Écarter un matériau trop lourd sert quand l'objet doit être…",
+              "options": [
+                "Porté par une personne",
+                "Enterré sous terre",
+                "Fixé au sol définitivement",
+                "Immobile sur un quai"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En technologie, choisir un matériau revient à faire un compromis entre…",
+              "options": [
+                "Propriétés, coût, esthétique et impact",
+                "Couleur et musique seulement",
+                "Hasard et météo",
+                "Rien et tout"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Fabrication",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles étapes simples peuvent servir à fabriquer une maquette en bois ?",
+              "options": [
+                "Tracer le contour",
+                "Couper avec une scie adaptée",
+                "Fondre le bois comme du plomb en classe",
+                "Poncer les bords"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Avant de percer une pièce en plastique, on marque souvent…",
+              "options": [
+                "Le centre du trou avec un point",
+                "Rien du tout",
+                "La météo",
+                "Le prénom de l'outil"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Assembler deux morceaux de bois avec de la colle, c'est une étape de…",
+              "options": [
+                "Assemblage",
+                "Fusion en haut four industriel",
+                "Galvanisation",
+                "Tissage"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour couper une planche de bois en sécurité, on utilise…",
+              "options": [
+                "Un support stable et des protections",
+                "Les mains seules sur la lame",
+                "Les yeux fermés",
+                "Un marteau sur la scie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Plier une feuille de métal fin en atelier s'appelle souvent…",
+              "options": [
+                "Pliage",
+                "Coupe laser industriel",
+                "Filage sur tour",
+                "Fonderie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Découper du plastique avec un cutter demande…",
+              "options": [
+                "Une règle comme guide et une planche de protection",
+                "De couper vers soi",
+                "De tenir le cutter par la lame",
+                "D'appuyer sans support"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Perçage signifie…",
+              "options": [
+                "Faire un trou avec une mèche",
+                "Peindre en bleu",
+                "Souder deux pièces",
+                "Tisser du coton"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Après une coupe en bois, poncer sert à…",
+              "options": [
+                "Adoucir les arêtes",
+                "Rendre le bois liquide",
+                "Rouiller le métal",
+                "Casser la pièce"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un plan ou un croquis avant fabrication aide à…",
+              "options": [
+                "Repérer les dimensions et les pièces",
+                "Remplacer les mesures",
+                "Ignorer les outils",
+                "Supprimer la sécurité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Visser une charnière sur une boîte en bois est une opération d'…",
+              "options": [
+                "Assemblage mécanique",
+                "Moulage sous pression",
+                "Extrusion de verre",
+                "Forge à 1200 °C"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles actions préparent une pièce en plastique avant assemblage ?",
+              "options": [
+                "La découper à la taille",
+                "La laver si nécessaire pour enlever la poussière",
+                "La transformer en gaz sans outil",
+                "Chamfreiner ou poncer un bord si besoin"
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La découpe au scie‑cloche convient surtout pour…",
+              "options": [
+                "Un trou circulaire dans une plaque",
+                "Couper une planche en deux dans la longueur",
+                "Tisser un tissu",
+                "Fondre le plastique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Coller du plastique avec une colle adaptée, c'est…",
+              "options": [
+                "Un assemblage collé",
+                "Une soudure électrique",
+                "Un moulage",
+                "Une galvanisation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mesurer avec une règle avant de couper permet d'…",
+              "options": [
+                "Éviter les pièces trop courtes",
+                "Rendre la scie plus tranchante",
+                "Changer la couleur du bois",
+                "Supprimer le besoin de sécurité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Plier une bande de plastique chauffée doucement en atelier encadré, c'est du…",
+              "options": [
+                "Thermoformage simple",
+                "Laminage de verre",
+                "Forge du fer",
+                "Tissage industriel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un gabarit en carton sert à…",
+              "options": [
+                "Reproduire plusieurs fois la même forme",
+                "Remplacer toute mesure",
+                "Couper sans outil",
+                "Souder l'aluminium"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Percer du métal fin demande parfois de…",
+              "options": [
+                "Fixer la pièce dans un étau",
+                "Tenir la mèche à la main sans support",
+                "Perçer sur genoux",
+                "Utiliser une éponge comme mèche"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Peindre une maquette en bois après ponçage, c'est une étape de…",
+              "options": ["Finition", "Coupe", "Fonderie", "Filage"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Riveter deux tôles fines assemble sans…",
+              "options": [
+                "Visser",
+                "Avoir un rivet adapté",
+                "Percer un trou",
+                "Utiliser un riveteuse ou outil équivalent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Contrôler une pièce fabriquée, c'est vérifier…",
+              "options": [
+                "Dimensions et défauts visibles",
+                "Le bruit du couloir",
+                "La couleur des chaussures",
+                "Le nombre de fenêtres de l'école"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour fabriquer un support en métal fin, quelles étapes sont réalistes en 5e ?",
+              "options": [
+                "Tracer et couper",
+                "Galvanoplastie industrielle complexe",
+                "Plier avec une presse plieuse manuelle",
+                "Coulée en fonderie lourde"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Découper du verre en classe est en général…",
+              "options": [
+                "Interdit ou réservé à un adulte avec matériel spécifique",
+                "Fait avec des ciseaux de papier",
+                "Fait à la main nue",
+                "Remplacé par du bois sans réfléchir"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Utiliser une scie à métaux sert à couper…",
+              "options": [
+                "Une barre ou une tôle fine",
+                "Un bloc de béton",
+                "De l'eau",
+                "Un nuage"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Limer une arête métallique après coupe permet de…",
+              "options": [
+                "Enlever les bavures tranchantes",
+                "Rouiller plus vite",
+                "Perforer le bois",
+                "Fondre le plastique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La découpe au ciseau à bois s'effectue sur…",
+              "options": [
+                "Du bois tendre avec maillet et sécurité",
+                "Du verre",
+                "De l'acier épais",
+                "De la lave"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Assembler avec des vis et écrous, c'est un assemblage…",
+              "options": [
+                "Démontable",
+                "Définitif par fusion",
+                "Impossible à ouvrir",
+                "Sans trou"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La phase « débit » en fabrication désigne…",
+              "options": [
+                "Obtenir les pièces à la bonne taille",
+                "Peindre la finition",
+                "Vendre le produit",
+                "Jeter les chutes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Marquer une ligne de coupe au crayon sur le bois, c'est…",
+              "options": ["Un tracé", "Un moulage", "Une trempe", "Un tissage"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Utiliser des lunettes de protection lors d'un perçage protège surtout…",
+              "options": [
+                "Les yeux des projections",
+                "Les oreilles du bruit uniquement",
+                "Les pieds",
+                "Le plafond"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une liste de pièces découpées s'appelle souvent…",
+              "options": [
+                "Une nomenclature ou débit des pièces",
+                "Un roman",
+                "Un bulletin météo",
+                "Un emploi du temps"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles finitions simples peut-on appliquer sur du bois en projet scolaire ?",
+              "options": [
+                "Vernis ou peinture",
+                "Ponçage",
+                "Galvanisation en bac industriel",
+                "Cire ou huile adaptée"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Couper du plastique avec une scie à métaux fine produit parfois…",
+              "options": [
+                "Des bords à limer ou poncer",
+                "De la lave",
+                "Du verre trempé",
+                "De la rouille sur le plastique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le pliage d'une boîte en tôle se fait après…",
+              "options": [
+                "Avoir tracé les lignes de pli",
+                "Avoir fondu la tôle",
+                "Avoir tissé la tôle",
+                "Avoir peint sans préparation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Coller deux pièces de bois bout à bout, on renforce parfois avec…",
+              "options": [
+                "Des vis ou des tourillons",
+                "De l'eau seule",
+                "Du sable",
+                "Rien si la colle est magique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Usiner signifie en général…",
+              "options": [
+                "Enlever de la matière pour obtenir une forme",
+                "Ajouter de l'eau dans le métal",
+                "Changer la gravité",
+                "Tisser du plastique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour percer du bois sans éclater le fond, on place parfois…",
+              "options": [
+                "Une planche de sacrifice dessous",
+                "Rien du tout",
+                "La main sous le trou",
+                "De la ouate seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Découper au laser en classe de 5e est…",
+              "options": [
+                "Possible seulement si l'établissement a l'équipement encadré",
+                "Obligatoire partout",
+                "Remplacé par des ciseaux à papier sur l'acier",
+                "Interdit sans aucune exception possible"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un assemblage par tenon‑mortaise en bois est un type de…",
+              "options": [
+                "Assemblage emboîté",
+                "Moulage sous vide",
+                "Extrusion",
+                "Galvanisation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Avant de peindre du plastique, on peut…",
+              "options": [
+                "Dégraisser et poncer légèrement",
+                "Le tremper dans l'huile",
+                "Le brûler",
+                "Ne jamais le toucher"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ranger l'atelier après fabrication, c'est…",
+              "options": [
+                "Une règle de sécurité et d'organisation",
+                "Inutile",
+                "Réservé au professeur seul",
+                "Interdit"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels outils manuels servent souvent au bois en technologie ?",
+              "options": [
+                "Scie égoïne ou scie japonaise",
+                "Marteau et ciseaux à bois",
+                "Four de fonderie lycée",
+                "Rabot ou ciseau à bois"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La découpe d'une plaque de plastique au scie‑sauteuse demande…",
+              "options": [
+                "Un guide et des EPI",
+                "De couper sans fixation",
+                "De tenir la lame à la main",
+                "D'ignorer la poussière"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Souder le plastique avec un fer à souder en atelier encadré crée…",
+              "options": [
+                "Une liaison fondue locale",
+                "Du verre",
+                "Du bois",
+                "De la rouille"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Emboîter deux pièces sans colle ni vis, c'est un assemblage…",
+              "options": [
+                "Par encastrement",
+                "Par fusion totale",
+                "Par galvanisation",
+                "Par filage sur tour"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La phase de finition sur une maquette peut inclure…",
+              "options": [
+                "Ponçage et peinture",
+                "Coupe brute sans contrôle",
+                "Fonderie",
+                "Trempe de l'acier"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tracer à l'équerre sert à obtenir…",
+              "options": [
+                "Un angle droit",
+                "Un cercle parfait sans compas",
+                "De la rouille",
+                "De la fonte"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Couper du métal avec une cisaille à tôle, c'est une opération de…",
+              "options": ["Cisaillement", "Perçage", "Tissage", "Moulage"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un prototype en carton avant la version finale permet de…",
+              "options": [
+                "Tester les dimensions",
+                "Remplacer tous les matériaux par du papier",
+                "Supprimer les mesures",
+                "Ignorer les contraintes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Vérifier l'équerrage d'une caisse, c'est contrôler…",
+              "options": [
+                "Que les angles sont droits",
+                "La couleur du vernis",
+                "Le menu du jour",
+                "La vitesse du vent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La notice de montage indique…",
+              "options": [
+                "L'ordre des étapes d'assemblage",
+                "Les résultats de sport",
+                "La météo",
+                "Les poèmes du trimestre"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour fabriquer un porte‑clés en métal fin, quelles étapes sont cohérentes ?",
+              "options": [
+                "Découper la forme",
+                "Perçer le trou de l'anneau",
+                "Fondre des tonnes de minerai en classe",
+                "Limer les bords"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La découpe au cutter dans du carton utilise une…",
+              "options": [
+                "Lame tranchante et une règle",
+                "Scie à métaux",
+                "Mèche de perceuse",
+                "Lime seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Plier du fil de fer avec une pince forme…",
+              "options": [
+                "Une boucle ou un crochet",
+                "Du verre",
+                "Du bois massif",
+                "De la lave"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Coller du papier sur une maquette, on utilise souvent…",
+              "options": [
+                "De la colle stick ou liquide",
+                "De l'huile moteur",
+                "Du sable sec",
+                "Rien si on souffle fort"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le perçage à la perceuse manuelle se fait en…",
+              "options": [
+                "Tournant la manivelle ou en appuyant régulièrement",
+                "Tapant avec un marteau sur la vis",
+                "Frottant la planche",
+                "Soufflant sur le bois"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une presse à vis serre une pièce pour…",
+              "options": [
+                "La maintenir pendant l'usinage",
+                "La faire flotter",
+                "La peindre",
+                "La faire fondre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Découper une forme complexe dans du plastique fin peut se faire avec…",
+              "options": [
+                "Une scie à chantourner ou une lame fine",
+                "Un marteau sur le plastique",
+                "De l'eau seule",
+                "Un fer à repasser sur la main"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le chanfrein sur une arête de bois, c'est…",
+              "options": [
+                "Un petit biseau",
+                "Un trou profond",
+                "Une peinture",
+                "Une soudure"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Assembler deux plaques de plastique par vis nécessite d'abord…",
+              "options": [
+                "Des trous alignés",
+                "De la fonte",
+                "Du verre fondu",
+                "Un métier à tisser"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La qualité en fabrication, c'est…",
+              "options": [
+                "Respecter le plan et limiter les défauts",
+                "Aller le plus vite sans contrôle",
+                "Ignorer les mesures",
+                "Jeter sans essayer"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles opérations préparent une tôle avant pliage ?",
+              "options": [
+                "Découpe au gabarit",
+                "Traçage des lignes de pli",
+                "Galvanisation complète en bac",
+                "Perçage des éventuels trous"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Utiliser une scie circulaire en atelier est…",
+              "options": [
+                "Réservé à un encadrement strict avec protections",
+                "Libre sans lunettes",
+                "Remplacé par un cutter sur le métal épais",
+                "Inutile pour le bois"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le moulage simple en plâtre pour une empreinte, c'est…",
+              "options": [
+                "Verser le plâtre liquide dans un moule",
+                "Couper l'acier au laser",
+                "Tisser du coton",
+                "Galvaniser une vis"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Poncer avec un grain fin après un grain gros sert à…",
+              "options": [
+                "Lisser davantage la surface",
+                "Rougir le métal",
+                "Perforer le verre",
+                "Couper la planche"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un assemblage cloué sur du bois utilise…",
+              "options": [
+                "Des clous adaptés et un marteau",
+                "De la soudure arc",
+                "De la fonte",
+                "Un tour CNC obligatoire"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La découpe au ciseaux de métal convient pour…",
+              "options": [
+                "Une tôle très fine",
+                "Un bloc de granit",
+                "Une poutre en béton",
+                "De l'eau"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Repérer le fil du bois avant de scier aide à…",
+              "options": [
+                "Limiter l'éclatement des fibres",
+                "Peindre plus vite",
+                "Rouiller le métal",
+                "Fondre le plastique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une étape de contrôle dimensionnel utilise…",
+              "options": [
+                "Règle, pied à coulisse ou gabarit",
+                "Uniquement la vue sans mesure",
+                "Le bruit du couloir",
+                "La couleur des murs"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Coller deux morceaux de plastique avec une soudure à chaud crée…",
+              "options": [
+                "Une zone fondue qui solidarise",
+                "Du verre trempé",
+                "Du papier",
+                "De la rouille"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La séquence logique de fabrication commence souvent par…",
+              "options": [
+                "Étudier le besoin et le croquis",
+                "Peindre sans débit",
+                "Visser sans percer",
+                "Jeter les chutes avant mesure"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles actions sécurisent une scie à main sur bois ?",
+              "options": [
+                "Serre‑joint ou étau",
+                "Lunettes si projections",
+                "Tenir la pièce dans l'air sans appui",
+                "Maintenir les doigts loin de la lame"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Découper un disque dans du polystyrène avec un fil chaud, c'est…",
+              "options": [
+                "Une découpe thermique simple",
+                "Une forge",
+                "Un tissage",
+                "Une galvanisation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Percer du plastique avec une mèche à bois peut…",
+              "options": [
+                "Accrocher ou fendre si mal choisi",
+                "Toujours être parfait sans effort",
+                "Créer du verre",
+                "Souder automatiquement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un tourillon en bois sert à…",
+              "options": [
+                "Aligner et renforcer un assemblage",
+                "Peindre sans préparation",
+                "Couper le métal",
+                "Fondre le plastique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La découpe au compas sur du carton trace…",
+              "options": [
+                "Un cercle",
+                "Un cube 3D sans outil",
+                "De la fonte",
+                "Un filetage"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plier une feuille de papier épais pour une maquette, c'est…",
+              "options": [
+                "Du pliage sec",
+                "De la soudure",
+                "De l'extrusion",
+                "De la trempe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Utiliser une lime sur de l'aluminium adoucit…",
+              "options": [
+                "Les arêtes coupantes",
+                "La couleur du ciel",
+                "Le son de la cloche",
+                "La gravité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La phase d'assemblage arrive en général…",
+              "options": [
+                "Après le débit des pièces",
+                "Avant toute mesure",
+                "Sans plan",
+                "Après la vente"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Marquer « face extérieure » sur une pièce évite…",
+              "options": [
+                "De percer ou poncer du mauvais côté",
+                "De coller",
+                "De mesurer",
+                "De ranger"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Recycler les chutes de bois en atelier, c'est…",
+              "options": [
+                "Réduire le gaspillage",
+                "Interdit",
+                "Dangereux sans raison",
+                "Inutile"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour assembler une boîte en bois, quelles méthodes sont fréquentes ?",
+              "options": [
+                "Colle + vis",
+                "Tenon simple",
+                "Fusion du bois en lave",
+                "Clous pour maquette solide"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La découpe à la scie à onglet sert surtout à…",
+              "options": [
+                "Couper des angles précis dans le bois",
+                "Tisser du fil",
+                "Fondre le plastique",
+                "Galvaniser une vis"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Utiliser un foret plus large que la vis permet…",
+              "options": [
+                "Que la vis passe sans fendre le bois",
+                "De couper la planche en deux",
+                "De peindre sans poncer",
+                "De souder le métal"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le plastique découpé au cutter se travaille mieux si la lame est…",
+              "options": [
+                "Sharp et changée quand elle accroche",
+                "Rouillée",
+                "Cassée volontairement",
+                "Absente"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une étape de préparation du support avant peinture est…",
+              "options": [
+                "Dépoussiérer",
+                "Verser de l'eau dans la peinture sans mélanger",
+                "Peindre sur graisse",
+                "Ignorer le ponçage"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le marquage au poinçon sur le métal aide à…",
+              "options": [
+                "Repercer au bon endroit",
+                "Peindre en spray",
+                "Couper sans scie",
+                "Tisser"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Couper du tube en plastique droit se fait bien avec…",
+              "options": [
+                "Une scie fine et un support",
+                "Des ciseaux à ongles",
+                "Un marteau seul",
+                "De la glue sans coupe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un gabarit de perçage aligne…",
+              "options": [
+                "Plusieurs trous identiques",
+                "Les nuages",
+                "Les notes de musique",
+                "Le vent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La finition au papier de verre humide sur bois verni peut…",
+              "options": [
+                "Polir légèrement",
+                "Créer de la rouille",
+                "Fondre le plastique",
+                "Couper l'acier"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Documenter les étapes de fabrication sert à…",
+              "options": [
+                "Reproduire ou améliorer le produit",
+                "Oublier le projet",
+                "Supprimer le plan",
+                "Ignorer les erreurs"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles étapes terminent souvent un projet en technologie ?",
+              "options": [
+                "Contrôle final",
+                "Finition (peinture, vernis)",
+                "Mise en service d'une fonderie lourde",
+                "Nettoyage de l'atelier"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Découper du verre en atelier scolaire se fait plutôt en…",
+              "options": [
+                "Utilisant une vitre déjà découpée par le fournisseur",
+                "Cassant à la main sans protection",
+                "Sciant avec une scie à bois",
+                "Fondant dans un creuset en classe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le pliage d'une bandelette de laiton fin avec une pince réalise…",
+              "options": [
+                "Un support ou une patte",
+                "Un moteur",
+                "Une vitre",
+                "Un tissu"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Coller avec un pistolet à colle chaude solidifie en…",
+              "options": [
+                "Refroidissant la colle",
+                "Galvanisant",
+                "Trempe de l'acier",
+                "Filage"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une erreur de mesure en débit se corrige mieux en…",
+              "options": [
+                "Recommençant la pièce ou l'ajustant tôt",
+                "Cachant avec de la peinture épaisse seule",
+                "Ignorant l'écart",
+                "Vissant de travers"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Usiner le bois au rabot enlève…",
+              "options": [
+                "Une fine couche pour planifier",
+                "Toute la planche d'un coup sans contrôle",
+                "La couleur du métal",
+                "L'eau de la piscine"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Assembler du plastique et du métal avec une vis passe par…",
+              "options": [
+                "Un trou et éventuellement une rondelle",
+                "La fusion des deux matériaux",
+                "Le tissage",
+                "La trempe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La phase « mise en forme » transforme…",
+              "options": [
+                "La matière brute en pièce aux bonnes dimensions",
+                "Le plan en météo",
+                "Le bois en eau",
+                "Le métal en gaz sans outil"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Porter des gants adaptés lors de la manipulation de pièces coupantes…",
+              "options": [
+                "Limite les coupures si le gant est correct",
+                "Remplace toujours la prudence",
+                "Est inutile sur le métal",
+                "Empêche de travailler"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Fabriquer un objet en technologie, c'est enchaîner…",
+              "options": [
+                "Conception, débit, assemblage, finition, contrôle",
+                "Uniquement la peinture",
+                "Seulement la vente",
+                "Rien sans plan"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

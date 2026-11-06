@@ -1,0 +1,2723 @@
+{
+  "id": "2nde-francais-01",
+  "year": "2nde",
+  "subject": "francais",
+  "title": "Le roman et le récit",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Narrateur et point de vue",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qui raconte l'histoire ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels énoncés décrivent correctement le narrateur dans un roman ?",
+              "options": [
+                "C'est la voix qui raconte l'histoire au lecteur",
+                "C'est toujours l'auteur en personne",
+                "Il peut être un personnage ou extérieur à l'histoire",
+                "Il désigne obligatoirement le héros"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le narrateur est la instance énonciative du récit, distincte de l'auteur et parfois intégrée à la fiction."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans « Je marchais seul dans la rue », quel indice révèle le narrateur ?",
+              "options": [
+                "Le passé simple",
+                "Le pronom « je »",
+                "Le lexique de la rue",
+                "L'absence de dialogue"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le pronom personnel « je » signale un narrateur homodiégétique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le narrateur est dit homodiégétique lorsqu'il…",
+              "options": [
+                "Ne connaît rien des personnages",
+                "Est un personnage de l'histoire qu'il raconte",
+                "Parle toujours à la première personne du pluriel",
+                "Rédige un journal intime sans publier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Homodiégétique signifie « même diegesis » : le narrateur appartient au monde fictionnel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un narrateur hétérodiégétique se situe…",
+              "options": [
+                "Dans l'histoire qu'il raconte",
+                "En dehors de l'histoire qu'il raconte",
+                "Uniquement dans le théâtre",
+                "Seulement à l'oral"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Hétérodiégétique : le narrateur est extérieur à la diegesis, comme dans de nombreux romans classiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Il entra dans la pièce, l'air inquiet » : le narrateur est plutôt…",
+              "options": [
+                "Absent du récit",
+                "Hétérodiégétique",
+                "Uniquement le héros",
+                "Toujours omniscient sans preuve"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La troisième personne et l'extériorité au « il » indiquent un narrateur hétérodiégétique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'auteur et le narrateur doivent être distingués car…",
+              "options": [
+                "Ils ont toujours le même age",
+                "L'auteur crée la fiction, le narrateur la raconte",
+                "Seul l'auteur utilise des dialogues",
+                "Le narrateur signe le contrat d'édition"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En narratologie, l'auteur est réel, le narrateur est une instance fictionnelle ou fictive du discours."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un récit à la première personne implique le plus souvent…",
+              "options": [
+                "Un narrateur homodiégétique",
+                "Un narrateur impossible",
+                "L'absence de focalisation",
+                "Un texte documentaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La première personne associe généralement le narrateur à un personnage du récit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le narrateur peut être…",
+              "options": [
+                "Toujours neutre et sans point de vue",
+                "Un adulte racontant son enfance",
+                "Interdit dans le roman réaliste",
+                "Identique au lecteur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un personnage-narrateur peut raconter une époque antérieure de sa vie, ce qui est fréquent au lycee."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans un roman, la voix narrative désigne…",
+              "options": [
+                "Le volume du livre",
+                "L'instance qui raconte et son ton",
+                "La couverture",
+                "Le nombre de chapitres"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La voix narrative regroupe qui parle et comment (registre, ironie, distance)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repérer le narrateur sert surtout à…",
+              "options": [
+                "Compter les pages",
+                "Analyser qui raconte et avec quelle autorité",
+                "Traduire le texte",
+                "Ignorer le point de vue"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Identifier le narrateur est la première étape de l'analyse du point de vue."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Homodiégétique et hétérodiégétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels indices orientent vers un narrateur homodiégétique ?",
+              "options": [
+                "Emploi de « je » comme sujet du récit",
+                "Le narrateur est témoin ou acteur",
+                "Troisième personne sans exception",
+                "Narrateur clairement extérieur à tous les événements"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Je » participant ou observateur interne caractérise le narrateur homodiégétique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les Mémoires d'Hadrien de Yourcenar utilisent « je » : le narrateur est…",
+              "options": [
+                "Hétérodiégétique",
+                "Homodiégétique",
+                "Absent",
+                "Uniquement dialogique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Hadrien raconte sa vie : narrateur personnage, donc homodiégétique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans Madame Bovary (partie narrative au « il »), le narrateur principal est…",
+              "options": [
+                "Emma Bovary",
+                "Hétérodiégétique",
+                "Toujours Charles",
+                "Le lecteur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Flaubert emploie surtout un narrateur extérieur à la diegesis."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un narrateur homodiégétique peut être…",
+              "options": [
+                "Central ou périphérique dans l'action",
+                "Obligé d'être le héros",
+                "Toujours omniscient",
+                "Interdit de mentir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il peut être protagoniste ou simple témoin selon son rôle dans l'intrigue."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Nous étions plusieurs dans le wagon » : le narrateur est…",
+              "options": [
+                "Hétérodiégétique",
+                "Homodiégétique (nous inclus)",
+                "Non identifiable",
+                "Auteur seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le « nous » inclus place le narrateur parmi les personnages."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'hétérodiégétique se reconnaît souvent à…",
+              "options": [
+                "Il/elle concernant des personnages vus de l'extérieur",
+                "Une autobiographie signée",
+                "Un monologue intérieur sans pronom",
+                "Une lettre du héros"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La troisième personne externe est l'indice classique du narrateur hétérodiégétique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un journal intime publié comme roman a le plus souvent un narrateur…",
+              "options": [
+                "Hétérodiégétique",
+                "Homodiégétique",
+                "Collectif obligatoire",
+                "Sans énonciation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le diariste est personnage de sa propre écriture fictionnelle ou fictive."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comparer homo- et hétérodiégétique permet de…",
+              "options": [
+                "Mesurer la crédibilité du point de vue",
+                "Oublier la focalisation",
+                "Ne lire que les dialogues",
+                "Supprimer l'auteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La position du narrateur conditionne ce qu'il peut savoir et dire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un narrateur homodiégétique est-il toujours fiable ?",
+              "options": [
+                "Oui, par définition",
+                "Non, il peut être partial ou menteur",
+                "Oui, s'il dit « je »",
+                "Non, seul l'auteur ment"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un personnage-narrateur peut tromper, oublier ou interpréter faussement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans L'Étranger, Meursault raconte au « je » : type de narrateur ?",
+              "options": [
+                "Hétérodiégétique",
+                "Homodiégétique",
+                "Narrateur absent",
+                "Chorus antique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Meursault est le personnage-narrateur de son propre récit."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Pronoms et énonciation narrative",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels pronoms peuvent marquer l'énonciation narrative ?",
+              "options": [
+                "Je / nous",
+                "Il / elle / on",
+                "Tu (rare, effet d'adresse)",
+                "Ils (lecteurs uniquement)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Je, nous, il, elle, on sont les marqueurs usuels de la narration romanesque."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le « on » narratif équivaut souvent à…",
+              "options": [
+                "Un narrateur collectif ou généralisant",
+                "Toujours l'auteur",
+                "Le pluriel des personnages dialogués",
+                "Une erreur de grammaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« On » peut désigner un narrateur indéterminé ou une subjectivité diffuse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Passer de « je » à « il » dans un même roman crée…",
+              "options": [
+                "Une faute d'orthographe",
+                "Un changement de narrateur ou de niveau",
+                "Un poème",
+                "Un résumé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les alternances de personne signalent souvent des strates narratives."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La deuxième personne « tu » dans un récit adresse le plus souvent…",
+              "options": [
+                "Un personnage ou le lecteur (effet particulier)",
+                "Uniquement Dieu",
+                "Les notes de bas de page",
+                "Le titre du chapitre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « tu » narratif est un procédé stylistique (monologue, apostrophe, mise en abyme)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Elle ne savait pas encore ce qui l'attendait » : personne grammaticale du narrateur ?",
+              "options": [
+                "Première",
+                "Deuxième",
+                "Troisième",
+                "Impossible à dire"
+              ],
+              "correctAnswers": [2],
+              "explanation": "« Elle » renvoie à un personnage vu par un narrateur à la troisième personne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le pronom « je » dans un dialogue n'indique pas forcément…",
+              "options": [
+                "Le narrateur du récit",
+                "Un personnage qui parle",
+                "Une didascalie",
+                "Un changement de chapitre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans les répliques, « je » est celui du locuteur, pas nécessairement du narrateur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'énonciation narrative étudie…",
+              "options": [
+                "Qui parle, à qui, dans quel contexte fictionnel",
+                "Seulement la date de publication",
+                "La taille de la police",
+                "Le prix du livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énonciation situe l'origine du discours dans la fiction."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un récit au « nous » exclusif (« nous partîmes » sans inclure l'auditeur)…",
+              "options": [
+                "Place le narrateur dans un groupe de personnages",
+                "Est toujours hétérodiégétique",
+                "Interdit toute focalisation",
+                "Est un mode poétique interdit au roman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « nous » de narration inclut le narrateur-personnage dans un collectif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Repérer les personnes grammaticales aide à…",
+              "options": [
+                "Distinguer narration et dialogue",
+                "Compter les métaphores",
+                "Traduire mot à mot",
+                "Ignorer le plot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La alternance narration/dialogue se lit aussi sur les pronoms et verbes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une analyse, « instance narrative » renvoie à…",
+              "options": [
+                "L'éditeur",
+                "Le narrateur comme source du récit",
+                "Le personnage secondaire",
+                "Le lecteur réel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'instance narrative est le « qui parle » du texte fictionnel."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Focalisation zéro",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La focalisation zéro (non focalisée) se caractérise par…",
+              "options": [
+                "Un savoir étendu sur les personnages",
+                "Des accès aux pensées de plusieurs êtres",
+                "Une caméra strictement externe sans interprétation",
+                "Une vision uniquement tactile"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Focalisation zéro : narrateur omniscient, accès large aux faits et aux consciences."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un narrateur omniscient relève le plus souvent de…",
+              "options": [
+                "Focalisation interne unique",
+                "Focalisation zéro",
+                "Focalisation externe stricte",
+                "Absence de narrateur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Omniscience et focalisation zéro vont ensemble dans la grille Genette."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Pierre aimait secrètement Claire, qu'elle ignorait » illustre…",
+              "options": [
+                "Focalisation externe pure",
+                "Focalisation zéro",
+                "Dialogue seul",
+                "Ellipse temporelle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le narrateur révèle des états intérieurs que les personnages ne partagent pas tous."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Focalisation zéro signifie que le point de vue est…",
+              "options": [
+                "Celui d'un seul personnage limité",
+                "Non restreint à une conscience unique",
+                "Toujours celui du lecteur",
+                "Interdit au XIXe siècle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Non focalisée : le récit n'est pas filtré par une perception unique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un narrateur qui commente les actions des personnages est plutôt…",
+              "options": [
+                "En focalisation zéro",
+                "Sans voix",
+                "Un personnage muet",
+                "Un poème en prose interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les commentaires et généralisations supposent une autorité narrative large."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans la focalisation zéro, le narrateur peut…",
+              "options": [
+                "Anticiper l'avenir du récit",
+                "Seulement voir les surfaces",
+                "Parler sans langue",
+                "Effacer tous les dialogues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'omniscience autorise prolepses et informations futures."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Confondre auteur et narrateur omniscient mène à…",
+              "options": [
+                "Lire le narrateur comme voix fictionnelle",
+                "Croire que l'auteur vit tout ce qu'il écrit",
+                "Une analyse plus rigoureuse",
+                "Supprimer le point de vue"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'omniscience est un effet de récit, pas un pouvoir biographique de l'auteur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Balzac utilise souvent un narrateur qui sait tout : on parle de…",
+              "options": [
+                "Focalisation interne fixe",
+                "Focalisation zéro",
+                "Monologue dramatique",
+                "Epistolé pur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le roman balzacien illustre la narration panoramique et omnisciente."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Opposer focalisation zéro et interne, c'est opposer…",
+              "options": [
+                "Savoir global et savoir limité à un personnage",
+                "Roman et poésie",
+                "Français et latin",
+                "Passé et présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interne = filtré par une conscience ; zéro = non limité ainsi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repérer une focalisation zéro commence par…",
+              "options": [
+                "Chercher des accès aux pensées multiples ou des commentaires globaux",
+                "Compter les virgules",
+                "Ignorer le narrateur",
+                "Lire seulement la fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les intrusions savantes et les pensées croisées sont des indices forts."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Focalisation interne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La focalisation interne implique…",
+              "options": [
+                "Le récit filtré par la perception d'un personnage",
+                "Des verbes de perception ou de pensée centrés sur un « il » ou « je »",
+                "Une caméra qui ne voit jamais l'intérieur",
+                "Un narrateur obligatoirement hétérodiégétique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Interne = le narrateur adopte le point de vue (optique) d'un personnage."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Il vit la porte s'ouvrir et sentit la peur monter » : focalisation…",
+              "options": ["Externe", "Interne", "Zéro", "Documentaire"],
+              "correctAnswers": [1],
+              "explanation": "Perception et émotion sont celles du personnage focalisateur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Focalisation interne fixe : le point de vue reste…",
+              "options": [
+                "Sur un seul personnage",
+                "Sur tous à la fois",
+                "Sans personnage",
+                "Hors texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fixe = un seul focalisateur pour tout le récit ou un long segment."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Focalisation interne multiple alterne…",
+              "options": [
+                "Les chapitres sans lien",
+                "Les points de vue de plusieurs personnages",
+                "Roman et essai",
+                "Deux auteurs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Multiple = plusieurs focalisations internes successives ou juxtaposées."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un narrateur « je » avec focalisation sur ses propres états est…",
+              "options": [
+                "Interne",
+                "Externe stricte",
+                "Impossible",
+                "Zéro seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « je » narrateur focalise en général sur ce qu'il perçoit et pense."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En focalisation interne, le narrateur ne dit pas ce que…",
+              "options": [
+                "Le focalisateur ne peut savoir",
+                "Le lecteur devine",
+                "Les dialogues contiennent",
+                "Le titre annonce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le savoir est limité à la conscience du personnage optique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le style indirect libre peut simuler…",
+              "options": [
+                "Une focalisation interne sans « je »",
+                "Un mode d'emploi",
+                "Un résumé encyclopédique",
+                "Un dialogue théâtral pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On entend la voix du personnage dans la narration à la troisième personne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Où allait-il donc ? » dans un passage centré sur Marie traduit…",
+              "options": [
+                "Une question du narrateur omniscient",
+                "La pensée de Marie (interne)",
+                "Un dialogue",
+                "Une didascalie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Questionnement intérieur = marque de focalisation interne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Analyser la focalisation interne, c'est demander…",
+              "options": [
+                "À travers qui voit-on et pense-t-on ?",
+                "Quel est le prix ?",
+                "Qui imprime ?",
+                "Quelle est la couverture ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le focalisateur est le personnage-caméra du récit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Passer d'un personnage à un autre comme focalisateur crée…",
+              "options": [
+                "Polyphonie des points de vue",
+                "Suppression du plot",
+                "Un texte non fictionnel",
+                "Une ode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les changements de focalisation interne structurent la multiplicité des regards."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Focalisation externe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La focalisation externe se limite à…",
+              "options": [
+                "Ce qu'un observateur pourrait voir et entendre",
+                "L'extérieur des comportements sans accès aux pensées",
+                "Toujours la première personne",
+                "Un savoir total sur l'avenir"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Externe = caméra objective, pas d'intériorité directe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Hemingway est souvent cité pour des récits en focalisation…",
+              "options": [
+                "Zéro commentée",
+                "Externe",
+                "Interne omnisciente",
+                "Lyrique exclusive"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La sobriété descriptive suggère une vision externe des actions."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Il frappa la table et sortit sans un mot » : on ne connaît pas sa colère intérieure : c'est…",
+              "options": ["Interne", "Externe", "Zéro", "Epique"],
+              "correctAnswers": [1],
+              "explanation": "Seuls gestes et paroles visibles sont narrés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Focalisation externe + narrateur hétérodiégétique produit souvent…",
+              "options": [
+                "Un effet de neutralité ou d'objectivité",
+                "Un monologue intérieur continu",
+                "Une autobiographie",
+                "Un chant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le récit semble observer sans interpréter les états d'âme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En externe, deviner les sentiments du personnage se fait par…",
+              "options": [
+                "Indices comportementaux et dialogues",
+                "Une voix off omnisciente",
+                "Notes de l'auteur",
+                "Table des matières"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lecteur infère l'intérieur à partir du visible."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Caméra externe signifie que le narrateur…",
+              "options": [
+                "Ne plonge pas dans la conscience",
+                "Est toujours le héros",
+                "Ne décrit jamais",
+                "Parle au passé simple interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas d'accès direct aux pensées = externe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un récit policier peut utiliser l'externe pour…",
+              "options": [
+                "Laisser le lecteur interpréter les indices",
+                "Révéler tout dès le début",
+                "Supprimer l'intrigue",
+                "Eviter les personnages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limiter le savoir renforce le mystère."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Externe vs interne : la différence porte sur…",
+              "options": [
+                "L'accès à la subjectivité du personnage",
+                "Le nombre de pages",
+                "La langue du texte",
+                "Le genre de l'auteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une question d'optique narrative, pas de thème."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Peut-on combiner externe et interne dans un roman ?",
+              "options": [
+                "Oui, par alternance de passages",
+                "Non, jamais",
+                "Seulement en poésie",
+                "Uniquement au théâtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les romans modulent souvent les focalisations."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repérer l'externe : absence de…",
+              "options": [
+                "Verbes de pensée rapportée au personnage",
+                "Noms propres",
+                "Verbes d'action",
+                "Ponctuation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de « il pensait que » ou équivalent centré sur l'intérieur."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Narrateur omniscient et narrateur témoin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le narrateur omniscient peut…",
+              "options": [
+                "Connaître passé et avenir des personnages",
+                "Commenter la société ou la morale",
+                "Seulement voir ce que voit un enfant sans interpréter",
+                "Ne jamais utiliser la troisième personne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Omniscient = savoir étendu et discours interpretatif possible."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un narrateur témoin est…",
+              "options": [
+                "Un personnage qui observe une partie de l'action",
+                "Toujours Dieu",
+                "Le typographe",
+                "Un personnage absent du récit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le témoin participe ou assiste sans tout dominer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le narrateur témoin a un savoir…",
+              "options": [
+                "Limité à ce qu'il voit et comprend",
+                "Total sur tous les cœurs",
+                "Réservé aux dialogues seuls",
+                "Interdit en français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sa partialité fait partie de l'effet narratif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Gatsby vu par Nick dans Gatsby le Magnifique : Nick est…",
+              "options": [
+                "Narrateur témoin / homodiégétique",
+                "Omniscient absolu",
+                "Sans rôle",
+                "Auteur réel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nick raconte ce qu'il vit aux côtés de Gatsby."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Omniscient ne signifie pas…",
+              "options": [
+                "Que le narrateur dit toujours la vérité",
+                "Que le narrateur sait beaucoup",
+                "Qu'il peut être ironique",
+                "Qu'il commente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Omniscience = capacité narrative, pas garantie de fiabilité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un témoin raconte au « je » : il est à la fois…",
+              "options": [
+                "Homodiégétique et à savoir restreint",
+                "Hétérodiégétique omniscient",
+                "Sans focalisation",
+                "Chorus grec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Personnage-narrateur avec vision partielle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le narrateur omniscient du XIXe siècle intervient parfois…",
+              "options": [
+                "Directement auprès du lecteur",
+                "Seulement en footnotes",
+                "Dans les marges du papier",
+                "Via la couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adresses au lecteur et digressions morales sont fréquentes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Choisir un témoin comme narrateur sert à…",
+              "options": [
+                "Créer mystère ou subjectivité",
+                "Eliminer tous les personnages",
+                "Ecrire un dictionnaire",
+                "Supprimer le temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre du témoin oriente l'interprétation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un omniscient peut-il se tromper volontairement ?",
+              "options": [
+                "Oui, narrateur unreliable",
+                "Non, jamais en littérature",
+                "Seulement en poésie",
+                "Uniquement si « je »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même un savoir large peut être mis en scène de façon trompeuse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Distinguer témoin et omniscient revient à distinguer…",
+              "options": [
+                "Portée du savoir narratif",
+                "Genre musical",
+                "Epoque de composition",
+                "Longueur des chapitres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question de limites cognitives du narrateur."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Distance et ironie narrative",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La distance narrative désigne…",
+              "options": [
+                "L'écart entre narrateur et ce qu'il raconte",
+                "Le ton ironique ou neutre du récit",
+                "La longueur du manuscrit",
+                "Le nombre de personnages"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Distance = degré d' implication ou de recul du narrateur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un narrateur ironique se moque parfois…",
+              "options": [
+                "Des personnages ou des idées qu'il décrit",
+                "De la pagination",
+                "De la grammare uniquement",
+                "Du lecteur réel obligatoirement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ironie narrative joue sur un double sens."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ce brave homme était certes le plus sot du village » : effet probable…",
+              "options": [
+                "Ironie du narrateur",
+                "Description neutre",
+                "Dialogue",
+                "Stage direction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apostrophe valorisante + « sot » suggère une ironie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Distance faible : le narrateur…",
+              "options": [
+                "S'identifie ou s'émotive avec le récit",
+                "Reste froid et scientifique",
+                "Ne parle pas",
+                "Est une machine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faible distance = forte subjectivité narrative."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Distance forte : le narrateur…",
+              "options": [
+                "Observe avec recul",
+                "Pleure avec le héros",
+                "Devient personnage sans le dire",
+                "Supprime les verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recit sobre ou commentaire détaché = distance forte."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Free indirect discourse peut créer une ironie entre…",
+              "options": [
+                "Voix du personnage et voix du narrateur",
+                "Deux couvertures",
+                "Auteur et éditeur",
+                "Titre et chapitre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Superposition des voix = effet ironique possible."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Flaubert recherche parfois une distance pour…",
+              "options": [
+                "Laisser le lecteur juger (impersonnalité)",
+                "Eliminer le style",
+                "Ne plus écrire",
+                "Copier le journalisme sans art"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'« impassibilité » flaubertienne modulate la distance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Repérer l'ironie narrative demande d'écouter…",
+              "options": [
+                "Le ton sous le sens littéral",
+                "Seulement les noms",
+                "La couleur du papier",
+                "Le ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ironie = écart entre ce qui est dit et ce qui est meant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un narrateur partial a une distance…",
+              "options": [
+                "Faible avec son point de vue",
+                "Infinie avec tout",
+                "Nulle avec le lecteur seul",
+                "Fixée par la loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partialité = faible neutralité, donc faible distance subjective."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En dissertation, parler de « prise de distance » du narrateur, c'est…",
+              "options": [
+                "Analyser son degré d'objectivité ou de commentaire",
+                "Mesurer la hauteur du livre",
+                "Compter les chapitres",
+                "Ignorer le style"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concept clé pour le commentaire de narrateur."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Narrateur unreliable et mise en scène",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un narrateur « unreliable » (peu fiable)…",
+              "options": [
+                "Peut mentir ou se tromper",
+                "Force le lecteur à vérifier les faits",
+                "Est toujours omniscient et juste",
+                "N'existe que au théâtre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Narrateur peu fiable : discordance entre récit et réalité fictionnelle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans Voyage au bout de la nuit, le « je » de Bardamu est…",
+              "options": [
+                "Narrateur subjectif dont on questionne le regard",
+                "Omniscient neutre",
+                "Absent",
+                "Chorus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le récit est filtré par une conscience singulière et critique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Indices de narrateur peu fiable :…",
+              "options": [
+                "Contradictions, omissions, exagérations",
+                "Table des matières",
+                "Numérotation des pages",
+                "Copyright"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le texte invite à douter de la version présentée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mise en abyme narrative, c'est…",
+              "options": [
+                "Un récit dans le récit",
+                "Une faute de français",
+                "Un résumé en une ligne",
+                "La couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : personnage qui écrit un roman dans le roman."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un personnage qui raconte une histoire fausse dans le roman teste…",
+              "options": [
+                "La fiabilité narrative",
+                "La ponctuation",
+                "Le prix",
+                "La fonte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lecteur confronte versions et indices."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le narrateur peut masquer des informations pour…",
+              "options": [
+                "Suspense ou partialité",
+                "Obligation légale",
+                "Manque de papier",
+                "Traduction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retarder ou déformer l'info est un procédé narratif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Analyser le point de vue inclut de se demander si le narrateur…",
+              "options": [
+                "Est crédible",
+                "A le même nom que l'auteur toujours",
+                "Ecrit en vers",
+                "Est le traducteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fiabilité = critère d'interprétation en 2nde."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dialogue + narration : le narrateur peu fiable peut…",
+              "options": [
+                "Déformer ce qu'il a entendu",
+                "Devenir muet",
+                "Effacer les autres voix",
+                "Changer de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La subjectivité colore le rapport des paroles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le lecteur actif face à un narrateur douteux doit…",
+              "options": [
+                "Croiser indices et contradictions",
+                "Accepter tout sans lire",
+                "Ignorer le plot",
+                "Supprimer les chapitres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture critique = reconstruction du sens."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Point de vue et narrateur peu fiable servent à…",
+              "options": [
+                "Interroger la vérité dans le récit",
+                "Eliminer les personnages",
+                "Ne plus analyser",
+                "Remplacer le temps du récit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thème moderne : subjectivité et vérité fictionnelle."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse : narrateur et focalisation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour analyser narrateur et point de vue, on combine…",
+              "options": [
+                "Position du narrateur (homo/hétéro)",
+                "Type de focalisation (interne, externe, zéro)",
+                "Nombre de pages du chapitre",
+                "Couleur de couverture"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux axes Genette : qui parle et qui voit/pense."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Narrateur hétérodiégétique + focalisation interne sur A :…",
+              "options": [
+                "« Il » narrateur, monde vu par A",
+                "« Je » narrateur omniscient seul",
+                "Pas de personnages",
+                "Poème lyrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combinaison classique : il raconte en se limitant à A."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le point de vue, en français scolaire, désigne surtout…",
+              "options": [
+                "La focalisation et la position du narrateur",
+                "L'opinion politique de l'auteur",
+                "Le lieu d'édition",
+                "La date de parution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terme narratologique, pas opinion journalistique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Plan de commentaire sur le narrateur : d'abord…",
+              "options": [
+                "Repérer qui parle et quelle focalisation",
+                "Résumer l'intrigue seule",
+                "Citer la biographie",
+                "Lister les métaphores au hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre narratif avant l'interprétation fine."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Changer de focalisation change…",
+              "options": [
+                "Ce que le lecteur sait et ressent",
+                "Le genre grammatical du titre",
+                "L'ISBN",
+                "La langue obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modulation du savoir et de l'empathie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Narrateur homodiégétique + externe strict est…",
+              "options": [
+                "Rare mais possible (je ne dis pas mes pensées)",
+                "Impossible",
+                "Toujours omniscient",
+                "Uniquement oral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut raconter en « je » en ne montrant que l'extérieur de soi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La grille narrateur/focalisation aide à éviter…",
+              "options": [
+                "Confondre auteur et voix narrative",
+                "Lire le texte",
+                "Repérer les themes",
+                "Citer le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil anti-confusion auteur/narrateur/personnage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans une épreuve, « point de vue interne » signifie…",
+              "options": [
+                "Récit centré sur la subjectivité d'un personnage",
+                "Point de vue de l'auteur sur la politique",
+                "Camera du studio",
+                "Vue aérienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire scolaire = focalisation interne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le roman moderne explore souvent…",
+              "options": [
+                "Subjectivités multiples et narrateurs complexes",
+                "Absence totale de narrateur",
+                "Suppression du récit",
+                "Un seul point de vue interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multiplicité des voix au XXe-XXIe siècle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Maîtriser narrateur et POV en 2nde permet de…",
+              "options": [
+                "Commenter un extrait avec précision",
+                "Ignorer les personnages",
+                "Ne pas parler du temps",
+                "Eviter la dissertation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétence centrale du chapitre « roman et récit »."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Personnages et temps du récit",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Types de personnages",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels traits décrivent un personnage de roman ?",
+              "options": [
+                "Il est nommé ou désigné dans la fiction",
+                "Il peut évoluer ou rester stable",
+                "Il est toujours l'auteur",
+                "Il n'a jamais de psychologie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les personnages sont des êtres fictionnels dotés de rôles et parfois d'une évolution."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un personnage principal (protagoniste)…",
+              "options": [
+                "Structure l'intrigue autour de lui",
+                "N'apparaît jamais",
+                "Est toujours positif",
+                "Ne parle pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le protagoniste porte l'enjeu central du récit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un personnage secondaire sert surtout à…",
+              "options": [
+                "Faire avancer ou éclairer l'action principale",
+                "Remplacer l'auteur",
+                "Ecrire la préface",
+                "Supprimer le conflit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Secondaires = fonction narrative complémentaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Personnage rond (round) signifie…",
+              "options": [
+                "Complexe, nuancé, évolutif",
+                "Plat et sans profondeur",
+                "Absent du texte",
+                "Uniquement comique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opposé du personnage plat, type défini par Forster."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Personnage plat (flat)…",
+              "options": [
+                "Incarné en une ou deux caractéristiques",
+                "Change à chaque phrase",
+                "Est le narrateur obligé",
+                "Est historique réel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Personnage-type ou caricatural, peu d'évolution."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un antagoniste est…",
+              "options": [
+                "L'opposant du protagoniste",
+                "Le narrateur",
+                "Le lecteur",
+                "L'éditeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il entrave ou contredit le héros."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les personnages peuvent être présentés par…",
+              "options": [
+                "Description, action, dialogue, pensée",
+                "Seulement la couverture",
+                "Le code-barres",
+                "La table des matières"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modes de caractérisation directe et indirecte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Caractérisation indirecte, c'est…",
+              "options": [
+                "Deviner le trait par les actes et paroles",
+                "L'auteur dit « il était brave »",
+                "Absence de personnage",
+                "Resume en une ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Show don't tell : comportements révèlent le caractère."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un personnage collectif (« le village », « la foule »)…",
+              "options": [
+                "Peut agir comme une entité dans le récit",
+                "Est interdit au roman",
+                "Est toujours protagoniste",
+                "Remplace le temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le groupe peut fonctionner comme personnage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Analyser les personnages, c'est étudier…",
+              "options": [
+                "Rôles, relations et évolution",
+                "Uniquement les prénoms",
+                "La date d'impression",
+                "Le nombre de lignes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approche fonctionnelle et psychologique selon le texte."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Héros, anti-héros et figures",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un anti-héros se distingue par…",
+              "options": [
+                "Des faiblesses ou valeurs ambiguës",
+                "Un refus parfois du modèle héroïque classique",
+                "Une perfection morale absolue",
+                "L'absence de tout rôle dans l'intrigue"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'anti-héros brouille l'idéal du héros épique ou romanesque."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le héros romanesque du XIXe siècle peut être…",
+              "options": [
+                "Un individu ordinaire pris dans la société",
+                "Toujours un chevalier médiéval",
+                "Sans conflit",
+                "Muet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le roman moderne humanise et socialise le héros."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Figure (au sens littéraire) désigne…",
+              "options": [
+                "Un personnage-type ou symbolique",
+                "La photo de l'auteur",
+                "Un chapitre",
+                "Une note de bas de page"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Figure = incarnation d'un archétype ou d'une idée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Meursault dans L'Étranger est souvent lu comme…",
+              "options": [
+                "Anti-héros ou héros problématique",
+                "Héros épique",
+                "Narrateur absent",
+                "Personnage historique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indifférence et rupture des normes morales."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La figure du double (doppelgänger) sert à…",
+              "options": [
+                "Mettre en scène la dualité du personnage",
+                "Compter les pages",
+                "Traduire le titre",
+                "Supprimer l'intrigue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autre soi = conflit intérieur externalisé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un personnage tragique est marqué par…",
+              "options": [
+                "Une faute ou une limite menant au malheur",
+                "Un happy ending obligatoire",
+                "L'absence de conflit",
+                "Le comique pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Héritage de la tragédie : chute liée à un défaut ou un destin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le mentor (guide) dans le récit…",
+              "options": [
+                "Aide ou oriente le protagoniste",
+                "Est toujours le méchant",
+                "Ne parle jamais",
+                "Est le lecteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fonction narrative classique du personnage sage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Evolution du personnage (arc) signifie…",
+              "options": [
+                "Transformation au fil de l'intrigue",
+                "Changement de police",
+                "Erreur d'impression",
+                "Multiplication des chapitres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parcours psychologique ou moral du héros."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Personnage caricatural : traits…",
+              "options": [
+                "Exagérés pour critiquer ou amuser",
+                "Invisibles",
+                "Historiques exacts",
+                "Sans fonction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Satire et comique reposent sur l'exagération."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Relier héros et thème du roman, c'est montrer…",
+              "options": [
+                "Comment le personnage incarne les enjeux",
+                "Seulement sa taille",
+                "Son adresse postale",
+                "Le prix du livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le héros vectorise le sens de l'œuvre."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Relations entre personnages",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les relations entre personnages peuvent…",
+              "options": [
+                "Créer conflit ou alliance",
+                "Révéler des enjeux sociaux ou familiaux",
+                "Eliminer le temps du récit",
+                "Remplacer le narrateur par défaut"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le réseau relationnel structure l'intrigue et le sens."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un triangle amoureux est un exemple de…",
+              "options": [
+                "Configuration relationnelle",
+                "Figure de style",
+                "Temps du récit",
+                "Genre épistolaire seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma classique de tension narrative."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dialogue entre personnages sert à…",
+              "options": [
+                "Les caractériser et faire avancer l'action",
+                "Remplacer tout le récit",
+                "Supprimer le narrateur obligatoirement",
+                "Indiquer la pagination"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parole = caractérisation et dynamique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rivalité fraternelle ou sociale illustre…",
+              "options": [
+                "Conflit interpersonnel",
+                "Absence de plot",
+                "Ellipse seule",
+                "Focalisation zéro seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opposition entre personnages moteur d'intrigue."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Personnage foil (contraste)…",
+              "options": [
+                "Met en relief un autre par l'opposition",
+                "Est invisible",
+                "Est le titre",
+                "Ne dialogue jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contraste éclaire les traits du protagoniste."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Relations de pouvoir (maître/serviteur) peuvent…",
+              "options": [
+                "Critiquer une hiérarchie sociale",
+                "Eliminer la description",
+                "Interdire le passé simple",
+                "Supprimer les noms"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le roman réaliste expose des rapports sociaux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Schéma actantiel (Greimas) étudie…",
+              "options": [
+                "Rôles fonctionnels (sujet, objet, adjuvant…)",
+                "Couleur des yeux seule",
+                "Date de naissance de l'auteur",
+                "Marge du livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil pour cartographier les relations narratives."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Changement de relation en cours de roman crée…",
+              "options": [
+                "Retournement ou progression dramatique",
+                "Un texte non fictionnel",
+                "Une ode",
+                "Un dictionnaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Evolution des liens = dynamique du récit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Personnages en miroir partagent…",
+              "options": [
+                "Traits opposés ou parallèles significatifs",
+                "Le même nom obligatoire",
+                "Aucun dialogue",
+                "Le même métier toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise en parallèle structurante."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En commentaire, étudier les relations, c'est…",
+              "options": [
+                "Montrer comment elles portent le sens",
+                "Lister les prénoms sans analyse",
+                "Ignorer le conflit",
+                "Ne parler que du narrateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien entre forme relationnelle et thématique."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Temps de l'histoire et temps du récit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Distinction temps de l'histoire / temps du récit :",
+              "options": [
+                "L'histoire est la chronologie des événements fictifs",
+                "Le récit est l'ordre et la durée de leur narration",
+                "Ils sont toujours identiques",
+                "L'histoire désigne la date de publication"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Genette distingue story (fabula) et discours narratif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Temps de l'histoire (intrigue) c'est…",
+              "options": [
+                "Ce qui arrive aux personnages",
+                "Le temps de lecture seulement",
+                "L'heure d'impression",
+                "La durée du cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sequence logique des faits dans le monde fictionnel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Temps du récit (récit) c'est…",
+              "options": [
+                "Comment les événements sont racontés dans le texte",
+                "La biographie de l'auteur",
+                "Le climat réel",
+                "Le nombre de mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre, rythme, ellipses dans l'énonciation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Raconter une journée en cent pages allonge…",
+              "options": [
+                "Le temps du récit par rapport à l'histoire",
+                "Le temps de l'histoire obligatoirement",
+                "Le prix du livre",
+                "L'ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Récit plus long que l'action = ralentissement narratif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Vingt ans plus tard » dans le récit marque…",
+              "options": [
+                "Un saut dans le temps de l'histoire",
+                "Une faute d'orthographe",
+                "Un dialogue",
+                "Une note de bas de page"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indication chronologique dans la diegesis."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ordre chronologique : récit suit…",
+              "options": [
+                "L'ordre des événements de l'histoire",
+                "Toujours la fin d'abord",
+                "Aucun ordre",
+                "Le hasard des pages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suite logique sans analepse majeure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Anachronie signifie…",
+              "options": [
+                "Décalage entre ordre du récit et ordre de l'histoire",
+                "Absence de verbes",
+                "Personnage sans nom",
+                "Poème en prose interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terme narratologique pour flash-back ou flash-forward."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Durée du récit très courte pour des années d'histoire =…",
+              "options": [
+                "Sommaire ou ellipse",
+                "Scene détaillée",
+                "Pause descriptive",
+                "Dialogue seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compression temporelle classique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Analyser le temps, c'est étudier…",
+              "options": [
+                "Ordre, durée et fréquence",
+                "Seulement les dates réelles",
+                "La couverture",
+                "Le traducteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois catégories genettiennes du temps."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Confondre temps du récit et temps de lecture…",
+              "options": [
+                "Mélange durée narrative et expérience du lecteur",
+                "Améliore toujours l'analyse",
+                "Est obligatoire",
+                "Supprime l'intrigue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Temps de lecture = réception ; temps du récit = construction."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Analepse et prolepse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Analepse et prolepse :",
+              "options": [
+                "Analepse = retour en arrière (flash-back)",
+                "Prolepse = anticipation d'événements futurs",
+                "Analepse = seulement au théâtre",
+                "Prolepse = suppression du passé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Analepse recule, prolepse avance dans l'histoire racontée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Flash-back en français scolaire =…",
+              "options": ["Analepse", "Ellipse", "Scène", "Sommaire"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire courant pour analepse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Il se souvint de son enfance » introduit…",
+              "options": [
+                "Une analepse",
+                "Une prolepse",
+                "Une pause",
+                "Un dialogue pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souvenir = retour temporel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Prolepse crée souvent…",
+              "options": [
+                "Suspense ou ironie dramatique",
+                "Absence d'intrigue",
+                "Un texte documentaire",
+                "Une ode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lecteur sait avant les personnages parfois."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Analepse externe raconte…",
+              "options": [
+                "Un épisode antérieur non vécu par le narrateur présent",
+                "Seulement le futur",
+                "La table des matières",
+                "Les notes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retour hors du moment narratif actuel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Analepse interne =…",
+              "options": [
+                "Souvenir d'un personnage du moment présent",
+                "Anticipation",
+                "Description de paysage",
+                "Didascalie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mémoire inscrite dans la conscience."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Commencer in medias res (au milieu de l'action) puis revenir en arrière…",
+              "options": [
+                "Combine analepse et structure non chronologique",
+                "Interdit au roman",
+                "Est une ellipse seule",
+                "Supprime les personnages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Technique narrative antique et moderne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Indice linguistique d'analepse :…",
+              "options": [
+                "Plus-que-parfait, imparfait du souvenir",
+                "Futur simple seul",
+                "Impératif obligatoire",
+                "Infinitif seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concordance des temps dans les retours."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Prolepse du narrateur omniscient…",
+              "options": [
+                "« Il allait bientôt regretter »",
+                "Description neutre sans temps",
+                "Liste de courses",
+                "Copyright"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Annonce d'un futur dans l'histoire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Etudier analepses/prolepses sert à…",
+              "options": [
+                "Comprendre la construction du récit",
+                "Ignorer l'ordre",
+                "Ne lire que les dialogues",
+                "Supprimer le passé simple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organisation temporelle = sens et suspense."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Ellipse, pause et scène",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Ellipse et pause (durée narrative) :",
+              "options": [
+                "Ellipse = on saute du temps dans le récit",
+                "Pause = le récit s'arrête sur description ou réflexion",
+                "Ellipse = ralentit l'action",
+                "Pause = supprime toute description"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Genette : ellipse compresse, pause suspend l'action."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Trois mois passèrent sans nouvelles » =…",
+              "options": [
+                "Ellipse",
+                "Scène détaillée",
+                "Pause poétique longue",
+                "Prolepse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Saut temporel explicite."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Scène (mimétique) :…",
+              "options": [
+                "Evénements racontés au même rythme que vécus",
+                "Resume en une phrase",
+                "Absence de dialogue",
+                "Sommaire obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Immersion temporelle, dialogues et actions détaillées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sommaire (summary) :…",
+              "options": [
+                "Periode longue racontée brièvement",
+                "Instant détaillé",
+                "Pause seule",
+                "Prolepse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Acceleration narrative."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Longue description d'un lieu pendant une action = souvent…",
+              "options": ["Pause", "Ellipse", "Analepse seule", "Epilogue"],
+              "correctAnswers": [0],
+              "explanation": "Le temps de l'histoire semble suspendu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ellipse implicite :…",
+              "options": [
+                "Le lecteur déduit un saut entre deux scenes",
+                "L'auteur signe",
+                "Le titre change",
+                "Dialogue absent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lacune sans indication explicite."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Roman policier : ellipses servent à…",
+              "options": [
+                "Masquer des actions clés",
+                "Allonger les paysages",
+                "Supprimer l'intrigue",
+                "Eviter le suspense"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trous narratifs = mystère."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Alterner scène et sommaire modulate…",
+              "options": [
+                "Le rythme du récit",
+                "Le genre de l'auteur seulement",
+                "La langue",
+                "L'ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accélération et ralentissement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pause digressive : le narrateur…",
+              "options": [
+                "S'écarte pour commenter ou décrire",
+                "Efface les personnages",
+                "Change de langue",
+                "Devient poème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Digression = pause narrative."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repérer une ellipse commence par…",
+              "options": [
+                "Un écart temporel entre deux événements contigus",
+                "Compter les virgules",
+                "Lire la quatrième de couverture",
+                "Ignorer les dates"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contradiction ou saut chronologique apparent."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Fréquence narrative",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Fréquence narrative (Genette) inclut…",
+              "options": [
+                "Singulatif : une fois pour une fois",
+                "Répétition : plusieurs fois le même événement",
+                "Ellipse seule",
+                "Absence de verbes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rapport entre occurrences dans l'histoire et dans le récit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Narration singulative :…",
+              "options": [
+                "Un événement raconté une fois",
+                "Trois récits du même jour",
+                "Habituel décrit",
+                "Prolepse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cas le plus fréquent au roman."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Chaque matin, il ouvrait la boutique » illustre…",
+              "options": [
+                "Fréquence itérative / habituelle",
+                "Singulatif strict",
+                "Prolepse",
+                "Pause"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Itératif = plusieurs fois dans l'histoire, une fois au récit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Répétition narrative raconte…",
+              "options": [
+                "Plusieurs fois le même événement unique",
+                "Des événements différents",
+                "Seulement le futur",
+                "La préface"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet d'insistance ou d'obsession."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Flash-back répété du même trauma =…",
+              "options": [
+                "Répétition ou reprise analeptique",
+                "Sommaire",
+                "Ellipse",
+                "Epilogue seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même passé revisité plusieurs fois."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Itératif diffère de singulatif car…",
+              "options": [
+                "Il généralise des occurrences multiples",
+                "Il n'utilise jamais l'imparfait",
+                "Il supprime les personnages",
+                "Il est interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Habitude ou routine narrative."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Analyser la fréquence, c'est demander…",
+              "options": [
+                "Combien de fois le récit dit ce qui arrive une ou plusieurs fois",
+                "Quelle est la date",
+                "Qui imprime",
+                "Combien de chapitres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Correspondance histoire/récit au plan des occurrences."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Imparfait et présent habituel favorisent…",
+              "options": [
+                "L'itérative",
+                "La prolepse seule",
+                "L'ellipse",
+                "Le singulatif d'action unique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueurs grammaticaux de l'habitude."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Récit circulaire (fin = début) joue sur…",
+              "options": [
+                "Structure temporelle et fréquence perçue",
+                "Couverture",
+                "Prix",
+                "Traduction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boucle narrative."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En 2nde, fréquence est surtout abordée via…",
+              "options": [
+                "Singulatif vs habituel (itération)",
+                "Calcul statistique",
+                "Musique",
+                "Peinture seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveau scolaire : notions de base Genette simplifiées."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Rythme et progression du récit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le rythme du récit dépend de…",
+              "options": [
+                "Alternance scènes et résumés",
+                "Ellipses et pauses",
+                "Couleur de l'encre",
+                "Nombre de lecteurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Durée narrative modulate la vitesse perçue."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Exposition ( début ) présente…",
+              "options": [
+                "Situation initiale et personnages",
+                "Denouement seul",
+                "Epilogue obligatoire",
+                "Bibliographie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma narratif classique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Element perturbateur (nœud)…",
+              "options": [
+                "Lance le conflit principal",
+                "Termine le roman",
+                "Est la préface",
+                "Supprime l'intrigue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Catalyseur de l'action."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Peripéties sont…",
+              "options": [
+                "Series d'événements et d'obstacles",
+                "Descriptions seules",
+                "Notes de l'éditeur",
+                "Index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Développement du conflit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Denouement…",
+              "options": [
+                "Résout ou clôt l'intrigue",
+                "Ouvre le récit",
+                "Est le titre",
+                "Remplace le chapitre I"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fin de l'action principale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ralentir le récit en fin d'ouvrage peut…",
+              "options": [
+                "Accentuer la tension ou la émotion",
+                "Eliminer le suspense",
+                "Supprimer les personnages",
+                "Raccourcir l'histoire réelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scène détaillée au climax."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Chapitres courts créent souvent…",
+              "options": [
+                "Rythme rapide",
+                "Pause longue",
+                "Absence de plot",
+                "Documentaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Découpage parcellaire accélère la lecture."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Parallèle entre deux actions (cross-cutting) affecte…",
+              "options": [
+                "Rythme et suspense",
+                "Grammaire seule",
+                "Copyright",
+                "Reliure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alternance temporelle entre lignes d'action."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Schéma en five actes ou en trois temps aide à…",
+              "options": [
+                "Situer la progression narrative",
+                "Traduire le texte",
+                "Compter les lettres",
+                "Ignorer le temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil scolaire pour structurer l'analyse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Relier rythme et temps du récit montre…",
+              "options": [
+                "Comment la forme temporelle sert le sens",
+                "Seulement la biographie",
+                "Le prix",
+                "La fonte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Articulation forme/fond en analyse."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Personnages et temporalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le temps du récit influence la perception des personnages car…",
+              "options": [
+                "Flash-back révèle leur passé",
+                "Ellipses cachent des transformations",
+                "Le titre seul définit le héros",
+                "La couverture change leur nom"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Organisation temporelle = révélation ou masquage du caractère."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Vieillissement du héros sur plusieurs décennies demande…",
+              "options": [
+                "Sommaires ou ellipses",
+                "Une seule scène",
+                "Absence de temps",
+                "Prologue seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compression pour couvrir longues périodes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Souvenir d'enfance (analepse) caractérise…",
+              "options": [
+                "Le personnage par son passé",
+                "L'éditeur",
+                "Le traducteur",
+                "Le lecteur réel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mémoire = dimension psychologique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Récit à la première personne au passé (souvent passé simple) situe…",
+              "options": [
+                "Narration après les faits",
+                "Action strictement simultanée",
+                "Futur seul",
+                "Present de narration impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retrospection fréquente du « je » narrateur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Present de narration donne…",
+              "options": [
+                "Impression d'immédiateté",
+                "Impossibilité de dialogues",
+                "Suppression des personnages",
+                "Epilogue obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet de temps réel ou journalier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Prolepse sur la mort d'un personnage crée…",
+              "options": [
+                "Ironie tragique ou suspense",
+                "Absence d'enjeu",
+                "Comique pur",
+                "Documentaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lecteur anticipe ce que vit le personnage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Personnage figé dans le temps (itération) montre…",
+              "options": [
+                "Routine ou enfermement",
+                "Prolepse",
+                "Epilogue",
+                "Index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Habitualité narrative."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Bildungsroman (roman d'apprentissage) suit…",
+              "options": [
+                "Formation du personnage dans le temps",
+                "Un instant unique",
+                "Absence de héros",
+                "Dictionnaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Evolution corrélée à la durée de l'histoire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Changement de temps verbal peut signaler…",
+              "options": [
+                "Analepse ou changement de registre",
+                "Faute obligatoire",
+                "Fin du roman",
+                "Note de l'auteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concordance et passages temporels."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Commentaire liant personnage et temps : montrer…",
+              "options": [
+                "Comment la durée révèle ou transforme le héros",
+                "Seulement les dates",
+                "La marge",
+                "Le ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse attendue en 2nde."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse : roman, personnages et temporalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Etudier « Le roman et le récit » en 2nde combine…",
+              "options": [
+                "Narrateur, focalisation, personnages",
+                "Ordre, durée, analepses du temps",
+                "Nombre de pages uniquement",
+                "Opinion politique sans texte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux piliers du programme : énonciation et temporalité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Roman vs conte : le roman se distingue souvent par…",
+              "options": [
+                "Développement psychologique et temporalité complexe",
+                "Absence de personnages",
+                "Longueur nulle",
+                "Vers obligatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Roman = forme narrative étendue et nuancée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Diegesis (histoire racontée) inclut…",
+              "options": [
+                "Personnages, événements, monde fictionnel",
+                "Seulement l'auteur",
+                "La librairie",
+                "Le cours de maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Univers fictionnel opposé au discours narrateur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Intrigue (plot) désigne…",
+              "options": [
+                "Enchainement des événements",
+                "Style de l'auteur seul",
+                "Couverture",
+                "Traduction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fil des actions et conflits."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour un commentaire composé, après le narrateur on peut…",
+              "options": [
+                "Enchaîner sur personnages ou temps selon le passage",
+                "Ignorer le texte",
+                "Ne citer jamais",
+                "Résumer Wikipedia"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Progression logique de l'analyse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Realisme narratif du XIXe siècle lie…",
+              "options": [
+                "Personnages sociaux et temporalité plausible",
+                "Dragons et magie",
+                "Absence de temps",
+                "Vers alexandrins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Représentation crédible du monde."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Modernité narrative (XXe) explore…",
+              "options": [
+                "Temps fragmenté et subjectivités",
+                "Suppression du récit",
+                "Un seul personnage interdit",
+                "Absence de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Experimentation temporelle et points de vue."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Citation commentée : intégrer le temps, c'est nommer…",
+              "options": [
+                "Analepse, ellipse, scène… si pertinent",
+                "Seulement l'auteur",
+                "Le prix",
+                "La date d'achat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire précis attendu au bac de 2nde."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lecture active du roman demande de croiser…",
+              "options": [
+                "Qui raconte, qui vit quoi, et quand",
+                "Seulement la fin",
+                "La couverture",
+                "Le nombre de mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grille complète d'analyse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif du chapitre « Le roman et le récit » :",
+              "options": [
+                "Analyser les mécanismes du récit romanesque",
+                "Apprendre à imprimer un livre",
+                "Ignorer la fiction",
+                "Remplacer l'étude de la langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétence littéraire centrale de seconde."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

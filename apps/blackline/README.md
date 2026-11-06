@@ -1,58 +1,75 @@
-# BLACKLINE 1.2.0 — Opération Horizon
+# Blackline
 
-FPS solo en TypeScript et Three.js, PC et mobile en paysage. Quatre arènes, quatre modes, huit armes, progression locale et applications embarquées Electron/Capacitor.
+FPS solo en TypeScript et Three.js (WebGL2, géométries et textures procédurales,
+post-traitement à bloom). Quatre modes — match à mort par équipe, domination,
+point à tenir, survie — sur quatre arènes, avec huit familles d'armes, vue
+première ou troisième personne au choix, et progression stockée sur l'appareil.
 
-## Version 1.2.0
+Le jeu est **léger** : aucun service payant, aucun token d'IA, aucun compte
+obligatoire. Les handlers de `api/` répondent tous **410** depuis le retrait de
+la synchronisation en ligne.
 
-- Échelles : un appui sur **MONTER** ou **DESCENDRE** déclenche le trajet. Le bouton suspend/reprend ; le saut décroche. Le sens est déterminé par la position du joueur, sans être inversé par une direction maintenue avant la saisie. Mode manuel disponible ; bouton mobile au centre.
-- Paramètres regroupés : image/énergie, caméra/visée, jeu/assistance et touches PC. Suppression de la limite FPS manuelle. Cadence automatique jusqu’à 120 selon écran/GPU, 30 en économie ; Ultra conservé. Nouvelles options de sensibilité en visée, taille du réticule, zone morte du joystick, échelles automatiques et rechargement automatique. Mouvements et confirmation de touche disposent chacun d’un réglage unifié. Réinitialisation des réglages sans toucher à la progression.
-- Comptes et synchronisation en ligne retirés. Page **Sauvegarde** avec import/export JSON ; progression existante conservée. Les anciennes routes API retournent 410 sans connexion SQL, même si d’anciens secrets sont présents. Migrations SQL historiques conservées sans suppression de données.
-- Arènes : **Nereïs** (port, 120 × 100 m), **Kestrel** (désert, 120 × 100 m), **Sylve** (forêt brumeuse, 136 × 112 m) et **Vulcain** (fonderie et rails, 144 × 112 m). Six échelles et deux bâtiments avec étages/fenêtres par arène.
-- Choix indépendant de **1 à 20 équipiers** et **1 à 20 ennemis**, en plus du joueur. En survie, les équipiers restent entre les vagues et le nombre d’ennemis respecte le choix ; leur santé progresse avec les vagues.
-- Bilan : dégâts réels, ratio, tirs/touches, précision, meilleure série, éliminations à la tête/grenade/corps à corps, soins, ravitaillements, captures, temps sur objectif, XP/crédits et classement des escouades.
-- `.github/workflows/build.yml` vérifie le web et prépare les applications Windows, macOS, Linux, Android et iOS simulateur. Aucun iframe ; les ressources du jeu sont intégrées aux paquets. [Instructions natives](docs/NATIVE-APPS.md).
+## Deux formes, un seul moteur
 
-## Développement
+| Forme | Comment il tourne |
+| --- | --- |
+| Autonome | Build Vite servant `index.html`, dans `dist/` ou sur un hébergement statique |
+| Intégré à mAI | Artefact statique monté par l'hôte sous `/blackline` |
 
-Node.js 24, npm.
-
-```bash
-npm ci
-npm run dev
-npm run typecheck
-npm test
-npm run build
-npm run check:bundle
-npm run export -- /chemin/absolu/BLACKLINE-1.2.0.zip
-```
-
-Le moteur 3D et les pages secondaires se chargent progressivement. Le build produit `dist/`, utilisable avec Sites ou Vercel. `base: './'` permet aussi le chargement depuis les ressources embarquées des applications. Les dépendances natives disposent de leurs propres manifestes et lockfiles dans `apps/`.
-
-### Intégration dans mAI Web
-
-Le jeu est aussi **monté par l'hôte mAI** sous `/blackline` : le build Vite
-produit un chunk d'entrée au nom fixe (`assets/blackline.js`), et l'hôte l'importe
-par ce chemin. Le contrat d'intégration est publié sur `window.blackline` :
+Le point de montage unique est `src/entry.ts` (`mountBlackline`). Il est exposé
+par `src/mount.ts` sous forme d'**objet posé sur `window`** — jamais d'export
+nommé, que Rollup renommerait ou élague :
 
 ```ts
 window.blackline.mount({ container, root, settings });
+window.blackline.unmount();
 ```
 
-- `apps/blackline/src/entry.ts` — le montage partagé (autonome et hôte) ;
-- `apps/blackline/src/mount.ts` — le point d'entrée public du build ;
-- `apps/blackline/src/root.ts` — la racine du jeu (classes et variables CSS).
+Le moteur reste **paresseux** : `import('./game.ts')` est dynamique et
+`scripts/check-bundle.mjs` échoue si le moteur est préchargé avec l'interface.
 
-Le jeu ne touche jamais `<html>` : dans l'hôte, ce document est celui du chat.
-Voir `docs/6-blackline/` dans le dépôt hôte.
+## Démarrer
 
-## Jeu et progression
+`apps/blackline` n'est pas membre du workspace pnpm racine : il a son propre
+`package-lock.json`. Node.js **24** (`engines: >=24 <25`, alors que le dépôt vise
+`>=22`).
 
-Huit armes, optiques transparentes, pistolet ×1,1, caméra première/troisième personne avec choix d’épaule, tenues distinctes pour soi/alliés/ennemis. Cinq emplacements équipés maximum, armes/soins/grenades inclus. Maîtrise jusqu’au niveau 200, achats d’améliorations de dégâts avec pièces ; une pièce toutes les 50 XP de profil. Récompenses quotidiennes et hebdomadaires UTC.
+```sh
+cd apps/blackline
+npm ci
+npm run dev
+```
 
-Sauvegardes locales avec checksum et trois générations ; exportez votre JSON avant de changer d’appareil. Les récompenses et sauvegardes d’un jeu solo local ne sont pas une économie serveur anti-triche.
+La CI, elle, installe depuis la racine avec `npm ci --prefix apps/blackline`.
 
-## Graphismes
+## Commandes
 
-Ultra, matériaux PBR procéduraux, biseaux, façades et végétation détaillées. Profils 4K/8K dans Paramètres, bornés par les dimensions GPU. La cadence réelle, le 8K/120 et la batterie ne sont pas garantis ; une haute résolution reste coûteuse. Aucune validation visuelle GPU n’est disponible dans cette session. Les applications natives ne sont pas des réécritures du moteur en Swift/Kotlin/C++ : elles embarquent le même moteur WebGL avec des interfaces système.
+| Commande (depuis ce dossier) | Action |
+| --- | --- |
+| `npm run dev` / `preview` | Serveur Vite sur `0.0.0.0` |
+| `npm run build` | Bundle vers `dist/` |
+| `npm run typecheck` | `tsc --noEmit` (le `tsconfig` n'inclut que `src`) |
+| `npm test` | Tests du moteur avec le runner Node, pas Vitest (pas de GPU) |
+| `npm run check:bundle` | Nombre de chunks, taille maximale, absence de secret, contrat `window.blackline` |
+| `npm run export` | Archive ZIP du projet |
 
-Voir [validation 1.2.0](docs/RELEASE-1.2.0.md), [déploiement](docs/DEPLOYMENT.md) et [applications](docs/NATIVE-APPS.md).
+## Intégration dans mAI Web
+
+- **Artéfact non versionné** : `public/blackline/` est ignoré par Git. Avant de
+  tester `/blackline` en local, lancer `pnpm run build:blackline` à la racine
+  (build du jeu **puis** re-ancrage de la feuille).
+- **`.blackline-root`** : le jeu écrivait pour posséder le document (`:root`,
+  `html`, `body`, sélecteurs nus). `scripts/build-blackline-css.mjs` ré-ancre
+  chaque sélecteur, convertit `position: fixed` en `absolute` et préfixe les
+  `@keyframes`. `components/blackline/blackline.css` est **généré**.
+- **Le jeu ne touche jamais `<html>`** : classes d'état et variables CSS passent
+  par `src/root.ts`. Un `document.documentElement` dans le jeu est une régression.
+- **Démontage obligatoire** : `Game.dispose()` arrête la boucle et lâche le
+  contexte WebGL (`forceContextLoss`). Sans `unmount`, le navigateur refuse
+  d'ouvrir un contexte suivant et le moteur tourne dans le vide.
+- **Âge** : PEGI 16, redemandé à chaque lancement, **jamais** persisté.
+- **Progression locale**, réglages seuls partagés par compte (`BlacklineSettings`) ;
+  le serveur normalise, l'interface ne recalcule rien.
+
+Contrats et règles détaillés : [`docs/6-blackline/`](../../docs/6-blackline/README.md)
+et les tests hôte `tests/unit/blackline-*.test.ts`.

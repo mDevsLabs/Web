@@ -1,16 +1,29 @@
 import { streamText } from "ai";
-import { DEFAULT_CHAT_MODEL, formatModelName } from "@/lib/ai/models";
+import {
+  DEFAULT_CHAT_MODEL,
+  formatModelName,
+  resolveModelMaxOutput,
+} from "@/lib/ai/models";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { createReasoningDetailsSink } from "@/lib/ai/reasoning-details";
+import {
+  normalizeReasoningLevel,
+  resolveReasoningProviderOptions,
+} from "@/lib/ai/registry/reasoning";
 import { isModelAllowedForTier } from "@/lib/ai/registry/tiers";
 import { webSearch } from "@/lib/ai/tools/web-search";
 import { requireUser } from "@/lib/auth/require-user";
 import { getMaiSessionToken } from "@/lib/auth/session";
+import { buildMemoryContext, joinMemoryBlocks } from "@/lib/chat/memory";
 import { MAI_API_URL } from "@/lib/constants";
 import { recordTokenUsage } from "@/lib/db/queries/chats";
 import { updateSearchQuerySummary } from "@/lib/db/queries/search-history";
 import { getUserPreferences } from "@/lib/db/queries/users";
+import {
+  blocsCompteSynthese,
+  promptSyntheseAvecCompte,
+} from "@/lib/search/summary-personal";
 import {
   collectSummarySources,
   createThinkSplitter,
@@ -18,7 +31,21 @@ import {
   stripThinkTags,
 } from "@/lib/search/summary-stream";
 
-export const maxDuration = 45;
+export const maxDuration = 300;
+
+const EMPTY_SUMMARY =
+  "Les résultats ne contiennent aucune source à synthétiser.";
+
+function sourcesForSummary(results: unknown[]): Record<string, unknown>[] {
+  return results
+    .filter((item): item is Record<string, unknown> => {
+      if (!item || typeof item !== "object") {
+        return false;
+      }
+      return (item as { isDisambiguation?: unknown }).isDisambiguation !== true;
+    })
+    .slice(0, 8);
+}
 
 export interface SummaryTarget {
   snippet?: string;
@@ -67,13 +94,22 @@ export async function POST(request: Request) {
 
     // Résolution de l'utilisateur et de son modèle
     const session = await requireUser();
+    const [preferences, memoryContext] = session
+      ? await Promise.all([
+          getUserPreferences(session.userId).catch(() => null),
+          buildMemoryContext({
+            effectiveAgentId: null,
+            effectiveProjectId: null,
+            isGhostMode: false,
+            tier: session.user.tier,
+            userId: session.userId,
+          }),
+        ])
+      : [null, null];
     let modelId = requestedModelId || DEFAULT_CHAT_MODEL;
 
-    if (!requestedModelId && session) {
-      const prefs = await getUserPreferences(session.userId);
-      if (prefs?.defaultChatModel) {
-        modelId = prefs.defaultChatModel;
-      }
+    if (!requestedModelId && preferences?.defaultChatModel) {
+      modelId = preferences.defaultChatModel;
     }
 
     /**
@@ -97,10 +133,7 @@ export async function POST(request: Request) {
         session?.user.tier ?? "free"
       );
       if (!existe || !autorise) {
-        const prefs = session
-          ? await getUserPreferences(session.userId).catch(() => null)
-          : null;
-        const prefere = prefs?.defaultChatModel;
+        const prefere = preferences?.defaultChatModel;
         const repli =
           prefere &&
           isModelAllowedForTier(prefere, session?.user.tier ?? "free")
@@ -108,6 +141,31 @@ export async function POST(request: Request) {
             : DEFAULT_CHAT_MODEL;
         modelId = repli;
       }
+    }
+
+    const followUp = Boolean(target) || incomingMessages.length > 0;
+    const summarySources = sourcesForSummary(searchResults);
+    if (!followUp && summarySources.length === 0) {
+      const encoder = new TextEncoder();
+      const stream = new ReadableStream<Uint8Array>({
+        start(controller) {
+          controller.enqueue(
+            encoder.encode(
+              encodeSummaryEvent({ delta: EMPTY_SUMMARY, type: "text-delta" })
+            )
+          );
+          controller.enqueue(
+            encoder.encode(encodeSummaryEvent({ type: "done" }))
+          );
+          controller.close();
+        },
+      });
+      return new Response(stream, {
+        headers: {
+          "Cache-Control": "no-cache, no-transform",
+          "Content-Type": "text/event-stream; charset=utf-8",
+        },
+      });
     }
 
     const sessionToken = await getMaiSessionToken();
@@ -180,9 +238,8 @@ Rédige un résumé complet, fluide et bien structuré de cette source en franç
       // les résultats. Ce plafond est donc ici, et il est indépendant du
       // volume affiché — un compte Max n'obtient pas une synthèse plus longue,
       // il obtient une liste plus longue.
-      const formattedResults = searchResults
-        .slice(0, 8)
-        .map((r: any, idx: number) => {
+      const formattedResults = summarySources
+        .map((r, idx) => {
           // L'origine est annoncée au modèle : un article d'encyclopédie est
           // une source de référence, pas une page qui en parle. Sans cette
           // distinction, la synthèse dit « d'après fr.wikipedia.org » comme
@@ -191,26 +248,27 @@ Rédige un résumé complet, fluide et bien structuré de cette source en franç
             r.origin === "wikipedia"
               ? "Article d'encyclopédie (Wikipédia)"
               : "Page web";
-          // Une page de désambiguïsation liste des homonymes : la laisser
-          // dans les sources ferait choisir à la synthèse un sujet au hasard
-          // parmi plusieurs.
-          const avertissement = r.isDisambiguation
-            ? "\nAttention : c'est une page de désambiguïsation (liste de sujets possibles) — n'en tire aucune affirmation précise."
-            : "";
-          return `[Source ${idx + 1}] ${r.title}\nType : ${nature}\nURL: ${r.url}\nExtrait: ${r.snippet}${avertissement}`;
+          return `[Source ${idx + 1}] ${r.title}\nType : ${nature}\nURL: ${r.url}\nExtrait: ${r.snippet}`;
         })
         .join("\n\n");
 
       systemPrompt = `Tu es le moteur d'intelligence mAI Search.
-Ton rôle est de fournir un résumé clair, objectif, sourcé et actualisé basé sur la recherche de l'utilisateur.
+Ton rôle est de fournir un résumé clair, objectif et sourcé à partir des extraits fournis.
 Langue : Français.
 ${lengthInstruction}
-Veille à aller jusqu'au bout de ton analyse et à formuler des phrases complètes et bien terminées.
+Chaque affirmation doit s'appuyer sur un extrait numéroté, cité comme [Source n]. Si les extraits ne permettent pas de l'affirmer, dis-le au lieu d'inventer.
 Chaque source est précédée de sa nature (page web ou article d'encyclopédie) : cite-la en conséquence, et signale explicitement quand une affirmation vient de Wikipédia.
-Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'actualité critique. N'invente rien qui ne soit corroboré.`;
+N'utilise aucune connaissance extérieure aux extraits.`;
 
-      userPrompt = `Recherche : "${query}"\n\nInformations trouvées :\n${formattedResults || "Aucune information préalable fournie."}\n\nRédige la synthèse complète de ces informations en français.`;
+      userPrompt = `Recherche : "${query}"\n\nInformations trouvées :\n${formattedResults}\n\nRédige la synthèse de ces informations en français.`;
     }
+
+    const personal = blocsCompteSynthese({
+      instructions: preferences?.customInstructions ?? null,
+      instructionsEnabled: Boolean(preferences?.enabled),
+      memory: memoryContext ? joinMemoryBlocks(memoryContext) : null,
+    });
+    systemPrompt = promptSyntheseAvecCompte(systemPrompt, personal);
 
     // Préparation des messages pour streamText
     const initialSources = collectSummarySources({
@@ -218,9 +276,9 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
       target,
     });
     const streamOptions: any = {
-      maxOutputTokens: 3000,
+      maxOutputTokens: resolveModelMaxOutput(modelId),
       model,
-      onFinish: async ({ text, usage }: { text: string; usage: any }) => {
+      onFinish: async ({ usage }: { text: string; usage: any }) => {
         // Décompte précis des tokens
         const inputTokens = usage?.inputTokens ?? usage?.promptTokens ?? 0;
         const outputTokens =
@@ -285,17 +343,22 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
           }
         }
 
-        // 3. Mise à jour de l'historique pour le résumé global
-        const answer = stripThinkTags(text);
-        if (!target && searchId && answer && session?.userId) {
-          await updateSearchQuerySummary(searchId, session.userId, answer);
+        // La synthèse et la réflexion sont écrites après la lecture du flux :
+        // `onFinish` peut partir avant que les derniers deltas de réflexion
+        // aient été accumulés.
+      },
+      providerOptions: resolveReasoningProviderOptions(
+        normalizeReasoningLevel(preferences?.reasoningLevel)
+      ),
+      stopWhen: ({ steps }: any) => {
+        const lastStep = steps.at(-1);
+        if (lastStep?.toolCalls && lastStep.toolCalls.length > 0) {
+          return false;
         }
+        return steps.length >= (followUp ? 4 : 1);
       },
-      stopWhen: ({ steps }: any) => steps.length >= 4,
       system: systemPrompt,
-      tools: {
-        webSearch,
-      },
+      ...(followUp ? { tools: { webSearch } } : {}),
     };
 
     if (incomingMessages.length > 0) {
@@ -321,6 +384,15 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
         send({ sources: initialSources, type: "sources" });
         const splitter = createThinkSplitter();
         let sinkSawReasoning = false;
+        let reasoningText = "";
+        let answerText = "";
+        const noterReflexion = (delta: string) => {
+          if (!delta) {
+            return;
+          }
+          reasoningText += delta;
+          send({ delta, type: "reasoning-delta" });
+        };
         // Avant l'appel modèle : le collecteur peut émettre dès le premier
         // chunk, avant que le flux texte ne soit lu.
         reasoningSink.onDelta = (text) => {
@@ -328,7 +400,7 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
             return;
           }
           sinkSawReasoning = true;
-          send({ delta: text, type: "reasoning-delta" });
+          noterReflexion(text);
         };
         const result = streamText(streamOptions);
         const emitPieces = (pieces: ReturnType<typeof splitter.push>) => {
@@ -338,10 +410,11 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
             }
             if (piece.kind === "reasoning") {
               if (!sinkSawReasoning) {
-                send({ delta: piece.delta, type: "reasoning-delta" });
+                noterReflexion(piece.delta);
               }
               continue;
             }
+            answerText += piece.delta;
             send({ delta: piece.delta, type: "text-delta" });
           }
         };
@@ -349,13 +422,22 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
           for await (const part of result.fullStream) {
             if (part.type === "reasoning-delta" && part.text) {
               if (!sinkSawReasoning) {
-                send({ delta: part.text, type: "reasoning-delta" });
+                noterReflexion(part.text);
               }
             } else if (part.type === "text-delta" && part.text) {
               emitPieces(splitter.push(part.text));
             }
           }
           emitPieces(splitter.flush());
+          const answer = stripThinkTags(answerText);
+          if (!target && searchId && answer && session?.userId) {
+            await updateSearchQuerySummary(
+              searchId,
+              session.userId,
+              answer,
+              reasoningText
+            );
+          }
           const steps = await Promise.resolve(result.steps).catch(() => []);
           const finalSources = collectSummarySources({
             initial: searchResults,
@@ -386,6 +468,9 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
         "Content-Type": "text/event-stream; charset=utf-8",
         "X-Model-Id": modelId,
         "X-Model-Name": formatModelName(modelId).name,
+        ...(requestedModelId && modelId !== requestedModelId
+          ? { "X-Model-Substituted": "1" }
+          : {}),
       },
     });
   } catch (error: any) {

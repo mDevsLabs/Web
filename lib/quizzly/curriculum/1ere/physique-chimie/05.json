@@ -1,0 +1,2683 @@
+{
+  "id": "1ere-physique-chimie-05",
+  "year": "1ere",
+  "subject": "physique-chimie",
+  "title": "Mélanges et solutions",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Dissolution",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Cohésion des solides ioniques et moléculaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelles interactions assurent la cohésion d'un solide ionique comme NaCl ?",
+              "options": [
+                "Les interactions électrostatiques attractives entre cations et anions",
+                "Les liaisons covalentes partagées entre atomes voisins",
+                "Les forces gravitationnelles entre les noyaux atomiques",
+                "Les interactions magnétiques créées par le spin électronique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cohésion d'un solide ionique repose sur l'attraction électrostatique (loi de Coulomb) entre les cations et les anions du cristal."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel type d'interaction de van der Waals s'exerce entre deux molécules polaires ?",
+              "options": [
+                "L'interaction de Keesom (dipôle permanent - dipôle permanent)",
+                "L'interaction de London uniquement",
+                "L'interaction nucléaire forte",
+                "La liaison peptidique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les forces de Keesom s'exercent entre dipôles permanents de molécules polaires, assurant une attraction électrostatique mutuelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle condition est indispensable pour former une liaison hydrogène entre deux molécules ?",
+              "options": [
+                "Un atome H lié à N, O ou F et un doublet non liant sur un atome très électronégatif voisin",
+                "Deux atomes de carbone partageant une double liaison covalente",
+                "La présence exclusive d'ions métalliques en solution",
+                "Deux molécules rigoureusement apolaires et symétriques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une liaison hydrogène nécessite un atome d'hydrogène lié à un atome très électronégatif (N, O ou F) et un doublet non liant voisin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Parmi les solides suivants, lequel est un solide moléculaire ?",
+              "options": [
+                "Le saccharose C12H22O11",
+                "Le chlorure de potassium KCl",
+                "Le cuivre métallique Cu",
+                "Le fluorure de calcium CaF2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le saccharose est constitué de molécules indépendantes unies par des liaisons intermoléculaires faibles, formant un solide moléculaire."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles propositions concernant les interactions de van der Waals sont vraies ?",
+              "options": [
+                "Elles sont de nature électrostatique",
+                "Elles sont nettement plus faibles que les liaisons covalentes",
+                "Elles n'existent qu'à des températures supérieures à 1000 °C",
+                "Elles sont responsables de la cohésion de nombreux solides moléculaires"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les interactions de van der Waals sont des forces électrostatiques intermoléculaires faibles mais essentielles à la cohésion moléculaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment varie l'énergie réticulaire d'un solide ionique lorsque la valeur absolue de la charge des ions augmente ?",
+              "options": [
+                "Elle augmente, rendant le solide plus stable et plus difficile à dissocier",
+                "Elle diminue fortement jusqu'à s'annuler",
+                "Elle reste parfaitement constante quelle que soit la charge",
+                "Elle change spontanément de signe pour devenir répulsive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'après la loi de Coulomb, la force d'attraction croît avec le produit des charges, ce qui augmente l'énergie réticulaire du cristal."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi le chlorure de sodium solide NaCl(s) ne conduit-il pas le courant électrique ?",
+              "options": [
+                "Les ions sont immobiles et piégés dans le réseau cristallin",
+                "Le solide ne contient aucune particule chargée",
+                "Les électrons de valence sont totalement détruits",
+                "La tension électrique est systématiquement annulée par les anions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conduction électrique exige des porteurs de charge mobiles. Dans le cristal solide, les ions sont fixés dans le réseau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'électronégativité d'un atome selon l'échelle de Pauling ?",
+              "options": [
+                "Sa capacité à attirer les électrons engagés dans une liaison de covalence",
+                "L'énergie nécessaire pour lui arracher un neutron du noyau",
+                "Le nombre total d'électrons gravitant autour de son noyau",
+                "La vitesse de déplacement de ses électrons de valence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'électronégativité traduit l'aptitude d'un atome à attirer vers lui le doublet d'électrons d'une liaison chimique covalente."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une liaison covalente O-H, comment sont réparties les charges partielles ?",
+              "options": [
+                "Charge partielle négative delta- sur O et positive delta+ sur H",
+                "Charge partielle positive delta+ sur O et négative delta- sur H",
+                "Deux charges positives identiques sur O et H",
+                "Deux charges négatives identiques sur O et H"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oxygène étant plus électronégatif que l'hydrogène, il attire le doublet liant et acquiert une charge partielle négative."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel type d'interaction assure la cohésion du cristal de diiode I2(s) ?",
+              "options": [
+                "Les forces de dispersion de London (van der Waals)",
+                "Les liaisons hydrogène entre atomes d'iode",
+                "Les interactions électrostatiques ioniques géantes",
+                "Les liaisons métalliques par mer d'électrons délocalisés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La molécule I2 étant apolaire, sa cohésion à l'état solide est assurée par les forces de dispersion de London entre dipôles induits."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Polarité des solvants et miscibilité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pourquoi la molécule d'eau H2O est-elle une molécule polaire ?",
+              "options": [
+                "Sa géométrie est coudée et les barycentres des charges positives et négatives ne coïncident pas",
+                "Sa géométrie est strictement linéaire et symétrique",
+                "Elle ne comporte aucune liaison polarisée entre ses atomes",
+                "L'atome d'oxygène possède le même pouvoir attracteur que l'hydrogène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La forme coudée de H2O et la polarité des liaisons O-H font que la somme vectorielle des moments dipolaires n'est pas nulle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi la molécule de dioxyde de carbone CO2 est-elle apolaire ?",
+              "options": [
+                "Sa géométrie linéaire fait coïncider les barycentres des charges positives et négatives",
+                "Les liaisons C=O ne sont pas polarisées",
+                "Le carbone est beaucoup plus électronégatif que l'oxygène",
+                "Elle ne possède aucun électron sur sa couche externe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux dipôles de liaison C=O sont opposés et de même norme ; leur somme vectorielle est nulle, rendant CO2 apolaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Parmi les solvants suivants, lequel est un solvant polaire protique ?",
+              "options": [
+                "L'éthanol CH3-CH2-OH",
+                "Le cyclohexane C6H12",
+                "Le tétrachlorométhane CCl4",
+                "Le benzène C6H6"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'éthanol possède un groupe -OH capable de donner et recevoir des liaisons hydrogène, c'est donc un solvant polaire protique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la propriété de miscibilité pour deux liquides ?",
+              "options": [
+                "Ils forment ensemble un mélange homogène en toutes proportions",
+                "Ils forment obligatoirement deux phases distinctes et superposées",
+                "L'un des liquides se vaporise instantanément au contact de l'autre",
+                "Ils réagissent de manière explosive dès leur mise en contact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux liquides miscibles se mélangent intimement sans séparation de phases, quelle que soit la proportion de chacun."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels solvants parmi les suivants sont polaires ?",
+              "options": [
+                "L'eau pure",
+                "Le méthanol",
+                "Le cyclohexane",
+                "Le pentane"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'eau et le méthanol ont des moments dipolaires permanents non nuls, tandis que le cyclohexane et le pentane sont des alcanes apolaires."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi l'eau et le cyclohexane ne sont-ils pas miscibles ?",
+              "options": [
+                "L'eau est polaire alors que le cyclohexane est un solvant apolaire",
+                "Leurs températures d'ébullition sont strictement identiques",
+                "Le cyclohexane est un solide à température ambiante",
+                "L'eau détruit chimiquement les molécules de cyclohexane"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les molécules polaires d'eau s'associent entre elles par liaisons H et excluent les molécules apolaires de cyclohexane."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi les triglycérides d'une huile végétale ne se mélangent-ils pas à l'eau ?",
+              "options": [
+                "Leurs longues chaînes carbonées apolaires ne peuvent former de liaisons H avec l'eau",
+                "L'huile est un acide fort qui neutralise complètement l'eau",
+                "L'eau se transforme en glace au contact de l'huile",
+                "L'huile s'évapore instantanément au-dessus du mélange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les molécules d'huile sont majoritairement apolaires et hydrophobes, ce qui empêche les interactions favorables avec l'eau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la molécule de tétrachlorométhane CCl4 est-elle apolaire malgré des liaisons C-Cl très polarisées ?",
+              "options": [
+                "Sa géométrie tétraédrique régulière annule le moment dipolaire résultant",
+                "Le chlore a la même électronégativité que le carbone",
+                "La molécule ne possède aucune paire d'électrons",
+                "Le carbone attire plus les électrons que le chlore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La symétrie tétraédrique parfaite de CCl4 fait coïncider les barycentres des charges positives et négatives au centre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lors d'une décantation entre de l'eau (d = 1,00) et du dichlorométhane (d = 1,33), où se situe la phase aqueuse ?",
+              "options": [
+                "Au-dessus de la phase organique car l'eau est moins dense",
+                "En dessous de la phase organique car l'eau est plus dense",
+                "Au milieu d'un mélange parfaitement homogène à une phase",
+                "Sur les parois en formant un anneau solide étanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le liquide de plus faible densité surnage : l'eau (d = 1,00) forme la phase supérieure au-dessus du dichlorométhane (d = 1,33)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel terme qualifie une molécule possédant une partie hydrophile et une partie hydrophobe ?",
+              "options": [
+                "Amphiphile",
+                "Isotrope",
+                "Monochromatique",
+                "Allotropique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une espèce amphiphile (ou tensioactif) comporte une tête polaire hydrophile et une queue carbonée apolaire hydrophobe."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les étapes de la dissolution d'un cristal ionique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans quel ordre chronologique se succèdent les trois étapes de la dissolution d'un solide ionique ?",
+              "options": [
+                "Dissociation, solvatation (hydratation), dispersion",
+                "Dispersion, dissociation, évaporation",
+                "Solvatation, précipitation, fusion",
+                "Condensation, dispersion, liquéfaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dissolution se déroule en trois temps : rupture du réseau (dissociation), entourage par le solvant (solvatation) et répartition (dispersion)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lors de la première étape de dissociation d'un solide ionique dans l'eau ?",
+              "options": [
+                "Les molécules d'eau affaiblissent les liaisons électrostatiques entre les ions du cristal",
+                "Les atomes partagent de nouveaux électrons pour créer des liaisons triples",
+                "Les noyaux des atomes fusionnent sous l'effet de la pression",
+                "Les ions se transforment en gaz et quittent la solution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau possède une permittivité élevée qui atténue fortement les forces coulombiennes maintenant les ions dans le cristal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment s'orientent les molécules d'eau autour d'un cation Na+ lors de l'hydratation ?",
+              "options": [
+                "L'atome d'oxygène (charge delta-) est orienté vers le cation Na+",
+                "Les atomes d'hydrogène (charges delta+) sont orientés vers le cation Na+",
+                "Les molécules d'eau tournent au hasard sans orientation préférentielle",
+                "L'eau évite le cation en créant une zone de vide moléculaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'attraction ion-dipôle oriente le pôle négatif de l'eau (l'atome d'oxygène portant delta-) vers le cation chargé positivement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment s'orientent les molécules d'eau autour d'un anion chlorure Cl- lors de l'hydratation ?",
+              "options": [
+                "Les atomes d'hydrogène (porteurs de charges delta+) sont orientés vers l'anion Cl-",
+                "L'atome d'oxygène (porteur de charge delta-) touche directement l'anion Cl-",
+                "La molécule d'eau s'aligne parallèlement sans interaction avec l'anion",
+                "Les liaisons O-H se rompent pour former des protons libres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'attraction électrostatique oriente les pôles positifs de l'eau (les atomes d'hydrogène portant delta+) vers l'anion négatif."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent correctement la solvatation d'ions dans l'eau ?",
+              "options": [
+                "Les ions sont entourés d'une cage de molécules de solvant",
+                "Elle est stabilisée par des interactions attractives ion-dipôle",
+                "Elle détruit définitivement la charge électrique des ions",
+                "On note les ions sous la forme X+(aq) ou Y-(aq)"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La solvatation forme une sphère de molécules d'eau autour des ions via des interactions ion-dipôle sans altérer leur charge globale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle propriété physique de l'eau explique sa capacité remarquable à dissocier les solides ioniques ?",
+              "options": [
+                "Sa permittivité diélectrique relative très élevée (environ 80 à 20 °C)",
+                "Sa masse molaire extrêmement grande par rapport aux autres solvants",
+                "Sa viscosité presque infinie à température ambiante",
+                "Sa transparence totale à toutes les ondes électromagnétiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La constante diélectrique élevée de l'eau divise par 80 la force électrostatique attractive entre les ions du cristal."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la mention « (aq) » accolée à un ion dans une équation chimique ?",
+              "options": [
+                "L'ion est hydraté, c'est-à-dire entouré de molécules d'eau",
+                "L'ion est sous forme gazeuse à haute pression",
+                "L'ion a précipité au fond du récipient",
+                "L'ion est en équilibre avec un solide pur anhydre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'indice (aq) signifie « aqueux » : l'ion est solvaté par des molécules d'eau dans une solution aqueuse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "À quoi correspond l'étape de dispersion lors de la dissolution ?",
+              "options": [
+                "À la répartition uniforme et désordonnée des ions hydratés dans tout le volume du solvant",
+                "À l'agglomération des ions sous la forme de gros cristaux visibles",
+                "À l'émission de lumière par les molécules de soluté excitées",
+                "Au dépôt des particules lourdes au fond de l'éprouvette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous l'effet de l'agitation thermique, les ions solvatés se dispersent de manière homogène dans tout le solvant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel type d'interaction assure la stabilité de la gaine de solvatation d'un ion en solution aqueuse ?",
+              "options": [
+                "Les interactions ion-dipôle",
+                "Les liaisons métalliques covalentes",
+                "Les forces magnétiques dipolaires de spin",
+                "Les répulsions de Pauli à longue distance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les interactions ion-dipôle entre la charge de l'ion et le moment dipolaire permanent des molécules d'eau stabilisent l'ion solvaté."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi le sel NaCl est-il quasiment insoluble dans le cyclohexane ?",
+              "options": [
+                "Le cyclohexane étant apolaire, il ne peut pas solvater les ions ni affaiblir leur attraction",
+                "Le cyclohexane réagit violemment avec le chlore pour former du gaz toxique",
+                "La température du cyclohexane est obligatoirement inférieure à -50 °C",
+                "Le cyclohexane possède une constante diélectrique supérieure à 500"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un solvant apolaire ne peut établir d'interactions ion-dipôle suffisantes pour compenser l'énergie réticulaire du cristal ionique."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Équations de dissolution et stœchiométrie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est l'équation de dissolution du chlorure de sodium NaCl(s) dans l'eau ?",
+              "options": [
+                "NaCl(s) -> Na+(aq) + Cl-(aq)",
+                "NaCl(s) -> Na(s) + Cl2(g)",
+                "NaCl(s) + H2O -> NaOH(aq) + HCl(aq)",
+                "2 NaCl(s) -> Na2^2+(aq) + Cl2^2-(aq)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chlorure de sodium se dissocie en solution aqueuse en ions sodium Na+(aq) et ions chlorure Cl-(aq)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'équation correcte de dissolution du sulfate de sodium Na2SO4(s) dans l'eau ?",
+              "options": [
+                "Na2SO4(s) -> 2 Na+(aq) + SO4^2-(aq)",
+                "Na2SO4(s) -> Na2^2+(aq) + SO4^2-(aq)",
+                "Na2SO4(s) -> 2 Na+(aq) + S^2-(aq) + 4 O^2-(aq)",
+                "Na2SO4(s) -> Na+(aq) + 2 SO4^-(aq)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque entité Na2SO4 libère deux cations sodium Na+ et un anion polyatomique sulfate SO4^2-."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est l'équation de dissolution du chlorure de fer(III) FeCl3(s) dans l'eau ?",
+              "options": [
+                "FeCl3(s) -> Fe3+(aq) + 3 Cl-(aq)",
+                "FeCl3(s) -> Fe2+(aq) + 2 Cl-(aq)",
+                "FeCl3(s) -> Fe3+(aq) + Cl3^3-(aq)",
+                "FeCl3(s) -> Fe(s) + 3/2 Cl2(g)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le solide FeCl3 est constitué d'ions fer(III) Fe3+ et d'ions chlorure Cl- dans un rapport 1 pour 3."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est l'équation de dissolution du nitrate de cuivre(II) Cu(NO3)2(s) ?",
+              "options": [
+                "Cu(NO3)2(s) -> Cu2+(aq) + 2 NO3-(aq)",
+                "Cu(NO3)2(s) -> Cu+(aq) + NO3^-(aq)",
+                "Cu(NO3)2(s) -> Cu2+(aq) + N2(g) + 3 O2(g)",
+                "Cu(NO3)2(s) -> Cu^2-(aq) + 2 NO3^+(aq)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cu(NO3)2 libère un cation cuivre(II) Cu2+ et deux anions nitrate NO3- par mole de solide dissous."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles lois fondamentales doivent être respectées dans toute équation de dissolution ?",
+              "options": [
+                "La conservation des éléments chimiques",
+                "La conservation de la charge électrique globale",
+                "La conservation du volume total liquide",
+                "L'invariance obligatoire de la température"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Comme toute équation de transformation chimique, l'équation de dissolution conserve les éléments et la charge électrique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est l'équation de dissolution du carbonate de calcium CaCO3(s) ?",
+              "options": [
+                "CaCO3(s) -> Ca2+(aq) + CO3^2-(aq)",
+                "CaCO3(s) -> Ca+(aq) + C^4+(aq) + 3 O^2-(aq)",
+                "CaCO3(s) -> Ca2+(aq) + CO2(g) + O^2-(aq)",
+                "CaCO3(s) -> Ca(s) + C(s) + 3/2 O2(g)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le carbonate de calcium se dissocie en ions calcium Ca2+ et ions carbonate CO3^2-."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est l'équation de dissolution du sulfate d'aluminium Al2(SO4)3(s) ?",
+              "options": [
+                "Al2(SO4)3(s) -> 2 Al3+(aq) + 3 SO4^2-(aq)",
+                "Al2(SO4)3(s) -> Al2^3+(aq) + (SO4)3^3-(aq)",
+                "Al2(SO4)3(s) -> 3 Al2+(aq) + 2 SO4^3-(aq)",
+                "Al2(SO4)3(s) -> 2 Al(s) + 3 S(s) + 6 O2(g)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dissociation d'une mole de Al2(SO4)3 donne 2 moles d'ions Al3+ et 3 moles d'ions SO4^2- (charges : +6 et -6)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est l'équation de dissolution du phosphate de sodium Na3PO4(s) ?",
+              "options": [
+                "Na3PO4(s) -> 3 Na+(aq) + PO4^3-(aq)",
+                "Na3PO4(s) -> Na3^3+(aq) + PO4^3-(aq)",
+                "Na3PO4(s) -> 3 Na+(aq) + P^3-(aq) + 4 O^2-(aq)",
+                "Na3PO4(s) -> Na+(aq) + 3 PO4^-(aq)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le phosphate de sodium se dissocie en libérant 3 ions Na+ pour un ion phosphate PO4^3-."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une solution obtenue en dissolvant un solide ionique neutre, que vaut la charge électrique totale des ions en solution ?",
+              "options": [
+                "Rigoureusement zéro (électroneutralité de la solution)",
+                "Toujours strictement positive",
+                "Toujours strictement négative",
+                "Égale à la masse molaire du solvant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une solution est toujours électriquement neutre : la somme des charges positives compense exactement la somme des charges négatives."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est l'équation de dissolution du permanganate de potassium KMnO4(s) ?",
+              "options": [
+                "KMnO4(s) -> K+(aq) + MnO4-(aq)",
+                "KMnO4(s) -> K+(aq) + Mn2+(aq) + 4 O^2-(aq)",
+                "KMnO4(s) -> K-(aq) + MnO4+(aq)",
+                "KMnO4(s) -> K(s) + Mn(s) + 2 O2(g)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "KMnO4 se sépare en ions potassium K+ incolores et ions permanganate MnO4- d'un violet intense."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Solubilité et saturation d'une solution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment définit-on la solubilité notée s d'un soluté dans un solvant ?",
+              "options": [
+                "La quantité ou masse maximale de soluté que l'on peut dissoudre par litre de solution à une température donnée",
+                "Le temps nécessaire pour dissoudre un gramme de soluté sous forte agitation",
+                "Le volume minimal de liquide nécessaire pour mouiller la surface d'un solide",
+                "Le pourcentage massique d'impuretés toléré dans un cristal pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solubilité s représente la concentration maximale du soluté en solution avant apparition d'un précipité à température fixée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans quelle unité s'exprime couramment la solubilité massique d'une espèce ?",
+              "options": [
+                "En g/L (ou g.L^-1)",
+                "En mol.s^-1",
+                "En Pascals (Pa)",
+                "En Joules par mole (J/mol)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solubilité massique est la masse maximale dissoute par litre de solution, exprimée usuellement en grammes par litre (g/L)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quand qualifie-t-on une solution de « saturée » ?",
+              "options": [
+                "Lorsque le solvant ne peut plus dissoudre de soluté supplémentaire et qu'un dépôt solide persiste",
+                "Lorsque la solution a été portée à son point d'ébullition",
+                "Lorsque la solution ne contient que des molécules de solvant pur",
+                "Lorsque la couleur de la solution devient totalement noire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une solution est saturée lorsqu'elle a atteint sa concentration maximale en soluté dissous ; tout ajout forme un dépôt non dissous."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment évolue généralement la solubilité d'un solide ionique dans l'eau quand la température s'élève ?",
+              "options": [
+                "Elle augmente généralement",
+                "Elle diminue systématiquement jusqu'à zéro",
+                "Elle reste rigoureusement constante à 0,1 % près",
+                "Elle s'annule dès que la température dépasse 40 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour la majorité des solides ioniques, l'agitation thermique favorise la dissociation du cristal et augmente la solubilité."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles propositions relatives à une solution saturée en présence de solide non dissous sont vraies ?",
+              "options": [
+                "La concentration en soluté dans le liquide surnageant est égale à la solubilité",
+                "Il existe un équilibre dynamique entre le solide et les espèces dissoutes",
+                "Le liquide continue de dissoudre tout le solide si on attend 24 heures sans chauffer",
+                "Si on filtre le mélange, le filtrat reste à saturation"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "À saturation, la concentration du liquide vaut s, l'échange solide/solution est en équilibre dynamique et le filtrat reste saturé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La solubilité du sel NaCl à 20 °C est de 360 g/L. Si on ajoute 400 g de NaCl dans 1,0 L d'eau, quelle masse de solide ne se dissout pas ?",
+              "options": ["40 g", "360 g", "400 g", "0 g (tout se dissout)"],
+              "correctAnswers": [0],
+              "explanation": "Seuls 360 g se dissolvent dans 1 L d'eau ; la masse restante forme un dépôt non dissous de 400 - 360 = 40 g."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si la solubilité molaire d'un composé vaut s = 0,020 mol/L et sa masse molaire M = 150 g/mol, quelle est sa solubilité massique ?",
+              "options": ["3,0 g/L", "7,5 g/L", "0,020 g/L", "300 g/L"],
+              "correctAnswers": [0],
+              "explanation": "La relation est s_massique = s_molaire * M = 0,020 mol/L * 150 g/mol = 3,0 g/L."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si l'on refroidit lentement une solution saturée chaude préparée sans solide en excès ?",
+              "options": [
+                "La solubilité diminuant, l'excès de soluté cristallise et précipite",
+                "La solution s'évapore instantanément en totalité",
+                "Le soluté disparaît définitivement par réaction nucléaire",
+                "La concentration du soluté dissous double spontanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le refroidissement abaisse la solubilité : la quantité de soluté qui ne peut plus rester dissoute recristallise sous forme solide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi qualifie-t-on l'équilibre à saturation de « dynamique » ?",
+              "options": [
+                "Des ions précipitent au même rythme que des ions du solide passent en solution",
+                "Le récipient se déplace spontanément sur la paillasse",
+                "La masse totale du solide diminue indéfiniment au cours du temps",
+                "Les molécules d'eau sont décomposées en gaz dihydrogène et dioxygène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'équilibre, la vitesse de dissolution est rigoureusement égale à la vitesse de cristallisation : macroscopiquement rien ne change."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un composé dont la solubilité dans l'eau est inférieure à 0,01 g/L est qualifié de :",
+              "options": [
+                "Quasiment insoluble (ou insoluble)",
+                "Infiniment miscible",
+                "Solvant universel",
+                "Tensioactif moussant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une espèce ayant une solubilité négligeable (inférieure à 10^-2 g/L) est considérée comme insoluble en pratique."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Dissolution des solides moléculaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Par quel mécanisme le saccharose (sucre de table) se dissout-il abondamment dans l'eau ?",
+              "options": [
+                "Ses nombreux groupements -OH forment des liaisons hydrogène avec les molécules d'eau",
+                "Il se dissocie en ions H+ et en anions saccharate très réactifs",
+                "Il réagit chimiquement avec l'eau pour former de l'éthanol et du CO2",
+                "Il forme un alliage métallique liquide avec l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les huit groupes hydroxyles -OH du saccharose établissent un réseau dense de liaisons hydrogène avec les molécules d'eau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'équation modélisant la dissolution du glucose solide C6H12O6(s) dans l'eau ?",
+              "options": [
+                "C6H12O6(s) -> C6H12O6(aq)",
+                "C6H12O6(s) -> 6 C(s) + 6 H2(g) + 3 O2(g)",
+                "C6H12O6(s) -> 6 C4+(aq) + 12 H+(aq) + 6 O2-(aq)",
+                "C6H12O6(s) + H2O -> C6H14O7(aq)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lors de la dissolution d'un solide moléculaire, les molécules restent intactes et sont simplement dispersées et solvatées : C6H12O6(aq)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi le diiode I2 solide est-il très peu soluble dans l'eau mais très soluble dans le cyclohexane ?",
+              "options": [
+                "Le diiode et le cyclohexane sont tous deux apolaires, alors que l'eau est très polaire",
+                "Le diiode réagit avec l'eau en détruisant ses liaisons covalentes",
+                "Le cyclohexane contient de l'iode à l'état naturel",
+                "La molécule de diiode est un ion chargé positivement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon la règle « qui se ressemble s'assemble », un soluté apolaire comme I2 se dissout bien dans un solvant apolaire comme le cyclohexane."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel adage de chimie résume l'affinité entre un soluté et un solvant lors de la dissolution ?",
+              "options": [
+                "Les semblables dissolvent les semblables (qui se ressemble s'assemble)",
+                "Tout ce qui brille est soluble dans l'eau",
+                "Les contraires s'attirent pour former des solutions",
+                "Seuls les liquides denses dissolvent les solides légers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les espèces polaires se dissolvent dans les solvants polaires, et les espèces apolaires dans les solvants apolaires."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques structurales d'une molécule favorisent sa dissolution dans l'eau ?",
+              "options": [
+                "La présence de groupements polaires capables de former des liaisons hydrogène (-OH, -NH2)",
+                "Un moment dipolaire permanent élevé",
+                "Une immense chaîne carbonée totalement hydrogénée et sans hétéroatome",
+                "Une faible masse moléculaire par rapport au nombre de groupements hydrophiles"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les groupes hydrophiles et polaires favorisent la solubilité dans l'eau, contrairement aux longues chaînes carbonées apolaires."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi les matières plastiques comme le polyéthylène ne se dissolvent-elles pas dans l'eau ?",
+              "options": [
+                "Ce sont de très longues macromolécules apolaires sans affinité pour l'eau polaire",
+                "Elles contiennent des métaux lourds qui font geler l'eau instantanément",
+                "Leurs liaisons covalentes sont détruites par la lumière du jour",
+                "Leur température de fusion est égale à 0 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le polyéthylène est constitué d'interminables chaînes d'alcanes purement apolaires que l'eau ne peut pas solvater."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment peut-on considérablement augmenter la solubilité du diiode I2 dans l'eau sans solvant organique ?",
+              "options": [
+                "En ajoutant des ions iodure I- pour former l'anion triiodure I3-(aq) très soluble",
+                "En faisant bouillir l'eau jusqu'à évaporation complète",
+                "En ajoutant des morceaux de paraffine solide dans le récipient",
+                "En exposant la solution à un champ magnétique continu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réaction I2 + I- -> I3- produit l'ion complexe triiodure, qui étant chargé est remarquablement soluble dans l'eau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une solution aqueuse de sucre (saccharose) conduit-elle le courant électrique ?",
+              "options": [
+                "Non, car le sucre forme une solution moléculaire dépourvue d'ions mobiles",
+                "Oui, aussi bien qu'une solution concentrée de chlorure de sodium",
+                "Oui, car les molécules de sucre possèdent des charges électriques libres",
+                "Seulement si l'eau est portée à une température négative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les molécules de saccharose dissoutes sont électriquement neutres ; en l'absence d'ions, la solution n'est pas conductrice."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi l'urée (NH2)2CO est-elle très soluble dans l'eau ?",
+              "options": [
+                "Elle possède des atomes N et O et des liaisons N-H formant de multiples liaisons H avec l'eau",
+                "Elle est constituée d'ions U+ et Rea- dans un réseau cubique",
+                "C'est un solvant gazeux comprimé qui se liquéfie dans l'eau",
+                "Elle réagit avec l'eau en dégageant de l'uranium métallique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les groupes donneurs N-H et accepteurs C=O permettent à l'urée de s'intégrer parfaitement au réseau de liaisons H de l'eau."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que deviennent les forces de van der Waals maintenant les molécules dans un cristal lors de sa dissolution ?",
+              "options": [
+                "Elles sont rompues et remplacées par de nouvelles interactions entre soluté et solvant",
+                "Elles se renforcent et forment un gel solide indestructible",
+                "Elles se transforment en forces nucléaires d'interaction forte",
+                "Elles restent inchangées et les molécules restent collées entre elles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dissolution rompt les interactions soluté-soluté pour créer de nouvelles interactions soluté-solvant plus favorables."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Solubilité des gaz et liquides",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment évolue la solubilité de la majorité des gaz dans l'eau lorsque la température augmente ?",
+              "options": [
+                "Elle diminue (le gaz s'échappe de la solution)",
+                "Elle augmente de manière exponentielle",
+                "Elle reste parfaitement constante",
+                "Elle oscille périodiquement entre zéro et l'infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dissolution d'un gaz est un processus exothermique ; élever la température favorise le dégazage (dégagement gazeux)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment varie la solubilité d'un gaz dans un liquide en fonction de la pression du gaz au-dessus du liquide (loi de Henry) ?",
+              "options": [
+                "Elle est proportionnelle à la pression partielle du gaz",
+                "Elle est inversement proportionnelle au carré de la pression",
+                "Elle est totalement indépendante de la pression",
+                "Elle diminue dès que la pression dépasse 1 bar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'après la loi de Henry, la quantité de gaz dissous à saturation est proportionnelle à la pression partielle de ce gaz."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi observe-t-on un dégagement gazeux lorsqu'on débouche une bouteille d'eau gazeuse ?",
+              "options": [
+                "La chute de pression diminue la solubilité du CO2, qui quitte la phase liquide",
+                "La température de la bouteille augmente de 50 °C instantanément",
+                "L'eau liquide se transforme spontanément en vapeur",
+                "L'oxygène de l'air détruit les molécules de dioxyde de carbone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'ouverture, la pression de CO2 chute de plusieurs bars à la pression atmosphérique, abaissant sa solubilité : des bulles se forment."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi les poissons risquent-ils l'asphyxie dans une eau de rivière stagnante en période de canicule ?",
+              "options": [
+                "La solubilité du dioxygène O2 dissous dans l'eau diminue avec la hausse de température",
+                "L'eau chaude décompose les branchies des poissons par réaction acide",
+                "Le dioxygène gazeux se transforme en diazote toxique sous l'effet du soleil",
+                "L'eau s'évapore et la pression atmosphérique devient nulle au sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau chaude retient moins de dioxygène dissous que l'eau froide, ce qui réduit la quantité d'O2 disponible pour la respiration aquatique."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels paramètres influencent directement la solubilité d'un gaz dans l'eau ?",
+              "options": [
+                "La température du liquide",
+                "La pression partielle du gaz au contact de la solution",
+                "La nature chimique du gaz (sa capacité à réagir ou former des liaisons avec l'eau)",
+                "La couleur des parois du récipient"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La température, la pression partielle et la polarité/réactivité du gaz régissent sa solubilité dans l'eau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi le chlorure d'hydrogène gazeux HCl est-il extrêmement soluble dans l'eau ?",
+              "options": [
+                "Il réagit totalement avec l'eau pour former des ions H3O+ et Cl-",
+                "C'est un gaz noble qui ne subit aucune interaction",
+                "Sa molécule est rigoureusement symétrique et apolaire",
+                "Il gèle spontanément dès qu'il touche la surface de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "HCl est un acide fort qui s'ionise complètement dans l'eau : HCl(g) + H2O -> H3O+(aq) + Cl-(aq), ce qui le rend très soluble."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi le méthanol CH3OH est-il miscible à l'eau en toutes proportions ?",
+              "options": [
+                "Sa courte chaîne carbonée n'entrave pas les fortes liaisons H formées par son groupe -OH avec l'eau",
+                "C'est une molécule ionique cristallisée à 20 °C",
+                "Il a exactement la même masse molaire que l'eau pure",
+                "Il ne possède aucun atome d'hydrogène sur sa structure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le groupe polaire -OH est prépondérant sur la petite chaîne méthyle, permettant une miscibilité totale avec l'eau par liaisons H."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi l'octan-1-ol (alcool à 8 carbones) est-il très peu soluble dans l'eau ?",
+              "options": [
+                "Sa longue chaîne carbonée hydrophobe l'emporte largement sur le caractère hydrophile du seul groupe -OH",
+                "Il ne possède aucun groupe fonctionnel oxygéné",
+                "Il est plus dense que le plomb liquide",
+                "Il se transforme en solide ionique insoluble au contact de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La longue chaîne carbonée apolaire à 8 atomes de carbone rend la molécule globalement hydrophobe et quasiment insoluble dans l'eau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une émulsion en chimie des mélanges ?",
+              "options": [
+                "Une dispersion hétérogène de fines gouttelettes d'un liquide dans un autre liquide non miscible",
+                "Une solution limpide et homogène de deux solides cristallisés",
+                "Un gaz comprimé sous forme d'un solide transparent",
+                "Une réaction chimique produisant un dégagement de flammes vives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une émulsion (comme la vinaigrette ou le lait) est un mélange macroscopiquement hétérogène de deux liquides non miscibles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le rôle d'un émulsifiant comme la lécithine dans la mayonnaise ?",
+              "options": [
+                "Stabiliser les gouttelettes d'huile dispersées dans l'eau grâce à sa nature amphiphile",
+                "Évaporer l'eau pour ne conserver que l'huile pure",
+                "Transformer les molécules d'huile en molécules de vinaigre",
+                "Augmenter la température du mélange jusqu'à ébullition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'émulsifiant possède une partie hydrophile et une partie lipophile qui se place à l'interface huile/eau pour stabiliser l'émulsion."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Aspects énergétiques et thermiques de la dissolution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une dissolution qui provoque un abaissement de la température du mélange ?",
+              "options": [
+                "Endothermique",
+                "Exothermique",
+                "Athermique",
+                "Isentropique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une transformation endothermique absorbe de la chaleur du milieu extérieur, ce qui entraîne une baisse de la température mesurée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une dissolution qui dégage de la chaleur et élève la température de la solution ?",
+              "options": [
+                "Exothermique",
+                "Endothermique",
+                "Athermique",
+                "Cryoscopique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une transformation exothermique libère de l'énergie thermique vers le milieu extérieur, augmentant sa température."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La dissolution de l'hydroxyde de sodium NaOH(s) dans l'eau s'accompagne d'un fort dégagement de chaleur. Elle est :",
+              "options": [
+                "Fortement exothermique",
+                "Fortement endothermique",
+                "Rigoureusement athermique",
+                "Une fusion nucléaire spontanée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hydratation des ions Na+ et HO- libère plus d'énergie que n'en nécessite la rupture du cristal : la dissolution est exothermique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La dissolution du nitrate d'ammonium NH4NO3(s) dans l'eau fait chuter brutalement la température. Elle est :",
+              "options": [
+                "Endothermique",
+                "Exothermique",
+                "Athermique",
+                "Combustive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dissociation du réseau cristallin de NH4NO3 consomme plus d'énergie que l'hydratation n'en libère : le milieu se refroidit."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles composantes énergétiques déterminent le bilan thermique global de la dissolution d'un cristal ionique ?",
+              "options": [
+                "L'énergie réticulaire à fournir pour dissocier les ions du réseau cristallin (coût endothermique)",
+                "L'énergie de solvatation/hydratation libérée lorsque les ions s'entourent d'eau (gain exothermique)",
+                "L'énergie cinétique de rotation de la Terre",
+                "L'énergie potentielle gravitationnelle des molécules de bécher"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le bilan dépend de la compétition entre l'énergie réticulaire (endothermique) et l'énergie d'hydratation (exothermique)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si l'énergie libérée par l'hydratation des ions est supérieure à l'énergie réticulaire du cristal, la dissolution est globalement :",
+              "options": [
+                "Exothermique",
+                "Endothermique",
+                "Athermique",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système libère l'excédent d'énergie vers le milieu sous forme de chaleur : la dissolution est exothermique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel dispositif de premiers secours utilise une dissolution endothermique pour soulager les traumatismes ?",
+              "options": [
+                "La poche de froid instantané (contenant de l'eau et du nitrate d'ammonium ou de l'urée)",
+                "La couverture de survie métallisée",
+                "Le pansement hémostatique stérile",
+                "Le spray désinfectant alcoolisé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En brisant la capsule d'eau intérieure, la dissolution endothermique du sel abaisse rapidement la température de la poche."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une dissolution qui ne s'accompagne d'aucune variation mesurable de température ?",
+              "options": [
+                "Athermique",
+                "Sublimatoire",
+                "Pyrotechnique",
+                "Polytropique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une transformation athermique n'absorbe ni ne dégage de chaleur globale (bilan thermique nul)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la dissolution du chlorure de sodium NaCl dans l'eau ne produit-elle qu'une variation de température quasi imperceptible ?",
+              "options": [
+                "L'énergie réticulaire nécessaire et l'énergie d'hydratation libérée se compensent quasiment",
+                "NaCl ne se dissout pas du tout dans l'eau",
+                "Le thermomètre ne peut pas mesurer la température de l'eau salée",
+                "La réaction détruit instantanément toute chaleur produite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour NaCl, l'énergie d'hydratation compense presque exactement l'énergie réticulaire, rendant la dissolution quasi athermique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lorsqu'on sépare les ions d'un cristal pour les éloigner à l'infini dans le vide, l'opération :",
+              "options": [
+                "Nécessite toujours un apport d'énergie (processus endothermique)",
+                "Libère toujours une immense quantité de lumière",
+                "Se fait spontanément sans aucune force appliquée",
+                "Refroidit l'ensemble de l'Univers de 10 degrés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rompre les liaisons électrostatiques attractives entre les ions exige de fournir de l'énergie (égale à l'énergie réticulaire)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Extraction par solvant et partage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le principe d'une extraction liquide-liquide par solvant ?",
+              "options": [
+                "Transférer sélectivement une espèce dissoute d'un solvant initial vers un solvant extracteur non miscible",
+                "Chauffer un mélange jusqu'à évaporation totale de toutes les espèces présentes",
+                "Faire précipiter tous les composés sous forme d'un solide noir",
+                "Électrolyser la solution pour recueillir des gaz aux électrodes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'extraction liquide-liquide repose sur la différence de solubilité d'une espèce entre deux solvants non miscibles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle condition impérative doit remplir le solvant extracteur vis-à-vis du solvant de départ ?",
+              "options": [
+                "Il doit être totalement non miscible avec le solvant de départ",
+                "Il doit avoir exactement la même masse volumique que le solvant initial",
+                "Il doit avoir une température d'ébullition supérieure à 300 °C",
+                "Il doit réagir chimiquement avec l'eau en moussant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour pouvoir séparer les phases par décantation, les deux solvants doivent impérativement être non miscibles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour extraire le diiode I2 d'une solution aqueuse, quel solvant parmi les suivants est le plus judicieux ?",
+              "options": [
+                "Le cyclohexane",
+                "L'éthanol",
+                "L'eau pure",
+                "L'acétone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cyclohexane est non miscible à l'eau et le diiode y est beaucoup plus soluble que dans l'eau en raison de leur nature apolaire commune."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle verrerie de laboratoire utilise-t-on pour réaliser une extraction liquide-liquide ?",
+              "options": [
+                "Une ampoule à décanter",
+                "Une fiole jaugée",
+                "Un ballon à fond rond surmonté d'un réfrigérant",
+                "Une pipette graduée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ampoule à décanter permet d'agiter les deux solvants puis de séparer facilement les deux phases liquides superposées."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels critères déterminent le choix d'un bon solvant extracteur pour extraire une espèce E d'une solution aqueuse ?",
+              "options": [
+                "L'espèce E doit être nettement plus soluble dans le solvant extracteur que dans l'eau",
+                "Le solvant extracteur doit être non miscible à l'eau",
+                "Le solvant extracteur doit être le plus volatil possible pour faciliter son élimination ultérieure",
+                "Le solvant extracteur doit obligatoirement être coloré en rouge vif"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Un bon solvant extracteur est non miscible à l'eau, dissout très bien l'espèce ciblée et s'évapore facilement lors de l'étape finale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi doit-on dégazer régulièrement l'ampoule à décanter lors de l'agitation ?",
+              "options": [
+                "Pour évacuer la surpression créée par la vaporisation partielle du solvant organique volatil",
+                "Pour faire entrer de l'oxygène nécessaire à la précipitation",
+                "Pour aspirer l'excès de liquide vers l'extérieur",
+                "Pour éviter que la verrerie ne change de couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'agitation et la chaleur des mains augmentent la pression des vapeurs de solvant volatil ; dégazer évite l'éjection du bouchon."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si on utilise un solvant organique de densité d = 0,70 avec de l'eau (d = 1,00), où se trouve la phase organique dans l'ampoule ?",
+              "options": [
+                "Dans la phase supérieure car sa densité est plus faible que celle de l'eau",
+                "Dans la phase inférieure au niveau du robinet",
+                "Elle disparaît totalement par dissolution dans le verre",
+                "Elle reste collée sous forme de billes au centre de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le liquide le moins dense (d = 0,70 < 1,00) constitue toujours la phase supérieure surnageante."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour extraire une espèce, est-il plus efficace de faire une seule extraction avec 30 mL ou trois extractions successives avec 10 mL ?",
+              "options": [
+                "Trois extractions avec 10 mL de solvant permettent d'extraire une plus grande masse totale d'espèce",
+                "Une seule extraction avec 30 mL est toujours infiniment plus efficace",
+                "Les deux protocoles donnent exactement le même résultat au milligramme près",
+                "Aucune extraction ne fonctionne avec un volume inférieur à 100 mL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fractionnement du volume de solvant en plusieurs extractions successives optimise le déplacement d'équilibre et le rendement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le coefficient de partage K d'un soluté entre deux solvants 1 et 2 à l'équilibre ?",
+              "options": [
+                "Le rapport des concentrations du soluté dans les deux phases : K = C1 / C2",
+                "La différence entre les températures d'ébullition des deux solvants",
+                "Le produit des volumes des deux phases liquides en présence",
+                "Le temps nécessaire pour que la décantation s'achève"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le coefficient de partage K est la constante d'équilibre caractérisant la répartition du soluté entre les deux solvants à l'équilibre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle opération réalise-t-on sur la phase organique après extraction pour éliminer les traces d'eau résiduelles ?",
+              "options": [
+                "L'ajout d'un agent desséchant solide anhydre comme le sulfate de magnésium MgSO4",
+                "Un lavage vigoureux avec de l'eau distillée glacée",
+                "L'ajout de sel de table non purifié",
+                "Une filtration sous vide sans aucun solide ajouté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un solide anhydre (MgSO4 ou Na2SO4 anhydre) capte les molécules d'eau dissoutes dans la phase organique avant filtration."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan et synthèses sur les dissolutions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lors de la dissolution du gaz chlorure d'hydrogène HCl(g) dans l'eau ?",
+              "options": [
+                "Une réaction chimique totale avec l'eau formant une solution d'acide chlorhydrique (H3O+ + Cl-)",
+                "Une simple dispersion moléculaire de molécules HCl intactes sans aucune ionisation",
+                "Une précipitation immédiate de chlorure d'hydrogène sous forme de cristaux métalliques",
+                "Une décomposition en gaz dichlore et gaz dihydrogène sans mise en solution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dissolution de HCl s'accompagne d'une réaction d'ionisation complète avec l'eau, formant des ions hydronium H3O+ et chlorure Cl-."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle propriété des ions en solution permet d'expliquer la conductivité électrique des solutions électrolytiques ?",
+              "options": [
+                "Leur mobilité et leur capacité à se déplacer sous l'action d'un champ électrique",
+                "Leur couleur vive qui émet des photons conducteurs",
+                "Leur masse molaire qui déforme le champ gravitationnel local",
+                "Leur capacité à absorber la lumière infrarouge émise par le solvant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ions solvatés sont des porteurs de charge libres de se mouvoir vers les électrodes sous l'action d'une différence de potentiel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le sulfate de baryum BaSO4 a une solubilité de 2,5 mg/L. Que se passe-t-il si l'on mélange des ions Ba2+ et SO4^2- à 0,1 mol/L ?",
+              "options": [
+                "Il se forme immédiatement un précipité blanc de BaSO4(s)",
+                "La solution reste parfaitement limpide et incolore sans solide",
+                "Le liquide commence à bouillir spontanément à 20 °C",
+                "Les ions se transforment en gaz baryum inflammable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La concentration dépasse très largement la limite de solubilité de BaSO4 : le solide précipite immédiatement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel terme qualifie un composé solide qui absorbe l'humidité de l'air jusqu'à s'y dissoudre complètement ?",
+              "options": [
+                "Diquescent",
+                "Hydrophobe",
+                "Fluorescent",
+                "Sublimable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un solide déliquescent (comme NaOH ou CaCl2) capte tellement la vapeur d'eau atmosphérique qu'il finit par former une solution liquide."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels facteurs expérimentaux permettent d'accélérer la vitesse de dissolution d'un solide dans l'eau ?",
+              "options": [
+                "Broyer le solide en poudre fine pour augmenter la surface de contact",
+                "Agiter vigoureusement le mélange",
+                "Chauffer le solvant pour augmenter l'agitation thermique",
+                "Placer le bécher dans l'obscurité totale"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La surface de contact, l'agitation et la température accélèrent la cinétique de dissolution en favorisant la rencontre soluté-solvant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La solubilité s d'une espèce dépend-elle du volume de solvant dans lequel on effectue le test ?",
+              "options": [
+                "Non, la solubilité est une grandeur intensive indépendante du volume de solvant",
+                "Oui, elle double à chaque fois qu'on ajoute 100 mL d'eau",
+                "Oui, elle devient nulle dans un grand récipient",
+                "Elle ne dépend que de la forme géométrique du bécher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solubilité est une propriété caractéristique intensive d'un couple soluté/solvant à une température donnée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle grandeur physique reste rigoureusement conservée lors de la dissolution sans réaction chimique annexe ?",
+              "options": [
+                "La masse totale du système (masse soluté + masse solvant)",
+                "Le volume total de liquide au millilitre près",
+                "La couleur exacte du solvant initial",
+                "La constante diélectrique du solvant pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La masse se conserve toujours (loi de Lavoisier), alors que les volumes ne sont pas strictement additifs en solution."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que provoque l'ajout d'une quantité importante de sel NaCl dans de l'eau pure sur sa température d'ébullition ?",
+              "options": [
+                "La température d'ébullition s'élève au-dessus de 100 °C (ébulliométrie)",
+                "La température d'ébullition s'abaisse à 50 °C",
+                "L'eau ne peut plus jamais bouillir quelle que soit la chaleur",
+                "La température d'ébullition reste figée à 0 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La présence d'un soluté non volatil abaisse la pression de vapeur du solvant et élève sa température d'ébullition."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi l'agitation mécanique accélère-t-elle la dissolution d'un soluté solide ?",
+              "options": [
+                "Elle renouvelle le solvant non saturé au contact immédiat de la surface du cristal",
+                "Elle détruit les noyaux atomiques du solide par friction",
+                "Elle diminue la solubilité du soluté dans le liquide",
+                "Elle augmente la pression atmosphérique au-dessus du bécher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'agitation disperse les particules solvatées et évite la formation d'une couche saturée stagnante autour du solide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que désigne le terme « solvatation » dans le cas particulier où le solvant utilisé est l'eau ?",
+              "options": [
+                "L'hydratation",
+                "La pyrolyse",
+                "L'électrolyse",
+                "La sublimation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hydratation est le terme spécifique désignant la solvatation lorsque le solvant est l'eau."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Concentration",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Concentrations massique et molaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est l'expression de la concentration massique Cm d'un soluté dissous ?",
+              "options": [
+                "Cm = m / V",
+                "Cm = m * V",
+                "Cm = V / m",
+                "Cm = n / V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La concentration en masse (ou titre massique) est le quotient de la masse m de soluté dissous par le volume V de solution."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'unité usuelle de la concentration molaire C en chimie de laboratoire ?",
+              "options": ["mol/L (ou mol.L^-1)", "g/mol", "L/mol", "kg/m^2"],
+              "correctAnswers": [0],
+              "explanation": "La concentration molaire s'exprime usuellement en moles de soluté par litre de solution (mol/L ou mol.L^-1)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle relation mathématique relie la concentration massique Cm et la concentration molaire C d'un soluté de masse molaire M ?",
+              "options": [
+                "Cm = C * M",
+                "Cm = C / M",
+                "C = Cm * M",
+                "Cm = C + M"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme m = n * M, on a Cm = m/V = (n * M)/V = (n/V) * M = C * M."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "On dissout 0,20 mol d'un soluté dans de l'eau pour obtenir 500 mL de solution. Quelle est sa concentration molaire C ?",
+              "options": [
+                "0,40 mol/L",
+                "0,10 mol/L",
+                "1,0 mol/L",
+                "0,040 mol/L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C = n / V = 0,20 mol / 0,500 L = 0,40 mol/L."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formules permettent de déterminer une quantité de matière n (en mol) d'un soluté ?",
+              "options": [
+                "n = C * V (à partir de la concentration molaire et du volume)",
+                "n = m / M (à partir de la masse et de la masse molaire)",
+                "n = Cm * V / M (à partir de la concentration massique)",
+                "n = V / (C * M)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "n s'obtient par n = C*V ou n = m/M, et puisque m = Cm*V, on a aussi n = Cm*V/M."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "On dissout 5,85 g de NaCl (M = 58,5 g/mol) dans 250 mL de solution. Quelle est la concentration molaire C obtenue ?",
+              "options": [
+                "0,40 mol/L",
+                "0,10 mol/L",
+                "0,025 mol/L",
+                "2,5 mol/L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "n = 5,85 / 58,5 = 0,10 mol. C = n / V = 0,10 mol / 0,250 L = 0,40 mol/L."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la concentration massique d'une solution contenant 15 g de saccharose dans 200 mL de solution aqueuse ?",
+              "options": ["75 g/L", "3,0 g/L", "30 g/L", "150 g/L"],
+              "correctAnswers": [0],
+              "explanation": "Cm = m / V = 15 g / 0,200 L = 75 g/L."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une solution de glucose (M = 180 g/mol) a une concentration molaire C = 0,050 mol/L. Que vaut sa concentration massique Cm ?",
+              "options": ["9,0 g/L", "3,6 g/L", "0,050 g/L", "90 g/L"],
+              "correctAnswers": [0],
+              "explanation": "Cm = C * M = 0,050 mol/L * 180 g/mol = 9,0 g/L."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle distinction fondamentale existe-t-il entre la masse volumique rho d'une solution et la concentration massique Cm du soluté ?",
+              "options": [
+                "rho = m_solution / V alors que Cm = m_soluté / V",
+                "rho concerne les gaz et Cm concerne les solides",
+                "rho s'exprime en mol/L et Cm s'exprime en g/L",
+                "Il n'existe aucune différence, ce sont deux termes synonymes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La masse volumique prend en compte la masse totale du mélange (soluté + solvant), alors que Cm ne prend en compte que la masse de soluté dissous."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si l'on évapore la moitié du solvant d'une solution non saturée sans perte de soluté, que devient sa concentration molaire ?",
+              "options": [
+                "Elle est multipliée par 2",
+                "Elle est divisée par 2",
+                "Elle reste rigoureusement inchangée",
+                "Elle tombe immédiatement à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le volume V étant divisé par 2 à quantité de soluté constante, C = n / V est multipliée par 2."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Concentration effective en ions en solution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que désigne la concentration effective notée [X] d'un ion X en solution aqueuse ?",
+              "options": [
+                "La quantité de matière d'ion X réellement présente par unité de volume de solution",
+                "La masse totale du solide pesé avant toute dissolution",
+                "Le nombre d'électrons libres circulant dans la solution",
+                "Le pourcentage d'ions qui se sont évaporés dans l'atmosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La concentration effective [X] = n(X) / V traduit la teneur réelle de l'ion X en solution en tenant compte de la stœchiométrie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "On prépare une solution de chlorure de magnésium MgCl2 à C = 0,10 mol/L. Que vaut [Cl-] ?",
+              "options": [
+                "0,20 mol/L",
+                "0,10 mol/L",
+                "0,050 mol/L",
+                "0,30 mol/L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "MgCl2(s) -> Mg2+(aq) + 2 Cl-(aq). D'après les coefficients stœchiométriques, [Cl-] = 2 * C = 2 * 0,10 = 0,20 mol/L."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour une solution de sulfate de fer(III) Fe2(SO4)3 apportée à C = 0,050 mol/L, que vaut [Fe3+] ?",
+              "options": [
+                "0,10 mol/L",
+                "0,050 mol/L",
+                "0,15 mol/L",
+                "0,025 mol/L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équation donne 2 Fe3+ pour 1 entité Fe2(SO4)3 dissoute, donc [Fe3+] = 2 * C = 2 * 0,050 = 0,10 mol/L."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans cette même solution de sulfate de fer(III) Fe2(SO4)3 à C = 0,050 mol/L, que vaut [SO4^2-] ?",
+              "options": [
+                "0,15 mol/L",
+                "0,050 mol/L",
+                "0,10 mol/L",
+                "0,25 mol/L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équation produit 3 ions sulfate pour 1 Fe2(SO4)3, donc [SO4^2-] = 3 * C = 3 * 0,050 = 0,15 mol/L."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Dans une solution de phosphate de sodium Na3PO4 de concentration apportée C, quelles relations sont exactes ?",
+              "options": [
+                "[Na+] = 3 * C",
+                "[PO4^3-] = C",
+                "[Na+] = [PO4^3-] / 3",
+                "[Na+] / 3 = [PO4^3-]"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La dissociation Na3PO4 -> 3 Na+ + PO4^3- impose [Na+] = 3C et [PO4^3-] = C, d'où [Na+]/3 = [PO4^3-]."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans une solution de sulfate de sodium Na2SO4, on mesure [Na+] = 0,60 mol/L. Quelle est la concentration C en soluté apporté ?",
+              "options": [
+                "0,30 mol/L",
+                "0,60 mol/L",
+                "1,20 mol/L",
+                "0,20 mol/L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme [Na+] = 2 * C, on en déduit C = [Na+] / 2 = 0,60 / 2 = 0,30 mol/L."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle égalité exprime l'électroneutralité des concentrations d'une solution contenant uniquement des ions Ca2+ et Cl- ?",
+              "options": [
+                "2 * [Ca2+] = [Cl-]",
+                "[Ca2+] = 2 * [Cl-]",
+                "[Ca2+] = [Cl-]",
+                "[Ca2+] + [Cl-] = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque ion Ca2+ apporte 2 charges positives et chaque ion Cl- apporte 1 charge négative, donc 2*[Ca2+] = 1*[Cl-]."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "On mélange 100 mL de NaCl à 0,20 mol/L et 100 mL de KCl à 0,40 mol/L. Que vaut [Cl-] dans le mélange final (volume 200 mL) ?",
+              "options": [
+                "0,30 mol/L",
+                "0,60 mol/L",
+                "0,20 mol/L",
+                "0,40 mol/L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "n(Cl-) = 0,20*0,100 + 0,40*0,100 = 0,020 + 0,040 = 0,060 mol. [Cl-] = 0,060 mol / 0,200 L = 0,30 mol/L."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une solution de nitrate d'argent AgNO3 à C = 0,025 mol/L, quelle est la concentration en ions nitrate [NO3-] ?",
+              "options": [
+                "0,025 mol/L",
+                "0,050 mol/L",
+                "0,0125 mol/L",
+                "0,075 mol/L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "AgNO3(s) -> Ag+(aq) + NO3-(aq). Le coefficient stœchiométrique de NO3- est 1, donc [NO3-] = C = 0,025 mol/L."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si une solution issue de Al2(SO4)3 contient des ions aluminium à [Al3+] = 0,040 mol/L, que vaut [SO4^2-] ?",
+              "options": [
+                "0,060 mol/L",
+                "0,040 mol/L",
+                "0,080 mol/L",
+                "0,020 mol/L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On a [Al3+]/2 = [SO4^2-]/3, d'où [SO4^2-] = 1,5 * [Al3+] = 1,5 * 0,040 = 0,060 mol/L."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Préparation de solutions par dissolution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle formule permet de calculer la masse m de soluté à peser pour préparer un volume V de solution à la concentration C ?",
+              "options": [
+                "m = C * V * M",
+                "m = C * V / M",
+                "m = C / (V * M)",
+                "m = M / (C * V)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme n = C * V et m = n * M, on obtient directement la relation m = C * V * M."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel instrument de verrerie est indispensable pour ajuster avec précision le volume total d'une solution préparée par dissolution ?",
+              "options": [
+                "Une fiole jaugée",
+                "Un bécher gradué",
+                "Une éprouvette graduée",
+                "Un erlenmeyer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seule la fiole jaugée offre la précision requise pour fixer un volume exact de solution grâce à son col étroit et son trait de jauge."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi rince-t-on la coupelle de pesée et l'entonnoir à l'eau distillée au-dessus de la fiole jaugée ?",
+              "options": [
+                "Pour s'assurer que l'intégralité du soluté pesé est transférée dans la fiole",
+                "Pour faire baisser la température du verre",
+                "Pour diluer préventivement la solution avant la pesée",
+                "Pour éliminer les bulles d'air du col de la fiole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rinçage quantitatif garantit qu'aucun cristal de soluté ne reste collé sur les parois de la coupelle ou de l'entonnoir."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment doit-on positionner le ménisque d'eau par rapport au trait de jauge lors de l'ajustement final ?",
+              "options": [
+                "Le bas du ménisque concave doit être tangent au trait de jauge à hauteur des yeux",
+                "Le haut du ménisque doit toucher le trait de jauge en regardant du dessus",
+                "Le milieu du liquide doit être à 2 cm au-dessus du trait de jauge",
+                "Le trait de jauge doit être immergé de 5 mm sous le liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour éviter l'erreur de parallaxe, l'œil doit être au niveau du trait, et le bas du ménisque doit effleurer le trait de jauge."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles étapes font partie du protocole rigoureux de préparation d'une solution par dissolution ?",
+              "options": [
+                "Peser le solide avec précision sur une balance préalablement tarée",
+                "Dissoudre le solide dans un volume partiel d'eau distillée et homogénéiser avant le trait de jauge",
+                "Ajuster au trait de jauge goutte à goutte avec une pissette ou pipette Pasteur",
+                "Remplir directement la fiole avec de l'eau du robinet non distillée"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Pesée précise, dissolution partielle intermédiaire, ajustement minutieux au trait et utilisation d'eau distillée sont essentiels."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle masse de sulfate de cuivre anhydre CuSO4 (M = 160 g/mol) faut-il peser pour préparer 250 mL de solution à 0,10 mol/L ?",
+              "options": ["4,0 g", "16 g", "1,6 g", "40 g"],
+              "correctAnswers": [0],
+              "explanation": "m = C * V * M = 0,10 mol/L * 0,250 L * 160 g/mol = 4,0 g."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que doit-on faire si, par inattention, on dépasse le trait de jauge lors du remplissage de la fiole ?",
+              "options": [
+                "Jeter la préparation et recommencer l'opération depuis le début",
+                "Prélever l'excédent d'eau avec une paille pour revenir au trait",
+                "Chauffer la fiole au bec Bunsen pour évaporer l'excès d'eau",
+                "Continuer le TP sans rien changer car cela n'a aucun impact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dépasser le trait dilue de façon incontrôlée la solution ; prélever du liquide retirerait du soluté. Il faut recommencer."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi tare-t-on systématiquement la balance avec la coupelle de pesée vide avant d'ajouter le solide ?",
+              "options": [
+                "Pour que la balance n'affiche que la masse nette de soluté ajouté",
+                "Pour vérifier que la balance est bien branchée au secteur",
+                "Pour réchauffer le plateau métallique de la balance",
+                "Pour supprimer l'effet de la pression atmosphérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tarer remet l'affichage à zéro avec le récipient, permettant de mesurer directement la masse de produit introduit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi n'utilise-t-on jamais un bécher gradué pour préparer une solution de concentration connue avec précision ?",
+              "options": [
+                "Ses graduations ne sont qu'approximatives (erreur de 5 à 10 %)",
+                "Le bécher réagit chimiquement avec tous les solutés minéraux",
+                "Le verre du bécher absorbe l'eau et fausse les concentrations",
+                "Le bécher ne peut pas contenir de liquide à température ambiante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La verrerie graduée classique (bécher, erlenmeyer) n'est pas étalonnée avec précision, contrairement à la verrerie jaugée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle action indispensable termine la préparation dans la fiole jaugée après avoir ajusté au trait de jauge ?",
+              "options": [
+                "Boucher la fiole et la retourner plusieurs fois pour homogénéiser",
+                "Laisser la fiole ouverte au soleil pendant 2 heures",
+                "Filtrer le contenu sur papier filtre plissé",
+                "Verser immédiatement la solution dans l'évier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau ajoutée en fin de remplissage reste dans le col ; retourner la fiole bouchée assure une parfaite homogénéité."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Préparation de solutions par dilution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel principe fondamental régit la dilution d'une solution aqueuse ?",
+              "options": [
+                "La quantité de matière de soluté prélevée se conserve : n_mère = n_fille",
+                "Le volume de la solution reste strictement constant",
+                "La concentration de la solution fille est supérieure à celle de la mère",
+                "La masse totale du solvant diminue spontanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diluer consiste à ajouter du solvant sans ajouter de soluté : la quantité de soluté n ne varie donc pas lors de l'opération."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle formule fondamentale relie les grandeurs lors d'une dilution ?",
+              "options": [
+                "C_mère * V_mère = C_fille * V_fille",
+                "C_mère / V_mère = C_fille / V_fille",
+                "C_mère * C_fille = V_mère * V_fille",
+                "C_mère + V_mère = C_fille + V_fille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque n_mère = C_mère * V_mère et n_fille = C_fille * V_fille, la conservation de n donne C_mère * V_mère = C_fille * V_fille."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment se définit le facteur de dilution F ?",
+              "options": [
+                "F = C_mère / C_fille = V_fille / V_mère",
+                "F = C_fille / C_mère = V_mère / V_fille",
+                "F = C_mère * C_fille",
+                "F = V_fille - V_mère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le facteur de dilution F (toujours supérieur à 1) indique de combien de fois la solution a été diluée : F = C_m/C_f = V_f/V_m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "On souhaite diluer 10 fois une solution mère pour préparer 100 mL de solution fille. Quel volume V_mère faut-il prélever ?",
+              "options": ["10 mL", "1,0 mL", "50 mL", "90 mL"],
+              "correctAnswers": [0],
+              "explanation": "F = 10 et V_fille = 100 mL, donc V_mère = V_fille / F = 100 / 10 = 10 mL."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels instruments de verrerie sont indispensables pour réaliser une dilution de précision ?",
+              "options": [
+                "Une pipette jaugée munie d'une propipette (poire d'aspiration)",
+                "Une fiole jaugée de volume correspondant au volume final désiré",
+                "Un bécher servant de récipient intermédiaire pour prélever la solution mère",
+                "Une burette graduée remplie d'acide sulfurique concentré"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La pipette jaugée prélève le volume exact V_mère, et la fiole jaugée permet de fixer le volume final V_fille après ajout d'eau distillée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "On prélève 20 mL d'une solution mère à 0,50 mol/L pour préparer 200 mL de solution fille. Quelle est la concentration C_fille ?",
+              "options": [
+                "0,050 mol/L",
+                "0,10 mol/L",
+                "0,25 mol/L",
+                "0,0050 mol/L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C_fille = (C_mère * V_mère) / V_fille = (0,50 * 20) / 200 = 0,050 mol/L."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi ne doit-on jamais pipeter directement dans le flacon de stockage de la solution mère ?",
+              "options": [
+                "Pour éviter tout risque de contamination accidentelle de la totalité du stock de solution mère",
+                "Car la pipette casserait le goulot du flacon",
+                "Car le liquide s'évaporerait instantanément dans le flacon",
+                "Pour ne pas modifier la pression interne du flacon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On verse toujours une petite fraction dans un bécher propre et sec pour protéger la réserve de solution mère des souillures."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Avant d'utiliser une pipette jaugée pour prélever une solution, il est recommandé de la rincer :",
+              "options": [
+                "Avec une petite quantité de la solution à prélever",
+                "Avec de l'eau du robinet savonneuse",
+                "Avec de l'huile de paraffine",
+                "Avec de l'acide chlorhydrique pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rincer la pipette avec la solution évite que d'éventuelles gouttes d'eau distillée résiduelles ne diluent le prélèvement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'on dilue une solution de telle sorte que sa concentration soit divisée par 5, le facteur de dilution vaut :",
+              "options": ["5", "0,2", "25", "50"],
+              "correctAnswers": [0],
+              "explanation": "Par définition, F = C_mère / C_fille = 5. On dit qu'on a réalisé une dilution au cinquième (1/5)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel volume d'eau distillée ajoute-t-on approximativement à 25 mL de solution mère pour obtenir 100 mL de solution fille ?",
+              "options": [
+                "Environ 75 mL (jusqu'au trait de jauge de la fiole de 100 mL)",
+                "Exactement 100 mL d'eau distillée",
+                "25 mL d'eau distillée",
+                "200 mL d'eau distillée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ajoute de l'eau jusqu'au trait de 100 mL de la fiole, ce qui représente environ 100 - 25 = 75 mL d'eau."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Spectrophotométrie UV-Visible",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'absorbance A mesurée par un spectrophotomètre pour une longueur d'onde donnée ?",
+              "options": [
+                "Une grandeur positive sans unité traduisant la fraction de lumière absorbée par l'échantillon",
+                "Une vitesse de propagation des ondes lumineuses en m/s",
+                "Une force de frottement mesurée en Newtons",
+                "L'angle de réfraction de la lumière à travers la cuve"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absorbance est une grandeur sans unité liée à la diminution de l'intensité lumineuse traversant la solution."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment est définie l'absorbance A en fonction de l'intensité incidente I0 et transmise I ?",
+              "options": [
+                "A = log10(I0 / I)",
+                "A = I0 - I",
+                "A = I / I0",
+                "A = ln(I / I0)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition, l'absorbance est le logarithme décimal du rapport de l'intensité incidente sur l'intensité transmise : A = log10(I0/I)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si une solution transmet 10 % de l'intensité lumineuse incidente (I / I0 = 0,10), que vaut son absorbance A ?",
+              "options": ["1,0", "0,10", "2,0", "10"],
+              "correctAnswers": [0],
+              "explanation": "A = log10(I0 / I) = log10(1 / 0,10) = log10(10) = 1,0."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une solution éclairée en lumière blanche apparaît jaune. Quelles radiations absorbe-t-elle principalement ?",
+              "options": [
+                "Les radiations bleues (couleur complémentaire du jaune)",
+                "Les radiations jaunes",
+                "Toutes les radiations sans exception",
+                "Les ondes radio et micro-ondes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La couleur perçue est la couleur complémentaire des radiations principalement absorbées : le jaune absorbe dans le bleu."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont les rôles de la réalisation du « blanc » en spectrophotométrie ?",
+              "options": [
+                "Compenser l'absorbance propre de la cuve en verre ou plastique",
+                "Compenser l'absorbance du solvant utilisé",
+                "Régler le spectrophotomètre pour qu'il affiche A = 0 avec la cuve de référence",
+                "Détruire chimiquement les impuretés de la cuve par faisceau laser"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le blanc (solvant seul dans la cuve) permet de calibrer le zéro d'absorbance en éliminant les contributions parasites de la cuve et du solvant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "À quelle longueur d'onde règle-t-on le spectrophotomètre pour doser une espèce colorée avec une sensibilité maximale ?",
+              "options": [
+                "À la longueur d'onde lambda_max où l'absorbance de l'espèce est maximale",
+                "À la longueur d'onde où l'absorbance est strictement nulle",
+                "Toujours à 200 nm quelle que soit l'espèce",
+                "À la longueur d'onde émise par une lampe à incandescence ordinaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choisir lambda_max garantit la plus grande variation d'absorbance pour une variation de concentration donnée (meilleure sensibilité)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une solution de sulfate de cuivre apparaît bleue. Dans quel domaine spectral absorbe-t-elle le plus fortement ?",
+              "options": [
+                "Dans le rouge et l'orangé (autour de 600 - 700 nm)",
+                "Dans le bleu (autour de 450 nm)",
+                "Dans l'infrarouge lointain uniquement",
+                "Elle n'absorbe aucune radiation visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La couleur bleue observée est complémentaire de l'orange-rouge absorbé par les ions Cu2+(aq)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel composant d'un spectrophotomètre sélectionne une radiation monochromatique à partir de lumière polychromatique ?",
+              "options": [
+                "Le monochromateur (prisme ou réseau de diffraction)",
+                "Le détecteur à photodiode",
+                "La cuve en quartz",
+                "L'afficheur numérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le monochromateur isole une bande spectrale très étroite centrée sur la longueur d'onde désirée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si une solution laisse passer la totalité de la lumière incidente sans rien absorber (I = I0), que vaut son absorbance A ?",
+              "options": ["0", "1", "100", "L'infini"],
+              "correctAnswers": [0],
+              "explanation": "A = log10(I0 / I0) = log10(1) = 0."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi doit-on manipuler les cuves spectrophotométriques uniquement par leurs faces dépolies ou striées ?",
+              "options": [
+                "Pour éviter de laisser des traces de doigts sur les faces optiques traversées par le faisceau lumineux",
+                "Pour ne pas brûler la paillasse avec le plastique",
+                "Car les faces transparentes sont radioactives",
+                "Pour empêcher le liquide de s'évaporer à travers le verre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des traces de doigts sur les faces optiques diffuseraient et absorberaient la lumière, faussant la mesure d'absorbance."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Loi de Beer-Lambert",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est l'expression mathématique de la loi de Beer-Lambert ?",
+              "options": [
+                "A = epsilon * l * C",
+                "A = epsilon / (l * C)",
+                "A = (epsilon * C) / l",
+                "A = l / (epsilon * C)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi de Beer-Lambert relie linéairement l'absorbance A au trajet optique l et à la concentration C de l'espèce absorbante."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans la relation A = epsilon * l * C, que représente le terme epsilon ?",
+              "options": [
+                "Le coefficient d'absorption molaire (ou absorptivité molaire)",
+                "La permittivité diélectrique de la solution",
+                "L'erreur relative de l'appareil de mesure",
+                "L'énergie des photons incidents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "epsilon est le coefficient d'absorption molaire, caractéristique de l'espèce absorbante à une longueur d'onde donnée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lorsque la cuve a une largeur l en cm et la concentration C est en mol/L, dans quelle unité s'exprime epsilon ?",
+              "options": [
+                "L.mol^-1.cm^-1",
+                "mol.L^-1.cm",
+                "g.L^-1",
+                "Sans unité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour que A soit sans unité, epsilon s'exprime en L/(mol.cm), soit L.mol^-1.cm^-1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que représente la lettre l dans l'expression A = epsilon * l * C ?",
+              "options": [
+                "L'épaisseur de solution traversée par la lumière (largeur de la cuve)",
+                "La longueur d'onde de la lumière en nanomètres",
+                "La limite de solubilité de l'espèce",
+                "Le litre de solution présent dans le spectrophotomètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "l est la longueur du trajet optique dans la cuve (généralement standardisée à 1,0 cm)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles sont les conditions impératives de validité de la loi de Beer-Lambert ?",
+              "options": [
+                "Travailler en lumière monochromatique",
+                "Utiliser des solutions suffisamment diluées (C < 10^-2 mol/L en général)",
+                "Avoir une solution limpide et homogène sans diffusion de lumière",
+                "Utiliser obligatoirement des cuves d'au moins 1 mètre de large"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La loi n'est linéaire que pour une solution diluée, homogène et transparente traversée par un faisceau monochromatique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans le domaine de validité de la loi, si la concentration d'une espèce colorée est triplée, que devient son absorbance ?",
+              "options": [
+                "Elle est triplée",
+                "Elle reste constante",
+                "Elle est divisée par 3",
+                "Elle est multipliée par 9"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absorbance étant directement proportionnelle à la concentration (A = k * C), si C est multipliée par 3, A l'est aussi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une solution à C = 2,0*10^-4 mol/L a une absorbance A = 0,40. Que vaut l'absorbance d'une solution à C = 5,0*10^-4 mol/L dans les mêmes conditions ?",
+              "options": ["1,00", "0,80", "0,50", "2,50"],
+              "correctAnswers": [0],
+              "explanation": "k = A / C = 0,40 / (2,0*10^-4) = 2000 L/mol. Pour C = 5,0*10^-4 mol/L, A = 2000 * 5,0*10^-4 = 1,00."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que constate-t-on si la concentration de l'espèce devient trop élevée (généralement C > 0,05 mol/L) ?",
+              "options": [
+                "La courbe A = f(C) s'incurve vers le bas et n'est plus linéaire (perte de proportionnalité)",
+                "L'absorbance devient strictement négative",
+                "Le spectrophotomètre explose sous l'effet de la chaleur",
+                "La solution devient immédiatement incolore et transparente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À forte concentration, les interactions électrostatiques entre solutés et la saturation du détecteur brisent la linéarité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour une solution contenant deux espèces absorbantes 1 et 2 sans interaction chimique, que vaut l'absorbance totale A ?",
+              "options": [
+                "A = A1 + A2 (additivité des absorbances)",
+                "A = A1 * A2",
+                "A = A1 - A2",
+                "A = Racine carrée de (A1 * A2)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absorbance d'un mélange d'espèces indépendantes est la somme des absorbances de chaque espèce : A = A1 + A2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "De quoi dépend la valeur du coefficient d'absorption molaire epsilon d'une espèce chimique ?",
+              "options": [
+                "De la longueur d'onde, de la nature du solvant et de la température",
+                "Uniquement de la masse de liquide dans la cuve",
+                "De la marque du spectrophotomètre utilisé",
+                "De la vitesse du vent dans la pièce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "epsilon dépend de l'espèce considérée, de la longueur d'onde lambda choisie, du solvant et de la température."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Dosage par étalonnage spectrophotométrique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le principe d'un dosage par étalonnage spectrophotométrique ?",
+              "options": [
+                "Déterminer une concentration inconnue en comparant l'absorbance de l'échantillon à celle d'une gamme étalon",
+                "Ajouter une base forte jusqu'au changement de couleur d'un indicateur coloré",
+                "Mesurer le temps que met une solution pour s'évaporer totalement",
+                "Faire brûler la solution et peser les cendres obtenues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On mesure l'absorbance de solutions étalons de concentrations connues pour tracer une droite d'étalonnage servant de référence."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment prépare-t-on généralement les solutions étalons d'une gamme de dosage ?",
+              "options": [
+                "Par dilutions successives d'une même solution mère de concentration connue",
+                "En pesant au hasard des masses différentes de poudres diverses",
+                "En mélangeant des solvants organiques au hasard dans des béchers",
+                "En faisant bouillir de l'eau de pluie filtrée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La gamme étalon est obtenue par dilutions précises d'une solution mère étalon à l'aide de pipettes et fioles jaugées."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est l'allure de la courbe d'étalonnage A = f(C) lorsque la loi de Beer-Lambert est respectée ?",
+              "options": [
+                "Une droite passant par l'origine",
+                "Une parabole de sommet l'origine",
+                "Une sinusoïde alternant valeurs positives et négatives",
+                "Une courbe en cloche symétrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme A = k * C, la représentation graphique de A en fonction de C est une droite linéaire passant par l'origine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La droite d'étalonnage donne A = 2500 * C (C en mol/L). Si une solution inconnue a A = 0,75, que vaut sa concentration C ?",
+              "options": [
+                "3,0 * 10^-4 mol/L",
+                "1,875 * 10^3 mol/L",
+                "7,5 * 10^-3 mol/L",
+                "1,2 * 10^-4 mol/L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C = A / 2500 = 0,75 / 2500 = 3,0 * 10^-4 mol/L."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles conditions assurent la fiabilité d'un dosage par étalonnage spectrophotométrique ?",
+              "options": [
+                "L'absorbance de l'échantillon inconnu doit être comprise à l'intérieur de la gamme étalon (encadrement)",
+                "Toutes les mesures doivent être réalisées à la même longueur d'onde et avec la même cuve",
+                "L'appareil doit être réglé avec le blanc avant la série de mesures",
+                "L'échantillon doit être chauffé au rouge avant chaque mesure"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'encadrement dans la gamme étalon, la constance des conditions optiques et le zéro préalable garantissent la validité du dosage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que doit-on faire si l'absorbance de la solution inconnue dépasse la valeur maximale de la gamme étalon ?",
+              "options": [
+                "Diluer précisément la solution inconnue par un facteur connu pour revenir dans la gamme étalon",
+                "Augmenter l'intensité lumineuse de la lampe au maximum",
+                "Multiplier artificiellement les valeurs de la droite d'étalonnage par 10",
+                "Arrondir la valeur de la concentration à 1 mol/L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dilue l'échantillon d'un facteur F pour que son absorbance entre dans la zone linéaire, puis on multipliera le résultat par F."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une solution inconnue diluée 10 fois a une concentration déterminée de 4,0*10^-4 mol/L. Quelle était sa concentration initiale ?",
+              "options": [
+                "4,0 * 10^-3 mol/L",
+                "4,0 * 10^-5 mol/L",
+                "4,0 * 10^-4 mol/L",
+                "1,0 * 10^-3 mol/L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solution initiale est 10 fois plus concentrée que la solution diluée : C_initiale = 10 * 4,0*10^-4 = 4,0*10^-3 mol/L."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi est-il déconseillé d'extrapoler la droite d'étalonnage au-delà du dernier point étalon mesuré ?",
+              "options": [
+                "Car la proportionnalité entre A et C n'est plus garantie à plus forte concentration",
+                "Car la règle de l'opérateur n'est pas assez longue",
+                "Car le papier millimétré risque de se déchirer",
+                "Car les concentrations deviennent négatives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au-delà de la gamme étalonnée, des écarts à la loi de Beer-Lambert peuvent apparaître sans que l'on puisse s'en apercevoir."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le grand avantage d'un dosage par étalonnage spectrophotométrique par rapport à un titrage avec réaction chimique ?",
+              "options": [
+                "C'est une méthode d'analyse non destructive : la solution analysée n'est pas altérée",
+                "Il ne nécessite aucun matériel de laboratoire ni électricité",
+                "Il permet de doser uniquement les solides purs anhydres",
+                "Il transforme le soluté en or pur lors de la mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La spectrophotométrie n'utilise aucune réaction chimique de destruction du soluté : l'échantillon reste intact."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel coefficient statistique, calculé lors d'une régression linéaire, permet d'attester de la qualité de la droite d'étalonnage ?",
+              "options": [
+                "Le coefficient de détermination R^2 (qui doit être très proche de 1)",
+                "Le pH de la solution mère",
+                "Le nombre de Reynolds du liquide",
+                "L'indice de réfraction de l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un coefficient R^2 supérieur à 0,99 indique un excellent alignement des points expérimentaux sur la droite de régression."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Conductimétrie et conductance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment est définie la conductance G d'une portion de solution électrolytique ?",
+              "options": [
+                "L'inverse de la résistance électrique : G = 1 / R",
+                "Le produit de la résistance par la tension : G = R * U",
+                "La somme de la résistance et du courant : G = R + I",
+                "Le carré de la tension appliquée : G = U^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conductance G mesure la facilité avec laquelle le courant traverse la portion de solution ; elle vaut G = 1/R."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'unité de la conductance G dans le Système International ?",
+              "options": [
+                "Le Siemens (symbole S)",
+                "L'Ohm (symbole Omega)",
+                "L'Ampère (symbole A)",
+                "Le Volt (symbole V)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conductance s'exprime en Siemens (S), qui est homogène à des Ohm^-1 (ou A/V)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "D'après la loi d'Ohm, quelle relation relie la conductance G à la tension U et à l'intensité I du courant ?",
+              "options": ["G = I / U", "G = U / I", "G = U * I", "G = I - U"],
+              "correctAnswers": [0],
+              "explanation": "Comme U = R * I et G = 1/R, on en déduit immédiatement G = I / U."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle formule relie la conductance G à la conductivité sigma de la solution pour une cellule de surface S et d'écartement L ?",
+              "options": [
+                "G = sigma * (S / L)",
+                "G = sigma * (L / S)",
+                "G = sigma * S * L",
+                "G = sigma / (S * L)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conductance dépend de la géométrie de la cellule : G = sigma * (S / L), où le rapport S/L est la constante de cellule."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels paramètres géométriques de la cellule conductimétrique influencent la conductance G mesurée ?",
+              "options": [
+                "La surface S des électrodes immergées",
+                "La distance L séparant les deux électrodes planes",
+                "La couleur extérieure du câble de connexion",
+                "L'état de surface des plaques (platine platiné)"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "G est proportionnelle à la surface immergée S et inversement proportionnelle à la distance L séparant les électrodes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est l'unité de la conductivité sigma dans le Système International ?",
+              "options": [
+                "Le Siemens par mètre (S/m ou S.m^-1)",
+                "Le Siemens par litre (S/L)",
+                "L'Ohm par mètre (Omega/m)",
+                "Le Volt par mètre (V/m)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conductivité sigma est une grandeur intrinsèque à la solution qui s'exprime en Siemens par mètre (S/m ou S.m^-1)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi utilise-t-on une tension alternative pour alimenter la cellule d'un conductimètre plutôt qu'une tension continue ?",
+              "options": [
+                "Pour éviter le phénomène d'électrolyse et la polarisation des électrodes",
+                "Pour faire briller la solution comme une ampoule",
+                "Pour accélérer la réaction chimique de dissolution",
+                "Car les piles électriques ne fonctionnent pas avec l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une tension alternative de fréquence adaptée empêche l'accumulation d'ions sur les plaques et supprime l'électrolyse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment varie la conductivité d'une solution ionique lorsque sa température augmente ?",
+              "options": [
+                "Elle augmente car la viscosité du solvant diminue et la mobilité des ions s'accroît",
+                "Elle diminue car les ions sont détruits par la chaleur",
+                "Elle reste rigoureusement constante au millionième près",
+                "Elle s'annule immédiatement dès 25 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chaleur fluidifie le solvant (baisse de viscosité) et accroît l'agitation thermique, ce qui augmente la mobilité des ions et la conductivité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'on écarte les deux plaques de la cellule en doublant la distance L (S restant constant), que devient la conductance G ?",
+              "options": [
+                "Elle est divisée par 2",
+                "Elle est multipliée par 2",
+                "Elle est multipliée par 4",
+                "Elle ne varie pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme G = sigma * (S / L), si L est multiplié par 2 au dénominateur, G est divisée par 2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle différence de conductivité observe-t-on entre de l'eau distillée et une eau minérale ordinaire ?",
+              "options": [
+                "L'eau distillée a une conductivité quasi nulle alors que l'eau minérale conduit nettement le courant",
+                "L'eau distillée est un supraconducteur électrique parfait",
+                "L'eau minérale ne contient aucun ion et ne conduit pas le courant",
+                "Leurs conductivités sont rigoureusement identiques à 1 % près"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau distillée est très pauvre en ions (uniquement H3O+ et HO- d'autoprotolyse), alors que l'eau minérale est riche en électrolytes dissous."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Loi de Kohlrausch",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est l'expression de la loi de Kohlrausch pour une solution contenant plusieurs ions Xi ?",
+              "options": [
+                "sigma = somme(lambda_i * [Xi])",
+                "sigma = somme(lambda_i / [Xi])",
+                "sigma = produit(lambda_i * [Xi])",
+                "sigma = somme([Xi] / lambda_i)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi de Kohlrausch stipule que la conductivité est la somme des contributions conductimétriques de tous les ions présents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que représente la grandeur lambda_i dans la loi de Kohlrausch ?",
+              "options": [
+                "La conductivité molaire ionique de l'ion i",
+                "La longueur d'onde de la lumière émise par l'ion",
+                "Le coefficient d'absorption molaire de l'ion",
+                "La constante de désintégration radioactive de l'ion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "lambda_i est la conductivité molaire ionique, caractéristique de l'aptitude de l'ion i à conduire le courant en solution aqueuse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans la loi de Kohlrausch, si sigma est en S/m et lambda_i en S.m^2/mol, quelle unité doit obligatoirement être utilisée pour la concentration [Xi] ?",
+              "options": [
+                "En mol/m^3 (mole par mètre cube)",
+                "En mol/L (mole par litre)",
+                "En g/L (gramme par litre)",
+                "En mg/mL (milligramme par millilitre)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le Système International, l'unité de volume est le m^3 ; la concentration [Xi] doit impérativement être convertie en mol/m^3."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment convertit-on une concentration molaire de 1,0 mol/L en mol/m^3 ?",
+              "options": [
+                "1,0 mol/L = 1000 mol/m^3",
+                "1,0 mol/L = 0,001 mol/m^3",
+                "1,0 mol/L = 1,0 mol/m^3",
+                "1,0 mol/L = 100 mol/m^3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme 1 m^3 = 1000 L, il y a 1000 fois plus de matière dans 1 m^3 que dans 1 L : 1 mol/L = 1000 mol/m^3."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels ions possèdent une conductivité molaire ionique exceptionnellement élevée dans l'eau grâce à un mécanisme de saut de protons ?",
+              "options": [
+                "L'ion oxonium H3O+",
+                "L'ion hydroxyde HO-",
+                "L'ion sodium Na+",
+                "L'ion chlorure Cl-"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "H3O+ et HO- ont des conductivités molaires exceptionnelles (35 et 20 mS.m^2/mol) grâce au mécanisme de Grotthuss (relais de liaisons hydrogène)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est l'expression de la conductivité sigma d'une solution de NaCl de concentration C (avec C en mol/m^3) ?",
+              "options": [
+                "sigma = (lambda(Na+) + lambda(Cl-)) * C",
+                "sigma = (lambda(Na+) - lambda(Cl-)) * C",
+                "sigma = lambda(Na+) * lambda(Cl-) * C",
+                "sigma = (lambda(Na+) + 2 * lambda(Cl-)) * C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque [Na+] = C et [Cl-] = C, la loi de Kohlrausch donne sigma = lambda(Na+)*C + lambda(Cl-)*C = (lambda(Na+) + lambda(Cl-))*C."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est l'expression de la conductivité sigma d'une solution de chlorure de calcium CaCl2 de concentration C (en mol/m^3) ?",
+              "options": [
+                "sigma = (lambda(Ca2+) + 2 * lambda(Cl-)) * C",
+                "sigma = (2 * lambda(Ca2+) + lambda(Cl-)) * C",
+                "sigma = (lambda(Ca2+) + lambda(Cl-)) * C",
+                "sigma = (lambda(Ca2+) + lambda(Cl-)) / (2 * C)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dissociation CaCl2 -> Ca2+ + 2 Cl- donne [Ca2+] = C et [Cl-] = 2C, donc sigma = lambda(Ca2+)*C + lambda(Cl-)*2C."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la condition essentielle d'application de la loi de Kohlrausch ?",
+              "options": [
+                "Les solutions doivent être suffisamment diluées (C < 10^-2 ou 10^-3 mol/L)",
+                "La solution doit obligatoirement être chauffée à plus de 80 °C",
+                "Les ions doivent être obligatoirement colorés dans le spectre visible",
+                "Le solvant doit être impérativement un alcane apolaire pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À concentration plus élevée, les interactions électrostatiques entre ions freinent leur migration et la loi n'est plus linéaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une solution diluée d'un électrolyte unique, si la concentration C est multipliée par 2, que devient la conductivité sigma ?",
+              "options": [
+                "Elle est multipliée par 2 (proportionnalité sigma = k * C)",
+                "Elle est divisée par 2",
+                "Elle reste constante",
+                "Elle quadruple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour un électrolyte donné en solution diluée, sigma est directement proportionnelle à C (sigma = k * C)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans quelle unité s'exprime la conductivité molaire ionique lambda_i dans le Système International ?",
+              "options": [
+                "S.m^2.mol^-1 (ou S.m^2/mol)",
+                "S/m",
+                "mol/m^2",
+                "Omega.m^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme sigma = lambda * C, on a lambda = sigma / C, soit (S/m) / (mol/m^3) = S.m^2.mol^-1."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Dosage par étalonnage conductimétrique et synthèse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Sur quel principe repose un dosage par étalonnage conductimétrique ?",
+              "options": [
+                "Mesurer la conductivité de solutions étalons pour tracer sigma = f(C) et déduire la concentration de l'échantillon",
+                "Mesurer la vitesse de précipitation des ions sous l'effet de la pesanteur",
+                "Ajouter une quantité stœchiométrique d'un acide concentré jusqu'au virage d'un indicateur",
+                "Chauffer la solution conductrice jusqu'à ébullition complète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La courbe d'étalonnage sigma = f(C) permet de relier directement la conductivité mesurée d'un échantillon à sa concentration."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la forme de la courbe d'étalonnage conductimétrique sigma = f(C) pour des solutions étalons diluées d'un même sel ?",
+              "options": [
+                "Une droite passant par l'origine",
+                "Une hyperbole équilatère",
+                "Une courbe logarithmique saturée",
+                "Un plateau parfaitement horizontal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'après la loi de Kohlrausch, pour des solutions diluées d'un même sel, la conductivité est proportionnelle à la concentration : sigma = k * C."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le grand avantage du dosage conductimétrique par rapport au dosage spectrophotométrique ?",
+              "options": [
+                "Il permet de doser des solutions d'espèces totalement incolores pourvu qu'elles soient ioniques",
+                "Il ne nécessite aucune solution étalon de référence",
+                "Il permet de mesurer la concentration des espèces apolaires insolubles",
+                "Il fonctionne même si le bécher est complètement vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conductimétrie mesure la conduction par les ions ; elle s'applique donc à toutes les solutions ioniques, même incolores (comme NaCl)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Peut-on doser une solution de sucre (saccharose) par un dosage conductimétrique ?",
+              "options": [
+                "Non, car le saccharose est une molécule neutre qui ne libère aucun ion en solution",
+                "Oui, car le sucre conduit le courant aussi bien que le sel de table",
+                "Oui, à condition d'ajouter du colorant bleu dans le mélange",
+                "Seulement si la température de l'eau est supérieure à 95 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conductimétrie exige des ions mobiles. Une espèce moléculaire neutre comme le saccharose n'apporte aucune conductivité."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont les avantages communs aux méthodes de dosage par étalonnage (spectrophotométrie et conductimétrie) ?",
+              "options": [
+                "Ce sont des méthodes physiques non destructives pour l'échantillon analysé",
+                "Elles sont rapides à mettre en œuvre une fois la droite d'étalonnage établie",
+                "Elles ne nécessitent aucun calcul de stœchiométrie de réaction de titrage",
+                "Elles permettent de doser n'importe quel solide sans jamais le dissoudre"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les dosages par étalonnage exploitent une propriété physique sans consommer le soluté par réaction chimique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle précaution expérimentale thermique est primordiale lors d'un dosage conductimétrique par étalonnage ?",
+              "options": [
+                "Maintenir toutes les solutions étalons et l'échantillon à la même température car sigma varie fortement avec T",
+                "Porter chaque solution à 100 °C avant d'immerger la sonde",
+                "Geler les solutions étalons dans de l'azote liquide",
+                "Mesurer chaque solution sous un rayonnement UV de forte puissance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conductivité augmentant d'environ 2 % par degré Celsius, toutes les mesures doivent impérativement être faites à la même température."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une solution de sérum physiologique est trop concentrée pour la gamme étalon. Quelle étape préliminaire réalise-t-on ?",
+              "options": [
+                "Une dilution précise d'un facteur F connu à l'aide de verrerie jaugée",
+                "L'évaporation d'une partie du solvant sous hotte aspirante",
+                "L'ajout d'une pincée de sel solide dans le flacon",
+                "Le filtrage sur charbon actif pendant 24 heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dilue précisément l'échantillon pour ramener sa conductivité dans le domaine de validité linéaire de la gamme étalon."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une droite d'étalonnage donne sigma = 0,25 * C (avec sigma en mS/cm et C en mmol/L). Si l'échantillon a sigma = 0,75 mS/cm, que vaut C ?",
+              "options": [
+                "3,0 mmol/L",
+                "0,1875 mmol/L",
+                "1,0 mmol/L",
+                "12 mmol/L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C = sigma / 0,25 = 0,75 / 0,25 = 3,0 mmol/L."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "De quoi est constituée la cellule de conductimétrie immergée dans les solutions lors de la mesure ?",
+              "options": [
+                "De deux plaques métalliques planes et parallèles, souvent recouvertes de noir de platine",
+                "D'une ampoule à filament de tungstène sous vide",
+                "D'un thermomètre à mercure gradué au dixième de degré",
+                "D'un miroir concave réfléchissant les rayons lumineux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cellule conductimétrique classique comporte deux électrodes de platine platiné parallèles de surface et d'écartement bien définis."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi doit-on soigneusement rincer à l'eau distillée et essuyer la cellule conductimétrique entre deux mesures successives ?",
+              "options": [
+                "Pour ne pas contaminer la solution suivante avec les ions résiduels de la solution précédente",
+                "Pour empêcher la cellule de fondre sous l'effet du courant",
+                "Pour recharger la batterie interne de la sonde",
+                "Pour changer la polarité des électrodes de mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rincer la cellule à l'eau distillée et l'essuyer délicatement évite d'apporter des ions étrangers qui fausseraient la mesure suivante."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

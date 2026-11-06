@@ -1,0 +1,2538 @@
+{
+  "id": "5e-chinois-03",
+  "year": "5e",
+  "subject": "chinois",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Déchiffrer un menu simple",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur un menu, 水 (shuǐ) et 茶 (chá) désignent souvent quoi ?",
+              "options": ["De l'eau", "Du thé", "Du riz", "De la viande"],
+              "correctAnswers": [0, 1],
+              "explanation": "水 signifie eau et 茶 signifie thé, boissons fréquentes sur un menu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le caractère 饭 (fàn) indique généralement :",
+              "options": [
+                "Un dessert",
+                "Du riz ou un repas",
+                "Une soupe",
+                "Une boisson"
+              ],
+              "correctAnswers": [1],
+              "explanation": "饭 renvoie au riz cuit ou au repas principal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lire de gauche à droite en pinyin aide surtout à :",
+              "options": [
+                "Deviner la prononciation",
+                "Compter les syllabes du plat",
+                "Traduire mot à mot en français",
+                "Connaître la province du chef"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pinyin guide la prononciation sans donner le sens français direct."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur un menu bilingue, la ligne en caractères chinois sert surtout à :",
+              "options": [
+                "Afficher le prix en euros",
+                "Montrer le nom authentique du plat",
+                "Indiquer l'heure du service",
+                "Remplacer la photo"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les caractères portent le nom officiel du plat en chinois."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le chiffre arabe « 12 » à côté d'un plat signifie le plus souvent :",
+              "options": [
+                "Le numéro du plat",
+                "L'âge minimum",
+                "La température",
+                "Le nombre de convives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les menus utilisent souvent des numéros pour commander."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "肉 (ròu) sur une carte de restaurant évoque :",
+              "options": [
+                "Des légumes",
+                "De la viande",
+                "Du poisson uniquement",
+                "Du pain"
+              ],
+              "correctAnswers": [1],
+              "explanation": "肉 signifie viande en chinois courant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour lire un document court, la première étape utile est :",
+              "options": [
+                "Repérer les mots connus et le contexte",
+                "Traduire chaque caractère sans ordre",
+                "Ignorer les chiffres",
+                "Lire uniquement en bas de page"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contexte et les mots repères orientent la compréhension globale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "面 (miàn) dans un menu peut indiquer :",
+              "options": [
+                "Des nouilles",
+                "Une salade froide",
+                "Un jus de fruit",
+                "Un gâteau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "面 désigne souvent les nouilles dans les cartes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un symbole ¥ à côté d'un prix indique :",
+              "options": [
+                "Le yuan chinois",
+                "Le dollar américain",
+                "L'euro",
+                "Le yen japonais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "¥ est couramment associé au yuan (RMB) en Chine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lire un menu sans tout comprendre permet quand même de :",
+              "options": [
+                "Identifier le type de plat (boisson, riz, viande)",
+                "Connaître la recette secrète",
+                "Savoir qui a cuisiné",
+                "Dater le restaurant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les catégories de mots suffisent souvent pour une lecture partielle utile."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Comprendre une pancarte",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur une pancarte, quels mots repèrent des lieux publics ?",
+              "options": [
+                "学校 (école)",
+                "火车站 (gare)",
+                "火山 (volcan)",
+                "海洋 (océan seul)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "学校 désigne l'école et 火车站 la gare, repères fréquents en ville."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "入口 (rùkǒu) sur un panneau indique :",
+              "options": [
+                "La sortie",
+                "L'entrée",
+                "Les toilettes",
+                "Le parking"
+              ],
+              "correctAnswers": [1],
+              "explanation": "入 signifie entrer et 口 peut marquer une ouverture."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "出口 (chūkǒu) signifie :",
+              "options": ["Entrée interdite", "Sortie", "Ascenseur", "Cuisine"],
+              "correctAnswers": [1],
+              "explanation": "出 signifie sortir, d'où sortie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un panneau rouge avec 禁止 (jìnzhǐ) veut dire :",
+              "options": ["Bienvenue", "Interdit", "Gratuit", "Ouvert"],
+              "correctAnswers": [1],
+              "explanation": "禁止 exprime l'interdiction."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lire une pancarte, repérer une flèche aide à :",
+              "options": [
+                "Deviner la direction",
+                "Compter les caractères",
+                "Connaître l'auteur",
+                "Lire le pinyin à voix haute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pictogrammes et flèches complètent le texte."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "厕所 (cèsuǒ) sur un panneau désigne :",
+              "options": [
+                "La bibliothèque",
+                "Les toilettes",
+                "La cantine",
+                "Le gymnase"
+              ],
+              "correctAnswers": [1],
+              "explanation": "厕所 est le terme courant pour les toilettes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "小心 (xiǎoxīn) sur un affichage signifie souvent :",
+              "options": ["Félicitations", "Attention", "Réduction", "Fermé"],
+              "correctAnswers": [1],
+              "explanation": "小心 invite à la prudence."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un document bilingue chinois-français sert surtout à :",
+              "options": [
+                "Vérifier sa compréhension",
+                "Remplacer l'étude des caractères",
+                "Supprimer le pinyin",
+                "Éviter toute lecture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La traduction aide à contrôler le sens des mots repérés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "图书馆 (túshūguǎn) indique :",
+              "options": [
+                "Une bibliothèque",
+                "Un stade",
+                "Un musée d'histoire naturelle",
+                "Une banque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "图书 renvoie aux livres et 馆 à un lieu public."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour un document très court, il vaut mieux :",
+              "options": [
+                "Chercher les mots-clés avant de tout traduire",
+                "Lire de bas en haut uniquement",
+                "Ignorer les caractères répétés",
+                "Ne regarder que les couleurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mots-clés structurent la lecture efficace."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Lire une invitation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans une invitation, quels mots soutiennent l'accueil ?",
+              "options": [
+                "请 (politesse)",
+                "来 (venir)",
+                "禁止 (interdit)",
+                "出口 (sortie)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "请 adoucit la demande et 来 invite à se déplacer."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "生日 (shēngrì) sur une carte signifie :",
+              "options": ["Anniversaire", "Mariage", "Examen", "Voyage"],
+              "correctAnswers": [0],
+              "explanation": "生日 désigne l'anniversaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "时间 (shíjiān) dans un texte court indique :",
+              "options": [
+                "Le lieu",
+                "L'heure ou le moment",
+                "Le menu",
+                "Le nom de famille"
+              ],
+              "correctAnswers": [1],
+              "explanation": "时间 renvoie au temps ou à l'horaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "地点 (dìdiǎn) permet de repérer :",
+              "options": [
+                "Le lieu de rendez-vous",
+                "La météo",
+                "La couleur",
+                "Le prix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "地点 signifie lieu ou endroit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "朋友 (péngyou) signifie :",
+              "options": [
+                "Professeur",
+                "Ami",
+                "Frère aîné",
+                "Voisin uniquement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "朋友 est le mot courant pour ami."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lire une date en chiffres arabes dans un document chinois :",
+              "options": [
+                "Reste lisible comme ailleurs",
+                "Devient illisible",
+                "Change de sens chaque ligne",
+                "Remplace le pinyin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les dates numériques sont universelles dans les textes modernes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "欢迎 (huānyíng) sur une affiche veut dire :",
+              "options": ["Bienvenue", "Au revoir", "Interdit", "Urgent"],
+              "correctAnswers": [0],
+              "explanation": "欢迎 exprime l'accueil."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour comprendre une invitation, l'ordre logique est :",
+              "options": [
+                "Qui, quoi, quand, où",
+                "Couleur, taille, poids, goût",
+                "Uniquement la signature",
+                "Seulement le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les invitations suivent souvent ce schéma d'information."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "星期 (xīngqī) sert à parler de :",
+              "options": [
+                "La semaine et les jours",
+                "La monnaie",
+                "La musique",
+                "La cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "星期 désigne la semaine ou un jour de la semaine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un document manuscrit court demande surtout de :",
+              "options": [
+                "Repérer les noms propres et dates",
+                "Compter les traits sans sens",
+                "Lire à l'envers",
+                "Ignorer la politesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Noms et dates sont des repères clés dans les textes personnels."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Décoder un horaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un horaire, quels caractères indiquent le temps ?",
+              "options": [
+                "点 (heure)",
+                "分 (minute)",
+                "肉 (viande)",
+                "茶 (thé)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "点 et 分 précisent l'heure et les minutes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "火车 (huǒchē) sur un tableau signifie :",
+              "options": ["Train", "Bus", "Avion", "Bateau"],
+              "correctAnswers": [0],
+              "explanation": "火车 désigne le train."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "站 (zhàn) dans 火车站 indique :",
+              "options": ["Une gare", "Un hôtel", "Un marché", "Une école"],
+              "correctAnswers": [0],
+              "explanation": "站 marque une station ou un arrêt."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "北京 (Běijīng) sur un billet est :",
+              "options": [
+                "Un nom de ville",
+                "Un plat",
+                "Une fête",
+                "Une couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "北京 est la capitale chinoise Pékin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lire un horaire, comparer deux heures permet de :",
+              "options": [
+                "Calculer une durée",
+                "Changer la langue",
+                "Effacer le texte",
+                "Trouver l'auteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La différence entre départ et arrivée donne la durée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "今天 (jīntiān) signifie :",
+              "options": ["Aujourd'hui", "Demain", "Hier", "Chaque année"],
+              "correctAnswers": [0],
+              "explanation": "今天 est aujourd'hui."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "明天 (míngtiān) signifie :",
+              "options": ["Demain", "Ce soir", "Le matin", "La nuit"],
+              "correctAnswers": [0],
+              "explanation": "明天 correspond à demain."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un document d'horaire est surtout :",
+              "options": [
+                "Informatif et factuel",
+                "Poétique",
+                "Historique ancien",
+                "Sans chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les horaires listent des faits précis de temps et lieux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "票 (piào) sur un document de transport évoque :",
+              "options": [
+                "Un billet",
+                "Une valise",
+                "Un repas",
+                "Une carte d'identité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "票 signifie billet ou ticket."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lire de haut en bas un tableau d'horaires aide à :",
+              "options": [
+                "Suivre l'ordre des départs",
+                "Ignorer les destinations",
+                "Lire uniquement les logos",
+                "Mélanger les lignes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les tableaux se parcourent ligne par ligne dans l'ordre."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Une carte de visite",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur une carte de visite, quels caractères parlent de l'identité ?",
+              "options": [
+                "姓 (nom de famille)",
+                "名 (prénom)",
+                "公司 (entreprise)",
+                "地铁 (métro)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "姓 et 名 structurent le nom complet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "电话 (diànhuà) indique :",
+              "options": [
+                "Un numéro de téléphone",
+                "Une adresse web seulement",
+                "Un horaire",
+                "Un plat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "电话 signifie téléphone."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "公司 (gōngsī) sur une carte signifie :",
+              "options": [
+                "Entreprise ou société",
+                "École primaire",
+                "Parc",
+                "Stade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "公司 désigne une entreprise."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "老师 (lǎoshī) désigne :",
+              "options": [
+                "Un professeur",
+                "Un médecin",
+                "Un chauffeur",
+                "Un agriculteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "老师 est le terme courant pour enseignant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lire une carte de visite, le logo sert à :",
+              "options": [
+                "Identifier l'organisation",
+                "Remplacer le nom",
+                "Cacher le téléphone",
+                "Indiquer la météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le logo renforce l'identité de l'organisation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "学生 (xuésheng) signifie :",
+              "options": [
+                "Élève ou étudiant",
+                "Directeur",
+                "Parent",
+                "Artiste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学生 désigne l'élève ou l'étudiant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un document très structuré en blocs facilite :",
+              "options": [
+                "Trouver rapidement chaque information",
+                "Lire sans repères",
+                "Oublier le contact",
+                "Mélanger les langues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mise en page guide l'œil vers chaque champ."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "邮箱 (yóuxiāng) correspond souvent à :",
+              "options": [
+                "L'e-mail",
+                "La boîte aux lettres physique uniquement",
+                "Le fax",
+                "Le métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "邮箱 désigne la boîte mail électronique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "中国 (Zhōngguó) sur une carte indique :",
+              "options": [
+                "La Chine comme pays",
+                "Un plat régional",
+                "Une fête",
+                "Une monnaie européenne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "中国 signifie la Chine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lire une carte sans traduire tout permet de :",
+              "options": [
+                "Repérer rôle, nom et contact",
+                "Connaître la biographie complète",
+                "Savoir l'âge exact",
+                "Lire les pensées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les champs essentiels suffisent pour usage pratique."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Petit dialogue écrit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un dialogue, quels pronoms apparaissent très souvent ?",
+              "options": ["你 (tu)", "我 (je)", "月 (lune)", "车 (voiture)"],
+              "correctAnswers": [0, 1],
+              "explanation": "你 et 我 structurent la conversation de base."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "你好 (nǐ hǎo) est :",
+              "options": [
+                "Une salutation",
+                "Un adieu définitif",
+                "Une excuse",
+                "Un ordre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "你好 signifie bonjour littéralement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "谢谢 (xièxie) exprime :",
+              "options": ["Merci", "Pardon", "Non", "Peut-être"],
+              "correctAnswers": [0],
+              "explanation": "谢谢 est la formule de remerciement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "不客气 (bù kèqi) répond à :",
+              "options": ["Merci", "Bonjour", "Au revoir", "Comment"],
+              "correctAnswers": [0],
+              "explanation": "不客气 signifie de rien après un remerciement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "吗 (ma) en fin de phrase indique souvent :",
+              "options": [
+                "Une question oui/non",
+                "Un pluriel",
+                "Un passé",
+                "Un superlatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "吗 transforme une phrase en question oui/non."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lire un dialogue, alterner les lignes montre :",
+              "options": [
+                "Qui parle à qui",
+                "La date du document",
+                "Le prix",
+                "La couleur du papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'alternance des répliques structure la conversation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "什么 (shénme) signifie :",
+              "options": ["Quoi", "Où", "Quand", "Pourquoi"],
+              "correctAnswers": [0],
+              "explanation": "什么 est le mot interrogatif quoi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "名字 (míngzi) désigne :",
+              "options": ["Le nom", "La ville", "L'âge", "La couleur"],
+              "correctAnswers": [0],
+              "explanation": "名字 signifie nom."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "再见 (zàijiàn) sert à :",
+              "options": [
+                "Dire au revoir",
+                "Commander un plat",
+                "Demander l'heure",
+                "Refuser poliment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "再见 est l'au revoir courant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comprendre un dialogue court repose sur :",
+              "options": [
+                "Les formules de politesse apprises",
+                "Tous les caractères rares",
+                "Uniquement les chiffres",
+                "Les signatures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les formules de base couvrent une grande part des échanges simples."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Chiffres en contexte",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles valeurs ont ces chiffres en document ?",
+              "options": ["一 vaut 1", "二 vaut 2", "十 vaut 100", "九 vaut 0"],
+              "correctAnswers": [0, 1],
+              "explanation": "一 et 二 sont les deux premiers chiffres usuels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "三 (sān) vaut :",
+              "options": ["3", "5", "8", "9"],
+              "correctAnswers": [0],
+              "explanation": "三 est le chiffre trois."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "十 (shí) vaut :",
+              "options": ["10", "100", "1000", "4"],
+              "correctAnswers": [0],
+              "explanation": "十 signifie dix."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans un prix, lire 五 (wǔ) donne :",
+              "options": ["5", "6", "7", "2"],
+              "correctAnswers": [0],
+              "explanation": "五 est le chiffre cinq."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lire un document avec des chiffres arabes et chinois :",
+              "options": [
+                "Peut mélanger les deux systèmes",
+                "Est impossible",
+                "Interdit en Chine",
+                "Remplace le français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les textes modernes utilisent souvent les deux écritures numériques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "八 (bā) vaut :",
+              "options": ["8", "1", "0", "3"],
+              "correctAnswers": [0],
+              "explanation": "八 est huit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "九 (jiǔ) vaut :",
+              "options": ["9", "7", "6", "4"],
+              "correctAnswers": [0],
+              "explanation": "九 est neuf."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un numéro de téléphone dans un texte chinois :",
+              "options": [
+                "Se lit chiffre par chiffre",
+                "Se lit comme un poème",
+                "N'utilise jamais de chiffres",
+                "Change chaque semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les numéros se décodent chiffre par chiffre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "四 (sì) vaut :",
+              "options": ["4", "10", "11", "12"],
+              "correctAnswers": [0],
+              "explanation": "四 est quatre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repérer des chiffres dans un document aide à :",
+              "options": [
+                "Comprendre quantités, prix ou dates",
+                "Ignorer le sens",
+                "Traduire en latin",
+                "Effacer le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les nombres portent des informations concrètes."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Message court",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un SMS court, quels mots marquent l'accord ?",
+              "options": [
+                "好 (d'accord)",
+                "行 (OK, ça marche)",
+                "对不起 (pardon)",
+                "禁止 (interdit)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "好 et 行 valident rapidement un message."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "没 (méi) avec 问题 (wèntí) donne :",
+              "options": [
+                "Pas de problème",
+                "Beaucoup de questions",
+                "Interdit",
+                "Urgent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "没问题 signifie pas de problème."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "对不起 (duìbuqǐ) signifie :",
+              "options": ["Pardon", "Bravo", "Bon appétit", "Bonne nuit"],
+              "correctAnswers": [0],
+              "explanation": "对不起 est une excuse courante."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lire un message, les émojis complètent :",
+              "options": [
+                "Le ton émotionnel",
+                "La grammaire obligatoire",
+                "Le pinyin officiel",
+                "La date lunaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les émojis précisent l'humeur dans les textos."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "忙 (máng) dans un message veut dire :",
+              "options": [
+                "Occupé",
+                "Libre",
+                "Fatigué de voyage",
+                "En vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "忙 signifie occupé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "一会儿 (yīhuìr) évoque :",
+              "options": [
+                "Dans un moment / bientôt",
+                "Jamais",
+                "Hier soir",
+                "L'an prochain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一会儿 indique un court délai."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un message très court demande de :",
+              "options": [
+                "Utiliser le contexte de la conversation",
+                "Traduire un roman entier",
+                "Lire à voix haute en latin",
+                "Ignorer l'expéditeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fil de discussion éclaire les abréviations."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "知道 (zhīdào) signifie :",
+              "options": ["Savoir", "Manger", "Courir", "Dormir"],
+              "correctAnswers": [0],
+              "explanation": "知道 veut dire savoir ou connaître."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "可以 (kěyǐ) exprime souvent :",
+              "options": [
+                "Pouvoir / c'est possible",
+                "Interdiction",
+                "Colère",
+                "Tristesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "可以 indique la possibilité ou la permission."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lire un document numérique court, la date en haut sert à :",
+              "options": [
+                "Situer le message dans le temps",
+                "Changer la langue",
+                "Effacer le contenu",
+                "Compter les caractères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'horodatage contextualise l'échange."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Panneau de rue",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur un panneau urbain, quels caractères parlent de la voie publique ?",
+              "options": ["路 (route)", "街 (rue)", "饭 (repas)", "茶 (thé)"],
+              "correctAnswers": [0, 1],
+              "explanation": "路 et 街 nomment routes et rues."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "医院 (yīyuàn) indique :",
+              "options": ["Un hôpital", "Une école", "Une banque", "Un cinéma"],
+              "correctAnswers": [0],
+              "explanation": "医院 est l'hôpital."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "银行 (yínháng) signifie :",
+              "options": ["Banque", "Supermarché", "Gare", "Musée"],
+              "correctAnswers": [0],
+              "explanation": "银行 désigne la banque."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "超市 (chāoshì) est :",
+              "options": [
+                "Un supermarché",
+                "Un temple",
+                "Un stade",
+                "Un aéroport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "超市 signifie supermarché."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lire un panneau de rue, la couleur bleue indique souvent :",
+              "options": [
+                "Une information routière ou un service",
+                "Uniquement un danger",
+                "Une fête",
+                "Un prix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bleu oriente souvent vers l'information pratique selon les pays."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "公园 (gōngyuán) signifie :",
+              "options": ["Parc public", "Prison", "Usine", "Port"],
+              "correctAnswers": [0],
+              "explanation": "公园 est un parc."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "地铁 (dìtiě) sur un panneau indique :",
+              "options": ["Le métro", "Le taxi", "Le vélo", "Le ferry"],
+              "correctAnswers": [0],
+              "explanation": "地铁 désigne le métro."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un nom de rue en caractères + pinyin aide à :",
+              "options": [
+                "Prononcer et repérer le lieu",
+                "Connaître l'histoire du roi",
+                "Lire un menu",
+                "Compter les passants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pinyin accompagne la lecture des noms propres."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "商店 (shāngdiàn) signifie :",
+              "options": ["Magasin", "Église", "Champ", "Montagne"],
+              "correctAnswers": [0],
+              "explanation": "商店 est un magasin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lire des panneaux en ville développe surtout :",
+              "options": [
+                "Le repérage spatial et les services",
+                "La calligraphie ancienne seule",
+                "Les recettes de cuisine",
+                "Les examens scolaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les panneaux orientent dans l'espace urbain."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse de lecture",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour lire un document court en chinois, quelles stratégies sont utiles ?",
+              "options": [
+                "Repérer mots connus et contexte",
+                "Traduire chaque caractère sans ordre",
+                "Utiliser le pinyin pour prononcer",
+                "Ignorer toute mise en page"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Mots repères, contexte et pinyin soutiennent une lecture efficace en 5e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le pinyin sous les caractères sert surtout à :",
+              "options": [
+                "La prononciation",
+                "Le prix en euros",
+                "La date lunaire",
+                "La couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pinyin guide la lecture à voix haute."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un texte bilingue permet de :",
+              "options": [
+                "Vérifier le sens global",
+                "Supprimer l'étude des caractères",
+                "Éviter toute lecture",
+                "Remplacer le dictionnaire toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La traduction aide à contrôler sa compréhension."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les documents modernes en Chine utilisent souvent :",
+              "options": [
+                "Caractères simplifiés",
+                "Uniquement le sanscrit",
+                "Seulement l'alphabet latin",
+                "Aucune ponctuation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les caractères simplifiés dominent dans les textes courants."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lire un document, ignorer la mise en page :",
+              "options": [
+                "Peut faire perdre des informations",
+                "Améliore toujours la vitesse",
+                "Est obligatoire en 5e",
+                "Change le sens des chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titres et blocs structurent le message."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un mot inconnu dans un menu :",
+              "options": [
+                "Peut être deviné par la catégorie voisine",
+                "Empêche toute lecture",
+                "Efface le plat",
+                "Change la monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contexte du menu aide à inférer le type de plat."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Relire une deuxième fois un texte court sert à :",
+              "options": [
+                "Confirmer les repères compris",
+                "Oublier le sens",
+                "Lire à l'envers",
+                "Supprimer le pinyin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La relecture consolide la compréhension."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les chiffres dans un document :",
+              "options": [
+                "Portent des infos concrètes",
+                "Sont décoratifs seulement",
+                "N'existent pas en chinois",
+                "Remplacent les caractères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prix, heures et dates reposent sur les nombres."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Objectif de « lire un document court » en 5e :",
+              "options": [
+                "Comprendre l'essentiel avec des repères",
+                "Traduire un roman",
+                "Écrire 3000 caractères",
+                "Parler sans accent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On vise une compréhension utile, pas exhaustive."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Après avoir lu un document, noter trois mots nouveaux :",
+              "options": [
+                "Enrichit le vocabulaire actif",
+                "Est inutile",
+                "Interdit en classe",
+                "Efface la mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Noter des mots fixe la lecture dans la mémoire."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La Grande Muraille",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La Grande Muraille est associée à :",
+              "options": [
+                "La défense des frontières",
+                "Un symbole national majeur",
+                "Un stade olympique moderne",
+                "Un port de pêche"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Elle protégeait le territoire et incarne la Chine dans le monde."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Elle se situe principalement en :",
+              "options": ["Chine", "Japon", "Inde", "Mongolie uniquement"],
+              "correctAnswers": [0],
+              "explanation": "La Grande Muraille est un symbole majeur de la Chine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Visiter la muraille près de Pékin montre :",
+              "options": [
+                "Un ouvrage monumental de pierre et brique",
+                "Une pyramide",
+                "Un temple grec",
+                "Un château médiéval européen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sections touristiques mêlent pierre, brique et tours."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La muraille est classée :",
+              "options": [
+                "Patrimoine mondial de l'UNESCO",
+                "Record du plus petit bâtiment",
+                "Monument lunaire",
+                "Stade national"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle figure au patrimoine mondial reconnu par l'UNESCO."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Elle s'étend sur plusieurs :",
+              "options": [
+                "Siècles de construction et réparations",
+                "Jours seulement",
+                "Heures",
+                "Minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des dynasties successives l'ont renforcée sur des siècles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour les élèves, c'est un repère car elle illustre :",
+              "options": [
+                "L'ingénierie et l'histoire chinoises",
+                "La cuisine italienne",
+                "La musique jazz",
+                "Les cartes marines vikings"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle condense histoire, défense et travail collectif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "On la parcourt souvent à :",
+              "options": [
+                "Pied sur des sections aménagées",
+                "Sous-marin",
+                "Planeur",
+                "Traineau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les visites se font à pied sur des tronçons restaurés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La muraille est visible depuis l'espace :",
+              "options": [
+                "Seulement avec des aides, pas à l'œil nu",
+                "Comme une autoroute fluorescente",
+                "Comme un laser",
+                "Jamais du tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'idée de visibilité à l'œil nu est un mythe populaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Badaling est :",
+              "options": [
+                "Une section célèbre près de Pékin",
+                "Un plat épicé",
+                "Une fête",
+                "Une monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Badaling est l'une des sections les plus visitées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comme repère de civilisation, elle rappelle :",
+              "options": [
+                "La longue durée de l'histoire chinoise",
+                "L'absence d'État",
+                "Un village isolé d'hier",
+                "Une colonie récente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle symbolise la continuité historique de la Chine."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Le Nouvel An chinois",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le Nouvel An chinois est aussi lié à :",
+              "options": [
+                "Le calendrier lunaire",
+                "La Fête du printemps (春节)",
+                "Halloween",
+                "Noël occidental"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "春节 suit le calendrier lunaire et marque le renouveau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Chaque année est associée à un :",
+              "options": [
+                "Animal du zodiaque",
+                "Arbre unique",
+                "Océan",
+                "Continent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cycle de douze animaux structure le zodiaque chinois."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La couleur rouge pendant la fête symbolise :",
+              "options": ["Chance et joie", "Deuil", "Neige", "Silence"],
+              "correctAnswers": [0],
+              "explanation": "Le rouge est porteur de bon augure."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les enveloppes rouges (hongbao) contiennent :",
+              "options": [
+                "De l'argent en cadeau",
+                "Des clés de voiture",
+                "Des billets de train obligatoires",
+                "Des pierres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On y glisse de l'argent pour porter chance."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les lanternes et feux d'artifice marquent :",
+              "options": [
+                "La fête et le renouveau",
+                "Un examen",
+                "Une grève",
+                "Un jour ordinaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lumières et bruits chassent les mauvais esprits selon la tradition."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le repas familial du réveillon est :",
+              "options": [
+                "Central dans les célébrations",
+                "Interdit",
+                "Réservé aux touristes",
+                "Sans nourriture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réunion familiale autour du repas est essentielle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La danse du lion ou du dragon dans la rue :",
+              "options": [
+                "Anime les parades",
+                "Remplace l'école",
+                "Ferme les musées",
+                "Est une punition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces danses rythment les célébrations publiques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le mot 春节 (Chūnjié) désigne :",
+              "options": [
+                "La Fête du printemps",
+                "L'été",
+                "L'automne",
+                "L'hiver sportif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "春节 est le nom chinois du Nouvel An lunaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Avant la fête, on nettoie la maison pour :",
+              "options": [
+                "Chasser le malheur de l'ancienne année",
+                "Peindre en bleu uniquement",
+                "Vendre les meubles",
+                "Fermer les fenêtres un an"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le grand ménage prépare l'accueil de la nouvelle année."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comme repère culturel, cette fête montre :",
+              "options": [
+                "L'importance de la famille et des traditions",
+                "L'oubli des ancêtres",
+                "L'absence de calendrier",
+                "Le rejet de la fête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Famille, rituels et renouveau structurent la célébration."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "L'écriture chinoise",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'écriture chinoise se caractérise par :",
+              "options": [
+                "Des caractères logographiques",
+                "Le pinyin comme aide à la lecture",
+                "Uniquement l'alphabet latin",
+                "Le cyrillique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les caractères portent le sens et le pinyin la prononciation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le pinyin est :",
+              "options": [
+                "Une transcription phonétique en lettres latines",
+                "Un type de riz",
+                "Un temple",
+                "Une monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pinyin aide à lire la prononciation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La calligraphie est considérée comme :",
+              "options": [
+                "Un art majeur",
+                "Un sport de combat",
+                "Une punition",
+                "Un jeu vidéo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écrire bellement est une forme d'art en Chine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les caractères simplifiés sont surtout utilisés en :",
+              "options": [
+                "Chine continentale",
+                "Antarctique",
+                "Mars",
+                "Partout sans exception"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réforme simplifiée concerne surtout la RPC."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un caractère se compose de :",
+              "options": [
+                "Traits et composants",
+                "Uniquement de chiffres",
+                "Deux lettres",
+                "Couleurs seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Radicaux et traits forment la structure du caractère."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le pinceau traditionnel s'utilise avec :",
+              "options": ["Encre", "Ketchup", "Peinture murale", "Sable"],
+              "correctAnswers": [0],
+              "explanation": "Encre de suie et pinceau sont l'outillage classique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lire un document ancien peut demander des :",
+              "options": [
+                "Caractères traditionnels",
+                "Emojis uniquement",
+                "Chiffres romains seuls",
+                "Signes celtiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les textes anciens ou de Taïwan/Hong Kong restent en traditionnel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Apprendre quelques caractères en 5e permet de :",
+              "options": [
+                "Reconnaître des mots fréquents",
+                "Lire tous les classiques",
+                "Parler sans pratique",
+                "Écrire un dictionnaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On vise la reconnaissance de bases utiles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le sens d'un caractère peut se deviner parfois via :",
+              "options": [
+                "Son radical",
+                "Sa couleur d'encre",
+                "La taille du papier",
+                "L'heure du jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le radical donne un indice sémantique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'écriture comme repère de civilisation montre :",
+              "options": [
+                "Une culture millénaire de l'écrit",
+                "L'absence d'histoire",
+                "Un alphabet récent",
+                "Une langue sans écriture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écrit chinois accompagne la civilisation depuis des millénaires."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "La Route de la soie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La Route de la soie a permis :",
+              "options": [
+                "Des échanges vers l'Asie centrale",
+                "La circulation de la soie précieuse",
+                "Un isolement total",
+                "Aucun contact culturel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Caravanes et soie ont lié la Chine à des régions lointaines."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La soie était une marchandise :",
+              "options": [
+                "Précieuse exportée",
+                "Interdite partout",
+                "Sans valeur",
+                "Uniquement locale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La soie chinoise était très recherchée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les échanges sur ces routes incluaient aussi :",
+              "options": [
+                "Idées, religions et technologies",
+                "Rien d'autre que de la soie",
+                "Uniquement des armes",
+                "Seulement du sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les routes diffusaient cultures et savoirs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le désert de Gobi est sur un tronçon :",
+              "options": [
+                "Historique de ces échanges",
+                "Sans lien",
+                "Sous l'océan",
+                "En Europe de l'Ouest"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les caravanes traversaient des zones arides comme le Gobi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les caravanes utilisaient souvent :",
+              "options": [
+                "Chameaux et mules",
+                "Fusées",
+                "Sous-marins",
+                "Trains à vapeur dès -2000"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bêtes de somme portaient les charges."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Xi'an (Chang'an) fut :",
+              "options": [
+                "Un point de départ célèbre",
+                "Une ville sans histoire",
+                "Un port atlantique",
+                "Un glacier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Xi'an était une capitale et hub des routes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La porcelaine chinoise voyagea aussi via :",
+              "options": [
+                "Ces routes commerciales",
+                "Aucun contact",
+                "Le télégraphe",
+                "Internet antique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Porcelaine et thé circulaient avec la soie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Aujourd'hui, « Route de la soie » évoque :",
+              "options": [
+                "Ouverture et échanges interculturels",
+                "Isolement total",
+                "Guerre seule",
+                "Fin du commerce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le terme symbolise les connexions entre civilisations."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le papier inventé en Chine a pu se diffuser grâce à :",
+              "options": [
+                "Ces échanges",
+                "L'absence de contact",
+                "Un embargo permanent",
+                "Un hasard sans voyage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les routes favorisaient la diffusion des innovations."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comme repère, la Route de la soie illustre :",
+              "options": [
+                "La place de la Chine dans le monde ancien",
+                "L'absence de commerce",
+                "Un village fermé",
+                "Une culture sans contact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle montre la Chine connectée à l'Asie et à l'Europe."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Pékin et Shanghai",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pékin (北京) est :",
+              "options": [
+                "La capitale politique",
+                "Le site de la Cité interdite",
+                "La capitale du Japon",
+                "Une île"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pékin concentre pouvoir et patrimoine impérial."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Shanghai (上海) est réputée pour :",
+              "options": [
+                "Son skyline moderne et son port",
+                "Les pyramides",
+                "Le pôle sud",
+                "Les fjords"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shanghai est une métropole économique et portuaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La Cité interdite se trouve à :",
+              "options": ["Pékin", "Shanghai", "Paris", "Rome"],
+              "correctAnswers": [0],
+              "explanation": "L'ancien palais impérial est au cœur de Pékin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La Bund est un quai emblématique de :",
+              "options": ["Shanghai", "Pékin", "Londres", "Le Caire"],
+              "correctAnswers": [0],
+              "explanation": "La Bund borde le Huangpu à Shanghai."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pékin a accueilli les Jeux olympiques en :",
+              "options": ["2008", "1900", "2024", "1952"],
+              "correctAnswers": [0],
+              "explanation": "Les JO d'été 2008 se sont tenus à Pékin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Connaître deux grandes villes sert de repère pour :",
+              "options": [
+                "Situer la diversité urbaine chinoise",
+                "Nier l'existence de la campagne",
+                "Oublier l'histoire",
+                "Confondre pays"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capitale historique et métropole globale se complètent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le métro de Shanghai aide des millions de :",
+              "options": [
+                "Passagers quotidiens",
+                "Pingouins",
+                "Avions",
+                "Bateaux seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les métropoles chinoises ont d'immenses réseaux de transport."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le parc du Temple du ciel est à :",
+              "options": ["Pékin", "Shanghai", "New York", "Sydney"],
+              "correctAnswers": [0],
+              "explanation": "Ce complexe impérial est à Pékin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Shanghai Tower est un :",
+              "options": [
+                "Gratte-ciel",
+                "Pont romain",
+                "Château fort",
+                "Stade antique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est l'un des plus hauts bâtiments de la ville."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ces villes montrent :",
+              "options": [
+                "Tradition et modernité côte à côte",
+                "Une Chine figée",
+                "L'absence de population",
+                "Un pays sans villes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Palais anciens et tours récentes coexistent."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Dragon et symboles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le dragon chinois (龙 lóng) symbolise souvent :",
+              "options": [
+                "Puissance et bon augure",
+                "Lien avec l'eau et l'empire",
+                "Malheur systématique",
+                "Un signe européen"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le lóng est bienveillant et associé au pouvoir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le phénix (凤凰 fènghuáng) évoque :",
+              "options": [
+                "Harmonie et renaissance",
+                "Guerre",
+                "Famine",
+                "Silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le phénix accompagne souvent le dragon dans l'iconographie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pendant le Nouvel An, la danse du dragon :",
+              "options": [
+                "Porte chance",
+                "Ferme les écoles à jamais",
+                "Remplace le drapeau",
+                "Interdit la musique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La parade du dragon chasse les mauvais esprits."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le panda est un symbole de :",
+              "options": [
+                "La Chine et de la protection de la nature",
+                "L'Italie",
+                "Le désert",
+                "La mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le panda géant est emblématique et protégé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les couleurs impériales historiques incluent :",
+              "options": [
+                "Jaune et rouge",
+                "Rose fluo seul",
+                "Gris uniquement",
+                "Transparent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jaune et rouge marquaient le pouvoir et la fête."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le yin et le yang représentent :",
+              "options": [
+                "Des forces complémentaires",
+                "Deux pays",
+                "Deux monnaies",
+                "Deux alphabets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oppositions harmonieuses comme clair/obscur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le caractère 福 (fú) signifie :",
+              "options": ["Bonheur / fortune", "Tristesse", "Pluie", "Vent"],
+              "correctAnswers": [0],
+              "explanation": "福 est accroché à l'envers pour « le bonheur arrive »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le poisson koi ou carpe dans l'art peut signifier :",
+              "options": ["Abondance", "Pauvreté", "Guerre", "Froid"],
+              "correctAnswers": [0],
+              "explanation": "Poissons et eau évoquent prospérité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le drapeau chinois actuel comporte des :",
+              "options": [
+                "Étoiles jaunes sur fond rouge",
+                "Rayures bleues",
+                "Un dragon dessiné",
+                "Un panda seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une grande étoile et quatre petites symbolisent l'unité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Étudier ces symboles en 5e aide à :",
+              "options": [
+                "Lire la culture visuelle chinoise",
+                "Ignorer les fêtes",
+                "Confondre tous les pays",
+                "Oublier l'histoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symboles et couleurs portent sens dans la vie quotidienne."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Gastronomie chinoise",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels aliments sont des bases du repas chinois ?",
+              "options": [
+                "Le riz",
+                "Les nouilles",
+                "Uniquement du pain",
+                "Aucun féculent"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Riz et nouilles structurent l'alimentation quotidienne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les baguettes (筷子 kuàizi) servent à :",
+              "options": [
+                "Prendre la nourriture",
+                "Boire la soupe",
+                "Couper la viande comme un couteau",
+                "Écrire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les baguettes remplacent fourchette et couteau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le thé (茶 chá) en Chine :",
+              "options": [
+                "Accompagne souvent le repas ou la visite",
+                "N'existe pas",
+                "Remplace l'eau partout",
+                "Est toujours sucré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le thé est central dans l'hospitalité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les raviolis (饺子 jiǎozi) sont populaires :",
+              "options": [
+                "Surtout au Nouvel An",
+                "Jamais",
+                "Uniquement le matin",
+                "Seulement à Noël"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les jiǎozi symbolisent richesse pour la nouvelle année."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La cuisine régionale montre :",
+              "options": [
+                "Une grande diversité (Sichuan, Canton…)",
+                "Un seul plat identique",
+                "Aucun piment",
+                "Aucun légume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque province apporte saveurs et techniques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Partager plusieurs plats au centre de la table :",
+              "options": [
+                "Est une habitude conviviale",
+                "Est impoli",
+                "Est interdit",
+                "Remplace le dialogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les plats tournent pour que chacun goûte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le canard laqué de Pékin est :",
+              "options": [
+                "Un plat emblématique",
+                "Un dessert",
+                "Une boisson",
+                "Un légume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une spécialité célèbre de la capitale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le tofu (豆腐 dòufu) est fait à partir de :",
+              "options": [
+                "Soja",
+                "Blé",
+                "Pomme de terre",
+                "Lait de vache uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le soja fermenté ou caillé donne le tofu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Goûter la cuisine est un repère car elle montre :",
+              "options": [
+                "Histoire et régions",
+                "Un pays sans agriculture",
+                "Une seule recette",
+                "L'absence de fêtes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque plat raconte terroir et coutume."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dire 请慢用 (qǐng màn yòng) avant de manger :",
+              "options": [
+                "Souhaite bon appétit poliment",
+                "Demande l'addition",
+                "Refuse le repas",
+                "Ferme le restaurant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une formule de politesse à table."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Confucius et la sagesse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Confucius (孔子 Kǒngzǐ) est :",
+              "options": [
+                "Un penseur de la Chine antique",
+                "Un modèle d'éducation et de morale",
+                "Un astronaute",
+                "Un roi d'Europe"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Confucius a fondé une éthique qui valorise l'étude et le respect."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Il insiste sur :",
+              "options": [
+                "Respect, éducation et harmonie sociale",
+                "Guerre permanente",
+                "Isolement total",
+                "Ignorance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ren, li et étude structurent sa pensée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le confucianisme influence :",
+              "options": [
+                "École et valeurs familiales",
+                "Seulement la musique rock",
+                "Uniquement le sport",
+                "Rien en Asie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respect des aînés et devotion à l'étude en découlent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qufu, sa ville natale, se trouve en :",
+              "options": ["Chine (Shandong)", "France", "Brésil", "Canada"],
+              "correctAnswers": [0],
+              "explanation": "Qufu abrite temple et tombeau confucéens."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les Analectes recueillent :",
+              "options": [
+                "Ses enseignements",
+                "Des recettes",
+                "Des cartes marines",
+                "Des chansons pop"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les Entretiens transmettent ses paroles aux disciples."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La fête des enseignants en Chine rappelle :",
+              "options": [
+                "La valeur du maître",
+                "L'absence d'école",
+                "La fin des livres",
+                "Le rejet de l'étude"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confucius est honoré comme modèle d'éducateur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Ne fais pas aux autres… » exprime :",
+              "options": [
+                "La règle d'or morale",
+                "Une recette",
+                "Un jeu",
+                "Une punition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette maxime invite à la bienveillance réciproque."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les temples confucéens sont des :",
+              "options": [
+                "Lieux de mémoire et d'étude",
+                "Parcs d'attractions",
+                "Usines",
+                "Aéroports"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On y rend hommage et on y enseignait autrefois."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Confucius comme repère montre :",
+              "options": [
+                "L'importance de la philosophie chinoise",
+                "L'absence de pensée",
+                "Une culture sans textes",
+                "Un pays sans éducation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sa pensée structure encore l'éthique en Asie de l'Est."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Apprendre son nom en chinois (孔子) aide à :",
+              "options": [
+                "Relier histoire et langue",
+                "Oublier la géographie",
+                "Confondre avec un autre continent",
+                "Ignorer la civilisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nom chinois ancre le personnage dans la culture."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Arts et traditions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'opéra de Pékin combine :",
+              "options": [
+                "Chant et musique",
+                "Gestes et maquillage codés",
+                "Silence total",
+                "Natation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Voix, mouvements et costumes forment un langage scénique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La porcelaine bleue blanche est :",
+              "options": [
+                "Un artisanat célèbre",
+                "Un fruit",
+                "Un animal",
+                "Une monnaie récente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jingdezhen est réputée pour la porcelaine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les arts martiaux comme le kung-fu :",
+              "options": [
+                "Unissent discipline et mouvement",
+                "Interdisent tout sport",
+                "N'existent qu'en Europe",
+                "Remplacent l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils mêlent self-défense, santé et philosophie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La peinture de paysage chinoise (山水 shānshuǐ) montre :",
+              "options": [
+                "Montagnes et eau",
+                "Uniquement des portraits",
+                "Des voitures",
+                "Des cartes GPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "山水 signifie littéralement montagne-eau."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le guqin est :",
+              "options": [
+                "Un instrument à cordes ancien",
+                "Un plat",
+                "Un bateau",
+                "Un chapeau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une cithare traditionnelle savante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les lanternes du festival de fin d'été :",
+              "options": [
+                "Illuminent les rues",
+                "Éteignent les villes",
+                "Remplacent les livres",
+                "Interdisent la musique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le festival des lanternes clôt les célébrations du Nouvel An."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La soie pour les broderies vient :",
+              "options": [
+                "Du cocon du ver à soie",
+                "Du plastique",
+                "Du sable",
+                "Du pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élevage du ver à soie est une innovation chinoise ancienne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le papier découpé (剪纸 jiǎnzhǐ) sert à :",
+              "options": [
+                "Décorer fenêtres et fêtes",
+                "Construire des ponts",
+                "Fabriquer des voitures",
+                "Remplacer la monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motifs rouges portent bonheur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Visiter un musée chinois permet de :",
+              "options": [
+                "Voir bronzes, céramiques et calligraphies",
+                "Ignorer l'histoire",
+                "Ne voir que du sport",
+                "Effacer le passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les collections illustrent des millénaires d'art."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les arts comme repère de civilisation montrent :",
+              "options": [
+                "Créativité et transmission",
+                "Absence de culture",
+                "Un pays sans passé",
+                "Un art récent seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traditions vivantes et créations modernes coexistent."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse civilisation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un repère de civilisation chinoise peut être :",
+              "options": [
+                "Un monument comme la Grande Muraille",
+                "Une fête comme le Nouvel An",
+                "Un plat inventé hier en Europe",
+                "Un satellite artificiel seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Monuments et fêtes ancrent la culture dans le temps long."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La Chine compte environ :",
+              "options": [
+                "Plus d'un milliard d'habitants",
+                "Mille habitants",
+                "Personne",
+                "Un seul village"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est le pays le plus peuplé du monde."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le fleuve Yangtsé est :",
+              "options": [
+                "Un long fleuve de Chine",
+                "Un désert",
+                "Une montagne",
+                "Un lac en Afrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il traverse le cœur économique du pays."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La dynastie des Ming est associée entre autres à :",
+              "options": [
+                "La Cité pourpre interdite et la muraille",
+                "La révolution française",
+                "L'Empire romain",
+                "Les Vikings"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les Ming ont laissé des monuments majeurs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'armée de terre cuite se trouve près de :",
+              "options": ["Xi'an", "Paris", "Tokyo", "Moscou"],
+              "correctAnswers": [0],
+              "explanation": "Les guerriers du premier empereur sont à Xi'an."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Étudier un repère de civilisation en chinois en 5e vise à :",
+              "options": [
+                "Situer la Chine dans le temps et l'espace",
+                "Apprendre toute l'histoire",
+                "Oublier la France",
+                "Ne rien retenir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On mémorise quelques repères solides et significatifs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le calendrier lunaire influence encore :",
+              "options": [
+                "Les dates des fêtes traditionnelles",
+                "Le prix du pétrole",
+                "La gravité",
+                "Les fuseaux horaires GPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Nouvel An et le festival des lanternes suivent la lune."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La diversité de la Chine inclut :",
+              "options": [
+                "Plusieurs langues et régions",
+                "Un seul plat",
+                "Un seul paysage",
+                "Aucune minorité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Han et nombreuses minorités cohabitent sur un vaste territoire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Relier un document court lu en u1 à un repère u2 :",
+              "options": [
+                "Renforce la culture générale",
+                "Est inutile",
+                "Interdit",
+                "Efface la langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lire un menu ou une affiche éclaire aussi le contexte culturel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Retenir trois repères chinois en 5e est :",
+              "options": [
+                "Une base pour approfondir plus tard",
+                "La fin de l'apprentissage",
+                "Inutile pour voyager",
+                "Réservé aux adultes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quelques repères solides ouvrent sur des études futures."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2348 @@
+{
+  "id": "1ere-anglais-05",
+  "year": "1ere",
+  "subject": "anglais",
+  "title": "Le passé en anglais",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Prétérit simple régulier et irrégulier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes sont irréguliers au prétérit simple ?",
+              "options": [
+                "Go (went)",
+                "Play (played)",
+                "Buy (bought)",
+                "Watch (watched)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Go (went) et Buy (bought) changent de radical, alors que Play et Watch prennent simplement le suffixe -ed."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe irrégulier « begin » ?",
+              "options": ["Began", "Begun", "Beginned", "Begins"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de begin est began (begun étant le participe passé)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment forme-t-on la négation au prétérit simple pour un verbe plein ?",
+              "options": [
+                "Did not (didn't) + base verbale",
+                "Was not + verbe en -ed",
+                "Did not + participe passé",
+                "Not + verbe au prétérit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'auxiliaire did porte la marque du passé : le verbe lexical reste donc à la base verbale infinitive."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe « choose » ?",
+              "options": ["Chose", "Choosed", "Chosen", "Choosing"],
+              "correctAnswers": [0],
+              "explanation": "Choose est un verbe irrégulier dont le prétérit est chose et le participe passé chosen."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « She ___ her keys yesterday morning. »",
+              "options": ["lost", "losed", "has lost", "loses"],
+              "correctAnswers": [0],
+              "explanation": "Yesterday impose le prétérit simple pour un fait révolu. Le prétérit de lose est lost."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe « write » ?",
+              "options": ["Wrote", "Written", "Writed", "Writing"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de write est wrote (written étant le participe passé)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle question au prétérit simple est grammaticalement correcte ?",
+              "options": [
+                "Where did you go last night?",
+                "Where you went last night?",
+                "Where did you went last night?",
+                "Where went you last night?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure interrogative est : Mot interrogatif + did + sujet + base verbale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle règle orthographique s'applique au verbe « stop » au prétérit ?",
+              "options": [
+                "On double la consonne finale : stopped",
+                "On ajoute seulement -d : stopd",
+                "On supprime la consonne finale : stoped",
+                "Le verbe est invariable : stop"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les verbes d'une syllabe finissant par consonne-voyelle-consonne, on double la consonne finale : stopped."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe « catch » ?",
+              "options": ["Caught", "Catched", "Cought", "Caughted"],
+              "correctAnswers": [0],
+              "explanation": "Catch fait caught au prétérit et au participe passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « They ___ very happy with the final exam results. »",
+              "options": ["were", "was", "been", "are been"],
+              "correctAnswers": [0],
+              "explanation": "Au prétérit du verbe be, la 3e personne du pluriel (they) s'accorde avec were."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Prétérit continu (Past Continuous)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans quels cas utilise-t-on le Past Continuous (was/were + V-ing) ?",
+              "options": [
+                "Pour décrire une action en cours à un moment précis du passé",
+                "Pour poser le décor ou planter l'atmosphère dans un récit",
+                "Pour exprimer une vérité générale ou scientifique",
+                "Pour énumérer une succession rapide d'actions brèves"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le Past Continuous sert à exprimer une action en déroulement à un instant T et à poser le décor d'une scène narrative."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment se forme le Past Continuous ?",
+              "options": [
+                "was / were + base verbale en -ing",
+                "had + participe passé",
+                "did + base verbale",
+                "would + base verbale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Past Continuous associe l'auxiliaire be au prétérit (was/were) et le participe présent en -ing."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « At 8 pm yesterday, we ___ dinner together. »",
+              "options": ["were having", "was having", "had", "are having"],
+              "correctAnswers": [0],
+              "explanation": "À un horaire précis dans le passé (At 8 pm yesterday), l'action était en cours : we were having."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « He ___ when the alarm suddenly went off. »",
+              "options": [
+                "was sleeping",
+                "were sleeping",
+                "slept",
+                "is sleeping"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet singulier he, on utilise l'auxiliaire was : was sleeping."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la forme négative de « They were watching TV » ?",
+              "options": [
+                "They weren't watching TV",
+                "They didn't watching TV",
+                "They hadn't watching TV",
+                "They not were watching TV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La négation se porte directement sur l'auxiliaire were : were not / weren't."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Peut-on généralement employer un verbe d'état (ex: know, believe) au Past Continuous ?",
+              "options": [
+                "Non, les verbes d'état s'emploient généralement au prétérit simple",
+                "Oui, c'est même obligatoire pour tous les verbes d'état",
+                "Uniquement à la première personne du singulier",
+                "Uniquement dans les phrases interrogatives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les stative verbs (verbes d'état ou de perception) ne s'emploient généralement pas aux temps continus."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « The sun ___ and the birds were singing in the trees. »",
+              "options": ["was shining", "were shining", "shined", "has shone"],
+              "correctAnswers": [0],
+              "explanation": "The sun est singulier : was shining permet de poser le cadre descriptif de l'histoire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle forme interrogative au Past Continuous est correcte ?",
+              "options": [
+                "What were you doing when I called you?",
+                "What did you doing when I called you?",
+                "What was you doing when I called you?",
+                "What have you doing when I called you?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le pronom you, l'auxiliaire est were : What were you doing... ?"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « While I ___ home, it started to rain heavily. »",
+              "options": [
+                "was walking",
+                "walked",
+                "were walking",
+                "am walking"
+              ],
+              "correctAnswers": [0],
+              "explanation": "While introduit l'action longue en déroulement au singulier : was walking."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase décrit deux actions simultanées en cours dans le passé ?",
+              "options": [
+                "While she was studying, her brother was playing video games.",
+                "While she studied, her brother played video games yesterday.",
+                "She had studied and then her brother played video games.",
+                "She was studying when her brother played a video game."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux actions longues parallèles dans le passé se mettent toutes deux au Past Continuous."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Prétérit simple vs Prétérit continu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases combinent correctement une action continue et une action ponctuelle qui l'interrompt ?",
+              "options": [
+                "I was reading a novel when the phone rang.",
+                "While she was driving, she noticed a strange noise.",
+                "I read a novel while the phone was ringing out.",
+                "When she drove her car, she was noticing a noise."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'action d'arrière-plan en cours prend le Past Continuous et l'événement ponctuel prend le prétérit simple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans « As I was crossing the street, I dropped my wallet », quelle action interrompt l'autre ?",
+              "options": [
+                "Faire tomber son portefeuille (dropped)",
+                "Traverser la rue (was crossing)",
+                "Les deux actions sont de durée égale",
+                "Aucune action n'a eu lieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action brève et soudaine est 'dropped', qui survient pendant la traversée de la rue."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel temps verbal utilise-t-on pour une suite d'actions successives dans un récit ?",
+              "options": [
+                "Le prétérit simple",
+                "Le prétérit continu",
+                "Le présent de narration",
+                "Le Past Perfect continu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une succession d'actions chronologiques et achevées s'exprime toujours au prétérit simple."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « They ___ basketball when the thunderstorm began. »",
+              "options": [
+                "were playing",
+                "played",
+                "are playing",
+                "had played"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action en cours d'accomplissement au moment où l'orage éclate est au Past Continuous : were playing."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle conjonction est le plus typiquement suivie du prétérit continu pour une action longue ?",
+              "options": ["While", "Suddenly", "Ago", "Immediately"],
+              "correctAnswers": [0],
+              "explanation": "While ('pendant que') introduit très couramment une proposition au prétérit continu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « He ___ his finger while he was slicing bread. »",
+              "options": ["cut", "was cutting", "is cutting", "cuts"],
+              "correctAnswers": [0],
+              "explanation": "Se couper est un événement ponctuel soudain : on emploie le prétérit simple cut."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « What did you do when you ___ the suspicious sound? »",
+              "options": [
+                "heard",
+                "were hearing",
+                "had hearing",
+                "are hearing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hear est un verbe de perception involontaire ponctuel, conjugué au prétérit simple : heard."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase décrit une succession d'actions ponctuelles ?",
+              "options": [
+                "He woke up, brushed his teeth and left the house.",
+                "He was waking up, brushing his teeth and leaving.",
+                "While he woke up, he was brushing his teeth.",
+                "He was waking up when he left the house."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'enchaînement d'actions chronologiques terminées se fait au prétérit simple."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « We ___ an accident while we were waiting for the bus. »",
+              "options": [
+                "witnessed",
+                "were witnessing",
+                "witness",
+                "have witnessed"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'événement ponctuel aperçu pendant l'attente du bus se met au prétérit simple : witnessed."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Identifiez la nuance : « I made a cake » vs « I was making a cake ».",
+              "options": [
+                "La première action est finie, la seconde était en cours de réalisation",
+                "La première était en cours, la seconde est finie",
+                "Les deux phrases signifient exactement la même chose",
+                "La seconde action se déroule dans le présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit simple exprime l'achèvement, le prétérit continu envisage l'activité en cours."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Past Perfect Simple (l'antériorité dans le passé)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernant le Past Perfect Simple sont exactes ?",
+              "options": [
+                "Il sert à exprimer une action passée antérieure à une autre action passée",
+                "Sa structure est : had + participe passé du verbe",
+                "Il s'emploie obligatoirement pour toute action survenue hier",
+                "Il est toujours invariable et ne prend jamais la marque de négation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le Past Perfect (had + participe passé) marque le passé du passé (antériorité relative à un repère temporel passé)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complétez : « When we arrived at the station, the train ___ . »",
+              "options": [
+                "had already left",
+                "already left",
+                "has already left",
+                "was already leaving"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le départ du train a eu lieu avant notre arrivée dans le passé, d'où le Past Perfect : had already left."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans « She passed the test because she had studied hard », quelle action s'est produite en premier ?",
+              "options": [
+                "Elle a étudié assidûment (had studied)",
+                "Elle a réussi l'examen (passed)",
+                "Les deux actions ont eu lieu en même temps",
+                "Elle étudie après l'examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action au Past Perfect (had studied) est chronologiquement antérieure à l'action au prétérit simple (passed)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « He couldn't open the door because he ___ his keys. »",
+              "options": ["had lost", "lost", "has lost", "was losing"],
+              "correctAnswers": [0],
+              "explanation": "La perte des clés est survenue avant la tentative d'ouverture : had lost."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe irrégulier « write » utilisé avec « had » ?",
+              "options": ["written", "wrote", "writed", "writing"],
+              "correctAnswers": [0],
+              "explanation": "La 3e colonne de write est written : had written."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « By the time the police arrived, the thieves ___ . »",
+              "options": [
+                "had escaped",
+                "escaped",
+                "have escaped",
+                "were escaping"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expression 'By the time + prétérit' appelle le Past Perfect dans la proposition principale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la forme négative de « They had finished their project » ?",
+              "options": [
+                "They hadn't finished their project",
+                "They didn't had finished their project",
+                "They haven't finished their project",
+                "They hadn't finish their project"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La négation se contracte sur had : had not / hadn't + participe passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « I didn't recognize John because I ___ him for ten years. »",
+              "options": [
+                "hadn't seen",
+                "didn't saw",
+                "haven't seen",
+                "wasn't seeing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rupture de contact s'étale sur la période précédant les retrouvailles : hadn't seen."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase illustre le mieux l'antériorité dans le passé ?",
+              "options": [
+                "She told me that she had never flown before.",
+                "She tells me that she never flies before.",
+                "She told me that she has never flown before.",
+                "She had told me that she flies before."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un récit au prétérit (told), le bilan antérieur prend le Past Perfect (had never flown)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « We were hungry because we ___ anything all day. »",
+              "options": [
+                "hadn't eaten",
+                "didn't ate",
+                "haven't eaten",
+                "weren't eating"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absence d'alimentation est antérieure à l'état de faim constaté dans le passé : hadn't eaten."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Past Perfect Continuous (durée et cause dans le passé)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases emploient correctement le Past Perfect Continuous ?",
+              "options": [
+                "He was exhausted because he had been running for two hours.",
+                "They had been waiting for forty minutes when the bus arrived.",
+                "She had been knowing her best friend since childhood.",
+                "We had been finished the test before the bell rang."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le Past Perfect Continuous souligne la durée d'une action antérieure. Know est un verbe d'état (impossible en -ing) et finish exprime l'achèvement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la structure du Past Perfect Continuous ?",
+              "options": [
+                "had been + base verbale en -ing",
+                "have been + base verbale en -ing",
+                "was being + participe passé",
+                "had being + base verbale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule exacte est : had + been + V-ing."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on : « The ground was wet because it had been raining » ?",
+              "options": [
+                "L'activité continue antérieure explique la conséquence visible dans le passé",
+                "La pluie n'a duré qu'une demi-seconde",
+                "L'action de pleuvoir est prévue pour demain",
+                "Il pleut toujours au moment où le locuteur parle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On emploie le Past Perfect Continuous pour expliquer l'origine ou la trace visible d'une activité continue antérieure."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « She ___ English for five years before she moved to London. »",
+              "options": [
+                "had been learning",
+                "was learned",
+                "has been learning",
+                "learns"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La durée de l'apprentissage avant le déménagement passé s'exprime par had been learning."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « His eyes were sore because he ___ at the screen for hours. »",
+              "options": [
+                "had been staring",
+                "had stared",
+                "was stared",
+                "has stared"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'activité continue et prolongée antérieure explique la fatigue oculaire constatée : had been staring."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle nuance distingue « had painted the wall » de « had been painting the wall » ?",
+              "options": [
+                "Le premier insiste sur le résultat achevé, le second sur l'activité et sa durée",
+                "Le premier exprime le futur, le second exprime le passé",
+                "Il n'y a aucune différence sémantique",
+                "Le second indique que le mur n'a jamais été touché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Past Perfect Simple met l'accent sur le résultat terminé ; la forme continue met l'accent sur le déroulement et l'effort."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « How long ___ before the rescue team finally arrived? »",
+              "options": [
+                "had they been waiting",
+                "did they wait",
+                "have they waited",
+                "were they waited"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour interroger sur la durée d'une attente antérieure à un événement passé, on emploie had they been waiting."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « The athlete was out of breath because she ___ fast. »",
+              "options": [
+                "had been sprinting",
+                "was sprinted",
+                "sprints",
+                "had sprint"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effort physique continu précédant immédiatement le constat d'essoufflement requiert le Past Perfect Continuous."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Peut-on dire : « He had been having a car for two years when it broke down » ?",
+              "options": [
+                "Non, le verbe have au sens de possession est d'état : on dit had had",
+                "Oui, car toute durée passée exige obligatoirement -ing",
+                "Oui, mais seulement au Royaume-Uni",
+                "Non, il faut obligatoirement utiliser le présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Have au sens de posséder est un verbe d'état. On utilise le Past Perfect Simple : had had."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « We were dirty because we ___ in the garden all afternoon. »",
+              "options": [
+                "had been digging",
+                "have dug",
+                "were digged",
+                "are digging"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'activité de jardinage prolongée explique l'état passé : had been digging."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Habitudes révolues : Used to et Would",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases expriment une habitude ou une caractéristique passée et révolue ?",
+              "options": [
+                "When I was young, I used to play the piano every day.",
+                "In the summer holidays, my grandfather would tell us stories.",
+                "I am used to getting up early every Monday.",
+                "I will go to the swimming pool tomorrow morning."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Used to et would (au passé) expriment des habitudes révolues. Be used to to V-ing exprime l'accoutumance au présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Peut-on utiliser « would » pour un état passé révolu (avec be, have, live, like) ?",
+              "options": [
+                "Non, seul « used to » peut exprimer un état passé",
+                "Oui, « would » et « used to » sont toujours interchangeables",
+                "Oui, uniquement à la forme interrogative",
+                "Non, « would » ne s'emploie jamais pour parler du passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Would n'exprime que des actions répétées. Pour les verbes d'état au passé révolu, seul used to est possible."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la forme négative correcte de « used to » ?",
+              "options": [
+                "didn't use to",
+                "didn't used to",
+                "used to not",
+                "wouldn't used to"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec l'auxiliaire didn't, le verbe use perd son -d : didn't use to."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « There ___ be an old cinema on this corner, but it closed down. »",
+              "options": ["used to", "would", "uses to", "is used to"],
+              "correctAnswers": [0],
+              "explanation": "Be est un verbe d'état : il est impossible d'employer would dans ce contexte. On dit there used to be."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez la question : « ___ play tennis when you were at school? »",
+              "options": [
+                "Did you use to",
+                "Did you used to",
+                "Were you used to",
+                "Used you to"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La question standard au prétérit se construit avec did + sujet + use to : Did you use to... ?"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « She used to live in Paris » ?",
+              "options": [
+                "Elle habitait à Paris autrefois, mais elle n'y habite plus",
+                "Elle a l'habitude de vivre à Paris aujourd'hui",
+                "Elle déménagera à Paris l'année prochaine",
+                "Elle a visité Paris pendant deux jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Used to marque une rupture nette avec le présent : la situation est totalement révolue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « Every evening, my cat ___ sit by the fireplace and purr. »",
+              "options": ["would", "used", "was used", "is used to"],
+              "correctAnswers": [0],
+              "explanation": "Would suivi de la base verbale sit évoque ici une habitude comportementale répétée dans le passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Attention aux faux-amis : que signifie « I am used to waking up early » ?",
+              "options": [
+                "J'ai l'habitude de me réveiller tôt",
+                "Je me réveillais tôt autrefois",
+                "J'ai refusé de me réveiller tôt",
+                "J'ai utilisé un réveil matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Be used to + V-ing signifie être habitué / accoutumé à quelque chose."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « He ___ like vegetables when he was a toddler. »",
+              "options": [
+                "didn't use to",
+                "wouldn't",
+                "didn't used to",
+                "was not used"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Like est un verbe de goût (état) : would est exclu. La forme correcte est didn't use to."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisissez la phrase correcte avec un verbe d'action répété au passé :",
+              "options": [
+                "Whenever it rained, we would play board games inside.",
+                "Whenever it rained, we would be board games inside.",
+                "Whenever it rained, we used to being bored inside.",
+                "Whenever it rained, we were used to play games."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Would + play exprime parfaitement l'habitude itérative dans le passé."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Concordance des temps au discours indirect",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles modifications de temps (backshift) sont exactes lorsque le verbe introducteur est au passé ?",
+              "options": [
+                "Le Present Simple devient Past Simple",
+                "Le Present Perfect devient Past Perfect",
+                "Le Past Simple devient Present Simple",
+                "Le modal will devient must"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lors du recul temporel (backshift), le Present Simple recule au Past Simple et le Present Perfect au Past Perfect."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Passez au discours indirect : « \"I am feeling tired,\" Tom said. »",
+              "options": [
+                "Tom said that he was feeling tired.",
+                "Tom said that he is feeling tired.",
+                "Tom said that he had feeling tired.",
+                "Tom said that he will feel tired."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe be au présent (am) recule au prétérit (was) après un verbe introducteur au passé (said)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que devient le modal « will » au discours indirect après un verbe introducteur au passé ?",
+              "options": ["would", "could", "should", "might"],
+              "correctAnswers": [0],
+              "explanation": "Will devient systématiquement would lors du backshift au discours indirect."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Passez au discours indirect : « \"I have bought a new car,\" Lisa said. »",
+              "options": [
+                "Lisa said that she had bought a new car.",
+                "Lisa said that she bought a new car.",
+                "Lisa said that she has bought a new car.",
+                "Lisa said that she would buy a new car."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Present Perfect (have bought) recule au Past Perfect (had bought)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que devient « can » lors du passage au discours indirect au passé ?",
+              "options": ["could", "would", "might", "had to"],
+              "correctAnswers": [0],
+              "explanation": "Can devient could au prétérit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment se transforme l'indicateur de temps « tomorrow » au discours indirect au passé ?",
+              "options": [
+                "the next day / the following day",
+                "the day before",
+                "yesterday",
+                "then"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tomorrow devient the next day ou the following day."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Passez au discours indirect : « \"Where do you live?\" she asked me. »",
+              "options": [
+                "She asked me where I lived.",
+                "She asked me where did I live.",
+                "She asked me where do I live.",
+                "She asked me where lived I."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une question indirecte, l'ordre devient sujet + verbe sans l'auxiliaire do/did : where I lived."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que devient l'indicateur « now » au discours indirect au passé ?",
+              "options": ["then", "yesterday", "soon", "ago"],
+              "correctAnswers": [0],
+              "explanation": "Now ('maintenant') est transposé en then ('alors / à ce moment-là')."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Passez au discours indirect : « \"I saw Mark yesterday,\" she explained. »",
+              "options": [
+                "She explained that she had seen Mark the day before.",
+                "She explained that she saw Mark yesterday.",
+                "She explained that she has seen Mark the next day.",
+                "She explained that she would see Mark then."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Past Simple (saw) recule au Past Perfect (had seen) et yesterday devient the day before."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que devient le modal d'obligation « must » au discours indirect au passé ?",
+              "options": ["had to", "musted", "would must", "should to"],
+              "correctAnswers": [0],
+              "explanation": "Must exprimant une obligation personnelle se transforme généralement en had to au passé."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Connecteurs de narration",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels connecteurs permettent d'introduire un événement soudain et imprévu dans un récit ?",
+              "options": [
+                "Suddenly",
+                "All of a sudden",
+                "Meanwhile",
+                "Furthermore"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Suddenly et All of a sudden signifient tous deux 'soudain' / 'tout à coup'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel connecteur temporel signifie « pendant ce temps » ?",
+              "options": ["Meanwhile", "Afterwards", "Eventually", "At first"],
+              "correctAnswers": [0],
+              "explanation": "Meanwhile indique qu'une autre action se déroule en parallèle pendant ce temps."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « We searched everywhere for hours. ___, we found the lost dog asleep under the porch. »",
+              "options": ["Eventually", "Suddenly", "At first", "Meanwhile"],
+              "correctAnswers": [0],
+              "explanation": "Eventually signifie 'finalement' / 'au bout du compte', après une attente ou des péripéties."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Attention au faux-ami : que signifie « eventually » en anglais ?",
+              "options": [
+                "Finalement / À la fin",
+                "Éventuellement / Peut-être",
+                "Rarement",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eventually est un faux-ami classique : il ne signifie pas 'éventuellement' (possibly), mais 'finalement'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « He packed his suitcase. ___, he hailed a cab to the airport. »",
+              "options": ["Then", "Whereas", "Unless", "Since"],
+              "correctAnswers": [0],
+              "explanation": "Then permet d'enchaîner chronologiquement les actions : 'Ensuite / Puis'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel connecteur signifie « au début / au premier abord » ?",
+              "options": ["At first", "In conclusion", "At last", "Shortly"],
+              "correctAnswers": [0],
+              "explanation": "At first introduit le début d'une situation qui va ensuite évoluer ou changer."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « The detective was interrogating the suspect. ___, his partner was searching the apartment. »",
+              "options": [
+                "In the meantime",
+                "As a result",
+                "Consequently",
+                "Nevertheless"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In the meantime (synonyme de meanwhile) exprime la simultanéité entre deux scènes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel connecteur exprime le soulagement après une longue attente (« enfin ! ») ?",
+              "options": ["At last", "At least", "At once", "At first"],
+              "correctAnswers": [0],
+              "explanation": "At last traduit 'enfin', souvent teinté de soulagement ou d'impatience."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « ___, the rain stopped and the sun began to shine. »",
+              "options": [
+                "Shortly afterwards",
+                "Although",
+                "Whereas",
+                "Despite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shortly afterwards signifie 'peu de temps après'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel adverbe signifie « immédiatement / sur-le-champ » dans un récit ?",
+              "options": ["Immediately", "Lately", "Gradually", "Seldom"],
+              "correctAnswers": [0],
+              "explanation": "Immediately marque une réaction immédiate et instantanée."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Voix passive au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont à la voix passive au prétérit ?",
+              "options": [
+                "The Eiffel Tower was built for the 1889 World Fair.",
+                "The precious painting was stolen during the night.",
+                "Gustave Eiffel designed the famous tower.",
+                "The police arrested the burglars quickly."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux premières phrases sont au passif (was built, was stolen), les deux suivantes sont à l'actif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la structure de la voix passive au prétérit simple ?",
+              "options": [
+                "was / were + participe passé",
+                "had + participe passé",
+                "was / were + verbe en -ing",
+                "did + base verbale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passif au prétérit associe be au prétérit (was/were) et le participe passé du verbe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Transformez au passif : « J.K. Rowling wrote Harry Potter. »",
+              "options": [
+                "Harry Potter was written by J.K. Rowling.",
+                "Harry Potter had written by J.K. Rowling.",
+                "Harry Potter wrote by J.K. Rowling.",
+                "Harry Potter was wrote by J.K. Rowling."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Harry Potter devient sujet, l'auxiliaire be se met au prétérit singulier (was) + participe passé written."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle préposition introduit le complément d'agent à la voix passive ?",
+              "options": ["by", "with", "from", "of"],
+              "correctAnswers": [0],
+              "explanation": "Le complément d'agent est introduit par la préposition by."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez au passif continu : « The historic cathedral ___ when the fire broke out. »",
+              "options": [
+                "was being restored",
+                "was restored",
+                "had restored",
+                "restored"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action passive en cours de déroulement prend la forme was being + participe passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « Thousands of letters ___ delivered by the postal service yesterday. »",
+              "options": ["were", "was", "have", "did"],
+              "correctAnswers": [0],
+              "explanation": "Le sujet letters est pluriel, on emploie donc were : were delivered."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Transformez au passif : « Someone had warned them before the explosion. »",
+              "options": [
+                "They had been warned before the explosion.",
+                "They were being warned before the explosion.",
+                "They have been warned before the explosion.",
+                "They had warned before the explosion."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au Past Perfect passif, la formule est had been + participe passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase passive est grammaticalement correcte ?",
+              "options": [
+                "The package was sent two days ago.",
+                "The package was send two days ago.",
+                "The package did sent two days ago.",
+                "The package were sent two days ago."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le participe passé de send est sent : was sent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez la forme négative : « The secret files ___ to the press. »",
+              "options": [
+                "were not leaked",
+                "did not leaked",
+                "was not leaked",
+                "not were leaked"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Files est pluriel : were not leaked."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi privilégie-t-on la voix passive dans un article de presse rapportant un cambriolage ?",
+              "options": [
+                "Parce que l'auteur de l'action est inconnu ou que l'on veut centrer l'attention sur la victime",
+                "Parce que la voix active est interdite en anglais écrit",
+                "Parce que le passif est plus facile à traduire",
+                "Parce que le passif indique un futur certain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passif met l'accent sur l'objet ou le résultat quand le coupable est inconnu ou secondaire."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Récits et anecdotes personnelles au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles techniques permettent d'enrichir et de dynamiser un récit personnel en anglais ?",
+              "options": [
+                "Alterner prétérit simple (trame), prétérit continu (décor) et past perfect (antériorité)",
+                "Employer des connecteurs variés (suddenly, meanwhile, eventually)",
+                "Utiliser exclusivement le présent simple pour toutes les phrases",
+                "Supprimer tout repère temporel et tout adjectif"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un récit vivant alterne judicieusement les temps du passé et structure les étapes avec des connecteurs temporels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle phrase introduit le plus naturellement une anecdote personnelle captivante ?",
+              "options": [
+                "A really strange thing happened to me last weekend.",
+                "A really strange thing happens to me always.",
+                "A really strange thing will happen to me tomorrow.",
+                "A strange thing is happening to me every day."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On annonce l'anecdote avec une phrase d'accroche au prétérit simple : happened to me last weekend."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « It all started when I ___ my boarding pass at the airport. »",
+              "options": [
+                "misplaced",
+                "was misplacing",
+                "have misplaced",
+                "misplace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élément déclencheur ponctuel se formule au prétérit simple : misplaced."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie l'idiome narratif « Out of the blue » ?",
+              "options": [
+                "De façon tout à fait imprévue / Sans crier gare",
+                "Avec une immense tristesse",
+                "Sous un ciel parfaitement bleu",
+                "Lentement et méthodiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Out of the blue signifie 'à l'improviste' ou 'comme un cheveu sur la soupe'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « I didn't panic because I ___ that situation before. »",
+              "options": [
+                "had experienced",
+                "experienced",
+                "have experienced",
+                "was experienced"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expérience antérieure à la mésaventure justifie le Past Perfect : had experienced."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle expression permet d'ajouter un désagrément supplémentaire (« Pour couronner le tout... ») ?",
+              "options": [
+                "To make matters worse",
+                "At first sight",
+                "On the whole",
+                "In a nutshell"
+              ],
+              "correctAnswers": [0],
+              "explanation": "To make matters worse ('pour aggraver les choses / pour comble de malheur') accentue la tension dramatique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « As I was wandering through the crowded street, I ___ into my old childhood friend. »",
+              "options": ["bumped", "was bumping", "had bumped", "bump"],
+              "correctAnswers": [0],
+              "explanation": "La rencontre fortuite (bump into someone) interrompt la flânerie : prétérit simple bumped."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment exprimer le dénouement heureux d'une mésaventure ?",
+              "options": [
+                "Fortunately, everything turned out fine in the end.",
+                "Unfortunately, nobody could help me.",
+                "Regrettably, I lost my way again.",
+                "Terribly, I had to give up."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fortunately / In the end apporte la résolution positive de l'histoire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « Looking back, it ___ one of the most unforgettable days of my life. »",
+              "options": ["was", "were", "has been being", "would be being"],
+              "correctAnswers": [0],
+              "explanation": "Le regard rétrospectif (looking back) porte sur la journée passée : was."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « I will never forget the expression on his face when he ___ the big news. »",
+              "options": ["heard", "was hearing", "had heard", "hears"],
+              "correctAnswers": [0],
+              "explanation": "La découverte de la nouvelle est ponctuelle au moment précis : heard."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Ago, Yesterday et Last (repérage précis)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels marqueurs de temps renvoient obligatoirement à un moment précis et révolu dans le passé ?",
+              "options": [
+                "Three days ago",
+                "Yesterday afternoon",
+                "Last week",
+                "So far"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Ago, yesterday et last ancrent l'action dans le passé révolu (prétérit). So far s'emploie avec le Present Perfect."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où se place systématiquement le mot « ago » par rapport à la durée chiffrée ?",
+              "options": [
+                "Après la durée (ex: two years ago)",
+                "Avant la durée (ex: ago two years)",
+                "Entre le chiffre et le nom (ex: two ago years)",
+                "Indifféremment avant ou après"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ago est une postposition : il se place toujours après l'expression de la durée (ten minutes ago)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « We moved to this city five years ___ . »",
+              "options": ["ago", "since", "for", "before"],
+              "correctAnswers": [0],
+              "explanation": "Pour compter à rebours à partir du présent vers le passé révolu, on utilise ago."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase utilise correctement l'expression « last weekend » ?",
+              "options": [
+                "I visited my grandparents last weekend.",
+                "I visited my grandparents the last weekend.",
+                "I have visited my grandparents ago weekend.",
+                "I visit my grandparents last weekend ago."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Last weekend s'emploie sans article 'the' devant et se combine avec le prétérit simple."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « Did you watch the documentary on television ___ ? »",
+              "options": [
+                "yesterday evening",
+                "the yesterday evening",
+                "last day",
+                "ago evening"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dit yesterday evening (ou yesterday night / last night), jamais 'last day' pour hier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Peut-on associer « ago » avec le Present Perfect en anglais standard ?",
+              "options": [
+                "Non, « ago » ancre l'action dans un passé coupé du présent et exige le prétérit",
+                "Oui, c'est la combinaison la plus courante",
+                "Oui, mais uniquement dans les phrases négatives",
+                "Uniquement au futur antérieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La présence d'ago exclut le Present Perfect : on dit 'I saw him two days ago' et non 'I have seen him two days ago'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on « il y a dix minutes » ?",
+              "options": [
+                "ten minutes ago",
+                "since ten minutes",
+                "for ten minutes",
+                "there is ten minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Il y a' suivi d'une durée dans le passé révolu se traduit par [durée] + ago."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « She graduated from university ___ year. »",
+              "options": ["last", "ago", "past", "the previous"],
+              "correctAnswers": [0],
+              "explanation": "L'expression consacrée pour 'l'année dernière' est last year."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle question est correcte pour demander « Quand es-tu arrivé ? » ?",
+              "options": [
+                "When did you arrive?",
+                "When have you arrived?",
+                "When ago did you arrive?",
+                "When were you arrived?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "When interroge sur un moment précis du passé : il appelle obligatoirement le prétérit did you arrive."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « The email was received twenty minutes ___ . »",
+              "options": ["ago", "before", "since", "for"],
+              "correctAnswers": [0],
+              "explanation": "Twenty minutes ago indique le laps de temps écoulé depuis l'événement par rapport à maintenant."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "For, Since et During (durée, point de départ et période)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent correctement les prépositions « for », « since » ou « during » ?",
+              "options": [
+                "I have lived here since 2018.",
+                "We discussed the problem during lunch.",
+                "They have been waiting for two hours.",
+                "She has worked here since three months."
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Since introduit un point de départ (2018), during un moment/événement (lunch), for une durée (two hours). Three months étant une durée, il faudrait for."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel marqueur temporel introduit un point de départ précis dans le temps ?",
+              "options": ["since", "for", "during", "ago"],
+              "correctAnswers": [0],
+              "explanation": "Since ('depuis') s'emploie avec une date, une heure ou un événement précis (point de départ)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel marqueur temporel introduit une durée chiffrée ou quantifiée ?",
+              "options": ["for", "since", "during", "ago"],
+              "correctAnswers": [0],
+              "explanation": "For introduit la durée globale de l'action (for ten days, for five minutes)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot est suivi d'un groupe nominal désignant un événement ou une période sans chiffre ?",
+              "options": ["during", "since", "for", "ago"],
+              "correctAnswers": [0],
+              "explanation": "During ('pendant') est suivi d'un nom désignant l'événement : during the film, during the holidays."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « I haven't seen my cousin ___ last Christmas. »",
+              "options": ["since", "for", "during", "ago"],
+              "correctAnswers": [0],
+              "explanation": "Last Christmas est un jalon temporel précis dans le passé : on utilise since."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « He fell asleep ___ the flight to New York. »",
+              "options": ["during", "for", "since", "while"],
+              "correctAnswers": [0],
+              "explanation": "The flight est un nom d'événement : on utilise la préposition during."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « She practiced the violin ___ three hours yesterday. »",
+              "options": ["for", "during", "since", "ago"],
+              "correctAnswers": [0],
+              "explanation": "Three hours est une durée chiffrée : on utilise for (même au prétérit)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la phrase « He slept during two hours » est-elle incorrecte ?",
+              "options": [
+                "Parce que devant une durée chiffrée, on doit utiliser « for »",
+                "Parce que during s'utilise uniquement avec le futur",
+                "Parce qu'il faut utiliser since devant two hours",
+                "Parce que sleep est un verbe irrégulier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "During répond à la question 'quand / pendant quel événement ?' et ne s'emploie pas avec une durée chiffrée (for two hours)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « We have been waiting in line ___ 8:30 AM. »",
+              "options": ["since", "for", "during", "ago"],
+              "correctAnswers": [0],
+              "explanation": "8:30 AM est une heure précise marquant le début de l'attente : since."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « Nobody was allowed to speak ___ the examination. »",
+              "options": ["during", "for", "since", "while"],
+              "correctAnswers": [0],
+              "explanation": "The examination est un groupe nominal représentant la période : during."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "For vs Since : Prétérit ou Present Perfect ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases expriment une action commencée dans le passé et qui se poursuit au présent ?",
+              "options": [
+                "I have lived in this apartment for three years.",
+                "She has worked at this hospital since 2015.",
+                "My grandfather worked in a coal mine for forty years.",
+                "They lived in Berlin for two years in the 1990s."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le Present Perfect avec for ou since relie le passé au présent. Le prétérit simple avec for indique une période révolue."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans « I lived in Bristol for two years », la personne vit-elle encore à Bristol ?",
+              "options": [
+                "Non, le prétérit simple indique que cette période est définitivement terminée",
+                "Oui, elle y habite toujours aujourd'hui",
+                "Elle s'apprête à y emménager",
+                "On ne peut pas le savoir sans date précise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit simple marque une rupture avec le présent : l'action est terminée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans « I have lived in Bristol for two years », la personne vit-elle encore à Bristol ?",
+              "options": [
+                "Oui, l'action commencée il y a deux ans se poursuit au moment où elle parle",
+                "Non, elle a déménagé hier",
+                "Elle n'y a jamais habité",
+                "C'est un souhait futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Present Perfect établit un bilan qui reste vrai dans le présent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « World War II lasted ___ six years (1939-1945). »",
+              "options": ["for", "since", "during", "ago"],
+              "correctAnswers": [0],
+              "explanation": "Pour une durée totalement close dans le passé, on emploie for avec le prétérit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « Shakespeare ___ thirty-seven plays during his lifetime. »",
+              "options": ["wrote", "has written", "was writing", "writes"],
+              "correctAnswers": [0],
+              "explanation": "Shakespeare étant décédé, sa vie est une période révolue : le prétérit simple wrote est obligatoire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « My parents ___ married since 1995, and they are still deeply in love. »",
+              "options": ["have been", "were", "are", "had been"],
+              "correctAnswers": [0],
+              "explanation": "Le mariage continue aujourd'hui : le point de départ since 1995 appelle have been."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « He worked as a firefighter ___ twenty years, but he retired last year. »",
+              "options": ["for", "since", "during", "ago"],
+              "correctAnswers": [0],
+              "explanation": "L'activité s'est achevée avec la retraite (retired) : for + prétérit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez la question : « How long ___ your English teacher? »",
+              "options": [
+                "have you known",
+                "do you know",
+                "did you know",
+                "are you knowing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On interroge sur la durée d'une connaissance qui dure toujours : How long have you known... ?"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « She ___ in the garden for two hours, then she went inside to drink tea. »",
+              "options": [
+                "worked",
+                "has worked",
+                "is working",
+                "has been working"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action de travailler au jardin est terminée avant l'entrée dans la maison : worked au prétérit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Peut-on utiliser « since » avec le prétérit simple dans la proposition principale pour une action révolue ?",
+              "options": [
+                "Non, « since » relie le point de départ au présent et appelle le Present Perfect dans la principale",
+                "Oui, c'est la règle obligatoire",
+                "Uniquement pour les verbes de mouvement",
+                "Uniquement en poésie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Since établit un pont vers le présent et s'emploie avec le Present Perfect dans la principale."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Already, Yet, Still et Just (aspect et temporalité)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adverbes se placent généralement entre l'auxiliaire et le participe passé au Present Perfect ?",
+              "options": ["already", "just", "yet", "ago"],
+              "correctAnswers": [0, 1],
+              "explanation": "Already et just s'intercalent entre have/has et le participe passé (ex: has already left, has just arrived)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel adverbe exprime une action qui vient tout juste de se produire ?",
+              "options": ["just", "yet", "already", "still"],
+              "correctAnswers": [0],
+              "explanation": "Just correspond à 'venir de' faire quelque chose à l'instant même."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Où se place généralement « yet » dans une phrase interrogative ou négative ?",
+              "options": [
+                "En fin de proposition",
+                "Avant le sujet",
+                "Entre l'auxiliaire et le verbe",
+                "Devant la première majuscule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yet se place typiquement à la fin de la proposition (Have you called yet? / I haven't eaten yet)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « Have you finished the assignment ___ ? »",
+              "options": ["yet", "just", "still", "already not"],
+              "correctAnswers": [0],
+              "explanation": "Dans une question pour demander si une tâche attendue est accomplie, on emploie yet en fin de phrase."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « I am not hungry at all; I have ___ had a huge lunch. »",
+              "options": ["already", "yet", "still", "ever"],
+              "correctAnswers": [0],
+              "explanation": "Already indique que l'action est déjà accomplie (plus tôt que prévu)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « He hasn't called me yet » ?",
+              "options": [
+                "Il ne m'a pas encore appelé",
+                "Il vient de m'appeler",
+                "Il ne m'appelle jamais",
+                "Il m'a déjà appelé plusieurs fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Not... yet signifie 'pas encore'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Où se place l'adverbe « still » dans une phrase négative au Present Perfect ?",
+              "options": [
+                "Avant l'auxiliaire négatif (ex: I still haven't found it)",
+                "Après le participe passé",
+                "En toute fin de phrase",
+                "Après la négation n't"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Still se place avant l'auxiliaire négatif pour insister sur la persistance de la situation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « Quick, look! The plane has ___ landed on the runway. »",
+              "options": ["just", "yet", "still", "since"],
+              "correctAnswers": [0],
+              "explanation": "L'atterrissage vient d'avoir lieu sous nos yeux : has just landed."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « It is 11 pm and she ___ hasn't arrived home. »",
+              "options": ["still", "already", "yet", "just"],
+              "correctAnswers": [0],
+              "explanation": "Still exprime ici l'étonnement ou l'inquiétude face à une attente qui se prolonge."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que traduit « already » dans une phrase interrogative d'étonnement : « Have you eaten all the cookies already?! » ?",
+              "options": [
+                "Déjà ?! (surprise face à la rapidité de l'action)",
+                "Pas encore ?!",
+                "Récemment ?",
+                "Jamais ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Already dans une question marque la surprise et l'étonnement devant la précocité de l'action."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Propositions temporelles avec When, While et As",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propositions subordonnées temporelles introduisent une simultanéité d'actions dans le passé ?",
+              "options": [
+                "While she was reading, her brother was drawing.",
+                "As they were walking home, the rain began to fall.",
+                "When she arrived, everyone had already left.",
+                "After the match finished, they went to sleep."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "While et as introduisent le déroulement simultané d'actions dans le passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel connecteur introduit le plus souvent l'action brève et ponctuelle qui en interrompt une autre ?",
+              "options": ["when", "while", "during", "as long as"],
+              "correctAnswers": [0],
+              "explanation": "When introduit typiquement l'événement soudain et ponctuel au prétérit simple."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « ___ time went by, they became closer friends. »",
+              "options": ["As", "During", "Until", "Whereas"],
+              "correctAnswers": [0],
+              "explanation": "As ('au fur et à mesure que') exprime une progression parallèle dans le temps."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « What were you doing ___ the lights suddenly went out? »",
+              "options": ["when", "while", "during", "since"],
+              "correctAnswers": [0],
+              "explanation": "L'extinction des feux est brève et soudaine : elle est introduite par when."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « He listened to music ___ he was doing his homework. »",
+              "options": ["while", "during", "when", "until"],
+              "correctAnswers": [0],
+              "explanation": "While est suivi d'une proposition avec sujet et verbe conjugué à la forme continue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la phrase « During he was running, he fell » est-elle incorrecte ?",
+              "options": [
+                "During est une préposition qui ne peut pas être suivie d'une proposition (sujet + verbe)",
+                "During doit obligatoirement être suivi du futur",
+                "He fell doit être remplacé par he was falling",
+                "During s'écrit toujours avec une majuscule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "During est une préposition suivie d'un nom. Pour introduire une proposition conjuguée, il faut while ou as."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « She dropped her glass ___ she was getting up from the table. »",
+              "options": ["as", "during", "since", "until"],
+              "correctAnswers": [0],
+              "explanation": "As ('au moment où') introduit l'action en cours au cours de laquelle le verre tombe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase illustre deux actions qui se succèdent immédiatement au prétérit simple ?",
+              "options": [
+                "When he heard the bell, he opened the door.",
+                "While he was hearing the bell, he was opening the door.",
+                "As he had heard the bell, he has opened the door.",
+                "When he was hearing the bell, he opened the door."
+              ],
+              "correctAnswers": [0],
+              "explanation": "When suivi de deux prétérits simples exprime deux actions immédiates consécutives."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « ___ I was walking through the park, I found a gold coin. »",
+              "options": ["While", "During", "Since", "Until"],
+              "correctAnswers": [0],
+              "explanation": "While introduit la circonstance longue et continue de la promenade."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une proposition temporelle au passé, peut-on utiliser le conditionnel « would » après when ou while ?",
+              "options": [
+                "Non, les propositions subordonnées de temps refusent would",
+                "Oui, c'est obligatoire pour toute action future",
+                "Oui, uniquement à la voix passive",
+                "Uniquement après la préposition during"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les propositions subordonnées temporelles n'admettent pas will ou would pour exprimer le temps."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "As soon as, Until, By the time (jalons chronologiques)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases illustrent l'emploi correct de repères chronologiques au passé ?",
+              "options": [
+                "By the time the rescue team arrived, the hikers had found shelter.",
+                "As soon as the bell rang, the students ran out into the yard.",
+                "They waited under the awning until the downpour stopped.",
+                "By the time she arrived, the train is leaving the platform."
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "By the time s'associe au Past Perfect, as soon as et until marquent des bornes temporelles claires au prétérit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie l'expression « by the time » dans une narration au passé ?",
+              "options": [
+                "Au moment où / Avant même que",
+                "Pendant que",
+                "Dès que",
+                "Jusqu'à ce que"
+              ],
+              "correctAnswers": [0],
+              "explanation": "By the time indique la date limite ou le moment butoir auquel une autre action était déjà accomplie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « By the time we reached the cinema, the movie ___ . »",
+              "options": [
+                "had already started",
+                "already started",
+                "has already started",
+                "starts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action dans la principale étant antérieure à l'arrivée, elle prend le Past Perfect : had already started."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel connecteur signifie « dès que / aussitôt que » ?",
+              "options": ["as soon as", "until", "by the time", "meanwhile"],
+              "correctAnswers": [0],
+              "explanation": "As soon as traduit l'immédiateté : 'dès que'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « She stayed in the library ___ it closed at 9 pm. »",
+              "options": ["until", "as soon as", "by the time", "during"],
+              "correctAnswers": [0],
+              "explanation": "Until ('jusqu'à ce que') marque la borne finale d'une action continue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « ___ he finished speaking, the crowd erupted into cheers. »",
+              "options": ["As soon as", "Until", "By the time", "While"],
+              "correctAnswers": [0],
+              "explanation": "Les acclamations ont retenti aussitôt le discours terminé : As soon as."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle forme familière et courante abrège la conjonction « until » ?",
+              "options": ["till", "unt", "tilth", "tilting"],
+              "correctAnswers": [0],
+              "explanation": "Till est la forme familière et fréquente de until à l'oral comme à l'écrit informel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « We didn't leave the office ___ we had finished all the urgent reports. »",
+              "options": ["until", "as soon as", "by the time", "since"],
+              "correctAnswers": [0],
+              "explanation": "Not... until signifie 'pas avant que / seulement quand'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « By the time the fire brigade got there, the flames ___ the entire barn. »",
+              "options": [
+                "had consumed",
+                "consumed",
+                "have consumed",
+                "consume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La destruction par le feu était déjà achevée avant l'arrivée des pompiers : had consumed."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Traduisez au mieux : « Dès qu'il eut raccroché, le téléphone sonna à nouveau. »",
+              "options": [
+                "As soon as he hung up, the phone rang again.",
+                "Until he hung up, the phone rang again.",
+                "By the time he hung up, the phone was ringing.",
+                "While he hung up, the phone had rung again."
+              ],
+              "correctAnswers": [0],
+              "explanation": "As soon as he hung up traduit précisément la réaction immédiate."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "In, On, At (prépositions temporelles)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles associations préposition-expression temporelle sont correctes en anglais ?",
+              "options": [
+                "in 1969",
+                "on Friday morning",
+                "at half past seven",
+                "in Monday afternoon"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "On utilise in pour les années/siècles/mois, on pour les jours précis, at pour les heures. On dit on Monday afternoon (et non in)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle préposition utilise-t-on devant un jour précis ou une date complète (ex: May 12th) ?",
+              "options": ["on", "in", "at", "by"],
+              "correctAnswers": [0],
+              "explanation": "On s'utilise toujours pour les jours précis et les dates calendaires (on Monday, on May 12th)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle préposition utilise-t-on devant une année, un mois ou un siècle sans jour précisé ?",
+              "options": ["in", "on", "at", "to"],
+              "correctAnswers": [0],
+              "explanation": "In s'utilise pour les périodes longues : in July, in 2024, in the 21st century."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle préposition s'emploie pour une heure précise ou un moment précis de la journée (ex: noon) ?",
+              "options": ["at", "in", "on", "for"],
+              "correctAnswers": [0],
+              "explanation": "At s'utilise avec les heures et moments précis : at 6 o'clock, at noon, at midnight."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « Neil Armstrong walked on the Moon ___ July 1969. »",
+              "options": ["in", "on", "at", "by"],
+              "correctAnswers": [0],
+              "explanation": "Il s'agit d'un mois associé à une année sans jour précis : in July 1969."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « The treaty was signed ___ October 24th, 1945. »",
+              "options": ["on", "in", "at", "into"],
+              "correctAnswers": [0],
+              "explanation": "La date précise comporte le jour du mois (24th) : on October 24th."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « The bell struck twelve ___ midnight. »",
+              "options": ["at", "on", "in", "with"],
+              "correctAnswers": [0],
+              "explanation": "Midnight est un point précis de la nuit : at midnight."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle préposition est traditionnellement employée avec « the weekend » en anglais britannique standard ?",
+              "options": [
+                "at (at the weekend)",
+                "in (in the weekend)",
+                "to (to the weekend)",
+                "into (into the weekend)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En anglais britannique standard, on dit at the weekend (l'anglais américain admet on the weekend)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « The Industrial Revolution began ___ the eighteenth century. »",
+              "options": ["in", "on", "at", "from"],
+              "correctAnswers": [0],
+              "explanation": "Pour les siècles, on utilise la préposition in."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle expression temporelle s'emploie SANS aucune préposition devant ?",
+              "options": [
+                "last night",
+                "in last night",
+                "at last night",
+                "on last night"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les expressions avec last, next, every, this s'emploient sans préposition (last night, next week)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "So far, Ever, Never (bilan et temporalité indéfinie)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases formulent un bilan d'expérience de vie au Present Perfect ?",
+              "options": [
+                "Have you ever travelled to Japan?",
+                "I have never tasted such delicious food.",
+                "Did you ever travelled to Japan yesterday?",
+                "I never have taste food last week."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ever ('déjà dans ta vie') et never ('jamais dans ma vie') s'associent au Present Perfect pour évoquer des expériences."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie « Have you ever visited London? » ?",
+              "options": [
+                "Es-tu déjà allé à Londres (au moins une fois dans ta vie) ?",
+                "Quand es-tu allé à Londres ?",
+                "Pourquoi es-tu allé à Londres ?",
+                "Vas-tu souvent à Londres en ce moment ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ever dans une question porte sur l'ensemble de l'expérience de vie jusqu'à aujourd'hui."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez avec le superlatif : « This is the most exciting movie I have ___ seen. »",
+              "options": ["ever", "never", "yet", "still"],
+              "correctAnswers": [0],
+              "explanation": "Après un superlatif, on emploie ever avec le Present Perfect : 'le plus passionnant que j'aie jamais vu'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie l'expression « so far » dans « So far, we have received fifty applications » ?",
+              "options": [
+                "Jusqu'ici / Jusqu'à présent",
+                "Trop loin d'ici",
+                "Autrefois",
+                "Très prochainement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "So far marque un bilan provisoire arrêté au moment où l'on parle : 'jusqu'à maintenant'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « She has ___ ridden a horse; this afternoon will be her very first lesson. »",
+              "options": ["never", "ever", "already", "still"],
+              "correctAnswers": [0],
+              "explanation": "Never apporte la négation : elle n'est jamais montée à cheval de sa vie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on « Did you ever meet Churchill? » au prétérit simple pour interroger quelqu'un ?",
+              "options": [
+                "Parce que Churchill étant décédé, l'expérience ne peut plus jamais se reproduire",
+                "Parce que ever est interdit avec le Present Perfect",
+                "Parce que did est plus respectueux",
+                "Parce que le verbe meet n'a pas de participe passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand l'époque ou la personne n'appartient plus au présent, le bilan se clôt au prétérit simple."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « Up to now, no scientist ___ this biological enigma. »",
+              "options": ["has solved", "solved", "is solving", "had solved"],
+              "correctAnswers": [0],
+              "explanation": "Up to now ('jusqu'à maintenant') appelle le Present Perfect : has solved."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Où se place l'adverbe « never » au Present Perfect ?",
+              "options": [
+                "Entre l'auxiliaire have/has et le participe passé",
+                "À la fin de la phrase",
+                "Devant le pronom sujet",
+                "Après le complément d'objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Never se place entre l'auxiliaire have/has et le participe passé : has never seen."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « We haven't encountered any major difficulties ___ . »",
+              "options": ["so far", "since", "ago", "never"],
+              "correctAnswers": [0],
+              "explanation": "So far en fin de proposition conclut le bilan provisoire : 'aucun problème jusqu'à présent'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez au passé : « It was the most frightening storm they had ___ witnessed. »",
+              "options": ["ever", "never", "already", "yet"],
+              "correctAnswers": [0],
+              "explanation": "Dans un contexte passé avec un superlatif et le Past Perfect, on emploie had ever witnessed."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Expressions temporelles avancées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions temporelles renvoient explicitement à une époque révolue dans le passé ?",
+              "options": [
+                "In those days",
+                "In the old days",
+                "Formerly",
+                "Nowadays"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "In those days, In the old days et Formerly désignent le passé révolu. Nowadays désigne notre époque actuelle (présent)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe « nowadays » ?",
+              "options": [
+                "De nos jours / À notre époque",
+                "Autrefois",
+                "Tout d'un coup",
+                "Dans un futur proche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nowadays se réfère au temps présent contemporain : de nos jours."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « ___, people had to write letters by hand to communicate across continents. »",
+              "options": [
+                "In those days",
+                "Nowadays",
+                "Currently",
+                "At present"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In those days ('en ce temps-là / à cette époque-là') renvoie au passé historique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la locution temporelle « From then on » ?",
+              "options": [
+                "À partir de ce moment-là / Dès lors",
+                "Jusqu'à aujourd'hui",
+                "Avant cette date",
+                "De temps en temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "From then on marque le point de départ d'une nouvelle situation dans un récit au passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « This historic building was ___ a textile mill before becoming an art gallery. »",
+              "options": ["formerly", "nowadays", "presently", "currently"],
+              "correctAnswers": [0],
+              "explanation": "Formerly signifie 'autrefois / jadis / précédemment'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie l'expression « In hindsight » en tête de phrase ?",
+              "options": [
+                "Avec le recul / Rétrospectivement",
+                "En prévision de l'avenir",
+                "Immédiatement",
+                "Sans aucune hésitation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In hindsight permet d'analyser un événement passé avec les connaissances que l'on a aujourd'hui."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « She had prepared all the necessary documents ___ to ensure the meeting ran smoothly. »",
+              "options": ["beforehand", "nowadays", "ago", "since"],
+              "correctAnswers": [0],
+              "explanation": "Beforehand signifie 'au préalable / à l'avance'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la locution « Prior to » dans « Prior to his departure, he said goodbye to everyone » ?",
+              "options": [
+                "Avant / Antérieurement à",
+                "Pendant",
+                "Aussitôt après",
+                "En dépit de"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prior to est un synonyme plus soutenu de before ('avant')."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « ___, cars were considered a luxury that only the wealthiest could afford. »",
+              "options": ["Back then", "Nowadays", "In future", "At present"],
+              "correctAnswers": [0],
+              "explanation": "Back then ('à l'époque') évoque une période passée révolue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie « At the time » au cœur d'un récit au passé ?",
+              "options": [
+                "À l'époque / À ce moment précis du passé",
+                "À l'heure exacte sur la montre",
+                "De façon régulière",
+                "À temps pour le train"
+              ],
+              "correctAnswers": [0],
+              "explanation": "At the time renvoie à l'époque spécifique dont il est question dans le récit."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse et pièges des marqueurs de temps",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases comportent une erreur fréquente d'emploi des temps ou des marqueurs ?",
+              "options": [
+                "I have seen that movie yesterday evening.",
+                "She has lived in Dublin since three years.",
+                "He graduated from high school two years ago.",
+                "They had left before the police arrived."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Yesterday impose le prétérit (I saw). Three years étant une durée, il faut for (for three years) et non since."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle phrase est rigoureusement correcte en anglais ?",
+              "options": [
+                "I bought this computer two weeks ago.",
+                "I have bought this computer two weeks ago.",
+                "I buy this computer two weeks ago.",
+                "I had bought this computer two weeks ago today."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ago exige le prétérit simple pour situer l'achat ponctuel dans le passé révolu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi la phrase « She works here since 2018 » est-elle fautive ?",
+              "options": [
+                "Il faut employer le Present Perfect (has worked / has been working) pour une action commencée dans le passé",
+                "Since ne peut s'employer qu'avec les jours de la semaine",
+                "Il faut obligatoirement employer le futur",
+                "Works doit être mis au prétérit simple avec since"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En français on utilise le présent ('Elle travaille ici depuis 2018'), mais l'anglais exige le Present Perfect."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « I haven't received any reply from the university ___ last Monday. »",
+              "options": ["since", "for", "ago", "during"],
+              "correctAnswers": [0],
+              "explanation": "Last Monday est un point de départ précis : on emploie since."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez la question : « How long ago ___ to this country? »",
+              "options": [
+                "did you move",
+                "have you moved",
+                "were you moving",
+                "had you moved"
+              ],
+              "correctAnswers": [0],
+              "explanation": "How long ago interroge sur la date précise de l'événement et appelle le prétérit : did you move."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phrase exprime une durée dans une vie totalement achevée ?",
+              "options": [
+                "My great-grandfather served in the army for twenty-five years.",
+                "My great-grandfather has served in the army since twenty-five years.",
+                "My great-grandfather serves in the army for twenty-five years.",
+                "My great-grandfather was served in the army during twenty-five years."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une personne décédée ou une période révolue, on utilise for avec le prétérit simple (served)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « By 2015, the author ___ six best-selling novels. »",
+              "options": [
+                "had published",
+                "has published",
+                "was publishing",
+                "publishes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "By + date passée (By 2015) appelle le Past Perfect pour marquer le bilan à cette date limite passée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la règle dans les subordonnées temporelles au futur : « I will call you as soon as I ___ . » ?",
+              "options": [
+                "arrive (Présent simple à valeur de futur)",
+                "will arrive (Futur simple obligatoire)",
+                "would arrive (Conditionnel)",
+                "have been arriving (Aspect continu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après les conjonctions de temps (when, as soon as, after...), on utilise le présent simple et jamais will."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « They ___ each other since they were kindergarten students. »",
+              "options": ["have known", "know", "knew", "are knowing"],
+              "correctAnswers": [0],
+              "explanation": "L'amitié née dans l'enfance continue aujourd'hui : Present Perfect have known."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « We were discussing the problem when ___ the fire alarm sounded. »",
+              "options": ["suddenly", "already", "since", "yet"],
+              "correctAnswers": [0],
+              "explanation": "Suddenly souligne le caractère imprévu de l'alarme qui interrompt la discussion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2038 @@
+{
+  "id": "4e-anglais-04",
+  "year": "4e",
+  "subject": "anglais",
+  "title": "La grammaire de l'anglais",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : Articles a, an et son initial",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots s'utilisent avec l'article indéfini 'an' ?",
+              "options": ["apple", "elephant", "car", "banana"],
+              "correctAnswers": [0, 1],
+              "explanation": "'An' s'emploie devant un nom débutant par un son voyelle comme apple (/æ/) ou elephant (/e/)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En règle générale, on utilise l'article 'a' devant :",
+              "options": [
+                "un son consonne",
+                "un son voyelle",
+                "un verbe au pluriel",
+                "un nom propre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On emploie 'a' devant les mots qui commencent par un son consonne (ex: a dog, a car)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : 'He is ___ honest boy.'",
+              "options": ["an", "a", "the", "zero article"],
+              "correctAnswers": [0],
+              "explanation": "Le 'h' de 'honest' est muet, le mot commence donc phonétiquement par un son voyelle : on dit 'an honest boy'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : 'She wears ___ uniform at school.'",
+              "options": ["a", "an", "the", "two"],
+              "correctAnswers": [0],
+              "explanation": "'Uniform' commence par le son consonne /j/ ('you'), on emploie donc 'a' et non 'an'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : 'They saw ___ huge bear in the forest.'",
+              "options": ["a", "an", "some", "the"],
+              "correctAnswers": [0],
+              "explanation": "'Huge' commence par un son consonne aspiré /h/, on utilise donc 'a'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : 'Take ___ umbrella, it's raining!'",
+              "options": ["an", "a", "the", "no article"],
+              "correctAnswers": [0],
+              "explanation": "'Umbrella' commence par le son voyelle /ʌ/, on utilise donc 'an'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'We will arrive in ___ hour.'",
+              "options": ["an", "a", "any", "the"],
+              "correctAnswers": [0],
+              "explanation": "Dans 'hour', le 'h' est muet, on entend le son voyelle /aʊ/ : on dit 'an hour'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'She is ___ European student.'",
+              "options": ["a", "an", "the", "many"],
+              "correctAnswers": [0],
+              "explanation": "'European' commence par le son consonne /j/, on choisit donc l'article 'a'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'Would you like ___ orange?'",
+              "options": ["an", "a", "some", "any"],
+              "correctAnswers": [0],
+              "explanation": "'Orange' débute par le son voyelle /ɒ/, il faut donc employer 'an'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans quelle phrase l'article est-il incorrect ?",
+              "options": [
+                "She eats a apple.",
+                "He is a teacher.",
+                "She has an idea.",
+                "He lives in a flat."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On doit dire 'an apple' car 'apple' commence par un son voyelle."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : L'article défini the et l'article zéro",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans quelles situations utilise-t-on l'article zéro (aucun article) en anglais ?",
+              "options": [
+                "devant les généralités au pluriel",
+                "devant les repas en général",
+                "devant un objet unique comme the Sun",
+                "devant un superlatif comme the best"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On ne met pas d'article pour parler d'une catégorie générale au pluriel (Cats are agile) ni pour les repas (breakfast)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : 'I love ___ dogs in general.'",
+              "options": ["aucun article (article zéro)", "the", "a", "an"],
+              "correctAnswers": [0],
+              "explanation": "Pour exprimer une vérité générale sur une catégorie au pluriel, l'anglais utilise l'article zéro."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : '___ Sun is a star.'",
+              "options": ["The", "A", "An", "Zero article"],
+              "correctAnswers": [0],
+              "explanation": "Le soleil est un élément unique dans notre monde, on emploie l'article défini 'the'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : 'We have ___ lunch at noon.'",
+              "options": ["aucun article (article zéro)", "the", "a", "an"],
+              "correctAnswers": [0],
+              "explanation": "Les noms de repas (breakfast, lunch, dinner) s'emploient sans article quand ils désignent le repas habituel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : 'Look at ___ moon tonight, it is beautiful!'",
+              "options": ["the", "a", "an", "aucun article"],
+              "correctAnswers": [0],
+              "explanation": "La lune est un astre unique et identifié par les interlocuteurs, d'où 'the moon'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : 'She plays ___ tennis very well.'",
+              "options": ["aucun article (article zéro)", "the", "a", "an"],
+              "correctAnswers": [0],
+              "explanation": "Devant les noms de sports et de jeux (football, tennis, chess), on n'utilise aucun article."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'He plays ___ guitar in a rock band.'",
+              "options": ["the", "a", "an", "aucun article"],
+              "correctAnswers": [0],
+              "explanation": "Devant les noms d'instruments de musique après le verbe 'play', on utilise l'article défini 'the'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : '___ London is the capital of the United Kingdom.'",
+              "options": ["aucun article (article zéro)", "The", "A", "An"],
+              "correctAnswers": [0],
+              "explanation": "Les noms de villes ne prennent généralement pas d'article en anglais."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'Where is ___ teacher? The lesson is starting.'",
+              "options": ["the", "a", "an", "aucun article"],
+              "correctAnswers": [0],
+              "explanation": "On parle du professeur précis de la classe, qui est connu des élèves, donc 'the'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : '___ children need love and care.'",
+              "options": ["aucun article (article zéro)", "The", "A", "An"],
+              "correctAnswers": [0],
+              "explanation": "On parle des enfants en général dans le monde, donc pas d'article devant ce pluriel."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : Noms dénombrables et indénombrables",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels noms sont indénombrables (uncountable) en anglais ?",
+              "options": ["water", "information", "apple", "chair"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Water' (liquide) et 'information' (concept abstrait) ne se comptent pas individuellement en anglais."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En anglais, un nom indénombrable :",
+              "options": [
+                "ne prend pas de -s au pluriel",
+                "prend toujours un -s",
+                "s'emploie avec l'article a ou an",
+                "s'accorde au pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les indénombrables restent au singulier et ne reçoivent pas de marque de pluriel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : 'Could you give me some ___?'",
+              "options": ["advice", "advices", "an advice", "two advices"],
+              "correctAnswers": [0],
+              "explanation": "'Advice' (conseil) est indénombrable en anglais ; 'advices' n'existe pas."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le mot 'money' en anglais est :",
+              "options": [
+                "indénombrable",
+                "dénombrable singulier",
+                "dénombrable pluriel",
+                "un adjectif qualificatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Money' est indénombrable. On compte les devises (pounds, dollars, euros), mais pas le mot 'money'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte concernant le mot 'news' ?",
+              "options": [
+                "The news is interesting.",
+                "The news are interesting.",
+                "A news is interesting.",
+                "Many news are interesting."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'News' (les nouvelles / l'actualité) est indénombrable et s'accorde au singulier avec 'is'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : 'She bought two loaves of ___.'",
+              "options": ["bread", "breads", "a bread", "the breads"],
+              "correctAnswers": [0],
+              "explanation": "'Bread' est indénombrable. Pour compter le pain, on utilise l'unité 'loaf / loaves of bread'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le mot 'homework' en anglais est :",
+              "options": [
+                "indénombrable",
+                "dénombrable pluriel",
+                "toujours pluriel",
+                "un verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Homework' est indénombrable, on dit 'some homework' et jamais 'homeworks'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'He drank two glasses of ___.'",
+              "options": ["milk", "milks", "a milk", "the milks"],
+              "correctAnswers": [0],
+              "explanation": "'Milk' est un liquide indénombrable qui ne prend pas de 's'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lequel de ces mots est dénombrable (countable) ?",
+              "options": ["book", "butter", "sugar", "luggage"],
+              "correctAnswers": [0],
+              "explanation": "On peut compter les livres : one book, two books. Butter, sugar et luggage sont indénombrables."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte en anglais ?",
+              "options": [
+                "I have two luggages.",
+                "I have some luggage.",
+                "I have two bags.",
+                "I have a lot of luggage."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Luggage' est indénombrable et ne peut jamais prendre de 's' ni être précédé d'un chiffre."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : Quantifieurs some et any",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans quels contextes emploie-t-on généralement 'any' ?",
+              "options": [
+                "dans les phrases négatives",
+                "dans les questions d'information générale",
+                "dans les phrases affirmatives standard",
+                "dans les offres polies avec Would you like"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Any' s'emploie principalement dans les phrases négatives et les interrogations ouvertes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : 'There are ___ apples in the basket.'",
+              "options": ["some", "any", "much", "an"],
+              "correctAnswers": [0],
+              "explanation": "Dans une phrase affirmative, on emploie 'some' pour exprimer une quantité indéterminée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : 'I don't have ___ money on me.'",
+              "options": ["any", "some", "a", "no"],
+              "correctAnswers": [0],
+              "explanation": "Dans une phrase négative contenant déjà 'not' (don't), on emploie 'any'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : 'Do you have ___ brothers or sisters?'",
+              "options": ["any", "some", "a", "much"],
+              "correctAnswers": [0],
+              "explanation": "Dans une question fermée standard, on utilise 'any' devant un nom pluriel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : 'Would you like ___ orange juice?'",
+              "options": ["some", "any", "no", "many"],
+              "correctAnswers": [0],
+              "explanation": "Pour une offre ou une proposition polie où l'on attend une réponse positive, on utilise 'some'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : 'Can I have ___ water, please?'",
+              "options": ["some", "any", "much", "an"],
+              "correctAnswers": [0],
+              "explanation": "Dans une demande polie avec 'Can I have...', on emploie 'some'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'She hasn't got ___ pets at home.'",
+              "options": ["any", "some", "a", "much"],
+              "correctAnswers": [0],
+              "explanation": "Avec la négation 'hasn't got', on utilise 'any' devant un nom pluriel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'We met ___ friendly people in Dublin.'",
+              "options": ["some", "any", "a", "an"],
+              "correctAnswers": [0],
+              "explanation": "C'est une affirmation positive au pluriel, donc on utilise 'some'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'Is there ___ milk left in the fridge?'",
+              "options": ["any", "some", "many", "a"],
+              "correctAnswers": [0],
+              "explanation": "Dans une question neutre sur la présence d'un indénombrable, on utilise 'any'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : 'He solved the puzzle without ___ help.'",
+              "options": ["any", "some", "a", "many"],
+              "correctAnswers": [0],
+              "explanation": "'Without' a un sens négatif implicite, ce qui appelle l'emploi de 'any'."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : Quantifieurs much, many et a lot of",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels quantifieurs s'emploient avec des noms dénombrables au pluriel ?",
+              "options": ["many", "a few", "much", "a little"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Many' (beaucoup) et 'a few' (quelques-uns) s'associent aux noms dénombrables au pluriel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : 'How ___ students are there in your class?'",
+              "options": ["many", "much", "little", "any"],
+              "correctAnswers": [0],
+              "explanation": "'Students' est un nom dénombrable au pluriel, on emploie 'How many'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : 'How ___ does this ticket cost?'",
+              "options": ["much", "many", "few", "any"],
+              "correctAnswers": [0],
+              "explanation": "Pour demander un prix ou une quantité d'argent indénombrable, on demande 'How much'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : 'We don't have ___ time before the bus arrives.'",
+              "options": ["much", "many", "few", "a few"],
+              "correctAnswers": [0],
+              "explanation": "'Time' (le temps qui passe) est indénombrable, on emploie 'much' à la forme négative."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : 'There are ___ books in the library.' (phrase affirmative)",
+              "options": ["a lot of", "much", "little", "any"],
+              "correctAnswers": [0],
+              "explanation": "Dans une phrase affirmative courante, on privilégie 'a lot of' pour exprimer une grande quantité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : 'He has very ___ friends because he never speaks.' (sens négatif)",
+              "options": ["few", "a little", "much", "any"],
+              "correctAnswers": [0],
+              "explanation": "'Few' indique une très petite quantité insuffisante devant un nom dénombrable pluriel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'I just need ___ sugar in my tea, please.'",
+              "options": ["a little", "a few", "many", "few"],
+              "correctAnswers": [0],
+              "explanation": "'Sugar' est indénombrable ; 'a little' signifie 'un peu de'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le quantifieur 'much' s'emploie principalement avec :",
+              "options": [
+                "un nom indénombrable",
+                "un nom dénombrable pluriel",
+                "un adjectif court",
+                "un nom propre de personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Much' quantifie les noms indénombrables (much water, much patience)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'She has ___ patience with rude people.' (presque aucune)",
+              "options": ["little", "few", "many", "a few"],
+              "correctAnswers": [0],
+              "explanation": "'Little' s'emploie avec un indénombrable pour signifier 'très peu / presque pas'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "I don't have much luggage.",
+                "I don't have many luggage.",
+                "I have much friends.",
+                "He drinks many water."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Luggage' est indénombrable, la négation correcte est donc 'I don't have much luggage'."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : Accord sujet-verbe au présent simple",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sujets entraînent l'ajout d'un -s ou -es au verbe au présent simple ?",
+              "options": ["he", "she", "they", "we"],
+              "correctAnswers": [0, 1],
+              "explanation": "Seule la 3e personne du singulier (he, she, it) prend une terminaison en -s au présent simple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : 'My sister ___ English very well.'",
+              "options": ["speaks", "speak", "is speak", "speaking"],
+              "correctAnswers": [0],
+              "explanation": "'My sister' équivaut au pronom 'she', le verbe prend donc un -s : 'speaks'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : 'Tom and Jerry ___ together every day.'",
+              "options": ["play", "plays", "is playing", "played"],
+              "correctAnswers": [0],
+              "explanation": "'Tom and Jerry' forme un sujet pluriel (they), le verbe reste à la base verbale 'play'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : 'He ___ cartoons on television.'",
+              "options": ["watches", "watchs", "watch", "is watch"],
+              "correctAnswers": [0],
+              "explanation": "Les verbes terminés par un son chuintant comme 'watch' prennent -es à la 3e personne : 'watches'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : 'The baby ___ when he is hungry.'",
+              "options": ["cries", "crys", "cry", "is crying"],
+              "correctAnswers": [0],
+              "explanation": "Pour un verbe terminé par consonne + y (cry), le 'y' devient 'ie' à la 3e personne : 'cries'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : 'They ___ in a large flat in Liverpool.'",
+              "options": ["live", "lives", "living", "are live"],
+              "correctAnswers": [0],
+              "explanation": "Avec le pronom 'they', le verbe se met à la base verbale sans -s : 'live'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'Everyone ___ ready for the trip.'",
+              "options": ["is", "are", "be", "were"],
+              "correctAnswers": [0],
+              "explanation": "Les pronoms indéfinis comme 'everyone' ou 'everybody' s'accordent toujours au singulier : 'is'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'My parents ___ up at 6 a.m.'",
+              "options": ["wake", "wakes", "is waking", "waked"],
+              "correctAnswers": [0],
+              "explanation": "'My parents' est un sujet pluriel (they), le verbe ne prend pas de -s : 'wake'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'A cat ___ sharp claws.'",
+              "options": ["has", "have", "haves", "is having"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe 'have' devient irrégulièrement 'has' à la 3e personne du singulier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase est correctement accordée ?",
+              "options": [
+                "She goes to school by bus.",
+                "She go to school by bus.",
+                "She gos to school by bus.",
+                "She is go to school by bus."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe 'go' prend -es à la 3e personne du singulier : 'goes'."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Pluriels réguliers et irréguliers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots forment un pluriel irrégulier en anglais ?",
+              "options": ["children", "feet", "cats", "tables"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Child -> children' et 'foot -> feet' sont des pluriels irréguliers sans -s standard."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le pluriel du mot 'child' ?",
+              "options": ["children", "childs", "childrens", "childes"],
+              "correctAnswers": [0],
+              "explanation": "Le pluriel de 'child' est 'children'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de 'woman' ?",
+              "options": ["women", "womans", "womens", "womanes"],
+              "correctAnswers": [0],
+              "explanation": "Le pluriel de 'woman' (/ˈwʊmən/) s'écrit 'women' (/ˈwɪmɪn/)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le pluriel régulier de 'box' ?",
+              "options": ["boxes", "boxs", "boxies", "boxen"],
+              "correctAnswers": [0],
+              "explanation": "Les mots se terminant par -x forment leur pluriel en ajoutant -es : 'boxes'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de 'city' ?",
+              "options": ["cities", "citys", "citees", "cityes"],
+              "correctAnswers": [0],
+              "explanation": "Un nom en consonne + y transforme son 'y' en '-ies' au pluriel : 'cities'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de 'tooth' ?",
+              "options": ["teeth", "tooths", "toothes", "teethes"],
+              "correctAnswers": [0],
+              "explanation": "Le pluriel irrégulier de 'tooth' (dent) est 'teeth'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de 'mouse' (la souris) ?",
+              "options": ["mice", "mouses", "mices", "mouse"],
+              "correctAnswers": [0],
+              "explanation": "Le pluriel irrégulier de 'mouse' est 'mice'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le pluriel du mot 'leaf' (feuille) ?",
+              "options": ["leaves", "leafs", "leafes", "leavs"],
+              "correctAnswers": [0],
+              "explanation": "La plupart des noms en -f ou -fe font leur pluriel en -ves : 'leaf -> leaves'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel nom animal reste identique au singulier et au pluriel ?",
+              "options": ["sheep", "dog", "horse", "cow"],
+              "correctAnswers": [0],
+              "explanation": "'Sheep' (mouton) s'utilise aussi bien pour un mouton que pour dix moutons sans changer de forme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de 'man' ?",
+              "options": ["men", "mans", "mens", "manes"],
+              "correctAnswers": [0],
+              "explanation": "Le pluriel de 'man' est 'men'."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : Adjectifs et pronoms possessifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des pronoms possessifs (qui remplacent le nom) ?",
+              "options": ["mine", "yours", "my", "your"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Mine' et 'yours' remplacent le nom, tandis que 'my' et 'your' sont des adjectifs suivis d'un nom."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : 'This is my pen and that one is ___.'",
+              "options": ["yours", "your", "you", "you're"],
+              "correctAnswers": [0],
+              "explanation": "On emploie le pronom possessif 'yours' car il remplace le groupe 'your pen'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : 'Sarah lost ___ keys yesterday.'",
+              "options": ["her", "hers", "his", "its"],
+              "correctAnswers": [0],
+              "explanation": "Sarah est une femme, l'adjectif possessif accordé au possesseur féminin singulier est 'her'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : 'This blue backpack is ___.'",
+              "options": ["his", "him", "he", "he's"],
+              "correctAnswers": [0],
+              "explanation": "'His' sert à la fois d'adjectif possessif et de pronom possessif (le sien)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : 'We are proud of ___ school.'",
+              "options": ["our", "ours", "us", "we"],
+              "correctAnswers": [0],
+              "explanation": "Devant le nom 'school', on place l'adjectif possessif de la 1re personne du pluriel : 'our'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : 'Their garden is big, but ___ is tiny.'",
+              "options": ["ours", "our", "we", "us"],
+              "correctAnswers": [0],
+              "explanation": "'Ours' remplace 'our garden' et joue le rôle de sujet du second membre de phrase."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'The kitten is cleaning ___ paws.'",
+              "options": ["its", "it's", "his", "her"],
+              "correctAnswers": [0],
+              "explanation": "'Its' sans apostrophe est l'adjectif possessif neutre pour un animal ou une chose."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la règle pour distinguer 'it's' et 'its' ?",
+              "options": [
+                "it's est 'it is' alors que its est le déterminant possessif",
+                "it's est le possessif et its est le verbe",
+                "les deux orthographes sont interchangeables",
+                "it's s'utilise pour les personnes uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'It's' est la contraction de 'it is' (ou 'it has'), tandis que 'its' sans apostrophe exprime la possession."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'These books belong to Peter. They are ___.'",
+              "options": ["his", "him", "he", "hers"],
+              "correctAnswers": [0],
+              "explanation": "'His' renvoie au possesseur masculin singulier Peter (les siens)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : 'Don't touch that guitar, it's ___!'",
+              "options": ["mine", "my", "me", "I"],
+              "correctAnswers": [0],
+              "explanation": "'Mine' est le pronom possessif correspondant à 'la mienne'."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Le génitif et l'expression de la possession",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases expriment correctement la possession par un génitif ?",
+              "options": [
+                "This is Sarah's car.",
+                "These are the students' books.",
+                "This is the car of Sarah.",
+                "These are the book's of the students."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'anglais privilégie le génitif en 's (au singulier) ou ' (au pluriel régulier) pour exprimer l'appartenance."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on naturellement 'la voiture de Paul' ?",
+              "options": [
+                "Paul's car",
+                "the car Paul",
+                "the car of Paul's",
+                "Pauls car"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On place le possesseur d'abord, suivi de 's et de l'objet possédé sans article : 'Paul's car'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour un nom pluriel régulier se terminant déjà par -s (the boys), on ajoute :",
+              "options": [
+                "une simple apostrophe (boys')",
+                "'s (boys's)",
+                "aucun signe",
+                "of the boys"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand le nom au pluriel se termine par -s, on ajoute seulement une apostrophe : 'the boys' room'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour un pluriel irrégulier qui ne finit pas par -s (the children), le génitif s'écrit :",
+              "options": [
+                "children's",
+                "children'",
+                "childrens'",
+                "of children"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme 'children' ne finit pas par un -s, on ajoute l'apostrophe et le 's' normalement : 'children's'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'la chambre des filles' ?",
+              "options": [
+                "the girls' bedroom",
+                "the girl's bedroom",
+                "the girls's bedroom",
+                "the bedroom's girls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Girls' étant au pluriel en -s, on place l'apostrophe après le 's' : 'the girls' bedroom'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : 'We are having dinner at ___ house.' (la maison de Thomas)",
+              "options": ["Thomas's", "Thomas'", "Thomas", "Thomass"],
+              "correctAnswers": [0],
+              "explanation": "Pour les noms propres singuliers se terminant par un 's', on ajoute couramment 's : 'Thomas's house'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie exactement 'the dog's tail' ?",
+              "options": [
+                "la queue du chien",
+                "la queue des chiens",
+                "le chien de la queue",
+                "des chiens avec des queues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Dog's' comporte une apostrophe avant le 's' : il s'agit d'un seul chien."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'Whose bike is this? It's ___.'",
+              "options": [
+                "my brother's",
+                "of my brother",
+                "my brothers",
+                "brother my"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le génitif peut s'employer seul en fin de phrase pour répondre à la question 'Whose...?'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans 'Emma's watching a movie', que représente l'apostrophe 's ?",
+              "options": [
+                "la contraction de 'is'",
+                "la marque du génitif possessif",
+                "la contraction de 'has'",
+                "un pluriel irrégulier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant la forme en -ing 'watching', 's est l'auxiliaire 'is' contracté (présent be + V-ing)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase contient un véritable génitif de possession ?",
+              "options": [
+                "David's sister is very kind.",
+                "David's watching a movie.",
+                "David's been to Spain.",
+                "David's tall and strong."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'David's sister' désigne 'la sœur de David', ce qui correspond à la possession."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Synthèse : Accords et articles en contexte",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont grammaticalement correctes en anglais ?",
+              "options": [
+                "He has an unusual hobby.",
+                "She doesn't drink much coffee.",
+                "She has two childs.",
+                "He plays the football."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'An unusual' (/ʌn/) est correct, tout comme 'much coffee' (indénombrable). Childs et the football sont incorrects."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : 'Look at ___ sky, it is completely blue!'",
+              "options": ["the", "a", "an", "zero article"],
+              "correctAnswers": [0],
+              "explanation": "Le ciel est unique dans notre champ de vision, on emploie l'article défini 'the'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : 'He adopted two ___ from the shelter.'",
+              "options": ["dogs", "dog", "doges", "dog's"],
+              "correctAnswers": [0],
+              "explanation": "Après le nombre 'two', on met le nom au pluriel régulier avec un simple -s : 'dogs'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : 'Do you have ___ information about the train?'",
+              "options": ["any", "many", "an", "a few"],
+              "correctAnswers": [0],
+              "explanation": "'Information' est indénombrable ; dans une question fermée, on emploie 'any'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : 'My uncle always ___ his keys in the house.'",
+              "options": ["loses", "lose", "is lose", "losing"],
+              "correctAnswers": [0],
+              "explanation": "'My uncle' est un sujet singulier (he), le verbe prend -s au présent d'habitude : 'loses'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : '___ mice were caught by the cat.'",
+              "options": ["Three", "One", "A", "Much"],
+              "correctAnswers": [0],
+              "explanation": "'Mice' est un pluriel, on peut donc le combiner avec un numéral pluriel comme 'Three'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'This coat isn't mine, it is ___.'",
+              "options": ["hers", "her", "she", "she's"],
+              "correctAnswers": [0],
+              "explanation": "'Hers' est le pronom possessif féminin signifiant 'le sien / à elle'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'Where are the ___ toys?' (les jouets des enfants)",
+              "options": ["children's", "childrens'", "child's", "childrens's"],
+              "correctAnswers": [0],
+              "explanation": "'Children' est un pluriel sans -s, son génitif se forme en ajoutant 's : 'children's'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'I would like ___ glass of orange juice.'",
+              "options": ["a", "an", "some", "any"],
+              "correctAnswers": [0],
+              "explanation": "'Glass' est un nom dénombrable commençant par un son consonne (/ɡ/), on emploie 'a'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : 'Water ___ at 100 degrees Celsius.'",
+              "options": ["boils", "boil", "is boil", "boiling"],
+              "correctAnswers": [0],
+              "explanation": "Pour une vérité générale avec un sujet indénombrable (water = it), on ajoute -s : 'boils'."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : L'ordre des mots S-V-O",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les éléments obligatoires dans le schéma canonique de base d'une phrase déclarative anglaise ?",
+              "options": [
+                "le sujet (Subject)",
+                "le verbe (Verb)",
+                "un point d'exclamation obligatoire",
+                "une virgule après le sujet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'ordre de base en anglais est S-V-O (Sujet - Verbe - Objet)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'ordre canonique des éléments dans une phrase affirmative anglaise ?",
+              "options": [
+                "Sujet - Verbe - Complément d'objet",
+                "Verbe - Sujet - Complément d'objet",
+                "Complément d'objet - Verbe - Sujet",
+                "Sujet - Complément d'objet - Verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure standard est SVO : Sujet + Verbe + Objet (ex: Peter plays football)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Remets ces mots dans l'ordre correct : 'eats / Tom / an apple / every morning'",
+              "options": [
+                "Tom eats an apple every morning.",
+                "Eats Tom an apple every morning.",
+                "An apple Tom eats every morning.",
+                "Every morning eats Tom an apple."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet (Tom) + Verbe (eats) + Objet (an apple) + Complément de temps (every morning)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Où se place un adverbe de fréquence (always, usually, often) par rapport à un verbe lexical ordinaire ?",
+              "options": [
+                "juste avant le verbe principal",
+                "après le complément d'objet direct",
+                "systématiquement au début",
+                "systématiquement à la fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adverbe de fréquence se place immédiatement devant le verbe simple (ex: She often reads)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase présente le bon placement de l'adverbe 'always' ?",
+              "options": [
+                "She always arrives on time.",
+                "She arrives always on time.",
+                "Always she arrives on time.",
+                "She on time always arrives."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec un verbe ordinaire comme 'arrive', l'adverbe se place directement avant le verbe : 'She always arrives'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Avec le verbe 'be', où se place l'adverbe de fréquence ?",
+              "options": [
+                "après le verbe be",
+                "avant le verbe be",
+                "en toute fin de proposition",
+                "entre le sujet et la majuscule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 'be', l'adverbe de fréquence se place immédiatement APRÈS le verbe (ex: He is always late)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase est correctement ordonnée ?",
+              "options": [
+                "He is often tired after school.",
+                "He often is tired after school.",
+                "He is tired often after school.",
+                "Often he is tired after school."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Often' se place après l'auxiliaire 'is' : 'He is often tired'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans la phrase 'Emma plays the piano', quel mot est le verbe ?",
+              "options": ["plays", "Emma", "the", "piano"],
+              "correctAnswers": [0],
+              "explanation": "'Plays' est le verbe conjugué indiquant l'action réalisée par le sujet Emma."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans la phrase 'The fierce dog chased the cat', quel groupe de mots est le sujet ?",
+              "options": ["The fierce dog", "chased", "the cat", "cat"],
+              "correctAnswers": [0],
+              "explanation": "'The fierce dog' accomplit l'action exprimée par 'chased' ; c'est le sujet grammatical."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase présente un ordre des mots incorrect en anglais ?",
+              "options": [
+                "I like very much chocolate.",
+                "I like chocolate very much.",
+                "I really like chocolate.",
+                "Chocolate is what I like."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne doit pas couper le lien entre le verbe et son objet direct : on dit 'I like chocolate very much'."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : La phrase affirmative au présent",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases affirmatives au présent simple sont correctes ?",
+              "options": [
+                "Lucy reads books every day.",
+                "We live in a nice village.",
+                "Lucy read books every day.",
+                "We lives in a nice village."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lucy (she) prend un -s (reads) et We prend la base verbale sans -s (live)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : 'They ___ basketball in the gym.'",
+              "options": ["play", "plays", "are play", "playing"],
+              "correctAnswers": [0],
+              "explanation": "Avec le pronom 'they', le présent simple utilise la base verbale 'play'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : 'He ___ to classical music in his room.'",
+              "options": ["listens", "listen", "is listen", "listened"],
+              "correctAnswers": [0],
+              "explanation": "Le sujet 'he' exige la terminaison en -s au présent simple : 'listens'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : 'I ___ two sisters and a pet rabbit.'",
+              "options": ["have", "has", "am have", "having"],
+              "correctAnswers": [0],
+              "explanation": "À la 1re personne du singulier 'I', on utilise 'have'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : 'The morning train ___ at 8 o'clock.'",
+              "options": ["leaves", "leave", "is leave", "leaving"],
+              "correctAnswers": [0],
+              "explanation": "'The morning train' équivaut à 'it', le verbe prend -s : 'leaves'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : 'You ___ fluent English.'",
+              "options": ["speak", "speaks", "speaking", "are speak"],
+              "correctAnswers": [0],
+              "explanation": "Avec 'you', le verbe se met à la base verbale : 'speak'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'The guard dog ___ loudly at strangers.'",
+              "options": ["barks", "bark", "is bark", "barking"],
+              "correctAnswers": [0],
+              "explanation": "'The guard dog' est un sujet singulier (it), on ajoute -s : 'barks'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'We ___ our grandparents every weekend.'",
+              "options": ["visit", "visits", "visiting", "are visit"],
+              "correctAnswers": [0],
+              "explanation": "Avec 'we', le verbe reste sous sa forme de base : 'visit'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'She ___ hard before her exams.'",
+              "options": ["studies", "studys", "study", "is study"],
+              "correctAnswers": [0],
+              "explanation": "'Study' se termine par consonne + y, qui se transforme en -ies à la 3e personne : 'studies'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : 'The sun ___ brightly in summer.'",
+              "options": ["shines", "shine", "is shine", "shining"],
+              "correctAnswers": [0],
+              "explanation": "'The sun' est un sujet singulier, on accorde le verbe avec un -s : 'shines'."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : La phrase négative avec don't et doesn't",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels auxiliaires utilise-t-on pour former la négation au présent simple avec un verbe ordinaire ?",
+              "options": [
+                "don't (do not)",
+                "doesn't (does not)",
+                "aren't (are not)",
+                "haven't (have not)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Au présent simple, la négation des verbes ordinaires se forme avec don't ou doesn't + base verbale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Avec quels pronoms sujets emploie-t-on l'auxiliaire 'doesn't' ?",
+              "options": [
+                "he, she, it",
+                "I, you, we, they",
+                "seulement I",
+                "tous les sujets sans exception"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Doesn't' est réservé à la 3e personne du singulier (he, she, it)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : 'I ___ like spicy food.'",
+              "options": ["don't", "doesn't", "not", "am not"],
+              "correctAnswers": [0],
+              "explanation": "Avec 'I', l'auxiliaire négatif est 'don't' ('I don't like')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : 'He ___ eat meat because he is vegetarian.'",
+              "options": ["doesn't", "don't", "not", "isn't"],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet 'he', on utilise l'auxiliaire 'doesn't'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Après 'doesn't', sous quelle forme apparaît le verbe lexical ?",
+              "options": [
+                "la base verbale (infinitif sans to)",
+                "le verbe avec -s",
+                "le participe passé",
+                "la forme en -ing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'auxiliaire 'does' porte déjà la marque de 3e personne : le verbe redevient une base verbale sans -s."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phrase négative est grammaticalement correcte ?",
+              "options": [
+                "She doesn't speak Italian.",
+                "She doesn't speaks Italian.",
+                "She not speak Italian.",
+                "She don't speak Italian."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dit 'She doesn't speak' : le verbe 'speak' reste à la base verbale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'They ___ play computer games during the week.'",
+              "options": ["don't", "doesn't", "not", "aren't"],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet pluriel 'they', l'auxiliaire négatif est 'don't'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'My cat ___ like taking baths.'",
+              "options": ["doesn't", "don't", "isn't", "not"],
+              "correctAnswers": [0],
+              "explanation": "'My cat' (it) est à la 3e personne du singulier : on emploie 'doesn't'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'We ___ have school on Sundays.'",
+              "options": ["don't", "doesn't", "aren't", "no"],
+              "correctAnswers": [0],
+              "explanation": "Pour le pronom 'we', la forme négative est 'don't have'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase comporte une erreur de grammaire ?",
+              "options": [
+                "He doesn't likes spinach.",
+                "He doesn't like spinach.",
+                "They don't like spinach.",
+                "I don't like spinach."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans 'He doesn't likes', le -s sur 'likes' est une faute car 'doesn't' porte déjà la marque."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : Les questions fermées (Yes/No questions)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels auxiliaires peuvent débuter une question fermée au présent simple avec un verbe ordinaire ?",
+              "options": ["Do", "Does", "Why", "Where"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Do' et 'Does' sont les auxiliaires servant à construire les questions fermées au présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la structure canonique d'une question fermée avec un verbe ordinaire ?",
+              "options": [
+                "Auxiliaire + Sujet + Base verbale ?",
+                "Sujet + Auxiliaire + Base verbale ?",
+                "Base verbale + Sujet + Auxiliaire ?",
+                "Auxiliaire + Base verbale + Sujet ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule interrogative de base est Auxiliaire + Sujet + Verbe (ASV)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : '___ you like Italian food?'",
+              "options": ["Do", "Does", "Are", "Is"],
+              "correctAnswers": [0],
+              "explanation": "Avec le pronom 'you', l'auxiliaire de la question est 'Do'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : '___ your brother play the violin?'",
+              "options": ["Does", "Do", "Is", "Has"],
+              "correctAnswers": [0],
+              "explanation": "'Your brother' est une 3e personne du singulier (he), on utilise donc 'Does'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : '___ they live in the city center?'",
+              "options": ["Do", "Does", "Are", "Have"],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet pluriel 'they', l'auxiliaire est 'Do'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : '___ she speak Spanish at home?'",
+              "options": ["Does", "Do", "Is", "Can't"],
+              "correctAnswers": [0],
+              "explanation": "Avec 'she', l'auxiliaire interrogatif au présent est 'Does'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète avec le verbe 'be' : '___ you ready for the contest?'",
+              "options": ["Are", "Do", "Does", "Is"],
+              "correctAnswers": [0],
+              "explanation": "Avec 'be', pas besoin de 'do' : on inverse simplement le verbe et le sujet ('Are you...?')."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète avec le verbe 'be' : '___ it sunny outside?'",
+              "options": ["Is", "Does", "Do", "Are"],
+              "correctAnswers": [0],
+              "explanation": "Pour le sujet 'it' avec le verbe être, la question débute par 'Is'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle question est correctement construite ?",
+              "options": [
+                "Does he want some water?",
+                "Does he wants some water?",
+                "Do he want some water?",
+                "Is he want some water?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Does he want...?' est correct : auxiliaire 'does' + sujet 'he' + base verbale sans -s 'want'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : '___ we have enough money for the tickets?'",
+              "options": ["Do", "Does", "Are", "Have"],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet 'we', l'auxiliaire de la question au présent simple est 'Do'."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : Les questions ouvertes avec Wh- words",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots interrogatifs en 'Wh-' portent respectivement sur le lieu et le moment ?",
+              "options": ["Where (où)", "When (quand)", "Yes", "Do"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Where' interroge sur le lieu et 'When' interroge sur le temps."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif utilise-t-on pour demander un lieu ?",
+              "options": ["Where", "When", "What", "Who"],
+              "correctAnswers": [0],
+              "explanation": "'Where' signifie 'où' et permet de situer un lieu ou une destination."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif utilise-t-on pour demander une date ou un moment ?",
+              "options": ["When", "Where", "Why", "Which"],
+              "correctAnswers": [0],
+              "explanation": "'When' correspond au français 'quand'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif utilise-t-on pour demander une explication ou une raison ?",
+              "options": ["Why", "How", "Who", "What"],
+              "correctAnswers": [0],
+              "explanation": "'Why' signifie 'pourquoi' et appelle une réponse souvent introduite par 'because'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : '___ is your English teacher? - Mrs Clark.'",
+              "options": ["Who", "What", "Where", "When"],
+              "correctAnswers": [0],
+              "explanation": "La réponse désigne une personne (Mrs Clark), le mot interrogatif approprié est donc 'Who' (qui)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : '___ do you go to bed? - At 9:30 p.m.'",
+              "options": ["What time", "Where", "Who", "Why"],
+              "correctAnswers": [0],
+              "explanation": "Pour demander une heure précise, on emploie 'What time'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la structure d'une question ouverte avec un verbe ordinaire ?",
+              "options": [
+                "Mot en Wh- + Auxiliaire + Sujet + Base verbale ?",
+                "Mot en Wh- + Sujet + Auxiliaire + Verbe ?",
+                "Sujet + Mot en Wh- + Verbe ?",
+                "Auxiliaire + Mot en Wh- + Sujet ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre standard est Wh- + Auxiliaire + Sujet + Verbe (ex: Where do you live?)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'Where ___ you spend your summer holidays?'",
+              "options": ["do", "does", "are", "is"],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet 'you' et le verbe 'spend', l'auxiliaire requis est 'do'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'Why ___ she crying?'",
+              "options": ["is", "does", "do", "are"],
+              "correctAnswers": [0],
+              "explanation": "Devant la forme en -ing 'crying', l'auxiliaire est 'be', ici 'is' accordé avec 'she'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : '___ color is your new schoolbag?'",
+              "options": ["What", "Where", "Who", "Why"],
+              "correctAnswers": [0],
+              "explanation": "On dit 'What color' pour demander 'De quelle couleur'."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : Les réponses courtes (Short answers)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les réponses courtes correctes à la question 'Do you like chocolate?' ?",
+              "options": [
+                "Yes, I do.",
+                "No, I don't.",
+                "Yes, I like.",
+                "No, I not like."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En anglais, on reprend l'auxiliaire 'do / don't' et non le verbe lexical dans la réponse courte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Réponds affirmativement à : 'Does she play tennis?'",
+              "options": [
+                "Yes, she does.",
+                "Yes, she plays.",
+                "Yes, she do.",
+                "Yes, she is."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La question commence par 'Does she', la réponse courte affirmative est 'Yes, she does'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réponds négativement à : 'Does he live in London?'",
+              "options": [
+                "No, he doesn't.",
+                "No, he don't.",
+                "No, he isn't.",
+                "No, he not."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet 'he', l'auxiliaire négatif repris est 'doesn't'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Réponds affirmativement à : 'Are you ready?'",
+              "options": [
+                "Yes, I am.",
+                "Yes, I do.",
+                "Yes, I have.",
+                "Yes, I are."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La question est posée avec le verbe être ('Are you'), on répond avec 'I am'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réponds négativement à : 'Are they brothers?'",
+              "options": [
+                "No, they aren't.",
+                "No, they don't.",
+                "No, they not.",
+                "No, they isn't."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On reprend l'auxiliaire 'are' à la forme négative : 'No, they aren't'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réponds affirmativement à : 'Can you swim?'",
+              "options": [
+                "Yes, I can.",
+                "Yes, I do.",
+                "Yes, I swim.",
+                "Yes, I am."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La question utilise le modal 'can', on répond donc 'Yes, I can'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réponds négativement à : 'Do they like video games?'",
+              "options": [
+                "No, they don't.",
+                "No, they haven't.",
+                "No, they doesn't.",
+                "No, they not."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On reprend l'auxiliaire 'do' avec la négation pour le sujet 'they' : 'No, they don't'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans une réponse courte en anglais, de quoi est constituée la phrase après Yes ou No ?",
+              "options": [
+                "le pronom personnel et l'auxiliaire correspondant",
+                "le verbe principal répété en entier",
+                "uniquement les mots 'Yes' ou 'No'",
+                "le sujet répété sans auxiliaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une réponse courte anglaise utilise le pronom personnel sujet suivi de l'auxiliaire correspondant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réponds affirmativement à : 'Is your father at home?'",
+              "options": [
+                "Yes, he is.",
+                "Yes, he does.",
+                "Yes, he has.",
+                "Yes, he be."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Your father' est remplacé par 'he' et l'auxiliaire est 'is' : 'Yes, he is'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réponds négativement à : 'Can she drive a car?'",
+              "options": [
+                "No, she can't.",
+                "No, she doesn't.",
+                "No, she isn't.",
+                "No, she don't."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On reprend le modal 'can' à la forme négative contractée : 'No, she can't'."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : La forme impérative et l'interdiction",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont à la forme impérative en anglais ?",
+              "options": [
+                "Listen carefully!",
+                "Don't touch that!",
+                "You are listening.",
+                "She touches that."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Listen carefully!' (ordre) et 'Don't touch that!' (défense) sont des formes impératives."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment forme-t-on l'impératif affirmatif en anglais ?",
+              "options": [
+                "avec la base verbale sans pronom sujet",
+                "avec le pronom 'you' obligatoire",
+                "avec 'to' devant le verbe",
+                "avec la terminaison en -ing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'impératif affirmatif utilise simplement la base verbale du verbe, sans sujet exprimé (ex: Look!)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment forme-t-on une interdiction (l'impératif négatif) ?",
+              "options": [
+                "Don't + base verbale",
+                "Doesn't + base verbale",
+                "No + base verbale",
+                "Not + base verbale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour interdire une action, on commence la phrase par 'Don't' suivi de la base verbale (ex: Don't run!)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète l'ordre : '___ your books at page 50, please.'",
+              "options": ["Open", "Opens", "Opening", "To open"],
+              "correctAnswers": [0],
+              "explanation": "L'impératif affirmatif prend la base verbale 'Open' sans terminaison ni sujet."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète l'interdiction : '___ run near the swimming pool!'",
+              "options": ["Don't", "Doesn't", "No", "Not"],
+              "correctAnswers": [0],
+              "explanation": "L'interdiction s'exprime avec 'Don't' devant la base verbale 'run'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle expression permet d'exprimer une suggestion incluant le locuteur ('Faisons...') ?",
+              "options": [
+                "Let's + base verbale",
+                "Make + verbe",
+                "We + verbe",
+                "Shall + verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Let's' (contraction de 'let us') sert à inviter à faire une action collective (ex: Let's go!)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète la suggestion : '___ watch a movie tonight!'",
+              "options": ["Let's", "Let", "Lets", "Let us to"],
+              "correctAnswers": [0],
+              "explanation": "'Let's' suivi de la base verbale 'watch' exprime la proposition 'Regardons un film ce soir'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète l'ordre négatif : '___ be late for your exam!'",
+              "options": ["Don't", "Doesn't", "Not", "Aren't"],
+              "correctAnswers": [0],
+              "explanation": "Même avec le verbe 'be', l'impératif négatif se construit avec 'Don't be'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'Please ___ quiet during the performance.'",
+              "options": ["be", "is", "are", "being"],
+              "correctAnswers": [0],
+              "explanation": "La base verbale de 'être' est 'be' : 'Please be quiet'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase exprime un ordre poli correctement formulé ?",
+              "options": [
+                "Sit down, please.",
+                "You must to sit down.",
+                "Please you sit down.",
+                "Sitting down, please."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Sit down, please' utilise la base verbale accompagnée de la formule de politesse."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : Les prépositions de lieu simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des prépositions de lieu courantes en anglais ?",
+              "options": ["in", "under", "because", "always"],
+              "correctAnswers": [0, 1],
+              "explanation": "'In' (dans) et 'under' (sous) sont des prépositions spatiales."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : 'The cat is sleeping ___ the table, on the rug.'",
+              "options": ["under", "on", "in", "at"],
+              "correctAnswers": [0],
+              "explanation": "'Under' signifie 'sous / en-dessous de'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : 'The milk is ___ the fridge.'",
+              "options": ["in", "on", "at", "under"],
+              "correctAnswers": [0],
+              "explanation": "Pour désigner l'intérieur d'un volume clos ou d'un meuble, on utilise 'in'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : 'The notebook is ___ the desk.' (posé sur la surface)",
+              "options": ["on", "in", "at", "into"],
+              "correctAnswers": [0],
+              "explanation": "On emploie 'on' pour indiquer le contact avec une surface plane (on the desk, on the table)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : 'Meet me ___ the bus stop at 4 p.m.'",
+              "options": ["at", "in", "on", "under"],
+              "correctAnswers": [0],
+              "explanation": "Pour désigner un point précis de rencontre ou d'arrêt dans l'espace, on emploie 'at'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : 'They live ___ France.'",
+              "options": ["in", "at", "on", "to"],
+              "correctAnswers": [0],
+              "explanation": "Devant un pays ou une région géographique, on utilise la préposition 'in'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'There is a beautiful painting ___ the wall.'",
+              "options": ["on", "in", "at", "under"],
+              "correctAnswers": [0],
+              "explanation": "Le tableau est accroché sur la surface verticale du mur : 'on the wall'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'The children are ___ school right now.'",
+              "options": ["at", "on", "into", "under"],
+              "correctAnswers": [0],
+              "explanation": "L'expression consacrée pour 'à l'école' en tant qu'activité/lieu institutionnel est 'at school'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'My slippers are ___ the bed.'",
+              "options": ["under", "in", "at", "on"],
+              "correctAnswers": [0],
+              "explanation": "Les chaussons sont sous le lit : 'under the bed'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : 'My cousin lives ___ London.'",
+              "options": ["in", "at", "on", "by"],
+              "correctAnswers": [0],
+              "explanation": "Devant les noms de villes, on utilise la préposition de lieu 'in' (in London, in Paris)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Les connecteurs logiques de base",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des connecteurs logiques permettant de relier deux propositions ?",
+              "options": ["because", "but", "apple", "running"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Because' (la cause) et 'but' (l'opposition) sont des conjonctions reliant des propositions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel connecteur exprime la cause ou la raison ('parce que') ?",
+              "options": ["because", "so", "but", "and"],
+              "correctAnswers": [0],
+              "explanation": "'Because' introduit la cause ou la raison d'un événement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel connecteur exprime le contraste ou l'opposition ('mais') ?",
+              "options": ["but", "and", "so", "because"],
+              "correctAnswers": [0],
+              "explanation": "'But' exprime une opposition ou une nuance entre deux idées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel connecteur exprime la conséquence ('donc / alors') ?",
+              "options": ["so", "because", "but", "or"],
+              "correctAnswers": [0],
+              "explanation": "'So' introduit le résultat ou la conséquence logique d'un fait."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : 'I like apples, ___ I don't like pears.'",
+              "options": ["but", "and", "so", "because"],
+              "correctAnswers": [0],
+              "explanation": "Il y a une opposition entre aimer les pommes et ne pas aimer les poires : on emploie 'but'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : 'He stayed in bed ___ he had a bad cold.'",
+              "options": ["because", "so", "but", "and"],
+              "correctAnswers": [0],
+              "explanation": "Avoir un rhume est la cause de rester au lit, on utilise 'because'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'It was raining heavily, ___ we took our umbrellas.'",
+              "options": ["so", "because", "but", "or"],
+              "correctAnswers": [0],
+              "explanation": "Prendre son parapluie est la conséquence de la pluie battante : on utilise 'so'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'She bought a notebook ___ three pencils.'",
+              "options": ["and", "but", "so", "because"],
+              "correctAnswers": [0],
+              "explanation": "'And' (et) sert à additionner deux éléments d'une liste."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'I studied every evening, ___ I passed my exam easily.'",
+              "options": ["so", "because", "but", "or"],
+              "correctAnswers": [0],
+              "explanation": "Réussir l'examen est la conséquence directe d'avoir travaillé dur : on choisit 'so'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : 'We wanted to go swimming, ___ the water was freezing.'",
+              "options": ["but", "so", "and", "because"],
+              "correctAnswers": [0],
+              "explanation": "L'eau glacée s'oppose à l'envie de nager : on relie par 'but'."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Synthèse : Maîtriser la phrase simple",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases simples sont grammaticalement irréprochables ?",
+              "options": [
+                "Do you play football on Saturdays?",
+                "She doesn't like cold weather.",
+                "Does she plays football?",
+                "He don't like milk."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Do you play...?' et 'She doesn't like...' respectent parfaitement la syntaxe du présent simple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Remets dans le bon ordre : 'often / visit / they / London'",
+              "options": [
+                "They often visit London.",
+                "They visit often London.",
+                "Often they visit London.",
+                "Visit they often London."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet (They) + Adverbe (often) + Verbe (visit) + Complément (London)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : '___ is that boy over there? - He is my cousin Tom.'",
+              "options": ["Who", "Where", "When", "What"],
+              "correctAnswers": [0],
+              "explanation": "Pour identifier une personne, on pose la question avec 'Who' (qui)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la réponse courte correcte à 'Do you live in Manchester?' ?",
+              "options": [
+                "No, I don't.",
+                "No, I doesn't.",
+                "No, I not live.",
+                "No, I aren't."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La question posée avec 'Do you' appelle la réponse courte 'No, I don't'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète l'ordre impératif : '___ your bedroom before going out!'",
+              "options": ["Tidy", "Tidies", "Tidying", "To tidy"],
+              "correctAnswers": [0],
+              "explanation": "L'impératif affirmatif s'exprime par la base verbale 'Tidy'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : 'I called you, ___ you didn't answer.'",
+              "options": ["but", "so", "and", "because"],
+              "correctAnswers": [0],
+              "explanation": "'But' marque l'opposition entre avoir appelé et ne pas avoir eu de réponse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'The cat is sitting ___ the sofa.'",
+              "options": ["on", "at", "in", "under"],
+              "correctAnswers": [0],
+              "explanation": "Le chat est assis sur la surface du canapé : 'on the sofa'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'Why ___ you so happy today?'",
+              "options": ["are", "do", "does", "is"],
+              "correctAnswers": [0],
+              "explanation": "Avec l'adjectif 'happy' et le sujet 'you', on emploie le verbe 'be' conjugué : 'are'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'She ___ want to go outside because it's raining.'",
+              "options": ["doesn't", "don't", "isn't", "not"],
+              "correctAnswers": [0],
+              "explanation": "La négation au présent simple pour le sujet 'she' est 'doesn't'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle question est parfaitement construite ?",
+              "options": [
+                "Does Mark play basketball?",
+                "Does Mark plays basketball?",
+                "Do Mark play basketball?",
+                "Is Mark play basketball?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Does Mark play basketball?' respecte la règle : auxiliaire Does + sujet Mark + base verbale play."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

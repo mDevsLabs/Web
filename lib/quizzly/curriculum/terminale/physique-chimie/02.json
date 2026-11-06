@@ -1,0 +1,2223 @@
+{
+  "id": "terminale-physique-chimie-02",
+  "year": "terminale",
+  "subject": "physique-chimie",
+  "title": "Mouvement dans un champ",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Champ de pesanteur",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Chute libre",
+          "questions": [
+            {
+              "id": "q01-01",
+              "type": "multiple_choice",
+              "question": "Chute libre sans frottement (référentiel terrestre) :",
+              "options": [
+                "Accélération ≈ 9,8 m·s⁻²",
+                "Vitesse constante",
+                "MRUA",
+                "Seul le poids agit si l'air est négligé"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "g constant donne un MRUA ; la vitesse augmente."
+            },
+            {
+              "id": "q01-02",
+              "type": "single_choice",
+              "question": "Lâché sans v₀ depuis h, v au sol (v₀=0) :",
+              "options": ["v=g·t", "v²=2gh", "v=√(gh)", "h=gt"],
+              "correctAnswers": [1],
+              "explanation": "v²−v₀²=2gΔz."
+            },
+            {
+              "id": "q01-03",
+              "type": "single_choice",
+              "question": "Durée de chute depuis le repos sur h :",
+              "options": ["h/g", "√(2h/g)", "2h/g", "√(h/g)"],
+              "correctAnswers": [1],
+              "explanation": "h=½gt²."
+            },
+            {
+              "id": "q01-04",
+              "type": "single_choice",
+              "question": "g⃗ au sol terrestre :",
+              "options": [
+                "Horizontal est",
+                "Vertical vers le haut",
+                "Vertical vers le bas",
+                "Nul"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Modèle local : g vertical vers le bas."
+            },
+            {
+              "id": "q01-05",
+              "type": "single_choice",
+              "question": "Deux masses m et 2m lâchées ensemble (sans air) :",
+              "options": [
+                "2m plus rapide",
+                "Même vitesse à t donné",
+                "m plus rapide",
+                "Accélération double pour 2m"
+              ],
+              "correctAnswers": [1],
+              "explanation": "a=g pour toutes les masses."
+            },
+            {
+              "id": "q01-06",
+              "type": "single_choice",
+              "question": "z(t) chute libre, origine au sol, z vers le bas, z(0)=h :",
+              "options": ["h−½gt²", "h+½gt²", "gt", "ht"],
+              "correctAnswers": [0],
+              "explanation": "z diminue depuis h."
+            },
+            {
+              "id": "q01-07",
+              "type": "single_choice",
+              "question": "Norme du poids :",
+              "options": ["m/g", "g/m", "mg", "m+g"],
+              "correctAnswers": [2],
+              "explanation": "P=mg."
+            },
+            {
+              "id": "q01-08",
+              "type": "single_choice",
+              "question": "Norme du champ à distance r d'une masse M :",
+              "options": ["GM/r", "GM/r²", "GMr", "GMr²"],
+              "correctAnswers": [1],
+              "explanation": "Champ gravitationnel newtonien."
+            },
+            {
+              "id": "q01-09",
+              "type": "single_choice",
+              "question": "Chute libre depuis le repos, ||p⃗|| à t :",
+              "options": ["mg", "mgt", "mgt²", "0"],
+              "correctAnswers": [1],
+              "explanation": "v=gt donc p=mgt."
+            },
+            {
+              "id": "q01-10",
+              "type": "single_choice",
+              "question": "Unité SI de g :",
+              "options": ["N", "N·kg⁻¹", "m·s⁻²", "J"],
+              "correctAnswers": [2],
+              "explanation": "g est une accélération."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Mouvement parabolique",
+          "questions": [
+            {
+              "id": "q02-01",
+              "type": "multiple_choice",
+              "question": "Projectile sans frottement dans g uniforme :",
+              "options": [
+                "vₓ constant",
+                "Trajectoire parabolique dans le plan du lancer",
+                "||v|| constant",
+                "aₓ=0"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Seule az=−g ; vₓ constant."
+            },
+            {
+              "id": "q02-02",
+              "type": "single_choice",
+              "question": "v₀=20 m·s⁻¹, α=30° : vₓ ≈",
+              "options": ["10", "17,3", "20", "5"],
+              "correctAnswers": [1],
+              "explanation": "vₓ=v₀cosα."
+            },
+            {
+              "id": "q02-03",
+              "type": "single_choice",
+              "question": "Au sommet de la trajectoire :",
+              "options": ["v=0", "v_z=0", "a=0", "E_c=0"],
+              "correctAnswers": [1],
+              "explanation": "v_z s'annule, vₓ reste."
+            },
+            {
+              "id": "q02-04",
+              "type": "single_choice",
+              "question": "x(t) depuis l'origine :",
+              "options": ["v₀cosα·t", "v₀sinα·t", "½gt²", "v₀t²"],
+              "correctAnswers": [0],
+              "explanation": "MRU horizontal."
+            },
+            {
+              "id": "q02-05",
+              "type": "single_choice",
+              "question": "Portée au sol :",
+              "options": ["v₀²sinα/g", "v₀²sin2α/g", "v₀sin2α/g", "2v₀²cosα/g"],
+              "correctAnswers": [1],
+              "explanation": "Formule classique de portée."
+            },
+            {
+              "id": "q02-06",
+              "type": "single_choice",
+              "question": "Portée maximale au sol (sans frottement) : α =",
+              "options": ["30°", "45°", "60°", "90°"],
+              "correctAnswers": [1],
+              "explanation": "sin2α max pour α=45°."
+            },
+            {
+              "id": "q02-07",
+              "type": "single_choice",
+              "question": "z(t), Oz vers le haut, z₀=0 :",
+              "options": ["v₀sinα·t−½gt²", "v₀cosα·t−gt", "−½gt", "v₀t−g"],
+              "correctAnswers": [0],
+              "explanation": "MUA vertical."
+            },
+            {
+              "id": "q02-08",
+              "type": "single_choice",
+              "question": "Énergie mécanique (sans frottement) :",
+              "options": [
+                "Augmente",
+                "Diminue",
+                "Se conserve",
+                "Nulle au sommet"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Force conservative."
+            },
+            {
+              "id": "q02-09",
+              "type": "single_choice",
+              "question": "Durée totale de vol (même altitude) :",
+              "options": ["2v₀sinα/g", "v₀sinα/g", "v₀cosα/g", "2v₀/g"],
+              "correctAnswers": [0],
+              "explanation": "Symétrie montée/descente."
+            },
+            {
+              "id": "q02-10",
+              "type": "single_choice",
+              "question": "a⃗ (Oz vers le haut) :",
+              "options": ["0", "g en x", "−g en z", "+g en z"],
+              "correctAnswers": [2],
+              "explanation": "a⃗=g⃗ vers le bas."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Gravitation universelle",
+          "questions": [
+            {
+              "id": "q03-01",
+              "type": "multiple_choice",
+              "question": "Loi F=−Gmm'/r² u_r :",
+              "options": [
+                "Force attractive",
+                "∝ mm'",
+                "Indépendante de r",
+                "G≈6,67×10⁻¹¹ SI"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Attractive, ∝ produit des masses, en 1/r²."
+            },
+            {
+              "id": "q03-02",
+              "type": "single_choice",
+              "question": "Unité de G :",
+              "options": ["N·kg", "N·m²·kg⁻²", "m·s⁻²", "J·mol⁻¹"],
+              "correctAnswers": [1],
+              "explanation": "Analyse dimensionnelle de F=Gmm'/r²."
+            },
+            {
+              "id": "q03-03",
+              "type": "single_choice",
+              "question": "g à la surface (M_p, R_p) :",
+              "options": ["GM_p/R_p", "GM_p/R_p²", "GM_p²/R_p", "M_p/(GR_p²)"],
+              "correctAnswers": [1],
+              "explanation": "g=GM/R² au sol."
+            },
+            {
+              "id": "q03-04",
+              "type": "single_choice",
+              "question": "Si r est doublée, F devient :",
+              "options": ["2F", "F/2", "F/4", "4F"],
+              "correctAnswers": [2],
+              "explanation": "F∝1/r²."
+            },
+            {
+              "id": "q03-05",
+              "type": "single_choice",
+              "question": "Superposition du champ gravitationnel :",
+              "options": [
+                "Un seul astre",
+                "Somme vectorielle des champs",
+                "Annulation systématique",
+                "Indépendant de la masse test"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Principe de superposition."
+            },
+            {
+              "id": "q03-06",
+              "type": "single_choice",
+              "question": "F en fonction de 1/r² (autres constantes) :",
+              "options": ["F∝r", "F∝1/r", "F∝1/r²", "F constante"],
+              "correctAnswers": [2],
+              "explanation": "Loi en carré inverse."
+            },
+            {
+              "id": "q03-07",
+              "type": "single_choice",
+              "question": "Masse gravitationnelle :",
+              "options": [
+                "Varie selon le lieu",
+                "Entre dans F=Gmm'/r²",
+                "≠ masse inertielle en Newton",
+                "En newtons"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Rôle dans la gravitation."
+            },
+            {
+              "id": "q03-08",
+              "type": "single_choice",
+              "question": "g diminue avec l'altitude car :",
+              "options": [
+                "r=R+h augmente",
+                "g augmente avec h",
+                "g indépendant de h",
+                "Rotation seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "g=GM/(R+h)²."
+            },
+            {
+              "id": "q03-09",
+              "type": "single_choice",
+              "question": "Une masse doublée (distance fixe) : F devient",
+              "options": ["F/2", "F", "2F", "4F"],
+              "correctAnswers": [2],
+              "explanation": "F∝m."
+            },
+            {
+              "id": "q03-10",
+              "type": "single_choice",
+              "question": "Le champ g⃗ créé par M en r :",
+              "options": [
+                "Vers M",
+                "De M vers le point",
+                "Tangent",
+                "Nul partout"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Champ radial attracteur."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Satellites et orbites",
+          "questions": [
+            {
+              "id": "q04-01",
+              "type": "multiple_choice",
+              "question": "Satellite en orbite circulaire autour de la Terre :",
+              "options": [
+                "v dépend de r",
+                "Période T dépend de r",
+                "Aucune force ne s'exerce",
+                "E_m peut se conserver sans frottement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "v et T liés au rayon orbital."
+            },
+            {
+              "id": "q04-02",
+              "type": "single_choice",
+              "question": "3e loi de Kepler : T²/r³ =",
+              "options": ["Constante pour un astre central", "0", "GM", "1/G"],
+              "correctAnswers": [0],
+              "explanation": "T²/r³ constant pour un même astre."
+            },
+            {
+              "id": "q04-03",
+              "type": "single_choice",
+              "question": "Orbite circulaire rayon r : v =",
+              "options": ["√(GM/r)", "GM/r", "GM/r²", "√(GM/r²)"],
+              "correctAnswers": [0],
+              "explanation": "mv²/r=GMm/r²."
+            },
+            {
+              "id": "q04-04",
+              "type": "single_choice",
+              "question": "Période orbite circulaire : T =",
+              "options": ["2πr/v", "2π√(r³/GM)", "2πGM/r", "r/v"],
+              "correctAnswers": [1],
+              "explanation": "Kepler + v=√(GM/r)."
+            },
+            {
+              "id": "q04-05",
+              "type": "single_choice",
+              "question": "Satellite géostationnaire : orbite",
+              "options": [
+                "Polaire",
+                "Équatoriale, T=24 h",
+                "Any",
+                "Sous la surface"
+              ],
+              "correctAnswers": [1],
+              "explanation": "T=1 jour sidéral, équateur."
+            },
+            {
+              "id": "q04-06",
+              "type": "single_choice",
+              "question": "Énergie potentielle grav. (M central, m à r) : E_p =",
+              "options": ["−GMm/r", "GMm/r", "−GMm/r²", "½GMm/r"],
+              "correctAnswers": [0],
+              "explanation": "Convention E_p=0 à l'infini."
+            },
+            {
+              "id": "q04-07",
+              "type": "single_choice",
+              "question": "Orbite plus basse : vitesse orbitale",
+              "options": ["Plus faible", "Plus grande", "Identique", "Nulle"],
+              "correctAnswers": [1],
+              "explanation": "v∝1/√r."
+            },
+            {
+              "id": "q04-08",
+              "type": "single_choice",
+              "question": "Force centripète en orbite circulaire :",
+              "options": [
+                "Poids / gravitation",
+                "Réaction du sol",
+                "Frottement",
+                "Ressort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gravitation fournit F_c."
+            },
+            {
+              "id": "q04-09",
+              "type": "single_choice",
+              "question": "1re loi de Kepler : trajectoire",
+              "options": [
+                "Parabole seulement",
+                "Ellipse (astre au focus)",
+                "Cercle interdit",
+                "Hyperbole seule"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Orbites coniques, ellipse liée."
+            },
+            {
+              "id": "q04-10",
+              "type": "single_choice",
+              "question": "2e loi de Kepler : aire balayée",
+              "options": ["Constante en Δt", "Nulle", "∝ r", "∝ T"],
+              "correctAnswers": [0],
+              "explanation": "Loi des aires."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Énergie dans le champ de pesanteur",
+          "questions": [
+            {
+              "id": "q05-01",
+              "type": "multiple_choice",
+              "question": "Champ g uniforme (h modeste) :",
+              "options": [
+                "E_pp=mgh (réf. au sol)",
+                "Travail du poids W=mgh si Δz=h vers le bas",
+                "g dépend fortement de h",
+                "Poids non conservative"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Modèle local uniforme."
+            },
+            {
+              "id": "q05-02",
+              "type": "single_choice",
+              "question": "Travail du poids (m, Δz vers le haut) :",
+              "options": ["+mgΔz", "−mgΔz", "0", "mg/Δz"],
+              "correctAnswers": [1],
+              "explanation": "W=P·Δz, P vers le bas."
+            },
+            {
+              "id": "q05-03",
+              "type": "single_choice",
+              "question": "Chute libre sans frottement : E_m",
+              "options": ["Augmente", "Diminue", "Constante", "Nulle"],
+              "correctAnswers": [2],
+              "explanation": "Conservation."
+            },
+            {
+              "id": "q05-04",
+              "type": "single_choice",
+              "question": "À h au-dessus du sol (g uniforme) : E_pp =",
+              "options": ["mgh", "−mgh", "mg/h", "½mgh"],
+              "correctAnswers": [0],
+              "explanation": "Référence sol E_pp=0."
+            },
+            {
+              "id": "q05-05",
+              "type": "single_choice",
+              "question": "v à h si lâché de H (g uniforme, v₀=0 au sol) : v² =",
+              "options": ["2g(H−h)", "2gh", "gh", "2gH"],
+              "correctAnswers": [0],
+              "explanation": "Conservation ou v²=2gΔz."
+            },
+            {
+              "id": "q05-06",
+              "type": "single_choice",
+              "question": "Orbite circulaire (sans atmosphère) : E_m du satellite",
+              "options": [
+                "Toujours positive",
+                "Négative",
+                "Nulle",
+                "Indépendante de r"
+              ],
+              "correctAnswers": [1],
+              "explanation": "E_m=−GMm/(2r)<0."
+            },
+            {
+              "id": "q05-07",
+              "type": "single_choice",
+              "question": "Énergie cinétique orbite circulaire : E_c =",
+              "options": [
+                "GMm/(2r)",
+                "−GMm/(2r)",
+                "GMm/r",
+                "½mv² seule sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "E_c=−E_m/2 en orbite circulaire."
+            },
+            {
+              "id": "q05-08",
+              "type": "single_choice",
+              "question": "Le poids est une force",
+              "options": [
+                "Dissipative",
+                "Conservative",
+                "Aléatoire",
+                "Centrifuge"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Travail indépendant du chemin."
+            },
+            {
+              "id": "q05-09",
+              "type": "single_choice",
+              "question": "Projectile : au sommet E_c est",
+              "options": [
+                "Maximale",
+                "Minimale (non nulle)",
+                "Nulle",
+                "Égale à E_m"
+              ],
+              "correctAnswers": [1],
+              "explanation": "v_z=0 mais vₓ≠0."
+            },
+            {
+              "id": "q05-10",
+              "type": "single_choice",
+              "question": "Unité de E_p gravitationnelle (SI) :",
+              "options": ["N", "J", "W", "kg"],
+              "correctAnswers": [1],
+              "explanation": "Énergie en joules."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Deuxième loi de Newton dans g",
+          "questions": [
+            {
+              "id": "q06-01",
+              "type": "multiple_choice",
+              "question": "ΣF⃗=ma⃗ en chute libre (air négligé) :",
+              "options": ["a⃗=g⃗", "m n'intervient pas dans a", "R=mg", "a=0"],
+              "correctAnswers": [0, 1],
+              "explanation": "P=ma donne a=g."
+            },
+            {
+              "id": "q06-02",
+              "type": "single_choice",
+              "question": "Objet sur table horizontale au repos : R",
+              "options": ["0", "mg vers le haut", "mg vers le bas", "m/g"],
+              "correctAnswers": [1],
+              "explanation": "Équilibre : R=P."
+            },
+            {
+              "id": "q06-03",
+              "type": "single_choice",
+              "question": "Plan incliné sans frottement, angle θ : a le long du plan =",
+              "options": ["g", "g sinθ", "g cosθ", "0"],
+              "correctAnswers": [1],
+              "explanation": "Composante du poids le long du plan."
+            },
+            {
+              "id": "q06-04",
+              "type": "single_choice",
+              "question": "Échelle : personne immobile, accélération a vers le haut : apparent P'",
+              "options": ["m(g−a)", "m(g+a)", "mg", "0"],
+              "correctAnswers": [1],
+              "explanation": "R−P=ma vers le haut."
+            },
+            {
+              "id": "q06-05",
+              "type": "single_choice",
+              "question": "Chute avec frottement fluide f=k v (régime limite) : v_lim =",
+              "options": ["mg/k", "k/mg", "mgk", "0"],
+              "correctAnswers": [0],
+              "explanation": "mg=kv à régime permanent."
+            },
+            {
+              "id": "q06-06",
+              "type": "single_choice",
+              "question": "Référentiel non galiléen terrestre (rotation) : on ajoute",
+              "options": [
+                "Rien",
+                "Forces fictives (Centrifuge, Coriolis)",
+                "Seulement Coriolis au sol",
+                "Poids nul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Modèle référentiel tournant."
+            },
+            {
+              "id": "q06-07",
+              "type": "single_choice",
+              "question": "Masse m en orbite : sensation d'apesanteur car",
+              "options": [
+                "g=0 partout",
+                "Satellite et astronaute même chute libre orbitale",
+                "Pas de gravité",
+                "R=0 toujours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chute libre commune."
+            },
+            {
+              "id": "q06-08",
+              "type": "single_choice",
+              "question": "Graphique v(t) chute libre v₀=0 :",
+              "options": [
+                "Droite passant par 0 pente g",
+                "Horizontale",
+                "Parabole",
+                "Hyperbole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "v=gt."
+            },
+            {
+              "id": "q06-09",
+              "type": "single_choice",
+              "question": "Graphique z(t) chute libre (z vers le bas) :",
+              "options": [
+                "Droite",
+                "Parabole concave vers le haut (z croît)",
+                "Parabole concave vers le bas si z vers le haut depuis 0",
+                "Exponentielle"
+              ],
+              "correctAnswers": [2],
+              "explanation": "z=−½gt² si z vers le haut depuis le lancer."
+            },
+            {
+              "id": "q06-10",
+              "type": "single_choice",
+              "question": "Unité de la quantité de mouvement :",
+              "options": ["N·s", "kg·m·s⁻¹", "J·s", "Les deux premières"],
+              "correctAnswers": [3],
+              "explanation": "p en kg·m·s⁻¹ = N·s."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Champ et potentiel gravitationnel",
+          "questions": [
+            {
+              "id": "q07-01",
+              "type": "multiple_choice",
+              "question": "Potentiel gravitationnel V (M ponctuelle) :",
+              "options": [
+                "V=−GM/r",
+                "g=−dV/dr (radial)",
+                "V toujours positif",
+                "V indépendant de m test"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "V scalaire, g dérivée."
+            },
+            {
+              "id": "q07-02",
+              "type": "single_choice",
+              "question": "E_p grav. d'une masse m en r : E_p =",
+              "options": ["mV", "V/m", "−mV", "GmV"],
+              "correctAnswers": [0],
+              "explanation": "E_p=mV."
+            },
+            {
+              "id": "q07-03",
+              "type": "single_choice",
+              "question": "V(r) → 0 quand",
+              "options": [
+                "r→0",
+                "r→∞ (convention courante)",
+                "r=R_Terre",
+                "Jamais"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Référence à l'infini."
+            },
+            {
+              "id": "q07-04",
+              "type": "single_choice",
+              "question": "Lignes de champ g⃗ :",
+              "options": [
+                "Tangentielles à g⃗",
+                "Perpendiculaires à g⃗",
+                "Horizontales seulement",
+                "Fermées toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convention de représentation."
+            },
+            {
+              "id": "q07-05",
+              "type": "single_choice",
+              "question": "Travail de F grav. de r_A à r_B : W =",
+              "options": [
+                "Gm m'(1/r_A−1/r_B)",
+                "Gm m'(1/r_B−1/r_A)",
+                "0",
+                "Gm m'r"
+              ],
+              "correctAnswers": [0],
+              "explanation": "W=m(V_A−V_B) avec V=−GM/r."
+            },
+            {
+              "id": "q07-06",
+              "type": "single_choice",
+              "question": "Échappement (sans frottement) : v_esc =",
+              "options": ["√(2GM/R)", "√(GM/R)", "GM/R", "2√(GM/R)"],
+              "correctAnswers": [0],
+              "explanation": "E_m≥0 à l'infini."
+            },
+            {
+              "id": "q07-07",
+              "type": "single_choice",
+              "question": "v_esc compare à v_orb basse :",
+              "options": [
+                "v_esc=√2 v_orb",
+                "v_esc=v_orb",
+                "v_esc=v_orb/√2",
+                "Sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "√(2GM/R) vs √(GM/R)."
+            },
+            {
+              "id": "q07-08",
+              "type": "single_choice",
+              "question": "Champ uniforme local : V(z) ≈",
+              "options": ["gz", "−gz", "mgz", "−mgz"],
+              "correctAnswers": [1],
+              "explanation": "g=−dV/dz, g constant vers −z si V=−gz."
+            },
+            {
+              "id": "q07-09",
+              "type": "single_choice",
+              "question": "Deux masses créent V total :",
+              "options": [
+                "Somme scalaire des V_i",
+                "Produit",
+                "Différence seule",
+                "Nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Superposition scalaire du potentiel."
+            },
+            {
+              "id": "q07-10",
+              "type": "single_choice",
+              "question": "Unité de V (potentiel grav.) :",
+              "options": ["N·kg⁻¹", "J·kg⁻¹", "m·s⁻²", "J"],
+              "correctAnswers": [1],
+              "explanation": "V est énergie par unité de masse."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Mesures et modélisation de g",
+          "questions": [
+            {
+              "id": "q08-01",
+              "type": "multiple_choice",
+              "question": "Facteurs influençant g mesuré au sol :",
+              "options": [
+                "Latitude (effet rotation + aplati)",
+                "Altitude",
+                "Masse locale (géologie)",
+                "Couleur de l'objet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "g varie avec latitude et altitude."
+            },
+            {
+              "id": "q08-02",
+              "type": "single_choice",
+              "question": "Pendule simple T=2π√(L/g) sert à",
+              "options": [
+                "Mesurer g",
+                "Mesurer G uniquement",
+                "Prouver F=ma",
+                "Mesurer la charge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expérience historique sur g."
+            },
+            {
+              "id": "q08-03",
+              "type": "single_choice",
+              "question": "g_pôle > g_équateur (modèle) principalement à cause de",
+              "options": [
+                "Rotation (aplatissement + centrifuge)",
+                "Masse lunaire",
+                "Vent",
+                "Température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effets rotation et forme."
+            },
+            {
+              "id": "q08-04",
+              "type": "single_choice",
+              "question": "Chronophotographie d'une chute : on en déduit",
+              "options": [
+                "g ou v(t)",
+                "Charge électrique",
+                "Constante de Coulomb",
+                "Résistance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cinématique verticale."
+            },
+            {
+              "id": "q08-05",
+              "type": "single_choice",
+              "question": "Incertitude sur g : si L et T mesurés, propagation",
+              "options": [
+                "Analyse des incertitudes sur T et L",
+                "Ignorer T",
+                "g sans incertitude",
+                "Doubler g"
+              ],
+              "correctAnswers": [0],
+              "explanation": "g∝1/T²."
+            },
+            {
+              "id": "q08-06",
+              "type": "single_choice",
+              "question": "Modèle sphère uniforme : g intérieur r<R",
+              "options": [
+                "GM/r² avec M masse intérieure",
+                "Constante partout",
+                "Nul",
+                "GM/R² seulement surface"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théorème de Gauss / coquilles."
+            },
+            {
+              "id": "q08-07",
+              "type": "single_choice",
+              "question": "g à l'altitude h (approx. h<<R) : g ≈",
+              "options": ["g₀(1−2h/R)", "g₀(1+h/R)", "g₀+h", "g₀/R"],
+              "correctAnswers": [0],
+              "explanation": "Développement de GM/(R+h)²."
+            },
+            {
+              "id": "q08-08",
+              "type": "single_choice",
+              "question": "kg et N : le poids d'1 kg au sol ≈",
+              "options": ["1 N", "9,8 N", "9,8 kg", "0,1 N"],
+              "correctAnswers": [1],
+              "explanation": "P≈9,8 N."
+            },
+            {
+              "id": "q08-09",
+              "type": "single_choice",
+              "question": "Référentiel géocentrique inertiel : Terre",
+              "options": [
+                "Au repos",
+                "En translation approx. autour Soleil",
+                "Sans masse",
+                "Fixe au centre Soleil exact"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Modèle heliocentrique."
+            },
+            {
+              "id": "q08-10",
+              "type": "single_choice",
+              "question": "Trajectoire de type parabolique dans g uniforme sans frottement :",
+              "options": [
+                "Ouverture vers le bas (Oz up)",
+                "Ouverture vers le haut",
+                "Cercle",
+                "Droite seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "z(x) parabolique concave vers le bas."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Mouvements liés au champ",
+          "questions": [
+            {
+              "id": "q09-01",
+              "type": "multiple_choice",
+              "question": "Mouvement circulaire uniforme dans plan vertical (fil) :",
+              "options": [
+                "Tension + poids",
+                "Accélération centripète v²/r",
+                "v constant en norme",
+                "Sans force radiale"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Forces radiales somment à mv²/r."
+            },
+            {
+              "id": "q09-02",
+              "type": "single_choice",
+              "question": "Looping sommet (rayon r, v) : T_min (fil tendu) si masse m",
+              "options": ["mg", "mv²/r", "mg+mv²/r", "0"],
+              "correctAnswers": [2],
+              "explanation": "T+mg vers centre = mv²/r."
+            },
+            {
+              "id": "q09-03",
+              "type": "single_choice",
+              "question": "Satellite perd altitude (frottement) :",
+              "options": [
+                "v diminue",
+                "v augmente",
+                "T augmente",
+                "Orbite élargie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Friction : perte E_m, r↓, v↑."
+            },
+            {
+              "id": "q09-04",
+              "type": "single_choice",
+              "question": "Projectile lancé horizontalement depuis h : temps de chute",
+              "options": ["√(2h/g)", "√(h/g)", "h/g", "2h/g"],
+              "correctAnswers": [0],
+              "explanation": "Identique chute libre verticale."
+            },
+            {
+              "id": "q09-05",
+              "type": "single_choice",
+              "question": "Portée tir horizontal v₀ depuis h : x =",
+              "options": ["v₀√(2h/g)", "v₀h/g", "v₀²/g", "√(2gh)"],
+              "correctAnswers": [0],
+              "explanation": "x=v₀ t avec t=√(2h/g)."
+            },
+            {
+              "id": "q09-06",
+              "type": "single_choice",
+              "question": "Énergie pour placer satellite en orbite (idéal) :",
+              "options": [
+                "ΔE_m = E_m,orb−E_m,sol",
+                "Seulement E_c",
+                "0",
+                "mgH seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variation d'énergie mécanique."
+            },
+            {
+              "id": "q09-07",
+              "type": "single_choice",
+              "question": "Comète très énergétique : trajectoire peut être",
+              "options": [
+                "Ellipse seule",
+                "Hyperbole (non liée)",
+                "Cercle obligatoire",
+                "Point fixe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "E_m>0 : hyperbole."
+            },
+            {
+              "id": "q09-08",
+              "type": "single_choice",
+              "question": "Excentricité e=0 : orbite",
+              "options": [
+                "Circulaire",
+                "Parabolique",
+                "Hyperbolique",
+                "Immobile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "e=0 cercle."
+            },
+            {
+              "id": "q09-09",
+              "type": "single_choice",
+              "question": "Période ISS (~400 km) vs géostationnaire :",
+              "options": [
+                "ISS plus courte",
+                "ISS plus longue",
+                "Identiques",
+                "ISS 24 h"
+              ],
+              "correctAnswers": [0],
+              "explanation": "T²∝r³, r plus petit → T plus court."
+            },
+            {
+              "id": "q09-10",
+              "type": "single_choice",
+              "question": "Dans g uniforme, iso-V (potentiel mgz) sont",
+              "options": [
+                "Horizontales",
+                "Verticales",
+                "Obliques seulement",
+                "Points"
+              ],
+              "correctAnswers": [0],
+              "explanation": "V=mgz → surfaces z=const."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse champ de pesanteur",
+          "questions": [
+            {
+              "id": "q10-01",
+              "type": "multiple_choice",
+              "question": "Gravitation newtonienne :",
+              "options": [
+                "Universalité (toute masse)",
+                "Action à distance modélisée par champ",
+                "Répulsive entre masses",
+                "Plus forte que Coulomb pour électrons"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Attractive, universelle, champ g⃗."
+            },
+            {
+              "id": "q10-02",
+              "type": "single_choice",
+              "question": "Ordre de grandeur g Terre :",
+              "options": ["0,1 m·s⁻²", "10 m·s⁻²", "100 m·s⁻²", "10³ m·s⁻²"],
+              "correctAnswers": [1],
+              "explanation": "≈9,8 m·s⁻²."
+            },
+            {
+              "id": "q10-03",
+              "type": "single_choice",
+              "question": "Lune : g_lune ≈ g_terre/6 signifie",
+              "options": [
+                "Poids divisé par ~6",
+                "Masse divisée",
+                "Temps identique chute",
+                "Pas de gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "P=mg local."
+            },
+            {
+              "id": "q10-04",
+              "type": "single_choice",
+              "question": "Galilée : chutes de hauteurs différentes (sans air)",
+              "options": [
+                "Simultanées",
+                "Lourds d'abord",
+                "Légers d'abord",
+                "Pas de chute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indépendance masse."
+            },
+            {
+              "id": "q10-05",
+              "type": "single_choice",
+              "question": "F=Gmm'/r² : si m'=0",
+              "options": [
+                "F=0",
+                "F infini",
+                "F=G/r²",
+                "Indéfini masse nulle non source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Produit nul."
+            },
+            {
+              "id": "q10-06",
+              "type": "single_choice",
+              "question": "Principe d'équivalence (aperçu) :",
+              "options": [
+                "g et accélération indistinguables localement",
+                "m_grav≠m_inerte",
+                "Gravité = électricité",
+                "Orbites cubiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base relativité restreinte."
+            },
+            {
+              "id": "q10-07",
+              "type": "single_choice",
+              "question": "Diagramme E_c(t) chute libre :",
+              "options": [
+                "Parabole croissante",
+                "Décroissant",
+                "Constant",
+                "Linéaire décroissant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "E_c=½mv², v²∝t²."
+            },
+            {
+              "id": "q10-08",
+              "type": "single_choice",
+              "question": "Deux projectiles même v₀, α et 90°−α (sans air, sol) :",
+              "options": [
+                "Même portée",
+                "Portées différentes",
+                "Même hauteur max toujours",
+                "Durées nulles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sin2α=sin(180−2α)."
+            },
+            {
+              "id": "q10-09",
+              "type": "single_choice",
+              "question": "Rayon orbital diminue (circulaire) : T",
+              "options": ["Diminue", "Augmente", "Constant", "Double"],
+              "correctAnswers": [0],
+              "explanation": "Kepler T²∝r³."
+            },
+            {
+              "id": "q10-10",
+              "type": "single_choice",
+              "question": "Bilan : champ de pesanteur près de la Terre se modélise souvent par",
+              "options": [
+                "g uniforme localement",
+                "g nul",
+                "Champ électrique",
+                "B constant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approximation terminale courante."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Champ électrique",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Force et champ électrique",
+          "questions": [
+            {
+              "id": "u2-q01-01",
+              "type": "multiple_choice",
+              "question": "Loi de Coulomb (vide) entre q et q' :",
+              "options": [
+                "F∝ qq'/r²",
+                "Force répulsive si q et q' même signe",
+                "F indépendante de r",
+                "k≈9×10⁹ N·m²·C⁻²"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Coulomb en 1/r², répulsion signes identiques."
+            },
+            {
+              "id": "u2-q01-02",
+              "type": "single_choice",
+              "question": "Champ E⃗ en M créé par q>0 :",
+              "options": ["Vers q", "S'éloignant de q", "Tangent", "Nul"],
+              "correctAnswers": [1],
+              "explanation": "Charge + : champ radial sortant."
+            },
+            {
+              "id": "u2-q01-03",
+              "type": "single_choice",
+              "question": "E pour charge ponctuelle q à r :",
+              "options": ["kq/r", "kq/r²", "kqr", "q/r"],
+              "correctAnswers": [1],
+              "explanation": "E=kq/r²."
+            },
+            {
+              "id": "u2-q01-04",
+              "type": "single_choice",
+              "question": "Force sur charge q dans E⃗ : F⃗ =",
+              "options": ["qE⃗", "E⃗/q", "q/E⃗", "q²E⃗"],
+              "correctAnswers": [0],
+              "explanation": "Définition du champ."
+            },
+            {
+              "id": "u2-q01-05",
+              "type": "single_choice",
+              "question": "Unité SI de E :",
+              "options": ["N·C", "V·m⁻¹", "C·N⁻¹", "J·C"],
+              "correctAnswers": [1],
+              "explanation": "E en V/m, équivalent N/C."
+            },
+            {
+              "id": "u2-q01-06",
+              "type": "single_choice",
+              "question": "Principe de superposition pour E⃗ :",
+              "options": [
+                "Somme vectorielle",
+                "Somme des modules seule",
+                "Produit",
+                "Nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Champs s'additionnent vectoriellement."
+            },
+            {
+              "id": "u2-q01-07",
+              "type": "single_choice",
+              "question": "Deux charges + identiques proches : entre elles E⃗",
+              "options": [
+                "Sortant partout",
+                "Peut s'annuler en un point",
+                "Toujours nul",
+                "Vertical seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Point milieu possible E=0."
+            },
+            {
+              "id": "u2-q01-08",
+              "type": "single_choice",
+              "question": "Charge − dans E uniforme vers +x : force",
+              "options": ["Vers +x", "Vers −x", "Nulle", "Vers +y"],
+              "correctAnswers": [1],
+              "explanation": "F=qE, q<0 inverse le sens."
+            },
+            {
+              "id": "u2-q01-09",
+              "type": "single_choice",
+              "question": "k dans SI :",
+              "options": ["1/(4πε₀)", "4πε₀", "ε₀ seul", "μ₀"],
+              "correctAnswers": [0],
+              "explanation": "k=1/(4πε₀)."
+            },
+            {
+              "id": "u2-q01-10",
+              "type": "single_choice",
+              "question": "Ligne de champ :",
+              "options": [
+                "Tangente à E⃗",
+                "Perpendiculaire à E⃗",
+                "Densité ∝ 1/E",
+                "Fermée toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convention de tracé."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Champ uniforme et condensateur",
+          "questions": [
+            {
+              "id": "u2-q02-01",
+              "type": "multiple_choice",
+              "question": "Plan condensateur (armatures //, + charges) :",
+              "options": [
+                "E uniforme entre armatures (modèle)",
+                "E=U/d",
+                "E parallèle aux armatures",
+                "Champ nul partout"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Modèle plan : E=U/d perpendiculaire."
+            },
+            {
+              "id": "u2-q02-02",
+              "type": "single_choice",
+              "question": "U=100 V, d=1 cm : |E| =",
+              "options": ["10 V·m⁻¹", "10⁴ V·m⁻¹", "100 V·m⁻¹", "1 V·m⁻¹"],
+              "correctAnswers": [1],
+              "explanation": "E=U/d=100/0,01=10⁴."
+            },
+            {
+              "id": "u2-q02-03",
+              "type": "single_choice",
+              "question": "Capacité planaire C =",
+              "options": ["ε₀S/d", "ε₀d/S", "S/d seul", "U/q"],
+              "correctAnswers": [0],
+              "explanation": "C=ε₀S/d (vide)."
+            },
+            {
+              "id": "u2-q02-04",
+              "type": "single_choice",
+              "question": "Unité de C :",
+              "options": ["C (coulomb)", "F (farad)", "V", "J"],
+              "correctAnswers": [1],
+              "explanation": "Farad."
+            },
+            {
+              "id": "u2-q02-05",
+              "type": "single_choice",
+              "question": "q sur condensateur : q =",
+              "options": ["C/U", "CU", "U/C", "C²U"],
+              "correctAnswers": [1],
+              "explanation": "q=CU."
+            },
+            {
+              "id": "u2-q02-06",
+              "type": "single_choice",
+              "question": "Énergie stockée : W =",
+              "options": ["½CU²", "CU", "½qU", "Les réponses A et C"],
+              "correctAnswers": [3],
+              "explanation": "W=½CU²=½qU= q²/(2C)."
+            },
+            {
+              "id": "u2-q02-07",
+              "type": "single_choice",
+              "question": "Diélectrique (ε_r) entre armatures : C",
+              "options": [
+                "Diminue",
+                "Multipliée par ε_r",
+                "Inchangée",
+                "Nulle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C=ε₀ε_r S/d."
+            },
+            {
+              "id": "u2-q02-08",
+              "type": "single_choice",
+              "question": "Sens de E (armature + vers −) :",
+              "options": [
+                "De + vers −",
+                "De − vers +",
+                "Tangent armatures",
+                "Aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convention champ électrostatique."
+            },
+            {
+              "id": "u2-q02-09",
+              "type": "single_choice",
+              "question": "Charge q>0 déplacée de A→B contre E uniforme : W_E (force électrique)",
+              "options": ["Positif", "Négatif", "Nul", "Toujours mg"],
+              "correctAnswers": [1],
+              "explanation": "W=qEd cos180 si contre sens."
+            },
+            {
+              "id": "u2-q02-10",
+              "type": "single_choice",
+              "question": "Frange champ plan :",
+              "options": ["E non uniforme", "E double", "E nul", "E infini"],
+              "correctAnswers": [0],
+              "explanation": "Effets de bord."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Potentiel électrique",
+          "questions": [
+            {
+              "id": "u2-q03-01",
+              "type": "multiple_choice",
+              "question": "Potentiel V (charge ponctuelle q) :",
+              "options": [
+                "V=kq/r",
+                "E=−dV/dr (radial)",
+                "V en volts",
+                "V indépendant de q test pour définition en M"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "V scalaire, unité volt."
+            },
+            {
+              "id": "u2-q03-02",
+              "type": "single_choice",
+              "question": "Relation V et E (1D, x) :",
+              "options": ["E=−dV/dx", "E=dV/dx", "V=Ex²", "V=E/x"],
+              "correctAnswers": [0],
+              "explanation": "Champ = opposé gradient."
+            },
+            {
+              "id": "u2-q03-03",
+              "type": "single_choice",
+              "question": "Énergie potentielle q en M : E_p =",
+              "options": ["qV", "V/q", "q/V", "½qV"],
+              "correctAnswers": [0],
+              "explanation": "E_p électrostatique = qV."
+            },
+            {
+              "id": "u2-q03-04",
+              "type": "single_choice",
+              "question": "Équipotentielle :",
+              "options": [
+                "V constant",
+                "E constant",
+                "Ligne // E",
+                "Toujours droite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surface V=cste."
+            },
+            {
+              "id": "u2-q03-05",
+              "type": "single_choice",
+              "question": "E perpendiculaire aux équipotentielles car",
+              "options": [
+                "Pas de travail le long equip.",
+                "E nul",
+                "Loi d'Ohm",
+                "Faraday"
+              ],
+              "correctAnswers": [0],
+              "explanation": "dW=0 si dV=0."
+            },
+            {
+              "id": "u2-q03-06",
+              "type": "single_choice",
+              "question": "Condensateur : ΔV entre armatures =",
+              "options": ["U", "Ed", "q/C", "Toutes valides (modèle)"],
+              "correctAnswers": [3],
+              "explanation": "U, Ed, q/C cohérents."
+            },
+            {
+              "id": "u2-q03-07",
+              "type": "single_choice",
+              "question": "V→+∞ référence, charge + : V(r)",
+              "options": [
+                "Positif décroissant",
+                "Négatif",
+                "Constant",
+                "Linéaire r"
+              ],
+              "correctAnswers": [0],
+              "explanation": "V=kq/r>0 pour q>0."
+            },
+            {
+              "id": "u2-q03-08",
+              "type": "single_choice",
+              "question": "Travail charge q de A à B : W =",
+              "options": ["q(V_A−V_B)", "q(V_B−V_A)", "qV_A V_B", "0"],
+              "correctAnswers": [0],
+              "explanation": "W_élec = qΔV avec signe convention."
+            },
+            {
+              "id": "u2-q03-09",
+              "type": "single_choice",
+              "question": "Unité V :",
+              "options": ["J·C⁻¹", "N·C⁻¹", "C·J", "W"],
+              "correctAnswers": [0],
+              "explanation": "1 V = 1 J/C."
+            },
+            {
+              "id": "u2-q03-10",
+              "type": "single_choice",
+              "question": "Superposition V :",
+              "options": [
+                "Somme scalaire",
+                "Somme vectorielle",
+                "Produit",
+                "Max seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Potentiel additif."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Mouvement dans E uniforme",
+          "questions": [
+            {
+              "id": "u2-q04-01",
+              "type": "multiple_choice",
+              "question": "Charge q, masse m dans E uniforme (sans pesanteur) :",
+              "options": [
+                "a=qE/m",
+                "Trajectoire parabolique si v₀ ⊥ E",
+                "v constant",
+                "Analogie au projectile avec g→qE/m"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "MUA dans direction E."
+            },
+            {
+              "id": "u2-q04-02",
+              "type": "single_choice",
+              "question": "Déviation plan (v₀ // plaques, L, U, d) : y ≈",
+              "options": ["½(qE/m)(L/v₀)²", "qEL/m", "v₀t", "0"],
+              "correctAnswers": [0],
+              "explanation": "Oscilloscope cathodique classique."
+            },
+            {
+              "id": "u2-q04-03",
+              "type": "single_choice",
+              "question": "e, m_e, E : accélération électron",
+              "options": ["eE/m_e", "m_e/eE", "E/e", "0"],
+              "correctAnswers": [0],
+              "explanation": "|a|=eE/m_e."
+            },
+            {
+              "id": "u2-q04-04",
+              "type": "single_choice",
+              "question": "Proton vs électron même E : |a|",
+              "options": [
+                "Identique",
+                "Proton >> électron",
+                "Électron >> proton",
+                "Nulle"
+              ],
+              "correctAnswers": [2],
+              "explanation": "a∝1/m, m_p>>m_e."
+            },
+            {
+              "id": "u2-q04-05",
+              "type": "single_choice",
+              "question": "v_x dans condensateur (E vertical) sans pesanteur :",
+              "options": ["Constant si v₀x donné", "Nul", "E t", "qEt/m"],
+              "correctAnswers": [0],
+              "explanation": "Pas de force horizontale."
+            },
+            {
+              "id": "u2-q04-06",
+              "type": "single_choice",
+              "question": "Énergie gagnée qΔV (repos→) : ΔE_c =",
+              "options": ["qΔV", "½mv² seule", "0", "mgh"],
+              "correctAnswers": [0],
+              "explanation": "Théorème énergie cinétique."
+            },
+            {
+              "id": "u2-q04-07",
+              "type": "single_choice",
+              "question": "Tube cathodique : accélération par U : v =",
+              "options": ["√(2qU/m)", "qU/m", "2qU", "U/q"],
+              "correctAnswers": [0],
+              "explanation": "½mv²=qU."
+            },
+            {
+              "id": "u2-q04-08",
+              "type": "single_choice",
+              "question": "Pesanteur + E horizontal : trajectoire",
+              "options": [
+                "Parabolique (superposition)",
+                "Cercle",
+                "Droite seule",
+                "Spirale obligée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indépendance des mouvements."
+            },
+            {
+              "id": "u2-q04-09",
+              "type": "single_choice",
+              "question": "Charge q>0 entre armatures + (haut) − (bas), E vers bas : force",
+              "options": ["Vers bas", "Vers haut", "Nulle", "Tangent"],
+              "correctAnswers": [0],
+              "explanation": "F=qE même sens si q>0."
+            },
+            {
+              "id": "u2-q04-10",
+              "type": "single_choice",
+              "question": "Condition champ uniforme approximatif :",
+              "options": ["d<<√S", "d>>S", "U=0", "q=0"],
+              "correctAnswers": [0],
+              "explanation": "Grands plans, faible d."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Flux et théorème de Gauss (qualitatif)",
+          "questions": [
+            {
+              "id": "u2-q05-01",
+              "type": "multiple_choice",
+              "question": "Flux Φ de E⃗ à travers surface S :",
+              "options": [
+                "Φ=∬E·dS",
+                "Φ max si E // n",
+                "Unité V·m",
+                "Lié aux charges intérieures (Gauss)"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Loi de Gauss Φ= q_int/ε₀."
+            },
+            {
+              "id": "u2-q05-02",
+              "type": "single_choice",
+              "question": "Gauss (vide) : Φ =",
+              "options": ["q_enclos/ε₀", "ε₀ q", "0 toujours", "E S"],
+              "correctAnswers": [0],
+              "explanation": "Théorème de Gauss."
+            },
+            {
+              "id": "u2-q05-03",
+              "type": "single_choice",
+              "question": "Charge + dans sphère gaussienne concentrique : E sur sphère",
+              "options": ["kq/r² radial", "Constant partout", "Nul", "kqr"],
+              "correctAnswers": [0],
+              "explanation": "Symétrie sphérique."
+            },
+            {
+              "id": "u2-q05-04",
+              "type": "single_choice",
+              "question": "Conducteur en équilibre : E intérieur",
+              "options": ["0", "Maximum", "E₀", "Infini"],
+              "correctAnswers": [0],
+              "explanation": "Champ nul dans conducteur."
+            },
+            {
+              "id": "u2-q05-05",
+              "type": "single_choice",
+              "question": "Charges excès sur conducteur",
+              "options": ["Surface", "Centre", "Uniforme volume", "Nulle"],
+              "correctAnswers": [0],
+              "explanation": "Repoussement électrons."
+            },
+            {
+              "id": "u2-q05-06",
+              "type": "single_choice",
+              "question": "Fil infini λ (C/m) : E à r",
+              "options": ["λ/(2πε₀r)", "kλ/r²", "λ r", "0"],
+              "correctAnswers": [0],
+              "explanation": "Gauss cylindrique."
+            },
+            {
+              "id": "u2-q05-07",
+              "type": "single_choice",
+              "question": "Plan infini σ : E =",
+              "options": ["σ/(2ε₀)", "σ/ε₀ des deux côtés loin", "kσ", "0"],
+              "correctAnswers": [0],
+              "explanation": "E=σ/(2ε₀) près du plan."
+            },
+            {
+              "id": "u2-q05-08",
+              "type": "single_choice",
+              "question": "Surface gaussienne sans charge intérieure : Φ",
+              "options": ["0", "Infini", "σ/ε₀", "U"],
+              "correctAnswers": [0],
+              "explanation": "q_int=0."
+            },
+            {
+              "id": "u2-q05-09",
+              "type": "single_choice",
+              "question": "Unité flux (SI) :",
+              "options": ["V·m", "N·m²·C⁻¹", "C·V", "T"],
+              "correctAnswers": [0],
+              "explanation": "E·S : V/m·m² = V·m."
+            },
+            {
+              "id": "u2-q05-10",
+              "type": "single_choice",
+              "question": "Lignes de E sortant d'enveloppe :",
+              "options": [
+                "Indiquent charge + nette intérieure",
+                "Charge − seule",
+                "Toujours 0 charge",
+                "Courant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convention flux sortant."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Énergie et association de condensateurs",
+          "questions": [
+            {
+              "id": "u2-q06-01",
+              "type": "multiple_choice",
+              "question": "Condensateurs en série (n) :",
+              "options": [
+                "1/C_eq=Σ1/C_i",
+                "Même q sur chaque",
+                "U identique sur chaque",
+                "C_eq somme"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Série : q égal, C_eq réciproque."
+            },
+            {
+              "id": "u2-q06-02",
+              "type": "single_choice",
+              "question": "En parallèle : C_eq =",
+              "options": ["Σ C_i", "1/Σ C_i", "C₁C₂ seulement", "0"],
+              "correctAnswers": [0],
+              "explanation": "Parallèle : capacités s'additionnent."
+            },
+            {
+              "id": "u2-q06-03",
+              "type": "single_choice",
+              "question": "Parallèle : tension commune",
+              "options": ["U identique", "q identique", "E nul", "C nul"],
+              "correctAnswers": [0],
+              "explanation": "Même U aux bornes."
+            },
+            {
+              "id": "u2-q06-04",
+              "type": "single_choice",
+              "question": "Décharge C via R : τ =",
+              "options": ["RC", "R/C", "C/R²", "U"],
+              "correctAnswers": [0],
+              "explanation": "Constante temps RC."
+            },
+            {
+              "id": "u2-q06-05",
+              "type": "single_choice",
+              "question": "W condensateur chargé puis isolé, on double d (plan) : W",
+              "options": [
+                "Double",
+                "Divisé par 2",
+                "Quadruple",
+                "Inchangé q fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "q constant, C∝1/d, W=q²/(2C)."
+            },
+            {
+              "id": "u2-q06-06",
+              "type": "single_choice",
+              "question": "Champ E stocké : densité u =",
+              "options": ["½ε₀E²", "ε₀E", "E²", "CU"],
+              "correctAnswers": [0],
+              "explanation": "Énergie volumique électrique."
+            },
+            {
+              "id": "u2-q06-07",
+              "type": "single_choice",
+              "question": "Charge batterie U puis C : q finale",
+              "options": ["C U", "U/C", "0", "2CU"],
+              "correctAnswers": [0],
+              "explanation": "q=CU en régime DC."
+            },
+            {
+              "id": "u2-q06-08",
+              "type": "single_choice",
+              "question": "Série C1,C2 : U1/U2 =",
+              "options": ["C2/C1", "C1/C2", "1", "C1+C2"],
+              "correctAnswers": [0],
+              "explanation": "q égal, U=q/C."
+            },
+            {
+              "id": "u2-q06-09",
+              "type": "single_choice",
+              "question": "Parallèle q1,q2 : q_total =",
+              "options": ["q1+q2", "q1 q2", "0", "C1+C2"],
+              "correctAnswers": [0],
+              "explanation": "Charges s'additionnent."
+            },
+            {
+              "id": "u2-q06-10",
+              "type": "single_choice",
+              "question": "1 F est",
+              "options": [
+                "Grande capacité",
+                "Typique petit condensateur seul",
+                "Unité de charge",
+                "Unité de champ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 F très grand en pratique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Conducteurs et symétries",
+          "questions": [
+            {
+              "id": "u2-q07-01",
+              "type": "multiple_choice",
+              "question": "Conducteur en équilibre électrostatique :",
+              "options": [
+                "E=0 à l'intérieur",
+                "Potentiel constant",
+                "Charge peut être au volume",
+                "Surface equipotentielle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Équilibre : E intérieur nul, V constant."
+            },
+            {
+              "id": "u2-q07-02",
+              "type": "single_choice",
+              "question": "Approche charge + vers conducteur neutre :",
+              "options": [
+                "Polarisation",
+                "Charge + au centre",
+                "E intérieur fort",
+                "Fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Charges induites."
+            },
+            {
+              "id": "u2-q07-03",
+              "type": "single_choice",
+              "question": "Boule conductrice : E juste à l'extérieur",
+              "options": [
+                "Comme charge ponctuelle au centre",
+                "Nul",
+                "Constant",
+                "kσ r"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symétrie sphérique."
+            },
+            {
+              "id": "u2-q07-04",
+              "type": "single_choice",
+              "question": "Deux conducteurs en contact : V",
+              "options": ["Égalise", "Diffère", "Nul", "Infini"],
+              "correctAnswers": [0],
+              "explanation": "Équilibre commun."
+            },
+            {
+              "id": "u2-q07-05",
+              "type": "single_choice",
+              "question": "Faraday ( cage ) : intérieur si coque",
+              "options": ["E≈0 (idéal)", "E max", "σ nul", "Plasma"],
+              "correctAnswers": [0],
+              "explanation": "Blindage électrostatique."
+            },
+            {
+              "id": "u2-q07-06",
+              "type": "single_choice",
+              "question": "Rayon petit conducteur même Q : E surface",
+              "options": ["Plus grand", "Plus petit", "Identique", "Nul"],
+              "correctAnswers": [0],
+              "explanation": "E∝1/r², charge surface."
+            },
+            {
+              "id": "u2-q07-07",
+              "type": "single_choice",
+              "question": "Isolant vs conducteur : charges libres",
+              "options": [
+                "Mobiles conducteur",
+                "Aucune mobile isolant",
+                "Identiques",
+                "Photons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Électrons libres métal."
+            },
+            {
+              "id": "u2-q07-08",
+              "type": "single_choice",
+              "question": "Capacité sphère rayon R (vide, isolée) C =",
+              "options": ["4πε₀R", "ε₀R", "4πε₀/R", "R/ε₀"],
+              "correctAnswers": [0],
+              "explanation": "C=4πε₀R."
+            },
+            {
+              "id": "u2-q07-09",
+              "type": "single_choice",
+              "question": "Mise à la terre conducteur : V tend vers",
+              "options": ["0 (référence)", "Infini", "U condensateur", "kQ"],
+              "correctAnswers": [0],
+              "explanation": "Terre référence potentiel."
+            },
+            {
+              "id": "u2-q07-10",
+              "type": "single_choice",
+              "question": "Champ près pointe (effet) :",
+              "options": [
+                "E renforcé (courbure)",
+                "E nul",
+                "Uniforme",
+                "B constant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concentration champ."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Loi d'Ohm et dipôle RC (rappels liés au champ)",
+          "questions": [
+            {
+              "id": "u2-q08-01",
+              "type": "multiple_choice",
+              "question": "Résistance ohmique :",
+              "options": [
+                "U=RI",
+                "Convertit énergie électrique en chaleur",
+                "Unité Ω",
+                "Toujours capacitive"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Loi d'Ohm, unité ohm."
+            },
+            {
+              "id": "u2-q08-02",
+              "type": "single_choice",
+              "question": "Courant I définition :",
+              "options": ["dQ/dt", "Q·t", "U/R seulement", "E/d"],
+              "correctAnswers": [0],
+              "explanation": "Intensité = débit de charge."
+            },
+            {
+              "id": "u2-q08-03",
+              "type": "single_choice",
+              "question": "Charge condensateur via R, u(t) = U(1−e^{−t/RC}) : à t=τ",
+              "options": ["≈63% U", "100% U", "0", "50% U"],
+              "correctAnswers": [0],
+              "explanation": "1−e^{−1}≈0,63."
+            },
+            {
+              "id": "u2-q08-04",
+              "type": "single_choice",
+              "question": "Unité I :",
+              "options": ["A", "V", "C", "F"],
+              "correctAnswers": [0],
+              "explanation": "Ampère."
+            },
+            {
+              "id": "u2-q08-05",
+              "type": "single_choice",
+              "question": "Puissance Joule P =",
+              "options": ["RI²", "U/I", "C U", "E/d"],
+              "correctAnswers": [0],
+              "explanation": "P=UI=RI²."
+            },
+            {
+              "id": "u2-q08-06",
+              "type": "single_choice",
+              "question": "Condensateur en régime DC établi : I",
+              "options": ["0 (bloque DC)", "Infini", "U/R", "Constant non nul"],
+              "correctAnswers": [0],
+              "explanation": "Circuit ouvert en DC."
+            },
+            {
+              "id": "u2-q08-07",
+              "type": "single_choice",
+              "question": "E dans résistance fil (modèle) lié à",
+              "options": [
+                "U aux bornes / longueur",
+                "B magnétique",
+                "Gravité",
+                "Flux seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Champ dans conducteur."
+            },
+            {
+              "id": "u2-q08-08",
+              "type": "single_choice",
+              "question": "Série R et C : ordre grand R",
+              "options": [
+                "Charge lente",
+                "Charge instantanée",
+                "Pas de charge",
+                "C nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "τ=RC grand."
+            },
+            {
+              "id": "u2-q08-09",
+              "type": "single_choice",
+              "question": "q sur armature + condensateur :",
+              "options": [
+                "+q et −q sur autre",
+                "2q même signe",
+                "0",
+                "q sur air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Neutralité globale."
+            },
+            {
+              "id": "u2-q08-10",
+              "type": "single_choice",
+              "question": "Multimètre mesure U : unité affichée",
+              "options": ["V", "A", "Ω", "T"],
+              "correctAnswers": [0],
+              "explanation": "Voltmètre."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Applications et sécurité",
+          "questions": [
+            {
+              "id": "u2-q09-01",
+              "type": "multiple_choice",
+              "question": "Ionisation / décharge :",
+              "options": [
+                "E très fort peut ioniser l'air",
+                "Foudre liée à E critique",
+                "Toujours sans danger",
+                "E nul dans l'orage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rupture diélectrique air."
+            },
+            {
+              "id": "u2-q09-02",
+              "type": "single_choice",
+              "question": "Paratonnerre :",
+              "options": [
+                "Guide décharge vers terre",
+                "Augmente E nuage",
+                "Isolant parfait",
+                "Condensateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection conductrice."
+            },
+            {
+              "id": "u2-q09-03",
+              "type": "single_choice",
+              "question": "Électronvolt (eV) :",
+              "options": [
+                "Énergie = e×1 V",
+                "Unité de charge",
+                "Unité de champ",
+                "1 J"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 eV=1,6×10⁻¹⁹ J."
+            },
+            {
+              "id": "u2-q09-04",
+              "type": "single_choice",
+              "question": "Accélérateur 100 kV : électron (e) gagne",
+              "options": ["100 keV", "100 J", "100 C", "0"],
+              "correctAnswers": [0],
+              "explanation": "ΔE=qU."
+            },
+            {
+              "id": "u2-q09-05",
+              "type": "single_choice",
+              "question": "Peinture électrostatique : charge gouttelettes pour",
+              "options": [
+                "Adhésion au support",
+                "Repousser support",
+                "Refroidir",
+                "Gravité nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attraction induite."
+            },
+            {
+              "id": "u2-q09-06",
+              "type": "single_choice",
+              "question": "Séparateur isotopes : principe",
+              "options": [
+                "Déviation q/m différente",
+                "Gravité seule",
+                "Fusion",
+                "Condensation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spectromètre masse."
+            },
+            {
+              "id": "u2-q09-07",
+              "type": "single_choice",
+              "question": "Toucher conducteur chargé (isolé) :",
+              "options": [
+                "Décharge possible",
+                "Toujours sans effet",
+                "Charge double",
+                "E intérieur grand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équilibrage potentiel."
+            },
+            {
+              "id": "u2-q09-08",
+              "type": "single_choice",
+              "question": "Ordre grandeur e :",
+              "options": ["1,6×10⁻¹⁹ C", "1 C", "10⁻⁹ C", "1,6 C"],
+              "correctAnswers": [0],
+              "explanation": "Charge élémentaire."
+            },
+            {
+              "id": "u2-q09-09",
+              "type": "single_choice",
+              "question": "Comparaison |F_Coulomb| vs poids électron (ordre)",
+              "options": [
+                "Coulomb >> poids microscopique",
+                "Poids >> toujours",
+                "Égaux",
+                "Nuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forces électriques dominantes à l'échelle micro."
+            },
+            {
+              "id": "u2-q09-10",
+              "type": "single_choice",
+              "question": "Capteur champ (concept) mesure",
+              "options": ["E", "Masse", "Température seule", "pH"],
+              "correctAnswers": [0],
+              "explanation": "Champ électrique."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse champ électrique",
+          "questions": [
+            {
+              "id": "u2-q10-01",
+              "type": "multiple_choice",
+              "question": "Électrostatique (terminale) :",
+              "options": [
+                "Coulomb + champ + potentiel",
+                "Mouvement chargé dans E",
+                "Maxwell complet obligatoire",
+                "Condensateurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Noyau programme PC."
+            },
+            {
+              "id": "u2-q10-02",
+              "type": "single_choice",
+              "question": "ε₀ ordre :",
+              "options": [
+                "8,85×10⁻¹² F·m⁻¹",
+                "1 F·m⁻¹",
+                "10⁻⁶",
+                "Sans dimension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Permittivité vide."
+            },
+            {
+              "id": "u2-q10-03",
+              "type": "single_choice",
+              "question": "Charge totale isolée conservée (classique) :",
+              "options": ["Oui", "Non", "Double", "Aléatoire"],
+              "correctAnswers": [0],
+              "explanation": "Conservation charge."
+            },
+            {
+              "id": "u2-q10-04",
+              "type": "single_choice",
+              "question": "E et V pour charge − : V en r",
+              "options": ["Négatif", "Positif", "Nul", "Infini positif"],
+              "correctAnswers": [0],
+              "explanation": "V=kq/r, q<0."
+            },
+            {
+              "id": "u2-q10-05",
+              "type": "single_choice",
+              "question": "Travail moteur externe charge + contre E : W_ext",
+              "options": ["Positif", "Négatif", "Nul", "mg"],
+              "correctAnswers": [0],
+              "explanation": "Fournir énergie au système."
+            },
+            {
+              "id": "u2-q10-06",
+              "type": "single_choice",
+              "question": "Analogie gravité / électrostatique : m ↔",
+              "options": ["q", "E", "G", "ε₀"],
+              "correctAnswers": [0],
+              "explanation": "Masse vs charge."
+            },
+            {
+              "id": "u2-q10-07",
+              "type": "single_choice",
+              "question": "Dipôle électrique (aperçu) : champ loin",
+              "options": ["∝ 1/r³", "∝ 1/r²", "Constant", "Nul partout"],
+              "correctAnswers": [0],
+              "explanation": "Décroissance dipolaire."
+            },
+            {
+              "id": "u2-q10-08",
+              "type": "single_choice",
+              "question": "Vectoriel E addition : charges alignées +− sur axe",
+              "options": [
+                "Peut s'annuler entre",
+                "Jamais nul",
+                "Toujours max centre",
+                "B perpendicular"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Point où champs opposés."
+            },
+            {
+              "id": "u2-q10-09",
+              "type": "single_choice",
+              "question": "Bilan mouvement : dans E uniforme sans autre force, trajectoire",
+              "options": [
+                "Parabolique si v₀ non // E",
+                "Toujours cercle",
+                "Toujours droite",
+                "Aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Composante // E uniformément accélérée."
+            },
+            {
+              "id": "u2-q10-10",
+              "type": "single_choice",
+              "question": "Relation fondamentale locale :",
+              "options": ["F⃗=qE⃗", "F⃗=mE⃗", "E⃗=qF⃗", "E=0"],
+              "correctAnswers": [0],
+              "explanation": "Définition opérationnelle du champ."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

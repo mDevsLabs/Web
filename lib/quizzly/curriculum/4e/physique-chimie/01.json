@@ -1,0 +1,2473 @@
+{
+  "id": "4e-physique-chimie-01",
+  "year": "4e",
+  "subject": "physique-chimie",
+  "title": "Transformations chimiques",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Atomes et molécules",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "L'atome et ses constituants",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels constituants se trouvent dans le noyau d'un atome ?",
+              "options": ["Protons", "Électrons", "Neutrons", "Ions"],
+              "correctAnswers": [0, 2],
+              "explanation": "Le noyau contient les protons et les neutrons ; les électrons orbitent autour du noyau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où se trouvent les électrons dans le modèle de l'atome ?",
+              "options": [
+                "Dans le noyau",
+                "Autour du noyau",
+                "Entre deux noyaux",
+                "Uniquement dans les ions"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les électrons occupent la couronne électronique autour du noyau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle particule porte une charge électrique négative ?",
+              "options": ["Proton", "Neutron", "Électron", "Noyau"],
+              "correctAnswers": [2],
+              "explanation": "L'électron possède une charge négative."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle particule porte une charge électrique positive ?",
+              "options": ["Électron", "Neutron", "Proton", "Molécule"],
+              "correctAnswers": [2],
+              "explanation": "Le proton possède une charge positive."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la charge électrique d'un neutron ?",
+              "options": ["Positive", "Négative", "Nulle", "Variable"],
+              "correctAnswers": [2],
+              "explanation": "Le neutron est électriquement neutre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un atome neutre, le nombre de protons est égal au nombre de…",
+              "options": ["Neutrons", "Électrons", "Molécules", "Ions"],
+              "correctAnswers": [1],
+              "explanation": "Les charges positives et négatives s'annulent lorsque protons et électrons sont en nombre égal."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la masse d'un électron par rapport à celle d'un proton ?",
+              "options": [
+                "Identique",
+                "Environ 2000 fois plus légère",
+                "Environ 2000 fois plus lourde",
+                "Nulle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La masse de l'électron est négligeable devant celle du noyau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'atome est principalement constitué de…",
+              "options": [
+                "Matière pleine",
+                "Vide avec un noyau dense",
+                "Uniquement d'électrons",
+                "Uniquement de neutrons"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'atome est surtout vide ; la quasi-totalité de sa masse est dans le noyau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le modèle de l'atome en cours au collège décrit l'atome comme…",
+              "options": [
+                "Une boule indivisible",
+                "Un noyau entouré d'électrons",
+                "Un réseau cristallin",
+                "Une molécule géante"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On utilise le modèle à noyau et couronne électronique en 4e."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La quasi-totalité de la masse d'un atome se trouve…",
+              "options": [
+                "Dans les électrons",
+                "Dans le noyau",
+                "Entre le noyau et les électrons",
+                "À la surface de l'atome"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Protons et neutrons concentrent presque toute la masse atomique."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Numéro atomique et symboles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le numéro atomique Z d'un élément indique…",
+              "options": [
+                "Le nombre de protons",
+                "Le nombre de neutrons seuls",
+                "Le nombre de molécules",
+                "Le nombre de protons dans le noyau"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Z compte les protons du noyau et définit l'élément chimique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le symbole chimique de l'oxygène est…",
+              "options": ["Ox", "O", "Og", "Oy"],
+              "correctAnswers": [1],
+              "explanation": "O est le symbole international de l'oxygène."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le symbole chimique du carbone est…",
+              "options": ["Ca", "C", "Co", "Cr"],
+              "correctAnswers": [1],
+              "explanation": "C désigne l'élément carbone."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le symbole chimique de l'hydrogène est…",
+              "options": ["H", "Hy", "He", "Ho"],
+              "correctAnswers": [0],
+              "explanation": "H est le symbole de l'hydrogène."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un élément chimique est défini par…",
+              "options": [
+                "Son nombre de neutrons",
+                "Son nombre de protons",
+                "Sa couleur",
+                "Sa masse volumique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C'est le nombre de protons qui caractérise un élément."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux atomes du même élément ont toujours le même nombre de…",
+              "options": [
+                "Neutrons",
+                "Protons",
+                "Électrons dans un ion",
+                "Molécules"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le nombre de protons est identique pour tous les atomes d'un même élément."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le symbole Fe correspond à…",
+              "options": ["Fluor", "Fer", "Francium", "Fermium"],
+              "correctAnswers": [1],
+              "explanation": "Fe vient du latin ferrum et désigne le fer."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le symbole Na correspond à…",
+              "options": ["Azote", "Néon", "Sodium", "Nickel"],
+              "correctAnswers": [2],
+              "explanation": "Na vient du latin natrium pour le sodium."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans la formule H2O, la lettre H représente…",
+              "options": ["Hélium", "Hydrogène", "Hafnium", "Un ion"],
+              "correctAnswers": [1],
+              "explanation": "H est le symbole de l'hydrogène."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le numéro atomique de l'atome de carbone est…",
+              "options": ["6", "12", "8", "1"],
+              "correctAnswers": [0],
+              "explanation": "Le carbone possède 6 protons, donc Z = 6."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Masse atomique et isotopes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Des isotopes d'un même élément ont…",
+              "options": [
+                "Le même nombre de protons",
+                "Le même nombre de neutrons",
+                "Un nombre de neutrons différent",
+                "Le même symbole chimique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les isotopes partagent Z mais diffèrent par le nombre de neutrons."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La masse d'un atome se exprime souvent en unité de masse atomique (u) ; la masse d'un proton vaut environ…",
+              "options": ["0 u", "1 u", "12 u", "2000 u"],
+              "correctAnswers": [1],
+              "explanation": "En u, la masse d'un nucléon (proton ou neutron) vaut environ 1."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le nombre de masse A d'un noyau correspond à…",
+              "options": [
+                "Le nombre d'électrons",
+                "Protons + neutrons",
+                "Protons seuls",
+                "Neutrons seuls"
+              ],
+              "correctAnswers": [1],
+              "explanation": "A est la somme des nucléons du noyau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'isotope le plus courant du carbone possède 6 protons et 6 neutrons ; sa masse atomique relative est…",
+              "options": ["6", "12", "14", "24"],
+              "correctAnswers": [1],
+              "explanation": "6 + 6 = 12 nucléons, d'où une masse d'environ 12 u."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le carbone 14 (6 protons, 8 neutrons) est un isotope du carbone car il a…",
+              "options": [
+                "6 protons comme le carbone 12",
+                "8 protons",
+                "14 protons",
+                "Aucun neutron"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même Z = 6, donc même élément, masse différente."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Changer le nombre de neutrons d'un atome change…",
+              "options": [
+                "L'élément chimique",
+                "L'isotope",
+                "Le numéro atomique",
+                "Le symbole chimique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Seul le nombre de neutrons définit l'isotope, pas l'élément."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La masse des électrons est en général…",
+              "options": [
+                "Négligée dans le calcul de A",
+                "Égale à celle du noyau",
+                "Utilisée pour définir Z",
+                "Infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A ne compte que les nucléons."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux isotopes du chlore (35 et 37) ont le même nombre de…",
+              "options": [
+                "Neutrons",
+                "Protons",
+                "Électrons perdus",
+                "Molécules"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le chlore a toujours 17 protons."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'eau lourde contient de l'hydrogène dont le noyau possède un proton et un neutron ; c'est…",
+              "options": [
+                "Un ion",
+                "Un isotope de l'hydrogène",
+                "Une molécule d'oxygène",
+                "Un métal"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le deutérium est un isotope de l'hydrogène."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour un atome neutre, le nombre d'électrons est égal à…",
+              "options": [
+                "A",
+                "Z",
+                "Le nombre de neutrons",
+                "Le nombre de molécules"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Atome neutre : électrons = protons = Z."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Molécules et formules",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une molécule est…",
+              "options": [
+                "Un groupe d'atomes liés entre eux",
+                "Toujours un seul atome",
+                "Un noyau seul",
+                "Un assemblage d'atomes par des liaisons"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Une molécule résulte de l'association d'atomes liés chimiquement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La formule chimique H2O indique qu'une molécule d'eau contient…",
+              "options": [
+                "2 atomes d'oxygène",
+                "2 atomes d'hydrogène et 1 d'oxygène",
+                "1 atome d'hydrogène",
+                "3 atomes d'oxygène"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'indice 2 s'applique à H ; il y a un O sans indice."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "CO2 représente une molécule de dioxyde de carbone avec…",
+              "options": [
+                "1 carbone et 1 oxygène",
+                "1 carbone et 2 oxygènes",
+                "2 carbones et 1 oxygène",
+                "2 carbones et 2 oxygènes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "CO2 : un atome de C et deux de O."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "O2 est la formule du…",
+              "options": ["Ozone", "Dioxygène", "Monoxyde de carbone", "Eau"],
+              "correctAnswers": [1],
+              "explanation": "O2 est la molécule constituant une partie importante de l'air."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "N2 est la formule du…",
+              "options": ["Néon", "Diazote", "Dioxyde d'azote", "Ammoniac"],
+              "correctAnswers": [1],
+              "explanation": "Le diazote forme environ 78 % de l'air sec."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La molécule de méthane a pour formule…",
+              "options": ["CH4", "C2H6", "CO2", "H2O"],
+              "correctAnswers": [0],
+              "explanation": "CH4 : un carbone et quatre hydrogènes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans une formule chimique, un indice en bas à droite indique…",
+              "options": [
+                "La charge de l'ion",
+                "Le nombre d'atomes de l'élément précédent",
+                "La température",
+                "La masse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'indice précise combien d'atomes de cet élément entrent dans la molécule."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une molécule diatomique est une molécule formée de…",
+              "options": [
+                "Deux atomes",
+                "Un seul atome",
+                "Toujours trois atomes",
+                "Un ion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemples : O2, N2, H2."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'ozone a pour formule…",
+              "options": ["O2", "O3", "CO2", "H2O"],
+              "correctAnswers": [1],
+              "explanation": "O3 contient trois atomes d'oxygène liés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le dioxyde de soufre SO2 contient par molécule…",
+              "options": [
+                "1 soufre et 1 oxygène",
+                "1 soufre et 2 oxygènes",
+                "2 soufres et 1 oxygène",
+                "2 soufres et 2 oxygènes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "SO2 : un S et deux O."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "L'air et ses composants",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'air sec est principalement composé de…",
+              "options": [
+                "Diazote",
+                "Dioxygène",
+                "Dioxyde de carbone en majorité",
+                "Vapeur d'eau en majorité dans l'air sec"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'air sec contient surtout N2 (~78 %) et O2 (~21 %)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Environ quel pourcentage de diazote contient l'air sec ?",
+              "options": ["21 %", "78 %", "50 %", "1 %"],
+              "correctAnswers": [1],
+              "explanation": "Le diazote est le gaz majoritaire de l'atmosphère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Environ quel pourcentage de dioxygène contient l'air sec ?",
+              "options": ["78 %", "21 %", "0,04 %", "50 %"],
+              "correctAnswers": [1],
+              "explanation": "Le dioxygène représente environ un cinquième de l'air."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le dioxyde de carbone CO2 dans l'air ambiant est présent en proportion…",
+              "options": [
+                "Très faible (environ 0,04 %)",
+                "Environ 21 %",
+                "Environ 78 %",
+                "50 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CO2 est un gaz minoritaire de l'atmosphère."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les gaz nobles (argon, etc.) dans l'air représentent environ…",
+              "options": ["78 %", "1 %", "21 %", "0 %"],
+              "correctAnswers": [1],
+              "explanation": "L'argon est le gaz noble le plus abondant dans l'air (~0,9 %)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'air humide contient en plus des gaz secs de l'air…",
+              "options": [
+                "Uniquement du CO2",
+                "De la vapeur d'eau",
+                "Uniquement du N2",
+                "Des métaux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'humidité correspond à la vapeur d'eau mélangée à l'air."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La formule du dioxygène présent dans l'air est…",
+              "options": ["O", "O2", "O3", "H2O"],
+              "correctAnswers": [1],
+              "explanation": "Le dioxygène respirable est O2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La formule du diazote est…",
+              "options": ["N", "N2", "NO2", "NH3"],
+              "correctAnswers": [1],
+              "explanation": "Le diazote de l'air est la molécule N2."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un mélange de gaz comme l'air peut être séparé par des méthodes physiques car…",
+              "options": [
+                "Il s'agit d'une transformation chimique",
+                "Chaque gaz conserve ses propriétés dans le mélange",
+                "Il n'y a qu'une seule molécule",
+                "Les gaz réagissent entre eux dans l'air"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'air est un mélange, pas une substance pure."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La combustion complète d'un corps gras nécessite un gaz de l'air appelé…",
+              "options": ["Diazote", "Dioxygène", "Argon", "Hélium"],
+              "correctAnswers": [1],
+              "explanation": "Le dioxygène est le comburant des combustions."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Ions et charges",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un ion est un atome ou groupe d'atomes qui…",
+              "options": [
+                "A gagné ou perdu un ou plusieurs électrons",
+                "A toujours le même nombre de protons et d'électrons",
+                "N'a plus de noyau",
+                "Porte une charge électrique"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Le déséquilibre entre protons et électrons crée une charge sur l'ion."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un ion positif (cation) a…",
+              "options": [
+                "Plus d'électrons que de protons",
+                "Moins d'électrons que de protons",
+                "Autant d'électrons que de protons",
+                "Aucun proton"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La perte d'électrons laisse un excès de charges positives."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un ion négatif (anion) a…",
+              "options": [
+                "Plus d'électrons que de protons",
+                "Moins d'électrons que de protons",
+                "Zéro neutron",
+                "Plus de protons que d'électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gain d'électrons donne une charge globale négative."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'ion sodium Na+ provient d'un atome de sodium qui a…",
+              "options": [
+                "Gagné un électron",
+                "Perdu un électron",
+                "Perdu un proton",
+                "Gagné un proton"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Na (Z=11) devient Na+ avec 10 électrons."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'ion chlorure Cl− provient d'un atome de chlore qui a…",
+              "options": [
+                "Perdu un électron",
+                "Gagné un électron",
+                "Perdu un proton",
+                "Gagné un neutron"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Cl (Z=17) devient Cl− avec 18 électrons."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le sel de cuisine (chlorure de sodium) est formé d'ions…",
+              "options": [
+                "Na+ et Cl−",
+                "Na et Cl neutres",
+                "H+ et O2−",
+                "Fe2+ et O2−"
+              ],
+              "correctAnswers": [0],
+              "explanation": "NaCl est un empilement d'ions Na+ et Cl−."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans une solution ionique, le sel dissous se sépare en…",
+              "options": [
+                "Molécules neutres uniquement",
+                "Cations et anions",
+                "Atomes seuls",
+                "Gaz"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La dissolution du sel libère Na+ et Cl− dans l'eau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'ion fer(II) Fe2+ a une charge totale de…",
+              "options": ["+1", "+2", "−2", "0"],
+              "correctAnswers": [1],
+              "explanation": "Fe2+ indique une perte de deux électrons."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Former un ion ne change pas le nombre de…",
+              "options": [
+                "Protons dans le noyau",
+                "Électrons",
+                "Charge globale",
+                "Neutrons en chimie courante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seul le nombre d'électrons varie ; Z reste constant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'eau distillée pure ne conduit presque pas le courant car elle contient très peu d'…",
+              "options": [
+                "Molécules H2O",
+                "Ions",
+                "Électrons libres dans le métal",
+                "Protons seuls"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La conduction en solution implique surtout le déplacement d'ions."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Modèle particulaire de la matière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Selon le modèle particulaire, la matière est formée de…",
+              "options": [
+                "Particules microscopiques",
+                "Un continuum sans structure",
+                "Atomes ou molécules en mouvement",
+                "Uniquement de l'énergie"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "On décrit solides, liquides et gaz par des particules en interaction."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un solide cristallin comme le sel, les ions sont…",
+              "options": [
+                "Très éloignés et libres",
+                "Proches et organisés en réseau",
+                "Absents",
+                "Uniquement gazeux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le réseau ionique fixe les ions en positions régulières."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un gaz, les molécules sont en général…",
+              "options": [
+                "Fixes les unes à côté des autres",
+                "Très espacées et en mouvement",
+                "Absentes",
+                "Toujours ionisées"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un gaz est compressible car les particules sont très espacées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La dilution d'une solution colorée diminue l'intensité de la couleur car…",
+              "options": [
+                "Les molécules colorantes deviennent plus nombreuses par unité de volume",
+                "Les molécules colorantes sont moins nombreuses par unité de volume",
+                "Les atomes disparaissent",
+                "Une réaction chimique détruit la couleur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Même nombre de molécules dans un volume plus grand : concentration plus faible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un corps pur est constitué d'une seule…",
+              "options": [
+                "Phase uniquement",
+                "Espèce chimique (un élément ou un composé défini)",
+                "Couleur",
+                "Température"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Corps pur = une seule substance chimique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'eau pure est un corps pur de formule…",
+              "options": ["H2O", "HO", "H2O2", "O2"],
+              "correctAnswers": [0],
+              "explanation": "L'eau est le composé H2O."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le fer métallique est un corps pur constitué d'atomes de…",
+              "options": ["Fer", "Oxygène", "Carbone uniquement", "Chlorure"],
+              "correctAnswers": [0],
+              "explanation": "Le fer est un élément métallique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un mélange homogène comme l'eau sucrée…",
+              "options": [
+                "Ne peut pas être séparé",
+                "Peut être séparé par des méthodes physiques",
+                "Est toujours un corps pur",
+                "Ne contient qu'un atome"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sucre et eau restent deux substances séparables physiquement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La fonte du glace d'eau est une changement d'état…",
+              "options": [
+                "Chimique",
+                "Physique",
+                "Nucléaire",
+                "De numéro atomique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La substance reste H2O ; seul l'état change."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La combustion du charbon est une transformation…",
+              "options": [
+                "Physique",
+                "Chimique",
+                "Mécanique",
+                "Gravitationnelle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "De nouvelles substances (comme CO2) sont formées."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Masse et volume des espèces",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La masse volumique ρ se calcule par…",
+              "options": [
+                "ρ = m / V",
+                "ρ = V / m",
+                "ρ = m × V toujours",
+                "ρ = masse divisée par volume"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "ρ exprime la masse par unité de volume (ex. g/cm³)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'unité courante de masse volumique au collège est souvent…",
+              "options": ["g/cm³ ou kg/m³", "L uniquement", "mol", "Pa"],
+              "correctAnswers": [0],
+              "explanation": "g/cm³ et kg/m³ sont des unités de ρ."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un corps flotte sur l'eau si sa masse volumique est…",
+              "options": [
+                "Supérieure à celle de l'eau (~1 g/cm³)",
+                "Inférieure à celle de l'eau",
+                "Exactement nulle",
+                "Infinie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "ρ_corps < ρ_eau ⇒ le corps est moins dense et flotte."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La masse d'un échantillon de matière se mesure avec une…",
+              "options": ["Règle", "Balance", "Thermomètre", "pH-mètre"],
+              "correctAnswers": [1],
+              "explanation": "La balance donne la masse en grammes ou kilogrammes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le volume d'un liquide peut se mesurer avec une…",
+              "options": [
+                "Éprouvette graduée",
+                "Balance seule",
+                "Aimant",
+                "Multimètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'éprouvette permet de lire un volume en mL ou cm³."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "1 L correspond à…",
+              "options": ["1 cm³", "1000 cm³", "1 m³", "10 cm³"],
+              "correctAnswers": [1],
+              "explanation": "1 L = 1 dm³ = 1000 cm³."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La masse d'une molécule d'eau est la somme des masses des…",
+              "options": [
+                "Atomes qui la composent",
+                "Électrons seuls",
+                "Volumes",
+                "Couleurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La masse moléculaire additionne les masses atomiques des atomes de la formule."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comparer les masses de réactifs et de produits avant une réaction chimique se fait avec une…",
+              "options": ["Balance", "Loupe", "Flamme", "Pipette seule"],
+              "correctAnswers": [0],
+              "explanation": "La conservation de la masse se vérifie par pesée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'air a une masse volumique…",
+              "options": [
+                "Nulle",
+                "Faible par rapport aux liquides",
+                "Identique à celle du fer",
+                "Impossible à mesurer"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les gaz sont beaucoup moins denses que l'eau ou les solides."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un bloc de même matière deux fois plus volumineux a une masse…",
+              "options": [
+                "Identique",
+                "Environ deux fois plus grande",
+                "Divisée par deux",
+                "Nulle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À composition identique, masse et volume sont proportionnels."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Synthèse — atomes et molécules",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi les suivants, les corps purs moléculaires incluent…",
+              "options": [
+                "L'eau H2O",
+                "Le dioxygène O2",
+                "L'air",
+                "Le sel de cuisine NaCl (réseau ionique)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "H2O et O2 sont des espèces chimiques définies ; l'air est un mélange, NaCl est ionique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le symbole Au désigne…",
+              "options": ["Argent", "Or", "Aluminium", "Arsenic"],
+              "correctAnswers": [1],
+              "explanation": "Au vient du latin aurum."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La molécule NH3 contient…",
+              "options": [
+                "1 azote et 3 hydrogènes",
+                "3 azotes et 1 hydrogène",
+                "1 azote et 1 hydrogène",
+                "4 oxygènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "NH3 est l'ammoniac."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un atome de chlore neutre (Z=17) possède…",
+              "options": [
+                "17 protons et 17 électrons",
+                "17 protons et 16 électrons",
+                "16 protons",
+                "18 protons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Neutralité : 17 protons, 17 électrons."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La formule du monoxyde de carbone est…",
+              "options": ["CO", "CO2", "C2O", "CH4"],
+              "correctAnswers": [0],
+              "explanation": "CO contient un carbone et un oxygène."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les gaz de l'air N2 et O2 sont des…",
+              "options": [
+                "Mélanges",
+                "Corps purs moléculaires",
+                "Ions seuls",
+                "Métaux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque gaz est une substance chimique distincte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Mg2+ est un ion…",
+              "options": ["Négatif", "Positif", "Neutre", "Sans charge"],
+              "correctAnswers": [1],
+              "explanation": "Le signe + indique un cation magnésium."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La particule la plus légère de l'atome est…",
+              "options": ["Proton", "Neutron", "Électron", "Noyau entier"],
+              "correctAnswers": [2],
+              "explanation": "L'électron a une masse négligeable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "H2 est une molécule de…",
+              "options": ["Eau", "Dihydrogène", "Hélium", "Hydroxyde"],
+              "correctAnswers": [1],
+              "explanation": "H2 contient deux atomes d'hydrogène liés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le carbone est un élément dont le symbole est…",
+              "options": ["C", "Ca", "Co", "Cu"],
+              "correctAnswers": [0],
+              "explanation": "C est le symbole du carbone."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Évaluation — atomes et molécules",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les affirmations correctes sur le noyau sont…",
+              "options": [
+                "Il contient des protons",
+                "Il contient des électrons en permanence",
+                "Il peut contenir des neutrons",
+                "Il est chargé positivement au global"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le noyau regroupe protons et neutrons ; les électrons sont à l'extérieur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Z = 8 correspond à l'élément…",
+              "options": ["Azote", "Oxygène", "Carbone", "Fluor"],
+              "correctAnswers": [1],
+              "explanation": "L'oxygène a 8 protons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La formule C6H12O6 peut représenter le glucose, une molécule contenant…",
+              "options": [
+                "6 C, 12 H et 6 O",
+                "12 C et 6 O",
+                "6 H2O",
+                "Un métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les indices donnent le nombre de chaque atome."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Cl− est un…",
+              "options": ["Atome neutre", "Anion", "Cation", "Gaz noble"],
+              "correctAnswers": [1],
+              "explanation": "Le signe − indique un ion négatif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'air est classé comme…",
+              "options": [
+                "Corps pur",
+                "Mélange de gaz",
+                "Élément",
+                "Composé ionique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Plusieurs gaz coexistent sans réaction permanente."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La masse d'un atome de fer est surtout due à…",
+              "options": [
+                "Ses électrons",
+                "Son noyau",
+                "Sa couleur",
+                "Son volume"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les nucléons portent la masse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "SO2 est un composé contenant soufre et oxygène ; c'est un…",
+              "options": [
+                "Mélange",
+                "Corps pur moléculaire",
+                "Métal",
+                "Ion seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "SO2 est une molécule définie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour passer de Na à Na+, l'atome…",
+              "options": [
+                "Gagne 1 e−",
+                "Perd 1 e−",
+                "Gagne 1 proton",
+                "Perd 11 électrons"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Na+ correspond à la perte d'un électron."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le diazote et le dioxygène sont séparables car l'air est…",
+              "options": [
+                "Un composé",
+                "Un mélange",
+                "Un cristal",
+                "Un liquide pur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Séparation physique possible (ex. liquéfaction fractionnée)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'indice 4 dans CH4 signifie…",
+              "options": [
+                "4 atomes de carbone",
+                "4 atomes d'hydrogène",
+                "4 molécules d'eau",
+                "4 charges +"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'indice suit le symbole de l'élément concerné (H)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Réaction chimique",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Réactifs, produits et transformation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lors d'une réaction chimique…",
+              "options": [
+                "De nouvelles espèces chimiques apparaissent",
+                "Les atomes sont créés ou détruits",
+                "Les réactifs se transforment en produits",
+                "La nature des atomes change"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les atomes se réorganisent en nouvelles molécules ou ions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les substances consommées au début d'une réaction sont les…",
+              "options": [
+                "Produits",
+                "Réactifs",
+                "Catalyseurs uniquement",
+                "Solvants seuls"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les réactifs disparaissent partiellement ou totalement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les substances formées à la fin d'une réaction sont les…",
+              "options": [
+                "Réactifs",
+                "Produits",
+                "Isotopes seuls",
+                "Électrons libres"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les produits sont les nouvelles espèces obtenues."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une transformation chimique se distingue d'un changement d'état car…",
+              "options": [
+                "La température change toujours",
+                "La nature des espèces chimiques change",
+                "Le volume ne varie jamais",
+                "Il n'y a pas de particules"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Changement d'état : même espèce ; réaction : nouvelles espèces."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La rouille du fer est une…",
+              "options": [
+                "Transformation physique",
+                "Transformation chimique",
+                "Changement de phase",
+                "Séparation mécanique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le fer réagit avec l'oxygène (et l'eau) pour former des oxydes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Faire fondre de la glace est…",
+              "options": [
+                "Une réaction chimique",
+                "Un changement d'état physique",
+                "Une combustion",
+                "Une précipitation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il reste de l'eau H2O."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Brûler du papier est une transformation…",
+              "options": [
+                "Physique réversible facilement",
+                "Chimique",
+                "Sans produits",
+                "Sans réactifs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le papier se transforme en cendres, gaz et vapeur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans l'équation réactifs → produits, la flèche signifie…",
+              "options": [
+                "Équilibre sans transformation",
+                "Sens de la transformation",
+                "Mélange seulement",
+                "Changement d'état"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La flèche indique que les réactifs donnent les produits."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dissoudre du sel dans l'eau sans réaction est en général…",
+              "options": [
+                "Une dissolution physique",
+                "Une combustion",
+                "Une synthèse de fer",
+                "Une destruction d'atomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "NaCl reste des ions Na+ et Cl− en solution."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un test au sulfate de cuivre bleu sur du fer peut montrer une…",
+              "options": [
+                "Réaction avec changement de couleur",
+                "Absence totale de particules",
+                "Création de protons",
+                "Disparition du fer sans réaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fer peut réagir et la solution perd sa couleur bleue."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Écriture d'équations chimiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une équation chimique équilibrée doit…",
+              "options": [
+                "Avoir le même nombre de chaque type d'atome des deux côtés",
+                "Créer des atomes",
+                "Ignorer les gaz",
+                "Conserver le nombre d'atomes de chaque élément"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "L'équilibrage traduit la conservation des atomes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La combustion du méthane en présence de dioxygène produit CO2 et H2O ; les réactifs sont…",
+              "options": ["CO2 et H2O", "CH4 et O2", "C et H2", "CH4 seul"],
+              "correctAnswers": [1],
+              "explanation": "CH4 + O2 → CO2 + H2O (à équilibrer)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'équation équilibrée CH4 + 2 O2 → CO2 + 2 H2O contient à droite…",
+              "options": [
+                "1 C, 4 H, 4 O",
+                "1 C, 2 H, 2 O",
+                "2 C, 4 H, 2 O",
+                "0 O"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Produits : 1 carbone, 4 hydrogènes, 4 oxygènes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour équilibrer, on ajuste surtout les…",
+              "options": [
+                "Symboles des éléments",
+                "Coefficients devant les formules",
+                "Flèches en double",
+                "Charges du noyau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On ne change pas les formules, seulement les coefficients."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "2 H2 + O2 → 2 H2O indique que…",
+              "options": [
+                "2 molécules de H2 réagissent avec 1 O2",
+                "1 H2 réagit seul",
+                "L'eau se décompose",
+                "Les atomes disparaissent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les coefficients indiquent les proportions moléculaires."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La synthèse de l'eau à partir de H2 et O2 forme…",
+              "options": [
+                "H2O uniquement (équation équilibrée)",
+                "CO2",
+                "NaCl",
+                "N2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2 H2 + O2 → 2 H2O."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Fe + S → FeS décrit la formation de…",
+              "options": [
+                "Un mélange de fer et soufre",
+                "Sulfure de fer",
+                "Eau",
+                "Dioxyde de carbone"
+              ],
+              "correctAnswers": [1],
+              "explanation": "FeS est un composé unique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si une équation n'est pas équilibrée, elle ne respecte pas…",
+              "options": [
+                "La conservation des atomes",
+                "La couleur",
+                "Le volume de l'air",
+                "La pesée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque élément doit avoir le même décompte des deux côtés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "C + O2 → CO2 est équilibrée car il y a…",
+              "options": [
+                "1 C et 2 O à gauche, 1 C et 2 O à droite",
+                "0 atome d'oxygène",
+                "3 carbones",
+                "Des ions obligatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un carbone et deux oxygènes de chaque côté."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les états (s), (l), (g), (aq) dans une équation précisent…",
+              "options": [
+                "La charge du noyau",
+                "L'état physique ou la dissolution",
+                "La masse exacte",
+                "La vitesse de lumière"
+              ],
+              "correctAnswers": [1],
+              "explanation": "s solide, l liquide, g gaz, aq en solution aqueuse."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Conservation des atomes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Au cours d'une réaction chimique en enceinte fermée…",
+              "options": [
+                "Les atomes ne sont ni créés ni détruits",
+                "Les atomes changent de nature",
+                "Les atomes se réorganisent",
+                "Le nombre total de chaque type d'atome se conserve"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Loi de Lavoisier au niveau microscopique : conservation des atomes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans 2 H2O → 2 H2 + O2 (électrolyse), le nombre d'atomes d'oxygène…",
+              "options": [
+                "Double",
+                "Reste le même au total",
+                "Disparaît",
+                "Devient infini"
+              ],
+              "correctAnswers": [1],
+              "explanation": "2 O à gauche, 2 O à droite dans l'équation équilibrée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si 4 atomes de H entrent dans une réaction, combien sortent au maximum (sans perte) ?",
+              "options": ["2", "4", "8", "0"],
+              "correctAnswers": [1],
+              "explanation": "Conservation : même nombre d'atomes d'hydrogène."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'équilibrage d'une équation vérifie la conservation des…",
+              "options": [
+                "Couleurs",
+                "Atomes de chaque élément",
+                "Volumes de gaz seuls",
+                "Électrons du noyau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On compte C, H, O, etc. des deux côtés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combustion : C + O2 → CO2 conserve le nombre d'atomes de…",
+              "options": [
+                "Carbone et oxygène",
+                "Azote de l'air obligatoirement",
+                "Or",
+                "Neutrons créés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 C et 2 O de part et d'autre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi ne modifie-t-on pas les indices dans les formules lors de l'équilibrage ?",
+              "options": [
+                "Car cela changerait l'identité de la molécule",
+                "Car les indices sont aléatoires",
+                "Car les atomes disparaissent",
+                "Car la masse n'est pas conservée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "H2O n'est pas la même espèce que H2O2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans une enceinte fermée, une réaction ne change pas le nombre total d'atomes de chaque élément car…",
+              "options": [
+                "Les réactifs sont remplacés par des produits contenant les mêmes atomes",
+                "Des atomes sortent de l'univers",
+                "Les protons changent",
+                "La gravité crée de la matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réorganisation sans création ni destruction d'atomes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "3 Fe + 2 O2 → Fe3O4 (simplifié) doit être équilibré pour respecter…",
+              "options": [
+                "La mode",
+                "La conservation des atomes de Fe et O",
+                "La vitesse du son",
+                "Le pH seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque élément doit être compté des deux côtés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si le nombre d'atomes d'azote n'est pas le même des deux côtés, l'équation est…",
+              "options": [
+                "Équilibrée",
+                "Non équilibrée",
+                "Sans réactifs",
+                "Physique seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il faut ajuster les coefficients."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La conservation des atomes implique que la masse totale des réactifs égale celle des produits si…",
+              "options": [
+                "Rien ne s'échappe du système fermé",
+                "Tout le gaz disparaît",
+                "On crée des électrons dans le noyau",
+                "On change Z"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En système fermé, la masse est aussi conservée (Lavoisier)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Conservation de la masse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Antoine Lavoisier a montré que lors d'une réaction en enceinte fermée…",
+              "options": [
+                "La masse totale reste constante",
+                "La masse disparaît",
+                "Les atomes sont créés",
+                "La masse des produits égale celle des réactifs"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Ni gain ni perte de matière en système fermé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour vérifier la conservation de la masse, on utilise une…",
+              "options": [
+                "Enceinte ouverte sans pesée",
+                "Balance avant et après réaction en enceinte fermée",
+                "Thermomètre seul",
+                "Aimant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La masse totale du système est comparée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si un gaz s'échappe d'un flacon ouvert, la masse du flacon après réaction semble…",
+              "options": [
+                "Augmenter",
+                "Diminuer",
+                "Doubler toujours",
+                "Rester identique au système complet avec le gaz perdu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le système pesé sans le gaz échappé perd de la masse apparente."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La masse se conserve car les atomes…",
+              "options": [
+                "Ne sont ni créés ni détruits",
+                "Disparaissent",
+                "Devient de l'énergie pure",
+                "Changent de numéro atomique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même particules, masse totale inchangée en système fermé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Cuivre + solution de sulfate de cuivre : si le fer remplace le cuivre, la masse totale en enceinte fermée…",
+              "options": [
+                "Varie car des atomes disparaissent",
+                "Reste constante",
+                "Tombe à zéro",
+                "Double sans limite"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Échange d'ions/métal sans perte de matière du système."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une réaction qui dégage un gaz doit être étudiée en enceinte…",
+              "options": [
+                "Ouverte sans précaution",
+                "Fermée pour peser correctement le système",
+                "Sans balance",
+                "Sans réactifs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le gaz reste dans le système pesé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "10 g de réactifs en totalité peuvent produire au maximum (système fermé)…",
+              "options": [
+                "5 g de produits",
+                "10 g de produits au total",
+                "20 g",
+                "0 g"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Masse totale des produits = masse totale des réactifs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La loi de conservation de la masse s'applique aux…",
+              "options": [
+                "Transformations chimiques en système fermé",
+                "Création d'atomes",
+                "Changements d'état seuls uniquement sans condition",
+                "Disparition de matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est le principe fondateur de la chimie moderne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si la masse semble augmenter dans un flacon ouvert qui absorbe O2 de l'air, c'est parce que…",
+              "options": [
+                "Des atomes sont créés",
+                "De la matière (gaz) entre dans le système pesé",
+                "Les protons disparaissent",
+                "La gravité change"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il faut inclure tout ce qui entre ou sort du système défini."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'unité SI de masse est le…",
+              "options": ["Litre", "Kilogramme", "Mol", "Pascal"],
+              "correctAnswers": [1],
+              "explanation": "kg est l'unité de masse ; le gramme est un multiple usuel."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Signes d'une réaction chimique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Des signes pouvant indiquer une réaction chimique sont…",
+              "options": [
+                "Changement de couleur",
+                "Dégagement de gaz",
+                "Variation de température",
+                "Simple mélange sans nouveau produit"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Couleur, gaz, chaleur ou précipité suggèrent une transformation chimique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La formation d'un précipité (solide) dans une solution est un signe…",
+              "options": [
+                "Toujours physique",
+                "Possible de réaction chimique",
+                "De changement d'état de l'eau seule",
+                "De création d'atomes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un solide insoluble peut apparaître lors d'une réaction."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un mélange d'eau et d'alcool sans réaction montre surtout…",
+              "options": [
+                "Précipité",
+                "Mélange homogène sans nouveau composé",
+                "Combustion",
+                "Rouille"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dissolution/mélange n'est pas forcément une réaction."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La décoloration d'une solution de sulfate de cuivre avec du fer indique…",
+              "options": [
+                "Une réaction",
+                "Un simple filtrage",
+                "Aucun échange",
+                "Fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cuivre métallique se dépose, les ions changent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Des bulles dans un flacon après ajout d'un acide sur du calcaire proviennent souvent de…",
+              "options": ["CO2", "N2 uniquement créé", "Or", "Électrons"],
+              "correctAnswers": [0],
+              "explanation": "Acide + carbonate → sel + eau + CO2."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une augmentation de température peut signifier une réaction…",
+              "options": [
+                "Endothermique uniquement",
+                "Exothermique (qui libère de la chaleur)",
+                "Sans énergie",
+                "Impossible"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Beaucoup de combustions et oxydations chauffent le milieu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La corrosion d'une clé en fer dans l'humidité est…",
+              "options": [
+                "Une réaction lente avec l'oxygène",
+                "Un mélange",
+                "De la condensation seule",
+                "Sans produits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formation d'oxydes de fer (rouille)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tester le pH avant et après peut aider à détecter…",
+              "options": [
+                "Une réaction acidobasique",
+                "La masse du noyau",
+                "Le numéro atomique",
+                "La vitesse de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pH change si des ions H+ ou OH− sont consommés ou formés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un changement d'odeur peut accompagner une réaction mais…",
+              "options": [
+                "Ne remplace pas l'analyse des espèces formées",
+                "Prouve toujours une fusion",
+                "Crée des atomes",
+                "Annule Lavoisier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les signes sensoriels orientent mais la chimie vérifie les produits."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La lumière émise par une flamme indique une…",
+              "options": [
+                "Combustion (transformation chimique)",
+                "Simple évaporation",
+                "Dilution",
+                "Cristallisation sans réaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La flamme correspond à une réaction avec le comburant."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Combustion",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une combustion complète du carbone ou des composés organiques en O2 produit souvent…",
+              "options": [
+                "CO2",
+                "H2O (si le combustible contient de l'hydrogène)",
+                "O2 en excès comme seul produit",
+                "NaCl"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Combustion complète : oxydes de carbone et d'hydrogène sous forme CO2 et H2O."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le comburant nécessaire à la combustion dans l'air est surtout…",
+              "options": ["N2", "O2", "Ar", "CO2"],
+              "correctAnswers": [1],
+              "explanation": "Le dioxygène permet l'oxydation du combustible."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La combustion incomplète peut produire du…",
+              "options": ["CO (monoxyde de carbone)", "Or", "Na+", "Hélium"],
+              "correctAnswers": [0],
+              "explanation": "Manque d'O2 : formation de CO toxique possible."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "C + O2 → CO2 est une combustion du…",
+              "options": ["Carbone", "Azote", "Fer", "Chlore"],
+              "correctAnswers": [0],
+              "explanation": "Le carbone s'oxyde en dioxyde de carbone."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La flamme d'une bougie implique la fusion de la cire puis la…",
+              "options": [
+                "Vaporisation et combustion des vapeurs",
+                "Création d'atomes",
+                "Disparition de l'oxygène de l'univers",
+                "Formation de sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce sont les vapeurs de cire qui brûlent dans la flamme."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Éteindre une flamme en couvrant la bougie agit en…",
+              "options": [
+                "Empêchant l'apport de O2",
+                "Créant de l'oxygène",
+                "Ajoutant du combustible",
+                "Changeant Z"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans comburant, la combustion s'arrête."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le test à l'eau limpide qui se trouble avec CO2 utilise une solution de…",
+              "options": [
+                "Chlorure de sodium seul",
+                "Hydroxyde de calcium (eau de chaux)",
+                "Sucre",
+                "Alcool"
+              ],
+              "correctAnswers": [1],
+              "explanation": "CO2 réagit avec Ca(OH)2 : précipité de CaCO3."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La combustion du butane (gaz) produit principalement…",
+              "options": ["CO2 et H2O", "Fe et S", "N2 seul", "NaCl"],
+              "correctAnswers": [0],
+              "explanation": "Hydrocarbure + O2 → CO2 + H2O (complet)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le triangle du feu comprend combustible, comburant et…",
+              "options": [
+                "Énergie d'activation (chaleur)",
+                "Or",
+                "Argon obligatoire",
+                "Gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaleur suffisante est nécessaire pour entretenir la combustion."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La masse totale en enceinte fermée pendant une combustion…",
+              "options": [
+                "Se conserve",
+                "Devient nulle",
+                "Double les atomes",
+                "Crée du carbone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'O2 du système réagit ; masse totale constante si rien ne sort."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Acides, métaux et gaz",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'action d'un acide sur un métal comme le magnésium peut provoquer…",
+              "options": [
+                "Dégagement de dihydrogène H2",
+                "Dissolution du métal",
+                "Formation d'un sel",
+                "Création de nouveaux protons dans le noyau"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Acide + métal → sel + H2 (réaction typique au collège)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le test du dihydrogène est une flamme avec un petit…",
+              "options": [
+                "Pop (détonation)",
+                "Précipité bleu",
+                "Odeur de soufre obligatoire",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "H2 brûle avec une détonation caractéristique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'acide chlorhydrique HCl en solution contient des ions…",
+              "options": ["H+ et Cl−", "Na+ seuls", "O2− seuls", "Fe3+ seuls"],
+              "correctAnswers": [0],
+              "explanation": "HCl ionise en H+ (ou H3O+) et Cl−."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le calcaire (CaCO3) avec un acide dégage surtout…",
+              "options": ["CO2", "O2", "N2", "Cl2"],
+              "correctAnswers": [0],
+              "explanation": "Carbonate + acide → sel + eau + CO2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le fer qui attaque une solution acide libère…",
+              "options": ["H2", "He", "Au", "N2 toujours"],
+              "correctAnswers": [0],
+              "explanation": "Réaction acide-métal avec dégagement de dihydrogène."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une solution basique contient en excès des ions…",
+              "options": [
+                "OH−",
+                "H+ uniquement",
+                "Fe métallique",
+                "Électrons du noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bases augmentent la concentration en ions hydroxyde."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le pH d'une solution acide est…",
+              "options": [
+                "Inférieur à 7",
+                "Égal à 14 toujours",
+                "Exactement 7",
+                "Sans ions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "pH < 7 : milieu acide à 25 °C."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Neutraliser un acide avec une base produit surtout…",
+              "options": ["Eau et un sel", "CO2 seul", "O2 seul", "Métal pur"],
+              "correctAnswers": [0],
+              "explanation": "H+ + OH− → H2O ; le contre-ion forme un sel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Cuivre + acide chlorhydrique dilué : le cuivre réagit…",
+              "options": [
+                "Peu ou pas (cuivre peu actif avec HCl dilué)",
+                "Toujours avec gros dégagement H2 comme le magnésium",
+                "En formant de l'or",
+                "En créant des atomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le magnésium est plus réactif ; le cuivre est moins oxydable par HCl dilué."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les bulles observées sur du zinc dans l'acide sont du…",
+              "options": [
+                "H2",
+                "CO2 systématique",
+                "N2",
+                "O2 produit par destruction d'eau seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zn + acide → sel de zinc + H2."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Précipitation et double échange",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lors d'une précipitation en solution…",
+              "options": [
+                "Un solide insoluble se forme",
+                "Tous les ions restent dissous",
+                "Un produit solide apparaît",
+                "Les atomes sont détruits"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le précipité est un solide qui se sépare du liquide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mélanger une solution de sulfate de cuivre et une solution d'hydroxyde de sodium peut former un précipité…",
+              "options": [
+                "Bleu d'hydroxyde de cuivre",
+                "D'or",
+                "De fer",
+                "Gazeux CO2 seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cu2+ + OH− → Cu(OH)2(s) insoluble."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Filtrer un mélange solide-liquide sépare…",
+              "options": [
+                "Le précipité solide du filtrat",
+                "Les atomes créés",
+                "Les protons du noyau",
+                "Uniquement les gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre retient les particules solides."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une réaction de double échange échange surtout…",
+              "options": [
+                "Des ions entre réactifs",
+                "Des protons du noyau",
+                "Des électrons du noyau",
+                "La vitesse de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux composés échangent leurs partenaires ioniques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "AgNO3 + NaCl → AgCl + NaNO3 forme un précipité blanc…",
+              "options": ["AgCl", "NaCl", "H2O", "O2"],
+              "correctAnswers": [0],
+              "explanation": "Chlorure d'argent est peu soluble."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le filtrat est le liquide qui…",
+              "options": [
+                "Passe à travers le filtre",
+                "Reste sur le filtre",
+                "Devient gaz toujours",
+                "Disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtrat contient les espèces dissoutes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La conservation de la masse s'applique aussi aux réactions en solution si…",
+              "options": [
+                "Le système pesé inclut tous les réactifs et produits",
+                "On ignore l'eau",
+                "On ouvre le flacon",
+                "On crée des atomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute la masse du système étudié est constante."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un ion en solution est invisible mais participe à…",
+              "options": [
+                "Les réactions ioniques",
+                "La destruction du noyau",
+                "La fusion nucléaire",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ions se combinent pour former des précipités ou des molécules."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "BaCl2 + Na2SO4 → BaSO4 + 2 NaCl produit un précipité…",
+              "options": [
+                "Blanc de sulfate de baryum",
+                "Bleu de cuivre",
+                "De carbone",
+                "Gazeux H2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "BaSO4 est très insoluble."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Après filtration, le solide récupéré sur le filtre est le…",
+              "options": [
+                "Résidu / précipité",
+                "Filtrat",
+                "Réactif gazeux seul",
+                "Catalyseur obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le solide est retenu par le papier filtre."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Vitesse et sécurité en chimie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La vitesse d'une réaction chimique peut augmenter si…",
+              "options": [
+                "La température augmente",
+                "La concentration des réactifs augmente",
+                "On supprime tous les réactifs",
+                "On refroidit fortement sans limite pour toujours accélérer"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chaleur et concentration plus élevée favorisent des collisions efficaces."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un catalyseur…",
+              "options": [
+                "Accélère une réaction sans être consommé",
+                "Est toujours détruit",
+                "Crée des atomes",
+                "Change Z"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il abaisse l'énergie d'activation et se régénère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une réaction lente à température ambiante peut devenir rapide si on…",
+              "options": [
+                "Chauffe",
+                "Gèle à −200 °C sans autre effet",
+                "Retire tous les réactifs",
+                "Ferme les yeux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La température influence fortement la vitesse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Porter des lunettes en TP chimie protège surtout…",
+              "options": [
+                "Les yeux des projections",
+                "Le numéro atomique",
+                "La conservation de masse",
+                "Les ions du noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle de sécurité élémentaire en laboratoire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ne jamais diriger un tube à essai chauffé vers…",
+              "options": [
+                "Soi ou autrui",
+                "La hotte",
+                "La balance",
+                "Le plan de travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Risque de projection de liquide bouillant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le CO est dangereux car…",
+              "options": [
+                "Il est toxique et inodore",
+                "Il est coloré vif",
+                "Il enrichit l'air en O2",
+                "Il crée des atomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monoxyde de carbone : combustion incomplète, risque d'intoxication."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Étiqueter les flacons en TP sert à…",
+              "options": [
+                "Identifier les solutions et éviter les erreurs",
+                "Changer la masse",
+                "Créer des ions dans le noyau",
+                "Annuler les réactions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traçabilité et sécurité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La surface de contact plus grande (poudre vs bloc) accélère souvent une réaction car…",
+              "options": [
+                "Plus de réactif est exposé au milieu réactionnel",
+                "Les atomes disparaissent",
+                "La masse n'est plus conservée",
+                "Z change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de collisions entre réactifs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Jeter les produits chimiques du TP doit se faire selon…",
+              "options": [
+                "Les consignes du professeur et la filière déchets",
+                "L'évier librement",
+                "La poubelle ménagère",
+                "L'air libre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tri des déchets chimiques obligatoire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une réaction chimique s'arrête quand…",
+              "options": [
+                "Un réactif est entièrement consommé ou l'équilibre est atteint",
+                "Les atomes disparaissent",
+                "La masse devient infinie",
+                "Le pH n'existe plus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limitation par le réactif limitant ou équilibre."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Évaluation — réaction chimique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour une réaction en enceinte fermée, Lavoisier et la conservation des atomes impliquent…",
+              "options": [
+                "Masse constante du système",
+                "Réorganisation des atomes",
+                "Création de matière",
+                "Destruction des protons"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Même atomes, même masse totale en système fermé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "2 Mg + O2 → 2 MgO : le produit principal est…",
+              "options": [
+                "Oxyde de magnésium",
+                "Chlorure de sodium",
+                "Eau",
+                "CO2 seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mg réagit avec O2 pour former MgO."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le réactif limitant est…",
+              "options": [
+                "Celui qui s'épuise en premier",
+                "Toujours le catalyseur",
+                "Le produit",
+                "L'eau du robinet seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il limite la quantité de produits formés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "CaCO3 + 2 HCl → CaCl2 + H2O + CO2 : le gaz dégagé est…",
+              "options": ["CO2", "H2", "O2", "N2"],
+              "correctAnswers": [0],
+              "explanation": "Test eau de chaux positive pour CO2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une équation non équilibrée comme H2 + O2 → H2O doit être corrigée en…",
+              "options": [
+                "2 H2 + O2 → 2 H2O",
+                "H2 + O2 → 2 H2O sans coefficient sur H2",
+                "Changer O en N",
+                "Ajouter des protons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "4 H et 2 O de chaque côté."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La transformation du fer en rouille consomme notamment…",
+              "options": [
+                "Dioxygène (et souvent l'eau)",
+                "Azote seul",
+                "Or",
+                "Hélium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oxydation du fer en oxydes/hydroxydes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Système ouvert : masse apparente diminue si un gaz…",
+              "options": [
+                "S'échappe",
+                "Reste enfermé",
+                "Devient liquide sans échange",
+                "Crée des atomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gaz quitte le système pesé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les produits d'une combustion complète de propane (hydrocarbure) incluent…",
+              "options": ["CO2 et H2O", "NaCl", "FeS", "N2 produit seul"],
+              "correctAnswers": [0],
+              "explanation": "Comme autres hydrocarbures avec O2 suffisant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Distinguer réaction chimique et mélange : dans une réaction…",
+              "options": [
+                "De nouvelles espèces chimiques apparaissent",
+                "On peut toujours récupérer chaque substance par simple tamisage",
+                "Les formules des réactifs restent seules en solution",
+                "Les atomes changent de Z"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apparition de produits différents des réactifs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En résumé, une réaction chimique conserve…",
+              "options": [
+                "Les atomes et la masse (système fermé)",
+                "Rien",
+                "Seulement la couleur",
+                "Uniquement le volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Piliers du chapitre transformations chimiques en 4e."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

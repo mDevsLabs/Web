@@ -26,6 +26,7 @@ import {
 import { useSharedDraft } from "@/hooks/use-shared-draft";
 import { useTier } from "@/hooks/use-tier";
 import { resolveChatExperience } from "@/lib/agent/mode-gate";
+import { isInFlightChat } from "@/lib/chat/in-flight";
 import type { ChatMessage } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { Artifact } from "./artifact";
@@ -102,15 +103,20 @@ export function ChatShell() {
   useEffect(() => {
     if (prevChatIdRef.current !== chatId) {
       const preserved = consumePreserveRequest();
+      const memeFlux = isInFlightChat(chatId);
       prevChatIdRef.current = chatId;
-      stopRef.current();
-      setArtifact(initialArtifactData);
-      setEditingMessage(null);
-      // Une bascule de mode conserve les pièces jointes ; tout autre changement
-      // de conversation les purge, parce que des images choisies pour la
-      // conversation A n'ont rien à faire dans la conversation B.
-      if (!preserved) {
-        setAttachments([]);
+      // L'envoi promeut l'accueil vers /chat/<id> sans changer de conversation.
+      // Couper ici tronquait la réponse au milieu d'une phrase.
+      if (!memeFlux) {
+        stopRef.current();
+        setArtifact(initialArtifactData);
+        setEditingMessage(null);
+        // Une bascule de mode conserve les pièces jointes ; tout autre changement
+        // de conversation les purge, parce que des images choisies pour la
+        // conversation A n'ont rien à faire dans la conversation B.
+        if (!preserved) {
+          setAttachments([]);
+        }
       }
     }
   }, [chatId, consumePreserveRequest, setArtifact, setAttachments]);

@@ -4,12 +4,10 @@ import type { TokenFieldSpec } from "./token-fields";
 /**
  * Registre des applications externes connectables par OAuth ou par jeton.
  *
- * Un descripteur = UN accès, donc UN client chez le fournisseur et UN écran de
- * consentement. Google en regroupe trois (Drive, Agenda, Gmail) sous une seule
- * connexion : leurs portées sont demandées d'un coup et se déconnecter de
- * Google coupe les trois d'un seul geste. GitHub reste un descripteur à part,
- * parce qu'un client GitHub n'est pas un client Google. Discord, Notion et
- * Vercel suivent la même règle : un fournisseur, une connexion.
+ * Un descripteur = UN accès. GitHub est le consentement OAuth. Discord, Notion,
+ * Vercel, Google Maps et YouTube suivent la même règle : un fournisseur, une
+ * connexion. Maps et YouTube ne lisent pas le compte Google : chacun reçoit
+ * la clé API que l'utilisateur colle, et ne peut appeler que son hôte.
  *
  * Ce module est volontairement **sûr côté client** : aucune lecture
  * d'environnement, aucun import `server-only`. La fiche plugin, le menu `@` et
@@ -19,12 +17,11 @@ import type { TokenFieldSpec } from "./token-fields";
  *
  * Deux modes d'authentification coexistent :
  *
- *  - `oauth` : le compte est relié par consentement. C'est le cas de Google,
- *    GitHub, Discord et Notion.
- *  - `token` : l'utilisateur colle un jeton personnel. C'est le cas de Vercel,
- *    dont l'OAuth public ne donne aujourd'hui que l'identité — les permissions
- *    d'accès aux projets sont en bêta privée. Le jeton est chiffré et stocké
- *    comme un jeton OAuth ; il n'apparaît jamais côté client.
+ *  - `oauth` : le compte est relié par consentement. C'est le cas de GitHub.
+ *  - `token` : l'utilisateur colle un jeton personnel. C'est le cas de Vercel
+ *    (son OAuth public ne donne que l'identité), de Discord (jeton de bot) et
+ *    de Notion (intégration interne). Le jeton est chiffré et stocké comme un
+ *    jeton OAuth ; il n'apparaît jamais côté client.
  *
  * Ajouter une application = ajouter un descripteur ici, un dossier de plugin
  * dans `lib/plugins/`, un logo dans `public/plugins/`, puis régénérer le
@@ -41,7 +38,7 @@ export type IntegrationProviderId =
   | "dockerhub"
   | "exchange-rate"
   | "github"
-  | "google"
+  | "google-maps"
   | "jira"
   | "linear"
   | "make"
@@ -58,6 +55,7 @@ export type IntegrationProviderId =
   | "twilio"
   | "upstash"
   | "vercel"
+  | "youtube"
   | "zapier";
 
 export type IntegrationAuthMode = "oauth" | "token";
@@ -110,8 +108,8 @@ export type IntegrationHttpAuth =
   | { kind: "bearer" }
   | { kind: "header"; name: "X-Subscription-Token" | "api-key" }
   | { kind: "none" }
-  | { kind: "prefix"; prefix: "JWT" | "Token" }
-  | { kind: "query"; name: "access_token" };
+  | { kind: "prefix"; prefix: "Bot" | "JWT" | "Token" }
+  | { kind: "query"; name: "access_token" | "key" };
 
 export type IntegrationAccountConfig = {
   emailField?: string;
@@ -189,7 +187,7 @@ export type IntegrationDescriptor = {
     | "DOCKERHUB"
     | "EXCHANGE_RATE"
     | "GITHUB"
-    | "GOOGLE"
+    | "GOOGLE_MAPS"
     | "JIRA"
     | "LINEAR"
     | "MAKE"
@@ -206,6 +204,7 @@ export type IntegrationDescriptor = {
     | "TWILIO"
     | "UPSTASH"
     | "VERCEL"
+    | "YOUTUBE"
     | "ZAPIER";
   /**
    * Logo servi ailleurs que `public/plugins/<id>.svg`. Absent : le fichier
@@ -213,9 +212,8 @@ export type IntegrationDescriptor = {
    */
   logoPath?: string;
   /**
-   * Variables qui ne conditionnent pas la connexion mais une capacité
-   * (ex. `DISCORD_BOT_TOKEN` pour lire les messages). Leur absence est un
-   * avertissement, jamais un blocage du consentement.
+   * Variables qui ne conditionnent pas la connexion mais une capacité.
+   * Leur absence est un avertissement, jamais un blocage du consentement.
    */
   extraEnv?: readonly string[];
   /**
@@ -263,78 +261,13 @@ export type IntegrationDescriptor = {
   writeScopes: readonly string[];
 };
 
-const GOOGLE_OAUTH = "https://accounts.google.com";
-const GOOGLE_APIS = "https://www.googleapis.com";
-
 /**
  * Version d'API Notion. Elle est exigée par TOUS les appels, y compris
  * l'échange et la révocation de token : sans elle, Notion répond 400.
  */
 export const NOTION_API_VERSION = "2026-03-11";
 
-/**
- * Portées Google, nommées : les outils d'écriture les citent une par une plutôt
- * que de recopier des URI en texte libre dans quatre fichiers.
- */
-export const GOOGLE_SCOPES = {
-  calendarEvents: `${GOOGLE_APIS}/auth/calendar.events`,
-  calendarRead: `${GOOGLE_APIS}/auth/calendar.readonly`,
-  driveRead: `${GOOGLE_APIS}/auth/drive.readonly`,
-  /** Non sensibles : elles livrent `sub` et l'email dans l'`id_token`. */
-  identity: ["openid", "email"] as const,
-  mailRead: `${GOOGLE_APIS}/auth/gmail.readonly`,
-  mailSend: `${GOOGLE_APIS}/auth/gmail.send`,
-} as const;
-
 export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
-  {
-    accessSummary:
-      "Drive, Agenda et Gmail sont accordés ensemble, en une seule connexion.",
-    account: null,
-    authMode: "oauth",
-    authorizeParams: {
-      // Sans `prompt=consent`, Google ne renvoie un `refresh_token` que lors du
-      // tout premier consentement : au suivant, la connexion meurt à l'heure.
-      access_type: "offline",
-      prompt: "consent",
-    },
-    authorizeUrl: `${GOOGLE_OAUTH}/o/oauth2/v2/auth`,
-    envPrefix: "GOOGLE",
-    hosts: [
-      "www.googleapis.com",
-      "gmail.googleapis.com",
-      "content.googleapis.com",
-    ],
-    id: "google",
-    label: "Google",
-    mentionToken: "Google",
-    // Le logo Google est multicolore : en `<img>` nu, sans inversion qui
-    // détruirait ses quatre couleurs en thème sombre.
-    monochrome: false,
-    pkce: false,
-    pluginId: "google",
-    refresh: {
-      policy: "oauth_refresh",
-      refreshLeadMs: 5 * 60 * 1000,
-      rotatesRefreshToken: true,
-    },
-    revoke: {
-      endpoint: "https://oauth2.googleapis.com/revoke",
-      mode: "token_query",
-    },
-    scopes: [
-      ...GOOGLE_SCOPES.identity,
-      GOOGLE_SCOPES.driveRead,
-      GOOGLE_SCOPES.calendarRead,
-      GOOGLE_SCOPES.calendarEvents,
-      GOOGLE_SCOPES.mailRead,
-      GOOGLE_SCOPES.mailSend,
-    ],
-    tokenAuth: "body",
-    tokenEncoding: "form",
-    tokenUrl: "https://oauth2.googleapis.com/token",
-    writeScopes: [GOOGLE_SCOPES.calendarEvents, GOOGLE_SCOPES.mailSend],
-  },
   {
     accessSummary:
       "Vos dépôts, privés compris, avec leurs issues et leurs pull requests.",
@@ -344,6 +277,9 @@ export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
       emailField: "email",
       headers: {
         Accept: "application/vnd.github+json",
+        // GitHub refuse les appels sans User-Agent (403), y compris GET /user
+        // qui identifie le compte au retour du consentement.
+        "User-Agent": "mAI-Web/1.0",
         "X-GitHub-Api-Version": "2022-11-28",
       },
       idField: "id",
@@ -376,22 +312,21 @@ export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
   },
   {
     accessSummary:
-      "Votre profil Discord et la liste de vos serveurs ; avec le bot de l'instance, les salons et les messages de ces serveurs.",
+      "Les serveurs où votre bot Discord est invité : profil, salons, messages, et envoi d'un message dans l'Agent après votre accord. Le jeton se révoque depuis le portail développeur.",
     account: {
-      emailField: "email",
-      headers: { Accept: "application/json" },
+      auth: { kind: "prefix", prefix: "Bot" },
+      headers: {
+        Accept: "application/json",
+        "User-Agent": "mAI (https://mai.example, 1.0)",
+      },
       idField: "id",
       labelFields: ["global_name", "username"],
       method: "GET",
       url: "https://discord.com/api/v10/users/@me",
     },
-    authMode: "oauth",
-    authorizeUrl: "https://discord.com/oauth2/authorize",
+    authMode: "token",
+    authorizeUrl: null,
     envPrefix: "DISCORD",
-    // Sans ce jeton, l'identité et les serveurs restent lisibles, mais aucun
-    // message ne peut être lu ni envoyé : Discord n'expose pas cela à un
-    // jeton utilisateur.
-    extraEnv: ["DISCORD_BOT_TOKEN"],
     hosts: ["discord.com"],
     id: "discord",
     label: "Discord",
@@ -400,62 +335,56 @@ export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
     monochrome: false,
     pkce: false,
     pluginId: "discord",
-    refresh: {
-      policy: "oauth_refresh",
-      // Discord délivre 7 jours (604800 s) et fait tourner le refresh token.
-      refreshLeadMs: 5 * 60 * 1000,
-      rotatesRefreshToken: true,
+    refresh: { detectRevocation: true, policy: "static" },
+    revoke: null,
+    scopes: [],
+    token: {
+      helpUrl: "https://discord.com/developers/applications",
+      maxLength: 200,
+      minLength: 20,
+      placeholder: "Jeton de bot Discord",
     },
-    revoke: {
-      endpoint: "https://discord.com/api/oauth2/token/revoke",
-      mode: "token_form_credentials",
-    },
-    scopes: ["identify", "email", "guilds"],
     tokenAuth: "body",
     tokenEncoding: "form",
-    tokenUrl: "https://discord.com/api/oauth2/token",
+    tokenUrl: null,
     writeScopes: [],
   },
   {
     accessSummary:
-      "Vos pages et bases Notion partagées avec l'intégration : recherche, lecture, création de pages et ajout de blocs.",
-    account: null,
-    authMode: "oauth",
-    // Notion n'utilise pas de portées OAuth : les capacités sont réglées dans
-    // le portail de l'intégration, et l'utilisateur choisit les pages à
-    // partager. `owner=user` rattache la connexion à la personne.
-    authorizeParams: { owner: "user" },
-    authorizeUrl: "https://api.notion.com/v1/oauth/authorize",
+      "Les pages et bases partagées avec votre intégration Notion : recherche, lecture, création de pages et ajout de blocs. Le jeton se révoque depuis les réglages de l'intégration.",
+    account: {
+      headers: {
+        Accept: "application/json",
+        "Notion-Version": NOTION_API_VERSION,
+      },
+      idField: "id",
+      labelFallback: "Notion",
+      labelFields: ["name", "bot.workspace_name"],
+      method: "GET",
+      url: "https://api.notion.com/v1/users/me",
+    },
+    authMode: "token",
+    authorizeUrl: null,
     envPrefix: "NOTION",
     hosts: ["api.notion.com"],
     id: "notion",
-    identityFromToken: {
-      emailPath: "owner.user.person.email",
-      idField: "bot_id",
-      labelField: "workspace_name",
-    },
     label: "Notion",
     mentionToken: "Notion",
     monochrome: true,
     pkce: false,
     pluginId: "notion",
-    refresh: {
-      policy: "oauth_refresh",
-      refreshLeadMs: 5 * 60 * 1000,
-      rotatesRefreshToken: true,
-    },
-    revoke: {
-      endpoint: "https://api.notion.com/v1/oauth/revoke",
-      headers: { "Notion-Version": NOTION_API_VERSION },
-      mode: "token_json_basic",
-    },
-    // Aucune portée : la liste vide évite d'envoyer `scope=` (invalide) et
-    // laisse `hasWriteScope` neutre — les capacités Notion font foi.
+    refresh: { detectRevocation: true, policy: "static" },
+    revoke: null,
     scopes: [],
-    tokenAuth: "basic",
-    tokenEncoding: "json",
-    tokenHeaders: { "Notion-Version": NOTION_API_VERSION },
-    tokenUrl: "https://api.notion.com/v1/oauth/token",
+    token: {
+      helpUrl: "https://www.notion.so/profile/integrations",
+      maxLength: 200,
+      minLength: 20,
+      placeholder: "Jeton d'intégration Notion",
+    },
+    tokenAuth: "body",
+    tokenEncoding: "form",
+    tokenUrl: null,
     writeScopes: [],
   },
   {
@@ -684,7 +613,7 @@ export function getIntegrationByPluginId(
 }
 
 export function splitGrantedScopes(grantedScopes: string): Set<string> {
-  // Google sépare par des espaces, GitHub par des virgules.
+  // GitHub sépare par des virgules, un consentement OAuth classique par des espaces.
   return new Set(grantedScopes.split(/[\s,]+/).filter(Boolean));
 }
 

@@ -1,0 +1,2733 @@
+{
+  "id": "terminale-svt-02",
+  "year": "terminale",
+  "subject": "svt",
+  "title": "Le passé géologique",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Le temps en géologie",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Échelle des temps",
+          "questions": [
+            {
+              "id": "u1-q01-01",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent l'échelle des temps géologiques ?",
+              "options": [
+                "Elle ordonne les événements du passé",
+                "Elle repose sur stratigraphie et datations absolues",
+                "Les colonnes à largeur égale représentent fidèlement les durées",
+                "Le Phanérozoïque couvre la majorité du temps terrestre en années"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'échelle est chronologique et calibrée numériquement ; le Phanérozoïque est court en durée réelle malgré le détail affiché."
+            },
+            {
+              "id": "u1-q01-02",
+              "type": "single_choice",
+              "question": "Plus grande subdivision chronologique officielle :",
+              "options": ["Époque", "Période", "Ère", "Éon"],
+              "correctAnswers": [3],
+              "explanation": "L'éon regroupe plusieurs ères sur des milliards d'années."
+            },
+            {
+              "id": "u1-q01-03",
+              "type": "single_choice",
+              "question": "La base du Cambrien (~540 Ma) marque surtout :",
+              "options": [
+                "L'oxygénation atmosphérique majeure",
+                "L'essor des métazoaires fossiles",
+                "La formation du noyau",
+                "Le début du Quaternaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Trace et diversité métazoiques augmentent fortement au début du Cambrien."
+            },
+            {
+              "id": "u1-q01-04",
+              "type": "single_choice",
+              "question": "200 Ma correspond approximativement à :",
+              "options": ["Jurassique", "Holocène", "Archéen", "Ordovicien"],
+              "correctAnswers": [0],
+              "explanation": "Le Jurassique s'étend d'environ 201 à 145 Ma."
+            },
+            {
+              "id": "u1-q01-05",
+              "type": "single_choice",
+              "question": "Le Précambrien inclut :",
+              "options": [
+                "Phanérozoïque et Cénozoïque",
+                "Hadéen, Archéen, Protérozoïque",
+                "Uniquement le Quaternaire",
+                "Paléozoïque et Mésozoïque"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Trois éons précèdent le Phanérozoïque."
+            },
+            {
+              "id": "u1-q01-06",
+              "type": "single_choice",
+              "question": "La limite à ~66 Ma (K-Pg) est associée à :",
+              "options": [
+                "Première vie",
+                "Extinction majeure incluant dinosaures non aviens",
+                "Début Varisque",
+                "Stabilisation croûte"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Crise biologique majeure à la fin du Crétacé."
+            },
+            {
+              "id": "u1-q01-07",
+              "type": "single_choice",
+              "question": "Diagramme à périodes de même largeur :",
+              "options": [
+                "Montre les durées réelles",
+                "Compresse visuellement le Précambrien",
+                "Omet le Mésozoïque",
+                "Remplace la radiochronologie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Représentation pédagogique non proportionnelle au temps."
+            },
+            {
+              "id": "u1-q01-08",
+              "type": "single_choice",
+              "question": "L'Holocène :",
+              "options": [
+                "Dernière glaciation",
+                "Époque actuelle depuis ~11,7 ka",
+                "Début Carbonifère",
+                "Hadéen"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Interglaciaire actuel du Quaternaire."
+            },
+            {
+              "id": "u1-q01-09",
+              "type": "single_choice",
+              "question": "Corréler deux sites distants, c'est :",
+              "options": [
+                "Aligner des horizons contemporains",
+                "Mesurer la salinité",
+                "Dater chaque quartz",
+                "Calculer la vitesse des plaques aujourd'hui seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueurs communs permettent l'équivalence temporelle."
+            },
+            {
+              "id": "u1-q01-10",
+              "type": "single_choice",
+              "question": "Âge de la Terre ~ :",
+              "options": ["4,6 Ga", "540 Ma", "2,0 Ga", "100 Ma"],
+              "correctAnswers": [0],
+              "explanation": "Consensus cosmochimique ~4,56 Ga."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Datation relative",
+          "questions": [
+            {
+              "id": "u1-q02-01",
+              "type": "multiple_choice",
+              "question": "Principes de datation relative valides :",
+              "options": [
+                "Superposition en série non renversée",
+                "Horizontalité originale des sédiments",
+                "Décroissance du 14C dans tout minéral",
+                "Continuité latérale des dépôts"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Superposition et continuité sont relatifs ; le 14C est datation absolue sur matière organique."
+            },
+            {
+              "id": "u1-q02-02",
+              "type": "single_choice",
+              "question": "Inclusion de roche A dans B : A est :",
+              "options": [
+                "Plus jeune",
+                "Plus ancienne",
+                "Identique",
+                "Indéterminée sans fossile"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Principe des inclusions."
+            },
+            {
+              "id": "u1-q02-03",
+              "type": "single_choice",
+              "question": "Socle plissé + couverture horizontale = :",
+              "options": [
+                "Discordance angulaire",
+                "Conformité",
+                "Métamorphisme contact seul",
+                "Stromatolithe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rupture angulaire entre deux séries."
+            },
+            {
+              "id": "u1-q02-04",
+              "type": "single_choice",
+              "question": "Continuité latérale sert à :",
+              "options": [
+                "Prolonger un horizon entre coupes",
+                "Mesurer demi-vie",
+                "Déterminer faciès glaciaire",
+                "Calculer isotopes stables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Extrapolation géographique d'une couche."
+            },
+            {
+              "id": "u1-q02-05",
+              "type": "single_choice",
+              "question": "Lacune stratigraphique = :",
+              "options": [
+                "Temps non enregistré localement",
+                "Double dépôt",
+                "Fusion magmatique",
+                "Fossilisation instantanée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiatus par érosion ou non-dépôt."
+            },
+            {
+              "id": "u1-q02-06",
+              "type": "single_choice",
+              "question": "Dyke recoupant des calcaires : dyke :",
+              "options": [
+                "Plus ancien",
+                "Plus récent",
+                "Même âge",
+                "Sédimentaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Principe de recoupement."
+            },
+            {
+              "id": "u1-q02-07",
+              "type": "single_choice",
+              "question": "Ordre relatif sans âge numérique :",
+              "options": [
+                "Datation absolue",
+                "Datation relative",
+                "U-Pb sur zircon",
+                "Carottage Vostok"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Hiérarchie temporelle sans chiffre."
+            },
+            {
+              "id": "u1-q02-08",
+              "type": "single_choice",
+              "question": "Même âge, faciès différents :",
+              "options": [
+                "Impossible",
+                "Environnements latéraux différents",
+                "Erreur de superposition",
+                "Preuve de renversement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Faciès ≠ temps ; corrélations via marqueurs."
+            },
+            {
+              "id": "u1-q02-09",
+              "type": "single_choice",
+              "question": "Cendres volcaniques intercalées :",
+              "options": [
+                "Horizon de corrélation",
+                "Preuve de vie",
+                "Datation relative seule sans absolue",
+                "Outil uniquement quaternaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tephra datables et corrélables."
+            },
+            {
+              "id": "u1-q02-10",
+              "type": "single_choice",
+              "question": "Renversement de série prouve :",
+              "options": [
+                "Tectonique post-dépôt",
+                "Absence de temps",
+                "Datation absolue nulle",
+                "Holocène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deformation après sédimentation ; superposition à réinterpréter."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Coupes et séries",
+          "questions": [
+            {
+              "id": "u1-q03-01",
+              "type": "multiple_choice",
+              "question": "Lecture d'une coupe stratigraphique :",
+              "options": [
+                "Le haut est généralement plus jeune si non renversé",
+                "L'épaisseur totale reflète toujours la durée exacte",
+                "Les faciès peuvent changer latéralement à âge constant",
+                "Une discordance peut masquer du temps"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Superposition et discordances encadrent le temps ; épaisseur dépend du taux de dépôt/érosion."
+            },
+            {
+              "id": "u1-q03-02",
+              "type": "single_choice",
+              "question": "Série conforme :",
+              "options": [
+                "Contacts parallèles sans interruption majeure",
+                "Angle fort entre socle et couverture",
+                "Absence de fossiles",
+                "Uniquement métamorphique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dépôt continu ou quasi continu sans discordance angulaire."
+            },
+            {
+              "id": "u1-q03-03",
+              "type": "single_choice",
+              "question": "Discordance paraconformité suggère :",
+              "options": [
+                "Gap temporel avec peu de relief",
+                "Impact météoritique",
+                "Glaciation obligatoire",
+                "Fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiatus avec surface d'érosion peu marquée."
+            },
+            {
+              "id": "u1-q03-04",
+              "type": "single_choice",
+              "question": "Grains plus arrondis vers le haut d'une série fluviale indiquent souvent :",
+              "options": [
+                "Transport plus long ou réwork",
+                "Cristallisation magmatique",
+                "Métamorphisme profond",
+                "Datation U-Pb directe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maturation texturale liée au transport sédimentaire."
+            },
+            {
+              "id": "u1-q03-05",
+              "type": "single_choice",
+              "question": "Cycle transgression-régression laisse :",
+              "options": [
+                "Motifs de faciès en mégasequences",
+                "Uniquement du granite",
+                "Aucune variation lithologique",
+                "Isotope stables figés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Migration des faciès côtiers avec niveau marin relatif."
+            },
+            {
+              "id": "u1-q03-06",
+              "type": "single_choice",
+              "question": "Pinch-out d'une couche :",
+              "options": [
+                "Épanchement latéral puis terminaison",
+                "Doublement épaisseur",
+                "Inversion magnétique",
+                "Datation C14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corps sédimentaire qui s'amincit jusqu'à disparaître."
+            },
+            {
+              "id": "u1-q03-07",
+              "type": "single_choice",
+              "question": "Un clast de roche metamorphique dans un conglomérat :",
+              "options": [
+                "Source érodée préalable",
+                "Cristallisation in situ",
+                "Origine interstellaire obligatoire",
+                "Holocène seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Témoin de terrains sources plus anciens."
+            },
+            {
+              "id": "u1-q03-08",
+              "type": "single_choice",
+              "question": "Sismique réflexion en bassin sédimentaire sert à :",
+              "options": [
+                "Imager séquences avant forage",
+                "Mesurer demi-vie",
+                "Remplacer fossiles",
+                "Dater le zircon par défaut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Continuité stratigraphique en subsurface."
+            },
+            {
+              "id": "u1-q03-09",
+              "type": "single_choice",
+              "question": "Alternance flysch / molasse évoque :",
+              "options": [
+                "Orogenèse puis effondrement avant-pays",
+                "Stabilisation cratonique précoce",
+                "Photosynthèse",
+                "Nébuleuse solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classique de marge active puis bassin d'avant-pays."
+            },
+            {
+              "id": "u1-q03-10",
+              "type": "single_choice",
+              "question": "Un unconformity-type surface d'érosion sur socle plissé date :",
+              "options": [
+                "Fin déformation puis début dépôt couverture",
+                "Début planète",
+                "Fin Phanérozoïque",
+                "Holocène uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Temps d'érosion/relief avant nouvelle sédimentation."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Fossiles et corrélations",
+          "questions": [
+            {
+              "id": "u1-q04-01",
+              "type": "multiple_choice",
+              "question": "Fossiles utiles en biostratigraphie :",
+              "options": [
+                "Espèces à large répartition et courte durée",
+                "Organismes uniquement locaux sans variation",
+                "Traceurs d'environnement parfois diachrones",
+                "Formes index à évolution rapide"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Index fossils : répandus, identifiables, durée brève ; certains faciès sont diachrones."
+            },
+            {
+              "id": "u1-q04-02",
+              "type": "single_choice",
+              "question": "Loi faunistique de succession :",
+              "options": [
+                "Assemblages se succèdent dans un ordre reproductible",
+                "Tous fossiles même âge",
+                "Fossiles modernes dans tout le Phanérozoïque",
+                "Absence corrélation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Principe historique de corrélation biostratigraphique."
+            },
+            {
+              "id": "u1-q04-03",
+              "type": "single_choice",
+              "question": "Ammonite zone du Jurassique illustre :",
+              "options": [
+                "Biozones à réticulations fines",
+                "Datation C14",
+                "Glaciation",
+                "Stromatolithe uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zonations à fossiles guides très résolutives."
+            },
+            {
+              "id": "u1-q04-04",
+              "type": "single_choice",
+              "question": "Fossile leptohié (longue durée d'espèce) :",
+              "options": [
+                "Moins précis pour intervalle court",
+                "Meilleur index que durée brève",
+                "Inutilisable",
+                "Réservé Quaternaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Longue durée taxonomique = résolution temporelle faible."
+            },
+            {
+              "id": "u1-q04-05",
+              "type": "single_choice",
+              "question": "Graptolithe ordovicien sert surtout à :",
+              "options": [
+                "Corréler shales de bassin",
+                "Dater granite",
+                "Mesurer CO₂ actuel",
+                "Analyser glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Groupes planctoniques à distribution large."
+            },
+            {
+              "id": "u1-q04-06",
+              "type": "single_choice",
+              "question": "Tétrapodes au Dévonien supérieur :",
+              "options": [
+                "Marqueur biochronologique connu",
+                "Preuve vie archéenne",
+                "Index quaternaire",
+                "Aucun intérêt stratigraphique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apparition/conquête terrestre datée relativement puis absolument."
+            },
+            {
+              "id": "u1-q04-07",
+              "type": "single_choice",
+              "question": "Fossile en faciès profond vs shelf même âge :",
+              "options": [
+                "Assemblages différents, corrélation possible",
+                "Impossible même époque",
+                "Preuve renversement",
+                "Datation interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Biofaciès vs biochronologie."
+            },
+            {
+              "id": "u1-q04-08",
+              "type": "single_choice",
+              "question": "Extinction masse limite biozones car :",
+              "options": [
+                "Disparition/turnover majeur des taxons",
+                "Augmente résolution partout",
+                "Supprime hiatus",
+                "Uniformise faciès"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rupture dans les successions fauniques."
+            },
+            {
+              "id": "u1-q04-09",
+              "type": "single_choice",
+              "question": "Microfossiles planctoniques en forage :",
+              "options": [
+                "Haute résolution temporelle",
+                "Uniquement datation relative grossière",
+                "Absents du Phanérozoïque",
+                "Inutilisables en mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Foraminifères, nannofossiles : outils chronométriques fins."
+            },
+            {
+              "id": "u1-q04-10",
+              "type": "single_choice",
+              "question": "Corrélation bio + chemostratigraphie (δ13C) :",
+              "options": [
+                "Renforce alignement global",
+                "Rend fossiles inutiles",
+                "Interdit datation absolue",
+                "Limite au Cambrien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signaux isotopiques globaux complètent la biostratigraphie."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Radioactivité et temps",
+          "questions": [
+            {
+              "id": "u1-q05-01",
+              "type": "multiple_choice",
+              "question": "Datation radiométrique repose sur :",
+              "options": [
+                "Décroissance exponentielle d'isotopes instables",
+                "Mesure du 14C dans zircon",
+                "Ratio fille/parent à fermeture du système",
+                "Superposition des couches"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Loi de décroissance et chronomètre géologique si système fermé ; superposition est relative."
+            },
+            {
+              "id": "u1-q05-02",
+              "type": "single_choice",
+              "question": "Demi-vie :",
+              "options": [
+                "Temps pour moitié des noyaux se désintégrer",
+                "Moitié de l'âge de la Terre",
+                "Durée d'une ère",
+                "Période orbitale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grandeurs statistiques sur grands nombres."
+            },
+            {
+              "id": "u1-q05-03",
+              "type": "single_choice",
+              "question": "Horloge adaptée à roches très anciennes :",
+              "options": [
+                "U-Pb sur zircon",
+                "14C",
+                "Tritium",
+                "210Pb récent seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "U-Pb : demi-vies longues, zircon robuste."
+            },
+            {
+              "id": "u1-q05-04",
+              "type": "single_choice",
+              "question": "Système ouvert :",
+              "options": [
+                "Perte/gain isotopique fausse l'âge",
+                "Améliore précision",
+                "Obligatoire pour U-Pb",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reset ou pertes partielles biaisent le chronomètre."
+            },
+            {
+              "id": "u1-q05-05",
+              "type": "single_choice",
+              "question": "Isotope fille radiogénique initial non nul :",
+              "options": [
+                "Corriger ou choisir méthode isochrone",
+                "Ignorer",
+                "Utiliser 14C",
+                "Preuve Holocène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Isochrones traitent héritage isotopique."
+            },
+            {
+              "id": "u1-q05-06",
+              "type": "single_choice",
+              "question": "K-Ar sur lave récente peut sous-estimer si :",
+              "options": [
+                "Argon hérité ou non dégazé",
+                "Trop de potassium",
+                "Absence potassium",
+                "Zircon absent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Problème classique sur volcanisme récent."
+            },
+            {
+              "id": "u1-q05-07",
+              "type": "single_choice",
+              "question": "Datation absolue calibrée sur :",
+              "options": [
+                "Constante de désintégration mesurée",
+                "Largeur des fossiles",
+                "Couleur des shales",
+                "Salinité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demi-vies déterminées en laboratoire."
+            },
+            {
+              "id": "u1-q05-08",
+              "type": "single_choice",
+              "question": "Erreur analytique ±1 Ma sur 500 Ma :",
+              "options": [
+                "Précision relative ~0,2 %",
+                "100 % incertitude",
+                "Rend date inutile",
+                "Preuve système ouvert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incertitudes relatives faibles sur âges élevés."
+            },
+            {
+              "id": "u1-q05-09",
+              "type": "single_choice",
+              "question": "Reset thermique du chronomètre :",
+              "options": [
+                "Dégazage ou rééquilibrage à haute T",
+                "Glaciation",
+                "Photosynthèse",
+                "Marée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Métamorphisme/collision peuvent remettre à zéro."
+            },
+            {
+              "id": "u1-q05-10",
+              "type": "single_choice",
+              "question": "Combinaison relative + absolue :",
+              "options": [
+                "Construit l'échelle géologique calibrée",
+                "Remplace stratigraphie",
+                "Interdit fossiles",
+                "Limite au Cénozoïque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre relatif + âges numériques = échelle actuelle."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Méthodes U-Pb et K-Ar",
+          "questions": [
+            {
+              "id": "u1-q06-01",
+              "type": "multiple_choice",
+              "question": "Zircon en U-Pb :",
+              "options": [
+                "Incorpore U, rejette souvent Pb initial",
+                "Convient aux âges > 1 Ma typiquement",
+                "Se datte par 14C",
+                "Fond facilement à basse température"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Zircon résistant, closure T élevée ; 14C réservé organique récent."
+            },
+            {
+              "id": "u1-q06-02",
+              "type": "single_choice",
+              "question": "Concordia U-Pb :",
+              "options": [
+                "Diagramme âges 206Pb/238U vs 207Pb/235U",
+                "Courbe 14C",
+                "Isotope glace",
+                "Faciès récifal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Points concordants donnent âge précis."
+            },
+            {
+              "id": "u1-q06-03",
+              "type": "single_choice",
+              "question": "Discordia indique :",
+              "options": [
+                "Perturbation secondaire du système",
+                "Âge parfait",
+                "Holocène",
+                "Absence uranium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Événement ultérieur déplace ratios."
+            },
+            {
+              "id": "u1-q06-04",
+              "type": "single_choice",
+              "question": "K-Ar date surtout :",
+              "options": [
+                "Minéraux K-rich (micas, feldspaths)",
+                "Charbon récent",
+                "Gaz atmosphérique",
+                "Coraux holocènes seulement 14C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesure 40Ar issu du 40K."
+            },
+            {
+              "id": "u1-q06-05",
+              "type": "single_choice",
+              "question": "Ar-Ar avantage :",
+              "options": [
+                "Étape chauffage contrôlé",
+                "Remplace toute stratigraphie",
+                "Mesure carbone",
+                "Uniquement sédiments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Profil de dégazage par paliers."
+            },
+            {
+              "id": "u1-q06-06",
+              "type": "single_choice",
+              "question": "Cristallisation magma : zircon U-Pb donne :",
+              "options": [
+                "Âge cristallisation/interprétation contexte",
+                "Âge sédimentation",
+                "Âge fossile",
+                "Salinité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interpréter selon contexte pétrologique."
+            },
+            {
+              "id": "u1-q06-07",
+              "type": "single_choice",
+              "question": "Dépôt sédimentaire : datation directe par :",
+              "options": [
+                "Zircon détritique (max/min) + autres",
+                "14C du quartz",
+                "K-Ar du sel",
+                "Tritium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Populations détritiques contraind le dépôt."
+            },
+            {
+              "id": "u1-q06-08",
+              "type": "single_choice",
+              "question": "Pb initial commun corrige :",
+              "options": [
+                "Héritage non radiogénique",
+                "Trop de uranium",
+                "Glaciation",
+                "Marée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Correction géochronologique classique."
+            },
+            {
+              "id": "u1-q06-09",
+              "type": "single_choice",
+              "question": "Lu-Hf sur zircon complète :",
+              "options": [
+                "Histoire source/croûte",
+                "δ18O glace",
+                "Faciès",
+                "Magnétisme instantané"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couple système source-roche."
+            },
+            {
+              "id": "u1-q06-10",
+              "type": "single_choice",
+              "question": "Plusieurs grains zircon discordants :",
+              "options": [
+                "Révèlent événements multiples",
+                "Un seul âge obligé",
+                "Erreur labo seule",
+                "Preuve 14C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Histoire thermique complexe."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Carbone 14 et récent",
+          "questions": [
+            {
+              "id": "u1-q07-01",
+              "type": "multiple_choice",
+              "question": "14C convient pour :",
+              "options": [
+                "Matière organique < ~50 ka",
+                "Zircon archéen",
+                "Mesure ratio 14C/12C",
+                "Datation roches magmatiques anciennes"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Chronomètre court sur carbone ; minéraux anciens : autres systèmes."
+            },
+            {
+              "id": "u1-q07-02",
+              "type": "single_choice",
+              "question": "14C formé principalement par :",
+              "options": [
+                "Cosmique dans haute atmosphère",
+                "Désintégration uranium zircon",
+                "Photosynthèse directe stable",
+                "Fusion noyau Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Production cosmogénique puis incorporation biosphère."
+            },
+            {
+              "id": "u1-q07-03",
+              "type": "single_choice",
+              "question": "Demi-vie 14C ~5730 ans sert à :",
+              "options": [
+                "Calculer âge radiocarbone",
+                "Dater Permien",
+                "Mesurer demi-vie uranium",
+                "Corréler Jurassique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loi exponentielle sur ~10 demi-vies max pratique."
+            },
+            {
+              "id": "u1-q07-04",
+              "type": "single_choice",
+              "question": "Calibration cal BP tient compte :",
+              "options": [
+                "Variations production 14C passées",
+                "Faciès",
+                "Salinité",
+                "Magnétisme seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courbes IntCal pour âges calendaires."
+            },
+            {
+              "id": "u1-q07-05",
+              "type": "single_choice",
+              "question": "Contamination moderne :",
+              "options": [
+                "Rajeunit apparent",
+                "Vieillit apparent",
+                "Sans effet",
+                "Dater granite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apport carbone récent augmente 14C."
+            },
+            {
+              "id": "u1-q07-06",
+              "type": "single_choice",
+              "question": "Réservoir effect en mer :",
+              "options": [
+                "Apparent age plus vieux",
+                "Plus jeune",
+                "Identique terre",
+                "Interdit C14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mélange océanique diminut 14C local."
+            },
+            {
+              "id": "u1-q07-07",
+              "type": "single_choice",
+              "question": "AMS permet :",
+              "options": [
+                "Petites masses d'échantillon",
+                "Dater Archéen",
+                "Remplacer U-Pb",
+                "Mesurer seulement fossiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spectrométrie de masse accélérateurs."
+            },
+            {
+              "id": "u1-q07-08",
+              "type": "single_choice",
+              "question": "Bombe 14C XXe siècle :",
+              "options": [
+                "Perturbe datation récente",
+                "Aide Permien",
+                "Calibre zircon",
+                "Mesure δ18O"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pic anthropique à corriger pour matériaux récents."
+            },
+            {
+              "id": "u1-q07-09",
+              "type": "single_choice",
+              "question": "Os, charbon, coquille :",
+              "options": [
+                "Matrices datables C14 si contexte fiable",
+                "Toujours U-Pb",
+                "Jamais datables",
+                "Uniquement glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choisir matériel contemporain de l'événement."
+            },
+            {
+              "id": "u1-q07-10",
+              "type": "single_choice",
+              "question": "Limite ~50 ka car :",
+              "options": [
+                "14C résiduel indistinguable bruit",
+                "Loi superposition",
+                "Disparition uranium",
+                "Glaciation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signal trop faible au-delà."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Stratigraphie intégrée",
+          "questions": [
+            {
+              "id": "u1-q08-01",
+              "type": "multiple_choice",
+              "question": "Stratigraphie moderne combine :",
+              "options": [
+                "Litho-, bio-, chrono-stratigraphie",
+                "Uniquement couleur roche",
+                "Magnétostratigraphie parfois",
+                "Seulement datation relative"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Approche multidisciplinaire ; aimantation fossilisée utile."
+            },
+            {
+              "id": "u1-q08-02",
+              "type": "single_choice",
+              "question": "Boundary stratotype (GSSP) :",
+              "options": [
+                "Point référence limite officielle",
+                "Fossile aléatoire",
+                "Mesure CO₂",
+                "Station météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coupe et marqueur définissant une limite."
+            },
+            {
+              "id": "u1-q08-03",
+              "type": "single_choice",
+              "question": "Chronostratigraphie vs geochronology :",
+              "options": [
+                "Rochers vs temps en Ma",
+                "Identiques toujours",
+                "Uniquement fossiles",
+                "Uniquement glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unités de roches vs durées/âges."
+            },
+            {
+              "id": "u1-q08-04",
+              "type": "single_choice",
+              "question": "Chemostratigraphie δ13C globale :",
+              "options": [
+                "Corrélations événements",
+                "Remplace U-Pb partout",
+                "Mesure récente seule",
+                "Faciès local uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Excursions isotopiques synchrones."
+            },
+            {
+              "id": "u1-q08-05",
+              "type": "single_choice",
+              "question": "Magnétostratigraphie :",
+              "options": [
+                "Inversions champ enregistrées",
+                "Datation C14",
+                "Couleur",
+                "Faciès récif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Polarité aimantée des roches."
+            },
+            {
+              "id": "u1-q08-06",
+              "type": "single_choice",
+              "question": "Cyclostratigraphie :",
+              "options": [
+                "Cycles astronomiques dans sédiments",
+                "Fossiles seuls",
+                "Granite",
+                "Impact seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forcing orbitalaire Milankovitch enregistré."
+            },
+            {
+              "id": "u1-q08-07",
+              "type": "single_choice",
+              "question": "Sequence stratigraphy :",
+              "options": [
+                "Motifs dépôt liés variation niveau relatif",
+                "Datation zircon seule",
+                "Biozone seule",
+                "Glace seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Architecture des séquences sédimentaires."
+            },
+            {
+              "id": "u1-q08-08",
+              "type": "single_choice",
+              "question": "Tephrochronology :",
+              "options": [
+                "Couches cendres corrélées",
+                "U-Pb obligatoire seul",
+                "Stromatolithe",
+                "Holocène interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueurs volcaniques verre/cendres."
+            },
+            {
+              "id": "u1-q08-09",
+              "type": "single_choice",
+              "question": "Diachronisme d'une surface :",
+              "options": [
+                "Même surface lithologique temps différents latéralement",
+                "Impossible",
+                "Preuve impact",
+                "Datation C14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faciès migrate dans le temps."
+            },
+            {
+              "id": "u1-q08-10",
+              "type": "single_choice",
+              "question": "Intégration données :",
+              "options": [
+                "Réduit incertitude chronologique",
+                "Supprime fossiles",
+                "Interdit absolue",
+                "Limite Quaternaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convergence multi-proxy."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Discordances et temps manquant",
+          "questions": [
+            {
+              "id": "u1-q09-01",
+              "type": "multiple_choice",
+              "question": "Discordance majeure implique :",
+              "options": [
+                "Temps manquant souvent",
+                "Érosion ou non-dépôt",
+                "Toujours même lithologie",
+                "Peut associer déformation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Surface d'arrêt enregistre hiatus ; lithologies peuvent changer."
+            },
+            {
+              "id": "u1-q09-02",
+              "type": "single_choice",
+              "question": "Discordance angulaire :",
+              "options": [
+                "Socle incliné + couverture horizontale",
+                "Parallélisme parfait",
+                "Glace",
+                "Stromatolithe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tectonique puis sédimentation postérieure."
+            },
+            {
+              "id": "u1-q09-03",
+              "type": "single_choice",
+              "question": "Estimer durée hiatus :",
+              "options": [
+                "Datations absolues part et dessus",
+                "Couleur shale",
+                "Un fossile",
+                "Salinité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraints numériques encadrant le gap."
+            },
+            {
+              "id": "u1-q09-04",
+              "type": "single_choice",
+              "question": "Ravinement :",
+              "options": [
+                "Érosion surface sédiment",
+                "Métamorphisme",
+                "Impact",
+                "Photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sculpture avant nouvelle couche."
+            },
+            {
+              "id": "u1-q09-05",
+              "type": "single_choice",
+              "question": "Sous-coupe (channel) :",
+              "options": [
+                "Canal érodant série antérieure",
+                "Dépôt uniforme",
+                "Glaciation seule",
+                "Zircon seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incision puis remplissage."
+            },
+            {
+              "id": "u1-q09-06",
+              "type": "single_choice",
+              "question": "Phosphatisation surface :",
+              "options": [
+                "Signe paléosol/arrêt",
+                "Preuve magma",
+                "Holocène seul",
+                "C14 zircon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Altération surfacique possible."
+            },
+            {
+              "id": "u1-q09-07",
+              "type": "single_choice",
+              "question": "Glissement normal vs renversement :",
+              "options": [
+                "Ordre relatif à rétablir",
+                "Inutile",
+                "Absolu seul",
+                "CO₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structures tectoniques perturbent superposition."
+            },
+            {
+              "id": "u1-q09-08",
+              "type": "single_choice",
+              "question": "Unconformity surface planée :",
+              "options": [
+                "Temps érosion long possible",
+                "Dépôt instantané",
+                "Sans hiatus",
+                "Archéen seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pénéplanation aplatit relief."
+            },
+            {
+              "id": "u1-q09-09",
+              "type": "single_choice",
+              "question": "Série continue sans fossiles :",
+              "options": [
+                "Peut être datée absolument",
+                "Impossible chronologie",
+                "Holocène",
+                "Sans temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Radiochronologie indépendante des fossiles."
+            },
+            {
+              "id": "u1-q09-10",
+              "type": "single_choice",
+              "question": "Hiatus régional vs local :",
+              "options": [
+                "Échelle variable selon bassin",
+                "Toujours global",
+                "Toujours nul",
+                "Mesure CO₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tectonique/subsidence contrôle lacunes."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse temps géologique",
+          "questions": [
+            {
+              "id": "u1-q10-01",
+              "type": "multiple_choice",
+              "question": "Reconstituer histoire géologique locale :",
+              "options": [
+                "Superposer coupes, fossiles, datations",
+                "Ignorer discordances",
+                "Croiser proxies indépendants",
+                "Un seul grain zircon suffit toujours"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Synthèse multi-preuves ; discordances portent du temps manquant."
+            },
+            {
+              "id": "u1-q10-02",
+              "type": "single_choice",
+              "question": "Terre ~4,56 Ga vs Phanérozoïque ~540 Ma :",
+              "options": [
+                "Phanérozoïque << durée totale",
+                "Égaux",
+                "Phanérozoïque majoritaire",
+                "Sans rapport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'enregistrement détaillé est recent sur l'échelle terrestre."
+            },
+            {
+              "id": "u1-q10-03",
+              "type": "single_choice",
+              "question": "Résolution temporelle :",
+              "options": [
+                "Meilleure récente (sédiments + proxies)",
+                "Identique partout",
+                "Nulle Archéen",
+                "Seulement C14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Précision augmente vers le présent."
+            },
+            {
+              "id": "u1-q10-04",
+              "type": "single_choice",
+              "question": "Stromatolites archéennes :",
+              "options": [
+                "Témoins vie ancienne",
+                "Index quaternaire",
+                "Datation C14",
+                "Faciès glaciaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structures biogéniques très anciennes."
+            },
+            {
+              "id": "u1-q10-05",
+              "type": "single_choice",
+              "question": "Orogenèses successives :",
+              "options": [
+                "Empilent événements tectoniques",
+                "Un seul événement",
+                "Sans roches",
+                "Holocène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cycles Wilson enregistrés."
+            },
+            {
+              "id": "u1-q10-06",
+              "type": "single_choice",
+              "question": "Bassin sédimentaire :",
+              "options": [
+                "Archive subsidence et climat",
+                "Ignore temps",
+                "Uniquement magma",
+                "Sans fossiles toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sédiments = enregistreurs environnement."
+            },
+            {
+              "id": "u1-q10-07",
+              "type": "single_choice",
+              "question": "Erreur fréquente élève :",
+              "options": [
+                "Confondre épaisseur et durée",
+                "Utiliser superposition",
+                "Corréler tephra",
+                "Lire coupe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Taux sédimentaire variable."
+            },
+            {
+              "id": "u1-q10-08",
+              "type": "single_choice",
+              "question": "Modèle actualisme :",
+              "options": [
+                "Processus passés comparables au présent",
+                "Catastrophisme seul",
+                "Sans lois physiques",
+                "Interdit datation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lyell : même causes, intensités variables."
+            },
+            {
+              "id": "u1-q10-09",
+              "type": "single_choice",
+              "question": "Impact cratère daté :",
+              "options": [
+                "Événement ponctuel dans chronologie",
+                "Durée ère",
+                "Remplace biozones",
+                "Mesure salinité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur instantané possible."
+            },
+            {
+              "id": "u1-q10-10",
+              "type": "single_choice",
+              "question": "Objectif chapitre temps :",
+              "options": [
+                "Dater et ordonner événements passés",
+                "Prédire météo demain",
+                "Cartographier lunes",
+                "Ignorer fossiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chronologie = base histoire Terre/vie."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Paléoclimats",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Proxies climatiques",
+          "questions": [
+            {
+              "id": "u2-q01-01",
+              "type": "multiple_choice",
+              "question": "Proxies paléoclimatiques fiables incluent :",
+              "options": [
+                "δ18O glace/eau",
+                "Pollens et microfossiles",
+                "Température air mesurée hier seule",
+                "Analyses isotopes dans foraminifères"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Isotopes et bio-indicateurs encodent T° et hydrologie ; mesure instrumental récente ne remplace pas le passé lointain."
+            },
+            {
+              "id": "u2-q01-02",
+              "type": "single_choice",
+              "question": "δ18O faible dans glace polaire indique généralement :",
+              "options": [
+                "Climat plus froid",
+                "Climat plus chaud",
+                "Salinité",
+                "CO₂ nul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Interprétation liée température et source précipitations (calibration site)."
+            },
+            {
+              "id": "u2-q01-03",
+              "type": "single_choice",
+              "question": "Foraminifères planctoniques :",
+              "options": [
+                "Enregistrent T° surface mer via Mg/Ca, δ18O",
+                "Datent uranium zircon",
+                "Mesurent vent actuel seul",
+                "Absents océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Biochimie coquille ~ conditions eau."
+            },
+            {
+              "id": "u2-q01-04",
+              "type": "single_choice",
+              "question": "Pollen en tourbe :",
+              "options": [
+                "Reconstitue végétation/climat régional",
+                "Mesure gravité",
+                "Datation U-Pb",
+                "Faciès récif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transfer functions pollen-climat."
+            },
+            {
+              "id": "u2-q01-05",
+              "type": "single_choice",
+              "question": "Carottes sédiments marins :",
+              "options": [
+                "Archive continue haute résolution",
+                "Uniquement granite",
+                "Sans temps",
+                "Holocène interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accumulation laminaire possible."
+            },
+            {
+              "id": "u2-q01-06",
+              "type": "single_choice",
+              "question": "Albédo glaciaire élevé :",
+              "options": [
+                "Rétroaction refroidissante",
+                "Réchauffe",
+                "Sans effet",
+                "Mesure C14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boucle glace-climat positive/negative selon étendue."
+            },
+            {
+              "id": "u2-q01-07",
+              "type": "single_choice",
+              "question": "Stalagmites δ18O :",
+              "options": [
+                "Signal hydrologie/température régionale",
+                "Mesure CO₂ atmosphère directe ancienne",
+                "Zircon",
+                "Faciès deltaïque seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Speleothèmes datables U-Th."
+            },
+            {
+              "id": "u2-q01-08",
+              "type": "single_choice",
+              "question": "Proxy doit être :",
+              "options": [
+                "Calibré et daté",
+                "Unique sans contrôle",
+                "Toujours diurne",
+                "Atmosphère seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Validation croisée indispensable."
+            },
+            {
+              "id": "u2-q01-09",
+              "type": "single_choice",
+              "question": "Dendrochronologie :",
+              "options": [
+                "Anneaux bois et climat récent",
+                "Archéen",
+                "U-Pb",
+                "Océan profond seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Haute résolution sur centuries-millénaires."
+            },
+            {
+              "id": "u2-q01-10",
+              "type": "single_choice",
+              "question": "Incertitude proxy :",
+              "options": [
+                "Propage aux reconstructions",
+                "Nulle",
+                "Supprime science",
+                "Remplace modèles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intervalles de confiance sur climats passés."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Glaces et gaz emprisonnés",
+          "questions": [
+            {
+              "id": "u2-q02-01",
+              "type": "multiple_choice",
+              "question": "Carottes glace (Antarctique/Greenland) :",
+              "options": [
+                "Bulles air = composition passée",
+                "Chronologie sur centaines ka",
+                "Mesurent magnétisme soleil direct",
+                "Remplacent toute sédimentologie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "CO₂, CH₄ piégés ; stratigraphie glaciaire longue."
+            },
+            {
+              "id": "u2-q02-02",
+              "type": "single_choice",
+              "question": "CO₂ glace Vostok/Epica montre :",
+              "options": [
+                "Variations corrélées glaces-interglaces",
+                "Constant 0 ppm",
+                "Sans lien température",
+                "Mesure futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Covariation CO₂-température Quaternaire."
+            },
+            {
+              "id": "u2-q02-03",
+              "type": "single_choice",
+              "question": "Déplacement isotopique température glace :",
+              "options": [
+                "δD ou δ18O corrélé T locale",
+                "Salinité",
+                "U-Pb",
+                "Faciès"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Calibration empirique site."
+            },
+            {
+              "id": "u2-q02-04",
+              "type": "single_choice",
+              "question": "Résolution temporelle glace :",
+              "options": [
+                "Décennies à centuries selon profondeur",
+                "Secondes",
+                "Ga",
+                "Nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compaction réduit résolution en profondeur."
+            },
+            {
+              "id": "u2-q02-05",
+              "type": "single_choice",
+              "question": "CH₄ glace :",
+              "options": [
+                "Lié cycles hydrologie/tourbières",
+                "Mesure granite",
+                "Zircon",
+                "Faciès récif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sources méthane variées, signal global."
+            },
+            {
+              "id": "u2-q02-06",
+              "type": "single_choice",
+              "question": "Synchronisation glace-sédiments :",
+              "options": [
+                "Événements isotopiques communs",
+                "Impossible",
+                "C14 zircon",
+                "Salinité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tephra, isotopes, datation."
+            },
+            {
+              "id": "u2-q02-07",
+              "type": "single_choice",
+              "question": "Fonte glace ancienne risque :",
+              "options": [
+                "Altération record très profond",
+                "Améliore CO₂",
+                "Datation C14",
+                "Mesure vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intégrité record en zone basale."
+            },
+            {
+              "id": "u2-q02-08",
+              "type": "single_choice",
+              "question": "Dernier maximum glaciaire ~20 ka :",
+              "options": [
+                "CO₂ plus bas qu'Holocène",
+                "CO₂ actuel industriel",
+                "Sans glace",
+                "Archéen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Atmosphère LGM ~180 ppm CO₂."
+            },
+            {
+              "id": "u2-q02-09",
+              "type": "single_choice",
+              "question": "Age glace compté par :",
+              "options": [
+                "Couches annuelles puis modèles",
+                "Fossiles seuls",
+                "Granite",
+                "Stromatolithe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comptage puis flow modeling."
+            },
+            {
+              "id": "u2-q02-10",
+              "type": "single_choice",
+              "question": "Gaz glace vs direct atmosphère :",
+              "options": [
+                "Décalage fermeture porosité",
+                "Identiques instantané",
+                "Sans science",
+                "U-Pb"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Age glace vs age air légèrement différents."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Forcing orbitalaire",
+          "questions": [
+            {
+              "id": "u2-q03-01",
+              "type": "multiple_choice",
+              "question": "Cycles Milankovitch :",
+              "options": [
+                "Excentricité, obliquité, précession",
+                "Forcing principal Quaternaire glacial",
+                "Période soleil 11 ans seule",
+                "Sans effet sédiments"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Paramètres orbitaux modulent insolation haute latitude."
+            },
+            {
+              "id": "u2-q03-02",
+              "type": "single_choice",
+              "question": "Précession modifie surtout :",
+              "options": [
+                "Saisonnalité insolation",
+                "Masse Terre",
+                "CO₂ volcanique",
+                "U-Pb"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Timing des saisons vs orbite."
+            },
+            {
+              "id": "u2-q03-03",
+              "type": "single_choice",
+              "question": "Obliquité ~41 ka :",
+              "options": [
+                "Amplitude saisons globale",
+                "Salinité",
+                "Zircon",
+                "Faciès"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inclinaison axe ecliptique."
+            },
+            {
+              "id": "u2-q03-04",
+              "type": "single_choice",
+              "question": "Excentricité ~100 ka modulée :",
+              "options": [
+                "Contraste périhélie",
+                "Gravité lune seule",
+                "Photosynthèse",
+                "Granite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ellipticité orbite terrestre."
+            },
+            {
+              "id": "u2-q03-05",
+              "type": "single_choice",
+              "question": "Cyclostratigraphie détecte :",
+              "options": [
+                "Fréquences orbitales dans roches",
+                "C14 seul",
+                "Impact seul",
+                "Holocène interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyse spectrale épaisseurs."
+            },
+            {
+              "id": "u2-q03-06",
+              "type": "single_choice",
+              "question": "Insolation seule n'explique pas tout car :",
+              "options": [
+                "Rétroactions CO₂, glace, océan",
+                "Sans physique",
+                "U-Pb",
+                "Faciès"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amplification système climatique."
+            },
+            {
+              "id": "u2-q03-07",
+              "type": "single_choice",
+              "question": "Terminaison glaciaire :",
+              "options": [
+                "Remontée rapide température/CO₂",
+                "Refroidissement",
+                "Archéen",
+                "Sans océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transitions glace-interglace."
+            },
+            {
+              "id": "u2-q03-08",
+              "type": "single_choice",
+              "question": "Hémisphère nord driver glace récent car :",
+              "options": [
+                "Continents hautes latitudes",
+                "Sans continents",
+                "Océan seul",
+                "Equateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Calottes nordiques sur continents."
+            },
+            {
+              "id": "u2-q03-09",
+              "type": "single_choice",
+              "question": "Pacifique vs Atlantique insolation :",
+              "options": [
+                "Réponse climat différente",
+                "Identique toujours",
+                "Mesure C14",
+                "Zircon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Configuration continent-océan."
+            },
+            {
+              "id": "u2-q03-10",
+              "type": "single_choice",
+              "question": "Orbital forcing Phanérozoïque :",
+              "options": [
+                "Détectable dans cycles sédimentaires",
+                "Absent avant Quaternaire",
+                "Remplace Pangée",
+                "Mesure vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signal astronomique fossilisé."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Paléoclimats Phanérozoïque",
+          "questions": [
+            {
+              "id": "u2-q04-01",
+              "type": "multiple_choice",
+              "question": "Indices climat chaud Crétacé :",
+              "options": [
+                "Niveau marin élevé",
+                "Faunes tropicales étendues",
+                "Calotte antarctique actuelle",
+                "Glaciation globale Permo-Carbonifère"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Greenhouse crétacé ; glaciation permo-carbonifère = autre état."
+            },
+            {
+              "id": "u2-q04-02",
+              "type": "single_choice",
+              "question": "Paléozoïque tardif (Carbonifère-Permien) :",
+              "options": [
+                "Glaciation Gondwana",
+                "Absence glace",
+                "Holocène",
+                "Impact K-Pg"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Glaciations permo-carbonifères."
+            },
+            {
+              "id": "u2-q04-03",
+              "type": "single_choice",
+              "question": "Mésozoïque précoce :",
+              "options": [
+                "Climat globalement chaud",
+                "Snowball",
+                "Glaciation totale",
+                "CO₂ nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Greenhouse mesozoïque fréquent."
+            },
+            {
+              "id": "u2-q04-04",
+              "type": "single_choice",
+              "question": "Paléogène après K-Pg :",
+              "options": [
+                "Réchauffement then cooling Cénozoïque",
+                "Glaciation immédiate permanente",
+                "Archéen",
+                "Sans vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PETM puis tendance refroidissement Cénozoïque."
+            },
+            {
+              "id": "u2-q04-05",
+              "type": "single_choice",
+              "question": "Configuration Pangée :",
+              "options": [
+                "Monsoon continentale intérieur aride",
+                "Identique climat actuel",
+                "Holocène",
+                "Sans sédiments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Supercontinent modifie circulation."
+            },
+            {
+              "id": "u2-q04-06",
+              "type": "single_choice",
+              "question": "Evaporites subtropicales :",
+              "options": [
+                "Zones arides/saumâtres",
+                "Pôle glacial",
+                "Abyssal",
+                "Impact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faciès sécheresse."
+            },
+            {
+              "id": "u2-q04-07",
+              "type": "single_choice",
+              "question": "Latéralité climat :",
+              "options": [
+                "Différences latitudinales marquées",
+                "Uniforme",
+                "Sans saison",
+                "C14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gradient insolation."
+            },
+            {
+              "id": "u2-q04-08",
+              "type": "single_choice",
+              "question": "Ouverture Drake/Tasman :",
+              "options": [
+                "Influence circulation océanique Cénozoïque",
+                "Sans effet",
+                "Archéen",
+                "Zircon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courant Antarctique circumpolaire."
+            },
+            {
+              "id": "u2-q04-09",
+              "type": "single_choice",
+              "question": "Collisions orogéniques :",
+              "options": [
+                "Modifient CO₂ volcanique/altération",
+                "Sans CO₂",
+                "Mesure glace seule",
+                "Holocène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forcing géologique long terme."
+            },
+            {
+              "id": "u2-q04-10",
+              "type": "single_choice",
+              "question": "Reconstruction climat ancien :",
+              "options": [
+                "Multi-proxy + modèles",
+                "Un fossile seul",
+                "Météo hier",
+                "Salinité seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convergence données et physique."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Snowball et hothouse",
+          "questions": [
+            {
+              "id": "u2-q05-01",
+              "type": "multiple_choice",
+              "question": "Hypothèse Snowball Earth :",
+              "options": [
+                "Glaciation quasi globale Néoproterozoïque",
+                "Climat identique Holocène",
+                "Finie par réchauffement CO₂ volcanique",
+                "Sans preuves sédimentaires"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Diamictites tropicales ; sortie via greenhouse."
+            },
+            {
+              "id": "u2-q05-02",
+              "type": "single_choice",
+              "question": "Diamictite à striations :",
+              "options": [
+                "Transport glaciaire possible",
+                "Récif corallien",
+                "Evaporite seule",
+                "Impact seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indice glaciation paléo."
+            },
+            {
+              "id": "u2-q05-03",
+              "type": "single_choice",
+              "question": "Cap carbonates néoproterozoiques :",
+              "options": [
+                "Dépôt post-glaciaire rapide",
+                "Granite",
+                "Holocène",
+                "C14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueurs fin événements glaciaires."
+            },
+            {
+              "id": "u2-q05-04",
+              "type": "single_choice",
+              "question": "Hothouse extrême :",
+              "options": [
+                "PETM Paléocène",
+                "LGM",
+                "Holocène froid",
+                "Archéen froid"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maximum thermique Paléocène-Eocène."
+            },
+            {
+              "id": "u2-q05-05",
+              "type": "single_choice",
+              "question": "PETM δ13C négatif :",
+              "options": [
+                "Injection carbone massif",
+                "Sans carbone",
+                "Zircon",
+                "Salinité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Excursion isotopique majeure."
+            },
+            {
+              "id": "u2-q05-06",
+              "type": "single_choice",
+              "question": "Albédo glace Snowball :",
+              "options": [
+                "Maintient froid extrême",
+                "Réchauffe",
+                "Sans effet",
+                "Mesure vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rétroaction glace-insolation."
+            },
+            {
+              "id": "u2-q05-07",
+              "type": "single_choice",
+              "question": "Sortie Snowball nécessite :",
+              "options": ["CO₂ élevé longtemps", "CO₂ nul", "Un jour", "C14"],
+              "correctAnswers": [0],
+              "explanation": "Volcanisme sans altération efficace."
+            },
+            {
+              "id": "u2-q05-08",
+              "type": "single_choice",
+              "question": "Slushball vs Snowball :",
+              "options": [
+                "Mer partiellement libre",
+                "Océan gelé totalement",
+                "Sans eau",
+                "Holocène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Degré couverture glace débattu."
+            },
+            {
+              "id": "u2-q05-09",
+              "type": "single_choice",
+              "question": "Crétacé hothouse :",
+              "options": [
+                "Niveau marin haut, chaleur",
+                "Glaciation globale",
+                "CO₂ mesuré glace",
+                "Archéen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Greenhouse crétacé documenté."
+            },
+            {
+              "id": "u2-q05-10",
+              "type": "single_choice",
+              "question": "Leçon Snowball/PETM :",
+              "options": [
+                "Climat peut basculer fortement",
+                "Stable toujours",
+                "Sans CO₂",
+                "Ignore géologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sensibilité climatique système Terre."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "CO₂ et température",
+          "questions": [
+            {
+              "id": "u2-q06-01",
+              "type": "multiple_choice",
+              "question": "Lien CO₂-température sur Phanérozoïque :",
+              "options": [
+                "Covariation long terme souvent",
+                "CO₂ sans effet radiatif",
+                "Proxies géochimie et glace",
+                "Identique toujours sans délai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Gaz effet serre ; reconstructions multiples ; délais dynamiques."
+            },
+            {
+              "id": "u2-q06-02",
+              "type": "single_choice",
+              "question": "pCO₂ paléo estimée via :",
+              "options": [
+                "Stomates fossiles, borates, isotopes",
+                "C14 seul",
+                "Granite",
+                "Vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs proxies géologiques."
+            },
+            {
+              "id": "u2-q06-03",
+              "type": "single_choice",
+              "question": "Sensibilité climatique :",
+              "options": ["ΔT pour double CO₂", "Salinité", "U-Pb", "Faciès"],
+              "correctAnswers": [0],
+              "explanation": "Paramètre clé modèles/paléo."
+            },
+            {
+              "id": "u2-q06-04",
+              "type": "single_choice",
+              "question": "Délai CO₂-océan atmosphère :",
+              "options": [
+                "Échanges sur centuries",
+                "Instantané toujours",
+                "Ga",
+                "Sans océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inertie thermique océanique."
+            },
+            {
+              "id": "u2-q06-05",
+              "type": "single_choice",
+              "question": "LGM vs préindustriel :",
+              "options": [
+                "CO₂ ~180 vs ~280 ppm",
+                "CO₂ identique",
+                "4000 ppm",
+                "0 ppm"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Glaces montrent différence."
+            },
+            {
+              "id": "u2-q06-06",
+              "type": "single_choice",
+              "question": "Weathering silicates :",
+              "options": [
+                "Pompe CO₂ long terme",
+                "Émet CO₂",
+                "Sans effet",
+                "C14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régulation thermostat géologique."
+            },
+            {
+              "id": "u2-q06-07",
+              "type": "single_choice",
+              "question": "Volcanisme dégazage :",
+              "options": [
+                "Source CO₂ géologique",
+                "Sink principal",
+                "Holocène seul",
+                "Zircon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux CO₂ endogène."
+            },
+            {
+              "id": "u2-q06-08",
+              "type": "single_choice",
+              "question": "Rétroaction vapeur eau :",
+              "options": [
+                "Amplifie réchauffement",
+                "Refroidit seule",
+                "Absente",
+                "Mesure glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "GES majeur feedback."
+            },
+            {
+              "id": "u2-q06-09",
+              "type": "single_choice",
+              "question": "Hypothèse CO₂ faible Ordovicien glaciation :",
+              "options": [
+                "Forcing combiné position continentale",
+                "CO₂ actuel",
+                "Sans preuve",
+                "C14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat proxies et configuration."
+            },
+            {
+              "id": "u2-q06-10",
+              "type": "single_choice",
+              "question": "Anthropique vs paléo CO₂ :",
+              "options": [
+                "Taux actuel exceptionnellement rapide",
+                "Identique PETM vitesse",
+                "Nul",
+                "Archéen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accélération industrielle récente."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Quaternaire",
+          "questions": [
+            {
+              "id": "u2-q07-01",
+              "type": "multiple_choice",
+              "question": "Quaternaire récent :",
+              "options": [
+                "Alternances glace-interglace",
+                "Enregistrement glace + sédiments",
+                "Climat stable 2 Ma",
+                "Sans mammifères"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cycles ~100 ka ; archives riches."
+            },
+            {
+              "id": "u2-q07-02",
+              "type": "single_choice",
+              "question": "Dernier interglaciaire (Eemien) :",
+              "options": [
+                "Chaud, niveau marin plus haut",
+                "Plus froid que LGM",
+                "Archéen",
+                "Sans corrélation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Référence interglaciaire passé."
+            },
+            {
+              "id": "u2-q07-03",
+              "type": "single_choice",
+              "question": "Calotte Laurentide :",
+              "options": [
+                "Amérique nord LGM",
+                "Antarctique seul",
+                "Holocène",
+                "Permien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Masque glaciaire nord-américain."
+            },
+            {
+              "id": "u2-q07-04",
+              "type": "single_choice",
+              "question": "Isostasie post-glaciaire :",
+              "options": [
+                "Rebond croûte après fonte",
+                "Subduction",
+                "Impact",
+                "C14 zircon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ajustement lithosphère."
+            },
+            {
+              "id": "u2-q07-05",
+              "type": "single_choice",
+              "question": "Loess quaternaire :",
+              "options": [
+                "Poussières glaciaires",
+                "Evaporite",
+                "Récif",
+                "Granite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dépôts éoliens péri-glaciaires."
+            },
+            {
+              "id": "u2-q07-06",
+              "type": "single_choice",
+              "question": "Faune mammouths :",
+              "options": [
+                "Adaptée froid steppe",
+                "Tropical uniquement",
+                "Archéenne",
+                "Holocène récent seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mégafaune glaciaire."
+            },
+            {
+              "id": "u2-q07-07",
+              "type": "single_choice",
+              "question": "Holocène stable climat :",
+              "options": [
+                "Relativement interglaciaire",
+                "Glaciaire total",
+                "PETM",
+                "Snowball"
+              ],
+              "correctAnswers": [0],
+              "explanation": "~11,7 ka à présent."
+            },
+            {
+              "id": "u2-q07-08",
+              "type": "single_choice",
+              "question": "Younger Dryas :",
+              "options": [
+                "Refroidissement abrupt Holocène début",
+                "Chauffage PETM",
+                "Archéen",
+                "K-Pg"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Événement rapide Nord Atlantique."
+            },
+            {
+              "id": "u2-q07-09",
+              "type": "single_choice",
+              "question": "Niveau marin LGM :",
+              "options": [
+                "~120 m plus bas",
+                "Identique",
+                "+200 m",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau stockée calottes."
+            },
+            {
+              "id": "u2-q07-10",
+              "type": "single_choice",
+              "question": "Corrélation terrestre/marine Quaternaire :",
+              "options": [
+                "Isotopes, tephra, datation",
+                "Impossible",
+                "Zircon seul",
+                "Vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stratigraphie intégrée."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Océan et circulation",
+          "questions": [
+            {
+              "id": "u2-q08-01",
+              "type": "multiple_choice",
+              "question": "Circulation océanique paléo :",
+              "options": [
+                "Modifie transport chaleur",
+                "Thermohaline sensible salinité/température",
+                "Sans lien climat",
+                "Identique toujours"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "AMOC et autres cellules régulent chaleur."
+            },
+            {
+              "id": "u2-q08-02",
+              "type": "single_choice",
+              "question": "AMOC faible peut :",
+              "options": [
+                "Refroidir nord Atlantique",
+                "Chauffer Europe partout",
+                "Sans effet",
+                "C14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coupe chaleur polaire."
+            },
+            {
+              "id": "u2-q08-03",
+              "type": "single_choice",
+              "question": "δ13C océan profond :",
+              "options": [
+                "Trace circulation/ productivité",
+                "Température air",
+                "U-Pb",
+                "Faciès récif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signature eau profonde."
+            },
+            {
+              "id": "u2-q08-04",
+              "type": "single_choice",
+              "question": "Ouverture canal :",
+              "options": [
+                "Change échange chaleur",
+                "Statique",
+                "Archéen",
+                "Holocène seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Géométrie océans."
+            },
+            {
+              "id": "u2-q08-05",
+              "type": "single_choice",
+              "question": "Upwelling côtier :",
+              "options": ["Fertilité et CO₂", "Sans vie", "Granite", "Zircon"],
+              "correctAnswers": [0],
+              "explanation": "Apport nutriments surface."
+            },
+            {
+              "id": "u2-q08-06",
+              "type": "single_choice",
+              "question": "Salinité glace LGM :",
+              "options": [
+                "Océan plus salin si glace isolée",
+                "Dilué",
+                "Sans glace",
+                "Evaporite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau douce piégée calottes."
+            },
+            {
+              "id": "u2-q08-07",
+              "type": "single_choice",
+              "question": "El Niño paléo :",
+              "options": [
+                "Reconstruit par coraux/sédiments",
+                "Inventé",
+                "Archéen seul",
+                "U-Pb"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ENSO variabilité passée."
+            },
+            {
+              "id": "u2-q08-08",
+              "type": "single_choice",
+              "question": "Anoxie bassins :",
+              "options": [
+                "Conditions stratification chaud",
+                "Glaciation",
+                "Impact",
+                "C14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Black shales paléo."
+            },
+            {
+              "id": "u2-q08-09",
+              "type": "single_choice",
+              "question": "Drake passage ouvert :",
+              "options": [
+                "Refroidit Antarctique Cénozoïque",
+                "Réchauffe Antarctique",
+                "Sans effet",
+                "Holocène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Isolation continent austral."
+            },
+            {
+              "id": "u2-q08-10",
+              "type": "single_choice",
+              "question": "Modèle océan-atmosphère :",
+              "options": [
+                "Test hypothèses paléo",
+                "Remplace données",
+                "Sans physique",
+                "C14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simulation forcings passés."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Modèles et données",
+          "questions": [
+            {
+              "id": "u2-q09-01",
+              "type": "multiple_choice",
+              "question": "Modèles climat paléo :",
+              "options": [
+                "Imposent lois physique",
+                "Calibrés sur proxies",
+                "Remplacent mesures",
+                "Sans CO₂ orbital"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Physique + contraintes observations."
+            },
+            {
+              "id": "u2-q09-02",
+              "type": "single_choice",
+              "question": "Forcing orbital en modèle :",
+              "options": [
+                "Calcule insolation passée",
+                "Ignore soleil",
+                "C14",
+                "Zircon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paramètres Milankovitch."
+            },
+            {
+              "id": "u2-q09-03",
+              "type": "single_choice",
+              "question": "Data-model mismatch :",
+              "options": [
+                "Indique processus manquant",
+                "Preuve fraude",
+                "Sans intérêt",
+                "Holocène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Améliore compréhension."
+            },
+            {
+              "id": "u2-q09-04",
+              "type": "single_choice",
+              "question": "Ensemble simulations :",
+              "options": [
+                "Explore incertitudes",
+                "Une run suffit",
+                "Sans stats",
+                "U-Pb"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variabilité paramètres."
+            },
+            {
+              "id": "u2-q09-05",
+              "type": "single_choice",
+              "question": "Paleoclimate Model Intercomparison :",
+              "options": [
+                "Compare centres recherche",
+                "Secret",
+                "Archéen seul",
+                "Vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protocoles PMIP etc."
+            },
+            {
+              "id": "u2-q09-06",
+              "type": "single_choice",
+              "question": "Topographie ancienne input :",
+              "options": [
+                "Relief continents passé",
+                "Actuel seulement",
+                "Sans montagnes",
+                "C14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reconstruction paléogéographique."
+            },
+            {
+              "id": "u2-q09-07",
+              "type": "single_choice",
+              "question": "Validation proxy-modèle :",
+              "options": [
+                "Quantitative par métriques",
+                "Visuelle seule",
+                "Interdite",
+                "Zircon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scores d'accord spatial/temporel."
+            },
+            {
+              "id": "u2-q09-08",
+              "type": "single_choice",
+              "question": "Haute CO₂ Crétacé simulation :",
+              "options": [
+                "Reproduit chaleur",
+                "Glaciation globale",
+                "Sans effet",
+                "Holocène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Greenhouse gases forcing."
+            },
+            {
+              "id": "u2-q09-09",
+              "type": "single_choice",
+              "question": "Limites modèles :",
+              "options": [
+                "Résolution nuages/chutes",
+                "Parfaits",
+                "Sans données",
+                "U-Pb"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paramétrisations nécessaires."
+            },
+            {
+              "id": "u2-q09-10",
+              "type": "single_choice",
+              "question": "Leçon paléo pour futur :",
+              "options": [
+                "Sensibilité et risques bascule",
+                "Sans utilité",
+                "Climat fixe",
+                "Ignore CO₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé informe scénarios."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse paléoclimats",
+          "questions": [
+            {
+              "id": "u2-q10-01",
+              "type": "multiple_choice",
+              "question": "Reconstruction paléoclimat robuste :",
+              "options": [
+                "Multi-proxy convergent",
+                "Datation fiable",
+                "Un site suffit toujours",
+                "Ignorer le forcing orbital"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Convergence et chronologie fiables ; un seul site ou l'omission des forcages ne suffit pas."
+            },
+            {
+              "id": "u2-q10-02",
+              "type": "single_choice",
+              "question": "Climat Terre :",
+              "options": [
+                "États variés dans le temps",
+                "Toujours identique",
+                "Sans CO₂",
+                "Archéen seul chaud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Greenhouse et icehouse alternés."
+            },
+            {
+              "id": "u2-q10-03",
+              "type": "single_choice",
+              "question": "Quaternaire enseigne :",
+              "options": [
+                "Sensibilité aux orbitales + rétroactions",
+                "Stabilité totale",
+                "Sans glace",
+                "PETM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cycles documentés précisément."
+            },
+            {
+              "id": "u2-q10-04",
+              "type": "single_choice",
+              "question": "Erreur fréquente :",
+              "options": [
+                "Confondre météo et climat",
+                "Utiliser δ18O",
+                "Lire glace",
+                "Corréler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échelles temps différentes."
+            },
+            {
+              "id": "u2-q10-05",
+              "type": "single_choice",
+              "question": "Tipping points paléo :",
+              "options": [
+                "Younger Dryas, terminaisons",
+                "Inexistants",
+                "Holocène seul",
+                "Zircon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Changements parfois rapides."
+            },
+            {
+              "id": "u2-q10-06",
+              "type": "single_choice",
+              "question": "Biodiversité et climat :",
+              "options": [
+                "Couplés via extinctions/migrations",
+                "Indépendants",
+                "Sans fossiles",
+                "C14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stress climatique biotes."
+            },
+            {
+              "id": "u2-q10-07",
+              "type": "single_choice",
+              "question": "Anthropocene debate :",
+              "options": [
+                "Marqueurs géologiques récents",
+                "Archéen",
+                "Sans impact",
+                "Orbital"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signature humaine stratigraphie."
+            },
+            {
+              "id": "u2-q10-08",
+              "type": "single_choice",
+              "question": "Education terminale SVT :",
+              "options": [
+                "Lire preuves et incertitudes",
+                "Mémoriser seulement noms ères",
+                "Ignorer modèles",
+                "Rejeter datation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Esprit scientifique argumenté."
+            },
+            {
+              "id": "u2-q10-09",
+              "type": "single_choice",
+              "question": "Lien chapitre passé géologique :",
+              "options": [
+                "Temps + environnements anciens",
+                "Astronomie seule",
+                "Sans géologie",
+                "Holocène uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Histoire Terre intégrée."
+            },
+            {
+              "id": "u2-q10-10",
+              "type": "single_choice",
+              "question": "Message clé paléoclimats :",
+              "options": [
+                "Forcing multiples, système dynamique",
+                "Climat immutable",
+                "CO₂ inerte",
+                "Proxies inutiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre variabilité passée éclaire présent."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

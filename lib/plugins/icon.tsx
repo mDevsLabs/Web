@@ -60,6 +60,7 @@ import {
   ZapIcon as Zap,
 } from "@mdevs/icons";
 import type { ComponentType } from "react";
+import { cn } from "@/lib/utils";
 import type { LucideIconName } from "./icon-allowlist";
 import type { PluginIconRef } from "./types";
 
@@ -149,10 +150,18 @@ export function PluginIcon({
   icon: PluginIconRef;
 }) {
   if (icon.type === "image") {
-    // Image servie depuis /public ou une URL distante : `img` volontaire
-    // (les domaines distants ne sont pas déclarés dans next.config).
+    // Même masque que les logos de connexion (`.integration-logo`) : le SVG
+    // sert de forme, `currentColor` fournit le noir ou le blanc du thème.
+    // Un `<img>` garderait les couleurs de marque.
     return (
-      <img alt="" className={className} height={24} src={icon.src} width={24} />
+      <span
+        aria-hidden
+        className={cn("integration-logo size-6 shrink-0", className)}
+        style={{
+          maskImage: `url(${icon.src})`,
+          WebkitMaskImage: `url(${icon.src})`,
+        }}
+      />
     );
   }
   const Icon = resolveLucideIcon(icon.name);

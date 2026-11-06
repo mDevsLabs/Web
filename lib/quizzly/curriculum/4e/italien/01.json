@@ -1,0 +1,2243 @@
+{
+  "id": "4e-italien-01",
+  "year": "4e",
+  "subject": "italien",
+  "title": "Découvrir l'italien",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Dire bonjour",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le matin, quelles salutations conviennent en italien ?",
+              "type": "multiple_choice",
+              "options": ["Buongiorno", "Buonanotte", "Ciao", "Buonasera"],
+              "correctAnswers": [0, 2],
+              "explanation": "Buongiorno le matin ; ciao est informel."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « salut » de façon familière ?",
+              "type": "single_choice",
+              "options": ["Ciao", "Arrivederci", "Grazie", "Prego"],
+              "correctAnswers": [0],
+              "explanation": "Ciao = salut / au revoir familier."
+            },
+            {
+              "id": "q3",
+              "question": "« Buongiorno » signifie :",
+              "type": "single_choice",
+              "options": ["Bonjour", "Bonsoir", "Bonne nuit", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Buongiorno = bonjour."
+            },
+            {
+              "id": "q4",
+              "question": "Le soir, on dit plutôt :",
+              "type": "single_choice",
+              "options": [
+                "Buonasera",
+                "Buongiorno",
+                "Buon pomeriggio",
+                "Salve"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Buonasera = bonsoir."
+            },
+            {
+              "id": "q5",
+              "question": "Salve est :",
+              "type": "single_choice",
+              "options": [
+                "Une salutation neutre",
+                "Une insulte",
+                "Un au revoir",
+                "Un remerciement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salve est poli."
+            },
+            {
+              "id": "q6",
+              "question": "Avant de dormir, on dit :",
+              "type": "single_choice",
+              "options": ["Buonanotte", "Buongiorno", "Ciao", "A presto"],
+              "correctAnswers": [0],
+              "explanation": "Buonanotte = bonne nuit."
+            },
+            {
+              "id": "q7",
+              "question": "En prenant congé, « a presto » signifie :",
+              "type": "single_choice",
+              "options": ["À bientôt", "À demain", "Jamais", "Bon voyage"],
+              "correctAnswers": [0],
+              "explanation": "A presto = à bientôt."
+            },
+            {
+              "id": "q8",
+              "question": "Entre camarades, on entend souvent :",
+              "type": "single_choice",
+              "options": [
+                "Ciao!",
+                "Buonanotte!",
+                "Arrivederci signore!",
+                "Grazie signora!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ciao est courant entre jeunes."
+            },
+            {
+              "id": "q9",
+              "question": "Buon pomeriggio signifie :",
+              "type": "single_choice",
+              "options": [
+                "Bon après-midi",
+                "Bon matin",
+                "Bonne soirée",
+                "Bon week-end"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pomeriggio = après-midi."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle phrase peut suivre un bonjour pour prendre des nouvelles ?",
+              "type": "single_choice",
+              "options": [
+                "Come stai?",
+                "Mi chiamo Luca.",
+                "Ho quattordici anni.",
+                "Sono di Roma."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Come stai? = comment vas-tu ?"
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Demander des nouvelles",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases demandent « comment ça va ? »",
+              "type": "multiple_choice",
+              "options": [
+                "Come stai?",
+                "Come va?",
+                "Quanti anni hai?",
+                "Come ti chiami?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Come stai? et Come va? interrogent la forme."
+            },
+            {
+              "id": "q2",
+              "question": "Come stai? s'adresse à :",
+              "type": "single_choice",
+              "options": [
+                "Une personne (tu)",
+                "Un groupe",
+                "Un objet",
+                "Une ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stai = 2e personne du singulier."
+            },
+            {
+              "id": "q3",
+              "question": "« Sto bene, grazie » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je vais bien, merci",
+                "Je m'appelle bien",
+                "J'ai bien",
+                "Je suis de bien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sto bene = je vais bien."
+            },
+            {
+              "id": "q4",
+              "question": "Pour répondre « ça va mal » :",
+              "type": "single_choice",
+              "options": ["Sto male", "Sto bene", "Sono male", "Ho male"],
+              "correctAnswers": [0],
+              "explanation": "Avec stare : sto male."
+            },
+            {
+              "id": "q5",
+              "question": "« E tu? » veut dire :",
+              "type": "single_choice",
+              "options": ["Et toi ?", "Et lui ?", "Et où ?", "Et quand ?"],
+              "correctAnswers": [0],
+              "explanation": "Tu = toi."
+            },
+            {
+              "id": "q6",
+              "question": "Come state? s'adresse à :",
+              "type": "single_choice",
+              "options": [
+                "Plusieurs personnes ou politesse",
+                "Un seul ami",
+                "Un animal",
+                "La nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "State = pluriel / vous."
+            },
+            {
+              "id": "q7",
+              "question": "Quand on va ni bien ni mal, « così così » se traduit par :",
+              "type": "single_choice",
+              "options": [
+                "Comme ci comme ça",
+                "Très bien",
+                "Malade",
+                "Fatigué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse intermédiaire."
+            },
+            {
+              "id": "q8",
+              "question": "Quelle phrase demande le prénom ?",
+              "type": "single_choice",
+              "options": [
+                "Come ti chiami?",
+                "Come stai?",
+                "Di dove sei?",
+                "Quanti anni hai?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Come ti chiami? = comment t'appelles-tu ?"
+            },
+            {
+              "id": "q9",
+              "question": "« Molto bene! » exprime :",
+              "type": "single_choice",
+              "options": ["Très bien", "Peu", "Jamais", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "Molto = très."
+            },
+            {
+              "id": "q10",
+              "question": "Après « Ciao! », on peut dire :",
+              "type": "single_choice",
+              "options": ["Come va?", "Buonanotte!", "Arrivederci!", "Grazie!"],
+              "correctAnswers": [0],
+              "explanation": "On enchaîne souvent avec Come va?."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Se présenter",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases présentent quelqu'un ?",
+              "type": "multiple_choice",
+              "options": [
+                "Mi chiamo Sofia.",
+                "Sono Sofia.",
+                "Ho Sofia.",
+                "Di Sofia."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mi chiamo et sono + prénom présentent."
+            },
+            {
+              "id": "q2",
+              "question": "Mi chiamo Marco signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je m'appelle Marco",
+                "J'ai Marco",
+                "Je suis de Marco",
+                "Marco va bien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chiamarsi = s'appeler."
+            },
+            {
+              "id": "q3",
+              "question": "Come ti chiami? attend :",
+              "type": "single_choice",
+              "options": ["Mi chiamo…", "Sto bene", "Sono di…", "Ho… anni"],
+              "correctAnswers": [0],
+              "explanation": "Réponse avec mi chiamo."
+            },
+            {
+              "id": "q4",
+              "question": "Io sono Giulia. Io signifie :",
+              "type": "single_choice",
+              "options": ["Je", "Tu", "Il", "Nous"],
+              "correctAnswers": [0],
+              "explanation": "Io = je."
+            },
+            {
+              "id": "q5",
+              "question": "Pour dire « enchanté » :",
+              "type": "single_choice",
+              "options": ["Piacere!", "Prego!", "Scusa!", "Bene!"],
+              "correctAnswers": [0],
+              "explanation": "Piacere! = ravi de te rencontrer."
+            },
+            {
+              "id": "q6",
+              "question": "« Lieto di conoscerti » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Heureux de te connaître",
+                "Heureux de manger",
+                "Heureux de dormir",
+                "Heureux de partir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conoscere = connaître."
+            },
+            {
+              "id": "q7",
+              "question": "Tu t'appelles comment en italien ?",
+              "type": "single_choice",
+              "options": [
+                "Come ti chiami?",
+                "Come state?",
+                "Di dove sei?",
+                "Quanti anni hai?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ti = te (tu)."
+            },
+            {
+              "id": "q8",
+              "question": "Sono Alessandro. Sono vient de :",
+              "type": "single_choice",
+              "options": [
+                "essere (être)",
+                "avere (avoir)",
+                "stare",
+                "chiamarsi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sono = je suis."
+            },
+            {
+              "id": "q9",
+              "question": "Après Piacere!, on peut ajouter :",
+              "type": "single_choice",
+              "options": [
+                "Mi chiamo…",
+                "Buonanotte",
+                "Arrivederci",
+                "Sto male"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On donne souvent son prénom."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle réponse est incorrecte à Come ti chiami?",
+              "type": "single_choice",
+              "options": [
+                "Ho quattordici anni.",
+                "Mi chiamo Eva.",
+                "Sono Eva.",
+                "Io sono Eva."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ho… anni répond à l'âge, pas au nom."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Dire son âge",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases parlent de l'âge ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ho quattordici anni.",
+                "Quanti anni hai?",
+                "Sono quattordici.",
+                "Ho quattordici."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En italien on dit ho … anni ; quanti anni hai? demande l'âge."
+            },
+            {
+              "id": "q2",
+              "question": "Quanti anni hai? signifie :",
+              "type": "single_choice",
+              "options": [
+                "Quel âge as-tu ?",
+                "Comment vas-tu ?",
+                "Où habites-tu ?",
+                "Comment t'appelles-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anni = ans."
+            },
+            {
+              "id": "q3",
+              "question": "J'ai treize ans :",
+              "type": "single_choice",
+              "options": [
+                "Ho tredici anni.",
+                "Sono tredici anni.",
+                "Ho tredici.",
+                "Sto tredici."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure ho + nombre + anni."
+            },
+            {
+              "id": "q4",
+              "question": "Ho sedici anni. sedici =",
+              "type": "single_choice",
+              "options": ["16", "6", "60", "15"],
+              "correctAnswers": [0],
+              "explanation": "Sedici = seize."
+            },
+            {
+              "id": "q5",
+              "question": "Pour répondre « j'ai quinze ans » :",
+              "type": "single_choice",
+              "options": [
+                "Ho quindici anni.",
+                "Sono quindici.",
+                "Ho quindici.",
+                "Sto quindici anni."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toujours ho … anni."
+            },
+            {
+              "id": "q6",
+              "question": "Avere à la 1re personne :",
+              "type": "single_choice",
+              "options": ["ho", "sono", "sto", "hai"],
+              "correctAnswers": [0],
+              "explanation": "Io ho = j'ai."
+            },
+            {
+              "id": "q7",
+              "question": "« E tu, quanti anni hai? » demande :",
+              "type": "single_choice",
+              "options": ["Ton âge", "Ton nom", "Ta ville", "Ta santé"],
+              "correctAnswers": [0],
+              "explanation": "E tu = et toi."
+            },
+            {
+              "id": "q8",
+              "question": "Dodici anni correspond à :",
+              "type": "single_choice",
+              "options": ["12 ans", "2 ans", "20 ans", "22 ans"],
+              "correctAnswers": [0],
+              "explanation": "Dodici = douze."
+            },
+            {
+              "id": "q9",
+              "question": "Quale frase usa avere?",
+              "type": "single_choice",
+              "options": [
+                "Ho undici anni.",
+                "Sono undici.",
+                "Sto undici.",
+                "Mi chiamo undici."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'âge se dit avec avere."
+            },
+            {
+              "id": "q10",
+              "question": "Quattordici =",
+              "type": "single_choice",
+              "options": ["14", "4", "40", "24"],
+              "correctAnswers": [0],
+              "explanation": "Quattordici = quatorze."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Dire d'où l'on vient",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases indiquent l'origine ?",
+              "type": "multiple_choice",
+              "options": [
+                "Sono di Parigi.",
+                "Di dove sei?",
+                "Ho di Roma.",
+                "Mi chiamo di Napoli."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sono di + ville ; Di dove sei? demande l'origine."
+            },
+            {
+              "id": "q2",
+              "question": "Di dove sei? signifie :",
+              "type": "single_choice",
+              "options": [
+                "D'où es-tu ?",
+                "Où vas-tu ?",
+                "Comment es-tu ?",
+                "Qui es-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dove = où."
+            },
+            {
+              "id": "q3",
+              "question": "Je suis de Lyon :",
+              "type": "single_choice",
+              "options": [
+                "Sono di Lione.",
+                "Ho di Lione.",
+                "Sto di Lione.",
+                "Mi chiamo Lione."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sono di + nom de ville."
+            },
+            {
+              "id": "q4",
+              "question": "Sono di Milano. Milano est :",
+              "type": "single_choice",
+              "options": ["Milan", "Rome", "Naples", "Turin"],
+              "correctAnswers": [0],
+              "explanation": "Milano = Milan."
+            },
+            {
+              "id": "q5",
+              "question": "Sono francese :",
+              "type": "single_choice",
+              "options": [
+                "Sono francese.",
+                "Ho francese.",
+                "Di francese.",
+                "Sto francese."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nationalité avec essere."
+            },
+            {
+              "id": "q6",
+              "question": "Sono italiano / italiana. L'adjectif s'accorde avec :",
+              "type": "single_choice",
+              "options": [
+                "Le genre de la personne",
+                "La ville",
+                "L'heure",
+                "Le jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Italiano (m.) / italiana (f.)."
+            },
+            {
+              "id": "q7",
+              "question": "« Sono di Torino » =",
+              "type": "single_choice",
+              "options": [
+                "Je suis de Turin",
+                "Je vais à Turin",
+                "J'aime Turin",
+                "Je m'appelle Turin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Torino = Turin."
+            },
+            {
+              "id": "q8",
+              "question": "Roma en réponse à Di dove sei? :",
+              "type": "single_choice",
+              "options": [
+                "Sono di Roma.",
+                "Ho Roma.",
+                "Mi chiamo Roma.",
+                "Sto Roma."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Roma = Rome."
+            },
+            {
+              "id": "q9",
+              "question": "Di + ville après sono signifie :",
+              "type": "single_choice",
+              "options": ["de (provenance)", "à", "avec", "sans"],
+              "correctAnswers": [0],
+              "explanation": "Di indique la provenance."
+            },
+            {
+              "id": "q10",
+              "question": "Sono di Marsiglia :",
+              "type": "single_choice",
+              "options": [
+                "Sono di Marsiglia.",
+                "Sono Marsiglia di.",
+                "Ho di Marsiglia.",
+                "Di sono Marsiglia."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marsiglia reste Marsiglia en italien courant scolaire."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Politesse",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots remercient ou répondent à un merci ?",
+              "type": "multiple_choice",
+              "options": ["Grazie", "Prego", "Ciao", "Scusa"],
+              "correctAnswers": [0, 1],
+              "explanation": "Grazie = merci ; prego = de rien / je vous en prie."
+            },
+            {
+              "id": "q2",
+              "question": "Grazie signifie :",
+              "type": "single_choice",
+              "options": ["Merci", "Pardon", "Bonjour", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Grazie = merci."
+            },
+            {
+              "id": "q3",
+              "question": "Réponse à grazie :",
+              "type": "single_choice",
+              "options": ["Prego", "Scusa", "Ciao", "Buongiorno"],
+              "correctAnswers": [0],
+              "explanation": "Prego = de rien."
+            },
+            {
+              "id": "q4",
+              "question": "Scusa / Scusi sert à :",
+              "type": "single_choice",
+              "options": ["S'excuser", "Remercier", "Saluer", "Se présenter"],
+              "correctAnswers": [0],
+              "explanation": "Scusa (tu) / Scusi (politesse)."
+            },
+            {
+              "id": "q5",
+              "question": "Per favore veut dire :",
+              "type": "single_choice",
+              "options": ["S'il te plaît", "Merci", "Pardon", "Bonsoir"],
+              "correctAnswers": [0],
+              "explanation": "Per favore = s'il te plaît."
+            },
+            {
+              "id": "q6",
+              "question": "Grazie mille =",
+              "type": "single_choice",
+              "options": [
+                "Merci beaucoup",
+                "Mille pardons",
+                "Bonjour mille",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mille renforce grazie."
+            },
+            {
+              "id": "q7",
+              "question": "Avant une demande, on dit souvent :",
+              "type": "single_choice",
+              "options": ["Per favore", "Buonanotte", "Arrivederci", "Piacere"],
+              "correctAnswers": [0],
+              "explanation": "Politesse avec per favore."
+            },
+            {
+              "id": "q8",
+              "question": "Mi dispiace exprime :",
+              "type": "single_choice",
+              "options": [
+                "Je suis désolé",
+                "Je suis content",
+                "J'ai faim",
+                "Je m'appelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dispiacere = regret."
+            },
+            {
+              "id": "q9",
+              "question": "Quale parola è un ringraziamento?",
+              "type": "single_choice",
+              "options": ["Grazie", "Prego", "Scusa", "Ciao"],
+              "correctAnswers": [0],
+              "explanation": "Ringraziamento = remerciement → grazie."
+            },
+            {
+              "id": "q10",
+              "question": "Dopo « Grazie! », rispondi :",
+              "type": "single_choice",
+              "options": ["Prego!", "Scusa!", "Ciao!", "Buongiorno!"],
+              "correctAnswers": [0],
+              "explanation": "Prego répond à grazie."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Dire au revoir",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formules disent au revoir ?",
+              "type": "multiple_choice",
+              "options": ["Arrivederci", "Ciao", "Buongiorno", "A domani"],
+              "correctAnswers": [0, 1],
+              "explanation": "Arrivederci = au revoir ; ciao aussi au départ."
+            },
+            {
+              "id": "q2",
+              "question": "Arrivederci signifie :",
+              "type": "single_choice",
+              "options": ["Au revoir", "Bonjour", "Merci", "S'il te plaît"],
+              "correctAnswers": [0],
+              "explanation": "Formule standard de départ."
+            },
+            {
+              "id": "q3",
+              "question": "A domani =",
+              "type": "single_choice",
+              "options": ["À demain", "À ce soir", "À jamais", "À midi"],
+              "correctAnswers": [0],
+              "explanation": "Domani = demain."
+            },
+            {
+              "id": "q4",
+              "question": "A più tardi veut dire :",
+              "type": "single_choice",
+              "options": [
+                "À plus tard",
+                "À tout de suite",
+                "Bonne nuit",
+                "Bon voyage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Più tardi = plus tard."
+            },
+            {
+              "id": "q5",
+              "question": "Buona giornata! on le dit en :",
+              "type": "single_choice",
+              "options": [
+                "Partant (bonne journée)",
+                "Arrivant le matin seulement",
+                "Mangeant",
+                "Dormant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souhait en quittant quelqu'un."
+            },
+            {
+              "id": "q6",
+              "question": "Ci vediamo! =",
+              "type": "single_choice",
+              "options": ["On se voit !", "On mange", "On dort", "On étudie"],
+              "correctAnswers": [0],
+              "explanation": "Vedersi = se voir."
+            },
+            {
+              "id": "q7",
+              "question": "Entre amis, au revoir :",
+              "type": "single_choice",
+              "options": ["Ciao!", "Buongiorno!", "Prego!", "Scusa!"],
+              "correctAnswers": [0],
+              "explanation": "Ciao au départ entre proches."
+            },
+            {
+              "id": "q8",
+              "question": "Arrivederci est plus … que ciao entre inconnus.",
+              "type": "single_choice",
+              "options": ["Formel", "Grossier", "Ancien", "Rare"],
+              "correctAnswers": [0],
+              "explanation": "Arrivederci reste poli."
+            },
+            {
+              "id": "q9",
+              "question": "A presto au revoir signifie :",
+              "type": "single_choice",
+              "options": ["À bientôt", "À jamais", "Bonsoir", "Bonne nuit"],
+              "correctAnswers": [0],
+              "explanation": "Presto = bientôt."
+            },
+            {
+              "id": "q10",
+              "question": "Quale NON è un addio?",
+              "type": "single_choice",
+              "options": ["Buongiorno", "Arrivederci", "Ciao", "A domani"],
+              "correctAnswers": [0],
+              "explanation": "Buongiorno = bonjour, pas au revoir."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Dialogue de classe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles répliques ouvrent un dialogue de présentation ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ciao! Come ti chiami?",
+                "Buongiorno! Mi chiamo…",
+                "Buonanotte!",
+                "Arrivederci!"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Salut + question ou bonjour + nom."
+            },
+            {
+              "id": "q2",
+              "question": "Ordre logique : salut, nom, âge :",
+              "type": "single_choice",
+              "options": [
+                "Ciao – Mi chiamo… – Ho… anni",
+                "Ho… anni – Ciao – Mi chiamo",
+                "Arrivederci – Ciao – Prego",
+                "Grazie – Buonanotte – Ciao"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On se salue, nomme, puis âge si besoin."
+            },
+            {
+              "id": "q3",
+              "question": "Professeur entre : « Buongiorno, ragazzi! » Réponse :",
+              "type": "single_choice",
+              "options": [
+                "Buongiorno, professore!",
+                "Buonanotte!",
+                "Arrivederci!",
+                "Grazie mille!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On rend le bonjour."
+            },
+            {
+              "id": "q4",
+              "question": "Ragazzi signifie :",
+              "type": "single_choice",
+              "options": [
+                "Les élèves / les gars",
+                "Les profs",
+                "Les villes",
+                "Les livres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ragazzi = jeunes / camarades."
+            },
+            {
+              "id": "q5",
+              "question": "« Io ho quindici anni e sono di Lione. » Combien d'infos ?",
+              "type": "single_choice",
+              "options": [
+                "Âge et ville",
+                "Nom seulement",
+                "Salut seulement",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quindici ans + Lione."
+            },
+            {
+              "id": "q6",
+              "question": "E tu? après une présentation sert à :",
+              "type": "single_choice",
+              "options": [
+                "Relancer l'autre",
+                "Dire au revoir",
+                "Dormir",
+                "Manger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Et toi ? → même info."
+            },
+            {
+              "id": "q7",
+              "question": "Piacere! arrive souvent :",
+              "type": "single_choice",
+              "options": [
+                "Après les prénoms",
+                "Avant le bonjour",
+                "La nuit",
+                "En partant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après avoir dit qui on est."
+            },
+            {
+              "id": "q8",
+              "question": "Fin de cours :",
+              "type": "single_choice",
+              "options": [
+                "Arrivederci, a domani!",
+                "Buongiorno!",
+                "Mi chiamo…",
+                "Come ti chiami?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au revoir + à demain."
+            },
+            {
+              "id": "q9",
+              "question": "Sto bene, e tu? répond à :",
+              "type": "single_choice",
+              "options": [
+                "Come stai?",
+                "Di dove sei?",
+                "Quanti anni hai?",
+                "Come ti chiami?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question sur la forme."
+            },
+            {
+              "id": "q10",
+              "question": "Phrase complète de présentation :",
+              "type": "single_choice",
+              "options": [
+                "Ciao! Mi chiamo Anna, ho tredici anni e sono di Nizza.",
+                "Arrivederci ho Anna.",
+                "Grazie di tredici.",
+                "Prego sono ciao."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salut, nom, âge, origine."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Tu ou vous",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formes sont à la 2e personne du singulier (tu) ?",
+              "type": "multiple_choice",
+              "options": [
+                "Come ti chiami?",
+                "Come stai?",
+                "Come si chiama?",
+                "Come state?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ti et stai = tu."
+            },
+            {
+              "id": "q2",
+              "question": "Come si chiama? (politesse) =",
+              "type": "single_choice",
+              "options": [
+                "Comment vous appelez-vous ?",
+                "Comment t'appelles-tu ?",
+                "Comment il s'appelle ?",
+                "Comment dormez-vous ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si = forme de politesse."
+            },
+            {
+              "id": "q3",
+              "question": "Mi chiamo (tu) → politesse :",
+              "type": "single_choice",
+              "options": [
+                "Mi chiamo (identique) / Lei si chiama…",
+                "Ti chiamo",
+                "Vi chiamo sempre mi chiamo",
+                "Ho chiamo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lei si chiama… pour l'autre ; je → mi chiamo."
+            },
+            {
+              "id": "q4",
+              "question": "Scusi est :",
+              "type": "single_choice",
+              "options": ["Pardon (vous)", "Pardon (tu)", "Merci", "Bonjour"],
+              "correctAnswers": [0],
+              "explanation": "Scusi = politesse."
+            },
+            {
+              "id": "q5",
+              "question": "Scusa est :",
+              "type": "single_choice",
+              "options": [
+                "Pardon (tu)",
+                "Pardon (vous)",
+                "Au revoir",
+                "Bonsoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scusa entre amis."
+            },
+            {
+              "id": "q6",
+              "question": "Come state? s'adresse à :",
+              "type": "single_choice",
+              "options": [
+                "Vous / plusieurs",
+                "Un chat",
+                "Une table",
+                "Un livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "State = vous."
+            },
+            {
+              "id": "q7",
+              "question": "Entre deux élèves de 4e, on utilise :",
+              "type": "single_choice",
+              "options": [
+                "Come ti chiami?",
+                "Come si chiama, Signore?",
+                "Come sta, professore?",
+                "Come si chiama, maestro?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tu entre pairs."
+            },
+            {
+              "id": "q8",
+              "question": "Signore / Signora =",
+              "type": "single_choice",
+              "options": [
+                "Monsieur / Madame",
+                "Garçon / fille",
+                "Merci / pardon",
+                "Bonjour / au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titres de politesse."
+            },
+            {
+              "id": "q9",
+              "question": "Buongiorno, signora! convient :",
+              "type": "single_choice",
+              "options": [
+                "À une adulte",
+                "À un bébé",
+                "À une chaise",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signora = madame."
+            },
+            {
+              "id": "q10",
+              "question": "Quale frase è informale?",
+              "type": "single_choice",
+              "options": [
+                "Ciao, come stai?",
+                "Buongiorno, signore. Come sta?",
+                "Arrivederci, signora.",
+                "Scusi, per favore."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ciao + ti = informel."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision saluer et se présenter",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases sont correctes pour se présenter en 4e ?",
+              "type": "multiple_choice",
+              "options": [
+                "Mi chiamo Luca e ho quattordici anni.",
+                "Sono di Firenze.",
+                "Ho di Firenze quattordici.",
+                "Chiamo mi Luca."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mi chiamo + ho … anni ; sono di + ville."
+            },
+            {
+              "id": "q2",
+              "question": "Traduction : « Bonjour, je m'appelle Marie, j'ai quatorze ans. »",
+              "type": "single_choice",
+              "options": [
+                "Buongiorno, mi chiamo Marie, ho quattordici anni.",
+                "Buonanotte, sono Marie quattordici.",
+                "Ciao, ho Marie di quattordici.",
+                "Arrivederci, mi quattordici Marie."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure cours u1."
+            },
+            {
+              "id": "q3",
+              "question": "Di dove sei? → Réponse :",
+              "type": "single_choice",
+              "options": [
+                "Sono di Bordeaux.",
+                "Ho di Bordeaux.",
+                "Mi chiamo Bordeaux.",
+                "Sto Bordeaux."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sono di + ville."
+            },
+            {
+              "id": "q4",
+              "question": "Come stai? →",
+              "type": "single_choice",
+              "options": [
+                "Sto bene, grazie.",
+                "Mi chiamo bene.",
+                "Ho bene anni.",
+                "Sono di bene."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sto bene."
+            },
+            {
+              "id": "q5",
+              "question": "Merci →",
+              "type": "single_choice",
+              "options": [
+                "Grazie → Prego",
+                "Grazie → Scusa",
+                "Ciao → Prego",
+                "Prego → Grazie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paire grazie / prego."
+            },
+            {
+              "id": "q6",
+              "question": "Le matin en classe :",
+              "type": "single_choice",
+              "options": [
+                "Buongiorno!",
+                "Buonanotte!",
+                "Arrivederci!",
+                "A domani!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entrée = buongiorno."
+            },
+            {
+              "id": "q7",
+              "question": "Piacere! signifie :",
+              "type": "single_choice",
+              "options": ["Enchanté", "Pardon", "Faim", "Fatigue"],
+              "correctAnswers": [0],
+              "explanation": "Rencontre."
+            },
+            {
+              "id": "q8",
+              "question": "Quanti anni hai? →",
+              "type": "single_choice",
+              "options": [
+                "Ho sedici anni.",
+                "Sono sedici.",
+                "Ho sedici.",
+                "Sto sedici anni."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ho + numero + anni."
+            },
+            {
+              "id": "q9",
+              "question": "Pour un au revoir poli en classe, on choisit :",
+              "type": "single_choice",
+              "options": ["Arrivederci", "Buongiorno", "Grazie", "Per favore"],
+              "correctAnswers": [0],
+              "explanation": "Arrivederci = au revoir."
+            },
+            {
+              "id": "q10",
+              "question": "Petit dialogue : « Ciao! » « Ciao! Come ti chiami? » « … »",
+              "type": "single_choice",
+              "options": [
+                "Mi chiamo Tommaso.",
+                "Arrivederci.",
+                "Buonanotte.",
+                "Ho di Roma."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse au nom."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Articles il et la",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels articles conviennent devant des mots masculin et féminin standards ?",
+              "type": "multiple_choice",
+              "options": ["il libro", "la penna", "lo gatto", "la ragazzo"],
+              "correctAnswers": [0, 1],
+              "explanation": "Il + masc. ; la + fém. (la ragazzo est faux)."
+            },
+            {
+              "id": "q2",
+              "question": "Le livre :",
+              "type": "single_choice",
+              "options": ["il libro", "la libro", "lo libro", "l libro"],
+              "correctAnswers": [0],
+              "explanation": "Libro masculin → il."
+            },
+            {
+              "id": "q3",
+              "question": "La règle : penna (stylo) →",
+              "type": "single_choice",
+              "options": ["la penna", "il penna", "lo penna", "i penna"],
+              "correctAnswers": [0],
+              "explanation": "Penna féminin → la."
+            },
+            {
+              "id": "q4",
+              "question": "il professeur en italien courant :",
+              "type": "single_choice",
+              "options": [
+                "il professore",
+                "la professore",
+                "il professora",
+                "lo professore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Professore masculin."
+            },
+            {
+              "id": "q5",
+              "question": "la scuola =",
+              "type": "single_choice",
+              "options": ["l'école", "le livre", "le chat", "le garçon"],
+              "correctAnswers": [0],
+              "explanation": "Scuola féminin."
+            },
+            {
+              "id": "q6",
+              "question": "Quale ha l'articolo la?",
+              "type": "single_choice",
+              "options": ["la porta", "il porta", "lo porta", "i porta"],
+              "correctAnswers": [0],
+              "explanation": "Porta (porte) féminin."
+            },
+            {
+              "id": "q7",
+              "question": "il tavolo signifie :",
+              "type": "single_choice",
+              "options": ["la table", "la porte", "la chaise", "la fenêtre"],
+              "correctAnswers": [0],
+              "explanation": "Tavolo = table."
+            },
+            {
+              "id": "q8",
+              "question": "la sedia =",
+              "type": "single_choice",
+              "options": ["la chaise", "le tableau", "le stylo", "le cahier"],
+              "correctAnswers": [0],
+              "explanation": "Sedia féminin."
+            },
+            {
+              "id": "q9",
+              "question": "Il + nom masculin singulier :",
+              "type": "single_choice",
+              "options": [
+                "il quaderno",
+                "la quaderno",
+                "le quaderno",
+                "la quaderni"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quaderno = cahier (m.)."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle forme est incorrecte ?",
+              "type": "single_choice",
+              "options": ["la ragazzo", "la ragazza", "il ragazzo", "la penna"],
+              "correctAnswers": [0],
+              "explanation": "Ragazzo est masculin → il ragazzo."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Articles lo et l'",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Devant quels débuts utilise-t-on lo ou l' ?",
+              "type": "multiple_choice",
+              "options": ["lo studente", "l'amica", "il studente", "la amica"],
+              "correctAnswers": [0, 1],
+              "explanation": "Lo devant s+ consonne ; l' devant voyelle."
+            },
+            {
+              "id": "q2",
+              "question": "lo zaino (sac à dos) :",
+              "type": "single_choice",
+              "options": ["lo zaino", "il zaino", "la zaino", "l zaino"],
+              "correctAnswers": [0],
+              "explanation": "Z → lo."
+            },
+            {
+              "id": "q3",
+              "question": "l'amico =",
+              "type": "single_choice",
+              "options": ["l'ami (m.)", "la amie", "il amico", "lo amico"],
+              "correctAnswers": [0],
+              "explanation": "Voyelle → l'."
+            },
+            {
+              "id": "q4",
+              "question": "lo specchio :",
+              "type": "single_choice",
+              "options": [
+                "lo specchio",
+                "il specchio",
+                "la specchio",
+                "i specchio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sp- → lo."
+            },
+            {
+              "id": "q5",
+              "question": "l'italiano (la langue) :",
+              "type": "single_choice",
+              "options": [
+                "l'italiano",
+                "il italiano",
+                "lo italiano",
+                "la italiano"
+              ],
+              "correctAnswers": [0],
+              "explanation": "I voyelle → l'."
+            },
+            {
+              "id": "q6",
+              "question": "lo sport :",
+              "type": "single_choice",
+              "options": ["lo sport", "il sport", "la sport", "le sport"],
+              "correctAnswers": [0],
+              "explanation": "Sp- masculin → lo."
+            },
+            {
+              "id": "q7",
+              "question": "l'ora (l'heure) :",
+              "type": "single_choice",
+              "options": ["l'ora", "la ora", "il ora", "lo ora"],
+              "correctAnswers": [0],
+              "explanation": "O voyelle."
+            },
+            {
+              "id": "q8",
+              "question": "lo studente =",
+              "type": "single_choice",
+              "options": ["l'élève", "la maîtresse", "le livre", "la porte"],
+              "correctAnswers": [0],
+              "explanation": "Studente avec lo."
+            },
+            {
+              "id": "q9",
+              "question": "Quale articolo è sbagliato?",
+              "type": "single_choice",
+              "options": ["la amica", "l'amica", "lo zio", "il fratello"],
+              "correctAnswers": [0],
+              "explanation": "Amica → l'amica."
+            },
+            {
+              "id": "q10",
+              "question": "lo gnomo (exemple rare) utilise lo car :",
+              "type": "single_choice",
+              "options": ["gn-", "am-", "lib-", "penn-"],
+              "correctAnswers": [0],
+              "explanation": "Gn- comme z-, sp-, etc. → lo."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Masculin et féminin",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles paires genre sont correctes ?",
+              "type": "multiple_choice",
+              "options": [
+                "il ragazzo / la ragazza",
+                "il amica / la amico",
+                "il gatto / la gatta",
+                "la libro / il penna"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ragazzo/ragazza ; gatto/gatta."
+            },
+            {
+              "id": "q2",
+              "question": "Frère / sœur :",
+              "type": "single_choice",
+              "options": [
+                "il fratello / la sorella",
+                "la fratello / il sorella",
+                "lo fratello / lo sorella",
+                "il sorella / la fratello"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fratello m., sorella f."
+            },
+            {
+              "id": "q3",
+              "question": "la mamma et :",
+              "type": "single_choice",
+              "options": ["il papà", "la papà", "lo mamma", "il mamma"],
+              "correctAnswers": [0],
+              "explanation": "Papà masculin."
+            },
+            {
+              "id": "q4",
+              "question": "Amico / amica :",
+              "type": "single_choice",
+              "options": [
+                "l'amico / l'amica",
+                "il amico / il amica",
+                "lo amico / la amica",
+                "l'amico / il amica"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle → l'."
+            },
+            {
+              "id": "q5",
+              "question": "Professore / professoressa :",
+              "type": "single_choice",
+              "options": [
+                "il professore / la professoressa",
+                "la professore / il professoressa",
+                "lo professore / lo professoressa",
+                "il professoressa / la professore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suffixe -essa au féminin."
+            },
+            {
+              "id": "q6",
+              "question": "Il cane (chien m.) → femelle :",
+              "type": "single_choice",
+              "options": ["la cagna", "il cagna", "la cane", "lo cane"],
+              "correctAnswers": [0],
+              "explanation": "Cagna = chienne."
+            },
+            {
+              "id": "q7",
+              "question": "La città est :",
+              "type": "single_choice",
+              "options": ["féminin", "masculin", "neutre", "pluriel seulement"],
+              "correctAnswers": [0],
+              "explanation": "Città féminin en -à."
+            },
+            {
+              "id": "q8",
+              "question": "Il treno / la :",
+              "type": "single_choice",
+              "options": [
+                "non change pas en traine (reste treno m.)",
+                "trena",
+                "trenessa",
+                "trenina se petite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Treno reste masculin."
+            },
+            {
+              "id": "q9",
+              "question": "Ragazzo → féminin :",
+              "type": "single_choice",
+              "options": ["ragazza", "ragazzi", "ragazze", "ragazzino"],
+              "correctAnswers": [0],
+              "explanation": "-a au féminin."
+            },
+            {
+              "id": "q10",
+              "question": "Quale nome è femminile?",
+              "type": "single_choice",
+              "options": ["la finestra", "il quaderno", "lo zaino", "il banco"],
+              "correctAnswers": [0],
+              "explanation": "Finestra = fenêtre (f.)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Pluriel des noms",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels pluriels sont corrects ?",
+              "type": "multiple_choice",
+              "options": ["i libri", "le penne", "i ragazze", "le ragazzi"],
+              "correctAnswers": [0, 1],
+              "explanation": "Masc. -o → -i ; fém. -a → -e."
+            },
+            {
+              "id": "q2",
+              "question": "il libro → pluriel :",
+              "type": "single_choice",
+              "options": ["i libri", "le libri", "i libre", "le libro"],
+              "correctAnswers": [0],
+              "explanation": "-o → -i avec i."
+            },
+            {
+              "id": "q3",
+              "question": "la penna →",
+              "type": "single_choice",
+              "options": ["le penne", "i penne", "le penna", "i penna"],
+              "correctAnswers": [0],
+              "explanation": "Fém. → le + -e."
+            },
+            {
+              "id": "q4",
+              "question": "i ragazzi =",
+              "type": "single_choice",
+              "options": [
+                "les garçons / les gamins",
+                "les filles",
+                "les livres",
+                "les stylos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ragazzi pluriel masc."
+            },
+            {
+              "id": "q5",
+              "question": "le ragazze =",
+              "type": "single_choice",
+              "options": [
+                "les filles",
+                "les garçons",
+                "les profs",
+                "les tables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fém. pluriel le + -e."
+            },
+            {
+              "id": "q6",
+              "question": "lo studente → pluriel :",
+              "type": "single_choice",
+              "options": [
+                "gli studenti",
+                "i studenti",
+                "le studenti",
+                "lo studenti"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lo → gli au pluriel."
+            },
+            {
+              "id": "q7",
+              "question": "l'amico → pluriel :",
+              "type": "single_choice",
+              "options": ["gli amici", "i amici", "le amici", "l'amici"],
+              "correctAnswers": [0],
+              "explanation": "L' masc. → gli."
+            },
+            {
+              "id": "q8",
+              "question": "la sedia →",
+              "type": "single_choice",
+              "options": ["le sedie", "i sedie", "le sedia", "i sedias"],
+              "correctAnswers": [0],
+              "explanation": "Sedia → sedie."
+            },
+            {
+              "id": "q9",
+              "question": "i quaderni =",
+              "type": "single_choice",
+              "options": [
+                "les cahiers",
+                "le cahier",
+                "les stylos",
+                "les chaises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quaderni pluriel."
+            },
+            {
+              "id": "q10",
+              "question": "Erreur de pluriel :",
+              "type": "single_choice",
+              "options": ["i ragazze", "i ragazzi", "le ragazze", "i libri"],
+              "correctAnswers": [0],
+              "explanation": "Ragazze fém. → le ragazze."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Accord des adjectifs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels accords adjectif + nom sont justes ?",
+              "type": "multiple_choice",
+              "options": [
+                "ragazzo alto",
+                "ragazza alta",
+                "ragazza alto",
+                "ragazzo alta"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Alto m. ; alta f."
+            },
+            {
+              "id": "q2",
+              "question": "Un garçon italien :",
+              "type": "single_choice",
+              "options": [
+                "ragazzo italiano",
+                "ragazzo italiana",
+                "ragazza italiano",
+                "ragazza italiana"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Italiano s'accorde au masc."
+            },
+            {
+              "id": "q3",
+              "question": "Une fille italienne :",
+              "type": "single_choice",
+              "options": [
+                "ragazza italiana",
+                "ragazza italiano",
+                "ragazzo italiana",
+                "ragazzo italiano"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Italiana au féminin."
+            },
+            {
+              "id": "q4",
+              "question": "libro interessante (m. sing.) :",
+              "type": "single_choice",
+              "options": [
+                "interessante",
+                "interessanti",
+                "interessanta",
+                "interessanti le"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En -e invariable au singulier m./f."
+            },
+            {
+              "id": "q5",
+              "question": "ragazze intelligenti :",
+              "type": "single_choice",
+              "options": [
+                "intelligenti (pluriel)",
+                "intelligente",
+                "intelligenta",
+                "intelligent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel → -i pour -e."
+            },
+            {
+              "id": "q6",
+              "question": "casa grande (f.) :",
+              "type": "single_choice",
+              "options": ["grande", "grandi", "grando", "granda"],
+              "correctAnswers": [0],
+              "explanation": "Grande invariable au sing."
+            },
+            {
+              "id": "q7",
+              "question": "Sono … (féminin) :",
+              "type": "single_choice",
+              "options": ["contenta", "contento", "contenti", "contente"],
+              "correctAnswers": [0],
+              "explanation": "Je suis contente (f.)."
+            },
+            {
+              "id": "q8",
+              "question": "Marco è … (garçon) :",
+              "type": "single_choice",
+              "options": ["simpatico", "simpatica", "simpatiche", "simpatici"],
+              "correctAnswers": [0],
+              "explanation": "Simpatico masc."
+            },
+            {
+              "id": "q9",
+              "question": "le penne rosa : rosa est :",
+              "type": "single_choice",
+              "options": ["invariable (couleur)", "rosa rosi", "rosi", "rose"],
+              "correctAnswers": [0],
+              "explanation": "Couleurs en -a souvent invariables."
+            },
+            {
+              "id": "q10",
+              "question": "Quale accoppiata è corretta?",
+              "type": "single_choice",
+              "options": [
+                "bambina piccola",
+                "bambina piccolo",
+                "bambino piccola",
+                "bambino piccola"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Piccola avec bambina."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Chiffres utiles",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels nombres correspondent à 13 et 14 ?",
+              "type": "multiple_choice",
+              "options": ["tredici", "quattordici", "trenta", "quaranta"],
+              "correctAnswers": [0, 1],
+              "explanation": "Tredici = 13 ; quattordici = 14."
+            },
+            {
+              "id": "q2",
+              "question": "Quindici =",
+              "type": "single_choice",
+              "options": ["15", "5", "50", "16"],
+              "correctAnswers": [0],
+              "explanation": "Quindici = quinze."
+            },
+            {
+              "id": "q3",
+              "question": "Diciassette =",
+              "type": "single_choice",
+              "options": ["17", "7", "70", "16"],
+              "correctAnswers": [0],
+              "explanation": "Diciassette = dix-sept."
+            },
+            {
+              "id": "q4",
+              "question": "Ho … anni avec 12 :",
+              "type": "single_choice",
+              "options": ["dodici", "diciotto", "ventidue", "undici"],
+              "correctAnswers": [0],
+              "explanation": "Dodici = douze."
+            },
+            {
+              "id": "q5",
+              "question": "Venti =",
+              "type": "single_choice",
+              "options": ["20", "2", "12", "22"],
+              "correctAnswers": [0],
+              "explanation": "Venti = vingt."
+            },
+            {
+              "id": "q6",
+              "question": "Zero / uno / due :",
+              "type": "single_choice",
+              "options": [
+                "0 / 1 / 2",
+                "1 / 2 / 3",
+                "10 / 20 / 30",
+                "2 / 3 / 4"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base numérique."
+            },
+            {
+              "id": "q7",
+              "question": "Sedici =",
+              "type": "single_choice",
+              "options": ["16", "6", "60", "15"],
+              "correctAnswers": [0],
+              "explanation": "Sedici = seize."
+            },
+            {
+              "id": "q8",
+              "question": "Diciannove =",
+              "type": "single_choice",
+              "options": ["19", "9", "90", "18"],
+              "correctAnswers": [0],
+              "explanation": "Diciannove = dix-neuf."
+            },
+            {
+              "id": "q9",
+              "question": "Tre + dieci ≈",
+              "type": "single_choice",
+              "options": [
+                "tredici (13) pas 30",
+                "trenta",
+                "tre dieci",
+                "dieci tre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "13 se dit tredici, pas tre+dieci."
+            },
+            {
+              "id": "q10",
+              "question": "Quale numero manca: undici, dodici, …, quattordici?",
+              "type": "single_choice",
+              "options": ["tredici", "quindici", "sedici", "diciassette"],
+              "correctAnswers": [0],
+              "explanation": "13 = tredici entre 12 et 14."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Couleurs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles traductions couleur sont correctes ?",
+              "type": "multiple_choice",
+              "options": [
+                "rosso = rouge",
+                "blu = bleu",
+                "rossa = rouge (m.)",
+                "il blu = bleu"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rosso rouge ; blu bleu (souvent invariable)."
+            },
+            {
+              "id": "q2",
+              "question": "Il quaderno verde : verde est :",
+              "type": "single_choice",
+              "options": ["invariable au singulier", "verdi", "verda", "verdo"],
+              "correctAnswers": [0],
+              "explanation": "Verde m./f. sing."
+            },
+            {
+              "id": "q3",
+              "question": "La penna rossa :",
+              "type": "single_choice",
+              "options": ["rossa (accord f.)", "rosso", "rossi", "rose"],
+              "correctAnswers": [0],
+              "explanation": "Rosso → rossa au féminin."
+            },
+            {
+              "id": "q4",
+              "question": "Nero / nera =",
+              "type": "single_choice",
+              "options": [
+                "noir / noire",
+                "blanc / blanche",
+                "vert / verte",
+                "gris / grise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nero nera = noir."
+            },
+            {
+              "id": "q5",
+              "question": "Bianco / bianca =",
+              "type": "single_choice",
+              "options": ["blanc / blanche", "noir", "bleu", "jaune"],
+              "correctAnswers": [0],
+              "explanation": "Bianco bianca."
+            },
+            {
+              "id": "q6",
+              "question": "Giallo =",
+              "type": "single_choice",
+              "options": ["jaune", "gris", "marron", "orange"],
+              "correctAnswers": [0],
+              "explanation": "Giallo = jaune."
+            },
+            {
+              "id": "q7",
+              "question": "Le macchine rosse : rosse =",
+              "type": "single_choice",
+              "options": [
+                "pluriel féminin de rosso",
+                "singulier",
+                "masculin",
+                "invariable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rosse fém. plur."
+            },
+            {
+              "id": "q8",
+              "question": "Grigio / grigia =",
+              "type": "single_choice",
+              "options": ["gris / grise", "vert", "violet", "rose"],
+              "correctAnswers": [0],
+              "explanation": "Grigio grigia."
+            },
+            {
+              "id": "q9",
+              "question": "Arancione (orange) au singulier :",
+              "type": "single_choice",
+              "options": [
+                "souvent invariable arancione",
+                "arancioni seulement pluriel",
+                "aranciona",
+                "aranciono"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleur en -e : arancione."
+            },
+            {
+              "id": "q10",
+              "question": "Quale colore è « bleu »?",
+              "type": "single_choice",
+              "options": ["blu", "bleu", "bleue", "blù"],
+              "correctAnswers": [0],
+              "explanation": "Blu en italien."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Famille et personnes",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent la famille proche ?",
+              "type": "multiple_choice",
+              "options": ["madre", "padre", "zaino", "tavolo"],
+              "correctAnswers": [0, 1],
+              "explanation": "Madre mère ; padre père."
+            },
+            {
+              "id": "q2",
+              "question": "La mère :",
+              "type": "single_choice",
+              "options": ["la madre", "il madre", "lo madre", "i madre"],
+              "correctAnswers": [0],
+              "explanation": "Madre féminin."
+            },
+            {
+              "id": "q3",
+              "question": "Il padre =",
+              "type": "single_choice",
+              "options": ["le père", "la mère", "le frère", "la sœur"],
+              "correctAnswers": [0],
+              "explanation": "Padre = père."
+            },
+            {
+              "id": "q4",
+              "question": "Il nonno / la nonna =",
+              "type": "single_choice",
+              "options": [
+                "grand-père / grand-mère",
+                "oncle / tante",
+                "cousin / cousine",
+                "père / mère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nonno nonna."
+            },
+            {
+              "id": "q5",
+              "question": "Sorella =",
+              "type": "single_choice",
+              "options": ["sœur", "frère", "mère", "fille"],
+              "correctAnswers": [0],
+              "explanation": "Sorella f."
+            },
+            {
+              "id": "q6",
+              "question": "Il cugino =",
+              "type": "single_choice",
+              "options": [
+                "le cousin (m.)",
+                "la cousine",
+                "l'oncle",
+                "le neveu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cugino m."
+            },
+            {
+              "id": "q7",
+              "question": "La famiglia =",
+              "type": "single_choice",
+              "options": ["la famille", "l'ami", "l'école", "la ville"],
+              "correctAnswers": [0],
+              "explanation": "Famiglia f."
+            },
+            {
+              "id": "q8",
+              "question": "Bambino / bambina =",
+              "type": "single_choice",
+              "options": [
+                "petit garçon / petite fille",
+                "prof / prof",
+                "livre / stylo",
+                "père / mère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enfant m./f."
+            },
+            {
+              "id": "q9",
+              "question": "Marito / moglie =",
+              "type": "single_choice",
+              "options": [
+                "mari / femme (épouse)",
+                "frère / sœur",
+                "fils / fille",
+                "oncle / tante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couple adulte."
+            },
+            {
+              "id": "q10",
+              "question": "Quale parola NON è una persona?",
+              "type": "single_choice",
+              "options": ["il quaderno", "la nonna", "il fratello", "la zia"],
+              "correctAnswers": [0],
+              "explanation": "Quaderno = cahier."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "À l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots appartiennent à la salle de classe ?",
+              "type": "multiple_choice",
+              "options": ["la lavagna", "il banco", "il cane", "la cucina"],
+              "correctAnswers": [0, 1],
+              "explanation": "Lavagna tableau ; banco pupitre."
+            },
+            {
+              "id": "q2",
+              "question": "La classe (salle) :",
+              "type": "single_choice",
+              "options": ["la classe", "il classe", "lo classe", "le classe"],
+              "correctAnswers": [0],
+              "explanation": "Classe fém. (emprunt)."
+            },
+            {
+              "id": "q3",
+              "question": "Il compito =",
+              "type": "single_choice",
+              "options": ["le devoir", "le jeu", "le sport", "le repas"],
+              "correctAnswers": [0],
+              "explanation": "Compito = devoir."
+            },
+            {
+              "id": "q4",
+              "question": "Lo zaino =",
+              "type": "single_choice",
+              "options": ["le sac à dos", "le stylo", "la gomme", "la règle"],
+              "correctAnswers": [0],
+              "explanation": "Zaino avec lo."
+            },
+            {
+              "id": "q5",
+              "question": "La materia (matière) :",
+              "type": "single_choice",
+              "options": [
+                "la materia",
+                "il materia",
+                "lo materia",
+                "i materia"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Materia scolaire f."
+            },
+            {
+              "id": "q6",
+              "question": "Studiare =",
+              "type": "single_choice",
+              "options": ["étudier", "dormir", "manger", "courir"],
+              "correctAnswers": [0],
+              "explanation": "Verbe étudier."
+            },
+            {
+              "id": "q7",
+              "question": "L'italiano (cours) :",
+              "type": "single_choice",
+              "options": [
+                "l'italiano",
+                "il italiano",
+                "la italiano",
+                "lo italiano"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langue avec l'."
+            },
+            {
+              "id": "q8",
+              "question": "Il dizionario =",
+              "type": "single_choice",
+              "options": [
+                "le dictionnaire",
+                "le cahier",
+                "la carte",
+                "la cloche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dizionario m."
+            },
+            {
+              "id": "q9",
+              "question": "La lezione =",
+              "type": "single_choice",
+              "options": [
+                "la leçon",
+                "la récré",
+                "les vacances",
+                "le week-end"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lezione f."
+            },
+            {
+              "id": "q10",
+              "question": "In classe diciamo spesso :",
+              "type": "single_choice",
+              "options": [
+                "Buongiorno, professore!",
+                "Buonanotte!",
+                "Arrivederci subito!",
+                "Grazie mille notte!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salut au prof."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision mots essentiels",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases utilisent bien articles et accords ?",
+              "type": "multiple_choice",
+              "options": [
+                "la ragazza italiana",
+                "il ragazzo italiano",
+                "la ragazzo italiana",
+                "il penna rossa"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Genre + italiano/italiana."
+            },
+            {
+              "id": "q2",
+              "question": "Pluriel de la sedia :",
+              "type": "single_choice",
+              "options": ["le sedie", "i sedie", "le sedia", "i sedias"],
+              "correctAnswers": [0],
+              "explanation": "Sedia → sedie."
+            },
+            {
+              "id": "q3",
+              "question": "lo specchio → pluriel :",
+              "type": "single_choice",
+              "options": [
+                "gli specchi",
+                "i specchi",
+                "le specchi",
+                "lo specchi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lo → gli."
+            },
+            {
+              "id": "q4",
+              "question": "Tre quaderni … (vert) :",
+              "type": "single_choice",
+              "options": ["verdi", "verde", "verda", "verdo"],
+              "correctAnswers": [0],
+              "explanation": "Pluriel → verdi."
+            },
+            {
+              "id": "q5",
+              "question": "Ho quindici anni. quindici =",
+              "type": "single_choice",
+              "options": ["15", "14", "16", "50"],
+              "correctAnswers": [0],
+              "explanation": "Quindici = 15."
+            },
+            {
+              "id": "q6",
+              "question": "l'amica → pluriel :",
+              "type": "single_choice",
+              "options": ["le amiche", "i amiche", "gli amiche", "l'amiche"],
+              "correctAnswers": [0],
+              "explanation": "Fém. l' → le au pluriel."
+            },
+            {
+              "id": "q7",
+              "question": "Il fratello e la sorella sono … (grands) :",
+              "type": "single_choice",
+              "options": ["grandi", "grande", "grando", "granda"],
+              "correctAnswers": [0],
+              "explanation": "Pluriel mixte → grandi."
+            },
+            {
+              "id": "q8",
+              "question": "Article de zaino :",
+              "type": "single_choice",
+              "options": ["lo zaino", "il zaino", "la zaino", "l zaino"],
+              "correctAnswers": [0],
+              "explanation": "Z- → lo."
+            },
+            {
+              "id": "q9",
+              "question": "Sono contenta (je suis contente) : contenta s'accorde avec :",
+              "type": "single_choice",
+              "options": [
+                "une fille qui parle",
+                "un garçon",
+                "un livre",
+                "un stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contenta fém. 1re pers."
+            },
+            {
+              "id": "q10",
+              "question": "Phrase correcte :",
+              "type": "single_choice",
+              "options": [
+                "Ho dodici anni e ho lo zaino blu.",
+                "Ho dodici e zaino il.",
+                "Sono dodici il blu zaino.",
+                "Mi chiamo dodici zaino."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Âge + objet avec article lo."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2678 @@
+{
+  "id": "4e-technologie-05",
+  "year": "4e",
+  "subject": "technologie",
+  "title": "Matériaux et procédés",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Choix d'un matériau",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les familles de matériaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Combien de grandes familles de matériaux distingue-t-on généralement en technologie ?",
+              "options": [
+                "2 familles",
+                "4 familles",
+                "6 familles",
+                "10 familles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On distingue traditionnellement 4 grandes familles : les matériaux métalliques, organiques, céramiques et composites."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quelle famille de matériaux appartiennent le bois, le coton et le cuir ?",
+              "options": [
+                "Les matériaux métalliques",
+                "Les matériaux organiques",
+                "Les céramiques",
+                "Les matériaux composites"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le bois, le cuir et le coton proviennent du monde vivant (végétal ou animal) : ce sont des matériaux organiques naturels."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À quelle famille appartiennent l'aluminium, le cuivre et le fer ?",
+              "options": [
+                "Les céramiques",
+                "Les matériaux métalliques",
+                "Les polymères",
+                "Les composites"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'aluminium, le cuivre et le fer sont des métaux purs ou transformés, appartenant à la famille des matériaux métalliques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le verre et la porcelaine appartiennent à la famille :",
+              "options": [
+                "Des matériaux organiques",
+                "Des céramiques et verres",
+                "Des composites",
+                "Des métaux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les verres, briques, tuiles et porcelaines font partie de la famille des céramiques et matériaux minéraux."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels matériaux font partie de la famille des matériaux organiques ?",
+              "options": [
+                "Le polypropylène (plastique)",
+                "L'acier inoxydable",
+                "Le caoutchouc naturel",
+                "Le plâtre"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les plastiques (organiques synthétiques) et le caoutchouc (organique naturel) sont des matériaux organiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un matériau composite ?",
+              "options": [
+                "Un métal très pur chauffé à haute température",
+                "L'assemblage d'au moins deux matériaux de familles différentes",
+                "Un plastique 100 % biodégradable",
+                "Une roche volcanique broyée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un composite associe deux matériaux non miscibles (un renfort et une matrice) pour combiner leurs qualités."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "De quelle matière première proviennent la plupart des plastiques usuels ?",
+              "options": [
+                "Du sable",
+                "Du pétrole",
+                "Du calcaire",
+                "Du minerai de fer"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La majorité des matières plastiques actuelles sont obtenues par raffinage et synthèse chimique à partir du pétrole."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre une matière première et un matériau ?",
+              "options": [
+                "Il n'y a aucune différence",
+                "Le matériau est une matière première transformée pour fabriquer un objet",
+                "La matière première est toujours synthétique",
+                "Le matériau se trouve directement dans la nature sans traitement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La matière première (minerai, pétrole, bois brut) est issue de la nature, puis traitée pour devenir un matériau utilisable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le béton armé est classé dans la famille des :",
+              "options": [
+                "Métaux",
+                "Composites",
+                "Plastiques",
+                "Céramiques pures"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le béton armé combine le béton (céramique/minéral) et des barres d'acier (métal) : c'est un matériau composite."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi classe-t-on les matériaux en familles ?",
+              "options": [
+                "Pour faciliter le choix selon leurs propriétés communes",
+                "Pour augmenter le prix des objets techniques",
+                "Uniquement pour des raisons décoratives",
+                "Pour interdire le mélange des matériaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette classification regroupe les matériaux partageant des structures, origines et comportements similaires."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les propriétés mécaniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle propriété mécanique caractérise la résistance d'un matériau à la rayure ou à la pénétration ?",
+              "options": [
+                "L'élasticité",
+                "La dureté",
+                "La ductilité",
+                "La porosité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La dureté est la capacité d'un matériau à s'opposer à la pénétration ou à la rayure par un autre corps."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un matériau qui reprend sa forme initiale après avoir été déformé est dit :",
+              "options": ["Plastique", "Élastique", "Fragile", "Ductile"],
+              "correctAnswers": [1],
+              "explanation": "L'élasticité est la faculté de reprendre sa forme d'origine dès que la force déformatrice cesse de s'exercer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un matériau capable d'être étiré en fil sans se rompre ?",
+              "options": ["Cassant", "Ductile", "Rigide", "Abrasif"],
+              "correctAnswers": [1],
+              "explanation": "La ductilité permet d'étirer un matériau sans qu'il ne casse (le cuivre est particulièrement ductile)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un matériau qui se brise sans déformation plastique préalable est dit :",
+              "options": ["Ductile", "Fragile", "Malléable", "Tenace"],
+              "correctAnswers": [1],
+              "explanation": "En mécanique, la fragilité est le contraire de la ténacité : le matériau casse net sous le choc sans se déformer."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels matériaux sont réputés pour leur très grande dureté de surface ?",
+              "options": [
+                "Le diamant",
+                "Le plomb",
+                "Le carbure de tungstène",
+                "Le liège"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le diamant et le carbure de tungstène possèdent une dureté exceptionnelle, souvent utilisés pour découper d'autres matériaux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "À quelle sollicitation mécanique un câble d'ascenseur est-il principalement soumis ?",
+              "options": [
+                "La compression",
+                "La traction",
+                "La torsion",
+                "Le cisaillement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le câble est tiré à ses deux extrémités par la charge : il travaille principalement en traction."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À quelle sollicitation mécanique les pieds d'une table supportant une charge lourde sont-ils soumis ?",
+              "options": [
+                "La traction",
+                "La compression",
+                "La flexion",
+                "Le flambement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les pieds de la table sont écrasés par le poids posé sur le plateau : ils subissent une compression."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle propriété permet d'aplatir un matériau en feuilles minces par martelage ou laminage ?",
+              "options": [
+                "La malléabilité",
+                "La fragilité",
+                "L'élasticité",
+                "La transparence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La malléabilité est l'aptitude d'un matériau (comme l'or ou l'aluminium) à être réduit en feuilles très minces."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'échelle de Mohs sert à mesurer :",
+              "options": [
+                "La masse volumique",
+                "La dureté relative des minéraux",
+                "La résistance thermique",
+                "La conductivité électrique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'échelle de Mohs classe les minéraux de 1 (talc, très tendre) à 10 (diamant, le plus dur) selon leur capacité à se rayer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un plongeoir de piscine fléchit lorsqu'un nageur marche dessus. Quelle est cette contrainte ?",
+              "options": [
+                "La flexion",
+                "La torsion",
+                "La traction pure",
+                "L'abrasion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La flexion combine une courbure sous l'action d'une force perpendiculaire à l'axe de la planche."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Propriétés physiques et thermiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on la masse volumique d'un matériau ?",
+              "options": [
+                "Volume divisé par la masse",
+                "Masse divisée par le volume",
+                "Masse multipliée par le volume",
+                "Longueur multipliée par la masse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La masse volumique rho s'exprime par la formule rho = masse / volume (souvent en kg/m3 ou en g/cm3)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel métal est particulièrement apprécié dans les transports pour sa faible masse volumique (légèreté) ?",
+              "options": ["Le plomb", "L'aluminium", "L'or", "Le fer"],
+              "correctAnswers": [1],
+              "explanation": "L'aluminium a une masse volumique d'environ 2,7 g/cm3, soit trois fois inférieure à celle de l'acier (7,8 g/cm3)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un matériau qui transmet facilement la chaleur d'un point à un autre possède une forte :",
+              "options": [
+                "Résistance mécanique",
+                "Conductivité thermique",
+                "Dureté",
+                "Masse volumique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La conductivité thermique traduit la vitesse et la facilité avec lesquelles la chaleur se propage dans le matériau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel matériau est un excellent isolant thermique utilisé dans les habitations ?",
+              "options": [
+                "Le cuivre",
+                "La laine de verre",
+                "La tôle d'acier",
+                "L'argent"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La laine de verre emprisonne de l'air immobile, ce qui lui confère d'excellentes qualités d'isolation thermique."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels matériaux sont de très bons conducteurs thermiques ?",
+              "options": [
+                "Le cuivre",
+                "L'aluminium",
+                "Le liège",
+                "Le polystyrène expansé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les métaux comme le cuivre et l'aluminium conduisent très bien la chaleur, contrairement au liège ou au polystyrène qui sont isolants."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel phénomène physique provoque l'augmentation du volume d'un matériau lorsqu'il chauffe ?",
+              "options": [
+                "La condensation",
+                "La dilatation thermique",
+                "L'oxydation",
+                "L'évaporation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sous l'effet de l'agitation thermique, les atomes s'écartent, provoquant la dilatation thermique du matériau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle grandeur correspond à la température à laquelle un matériau solide passe à l'état liquide ?",
+              "options": [
+                "Le point d'ébullition",
+                "Le point de fusion",
+                "La température de recuit",
+                "Le seuil de rupture"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le point de fusion est la température précise à laquelle se produit le changement d'état solide vers liquide."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi installe-t-on des joints de dilatation sur les ponts et rails de chemin de fer ?",
+              "options": [
+                "Pour faire joli",
+                "Pour absorber les variations de longueur causées par la température",
+                "Pour réduire la vitesse des véhicules",
+                "Pour évacuer l'eau de pluie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les variations saisonnières de température allongent ou rétrécissent les structures ; les joints évitent la déformation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la masse volumique approximative de l'eau liquide pure ?",
+              "options": [
+                "100 kg/m3",
+                "1 000 kg/m3 (soit 1 g/cm3)",
+                "5 000 kg/m3",
+                "10 000 kg/m3"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un litre d'eau liquide pure pèse exactement 1 kg, ce qui correspond à une masse volumique de 1 000 kg/m3 (1 g/cm3)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si un matériau a une masse volumique inférieure à celle de l'eau, que se passe-t-il quand on le plonge dans l'eau ?",
+              "options": [
+                "Il coule immédiatement au fond",
+                "Il flotte à la surface",
+                "Il explose spontanément",
+                "Il se dissout instantanément"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Selon le principe d'Archimède, un corps moins dense que le liquide dans lequel il est plongé flotte."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Propriétés électriques et magnétiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un matériau conducteur d'électricité ?",
+              "options": [
+                "Un matériau qui empêche tout passage d'électrons",
+                "Un matériau qui laisse circuler librement le courant électrique",
+                "Un matériau qui devient liquide sous tension",
+                "Un matériau qui absorbe la lumière"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un conducteur possède des électrons libres capables de se déplacer sous l'effet d'une différence de potentiel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel métal est le plus couramment utilisé pour fabriquer les fils et câbles électriques domestiques ?",
+              "options": ["Le fer", "Le cuivre", "Le plomb", "Le zinc"],
+              "correctAnswers": [1],
+              "explanation": "Le cuivre offre un excellent compromis entre très haute conductivité électrique, ductilité et coût abordable."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on un matériau qui s'oppose au passage du courant électrique ?",
+              "options": [
+                "Un supraconducteur",
+                "Un isolant électrique",
+                "Un semi-conducteur",
+                "Un générateur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un isolant électrique (ou diélectrique) ne contient pas d'électrons libres et empêche la circulation du courant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi les fils électriques en cuivre sont-ils recouverts d'une gaine en PVC ?",
+              "options": [
+                "Pour les rendre plus lourds",
+                "Pour isoler électriquement et protéger les usagers contre les chocs électriques",
+                "Pour accélérer la vitesse de l'électricité",
+                "Pour capter les ondes radio"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le PVC est un polymère isolant qui protège des courts-circuits et empêche toute électrisation au toucher."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels métaux sont attirés par un aimant permanent (ferromagnétiques) ?",
+              "options": ["Le fer", "L'aluminium", "Le nickel", "L'or"],
+              "correctAnswers": [0, 2],
+              "explanation": "Le fer, le nickel et le cobalt sont ferromagnétiques à température ambiante, contrairement à l'aluminium ou à l'or."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une canette de boisson n'est pas attirée par un aimant. De quel matériau est-elle très probablement faite ?",
+              "options": [
+                "D'acier doux",
+                "D'aluminium",
+                "De fonte",
+                "De fer pur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'aluminium n'est pas ferromagnétique, alors que les boîtes de conserve en acier sont attirées par les aimants."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel matériau semi-conducteur est la base de tous les microprocesseurs et puces électroniques ?",
+              "options": [
+                "Le silicium",
+                "Le calcaire",
+                "Le cuivre",
+                "Le latex"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le silicium est un semi-conducteur dont on peut contrôler la conductivité, indispensable en microélectronique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les plastiques usuels sont généralement :",
+              "options": [
+                "Excellents conducteurs électriques",
+                "De bons isolants électriques",
+                "Des aimants naturels",
+                "Radioactifs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les matières plastiques ne possèdent pas d'électrons libres mobiles, ce qui en fait d'excellents isolants."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la résistance intrinsèque d'un matériau au passage du courant électrique ?",
+              "options": [
+                "La ductilité",
+                "La résistivité électrique",
+                "La perméabilité",
+                "La capacitance"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La résistivité (notée rho, en ohm-mètre) caractérise la capacité d'un matériau à s'opposer au passage du courant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi utilise-t-on de l'or pour recouvrir certains connecteurs haut de gamme (HDMI, audio) ?",
+              "options": [
+                "Parce qu'il ne s'oxyde pas et garantit un contact électrique parfait",
+                "Parce que c'est le matériau le plus solide au monde",
+                "Pour fabriquer des aimants très puissants",
+                "Parce qu'il réduit le poids des câbles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'or est un métal noble inoxydable : son contact reste parfait au fil du temps sans former de couche d'oxyde isolante."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Métaux et alliages",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un alliage métallique ?",
+              "options": [
+                "Un métal fondu mélangé avec de l'eau",
+                "Le mélange d'un métal de base avec un ou plusieurs autres éléments",
+                "Un métal peint avec du vernis",
+                "Une roche extraite du sol"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un alliage est une combinaison homogène d'au moins deux éléments, dont le constituant principal est un métal."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "De quoi est composé l'acier ?",
+              "options": [
+                "De fer et de cuivre",
+                "De fer et d'une faible proportion de carbone",
+                "D'aluminium et de zinc",
+                "De cuivre et d'étain"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'acier est un alliage de fer et de carbone (la teneur en carbone est inférieure à 2 % en masse)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la principale différence entre la fonte et l'acier ?",
+              "options": [
+                "La fonte contient plus de carbone que l'acier (entre 2 % et 6 %)",
+                "La fonte ne contient aucun atome de fer",
+                "L'acier est toujours liquide à température ambiante",
+                "La fonte est beaucoup plus légère que l'aluminium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonte contient entre 2 % et 6,67 % de carbone, ce qui la rend plus dure mais plus cassante que l'acier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel élément chimique ajoute-t-on principalement à l'acier pour le rendre « inoxydable » ?",
+              "options": ["Le chrome", "Le plomb", "Le sodium", "Le mercure"],
+              "correctAnswers": [0],
+              "explanation": "Le chrome (à plus de 10,5 %) forme une couche invisible d'oxyde protectrice qui bloque la corrosion de l'acier inox."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont des alliages dont le métal de base est le cuivre ?",
+              "options": [
+                "Le laiton (cuivre + zinc)",
+                "L'inox (fer + chrome)",
+                "Le bronze (cuivre + étain)",
+                "Le duralumin (aluminium + cuivre)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le laiton et le bronze sont les deux grands alliages historiques traditionnels à base de cuivre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel phénomène dégrade le fer en présence d'air humide en formant de la rouille ?",
+              "options": [
+                "La polymérisation",
+                "L'oxydation",
+                "La vitrification",
+                "La distillation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La rouille est un oxyde de fer hydraté qui ronge progressivement le métal en profondeur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel métal est particulièrement utilisé dans l'aviation pour son excellent rapport résistance/poids et sa tenue à la corrosion ?",
+              "options": ["Le titane", "Le plomb", "L'étain", "L'argent"],
+              "correctAnswers": [0],
+              "explanation": "Le titane est léger, extrêmement résistant mécaniquement et insensible à la corrosion atmosphérique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le procédé thermique qui consiste à chauffer un acier puis à le refroidir brusquement pour augmenter sa dureté ?",
+              "options": [
+                "La trempe",
+                "Le recuit",
+                "Le moulage",
+                "L'anodisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La trempe modifie la structure cristalline de l'acier en le rendant considérablement plus dur et résistant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel métal liquide à température ambiante a été interdit dans les thermomètres en raison de sa toxicité ?",
+              "options": ["Le mercure", "Le gallium", "Le zinc", "Le nickel"],
+              "correctAnswers": [0],
+              "explanation": "Le mercure est le seul métal liquide à température ambiante, mais ses vapeurs sont hautement toxiques pour la santé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi les casseroles ont-elles souvent un fond en cuivre ou en aluminium ?",
+              "options": [
+                "Pour mieux répartir rapidement la chaleur sur toute la surface de cuisson",
+                "Pour rendre la casserole plus fragile",
+                "Pour empêcher les aliments de cuire",
+                "Pour attirer la cuillère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Leur très haute conductivité thermique permet une montée en température homogène et rapide sous les aliments."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Matières plastiques et polymères",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Chimiquement, les matières plastiques sont constituées de longues chaînes de molécules appelées :",
+              "options": ["Alliages", "Polymères", "Minéraux", "Céramiques"],
+              "correctAnswers": [1],
+              "explanation": "Un polymère est une macromolécule formée par la répétition d'un même motif de base appelé monomère."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la caractéristique majeure des plastiques dits « thermoplastiques » ?",
+              "options": [
+                "Ils ne peuvent fondre qu'une seule fois puis brûlent",
+                "Ils ramollissent sous l'effet de la chaleur et durcissent en refroidissant, de façon réversible",
+                "Ils conduisent parfaitement l'électricité",
+                "Ils sont solubles dans l'eau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les thermoplastiques peuvent être chauffés, mis en forme puis refroidis de nombreuses fois, ce qui facilite leur recyclage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si l'on chauffe fortement un plastique « thermodurcissable » ?",
+              "options": [
+                "Il fond immédiatement en un liquide clair",
+                "Il ne fond pas, il noircit et se dégrade irréversiblement sous l'effet de la chaleur",
+                "Il devient un aimant",
+                "Il se transforme en verre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les chaînes moléculaires des thermodurcissables sont liées en un réseau 3D rigide qui ne peut pas fondre sans se détruire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel thermoplastique transparent est le plus utilisé pour fabriquer les bouteilles d'eau minérale ?",
+              "options": [
+                "Le polyéthylène téréphtalate (PET)",
+                "Le caoutchouc",
+                "Le téflon (PTFE)",
+                "La bakélite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le PET est étanche aux gaz, transparent, léger et facilement recyclable (logo numéro 1)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont des exemples de matières thermoplastiques courantes ?",
+              "options": [
+                "Le polypropylène (PP)",
+                "La résine époxy durcie",
+                "Le polychlorure de vinyle (PVC)",
+                "Le caoutchouc vulcanisé"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le PP (bouchons, récipients) et le PVC (tuyaux, fenêtres) sont des thermoplastiques. L'époxy et le caoutchouc vulcanisé sont thermodurcissables ou élastomères."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les polymères capables de subir de très grandes déformations élastiques, comme le pneu ?",
+              "options": [
+                "Les élastomères",
+                "Les thermodurcissables",
+                "Les céramiques",
+                "Les fontes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les élastomères (comme les caoutchoucs naturels ou synthétiques) possèdent une élasticité exceptionnelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le polystyrène expansé (PSE, matière blanche alvéolée) est composé à plus de 95 % :",
+              "options": [
+                "D'eau",
+                "D'air emprisonné",
+                "De métal",
+                "De calcaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le PSE emprisonne une immense quantité d'air, ce qui en fait un matériau ultra léger et un excellent amortisseur d'emballage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel polymère fluoré est célèbre pour ses propriétés antiadhésives sur les poêles à frire ?",
+              "options": [
+                "Le polytétrafluoroéthylène (PTFE ou Téflon)",
+                "Le polystyrène",
+                "Le polyéthylène",
+                "Le nylon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le PTFE possède un coefficient de frottement très faible et une grande résistance chimique et thermique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le PLA (acide polylactique) fréquemment utilisé en impression 3D ?",
+              "options": [
+                "Un métal très rare",
+                "Un plastique biosourcé issu d'amidon végétal (comme le maïs)",
+                "Une roche sédimentaire broyée",
+                "Un liquide corrosif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le PLA est un polymère thermoplastique biosourcé obtenu à partir de ressources renouvelables (amidon de maïs ou canne à sucre)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie le triangle fléché avec un chiffre situé sous les objets en plastique ?",
+              "options": [
+                "Le niveau de danger toxique",
+                "Le code d'identification de la résine pour faciliter son tri et recyclage",
+                "Le nombre d'années de garantie de l'objet",
+                "La température maximale de cuisson"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ce code d'identification (norme SPI de 1 à 7) indique la nature exacte du polymère pour organiser le tri sélectif."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Céramiques, verres et minéraux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment fabrique-t-on traditionnellement une céramique comme la terre cuite ou la poterie ?",
+              "options": [
+                "En refroidissant de l'eau salée",
+                "En façonnant de l'argile humide puis en la cuisant à haute température",
+                "En faisant réagir du pétrole avec du chlore",
+                "En étirant du cuivre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La cuisson à haute température provoque la vitrification et la consolidation définitive des grains d'argile."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la propriété mécanique caractéristique des céramiques et des verres ?",
+              "options": [
+                "Une très haute dureté mais une grande fragilité aux chocs",
+                "Une immense élasticité comparable à du caoutchouc",
+                "Une facilité déconcertante à être pliés sans casser",
+                "Une excellente conductivité électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les céramiques résistent formidablement à l'usure et à la compression, mais se brisent net lors d'un choc mécanique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le constituant minéral principal utilisé pour fabriquer le verre ordinaire ?",
+              "options": [
+                "Le charbon actif",
+                "La silice (sable de quartz)",
+                "Le minerai de fer",
+                "L'argile rouge"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le verre est obtenu par la fusion à plus de 1 500 °C de silice (sable) mélangée à des fondants (soude, calcaire)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on un matériau capable de résister à des températures très élevées sans fondre, comme dans les fours industriels ?",
+              "options": [
+                "Un matériau ductile",
+                "Un matériau réfractaire",
+                "Un matériau volatile",
+                "Un matériau élastique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les briques et céramiques réfractaires conservent leurs propriétés mécaniques à plus de 1 000 °C sans fondre."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels objets ou matériaux relèvent de la famille des céramiques ?",
+              "options": [
+                "La faïence d'un carrelage",
+                "La carrosserie en aluminium",
+                "La porcelaine d'une tasse",
+                "Le sac en polyéthylène"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La faïence et la porcelaine sont des céramiques obtenues par cuisson de terres argileuses."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un verre feuilleté utilisé pour les pare-brise de voitures ?",
+              "options": [
+                "Un verre peint en noir",
+                "Deux feuilles de verre collées entre elles par un film plastique intercalaire",
+                "Un verre composé uniquement de papier compressé",
+                "Un verre qui se dissout en cas d'accident"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En cas d'impact, les morceaux brisés restent collés au film plastique central (PVB), évitant les projections dangereuses."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quels sont les composants essentiels du béton ordinaire ?",
+              "options": [
+                "Du plastique fondu et des copeaux de bois",
+                "Du ciment, de l'eau, du sable et des gravillons",
+                "Du pétrole, de l'argile et de la résine",
+                "Du fer pur et du plomb"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le béton est un matériau minéral artificiel formé par la prise du ciment hydraté liant le sable et les graviers."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur le plan électrique, les céramiques et les verres sont en règle générale :",
+              "options": [
+                "D'excellents isolants",
+                "De redoutables conducteurs",
+                "Des générateurs d'électricité",
+                "Des supraconducteurs chauds"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On utilise traditionnellement des isolateurs en verre ou en porcelaine sur les lignes haute tension."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le verre trempé thermiquement ?",
+              "options": [
+                "Un verre plongé dans l'acide",
+                "Un verre chauffé puis refroidi rapidement par de l'air pour créer des tensions renforçant sa résistance",
+                "Un verre qui fond à 50 °C",
+                "Un verre fabriqué avec du bois"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La trempe thermique multiplie jusqu'à 5 fois la résistance mécanique du verre ; lorsqu'il casse, il forme de petits morceaux non tranchants."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "À partir de quelle roche minérale fabrique-t-on le plâtre utilisé dans le bâtiment ?",
+              "options": ["Le gypse", "Le granit", "Le basalte", "Le diamant"],
+              "correctAnswers": [0],
+              "explanation": "Le plâtre est obtenu par déshydratation partielle du gypse calciné dans des fours spécifiques."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Matériaux composites",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels sont les deux composants indissociables d'un matériau composite ?",
+              "options": [
+                "Un acide et une base",
+                "Un renfort et une matrice",
+                "Deux métaux identiques",
+                "De l'air et de l'eau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un composite est constitué d'une ossature appelée « renfort » enrobée dans un liant appelé « matrice »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le rôle principal du renfort dans un matériau composite ?",
+              "options": [
+                "Apporter la couleur et le brillant extérieur",
+                "Assurer la résistance mécanique aux efforts (traction, flexion)",
+                "Faire fondre le matériau plus rapidement",
+                "Empêcher le matériau d'être mouillé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le renfort (fibres de verre, carbone, kevlar) supporte l'essentiel des contraintes mécaniques appliquées à la pièce."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le rôle de la matrice dans un matériau composite ?",
+              "options": [
+                "Lier les fibres entre elles et transmettre les efforts",
+                "Rendre le matériau soluble",
+                "Produire de la lumière",
+                "Servir de carburant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La matrice (souvent une résine plastique) maintient les fibres dans la bonne géométrie et les protège de l'environnement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel matériau naturel est un composite formé de fibres de cellulose enrobées de lignine ?",
+              "options": ["Le bois", "L'argile", "Le calcaire", "Le fer"],
+              "correctAnswers": [0],
+              "explanation": "Le bois est l'exemple type du composite naturel : les fibres rigides de cellulose sont liées par la matrice de lignine."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels composites sont couramment employés dans le sport de haut niveau et l'aéronautique ?",
+              "options": [
+                "Le composite fibre de carbone / résine époxy",
+                "Le composite fibre de verre / résine polyester",
+                "Le sable humide",
+                "Le papier journal mouillé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les fibres de carbone et de verre associées à des résines thermodurcissables offrent une rigidité et une légèreté maximales."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans le béton armé, quel élément joue le rôle de renfort travaillant en traction ?",
+              "options": [
+                "Le sable",
+                "Les armatures en acier",
+                "Le ciment liquide",
+                "L'eau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le béton résiste très bien à la compression mais mal à la traction ; les barres d'acier lui apportent la résistance en traction."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le contreplaqué ?",
+              "options": [
+                "Un plastique imitant le bois",
+                "Un composite constitué de feuilles de bois minces collées à fils croisés",
+                "Une tôle d'acier peinte couleur chêne",
+                "Une pâte de bois compressée sans colle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En croisant le sens des fibres à chaque pli, le contreplaqué obtient des propriétés mécaniques homogènes dans toutes les directions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est l'avantage décisif d'un cadre de vélo en fibre de carbone comparé à un cadre en acier ?",
+              "options": [
+                "Il est beaucoup plus lourd",
+                "Il est extrêmement léger tout en étant très rigide et réactif",
+                "Il fond dès qu'il pleut",
+                "Il ne coûte presque rien à fabriquer"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le rapport résistance mécanique / masse du composite carbone est bien supérieur à celui de l'acier ou de l'aluminium."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est l'inconvénient environnemental majeur des matériaux composites actuels ?",
+              "options": [
+                "Ils s'évaporent au soleil",
+                "Leur séparation et leur recyclage en fin de vie sont très complexes et coûteux",
+                "Ils sont trop faciles à biodégrader",
+                "Ils consomment de l'électricité quand on les regarde"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Séparer des fibres microscopiques piégées dans une résine thermodurcie reste un défi technologique complexe pour le recyclage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle fibre synthétique résistante aux chocs et aux coupures est utilisée pour fabriquer les gilets pare-balles ?",
+              "options": [
+                "Le Kevlar (aramide)",
+                "Le coton",
+                "Le chanvre",
+                "La laine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Kevlar possède une résistance exceptionnelle à la traction et à l'impact, capable d'absorber l'énergie d'un projectile."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Impact environnemental et cycle de vie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'Analyse du Cycle de Vie (ACV) d'un produit ?",
+              "options": [
+                "Le calcul du temps nécessaire pour vendre un objet en magasin",
+                "L'évaluation de tous les impacts environnementaux du produit « du berceau à la tombe »",
+                "La date de péremption inscrite sur l'emballage",
+                "Le test de résistance aux chocs répétés"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'ACV quantifie les impacts écologiques depuis l'extraction des matières premières jusqu'à l'élimination ou au recyclage final."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que désigne « l'énergie grise » d'un matériau ?",
+              "options": [
+                "L'énergie produite par une centrale au charbon",
+                "La quantité totale d'énergie consommée durant tout son cycle de vie hors utilisation",
+                "L'électricité statique accumulée sur sa surface",
+                "L'énergie solaire réfléchie par sa couleur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'énergie grise englobe l'énergie nécessaire à l'extraction, la transformation, la fabrication et le transport du matériau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le principe fondamental de l'écoconception ?",
+              "options": [
+                "Augmenter la consommation d'énergie pour aller plus vite",
+                "Intégrer les critères environnementaux dès la phase de conception d'un produit",
+                "Rendre les objets jetables le plus vite possible",
+                "Interdire l'utilisation d'ordinateurs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'écoconception vise à réduire au maximum l'empreinte écologique d'un produit dès sa planche à dessin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un matériau est qualifié de biodégradable s'il peut être décomposé :",
+              "options": [
+                "Uniquement par un laser à très haute température",
+                "Par des micro-organismes vivants (bactéries, champignons) sans polluer le milieu",
+                "En morceaux de plastique microscopiques persistants",
+                "Sous l'effet d'une pression hydraulique intense"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La biodégradation transforme la matière organique en eau, dioxyde de carbone et biomasse grâce aux micro-organismes naturels."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont les avantages majeurs du recyclage de l'aluminium ?",
+              "options": [
+                "Une économie d'énergie pouvant atteindre 95 % par rapport à l'extraction primaire",
+                "La préservation des gisements naturels de bauxite",
+                "La transformation magique de l'aluminium en cuivre",
+                "L'absence totale de besoin de chauffer le métal"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Recycler l'aluminium consomme 95 % d'énergie en moins que l'extraire du minerai de bauxite et préserve les ressources naturelles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la règle des « 3R » dans la gestion écologique des déchets ?",
+              "options": [
+                "Rouler, Réparer, Ranger",
+                "Réduire, Réutiliser, Recycler",
+                "Remplacer, Rejeter, Remplir",
+                "Ralentir, Respirer, Repartir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La hiérarchie écologique préconise d'abord de réduire les déchets à la source, puis de réutiliser, et enfin de recycler."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle conséquence majeure découle de l'abandon sauvage des plastiques dans la nature ?",
+              "options": [
+                "Ils fertilisent les sols en quelques jours",
+                "Ils se fragmentent en microplastiques persistants qui polluent les océans et la chaîne alimentaire",
+                "Ils augmentent la couche d'ozone",
+                "Ils attirent les poissons herbivores"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les plastiques mettent des siècles à disparaître et s'émiettent en particules microscopiques ingérées par la faune marine."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que mesure l'empreinte carbone d'un matériau ?",
+              "options": [
+                "La quantité de gaz à effet de serre (en équivalent CO2) émise pour sa production",
+                "Le poids des résidus de charbon restant dans le métal",
+                "La surface de forêt détruite pour planter du coton",
+                "Le diamètre de ses molécules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'empreinte carbone évalue l'impact du matériau sur le réchauffement climatique mondial en mesurant les émissions de CO2."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le « décyclage » (ou downcycling) ?",
+              "options": [
+                "Faire du vélo en descendant une colline",
+                "Le recyclage d'un matériau en un produit de qualité ou de valeur inférieure au produit initial",
+                "La destruction définitive d'une usine",
+                "L'interdiction de recycler les métaux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le décyclage intervient quand la matière recyclée perd en pureté ou propriétés, par exemple du plastique technique transformé en banc public."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi est-il écologiquement pertinent de privilégier des matériaux locaux (comme le bois régional) dans la construction ?",
+              "options": [
+                "Pour réduire considérablement les transports et les émissions de CO2 associées",
+                "Parce que les matériaux qui voyagent perdent leur solidité",
+                "Pour empêcher les pays voisins de construire des maisons",
+                "Parce que les matériaux locaux sont toujours gratuits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limiter la distance de transport diminue drastiquement la consommation de carburant fossile et les émissions polluantes."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Critères de choix selon le cahier des charges",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un cahier des charges fonctionnel (CDCF) dans un projet de conception ?",
+              "options": [
+                "Un catalogue de prix de pièces détachées",
+                "Le document qui énonce les besoins, les fonctions attendues et les contraintes imposées à l'objet",
+                "Le contrat d'assurance de l'entreprise",
+                "Le mode d'emploi destiné à l'acheteur final"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le CDCF fixe toutes les exigences techniques, ergonomiques, économiques et environnementales du produit à créer."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Lors du choix d'un matériau par un ingénieur, que recherche-t-on presque toujours ?",
+              "options": [
+                "Le matériau le plus cher possible",
+                "Le meilleur compromis entre propriétés techniques, coût, disponibilité et impact environnemental",
+                "Uniquement la couleur la plus voyante",
+                "Le matériau le plus lourd disponible"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Aucun matériau n'est parfait : le concepteur doit trouver le compromis optimal adapté à l'usage prévu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel matériau privilégie-t-on pour la poignée isolante d'une casserole chauffée sur le feu ?",
+              "options": [
+                "Le cuivre",
+                "Un plastique thermodurcissable (comme la bakélite) ou du bois",
+                "L'argent massif",
+                "L'acier doux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La poignée doit être un isolant thermique pour éviter toute brûlure à l'utilisateur lors de la préhension."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour une balise maritime flottant en mer toute l'année, quelle contrainte d'usage est prioritaire ?",
+              "options": [
+                "La transparence optique",
+                "La résistance à la corrosion par l'eau salée et aux UV",
+                "La conductivité électrique maximale",
+                "La solubilité dans l'eau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le milieu marin est très agressif ; le matériau doit résister à l'oxydation saline sans se dégrader prématurément."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles contraintes influent directement sur le choix final d'un matériau ?",
+              "options": [
+                "Le coût d'achat et de transformation du matériau",
+                "Le numéro de téléphone du fournisseur",
+                "La recyclabilité et l'impact écologique",
+                "L'horoscope du jour"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le coût financier, les exigences écologiques et les capacités techniques de transformation sont déterminants."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi les semelles extérieures de chaussures de course sont-elles fabriquées en élastomère ?",
+              "options": [
+                "Pour offrir adhérence, souplesse et absorption des chocs répétés",
+                "Pour rendre les chaussures très lourdes",
+                "Pour qu'elles se brisent au premier pas",
+                "Pour conduire l'électricité jusqu'au sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élastomère possède un coefficient de frottement élevé (anti-dérapant) et d'excellentes facultés d'amortissement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle contrainte impose d'utiliser de l'inox ou du verre dans les biberons et ustensiles de cuisine ?",
+              "options": [
+                "Une contrainte de sécurité sanitaire et d'aptitude au contact alimentaire",
+                "Une contrainte de poids minimal",
+                "Une contrainte de transparence obligatoire",
+                "Une obligation de fabriquer du bruit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les matériaux au contact des aliments ne doivent pas migrer chimiquement ni présenter de toxicité pour l'organisme."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle contrainte relève de l'aspect visuel, de la texture au toucher et des formes d'un objet ?",
+              "options": [
+                "La contrainte esthétique et ergonomique",
+                "La contrainte juridique",
+                "La contrainte d'usinabilité",
+                "La contrainte thermique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ergonomie et l'esthétique s'intéressent au confort de prise en main, à l'agrément d'utilisation et à l'attractivité visuelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour fabriquer une coque de smartphone résistante aux chutes et économique en grande série, quel choix est le plus rationnel ?",
+              "options": [
+                "Un bloc de fonte brute",
+                "Un thermoplastique injecté (comme le polycarbonate)",
+                "Une vitre en sucre candi",
+                "Une plaque de ciment armé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le polycarbonate est résistant aux chocs, léger, isolant et se moule très rapidement par injection en grande série."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la « disponibilité » d'un matériau pour une entreprise industrielle ?",
+              "options": [
+                "Le fait que le matériau puisse être livré facilement et sans rupture d'approvisionnement",
+                "Le fait que le matériau réponde au téléphone",
+                "La capacité du matériau à changer de forme tout seul",
+                "Le nom commercial de l'usine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une entreprise doit s'assurer que les matières premières requises peuvent être achetées régulièrement et sans pénurie."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Fabrication",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les familles de procédés de fabrication",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Combien de grands principes de mise en forme des pièces distingue-t-on couramment dans l'industrie ?",
+              "options": [
+                "1 seul principe",
+                "4 principes majeurs (enlèvement, déformation, moulage/fusion, ajout de matière)",
+                "50 principes différents",
+                "Aucun, chaque objet a sa propre méthode"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On regroupe les procédés en : enlèvement de matière (usinage), déformation, moulage/fusion et ajout de matière (impression 3D)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel principe correspond au sciage, perçage, fraisage ou tournage d'une pièce ?",
+              "options": [
+                "L'enlèvement de matière",
+                "Le moulage par injection",
+                "La fabrication additive",
+                "Le collage chimique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous ces procédés partent d'un bloc plus volumineux et en retirent des copeaux pour obtenir la forme finale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel principe consiste à chauffer une matière jusqu'à l'état liquide pour la couler dans une empreinte ?",
+              "options": [
+                "Le moulage ou fonderie",
+                "Le cisaillage",
+                "Le ponçage",
+                "L'usinage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le moulage consiste à verser ou injecter un fluide dans une cavité reproduisant la forme désirée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la création d'un objet couche par couche à partir d'un fichier numérique ?",
+              "options": [
+                "L'usinage traditionnel",
+                "La fabrication additive (impression 3D)",
+                "L'emboutissage profond",
+                "Le cisaillage à guillotine"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La fabrication additive dépose la matière uniquement là où elle est utile, strate par strate."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels procédés relèvent de la famille des assemblages de pièces ?",
+              "options": [
+                "Le vissage",
+                "Le fraisage d'une rainure",
+                "Le soudage à l'arc",
+                "Le tournage d'un cylindre"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le vissage (assemblage mécanique) et le soudage (assemblage thermique) lient plusieurs composants distincts."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la pièce d'origine avant toute opération de fabrication ou d'usinage ?",
+              "options": ["Le prototype", "Le brut", "Le déchet", "Le fini"],
+              "correctAnswers": [1],
+              "explanation": "Le brut est le morceau de matière première (barre, bloc, tôle) dans lequel la pièce finie va être façonnée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi la fabrication en très grande série permet-elle de réduire le coût unitaire d'un objet ?",
+              "options": [
+                "Parce qu'on amortit le coût élevé des machines et des moules sur un très grand nombre de pièces",
+                "Parce que les ouvriers ne sont plus payés",
+                "Parce qu'on utilise des matériaux périmés",
+                "Parce que l'électricité devient gratuite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est le principe des économies d'échelle : l'investissement initial important est réparti sur des millions d'unités."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle méthode de production est la plus adaptée pour fabriquer une prothèse médicale sur mesure pour un patient ?",
+              "options": [
+                "La production unitaire (ou personnalisée)",
+                "La production de masse à 10 millions d'exemplaires",
+                "Le moulage par injection géant",
+                "Le laminage à chaud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un produit unique adapté à l'anatomie d'une personne relève de la fabrication unitaire ou à l'unité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifient les sigles CAO et FAO en technologie industrielle ?",
+              "options": [
+                "Contrôle Automatique Ouvert et Fermeture Automatique Obligatoire",
+                "Conception Assistée par Ordinateur et Fabrication Assistée par Ordinateur",
+                "Calcul Avancé Ordinaire et Fonction Analytique Ordinale",
+                "Circuit Accessible Ouvert et Fusible Actif Ordinaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La CAO permet de modéliser la pièce en 3D à l'écran, et la FAO génère les programmes de commande des machines-outils."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le rôle d'une machine à commande numérique (CNC) ?",
+              "options": [
+                "Exécuter des trajectoires d'usinage précises pilotées par un ordinateur",
+                "Imprimer des documents papier pour le bureau",
+                "Prendre des photos souvenirs de l'atelier",
+                "Calculer les impôts de l'entreprise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une machine CNC déplace automatiquement ses outils selon les instructions numériques calculées par l'ordinateur."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Façonnage et découpe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel outil manuel utilise-t-on pour couper précisément une planche de bois en atelier de technologie ?",
+              "options": [
+                "Une scie à dos ou scie égoïne",
+                "Un marteau rivoir",
+                "Un tournevis cruciforme",
+                "Une lime plate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les scies manuelles coupent le bois grâce à leurs dents affûtées qui tranchent les fibres végétales."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel outil manuel permet de découper facilement des tôles métalliques minces ?",
+              "options": [
+                "La cisaille à tôle",
+                "Le cutter de précision",
+                "La râpe à bois",
+                "Le fer à souder"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cisaille à tôle fonctionne comme des ciseaux robustes capables de cisailler des feuilles d'acier ou d'aluminium."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment fonctionne une machine de découpe laser industrielle ?",
+              "options": [
+                "Un faisceau lumineux ultra concentré fond ou vaporise instantanément la matière sur sa trajectoire",
+                "Un couteau rotatif invisible tranche la matière",
+                "Des ondes sonores cassent la matière nette",
+                "Un produit chimique corrosif est projeté au pinceau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie thermique extrême du faisceau laser découpe des formes très complexes avec une grande précision."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est l'avantage décisif de la découpe au jet d'eau haute pression par rapport au laser ?",
+              "options": [
+                "Elle ne produit aucun échauffement thermique sur la pièce",
+                "Elle ne mouille jamais les matériaux",
+                "Elle est totalement silencieuse",
+                "Elle ne nécessite aucune énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La découpe au jet d'eau (additionné d'abrasif) est un procédé à froid qui ne modifie pas la structure du matériau par la chaleur."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles technologies de découpe sont couramment automatisées par commande numérique ?",
+              "options": [
+                "La découpeuse laser CO2",
+                "La scie égoïne manuelle",
+                "La découpeuse au jet d'eau abrasif",
+                "Le papier de verre à main"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le laser et le jet d'eau sont presque toujours montés sur des portiques 2D ou 3D pilotés par ordinateur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la largeur de matière détruite ou retirée par le passage de la lame ou du faisceau lors d'une découpe ?",
+              "options": [
+                "La saignée",
+                "Le jeu mécanique",
+                "Le pas de vis",
+                "La dépouille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La saignée est l'épaisseur du sillon de coupe ; elle doit être prise en compte pour obtenir des dimensions exactes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel instrument d'atelier utilise-t-on pour tracer une ligne de coupe nette et indélébile sur une tôle métallique ?",
+              "options": [
+                "Une pointe à tracer en acier trempé",
+                "Un feutre effaçable à l'eau",
+                "Un morceau de craie molle",
+                "Un pinceau humide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pointe à tracer raye superficiellement le métal, créant un repère visuel précis qui ne s'efface pas sous la manipulation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi doit-on obligatoirement ventiler et filtrer l'air lors de la découpe laser de plastiques ?",
+              "options": [
+                "Parce que la vaporisation thermique des polymères dégage des fumées toxiques et irritantes",
+                "Pour faire sécher la colle plus vite",
+                "Pour empêcher le laser de changer de couleur",
+                "Pour réchauffer l'atelier en hiver"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La combustion et la pyrolyse des plastiques sous le laser génèrent des gaz dangereux qui doivent être filtrés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel outil permet de vérifier la parfaite perpendicularité (angle droit à 90°) d'un traçage ou d'une découpe ?",
+              "options": [
+                "L'équerre d'atelier",
+                "Le mètre ruban",
+                "Le compas d'épaisseur",
+                "Le thermomètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équerre d'ajusteur ou de menuisier sert à contrôler ou tracer des angles droits parfaits à 90 degrés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La découpeuse à fil chaud permet de découper très facilement et proprement :",
+              "options": [
+                "Des blocs de polystyrène expansé",
+                "Des barres d'acier trempé",
+                "Des plaques de marbre",
+                "Des vitres blindées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fil métallique chauffé par effet Joule fait fondre localement le polystyrène à mesure qu'il le traverse."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Usinage et enlèvement de matière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Sur quelle machine-outil la pièce tourne-t-elle à grande vitesse tandis que l'outil coupant se déplace en translation ?",
+              "options": [
+                "Le tour mécanique",
+                "La fraiseuse",
+                "La perceuse à colonne",
+                "La rectifieuse plane"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tournage est le procédé par excellence pour fabriquer des pièces de révolution cylindriques ou coniques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur quelle machine-outil l'outil coupant tourne-t-il sur lui-même pour usiner des méplats, rainures ou poches sur une pièce fixe ?",
+              "options": [
+                "La fraiseuse",
+                "Le tour",
+                "La presse plieuse",
+                "La guillotine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En fraisage, la fraise est animée d'un mouvement de rotation et taille la matière sur la pièce qui avance."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel outil rotatif hélicoïdal utilise-t-on sur une perceuse pour percer un trou cylindrique ?",
+              "options": [
+                "Un foret (ou mèche)",
+                "Une lame de cutter",
+                "Une gouge",
+                "Un burin plat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le foret possède deux arêtes tranchantes en bout et des goujures hélicoïdales pour évacuer les copeaux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les fragments de matière arrachés lors de l'usinage par une dent d'outil coupant ?",
+              "options": [
+                "Les copeaux",
+                "Les dépouilles",
+                "Les lingots",
+                "Les scories"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'outil cisaille la matière sous forme de copeaux métalliques, plastiques ou de bois."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels outils coupants montés sur machines sont utilisés pour l'usinage mécanique ?",
+              "options": [
+                "La fraise à plusieurs dents",
+                "L'outil de tournage à plaquette carbure",
+                "La truelle de maçon",
+                "La clé à molette"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les fraises et les outils de tour à pastille en carbure de tungstène sont conçus pour trancher le métal."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le rôle du fluide de coupe (lubrifiant d'arrosage) lors de l'usinage des métaux ?",
+              "options": [
+                "Refroidir l'outil, lubrifier le contact et faciliter l'évacuation des copeaux",
+                "Chauffer la pièce pour la faire fondre",
+                "Donner une odeur parfumée à l'atelier",
+                "Ralentir le moteur électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lubrifiant limite l'échauffement destructeur de l'outil et prolonge considérablement sa durée de vie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'opération qui consiste à réaliser un filetage à l'intérieur d'un trou percé pour y visser une vis ?",
+              "options": [
+                "Le taraudage",
+                "Le fraisage",
+                "L'alésage",
+                "L'emboutissage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le taraudage s'effectue à l'aide d'un taraud pour créer les filets hélicoïdaux femelles à l'intérieur d'un alésage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel outil manuel utilise-t-on pour créer un filetage extérieur sur une tige cylindrique ?",
+              "options": [
+                "Une filière",
+                "Un taraud",
+                "Une lime demi-ronde",
+                "Un étau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La filière est une bague d'acier filetée et tranchante qui taille les filets extérieurs d'une vis sur une tige."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel procédé d'usinage de haute précision utilise une meule abrasive pour obtenir un état de surface quasi parfait ?",
+              "options": [
+                "La rectification",
+                "Le cisaillage",
+                "Le forgeage",
+                "L'oxycoupage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rectification permet d'obtenir des tolérances au micromètre près grâce aux grains abrasifs d'une meule en rotation rapide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un centre d'usinage moderne à commande numérique ?",
+              "options": [
+                "Une machine polyvalente capable de fraiser, percer et tarauder avec changement d'outil automatique piloté par ordinateur",
+                "Un ordinateur de bureau sans aucune pièce mobile",
+                "Un établi en bois avec un marteau",
+                "Une calculatrice programmable de poche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les centres d'usinage regroupent plusieurs opérations automatisées avec un magasin d'outils et une précision extrême."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Déformation et formage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle opération de formage consiste à plier une tôle plane selon un angle précis à l'aide d'un vé et d'un poinçon ?",
+              "options": [
+                "Le pliage",
+                "Le tournage",
+                "L'injection",
+                "Le meulage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur une presse plieuse, la tôle est appuyée dans une matrice en V sous la pression d'un poinçon descendant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel procédé de déformation permet de transformer un disque de tôle plat en un objet creux (comme une canette ou un évier) ?",
+              "options": [
+                "L'emboutissage",
+                "Le sciage",
+                "Le fraisage",
+                "Le collage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'emboutissage étire et déforme la tôle sous l'action d'un poinçon pénétrant dans une matrice sans la déchirer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la mise en forme à chaud d'une plaque thermoplastique aspirée par le vide contre un moule ?",
+              "options": [
+                "Le thermoformage",
+                "La fonderie au sable",
+                "Le soudage laser",
+                "Le tournage conique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En thermoformage, la feuille plastique ramollie par chauffage épouse le relief du moule sous l'effet du vide d'air (ex : pots de yaourt)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle opération consiste à courber un tube métallique sans l'écraser pour lui donner une forme courbée ?",
+              "options": [
+                "Le cintrage",
+                "Le perçage",
+                "Le taraudage",
+                "Le filetage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cintrage déforme les tubes ou barres selon un rayon de courbure défini, souvent à l'aide d'une cintreuse à galets."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles pièces courantes sont fabriquées par emboutissage de tôle métallique ?",
+              "options": [
+                "Les portières et capots de carrosserie automobile",
+                "Les canettes de boisson en aluminium",
+                "Les briques pleines de maison",
+                "Les manches de balai en bois massif"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les éléments de carrosserie et les boîtes métalliques cylindriques sont obtenus par emboutissage à haute cadence."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le procédé millénaire consistant à marteler un métal chauffé au rouge pour lui donner forme ?",
+              "options": [
+                "Le forgeage",
+                "L'anodisation",
+                "Le moulage sous vide",
+                "Le frittage laser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le forgeage (manuel ou par pilon industriel) modifie la forme du métal par chocs répétés tout en améliorant sa texture interne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel phénomène doit-on anticiper lors du pliage d'une tôle métallique pour obtenir l'angle final désiré ?",
+              "options": [
+                "Le retour élastique (la tôle a tendance à se rouvrir légèrement après relâchement)",
+                "L'explosion thermique de la tôle",
+                "La fonte spontanée du métal à température ambiante",
+                "La coloration bleue immédiate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après le pliage, l'élasticité résiduelle rouvre légèrement l'angle ; on doit donc « surplier » légèrement la pièce."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel procédé consiste à faire passer un bloc de métal chaud entre deux rouleaux tournant en sens inverse pour réduire son épaisseur ?",
+              "options": [
+                "Le laminage",
+                "Le décolletage",
+                "L'ébavurage",
+                "Le rivetage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le laminage produit des tôles, poutrelles ou rails de chemin de fer par écrasement continu entre des cylindres compresseurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel procédé pousse une matière pâteuse à travers un orifice profilé pour fabriquer en continu des tubes, profilés de fenêtre ou tringles ?",
+              "options": [
+                "L'extrusion",
+                "Le fraisage",
+                "Le sablage",
+                "Le rainurage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'extrusion fonctionne comme une poche à douille : la matière est pressée à travers une filière donnant sa forme à la section."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour thermoformer une plaque de matière plastique, à quelle température minimale doit-on la chauffer ?",
+              "options": [
+                "Au-dessus de sa température de transition vitreuse (où elle devient malléable et caoutchouteuse)",
+                "À 3 000 °C pour qu'elle devienne gazeuse",
+                "En dessous de 0 °C pour la congeler",
+                "À température ambiante exacte sans jamais chauffer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La température de transition vitreuse Tg marque le passage de l'état rigide vitreux à l'état souple et déformable du thermoplastique."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Moulage et injection",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le principe fondamental de tous les procédés de moulage ?",
+              "options": [
+                "Verser une matière liquide ou pâteuse dans une empreinte fermée ou ouverte dont elle prend la forme en se solidifiant",
+                "Arracher de la matière avec un outil coupant",
+                "Tordre une tôle avec une pince",
+                "Coller deux morceaux de bois avec de la colle blanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le moule délimite le volume négatif de la pièce à reproduire ; la solidification fige définitivement la forme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel procédé industriel est le plus utilisé pour fabriquer des pièces plastiques complexes en grande série (briques de LEGO, stylos, boîtiers) ?",
+              "options": [
+                "Le moulage par injection plastique",
+                "La forge manuelle au marteau",
+                "Le cisaillage à guillotine",
+                "Le taillage à la gouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'injection plastique injecte sous très haute pression des granulés fondus dans un moule métallique en quelques secondes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans une presse à injection plastique, comment les granulés de polymère sont-ils fondus et acheminés vers le moule ?",
+              "options": [
+                "Par une vis sans fin tournant dans un fourreau chauffé par des colliers chauffants",
+                "Par un ventilateur d'air froid",
+                "Par des aimants puissants",
+                "Par un marteau automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vis d'extrusion malaxe, compresse et chauffe les granulés pour obtenir une pâte homogène injectée dans l'empreinte."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi donne-t-on une légère pente appelée « angle de dépouille » aux parois verticales d'une pièce moulée ?",
+              "options": [
+                "Pour permettre d'extraire et de démouler facilement la pièce sans qu'elle ne reste coincée dans le moule",
+                "Pour faire glisser la poussière",
+                "Pour économiser la peinture",
+                "Pour que l'eau ne stagne pas dessus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans dépouille (généralement 1 à 2 degrés), le frottement empêcherait l'éjection de la pièce hors du moule métallique."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels défauts peuvent survenir lors d'un mauvais réglage en injection plastique ?",
+              "options": [
+                "Des retassures (creux causés par le retrait thermique de la matière lors du refroidissement)",
+                "Des bulles ou poches d'air piégées",
+                "La transformation du plastique en or pur",
+                "Une division de la pièce en billets de banque"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un manque de matière ou un mauvais dégazage du moule engendre des retassures, bulles ou manques de matière."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel procédé dérivé de l'extrusion permet de fabriquer les corps creux en plastique comme les bouteilles d'eau ?",
+              "options": [
+                "L'extrusion-soufflage",
+                "L'alésage intérieur",
+                "Le meulage sous pression",
+                "Le rivetage aveugle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un tube de plastique chaud (la paraison) est pincé dans un moule puis gonflé d'air comprimé contre les parois du moule."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le plan de joint d'un moule ?",
+              "options": [
+                "La surface de contact où se rejoignent les deux moitiés mobiles du moule",
+                "La colle utilisée pour étanchéifier le moule",
+                "Le plan d'architecte de l'usine",
+                "La facture d'électricité de la machine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ligne laissée par la séparation des parties du moule sur la pièce finie s'appelle la bavure ou trace du plan de joint."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la fabrication par injection plastique n'est-elle rentable que pour de grandes séries de pièces ?",
+              "options": [
+                "Parce que l'usinage du moule en acier trempé coûte très cher (souvent plusieurs dizaines de milliers d'euros)",
+                "Parce que le plastique s'abîme s'il n'est pas utilisé par millions",
+                "Parce que la machine ne sait pas compter jusqu'à dix",
+                "Parce que la loi l'interdit pour moins de 10 000 pièces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le coût de conception et d'usinage du moule est colossal : il faut le rentabiliser sur un grand volume d'objets vendus."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel matériau traditionnel utilise-t-on pour fabriquer le moule lors de la coulée de pièces uniques en fonte de fonderie ?",
+              "options": [
+                "Du sable de fonderie aggloméré avec un liant",
+                "De la glace pilée",
+                "Des feuilles de papier cartonné",
+                "Du plastique souple d'emballage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le moulage au sable réfractaire permet de couler des métaux à plus de 1 200 °C ; le moule est détruit pour libérer la pièce."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment sort-on la pièce plastique durcie hors du moule en injection ?",
+              "options": [
+                "Des tiges métalliques mobiles appelées éjecteurs poussent automatiquement la pièce hors de l'empreinte ouverte",
+                "On casse le moule au marteau à chaque cycle",
+                "On attend que la pièce tombe par télépathie",
+                "On aspire la pièce avec un puissant aspirateur ménager"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les éjecteurs repoussent la pièce solidifiée dès l'ouverture du moule pour démarrer immédiatement le cycle suivant."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Techniques d'assemblage mécanique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la caractéristique fondamentale d'un assemblage mécanique démontable ?",
+              "options": [
+                "On peut séparer les pièces assemblées sans les abîmer ni les détruire",
+                "Il est impossible de séparer les pièces sans les casser en morceaux",
+                "Il ne tient que pendant quelques secondes",
+                "Il doit obligatoirement être fondu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un assemblage démontable permet l'entretien, la réparation ou le remplacement de composants sans détérioration."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'ensemble mécanique démontable formé d'une vis filetée et d'un écrou taraudé ?",
+              "options": [
+                "Un boulon",
+                "Un rivet pop",
+                "Un cordon de soudure",
+                "Une goupille fendue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition en mécanique, un boulon est l'association indissociable d'une vis à tige filetée et d'un écrou."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À quoi sert une rondelle plate placée sous la tête d'une vis ou sous un écrou ?",
+              "options": [
+                "À répartir l'effort de serrage sur une plus grande surface pour ne pas écraser la pièce",
+                "À faire joli en ajoutant une touche de couleur",
+                "À empêcher la vis d'être retirée pour toujours",
+                "À conduire l'électricité jusqu'au sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rondelle augmente la surface d'appui, évitant de marquer les pièces tendres lors du serrage."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le rivetage (comme sur la tour Eiffel ou avec des rivets aveugles) est un assemblage :",
+              "options": [
+                "Permanent (non démontable sans détruire le rivet)",
+                "Démontable facilement avec un simple tournevis",
+                "Élastique et mobile",
+                "Magnétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour défaire un assemblage riveté, il faut détruire la tête du rivet à l'aide d'une perceuse ou d'un burin."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont des exemples d'assemblages mécaniques démontables ?",
+              "options": [
+                "L'assemblage par vis et écrou",
+                "Le clipsage élastique (encliquetage)",
+                "La soudure à l'arc électrique",
+                "Le collage à la colle forte industrielle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le vissage et le clipsage permettent de monter et démonter les composants sans endommager les pièces."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le grand avantage du clipsage (encliquetage élastique) sur les boîtiers d'appareils électroniques ?",
+              "options": [
+                "Un montage ultra rapide en usine sans vis ni outil supplémentaire",
+                "L'obligation d'avoir une machine géante pour fermer l'objet",
+                "La certitude que l'objet ne s'ouvrira plus jamais",
+                "Une augmentation importante du poids du produit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le clipsage utilise la flexibilité d'un ergot plastique qui se déforme puis se verrouille en un instant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel composant mécanique insère-t-on entre un arbre cylindrique et une roue dentée pour bloquer leur rotation mutuelle ?",
+              "options": [
+                "Une clavette",
+                "Une goutte d'huile",
+                "Un ressort hélicoïdal",
+                "Un morceau de scotch"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clavette se loge dans les rainures respectives de l'arbre et du moyeu pour transmettre le couple de rotation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'assemblage de deux pièces métalliques cylindriques emboîtées avec un diamètre légèrement trop grand (emmanchement serré) ?",
+              "options": [
+                "Le frettage ou emmanchement à force",
+                "Le collage à l'eau",
+                "Le vissage conique",
+                "Le tressage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'emmanchement en force (souvent réalisé à la presse ou par dilatation thermique de la bague externe) assure une liaison rigide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel outil spécialisé utilise-t-on en mécanique pour serrer une vis à une valeur précise de couple sans la casser ?",
+              "options": [
+                "Une clé dynamométrique",
+                "Une pince coupante",
+                "Un marteau piqueur",
+                "Une scie circulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clé dynamométrique déclenche dès que le couple de serrage prescrit (en newtons-mètres) est atteint."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel type d'écrou possède une bague en nylon freinant le dévissage causé par les vibrations d'une machine ?",
+              "options": [
+                "Un écrou frein (type Nylstop)",
+                "Un écrou papillon",
+                "Un écrou carré en bois",
+                "Un écrou borgne décoratif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La bague en polymère se déforme sur le filet de la vis et empêche le desserrage intempestif sous l'effet des vibrations."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Assemblages thermiques et chimiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la différence essentielle entre le soudage et le brasage ?",
+              "options": [
+                "En soudage, les pièces de base fondent ensemble ; en brasage, seul le métal d'apport à plus bas point de fusion fond",
+                "Le brasage se fait uniquement sous l'eau et pas le soudage",
+                "Le soudage n'utilise aucune chaleur",
+                "Le brasage utilise uniquement du plastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le brasage ne fond pas les pièces à assembler : la brasure liquide s'infiltre par capillarité entre les surfaces chauffées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans le soudage à l'arc électrique, d'où provient l'immense chaleur nécessaire pour fondre l'acier ?",
+              "options": [
+                "D'un arc électrique intense jaillissant entre l'électrode et la pièce",
+                "D'une loupe concentrant les rayons du soleil",
+                "D'une réaction chimique entre l'eau et le savon",
+                "D'un frottement manuel au papier abrasif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'arc électrique crée une température supérieure à 3 500 °C, créant instantanément un bain de fusion du métal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel procédé thermique utilise-t-on traditionnellement pour assembler les composants électroniques sur un circuit imprimé ?",
+              "options": [
+                "Le brasage tendre à l'étain avec un fer à souder électrique",
+                "Le soudage à l'arc à 4 000 °C",
+                "L'agrafage au pistolet pneumatique",
+                "Le rivetage à chaud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'alliage d'étain fond vers 180-220 °C, assurant une liaison mécanique et électrique sans détruire le composant électronique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un assemblage réalisé par l'adhésion d'une substance chimique polymérisable ?",
+              "options": [
+                "Le collage",
+                "Le filetage",
+                "Le lamage",
+                "Le cintrage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le collage assure la cohésion entre deux pièces grâce aux forces d'adhérence intermoléculaires d'un adhésif."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont les avantages du collage structural par rapport au perçage/vissage ?",
+              "options": [
+                "Il ne fragilise pas les pièces par des trous de perçage",
+                "Il permet une répartition continue et uniforme des contraintes sur toute la surface de contact",
+                "Il permet de démonter les pièces en 1 seconde à la main",
+                "Il ne demande aucun nettoyage préalable des pièces sales"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le collage structural évite les concentrations de contraintes autour des trous et permet d'assembler des matériaux hétérogènes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi doit-on obligatoirement dégraisser et nettoyer soigneusement les surfaces avant tout collage ?",
+              "options": [
+                "Pour permettre aux molécules d'adhésif d'entrer en contact intime avec la matière sans couche d'impuretés interposée",
+                "Pour changer la couleur de la colle",
+                "Pour refroidir la colle",
+                "Pour rendre les pièces magnétiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La graisse ou la poussière empêche l'adhésif d'adhérer au matériau, provoquant une rupture immédiate du joint de colle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment réalise-t-on le soudage des pièces en matière plastique ?",
+              "options": [
+                "En chauffant localement les zones de contact jusqu'à fusion puis en les pressant l'une contre l'autre",
+                "En versant de l'eau glacée",
+                "En les plantant dans la terre",
+                "En les exposant à l'obscurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le soudage des thermoplastiques (au miroir chauffant, air chaud ou ultrasons) entremêle les chaînes macromoléculaires à l'état fondu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle colle instantanée réagit et durcit en quelques secondes en présence de l'humidité microscopique de l'air ?",
+              "options": [
+                "La colle cyanoacrylate (Super Glue)",
+                "La pâte à papier peinte",
+                "La colle de farine végétale",
+                "L'huile de friture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La colle cyanoacrylate polymérise quasi instantanément au contact des traces d'humidité présentes sur les surfaces."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une colle époxy bicomposant ?",
+              "options": [
+                "Un mélange à parts calculées d'une résine liquide et d'un durcisseur provoquant une polymérisation solide très résistante",
+                "Une colle qui ne fonctionne que sous l'eau de mer",
+                "Une colle comestible au goût de fraise",
+                "Une colle qui s'évapore complètement en 5 minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réaction chimique entre la résine et le durcisseur crée un polymère thermodurcissable d'une extrême solidité mécanique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel équipement de protection est vital lors d'une opération de soudure à l'arc pour éviter des brûlures graves de la rétine ?",
+              "options": [
+                "Un masque de soudeur avec écran optique filtrant les rayons ultraviolets et infrarouges",
+                "Une casquette de baseball",
+                "Des lunettes de soleil de plage ordinaires",
+                "Un casque antibruit seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rayonnement UV extrême émis par l'arc électrique provoquerait une brûlure oculaire grave (le « coup d'arc ») sans masque adapté."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Fabrication additive et impression 3D",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le principe de base commun à toutes les technologies d'impression 3D ?",
+              "options": [
+                "La superposition successive de couches de matière les unes sur les autres",
+                "Le creusement d'un bloc de pierre avec un burin",
+                "L'écrasement d'une tôle sous une presse géante",
+                "Le trempage d'un fil dans de l'eau bouillante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'impression 3D est un procédé additif : elle empile des strates horizontales microscopiques de matière pour créer le volume."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie la technologie FDM (Fused Deposition Modeling) couramment utilisée dans les collèges ?",
+              "options": [
+                "Dépôt de fil thermoplastique fondu à travers une buse chauffée",
+                "Frappe Directe Mécanique sur métal chaud",
+                "Fusion De Minéraux par faisceau laser",
+                "Finition De Matière par pulvérisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La machine dévide une bobine de fil plastique, le fond dans une buse mobile et le dépose sur le plateau couche après couche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel matériau thermoplastique d'origine végétale et biodégradable est le plus utilisé pour l'impression 3D au collège ?",
+              "options": [
+                "Le PLA (acide polylactique)",
+                "Le plomb fondu",
+                "Le polystyrène toxique",
+                "Le caoutchouc pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le PLA est facile à imprimer (pas d'odeur nocive, faible rétractation thermique) et est fabriqué à partir d'amidon végétal."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le rôle d'un logiciel « trancheur » (slicer, comme Cura ou PrusaSlicer) ?",
+              "options": [
+                "Découper le modèle 3D virtuel en couches horizontales et générer le fichier de commandes G-code pour l'imprimante",
+                "Réparer l'imprimante en cas de panne de moteur",
+                "Dessiner des plans de maison 2D",
+                "Acheter des bobines de fil sur internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le slicer traduit la géométrie 3D (fichier STL/OBJ) en coordonnées cartésiennes et vitesses de déplacement lues par la machine."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels paramètres essentiels règle-t-on dans le trancheur avant d'imprimer une pièce 3D ?",
+              "options": [
+                "La hauteur de couche (ex : 0,2 mm)",
+                "La météo extérieure du lendemain",
+                "Le pourcentage de remplissage interne (infill)",
+                "Le prénom de l'ordinateur"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La hauteur de couche détermine la finesse de surface, et le taux de remplissage détermine la solidité interne et le temps d'impression."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi doit-on parfois activer l'option « supports d'impression » dans le slicer ?",
+              "options": [
+                "Pour soutenir les parties de la pièce en porte-à-faux qui s'imprimeraient dans le vide",
+                "Pour coller l'imprimante à la table de la classe",
+                "Pour rendre la pièce plus lourde sans raison",
+                "Pour accélérer la vitesse de l'ordinateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une buse ne peut pas déposer du plastique chaud dans le vide : les supports temporaires sont détachés après l'impression."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle technologie d'impression 3D utilise un faisceau laser ultraviolet pour solidifier une résine liquide photosensible ?",
+              "options": [
+                "La stéréolithographie (SLA)",
+                "Le dépôt de fil FDM",
+                "Le forgeage numérique",
+                "L'emboutissage hydraulique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La SLA offre un niveau de détail et une précision dimensionnelle bien supérieurs au dépôt de fil fondu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle technologie industrielle utilise un laser pour fusionner des grains de poudre de polymère ou de métal couche par couche ?",
+              "options": [
+                "Le frittage sélectif par laser (SLS)",
+                "Le collage au pistolet à colle",
+                "Le cintrage de barres",
+                "Le tournage vertical"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le SLS fusionne de la poudre sans avoir besoin de supports physiques, la poudre non fusionnée soutenant la pièce."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est l'atout majeur de la fabrication additive par rapport à l'usinage classique ?",
+              "options": [
+                "La capacité à fabriquer des formes géométriques intérieures très complexes et allégées impossibles à usiner",
+                "Le fait qu'elle n'utilise aucune électricité",
+                "La vitesse de production supérieure à 10 000 pièces par seconde",
+                "Le fait que les pièces ne pèsent jamais rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liberté de forme est immense : canaux internes complexes, treillis allégés et personnalisation unitaire directe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la principale limite actuelle de l'impression 3D face au moulage par injection plastique ?",
+              "options": [
+                "La lenteur de fabrication par pièce (inadaptée à la fabrication de masse de millions d'unités identiques)",
+                "L'impossibilité d'utiliser des ordinateurs",
+                "L'interdiction légale de faire du plastique",
+                "L'obligation de peindre chaque pièce en violet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fabriquer une pièce peut prendre plusieurs heures en 3D, alors qu'une presse à injection injecte une pièce en quelques secondes."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Finition et traitement de surface",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le but principal de l'application d'un traitement de surface sur une pièce manufacturée ?",
+              "options": [
+                "Protéger contre la corrosion/l'usure et/ou améliorer l'aspect esthétique",
+                "Rendre la pièce complètement invisible",
+                "Augmenter son volume de 500 %",
+                "Faire fondre le matériau au soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les traitements protègent le matériau contre l'oxydation, améliorent son contact et soignent son aspect fini."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'opération consistant à éliminer les petites arêtes coupantes ou résidus de matière après une découpe ?",
+              "options": [
+                "L'ébavurage",
+                "Le laminage",
+                "Le cintrage",
+                "L'emboutissage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ébavurage s'effectue à la lime, à l'ébavureur rotatif ou au tonneau pour éviter les coupures lors de la manipulation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel traitement électrochimique crée une couche d'oxyde protectrice et colorable en surface des pièces en aluminium ?",
+              "options": [
+                "L'anodisation",
+                "La rouille",
+                "Le trempage à l'eau de javel",
+                "Le martelage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anodisation renforce la résistance à l'usure de l'aluminium et permet d'emprisonner des colorants dans ses pores d'oxyde."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En quoi consiste la « galvanisation » d'une pièce en acier (comme un lampadaire ou une barrière d'autoroute) ?",
+              "options": [
+                "À tremper la pièce dans un bain de zinc en fusion pour créer une barrière protectrice contre la rouille",
+                "À frotter la pièce avec de l'ail pour faire fuir les insectes",
+                "À la peindre avec de l'encre à stylos",
+                "À la congeler pendant trois semaines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le zinc protège l'acier par effet barrière et par protection sacrificielle : le zinc s'oxyde à la place du fer."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles opérations relèvent des finitions esthétiques et protectrices ?",
+              "options": [
+                "Le thermolaquage (peinture poudre cuite au four)",
+                "L'application d'un vernis de protection",
+                "Le concassage au marteau-piqueur",
+                "Le perçage d'un trou débouchant"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La peinture cuite au four et le vernis forment un film protecteur durable contre les intempéries et les rayures."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle opération mécanique utilise des abrasifs de grains de plus en plus fins pour rendre une surface brillante comme un miroir ?",
+              "options": [
+                "Le polissage",
+                "Le sablage grossier",
+                "Le cisaillage",
+                "Le taraudage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le polissage élimine les micro-rayures jusqu'à obtenir un état de surface lisse et réfléchissant la lumière."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel procédé projette du sable ou des microbilles à grande vitesse pour nettoyer ou décaper une pièce métallique rouillée ?",
+              "options": [
+                "Le sablage ou grenaillage",
+                "L'arrosage au jet d'eau tiède",
+                "Le graissage à l'huile",
+                "Le séchage au sèche-cheveux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'impact des grains de sable décape la rouille, la calamine et les anciennes peintures tout en créant une accroche idéale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel traitement de surface consiste à déposer une fine couche métallique (chrome, nickel, or) par électrolyse ?",
+              "options": [
+                "La galvanoplastie (dépôt électrolytique)",
+                "L'extrusion",
+                "Le forgeage",
+                "Le cintrage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ions métalliques dissous dans un bain électrolytique migrent vers la pièce sous tension et s'y déposent en fine couche."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans l'industrie automobile, comment applique-t-on la première couche anticorrosion sur toute la carrosserie ?",
+              "options": [
+                "Par cataphorèse (bain de peinture appliqué par électrodéposition)",
+                "Au rouleau à tapisser manuel",
+                "Avec des feutres de coloriage",
+                "En versant des seaux de gouache"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La carrosserie est immergée dans un bain chargé électriquement, garantissant une pénétration de la peinture dans chaque recoin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel procédé moderne permet de graver un texte, un logo ou un QR code permanent sur une pièce métallique ou plastique finie ?",
+              "options": [
+                "Le marquage laser",
+                "La colle à bois",
+                "Le ruban adhésif papier",
+                "Le tampon encreur d'écolier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le faisceau laser modifie la teinte ou creuse superficiellement la surface pour créer un marquage inaltérable."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Contrôle qualité, métrologie et sécurité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le but fondamental du contrôle qualité dans une chaîne de production industrielle ?",
+              "options": [
+                "Vérifier que les pièces fabriquées sont conformes aux exigences du cahier des charges et aux tolérances",
+                "Augmenter le nombre de rebuts pour remplir les poubelles",
+                "Ralentir volontairement la cadence pour faire attendre les clients",
+                "Nettoyer les bureaux de la direction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contrôle qualité garantit que le produit répond aux normes de sécurité, dimensions et bon fonctionnement exigés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel instrument de mesure d'atelier permet de mesurer avec une précision au 1/50e ou 1/100e de millimètre des dimensions intérieures, extérieures et de profondeur ?",
+              "options": [
+                "Le pied à coulisse (ou calibre à coulisse)",
+                "Le double mètre pliant en bois",
+                "Le compas de géographie",
+                "La balance de cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce à son vernier ou son afficheur digital, le pied à coulisse est l'outil indispensable de métrologie d'atelier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la « tolérance dimensionnelle » sur un plan technique (ex : 50 mm ± 0,1 mm) ?",
+              "options": [
+                "L'écart maximal admissible par rapport à la dimension nominale théorique",
+                "L'erreur commise par le dessinateur qu'on décide d'ignorer",
+                "Le poids minimal de la pièce en kilogrammes",
+                "La date de livraison prévue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme la perfection n'existe pas en fabrication, la tolérance fixe les limites de taille acceptables pour que la pièce fonctionne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie le sigle EPI en sécurité du travail et en atelier ?",
+              "options": [
+                "Équipement de Protection Individuelle",
+                "Enseignement Pédagogique Industriel",
+                "Étude des Procédés Innovants",
+                "Élément Pour Ingénieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les EPI (lunettes, gants, chaussures de sécurité, casque antibruit) protègent l'opérateur contre les risques professionnels."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont les risques majeurs lors de l'utilisation d'une perceuse à colonne en atelier ?",
+              "options": [
+                "Le happement des cheveux longs ou des vêtements amples par la broche en rotation",
+                "La projection de copeaux métalliques brûlants dans les yeux",
+                "L'électrocution par les piles de sa montre",
+                "Le gel instantané des doigts"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le happement par les pièces en rotation et la projection d'éclats ou copeaux sont les deux risques les plus graves."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi est-il STRICTEMENT INTERDIT de porter des gants lors de l'utilisation d'une machine tournante (tour, perceuse, fraiseuse) ?",
+              "options": [
+                "Parce que le gant peut être happé par l'outil en rotation et entraîner la main entière dans la machine",
+                "Pour ne pas salir les gants avec de l'huile",
+                "Parce que les gants empêchent de sentir si la machine est allumée",
+                "Parce que les gants chauffent trop vite au contact de l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tissu ou cuir du gant est agrippé en une fraction de seconde par l'arbre en rotation, causant des amputations ou écrasements graves."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel outil de contrôle rapide en production comporte deux extrémités calibrées : un côté « ENTRE » et un côté « N'ENTRE PAS » ?",
+              "options": [
+                "Un calibre à limites (tampon lisse ou mâchoire de contrôle)",
+                "Un niveau à bulle",
+                "Une règle graduée transparente",
+                "Une balance romaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les calibres à limites permettent un contrôle instantané sans lecture de chiffre : la pièce doit passer dans l'un mais pas dans l'autre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel instrument de mesure à palpeur et cadran aiguille utilise-t-on pour mesurer des faux-ronds ou des écarts de planéité au centième de millimètre ?",
+              "options": [
+                "Le comparateur mécanique",
+                "Le chronomètre digital",
+                "Le rapporteur d'angle en plastique",
+                "Le manomètre à pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le comparateur amplifie les déplacements verticaux de son palpeur pour afficher les variations géométriques infimes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le rôle du gros bouton rouge « coup de poing » présent sur toutes les machines d'atelier ?",
+              "options": [
+                "Arrêter immédiatement et d'urgence l'alimentation électrique de la machine en cas de danger",
+                "Accélérer la vitesse pour finir la pièce plus vite",
+                "Allumer la lumière de l'atelier",
+                "Prendre une photo souvenir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'arrêt d'urgence est un organe de sécurité prioritaire qui stoppe instantanément tout mouvement dangereux d'un simple coup."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que doit obligatoirement porter un élève ou un technicien dès qu'il manipule des machines d'usinage ou de découpe ?",
+              "options": [
+                "Des lunettes de protection couvrantes",
+                "Une écharpe bien longue autour du cou",
+                "Des écouteurs de musique dans les oreilles",
+                "Des sandales ouvertes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lunettes de protection certifiées sont obligatoires pour protéger les yeux contre toute projection de copeaux ou de fluide."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

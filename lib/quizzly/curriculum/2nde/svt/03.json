@@ -1,0 +1,2738 @@
+{
+  "id": "2nde-svt-03",
+  "year": "2nde",
+  "subject": "svt",
+  "title": "Corps humain et santé",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Microbiote et immunité",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Découvrir le microbiote",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles affirmations décrivent le microbiote humain ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ensemble de micro-organismes vivant sur et dans le corps",
+                "Uniquement des bactéries pathogènes",
+                "Il participe à la digestion et à la défense",
+                "Il est identique chez tous les individus"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le microbiote regroupe bactéries, champignons, virus… Il aide la digestion et modulate l'immunité ; il varie d'une personne à l'autre."
+            },
+            {
+              "id": "q2",
+              "question": "Où se trouve la plus grande part du microbiote humain ?",
+              "type": "single_choice",
+              "options": ["Peau", "Intestin grêle", "Côlon", "Poumons"],
+              "correctAnswers": [2],
+              "explanation": "La majorité des micro-organismes commensaux colonise surtout le côlon."
+            },
+            {
+              "id": "q3",
+              "question": "Un antibiotique pris inutilement peut…",
+              "type": "single_choice",
+              "options": [
+                "Enrichir durablement le microbiote",
+                "Déséquilibrer le microbiote et favoriser des résistances",
+                "Tuer uniquement les virus",
+                "Renforcer toutes les barrières cutanées"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les antibiotiques perturbent la flore et sélectionnent des bactéries résistantes si mal utilisés."
+            },
+            {
+              "id": "q4",
+              "question": "Le microbiote intestinal aide notamment à…",
+              "type": "single_choice",
+              "options": [
+                "Synthétiser certaines vitamines",
+                "Produire tous les anticorps",
+                "Remplacer la moelle osseuse",
+                "Bloquer toute inflammation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines bactéries intestinales participent à la synthèse de vitamines comme la K ou des vitamines B."
+            },
+            {
+              "id": "q5",
+              "question": "Commensal signifie en général…",
+              "type": "single_choice",
+              "options": [
+                "Micro-organisme toujours mortel",
+                "Micro-organisme vivant en contact sans dommage habituel",
+                "Virus artificiel",
+                "Cellule du système nerveux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un commensal vit avec l'hôte sans provoquer de maladie en conditions normales."
+            },
+            {
+              "id": "q6",
+              "question": "Une alimentation variée riche en fibres favorise…",
+              "type": "single_choice",
+              "options": [
+                "Une flore intestinale diversifiée",
+                "La disparition de toutes les bactéries",
+                "L'immunité innée uniquement chez l'enfant",
+                "L'absence totale de lymphocytes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fibres nourrissent des bactéries bénéfiques et favorisent la diversité microbienne."
+            },
+            {
+              "id": "q7",
+              "question": "Le microbiote communique avec le système immunitaire via…",
+              "type": "single_choice",
+              "options": [
+                "Uniquement le sang artériel",
+                "La muqueuse intestinale et des signaux chimiques",
+                "Les os longs",
+                "Les reins uniquement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La paroi intestinale et les cellules immunitaires locales échangent des signaux avec la flore."
+            },
+            {
+              "id": "q8",
+              "question": "Probiotique désigne…",
+              "type": "single_choice",
+              "options": [
+                "Un virus vaccinal",
+                "Un micro-organisme vivant apporté pour un effet bénéfique ciblé",
+                "Un antibiotique naturel",
+                "Un lymphocyte T"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les probiotiques sont des micro-organismes vivants administrés en quantité suffisante pour un effet positif."
+            },
+            {
+              "id": "q9",
+              "question": "Dysbiose désigne…",
+              "type": "single_choice",
+              "options": [
+                "Un déséquilibre du microbiote",
+                "Une allergie alimentaire",
+                "Une fracture osseuse",
+                "Une mutation génétique rare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dysbiose correspond à un déséquilibre de la composition ou de l'activité du microbiote."
+            },
+            {
+              "id": "q10",
+              "question": "La flore d'un nouveau-né est influencée notamment par…",
+              "type": "single_choice",
+              "options": [
+                "Le mode de naissance et l'alimentation",
+                "La couleur des yeux",
+                "Le groupe sanguin seul",
+                "L'âge osseux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accouchement, alimentation (lait maternel…) et environnement façonnent les premières colonisations."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Microbiote et barrières",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels rôles assurent les barrières de l'organisme ?",
+              "type": "multiple_choice",
+              "options": [
+                "Limiter l'entrée des pathogènes",
+                "Produire des anticorps spécifiques dès la naissance",
+                "La peau et les muqueuses sont des barrières",
+                "Les barrières remplacent totalement l'immunité adaptative"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Peau et muqueuses freinent l'entrée des microbes ; l'immunité adaptative complète ce dispositif."
+            },
+            {
+              "id": "q2",
+              "question": "La flore normale de la peau peut…",
+              "type": "single_choice",
+              "options": [
+                "Occuper des niches et freiner certains pathogènes",
+                "Détruire le système nerveux",
+                "Empêcher toute sueur",
+                "Produire l'insuline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les commensaux limitent l'installation de microbes nuisibles par compétition."
+            },
+            {
+              "id": "q3",
+              "question": "Le mucus intestinal contribue à…",
+              "type": "single_choice",
+              "options": [
+                "Piéger des micro-organismes et les éloigner de l'épithélium",
+                "Transporter l'oxygène",
+                "Synthétiser l'adrénaline",
+                "Refroidir le cerveau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mucus protège la muqueuse et limite le contact direct avec la flore."
+            },
+            {
+              "id": "q4",
+              "question": "Une barrière épithéliale serrée limite…",
+              "type": "single_choice",
+              "options": [
+                "Le passage paracellulaire de substances",
+                "La production de lait",
+                "La croissance osseuse",
+                "La vision des couleurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les jonctions entre cellules épithéliales contrôlent ce qui traverse la paroi."
+            },
+            {
+              "id": "q5",
+              "question": "Le pH acide de l'estomac aide à…",
+              "type": "single_choice",
+              "options": [
+                "Inactiver ou tuer de nombreux microbes ingérés",
+                "Digérer uniquement les lipides",
+                "Fabriquer des anticorps",
+                "Stocker le fer uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'acidité gastrique est une barrière chimique contre les micro-organismes avalés."
+            },
+            {
+              "id": "q6",
+              "question": "Les sécrétions lacrymales contiennent des substances…",
+              "type": "single_choice",
+              "options": [
+                "Antimicrobiennes",
+                "Radioactives",
+                "Identiques aux hormones thyroïdiennes",
+                "Qui bloquent la respiration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les larmes participent à la défense de la surface oculaire."
+            },
+            {
+              "id": "q7",
+              "question": "Un déséquilibre du microbiote vaginal peut favoriser…",
+              "type": "single_choice",
+              "options": [
+                "Certaines infections opportunistes",
+                "La fusion des os",
+                "La myopie",
+                "La photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La flore protectrice aide à maintenir un milieu défavorable à certains pathogènes."
+            },
+            {
+              "id": "q8",
+              "question": "La diversité du microbiote est généralement considérée comme…",
+              "type": "single_choice",
+              "options": [
+                "Un indicateur favorable de résilience",
+                "Inutile pour la santé",
+                "Identique à un seul microbe",
+                "Dangereuse par définition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une flore variée est souvent associée à un meilleur équilibre fonctionnel."
+            },
+            {
+              "id": "q9",
+              "question": "Les antibiotiques à large spectre…",
+              "type": "single_choice",
+              "options": [
+                "Peuvent réduire la diversité microbienne",
+                "Ne touchent que les virus",
+                "Augmentent toujours la flore lactique chez tous",
+                "Remplacent les vaccins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils affectent de nombreuses bactéries, y compris bénéfiques, d'où un risque de dysbiose."
+            },
+            {
+              "id": "q10",
+              "question": "Réintroduire progressivement une alimentation variée après antibiothérapie aide…",
+              "type": "single_choice",
+              "options": [
+                "À soutenir la reconstruction de la flore",
+                "À éliminer tous les lymphocytes",
+                "À supprimer la muqueuse",
+                "À annuler l'immunité innée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alimentation équilibrée et fibres participent au retour vers un microbiote diversifié."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Immunité innée : premières défenses",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "L'immunité innée se caractérise par…",
+              "type": "multiple_choice",
+              "options": [
+                "Une réponse rapide et non spécifique",
+                "La production d'anticorps très ciblés dès la première minute",
+                "Des cellules comme les phagocytes",
+                "Une mémoire immunologique identique à celle des vaccins"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'innée réagit vite sans ciblage précis d'un antigène ; les phagocytes y participent."
+            },
+            {
+              "id": "q2",
+              "question": "Un phagocyte…",
+              "type": "single_choice",
+              "options": [
+                "Englobe et digère des particules dont des microbes",
+                "Sécrète uniquement de l'adrénaline",
+                "Est un neurone",
+                "Ne circule jamais dans le sang"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phagocytose est une fonction clé de l'immunité innée."
+            },
+            {
+              "id": "q3",
+              "question": "Les granulocytes font partie…",
+              "type": "single_choice",
+              "options": [
+                "Des leucocytes de l'immunité innée",
+                "Des gamètes",
+                "Des neurones moteurs",
+                "Des cellules de la rétine uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Neutrophiles, éosinophiles et basophiles sont des granulocytes."
+            },
+            {
+              "id": "q4",
+              "question": "Les macrophages dérivent notamment…",
+              "type": "single_choice",
+              "options": [
+                "De monocytes ayant migré dans les tissus",
+                "Des lymphocytes B",
+                "Des spermatozoïdes",
+                "Des cellules musculaires lisses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les monocytes circulants deviennent macrophages dans les tissus."
+            },
+            {
+              "id": "q5",
+              "question": "Les cellules NK (Natural Killer)…",
+              "type": "single_choice",
+              "options": [
+                "Détruisent certaines cellules infectées ou anormales",
+                "Produisent des anticorps",
+                "Sont des globules rouges",
+                "Ne participent qu'à la digestion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les NK interviennent dans la défense innée contre cellules infectées ou tumorales."
+            },
+            {
+              "id": "q6",
+              "question": "Les cytokines sont…",
+              "type": "single_choice",
+              "options": [
+                "Des messagers chimiques du système immunitaire",
+                "Des enzymes digestives uniquement",
+                "Des hormones sexuelles",
+                "Des pigments de peau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles coordonnent inflammation, recrutement cellulaire et activation immunitaire."
+            },
+            {
+              "id": "q7",
+              "question": "La fièvre modérée peut…",
+              "type": "single_choice",
+              "options": [
+                "Ralentir la multiplication de certains microbes",
+                "Guérir instantanément toute infection",
+                "Remplacer les soins",
+                "Supprimer tous les virus sans cellules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La hausse de température fait partie de la réponse innée et peut gêner les pathogènes."
+            },
+            {
+              "id": "q8",
+              "question": "Les compléments du système immunitaire…",
+              "type": "single_choice",
+              "options": [
+                "Participent à la lyse de certaines bactéries et au recrutement",
+                "Sont des vitamines du lait",
+                "Ne fonctionnent qu'après vaccination",
+                "Sont absents du sang"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cascade du complément amplifie la défense innée."
+            },
+            {
+              "id": "q9",
+              "question": "Une inflammation locale se manifeste souvent par…",
+              "type": "single_choice",
+              "options": [
+                "Rougeur, chaleur, gonflement, douleur",
+                "Perte immédiate de la mémoire",
+                "Augmentation de la taille osseuse",
+                "Disparition des muqueuses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce sont les signes classiques de la réaction inflammatoire."
+            },
+            {
+              "id": "q10",
+              "question": "L'immunité innée est présente…",
+              "type": "single_choice",
+              "options": [
+                "Dès la naissance",
+                "Uniquement après la puberté",
+                "Seulement chez les adultes vaccinés",
+                "Jamais dans la peau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les barrières et cellules innées protègent dès les premiers jours de vie."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Inflammation et réponse locale",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Lors d'une coupure infectée, on observe souvent…",
+              "type": "multiple_choice",
+              "options": [
+                "Recrutement de leucocytes",
+                "Production d'anticorps spécifiques en quelques minutes",
+                "Rougeur et chaleur locales",
+                "Disparition immédiate de toute barrière cutanée"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'inflammation recrute des leucocytes et provoque rougeur/chaleur ; les anticorps spécifiques viennent plus tard."
+            },
+            {
+              "id": "q2",
+              "question": "L'histamine libérée lors d'une réaction peut…",
+              "type": "single_choice",
+              "options": [
+                "Augmenter la perméabilité des vaisseaux",
+                "Produire des anticorps",
+                "Diviser les os",
+                "Stocker le glucose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'histamine favorise l'afflux de plasma et de cellules vers la zone lésée."
+            },
+            {
+              "id": "q3",
+              "question": "Le pus est surtout composé…",
+              "type": "single_choice",
+              "options": [
+                "De leucocytes morts, débris tissulaires et microbes",
+                "De lait maternel",
+                "D'anticorps matures uniquement",
+                "De neurones"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il témoigne d'un combat immunitaire local intense."
+            },
+            {
+              "id": "q4",
+              "question": "Une réaction inflammatoire excessive peut…",
+              "type": "single_choice",
+              "options": [
+                "Endommager les propres tissus",
+                "Renforcer toujours la santé sans risque",
+                "Remplacer l'immunité adaptative",
+                "Empêcher toute cicatrisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inflammation doit être régulée pour éviter des lésions collatérales."
+            },
+            {
+              "id": "q5",
+              "question": "Les mastocytes participent notamment à…",
+              "type": "single_choice",
+              "options": [
+                "La libération de médiateurs lors de certaines réactions",
+                "La photosynthèse",
+                "La contraction musculaire volontaire",
+                "La production de spermatozoïdes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mastocytes stockent histamine et autres médiateurs."
+            },
+            {
+              "id": "q6",
+              "question": "La douleur lors d'une inflammation alerte…",
+              "type": "single_choice",
+              "options": [
+                "L'organisme et incite à protéger la zone",
+                "Uniquement le microbiote",
+                "Les globules rouges",
+                "Les reins seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La douleur a une fonction protectrice comportementale."
+            },
+            {
+              "id": "q7",
+              "question": "La cicatrisation d'une plaie implique…",
+              "type": "single_choice",
+              "options": [
+                "Prolifération cellulaire et remodelage tissulaire",
+                "La disparition de toute immunité",
+                "Uniquement des virus",
+                "Aucune participation du système immunitaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Immunité et réparation tissulaire coopèrent pour refermer la lésion."
+            },
+            {
+              "id": "q8",
+              "question": "Un antiseptique sur une plaie propre vise à…",
+              "type": "single_choice",
+              "options": [
+                "Réduire la charge microbienne locale",
+                "Créer une allergie",
+                "Remplacer tous les vaccins",
+                "Bloquer la digestion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il limite l'infection sans remplacer les défenses de l'organisme."
+            },
+            {
+              "id": "q9",
+              "question": "La suppuration indique souvent…",
+              "type": "single_choice",
+              "options": [
+                "Une bataille immunitaire en cours",
+                "Une absence totale de leucocytes",
+                "Une réaction uniquement adaptative immédiate",
+                "Une guérison sans infection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pus reflète une réponse innée intense contre des microbes."
+            },
+            {
+              "id": "q10",
+              "question": "Réduire une inflammation chronique nécessite parfois…",
+              "type": "single_choice",
+              "options": [
+                "Traiter la cause et suivre un avis médical",
+                "Ignorer toute alimentation",
+                "Supprimer toutes les barrières",
+                "Arrêter toute activité immunitaire innée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inflammation chronique demande un diagnostic et une prise en charge adaptée."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Immunité adaptative : principes",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "L'immunité adaptative diffère de l'innée car…",
+              "type": "multiple_choice",
+              "options": [
+                "Elle cible un antigène précis",
+                "Elle met en jeu lymphocytes B et T",
+                "Elle est toujours instantanée sans étapes",
+                "Elle peut mémoriser un agent rencontré"
+              ],
+              "correctAnswers": [1, 3],
+              "explanation": "L'adaptative est spécifique, plus lente au début, et fonde la mémoire immunitaire."
+            },
+            {
+              "id": "q2",
+              "question": "Un antigène est…",
+              "type": "single_choice",
+              "options": [
+                "Une molécule reconnue par le système immunitaire adaptatif",
+                "Un type de globule rouge",
+                "Uniquement un virus mort",
+                "Toujours artificiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protéines ou polysaccharides de surface microbienne peuvent servir d'antigènes."
+            },
+            {
+              "id": "q3",
+              "question": "Les lymphocytes matures se différencient surtout…",
+              "type": "single_choice",
+              "options": [
+                "Dans la moelle osseuse et le thymus",
+                "Dans l'estomac",
+                "Dans les ongles",
+                "Dans le cristallin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moelle osseuse pour B et précurseurs ; thymus pour la maturation des T."
+            },
+            {
+              "id": "q4",
+              "question": "Les organes lymphoïdes secondaires comprennent…",
+              "type": "single_choice",
+              "options": [
+                "Ganglions, rate, amygdales",
+                "Poumons uniquement",
+                "Os et cartilages",
+                "Tubes digestifs sans muqueuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce sont des sites de rencontre entre antigènes et lymphocytes."
+            },
+            {
+              "id": "q5",
+              "question": "La réponse adaptative primaire est…",
+              "type": "single_choice",
+              "options": [
+                "Plus lente que la réponse secondaire",
+                "Toujours absente chez l'adolescent",
+                "Identique à la réponse innée",
+                "Sans production lymphocytaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au premier contact, il faut cloner les lymphocytes spécifiques."
+            },
+            {
+              "id": "q6",
+              "question": "La mémoire immunologique permet…",
+              "type": "single_choice",
+              "options": [
+                "Une réaction plus rapide et forte au recontact",
+                "D'oublier tous les antigènes",
+                "De supprimer l'immunité innée",
+                "De ne plus produire de leucocytes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des lymphocytes mémoire persistent après un premier contact ou une vaccination."
+            },
+            {
+              "id": "q7",
+              "question": "Les cellules présentatrices d'antigène…",
+              "type": "single_choice",
+              "options": [
+                "Présentent des fragments aux lymphocytes T",
+                "Produisent le lait",
+                "Sont des globules rouges",
+                "Ne participent jamais à l'immunité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dendritiques et macrophages activés présentent des peptides aux T."
+            },
+            {
+              "id": "q8",
+              "question": "Auto-immunité signifie…",
+              "type": "single_choice",
+              "options": [
+                "Une attaque du système immunitaire contre soi",
+                "Une absence de lymphocytes",
+                "Une infection bactérienne externe uniquement",
+                "Un excès de microbiote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tolérance vis-à-vis du soi est essentielle ; sa rupture provoque des maladies auto-immunes."
+            },
+            {
+              "id": "q9",
+              "question": "La tolérance immunologique vise à…",
+              "type": "single_choice",
+              "options": [
+                "Ne pas attaquer les propres cellules saines",
+                "Détruire toutes les bactéries commensales",
+                "Empêcher toute inflammation",
+                "Bloquer toute vaccination"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système doit distinguer soi et non-soi."
+            },
+            {
+              "id": "q10",
+              "question": "Allergie et défense contre microbe…",
+              "type": "single_choice",
+              "options": [
+                "Sont des réponses adaptatives différentes",
+                "Sont identiques",
+                "N'impliquent jamais d'IgE",
+                "Ignorent les lymphocytes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'allergie est une réponse adaptative excessive contre un allergène."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Lymphocytes B et anticorps",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Les anticorps (immunoglobulines)…",
+              "type": "multiple_choice",
+              "options": [
+                "Sont produits par les lymphocytes B activés",
+                "Se fixent sur des antigènes",
+                "Transportent l'oxygène dans le sang",
+                "Peuvent neutraliser certains agents"
+              ],
+              "correctAnswers": [1, 3],
+              "explanation": "Les anticorps sont des protéines Y sécrétées par les plasmocytes ; ils neutralisent ou marquent les cibles."
+            },
+            {
+              "id": "q2",
+              "question": "Un lymphocyte B activé peut devenir…",
+              "type": "single_choice",
+              "options": [
+                "Plasmocyte sécrétant des anticorps",
+                "Globule rouge",
+                "Neurone sensoriel",
+                "Ostéocyte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les plasmocytes sont les usines à anticorps."
+            },
+            {
+              "id": "q3",
+              "question": "La réponse humorale désigne surtout…",
+              "type": "single_choice",
+              "options": [
+                "L'action des anticorps dans les liquides",
+                "La digestion des lipides",
+                "La contraction musculaire",
+                "La photosynthèse cutanée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les anticorps circulent dans le plasma et les muqueuses."
+            },
+            {
+              "id": "q4",
+              "question": "Les IgG sont importantes car…",
+              "type": "single_choice",
+              "options": [
+                "Elles participent à la défense et à la mémoire",
+                "Elles remplacent les globules rouges",
+                "Elles sont uniquement dans l'air",
+                "Elles ne ciblent jamais d'antigènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les IgG dominent dans le sang et traversent parfois la barrière placentaire."
+            },
+            {
+              "id": "q5",
+              "question": "Les IgA protègent surtout…",
+              "type": "single_choice",
+              "options": [
+                "Les muqueuses (salive, intestin, voies respiratoires)",
+                "Les os compactes",
+                "Le cristallin",
+                "Les ongles uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les IgA sont abondantes dans les sécrétions des muqueuses."
+            },
+            {
+              "id": "q6",
+              "question": "La neutralisation par anticorps…",
+              "type": "single_choice",
+              "options": [
+                "Empêche un virus d'infecter une cellule",
+                "Augmente la température corporelle",
+                "Crée des os",
+                "Produit de l'insuline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anticorps bloque la fixation du pathogène sur ses récepteurs."
+            },
+            {
+              "id": "q7",
+              "question": "L'opsonisation…",
+              "type": "single_choice",
+              "options": [
+                "Marque un microbe pour faciliter la phagocytose",
+                "Détruit directement tous les virus sans cellules",
+                "Remplace le thymus",
+                "Supprime la moelle osseuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les anticorps opsonisants aident les phagocytes à reconnaître la cible."
+            },
+            {
+              "id": "q8",
+              "question": "Les lymphocytes B mémoire…",
+              "type": "single_choice",
+              "options": [
+                "Permettent une réponse anticorps rapide au recontact",
+                "Sont absents après vaccination",
+                "Ne produisent jamais d'Ig",
+                "Sont identiques aux globules rouges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils survivent longtemps et réactivent la production d'anticorps."
+            },
+            {
+              "id": "q9",
+              "question": "Un test sérologique détecte souvent…",
+              "type": "single_choice",
+              "options": [
+                "Des anticorps circulants",
+                "Uniquement des bactéries vivantes dans l'air",
+                "La vitesse de course",
+                "La densité osseuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sérologie recherche la présence d'anticorps spécifiques dans le sang."
+            },
+            {
+              "id": "q10",
+              "question": "Passage des IgG maternelles au fœtus…",
+              "type": "single_choice",
+              "options": [
+                "Contribue à la protection du nouveau-né",
+                "Remplace définitivement toute immunité de l'enfant",
+                "Empêche toute vaccination future",
+                "Supprime le microbiote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'immunité passive maternelle protège temporairement le nourrisson."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Lymphocytes T",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Les lymphocytes T helper (CD4+)…",
+              "type": "multiple_choice",
+              "options": [
+                "Coordonnent la réponse immunitaire adaptative",
+                "Aident l'activation d'autres lymphocytes",
+                "Produisent directement tous les anticorps sans B",
+                "Sont des cellules du système nerveux"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les T CD4+ sécrètent des cytokines et activent B et T cytotoxiques."
+            },
+            {
+              "id": "q2",
+              "question": "Les lymphocytes T cytotoxiques (CD8+)…",
+              "type": "single_choice",
+              "options": [
+                "Détruisent des cellules infectées ou anormales",
+                "Transportent l'oxygène",
+                "Sont des bactéries",
+                "Fabriquent le mucus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils reconnaissent des antigènes présentés par les cellules infectées."
+            },
+            {
+              "id": "q3",
+              "question": "La réponse immunitaire cellulaire met surtout en jeu…",
+              "type": "single_choice",
+              "options": [
+                "Les lymphocytes T",
+                "Les globules rouges",
+                "Les spermatozoïdes",
+                "Les cellules de la peau morte uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les T cytotoxiques et helpers sont centraux dans la réponse cellulaire."
+            },
+            {
+              "id": "q4",
+              "question": "Le thymus est essentiel pour…",
+              "type": "single_choice",
+              "options": [
+                "La maturation et la sélection des lymphocytes T",
+                "La production de bile",
+                "La digestion des protéines",
+                "Le filtrage du sang par les reins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le thymus éduque les T pour éviter l'auto-réactivité dangereuse."
+            },
+            {
+              "id": "q5",
+              "question": "Une cellule présentatrice montre aux T…",
+              "type": "single_choice",
+              "options": [
+                "Des peptides antigéniques via des molécules du CMH",
+                "De l'ADN nu sans contexte",
+                "Uniquement des lipides alimentaires",
+                "Des globules rouges entiers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le complexe majeur d'histocompatibilité présente les fragments aux T."
+            },
+            {
+              "id": "q6",
+              "question": "Le VIH cible surtout…",
+              "type": "single_choice",
+              "options": [
+                "Certains lymphocytes T CD4+",
+                "Les cheveux",
+                "Les os",
+                "Les dents uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La destruction des T CD4+ affaiblit la coordination immunitaire."
+            },
+            {
+              "id": "q7",
+              "question": "Rejet de greffe lié à l'immunité…",
+              "type": "single_choice",
+              "options": [
+                "Implique reconnaissance du tissu étranger par les T",
+                "Ne concerne jamais les lymphocytes",
+                "Est identique à une fracture",
+                "Ignore le CMH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les T reconnaissent des antigènes du donneur différents du receveur."
+            },
+            {
+              "id": "q8",
+              "question": "Les T régulateurs contribuent à…",
+              "type": "single_choice",
+              "options": [
+                "Freiner des réponses immunitaires excessives",
+                "Produire des anticorps sans limite",
+                "Augmenter toujours l'inflammation",
+                "Remplacer la peau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils aident à maintenir la tolérance et l'équilibre immunitaire."
+            },
+            {
+              "id": "q9",
+              "question": "Vaccin vivant atténué stimule…",
+              "type": "single_choice",
+              "options": [
+                "Innée et adaptative (B et T)",
+                "Uniquement la digestion",
+                "Seulement les globules rouges",
+                "Rien chez l'adolescent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un agent atténué reproduit une infection contrôlée entraînant mémoire."
+            },
+            {
+              "id": "q10",
+              "question": "Surveillance immunitaire par les T…",
+              "type": "single_choice",
+              "options": [
+                "Détecte des cellules infectées ou certaines anomalies",
+                "Empêche toute cicatrisation",
+                "Remplace le microbiote",
+                "Bloque la respiration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les T cytotoxiques éliminent des cellules présentant des antigènes anormaux."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Vaccination",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Un vaccin vise à…",
+              "type": "multiple_choice",
+              "options": [
+                "Induire une mémoire immunitaire sans maladie grave",
+                "Remplacer toutes les barrières innées",
+                "Stimuler une réponse adaptative",
+                "Guérir instantanément une infection en cours dans tous les cas"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La vaccination entraîne B/T mémoire pour une protection ultérieure ; elle ne soigne pas toujours une infection déjà installée."
+            },
+            {
+              "id": "q2",
+              "question": "Vaccin à ARNm : principe en 2nde",
+              "type": "single_choice",
+              "options": [
+                "Fournit une information pour produire un antigène viral",
+                "Injecte un virus entier pathogène",
+                "Remplace le microbiote",
+                "Supprime les lymphocytes T"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules utilisent l'ARNm pour fabriquer brièvement une protéine cible du vaccin."
+            },
+            {
+              "id": "q3",
+              "question": "Vaccin inactivé contient…",
+              "type": "single_choice",
+              "options": [
+                "Agent tué ne se multipliant pas",
+                "Microbe virulent intact",
+                "Uniquement des antibiotiques",
+                "Des globules rouges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'agent inactivé présente des antigènes sans provoquer la maladie."
+            },
+            {
+              "id": "q4",
+              "question": "Rappel vaccinal sert à…",
+              "type": "single_choice",
+              "options": [
+                "Renforcer et prolonger la mémoire immunitaire",
+                "Effacer toute protection",
+                "Remplacer l'alimentation",
+                "Bloquer l'immunité innée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rappels boostent les lymphocytes mémoire et les anticorps."
+            },
+            {
+              "id": "q5",
+              "question": "Couverture vaccinale élevée permet…",
+              "type": "single_choice",
+              "options": [
+                "Protection collectiva (immunité de groupe)",
+                "Suppression du microbiote",
+                "Disparition de toute immunité innée",
+                "Impossibilité de mutation virale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de transmission protège aussi les personnes non vaccinées ou fragiles."
+            },
+            {
+              "id": "q6",
+              "question": "Effet secondaire léger post-vaccin…",
+              "type": "single_choice",
+              "options": [
+                "Peut refléter l'activation du système immunitaire",
+                "Prouve toujours une maladie grave",
+                "Signifie que le vaccin est inefficace",
+                "Remplace la fièvre infectieuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fièvre ou douleur locale peuvent accompagner une réponse normale."
+            },
+            {
+              "id": "q7",
+              "question": "Contre-indication absolue rare : à signaler…",
+              "type": "single_choice",
+              "options": [
+                "Au médecin avant injection",
+                "Jamais, aucune information nécessaire",
+                "Uniquement sur les réseaux sociaux",
+                "Seulement après 10 rappels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le professionnel de santé évalue le calendrier et les contre-indications."
+            },
+            {
+              "id": "q8",
+              "question": "Vaccination et antibiotiques…",
+              "type": "single_choice",
+              "options": [
+                "Sont des outils différents : prévention vs traitement bactérien",
+                "Sont identiques",
+                "Les antibiotiques remplacent tous les vaccins",
+                "Les vaccins tuent les bactéries dans le sang instantanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vaccins préviennent ; antibiotiques traitent certaines infections bactériennes."
+            },
+            {
+              "id": "q9",
+              "question": "Calendrier vaccinal français…",
+              "type": "single_choice",
+              "options": [
+                "Est mis à jour selon l'épidémiologie",
+                "Est fixe sans jamais changer",
+                "Concerne uniquement les adultes",
+                "Ignore l'âge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les recommandations évoluent avec les données scientifiques."
+            },
+            {
+              "id": "q10",
+              "question": "Fake news sur les vaccins : réflexe…",
+              "type": "single_choice",
+              "options": [
+                "Vérifier auprès de sources santé officielles",
+                "Partager sans lire",
+                "Croire une anecdote isolée comme preuve",
+                "Refuser toute lecture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Santé publique France, HAS et médecin traitant sont des références fiables."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Microbiote, immunité et hygiène",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Hygiène des mains correcte…",
+              "type": "multiple_choice",
+              "options": [
+                "Limite la transmission de microbes",
+                "Remplace tous les vaccins",
+                "Réduit certains risques infectieux",
+                "Détruit obligatoirement le microbiote intestinal entier"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Se laver les mains limite les infections ; elle ne remplace pas la vaccination ni n'élimine toute la flore digestive."
+            },
+            {
+              "id": "q2",
+              "question": "Hygiène vs stérilité totale de l'environnement…",
+              "type": "single_choice",
+              "options": [
+                "Un équilibre est nécessaire ; stérilité absolue n'est pas l'objectif du quotidien",
+                "Il faut éliminer toute bactérie de la planète",
+                "Le microbiote n'a aucun intérêt",
+                "La saleté est toujours bénéfique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduire les pathogènes sans chercher à éliminer toute vie microbienne utile."
+            },
+            {
+              "id": "q3",
+              "question": "Aliments fermentés (yaourt…) peuvent…",
+              "type": "single_choice",
+              "options": [
+                "Apporter des micro-organismes lors d'une consommation régulière",
+                "Guérir toute maladie auto-immune",
+                "Remplacer les soins d'urgence",
+                "Supprimer le besoin de sommeil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils contribuent à l'apport alimentaire ; effets sur flore variables selon produits."
+            },
+            {
+              "id": "q4",
+              "question": "Antibiotique : bon usage",
+              "type": "single_choice",
+              "options": [
+                "Prescription médicale pour infection bactérienne ciblée",
+                "Pour tout rhume viral",
+                "Pour améliorer le sommeil",
+                "En prévention systématique sans avis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rhumes viraux ne nécessitent pas d'antibiotiques ; mauvais usage favorise résistances."
+            },
+            {
+              "id": "q5",
+              "question": "Résistance aux antibiotiques…",
+              "type": "single_choice",
+              "options": [
+                "Menace la santé publique mondiale",
+                "N'a aucun lien avec l'usage humain",
+                "Disparaît si on augmente les doses au hasard",
+                "Ne concerne que les plantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usage excessif sélectionne des bactéries difficiles à traiter."
+            },
+            {
+              "id": "q6",
+              "question": "Microbiote et allergies : piste étudiée…",
+              "type": "single_choice",
+              "options": [
+                "Exposition équilibrée aux microbes et diversité alimentaire",
+                "Suppression totale de la flore dès la naissance",
+                "Absence de toute étude",
+                "Identité stricte chez tous les allergiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hygiène de vie et la diversité microbienne sont des axes de recherche."
+            },
+            {
+              "id": "q7",
+              "question": "Sport modéré régulier…",
+              "type": "single_choice",
+              "options": [
+                "Peut favoriser un bon fonctionnement immunitaire global",
+                "Affaiblit toujours toutes les défenses",
+                "Remplace les vaccins",
+                "Supprime le microbiote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Activité adaptée soutient la santé ; excès extrême peut temporairement stresser l'organisme."
+            },
+            {
+              "id": "q8",
+              "question": "Sommeil insuffisant…",
+              "type": "single_choice",
+              "options": [
+                "Peut affaiblir certaines réponses immunitaires",
+                "Renforce toujours les défenses",
+                "N'a aucun effet",
+                "Remplace l'alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sommeil participe à la régénération et à la réponse immunitaire."
+            },
+            {
+              "id": "q9",
+              "question": "Stress chronique…",
+              "type": "single_choice",
+              "options": [
+                "Peut perturber le système immunitaire",
+                "Améliore toujours la vaccination",
+                "N'influence que la peau",
+                "Est sans effet sur les hormones"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le stress prolongé modifie sécrétions hormonales et fonction immunitaire."
+            },
+            {
+              "id": "q10",
+              "question": "Consultation médicale si fièvre élevée persistante…",
+              "type": "single_choice",
+              "options": [
+                "Est recommandée",
+                "Est inutile",
+                "Remplace l'hydratation",
+                "Prouve une allergie alimentaire seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fièvre durable ou signes inquiétants nécessitent avis professionnel."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse microbiote et immunité",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour rester en bonne santé, on combine…",
+              "type": "multiple_choice",
+              "options": [
+                "Vaccination à jour",
+                "Alimentation équilibrée et sommeil",
+                "Suppression de toute flore",
+                "Ignorance de l'hygiène des mains"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Prévention vaccinale, mode de vie et hygiène se complètent."
+            },
+            {
+              "id": "q2",
+              "question": "Innée puis adaptative lors d'une infection…",
+              "type": "single_choice",
+              "options": [
+                "Innée réagit d'abord, adaptative renforce la spécificité",
+                "Adaptative toujours sans innée",
+                "Aucune coopération",
+                "Innée produit tous les anticorps finaux seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux bras coopèrent : phagocytes/cytokines puis lymphocytes spécifiques."
+            },
+            {
+              "id": "q3",
+              "question": "Microbiote et immunité intestinale…",
+              "type": "single_choice",
+              "options": [
+                "Interagissent en permanence",
+                "Sont totalement indépendants",
+                "Le microbiote remplace les lymphocytes",
+                "L'immunité ignore l'intestin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La flore éduque et module les réponses locales et systémiques."
+            },
+            {
+              "id": "q4",
+              "question": "Auto-médication antibiotique…",
+              "type": "single_choice",
+              "options": [
+                "Est déconseillée",
+                "Est toujours recommandée",
+                "Remplace le médecin",
+                "Sans risque pour la flore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mauvais choix de molécule ou durée favorise échec et résistances."
+            },
+            {
+              "id": "q5",
+              "question": "Mémoire immunitaire après maladie ou vaccin…",
+              "type": "single_choice",
+              "options": [
+                "Peut protéger des mois à des années",
+                "Disparaît en une heure",
+                "N'existe pas chez l'adolescent",
+                "Bloque le thymus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lymphocytes mémoire persistent variablement selon pathogènes."
+            },
+            {
+              "id": "q6",
+              "question": "Pathogène vs commensal…",
+              "type": "single_choice",
+              "options": [
+                "Pathogène peut provoquer maladie ; commensal cohabite souvent sans dommage",
+                "Identiques",
+                "Commensal toujours mortel",
+                "Pathogène toujours bénéfique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contexte et la virulence déterminent le caractère nuisible."
+            },
+            {
+              "id": "q7",
+              "question": "Barrières + immunité + microbiote…",
+              "type": "single_choice",
+              "options": [
+                "Forment un ensemble de défense",
+                "Se remplacent mutuellement totalement",
+                "N'ont aucun lien",
+                "Concernent seulement la peau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Défense multicouche : barrières, flore, innée et adaptative."
+            },
+            {
+              "id": "q8",
+              "question": "Info santé fiable sur vaccins…",
+              "type": "single_choice",
+              "options": [
+                "Ministère de la Santé, médecin",
+                "Chaîne anonyme sans sources",
+                "Rumeur de groupe",
+                "Message publicitaire non vérifié"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sources institutionnelles et professionnels de santé sont prioritaires."
+            },
+            {
+              "id": "q9",
+              "question": "Adolescent : rôle dans sa santé…",
+              "type": "single_choice",
+              "options": [
+                "Adopter comportements favorables et calendrier vaccinal",
+                "Ignorer sommeil et activité",
+                "Refuser toute prévention",
+                "Confondre antibiotique et antiviral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autonomie progressive inclut prévention et bon usage des soins."
+            },
+            {
+              "id": "q10",
+              "question": "Recherche sur microbiote…",
+              "type": "single_choice",
+              "options": [
+                "Explore liens avec métabolisme, immunité, inflammation",
+                "Est terminée sans question ouverte",
+                "Ignore l'alimentation",
+                "Concerne uniquement les animaux marins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Domaine actif avec applications futures en santé personnalisée."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Comportements et santé",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Déterminants de la santé",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "La santé d'un adolescent dépend…",
+              "type": "multiple_choice",
+              "options": [
+                "De facteurs biologiques, psychologiques et sociaux",
+                "Uniquement de ses gènes",
+                "De son environnement et de ses comportements",
+                "Seulement de la météo"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Modèle biopsychosocial : génétique, mode de vie, entourage, accès aux soins…"
+            },
+            {
+              "id": "q2",
+              "question": "Déterminant social de santé…",
+              "type": "single_choice",
+              "options": [
+                "Niveau d'éducation, revenus, accès aux soins",
+                "Couleur des yeux uniquement",
+                "Type de chaussures",
+                "Numéro de maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les inégalités sociales influencent espérance de vie et morbidité."
+            },
+            {
+              "id": "q3",
+              "question": "Promotion de la santé vise à…",
+              "type": "single_choice",
+              "options": [
+                "Favoriser des comportements protecteurs",
+                "Guérir toutes les maladies instantanément",
+                "Supprimer le sport",
+                "Interdire toute prévention"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éducation, vaccination, activité physique et alimentation sont des leviers."
+            },
+            {
+              "id": "q4",
+              "question": "Prévention primaire…",
+              "type": "single_choice",
+              "options": [
+                "Évite l'apparition de la maladie (ex. vaccin)",
+                "Traite une maladie avancée",
+                "Rééduque après AVC uniquement",
+                "Mesure la température sans action"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agir avant la maladie : hygiène, vaccins, sécurité routière…"
+            },
+            {
+              "id": "q5",
+              "question": "Prévention secondaire…",
+              "type": "single_choice",
+              "options": [
+                "Dépistage précoce",
+                "Construction d'autoroutes",
+                "Vente de sucre",
+                "Suppression du sommeil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Détecter tôt pour traiter plus efficacement."
+            },
+            {
+              "id": "q6",
+              "question": "OMS définit la santé comme…",
+              "type": "single_choice",
+              "options": [
+                "État de complet bien-être physique, mental et social",
+                "Absence totale de microbe",
+                "Capacité à courir un marathon",
+                "Taille minimale imposée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La santé dépasse la simple absence de maladie."
+            },
+            {
+              "id": "q7",
+              "question": "Capacité à faire des choix éclairés en santé…",
+              "type": "single_choice",
+              "options": [
+                "S'appelle parfois littératie en santé",
+                "Ignore les sources",
+                "Repose sur rumeurs uniquement",
+                "Interdit de poser des questions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre informations médicales aide à décider."
+            },
+            {
+              "id": "q8",
+              "question": "Pair educateur en milieu scolaire…",
+              "type": "single_choice",
+              "options": [
+                "Peut sensibiliser sur addictions et sexualité",
+                "Remplace le médecin pour diagnostiquer",
+                "Prescrit des antibiotiques",
+                "Ignore la prévention"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approche entre pairs complète messages des professeurs et soignants."
+            },
+            {
+              "id": "q9",
+              "question": "Inégalités de santé…",
+              "type": "single_choice",
+              "options": [
+                "Persistent selon territoires et catégories sociales",
+                "Ont totalement disparu",
+                "Ne concernent pas les jeunes",
+                "Sont uniquement génétiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politiques publiques visent à réduire ces écarts."
+            },
+            {
+              "id": "q10",
+              "question": "Comportement à risque…",
+              "type": "single_choice",
+              "options": [
+                "Augmente la probabilité de dommage santé",
+                "Garantit toujours la santé",
+                "N'a aucune définition",
+                "Est toujours involontaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tabac, alcool, vitesse excessive ou non-port du casque sont des exemples."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Alimentation et activité physique",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Une alimentation équilibrée pour un lycéen…",
+              "type": "multiple_choice",
+              "options": [
+                "Varie les groupes alimentaires",
+                "Exclut totalement les lipides",
+                "Inclut fruits, légumes, féculents, protéines",
+                "Repose uniquement sur boissons sucrées"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Variété et modération ; lipides utiles en quantité raisonnable."
+            },
+            {
+              "id": "q2",
+              "question": "Activité physique recommandée chez les 11-17 ans (OMS)…",
+              "type": "single_choice",
+              "options": [
+                "Au moins 60 min modérée à vigoureuse par jour",
+                "Aucune minute par semaine",
+                "Uniquement assis",
+                "30 h par jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mouvement quotidien pour os, cœur et bien-être mental."
+            },
+            {
+              "id": "q3",
+              "question": "Excès de sucres ajoutés favorise…",
+              "type": "single_choice",
+              "options": [
+                "Caries, surpoids si excès calorique global",
+                "Renforcement osseux garanti",
+                "Meilleur sommeil automatique",
+                "Immunité parfaite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sucres fréquents et excès énergétique posent problème."
+            },
+            {
+              "id": "q4",
+              "question": "Petit-déjeuner…",
+              "type": "single_choice",
+              "options": [
+                "Aide concentration et apporte énergie matinale",
+                "Doit être absent systématiquement",
+                "Remplace le dîner",
+                "Contient uniquement des sodas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repas du matin soutient attention en classe."
+            },
+            {
+              "id": "q5",
+              "question": "Hydratation : eau…",
+              "type": "single_choice",
+              "options": [
+                "Est la boisson de base recommandée",
+                "Doit être remplacée par boissons énergisantes",
+                "Est inutile à l'effort",
+                "Remplace tous les repas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boire régulièrement, plus à l'effort et par chaleur."
+            },
+            {
+              "id": "q6",
+              "question": "Sédentarité prolongée…",
+              "type": "single_choice",
+              "options": [
+                "Associée à risques métaboliques et musculaires",
+                "Toujours bénéfique",
+                "Remplace le sport",
+                "Améliore toujours la posture sans pause"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lever et bouger régulièrement limite effets néfastes."
+            },
+            {
+              "id": "q7",
+              "question": "Troubles du comportement alimentaire…",
+              "type": "single_choice",
+              "options": [
+                "Nécessitent écoute et aide spécialisée",
+                "Sont toujours banals sans danger",
+                "Se soignent seul par isolement",
+                "Concernent uniquement les adultes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anorexie, boulimie… : repérage et prise en charge précoces essentielles."
+            },
+            {
+              "id": "q8",
+              "question": "IMC interprété chez l'ado…",
+              "type": "single_choice",
+              "options": [
+                "Doit tenir compte de courbes spécifiques âge/sexe",
+                "Est identique à l'adulte sans courbe",
+                "Mesure l'intelligence",
+                "Remplace avis médical seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Croissance rend les courbes pédiatriques nécessaires."
+            },
+            {
+              "id": "q9",
+              "question": "Snacking répété sucré-salé…",
+              "type": "single_choice",
+              "options": [
+                "Peut déséquilibrer apports si excès",
+                "Est toujours obligatoire",
+                "Remplace l'eau",
+                "Guérit le stress"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualité et timing des collations comptent."
+            },
+            {
+              "id": "q10",
+              "question": "Sport et santé mentale…",
+              "type": "single_choice",
+              "options": [
+                "Activité régulière peut améliorer humeur",
+                "Dégrade toujours l'humeur",
+                "Remplace tout suivi psychologique",
+                "Est interdit aux lycéens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet positif modéré sur stress et estime de soi."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Sommeil et adolescence",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le sommeil chez l'adolescent…",
+              "type": "multiple_choice",
+              "options": [
+                "Soutient mémoire et croissance",
+                "Peut être décalé (couche-tard) biologiquement",
+                "Est inutile si l'on boit du café",
+                "Doit être ignoré pour réviser toute la nuit"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Besoin important ; horloge biologique adolescente favorise sommeil tardif."
+            },
+            {
+              "id": "q2",
+              "question": "Durée de sommeil conseillée 14-17 ans…",
+              "type": "single_choice",
+              "options": [
+                "Environ 8 à 10 h par nuit",
+                "2 h suffisent",
+                "14 h minimum obligatoires pour tous",
+                "Aucun besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fourchette recommandée par les experts sommeil."
+            },
+            {
+              "id": "q3",
+              "question": "Privation de sommeil…",
+              "type": "single_choice",
+              "options": [
+                "Nuit concentration, humeur, immunité",
+                "Améliore toujours les notes",
+                "Sans effet",
+                "Remplace l'alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fatigue cognitive et irritabilité augmentent."
+            },
+            {
+              "id": "q4",
+              "question": "Écrans avant coucher…",
+              "type": "single_choice",
+              "options": [
+                "Peuvent retarder endormissement (lumière bleue, stimulation)",
+                "Garantissent sommeil profond",
+                "Remplacent l'obscurité sans effet",
+                "Augmentent toujours mélatonine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limiter écrans 1 h avant le coucher aide."
+            },
+            {
+              "id": "q5",
+              "question": "Mélatonine…",
+              "type": "single_choice",
+              "options": [
+                "Hormone favorisant l'endormissement",
+                "Antibiotique",
+                "Vitamine C",
+                "Neurotransmetteur musculaire uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécrétion nocturne régule le rythme veille-sommeil."
+            },
+            {
+              "id": "q6",
+              "question": "Sieste très longue en journée…",
+              "type": "single_choice",
+              "options": [
+                "Peut perturber sommeil nocturne",
+                "Remplace toujours 10 h de nuit",
+                "Sans effet",
+                "Obligatoire à l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courtes sieste OK ; longues après-midi gênent parfois la nuit."
+            },
+            {
+              "id": "q7",
+              "question": "Apnée du sommeil non traitée…",
+              "type": "single_choice",
+              "options": [
+                "Fatigue diurne et risques cardio à long terme",
+                "Toujours bénigne sans suivi",
+                "Uniquement chez nourrisson",
+                "Cure par sodas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ronflements, pauses respiratoires : avis spécialisé."
+            },
+            {
+              "id": "q8",
+              "question": "Caféine après 16 h…",
+              "type": "single_choice",
+              "options": [
+                "Peut gêner l'endormissement",
+                "Améliore toujours le sommeil",
+                "Sans effet",
+                "Remplace l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demi-vie longue : éviter tard dans la journée."
+            },
+            {
+              "id": "q9",
+              "question": "Horaires réguliers coucher/lever…",
+              "type": "single_choice",
+              "options": [
+                "Stabilisent l'horloge biologique",
+                "Inutiles le week-end selon tous les experts",
+                "Interdits",
+                "Remplacent l'activité physique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régularité même modérée le week-end aide."
+            },
+            {
+              "id": "q10",
+              "question": "Sommeil et conduite addictive…",
+              "type": "single_choice",
+              "options": [
+                "Manque de sommeil augmente impulsivité",
+                "Sommeil sans lien avec décisions",
+                "Guérit addiction seul",
+                "Bloque le microbiote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fatigue favorise choix risqués et recherche de stimulation."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Stress et organisme",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le stress aigu…",
+              "type": "multiple_choice",
+              "options": [
+                "Active système nerveux et hormones (adrénaline, cortisol)",
+                "Est toujours pathologique",
+                "Prépare parfois l'organisme à réagir",
+                "Supprime toute digestion sans exception"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Stress bref peut aider performance ; chronique devient nocif."
+            },
+            {
+              "id": "q2",
+              "question": "Cortisol…",
+              "type": "single_choice",
+              "options": [
+                "Hormone du stress prolongé",
+                "Globule rouge",
+                "Enzyme intestinale",
+                "Anticorps IgM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécrétée par glandes surrénales lors de tension durable."
+            },
+            {
+              "id": "q3",
+              "question": "Symptômes stress chez l'ado…",
+              "type": "single_choice",
+              "options": [
+                "Tension, troubles du sommeil, irritabilité",
+                "Croissance osseuse accélérée garantie",
+                "Vision nocturne",
+                "Immunité parfaite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corps et esprit réagissent : palpitations, maux de ventre…"
+            },
+            {
+              "id": "q4",
+              "question": "Eustress désigne…",
+              "type": "single_choice",
+              "options": [
+                "Stress positif modéré motivant",
+                "Stress destructeur chronique",
+                "Absence totale de réponse",
+                "Maladie infectieuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Examen préparé, compétition : tension utile."
+            },
+            {
+              "id": "q5",
+              "question": "Distress…",
+              "type": "single_choice",
+              "options": [
+                "Stress négif subi sans ressources",
+                "Toujours bénéfique",
+                "Identique au eustress",
+                "Sans effet mental"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Harcelement, surcharge : impact santé."
+            },
+            {
+              "id": "q6",
+              "question": "Technique respiration lente…",
+              "type": "single_choice",
+              "options": [
+                "Active parasympathique et calme",
+                "Augmente toujours le cortisol",
+                "Inutile",
+                "Remplace les soins d'urgence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respiration ventrale régulière réduit activation."
+            },
+            {
+              "id": "q7",
+              "question": "Stress chronique et immunité…",
+              "type": "single_choice",
+              "options": [
+                "Peut diminuer efficacité immunitaire",
+                "Renforce toujours défenses",
+                "Sans lien",
+                "Guérit infections"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cortisol élevé modifie réponses immunitaires."
+            },
+            {
+              "id": "q8",
+              "question": "Parler à un adulte de confiance…",
+              "type": "single_choice",
+              "options": [
+                "Aide à gérer stress scolaire ou familial",
+                "Est interdit",
+                "Aggrave toujours situation",
+                "Remplace infirmière sans limite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soutien social protecteur pour santé mentale."
+            },
+            {
+              "id": "q9",
+              "question": "Perfectionnisme excessif…",
+              "type": "single_choice",
+              "options": [
+                "Source de stress et anxiété",
+                "Toujours sain",
+                "Sans lien école",
+                "Empêche révision"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Standards impossibles épuisent."
+            },
+            {
+              "id": "q10",
+              "question": "Activité physique modérée face au stress…",
+              "type": "single_choice",
+              "options": [
+                "Libère tension et endorphines",
+                "Interdite",
+                "Augmente toujours cortisol sans bénéfice",
+                "Remplace sommeil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marche, sport loisir : régulation émotionnelle."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Gestion du stress au quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Stratégies saines face au stress…",
+              "type": "multiple_choice",
+              "options": [
+                "Organisation du travail et pauses",
+                "Consommation d'alcool pour oublier",
+                "Sommeil suffisant",
+                "Automutilation"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Planification et repos aident ; alcool et automutilation aggravent."
+            },
+            {
+              "id": "q2",
+              "question": "Mindfulness (pleine conscience)…",
+              "type": "single_choice",
+              "options": [
+                "Attention au présent sans jugement",
+                "Fuite permanente écrans",
+                "Refus de toute émotion",
+                "Diagnostic médical"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exercices courts de respiration ou scan corporel."
+            },
+            {
+              "id": "q3",
+              "question": "Fixer des objectifs réalistes…",
+              "type": "single_choice",
+              "options": [
+                "Réduit sentiment d'échec",
+                "Augmente toujours stress",
+                "Inutile",
+                "Empêche révision"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Découper tâches rend projet gérable."
+            },
+            {
+              "id": "q4",
+              "question": "Réseau social positif…",
+              "type": "single_choice",
+              "options": [
+                "Tampon contre isolement",
+                "Toujours toxique",
+                "Sans effet",
+                "Remplace hygiène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amis soutenants et famille aidante."
+            },
+            {
+              "id": "q5",
+              "question": "Procrastination…",
+              "type": "single_choice",
+              "options": [
+                "Accumule stress avant échéance",
+                "Diminue toujours anxiété",
+                "Sans effet",
+                "Guérit sommeil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reporter crée urgence et nuit au sommeil."
+            },
+            {
+              "id": "q6",
+              "question": "Demander aide psychologique…",
+              "type": "single_choice",
+              "options": [
+                "Signe de lucidité, pas de faiblesse",
+                "Interdit au lycée",
+                "Remplace médecin pour fracture",
+                "Inutile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Psychologue scolaire, CMP, ligne écoute disponibles."
+            },
+            {
+              "id": "q7",
+              "question": "Limites temps écran récréatif…",
+              "type": "single_choice",
+              "options": [
+                "Libère temps pour repos et relations",
+                "Aggrave toujours stress",
+                "Sans intérêt",
+                "Remplace repas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équilibre numérique réduit surcharge cognitive."
+            },
+            {
+              "id": "q8",
+              "question": "Expression émotion par écrit ou art…",
+              "type": "single_choice",
+              "options": [
+                "Peut externaliser tensions",
+                "Toujours dangereux",
+                "Interdit",
+                "Remplace vaccination"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Journal, musique, dessin : valves non destructrices."
+            },
+            {
+              "id": "q9",
+              "question": "Substances pour étudier la nuit…",
+              "type": "single_choice",
+              "options": [
+                "Risque addiction et effondrement",
+                "Toujours sans danger",
+                "Recommandées",
+                "Améliorent mémoire long terme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stimulants non prescrits : danger santé et légal."
+            },
+            {
+              "id": "q10",
+              "question": "Repos actif (étirements, marche)…",
+              "type": "single_choice",
+              "options": [
+                "Complète récupération entre révisions",
+                "Remplace nuit entière",
+                "Inutile",
+                "Bloque concentration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alterner effort et récupération optimise performance."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Addictions et cerveau",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Addiction se caractérise par…",
+              "type": "multiple_choice",
+              "options": [
+                "Perte de contrôle malgré conséquences",
+                "Besoin compulsif de produit ou comportement",
+                "Toujours guérison spontanée en un jour",
+                "Implication du circuit de récompense cérébral"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Dépendance : craving, tolérance, sevrage ; dopamine dans récompense."
+            },
+            {
+              "id": "q2",
+              "question": "Dopamine dans addiction…",
+              "type": "single_choice",
+              "options": [
+                "Renforce comportement recherché",
+                "Transporte oxygène",
+                "Digère lipides",
+                "Produit anticorps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pic dopaminergique associe plaisir et envie de répéter."
+            },
+            {
+              "id": "q3",
+              "question": "Tolérance…",
+              "type": "single_choice",
+              "options": [
+                "Besoin de dose plus forte pour même effet",
+                "Guérison",
+                "Allergie",
+                "Immunité vaccinale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adaptation cérébrale diminue effet initial."
+            },
+            {
+              "id": "q4",
+              "question": "Sevrage…",
+              "type": "single_choice",
+              "options": [
+                "Symptômes physiques/psychiques à l'arrêt",
+                "Toujours absent",
+                "Plaisir garanti",
+                "Augmentation immunitaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anxiété, tremblements selon substance ; sevrage encadré médicalement."
+            },
+            {
+              "id": "q5",
+              "question": "Addiction comportementale (jeu, écrans)…",
+              "type": "single_choice",
+              "options": [
+                "Peut ressembler à addiction substance",
+                "N'existe pas",
+                "Sans impact cerveau",
+                "Toujours bénigne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mêmes circuits impliqués ; usage excessif nuit scolarité et sommeil."
+            },
+            {
+              "id": "q6",
+              "question": "Facteurs de vulnérabilité…",
+              "type": "single_choice",
+              "options": [
+                "Génétique, entourage, stress, âge début",
+                "Uniquement mauvaise volonté",
+                "Absents",
+                "Identiques pour tous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Addiction maladie chronique multifactorielle."
+            },
+            {
+              "id": "q7",
+              "question": "Prévention addiction…",
+              "type": "single_choice",
+              "options": [
+                "Retarder première consommation",
+                "Encourager polyconsommation",
+                "Isoler totalement",
+                "Ignorer entourage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cerveau adolescent plus sensible aux substances."
+            },
+            {
+              "id": "q8",
+              "question": "Demander de l'aide pour sevrage…",
+              "type": "single_choice",
+              "options": [
+                "Recommandé (CSAPA, médecin)",
+                "Inutile",
+                "Honte obligatoire",
+                "Remplace uniquement sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structures spécialisées accompagnent sevrage et réinsertion."
+            },
+            {
+              "id": "q9",
+              "question": "Substitution nicotine…",
+              "type": "single_choice",
+              "options": [
+                "Aide certains fumeurs à arrêter progressivement",
+                "Encourage toujours tabac",
+                "Sans étude",
+                "Remplace eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patchs, gommes : diminution risque vs cigarette."
+            },
+            {
+              "id": "q10",
+              "question": "Rechute dans addiction…",
+              "type": "single_choice",
+              "options": [
+                "Possible ; parcours long avec rechutes",
+                "Signe échec définitif",
+                "N'existe jamais",
+                "Guérison interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approche chronic disease : reprise suivi après rechute."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Tabac, alcool et cannabis",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Tabac et santé…",
+              "type": "multiple_choice",
+              "options": [
+                "Nicotine addictive",
+                "Fumée contient carcinogènes",
+                "Améliore capacité pulmonaire",
+                "Augmente risques cardio-pulmonaires"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Cigarette : addiction nicotine et maladies graves."
+            },
+            {
+              "id": "q2",
+              "question": "Alcool chez l'ado…",
+              "type": "single_choice",
+              "options": [
+                "Cerveau en maturation : plus vulnérable",
+                "Sans effet",
+                "Recommandé quotidiennement",
+                "Renforce toujours mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consommation précoce augmente risques dépendance et lésions."
+            },
+            {
+              "id": "q3",
+              "question": "Binge drinking…",
+              "type": "single_choice",
+              "options": [
+                "Consommation massive courte d'alcool",
+                "Boire un verre d'eau",
+                "Sport intensif",
+                "Sommeil profond"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intoxication aiguë : coma éthylique, accidents."
+            },
+            {
+              "id": "q4",
+              "question": "Cannabis régulier ado…",
+              "type": "single_choice",
+              "options": [
+                "Associé troubles attention et motivation",
+                "Toujours sans effet cerveau",
+                "Vitamine",
+                "Vaccin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "THC agit sur récepteurs ; usage précoce préoccupant."
+            },
+            {
+              "id": "q5",
+              "question": "Cigarette électronique…",
+              "type": "single_choice",
+              "options": [
+                "N'est pas sans risque ; nicotine addictive",
+                "Totalement inoffensive pour tous",
+                "Remplace toujours arrêt tabac sans plan",
+                "Eau purifiée seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aerosols contiennent substances ; jeunes non fumeurs : ne pas initier."
+            },
+            {
+              "id": "q6",
+              "question": "Loi évin : interdit…",
+              "type": "single_choice",
+              "options": [
+                "Publicité alcool/tabac orientée jeunes",
+                "Sport scolaire",
+                "Cours SVT",
+                "Eau potable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limiter incitation à consommer chez mineurs."
+            },
+            {
+              "id": "q7",
+              "question": "Conduite sous alcool…",
+              "type": "single_choice",
+              "options": [
+                "Illégale et dangereuse",
+                "Autorisée en mineur",
+                "Sans effet réflexes",
+                "Recommandée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alcool diminue vigilance et coordination."
+            },
+            {
+              "id": "q8",
+              "question": "Seconde main fumée…",
+              "type": "single_choice",
+              "options": [
+                "Nocive pour non-fumeurs",
+                "Bénéfique",
+                "Sans particules",
+                "Vitamine D"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fumée ambiante : même risques respiratoires."
+            },
+            {
+              "id": "q9",
+              "question": "Mix alcool + médicaments…",
+              "type": "single_choice",
+              "options": [
+                "Interactions dangereuses",
+                "Toujours conseillé",
+                "Sans effet",
+                "Améliore sommeil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lire notice et demander pharmacien/médecin."
+            },
+            {
+              "id": "q10",
+              "question": "Refus de consommation en soirée…",
+              "type": "single_choice",
+              "options": [
+                "Droit légitime ; strategies assertivité",
+                "Interdit",
+                "Preuve de faiblesse obligatoire",
+                "Sans soutien possible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dire non, proposer alternative, s'entourer."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Écrans et santé",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Usage excessif écrans…",
+              "type": "multiple_choice",
+              "options": [
+                "Peut réduire temps sommeil et activité",
+                "Améliore toujours posture",
+                "Peut favoriser sédentarité",
+                "Guérit myopie sans limite"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Temps assis et lumière tardive impactent santé globale."
+            },
+            {
+              "id": "q2",
+              "question": "Fatigue visuelle numérique…",
+              "type": "single_choice",
+              "options": [
+                "Clignements réduits, sécheresse oculaire",
+                "Immunité parfaite",
+                "Croissance osseuse",
+                "Digestion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle 20-20-20 : pause regard lointain."
+            },
+            {
+              "id": "q3",
+              "question": "Cyberharcèlement…",
+              "type": "single_choice",
+              "options": [
+                "Affecte santé mentale",
+                "Toujours bénin",
+                "Sans recours",
+                "Encouragé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signaler, bloquer, en parler à adulte référent."
+            },
+            {
+              "id": "q4",
+              "question": "Désinformation santé en ligne…",
+              "type": "single_choice",
+              "options": [
+                "Vérifier sources scientifiques",
+                "Croire première vidéo",
+                "Partager sans lire",
+                "Ignorer médecin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Esprit critique : auteur, date, références."
+            },
+            {
+              "id": "q5",
+              "question": "Nomophobie…",
+              "type": "single_choice",
+              "options": [
+                "Anxiété d'être sans téléphone",
+                "Allergie alimentaire",
+                "Fracture",
+                "Vaccin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dépendance émotionnelle au smartphone."
+            },
+            {
+              "id": "q6",
+              "question": "Règles famille sur écrans…",
+              "type": "single_choice",
+              "options": [
+                "Accords clairs (temps, chambre sans écran)",
+                "Inutiles",
+                "Interdiction totale sans dialogue",
+                "Remplacent repas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrat familial négocié aide équilibre."
+            },
+            {
+              "id": "q7",
+              "question": "Révisions uniquement sur écran tard…",
+              "type": "single_choice",
+              "options": [
+                "Peut nuire sommeil et mémorisation",
+                "Toujours optimal",
+                "Sans effet",
+                "Remplace professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Imprimer ou arrêt early + sommeil consolide mémoire."
+            },
+            {
+              "id": "q8",
+              "question": "Jeux vidéo violents + temps excessif…",
+              "type": "single_choice",
+              "options": [
+                "Débat recherche ; priorité temps et contenu adapté âge",
+                "Sans intérêt recherche",
+                "Toujours criminogène prouvé chez tous",
+                "Obligatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PEGI, durée, variété activités."
+            },
+            {
+              "id": "q9",
+              "question": "Données personnelles réseaux…",
+              "type": "single_choice",
+              "options": [
+                "Protéger vie privée limite risques",
+                "Publier tout",
+                "Sans danger",
+                "Remplace mot de passe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paramètres confidentialité, réflexion avant publication."
+            },
+            {
+              "id": "q10",
+              "question": "Détox numérique courte…",
+              "type": "single_choice",
+              "options": [
+                "Pause consciente pour recharger",
+                "Supprime définitivement études",
+                "Toujours nocive",
+                "Remplace sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Week-end sans notification : test utile."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Prévention et comportements",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Préservatif…",
+              "type": "multiple_choice",
+              "options": [
+                "Limite IST et grossesses non désirées",
+                "Remplace tous les vaccins",
+                "Doit être utilisé correctement",
+                "Guérit toutes infections sans traitement"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Barrière contraceptive et infectiologique si bon usage."
+            },
+            {
+              "id": "q2",
+              "question": "Consentement en relation…",
+              "type": "single_choice",
+              "options": [
+                "Libre, éclairé, révocable",
+                "Silence vaut oui",
+                "Imposé",
+                "Sans importance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respect mutuel et communication."
+            },
+            {
+              "id": "q3",
+              "question": "Vaccination HPV…",
+              "type": "single_choice",
+              "options": [
+                "Prévient certains cancers liés au virus",
+                "Traite cancer avancé seul",
+                "Inutile ado",
+                "Remplace préservatif totalement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Calendrier recommande schéma adolescent."
+            },
+            {
+              "id": "q4",
+              "question": "Dépistage IST…",
+              "type": "single_choice",
+              "options": [
+                "Permet traitement précoce",
+                "Interdit mineurs",
+                "Sans intérêt",
+                "Remplace prévention"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Centres gratuits, médecin, planning familial."
+            },
+            {
+              "id": "q5",
+              "question": "Casque vélo…",
+              "type": "single_choice",
+              "options": [
+                "Réduit gravité traumatismes crâniens",
+                "Optionnel sans risque",
+                "Gêne toujours vision",
+                "Remplace règles route"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équipement + respect code de la route."
+            },
+            {
+              "id": "q6",
+              "question": "Ceinture en voiture…",
+              "type": "single_choice",
+              "options": [
+                "Obligatoire et life-saving",
+                "Décorative",
+                "Interdite arrière",
+                "Sans statistiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Port obligatoire tous sièges équipés."
+            },
+            {
+              "id": "q7",
+              "question": "Exposition soleil sans protection…",
+              "type": "single_choice",
+              "options": [
+                "Risque coups de soleil et cancer peau",
+                "Toujours sain",
+                "Remplace vitamine sans limite",
+                "Interdit nuage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Crème, chapeau, éviter midi été."
+            },
+            {
+              "id": "q8",
+              "question": "Brossage dents 2 fois/j…",
+              "type": "single_choice",
+              "options": [
+                "Prévention caries et gencives",
+                "Inutile",
+                "Remplace dentiste",
+                "Une fois par an suffit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fluor et fil interdentaire complètent."
+            },
+            {
+              "id": "q9",
+              "question": "Signes dépression chez ado…",
+              "type": "single_choice",
+              "options": [
+                "Tristesse durable, retrait, fatigue",
+                "Joie permanente",
+                "Uniquement adultes",
+                "Toujours visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repérer et orienter vers aide."
+            },
+            {
+              "id": "q10",
+              "question": "Numéros d'écoute (3114, 119…)…",
+              "type": "single_choice",
+              "options": [
+                "Soutien gratuit anonyme",
+                "Blague",
+                "Réservés adultes seuls",
+                "Remplacent urgences vitales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3114 santé mentale ; 15/112 si danger immédiat."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Santé mentale et projet de vie",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Santé mentale positive…",
+              "type": "multiple_choice",
+              "options": [
+                "Ressentir et gérer émotions",
+                "Absence totale de stress",
+                "Relations satisfaisantes",
+                "Sentiment parfois de compétence"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Bien-être psychique inclut émotions variées et compétence perçue."
+            },
+            {
+              "id": "q2",
+              "question": "Anxiété pathologique…",
+              "type": "single_choice",
+              "options": [
+                "Peur excessive persistante gênant vie",
+                "Stress normal avant contrôle",
+                "Toujours absent lycée",
+                "Sans traitement possible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TCC, thérapie, parfois médication sur avis."
+            },
+            {
+              "id": "q3",
+              "question": "Estime de soi…",
+              "type": "single_choice",
+              "options": [
+                "Image que l'on a de sa valeur",
+                "Fixe génétique immuable",
+                "Identique à arrogance",
+                "Sans lien comportements"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renforçable par réussites, soutien, auto-compassion."
+            },
+            {
+              "id": "q4",
+              "question": "Harcèlement scolaire…",
+              "type": "single_choice",
+              "options": [
+                "Nécessite signalement et prise en charge",
+                "Banal",
+                "Responsabilité victime seule",
+                "Sans effet santé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équipe éducative, 3018 cyber, loi."
+            },
+            {
+              "id": "q5",
+              "question": "Projets d'avenir et santé…",
+              "type": "single_choice",
+              "options": [
+                "Motivation protège parfois des conduites à risque",
+                "Sans lien",
+                "Toujours stress",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orientation donne sens et régule impulsions."
+            },
+            {
+              "id": "q6",
+              "question": "Sommeil, alimentation, activité…",
+              "type": "single_choice",
+              "options": [
+                "Trois piliers lifestyle lycéen",
+                "Un seul suffit",
+                "Remplacent amitié",
+                "Inutiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Triade base bien-être physique et mental."
+            },
+            {
+              "id": "q7",
+              "question": "Parler santé mentale…",
+              "type": "single_choice",
+              "options": [
+                "Réduit tabou et isolement",
+                "Interdit",
+                "Aggrave toujours",
+                "Remplace soins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déstigmatisation favorise demande d'aide."
+            },
+            {
+              "id": "q8",
+              "question": "Résilience…",
+              "type": "single_choice",
+              "options": [
+                "Capacité à rebondir après épreuve",
+                "Absence émotion",
+                "Immunité parfaite",
+                "Fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "S'apprend : soutien, coping, sens."
+            },
+            {
+              "id": "q9",
+              "question": "Consommation pour « faire partie du groupe »…",
+              "type": "single_choice",
+              "options": [
+                "Pression pairs : dire non possible",
+                "Obligatoire",
+                "Sans alternative sociale",
+                "Toujours bénéfique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vrais amis respectent choix."
+            },
+            {
+              "id": "q10",
+              "question": "Objectif séance « Comportements et santé »…",
+              "type": "single_choice",
+              "options": [
+                "Adopter comportements protecteurs durables",
+                "Ignorer prévention",
+                "Confondre allopathie et addiction",
+                "Nier rôle sommeil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autonomie responsable en santé publique personnelle."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

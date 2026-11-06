@@ -34,6 +34,7 @@ import { fileURLToPath } from "node:url";
  *   • /api/cron/vibe     — publication Vibe & DM  GET   maxDuration  60 s
  *   • /api/cron/notifications — réplication des    POST  maxDuration 120 s
  *     notifications Vibe & Wakies
+ *   • /api/cron/quizzly      — clôture des ligues POST  maxDuration  60 s
  *
  * Le cinquième tick est arrivé APRÈS les quatre autres : il réplique dans
  * la table `Notification` de l'hôte les événements produits par Vibe et
@@ -114,6 +115,7 @@ const TICKS: CronTick[] = [
   { budgetMs: 290_000, method: "POST", path: "/api/cron/wakies" },
   { budgetMs: 60_000, method: "GET", path: "/api/cron/vibe" },
   { budgetMs: 120_000, method: "POST", path: "/api/cron/notifications" },
+  { budgetMs: 60_000, method: "POST", path: "/api/cron/quizzly" },
 ];
 
 export interface TickResult {
@@ -178,7 +180,11 @@ function estHoteBackend(base: string): boolean {
 
 function configure(): CronConfig {
   const base = env("APP_URL")?.trim();
-  const secret = env("CRON_SECRET")?.trim();
+  const rawSecret = env("CRON_SECRET");
+  const secret = rawSecret
+    ?.trim()
+    .replace(/^["']+|["']+$/g, "")
+    .trim();
   const manquants = [
     ...(base ? [] : ["APP_URL"]),
     ...(secret ? [] : ["CRON_SECRET"]),
@@ -240,6 +246,7 @@ async function callTick(
   const headers: Record<string, string> = {
     accept: "application/json",
     authorization: `Bearer ${config.secret}`,
+    "x-cron-secret": config.secret,
   };
   if (tick.method === "POST") {
     headers["content-type"] = "application/json";

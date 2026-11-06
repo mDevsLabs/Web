@@ -1,0 +1,2613 @@
+{
+  "id": "4e-physique-chimie-02",
+  "year": "4e",
+  "subject": "physique-chimie",
+  "title": "Électricité",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Circuit en série",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Composants et boucle fermée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un circuit électrique en série fonctionnel comporte obligatoirement :",
+              "options": [
+                "Un générateur et une boucle fermée de conducteurs",
+                "Au moins deux générateurs en parallèle",
+                "Des dipôles branchés les uns à la suite des autres",
+                "Un interrupteur toujours ouvert"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "En série, les dipôles sont enchaînés et le courant ne circule que si la boucle est fermée avec un générateur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un montage en série, comment sont connectés les dipôles ?",
+              "options": [
+                "Les uns à la suite des autres, sans branche parallèle",
+                "Tous entre les mêmes deux points",
+                "Uniquement en parallèle sur le générateur",
+                "Seulement par fils non connectés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En série, il n’existe qu’un seul chemin pour le courant entre les dipôles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si la boucle est ouverte en un point du circuit série, que se passe-t-il ?",
+              "options": [
+                "Le courant ne circule plus dans l’ensemble du circuit",
+                "L’intensité augmente dans chaque dipôle",
+                "Seule la lampe la plus proche s’éteint",
+                "La tension du générateur devient nulle partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans boucle fermée, aucun déplacement global de charges n’est possible."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le fil de connexion dans un schéma représente :",
+              "options": [
+                "Un conducteur où le courant peut circuler",
+                "Un isolant parfait",
+                "Un générateur",
+                "Une résistance infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fils de liaison modélisent des conducteurs ohmiques négligeables en 4e."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un dipôle receveur consomme de l’énergie électrique. Exemple :",
+              "options": [
+                "Une lampe",
+                "Une pile idéale seule",
+                "Un fil de cuivre nu",
+                "Un voltmètre en bon usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lampe transforme l’énergie électrique en lumière et chaleur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le générateur dans un circuit série :",
+              "options": [
+                "Fournit l’énergie et maintient le déplacement des charges",
+                "Mesure l’intensité du courant",
+                "Divise toujours le courant en deux branches",
+                "Doit être placé après toutes les lampes sans fil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le générateur est la source d’énergie du circuit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un interrupteur ouvert en série avec une lampe :",
+              "options": [
+                "Empêche le passage du courant, la lampe s’éteint",
+                "Augmente la tension aux bornes de la lampe",
+                "Ne change rien si une autre lampe est présente",
+                "Force l’intensité à doubler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L’interrupteur ouvert coupe le chemin unique du courant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le sens conventionnel du courant est :",
+              "options": [
+                "Du pôle + vers le pôle − à l’extérieur du générateur",
+                "Du pôle − vers le pôle + partout",
+                "Aléatoire dans un circuit série",
+                "Opposé au déplacement des électrons dans les fils"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par convention, le courant sort du + du générateur et rentre par le −."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux lampes identiques en série avec une pile :",
+              "options": [
+                "Brillent en général moins qu’une seule lampe sur la même pile",
+                "Brillent toujours plus fort qu’une seule",
+                "Une brille, l’autre reste éteinte",
+                "Ne peuvent pas s’allumer en série"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tension disponible se partage entre les dipôles en série."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Unité de l’intensité du courant électrique au SI :",
+              "options": [
+                "L’ampère (A)",
+                "Le volt (V)",
+                "Le watt (W)",
+                "L’ohm (Ω)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L’intensité I s’exprime en ampères."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Intensité unique en série",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un circuit en série, l’intensité du courant :",
+              "options": [
+                "A la même valeur en tout point de la branche",
+                "Est mesurée avec un ampèremètre branché en série",
+                "Est différente avant et après chaque lampe",
+                "Diminue de moitié à chaque dipôle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un seul chemin implique la même intensité partout ; l’ampèremètre se place en série."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour mesurer I dans une branche série, l’ampèremètre :",
+              "options": [
+                "Se branche en série, le courant le traverse",
+                "Se branche en dérivation entre deux nœuds",
+                "Se place uniquement en parallèle du générateur",
+                "Ne doit jamais être dans le circuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L’ampèremètre mesure le courant qui le traverse, donc en série."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si I = 0,25 A mesuré avant une lampe en série, I après la lampe vaut :",
+              "options": ["0,25 A", "0,125 A", "0,50 A", "0 A obligatoirement"],
+              "correctAnswers": [0],
+              "explanation": "En série, l’intensité est la même de part et d’autre de chaque dipôle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une intensité de 500 mA équivaut à :",
+              "options": ["0,5 A", "5 A", "0,05 A", "50 A"],
+              "correctAnswers": [0],
+              "explanation": "1 A = 1000 mA, donc 500 mA = 0,5 A."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Brancher un ampèremètre en dérivation (erreur courante) :",
+              "options": [
+                "Peut endommager l’appareil car il se comporte comme un fil",
+                "Donne toujours la bonne intensité",
+                "Mesure la tension aux bornes du dipôle",
+                "Annule la loi d’additivité des tensions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un ampèremètre idéal a une faible résistance ; en parallèle, un fort courant peut le traverser."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux dipôles en série traversés par le même courant signifie :",
+              "options": [
+                "La même intensité I en tout point de la boucle",
+                "Des intensités I1 et I2 avec I1 + I2 = I",
+                "Une intensité nulle aux bornes du générateur",
+                "Un courant qui s’arrête à la lampe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conservation de la charge dans une branche unique fixe I partout."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Symbole du multimètre en mode intensité :",
+              "options": [
+                "On le branche pour que le courant entre par A et sorte par COM en série",
+                "On le branche toujours en parallèle du dipôle",
+                "On utilise la borne V pour mesurer I",
+                "On ne ferme jamais le circuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En mode A, l’appareil est inséré dans le circuit comme un fil instrumenté."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ordre de grandeur d’intensité dans un circuit scolaire avec pile :",
+              "options": [
+                "De quelques milliampères à quelques ampères selon le montage",
+                "Toujours exactement 230 A",
+                "Toujours 0 A en série",
+                "Supérieur à 1000 A en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les montages 4e restent en dessous de courants dangereux mais non nuls."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si on ajoute une troisième lampe identique en série (sans changer le générateur) :",
+              "options": [
+                "L’intensité peut diminuer si la résistance totale augmente",
+                "L’intensité doit doubler",
+                "L’intensité devient différente sur chaque lampe",
+                "Le courant disparaît dans la première lampe seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de dipôles en série augmentent souvent la résistance totale, donc I diminue pour U fixe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le courant électrique correspond au déplacement de :",
+              "options": [
+                "Des charges (souvent des électrons dans les métaux)",
+                "Des atomes entiers dans le fil",
+                "De la lumière dans le cuivre",
+                "Du vide entre les dipôles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un métal, ce sont surtout les électrons qui se déplacent."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Tension et voltmètre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La tension électrique aux bornes d’un dipôle :",
+              "options": [
+                "Se mesure en volt avec un voltmètre",
+                "Se mesure en branchant le voltmètre en dérivation aux bornes du dipôle",
+                "Est identique à l’intensité du courant",
+                "Se mesure toujours en série comme l’ampèremètre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La tension U s’exprime en volts et se mesure en parallèle du dipôle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Unité SI de la tension :",
+              "options": [
+                "Le volt (V)",
+                "L’ampère (A)",
+                "Le joule (J)",
+                "Le coulomb (C)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tension se mesure en volts."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une pile de 4,5 V indique :",
+              "options": [
+                "La tension qu’elle peut fournir entre ses bornes en fonctionnement",
+                "L’intensité maximale obligatoire de 4,5 A",
+                "Sa masse en grammes",
+                "La puissance fixe de 4,5 W"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La valeur inscrite sur une pile est une tension nominale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Brancher un voltmètre en série par erreur :",
+              "options": [
+                "Peut empêcher le courant de circuler car sa résistance est élevée",
+                "Mesure correctement l’intensité",
+                "Court-circuite le générateur",
+                "Remplace l’ampèremètre sans risque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un voltmètre idéal a une grande résistance ; en série il bloque le courant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La tension aux bornes d’un fil de connexion idéal en 4e est en général :",
+              "options": [
+                "Considérée comme négligeable",
+                "Toujours égale à la tension du générateur",
+                "Toujours 230 V",
+                "Impossible à définir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On modélise souvent les fils comme des conducteurs sans chute de tension."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "2 V signifie :",
+              "options": [
+                "Deux volts de différence de potentiel entre deux points",
+                "Deux ampères de courant",
+                "Deux watts de puissance",
+                "Deux ohms de résistance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "V est l’unité de tension, pas de courant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour mesurer U aux bornes d’une lampe en série :",
+              "options": [
+                "On place le voltmètre en parallèle de la lampe",
+                "On coupe le circuit et on insère le voltmètre",
+                "On remplace la lampe par le voltmètre en série",
+                "On mesure la tension au générateur seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le voltmètre voit la même différence de potentiel que le dipôle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La tension est une grandeur :",
+              "options": [
+                "Scalaire liée à l’énergie par charge entre deux points",
+                "Vectorielle comme une force",
+                "Identique à la quantité d’électricité en coulombs",
+                "Toujours nulle dans un circuit allumé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "U caractérise l’écart de potentiel entre deux bornes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "mV signifie :",
+              "options": ["Millivolt", "Mégavolt", "Millampère", "Mégawatt"],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe milli correspond à 10⁻³ volt."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "kV signifie :",
+              "options": [
+                "Kilovolt (1000 V)",
+                "Kiloampère",
+                "Kilowatt",
+                "Kilohm"
+              ],
+              "correctAnswers": [0],
+              "explanation": "k = kilo = 10³."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Additivité des tensions en série",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un circuit en série alimenté par un générateur, la loi d’additivité des tensions énonce que :",
+              "options": [
+                "La somme des tensions aux bornes des dipôles reçoit la tension du générateur",
+                "U_générateur = U1 + U2 + … pour les dipôles en série",
+                "Chaque dipôle a toujours la même tension que le générateur",
+                "Les tensions s’annulent toujours"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En série, les chutes de tension se cumulent et égalent la tension fournie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pile 9 V, deux lampes en série : U1 = 4 V aux bornes de L1. U2 aux bornes de L2 vaut environ :",
+              "options": ["5 V", "9 V", "4 V", "0 V"],
+              "correctAnswers": [0],
+              "explanation": "9 V ≈ 4 V + U2, donc U2 ≈ 5 V."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si U1 + U2 mesurées dépassent la tension du générateur, la cause probable est :",
+              "options": [
+                "Erreur de mesure ou mauvais branchement",
+                "Loi d’additivité fausse en série",
+                "Intensité nulle obligatoire",
+                "Court-circuit du voltmètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi impose l’égalité ; un écart signale souvent une mesure incorrecte."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La tension aux bornes du générateur idéal en série avec des récepteurs :",
+              "options": [
+                "Égale la somme des tensions aux bornes des récepteurs",
+                "Est toujours la moitié de U1",
+                "Est nulle quand le circuit fonctionne",
+                "Ne se mesure pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le générateur compense la somme des chutes de tension."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Trois dipôles D1, D2, D3 en série : U(D1)+U(D2)+U(D3) vaut :",
+              "options": [
+                "La tension entre les bornes du générateur (montage simple)",
+                "Trois fois l’intensité",
+                "Toujours 0 V",
+                "La tension du premier seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L’additivité s’étend à tous les dipôles de la branche."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une lampe reçoit une petite tension en série avec une autre :",
+              "options": [
+                "Elle brille faiblement",
+                "Elle brille plus fort",
+                "Elle explose systématiquement",
+                "L’intensité est nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La luminosité dépend notamment de la tension à ses bornes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Mesurer U aux bornes de chaque dipôle puis additionner sert à :",
+              "options": [
+                "Vérifier la loi d’additivité des tensions",
+                "Mesurer l’intensité totale",
+                "Calculer la masse de la pile",
+                "Déterminer le sens des électrons sans convention"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C’est l’activité classique de validation en 4e."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si une lampe est en court-circuit (fil parallèle), sa tension aux bornes est :",
+              "options": [
+                "Environ 0 V",
+                "Égale à la pile",
+                "Double de l’autre lampe",
+                "Indéfinie sans mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un fil idéal impose une chute de tension quasi nulle aux bornes shuntées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le générateur « monte » le courant au potentiel :",
+              "options": [
+                "Il fournit l’énergie pour maintenir la circulation",
+                "Il absorbe toute la tension des lampes",
+                "Il mesure U en série",
+                "Il divise le courant en branches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rôle énergétique du générateur dans la boucle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Formule d’additivité en série (deux récepteurs) :",
+              "options": [
+                "U = U1 + U2",
+                "I = I1 + I2",
+                "U = U1 = U2",
+                "I = I1 = I2 = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En série on additionne les tensions, pas les intensités."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Dépannage d’un circuit série",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Si aucune lampe ne s’allume en série, causes possibles :",
+              "options": [
+                "Interrupteur ouvert ou boucle coupée",
+                "Pile déchargée ou mal orientée",
+                "Toutes les lampes grillées en même temps est possible mais rare",
+                "Un voltmètre correctement en parallèle empêche toujours le courant"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sans boucle fermée ou sans générateur actif, I = 0."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une lampe grillée (fil coupé) en série avec une autre :",
+              "options": [
+                "Aucune ne s’allume",
+                "L’autre brille normalement",
+                "Seule celle grillée brille",
+                "L’intensité double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La coupure ouvre la boucle unique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Inverser les bornes d’une lampe en série :",
+              "options": [
+                "La lampe fonctionne souvent encore (symétrie du dipôle)",
+                "Le circuit devient obligatoirement en dérivation",
+                "La pile s’inverse",
+                "L’intensité devient négative physiquement impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une lampe à incandescence n’a pas de polarité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Retirer une lampe du circuit série sans la remplacer :",
+              "options": [
+                "Coupe le circuit si les fils ne sont pas reliés",
+                "Augmente le courant dans l’autre lampe sans limite",
+                "Ne change rien",
+                "Crée une branche parallèle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut maintenir la continuité du fil unique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux piles en série aidant le même sens :",
+              "options": [
+                "La tension totale augmente (addition des tensions)",
+                "L’intensité devient nulle",
+                "Les tensions s’annulent",
+                "On obtient un montage en dérivation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Générateurs en série : tensions s’additionnent si même polarité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un mauvais contact au bornier :",
+              "options": [
+                "Peut ouvrir la boucle ou augmenter la résistance",
+                "Augmente toujours la tension de la pile",
+                "Mesure U automatiquement",
+                "Force I différent sur chaque lampe en série"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contact défectueux = résistance élevée ou coupure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour qu’une lampe brille, il faut :",
+              "options": [
+                "Un courant suffisant la traversant",
+                "Uniquement une tension aux bornes sans boucle",
+                "Un voltmètre en série",
+                "Une branche parallèle ouverte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut une boucle fermée et une intensité non nulle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Court-circuit direct sur les bornes d’une pile sans récepteur :",
+              "options": [
+                "Dangereux : forte intensité, échauffement",
+                "Sans effet",
+                "Mesure la tension des lampes",
+                "Obligatoire en TP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résistance très faible ⇒ I très élevé : risque d’incendie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tester une pile avec un voltmètre à vide :",
+              "options": [
+                "Donne une indication de sa tension disponible",
+                "Mesure l’intensité du circuit",
+                "Remplace l’ampèremètre en série",
+                "Prouve qu’elle est pleine sans limite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tension à vide proche de la valeur nominale si pile neuve."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ordre des dipôles le long de la boucle en série :",
+              "options": [
+                "N’influence pas l’intensité unique ni la somme des tensions",
+                "Change l’intensité sur chaque lampe",
+                "Empêche l’additivité",
+                "Fixe U identique sur chaque dipôle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En série, l’ordre ne modifie pas I ni U_total répartie."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Schémas normalisés en série",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur un schéma électrique, on représente :",
+              "options": [
+                "Les dipôles par des symboles normalisés",
+                "Les connexions par des traits",
+                "Les couleurs réelles des fils obligatoirement",
+                "La photo du montage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le schéma utilise symboles et liaisons, pas l’aspect réel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Symbole d’une lampe :",
+              "options": [
+                "Cercle avec une croix",
+                "Deux barres parallèles",
+                "Zigzag seul pour la lampe",
+                "Triangle seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En norme scolaire, la lampe est un cercle barré."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Symbole d’un interrupteur ouvert :",
+              "options": [
+                "Segment avec gap entre deux points",
+                "Trait continu seul",
+                "Deux flèches",
+                "Cercle plein"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L’ouverture matérialise la coupure du chemin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Symbole d’une pile :",
+              "options": [
+                "Deux traits de longueurs différentes",
+                "Un cercle avec A",
+                "Un rectangle seul",
+                "Une flèche vers la lampe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trait long = +, trait court = − conventionnellement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans un schéma série, les dipôles :",
+              "options": [
+                "Sont sur un même chemin sans embranchement parallèle",
+                "Sont tous entre les mêmes nœuds",
+                "Ne sont jamais reliés au générateur",
+                "Sont toujours en double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un seul chemin caractérise la série."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le sens du courant sur le schéma :",
+              "options": [
+                "Flèche du + vers le − du générateur (convention)",
+                "Sens des électrons obligatoirement dessiné",
+                "Aléatoire",
+                "De la lampe vers la pile uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convention du courant sortant du pôle positif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un fil de connexion sur le schéma :",
+              "options": [
+                "Trait continu reliant les symboles",
+                "Symbole en zigzag pour chaque fil",
+                "Toujours en pointillés",
+                "Remplace le générateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les liaisons sont des traits simples."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Passer du montage réel au schéma demande :",
+              "options": [
+                "Identifier dipôles et ordre des connexions",
+                "Mesurer la couleur des fils",
+                "Photographier le plateau",
+                "Ignorer l’interrupteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L’abstraction garde la topologie du circuit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux lampes en série sur schéma :",
+              "options": [
+                "Deux symboles lampe sur la même branche unique",
+                "Deux lampes entre mêmes nœuds parallèles",
+                "Une seule lampe autorisée",
+                "Lampes non connectées au générateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles partagent la même branche sans nœud intermédiaire parallèle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L’ampèremètre sur un schéma est placé :",
+              "options": [
+                "En série dans la branche",
+                "En parallèle de la lampe",
+                "À la place du générateur seulement",
+                "Hors du circuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même règle que le montage réel."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Puissance et énergie (notions liées)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En 4e, on relie tension et intensité à la puissance par :",
+              "options": [
+                "P = U × I (watt si U en V et I en A)",
+                "La puissance augmente si U et I augmentent",
+                "P = U + I",
+                "La puissance n’a pas d’unité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "P en watts produit de U et I."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Unité de puissance électrique :",
+              "options": [
+                "Le watt (W)",
+                "Le volt",
+                "L’ampère",
+                "Le joule seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "W = V × A pour la puissance électrique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une lampe moins lumineuse en série reçoit en général :",
+              "options": [
+                "Une tension plus faible qu’une seule sur la pile",
+                "Plus de courant que les autres",
+                "Toute la puissance du générateur",
+                "Une intensité différente des autres dipôles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "U plus petite ⇒ P = U×I souvent plus faible."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le joule (J) mesure :",
+              "options": [
+                "Une énergie",
+                "Une tension",
+                "Un courant",
+                "Une puissance instantanée seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "J est l’unité d’énergie au SI."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Énergie consommée : E = P × t si P constante. P = 2 W pendant 10 s donne :",
+              "options": ["20 J", "12 J", "0,2 J", "200 J"],
+              "correctAnswers": [0],
+              "explanation": "E = 2 × 10 = 20 joules."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si I diminue dans un circuit série (même U générateur impossible sans changement) — plus de lampes :",
+              "options": [
+                "Chaque lampe peut briller moins",
+                "Chaque lampe brille plus",
+                "I diffère entre lampes",
+                "U somme dépasse toujours la pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "I plus faible réduit la puissance dans chaque dipôle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "230 V sur une installation domestique concerne :",
+              "options": [
+                "La tension du réseau (ordre de grandeur culturel)",
+                "L’intensité d’une pile 4,5 V",
+                "La tension aux bornes de chaque lampe en série scolaire",
+                "Une grandeur sans unité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réseau français est ~230 V alternatif ; distinct des montages piles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un appareil 60 W signifie à tension nominale :",
+              "options": [
+                "Il convertit 60 J par seconde en moyenne",
+                "Il consomme 60 V",
+                "Il laisse passer 60 A",
+                "Sa résistance vaut 60 Ω"
+              ],
+              "correctAnswers": [0],
+              "explanation": "W = J/s : puissance moyenne 60 W."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux grandeurs mesurées au multimètre en TP série :",
+              "options": [
+                "U en parallèle, I en série",
+                "U et I tous deux en parallèle",
+                "I en parallèle, U en série",
+                "Ni U ni I"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle de câblage fondamentale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Chauffage d’un fil en court-circuit :",
+              "options": [
+                "Lié à une forte puissance dissipée (P = U×I)",
+                "Impossible sans tension",
+                "Sans rapport avec I",
+                "Dû uniquement au voltmètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faible R ⇒ I élevé ⇒ P élevée si U maintenue."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Résistance et loi d’Ohm (introduction)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour un conducteur ohmique à température constante :",
+              "options": [
+                "U = R × I",
+                "R = U / I si I ≠ 0",
+                "R s’exprime en ohm (Ω)",
+                "I = U × R toujours"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Loi d’Ohm : U = R I ; R en ohms."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Unité de résistance :",
+              "options": ["Ohm (Ω)", "Volt", "Ampère", "Watt"],
+              "correctAnswers": [0],
+              "explanation": "Ω est l’unité SI de résistance."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deux résistances identiques en série :",
+              "options": [
+                "R_tot = R1 + R2",
+                "R_tot = R1 = R2",
+                "R_tot = R1 / R2",
+                "R_tot = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En série les résistances s’additionnent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "R = 10 Ω, I = 0,2 A. U vaut :",
+              "options": ["2 V", "5 V", "0,02 V", "20 V"],
+              "correctAnswers": [0],
+              "explanation": "U = R I = 10 × 0,2 = 2 V."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Augmenter R à U fixe :",
+              "options": [
+                "Diminue I",
+                "Augmente I",
+                "I inchangé",
+                "U disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "I = U/R : plus de R, moins de courant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une lampe peut être modélisée en 4e comme :",
+              "options": [
+                "Un dipôle avec une certaine résistance",
+                "Un court-circuit parfait",
+                "Un isolant",
+                "Sans relation U-I"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comportement résumé par U et I liés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "kΩ vaut :",
+              "options": ["1000 Ω", "0,001 Ω", "1000 V", "1000 A"],
+              "correctAnswers": [0],
+              "explanation": "kilo-ohm = 10³ ohms."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Trois résistances 2 Ω en série : R_tot =",
+              "options": ["6 Ω", "2 Ω", "0,67 Ω", "3 Ω"],
+              "correctAnswers": [0],
+              "explanation": "2 + 2 + 2 = 6 Ω."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si U aux bornes d’un dipôle double et R constante :",
+              "options": [
+                "I double",
+                "I divise par 2",
+                "I nul",
+                "R double automatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "I = U/R proportionnel à U."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Graphique U = f(I) pour un ohmique :",
+              "options": [
+                "Droite passant par l’origine",
+                "Cercle",
+                "Horizontale",
+                "Sans relation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "U proportionnel à I : droite de pente R."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Sécurité et bonnes pratiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En travaux pratiques basse tension :",
+              "options": [
+                "Ne jamais court-circuiter directement une pile",
+                "Vérifier le mode du multimètre avant branchement",
+                "Toucher le réseau 230 V en classe",
+                "Laisser fils nus sans isolation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Court-circuit pile = danger ; mauvais mode multimètre = risque appareil."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Courant dangereux pour le corps humain :",
+              "options": [
+                "Peut être atteint bien en dessous de 230 V selon conditions",
+                "Impossible sous 1000 V",
+                "Uniquement en courant continu",
+                "Sans importance en TP pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dangerosité dépend de I, durée, trajet ; le réseau est dangereux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Fusible ou disjoncteur sert à :",
+              "options": [
+                "Couper le circuit si I trop élevé",
+                "Augmenter la tension",
+                "Mesurer U",
+                "Remplacer une lampe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection contre surintensité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fil dénudé touchant deux bornes métalliques :",
+              "options": [
+                "Risque de court-circuit",
+                "Améliore la mesure",
+                "Obligatoire",
+                "Mesure I seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contact direct peut shunter et provoquer forte I."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pile chauffe en court-circuit car :",
+              "options": [
+                "Grande puissance dissipée dans la source et les fils",
+                "Pas de courant",
+                "Tension nulle",
+                "Voltmètre en série"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie convertie en chaleur rapidement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Avant de modifier un montage :",
+              "options": [
+                "Ouvrir l’interrupteur ou couper l’alimentation",
+                "Garder la pile branchée",
+                "Retirer le voltmètre seulement",
+                "Augmenter U"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évite chocs et courts-circuits lors du câblage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le réseau domestique 230 V en TP lycée/collège :",
+              "options": [
+                "N’est pas manipulé en montage libre au collège",
+                "Identique à une pile 9 V",
+                "Sans danger jamais",
+                "Mesuré avec ampèremètre en parallèle seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les TP 4e utilisent généralement piles et générateurs basse tension."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Isolation des fils sert à :",
+              "options": [
+                "Empêcher contacts accidentels",
+                "Augmenter I",
+                "Mesurer R",
+                "Créer une dérivation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L’isolant limite les fuites de courant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Symbole terre / masse en schéma pro :",
+              "options": [
+                "Sécurité des personnes et des appareils",
+                "Remplace le générateur",
+                "Circuit série obligatoire",
+                "Mesure I"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mise à la terre limite les risques en cas de défaut."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Après expérience, une pile usée :",
+              "options": [
+                "Doit être collectée selon consignes (déchet)",
+                "Jetée avec les fils",
+                "Rechargée à l’infini",
+                "Court-circuitée pour tester"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respect des consignes de collecte des piles."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse circuit en série",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Résumé d’un circuit en série alimenté :",
+              "options": [
+                "I identique partout",
+                "U_générateur = somme des U dipôles",
+                "I = somme des I dipôles",
+                "Chaque lampe a la tension totale de la pile"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Série : même I, tensions additives."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle loi concerne l’intensité en série ?",
+              "options": [
+                "Elle est la même en tout point",
+                "Elle s’additionne aux nœuds",
+                "Elle est nulle au générateur",
+                "Elle double à chaque lampe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un seul chemin ⇒ I constante."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle loi concerne les tensions en série ?",
+              "options": [
+                "Additivité",
+                "Égalité stricte sur chaque dipôle",
+                "Somme des intensités",
+                "Produit U×I nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les tensions se cumulent le long de la branche."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ampèremètre / voltmètre :",
+              "options": [
+                "Série / dérivation",
+                "Dérivation / série",
+                "Tous deux en série",
+                "Tous deux en parallèle du générateur seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle de mesure incontournable."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Retirer une lampe sans relier les fils :",
+              "options": [
+                "Coupe le circuit",
+                "Augmente U sur l’autre",
+                "Crée parallèle",
+                "I double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Continuité rompue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pile 6 V, U1=2 V, U2=?",
+              "options": ["4 V", "6 V", "2 V", "8 V"],
+              "correctAnswers": [0],
+              "explanation": "6 = 2 + U2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux lampes identiques en série sur 6 V :",
+              "options": [
+                "Environ 3 V chacune si symétriques",
+                "6 V chacune",
+                "0 V",
+                "1 V chacune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répartition approximative égale si dipôles identiques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ordre lampe-pile-interrupteur en série :",
+              "options": [
+                "Ne change pas I ni loi des U",
+                "Change I sur chaque lampe",
+                "Annule additivité",
+                "Interdit mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Topologie série équivalente par permutation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Boucle ouverte :",
+              "options": [
+                "I = 0",
+                "I maximal",
+                "U pile nulle",
+                "Tensions infinies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de circulation globale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Grandeurs de base du chapitre :",
+              "options": [
+                "Tension (V), intensité (A), lois série",
+                "Masse et volume seulement",
+                "pH et concentration",
+                "Vitesse et accélération"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Électricité : U, I et lois de circuit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Circuit en dérivation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Nœuds et branches",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un circuit en dérivation (parallèle) :",
+              "options": [
+                "Il existe au moins deux branches entre les mêmes nœuds",
+                "Les dipôles d’une branche partagent les mêmes bornes",
+                "Tous les dipôles sont forcément en série",
+                "Il n’y a jamais de nœud"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La dérivation place des dipôles entre deux nœuds communs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un nœud est :",
+              "options": [
+                "Un point où au moins trois conducteurs se rejoignent",
+                "Un dipôle isolé",
+                "Un symbole de lampe",
+                "Un générateur seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jonction de fils ou de branchements."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une branche est :",
+              "options": [
+                "Une portion entre deux nœuds sans nœud intermédiaire",
+                "Toujours le générateur",
+                "Un fil non connecté",
+                "Un voltmètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chemin élémentaire entre nœuds."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Deux lampes en dérivation ont :",
+              "options": [
+                "Les mêmes deux nœuds aux extrémités",
+                "Des nœuds différents obligatoirement",
+                "Une seule branche",
+                "Pas de générateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parallèle = même paire de nœuds."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le courant total du générateur en dérivation :",
+              "options": [
+                "Se partage entre les branches",
+                "Est nul dans chaque branche",
+                "Est identique dans chaque branche seulement",
+                "Ne peut pas être mesuré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs chemins ⇒ répartition des intensités."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Couper une branche en dérivation (autres OK) :",
+              "options": [
+                "Les autres branches peuvent rester alimentées",
+                "Tout s’éteint toujours",
+                "Le générateur disparaît",
+                "U devient nulle partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indépendance des branches en parallèle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Fil reliant deux nœuds sans dipôle intermédiaire sur une branche :",
+              "options": [
+                "Peut porter une part du courant total",
+                "Bloque toujours I",
+                "Mesure U seule",
+                "Remplace une lampe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conducteur de liaison entre nœuds."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Montage mixte série + dérivation :",
+              "options": [
+                "Existe dans les circuits réels",
+                "Interdit en 4e",
+                "Sans nœuds",
+                "Uniquement théorique jamais étudié"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On combine lois série sur une branche et dérivation entre branches."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Nombre minimal de branches pour parler de dérivation :",
+              "options": ["Au moins 2", "Exactement 1", "Au moins 5", "0"],
+              "correctAnswers": [0],
+              "explanation": "Il faut un chemin alternatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sur un schéma, nœuds repérables par :",
+              "options": [
+                "Points où plusieurs traits se croisent (connexion)",
+                "Croisements sans point (à éviter ambiguïté)",
+                "Couleur verte",
+                "Symbole pile seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Connexion explicite au nœud."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Tension commune en dérivation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour des dipôles en dérivation entre deux nœuds :",
+              "options": [
+                "La tension aux bornes est la même pour chaque branche",
+                "U1 = U2 = U entre les nœuds",
+                "Les tensions s’additionnent comme en série",
+                "U est toujours 0 V"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Même différence de potentiel entre les nœuds communs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Deux lampes en parallèle sur 6 V : tension aux bornes de chaque lampe ?",
+              "options": ["6 V (idéalement)", "3 V chacune", "12 V", "0 V"],
+              "correctAnswers": [0],
+              "explanation": "U commune = tension entre les nœuds."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Mesurer U sur une branche en dérivation :",
+              "options": [
+                "Voltmètre en parallèle du dipôle de la branche",
+                "Ampèremètre en série du générateur uniquement",
+                "U se mesure au nœud seul sans dipôle",
+                "Tension différente sur chaque fil du nœud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même méthode qu’en série pour un dipôle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si U entre nœuds vaut 4,5 V, U sur la lampe A en parallèle vaut :",
+              "options": ["4,5 V", "2,25 V", "9 V", "Somme avec lampe B"],
+              "correctAnswers": [0],
+              "explanation": "U identique sur chaque branche."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Loi d’additivité des tensions en dérivation entre nœuds :",
+              "options": [
+                "Ne s’applique pas pour U identique sur branches parallèles",
+                "U branches s’additionnent toujours",
+                "Remplace loi des nœuds pour I",
+                "I = U sur chaque branche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Additivité série ≠ égalité dérivation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une lampe grillée en dérivation (fil coupé sur sa branche) :",
+              "options": [
+                "Les autres en parallèle peuvent rester allumées",
+                "Toutes s’éteignent",
+                "U du générateur tombe à 0",
+                "I total double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Branche ouverte seulement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Court-circuit d’une branche en parallèle (fil idéal) :",
+              "options": [
+                "U de la branche ≈ 0, problème grave si générateur non protégé",
+                "Augmente U des autres",
+                "Sans effet",
+                "Mesure I nulle partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shunt abaisse U locale et peut provoquer surintensité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comparer U lampe série vs dérivation (2 lampes, même pile) :",
+              "options": [
+                "En dérivation chaque lampe reçoit en général la tension complète du nœud",
+                "En série chaque lampe a U totale",
+                "Identique toujours",
+                "Dérivation U nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parallèle : U nominale plus élevée par lampe qu’en série."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Nœud A et nœud B : deux branches. U entre A et B mesurée sur branche 1 :",
+              "options": [
+                "Égale U mesurée sur branche 2",
+                "Double sur branche 2",
+                "Somme des deux",
+                "Nulle sur branche 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même paire de nœuds ⇒ même U."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Symbole : dipôles en dérivation dessinés :",
+              "options": [
+                "Côte à côte entre mêmes nœuds",
+                "Un seul fil sans embranchement",
+                "En ligne sans nœud",
+                "Hors générateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Représentation classique parallèle."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Loi des nœuds (intensités)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Loi d’additivité des intensités aux nœuds :",
+              "options": [
+                "Somme des courants entrants = somme des sortants",
+                "I_total générateur = I1 + I2 + … des branches",
+                "I identique dans toutes les branches",
+                "I toujours nulle au nœud"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Conservation de la charge aux nœuds."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "I_générateur = 0,6 A, branche1 = 0,25 A. I branche2 ≈",
+              "options": ["0,35 A", "0,6 A", "0,25 A", "0,85 A"],
+              "correctAnswers": [0],
+              "explanation": "0,6 ≈ 0,25 + I2 ⇒ I2 ≈ 0,35 A."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Mesurer I dans une branche en dérivation :",
+              "options": [
+                "Ampèremètre en série dans cette branche seulement",
+                "Voltmètre en parallèle",
+                "Un seul ampèremètre au nœud sans branche",
+                "I se déduit sans mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Insérer l’ampèremètre dans la branche concernée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Trois lampes identiques en parallèle, U fixe :",
+              "options": [
+                "I_total ≈ 3 × I une lampe (si indépendantes)",
+                "I_total = I une lampe",
+                "I nul dans deux branches",
+                "U triple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque branche porte I ; total s’additionne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En série, I1 + I2 = I_total ?",
+              "options": [
+                "Non, I est le même partout, pas une somme de branches",
+                "Oui toujours",
+                "Seulement en dérivation",
+                "I_total nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Somme aux nœuds concerne dérivation, pas série."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un nœud avec 2 fils entrants I=0,3 A et 0,2 A, un sortant :",
+              "options": ["I_sortant = 0,5 A", "0,1 A", "0,3 A", "0 A"],
+              "correctAnswers": [0],
+              "explanation": "0,3 + 0,2 = I_sortant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Brancher plus de lampes en parallèle (U fixe) :",
+              "options": [
+                "I total augmente",
+                "I total diminue toujours",
+                "U diminue obligatoirement à 0",
+                "I identique partout une valeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de chemins ⇒ plus de courant total."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "I dans branche sans dipôle consommateur (fil seul) :",
+              "options": [
+                "Peut transporter du courant vers une autre branche",
+                "Toujours 0",
+                "Interdit",
+                "Égal à U"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fil de liaison fait partie du réseau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Erreur : ampèremètre en dérivation du générateur shunte :",
+              "options": [
+                "Mesure fausse et risque pour l’appareil",
+                "Donne U",
+                "Correct pour I branche",
+                "Annule U"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ampèremètre doit être en série dans la branche visée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Unité cohérente pour loi des nœuds :",
+              "options": ["Ampères des deux côtés", "Volts", "Ohms", "Watts"],
+              "correctAnswers": [0],
+              "explanation": "On additionne des intensités."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Lampes en parallèle au quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Éclairage domestique en dérivation permet :",
+              "options": [
+                "D’allumer ou éteindre une lampe sans couper toutes les autres",
+                "D’avoir la même tension aux luminaires d’un même circuit",
+                "D’avoir une seule branche obligatoire",
+                "D’annuler la loi des nœuds"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Indépendance des branches et U réseau aux bornes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Deux lampes parallèles brillent en général plus que deux en série (même pile) car :",
+              "options": [
+                "Chacune reçoit une tension plus élevée",
+                "I est nulle",
+                "U s’additionne sur chaque lampe",
+                "Pas de courant dans parallèle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "U pleine sur chaque branche vs U partagée en série."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Griller une lampe en parallèle maison (circuit bien câblé) :",
+              "options": [
+                "Les autres pièces restent éclairées si autre branche",
+                "Tout le quartier noir",
+                "Pile seule en classe identique au 230 V",
+                "U double sur les autres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Branche locale ouverte, autres branches alimentées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "I1 = 0,1 A, I2 = 0,15 A en parallèle sur même U. I alimentation :",
+              "options": ["0,25 A", "0,05 A", "0,1 A", "0,15 A"],
+              "correctAnswers": [0],
+              "explanation": "Somme des branchements."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ajouter une 3e lampe identique en parallèle (U source stable) :",
+              "options": [
+                "I total augmente",
+                "I total inchangé",
+                "U triple",
+                "Chaque I disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nouvelle branche conductrice supplémentaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Interrupteur en série avec UNE lampe en parallèle des autres :",
+              "options": [
+                "Coupe seulement la lampe commandée",
+                "Coupe tout le circuit parallèle toujours",
+                "Mesure U",
+                "Ouvre tous les nœuds"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interrupteur sur la branche concernée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux résistances R en parallèle (identiques R) : R_équivalent < R car :",
+              "options": [
+                "Plus de chemins ⇒ conductance totale plus grande",
+                "R double",
+                "U nulle",
+                "I nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1/R_eq = 1/R + 1/R ⇒ R_eq = R/2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "P = U×I. Même U en parallèle sur 2 lampes identiques :",
+              "options": [
+                "Puissance totale ≈ 2× une lampe",
+                "Puissance totale ÷ 2",
+                "P nulle",
+                "U×I interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque lampe consomme P, total cumule."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Fil trop fin sur branche parallèle :",
+              "options": [
+                "Peut limiter I ou chauffer (résistance non négligeable)",
+                "Sans effet",
+                "Annule U commune",
+                "Force série"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résistance réelle des conducteurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Symétrie : deux branches identiques, U fixe :",
+              "options": ["I1 ≈ I2", "I1 = 0", "U1 ≠ U2", "I total = 0"],
+              "correctAnswers": [0],
+              "explanation": "Branches équivalentes ⇒ répartition égale de I."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Mesures en circuit dérivation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour caractériser un montage en dérivation on mesure :",
+              "options": [
+                "U entre les nœuds communs (identique par branche)",
+                "I dans chaque branche avec ampèremètre en série",
+                "U en série avec ampèremètre",
+                "I au voltmètre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "U parallèle dipôle, I par branche en série."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "I total se mesure en général :",
+              "options": [
+                "Dans la branche principale contenant le générateur",
+                "En parallèle du générateur avec voltmètre",
+                "Au nœud sans fil",
+                "Uniquement dans une lampe secondaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courant total avant division aux nœuds."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Voltmètre entre les deux nœuds d’un parallèle mesure :",
+              "options": [
+                "U commun aux branches",
+                "Somme I",
+                "R seule",
+                "I total direct"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Différence de potentiel entre nœuds."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Vérifier loi des nœuds expérimentalement :",
+              "options": [
+                "Comparer I_entrée et somme I_sorties au nœud",
+                "Additionner U des branches",
+                "Mesurer masse pile",
+                "Couper toutes branches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protocole classique multimètre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Multimètre sur 200 mA, I réel 0,5 A :",
+              "options": [
+                "Fuse / erreur de calibre",
+                "Mesure exacte",
+                "Mesure U",
+                "Calibre OK"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dépassement de calibre dangereux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux ampèremètres, une branche chacun, valeurs 0,12 A et 0,18 A. I générateur :",
+              "options": ["0,30 A", "0,06 A", "0,12 A", "0,18 A"],
+              "correctAnswers": [0],
+              "explanation": "Somme si réunissent au même nœud d’entrée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "U mesurée 4,8 V sur branche1, 4,7 V sur branche2 (même nœuds) :",
+              "options": [
+                "Écart faible, même U théorique ; imprécisions possibles",
+                "Loi fausse",
+                "U doit être 0",
+                "I = U"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesures réelles proches de l’égalité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Brancher voltmètre en série dans une branche :",
+              "options": [
+                "Bloque I dans la branche",
+                "Mesure I",
+                "Correct pour U",
+                "Augmente I"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voltmètre haute résistance en série stoppe le courant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ordre des mesures : couper alimentation pour :",
+              "options": [
+                "Modifier câblage des ampèremètres",
+                "Lire U à voltmètre branché (souvent possible à vide selon consigne)",
+                "Toujours laisser sous tension",
+                "Court-circuiter nœuds"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité câblage série."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tableau : branches A B C, I_A=0,1 I_B=0,2 I_C=0,05. I_gen :",
+              "options": ["0,35 A", "0,15 A", "0,25 A", "0,05 A"],
+              "correctAnswers": [0],
+              "explanation": "Somme 0,1+0,2+0,05."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Série versus dérivation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Différences série / dérivation :",
+              "options": [
+                "Série : I même ; dérivation : U même entre nœuds",
+                "Série : U s’additionne ; dérivation : I s’additionne aux nœuds",
+                "Série : toujours plus lumineux",
+                "Dérivation : une seule branche"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dualité des lois fondamentales."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Noël, guirlande ancienne tout en série :",
+              "options": [
+                "Une lampe grillée éteint toute la chaîne",
+                "Une lampe n’affecte pas les autres",
+                "U double sur chaque lampe",
+                "I différent sur chaque lampe en série"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple culturel du circuit série."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Maison : lampes en dérivation sur 230 V :",
+              "options": [
+                "Chaque appareil reçoit ~230 V (montage adapté)",
+                "0 V chacune",
+                "Intensité identique partout maison",
+                "Sans nœuds"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Installation parallèle sur le réseau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Même pile, 2 lampes : plus lumineuses en :",
+              "options": [
+                "Dérivation en général",
+                "Série toujours",
+                "Ni l’un ni l’autre",
+                "Sans générateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "U plus élevée par lampe en parallèle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "I en série 0,2 A partout. En dérivation 2 branches :",
+              "options": [
+                "I1 et I2 peuvent différer, I1+I2=I_total",
+                "I1=I2=0,2 obligatoire chaque branche",
+                "I total 0",
+                "U différente chaque branche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répartition selon dipôles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Résistances : R1+R2 en série vs parallèle :",
+              "options": [
+                "Parallèle donne R_eq plus petite (même R)",
+                "Parallèle R_eq plus grande",
+                "Identique",
+                "R_eq infinie parallèle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conductances s’additionnent en parallèle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle configuration vide plus vite une pile (lampes identiques) ?",
+              "options": [
+                "Dérivation (I total plus élevé)",
+                "Série toujours",
+                "Identique",
+                "Pile infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de courant total ⇒ plus d’énergie tirée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Loi additivité tensions utile surtout en :",
+              "options": [
+                "Série",
+                "Dérivation seule",
+                "Absence de générateur",
+                "Court-circuit seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Somme des U le long d’une branche unique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Loi additivité intensités aux nœuds utile en :",
+              "options": [
+                "Dérivation",
+                "Série pure une branche",
+                "Sans fils",
+                "U nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jonctions de branches multiples."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir dérivation pour réveil maison :",
+              "options": [
+                "Autonomie des appareils et U nominale",
+                "Une seule lampe possible",
+                "I nulle",
+                "Pas de générateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Raison pratique de l’installation parallèle."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Schémas en dérivation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Reconnaître un parallèle sur schéma :",
+              "options": [
+                "Deux symboles entre mêmes nœuds avec embranchement",
+                "Traits horizontaux reliant extrémités communes",
+                "Une seule ligne sans nœud",
+                "Deux générateurs obligatoires"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Topologie à deux branches visibles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Croisement de fils sans point noir :",
+              "options": [
+                "Peut signifier pas de connexion (selon norme utilisée)",
+                "Toujours nœud",
+                "Toujours court-circuit",
+                "Générateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En classe on marque les nœuds explicitement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dérivation : symbole interrupteur sur une branche :",
+              "options": [
+                "Agit seulement sur le dipôle de cette branche",
+                "Coupe tout parallèle automatiquement",
+                "Remplace voltmètre",
+                "Série forcée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commande locale de branche."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Passer montage réel parallèle → schéma :",
+              "options": [
+                "Repérer nœuds communs aux lampes",
+                "Ignorer le générateur",
+                "Une lampe seule",
+                "Couleurs fils = symboles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abstraction des nœuds."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Trois lampes parallèle : dessin :",
+              "options": [
+                "Trois branches entre deux nœuds",
+                "Trois piles",
+                "Série triple",
+                "Sans générateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois chemins parallèles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ampèremètre branche gauche schéma :",
+              "options": [
+                "Série dans branche gauche",
+                "Parallèle lampe droite",
+                "Entre nœuds sans branche",
+                "Symbole pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesure I de la branche."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Voltmètre sur une lampe en parallèle :",
+              "options": [
+                "En parallèle du symbole lampe",
+                "En série générateur",
+                "Au nœud seul",
+                "Deux voltmètres série"
+              ],
+              "correctAnswers": [0],
+              "explanation": "U du dipôle visé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mixte : deux lampes série puis parallèle d’un troisième bloc :",
+              "options": [
+                "Modèle combinant lois série et nœuds",
+                "Impossible",
+                "Sans U",
+                "I partout égale branches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Circuits réels composés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Flèche I sur branche :",
+              "options": [
+                "Indique sens conventionnel dans cette branche",
+                "U de branche",
+                "Résistance nulle",
+                "Pôle − pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sens du courant dans la branche choisie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Erreur schéma : lampe seule sans retour générateur :",
+              "options": [
+                "Circuit incomplet, pas de boucle",
+                "Parallèle parfait",
+                "U mesurée OK",
+                "I maximal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut boucle fermée."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Calculs U et I en dérivation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Données : U=6 V entre nœuds, R1=30 Ω branche1. alors :",
+              "options": [
+                "I1 = U/R1 = 0,2 A",
+                "U1 = 6 V",
+                "I1 = U×R1",
+                "U1 = 0 V"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "U commun, loi d’Ohm sur la branche."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "U=4,5 V, R=15 Ω. I branche :",
+              "options": ["0,3 A", "67,5 A", "0,03 A", "15 A"],
+              "correctAnswers": [0],
+              "explanation": "I = 4,5/15 = 0,3 A."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "I1=0,1 A, I2=0,2 A, I3=0,05 A. I générateur :",
+              "options": ["0,35 A", "0,15 A", "0,25 A", "0,05 A"],
+              "correctAnswers": [0],
+              "explanation": "Somme des branches."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Deux branches 60 Ω et 30 Ω, U=6 V. I1 et I2 :",
+              "options": ["0,1 A et 0,2 A", "Égales", "0 A", "6 A chacune"],
+              "correctAnswers": [0],
+              "explanation": "I=U/R : 0,1 et 0,2 A."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "P_total = P1+P2 si U commun et branches indépendantes :",
+              "options": [
+                "Vrai (puissances additives)",
+                "Faux toujours",
+                "P nulle",
+                "U somme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque branche dissipe P=UI."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "R branch 10 Ω, U 3 V. P :",
+              "options": ["0,9 W", "30 W", "0,3 W", "3 W"],
+              "correctAnswers": [0],
+              "explanation": "P=U²/R = 9/10 = 0,9 W ou U×I."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Brancher R plus petite en parallèle (U fixe) :",
+              "options": [
+                "I dans cette branche augmente",
+                "I nulle",
+                "U double branche",
+                "R_eq augmente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "I=U/R inversement proportionnel à R."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "I_gen 0,5 A, une branche 0,5 A. Autres branches :",
+              "options": [
+                "0 A (tout passe dans cette branche)",
+                "0,5 A de plus obligatoire",
+                "U nul",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une seule branche conductrice active."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "mA + mA au nœud :",
+              "options": [
+                "Convertir en A puis additionner",
+                "Multiplie",
+                "Ignore",
+                "Volts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérence d’unités pour loi nœuds."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "U pile baisse sous charge parallèle forte :",
+              "options": [
+                "I total élevé tire U (pile réelle)",
+                "U augmente",
+                "I nul",
+                "Loi nœuds fausse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comportement réel générateur non idéal."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Problèmes de raisonnement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Diagnostic : une lampe parallèle faible, l’autre normale, même U nœuds :",
+              "options": [
+                "Branche faible : résistance plus élevée ou lampe partiellement défectueuse",
+                "I plus faible dans branche faible à U égal",
+                "U différent sur branches parallèle idéal",
+                "I identique forcé branches"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "À U égal, I=U/R plus petit si R plus grand."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ouvrir interrupteur branche B, branche A active :",
+              "options": [
+                "I_A ≈ I_gen, I_B=0",
+                "Tout s’arrête",
+                "U=0",
+                "I_B = I_gen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Branche ouverte : pas de courant local."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Court-circuit branche (fil idéal), générateur faible résistance interne :",
+              "options": [
+                "I_gen très élevé, danger",
+                "I nul",
+                "U double autres branches",
+                "Loi U fausse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surintensité classique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "3 lampes parallèle identiques, une retirée (coupure propre autres OK) :",
+              "options": [
+                "I_total diminue",
+                "I total double",
+                "U triple",
+                "Chaque I double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une branche en moins."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Série puis parallèle : calculer I branche parallèle demande :",
+              "options": [
+                "U aux nœuds puis U/R branche",
+                "Somme U série sur parallèle",
+                "I série = I parallèle branches",
+                "R=0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Étapes : U disponible puis loi d’Ohm locale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Affirmation fausse :",
+              "options": [
+                "En dérivation U diffère entre branches parallèles idéales",
+                "En dérivation I total = somme I",
+                "En série I constante",
+                "En série U s’additionne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "U est la même entre mêmes nœuds."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Affirmation vraie :",
+              "options": [
+                "Plus de branches parallèle identiques ⇒ I_gen plus grand (U fixe)",
+                "Moins de branches ⇒ I_gen plus grand",
+                "U somme branches",
+                "I somme en série une branche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conductance totale augmente."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mesure I2=0, I1=0,4 A, générateur branché :",
+              "options": [
+                "Contradiction ou branche mal branchée / ouvert ailleurs",
+                "Normal",
+                "U infini",
+                "Loi nœuds fausse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si une branche devrait conduire, vérifier montage."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux piles parallèle même sens (notion avancée simplifiée) :",
+              "options": [
+                "Maintiennent U aux nœuds proche valeur pile (modèle 4e)",
+                "Annulent U",
+                "Série forcée",
+                "I nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parallèle sources : même U nominal (TP limité)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif TP dérivation :",
+              "options": [
+                "Vérifier U égal et I1+I2=I",
+                "Prouver I série variable",
+                "U somme",
+                "Sans mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Validation expérimentale des lois."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse circuit en dérivation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Circuit en dérivation — retenir :",
+              "options": [
+                "U identique sur branches entre mêmes nœuds",
+                "I se partage : I_total = Σ I_branches",
+                "I identique partout comme série",
+                "U s’additionne entre branches"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dualité lois parallèle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mesurer I branche :",
+              "options": [
+                "Ampèremètre en série dans la branche",
+                "Voltmètre parallèle branche",
+                "Au nœud sans circuit",
+                "En série du générateur seulement si branche unique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Insertion série locale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Mesurer U dipôle parallèle :",
+              "options": [
+                "Voltmètre en parallèle du dipôle",
+                "Ampèremètre",
+                "Série pile",
+                "Nœud seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classique U."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "I_gen=0,8 A, I_a=0,3 A. I_b :",
+              "options": ["0,5 A", "1,1 A", "0,3 A", "0,8 A"],
+              "correctAnswers": [0],
+              "explanation": "0,8 = 0,3 + I_b."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Avantage domestique parallèle :",
+              "options": [
+                "Indépendance des appareils",
+                "Une seule branche",
+                "U partagée divisée obligatoire",
+                "I nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usage quotidien."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "vs série : parallèle lampes identiques :",
+              "options": [
+                "Plus lumineuses en général (U)",
+                "Moins lumineuses toujours",
+                "I nulle",
+                "U nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "U pleine par lampe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Loi des nœuds exprime :",
+              "options": [
+                "Conservation du courant aux jonctions",
+                "Conservation U somme",
+                "I=0",
+                "U=I"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kirchhoff courant (niveau 4e)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "R_eq parallèle deux R identiques R :",
+              "options": ["R/2", "2R", "R", "0"],
+              "correctAnswers": [0],
+              "explanation": "Conductances additivent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Griller lampe une branche :",
+              "options": [
+                "Autres branches peuvent fonctionner",
+                "Tout éteint toujours",
+                "U=0 global",
+                "I_gen=0 obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Branche ouverte locale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Chapitre Électricité 4e — deux montages :",
+              "options": [
+                "Série et dérivation avec U, I et lois",
+                "Acides bases",
+                "Mouvement uniforme",
+                "Photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Socle du module."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

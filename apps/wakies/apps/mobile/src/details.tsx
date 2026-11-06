@@ -391,7 +391,9 @@ function EventEditor({
   );
   const [location, setLocation] = useState(seed?.location || "");
   const [description, setDescription] = useState(seed?.description || "");
-  const [attendees, setAttendees] = useState(seed?.attendees.join(", ") || "");
+  const [attendees, setAttendees] = useState(
+    (seed?.attendees ?? []).join(", ") || "",
+  );
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const conflicts = (neighbors || w.events).filter(
@@ -873,7 +875,10 @@ function BrowserDetail({ initial }: { initial: BrowserSession }) {
         }
       })
       .catch((e) => {
-        if (active) setError(e instanceof Error ? e.message : String(e));
+        if (active) {
+          setError(e instanceof Error ? e.message : String(e));
+          setLoading(false);
+        }
       });
     return () => {
       active = false;

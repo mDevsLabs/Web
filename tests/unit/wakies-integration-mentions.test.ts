@@ -83,11 +83,11 @@ describe("applyIntegrationMentions", () => {
   });
 
   it("ajoute le plugin du connecteur connecté et installé", async () => {
-    const result = await mentionner(["Google"], {
-      connections: ["google"],
-      installations: [installation("google")],
+    const result = await mentionner(["GoogleMaps"], {
+      connections: ["google-maps"],
+      installations: [installation("google-maps")],
     });
-    expect(result.pluginIds).toEqual(["google"]);
+    expect(result.pluginIds).toEqual(["google-maps"]);
     expect(result.issues).toEqual([]);
   });
 
@@ -102,24 +102,24 @@ describe("applyIntegrationMentions", () => {
   });
 
   it("ignore un libellé qui n'est plus un fournisseur", async () => {
-    // `gmail` a été fondu dans le connecteur Google : le mentionner n'est pas
-    // demander une application, c'est un mot du message.
+    // Gmail n'est plus un connecteur : le mentionner n'est pas demander une
+    // application, c'est un mot du message.
     const result = await mentionner(["gmail", "Gmail"], {
       connections: [],
-      installations: [installation("google")],
+      installations: [installation("google-maps")],
     });
     expect(result).toEqual({ issues: [], pluginIds: [] });
   });
 
   it("exige une connexion en plus d'une installation", async () => {
-    const result = await mentionner(["Google", "@Google"], {
+    const result = await mentionner(["GoogleMaps", "@GoogleMaps"], {
       connections: [],
-      installations: [installation("google")],
+      installations: [installation("google-maps")],
     });
     expect(result.pluginIds).toEqual([]);
     expect(result.issues).toHaveLength(1);
     expect(result.issues[0]?.raison).toContain(
-      "Connectez Google depuis l'onglet Plugins"
+      "Connectez Google Maps depuis l'onglet Plugins"
     );
   });
 
@@ -142,10 +142,13 @@ describe("applyIntegrationMentions", () => {
   });
 
   it("déduplique deux mentions du même connecteur dans un même message", async () => {
-    const result = await mentionner(["Google", "google", "GOOGLE"], {
-      connections: ["google"],
-      installations: [installation("google")],
-    });
-    expect(result.pluginIds).toEqual(["google"]);
+    const result = await mentionner(
+      ["GoogleMaps", "googlemaps", "GOOGLEMAPS"],
+      {
+        connections: ["google-maps"],
+        installations: [installation("google-maps")],
+      }
+    );
+    expect(result.pluginIds).toEqual(["google-maps"]);
   });
 });

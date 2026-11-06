@@ -5,8 +5,8 @@
 //
 // Pourquoi cette séparation : `TOOL_IDS` est la liste des outils
 // *sélectionnables* dans l'interface (menu +, Skills, planification). Deux de
-// ces identifiants (`getWeather`, `quizzly`) ne sont PAS implémentés dans
-// `createChatTools` : ils sont livrés par les plugins `weather` et `quizzly`.
+// ces identifiants (`getWeather`) ne sont PAS implémentés dans
+// `createChatTools` : ils sont livrés par les plugins (ex: `weather`).
 // Les distinguer évite qu'un plugin puisse un jour masquer un outil natif, et
 // permet de filtrer un outil de plugin non installé sans jamais retirer un
 // outil natif.
@@ -36,7 +36,6 @@ export const TOOL_IDS = [
   "currencyConverter",
   "qrCodeGenerator",
   "askUser",
-  "quizzly",
   "updateAccountProfile",
   "getAccountUsage",
   "getUsageStats",
@@ -50,7 +49,6 @@ export type ChatToolId = (typeof TOOL_IDS)[number];
 // et activé par l'utilisateur, et restent réservés aux forfaits payants.
 export const PLUGIN_PROVIDED_TOOL_IDS = [
   "getWeather",
-  "quizzly",
 ] as const satisfies readonly ChatToolId[];
 
 const PLUGIN_PROVIDED_SET: ReadonlySet<string> = new Set(

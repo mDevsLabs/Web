@@ -1,0 +1,2328 @@
+{
+  "id": "6e-portugais-05",
+  "year": "6e",
+  "subject": "portugais",
+  "title": "Le passé en portugais",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots vont avec hier ou un passé terminé ?",
+              "options": ["ontem", "amanhã", "fui", "hoje"],
+              "correctAnswers": [0, 2],
+              "explanation": "Ontem = hier ; fui = je suis allé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sens de ontem :",
+              "options": ["hier", "aujourd'hui", "demain", "bientôt"],
+              "correctAnswers": [0],
+              "explanation": "Marqueur de la veille."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ontem eu ___ à escola. (ir)",
+              "options": ["vou", "fui", "vai", "ir"],
+              "correctAnswers": [1],
+              "explanation": "Passé de ir : fui."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comi vient de :",
+              "options": ["comer", "jogar", "ir", "ver"],
+              "correctAnswers": [0],
+              "explanation": "J'ai mangé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Hier j'ai joué.",
+              "options": [
+                "Ontem joguei.",
+                "Ontem jogo.",
+                "Hoje joguei.",
+                "Amanhã joguei."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ontem + joguei."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phrase au passé :",
+              "options": [
+                "Eu comi.",
+                "Eu como.",
+                "Eu vou comer.",
+                "Eu como amanhã."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comi = passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Joguei =",
+              "options": ["j'ai joué", "je joue", "tu as joué", "ils ont joué"],
+              "correctAnswers": [0],
+              "explanation": "1re pers. passé de jogar."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ontem eu ___ . (comer)",
+              "options": ["como", "comi", "comer", "comes"],
+              "correctAnswers": [1],
+              "explanation": "Après ontem : passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Fui =",
+              "options": ["je suis allé", "je vais", "j'ai mangé", "j'ai joué"],
+              "correctAnswers": [0],
+              "explanation": "Passé de ir (eu)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour raconter hier :",
+              "options": [
+                "ontem + verbe au passé",
+                "amanhã + passé",
+                "hoje + passé seul",
+                "ontem + infinitif seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère + passé."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formes au passé indicatif :",
+              "options": ["fui", "vou", "comi", "vai"],
+              "correctAnswers": [0, 2],
+              "explanation": "Fui et comi sont passés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Eu + ir (passé) :",
+              "options": ["vou", "fui", "vais", "irei"],
+              "correctAnswers": [1],
+              "explanation": "Ir : fui."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ontem eu fui ao parque. Temps :",
+              "options": ["passé", "présent", "futur", "infinitif"],
+              "correctAnswers": [0],
+              "explanation": "Fui = suis allé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "Ontem eu fui ao cinema.",
+                "Amanhã eu fui.",
+                "Eu fui amanhã ontem.",
+                "Hoje eu fui no futuro."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ontem + fui."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Hier à la plage :",
+              "options": [
+                "Ontem eu fui à praia.",
+                "Ontem eu vou à praia.",
+                "Ontem eu foi à praia.",
+                "Amanhã fui à praia."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eu fui."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ao cinema =",
+              "options": ["au cinéma", "à maison", "à l'école", "demain"],
+              "correctAnswers": [0],
+              "explanation": "Ao = à le."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Présent de ir (eu) :",
+              "options": ["vou", "fui", "foi", "foste"],
+              "correctAnswers": [0],
+              "explanation": "Eu vou."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Com a minha mãe : com =",
+              "options": ["avec", "sans", "chez", "pour"],
+              "correctAnswers": [0],
+              "explanation": "Com = avec."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Incorrect :",
+              "options": [
+                "Eu vou ontem.",
+                "Ontem eu fui.",
+                "Eu fui ontem.",
+                "Ontem fui."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vou est présent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Passé de ir (eu) finit en :",
+              "options": ["-i", "-ou", "-ei", "-ava"],
+              "correctAnswers": [0],
+              "explanation": "Fui."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Liés à comer au passé (eu) :",
+              "options": ["comi", "como", "Ontem comi", "comer"],
+              "correctAnswers": [0, 2],
+              "explanation": "Comi ; ontem comi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Eu + comer (passé) :",
+              "options": ["como", "comi", "comes", "comemos"],
+              "correctAnswers": [1],
+              "explanation": "Eu comi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Fruta =",
+              "options": ["fruit", "pain", "viande", "eau"],
+              "correctAnswers": [0],
+              "explanation": "Fruta."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Hier soupe :",
+              "options": [
+                "Ontem eu comi sopa.",
+                "Ontem eu como sopa.",
+                "Hoje comi sopa.",
+                "Ontem comi tu."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ontem eu comi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Passé eu de comer finit en :",
+              "options": ["-i", "-o", "-ei", "-em"],
+              "correctAnswers": [0],
+              "explanation": "Comi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Muito =",
+              "options": ["beaucoup", "peu", "jamais", "vite"],
+              "correctAnswers": [0],
+              "explanation": "Muito."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Passé + ontem :",
+              "options": [
+                "Ontem eu comi arroz.",
+                "Eu como arroz ontem.",
+                "Amanhã comi.",
+                "Ontem como."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comi avec ontem."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comi est :",
+              "options": [
+                "indicatif passé",
+                "subjonctif",
+                "futur",
+                "impératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de subjonctif ici."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Après le repas d'hier :",
+              "options": [
+                "Ontem eu comi bem.",
+                "Ontem eu como bem.",
+                "Amanhã comi.",
+                "Comi amanhã."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé terminé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comer =",
+              "options": ["manger", "jouer", "aller", "parler"],
+              "correctAnswers": [0],
+              "explanation": "Manger."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Passé de jogar (eu) ou hier :",
+              "options": ["joguei", "jogo", "Ontem joguei", "jogas"],
+              "correctAnswers": [0, 2],
+              "explanation": "Joguei ; ontem joguei."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Eu + jogar (passé) :",
+              "options": ["jogo", "joguei", "jogou", "jogamos"],
+              "correctAnswers": [1],
+              "explanation": "Joguei."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Jogar =",
+              "options": ["jouer", "manger", "dormir", "lire"],
+              "correctAnswers": [0],
+              "explanation": "Jouer."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Hier basket :",
+              "options": [
+                "Ontem joguei basquetebol.",
+                "Ontem jogo basquetebol.",
+                "Ontem jogue basquetebol.",
+                "Hoje joguei."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Joguei."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Verbe -ar (eu passé) :",
+              "options": ["-ei", "-i", "-ou", "-emos"],
+              "correctAnswers": [0],
+              "explanation": "Joguei en -ei."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Amigos =",
+              "options": ["amis", "parents", "profs", "voisins"],
+              "correctAnswers": [0],
+              "explanation": "Amis."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Erreur :",
+              "options": [
+                "Eu jogo ontem.",
+                "Ontem joguei.",
+                "Eu joguei ontem.",
+                "Ontem eu joguei."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jogo = présent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Futebol =",
+              "options": ["football", "tennis", "rugby", "natation"],
+              "correctAnswers": [0],
+              "explanation": "Football."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Joguei : action",
+              "options": ["terminée", "en cours", "future", "impossible"],
+              "correctAnswers": [0],
+              "explanation": "Prétérit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "J'ai joué :",
+              "options": ["joguei", "jogo", "jogarei", "jogava"],
+              "correctAnswers": [0],
+              "explanation": "Joguei."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Récits d'hier corrects :",
+              "options": [
+                "Ontem eu fui e comi.",
+                "Amanhã eu fui.",
+                "Ontem eu comi e joguei.",
+                "Ontem eu vou."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Verbes au passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ordre courant :",
+              "options": [
+                "Ontem eu fui.",
+                "Fui eu ontem seul",
+                "Amanhã ontem",
+                "Ontem vou"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur + sujet + verbe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Aller puis manger hier :",
+              "options": [
+                "Ontem eu fui a casa e comi.",
+                "Ontem eu vou e como.",
+                "Ontem fui e como.",
+                "Amanhã fui e comi."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fui et comi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "A casa =",
+              "options": ["à la maison", "au cinéma", "à l'école", "au parc"],
+              "correctAnswers": [0],
+              "explanation": "Maison."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "E =",
+              "options": ["et", "ou", "mais", "car"],
+              "correctAnswers": [0],
+              "explanation": "Et."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sport hier :",
+              "options": [
+                "Ontem joguei e descansei.",
+                "Ontem jogo e descanso.",
+                "Ontem joguei e descanso.",
+                "Amanhã joguei."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux passés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Présent dans la liste :",
+              "options": ["vou", "fui", "comi", "joguei"],
+              "correctAnswers": [0],
+              "explanation": "Vou."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mangé et joué hier :",
+              "options": [
+                "Ontem eu comi e joguei.",
+                "Ontem como e jogo.",
+                "Hoje comi e joguei.",
+                "Ontem comi e jogo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comi e joguei."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Avec ontem, les verbes sont :",
+              "options": [
+                "au passé",
+                "au présent",
+                "au futur",
+                "à l'infinitif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérence."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Descansei =",
+              "options": [
+                "je me suis reposé",
+                "j'ai joué",
+                "je suis allé",
+                "j'ai mangé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Descansar au passé."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Verbes compatibles avec ontem :",
+              "options": ["comi", "como", "fui", "vai"],
+              "correctAnswers": [0, 2],
+              "explanation": "Passés comi, fui."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Não comi ontem. =",
+              "options": [
+                "Je n'ai pas mangé hier.",
+                "J'ai mangé hier.",
+                "Je ne mange pas.",
+                "Demain je mange."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Não + passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Não fui à escola ontem.",
+              "options": ["passé de ir", "présent", "futur", "nom"],
+              "correctAnswers": [0],
+              "explanation": "Fui = suis allé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Não joguei ontem. =",
+              "options": [
+                "Je n'ai pas joué hier.",
+                "J'ai joué.",
+                "Je ne joue pas demain.",
+                "Je joue hier."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation passée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Não se place :",
+              "options": [
+                "avant le verbe",
+                "toujours à la fin",
+                "entre sujet et ontem",
+                "nulle part"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avant le verbe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Correct :",
+              "options": [
+                "Ontem não comi carne.",
+                "Ontem não como ontem.",
+                "Amanhã não comi.",
+                "Não ontem comi mal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Não comi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Carne =",
+              "options": ["viande", "poisson", "fruit", "fromage"],
+              "correctAnswers": [0],
+              "explanation": "Viande."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Négation de Ontem comi.",
+              "options": [
+                "Ontem não comi.",
+                "Ontem comi não",
+                "Não ontem como",
+                "Ontem eu não como"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Não comi."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Escola =",
+              "options": ["école", "maison", "plage", "rue"],
+              "correctAnswers": [0],
+              "explanation": "École."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avec ontem, não garde le verbe au :",
+              "options": ["passé", "présent", "futur", "gérondif"],
+              "correctAnswers": [0],
+              "explanation": "Même temps."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Questions passé correctes :",
+              "options": [
+                "Comeste ontem?",
+                "Ontem comeste?",
+                "Comes ontem?",
+                "Comi ontem tu?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Comeste = tu as mangé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comeste =",
+              "options": [
+                "tu as mangé",
+                "j'ai mangé",
+                "il a mangé",
+                "vous avez mangé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2e pers. passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tu es allé hier ?",
+              "options": [
+                "Foste ontem?",
+                "Fui ontem?",
+                "Foi ontem?",
+                "Vou ontem?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Foste."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Jogaste ontem? =",
+              "options": [
+                "Tu as joué hier ?",
+                "Je ai joué ?",
+                "Il a joué ?",
+                "Tu joues ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jogaste."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sim, comi. =",
+              "options": ["Oui, j'ai mangé.", "Non.", "Demain.", "Je mange."],
+              "correctAnswers": [0],
+              "explanation": "Sim + passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Não, não fui. =",
+              "options": [
+                "Non, pas allé.",
+                "Oui allé.",
+                "Je vais.",
+                "Hier futur."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Refus passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tu + jogar passé :",
+              "options": [
+                "Jogaste ontem?",
+                "Jogas ontem?",
+                "Joguei ontem?",
+                "Jogamos ontem tu?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jogaste."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Festa =",
+              "options": ["fête", "classe", "stade", "gare"],
+              "correctAnswers": [0],
+              "explanation": "Fête."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'as-tu mangé hier ?",
+              "options": [
+                "O que comeste ontem?",
+                "O que comes ontem?",
+                "O que comer ontem?",
+                "O que comi ontem tu?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comeste."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Questions passé : formes en",
+              "options": [
+                "passé (comeste, foste)",
+                "subjonctif",
+                "infinitif",
+                "futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indicatif."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bonnes paires eu + passé :",
+              "options": ["fui", "foi", "comi", "jogaste"],
+              "correctAnswers": [0, 2],
+              "explanation": "Eu fui, eu comi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ele ___ ontem. (comer)",
+              "options": ["comi", "comeu", "como", "comemos"],
+              "correctAnswers": [1],
+              "explanation": "Comeu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Erreur : Ela fui ontem.",
+              "options": [
+                "foi au lieu de fui",
+                "ontem faux",
+                "ela faux",
+                "comi manque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ela foi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Nós joguei →",
+              "options": [
+                "Nós jogámos ontem.",
+                "Nós jogo.",
+                "Nós joguei.",
+                "Nós jogas."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nós jogámos."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tu ___ ontem. (ir)",
+              "options": ["fui", "foste", "foi", "vou"],
+              "correctAnswers": [1],
+              "explanation": "Foste."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Eles comeram =",
+              "options": [
+                "ils ont mangé",
+                "je mangé",
+                "tu mangé",
+                "nous mangé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3e pers. pl."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Eu + jogar passé :",
+              "options": ["joguei", "jogaste", "jogou", "jogamos"],
+              "correctAnswers": [0],
+              "explanation": "Joguei."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Você comeu =",
+              "options": ["tu/vous a mangé", "je mangé", "nous", "ils"],
+              "correctAnswers": [0],
+              "explanation": "Comeu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Paire correcte :",
+              "options": ["Eu comi", "Tu comi", "Ele joguei", "Nós fui"],
+              "correctAnswers": [0],
+              "explanation": "Eu comi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ele foi =",
+              "options": [
+                "il est allé",
+                "je suis allé",
+                "tu es allé",
+                "nous allés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3e pers."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Traductions correctes :",
+              "options": [
+                "Ontem eu comi.",
+                "Ontem eu fui.",
+                "Ontem eu vou.",
+                "Amanhã eu comi."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Passé + ontem."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "I went yesterday",
+              "options": [
+                "Eu fui ontem.",
+                "Eu vou ontem.",
+                "Eu foi ontem.",
+                "Eu fui amanhã."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fui ontem."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "She played",
+              "options": [
+                "Ela jogou ontem.",
+                "Ela joguei.",
+                "Ela jogo.",
+                "Ela jogamos."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jogou."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "We ate",
+              "options": [
+                "Nós comemos ontem.",
+                "Nós comi.",
+                "Nós come.",
+                "Nós comemos hoje."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comemos."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "You played",
+              "options": [
+                "Tu jogaste ontem.",
+                "Tu joguei.",
+                "Tu jogas.",
+                "Tu jogaste amanhã."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jogaste."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "I didn't go",
+              "options": [
+                "Não fui ontem.",
+                "Não vou ontem.",
+                "Não foi eu ontem",
+                "Fui não"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Não fui."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "They went",
+              "options": [
+                "Eles foram ontem.",
+                "Eles fui.",
+                "Eles vão ontem.",
+                "Elas fui."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Foram."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Played and ate",
+              "options": [
+                "Ontem joguei e comi.",
+                "Ontem jogo e como.",
+                "Ontem joguei e como.",
+                "Hoje joguei e comi."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux passés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Yesterday =",
+              "options": ["ontem", "hoje", "agora", "logo"],
+              "correctAnswers": [0],
+              "explanation": "Ontem."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Did you eat?",
+              "options": [
+                "Comeste ontem?",
+                "Comes ontem?",
+                "Comi ontem?",
+                "Comeste amanhã?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comeste."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Passés eu du chapitre :",
+              "options": ["fui", "comi", "vou", "jogas"],
+              "correctAnswers": [0, 1],
+              "explanation": "Fui, comi ; vou présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ontem + eu + ir :",
+              "options": ["fui", "vou", "vai", "ir"],
+              "correctAnswers": [0],
+              "explanation": "Fui."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ontem + eu + comer :",
+              "options": ["comi", "como", "comer", "comes"],
+              "correctAnswers": [0],
+              "explanation": "Comi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ontem + eu + jogar :",
+              "options": ["joguei", "jogo", "jogas", "jogou"],
+              "correctAnswers": [0],
+              "explanation": "Joguei."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Marqueur hier :",
+              "options": ["ontem", "hoje", "amanhã", "sempre"],
+              "correctAnswers": [0],
+              "explanation": "Ontem."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Petit récit :",
+              "options": [
+                "Ontem eu fui, comi e joguei.",
+                "Ontem eu vou, como e jogo.",
+                "Amanhã fui comi.",
+                "Hoje ontem fui."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois passés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Não fui ontem. =",
+              "options": [
+                "Pas allé hier.",
+                "Allé hier.",
+                "Vais hier.",
+                "Ir hier."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Subjonctif ici :",
+              "options": [
+                "on n'en utilise pas",
+                "obligatoire",
+                "pour ontem",
+                "pour comi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indicatif seulement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Hoje vs ontem :",
+              "options": [
+                "aujourd'hui / hier",
+                "hier / demain",
+                "demain / hier",
+                "maintenant / jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repères."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif u1 :",
+              "options": [
+                "raconter hier au passé",
+                "parler du futur",
+                "subjonctif",
+                "présent seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Raconter hier."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Marqueurs du passé proche :",
+              "options": ["ontem", "hoje", "anteontem", "amanhã"],
+              "correctAnswers": [0, 2],
+              "explanation": "Ontem ; anteontem."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Anteontem =",
+              "options": ["avant-hier", "hier", "demain", "aujourd'hui"],
+              "correctAnswers": [0],
+              "explanation": "Deux jours avant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ontem à tarde situe :",
+              "options": [
+                "hier après-midi",
+                "demain matin",
+                "aujourd'hui soir",
+                "hier matin seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ontem + à tarde."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "De manhã =",
+              "options": ["le matin", "l'après-midi", "le soir", "la nuit"],
+              "correctAnswers": [0],
+              "explanation": "Matin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À tarde =",
+              "options": ["l'après-midi", "le matin", "le soir", "midi"],
+              "correctAnswers": [0],
+              "explanation": "Après-midi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ontem de manhã eu fui =",
+              "options": [
+                "Hier matin je suis allé.",
+                "Demain matin.",
+                "Ce matin futur.",
+                "Hier soir."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur + fui."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Hoje =",
+              "options": ["aujourd'hui", "hier", "demain", "avant-hier"],
+              "correctAnswers": [0],
+              "explanation": "Aujourd'hui."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Amanhã =",
+              "options": ["demain", "hier", "hoje", "ontem"],
+              "correctAnswers": [0],
+              "explanation": "Demain."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Avec ontem le verbe :",
+              "options": ["au passé", "au présent", "au futur", "sans verbe"],
+              "correctAnswers": [0],
+              "explanation": "Cohérence."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Logo =",
+              "options": ["bientôt", "hier", "jamais", "toujours"],
+              "correctAnswers": [0],
+              "explanation": "Bientôt."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Expressions avec passé :",
+              "options": [
+                "semana passada",
+                "semana que vem",
+                "ontem à noite",
+                "amanhã comi"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Semaine passée ; hier soir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Semana passada =",
+              "options": [
+                "la semaine dernière",
+                "la semaine prochaine",
+                "ce matin",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Semana passada eu joguei. =",
+              "options": [
+                "Semaine dernière j'ai joué.",
+                "Semaine prochaine.",
+                "Aujourd'hui.",
+                "Hier matin seul."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Joguei."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À noite =",
+              "options": [
+                "le soir / la nuit",
+                "le matin",
+                "midi",
+                "après-midi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ontem à noite eu comi. =",
+              "options": [
+                "Hier soir j'ai mangé.",
+                "Demain soir.",
+                "Ce matin.",
+                "Avant-hier matin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ontem à noite."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Semana que vem =",
+              "options": [
+                "la semaine prochaine",
+                "la semaine dernière",
+                "hier",
+                "avant-hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Futur proche."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Passé + semana passada :",
+              "options": [
+                "Semana passada eu fui.",
+                "Semana passada eu vou.",
+                "Semana que vem eu fui.",
+                "Semana passada eu vou."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fui."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Depois =",
+              "options": ["après", "avant", "pendant", "jamais"],
+              "correctAnswers": [0],
+              "explanation": "Après."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Antes =",
+              "options": ["avant", "après", "maintenant", "demain"],
+              "correctAnswers": [0],
+              "explanation": "Avant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Marqueur + passé :",
+              "options": [
+                "Ontem comi.",
+                "Amanhã comi.",
+                "Ontem como.",
+                "Hoje comi hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ontem + comi."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Moments de la journée d'hier :",
+              "options": [
+                "ontem de manhã",
+                "ontem à tarde",
+                "amanhã de manhã",
+                "hoje ontem"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hier matin / aprem."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ontem de manhã eu comi. =",
+              "options": [
+                "Hier matin j'ai mangé.",
+                "Demain matin.",
+                "Hier soir.",
+                "Aujourd'hui."
+              ],
+              "correctAnswers": [0],
+              "explanation": "De manhã."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ontem à tarde joguei. =",
+              "options": [
+                "Hier aprem j'ai joué.",
+                "Hier matin.",
+                "Demain.",
+                "Semaine prochaine."
+              ],
+              "correctAnswers": [0],
+              "explanation": "À tarde."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Meio-dia =",
+              "options": ["midi", "minuit", "soir", "matin"],
+              "correctAnswers": [0],
+              "explanation": "Midi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Cedo =",
+              "options": ["tôt", "tard", "souvent", "jamais"],
+              "correctAnswers": [0],
+              "explanation": "Tôt."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tarde (adv.) =",
+              "options": ["tard", "tôt", "hier", "demain"],
+              "correctAnswers": [0],
+              "explanation": "Tard."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ontem cedo eu fui. =",
+              "options": [
+                "Hier tôt je suis allé.",
+                "Demain tard.",
+                "Aujourd'hui.",
+                "Avant-hier soir."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cedo + fui."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Madrugada =",
+              "options": ["petit matin", "soir", "midi", "après-midi"],
+              "correctAnswers": [0],
+              "explanation": "Très tôt."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "Ontem à tarde eu fui.",
+                "Ontem eu vou à tarde.",
+                "À tarde ontem eu vou.",
+                "Ontem à tarde eu vou."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fui."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sempre =",
+              "options": ["toujours", "jamais", "parfois", "hier"],
+              "correctAnswers": [0],
+              "explanation": "Toujours."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Repères passés :",
+              "options": [
+                "anteontem",
+                "ontem",
+                "depois de amanhã",
+                "hoje futur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Avant-hier et hier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Anteontem eu comi. =",
+              "options": [
+                "Avant-hier j'ai mangé.",
+                "Hier.",
+                "Demain.",
+                "Aujourd'hui."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anteontem."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Plus ancien :",
+              "options": ["anteontem", "ontem", "hoje", "amanhã"],
+              "correctAnswers": [0],
+              "explanation": "Avant-hier avant hier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Anteontem joguei. =",
+              "options": [
+                "Avant-hier j'ai joué.",
+                "Hier j'ai joué.",
+                "Demain.",
+                "Ce matin futur."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Joguei."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Há dois dias =",
+              "options": [
+                "il y a deux jours",
+                "dans deux jours",
+                "hier",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Há um dia =",
+              "options": ["il y a un jour", "demain", "aujourd'hui", "bientôt"],
+              "correctAnswers": [0],
+              "explanation": "Il y a un jour."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Há dois dias eu fui.",
+              "options": [
+                "correct passé",
+                "présent vou",
+                "futur",
+                "subjonctif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fui."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mês passado =",
+              "options": [
+                "mois dernier",
+                "mois prochain",
+                "semaine dernière",
+                "année prochaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mois passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ano passado =",
+              "options": [
+                "année dernière",
+                "année prochaine",
+                "hier",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "An passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Marqueur + passé :",
+              "options": [
+                "Anteontem eu fui.",
+                "Anteontem eu vou.",
+                "Anteontem eu vou amanhã",
+                "Anteontem como"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fui."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Marqueurs avec comi/joguei/fui :",
+              "options": [
+                "ontem",
+                "semana passada",
+                "amanhã seul",
+                "depois futur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ontem ; semana passada."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ontem e anteontem =",
+              "options": [
+                "hier et avant-hier",
+                "demain et hier",
+                "hoje et ontem",
+                "sempre et nunca"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux passés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Hier et avant-hier j'ai mangé.",
+              "options": [
+                "Ontem e anteontem eu comi.",
+                "Ontem e amanhã eu comi.",
+                "Hoje e ontem eu comi.",
+                "Ontem eu como."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Durante =",
+              "options": ["pendant", "après", "avant", "sans"],
+              "correctAnswers": [0],
+              "explanation": "Pendant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ontem durante a tarde eu joguei. =",
+              "options": [
+                "Hier pendant l'aprem j'ai joué.",
+                "Demain matin.",
+                "Futur.",
+                "Avant-hier futur."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durante + joguei."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Nunca comi ontem. sens :",
+              "options": [
+                "Hier je n'ai pas mangé",
+                "Demain je mange",
+                "Futur comi",
+                "Subjonctif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nunca + passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Já =",
+              "options": ["déjà", "jamais", "demain", "hier"],
+              "correctAnswers": [0],
+              "explanation": "Déjà."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ainda =",
+              "options": ["encore", "jamais", "hier", "tôt"],
+              "correctAnswers": [0],
+              "explanation": "Encore."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combinaison correcte :",
+              "options": [
+                "Semana passada eu comi e joguei.",
+                "Semana passada eu como.",
+                "Semana que vem eu comi.",
+                "Ontem eu vou semana passada."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé cohérent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Primeiro =",
+              "options": ["d'abord", "après", "jamais", "hier"],
+              "correctAnswers": [0],
+              "explanation": "D'abord."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Futur proche (pas passé comi) :",
+              "options": [
+                "amanhã",
+                "ontem",
+                "depois de amanhã",
+                "semana passada"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Amanhã ; depois de amanhã."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Amanhã eu vou vs Ontem eu fui :",
+              "options": [
+                "vou futur/présent vs fui passé",
+                "deux passés",
+                "deux subjonctifs",
+                "comi seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repères différents."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ontem comi. / Hoje como.",
+              "options": [
+                "hier passé / aujourd'hui présent",
+                "deux passés",
+                "deux futurs",
+                "subjonctif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hoje vs ontem."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Agora =",
+              "options": ["maintenant", "hier", "demain", "avant-hier"],
+              "correctAnswers": [0],
+              "explanation": "Maintenant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Na semana passada eu fui. =",
+              "options": [
+                "Semaine dernière allé.",
+                "Semaine prochaine.",
+                "Hier matin.",
+                "Demain."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Na semana passada."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "No ano passado joguei. =",
+              "options": [
+                "An dernier j'ai joué.",
+                "An prochain.",
+                "Hier.",
+                "Présent."
+              ],
+              "correctAnswers": [0],
+              "explanation": "An passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Marqueur passé + não :",
+              "options": [
+                "Ontem não comi.",
+                "Ontem não como.",
+                "Amanhã não comi.",
+                "Ontem não vou passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Não comi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Outro dia =",
+              "options": ["l'autre jour", "demain", "toujours", "midi"],
+              "correctAnswers": [0],
+              "explanation": "Passé vague."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Escolhe passé + marqueur :",
+              "options": [
+                "Anteontem fui.",
+                "Amanhã fui ontem",
+                "Hoje fui demain",
+                "Ontem vou."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anteontem + fui."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Depois de ontem (sens courant) :",
+              "options": [
+                "après hier",
+                "avant hier",
+                "hier matin",
+                "demain passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression temporelle."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Heures avec hier :",
+              "options": [
+                "ontem às três",
+                "ontem ao meio-dia",
+                "amanhã às três",
+                "ontem eu vou"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Heure + ontem."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Às três (horas) =",
+              "options": [
+                "à trois heures",
+                "trois jours",
+                "trois semaines",
+                "minuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heure."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ontem às oito eu comi. =",
+              "options": [
+                "Hier à huit j'ai mangé.",
+                "Demain à huit.",
+                "Présent como.",
+                "Futur."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Da manhã =",
+              "options": [
+                "du matin",
+                "du soir",
+                "de l'après-midi",
+                "de minuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Da tarde =",
+              "options": [
+                "de l'après-midi",
+                "du matin",
+                "du soir",
+                "de demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après-midi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Da noite =",
+              "options": ["du soir", "du matin", "de midi", "de demain"],
+              "correctAnswers": [0],
+              "explanation": "Soir."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ontem às dez da manhã eu fui. =",
+              "options": [
+                "Hier dix heures matin allé.",
+                "Demain soir.",
+                "Futur.",
+                "Présent vou."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fui."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Meia (hora) =",
+              "options": ["demi", "midi", "minuit", "trois"],
+              "correctAnswers": [0],
+              "explanation": "Demi-heure."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Marqueur heure + passé :",
+              "options": [
+                "Ontem às sete joguei.",
+                "Ontem às sete jogo.",
+                "Amanhã às sete joguei.",
+                "Ontem às sete vou."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Joguei."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ao meio-dia ontem eu comi. =",
+              "options": [
+                "Hier à midi j'ai mangé.",
+                "Demain midi.",
+                "Présent.",
+                "Futur comi demain."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Meio-dia + comi."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases avec marqueurs hier OK :",
+              "options": [
+                "Ontem depois joguei.",
+                "Ontem primeiro comi.",
+                "Amanhã comi.",
+                "Ontem eu vou."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux passés avec ontem."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Primeiro ... depois avec passé :",
+              "options": [
+                "Primeiro comi, depois joguei ontem.",
+                "Primeiro vou, depois fui ontem.",
+                "Primeiro como ontem.",
+                "Primeiro jogo ontem."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comi puis joguei."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Antes de jantar ontem eu fui. =",
+              "options": [
+                "Avant le dîner hier allé.",
+                "Après demain.",
+                "Présent.",
+                "Subjonctif."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Antes + fui."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Depois do jogo ontem eu comi. =",
+              "options": [
+                "Après le match hier mangé.",
+                "Avant le match.",
+                "Demain.",
+                "Futur vou."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Depois + comi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Entre ontem e hoje :",
+              "options": [
+                "hier et aujourd'hui",
+                "demain et hier",
+                "sempre",
+                "nunca"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux repères."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ontem à tarde e à noite eu joguei. =",
+              "options": [
+                "Hier aprem et soir j'ai joué.",
+                "Demain.",
+                "Présent jogo.",
+                "Futur."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux moments + joguei."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Na segunda-feira passada eu fui. =",
+              "options": [
+                "Lundi dernier allé.",
+                "Lundi prochain.",
+                "Hier seul.",
+                "Demain."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Passado =",
+              "options": ["passé (nom/adj.)", "futur", "présent", "demain"],
+              "correctAnswers": [0],
+              "explanation": "Passado = passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Futuro =",
+              "options": ["futur", "hier", "passé comi", "ontem"],
+              "correctAnswers": [0],
+              "explanation": "Futuro = futur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cohérence : semana passada +",
+              "options": ["comi", "como", "vou", "jogo"],
+              "correctAnswers": [0],
+              "explanation": "Passé comi."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bon couple marqueur + verbe :",
+              "options": [
+                "Ontem fui.",
+                "Semana passada joguei.",
+                "Amanhã comi.",
+                "Hoje fui ontem"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Passé avec marqueur passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Traduire : Hier matin j'ai mangé.",
+              "options": [
+                "Ontem de manhã eu comi.",
+                "Ontem de manhã eu como.",
+                "Amanhã comi.",
+                "Ontem à noite comi seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De manhã + comi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Traduire : Semaine dernière j'ai joué.",
+              "options": [
+                "Semana passada joguei.",
+                "Semana passada jogo.",
+                "Semana que vem joguei.",
+                "Ontem semana jogo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Semana passada + joguei."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Traduire : Avant-hier je suis allé.",
+              "options": [
+                "Anteontem eu fui.",
+                "Anteontem eu vou.",
+                "Ontem eu fui seul",
+                "Amanhã fui."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anteontem + fui."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Traduire : Hier soir je n'ai pas joué.",
+              "options": [
+                "Ontem à noite não joguei.",
+                "Ontem à noite não jogo.",
+                "Amanhã não joguei.",
+                "Ontem de manhã joguei."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Não joguei."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Il y a deux jours j'ai mangé.",
+              "options": [
+                "Há dois dias eu comi.",
+                "Há dois dias eu como.",
+                "Há dois dias eu vou.",
+                "Ontem há dois dias vou."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Há dois dias + comi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Repère incompatible avec comi :",
+              "options": ["amanhã", "ontem", "anteontem", "semana passada"],
+              "correctAnswers": [0],
+              "explanation": "Amanhã = futur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Hoje de manhã vs ontem de manhã :",
+              "options": [
+                "aujourd'hui matin / hier matin",
+                "deux futurs",
+                "deux subjonctifs",
+                "demain / hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hoje vs ontem."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase la plus précise :",
+              "options": [
+                "Ontem às seis da tarde eu fui.",
+                "Ontem eu vou às seis.",
+                "Amanhã às seis fui.",
+                "Ontem às seis vou."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heure + fui."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif u2 :",
+              "options": [
+                "marqueurs de temps + passé",
+                "subjonctif",
+                "futur seul",
+                "présent sans marqueur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueurs de temps."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Marqueurs passés vus :",
+              "options": ["ontem", "anteontem", "amanhã", "logo futur"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ontem ; anteontem."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Semana passada + eu + comer :",
+              "options": ["comi", "como", "comer", "comes"],
+              "correctAnswers": [0],
+              "explanation": "Comi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ontem à tarde + jogar (eu) :",
+              "options": ["joguei", "jogo", "jogas", "jogou"],
+              "correctAnswers": [0],
+              "explanation": "Joguei."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Anteontem + ir (eu) :",
+              "options": ["fui", "vou", "foi", "foste"],
+              "correctAnswers": [0],
+              "explanation": "Fui."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Révision : verbe avec ontem",
+              "options": [
+                "passé (fui, comi, joguei)",
+                "présent (vou, como)",
+                "subjonctif",
+                "infinitif seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toujours passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Petit texte :",
+              "options": [
+                "Ontem de manhã fui; à tarde comi; à noite joguei.",
+                "Ontem vou como jogo.",
+                "Amanhã fui comi.",
+                "Ontem subjonctif."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois moments, trois passés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Há um dia eu comi. =",
+              "options": [
+                "Il y a un jour j'ai mangé.",
+                "Demain je mange.",
+                "Subjonctif.",
+                "Présent como."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Há + passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Nunca uses subjonctif ici :",
+              "options": [
+                "vrai",
+                "faux obligatoire",
+                "pour ontem",
+                "pour comi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indicatif 6e."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mots clés chapitre :",
+              "options": [
+                "ontem, fui, comi, joguei",
+                "subjonctif, futur seul",
+                "hoje seul",
+                "amanhã + comi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire cible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Marqueur + passé : choisis",
+              "options": [
+                "Na semana passada eu joguei.",
+                "Na semana passada eu jogo.",
+                "Semana que vem eu joguei.",
+                "Ontem eu vou."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Semana passada + joguei."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

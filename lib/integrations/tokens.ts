@@ -21,8 +21,8 @@ import {
 /**
  * Lecture du jeton d'un compte, avec rafraîchissement à l'avance.
  *
- * Le point dur : Google fait tourner le `refresh_token` à chaque rafraîchissement
- * et laisse l'ancien vivant une dizaine de minutes. Deux outils du même run qui
+ * Le point dur : un fournisseur OAuth peut faire tourner le `refresh_token` à
+ * chaque rafraîchissement et laisser l'ancien vivant quelques minutes. Deux outils du même run qui
  * rafraîchissent en parallèle écriraient donc deux paires différentes, et la
  * seconde perdrait la trace de la première. D'où deux gardes : un vol en groupe
  * par connexion (une seule requête réseau en cours) et une écriture conditionnée

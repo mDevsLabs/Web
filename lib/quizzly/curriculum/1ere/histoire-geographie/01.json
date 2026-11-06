@@ -1,0 +1,2573 @@
+{
+  "id": "1ere-histoire-geographie-01",
+  "year": "1ere",
+  "subject": "histoire-geographie",
+  "title": "L'Europe face aux révolutions",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "La Révolution française",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Crise de l'Ancien Régime",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels facteurs alimentent la crise financière sous Louis XVI ?",
+              "options": [
+                "Guerres et dépenses de la cour",
+                "Refus total d'impôts par le Tiers État",
+                "Disparition du commerce colonial",
+                "Annulation de la dette par Necker"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Guerres récentes et privilèges fiscaux empêchent l'État de rembourser sa dette."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En quelle année Louis XVI convoque-t-il les États généraux ?",
+              "options": ["1787", "1789", "1791", "1793"],
+              "correctAnswers": [1],
+              "explanation": "Les États généraux se réunissent à Versailles le 5 mai 1789."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle part de la population le clergé représente-t-il environ ?",
+              "options": ["10 %", "25 %", "0,5 %", "50 %"],
+              "correctAnswers": [2],
+              "explanation": "Le clergé compte moins de 1 % des Français mais possède de vastes biens."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel événement symbolise la crise des subsistances en 1789 ?",
+              "options": [
+                "Émeutes du pain à Paris",
+                "Traité de Paris",
+                "Concordat",
+                "Coup du 18 brumaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cherté du pain provoque émeutes et peur de famine dans les villes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qui est contrôleur général des finances en 1789 ?",
+              "options": ["Calonne", "Necker", "Robespierre", "Talleyrand"],
+              "correctAnswers": [1],
+              "explanation": "Necker, populaire, est rappelé pour tenter de résoudre la crise."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de députés le Tiers État envoie-t-il aux États généraux ?",
+              "options": ["300", "578", "800", "1200"],
+              "correctAnswers": [1],
+              "explanation": "Le Tiers État double le nombre de représentants des deux ordres réunis."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle idée des Lumières justifie la contestation des privilèges ?",
+              "options": [
+                "Droit divin absolu",
+                "Séparation des pouvoirs et droits naturels",
+                "Suprématie de l'Église",
+                "Interdiction du commerce"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Voltaire, Montesquieu et Rousseau critiquent l'arbitraire et défendent la souveraineté du peuple."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel ordre paie le taille et la gabelle ?",
+              "options": [
+                "Clergé seul",
+                "Noblesse seule",
+                "Tiers État principalement",
+                "Personne"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les privilèges exemptent largement clergé et noblesse de l'impôt direct."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Où se tient la réunion des États généraux en 1789 ?",
+              "options": ["Paris", "Versailles", "Lyon", "Bordeaux"],
+              "correctAnswers": [1],
+              "explanation": "Louis XVI choisit Versailles, résidence royale proche de Paris."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel cahier de doléances demande l'égalité devant l'impôt ?",
+              "options": [
+                "Cahiers du clergé uniquement",
+                "Cahiers du Tiers État",
+                "Cahiers étrangers",
+                "Aucun cahier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les cahiers du Tiers État réclament la fin des privilèges fiscaux."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "États généraux et prise de la Bastille",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels événements marquent juin-juillet 1789 à Versailles puis Paris ?",
+              "options": [
+                "Serment du Jeu de paume",
+                "Prise de la Bastille",
+                "Coup du 18 brumaire",
+                "Traité de Campoformio"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le serment du 20 juin et la prise de la Bastille le 14 juillet ouvrent la phase révolutionnaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que jurent les députés du Tiers État le 20 juin 1789 ?",
+              "options": [
+                "Fidélité au roi seul",
+                "Ne se séparer qu'après avoir donné une constitution",
+                "Guerre à l'Autriche",
+                "Abandon des impôts"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ils se proclament Assemblée nationale et refusent la dissolution."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qui dirige la prise de la Bastille côté émeutiers ?",
+              "options": [
+                "Napoléon Bonaparte",
+                "Des sans-culottes et milices parisiennes",
+                "L'armée prussienne",
+                "Les Girondins uniquement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La foule parisienne, armée, assiège la forteresse symbole de l'arbitraire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel événement provoque la Grande Peur à l'été 1789 ?",
+              "options": [
+                "Rumeurs de brigands et châteaux brûlés",
+                "Invasion anglaise",
+                "Éruption du Vésuve",
+                "Famine totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans les campagnes, on craint un complot aristocratique contre les récoltes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel ministre est renvoyé peu avant la crise de juillet 1789 ?",
+              "options": ["Necker", "Brienne", "Carnot", "Fouché"],
+              "correctAnswers": [0],
+              "explanation": "Le renvoi de Necker accélère l'agitation parisienne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de prisonniers libère-t-on à la Bastille le 14 juillet ?",
+              "options": ["Aucun", "Sept", "Cent", "Mille"],
+              "correctAnswers": [1],
+              "explanation": "Peu de détenus y sont, mais l'événement a une portée symbolique immense."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qui devient maire de Paris après juillet 1789 ?",
+              "options": ["Marat", "Bailly", "Danton", "Hébert"],
+              "correctAnswers": [1],
+              "explanation": "Bailly, député, est élu maire ; Lafayette commande la garde nationale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle institution naît le 17 juin 1789 ?",
+              "options": [
+                "Convention",
+                "Assemblée nationale",
+                "Directoire",
+                "Consulat"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le Tiers État se déclare Assemblée nationale, rupture avec l'Ancien Régime."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Où les Parisiens cherchent-ils des armes avant la Bastille ?",
+              "options": [
+                "Hôtel des Invalides",
+                "Louvre royal",
+                "Château de Chambord",
+                "Strasbourg"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils s'emparent de fusils aux Invalides puis assaillent la Bastille pour la poudre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle date devient fête nationale en France ?",
+              "options": ["4 août", "14 juillet", "9 thermidor", "21 janvier"],
+              "correctAnswers": [1],
+              "explanation": "Le 14 juillet commémore la prise de la Bastille de 1789."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "4 août et Déclaration des droits",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels textes fondent l'ordre juridique révolutionnaire en 1789 ?",
+              "options": [
+                "Abolition des privilèges du 4 août",
+                "Déclaration des droits de l'homme",
+                "Code civil de 1804",
+                "Concordat de 1801"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La nuit du 4 août et la Déclaration du 26 août posent l'égalité et les droits."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quand l'Assemblée vote-t-elle l'abolition des privilèges ?",
+              "options": [
+                "14 juillet",
+                "4 août",
+                "21 septembre 1792",
+                "18 brumaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La nuit du 4 août 1789 supprime les privilèges féodaux et les titres."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel droit la Déclaration de 1789 proclame-t-elle en premier ?",
+              "options": [
+                "Droit de grève",
+                "Liberté et égalité naturelles",
+                "Vote féminin",
+                "Propriété collective"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les hommes naissent libres et égaux en droits, selon l'article premier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qui rédige en grande partie la Déclaration des droits ?",
+              "options": [
+                "Lafayette avec Mirabeau",
+                "Robespierre seul",
+                "Napoléon",
+                "Louis XVI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lafayette s'inspire des Lumières et de la Déclaration américaine de 1776."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La Déclaration garantit-elle la propriété privée ?",
+              "options": [
+                "Non",
+                "Oui, comme droit inviolable",
+                "Seulement pour le clergé",
+                "Uniquement à Paris"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'article 17 consacre la propriété comme droit naturel et inviolable."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel principe de souveraineté la Déclaration affirme-t-elle ?",
+              "options": [
+                "Souveraineté du roi",
+                "Souveraineté nationale",
+                "Souveraineté papale",
+                "Souveraineté des provinces"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La nation est source du pouvoir politique, non le monarque seul."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle mesure accompagne la suppression du dîme ?",
+              "options": [
+                "Vente des biens du clergé",
+                "Restauration du servage",
+                "Interdiction du culte",
+                "Fermeture des écoles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les biens ecclésiastiques sont nationalisés pour garantir les assignats."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La Déclaration s'applique-t-elle aux colonies esclavagistes sans nuance ?",
+              "options": [
+                "Oui intégralement",
+                "Non, tensions sur esclavage et citoyenneté",
+                "Uniquement en Haïti",
+                "Seulement après 1848"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'universalisme des droits entre en contradiction avec l'esclavage colonial."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel régime politique l'Assemblée prépare-t-elle après 1789 ?",
+              "options": [
+                "Monarchie absolue",
+                "Monarchie constitutionnelle",
+                "Empire",
+                "République directe immédiate"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La Constitution de 1791 encadre le pouvoir royal par une assemblée élue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel droit individuel la Déclaration protège-t-elle explicitement ?",
+              "options": [
+                "Censure préalable",
+                "Liberté d'expression et opinion",
+                "Impunité pénale",
+                "Monopole commercial"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les articles 10 et 11 garantissent liberté d'opinion, parole et presse."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Monarchie constitutionnelle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels traits caractérisent la Constitution de 1791 ?",
+              "options": [
+                "Monarchie limitée",
+                "Census électoral",
+                "Suppression du roi",
+                "Dictature militaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le roi reste chef de l'État mais les citoyens actifs votent selon le cens."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qui peut être citoyen actif selon la Constitution de 1791 ?",
+              "options": [
+                "Tous les habitants",
+                "Hommes payant le cens minimal",
+                "Femmes mariées",
+                "Étrangers seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Seuls les contribuables atteignant un seuil participent au vote."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Où la famille royale tente-t-elle de fuir en juin 1791 ?",
+              "options": ["Varennes", "Bruxelles", "Londres", "Rome"],
+              "correctAnswers": [0],
+              "explanation": "Louis XVI est reconnu à Varennes et ramené à Paris, credibilité entamée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel club politique milite pour la guerre en 1792 ?",
+              "options": [
+                "Feuillants modérés",
+                "Girondins et partisans de la guerre",
+                "Ultras royalistes",
+                "Émigrés seuls"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les Girondins espèrent écraser la contre-révolution à l'étranger."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle assemblée succède à l'Assemblée constituante ?",
+              "options": [
+                "Convention",
+                "Assemblée législative",
+                "Empire",
+                "Sénat consulaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'Assemblée législative gouverne de 1791 à 1792 sous Louis XVI."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel événement parisien le 10 août 1792 provoque la chute du roi ?",
+              "options": [
+                "Insurrection et attaque des Tuileries",
+                "Paix avec l'Angleterre",
+                "Serment du Jeu de paume",
+                "Concordat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le peuple parisien renverse le roi et suspend la monarchie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle fête civique célèbre l'unité en 1790 ?",
+              "options": [
+                "Fête de la Fédération",
+                "Noël",
+                "Pâques",
+                "Armistice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le 14 juillet 1790, la Fête de la Fédération unit roi et nation au Champ-de-Mars."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on les opposants réfractaires au serment civique ?",
+              "options": [
+                "Constitutionnels",
+                "Réfractaires ou non jureurs",
+                "Sans-culottes",
+                "Thermidoriens"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une partie du clergé refuse le serment à la Constitution civile."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle ville devient epicentre des sans-culottes ?",
+              "options": ["Marseille", "Paris", "Nantes", "Toulouse"],
+              "correctAnswers": [1],
+              "explanation": "Les sections parisiennes poussent l'Assemblée vers des mesures radicales."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel statut obtient Louis XVI après Varennes ?",
+              "options": [
+                "Roi absolu",
+                "Roi suspendu puis emprisonné",
+                "Exil libre",
+                "Empereur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La fuite échouée discrédite le roi envers les révolutionnaires."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "République et Terreur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments définissent la Terreur (1793-1794) ?",
+              "options": [
+                "Comité de salut public",
+                "Loi des suspects",
+                "Restauration bourbonienne",
+                "Concordat"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le gouvernement révolutionnaire centralise et réprime les ennemis présumés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quand la Convention proclame-t-elle la République ?",
+              "options": [
+                "14 juillet 1789",
+                "21 septembre 1792",
+                "9 thermidor an II",
+                "18 brumaire an VIII"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Après la défaite de Valmy, la monarchie est abolie le 21 septembre 1792."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel tribunal révolutionnaire juge les ennemis de la patrie ?",
+              "options": [
+                "Cour d'assises",
+                "Tribunal révolutionnaire",
+                "Conseil d'État",
+                "Inquisition"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Créé en 1793, il condamne des milliers de personnes à mort."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qui est guillotiné le 21 janvier 1793 ?",
+              "options": ["Marat", "Louis XVI", "Danton", "Robespierre"],
+              "correctAnswers": [1],
+              "explanation": "Louis Capet est exécuté pour trahison après son procès."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel événement déclenche les massacres de Septembre 1792 ?",
+              "options": [
+                "Invasion prussienne et peur à Paris",
+                "Paix de Basle",
+                "Coup du 18 brumaire",
+                "Traité de Vienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La peur d'une invasion et de complots entraîne des exécutions sommaires."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle loi organise la levée en masse en 1793 ?",
+              "options": [
+                "Loi Le Chapelier",
+                "Décret du 23 août 1793",
+                "Code civil",
+                "Loi Falloux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La nation entière est mobilisée pour la guerre contre les coalisés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qui dirige le Comité de salut public avec Robespierre ?",
+              "options": [
+                "Saint-Just et Couthon entre autres",
+                "Napoléon seul",
+                "Talleyrand",
+                "Metternich"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le comité de douze dirige la République en guerre civile et extérieure."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel calendrier révolutionnaire remplace le calendrier grégorien ?",
+              "options": [
+                "Calendrier républicain",
+                "Calendrier julien",
+                "Calendrier chinois",
+                "Calendrier musulman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il découpé l'année en mois républicains et décades laïques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle ville connaît une révolte fédéraliste contre la Convention ?",
+              "options": ["Lyon", "Brest", "Lille", "Strasbourg"],
+              "correctAnswers": [0],
+              "explanation": "Lyon est assiégée et sévèrement punie en 1793."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel instrument d'exécution symbolise la Terreur ?",
+              "options": [
+                "Échafaud et guillotine",
+                "Potence médiévale",
+                "Fusillade seule",
+                "Exil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La guillotine est présentée comme égalitaire et rapide."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Convention, guerre et Vendée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels fronts menacent la Convention en 1793 ?",
+              "options": [
+                "Coalition européenne",
+                "Guerre civile vendéenne",
+                "Paix universelle",
+                "Isolation totale"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La République combat à la fois l'étranger et l'insurrection royaliste."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle bataille le 20 septembre 1792 arrête les Prussiens ?",
+              "options": ["Valmy", "Waterloo", "Austerlitz", "Iéna"],
+              "correctAnswers": [0],
+              "explanation": "Valmy sauve la jeune République et renforce le moral."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle région soulève l'insurrection catholique et royaliste ?",
+              "options": ["Vendée", "Alsace", "Corse", "Bretagne seule"],
+              "correctAnswers": [0],
+              "explanation": "La Vendée et l'Ouest connaissent une guerre civile sanglante."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel décret abolit l'esclavage en 1794 ?",
+              "options": [
+                "Décret du 16 pluviôse an II",
+                "Concordat",
+                "Loi de 1848",
+                "Traité de Paris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Convention abolit l'esclavage dans les colonies le 4 février 1794."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quels députés siègent à droite de l'hémicycle en 1792 ?",
+              "options": [
+                "Montagnards",
+                "Girondins",
+                "Thermidoriens",
+                "Bonapartistes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les Girondins, modérés, s'opposent aux Montagnards plus radicaux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qui est l'orateur montagnard assassiné en juillet 1793 ?",
+              "options": ["Mirabeau", "Marat", "Lafayette", "Necker"],
+              "correctAnswers": [1],
+              "explanation": "Charlotte Corday tue Marat, icône des sans-culottes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle ville est bombardée pour rébellion contre la Convention ?",
+              "options": ["Toulon", "Nice", "Genève", "Amsterdam"],
+              "correctAnswers": [0],
+              "explanation": "Toulon livre son port aux Anglais avant d'être reprise ; Bonaparte s'y distingue."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel général républicain émerge à Toulon en 1793 ?",
+              "options": [
+                "Napoléon Bonaparte",
+                "Wellington",
+                "Blücher",
+                "Soult seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bonaparte dirige l'artillerie lors de la reprise de Toulon."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle mission confie la Convention à des représentants en province ?",
+              "options": [
+                "Représentants en mission",
+                "Ambassadeurs permanents",
+                "Gouverneurs royaux",
+                "Préfets consulaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils mobilisent, réquisitionnent et répriment au nom de la République."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel prix fixe la loi du maximum en 1793 ?",
+              "options": [
+                "Prix des denrées essentielles",
+                "Salaire des rois",
+                "Taxe sur le sel",
+                "Monopole du tabac"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le maximum tente de lutter contre l'inflation et la disette."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Thermidor et Directoire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels changements suivent le 9 thermidor an II ?",
+              "options": [
+                "Chute de Robespierre",
+                "Fin de la Terreur",
+                "Proclamation de l'Empire",
+                "Restauration immédiate"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Thermidor renverse Robespierre et désamorce la répression."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quand Robespierre est-il guillotiné ?",
+              "options": [
+                "9 thermidor an II",
+                "14 juillet 1789",
+                "18 brumaire",
+                "21 janvier 1793"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le 27 juillet 1794 (9 thermidor), Robespierre et ses partisans sont exécutés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel régime dirige la France de 1795 à 1799 ?",
+              "options": [
+                "Directoire",
+                "Consulat",
+                "Restauration",
+                "Monarchie de Juillet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Directoire remplace la Convention thermidorienne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de directeurs composent le exécutif du Directoire ?",
+              "options": ["Un", "Cinq", "Dix", "Trois"],
+              "correctAnswers": [1],
+              "explanation": "Cinq directeurs tournent au pouvoir avec deux chambres législatives."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel coup d'État du Directoire favorise Bonaparte en 1799 ?",
+              "options": [
+                "18 fructidor an V",
+                "18 brumaire",
+                "10 août",
+                "Coup de Mainz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fructidor purge les royalistes avant l'avènement du général."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle classe sociale profite des biens nationaux ?",
+              "options": [
+                "Bourgeoisie et paysans aisés",
+                "Clergé uniquement",
+                "Noblesse émigrée",
+                "Étrangers seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vente des biens ecclésiastiques enrichit une partie de la bourgeoisie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle insurrection parisienne de 1795 exige du pain et de la Constitution ?",
+              "options": [
+                "Insurrection du 13 vendémiaire",
+                "Prise de la Bastille",
+                "Commune de 1871",
+                "Journée du 6 février"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bonaparte tire sur les manifestants royalistes avec des boulets."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel trait caractérise la société thermidorienne ?",
+              "options": [
+                "Réaction modérée et luxe relatif",
+                "Terreur maximale",
+                "Retour du servage",
+                "Guerre civile vendéenne relancée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les Thermidoriens ferment les clubs extrêmes et rouvrent les salons."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle campagne d'Italie lance Bonaparte en 1796 ?",
+              "options": [
+                "Campagne d'Italie victorieuse",
+                "Retraite de Russie",
+                "Guerre de Crimée",
+                "Guerre de 1870"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bonaparte bat les Autrichiens et impose des traités avant le coup d'État."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel problème économique persiste sous le Directoire ?",
+              "options": [
+                "Inflation et assignats dépréciés",
+                "Pénurie d'or uniquement",
+                "Absence de dette",
+                "Surplus agricole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monnaie papier perd confiance malgré les réformes."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "18 brumaire et Consulat",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels faits marquent le coup d'État du 18 brumaire an VIII ?",
+              "options": [
+                "Dissolution du Directoire",
+                "Instauration du Consulat",
+                "Restauration des Bourbons",
+                "Congrès de Vienne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bonaparte renverse le Directoire et devient premier consul."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle date grégorienne correspond au 18 brumaire an VIII ?",
+              "options": [
+                "9 novembre 1799",
+                "14 juillet 1789",
+                "21 mars 1815",
+                "2 décembre 1851"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le 9 novembre 1799, Bonaparte prend le pouvoir à Paris."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qui aide Bonaparte dans le complot du 18 brumaire ?",
+              "options": [
+                "Sieyès et Talleyrand entre autres",
+                "Louis XVIII",
+                "Metternich",
+                "Garibaldi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des politiques et généraux craignent l'anarchie et choisissent Bonaparte."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel texte de 1801 réorganise le culte catholique ?",
+              "options": [
+                "Concordat",
+                "Déclaration des droits",
+                "Loi Falloux",
+                "Acte additionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Napoléon réconcilie l'Église avec l'État après la Révolution."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel code unifie le droit civil en 1804 ?",
+              "options": [
+                "Code civil",
+                "Code pénal uniquement",
+                "Loi d'exception",
+                "Charte de 1814"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Code Napoléon diffuse les acquis révolutionnaires de propriété et égalité civile."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de consuls au début du Consulat ?",
+              "options": ["Trois", "Cinq", "Un seul dès 1799", "Dix"],
+              "correctAnswers": [0],
+              "explanation": "Bonaparte, Cambacérès et Lebrun sont consuls, Bonaparte dominant vite."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle institution consultative rédige le Code civil ?",
+              "options": [
+                "Conseil d'État",
+                "États généraux",
+                "Sénat conservateur seul",
+                "Commune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des juristes codifient la loi sous direction napoléonienne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel plébiscite consacre Bonaparte consul à vie en 1802 ?",
+              "options": [
+                "Oui, plébiscite favorable",
+                "Non, élection parlementaire",
+                "Référendum rejeté",
+                "Sondage local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le plébiscite légitime l'autorité personnelle de Napoléon."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle mesure administrative perdure après l'Empire ?",
+              "options": [
+                "Préfets et départements",
+                "Parlements d'Ancien Régime",
+                "Provinces féodales",
+                "Intendants uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La centralisation départementale est un héritage révolutionnaire consolidé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel titre Bonaparte prend-il en 1804 ?",
+              "options": [
+                "Empereur des Français",
+                "Roi de France",
+                "Duc d'Europe",
+                "Président éternel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Sénat proclame Napoléon empereur, couronné à Notre-Dame."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Empire et diffusion des idées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels héritages révolutionnaires l'Empire propage-t-il en Europe ?",
+              "options": [
+                "Égalité civile et Code civil",
+                "Abolition des privilèges locaux",
+                "Restauration du servage",
+                "Suppression de toute laïcité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Napoléon exporte réformes administratives et droit écrit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle bataille navale de 1805 affaiblit la flotte française ?",
+              "options": ["Trafalgar", "Valmy", "Waterloo", "Lützen"],
+              "correctAnswers": [0],
+              "explanation": "Nelson détruit la flotte franco-espagnole, bloquant l'invasion anglaise."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle bataille terrestre de 1805 contre Autriche et Russie ?",
+              "options": ["Austerlitz", "Borodino", "Leipzig", "Marengo"],
+              "correctAnswers": [0],
+              "explanation": "Austerlitz consacre la domination napoléonienne en Europe centrale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel blocus économique vise l'Angleterre ?",
+              "options": [
+                "Blocus continental",
+                "Traité de Paris",
+                "Zollverein",
+                "Mercantilisme espagnol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Napoléon interdit le commerce avec la Grande-Bretagne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle défaite en 1812 marque un tournant ?",
+              "options": [
+                "Campagne de Russie",
+                "Bataille de Sedan",
+                "Guerre de Crimée",
+                "Paix d'Amiens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La retraite de Russie décime la Grande Armée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle bataille finale de 1815 renverse Napoléon ?",
+              "options": ["Waterloo", "Iéna", "Wagram", "Essling"],
+              "correctAnswers": [0],
+              "explanation": "Wellington et Blücher battent Napoléon en Belgique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel congrès réorganise l'Europe en 1815 ?",
+              "options": [
+                "Congrès de Vienne",
+                "Congrès de Berlin",
+                "Congrès de Paris 1919",
+                "Traité de Rome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les vainqueurs restaurent l'ordre monarchique et équilibre des puissances."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel principe légitime les Bourbons restaurés ?",
+              "options": [
+                "Droit divin et charte octroyée",
+                "République universelle",
+                "Dictature du prolétariat",
+                "Confédération germanique libre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Louis XVIII règne sous une monarchie constitutionnelle octroyée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle idée révolutionnaire survit malgré la Restauration ?",
+              "options": [
+                "Nationalisme et souveraineté populaire",
+                "Servage",
+                "Anciens privilèges féodaux",
+                "Interdiction de la propriété"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les peuples européens gardent le goût de l'autodétermination."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel empire napoléonien est créé en 1804 côté Allemagne ?",
+              "options": [
+                "Confédération du Rhin",
+                "Empire austro-hongrois",
+                "Zollverein",
+                "Saint-Empire restauré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Confédération du Rhin lie des États allemands à la France."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan de la Révolution française",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels acquis durables la Révolution laisse-t-elle en France ?",
+              "options": [
+                "Égalité devant la loi",
+                "Division en départements",
+                "Rétablissement du servage",
+                "Restauration des trois ordres"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La Révolution supprime les privilèges et modernise l'administration."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de régimes politiques entre 1789 et 1799 ?",
+              "options": [
+                "Plusieurs, dont monarchie, République, Directoire",
+                "Un seul empire",
+                "Uniquement la Terreur",
+                "Aucun changement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La décennie révolutionnaire expérimente plusieurs formes de gouvernement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle mémoire divisée existe sur 1789 au XIXe siècle ?",
+              "options": [
+                "Républicains vs royalistes",
+                "Unanimisme total",
+                "Absence de débat",
+                "Oubli complet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'exécution du roi et la Terreur alimentent des récits opposés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel impact démographique la guerre civile vendéenne a-t-elle ?",
+              "options": [
+                "Lourdes pertes humaines",
+                "Aucune victime",
+                "Doublement de population",
+                "Exode vers Amérique uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les combats et répressions déciment l'Ouest de la France."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle innovation sociale reste inachevée en 1790-1790s ?",
+              "options": [
+                "Égalité politique des femmes",
+                "Suppression des titres nobiliaires",
+                "Abolition des corporations",
+                "Système métrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Olympe de Gouges revendique des droits, mais le vote reste masculin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel système de mesures la Révolution généralise-t-elle ?",
+              "options": [
+                "Système métrique",
+                "Mesures féodales",
+                "Pied anglais",
+                "Livre romaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mètre et le kilogramme unifient les poids et mesures."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle exportation idéologique inquiète les monarchies ?",
+              "options": [
+                "Droits de l'homme et nationalisme",
+                "Divin droit",
+                "Alliance dynastique",
+                "Mercantilisme exclusif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les souverains craignent la contagion révolutionnaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel groupe social monte politiquement avec la Révolution ?",
+              "options": [
+                "Bourgeoisie et notables",
+                "Noblesse d'épée seule",
+                "Clergé réfractaire",
+                "Paysans sans droits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accès aux mandats et aux biens nationaux favorise la bourgeoisie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle institution scolaire la Révolution amorce-t-elle ?",
+              "options": [
+                "Écoles centrales laïques",
+                "Universités médiévales seules",
+                "Écoles privées interdites",
+                "Aucune réforme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La laïcisation et l'instruction publique sont envisagées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel lien la Révolution entretient-elle avec 1848 ?",
+              "options": [
+                "Modèle et peur révolutionnaire",
+                "Rupture totale sans mémoire",
+                "Fin du libéralisme",
+                "Suppression du nationalisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1848 s'inspire de 1789 tout en réagissant à l'ordre de 1815."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "L'Europe en 1848",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Europe après le Congrès de Vienne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels principes le Congrès de Vienne (1815) promeut-il ?",
+              "options": [
+                "Équilibre des puissances",
+                "Restauration monarchique",
+                "République universelle",
+                "Autodétermination nationale systématique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les vainqueurs veulent stabilité et légitimité dynastique, pas le nationalisme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qui domine la diplomatie au Congrès de Vienne ?",
+              "options": ["Metternich", "Bismarck", "Garibaldi", "Lenine"],
+              "correctAnswers": [0],
+              "explanation": "Metternich, chancelier autrichien, symbolise la conservatisme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle alliance conserve l'ordre après 1815 ?",
+              "options": [
+                "Sainte-Alliance",
+                "OTAN",
+                "Triple-Entente",
+                "Pacte de Varsovie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Russie, Autriche et Prusse s'engagent contre les révolutions."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel principe ignore les aspirations nationales en Italie ?",
+              "options": [
+                "Découpage imposé par les puissances",
+                "Unification immédiate",
+                "République romaine durable",
+                "Confédération libre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Italie reste morcelée entre royaumes et Autriche."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle entité allemande existe après 1815 ?",
+              "options": [
+                "Confédération germanique de 39 États",
+                "Empire unifié",
+                "République fédérale",
+                "Protectorat français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Confédération remplace le Saint-Empire sous présidence autrichienne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel régime politique en France après 1815 ?",
+              "options": [
+                "Restauration bourbonienne",
+                "Deuxième République",
+                "Empire napoléonien III immédiat",
+                "Commune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Louis XVIII revient, puis Charles X jusqu'à 1830."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle révolution en France en 1830 ?",
+              "options": [
+                "Trois Glorieuses",
+                "Commune de Paris",
+                "Révolution de Février 1848",
+                "Mai 68"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Charles X est renversé au profit de Louis-Philippe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel régime Louis-Philippe incarne-t-il ?",
+              "options": [
+                "Monarchie de Juillet bourgeoise",
+                "Absolutisme",
+                "République sociale",
+                "Empire autoritaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le roi des Français gouverne avec une élite censitaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle idéologie progresse dans les années 1830-1840 ?",
+              "options": [
+                "Libéralisme et nationalisme",
+                "Absolutisme pur",
+                "Feudalisme",
+                "Colonialisme seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pression pour constitutions, parlements et unité nationale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel mouvement ouvrier émerge avant 1848 ?",
+              "options": [
+                "Chartisme en Grande-Bretagne",
+                "Ludisme uniquement",
+                "Syndicalisme légal en France",
+                "Communisme de gouvernement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les Chartistes réclament le suffrage universel masculin."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Crise de 1847-1848 en France",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels moteurs poussent à la révolution de Février 1848 en France ?",
+              "options": [
+                "Crise économique et chômage",
+                "Campagne pour le suffrage élargi",
+                "Victoire de Napoléon III en 1852 immédiate",
+                "Paix avec la Prusse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Récession, disette et banquet réformiste déclenchent l'insurrection parisienne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel événement déclenche les émeutes à Paris en février 1848 ?",
+              "options": [
+                "Interdiction du banquet réformiste",
+                "Traité de Francfort",
+                "Guerre de Crimée",
+                "Sédan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guizot interdit le banquet, la foule descend dans la rue."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quand Louis-Philippe abdique-t-il ?",
+              "options": [
+                "24 février 1848",
+                "14 juillet 1789",
+                "2 décembre 1851",
+                "4 septembre 1870"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le roi s'exile en Grande-Bretagne après la chute du régime."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel régime succède à la monarchie de Juillet ?",
+              "options": [
+                "Deuxième République",
+                "Première République",
+                "Troisième République",
+                "Empire immédiat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gouvernement provisoire proclame la République le 24 février."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel droit le gouvernement provisoire proclame-t-il ?",
+              "options": [
+                "Suffrage universel masculin",
+                "Suffrage féminin",
+                "Censure renforcée",
+                "Monarchie héréditaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élection à l'Assemblée constituante se fait au suffrage universel masculin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle mesure sociale symbolique en 1848 ?",
+              "options": [
+                "Ateliers nationaux",
+                "Code du travail de 1910",
+                "Sécurité sociale",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ateliers nationaux emploient les chômeurs parisiens."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel ministre libéral puis conservateur gouverne avant février ?",
+              "options": [
+                "Guizot",
+                "Thiers seul en 1848",
+                "Lamartine en 1830",
+                "Cavaignac en 1870"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guizot refuse l'élargissement du corps électoral."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel poète républicain est au gouvernement provisoire ?",
+              "options": [
+                "Lamartine",
+                "Hugo en 1848 au pouvoir",
+                "Musset",
+                "Rimbaud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lamartine incarne la République modérée au début de 1848."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle classe sociale participe aux barricades ?",
+              "options": [
+                "Ouvriers, étudiants, petite bourgeoisie",
+                "Noblesse uniquement",
+                "Armée seule",
+                "Paysans des Landes seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coalition urbaine hétérogène renverse le roi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel drapeau flotte sur l'Hôtel de Ville en février 1848 ?",
+              "options": [
+                "Tricolore républicain",
+                "Drapeau blanc royal",
+                "Drapeau rouge seul imposé",
+                "Union jack"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lamartine affirme le tricolore contre le drapeau rouge social."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Révolutions en Allemagne et à Vienne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Où éclatent des révolutions libérales au printemps 1848 ?",
+              "options": [
+                "Berlin et Francfort",
+                "Vienne et Budapest",
+                "Londres uniquement",
+                "Moscou"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mars-avril 1848 voit des insurrections dans l'Empire germanique et habsbourgeois."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle demande commune aux parlements de Francfort ?",
+              "options": [
+                "Constitution libérale et unité allemande",
+                "Restauration du Saint-Empire",
+                "Annexion à la France",
+                "Monarchie papale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les libéraux veulent un État-nation allemand avec droits civiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qui mène l'insurrection de mars 1848 à Berlin ?",
+              "options": [
+                "Population civile et soldats",
+                "Napoléon III",
+                "Garibaldi seul",
+                "Czar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des barricades forcent le roi prussien à concessions."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel empereur autrichien abdique en 1848 ?",
+              "options": [
+                "Ferdinand I",
+                "François-Joseph immédiatement en mars",
+                "Charles I",
+                "Joseph II"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ferdinand cède le trône à François-Joseph après les troubles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel ministre autrichien symbole de la réaction est chassé ?",
+              "options": ["Metternich", "Bismarck", "Cavour", "Palmerston"],
+              "correctAnswers": [0],
+              "explanation": "Metternich fuit Vienne le 13 mars 1848."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle assemblée nationale allemande se réunit à Francfort ?",
+              "options": [
+                "Assemblée de Francfort",
+                "Reichstag de 1871",
+                "Diète de Ratisbonne seule",
+                "Conseil de l'Europe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des députés libéraux rédigent une constitution impériale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel titre propose-t-on au roi de Prusse en 1849 ?",
+              "options": [
+                "Empereur d'Allemagne",
+                "Pape laïque",
+                "Sultan",
+                "Tsar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frédéric-Guillaume IV refuse la couronne « de la rue »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle ville hongroise réclame l'autonomie contre Vienne ?",
+              "options": [
+                "Budapest et la Diète hongroise",
+                "Prague seule",
+                "Cracovie",
+                "Varsovie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kossuth mène le mouvement pour l'indépendance hongroise."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel conflit éclate à Prague en juin 1848 ?",
+              "options": [
+                "Insurrection tchèque contre Autriche",
+                "Guerre franco-prussienne",
+                "Siège de Paris",
+                "Bataille de Solférino"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'empire réprime l'insurrection pan-slave à Prague."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel principe nationaliste heurte l'Empire des Habsbourg ?",
+              "options": [
+                "Multinationalité vs autonomies",
+                "Unicité linguistique allemande",
+                "Colonisation africaine",
+                "Isolation britannique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tchèques, Hongrois, Italiens contestent la domination viennoise."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Printemps des peuples en Italie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels territoires italiens connaissent des soulèvements en 1848 ?",
+              "options": [
+                "Lombardie-Vénétie",
+                "Sicile et Naples",
+                "Irlande",
+                "Scandinavie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'Autriche affaiblie et les royaumes du Sud voient des révoltes libérales."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Contre qui les Lombards se soulèvent-ils en mars 1848 ?",
+              "options": [
+                "Domination autrichienne",
+                "Empire ottoman",
+                "France uniquement",
+                "Espagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milan et Venise réclament l'indépendance vis-à-vis de Vienne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel roi du Piémont-Sardaigne intervient en 1848 ?",
+              "options": [
+                "Charles-Albert",
+                "Victor-Emmanuel II en 1860 seul",
+                "Mussolini",
+                "Berlusconi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Charles-Albert guerre contre l'Autriche pour l'unité partielle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle bataille défait Charles-Albert en 1848 ?",
+              "options": ["Custoza", "Waterloo", "Caporetto", "Solférino 1859"],
+              "correctAnswers": [0],
+              "explanation": "Les Autrichiens reprennent le contrôle du nord de l'Italie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle république naît brièvement à Rome en 1849 ?",
+              "options": [
+                "République romaine de Mazzini",
+                "République napoléonienne",
+                "République de Venise 1848 seule",
+                "République sociale de 1871"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mazzini et Garibaldi proclament une république anti-cléricale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qui défend Rome contre les Français en 1849 ?",
+              "options": ["Garibaldi", "Cavour seul", "Metternich", "Bismarck"],
+              "correctAnswers": [0],
+              "explanation": "Garibaldi résiste avant la reprise par l'armée française."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi la France envoie-t-elle des troupes à Rome ?",
+              "options": [
+                "Rétablir le pape à demande de Pie IX",
+                "Unifier l'Allemagne",
+                "Coloniser l'Afrique",
+                "Aider Garibaldi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Napoléon III soutient le Saint-Siège contre les républicains."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel pape libéral puis conservateur en 1848 ?",
+              "options": ["Pie IX", "Jean XXIII", "Clément XIV", "Léon XIII"],
+              "correctAnswers": [0],
+              "explanation": "Pie IX accorde d'abord des réformes puis rejette le nationalisme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle île sicilienne proclame une constitution en janvier 1848 ?",
+              "options": ["Sicile", "Sardaigne", "Corse", "Malte"],
+              "correctAnswers": [0],
+              "explanation": "La Sicile se révolte contre Naples avant la répression."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel leader républicain italien symbolise l'unité ?",
+              "options": [
+                "Mazzini",
+                "Metternich",
+                "William I",
+                "Franz Joseph seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mazzini promeut la république unitaire et la jeunesse italienne."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Mouvement ouvrier et social",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles doctrines circulent en 1848 en Europe ?",
+              "options": [
+                "Socialisme utopique",
+                "Communisme de Marx et Engels",
+                "Libéralisme laissez-faire pur sans critique",
+                "Absolutisme divin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Blanqui, Proudhon et le Manifeste communiste nourrissent le débat social."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel texte Marx publie-t-il en 1848 ?",
+              "options": [
+                "Manifeste du Parti communiste",
+                "Das Kapital complet",
+                "L'Origine des espèces",
+                "Le Contrat social"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Manifeste appelle les prolétaires à l'unité internationale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle journée parisienne de juin 1848 opposait classes ?",
+              "options": [
+                "Journées de Juin",
+                "Prise de la Bastille",
+                "Commune de 1871",
+                "Nuit du 4 août"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'armée écrase l'insurrection ouvrière contre la fermeture des ateliers."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qui dirige la répression des journées de Juin ?",
+              "options": [
+                "Cavaignac",
+                "Lamartine seul",
+                "Louis-Napoléon en 1848",
+                "Bismarck"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cavaignac impose l'ordre bourgeois républicain."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle revendication ouvrière en 1848 en France ?",
+              "options": [
+                "Droit au travail",
+                "Vote des femmes accordé",
+                "Abolition de la propriété immédiate",
+                "Retour au servage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gouvernement provisoire proclame le droit au travail, difficile à appliquer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel courant social français critique la propriété ?",
+              "options": ["Proudhon", "Guizot", "Metternich", "Cavour"],
+              "correctAnswers": [0],
+              "explanation": "Proudhon déclare que la propriété, c'est le vol."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle organisation ouvrière naît en Grande-Bretagne avant 1848 ?",
+              "options": [
+                "Chartistes",
+                "Luddites seulement en 1848",
+                "Syndicats CGT",
+                "Internationale permanente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pétitions chartistes demandent le vote pour les ouvriers."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel effet la répression de Juin a-t-elle sur la République ?",
+              "options": [
+                "Affaiblissement de l'aile socialiste",
+                "Victoire immédiate du socialisme",
+                "Union sacrée ouvriers-bourgeois",
+                "Abdication de Cavaignac"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La bourgeoisie républicaine se détache du prolétariat parisien."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle classe domine l'Assemblée élue en avril 1848 ?",
+              "options": [
+                "Bourgeoisie modérée et conservatrice",
+                "Ouvriers majoritaires",
+                "Paysans sans voix",
+                "Noblesse d'Ancien Régime"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le suffrage universel masculin élit surtout des notables modérés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel mot décrit la peur des propriétaires face aux barricades ?",
+              "options": [
+                "Peur rouge ou peur sociale",
+                "Peur bleue",
+                "Optimisme libéral",
+                "Indifférence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les révolutions de 1848 inquiètent les élites sur l'ordre social."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Hongrie et Empire des Habsbourg",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels conflits fragmentent l'Empire habsbourgeois en 1848-1849 ?",
+              "options": [
+                "Guerre d'indépendance hongroise",
+                "Tensions nationalistes multiples",
+                "Unification pacifique immédiate",
+                "Colonisation asiatique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hongrois, Croates, Autrichiens et Slaves se disputent le pouvoir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qui dirige le gouvernement hongrois révolutionnaire ?",
+              "options": ["Lajos Kossuth", "Garibaldi", "Marx", "Palmerston"],
+              "correctAnswers": [0],
+              "explanation": "Kossuth proclame l'indépendance vis-à-vis des Habsbourg."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel jeune empereur reprend le trône en 1848 ?",
+              "options": [
+                "François-Joseph",
+                "Ferdinand I reste",
+                "Charles I",
+                "Joseph II"
+              ],
+              "correctAnswers": [0],
+              "explanation": "François-Joseph règne jusqu'en 1916 et réprime les révoltes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle aide la Russie apporte-t-elle à l'Autriche en 1849 ?",
+              "options": [
+                "Armée du tsar pour écraser la Hongrie",
+                "Flotte britannique",
+                "Légion étrangère française",
+                "Aucune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nicolas Ier intervient pour sauver la monarchie des Habsbourg."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle ville hongroise voit des combats décisifs en 1849 ?",
+              "options": ["Buda et Pest", "Vienne seule", "Prague", "Berlin"],
+              "correctAnswers": [0],
+              "explanation": "La capitale hongroise résiste avant la capitulation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel statut la Hongrie obtient-elle après 1867 ?",
+              "options": [
+                "Compromis austro-hongrois (Ausgleich)",
+                "Indépendance totale en 1849",
+                "Annexion à la Prusse",
+                "Protectorat ottoman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus tard, la Hongrie partage la couronne avec l'Autriche."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel peuple de l'Empire craint la domination hongroise ?",
+              "options": [
+                "Croates et Slaves du Sud",
+                "Anglais",
+                "Espagnols",
+                "Suédois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les nationalités rivalisent au sein de l'empire multinational."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle répression suit la défaite hongroise de 1849 ?",
+              "options": [
+                "Exécutions et martyr de généraux",
+                "Amnistie générale immédiate",
+                "Indépendance reconnue",
+                "Annexion à la France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'empire exemplairement punit les leaders révolutionnaires."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel ministre autrichien libéral éphémère en 1848 ?",
+              "options": [
+                "Stadion et réformateurs",
+                "Metternich resté",
+                "Bismarck",
+                "Cavour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des réformes constitutionnelles sont tentées puis annulées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi l'Empire habsbourgeois est-il vulnérable en 1848 ?",
+              "options": [
+                "Diversité nationale et crise agricole",
+                "Unicité linguistique",
+                "Absence de paysans",
+                "Isolation totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nationalismes et mauvaises récoltes fragilisent Vienne."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "République et élections en France",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels événements marquent la France de 1848-1851 ?",
+              "options": [
+                "Élection de l'Assemblée constituante",
+                "Montée de Louis-Napoléon Bonaparte",
+                "Restauration de Charles X",
+                "Commune de Paris 1871"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le suffrage universel ouvre la voie au neveu de Napoléon."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quand les électeurs français votent-ils pour la Constituante ?",
+              "options": ["Avril 1848", "Février 1789", "1871", "1919"],
+              "correctAnswers": [0],
+              "explanation": "Premier grand scrutin au suffrage universel masculin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel pourcentage approximatif de voix les modérés obtiennent-ils ?",
+              "options": [
+                "Majorité conservatrice rurale",
+                "100 % socialiste",
+                "0 %",
+                "Uniquement Paris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La campagne et le clergé influencent le vote paysan."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel neveu de Napoléon est élu président en 1848 ?",
+              "options": [
+                "Louis-Napoléon Bonaparte",
+                "Jérôme Bonaparte",
+                "Napoléon Ier",
+                "Napoléon IV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il gagne grâce à la popularité bonapartiste en décembre 1848."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle durée fixe la Constitution pour le mandat présidentiel ?",
+              "options": ["Quatre ans", "Sept ans", "À vie immédiate", "Un an"],
+              "correctAnswers": [0],
+              "explanation": "La Constitution de 1848 limite le mandat, contourné par le coup de 1851."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle loi restreint les clubs ouvriers en 1848 ?",
+              "options": [
+                "Lois contre les associations subversives",
+                "Loi Falloux",
+                "Loi sur la presse uniquement en 1881",
+                "Code civil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Assemblée modérée freine l'activité révolutionnaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel ministre de l'Intérieur réprime les journées de Juin ?",
+              "options": [
+                "Cavaignac",
+                "Lamartine",
+                "Ledru-Rollin seul au pouvoir",
+                "Thiers en 1848 président"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cavaignac gouverne avec l'armée contre l'insurrection."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle date le coup d'État de Louis-Napoléon ?",
+              "options": [
+                "2 décembre 1851",
+                "18 brumaire",
+                "9 thermidor",
+                "24 février 1848"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le prince-président dissout l'Assemblée et restaure l'autorité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel régime succède au coup de 1851 ?",
+              "options": [
+                "Second Empire en 1852",
+                "Troisième République",
+                "Restauration",
+                "Commune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plébiscite et proclamation impériale en 1852."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel bilan pour la Deuxième République ?",
+              "options": [
+                "Courte durée et échec des modérés",
+                "Siècle de stabilité",
+                "Victoire ouvrière durable",
+                "Retour à l'Ancien Régime"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entre 1848 et 1852, la République n'unifie pas les camps."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Répression et fin du printemps des peuples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Comment les révolutions de 1848 se terminent-elles en général ?",
+              "options": [
+                "Répression militaire",
+                "Retour de monarchies renforcées",
+                "Unification immédiate de l'Europe",
+                "Disparition du nationalisme"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "D'ici 1849-1850, l'ordre conservateur reprend le dessus."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quand la Hongrie capitule-t-elle face aux Habsbourg et Russes ?",
+              "options": ["1849", "1848 seulement", "1866", "1918"],
+              "correctAnswers": [0],
+              "explanation": "L'indépendance hongroise est écrasée à l'été 1849."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel sort pour l'Assemblée de Francfort ?",
+              "options": [
+                "Dissolution sans unification",
+                "Proclamation d'empire durable",
+                "Annexion à l'Autriche",
+                "Fusion avec la France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le projet libéral allemand échoue faute de force armée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle république romaine tombe en 1849 ?",
+              "options": [
+                "République de Mazzini",
+                "République de Venise seule en 1848",
+                "République de Hambourg",
+                "Commune de Paris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les troupes françaises restaurent le pouvoir pontifical."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel roi prussien refuse la couronne impériale ?",
+              "options": [
+                "Frédéric-Guillaume IV",
+                "Guillaume I en 1848",
+                "Frédéric II",
+                "Wilhelm II"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il rejette une couronne offerte par des civils libéraux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle métaphore historiographique désigne 1848 ?",
+              "options": [
+                "Printemps des peuples",
+                "Automne des empires",
+                "Hiver napoléonien",
+                "Été de la Terreur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les historiens parlent d'un réveil national libéral temporaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel pays évite une révolution majeure en 1848 ?",
+              "options": [
+                "Grande-Bretagne",
+                "Empire autrichien",
+                "France",
+                "Allemagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le régime britannique absorbe partiellement les revendications chartistes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle armée intervient à Rome en 1849 ?",
+              "options": [
+                "Armée française",
+                "Armée prussienne",
+                "Flotte russe",
+                "Légion étrangère seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Napoléon III soutient Pie IX contre les républicains."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel leader républicain français est exilé après l'échec ?",
+              "options": [
+                "Ledru-Rollin et socialistes",
+                "Guizot",
+                "Metternich",
+                "Bismarck"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs républicains quittent la France après 1849."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle leçon les conservateurs tirent-ils de 1848 ?",
+              "options": [
+                "Renforcer l'armée et alliances",
+                "Accorder suffrage universel partout",
+                "Abandonner monarchies",
+                "Supprimer l'Église"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Sainte-Alliance et les interventions militaires se justifient."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Conséquences à long terme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles conséquences durables 1848 laisse-t-il en Europe ?",
+              "options": [
+                "Question nationale restée brûlante",
+                "Expérience du suffrage universel masculin en France",
+                "Fin de toute monarchie",
+                "Unification allemande en 1849"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "1848 échoue politiquement mais transforme les mentalités."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle unification italienne réussit après 1859 ?",
+              "options": [
+                "Rôle de Cavour et Garibaldi",
+                "Unité en 1848 seulement",
+                "Restauration autrichienne durable",
+                "Division permanente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échec de 1848 prépare les stratégies de Cavour."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle unification allemande aboutit en 1871 ?",
+              "options": [
+                "Sous Prusse de Bismarck",
+                "Sous Autriche en 1848",
+                "Par Francfort en 1849",
+                "Par la France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bismarck unifie par la guerre, non par les libéraux de Francfort."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel régime français dure de 1852 à 1870 ?",
+              "options": [
+                "Second Empire",
+                "Restauration",
+                "Monarchie de Juillet",
+                "Troisième République"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Napoléon III modernise mais limite les libertés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle réforme agraire hongroise après le compromis de 1867 ?",
+              "options": [
+                "Modernisation partielle de la société rurale",
+                "Servage rétabli",
+                "Collectivisation",
+                "Stabilisation autrichienne seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Autriche-Hongrie tente des ajustements sans révolution."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel courant politique renforce le catholicisme social après 1848 ?",
+              "options": [
+                "Réaction cléricale modérée",
+                "Athéisme d'État",
+                "Théocratie papale en France",
+                "Oubli de l'Église"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Église retrouve influence face au socialisme laïque."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle colonisation accélère-t-on parfois après les troubles ?",
+              "options": [
+                "Impérialisme européen du XIXe siècle",
+                "Décolonisation",
+                "Isolationnisme",
+                "Fin des empires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les élites cherchent parfois des débouchés à l'étranger."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel héritage démocratique français de 1848 perdure ?",
+              "options": [
+                "Suffrage universel masculin",
+                "Suffrage féminin immédiat",
+                "Monarchie éternelle",
+                "Absence de constitution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même sous l'Empire, le principe du suffrage universel reste acquis."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle Internationale ouvrière naît plus tard, inspirée par 1848 ?",
+              "options": [
+                "Première Internationale (1864)",
+                "OTAN",
+                "Sainte-Alliance",
+                "Zollverein"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marx et les socialistes organisent l'internationalisme ouvrier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment les historiens comparent-ils 1789 et 1848 ?",
+              "options": [
+                "1848 plus européen et moins victorieux",
+                "Identiques en succès",
+                "1848 sans libéralisme",
+                "1789 sans nationalisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1848 se propage en Europe mais échoue plus vite que 1789 en France."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse : révolutions et Europe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels fils rouges relient 1789 et 1848 ?",
+              "options": [
+                "Liberté et égalité revendiquées",
+                "Nationalisme et constitution",
+                "Retour au servage",
+                "Suppression de la presse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux vagues révolutionnaires veulent droits et nations."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle différence majeure entre 1789 et 1848 en France ?",
+              "options": [
+                "1848 intègre la question ouvrière",
+                "1789 sans bourgeoisie",
+                "1848 sans république",
+                "1789 sans violence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le prolétariat parisien est acteur des journées de Juin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel acteur international stabilise l'Europe après 1849 ?",
+              "options": [
+                "Russie tsariste et Autriche",
+                "États-Unis seuls",
+                "Empire ottoman",
+                "Chine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intervention russe en Hongrie illustre la réaction conservatrice."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot désigne la peur aristocratique en 1789 campagne ?",
+              "options": [
+                "Grande Peur",
+                "Printemps des peuples",
+                "Terreur blanche",
+                "Chartisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Grande Peur précède l'abolition des privilèges."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot désigne l'ensemble des révoltes européennes de 1848 ?",
+              "options": [
+                "Printemps des peuples",
+                "Révolution industrielle",
+                "Révolution agricole",
+                "Guerre froide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression consacrée pour la vague révolutionnaire de 1848."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle institution française de 1848 préfigure le travail public ?",
+              "options": [
+                "Ateliers nationaux",
+                "Conseils prud'hommes 1806 seuls",
+                "Sécurité sociale",
+                "Pôle emploi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "État-providence embryonnaire, fermé après Juin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel pays devient modèle autoritaire libéral après 1848 ?",
+              "options": [
+                "Prusse puis Allemagne unifiée",
+                "Suisse seule",
+                "Portugal",
+                "Serbie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bismarck combine force militaire et modernisation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle idée de Tocqueville éclaire 1848 ?",
+              "options": [
+                "Révolution comme prolongement de la centralisation",
+                "Fin de la démocratie",
+                "Suprématie coloniale",
+                "Retour féodal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tocqueville voit des continuities entre Ancien Régime et révolutions."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel média amplifie les révolutions de 1848 ?",
+              "options": [
+                "Presse et pamphlets",
+                "Télévision",
+                "Réseaux sociaux",
+                "Radio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Journaux et affiches diffusent nouvelles et programmes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel bilan pour l'Europe face aux révolutions au milieu du XIXe siècle ?",
+              "options": [
+                "Avancées libérales fragiles et nationalisme durable",
+                "Stabilité absolue",
+                "Fin des empires",
+                "Paix centenaire immédiate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1848 échoue mais pose les questions qui structurent l'Europe jusqu'en 1914."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

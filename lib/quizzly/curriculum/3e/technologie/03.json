@@ -1,0 +1,2743 @@
+{
+  "id": "3e-technologie-03",
+  "year": "3e",
+  "subject": "technologie",
+  "title": "Design responsable",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Usage et impact",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le besoin avant l'objet",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pourquoi partir d'un besoin en design responsable ?",
+              "type": "multiple_choice",
+              "options": [
+                "Créer un objet réellement utile",
+                "Vendre sans analyser les conséquences",
+                "Limiter les objets superflus",
+                "Copier sans réfléchir aux impacts"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le besoin oriente l'utilité et évite le superflu."
+            },
+            {
+              "id": "q2",
+              "question": "Un besoin, en technologie, c'est surtout…",
+              "type": "single_choice",
+              "options": [
+                "Une envie sans lien avec le quotidien",
+                "Un manque ou une difficulté à résoudre",
+                "Un logo",
+                "Un matériau tiré au sort"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le besoin exprime ce qui manque à l'utilisateur."
+            },
+            {
+              "id": "q3",
+              "question": "L'usage d'un objet, c'est…",
+              "type": "single_choice",
+              "options": [
+                "La façon concrète dont on s'en sert",
+                "Seulement le prix",
+                "La publicité",
+                "Le numéro de modèle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usage = gestes et situations réelles."
+            },
+            {
+              "id": "q4",
+              "question": "Un objet mal adapté à son usage…",
+              "type": "single_choice",
+              "options": [
+                "Peut être remplacé trop tôt",
+                "Dure toujours plus",
+                "N'a jamais d'effet",
+                "Ne peut pas devenir un déchet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mauvaise adéquation = gaspillage."
+            },
+            {
+              "id": "q5",
+              "question": "Observer des utilisateurs permet de…",
+              "type": "single_choice",
+              "options": [
+                "Comprendre les pratiques réelles",
+                "Inventer sans regarder",
+                "Supprimer les tests",
+                "Ignorer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'observation nourrit la conception."
+            },
+            {
+              "id": "q6",
+              "question": "Un impact social peut…",
+              "type": "single_choice",
+              "options": [
+                "Faciliter l'inclusion ou l'autonomie",
+                "Modifier la météo",
+                "Supprimer le dialogue",
+                "Interdire toute innovation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les objets influencent la vie des personnes."
+            },
+            {
+              "id": "q7",
+              "question": "Un impact environnemental concerne…",
+              "type": "single_choice",
+              "options": [
+                "Ressources, pollution et déchets",
+                "Uniquement les réseaux sociaux",
+                "La taille du logo",
+                "Le nombre de pages web"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fabriquer et utiliser affecte la planète."
+            },
+            {
+              "id": "q8",
+              "question": "Le cahier des charges précise…",
+              "type": "single_choice",
+              "options": [
+                "Fonctions et contraintes du projet",
+                "Des blagues",
+                "Aucune exigence",
+                "Seulement une couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il cadre ce que l'objet doit respecter."
+            },
+            {
+              "id": "q9",
+              "question": "Concevoir de façon responsable, c'est…",
+              "type": "single_choice",
+              "options": [
+                "Penser aux personnes et à l'environnement",
+                "Ignorer le recyclage",
+                "Tout rendre jetable",
+                "Ne jamais tester"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usage et impacts sont intégrés dès le départ."
+            },
+            {
+              "id": "q10",
+              "question": "Clarifier le besoin avant de produire…",
+              "type": "single_choice",
+              "options": [
+                "Réduit le risque d'objet inutile",
+                "Empêche toute créativité",
+                "Supprime la sécurité",
+                "Interdit la réparation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans besoin clair, on fabrique parfois pour rien."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Usages du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels gestes relèvent d'un usage responsable ?",
+              "type": "multiple_choice",
+              "options": [
+                "Garder un appareil qui fonctionne encore",
+                "Jeter dès la moindre rayure sans réparer",
+                "Réduire les réglages qui consomment",
+                "Racheter par habitude chaque semaine"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Durée de vie et consommation d'énergie comptent."
+            },
+            {
+              "id": "q2",
+              "question": "Un mode d'emploi utile…",
+              "type": "single_choice",
+              "options": [
+                "Aide à utiliser l'objet correctement",
+                "Augmente les déchets",
+                "Cache les fonctions",
+                "Empêche la maintenance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bien informer limite les erreurs."
+            },
+            {
+              "id": "q3",
+              "question": "L'ergonomie vise à…",
+              "type": "single_choice",
+              "options": [
+                "Adapter l'objet au corps",
+                "Le rendre dangereux",
+                "Supprimer la prise en main",
+                "Ignorer le confort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confort et sécurité guident la forme."
+            },
+            {
+              "id": "q4",
+              "question": "Utiliser souvent un appareil électrique…",
+              "type": "single_choice",
+              "options": [
+                "Augmente la consommation d'énergie",
+                "Crée de l'électricité gratuite",
+                "N'a aucun effet",
+                "Supprime la facture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fonctionner = consommer de l'énergie."
+            },
+            {
+              "id": "q5",
+              "question": "Prêter ou partager un objet…",
+              "type": "single_choice",
+              "options": [
+                "Peut limiter les achats neufs",
+                "Augmente toujours la pollution",
+                "Est interdit",
+                "Empêche toute utilisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mutualiser réduit parfois la production."
+            },
+            {
+              "id": "q6",
+              "question": "Un objet polyvalent…",
+              "type": "single_choice",
+              "options": [
+                "Peut remplacer plusieurs objets",
+                "Doit être à usage unique",
+                "Ignore les usages",
+                "Ne sert jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs fonctions = moins d'achats."
+            },
+            {
+              "id": "q7",
+              "question": "Un chargeur laissé branché sans appareil…",
+              "type": "single_choice",
+              "options": [
+                "Peut consommer en veille",
+                "Recharge la Terre",
+                "Ne consomme jamais",
+                "Répare les câbles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débrancher limite le gaspillage."
+            },
+            {
+              "id": "q8",
+              "question": "Pour des enfants, la sécurité implique…",
+              "type": "single_choice",
+              "options": [
+                "Des protections adaptées à l'âge",
+                "Des pièces non fixées dangereuses",
+                "Aucune notice",
+                "Des matériaux toxiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le design protège les utilisateurs fragiles."
+            },
+            {
+              "id": "q9",
+              "question": "Tester un prototype avec des personnes…",
+              "type": "single_choice",
+              "options": [
+                "Améliore l'usage avant la série",
+                "Supprime les retours",
+                "Gaspille sans but",
+                "Interdit les changements"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les tests évitent des séries mal conçues."
+            },
+            {
+              "id": "q10",
+              "question": "Une interface trop compliquée…",
+              "type": "single_choice",
+              "options": [
+                "Favorise l'abandon précoce",
+                "Garantit 50 ans d'usage",
+                "Empêche le recyclage",
+                "N'a aucun impact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simplicité = usage durable."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Impacts environnementaux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles conséquences peuvent suivre la fabrication de masse ?",
+              "type": "multiple_choice",
+              "options": [
+                "Consommation de matières premières",
+                "Émissions liées aux transports",
+                "Absence totale de déchets",
+                "Création gratuite d'énergie propre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Extraire, fabriquer et transporter consomment et polluent."
+            },
+            {
+              "id": "q2",
+              "question": "L'extraction de métaux…",
+              "type": "single_choice",
+              "options": [
+                "Modifie les paysages et consomme de l'énergie",
+                "Ne touche jamais la nature",
+                "Ne produit pas de déchets",
+                "Ne nécessite pas d'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mines et usines ont un coût environnemental."
+            },
+            {
+              "id": "q3",
+              "question": "Le plastique issu de pétrole…",
+              "type": "single_choice",
+              "options": [
+                "Dépend d'une ressource non renouvelable",
+                "Pousse dans les forêts",
+                "Se recycle toujours à l'infini sans perte",
+                "Disparaît en une heure dans la nature"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le plastique vierge vient surtout du pétrole."
+            },
+            {
+              "id": "q4",
+              "question": "Transport mondial des produits…",
+              "type": "single_choice",
+              "options": [
+                "Ajoute des émissions de gaz à effet de serre",
+                "Supprime tout camion",
+                "Ne consomme pas de carburant",
+                "Rend le produit immatériel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les longues distances augmentent l'empreinte."
+            },
+            {
+              "id": "q5",
+              "question": "Une obsolescence programmée…",
+              "type": "single_choice",
+              "options": [
+                "Raccourcit volontairement la durée de vie utile",
+                "Répare gratuitement les objets",
+                "Augmente toujours la réparabilité",
+                "Supprime les déchets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Remplacer plus vite = plus de déchets."
+            },
+            {
+              "id": "q6",
+              "question": "Les déchets électroniques contiennent parfois…",
+              "type": "single_choice",
+              "options": [
+                "Des substances à traiter avec précaution",
+                "Uniquement de l'eau pure",
+                "Rien de dangereux",
+                "Seulement du papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines composantes demandent un recyclage spécialisé."
+            },
+            {
+              "id": "q7",
+              "question": "Réduire la quantité de matière dans un objet…",
+              "type": "single_choice",
+              "options": [
+                "Peut diminuer l'impact amont",
+                "Augmente toujours la pollution",
+                "Empêche toute fonction",
+                "Interdit le recyclage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de matière = moins d'extraction."
+            },
+            {
+              "id": "q8",
+              "question": "Une empreinte carbone mesure surtout…",
+              "type": "single_choice",
+              "options": [
+                "Les émissions de gaz à effet de serre liées au produit",
+                "Le nombre de likes",
+                "La couleur du boîtier",
+                "La taille de la police"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle résume une part du impact climatique."
+            },
+            {
+              "id": "q9",
+              "question": "Trier ses déchets à la maison…",
+              "type": "single_choice",
+              "options": [
+                "Facilite le recyclage en filière",
+                "Supprime la production de déchets",
+                "Remplace la réparation",
+                "Empêche toute collecte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tri oriente vers recyclage ou valorisation."
+            },
+            {
+              "id": "q10",
+              "question": "Privilégier l'énergie renouvelable dans l'usage…",
+              "type": "single_choice",
+              "options": [
+                "Peut réduire l'impact lié à l'électricité",
+                "Supprime toute consommation",
+                "Interdit les appareils",
+                "Augmente toujours le pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La source d'énergie compte sur la durée de vie."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Impacts sociaux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels effets sociaux un objet technique peut-il avoir ?",
+              "type": "multiple_choice",
+              "options": [
+                "Créer des emplois dans la filière",
+                "Exclure des personnes si mal conçu",
+                "Supprimer toute communication humaine",
+                "Garantir l'égalité sans effort de design"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un objet peut aider ou marginaliser selon sa conception."
+            },
+            {
+              "id": "q2",
+              "question": "Un design inclusif pense…",
+              "type": "single_choice",
+              "options": [
+                "Aux personnes en situation de handicap",
+                "Seulement aux publicités",
+                "À interdire toute adaptation",
+                "À cacher les instructions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accessibilité = usage pour le plus grand nombre."
+            },
+            {
+              "id": "q3",
+              "question": "Fabrication dans des pays lointains : enjeu…",
+              "type": "single_choice",
+              "options": [
+                "Conditions de travail et rémunération",
+                "Couleur du ciel uniquement",
+                "Forme des nuages",
+                "Nombre de pages web"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chaîne de production a une dimension sociale."
+            },
+            {
+              "id": "q4",
+              "question": "Étiqueter clairement les risques…",
+              "type": "single_choice",
+              "options": [
+                "Protège l'utilisateur",
+                "Empêche toute utilisation",
+                "Supprime la sécurité",
+                "Remplace la formation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'information fait partie de la responsabilité."
+            },
+            {
+              "id": "q5",
+              "question": "Un objet qui remplace une tâche pénible…",
+              "type": "single_choice",
+              "options": [
+                "Peut améliorer le confort de travail",
+                "Supprime toujours des emplois utiles sans nuance",
+                "N'a aucun effet",
+                "Interdit la discussion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La technologie peut soulager des gestes difficiles."
+            },
+            {
+              "id": "q6",
+              "question": "La publicité agressive pour le renouvellement…",
+              "type": "single_choice",
+              "options": [
+                "Peut pousser à jeter des objets encore valides",
+                "Répare automatiquement",
+                "Diminue toujours les déchets",
+                "Interdit l'achat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inciter à remplacer accélère la consommation."
+            },
+            {
+              "id": "q7",
+              "question": "Former les utilisateurs à la sécurité…",
+              "type": "single_choice",
+              "options": [
+                "Limite les accidents",
+                "Augmente les blessures",
+                "Remplace les protections",
+                "Supprime les notices"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Savoir utiliser = risque réduit."
+            },
+            {
+              "id": "q8",
+              "question": "Un objet open source ou réparable…",
+              "type": "single_choice",
+              "options": [
+                "Peut renforcer l'autonomie des utilisateurs",
+                "Interdit toute maintenance",
+                "Empêche le partage de savoir",
+                "Supprime les pièces détachées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réparer = compétences et indépendance."
+            },
+            {
+              "id": "q9",
+              "question": "Le numérique qui isole…",
+              "type": "single_choice",
+              "options": [
+                "Montre qu'un usage peut avoir des effets sociaux négatifs",
+                "Prouve que la technologie n'a jamais d'impact",
+                "Supprime internet",
+                "Interdit le téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'usage compte autant que l'objet."
+            },
+            {
+              "id": "q10",
+              "question": "Impliquer des futurs utilisateurs au collège…",
+              "type": "single_choice",
+              "options": [
+                "Améliore l'adéquation au besoin réel",
+                "Empêche toute critique",
+                "Supprime les tests",
+                "Interdit les prototypes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Co-construire = solutions plus justes."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Principes d'éco-conception",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels principes relèvent de l'éco-conception ?",
+              "type": "multiple_choice",
+              "options": [
+                "Réduire les matériaux dès la conception",
+                "Faciliter le démontage et le recyclage",
+                "Ajouter du superflu pour le style",
+                "Rendre la réparation impossible"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Éco-concevoir = moins de ressources et fin de vie prévue."
+            },
+            {
+              "id": "q2",
+              "question": "Éco-concevoir, c'est penser…",
+              "type": "single_choice",
+              "options": [
+                "Tout le cycle de vie dès le début",
+                "Seulement l'emballage marketing",
+                "Uniquement la couleur",
+                "Rien du tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De l'extraction au recyclage."
+            },
+            {
+              "id": "q3",
+              "question": "Diminuer le nombre de pièces différentes…",
+              "type": "single_choice",
+              "options": [
+                "Peut simplifier le recyclage",
+                "Empêche toute fonction",
+                "Augmente toujours les déchets",
+                "Interdit la réparation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Standardiser aide les filières de fin de vie."
+            },
+            {
+              "id": "q4",
+              "question": "Choisir des matériaux recyclables…",
+              "type": "single_choice",
+              "options": [
+                "Facilite la seconde vie de la matière",
+                "Interdit toute utilisation",
+                "Supprime le tri",
+                "Augmente le pétrole automatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La matière peut revenir dans le circuit."
+            },
+            {
+              "id": "q5",
+              "question": "Éviter les mélanges de matériaux collés…",
+              "type": "single_choice",
+              "options": [
+                "Aide au tri en fin de vie",
+                "Rend le recyclage impossible à coup sûr",
+                "N'a aucun effet",
+                "Supprime la solidité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séparer les matériaux simplifie le recyclage."
+            },
+            {
+              "id": "q6",
+              "question": "Allonger la durée de vie prévue…",
+              "type": "single_choice",
+              "options": [
+                "Réduit le nombre d'objets fabriqués",
+                "Augmente les déchets immédiats",
+                "Interdit l'usage",
+                "Supprime la maintenance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durable = moins de remplacements."
+            },
+            {
+              "id": "q7",
+              "question": "Prévoir des pièces détachées…",
+              "type": "single_choice",
+              "options": [
+                "Favorise la réparation",
+                "Oblige à jeter",
+                "Interdit le SAV",
+                "Supprime l'usure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réparer prolonge l'usage."
+            },
+            {
+              "id": "q8",
+              "question": "Réduire l'énergie en phase d'utilisation…",
+              "type": "single_choice",
+              "options": [
+                "Diminue l'impact sur la durée de vie",
+                "Ne sert à rien",
+                "Augmente toujours le gaz",
+                "Empêche l'objet de fonctionner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'usage peut représenter la plus grande part."
+            },
+            {
+              "id": "q9",
+              "question": "Un score ou label environnemental…",
+              "type": "single_choice",
+              "options": [
+                "Informe sur certains critères",
+                "Remplace toute réflexion",
+                "Garantit la perfection",
+                "Supprime les lois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les labels aident à comparer, sans tout dire."
+            },
+            {
+              "id": "q10",
+              "question": "En classe, éco-concevoir un porte-clefs…",
+              "type": "single_choice",
+              "options": [
+                "Peut limiter les chutes de matière",
+                "Doit gaspiller volontairement",
+                "Ignore le besoin",
+                "Interdit le prototype"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Optimiser la découpe réduit les chutes."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Matériaux et ressources",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels critères orientent un choix de matériau responsable ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ressource renouvelable ou recyclable",
+                "Toxicité et sécurité pour l'utilisateur",
+                "Couleur à la mode uniquement",
+                "Rareté volontaire pour jeter plus vite"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Origine, santé et fin de vie guident le choix."
+            },
+            {
+              "id": "q2",
+              "question": "Le bois certifié durable…",
+              "type": "single_choice",
+              "options": [
+                "Provient de forêts gérées",
+                "Coupe toutes les forêts sans replantation",
+                "Est identique au plastique",
+                "Ne peut pas servir en technologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une gestion durable limite la déforestation."
+            },
+            {
+              "id": "q3",
+              "question": "L'aluminium recyclé…",
+              "type": "single_choice",
+              "options": [
+                "Consomme moins d'énergie que la fonte vierge",
+                "N'existe pas",
+                "Est toujours interdit",
+                "Ne peut pas fondre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recycler le métal économise de l'énergie."
+            },
+            {
+              "id": "q4",
+              "question": "Un matériau biodégradable…",
+              "type": "single_choice",
+              "options": [
+                "Se décompose dans certaines conditions",
+                "Disparaît instantanément partout",
+                "Remplace toujours le tri",
+                "Est toujours toxique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La biodégradabilité dépend du milieu."
+            },
+            {
+              "id": "q5",
+              "question": "Mélanger plastique et métal sans les séparer…",
+              "type": "single_choice",
+              "options": [
+                "Complique le recyclage",
+                "Facilite toujours le tri",
+                "Supprime les déchets",
+                "Rend l'objet immatériel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les matériaux collés sont difficiles à récupérer."
+            },
+            {
+              "id": "q6",
+              "question": "La disponibilité locale d'une matière…",
+              "type": "single_choice",
+              "options": [
+                "Peut réduire les transports",
+                "Augmente toujours les km parcourus",
+                "N'influence rien",
+                "Interdit la conception"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proximité = parfois moins d'émissions."
+            },
+            {
+              "id": "q7",
+              "question": "Un plastique biosourcé…",
+              "type": "single_choice",
+              "options": [
+                "Provient en partie de ressources végétales",
+                "Est toujours du pétrole pur",
+                "Ne peut pas être utilisé",
+                "Remplace le tri ménager"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Biosourcé ≠ automatiquement biodégradable."
+            },
+            {
+              "id": "q8",
+              "question": "Choisir un matériau plus léger si possible…",
+              "type": "single_choice",
+              "options": [
+                "Peut réduire l'énergie de transport",
+                "Augmente toujours le poids du camion",
+                "Empêche toute solidité",
+                "Interdit la fonction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poids moindre = transport parfois plus économe."
+            },
+            {
+              "id": "q9",
+              "question": "Les pictogrammes de danger sur un produit…",
+              "type": "single_choice",
+              "options": [
+                "Alertent sur la toxicité ou l'inflammabilité",
+                "Décorent seulement",
+                "Suppriment les risques",
+                "Remplacent la ventilation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut respecter les consignes de sécurité."
+            },
+            {
+              "id": "q10",
+              "question": "Réutiliser une chute de matière en projet…",
+              "type": "single_choice",
+              "options": [
+                "Limite le gaspillage en classe",
+                "Est interdit en design responsable",
+                "Augmente les déchets",
+                "Empêche la créativité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valoriser les chutes = moins de gâchis."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Énergie et usage",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles actions réduisent l'impact énergétique à l'usage ?",
+              "type": "multiple_choice",
+              "options": [
+                "Éteindre l'appareil quand il ne sert pas",
+                "Choisir des modes économes d'énergie",
+                "Laisser tout allumé en permanence",
+                "Multiplier les chargeurs inutiles"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Veille et réglages comptent sur la durée de vie."
+            },
+            {
+              "id": "q2",
+              "question": "La phase d'utilisation d'un lave-linge…",
+              "type": "single_choice",
+              "options": [
+                "Consomme de l'eau et de l'électricité",
+                "Ne consomme rien",
+                "Produit du pétrole",
+                "Supprime le cycle de vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'usage répété pèse dans le bilan."
+            },
+            {
+              "id": "q3",
+              "question": "Une ampoule LED bien choisie…",
+              "type": "single_choice",
+              "options": [
+                "Consomme moins qu'une ampoule ancienne type",
+                "Consomme toujours plus",
+                "Ne produit pas de lumière",
+                "Interdit l'éclairage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'efficacité énergétique réduit la facture."
+            },
+            {
+              "id": "q4",
+              "question": "Le mode veille d'un téléviseur…",
+              "type": "single_choice",
+              "options": [
+                "Consomme encore un peu d'énergie",
+                "Recharge la batterie de la maison",
+                "Ne consomme jamais",
+                "Répare l'appareil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couper complètement limite la consommation."
+            },
+            {
+              "id": "q5",
+              "question": "Concevoir un objet basse consommation…",
+              "type": "single_choice",
+              "options": [
+                "Réduit l'impact sur sa durée de vie",
+                "Empêche toute fonction",
+                "Augmente toujours le gaz",
+                "Supprime l'électricité du pays"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins consommer à l'usage = moins d'émissions."
+            },
+            {
+              "id": "q6",
+              "question": "Le chauffage d'une pièce pour sécher inutilement…",
+              "type": "single_choice",
+              "options": [
+                "Gaspille de l'énergie",
+                "Crée de l'énergie gratuite",
+                "N'a aucun coût",
+                "Refroidit la maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usage raisonnable = ressources préservées."
+            },
+            {
+              "id": "q7",
+              "question": "Un moteur bien dimensionné…",
+              "type": "single_choice",
+              "options": [
+                "Évite de surconsommer pour la tâche",
+                "Doit être toujours surpuissant",
+                "Ne peut pas exister",
+                "Interdit la réparation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adapter la puissance limite les pertes."
+            },
+            {
+              "id": "q8",
+              "question": "Mesurer la consommation d'un prototype…",
+              "type": "single_choice",
+              "options": [
+                "Aide à améliorer la conception",
+                "Est inutile en technologie",
+                "Supprime le cahier des charges",
+                "Interdit les tests"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesurer pour ajuster le design."
+            },
+            {
+              "id": "q9",
+              "question": "Privilégier le câble plutôt que l'usage intensif sans besoin…",
+              "type": "single_choice",
+              "options": [
+                "Peut limiter certaines consommations sans fil",
+                "Augmente toujours l'énergie",
+                "Supprime internet",
+                "Interdit le wifi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque mode de fonctionnement a un coût."
+            },
+            {
+              "id": "q10",
+              "question": "Informer l'utilisateur sur la consommation…",
+              "type": "single_choice",
+              "options": [
+                "L'aide à adopter des gestes responsables",
+                "L'empêche d'utiliser l'objet",
+                "Supprime la notice",
+                "Augmente la pollution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Afficher ou expliquer = usage éclairé."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Emballages et gaspillage",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles pratiques limitent le gaspillage d'emballages ?",
+              "type": "multiple_choice",
+              "options": [
+                "Réduire le volume de carton inutile",
+                "Privilégier l'emballage recyclable",
+                "Multiplier les couches plastique décoratives",
+                "Envelopper chaque vis dans un blister séparé sans raison"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Moins d'emballage et matière recyclable réduisent les déchets."
+            },
+            {
+              "id": "q2",
+              "question": "Un emballage surdimensionné…",
+              "type": "single_choice",
+              "options": [
+                "Gaspille matière et transport",
+                "Réduit toujours les émissions",
+                "Supprime le produit",
+                "Rend l'objet plus petit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Taille adaptée = moins de déchets."
+            },
+            {
+              "id": "q3",
+              "question": "Le suremballage est surtout…",
+              "type": "single_choice",
+              "options": [
+                "De l'emballage au-delà du nécessaire",
+                "Une réparation",
+                "Un mode d'emploi",
+                "Un matériau recyclable obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trop emballer = déchets en plus."
+            },
+            {
+              "id": "q4",
+              "question": "Acheter en vrac quand c'est possible…",
+              "type": "single_choice",
+              "options": [
+                "Peut réduire les emballages jetés",
+                "Augmente toujours le plastique",
+                "Interdit la nourriture",
+                "Supprime le tri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de sachets = moins de déchets."
+            },
+            {
+              "id": "q5",
+              "question": "Réemployer une boîte solide…",
+              "type": "single_choice",
+              "options": [
+                "Prolonge la vie de l'emballage",
+                "Est interdit",
+                "Empêche le stockage",
+                "Supprime le recyclage à jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réemploi avant recyclage quand c'est possible."
+            },
+            {
+              "id": "q6",
+              "question": "Un emballage compostable…",
+              "type": "single_choice",
+              "options": [
+                "Se décompose dans un compost adapté",
+                "Se recycle comme le métal",
+                "Disparaît dans la mer en un jour garanti",
+                "Remplace le tri sélectif partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compostable ≠ recyclable : filières différentes."
+            },
+            {
+              "id": "q7",
+              "question": "Les consignes de tri sur l'emballage…",
+              "type": "single_choice",
+              "options": [
+                "Indiquent comment le jeter correctement",
+                "Décorations sans signification",
+                "Remplacent la loi",
+                "Suppriment les déchets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pictogrammes = bon geste de tri."
+            },
+            {
+              "id": "q8",
+              "question": "Concevoir un emballage retournable…",
+              "type": "single_choice",
+              "options": [
+                "Peut limiter les emballages à usage unique",
+                "Oblige à brûler le carton",
+                "Interdit la réutilisation",
+                "Augmente le jetable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retour en magasin = plusieurs tours."
+            },
+            {
+              "id": "q9",
+              "question": "Gaspiller de la nourriture…",
+              "type": "single_choice",
+              "options": [
+                "Gaspille aussi l'énergie de production",
+                "N'a aucun lien avec la technologie",
+                "Réduit les émissions",
+                "Supprime l'agriculture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Produire puis jeter = ressources perdues."
+            },
+            {
+              "id": "q10",
+              "question": "En projet, limiter les prototypes jetables…",
+              "type": "single_choice",
+              "options": [
+                "Réduit les chutes et déchets en classe",
+                "Est interdit",
+                "Empêche d'apprendre",
+                "Supprime les maquettes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prototyper malin = moins de gâchis."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Accessibilité et équité",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels choix favorisent l'accessibilité ?",
+              "type": "multiple_choice",
+              "options": [
+                "Contrastes visuels lisibles",
+                "Poignées ou commandes adaptables",
+                "Boutons microscopiques sans alternative",
+                "Notice uniquement en langue incompréhensible"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Voir, saisir et comprendre doivent rester possibles."
+            },
+            {
+              "id": "q2",
+              "question": "Une notice en langage clair…",
+              "type": "single_choice",
+              "options": [
+                "Aide des publics variés",
+                "Empêche l'usage",
+                "Remplace la sécurité",
+                "Supprime le besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre = utiliser en sécurité."
+            },
+            {
+              "id": "q3",
+              "question": "Un objet utilisable d'une main…",
+              "type": "single_choice",
+              "options": [
+                "Peut aider certaines personnes",
+                "N'a aucun intérêt social",
+                "Interdit la conception",
+                "Supprime l'ergonomie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adapter les gestes élargit l'accès."
+            },
+            {
+              "id": "q4",
+              "question": "Volume sonore réglable…",
+              "type": "single_choice",
+              "options": [
+                "Respecte le confort et l'audition",
+                "Doit être toujours maximal",
+                "Interdit les alertes",
+                "Supprime l'interface"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trop fort peut gêner ou blesser."
+            },
+            {
+              "id": "q5",
+              "question": "Couleur seule pour transmettre une info…",
+              "type": "single_choice",
+              "options": [
+                "Peut exclure des personnes daltoniennes",
+                "Est toujours suffisant",
+                "Remplace les symboles",
+                "Supprime le texte utile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ajouter forme ou texte = plus inclusif."
+            },
+            {
+              "id": "q6",
+              "question": "Tester avec des utilisateurs divers…",
+              "type": "single_choice",
+              "options": [
+                "Révèle des obstacles ignorés",
+                "Est inutile",
+                "Supprime les retours",
+                "Interdit le prototype"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diversité des testeurs = design plus juste."
+            },
+            {
+              "id": "q7",
+              "question": "Un prix trop élevé pour une fonction essentielle…",
+              "type": "single_choice",
+              "options": [
+                "Peut creuser les inégalités d'accès",
+                "N'a aucun effet social",
+                "Répare gratuitement",
+                "Supprime le marché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accès économique fait partie du débat."
+            },
+            {
+              "id": "q8",
+              "question": "Normes et labels d'accessibilité…",
+              "type": "single_choice",
+              "options": [
+                "Donnent des repères de conception",
+                "Interdisent toute innovation",
+                "Remplacent la réflexion",
+                "Suppriment les utilisateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Standards = base commune."
+            },
+            {
+              "id": "q9",
+              "question": "Concevoir pour un adulte seulement sans réfléchir…",
+              "type": "single_choice",
+              "options": [
+                "Peut rendre l'objet difficile pour d'autres",
+                "Garantit l'universalité",
+                "Supprime les enfances",
+                "Interdit les tests"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Public cible doit être explicite."
+            },
+            {
+              "id": "q10",
+              "question": "Un design responsable considère…",
+              "type": "single_choice",
+              "options": [
+                "Différents corps, âges et capacités",
+                "Un seul utilisateur parfait",
+                "Uniquement la pub",
+                "Le rejet de toute norme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variété humaine = contrainte réelle."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Agir en citoyen",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels gestes citoyens accompagnent un design responsable ?",
+              "type": "multiple_choice",
+              "options": [
+                "Réparer ou faire réparer quand c'est possible",
+                "Acheter en connaissance des impacts",
+                "Jeter systématiquement dans la nature",
+                "Refuser toute information sur le produit"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Choix éclairés et réparation limitent les déchets."
+            },
+            {
+              "id": "q2",
+              "question": "Lire une étiquette environnementale…",
+              "type": "single_choice",
+              "options": [
+                "Aide à comparer des produits",
+                "Remplace la réflexion",
+                "Supprime le tri",
+                "Interdit l'achat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Information = décision plus responsable."
+            },
+            {
+              "id": "q3",
+              "question": "Signaler un produit dangereux…",
+              "type": "single_choice",
+              "options": [
+                "Peut protéger d'autres personnes",
+                "Est inutile",
+                "Augmente le danger",
+                "Supprime la sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alerte = prévention collective."
+            },
+            {
+              "id": "q4",
+              "question": "Participer à une collecte de déchets…",
+              "type": "single_choice",
+              "options": [
+                "Réduit la pollution visible",
+                "Augmente les déchets",
+                "Interdit le recyclage",
+                "Supprime les filières"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agir localement complète les choix de conception."
+            },
+            {
+              "id": "q5",
+              "question": "Donner un objet encore fonctionnel…",
+              "type": "single_choice",
+              "options": [
+                "Prolonge son usage par une autre personne",
+                "Oblige à le broyer",
+                "Interdit la seconde vie",
+                "Supprime le tri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Don = réemploi simple."
+            },
+            {
+              "id": "q6",
+              "question": "Questionner la nécessité d'un achat…",
+              "type": "single_choice",
+              "options": [
+                "Limite la surconsommation",
+                "Empêche toute technologie",
+                "Supprime le besoin",
+                "Interdit le partage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demander « en ai-je vraiment besoin ? » compte."
+            },
+            {
+              "id": "q7",
+              "question": "Apprendre à trier les DEEE…",
+              "type": "single_choice",
+              "options": [
+                "Oriente vers les filières spécialisées",
+                "Jette tout avec les ordures ménagères",
+                "Supprime les métaux",
+                "Interdit le recyclage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déchets d'équipements électriques = filière dédiée."
+            },
+            {
+              "id": "q8",
+              "question": "Debattre en classe d'un objet controversé…",
+              "type": "single_choice",
+              "options": [
+                "Développe l'esprit critique",
+                "Interdit la technologie",
+                "Supprime les usages",
+                "Empêche la conception"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Argumenter = comprendre les compromis."
+            },
+            {
+              "id": "q9",
+              "question": "Soutenir une marque transparente sur sa chaîne…",
+              "type": "single_choice",
+              "options": [
+                "Encourage des pratiques plus responsables",
+                "Garantit la perfection",
+                "Supprime les lois",
+                "Interdit le contrôle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La demande citoyenne pousse les entreprises."
+            },
+            {
+              "id": "q10",
+              "question": "Proposer une amélioration à un objet du quotidien…",
+              "type": "single_choice",
+              "options": [
+                "C'est une démarche de design responsable",
+                "Est interdit au collège",
+                "Supprime le cycle de vie",
+                "Empêche le recyclage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Innover utilement = réduire impacts ou besoins mal couverts."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Cycle de vie d'un objet",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Matières premières",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles étapes amont alimentent le cycle de vie ?",
+              "type": "multiple_choice",
+              "options": [
+                "Extraction ou récolte des ressources",
+                "Transformation en matériaux utilisables",
+                "Utilisation sans aucune matière",
+                "Disparition instantanée des mines"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tout objet commence par des ressources transformées."
+            },
+            {
+              "id": "q2",
+              "question": "Une ressource renouvelable…",
+              "type": "single_choice",
+              "options": [
+                "Peut se reconstituer si elle est bien gérée",
+                "Ne se renouvelle jamais",
+                "Est toujours du plastique",
+                "Ignore l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forêt ou biomasse demandent une gestion durable."
+            },
+            {
+              "id": "q3",
+              "question": "Le sable pour certaines industries…",
+              "type": "single_choice",
+              "options": [
+                "N'est pas une ressource infinie partout",
+                "Pousse dans les jardins",
+                "Ne sert jamais",
+                "Remplace le métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines ressources semblent banal es mais sont limitées."
+            },
+            {
+              "id": "q4",
+              "question": "Extraire du minerai…",
+              "type": "single_choice",
+              "options": [
+                "Consomme de l'énergie et de l'eau",
+                "Ne laisse aucune trace",
+                "Ne produit pas de déchets",
+                "Crée de l'objet fini directement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'amont est lourd en ressources."
+            },
+            {
+              "id": "q5",
+              "question": "Le cycle de vie commence…",
+              "type": "single_choice",
+              "options": [
+                "Avant la fabrication, dès les ressources",
+                "Au moment du recyclage seulement",
+                "Quand on jette l'objet",
+                "Après l'achat uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Penser cycle = inclure l'amont."
+            },
+            {
+              "id": "q6",
+              "question": "Importation de matière première lointaine…",
+              "type": "single_choice",
+              "options": [
+                "Allonge la chaîne logistique",
+                "Supprime les bateaux",
+                "Ne consomme pas de carburant",
+                "Rend l'objet virtuel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distance = transport et émissions."
+            },
+            {
+              "id": "q7",
+              "question": "Réduire l'utilisation de matière vierge…",
+              "type": "single_choice",
+              "options": [
+                "Préserve les ressources naturelles",
+                "Augmente toujours l'extraction",
+                "Interdit le recyclage",
+                "Supprime la conception"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recycler ou réemployer limite l'extraction."
+            },
+            {
+              "id": "q8",
+              "question": "Une filière bois locale bien gérée…",
+              "type": "single_choice",
+              "options": [
+                "Peut limiter l'impact transport",
+                "Coupe sans replantation obligatoire",
+                "Ne produit pas de matière",
+                "Interdit la construction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proximité + gestion = amont plus raisonnable."
+            },
+            {
+              "id": "q9",
+              "question": "La rareté d'un métal…",
+              "type": "single_choice",
+              "options": [
+                "Peut influencer le prix et le design",
+                "N'a aucun effet",
+                "Supprime la technologie",
+                "Rend le recyclage inutile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ressources limitées = choix de conception."
+            },
+            {
+              "id": "q10",
+              "question": "Documenter l'origine des matériaux…",
+              "type": "single_choice",
+              "options": [
+                "Améliore la transparence",
+                "Empêche l'usage",
+                "Supprime le tri",
+                "Interdit la fabrication"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traçabilité = responsabilité."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Fabrication et transport",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels éléments composent la phase de production ?",
+              "type": "multiple_choice",
+              "options": [
+                "Usinage, assemblage ou moulage",
+                "Consommation d'énergie en usine",
+                "Absence de main-d'œuvre ou de machines",
+                "Transport instantané sans émission"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fabriquer transforme les matières et consomme de l'énergie."
+            },
+            {
+              "id": "q2",
+              "question": "L'assemblage en usine…",
+              "type": "single_choice",
+              "options": [
+                "Fixe les pièces pour former le produit",
+                "Extrait le minerai",
+                "Trie les ordures ménagères",
+                "Remplace le recyclage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phase clé entre matériaux et produit fini."
+            },
+            {
+              "id": "q3",
+              "question": "Le transport en camion ou bateau…",
+              "type": "single_choice",
+              "options": [
+                "Ajoute des émissions au cycle de vie",
+                "Ne consomme jamais de carburant",
+                "Supprime la logistique",
+                "Rend l'objet immatériel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distances parcourues = impact."
+            },
+            {
+              "id": "q4",
+              "question": "Produire près du lieu de vente peut…",
+              "type": "single_choice",
+              "options": [
+                "Réduire certains transports",
+                "Augmenter toujours les km",
+                "Interdire la fabrication",
+                "Supprimer l'usine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Localiser la production influence le transport."
+            },
+            {
+              "id": "q5",
+              "question": "Les chutes d'atelier…",
+              "type": "single_choice",
+              "options": [
+                "Sont des déchets de production à valoriser",
+                "Disparaissent seules",
+                "Ne existent pas",
+                "Remplacent l'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Optimiser la découpe limite les chutes."
+            },
+            {
+              "id": "q6",
+              "question": "Contrôle qualité en sortie d'usine…",
+              "type": "single_choice",
+              "options": [
+                "Limite les produits défectueux jetés tôt",
+                "Augmente les rebuts volontairement",
+                "Supprime les tests",
+                "Interdit la vente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de défauts = moins de gaspillage."
+            },
+            {
+              "id": "q7",
+              "question": "Emballage industriel pour protéger au transport…",
+              "type": "single_choice",
+              "options": [
+                "Doit être dimensionné juste",
+                "Doit être le plus lourd possible",
+                "N'a aucun rôle",
+                "Remplace le produit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protéger sans sur-emballer."
+            },
+            {
+              "id": "q8",
+              "question": "Énergie électrique de l'usine…",
+              "type": "single_choice",
+              "options": [
+                "Compte dans le bilan du produit",
+                "N'existe pas",
+                "Ne influence jamais le climat",
+                "Supprime la fabrication"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Production = énergie souvent fossile ou renouvelable."
+            },
+            {
+              "id": "q9",
+              "question": "Un conteneur maritime transporte…",
+              "type": "single_choice",
+              "options": [
+                "De grandes quantités sur de longues distances",
+                "Uniquement des nuages",
+                "Rien de matériel",
+                "Seulement des fichiers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logistique mondiale = étape du cycle de vie."
+            },
+            {
+              "id": "q10",
+              "question": "Réduire le poids du produit fini…",
+              "type": "single_choice",
+              "options": [
+                "Peut diminuer l'énergie de transport",
+                "Augmente toujours le poids du camion",
+                "Empêche la vente",
+                "Supprime la fonction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poids moindre = transport parfois plus léger."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Distribution et mise en service",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels aspects relèvent de la distribution ?",
+              "type": "multiple_choice",
+              "options": [
+                "Stockage en entrepôt puis magasin",
+                "Livraison jusqu'à l'utilisateur",
+                "Recyclage automatique à l'achat",
+                "Fin de vie sans usage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Avant l'usage, le produit est stocké et déplacé."
+            },
+            {
+              "id": "q2",
+              "question": "La mise en service, c'est…",
+              "type": "single_choice",
+              "options": [
+                "Première utilisation conforme (installation, charge…)",
+                "Jet immédiat",
+                "Recyclage obligatoire",
+                "Extraction minière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Démarrer correctement prolonge la durée de vie."
+            },
+            {
+              "id": "q3",
+              "question": "Notice de montage claire…",
+              "type": "single_choice",
+              "options": [
+                "Évite les erreurs qui abîment l'objet",
+                "Force à jeter",
+                "Supprime les pièces",
+                "Interdit l'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bien installer = usage sûr."
+            },
+            {
+              "id": "q4",
+              "question": "Stockage long en magasin…",
+              "type": "single_choice",
+              "options": [
+                "Consomme de l'énergie si froid ou sécurité",
+                "Ne coûte rien",
+                "Supprime le produit",
+                "Remplace la fabrication"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entrepôts climatisés ou éclairés consomment."
+            },
+            {
+              "id": "q5",
+              "question": "Vente en ligne avec livraison…",
+              "type": "single_choice",
+              "options": [
+                "Ajoute une étape transport au cycle",
+                "Supprime tout camion",
+                "Rend l'objet numérique",
+                "Interdit le carton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dernier km = impact à intégrer."
+            },
+            {
+              "id": "q6",
+              "question": "Garantie légale ou commerciale…",
+              "type": "single_choice",
+              "options": [
+                "Encourage parfois la réparation",
+                "Oblige à jeter sans recours",
+                "Supprime le SAV",
+                "Interdit le retour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Droit à la réparation ou échange selon cas."
+            },
+            {
+              "id": "q7",
+              "question": "Choix d'un magasin proche…",
+              "type": "single_choice",
+              "options": [
+                "Peut limiter le déplacement acheteur",
+                "Augmente toujours les km",
+                "Supprime l'achat",
+                "Interdit le vélo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déplacement du client compte aussi."
+            },
+            {
+              "id": "q8",
+              "question": "Déballage et tri des emballages…",
+              "type": "single_choice",
+              "options": [
+                "Premier geste de fin de vie des emballages",
+                "N'a aucun lien avec le cycle",
+                "Supprime le produit",
+                "Remplace l'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emballage a sa propre fin de vie."
+            },
+            {
+              "id": "q9",
+              "question": "Formation du vendeur à l'usage responsable…",
+              "type": "single_choice",
+              "options": [
+                "Transmet de bonnes pratiques",
+                "Interdit la vente",
+                "Supprime la notice",
+                "Augmente les déchets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conseil = usage durable dès le départ."
+            },
+            {
+              "id": "q10",
+              "question": "Comparer plusieurs circuits de distribution…",
+              "type": "single_choice",
+              "options": [
+                "Montre des impacts transport différents",
+                "Prouve qu'il n'y a jamais d'impact",
+                "Supprime la logistique",
+                "Interdit l'analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Circuit court ou long = bilan distinct."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Phase d'utilisation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pendant l'usage, quels facteurs pèsent dans le cycle de vie ?",
+              "type": "multiple_choice",
+              "options": [
+                "Consommation d'énergie ou de consommables",
+                "Entretien et réparations éventuelles",
+                "Absence totale d'usure",
+                "Recyclage automatique sans tri"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Utiliser et entretenir compte sur la durée."
+            },
+            {
+              "id": "q2",
+              "question": "Entretenir un objet régulièrement…",
+              "type": "single_choice",
+              "options": [
+                "Prolonge sa durée de vie",
+                "Oblige à le jeter plus vite",
+                "Supprime la sécurité",
+                "Interdit la réparation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nettoyage, graissage, piles = maintenance."
+            },
+            {
+              "id": "q3",
+              "question": "Remplacer une pièce usée…",
+              "type": "single_choice",
+              "options": [
+                "Évite de jeter tout l'objet",
+                "Est toujours interdit",
+                "Supprime le cycle de vie",
+                "Augmente forcément les déchets totaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réparer = allonger l'usage."
+            },
+            {
+              "id": "q4",
+              "question": "Durée de vie utile longue…",
+              "type": "single_choice",
+              "options": [
+                "Répartit l'impact amont sur plus d'années",
+                "Augmente l'extraction immédiate",
+                "Supprime l'usage",
+                "Interdit le recyclage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utiliser longtemps = amortir la fabrication."
+            },
+            {
+              "id": "q5",
+              "question": "Consommables (cartouches, filtres)…",
+              "type": "single_choice",
+              "options": [
+                "Ajoutent des impacts pendant l'usage",
+                "Ne comptent pas dans le cycle",
+                "Sont immatériels",
+                "Remplacent l'objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fournitures = étapes répétées du cycle."
+            },
+            {
+              "id": "q6",
+              "question": "Mauvais usage d'un outil…",
+              "type": "single_choice",
+              "options": [
+                "Peut le casser plus tôt",
+                "Le rend indestructible",
+                "Supprime l'usure",
+                "Améliore le recyclage seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respecter la notice limite la casse."
+            },
+            {
+              "id": "q7",
+              "question": "Mise à jour logicielle d'un appareil…",
+              "type": "single_choice",
+              "options": [
+                "Peut prolonger l'usage ou la sécurité",
+                "Force toujours le jet immédiat",
+                "Ne concerne pas le numérique",
+                "Supprime l'électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logiciel = partie du produit connecté."
+            },
+            {
+              "id": "q8",
+              "question": "Louer un objet peu utilisé…",
+              "type": "single_choice",
+              "options": [
+                "Optimise le taux d'utilisation",
+                "Empêche toute personne de l'utiliser",
+                "Supprime la fabrication",
+                "Interdit le partage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objet qui tourne = moins d'objets dormants."
+            },
+            {
+              "id": "q9",
+              "question": "Mesurer combien de temps on utilise un objet…",
+              "type": "single_choice",
+              "options": [
+                "Aide à juger si l'achat était pertinent",
+                "Est inutile",
+                "Supprime le besoin",
+                "Interdit le don"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usage réel = critère de responsabilité."
+            },
+            {
+              "id": "q10",
+              "question": "Passer la main à un proche…",
+              "type": "single_choice",
+              "options": [
+                "Continue la phase d'utilisation",
+                "Termine le cycle sans suite",
+                "Interdit le réemploi",
+                "Supprime le tri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seconde main = usage prolongé."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Fin de vie",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles fins de vie existent pour un objet ?",
+              "type": "multiple_choice",
+              "options": [
+                "Recyclage matière",
+                "Incinération avec ou sans valorisation énergétique",
+                "Disparition magique sans trace",
+                "Réemploi ou réparation"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Recycler, réemployer ou valoriser ; jeter mal = décharge."
+            },
+            {
+              "id": "q2",
+              "question": "Mettre en décharge…",
+              "type": "single_choice",
+              "options": [
+                "Enterre des déchets avec impacts locaux",
+                "Recyclé à 100 % automatiquement",
+                "Ne prend jamais de place",
+                "Produit des matériaux neufs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décharge = option moindre pour la planète."
+            },
+            {
+              "id": "q3",
+              "question": "Incinérer des déchets…",
+              "type": "single_choice",
+              "options": [
+                "Peut produire de l'énergie mais aussi des émissions",
+                "Ne produit jamais de chaleur",
+                "Recyclé le métal automatiquement toujours",
+                "Supprime le tri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incinération = valorisation partielle, pas idéale seule."
+            },
+            {
+              "id": "q4",
+              "question": "Un objet non trié…",
+              "type": "single_choice",
+              "options": [
+                "Va souvent en enfouissement ou incinération",
+                "Devient automatiquement une ressource",
+                "Se recycle seul dans la nature",
+                "Disparaît sans impact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tri correct = filière adaptée."
+            },
+            {
+              "id": "q5",
+              "question": "La filière DEEE concerne…",
+              "type": "single_choice",
+              "options": [
+                "Déchets d'équipements électriques et électroniques",
+                "Uniquement le papier",
+                "Les légumes",
+                "L'air pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appareils = collecte spécifique."
+            },
+            {
+              "id": "q6",
+              "question": "Fin de vie bien prévue dès la conception…",
+              "type": "single_choice",
+              "options": [
+                "Facilite démontage et tri",
+                "Rend le recyclage impossible",
+                "Supprime les matériaux",
+                "Interdit la réparation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éco-conception pense la fin de vie."
+            },
+            {
+              "id": "q7",
+              "question": "Jeter une pile dans la nature…",
+              "type": "single_choice",
+              "options": [
+                "Pollue et est dangereux",
+                "Engrais naturel",
+                "Recyclage automatique",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Piles = point de collecte obligatoire."
+            },
+            {
+              "id": "q8",
+              "question": "Textile usé en bon état…",
+              "type": "single_choice",
+              "options": [
+                "Peut être donné ou revendu",
+                "Doit toujours être enfoui",
+                "Ne peut pas avoir de seconde vie",
+                "Interdit le réemploi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réemploi avant recyclage textile."
+            },
+            {
+              "id": "q9",
+              "question": "Broyer puis séparer les matériaux…",
+              "type": "single_choice",
+              "options": [
+                "Étape possible de certaines filières",
+                "N'existe pas",
+                "Crée l'objet neuf directement",
+                "Supprime le transport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recyclage industriel = transformations."
+            },
+            {
+              "id": "q10",
+              "question": "Réduire les déchets en fin de vie…",
+              "type": "single_choice",
+              "options": [
+                "Passe aussi par moins jeter en amont",
+                "N'a aucun lien avec l'achat",
+                "Supprime le tri",
+                "Interdit la durabilité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durabilité et réemploi limitent la fin de vie."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Recyclage",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles affirmations sur le recyclage sont correctes ?",
+              "type": "multiple_choice",
+              "options": [
+                "Il transforme des déchets en matière réutilisable",
+                "Il demande tri et filières adaptées",
+                "Tout se recycle à l'infini sans perte de qualité",
+                "Jeter n'importe où recycle quand même"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Recyclage = collecte, tri, transformation ; pas magique."
+            },
+            {
+              "id": "q2",
+              "question": "Le symbole tri sur l'emballage…",
+              "type": "single_choice",
+              "options": [
+                "Indique où le jeter",
+                "Garantit 100 % recyclé",
+                "Supprime le plastique",
+                "Remplace la loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pictogrammes guident le citoyen."
+            },
+            {
+              "id": "q3",
+              "question": "Recycler l'aluminium…",
+              "type": "single_choice",
+              "options": [
+                "Économise beaucoup d'énergie vs neuf",
+                "Est impossible",
+                "Ne sert à rien",
+                "Crée du pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Métal recyclable en boucle."
+            },
+            {
+              "id": "q4",
+              "question": "Le verre en bouteille…",
+              "type": "single_choice",
+              "options": [
+                "Peut être fondu pour en refaire",
+                "Disparaît en une semaine",
+                "Ne se collecte pas",
+                "Remplace le bois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filière verre = fonte répétée."
+            },
+            {
+              "id": "q5",
+              "question": "Plastique recyclé…",
+              "type": "single_choice",
+              "options": [
+                "Ne revient pas toujours en contact alimentaire",
+                "Est identique au neuf dans tous les cas",
+                "N'existe pas",
+                "Supprime le tri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualité décroît parfois : downcycling."
+            },
+            {
+              "id": "q6",
+              "question": "Contamination du tri (mauvais déchet)…",
+              "type": "single_choice",
+              "options": [
+                "Peut gâcher un lot recyclable",
+                "Améliore le recyclage",
+                "N'a aucun effet",
+                "Supprime les camions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bien trier = filière efficace."
+            },
+            {
+              "id": "q7",
+              "question": "Recycler vs brûler…",
+              "type": "single_choice",
+              "options": [
+                "Recycler préserve mieux la matière",
+                "Brûler crée toujours plus de matière",
+                "Identiques",
+                "Recyclage interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiérarchie : réduire, réemployer, recycler…"
+            },
+            {
+              "id": "q8",
+              "question": "Filieres différentes selon matériau…",
+              "type": "single_choice",
+              "options": [
+                "Carton, métal, plastique ne vont pas pareil",
+                "Tout dans la même poubelle sans tri",
+                "Un seul procédé pour tout",
+                "Recyclage sans collecte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque matière a son circuit."
+            },
+            {
+              "id": "q9",
+              "question": "Tenir compte du recyclage en concevant…",
+              "type": "single_choice",
+              "options": [
+                "Facilite la récupération en fin de vie",
+                "Rend le tri impossible",
+                "Supprime les matériaux",
+                "Interdit le plastique toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Design for recycling = pièces séparables."
+            },
+            {
+              "id": "q10",
+              "question": "Acheter produit avec matière recyclée…",
+              "type": "single_choice",
+              "options": [
+                "Soutient la demande en matière seconde",
+                "Empêche le tri",
+                "Augmente l'extraction vierge obligatoire",
+                "Supprime les filières"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demande = filières viables."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Réemploi et réparation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles actions prolongent la vie utile sans recycler tout de suite ?",
+              "type": "multiple_choice",
+              "options": [
+                "Réparer une panne",
+                "Revendre ou donner un objet fonctionnel",
+                "Briser volontairement pour acheter neuf",
+                "Refuser toute pièce détachée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Réparer et réemployer passent avant le recyclage."
+            },
+            {
+              "id": "q2",
+              "question": "Réemploi, c'est…",
+              "type": "single_choice",
+              "options": [
+                "Réutiliser l'objet tel quel ou presque",
+                "Fondre immédiatement le métal",
+                "Enterrer le produit",
+                "Supprimer l'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seconde vie directe = impact minimal."
+            },
+            {
+              "id": "q3",
+              "question": "Pièces détachées disponibles…",
+              "type": "single_choice",
+              "options": [
+                "Facilitent la réparation",
+                "Interdisent le SAV",
+                "Obligent le jet",
+                "Suppriment l'usure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans pièces, réparer devient difficile."
+            },
+            {
+              "id": "q4",
+              "question": "Repair café ou atelier collège…",
+              "type": "single_choice",
+              "options": [
+                "Apprend à diagnostiquer et réparer",
+                "Encourage le jet systématique",
+                "Interdit l'outillage",
+                "Supprime la sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réparer = compétence citoyenne."
+            },
+            {
+              "id": "q5",
+              "question": "Obsolescence logicielle…",
+              "type": "single_choice",
+              "options": [
+                "Peut rendre un appareil inutilisable",
+                "Répare gratuitement le hardware",
+                "Ne concerne pas le numérique",
+                "Prolonge toujours la vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logiciel obsolète = fin de vie anticipée."
+            },
+            {
+              "id": "q6",
+              "question": "Donner à une ressourcerie…",
+              "type": "single_choice",
+              "options": [
+                "Permet réemploi ou réparation par d'autres",
+                "Enterre l'objet",
+                "Interdit la seconde main",
+                "Supprime le tri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structures locales = économie circulaire."
+            },
+            {
+              "id": "q7",
+              "question": "Colle forte permanent sur tout…",
+              "type": "single_choice",
+              "options": [
+                "Peut empêcher la réparation",
+                "Facilite toujours le démontage",
+                "Supprime les vis",
+                "Améliore le recyclage seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fixations réversibles aident réparation et tri."
+            },
+            {
+              "id": "q8",
+              "question": "Manuel de réparation en ligne…",
+              "type": "single_choice",
+              "options": [
+                "Aide les utilisateurs autonomes",
+                "Interdit le démontage",
+                "Supprime la garantie toujours",
+                "Empêche le recyclage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Documentation = droit à réparer."
+            },
+            {
+              "id": "q9",
+              "question": "Acheter d'occasion…",
+              "type": "single_choice",
+              "options": [
+                "Reporte un nouvel objet neuf",
+                "Augmente l'extraction immédiate",
+                "Interdit l'usage",
+                "Supprime le cycle de vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Occasion = réemploi marchand."
+            },
+            {
+              "id": "q10",
+              "question": "Hiérarchie des déchets : réparer…",
+              "type": "single_choice",
+              "options": [
+                "Est souvent préférable au simple recyclage",
+                "Est toujours interdit",
+                "Pire que la décharge",
+                "Supprime l'économie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduire et réutiliser avant recycler."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Analyser le cycle de vie",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour étudier un cycle de vie, on examine…",
+              "type": "multiple_choice",
+              "options": [
+                "Toutes les étapes de la ressource à la fin de vie",
+                "Les impacts à chaque étape",
+                "Uniquement la couleur du produit",
+                "Seulement la publicité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Analyse cycle de vie = vision globale."
+            },
+            {
+              "id": "q2",
+              "question": "Une ACV simplifiée en classe…",
+              "type": "single_choice",
+              "options": [
+                "Peut classer les étapes sur un schéma",
+                "Remplace toute mesure scientifique",
+                "Interdit le dessin",
+                "Supprime le recyclage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma = premier outil de raisonnement."
+            },
+            {
+              "id": "q3",
+              "question": "Comparer deux emballages…",
+              "type": "single_choice",
+              "options": [
+                "Montre des impacts différents",
+                "Prouve qu'ils sont identiques",
+                "Supprime le transport",
+                "Interdit le tri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même fonction, cycles parfois distincts."
+            },
+            {
+              "id": "q4",
+              "question": "L'étape la plus impactante…",
+              "type": "single_choice",
+              "options": [
+                "Varie selon l'objet (fabrication ou usage)",
+                "Est toujours le recyclage",
+                "N'existe jamais",
+                "Est toujours la pub"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut regarder le profil complet."
+            },
+            {
+              "id": "q5",
+              "question": "Données du fabricant sur le cycle…",
+              "type": "single_choice",
+              "options": [
+                "Aident mais peuvent être incomplètes",
+                "Suffisent sans esprit critique",
+                "Sont toujours faux",
+                "Remplacent la loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Croiser sources = analyse honnête."
+            },
+            {
+              "id": "q6",
+              "question": "Transport long sur un produit léger…",
+              "type": "single_choice",
+              "options": [
+                "Peut rester significatif en cumul",
+                "N'a aucun effet",
+                "Supprime l'usage",
+                "Interdit l'achat local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Volume et distance comptent."
+            },
+            {
+              "id": "q7",
+              "question": "Identifier les gisements de réduction…",
+              "type": "single_choice",
+              "options": [
+                "Cible les étapes les plus lourdes",
+                "Ignore le cycle",
+                "Supprime la réparation",
+                "Interdit l'éco-conception"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agir là où l'impact est fort."
+            },
+            {
+              "id": "q8",
+              "question": "Schéma flèches ressource → usine → maison → fin…",
+              "type": "single_choice",
+              "options": [
+                "Représente le cycle de vie",
+                "Décrit seulement la météo",
+                "Remplace le produit",
+                "Supprime les matériaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Visualiser aide à communiquer."
+            },
+            {
+              "id": "q9",
+              "question": "Boucle fermée en économie circulaire…",
+              "type": "single_choice",
+              "options": [
+                "Réinjecte matière ou produit en fin de vie",
+                "Linéaire toujours",
+                "Jet unique",
+                "Sans recyclage ni réemploi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Circulaire vs linéaire « prendre-faire-jeter »."
+            },
+            {
+              "id": "q10",
+              "question": "Projet : comparer gourde réutilisable et bouteille…",
+              "type": "single_choice",
+              "options": [
+                "Illustre l'usage répété vs jetable",
+                "Prouve que le jetable est toujours mieux",
+                "Supprime l'eau du robinet",
+                "Interdit le lavage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nombre d'usages change le bilan."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Matériaux durables",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels matériaux ou choix sont plus durables ?",
+              "type": "multiple_choice",
+              "options": [
+                "Matière recyclée ou renouvelable bien gérée",
+                "Conception permettant réparation",
+                "Mélange indissociable sans fin de vie",
+                "Matériau rare jeté après un usage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Origine responsable + longévité = durabilité."
+            },
+            {
+              "id": "q2",
+              "question": "Matériau durable ne signifie pas…",
+              "type": "single_choice",
+              "options": [
+                "Parfait dans tous les cas sans nuance",
+                "Pensé pour durer ou se recycler",
+                "Choisi avec critères environnementaux",
+                "Compatible avec l'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut contexte et compromis."
+            },
+            {
+              "id": "q3",
+              "question": "Acier inoxydable pour coutellerie…",
+              "type": "single_choice",
+              "options": [
+                "Résiste et dure longtemps",
+                "Se dissolve en une nuit",
+                "Ne se recycle jamais",
+                "Interdit la cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Longévité + recyclabilité du métal."
+            },
+            {
+              "id": "q4",
+              "question": "Textile synthétique vs laine durable…",
+              "type": "single_choice",
+              "options": [
+                "Origines et fin de vie différentes",
+                "Identiques en tout point",
+                "Sans impact",
+                "Non utilisables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fibres = cycles distincts à comparer."
+            },
+            {
+              "id": "q5",
+              "question": "Certification FSC pour bois…",
+              "type": "single_choice",
+              "options": [
+                "Indique une gestion forestière encadrée",
+                "Garantit zéro impact",
+                "Remplace le tri plastique",
+                "Interdit la scie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Label = repère, pas perfection absolue."
+            },
+            {
+              "id": "q6",
+              "question": "Éviter substances dangereuses en conception…",
+              "type": "single_choice",
+              "options": [
+                "Protège utilisateurs et filières fin de vie",
+                "Augmente les toxiques",
+                "Supprime la sécurité",
+                "Interdit le recyclage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Substances CMR ou polluantes = à limiter."
+            },
+            {
+              "id": "q7",
+              "question": "Composite collé permanent…",
+              "type": "single_choice",
+              "options": [
+                "Peut compliquer fin de vie",
+                "Facilite toujours le tri",
+                "Se recycle seul",
+                "Remplace l'acier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matériaux composites = défi recyclage."
+            },
+            {
+              "id": "q8",
+              "question": "Choisir moins de matériaux différents…",
+              "type": "single_choice",
+              "options": [
+                "Simplifie parfois le recyclage",
+                "Empêche toute fonction",
+                "Augmente les déchets sûrs",
+                "Interdit la solidité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simplicité matière = fin de vie plus claire."
+            },
+            {
+              "id": "q9",
+              "question": "Durabilité inclut…",
+              "type": "single_choice",
+              "options": [
+                "Résistance à l'usage prévu",
+                "Style uniquement",
+                "Pub maximale",
+                "Jet rapide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tenir dans le temps = moins de remplacement."
+            },
+            {
+              "id": "q10",
+              "question": "En 3e, justifier un matériau au collège…",
+              "type": "single_choice",
+              "options": [
+                "Relie propriétés, usage et impact",
+                "Seulement la couleur",
+                "Au hasard",
+                "Sans cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Argument technique + responsabilité."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan responsable",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Un produit responsable combine souvent…",
+              "type": "multiple_choice",
+              "options": [
+                "Besoin utile bien couvert",
+                "Impacts réduits sur le cycle de vie",
+                "Obsolescence maximale",
+                "Réparation impossible volontaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Utilité + maîtrise des impacts = design responsable."
+            },
+            {
+              "id": "q2",
+              "question": "Compromis en conception…",
+              "type": "single_choice",
+              "options": [
+                "Choix entre coût, impact et performance",
+                "Absence de toute contrainte",
+                "Un seul critère toujours",
+                "Interdit la réflexion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne optimise pas tout parfaitement à la fois."
+            },
+            {
+              "id": "q3",
+              "question": "Indicateur d'impact affiché…",
+              "type": "single_choice",
+              "options": [
+                "Informe sans tout résoudre",
+                "Remplace l'usage responsable",
+                "Supprime le tri",
+                "Garantit zéro émission"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesure = aide à décider."
+            },
+            {
+              "id": "q4",
+              "question": "Prolonger, réparer, recycler, dans l'ordre idéal…",
+              "type": "single_choice",
+              "options": [
+                "Réduire besoin, prolonger, réparer, puis recycler",
+                "Recycler avant toute réparation",
+                "Jeter d'abord",
+                "Acheter neuf systématiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiérarchie des 3R et plus."
+            },
+            {
+              "id": "q5",
+              "question": "Évaluer son projet de 3e…",
+              "type": "single_choice",
+              "options": [
+                "Compare au cahier des charges et aux impacts",
+                "Ignore le besoin",
+                "Supprime les tests",
+                "Interdit l'amélioration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan = critères atteints ou non."
+            },
+            {
+              "id": "q6",
+              "question": "Communiquer sur les limites du prototype…",
+              "type": "single_choice",
+              "options": [
+                "Est honnête et scientifique",
+                "Cache tout",
+                "Interdit la technologie",
+                "Supprime le cycle de vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transparence = esprit critique."
+            },
+            {
+              "id": "q7",
+              "question": "Loi et consigne de tri en France…",
+              "type": "single_choice",
+              "options": [
+                "Encadrent certaines filières",
+                "Remplacent la réflexion personnelle",
+                "Interdisent le recyclage",
+                "Suppriment les déchets seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre légal + gestes citoyens."
+            },
+            {
+              "id": "q8",
+              "question": "Innovation responsable…",
+              "type": "single_choice",
+              "options": [
+                "Cherche utile avec moins d'impacts",
+                "Ignore les personnes",
+                "Maximise le jetable",
+                "Refuse toute mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Innover ≠ aggraver les problèmes."
+            },
+            {
+              "id": "q9",
+              "question": "Question finale avant fabrication en série…",
+              "type": "single_choice",
+              "options": [
+                "L'objet vaut-il son impact total ?",
+                "Est-il le plus coloré ?",
+                "A-t-il le plus de pub ?",
+                "Ignore-t-on le besoin ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan global = décision éthique et technique."
+            },
+            {
+              "id": "q10",
+              "question": "En 3e, le design responsable prépare à…",
+              "type": "single_choice",
+              "options": [
+                "Consommer et concevoir avec esprit critique",
+                "Ignorer la planète",
+                "Refuser toute technologie",
+                "Copier sans analyser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétences pour agir en futur citoyen."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

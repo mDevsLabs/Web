@@ -1,0 +1,2633 @@
+{
+  "id": "terminale-hggsp-01",
+  "year": "terminale",
+  "subject": "hggsp",
+  "title": "L'enjeu de la connaissance",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Production des savoirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Recherche publique",
+          "questions": [
+            {
+              "id": "u1-q01-01",
+              "type": "multiple_choice",
+              "prompt": "Traits du modèle français de recherche :",
+              "options": [
+                "Rôle central de l'État",
+                "100 % privé",
+                "Organismes type CNRS",
+                "Pas d'universités"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'État structure et finance la recherche avec des organismes dédiés."
+            },
+            {
+              "id": "u1-q01-02",
+              "type": "single_choice",
+              "prompt": "Le CNRS :",
+              "options": [
+                "Organisme public de recherche",
+                "Ministère",
+                "Banque",
+                "Agence presse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Employeur de chercheurs et coordinateur de laboratoires."
+            },
+            {
+              "id": "u1-q01-03",
+              "type": "single_choice",
+              "prompt": "L'ANR :",
+              "options": [
+                "Finance projets compétitifs",
+                "Gère lycées",
+                "Armée seule",
+                "Subventions agricoles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appels à projets sélectionnant des équipes."
+            },
+            {
+              "id": "u1-q01-04",
+              "type": "single_choice",
+              "prompt": "Une UMR :",
+              "options": [
+                "Labo commun organisme-université",
+                "Deux lycées",
+                "État-ONU",
+                "Médias-armée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unité mixte de recherche partagée."
+            },
+            {
+              "id": "u1-q01-05",
+              "type": "single_choice",
+              "prompt": "Recherche fondamentale :",
+              "options": [
+                "Comprendre sans application immédiate",
+                "Marketing",
+                "Police",
+                "Audit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distincte de la recherche appliquée ou contractuelle."
+            },
+            {
+              "id": "u1-q01-06",
+              "type": "single_choice",
+              "prompt": "HCERES :",
+              "options": [
+                "Évalue enseignement supérieur et recherche",
+                "JO",
+                "Schengen",
+                "BCE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évaluations pour les politiques publiques."
+            },
+            {
+              "id": "u1-q01-07",
+              "type": "single_choice",
+              "prompt": "Doctorat :",
+              "options": [
+                "Thèse et recherche originale",
+                "BEP",
+                "Stage seconde",
+                "Concours admin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus haut diplôme universitaire par recherche."
+            },
+            {
+              "id": "u1-q01-08",
+              "type": "single_choice",
+              "prompt": "Lois de programmation :",
+              "options": [
+                "Crédits pluriannuels recherche",
+                "Supprimer CNRS",
+                "Interdire publier",
+                "Privatiser école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Planification budgétaire de la recherche."
+            },
+            {
+              "id": "u1-q01-09",
+              "type": "single_choice",
+              "prompt": "Souveraineté scientifique :",
+              "options": [
+                "Capacité autonome produire savoirs",
+                "Secret total",
+                "Sans État",
+                "Fin échanges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limiter la dépendance vis-à-vis d'autres puissances."
+            },
+            {
+              "id": "u1-q01-10",
+              "type": "single_choice",
+              "prompt": "Inserm :",
+              "options": [
+                "Santé et biomédical",
+                "Géologie",
+                "Archéo",
+                "Fiscal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Institut national santé-recherche médicale."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Universités",
+          "questions": [
+            {
+              "id": "u1-q02-01",
+              "type": "multiple_choice",
+              "prompt": "Supérieur français :",
+              "options": [
+                "Universités et grandes écoles",
+                "Type unique",
+                "Fusions et COMUE",
+                "Pas de recherche"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Dualité historique et regroupements récents."
+            },
+            {
+              "id": "u1-q02-02",
+              "type": "single_choice",
+              "prompt": "Shanghai ARWU :",
+              "options": [
+                "Publications et prix",
+                "Plages",
+                "PIB seul",
+                "Chômage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classement bibliométrique mondial."
+            },
+            {
+              "id": "u1-q02-03",
+              "type": "single_choice",
+              "prompt": "Rankings entraînent :",
+              "options": [
+                "Visibilité internationale",
+                "Fin publications",
+                "Fermer BU",
+                "Interdire anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stratégies de recrutement et partenariats."
+            },
+            {
+              "id": "u1-q02-04",
+              "type": "single_choice",
+              "prompt": "Enseignant-chercheur :",
+              "options": [
+                "Enseigne et recherche",
+                "Jamais cours",
+                "Sans labo",
+                "Toujours précaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double mission universitaire."
+            },
+            {
+              "id": "u1-q02-05",
+              "type": "single_choice",
+              "prompt": "Parcoursup :",
+              "options": [
+                "Orientation post-bac",
+                "Nobel",
+                "Élection",
+                "Frontières"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vœux et affectations supérieur."
+            },
+            {
+              "id": "u1-q02-06",
+              "type": "single_choice",
+              "prompt": "Massification :",
+              "options": [
+                "Plus d'étudiants",
+                "Moins bac",
+                "Fin bac",
+                "Zéro fac"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Démocratisation depuis les années 1960."
+            },
+            {
+              "id": "u1-q02-07",
+              "type": "single_choice",
+              "prompt": "Bologne LMD :",
+              "options": [
+                "Harmonisation Europe",
+                "Quitter UE",
+                "Sans master",
+                "Sans Erasmus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cycles licence-master-doctorat."
+            },
+            {
+              "id": "u1-q02-08",
+              "type": "single_choice",
+              "prompt": "Critique rankings :",
+              "options": [
+                "Indicateurs partiels",
+                "Parfait SHS",
+                "Ignore publis",
+                "Identique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Biais vers sciences dures et volume."
+            },
+            {
+              "id": "u1-q02-09",
+              "type": "single_choice",
+              "prompt": "Campus innovation :",
+              "options": [
+                "Labos et start-up",
+                "Sport seul",
+                "Tribunaux",
+                "Naval"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transfert technologique."
+            },
+            {
+              "id": "u1-q02-10",
+              "type": "single_choice",
+              "prompt": "IDEX :",
+              "options": [
+                "Excellence structurante",
+                "Fermer arts",
+                "Médias État",
+                "Fin CNRS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Label d'initiatives d'excellence."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Publications",
+          "questions": [
+            {
+              "id": "u1-q03-01",
+              "type": "multiple_choice",
+              "prompt": "Peer review :",
+              "options": [
+                "Experts évaluent manuscrit",
+                "Aucun contrôle",
+                "Filtrage avant diffusion",
+                "Vote TikTok"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Contrôle par pairs avant publication en revue."
+            },
+            {
+              "id": "u1-q03-02",
+              "type": "single_choice",
+              "prompt": "Revue à comité :",
+              "options": [
+                "Article évalué avant parution",
+                "Blog",
+                "Communiqué",
+                "Mode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Standard académique de validation."
+            },
+            {
+              "id": "u1-q03-03",
+              "type": "single_choice",
+              "prompt": "Preprint :",
+              "options": [
+                "Diffusion avant relecture",
+                "Version finale",
+                "Brevet",
+                "Oral seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "HAL, arXiv : rapidité sans validation finale."
+            },
+            {
+              "id": "u1-q03-04",
+              "type": "single_choice",
+              "prompt": "Facteur impact :",
+              "options": [
+                "Citations/revue",
+                "Salaires",
+                "Campus",
+                "Notes lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indicateur bibliométrique contesté."
+            },
+            {
+              "id": "u1-q03-05",
+              "type": "single_choice",
+              "prompt": "Publish or perish :",
+              "options": [
+                "Pression publier",
+                "Interdit publier",
+                "Gratuit livres",
+                "Fin revues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Carrière liée à la productivité."
+            },
+            {
+              "id": "u1-q03-06",
+              "type": "single_choice",
+              "prompt": "HAL :",
+              "options": ["Archive ouverte FR", "NASA", "OTAN", "FMI"],
+              "correctAnswers": [0],
+              "explanation": "Dépôt francophone de publications."
+            },
+            {
+              "id": "u1-q03-07",
+              "type": "single_choice",
+              "prompt": "Fraude données :",
+              "options": [
+                "Fabrication résultats",
+                "Citer",
+                "Données brutes",
+                "Débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Atteinte intégrité scientifique."
+            },
+            {
+              "id": "u1-q03-08",
+              "type": "single_choice",
+              "prompt": "Éditeurs commerciaux :",
+              "options": [
+                "Abonnement ou APC",
+                "Gratuit sans modèle",
+                "État seul",
+                "Sans droits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elsevier, Springer monétisent l'accès."
+            },
+            {
+              "id": "u1-q03-09",
+              "type": "single_choice",
+              "prompt": "Science ouverte :",
+              "options": [
+                "Open access et données",
+                "Secret",
+                "Brevets seuls",
+                "Interdit partager"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique d'accès libre aux savoirs."
+            },
+            {
+              "id": "u1-q03-10",
+              "type": "single_choice",
+              "prompt": "Open review :",
+              "options": [
+                "Transparence rapports/noms",
+                "Sans critique",
+                "Sans correction",
+                "Sans éthique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variante pour responsabiliser évaluations."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Disciplines",
+          "questions": [
+            {
+              "id": "u1-q04-01",
+              "type": "multiple_choice",
+              "prompt": "SHS produisent savoirs via :",
+              "options": [
+                "Quali et quanti",
+                "Seulement labo dur",
+                "Enquêtes et archives",
+                "Sans théorie"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Méthodes variées selon objets sociaux."
+            },
+            {
+              "id": "u1-q04-02",
+              "type": "single_choice",
+              "prompt": "Interdisciplinarité :",
+              "options": [
+                "Croise champs",
+                "Une discipline",
+                "Sans méthode",
+                "Fin relecture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objets complexes climat-santé-numérique."
+            },
+            {
+              "id": "u1-q04-03",
+              "type": "single_choice",
+              "prompt": "Big science :",
+              "options": [
+                "Grands équipements internationaux",
+                "Solitaire",
+                "Sans budget",
+                "Sans coop"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CERN : co-financement multilateral."
+            },
+            {
+              "id": "u1-q04-04",
+              "type": "single_choice",
+              "prompt": "Épistémologie :",
+              "options": ["Validité des savoirs", "Routes", "Change", "Pénal"],
+              "correctAnswers": [0],
+              "explanation": "Fondements et méthodes connaissance."
+            },
+            {
+              "id": "u1-q04-05",
+              "type": "single_choice",
+              "prompt": "Paradigme Kuhn :",
+              "options": [
+                "Cadre dominant",
+                "Carte électorale",
+                "Traité",
+                "Monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Science normale et révolutions."
+            },
+            {
+              "id": "u1-q04-06",
+              "type": "single_choice",
+              "prompt": "Recherche-action :",
+              "options": [
+                "Savoir avec acteurs",
+                "Labo fermé",
+                "Espionnage",
+                "Sondage seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Co-production terrain."
+            },
+            {
+              "id": "u1-q04-07",
+              "type": "single_choice",
+              "prompt": "Humanités numériques :",
+              "options": [
+                "Outils sur sources",
+                "Fin archives",
+                "Sans stats",
+                "Remplace historien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corpus, visualisation, textométrie."
+            },
+            {
+              "id": "u1-q04-08",
+              "type": "single_choice",
+              "prompt": "Comité éthique :",
+              "options": [
+                "Protège personnes en recherche",
+                "Impôts",
+                "Frontières",
+                "Parcoursup"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Validation protocoles sensibles."
+            },
+            {
+              "id": "u1-q04-09",
+              "type": "single_choice",
+              "prompt": "Brevet :",
+              "options": [
+                "Protège invention",
+                "Idée abstraite",
+                "Thèse",
+                "Cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PI incitant innovation, limitant diffusion."
+            },
+            {
+              "id": "u1-q04-10",
+              "type": "single_choice",
+              "prompt": "Recherche défense :",
+              "options": [
+                "Savoirs sécurité/dual-use",
+                "Culture seule",
+                "Sans État",
+                "Interdit FR"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjeu souveraineté et exportations."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Financements",
+          "questions": [
+            {
+              "id": "u1-q05-01",
+              "type": "multiple_choice",
+              "prompt": "Financement recherche :",
+              "options": [
+                "Public",
+                "Entreprises/fondations",
+                "Étudiants seuls",
+                "Sans contribuable"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mix public-privé, État central en France."
+            },
+            {
+              "id": "u1-q05-02",
+              "type": "single_choice",
+              "prompt": "R&D entreprise :",
+              "options": [
+                "Innovation produit",
+                "Cours géo",
+                "Diplomatie",
+                "Sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétitivité et brevets."
+            },
+            {
+              "id": "u1-q05-03",
+              "type": "single_choice",
+              "prompt": "CIR :",
+              "options": ["Crédit impôt R&D", "Taxe livres", "Amende", "Lycée"],
+              "correctAnswers": [0],
+              "explanation": "Incitation fiscale débattue."
+            },
+            {
+              "id": "u1-q05-04",
+              "type": "single_choice",
+              "prompt": "Capitalisme cognitif :",
+              "options": [
+                "Valeur immatérielle",
+                "Sans éducation",
+                "Agri seule",
+                "Or monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Savoirs au cœur accumulation."
+            },
+            {
+              "id": "u1-q05-05",
+              "type": "single_choice",
+              "prompt": "Lobby pharma :",
+              "options": [
+                "Oriente priorités/prix",
+                "Rotation Terre",
+                "Frontières",
+                "Orthographe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poids acteurs privés santé."
+            },
+            {
+              "id": "u1-q05-06",
+              "type": "single_choice",
+              "prompt": "Fondation Gates :",
+              "options": [
+                "Santé globale ciblée",
+                "Remplace ONU",
+                "Interdit vaccins",
+                "Fin fac"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Philanthropie structurant agendas."
+            },
+            {
+              "id": "u1-q05-07",
+              "type": "single_choice",
+              "prompt": "Précarité recherche :",
+              "options": [
+                "Post-docs, CDD",
+                "Tous titulaires",
+                "Salaire mondial",
+                "Sans doctorants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conditions production savoirs."
+            },
+            {
+              "id": "u1-q05-08",
+              "type": "single_choice",
+              "prompt": "Horizon Europe :",
+              "options": ["Programme UE R&D", "Football", "Climat seul", "BCE"],
+              "correctAnswers": [0],
+              "explanation": "Projets collaboratifs européens."
+            },
+            {
+              "id": "u1-q05-09",
+              "type": "single_choice",
+              "prompt": "Marché étudiants :",
+              "options": [
+                "Concurrence internationale",
+                "Isolement",
+                "Gratuit partout",
+                "Fin mobilité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Talents comme ressource."
+            },
+            {
+              "id": "u1-q05-10",
+              "type": "single_choice",
+              "prompt": "Commodification :",
+              "options": [
+                "Savoir marchandise",
+                "Gratuit universel",
+                "Sans brevet",
+                "Fin édition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critique logiques profit."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Innovation",
+          "questions": [
+            {
+              "id": "u1-q06-01",
+              "type": "multiple_choice",
+              "prompt": "Triple hélice :",
+              "options": [
+                "Université-entreprise-État",
+                "Armée seule",
+                "Interactions institutions",
+                "Sans transfert"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Modèle innovation systémique."
+            },
+            {
+              "id": "u1-q06-02",
+              "type": "single_choice",
+              "prompt": "Deeptech :",
+              "options": [
+                "Breakthrough scientifique",
+                "Retail",
+                "Tourisme",
+                "Sans labo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Start-up à forte intensité R&D."
+            },
+            {
+              "id": "u1-q06-03",
+              "type": "single_choice",
+              "prompt": "SATT :",
+              "options": [
+                "Valorise brevets publics",
+                "Élections",
+                "Métro",
+                "Pêche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transfert labos vers marché."
+            },
+            {
+              "id": "u1-q06-04",
+              "type": "single_choice",
+              "prompt": "GAFAM R&D :",
+              "options": [
+                "IA et publications",
+                "Sans chercheurs",
+                "Sans brevet",
+                "Sans data"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puissance privée de production savoir."
+            },
+            {
+              "id": "u1-q06-05",
+              "type": "single_choice",
+              "prompt": "Secret vs publication :",
+              "options": [
+                "Tension profit/diffusion",
+                "Identiques",
+                "Obligatoire publier",
+                "Sans enjeu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stratégies propriété savoir-faire."
+            },
+            {
+              "id": "u1-q06-06",
+              "type": "single_choice",
+              "prompt": "CIFRE :",
+              "options": [
+                "Thèse en entreprise",
+                "Sans encadrant",
+                "Collège",
+                "Armée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convention industrielle recherche."
+            },
+            {
+              "id": "u1-q06-07",
+              "type": "single_choice",
+              "prompt": "Think tank :",
+              "options": ["Rapports politiques", "Romans", "Jeux", "Monnaie"],
+              "correctAnswers": [0],
+              "explanation": "Production savoir pour décideurs."
+            },
+            {
+              "id": "u1-q06-08",
+              "type": "single_choice",
+              "prompt": "Open source :",
+              "options": [
+                "Code partagé",
+                "Secret",
+                "Brevet unique",
+                "Interdit copie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Production collective technique."
+            },
+            {
+              "id": "u1-q06-09",
+              "type": "single_choice",
+              "prompt": "Silicon Valley :",
+              "options": [
+                "Université + venture capital",
+                "Sans recherche",
+                "Plan seul",
+                "Agri only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écosystème spin-offs."
+            },
+            {
+              "id": "u1-q06-10",
+              "type": "single_choice",
+              "prompt": "Incubateur universitaire :",
+              "options": ["Accompagne start-up", "Prison", "Stade", "Port"],
+              "correctAnswers": [0],
+              "explanation": "Lien formation-recherche-entrepreneuriat."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Inégalités",
+          "questions": [
+            {
+              "id": "u1-q07-01",
+              "type": "multiple_choice",
+              "prompt": "Inégalités production savoir :",
+              "options": [
+                "Femmes sous-représentées STEM",
+                "Parité partout",
+                "Plafond de verre",
+                "Sans données"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Écarts promotion et disciplines."
+            },
+            {
+              "id": "u1-q07-02",
+              "type": "single_choice",
+              "prompt": "Matilda effect :",
+              "options": [
+                "Efface femmes science",
+                "Théorème",
+                "Paix",
+                "Routes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Crédit attribué aux hommes."
+            },
+            {
+              "id": "u1-q07-03",
+              "type": "single_choice",
+              "prompt": "Colonialisme savoir :",
+              "options": [
+                "Centres vs périphéries",
+                "Égalité pays",
+                "Fin ethnologie",
+                "Sans eurocentrisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiérarchies épistémiques historiques."
+            },
+            {
+              "id": "u1-q07-04",
+              "type": "single_choice",
+              "prompt": "Global South académique :",
+              "options": [
+                "Moins revues/citations",
+                "Domine métriques",
+                "Fin coop",
+                "Égal financement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déséquilibre Nord-Sud."
+            },
+            {
+              "id": "u1-q07-05",
+              "type": "single_choice",
+              "prompt": "Mixité instances :",
+              "options": [
+                "Objectifs parité",
+                "Interdit femmes",
+                "Quota zéro",
+                "Sans débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Représentation gouvernance science."
+            },
+            {
+              "id": "u1-q07-06",
+              "type": "single_choice",
+              "prompt": "Handicap recherche :",
+              "options": [
+                "Barrières accès",
+                "Universel acquis",
+                "Sans aménagement",
+                "Hors sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inclusion des producteurs de savoir."
+            },
+            {
+              "id": "u1-q07-07",
+              "type": "single_choice",
+              "prompt": "Savoirs indigènes :",
+              "options": [
+                "Cosmologies locales",
+                "Rejette science",
+                "Europe seule",
+                "Fin enquête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluralité sources légitimes."
+            },
+            {
+              "id": "u1-q07-08",
+              "type": "single_choice",
+              "prompt": "Biais peer review :",
+              "options": [
+                "Genre et affiliation",
+                "Inexistant",
+                "SHS seulement",
+                "Interdit revues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évaluations pas neutres."
+            },
+            {
+              "id": "u1-q07-09",
+              "type": "single_choice",
+              "prompt": "Citizen science :",
+              "options": [
+                "Public collecte données",
+                "Sans protocole",
+                "Remplace labo",
+                "Sans éthique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Participation non-professionnels."
+            },
+            {
+              "id": "u1-q07-10",
+              "type": "single_choice",
+              "prompt": "Discrimination filières :",
+              "options": [
+                "Valorisent STEM vs SHS",
+                "Égal prestige",
+                "Sans effet budget",
+                "Fin SHS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiérarchies symboliques disciplines."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Politiques",
+          "questions": [
+            {
+              "id": "u1-q08-01",
+              "type": "multiple_choice",
+              "prompt": "Expertise et politique :",
+              "options": [
+                "Conseille décisions",
+                "Remplace votes",
+                "Débat public",
+                "Sans controverse"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Savoir n'efface pas choix démocratiques."
+            },
+            {
+              "id": "u1-q08-02",
+              "type": "single_choice",
+              "prompt": "Post-vérité :",
+              "options": [
+                "Affaiblit faits établis",
+                "Renforce revues",
+                "Fin réseaux",
+                "Accord universel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Crise confiance institutions savoir."
+            },
+            {
+              "id": "u1-q08-03",
+              "type": "single_choice",
+              "prompt": "IPCC :",
+              "options": ["Synthèse climat", "Romans", "Élections", "Brevets"],
+              "correctAnswers": [0],
+              "explanation": "Savoir agrégé intergouvernemental."
+            },
+            {
+              "id": "u1-q08-04",
+              "type": "single_choice",
+              "prompt": "Agenda setting :",
+              "options": [
+                "Priorités recherche",
+                "Hasard",
+                "Sans financeurs",
+                "Lycéens seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "États et fondations orientent thèmes."
+            },
+            {
+              "id": "u1-q08-05",
+              "type": "single_choice",
+              "prompt": "Dual-use :",
+              "options": [
+                "Civil et militaire",
+                "Civil seul",
+                "Sans contrôle",
+                "Open total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exportations et sécurité recherche."
+            },
+            {
+              "id": "u1-q08-06",
+              "type": "single_choice",
+              "prompt": "France Relance R&D :",
+              "options": [
+                "Investissements compétitivité",
+                "Coupe fac",
+                "Astrologie",
+                "Fin ANR"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plan post-Covid innovation."
+            },
+            {
+              "id": "u1-q08-07",
+              "type": "single_choice",
+              "prompt": "Lobbys universités :",
+              "options": [
+                "Défendent budgets",
+                "Sans voix",
+                "Interdits",
+                "Remplacent chercheurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corporatisations et alliances."
+            },
+            {
+              "id": "u1-q08-08",
+              "type": "single_choice",
+              "prompt": "Impact sociétal (REF) :",
+              "options": [
+                "Effets hors publications",
+                "Arbres campus",
+                "Twitter",
+                "Parking"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évaluation élargie Royaume-Uni."
+            },
+            {
+              "id": "u1-q08-09",
+              "type": "single_choice",
+              "prompt": "Stratégie IA France :",
+              "options": [
+                "Talents et équipements",
+                "Interdit algo",
+                "Quitte numérique",
+                "Fin CNRS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souveraineté face USA-Chine."
+            },
+            {
+              "id": "u1-q08-10",
+              "type": "single_choice",
+              "prompt": "Covid et experts :",
+              "options": [
+                "Visibilité et contestation",
+                "Consensus total",
+                "Fin modèles",
+                "Sans médias"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tension science-politique-société."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Histoire savoirs",
+          "questions": [
+            {
+              "id": "u1-q09-01",
+              "type": "multiple_choice",
+              "prompt": "Révolution scientifique moderne :",
+              "options": [
+                "Expérience et maths",
+                "Rejet observation",
+                "Académies savantes",
+                "Fin universités"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "XVIIe : institutions et méthode nouvelle."
+            },
+            {
+              "id": "u1-q09-02",
+              "type": "single_choice",
+              "prompt": "Encyclopédie Diderot :",
+              "options": [
+                "Diffuser Lumières",
+                "Secret défense",
+                "Bible seule",
+                "Carte routes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Projet collectif savoirs XVIIIe."
+            },
+            {
+              "id": "u1-q09-03",
+              "type": "single_choice",
+              "prompt": "Université médiévale :",
+              "options": [
+                "Formation clercs et droit",
+                "Labo physique",
+                "Silicon Valley",
+                "Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Origines européennes du supérieur."
+            },
+            {
+              "id": "u1-q09-04",
+              "type": "single_choice",
+              "prompt": "Museum et collections :",
+              "options": [
+                "Classer nature/sociétés",
+                "Bourse",
+                "Armée",
+                "Radio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Savoirs par accumulation objets."
+            },
+            {
+              "id": "u1-q09-05",
+              "type": "single_choice",
+              "prompt": "Positivisme XIXe :",
+              "options": [
+                "Faits et science",
+                "Mystique seule",
+                "Sans méthode",
+                "Fin stats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comte : ordre positif des savoirs."
+            },
+            {
+              "id": "u1-q09-06",
+              "type": "single_choice",
+              "prompt": "Guerre froide R&D :",
+              "options": [
+                "Course spatiale/armes",
+                "Sans budget",
+                "Fin université",
+                "Isolation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "État stratège producteur savoirs."
+            },
+            {
+              "id": "u1-q09-07",
+              "type": "single_choice",
+              "prompt": "Pasteur :",
+              "options": [
+                "Labo et applications",
+                "Astrologie",
+                "Diplomatie",
+                "Marine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle recherche-appliquée nationale."
+            },
+            {
+              "id": "u1-q09-08",
+              "type": "single_choice",
+              "prompt": "Vulgarisation XIX-XXe :",
+              "options": ["Diffuser découvertes", "Prison", "Banque", "Port"],
+              "correctAnswers": [0],
+              "explanation": "Médiation scientifique publique."
+            },
+            {
+              "id": "u1-q09-09",
+              "type": "single_choice",
+              "prompt": "Durkheim :",
+              "options": [
+                "Faits sociaux",
+                "Pure fiction",
+                "Sans école",
+                "Fin méthode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Institutionnalisation SHS en France."
+            },
+            {
+              "id": "u1-q09-10",
+              "type": "single_choice",
+              "prompt": "Alexandrie (symbole) :",
+              "options": [
+                "Savoir universel antique",
+                "Base OTAN",
+                "Bourse",
+                "Usine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mémoire géopolitique du savoir."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse production",
+          "questions": [
+            {
+              "id": "u1-q10-01",
+              "type": "multiple_choice",
+              "prompt": "Production savoir aujourd'hui :",
+              "options": [
+                "Public et privé",
+                "Uniquement États",
+                "Internationalisée",
+                "Isolée village"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Acteurs multiples et réseaux mondiaux."
+            },
+            {
+              "id": "u1-q10-02",
+              "type": "single_choice",
+              "prompt": "h-index :",
+              "options": [
+                "Métrique chercheur",
+                "Pluie",
+                "Élections",
+                "Frontières"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bibliométrie individuelle critiquée."
+            },
+            {
+              "id": "u1-q10-03",
+              "type": "single_choice",
+              "prompt": "Crise reproductibilité :",
+              "options": [
+                "Résultats non replicables",
+                "100 % replicables",
+                "Sans enjeu",
+                "Fin labos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question confiance méthodes."
+            },
+            {
+              "id": "u1-q10-04",
+              "type": "single_choice",
+              "prompt": "Plan national recherche :",
+              "options": [
+                "Priorités souveraineté",
+                "Astrologie",
+                "Sport",
+                "Mode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orientations stratégiques État."
+            },
+            {
+              "id": "u1-q10-05",
+              "type": "single_choice",
+              "prompt": "Coopération vs compétition :",
+              "options": [
+                "Coexistent",
+                "Jamais coop",
+                "Jamais compét",
+                "Identique sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Publications communes et rivalité états."
+            },
+            {
+              "id": "u1-q10-06",
+              "type": "single_choice",
+              "prompt": "Éthique IA recherche :",
+              "options": [
+                "Biais et données",
+                "Sans règle",
+                "Interdit étudier",
+                "Hors HGGSP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Production algorithmique connaissance."
+            },
+            {
+              "id": "u1-q10-07",
+              "type": "single_choice",
+              "prompt": "Labo sans murs :",
+              "options": ["Réseaux distribués", "Prison", "Stade", "Ferme"],
+              "correctAnswers": [0],
+              "explanation": "Collaborations numériques globales."
+            },
+            {
+              "id": "u1-q10-08",
+              "type": "single_choice",
+              "prompt": "Ingénieur vs chercheur :",
+              "options": [
+                "Rôles proches R&D",
+                "Identiques juridique",
+                "Sans lien",
+                "Interdit coop"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentarité production technique."
+            },
+            {
+              "id": "u1-q10-09",
+              "type": "single_choice",
+              "prompt": "Débat modèle FR :",
+              "options": [
+                "Sous-financement",
+                "Surfinancement",
+                "Sans chercheurs",
+                "Fin évaluation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Précarité et mobilisations."
+            },
+            {
+              "id": "u1-q10-10",
+              "type": "single_choice",
+              "prompt": "Savoir et pouvoir (Foucault) :",
+              "options": [
+                "Lien vérité-pouvoir",
+                "Sans politique",
+                "Neutralité pure",
+                "Fin histoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyse gouvernementalité et savoirs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Circulation des savoirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Numérique encyclopédique",
+          "questions": [
+            {
+              "id": "u2-q01-01",
+              "type": "multiple_choice",
+              "prompt": "Wikipedia circule savoirs via :",
+              "options": [
+                "Édition collaborative",
+                "Comité secret unique",
+                "Multilinguisme",
+                "Paywall obligatoire"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Plateforme ouverte et traductions multiples."
+            },
+            {
+              "id": "u2-q01-02",
+              "type": "single_choice",
+              "prompt": "Wikimedia :",
+              "options": ["Fondation non lucratif", "GAFAM", "Armée", "Banque"],
+              "correctAnswers": [0],
+              "explanation": "Gouvernance communautaire du libre accès."
+            },
+            {
+              "id": "u2-q01-03",
+              "type": "single_choice",
+              "prompt": "Wiki vs encyclo papier :",
+              "options": [
+                "Mise à jour continue",
+                "Figée",
+                "Sans sources",
+                "Interdit citoyens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle participatif en ligne."
+            },
+            {
+              "id": "u2-q01-04",
+              "type": "single_choice",
+              "prompt": "Neutralité Wikipedia :",
+              "options": [
+                "Règle éditoriale",
+                "Propagande État",
+                "Sans débat",
+                "Fin sources"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation équilibrée controverses."
+            },
+            {
+              "id": "u2-q01-05",
+              "type": "single_choice",
+              "prompt": "Fiabilité encyclo numérique :",
+              "options": [
+                "Vérification sources",
+                "Vitesse seule",
+                "Anonymat total",
+                "Sans modération"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normes éditoriales débattues."
+            },
+            {
+              "id": "u2-q01-06",
+              "type": "single_choice",
+              "prompt": "Knowledge Graph :",
+              "options": ["Encadré moteur recherche", "Revues", "ONU", "CERN"],
+              "correctAnswers": [0],
+              "explanation": "Agrégation privée de savoirs."
+            },
+            {
+              "id": "u2-q01-07",
+              "type": "single_choice",
+              "prompt": "MOOC :",
+              "options": [
+                "Cours en ligne massifs",
+                "Examens papier",
+                "Sans université",
+                "Interdit accès"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diffusion mondiale enseignements."
+            },
+            {
+              "id": "u2-q01-08",
+              "type": "single_choice",
+              "prompt": "Britannica en ligne :",
+              "options": [
+                "Modèle commercial",
+                "Gratuit total",
+                "Sans auteurs",
+                "État seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraste ressources ouvertes."
+            },
+            {
+              "id": "u2-q01-09",
+              "type": "single_choice",
+              "prompt": "Médiation musée numérique :",
+              "options": ["QR et apps", "Monnaie", "Visa", "Armement"],
+              "correctAnswers": [0],
+              "explanation": "Circulation patrimoine sur site."
+            },
+            {
+              "id": "u2-q01-10",
+              "type": "single_choice",
+              "prompt": "Communs numériques :",
+              "options": [
+                "Ressources partagées",
+                "Privé exclusif",
+                "Sans règle",
+                "Fin Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alternative marchandisation."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Open access",
+          "questions": [
+            {
+              "id": "u2-q02-01",
+              "type": "multiple_choice",
+              "prompt": "Open access :",
+              "options": [
+                "Lecteur gratuit en ligne",
+                "Interdit auteurs",
+                "Voie dorée ou verte",
+                "Sans archives"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "APC ou dépôt institutionnel (HAL)."
+            },
+            {
+              "id": "u2-q02-02",
+              "type": "single_choice",
+              "prompt": "Paywall :",
+              "options": [
+                "Abonnement revues",
+                "Gratuit",
+                "Sans éditeur",
+                "Brevet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frein accès universités pauvres."
+            },
+            {
+              "id": "u2-q02-03",
+              "type": "single_choice",
+              "prompt": "Plan S :",
+              "options": [
+                "OA publications publiques",
+                "Secret défense",
+                "Fin recherche",
+                "Astrologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Initiative cOAlition S."
+            },
+            {
+              "id": "u2-q02-04",
+              "type": "single_choice",
+              "prompt": "APC :",
+              "options": [
+                "Frais publication auteur",
+                "Salaire",
+                "Taxe carbone",
+                "Loyer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat équité Sud/global."
+            },
+            {
+              "id": "u2-q02-05",
+              "type": "single_choice",
+              "prompt": "Sci-Hub :",
+              "options": [
+                "Accès contesté articles",
+                "Éditeur officiel",
+                "ONU",
+                "Musée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contestation propriété intellectuelle."
+            },
+            {
+              "id": "u2-q02-06",
+              "type": "single_choice",
+              "prompt": "DOI :",
+              "options": ["Identifiant stable", "Devise", "Passeport", "Stade"],
+              "correctAnswers": [0],
+              "explanation": "Permalien citation."
+            },
+            {
+              "id": "u2-q02-07",
+              "type": "single_choice",
+              "prompt": "Creative Commons :",
+              "options": ["Licences partage", "Brevet", "Secret", "Armée"],
+              "correctAnswers": [0],
+              "explanation": "Cadre juridique diffusion ouverte."
+            },
+            {
+              "id": "u2-q02-08",
+              "type": "single_choice",
+              "prompt": "Diamond OA :",
+              "options": [
+                "Gratuit sans APC",
+                "Plus cher",
+                "Sans relecture",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Financé par institutions."
+            },
+            {
+              "id": "u2-q02-09",
+              "type": "single_choice",
+              "prompt": "BU universitaire :",
+              "options": [
+                "Négocie accès numériques",
+                "Imprime billets",
+                "Armée",
+                "Pêche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intermédiaire circulation savoirs."
+            },
+            {
+              "id": "u2-q02-10",
+              "type": "single_choice",
+              "prompt": "Open data :",
+              "options": [
+                "Données réutilisables",
+                "Secret total",
+                "Sans éthique",
+                "Fin stats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transparence et reproductibilité."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Réseaux et infox",
+          "questions": [
+            {
+              "id": "u2-q03-01",
+              "type": "multiple_choice",
+              "prompt": "Réseaux sociaux :",
+              "options": [
+                "Viralité rumeurs",
+                "Uniquement revues",
+                "Info et désinfo",
+                "Sans algorithme"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Curation algorithmique."
+            },
+            {
+              "id": "u2-q03-02",
+              "type": "single_choice",
+              "prompt": "Bulle filtre :",
+              "options": [
+                "Enferme opinions",
+                "Élargit débat",
+                "Sans plateforme",
+                "Bibliothèque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Personnalisation limite expositions."
+            },
+            {
+              "id": "u2-q03-03",
+              "type": "single_choice",
+              "prompt": "Fact-checking :",
+              "options": [
+                "Vérifie affirmations",
+                "Crée fake news",
+                "Sans journalisme",
+                "Armée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contre-pouvoir informationnel."
+            },
+            {
+              "id": "u2-q03-04",
+              "type": "single_choice",
+              "prompt": "Deepfake :",
+              "options": [
+                "Média manipulé IA",
+                "Archive HAL",
+                "Carte",
+                "Traité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Menace crédibilité visuelle."
+            },
+            {
+              "id": "u2-q03-05",
+              "type": "single_choice",
+              "prompt": "Régulation contenus FR :",
+              "options": [
+                "Lois numérique",
+                "Supprime Internet",
+                "Fin presse",
+                "Astrologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modération vs liberté expression."
+            },
+            {
+              "id": "u2-q03-06",
+              "type": "single_choice",
+              "prompt": "Forwards WhatsApp :",
+              "options": ["Viralité rumeurs", "Peer review", "CERN", "OTAN"],
+              "correctAnswers": [0],
+              "explanation": "Savoirs non validés circulent."
+            },
+            {
+              "id": "u2-q03-07",
+              "type": "single_choice",
+              "prompt": "Éducation aux médias :",
+              "options": [
+                "Esprit critique",
+                "Propagande",
+                "Sans école",
+                "Fin numérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétence démocratique."
+            },
+            {
+              "id": "u2-q03-08",
+              "type": "single_choice",
+              "prompt": "Recommandation algo :",
+              "options": [
+                "Oriente visibilité",
+                "Neutre parfait",
+                "Sans données",
+                "ONU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gouvernance plateformes géopolitique."
+            },
+            {
+              "id": "u2-q03-09",
+              "type": "single_choice",
+              "prompt": "Censure Internet :",
+              "options": [
+                "Firewall/blocages",
+                "Liberté totale",
+                "Sans Chine",
+                "Fin réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fragmentation espace info."
+            },
+            {
+              "id": "u2-q03-10",
+              "type": "single_choice",
+              "prompt": "Infodémie :",
+              "options": [
+                "Surcharge info santé",
+                "Silence médias",
+                "Fin science",
+                "Sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Covid : vrai et faux circulent."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Mobilités",
+          "questions": [
+            {
+              "id": "u2-q04-01",
+              "type": "multiple_choice",
+              "prompt": "Mobilité chercheurs :",
+              "options": [
+                "Erasmus et post-docs",
+                "Enfermement",
+                "Brain drain/gain",
+                "Sans visa"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Fuite ou attraction talents."
+            },
+            {
+              "id": "u2-q04-02",
+              "type": "single_choice",
+              "prompt": "Brain drain :",
+              "options": [
+                "Exode talents Nord",
+                "Retour massif",
+                "Sans cause",
+                "Sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inégalités circulation compétences."
+            },
+            {
+              "id": "u2-q04-03",
+              "type": "single_choice",
+              "prompt": "Diaspora scientifique :",
+              "options": [
+                "Réseaux expatriés",
+                "Sans lien pays",
+                "Interdit publier",
+                "Armée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transfert savoirs migrants qualifiés."
+            },
+            {
+              "id": "u2-q04-04",
+              "type": "single_choice",
+              "prompt": "Erasmus :",
+              "options": ["Mobilité étudiants UE", "Football", "FMI", "OTAN"],
+              "correctAnswers": [0],
+              "explanation": "Circulation formation supérieure."
+            },
+            {
+              "id": "u2-q04-05",
+              "type": "single_choice",
+              "prompt": "Visa talent :",
+              "options": [
+                "Attire chercheurs",
+                "Interdit entrée",
+                "Sans critère",
+                "Pêche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concurrence États compétences."
+            },
+            {
+              "id": "u2-q04-06",
+              "type": "single_choice",
+              "prompt": "Conférences :",
+              "options": [
+                "Circulation orale",
+                "Secret total",
+                "Sans peer",
+                "Fin labo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseaux informels."
+            },
+            {
+              "id": "u2-q04-07",
+              "type": "single_choice",
+              "prompt": "Sanctions scientifiques :",
+              "options": [
+                "Couper coopérations",
+                "Toujours coopérer",
+                "Sans géopolitique",
+                "Sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conflits isolent instituts."
+            },
+            {
+              "id": "u2-q04-08",
+              "type": "single_choice",
+              "prompt": "Campus étranger :",
+              "options": [
+                "Export modèles univ.",
+                "Sans soft power",
+                "Interdit",
+                "Ferme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Géopolitique marques universités."
+            },
+            {
+              "id": "u2-q04-09",
+              "type": "single_choice",
+              "prompt": "Brain gain :",
+              "options": [
+                "Retour ou attraction talents",
+                "Impossible",
+                "Sans IT",
+                "Fin diaspora"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politiques incitation pays émergents."
+            },
+            {
+              "id": "u2-q04-10",
+              "type": "single_choice",
+              "prompt": "Covid mobilité :",
+              "options": [
+                "Webinaires",
+                "Fin publications",
+                "Sans visio",
+                "Armée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accélération circulation numérique."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "UNESCO et patrimoine",
+          "questions": [
+            {
+              "id": "u2-q05-01",
+              "type": "multiple_choice",
+              "prompt": "UNESCO diffuse :",
+              "options": [
+                "Patrimoine mondial",
+                "Brevets Apple",
+                "Rapports éducation",
+                "Secrets militaires"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Normes et soft power multilatéral."
+            },
+            {
+              "id": "u2-q05-02",
+              "type": "single_choice",
+              "prompt": "World Heritage :",
+              "options": ["Sites protégés", "Bourse", "OTAN", "Ligue"],
+              "correctAnswers": [0],
+              "explanation": "Tourisme et mémoire."
+            },
+            {
+              "id": "u2-q05-03",
+              "type": "single_choice",
+              "prompt": "Memory of the World :",
+              "options": ["Archives documentaires", "Stade", "Usine", "Port"],
+              "correctAnswers": [0],
+              "explanation": "Préservation savoirs écrits."
+            },
+            {
+              "id": "u2-q05-04",
+              "type": "single_choice",
+              "prompt": "Rapport UNESCO science :",
+              "options": ["État science mondiale", "Mode", "Cuisine", "Sport"],
+              "correctAnswers": [0],
+              "explanation": "Indicateurs globaux R&D."
+            },
+            {
+              "id": "u2-q05-05",
+              "type": "single_choice",
+              "prompt": "Restitution patrimoine :",
+              "options": [
+                "Débat spoliations",
+                "Sans histoire",
+                "Interdit musées",
+                "Fin archives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retour objets et colonialisme."
+            },
+            {
+              "id": "u2-q05-06",
+              "type": "single_choice",
+              "prompt": "ODD 4 :",
+              "options": ["Éducation qualité", "Armement", "Pétrole", "Mode"],
+              "correctAnswers": [0],
+              "explanation": "Objectif développement durable."
+            },
+            {
+              "id": "u2-q05-07",
+              "type": "single_choice",
+              "prompt": "Bibliotheca Alexandrina :",
+              "options": [
+                "Projet régional savoir",
+                "Base navale",
+                "Mine",
+                "Stade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coopération Méditerranée."
+            },
+            {
+              "id": "u2-q05-08",
+              "type": "single_choice",
+              "prompt": "Convention diversité culturelle :",
+              "options": [
+                "Protège expressions",
+                "Uniformise langues",
+                "Fin Netflix",
+                "Astrologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Droit différer face marché."
+            },
+            {
+              "id": "u2-q05-09",
+              "type": "single_choice",
+              "prompt": "Patrimoine immatériel :",
+              "options": [
+                "Savoir-faire traditions",
+                "Usines",
+                "Bourse",
+                "Radar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratiques et rituels."
+            },
+            {
+              "id": "u2-q05-10",
+              "type": "single_choice",
+              "prompt": "Destruction patrimoine :",
+              "options": [
+                "Effacement mémoire",
+                "Sans enjeu",
+                "Renforce savoir",
+                "Sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conflits ciblent symboles."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Langues",
+          "questions": [
+            {
+              "id": "u2-q06-01",
+              "type": "multiple_choice",
+              "prompt": "Anglais scientifique :",
+              "options": [
+                "Lingua franca",
+                "Seule langue",
+                "Marginalise autres",
+                "Sans traduction"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Hégémonie linguistique."
+            },
+            {
+              "id": "u2-q06-02",
+              "type": "single_choice",
+              "prompt": "Traduction :",
+              "options": [
+                "Facilite circulation",
+                "Inutile",
+                "Interdit",
+                "Sans coût"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pont entre sphères linguistiques."
+            },
+            {
+              "id": "u2-q06-03",
+              "type": "single_choice",
+              "prompt": "Français en science :",
+              "options": [
+                "Déclin relatif",
+                "Domine tout",
+                "Interdit publier",
+                "Sans francophonie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjeu francophonie universitaire."
+            },
+            {
+              "id": "u2-q06-04",
+              "type": "single_choice",
+              "prompt": "IA traduction :",
+              "options": [
+                "Accélère diffusion",
+                "Sans biais",
+                "Remplace tout",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outils transformant accès."
+            },
+            {
+              "id": "u2-q06-05",
+              "type": "single_choice",
+              "prompt": "Langues menacées :",
+              "options": [
+                "Perte savoirs oraux",
+                "Renforce science",
+                "Sans UNESCO",
+                "Sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Extinction = savoirs locaux."
+            },
+            {
+              "id": "u2-q06-06",
+              "type": "single_choice",
+              "prompt": "Résumés multilingues :",
+              "options": [
+                "Compromis visibilité",
+                "Toujours 10 langues",
+                "Interdit",
+                "Sans revues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Visibilité internationale partielle."
+            },
+            {
+              "id": "u2-q06-07",
+              "type": "single_choice",
+              "prompt": "Colonialisme linguistique :",
+              "options": [
+                "Impose langue métropole",
+                "Égalité parfaite",
+                "Fin école",
+                "Astrologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiérarchies savoirs."
+            },
+            {
+              "id": "u2-q06-08",
+              "type": "single_choice",
+              "prompt": "OpenEdition :",
+              "options": ["SHS francophones", "Armée", "Banque", "Stade"],
+              "correctAnswers": [0],
+              "explanation": "Portail revues et livres FR."
+            },
+            {
+              "id": "u2-q06-09",
+              "type": "single_choice",
+              "prompt": "Wikipedia minoritaire :",
+              "options": [
+                "Enjeu inclusion",
+                "Interdit",
+                "Sans bénévoles",
+                "Payant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contenus langues locales."
+            },
+            {
+              "id": "u2-q06-10",
+              "type": "single_choice",
+              "prompt": "Globish :",
+              "options": [
+                "Anglais simplifié",
+                "Latin officiel",
+                "Langue ONU seule",
+                "Sans usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Circulation pratique échanges."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Propriété intellectuelle",
+          "questions": [
+            {
+              "id": "u2-q07-01",
+              "type": "multiple_choice",
+              "prompt": "PI et circulation :",
+              "options": [
+                "Brevets limitent",
+                "Domaine public diffuse",
+                "Copyright encadre",
+                "Sans juridique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Équilibre incitation et accès."
+            },
+            {
+              "id": "u2-q07-02",
+              "type": "single_choice",
+              "prompt": "OMPI :",
+              "options": ["Organisation PI", "OTAN", "FIFA", "OMS seule"],
+              "correctAnswers": [0],
+              "explanation": "Normes internationales."
+            },
+            {
+              "id": "u2-q07-03",
+              "type": "single_choice",
+              "prompt": "TRIPS :",
+              "options": [
+                "PI dans OMC",
+                "Sans brevet",
+                "Gratuit médicaments",
+                "Astrologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Globalisation propriété."
+            },
+            {
+              "id": "u2-q07-04",
+              "type": "single_choice",
+              "prompt": "Génériques :",
+              "options": [
+                "Contournent brevets",
+                "Toujours illégaux",
+                "Sans santé",
+                "Sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accès médicaments Sud."
+            },
+            {
+              "id": "u2-q07-05",
+              "type": "single_choice",
+              "prompt": "Vaccins et IP Covid :",
+              "options": [
+                "Débat levée temporaire",
+                "Secret total",
+                "Sans OMS",
+                "Fin pharma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Profit vs santé mondiale."
+            },
+            {
+              "id": "u2-q07-06",
+              "type": "single_choice",
+              "prompt": "Logiciel libre :",
+              "options": [
+                "Circulation code",
+                "Identique brevet",
+                "Sans débat",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle alternatif."
+            },
+            {
+              "id": "u2-q07-07",
+              "type": "single_choice",
+              "prompt": "Plagiat :",
+              "options": [
+                "Vol sans crédit",
+                "Citation",
+                "Paraphrase",
+                "Peer review"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Violation éthique."
+            },
+            {
+              "id": "u2-q07-08",
+              "type": "single_choice",
+              "prompt": "Geoblocking :",
+              "options": [
+                "Restreint territoire",
+                "Universel",
+                "Sans plateforme",
+                "HAL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fragmentation accès."
+            },
+            {
+              "id": "u2-q07-09",
+              "type": "single_choice",
+              "prompt": "Biopiraterie :",
+              "options": [
+                "Appropriation savoirs locaux",
+                "Sans conflit",
+                "Encouragée",
+                "Sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Communautés vs brevets."
+            },
+            {
+              "id": "u2-q07-10",
+              "type": "single_choice",
+              "prompt": "Domaine public :",
+              "options": ["Libre réutilisation", "Payant", "Secret", "Armée"],
+              "correctAnswers": [0],
+              "explanation": "Expiration droits."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Données géopolitique",
+          "questions": [
+            {
+              "id": "u2-q08-01",
+              "type": "multiple_choice",
+              "prompt": "Données stratégiques :",
+              "options": [
+                "Ressource clé",
+                "Sans valeur",
+                "Flux transfrontaliers",
+                "Hors souveraineté"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Cloud, RGPD, espionnage."
+            },
+            {
+              "id": "u2-q08-02",
+              "type": "single_choice",
+              "prompt": "RGPD :",
+              "options": [
+                "Protège données UE",
+                "Ouvre tout",
+                "Sans entreprise",
+                "Armée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Circulation encadrée."
+            },
+            {
+              "id": "u2-q08-03",
+              "type": "single_choice",
+              "prompt": "Cloud Act :",
+              "options": [
+                "Justice US et data",
+                "Sans extraterritorialité",
+                "Interdit cloud",
+                "Sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conflit souveraineté UE."
+            },
+            {
+              "id": "u2-q08-04",
+              "type": "single_choice",
+              "prompt": "Great Firewall :",
+              "options": [
+                "Filtre Internet Chine",
+                "Liberté totale",
+                "Sans plateforme",
+                "HAL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrôle information."
+            },
+            {
+              "id": "u2-q08-05",
+              "type": "single_choice",
+              "prompt": "GAIA-X :",
+              "options": ["Cloud européen", "Réseau social", "Ligue", "Musée"],
+              "correctAnswers": [0],
+              "explanation": "Autonomie infrastructure."
+            },
+            {
+              "id": "u2-q08-06",
+              "type": "single_choice",
+              "prompt": "OpenStreetMap :",
+              "options": [
+                "Carto collaborative",
+                "Secret défense",
+                "Brevet",
+                "Banque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Savoir géographique commun."
+            },
+            {
+              "id": "u2-q08-07",
+              "type": "single_choice",
+              "prompt": "Espionnage économique :",
+              "options": [
+                "Vol savoirs",
+                "Impossible",
+                "Légal partout",
+                "Sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concurrence par renseignement."
+            },
+            {
+              "id": "u2-q08-08",
+              "type": "single_choice",
+              "prompt": "5G et sécurité :",
+              "options": [
+                "Enjeu réseaux",
+                "Sans géopolitique",
+                "Mode",
+                "Cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Infrastructure conditionne flux."
+            },
+            {
+              "id": "u2-q08-09",
+              "type": "single_choice",
+              "prompt": "Souveraineté numérique :",
+              "options": [
+                "Maîtriser infra/data",
+                "Sans État",
+                "Fin Internet",
+                "Astrologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjeu HGGSP."
+            },
+            {
+              "id": "u2-q08-10",
+              "type": "single_choice",
+              "prompt": "Métadonnées :",
+              "options": [
+                "Circulent sans texte",
+                "Sans intérêt",
+                "Interdites",
+                "Armée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indexation Scopus/WoS."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Coopération",
+          "questions": [
+            {
+              "id": "u2-q09-01",
+              "type": "multiple_choice",
+              "prompt": "Coopération scientifique :",
+              "options": [
+                "Co-auteurs internationaux",
+                "Isolation",
+                "Programmes UE",
+                "Sans confiance"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Publications multi-pays."
+            },
+            {
+              "id": "u2-q09-02",
+              "type": "single_choice",
+              "prompt": "CERN :",
+              "options": ["Labo européen", "Banque", "OTAN", "Ligue"],
+              "correctAnswers": [0],
+              "explanation": "Partage données et chercheurs."
+            },
+            {
+              "id": "u2-q09-03",
+              "type": "single_choice",
+              "prompt": "ISS :",
+              "options": ["Coop spatial", "Prison", "Stade", "Mine"],
+              "correctAnswers": [0],
+              "explanation": "Savoirs en orbite."
+            },
+            {
+              "id": "u2-q09-04",
+              "type": "single_choice",
+              "prompt": "Accord Paris :",
+              "options": [
+                "S'appuie IPCC",
+                "Sans science",
+                "Astrologie",
+                "Sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expertise vers traités."
+            },
+            {
+              "id": "u2-q09-05",
+              "type": "single_choice",
+              "prompt": "OMS partage :",
+              "options": [
+                "Données épidémies",
+                "Brevets secrets",
+                "Sans pays",
+                "Mode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coordination sanitaire."
+            },
+            {
+              "id": "u2-q09-06",
+              "type": "single_choice",
+              "prompt": "Science sans frontières :",
+              "options": [
+                "Idéal universalisme",
+                "Sans politique",
+                "Interdit migrer",
+                "Fin revues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contredit par visas/sanctions."
+            },
+            {
+              "id": "u2-q09-07",
+              "type": "single_choice",
+              "prompt": "Partenariat Afrique-UE :",
+              "options": [
+                "Coop recherche",
+                "Sans échange",
+                "Astrologie",
+                "Armée seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Horizon inclusif."
+            },
+            {
+              "id": "u2-q09-08",
+              "type": "single_choice",
+              "prompt": "GitHub :",
+              "options": [
+                "Partage code",
+                "Revues papier",
+                "Sans communauté",
+                "Payant seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Savoirs informatiques."
+            },
+            {
+              "id": "u2-q09-09",
+              "type": "single_choice",
+              "prompt": "Embargo :",
+              "options": [
+                "Retarde diffusion",
+                "Accélère",
+                "Sans politique",
+                "Sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité ou intérêt commercial."
+            },
+            {
+              "id": "u2-q09-10",
+              "type": "single_choice",
+              "prompt": "Horizon open science :",
+              "options": [
+                "Exige dépôts",
+                "Interdit partager",
+                "Fin HAL",
+                "Astrologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Circulation par défaut."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Démocratie accès",
+          "questions": [
+            {
+              "id": "u2-q10-01",
+              "type": "multiple_choice",
+              "prompt": "Démocratiser savoirs :",
+              "options": [
+                "Accès public éducation",
+                "Élites seules",
+                "Médiation culturelle",
+                "Interdire Internet"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "École, médias, musées."
+            },
+            {
+              "id": "u2-q10-02",
+              "type": "single_choice",
+              "prompt": "Fracture numérique :",
+              "options": [
+                "Inégal accès",
+                "Égalité mondiale",
+                "Sans Afrique",
+                "Sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frein circulation digitale."
+            },
+            {
+              "id": "u2-q10-03",
+              "type": "single_choice",
+              "prompt": "Vulgarisation :",
+              "options": [
+                "Expert vers public",
+                "Remplace recherche",
+                "Sans éthique",
+                "Interdit TV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Médiation scientifique."
+            },
+            {
+              "id": "u2-q10-04",
+              "type": "single_choice",
+              "prompt": "Cadre numérique FR :",
+              "options": [
+                "Régule économie data",
+                "Supprime Internet",
+                "Fin presse",
+                "Astrologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lois confiance numérique."
+            },
+            {
+              "id": "u2-q10-05",
+              "type": "single_choice",
+              "prompt": "Bibliothèques publiques :",
+              "options": [
+                "Accès gratuit",
+                "Club privé",
+                "Sans livres",
+                "Armée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Service public lecture."
+            },
+            {
+              "id": "u2-q10-06",
+              "type": "single_choice",
+              "prompt": "Éducation populaire :",
+              "options": [
+                "Savoirs hors élite",
+                "Sans histoire",
+                "Interdit",
+                "Sport seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Associations XIXe-XXe."
+            },
+            {
+              "id": "u2-q10-07",
+              "type": "single_choice",
+              "prompt": "Open data public :",
+              "options": [
+                "Transparence admin",
+                "Secret total",
+                "Sans citoyens",
+                "Mode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Info démocratique."
+            },
+            {
+              "id": "u2-q10-08",
+              "type": "single_choice",
+              "prompt": "Conspirisme :",
+              "options": [
+                "Récits alternatifs",
+                "Renforce IPCC",
+                "Sans réseau",
+                "Peer review"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concurrence institutions vérité."
+            },
+            {
+              "id": "u2-q10-09",
+              "type": "single_choice",
+              "prompt": "Droit à l'information :",
+              "options": [
+                "Accès droit humain",
+                "Privilège riches",
+                "Sans déclaration",
+                "Sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Démocratie et connaissance."
+            },
+            {
+              "id": "u2-q10-10",
+              "type": "single_choice",
+              "prompt": "Enjeu circulation HGGSP :",
+              "options": [
+                "Qui accède à quoi",
+                "Sans pouvoir",
+                "Pure technique",
+                "Hors programme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Savoirs, territoires, régulations."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

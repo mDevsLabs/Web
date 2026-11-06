@@ -14,13 +14,23 @@ import {
   normalizeReasoningLevel,
   resolveReasoningProviderOptions,
 } from "@/lib/ai/registry/reasoning";
-import { TOOL_SYSTEM_HINTS } from "@/lib/ai/tools/config";
 import type { ChatRequestContext } from "@/lib/chat/context";
+import {
+  CHAT_FALLBACK_FINAL_RESPONSE,
+  chatEndedOnQuizzly,
+  createChatStreamControls,
+  shouldWriteChatFallback,
+} from "@/lib/chat/loop";
 import type { MemoryContext } from "@/lib/chat/memory";
 import {
   getStreamContext,
   isModelStreamActivity,
 } from "@/lib/chat/stream-context";
+import {
+  type AnnouncedChatTool,
+  chatModelToolParams,
+  hasArtifactChatTool,
+} from "@/lib/chat/tool-policy";
 import { isProductionEnvironment, MAI_API_URL } from "@/lib/constants";
 import {
   createNotification,
@@ -29,7 +39,6 @@ import {
   saveMessages,
   updateMessage,
 } from "@/lib/db/queries";
-import { getPluginSystemHints } from "@/lib/plugins/server";
 import { toolKindFor } from "@/lib/prompts/capabilities";
 import { buildChatSystemPrompt } from "@/lib/prompts/chat";
 import type { ChatMessage } from "@/lib/types";
@@ -44,8 +53,12 @@ export type ChatStreamParams = {
    * doivent rester (le writer n'existe qu'à cet endroit).
    */
   prepareTools: (dataStream: any) => Promise<{
-    tools: Record<string, any>;
-    activeToolsList: string[];
+    /** Plateau instancié. Seules les clés annoncées partent vers le modèle. */
+    tools: Record<string, unknown> | undefined;
+    /** Outils réellement décrits et éligibles. Source du prompt et de l'appel. */
+    announced: AnnouncedChatTool[];
+    /** `capabilities.tools` du catalogue, pas « la liste est non vide ». */
+    toolsSupported: boolean;
     effectiveAddendum: string;
   }>;
   /** Mémoire de la requête : le prompt n'en parle que si elle est lisible. */
@@ -90,9 +103,17 @@ export function createChatStream(params: ChatStreamParams) {
         });
       };
 
-      const { tools, activeToolsList, effectiveAddendum } =
+      const { tools, announced, toolsSupported, effectiveAddendum } =
         await prepareTools(dataStream);
-      const supportsTools = activeToolsList.length > 0;
+      const modelTools = chatModelToolParams(
+        tools,
+        announced.map((tool) => tool.id)
+      );
+      const sentIds = new Set(
+        "activeTools" in modelTools ? modelTools.activeTools : []
+      );
+      const visibleTools = announced.filter((tool) => sentIds.has(tool.id));
+      const loopSupportsTools = visibleTools.length > 0;
       // La part est créée avant le premier appel modèle : le collecteur peut
       // écrire dès le premier chunk de raisonnement reçu.
       const reasoningWriter = reasoningSink
@@ -101,46 +122,51 @@ export function createChatStream(params: ChatStreamParams) {
       if (reasoningSink) {
         reasoningSink.onDelta = (text) => reasoningWriter?.push(text);
       }
-      // Les hints de plugins complètent (et peuvent surcharger) ceux des outils
-      // natifs : source unique côté registre de plugins.
-      const toolHints: Record<string, string> = {
-        ...TOOL_SYSTEM_HINTS,
-        ...getPluginSystemHints(),
-      };
 
       const usageEventKey = `chat:${ctx.id}:${ctx.message?.id ?? ctx.uiMessages.at(-1)?.id ?? `len-${ctx.uiMessages.length}`}:${ctx.chatModel}`;
+      const instructions = buildChatSystemPrompt({
+        addendum: effectiveAddendum || null,
+        artifactsAvailable: hasArtifactChatTool(
+          visibleTools.map((tool) => tool.id)
+        ),
+        capabilities: {
+          attachments: 0,
+          memory: memoryContext?.memoryActive
+            ? {
+                block:
+                  [
+                    memoryContext.userMemoryBlock,
+                    memoryContext.projectMemoryBlock,
+                  ]
+                    .filter(Boolean)
+                    .join("\n\n") || null,
+                writable: memoryContext.memoryAllowAdd,
+              }
+            : null,
+          plan: null,
+          reasoning: false,
+          tools: visibleTools.map((tool) => ({
+            description: tool.description,
+            id: tool.id,
+            kind: toolKindFor({ id: tool.id }),
+            label: tool.id,
+          })),
+          toolsSupported,
+        },
+        requestHints: ctx.requestHints ?? null,
+      });
 
       const result = streamText({
-        activeTools: supportsTools ? (activeToolsList as any) : undefined,
-        instructions: buildChatSystemPrompt({
-          addendum: effectiveAddendum || null,
-          artifactsAvailable: supportsTools,
-          capabilities: {
-            attachments: 0,
-            memory: memoryContext?.memoryActive
-              ? {
-                  block:
-                    [
-                      memoryContext.userMemoryBlock,
-                      memoryContext.projectMemoryBlock,
-                    ]
-                      .filter(Boolean)
-                      .join("\n\n") || null,
-                  writable: memoryContext.memoryAllowAdd,
-                }
-              : null,
-            plan: null,
-            reasoning: false,
-            tools: activeToolsList.map((toolId) => ({
-              description:
-                toolHints[toolId] ?? "Outil disponible pour cet échange.",
-              id: toolId,
-              kind: toolKindFor({ id: toolId }),
-              label: toolId,
-            })),
-            toolsSupported: supportsTools,
-          },
-          requestHints: ctx.requestHints ?? null,
+        // `chatModelToolParams` type les outils en `unknown` : le SDK attend
+        // un ToolSet. Le plateau est déjà filtré, le cast ne l'élargit pas.
+        ...(modelTools as {
+          activeTools?: string[];
+          tools?: Record<string, any>;
+        }),
+        instructions,
+        ...createChatStreamControls({
+          instructions,
+          supportsTools: loopSupportsTools,
         }),
         messages: ctx.modelMessages,
         model,
@@ -233,19 +259,10 @@ export function createChatStream(params: ChatStreamParams) {
             }
           }
         },
-        stopWhen: ({ steps }) => {
-          if (steps.length >= 12) return true;
-          // Ne pas appeler l'IA après la génération d'un quiz interactif
-          const hasQuizzly = steps.some((step) =>
-            step.toolCalls?.some((tc) => (tc as any)?.toolName === "quizzly")
-          );
-          return hasQuizzly;
-        },
         telemetry: {
           functionId: "stream-text",
           isEnabled: isProductionEnvironment,
         },
-        tools,
       });
 
       dataStream.merge(
@@ -254,6 +271,35 @@ export function createChatStream(params: ChatStreamParams) {
           stream: result.stream,
         })
       );
+
+      // Le flux est consommé par le merge. On attend la fin pour écrire un
+      // repli si aucune phrase n'est sortie — sauf après un quiz, où le
+      // modèle ne doit plus être relancé ni commenté.
+      try {
+        const finishReason = await result.finishReason;
+        if (finishReason === "error") {
+          return;
+        }
+        const text = await result.text;
+        const steps = await result.steps;
+        if (
+          shouldWriteChatFallback({
+            endedOnQuizzly: chatEndedOnQuizzly(steps),
+            text,
+          })
+        ) {
+          const fallbackId = generateId();
+          dataStream.write({ id: fallbackId, type: "text-start" });
+          dataStream.write({
+            delta: CHAT_FALLBACK_FINAL_RESPONSE,
+            id: fallbackId,
+            type: "text-delta",
+          });
+          dataStream.write({ id: fallbackId, type: "text-end" });
+        }
+      } catch (error) {
+        console.error("Synthèse de repli impossible:", error);
+      }
     },
     generateId: generateUUID,
     onEnd: async ({ messages: finishedMessages }) => {

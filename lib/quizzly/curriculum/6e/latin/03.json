@@ -1,0 +1,2488 @@
+{
+  "id": "6e-latin-03",
+  "year": "6e",
+  "subject": "latin",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Une inscription funéraire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans « DIS MANIBVS », quels mots renvoient au culte des morts ?",
+              "options": ["DIS", "MANIBVS", "PATRI", "FILIO"],
+              "correctAnswers": [0, 1],
+              "explanation": "Dis Manibus désigne les dieux Manes, protecteurs des défunts."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie en général « H·S·E » sur une stèle ?",
+              "options": [
+                "Hic situs est",
+                "Hic sepultus est",
+                "Hic servus erat",
+                "Hic statua est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "H·S·E abrévie hic situs est : « ici repose »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le mot « FILIVS » indique…",
+              "options": ["La mère", "Le fils", "La fille", "Le père"],
+              "correctAnswers": [1],
+              "explanation": "Filius signifie « fils » au nominatif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« AN · XXV » précise surtout…",
+              "options": [
+                "L'année du règne",
+                "L'âge du défunt",
+                "Le nombre d'enfants",
+                "La date de naissance exacte"
+              ],
+              "correctAnswers": [1],
+              "explanation": "An. indique l'âge atteint par le défunt."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« CONIVGI · CARISSIMAE » s'adresse à…",
+              "options": [
+                "Un ami",
+                "Une épouse chérie",
+                "Un esclave",
+                "Un imperator"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Coniugi carissimae honore une épouse très chère."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« P · C · A · Q · » signifie souvent…",
+              "options": [
+                "Pater clarissimus",
+                "Ponendum curavit",
+                "Pro consule actum",
+                "Pax cum omnibus"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ponendum curavit : « il a veillé à la pose de la stèle »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le datif « PATRI » se traduit par…",
+              "options": ["Du père", "Au père", "Par le père", "Sans le père"],
+              "correctAnswers": [1],
+              "explanation": "Le datif marque le complément « au père »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« S · T · T · L · » est une formule de…",
+              "options": [
+                "Promotion militaire",
+                "Souhait de repos au défunt",
+                "Décret du sénat",
+                "Offrande aux dieux Lares"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sit tibi terra levis : « que la terre te soit légère »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« VIXIT · ANNIS · X » concerne…",
+              "options": [
+                "Un enfant de dix ans",
+                "Un vétéran",
+                "Un temple",
+                "Un affranchi seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vixit annis X : « il a vécu dix ans »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« MEMORIAE » en tête d'inscription annonce…",
+              "options": [
+                "Un décret",
+                "Un hommage à la mémoire",
+                "Une liste de prix",
+                "Un serment"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Memoriae : « à la mémoire de… »."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Lettre de Pline le Jeune",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels indices montrent une lettre adressée à un correspondant ?",
+              "options": [
+                "Nom au vocatif",
+                "Formules affectueuses",
+                "S·P·Q·R",
+                "Titres de légion"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pline s'adresse par le vocatif et des termes comme carissime."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Epistula » signifie…",
+              "options": ["Discours", "Lettre", "Poème", "Loi"],
+              "correctAnswers": [1],
+              "explanation": "Epistula = lettre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Valde gaudeo » exprime…",
+              "options": ["Colère", "Joie", "Peur", "Ennui"],
+              "correctAnswers": [1],
+              "explanation": "Gaudeo : je me réjouis ; valde : beaucoup."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Quod scripsisti » reprend…",
+              "options": [
+                "Le message du destinataire",
+                "Une loi",
+                "Un oracle",
+                "Un menu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quod scripsisti : « ce que tu as écrit »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ut legas » peut marquer…",
+              "options": [
+                "Un souhait",
+                "Un fait certain",
+                "Une interdiction",
+                "Un lieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ut + subjonctif exprime souvent le but ou une prière."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Libellum » désigne…",
+              "options": ["Petit ouvrage", "Monnaie", "Statue", "Route"],
+              "correctAnswers": [0],
+              "explanation": "Libellus : petit livre, opuscule."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Mitto tibi » signifie…",
+              "options": [
+                "Je t'envoie",
+                "Je te vois",
+                "Je te punis",
+                "Je t'oublie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mitto : j'envoie ; tibi : à toi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Rogo ut » correspond à…",
+              "options": [
+                "Je te demande de",
+                "Je t'interdis",
+                "Je te salue seulement",
+                "Je te nomme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rogo ut : je te prie de / je demande que."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Bene vale » est…",
+              "options": [
+                "Un adieu",
+                "Une naissance",
+                "Une victoire",
+                "Une taxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bene vale : porte-toi bien, au revoir."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Traiano imperatori » situe le texte…",
+              "options": [
+                "Sous Trajan",
+                "Sous Numa",
+                "Au Moyen Âge",
+                "Sous Rémi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Datif : à l'empereur Trajan."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Une dédicace de temple",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans « IOVI OPTIMO MAXIMO », quels mots qualifient Jupiter ?",
+              "options": ["OPTIMO", "MAXIMO", "PATRI", "FILIO"],
+              "correctAnswers": [0, 1],
+              "explanation": "Optimus maximus : « le très bon, le très grand »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« D · D · » sur une base signifie souvent…",
+              "options": [
+                "Deo dedit",
+                "Dux dixit",
+                "Donum datum",
+                "Decretum datur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deo dedit : « il a donné au dieu »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« V · S · L · M · » indique…",
+              "options": [
+                "Votum solvit libens merito",
+                "Veni specta ludum magnum",
+                "Vir summus legatus maximus",
+                "Villa sub limine magna"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule : « il a accompli son vœu, volontiers, à bon droit »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« AEDEM » désigne…",
+              "options": ["Un temple", "Un marché", "Un camp", "Un bain"],
+              "correctAnswers": [0],
+              "explanation": "Aedes : temple, sanctuaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« EX · VOTO » précise…",
+              "options": [
+                "En exécution d'un vœu",
+                "En cas de guerre",
+                "Par hérédité",
+                "Par loterie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex voto : « en accomplissement d'un vœu »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« S · P · Q · R · » signifie…",
+              "options": [
+                "Senatus populusque Romanus",
+                "Salve pater quaestor Romanus",
+                "Sacra publica quae regit",
+                "Statua posita qua recta"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Sénat et le peuple romain."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« RESTITVIT » indique…",
+              "options": [
+                "Une restauration",
+                "Une destruction",
+                "Une vente",
+                "Un exil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Restituo : restaurer, rendre en état."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« PRO · SALVTE · IMPERATORIS » exprime…",
+              "options": [
+                "Une prière pour l'empereur",
+                "Une condamnation",
+                "Un impôt",
+                "Un jeu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pro salute : pour le salut, la santé de l'empereur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« CONSECRAVIT » signifie…",
+              "options": [
+                "Il a consacré",
+                "Il a brûlé",
+                "Il a acheté",
+                "Il a caché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consecro : consacrer au culte divin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« L · M · » sur une inscription religieuse peut signifier…",
+              "options": [
+                "Locus memoriae",
+                "Lucum sacrum",
+                "Libenter merito",
+                "Ludi magni"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souvent locus memoriae ou formules proches selon le contexte."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Panneau de boutique à Pompéi",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur une enseigne poméienne, quels mots annoncent une activité commerciale ?",
+              "options": ["CAVE", "CAUPONA", "VINVM", "SENATVS"],
+              "correctAnswers": [1, 2],
+              "explanation": "Caupona : taverne ; vinum : vin à vendre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« CAVEM · CANEM » signifie…",
+              "options": [
+                "Attention au chien",
+                "Cave aux canaux",
+                "Chasse aux canards",
+                "Chambre canonique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cave canem : méfie-toi du chien, mosaic d'entrée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« PISTOR » est…",
+              "options": [
+                "Un boulanger",
+                "Un poissonnier",
+                "Un soldat",
+                "Un prêtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pistor : boulanger (pistare : broyer le grain)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« HIC · HABITAT · FELICITAS » évoque…",
+              "options": [
+                "Prospérité de la maison",
+                "Décret impérial",
+                "Liste de légion",
+                "Tombe d'enfant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ici habite le bonheur », inscription domestique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« FULLO » exerce…",
+              "options": [
+                "Le métier de blanchisseur",
+                "La médecine",
+                "La politique",
+                "La divination"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fullo : blanchisseur, teinturier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« TABERNA » désigne…",
+              "options": [
+                "Une boutique",
+                "Un temple",
+                "Un théâtre",
+                "Un tribunal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Taberna : échoppe, débit de boisson ou commerce."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« VENIT · BENE » sur un mur peut signifier…",
+              "options": [
+                "Il/elle revient en bonne santé",
+                "Le vin est bon",
+                "Venez vite",
+                "Vendu bon marché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souvent souhait de retour heureux, selon le contexte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« ARGENTarius » travaille…",
+              "options": [
+                "L'argent et la banque",
+                "L'argile seulement",
+                "L'armée",
+                "Les arènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Argentarius : banquier, changeur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« SALVE » sur une porte est…",
+              "options": [
+                "Une salutation",
+                "Une malédiction",
+                "Une date",
+                "Un nom de dieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salve : « bonjour / salut ! »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les graffiti de Pompéi sont surtout…",
+              "options": [
+                "Courts et concrets",
+                "Épiques longs",
+                "Juridiques",
+                "Secrèts impériaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inscriptions murales brèves de la vie quotidienne."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Formules de base dans un texte",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des verbes à la 3e personne du singulier ?",
+              "options": ["EST", "SUNT", "AMAT", "AMANT"],
+              "correctAnswers": [0, 2],
+              "explanation": "Est et amat sont 3e singulier ; sunt et amant sont pluriel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Puella cantat » : le sujet est…",
+              "options": ["Puella", "Cantat", "Les deux", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "Puella est au nominatif, sujet du verbe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« In villa » indique…",
+              "options": ["Le lieu", "Le temps", "La manière", "La cause"],
+              "correctAnswers": [0],
+              "explanation": "In + ablatif : lieu où (dans la villa)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Magister discipulos docet » : docet signifie…",
+              "options": ["Enseigne", "Joue", "Mange", "Dort"],
+              "correctAnswers": [0],
+              "explanation": "Docere : enseigner."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Romae » sans préposition marque…",
+              "options": ["Lieu (à Rome)", "Objet", "Manière", "But"],
+              "correctAnswers": [0],
+              "explanation": "Romae : locatif, « à Rome »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Multos libros habet » : multos est…",
+              "options": [
+                "Accusatif pluriel",
+                "Nominatif",
+                "Ablatif",
+                "Vocatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complément d'objet direct de habet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Non est » exprime…",
+              "options": ["Négation", "Question", "Exclamation", "Comparaison"],
+              "correctAnswers": [0],
+              "explanation": "Non nie le verbe est."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Et » coordonne…",
+              "options": [
+                "Deux éléments",
+                "Une subordonnée",
+                "Un vocatif seul",
+                "Un ablatif seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Et : et, conjonction de coordination."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Sed » introduit…",
+              "options": ["Opposition", "Cause", "Lieu", "Temps"],
+              "correctAnswers": [0],
+              "explanation": "Sed : mais, opposition."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Quis? » demande…",
+              "options": ["Qui ?", "Où ?", "Quand ?", "Pourquoi ?"],
+              "correctAnswers": [0],
+              "explanation": "Quis : pronom interrogatif « qui ? »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Un décret municipal",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un décret, quels termes renvoient aux autorités ?",
+              "options": ["DECRETO", "DECURIONUM", "PASTOR", "PISCIS"],
+              "correctAnswers": [0, 1],
+              "explanation": "Decreto decurionum : par décret des décurions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« ORDO » dans une ville signifie souvent…",
+              "options": [
+                "Le conseil municipal",
+                "Un rang militaire seul",
+                "Un dieu",
+                "Un marché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordo decurionum : ordre des notables locaux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« D · U · » peut signifier…",
+              "options": [
+                "Decreto decurionum",
+                "Deo ut",
+                "Dux unus",
+                "Donum ubique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abréviation fréquente dans les décrets locaux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« LOCVM · D · D · D · » indique…",
+              "options": [
+                "Don du terrain par un notable",
+                "Destruction du lieu",
+                "Départ des dieux",
+                "Délai de dix jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Locum dare : offrir un emplacement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« MVNERE » évoque…",
+              "options": [
+                "Un don pour les jeux",
+                "Une punition",
+                "Un impôt",
+                "Un exil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Munus : charge, souvent jeux offerts à la cité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« AD · KALENDAS » situe dans…",
+              "options": [
+                "Le temps",
+                "L'espace",
+                "La couleur",
+                "Le nombre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ad Kalendas : à la date des calendes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« P · R · » dans un décret peut signifier…",
+              "options": [
+                "Populi Romani",
+                "Pater Romanus",
+                "Porta recta",
+                "Pro rege"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Populi Romani : du peuple romain."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« COLONIA » désigne…",
+              "options": [
+                "Une cité fondée selon le droit romain",
+                "Un camp de refugiés",
+                "Un temple",
+                "Une province seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Colonia : colonie romaine structurée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« EDIXIT » signifie…",
+              "options": [
+                "Il a ordonné publiquement",
+                "Il a mangé",
+                "Il a couru",
+                "Il a peint"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Edico : promulguer, ordonner."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« NE · QVIS · » introduit…",
+              "options": ["Interdiction", "Louange", "Offrande", "Hymne"],
+              "correctAnswers": [0],
+              "explanation": "Ne quis : « que personne ne… », interdit."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Poème court (Catulle)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans « Odi et amo », quels mots sont des verbes ?",
+              "options": ["Odi", "Et", "Amo", "Catulle"],
+              "correctAnswers": [0, 2],
+              "explanation": "Odi (je hais) et amo (j'aime) sont des verbes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Vivamus » est…",
+              "options": [
+                "1re personne pluriel impératif/subjonctif",
+                "3e singulier",
+                "Infinitif seul",
+                "Génitif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vivamus : « vivons » (1re pl. du subjonctif)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Lesbia » renvoie à…",
+              "options": [
+                "Un surnom poétique",
+                "Une déesse officielle",
+                "Une province",
+                "Une légion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lesbia : muse de Catulle, Cléopâtre métaphorique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Basia » signifie…",
+              "options": ["Baisers", "Batailles", "Bateaux", "Barques"],
+              "correctAnswers": [0],
+              "explanation": "Basium : baiser ; basia pluriel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Mille » devant un nom indique…",
+              "options": ["Grand nombre", "Petitesse", "Lieu", "Temps passé"],
+              "correctAnswers": [0],
+              "explanation": "Mille : mille, hyperbole poétique fréquente."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Quare » en début de vers peut signifier…",
+              "options": ["Pourquoi donc", "Où", "Quand", "Comment"],
+              "correctAnswers": [0],
+              "explanation": "Quare : pourquoi, d'où."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Penitus » exprime…",
+              "options": ["Profondément", "Légèrement", "Dehors", "Hier"],
+              "correctAnswers": [0],
+              "explanation": "Penitus : au fond, profondément."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Mea » est…",
+              "options": [
+                "Génitif ou ablatif féminin",
+                "Accusatif masculin",
+                "Vocatif",
+                "Infinitif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mea : « ma / de moi » selon le cas."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La brièveté des poèmes de Catulle sert…",
+              "options": [
+                "L'expression intense",
+                "Un discours juridique",
+                "Un compte rendu militaire",
+                "Une carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme brève pour émotion vive."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Atque » signifie…",
+              "options": ["Et aussi", "Mais", "Sans", "Avant"],
+              "correctAnswers": [0],
+              "explanation": "Atque : et, et aussi (renforcement)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Liste de soldats",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur une liste militaire, quels éléments reviennent ?",
+              "options": [
+                "NOMEN",
+                "COGNOMEN",
+                "PRAENOMEN seul obligatoire",
+                "COHORS"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Nomen, cognomen et cohorte identifient le soldat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« LEGIO » est…",
+              "options": [
+                "Une légion",
+                "Une lettre",
+                "Une loi civile seule",
+                "Un poème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Legio : unité militaire romaine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« CENTVRIO » commande…",
+              "options": [
+                "Une centurie",
+                "Toute la légion",
+                "Le sénat",
+                "Le marché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Centurio : chef d'une centurie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« MILITAVIT · ANNIS · XV » indique…",
+              "options": [
+                "Quinze ans de service",
+                "Quinze victoires",
+                "Quinze enfants",
+                "Quinze villes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Militavit annis XV : a servi quinze ans."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« HONESTA · MISSVS » signifie…",
+              "options": [
+                "Libéré honorablement du service",
+                "Exilé",
+                "Tué au combat",
+                "Promu empereur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Missus honesta missione : retraite honorable."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« SIGNIFER » porte…",
+              "options": [
+                "L'étendard de la centurie",
+                "La couronne",
+                "Le trône",
+                "Le menu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signifer : porte-enseigne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« VETRANVS » désigne…",
+              "options": ["Un vétéran", "Un novice", "Un esclave", "Un prêtre"],
+              "correctAnswers": [0],
+              "explanation": "Veteranus : soldat ayant longtemps servi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« EX · COHORTE · I » précise…",
+              "options": [
+                "La cohorte d'origine",
+                "La cause de mort",
+                "Le menu",
+                "Le temple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex cohorte I : de la première cohorte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« NATVS · IN · GALLIA » indique…",
+              "options": [
+                "Lieu de naissance",
+                "Lieu de mort",
+                "Grade",
+                "Salaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Natus in Gallia : né en Gaule."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« STIPENDIA » renvoie à…",
+              "options": [
+                "Les campagnes / tours de service",
+                "Les chaussures",
+                "Les statues",
+                "Les poèmes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stipendia : années de service militaire."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Plaque honorifique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une plaque honorifique mentionne souvent…",
+              "options": ["MERITIS", "GRATIA", "CANIS", "PISCES"],
+              "correctAnswers": [0, 1],
+              "explanation": "Meritis : mérites ; gratia : reconnaissance."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« ORDO · ET · POPVLVS » désigne…",
+              "options": [
+                "Les autorités et habitants locaux",
+                "L'armée seule",
+                "Les dieux",
+                "Les esclaves seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule civique de remerciement public."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« STATVAM · POSVIT » signifie…",
+              "options": [
+                "Il a fait ériger une statue",
+                "Il a détruit une ville",
+                "Il a vendu un temple",
+                "Il a fui"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statuam ponere : ériger une statue."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« OB · MERITA » indique…",
+              "options": [
+                "En raison des services rendus",
+                "Contre la loi",
+                "Sans témoin",
+                "Avant la guerre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ob : à cause de, en raison de."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« PATRONVS · COLONIAE » est…",
+              "options": [
+                "Protecteur de la colonie",
+                "Cuisinier",
+                "Gladiateur",
+                "Poète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patronus coloniae : notable protecteur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« L · D · D · D · » sur une statue publique peut signifier…",
+              "options": [
+                "Locum dedit dedicavitque",
+                "Lucrum dat deinde",
+                "Legatus dux dominus",
+                "Libenter donum datur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variantes locales ; don et dédicace fréquents."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« EQUESTRI · ORDINE » qualifie…",
+              "options": [
+                "Un chevalier romain",
+                "Un esclave",
+                "Un enfant",
+                "Un barbare seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre équestre : second ordre social."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« CIVITATI · SVAE » montre…",
+              "options": [
+                "Attachement à sa cité",
+                "Haine de Rome",
+                "Exil",
+                "Guerre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suae civitati : à sa cité natale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« P · P · » peut signifier…",
+              "options": [
+                "Pater patriae",
+                "Porta patria",
+                "Pax perpetua",
+                "Pro poeta"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pater patriae : père de la patrie (titre honorifique)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« TESTIMONIVM · DEDIT » exprime…",
+              "options": [
+                "Témoignage public de gratitude",
+                "Un testament privé",
+                "Un mensonge",
+                "Un marché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dare testimonium : rendre hommage publiquement."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Texte scolaire simplifié",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour repérer le sujet, on cherche surtout…",
+              "options": [
+                "Le nominatif",
+                "L'accord avec le verbe",
+                "L'ablatif seul",
+                "Le vocatif toujours"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le sujet est au nominatif et s'accorde en personne et nombre avec le verbe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Agricola in agro laborat » : où travaille-t-il ?",
+              "options": [
+                "Dans le champ",
+                "À Rome seulement",
+                "Au temple",
+                "En mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In agro : dans le champ (lieu)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Pueri pilam ludunt » : pilam est…",
+              "options": ["COD", "Nominatif", "Ablatif", "Vocatif"],
+              "correctAnswers": [0],
+              "explanation": "Pilam : complément d'objet direct (accusatif)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Sol lucet » décrit…",
+              "options": [
+                "Le soleil qui brille",
+                "La pluie",
+                "La nuit",
+                "L'hiver seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lucere : briller, luire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Sub arbore sedet » : sub + ablatif =…",
+              "options": [
+                "Sous l'arbre",
+                "Vers l'arbre",
+                "Sans arbre",
+                "Par l'arbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sub indique la position sous."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Cum amicis » signifie…",
+              "options": [
+                "Avec des amis",
+                "Contre des amis",
+                "Sans amis",
+                "Pour des amis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cum + ablatif : accompagnement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Post cenam » indique…",
+              "options": [
+                "Après le repas",
+                "Avant le repas",
+                "Pendant le repas seulement",
+                "Loin du repas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Post + accusatif : après."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Cur clamas? » demande…",
+              "options": [
+                "Pourquoi cries-tu ?",
+                "Où cries-tu ?",
+                "Qui crie ?",
+                "Quand crie-t-on ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cur : pourquoi."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Iter faciunt » signifie…",
+              "options": [
+                "Ils voyagent",
+                "Ils mangent",
+                "Ils dorment",
+                "Ils jugent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Iter facere : faire route, voyager."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lire un document court commence par…",
+              "options": [
+                "Repérer titres et mots connus",
+                "Tout traduire mot à mot d'abord",
+                "Ignorer la ponctuation",
+                "Supprimer les noms propres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On identifie repères, formules et vocabulaire déjà vu."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La cité romaine",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels lieux structurent une cité romaine typique ?",
+              "options": [
+                "Forum",
+                "Thermes",
+                "Océan Atlantique moderne",
+                "Stade olympique grec seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Forum et thermes sont des espaces publics romains essentiels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le « cardo » est…",
+              "options": [
+                "Une rue nord-sud",
+                "Un dieu",
+                "Un poème",
+                "Un esclave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cardo : axe principal nord-sud du plan urbain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le « decumanus » traverse…",
+              "options": [
+                "Est-ouest",
+                "Ciel-mer seulement",
+                "Temple-forum seulement",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Decumanus maximus : axe est-ouest."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le « Capitolium » accueille surtout…",
+              "options": [
+                "Temples majeurs sur la colline",
+                "Les bains seuls",
+                "Le port",
+                "Les catacombes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capitole : hill sacré avec temples importants."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le « basileque » sert à…",
+              "options": [
+                "Affaires judiciaires et commerciales",
+                "Combats de gladiateurs",
+                "Naufrages",
+                "Moisson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Basilica : grande salle publique couverte."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les « thermes » sont…",
+              "options": ["Bains publics", "Prisons", "Théâtres", "Cimetières"],
+              "correctAnswers": [0],
+              "explanation": "Thermae : complexes de bains collectifs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le « circus » accueille surtout…",
+              "options": [
+                "Courses de chars",
+                "Tragédies grecques",
+                "Procès",
+                "Banquets privés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Circus maximus : courses de chars."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le « castrum » désigne souvent…",
+              "options": ["Camp militaire", "Marché", "Jardin", "Bibliothèque"],
+              "correctAnswers": [0],
+              "explanation": "Castrum : camp fortifié des legions."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les « insulae » sont…",
+              "options": [
+                "Immeubles d'habitation",
+                "Îles méditerranéennes",
+                "Statues",
+                "Légions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Insula : bloc d'habitations urbaines."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le « macellum » est…",
+              "options": [
+                "Marché couvert",
+                "Muraille",
+                "Palais impérial seul",
+                "École"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Macellum : marché alimentaire."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Religion et cultes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels dieux appartiennent au panthéon romain étudié en 6e ?",
+              "options": [
+                "Jupiter",
+                "Mars",
+                "Zeus grec non nommé latin",
+                "Odin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Jupiter et Mars sont des dieux romains majeurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Jupiter est surtout…",
+              "options": [
+                "Roi des dieux",
+                "Dieu des mers",
+                "Dieu des enfers",
+                "Dieu des forgerons seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jupiter : souverain du panthéon, ciel et foudre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Junon protège en partie…",
+              "options": [
+                "Femmes et mariage",
+                "Récoltes de blé seulement",
+                "Mer",
+                "Guerre seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Junon : épouse de Jupiter, protectrice du mariage."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Minerve est liée à…",
+              "options": [
+                "Sagesse et arts",
+                "Chasse seule",
+                "Vignes seules",
+                "Feu domestique seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Minerve : sagesse, stratégie, métier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mars est dieu…",
+              "options": [
+                "De la guerre",
+                "Des morts",
+                "Du commerce",
+                "Des routes seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mars : guerre, père légendaire des Romains."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Vénus est associée à…",
+              "options": ["Amour et beauté", "Forge", "Mer", "Moisson"],
+              "correctAnswers": [0],
+              "explanation": "Venus : amour, fécondité, beauté."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les « Lares » protègent…",
+              "options": [
+                "Foyer et famille",
+                "Empire entier seul",
+                "Enfer",
+                "Océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lares : esprits domestiques du lararium."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un « augure » interprète…",
+              "options": [
+                "Signes du destin",
+                "Recettes",
+                "Prix du blé",
+                "Cartes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Augures : oiseaux et présages."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Piété » (pietas) romaine inclut…",
+              "options": [
+                "Respect des dieux et des ancêtres",
+                "Refus de tout culte",
+                "Guerre permanente",
+                "Isolement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pietas : devoir envers dieux, famille, patrie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un « temple » romain sert surtout à…",
+              "options": [
+                "Héberger la statue du dieu et le trésor",
+                "Loger tout le peuple",
+                "Nager",
+                "Voter en masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Temple : maison du dieu, sacrifices à l'autel dehors."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Famille et statuts",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent le pater familias ?",
+              "options": [
+                "Il est le chef de la famille",
+                "Il a l'autorité légale sur les siens",
+                "Il est toujours un esclave",
+                "Il est un voisin sans lien"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le pater familias est le chef de famille et détient l'autorité légale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le « pater familias » a…",
+              "options": [
+                "Patria potestas",
+                "Aucun pouvoir",
+                "Uniquement devoirs religieux",
+                "Seulement un rôle militaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patria potestas : pouvoir sur descendants et biens."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une « matrona » est…",
+              "options": [
+                "Épouse respectable de statut libre",
+                "Esclave",
+                "Gladiatrice",
+                "Prêtresse seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matrona : femme mariée de condition libre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un « affranchi » est…",
+              "options": [
+                "Ancien esclave libéré",
+                "Empereur",
+                "Sénateur né",
+                "Dieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Affranchissement : libération de l'esclavage."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les « clients » entretiennent…",
+              "options": [
+                "Lien de dépendance avec un patron",
+                "Guerre avec Rome",
+                "Temples seuls",
+                "Routes seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clientela : échanges de services et protection."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Cives » désigne…",
+              "options": ["Citoyens", "Esclaves", "Barbares", "Animaux"],
+              "correctAnswers": [0],
+              "explanation": "Civis : citoyen romain (selon droit et époque)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le « stola » concerne…",
+              "options": [
+                "Vêtement de femme libre mariée",
+                "Armure",
+                "Monnaie",
+                "Chariot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stola : robe longue de matrone."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le « toge » est portée surtout par…",
+              "options": [
+                "Citoyens romains libres",
+                "Enfants esclaves seulement",
+                "Animaux",
+                "Soldats en armure complète seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toge : manteau civil des citoyens."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Manumissio » signifie…",
+              "options": ["Affranchissement", "Mariage", "Naissance", "Exil"],
+              "correctAnswers": [0],
+              "explanation": "Manumissio : mise en liberté d'un esclave."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Domus » renvoie à…",
+              "options": ["Maison et maisonnée", "Forum", "Camp", "Théâtre"],
+              "correctAnswers": [0],
+              "explanation": "Domus : résidence urbaine et famille."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Vie quotidienne et repas",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels aliments sont typiques de Rome antique ?",
+              "options": ["Pain", "Garum", "Sushi", "Pommes de terre"],
+              "correctAnswers": [0, 1],
+              "explanation": "Pain et garum (sauce de poisson) sont courants."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le « garum » est…",
+              "options": [
+                "Sauce de poisson fermentée",
+                "Pain sucré",
+                "Fromage",
+                "Vin pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Garum : condiment très répandu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Cena » désigne…",
+              "options": [
+                "Repas principal du soir",
+                "Petit-déjeuner",
+                "Marché",
+                "Temple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cena : dîner, repas social important."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Triclinium » est…",
+              "options": [
+                "Salle à manger avec lits de repas",
+                "Cuisine seule",
+                "Bain",
+                "Prison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Triclinium : salle où l'on s'allonge pour manger."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Posca » est…",
+              "options": [
+                "Boisson vineuse diluée",
+                "Parfum",
+                "Huile seule",
+                "Encens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Posca : vin coupé d'eau, courant chez soldats et pauvres."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le « thermopolium » vend…",
+              "options": [
+                "Nourriture et boisson prêtes",
+                "Armes",
+                "Statues seules",
+                "Terres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thermopolium : bar à hot food."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Oliva » et « oleum » concernent…",
+              "options": [
+                "Olives et huile",
+                "Or",
+                "Oiseaux",
+                "Oignons seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oléiculture méditerranéenne essentielle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Mensae » sont…",
+              "options": ["Tables", "Murs", "Mers", "Mois"],
+              "correctAnswers": [0],
+              "explanation": "Mensa : table."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Convivium » signifie…",
+              "options": ["Repas en groupe", "Guerre", "Procès", "Course"],
+              "correctAnswers": [0],
+              "explanation": "Convivium : banquet entre convives."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La « panis » romaine est surtout…",
+              "options": [
+                "Pain de blé ou orge",
+                "Riz",
+                "Maïs",
+                "Pomme de terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Panis : pain, base alimentaire."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "École et éducation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels outils trouve-t-on à l'école romaine ?",
+              "options": [
+                "Tabula et stylus",
+                "Cera",
+                "Ordinateur",
+                "Téléphone"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tablette encrée et stylet pour écrire effaçable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le « ludus » peut désigner…",
+              "options": ["École primaire", "Jeu seulement", "Temple", "Camp"],
+              "correctAnswers": [0],
+              "explanation": "Ludus litterarius : école élémentaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le « magister » est…",
+              "options": ["Maître d'école", "Soldat", "Boulanger", "Augure"],
+              "correctAnswers": [0],
+              "explanation": "Magister : enseignant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Discipuli » sont…",
+              "options": [
+                "Élèves",
+                "Dieux",
+                "Esclaves affranchis",
+                "Sénateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Discipulus : élève."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "On apprend d'abord…",
+              "options": [
+                "Lire et écrire le latin",
+                "Conduire chars",
+                "Nager",
+                "Piloter navires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Litterae : base de l'éducation libre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Paedagogus » accompagne souvent…",
+              "options": ["Enfant riche", "Empereur seul", "Légion", "Marché"],
+              "correctAnswers": [0],
+              "explanation": "Pédagogue esclave/guide de l'enfant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Rhetor » enseigne…",
+              "options": ["Art oratoire", "Cuisine", "Forge", "Médecine seule"],
+              "correctAnswers": [0],
+              "explanation": "Rhétorique : persuasion publique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Poetae » étudiés servent…",
+              "options": [
+                "Modèles de langue",
+                "Cartes",
+                "Lois seules",
+                "Taxes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poètes classiques : Virgile, Horace, etc."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Vir bonus, dicendi peritus » résume…",
+              "options": [
+                "Homme bon et habile à parler",
+                "Guerrier seul",
+                "Marchand",
+                "Esclave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Idéal éducatif romain de l'orateur vertueux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les filles romaines…",
+              "options": [
+                "Reçoivent souvent moins d'instruction longue",
+                "Vont toutes à l'université",
+                "Ne savent jamais lire",
+                "Sont toutes gladiatrices"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éducation féminine variable, souvent plus courte."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Spectacles et loisirs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels spectacles existent à Rome ?",
+              "options": [
+                "Gladiateurs",
+                "Théâtre",
+                "Matchs de football modernes",
+                "Courses de chars"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Arènes, théâtre et circus sont des lieux de spectacle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le « amphithéâtre » accueille…",
+              "options": [
+                "Combats de gladiateurs",
+                "Navigation",
+                "Moisson",
+                "Procès seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amphithéâtre : jeux gladiatoires et venationes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un « gladiateur »…",
+              "options": [
+                "Combat pour le public",
+                "Peint des fresques",
+                "Juge les cités",
+                "Tisse seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gladiateurs : combattants professionnels."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Venatio » désigne…",
+              "options": [
+                "Chasse d'animaux au spectacle",
+                "Poème",
+                "Banquet",
+                "Bain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Venatio : chasse d'animaux exotiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le « théâtre » romain présente…",
+              "options": [
+                "Comédies et tragédies",
+                "Courses de chars",
+                "Batailles navales réelles",
+                "Procès"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plaute, Térence, adaptations grecques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Naumachia » est…",
+              "options": [
+                "Bataille navale spectaculaire",
+                "Course à pied",
+                "Discours",
+                "Marché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Naumachiae : combats navals mimés ou réels."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Ludus » au circus =…",
+              "options": ["Jeu / course", "École seulement", "Loi", "Temple"],
+              "correctAnswers": [0],
+              "explanation": "Ludi : jeux publics, fêtes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Editor » des jeux…",
+              "options": [
+                "Finance les spectacles",
+                "Peint seulement",
+                "Est esclave",
+                "Est toujours empereur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Édiles ou riches financent munera."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Retiarius » est un type de…",
+              "options": ["Gladiateur", "Poète", "Sénateur", "Prêtre"],
+              "correctAnswers": [0],
+              "explanation": "Retiarius : filet et trident."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les « ludi » publics unissent…",
+              "options": [
+                "Religion et divertissement",
+                "Guerre et paix seules",
+                "Commerce seul",
+                "Exil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jeux liés aux fêtes religieuses et à la politique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Empire et institutions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles institutions représentent Rome politique ?",
+              "options": [
+                "Sénat",
+                "Empereur (à l'époque impériale)",
+                "Parlement britannique",
+                "Reichstag"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sénat et princeps/empereur structurent le pouvoir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le « Sénat » est…",
+              "options": ["Assemblée de notables", "Armée", "Marché", "Temple"],
+              "correctAnswers": [0],
+              "explanation": "Senatus : conseil des sénateurs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Imperator » à l'époque impériale désigne surtout…",
+              "options": [
+                "Chef suprême de l'État",
+                "Simple caporal",
+                "Esclave",
+                "Gladiateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titre de l'empereur commandant en chef."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Consul » originellement…",
+              "options": [
+                "Magistrat élu annuel",
+                "Prêtre",
+                "Boulanger",
+                "Poète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consuls : magistratures républicaines majeures."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Provincia » est…",
+              "options": [
+                "Territoire administré hors Italie",
+                "Rue",
+                "Poème",
+                "Statue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Provinces : territoires gouvernés par Rome."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Lex » signifie…",
+              "options": ["Loi", "Lait", "Lecture", "Légion"],
+              "correctAnswers": [0],
+              "explanation": "Lex : loi votée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Cursus honorum » est…",
+              "options": [
+                "Parcours des magistratures",
+                "Course de chars",
+                "Chemin de ronde",
+                "Rivière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Carrière officielle des hommes politiques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Pax Romana » évoque…",
+              "options": [
+                "Longue période de relative stabilité",
+                "Guerre permanente",
+                "Chute immédiate",
+                "Moyen Âge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paix romaine : ordre impérial sur l'empire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Latinitas » renvoie à…",
+              "options": [
+                "Langue et culture latines",
+                "Grec seul",
+                "Gaulois",
+                "Arabe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Latinité : usage de la langue latine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Rubicon » est célèbre pour…",
+              "options": [
+                "Franchissement par César en 49 av. J.-C.",
+                "Temple de Jupiter",
+                "Thermes",
+                "Circus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passage du Rubicon : début de guerre civile."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Art et architecture",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments sont romains ?",
+              "options": [
+                "Voûte en berceau",
+                "Arc de triomphe",
+                "Pyramide égyptienne seule",
+                "Gothique médiéval"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Voûtes et arcs commémoratifs sont emblématiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le « béton romain » (opus caementicium) sert à…",
+              "options": [
+                "Construire dômes et ponts",
+                "Broder",
+                "Peindre seulement",
+                "Écrire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Béton : innovation structurelle romaine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Pantheon » à Rome a…",
+              "options": [
+                "Grand dôme",
+                "Statue seule",
+                "Port sans toit",
+                "Théâtre grec seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Célèbre coupole circulaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Mosaic » (mosaïque) décore…",
+              "options": [
+                "Sols et murs",
+                "Cieux seulement",
+                "Livres seulement",
+                "Routes seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tessellae : images en pierres ou verre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Fresque » est peinte…",
+              "options": [
+                "Sur mur encore humide",
+                "Sur parchemin seulement",
+                "Sur bouclier seulement",
+                "Sur eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fresco : peinture à fresque."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Aqueduct » transporte…",
+              "options": [
+                "Eau",
+                "Soldats seulement",
+                "Blé seulement",
+                "Or seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aqueducs : approvisionnement urbain en eau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Colonne Trajane » raconte…",
+              "options": [
+                "Campagnes daciques",
+                "Vie de Catulle",
+                "Recette de garum",
+                "Jeux olympiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relief historique en spirale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Via Appia » est…",
+              "options": ["Grande route", "Rivière", "Temple", "Loi"],
+              "correctAnswers": [0],
+              "explanation": "Via Appia : artère routière vers le sud."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Atrium » dans une domus est…",
+              "options": ["Cour centrale", "Cuisine", "Toit seul", "Prison"],
+              "correctAnswers": [0],
+              "explanation": "Atrium : pièce d'entrée avec impluvium."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Opus incertum » décrit…",
+              "options": [
+                "Type de mur en pierres",
+                "Statue",
+                "Poème",
+                "Monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maçonnerie en pierres irrégulières."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Calendrier et fêtes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels repères temporels romains existe-t-il ?",
+              "options": [
+                "Calendes",
+                "Ides",
+                "Semaine de sept jours moderne fixe",
+                "Nones"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Calendes, nones et ides structurent le mois romain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les « calendes » tombent…",
+              "options": [
+                "Premier jour du mois",
+                "Milieu du mois",
+                "Dernier jour",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kalendae : 1er du mois."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ides » sont autour du…",
+              "options": [
+                "Milieu du mois",
+                "Premier jour",
+                "Solstice seulement",
+                "Equinoxe seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Idus : environ le 13 ou 15 selon le mois."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Saturnalia » honore…",
+              "options": [
+                "Saturne",
+                "Mars seul",
+                "Neptune seul",
+                "Mercure seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fête hivernale de Saturne, renversements sociaux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Lupercalia » est liée à…",
+              "options": [
+                "Février et purification",
+                "Noël",
+                "Pâques",
+                "Halloween"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rites anciens en février."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Kalendae Ianuariae » correspond à…",
+              "options": [
+                "1er janvier romain",
+                "25 décembre fixe",
+                "14 juillet",
+                "11 novembre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Début d'année sous le haut empire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Feriae » signifie…",
+              "options": ["Jours fériés", "Guerres", "Routes", "Légions"],
+              "correctAnswers": [0],
+              "explanation": "Feriae : jours saints sans travail public."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Vestalia » honore…",
+              "options": [
+                "Vesta",
+                "Vénus seule",
+                "Victoire seule",
+                "Volcan seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Culte du feu sacré des Vestales."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mois romain doit son nom à l'empereur Auguste ?",
+              "options": ["Martius", "Iulius", "Augustus", "Lundi"],
+              "correctAnswers": [2],
+              "explanation": "Augustus commémore l'empereur ; lundi n'est pas un mois latin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Annus » signifie…",
+              "options": ["Année", "Aigle", "Analyse", "Ancre"],
+              "correctAnswers": [0],
+              "explanation": "Annus : année."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Héritage et repères pour aujourd'hui",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels héritages latins restent en français ?",
+              "options": [
+                "Mots comme « avenue »",
+                "Suffixes comme « -tion »",
+                "Alphabet cyrillique seul",
+                "Langue basque seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Français : emprunts et formations latines."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Senatus populusque Romanus » est encore connu via…",
+              "options": [
+                "Sigle S·P·Q·R",
+                "Drapeau grec",
+                "Monnaie euro seule",
+                "Carte routière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "S·P·Q·R symbolise la cité romaine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le latin est…",
+              "options": [
+                "Langue morte non parlée au quotidien",
+                "Langue officielle de la France aujourd'hui",
+                "Langue des Romains puis langue savante",
+                "Jamais écrite"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Latin classique puis langue de l'Église et des savants."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Étudier la civilisation romaine aide à…",
+              "options": [
+                "Comprendre l'Europe et la France",
+                "Oublier l'histoire",
+                "Ignorer le droit",
+                "Supprimer le français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rome : droit, villes, mots, institutions."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Repère de civilisation » signifie…",
+              "options": [
+                "Point de repère culturel important",
+                "Date sans contexte",
+                "Nom de verbe",
+                "Carte météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère : élément clé pour situer une culture."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La « romanisation » désigne…",
+              "options": [
+                "Diffusion de la culture romaine",
+                "Fin de Rome seulement",
+                "Invention du latin",
+                "Disparition des villes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Romanisation : adoption langue, droit, modes de vie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En Gaule, les Romains laissent…",
+              "options": [
+                "Villes, routes, thermes",
+                "Rien",
+                "Seulement pyramides",
+                "Seulement navires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traces urbaines et routières durables."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Corpus » en français donne…",
+              "options": [
+                "Corps (corpus médical)",
+                "Corde seule",
+                "Corail seule",
+                "Corbeille seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corpus : corps, ensemble de textes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Aqua » est à l'origine de…",
+              "options": ["Aqueduc, aquarelle", "Arbre", "Arène", "Arc"],
+              "correctAnswers": [0],
+              "explanation": "Aqua : eau, nombreux dérivés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Relier document latin et civilisation, c'est…",
+              "options": [
+                "Situer un texte dans son contexte",
+                "Traduire sans réfléchir",
+                "Ignorer l'histoire",
+                "Confondre Rome et Grèce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Culture et documents se lisent ensemble en 6e."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

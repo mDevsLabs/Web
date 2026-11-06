@@ -1,0 +1,2428 @@
+{
+  "id": "3e-latin-04",
+  "year": "3e",
+  "subject": "latin",
+  "title": "La grammaire du latin",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : L'absence d'article en latin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Existe-t-il des articles définis ou indéfinis en latin classique ?",
+              "options": [
+                "Non, la langue latine ne possède aucun article",
+                "Oui, il existe seulement l'article défini",
+                "Oui, il existe seulement l'article indéfini",
+                "Oui, il existe les deux comme en français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le latin classique ne possède aucun article. Le contexte et les désinences de cas permettent de comprendre et de traduire fidèlement en français."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment peut-on traduire le mot latin isolé « rosa » en français ?",
+              "options": [
+                "« la rose » ou « une rose » selon le contexte",
+                "Uniquement par « la rose »",
+                "Uniquement par « une rose »",
+                "Uniquement par la couleur « rose »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En l'absence d'article en latin, c'est le traducteur qui choisit d'ajouter l'article défini ou indéfini selon le contexte de la phrase."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot démonstratif latin a donné naissance aux articles définis français « le » et « la » ?",
+              "options": [
+                "Ille, illa",
+                "Hic, haec",
+                "Iste, ista",
+                "Idem, eadem"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le démonstratif latin « ille, illa » s'est affaibli au cours du bas latin pour donner les articles définis romans (le, la, les)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi l'absence d'article ne gêne-t-elle pas la compréhension des fonctions en latin ?",
+              "options": [
+                "Parce que les désinences casuelles indiquent la fonction de chaque mot",
+                "Parce que l'ordre des mots est strictement identique au français",
+                "Parce que le verbe porte toutes les prépositions",
+                "Parce que l'accent tonique indique le sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce aux désinences des cas (nominatif, accusatif, etc.), le rôle de chaque mot est immédiatement identifiable sans avoir besoin d'article."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles propositions sont vraies concernant les déterminants et l'absence d'article en latin ?",
+              "options": [
+                "Le français a créé ses articles à partir de mots latins (ille, unus)",
+                "Le latin peut employer des démonstratifs pour désigner précisément un être ou un objet",
+                "Le latin utilise systématiquement des apostrophes à la place des articles",
+                "Les articles existaient à l'écrit mais ne se prononçaient jamais"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le latin classique ignorait l'article mais utilisait des démonstratifs. Le français a développé les articles à partir de 'ille' et 'unus'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on convenablement la phrase « Lupus ovem videt » ?",
+              "options": [
+                "Le loup voit la brebis (ou un loup voit une brebis)",
+                "La brebis voit le loup",
+                "Des loups voient des brebis",
+                "Le loup et la brebis s'observent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lupus est au nominatif singulier (sujet) et ovem à l'accusatif singulier (COD). On insère les articles appropriés en français."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mot latin a donné notre article indéfini « un, une » ?",
+              "options": [
+                "L'adjectif numéral « unus, una, unum »",
+                "Le pronom « quisque »",
+                "Le mot « primus »",
+                "La préposition « in »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif numéral latin 'unus, una, unum' (un seul) a évolué pour devenir l'article indéfini singulier en français."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Puer librum legit », que doit obligatoirement rétablir la traduction française ?",
+              "options": [
+                "Des articles devant « enfant » et « livre »",
+                "Une négation obligatoire",
+                "Un pronom réfléchi",
+                "Un adjectif possessif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En français, un nom commun s'emploie presque toujours avec un déterminant : « L'enfant lit un livre »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel démonstratif latin « de rappel » équivaut souvent à un simple pronom de 3e personne ?",
+              "options": [
+                "Is, ea, id",
+                "Hic, haec, hoc",
+                "Iste, ista, istud",
+                "Quidam, quaedam"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Is, ea, id » est un anaphorique qui renvoie à ce qui a été dit et se traduit fréquemment par il, elle, le, la, lui."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Miles pugnat », comment sait-on que « miles » est le sujet ?",
+              "options": [
+                "Grâce à sa forme de nominatif singulier de la 3e déclinaison",
+                "Parce qu'il est placé avant le verbe sans exception",
+                "Parce qu'il est précédé d'un article invisible",
+                "Parce que c'est un nom propre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Miles » est le nominatif singulier du nom de la 3e déclinaison miles, militis. Sa désinence indique clairement sa fonction de sujet."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Le démonstratif hic, haec, hoc",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que désigne principalement le démonstratif latin « hic, haec, hoc » ?",
+              "options": [
+                "Ce qui est proche du locuteur dans l'espace ou le temps (ceci, ce...-ci)",
+                "Ce qui est très éloigné dans le passé",
+                "Ce qui appartient exclusivement à autrui",
+                "Une chose abstraite et purement imaginaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hic, haec, hoc » désigne ce qui se trouve près de celui qui parle (« ce...-ci », « celui-ci »)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le nominatif singulier neutre de ce démonstratif ?",
+              "options": ["Hoc", "Haec", "Hunc", "Hic"],
+              "correctAnswers": [0],
+              "explanation": "Le nominatif singulier est : hic (masculin), haec (féminin), hoc (neutre)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est l'accusatif singulier masculin de « hic » ?",
+              "options": ["Hunc", "Hic", "Hoc", "Hum"],
+              "correctAnswers": [0],
+              "explanation": "L'accusatif masculin singulier est « hunc » (avec la désinence -m qui devient -n devant le c enclitique)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la forme du génitif singulier, commune aux trois genres ?",
+              "options": ["Huius", "Huic", "Horum", "His"],
+              "correctAnswers": [0],
+              "explanation": "Les pronoms-adjectifs démonstratifs ont un génitif singulier en -ius pour les trois genres : ici « huius »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes appartiennent à la déclinaison de « hic, haec, hoc » ?",
+              "options": [
+                "Huic (datif singulier)",
+                "His (datif/ablatif pluriel)",
+                "Illorum (génitif pluriel)",
+                "Eum (accusatif singulier)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Huic et his appartiennent à hic/haec/hoc. Illorum vient d'ille et eum vient de is."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le datif singulier commun aux trois genres de « hic, haec, hoc » ?",
+              "options": ["Huic", "Huius", "Hoc", "His"],
+              "correctAnswers": [0],
+              "explanation": "Le datif singulier des démonstratifs se termine en -i pour les trois genres : pour hic, c'est « huic »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Hic vir » en français ?",
+              "options": [
+                "Cet homme-ci (ou cet homme)",
+                "Cet homme-là (au loin)",
+                "Chaque homme",
+                "Aucun homme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hic vir » signifie « cet homme-ci » ou simplement « cet homme », marquant la proximité avec le locuteur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la forme du nominatif/accusatif neutre pluriel de « hic » ?",
+              "options": ["Haec", "Hoc", "Hi", "Hae"],
+              "correctAnswers": [0],
+              "explanation": "Le neutre pluriel au nominatif et accusatif est « haec » (ces choses-ci)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est l'ablatif singulier féminin de « hic » ?",
+              "options": ["Hac", "Hoc", "Huic", "Has"],
+              "correctAnswers": [0],
+              "explanation": "L'ablatif singulier féminin est « hac » (avec un a long, issu de la 1re déclinaison)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est l'accusatif pluriel féminin de « hic » ?",
+              "options": ["Has", "Hae", "Haec", "His"],
+              "correctAnswers": [0],
+              "explanation": "L'accusatif pluriel féminin est « has », calqué sur les désinences de la 1re déclinaison (-as)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : Le démonstratif ille, illa, illud",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle nuance spatiale ou temporelle exprime « ille, illa, illud » ?",
+              "options": [
+                "L'éloignement par rapport au locuteur (ce...-là, là-bas)",
+                "L'extrême proximité immédiate",
+                "L'identité parfaite avec le sujet",
+                "La réciprocité d'une action"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ille, illa, illud » renvoie à ce qui est éloigné dans l'espace ou dans le temps (« ce...-là », « celui-là »)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le génitif singulier commun aux trois genres pour « ille » ?",
+              "options": ["Illius", "Illi", "Illo", "Illorum"],
+              "correctAnswers": [0],
+              "explanation": "Comme tous les pronoms démonstratifs, le génitif singulier se termine en -ius : « illius »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le datif singulier de « ille, illa, illud » pour les trois genres ?",
+              "options": ["Illi", "Illius", "Illo", "Illis"],
+              "correctAnswers": [0],
+              "explanation": "Le datif singulier régulier des pronoms démonstratifs se termine en -i : « illi »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est l'accusatif singulier masculin de « ille » ?",
+              "options": ["Illum", "Illam", "Illud", "Illos"],
+              "correctAnswers": [0],
+              "explanation": "L'accusatif singulier masculin prend la désinence -um : « illum »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes appartiennent au nominatif pluriel de « ille, illa, illud » ?",
+              "options": [
+                "Illi (masculin)",
+                "Illae (féminin)",
+                "Illos (accusatif)",
+                "Illis (datif)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Au nominatif pluriel, on a : illi (masculin), illae (féminin) et illa (neutre). Illos est accusatif et illis est datif/ablatif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le nominatif neutre pluriel de « ille » ?",
+              "options": ["Illa", "Illud", "Illae", "Illi"],
+              "correctAnswers": [0],
+              "explanation": "Tous les neutres pluriels au nominatif et accusatif se terminent par -a : « illa »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on l'expression « Illa nocte » (ablatif de temps) ?",
+              "options": [
+                "Cette nuit-là (pendant cette nuit)",
+                "Cette nuit-ci",
+                "Toutes les nuits",
+                "La nuit prochaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Illa nocte associe l'ablatif singulier féminin d'ille à nox pour exprimer un moment précis dans le passé : « cette nuit-là »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que peut signifier « ille » lorsqu'il accompagne un nom propre célèbre ?",
+              "options": [
+                "Le célèbre, l'illustre",
+                "Le détestable, l'infâme",
+                "L'inconnu, l'étranger",
+                "Le prétendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En latin littéraire, « ille » placé auprès d'un personnage célèbre prend une valeur laudative : « l'illustre, le fameux »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est l'ablatif pluriel de « ille, illa, illud » pour tous les genres ?",
+              "options": ["Illis", "Illos", "Illas", "Illorum"],
+              "correctAnswers": [0],
+              "explanation": "Au datif et à l'ablatif pluriels, les trois genres partagent la terminaison -is : « illis »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel pronom personnel sujet français dérive directement du nominatif masculin « ille » ?",
+              "options": ["Il", "Je", "Tu", "On"],
+              "correctAnswers": [0],
+              "explanation": "Le pronom « il » en français provient directement de l'évolution phonétique du latin « ille »."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : L'anaphorique is, ea, id",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le rôle grammatical essentiel de l'anaphorique « is, ea, id » ?",
+              "options": [
+                "Rappeler une personne ou une chose déjà mentionnée dans le discours",
+                "Montrer avec insistance un objet situé sous les yeux",
+                "Poser une interrogation directe",
+                "Exprimer un ordre militaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Is, ea, id » est un pronom-adjectif anaphorique : il renvoie à ce dont on vient de parler (« ce, cette, celui-ci » ou « il, elle »)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le génitif singulier commun aux trois genres de « is, ea, id » ?",
+              "options": ["Eius", "Ei", "Eum", "Eorum"],
+              "correctAnswers": [0],
+              "explanation": "Le génitif singulier est « eius » pour le masculin, le féminin et le neutre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le datif singulier de « is, ea, id » ?",
+              "options": ["Ei", "Eius", "Eo", "Eis"],
+              "correctAnswers": [0],
+              "explanation": "Le datif singulier est « ei » pour les trois genres."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est l'accusatif masculin singulier de « is » ?",
+              "options": ["Eum", "Eam", "Id", "Eos"],
+              "correctAnswers": [0],
+              "explanation": "L'accusatif masculin singulier est « eum » (qu'on traduit souvent par « le » ou « lui »)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes appartiennent à l'ablatif singulier de « is, ea, id » ?",
+              "options": [
+                "Eo (masculin et neutre)",
+                "Ea (féminin)",
+                "Eis (pluriel)",
+                "Eum (accusatif)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'ablatif singulier est « eo » au masculin/neutre et « ea » au féminin. Eis est pluriel et eum est accusatif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme du nominatif et accusatif singulier neutre ?",
+              "options": ["Id", "Is", "Ea", "Eum"],
+              "correctAnswers": [0],
+              "explanation": "Le neutre singulier est « id » au nominatif et à l'accusatif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le génitif pluriel féminin de « is, ea, id » ?",
+              "options": ["Earum", "Eorum", "Eas", "Eis"],
+              "correctAnswers": [0],
+              "explanation": "Le génitif pluriel féminin prend la terminaison -arum : « earum » (d'elles, de ces femmes)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le génitif pluriel masculin et neutre de « is, ea, id » ?",
+              "options": ["Eorum", "Earum", "Eis", "Eos"],
+              "correctAnswers": [0],
+              "explanation": "Le génitif pluriel masculin et neutre est « eorum » (d'eux, de ces choses)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le nominatif pluriel féminin de « is, ea, id » ?",
+              "options": ["Eae", "Eas", "Earum", "Ea"],
+              "correctAnswers": [0],
+              "explanation": "Le nominatif pluriel féminin est « eae » (elles, ces femmes)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quand « is, ea, id » est employé seul comme pronom, comment le traduit-on le plus souvent ?",
+              "options": [
+                "Par un pronom personnel de 3e personne (il, elle, le, la, lui, eux)",
+                "Par le pronom indéfini « quiconque »",
+                "Par le pronom possessif « le mien »",
+                "Par l'adverbe « toujours »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Employé sans nom, « is, ea, id » sert de pronom personnel de 3e personne non réfléchi en latin."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : L'adjectif qualificatif de 1re classe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Sur quelles déclinaisons se calque un adjectif de 1re classe (ex: bonus, bona, bonum) ?",
+              "options": [
+                "La 2e déclinaison au masculin/neutre et la 1re au féminin",
+                "La 3e déclinaison pour les trois genres",
+                "La 4e déclinaison au masculin et la 5e au féminin",
+                "La 1re déclinaison pour tous les genres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les adjectifs de 1re classe suivent la 2e déclinaison au masculin (-us/-er) et neutre (-um), et la 1re au féminin (-a)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la forme du féminin nominatif singulier de « magnus » ?",
+              "options": ["Magna", "Magnus", "Magnum", "Magnae"],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif s'énonce magnus, magna, magnum. Le féminin singulier est « magna »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la forme du neutre nominatif singulier de « clarus » ?",
+              "options": ["Clarum", "Clara", "Clarus", "Clari"],
+              "correctAnswers": [0],
+              "explanation": "Le neutre nominatif singulier des adjectifs de 1re classe prend la terminaison -um : « clarum »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le génitif singulier masculin de « bonus » ?",
+              "options": ["Boni", "Bono", "Bonum", "Bonis"],
+              "correctAnswers": [0],
+              "explanation": "Comme les noms de la 2e déclinaison en -us, le génitif singulier masculin est en -i : « boni »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs appartiennent à la 1re classe (type bonus ou pulcher) ?",
+              "options": [
+                "Altus, alta, altum",
+                "Pulcher, pulchra, pulchrum",
+                "Fortis, forte",
+                "Brevis, breve"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Altus et pulcher sont de la 1re classe (type en -us/-er, -a, -um). Fortis et brevis sont de la 2e classe (3e déclinaison)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est l'accusatif masculin singulier de « malus, mala, malum » ?",
+              "options": ["Malum", "Malam", "Mali", "Malos"],
+              "correctAnswers": [0],
+              "explanation": "L'accusatif masculin singulier des adjectifs de 1re classe se termine par -um : « malum »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la forme du nominatif pluriel neutre de « magnus, magna, magnum » ?",
+              "options": ["Magna", "Magnae", "Magni", "Magnos"],
+              "correctAnswers": [0],
+              "explanation": "Au neutre pluriel, le nominatif et l'accusatif prennent la terminaison -a : « magna » (de grandes choses)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le datif pluriel de « bonus » pour les trois genres ?",
+              "options": ["Bonis", "Bonorum", "Bonas", "Bonos"],
+              "correctAnswers": [0],
+              "explanation": "Le datif et l'ablatif pluriels de la 1re classe se terminent par -is pour le masculin, le féminin et le neutre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment se décline un adjectif en -er comme « liber, libera, liberum » ?",
+              "options": [
+                "Comme bonus, avec un nominatif masculin singulier en -er",
+                "Sur la 3e déclinaison exclusivement",
+                "Il est totalement invariable",
+                "Sur la 4e déclinaison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Liber » appartient à la 1re classe : seule la forme du nominatif masculin singulier en -er diffère de bonus."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le génitif pluriel féminin de « pulcher, pulchra, pulchrum » ?",
+              "options": ["Pulchrarum", "Pulchrorum", "Pulchris", "Pulchras"],
+              "correctAnswers": [0],
+              "explanation": "Le féminin se décline sur la 1re déclinaison : le génitif pluriel se termine donc par -arum (« pulchrarum »)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : L'adjectif qualificatif de 2e classe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Sur quelle déclinaison se calquent tous les adjectifs de 2e classe ?",
+              "options": [
+                "La 3e déclinaison (thèmes en -i)",
+                "La 1re déclinaison",
+                "La 2e déclinaison",
+                "La 5e déclinaison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les adjectifs de 2e classe (ex: fortis, ingens, celer) se déclinent entièrement sur la 3e déclinaison."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison du nominatif singulier neutre de « fortis » ?",
+              "options": ["Forte", "Fortis", "Fortem", "Forti"],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif s'énonce « fortis, forte » : le masculin et féminin sont en -is, le neutre est en -e."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison régulière de l'ablatif singulier pour tous les genres en 2e classe ?",
+              "options": [
+                "-i (ex: forti)",
+                "-e (ex: forte)",
+                "-o (ex: forto)",
+                "-u (ex: fortu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les adjectifs de 2e classe ont un ablatif singulier en -i pour les trois genres (thèmes en -i)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison du génitif pluriel des adjectifs de 2e classe ?",
+              "options": [
+                "-ium (ex: fortium)",
+                "-um (ex: fortum)",
+                "-orum (ex: fortorum)",
+                "-arum (ex: fortarum)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En tant que thèmes en -i, les adjectifs de 2e classe forment leur génitif pluriel en -ium."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs appartiennent à la 2e classe (déclinés sur la 3e déclinaison) ?",
+              "options": [
+                "Omnis, omne",
+                "Brevis, breve",
+                "Novus, nova, novum",
+                "Clarus, clara, clarum"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Omnis et brevis sont des adjectifs de 2e classe à deux terminaisons (-is, -e). Novus et clarus sont de 1re classe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme du nominatif pluriel neutre de « fortis, forte » ?",
+              "options": ["Fortia", "Fortes", "Fortium", "Forti"],
+              "correctAnswers": [0],
+              "explanation": "Au neutre pluriel, le nominatif et l'accusatif prennent la terminaison -ia : « fortia »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on un adjectif comme « ingens » (génitif ingentis) ?",
+              "options": [
+                "Un adjectif à une terminaison au nominatif singulier",
+                "Un adjectif indéclinable",
+                "Un adjectif sans genre",
+                "Un adjectif déponent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ingens » présente la même forme au nominatif singulier pour le masculin, le féminin et le neutre (adjectif à une terminaison)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est l'accusatif singulier masculin de « grandis, grande » ?",
+              "options": ["Grandem", "Grande", "Grandis", "Grandi"],
+              "correctAnswers": [0],
+              "explanation": "L'accusatif masculin et féminin singulier prend la terminaison -em de la 3e déclinaison : « grandem »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le nominatif pluriel masculin de « celer, celeris, celere » ?",
+              "options": ["Celeres", "Celeria", "Celeri", "Celeros"],
+              "correctAnswers": [0],
+              "explanation": "Au nominatif pluriel masculin et féminin, la terminaison est -es : « celeres »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le nominatif neutre pluriel de « felix » (génitif felicis) ?",
+              "options": ["Felicia", "Felices", "Felici", "Felix"],
+              "correctAnswers": [0],
+              "explanation": "Au neutre pluriel, les adjectifs de 2e classe à une terminaison font leur nominatif/accusatif en -ia : « felicia »."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : L'accord nom et adjectif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En quoi l'adjectif s'accorde-t-il obligatoirement avec le nom qu'il qualifie ?",
+              "options": [
+                "En genre, en nombre et en cas",
+                "Uniquement en terminaison sonore",
+                "En personne et en mode",
+                "Uniquement en nombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif latin s'accorde toujours en genre, en nombre et en cas avec le nom auquel il se rapporte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans le groupe « Poeta clarus », pourquoi l'adjectif est-il en -us alors que le nom finit en -a ?",
+              "options": [
+                "Parce que « poeta » est un nom masculin de la 1re déclinaison",
+                "Parce que c'est une exception poétique",
+                "Parce que « clarus » est un mot invariable",
+                "Parce que l'adjectif s'accorde au féminin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Poeta » est masculin (métier d'homme). L'adjectif prend donc la forme masculine du nominatif singulier : clarus."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est l'accord correct de « manus » (main, féminin de la 4e déclinaison) avec « magnus » au nominatif singulier ?",
+              "options": [
+                "Magna manus",
+                "Magnus manus",
+                "Magnum manus",
+                "Magnae manus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manus est féminin : l'adjectif de 1re classe doit se mettre au féminin singulier nominatif, soit « magna »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment accorder « civis » (citoyen, 3e décl., masc.) à l'accusatif singulier avec « bonus » ?",
+              "options": [
+                "Bonum civem",
+                "Bono civi",
+                "Bonam civem",
+                "Bonis cives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Civis à l'accusatif singulier est « civem ». L'adjectif masculin à l'accusatif singulier est « bonum »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels groupes nominaux présentent un accord grammaticalement correct au nominatif singulier ?",
+              "options": [
+                "Agricola bonus (agricola est masculin)",
+                "Nauta fortis (nauta est masculin)",
+                "Poeta bona (poeta est masculin)",
+                "Rex fortes (rex est singulier)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Agricola et nauta sont masculins de la 1re déclinaison : ils s'accordent avec bonus (masc.) et fortis (masc.). Poeta bona et rex fortes sont incorrects."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est l'accord correct au nominatif singulier de « nauta » (masculin) avec « fortis » ?",
+              "options": [
+                "Nauta fortis",
+                "Nauta forte",
+                "Nauta forta",
+                "Nautus fortis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nauta est masculin singulier au nominatif. Fortis est la forme masculine et féminine de cet adjectif de 2e classe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « Reges fortes pugnant », à quel cas et nombre est le groupe « reges fortes » ?",
+              "options": [
+                "Nominatif pluriel",
+                "Génitif singulier",
+                "Ablatif pluriel",
+                "Accusatif singulier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reges (de rex, regis) et fortes sont tous deux au nominatif pluriel masculin, sujets du verbe pugnant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est l'accord au nominatif singulier de « opus » (œuvre, travail, neutre de la 3e déclinaison) avec « magnus » ?",
+              "options": [
+                "Magnum opus",
+                "Magnus opus",
+                "Magna opus",
+                "Magno opere"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opus est neutre singulier. L'adjectif magnus doit donc être au neutre nominatif singulier : « magnum »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi l'adjectif et le nom n'ont-ils pas nécessairement la même terminaison phonétique ?",
+              "options": [
+                "Parce qu'ils peuvent appartenir à deux déclinaisons différentes",
+                "Parce que le latin ignore l'accord en genre",
+                "Parce que les adjectifs ne se déclinent jamais",
+                "Parce que les noms n'ont pas de cas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un nom de la 3e déclinaison (ex: miles) peut être qualifié par un adjectif de la 1re classe (ex: bonus miles), d'où des désinences différentes pour un même cas."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si un adjectif qualifie deux êtres animés masculins et féminins coordonnés, quel genre prend-il généralement ?",
+              "options": [
+                "Le masculin",
+                "Le féminin obligatoirement",
+                "Le neutre sans exception",
+                "Il reste au singulier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour des personnes de genres différents, le masculin pluriel l'emporte régulièrement en latin comme en français."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : Les adjectifs possessifs et leur accord",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'adjectif possessif de 1re personne du singulier (« mon, ma, mes ») ?",
+              "options": [
+                "Meus, mea, meum",
+                "Tuus, tua, tuum",
+                "Suus, sua, suum",
+                "Noster, nostra, nostrum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Meus, mea, meum » se décline comme un adjectif de 1re classe pour signifier « mon, ma, mes »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'adjectif possessif de 1re personne du pluriel (« notre, nos ») ?",
+              "options": [
+                "Noster, nostra, nostrum",
+                "Vester, vestra, vestrum",
+                "Suus, sua, suum",
+                "Meus, mea, meum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Noster, nostra, nostrum » est le possessif de 1re personne du pluriel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Avec quoi l'adjectif possessif latin s'accorde-t-il obligatoirement ?",
+              "options": [
+                "Avec l'objet possédé en genre, nombre et cas",
+                "Avec le possesseur uniquement",
+                "Il reste toujours invariable au masculin",
+                "Avec le sujet du verbe obligatoirement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme tout adjectif, le possessif s'accorde en genre, nombre et cas avec le nom qu'il détermine (la chose possédée)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « Pater suam filiam amat », pourquoi le possessif est-il à la forme « suam » ?",
+              "options": [
+                "Parce que filiam est à l'accusatif féminin singulier",
+                "Parce que pater est au masculin singulier",
+                "Parce que le verbe amat exige le féminin",
+                "Parce que c'est un mot invariable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filiam est féminin accusatif singulier : suam s'accorde avec filiam, même si le père (possesseur) est masculin."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels termes sont des adjectifs possessifs latins ?",
+              "options": [
+                "Tuus, tua, tuum",
+                "Vester, vestra, vestrum",
+                "Is, ea, id",
+                "Ille, illa, illud"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tuus (ton) et vester (votre) sont des possessifs. Is et ille sont des pronoms-adjectifs démonstratifs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quand emploie-t-on le possessif réfléchi « suus, sua, suum » ?",
+              "options": [
+                "Quand le possesseur est le sujet de la proposition",
+                "Uniquement pour interpeller un ami",
+                "Quand le possesseur est extérieur à la phrase",
+                "Seulement à la 1re personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Suus, sua, suum » est réfléchi : il renvoie au sujet de la proposition (« son propre, sa propre »)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si le possesseur de 3e personne n'est PAS le sujet, qu'emploie-t-on généralement à la place de suus ?",
+              "options": [
+                "Le génitif du démonstratif : eius (au singulier) ou eorum / earum (au pluriel)",
+                "L'ablatif de tuus",
+                "Le nominatif de ille",
+                "Le datif de meus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour exprimer « son » ou « leur » quand le possesseur n'est pas le sujet, le latin utilise le génitif de is (eius, eorum, earum)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le vocatif masculin singulier exceptionnel de « meus » ?",
+              "options": ["Mi (ex: mi fili !)", "Mee", "Meus", "Meum"],
+              "correctAnswers": [0],
+              "explanation": "Le vocatif masculin singulier de meus est irrégulier : c'est la forme contractée « mi » (ex: mi amice, mon ami !)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Libri nostri » au nominatif pluriel ?",
+              "options": [
+                "Nos livres",
+                "Mon livre",
+                "Vos livres",
+                "Leur livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Libri nostri est au nominatif pluriel masculin et se traduit par « nos livres »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Romani patriam suam defendunt », qui possède la patrie défendue ?",
+              "options": [
+                "Les Romains eux-mêmes (le sujet)",
+                "Les ennemis des Romains",
+                "Les dieux uniquement",
+                "Une nation étrangère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif réfléchi « suam » renvoie directement au sujet « Romani » : ils défendent leur propre patrie."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Les pronoms et adjectifs indéfinis",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel pronom-adjectif indéfini latin signifie « un certain » ou « quelqu'un de précis » ?",
+              "options": [
+                "Quidam, quaedam, quiddam (quoddam)",
+                "Nemo",
+                "Nihil",
+                "Totus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Quidam, quaedam, quiddam » désigne un être ou une chose déterminé(e) que l'on ne nomme pas (« un certain »)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le pronom-adjectif « quisque, quaeque, quidque » ?",
+              "options": ["Chaque, chacun", "Aucun", "Le même", "Personne"],
+              "correctAnswers": [0],
+              "explanation": "« Quisque » (avec le suffixe -que) exprime la distribution individuelle : « chaque, chacun »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot invariable latin signifie « rien » ?",
+              "options": ["Nihil", "Nemo", "Nullus", "Aliquis"],
+              "correctAnswers": [0],
+              "explanation": "« Nihil » est un mot neutre invariable signifiant « rien »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot latin déclinable signifie « personne, nul » ?",
+              "options": ["Nemo", "Nihil", "Non", "Numquam"],
+              "correctAnswers": [0],
+              "explanation": "« Nemo » (composé de ne-hemo, nul homme) signifie « personne »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels termes expriment une idée négative d'absence ou d'inexistence en latin ?",
+              "options": [
+                "Nullus, nulla, nullum (aucun)",
+                "Nemo (personne)",
+                "Omnis (tout)",
+                "Quidam (un certain)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nullus (aucun) et nemo (personne) expriment la négation. Omnis et quidam sont affirmatifs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie l'adjectif « alius, alia, aliud » ?",
+              "options": [
+                "Autre (parmi plusieurs)",
+                "Le même",
+                "Le premier",
+                "Le seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Alius, alia, aliud » signifie « un autre » lorsqu'on choisit parmi plusieurs éléments."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « alter, altera, alterum » ?",
+              "options": [
+                "L'autre (de deux seulement)",
+                "Tous les autres",
+                "Chacun",
+                "Aucun des deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Alter » s'emploie spécifiquement quand il n'y a que deux personnes ou deux objets (« l'un des deux, l'autre »)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel adjectif signifie « tout entier » avec un génitif en -ius et datif en -i ?",
+              "options": ["Totus, tota, totum", "Solus", "Unus", "Nullus"],
+              "correctAnswers": [0],
+              "explanation": "« Totus, tota, totum » (génitif totius, datif toti) signifie « tout entier »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans la tournure « Alii... alii... », comment traduit-on cette corrélation ?",
+              "options": [
+                "Les uns... les autres...",
+                "Tous... sans exception...",
+                "Ici... là-bas...",
+                "Autrefois... aujourd'hui..."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La répétition « alii... alii... » se traduit par « les uns... les autres... »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le sens de l'adjectif « solus, sola, solum » ?",
+              "options": ["Seul, unique", "Ensoleillé", "Solide", "Entier"],
+              "correctAnswers": [0],
+              "explanation": "« Solus, sola, solum » (génitif solius) signifie « seul »."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Bilan sur les accords et déterminants",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle proposition résume parfaitement la règle d'accord de l'adjectif en latin ?",
+              "options": [
+                "Il s'accorde en genre, en nombre et en cas avec le nom qu'il qualifie",
+                "Il garde toujours la même terminaison que le verbe",
+                "Il reste toujours au masculin singulier",
+                "Il s'accorde uniquement si le nom est au nominatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accord en genre, en nombre et en cas est la règle d'or pour tous les adjectifs qualificatifs et déterminants en latin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans « Hic magnus imperator », quels mots s'accordent avec « imperator » ?",
+              "options": [
+                "Hic (démonstratif) et magnus (adjectif)",
+                "Uniquement magnus",
+                "Uniquement hic",
+                "Aucun des deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le démonstratif 'hic' et l'adjectif 'magnus' sont tous deux au nominatif masculin singulier pour s'accorder avec 'imperator'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le groupe nominal correct au datif singulier pour « cette grande ville » (urbs, fém. 3e décl.) ?",
+              "options": [
+                "Huic magnae urbi",
+                "Huius magnae urbis",
+                "Hanc magnam urbem",
+                "Hac magna urbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au datif singulier : huic (démonstratif), magnae (1re classe au fém.), urbi (3e déclinaison)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi la phrase « Miles bonus est » est-elle traduite par « Le soldat est bon » ?",
+              "options": [
+                "On rétablit l'article en français car le latin classique n'en possède aucun",
+                "Parce que miles contient un article préfixé",
+                "Parce que est signifie « le »",
+                "Parce que bonus est un article indéfini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le traducteur ajoute l'article nécessaire au bon sens et à la syntaxe de la langue française."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques sont partagées par les adjectifs de 1re et de 2e classe ?",
+              "options": [
+                "Ils s'accordent en genre, nombre et cas avec le nom",
+                "Ils peuvent être épithètes ou attributs du sujet",
+                "Ils ont exactement les mêmes terminaisons au génitif pluriel",
+                "Ils sont tous invariables au neutre pluriel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tous les adjectifs s'accordent en genre, nombre et cas et peuvent occuper les mêmes fonctions syntaxiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est l'accord au génitif pluriel de « illa manus » (fém. 4e décl.) ?",
+              "options": [
+                "Illarum manuum",
+                "Illorum manuum",
+                "Illis manibus",
+                "Illas manus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manus est féminin : illa fait illarum au génitif pluriel féminin, et manus fait manuum à la 4e déclinaison."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « Eius librum lego », à qui appartient le livre ?",
+              "options": [
+                "À une personne tierce différente du sujet (son livre à lui / à elle)",
+                "Au sujet qui parle (mon livre)",
+                "À personne",
+                "Au lecteur du texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Eius » est le génitif singulier non réfléchi de is : le possesseur est distinct du sujet « lego »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Meum librum lego », qui possède le livre lu ?",
+              "options": [
+                "Moi-même (possesseur de 1re personne du singulier)",
+                "Mon ami",
+                "Le maître",
+                "Notre famille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Meum » indique la possession par la 1re personne du singulier (« Je lis mon livre »)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le nominatif neutre pluriel de « omne bellum » (chaque guerre) ?",
+              "options": [
+                "Omnia bella",
+                "Omnes bella",
+                "Omnis bella",
+                "Omnium bellorum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au neutre pluriel, bellum fait bella (2e décl.) et omnis fait omnia (2e classe, thèmes en -i)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle terminaison prend toujours un adjectif qualifiant un nom neutre pluriel au nominatif et à l'accusatif ?",
+              "options": [
+                "-a ou -ia",
+                "-os ou -as",
+                "-is ou -ibus",
+                "-um ou -ium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous les neutres pluriels au nominatif, vocatif et accusatif se terminent par -a (1re classe) ou -ia (2e classe)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : L'ordre des mots dans la phrase latine (SOV)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'ordre des mots le plus fréquent et canonique dans la phrase latine classique ?",
+              "options": [
+                "Sujet - Objet - Verbe (SOV)",
+                "Sujet - Verbe - Objet (SVO)",
+                "Verbe - Sujet - Objet (VSO)",
+                "Objet - Verbe - Sujet (OVS)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En latin classique non marqué, le sujet ouvre la phrase et le verbe la clôture : la structure type est SOV."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où se trouve très régulièrement placé le verbe principal dans une phrase simple ?",
+              "options": [
+                "À la fin de la proposition",
+                "Au tout début obligatoire",
+                "Immédiatement après le premier adjectif",
+                "Toujours en deuxième position exacte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe se place traditionnellement en fin de proposition, bouclant le sens de la phrase."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi l'ordre des mots est-il beaucoup plus souple en latin qu'en français moderne ?",
+              "options": [
+                "Parce que les cas grammaticaux indiquent la fonction de chaque mot quelle que soit sa place",
+                "Parce que les Romains parlaient sans règles grammaticales",
+                "Parce qu'il n'y avait aucun verbe conjugué",
+                "Parce que l'ordre des mots dépendait de la météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les désinences de cas fixent la fonction (sujet, COD, etc.), ce qui permet de déplacer les mots pour des raisons stylistiques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que cherche souvent à faire un auteur latin lorsqu'il place un mot en tête de phrase ?",
+              "options": [
+                "Mettre ce mot en valeur et en relief (emphase stylistique)",
+                "Indiquer que le mot est une erreur de copie",
+                "Signaler que la phrase est interrogative",
+                "Rendre la phrase poétique sans signification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La première place d'une proposition est une position d'emphase : le mot placé en tête attire l'attention de l'auditeur."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont exactes sur l'agencement des mots en latin classique ?",
+              "options": [
+                "Le verbe principal clôture très souvent la proposition",
+                "L'adjectif peut être séparé de son nom pour créer un effet stylistique (disjonction)",
+                "L'ordre des mots est strictement figé sous peine d'incompréhension",
+                "Le sujet doit toujours être le tout dernier mot de la phrase"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le verbe est couramment en fin de phrase et les auteurs utilisent fréquemment la disjonction (hyperbate)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans « Romani magnam victoriam reportant », quel mot est le verbe ?",
+              "options": ["Reportant", "Romani", "Magnam", "Victoriam"],
+              "correctAnswers": [0],
+              "explanation": "« Reportant » (ils remportent) est le verbe conjugué à la 3e personne du pluriel du présent de l'indicatif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « Romani magnam victoriam reportant », quel est le complément d'objet direct ?",
+              "options": [
+                "Magnam victoriam",
+                "Romani",
+                "Reportant",
+                "Il n'y a pas d'objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Magnam victoriam » est à l'accusatif singulier féminin et répond à la question « reportent quoi ? » : une grande victoire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on fidèlement « Servus dominum audit » en français ?",
+              "options": [
+                "L'esclave écoute le maître",
+                "Le maître écoute l'esclave",
+                "L'esclave et le maître écoutent",
+                "Le maître appelle l'esclave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Servus est nominatif (sujet) et dominum est accusatif (COD) : l'esclave écoute son maître."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'on écrit « Dominum servus audit », la fonction des mots change-t-elle ?",
+              "options": [
+                "Non, mais dominum est mis en relief (c'est le maître que l'esclave écoute)",
+                "Oui, dominum devient le sujet",
+                "Oui, la phrase devient interrogative",
+                "Oui, servus devient complément d'objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les désinences restent dominum (-um, accusatif COD) et servus (-us, nominatif sujet) : seul l'effet d'insistance change."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Où place-t-on généralement les adverbes dans la phrase latine ?",
+              "options": [
+                "Juste avant le mot ou le verbe qu'ils précisent",
+                "Toujours en toute fin de texte",
+                "Obligatoirement avant le sujet",
+                "Après le point final"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adverbe se place habituellement immédiatement devant le verbe ou l'adjectif qu'il modifie."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Le sujet et l'attribut du sujet au nominatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel cas grammatical exprime toujours le sujet d'un verbe à un mode personnel ?",
+              "options": [
+                "Le nominatif",
+                "L'accusatif",
+                "Le datif",
+                "L'ablatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nominatif est le cas par excellence du sujet de la phrase et de l'attribut du sujet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quel cas se met obligatoirement l'attribut du sujet en latin ?",
+              "options": [
+                "Au nominatif",
+                "À l'accusatif",
+                "Au génitif",
+                "À l'ablatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'attribut du sujet renvoie au même être que le sujet : il se met donc obligatoirement au nominatif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans « Cicero consul est », quelle est la fonction grammaticale de « consul » ?",
+              "options": [
+                "Attribut du sujet Cicero",
+                "Complément d'objet direct",
+                "Complément du nom",
+                "Complément de manière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consul qualifie le sujet Cicero par l'intermédiaire du verbe être (est) : c'est un attribut du sujet au nominatif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi les pronoms sujets personnels (ego, tu, nos, vos) sont-ils souvent absents en latin ?",
+              "options": [
+                "Parce que la désinence verbale indique déjà la personne grammaticale",
+                "Parce qu'il est interdit d'exprimer la première personne",
+                "Parce que le latin n'a pas de pronoms personnels",
+                "Parce que les Romains ne parlaient qu'à la 3e personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les désinences verbales (-o/-m, -s, -t, -mus, -tis, -nt) indiquent avec précision la personne : le pronom sujet n'est donc pas indispensable."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels mots sont au cas nominatif dans « Marcus bonus amicus est » ?",
+              "options": [
+                "Marcus (sujet)",
+                "Amicus (attribut du sujet)",
+                "Bonus (épithète de l'attribut)",
+                "Est (verbe)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Marcus est le sujet au nominatif et amicus est l'attribut du sujet au nominatif. Bonus s'accorde aussi au nominatif. Est est un verbe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quand emploie-t-on expressément le pronom sujet « ego » ou « tu » en latin ?",
+              "options": [
+                "Pour insister ou marquer une opposition nette",
+                "Dans toutes les phrases sans exception",
+                "Uniquement à la voix passive",
+                "Seulement dans les interrogations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expression du pronom personnel sujet apporte une insistance ou une nuance d'opposition : « Ego scribo, tu legis » (Moi j'écris, toi tu lis)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « Puellae laetae sunt », quel est le cas et la fonction de « laetae » ?",
+              "options": [
+                "Nominatif pluriel, attribut du sujet puellae",
+                "Génitif singulier, complément du nom",
+                "Datif singulier, complément d'attribution",
+                "Accusatif pluriel, complément d'objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Laetae s'accorde au nominatif féminin pluriel avec puellae et occupe la fonction d'attribut du sujet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment s'accorde l'attribut du sujet lorsqu'il s'agit d'un adjectif ?",
+              "options": [
+                "En genre, nombre et cas (nominatif) avec le sujet",
+                "Uniquement en nombre",
+                "Il reste toujours au neutre singulier",
+                "Uniquement en cas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un adjectif attribut du sujet s'accorde pleinement en genre, en nombre et en cas (nominatif) avec le sujet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « Iustitia praeclara virtus habetur », quel groupe forme l'attribut du sujet ?",
+              "options": [
+                "Praeclara virtus",
+                "Iustitia",
+                "Habetur",
+                "Il n'y en a pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Habetur signifie « est considérée comme » (verbe d'état passif). « Praeclara virtus » est l'attribut du sujet iustitia."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si le sujet est neutre pluriel (ex: « Oppida »), à quel nombre se met le verbe en latin classique ?",
+              "options": [
+                "Au pluriel",
+                "Toujours au singulier comme en grec ancien",
+                "Au duel obligatoire",
+                "Au choix indifférent de l'auteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement au grec ancien, le latin accorde strictement le verbe au pluriel avec un sujet neutre pluriel : oppida deleta sunt."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : Le verbe esse et les verbes d'état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelles sont les formes de la 3e personne du singulier et du pluriel de l'indicatif présent de « esse » ?",
+              "options": [
+                "Est / sunt",
+                "Es / estis",
+                "Sum / sumus",
+                "Erat / erant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'indicatif présent : est (il/elle est) et sunt (ils/elles sont)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la 1re personne du singulier de l'indicatif présent de « esse » ?",
+              "options": ["Sum", "Es", "Est", "Sim"],
+              "correctAnswers": [0],
+              "explanation": "La conjugaison du présent est : sum, es, est, sumus, estis, sunt."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel complément essentiel trouve-t-on après le verbe d'état « esse » ?",
+              "options": [
+                "Un attribut du sujet au nominatif",
+                "Un complément d'objet direct à l'accusatif",
+                "Un complément d'agent à l'ablatif",
+                "Un complément de mesure au génitif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe être est un verbe copule qui relie le sujet à son attribut au nominatif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel verbe d'état latin signifie « sembler, paraître » ou « être vu » ?",
+              "options": ["Videri", "Videre", "Vincere", "Vivere"],
+              "correctAnswers": [0],
+              "explanation": "« Videri » (passif de videre) s'emploie couramment comme verbe d'état signifiant « sembler, paraître » avec attribut au nominatif."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels verbes se construisent régulièrement avec un attribut du sujet au nominatif ?",
+              "options": [
+                "Esse (être)",
+                "Manere (demeurer, rester dans un état)",
+                "Occidere (tuer)",
+                "Deleere (détruire)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Esse et manere sont des verbes d'état (attribut au nominatif). Occidere et delere sont des verbes transitifs directs (COD à l'accusatif)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Puer videtur tristis » ?",
+              "options": [
+                "L'enfant semble triste",
+                "L'enfant voit la tristesse",
+                "La tristesse voit l'enfant",
+                "L'enfant rend triste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Videtur est un verbe d'état signifiant « semble » et tristis est son attribut au nominatif : « L'enfant semble triste »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la forme de l'indicatif imparfait de « esse » à la 3e personne du singulier ?",
+              "options": ["Erat", "Est", "Erit", "Fuit"],
+              "correctAnswers": [0],
+              "explanation": "L'imparfait de l'indicatif de esse se conjugue : eram, eras, erat, eramus, eratis, erant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la forme de l'indicatif futur simple de « esse » à la 3e personne du singulier ?",
+              "options": ["Erit", "Erat", "Est", "Esset"],
+              "correctAnswers": [0],
+              "explanation": "Le futur de esse se conjugue : ero, eris, erit, erimus, eritis, erunt."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la 1re personne du pluriel de l'indicatif présent de « esse » ?",
+              "options": ["Sumus", "Estis", "Sunt", "Eramus"],
+              "correctAnswers": [0],
+              "explanation": "« Sumus » signifie « nous sommes » au présent de l'indicatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le verbe qui sert de lien entre le sujet et son attribut ?",
+              "options": [
+                "Un verbe copule (ou verbe d'état)",
+                "Un verbe déponent",
+                "Un verbe impersonnel",
+                "Un verbe défectif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un verbe copule (du latin copula, lien) relie le sujet à un nom ou adjectif qui lui attribue une qualité."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : Le complément d'objet direct à l'accusatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel cas exprime principalement la fonction de complément d'objet direct (COD) en latin ?",
+              "options": ["L'accusatif", "Le datif", "L'ablatif", "Le génitif"],
+              "correctAnswers": [0],
+              "explanation": "L'accusatif est le cas qui reçoit directement l'action exprimée par un verbe transitif actif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans « Agricola terram colit », quel mot est le COD à l'accusatif ?",
+              "options": ["Terram", "Agricola", "Colit", "Il n'y a pas de COD"],
+              "correctAnswers": [0],
+              "explanation": "« Terram » (la terre) est à l'accusatif singulier de la 1re déclinaison, complément d'objet de colit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la désinence caractéristique de l'accusatif singulier masculin et féminin ?",
+              "options": [
+                "-m (-am, -um, -em)",
+                "-s (-as, -os, -es)",
+                "-i (-i, -ui)",
+                "-o (-o, -eo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous les noms masculins et féminins forment leur accusatif singulier avec la consonne -m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la règle essentielle pour les noms neutres à l'accusatif singulier et pluriel ?",
+              "options": [
+                "L'accusatif neutre est toujours rigoureusement identique au nominatif",
+                "L'accusatif neutre se termine toujours par -m au pluriel",
+                "L'accusatif neutre prend la forme du datif",
+                "Les noms neutres ne peuvent jamais être COD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour tous les mots neutres (noms et adjectifs), nominatif, vocatif et accusatif sont toujours strictement identiques."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels mots sont à l'accusatif dans « Discipulus magistrum et libros amat » ?",
+              "options": ["Magistrum", "Libros", "Discipulus", "Amat"],
+              "correctAnswers": [0, 1],
+              "explanation": "Magistrum (-um, singulier) et libros (-os, pluriel) sont tous deux à l'accusatif, compléments de amat."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Canis felem videt » ?",
+              "options": [
+                "Le chien voit le chat",
+                "Le chat voit le chien",
+                "Le chien et le chat se regardent",
+                "Le chat fuit le chien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Canis est nominatif (sujet) et felem est accusatif (COD) : c'est le chien qui voit le chat."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel verbe transitif direct latin signifie « aimer » et appelle un COD à l'accusatif ?",
+              "options": ["Amare", "Parere", "Credere", "Placere"],
+              "correctAnswers": [0],
+              "explanation": "Amare est transitif direct (+ accusatif). Parere, credere et placere se construisent avec le datif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Romani urbem deleverunt », à quel temps est le verbe et quel est son COD ?",
+              "options": [
+                "Parfait de l'indicatif, urbem",
+                "Présent de l'indicatif, Romani",
+                "Imparfait de l'indicatif, urbem",
+                "Futur de l'indicatif, deleverunt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deleverunt est au parfait de l'indicatif (ils détruisirent) et a pour COD urbem à l'accusatif singulier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Certains verbes comme « docere » (enseigner) peuvent-ils avoir deux accusatifs ?",
+              "options": [
+                "Oui : un accusatif de la personne et un accusatif de la chose enseignée",
+                "Non, le latin interdit formellement d'avoir deux accusatifs",
+                "Uniquement si la phrase est à la voix passive",
+                "Seulement avec des noms propres de dieux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les verbes signifiant enseigner ou demander (docere, rogare) admettent un double accusatif : docere aliquem grammaticam."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle question se pose-t-on pour identifier le complément d'objet direct d'une phrase ?",
+              "options": [
+                "Le sujet fait l'action sur « qui ? » ou « quoi ? »",
+                "« À qui ? » profite l'action",
+                "« Par quel moyen ? » l'action est faite",
+                "« En quel lieu ? » se déroule l'événement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le COD désigne l'être ou l'objet qui subit directement l'action du verbe transitif actif."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : L'attribution et le COI au datif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel cas exprime par excellence l'attribution, le destinataire et le COI en latin ?",
+              "options": ["Le datif", "L'accusatif", "Le vocatif", "L'ablatif"],
+              "correctAnswers": [0],
+              "explanation": "Le datif (du latin dare, donner) est le cas de la personne ou de la chose à laquelle on donne ou attribue quelque chose."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans « Dominus servo pecuniam dat », quel mot est au datif singulier ?",
+              "options": ["Servo", "Dominus", "Pecuniam", "Dat"],
+              "correctAnswers": [0],
+              "explanation": "« Servo » (à l'esclave) est au datif singulier de la 2e déclinaison : c'est le bénéficiaire de l'argent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Dominus servo pecuniam dat » ?",
+              "options": [
+                "Le maître donne de l'argent à l'esclave",
+                "L'esclave donne de l'argent au maître",
+                "Le maître retire l'argent de l'esclave",
+                "L'argent appartient au maître"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dominus est sujet (nominatif), pecuniam est COD (accusatif) et servo est COI (datif)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la désinence du datif singulier de la 1re déclinaison (ex: rosa) ?",
+              "options": ["-ae", "-am", "-a", "-arum"],
+              "correctAnswers": [0],
+              "explanation": "La terminaison du datif singulier de la 1re déclinaison est -ae (identique au génitif singulier)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels verbes latins se construisent naturellement avec un complément au cas datif ?",
+              "options": [
+                "Dare (donner)",
+                "Placere (plaire)",
+                "Amare (aimer)",
+                "Vincere (vaincre)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On donne quelque chose à quelqu'un (dare aliquid alicui) et on plaît à quelqu'un (placere alicui + datif)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison du datif singulier de la 2e déclinaison (ex: dominus) ?",
+              "options": ["-o", "-i", "-um", "-is"],
+              "correctAnswers": [0],
+              "explanation": "La terminaison du datif singulier masculin et neutre de la 2e déclinaison est -o (ex: domino)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la tournure du « datif de possession » avec le verbe esse (ex: « Mihi est liber ») ?",
+              "options": [
+                "Une construction signifiant « J'ai un livre » (littéralement : un livre est à moi)",
+                "Une dette d'argent contractée auprès d'une banque",
+                "Une faute de déclinaison courante chez les élèves",
+                "Une formule de politesse pour dire au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure « Mihi est... » (datif + verbe être + nominatif) est le moyen le plus courant en latin pour exprimer la possession."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Nobis sunt multi amici » ?",
+              "options": [
+                "Nous avons beaucoup d'amis",
+                "Nos amis sont là-bas",
+                "Les amis nous appellent",
+                "Beaucoup d'amis nous quittent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nobis (datif de possession) + sunt + multi amici (nominatif pluriel) se traduit par « Nous avons de nombreux amis »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison commune du datif pluriel pour les 1re et 2e déclinaisons ?",
+              "options": ["-is", "-ibus", "-os", "-as"],
+              "correctAnswers": [0],
+              "explanation": "Les 1re et 2e déclinaisons partagent la désinence -is au datif et à l'ablatif pluriels."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison du datif pluriel de la 3e déclinaison ?",
+              "options": ["-ibus", "-is", "-ebus", "-ubus"],
+              "correctAnswers": [0],
+              "explanation": "À la 3e déclinaison, le datif et l'ablatif pluriels se terminent par -ibus (ex: civibus, regibus)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : Le complément du nom au génitif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la fonction grammaticale principale du cas génitif en latin ?",
+              "options": [
+                "Complément du nom (possession, appartenance, matière, qualité)",
+                "Sujet de la proposition",
+                "Complément circonstanciel de lieu",
+                "Objet direct du verbe actif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le génitif dépend presque toujours d'un nom qu'il précise ou détermine (complément du nom)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans « Templum Dianae », quelle est la fonction du mot « Dianae » ?",
+              "options": [
+                "Complément du nom templum au génitif",
+                "Attribut du sujet",
+                "Sujet du verbe",
+                "Complément d'objet direct"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dianae est au génitif singulier : il complète le nom templum (« le temple de Diane »)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on l'expression « Domus patris » ?",
+              "options": [
+                "La maison du père",
+                "Le père de la maison",
+                "Dans la maison paternelle",
+                "La maison et le père"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Domus est le nom principal et patris est son complément au génitif singulier (de pater, patris)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la désinence du génitif singulier de la 2e déclinaison (ex: lupus) ?",
+              "options": ["-i", "-is", "-o", "-um"],
+              "correctAnswers": [0],
+              "explanation": "Les noms de la 2e déclinaison ont leur génitif singulier en -i (ex: lupi, du loup)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles terminaisons indiquent sans équivoque un génitif pluriel ?",
+              "options": [
+                "-orum (2e déclinaison)",
+                "-arum (1re déclinaison)",
+                "-as (accusatif pluriel)",
+                "-os (accusatif pluriel)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "-arum et -orum sont les désinences exclusives du génitif pluriel pour les 1re et 2e déclinaisons."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la désinence du génitif singulier de la 3e déclinaison ?",
+              "options": ["-is", "-i", "-ae", "-us"],
+              "correctAnswers": [0],
+              "explanation": "La terminaison du génitif singulier de la 3e déclinaison est -is (c'est elle qui permet d'identifier la déclinaison dans le dictionnaire)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'exprime le « génitif partitif » dans une expression comme « Pars militum » ?",
+              "options": [
+                "Le tout dont on extrait une fraction ou une partie",
+                "Une séparation définitive",
+                "Le lieu du combat",
+                "La cause de la guerre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le génitif partitif désigne l'ensemble dont on prélève une partie : « une partie des soldats »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Multum pecuniae » (adverbe de quantité + génitif partitif) ?",
+              "options": [
+                "Beaucoup d'argent",
+                "L'argent de beaucoup de gens",
+                "Une petite somme d'argent",
+                "Tout l'argent disponible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En latin, les mots exprimant la quantité (multum, plus, minus) se construisent fréquemment avec un génitif partitif neutre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le sens de « Amor patriae » ?",
+              "options": [
+                "L'amour de la patrie",
+                "La patrie des amoureux",
+                "Une patrie sans affection",
+                "L'amour des étrangers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patriae est au génitif singulier : c'est un génitif objectif qui désigne l'objet aimé (« l'amour envers la patrie »)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Où place-t-on généralement le génitif par rapport au nom qu'il complète en latin ?",
+              "options": [
+                "Indifféremment avant ou après le nom qu'il complète",
+                "Toujours après le point final",
+                "Obligatoirement à la toute fin de la phrase",
+                "Toujours en tête absolue du paragraphe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le génitif peut précéder son nom (possession mise en avant) ou le suivre, selon le rythme et le style."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Les compléments circonstanciels de lieu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle préposition suivie de l'ablatif indique la situation dans laquelle on se trouve (lieu où l'on est) ?",
+              "options": [
+                "In (+ ablatif)",
+                "Ad (+ accusatif)",
+                "Ex (+ ablatif)",
+                "Sub (+ accusatif)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« In » suivi de l'ablatif exprime le lieu où l'on se trouve sans mouvement de pénétration (« dans, en, sur »)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle préposition suivie de l'accusatif indique la direction vers laquelle on se déplace (lieu où l'on va) ?",
+              "options": [
+                "In ou ad (+ accusatif)",
+                "Ex (+ ablatif)",
+                "Ab (+ ablatif)",
+                "Cum (+ ablatif)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mouvement vers un lieu s'exprime par « in » (+ accusatif : entrée dans un lieu) ou « ad » (+ accusatif : rapprochement vers un lieu)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle préposition indique la sortie depuis l'intérieur d'un lieu (lieu d'où l'on sort) ?",
+              "options": [
+                "E ou ex (+ ablatif)",
+                "In (+ ablatif)",
+                "Ad (+ accusatif)",
+                "Per (+ accusatif)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« E » ou « ex » suivi de l'ablatif exprime le point de départ en sortant de l'intérieur d'un endroit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour les noms de villes singuliers des 1re et 2e déclinaisons, quel cas ancien exprime le lieu où l'on est ?",
+              "options": [
+                "Le locatif (ex: Romae à Rome, Corinthi à Corinthe)",
+                "Le vocatif",
+                "L'instrumental",
+                "L'accusatif avec ad"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noms de villes singuliers des 1re et 2e déclinaisons conservent l'ancien cas locatif : Romae (à Rome), Corinthi (à Corinthe)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles prépositions se construisent régulièrement avec l'ablatif pour exprimer l'origine ou l'éloignement ?",
+              "options": [
+                "Ex / e (sortie d'un lieu)",
+                "Ab / a (éloignement depuis les abords)",
+                "Ad (direction vers)",
+                "Trans (traversée)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ex et ab régissent l'ablatif. Ad et trans régissent toujours l'accusatif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on « In urbe vivit » ?",
+              "options": [
+                "Il vit dans la ville",
+                "Il marche vers la ville",
+                "Il quitte la ville",
+                "Il reconstruit la ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In + ablatif (urbe) indique la localisation sans déplacement : « Il vit dans la ville »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Legatus ad urbem venit » ?",
+              "options": [
+                "L'ambassadeur arrive près de la ville (vers la ville)",
+                "L'ambassadeur quitte la ville",
+                "L'ambassadeur réside dans la ville",
+                "L'ambassadeur détruit la ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ad + accusatif indique le mouvement vers les abords d'un lieu : l'ambassadeur vient vers la ville."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on le lieu par où l'on passe en latin ?",
+              "options": [
+                "Par la préposition « per » suivie de l'accusatif",
+                "Par le génitif sans préposition",
+                "Par le datif seul",
+                "Par le vocatif pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passage à travers un lieu s'exprime régulièrement par « per » (+ accusatif), ou par l'ablatif seul pour les voies aménagées (via Appia)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on « à Rome » (lieu où l'on est, sans préposition car nom de ville singulier en -a) ?",
+              "options": ["Romae (locatif)", "Ad Romam", "In Romam", "Ex Roma"],
+              "correctAnswers": [0],
+              "explanation": "Les noms de villes ne prennent pas de préposition : au locatif, Rome se dit « Romae »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on « de Rome » (départ depuis la ville de Rome) ?",
+              "options": [
+                "Roma (ablatif sans préposition)",
+                "Ad Romam",
+                "In Roma",
+                "Per Romam"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noms de villes expriment le point de départ par l'ablatif pur sans préposition : « Roma »."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : L'ablatif de moyen, de manière et de temps",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel cas grammatical exprime le moyen ou l'instrument sans aucune préposition pour une chose inanimée ?",
+              "options": [
+                "L'ablatif",
+                "L'accusatif",
+                "Le génitif",
+                "Le nominatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ablatif instrumental (ablatif de moyen) s'emploie seul sans préposition lorsqu'il s'agit d'un objet inanimé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Gladio pugnat » ?",
+              "options": [
+                "Il combat avec une épée (au moyen d'une épée)",
+                "Il admire une épée",
+                "L'épée le blesse",
+                "Il achète une épée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gladio est à l'ablatif de moyen : l'épée est l'instrument avec lequel il combat."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle préposition utilise-t-on pour le complément de manière quand le nom n'est pas accompagné d'un adjectif ?",
+              "options": [
+                "Cum (+ ablatif, ex: cum cura)",
+                "Sine (+ accusatif)",
+                "Ad (+ accusatif)",
+                "Per (+ ablatif)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans adjectif, la manière s'exprime par « cum » + ablatif (ex: cum studio, avec zèle). Avec adjectif, cum est facultatif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on le moment précis où se déroule une action (temps ponctuel) ?",
+              "options": [
+                "À l'ablatif sans préposition (ex: hieme, tertia hora)",
+                "À l'accusatif de durée",
+                "Au datif d'intérêt",
+                "Au génitif partitif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le temps où l'on est (la date, la saison, l'heure) s'exprime par l'ablatif sans préposition."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions circonstancielles sont naturellement exprimées au cas ablatif en latin ?",
+              "options": [
+                "Le moyen ou l'instrument",
+                "Le moment précis dans le temps",
+                "Le complément d'objet direct de l'action",
+                "Le sujet du verbe actif"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'ablatif est le grand cas des compléments circonstanciels : moyen, moment, cause, manière, origine."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on la durée pendant laquelle se prolonge une action en latin ?",
+              "options": [
+                "À l'accusatif sans préposition (ex: multos annos)",
+                "À l'ablatif de moyen",
+                "Au vocatif singulier",
+                "Au locatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La durée (pendant combien de temps ?) se met à l'accusatif en latin : « multos annos vixit » (il vécut pendant de nombreuses années)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Magna cura laborat » ?",
+              "options": [
+                "Il travaille avec grand soin",
+                "Il travaille sans aucun soin",
+                "Un grand soin le fatigue",
+                "Il fuit le grand travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Magna cura est un ablatif de manière avec adjectif épithète : « avec un grand soin »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si l'action est accomplie par une personne vivante à la voix passive (complément d'agent), que met-on ?",
+              "options": [
+                "La préposition a ou ab suivie de l'ablatif",
+                "L'ablatif seul sans préposition",
+                "La préposition ad suivie de l'accusatif",
+                "Le datif de possession"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le complément d'agent animé au passif exige la préposition « a / ab » + ablatif (ex: amatur a matre)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Vere flores rident » ?",
+              "options": [
+                "Au printemps, les fleurs s'épanouissent (rient)",
+                "La vérité fleurit toujours",
+                "En hiver, tout est gelé",
+                "Les fleurs cherchent la vérité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Vere » est l'ablatif de temps de ver, veris (le printemps) : « Au printemps, les fleurs s'épanouissent »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment se traduit l'expression consacrée « Nullo modo » ?",
+              "options": [
+                "D'aucune manière (en aucun cas)",
+                "De toutes les façons",
+                "Avec beaucoup de mesure",
+                "Sans suivre la mode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nullo modo est un ablatif de manière signifiant « d'aucune manière »."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : La négation et les types de phrases",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le mot le plus courant pour exprimer la négation simple devant un verbe à l'indicatif ?",
+              "options": ["Non", "Ne", "Num", "Cur"],
+              "correctAnswers": [0],
+              "explanation": "L'adverbe « non » est la négation ordinaire portée sur un mot ou une proposition indicatif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où se place généralement la négation « non » en latin ?",
+              "options": [
+                "Juste devant le mot ou le verbe qu'elle nie",
+                "Toujours à la toute fin de la phrase",
+                "Toujours avant le premier nom",
+                "Après le point final"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Non » précède immédiatement le terme sur lequel porte la négation (ex: non venit, il ne vient pas)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle particule enclitique s'attache au premier mot pour poser une question totale neutre ?",
+              "options": ["-ne (ex: Videsne ?)", "-que", "-ve", "-met"],
+              "correctAnswers": [0],
+              "explanation": "La particule interrogative enclitique « -ne » s'accole au premier mot : « Videsne me ? » (Me vois-tu ?)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle particule introduit une question dont le locuteur attend la réponse « non » ?",
+              "options": ["Num (ex: Num insanis ?)", "Nonne", "Ubi", "Cur"],
+              "correctAnswers": [0],
+              "explanation": "« Num » attend une réponse négative : « Est-ce que par hasard tu serais fou ? (Non, sans doute !) »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels mots latins introduisent une interrogation ?",
+              "options": [
+                "Cur (pourquoi)",
+                "Quis (qui)",
+                "Nihil (rien)",
+                "Semper (toujours)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cur (pourquoi) et quis (qui) sont des mots interrogatifs. Nihil est un indéfini négatif et semper est un adverbe temporel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle particule interrogative appelle avec insistance la réponse « oui » ?",
+              "options": ["Nonne (ex: Nonne meministi ?)", "Num", "An", "Ne"],
+              "correctAnswers": [0],
+              "explanation": "« Nonne » attend une réponse affirmative : « Ne te souviens-tu pas ? (Si, assurément !) »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mode verbal emploie-t-on pour donner un ordre direct à la 2e personne en latin ?",
+              "options": [
+                "L'impératif présent (ex: Audi ! Veni !)",
+                "L'indicatif parfait",
+                "Le participe futur",
+                "Le gérondif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'injonction directe s'exprime à l'impératif présent : « Audi ! » (Écoute !), « Audite ! » (Écoutez !)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on couramment la défense (interdiction) au singulier en latin classique ?",
+              "options": [
+                "Par « noli » suivi de l'infinitif (ex: Noli timere !)",
+                "Par « non » suivi de l'impératif",
+                "Par « numquam » suivi de l'indicatif",
+                "Par « nemo » avec le verbe être"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'interdiction s'exprime par noli (pluriel nolite) + infinitif : « Noli timere ! » (Ne crains pas !)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la question « Ubi est Marcus ? » ?",
+              "options": [
+                "Où est Marcus ?",
+                "Qui est Marcus ?",
+                "Pourquoi Marcus pleure-t-il ?",
+                "Quand arrive Marcus ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ubi » est l'adverbe interrogatif de lieu signifiant « où »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la question « Cur taces ? » ?",
+              "options": [
+                "Pourquoi te tais-tu ?",
+                "Quand parles-tu ?",
+                "Qui écoutes-tu ?",
+                "Où vas-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Cur » signifie « pourquoi » et taces est la 2e personne du singulier de tacere (se taire)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Analyse et traduction de phrases simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la première démarche rigoureuse pour analyser et traduire une phrase simple latine ?",
+              "options": [
+                "Repérer le verbe conjugué pour identifier la personne, le nombre et le mode",
+                "Traduire les mots dans l'ordre strict d'apparition de gauche à droite",
+                "Chercher tous les mots au hasard dans le dictionnaire",
+                "Traduire le premier mot comme s'il était toujours le sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe est le pivot de la phrase : sa désinence donne la personne et oriente la recherche du sujet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans « Romulus primus rex Romae fuit », quelle est la traduction exacte ?",
+              "options": [
+                "Romulus fut le premier roi de Rome",
+                "Rome fut fondée par le premier roi Romulus",
+                "Le premier roi tua Romulus à Rome",
+                "Romulus régna sans roi sur Rome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Romulus (sujet) primus rex (attribut du sujet) Romae (génitif complément du nom) fuit (verbe être au parfait)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans « Pueri in horto laeti ludunt », quelle est la fonction de « in horto » ?",
+              "options": [
+                "Complément circonstanciel de lieu où l'on est",
+                "Complément d'objet direct",
+                "Attribut du sujet pueri",
+                "Complément d'agent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In + ablatif (horto) indique le lieu où se déroule l'action de jouer."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on fidèlement « Pueri in horto laeti ludunt » ?",
+              "options": [
+                "Les enfants joyeux jouent dans le jardin (ou : jouent joyeusement)",
+                "Les enfants quittent le jardin avec tristesse",
+                "Le jardin rend les enfants joyeux",
+                "Des enfants sages observent le jardin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pueri (sujet au nominatif pluriel), in horto (dans le jardin), laeti (adjectif attribut/apposé au nominatif), ludunt (jouent)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels mots sont au cas nominatif dans « Magnus exercitus hostium urbem oppugnat » ?",
+              "options": ["Magnus", "Exercitus", "Hostium", "Urbem"],
+              "correctAnswers": [0, 1],
+              "explanation": "Magnus exercitus (une grande armée) est le groupe sujet au nominatif singulier (4e déclinaison pour exercitus). Hostium est au génitif et urbem à l'accusatif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans « Magnus exercitus hostium urbem oppugnat », quel est le complément d'objet direct ?",
+              "options": ["Urbem", "Exercitus", "Hostium", "Oppugnat"],
+              "correctAnswers": [0],
+              "explanation": "« Urbem » est à l'accusatif singulier : l'armée attaque la ville."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Dux militibus signum dedit » ?",
+              "options": [
+                "Le chef donna le signal aux soldats",
+                "Les soldats donnèrent le signal au chef",
+                "Le chef reçut un signal des soldats",
+                "Les soldats cherchèrent le chef"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dux est nominatif (sujet), militibus est datif (COI), signum est accusatif (COD) et dedit est le verbe dare au parfait."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Dux militibus signum dedit », quelle est la fonction grammaticale de « militibus » ?",
+              "options": [
+                "Complément d'attribution (COI) au datif pluriel",
+                "Complément circonstanciel de manière",
+                "Sujet du verbe dedit",
+                "Complément du nom signum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Militibus est au datif pluriel de la 3e déclinaison (miles, militis) : c'est le destinataire du signal."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Romani templa deorum ornant » ?",
+              "options": [
+                "Les Romains ornent les temples des dieux",
+                "Les dieux ornent les temples des Romains",
+                "Les temples romains honorent les dieux",
+                "Les Romains prient dans les temples sacrés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Romani est sujet, templa est COD neutre pluriel accusatif, deorum est génitif pluriel complément du nom, ornant est le verbe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle règle essentielle évite les faux sens majeurs lors de la version latine ?",
+              "options": [
+                "Toujours faire concorder la fonction du mot avec sa terminaison de cas, et non avec sa position",
+                "Traduire chaque mot par le premier mot français qui lui ressemble",
+                "Ignorer les terminaisons pour traduire plus vite",
+                "Considérer que le premier mot de la phrase est toujours le sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En latin, c'est la désinence de cas qui détermine la fonction syntaxique, et non la place du mot dans la phrase."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

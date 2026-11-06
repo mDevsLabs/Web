@@ -1,0 +1,2743 @@
+{
+  "id": "2nde-histoire-geographie-02",
+  "year": "2nde",
+  "subject": "histoire-geographie",
+  "title": "EMC — La liberté et l'État de droit",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Les libertés fondamentales",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce qu'une liberté fondamentale ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels textes fondent les libertés en France ? (deux réponses)",
+              "options": [
+                "La Déclaration des droits de l'homme et du citoyen de 1789",
+                "Le règlement intérieur d'un lycée",
+                "La Constitution de la Ve République",
+                "Un contrat privé entre voisins"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La DDHC et la Constitution forment le socle des libertés garanties."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une liberté fondamentale est un droit…",
+              "options": [
+                "sans protection juridique",
+                "protégé contre l'arbitraire",
+                "réservé aux élus",
+                "valable hors du territoire français uniquement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Elle impose des limites au pouvoir public et privé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Exercer une liberté implique aussi…",
+              "options": [
+                "respecter les droits d'autrui",
+                "ignorer la loi",
+                "éviter tout débat",
+                "refuser la citoyenneté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les libertés s'articulent avec des devoirs réciproques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le préambule de 1946…",
+              "options": [
+                "supprime la DDHC",
+                "enrichit les droits reconnus",
+                "concerne seulement l'armée",
+                "remplace le Parlement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il ajoute des droits sociaux et civiques au bloc constitutionnel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La Charte de l'environnement de 2004…",
+              "options": [
+                "n'a aucune portée",
+                "figure dans le bloc de constitutionnalité",
+                "interdit la science",
+                "abolit la propriété"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le Conseil constitutionnel peut s'y référer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les libertés publiques régulent surtout…",
+              "options": [
+                "les rapports avec l'autorité et la société",
+                "les recettes de cuisine",
+                "le commerce privé seul",
+                "les successions familiales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles encadrent expression, réunion et presse face au pouvoir."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La liberté individuelle protège contre…",
+              "options": [
+                "les arrestations arbitraires",
+                "le code de la route",
+                "les contrôles scolaires",
+                "le vote obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute privation de liberté doit reposer sur la loi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En cas d'atteinte, le recours normal passe par…",
+              "options": [
+                "la vengeance privée",
+                "les voies de droit et les juges",
+                "la fermeture du lycée",
+                "l'exil forcé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'État de droit organise des recours juridictionnels."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'article 4 de la DDHC lie la liberté à…",
+              "options": [
+                "nuire autrui librement",
+                "ne pas nuire à autrui",
+                "l'absence de lois",
+                "le secret total"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C'est la définition classique des limites des droits."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Connaître ses libertés aide à…",
+              "options": [
+                "vivre en citoyen responsable",
+                "refuser toute règle",
+                "contourner les impôts",
+                "supprimer le débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Savoir ses droits renforce la participation démocratique."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Liberté d'expression et d'information",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La liberté d'expression protège typiquement… (deux réponses)",
+              "options": [
+                "critiquer une décision publique",
+                "inciter à la haine raciale",
+                "publier une enquête journalistique",
+                "diffuser des données médicales privées volées"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Opinion et presse sont protégées ; la haine et les atteintes graves à la vie privée sont interdites."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La loi encadre l'expression pour…",
+              "options": [
+                "tout interdire",
+                "prévenir diffamation, injure et provocation à la haine",
+                "supprimer la presse",
+                "interdire le débat politique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Des limites légales protègent la dignité et la sécurité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La liberté de la presse permet aux médias de…",
+              "options": [
+                "informer et contrôler le pouvoir",
+                "cacher toutes les sources",
+                "ignorer la vérité",
+                "remplacer la justice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle soutient le débat démocratique et la transparence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur Internet, la liberté d'expression…",
+              "options": [
+                "dispense de respecter la loi",
+                "reste soumise aux mêmes principes juridiques",
+                "n'existe pas",
+                "appartient aux plateformes seules"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le numérique n'est pas un espace sans droit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une caricature politique relève en principe de…",
+              "options": [
+                "la liberté d'expression",
+                "du secret défense systématique",
+                "l'interdiction totale",
+                "la censure préalable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La satire fait partie du débat public, dans les limites légales."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le droit de réponse permet…",
+              "options": [
+                "de corriger une information inexacte",
+                "d'effacer toute critique",
+                "de censurer un journal",
+                "de punir sans procès"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il équilibre liberté de la presse et protection des personnes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Provocation à la haine envers un groupe…",
+              "options": [
+                "est toujours libre",
+                "peut être punie pénalement",
+                "est encouragée par la République",
+                "remplace le vote"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La République combat les discriminations et la haine."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La liberté d'informer suppose…",
+              "options": [
+                "vérifier les faits de bonne foi",
+                "inventer des preuves",
+                "harceler des mineurs",
+                "publier des adresses pour lyncher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le devoir de rigueur limite les abus médiatiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Boycotter pacifiquement un produit est…",
+              "options": [
+                "une forme d'expression collective",
+                "une émeute",
+                "un coup d'État",
+                "hors droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consommer ou non est un message citoyen légal."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le pluralisme des médias vise à…",
+              "options": [
+                "une seule voix officielle",
+                "diversifier les points de vue",
+                "supprimer le débat",
+                "interdire Internet"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La démocratie repose sur plusieurs sources d'information."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Liberté de réunion et d'association",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En France, on peut légalement… (deux réponses)",
+              "options": [
+                "manifester sur la voie publique selon la loi",
+                "former une association",
+                "tenir une réunion armée",
+                "bloquer un hôpital sans autorisation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Réunion et association sont libres ; la violence et certaines troubles sont interdits."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une association loi 1901 doit…",
+              "options": [
+                "poursuivre un profit privé partagé",
+                "avoir un objet licite et non lucratif",
+                "remplacer l'État",
+                "interdire les adhésions"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le modèle associatif français est à but non lucratif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Déclarer une manifestation en préfecture sert à…",
+              "options": [
+                "interdire tout débat",
+                "organiser la sécurité et la circulation",
+                "confisquer les drapeaux",
+                "élire le maire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La déclaration préalable encadre l'ordre public."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La liberté syndicale permet aux salariés de…",
+              "options": [
+                "négocier collectivement",
+                "interdire le travail à tous",
+                "supprimer les contrats",
+                "éviter les impôts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle protège la défense des intérêts professionnels."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dissoudre une association peut survenir si…",
+              "options": [
+                "elle respecte la loi",
+                "elle provoque la haine ou la violence",
+                "elle aide les sans-abri",
+                "elle diffuse de la culture"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les groupes dangereux pour l'ordre public peuvent être dissous."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Participer à une réunion scolaire encadrée relève de…",
+              "options": [
+                "la liberté de réunion dans un cadre éducatif",
+                "un coup d'État",
+                "une infraction",
+                "l'absence de droits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lycée apprend aussi l'exercice démocratique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Refuser qu'une association discrimine est…",
+              "options": [
+                "contraire à l'égalité",
+                "obligatoire pour la République",
+                "une atteinte à la laïcité",
+                "impossible"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Nul ne peut exclure sur des critères illégaux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le bénévolat associatif illustre…",
+              "options": [
+                "l'engagement citoyen",
+                "l'absence de liberté",
+                "la fin de la République",
+                "la censure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agir ensemble renforce la cohésion sociale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une réunion non déclarée peut être…",
+              "options": [
+                "toujours interdite",
+                "tolérée si elle trouble gravement l'ordre public",
+                "obligatoire pour voter",
+                "identique à une émeute"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La sanction dépend du trouble causé et du cadre légal."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La Charte de Munich protège…",
+              "options": [
+                "les journalistes sur le terrain",
+                "les recettes fiscales",
+                "les monopoles",
+                "les discriminations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle rappelle le devoir de protection des reporters."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Liberté de conscience et laïcité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La laïcité garantit… (deux réponses)",
+              "options": [
+                "la liberté de croire ou de ne pas croire",
+                "l'imposition d'une religion d'État",
+                "la neutralité de l'État en matière religieuse",
+                "l'interdiction de toute conviction privée"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La République est neutre et laisse libre la conscience."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La loi de 1905 sépare…",
+              "options": [
+                "Églises et État",
+                "école et citoyens",
+                "justice et police",
+                "presse et radio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle fonde la laïcité française contemporaine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans le service public, la neutralité signifie…",
+              "options": [
+                "prosélytiser",
+                "ne pas manifester ses convictions religieuses",
+                "interdire la laïcité",
+                "remplacer la loi"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'agent sert tous les usagers sans discrimination."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Porter un signe religieux discret à l'université publique…",
+              "options": [
+                "est encadré par la loi de 2004 dans l'enseignement scolaire",
+                "supprime la laïcité",
+                "oblige à une religion",
+                "interdit toute étude"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'école publique défend la neutralité et la mixité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Blasphémer dans le débat privé relève de…",
+              "options": [
+                "la liberté de conscience dans les limites légales",
+                "une obligation d'État",
+                "un délit systématique",
+                "le vote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi pénalise surtout l'injure et l'incitation à la haine."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Refuser un soin pour motif religieux chez un professionnel de santé public…",
+              "options": [
+                "peut être limité par le devoir de service",
+                "annule la laïcité",
+                "supprime la liberté",
+                "crée une religion d'État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les missions de service public imposent des obligations."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La laïcité protège aussi les…",
+              "options": [
+                "croyants contre la discrimination",
+                "only les non-croyants",
+                "monarchies",
+                "partis interdits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle vise l'égalité de tous quelle que soit la conviction."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un menu sans porc à la cantine pour raison laïque et pratique…",
+              "options": [
+                "peut exister dans un cadre défini",
+                "abolit la République",
+                "interdit le débat",
+                "remplace le Parlement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les règles alimentaires peuvent être adaptées sans prosélytisme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'article 1er de la Constitution affirme…",
+              "options": [
+                "la laïcité de la République",
+                "une religion officielle",
+                "l'absence de droits",
+                "la censure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La laïcité est un principe constitutionnel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dialoguer interreligieux à l'école EMC favorise…",
+              "options": [
+                "le respect mutuel",
+                "la haine",
+                "l'ostracisme",
+                "la violence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre autrui renforce le vivre-ensemble."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Vie privée et protection des données",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le respect de la vie privée couvre… (deux réponses)",
+              "options": [
+                "le domicile",
+                "les opinions politiques diffusées publiquement sans limite",
+                "les correspondances",
+                "la publication illégale d'images intimes"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Domicile et correspondance sont protégés ; le revenge porn est interdit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le RGPD renforce…",
+              "options": [
+                "le contrôle des citoyens sur leurs données",
+                "la vente libre de toutes données",
+                "l'absence de règles",
+                "la censure presse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il encadre la collecte et l'usage des données personnelles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Filmer quelqu'un sans consentement dans un lieu privé…",
+              "options": [
+                "peut constituer une atteinte",
+                "est toujours autorisé",
+                "remplace la justice",
+                "crée un droit de suite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'image et l'intimité sont protégées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le secret des correspondances interdit…",
+              "options": [
+                "l'ouverture arbitraire du courrier",
+                "l'envoi de lettres",
+                "le vote par procuration",
+                "les emails entre amis consentis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seules des exceptions légales strictes autorisent l'intrusion."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sur les réseaux sociaux, partager l'adresse d'un camarade sans accord…",
+              "options": [
+                " peut porter atteinte à sa vie privée",
+                "est un devoir civique",
+                "est anonyme donc libre",
+                "remplace la laïcité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Doxing et harcèlement sont sanctionnés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le droit à l'oubli numérique concerne…",
+              "options": [
+                "certaines données obsolètes sur les moteurs de recherche",
+                "tous les délits effacés automatiquement",
+                "la suppression de l'histoire",
+                "l'interdiction de presse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il équilibre mémoire numérique et vie privée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une fouille au lycée doit respecter…",
+              "options": [
+                "la dignité et le cadre légal",
+                "l'humiliation systématique",
+                "l'absence de règles",
+                "le secret médical des profs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité et droits fondamentaux se concilient."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La CNIL contrôle…",
+              "options": [
+                "le respect des données personnelles",
+                "les élections municipales",
+                "le code pénal",
+                "les traités de paix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est l'autorité française de protection des données."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Refuser une géolocalisation permanente sur une appli…",
+              "options": [
+                "est un choix légitime si informé",
+                "interdit d'utiliser le téléphone",
+                "supprime la loi",
+                "oblige à publier sa vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le consentement éclairé est central."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Protéger sa vie privée en ligne, c'est aussi…",
+              "options": [
+                "une compétence citoyenne",
+                "un refus de la démocratie",
+                "une infraction",
+                "inutile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La littératie numérique fait partie de l'EMC."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Égalité et non-discrimination",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'égalité devant la loi signifie… (deux réponses)",
+              "options": [
+                "mêmes droits et devoirs pour tous",
+                "privilèges de naissance",
+                "interdiction de discriminer sans motif légal",
+                "exclusion des femmes du vote"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La République rejette les discriminations arbitraires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Refuser un logement en raison de l'origine…",
+              "options": [
+                "peut être une discrimination illégale",
+                "est toujours libre",
+                "est obligatoire",
+                "remplace le bail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le droit pénal et civil sanctionnent certaines discriminations."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'article 1er de la Constitution proclame…",
+              "options": [
+                "l'égalité des citoyens devant la loi",
+                "une inégalité naturelle",
+                "l'absence de droits",
+                "la noblesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'égalité est un principe fondateur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le handicap ne justifie pas…",
+              "options": [
+                "l'exclusion scolaire sans aménagement raisonnable",
+                "l'accès à l'école avec accompagnement",
+                "l'égalité des chances",
+                "la mixité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi de 2005 impose accessibilité et inclusion."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Harceler en ligne en raison de l'orientation supposée…",
+              "options": [
+                "peut relever de discriminations ou injures",
+                "est encouragé",
+                "remplace le débat",
+                "est un devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cyberharcèlement et haine sont poursuivis."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Parité en politique vise à…",
+              "options": [
+                "réduire l'écart femmes-hommes aux responsabilités",
+                "interdire aux hommes de voter",
+                "supprimer les élections",
+                "créer une monarchie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un outil de l'égalité réelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le Défenseur des droits peut…",
+              "options": [
+                "recevoir des plaintes de discrimination",
+                "condamner à la prison seul",
+                "réécrire la Constitution",
+                "dissoudre l'Assemblée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il oriente vers des solutions et enquête."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traiter différemment pour compenser une inégalité avérée…",
+              "options": [
+                "peut être légal (discrimination positive encadrée)",
+                "est toujours interdit",
+                "abolit l'égalité",
+                "supprime la laïcité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines mesures temporaires corrigent des déséquilibres."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le principe de neutralité du service public implique…",
+              "options": [
+                "traiter chaque usager sans favoritisme",
+                "refuser les étrangers légaux",
+                "imposer une langue interdite",
+                "cacher la loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'impartialité est une forme d'égalité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combattre les stéréotypes à l'école sert…",
+              "options": [
+                "à renforcer l'égalité et le respect",
+                "à interdire la liberté",
+                "à supprimer l'EMC",
+                "à imposer une opinion unique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'éducation prévient les discriminations."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Sûreté, sécurité et libertés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Renforcer la sécurité peut… (deux réponses)",
+              "options": [
+                "limiter certaines libertés par la loi",
+                "supprimer toute règle",
+                "exiger un contrôle juridictionnel",
+                "abolir la Constitution"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les mesures de sûreté doivent rester proportionnées et contrôlées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un état d'urgence encadré par la loi…",
+              "options": [
+                "temporise des restrictions exceptionnelles",
+                "supprime définitivement les droits",
+                "élimine les juges",
+                "crée une dictature permanente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il est limité dans le temps et sous contrôle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Vidéosurveillance en public exige…",
+              "options": [
+                "un encadrement légal et des finalités précises",
+                "aucune règle",
+                "l'accord de tout le monde",
+                "la fin de la vie privée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Finalité et proportionnalité sont obligatoires."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un contrôle d'identité par la police…",
+              "options": [
+                "doit respecter le code de procédure pénale",
+                "peut être totalement arbitraire",
+                "remplace le tribunal",
+                "interdit les recours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des garanties encadrent les pratiques policières."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Refuser une mesure disproportionnée est…",
+              "options": [
+                "possible via recours et débat démocratique",
+                "impossible",
+                "anti-républicain par définition",
+                "hors droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La balance sécurité-libertés se discute en démocratie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La présomption d'innocence protège…",
+              "options": [
+                "toute personne suspectée avant condamnation",
+                "uniquement les élus",
+                "personne",
+                "seulement les mineurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une liberté fondamentale pénale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un fichier de polices judiciaires est…",
+              "options": [
+                "strictement réglementé",
+                "libre d'accès public",
+                "sans contrôle",
+                "identique à Facebook"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fichiers sensibles sont encadrés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Alerte attentats via application officielle vise…",
+              "options": [
+                "informer sans remplacer la prudence personnelle",
+                "créer la panique",
+                "supprimer la presse",
+                "interdire les sorties sans loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'information sert la sécurité collective."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La proportionnalité signifie…",
+              "options": [
+                "adapter la mesure au danger réel",
+                "tout interdire",
+                "rien faire",
+                "ignorer les droits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de restriction excessive par rapport au but."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Débattre sécurité et libertés en EMC…",
+              "options": [
+                "forme des citoyens éclairés",
+                "interdit la science",
+                "supprime la laïcité",
+                "remplace le vote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre les arbitrages est essentiel."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Libertés et engagement citoyen",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "S'engager pour les droits peut passer par… (deux réponses)",
+              "options": [
+                "pétition légale",
+                "violence contre des personnes",
+                "bénévolat associatif",
+                "diffusion de fausses nouvelles"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Pétition et engagement associatif sont des voies pacifiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Signer une pétition en ligne encadrée…",
+              "options": [
+                "exprime une opinion collective",
+                "remplace automatiquement la loi",
+                "interdit le débat",
+                "crée une taxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un outil de participation, non une norme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le service civique illustre…",
+              "options": [
+                "l'engagement au bénéfice de la société",
+                "l'absence de droits",
+                "la fin de la laïcité",
+                "une milice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il favorise la cohésion et l'utilité sociale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Refuser une consigne illégale d'une autorité…",
+              "options": [
+                "peut être un devoir moral et juridique",
+                "est toujours interdit",
+                "supprime la liberté",
+                "équivaut à la violence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Obéir à la loi prime sur des ordres arbitraires."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le vote est…",
+              "options": [
+                "un droit et un moyen d'exprimer des libertés collectives",
+                "inutile en démocratie",
+                "réservé aux associations",
+                "interdit aux jeunes à vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Élire des représentants structure les libertés communes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Éducation aux médias aide à…",
+              "options": [
+                "exercer librement une opinion informée",
+                "croire toute rumeur",
+                "supprimer la presse",
+                "interdire Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Esprit critique et liberté vont ensemble."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Désobéissance civile pacifique et annoncée…",
+              "options": [
+                "interroge la légitimité d'une loi injuste aux yeux des acteurs",
+                "remplace toujours les institutions",
+                "est identique au terrorisme",
+                "n'a jamais existé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Histoire montre des contestations non violentes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Respecter le contradicteur en débat…",
+              "options": [
+                "renforce la démocratie",
+                "annule la liberté d'expression",
+                "interdit la laïcité",
+                "supprime l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liberté des autres limite la violence verbale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les droits des lycéens incluent…",
+              "options": [
+                "être entendus via des instances représentatives",
+                "aucune voix",
+                "l'absence de règles",
+                "l'impunité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CVL et MDL participent à la vie scolaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Liberté sans responsabilité mène souvent à…",
+              "options": [
+                "des abus nuisant à autrui",
+                "plus de démocratie automatiquement",
+                "l'égalité parfaite",
+                "l'absence de loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'EMC lie droits et responsabilités."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Libertés et Europe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La Convention européenne des droits de l'homme protège… (deux réponses)",
+              "options": [
+                "liberté d'expression",
+                "monopole politique",
+                "vie privée",
+                "esclavage"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "CEDH garantit un socle de libertés dans les États parties."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La Cour européenne des droits de l'homme…",
+              "options": [
+                "tranche des recours individuels",
+                "remplace toutes les cours nationales",
+                "interdit le français",
+                "élit le président français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle complète la protection nationale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La Charte des droits fondamentaux de l'UE…",
+              "options": [
+                "liste des droits liés à l'Union",
+                "abolit la DDHC",
+                "supprime la laïcité",
+                "interdit le vote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle s'applique aux institutions et États selon le droit UE."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Libre circulation des personnes dans l'UE signifie…",
+              "options": [
+                "voyager et s'installer selon des règles communes",
+                "absence totale de contrôles",
+                "fin des passeports partout",
+                "suppression des nationalités"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des limites sécuritaires et administratives subsistent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un État membre peut perdre certaines voix UE s'il…",
+              "options": [
+                "bafoue gravement l'État de droit",
+                "augmente son PIB",
+                "organise des élections",
+                "respecte la CEDH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article 7 TEU vise les atteintes systémiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Schengen concerne surtout…",
+              "options": [
+                "contrôles aux frontières internes",
+                "commerce agricole seul",
+                "langue officielle",
+                "nom des rues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Espace de circulation avec règles partagées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "RGPD est une norme…",
+              "options": [
+                "européenne sur les données",
+                "uniquement parisienne",
+                " américaine",
+                "sans effet en France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle s'applique dans tous les États membres."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Demander asile en UE repose sur…",
+              "options": [
+                "des conventions internationales protégeant les persécutés",
+                "l'arbitraire",
+                "l'interdiction de migrer",
+                "la fin des libertés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le droit d'asile protège contre les persécutions."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une décision CEDH contraire à une pratique nationale…",
+              "options": [
+                "oblige l'État à se conformer",
+                "ignore la souveraineté populaire totalement",
+                "supprime le Parlement",
+                "interdit la presse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les États doivent exécuter les arrêts."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparer droits français et européens en classe…",
+              "options": [
+                "enrichit la culture juridique",
+                "interdit la laïcité",
+                "supprime l'EMC",
+                "remplace le bac"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Europe complète les garanties nationales."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse — Libertés fondamentales",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les libertés fondamentales en France reposent sur… (deux réponses)",
+              "options": [
+                "textes constitutionnels",
+                "volonté d'un seul dirigeant",
+                "contrôle par les juges",
+                "absence de limites"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Normes écrites et contrôle juridictionnel les sécurisent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sans égalité, les libertés…",
+              "options": [
+                "risquent de profiter seulement à quelques-uns",
+                "disparaissent totalement toujours",
+                "deviennent inutiles",
+                "sont identiques pour tous automatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liberté et égalité sont indissociables en République."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La DDHC commence par affirmer que…",
+              "options": [
+                "les hommes naissent libres et égaux en droits",
+                "la monarchie est éternelle",
+                "la censure est obligatoire",
+                "l'esclavage est un droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est l'article 1er historique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Limiter une liberté par la loi exige…",
+              "options": [
+                "motif légitime et proportionnalité",
+                "aucun débat",
+                "secret total",
+                "accord du roi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le juge vérifie la compatibilité avec les droits."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La presse libre contribue à…",
+              "options": [
+                "empêcher l'abus de pouvoir",
+                "supprimer les élections",
+                "interdire les associations",
+                "abolir la laïcité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle informe les citoyens."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La laïcité aide les libertés en…",
+              "options": [
+                "garantissant la neutralité et la coexistence",
+                "imposant une foi",
+                "interdisant le débat",
+                "supprimant l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chacun choisit sa conscience sans pression d'État."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un lycéen qui connaît ses droits…",
+              "options": [
+                "peut mieux les défendre pacifiquement",
+                "doit les violer",
+                "ignore ses devoirs",
+                "refuse la République"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'EMC vise l'autonomie citoyenne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les libertés évoluent…",
+              "options": [
+                "par révision des lois et jurisprudence",
+                "uniquement par révolution",
+                "jamais",
+                "seulement par décret royal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le droit vivant adapte les garanties."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Respecter autrui limite…",
+              "options": [
+                "les abus de sa propre liberté",
+                "toute expression",
+                "le vote",
+                "la laïcité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autrui est la borne naturelle des droits."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'objectif final des libertés fondamentales est…",
+              "options": [
+                "dignité et autonomie de chaque personne",
+                "domination d'un groupe",
+                "absence d'État",
+                "profit privé sans règle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles protègent la personne humaine en société."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "L'État de droit",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Définir l'État de droit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'État de droit repose notamment sur… (deux réponses)",
+              "options": [
+                "suprématie de la loi",
+                "volonté arbitraire du chef",
+                "séparation des pouvoirs",
+                "absence de justice"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La loi prime et les pouvoirs se équilibrent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un État de droit, les gouvernants…",
+              "options": [
+                "sont soumis au droit comme les citoyens",
+                "échappent à toute règle",
+                "nomment seuls les juges sans cadre",
+                "fixent les peines à la tête du client"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nul n'est au-dessus de la loi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La légalité administrative signifie…",
+              "options": [
+                "l'administration agit selon la loi",
+                "l'administration est libre de tout",
+                "la loi n'existe pas",
+                "seuls les maires décident"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les actes publics doivent avoir une base légale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un régime autoritaire se distingue par…",
+              "options": [
+                "concentration du pouvoir sans garanties",
+                "élections libres",
+                "contrôle des juges indépendants",
+                "pluralisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les contre-pouvoirs y sont affaiblis."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le principe de légalité pénale exige…",
+              "options": [
+                "une infraction définie par la loi avant les faits",
+                "des peines inventées après coup",
+                "l'absence de procès",
+                "la vengeance privée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nullum crimen, nulla poena sine lege."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'impartialité de la justice…",
+              "options": [
+                "garantit un procès équitable",
+                "permet les faveurs",
+                "supprime les avocats",
+                "interdit le contradictoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Juge et parties respectent le procès juste."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La transparence des décisions publiques…",
+              "options": [
+                "permet le contrôle citoyen",
+                "interdit le débat",
+                "supprime les élections",
+                "cache les lois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Savoir pour décider en démocratie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un recours pour excès de pouvoir…",
+              "options": [
+                "annule un acte administratif illégal",
+                "crée une loi",
+                "élit le Sénat",
+                "supprime la Constitution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le juge administratif contrôle l'administration."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Respecter l'État de droit, c'est…",
+              "options": [
+                "accepter l'autorité de la loi légitime",
+                "refuser toute règle",
+                "confondre force et droit",
+                "ignorer les droits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La force doit être encadrée par le droit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Montesquieu est associé à…",
+              "options": [
+                "la théorie de la séparation des pouvoirs",
+                "la fin de la démocratie",
+                "l'absolutisme",
+                "l'interdiction de la presse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De l'esprit des lois inspire les régimes modernes."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Séparation des pouvoirs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les pouvoirs classiquement séparés sont… (deux réponses)",
+              "options": [
+                "législatif",
+                "judiciaire",
+                "médiatique privé",
+                "exécutif"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Législatif et judiciaire sont deux pôles distincts ; l'exécutif aussi fait partie du triptyque."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En France, le pouvoir législatif est exercé par…",
+              "options": [
+                "le Parlement",
+                "le seul président",
+                "les maires seuls",
+                "la police"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Assemblée nationale et Sénat votent la loi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le pouvoir exécutif est principalement…",
+              "options": [
+                "Gouvernement et Président selon les attributions",
+                "la Cour de cassation",
+                "les syndicats",
+                "les médias"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il applique les politiques publiques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le pouvoir judiciaire…",
+              "options": [
+                "juge les litiges et sanctionne les infractions",
+                "vote les lois",
+                "dirige l'armée seul",
+                "nomme tous les ministres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il est indépendant pour garantir l'impartialité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le contrôle de constitutionnalité des lois est fait par…",
+              "options": [
+                "le Conseil constitutionnel",
+                "chaque citoyen seul",
+                "la presse",
+                "les associations sans cadre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il vérifie la conformité à la Constitution."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un parlement qui contrôle le gouvernement illustre…",
+              "options": [
+                "un contre-pouvoir démocratique",
+                "une dictature",
+                "l'absence de loi",
+                "la fin de la séparation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question gouvernementale et commissions enquêtent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La séparation vise à éviter…",
+              "options": [
+                "la concentration tyrannique du pouvoir",
+                "toute coopération",
+                "les élections",
+                "la laïcité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Freins et contrepoids protègent les libertés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le Conseil supérieur de la magistrature veille à…",
+              "options": [
+                "l'indépendance des magistrats",
+                "la censure presse",
+                "le budget des lycées",
+                "les matchs de foot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statut et carrière des juges sont protégés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un décret ne peut pas…",
+              "options": [
+                "contredire une loi",
+                "organiser un ministère",
+                "préciser l'application d'une loi",
+                "être publié au Journal officiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiérarchie des normes : loi > décret."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En démocratie, la souveraineté populaire s'exerce…",
+              "options": [
+                "via élections et institutions encadrées par la loi",
+                "par un chef seul",
+                "sans Constitution",
+                "sans vote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le peuple élit et la loi limite les abus."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Constitution et bloc de constitutionnalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le bloc de constitutionnalité inclut… (deux réponses)",
+              "options": [
+                "Constitution de 1958",
+                "DDHC de 1789",
+                "règlement de classe",
+                "affiche municipale"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plusieurs textes fondamentaux guident le juge."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La Constitution organise…",
+              "options": [
+                "institutions et grands principes",
+                "le menu de cantine",
+                "les horaires de bus",
+                "les notes de maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la norme suprême nationale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réviser la Constitution requiert…",
+              "options": [
+                "une procédure stricte prévue par la Constitution",
+                "un simple tweet",
+                "l'accord d'une entreprise",
+                "aucune règle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Référendum ou Congrès selon les cas."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une loi contraire à la Constitution…",
+              "options": [
+                "peut être censurée avant ou après promulgation",
+                "devient automatiquement supraconstitutionnelle",
+                "ignore les droits",
+                "remplace la DDHC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "QPC et contrôle préalable existent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le Président de la République…",
+              "options": [
+                "doit respecter la Constitution",
+                "est au-dessus de toute norme",
+                "dissout la loi seul",
+                "juge les affaires civiles courantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Serment et attributions sont encadrés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le préambule de 1946 protège…",
+              "options": [
+                "droits sociaux et libertés additionnelles",
+                "monarchie",
+                "esclavage",
+                "censure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il complète les droits reconnus."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La QPC permet à un justiciable…",
+              "options": [
+                "de contester la constitutionnalité d'une loi appliquée",
+                "de réécrire la Constitution seul",
+                "d'interdire le Parlement",
+                "de supprimer le Sénat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question prioritaire de constitutionnalité depuis 2010."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La hiérarchie des normes place…",
+              "options": [
+                "la Constitution au sommet",
+                "un arrêté municipal au-dessus de la loi",
+                "la coutume au-dessus de tout",
+                "le règlement intérieur au sommet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normes inférieures doivent être conformes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'article 16 concerne…",
+              "options": [
+                "les pouvoirs exceptionnels du Président",
+                "la laïcité",
+                "le droit de grève",
+                "la parité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régime d'urgence constitutionnelle encadré."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comprendre la Constitution aide à…",
+              "options": [
+                "saisir le fonctionnement de l'État de droit",
+                "ignorer ses droits",
+                "supprimer le vote",
+                "éviter la citoyenneté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la carte des institutions."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le Conseil constitutionnel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le Conseil constitutionnel… (deux réponses)",
+              "options": [
+                "contrôle les lois",
+                "élit le président des États-Unis",
+                "se prononce sur la conformité à la Constitution",
+                "dirige la police nationale"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Il est gardien de la constitutionnalité des normes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Avant promulgation, une loi peut être…",
+              "options": [
+                "souffrée au contrôle obligatoire",
+                "promulguée sans texte",
+                "cachée aux citoyens",
+                "signée par un juge local seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains textes doivent être présentés au Conseil."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une décision de censure d'une loi…",
+              "options": [
+                "empêche son application",
+                "renforce automatiquement la loi",
+                "supprime la Constitution",
+                "interdit le Parlement à vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La norme censurée est inopérante."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les « sages » du Conseil sont…",
+              "options": [
+                "neuf membres nommés pour un mandat de neuf ans",
+                "élus directement par les lycéens",
+                "magistrats de police",
+                "ministres en exercice permanents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Collège renouvelé par tiers."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le Conseil vérifie aussi…",
+              "options": [
+                "certains traités et règlements du Parlement",
+                "les devoirs de maths",
+                "le menu scolaire",
+                "les matchs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétences définies par la Constitution."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La QPC transmise au Conseil…",
+              "options": [
+                "peut invalider une disposition législative",
+                "crée une loi",
+                "nomme le Premier ministre",
+                "supprime le Sénat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le juge constitutionnel tranche la question."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une loi sur la liberté d'association doit…",
+              "options": [
+                "respecter les libertés constitutionnelles",
+                "abolir toute association",
+                "interdire le débat",
+                "supprimer la laïcité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Conseil peut censurer les atteintes disproportionnées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les décisions du Conseil…",
+              "options": [
+                "s'imposent aux pouvoirs publics",
+                "sont des conseils non contraignants",
+                "remplacent l'opinion publique",
+                "interdisent la presse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autorité de la chose jugée constitutionnelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le contrôle de constitutionnalité protège…",
+              "options": [
+                "les droits fondamentaux",
+                "l'arbitraire",
+                "la censure préalable des opinions",
+                "l'absence de droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il filtre les lois attentatoires aux libertés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Citoyens et lycéens peuvent…",
+              "options": [
+                "suivre les décisions publiées du Conseil",
+                "ignorer toute norme",
+                "réécrire seuls la Constitution",
+                "supprimer le juge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transparence renforce la confiance démocratique."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Justice et garanties procédurales",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un procès équitable comprend… (deux réponses)",
+              "options": [
+                "droit à un avocat",
+                "absence de défense",
+                "contradictoire des preuves",
+                "jugement secret sans motif"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Défense et débat contradictoire sont essentiels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La présomption d'innocence signifie…",
+              "options": [
+                "innocent jusqu'à condamnation définitive",
+                "coupable dès l'accusation",
+                "absence de procès",
+                "peine automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Charge de la preuve incombe à l'accusation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La double instance permet…",
+              "options": [
+                "appel d'une décision",
+                "jugement unique sans recours",
+                "suppression des avocats",
+                "verdict par réseaux sociaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Révision par une juridiction supérieure."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La Cour de cassation…",
+              "options": [
+                "contrôle le bon application du droit",
+                "juge les faits en première instance",
+                "vote la loi",
+                "dirige le Gouvernement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle unifie la jurisprudence."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La justice des mineurs…",
+              "options": [
+                "adapte les procédures à l'âge",
+                "identique sans protection",
+                "supprime l'éducation",
+                "interdit les parents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordonnance de 1945 et réformes récentes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un juge doit se récuser s'il…",
+              "options": [
+                "a un intérêt dans l'affaire",
+                "est impartial",
+                "respecte la loi",
+                "connaît le code"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impartialité exige absence de conflit d'intérêts."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La peine doit être…",
+              "options": [
+                "légale et individualisée dans le cadre de la loi",
+                "inventée par la foule",
+                "toujours identique",
+                "sans appel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Individualisation encadrée par le code pénal."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le parquet…",
+              "options": [
+                "poursuit les infractions au nom de la société",
+                "défend toujours l'accusé",
+                "vote les budgets",
+                "dirige l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ministère public indépendant du juge du siège."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'aide juridictionnelle…",
+              "options": [
+                "permet l'accès au juge aux plus modestes",
+                "interdit les avocats",
+                "supprime les tribunaux",
+                "est réservée aux élus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Égalité d'accès à la justice."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Justice et État de droit…",
+              "options": [
+                "protègent les libertés contre l'arbitraire",
+                "suppriment les droits",
+                "interdisent le débat",
+                "remplacent les élections"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Procès loyal garantit les droits de la défense."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Élections et démocratie représentative",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une élection libre exige… (deux réponses)",
+              "options": [
+                "suffrage universel",
+                "fraude systématique",
+                "pluralisme des candidats",
+                "interdiction de campagne"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Vote ouvert et choix réels caractérisent la démocratie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À 18 ans, un citoyen français peut…",
+              "options": [
+                "voter aux élections",
+                "devenir président immédiatement sans condition d'âge",
+                "ignorer la loi",
+                "supprimer le Parlement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Majorité électorale est à 18 ans."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le suffrage est…",
+              "options": [
+                "secret",
+                "public obligatoire",
+                "réservé aux hommes",
+                "payant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Isoloir protège la liberté de choix."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une circonscription législative sert à…",
+              "options": [
+                "élire un député",
+                "nommer un juge",
+                "choisir le menu",
+                "diriger la police"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Découpage électoral pour l'Assemblée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une abstention élevée…",
+              "options": [
+                "affaiblit la légitimité démocratique",
+                "renforce automatiquement l'État de droit",
+                "supprime la loi",
+                "interdit les partis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Participation nourrit la représentation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le Conseil constitutionnel contrôle…",
+              "options": [
+                "régularité de certaines élections",
+                "notes de français",
+                "horaires de cours",
+                "recettes de cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contentieux électoral possible."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une campagne électorale…",
+              "options": [
+                "doit respecter la loi sur la propagande",
+                "peut tout diffuser sans limite",
+                "interdit le débat",
+                "supprime la presse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transparence financière et égalité de temps média."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les partis politiques…",
+              "options": [
+                "structurent le débat démocratique",
+                "remplacent la loi",
+                "interdisent le vote",
+                "abolissent la laïcité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils agrègent des opinions."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Élire des représentants…",
+              "options": [
+                "exerce la souveraineté indirectement",
+                "supprime les droits",
+                "interdit l'opposition",
+                "crée une dictature"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Démocratie représentative complète la participation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comprendre une élection…",
+              "options": [
+                "est central en EMC et géographie électorale",
+                "est inutile",
+                "remplace la citoyenneté",
+                "interdit la liberté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien entre territoire, droit et vote."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Administration et contrôle citoyen",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Contrôler l'administration passe par… (deux réponses)",
+              "options": [
+                "recours administratif",
+                "violence",
+                "médiateur et Défenseur des droits",
+                "ignorance des lois"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Voies amiables et contentieuses existent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un acte administratif doit…",
+              "options": [
+                "être motivé et notifier les voies de recours",
+                "rester secret",
+                "ignorer la loi",
+                "être arbitraire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transparence et garanties procédurales."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le tribunal administratif…",
+              "options": [
+                "juge les litiges avec l'administration",
+                "vote les lois",
+                "dirige l'armée",
+                "élit le maire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre juridictionnel administratif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La CADA concerne…",
+              "options": [
+                "accès aux documents administratifs",
+                "codes de la route",
+                "matchs scolaires",
+                "notes de musique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commission d'accès aux documents administratifs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un maire dans l'État de droit…",
+              "options": [
+                "agit dans le cadre des lois",
+                "est au-dessus de la Constitution",
+                "juge les crimes",
+                "nomme les ministres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Collectivités exercent des compétences déléguées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La fonction publique…",
+              "options": [
+                "sert l'intérêt général avec neutralité",
+                "poursuit un profit privé du fonctionnaire",
+                "ignore les usagers",
+                "supprime la laïcité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devoir de service et éthique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pétition au Parlement…",
+              "options": [
+                "peut être examinée selon conditions",
+                "remplace le vote",
+                "abolit la loi",
+                "interdit le débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil de participation encadré."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un contrôle de légalité par le préfet…",
+              "options": [
+                "vérifie les actes des communes",
+                "supprime les élections",
+                "interdit la presse",
+                "crée une monarchie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tutelle administrative encadrée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La décentralisation…",
+              "options": [
+                "rapproche décision et territoires",
+                "supprime toute règle",
+                "interdit les élus locaux",
+                "abolit l'État de droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétences partagées État-régions-départements-communes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un citoyen informé sur l'administration…",
+              "options": [
+                "défend mieux ses droits",
+                "doit éviter tout recours",
+                "ignore la loi",
+                "refuse la République"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Connaissance des voies de recours est clé."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Police, ordre public et droits",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les forces de l'ordre en État de droit… (deux réponses)",
+              "options": [
+                "agissent sous contrôle juridique",
+                "peuvent torturer",
+                "rendent compte via l'autorité judiciaire",
+                "ignorent la loi"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Police judiciaire et administrative sont encadrées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un usage proportionné de la force…",
+              "options": [
+                "respecte la dignité humaine",
+                "est toujours interdit",
+                "remplace le procès",
+                "supprime les libertés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nécessité et proportionnalité encadrent l'intervention."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Garde à vue implique…",
+              "options": [
+                "droits de la personne (avocat, silence…)",
+                "absence totale de règles",
+                "jugement immédiat sans juge",
+                "peine sans procès"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Code de procédure pénale protège le suspect."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un manifestant violent…",
+              "options": [
+                "peut être interpellé selon la loi",
+                "est toujours impuni",
+                "est au-dessus du code pénal",
+                "ne peut jamais être arrêté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liberté de manifester n'inclut pas la violence."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "IGPN et inspection générale…",
+              "options": [
+                "contrôlent certaines pratiques policières",
+                "suppriment la justice",
+                "interdisent les recours",
+                "nomment le Président"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrôle interne complète le judiciaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Caméra-piéton…",
+              "options": [
+                "documente certaines interventions",
+                "remplace les juges",
+                "interdit la laïcité",
+                "supprime le Parlement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil de transparence encadré."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ordre public…",
+              "options": [
+                "protège la coexistence pacifique",
+                "justifie toute violence policière",
+                "abolit les libertés",
+                "interdit les élections"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il limite les libertés seulement si nécessaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un lycéen victime de violence policière…",
+              "options": [
+                "peut saisir autorités de contrôle et justice",
+                "n'a aucun recours",
+                "doit se taire",
+                "perd sa nationalité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recours existent pour faire respecter le droit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "État de droit et sécurité…",
+              "options": [
+                "se concilient via la légalité",
+                "s'excluent totalement",
+                "suppriment la démocratie",
+                "interdisent la police"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité légitime respecte les droits."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Débat EMC sur police et libertés…",
+              "options": [
+                "aide à comprendre les arbitrages",
+                "interdit la science",
+                "supprime la citoyenneté",
+                "remplace la loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formation critique des futurs citoyens."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Médias, opinion et État de droit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Médias indépendants contribuent à… (deux réponses)",
+              "options": [
+                "contrôler le pouvoir",
+                "cacher les scandales légaux",
+                "informer les électeurs",
+                "abolir la justice"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Enquêtes et information nourrissent le débat démocratique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "CSA/ARCOM veille à…",
+              "options": [
+                "pluralisme audiovisuel",
+                "notes de lycée",
+                "codes de la route",
+                "horaires de cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régulation des médias audiovisuels."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Fake news…",
+              "options": [
+                "peut nuire à la démocratie",
+                "renforce toujours l'État de droit",
+                "remplace les lois",
+                "est un devoir civique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Désinformation affaiblit le débat éclairé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Secret des sources protège…",
+              "options": [
+                "journalistes et l'information",
+                "politiciens contre tout contrôle",
+                "violence",
+                "censure totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lanceurs d'alerte peuvent être protégés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Liberté de la presse n'autorise pas…",
+              "options": [
+                "diffamation impunie",
+                "critique politique",
+                "enquête sur un scandale",
+                "débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Responsabilité médias existe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Propagande électorale mensongère…",
+              "options": [
+                "peut être sanctionnée",
+                "est obligatoire",
+                "supprime le vote",
+                "interdit les partis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élection exige loyauté minimale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Éducation aux médias en EMC…",
+              "options": [
+                "renforce l'État de droit",
+                "interdit Internet",
+                "supprime la laïcité",
+                "abolit le vote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Esprit critique face à l'information."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un État de droit autoritaire affaiblit…",
+              "options": [
+                "presse libre et opposition",
+                "uniquement la météo",
+                "le sport",
+                "la géographie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrôle des médias signale dérives."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Transparence des financements politiques…",
+              "options": [
+                "évite corruption et ingérence",
+                "interdit les élections",
+                "supprime les partis",
+                "cache les comptes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrôle de la commission des comptes de campagne."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Opinion publique…",
+              "options": [
+                "n'est pas une norme juridique",
+                "remplace la Constitution",
+                "juge seule les crimes",
+                "abolit le Parlement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi prime sur l'émotion momentanée."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse — État de droit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Caractéristiques de l'État de droit… (deux réponses)",
+              "options": [
+                "suprématie de la loi",
+                "arbitraire",
+                "garanties judiciaires",
+                "absence d'élections"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Loi et justice indépendante fondent le régime."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sans État de droit, les libertés…",
+              "options": [
+                "sont menacées par l'arbitraire",
+                "sont toujours maximales",
+                "disparaissent de la planète",
+                "deviennent automatiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les institutions protègent les droits."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La séparation des pouvoirs vise…",
+              "options": [
+                "éviter les abus",
+                "concentrer tout pouvoir",
+                "supprimer le juge",
+                "interdire le vote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Freins et contrepoids."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le citoyen en État de droit…",
+              "options": [
+                "vote, respecte la loi et peut contester légalement",
+                "est soumis sans droits",
+                "ignore la justice",
+                "doit obéir à des ordres illégaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Participation et recours juridiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Constitution + institutions + droits = …",
+              "options": [
+                "cadre de la vie démocratique",
+                "fin de la laïcité",
+                "absence de règles",
+                "dictature"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Triptyque de l'organisation républicaine."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'Europe renforce l'État de droit via…",
+              "options": [
+                "CEDH et mécanismes UE",
+                "suppression des cours",
+                "interdiction du français",
+                "abolition du vote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normes et contrôles complémentaires."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un lycéen qui comprend l'État de droit…",
+              "options": [
+                "mieux repère les dérives autoritaires",
+                "doit rejeter la République",
+                "ignore ses devoirs",
+                "supprime le débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "EMC forme à la vigilance démocratique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La loi pénale ne s'applique pas…",
+              "options": [
+                "rétroactivement pour aggraver une peine",
+                "jamais",
+                "aux citoyens",
+                "aux élus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Principe de non-rétroactivité de la loi pénale défavorable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Justice indépendante signifie…",
+              "options": [
+                "magistrats protégés des pressions",
+                "obéissance au gouvernement",
+                "absence de procès",
+                "jugement par sondage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statut garantit impartialité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'EMC sur liberté et État de droit prépare à…",
+              "options": [
+                "vivre en République démocratique",
+                "refuser toute règle",
+                "violence politique",
+                "ignorance des droits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif : citoyenneté responsable en 2nde."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

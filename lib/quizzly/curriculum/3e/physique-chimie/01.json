@@ -1,0 +1,2613 @@
+{
+  "id": "3e-physique-chimie-01",
+  "year": "3e",
+  "subject": "physique-chimie",
+  "title": "Réactions chimiques et énergie",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Transformation chimique",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Réactifs et produits",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lors d'une transformation chimique, les réactifs sont…",
+              "options": [
+                "Les espèces consommées",
+                "Les espèces formées",
+                "Toujours des métaux",
+                "Les substances de départ qui se transforment"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Les réactifs sont consommés pour former les produits."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les produits d'une réaction chimique…",
+              "options": [
+                "Sont formés pendant la réaction",
+                "Sont toujours des gaz",
+                "Existent avant la réaction",
+                "Ne changent jamais d'état"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les produits apparaissent au cours de la transformation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une transformation chimique se distingue d'un mélange car…",
+              "options": [
+                "De nouvelles espèces chimiques apparaissent",
+                "Les couleurs se mélangent toujours",
+                "On peut toujours séparer à la main",
+                "Il n'y a qu'un seul composant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une réaction forme des entités chimiques nouvelles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans Fe + S → FeS, le fer et le soufre sont…",
+              "options": [
+                "Des produits",
+                "Des réactifs",
+                "Des ions seuls",
+                "Des catalyseurs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Fe et S sont consommés pour former FeS."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans la même équation, FeS est…",
+              "options": [
+                "Un réactif",
+                "Un produit",
+                "Un solvant",
+                "Un atome libre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "FeS est la substance obtenue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La rouille du fer est…",
+              "options": [
+                "Une transformation chimique",
+                "Un mélange de poudres",
+                "Un changement d'état",
+                "Une dissolution sans réaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De nouveaux composés contenant le fer oxydé se forment."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'évaporation de l'eau d'une flaque est surtout…",
+              "options": [
+                "Une transformation physique",
+                "Une combustion",
+                "Une synthèse",
+                "Une neutralisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau reste H2O : seul l'état change."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le symbole → dans une équation chimique indique…",
+              "options": [
+                "Un mélange",
+                "La transformation en produits",
+                "Une dissolution",
+                "Un équilibre obligatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il relie réactifs et produits."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour modéliser une transformation chimique au collège, on utilise…",
+              "options": [
+                "Une équation chimique",
+                "Un graphique de vitesse seul",
+                "Une carte géographique",
+                "Une balance sans réaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équation représente les espèces et leur transformation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cuivre + dioxygène → oxyde de cuivre : le dioxygène est…",
+              "options": [
+                "Un réactif",
+                "Un produit",
+                "Un catalyseur",
+                "Un ion ferreux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "O2 est consommé avec le cuivre."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Conservation de la masse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour vérifier la loi de Lavoisier en classe, on combine…",
+              "options": [
+                "Un système fermé",
+                "Une pesée avant et après réaction",
+                "Un récipient ouvert sans attention",
+                "L'absence de toute réaction"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rien ne doit entrer ni sortir ; la masse totale reste identique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour montrer la conservation de la masse, il faut…",
+              "options": [
+                "Laisser le système ouvert",
+                "Travailler en système fermé",
+                "Ne pas peser",
+                "Ajouter de l'eau après"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Aucune matière ne doit entrer ni sortir pendant la pesée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si un gaz s'échappe d'un erlenmeyer ouvert, la masse pesée du contenu…",
+              "options": ["Augmente", "Diminue", "Reste identique", "Double"],
+              "correctAnswers": [1],
+              "explanation": "Le gaz formé n'est plus inclus dans la pesée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une équation chimique équilibrée respecte…",
+              "options": [
+                "La conservation des atomes",
+                "La couleur des réactifs",
+                "Le volume seul",
+                "Le pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il y a autant de chaque type d'atome de chaque côté."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "2H2 + O2 → 2H2O : la masse totale des réactifs…",
+              "options": [
+                "Est égale à celle des produits",
+                "Est perdue",
+                "Est divisée par deux",
+                "Disparaît en chaleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conservation de la masse dans un système fermé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une transformation chimique conserve le nombre de…",
+              "options": [
+                "Chaque type d'atomes",
+                "Molécules identiques",
+                "Électrons libres seuls",
+                "Ions en solution ouverte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les atomes se réorganisent sans disparaître."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "1,0 g de réactifs transformés complètement en produits dans un flacon fermé donnent…",
+              "options": [
+                "1,0 g de produits au total",
+                "0,5 g",
+                "2,0 g",
+                "0 g"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La masse totale reste 1,0 g."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La loi de Lavoisier s'applique aux…",
+              "options": [
+                "Transformations chimiques",
+                "Découpes en morceaux",
+                "Mélanges sans réaction",
+                "Changements d'état seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle concerne les réactions chimiques en système fermé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Peser le flacon fermé avant et après réaction donne…",
+              "options": [
+                "La même masse",
+                "Toujours une masse plus grande après",
+                "Toujours zéro",
+                "Une masse aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute la matière reste dans le système."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si la masse semble changer dans un système ouvert avec dégagement gazeux, c'est parce que…",
+              "options": [
+                "La loi est fausse",
+                "Une partie de la matière est sortée",
+                "Les atomes disparaissent",
+                "La balance est interdite"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il faut inclure ou retenir toute la matière pour appliquer la loi."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Équations chimiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Concernant C + O2 → CO2, on peut dire que…",
+              "options": [
+                "Les atomes sont conservés",
+                "La masse totale se conserve en système fermé",
+                "Le carbone disparaît",
+                "L'oxygène n'est jamais consommé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bilan atomique équilibré et loi de Lavoisier en système fermé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans une équation chimique, les coefficients indiquent…",
+              "options": [
+                "Les proportions en moles (nombre d'entités)",
+                "La couleur",
+                "La température",
+                "Le pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils précisent combien d'entités réagissent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'équation 2H2 + O2 → 2H2O signifie que…",
+              "options": [
+                "2 molécules de H2 réagissent avec 1 de O2",
+                "1 H2 avec 2 O2",
+                "Pas de conservation",
+                "Formation de H2O2 uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les coefficients 2, 1, 2 modélisent la synthèse de l'eau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Équilibrer  Fe +  O2  →  Fe2O3  nécessite notamment…",
+              "options": [
+                "4 Fe et 3 O2 pour 2 Fe2O3",
+                "1 Fe et 1 O2",
+                "2 Fe et 1 O2",
+                "Aucun coefficient"
+              ],
+              "correctAnswers": [0],
+              "explanation": "4 Fe, 6 O à gauche ; 4 Fe, 6 O dans 2 Fe2O3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les formules chimiques dans une équation ne doivent pas…",
+              "options": [
+                "Être changées pour équilibrer",
+                "Être lues correctement",
+                "Correspondre aux espèces réelles",
+                "Être écrites avec symboles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne modifie que les coefficients, pas les formules."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "CH4 + 2 O2 → CO2 + 2 H2O modélise…",
+              "options": [
+                "La combustion complète du méthane",
+                "La dissolution du méthane",
+                "La fusion du carbone",
+                "La neutralisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combustion : méthane + dioxygène → CO2 + eau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le bilan atomique d'une équation équilibrée vérifie…",
+              "options": [
+                "Le même nombre de chaque atome des deux côtés",
+                "La même couleur",
+                "Le même volume de gaz",
+                "Le même pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la traduction de la conservation des atomes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mg + 2 HCl → MgCl2 + H2 : le gaz dégagé est…",
+              "options": [
+                "Le dioxygène",
+                "Le dihydrogène H2",
+                "Le chlore seul",
+                "Le CO2"
+              ],
+              "correctAnswers": [1],
+              "explanation": "H2 est le produit gazeux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une équation non équilibrée est…",
+              "options": [
+                "Incorrecte pour modéliser la conservation",
+                "Toujours valable",
+                "Réservée aux solides",
+                "Sans réactifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle ne respecte pas le bilan des atomes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "CaCO3 → CaO + CO2 modélise une…",
+              "options": [
+                "Décomposition thermique",
+                "Combustion du calcium",
+                "Dissolution sans réaction",
+                "Neutralisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le carbonate se décompose à la chaleur."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Tests d'identification",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour identifier Fe2+ et Fe3+ en solution, on utilise souvent…",
+              "options": [
+                "Hydroxyde de sodium (ou soude)",
+                "La couleur différente des précipités (vert / rouille)",
+                "Du sucre en poudre",
+                "De l'hélium"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fe2+ donne un précipité vert, Fe3+ rouille avec les ions OH-."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'ion fer III (Fe3+) donne souvent un précipité…",
+              "options": [
+                "Rouille / rouge-brun avec OH-",
+                "Bleu clair",
+                "Blanc immédiat avec tout ion",
+                "Gazeux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fe3+ + OH- → hydroxyde de fer III rouille."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'ion chlorure Cl- est détecté avec une solution de…",
+              "options": [
+                "Nitrate d'argent (precipité blanc)",
+                "Sucre",
+                "Huile",
+                "Eau oxygénée seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ag+ + Cl- → AgCl blanc."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le test à la flamme du sodium colore la flamme en…",
+              "options": ["Vert", "Jaune", "Rouge brique", "Violet"],
+              "correctAnswers": [1],
+              "explanation": "Le sodium est reconnu par une flamme jaune."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le test à la flamme du cuivre donne une flamme…",
+              "options": ["Verte", "Jaune", "Bleue pâle", "Noire"],
+              "correctAnswers": [0],
+              "explanation": "Les composés cuivre colorent la flamme en vert."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le dioxyde de carbone CO2 trouble l'eau de chaux car…",
+              "options": [
+                "Il forme du carbonate de calcium insoluble",
+                "Il colore l'eau en rouge",
+                "Il dissout le calcaire sans réaction",
+                "Il est invisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CO2 + Ca(OH)2 → CaCO3 précipité + eau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le dihydrogène H2 est reconnu à la flamme avec un…",
+              "options": [
+                "Pop / détonation caractéristique",
+                "Précipité bleu",
+                "Odeur de soufre",
+                "Trouble permanent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "H2 brûle avec une petite détonation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une solution acide de pH 2 contient…",
+              "options": [
+                "Plus d'ions H+ que d'ions OH-",
+                "Autant H+ que OH-",
+                "Uniquement des bases",
+                "Pas d'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "pH < 7 : milieu acide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le papier pH ou indicateur colore selon…",
+              "options": [
+                "L'acidité ou la basicité",
+                "La masse",
+                "La vitesse",
+                "La pression seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les indicateurs changent de couleur avec le pH."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Distinction Fe2+ et Fe3+ : le précipité avec OH- est…",
+              "options": [
+                "Vert pour Fe2+, rouille pour Fe3+",
+                "Identique",
+                "Toujours bleu",
+                "Toujours gazeux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleurs différentes des hydroxydes."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Combustion",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une combustion met en jeu…",
+              "options": [
+                "Un combustible",
+                "Un comburant (souvent le dioxygène)",
+                "Uniquement de l'azote",
+                "Aucune transformation chimique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Combustible + comburant → produits, avec dégagement d'énergie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le comburant le plus courant dans l'air est…",
+              "options": [
+                "Le diazote N2",
+                "Le dioxygène O2",
+                "Le CO2",
+                "L'argon seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "O2 permet la combustion."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combustion complète du carbone : produits principaux…",
+              "options": ["CO2", "CO seulement", "C seul", "N2"],
+              "correctAnswers": [0],
+              "explanation": "C + O2 → CO2 en combustion complète."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combustion incomplète du carbone peut produire…",
+              "options": [
+                "Du monoxyde de carbone CO",
+                "Uniquement de l'eau",
+                "De l'hélium",
+                "Du sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manque d'O2 : formation de CO toxique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combustion du méthane CH4 en présence d'oxygène suffisant donne…",
+              "options": ["CO2 et H2O", "C seul", "N2 et H2", "NaCl"],
+              "correctAnswers": [0],
+              "explanation": "CH4 + 2 O2 → CO2 + 2 H2O."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une combustion dégage de l'énergie sous forme surtout…",
+              "options": [
+                "Thermique et lumineuse",
+                "Gravitationnelle",
+                "Nucléaire",
+                "Sans transfert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flamme et chaleur caractérisent la combustion."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Éteindre une bougie en couvrant la flamme coupe…",
+              "options": [
+                "L'apport de dioxygène",
+                "La gravité",
+                "La masse de la cire",
+                "Les produits solides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans O2, la combustion s'arrête."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le CO2 produit par une combustion animal ou végétale…",
+              "options": [
+                "Peut être repéré avec l'eau de chaux",
+                "Colore le pH en vert fixe",
+                "Disparaît sans réaction",
+                "Est toujours liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CO2 trouble l'eau de chaux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un combustible est…",
+              "options": [
+                "Une substance qui peut brûler",
+                "Toujours un métal",
+                "Toujours un gaz noble",
+                "Un catalyseur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemples : bois, méthane, essence."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La combustion du magnésium dans l'air produit…",
+              "options": [
+                "De l'oxyde de magnésium",
+                "De l'eau",
+                "Du sel",
+                "Du fer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2 Mg + O2 → 2 MgO avec flamme vive."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Acides, bases et pH",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En solution aqueuse, un acide se caractérise par…",
+              "options": [
+                "Un excès d'ions H+ (ou H3O+)",
+                "Un pH inférieur à 7",
+                "Un excès d'ions OH-",
+                "Un pH égal à 14 toujours"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Milieu acide : plus d'ions H+ et pH < 7."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une base en solution aqueuse libère surtout…",
+              "options": [
+                "Des ions OH-",
+                "Des ions H+ en excès",
+                "Du CO2 seul",
+                "Du fer métallique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bases augmentent la concentration en OH-."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une solution neutre a un pH de…",
+              "options": ["7", "0", "14", "1"],
+              "correctAnswers": [0],
+              "explanation": "pH 7 : ni acide ni basique à 25 °C."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "pH = 3 correspond à un milieu…",
+              "options": ["Acide", "Neutre", "Basique", "Sans eau"],
+              "correctAnswers": [0],
+              "explanation": "pH < 7 : acide."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "pH = 11 correspond à un milieu…",
+              "options": [
+                "Basique (alcalin)",
+                "Acide fort",
+                "Neutre",
+                "Gazeux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "pH > 7 : basique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réaction acide + base → sel + eau est une…",
+              "options": [
+                "Neutralisation",
+                "Combustion",
+                "Oxydation du fer",
+                "Fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les propriétés acide et basique s'annulent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "HCl + NaOH → NaCl + H2O : le sel formé est…",
+              "options": ["NaCl", "NaOH", "HCl", "CO2"],
+              "correctAnswers": [0],
+              "explanation": "Chlorure de sodium et eau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le vinaigre dilué a un pH…",
+              "options": [
+                "Inférieur à 7",
+                "Égal à 7",
+                "Supérieur à 12",
+                "Exactement 14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vinaigre : acide acétique en solution."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une solution de soude NaOH a un pH…",
+              "options": [
+                "Supérieur à 7",
+                "Inférieur à 2",
+                "Toujours 7",
+                "Nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soude : base forte en solution."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Plus le pH est bas (sans être négatif en TP courant), plus la solution est…",
+              "options": ["Acide", "Basique", "Neutre", "Sans ions"],
+              "correctAnswers": [0],
+              "explanation": "Échelle pH : bas = acide, haut = basique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Oxydation et réduction",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La corrosion du fer (rouille) implique…",
+              "options": [
+                "Une réaction avec le dioxygène",
+                "La présence d'eau (humidité)",
+                "Une simple décantation",
+                "Une fusion sans réaction"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "O2 et H2O permettent la formation de rouille."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un métal qui s'oxyde perd des électrons : on parle d'…",
+              "options": [
+                "Oxydation",
+                "Réduction du métal",
+                "Neutralisation",
+                "Distillation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oxydation = perte d'électrons (modèle simplifié 3e)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le dioxygène qui fait rouiller le fer est…",
+              "options": [
+                "Un oxydant",
+                "Un combustible seul",
+                "Un catalyseur inerte",
+                "Un acide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "O2 accepte les électrons du fer."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Protéger le fer par la peinture empêche surtout…",
+              "options": [
+                "Le contact avec l'oxygène et l'eau",
+                "La conservation de la masse",
+                "La gravité",
+                "La conductivité du cuivre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Barrière contre O2 et humidité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Cuivre + O2 → oxyde de cuivre : le cuivre est…",
+              "options": [
+                "Oxydé",
+                "Réduit en métal pur",
+                "Dissous sans réaction",
+                "Transformé en or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cuivre forme un oxyde sombre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La galvanisation (couche de zinc) protège le fer par…",
+              "options": [
+                "Une barrière et oxydation préférentielle du zinc",
+                "Augmentation du pH seul",
+                "Fusion",
+                "Combustion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le zinc s'oxyde à la place du fer."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Aluminium très oxydé en surface forme une couche…",
+              "options": [
+                "Protectrice d'oxyde",
+                "De sel soluble",
+                "De mercure",
+                "Gazeuse toxique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'alumine protège le métal sous-jacent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Réduction (modèle 3e) correspond à…",
+              "options": [
+                "Gain d'électrons",
+                "Perte d'électrons",
+                "Perte de masse totale",
+                "Évaporation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couple oxydation-réduction par échange d'électrons."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Empêcher l'humidité limite la corrosion car…",
+              "options": [
+                "L'eau participe aux réactions d'oxydation",
+                "L'eau annule le pH",
+                "L'eau crée du CO2 seul",
+                "L'eau fusionne le fer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Électrolyte nécessaire à la corrosion du fer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'or et le platine résistent bien à l'oxydation car…",
+              "options": [
+                "Ils sont peu réactifs avec O2 courant",
+                "Ils sont des gaz",
+                "Ils sont des acides",
+                "Ils flottent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faible tendance à s'oxyder à l'air."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Mélange ou transformation ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dissoudre du sel dans l'eau sans réaction chimique donne…",
+              "options": [
+                "Un mélange homogène",
+                "Une solution aqueuse",
+                "Une transformation avec nouvelles molécules stables",
+                "Un gaz pur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le sel reste ionique en solution : c'est un mélange homogène."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Eau + sel → solution salée sans réaction chimique : le sel reste…",
+              "options": [
+                "Ionique dissocié mais espèces identiques",
+                "Transformé en fer",
+                "En CO2",
+                "En or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de nouvelles molécules stables différentes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Mélange de fer et de soufre en poudre avant chauffage est…",
+              "options": ["Un mélange", "Déjà du FeS", "De l'eau", "Du CO2"],
+              "correctAnswers": [0],
+              "explanation": "Fe et S restent distincts avant réaction."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Après chauffage, fer + soufre donnent FeS : c'est…",
+              "options": [
+                "Une transformation chimique",
+                "Un mélange",
+                "Un changement d'état",
+                "Une filtration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nouvelle substance FeS formée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Séparer un mélange eau-sable par décantation/filtration est…",
+              "options": [
+                "Physique",
+                "Une combustion",
+                "Une neutralisation",
+                "Une synthèse du fer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de changement de nature chimique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lait caillé avec acide lactique après fermentation : transformation car…",
+              "options": [
+                "Nouvelles espèces formées",
+                "Simple mélange de couleurs",
+                "Changement de taille des grains seul",
+                "Filtration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réactions biochimiques modifient la composition."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Brassage de peinture bleue et jaune sans réaction chimique donne…",
+              "options": [
+                "Un mélange vert",
+                "Une nouvelle molécule obligatoire",
+                "Du fer",
+                "Du CO2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mélange physique de pigments."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Test : présence de nouvelles propriétés chimiques (tests ions) indique…",
+              "options": [
+                "Transformation chimique",
+                "Mélange simple",
+                "Changement d'état seul",
+                "Découpe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Propriétés différentes des réactifs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Air est…",
+              "options": [
+                "Un mélange de gaz (N2, O2, etc.)",
+                "Une substance pure unique",
+                "Un liquide",
+                "Un métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mélange gazeux sans réaction entre composants."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Eau distillée et eau de mer ont…",
+              "options": [
+                "Compositions différentes (sels en mer)",
+                "Même composition toujours",
+                "Pas de H2O",
+                "Uniquement du fer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mer = eau + sels dissous (mélange)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Décomposition et synthèse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une synthèse chimique…",
+              "options": [
+                "Forme un produit à partir de réactifs",
+                "Modélise une transformation chimique",
+                "Est toujours un simple mélange",
+                "Ne conserve jamais la masse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plusieurs réactifs donnent au moins un produit nouveau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une décomposition produit…",
+              "options": [
+                "Plusieurs produits à partir d'un réactif",
+                "Un seul réactif à partir de produits",
+                "Un mélange sans réaction",
+                "Un changement de couleur sans réaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un composé se scinde en plusieurs espèces."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "2 H2O → 2 H2 + O2 (électrolyse) est une…",
+              "options": [
+                "Décomposition",
+                "Combustion du fer",
+                "Neutralisation",
+                "Dissolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau se décompose en H2 et O2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fe + S → FeS est une…",
+              "options": [
+                "Synthèse du sulfure de fer",
+                "Décomposition de l'eau",
+                "Combustion du CO2",
+                "Filtration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formation de FeS à partir de Fe et S."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "CaCO3 → CaO + CO2 à la chaleur est…",
+              "options": [
+                "Une décomposition thermique",
+                "Une synthèse de calcaire",
+                "Un mélange",
+                "Une oxidation de l'or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le carbonate se décompose."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "N2 + 3 H2 → 2 NH3 (industriel) est une…",
+              "options": [
+                "Synthèse de l'ammoniac",
+                "Combustion",
+                "Dissolution",
+                "Décantation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formation de NH3."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Cuivre + oxygène → oxyde de cuivre est plutôt…",
+              "options": [
+                "Une synthèse d'oxyde",
+                "Une décomposition de l'eau",
+                "Un mélange de sable",
+                "Une fusion sans réaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux réactifs forment un oxyde."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Décomposer le calcaire au four produit du CO2 : test…",
+              "options": [
+                "Eau de chaux trouble",
+                "Papier pH vert fixe",
+                "Flamme jaune sodium",
+                "Aimant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CO2 détecté avec eau de chaux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Synthèse de l'eau : 2 H2 + O2 → 2 H2O libère…",
+              "options": [
+                "De l'énergie (exothermique)",
+                "Rien",
+                "Uniquement du fer",
+                "Du sel sans eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combustion/synthèse de l'eau très exothermique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Décomposition et synthèse sont…",
+              "options": [
+                "Transformations chimiques",
+                "Toujours physiques",
+                "Sans conservation de masse",
+                "Interdites au collège"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce sont des réactions modélisées par des équations."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Vitesse et catalyse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un catalyseur…",
+              "options": [
+                "Accélère une réaction",
+                "N'est pas consommé dans le bilan global",
+                "Est toujours un combustible",
+                "Change les produits attendus"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Il facilite la réaction sans apparaître dans l'équation bilan."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Augmenter la température d'une réaction tend à…",
+              "options": [
+                "Augmenter la vitesse",
+                "Toujours la diminuer",
+                "Empêcher la réaction",
+                "Annuler la conservation de masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus d'agitation et de collisions efficaces."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Concasser un solide réactif augmente…",
+              "options": [
+                "La surface de contact et souvent la vitesse",
+                "La masse totale",
+                "Le nombre d'atomes",
+                "Le pH automatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de surface : réaction plus rapide."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le catalyseur du convertisseur automobile transforme des polluants en…",
+              "options": [
+                "Gaz moins nocifs (ex. CO2, N2)",
+                "Plomb",
+                "Sel solide",
+                "Or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Catalyse des oxydations/réductions des gaz d'échappement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Enzymes dans le corps agissent comme…",
+              "options": [
+                "Catalyseurs biologiques",
+                "Combustibles",
+                "Comburants",
+                "Indicateurs pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accélèrent des réactions biochimiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Diminuer la concentration d'un réactif tend à…",
+              "options": [
+                "Ralentir la réaction",
+                "Toujours l'accélérer",
+                "La stopper instantanément toujours",
+                "Créer des atomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de collisions par unité de temps."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une réaction lente à température ambiante peut devenir rapide si…",
+              "options": [
+                "On chauffe",
+                "On refroidit fort",
+                "On retire les réactifs",
+                "On change la gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La température influence fortement la vitesse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le catalyseur apparaît-il dans l'équation bilan global ?",
+              "options": [
+                "Non, il n'est pas consommé",
+                "Oui, toujours comme produit",
+                "Oui, comme réactif consommé",
+                "Obligatoirement deux fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il régénéré en fin de cycle catalytique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mélanger vigoureusement des réactifs en solution peut…",
+              "options": [
+                "Accélérer le contact",
+                "Empêcher toute réaction",
+                "Violer Lavoisier",
+                "Créer des éléments nouveaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Homogénéisation favorise les rencontres."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La vitesse d'une réaction mesure…",
+              "options": [
+                "Rapidité d'apparition des produits",
+                "La masse totale",
+                "Le pH seul",
+                "La couleur du catalyseur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quantité de produit formé par unité de temps."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Énergie et conversions",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Formes de l'énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les principales formes d'énergie étudiées en 3e incluent…",
+              "options": [
+                "Cinétique et potentielle",
+                "Chimique et thermique",
+                "Uniquement nucléaire",
+                "Seulement la masse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plusieurs formes se convertissent dans les chaînes énergétiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'énergie cinétique dépend de la masse et de…",
+              "options": [
+                "La vitesse",
+                "La couleur",
+                "Le pH",
+                "La pression atmosphérique seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ec = 1/2 m v² au programme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'énergie potentielle de pesanteur augmente quand…",
+              "options": [
+                "La hauteur augmente",
+                "La vitesse augmente",
+                "La masse est nulle",
+                "Le objet est au sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ep = m g h (modèle cours)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'énergie chimique est stockée dans…",
+              "options": [
+                "Les liaisons des molécules",
+                "Le vide",
+                "La couleur",
+                "Le volume seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combustion libère l'énergie chimique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'énergie thermique est liée à…",
+              "options": [
+                "La température et l'agitation microscopique",
+                "La masse volumique seule",
+                "Le pH",
+                "La lumière seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaleur = transfert d'énergie thermique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une ampoule allumée convertit l'énergie électrique en…",
+              "options": [
+                "Lumineuse et thermique",
+                "Cinétique macroscopique seule",
+                "Potentielle gravitaire",
+                "Chimique stockée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partie lumière, partie chaleur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une batterie fournit de l'énergie…",
+              "options": [
+                "Électrique à partir de chimique",
+                "Nucléaire",
+                "Cinétique du vent",
+                "Potentielle de pesanteur seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réactions dans la pile produisent courant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le joule (J) est l'unité SI de…",
+              "options": ["Énergie", "Puissance", "Force", "Intensité"],
+              "correctAnswers": [0],
+              "explanation": "1 J = 1 N·m."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le kilowattheure (kWh) mesure…",
+              "options": [
+                "Une énergie",
+                "Une puissance",
+                "Une force",
+                "Une pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "kWh = énergie consommée (facture EDF)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "1 kWh vaut…",
+              "options": ["3,6 × 10^6 J", "1000 J", "1 J", "3,6 J"],
+              "correctAnswers": [0],
+              "explanation": "1 kW pendant 1 h = 3,6 MJ."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Conservation de l'énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Principe de conservation de l'énergie : l'énergie…",
+              "options": [
+                "Se transforme d'une forme à une autre",
+                "Se transfère entre systèmes",
+                "Disparaît définitivement",
+                "Se crée sans apport"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Aucune perte totale : conversion ou transfert."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une chute d'objet : énergie potentielle devient surtout…",
+              "options": [
+                "Cinétique (et un peu thermique)",
+                "Chimique",
+                "Nucléaire",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conversion Ep → Ec."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Freinage d'une voiture : énergie cinétique devient surtout…",
+              "options": [
+                "Thermique dans les freins",
+                "Lumineuse seule",
+                "Chimique stockée",
+                "Potentielle gravitaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échauffement par frottement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans un convertisseur idéal sans pertes, l'énergie reçue…",
+              "options": [
+                "Égale l'énergie fournie",
+                "Est nulle",
+                "Double toujours",
+                "Disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conservation (rendement 100 % théorique)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combustion du bois : énergie chimique → surtout…",
+              "options": [
+                "Thermique et lumineuse",
+                "Potentielle",
+                "Électrique directe",
+                "Cinétique du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flamme et chaleur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Panneau solaire photovoltaïque convertit l'énergie lumineuse en…",
+              "options": [
+                "Électrique",
+                "Chimique du bois",
+                "Cinétique du vent",
+                "Potentielle de pesanteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet photovoltaïque."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une génératrice transforme l'énergie mécanique en…",
+              "options": [
+                "Électrique",
+                "Chimique",
+                "Nucléaire seule",
+                "Massique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alternateur dans centrales/éoliennes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les pertes par frottement se manifestent souvent en…",
+              "options": [
+                "Chaleur",
+                "Lumière seule",
+                "Masse créée",
+                "Gravité annulée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dissipation thermique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Chaîne énergétique : l'énergie passe par des…",
+              "options": [
+                "Conversions successives",
+                "Destructions",
+                "Créations magiques",
+                "Un seul forme toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie initiale → convertisseurs → formes finales."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'énergie utile d'un appareil est…",
+              "options": [
+                "Celle qui sert au but (lumière, mouvement…)",
+                "Toujours la chaleur perdue",
+                "Nulle",
+                "Égale aux pertes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distincte des pertes thermiques."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Chaîne et convertisseur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un convertisseur d'énergie…",
+              "options": [
+                "Transforme une forme d'énergie en une autre",
+                "Peut avoir un rendement inférieur à 100 %",
+                "Crée de l'énergie ex nihilo",
+                "Annule la conservation de la masse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Exemples : lampe, moteur, panneau solaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans une chaîne énergétique, on note souvent…",
+              "options": [
+                "Énergie reçue → convertisseur → énergie délivrée",
+                "Uniquement la masse",
+                "Le volume seul",
+                "Les ions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma standard du cours."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Moteur électrique : entrée…",
+              "options": [
+                "Électrique",
+                "Chimique du carburant",
+                "Lumineuse seule",
+                "Potentielle gravitaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sortie : mécanique (+ pertes thermiques)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ampoule à incandescence : grande part de l'énergie devient…",
+              "options": [
+                "Thermique (perdue)",
+                "Cinétique utile",
+                "Potentielle",
+                "Chimique stockée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rendement lumineux faible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Éolienne : énergie cinétique du vent → …",
+              "options": [
+                "Électrique",
+                "Chimique",
+                "Nucléaire",
+                "Potentielle seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Turbine + générateur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Centrale thermique : souvent chimique (combustible) → …",
+              "options": [
+                "Thermique puis électrique",
+                "Directement lumineuse",
+                "Potentielle seule",
+                "Sans pertes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaudière + turbine + alternateur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une chaîne énergétique peut avoir plusieurs…",
+              "options": [
+                "Convertisseurs en série",
+                "Conservations violées",
+                "Créations d'énergie",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement des transformations."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Radiateur électrique : énergie électrique → surtout…",
+              "options": [
+                "Thermique",
+                "Cinétique macro",
+                "Lumineuse utile",
+                "Chimique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chauffage par effet Joule/résistance."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Voiture thermique : énergie chimique de l'essence → …",
+              "options": [
+                "Mécanique (+ thermique perdue)",
+                "Uniquement lumière",
+                "Potentielle gravitaire directe",
+                "Sans combustion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moteur à explosion."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Schéma : Soleil → panneau → lampe. Le panneau est…",
+              "options": [
+                "Un convertisseur",
+                "Un combustible",
+                "Un compteur kWh",
+                "Un catalyseur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lumineuse → électrique."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Puissance et énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La puissance relie énergie et temps : on utilise…",
+              "options": [
+                "P = E / Δt",
+                "E = P × Δt",
+                "P = m × g × h seule",
+                "E = pH × 7"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Puissance (W) et énergie (J) sont liées par la durée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'unité SI de la puissance est…",
+              "options": ["Le watt (W)", "Le joule", "Le kWh", "Le newton"],
+              "correctAnswers": [0],
+              "explanation": "1 W = 1 J/s."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un appareil de 100 W fonctionnant 1 h consomme…",
+              "options": ["0,1 kWh", "100 kWh", "1 kWh", "0,01 kWh"],
+              "correctAnswers": [0],
+              "explanation": "E = P × t = 0,1 kW × 1 h = 0,1 kWh."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "2 kW pendant 30 min consomment…",
+              "options": ["1 kWh", "2 kWh", "0,5 kWh", "60 kWh"],
+              "correctAnswers": [0],
+              "explanation": "2 kW × 0,5 h = 1 kWh."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Énergie E, puissance P et durée Δt lient…",
+              "options": [
+                "E = P × Δt",
+                "E = P / Δt",
+                "E = Δt / P",
+                "E = P + Δt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relation fondamentale du cours."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Compteur électrique mesure surtout l'…",
+              "options": [
+                "Énergie consommée (kWh)",
+                "Puissance instantanée seule",
+                "pH",
+                "Masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Facturation en kWh."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "1000 W = …",
+              "options": ["1 kW", "0,001 kW", "100 kW", "1 MW"],
+              "correctAnswers": [0],
+              "explanation": "Préfixe kilo."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Plus la puissance d'un appareil est grande, plus il consomme d'énergie…",
+              "options": [
+                "À durée égale",
+                "Jamais",
+                "Sans relation",
+                "Seulement la nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "E proportionnelle à P si t fixé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une LED basse consommation a souvent une puissance…",
+              "options": [
+                "Inférieure à une ampoule ancienne équivalente",
+                "Toujours 10 kW",
+                "Nulle",
+                "Identique à un four"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même éclairage, moins de watts."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "3,6 × 10^6 J correspond à…",
+              "options": ["1 kWh", "1 W", "1 J", "1 MW"],
+              "correctAnswers": [0],
+              "explanation": "Conversion usuelle kWh ↔ joules."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Rendement énergétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le rendement énergétique η…",
+              "options": [
+                "Vaut énergie utile ÷ énergie reçue",
+                "Est au plus égal à 1 (100 %)",
+                "Peut dépasser 100 % en réel",
+                "Ne concerne pas les pertes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une partie de l'énergie est dissipée (souvent en chaleur)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un rendement de 40 % signifie que…",
+              "options": [
+                "40 % de l'énergie reçue est utile",
+                "60 % est utile",
+                "100 % est perdu",
+                "η > 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le reste est surtout dissipé en chaleur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les pertes d'une lampe à incandescence sont surtout…",
+              "options": [
+                "Thermiques",
+                "Cinétiques utiles",
+                "Chimiques stockées",
+                "Gravitationnelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Majorité en chaleur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Améliorer le rendement permet de…",
+              "options": [
+                "Obtenir la même utilité avec moins d'énergie",
+                "Violer la conservation",
+                "Créer de l'énergie",
+                "Augmenter les pertes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de gaspillage pour le même service."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "η = 0,25 et énergie reçue 400 J : énergie utile…",
+              "options": ["100 J", "400 J", "1600 J", "0 J"],
+              "correctAnswers": [0],
+              "explanation": "0,25 × 400 = 100 J."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un convertisseur réel a un rendement…",
+              "options": [
+                "Inférieur ou égal à 100 %",
+                "Toujours supérieur à 100 %",
+                "Infini",
+                "Négatif seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il y a toujours des pertes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Énergie totale = énergie utile + …",
+              "options": [
+                "Énergie perdue (souvent thermique)",
+                "Masse créée",
+                "pH",
+                "Atoms new"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan énergétique du convertisseur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Moteur très efficace : rendement…",
+              "options": [
+                "Plus élevé",
+                "Nul obligatoire",
+                "Toujours 200 %",
+                "Indépendant des frottements"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de pertes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourcentage : η = 30 % équivaut à…",
+              "options": ["η = 0,30", "η = 30", "η = 3", "η = 0,03"],
+              "correctAnswers": [0],
+              "explanation": "Conversion fraction ↔ %."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Isolation thermique d'une maison améliore le rendement global du chauffage car…",
+              "options": [
+                "Réduit les pertes",
+                "Crée de l'énergie",
+                "Augmente les fuites",
+                "Change le pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de chaleur perdue vers l'extérieur."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Transferts thermiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les modes de transfert thermique étudiés au collège sont…",
+              "options": [
+                "Conduction et convection",
+                "Rayonnement",
+                "Oxydation et réduction",
+                "Filtration et décantation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Conduction, convection et rayonnement transmettent la chaleur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Conduction se produit surtout dans…",
+              "options": [
+                "Les solides",
+                "Le vide sans matière",
+                "Uniquement les gaz sans contact",
+                "Le vide parfait obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transmission de vibration entre particules."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Convection implique…",
+              "options": [
+                "Mouvement de matière (fluide)",
+                "Photons seuls dans le vide",
+                "Liaisons chimiques",
+                "Ions Ag+"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courants dans liquides et gaz."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rayonnement thermique peut traverser…",
+              "options": [
+                "Le vide (ondes électromagnétiques)",
+                "Un mur épais sans émission",
+                "Rien",
+                "Uniquement les métaux sans émission"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. chaleur du Soleil."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une cuillère métallique dans une tasse chaude se réchauffe par…",
+              "options": [
+                "Conduction",
+                "Convection seule dans le métal",
+                "Rayonnement seul",
+                "Combustion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contact solide-solide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Eau qui bout : l'eau chaude monte, froide descend : …",
+              "options": [
+                "Convection",
+                "Conduction seule",
+                "Rayonnement seul",
+                "Oxydation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Circulation par différence de densité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "On ressent la chaleur du feu sans toucher : …",
+              "options": [
+                "Rayonnement",
+                "Conduction de l'air seule",
+                "Dissolution",
+                "Neutralisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transfert par ondes IR."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Isolant thermique limite surtout…",
+              "options": [
+                "Les transferts de chaleur",
+                "La masse",
+                "Le pH",
+                "La vitesse du son seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduit conduction/convection."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Thermos à double paroi limite convection car…",
+              "options": [
+                "Vide partiel entre parois",
+                "Contient du fer pur",
+                "Est un catalyseur",
+                "Change le pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu de fluide pour transporter la chaleur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sens spontané de flux de chaleur : du corps…",
+              "options": [
+                "Plus chaud vers plus froid",
+                "Froid vers chaud sans apport",
+                "Identique partout toujours",
+                "Vers le vide sans émission"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Second principe simplifié."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Combustibles et énergie chimique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'énergie chimique d'un combustible est libérée surtout par…",
+              "options": [
+                "Combustion avec un comburant",
+                "Réactions chimique exothermique",
+                "Simple mélange sans réaction",
+                "Changement de couleur sans réaction"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les liaisons se réorganisent avec dégagement de chaleur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pouvoir calorifique : énergie libérée par…",
+              "options": [
+                "Unité de masse ou volume de combustible",
+                "Unité de pH",
+                "Unité de vitesse",
+                "Unité de force"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. kJ/kg ou kJ/L."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Méthane, pétrole, charbon sont…",
+              "options": [
+                "Combustibles fossiles",
+                "Comburants uniquement",
+                "Gaz nobles",
+                "Catalyseurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ressources d'origine organique ancienne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comburant dans l'air pour le bois : …",
+              "options": ["Dioxygène", "Azote seul", "CO2", "Hélium"],
+              "correctAnswers": [0],
+              "explanation": "O2 de l'air."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combustion complète du butane en O2 suffisant produit…",
+              "options": ["CO2 et H2O", "CO seul", "C seul", "NaCl"],
+              "correctAnswers": [0],
+              "explanation": "Comme autres hydrocarbures."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Énergie chimique du repas permet…",
+              "options": [
+                "Activité musculaire et maintien de la température",
+                "Photosynthèse directe chez l'humain",
+                "Production de vent",
+                "Fusion nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Métabolisme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bouteille de gaz (butane/propane) stocke surtout…",
+              "options": [
+                "Énergie chimique",
+                "Énergie cinétique du vent",
+                "Énergie nucléaire",
+                "Potentielle gravitaire seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Libérée à la combustion."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "CO issu de combustion incomplète est…",
+              "options": [
+                "Toxique",
+                "Inoffensif toujours",
+                "Un comburant",
+                "Un catalyseur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Empoisonnement par liaison à l'hémoglobine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Biomasse (bois, déchets organiques) est…",
+              "options": [
+                "Une source d'énergie renouvelable",
+                "Un gaz noble",
+                "Un ion",
+                "Un isolant parfait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renouvelable à échelle humaine si gestion durable."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réaction chimique dans une pile délivre…",
+              "options": [
+                "Énergie électrique",
+                "Uniquement de la lumière",
+                "Du vent",
+                "De la rouille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conversion chimique → électrique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Énergie électrique et effet Joule",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un conducteur ohmique, l'effet Joule…",
+              "options": [
+                "Échauffe le matériau",
+                "Convertit une partie de l'énergie électrique en chaleur",
+                "Crée de la matière",
+                "Annule la conservation de l'énergie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Passage du courant dans une résistance dégage de la chaleur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Puissance électrique P = …",
+              "options": ["U × I", "U / I seule", "m × g", "pH × 7"],
+              "correctAnswers": [0],
+              "explanation": "Loi du cours (modèle continu)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Énergie électrique consommée E = …",
+              "options": ["P × t = U × I × t", "U seule", "I seule", "R seule"],
+              "correctAnswers": [0],
+              "explanation": "En joules si P en W et t en s."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fusible ou disjoncteur protège contre…",
+              "options": [
+                "Surintensité / surchauffe",
+                "pH bas",
+                "Oxydation du fer",
+                "Vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coupe le circuit si courant trop fort."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Filament d'ampoule chauffe par…",
+              "options": [
+                "Effet Joule",
+                "Convection seule dans le vide",
+                "Photosynthèse",
+                "Neutralisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courant dans résistance élevée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "kWh sur facture correspond à…",
+              "options": [
+                "Énergie électrique",
+                "Puissance max",
+                "Intensité",
+                "Résistance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Produit P × t cumulé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Court-circuit : intensité très élevée → risque…",
+              "options": [
+                "Échauffement et incendie",
+                "Refroidissement",
+                "pH neutre",
+                "Gain de masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "P = R I², R faible → forte puissance dissipée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Transformateur (modèle cours) sert à…",
+              "options": [
+                "Adapter la tension",
+                "Créer de l'énergie",
+                "Mesurer le pH",
+                "Stocker du CO2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transport et utilisation plus sûrs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Alternatif domestique en France est environ…",
+              "options": ["230 V", "12 V", "1000 kV", "0 V"],
+              "correctAnswers": [0],
+              "explanation": "Tension efficace standard."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Grille électrique transporte l'énergie de la centrale au…",
+              "options": [
+                "Consommateur",
+                "Uniquement au labo",
+                "Espace sans fil",
+                "Réacteur sans pertes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseau de distribution."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Sources d'énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sources d'énergie renouvelables incluent…",
+              "options": [
+                "Solaire et éolien",
+                "Hydraulique",
+                "Charbon seul",
+                "Pétrole seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Renouvelables : replenishment à l'échelle humaine."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Énergie nucléaire (fission) produit surtout de l'électricité via…",
+              "options": [
+                "Chaleur puis turbines",
+                "Combustion du bois",
+                "Vent direct",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaleur → vapeur → alternateur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Centrale hydraulique utilise l'énergie…",
+              "options": [
+                "Potentielle de l'eau",
+                "Chimique du gaz",
+                "Lumineuse seule",
+                "Du CO2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chute d'eau entraîne turbine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Géothermie puise la chaleur…",
+              "options": ["Du sous-sol", "Du vide", "De la Lune", "Du pH"],
+              "correctAnswers": [0],
+              "explanation": "Rochers/fluides chauds."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combustibles fossiles émettent surtout…",
+              "options": [
+                "CO2 (effet de serre)",
+                "Hélium",
+                "Azote seul sans CO2",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gaz à effet de serre à la combustion."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Intermittence : l'éolien dépend…",
+              "options": ["Du vent", "Du pH", "De la lune seule", "Du sel"],
+              "correctAnswers": [0],
+              "explanation": "Production variable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Panneau solaire dépend de…",
+              "options": [
+                "L'ensoleillement",
+                "La marée seule",
+                "Le pétrole",
+                "La rouille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Irradiance lumineuse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mix énergétique désigne…",
+              "options": [
+                "Répartition des sources d'énergie",
+                "Un seul combustible",
+                "Le pH de l'eau",
+                "Un catalyseur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Part nucléaire, renouvelable, fossile…"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Biomasse durable limite l'émission nette de CO2 si…",
+              "options": [
+                "Repousse compense le CO2 émis",
+                "On brûle du plastique sans limite",
+                "On ignore la forêt",
+                "On utilise de l'uranium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cycle carbone à court terme si reforestation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Stockage d'énergie (batteries) aide les renouvelables en…",
+              "options": [
+                "Lissant production et consommation",
+                "Créant de l'énergie infinie",
+                "Supprimant les lois",
+                "Changeant le pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compense l'intermittence."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Consommer l'énergie responsablement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La sobriété énergétique vise à…",
+              "options": [
+                "Réduire la consommation inutile",
+                "Limiter les émissions liées à la production d'énergie",
+                "Augmenter le gaspillage",
+                "Ignorer le rendement des appareils"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Moins consommer pour le même service ou un service nécessaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Éteindre les lumières inutiles réduit…",
+              "options": [
+                "La consommation électrique",
+                "La masse de la Terre",
+                "Le pH",
+                "La gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de kWh consommés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Meilleur rendement d'un appareil signifie…",
+              "options": [
+                "Même service pour moins d'énergie",
+                "Plus de pertes",
+                "η > 100 % réel",
+                "Plus de CO2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Efficacité énergétique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Transport en commun peut diminuer l'énergie par personne car…",
+              "options": [
+                "Mutualise le déplacement",
+                "Crée de l'énergie",
+                "Supprime les frottements",
+                "Change les atomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de carburant par passager-km."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Isolation des bâtiments réduit…",
+              "options": [
+                "Les besoins de chauffage",
+                "La conservation de masse",
+                "Le nombre d'atomes",
+                "La vitesse de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de chaleur perdue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Recyclage de l'aluminium économise surtout…",
+              "options": [
+                "Énergie par rapport à production vierge",
+                "La gravité",
+                "Le pH",
+                "Les ions Cl-"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fusion/recyclage moins énergivore."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Éco-gestes : baisser le chauffage de 1 °C réduit…",
+              "options": [
+                "La consommation énergétique",
+                "La masse",
+                "La vitesse du son",
+                "Le numéro atomique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de kWh pour maintenir la température."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Labels énergétiques sur appareils informent sur…",
+              "options": [
+                "Consommation / efficacité",
+                "pH",
+                "Ion fer III",
+                "Masse molaire seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparaison entre modèles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Production d'électricité fossile contribue au…",
+              "options": [
+                "Réchauffement climatique (CO2)",
+                "Refroidissement global immédiat",
+                "pH 14",
+                "Disparition de l'oxygène total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Émissions de gaz à effet de serre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Citoyen : tri + sobriété + efficacité visent…",
+              "options": [
+                "Un usage durable de l'énergie",
+                "Créer de l'énergie ex nihilo",
+                "Ignorer les pertes",
+                "Augmenter le gaspillage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduire impact environnemental."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

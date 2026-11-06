@@ -1,0 +1,2213 @@
+{
+  "id": "6e-mathematiques-10",
+  "year": "6e",
+  "subject": "mathematiques",
+  "title": "Probabilités et synthèse",
+  "order": 10,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Expériences aléatoires",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Premier lancer de pièce",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "On lance une pièce équilibrée. Quelles phrases sont vraies ?",
+              "options": [
+                "On peut obtenir pile ou face",
+                "Obtenir pile et face d'un coup est impossible",
+                "Obtenir pile est certain",
+                "Obtenir ni pile ni face est certain"
+              ],
+              "explanation": "Une face seulement apparaît ; pile ou face est possible, les deux ensemble non.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien d'issues différentes en un lancer de pièce ?",
+              "options": ["1", "2", "3", "6"],
+              "explanation": "Deux faces : pile et face.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une expérience aléatoire, c'est quand le résultat…",
+              "options": [
+                "est connu d'avance",
+                "dépend du hasard",
+                "n'existe pas",
+                "est toujours pile"
+              ],
+              "explanation": "On ne peut pas prédire le résultat avec certitude avant de lancer.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Obtenir pile ou face » en un lancer est…",
+              "options": ["impossible", "certain", "jamais vrai", "interdit"],
+              "explanation": "On obtient toujours l'une des deux faces.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Obtenir pile » seul est…",
+              "options": ["certain", "impossible", "possible", "toujours faux"],
+              "explanation": "Pile peut arriver ou non.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pièce équilibrée : pile et face ont…",
+              "options": [
+                "les mêmes chances",
+                "pile toujours gagne",
+                "face impossible",
+                "chances inconnues"
+              ],
+              "explanation": "Chaque face est aussi probable que l'autre.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Après 5 face d'affilée, le 6ᵉ lancer…",
+              "options": [
+                "sera forcément pile",
+                "reste aléatoire",
+                "est interdit",
+                "donne face certain"
+              ],
+              "explanation": "Chaque lancer est indépendant.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Noter pile/face dans un tableau sert à…",
+              "options": [
+                "compter les résultats",
+                "garantir pile",
+                "supprimer le hasard",
+                "changer la pièce"
+              ],
+              "explanation": "On regroupe les effectifs observés.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Événement impossible signifie…",
+              "options": [
+                "il arrive toujours",
+                "il ne peut pas arriver",
+                "il arrive souvent",
+                "50 % de chance"
+              ],
+              "explanation": "Impossible = ne se produit pas dans cette expérience.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Événement certain signifie…",
+              "options": [
+                "jamais vrai",
+                "parfois vrai",
+                "toujours vrai",
+                "moins probable"
+              ],
+              "explanation": "Certain = se produit à chaque fois.",
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Dé cubique 1 à 6",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dé équilibré 1 à 6. Quelles affirmations sont correctes ?",
+              "options": [
+                "Obtenir entre 1 et 6 est certain",
+                "Obtenir 7 est impossible",
+                "Obtenir 6 est impossible",
+                "Obtenir 0 est possible"
+              ],
+              "explanation": "Seuls 1 à 6 existent ; 7 et 0 sont impossibles.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Nombre d'issues en un lancer ?",
+              "options": ["4", "5", "6", "8"],
+              "explanation": "Six faces numérotées.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Obtenir un pair (2, 4, 6) est…",
+              "options": ["impossible", "possible", "certain", "égal à 7"],
+              "explanation": "Trois faces sur six conviennent.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Obtenir 3 ou obtenir 5 : lequel a plus de chances ?",
+              "options": ["3", "5", "pareil", "aucun"],
+              "explanation": "Une face chacun : même chance.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Obtenir ≥ 5 (5 ou 6) versus obtenir 2 :",
+              "options": [
+                "2 plus probable",
+                "≥ 5 plus probable",
+                "égaux à impossible",
+                "7 plus probable"
+              ],
+              "explanation": "Deux faces contre une.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Obtenir un multiple de 3 (3 ou 6) : combien de faces favorables ?",
+              "options": ["1", "2", "3", "6"],
+              "explanation": "Faces 3 et 6.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Issue « 4 » dans la liste 1,2,3,4,5,6 est…",
+              "options": [
+                "impossible",
+                "une issue possible",
+                "deux issues",
+                "certaine deux fois"
+              ],
+              "explanation": "4 est une face du dé.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "30 lancers notés : la somme des effectifs vaut…",
+              "options": ["6", "30", "1", "36"],
+              "explanation": "Un comptage par lancer.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Obtenir un nombre > 6 » est…",
+              "options": [
+                "certain",
+                "possible",
+                "impossible",
+                "rare seulement"
+              ],
+              "explanation": "Aucune face ne dépasse 6.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dé équitable : chaque numéro a…",
+              "options": [
+                "1 chance sur 6",
+                "6 chances sur 1",
+                "0 chance",
+                "1 chance sur 2"
+              ],
+              "explanation": "Six issues équiprobables en modèle équitable.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Vocabulaire du hasard",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sac avec uniquement des boules noires. Vrai :",
+              "options": [
+                "Tirer une noire est certain",
+                "Tirer une blanche est impossible",
+                "Tirer une noire est impossible",
+                "Tirer une blanche est certain"
+              ],
+              "explanation": "Seules des noires : noire garantie, blanche exclue.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Possible » veut dire…",
+              "options": ["jamais", "parfois oui", "toujours", "interdit"],
+              "explanation": "L'événement peut se produire sans être sûr.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lancer dé : obtenir 1 est…",
+              "options": [
+                "certain",
+                "impossible",
+                "possible",
+                "plus grand que 6"
+              ],
+              "explanation": "La face 1 existe.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pièce : « ni pile ni face » en un lancer est…",
+              "options": ["certain", "possible", "impossible", "fréquent"],
+              "explanation": "On obtient toujours l'un ou l'autre.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un événement certain est aussi…",
+              "options": [
+                "impossible",
+                "possible",
+                "jamais aléatoire au sens « peut arriver »",
+                "toujours faux"
+              ],
+              "explanation": "S'il est certain, il peut (et va) se produire.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Roue avec rouge et bleu (les deux présents) : s'arrêter sur rouge est…",
+              "options": ["impossible", "certain", "possible", "égal à 0"],
+              "explanation": "Il existe au moins un secteur rouge.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Issue =",
+              "options": [
+                "un résultat possible de l'expérience",
+                "la météo",
+                "un calcul de périmètre",
+                "une fraction"
+              ],
+              "explanation": "Issue désigne un résultat élémentaire possible.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Répéter une expérience aléatoire permet d'…",
+              "options": [
+                "observer des fréquences",
+                "rendre le dé cubique",
+                "obtenir 7 au dé",
+                "supprimer toute incertitude future"
+              ],
+              "explanation": "Les comptages se stabilisent sans fixer le prochain essai.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase correcte en 6e :",
+              "options": [
+                "Impossible = ne se produit pas",
+                "Certain = 50 %",
+                "Possible = toujours faux",
+                "Hasard = calcul exact d'avance"
+              ],
+              "explanation": "Impossible exclut l'événement.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Générateur 1 ou 2 équiprobable : obtenir 1…",
+              "options": [
+                "plus que 2",
+                "moins que 2",
+                "autant que 2",
+                "impossible"
+              ],
+              "explanation": "Deux issues égales.",
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Comparer sans calculer",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Urne : 5 verts, 1 rouge. Quelles phrases sont vraies ?",
+              "options": [
+                "Vert plus probable que rouge",
+                "Rouge plus probable que vert",
+                "Il y a 6 boules en tout",
+                "Vert impossible"
+              ],
+              "explanation": "5 verts et 1 rouge : le vert est plus probable, et le total est 6 boules.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sac 2 rouges, 2 bleus : tirer rouge versus bleu…",
+              "options": [
+                "rouge plus",
+                "bleu plus",
+                "mêmes chances",
+                "impossible"
+              ],
+              "explanation": "Autant de boules de chaque couleur.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Roue : 4 secteurs jaunes, 1 vert. Jaune est…",
+              "options": [
+                "moins probable",
+                "plus probable",
+                "impossible",
+                "certain"
+              ],
+              "explanation": "Plus de secteurs jaunes.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dé : obtenir 6 versus obtenir 1 ou 2…",
+              "options": [
+                "6 plus probable",
+                "1 ou 2 plus probable",
+                "égaux en nombre de faces",
+                "6 impossible"
+              ],
+              "explanation": "1 ou 2 : deux faces ; 6 : une face.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour savoir quel événement a plus de chances, on compte…",
+              "options": [
+                "les cas favorables",
+                "les lettres du mot",
+                "les jours de la semaine",
+                "uniquement le rouge"
+              ],
+              "explanation": "Plus de cas favorables ⇒ plus de chances (même expérience).",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "10 étiquettes Gagné, 2 Perdu : on a plutôt…",
+              "options": [
+                "perdu",
+                "gagné",
+                "égalité sûre",
+                "impossible de tirer"
+              ],
+              "explanation": "Plus d'étiquettes gagnantes.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sac A : 3 blanches. Sac B : 1 blanche, 2 grises. Tirer blanc…",
+              "options": [
+                "plus probable en A",
+                "plus probable en B",
+                "impossible en A",
+                "certain en B"
+              ],
+              "explanation": "A n'a que du blanc ; B moins d'une chance sur trois.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Fréquence passée de pile ne change pas…",
+              "options": [
+                "les chances du prochain lancer équilibré",
+                "le nombre de faces",
+                "le fait que l'expérience est aléatoire",
+                "la définition de possible"
+              ],
+              "explanation": "Le prochain lancer reste équitable.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Boîte 7 chocolat, 3 vanille : goût au hasard, plus probable…",
+              "options": [
+                "chocolat",
+                "vanille",
+                "aucun",
+                "les deux impossibles"
+              ],
+              "explanation": "Plus de bonbons chocolat.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Plus de chances » signifie…",
+              "options": [
+                "plus de cas favorables (à effectif comparable)",
+                "toujours certain",
+                "toujours impossible",
+                "probabilité conditionnelle"
+              ],
+              "explanation": "En 6e on compare surtout les nombres de cas.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Pièce et dé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lancer pièce puis dé (deux expériences). Vrai :",
+              "options": [
+                "Chaque partie reste aléatoire",
+                "On peut noter deux résultats séparés",
+                "Le dé donne pile",
+                "La pièce donne un nombre 1-6"
+              ],
+              "explanation": "Pièce → pile/face ; dé → 1-6 ; deux hasards distincts.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pièce face, puis dé : le dé peut donner…",
+              "options": ["face", "4", "pile", "pile et 4"],
+              "explanation": "Le dé ne donne que des nombres.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deux lancers de pièce : « au moins un pile » est…",
+              "options": [
+                "impossible",
+                "possible",
+                "certain",
+                "égal à deux piles obligatoires"
+              ],
+              "explanation": "PP, PF, FP conviennent ; FF non.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Deux piles d'affilée (PP) est…",
+              "options": [
+                "certain",
+                "possible",
+                "impossible",
+                "plus probable qu'au moins un pile"
+              ],
+              "explanation": "PP est un cas parmi quatre, pas garanti.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Jeu : pile gagne au lancer pièce. Face est…",
+              "options": [
+                "une issue possible",
+                "impossible",
+                "certain",
+                "le dé"
+              ],
+              "explanation": "Face est un résultat normal.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dé : succès si 5 ou 6. Succès est…",
+              "options": ["impossible", "certain", "possible", "égal à 7"],
+              "explanation": "Deux faces sur six.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Spinner secteurs égaux 3 couleurs : chaque couleur…",
+              "options": ["même chance", "impossible", "certaine", "0 chance"],
+              "explanation": "Secteurs de même taille ⇒ équitable.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tableau pièce 40 lancers : somme pile + face =",
+              "options": ["40", "4", "1", "80"],
+              "explanation": "Un résultat par lancer.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Avant un lancer de dé, dire « je suis sûr d'avoir 2 » est…",
+              "options": [
+                "raisonnable",
+                "exagéré : 2 seulement possible",
+                "preuve que 2 est certain",
+                "obligatoire"
+              ],
+              "explanation": "On parle de possibilité, pas de certitude.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Expérience bien décrite avec…",
+              "options": [
+                "action et issues possibles",
+                "seulement le gagnant",
+                "la couleur du sac ignorée",
+                "aucune répétition"
+              ],
+              "explanation": "Il faut dire ce qu'on fait et ce qui peut arriver.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Sac et urne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sac : 1 rouge, 1 bleue, 1 verte (3 boules). Vrai :",
+              "options": [
+                "Chaque couleur a une chance sur trois",
+                "Tirer une boule du sac est certain si on tire une fois",
+                "Tirer deux couleurs en une fois est impossible",
+                "Rouge a trois fois plus de chances que bleu"
+              ],
+              "explanation": "Une boule par couleur ; une seule sort ; une couleur par tirage.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sac 4 oranges, 0 pommes : pomme est…",
+              "options": ["certain", "possible", "impossible", "plus probable"],
+              "explanation": "Aucune pomme présente.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tirer une boule du sac rempli est…",
+              "options": [
+                "impossible si on tire",
+                "certain d'obtenir une boule",
+                "toujours rouge",
+                "sans issue"
+              ],
+              "explanation": "On obtient une des boules présentes.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "8 tickets dont 6 gagnants : ticket gagnant…",
+              "options": [
+                "moins probable",
+                "plus probable",
+                "impossible",
+                "certain pour tous"
+              ],
+              "explanation": "6 chances sur 8 versus 2 perdants.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mélanger bien les boules avant de tirer sert à…",
+              "options": [
+                "rendre le tirage équitable",
+                "garantir rouge",
+                "compter le périmètre",
+                "additionner des fractions"
+              ],
+              "explanation": "Le mélange évite un ordre prévisible.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Effectif 0 pour une face avant aucun lancer signifie…",
+              "options": [
+                "face impossible à jamais",
+                "pas encore de lancer enregistré",
+                "face certaine",
+                "tableau interdit"
+              ],
+              "explanation": "Zéro = pas encore compté.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Rouge 3, bleu 3 : tirer rouge versus bleu…",
+              "options": ["rouge plus", "bleu plus", "pareil", "impossible"],
+              "explanation": "Même effectif.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Carte tirée d'un jeu de 32 : obtenir une carte du jeu est…",
+              "options": [
+                "impossible",
+                "certain",
+                "possible seulement",
+                "fraction 1/2"
+              ],
+              "explanation": "On tire toujours une carte du paquet.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comparer chances : 1 cas sur 5 versus 3 cas sur 5, le plus probable est…",
+              "options": ["1 sur 5", "3 sur 5", "égaux", "impossible"],
+              "explanation": "Plus de cas favorables.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lancer dé : « nombre strictement inférieur à 2 » = seulement 1. C'est…",
+              "options": ["impossible", "possible", "certain", "7"],
+              "explanation": "Seule la face 1 convient.",
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Fréquences observées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "50 lancers pièce, tableau rempli. Vrai :",
+              "options": [
+                "Effectifs totalisent 50",
+                "Chaque lancer ajoute 1",
+                "Le 51ᵉ sera pile à coup sûr",
+                "Fréquences décrivent ce qui s'est passé"
+              ],
+              "explanation": "Comptage sur 50 ; le futur reste incertain.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "22 pile, 18 face sur 40 : prochain lancer équilibré…",
+              "options": [
+                "face forcé",
+                "pile/face équivalents",
+                "pile impossible",
+                "tableau faux"
+              ],
+              "explanation": "Historique ne force pas le suivant.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dé lancé 12 fois, somme des six lignes du tableau =",
+              "options": ["6", "12", "1", "72"],
+              "explanation": "Un hit par lancer.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Plus on répète une expérience, plus les fréquences…",
+              "options": [
+                "se rapprochent souvent d'une régularité",
+                "deviennent toujours 0",
+                "rendent le dé non aléatoire",
+                "suppriment les issues"
+              ],
+              "explanation": "Loi des grands nombres intuitive en 6e.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Issue élémentaire du dé une fois :",
+              "options": [
+                "pair ou impair seulement",
+                "un des nombres 1 à 6",
+                "pile",
+                "deux nombres"
+              ],
+              "explanation": "Une face = une issue.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Obtenir un nombre ≥ 1 au dé » est…",
+              "options": [
+                "impossible",
+                "certain",
+                "possible seulement",
+                "rare"
+              ],
+              "explanation": "Toutes les faces sont ≥ 1.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sac 5 rouges : tirer rouge est…",
+              "options": [
+                "possible",
+                "certain",
+                "impossible",
+                "moins que bleu"
+              ],
+              "explanation": "Toutes rouges.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux dés non demandés ici ; une pièce seule a combien d'issues ?",
+              "options": ["1", "2", "6", "36"],
+              "explanation": "Pile ou face.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Événement « obtenir 4 » au dé :",
+              "options": [
+                "une face favorable",
+                "six faces favorables",
+                "impossible",
+                "certain"
+              ],
+              "explanation": "Une seule face 4.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choix le plus honnête avant lancer :",
+              "options": [
+                "« 3 peut arriver sans certitude »",
+                "« 3 est sûr »",
+                "« 3 impossible »",
+                "« dé = pièce »"
+              ],
+              "explanation": "Vocabulaire possible vs certain.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Impossible ou certain ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dé 1-6. Vrai :",
+              "options": [
+                "Obtenir ≤6 est certain",
+                "Obtenir 8 est impossible",
+                "Obtenir 6 et 1 en un lancer est possible",
+                "Obtenir 0 est possible"
+              ],
+              "explanation": "Une face ; max 6 ; pas de 0 ni 8.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pièce : deux faces visibles à la fois est…",
+              "options": ["certain", "possible", "impossible", "fréquent"],
+              "explanation": "Une seule face au dessus.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tirer dans sac vide (aucune boule) : obtenir une boule est…",
+              "options": ["certain", "possible", "impossible", "plus probable"],
+              "explanation": "Rien à tirer.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lancer dé dans les règles : obtenir un entier de 1 à 6 est…",
+              "options": [
+                "impossible",
+                "certain",
+                "possible seulement",
+                "hasard interdit"
+              ],
+              "explanation": "C'est la définition du dé cubique.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Au moins un chiffre pair » sur dé :",
+              "options": [
+                "impossible",
+                "possible (ex. 2)",
+                "certain d'être 2",
+                "égal 7"
+              ],
+              "explanation": "2,4,6 sont pairs.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Roue uniquement rouge : s'arrêter sur rouge est…",
+              "options": ["possible", "certain", "impossible", "50 %"],
+              "explanation": "Tous secteurs rouges.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Même roue : s'arrêter sur bleu est…",
+              "options": ["certain", "possible", "impossible", "plus probable"],
+              "explanation": "Pas de bleu.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Certain ⇒",
+              "options": [
+                "arrive à chaque répétition",
+                "n'arrive jamais",
+                "arrive une fois sur deux toujours",
+                "interdit en 6e"
+              ],
+              "explanation": "Définition scolaire du certain.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Possible mais non certain : exemple",
+              "options": [
+                "Pile au lancer pièce",
+                "Pile et face ensemble",
+                "7 au dé",
+                "Aucune issue au dé"
+              ],
+              "explanation": "Pile peut ou non arriver.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Noter les issues d'une roue équitable 2 rouge / 2 bleu : rouge…",
+              "options": [
+                "plus de secteurs que bleu si égal",
+                "moins si égal",
+                "même nombre de secteurs rouges et bleus",
+                "impossible"
+              ],
+              "explanation": "Autant de secteurs de chaque.",
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Jeux simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Roue 5 rouges, 1 bleu. Vrai :",
+              "options": [
+                "Rouge plus probable que bleu",
+                "Bleu possible",
+                "Bleu certain",
+                "Rouge impossible"
+              ],
+              "explanation": "Plus de rouge ; bleu rare mais existant.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pile gagne : face est…",
+              "options": [
+                "issue perdante possible",
+                "impossible",
+                "certaine",
+                "dé"
+              ],
+              "explanation": "Face peut être tirée.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dé : perdre si 1, gagner si 6, sinon rejouer. Obtenir 3 est…",
+              "options": ["issue possible", "impossible", "certain gain", "7"],
+              "explanation": "3 est une face valide.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sac 2 jaunes, 8 violets : jaune…",
+              "options": [
+                "plus probable",
+                "moins probable",
+                "certain",
+                "impossible"
+              ],
+              "explanation": "Moins de jaunes.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lancer pièce 1 fois : nombre d'issues =",
+              "options": ["1", "2", "6", "10"],
+              "explanation": "Pile, face.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dé : « strictement supérieur à 4 » = 5 ou 6. C'est…",
+              "options": ["impossible", "possible", "certain", "1 face"],
+              "explanation": "Deux faces favorables.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tirage ticket 1 gagnant sur 10 : gagner est…",
+              "options": [
+                "certain",
+                "impossible",
+                "possible",
+                "plus probable que certain"
+              ],
+              "explanation": "Un ticket gagnant existe.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Même tirage : perdre (9 tickets) est…",
+              "options": [
+                "impossible",
+                "plus probable que gagner",
+                "moins probable que gagner",
+                "certain"
+              ],
+              "explanation": "Plus de tickets perdants.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tableau dé : face 6 effectif 0 après 0 lancer…",
+              "options": [
+                "prouve 6 impossible",
+                "normal avant essais",
+                "force 6 au prochain",
+                "efface le dé"
+              ],
+              "explanation": "Pas de données encore.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Hasard en classe signifie souvent…",
+              "options": [
+                "résultat imprévisible avant l'essai",
+                "calcul exact d'avance",
+                "pas de tableaux",
+                "pas de répétition"
+              ],
+              "explanation": "Définition intuitive.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Bilan aléatoire u1",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pièce équilibrée et dé 1-6. Vrai :",
+              "options": [
+                "Obtenir pile est possible",
+                "Obtenir 7 au dé est impossible",
+                "Obtenir pile est certain",
+                "Obtenir 1 au dé est impossible"
+              ],
+              "explanation": "Pile non garanti ; 7 absent ; 1 existe.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Événement avec plus de cas favorables est…",
+              "options": [
+                "toujours certain",
+                "souvent plus probable",
+                "toujours impossible",
+                "sans lien"
+              ],
+              "explanation": "Comparaison en 6e.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Impossible et certain sont…",
+              "options": [
+                "identiques",
+                "opposés (jamais / toujours)",
+                "toujours possibles",
+                "des fractions"
+              ],
+              "explanation": "Impossible n'arrive pas ; certain arrive toujours.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dé : impair (1,3,5) versus pair (2,4,6)…",
+              "options": [
+                "impair plus",
+                "pair plus",
+                "mêmes chances",
+                "impossible"
+              ],
+              "explanation": "Trois faces chacun.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Fréquence =",
+              "options": [
+                "effectif observé / nombre d'essais (idée)",
+                "périmètre",
+                "priorité ×",
+                "7 au dé"
+              ],
+              "explanation": "Rapport comptage sur répétitions.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sac 6 bleues : tirer bleu…",
+              "options": ["possible", "certain", "impossible", "rare"],
+              "explanation": "Uniquement du bleu.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lancer dé : « nombre pair » effectif favorable sur 6 faces :",
+              "options": ["1", "2", "3", "6"],
+              "explanation": "2, 4, 6.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pièce : « face » une fois est…",
+              "options": ["certain", "possible", "impossible", "deux fois"],
+              "explanation": "Peut arriver ou non.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "On ne calcule pas en 6e :",
+              "options": [
+                "probabilité conditionnelle P(A|B)",
+                "comparer effectifs",
+                "noter issues",
+                "dire impossible"
+              ],
+              "explanation": "Hors programme : conditionnelle.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bonne attitude scientifique :",
+              "options": [
+                "noter les résultats",
+                "inventer des faces au dé",
+                "confondre certain et possible",
+                "ignorer les issues"
+              ],
+              "explanation": "Observer avant de conclure.",
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Révision",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Priorités × et +",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sans calculatrice, égalités vraies :",
+              "options": [
+                "2 + 3 × 4 = 14",
+                "2 + 3 × 4 = 20",
+                "(2 + 3) × 4 = 20",
+                "(2 + 3) × 4 = 14"
+              ],
+              "explanation": "× avant + ; parenthèses d'abord.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "18 − 2 × 5 = ?",
+              "options": ["80", "8", "13", "10"],
+              "explanation": "2×5=10 ; 18−10=8.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "30 ÷ 5 + 4 = ?",
+              "options": ["10", "6", "2", "34"],
+              "explanation": "6+4=10.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "7 + 8 ÷ 2 = ?",
+              "options": ["7,5", "11", "15", "8"],
+              "explanation": "8÷2=4 ; 7+4=11.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "6 × 3 − 6 = ?",
+              "options": ["12", "18", "0", "24"],
+              "explanation": "18−6=12.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "100 − 25 ÷ 5 = ?",
+              "options": ["15", "95", "75", "5"],
+              "explanation": "25÷5=5 ; 100−5=95.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "4 × 5 + 4 × 2 = ?",
+              "options": ["28", "40", "20", "14"],
+              "explanation": "20+8=28.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans 9 + 6 ÷ 3, on calcule d'abord…",
+              "options": ["9+6", "6÷3", "9÷3", "rien"],
+              "explanation": "Division prioritaire.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "3 + 5 × 0 = ?",
+              "options": ["0", "3", "8", "5"],
+              "explanation": "5×0=0 ; 3+0=3.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "24 ÷ 4 × 2 = ?",
+              "options": ["3", "12", "48", "8"],
+              "explanation": "6×2=12, gauche à droite.",
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Parenthèses",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vrai :",
+              "options": [
+                "(10 − 4) × 2 = 12",
+                "(10 − 4) × 2 = 8",
+                "10 − 4 × 2 = 2",
+                "10 − 4 × 2 = 18"
+              ],
+              "explanation": "Parenthèses : 6×2=12 ; sans : 10−8=2.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "(5 + 3) × 4 = ?",
+              "options": ["32", "20", "8", "17"],
+              "explanation": "8×4=32.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "5 × (9 − 5) = ?",
+              "options": ["20", "25", "4", "45"],
+              "explanation": "5×4=20.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "(20 + 5) ÷ 5 = ?",
+              "options": ["5", "9", "25", "4"],
+              "explanation": "25÷5=5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "36 ÷ (6 + 3) = ?",
+              "options": ["4", "9", "12", "6"],
+              "explanation": "36÷9=4.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "(8 + 2) + 7 = ?",
+              "options": ["17", "72", "27", "15"],
+              "explanation": "10+7=17.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "2 × (3 + 4 + 1) = ?",
+              "options": ["16", "14", "8", "24"],
+              "explanation": "2×8=16.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "(15 − 5) ÷ 2 = ?",
+              "options": ["5", "10", "2,5", "7,5"],
+              "explanation": "10÷2=5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "7 × 2 + 3 × 2 = ?",
+              "options": ["20", "26", "10", "7×5"],
+              "explanation": "14+6=20 ou 2×(7+3).",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "(12 ÷ 4) + 5 = ?",
+              "options": ["8", "3", "17", "6"],
+              "explanation": "3+5=8.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Comparer des fractions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Même quantité que 1/2 :",
+              "options": ["2/4", "3/6", "1/3", "2/3"],
+              "explanation": "2/4 et 3/6 = 1/2.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Plus grande : 1/3 ou 1/2 ?",
+              "options": ["1/3", "1/2", "égales", "?"],
+              "explanation": "Demi > tiers.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "3/5 signifie…",
+              "options": [
+                "3 parts sur 5 égales",
+                "5 sur 3",
+                "3 pizzas entières",
+                "5 parts sur 3"
+              ],
+              "explanation": "Numérateur/dénominateur.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "2/3 et 1/3 (même dénominateur) :",
+              "options": [
+                "2/3 plus grand",
+                "1/3 plus grand",
+                "égaux",
+                "impossible"
+              ],
+              "explanation": "2 parts > 1 part.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sur droite 0—1, 1/4 est…",
+              "options": ["entre 0 et 1", "à droite de 1", "sur 0", "sur 2"],
+              "explanation": "Fraction propre.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "4/4 = ?",
+              "options": ["1", "0", "1/4", "8"],
+              "explanation": "Quatre quarts = un entier.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "5/8 et 5/4 :",
+              "options": [
+                "5/8 > 5/4",
+                "5/4 > 5/8",
+                "égaux",
+                "8>4 donc 5/8 plus"
+              ],
+              "explanation": "Même numérateur : plus petit dénominateur ⇒ plus grand.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1/10 comparé à 1/100 :",
+              "options": [
+                "1/10 plus grand",
+                "1/100 plus grand",
+                "égaux",
+                "dixième plus petit"
+              ],
+              "explanation": "Dix parts vs cent parts.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Colorier 3 cases sur 8 :",
+              "options": ["3/8", "8/3", "3/5", "5/8"],
+              "explanation": "3 sur 8.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Un quart » s'écrit…",
+              "options": ["1/4", "4/1", "1/2", "2/4 seulement sans simplifier"],
+              "explanation": "1/4.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Addition de fractions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Calculs corrects :",
+              "options": [
+                "1/5 + 2/5 = 3/5",
+                "2/7 + 3/7 = 5/7",
+                "1/4 + 2/4 = 3/8",
+                "1/3 + 1/3 = 2/6"
+              ],
+              "explanation": "Même dénominateur : additionner numérateurs.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1/6 + 4/6 = ?",
+              "options": ["5/6", "5/12", "4/6", "1/5"],
+              "explanation": "1+4=5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "2/9 + 1/9 = ?",
+              "options": ["3/9", "3/18", "1/9", "2/3"],
+              "explanation": "3/9 (=1/3).",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "3/10 + 2/10 = ?",
+              "options": ["5/10", "5/20", "1/10", "6/10"],
+              "explanation": "5/10.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1/8 + 1/8 = ?",
+              "options": [
+                "2/8",
+                "1/16",
+                "2/16 seulement fausse si non simplifiée",
+                "0"
+              ],
+              "explanation": "2/8 = 1/4.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "4/5 + 0/5 = ?",
+              "options": ["4/5", "4/10", "0", "5/5"],
+              "explanation": "Reste 4/5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "1/2 + 1/2 = ?",
+              "options": ["1", "2/4 seulement", "1/4", "2/2"],
+              "explanation": "Deux demis = 1.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "5/12 + 1/12 = ?",
+              "options": ["6/12", "1/12", "5/24", "7/12"],
+              "explanation": "6/12 = 1/2.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour additionner 2/5 et 1/5, on garde…",
+              "options": [
+                "5 au dénominateur",
+                "5 au numérateur",
+                "1 au dénominateur",
+                "10 au dénominateur"
+              ],
+              "explanation": "Dénominateur commun 5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "3/4 + 1/4 = ?",
+              "options": ["1", "4/8", "3/8", "2/4"],
+              "explanation": "4/4 = 1.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Simplifier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Fractions égales à 1/2 :",
+              "options": ["3/6", "5/10", "2/5", "4/6"],
+              "explanation": "3/6 et 5/10 se simplifient en 1/2.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "6/8 simplifié :",
+              "options": ["3/4", "2/4", "1/3", "6/4"],
+              "explanation": "÷2 : 3/4.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "10/15 simplifié :",
+              "options": ["2/3", "5/3", "1/5", "3/2"],
+              "explanation": "÷5 : 2/3.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "4/4 =",
+              "options": ["1", "1/2", "0", "4"],
+              "explanation": "Un entier.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "2/4 =",
+              "options": ["1/2", "1/4", "2/2", "4/2"],
+              "explanation": "÷2.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "9/12 simplifié :",
+              "options": ["3/4", "4/3", "1/3", "9/4"],
+              "explanation": "÷3.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "5/5 =",
+              "options": ["1", "0", "5", "1/5"],
+              "explanation": "Cinq cinquièmes = 1.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "8/10 simplifié :",
+              "options": ["4/5", "2/5", "5/4", "8/5"],
+              "explanation": "÷2.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Simplifier divise numérateur et dénominateur par…",
+              "options": [
+                "le même nombre non nul",
+                "des nombres différents",
+                "0",
+                "10 toujours"
+              ],
+              "explanation": "Règle de simplification.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "12/18 simplifié :",
+              "options": ["2/3", "3/2", "6/9 non simplifié max", "1/6"],
+              "explanation": "÷6 : 2/3.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Périmètre rectangle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Rectangle L=8 cm, l=3 cm. Vrai :",
+              "options": [
+                "P = 22 cm",
+                "P = 2×(8+3) cm",
+                "P = 24 cm (aire)",
+                "P = 8+3 cm seulement"
+              ],
+              "explanation": "P=2×11=22 ; 24=8×3 aire.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Formule périmètre :",
+              "options": ["2(L+l)", "L×l", "L+l", "4L toujours"],
+              "explanation": "Contour du rectangle.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L=6, l=4 : P = ?",
+              "options": ["20", "24", "10", "48"],
+              "explanation": "2×10=20.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Carré côté 7 : P = ?",
+              "options": ["28", "49", "14", "21"],
+              "explanation": "4×7=28.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Unité de périmètre :",
+              "options": ["cm", "cm²", "L", "kg"],
+              "explanation": "Longueur.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L=10 m, l=2 m : P = ?",
+              "options": ["24 m", "20 m", "12 m", "22 m"],
+              "explanation": "2×12=24.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "P=18, l=4 : 2(L+4)=18 ⇒ L = ?",
+              "options": ["5", "9", "7", "14"],
+              "explanation": "L+4=9, L=5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Doubler seulement la longueur, largeur fixe : P…",
+              "options": ["augmente", "diminue", "inchangé", "devient aire"],
+              "explanation": "Deux côtés longs s'allongent.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L=5 dm, l=5 dm (carré) : P = ?",
+              "options": ["20 dm", "25 dm", "10 dm", "15 dm"],
+              "explanation": "4×5=20.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Périmètre ≠ aire car…",
+              "options": [
+                "contour vs surface intérieure",
+                "même formule",
+                "toujours cm²",
+                "interdit"
+              ],
+              "explanation": "Distinction fondamentale.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Périmètre — problèmes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vrai :",
+              "options": [
+                "P rectangle 12×2 = 28",
+                "P carré 3 = 12",
+                "Aire 12×2 = 24",
+                "P = L×l toujours"
+              ],
+              "explanation": "2×14=28 ; 4×3=12 ; aire 24.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Terrain 15 m sur 5 m : clôture = P = ?",
+              "options": ["40 m", "75 m", "20 m", "30 m"],
+              "explanation": "2×20=40.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "P=30, L=10, l=?",
+              "options": ["5", "10", "20", "15"],
+              "explanation": "2(10+l)=30, l=5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Carré P=36 : côté = ?",
+              "options": ["9", "6", "12", "18"],
+              "explanation": "4c=36, c=9.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L=11 cm, l=1 cm : P = ?",
+              "options": ["24 cm", "11 cm", "12 cm", "22 cm"],
+              "explanation": "2×12=24.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rectangle et carré même P=20 : côté carré = ?",
+              "options": ["5", "4", "10", "20"],
+              "explanation": "4c=20, c=5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L=7, l=3 : somme de tous les côtés un par un = ?",
+              "options": ["20", "21", "10", "14"],
+              "explanation": "7+3+7+3=20.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "P en km pour route rectangulaire 2 km × 0,5 km :",
+              "options": ["5 km", "1 km", "4 km", "3 km"],
+              "explanation": "2×2,5=5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Erreur fréquente : confondre…",
+              "options": [
+                "P et L×l",
+                "P et 2(L+l)",
+                "cm et m",
+                "addition et multiplication"
+              ],
+              "explanation": "L×l est l'aire.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L=4, l=9 : P = ?",
+              "options": ["26", "36", "13", "18"],
+              "explanation": "2×13=26.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Carré et rectangle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Carré côté 6. Vrai :",
+              "options": ["P = 24", "P = 4×6", "Aire = 36", "P = 6+6"],
+              "explanation": "P=24=4×6 ; aire 36 ; 6+6 incomplet.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Carré : P=20, côté = ?",
+              "options": ["5", "4", "10", "80"],
+              "explanation": "20÷4=5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Rectangle 3×8 : P = ?",
+              "options": ["22", "24", "11", "48"],
+              "explanation": "2×11=22.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tous les côtés égaux : figure…",
+              "options": [
+                "carré",
+                "rectangle quelconque",
+                "triangle",
+                "cercle"
+              ],
+              "explanation": "Définition carré.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Carré est aussi un…",
+              "options": ["rectangle", "cercle", "segment", "angle"],
+              "explanation": "Rectangle aux côtés égaux.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "P carré 8 : côté = ?",
+              "options": ["2", "4", "8", "32"],
+              "explanation": "8÷4=2.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L=12, l=2 : P = ?",
+              "options": ["28", "24", "14", "26"],
+              "explanation": "2×14=28.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux rectangles même P peuvent avoir…",
+              "options": [
+                "dimensions différentes",
+                "toujours même L",
+                "aire toujours égale",
+                "côté 0"
+              ],
+              "explanation": "Ex. 5×5 et 6×4 ont P=20.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Côté 10 cm carré : P = ?",
+              "options": ["40 cm", "100 cm", "20 cm", "30 cm"],
+              "explanation": "4×10.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L=2, l=7 : P = ?",
+              "options": ["18", "14", "9", "16"],
+              "explanation": "2×9=18.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Tableaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sport | Eff : Foot 14, Volley 6, Tennis 5. Vrai :",
+              "options": [
+                "Total 25",
+                "Foot le plus fréquent",
+                "Volley 14",
+                "Tennis 6"
+              ],
+              "explanation": "14+6+5=25 ; foot max.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Effectif note 15 apparaît 3 fois : effectif 15 =",
+              "options": ["3", "15", "1", "45"],
+              "explanation": "Comptage occurrences.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Couleurs R4 B7 V2 : plus fréquent…",
+              "options": ["Bleu", "Rouge", "Vert", "égalité"],
+              "explanation": "7 max.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Max 12, min 5 : écart = ?",
+              "options": ["7", "17", "60", "5"],
+              "explanation": "12−5=7.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ajouter 2 au effectif 6 → total général augmente de…",
+              "options": ["2", "6", "8", "0"],
+              "explanation": "+2 au total.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Double entrée : une case =",
+              "options": [
+                "croisement ligne/colonne",
+                "total auto",
+                "toujours 10",
+                "fraction"
+              ],
+              "explanation": "Lecture croisée.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Légende « nombre d'élèves » explique…",
+              "options": [
+                "les valeurs du tableau",
+                "le périmètre",
+                "P(A|B)",
+                "le dé"
+              ],
+              "explanation": "Sens des nombres.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dé 20 lancers : somme effectifs faces =",
+              "options": ["20", "6", "1", "120"],
+              "explanation": "Un par lancer.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "12 vs 8 participants : écart =",
+              "options": ["4", "20", "96", "2"],
+              "explanation": "12−8=4.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tableau sert à…",
+              "options": [
+                "organiser des données",
+                "prouver pile certain",
+                "calculer 7 au dé",
+                "remplacer fractions"
+              ],
+              "explanation": "Organisation des comptages.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse révision",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vrai :",
+              "options": [
+                "1/2+1/2=1",
+                "3+4×2=11",
+                "P 5×2 rectangle=14",
+                "2×(5+3)=16"
+              ],
+              "explanation": "Fractions ; priorité × ; P=2×7=14 pas 14? 5×2 P=14 yes 2×(5+2)=14 - user: P 5×2=14 correct. 2×8=16.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "56 ÷ 7 × 2 = ?",
+              "options": ["16", "4", "14", "8"],
+              "explanation": "8×2=16.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "5/6 − 2/6 = ? (même idée addition)",
+              "options": ["3/6", "3/12", "1/6", "7/6"],
+              "explanation": "5−2=3.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L=9, l=1 : P = ?",
+              "options": ["20", "18", "10", "19"],
+              "explanation": "2×10=20.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Simplifier 15/25 :",
+              "options": ["3/5", "5/3", "1/5", "15/5"],
+              "explanation": "÷5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "(4+1)×6 = ?",
+              "options": ["30", "24", "11", "5"],
+              "explanation": "5×6=30.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Plus grand : 2/5 ou 3/5 ?",
+              "options": ["2/5", "3/5", "égaux", "1/5"],
+              "explanation": "Même dénominateur.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Carré côté 4 : P = ?",
+              "options": ["16", "8", "12", "4"],
+              "explanation": "4×4=16.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Effectifs 5,5,10 : total = ?",
+              "options": ["20", "15", "10", "5"],
+              "explanation": "Somme.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dé : ≤6 en un lancer est…",
+              "options": ["certain", "impossible", "possible seulement", "7"],
+              "explanation": "Toutes faces ≤6.",
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

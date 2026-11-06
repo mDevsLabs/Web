@@ -1,8 +1,10 @@
 "use client";
 
+import { CopyIcon } from "@mdevs/icons/misc/copy";
+import { DownloadIcon } from "@mdevs/icons/misc/download";
+import { Share2Icon } from "@mdevs/icons/misc/share-2";
 /** Le QR code est généré localement à partir du lien public ; aucune publication implicite ni service externe. */
 import { Button } from "@mdevs/ui/primitives/button";
-import { Copy, Download, Share2 } from "lucide-react";
 import { Dialog } from "radix-ui";
 import { useEffect, useRef, useState } from "react";
 import { lienPartageWakie } from "@/lib/wakies/shared/sharing";
@@ -91,7 +93,7 @@ export function WakieShare({
             type="button"
             variant="outline"
           >
-            <Share2 aria-hidden="true" size={16} /> Partager ce Wakie
+            <Share2Icon aria-hidden="true" size={16} /> Partager ce Wakie
           </Button>
         </Dialog.Trigger>
         {isPublic ? null : (
@@ -124,7 +126,7 @@ export function WakieShare({
               onClick={() => void copier()}
               variant="outline"
             >
-              <Copy aria-hidden="true" size={16} /> Copier le lien
+              <CopyIcon aria-hidden="true" size={16} /> Copier le lien
             </Button>
             {qr ? (
               <div className="wakies-share-qr">
@@ -139,8 +141,8 @@ export function WakieShare({
                   download={`wakie-${id}.png`}
                   href={qr}
                 >
-                  <Download aria-hidden="true" size={16} /> Télécharger le QR
-                  code
+                  <DownloadIcon aria-hidden="true" size={16} /> Télécharger le
+                  QR code
                 </a>
               </div>
             ) : (

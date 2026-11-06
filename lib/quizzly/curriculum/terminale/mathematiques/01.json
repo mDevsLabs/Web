@@ -1,0 +1,1843 @@
+{
+  "id": "terminale-mathematiques-01",
+  "year": "terminale",
+  "subject": "mathematiques",
+  "title": "Limites et continuité",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Limites de suites",
+      "quizzes": [
+        {
+          "id": "u1-q01",
+          "order": 1,
+          "title": "Limites de suites — série 1",
+          "questions": [
+            {
+              "id": "u1-q01-n01",
+              "type": "multiple_choice",
+              "prompt": "Pour u_n=1/n, quelles affirmations sont vraies ?",
+              "options": [
+                "(u_n) converge vers 0",
+                "(u_n) diverge vers +∞",
+                "lim u_n=0",
+                "lim u_n n'existe pas"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "1/n→0 : suite convergente."
+            },
+            {
+              "id": "u1-q01-n02",
+              "type": "single_choice",
+              "prompt": "lim (3n+1)/(n+2)=?",
+              "options": ["0", "1", "3", "+∞"],
+              "correctAnswers": [2],
+              "explanation": "Division par n : (3+1/n)/(1+2/n)→3."
+            },
+            {
+              "id": "u1-q01-n03",
+              "type": "single_choice",
+              "prompt": "La suite (n²) est :",
+              "options": [
+                "convergente",
+                "constante",
+                "divergente vers +∞",
+                "alternée"
+              ],
+              "correctAnswers": [2],
+              "explanation": "n²→+∞."
+            },
+            {
+              "id": "u1-q01-n04",
+              "type": "single_choice",
+              "prompt": "lim u_n=L, lim v_n=M ⇒ lim(u_n+v_n)=?",
+              "options": ["L+M", "LM", "L-M", "ND"],
+              "correctAnswers": [0],
+              "explanation": "Linéarité de la limite."
+            },
+            {
+              "id": "u1-q01-n05",
+              "type": "single_choice",
+              "prompt": "Géom. u_0=8, q=1/2. lim u_n=?",
+              "options": ["4", "0", "8", "+∞"],
+              "correctAnswers": [1],
+              "explanation": "|q|<1 ⇒ u_n→0."
+            },
+            {
+              "id": "u1-q01-n06",
+              "type": "single_choice",
+              "prompt": "u_n=(-1)^n :",
+              "options": ["→0", "→1", "diverge", "→-1"],
+              "correctAnswers": [2],
+              "explanation": "Pas de limite unique."
+            },
+            {
+              "id": "u1-q01-n07",
+              "type": "single_choice",
+              "prompt": "lim sin(n)/n=?",
+              "options": ["0", "1", "ND", "oscille"],
+              "correctAnswers": [0],
+              "explanation": "|sin n/n|≤1/n→0."
+            },
+            {
+              "id": "u1-q01-n08",
+              "type": "single_choice",
+              "prompt": "u_n=5-2n :",
+              "options": ["converge", "constante", "→-∞", "→+∞"],
+              "correctAnswers": [2],
+              "explanation": "Suite arithmétique de raison -2."
+            },
+            {
+              "id": "u1-q01-n09",
+              "type": "single_choice",
+              "prompt": "Croissante et majorée ⇒",
+              "options": ["diverge", "converge", "constante", "→+∞"],
+              "correctAnswers": [1],
+              "explanation": "Th. convergence monotone."
+            },
+            {
+              "id": "u1-q01-n10",
+              "type": "single_choice",
+              "prompt": "lim(1+1/n)^n=?",
+              "options": ["1", "2", "e", "π"],
+              "correctAnswers": [2],
+              "explanation": "Définition de e."
+            }
+          ]
+        },
+        {
+          "id": "u1-q02",
+          "order": 2,
+          "title": "Limites de suites — série 2",
+          "questions": [
+            {
+              "id": "u1-q02-n01",
+              "type": "multiple_choice",
+              "prompt": "u_n=n/(n+1). Vrai :",
+              "options": ["croissante", "0<u_n<1", "lim=1", "lim=0"],
+              "correctAnswers": [1, 2],
+              "explanation": "Tend vers 1 par en-dessous."
+            },
+            {
+              "id": "u1-q02-n02",
+              "type": "single_choice",
+              "prompt": "lim(√(n+1)-√n)=?",
+              "options": ["0", "1", "+∞", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "Conjugué → 1/(√(n+1)+√n)→0."
+            },
+            {
+              "id": "u1-q02-n03",
+              "type": "single_choice",
+              "prompt": "u_0=3, q=-2 :",
+              "options": ["converge", "diverge", "constante", "→3"],
+              "correctAnswers": [1],
+              "explanation": "|q|>1."
+            },
+            {
+              "id": "u1-q02-n04",
+              "type": "single_choice",
+              "prompt": "lim ln(n)/n=?",
+              "options": ["0", "1", "+∞", "-∞"],
+              "correctAnswers": [0],
+              "explanation": "Croissances comparées."
+            },
+            {
+              "id": "u1-q02-n05",
+              "type": "single_choice",
+              "prompt": "lim u_n=+∞ ⇒ lim 1/u_n=?",
+              "options": ["+∞", "0", "1", "ND"],
+              "correctAnswers": [1],
+              "explanation": "Inverse tend vers 0."
+            },
+            {
+              "id": "u1-q02-n06",
+              "type": "single_choice",
+              "prompt": "u_n=cos(πn)=?",
+              "options": ["0", "(-1)^n", "1", "cos n"],
+              "correctAnswers": [1],
+              "explanation": "Alternance ±1."
+            },
+            {
+              "id": "u1-q02-n07",
+              "type": "single_choice",
+              "prompt": "u_{n+1}=u_n/2, u_0=16 :",
+              "options": ["8", "0", "16", "+∞"],
+              "correctAnswers": [1],
+              "explanation": "Géométrique q=1/2."
+            },
+            {
+              "id": "u1-q02-n08",
+              "type": "single_choice",
+              "prompt": "Gendarmes : v_n≤u_n≤w_n, v,w→L ⇒",
+              "options": ["u→0", "u→L", "diverge", "—"],
+              "correctAnswers": [1],
+              "explanation": "Encadrement serré."
+            },
+            {
+              "id": "u1-q02-n09",
+              "type": "single_choice",
+              "prompt": "lim n(1/2)^n=?",
+              "options": ["0", "1/2", "+∞", "diverge"],
+              "correctAnswers": [0],
+              "explanation": "n·q^n→0, |q|<1."
+            },
+            {
+              "id": "u1-q02-n10",
+              "type": "single_choice",
+              "prompt": "lim(2n²+1)/(n²-n)=?",
+              "options": ["0", "1", "2", "+∞"],
+              "correctAnswers": [2],
+              "explanation": "Quotient coeff. dominants."
+            }
+          ]
+        },
+        {
+          "id": "u1-q03",
+          "order": 3,
+          "title": "Limites de suites — série 3",
+          "questions": [
+            {
+              "id": "u1-q03-n01",
+              "type": "multiple_choice",
+              "prompt": "Suite convergente :",
+              "options": [
+                "lim existe finie",
+                "toujours croissante",
+                "bornée",
+                "lim=+∞"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Convergente ⇒ bornée ; lim finie."
+            },
+            {
+              "id": "u1-q03-n02",
+              "type": "single_choice",
+              "prompt": "u_n=3^n/2^n :",
+              "options": ["→0", "→1", "→+∞", "→3/2"],
+              "correctAnswers": [2],
+              "explanation": "(3/2)^n→+∞."
+            },
+            {
+              "id": "u1-q03-n03",
+              "type": "single_choice",
+              "prompt": "u_n=n!/(2^n) pour n≥1 :",
+              "options": ["→0", "→1", "→+∞", "→e"],
+              "correctAnswers": [2],
+              "explanation": "Factorielle domine 2^n."
+            },
+            {
+              "id": "u1-q03-n04",
+              "type": "single_choice",
+              "prompt": "Arith. u_0=1, r=3. u_n=?",
+              "options": ["1+3n", "3n+1", "3^n", "1·3^n"],
+              "correctAnswers": [1],
+              "explanation": "u_n=u_0+nr."
+            },
+            {
+              "id": "u1-q03-n05",
+              "type": "single_choice",
+              "prompt": "lim(5n-1)/(2n+7)=?",
+              "options": ["5/2", "5/7", "0", "+∞"],
+              "correctAnswers": [0],
+              "explanation": "Degrés égaux : 5/2."
+            },
+            {
+              "id": "u1-q03-n06",
+              "type": "single_choice",
+              "prompt": "u_n=1/n² :",
+              "options": ["→1", "→0", "→+∞", "diverge"],
+              "correctAnswers": [1],
+              "explanation": "Riemann-like 1/n²→0."
+            },
+            {
+              "id": "u1-q03-n07",
+              "type": "single_choice",
+              "prompt": "Si u_n→L≠0, lim(1/u_n)=?",
+              "options": ["0", "1/L", "L", "+∞"],
+              "correctAnswers": [1],
+              "explanation": "Continuité de x↦1/x en L≠0."
+            },
+            {
+              "id": "u1-q03-n08",
+              "type": "single_choice",
+              "prompt": "u_n=(−1)^n/n :",
+              "options": ["→0", "→1", "diverge", "→-1"],
+              "correctAnswers": [0],
+              "explanation": "Alternée mais amplitude→0."
+            },
+            {
+              "id": "u1-q03-n09",
+              "type": "single_choice",
+              "prompt": "Décroissante minorée ⇒",
+              "options": ["→+∞", "converge", "diverge", "constante"],
+              "correctAnswers": [1],
+              "explanation": "Monotone bornée."
+            },
+            {
+              "id": "u1-q03-n10",
+              "type": "single_choice",
+              "prompt": "lim(1−1/n)=?",
+              "options": ["0", "1", "-1", "+∞"],
+              "correctAnswers": [1],
+              "explanation": "1−0=1."
+            }
+          ]
+        },
+        {
+          "id": "u1-q04",
+          "order": 4,
+          "title": "Limites de suites — série 4",
+          "questions": [
+            {
+              "id": "u1-q04-n01",
+              "type": "multiple_choice",
+              "prompt": "u_n=2+1/n :",
+              "options": ["croissante", "→2", "→+∞", "décroissante"],
+              "correctAnswers": [0, 1],
+              "explanation": "Croît vers 2."
+            },
+            {
+              "id": "u1-q04-n02",
+              "type": "single_choice",
+              "prompt": "Géom. q=1, u_0=7 :",
+              "options": ["→0", "→7", "→+∞", "diverge"],
+              "correctAnswers": [1],
+              "explanation": "Suite constante."
+            },
+            {
+              "id": "u1-q04-n03",
+              "type": "single_choice",
+              "prompt": "lim n/(n²+1)=?",
+              "options": ["0", "1", "+∞", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "Degré dénom > num."
+            },
+            {
+              "id": "u1-q04-n04",
+              "type": "single_choice",
+              "prompt": "u_n=√(n²+1)−n :",
+              "options": ["→0", "→1", "→+∞", "→1/2"],
+              "correctAnswers": [0],
+              "explanation": "Conjugué → 1/(√(n²+1)+n)→0."
+            },
+            {
+              "id": "u1-q04-n05",
+              "type": "single_choice",
+              "prompt": "u_n=3n+(-1)^n :",
+              "options": ["→0", "→+∞", "→-∞", "converge"],
+              "correctAnswers": [1],
+              "explanation": "3n domine."
+            },
+            {
+              "id": "u1-q04-n06",
+              "type": "single_choice",
+              "prompt": "lim(2^n/n)=?",
+              "options": ["0", "1", "+∞", "2"],
+              "correctAnswers": [2],
+              "explanation": "2^n >> n."
+            },
+            {
+              "id": "u1-q04-n07",
+              "type": "single_choice",
+              "prompt": "u_{n+1}=√(u_n+2), u_0=1, converge vers ?",
+              "options": ["1", "2", "√3", "+∞"],
+              "correctAnswers": [1],
+              "explanation": "Point fixe ℓ=√(ℓ+2)⇒ℓ=2."
+            },
+            {
+              "id": "u1-q04-n08",
+              "type": "single_choice",
+              "prompt": "Suite (1/n) est :",
+              "options": [
+                "croissante",
+                "décroissante",
+                "constante",
+                "non monotone"
+              ],
+              "correctAnswers": [1],
+              "explanation": "1/n diminue."
+            },
+            {
+              "id": "u1-q04-n09",
+              "type": "single_choice",
+              "prompt": "lim sin(1/n)/(1/n)=?",
+              "options": ["0", "1", "ND", "+∞"],
+              "correctAnswers": [1],
+              "explanation": "sin x/x→1 quand x→0."
+            },
+            {
+              "id": "u1-q04-n10",
+              "type": "single_choice",
+              "prompt": "u_n=(n+1)/(2n) :",
+              "options": ["→0", "→1/2", "→1", "→2"],
+              "correctAnswers": [1],
+              "explanation": "(1+1/n)/2→1/2."
+            }
+          ]
+        },
+        {
+          "id": "u1-q05",
+          "order": 5,
+          "title": "Limites de suites — série 5",
+          "questions": [
+            {
+              "id": "u1-q05-n01",
+              "type": "multiple_choice",
+              "prompt": "Divergence vers +∞ signifie :",
+              "options": ["lim=+∞", "non convergente", "|u_n|→+∞", "u_n>0"],
+              "correctAnswers": [0, 1],
+              "explanation": "Limite infinie ; pas de lim finie."
+            },
+            {
+              "id": "u1-q05-n02",
+              "type": "single_choice",
+              "prompt": "u_n=n−√(n²+1) :",
+              "options": ["→0", "→-1", "→-∞", "→+∞"],
+              "correctAnswers": [0],
+              "explanation": "Conjugué : −1/(n+√(n²+1))→0."
+            },
+            {
+              "id": "u1-q05-n03",
+              "type": "single_choice",
+              "prompt": "lim(1+2/n)^n=?",
+              "options": ["1", "e", "e²", "2e"],
+              "correctAnswers": [2],
+              "explanation": "(1+2/n)^n→e²."
+            },
+            {
+              "id": "u1-q05-n04",
+              "type": "single_choice",
+              "prompt": "u_n=ln(n+1)−ln(n) :",
+              "options": ["→0", "→1", "→+∞", "→ln2"],
+              "correctAnswers": [0],
+              "explanation": "ln((n+1)/n)=ln(1+1/n)→0."
+            },
+            {
+              "id": "u1-q05-n05",
+              "type": "single_choice",
+              "prompt": "Suite bornée non convergente :",
+              "options": [
+                "impossible",
+                "existe",
+                "toujours diverge +∞",
+                "constante"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ex. (-1)^n bornée mais diverge."
+            },
+            {
+              "id": "u1-q05-n06",
+              "type": "single_choice",
+              "prompt": "lim(3·2^n)/(2·3^n)=?",
+              "options": ["0", "1", "+∞", "3/2"],
+              "correctAnswers": [0],
+              "explanation": "(2/3)^n→0."
+            },
+            {
+              "id": "u1-q05-n07",
+              "type": "single_choice",
+              "prompt": "u_n=1/(n(n+1)) :",
+              "options": ["→0", "→1", "→1/2", "diverge"],
+              "correctAnswers": [0],
+              "explanation": "Plus petit que 1/n²."
+            },
+            {
+              "id": "u1-q05-n08",
+              "type": "single_choice",
+              "prompt": "Si u_n≤v_n et lim v_n=0 alors lim u_n :",
+              "options": ["=0", "=+∞", "ND", "≥0 seulement"],
+              "correctAnswers": [0],
+              "explanation": "Gendarmes avec 0."
+            },
+            {
+              "id": "u1-q05-n09",
+              "type": "single_choice",
+              "prompt": "Arith. u_n=100−3n :",
+              "options": ["→+∞", "→0", "→-∞", "converge"],
+              "correctAnswers": [2],
+              "explanation": "Raison négative."
+            },
+            {
+              "id": "u1-q05-n10",
+              "type": "single_choice",
+              "prompt": "lim(n sin(1/n))=?",
+              "options": ["0", "1", "+∞", "ND"],
+              "correctAnswers": [1],
+              "explanation": "x sin(1/x)→1."
+            }
+          ]
+        },
+        {
+          "id": "u1-q06",
+          "order": 6,
+          "title": "Limites de suites — série 6",
+          "questions": [
+            {
+              "id": "u1-q06-n01",
+              "type": "multiple_choice",
+              "prompt": "Géom. |q|<1 :",
+              "options": ["→0", "converge", "diverge", "|u_n|→+∞"],
+              "correctAnswers": [0, 1],
+              "explanation": "u_n=u_0 q^n→0."
+            },
+            {
+              "id": "u1-q06-n02",
+              "type": "single_choice",
+              "prompt": "lim(4n³−n)/(2n³+5)=?",
+              "options": ["0", "2", "4", "+∞"],
+              "correctAnswers": [1],
+              "explanation": "4/2=2."
+            },
+            {
+              "id": "u1-q06-n03",
+              "type": "single_choice",
+              "prompt": "u_n=(−2)^n :",
+              "options": ["→0", "→2", "diverge", "→(-2)"],
+              "correctAnswers": [2],
+              "explanation": "Amplitude |−2|^n→+∞."
+            },
+            {
+              "id": "u1-q06-n04",
+              "type": "single_choice",
+              "prompt": "u_n=∑_{k=1}^n 1/k² converge car :",
+              "options": [
+                "harmonique",
+                "∑1/k² converge (Riemann)",
+                "diverge",
+                "→+∞"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Série p=2>1 convergente."
+            },
+            {
+              "id": "u1-q06-n05",
+              "type": "single_choice",
+              "prompt": "lim(√n−√(n−1))=?",
+              "options": ["0", "1", "+∞", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "1/(√n+√(n−1))→0."
+            },
+            {
+              "id": "u1-q06-n06",
+              "type": "single_choice",
+              "prompt": "u_n=cos(n)/√n :",
+              "options": ["→0", "→1", "diverge", "→-1"],
+              "correctAnswers": [0],
+              "explanation": "Bornée/√n→0."
+            },
+            {
+              "id": "u1-q06-n07",
+              "type": "single_choice",
+              "prompt": "lim(n²+1)/(n³−1)=?",
+              "options": ["0", "1", "+∞", "-1"],
+              "correctAnswers": [0],
+              "explanation": "Degré dénom supérieur."
+            },
+            {
+              "id": "u1-q06-n08",
+              "type": "single_choice",
+              "prompt": "u_{n+1}=u_n+1/n, u_1=0 : u_n=?",
+              "options": ["→0", "→1", "→+∞", "H_n diverge"],
+              "correctAnswers": [3],
+              "explanation": "Somme harmonique diverge."
+            },
+            {
+              "id": "u1-q06-n09",
+              "type": "single_choice",
+              "prompt": "lim(1/n−1/(n+1))=?",
+              "options": ["0", "1", "1/n²", "→1"],
+              "correctAnswers": [0],
+              "explanation": "1/(n(n+1))→0."
+            },
+            {
+              "id": "u1-q06-n10",
+              "type": "single_choice",
+              "prompt": "u_n=2n/(n+100) :",
+              "options": ["→0", "→2", "→100", "→1/2"],
+              "correctAnswers": [1],
+              "explanation": "→2/1=2."
+            }
+          ]
+        },
+        {
+          "id": "u1-q07",
+          "order": 7,
+          "title": "Limites de suites — série 7",
+          "questions": [
+            {
+              "id": "u1-q07-n01",
+              "type": "multiple_choice",
+              "prompt": "Si lim u_n=0 alors :",
+              "options": [
+                "(u_n) converge",
+                "|u_n|→0",
+                "u_n=0 pour tout n",
+                "u_n→+∞"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Limite nulle : convergence et |u_n|→0."
+            },
+            {
+              "id": "u1-q07-n02",
+              "type": "single_choice",
+              "prompt": "u_n=(n²−1)/(n+1), n≥1 :",
+              "options": ["→0", "→+∞", "→1", "→−1"],
+              "correctAnswers": [1],
+              "explanation": "u_n=n−1→+∞."
+            },
+            {
+              "id": "u1-q07-n03",
+              "type": "single_choice",
+              "prompt": "lim(1/n+1/(n+1))=?",
+              "options": ["0", "1", "2", "ND"],
+              "correctAnswers": [0],
+              "explanation": "Somme de suites →0."
+            },
+            {
+              "id": "u1-q07-n04",
+              "type": "single_choice",
+              "prompt": "u_n=5·(−1/3)^n :",
+              "options": ["→0", "→5", "diverge", "→−5/3"],
+              "correctAnswers": [0],
+              "explanation": "|q|<1 : amplitude →0."
+            },
+            {
+              "id": "u1-q07-n05",
+              "type": "single_choice",
+              "prompt": "u_n=⌊n/2⌋ :",
+              "options": ["→0", "→1/2", "→+∞", "converge"],
+              "correctAnswers": [2],
+              "explanation": "Croît sans borne."
+            },
+            {
+              "id": "u1-q07-n06",
+              "type": "single_choice",
+              "prompt": "lim(3^n−2^n)=?",
+              "options": ["0", "→+∞", "→−∞", "1"],
+              "correctAnswers": [1],
+              "explanation": "3^n domine 2^n."
+            },
+            {
+              "id": "u1-q07-n07",
+              "type": "single_choice",
+              "prompt": "u_n=1/(1+10^n) :",
+              "options": ["→1", "→0", "→1/2", "diverge"],
+              "correctAnswers": [1],
+              "explanation": "10^n→+∞ au dénominateur."
+            },
+            {
+              "id": "u1-q07-n08",
+              "type": "single_choice",
+              "prompt": "u_n→L, v_n→L ⇒ lim(u_n v_n)=?",
+              "options": ["L", "L²", "0", "ND"],
+              "correctAnswers": [1],
+              "explanation": "Produit des limites."
+            },
+            {
+              "id": "u1-q07-n09",
+              "type": "single_choice",
+              "prompt": "u_n=√(4+1/n²) :",
+              "options": ["→0", "→2", "→4", "→+∞"],
+              "correctAnswers": [1],
+              "explanation": "→√4=2."
+            },
+            {
+              "id": "u1-q07-n10",
+              "type": "single_choice",
+              "prompt": "lim n^{1/n}=?",
+              "options": ["0", "1", "e", "+∞"],
+              "correctAnswers": [1],
+              "explanation": "n^{1/n}→1."
+            }
+          ]
+        },
+        {
+          "id": "u1-q08",
+          "order": 8,
+          "title": "Limites de suites — série 8",
+          "questions": [
+            {
+              "id": "u1-q08-n01",
+              "type": "multiple_choice",
+              "prompt": "u_n=sin(πn/2) :",
+              "options": [
+                "valeurs dans {−1,0,1}",
+                "périodique",
+                "→0",
+                "converge"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Suite périodique sans limite."
+            },
+            {
+              "id": "u1-q08-n02",
+              "type": "single_choice",
+              "prompt": "lim(2n+1)/(n−5)=?",
+              "options": ["0", "1", "2", "+∞"],
+              "correctAnswers": [2],
+              "explanation": "→2."
+            },
+            {
+              "id": "u1-q08-n03",
+              "type": "single_choice",
+              "prompt": "u_n=(1−1/n)^n :",
+              "options": ["→0", "→1", "→1/e", "→e"],
+              "correctAnswers": [2],
+              "explanation": "Suite décroissante vers 1/e."
+            },
+            {
+              "id": "u1-q08-n04",
+              "type": "single_choice",
+              "prompt": "Sous-suite d'une suite convergente :",
+              "options": ["diverge", "même limite", "→0", "ND"],
+              "correctAnswers": [1],
+              "explanation": "Conserve la limite."
+            },
+            {
+              "id": "u1-q08-n05",
+              "type": "single_choice",
+              "prompt": "u_n=2^n−n² :",
+              "options": ["→0", "→−∞", "→+∞", "→1"],
+              "correctAnswers": [2],
+              "explanation": "2^n domine."
+            },
+            {
+              "id": "u1-q08-n06",
+              "type": "single_choice",
+              "prompt": "lim(5^n/4^n)=?",
+              "options": ["0", "1", "+∞", "5/4"],
+              "correctAnswers": [2],
+              "explanation": "(5/4)^n→+∞."
+            },
+            {
+              "id": "u1-q08-n07",
+              "type": "single_choice",
+              "prompt": "u_n=−1/n :",
+              "options": ["→0", "→+∞", "→−∞", "diverge"],
+              "correctAnswers": [0],
+              "explanation": "→0."
+            },
+            {
+              "id": "u1-q08-n08",
+              "type": "single_choice",
+              "prompt": "u_n=2n−7 :",
+              "options": ["→−7", "→2", "→+∞", "converge"],
+              "correctAnswers": [2],
+              "explanation": "Arithmétique r=2."
+            },
+            {
+              "id": "u1-q08-n09",
+              "type": "single_choice",
+              "prompt": "lim(√(9n²+1)/n)=?",
+              "options": ["0", "3", "9", "+∞"],
+              "correctAnswers": [1],
+              "explanation": "→3."
+            },
+            {
+              "id": "u1-q08-n10",
+              "type": "single_choice",
+              "prompt": "u_n=0 ∀n :",
+              "options": ["diverge", "→0", "sans limite", "→1"],
+              "correctAnswers": [1],
+              "explanation": "Suite constante nulle."
+            }
+          ]
+        },
+        {
+          "id": "u1-q09",
+          "order": 9,
+          "title": "Limites de suites — série 9",
+          "questions": [
+            {
+              "id": "u1-q09-n01",
+              "type": "multiple_choice",
+              "prompt": "u_n=ln(n) :",
+              "options": ["→+∞", "croissante", "convergente", "→0"],
+              "correctAnswers": [0, 1],
+              "explanation": "ln croît vers +∞."
+            },
+            {
+              "id": "u1-q09-n02",
+              "type": "single_choice",
+              "prompt": "lim(1+1/n)^{2n}=?",
+              "options": ["1", "e", "e²", "2e"],
+              "correctAnswers": [2],
+              "explanation": "→e²."
+            },
+            {
+              "id": "u1-q09-n03",
+              "type": "single_choice",
+              "prompt": "u_n=n/ln(n), n≥2 :",
+              "options": ["→0", "→1", "→+∞", "→e"],
+              "correctAnswers": [2],
+              "explanation": "n >> ln n."
+            },
+            {
+              "id": "u1-q09-n04",
+              "type": "single_choice",
+              "prompt": "Géom. q=−1, u_0=4 :",
+              "options": ["→0", "→4", "diverge", "→−4"],
+              "correctAnswers": [2],
+              "explanation": "Alterne ±4."
+            },
+            {
+              "id": "u1-q09-n05",
+              "type": "single_choice",
+              "prompt": "lim(3n²−2n+1)/(n²+4)=?",
+              "options": ["0", "1", "3", "+∞"],
+              "correctAnswers": [2],
+              "explanation": "→3."
+            },
+            {
+              "id": "u1-q09-n06",
+              "type": "single_choice",
+              "prompt": "u_n=1/2^n+1/3^n :",
+              "options": ["→1", "→0", "→5/6", "diverge"],
+              "correctAnswers": [1],
+              "explanation": "→0."
+            },
+            {
+              "id": "u1-q09-n07",
+              "type": "single_choice",
+              "prompt": "u_n→+∞, v_n→+∞ ⇒ u_n+v_n :",
+              "options": ["→0", "converge", "→+∞", "ND"],
+              "correctAnswers": [2],
+              "explanation": "Somme +∞."
+            },
+            {
+              "id": "u1-q09-n08",
+              "type": "single_choice",
+              "prompt": "u_n=(−1)^n·n :",
+              "options": ["→0", "→+∞", "→−∞", "diverge"],
+              "correctAnswers": [3],
+              "explanation": "Non bornée."
+            },
+            {
+              "id": "u1-q09-n09",
+              "type": "single_choice",
+              "prompt": "lim(100/n)=?",
+              "options": ["0", "100", "1", "+∞"],
+              "correctAnswers": [0],
+              "explanation": "→0."
+            },
+            {
+              "id": "u1-q09-n10",
+              "type": "single_choice",
+              "prompt": "u_{n+1}=(u_n+6)/2, u_0=0 →",
+              "options": ["3", "6", "0", "+∞"],
+              "correctAnswers": [1],
+              "explanation": "Point fixe 6."
+            }
+          ]
+        },
+        {
+          "id": "u1-q10",
+          "order": 10,
+          "title": "Limites de suites — série 10",
+          "questions": [
+            {
+              "id": "u1-q10-n01",
+              "type": "multiple_choice",
+              "prompt": "Suite rationnelle P(n)/Q(n) :",
+              "options": [
+                "comparer degrés",
+                "diviser par n^d",
+                "factoriser",
+                "dériver"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Degrés et division par n^d."
+            },
+            {
+              "id": "u1-q10-n02",
+              "type": "single_choice",
+              "prompt": "lim(n³−1)/(2n³+n)=?",
+              "options": ["0", "1/2", "1", "+∞"],
+              "correctAnswers": [1],
+              "explanation": "→1/2."
+            },
+            {
+              "id": "u1-q10-n03",
+              "type": "single_choice",
+              "prompt": "u_n=|−n|/n, n>0 :",
+              "options": ["→0", "→−1", "→1", "diverge"],
+              "correctAnswers": [2],
+              "explanation": "=1."
+            },
+            {
+              "id": "u1-q10-n04",
+              "type": "single_choice",
+              "prompt": "(1,1/2,1/3,…) :",
+              "options": ["croissante", "décroissante", "géométrique", "→+∞"],
+              "correctAnswers": [1],
+              "explanation": "Termes décroissants."
+            },
+            {
+              "id": "u1-q10-n05",
+              "type": "single_choice",
+              "prompt": "lim(2+1/n³)=?",
+              "options": ["0", "1", "2", "+∞"],
+              "correctAnswers": [2],
+              "explanation": "→2."
+            },
+            {
+              "id": "u1-q10-n06",
+              "type": "single_choice",
+              "prompt": "u_n=10^n/n^{10} :",
+              "options": ["→0", "→1", "→+∞", "→10"],
+              "correctAnswers": [2],
+              "explanation": "Expo > polynôme."
+            },
+            {
+              "id": "u1-q10-n07",
+              "type": "single_choice",
+              "prompt": "u_n→L ⇒ u_n−u_{n+1} :",
+              "options": ["→0", "→L", "→2L", "ND"],
+              "correctAnswers": [0],
+              "explanation": "Différence →0."
+            },
+            {
+              "id": "u1-q10-n08",
+              "type": "single_choice",
+              "prompt": "u_n=√n−√(n−2) :",
+              "options": ["→0", "→2", "→+∞", "→1"],
+              "correctAnswers": [0],
+              "explanation": "Conjugué →0."
+            },
+            {
+              "id": "u1-q10-n09",
+              "type": "single_choice",
+              "prompt": "Géom. u_0=−1, q=1/2 :",
+              "options": ["→0", "→−1", "→+∞", "diverge"],
+              "correctAnswers": [0],
+              "explanation": "→0."
+            },
+            {
+              "id": "u1-q10-n10",
+              "type": "single_choice",
+              "prompt": "lim(7n−n²)=?",
+              "options": ["0", "7", "→−∞", "→+∞"],
+              "correctAnswers": [2],
+              "explanation": "−n² domine."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Asymptotes",
+      "quizzes": [
+        {
+          "id": "u2-q01",
+          "order": 1,
+          "title": "Asymptotes — série 1",
+          "questions": [
+            {
+              "id": "u2-q01-n01",
+              "type": "multiple_choice",
+              "prompt": "f(x)=1/x. Asymptotes :",
+              "options": ["AV x=0", "AH y=0", "oblique y=x", "AV x=1"],
+              "correctAnswers": [0, 1],
+              "explanation": "Pôle en 0 ; lim →0 en ±∞."
+            },
+            {
+              "id": "u2-q01-n02",
+              "type": "single_choice",
+              "prompt": "f(x)=(2x+1)/(x−3). AV ?",
+              "options": ["x=0", "x=3", "x=−1/2", "aucune"],
+              "correctAnswers": [1],
+              "explanation": "Dénom nul en 3."
+            },
+            {
+              "id": "u2-q01-n03",
+              "type": "single_choice",
+              "prompt": "lim_{+∞}(3x+1)/(x+2)=?",
+              "options": ["0", "1", "3", "+∞"],
+              "correctAnswers": [2],
+              "explanation": "AH y=3."
+            },
+            {
+              "id": "u2-q01-n04",
+              "type": "single_choice",
+              "prompt": "f(x)=(x²+1)/x. Oblique ?",
+              "options": ["y=0", "y=x", "y=1/x", "aucune"],
+              "correctAnswers": [1],
+              "explanation": "x+1/x → y=x."
+            },
+            {
+              "id": "u2-q01-n05",
+              "type": "single_choice",
+              "prompt": "AH y=L si :",
+              "options": ["lim f=L en ±∞", "f(L)=0", "f'(x)=0", "f constante"],
+              "correctAnswers": [0],
+              "explanation": "Limite à l'infini."
+            },
+            {
+              "id": "u2-q01-n06",
+              "type": "single_choice",
+              "prompt": "f(x)=1/(x−1)². AV ?",
+              "options": ["x=0", "x=1", "x=−1", "aucune"],
+              "correctAnswers": [1],
+              "explanation": "Pôle en 1."
+            },
+            {
+              "id": "u2-q01-n07",
+              "type": "single_choice",
+              "prompt": "lim_{−∞}(x³+1)/x³=?",
+              "options": ["0", "1", "−1", "+∞"],
+              "correctAnswers": [1],
+              "explanation": "AH y=1."
+            },
+            {
+              "id": "u2-q01-n08",
+              "type": "single_choice",
+              "prompt": "f(x)=e^x. AH en −∞ ?",
+              "options": ["y=0", "y=1", "y=e", "aucune"],
+              "correctAnswers": [0],
+              "explanation": "e^x→0."
+            },
+            {
+              "id": "u2-q01-n09",
+              "type": "single_choice",
+              "prompt": "AV x=a si :",
+              "options": ["lim_{x→a} f=±∞", "f(a)=0", "f'(a)=0", "f(a)=a"],
+              "correctAnswers": [0],
+              "explanation": "Pôle vertical."
+            },
+            {
+              "id": "u2-q01-n10",
+              "type": "single_choice",
+              "prompt": "f(x)=(x−2)/(x+1). AH ?",
+              "options": ["y=0", "y=1", "y=−2", "y=2"],
+              "correctAnswers": [1],
+              "explanation": "Degrés égaux : 1."
+            }
+          ]
+        },
+        {
+          "id": "u2-q02",
+          "order": 2,
+          "title": "Asymptotes — série 2",
+          "questions": [
+            {
+              "id": "u2-q02-n01",
+              "type": "multiple_choice",
+              "prompt": "f(x)=(x²−4)/(x−2), x≠2 :",
+              "options": [
+                "prolongeable en 2",
+                "lim_{x→2}=4",
+                "AV x=2",
+                "oblique y=x+2"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "x+2 → lim 4."
+            },
+            {
+              "id": "u2-q02-n02",
+              "type": "single_choice",
+              "prompt": "f(x)=ln(x). AV ?",
+              "options": ["x=0", "x=1", "y=0", "aucune"],
+              "correctAnswers": [0],
+              "explanation": "ln→−∞ en 0⁺."
+            },
+            {
+              "id": "u2-q02-n03",
+              "type": "single_choice",
+              "prompt": "lim_{+∞}(√(x²+1)−x)=?",
+              "options": ["0", "1", "+∞", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "Conjugué →0."
+            },
+            {
+              "id": "u2-q02-n04",
+              "type": "single_choice",
+              "prompt": "f(x)=1/(x²−1). AV ?",
+              "options": ["x=1", "x=±1", "x=0", "aucune"],
+              "correctAnswers": [1],
+              "explanation": "Pôles ±1."
+            },
+            {
+              "id": "u2-q02-n05",
+              "type": "single_choice",
+              "prompt": "Oblique si deg num = deg den + ?",
+              "options": ["0", "1", "2", "−1"],
+              "correctAnswers": [1],
+              "explanation": "Un degré de plus."
+            },
+            {
+              "id": "u2-q02-n06",
+              "type": "single_choice",
+              "prompt": "f(x)=(3x²+1)/x. Oblique ?",
+              "options": ["y=3x", "y=3", "y=x+3", "aucune"],
+              "correctAnswers": [0],
+              "explanation": "3x+1/x."
+            },
+            {
+              "id": "u2-q02-n07",
+              "type": "single_choice",
+              "prompt": "lim_{0⁺} 1/x=?",
+              "options": ["0", "1", "+∞", "−∞"],
+              "correctAnswers": [2],
+              "explanation": "Pôle droit."
+            },
+            {
+              "id": "u2-q02-n08",
+              "type": "single_choice",
+              "prompt": "f(x)=tan(x). AV près π/2 ?",
+              "options": ["x=0", "x=π/2", "y=1", "aucune"],
+              "correctAnswers": [1],
+              "explanation": "cos=0."
+            },
+            {
+              "id": "u2-q02-n09",
+              "type": "single_choice",
+              "prompt": "f(x)=1/x². AH +∞ ?",
+              "options": ["y=0", "y=1", "aucune", "y=+∞"],
+              "correctAnswers": [0],
+              "explanation": "→0."
+            },
+            {
+              "id": "u2-q02-n10",
+              "type": "single_choice",
+              "prompt": "f(x)=(2x−5)/(x+4). AH ?",
+              "options": ["y=0", "y=2", "y=−5/4", "y=5/2"],
+              "correctAnswers": [1],
+              "explanation": "y=2."
+            }
+          ]
+        },
+        {
+          "id": "u2-q03",
+          "order": 3,
+          "title": "Asymptotes — série 3",
+          "questions": [
+            {
+              "id": "u2-q03-n01",
+              "type": "multiple_choice",
+              "prompt": "Continuité en a :",
+              "options": [
+                "lim f existe",
+                "lim f=f(a)",
+                "f(a) définie",
+                "f dérivable"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Limite = valeur."
+            },
+            {
+              "id": "u2-q03-n02",
+              "type": "single_choice",
+              "prompt": "f(x)=|x|/x, x≠0. Prolongement en 0 ?",
+              "options": ["f(0)=1", "f(0)=−1", "f(0)=0", "impossible"],
+              "correctAnswers": [3],
+              "explanation": "Limites latérales différentes."
+            },
+            {
+              "id": "u2-q03-n03",
+              "type": "single_choice",
+              "prompt": "f(x)=(x²−4)/(x−2). lim_{x→2}=?",
+              "options": ["0", "4", "8", "ND"],
+              "correctAnswers": [1],
+              "explanation": "x+2 → 4."
+            },
+            {
+              "id": "u2-q03-n04",
+              "type": "single_choice",
+              "prompt": "f(x)=1/(x+5). AV ?",
+              "options": ["x=5", "x=−5", "y=−5", "aucune"],
+              "correctAnswers": [1],
+              "explanation": "x=−5."
+            },
+            {
+              "id": "u2-q03-n05",
+              "type": "single_choice",
+              "prompt": "lim_{+∞}(5x−1)/(2x+3)=?",
+              "options": ["5/2", "5/3", "0", "+∞"],
+              "correctAnswers": [0],
+              "explanation": "AH y=5/2."
+            },
+            {
+              "id": "u2-q03-n06",
+              "type": "single_choice",
+              "prompt": "f(x)=√x. Domaine ?",
+              "options": ["ℝ", "ℝ⁺", "]0,+∞[", "ℤ"],
+              "correctAnswers": [1],
+              "explanation": "x≥0."
+            },
+            {
+              "id": "u2-q03-n07",
+              "type": "single_choice",
+              "prompt": "f(x)=(x³+1)/x². Oblique ?",
+              "options": ["y=0", "y=x", "y=1", "aucune"],
+              "correctAnswers": [1],
+              "explanation": "x+1/x² → y=x."
+            },
+            {
+              "id": "u2-q03-n08",
+              "type": "single_choice",
+              "prompt": "lim_{x→0} (e^x−1)/x=?",
+              "options": ["0", "1", "e", "+∞"],
+              "correctAnswers": [1],
+              "explanation": "Dérivée en 0."
+            },
+            {
+              "id": "u2-q03-n09",
+              "type": "single_choice",
+              "prompt": "f(x)=1/(x−2)+3. AH ?",
+              "options": ["y=0", "y=3", "y=2", "aucune"],
+              "correctAnswers": [1],
+              "explanation": "Translation verticale."
+            },
+            {
+              "id": "u2-q03-n10",
+              "type": "single_choice",
+              "prompt": "lim_{−∞}(2x+1)/(x−1)=?",
+              "options": ["0", "1", "2", "−2"],
+              "correctAnswers": [2],
+              "explanation": "→2."
+            }
+          ]
+        },
+        {
+          "id": "u2-q04",
+          "order": 4,
+          "title": "Asymptotes — série 4",
+          "questions": [
+            {
+              "id": "u2-q04-n01",
+              "type": "multiple_choice",
+              "prompt": "f(x)=x/(x²−4) :",
+              "options": ["AV x=2", "AV x=−2", "AH y=0", "AH y=1"],
+              "correctAnswers": [0, 1],
+              "explanation": "Pôles ±2."
+            },
+            {
+              "id": "u2-q04-n02",
+              "type": "single_choice",
+              "prompt": "f(x)=x²/e^x en +∞ :",
+              "options": ["→0", "→+∞", "→1", "→e"],
+              "correctAnswers": [0],
+              "explanation": "Expo domine."
+            },
+            {
+              "id": "u2-q04-n03",
+              "type": "single_choice",
+              "prompt": "lim_{x→1}(x²−1)/(x−1)=?",
+              "options": ["0", "1", "2", "ND"],
+              "correctAnswers": [2],
+              "explanation": "x+1 → 2."
+            },
+            {
+              "id": "u2-q04-n04",
+              "type": "single_choice",
+              "prompt": "f(x)=2/(x−1). AV ?",
+              "options": ["x=0", "x=1", "y=1", "aucune"],
+              "correctAnswers": [1],
+              "explanation": "x=1."
+            },
+            {
+              "id": "u2-q04-n05",
+              "type": "single_choice",
+              "prompt": "Polynôme degré 2 en +∞ :",
+              "options": ["AH y=0", "oblique", "parabolique", "AH y=1"],
+              "correctAnswers": [2],
+              "explanation": "Pas d'asymptote droite."
+            },
+            {
+              "id": "u2-q04-n06",
+              "type": "single_choice",
+              "prompt": "f(x)=(x+1)/x². AH ?",
+              "options": ["y=0", "y=1", "y=x", "aucune"],
+              "correctAnswers": [0],
+              "explanation": "Degré num inférieur."
+            },
+            {
+              "id": "u2-q04-n07",
+              "type": "single_choice",
+              "prompt": "f(x)=(x³−1)/(x−1). lim_{x→1}=?",
+              "options": ["0", "1", "3", "AV"],
+              "correctAnswers": [2],
+              "explanation": "x²+x+1 → 3."
+            },
+            {
+              "id": "u2-q04-n08",
+              "type": "single_choice",
+              "prompt": "f(x)=x·e^{−x}. AH +∞ ?",
+              "options": ["y=0", "y=1", "y=e", "pas d'AH"],
+              "correctAnswers": [0],
+              "explanation": "→0."
+            },
+            {
+              "id": "u2-q04-n09",
+              "type": "single_choice",
+              "prompt": "Asymptote : distance courbe-droite ?",
+              "options": ["→0", "→1", "→+∞", "constante"],
+              "correctAnswers": [0],
+              "explanation": "Définition géométrique."
+            },
+            {
+              "id": "u2-q04-n10",
+              "type": "single_choice",
+              "prompt": "f(x)=(4x−1)/(2x+3). AH ?",
+              "options": ["y=0", "y=2", "y=4", "y=−1/3"],
+              "correctAnswers": [1],
+              "explanation": "y=2."
+            }
+          ]
+        },
+        {
+          "id": "u2-q05",
+          "order": 5,
+          "title": "Asymptotes — série 5",
+          "questions": [
+            {
+              "id": "u2-q05-n01",
+              "type": "multiple_choice",
+              "prompt": "f(x)=1/((x−3)(x+1)) :",
+              "options": ["AV x=3", "AV x=−1", "AH y=0", "AH y=1"],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux pôles."
+            },
+            {
+              "id": "u2-q05-n02",
+              "type": "single_choice",
+              "prompt": "lim_{+∞}(x²+3x)/(x²−1)=?",
+              "options": ["0", "1", "3", "+∞"],
+              "correctAnswers": [1],
+              "explanation": "→1."
+            },
+            {
+              "id": "u2-q05-n03",
+              "type": "single_choice",
+              "prompt": "f(x)=(2x²+x)/x simplifiée :",
+              "options": ["2x", "2x+1", "2x+1/x", "x+2"],
+              "correctAnswers": [1],
+              "explanation": "2x+1, x≠0."
+            },
+            {
+              "id": "u2-q05-n04",
+              "type": "single_choice",
+              "prompt": "f(x)=ln|x|. AV ?",
+              "options": ["x=0", "x=1", "y=0", "aucune"],
+              "correctAnswers": [0],
+              "explanation": "0⁺ et 0⁻."
+            },
+            {
+              "id": "u2-q05-n05",
+              "type": "single_choice",
+              "prompt": "Oblique : a = lim ?",
+              "options": ["f(x)/x", "f(x)", "f'(x)", "1/x"],
+              "correctAnswers": [0],
+              "explanation": "Coefficient directeur."
+            },
+            {
+              "id": "u2-q05-n06",
+              "type": "single_choice",
+              "prompt": "f(x)=x/(x−4). AV ?",
+              "options": ["x=0", "x=4", "y=4", "aucune"],
+              "correctAnswers": [1],
+              "explanation": "x=4."
+            },
+            {
+              "id": "u2-q05-n07",
+              "type": "single_choice",
+              "prompt": "lim_{+∞} 1/x³=?",
+              "options": ["0", "1", "+∞", "−∞"],
+              "correctAnswers": [0],
+              "explanation": "→0."
+            },
+            {
+              "id": "u2-q05-n08",
+              "type": "single_choice",
+              "prompt": "f(x)=√x en 0⁺ :",
+              "options": ["continue", "AV", "AH", "ND"],
+              "correctAnswers": [0],
+              "explanation": "Continue à droite."
+            },
+            {
+              "id": "u2-q05-n09",
+              "type": "single_choice",
+              "prompt": "f(x)=(x²+2x+1)/(x+1). AV x=−1 ?",
+              "options": ["oui", "non (trou)", "x=1", "y=0"],
+              "correctAnswers": [1],
+              "explanation": "Simplifie en x+1."
+            },
+            {
+              "id": "u2-q05-n10",
+              "type": "single_choice",
+              "prompt": "lim_{−∞}(x³−2x)/x²=?",
+              "options": ["0", "−∞", "+∞", "2"],
+              "correctAnswers": [1],
+              "explanation": "x−2/x→−∞."
+            }
+          ]
+        },
+        {
+          "id": "u2-q06",
+          "order": 6,
+          "title": "Asymptotes — série 6",
+          "questions": [
+            {
+              "id": "u2-q06-n01",
+              "type": "multiple_choice",
+              "prompt": "AH y=0 (rationnelle) si",
+              "options": [
+                "deg num < deg den",
+                "lim f=0 en +∞",
+                "f=1/x type",
+                "deg num > deg den"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Degré ou limite nulle."
+            },
+            {
+              "id": "u2-q06-n02",
+              "type": "single_choice",
+              "prompt": "f(x)=x²+1. AH ?",
+              "options": ["y=0", "y=1", "y=x", "aucune"],
+              "correctAnswers": [3],
+              "explanation": "Polynôme →+∞."
+            },
+            {
+              "id": "u2-q06-n03",
+              "type": "single_choice",
+              "prompt": "f(x)=3/(x+2). AH ?",
+              "options": ["y=0", "y=3", "y=−2", "y=3/2"],
+              "correctAnswers": [0],
+              "explanation": "→0."
+            },
+            {
+              "id": "u2-q06-n04",
+              "type": "single_choice",
+              "prompt": "lim_{2⁺} 1/(x−2)=?",
+              "options": ["0", "+∞", "−∞", "1"],
+              "correctAnswers": [1],
+              "explanation": "Pôle droit."
+            },
+            {
+              "id": "u2-q06-n05",
+              "type": "single_choice",
+              "prompt": "f(x)=(x³+2x)/x². Oblique ?",
+              "options": ["y=x", "y=x+2/x", "y=2", "aucune"],
+              "correctAnswers": [0],
+              "explanation": "x+2/x²."
+            },
+            {
+              "id": "u2-q06-n06",
+              "type": "single_choice",
+              "prompt": "Continuité sur [a,b] :",
+              "options": [
+                "intérieur seul",
+                "lim aux bornes =f",
+                "dérivable",
+                "constante"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Inclus aux extrémités."
+            },
+            {
+              "id": "u2-q06-n07",
+              "type": "single_choice",
+              "prompt": "f(x)=|x−1|/(x−1), x≠1 :",
+              "options": ["→1", "→−1", "→0", "pas de lim"],
+              "correctAnswers": [3],
+              "explanation": "Signe change."
+            },
+            {
+              "id": "u2-q06-n08",
+              "type": "single_choice",
+              "prompt": "lim_{+∞}(√(4x²+1)−2x)=?",
+              "options": ["0", "1", "+∞", "1/4"],
+              "correctAnswers": [0],
+              "explanation": "Conjugué."
+            },
+            {
+              "id": "u2-q06-n09",
+              "type": "single_choice",
+              "prompt": "f(x)=1/x−1/(x−1). AV ?",
+              "options": ["x=0", "x=1", "x=0 et 1", "aucune"],
+              "correctAnswers": [2],
+              "explanation": "Deux pôles."
+            },
+            {
+              "id": "u2-q06-n10",
+              "type": "single_choice",
+              "prompt": "f(x)=(5x+1)/(x−2). AH ?",
+              "options": ["y=0", "y=5", "y=2", "y=−1/2"],
+              "correctAnswers": [1],
+              "explanation": "y=5."
+            }
+          ]
+        },
+        {
+          "id": "u2-q07",
+          "order": 7,
+          "title": "Asymptotes — série 7",
+          "questions": [
+            {
+              "id": "u2-q07-n01",
+              "type": "multiple_choice",
+              "prompt": "Rationnelle : étudier",
+              "options": [
+                "factoriser",
+                "division",
+                "dériver seule",
+                "intégrer"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Factorisation et division."
+            },
+            {
+              "id": "u2-q07-n02",
+              "type": "single_choice",
+              "prompt": "f(x)=x³/x, x≠0. AV ?",
+              "options": ["x=0", "x=1", "y=0", "aucune"],
+              "correctAnswers": [0],
+              "explanation": "Pôle en 0."
+            },
+            {
+              "id": "u2-q07-n03",
+              "type": "single_choice",
+              "prompt": "lim_{−∞} e^x=?",
+              "options": ["0", "1", "+∞", "−∞"],
+              "correctAnswers": [0],
+              "explanation": "→0."
+            },
+            {
+              "id": "u2-q07-n04",
+              "type": "single_choice",
+              "prompt": "f(x)=(x²−9)/(x+3). En −3 :",
+              "options": ["0", "−6", "6", "prolongeable −6"],
+              "correctAnswers": [3],
+              "explanation": "x−3 → −6."
+            },
+            {
+              "id": "u2-q07-n05",
+              "type": "single_choice",
+              "prompt": "Deux AH distinctes ?",
+              "options": ["jamais", "possible", "obligatoire", "3 max"],
+              "correctAnswers": [1],
+              "explanation": "±∞ peuvent différer."
+            },
+            {
+              "id": "u2-q07-n06",
+              "type": "single_choice",
+              "prompt": "f(x)=1/√x. Domaine :",
+              "options": ["ℝ", "ℝ*", "]0,+∞[", "[0,+∞["],
+              "correctAnswers": [2],
+              "explanation": "x>0 strict."
+            },
+            {
+              "id": "u2-q07-n07",
+              "type": "single_choice",
+              "prompt": "lim_{0} (1−cos x)/x²=?",
+              "options": ["0", "1/2", "1", "+∞"],
+              "correctAnswers": [1],
+              "explanation": "Équivalent x²/2."
+            },
+            {
+              "id": "u2-q07-n08",
+              "type": "single_choice",
+              "prompt": "f(x)=x+1/x. Oblique ?",
+              "options": ["y=x", "y=1", "y=x+1", "aucune"],
+              "correctAnswers": [0],
+              "explanation": "y=x ; AV x=0."
+            },
+            {
+              "id": "u2-q07-n09",
+              "type": "single_choice",
+              "prompt": "lim_{+∞}(ln x)/x=?",
+              "options": ["0", "1", "+∞", "e"],
+              "correctAnswers": [0],
+              "explanation": "Croissances comparées."
+            },
+            {
+              "id": "u2-q07-n10",
+              "type": "single_choice",
+              "prompt": "f(x)=(x−1)²/(x−1). AV x=1 ?",
+              "options": ["oui", "non", "y=0", "x=0"],
+              "correctAnswers": [1],
+              "explanation": "=x−1 si x≠1."
+            }
+          ]
+        },
+        {
+          "id": "u2-q08",
+          "order": 8,
+          "title": "Asymptotes — série 8",
+          "questions": [
+            {
+              "id": "u2-q08-n01",
+              "type": "multiple_choice",
+              "prompt": "x→0⁺, e^{1/x} :",
+              "options": ["→+∞", "→0", "AV x=0", "AH y=0"],
+              "correctAnswers": [0, 2],
+              "explanation": "1/x→+∞."
+            },
+            {
+              "id": "u2-q08-n02",
+              "type": "single_choice",
+              "prompt": "lim_{1⁺} ln(x−1)=?",
+              "options": ["0", "1", "−∞", "+∞"],
+              "correctAnswers": [2],
+              "explanation": "→−∞."
+            },
+            {
+              "id": "u2-q08-n03",
+              "type": "single_choice",
+              "prompt": "f(x)=(3x²−1)/(x²+2). AH ?",
+              "options": ["y=0", "y=3", "y=−1/2", "y=3/2"],
+              "correctAnswers": [1],
+              "explanation": "y=3."
+            },
+            {
+              "id": "u2-q08-n04",
+              "type": "single_choice",
+              "prompt": "TVI :",
+              "options": [
+                "f(a)=0",
+                "changement signe ⇒ zéro",
+                "dérivée nulle",
+                "f bornée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Valeurs intermédiaires."
+            },
+            {
+              "id": "u2-q08-n05",
+              "type": "single_choice",
+              "prompt": "f(x)=x²/x, x≠0. En 0 :",
+              "options": ["0", "1", "AV", "ND domaine"],
+              "correctAnswers": [3],
+              "explanation": "Non définie en 0."
+            },
+            {
+              "id": "u2-q08-n06",
+              "type": "single_choice",
+              "prompt": "lim_{+∞}(x+√x)/x²=?",
+              "options": ["0", "1", "+∞", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "→0."
+            },
+            {
+              "id": "u2-q08-n07",
+              "type": "single_choice",
+              "prompt": "f(x)=2x/(x²−4). AV ?",
+              "options": ["x=±2", "x=0", "y=2", "aucune"],
+              "correctAnswers": [0],
+              "explanation": "±2."
+            },
+            {
+              "id": "u2-q08-n08",
+              "type": "single_choice",
+              "prompt": "Oblique y=−x+1 : reste f−(−x+1) ?",
+              "options": ["→0", "→+∞", "→1", "→−∞"],
+              "correctAnswers": [0],
+              "explanation": "Définition."
+            },
+            {
+              "id": "u2-q08-n09",
+              "type": "single_choice",
+              "prompt": "sin(x)/x prolongée en 0 :",
+              "options": ["0", "1", "ND", "+∞"],
+              "correctAnswers": [1],
+              "explanation": "Limite 1."
+            },
+            {
+              "id": "u2-q08-n10",
+              "type": "single_choice",
+              "prompt": "lim_{−∞}(x³+1)/x=?",
+              "options": ["0", "1", "+∞", "−∞"],
+              "correctAnswers": [3],
+              "explanation": "x²→+∞ signe −."
+            }
+          ]
+        },
+        {
+          "id": "u2-q09",
+          "order": 9,
+          "title": "Asymptotes — série 9",
+          "questions": [
+            {
+              "id": "u2-q09-n01",
+              "type": "multiple_choice",
+              "prompt": "1/x en +∞ :",
+              "options": ["décroît vers 0", "AH y=0", "reste >0", "AV x=0"],
+              "correctAnswers": [0, 1],
+              "explanation": "Positive →0."
+            },
+            {
+              "id": "u2-q09-n02",
+              "type": "single_choice",
+              "prompt": "f(x)=(x+1)/(x²+1). AH ?",
+              "options": ["y=0", "y=1", "y=−1", "aucune"],
+              "correctAnswers": [0],
+              "explanation": "Degré inférieur."
+            },
+            {
+              "id": "u2-q09-n03",
+              "type": "single_choice",
+              "prompt": "lim_{π/2⁻} tan x=?",
+              "options": ["0", "1", "+∞", "−∞"],
+              "correctAnswers": [2],
+              "explanation": "+∞ à gauche."
+            },
+            {
+              "id": "u2-q09-n04",
+              "type": "single_choice",
+              "prompt": "f(x)=x³−x. AH/oblique ?",
+              "options": ["y=x", "y=x³", "aucune finie", "y=0"],
+              "correctAnswers": [2],
+              "explanation": "Degré 3."
+            },
+            {
+              "id": "u2-q09-n05",
+              "type": "single_choice",
+              "prompt": "lim_{−1}(x²−1)/(x+1)=?",
+              "options": ["0", "−2", "2", "ND"],
+              "correctAnswers": [1],
+              "explanation": "x−1 → −2."
+            },
+            {
+              "id": "u2-q09-n06",
+              "type": "single_choice",
+              "prompt": "f(x)=1/(|x|−1). AV ?",
+              "options": ["x=1", "x=±1", "x=0", "aucune"],
+              "correctAnswers": [1],
+              "explanation": "|x|=1."
+            },
+            {
+              "id": "u2-q09-n07",
+              "type": "single_choice",
+              "prompt": "f continue, g→a : lim f(g(x))",
+              "options": ["f(a)", "0", "ND", "g(a)"],
+              "correctAnswers": [0],
+              "explanation": "Composition."
+            },
+            {
+              "id": "u2-q09-n08",
+              "type": "single_choice",
+              "prompt": "f(x)=(x²+x−2)/(x−1). En 1 :",
+              "options": ["0", "3", "AV", "ND"],
+              "correctAnswers": [1],
+              "explanation": "x+2 → 3."
+            },
+            {
+              "id": "u2-q09-n09",
+              "type": "single_choice",
+              "prompt": "lim_{+∞} x·e^{−2x}=?",
+              "options": ["0", "1", "+∞", "e^{−2}"],
+              "correctAnswers": [0],
+              "explanation": "→0."
+            },
+            {
+              "id": "u2-q09-n10",
+              "type": "single_choice",
+              "prompt": "f(x)=x/(x²−9). AV ?",
+              "options": ["x=±3", "x=0", "y=0 seule", "aucune"],
+              "correctAnswers": [0],
+              "explanation": "±3."
+            }
+          ]
+        },
+        {
+          "id": "u2-q10",
+          "order": 10,
+          "title": "Asymptotes — série 10",
+          "questions": [
+            {
+              "id": "u2-q10-n01",
+              "type": "multiple_choice",
+              "prompt": "Branche parabolique si",
+              "options": ["polynôme deg≥2", "lim f/x=±∞", "AH y=0", "AV seule"],
+              "correctAnswers": [0, 1],
+              "explanation": "Pas asymptote droite finie."
+            },
+            {
+              "id": "u2-q10-n02",
+              "type": "single_choice",
+              "prompt": "f(x)=(6x−1)/(3x+2). AH ?",
+              "options": ["y=0", "y=2", "y=−1/2", "y=3"],
+              "correctAnswers": [1],
+              "explanation": "y=2."
+            },
+            {
+              "id": "u2-q10-n03",
+              "type": "single_choice",
+              "prompt": "lim_{0} x² sin(1/x)=?",
+              "options": ["0", "1", "ND", "+∞"],
+              "correctAnswers": [0],
+              "explanation": "Gendarmes."
+            },
+            {
+              "id": "u2-q10-n04",
+              "type": "single_choice",
+              "prompt": "√(x+1)−√x en +∞ :",
+              "options": ["→0", "→1", "→+∞", "→1/2"],
+              "correctAnswers": [0],
+              "explanation": "Conjugué."
+            },
+            {
+              "id": "u2-q10-n05",
+              "type": "single_choice",
+              "prompt": "AV x=a : domaine",
+              "options": ["exclut a", "inclut a", "ℝ", "vide"],
+              "correctAnswers": [0],
+              "explanation": "Indéfini en a."
+            },
+            {
+              "id": "u2-q10-n06",
+              "type": "single_choice",
+              "prompt": "f(x)=1/x+1/(x−1). AH ?",
+              "options": ["y=0", "y=1", "y=2", "aucune"],
+              "correctAnswers": [0],
+              "explanation": "Somme →0."
+            },
+            {
+              "id": "u2-q10-n07",
+              "type": "single_choice",
+              "prompt": "lim_{+∞}(3x²−x+1)/(x²+5)=?",
+              "options": ["0", "1", "3", "+∞"],
+              "correctAnswers": [2],
+              "explanation": "→3."
+            },
+            {
+              "id": "u2-q10-n08",
+              "type": "single_choice",
+              "prompt": "f(x)=|1/x|. AH ?",
+              "options": ["y=0", "y=1", "y=−1", "aucune"],
+              "correctAnswers": [0],
+              "explanation": "→0."
+            },
+            {
+              "id": "u2-q10-n09",
+              "type": "single_choice",
+              "prompt": "Continu en a n'implique pas",
+              "options": [
+                "lim existe",
+                "dérivabilité",
+                "f(a) défini",
+                "prolongement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ex. |x| en 0."
+            },
+            {
+              "id": "u2-q10-n10",
+              "type": "single_choice",
+              "prompt": "f(x)=(x²+1)/(x−1). Oblique ?",
+              "options": ["y=x", "y=x+1", "y=x−1", "aucune"],
+              "correctAnswers": [1],
+              "explanation": "x+1+2/(x−1)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

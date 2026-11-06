@@ -1,0 +1,2728 @@
+{
+  "id": "terminale-svt-04",
+  "year": "terminale",
+  "subject": "svt",
+  "title": "La cellule et l'organisme",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Organisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Ultrastructure de la cellule eucaryote et organites",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel organite eucaryote possède une double membrane et son propre génome circulaire ?",
+              "options": [
+                "La mitochondrie",
+                "Le réticulum endoplasmique",
+                "L'appareil de Golgi",
+                "Le lysosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mitochondrie possède deux membranes et un ADN circulaire vestige de son origine endosymbiotique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel organite assure la maturation, le tri et l'adressage des protéines synthétisées par la cellule ?",
+              "options": [
+                "L'appareil de Golgi",
+                "Le péroxysome",
+                "Le centrosome",
+                "Le nucléole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'appareil de Golgi modifie les protéines par glycosylation et les emballe dans des vésicules de transport."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel compartiment membranaire est directement en continuité avec la membrane externe de l'enveloppe nucléaire ?",
+              "options": [
+                "Le réticulum endoplasmique",
+                "La vacuole centrale",
+                "La crête mitochondriale",
+                "L'endosome précoce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réticulum endoplasmique prolonge directement la membrane externe de l'enveloppe nucléaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans quel compartiment sous-nucléaire s'effectue la transcription des ARNr et l'assemblage des ribosomes ?",
+              "options": [
+                "Le nucléole",
+                "Le centrosome",
+                "La chromatine dense",
+                "Le kinetochore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nucléole est la région nucléaire dédiée à la biogenèse et à l'assemblage des sous-unités ribosomiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle structure multiprotéique contrôle le passage des macromolécules entre nucléoplasme et cytoplasme ?",
+              "options": [
+                "Le complexe du pore nucléaire",
+                "La jonction communicante",
+                "Le desmosome d'adhérence",
+                "Le canal voltage-dépendant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pores nucléaires traversent la double enveloppe pour réguler les échanges d'ARN et de protéines."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel organite contient des hydrolases acides dégradant les déchets cellulaires à pH acide ?",
+              "options": [
+                "Le lysosome",
+                "Le ribosome",
+                "Le protéasome",
+                "Le peroxysome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lysosome est le compartiment digestif intracellulaire riche en hydrolases fonctionnant à pH acide (environ 5)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Où sont localisés les complexes enzymatiques de la chaîne respiratoire au sein de la mitochondrie ?",
+              "options": [
+                "Dans la membrane interne mitochondriale",
+                "Dans la membrane externe mitochondriale",
+                "Dans la matrice soluble seule",
+                "Dans l'espace intermembranaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les complexes transporteurs d'électrons sont ancrés dans les crêtes de la membrane interne mitochondriale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel organite dégrade le peroxyde d'hydrogène toxique (H2O2) grâce à l'enzyme catalase ?",
+              "options": [
+                "Le peroxysome",
+                "Le centrosome",
+                "Le dictyosome",
+                "Le nucléosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le peroxysome assure l'oxydation d'acides gras et élimine le peroxyde d'hydrogène via la catalase."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la phase liquide du cytoplasme sans les organites ?",
+              "options": [
+                "Le cytosol (ou hyaloplasme)",
+                "Le nucléoplasme",
+                "Le plasma sanguin",
+                "La lymphe interstitielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cytosol est le milieu aqueux intracellulaire où baignent les organites et le cytosquelette."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels organites collaborent directement dans la voie de synthèse et de sécrétion des protéines destinées à l'exportation ?",
+              "options": [
+                "Le réticulum endoplasmique granuleux (rugueux)",
+                "L'appareil de Golgi",
+                "Le nucléole",
+                "Le péroxysome"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les protéines sécrétées sont traduites au niveau du REG puis transitent par le Golgi avant d'être exocytées."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Membranes biologiques et perméabilité membranaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la molécule lipidique fondamentale constitutive de la bicouche membranaire ?",
+              "options": [
+                "Le phospholipide amphiphile",
+                "Le triglycéride neutre",
+                "L'acide gras libre hydrophobe",
+                "La cire d'esters de cholestérol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les phospholipides possèdent une tête hydrophile et des queues hydrophobes formant spontanément une bicouche."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel lipide s'intercale entre les phospholipides pour réguler la fluidité membranaire chez l'animal ?",
+              "options": [
+                "Le cholestérol",
+                "Le glycogène",
+                "L'acide hyaluronique",
+                "Le palmitate d'éthyle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cholestérol stabilise la membrane en limitant la fluidité à haute température et en prévenant la gélification à basse température."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel concept formulé par Singer et Nicolson décrit la structure dynamique de la membrane plasmique ?",
+              "options": [
+                "La mosaïque fluide",
+                "La double hélice rigide",
+                "Le réseau cristallin cubique",
+                "Le feuillet bêta plissé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le modèle de la mosaïque fluide rend compte du déplacement latéral des lipides et des protéines membranaires."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mode de transport déplace un soluté contre son gradient de concentration en consommant de l'ATP ?",
+              "options": [
+                "Le transport actif primaire",
+                "La diffusion facilitée",
+                "La diffusion simple",
+                "L'osmose spontanée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le transport actif utilise l'énergie d'hydrolyse de l'ATP pour refouler des ions contre leur gradient électrochimique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Par quels canaux protéiques membranaires l'eau franchit-elle massivement la membrane plasmique ?",
+              "options": [
+                "Les aquaporines",
+                "Les canaux sodiques",
+                "Les jonctions ouvertes",
+                "Les transporteurs GLUT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les aquaporines sont des canaux protéiques hautement sélectifs permettant le passage rapide des molécules d'eau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle molécule gazeuse apolaire traverse la membrane plasmique directement par diffusion simple ?",
+              "options": [
+                "Le dioxygène (O2)",
+                "L'ion potassium (K+)",
+                "Le glucose phosphorylé",
+                "L'adénosine triphosphate (ATP)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les molécules petites et apolaires comme O2 et CO2 franchissent librement la bicouche phospholipidique sans transporteur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sur quelle face de la membrane plasmique se situe le glycocalix protecteur ?",
+              "options": [
+                "La face extracellulaire",
+                "La face cytosolique interne",
+                "Au cœur hydrophobe de la bicouche",
+                "Dans l'espace intermembranaire nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le glycocalix (ou feutrage glucidique) est formé de glycoprotéines et glycolipides exposés exclusivement à l'extérieur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une protéine qui s'insère à travers toute l'épaisseur de la bicouche lipidique ?",
+              "options": [
+                "Une protéine transmembranaire intrinsèque",
+                "Une protéine périphérique externe",
+                "Une histone nucléosomique",
+                "Une enzyme cytosolique libre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les protéines transmembranaires possèdent des domaines hydrophobes traversant la bicouche lipidique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mécanisme vésiculaire permet à la cellule de rejeter des macromolécules dans le milieu extracellulaire ?",
+              "options": [
+                "L'exocytose",
+                "L'endocytose",
+                "La phagocytose",
+                "L'autophagie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'exocytose fusionne une vésicule intracellulaire avec la membrane plasmique pour déverser son contenu à l'extérieur."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques définissent la diffusion facilitée à travers une membrane plasmique ?",
+              "options": [
+                "Elle s'effectue dans le sens du gradient électrochimique",
+                "Elle fait intervenir un transporteur ou un canal protéique",
+                "Elle nécessite une hydrolyse directe de molécules d'ATP",
+                "Elle est totalement insensible à la saturation des transporteurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La diffusion facilitée est passive (sans ATP, selon le gradient) mais requiert une protéine membranaire facilitatrice."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le cytosquelette et les mouvements cellulaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels cylindres protéiques creux de 25 nm de diamètre constituent les éléments les plus larges du cytosquelette ?",
+              "options": [
+                "Les microtubules",
+                "Les microfilaments d'actine",
+                "Les filaments intermédiaires",
+                "Les myofibrilles de myosine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les microtubules sont formés d'hétérodimères de tubuline alpha et bêta assemblés en cylindres creux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "De quelle protéine globulaire sont formés les microfilaments contractiles du cytosquelette ?",
+              "options": [
+                "L'actine",
+                "La laminine",
+                "La clathrine",
+                "La tubuline gamma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'actine G polymérise en actine F hélicoïdale pour constituer les microfilaments du cytosquelette."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel centre organisateur cellulaire est responsable de la nucléation des microtubules dans les cellules animales ?",
+              "options": [
+                "Le centrosome",
+                "Le nucléole",
+                "Le cinétochore",
+                "Le corps de Golgi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le centrosome, composé de deux centrioles entourés de matériel péricentriolaire, organise les microtubules cellulaires."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelles protéines motrices transportent des vésicules le long des microtubules en hydrolysant de l'ATP ?",
+              "options": [
+                "Les kinésines et les dynéines",
+                "Les hémoglobines et transferrines",
+                "Les histones et topoisomérases",
+                "Les intégrines et cadhérines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les kinésines (vers l'extrémité +) et dynéines (vers l'extrémité -) assurent le transport axonal et vésiculaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle catégorie de filaments du cytosquelette offre la plus grande résistance aux contraintes mécaniques ?",
+              "options": [
+                "Les filaments intermédiaires",
+                "Les microfilaments d'actine",
+                "Les microtubules dynamiques",
+                "Les filaments de fibrilline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les filaments intermédiaires (comme les kératines et lamines) confèrent aux cellules une formidable résistance mécanique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle structure d'actine et de myosine réalise le sillon de division lors de la cytodiérèse animale ?",
+              "options": [
+                "L'anneau contractile",
+                "Le fuseau mitotique",
+                "La plaque équatoriale",
+                "Le desmosome périphérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anneau contractile sous-membranaire s'étrangle grâce au glissement actine-myosine pour séparer les deux cellules filles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle structure axiale (axonème) à neuf doublets de microtubules permet le battement des cils et flagelles ?",
+              "options": [
+                "L'axonème en 9+2",
+                "La fibre musculaire striée",
+                "L'appareil réticulaire",
+                "Le complexe du pore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'axonème des cils et flagelles eucaryotes comporte neuf doublets périphériques et une paire centrale de microtubules."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle protéine de filaments intermédiaires est abondante dans l'épiderme pour protéger les cellules contre l'abrasion ?",
+              "options": [
+                "La kératine",
+                "La vimentine",
+                "La desmine",
+                "La myosine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les kératines forment un réseau de filaments intermédiaires renforçant les cellules de la peau et des muqueuses."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'alternance spontanée de phases d'élongation et de raccourcissement brutal des microtubules ?",
+              "options": [
+                "L'instabilité dynamique",
+                "Le potentiel d'action",
+                "L'inactivation sodique",
+                "La tétanisation contractile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'instabilité dynamique dépend de l'hydrolyse du GTP lié à la tubuline et permet la réorganisation rapide du réseau."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels rôles essentiels sont assurés par les différents composants du cytosquelette ?",
+              "options": [
+                "Le maintien de l'architecture et de la forme de la cellule",
+                "La ségrégation des chromosomes lors de la mitose",
+                "La synthèse directe de nouvelles molécules d'ADN",
+                "La dégradation enzymatique directe des toxines hépatiques"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le cytosquelette charpente la cellule et forme le fuseau mitotique lors de la division cellulaire."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Matrice extracellulaire et tissus spécialisés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle glycoprotéine fibreuse est la composante prépondérante de la matrice extracellulaire animale ?",
+              "options": [
+                "Le collagène",
+                "L'albumine",
+                "L'actine",
+                "La tubuline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le collagène représente environ un tiers des protéines totales de l'organisme et assure la résistance à la traction."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels récepteurs transmembranaires connectent le réseau matriciel externe au cytosquelette d'actine intracellulaire ?",
+              "options": [
+                "Les intégrines",
+                "Les clathrines",
+                "Les récepteurs nicotiniques",
+                "Les pompes calcium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les intégrines lient la fibronectine ou laminine externe aux filaments d'actine internes via des protéines relais."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel type de jonction intercellulaire oblitère l'espace intercellulaire pour former une barrière étanche épithéliale ?",
+              "options": [
+                "La jonction serrée (zonula occludens)",
+                "La jonction communicante (gap)",
+                "Le desmosome",
+                "L'hémidesmosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les jonctions serrées créent une ceinture imperméable régulant le passage paracellulaire dans les épithéliums."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle jonction intercellulaire permet le couplage métabolique et électrique direct entre deux cellules voisines ?",
+              "options": [
+                "La jonction communicante (jonction gap)",
+                "La jonction étanche",
+                "Le desmosome d'ancrage",
+                "La plaque motrice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les jonctions gap, constituées de canaux appelés connexons, autorisent le passage d'ions et petites molécules."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le feutrage matriciel spécialisé séparant un tissu épithélial du tissu conjonctif sous-jacent ?",
+              "options": [
+                "La lame basale",
+                "Le sarcolemme",
+                "Le périmysium",
+                "La névroglie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lame basale, riche en laminine et collagène IV, ancre l'épithélium et joue un rôle de filtre moléculaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle protéine de la matrice extracellulaire confère aux parois artérielles et aux poumons leur élasticité réversible ?",
+              "options": [
+                "L'élastine",
+                "La myosine",
+                "L'hémocyanine",
+                "Le glycogène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élastine permet aux tissus soumis à des déformations cycliques de reprendre passivement leur forme initiale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quels longs polysaccharides chargés négativement retiennent l'eau pour former le gel hydraté de la matrice conjonctive ?",
+              "options": [
+                "Les glycosaminoglycanes (GAG)",
+                "Les acides désoxyribonucléiques",
+                "Les triglycérides saturés",
+                "Les phospholipides neutres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les GAG (comme l'acide hyaluronique) fixent d'immenses volumes d'eau et résistent aux forces de compression."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on un regroupement coopératif de cellules différenciées partageant une même spécialité fonctionnelle ?",
+              "options": [
+                "Un tissu",
+                "Un organite",
+                "Un blastocyste",
+                "Un syncytium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un tissu est un ensemble organisé de cellules semblables et de leur matrice extracellulaire effectuant une fonction définie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelles cellules résidentes du tissu conjonctif fabriquent et renouvellent les constituants macromoléculaires de la matrice ?",
+              "options": [
+                "Les fibroblastes",
+                "Les hépatocytes",
+                "Les neurones pyramidaux",
+                "Les érythrocytes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fibroblastes synthétisent le collagène, l'élastine et les glycosaminoglycanes de la matrice conjonctive."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels éléments participent directement à la constitution des jonctions d'adhérence cellulaire (desmosomes) ?",
+              "options": [
+                "Les cadhérines transmembranaires",
+                "Les filaments intermédiaires du cytosquelette",
+                "Les canaux Na+ voltage-dépendants",
+                "Les ribosomes de la lumière réticulaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les desmosomes font intervenir des cadhérines unissant les membranes et reliées aux filaments de kératine."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Le neurone et l'organisation du système nerveux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel prolongement unique et cylindrique du neurone conduit le message nerveux efférent vers les cibles synaptiques ?",
+              "options": [
+                "L'axone",
+                "La dendrite",
+                "Le péricaryon",
+                "L'épine synaptique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'axone conduit les potentiels d'action depuis le cône d'émergence jusqu'aux terminaisons synaptiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel manchon lipidique isolant entoure l'axone pour accélérer la vitesse de propagation de l'influx nerveux ?",
+              "options": [
+                "La gaine de myéline",
+                "L'épinèvre",
+                "La capsule articulaire",
+                "Le glycocalix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La gaine de myéline isole électriquement l'axone, permettant la conduction saltatoire rapide de l'influx."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelles cellules gliales produisent la gaine de myéline dans le système nerveux périphérique (nerfs) ?",
+              "options": [
+                "Les cellules de Schwann",
+                "Les oligodendrocytes",
+                "Les astrocytes",
+                "Les microgliocytes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le SNP, chaque cellule de Schwann s'enroule autour d'un segment d'axone pour former la myéline."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelles cellules gliales fabriquent la gaine de myéline dans le système nerveux central (moelle et encéphale) ?",
+              "options": [
+                "Les oligodendrocytes",
+                "Les cellules de Schwann",
+                "Les épendymocytes",
+                "Les motoneurones"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les oligodendrocytes myélinisent plusieurs axones simultanément au sein du système nerveux central."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment se nomment les étranglements réguliers dépourvus de myéline où se concentrent les canaux Na+ voltage-dépendants ?",
+              "options": [
+                "Les nœuds de Ranvier",
+                "Les boutons terminaux",
+                "Les plaques motrices",
+                "Les corpuscules de Ruffini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aux nœuds de Ranvier, la membrane nue et dense en canaux sodiques permet la régénération du potentiel d'action."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelles expansions ramifiées du corps cellulaire reçoivent les signaux afférents issus d'autres neurones ?",
+              "options": [
+                "Les dendrites",
+                "Les télodendrons",
+                "Les fibres de Sharpey",
+                "Les sarcolytes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les dendrites augmentent la surface de réception synaptique et conduisent les potentiels gradués vers le soma."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on un amas de corps cellulaires neuronaux situé en dehors du système nerveux central ?",
+              "options": [
+                "Un ganglion nerveux",
+                "Un nerf crânien",
+                "Un noyau gris central",
+                "Une racine rachidienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un ganglion est un rassemblement périphérique de corps cellulaires (ex: ganglion de la racine dorsale)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Où se situe la substance grise dans la moelle épinière en coupe transversale ?",
+              "options": [
+                "Au centre, en forme de papillon (ou de H)",
+                "En périphérie formant les cordons blancs",
+                "Exclusivement dans le canal épendymaire",
+                "Dans l'espace méningé épidural"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La moelle épinière possède une substance grise centrale (corps cellulaires) entourée de substance blanche (fibres)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelles cellules étoilées de la glie participent au soutien métabolique et à la barrière hémato-encéphalique ?",
+              "options": [
+                "Les astrocytes",
+                "Les cellules musculaires",
+                "Les macrophages cutanés",
+                "Les cellules caliciformes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les astrocytes nourrissent les neurones, régulent le potassium extracellulaire et forment les pieds vasculaires de la BHE."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels éléments structurels trouve-t-on principalement dans la substance grise du cortex cérébral ?",
+              "options": [
+                "Des corps cellulaires neuronaux",
+                "Des terminaisons dendritiques et synapses",
+                "Des axones exclusivement myélinisés sans synapse",
+                "Du tissu cartilagineux hyalin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La substance grise est le lieu d'intégration synaptique regroupant somas, dendrites et arborisations terminales."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "La cellule musculaire striée squelettique (myocyte)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la caractéristique morphologique fondamentale d'une fibre musculaire squelettique mature ?",
+              "options": [
+                "C'est une cellule géante plurinucléée (syncytium)",
+                "C'est une petite cellule arrondie anucléée",
+                "C'est un ensemble disjoint de cellules mononucléées",
+                "C'est une cellule dépourvue de membrane plasmique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fibre résulte de la fusion embryonnaire de nombreux myoblastes, formant un syncytium à noyaux périphériques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la membrane plasmique spécifique enveloppant la fibre musculaire ?",
+              "options": [
+                "Le sarcolemme",
+                "Le sarcoplasme",
+                "L'épimysium",
+                "L'aponévrose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sarcolemme est la membrane cellulaire de la fibre musculaire, doublée extérieurement d'une lame basale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle unité structurale contractile élémentaire se répète de façon périodique dans une myofibrille ?",
+              "options": [
+                "Le sarcomère",
+                "Le néphron",
+                "L'ostéone",
+                "Le centrosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sarcomère est le segment contractile délimité par deux stries Z consécutives le long de la myofibrille."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelles lignes sombres délimitent les extrémités latérales de chaque sarcomère ?",
+              "options": [
+                "Les stries Z",
+                "Les lignes M",
+                "Les bandes H",
+                "Les bandes A"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les stries Z ancrent les filaments fins d'actine et bornent chaque sarcomère."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quels sont les deux principaux types de myofilaments présents au sein du sarcomère ?",
+              "options": [
+                "L'actine (filaments fins) et la myosine (filaments épais)",
+                "La tubuline et la dynéine motrice",
+                "Le collagène matriciel et l'élastine",
+                "La kératine et la vimentine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'agencement ordonné des filaments fins d'actine et épais de myosine confère au muscle son aspect strié."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel réseau membranaire interne stocke une grande réserve d'ions calcium indispensables à la contraction ?",
+              "options": [
+                "Le réticulum sarcoplasmique",
+                "L'appareil de Golgi",
+                "La lumière mitochondriale",
+                "L'espace périnucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réticulum sarcoplasmique séquestre le Ca2+ et le libère dans le cytosol dès qu'arrive une dépolarisation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelles invaginations du sarcolemme propagent le potentiel d'action vers le cœur de la cellule musculaire ?",
+              "options": [
+                "Les tubules transverses (tubules T)",
+                "Les nœuds de Ranvier",
+                "Les jonctions ouvertes",
+                "Les canalicules biliaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les tubules T conduisent la dépolarisation au voisinage direct des citernes de réticulum sarcoplasmique (triade)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle protéine musculaire fixe le dioxygène intracellulaire pour faciliter sa diffusion ?",
+              "options": [
+                "La myoglobine",
+                "L'albumine sérique",
+                "La transferrine",
+                "La ferritine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La myoglobine stocke l'oxygène dans le sarcoplasme et donne leur couleur rouge aux fibres d'endurance."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelles cellules souches musculaires mononucléées situées sous la lame basale permettent la régénération ?",
+              "options": [
+                "Les cellules satellites",
+                "Les ostéocytes",
+                "Les chondroblastes",
+                "Les péricytes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules satellites peuvent proliférer et fusionner pour réparer les fibres musculaires lésées."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles particularités cytologiques caractérisent le myocyte strié squelettique ?",
+              "options": [
+                "Une disposition parallèle ordonnée de nombreuses myofibrilles",
+                "Une richesse considérable en mitochondries fournissant l'ATP",
+                "L'absence totale de protéines membranaires",
+                "Un noyau unique situé au centre géométrique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le myocyte contient une multitude de myofibrilles contractiles et de mitochondries répondant à la forte demande en ATP."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "L'organisation cellulaire du pancréas endocrine",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on les amas cellulaires endocrines dispersés dans le parenchyme pancréatique ?",
+              "options": [
+                "Les îlots de Langerhans",
+                "Les glomérules de Malpighi",
+                "Les follicules thyroïdiens",
+                "Les nodules lymphatiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les îlots de Langerhans constituent la partie endocrine (environ 1 à 2 % de la masse du pancréas)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles cellules sécrètent l'insuline en réponse à une augmentation de la glycémie ?",
+              "options": [
+                "Les cellules bêta",
+                "Les cellules alpha",
+                "Les cellules delta",
+                "Les cellules acineuses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules bêta des îlots de Langerhans sont les capteurs et sécréteurs de l'hormone hypoglycémiante insuline."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelles cellules des îlots pancréatiques sécrètent le glucagon lors d'une hypoglycémie ?",
+              "options": [
+                "Les cellules alpha",
+                "Les cellules bêta",
+                "Les cellules acineuses",
+                "Les cellules F (PP)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules alpha synthétisent et libèrent le glucagon, hormone hyperglycémiante mobilisant les réserves hépatiques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle partie prédominante du pancréas assure la sécrétion exocrine des enzymes digestives ?",
+              "options": [
+                "Les acinus pancréatiques",
+                "Les îlots de Langerhans",
+                "Les corps de Nissl",
+                "Les plexus sous-muqueux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les acinus séreux sécrètent les sucs pancréatiques (amylase, lipases, protéases) dans le canal digestif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment les hormones sécrétées par les îlots pancréatiques rejoignent-elles la circulation générale ?",
+              "options": [
+                "Par un réseau dense de capillaires sanguins fenestrés",
+                "Par le canal de Wirsung vers le duodénum",
+                "Par diffusion directe le long des axones sensitifs",
+                "Par les vaisseaux lymphatiques de la plèvre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les hormones endocrines diffusent dans les capillaires fenestrés très abondants au sein des îlots."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle hormone paracrine inhibant à la fois insuline et glucagon est sécrétée par les cellules delta ?",
+              "options": [
+                "La somatostatine",
+                "L'aldostérone",
+                "La calcitonine",
+                "La prolactine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La somatostatine produite par les cellules delta exerce une régulation paracrine inhibitrice sur les autres cellules des îlots."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle proportion approximative de cellules au sein d'un îlot de Langerhans représentent les cellules bêta ?",
+              "options": [
+                "Environ 60 à 70 %",
+                "Moins de 5 %",
+                "Exactement 10 %",
+                "Près de 99 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules bêta forment la majorité des cellules insulaires (60-70 %), situées préférentiellement au centre de l'îlot."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel transporteur membranaire passif permet l'entrée proportionnelle du glucose dans la cellule bêta humaine ?",
+              "options": [
+                "GLUT1 (ou GLUT2)",
+                "SGLT1",
+                "Le canal CFTR",
+                "L'aquaporine 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'entrée du glucose par les transporteurs GLUT permet à la cellule bêta d'ajuster son métabolisme et sa sécrétion d'insuline."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un organe qui associe des fonctions de sécrétion à la fois exocrine et endocrine ?",
+              "options": [
+                "Une glande amphicrine",
+                "Une glande apocrine",
+                "Une glande holocrine",
+                "Une glande sébacée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pancréas est une glande amphicrine hétérotypique : fonction exocrine (acinus) et endocrine (îlots)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles hormones peptidiques régulatrices de la glycémie sont produites par le pancréas endocrine ?",
+              "options": [
+                "L'insuline",
+                "Le glucagon",
+                "L'adrénaline",
+                "Le cortisol"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'insuline et le glucagon sont les deux hormones pancréatiques clés de l'homéostasie glucidique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les cellules effectrices et réceptrices du réflexe myotatique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel mécanorécepteur sensoriel logé parallèlement aux fibres musculaires détecte l'étirement du muscle ?",
+              "options": [
+                "Le fuseau neuromusculaire",
+                "Le corpuscule de Pacini",
+                "Le disque de Merkel",
+                "L'organe de Corti"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fuseau neuromusculaire contient des fibres intrafusales sensibles à la variation de longueur du muscle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles fibres nerveuses sensitives myélinisées rapides conduisent le message depuis le fuseau vers la moelle ?",
+              "options": [
+                "Les fibres sensitives de type Ia",
+                "Les fibres motrices gamma",
+                "Les fibres sympathiques amyéliniques C",
+                "Les fibres préganglionnaires B"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fibres Ia sont des axones de fort diamètre fortement myélinisés transmettant l'étirement à grande vitesse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Par quelle racine du nerf rachidien les fibres sensitives afférentes entrent-elles dans la moelle épinière ?",
+              "options": [
+                "La racine dorsale (postérieure)",
+                "La racine ventrale (antérieure)",
+                "Le cordon ventral",
+                "La fente médiane antérieure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La racine dorsale est purement sensitive ; elle achemine les messages sensoriels vers la moelle épinière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Où se trouvent les corps cellulaires des neurones sensitifs en T impliqués dans le réflexe myotatique ?",
+              "options": [
+                "Dans le ganglion rachidien de la racine dorsale",
+                "Dans la corne ventrale de la moelle",
+                "Dans le cortex sensitif pariétal",
+                "Dans le thalamus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les neurones pseudounipolaires en T ont leur soma logé dans le ganglion spinal de la racine dorsale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel neurone moteur médullaire commande directement la contraction des fibres musculaires extrafusales ?",
+              "options": [
+                "Le motoneurone alpha",
+                "Le motoneurone gamma",
+                "L'interneurone de Renshaw",
+                "Le neurone en T"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le motoneurone alpha, situé dans la corne ventrale de la moelle, innerve les fibres musculaires contractiles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Par quelle racine rachidienne les axones des motoneurones alpha quittent-ils la moelle épinière ?",
+              "options": [
+                "La racine ventrale (antérieure)",
+                "La racine dorsale (postérieure)",
+                "Le septum médian dorsal",
+                "La pie-mère méningée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La racine ventrale est motrice : elle contient les axones efférents des motoneurones gagnant les muscles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi qualifie-t-on le réflexe myotatique de réflexe « monosynaptique » pour le muscle étiré ?",
+              "options": [
+                "Car il n'y a qu'une seule synapse centrale entre le neurone sensitif et le motoneurone",
+                "Car il ne possède qu'un seul récepteur sensoriel dans tout le corps",
+                "Car il n'implique qu'une seule fibre musculaire par muscle",
+                "Car le message ne traverse qu'un seul nerf rachidien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'axone sensitif Ia s'articule directement sur le motoneurone alpha dans la substance grise sans interneurone."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle cellule nerveuse intermédiaire permet le relâchement du muscle antagoniste lors du réflexe ?",
+              "options": [
+                "Un interneurone inhibiteur",
+                "Un oligodendrocyte glial",
+                "Un motoneurone gamma",
+                "Une cellule satellite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'innervation réciproque fait intervenir un interneurone inhibiteur qui hyperpolarise le motoneurone du muscle antagoniste."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la jonction synaptique spécialisée entre le motoneurone alpha et la fibre musculaire ?",
+              "options": [
+                "La plaque motrice (synapse neuromusculaire)",
+                "Le fuseau de Golgi",
+                "Le nodule sinusal",
+                "L'épine dendritique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La plaque motrice est la synapse chimique où l'acétylcholine déclenche le potentiel d'action musculaire."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels constituants font obligatoirement partie de l'arc réflexe myotatique monosynaptique ?",
+              "options": [
+                "Le fuseau neuromusculaire",
+                "Le neurone sensitif en T et le motoneurone alpha",
+                "Le cortex cérébral moteur",
+                "Le noyau caudé télencéphalique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le réflexe myotatique est involontaire et médullaire : il ne nécessite pas l'intervention du cortex cérébral."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Organisation des glandes surrénales et axe corticotrope",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Où sont situées anatomiquement les glandes surrénales dans l'organisme humain ?",
+              "options": [
+                "Au-dessus de chaque rein, dans l'espace rétropéritonéal",
+                "À la base du cerveau, dans la selle turcique",
+                "Au niveau de la gorge, devant le cartilage thyroïde",
+                "Dans le médiastin antérieur au-dessus du cœur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux glandes surrénales coiffent le pôle supérieur des reins dans la loge rétropéritonéale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles sont les deux zones anatomiques et embryologiques distinctes de la glande surrénale ?",
+              "options": [
+                "Le cortex surrénalien (corticosurrénale) et la médullosurrénale",
+                "L'adénohypophyse et la neurohypophyse",
+                "Le lobe antérieur et le corps pinéal",
+                "La zone folliculaire et le stroma ovarien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La corticosurrénale (externe, d'origine mésodermique) entoure la médullosurrénale (centrale, d'origine neuroectodermique)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle hormone stéroïde de la phase d'adaptation au stress est synthétisée par la corticosurrénale ?",
+              "options": [
+                "Le cortisol",
+                "L'adrénaline",
+                "La noradrénaline",
+                "L'ocytocine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La zone fasciculée du cortex surrénalien synthétise le cortisol, un glucocorticoïde essentiel à l'adaptation au stress."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle catécholamine est rapidement déversée dans le sang par la médullosurrénale lors de la phase d'alarme ?",
+              "options": [
+                "L'adrénaline",
+                "L'insuline",
+                "La corticolibérine (CRH)",
+                "L'hormone de croissance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules chromaffines de la médullosurrénale sécrètent l'adrénaline sous contrôle du système nerveux sympathique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "De quel tissu embryonnaire dérivent les cellules chromaffines de la médullosurrénale ?",
+              "options": [
+                "Des crêtes neurales (ectoderme)",
+                "Du mésoderme intermédiaire",
+                "De l'endoderme pharyngien",
+                "De la chorde dorsale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules chromaffines sont des neurones postganglionnaires modifiés issus des crêtes neurales."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle neurohormone sécrétée par l'hypothalamus stimule la libération d'ACTH par l'hypophyse ?",
+              "options": [
+                "La CRH (Corticotropin-Releasing Hormone)",
+                "La GnRH",
+                "La TRH",
+                "L'ADH (vasopressine)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La CRH hypothalamique est libérée dans le système porte pour stimuler les cellules corticotropes hypophysaires."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle hormone sécrétée par l'adénohypophyse stimule la synthèse de cortisol par le cortex surrénalien ?",
+              "options": [
+                "L'ACTH (adénocorticotrophine)",
+                "La TSH",
+                "La prolactine",
+                "La FSH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ACTH hypophysaire voyage dans le sang pour activer la stéroïdogenèse au sein de la corticosurrénale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Par quelle voie la sécrétion d'adrénaline médullosurrénalienne est-elle déclenchée en une fraction de seconde ?",
+              "options": [
+                "Par la voie nerveuse sympathique splanchnique",
+                "Par voie hormonale hypophysaire exclusive",
+                "Par diffusion lente dans le tissu sous-cutané",
+                "Par voie rétrograde dans les canaux lymphatiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'activation du système sympathique innerve directement la médullosurrénale, permettant une réponse quasi instantanée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "De quelle molécule lipidique précurseur dérivent le cortisol et les autres stéroïdes surrénaliens ?",
+              "options": [
+                "Le cholestérol",
+                "Le glycérol libre",
+                "L'acide linoléique",
+                "La sphingomyéline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cholestérol à 27 carbones est le précurseur de toutes les hormones stéroïdiennes (cortisol, aldostérone)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels organes ou structures composent l'axe hypothalamo-hypophyso-surrénalien (axe corticotrope) ?",
+              "options": [
+                "L'hypothalamus",
+                "L'adénohypophyse",
+                "Le cortex des glandes surrénales",
+                "Le cervelet vestibulaire"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'axe corticotrope comprend l'hypothalamus (CRH), l'hypophyse antérieure (ACTH) et le cortex surrénalien (cortisol)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Spécialisation cellulaire et différenciation tissulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on l'acquisition par une cellule d'une structure et de fonctions hautement spécialisées ?",
+              "options": [
+                "La différenciation cellulaire",
+                "La transformation tumorale",
+                "La cytodiérèse",
+                "L'hybridation génomique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La différenciation permet à des cellules issues de mitoses successives d'acquérir des profils spécialisés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Toutes les cellules somatiques d'un individu possèdent le même ADN. Comment expliquer leurs identités différentes ?",
+              "options": [
+                "Par une expression différentielle des gènes",
+                "Par une perte sélective de certains chromosomes",
+                "Par l'élimination de fragments de nucléotides",
+                "Par des mutations somatiques ciblées systématiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque type cellulaire n'exprime qu'un sous-ensemble spécifique de gènes correspondant à ses fonctions."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une cellule souche capable d'engendrer un organisme entier ainsi que ses annexes embryonnaires ?",
+              "options": [
+                "Une cellule totipotente",
+                "Une cellule pluripotente",
+                "Une cellule multipotente",
+                "Une cellule unipotente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le zygote et les premières cellules de l'embryon jusqu'au stade 8 cellules sont totipotents."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelles protéines régulent l'activité transcriptionnelle en se liant à des séquences régulatrices spécifiques de l'ADN ?",
+              "options": [
+                "Les facteurs de transcription",
+                "Les ribozymes catalytiques",
+                "Les protéines chaperonnes",
+                "Les phosphatases acides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les facteurs de transcription activent ou répriment l'initiation de la transcription des gènes cibles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelles modifications chromatiniennes régulent l'expression génique sans altérer la séquence de nucléotides ?",
+              "options": [
+                "Les modifications épigénétiques",
+                "Les mutations ponctuelles",
+                "Les translocations chromosomiques",
+                "Les crossing-overs inégaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méthylation de l'ADN et les modifications des histones régulent l'accessibilité de la chromatine sans changer la séquence d'ADN."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel phénomène de mort cellulaire programmée est essentiel à la sculpture des organes et à l'homéostasie tissulaire ?",
+              "options": [
+                "L'apoptose",
+                "La nécrose traumatique",
+                "L'ischémie myocardique",
+                "L'embolie cellulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'apoptose élimine proprement les cellules surnuméraires ou endommagées sans provoquer d'inflammation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle spécialisation apicale des entérocytes de l'intestin grêle décuple la surface membranaire d'absorption ?",
+              "options": [
+                "Les microvillosités en plateau strié",
+                "Les cils vibratiles bronchiques",
+                "Les podosomes d'ancrage",
+                "Les pseudopodes de phagocytose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les microvillosités apicales forment la bordure en brosse, multipliant considérablement la surface d'échange digestif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le microenvironnement local qui maintient et régule les cellules souches dans un tissu ?",
+              "options": [
+                "La niche des cellules souches",
+                "La plaque motrice",
+                "L'espace périsinusoïdal",
+                "Le centre germinatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La niche fournit les signaux cellulaires et matriciels préservant l'état souche ou guidant la différenciation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle modification cytologique spectaculaire subit le globule rouge humain au terme de sa différenciation ?",
+              "options": [
+                "L'expulsion totale de son noyau",
+                "La polyploïdisation génomique",
+                "La multiplication des centrosomes",
+                "L'hypertrophie des mitochondries"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'érythrocyte mature expulse son noyau et ses organites pour maximiser son contenu en hémoglobine."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels mécanismes concourent à la mise en place et au maintien de la différenciation cellulaire ?",
+              "options": [
+                "La régulation de la transcription par des facteurs spécifiques",
+                "Le remodelage épigénétique de la chromatine",
+                "La perte définitive et irréversible de gènes non utilisés",
+                "La synthèse aléatoire de nouveaux chromosomes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La différenciation repose sur des réseaux de facteurs de transcription et des marques épigénétiques stables."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Fonctions",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Genèse et propagation du potentiel d'action neuronal",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la valeur caractéristique du potentiel de repos transmembranaire d'un axone au repos ?",
+              "options": [
+                "Environ -70 mV",
+                "Environ +30 mV",
+                "Exactement 0 mV",
+                "Environ +100 mV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intérieur de l'axone au repos est électronégatif par rapport à l'extérieur (environ -70 mV)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel système de transport actif maintient les gradients de concentration en Na+ et K+ de repos ?",
+              "options": [
+                "La pompe Na+/K+ ATPase",
+                "Le canal CFTR",
+                "L'aquaporine 1",
+                "La pompe à protons vacuolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pompe Na+/K+ expulse 3 Na+ contre 2 K+ entrés en hydrolysant une molécule d'ATP."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel événement ionique membranaire est responsable de la phase de dépolarisation brutale du potentiel d'action ?",
+              "options": [
+                "L'ouverture massive des canaux Na+ voltage-dépendants",
+                "L'ouverture retardée des canaux K+",
+                "La fermeture immédiate de tous les canaux",
+                "L'entrée massive d'ions chlorure négatifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dès le seuil atteint, les canaux Na+ s'ouvrent, provoquant une entrée massive d'ions Na+ dans la cellule."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel flux ionique permet la repolarisation puis l'hyperpolarisation passagère de la membrane axonale ?",
+              "options": [
+                "La sortie d'ions potassium K+ par des canaux voltage-dépendants",
+                "L'entrée d'ions sodium Na+",
+                "L'expulsion active d'eau",
+                "L'entrée de calcium cytosolique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inactivation des canaux Na+ et l'ouverture des canaux K+ voltage-dépendants entraînent une sortie de K+ repolarisante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie la « loi du tout ou rien » caractérisant le potentiel d'action ?",
+              "options": [
+                "Si la dépolarisation atteint le seuil critique, le PA est déclenché avec une amplitude maximale constante",
+                "L'amplitude du potentiel d'action dépend proportionnellement de la force du stimulus",
+                "Le potentiel d'action ne peut se propager que sur une distance inférieure à 1 millimètre",
+                "Le neurone meurt après l'émission d'un potentiel d'action"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En deçà du seuil il n'y a rien ; au-delà, le potentiel d'action survient d'emblée avec son amplitude stéréotypée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment le message nerveux est-il codé le long d'une fibre nerveuse individuelle ?",
+              "options": [
+                "En modulation de fréquence de potentiels d'action",
+                "En modulation de l'amplitude du potentiel d'action",
+                "En variation de la durée de chaque potentiel d'action",
+                "En inversion du sens de propagation à chaque dépolarisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'amplitude d'un PA étant invariante, l'intensité du message est codée en fréquence de potentiels d'action."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on le mode de propagation du potentiel d'action d'un nœud de Ranvier au suivant ?",
+              "options": [
+                "La conduction saltatoire",
+                "La conduction continue lente",
+                "La diffusion osmotique",
+                "Le flux laminaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur les fibres myélinisées, la dépolarisation saute d'un nœud de Ranvier au suivant, économisant temps et énergie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment s'appelle le bref laps de temps après un potentiel d'action où la membrane est totalement inexcitable ?",
+              "options": [
+                "La période réfractaire absolue",
+                "Le temps de latence",
+                "La sommation temporelle",
+                "Le délai synaptique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durant la période réfractaire absolue, les canaux Na+ sont inactivés, interdisant tout nouveau PA immédiat."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel paramètre anatomique de l'axone permet d'augmenter significativement la vitesse de l'influx nerveux ?",
+              "options": [
+                "Un plus grand diamètre de l'axone",
+                "Une diminution de la température ambiante",
+                "Une réduction de l'épaisseur de myéline",
+                "Un raccourcissement des nœuds de Ranvier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un diamètre axonal plus grand diminue la résistance longitudinale interne et accélère la conduction."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels canaux membranaires sont directement indispensables à la survenue des phases du potentiel d'action ?",
+              "options": [
+                "Les canaux Na+ voltage-dépendants",
+                "Les canaux K+ voltage-dépendants",
+                "Les canaux sodiques épithéliaux ENaC non régulés",
+                "Les canaux de fuite à l'eau seuls"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le potentiel d'action dépend de l'ouverture séquentielle des canaux Na+ puis K+ sensibles au potentiel de membrane."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Transmission synaptique et intégration neuronale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel ion pénètre dans le bouton présynaptique lors de la dépolarisation pour déclencher l'exocytose des vésicules ?",
+              "options": [
+                "L'ion calcium (Ca2+)",
+                "L'ion chlore (Cl-)",
+                "L'ion potassium (K+)",
+                "L'ion magnésium (Mg2+)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ouverture des canaux Ca2+ voltage-dépendants entraîne un afflux de calcium stimulant la fusion des vésicules synaptiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment le message nerveux est-il codé au niveau de la fente synaptique chimique ?",
+              "options": [
+                "En concentration de neurotransmetteur libéré",
+                "En fréquence d'ondes électriques sinusoïdales",
+                "En taille des vésicules synaptiques",
+                "En intensité de champ magnétique local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fréquence des potentiels d'action présynaptiques est convertie en une concentration proportionnelle de neurotransmetteur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le neurotransmetteur excitateur libéré à la jonction neuromusculaire des vertébrés ?",
+              "options": [
+                "L'acétylcholine",
+                "Le GABA",
+                "La sérotonine",
+                "La dopamine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'acétylcholine est le neurotransmetteur excitateur exclusif des motoneurones somatiques sur la plaque motrice."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur quel type de récepteur postsynaptique l'acétylcholine se lie-t-elle sur le sarcolemme musculaire ?",
+              "options": [
+                "Le récepteur nicotinique (canal ionique ligand-dépendant)",
+                "Le récepteur nucléaire aux stéroïdes",
+                "Le récepteur métabotropique bêta-2",
+                "Le canal potassique de fuite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le récepteur nicotinique s'ouvre sous l'effet de l'acétylcholine, laissant entrer du Na+ pour dépolariser la membrane."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle enzyme présente dans la fente synaptique dégrade immédiatement l'acétylcholine pour clore le signal ?",
+              "options": [
+                "L'acétylcholinestérase",
+                "La pyruvate kinase",
+                "L'amylase salivaire",
+                "L'ATP synthase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'acétylcholinestérase hydrolyse l'acétylcholine en acétate et choline en quelques fractions de milliseconde."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on une légère dépolarisation locale postsynaptique rapprochant la membrane du seuil d'excitation ?",
+              "options": [
+                "Un PPSE (Potentiel Post-Synaptique Excitateur)",
+                "Un PPSI (Potentiel Post-Synaptique Inhibiteur)",
+                "Un potentiel de repos",
+                "Un choc tétanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un PPSE correspond à une entrée de cations dépolarisant transitoirement la membrane postsynaptique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel principal neurotransmetteur inhibiteur du système nerveux central provoque une hyperpolarisation postsynaptique (PPSI) ?",
+              "options": [
+                "Le GABA (acide gamma-aminobutyrique)",
+                "Le glutamate",
+                "L'histamine",
+                "L'adrénaline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fixation du GABA ouvre des canaux Cl- dont l'entrée hyperpolarise la membrane, rendant le neurone plus difficile à exciter."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'intégration de signaux arrivant simultanément par différentes synapses sur un même neurone ?",
+              "options": [
+                "La sommation spatiale",
+                "La sommation temporelle",
+                "La conduction saltatoire",
+                "Le codage en fréquence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sommation spatiale additionne au niveau du cône axonique les potentiels générés par différentes synapses au même instant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on l'addition de signaux successifs rapprochés émis par une seule et même synapse ?",
+              "options": [
+                "La sommation temporelle",
+                "La sommation spatiale",
+                "L'inhibition latérale",
+                "La plasticité hépatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sommation temporelle superpose des potentiels postsynaptiques arrivant à cadence élevée depuis une même terminaison."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles étapes se déroulent lors du franchissement d'une synapse chimique par le message nerveux ?",
+              "options": [
+                "L'entrée de Ca2+ présynaptique stimulant l'exocytose",
+                "La fixation réversible du neurotransmetteur sur des récepteurs postsynaptiques",
+                "La traversée continue des électrons à travers la fente sans aucune molécule chimique",
+                "La synthèse instantanée de myéline dans la fente"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La synapse chimique utilise des molécules neurotransmettrices libérées par exocytose Ca2+-dépendante."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Mécanisme moléculaire de la contraction musculaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel changement structural mesure-t-on au sein du sarcomère lors du raccourcissement musculaire actif ?",
+              "options": [
+                "Le rapprochement des deux stries Z consécutives",
+                "L'allongement de la strie Z",
+                "Le raccourcissement des filaments épais de myosine",
+                "La disparition définitive des filaments d'actine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sarcomère se raccourcit par glissement mutuel des filaments d'actine et de myosine sans variation de leur longueur propre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quelle protéine régulatrice du filament fin les ions Ca2+ se lient-ils pour démasquer les sites de fixation de la myosine ?",
+              "options": [
+                "La troponine",
+                "La tropomyosine",
+                "La titine",
+                "La dystrophine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liaison du calcium à la troponine déplace la tropomyosine, libérant les sites de fixation sur l'actine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel événement moléculaire permet le détachement de la tête de myosine fixée sur le filament d'actine ?",
+              "options": [
+                "La fixation d'une nouvelle molécule d'ATP sur la tête de myosine",
+                "La libération du calcium sarcoplasmique",
+                "L'expulsion d'un ion sodium",
+                "La dégradation de l'actine par une protéase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liaison d'un nouvel ATP rompt le pont actine-myosine ; son absence cause la rigidité cadavérique (rigor mortis)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel événement déclenche le basculement mécanique (coup de rame) de la tête de myosine tractant l'actine ?",
+              "options": [
+                "La libération du phosphate inorganique (Pi) puis de l'ADP",
+                "L'entrée massive de potassium dans le myocyte",
+                "La synthèse de glycogène par le réticulum",
+                "L'ouverture des pores nucléaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La libération du Pi et de l'ADP provoque le changement de conformation tirant le filament d'actine vers le centre du sarcomère."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle enzyme hydrolyse l'ATP pour réarmer la tête de myosine dans sa conformation de haute énergie ?",
+              "options": [
+                "L'activité ATPase portée par la tête de myosine elle-même",
+                "L'amylase sarcoplasmique",
+                "La catalase mitochondriale",
+                "L'ARN polymérase II"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tête de myosine possède une activité enzymatique ATPase qui hydrolyse l'ATP en ADP + Pi pour s'armer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment le calcium cytosolique est-il évacué pour permettre le relâchement musculaire ?",
+              "options": [
+                "Il est repompé activement dans le réticulum sarcoplasmique par des pompes SERCA",
+                "Il est détruit par des enzymes protéolytiques",
+                "Il s'échappe librement par les capillaires veineux",
+                "Il précipite sous forme de cristaux d'oxalate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pompes Ca2+-ATPase (SERCA) recaptent activement le calcium dans le réticulum sarcoplasmique, ce qui stoppe la contraction."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle protéine géante agit comme un ressort élastique reliant la strie Z à la ligne M du sarcomère ?",
+              "options": [
+                "La titine",
+                "La laminine",
+                "La desmine",
+                "La vimentine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La titine est la plus grande protéine humaine ; elle maintient l'alignement des filaments épais et assure l'élasticité passive."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle protéine d'ancrage lie le cytosquelette au sarcolemme et fait défaut dans la myopathie de Duchenne ?",
+              "options": [
+                "La dystrophine",
+                "La fibronectine",
+                "La trypsine",
+                "La calmoduline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dystrophine solidarise les myofibrilles au sarcolemme ; son absence fragilise la membrane et détruit les fibres."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pendant la contraction, quelles bandes du sarcomère conservent une largeur rigoureusement constante ?",
+              "options": [
+                "Les bandes A sombres (longueur des filaments de myosine)",
+                "Les bandes I claires",
+                "Les zones H centrales",
+                "La distance entre deux stries Z"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La bande A correspond à la longueur fixe des filaments de myosine ; seules les bandes I et H rétrécissent."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels éléments biochimiques sont obligatoirement requis pour permettre le cycle de contraction musculaire ?",
+              "options": [
+                "Des ions calcium Ca2+ cytosoliques",
+                "Des molécules d'ATP disponibles",
+                "Une acidification majeure à pH inférieur à 3",
+                "L'absence totale de filaments fins d'actine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le cycle de formation des ponts actine-myosine requiert impérativement du calcium pour démasquer les sites et de l'ATP pour fournir l'énergie."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Voies métaboliques de régénération de l'ATP",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle molécule phosphorylée stockée dans le muscle régénère de l'ATP en quelques secondes lors d'un sprint violent ?",
+              "options": [
+                "La phosphocréatine (créatine phosphate)",
+                "Le glycogène hépatique",
+                "Le pyruvate cytosolique",
+                "L'acide palmitique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La créatine kinase transfère le groupement phosphate de la phosphocréatine sur l'ADP pour régénérer immédiatement de l'ATP."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans quel compartiment cellulaire s'accomplit la glycolyse à partir du glucose ?",
+              "options": [
+                "Dans le cytosol (hyaloplasme)",
+                "Dans la matrice mitochondriale",
+                "Dans l'espace intermembranaire",
+                "Dans la lumière du réticulum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La glycolyse est une voie anaérobie universelle qui se déroule entièrement dans le cytosol cellulaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le bilan net en ATP produit par molécule de glucose lors de la seule glycolyse cytosolique ?",
+              "options": ["2 ATP", "32 ATP", "12 ATP", "6 ATP"],
+              "correctAnswers": [0],
+              "explanation": "La glycolyse consomme 2 ATP et en produit 4, soit un gain net de 2 molécules d'ATP par glucose."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel composé organique à 3 atomes de carbone est le produit final de la glycolyse ?",
+              "options": [
+                "Le pyruvate",
+                "L'oxaloacétate",
+                "L'acétyl-coenzyme A",
+                "Le citrate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une molécule de glucose à 6 carbones est scindée en deux molécules de pyruvate (à 3 carbones)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En absence de dioxygène suffisant, quelle réaction permet de réoxyder le NADH en NAD+ pour maintenir la glycolyse ?",
+              "options": [
+                "La fermentation lactique (réduction du pyruvate en lactate)",
+                "Le cycle de Krebs",
+                "La bêta-oxydation des lipides",
+                "La chaîne respiratoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lactate déshydrogénase réduit le pyruvate en lactate tout en régénérant le NAD+ nécessaire à la poursuite de la glycolyse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans quelle région de la mitochondrie se déroule l'ensemble des réactions enzymatiques du cycle de Krebs ?",
+              "options": [
+                "Dans la matrice mitochondriale",
+                "Dans l'espace intermembranaire",
+                "Sur la membrane externe",
+                "Dans le nucléoplasme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cycle de Krebs (ou cycle de l'acide citrique) s'opère dans la matrice grâce aux enzymes mitochondriales solubles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est l'accepteur terminal d'électrons de la chaîne respiratoire mitochondriale aérobie ?",
+              "options": [
+                "Le dioxygène (O2)",
+                "Le dioxyde de carbone (CO2)",
+                "L'acide lactique",
+                "L'ion ferreux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dioxygène capte les électrons en bout de chaîne respiratoire et s'associe à des protons pour former de l'eau (H2O)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel complexe enzymatique utilise le gradient transmembranaire de protons pour phosphoryler l'ADP en ATP ?",
+              "options": [
+                "L'ATP synthase",
+                "La cytochrome c oxydase",
+                "L'hexokinase",
+                "La phosphofructokinase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le retour des protons vers la matrice à travers le rotor de l'ATP synthase fournit l'énergie mécanique synthétisant l'ATP."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelles fibres musculaires sont spécialisées dans l'effort prolongé d'endurance grâce à une forte densité mitochondriale ?",
+              "options": [
+                "Les fibres de type I (fibres lentes oxydatives rouges)",
+                "Les fibres de type IIb (fibres rapides glycolytiques blanches)",
+                "Les fibres lisses intestinales",
+                "Les cellules musculaires cardiaques nodales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fibres de type I sont riches en myoglobine, capillaires et mitochondries, parfaites pour la respiration aérobie durable."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles étapes successives constituent la dégradation complète du glucose par respiration cellulaire aérobie ?",
+              "options": [
+                "La glycolyse dans le cytosol",
+                "Le cycle de Krebs dans la matrice mitochondriale",
+                "La phosphorylation oxydative sur la membrane interne",
+                "La fermentation alcoolique dans les vacuoles"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La respiration aérobie associe la glycolyse cytosolique, le cycle de Krebs mitochondrial et la chaîne respiratoire (phosphorylation oxydative)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Régulation de la glycémie et flux de glucose",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de consigne normale de la glycémie à jeun chez un être humain en bonne santé ?",
+              "options": [
+                "Environ 1 g/L (environ 5,5 mmol/L)",
+                "Environ 0,2 g/L",
+                "Environ 3,5 g/L",
+                "Environ 8 g/L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La glycémie plasmatique est régulée étroitement autour d'une valeur consigne voisine de 0,8 à 1 g/L à jeun."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'unique hormone hypoglycémiante sécrétée par l'organisme humain ?",
+              "options": [
+                "L'insuline",
+                "Le glucagon",
+                "Le cortisol",
+                "L'adrénaline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'insuline, sécrétée par les cellules bêta pancréatiques, est la seule hormone capable d'abaisser la glycémie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel organe effecteur joue le rôle d'organe tampon en stockant puis en libérant du glucose dans le sang ?",
+              "options": ["Le foie", "La rate", "Le pancréas", "Le côlon"],
+              "correctAnswers": [0],
+              "explanation": "Le foie est le seul organe capable de stocker le glucose sous forme de glycogène et de le restituer au sang (organe glucostat)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la voie métabolique de polymérisation du glucose sanguin en glycogène de réserve ?",
+              "options": [
+                "La glycogénogenèse",
+                "La glycogénolyse",
+                "La néoglucogenèse",
+                "La glycolyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stimulée par l'insuline, la glycogénogenèse condense le glucose en glycogène dans les hépatocytes et myocytes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi le glycogène musculaire ne peut-il pas servir à alimenter directement la glycémie générale ?",
+              "options": [
+                "Le myocyte est dépourvu de l'enzyme glucose-6-phosphatase",
+                "Le muscle n'a pas de transporteurs membranaires",
+                "Le glycogène musculaire est toxique dans le sang",
+                "L'insuline bloque totalement la contraction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans glucose-6-phosphatase, le muscle ne peut déphosphoryler le glucose pour le faire sortir dans le sang."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle voie hépatique synthétise de nouvelles molécules de glucose à partir de lactates, glycérol ou acides aminés ?",
+              "options": [
+                "La néoglucogenèse",
+                "La lipogenèse",
+                "La glycogénogenèse",
+                "La cétogenèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La néoglucogenèse hépatique permet de produire du glucose lors d'un jeûne prolongé à partir de précurseurs non glucidiques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel transporteur de glucose est délocalisé vers la membrane plasmique des myocytes et adipocytes sous l'action de l'insuline ?",
+              "options": ["GLUT4", "GLUT1", "SGLT2", "L'aquaporine 4"],
+              "correctAnswers": [0],
+              "explanation": "L'insuline stimule la translocation de vésicules contenant le transporteur GLUT4 vers la membrane plasmique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sous quelle forme le tissu adipeux stocke-t-il les excédents glucidiques stimulés par l'insuline ?",
+              "options": [
+                "Sous forme de triglycérides (lipogenèse)",
+                "Sous forme de glycogène fibrillaire",
+                "Sous forme de protéines sériques",
+                "Sous forme d'acide urique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'insuline active l'entrée du glucose dans les adipocytes où il est transformé en triglycérides de réserve."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle hormone pancréatique stimule la glycogénolyse hépatique dès que la glycémie baisse ?",
+              "options": [
+                "Le glucagon",
+                "L'insuline",
+                "La gastrine",
+                "La sécrétine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le glucagon se fixe sur ses récepteurs hépatiques pour stimuler l'hydrolyse du glycogène en glucose libéré dans le sang."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels tissus cibles possèdent des récepteurs spécifiques de l'insuline participant à l'élimination du glucose sanguin ?",
+              "options": [
+                "Le tissu musculaire strié squelettique",
+                "Le tissu adipeux",
+                "Le foie",
+                "La kératine de l'ongle"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le foie, les muscles squelettiques et le tissu adipeux sont les trois grands effecteurs majeurs de l'action de l'insuline."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Réponse d'adaptation au stress aigu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle structure du système limbique cérébral identifie les stimuli menaçants et enclenche la réponse d'alarme ?",
+              "options": [
+                "L'amygdale cérébrale",
+                "Le cortex visuel primaire",
+                "Le bulbe olfactif",
+                "Le cervelet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'amygdale est le centre sous-cortical clé de détection de la menace et de déclenchement de la réaction émotionnelle au stress."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle hormone est déversée dans le sang en quelques secondes par la médullosurrénale lors d'un stress aigu ?",
+              "options": [
+                "L'adrénaline",
+                "Le cortisol",
+                "L'aldostérone",
+                "L'insuline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La stimulation sympathique directe de la médullosurrénale libère de l'adrénaline pour préparer l'organisme à la fuite ou au combat."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel effet physiologique immédiat l'adrénaline exerce-t-elle sur le système cardio-respiratoire ?",
+              "options": [
+                "Une hausse des fréquences cardiaque et ventilatoire",
+                "Une baisse brutale de la pression artérielle",
+                "Une bronchoconstriction sévère",
+                "Un ralentissement généralisé de la circulation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adrénaline augmente le débit cardiaque et dilate les bronchioles afin d'oxygéner au maximum les muscles et le cerveau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle hormone glucocorticoïde prend le relais de l'adrénaline lors de la phase d'adaptation au stress ?",
+              "options": [
+                "Le cortisol",
+                "L'ocytocine",
+                "La prolactine",
+                "La mélatonine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécrété par le cortex surrénalien quelques minutes après l'adrénaline, le cortisol maintient l'énergie disponible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Par quelle action métabolique majeure le cortisol soutient-il l'organisme face au stress ?",
+              "options": [
+                "Il stimule la néoglucogenèse et élève la glycémie",
+                "Il stocke le glucose sous forme de glycogène",
+                "Il bloque la libération des lipides sanguins",
+                "Il arrête la respiration mitochondriale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cortisol favorise la dégradation des protéines et lipides pour fournir du glucose par néoglucogenèse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment le cortisol rétablit-il l'état de repos lorsque l'agent stresseur a disparu ?",
+              "options": [
+                "Par rétrocontrôle négatif sur l'hypothalamus et l'hypophyse",
+                "Par amplification continue de sa propre sécrétion",
+                "Par destruction irréversible des surrénales",
+                "Par neutralisation enzymatique de l'adrénaline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cortisol exerce une rétro-inhibition sur la sécrétion de CRH et d'ACTH, refermant la boucle du stress."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle structure cérébrale impliquée dans la mémoire possède de nombreux récepteurs au cortisol et freine l'axe corticotrope ?",
+              "options": [
+                "L'hippocampe",
+                "Le lobe occipital",
+                "Le bulbe rachidien",
+                "La moelle épinière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hippocampe rétro-inhibe l'axe corticotrope ; sa fixation de cortisol permet l'extinction normale de la réponse au stress."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la capacité physiologique de l'organisme à retrouver son équilibre initial après un stress ?",
+              "options": [
+                "La résilience",
+                "La sclérose",
+                "L'ischémie",
+                "La désensibilisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La résilience physiologique correspond au retour harmonieux aux paramètres d'homéostasie de repos."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans quel compartiment cellulaire de la cellule cible le cortisol se lie-t-il à son récepteur spécifique ?",
+              "options": [
+                "Dans le cytoplasme (récepteur intracellulaire aux glucocorticoïdes)",
+                "Sur la face externe de la membrane plasmique",
+                "Dans la lumière du réticulum rugueux",
+                "Dans l'espace intermembranaire mitochondrial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hormone stéroïde lipophile, le cortisol traverse la membrane et se lie à un récepteur cytosolique qui gagne ensuite le noyau."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels paramètres physiologiques augmentent rapidement lors de la phase d'alarme du stress aigu ?",
+              "options": [
+                "La fréquence cardiaque",
+                "La ventilation pulmonaire",
+                "La glycémie circulante",
+                "L'activité sécrétoire du système digestif"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'activation sympathique mobilise les ressources vitales (cœur, poumons, glucose) tout en inhibant temporairement la digestion."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Mécanismes et conséquences du stress chronique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle anomalie endocrinienne caractérise l'installation d'un état de stress chronique ?",
+              "options": [
+                "Une sécrétion prolongée et continue de cortisol avec défaillance du rétrocontrôle négatif",
+                "Un arrêt immédiat et définitif de toute sécrétion surrénalienne",
+                "Une disparition totale des récepteurs à l'insuline",
+                "Une hypoglycémie permanente et irréversible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le stress chronique se traduit par un dérèglement de l'axe corticotrope où le cortisol élevé ne parvient plus à freiner le système."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle altération structurale cérébrale peut résulter d'une imprégnation durable et excessive en cortisol ?",
+              "options": [
+                "Une atrophie neuronale et une réduction du volume de l'hippocampe",
+                "Une hypertrophie du cortex moteur primaire",
+                "Une prolifération cancéreuse de l'hypophyse",
+                "Une calcification massive du cervelet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'excès chronique de cortisol induit une perte de ramifications dendritiques et une neurotoxicité dans l'hippocampe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel impact le cortisol produit en continu lors d'un stress chronique a-t-il sur l'immunité ?",
+              "options": [
+                "Un effet immunosuppresseur augmentant la sensibilité aux infections",
+                "Une stimulation permanente de la production d'anticorps",
+                "Une destruction exclusive des globules rouges",
+                "Une immunité totale contre tous les virus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À forte dose chronique, le cortisol inhibe les cytokines et la prolifération lymphocytaire, affaiblissant les défenses immunitaires."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle pathologie cardio-vasculaire fréquente est directement favorisée par le stress chronique ?",
+              "options": [
+                "L'hypertension artérielle permanente",
+                "L'hypotension orthostatique",
+                "La bradycardie sinusale du sportif",
+                "La thrombopénie isolée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tonus sympathique entretenu et les glucocorticoïdes augmentent la résistance vasculaire et favorisent l'hypertension artérielle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel syndrome d'épuisement psychique et physique est favorisé par la surcharge allostatique du stress chronique ?",
+              "options": [
+                "Le burn-out (ou dépression d'épuisement)",
+                "La narcolepsie",
+                "L'ataxie locomotrice",
+                "La sclérose latérale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'incapacité à éteindre la réponse au stress conduit à l'effondrement psychologique et physiologique (burn-out)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment évolue la réactivité de l'amygdale cérébrale lors d'un stress prolongé ?",
+              "options": [
+                "Elle devient hyperréactive, entretenant un état d'anxiété permanent",
+                "Elle s'atrophie et ne répond plus à aucun stimulus",
+                "Elle perd totalement ses connexions synaptiques",
+                "Elle est remplacée par du tissu conjonctif fibreux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement à l'hippocampe, l'amygdale voit ses connexions renforcées, pérennisant un état d'hypervigilance anxieuse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on le coût biologique cumulatif supporté par l'organisme soumis à des stress répétés ?",
+              "options": [
+                "La charge allostatique",
+                "Le métabolisme de base",
+                "Le travail mécanique musculaire",
+                "La clairance rénale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La charge allostatique désigne l'usure de l'organisme résultant de l'adaptation chronique à des stresseurs persistants."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle pratique non médicamenteuse a prouvé sa capacité à réduire l'activité de l'axe du stress et la tension artérielle ?",
+              "options": [
+                "La respiration guidée et la cohérence cardiaque",
+                "La privation volontaire de sommeil",
+                "L'exposition continue à des lumières intenses",
+                "L'ingestion massive de boissons très caféinées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les exercices de respiration lente stimulent le tonus parasympathique et réduisent les taux de cortisol circulants."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel système cérébral associé au plaisir et à la motivation voit son fonctionnement émoussé en cas de stress chronique ?",
+              "options": [
+                "Le circuit de la récompense (voie dopaminergique)",
+                "Le système vestibulaire",
+                "Le cervelet spino-cérébelleux",
+                "Le système spinothalamique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'excès de cortisol perturbe la transmission dopaminergique dans le noyau accumbens, provoquant une perte d'intérêt (anhédonie)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles anomalies métaboliques ou cliniques sont favorisées par un état de stress chronique persistant ?",
+              "options": [
+                "L'obésité viscérale abdominale",
+                "L'insulinorésistance et le diabète de type 2",
+                "L'augmentation illimitée de la longévité tissulaire",
+                "La baisse définitive du rythme cardiaque sous 30 bpm"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'exposition chronique au cortisol stimule l'adiposité abdominale et favorise le syndrome métabolique et le diabète."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Plasticité cérébrale et motricité volontaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle aire corticale située en avant du sillon central commande l'exécution des mouvements volontaires ?",
+              "options": [
+                "Le cortex moteur primaire",
+                "Le cortex visuel primaire",
+                "Le cortex somatosensoriel primaire",
+                "Le cortex auditif temporal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cortex moteur primaire (aire 4 de Brodmann) initie et commande les mouvements volontaires squelettiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la représentation cartographique somatotopique du corps humain sur le cortex moteur ?",
+              "options": [
+                "L'homoncule moteur (homunculus de Penfield)",
+                "L'arbre phylogénétique",
+                "Le caryotype somatique",
+                "Le diagramme d'Ouchterlony"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'homoncule de Penfield cartographie les régions corporelles selon la densité de motoneurones qui les contrôlent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi la face et la main occupent-elles une surface considérable sur la carte de l'homoncule moteur ?",
+              "options": [
+                "Car elles réalisent des mouvements d'une extrême précision nécessitant de très nombreux neurones",
+                "Car ce sont les segments anatomiques les plus volumineux du squelette",
+                "Car elles sont dépourvues de récepteurs sensitifs",
+                "Car elles sont contrôlées directement par la moelle sans le cerveau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La surface allouée reflète le degré de dextérité et de contrôle moteur fin, maximal au niveau des doigts et des lèvres."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Où s'opère le croisement (décussation) de la plupart des axones de la voie pyramidale descendante ?",
+              "options": [
+                "Dans le bulbe rachidien",
+                "Dans le thalamus dorsal",
+                "Dans le corps calleux",
+                "Dans le ganglion rachidien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fibres motrices croisent la ligne médiane dans le bulbe rachidien, d'où le contrôle croisé des hémisphères."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle conséquence motrice entraîne un AVC détruisant le cortex moteur primaire de l'hémisphère droit ?",
+              "options": [
+                "Une paralysie (hémiplégie) du côté gauche du corps",
+                "Une paralysie exclusive du côté droit du corps",
+                "Une perte complète de la sensibilité olfactive",
+                "Aucun symptôme moteur car la moelle compense"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En raison de la décussation pyramidale dans le bulbe, l'hémisphère droit commande la moitié gauche du corps."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la capacité des réseaux de neurones à se réorganiser après un apprentissage ou une lésion ?",
+              "options": [
+                "La plasticité cérébrale (ou plasticité neuronale)",
+                "La polyploïdie génomique",
+                "L'inhibition réflexe",
+                "La dédifférenciation cancéreuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La plasticité cérébrale permet de remodeler les connexions synaptiques tout au long de la vie lors des apprentissages ou de la rééducation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel neurone central pyramidal transmet l'ordre moteur depuis le cortex jusqu'aux motoneurones médullaires ?",
+              "options": [
+                "Le premier motoneurone (neurone corticospinal)",
+                "Le neurone sensitif en T",
+                "La cellule de Schwann",
+                "L'interneurone inhibiteur de Golgi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le neurone pyramidal descend par le faisceau corticospinal pour faire synapse sur le motoneurone alpha de la moelle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle modification observe-t-on sur le cortex moteur d'un violoniste s'exerçant intensivement depuis l'enfance ?",
+              "options": [
+                "Un agrandissement significatif du territoire cortical dédié aux doigts de la main gauche",
+                "Une disparition des sillons du cortex préfrontal",
+                "Une atrophie des corps cellulaires de la main",
+                "Une transformation du cortex en substance blanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'entraînement moteur intensif étend la représentation corticale des zones corporelles sursollicitées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelles substances pharmacologiques peuvent perturber le fonctionnement synaptique du cortex et altérer le contrôle moteur ?",
+              "options": [
+                "Les substances psychoactives (alcool, drogues, psychotropes)",
+                "L'eau minérale à température ambiante",
+                "Les vitamines hydrosolubles alimentaires",
+                "Les protéines du blanc d'œuf"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'alcool et les drogues modifient l'efficacité des synapses (GABA, glutamate, dopamine) et dégradent la motricité."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels mécanismes cellulaires expliquent la plasticité synaptique au sein du cerveau ?",
+              "options": [
+                "La modification du nombre et de l'efficacité des récepteurs postsynaptiques",
+                "La formation ou l'élimination de connexions synaptiques",
+                "La création de nouveaux chromosomes par méiose somatique",
+                "La disparition complète de tous les neurotransmetteurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La plasticité synaptique repose sur la potentialisation ou dépression à long terme et le remodelage structural des épines dendritiques."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Contrôle hormonal et rétrocontrôles physiologiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment définit-on une hormone sécrétée par une glande endocrine ?",
+              "options": [
+                "Un messager chimique libéré dans le sang qui agit à distance sur des cellules cibles spécifiques",
+                "Un influx électrique voyageant exclusivement le long d'un axone",
+                "Une enzyme déversée dans la lumière de l'estomac",
+                "Un gaz toxique éliminé par l'expiration pulmonaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une hormone est véhiculée par le sang à faible concentration et modifie le fonctionnement des cellules possédant son récepteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle condition détermine la sensibilité d'une cellule cible à une hormone donnée ?",
+              "options": [
+                "La présence de récepteurs spécifiques de cette hormone",
+                "La proximité immédiate avec la glande sécrétrice",
+                "L'absence totale de membrane plasmique",
+                "La capacité à synthétiser de la chlorophylle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seules les cellules munies de récepteurs protéiques spécifiques (membranaires ou intracellulaires) répondent à l'hormone."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel type de rétroaction permet de stabiliser un paramètre biologique autour de sa valeur de consigne ?",
+              "options": [
+                "Le rétrocontrôle négatif (rétro-inhibition)",
+                "Le rétrocontrôle positif amplificateur",
+                "L'excitation sans fin",
+                "La sommation temporelle synaptique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rétrocontrôle négatif freine la sécrétion hormonale dès que la concentration ou la grandeur régulée dépasse la consigne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans quel cas physiologique observe-t-on un rétrocontrôle positif transitoire chez la femme ?",
+              "options": [
+                "Le pic d'œstradiol déclenchant la décharge ovulante de LH",
+                "La phase lutéale stable sous l'effet de la progestérone",
+                "La ménopause après disparition des follicules",
+                "La première semaine des règles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au-delà d'un seuil élevé d'œstradiol en fin de phase folliculaire, le rétrocontrôle devient positif et déclenche le pic de LH provoquant l'ovulation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Où se situent les récepteurs des hormones peptidiques hydrosolubles (comme l'insuline et le glucagon) ?",
+              "options": [
+                "Sur la face externe de la membrane plasmique",
+                "Dans la lumière mitochondriale",
+                "Au cœur de la chromatine intranucléaire",
+                "Dans l'espace périnucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne pouvant franchir la bicouche lipidique, les hormones peptidiques se lient à des récepteurs transmembranaires."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Où sont localisés les récepteurs des hormones stéroïdiennes lipophiles (comme le cortisol) ?",
+              "options": [
+                "Dans le cytosol ou le noyau cellulaire",
+                "À l'extérieur du glycocalix",
+                "Sur les pores nucléaires exclusivement",
+                "Dans les jonctions serrées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lipophiles, les stéroïdes traversent la membrane plasmique et se lient à des récepteurs intracellulaires régulant la transcription."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle glande endocrine située sous l'hypothalamus est qualifiée de glande maîtresse de l'organisme ?",
+              "options": [
+                "L'hypophyse",
+                "La thyroïde",
+                "Le pancréas",
+                "Le thymus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hypophyse sécrète de nombreuses stimulines (ACTH, TSH, LH, FSH) contrôlant les autres glandes endocrines périphériques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel système vasculaire spécialisé achemine les neurohormones hypothalamiques vers l'adénohypophyse ?",
+              "options": [
+                "Le système porte hypothalamo-hypophysaire",
+                "Le polygone de Willis",
+                "Le système azygos",
+                "Le canal thoracique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système porte capillaire évite la dilution générale des neurohormones et assure une action rapide sur l'hypophyse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que provoque une augmentation anormale de cortisol sanguin sur la sécrétion hypophysaire d'ACTH ?",
+              "options": [
+                "Une diminution immédiate de la sécrétion d'ACTH par rétrocontrôle négatif",
+                "Une multiplication par dix de la sécrétion d'ACTH",
+                "Une transformation de l'ACTH en hormone thyroïdienne",
+                "Aucun changement car l'hypophyse ignore le cortisol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cortisol inhibe la libération d'ACTH par les cellules hypophysaires pour éviter tout surdosage toxique."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques distinguent la communication hormonale de la communication nerveuse ?",
+              "options": [
+                "Une transmission véhiculée par le sang à vitesse modérée",
+                "Une action diffuse sur de multiples tissus cibles disséminés",
+                "Une conduction électrique saltatoire dépassant 100 m/s",
+                "L'absence totale de molécules chimiques médiatrices"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La communication hormonale est lente, générale et durable par voie sanguine, contrairement à la voie nerveuse rapide et localisée."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Homéostasie et intégration des fonctions de l'organisme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le maintien dynamique de la constance des paramètres du milieu intérieur de l'organisme ?",
+              "options": [
+                "L'homéostasie",
+                "L'hémostase",
+                "L'hétérotrophie",
+                "L'allégorie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'homéostasie désigne l'équilibre dynamique maintenant la température, le pH, la glycémie et la volémie stables."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel éminent médecin et physiologiste français du XIXe siècle a défini le concept de « milieu intérieur » ?",
+              "options": [
+                "Claude Bernard",
+                "Louis Pasteur",
+                "Jean-Baptiste de Lamarck",
+                "René Laennec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Claude Bernard a énoncé en 1865 que « la fixité du milieu intérieur est la condition de la vie libre et indépendante »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel physiologiste américain a créé et popularisé le mot « homéostasie » en 1926 ?",
+              "options": [
+                "Walter Cannon",
+                "Thomas Morgan",
+                "Alexander Fleming",
+                "James Watson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Walter Cannon a forgé le terme d'homéostasie à partir du grec homeo (semblable) et stasis (stabilité)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quels sont les trois grands systèmes intégrateurs régissant la communication et la cohésion de l'organisme ?",
+              "options": [
+                "Les systèmes nerveux, endocrinien et immunitaire",
+                "Les systèmes digestif, rénal et hépatique",
+                "Les systèmes musculaire, osseux et cartilagineux",
+                "Les systèmes optique, auditif et vestibulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'axe neuro-immuno-endocrinien assure la coordination globale et l'adaptation aux variations de l'environnement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le liquide extracellulaire dans lequel baignent directement les cellules d'un tissu ?",
+              "options": [
+                "Le liquide interstitiel (lymphe interstitielle)",
+                "Le liquide céphalo-rachidien",
+                "Le vitré oculaire",
+                "La synovie articulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le milieu intérieur comprend le plasma sanguin et la lymphe interstitielle en contact direct avec les membranes cellulaires."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle réponse réflexe l'organisme enclenche-t-il immédiatement lors d'une exposition au grand froid ?",
+              "options": [
+                "Le frisson thermique musculaire et la vasoconstriction cutanée",
+                "La sudation abondante et la vasodilatation périphérique",
+                "La baisse du métabolisme basal",
+                "Une fuite massive d'eau par les reins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le frisson produit de la chaleur métabolique et la vasoconstriction limite les pertes thermiques superficielles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle région du diencéphale sert de thermostat central pour réguler la température corporelle ?",
+              "options": [
+                "L'hypothalamus",
+                "L'hippocampe",
+                "Le corps calleux",
+                "Le pont de Varole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les neurones thermosensibles de l'aire préoptique hypothalamique orchestrent les réponses thermorégulatrices."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel paramètre sanguin est le stimulus majeur stimulant les centres respiratoires du tronc cérébral lors d'un effort ?",
+              "options": [
+                "L'augmentation de la pression partielle en CO2 (et la baisse associée du pH)",
+                "La diminution de la pression en diazote",
+                "L'élévation de la pression osmotique générale",
+                "La diminution du taux de plaquettes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chémorécepteurs centraux et périphériques sont très sensibles à l'accumulation de CO2 et d'ions H+."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que traduit une incapacité prolongée des boucles de régulation homéostatique à corriger un paramètre vital ?",
+              "options": [
+                "L'apparition d'un état pathologique pouvant conduire au décès",
+                "Une amélioration des performances physiques",
+                "Une photosynthèse accrue",
+                "Une stabilisation définitive spontanée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rupture de l'homéostasie définit l'état morbide (diabète, acidose, choc hypovolémique, défaillance viscérale)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels paramètres fondamentaux du milieu intérieur sont régulés de façon homéostatique chez l'être humain ?",
+              "options": [
+                "La glycémie sanguine",
+                "Le pH du plasma artériel (autour de 7,4)",
+                "La température corporelle centrale (autour de 37 °C)",
+                "La couleur des cheveux et de l'iris"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La glycémie, le pH et la température sont des paramètres homéostatiques régulés en permanence par des rétrocontrôles."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

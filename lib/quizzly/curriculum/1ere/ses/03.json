@@ -1,0 +1,2743 @@
+{
+  "id": "1ere-ses-03",
+  "year": "1ere",
+  "subject": "ses",
+  "title": "Science politique",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Vote et opinion",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Le suffrage",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "En France, le suffrage universel masculin date de :",
+              "options": ["1848", "1944", "1962", "1789"],
+              "correctAnswers": [0, 1],
+              "explanation": "1848 ouvre le suffrage à tous les hommes ; 1944 l'étend aux femmes."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "Le vote est obligatoire en France :",
+              "options": [
+                "Oui, toujours",
+                "Non",
+                "Seulement aux municipales",
+                "Seulement pour les étrangers"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le vote est un droit, pas une obligation légale."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "L'inscription sur les listes électorales se fait :",
+              "options": [
+                "Automatiquement à 18 ans",
+                "Uniquement sur demande manuelle",
+                "À la mairie sans condition",
+                "Jamais en ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inscription est automatique à partir des fichiers d'état civil."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "Le bulletin blanc est :",
+              "options": [
+                "Compté comme un vote",
+                "Exprimé mais non attribué à un candidat",
+                "Interdit",
+                "Équivalent à l'abstention"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il est décompté à part dans les suffrages exprimés."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "Le suffrage direct désigne :",
+              "options": [
+                "Le vote des élus",
+                "Le vote du peuple pour une décision",
+                "Le vote par procuration",
+                "Le vote des sénateurs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le peuple vote directement, sans intermédiaire parlementaire."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "Une élection législative sert à élire :",
+              "options": [
+                "Le président",
+                "Les députés",
+                "Les maires",
+                "Les juges"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les députés siègent à l'Assemblée nationale."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Le scrutin uninominal majoritaire concerne surtout :",
+              "options": [
+                "Les européennes",
+                "Les législatives en France",
+                "Les sénatoriales",
+                "Les primaires ouvertes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un candidat par circonscription, élu au pluralisme ou au second tour."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "La procuration électorale permet :",
+              "options": [
+                "De voter deux fois",
+                "De confier son vote à une personne de confiance",
+                "De voter par Internet",
+                "D'annuler un scrutin"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Réglementée, elle évite l'abstention pour motif légitime."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "Le référendum est un vote :",
+              "options": [
+                "Des seuls parlementaires",
+                "Direct du peuple sur une question",
+                "Des ministres",
+                "Des préfets"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le peuple tranche une question politique précise."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "L'isoloir garantit :",
+              "options": [
+                "Le contrôle d'identité",
+                "Le secret du vote",
+                "Le dépouillement public",
+                "La campagne électorale"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Personne ne doit voir le choix du votant."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Abstention",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "L'abstention peut signifier :",
+              "options": [
+                "Refus de choisir entre candidats",
+                "Désintérêt politique",
+                "Satisfaction totale du gouvernement",
+                "Impossibilité de se déplacer"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les causes sont multiples ; elle n'a pas une seule signification."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "Le taux d'abstention mesure :",
+              "options": [
+                "Les votes blancs",
+                "Les inscrits n'ayant pas voté",
+                "Les bulletins nuls",
+                "Les procuration"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Rapport entre abstentionnistes et inscrits."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "L'abstention est souvent plus forte :",
+              "options": [
+                "Au premier tour des législatives",
+                "Aux présidentielles",
+                "Aux référendums locaux",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les élections intermédiaires et locales mobilisent moins."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "Une thèse sociologique lie abstention et :",
+              "options": [
+                "Capital culturel faible",
+                "Revenus très élevés uniquement",
+                "Double nationalité",
+                "Âge avancé seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de ressources politiques peut freiner la participation."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "L'abstention protestataire vise à :",
+              "options": [
+                "Soutenir le vainqueur",
+                "Signaler un rejet du jeu proposé",
+                "Augmenter les blancs",
+                "Réformer le mode de scrutin"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Boycott symbolique ou critique du choix offert."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "Comparer abstention entre pays exige :",
+              "options": [
+                "Les mêmes règles d'inscription",
+                "Les mêmes sondages",
+                "Les mêmes médias",
+                "Les mêmes partis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inscription automatique ou volontaire change les taux."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Le vote par correspondance en France aux législatives :",
+              "options": [
+                "Est généralisé",
+                "N'existe pas pour les électeurs ordinaires",
+                "Remplace le bureau de vote",
+                "Est obligatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Seule la procuration ou certains cas spéciaux existent."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "Une mobilisation électorale élevée peut refléter :",
+              "options": [
+                "Enjeu perçu fort",
+                "Absence de campagne",
+                "Scrutin secret supprimé",
+                "Fin des partis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un scrutin décisif ou polarisé attire les électeurs."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "L'abstention différentielle touche surtout :",
+              "options": [
+                "Toutes catégories pareil",
+                "Certaines classes d'âge ou catégories sociales",
+                "Uniquement les ruraux",
+                "Uniquement les diplômés"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les écarts de participation structurent le corps électoral."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "Réduire l'abstention peut passer par :",
+              "options": [
+                "Faciliter l'inscription et le vote",
+                "Supprimer les élections",
+                "Interdire les sondages",
+                "Fusionner tous les partis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accessibilité et clarté du scrutin comptent."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Vote utile",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "Le vote utile consiste à :",
+              "options": [
+                "Soutenir le candidat perçu comme viable",
+                "Éviter le « gaspillage » du suffrage",
+                "Toujours voter pour le leader des sondages",
+                "Voter blanc"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Stratégie rationnelle face à un scrutin à enjeu."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "Au second tour présidentiel, le vote utile pousse souvent à :",
+              "options": [
+                "Disperser les voix",
+                "Concentrer les voix sur deux candidats",
+                "Abstention massive",
+                "Vote blanc systématique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Duels historiques entre deux finalistes."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "Le vote identitaire privilégie :",
+              "options": [
+                "Le calcul du résultat",
+                "L'affiliation politique ou valeurs",
+                "Le hasard",
+                "La procuration"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'électeur vote selon son ancrage plutôt que la stratégie."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "Les sondages influencent le vote utile car ils :",
+              "options": [
+                "Fixent le résultat officiel",
+                "Informent sur les chances perçues",
+                "Remplacent les bulletins",
+                "Suppriment les petits partis"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ils orientent les anticipations stratégiques."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "Un scrutin proportionnel limite le vote utile car :",
+              "options": [
+                "Un seul candidat",
+                "Les petites listes peuvent obtenir des sièges",
+                "Pas de seuil",
+                "Pas de campagne"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La représentation n'est pas tout-ou-rien dans une circonscription."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "Le « candidat kamikaze » désigne parfois :",
+              "options": [
+                "Un favori",
+                "Un candidat favorisant involontairement un rival",
+                "Un maire",
+                "Un juge"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Division des voix similaires au bénéfice d'un adversaire."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Rationalité du vote (Downs) suppose :",
+              "options": [
+                "Vote aléatoire",
+                "Maximisation de l'utilité attendue",
+                "Absence d'information",
+                "Vote obligatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Modèle économique du comportement électoral."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "Le désistement républicain vise à :",
+              "options": [
+                "Favoriser le plus faible",
+                "Retirer une candidature pour faire barrage",
+                "Annuler l'élection",
+                "Changer de parti"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tradition de retrait au profit du mieux placé contre l'extrême."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "Vote de conviction vs vote utile :",
+              "options": [
+                "Identiques",
+                "Opposent sincérité et stratégie",
+                "N'existent pas en France",
+                "Interdits"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tension classique en science politique."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "Le seuil de 5 % aux législatives proportionnelles :",
+              "options": [
+                "Récompense les petites listes",
+                "Peut inciter au vote utile pour éviter la dispersion",
+                "Supprime les partis",
+                "Est absent"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sous le seuil, pas de sièges : enjeu stratégique."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Clivages et partis",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "Un clivage politique structure :",
+              "options": [
+                "Les oppositions durables entre groupes",
+                "Les alliances électorales possibles",
+                "Uniquement les sondages",
+                "Le budget seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lipset et Rokkan : clivages fondent les familles politiques."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "Le clivage droite-gauche porte surtout sur :",
+              "options": [
+                "Couleur des bulletins",
+                "Rôle de l'État et redistribution",
+                "Taille des mairies",
+                "Heure du vote"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Économie, social et valeurs y sont liés."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "Un parti politique en démocratie :",
+              "options": [
+                "Organise la concurrence pour le pouvoir",
+                "Remplace l'État",
+                "Juge les élections",
+                "Fixe les impôts seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agrège des intérêts et propose des programmes."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "La cartellisation désigne :",
+              "options": [
+                "Fusion de partis proches",
+                "Interdiction de parti",
+                "Vote électronique",
+                "Abstention"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alliance structurelle entre formations voisines."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "Le clivage centre-périphérie concerne :",
+              "options": [
+                "Paris vs province en termes de ressources et identité",
+                "Uniquement l'agriculture",
+                "Les juges",
+                "Les médias"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Globalisation et métropolisation relancent ce clivage."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "La déclinaison du clivage ouvrier :",
+              "options": [
+                "Renforce le PCF seul",
+                "Affaiblit l'ancrage classe-parti",
+                "Supprime les syndicats",
+                "Crée le présidentiel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Individualisation et nouveaux clivages (valeurs, Europe)."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Un système bipartiste tend à :",
+              "options": [
+                "Multiplier les petits partis",
+                "Concentrer le vote sur deux blocs",
+                "Interdire les élections",
+                "Supprimer le parlement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Scrutin majoritaire et vote utile favorisent deux pôles."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "Le financement public des partis vise à :",
+              "options": [
+                "Renforcer la transparence et limiter dépendance privée",
+                "Interdire les campagnes",
+                "Supprimer les médias",
+                "Augmenter l'abstention"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lois sur la transparence et plafonds de dépenses."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "Une primary (primaire) sert à :",
+              "options": [
+                "Choisir un candidat au sein d'une famille politique",
+                "Élire le président directement",
+                "Remplacer le Sénat",
+                "Nommer les préfets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sélection interne démocratique ou semi-ouverte."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "L'extrême-centre en science politique :",
+              "options": [
+                "N'existe pas",
+                "Désigne parfois des positions modérées dominantes",
+                "Est un parti unique",
+                "Remplace la droite"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Terme parfois ironique pour le centre électoral."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Sondages et opinion",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "Un sondage d'opinion :",
+              "options": [
+                "Interroge un échantillon représentatif",
+                "Estime une tendance avec marge d'erreur",
+                "Fixe le résultat définitif",
+                "Remplace le vote"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Méthode statistique, pas oracle du scrutin."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "La marge d'erreur dépend surtout de :",
+              "options": [
+                "Couleur du questionnaire",
+                "Taille de l'échantillon",
+                "Nom du institut",
+                "Jour de la semaine seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Plus n est grand, plus l'intervalle se resserre."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "L'effet bandwagon (effet de mode) :",
+              "options": [
+                "Les sondages poussent à voter pour le favori perçu",
+                "Les sondages sont interdits",
+                "Tous votent blanc",
+                "Abstention obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suivre le gagnant anticipé."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "L'effet underdog favorise :",
+              "options": [
+                "Le leader",
+                "Le outsider perçu comme faible",
+                "L'abstention seule",
+                "Les juges"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sympathie pour le challenger."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "Opinion publique désigne :",
+              "options": [
+                "L'avis unanime de tous",
+                "Ensemble d'opinions mesurables sur enjeux publics",
+                "Le gouvernement",
+                "Les médias seuls"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Concept sociologique, jamais totalement homogène."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "Le baromètre politique mesure surtout :",
+              "options": [
+                "La météo",
+                "Les intentions de vote ou popularité",
+                "Le PIB",
+                "Les prix"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Suivi régulier de l'opinion électorale."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Interdire les sondages avant élection :",
+              "options": [
+                "Existe en France pour toute la campagne",
+                "Règles limitées (ex. veille du vote)",
+                "N'existe nulle part",
+                "Remplace les médias"
+              ],
+              "correctAnswers": [1],
+              "explanation": "France : interdiction de publication la veille et jour J."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "Un échantillon quota vise à :",
+              "options": [
+                "Interviewer au hasard pur",
+                "Reproduire la structure de la population",
+                "Doubler les réponses",
+                "Supprimer les jeunes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Redressement sur sexe, âge, CSP, etc."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "L'opinion est influencée par :",
+              "options": [
+                "Médias, entourage, événements",
+                "Rien",
+                "Seulement les sondages",
+                "Uniquement l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Socialisation politique et agenda médiatique."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "Le « spiral of silence » (Noelle-Neumann) :",
+              "options": [
+                "Tous parlent fort",
+                "On taise une opinion perçue minoritaire",
+                "Fin des sondages",
+                "Vote obligatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Peur d'isolement sociale."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Fonctions du vote",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "Voter permet de :",
+              "options": [
+                "Désigner des représentants",
+                "Exprimer une préférence politique",
+                "Éviter toute conflictualité",
+                "Supprimer l'État"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Légitimité démocratique et expression individuelle."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "La rétrospective électorale punit souvent :",
+              "options": [
+                "Un gouvernement jugé responsable de la situation",
+                "L'opposition",
+                "Les sondageurs",
+                "Les maires seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vote sanction sur bilan économique ou crises."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "Le mandat impératif signifie :",
+              "options": [
+                "L'élu doit suivre les consignes des électeurs",
+                "L'élu est libre de son jugement",
+                "Pas d'élection",
+                "Vote blanc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraire au mandat représentatif libre en France."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "En France, le mandat représentatif :",
+              "options": [
+                "Lie l'élu à des instructions précises",
+                "Confère une liberté de décision à l'élu",
+                "Interdit le débat",
+                "Supprime le parlement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Article 27 de la Constitution : représentation nationale."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "Le vote est un acte :",
+              "options": [
+                "Purement privé",
+                "Civique et politique",
+                "Commercial",
+                "Judiciaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Participation à la souveraineté populaire."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "La démocratie représentative repose sur :",
+              "options": [
+                "Tirage au sort uniquement",
+                "Élection de porte-parole du peuple",
+                "Monarchie",
+                "Absence de vote"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Délégation temporaire du pouvoir."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Une élection ne garantit pas :",
+              "options": [
+                "La légitimité des élus",
+                "L'absence de conflits sociaux",
+                "Le changement de majorité",
+                "Le dépouillement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La démocratie électorale ne résout pas tous les clivages."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "Le vote alternatif comme sanction :",
+              "options": [
+                "Réélit toujours l'incumbent",
+                "Permet le changement de majorité",
+                "Supprime l'opposition",
+                "Interdit les partis"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Alternance = mécanisme démocratique classique."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "La participation des femmes au vote en France :",
+              "options": [
+                "Depuis 1789",
+                "Depuis 1944",
+                "Jamais",
+                "Seulement locales"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ordonnance du 21 avril 1944."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "Le vote des 18 ans en France date de :",
+              "options": ["1974", "1962", "2000", "1945"],
+              "correctAnswers": [0],
+              "explanation": "Loi de 1974 abaissant l'âge de la majorité électorale."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Parité et représentation",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "La parité politique vise à :",
+              "options": [
+                "Égal accès des femmes et hommes aux mandats",
+                "Corriger déséquilibres de représentation",
+                "Supprimer les élections",
+                "Interdire les hommes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Loi de 2000 sur la parité en politique."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "La loi sur la parité impose notamment :",
+              "options": [
+                "Des quotas financiers ou listes alternées",
+                "Zéro femme au gouvernement",
+                "Vote obligatoire féminin",
+                "Suppression du Sénat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alternance homme-femme sur les listes électorales."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "La représentation politique désigne :",
+              "options": [
+                "Présence des catégories sociales aux postes élus",
+                "Uniquement les sondages",
+                "La police",
+                "Les entreprises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proportion des groupes dans les institutions."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "Une chambre « mirror » idéale refléterait :",
+              "options": [
+                "Exactement la société",
+                "Seulement les riches",
+                "Les sondages",
+                "Les médias"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle descriptif de représentation (jamais atteint)."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "Le plafond de verre en politique :",
+              "options": [
+                "Barrière invisible limitant l'accès des femmes aux sommets",
+                "Toit du Palais-Bourbon",
+                "Scrutin uninominal",
+                "Vote blanc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Obstacles culturels et organisationnels."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "Les élections municipales proportionnelles depuis 2014 :",
+              "options": [
+                "Favorisent diversité si listes paritaires",
+                "Interdisent les femmes",
+                "Suppriment les maires",
+                "N'existent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scrutin de liste avec parité renforcée."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Sous-représentation ouvrière au Parlement :",
+              "options": [
+                "Prouve absence de démocratie seule",
+                "Montre écarts entre élus et société",
+                "N'existe pas",
+                "Est due au vote blanc"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Débat sur légitimité sociale des élus."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "Le cumul des mandats était limité pour :",
+              "options": [
+                "Ouvrir l'accès aux élus locaux",
+                "Renforcer parlementarisme",
+                "Supprimer les maires",
+                "Interdire les sénateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loi de 2014 sur le non-cumul (règles progressives)."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "Représentation des minorités visibles :",
+              "options": [
+                "Thème de débat sur discriminations",
+                "Absent de la science politique",
+                "Interdit en France",
+                "Résolu par les sondages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjeu d'égalité et de reconnaissance."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "La démocratie délibérative complète le vote par :",
+              "options": [
+                "Débats publics et participation",
+                "Suppression des élections",
+                "Monarchie",
+                "Abstention"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consultations, conventions citoyennes, etc."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Présidentielles et régimes",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "Le président de la République est élu :",
+              "options": [
+                "Au suffrage universel direct",
+                "Pour cinq ans renouvelables une fois",
+                "Par le Sénat seul",
+                "À vie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Quinquennat depuis 2000 ; deux mandats consécutifs max."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "Le régime semi-présidentiel combine :",
+              "options": [
+                "Monarchie et empire",
+                "Président fort et gouvernement responsable devant le Parlement",
+                "Absence de premier ministre",
+                "Juges élus"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Modèle français depuis la Ve République."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "La cohabitation survient quand :",
+              "options": [
+                "Président et majorité parlementaire opposés",
+                "Deux présidents",
+                "Pas de premier ministre",
+                "Sénat absent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partage du pouvoir exécutif entre camps différents."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "Le Conseil constitutionnel valide :",
+              "options": [
+                "Les candidatures et résultats présidentiels",
+                "Les impôts locaux",
+                "Les contrats privés",
+                "Les matchs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Garde-fou électoral et constitutionnel."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "500 parrainages pour candidater à la présidentielle :",
+              "options": [
+                "Garantissent un minimum de soutien national",
+                "Sont facultatifs",
+                "Remplacent le vote",
+                "Interdisent les indépendants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Élus habilités doivent parrainer."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "Le premier tour présidentiel :",
+              "options": [
+                "Élit si majorité absolue",
+                "Qualifie généralement deux candidats",
+                "Interdit les sondages",
+                "Supprime les partis"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Majorité absolue rare ; second tour entre deux têtes."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "La Ve République renforce le pouvoir :",
+              "options": [
+                "Du président",
+                "Des seuls maires",
+                "Des régions seules",
+                "Des juges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réforme de 1958 : exécutif stabilisé."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "Un régime parlementaire pur :",
+              "options": [
+                "Le gouvernement dépend de la confiance parlementaire",
+                "Pas de chef d'État",
+                "Pas de vote",
+                "Président tout-puissant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Royaume-Uni classique : cabinet responsable."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "La dissolution de l'Assemblée :",
+              "options": [
+                "Est une arme du président en France",
+                "Supprime le Sénat",
+                "Interdit les élections",
+                "Est un droit des maires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peut relancer majorité ou bloquer opposition."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "Le référendum présidentiel de 1962 a institué :",
+              "options": [
+                "Élection présidentielle au suffrage universel",
+                "Suppression du Parlement",
+                "Monarchie",
+                "Vote obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De Gaulle : légitimité populaire directe du chef de l'État."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Participation politique",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "La participation politique inclut :",
+              "options": [
+                "Voter",
+                "Signer une pétition ou manifester",
+                "Uniquement payer des impôts",
+                "Rien hors élections"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Action collective et individuelle dans la sphère publique."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "La socialisation politique familiale :",
+              "options": [
+                "Transmet orientations de vote",
+                "N'existe pas",
+                "Interdit le débat",
+                "Remplace l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parents et milieu influencent les premières attitudes."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "Une mobilisation protestataire :",
+              "options": [
+                "Manifestation ou grève pour pression",
+                "Vote blanc seul",
+                "Abstention seule",
+                "Nomination de préfets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voies extrainstitutionnelles de participation."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "Le militantisme partisan :",
+              "options": [
+                "Adhésion et campagne pour un parti",
+                "Obligation légale",
+                "Interdit aux mineurs",
+                "Remplace le vote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Engagement organisationnel."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "Le repertory of contention (Tilly) :",
+              "options": [
+                "Ensemble de tactiques de protestation",
+                "Liste électorale",
+                "Budget",
+                "Sondage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grèves, manifestations, boycotts, etc."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "L'efficacité perçue du vote influence :",
+              "options": ["La participation", "La météo", "Le PIB", "Les prix"],
+              "correctAnswers": [0],
+              "explanation": "Si le vote « ne sert à rien », abstention possible."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Les associations intermédiaires :",
+              "options": [
+                "Canalisent intérêts entre individus et État",
+                "Remplacent l'État",
+                "Interdisent le vote",
+                "Sont toujours illégales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Syndicats, mouvements, ONG."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "La démocratie directe locale :",
+              "options": [
+                "Budget participatif, consultations",
+                "Supprime les maires",
+                "Interdit les élections",
+                "Monarchie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complément aux élections représentatives."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "Le civisme désigne :",
+              "options": [
+                "Disposition à s'engager pour la collectivité",
+                "Profit privé",
+                "Abstention systématique",
+                "Secret des affaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valeur républicaine de participation."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "Une fracture civique :",
+              "options": [
+                "Écart de participation entre groupes sociaux",
+                "Absence de routes",
+                "Union de tous les partis",
+                "Fin des médias"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renforce inégalités politiques."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Opinion et démocratie",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "Une démocratie libérale combine :",
+              "options": [
+                "Élections",
+                "Respect des droits et contre-pouvoirs",
+                "Absence de lois",
+                "Dictature"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Majorité élective et protection des minorités."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "L'opinion majoritaire peut :",
+              "options": [
+                "Guider les décisions dans un système démocratique",
+                "Supprimer les droits fondamentaux",
+                "Remplacer la Constitution",
+                "Interdire les juges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous réserve du cadre constitutionnel."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "Le pluralisme politique suppose :",
+              "options": [
+                "Concurrence d'idées et de partis",
+                "Un seul parti",
+                "Absence de médias",
+                "Vote unique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diversité des offres politiques."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "La délibération publique renforce :",
+              "options": [
+                "Qualité démocratique des choix",
+                "Secret absolu",
+                "Monarchie",
+                "Abstention"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échange d'arguments entre citoyens."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "Populisme en science politique :",
+              "options": [
+                "Discours prétendant incarner le peuple contre élites",
+                "Théorie économique",
+                "Type de sondage",
+                "Mode de scrutin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concept disputé, centré sur people vs elite."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "La défiance politique mesure :",
+              "options": [
+                "Méfiance envers institutions ou élites",
+                "Absence de sondages",
+                "Taux de croissance",
+                "Participation sportive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Crise de confiance fréquemment étudiée."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Fake news et opinion :",
+              "options": [
+                "Peuvent désinformer les électeurs",
+                "N'existent pas",
+                "Remplacent les élections",
+                "Sont des juges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjeu de régulation et éducation aux médias."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "L'agenda setting médiatique :",
+              "options": [
+                "Oriente les sujets perçus comme prioritaires",
+                "Fixe les résultats électoraux",
+                "Supprime le Parlement",
+                "Crée les partis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Médias ne disent pas quoi penser, mais sur quoi penser."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "Une opinion stable sur valeurs :",
+              "options": [
+                "Peut ancrer le comportement électoral long terme",
+                "Change chaque heure",
+                "N'influence pas le vote",
+                "Interdit les clivages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attitudes de fond vs préférences conjoncturelles."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "Le contrôle démocratique du pouvoir passe aussi par :",
+              "options": [
+                "Presse libre et élections",
+                "Suppression des oppositions",
+                "Censure totale",
+                "Absence de vote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transparence et compétition électorale."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "État et pouvoir",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Notion d'État",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "L'État moderne se caractérise par :",
+              "options": [
+                "Monopole de la violence légitime",
+                "Territoire et population",
+                "Absence de lois",
+                "Propriété privée des citoyens sur l'armée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Weber : légitimité + territoire + administration."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "Max Weber définit l'État par :",
+              "options": [
+                "Le monopole de la violence physique légitime",
+                "Les élections uniquement",
+                "Les entreprises",
+                "Les syndicats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition classique en sociologie politique."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "La souveraineté étatique signifie :",
+              "options": [
+                "Autorité suprême sur un territoire",
+                "Propriété des médias",
+                "Vote obligatoire",
+                "Fin des lois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indépendance vis-à-vis des autres États (interne/externe)."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "Un État fédéral :",
+              "options": [
+                "Partage compétences entre centre et entités",
+                "N'a qu'un seul niveau",
+                "Supprime les lois",
+                "N'a pas de Constitution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. : Allemagne, États-Unis."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "L'État unitaire centralise :",
+              "options": [
+                "Davantage de compétences au centre",
+                "Tout aux régions",
+                "Rien au gouvernement",
+                "Pas de préfet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "France est État unitaire décentralisé."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "La nation est :",
+              "options": [
+                "Communauté politique imaginée (Anderson)",
+                "Uniquement une ethnie",
+                "Une entreprise",
+                "Un syndicat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Construction historique et culturelle."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Le contrat social (Rousseau) fonde :",
+              "options": [
+                "Légitimité du pouvoir politique",
+                "Monarchie absolue",
+                "Absence d'État",
+                "Vote censitaire seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Volonté générale et souveraineté populaire."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "L'État-providence développe :",
+              "options": [
+                "Protection sociale et intervention économique",
+                "Suppression des impôts",
+                "Privatisation totale",
+                "Absence de droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après 1945 en Europe."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "La laïcité à la française concerne surtout :",
+              "options": [
+                "Relations État-religions",
+                "Économie",
+                "Armée",
+                "Justice internationale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séparation et neutralité publique."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "Un État failli :",
+              "options": [
+                "Perd contrôle effectif du territoire",
+                "Est toujours démocratique",
+                "N'a pas de population",
+                "Est sans histoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impossibilité d'assurer fonctions régaliennes."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Légitimité",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "Types de légitimité chez Weber :",
+              "options": [
+                "Traditionnelle",
+                "Charismatique",
+                "Légale-rationnelle",
+                "Aléatoire"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Trois idéaux-types ; charismatique aussi valide."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "Légitimité démocratique repose sur :",
+              "options": [
+                "Consentement des gouvernés via élections",
+                "Hérédité seule",
+                "Force seule",
+                "Tradition immuable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Source populaire du pouvoir."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "Une crise de légitimité survient quand :",
+              "options": [
+                "Citoyens contestent le droit de gouverner",
+                "Économie croît",
+                "Tous votent",
+                "Lois sont respectées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Défiance ou contestation massive."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "Légitimité charismatique :",
+              "options": [
+                "Attachement à un leader exceptionnel",
+                "Code juridique seul",
+                "Hérédité dynastique",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autorité personnalisée."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "Légitimité traditionnelle :",
+              "options": [
+                "Coutume et succession",
+                "Élections",
+                "Référendum seul",
+                "Sondage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monarchies anciennes typiquement."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "Légitimité rationnelle-légale :",
+              "options": [
+                "Règles et procédures impersonnelles",
+                "Charisme seul",
+                "Guerre",
+                "Secret"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bureaucratie et droit moderne."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Performance économique peut :",
+              "options": [
+                "Soutenir légitimité du régime",
+                "Remplacer toutes les lois",
+                "Supprimer les élections",
+                "Interdire l'opposition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Output legitimacy."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "Légitimité d'output :",
+              "options": [
+                "Acceptation car résultats jugés bons",
+                "Uniquement procédures",
+                "Absence de vote",
+                "Tradition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Efficacité perçue des politiques."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "Légitimité d'input :",
+              "options": [
+                "Participation et procédures démocratiques",
+                "Force",
+                "Tradition seule",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voix des citoyens dans le processus."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "Contester une élection vise :",
+              "options": [
+                "Remettre en cause légitimité du vainqueur",
+                "Augmenter les impôts",
+                "Nommer préfets",
+                "Supprimer la presse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjeu central en transitions démocratiques."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Séparation des pouvoirs",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "Montesquieu préconise :",
+              "options": [
+                "Répartition législatif-exécutif-judiciaire",
+                "Freins à l'arbitraire",
+                "Fusion totale des pouvoirs",
+                "Suppression des lois"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "De l'esprit des lois, livre XI."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "Le pouvoir législatif :",
+              "options": [
+                "Vote les lois",
+                "Juge les crimes civils seul",
+                "Commande l'armée seul",
+                "Nomme tous les maires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parlement en régime parlementaire."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "Le pouvoir exécutif :",
+              "options": [
+                "Applique les lois et gouverne",
+                "Rédige seul la Constitution",
+                "Remplace les juges",
+                "Supprime le budget"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gouvernement et administration."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "Le pouvoir judiciaire :",
+              "options": [
+                "Tranche les litiges et punit les infractions",
+                "Vote le budget",
+                "Déclare la guerre",
+                "Organise les élections"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indépendance des magistrats en principe."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "Contrôle et équilibre (checks and balances) :",
+              "options": [
+                "Pouvoirs se surveillent mutuellement",
+                "Un seul pouvoir",
+                "Pas de Constitution",
+                "Monarchie absolue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle états-unien."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "En France, le Conseil constitutionnel :",
+              "options": [
+                "Contrôle constitutionnalité des lois",
+                "Gouverne seul",
+                "Élit le président",
+                "Remplace l'Assemblée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "QPC depuis 2010 renforce ce rôle."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Fusion des pouvoirs caractérise :",
+              "options": [
+                "Régime parlementaire où exécutif dépend législatif",
+                "Dictature seulement",
+                "Absence d'État",
+                "Juges législateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Responsabilité gouvernementale."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "Article 16 de la Constitution française :",
+              "options": [
+                "Pleins pouvoirs présidentiels en crise grave",
+                "Supprime le Parlement à vie",
+                "Élection des juges",
+                "Fin de la République"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exception étatique encadrée."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "La QPC permet :",
+              "options": [
+                "Citoyens de contester loi appliquée",
+                "Vote blanc",
+                "Dissolution automatique",
+                "Référendum local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question prioritaire de constitutionnalité."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "Séparation stricte vs modérée :",
+              "options": [
+                "Degrés différents d'indépendance des branches",
+                "Identiques partout",
+                "Inexistants",
+                "Interdisent les élections"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aucun régime ne isole totalement les pouvoirs."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Exécutif et législatif",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "En France Ve République :",
+              "options": [
+                "Président et Premier ministre partagent exécutif",
+                "Assemblée vote lois et contrôle gouvernement",
+                "Pas de Constitution",
+                "Sénat gouverne seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Architecture bicéphale de l'exécutif."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "Motion de censure :",
+              "options": [
+                "Peut renverser le gouvernement",
+                "Élit le président",
+                "Dissout automatiquement le Sénat",
+                "Supprime les juges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Article 49-3 et 49-2 : arme parlementaire."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "49.3 permet :",
+              "options": [
+                "Adoption loi sans vote sauf censure",
+                "Référendum obligatoire",
+                "Fin du Parlement",
+                "Vote populaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Engagement responsabilité gouvernementale."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "Le Premier ministre est :",
+              "options": [
+                "Chef du gouvernement",
+                "Chef d'État",
+                "Président du Sénat",
+                "Premier juge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nommé par le président, dirige cabinet."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "Initiative législative en France :",
+              "options": [
+                "Gouvernement et parlementaires",
+                "Seulement président",
+                "Seulement maires",
+                "Juges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Projets vs propositions de loi."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "Commission mixte paritaire :",
+              "options": [
+                "Accord Assemblée-Sénat sur texte",
+                "Élection présidentielle",
+                "Budget local",
+                "Sondage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Procédure législative accélérée."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Le Sénat :",
+              "options": [
+                "Chambre représentant collectivités",
+                "Élit seul le Premier ministre",
+                "Gouverne seul",
+                "Supprime l'Assemblée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scrutin indirect, rôle de second examen."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "Ordre du jour parlementaire :",
+              "options": [
+                "Fixé en partie par gouvernement",
+                "Uniquement opposition",
+                "Aléatoire",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Priorité gouvernementale limitée."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "Parlementarisme rationalisé :",
+              "options": [
+                "Limites au pouvoir législatif face exécutif",
+                "Parlement tout-puissant",
+                "Absence de gouvernement",
+                "Monarchie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ve République : renforcement exécutif."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "Questions au gouvernement :",
+              "options": [
+                "Contrôle politique à l'Assemblée",
+                "Vote budget",
+                "Nomination juges",
+                "Référendum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat public et responsabilité."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Décentralisation",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "La décentralisation en France :",
+              "options": [
+                "Transfère compétences aux collectivités",
+                "Garde souveraineté nationale",
+                "Supprime les maires",
+                "Unifie tout à Paris"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lois Defferre 1982 ; État reste souverain."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "Collectivité territoriale :",
+              "options": [
+                "Commune, département, région",
+                "Uniquement État",
+                "Entreprise privée",
+                "Syndicat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveaux locaux en France."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "Le maire est :",
+              "options": [
+                "Chef exécutif communal",
+                "Président de la République",
+                "Juge",
+                "Sénateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Élu par conseil municipal."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "La déconcentration :",
+              "options": [
+                "Délégation administration centrale sur place",
+                "Autonomie législative locale",
+                "Indépendance vis-à-vis État",
+                "Privatisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Préfet vs élus locaux."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "Subsidiarité (UE) :",
+              "options": [
+                "Décider au niveau le plus pertinent",
+                "Tout à Bruxelles",
+                "Tout à la commune seule",
+                "Supprimer régions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Principe de proportionnalité des compétences."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "Région en France gère notamment :",
+              "options": [
+                "Lycées et transports régionaux",
+                "Justice pénale",
+                "Politique étrangère",
+                "Monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétences élargies depuis réformes."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Intercommunalité :",
+              "options": [
+                "Coopération entre communes",
+                "Dissolution des maires",
+                "Fin des départements",
+                "État fédéral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "EPCI, métropoles."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "Réforme territoriale 2016 :",
+              "options": [
+                "Fusion régions",
+                "Suppression communes",
+                "Monarchie",
+                "Vote obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passage à 13 régions métropolitaines."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "Finances locales :",
+              "options": [
+                "Impôts locaux et dotations",
+                "Budget européen seul",
+                "Pas de budget",
+                "Secret total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autonomie financière partielle."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "Gouvernement des territoires vise :",
+              "options": [
+                "Adapter politiques publiques au local",
+                "Supprimer l'État",
+                "Interdire élections",
+                "Centraliser tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proximité et efficacité."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Souveraineté et international",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "La souveraineté peut être :",
+              "options": [
+                "Limitée par traités internationaux",
+                "Partagée en Union européenne",
+                "Totalement absolue partout",
+                "Interdite en démocratie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Globalisation et intégration régionale."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "L'ONU reconnaît :",
+              "options": [
+                "États souverains égaux en principe",
+                "Gouvernement mondial unique",
+                "Fin des frontières",
+                "Suppression droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Charte de 1945."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "Le droit communautaire européen :",
+              "options": [
+                "Primauté sur droit national (jurisprudence)",
+                "Inexistant",
+                "Uniquement symbolique",
+                "Interdit en France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cour de justice UE."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "Pooled sovereignty :",
+              "options": [
+                "État cède part de souveraineté à organisation",
+                "Anarchie",
+                "Empire",
+                "Guerre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle intégration européenne."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "Clause de suprématie :",
+              "options": [
+                "Hiérarchie des normes",
+                "Vote blanc",
+                "Élection maire",
+                "Sondage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Constitution > loi > règlement."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "État-nation classique :",
+              "options": [
+                "Nation et État coïncident sur territoire",
+                "Sans frontières",
+                "Sans lois",
+                "Sans population"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle westphalien."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Intervention humanitaire conteste :",
+              "options": [
+                "Principe non-ingérence",
+                "Vote local",
+                "Budget communal",
+                "Parité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tension souveraineté/droits."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "Brexit illustre :",
+              "options": [
+                "Retour souveraineté revendiqué",
+                "Fin des États",
+                "Union fédérale",
+                "Absence de vote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat souveraineté vs intégration."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "Traité de Maastricht :",
+              "options": [
+                "Union européenne et euro",
+                "Fin France",
+                "Suppression Parlement",
+                "Monarchie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1992 : citoyenneté UE."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "Soft power (Nye) :",
+              "options": [
+                "Influence par culture et normes",
+                "Armée seule",
+                "Sanctions seules",
+                "Isolation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pouvoir non coercitif."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Régimes politiques",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "Une démocratie électorale assure :",
+              "options": [
+                "Compétition pacifique pour le pouvoir",
+                "Alternance possible",
+                "Absence de lois",
+                "Dictature"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Schumpeter : méthode institutionnelle."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "Régime autoritaire :",
+              "options": [
+                "Concentration pouvoir sans pluralisme",
+                "Pluripartisme libre",
+                "Élections libres garanties",
+                "Juges indépendants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limites opposition et droits."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "Totalitarisme (Arendt) :",
+              "options": [
+                "Contrôle idéologique et total de la société",
+                "Simple dictature militaire",
+                "Monarchie constitutionnelle",
+                "Fédéralisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parti unique et terreur idéologique."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "Régime présidentiel (USA) :",
+              "options": [
+                "Président élu séparément du Congrès",
+                "Premier ministre responsable devant parlement",
+                "Pas de séparation",
+                "Couronne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fixité mandats exécutif et législatif."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "Régime parlementaire :",
+              "options": [
+                "Gouvernement issu et contrôlé par parlement",
+                "Président tout-puissant",
+                "Pas de vote",
+                "Juges gouvernent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fusion exécutif-législatif modérée."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "Transition démocratique :",
+              "options": [
+                "Passage autoritarisme vers démocratie",
+                "Retour monarchie",
+                "Suppression élections",
+                "Guerre civile seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Processus historique variable."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Hybrid regime :",
+              "options": [
+                "Mélange démocratique et autoritaire",
+                "Utopie",
+                "Absence État",
+                "Parfait pluralisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Élections sans garanties complètes."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "Consociationalisme :",
+              "options": [
+                "Gouvernement coalition élites communautés",
+                "Dictature",
+                "Vote unique",
+                "Anarchie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lijphart : Belgique, Suisse."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "État de droit :",
+              "options": [
+                "Pouvoir lié par la loi",
+                "Arbitraire total",
+                "Pas de Constitution",
+                "Secret"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rechtsstaat."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "Constitution :",
+              "options": [
+                "Norme suprême organisant pouvoirs",
+                "Simple brochure",
+                "Sondage",
+                "Budget"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre institutionnel."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Administration et bureaucratie",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "Bureaucratie weberienne :",
+              "options": [
+                "Hiérarchie et impersonnalité",
+                "Compétence par formation",
+                "Absence de règles",
+                "Vente des postes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Administration moderne rationnelle."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "Fonction publique en France :",
+              "options": [
+                "Agents statutaires au service État",
+                "Entreprises privées seules",
+                "Interdite",
+                "Élue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statut de fonctionnaire."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "Le préfet :",
+              "options": [
+                "Représente État dans département",
+                "Maire",
+                "Juge local",
+                "Député"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déconcentration et tutelle."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "Neutralité administrative :",
+              "options": [
+                "Servir intérêt général sans parti pris",
+                "Partisanat obligatoire",
+                "Grève interdite toujours",
+                "Secret absolu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devoir de réserve."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "ENA devient INSP :",
+              "options": [
+                "Formation hauts fonctionnaires",
+                "Parti politique",
+                "Tribunal",
+                "Média"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réforme école admin."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "Privatisation de services publics :",
+              "options": [
+                "Débat efficacité vs égalité accès",
+                "Supprime toute régulation",
+                "Fin État",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nouvelle gestion publique."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Règlement administratif :",
+              "options": [
+                "Norme édictée exécutif",
+                "Loi parlementaire",
+                "Jugement",
+                "Référendum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous ordre de la loi."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "Contrôle administratif :",
+              "options": [
+                "Vérifier légalité actes admin",
+                "Élire président",
+                "Voter budget UE",
+                "Sondage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conseil d'État, TA."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "Red tape désigne :",
+              "options": [
+                "Lourdeur procédures",
+                "Efficacité max",
+                "Absence admin",
+                "Vote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critique bureaucratie."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "État régulateur :",
+              "options": [
+                "Fixe règles et contrôle marchés",
+                "Produit tout",
+                "Supprime droit",
+                "Anarchie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régulation économique et sociale."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Droit et contrainte",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "Le pouvoir coercitif de l'État inclut :",
+              "options": [
+                "Police et justice pénale",
+                "Contrainte légale",
+                "Charité seule",
+                "Vote blanc"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sanctions pour faire respecter loi."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "Monopole de la force légitime :",
+              "options": [
+                "État seul peut usage légal violence",
+                "Tous citoyens armés librement",
+                "Entreprises",
+                "Syndicats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Police, armée, prisons."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "Droit positif :",
+              "options": [
+                "Ensemble normes en vigueur",
+                "Morale seule",
+                "Opinion sondage",
+                "Tradition orale seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lois et règlements écrits."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "Droits fondamentaux :",
+              "options": [
+                "Libertés protégées contre État",
+                "Absents Constitution",
+                "Interdits",
+                "Vote seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "DDHC, préambule 1946, Charte environnement."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "État de grâce :",
+              "options": [
+                "Clémence présidentielle",
+                "Loi ordinaire",
+                "Référendum",
+                "Budget"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prérogative présidentielle."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "Contrat social brise :",
+              "options": [
+                "État nature hypothetique Hobbes/Locke",
+                "Monarchie absolue seule",
+                "Démocratie",
+                "Vote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Justification origine politique."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Sanction pénale :",
+              "options": [
+                "Peine pour infraction",
+                "Récompense",
+                "Sondage",
+                "Subvention"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Branche coercitive droit."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "Garde des sceaux :",
+              "options": ["Ministre justice", "Maires", "Préfets", "Sénateurs"],
+              "correctAnswers": [0],
+              "explanation": "Chaîne pénale et prisons."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "État policier désigne :",
+              "options": [
+                "Surveillance étendue citoyens",
+                "Absence police",
+                "Anarchie",
+                "Fédéralisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Atteinte libertés publiques."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "Légalité des actes admin :",
+              "options": [
+                "Conformité à la loi",
+                "Opinion majoritaire",
+                "Hasard",
+                "Tradition seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrôle juridictionnel."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Pouvoir et contres-pouvoirs",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "question": "Contre-pouvoirs démocratiques :",
+              "options": [
+                "Presse libre",
+                "Opposition parlementaire",
+                "Suppression élections",
+                "Censure totale"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Surveillance et critique du gouvernement."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "question": "Médias d'investigation :",
+              "options": [
+                "Révèlent affaires publiques",
+                "Fixent lois",
+                "Gouvernent",
+                "Remplacent juges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fourth estate."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "question": "Syndicats comme contre-pouvoir :",
+              "options": [
+                "Négociation collective et grève",
+                "Exécutif",
+                "Judiciaire",
+                "Armée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corporatisme et pluralisme social."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "question": "Société civile :",
+              "options": [
+                "Associations hors État et partis",
+                "Gouvernement",
+                "Parlement",
+                "Préfecture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mobilisation et advocacy."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "question": "Habeas corpus protège :",
+              "options": [
+                "Liberté individuelle contre arrestation arbitraire",
+                "Vote",
+                "Budget",
+                "Impôts locaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition anglo-saxonne."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "question": "Ombudsman / Défenseur droits :",
+              "options": [
+                "Médiateur citoyens vs administration",
+                "Président",
+                "Ministre finance",
+                "Maires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Institution française DDR."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "question": "Lobbying :",
+              "options": [
+                "Influence groupes intérêt sur décisions",
+                "Crime toujours",
+                "Vote populaire",
+                "Référendum obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régulé (HATVP, transparence)."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "question": "Séparation parti-État :",
+              "options": [
+                "Administration neutre vis-à-vis partis",
+                "Fusion obligatoire",
+                "Interdit partis",
+                "Monarchie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Principe républicain."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "question": "Pouvoir soft vs hard :",
+              "options": [
+                "Persuasion vs contrainte",
+                "Identiques",
+                "Inexistants",
+                "Interdits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nye : attraction vs coercition."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "question": "Accountability :",
+              "options": [
+                "Rendre des comptes aux citoyens",
+                "Secret total",
+                "Absence vote",
+                "Dictature"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Responsabilité politique et administrative."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

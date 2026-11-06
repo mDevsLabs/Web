@@ -1,0 +1,2323 @@
+{
+  "id": "6e-arabe-02",
+  "year": "6e",
+  "subject": "arabe",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les membres de la famille",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots arabes désignent les parents ?",
+              "options": [
+                "أب (ab) — père",
+                "كتاب (kitāb) — livre",
+                "أم (umm) — mère",
+                "باب (bāb) — porte"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "أب et أم sont les termes usuels pour père et mère."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie أخ (akh) ?",
+              "options": ["sœur", "frère", "oncle", "cousin"],
+              "correctAnswers": [1],
+              "explanation": "أخ désigne le frère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « sœur » en arabe ?",
+              "options": ["أخت (ukht)", "ابن (ibn)", "جد (jadd)", "زوج (zawj)"],
+              "correctAnswers": [0],
+              "explanation": "أخت est le mot pour sœur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie عائلة (ʿāʾila) ?",
+              "options": ["école", "famille", "maison", "ville"],
+              "correctAnswers": [1],
+              "explanation": "عائلة signifie la famille."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Fils » se traduit par :",
+              "options": ["ابنة (ibna)", "ابن (ibn)", "أخ (akh)", "جد (jadd)"],
+              "correctAnswers": [1],
+              "explanation": "ابن signifie fils."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie ابنة (ibna) ?",
+              "options": ["fille", "grand-mère", "tante", "ami"],
+              "correctAnswers": [0],
+              "explanation": "ابنة signifie fille."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le grand-père en arabe est :",
+              "options": ["جد (jadd)", "عم (ʿamm)", "زوج (zawj)", "طفل (ṭifl)"],
+              "correctAnswers": [0],
+              "explanation": "جد désigne le grand-père."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « petit enfant » ?",
+              "options": [
+                "طفل (ṭifl)",
+                "معلم (muʿallim)",
+                "سوق (sūq)",
+                "قلم (qalam)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "طفل signifie enfant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie زوج (zawj) dans la famille ?",
+              "options": ["époux / conjoint", "voisin", "frère", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "زوج désigne le conjoint (mari)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'oncle paternel se dit souvent :",
+              "options": [
+                "عم (ʿamm)",
+                "أم (umm)",
+                "أخت (ukht)",
+                "مدرسة (madrasa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "عم est l'oncle du côté paternel."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "À la maison",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots désignent des pièces ou espaces de la maison ?",
+              "options": [
+                "غرفة (ghurfa) — chambre",
+                "مطار (maṭār) — aéroport",
+                "مطبخ (maṭbakh) — cuisine",
+                "محطة (maḥaṭṭa) — gare"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "غرفة et مطبخ sont des espaces de la maison."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie بيت (bayt) ?",
+              "options": ["maison", "livre", "école", "jardin public"],
+              "correctAnswers": [0],
+              "explanation": "بيت signifie maison."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Porte » en arabe :",
+              "options": [
+                "نافذة (nāfidha)",
+                "باب (bāb)",
+                "كرسي (kursī)",
+                "سرير (sarīr)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "باب signifie porte."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie نافذة (nāfidha) ?",
+              "options": ["fenêtre", "table", "mur", "sol"],
+              "correctAnswers": [0],
+              "explanation": "نافذة signifie fenêtre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le lit se dit :",
+              "options": [
+                "سرير (sarīr)",
+                "باب (bāb)",
+                "قلم (qalam)",
+                "حديقة (ḥadīqa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "سرير signifie lit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie مطبخ (maṭbakh) ?",
+              "options": ["cuisine", "salle de bain", "garage", "bureau"],
+              "correctAnswers": [0],
+              "explanation": "مطبخ est la cuisine."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Chaise » se traduit par :",
+              "options": [
+                "كرسي (kursī)",
+                "سجادة (sajjāda)",
+                "مصباح (miṣbāḥ)",
+                "ثلاجة (thalāja)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "كرسي signifie chaise."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie حديقة (ḥadīqa) ?",
+              "options": ["jardin", "cuisine", "toit", "couloir"],
+              "correctAnswers": [0],
+              "explanation": "حديقة signifie jardin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La salle de bain peut se dire :",
+              "options": [
+                "حمام (ḥammām)",
+                "مكتبة (maktaba)",
+                "مطعم (maṭʿam)",
+                "مسجد (masjid)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "حمام désigne souvent la salle de bain."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie طاولة (ṭāwila) ?",
+              "options": ["table", "lampe", "télévision", "clé"],
+              "correctAnswers": [0],
+              "explanation": "طاولة signifie table."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "À l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont liés à l'école ?",
+              "options": [
+                "مدرسة (madrasa)",
+                "مطعم (maṭʿam)",
+                "معلم (muʿallim)",
+                "شاطئ (shāṭiʾ)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "مدرسة et معلم renvoient à l'école et à l'enseignant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie مدرسة (madrasa) ?",
+              "options": ["école", "hôpital", "banque", "plage"],
+              "correctAnswers": [0],
+              "explanation": "مدرسة signifie école."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un élève se dit :",
+              "options": [
+                "تلميذ (tilmīdh)",
+                "طبيب (ṭabīb)",
+                "سائق (sāʾiq)",
+                "فلاح (fallāḥ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "تلميذ désigne l'élève."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie معلم (muʿallim) ?",
+              "options": [
+                "enseignant",
+                "directeur de sport",
+                "boulanger",
+                "pompier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "معلم signifie enseignant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Classe / leçon » peut se traduire par :",
+              "options": [
+                "درس (dars)",
+                "ليل (layl)",
+                "بحر (baḥr)",
+                "ثلج (thalj)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "درس signifie leçon ou cours."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie كتاب (kitāb) ?",
+              "options": ["livre", "cahier", "stylo", "cartable"],
+              "correctAnswers": [0],
+              "explanation": "كتاب signifie livre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le tableau (au sens classe) :",
+              "options": [
+                "سبورة (sabbūra)",
+                "ساعة (sāʿa)",
+                "حقيبة (ḥaqība)",
+                "مفتاح (miftāḥ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "سبورة désigne le tableau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie قلم (qalam) ?",
+              "options": ["stylo / crayon", "gomme", "règle", "trousse"],
+              "correctAnswers": [0],
+              "explanation": "قلم signifie stylo ou crayon."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Devoir » se dit souvent :",
+              "options": [
+                "واجب (wājib)",
+                "لعبة (luʿba)",
+                "رحلة (riḥla)",
+                "هدية (hadiyya)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "واجب signifie devoir."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie امتحان (imtiḥān) ?",
+              "options": ["examen", "récréation", "cantine", "vacances"],
+              "correctAnswers": [0],
+              "explanation": "امتحان signifie examen."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Matières et fournitures",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels objets trouve-t-on dans le cartable ?",
+              "options": [
+                "دفتر (diftār) — cahier",
+                "طبق (ṭabaq) — assiette",
+                "مسطرة (misṭara) — règle",
+                "مغسلة (maghsala) — évier"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "دفتر et مسطرة sont des fournitures scolaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie حقيبة (ḥaqība) ?",
+              "options": ["sac / cartable", "chaise", "fenêtre", "cloche"],
+              "correctAnswers": [0],
+              "explanation": "حقيبة signifie sac ou cartable."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les mathématiques en arabe :",
+              "options": [
+                "رياضيات (riyāḍiyyāt)",
+                "تاريخ (tārīkh)",
+                "جغرافيا (jughrāfiyā)",
+                "موسيقى (mūsīqā)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "رياضيات désigne les mathématiques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie علوم (ʿulūm) ?",
+              "options": ["sciences", "sport", "art plastique", "religion"],
+              "correctAnswers": [0],
+              "explanation": "علوم signifie les sciences."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Histoire » se traduit par :",
+              "options": [
+                "تاريخ (tārīkh)",
+                "فيزياء (fīziyāʾ)",
+                "كيمياء (kīmiyāʾ)",
+                "أدب (adab)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "تاريخ signifie histoire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie لغة (lugha) ?",
+              "options": ["langue", "nombre", "couleur", "heure"],
+              "correctAnswers": [0],
+              "explanation": "لغة signifie langue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La gomme :",
+              "options": [
+                "ممحاة (mimḥāh)",
+                "مقص (miqṣ)",
+                "غراء (ghirāʾ)",
+                "شريط (sharīṭ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ممحاة signifie gomme."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie مكتبة (maktaba) ?",
+              "options": [
+                "bibliothèque / bureau",
+                "cantine",
+                "gymnase",
+                "infirmerie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مكتبة peut signifier bibliothèque ou bureau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Crayon de couleur » est approximativement :",
+              "options": [
+                "قلم ملون (qalam mulawwan)",
+                "قلم رصاص فقط",
+                "ممحاة كبيرة",
+                "ورقة فقط"
+              ],
+              "correctAnswers": [0],
+              "explanation": "قلم ملون désigne un crayon de couleur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie ورقة (waraqa) ?",
+              "options": ["feuille / papier", "classe", "cloche", "directeur"],
+              "correctAnswers": [0],
+              "explanation": "ورقة signifie feuille ou papier."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Les loisirs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots évoquent des loisirs ?",
+              "options": [
+                "لعبة (luʿba) — jeu",
+                "واجب (wājib) — devoir",
+                "رسم (rasm) — dessin",
+                "امتحان (imtiḥān) — examen"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "لعبة et رسم sont des activités de loisir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie موسيقى (mūsīqā) ?",
+              "options": ["musique", "médecine", "politique", "agriculture"],
+              "correctAnswers": [0],
+              "explanation": "موسيقى signifie musique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Lecture » se dit :",
+              "options": [
+                "قراءة (qirāʾa)",
+                "كتابة (kitāba)",
+                "سباحة (sibāḥa)",
+                "طبخ (ṭabkh)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "قراءة signifie lecture."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie رسم (rasm) ?",
+              "options": ["dessin", "course", "sommeil", "pluie"],
+              "correctAnswers": [0],
+              "explanation": "رسم signifie dessin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Regarder la télévision :",
+              "options": [
+                "مشاهدة التلفاز (mushāhadat al-talfāz)",
+                "أكل الطعام",
+                "كتابة الواجب",
+                "دخول المدرسة"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مشاهدة التلفاز évoque regarder la télé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie فيلم (fīlm) ?",
+              "options": ["film", "poème", "carte", "chaussure"],
+              "correctAnswers": [0],
+              "explanation": "فيلم signifie film."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Jouer » (verbe) se dit souvent :",
+              "options": [
+                "يلعب (yalʿab)",
+                "يأكل (yaʾkul)",
+                "ينام (yanām)",
+                "يكتب (yaktub)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "يلعب signifie il joue."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie حديقة الألعاب (ḥadīqat al-alʿāb) ?",
+              "options": ["aire de jeux", "bibliothèque", "musée", "marché"],
+              "correctAnswers": [0],
+              "explanation": "حديقة الألعاب est une aire de jeux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La photographie :",
+              "options": [
+                "تصوير (taṣwīr)",
+                "تسوق (tasawwuq)",
+                "تعلم (taʿallum)",
+                "تنظيف (tanẓīf)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "تصوير évoque la photographie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie هواية (hiwāya) ?",
+              "options": ["passe-temps / hobby", "maladie", "devoir", "classe"],
+              "correctAnswers": [0],
+              "explanation": "هواية signifie hobby."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Sports et activités",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sports ou activités sont nommés en arabe ?",
+              "options": [
+                "كرة القدم (kurat al-qadam) — football",
+                "طبخ (ṭabkh) — cuisine",
+                "سباحة (sibāḥa) — natation",
+                "نوم (nawm) — sommeil"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "كرة القدم et سباحة sont des activités sportives."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie رياضة (riyāḍa) ?",
+              "options": ["sport", "poésie", "peinture", "geographie"],
+              "correctAnswers": [0],
+              "explanation": "رياضة signifie sport."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le football :",
+              "options": [
+                "كرة القدم (kurat al-qadam)",
+                "كرة السلة",
+                "كرة الطاولة",
+                "الجمباز"
+              ],
+              "correctAnswers": [0],
+              "explanation": "كرة القدم est le football."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie الجري (al-jarī) ?",
+              "options": ["course à pied", "natation", "ski", "équitation"],
+              "correctAnswers": [0],
+              "explanation": "الجري signifie la course."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Équipe » se dit :",
+              "options": [
+                "فريق (farīq)",
+                "مدرسة (madrasa)",
+                "مدينة (madīna)",
+                "ساعة (sāʿa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "فريق signifie équipe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie ملعب (malʿab) ?",
+              "options": [
+                "terrain / stade",
+                "piscine",
+                "salle de classe",
+                "cafétéria"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ملعب désigne un terrain de sport."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le vélo :",
+              "options": [
+                "دراجة (darrāja)",
+                "سيارة (sayyāra)",
+                "قطار (qiṭār)",
+                "طائرة (ṭāʾira)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "دراجة signifie vélo."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie فوز (fawz) ?",
+              "options": ["victoire", "défaite", "match nul", "entraînement"],
+              "correctAnswers": [0],
+              "explanation": "فوز signifie victoire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Entraînement » peut se dire :",
+              "options": [
+                "تدريب (tadrīb)",
+                "نوم (nawm)",
+                "أكل (akl)",
+                "قراءة (qirāʾa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "تدريب signifie entraînement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie كرة (kura) ?",
+              "options": ["balle / ballon", "filet", "sifflet", "medaille"],
+              "correctAnswers": [0],
+              "explanation": "كرة signifie balle ou ballon."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Amis et relations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots parlent de relations amicales ?",
+              "options": [
+                "صديق (ṣadīq) — ami",
+                "صديقة (ṣadīqa) — amie",
+                "كتاب (kitāb) — livre",
+                "سبورة (sabbūra) — tableau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "صديق et صديقة désignent l'ami et l'amie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie صديقة (ṣadīqa) ?",
+              "options": ["amie (féminin)", "professeur", "voisin", "frère"],
+              "correctAnswers": [0],
+              "explanation": "صديقة signifie amie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Voisin » (masculin) :",
+              "options": [
+                "جار (jār)",
+                "زميل (zamīl)",
+                "عم (ʿamm)",
+                "ابن (ibn)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "جار signifie voisin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie زميل (zamīl) ?",
+              "options": [
+                "camarade / collègue",
+                "étranger",
+                "directeur",
+                "bébé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "زميل désigne un camarade."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Saluer un ami le matin :",
+              "options": [
+                "صباح الخير (ṣabāḥ al-khayr)",
+                "تصبح على خير",
+                "مع السلامة",
+                "إلى اللقاء غداً"
+              ],
+              "correctAnswers": [0],
+              "explanation": "صباح الخير est « bonjour » le matin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie مع السلامة (maʿa al-salāma) ?",
+              "options": [
+                "au revoir (bon voyage)",
+                "bonne nuit",
+                "merci",
+                "s'il vous plaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مع السلامة sert à dire au revoir."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Merci » se dit :",
+              "options": [
+                "شكراً (shukran)",
+                "عفواً (ʿafwan)",
+                "نعم (naʿam)",
+                "لا (lā)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "شكراً signifie merci."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie من فضلك (min faḍlik) ?",
+              "options": [
+                "s'il vous plaît",
+                "excusez-moi",
+                "bienvenue",
+                "félicitations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "من فضلك signifie s'il vous plaît."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Répondre « de rien » :",
+              "options": [
+                "عفواً (ʿafwan)",
+                "شكراً (shukran)",
+                "مرحباً (marḥaban)",
+                "آسف (āsef)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "عفواً répond à merci."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie مرحباً (marḥaban) ?",
+              "options": [
+                "bienvenue / bonjour",
+                "au revoir",
+                "non",
+                "peut-être"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مرحباً salue chaleureusement."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Routine du matin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles actions font partie du matin ?",
+              "options": [
+                "يستيقظ (yastayqiẓ) — se réveiller",
+                "ينام (yanām) — dormir (soir)",
+                "يغتسل (yaghtasil) — se laver",
+                "يتعشى (yataʿashshā) — dîner"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Se réveiller et se laver sont des gestes du matin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie صباح (ṣabāḥ) ?",
+              "options": ["matin", "soir", "nuit", "midi"],
+              "correctAnswers": [0],
+              "explanation": "صباح signifie matin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Petit-déjeuner » :",
+              "options": [
+                "فطور (fuṭūr)",
+                "غداء (ghadāʾ)",
+                "عشاء (ʿashāʾ)",
+                "وجبة خفيفة ليلاً"
+              ],
+              "correctAnswers": [0],
+              "explanation": "فطور est le petit-déjeuner."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie يلبس (yalbas) ?",
+              "options": ["il s'habille", "il mange", "il court", "il lit"],
+              "correctAnswers": [0],
+              "explanation": "يلبس signifie il s'habille."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Se brosser les dents :",
+              "options": [
+                "ينظف أسنانه (yunẓif asnānah)",
+                "ينام مبكراً",
+                "يشاهد فيلماً",
+                "يلعب كرة"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ينظف أسنانه décrit le brossage des dents."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie يذهب إلى المدرسة (yadhhab ilā al-madrasa) ?",
+              "options": [
+                "il va à l'école",
+                "il rentre à la maison",
+                "il dort",
+                "il cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette phrase signifie aller à l'école."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'heure du matin se lit avec :",
+              "options": [
+                "الساعة (al-sāʿa)",
+                "الليل (al-layl)",
+                "الشتاء (al-shitāʾ)",
+                "الكتاب (al-kitāb)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "الساعة signifie l'heure."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie مبكراً (mubakkiran) ?",
+              "options": ["tôt", "tard", "souvent", "jamais"],
+              "correctAnswers": [0],
+              "explanation": "مبكراً signifie tôt."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Réveil » (alarme) :",
+              "options": [
+                "منبه (munabbih)",
+                "سرير (sarīr)",
+                "نافذة (nāfidha)",
+                "باب (bāb)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "منبه désigne le réveil."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie يأكل فطوره (yaʾkul fuṭūrah) ?",
+              "options": [
+                "il prend son petit-déjeuner",
+                "il prépare le dîner",
+                "il fait du sport",
+                "il écrit une lettre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "yaʾkul fuṭūrah = prendre le petit-déjeuner."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Après l'école et le week-end",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles activités conviennent au week-end ?",
+              "options": [
+                "زيارة العائلة (ziyārat al-ʿāʾila)",
+                "امتحان في الليل",
+                "نزهة في الحديقة (nuzha)",
+                "حصة امتحان صباح السبت"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Visite familiale et promenade au parc sont typiques du week-end."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie عطلة (ʿuṭla) ?",
+              "options": ["vacances / congé", "devoir", "classe", "punition"],
+              "correctAnswers": [0],
+              "explanation": "عطلة signifie vacances ou congé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Samedi » en arabe :",
+              "options": [
+                "السبت (al-sabt)",
+                "الجمعة (al-jumʿa)",
+                "الأحد (al-aḥad)",
+                "الثلاثاء (al-thalāthāʾ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "السبت est samedi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie الأحد (al-aḥad) ?",
+              "options": ["dimanche", "lundi", "mercredi", "vendredi"],
+              "correctAnswers": [0],
+              "explanation": "الأحد est dimanche."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Après l'école, je fais mes devoirs :",
+              "options": [
+                "بعد المدرسة أعمل واجباتي",
+                "قبل الفطور أنام",
+                "في الليل أذهب للمدرسة",
+                "في الصباح أتعشى"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phrase décrit les devoirs après les cours."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie نزهة (nuzha) ?",
+              "options": ["promenade / sortie", "examen", "punition", "leçon"],
+              "correctAnswers": [0],
+              "explanation": "نزهة signifie promenade."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Je me repose » :",
+              "options": [
+                "أستريح (astariḥ)",
+                "أجري (ajrī)",
+                "أكتب (aktub)",
+                "أدرس (adrus)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أستريح signifie je me repose."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie سوق (sūq) ?",
+              "options": ["marché", "école", "hôpital", "aéroport"],
+              "correctAnswers": [0],
+              "explanation": "سوق signifie marché."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Visiter des grands-parents :",
+              "options": [
+                "زيارة الأجداد (ziyārat al-ajdād)",
+                "كتابة الامتحان",
+                "النوم في الفصل",
+                "حذف الواجب"
+              ],
+              "correctAnswers": [0],
+              "explanation": "زيارة الأجداد = visiter les grands-parents."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie مساء (masāʾ) ?",
+              "options": ["soir", "matin", "midi", "aube"],
+              "correctAnswers": [0],
+              "explanation": "مساء signifie soir."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision : quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots appartiennent au thème « école » ?",
+              "options": [
+                "تلميذ (tilmīdh)",
+                "طبيب (ṭabīb)",
+                "سبورة (sabbūra)",
+                "مطعم (maṭʿam)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "تلميذ et سبورة sont liés à l'école."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de membres : أب + أم + ابنان ?",
+              "options": [
+                "quatre personnes",
+                "deux personnes",
+                "six personnes",
+                "une personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Père, mère et deux fils font quatre personnes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie يوم (yawm) ?",
+              "options": ["jour", "année", "semaine", "siècle"],
+              "correctAnswers": [0],
+              "explanation": "يوم signifie jour."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Semaine » :",
+              "options": [
+                "أسبوع (usbūʿ)",
+                "شهر (shahr)",
+                "ساعة (sāʿa)",
+                "دقيقة (daqīqa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أسبوع signifie semaine."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie كثيراً (kathīran) ?",
+              "options": ["beaucoup", "un peu", "jamais", "toujours"],
+              "correctAnswers": [0],
+              "explanation": "كثيراً signifie beaucoup."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'expression « كل يوم » signifie :",
+              "options": ["chaque jour", "un jour", "hier", "demain"],
+              "correctAnswers": [0],
+              "explanation": "كل يوم = chaque jour."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie غداً (ghadan) ?",
+              "options": ["demain", "aujourd'hui", "hier", "maintenant"],
+              "correctAnswers": [0],
+              "explanation": "غداً signifie demain."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Aujourd'hui » :",
+              "options": [
+                "اليوم (al-yawm)",
+                "البارحة (al-bāriḥa)",
+                "غداً (ghadan)",
+                "أبداً (abadan)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "اليوم signifie aujourd'hui."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie دائماً (dāʾiman) ?",
+              "options": ["toujours", "parfois", "rarement", "une fois"],
+              "correctAnswers": [0],
+              "explanation": "دائماً signifie toujours."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour parler de la vie quotidienne on utilise surtout :",
+              "options": [
+                "le présent de l'indicatif et vocabulaire du quotidien",
+                "le passé composé français uniquement",
+                "des noms propres latins",
+                "aucun verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le présent arabe et le vocabulaire courant décrivent le quotidien."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Adjectifs de description",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs décrivent une personne ?",
+              "options": [
+                "طويل (ṭawīl) — grand",
+                "سريع (sarīʿ) — rapide",
+                "قصير (qaṣīr) — petit",
+                "بطيء (baṭīʾ) — lent"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "طويل et قصير opposent grande taille et petite taille."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie جميل (jamīl) ?",
+              "options": ["beau / belle", "laid", "fatigué", "fâché"],
+              "correctAnswers": [0],
+              "explanation": "جميل signifie beau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Jeune » (masculin) :",
+              "options": [
+                "شاب (shābb)",
+                "عجوز (ʿajūz)",
+                "طفل (ṭifl)",
+                "كبير (kabīr)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "شاب signifie jeune homme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie كبير (kabīr) ?",
+              "options": ["grand / âgé", "petit", "mince", "blond"],
+              "correctAnswers": [0],
+              "explanation": "كبير peut signifier grand ou âgé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Fatigué » :",
+              "options": [
+                "متعب (mutʿab)",
+                "سعيد (saʿīd)",
+                "جائع (jāʾiʿ)",
+                "عطشان (ʿaṭshān)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "متعب signifie fatigué."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie سعيد (saʿīd) ?",
+              "options": ["heureux", "triste", "malade", "occupé"],
+              "correctAnswers": [0],
+              "explanation": "سعيد signifie heureux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'adjectif s'accorde en arabe avec :",
+              "options": [
+                "le genre et le nombre du nom",
+                "uniquement l'heure",
+                "la ville",
+                "le jour de la semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif s'accorde en genre et en nombre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie ذكي (dhakī) ?",
+              "options": ["intelligent", "paresseux", "bruyant", "timide"],
+              "correctAnswers": [0],
+              "explanation": "ذكي signifie intelligent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Timide » :",
+              "options": [
+                "خجول (khajūl)",
+                "قوي (qawī)",
+                "سريع (sarīʿ)",
+                "غني (ghanī)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "خجول signifie timide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie قوي (qawī) ?",
+              "options": ["fort", "faible", "petit", "vieux"],
+              "correctAnswers": [0],
+              "explanation": "قوي signifie fort."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Couleurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles couleurs de base connaît-on en 6e ?",
+              "options": [
+                "أحمر (aḥmar) — rouge",
+                "أزرق (azraq) — bleu",
+                "شفاف (shafāf) — transparent",
+                "لون (lawn) — couleur (mot général)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "أحمر et أزرق sont des couleurs de base."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie أخضر (akhḍar) ?",
+              "options": ["vert", "jaune", "noir", "blanc"],
+              "correctAnswers": [0],
+              "explanation": "أخضر signifie vert."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Jaune » :",
+              "options": [
+                "أصفر (aṣfar)",
+                "بني (bunnī)",
+                "وردي (wardī)",
+                "رمادي (ramādī)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أصفر signifie jaune."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie أسود (aswad) ?",
+              "options": ["noir", "blanc", "orange", "violet"],
+              "correctAnswers": [0],
+              "explanation": "أسود signifie noir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Blanc » :",
+              "options": [
+                "أبيض (abyaḍ)",
+                "أحمر (aḥmar)",
+                "أزرق (azraq)",
+                "أخضر (akhḍar)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أبيض signifie blanc."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie بني (bunnī) ?",
+              "options": ["marron", "rose", "gris", "turquoise"],
+              "correctAnswers": [0],
+              "explanation": "بني signifie marron."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dire « le ciel est bleu » :",
+              "options": [
+                "السماء زرقاء (al-samāʾ zarqāʾ)",
+                "السماء حمراء",
+                "السماء سوداء",
+                "السماء صفراء"
+              ],
+              "correctAnswers": [0],
+              "explanation": "زرقاء accorde le féminin avec السماء."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie وردي (wardī) ?",
+              "options": [
+                "rose (couleur)",
+                "rouge foncé",
+                "vert clair",
+                "noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "وردي signifie rose."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Gris » :",
+              "options": [
+                "رمادي (ramādī)",
+                "برتقالي (burtuqālī)",
+                "بنفسجي",
+                "ذهبي"
+              ],
+              "correctAnswers": [0],
+              "explanation": "رمادي signifie gris."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie لون (lawn) ?",
+              "options": ["couleur", "forme", "taille", "poids"],
+              "correctAnswers": [0],
+              "explanation": "لون signifie couleur."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Se présenter",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases servent à se présenter ?",
+              "options": [
+                "اسمي ... (ismī) — je m'appelle",
+                "أنا من ... (anā min) — je suis de",
+                "الطقس ممطر",
+                "أنا طالب (anā ṭālib) — je suis élève"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "ismī et anā min introduisent nom et origine."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie اسم (ism) ?",
+              "options": ["nom", "âge", "adresse", "profession"],
+              "correctAnswers": [0],
+              "explanation": "اسم signifie nom."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« J'ai ... ans » se construit avec :",
+              "options": [
+                "عمري ... (ʿumrī)",
+                "طولي ...",
+                "وزني ...",
+                "اسمي ..."
+              ],
+              "correctAnswers": [0],
+              "explanation": "عمري indique l'âge."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie أنا (anā) ?",
+              "options": ["je", "tu", "il", "nous"],
+              "correctAnswers": [0],
+              "explanation": "أنا signifie je."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Demander le nom :",
+              "options": [
+                "ما اسمك؟ (mā ismuk?)",
+                "كم عمرك؟",
+                "من أين أنت؟",
+                "أين تسكن؟"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ما اسمك؟ demande le nom."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie من أين أنت؟ (min ayna anta?) ?",
+              "options": [
+                "D'où viens-tu ?",
+                "Comment vas-tu ?",
+                "Quelle heure est-il ?",
+                "Quel est ton sport ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "من أين أنت؟ interroge sur l'origine."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Enchanté » peut se dire :",
+              "options": ["تشرفنا (tasharrafnā)", "مع السلامة", "شكراً", "لا"],
+              "correctAnswers": [0],
+              "explanation": "تشرفنا exprime la politesse à la rencontre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie أنا تلميذ (anā tilīdh) ?",
+              "options": [
+                "Je suis élève",
+                "Je suis professeur",
+                "Je suis médecin",
+                "Je suis voisin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "تلميذ désigne l'élève."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Tu » (masculin) :",
+              "options": [
+                "أنت (anta)",
+                "أنا (anā)",
+                "هو (huwa)",
+                "نحن (naḥnu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أنت (anta) signifie tu (masc.)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie نحن (naḥnu) ?",
+              "options": ["nous", "vous", "ils", "je"],
+              "correctAnswers": [0],
+              "explanation": "نحن signifie nous."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Décrire une personne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels traits décrivent l'apparence ?",
+              "options": [
+                "شعر (shaʿr) — cheveux",
+                "عين (ʿayn) — œil",
+                "كتاب — livre",
+                "قلم — stylo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "شعر et عين décrivent le visage et la chevelure."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie وجه (wajh) ?",
+              "options": ["visage", "main", "pied", "dos"],
+              "correctAnswers": [0],
+              "explanation": "وجه signifie visage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Yeux » :",
+              "options": [
+                "عيون (ʿuyūn)",
+                "آذان (ādhān)",
+                "أنف (anf)",
+                "فم (fam)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "عيون est le pluriel de œil."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie لباس (libās) ?",
+              "options": ["vêtement", "chaussure", "chapeau", "montre"],
+              "correctAnswers": [0],
+              "explanation": "لباس signifie vêtement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dire « elle a les cheveux longs » :",
+              "options": [
+                "شعرها طويل (shaʿruhā ṭawīl)",
+                "شعرها قصير",
+                "عينها زرقاء فقط",
+                "يدها كبيرة"
+              ],
+              "correctAnswers": [0],
+              "explanation": "شعرها طويل décrit des cheveux longs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie لطيف (laṭīf) ?",
+              "options": ["gentil / agréable", "méchant", "bruyant", "sale"],
+              "correctAnswers": [0],
+              "explanation": "لطيف signifie gentil."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Il porte » (vêtement) :",
+              "options": [
+                "يلبس (yalbas)",
+                "يأكل (yaʾkul)",
+                "يشرب (yashrab)",
+                "ينام (yanām)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "يلبس exprime porter un vêtement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie نظارات (naẓẓārāt) ?",
+              "options": ["lunettes", "gants", "chaussettes", "bottes"],
+              "correctAnswers": [0],
+              "explanation": "نظارات signifie lunettes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Sourire » :",
+              "options": [
+                "ابتسامة (ibtisāma)",
+                "بكاء (bukāʾ)",
+                "غضب (ghaḍab)",
+                "خوف (khawf)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ابتسامة signifie sourire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie شخص (shakhṣ) ?",
+              "options": ["personne", "animal", "objet", "ville"],
+              "correctAnswers": [0],
+              "explanation": "شخص signifie personne."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Décrire un lieu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots décrivent un lieu ?",
+              "options": [
+                "كبير (kabīr) — grand",
+                "صغير (ṣaghīr) — petit",
+                "سعيد — heureux (personne)",
+                "نظيف (naẓīf) — propre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "كبير et صغير qualifient la taille d'un lieu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie مدينة (madīna) ?",
+              "options": ["ville", "village", "pays", "rue"],
+              "correctAnswers": [0],
+              "explanation": "مدينة signifie ville."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Rue » :",
+              "options": [
+                "شارع (shāriʿ)",
+                "باب (bāb)",
+                "سقف (saqf)",
+                "جدار (jidār)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "شارع signifie rue."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie قريب (qarīb) ?",
+              "options": ["proche", "loin", "haut", "bas"],
+              "correctAnswers": [0],
+              "explanation": "قريب signifie proche."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Loin » :",
+              "options": [
+                "بعيد (baʿīd)",
+                "قريب (qarīb)",
+                "هنا (hunā)",
+                "هناك (hunāk)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "بعيد signifie loin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie جميل (jamīl) pour un parc ?",
+              "options": ["beau", "sale", "dangereux", "fermé"],
+              "correctAnswers": [0],
+              "explanation": "جميل qualifie un lieu agréable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Il y a » (existence) :",
+              "options": ["يوجد (yūjad)", "لا يوجد", "كان (kāna)", "سيكون"],
+              "correctAnswers": [0],
+              "explanation": "يوجد indique la présence de quelque chose."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie مكتظ (muktaẓ) ?",
+              "options": [
+                "bondé / très fréquenté",
+                "vide",
+                "silencieux",
+                "nouveau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مكتظ décrit un lieu très fréquenté."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Décrire une école calme :",
+              "options": [
+                "المدرسة هادئة (al-madrasa hādiʾa)",
+                "المدرسة صاخبة",
+                "المدرسة بعيدة جداً عن كل شيء",
+                "المدرسة ليست موجودة"
+              ],
+              "correctAnswers": [0],
+              "explanation": "هادئة signifie calme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie هنا (hunā) ?",
+              "options": ["ici", "là-bas", "partout", "nulle part"],
+              "correctAnswers": [0],
+              "explanation": "هنا signifie ici."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Verbes au présent",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes sont au présent (3e personne masc.) ?",
+              "options": [
+                "يكتب (yaktub) — il écrit",
+                "كتب (kataba) — il a écrit (passé)",
+                "يقرأ (yaqraʾ) — il lit",
+                "سافر (sāfar) — il a voyagé"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "yaktub et yaqraʾ sont des présents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie يأكل (yaʾkul) ?",
+              "options": ["il mange", "il boit", "il dort", "il court"],
+              "correctAnswers": [0],
+              "explanation": "يأكل signifie il mange."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Il boit » :",
+              "options": [
+                "يشرب (yashrab)",
+                "يأكل (yaʾkul)",
+                "يمشي (yamshī)",
+                "يجلس (yajlis)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "يشرب signifie il boit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie يذهب (yadhhab) ?",
+              "options": ["il va", "il vient", "il reste", "il tombe"],
+              "correctAnswers": [0],
+              "explanation": "يذهب signifie il va."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Il parle » :",
+              "options": [
+                "يتكلم (yatakallam)",
+                "يسمع (yasmaʿ)",
+                "يفكر (yufakkir)",
+                "يضحك (yaḍḥak)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "يتكلم signifie il parle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie يدرس (yadrus) ?",
+              "options": ["il étudie", "il joue", "il nage", "il chante"],
+              "correctAnswers": [0],
+              "explanation": "يدرس signifie il étudie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le préfixe يـ (ya-) indique souvent :",
+              "options": [
+                "3e personne du singulier masculin au présent",
+                "1re personne du pluriel",
+                "féminin uniquement",
+                "passé immédiat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe يـ marque souvent il au présent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie يسمع (yasmaʿ) ?",
+              "options": [
+                "il entend / écoute",
+                "il voit",
+                "il sent",
+                "il touche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "يسمع signifie il entend."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Nous marchons » :",
+              "options": [
+                "نمشي (namshī)",
+                "يمشي (yamshī)",
+                "تمشي (tamshī)",
+                "أمشي (amshī)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "نمشي = nous marchons."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie يرى (yarā) ?",
+              "options": ["il voit", "il dit", "il prend", "il vend"],
+              "correctAnswers": [0],
+              "explanation": "يرى signifie il voit."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Raconter sa journée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels connecteurs ordonnent le récit d'une journée ?",
+              "options": [
+                "ثم (thumma) — puis",
+                "أولاً (awwalan) — d'abord",
+                "أبداً — jamais (négation)",
+                "فجأة (fajʾatan) — soudain"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "أولاً et ثم structurent la chronologie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie بعد ذلك (baʿda dhālika) ?",
+              "options": ["après cela", "avant cela", "pendant", "jamais"],
+              "correctAnswers": [0],
+              "explanation": "بعد ذلك signifie après cela."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ensuite » :",
+              "options": [
+                "ثم (thumma)",
+                "أمس (ams)",
+                "غداً (ghadan)",
+                "الآن (al-ān)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ثم signifie ensuite / puis."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie في الصباح (fī al-ṣabāḥ) ?",
+              "options": ["le matin", "le soir", "la nuit", "à midi"],
+              "correctAnswers": [0],
+              "explanation": "في الصباح = le matin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Raconter : « Je me lève » :",
+              "options": [
+                "أستيقظ (astayqiẓ)",
+                "أنام (anām)",
+                "آكل العشاء",
+                "أعود إلى المدرسة"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أستيقظ signifie je me réveille."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie عدت إلى البيت (ʿudtu ilā al-bayt) ?",
+              "options": [
+                "Je suis rentré à la maison",
+                "Je suis allé à l'école",
+                "Je suis parti en voyage",
+                "Je suis resté dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "عدت إلى البيت = retour à la maison."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Le soir » :",
+              "options": [
+                "في المساء (fī al-masāʾ)",
+                "في الصباح",
+                "في الليل فقط",
+                "في الظهر"
+              ],
+              "correctAnswers": [0],
+              "explanation": "في المساء = le soir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie أخيراً (akhīran) ?",
+              "options": ["enfin", "d'abord", "parfois", "souvent"],
+              "correctAnswers": [0],
+              "explanation": "أخيراً signifie enfin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase passée simple : « J'ai lu » :",
+              "options": [
+                "قرأت (qaraʾtu)",
+                "أقرأ (aqraʾ)",
+                "يقرأ (yaqraʾ)",
+                "قراءة (qirāʾa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "قرأت est je ai lu (passé)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie ذهبت (dhahabtu) ?",
+              "options": [
+                "Je suis allé(e)",
+                "Je viens",
+                "Je reste",
+                "J'attends"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ذهبت signifie je suis allé."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Nombres et âge",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels nombres sont corrects en arabe ?",
+              "options": [
+                "واحد (wāḥid) — 1",
+                "ثلاثة (thalātha) — 3",
+                "عشرون (ʿishrūn) — 20",
+                "مائة (miʾa) — 100"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "واحد et ثلاثة sont des nombres de base."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie اثنان (ithnān) ?",
+              "options": ["deux", "cinq", "sept", "neuf"],
+              "correctAnswers": [0],
+              "explanation": "اثنان signifie deux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Cinq » :",
+              "options": [
+                "خمسة (khamsa)",
+                "أربعة (arbaʿa)",
+                "ستة (sitta)",
+                "ثمانية (thamāniya)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "خمسة signifie cinq."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie عشرة (ʿashara) ?",
+              "options": ["dix", "onze", "douze", "quatre"],
+              "correctAnswers": [0],
+              "explanation": "عشرة signifie dix."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "12 ans :",
+              "options": [
+                "عمري اثنا عشر سنة (ʿumrī ithnā ʿashar sanatan)",
+                "عمري خمس سنوات",
+                "اسمي اثنا عشر",
+                "طولي اثنا عشر"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On exprime l'âge avec عمري + nombre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie كم (kam) ?",
+              "options": ["combien", "où", "quand", "pourquoi"],
+              "correctAnswers": [0],
+              "explanation": "كم signifie combien."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Vingt » :",
+              "options": [
+                "عشرون (ʿishrūn)",
+                "ثلاثون (thalāthūn)",
+                "أربعون (arbaʿūn)",
+                "خمسون (khamsūn)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "عشرون signifie vingt."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie سنة (sana) ?",
+              "options": ["an (unité d'âge)", "mois", "jour", "heure"],
+              "correctAnswers": [0],
+              "explanation": "سنة signifie an."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Demander l'âge :",
+              "options": [
+                "كم عمرك؟ (kam ʿumruk?)",
+                "ما اسمك؟",
+                "أين تسكن؟",
+                "ماذا تأكل؟"
+              ],
+              "correctAnswers": [0],
+              "explanation": "كم عمرك؟ demande l'âge."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie صفر (ṣifr) ?",
+              "options": ["zéro", "un", "cent", "mille"],
+              "correctAnswers": [0],
+              "explanation": "صفر signifie zéro."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Temps et saisons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles saisons connaît-on en arabe ?",
+              "options": [
+                "الشتاء (al-shitāʾ) — hiver",
+                "الصيف (al-ṣayf) — été",
+                "المدرسة — école",
+                "الليل — nuit"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "الشتاء et الصيف sont deux saisons."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie الربيع (al-rabīʿ) ?",
+              "options": ["printemps", "automne", "été", "hiver"],
+              "correctAnswers": [0],
+              "explanation": "الربيع signifie printemps."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Automne » :",
+              "options": [
+                "الخريف (al-kharīf)",
+                "الصيف (al-ṣayf)",
+                "الشتاء (al-shitāʾ)",
+                "الربيع (al-rabīʿ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "الخريف signifie automne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie الطقس (al-ṭaqṣ) ?",
+              "options": ["la météo", "la carte", "la montre", "la couleur"],
+              "correctAnswers": [0],
+              "explanation": "الطقس signifie météo."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Il fait chaud » :",
+              "options": [
+                "الجو حار (al-jaww ḥārr)",
+                "الجو بارد",
+                "الجو ممطر",
+                "الجو ثلجي"
+              ],
+              "correctAnswers": [0],
+              "explanation": "حار signifie chaud."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie بارد (bārid) ?",
+              "options": ["froid", "chaud", "humide", "sec"],
+              "correctAnswers": [0],
+              "explanation": "بارد signifie froid."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Pluie » :",
+              "options": [
+                "مطر (maṭar)",
+                "ثلج (thalj)",
+                "ريح (rīḥ)",
+                "شمس (shams)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مطر signifie pluie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie شمس (shams) ?",
+              "options": ["soleil", "lune", "étoile", "nuage"],
+              "correctAnswers": [0],
+              "explanation": "شمس signifie soleil."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Neige » :",
+              "options": [
+                "ثلج (thalj)",
+                "مطر (maṭar)",
+                "بحر (baḥr)",
+                "رمل (raml)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ثلج signifie neige."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie اليوم مشمس (al-yawm mushmis) ?",
+              "options": [
+                "Aujourd'hui il y a du soleil",
+                "Aujourd'hui il pleut",
+                "Aujourd'hui il neige",
+                "Aujourd'hui il fait nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مشمس décrit une journée ensoleillée."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision : décrire et raconter",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments aident à raconter une histoire ?",
+              "options": [
+                "أولاً (awwalan)",
+                "ثم (thumma)",
+                "صفر (ṣifr) — zéro",
+                "لون (lawn) — couleur seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les connecteurs temporels structurent le récit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour décrire, l'adjectif se place souvent :",
+              "options": [
+                "après le nom qu'il qualifie",
+                "toujours avant le verbe uniquement",
+                "à la fin de la phrase en français",
+                "jamais près du nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En arabe l'adjectif suit généralement le nom."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie هذا (hādhā) ?",
+              "options": [
+                "ceci (masculin proche)",
+                "cela (loin)",
+                "ces (pluriel)",
+                "quoi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "هذا = ceci (masc. sing.)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Cette fille est gentille » :",
+              "options": [
+                "هذه البنت لطيفة (hādhihi al-bint laṭīfa)",
+                "هذا البنت لطيف",
+                "هذه الكتاب لطيف",
+                "هذا الرجل لطيفة"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord féminin : هذه البنت لطيفة."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie ماذا (mādhā) ?",
+              "options": ["quoi", "qui", "où", "comment"],
+              "correctAnswers": [0],
+              "explanation": "ماذا signifie quoi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Où » :",
+              "options": [
+                "أين (ayna)",
+                "متى (matā)",
+                "لماذا (limādhā)",
+                "كيف (kayfa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أين signifie où."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie كيف (kayfa) ?",
+              "options": ["comment", "combien", "quand", "pourquoi"],
+              "correctAnswers": [0],
+              "explanation": "كيف signifie comment."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Raconter au passé utilise souvent :",
+              "options": [
+                "des verbes au passé (masdar ou forme verbale passée)",
+                "uniquement le futur",
+                "aucun verbe",
+                "seulement des noms propres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passé s'exprime avec des formes verbales passées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie جملة (jumla) ?",
+              "options": [
+                "phrase",
+                "mot isolé",
+                "lettre",
+                "paragraphe entier d'un roman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "جملة signifie phrase."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour décrire puis raconter, on combine :",
+              "options": [
+                "adjectifs, noms, verbes au présent et au passé",
+                "uniquement des chiffres",
+                "seulement des couleurs",
+                "aucune structure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Description et récit mobilisent vocabulaire et conjugaisons."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

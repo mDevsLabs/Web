@@ -1,0 +1,2483 @@
+{
+  "id": "1ere-francais-04",
+  "year": "1ere",
+  "subject": "francais",
+  "title": "La langue au service du sens",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Orthographe et accords",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Accords du participe passé avec avoir et être",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans quelles phrases le participe passé employé avec l'auxiliaire avoir est-il correctement accordé ?",
+              "options": [
+                "Les lettres qu'il a écrites sont très émouvantes.",
+                "Elle a mangée une pomme dans le verger.",
+                "Ces romans, je les ai lus avec un vif plaisir.",
+                "La pièce de théâtre qu'ils ont vu hier était magnifique."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Avec 'avoir', le participe passé s'accorde avec le COD placé avant le verbe ('qu'' mis pour 'les lettres' -> féminin pluriel, et 'les' mis pour 'ces romans' -> masculin pluriel)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la règle d'accord du participe passé employé avec l'auxiliaire être ?",
+              "options": [
+                "Il s'accorde toujours en genre et en nombre avec le sujet du verbe.",
+                "Il s'accorde avec le complément d'objet direct placé avant.",
+                "Il reste toujours invariable.",
+                "Il s'accorde avec le premier nom de la phrase."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec l'auxiliaire être, le participe passé reçoit le genre et le nombre du sujet du verbe (sauf cas des verbes pronominaux)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « Les erreurs que vous avez ___ seront vite corrigées. »",
+              "options": ["commises", "commis", "commise", "commisent"],
+              "correctAnswers": [0],
+              "explanation": "Le COD 'que' a pour antécédent 'les erreurs' (féminin pluriel) et précède l'auxiliaire avoir : accord au féminin pluriel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans la phrase « Combien d'épreuves ont-ils ___ ? », quelle graphie convient ?",
+              "options": ["subies", "subi", "subie", "subis"],
+              "correctAnswers": [0],
+              "explanation": "Le pronom interrogatif 'Combien d'épreuves' est le COD placé avant le verbe : le participe s'accorde avec 'épreuves' (féminin pluriel)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi écrit-on « Des fleurs, nous en avons cueilli » sans 'es' à 'cueilli' ?",
+              "options": [
+                "Parce que le pronom 'en' n'entraîne généralement pas d'accord du participe passé.",
+                "Parce que 'fleurs' est un nom invariable dans ce contexte.",
+                "Parce que le sujet est 'nous'.",
+                "Parce que le verbe cueillir n'a pas de féminin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pronom adverbial 'en' est traditionnellement considéré comme neutre : il ne provoque pas l'accord du participe passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Choisissez la bonne graphie : « Les vingt minutes que ce voyage a ___ m'ont paru très longues. »",
+              "options": ["duré", "durées", "durée", "durés"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe durer est intransitif : 'les vingt minutes' est un complément de mesure ou circonstanciel, pas un COD. Le participe reste invariable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « Elles sont ___ chez leurs grands-parents », quelle forme s'impose ?",
+              "options": ["allées", "allé", "allée", "allés"],
+              "correctAnswers": [0],
+              "explanation": "Avec l'auxiliaire être, le participe passé s'accorde avec le sujet 'Elles' (féminin pluriel)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Laquelle de ces phrases contient une faute d'accord ?",
+              "options": [
+                "Elle a terminée son commentaire littéraire à minuit.",
+                "Les figures de style qu'elle a repérées sont saisissantes.",
+                "Ils sont parvenus à convaincre leur auditoire.",
+                "Quelle belle tirade tu as déclamée !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans 'Elle a terminée', le COD 'son commentaire' est placé après le verbe : le participe employé avec avoir doit rester invariable ('terminé')."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « Quels beaux vers tu as ___ ! »",
+              "options": ["écrits", "écrit", "écrite", "écrites"],
+              "correctAnswers": [0],
+              "explanation": "Le COD 'Quels beaux vers' (masculin pluriel) est antéposé au verbe : le participe prend la marque du masculin pluriel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « Cette tragédie, Racine l'a ___ avec une rigueur absolue. »",
+              "options": ["composée", "composé", "composer", "composés"],
+              "correctAnswers": [0],
+              "explanation": "Le pronom élidé 'l'' remplace 'Cette tragédie' (féminin singulier) et précède l'auxiliaire avoir : accord au féminin singulier."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Accords des verbes pronominaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels participes passés de verbes pronominaux sont correctement orthographiés ?",
+              "options": [
+                "Elles se sont lavé les mains.",
+                "Ils se sont téléphoné longuement hier soir.",
+                "Elle s'est lavée les mains avec soin.",
+                "Elles se sont succédées à la tribune."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pour 'se laver les mains', 'les mains' est COD postposé, donc 'lavé' reste invariable. Pour 'se téléphoner', 'se' est COI (téléphoner à quelqu'un), pas d'accord possible."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi écrit-on « Elles se sont succédé » sans accord à 'succédé' ?",
+              "options": [
+                "Parce qu'on succède à quelqu'un : le pronom 'se' est COI et le verbe n'a jamais de COD.",
+                "Parce que le verbe succéder refuse toujours le féminin.",
+                "Parce que 'se' est un sujet neutre.",
+                "Parce qu'il s'agit d'un verbe essentiellement pronominal."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Succéder est intransitif direct (succéder à) : le pronom réfléchi est complément d'objet indirect, il n'y a donc jamais d'accord."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Choisissez la bonne graphie : « Elle s'est ___ compte de sa méprise. »",
+              "options": ["rendu", "rendue", "rendus", "rendues"],
+              "correctAnswers": [0],
+              "explanation": "Dans la locution 'se rendre compte', 'compte' est le COD postposé : le participe reste invariable."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour les verbes essentiellement pronominaux (comme s'enfuir, s'évanouir), comment s'accorde le participe passé ?",
+              "options": [
+                "Il s'accorde toujours en genre et en nombre avec le sujet.",
+                "Il reste toujours invariable.",
+                "Il s'accorde avec le complément d'objet indirect.",
+                "Il s'accorde uniquement si le sujet est au singulier."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les verbes essentiellement pronominaux s'accordent toujours en genre et en nombre avec leur sujet (ex: 'elles se sont enfuies')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « Ils se sont ___ des reproches acerbes. »",
+              "options": ["adressé", "adressés", "adressée", "adresser"],
+              "correctAnswers": [0],
+              "explanation": "Le COD est 'des reproches', placé après le verbe. 'Se' est COI (adresser des reproches à soi/l'autre). Donc invariable."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « Les reproches qu'ils se sont ___ étaient injustes. »",
+              "options": ["adressés", "adressé", "adressée", "adressées"],
+              "correctAnswers": [0],
+              "explanation": "Le COD 'qu'' (antécédent 'Les reproches', masculin pluriel) est placé avant le verbe : le participe s'accorde au masculin pluriel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la bonne orthographe : « Elle s'est ___ une tasse de thé chaud. »",
+              "options": ["versé", "versée", "versés", "verser"],
+              "correctAnswers": [0],
+              "explanation": "Le COD 'une tasse de thé' est placé après le verbe ; le pronom 's'' est COI (verser du thé à elle-même) : pas d'accord."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase est correctement accordée parmi les suivantes ?",
+              "options": [
+                "Elles se sont parlé pendant des heures.",
+                "Elles se sont parlées pendant des heures.",
+                "Elles se sont parlés pendant des heures.",
+                "Elles se sont parlée pendant des heures."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On parle à quelqu'un : le pronom 'se' est COI. Le participe passé de 'parler' reste invariable au pronominal réciproque."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « Les voleurs se sont ___ dans la forêt. »",
+              "options": ["évanouis", "évanoui", "évanouie", "évanouies"],
+              "correctAnswers": [0],
+              "explanation": "'S'évanouir' est essentiellement pronominal : accord en genre et en nombre avec le sujet 'Les voleurs' (masculin pluriel)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisissez la bonne graphie : « Elle s'est ___ de sa mésaventure. »",
+              "options": ["moquée", "moqué", "moqués", "moquer"],
+              "correctAnswers": [0],
+              "explanation": "'Se moquer' est un verbe essentiellement pronominal : le participe passé s'accorde avec le sujet 'Elle' (féminin singulier)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Participes passés avec infinitif et cas particuliers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases illustrent un accord correct du participe passé suivi d'un infinitif ?",
+              "options": [
+                "Les cantatrices que j'ai entendues chanter ont un talent immense.",
+                "Les pièces de théâtre que j'ai vu jouer m'ont captivé.",
+                "Les cantatrices que j'ai entendu chanter étaient aphones.",
+                "Cette maison, il l'a faite construire par un architecte renommé."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dans 'entendues chanter', 'les cantatrices' font l'action de chanter (accord). Dans 'vu jouer', les pièces ne jouent pas, elles sont jouées (invariable)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la règle pour le participe passé de 'faire' suivi d'un infinitif ?",
+              "options": [
+                "Il est toujours invariable.",
+                "Il s'accorde toujours avec le sujet.",
+                "Il s'accorde avec le COD s'il est placé avant.",
+                "Il prend la marque du pluriel uniquement."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le participe passé de 'faire' suivi immédiatement d'un infinitif est toujours rigoureusement invariable (ex: 'les maisons qu'il a fait bâtir')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « Les musiciens que nous avons ___ jouer étaient virtuoses. »",
+              "options": ["entendus", "entendu", "entendue", "entendues"],
+              "correctAnswers": [0],
+              "explanation": "'Les musiciens' est le COD antéposé et accomplit l'action exprimée par l'infinitif 'jouer' : accord au masculin pluriel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « Les symphonies que nous avons ___ jouer étaient de Beethoven. »",
+              "options": ["entendu", "entendus", "entendue", "entendues"],
+              "correctAnswers": [0],
+              "explanation": "Les symphonies n'accomplissent pas l'action de jouer, elles la subissent : le participe reste invariable."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Selon la réforme orthographique de 1990 admise par l'Académie, comment peut s'écrire 'laissé' suivi d'un infinitif ?",
+              "options": [
+                "Il peut être rendu systématiquement invariable, comme 'fait'.",
+                "Il doit toujours s'accorder avec le COD antéposé.",
+                "Il s'accorde avec le verbe à l'infinitif.",
+                "Il prend un accent circonflexe sur le e."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La recommandation de 1990 aligne la règle de 'laisser + infinitif' sur celle de 'faire' : l'invariabilité est admise dans tous les cas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Choisissez la graphie correcte : « Les sommes que cette rénovation a ___ sont considérables. »",
+              "options": ["coûté", "coûtées", "coûtée", "coûtés"],
+              "correctAnswers": [0],
+              "explanation": "Dans son sens propre de valeur financière, 'coûter' est intransitif : 'les sommes' est un complément de prix, pas un COD. Invariable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans quel cas 'coûter' a-t-il un COD et peut-il accorder son participe passé ?",
+              "options": [
+                "Au sens figuré d'exiger des efforts ou des sacrifices (ex: 'les peines que ce travail m'a coûtées').",
+                "Quand la somme d'argent dépasse un million d'euros.",
+                "Quand le sujet est au féminin pluriel.",
+                "Jamais, ce verbe est strictement invariable."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au sens figuré d'occasionner ou demander, 'coûter' devient transitif direct et s'accorde avec son COD antéposé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « Elle a rédigé tous les devoirs qu'elle a ___. »",
+              "options": ["pu", "pus", "pue", "pues"],
+              "correctAnswers": [0],
+              "explanation": "Le participe des verbes pouvoir, devoir ou vouloir suivi d'un infinitif sous-entendu ('qu'elle a pu rédiger') reste toujours invariable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Choisissez la graphie correcte : « Les actrices que j'ai ___ partir étaient émues. »",
+              "options": ["vues", "vu", "vue", "vus"],
+              "correctAnswers": [0],
+              "explanation": "'Les actrices' est le sujet sémantique qui fait l'action de partir : accord au féminin pluriel ('vues')."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « Les tragédies qu'il a ___ écrire par son disciple sont perdues. »",
+              "options": ["fait", "faite", "faites", "faits"],
+              "correctAnswers": [0],
+              "explanation": "Le participe passé 'fait' suivi immédiatement d'un infinitif est toujours invariable."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Accords sujet-verbe avec collectifs et quantificateurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont correctement accordées avec un adverbe ou nom de quantité ?",
+              "options": [
+                "Beaucoup d'élèves ont réussi leur épreuve avec brio.",
+                "La plupart des candidats ont obtenu une mention honorable.",
+                "La plupart des spectateurs a quitté la salle avant la fin.",
+                "Trop d'obstacles a empêché sa réussite."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Beaucoup de' et 'La plupart de' entraînent traditionnellement l'accord au pluriel du verbe car l'accent est mis sur le pluriel du complément."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel accord s'applique après « la plupart » employé seul (sans complément exprimé) ?",
+              "options": [
+                "Le verbe s'accorde au pluriel (masculin pluriel par défaut).",
+                "Le verbe s'accorde obligatoirement au féminin singulier.",
+                "Le verbe reste invariable à la 3e personne du singulier.",
+                "Le verbe se met au subjonctif présent."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Employé seul, 'la plupart' sous-entend un pluriel et commande l'accord du verbe au pluriel (ex: 'La plupart pensent ainsi')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans « Une foule de manifestants ___ les boulevards », quel accord est grammaticalement possible ?",
+              "options": [
+                "L'accord au singulier ou au pluriel, selon qu'on privilégie la foule ou les manifestants.",
+                "Uniquement l'accord au singulier car 'une foule' est le noyau.",
+                "Uniquement l'accord au pluriel car 'manifestants' est pluriel.",
+                "Aucun des deux, la tournure est incorrecte."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec un nom collectif indéfini ('une foule de'), l'accord peut se faire soit avec le collectif (sens global), soit avec son complément (sens distributif)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « La majorité des députés ___ ce projet de loi. »",
+              "options": [
+                "a voté ou ont voté selon l'intention de sens",
+                "ont exclusivement voté au subjonctif",
+                "a obligatoirement voté au duel",
+                "eut été votée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le singulier souligne l'entité globale ('la majorité a voté') tandis que le pluriel insiste sur les individus ('ont voté'). Les deux sont admis."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment s'accorde le verbe après « Moins de deux » ?",
+              "options": [
+                "Au pluriel car 'deux' indique une pluralité.",
+                "Au singulier car 'moins de deux' équivaut à un.",
+                "À l'infinitif présent.",
+                "Au féminin singulier par analogie avec 'quantité'."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après 'Moins de deux', l'accord se fait au pluriel par attraction du chiffre deux (ex: 'Moins de deux ans se sont écoulés')."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment s'accorde le verbe après « Plus d'un » ?",
+              "options": [
+                "Au singulier, sauf cas d'action réciproque ('se sont battus').",
+                "Toujours au pluriel car cela évoque la multiplicité.",
+                "Toujours à la première personne du pluriel.",
+                "Au passif uniquement."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Plus d'un' commande le singulier grammatical par attraction de 'un' (ex: 'Plus d'un critique a loué cette œuvre'), sauf au pronominal réciproque."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « Le peu de connaissances qu'il a montrées lui ___ pour réussir. »",
+              "options": ["a suffi", "ont suffi", "ont suffies", "ont suffis"],
+              "correctAnswers": [0],
+              "explanation": "Ici, 'Le peu' a le sens positif de 'la quantité suffisante' : l'accord du verbe principal se fait avec 'le peu' au singulier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « Nombre de critiques ___ encensé ce nouveau roman. »",
+              "options": ["ont", "a", "est", "sont"],
+              "correctAnswers": [0],
+              "explanation": "'Nombre de' (sans article) fonctionne comme un déterminant indéfini équivalent à 'beaucoup de' et exige le pluriel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « Cette espèce de champignons ___ vénéneuse », pourquoi accorder au singulier féminin ?",
+              "options": [
+                "Parce que 'espèce' est le noyau féminin singulier du groupe nominal sujet.",
+                "Parce que 'champignons' est un adjectif.",
+                "Parce que le verbe être refuse le pluriel.",
+                "Parce que 'cette' impose un participe passé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand 'espèce de' est précédé d'un déterminant défini ou démonstratif ('Cette espèce'), l'accord se fait avec le nom 'espèce'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « Un tiers des inscrits ___ présent ce matin. »",
+              "options": [
+                "était ou étaient selon la focalisation sur la fraction ou les personnes",
+                "étaient obligatoirement au subjonctif",
+                "fusse présent",
+                "furent présents exclusivement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec les fractions, l'accord est au choix : singulier si on insiste sur la fraction ('un tiers'), pluriel si on privilégie le complément ('les inscrits')."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Accords sujet-verbe avec pronoms et sujets coordonnés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases présentent un accord correct du verbe avec des sujets coordonnés ?",
+              "options": [
+                "Toi et moi irons au théâtre demain soir.",
+                "Lui et elle assisteront à la représentation.",
+                "Toi et lui allez partir ensemble.",
+                "Ni l'un ni l'autre ne viendra ou ne viendront (les deux sont recevables)."
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "'Moi + toi' prend la 1re pers. du pluriel. 'Lui + elle' prend la 3e pers. du pluriel. 'Toi + lui' prend la 2e pers. du pluriel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'accord dans : « C'est moi qui ___ rédigé ce paragraphe » ?",
+              "options": ["ai", "a", "as", "avait"],
+              "correctAnswers": [0],
+              "explanation": "Le pronom relatif 'qui' prend les traits de personne et de nombre de son antécédent 'moi' (1re personne du singulier) : 'ai'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « C'est vous qui ___ responsables de ce projet. »",
+              "options": ["êtes", "est", "sont", "sommes"],
+              "correctAnswers": [0],
+              "explanation": "L'antécédent de 'qui' est 'vous' (2e personne du pluriel) : le verbe être se conjugue à la 2e personne du pluriel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « Un de ceux qui ___ le plus travaillé », comment s'accorde le verbe ?",
+              "options": [
+                "Au pluriel ('ont'), car 'ceux' est l'antécédent direct du pronom relatif 'qui'.",
+                "Au singulier ('a'), car le vrai sujet est 'un'.",
+                "À l'infinitif passé.",
+                "Au subjonctif imparfait."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'antécédent de 'qui' est le pronom démonstratif pluriel 'ceux' : le verbe de la relative se met au pluriel ('ceux qui ont')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lorsque deux sujets singuliers sont coordonnés par 'ni... ni', quel est l'accord le plus courant ?",
+              "options": [
+                "Le pluriel, sauf si l'action ne peut être accomplie que par un seul sujet.",
+                "Le singulier dans tous les cas sans exception.",
+                "L'invariabilité absolue.",
+                "L'accord avec le premier sujet nommé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accord se fait généralement au pluriel ('Ni Pierre ni Jean ne viendront'), sauf si l'un exclut l'autre ('Ni l'un ni l'autre ne sera élu président')."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « Ni l'un ni l'autre n'___ été élu à la présidence (un seul poste disponible). »",
+              "options": ["a", "ont", "étaient", "furent"],
+              "correctAnswers": [0],
+              "explanation": "Puisqu'un seul candidat peut remporter le poste unique, l'idée d'exclusion impose le singulier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « Le courage, la détermination, la passion, tout ___ chez ce héros », quelle forme convient ?",
+              "options": [
+                "semble admirable",
+                "semblent admirables",
+                "semblent admirable",
+                "semble admirables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pronom indéfini récapitulatif 'tout' absorbe les sujets énumérés et impose un accord au singulier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « Le poète ainsi que son éditeur ___ la publication. »",
+              "options": [
+                "prépare ou préparent selon la ponctuation",
+                "préparent obligatoirement au subjonctif",
+                "eurent préparé exclusivement",
+                "prépare sans aucune alternative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans virgules, 'ainsi que' équivaut à 'et' (pluriel). Entre virgules, l'élément est considéré comme une incidente et le verbe s'accorde au singulier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « Le philosophe, ainsi que ses disciples, ___ sur l'agora. »",
+              "options": ["débat", "débattent", "débatte", "débattant"],
+              "correctAnswers": [0],
+              "explanation": "Isolée entre deux virgules, l'expression 'ainsi que ses disciples' forme un complément de comparaison adjoint : le verbe s'accorde avec 'Le philosophe'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « Vous, mon cher maître, qui ___ tant d'ouvrages, que nous conseillez-vous ? »",
+              "options": ["avez écrit", "a écrit", "ont écrit", "avons écrit"],
+              "correctAnswers": [0],
+              "explanation": "L'antécédent de 'qui' est 'Vous' (2e personne du pluriel de politesse) : le verbe prend la 2e personne du pluriel."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Homophones grammaticaux délicats",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases emploient correctement les formes 'leur' ou 'leurs' ?",
+              "options": [
+                "Il leur a offert de magnifiques présents.",
+                "Ils ont rassemblé toutes leurs affaires personnelles.",
+                "Il leurs a parlé avec une grande bienveillance.",
+                "Leurs avis comptent beaucoup pour nous."
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "'Leur' pronom personnel placé devant un verbe est strictement invariable ('leur a offert'). 'Leur(s)' déterminant possessif s'accorde avec le nom ('leurs affaires', 'leurs avis')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quand écrit-on « quelque » en un seul mot devant un adjectif ou un adverbe ?",
+              "options": [
+                "Quand il signifie 'si... que' ou 'environ', exprimant un degré ou une approximation.",
+                "Uniquement devant un nom propre.",
+                "Quand il est suivi du verbe être au subjonctif.",
+                "Quand il s'agit d'un pronom relatif."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant un adjectif ou un adverbe, 'quelque' est un adverbe invariable signifiant 'si' ou 'environ' (ex: 'quelque puissants qu'ils soient')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « ___ soient ses raisons, elles ne justifient point cet acte. »",
+              "options": ["Quelles que", "Quelque", "Quelques", "Quel que"],
+              "correctAnswers": [0],
+              "explanation": "Devant le verbe être au subjonctif, 'quel que' s'écrit en deux mots et s'accorde en genre et en nombre avec le sujet 'ses raisons' (féminin pluriel)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « ___ vous fassiez, faites-le avec rigueur. »",
+              "options": ["Quoi que", "Quoique", "Quelque", "Quoi qu'e"],
+              "correctAnswers": [0],
+              "explanation": "'Quoi que' en deux mots signifie 'quelle que soit la chose que'. 'Quoique' en un seul mot signifie 'bien que'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « ___ fatigué par la marche, il poursuivit son chemin », quelle graphie convient ?",
+              "options": ["Quoique", "Quoi que", "Quoi-que", "Quoi qu'"],
+              "correctAnswers": [0],
+              "explanation": "'Quoique' en un mot est une conjonction de subordination exprimant la concession, synonyme de 'bien que'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « Ils sont partis il y a ___ minutes. »",
+              "options": ["quelques", "quelque", "quel que", "quelles que"],
+              "correctAnswers": [0],
+              "explanation": "'Quelques' est ici un déterminant indéfini au pluriel accompagnant le nom féminin 'minutes'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase est correctement orthographiée avec 'sensé' ou 'censé' ?",
+              "options": [
+                "Nul n'est censé ignorer la loi républicaine.",
+                "Nul n'est sensé ignorer la loi républicaine.",
+                "C'est un homme censé qui réfléchit avant d'agir.",
+                "Il a fait un discours très censé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Censé' (avec un c) signifie 'supposé' ('censé ignorer'). 'Sensé' (avec un s) signifie 'qui a du bon sens' ('un homme sensé')."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « Nous irons au musée, ___ qu'il pleuve à verse. »",
+              "options": ["à moins", "amains", "à mains", "au moins"],
+              "correctAnswers": [0],
+              "explanation": "La locution conjonctive 'à moins que' exprime une restriction ou condition négative."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Choisissez la graphie correcte : « C'est ___ ces raisons que j'ai pris congé. »",
+              "options": [
+                "pour toutes",
+                "pour toute",
+                "par toutes",
+                "pour toux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Toutes' s'accorde au féminin pluriel avec le nom 'raisons'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « Cet argument est tout à fait ___ et logique. »",
+              "options": ["sensé", "censé", "sencé", "cencé"],
+              "correctAnswers": [0],
+              "explanation": "On veut dire 'qui a du sens' : l'adjectif s'écrit 'sensé' (dérivé de sens)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Adjectifs de couleur, composés et numéraux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases comportent des adjectifs de couleur correctement accordés ?",
+              "options": [
+                "Elle portait de magnifiques robes bleues.",
+                "Ses yeux vert foncé scrutaient l'horizon.",
+                "Elles portaient des écharpes marrons.",
+                "Des rubans noisette décoraient son chapeau."
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "'Bleu' est un adjectif simple qui s'accorde ('bleues'). Les adjectifs de couleur composés ('vert foncé') et les noms utilisés comme adjectifs ('noisette') restent invariables."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi l'adjectif de couleur dans « des vestes orange » ne prend-il pas d'accord ?",
+              "options": [
+                "Parce qu'orange est un nom de fruit employé métaphoriquement comme adjectif de couleur.",
+                "Parce qu'orange est toujours un participe présent.",
+                "Parce que c'est un mot d'origine anglaise.",
+                "Parce qu'il qualifie un nom pluriel."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noms de fruits, fleurs ou pierres précieuses employés comme adjectifs de couleur restent invariables (sauf rose, pourpre, écarlate, fauve, mauve, incarnat)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Parmi les noms employés pour désigner des couleurs, lesquels font exception et s'accordent comme des adjectifs ordinaires ?",
+              "options": [
+                "Rose, fauve, mauve, pourpre, écarlate et incarnat.",
+                "Marron, orange, chocolat et cerise.",
+                "Turquoise, crème, kaki et olive.",
+                "Pastel, paille, marine et bordeaux."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces six termes (rose, fauve, mauve, pourpre, écarlate, incarnat) ont été pleinement assimilés à des adjectifs et prennent la marque du pluriel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « deux cents personnes », pourquoi 'cent' prend-il un 's' ?",
+              "options": [
+                "Parce qu'il est multiplié par deux et n'est suivi d'aucun autre nombre.",
+                "Parce que le nom 'personnes' est féminin.",
+                "Parce qu'il termine la phrase.",
+                "Parce que cent s'accorde toujours au pluriel."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Vingt' et 'cent' prennent un 's' lorsqu'ils sont multipliés par un nombre et qu'ils ne sont pas suivis d'un autre adjectif numéral."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment écrit-on 280 en toutes lettres selon l'orthographe traditionnelle ?",
+              "options": [
+                "Deux cent quatre-vingts",
+                "Deux cents quatre-vingts",
+                "Deux cent quatre-vingt",
+                "Deux cents quatre-vingt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Cent' est suivi d'un autre nombre (quatre-vingts), donc il est invariable. 'Vingt' est multiplié par quatre et termine le nombre, donc il prend un 's'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment s'écrit le mot 'mille' dans « trois mille personnes » ?",
+              "options": [
+                "Toujours 'mille', car cet adjectif numéral est strictement invariable.",
+                "'Milles', car il est multiplié par trois.",
+                "'Mille' avec un accent circonflexe sur le i.",
+                "'Milles' uniquement au féminin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif numéral 'mille' est strictement invariable en français (sauf lorsqu'il désigne l'unité marine de distance, 'les milles nautiques')."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « Des drapeaux ___ flottaient sur les toits. »",
+              "options": [
+                "bleu, blanc, rouge",
+                "bleus, blancs, rouges",
+                "bleus blanc rouge",
+                "bleu blancs rouges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque drapeau comportant à la fois du bleu, du blanc et du rouge, les adjectifs restent invariables ('bleu, blanc, rouge')."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « des enfants demi-morts de fatigue », comment s'accorde 'demi' ?",
+              "options": [
+                "Il reste invariable car il est placé devant le mot avec un trait d'union.",
+                "Il s'accorde en genre avec 'enfants'.",
+                "Il s'accorde en genre et en nombre : 'demis-morts'.",
+                "Il prend un e final : 'demie-morts'."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Placé devant un nom ou un adjectif avec un trait d'union, 'demi' a valeur adverbiale et reste invariable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « Deux heures et ___ se sont écoulées. »",
+              "options": ["demie", "demi", "demies", "demis"],
+              "correctAnswers": [0],
+              "explanation": "Placé après le nom et joint par 'et', 'demi' s'accorde en genre avec ce nom mais reste toujours au singulier ('une heure et demie')."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « des nouveau-nés », pourquoi 'nouveau' reste-t-il invariable ?",
+              "options": [
+                "Parce qu'il a ici une valeur adverbiale signifiant 'nouvellement'.",
+                "Parce que 'né' est un participe passé intransitif.",
+                "Parce que c'est une faute courante d'accord.",
+                "Parce que le trait d'union interdit tout pluriel."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le mot composé 'nouveau-né', 'nouveau' a la valeur d'un adverbe ('nouvellement né') : seul le second élément prend la marque du pluriel."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Participes présents et adjectifs verbaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans quelles phrases le mot en '-ant' est-il un adjectif verbal qui s'accorde correctement ?",
+              "options": [
+                "Des nouvelles rassurantes sont parvenues ce matin.",
+                "Ce sont des histoires passionnantes pour la jeunesse.",
+                "Les élèves tremblants d'angoisse attendaient les résultats.",
+                "On voyait des lumières clignotant au loin dans la nuit."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Rassurantes' et 'passionnantes' expriment un état permanent et qualifient un nom : ce sont des adjectifs verbaux accordés. Dans les autres, l'action est exprimée (participe présent invariable)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la règle d'accord du participe présent en français ?",
+              "options": [
+                "Il est rigoureusement invariable.",
+                "Il s'accorde en genre et en nombre avec le sujet.",
+                "Il s'accorde avec le nom le plus proche.",
+                "Il prend la marque du pluriel mais jamais du féminin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le participe présent exprime une action en cours et demeure rigoureusement invariable en français moderne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est l'orthographe de l'adjectif verbal correspondant au verbe 'adhérer' ?",
+              "options": ["Adhérent", "Adhérant", "Adhérantt", "Adhérend"],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif verbal et le nom s'écrivent 'adhérent' (avec un 'e'), tandis que le participe présent s'écrit 'adhérant' (avec un 'a')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Choisissez la graphie correcte du participe présent du verbe 'convaincre' :",
+              "options": [
+                "Convainquant",
+                "Convaincant",
+                "Convainquand",
+                "Convaincquant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le participe présent conserve le radical du verbe en 'qu' : 'convainquant'. L'adjectif verbal, lui, s'écrit 'convaincant' (avec un 'c')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « Ces arguments sont très ___ », quel mot doit-on insérer ?",
+              "options": [
+                "convaincants",
+                "convainquants",
+                "convaincant",
+                "convainquant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il s'agit de l'adjectif verbal qualifiant 'arguments' : il prend un 'c' et s'accorde au masculin pluriel ('convaincants')."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « Des propos ___ toute bienséance ont été proférés. »",
+              "options": [
+                "négligeant",
+                "négligents",
+                "négligent",
+                "négligeants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot est suivi d'un COD ('toute bienséance') : c'est un participe présent exprimant une action, donc invariable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase illustre un participe présent employé avec valeur de proposition subordonnée participiale ?",
+              "options": [
+                "Le jour se levant, les soldats reprirent la route.",
+                "C'est une femme prévoyante et généreuse.",
+                "En mangeant, il lisait les gazettes du jour.",
+                "Ces résultats sont très encourageants."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Le jour se levant' forme une proposition participiale autonome ayant son propre sujet ('Le jour')."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment distingue-t-on le gérondif du participe présent ?",
+              "options": [
+                "Le gérondif est précédé de la préposition 'en' et a fonction de complément circonstanciel.",
+                "Le gérondif s'accorde en genre et en nombre avec le sujet.",
+                "Le gérondif se termine obligatoirement par '-ent'.",
+                "Le gérondif s'emploie uniquement au discours indirect."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gérondif se compose de 'en' + participe présent (ex: 'en chantant') et fonctionne comme complément circonstanciel lié au sujet de la phrase."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « Une attitude fort ___ a provoqué la colère générale. »",
+              "options": [
+                "provocante",
+                "provoquante",
+                "provocant",
+                "provoquant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif verbal correspondant au verbe provoquer s'écrit 'provocant' (féminin 'provocante')."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « Des personnes ___ sur le quai agitaient des mouchoirs. »",
+              "options": ["courant", "courantes", "courante", "courants"],
+              "correctAnswers": [0],
+              "explanation": "Il s'agit d'une action en cours accompagnée d'un complément de lieu ('sur le quai') : c'est le participe présent, invariable."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Subjonctif, indicatif et désinences verbales",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases comportent une forme verbale au subjonctif présent correctement orthographiée ?",
+              "options": [
+                "Il faut que nous sachions la vérité sans attendre.",
+                "Bien qu'il vienne tard, nous l'accueillerons.",
+                "Je doute que vous ayez compris toute la démonstration.",
+                "Il est certain que vous veniez demain midi."
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "'Il faut que', 'bien que' et 'je doute que' demandent le subjonctif. En revanche, 'il est certain que' exprime une certitude et requiert l'indicatif ('venez')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complétez : « Quoiqu'il ___ tous ses efforts, il ne put l'emporter. »",
+              "options": ["fît", "fit", "faisait", "fasse"],
+              "correctAnswers": [0],
+              "explanation": "Dans un récit au passé ('ne put'), la concordance des temps classique après 'quoique' appelle le subjonctif imparfait : 'fît' (avec accent circonflexe sur le i)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la différence entre « il conclut » (indicatif présent) et « il conclut » (passé simple) pour le verbe 'conclure' ?",
+              "options": [
+                "Ils ont la même graphie à la 3e personne du singulier.",
+                "L'un prend un t et l'autre un d final.",
+                "Le passé simple prend un circonflexe sur le u.",
+                "Le présent se termine par un s."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au présent de l'indicatif comme au passé simple, la 3e personne du singulier de 'conclure' s'écrit de manière identique : 'il conclut'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle forme correspond à la 1re personne du singulier du futur simple du verbe 'envoyer' ?",
+              "options": [
+                "J'enverrai",
+                "J'enverrais",
+                "J'envoyerai",
+                "J'envoierai"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au futur simple, le verbe envoyer se conjugue sur le radical 'enverr-' avec la terminaison '-ai' : 'j'enverrai' (sans 's', réservé au conditionnel)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez au conditionnel présent : « Si j'avais le temps, je vous ___ volontiers. »",
+              "options": ["aiderais", "aiderai", "aiderez", "aidais"],
+              "correctAnswers": [0],
+              "explanation": "Dans le système de l'hypothèse 'si + imparfait', la proposition principale se met au conditionnel présent (terminaison '-ais')."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la 2e personne du pluriel du subjonctif présent du verbe 'vouloir' ?",
+              "options": [
+                "Que vous vouliez",
+                "Que vous veuilliez",
+                "Que vous vouliez bien",
+                "Que vous veillez"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le subjonctif présent de vouloir a deux radicaux : 'veuill-' (que je veuille, que nous voulions, que vous vouliez... mais traditionnellement 'veuilliez' à l'impératif)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Après quelle locution conjonctive doit-on employer le subjonctif ?",
+              "options": ["Avant que", "Après que", "Dès que", "Pendant que"],
+              "correctAnswers": [0],
+              "explanation": "'Avant que' envisage un fait non encore accompli et commande le subjonctif. 'Après que' constate un fait accompli et exige traditionnellement l'indicatif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi l'Académie française préconise-t-elle l'indicatif après « après que » ?",
+              "options": [
+                "Parce que le fait est déjà accompli dans la réalité.",
+                "Parce que c'est une conjonction de cause.",
+                "Parce que le subjonctif est interdit au passé.",
+                "Parce que le verbe suivant doit être impersonnel."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'indicatif est le mode du réel et de la certitude : le fait introduit par 'après que' s'étant déjà produit, il s'exprime à l'indicatif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez au subjonctif présent : « Il importe que tu ___ attentif aux arguments adverses. »",
+              "options": ["sois", "soit", "es", "soies"],
+              "correctAnswers": [0],
+              "explanation": "À la 2e personne du singulier du subjonctif présent du verbe être, la graphie est 'sois' (avec un 's')."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « Je souhaite qu'il ___ conscience de la gravité de ses propos. »",
+              "options": ["ait", "aie", "a", "es"],
+              "correctAnswers": [0],
+              "explanation": "À la 3e personne du singulier du subjonctif présent d'avoir, la forme est 'ait' ('qu'il ait')."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Pluriel des noms composés et des mots empruntés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels noms composés prennent la marque du pluriel sur leurs deux éléments constitutifs ?",
+              "options": [
+                "Des coffres-forts (nom + adjectif)",
+                "Des oiseaux-mouches (nom + nom en apposition)",
+                "Des porte-clés (verbe + nom)",
+                "Des gratte-ciel (verbe + nom)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dans les noms composés formés de nom + adjectif ou nom + nom en apposition, les deux éléments s'accordent en nombre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la règle générale pour un nom composé formé d'un verbe et d'un nom (ex: un ouvre-boîte) ?",
+              "options": [
+                "Le verbe reste invariable ; le nom prend ou non la marque du pluriel selon le sens ou les rectifications de 1990.",
+                "Le verbe prend la désinence '-ent' au pluriel.",
+                "Les deux mots s'accordent toujours systématiquement.",
+                "Le mot composé est toujours rigoureusement invariable."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe reste toujours invariable. Le second élément (nom) prend un 's' au pluriel selon les rectifications de 1990 (des ouvre-boîtes)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment s'écrit le pluriel traditionnel de « un chef-d'œuvre » ?",
+              "options": [
+                "Des chefs-d'œuvre",
+                "Des chefs-d'œuvres",
+                "Des chef-d'œuvres",
+                "Des chef-d'œuvre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans 'chef-d'œuvre', 'œuvre' est complément du nom 'chef' introduit par une préposition : seul 'chef' prend la marque du pluriel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment s'accorde le mot « garde » dans « des gardes-chasses » ?",
+              "options": [
+                "Il prend un 's' car il désigne la personne qui garde (nom).",
+                "Il reste invariable car c'est un verbe d'action.",
+                "Il prend un trait d'union supplémentaire.",
+                "Il s'accorde uniquement au féminin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand 'garde' désigne une personne (nom), il prend un 's' au pluriel ('des gardes-chasses'). S'il s'agit du verbe garder (chose), il est invariable ('garde-manger')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la graphie du pluriel de « un garde-manger » ?",
+              "options": [
+                "Des garde-manger",
+                "Des gardes-manger",
+                "Des gardes-mangers",
+                "Des garde-mangers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Garde' vient du verbe garder et 'manger' est un infinitif : les deux éléments sont invariables en orthographe traditionnelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le pluriel régulier des mots d'origine étrangère selon les rectifications orthographiques de 1990 ?",
+              "options": [
+                "Ils suivent la règle générale française en prenant un 's' (ex: des scénarios, des sandwichs).",
+                "Ils doivent conserver obligatoirement leur pluriel d'origine (ex: scenarii).",
+                "Ils restent strictement invariables.",
+                "On ajoute une apostrophe avant le 's'."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rectifications de 1990 préconisent de franciser le pluriel des mots empruntés en ajoutant simplement un 's'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Choisissez la graphie correcte du pluriel de « un arc-en-ciel » :",
+              "options": [
+                "Des arcs-en-ciel",
+                "Des arc-en-ciels",
+                "Des arcs-en-ciels",
+                "Des arc-en-ciel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux noms unis par une préposition ne voient que le premier élément s'accorder : 'arcs-en-ciel'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment s'écrit le pluriel de « un sans-abri » ?",
+              "options": [
+                "Des sans-abri (ou sans-abris selon 1990)",
+                "Des sans-abries",
+                "Des sants-abris",
+                "Des sanses-abris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traditionnellement invariable ('des personnes sans aucun abri'), la graphie avec 's' final est également admise depuis 1990."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le pluriel traditionnel de « un timbre-poste » ?",
+              "options": [
+                "Des timbres-poste",
+                "Des timbres-postes",
+                "Des timbre-postes",
+                "Des timbre-poste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Poste' signifie 'pour la poste' (complément de destination sous-entendu) : seul 'timbre' prend la marque du pluriel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « Ils ont installé plusieurs ___ pour la protection du public. »",
+              "options": [
+                "garde-fous",
+                "gardes-fous",
+                "garde-fou",
+                "gardes-fou"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Garde' vient du verbe garder (invariable) et 'fous' est le nom qualifié qui prend un 's' : 'garde-fous'."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Réécrire une phrase",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Passage de la voix active à la voix passive",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont à la voix passive correctement formulée ?",
+              "options": [
+                "La tragédie a été applaudie par l'ensemble du public.",
+                "Ce poème fut composé par Baudelaire en 1857.",
+                "L'auteur a composé ce poème avec ferveur.",
+                "Le public s'est levé d'un bond à la fin du spectacle."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dans la voix passive, le sujet subit l'action ('a été applaudie', 'fut composé') et l'auteur de l'action est exprimé par un complément d'agent introduit par 'par'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Transformez à la voix passive : « Le dramaturge écrit une nouvelle pièce. »",
+              "options": [
+                "Une nouvelle pièce est écrite par le dramaturge.",
+                "Une nouvelle pièce a été écrite par le dramaturge.",
+                "Une nouvelle pièce sera écrite par le dramaturge.",
+                "Une nouvelle pièce était écrite par le dramaturge."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe actif est au présent de l'indicatif ('écrit') : l'auxiliaire être au passif doit se conjuguer au présent ('est écrite')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel rôle syntaxique joue le sujet actif lors de la transformation passive ?",
+              "options": [
+                "Il devient complément d'agent (introduit par 'par' ou 'de').",
+                "Il devient complément d'objet indirect.",
+                "Il devient attribut du sujet.",
+                "Il disparaît obligatoirement de la phrase."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sujet actif devient le complément d'agent de la phrase passive, introduit par la préposition 'par' (ou parfois 'de')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Transformez au passif : « Les critiques avaient salué ce recueil. »",
+              "options": [
+                "Ce recueil avait été salué par les critiques.",
+                "Ce recueil a été salué par les critiques.",
+                "Ce recueil était salué par les critiques.",
+                "Ce recueil fut salué par les critiques."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe actif étant au plus-que-parfait ('avaient salué'), l'auxiliaire être doit être au plus-que-parfait ('avait été salué')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans quel cas utilise-t-on la préposition 'de' plutôt que 'par' devant le complément d'agent ?",
+              "options": [
+                "Avec des verbes de sentiment, de description ou de réputation (ex: aimé, respecté, entouré).",
+                "Uniquement quand le sujet passif est au pluriel.",
+                "Quand l'agent est un nom de lieu inanimé.",
+                "Au subjonctif passé exclusivement."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les verbes exprimant un sentiment (aimé de tous), une estime ou un état passif durable emploient fréquemment 'de' pour introduire l'agent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la phrase « Cet auteur dort profondément » ne peut-elle pas être mise à la voix passive ?",
+              "options": [
+                "Parce que le verbe dormir est intransitif et n'a pas de complément d'objet direct.",
+                "Parce que le sujet est animé.",
+                "Parce que l'adverbe empêche toute transformation.",
+                "Parce que le verbe est au présent."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seuls les verbes transitifs directs (admettant un COD) peuvent donner lieu à une transformation passive."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Transformez à la voix passive : « On interdit les téléphones durant l'épreuve. »",
+              "options": [
+                "Les téléphones sont interdits durant l'épreuve.",
+                "Les téléphones étaient interdits par on.",
+                "Les téléphones ont été interdits d'on.",
+                "Les téléphones s'interdisent par tous."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque le sujet actif est le pronom indéfini 'on', la phrase passive ne comporte généralement aucun complément d'agent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Transformez au passif : « Molière créera cette comédie à Versailles. »",
+              "options": [
+                "Cette comédie sera créée par Molière à Versailles.",
+                "Cette comédie serait créée par Molière à Versailles.",
+                "Cette comédie est créée par Molière à Versailles.",
+                "Cette comédie fut créée par Molière à Versailles."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe étant au futur simple ('créera'), l'auxiliaire être se met au futur simple ('sera créée') avec accord au féminin singulier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel effet stylistique produit l'emploi de la voix passive dans un texte argumentatif ?",
+              "options": [
+                "Elle focalise l'attention sur l'objet ou le résultat plutôt que sur l'auteur de l'action.",
+                "Elle rend obligatoirement le style poétique et lyrique.",
+                "Elle supprime toute valeur de vérité.",
+                "Elle accélère le rythme du récit narratif."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La voix passive met en valeur le patient ou le résultat de l'action, permettant d'effacer ou de relativiser l'agent responsable."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Transformez à la voix passive : « Le jury proclame les lauréats du concours. »",
+              "options": [
+                "Les lauréats du concours sont proclamés par le jury.",
+                "Les lauréats du concours ont été proclamés par le jury.",
+                "Les lauréats du concours étaient proclamés par le jury.",
+                "Les lauréats du concours seront proclamés par le jury."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe 'proclame' est au présent : l'auxiliaire 'être' est au présent ('sont proclamés') au masculin pluriel."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Du discours direct au discours indirect",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles modifications s'opèrent lors du passage du discours direct au discours indirect avec un verbe introducteur au passé ?",
+              "options": [
+                "Le présent de l'indicatif devient généralement un imparfait.",
+                "Les marques de ponctuation du dialogue (guillemets, tirets) disparaissent.",
+                "Le futur simple devient un conditionnel présent.",
+                "Les pronoms personnels demeurent strictement inchangés."
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Au discours indirect avec verbe introducteur au passé, les temps changent (présent -> imparfait, futur -> conditionnel), la ponctuation s'efface, et les pronoms s'adaptent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Transposer au discours indirect : Rodrigue s'écrie : « Je cours me venger ! » (verbe introducteur au présent).",
+              "options": [
+                "Rodrigue s'écrie qu'il court se venger.",
+                "Rodrigue s'écrie qu'il courait se venger.",
+                "Rodrigue s'écrie qu'il courrait se venger.",
+                "Rodrigue s'écria qu'il courût se venger."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe introducteur étant au présent ('s'écrie'), le temps du discours direct ('court') est conservé au présent de l'indicatif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Transposer au discours indirect : Il affirmait : « Je viendrai demain avec joie. »",
+              "options": [
+                "Il affirmait qu'il viendrait le lendemain avec joie.",
+                "Il affirmait qu'il viendra demain avec joie.",
+                "Il affirmait qu'il venait hier avec joie.",
+                "Il affirmait qu'il soit venu demain avec joie."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe introducteur est au passé ('affirmait') : le futur ('viendrai') devient conditionnel ('viendrait'), et l'adverbe déictique 'demain' devient 'le lendemain'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment transpose-t-on une question directe totale (« Viendras-tu au concert ? ») au discours indirect ?",
+              "options": [
+                "En utilisant la conjonction 'si' sans inversion du sujet.",
+                "En utilisant obligatoirement 'est-ce que'.",
+                "En conservant le point d'interrogation final.",
+                "En introduisant la proposition par 'que'."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'interrogation totale devient une subordonnée interrogative indirecte introduite par 'si', avec rétablissement de l'ordre sujet-verbe et suppression du point d'interrogation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Transposer au discours indirect : Le professeur demanda : « Qu'avez-vous retenu de cette lecture ? »",
+              "options": [
+                "Le professeur demanda ce que nous avions retenu de cette lecture.",
+                "Le professeur demanda qu'est-ce que nous avions retenu.",
+                "Le professeur demanda ce qu'avez-vous retenu.",
+                "Le professeur demanda si nous avions retenu cette lecture."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'interrogation directe 'Que...' portant sur une chose devient 'ce que' au discours indirect ('demanda ce que...')."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment l'impératif direct (« Partez immédiatement ! ») est-il couramment transposé au discours indirect ?",
+              "options": [
+                "Par 'de' + infinitif ou par 'que' + subjonctif (ex: 'Il ordonna de partir').",
+                "Par le conditionnel passé obligatoirement.",
+                "Par l'indicatif futur simple sans préposition.",
+                "En maintenant le verbe à l'impératif."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre s'exprime au discours indirect par une proposition infinitive ('de partir') ou complétive au subjonctif ('qu'il parte')."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que devient l'indicateur temporel « hier » au discours indirect dans un récit au passé ?",
+              "options": [
+                "La veille",
+                "Le lendemain",
+                "Ce jour-là",
+                "Avant-hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un système de temps passé, le déictique 'hier' est remplacé par l'anaphorique temporel 'la veille'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce qui caractérise le discours indirect libre ?",
+              "options": [
+                "L'absence de verbe introducteur et de subordination, tout en conservant la concordance des temps et des personnes du récit.",
+                "L'emploi exclusif des guillemets et des tirets.",
+                "L'inversion obligatoire du sujet et du verbe.",
+                "L'usage unique du mode subjonctif."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le discours indirect libre intègre les pensées ou paroles d'un personnage directement dans le cours du récit sans mot de subordination ni guillemets."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Transposer au discours indirect : Elle demanda : « Qui a écrit cette pièce ? »",
+              "options": [
+                "Elle demanda qui avait écrit cette pièce.",
+                "Elle demanda ce qui avait écrit cette pièce.",
+                "Elle demanda si quelqu'un a écrit cette pièce.",
+                "Elle demanda que qui avait écrit cette pièce."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pronom interrogatif 'qui' se maintient au discours indirect ('demanda qui avait écrit')."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un passage au discours indirect au passé, que devient le passé composé (« J'ai terminé ») ?",
+              "options": [
+                "Un plus-que-parfait (il dit qu'il avait terminé).",
+                "Un passé simple (il dit qu'il termina).",
+                "Un subjonctif passé (il dit qu'il ait terminé).",
+                "Un imparfait simple (il dit qu'il terminait)."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon les règles de concordance des temps, l'antériorité dans le passé (passé composé) est transposée au plus-que-parfait."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Nominalisation et réduction de propositions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels exemples constituent des nominalisations correctes d'une proposition verbale ?",
+              "options": [
+                "« L'ennemi a capitulé » -> « La capitulation de l'ennemi »",
+                "« Il refuse d'obtempérer » -> « Son refus d'obtempérer »",
+                "« Le train arrive » -> « Le train est en gare »",
+                "« Le vent souffle fort » -> « La force du vent soufflant »"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La nominalisation consiste à remplacer un verbe conjugué par le substantif de même radical ('capituler' -> 'capitulation', 'refuser' -> 'refus')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le nom d'action correspondant au verbe 'détruire' ?",
+              "options": [
+                "Destruction",
+                "Détruisement",
+                "Détruition",
+                "Détruitage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nom dérivé exprimant l'action de détruire est 'destruction' (du latin destructio)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Nominalisez la phrase : « Le ministre a démissionné subitement. »",
+              "options": [
+                "La démission subite du ministre.",
+                "La démissionnement du ministre.",
+                "Le démettre subit du ministre.",
+                "Le départ ministériel sans démission."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe 'démissionner' donne le nom 'démission', et l'adverbe 'subitement' devient l'adjectif qualificatif 'subite'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est l'effet de la nominalisation dans un texte argumentatif ou journalistique ?",
+              "options": [
+                "Elle densifie l'information, augmente la concision et met en valeur le fait comme indiscutable.",
+                "Elle allonge inutilement les phrases pour perdre le lecteur.",
+                "Elle crée obligatoirement une atmosphère comique.",
+                "Elle empêche tout recours aux connecteurs logiques."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La nominalisation permet de synthétiser l'information de manière concise et objective, souvent utilisée dans les titres et les démonstrations."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment transformer la subordonnée « Dès que le jour parut » en groupe nominal prépositionnel équivalent ?",
+              "options": [
+                "Dès l'apparition du jour",
+                "Pendant que le jour naissait",
+                "Quand le soleil fut visible",
+                "Le jour paraissant enfin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Dès que le jour parut' se transforme par nominalisation en 'Dès l'apparition du jour'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réduisez la subordonnée relative : « Cet écrivain, qui est admiré de tous ses pairs, a reçu un prix prestigieux. »",
+              "options": [
+                "Cet écrivain, admiré de tous ses pairs, a reçu un prix prestigieux.",
+                "Cet écrivain, qui était admiré, a reçu un prix prestigieux.",
+                "Cet écrivain, que tous admirent, a reçu un prix prestigieux.",
+                "Cet écrivain recevant son prix est admiré."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La suppression du pronom relatif et de l'auxiliaire réduit la proposition relative à une apposition participiale ('admiré de tous ses pairs')."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Nominalisez : « Les astronomes observent attentivement cette comète. »",
+              "options": [
+                "L'observation attentive de cette comète par les astronomes.",
+                "Le regard attentif de la comète astronomique.",
+                "L'observer cométaire par des spécialistes.",
+                "L'observance de la comète attentive."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action 'observent' devient 'l'observation', et l'adverbe 'attentivement' devient l'adjectif 'attentive'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le nom d'action dérivé du verbe 'croître' ?",
+              "options": [
+                "Croissance",
+                "Croissement",
+                "Croititude",
+                "Croissementiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le substantif désignant l'action de croître ou d'augmenter est 'croissance'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment transformer « Bien qu'il soit jeune » en groupe prépositionnel ?",
+              "options": [
+                "Malgré sa jeunesse",
+                "Parce qu'il est jeune",
+                "En raison de son jeune âge uniquement",
+                "Afin d'être jeune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La proposition subordonnée de concession 'Bien qu'il soit jeune' correspond au groupe prépositionnel concessif 'Malgré sa jeunesse'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Nominalisez : « Les prix augmentent sans discontinuer. »",
+              "options": [
+                "L'augmentation continue des prix.",
+                "Le haussage continuel du coût.",
+                "L'augmentatif des montants sans cesse.",
+                "Le grandissement des tarifs sans arrêt."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe 'augmenter' se nominalise en 'augmentation', qualifiée par l'adjectif 'continue'."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Subordonnées de cause et de conséquence",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles conjonctions ou locutions introduisent une proposition subordonnée de cause à l'indicatif ?",
+              "options": [
+                "Parce que",
+                "Puisque",
+                "Comme (placé en tête de phrase)",
+                "De sorte que (exprimant un but visé)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "'Parce que', 'puisque' et 'comme' expriment la cause à l'indicatif. 'De sorte que' peut exprimer la conséquence ou le but selon le mode."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle nuance distingue 'puisque' de 'parce que' ?",
+              "options": [
+                "'Puisque' introduit une cause déjà connue de l'interlocuteur ou évidente, tandis que 'parce que' apporte une cause nouvelle.",
+                "'Puisque' exige obligatoirement le subjonctif.",
+                "'Parce que' ne peut jamais se trouver en début de phrase.",
+                "'Puisque' exprime toujours une conséquence tragique."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Puisque' présente la cause comme acquise et incontestable pour l'auditeur, fondant une déduction logique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Identifiez le rapport logique exprimé dans : « Il a tant crié qu'il a perdu sa voix. »",
+              "options": [
+                "La conséquence (introduite par 'tant... que')",
+                "La cause directe",
+                "La concession",
+                "La condition restrictive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Tant... que' relie un fait d'intensité (avoir crié) à son résultat effectif (perdre sa voix) : c'est une subordonnée de conséquence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Transformez ces deux propositions en une phrase complexe exprimant la cause : « Il a manqué d'entraînement. Il a échoué. »",
+              "options": [
+                "Comme il avait manqué d'entraînement, il a échoué.",
+                "Il a échoué si bien qu'il a manqué d'entraînement.",
+                "Il a manqué d'entraînement afin qu'il échoue.",
+                "Bien qu'il manquât d'entraînement, il a échoué."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Comme' placé en tête de phrase subordonne le manque d'entraînement comme la cause directe de l'échec."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans quel cas la subordonnée de cause demande-t-elle le mode subjonctif ?",
+              "options": [
+                "Après 'non que' ou 'ce n'est pas que', qui introduisent une cause rejetée ou fausse.",
+                "Après 'étant donné que'.",
+                "Dès que le verbe principal est au futur.",
+                "Quand la cause est introduite par 'vu que'."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les locutions 'non que' ou 'non pas que' nient la réalité de la cause invoquée et appellent donc le subjonctif (ex: 'non qu'il soit coupable...')."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Par quel connecteur peut-on remplacer 'si bien que' pour exprimer la conséquence ?",
+              "options": [
+                "De telle sorte que",
+                "Tandis que",
+                "Pourvu que",
+                "À condition que"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'De telle sorte que' (suivi de l'indicatif) est un équivalent direct de 'si bien que' pour exprimer la conséquence."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif introduit une question sur la cause ?",
+              "options": ["Pourquoi", "Comment", "Combien", "Quand"],
+              "correctAnswers": [0],
+              "explanation": "'Pourquoi' interroge spécifiquement sur le motif ou la cause d'un événement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Reformulez avec un groupe prépositionnel de cause : « Comme la neige tombait dru, la circulation fut interrompue. »",
+              "options": [
+                "En raison de la chute abondante de neige, la circulation fut interrompue.",
+                "Pour faire tomber la neige, la circulation fut coupée.",
+                "Malgré les fortes chutes de neige, la route s'ouvrit.",
+                "À condition qu'il neige, la circulation sera interrompue."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'En raison de' suivi du groupe nominal 'la chute abondante de neige' exprime le rapport de causalité sans verbe conjugué."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle proposition exprime la conséquence dans : « Le vent soufflait avec une telle violence que les toits furent arrachés » ?",
+              "options": [
+                "« que les toits furent arrachés »",
+                "« Le vent soufflait »",
+                "« avec une telle violence »",
+                "« soufflait avec violence »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La subordonnée introduite par 'que' (en corrélation avec 'telle') exprime le résultat effectif de la violence du vent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : « Il n'est pas venu, non qu'il ___ oublié notre rendez-vous, mais il était retenu par une urgence. »",
+              "options": ["ait", "a", "avait", "aura"],
+              "correctAnswers": [0],
+              "explanation": "'Non que' introduit une cause rejetée et commande obligatoirement le subjonctif : 'ait oublié'."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Exprimer l'opposition et la concession",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles locutions subordonnantes expriment la concession et exigent le subjonctif ?",
+              "options": ["Bien que", "Quoique", "Encore que", "Tandis que"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "'Bien que', 'quoique' et 'encore que' introduisent une concession au subjonctif. 'Tandis que' exprime l'opposition ou la simultanéité à l'indicatif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre l'opposition et la concession ?",
+              "options": [
+                "L'opposition rapproche deux faits sans contradiction, la concession constate un obstacle qui n'empêche pas l'action principale.",
+                "L'opposition s'écrit toujours au subjonctif et la concession à l'indicatif.",
+                "La concession ne s'emploie que pour des compliments.",
+                "Il n'existe aucune différence, les deux termes sont synonymes."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opposition confronte deux éléments sans lien de causalité ('Jean est grand alors que Paul est petit'), la concession marque une cause inopérante."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Transformez en phrase complexe concessive avec 'bien que' : « Il pleut à verse. Nous partons en randonnée. »",
+              "options": [
+                "Bien qu'il pleuve à verse, nous partons en randonnée.",
+                "Bien qu'il pleut à verse, nous partons en randonnée.",
+                "Puisqu'il pleut à verse, nous partons en randonnée.",
+                "Comme il pleut à verse, nous partons en randonnée."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Bien que' impose le mode subjonctif présent : 'pleuve'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Par quelle préposition peut-on introduire un groupe nominal concessif ?",
+              "options": ["Malgré", "Grâce à", "À cause de", "Dans le but de"],
+              "correctAnswers": [0],
+              "explanation": "'Malgré' (suivi d'un nom sans 'que') exprime la concession (ex: 'Malgré la tempête, le navire est arrivé à bon port')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi la tournure « malgré que » suivie d'un verbe conjugué est-elle généralement déconseillée dans l'usage soigné ?",
+              "options": [
+                "Parce que 'malgré' est une préposition qui ne doit pas se combiner avec 'que', sauf dans la locution figée 'malgré qu'il en ait'.",
+                "Parce que le subjonctif est interdit après 'que'.",
+                "Parce que le mot 'malgré' est d'origine étrangère.",
+                "Parce qu'elle exprime une cause positive."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la langue littéraire et soutenue, on emploie 'bien que' ou 'quoique' avec un verbe, et 'malgré' uniquement avec un groupe nominal."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel adverbe coordonnant exprime l'opposition ou la concession ?",
+              "options": ["Pourtant", "Donc", "Car", "En effet"],
+              "correctAnswers": [0],
+              "explanation": "'Pourtant' (comme 'cependant' ou 'néanmoins') est un adverbe de liaison marquant l'opposition ou la concession."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « Quelque rapides que ___ vos chevaux, vous n'arriverez point à temps. »",
+              "options": ["soient", "sont", "fussent", "seront"],
+              "correctAnswers": [0],
+              "explanation": "La tournure concessive 'quelque... que' exige le subjonctif : 'soient' (accord avec vos chevaux)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Pierre étudie les sciences tandis que sa sœur préfère la philosophie », quelle relation est exprimée ?",
+              "options": [
+                "Une simple opposition comparative",
+                "Une concession paradoxale",
+                "Une conséquence rigoureuse",
+                "Une cause nécessaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il s'agit d'une confrontation entre deux goûts différents, sans contrariété ni surprise : c'est l'opposition."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réécrivez avec 'même si' : « Bien qu'il insiste, je refuserai. »",
+              "options": [
+                "Même s'il insiste, je refuserai.",
+                "Même s'il insistera, je refuserai.",
+                "Même s'il insiste, je refuserais.",
+                "Même s'il insisterait, je refuse."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Même si' se construit avec l'indicatif (ici le présent 'insiste') et conserve le sens concessif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle conjonction de coordination exprime la restriction ou l'opposition entre deux propositions ?",
+              "options": ["Mais", "Et", "Ou", "Ni"],
+              "correctAnswers": [0],
+              "explanation": "'Mais' est la conjonction de coordination par excellence servant à marquer l'opposition ou la correction."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Systèmes hypothétiques et conditionnels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles combinaisons de temps sont canoniques dans les systèmes hypothétiques introduits par « si » ?",
+              "options": [
+                "Si + présent -> futur simple dans la principale (potentiel ou réalité future)",
+                "Si + imparfait -> conditionnel présent dans la principale (irréel du présent ou potentiel)",
+                "Si + plus-que-parfait -> conditionnel passé dans la principale (irréel du passé)",
+                "Si + futur simple -> futur antérieur dans la principale"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "En français, 'si' de condition n'est jamais suivi directement du futur ou du conditionnel : il s'associe au présent, à l'imparfait ou au plus-que-parfait."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complétez selon la règle classique : « Si vous m'aviez prévenu plus tôt, je ___ mes dispositions. »",
+              "options": ["aurais pris", "avais pris", "prendrais", "prendrai"],
+              "correctAnswers": [0],
+              "explanation": "Avec 'si + plus-que-parfait' ('aviez prévenu'), la conséquence non réalisée dans le passé se formule au conditionnel passé ('aurais pris')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle erreur syntaxique courante doit-on proscrire après le « si » de condition ?",
+              "options": [
+                "Employer le conditionnel immédiatement après 'si' (ex: 'Si j'aurais su').",
+                "Employer l'imparfait de l'indicatif.",
+                "Mettre le verbe principal au futur.",
+                "Employer un pronom personnel sujet."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule mnémotechnique 'les scies n'aiment pas les raies' rappelle qu'on n'emploie jamais la désinence en '-rais' du conditionnel directement après 'si' hypothétique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « Si nous ___ riches, nous construirions une immense bibliothèque. »",
+              "options": ["étions", "serions", "fûmes", "soyons"],
+              "correctAnswers": [0],
+              "explanation": "La principale étant au conditionnel présent ('construirions'), la subordonnée introduite par 'si' se met à l'imparfait de l'indicatif ('étions')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mode est requis après la locution conjonctive de condition « à condition que » ?",
+              "options": [
+                "Le subjonctif",
+                "L'indicatif",
+                "Le conditionnel",
+                "L'impératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'À condition que' et 'pourvu que' envisagent une condition incertaine et commandent le subjonctif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « Nous irons nous promener pourvu qu'il ne ___ point. »",
+              "options": ["pleuve", "pleut", "pleuvra", "pleuvrait"],
+              "correctAnswers": [0],
+              "explanation": "'Pourvu que' appelle le mode subjonctif présent : 'pleuve'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle locution exige l'emploi du conditionnel dans la subordonnée ?",
+              "options": [
+                "Au cas où",
+                "À supposer que",
+                "En admettant que",
+                "Si tant est que"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Au cas où' se construit obligatoirement avec le conditionnel (ex: 'Au cas où vous changeriez d'avis'). Les autres demandent le subjonctif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Un seul regard de vous me rendrait le bonheur », comment s'exprime la condition ?",
+              "options": [
+                "Par un groupe nominal sujet jouant le rôle de proposition conditionnelle sous-entendue.",
+                "Par une proposition subordonnée conjonctive explicite.",
+                "Par un adverbe d'intensité.",
+                "Par une proposition participiale au passé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le groupe nominal 'Un seul regard de vous' équivaut sémantiquement à 'Si vous m'accordiez un seul regard'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « Au cas où vous ___ le moindre obstacle, contactez-moi sans hésiter. »",
+              "options": [
+                "rencontreriez",
+                "rencontriez",
+                "rencontrerez",
+                "ayez rencontré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après 'au cas où', le verbe se met au mode conditionnel : 'rencontreriez'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle valeur temporelle et modale porte « Si Cléopâtre avait eu le nez plus court, toute la face de la terre aurait changé » ?",
+              "options": [
+                "L'irréel du passé (fait non réalisé dans le passé).",
+                "L'irréel du présent (fait impossible au présent).",
+                "Le potentiel (fait envisageable dans l'avenir).",
+                "Une vérité générale intemporelle."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La célèbre pensée de Pascal exprime l'irréel du passé : la condition ne s'étant pas produite, la conséquence ne s'est pas réalisée."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Exprimer le but et la comparaison",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles locutions introduisent une proposition subordonnée de but au subjonctif ?",
+              "options": [
+                "Pour que",
+                "Afin que",
+                "De peur que (suivi d'un 'ne' explétif)",
+                "De telle manière que (exprimant un résultat effectif)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "'Pour que', 'afin que' et 'de peur que' introduisent une intention visée (but) au subjonctif. 'De telle manière que' à l'indicatif exprime la conséquence."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quand le sujet de la principale et celui de la proposition de but sont identiques, quelle construction privilégie-t-on ?",
+              "options": [
+                "La préposition 'pour' ou 'afin de' suivie de l'infinitif.",
+                "La subordonnée au subjonctif obligatoire.",
+                "Une subordonnée relative sans antécédent.",
+                "L'emploi systématique de la voix passive."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque les deux verbes partagent le même sujet, l'infinitif prépositionnel s'impose par élégance et concision (ex: 'Il court pour arriver à l'heure')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « Il parle à voix basse de crainte que les voisins ne l'___ . »",
+              "options": [
+                "entendent",
+                "entendent pas",
+                "entendront",
+                "entendraient"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'De crainte que' exige le subjonctif et tolère le 'ne' explétif (qui ne marque pas une négation mais l'appréhension)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un 'ne' explétif ?",
+              "options": [
+                "Un morphème syntaxique facultatif qui ne porte aucun sens négatif et s'emploie après certains verbes de crainte ou locutions.",
+                "Une véritable particule négative équivalant à 'ne... pas'.",
+                "Un pronom personnel élidé remplaçant un nom animé.",
+                "Une marque obligatoire de subjonctif imparfait."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le 'ne' explétif s'emploie dans la langue soignée après des expressions de crainte, de comparaison ou d'empêchement sans introduire de négation réelle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Identifiez le rapport logique exprimé dans : « Il est plus perspicace que nous ne le pensions. »",
+              "options": [
+                "La comparaison d'inégalité (avec 'ne' explétif)",
+                "Le but recherché",
+                "La conséquence inattendue",
+                "L'hypothèse non réalisée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Plus... que' introduit une subordonnée de comparaison confrontant deux degrés d'une même qualité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mot coordonnant ou subordonnant permet d'établir une comparaison d'égalité ?",
+              "options": [
+                "Aussi... que (avec un adjectif) ou autant... que (avec un verbe ou un nom)",
+                "Moins... que",
+                "Pire... que",
+                "Davantage... que"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'égalité s'exprime par 'aussi... que' devant un adjectif ou adverbe, et par 'autant... que' avec un verbe ou nom."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Transformez ces deux propositions en une phrase exprimant le but : « Il relit attentivement sa copie. Il veut éviter toute maladresse. »",
+              "options": [
+                "Il relit attentivement sa copie afin d'éviter toute maladresse.",
+                "Il relit sa copie parce qu'il évite les maladresses.",
+                "Il relit sa copie bien qu'il évite les maladresses.",
+                "Il relit sa copie de sorte qu'il évite les maladresses."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sujets étant identiques ('il' / 'il'), la formule prépositionnelle 'afin de' + infinitif traduit fidèlement l'intention."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez au subjonctif : « Fermez les volets pour que la fraîcheur ___ dans la maison. »",
+              "options": ["demeure", "demeurera", "demeurerait", "demeura"],
+              "correctAnswers": [0],
+              "explanation": "'Pour que' commande le mode subjonctif présent : 'demeure'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « Il agit tel un souverain absolu », quelle est la nature de 'tel' ?",
+              "options": [
+                "Un adjectif comparatif marquant la ressemblance",
+                "Une conjonction de but",
+                "Un adverbe de quantité",
+                "Un pronom démonstratif neutre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Tel' introduit ici une comparaison équivalente à 'comme un souverain absolu'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase comporte un 'ne' explétif correctement employé ?",
+              "options": [
+                "Cette solution est meilleure que je ne le croyais.",
+                "Je ne veux pas que tu viennes.",
+                "Il ne sait ni lire ni écrire.",
+                "Nous n'avons trouvé personne dans la pièce."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après un comparatif de supériorité ou d'infériorité dans la proposition principale, la subordonnée admet le 'ne' explétif dans le style soigné."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Correction des anacoluthes et des ruptures syntaxiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont exemptes d'anacoluthe ou de rupture abusive de construction ?",
+              "options": [
+                "En entrant dans la salle, le candidat salua respectueusement les examinateurs.",
+                "Arrivé au sommet de la colline, le village apparut à nos yeux dans toute sa splendeur.",
+                "Après avoir pesé les arguments, nous avons pris une décision unanime.",
+                "Marchant au bord du fleuve, son chapeau s'envola subitement dans l'eau."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Dans les options B et D, le participe ou gérondif n'a pas le même sujet que la proposition principale ('le village' n'est pas arrivé, 'le chapeau' ne marchait pas), créant une rupture syntaxique fautive."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une anacoluthe en syntaxe et en stylistique ?",
+              "options": [
+                "Une rupture de construction syntaxique dans une phrase, volontaire pour créer un effet stylistique ou involontaire par maladresse.",
+                "Une répétition de mots au début de plusieurs vers consécutifs.",
+                "Un pléonasme grossier associant deux mots identiques.",
+                "Une faute d'accord portant exclusivement sur le participe passé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anacoluthe est une rupture dans la cohérence grammaticale de la phrase (ex: sujet du gérondif différent du sujet de la principale)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Corrigez la phrase fautive : « Étant malade, la réunion a été reportée par le directeur. »",
+              "options": [
+                "Le directeur étant malade, il a reporté la réunion.",
+                "Étant malade, la réunion fut ajournée par lui.",
+                "Étant malade, le report de la réunion eut lieu.",
+                "Comme la réunion était malade, le directeur l'a reportée."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce n'est pas la réunion qui est malade, mais le directeur. Le sujet du participe doit être clairement identifié pour éviter l'anacoluthe fautive."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel célèbre vers de Racine dans Athalie illustre une anacoluthe poétique voulue ?",
+              "options": [
+                "« Le nez de Cléopâtre, s'il eût été plus court... »",
+                "« Ô temps ! suspends ton vol... »",
+                "« Demain, dès l'aube, à l'heure où blanchit la campagne... »",
+                "« Vous mourûtes alors, chétive créature... »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce tour littéraire détache un thème au début de phrase avant de changer la construction grammaticale attendue."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi la phrase « C'est à vous que je parle et que je vous demande de répondre » est-elle incorrecte ?",
+              "options": [
+                "Elle comporte une redondance fautive avec la répétition du pronom 'vous' après 'que'.",
+                "Le verbe parler ne peut pas s'associer à la 2e personne.",
+                "Le pronom 'que' doit être remplacé par 'dont'.",
+                "L'inversion du verbe est obligatoire."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après 'C'est à vous que', le complément étant déjà posé, ajouter 'que je vous demande' crée un pléonasme pronominal défectueux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Corrigez l'erreur de coordination : « Il aime la lecture et d'écrire des poèmes. »",
+              "options": [
+                "Il aime lire et écrire des poèmes.",
+                "Il aime la lecture et écrivant des poèmes.",
+                "Il aime le lire et l'écriture de poèmes.",
+                "Il aime lire et la confection de poèmes."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La coordination par 'et' doit relier des éléments de même statut grammatical (ici deux infinitifs COD : 'lire et écrire')."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Identifiez le solécisme dans : « La pièce dont il a assisté hier était remarquable. »",
+              "options": [
+                "Le verbe assister se construit avec la préposition 'à' ('assister à') : il faut dire 'la pièce à laquelle il a assisté'.",
+                "Le pronom 'dont' ne peut s'employer que pour des personnes.",
+                "Le participe 'assisté' devrait être accordé au féminin.",
+                "Le mot 'hier' ne peut pas suivre directement le participe passé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Dont' remplace un complément introduit par 'de'. Pour un complément en 'à', on emploie la préposition avec le pronom relatif composé : 'à laquelle'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Corrigez : « C'est ce livre dont j'ai besoin de lire pour demain. »",
+              "options": [
+                "C'est ce livre que j'ai besoin de lire pour demain.",
+                "C'est ce livre de qui j'ai besoin de lire.",
+                "C'est ce livre duquel j'ai besoin de lire.",
+                "C'est ce livre où j'ai besoin de lire."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le livre est le COD du verbe 'lire' ('lire ce livre') et non le complément de 'avoir besoin de'. Le pronom relatif doit donc être 'que'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi l'expression « Au jour d'aujourd'hui » est-elle un pléonasme fautif ?",
+              "options": [
+                "Parce qu''aujourd'hui' contient déjà étymologiquement 'au jour de' (au jour de ce jour).",
+                "Parce que le mot jour ne peut pas s'employer deux fois par semaine.",
+                "Parce que c'est un emprunt direct à l'anglais.",
+                "Parce que la préposition 'au' est redondante avec 'de'."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Aujourd'hui' provient de 'au jour d'hui' (hui = ce jour) : y ajouter 'au jour de' constitue un triple pléonasme insistant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Corrigez la rupture dans : « Ayant terminé son discours, les applaudissements éclatèrent. »",
+              "options": [
+                "Quand l'orateur eut terminé son discours, les applaudissements éclatèrent.",
+                "Ayant terminé son discours, la salle l'applaudit sans répit.",
+                "Ayant terminé, les applaudissements furent très nourris.",
+                "Le discours terminé, les applaudissements de l'orateur éclatèrent."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque ce ne sont pas les applaudissements qui ont prononcé le discours, l'emploi d'une temporelle conjonctive ('Quand l'orateur eut terminé') rétablit la cohérence."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Mise en relief et thématisation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels procédés syntaxiques permettent de réaliser une mise en relief (emphase) en français ?",
+              "options": [
+                "L'extraction au moyen du présentatif « c'est... qui / que »",
+                "Le détachement en tête de phrase avec reprise pronominale (dislocation)",
+                "L'inversion du sujet après certains adverbes initiaux (peut-être, à peine)",
+                "L'omission de tout verbe conjugué dans un paragraphe"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La mise en relief s'opère couramment par les présentatifs ('c'est... qui'), la dislocation avec pronom de reprise ('Ce roman, je l'adore'), et l'inversion stylistique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mettez en relief le sujet de cette phrase : « Victor Hugo a dénoncé la misère dans Les Misérables. »",
+              "options": [
+                "C'est Victor Hugo qui a dénoncé la misère dans Les Misérables.",
+                "C'est la misère que Victor Hugo a dénoncée.",
+                "Dans Les Misérables, c'est la misère qui fut dénoncée.",
+                "Victor Hugo, il est celui par qui la misère fut dénoncée."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour focaliser sur le sujet ('Victor Hugo'), on utilise le tour clivé 'C'est [sujet] qui [verbe]'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Mettez en relief le complément d'objet direct dans : « Nous admirons la beauté de ces vers. »",
+              "options": [
+                "C'est la beauté de ces vers que nous admirons.",
+                "C'est nous qui admirons la beauté de ces vers.",
+                "La beauté de ces vers admire notre regard.",
+                "C'est par nous que ces vers sont beaux."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour extraire le COD ('la beauté de ces vers'), on emploie le présentatif 'C'est [COD] que'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel nom donne-t-on à la structure « Cette pièce de théâtre, je l'ai vue trois fois » ?",
+              "options": [
+                "Une dislocation à gauche avec reprise anaphorique par pronom clitique.",
+                "Une proposition incise à valeur modale.",
+                "Une inversion du verbe au passif.",
+                "Une anacoluthe involontaire fautive."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La thématisation par dislocation détache le constituant en tête de phrase et le reprend par un pronom personnel clitique ('l'')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « À peine le rideau fut-il levé que le silence se fit », pourquoi le sujet 'le rideau' est-il inversé ?",
+              "options": [
+                "Parce que la phrase commence par l'adverbe restrictif 'À peine'.",
+                "Parce que le verbe est au passé antérieur.",
+                "Parce qu'il s'agit d'une interrogation directe.",
+                "Parce que le sujet est inanimé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "En tête de proposition, certains adverbes comme 'À peine', 'Peut-être', 'Aussi' ou 'Sans doute' entraînent l'inversion du sujet dans la langue soutenue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Transformez la phrase en appliquant une focalisation sur le complément de temps : « Nous partirons demain à l'aube. »",
+              "options": [
+                "C'est demain à l'aube que nous partirons.",
+                "C'est nous qui partirons demain à l'aube.",
+                "Demain à l'aube partira avec nous.",
+                "Nous partirons bien à l'aube demain."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'extraction du complément circonstanciel de temps s'effectue au moyen de 'C'est [complément] que'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la mise en relief consistant à rejeter le sujet après le verbe (ex: « Au fond du vallon coulait un ruisseau limpide ») ?",
+              "options": [
+                "L'inversion stylistique du sujet.",
+                "Une dislocation droite péjorative.",
+                "Un chiasme grammatical.",
+                "Une ellipse du pronom relatif."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après un complément de lieu ou de temps en tête de phrase, le sujet peut être inversé pour des raisons de rythme et de mise en valeur poétique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez la mise en relief : « ___ m'indigne le plus, c'est son hypocrisie manifeste. »",
+              "options": ["Ce qui", "Ce que", "Celui qui", "Qu'est-ce qui"],
+              "correctAnswers": [0],
+              "explanation": "La proposition est sujet du verbe 'indigner' : on utilise le pronom relatif neutre sujet 'Ce qui'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez la mise en relief : « ___ je refuse catégoriquement, c'est tout compromis déshonorant. »",
+              "options": ["Ce que", "Ce qui", "Ce dont", "Ce à quoi"],
+              "correctAnswers": [0],
+              "explanation": "Le relatif est ici COD de 'refuse' ('je refuse quelque chose') : la forme neutre requise est 'Ce que'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle nuance stylistique apporte le présentatif « Voici » par rapport à « C'est » ?",
+              "options": [
+                "Il désigne ce qui est immédiatement présent, visible ou ce qui va être exposé dans la suite du discours.",
+                "Il impose l'usage du subjonctif imparfait.",
+                "Il ne s'applique qu'aux noms propres de personnages antiques.",
+                "Il est exclusivement réservé au discours indirect."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Voici' (combinaison de 'vois' et 'ici') annonce ce qui suit ou attire le regard sur un élément présent sous les yeux."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Concordance des temps et réécriture globale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un récit littéraire mené au passé simple, quelles formes verbales assurent la concordance pour exprimer l'antériorité et la postériorité ?",
+              "options": [
+                "Le plus-que-parfait (pour exprimer l'antériorité)",
+                "Le conditionnel présent (pour exprimer le futur du passé / postériorité)",
+                "Le passé antérieur (pour exprimer une antériorité immédiate)",
+                "Le futur simple de l'indicatif (pour exprimer le présent de narration)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Dans un système au passé, l'antériorité est prise en charge par le plus-que-parfait ou le passé antérieur, et la postériorité par le conditionnel présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Transposez cette phrase au passé : « Il affirme qu'il sait où se cache le trésor. »",
+              "options": [
+                "Il affirmait qu'il savait où se cachait le trésor.",
+                "Il affirmait qu'il saura où se cache le trésor.",
+                "Il affirmait qu'il eût su où se cacha le trésor.",
+                "Il affirmait qu'il sût où se cachera le trésor."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le verbe principal à l'imparfait ('affirmait'), les verbes des subordonnées au présent deviennent des imparfaits de concordance ('savait', 'se cachait')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Transposez au passé : « Je crois qu'il viendra dès qu'il aura achevé son devoir. »",
+              "options": [
+                "Je croyais qu'il viendrait dès qu'il aurait achevé son devoir.",
+                "Je croyais qu'il venait dès qu'il achevait son devoir.",
+                "Je croyais qu'il vienne dès qu'il ait achevé son devoir.",
+                "Je croyais qu'il viendra dès qu'il avait achevé son devoir."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le futur simple ('viendra') devient conditionnel présent ('viendrait'), et le futur antérieur ('aura achevé') devient conditionnel passé ('aurait achevé')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de l'imparfait dans : « Si vous vouliez bien patienter un instant... » ?",
+              "options": [
+                "Un imparfait d'atténuation et de politesse.",
+                "Une action passée habituelle.",
+                "Une description d'état intemporel.",
+                "Une valeur de futur imminent."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'imparfait sert couramment à adoucir une demande ou un ordre pour respecter les convenances de politesse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi emploie-t-on le présent dans : « Galilée a démontré que la Terre tourne autour du Soleil » ?",
+              "options": [
+                "Parce qu'il s'agit d'une vérité générale et scientifique permanente.",
+                "Parce que le passé composé interdit tout autre temps.",
+                "Parce que le verbe tourner est irrégulier.",
+                "Parce que Galilée vit encore dans la mémoire collective."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une vérité générale ou un fait scientifique reconnu conserve le présent de l'indicatif quelle que soit la temporalité du verbe principal."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Transposez à la 3e personne du pluriel : « Le poète contemple le ciel et médite sur son destin. »",
+              "options": [
+                "Les poètes contemplent le ciel et méditent sur leur destin.",
+                "Les poètes contemple le ciel et médite sur son destin.",
+                "Les poètes contemplent le ciel et méditent sur ses destins.",
+                "Les poètes contempleront le ciel et méditeront sur leurs destins."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux verbes prennent la désinence '-ent' à la 3e personne du pluriel, et le possessif 'son' devient 'leur' accordé avec 'destin'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase illustre un emploi correct du subjonctif imparfait après un verbe de volonté au passé ?",
+              "options": [
+                "Le roi exigea que chacun obéît sur-le-champ.",
+                "Le roi exigea que chacun obéisse sur-le-champ.",
+                "Le roi exigea que chacun obéira sur-le-champ.",
+                "Le roi exigea que chacun eût obéir sur-le-champ."
+              ],
+              "correctAnswers": [0],
+              "explanation": "En style soutenu classique, après un passé simple de volonté ('exigea'), la subordonnée prend le subjonctif imparfait ('obéît', 3e pers. du singulier)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Transposez du présent au passé simple : « Phèdre avoue son amour et s'effondre en larmes. »",
+              "options": [
+                "Phèdre avoua son amour et s'effondra en larmes.",
+                "Phèdre avouait son amour et s'effondrait en larmes.",
+                "Phèdre avait avoué son amour et s'était effondrée en larmes.",
+                "Phèdre avoue son amour et s'effondrait en larmes."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au passé simple, les verbes du 1er groupe prennent la terminaison '-a' à la 3e personne du singulier : 'avoua', 's'effondra'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une réécriture globale pour l'épreuve de français, quel principe prévaut toujours ?",
+              "options": [
+                "Préserver scrupuleusement le sens, le niveau de langue et la cohérence des accords de la phrase originelle.",
+                "Remplacer tous les adjectifs par des adverbes d'intensité.",
+                "Convertir toutes les propositions en phrases nominales courtes.",
+                "Modifier les noms propres pour moderniser le contexte."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une réécriture rigoureuse respecte le registre stylistique, la justesse sémantique et l'exactitude des accords grammaticaux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Transposez au féminin pluriel : « Ce jeune homme courageux était admiré de tous ses compagnons. »",
+              "options": [
+                "Ces jeunes femmes courageuses étaient admirées de tous leurs compagnons.",
+                "Ces jeunes femmes courageuses étaient admiré de tous leurs compagnons.",
+                "Ces jeunes femmes courageuse étaient admirées de toutes leurs compagnes.",
+                "Ces jeunes femmes courageuses étaient admirés de tous ses compagnons."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Ces jeunes femmes courageuses' (féminin pluriel) entraîne l'accord du verbe ('étaient'), du participe attribut ('admirées') et du déterminant ('leurs compagnons')."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

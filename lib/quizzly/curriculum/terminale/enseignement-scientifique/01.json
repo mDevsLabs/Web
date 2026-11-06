@@ -1,0 +1,2698 @@
+{
+  "id": "terminale-enseignement-scientifique-01",
+  "year": "terminale",
+  "subject": "enseignement-scientifique",
+  "title": "Science, climat et société",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "L'atmosphère",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Composition de l'atmosphère",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels gaz dominent le volume sec de l'air au niveau de la mer ?",
+              "options": [
+                "Azote et dioxygène",
+                "Dioxyde de carbone et méthane",
+                "Ozone et vapeur d'eau",
+                "Hélium et argon"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "L'azote (~78 %) et l'oxygène (~21 %) forment l'essentiel de l'air sec, l'argon (~0,93 %) étant le troisième gaz majeur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la fraction approximative de dioxygène dans l'atmosphère ?",
+              "options": ["21 %", "78 %", "0,04 %", "50 %"],
+              "correctAnswers": [0],
+              "explanation": "Le dioxygène représente environ 21 % du volume d'air sec."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le dioxyde de carbone atmosphérique avant industrialisation était d'environ :",
+              "options": ["280 ppm", "420 ppm", "180 ppm", "800 ppm"],
+              "correctAnswers": [0],
+              "explanation": "Les glaces antarctiques indiquent ~280 ppm de CO2 avant la révolution industrielle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel gaz contribue le plus à l'effet de serre naturel en masse dans l'atmosphère ?",
+              "options": [
+                "La vapeur d'eau (H2O)",
+                "Le radon",
+                "Le néon",
+                "L'argon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vapeur d'eau est le GES naturel le plus abondant malgré sa courte durée de vie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'azote (N2) dans la basse atmosphère est surtout :",
+              "options": [
+                "Chimiquement peu réactif",
+                "Très réactif avec O2 à 20 °C",
+                "Un polluant primaire typique",
+                "Absent au-dessus de 10 km"
+              ],
+              "correctAnswers": [0],
+              "explanation": "N2 est inerte dans les conditions usuelles de la troposphère."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les aérosols atmosphériques peuvent :",
+              "options": [
+                "Refroidir ou réchauffer selon leur nature",
+                "Supprimer toute l'humidité",
+                "Créer de l'ozone stratosphérique",
+                "Remplacer le dioxygène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sulfates réfléchissent le rayonnement ; les suies sombres absorbent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'argon atmosphérique provient surtout de :",
+              "options": [
+                "La désintégration du potassium-40",
+                "La photosynthèse",
+                "La combustion du charbon",
+                "La fission nucléaire récente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'argon est un gaz radiogénique accumulé depuis des millions d'années."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La proportion de CO2 dans l'air est d'environ :",
+              "options": ["0,04 %", "4 %", "0,4 %", "10 %"],
+              "correctAnswers": [0],
+              "explanation": "420 ppm correspond à environ 0,042 % du volume d'air."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le néon et l'hélium dans l'air sont :",
+              "options": [
+                "Des traces de gaz nobles",
+                "Les gaz dominants",
+                "Des polluants primaires",
+                "Des GES majeurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce sont des composants traces non réactifs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'atmosphère terrestre s'est enrichie en O2 surtout grâce à :",
+              "options": [
+                "La photosynthèse",
+                "Les volcans seuls",
+                "La radioactivité",
+                "La condensation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les organismes photosynthétiques ont libéré de l'oxygène sur des millions d'années."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Structure verticale de l'atmosphère",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles couches appartiennent à l'atmosphère terrestre ?",
+              "options": [
+                "Troposphère et stratosphère",
+                "Lithosphère et asthénosphère",
+                "Hydrosphère",
+                "Magnétosphère"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La troposphère et la stratosphère font partie des couches gazeuses; la lithosphère est solide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La troposphère contient environ :",
+              "options": [
+                "80 % de la masse atmosphérique",
+                "1 % seulement",
+                "Uniquement de l'ozone",
+                "Pas de vapeur d'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Près de tout le temps météo et la majorité de la masse se trouvent dans la troposphère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La température diminue en moyenne avec l'altitude dans :",
+              "options": [
+                "La troposphère",
+                "La stratosphère basse",
+                "La thermosphère",
+                "Toutes les couches sans exception"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gradient environ −6,5 °C/km caractérise la troposphère."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La stratosphère contient la couche d'ozone car :",
+              "options": [
+                "Des réactions photochimiques y produisent et stockent O3",
+                "Il n'y a pas de rayonnement UV",
+                "La température y est toujours négative",
+                "Il n'y a pas de vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'UV dissocie O2 et permet la formation d'ozone stratosphérique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La limite tropopause se situe vers :",
+              "options": [
+                "8–15 km selon la latitude",
+                "100 km partout",
+                "1 km",
+                "50 km au pôle seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle est plus basse aux pôles, plus haute à l'équateur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La mésosphère se caractérise par :",
+              "options": [
+                "Une diminution de température avec l'altitude",
+                "Une augmentation continue jusqu'à 500 °C",
+                "Absence totale de gaz",
+                "Présence de l'océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entre ~50 et 80 km, la température chute à nouveau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La thermosphère est très chaude mais on y ressentrait froid car :",
+              "options": [
+                "La densité est trop faible pour transporter la chaleur",
+                "Il n'y a pas de rayonnement",
+                "L'air est liquide",
+                "La gravité est nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu de collisions : peu d'échange thermique avec un corps."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'ionosphère permet :",
+              "options": [
+                "La réflexion des ondes radio",
+                "La photosynthèse",
+                "La formation du pétrole",
+                "Les marées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ions libres réfléchissent certaines fréquences radio."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La couche limite nocturne en surface influence :",
+              "options": [
+                "Les inversions et la qualité de l'air local",
+                "La rotation de la Terre",
+                "Le champ magnétique",
+                "La salinité océanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle piège les polluants près du sol la nuit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Au-dessus de la stratosphère, la pression est :",
+              "options": [
+                "Plus faible qu'en surface",
+                "Identique à 1 bar",
+                "Plus élevée",
+                "Nulle partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pression décroît exponentiellement avec l'altitude."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Pression et masses d'air",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles grandeurs caractérisent une masse d'air en météorologie ?",
+              "options": [
+                "Pression atmosphérique",
+                "Température de l'air",
+                "Numéro atomique du sodium",
+                "Magnitude sismique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pression, température et humidité décrivent l'état d'une masse d'air."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La pression atmosphérique au niveau de la mer vaut environ :",
+              "options": ["1013 hPa", "100 hPa", "5000 hPa", "10 hPa"],
+              "correctAnswers": [0],
+              "explanation": "1 atmosphère standard ≈ 1013,25 hPa."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un anticyclone correspond à :",
+              "options": [
+                "Une zone de haute pression",
+                "Une zone de basse pression",
+                "Un séisme",
+                "Un courant océanique profond"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air descend et s'échauffe par compression dans un anticyclone."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une dépression est associée à :",
+              "options": [
+                "Temps souvent nuageux/pluvieux",
+                "Air toujours sec",
+                "Absence de vent",
+                "Ozone stratosphérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air ascendant se refroidit et condense."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le baromètre mesure :",
+              "options": [
+                "La pression atmosphérique",
+                "La température seule",
+                "Le pH de l'eau",
+                "La radioactivité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mercure ou capteur électronique pour P."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Vent résulte surtout de :",
+              "options": [
+                "Différences de pression horizontales",
+                "Différences de salinité",
+                "Marées lunaires seules",
+                "Rotation lunaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air se déplace des hautes vers les basses pressions."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Isobare sur une carte météo :",
+              "options": [
+                "Ligne de pression égale",
+                "Ligne de température égale",
+                "Front froid",
+                "Courant jet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les isobares visualisent le champ de pression."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Altitude-pressure : en montant de 5 km environ, la pression :",
+              "options": [
+                "Diminue fortement",
+                "Double",
+                "Reste à 1013 hPa",
+                "Devient nulle instantanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Environ la moitié de la masse d'air est sous 5 km."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Altimètre en avion utilise :",
+              "options": [
+                "La pression statique",
+                "La salinité",
+                "Le pH",
+                "La conductivité du sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pression convertie en altitude via atmosphere standard."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Gradient de pression horizontal intense implique :",
+              "options": [
+                "Vents plus forts",
+                "Absence de vent",
+                "Glace en surface",
+                "Ozone troposphérique élevé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus la différence de P est grande, plus le vent accélère."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Humidité, nuages et précipitations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels processus alimentent la vapeur d'eau dans l'air ?",
+              "options": [
+                "Évaporation des surfaces aqueuses",
+                "Transpiration des plantes",
+                "Fusion du fer",
+                "Combustion de l'argon"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Évaporation des surfaces et transpiration végétale enrichissent l'air en H2O."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Humidité relative 100 % signifie :",
+              "options": [
+                "Air saturé à la température considérée",
+                "Absence d'eau",
+                "Pluie garantie au sol",
+                "Air totalement sec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Saturation : condensation possible si refroidissement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Point de rosée :",
+              "options": [
+                "Température à laquelle l'air devient saturé",
+                "Pression de l'ozone",
+                "Altitude du jet stream",
+                "Salinité de l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "T rosée : formation de gouttelettes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Condensation nécessite souvent :",
+              "options": [
+                "Noyaux de condensation",
+                "Absence de poussière",
+                "Sel sec",
+                "Oxygène pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aérosols servent de support aux gouttelettes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Nuage cumulus indique souvent :",
+              "options": [
+                "Convection diurne",
+                "Stable stratifié",
+                "Ozone bas",
+                "Anticyclone persistant sec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bulles ascendantes par chauffage du sol."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Stratus correspond à :",
+              "options": [
+                "Couche nuageuse basse étendue",
+                "Orage violent isolé",
+                "Cirrus en haute altitude",
+                "Aucun nuage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ciel gris uniforme en couche."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pluie se forme quand :",
+              "options": [
+                "Gouttelettes/cristaux grossissent et tombent",
+                "Humidité relative est 0 %",
+                "Pression augmente seule",
+                "Température monte sans limite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Collision-coalescence ou processus de Bergeron."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Neige au sol requiert :",
+              "options": [
+                "Température suffisamment basse",
+                "Température toujours > 10 °C",
+                "Sel dans l'air",
+                "Vent nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flocons survivent si l'air près du sol est froid."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Cycle de l'eau : l'évapotranspiration renvoie à :",
+              "options": [
+                "Evaporation + transpiration",
+                "Précipitations seules",
+                "Ruissellement seul",
+                "Infiltration seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les plantes libèrent de la vapeur d'eau."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Orage cumulonimbus associe :",
+              "options": [
+                "Fortes ascendances et précipitations intenses",
+                "Air stable",
+                "Stratus bas",
+                "Absence d'électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convection profonde avec éclairs possibles."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Rayonnement solaire et bilan",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels flux composent le bilan radiatif terrestre à la surface ?",
+              "options": [
+                "Rayonnement solaire entrant",
+                "Rayonnement infrarouge émis par la surface",
+                "Marées océaniques",
+                "Courants du manteau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le sol reçoit le rayonnement solaire et réémet dans l'infrarouge thermique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Albedo de la neige fraîche est :",
+              "options": [
+                "Élevé (réfléchit beaucoup)",
+                "Très faible",
+                "Nul",
+                "Inférieur à l'océan sombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surface claire renvoie une grande fraction du soleil."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Constante solaire ~1361 W/m² concerne :",
+              "options": [
+                "Flux au sommet de l'atmosphère",
+                "Flux au pôle seul",
+                "Flux nocturne",
+                "Flux sous terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Irradiance moyenne avant absorption atmosphérique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Jour et nuit proviennent de :",
+              "options": [
+                "Rotation terrestre",
+                "Révolution seule",
+                "Marées",
+                "Vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Période ~24 h alterne ensoleillement et obscurité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Saisons (hors équateur) liées surtout à :",
+              "options": [
+                "Inclinaison de l'axe et révolution",
+                "Distance Terre-Soleil seule",
+                "Phase lunaire",
+                "Vent dominant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hauteur du soleil et durée du jour varient."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rayonnement UV-B est partiellement absorbé par :",
+              "options": [
+                "Ozone stratosphérique",
+                "Azote seul",
+                "Argon",
+                "CO2 troposphérique seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La couche d'ozone filtre l'UV biologiquement actif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Effet de serre à la surface :",
+              "options": [
+                "L'IR émis est partiellement renvoyé vers le sol",
+                "Le soleil est bloqué totalement",
+                "L'air devient opaque au visible",
+                "La gravité diminue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "GES absorbent/réémettent dans l'infrarouge."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Milieu urbain plus chaud la nuit à cause de :",
+              "options": [
+                "Îlot de chaleur (surfaces, activité)",
+                "Albedo élevé",
+                "Plus de neige",
+                "Moins de bâtiments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matériaux stockent la chaleur et limitent le refroidissement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bilan radiatif positif sur une période implique :",
+              "options": [
+                "Réchauffement net du système considéré",
+                "Refroidissement garanti",
+                "Stabilité obligatoire",
+                "Glaciation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus d'énergie entrante que sortante."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Satellites mesurent le rayonnement sortant via :",
+              "options": [
+                "Capteurs infrarouges",
+                "Sismographes",
+                "Baromètres seuls",
+                "Ph-mètres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ERBE/CERES typiquement pour le budget radiatif."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Effet de serre naturel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels gaz contribuent à l'effet de serre naturel ?",
+              "options": [
+                "Vapeur d'eau (H2O)",
+                "Dioxyde de carbone (CO2)",
+                "Azote (N2) seul",
+                "Oxygène (O2) seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "H2O et CO2 absorbent l'infrarouge et maintiennent ~+33 °C en moyenne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sans effet de serre naturel, la température moyenne serait environ :",
+              "options": ["−18 °C", "+15 °C", "+60 °C", "0 K"],
+              "correctAnswers": [0],
+              "explanation": "Comparé aux ~15 °C actuels grâce aux GES."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Oxygène et azote sont peu actifs en IR car :",
+              "options": [
+                "Molécules homonucléaires sans dipôle permanent",
+                "Ils sont liquides",
+                "Ils absorbent tout l'UV",
+                "Ils sont radioactifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de bandes rotation-vibration IR significatives."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Méthane (CH4) est un GES car :",
+              "options": [
+                "Absorbe l'infrarouge",
+                "Est plus lourd que l'air seulement",
+                "Est bleu",
+                "Remplace O2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure triatomique/tétraédrique active en IR."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Durée de vie du CO2 atmosphérique est :",
+              "options": [
+                "Longue (siècles pour une fraction)",
+                "Quelques secondes",
+                "Nulle",
+                "1 jour exact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réservoirs océan/biosphère prolongent la présence."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rétroaction vapeur d'eau :",
+              "options": [
+                "Réchauffement → plus d'évaporation → renforce GES",
+                "Refroidit toujours",
+                "Supprime les nuages",
+                "Élimine CO2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Feedback positif majeur du climat."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Fenêtres atmosphériques transparentes :",
+              "options": [
+                "Bandes où peu d'absorption IR",
+                "Zones sans oxygène",
+                "Trou dans l'ozone",
+                "Orifices volcaniques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines longueurs d'onde échappent mieux vers l'espace."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Effet de serre ne signifie pas :",
+              "options": [
+                "Piéger la lumière visible du soleil",
+                "Piéger une partie de l'IR terrestre",
+                "Réchauffer la surface",
+                "Involver des GES"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le soleil traverse surtout le visible ; c'est l'IR sortant qui est retenu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "N2O est émis notamment par :",
+              "options": [
+                "Activités agricoles et sols",
+                "Photosynthèse seule",
+                "Océan sans vie",
+                "Ozone seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Engrais et processus microbiens."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mesure du forçage radiatif compare :",
+              "options": [
+                "Flux radiatif perturbé vs référence",
+                "Vent seul",
+                "Salinité",
+                "Magnitude Richter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "W/m² : déséquilibre énergétique au sommet de l'atmosphère."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Couche d'ozone",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernent l'ozone stratosphérique ?",
+              "options": [
+                "Il filtre une partie des UV nocifs",
+                "Il se forme surtout entre 15 et 35 km",
+                "Il est identique au smog troposphérique",
+                "Il est inutile à la vie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "O3 stratosphérique protège des UV ; le smog troposphérique est un polluant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Formule chimique de l'ozone :",
+              "options": ["O3", "O2", "CO2", "N2"],
+              "correctAnswers": [0],
+              "explanation": "Trois atomes d'oxygène."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Trou dans la couche d'ozone observé surtout au :",
+              "options": [
+                "Pôle Antarctique printemps",
+                "Équateur uniquement",
+                "Fond des océans",
+                "Centre des continents secs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conditions polaires favorisent chimie sur glace stratosphérique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "CFC (chlorofluorocarbures) :",
+              "options": [
+                "Libèrent du chlore destructeur d'ozone",
+                "Renforcent l'ozone",
+                "Sont des GES négligeables",
+                "Sont naturels en grande quantité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cl catalyse la destruction d'O3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Protocole de Montréal vise :",
+              "options": [
+                "Réduire les substances appauvrissant l'ozone",
+                "Augmenter les CFC",
+                "Interdire CO2",
+                "Lutter contre les marées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord phare pour la protection ozone."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ozone troposphérique en ville :",
+              "options": [
+                "Polluant secondaire photochimique",
+                "Identique à la couche protectrice",
+                "Bénéfique en toute concentration",
+                "Absent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formé par réactions NOx + COV + soleil."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Indice UV au sol augmente si :",
+              "options": [
+                "Couche d'ozone locale diminue",
+                "Ozone stratosphérique augmente",
+                "Nuit totale",
+                "Albedo élevé seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de filtrage UV."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Cycle chimique de l'ozone implique :",
+              "options": [
+                "Photodissociation et reformation",
+                "Fusion nucléaire",
+                "Photosynthèse",
+                "Sédimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "O2 + UV → O + O2 → O3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Halons utilisés autrefois comme :",
+              "options": [
+                "Agents extincteurs",
+                "Engrais",
+                "Carburants",
+                "Peintures sans chlore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Libèrent brome destructeur d'ozone."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Rétablissement de l'ozone antarctique attendu :",
+              "options": [
+                "Plusieurs décennies",
+                "Quelques heures",
+                "Jamais",
+                "1 jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décroissance lente des halogènes stratosphériques."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Circulation atmosphérique et vents",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels phénomènes structurent la circulation globale ?",
+              "options": [
+                "Cellules de Hadley",
+                "Gradient thermique équateur–pôles",
+                "Marées océaniques seules",
+                "Magnétisme terrestre seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chauffage inégal et rotation organisent les vents à grande échelle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Coriolis dévie les vents dans l'hémisphère nord vers :",
+              "options": [
+                "La droite",
+                "La gauche",
+                "Le haut seul",
+                "Le centre terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet de rotation terrestre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Alizés soufflent vers :",
+              "options": [
+                "L'équateur en surface",
+                "Les pôles uniquement",
+                "L'est sans variation",
+                "Le centre des dépressions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brises de trade dans les tropiques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Jet stream se situe en :",
+              "options": [
+                "Haute troposphère",
+                "Fond océan",
+                "Mantle",
+                "Lithosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courant rapide ~9–12 km."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Brise de mer :",
+              "options": [
+                "Mer plus froide le jour → air descend sur mer, vent vers terre la nuit inverse",
+                "Vent constant vers pôle",
+                "Sans lien température",
+                "Uniquement en montagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraste thermique mer-terre modulé jour/nuit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Mistral et tramontane sont :",
+              "options": [
+                "Vents régionaux violents",
+                "Courants océaniques",
+                "Types de nuages",
+                "Séismes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vents catabatiques du pourtour méditerranéen."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Front froid :",
+              "options": [
+                "Air froid pousse sous air chaud",
+                "Air chaud sous froid toujours",
+                "Sans précipitations",
+                "Anticyclone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ascendance rapide possible et orages."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "El Niño modifie :",
+              "options": [
+                "Couplage océan-atmosphère Pacifique",
+                "Rotation terrestre",
+                "Ozone seul",
+                "Marée lunaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réchauffement anormal du Pacifique équatorial."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Gradient thermique vertical stable inhibe :",
+              "options": [
+                "Convection profonde",
+                "Pression",
+                "Gravité",
+                "Rotation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inversion limite les ascendances."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Anémomètre mesure :",
+              "options": ["Vitesse du vent", "Pression", "Humidité", "UV"],
+              "correctAnswers": [0],
+              "explanation": "Instrument au vent."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Pollution et qualité de l'air",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels polluants primaires sont émis directement à la source ?",
+              "options": [
+                "Oxydes d'azote (NOx)",
+                "Particules fines à la sortie du pot d'échappement",
+                "Ozone stratosphérique",
+                "Pluie acide déjà formée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "NOx, SO2, particules, CO… sont émis directement à la source."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "PM2.5 désigne :",
+              "options": [
+                "Particules fines < 2,5 µm",
+                "Gaz noble",
+                "Ozone stratosphérique",
+                "Pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pénètrent profond dans les poumons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Indice ATMO/IAQI informe sur :",
+              "options": ["Qualité de l'air", "Marées", "Sismes", "Salinité"],
+              "correctAnswers": [0],
+              "explanation": "Communication risque sanitaire air."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pic d'ozone estival en ville lié à :",
+              "options": [
+                "Ensoleillement + précurseurs",
+                "Froid extrême",
+                "Neige",
+                "Vent nul seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Photochimie estivale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "CO (monoxyde de carbone) :",
+              "options": [
+                "Toxique par liaison à l'hémoglobine",
+                "Bénéfique en inhalation",
+                "Gaz noble",
+                "Stratosphérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Empêche transport O2."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pluies acides associées à :",
+              "options": [
+                "SO2 et NOx → acides",
+                "O2 seul",
+                "Argon",
+                "Méthane seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "H2SO4/HNO3 en solution."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Filtre à particules diesel (FAP) vise :",
+              "options": [
+                "Réduire émissions solides",
+                "Augmenter NOx",
+                "Produire ozone",
+                "Éliminer CO2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Piège suies."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Seuil réglementaire européen concerne :",
+              "options": [
+                "Concentrations polluants",
+                "Couleur du ciel",
+                "Taille des nuages",
+                "Vent exact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normes qualité air ambiant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Inversion thermique piège :",
+              "options": [
+                "Polluants près du sol",
+                "Ozone stratosphérique",
+                "CO2 dans espace",
+                "Argon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Air froid sous air chaud limite dispersion."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mesure in situ de NO2 utilise souvent :",
+              "options": [
+                "Spectroscopie ou chimiluminescence",
+                "Sismographe",
+                "Thermomètre seul",
+                "GPS seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capteurs dédiés en station."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Atmosphère et biosphère",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels échanges lient atmosphère et biosphère ?",
+              "options": [
+                "Photosynthèse et respiration",
+                "Transpiration",
+                "Subduction lithosphère",
+                "Fusion noyau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "CO2/O2 et H2O circulent entre vivants et air."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Puits de carbone terrestre inclut :",
+              "options": [
+                "Forêts et sols",
+                "Espace interstellaire",
+                "Noyau externe",
+                "Magnétosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Biomasse et matière organique des sols."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Phytoplancton océanique :",
+              "options": [
+                "Absorbe CO2 par photosynthèse",
+                "Émet uniquement méthane",
+                "Ne touche pas l'air",
+                "Produit ozone stratosphérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puits biologique marine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Déforestation augmente :",
+              "options": [
+                "Émissions nettes de CO2",
+                "Puits de carbone",
+                "Ozone stratosphérique",
+                "Argon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stock carbone libéré et moins de fixation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Azote fixé biologiquement entre dans :",
+              "options": [
+                "Cycle global N",
+                "Cycle fer seul",
+                "Cycle uranium",
+                "Cycle lunaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bactéries et symbioses enrichissent sols."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pollinisation dépend aussi de :",
+              "options": [
+                "Conditions atmosphériques",
+                "Gravité lunaire seule",
+                "Magnétisme seul",
+                "Sismes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vent, température, pluie influencent pollinisateurs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Acidification des sols par pluies acides affecte :",
+              "options": [
+                "Écosystèmes forestiers",
+                "Ozone seul",
+                "Marées",
+                "Astéroïdes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lessivage et toxicité aluminium."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "CH4 émis par rizières provient de :",
+              "options": [
+                "Méthanogenèse anaérobie",
+                "Photosynthèse",
+                "Oxydation fer",
+                "UV seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sol inundé sans oxygène."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Services écosystémiques climatiques :",
+              "options": [
+                "Stockage carbone, refroidissement par évapotranspiration",
+                "Augmenter toujours CO2",
+                "Stopper vent",
+                "Créer ozone artificiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forêts modèrent microclimat et stockent C."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bioaérosols (spores, pollen) :",
+              "options": [
+                "Interagissent avec nuages et santé",
+                "Sont absents de l'air",
+                "Uniquement en stratosphère",
+                "Remplacent N2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Noyaux biologiques et allergènes aéroportés."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Le réchauffement climatique",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Énergie, forçage et bilan radiatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels facteurs perturbent le bilan radiatif terrestre aujourd'hui ?",
+              "options": [
+                "Augmentation des GES",
+                "Aérosols anthropiques",
+                "Gravité terrestre",
+                "Marées océaniques seules"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "GES retiennent l'IR ; aérosols modifient aussi le budget."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Forçage radiatif positif indique :",
+              "options": [
+                "Gain d'énergie net",
+                "Perte d'énergie net",
+                "Stabilité parfaite",
+                "Refroidissement global garanti"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tendance au réchauffement du système climatique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "CO2 anthropique provient surtout de :",
+              "options": [
+                "Combustion fossile et ciment",
+                "Respiration humaine seule",
+                "Argon",
+                "Ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Charbon, pétrole, gaz et procédés industriels."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sensibilité climatique équilibre (ECS) estime :",
+              "options": [
+                "Réchauffement pour doublement CO2",
+                "Vent moyen",
+                "Pluviométrie locale",
+                "Salinité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indicateur clé des modèles climatiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Aérosols sulfates refroidissent car :",
+              "options": [
+                "Réfléchissent le rayonnement solaire",
+                "Absorbent tout l'IR terrestre",
+                "Créent ozone",
+                "Éliminent vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forçage négatif partiel masquant une partie du GES."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Déséquilibre énergétique actuel ~0,7 W/m² signifie :",
+              "options": [
+                "La Terre stocke de la chaleur",
+                "Refroidissement rapide",
+                "Équilibre parfait",
+                "Fin du GES"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Océan absorbe la majorité de l'excédent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Rétroactions climatiques peuvent être :",
+              "options": [
+                "Positives ou négatives",
+                "Toujours nulles",
+                "Uniquement magnétiques",
+                "Hors atmosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. glace-albédo (positive), stabilisation nuages (incertaine)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Doublement CO2 sans rétroactions donnerait ~1 °C ; avec rétroactions nettes :",
+              "options": [
+                "Plus élevé (ECS > 1 °C)",
+                "0 °C",
+                "−10 °C",
+                "100 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rétroactions amplifient en moyenne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mesure du forçage utilise :",
+              "options": [
+                "Modèles radiatifs + observations",
+                "Thermomètre seul",
+                "Sismographe",
+                "pH eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Calculs couplés satellites/modèles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Période préindustrielle de référence GIEC :",
+              "options": [
+                "1850–1900 environ",
+                "2020–2025",
+                "1 million d'années",
+                "Hier seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Baseline pour anomalies de température."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Gaz à effet de serre anthropiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels gaz sont amplifiés par activités humaines depuis 1750 ?",
+              "options": [
+                "Dioxyde de carbone (CO2)",
+                "Méthane (CH4)",
+                "Azote (N2)",
+                "Oxygène (O2)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "CO2, CH4, N2O et gaz fluorés augmentent nettement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Potentiel de réchauffement global (PRG) compare :",
+              "options": [
+                "Impact relatif à CO2 sur 100 ans",
+                "Masse seule",
+                "Couleur",
+                "Vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intègre absorption IR et durée de vie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Méthane a un PRG100 environ :",
+              "options": [
+                "28–30 fois CO2",
+                "Identique à N2",
+                "Nul",
+                "Inférieur à 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fort absorbeur IR mais durée plus courte que CO2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sources majeures de CH4 :",
+              "options": [
+                "Élevage, rizières, fuites fossiles",
+                "Photosynthèse seule",
+                "Ozone",
+                "Argon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ruminants et systèmes fossiles mal scellés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "N2O provient surtout de :",
+              "options": [
+                "Agriculture et combustion",
+                "Océan sans activité",
+                "Espace",
+                "Vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Engrais et moteurs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "HFC remplacent CFC car :",
+              "options": [
+                "Ne détruisent pas l'ozone",
+                "Sont sans GES",
+                "Sont plus lourds que l'air seulement",
+                "Sont inertes climatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mais restent des GES puissants."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "SF6 est utilisé comme :",
+              "options": [
+                "Gaz isolant électrique",
+                "Engrais",
+                "Carburant avion",
+                "Antioxydant alimentaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PRG extrêmement élevé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Keeling curve montre :",
+              "options": [
+                "Augmentation continue CO2 à Mauna Loa",
+                "Baisse CO2",
+                "Stabilité",
+                "Ozone seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesures depuis 1958."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Isotopes carbone 13/12 dans CO2 fossile :",
+              "options": [
+                "Appauvrissent en 13C",
+                "Enrichissent en 13C",
+                "Sans effet",
+                "Mesurent vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signature prouvant origine fossile."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réduction méthane rapide :",
+              "options": [
+                "Peut ralentir réchauffement à court terme",
+                "Sans effet",
+                "Refroidit instantanément à −50 °C",
+                "Augmente ozone trou"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demi-vie courte vs CO2."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Cycle du carbone",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels réservoirs échangent du carbone avec l'atmosphère ?",
+              "options": [
+                "Océan",
+                "Biosphère",
+                "Manteau profond inerte",
+                "Magnétosphère"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Flux biologiques et physico-chimiques modulent le CO2 atmosphérique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combustion d'un hydrocarbure :",
+              "options": [
+                "Libère CO2 stocké millions d'années",
+                "Capture CO2",
+                "Crée azote pur",
+                "Forme ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Remet carbone fossile dans l'air."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pompe à carbone biologique marine :",
+              "options": [
+                "Exporte carbone vers profondeur",
+                "Évapore CO2",
+                "Stoppe photosynthèse",
+                "Crée méthane stratosphérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plancton et chute débris."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Acidification océanique due à :",
+              "options": [
+                "Absorption CO2 → acide carbonique",
+                "Méthane seul",
+                "Ozone",
+                "Argon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Baisse pH et carbonate disponible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ciment libère CO2 par :",
+              "options": [
+                "Décarbonatation du calcaire",
+                "Photosynthèse",
+                "Fixation biologique",
+                "Vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Procédé industriel Clinker."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Respiration des sols :",
+              "options": [
+                "Émet CO2",
+                "Absorbe uniquement O2 sans CO2",
+                "Produit fer",
+                "Gèle carbone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décomposition matière organique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Captage et stockage géologique (CCS) vise :",
+              "options": [
+                "Enfermer CO2 sous terre",
+                "Brûler plus de charbon sans limite",
+                "Émettre CH4",
+                "Vider océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stockage dans formations poreuses."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Déforestation transforme forêt en :",
+              "options": [
+                "Source nette de CO2",
+                "Puits permanent garanti",
+                "Gaz noble",
+                "Ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Perte de stock et émissions."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Carbone noir (suie) :",
+              "options": [
+                "Réchauffe en absorbant lumière",
+                "Refroidit toujours",
+                "Gaz noble",
+                "Stratosphérique ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aérosol sombre sur glace/neige."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Budget carbone global équilibre :",
+              "options": [
+                "Sources − puits = accumulation atmosphérique",
+                "Toujours nul",
+                "Sans mesure",
+                "Uniquement local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comptabilité des flux annuels."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Autres GES et agents actifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels agents influencent le climat au-delà du CO2 ?",
+              "options": [
+                "Méthane (CH4)",
+                "Protoxyde d'azote (N2O)",
+                "Azote (N2)",
+                "Oxygène (O2)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "CH4, N2O, CFC/HFC et aérosols comptent aussi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Protoxyde d'azote (N2O) a une durée de vie :",
+              "options": [
+                "Longue (~120 ans)",
+                "Quelques minutes",
+                "Nulle",
+                "1 jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "GES persistant d'origine agricole."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "CFC interdits car :",
+              "options": [
+                "Appauvrissent ozone et sont GES",
+                "Inertes",
+                "Refroidissent toujours",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double impact environnemental."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Black carbon sur glace :",
+              "options": [
+                "Accélère fonte",
+                "Augmente albédo",
+                "Stoppe fonte",
+                "Crée ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Absorption solaire accrue."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Contrails avions :",
+              "options": [
+                "Peuvent réchauffer via nuages artificiels",
+                "Refroidissent toujours",
+                "Sans effet",
+                "Détruisent ozone totalement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forçage net positif en moyenne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ozone troposphérique :",
+              "options": [
+                "GES et polluant",
+                "Identique couche protectrice",
+                "Sans absorption IR",
+                "Argon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double rôle selon altitude."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Halocarbures :",
+              "options": [
+                "Absorbent IR fortement",
+                "Transparent IR",
+                "Uniquement azote",
+                "Sans chimie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liaisons C-F/C-Cl actives."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Agriculture irriguée émet :",
+              "options": [
+                "CH4 des rizières",
+                "O2 pur",
+                "Argon",
+                "Ozone stratosphérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sol anaérobie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réduction N2O passe par :",
+              "options": [
+                "Gestion engrais et efficacité",
+                "Brûler forêts",
+                "Augmenter CFC",
+                "Vider océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratiques agronomiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Interactions GES-aérosols :",
+              "options": [
+                "Masquage partiel du réchauffement",
+                "Annulation totale observée",
+                "Sans lien",
+                "Refroidissement glacial instantané"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aérosols cachent une fraction du forcing CO2."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Preuves du réchauffement climatique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles observations confirment le réchauffement récent ?",
+              "options": [
+                "Températures globales en hausse",
+                "Fonte glaciaire et calottes",
+                "Stabilité parfaite depuis 1850",
+                "Absence de montée du niveau marin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Multiples indicateurs indépendants convergent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Décennie 2010–2020 comparée au XIXe siècle :",
+              "options": [
+                "Plus chaude",
+                "Plus froide",
+                "Identique",
+                "Sans mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anomalies positives nettes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calottes Groenland/Antarctique :",
+              "options": [
+                "Perdent masse de glace",
+                "Gagnent masse partout",
+                "Stables",
+                "Disparaissent en 1 an"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Balance masse négative en moyenne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Niveau marin monte car :",
+              "options": [
+                "Expansion thermique + fonte terrestre",
+                "Vent seul",
+                "Gravité lunaire",
+                "Ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux contributions majeures."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Arctique sea ice :",
+              "options": [
+                "Extension estivale en baisse",
+                "Augmente toujours",
+                "Sans lien température",
+                "Gel permanent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indicateur sensible."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Océan se réchauffe car :",
+              "options": [
+                "Absorbe >90 % excédent énergétique",
+                "Refroidit l'atmosphère",
+                "Sans chaleur",
+                "Isolant parfait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inertie thermique élevée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Paleoclimatologie montre :",
+              "options": [
+                "CO2 et température corrélés",
+                "Aucun lien",
+                "CO2 sans effet",
+                "Température fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Carottes glace et sédiments."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Stations au sol + satellites + océan :",
+              "options": [
+                "Triangulation robuste",
+                "Contradiction totale",
+                "Une seule mesure",
+                "Sans calibration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseaux multiples cohérents."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Zonation altitudinale montagne :",
+              "options": [
+                "Limite neige/glacier monte",
+                "Descend",
+                "Fixe",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse écologique au réchauffement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Attribution humaine repose sur :",
+              "options": [
+                "Modèles + signature GES",
+                "Opinion seule",
+                "Une journée chaude",
+                "Marées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impossible d'expliquer sans anthropique."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Océan, calottes et niveau marin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels impacts touchent l'hydrosphère cryosphère ?",
+              "options": [
+                "Montée eustatique",
+                "Acidification",
+                "Disparition marées",
+                "Arrêt rotation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mer monte et pH océan baisse avec CO2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Expansion thermique explique :",
+              "options": [
+                "Part de la montée du niveau marin",
+                "Baisse niveau",
+                "Gel océan total",
+                "Salinité nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau chaude occupe plus de volume."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Thermostérilisation profonde :",
+              "options": [
+                "Chaleur diffuse lentement vers le fond",
+                "Instantanée",
+                "Sans océan",
+                "Uniquement atmosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Engagement de réchauffement océanique long."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Glaciers de montagne :",
+              "options": [
+                "Reculent globalement",
+                "Avancent tous",
+                "Fixes",
+                "Sans eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Source eau douce pour millions de personnes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Antarctique ouest :",
+              "options": [
+                "Vulnérable fonte basale",
+                "Totalement stable garanti",
+                "Sans glace",
+                "Désert chaud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contact océan chaud sous plateformes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Permafrost dégel libère :",
+              "options": ["CO2 et CH4", "O2 pur", "Argon", "Ozone"],
+              "correctAnswers": [0],
+              "explanation": "Rétroaction carbone."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Cyclones tropicaux énergie :",
+              "options": [
+                "Liée chaleur océan surface",
+                "Vent seul",
+                "Ozone",
+                "Sismes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Potentiel cyclogénèse augmente avec SST."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Salinité change localement car :",
+              "options": [
+                "Evaporation/précipitations modifiées",
+                "Gravité lunaire",
+                "CO2 seul",
+                "Argon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Champ hydrologique intensifié."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Coraux souffrent de :",
+              "options": [
+                "Blanchiment + acidification",
+                "Ozone stratosphérique",
+                "Vent nul",
+                "Argon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stress thermique et chimique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Adaptation littorale inclut :",
+              "options": [
+                "Digues et retrait-aménagement",
+                "Ignorer montée eau",
+                "Stopper marées",
+                "Vider océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gestion risque submersion."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Extrêmes, impacts et vulnérabilité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels risques s'intensifient avec le changement climatique ?",
+              "options": [
+                "Canicules",
+                "Épisodes pluvieux intenses",
+                "Disparition de toute météo",
+                "Stabilité extrême partout"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Distribution événements se déplace vers plus chaud/humide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Canicule 2003 Europe a montré :",
+              "options": [
+                "Impacts sanitaires majeurs",
+                "Refroidissement",
+                "Sans mortalité",
+                "Ozone stratosphérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vulnérabilité populations."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sécheresse agricole liée à :",
+              "options": [
+                "Déficit précipitations + chaleur",
+                "Excès eau seul",
+                "Ozone",
+                "Marées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ETP accrue."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Feux de forêt favorisés par :",
+              "options": [
+                "Sécheresse et chaleur",
+                "Neige permanente",
+                "Humidité saturée",
+                "Vent nul seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combustible sec."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Inondations flash :",
+              "options": [
+                "Ruissellement rapide",
+                "Sans pluie",
+                "Ozone",
+                "Argon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intensité pluie accrue possible."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Vague de chaleur marine (MHW) :",
+              "options": [
+                "Réchauffe surface océan local",
+                "Gèle océan",
+                "Sans écosystème",
+                "Stratosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impact pêches et coraux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Îles basse altitude :",
+              "options": [
+                "Vulnérables submersion",
+                "Immunes",
+                "Sans population",
+                "Refroidies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Élévation niveau marin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Santé : changement climatique augmente :",
+              "options": [
+                "Risques chaleur et vecteurs maladie",
+                "Immunité universelle",
+                "Ozone seul",
+                "Argon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moustiques, stress thermique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Biodiversité montagne :",
+              "options": [
+                "Espèces migrent en altitude",
+                "Restent fixes",
+                "Disparaissent instantanément partout",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compression habitats."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Justice climatique concerne :",
+              "options": [
+                "Inégalités émissions/impacts",
+                "Couleur nuages",
+                "Vent seul",
+                "Ozone artificiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pays les moins émetteurs souvent plus exposés."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Scénarios, modèles et incertitudes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments structurent les scénarios du GIEC ?",
+              "options": [
+                "Trajectoires d'émissions (SSP)",
+                "Modèles climatiques couplés",
+                "Astrologie",
+                "Marées seules"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "SSP × forçages radiatifs → projections."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "RCP/SSP5-8.5 décrit :",
+              "options": [
+                "Forte émission sans mitigation",
+                "Décroissance nulle CO2",
+                "Refroidissement",
+                "Ozone seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scénario élevé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Incertitude sur nuages :",
+              "options": [
+                "Modère ECS",
+                "Résolue totalement",
+                "Sans effet",
+                "Nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Feedback le plus incertain."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ensemble multi-modèles CMIP :",
+              "options": [
+                "Compare divers centres",
+                "Un seul modèle",
+                "Sans données",
+                "Mesure vent local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spread = incertitude structurelle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Projection 2100 dépend surtout de :",
+              "options": [
+                "Émissions futures",
+                "Couleur ciel",
+                "Phase lune",
+                "Sismes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix sociétaux déterminants."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Commitment warming :",
+              "options": [
+                "Réchauffement inertiel déjà engagé",
+                "Refroidissement instantané",
+                "Sans CO2",
+                "Ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même en stop net émissions."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Paléo-climat teste modèles via :",
+              "options": [
+                "Périodes chaudes/froides passées",
+                "Opinions",
+                "Une journée",
+                "Vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Validation hors période instrumentale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Downscaling statistique sert à :",
+              "options": [
+                "Détail régional",
+                "Remplacer GIEC",
+                "Mesurer CO2 seul",
+                "Ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impacts locaux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Seuils ( tipping points ) :",
+              "options": [
+                "Changements abrupts possibles",
+                "Impossibles",
+                "Instantanés garantis demain",
+                "Sans science"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. calotte, courants."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Communication incertitude :",
+              "options": [
+                "Fourchettes probables",
+                "Certitude absolue",
+                "Sans chiffres",
+                "Rumeurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langage probabiliste."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Atténuation des émissions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles leviers réduisent les émissions de GES ?",
+              "options": [
+                "Efficacité énergétique",
+                "Décarbonation électricité",
+                "Augmenter charbon sans limite",
+                "Déforestation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sobriété, renouvelables, electrification."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Neutralité carbone signifie :",
+              "options": [
+                "Émissions nettes nulles",
+                "Zéro émission brute obligatoire",
+                "Plus de CO2 atmosphérique",
+                "Stop vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compensation résiduelle possible."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Transport : levier clé via :",
+              "options": [
+                "Véhicules électriques/mobilité active",
+                "Charbon liquéfié",
+                "CFC",
+                "Argon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Secteur émetteur majeur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Isolation bâtiments :",
+              "options": [
+                "Réduit besoins chauffage",
+                "Augmente toujours CO2",
+                "Sans effet",
+                "Ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gains rapides."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Hydrogène vert :",
+              "options": [
+                "Produit par électrolyse renouvelable",
+                "Toujours gris charbon",
+                "Gaz noble",
+                "Ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vector énergie décarbonée si bien sourcé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Taxe carbone vise :",
+              "options": [
+                "Internaliser coût climatique",
+                "Subventionner fossile",
+                "Augmenter méthane",
+                "Vider forêts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signal économique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Agroécologie peut :",
+              "options": [
+                "Séquestrer carbone sols",
+                "Émettre toujours plus N2O sans gestion",
+                "Sans effet",
+                "Créer ozone trou"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratiques conservant matière organique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Captage direct air (DAC) :",
+              "options": [
+                "Retire CO2 atmosphère",
+                "Émet CO2",
+                "Remplace photosynthèse totale",
+                "Ozone seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Technologie énergivore mais utile."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Methanation et biogaz :",
+              "options": [
+                "Recyclent carbone biogénique",
+                "Ajoutent carbone fossile",
+                "Sans GES",
+                "Argon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux circulaire si durable."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sobriété énergétique :",
+              "options": [
+                "Réduit demande finale",
+                "Augmente toujours consommation",
+                "Sans impact",
+                "Stop rotation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Premier levier avec efficacité."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Adaptation, accords et société",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels axes combinent réponse au changement climatique ?",
+              "options": [
+                "Atténuation",
+                "Adaptation",
+                "Nier observations",
+                "Augmenter émissions"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Réduire causes et gérer impacts inévitables."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Accord de Paris (2015) vise :",
+              "options": [
+                "Limiter réchauffement bien en dessous de 2 °C",
+                "Augmenter charbon",
+                "Ignorer adaptation",
+                "Stop ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif collectif NDc."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "NDC sont :",
+              "options": [
+                "Contributions déterminées nationales",
+                "Lois locales météo",
+                "Mesures vent",
+                "Ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Engagements renouvelés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Climat scepticisme scientifique crédible :",
+              "options": [
+                "Rejette consensus après relecture",
+                "Ignore données multiples",
+                "Base sur une anecdote",
+                "Nie physique GES"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode scientifique exige cohérence preuves."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Transition juste :",
+              "options": [
+                "Protège travailleurs/communautés",
+                "Ignore emploi",
+                "Ferme sans plan",
+                "Ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Equité sociale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Assurance catastrophe climatique :",
+              "options": [
+                "Outil adaptation financière",
+                "Sans lien",
+                "Augmente GES",
+                "Argon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gestion risque."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Education ES climat :",
+              "options": [
+                "Esprit critique et données",
+                "Opinion sans source",
+                "Rumeurs",
+                "Astrologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Citoyens informés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Geoengineering solaire :",
+              "options": [
+                "Débat éthique/ incertitudes",
+                "Sans risque",
+                "Remplace atténuation sûre",
+                "Résolu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dernier recours controversé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Co-bénéfices santé de la décarbonation :",
+              "options": [
+                "Air plus propre",
+                "Plus de suie",
+                "Ozone stratosphérique bas",
+                "Argon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduction particules/NOx."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Chaque individu peut contribuer par :",
+              "options": [
+                "Choix mobilité, alimentation, consommation",
+                "Brûler plastique",
+                "Gaspiller énergie",
+                "Ignorer faits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Actions cumulatives à l'échelle société."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

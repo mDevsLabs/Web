@@ -106,6 +106,9 @@ async function settleWeeklyTokens(
  * Réponse mAI à la commande /mai en commentaire: génération à partir du
  * contenu de la publication uniquement (sans historique de conversation),
  * modèle léger laguna, quota hebdomadaire débité de 250 tokens.
+ *
+ * Ce commentaire est public : il ne reçoit ni la mémoire du compte ni les
+ * instructions personnalisées, qui resteraient lisibles par les autres.
  */
 export async function generateMAICommentAnswer(
   sql: any,
@@ -199,6 +202,83 @@ export async function generateMAICommentAnswer(
   }
 }
 
+const PLAFOND_MEMOIRE = 6000;
+
+/**
+ * Personnalisation du compte mAI pour le chat privé.
+ *
+ * Vibe ne peut pas importer le builder Next : la lecture est du SQL sur les
+ * mêmes tables, et un échec (schéma absent, search_path) laisse le chat
+ * partir sans ce bloc plutôt que de refuser le message.
+ */
+async function blocPersonnalisationCompte(
+  sql: any,
+  userId: number,
+  username: string
+): Promise<string> {
+  try {
+    const identite =
+      await sql`SELECT email FROM users WHERE id = ${userId} LIMIT 1`.catch(
+        () => []
+      );
+    const email = String(identite[0]?.email || "")
+      .trim()
+      .toLowerCase();
+    const rows = await sql`
+      SELECT content FROM "UserMemory"
+      WHERE "isEnabled" = true
+        AND "agentId" IS NULL
+        AND "projectId" IS NULL
+        AND (
+          "userId" = ${String(userId)}
+          OR ("userId" = ${email} AND ${email} <> '')
+          OR ("userId" = ${username} AND ${username} <> '')
+        )
+      ORDER BY "isImportant" DESC, "createdAt" DESC
+      LIMIT 50
+    `;
+    const prefs = await sql`
+      SELECT "customInstructions" AS instructions,
+             "customInstructionsEnabled" AS enabled
+      FROM "user_preferences"
+      WHERE "userId" = ${String(userId)}
+         OR ("userId" = ${email} AND ${email} <> '')
+         OR ("userId" = ${username} AND ${username} <> '')
+      LIMIT 1
+    `;
+    const lignes: string[] = [];
+    let taille = 0;
+    for (const row of rows as any[]) {
+      const ligne = String(row?.content || "")
+        .replace(/\s+/g, " ")
+        .trim();
+      if (!ligne) continue;
+      const cout = (lignes.length > 0 ? 1 : 0) + ligne.length;
+      if (taille + cout > PLAFOND_MEMOIRE) break;
+      lignes.push(ligne);
+      taille += cout;
+    }
+    const blocs: string[] = [];
+    const instructions = String(prefs[0]?.instructions || "").trim();
+    if (prefs[0]?.enabled && instructions) {
+      blocs.push(`INSTRUCTIONS DE L'UTILISATEUR\n${instructions}`);
+    }
+    if (lignes.length > 0) {
+      const liste = lignes
+        .map((ligne, index) => `${index + 1}. ${ligne}`)
+        .join("\n");
+      blocs.push(
+        `MÉMOIRE — Informations retenues sur l'utilisateur :\n${liste}\nUtilise ces informations pour personnaliser tes réponses sans les répéter verbatim. Ce sont des faits privés : ne les recopie pas dans un contenu public.`
+      );
+    }
+    if (blocs.length === 0) return "";
+    return `\n\n${blocs.join("\n\n")}`;
+  } catch (err) {
+    console.warn("[vibe-mai] personnalisation compte indisponible:", err);
+    return "";
+  }
+}
+
 export function registerVibeMAIChatRoutes(
   app: Hono,
   registerMulti: RegisterMultiFn
@@ -243,7 +323,13 @@ export function registerVibeMAIChatRoutes(
       const sql = getDb();
       const userRows =
         await sql`SELECT username, tier FROM users WHERE id = ${userId} LIMIT 1`;
-      const username = userRows[0]?.username || "Ami";
+      const usernameBrut = String(userRows[0]?.username || "").trim();
+      const username = usernameBrut || "Ami";
+      const personnalisationPromise = blocPersonnalisationCompte(
+        sql,
+        userId,
+        usernameBrut
+      );
       // Le forfait de la BASE est l'autorité (pas le JWT, pas la présence
       // d'une clé OpenRouter côté plateforme).
       const tier = String(userRows[0]?.tier || "Free");
@@ -624,6 +710,7 @@ export function registerVibeMAIChatRoutes(
         }
         maiReservation.estimated = estimatedReservation;
 
+        const personnalisation = await personnalisationPromise;
         const userText = `${message.trim()}${postContextBlock}${personalContextBlock}`;
         const userContent: any = hasImages
           ? [{ text: userText, type: "text" }, ...postImageParts]
@@ -636,7 +723,8 @@ export function registerVibeMAIChatRoutes(
             : "") +
           (postContextBlock
             ? " Une publication Vibe est jointe à la fin du message: base ta réponse sur son contenu, ses statistiques et ses commentaires."
-            : "");
+            : "") +
+          personnalisation;
 
         let capturedUsage: any = null;
         let capturedReasoning = "";

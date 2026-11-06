@@ -1,28 +1,28 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Separator as SeparatorPrimitive } from "radix-ui"
-
-import { cn } from "@/lib/utils"
+import { Separator as MdevsSeparator } from "@mdevs/ui/primitives/separator";
+import { MdevsIsland } from "@/components/ui/mdevs-island";
 
 function Separator({
   className,
-  orientation = "horizontal",
   decorative = true,
+  orientation = "horizontal",
   ...props
-}: React.ComponentProps<typeof SeparatorPrimitive.Root>) {
+}: React.ComponentProps<"div"> & {
+  decorative?: boolean;
+  orientation?: "horizontal" | "vertical";
+}) {
   return (
-    <SeparatorPrimitive.Root
-      data-slot="separator"
-      decorative={decorative}
-      orientation={orientation}
-      className={cn(
-        "shrink-0 bg-border data-horizontal:h-px data-horizontal:w-full data-vertical:w-px data-vertical:self-stretch",
-        className
-      )}
-      {...props}
-    />
-  )
+    <MdevsIsland>
+      <MdevsSeparator
+        className={className}
+        data-slot="separator"
+        decorative={decorative}
+        orientation={orientation}
+        {...props}
+      />
+    </MdevsIsland>
+  );
 }
 
-export { Separator }
+export { Separator };

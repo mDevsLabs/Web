@@ -1,0 +1,2303 @@
+{
+  "id": "terminale-anglais-05",
+  "year": "terminale",
+  "subject": "anglais",
+  "title": "Le passé en anglais",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Prétérit simple vs Prétérit en BE + -ING",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "While she ... for her university exams, the electricity suddenly failed.",
+              "options": [
+                "studied",
+                "was studying",
+                "had studied",
+                "has been studying"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On emploie le prétérit en BE + -ING (past continuous) pour décrire une action en cours d'accomplissement dans le passé lorsqu'un événement ponctuel au prétérit simple survient."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "The detective unlocked the door, walked inside, and ... the light switch.",
+              "options": [
+                "pressed",
+                "was pressing",
+                "has pressed",
+                "had been pressing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une succession d'actions courtes et consécutives dans un récit au passé s'exprime systématiquement au prétérit simple."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "While the professor was lecturing on quantum mechanics, several students ... detailed notes.",
+              "options": ["take", "are taking", "were taking", "have taken"],
+              "correctAnswers": [2],
+              "explanation": "Deux actions simultanées et continues dans le passé peuvent toutes les deux être conjuguées au prétérit en BE + -ING."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "When I first met him in 2018, he ... three foreign languages fluently.",
+              "options": [
+                "was knowing",
+                "knew",
+                "has known",
+                "had been knowing"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les verbes d'état ou de perception intellectuelle comme 'know' ne s'emploient généralement pas à la forme progressive (aspect BE + -ING)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "William Shakespeare ... 'Hamlet' around the year 1600.",
+              "options": [
+                "wrote",
+                "was writing",
+                "has written",
+                "had been writing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une date ou un repère temporel passé précis et révolu ('around the year 1600') impose le prétérit simple."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "My former flatmate was always ... my clothes without asking for permission!",
+              "options": ["borrow", "borrowed", "borrows", "borrowing"],
+              "correctAnswers": [3],
+              "explanation": "L'association 'was/were always + V-ing' permet d'exprimer un agacement ou un reproche récurrent à propos d'une habitude passée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Outside, heavy rain was falling and an icy wind ... through the alleyways.",
+              "options": ["blew", "was blowing", "had blown", "has blown"],
+              "correctAnswers": [1],
+              "explanation": "Pour poser le décor ou planter l'arrière-plan narratif d'une scène, le prétérit continu est privilégié."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "As soon as she heard the fire alarm, the security guard ... out of her chair.",
+              "options": [
+                "was jumping",
+                "has jumped",
+                "jumped",
+                "had been jumping"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Après 'as soon as', une réaction immédiate et ponctuelle est rendue par le prétérit simple."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Suddenly, the night watchman ... footsteps echoing in the empty corridor.",
+              "options": [
+                "heard",
+                "was hearing",
+                "has heard",
+                "had been hearing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les verbes de perception involontaire ('hear', 'see') refusent généralement la forme en -ING dans ce contexte ponctuel."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences correctly combine the past simple and past continuous?",
+              "options": [
+                "While we were driving through Scotland, our engine broke down.",
+                "The athlete slipped on the wet grass while she was sprinting to the finish line.",
+                "She was knowing the correct answer when the teacher asked her.",
+                "They were arriving at the airport yesterday at exactly six in the morning."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 1 et 2 articulent parfaitement une action d'arrière-plan en cours (past continuous) et un événement soudain interruptif (past simple). Le verbe 'know' ne s'emploie pas à l'aspect progressif."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Past Perfect simple et Past Perfect continu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "By the time the rescue helicopter landed, the hikers ... in the freezing snow for six hours.",
+              "options": [
+                "waited",
+                "were waiting",
+                "had been waiting",
+                "have waited"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le Past Perfect continu (had been + V-ing) insiste sur la durée d'une activité ininterrompue qui s'étendait jusqu'à un repère précis du passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "The engineer felt completely exhausted because he ... non-stop since dawn.",
+              "options": ["worked", "had been working", "has worked", "works"],
+              "correctAnswers": [1],
+              "explanation": "On utilise le Past Perfect continu pour expliquer la cause passée d'un état physique ou mental constaté à ce même moment du passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "David couldn't board the flight because he ... his passport at home.",
+              "options": [
+                "had left",
+                "has left",
+                "was leaving",
+                "had been leaving"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Past Perfect simple (had + participe passé) marque l'antériorité ponctuelle d'une action achevée par rapport à un autre événement passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "In 2020, my grandparents ... married for fifty years.",
+              "options": ["were", "have been", "are", "had been"],
+              "correctAnswers": [3],
+              "explanation": "Pour dresser un bilan de durée révolu à une date passée ('In 2020'), le Past Perfect s'impose."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "The business partners ... each other for twenty years before founding their startup.",
+              "options": [
+                "had been knowing",
+                "had known",
+                "were knowing",
+                "knew"
+              ],
+              "correctAnswers": [1],
+              "explanation": "'Know' est un verbe d'état : on emploie le Past Perfect simple et non la forme continue pour marquer la durée antérieure."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sarah's overalls were covered in dust because she ... the old attic all afternoon.",
+              "options": [
+                "cleaned",
+                "was cleaned",
+                "had been cleaning",
+                "cleans"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les traces visibles dans le passé (la poussière sur les vêtements) sont le résultat d'une activité continue exprimée au Past Perfect continu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "By five o'clock yesterday, the novelist ... three full chapters of her autobiography.",
+              "options": [
+                "had written",
+                "had been writing",
+                "wrote",
+                "was writing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand on quantifie un résultat ou un nombre d'occurrences achevées ('three full chapters'), on emploie la forme simple et non progressive."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "The express train had already departed when the passengers ... onto the platform.",
+              "options": [
+                "have rushed",
+                "had rushed",
+                "were rushing",
+                "rushed"
+              ],
+              "correctAnswers": [3],
+              "explanation": "L'événement antérieur est au Past Perfect ('had departed'), tandis que l'événement ultérieur s'exprime au prétérit simple ('rushed')."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "It was the first time the young astronaut ... a spacecraft outside Earth's orbit.",
+              "options": [
+                "piloted",
+                "had piloted",
+                "has piloted",
+                "was piloting"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La structure 'It was the first/second time...' transposée dans le passé est obligatoirement suivie du Past Perfect."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences correctly illustrate the use of the Past Perfect (simple or continuous)?",
+              "options": [
+                "They had never travelled outside their home country before that European tour.",
+                "His eyes were strained because he had been staring at computer screens for hours.",
+                "By the year 2010, the company had been owning three major factories.",
+                "I had finished my essay yesterday at three o'clock precisely."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les propositions 1 et 2 sont parfaites (expérience antérieure et activité continue expliquant un état passé). Le verbe 'own' est statif (refuse -ING) et une heure ponctuelle simple comme 'yesterday at three' appelle le prétérit."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Prétérit vs Present Perfect",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "The aerospace company ... its first commercial satellite in 1997.",
+              "options": [
+                "launched",
+                "has launched",
+                "was launched",
+                "had been launching"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'année 1997 est une date passée totalement révolue et sans lien direct avec le présent : le prétérit simple est requis."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Look at the mess! Someone ... the laboratory glassware, and shards are everywhere.",
+              "options": ["broke", "has broken", "was breaking", "had broken"],
+              "correctAnswers": [1],
+              "explanation": "Le Present Perfect s'emploie quand une action passée a une conséquence directe et visible dans la situation présente ('Look!')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Over the course of her career, Dr Edwards ... numerous Nobel laureates.",
+              "options": [
+                "interviewed",
+                "has interviewed",
+                "interviews",
+                "was interviewing"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pour évoquer l'expérience d'une personne vivante au cours d'une période non clôturée, on utilise le Present Perfect."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Albert Einstein ... his theory of general relativity in 1915.",
+              "options": [
+                "has published",
+                "publishes",
+                "was publishing",
+                "published"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Pour une personnalité historique décédée et un événement daté, le prétérit simple est obligatoire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "I ... three emails this morning. (Note: it is currently 10:30 AM, still morning).",
+              "options": ["have sent", "sent", "had sent", "was sending"],
+              "correctAnswers": [0],
+              "explanation": "Si la période de temps ('this morning') n'est pas encore terminée au moment où l'on parle, on emploie le Present Perfect."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "I ... three emails this morning. (Note: it is currently 4:00 PM, now afternoon).",
+              "options": ["have sent", "sent", "had sent", "have been sending"],
+              "correctAnswers": [1],
+              "explanation": "Si la matinée est achevée au moment où l'on s'exprime ('it is 4 PM'), la période est close : le prétérit simple est requis."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "How long ... in Edinburgh before you decided to relocate to Bristol?",
+              "options": [
+                "have you lived",
+                "have you been living",
+                "did you live",
+                "do you live"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le séjour à Édimbourg étant entièrement révolu avant le déménagement, on utilise 'did you live' (prétérit)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "How long ... in Edinburgh? — Since 2019, and I still thoroughly enjoy living here.",
+              "options": [
+                "have you lived",
+                "did you live",
+                "were you living",
+                "had you lived"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action ayant commencé dans le passé et se poursuivant dans le présent ('I still enjoy living here'), le Present Perfect est incontournable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Did you watch the documentary about climate change last night? — Yes, I ... it with my family.",
+              "options": [
+                "have watched",
+                "was watching",
+                "had watched",
+                "watched"
+              ],
+              "correctAnswers": [3],
+              "explanation": "La question porte sur un moment précis et révolu ('last night'), la réponse reste donc au prétérit simple."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences correctly use the Present Perfect to indicate relevance to the present moment?",
+              "options": [
+                "Astronomers have identified an exoplanet that could potentially harbour liquid water.",
+                "I have misplaced my laboratory pass, so I cannot enter the research wing right now.",
+                "The delegates have signed the international treaty three years ago.",
+                "She has won the gold medal during the 2012 London Olympic Games."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 1 et 2 créent un pont direct avec l'actualité présente. Les options 3 et 4 comportent des repères temporels révolus ('three years ago', 'during the 2012 Games') incompatibles avec le Present Perfect."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Habitudes et états passés : Used to et Would",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "My grandfather ... a vintage motorcycle dealership in the late 1980s.",
+              "options": [
+                "would own",
+                "used to own",
+                "was owning",
+                "is used to owning"
+              ],
+              "correctAnswers": [1],
+              "explanation": "'Used to' peut s'appliquer à des états passés permanents (verbes statifs comme 'own', 'be', 'have'), alors que 'would' ne s'applique qu'à des actions répétées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "During the holidays, my grandmother ... bake fresh apple tarts every Sunday morning.",
+              "options": ["would", "was used to", "got used to", "is used to"],
+              "correctAnswers": [0],
+              "explanation": "'Would' sert à décrire une action ou un rituel récurrent dans le passé, souvent teinté d'une nuance nostalgique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "She ... appreciate modern poetry, but now she reads it enthusiastically.",
+              "options": [
+                "didn't use",
+                "was not used",
+                "didn't use to",
+                "wouldn't to"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La forme négative standard d'une habitude passée est 'didn't use to + base verbale'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Where ... spend your summer vacations when you were a teenager?",
+              "options": [
+                "did you used to",
+                "did you use to",
+                "would you to",
+                "used you to"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À la forme interrogative avec l'auxiliaire 'did', on écrit 'use to' avec la base verbale 'use' sans 'd'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Our former maths teacher ... live right next to the school campus.",
+              "options": ["would", "is used to", "was using to", "used to"],
+              "correctAnswers": [3],
+              "explanation": "Le verbe 'live' exprime un état et non une action ponctuelle répétée : on doit employer 'used to' et non 'would'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Moving to London was bewildering at first, but she is gradually getting used to ... on the left.",
+              "options": ["driving", "drive", "drove", "be driven"],
+              "correctAnswers": [0],
+              "explanation": "La structure 'get used to' signifie 's'habituer à' et est obligatoirement suivie d'un groupe nominal ou d'un verbe en -ING."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "He used to smoke twenty cigarettes a day, but he ... two years ago.",
+              "options": ["used to quit", "would quit", "quit", "was quitting"],
+              "correctAnswers": [2],
+              "explanation": "Une rupture définitive et ponctuelle avec une habitude passée s'exprime au prétérit simple ('quit')."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Whenever we encountered a setback, our mentor ... encourage us with quiet optimism.",
+              "options": ["used", "would", "will", "was used to"],
+              "correctAnswers": [1],
+              "explanation": "'Would' s'emploie couramment après une proposition subordonnée temporelle en 'whenever' pour exprimer une réaction coutumière passée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Why is the sentence 'He would be a teacher for ten years' incorrect?",
+              "options": [
+                "'Would' cannot express a state or a duration of state in the past.",
+                "'Would' can only be used with third-person singular pronouns.",
+                "'Would' requires the passive voice when describing professions.",
+                "'Would' cannot be followed by the base verb 'be'."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Would' exprime des actions dynamiques répétées, jamais un état prolongé ou statif comme une profession occupée pendant dix ans."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences correctly express past habits or former states?",
+              "options": [
+                "We used to wander through the ancient woods for hours every autumn.",
+                "In the evenings, my father would sit by the fireplace and read historical novels.",
+                "She would have long curly hair when she was attending primary school.",
+                "Did you used to play chess with your grandfather at weekends?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 1 et 2 sont parfaitement régulières. L'option 3 utilise à tort 'would' avec un verbe d'état ('have long hair'), et l'option 4 commet la faute 'did you used to' au lieu de 'did you use to'."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Modaux de déduction au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "The cobblestones are soaking wet this morning; it ... heavily during the night.",
+              "options": [
+                "must have rained",
+                "should have rained",
+                "can have rained",
+                "ought have rained"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Must have + participe passé' traduit une quasi-certitude logique ou une déduction quasi certaine sur un fait passé ('il a sûrement plu')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "The suspect ... the burglary in London because airport logs prove he was in Tokyo that night.",
+              "options": [
+                "mustn't have committed",
+                "can't have committed",
+                "shouldn't have committed",
+                "won't have committed"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'impossibilité logique ou la certitude négative au passé s'exprime par 'can't have + participe passé' (et non 'mustn't have')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Where is Arthur? — I am not entirely certain; he ... the wrong connecting train.",
+              "options": [
+                "must have caught",
+                "can have caught",
+                "might have caught",
+                "should have caught"
+              ],
+              "correctAnswers": [2],
+              "explanation": "'Might have' ou 'may have' expriment une éventualité ou une supposition non vérifiée sur un événement passé ('il se peut qu'il ait pris')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Her briefcase and coat are still on the armchair, so she ... the building yet.",
+              "options": [
+                "must have left",
+                "can leave",
+                "might leave",
+                "can't have left"
+              ],
+              "correctAnswers": [3],
+              "explanation": "La présence du manteau et de la sacoche constitue la preuve matérielle qu'elle ne peut pas être partie ('can't have left')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "You drove far too fast around that icy bend! You ... serious injuries to pedestrians.",
+              "options": [
+                "must cause",
+                "could have caused",
+                "would cause",
+                "had caused"
+              ],
+              "correctAnswers": [1],
+              "explanation": "'Could have + participe passé' sert à exprimer une possibilité théorique passée qui ne s'est heureusement pas réalisée ('tu aurais pu causer')."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Julian ... about the appointment; he had highlighted it in his daily planner.",
+              "options": [
+                "couldn't have forgotten",
+                "must have forgotten",
+                "may have forgotten",
+                "should have forgotten"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Couldn't have' exprime une certitude d'impossibilité : l'agenda surligné prouve qu'il ne peut pas avoir oublié."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Archaeologists hypothesise that the ancient settlement ... abandoned due to catastrophic drought.",
+              "options": [
+                "should have been",
+                "can have been",
+                "may have been",
+                "must to be"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Pour une hypothèse scientifique prudente sur le passé, 'may have been' ('il se peut qu'elle ait été...') est particulièrement adapté."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "The encrypted folder ... accidentally deleted during the routine server migration.",
+              "options": [
+                "must have",
+                "must have been",
+                "must be",
+                "must being"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À la voix passive, le modal de déduction passé s'associe à 'been' : 'must have been deleted'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Because her vehicle broke down on the motorway, she ... hail a taxi.",
+              "options": ["must have", "might have", "could have", "had to"],
+              "correctAnswers": [3],
+              "explanation": "Il s'agit ici d'une obligation concrète passée (et non d'une déduction) : on emploie 'had to' comme prétérit de l'obligation."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences express a logical deduction or conjecture regarding a past event?",
+              "options": [
+                "The scientific team must have worked relentlessly to achieve such a breakthrough.",
+                "The eyewitness might have mistaken the vehicle model in the darkness.",
+                "Candidates had to submit their dissertations before midnight yesterday.",
+                "She must present her identification documents at the security desk right now."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 1 et 2 contiennent des modaux de déduction/conjecture rétrospective ('must have', 'might have'). L'option 3 exprime une obligation passée et l'option 4 une obligation présente."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Regrets, reproches et modaux au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "You ... me that the meeting was postponed! I waited outside the boardroom for an hour.",
+              "options": [
+                "should have told",
+                "must have told",
+                "would tell",
+                "could tell"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Should have + participe passé' exprime un reproche ou un devoir passé non accompli ('tu aurais dû me prévenir')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "You ... all those groceries; the refrigerator was already completely stocked!",
+              "options": [
+                "didn't need buy",
+                "mustn't have bought",
+                "needn't have bought",
+                "couldn't buy"
+              ],
+              "correctAnswers": [2],
+              "explanation": "'Needn't have + participe passé' indique qu'une action a été effectuée dans le passé alors qu'elle s'est avérée inutile après coup."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Because the conference was cancelled well in advance, we ... early to catch the train.",
+              "options": [
+                "needn't have woken up",
+                "didn't need to wake up",
+                "mustn't wake up",
+                "shouldn't have woken up"
+              ],
+              "correctAnswers": [1],
+              "explanation": "'Didn't need to + base verbale' indique que l'action n'était pas nécessaire et n'a par conséquent pas été accomplie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "He was gifted in mathematics; he ... a financial analyst, but he chose theatre instead.",
+              "options": [
+                "should become",
+                "must have become",
+                "could become",
+                "could have become"
+              ],
+              "correctAnswers": [3],
+              "explanation": "'Could have become' exprime une opportunité ou un potentiel passé qui n'a pas été concrétisé ('il aurait pu devenir')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "I have an awful stomach ache now; I ... that entire box of chocolates.",
+              "options": [
+                "shouldn't have eaten",
+                "mustn't have eaten",
+                "couldn't eat",
+                "needn't to eat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Shouldn't have + participe passé' traduit un regret personnel direct sur un comportement passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "You ... the front gate unlocked all weekend! An intruder could have slipped in.",
+              "options": [
+                "can't have left",
+                "ought not to have left",
+                "mustn't have left",
+                "might not have left"
+              ],
+              "correctAnswers": [1],
+              "explanation": "'Ought not to have + participe passé' est l'équivalent soutenu de 'shouldn't have' pour exprimer un reproche formel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "If our team had possessed the necessary funds, we ... the project without delay.",
+              "options": [
+                "would complete",
+                "had completed",
+                "would have completed",
+                "will have completed"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Dans la proposition principale du 3e conditionnel (irréel du passé), la structure est 'would have + participe passé'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "What does 'She needn't have brought an umbrella' strictly imply?",
+              "options": [
+                "She didn't bring an umbrella because it was sunny.",
+                "She brought an umbrella, but it did not rain.",
+                "She forgot her umbrella at home.",
+                "She was forbidden from carrying an umbrella."
+              ],
+              "correctAnswers": [1],
+              "explanation": "'Needn't have brought' prouve qu'elle a effectivement emporté un parapluie, geste qui s'est avéré inutile car la pluie n'est pas tombée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "The engine had flooded with fuel, and the boat ... start despite our best efforts.",
+              "options": ["wouldn't", "shouldn't", "mustn't", "oughtn't"],
+              "correctAnswers": [0],
+              "explanation": "'Wouldn't' au passé traduit un refus obstiné d'un être animé ou un dysfonctionnement répété d'un mécanisme ('le moteur refusait de démarrer')."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences express a past regret, criticism, or unfulfilled opportunity?",
+              "options": [
+                "You ought to have alerted the laboratory supervisor as soon as the spill occurred.",
+                "I could have accepted the overseas scholarship, but family obligations kept me home.",
+                "They must have misplaced the cryptographic key during the relocation.",
+                "The visitors had to vacate the gallery precisely when closing time was announced."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La phrase 1 formule un reproche ('ought to have alerted') et la phrase 2 une opportunité manquée ('could have accepted'). L'option 3 est une déduction et l'option 4 une obligation institutionnelle passée."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Le discours indirect et la concordance des temps",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "\"I live in central Belfast,\" she stated. -> She stated that she ... in central Belfast.",
+              "options": ["lived", "has lived", "is living", "was lived"],
+              "correctAnswers": [0],
+              "explanation": "Au discours indirect introduit par un verbe au prétérit ('stated'), le présent simple subit un recul temporel (backshift) vers le prétérit simple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "\"We are testing a new prototype,\" the engineers declared. -> They declared that they ... a new prototype.",
+              "options": [
+                "are testing",
+                "were testing",
+                "have been testing",
+                "tested"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le présent continu ('are testing') devient un prétérit continu ('were testing') après un verbe introducteur au passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "\"I visited the Roman ruins yesterday,\" Mark said. -> Mark said that he ... the Roman ruins the previous day.",
+              "options": [
+                "visited",
+                "would visit",
+                "had visited",
+                "has visited"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le prétérit simple au discours direct ('visited') recule au Past Perfect ('had visited') au discours indirect."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "\"I will deliver the lecture tomorrow,\" Professor Thorne announced. -> He announced that he ... deliver the lecture the following day.",
+              "options": ["will", "can", "would", "shall"],
+              "correctAnswers": [2],
+              "explanation": "Le modal 'will' du futur bascule au conditionnel 'would' en concordance avec le verbe introducteur au passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "\"I can decipher this ancient script,\" the linguist remarked. -> The linguist remarked that she ... decipher the script.",
+              "options": ["could", "can", "may", "might"],
+              "correctAnswers": [0],
+              "explanation": "Le modal de capacité 'can' recule à 'could' au discours indirect au passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "\"You must wear protective headgear,\" the foreman told us. -> The foreman told us that we ... wear protective headgear.",
+              "options": ["must to", "had to", "would must", "should to"],
+              "correctAnswers": [1],
+              "explanation": "Le modal d'obligation 'must' devient généralement 'had to' au discours indirect lorsqu'il s'agit d'un ordre passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "\"Water boils at 100 degrees Celsius,\" the physics tutor explained. -> The tutor explained that water ... at 100 degrees Celsius.",
+              "options": ["had boiled", "was boiling", "boils", "boiled"],
+              "correctAnswers": [2],
+              "explanation": "Lorsqu'une déclaration exprime une vérité scientifique immuable ou une loi de la nature, le présent de vérité générale ('boils') est conservé sans recul temporel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "In reported speech, the time indicator 'yesterday' is regularly converted into:",
+              "options": ["the day before", "tomorrow", "the next day", "now"],
+              "correctAnswers": [0],
+              "explanation": "'Yesterday' se transforme en 'the day before' ou 'the previous day' pour respecter la déictique du discours indirect."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "\"Where did you hide the manuscripts?\" he asked me. -> He asked me where I ... the manuscripts.",
+              "options": [
+                "had hidden",
+                "did hide",
+                "have hidden",
+                "was hiding"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une interrogation indirecte, l'ordre des mots redevient sujet + verbe (pas d'inversion auxiliaire) et le prétérit simple recule au Past Perfect ('had hidden')."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences demonstrate correct tense backshift in reported speech?",
+              "options": [
+                "The ambassador reported that the peace summit had collapsed the previous evening.",
+                "The spokesperson confirmed that bilateral trade talks would resume the following month.",
+                "She asked the clerk where did he store the confidential files.",
+                "The meteorologist stated that it will snow yesterday afternoon."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 1 et 2 appliquent scrupuleusement la concordance des temps et les marqueurs adaptés. L'option 3 conserve à tort l'inversion de question directe ('where did he store'), et l'option 4 associe absurdement 'will' et 'yesterday'."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "La voix passive aux temps du passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "The iconic suspension bridge ... in 1937 after four years of intensive construction.",
+              "options": [
+                "built",
+                "was built",
+                "was building",
+                "has been built"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La voix passive au prétérit simple se forme avec l'auxiliaire 'was/were' suivi du participe passé : 'was built'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "When we stepped into the auditorium, the lighting rig ... by the stage crew.",
+              "options": [
+                "was assembled",
+                "had assembled",
+                "was being assembled",
+                "has been assembled"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le passif au prétérit continu s'écrit 'was/were being + participe passé' pour souligner une action passive en cours d'exécution."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "All the emergency protocols ... before the simulation officially began.",
+              "options": [
+                "had been reviewed",
+                "were reviewing",
+                "have been reviewed",
+                "had reviewed"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passif au Past Perfect ('had been + participe passé') marque l'antériorité de l'action passive par rapport au début de la simulation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "The classified blueprints ... in a fireproof vault, but they were left on a desk.",
+              "options": [
+                "should have locked",
+                "must lock",
+                "ought to lock",
+                "should have been locked"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Un reproche passif au passé se construit avec 'should have been + participe passé'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Several ancient gold coins ... during the dredging of the river bed.",
+              "options": [
+                "was discovered",
+                "were discovered",
+                "have discovered",
+                "had discovered"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le sujet 'Several ancient gold coins' est au pluriel, l'auxiliaire s'accorde donc : 'were discovered'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "When ... the Magna Carta signed by King John at Runnymede?",
+              "options": ["was", "were", "did", "had"],
+              "correctAnswers": [0],
+              "explanation": "À la forme interrogative passive au prétérit, l'auxiliaire 'was' précède le sujet singulier 'the Magna Carta'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "In the nineteenth century, it ... that microscopic germs caused epidemics.",
+              "options": [
+                "did believe",
+                "had believing",
+                "was believed",
+                "was believing"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La tournure passive impersonnelle au passé 'It was believed that...' permet d'exprimer une opinion collective d'époque."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "After the hurricane ripped our roof shingles, we had the roof ... by local roofers.",
+              "options": ["repair", "repaired", "repairing", "to repair"],
+              "correctAnswers": [1],
+              "explanation": "La structure causative 'have something done' au passé demande un participe passé : 'we had the roof repaired'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "The hostages ... in an underground bunker when tactical units breached the perimeter.",
+              "options": [
+                "were held",
+                "were holding",
+                "held",
+                "were being held"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Pour insister sur la détention passive en cours au moment précis de l'assaut, le passif progressif ('were being held') est parfait."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences correctly feature a past passive construction?",
+              "options": [
+                "The medieval cathedral was meticulously restored after the fire of 1994.",
+                "The research archives had been catalogued prior to the university's centenary.",
+                "The suspect was being interrogate by three senior detectives all night.",
+                "All the tickets were sold out before the concert has begun."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les options 1 et 2 sont d'authentiques passifs passés bien construits ('was restored', 'had been catalogued'). L'option 3 oublie le participe passé ('interrogated'), et l'option 4 mélange un passé révolu avec un 'has begun' inapproprié."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Inversions stylistiques et narration soutenue",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Hardly ... the laboratory when the emergency alarms began ringing loudly.",
+              "options": [
+                "had the scientist entered",
+                "the scientist had entered",
+                "did the scientist enter",
+                "was the scientist entering"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après un adverbe négatif ou restrictif comme 'Hardly', on opère une inversion sujet-auxiliaire au Past Perfect : 'Hardly had the scientist entered... when'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "No sooner had the prime minister concluded his address ... the journalists raised their hands.",
+              "options": ["when", "that", "than", "then"],
+              "correctAnswers": [2],
+              "explanation": "La corrélation comparative de 'No sooner had...' s'associe obligatoirement avec 'than' (et non 'when')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Scarcely had the explorers established camp ... a ferocious blizzard engulfed the plateau.",
+              "options": ["than", "when", "after", "so"],
+              "correctAnswers": [1],
+              "explanation": "'Scarcely had...' s'associe classiquement avec la conjonction 'when' pour marquer l'immédiateté de la seconde action."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Little ... that their scientific discovery would trigger a worldwide industrial revolution.",
+              "options": [
+                "they suspected",
+                "they had suspected",
+                "were they suspecting",
+                "did they suspect"
+              ],
+              "correctAnswers": [3],
+              "explanation": "'Little did + sujet + base verbale' est la structure d'inversion consacrée pour signifier 'ils étaient bien loin de se douter que'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Seldom ... such extraordinary resilience displayed by an entire civilian population.",
+              "options": [
+                "had the world witnessed",
+                "the world had witnessed",
+                "did the world witness",
+                "the world witnessed"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Placé en tête de phrase pour un effet stylistique emphatique, 'Seldom' déclenche l'inversion auxiliaire-sujet : 'had the world witnessed'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Not until dawn broke ... the catastrophic extent of the flood damage.",
+              "options": [
+                "the villagers realised",
+                "did the villagers realise",
+                "had the villagers realised",
+                "were the villagers realising"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Avec 'Not until...', l'inversion sujet-auxiliaire porte sur la proposition principale : 'did the villagers realise'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Only after examining the encrypted ledger ... the detective fathom the financial conspiracy.",
+              "options": ["could", "she could", "did", "had"],
+              "correctAnswers": [2],
+              "explanation": "'Only after + V-ing' entraîne l'inversion dans la proposition principale avec l'auxiliaire 'did' : 'did the detective fathom'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Under no circumstances ... permitted to leave the examination hall unchaperoned.",
+              "options": [
+                "the candidates were",
+                "were the candidates",
+                "the candidates had been",
+                "did the candidates"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'expression restrictive 'Under no circumstances' placée en tête impose l'inversion de l'auxiliaire passif : 'were the candidates permitted'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Through the heavy morning fog ... a mysterious carriage drawn by black stallions.",
+              "options": [
+                "emerged",
+                "did emerge",
+                "was emerging",
+                "had emerged"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un style narratif littéraire, après un complément circonstanciel de lieu en tête de phrase, le verbe complet précède directement le sujet ('emerged a mysterious carriage')."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences correctly feature literary negative inversion in a past narrative?",
+              "options": [
+                "No sooner had the curtain fallen than the packed auditorium erupted into cheers.",
+                "Rarely had the kingdom experienced such a prolonged period of political harmony.",
+                "Hardly the train had pulled out when the emergency brakes slammed on.",
+                "Scarcely had she finished speaking than everyone started shouting at once."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 1 et 2 sont irréprochables ('No sooner had... than', 'Rarely had...'). L'option 3 omet l'inversion ('Hardly the train had...'), et l'option 4 associe à tort 'Scarcely' avec 'than' au lieu de 'when'."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan narratif : Maîtriser le récit au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "She turned the key in the ignition, stepped on the accelerator, and ... down the deserted road.",
+              "options": [
+                "was speeding",
+                "sped",
+                "has sped",
+                "had been speeding"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pour une série d'actions consécutives et rapides constituant la trame narrative principale, le prétérit simple ('sped') s'impose."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "If the medical team ... the antibiotic immediately, the patient's condition would not have deteriorated.",
+              "options": [
+                "had administered",
+                "administered",
+                "would administer",
+                "have administered"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la proposition conditionnelle en 'if' d'un 3e conditionnel (irréel du passé), on emploie le Past Perfect ('had administered')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "If they had checked the train timetable, they ... the final connection to Edinburgh.",
+              "options": [
+                "won't miss",
+                "wouldn't miss",
+                "wouldn't have missed",
+                "hadn't missed"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La conséquence passée hypothétique non réalisée se construit avec 'would have + participe passé' : 'wouldn't have missed'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "I deeply regret losing my composure; I truly wish I ... at the referee.",
+              "options": [
+                "didn't shout",
+                "wouldn't shout",
+                "haven't shouted",
+                "hadn't shouted"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Après 'wish', pour exprimer un regret portant sur un fait passé révolu, on emploie le Past Perfect modal ('hadn't shouted')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "He described the ancient Amazonian temples as if he ... there himself.",
+              "options": ["was", "had been", "would be", "has been"],
+              "correctAnswers": [1],
+              "explanation": "Après 'as if / as though', pour désigner une situation passée imaginaire ou non vécue, on utilise le Past Perfect ('had been')."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "While the family ... dinner, the father realised he ... to lock the front gate.",
+              "options": [
+                "were having / had forgotten",
+                "had / forgot",
+                "had been having / forgets",
+                "were having / was forgetting"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action continue en cours est au prétérit en BE + -ING ('were having'), tandis que l'oubli antérieur à la prise de conscience est au Past Perfect ('had forgotten')."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "... the authorities anticipated the hurricane's trajectory, the evacuation would have run smoothly.",
+              "options": ["If", "Should", "Had", "Were"],
+              "correctAnswers": [2],
+              "explanation": "Dans un registre soutenu, on peut omettre 'if' dans un 3e conditionnel en inversant le sujet et l'auxiliaire 'Had' : 'Had the authorities anticipated...'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "I ... to attend the gala, but an unforeseen family emergency prevented me.",
+              "options": [
+                "had intended",
+                "was intending",
+                "intended",
+                "am intending"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Past Perfect avec des verbes comme 'intend', 'hope' ou 'plan' exprime une intention passée qui n'a finalement pas pu aboutir."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "The Titanic sank barely three hours after it ... the submerged iceberg.",
+              "options": [
+                "had struck",
+                "has struck",
+                "was striking",
+                "would strike"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La collision avec l'iceberg ayant précédé le naufrage, le Past Perfect ('had struck') explicite l'antériorité chronologique."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences accurately convey complex temporal relationships in a past narrative?",
+              "options": [
+                "Having completed her doctoral dissertation, Dr Vance booked a celebratory holiday to Iceland.",
+                "Had the warning signs been heeded earlier, the catastrophic dam failure could have been averted.",
+                "He was walking down the dimly lit alley when he was noticing a sinister silhouette.",
+                "By the time the search party reached the peak, the blizzard will have subsided."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 1 (participe parfait 'Having completed') et 2 (conditionnel inversé sans 'if') sont remarquables de précision. L'option 3 utilise à tort un aspect progressif pour un verbe de perception ponctuelle ('notice'), et l'option 4 commet un anachronisme avec 'will have'."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "For, Since et Ago",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "The historic peace treaty was ratified more than two centuries ... by the founding assembly.",
+              "options": ["ago", "since", "for", "before"],
+              "correctAnswers": [0],
+              "explanation": "'Ago' se place toujours après une durée pour calculer un recul temporel par rapport au présent, et s'emploie avec le prétérit simple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Private investment in renewable energy has expanded rapidly ... the 2015 Paris Agreement.",
+              "options": ["for", "ago", "since", "during"],
+              "correctAnswers": [2],
+              "explanation": "'Since' s'emploie avec un point de départ précis dans le temps (ici l'accord de 2015) et appelle un Present Perfect dans la principale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "The civil rights marchers walked courageously through torrential rain ... five consecutive days.",
+              "options": ["since", "for", "ago", "during"],
+              "correctAnswers": [1],
+              "explanation": "'For' introduit une durée mesurable ('five consecutive days'), qu'elle soit révolue (avec le prétérit) ou continue."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Professor Higgins has published four groundbreaking monographs since he ... the department in 2012.",
+              "options": ["joins", "has joined", "had joined", "joined"],
+              "correctAnswers": [3],
+              "explanation": "Dans une subordonnée introduite par 'since', l'événement servant de point de repère temporel initial est au prétérit simple ('joined')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "How long ago ... the declaration of human rights signed by the assembly?",
+              "options": ["was", "has been", "did", "is"],
+              "correctAnswers": [0],
+              "explanation": "Une question débutant par 'How long ago...' porte sur une date passée précise et exige impérativement le prétérit simple."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "The Roman legions maintained control over Britannia ... nearly four hundred years.",
+              "options": ["since", "for", "during", "ago"],
+              "correctAnswers": [1],
+              "explanation": "Pour exprimer la durée totale d'un événement historique achevé, on emploie 'for' associé à un verbe au prétérit simple."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "She won the international piano competition in 2018, and ... she has toured worldwide.",
+              "options": ["since then", "for then", "ago then", "during then"],
+              "correctAnswers": [0],
+              "explanation": "'Since then' (ou 'ever since') signifie 'depuis lors' et fait référence à un événement passé en liant la période au présent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "What is the core grammatical difference between 'for' and 'since'?",
+              "options": [
+                "'For' indicates a duration of time, while 'since' marks a specific starting point.",
+                "'For' can only be used with the future tense, while 'since' is strictly past.",
+                "'Since' is always followed by an -ING form, while 'for' requires a noun.",
+                "'For' is exclusively used for people, while 'since' is used for events."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'For' quantifie la durée globale (combien de temps), alors que 'since' ancre le point de départ d'une action ininterrompue (depuis quand)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "When peace was declared, the displaced families ... in makeshift refugee camps for six long years.",
+              "options": [
+                "have lived",
+                "were living",
+                "live",
+                "had been living"
+              ],
+              "correctAnswers": [3],
+              "explanation": "La durée s'étalant jusqu'à un repère passé ('When peace was declared'), on associe 'for' au Past Perfect continu."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences correctly utilize 'for', 'since', or 'ago'?",
+              "options": [
+                "The scientific laboratory was inaugurated three decades ago by the ministry.",
+                "She has been conducting botanical research since she completed her doctorate.",
+                "They arrived at the international terminal since two hours ago.",
+                "He lived in Montreal since ten years before moving to Vancouver."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 1 ('three decades ago') et 2 ('since she completed...') sont parfaitement correctes. L'option 3 cumule à tort 'since' et 'ago', et l'option 4 utilise 'since' au lieu de 'for' devant une durée ('for ten years')."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Already, Yet, Still et Just",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "The passengers have ... touched down at Heathrow; their flight landed three minutes ago.",
+              "options": ["yet", "just", "still", "already"],
+              "correctAnswers": [1],
+              "explanation": "'Just' placé entre l'auxiliaire et le participe passé indique qu'une action vient tout juste d'avoir lieu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "The clinical trial committee has not published its final peer-reviewed findings ... .",
+              "options": ["yet", "still", "already", "just"],
+              "correctAnswers": [0],
+              "explanation": "'Yet' se place en fin de proposition négative pour signifier 'pas encore' ('has not published... yet')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Have you completed that complex biochemical analysis ... ? That was remarkably quick!",
+              "options": ["yet", "still", "already", "just"],
+              "correctAnswers": [2],
+              "explanation": "Dans une question, 'already' exprime la surprise face à une action accomplie plus tôt que prévu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Despite three rounds of arbitration, the two rival corporations ... disputed patent ownership.",
+              "options": ["already", "yet", "just", "still"],
+              "correctAnswers": [3],
+              "explanation": "'Still' exprime la persistance ou la continuité d'un état ou d'une action ('ils contestaient toujours/encore')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "In American English narrative prose, it is common to hear: \"I ... finished my breakfast, so I'm not hungry.\"",
+              "options": ["just", "yet", "still", "already"],
+              "correctAnswers": [0],
+              "explanation": "En anglais américain, 'just' est très couramment employé avec le prétérit simple ('I just finished') pour une action immédiate."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "By 10 PM, the disaster management team had ... evacuated over two thousand citizens.",
+              "options": ["yet", "already", "still", "just"],
+              "correctAnswers": [1],
+              "explanation": "'Already' insiste sur l'accomplissement effectif de l'action avant le repère temporel passé ('had already evacuated')."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Although the deadline expired yesterday, the candidate ... has not submitted his credentials.",
+              "options": ["already", "yet", "still", "just"],
+              "correctAnswers": [2],
+              "explanation": "Placé devant un auxiliaire négatif ('still has not'), 'still' souligne l'étonnement ou l'agacement devant une action qui tarde."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Has the diplomatic delegation arrived at the embassy ... ?",
+              "options": ["yet", "already", "still", "just"],
+              "correctAnswers": [0],
+              "explanation": "Dans une question neutre visant à vérifier si une action a eu lieu ou non, 'yet' se place en fin de phrase."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "The lecture had ... begun when a sudden power outage plunged the hall into pitch darkness.",
+              "options": ["yet", "just", "still", "already"],
+              "correctAnswers": [1],
+              "explanation": "'Had just + participe passé' traduit le fait que l'événement venait à peine de commencer quand l'interruption a eu lieu."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences correctly position 'already', 'yet', 'still', or 'just'?",
+              "options": [
+                "The scientific team has already gathered sufficient telemetry data to test the hypothesis.",
+                "The board of directors has not reached a consensus on the proposed budget yet.",
+                "She has submitted yet her doctoral application before the deadline.",
+                "He still have not understood the legal implications of the contract."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 1 et 2 placent impeccablement 'already' (milieu de phrase) et 'yet' (fin de négation). L'option 3 place 'yet' de façon incorrecte, et l'option 4 commet une faute d'accord ('he still have')."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Connecteurs temporels narratifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "The field researchers collected soil samples; ..., the laboratory technicians prepared reagents.",
+              "options": ["meanwhile", "as soon as", "until", "throughout"],
+              "correctAnswers": [0],
+              "explanation": "'Meanwhile' signifie 'pendant ce temps / parallèlement' et relie deux actions qui se déroulent simultanément dans des lieux différents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "The sprinters exploded from the starting blocks ... the pistol fired.",
+              "options": ["meanwhile", "until", "as soon as", "while"],
+              "correctAnswers": [2],
+              "explanation": "'As soon as' exprime l'immédiateté d'une réaction dès que l'élément déclencheur se produit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "The night guards stood vigilant at the castle gate ... relief forces arrived at daybreak.",
+              "options": ["meanwhile", "until", "as soon as", "throughout"],
+              "correctAnswers": [1],
+              "explanation": "'Until' (jusqu'à ce que) marque la limite temporelle marquant la fin de l'état ou de l'activité passée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "The driver fell asleep at the wheel ... he was cruising along the empty highway.",
+              "options": ["until", "meanwhile", "as soon as", "while"],
+              "correctAnswers": [3],
+              "explanation": "'While' introduit une proposition décrivant une action continue pendant laquelle un événement soudain survient."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "After months of rigorous investigative journalism, the reporters ... uncovered the truth.",
+              "options": ["eventually", "meanwhile", "as soon as", "until"],
+              "correctAnswers": [0],
+              "explanation": "'Eventually' signifie 'finalement / au bout du compte' (et non 'éventuellement' qui est un faux-ami signifiant 'possibly')."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "The main course will take forty minutes to roast; ..., let us serve the appetizers.",
+              "options": [
+                "until",
+                "in the meantime",
+                "as soon as",
+                "throughout"
+              ],
+              "correctAnswers": [1],
+              "explanation": "'In the meantime' est un synonyme de 'meanwhile', parfait pour introduire une action intercalaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "The keynote speaker had no sooner stepped onto the rostrum ... the audiovisual feed failed.",
+              "options": ["when", "after", "than", "until"],
+              "correctAnswers": [2],
+              "explanation": "'No sooner... than' forme une paire corrélative inséparable pour signifier 'à peine... que'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "The civilian population endured immense food shortages ... the catastrophic winter of 1944.",
+              "options": ["throughout", "meanwhile", "while", "until"],
+              "correctAnswers": [0],
+              "explanation": "'Throughout' insiste sur la totalité continue d'une période temporelle ('tout au long de / d'un bout à l'autre de')."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "... the commander entered the briefing room, all subordinate officers rose to their feet.",
+              "options": ["While", "Meanwhile", "Until", "Whenever"],
+              "correctAnswers": [3],
+              "explanation": "'Whenever' (chaque fois que) souligne le caractère systématique d'une action à chaque répétition dans le passé."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which narrative sentences use temporal connectors appropriately?",
+              "options": [
+                "The detectives secured the perimeter while forensic specialists gathered fingerprints.",
+                "The stranded climbers sheltered in a snow cave until the rescue helicopter spotted them.",
+                "He waited in the lobby meanwhile she was attending the interview.",
+                "As soon as the siren sounded, the factory workers were leaving immediately the building."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 1 et 2 emploient adéquatement 'while' et 'until'. L'option 3 utilise fautivement 'meanwhile' comme une conjonction de subordination (au lieu de 'while'), et l'option 4 place mal l'adverbe et le temps verbal."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Ever, Never et fréquences temporelles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Did you ... witness a total solar eclipse during your travels across South America?",
+              "options": ["never", "ever", "always", "rarely"],
+              "correctAnswers": [1],
+              "explanation": "'Ever' s'emploie dans les interrogations pour signifier 'déjà / jamais au cours de ta vie' ('Did you ever witness...?')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "That archaeological expedition was the most perilous mission the team had ... undertaken.",
+              "options": ["ever", "never", "hardly", "rarely"],
+              "correctAnswers": [0],
+              "explanation": "Après un superlatif ('the most perilous mission') combiné au Past Perfect, on emploie 'ever' pour exprimer 'jamais auparavant'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Prior to that Atlantic crossing, the young sailor had ... steered a vessel through stormy seas.",
+              "options": ["ever", "not never", "never", "hardly"],
+              "correctAnswers": [2],
+              "explanation": "'Never' s'associe au Past Perfect pour souligner l'absence totale d'expérience antérieure avant un point donné du passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "During the Great Depression, impoverished households ... consumed fresh meat.",
+              "options": [
+                "hardly",
+                "rarely never",
+                "hardly never",
+                "hardly ever"
+              ],
+              "correctAnswers": [3],
+              "explanation": "'Hardly ever' signifie 'presque jamais' et s'emploie sans double négation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Never before ... such collective courage in the face of unprecedented adversity.",
+              "options": [
+                "had the world seen",
+                "the world had seen",
+                "did the world saw",
+                "the world saw"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La locution 'Never before' en début de phrase impose l'inversion stylistique auxiliaire-sujet : 'had the world seen'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "The two scholars met at Cambridge in 2011 and have collaborated ... .",
+              "options": [
+                "ever since",
+                "never since",
+                "already since",
+                "just since"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Ever since' signifie 'depuis ce jour-là sans interruption' et s'associe idéalement avec le Present Perfect."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "The veteran pilot ... checked the oil pressure gauges before commencing takeoff.",
+              "options": ["always had", "was always", "always", "has always"],
+              "correctAnswers": [2],
+              "explanation": "Les adverbes de fréquence simples comme 'always' se placent directement avant le verbe lexical conjugué au prétérit simple ('always checked')."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "In ancient Sparta, citizens ... questioned the absolute authority of the elders.",
+              "options": [
+                "scarcely ever",
+                "scarcely never",
+                "not scarcely",
+                "ever scarcely"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Scarcely ever' est une expression soutenue signifiant 'presque jamais' qui ne tolère aucune particule négative additionnelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "It was the first time in his life that he ... experienced genuine stage fright.",
+              "options": ["has ever", "had ever", "did ever", "was ever"],
+              "correctAnswers": [1],
+              "explanation": "La formule 'It was the first time that...' transposée au passé commande 'had ever + participe passé'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences correctly employ frequency and polarity adverbs like 'ever' or 'never'?",
+              "options": [
+                "Never had the nation witnessed such extraordinary political mobilization.",
+                "It was the most challenging mountain ascent the climbers had ever completed.",
+                "He didn't never divulge the confidential laboratory formula to outsiders.",
+                "Have you ever went to Shakespeare's birthplace in Stratford-upon-Avon?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 1 et 2 sont parfaites. L'option 3 présente une double négation prohibée en anglais standard ('didn't never'), et l'option 4 utilise à tort le prétérit 'went' au lieu du participe passé 'been' ou 'gone'."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "By the time, Before et After",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "By the time the fire engines reached the factory, the warehouse roof ... in.",
+              "options": ["had caved", "caved", "was caving", "has caved"],
+              "correctAnswers": [0],
+              "explanation": "Dans une proposition principale subordonnée à 'By the time + prétérit', l'action déjà accomplie se met au Past Perfect ('had caved')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Before ... the commercial lease, the company's attorney inspected every single clause.",
+              "options": ["to sign", "signing", "signed", "sign"],
+              "correctAnswers": [1],
+              "explanation": "Après une préposition comme 'before', le verbe prend obligatoirement la forme en -ING ('before signing')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "After the jurors ... all the forensic evidence, they delivered a unanimous guilty verdict.",
+              "options": [
+                "have examined",
+                "were examining",
+                "had examined",
+                "examine"
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'examen des preuves ayant précédé le verdict, l'antériorité est soulignée par le Past Perfect ('had examined')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Compare: \"By the time you wake up tomorrow morning, my train ... Edinburgh.\"",
+              "options": [
+                "reached",
+                "had reached",
+                "will reach",
+                "will have reached"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Attention au contraste : si 'by the time' renvoie à un moment futur, la principale se met au futur antérieur ('will have reached')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "The navigator had reviewed the maritime charts meticulously ... setting sail across the ocean.",
+              "options": ["before", "after", "by the time", "until"],
+              "correctAnswers": [0],
+              "explanation": "L'action antérieure ('had reviewed') s'est déroulée en amont du départ en mer ('before setting sail')."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "After ... the summit of Mount Everest, the mountaineers took commemorative photographs.",
+              "options": [
+                "reach",
+                "having reached",
+                "had reached",
+                "reached to"
+              ],
+              "correctAnswers": [1],
+              "explanation": "'After having reached' (participe parfait composé) met clairement en valeur l'achèvement préalable de l'ascension."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "The train had pulled out of the platform just seconds before we ... into the station.",
+              "options": ["had dashed", "dash", "dashed", "were dashing"],
+              "correctAnswers": [2],
+              "explanation": "La proposition subordonnée introduite par 'before' se conjugue au prétérit simple ('dashed') pour servir de point de repère temporel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "By the end of the nineteenth century, steam-powered locomotives ... continental trade.",
+              "options": [
+                "had revolutionised",
+                "revolutionised",
+                "were revolutionising",
+                "have revolutionised"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'By + date passée' fixe une échéance temporelle révolue qui appelle le Past Perfect."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "The historical archives were not opened to researchers until the cataloguing ... completed.",
+              "options": ["is", "had been", "will be", "has been"],
+              "correctAnswers": [1],
+              "explanation": "L'achèvement du catalogage étant la condition préalable à l'ouverture passée des archives, le Past Perfect passif s'impose."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences accurately sequence events using 'by the time', 'before', or 'after'?",
+              "options": [
+                "By the time the paramedics arrived, civilian bystanders had administered cardiopulmonary resuscitation.",
+                "After the detectives had secured the crime scene, forensic specialists dusted for fingerprints.",
+                "By the time he arrived at the station yesterday, the express train will have already left.",
+                "Before to sign the diplomatic treaty, both heads of state conferred in private."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 1 et 2 respectent parfaitement la hiérarchie des temps du passé. L'option 3 associe à tort un repère passé ('yesterday') à un futur antérieur ('will have left'), et l'option 4 utilise 'Before to sign' au lieu de 'Before signing'."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "During, While et For",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Several guests felt uncomfortably warm ... the two-hour university graduation ceremony.",
+              "options": ["while", "during", "for", "throughout of"],
+              "correctAnswers": [1],
+              "explanation": "'During' est une préposition suivie d'un groupe nominal ('the ceremony') indiquant l'époque ou le créneau au cours duquel l'action se produit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "The telephone rang persistently three times ... I was taking a hot shower.",
+              "options": ["while", "during", "for", "throughout"],
+              "correctAnswers": [0],
+              "explanation": "'While' est une conjonction de subordination introduisant une proposition complète avec sujet et verbe ('I was taking')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "The stranded arctic researchers had to ration their biscuits ... nearly a fortnight.",
+              "options": ["during", "while", "for", "since"],
+              "correctAnswers": [2],
+              "explanation": "'For' est requis devant une expression de durée quantifiable ('nearly a fortnight')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Why is the clause \"during I was revising my chemistry notes\" ungrammatical in English?",
+              "options": [
+                "'During' cannot be used with first-person singular subjects.",
+                "'During' is only used to refer to military conflicts.",
+                "'During' must be accompanied by the auxiliary verb 'do'.",
+                "'During' is a preposition followed by a noun phrase, never by a clause with a verb."
+              ],
+              "correctAnswers": [3],
+              "explanation": "'During' ne peut jamais introduire une proposition subordonnée avec verbe conjugué : on doit employer 'while' ('while I was revising')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "... wandering through the historic quarter, the tourists stumbled upon an artisan workshop.",
+              "options": ["While", "During", "For", "Since"],
+              "correctAnswers": [0],
+              "explanation": "'While' peut être suivi directement d'un participe présent en -ING ('While wandering...'), contrairement à 'during'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Strict blackouts and curfew measures were enforced across London ... the Blitz.",
+              "options": ["for", "during", "while", "since"],
+              "correctAnswers": [1],
+              "explanation": "'The Blitz' est un événement nominalisé : on emploie 'during the Blitz'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "The programmer stayed awake ... thirty-six consecutive hours to debug the core application.",
+              "options": ["during", "while", "for", "since"],
+              "correctAnswers": [2],
+              "explanation": "'Thirty-six consecutive hours' exprime une durée mesurée : la préposition 'for' est indispensable."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "... the theatre curtain slowly rose, the orchestra struck up the opening overture.",
+              "options": ["As", "During", "For", "Throughout"],
+              "correctAnswers": [0],
+              "explanation": "'As' s'emploie pour marquer une stricte simultanéité d'évolution entre deux actions de courte durée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Inflation rates escalated sharply ... the global oil embargo of 1973.",
+              "options": ["while", "during", "for", "as"],
+              "correctAnswers": [1],
+              "explanation": "'The global oil embargo of 1973' est un groupe nominal désignant un événement historique : on emploie 'during'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences respect the correct grammatical usage of 'during', 'while', and 'for'?",
+              "options": [
+                "The power grid failed during the violent thunderstorm that struck the valley.",
+                "While listening to the audio recording, the translator transcribed key statements.",
+                "During we were hiking in the national park, we observed a pack of wolves.",
+                "She has been waiting outside in the rain during twenty-five minutes."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 1 ('during the thunderstorm') et 2 ('While listening') sont parfaitement conformes. L'option 3 utilise fautivement 'during' devant une proposition sujet+verbe ('during we were'), et l'option 4 emploie 'during' au lieu de 'for' devant une durée."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Structures temporelles avec Once, As et When",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Once the peace protocol ... signed by all belligerent parties, humanitarian convoys entered.",
+              "options": ["was", "is", "will be", "has been"],
+              "correctAnswers": [0],
+              "explanation": "'Once' (une fois que) introduit une condition temporelle réalisée : dans un récit au passé, elle prend le prétérit simple (ou Past Perfect)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "As the sun gradually ... below the horizon, temperatures plunged below freezing point.",
+              "options": ["was dipping", "dipped", "has dipped", "dips"],
+              "correctAnswers": [1],
+              "explanation": "'As' traduit ici la simultanéité progressive entre deux évolutions parallèles dans le passé au prétérit simple."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "We were enjoying a quiet stroll in the orchard when suddenly a fierce storm ... .",
+              "options": [
+                "was breaking out",
+                "has broken out",
+                "broke out",
+                "had broken out"
+              ],
+              "correctAnswers": [2],
+              "explanation": "'When' introduit l'événement soudain et ponctuel au prétérit simple qui vient interrompre l'action continue en cours."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Once the lead investigator ... all the witness statements, she drafted her official report.",
+              "options": [
+                "had gathered",
+                "gathers",
+                "was gathering",
+                "has gathered"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action de rassembler les dépositions étant totalement close avant la rédaction, le Past Perfect ('had gathered') marque la complétude."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "When the foreign dignitary ... into the plenary chamber, the delegates applauded warmly.",
+              "options": [
+                "walked",
+                "was walking",
+                "has walked",
+                "had been walking"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'entrée dans la salle est un fait ponctuel qui déclenche immédiatement les applaudissements : prétérit simple."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "As the weeks ... by, the stranded sailors became increasingly despondent.",
+              "options": ["go", "went", "were going", "have gone"],
+              "correctAnswers": [1],
+              "explanation": "'As the weeks went by' est une tournure idiomatique consacrée pour traduire le passage inexorable du temps au fil du récit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Which temporal conjunction is best suited to introduce an abrupt interruption in a narrative?",
+              "options": ["While", "Throughout", "When", "Whereas"],
+              "correctAnswers": [2],
+              "explanation": "'When' est la conjonction par excellence introduisant l'incident inattendu qui coupe une action en cours ('I was sleeping when...')."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Just as the express train was departing, an out-of-breath traveller ... onto the carriage step.",
+              "options": ["leaped", "was leaping", "had leaped", "has leaped"],
+              "correctAnswers": [0],
+              "explanation": "'Just as' marque une coïncidence temporelle exacte entre une action en cours et un bond soudain au prétérit simple."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Once ... by the master stonemasons, the cathedral facade regained its medieval splendour.",
+              "options": ["restore", "restored", "restoring", "was restored"],
+              "correctAnswers": [1],
+              "explanation": "'Once restored' est une proposition participiale raccourcie élégante, équivalant à 'Once it had been restored'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences correctly connect past events using 'once', 'as', or 'when'?",
+              "options": [
+                "Once the cryptographic key had been decoded, the intelligence agents intercepted the transmissions.",
+                "As the tempest intensified, lighthouse keepers reinforced the lower storm shutters.",
+                "When the teacher was entering the room, every single pupil stood up immediately.",
+                "Once the school bell was rang, the children rushed outdoors onto the playground."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 1 et 2 articulent rigoureusement les actions passées. L'option 3 emploie maladroitement un aspect progressif pour un acte instantané ('walked in'), et l'option 4 contient une faute de passif grossière ('was rang' au lieu de 'rang' ou 'had rung')."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Expressions temporelles idiomatiques du passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "The prime minister's announcement to dissolve parliament came completely ... ; nobody had anticipated it.",
+              "options": [
+                "out of the blue",
+                "in the nick of time",
+                "at once",
+                "for the time being"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Out of the blue' est un idiome signifiant 'comme un coup de tonnerre dans un ciel bleu / tout à fait à l'improviste'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "The rescuer grabbed the child's coat ..., just seconds before the icy ledge collapsed.",
+              "options": [
+                "out of the blue",
+                "in the nick of time",
+                "from time to time",
+                "ahead of time"
+              ],
+              "correctAnswers": [1],
+              "explanation": "'In the nick of time' signifie 'juste à temps / au tout dernier moment in extremis'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Upon hearing the loud chemical alarm, the researchers evacuated the cleanroom ... .",
+              "options": [
+                "in no time",
+                "from time to time",
+                "at once",
+                "ahead of time"
+              ],
+              "correctAnswers": [2],
+              "explanation": "'At once' signifie 'immédiatement / sur-le-champ'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "... , the twin engines sputtered, lost altitude rapidly, and cut out entirely.",
+              "options": [
+                "From time to time",
+                "In the nick of time",
+                "For the time being",
+                "All of a sudden"
+              ],
+              "correctAnswers": [3],
+              "explanation": "'All of a sudden' signifie 'tout à coup / subitement' et introduit un incident dramatique dans un récit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Thanks to the newly installed optic fibre network, the archive downloaded ... .",
+              "options": [
+                "in no time",
+                "at once",
+                "out of the blue",
+                "for the time being"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'In no time (at all)' signifie 'en un rien de temps / en un clin d'œil'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "The explorers pitched a temporary canvas tent ... until the snowstorm subsided.",
+              "options": [
+                "out of the blue",
+                "for the time being",
+                "in the nick of time",
+                "from time to time"
+              ],
+              "correctAnswers": [1],
+              "explanation": "'For the time being' signifie 'pour le moment / provisoirement'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "While posted overseas, the diplomat wrote handwritten letters to his parents ... .",
+              "options": [
+                "at once",
+                "in the nick of time",
+                "from time to time",
+                "in no time"
+              ],
+              "correctAnswers": [2],
+              "explanation": "'From time to time' signifie 'de temps à autre / occasionnellement'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "The supersonic jet accelerated and vanished beyond the cloud bank ... .",
+              "options": [
+                "in the blink of an eye",
+                "for the time being",
+                "from time to time",
+                "in the nick of time"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'In the blink of an eye' signifie 'en un clin d'œil / en une fraction de seconde'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ada Lovelace's early computational insights were disregarded because they were centuries ... .",
+              "options": [
+                "in no time",
+                "ahead of their time",
+                "out of the blue",
+                "at once"
+              ],
+              "correctAnswers": [1],
+              "explanation": "'Ahead of one's time' est une expression consacrée signifiant 'en avance sur son temps / avant-gardiste'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences correctly utilize idiomatic time expressions in a past narrative context?",
+              "options": [
+                "The flight surgeon arrived in the nick of time and successfully stabilized the patient.",
+                "Out of the blue, an anonymous philanthropist bequeathed five million pounds to the university.",
+                "All in a sudden, the power grid suffered a catastrophic cascade failure.",
+                "He completed the gruelling obstacle course at no time despite intense exhaustion."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 1 et 2 emploient parfaitement 'in the nick of time' et 'out of the blue'. L'option 3 commet l'erreur 'All in a sudden' (au lieu de 'All of a sudden'), et l'option 4 emploie fautivement 'at no time' au lieu de 'in no time'."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "It's (high) time et le prétérit modal",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "It's high time the international community ... binding sanctions against rogue polluters.",
+              "options": ["took", "takes", "has taken", "would take"],
+              "correctAnswers": [0],
+              "explanation": "La structure 'It is (high/about) time + sujet' est obligatoirement suivie d'un prétérit modal exprimant l'urgence d'une action qui tarde ('took')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "It's about time you ... responsibility for your administrative blunders.",
+              "options": ["accept", "accepted", "have accepted", "will accept"],
+              "correctAnswers": [1],
+              "explanation": "'It's about time + sujet' demande le prétérit modal ('accepted') pour signaler un reproche ou un retard."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "I would rather you ... me the plain truth right now instead of making excuses.",
+              "options": ["tell", "have told", "told", "will tell"],
+              "correctAnswers": [2],
+              "explanation": "Après 'would rather + sujet distinct', pour exprimer une préférence sur le présent ou l'avenir, on emploie le prétérit modal ('told')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "I would rather you ... that confidential email to the press yesterday.",
+              "options": [
+                "didn't send",
+                "haven't sent",
+                "wouldn't send",
+                "hadn't sent"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Après 'would rather + sujet distinct', pour exprimer un regret portant sur un fait passé révolu, on emploie le Past Perfect modal ('hadn't sent')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "It's time ... these bilateral negotiations and sign the accord.",
+              "options": ["to conclude", "conclude", "concluded", "concluding"],
+              "correctAnswers": [0],
+              "explanation": "Quand 'It's time' n'est pas suivi d'un sujet grammatical, on emploie tout simplement l'infinitif complet avec 'to' ('to conclude')."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "He pontificates about aeronautics as if he ... a certified aerospace engineer.",
+              "options": ["is", "were", "would be", "has been"],
+              "correctAnswers": [1],
+              "explanation": "Après 'as if / as though', on emploie le subjonctif passé (ou prétérit modal 'were' à toutes les personnes) pour marquer une contre-vérité présente."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "What is the exact grammatical function of 'left' in \"It is high time we left\"?",
+              "options": [
+                "It describes an action that was finished yesterday.",
+                "It is a past continuous passive participle.",
+                "It is a modal preterite expressing urgency or unreality in the present.",
+                "It is a future imperative form."
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le verbe 'left' est ici un prétérit modal : sa forme est passée mais sa valeur temporelle est présente, traduisant l'urgence d'agir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "I wish the municipal council ... more public funds into community healthcare.",
+              "options": [
+                "allocated",
+                "allocates",
+                "has allocated",
+                "will allocate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour formuler un souhait irréalisé dans le présent avec 'wish', on utilise le prétérit modal ('allocated')."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "The author wishes she ... that lucrative publishing contract last spring.",
+              "options": [
+                "accepted",
+                "had accepted",
+                "has accepted",
+                "would accept"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pour un regret rétrospectif portant sur une décision passée ('last spring'), 'wish' est suivi du Past Perfect modal ('had accepted')."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences correctly demonstrate the modal preterite or subjunctive-like past constructions?",
+              "options": [
+                "It is high time the government addressed the critical shortage of affordable housing.",
+                "I would rather you hadn't mentioned our financial difficulties to the reporters.",
+                "It is about time that he starts taking his academic obligations seriously.",
+                "She wishes she has consulted an independent financial advisor before investing."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 1 et 2 illustrent parfaitement le prétérit modal ('addressed') et le regret passé après 'would rather' ('hadn't mentioned'). L'option 3 omet le prétérit modal après 'It is about time' ('starts' au lieu de 'started'), et l'option 4 commet l'erreur 'has consulted' au lieu de 'had consulted'."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan des marqueurs temporels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dr Watson had been living in Vienna ... five years when the political crisis erupted.",
+              "options": ["since", "for", "ago", "during"],
+              "correctAnswers": [1],
+              "explanation": "Pour quantifier la durée d'une situation antérieure continue ('five years') avant un événement passé, on emploie 'for'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "The ministry has not received any official correspondence from that embassy ... last November.",
+              "options": ["since", "for", "ago", "while"],
+              "correctAnswers": [0],
+              "explanation": "'Last November' est un point de départ temporel précis : la préposition adéquate est 'since'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "The devastating tsunami struck the coastal settlements exactly two decades ... .",
+              "options": ["since", "for", "ago", "before"],
+              "correctAnswers": [2],
+              "explanation": "Le calcul d'un recul temporel par rapport au présent ('two decades') associé à un verbe au prétérit simple ('struck') appelle 'ago'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "By the time the rescue team reached the avalanche site, the blizzard ... all tracks.",
+              "options": [
+                "obscured",
+                "was obscuring",
+                "has obscured",
+                "had obscured"
+              ],
+              "correctAnswers": [3],
+              "explanation": "L'action d'effacer les traces étant antérieure à l'arrivée des secours, 'By the time + prétérit' réclame le Past Perfect ('had obscured')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "The intruder sneaked into the gallery ... the night guard was monitoring the monitors.",
+              "options": ["during", "while", "for", "since"],
+              "correctAnswers": [1],
+              "explanation": "Devant une proposition subordonnée avec sujet et verbe en BE + -ING, 'while' est la conjonction requise."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "The pharmaceuticals agency has not yet validated the clinical trial safety results ... .",
+              "options": ["yet", "still", "already", "just"],
+              "correctAnswers": [0],
+              "explanation": "Dans une proposition négative au Present Perfect, 'yet' réaffirme en fin d'énoncé que l'événement ne s'est pas encore produit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "The novel had ... hit the bookstores when major Hollywood studios bid for film rights.",
+              "options": ["yet", "still", "hardly", "already not"],
+              "correctAnswers": [2],
+              "explanation": "'Had hardly + participe passé... when' exprime l'immédiateté de la seconde action par rapport à la première."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "... entering the hazardous containment unit, all technicians put on sealed hazmat suits.",
+              "options": ["Before", "After", "While of", "During to"],
+              "correctAnswers": [0],
+              "explanation": "L'enfilage des combinaisons précédant l'entrée dans la salle, 'Before + V-ing' est le connecteur logique et chronologique approprié."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "It's about time our engineering firm ... its legacy database infrastructure.",
+              "options": [
+                "upgrades",
+                "upgraded",
+                "has upgraded",
+                "will upgrade"
+              ],
+              "correctAnswers": [1],
+              "explanation": "'It's about time + sujet' requiert obligatoirement le prétérit modal ('upgraded')."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Which sentences demonstrate proper alignment of temporal markers with their corresponding verb tenses?",
+              "options": [
+                "The suspect was arrested three weeks ago in connection with the jewel heist.",
+                "She had already published two research monographs before finishing her doctorate.",
+                "They have arrived in Melbourne two days ago on an international flight.",
+                "By the time we reached the summit yesterday, the sun will have already set."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 1 ('was arrested... three weeks ago') et 2 ('had already published... before finishing') sont parfaitement cohérentes. L'option 3 associe à tort le Present Perfect à 'two days ago', et l'option 4 emploie le futur antérieur pour un fait passé révolu ('yesterday')."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2383 @@
+{
+  "id": "2nde-russe-05",
+  "year": "2nde",
+  "subject": "russe",
+  "title": "Le passé en russe",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Formation générale du passé (-л, -ла, -ло, -ли)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment se forme généralement le passé d'un verbe régulier à partir de l'infinitif en -ть ?",
+              "options": [
+                "On remplace -ть par -л, -ла, -ло ou -ли selon le sujet",
+                "On ajoute toujours -ет à la fin du verbe",
+                "On ajoute le préfixe по- sans modifier la fin",
+                "On remplace -ть par -ю, -ешь, -ет"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au passé en russe, on retire la terminaison de l'infinitif -ть et on ajoute le suffixe -л (masc.), -ла (fém.), -ло (neutre) ou -ли (pluriel)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la forme au passé masculin singulier du verbe читать (lire) ?",
+              "options": ["читал", "читала", "читали", "читает"],
+              "correctAnswers": [0],
+              "explanation": "Pour un sujet masculin singulier (он, Иван, брат), on ajoute simplement le suffixe -л au radical : читал."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison du passé lorsque le sujet est féminin singulier (она, сестра...) ?",
+              "options": ["-ла", "-ло", "-ли", "-л"],
+              "correctAnswers": [0],
+              "explanation": "La terminaison du passé au féminin singulier est -ла (ex: она читала, сестра делала)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la forme au passé du verbe делать (faire) avec le sujet Анна ?",
+              "options": ["делала", "делал", "делали", "делает"],
+              "correctAnswers": [0],
+              "explanation": "Анна étant un prénom féminin singulier, le verbe s'accorde au féminin passé avec la désinence -ла : делала."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles sont les terminaisons du passé qui s'appliquent au singulier en russe ?",
+              "options": [
+                "-л (masculin)",
+                "-ла (féminin)",
+                "-ло (neutre)",
+                "-ли (pluriel)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Au singulier, le verbe s'accorde en genre avec les terminaisons -л (masculin), -ла (féminin) et -ло (neutre). La forme -ли est réservée au pluriel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme au passé du verbe говорить (parler) avec le pronom они (ils/elles) ?",
+              "options": ["говорили", "говорил", "говорила", "говорило"],
+              "correctAnswers": [0],
+              "explanation": "Au pluriel (они, мы, вы), le verbe prend toujours la terminaison -ли au passé : говорили."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle terminaison prend le verbe au passé avec un sujet neutre comme письмо (la lettre) ?",
+              "options": ["-ло", "-ла", "-ли", "-л"],
+              "correctAnswers": [0],
+              "explanation": "Les noms neutres singuliers (ex: письмо, окно, солнце) s'accordent avec la terminaison -ло au passé (ex: письмо лежало)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : Солнце ярко ... (светить au passé).",
+              "options": ["светило", "светил", "светила", "светили"],
+              "correctAnswers": [0],
+              "explanation": "Солнце (le soleil) est un nom neutre singulier, le verbe светить s'accorde donc au neutre avec la terminaison -ло : светило."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la forme au passé masculin de работать (travailler) ?",
+              "options": ["работал", "работала", "работало", "работали"],
+              "correctAnswers": [0],
+              "explanation": "Au masculin singulier, le verbe работать devient работал (radical работа- + -л)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment traduit-on : 'Les étudiants ont écouté' ?",
+              "options": [
+                "Студенты слушали",
+                "Студенты слушал",
+                "Студенты слушала",
+                "Студенты слушают"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Студенты est au pluriel, donc le verbe écouter au passé prend la terminaison plurielle -ли : слушали."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "L'accord du passé avec le sujet",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Si une fille dit 'j'ai compris', quelle forme doit-elle employer avec я ?",
+              "options": ["Я поняла", "Я понял", "Я поняло", "Я поняли"],
+              "correctAnswers": [0],
+              "explanation": "Les pronoms я et ты prennent la marque du genre de la personne réelle : une femme ou une jeune fille dit 'я поняла'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Avec le pronom de politesse вы (vous singulier ou pluriel), quelle forme utilise-t-on toujours ?",
+              "options": [
+                "La forme en -ли",
+                "La forme en -л",
+                "La forme en -ла",
+                "La forme en -ло"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même quand вы s'adresse à une seule personne par politesse, l'accord grammatical au passé se fait impérativement au pluriel en -ли."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : Анна и Иван вчера ... (гулять) в парке.",
+              "options": ["гуляли", "гулял", "гуляла", "гуляет"],
+              "correctAnswers": [0],
+              "explanation": "Анна и Иван forment un sujet pluriel (ils), le verbe prend donc la terminaison -ли : гуляли."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : Окно ... (быть) открыто.",
+              "options": ["было", "был", "была", "были"],
+              "correctAnswers": [0],
+              "explanation": "Окно (la fenêtre) est un nom neutre, le verbe être au passé prend donc la terminaison du neutre : было."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi ces formes verbales au passé, lesquelles s'accordent avec un sujet féminin ?",
+              "options": ["смотрела", "читала", "писал", "видели"],
+              "correctAnswers": [0, 1],
+              "explanation": "Смотрела et читала portent la désinence féminine -ла. Писал est masculin (-л) et видели est pluriel (-ли)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un garçon raconte : 'Hier, j'ai dîné au restaurant'. Que dit-il ?",
+              "options": [
+                "Вчера я ужинал в ресторане",
+                "Вчера я ужинала в ресторане",
+                "Вчера я ужинали в ресторане",
+                "Вчера я ужинало в ресторане"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un locuteur masculin s'accorde au masculin avec la terminaison -л : я ужинал."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : Мама ... (купить) свежие яблоки.",
+              "options": ["купила", "купил", "купили", "купило"],
+              "correctAnswers": [0],
+              "explanation": "Мама est un nom féminin singulier, donc купила prend la marque du féminin -ла."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : Мы вчера долго ... (разговаривать).",
+              "options": [
+                "разговаривали",
+                "разговаривал",
+                "разговаривала",
+                "разговаривает"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le pronom personnel мы (nous), la terminaison du passé est -ли : разговаривали."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tu t'adresses poliment à ta professeure (Анна Павловна). Que lui demandes-tu ?",
+              "options": [
+                "Вы прочитали этот текст ?",
+                "Вы прочитала этот текст ?",
+                "Вы прочитал этот текст ?",
+                "Вы прочитало этот текст ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le pronom de politesse вы, on emploie toujours la forme plurielle en -ли : прочитали."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase est correctement accordée avec le mot радио (la radio, neutre indéclinable) ?",
+              "options": [
+                "Радио играло весь день",
+                "Радио играл весь день",
+                "Радио играла весь день",
+                "Радио играли весь день"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Радио est un nom d'origine étrangère neutre indéclinable ; le verbe au passé se met donc au neutre : играло."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Verbes irréguliers et particuliers au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le passé masculin singulier du verbe идти (aller à pied) ?",
+              "options": ["шёл", "идтил", "идел", "шедил"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe идти a un radical complètement irrégulier au passé : шёл au masculin singulier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le passé féminin singulier du verbe идти (aller à pied) ?",
+              "options": ["шла", "шёла", "идла", "шела"],
+              "correctAnswers": [0],
+              "explanation": "Au féminin, le radical est ш- suivi de la désinence -ла : шла."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le passé pluriel du verbe идти ?",
+              "options": ["шли", "шёли", "идли", "шлы"],
+              "correctAnswers": [0],
+              "explanation": "Au pluriel (ils, nous, vous allaient), la forme est шли."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le passé masculin du verbe мочь (pouvoir) ?",
+              "options": ["мог", "мочил", "могел", "могл"],
+              "correctAnswers": [0],
+              "explanation": "Les verbes en -чь perdent souvent le -л au masculin singulier après consonne : он мог."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes du passé correspondent au verbe идти (aller à pied) ?",
+              "options": ["шёл", "шла", "шли", "ехало"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les formes du passé de идти sont шёл (masc.), шла (fém.), шло (neutre) et шли (pluriel). Ехало vient du verbe ехать."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le passé féminin du verbe мочь (pouvoir) ?",
+              "options": ["могла", "мокла", "мочила", "можа"],
+              "correctAnswers": [0],
+              "explanation": "Au féminin, le suffixe -л- réapparaît devant la voyelle -а : она могла."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le passé masculin du verbe умереть (mourir) ?",
+              "options": ["умер", "умерел", "умерл", "умёр"],
+              "correctAnswers": [0],
+              "explanation": "Au masculin passé, умереть perd sa finale et ne prend pas de -л : он умер (mais она умерла, они умерли)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le passé pluriel du verbe мочь (pouvoir) ?",
+              "options": ["могли", "мокли", "могили", "могут"],
+              "correctAnswers": [0],
+              "explanation": "Au pluriel, la forme est они могли (avec -г- et terminaison -ли)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : Автобус ... (идти) медленно.",
+              "options": ["шёл", "шла", "шло", "шли"],
+              "correctAnswers": [0],
+              "explanation": "Автобус est un nom masculin singulier, on emploie donc le masculin passé шёл."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la forme au neutre singulier du passé de идти ?",
+              "options": ["шло", "шёл", "шла", "шли"],
+              "correctAnswers": [0],
+              "explanation": "Au neutre singulier (ex: время шло = le temps passait), on emploie шло."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les verbes pronominaux et réfléchis (-ся / -сь)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle particule réfléchie ajoute-t-on après une consonne comme la désinence -л au masculin passé ?",
+              "options": ["-ся", "-сь", "-се", "-са"],
+              "correctAnswers": [0],
+              "explanation": "Après une consonne (comme le -л masculin), la particule réfléchie s'écrit -ся (ex: он одевался)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle particule réfléchie s'ajoute après une voyelle comme -а (féminin) ou -и (pluriel) au passé ?",
+              "options": ["-сь", "-ся", "-си", "-се"],
+              "correctAnswers": [0],
+              "explanation": "Après une voyelle (-ла, -ло, -ли), la particule réfléchie se réduit en -сь (ex: она оделась, они оделись)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le passé masculin du verbe одеваться (s'habiller) ?",
+              "options": ["одевался", "одевалась", "одевалось", "одевались"],
+              "correctAnswers": [0],
+              "explanation": "Au masculin singulier, la terminaison est -л suivie de la consonne qui exige -ся : одевался."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le passé féminin du verbe одеваться (s'habiller) ?",
+              "options": ["одевалась", "одевался", "одевалася", "одевались"],
+              "correctAnswers": [0],
+              "explanation": "Au féminin singulier : одева- + -ла + -сь = одевалась (jamais -лася en russe moderne standard)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes verbales réfléchies au passé se terminent correctement par -сь ?",
+              "options": [
+                "одевалась (féminin singulier)",
+                "учились (pluriel)",
+                "проснулся (masculin singulier)",
+                "вернулось (neutre singulier)"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Après voyelle (-а, -и, -о), la particule devient -сь : одевалась, учились, вернулось. Au masculin (-л), elle reste -ся : проснулся."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le pluriel passé du verbe учиться (étudier / apprendre) ?",
+              "options": ["учились", "учился", "училась", "училися"],
+              "correctAnswers": [0],
+              "explanation": "Au pluriel : учи- + -ли + -сь = учились."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une lycéenne dit : 'Aujourd'hui je me suis réveillée tard'. Que dit-elle ?",
+              "options": [
+                "Сегодня я поздно проснулась",
+                "Сегодня я поздно проснулся",
+                "Сегодня я поздно проснулись",
+                "Сегодня я поздно проснулось"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une femme ou jeune fille utilise la forme féminine en -лась : проснулась."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez pour un sujet masculin : Он быстро ... (умыться au passé).",
+              "options": ["умылся", "умылась", "умылись", "умылось"],
+              "correctAnswers": [0],
+              "explanation": "Avec он (masculin), on utilise la forme en -лся : умылся."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : Дети весело ... (смеяться au passé).",
+              "options": ["смеялись", "смеялся", "смеялась", "смеялось"],
+              "correctAnswers": [0],
+              "explanation": "Дети (les enfants) est un pluriel ; le verbe prend donc la forme plurielle -лись : смеялись."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on 'мы встретились' avec -сь et non -ся ?",
+              "options": [
+                "Parce que la désinence -ли se termine par une voyelle",
+                "Parce que c'est une exception sans règle",
+                "Parce que le sujet est au masculin",
+                "Parce que le verbe est transitif direct"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En russe, la particule pronominale s'écrit -сь après toute désinence verbale terminée par une voyelle (-и, -а, -о)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Le verbe быть au passé et la possession",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment dit-on 'J'avais un livre' (книга = féminin) ?",
+              "options": [
+                "У меня была книга",
+                "У меня был книга",
+                "У меня было книга",
+                "У меня были книга"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la construction 'у меня + verbe быть + sujet', le verbe быть s'accorde avec le nom possédé : книга étant féminin, on utilise была."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Il avait un frère' (брат = masculin) ?",
+              "options": [
+                "У него был брат",
+                "У него была брат",
+                "У него было брат",
+                "У него были брат"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Брат étant masculin singulier, le verbe s'accorde au masculin : был."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Nous avions du temps' (время = neutre) ?",
+              "options": [
+                "У нас было время",
+                "У нас был время",
+                "У нас была время",
+                "У нас были время"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Время est un nom neutre en -мя ; le verbe être au passé s'accorde donc au neutre singulier : было."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Vous aviez des billets' (билеты = pluriel) ?",
+              "options": [
+                "У вас были билеты",
+                "У вас был билеты",
+                "У вас была билеты",
+                "У вас было билеты"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Билеты étant au pluriel, le verbe être se met au pluriel passé : были."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases expriment correctement une possession au passé en russe ?",
+              "options": [
+                "У меня был кот",
+                "У нас были друзья",
+                "У него была сестра",
+                "У меня есть была книга"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "On accorde le verbe être avec le nom : кот (masc. -> был), друзья (plur. -> были), сестра (fém. -> была). La combinaison 'есть была' est impossible."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Où se place l'accent tonique dans la forme féminine de быть au passé (была) ?",
+              "options": [
+                "Sur la dernière syllabe : была́",
+                "Sur la première syllabe : бы́ла",
+                "L'accent est mobile et facultatif",
+                "Sur aucune, le mot est atone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au féminin passé de быть, l'accent se déplace sur la désinence finale : была́ (contrairement à бы́л, бы́ло, бы́ли)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on l'absence au passé ('Il n'y avait pas de cours' / 'Je n'avais pas de temps') ?",
+              "options": [
+                "Avec 'не было' suivi du génitif",
+                "Avec 'не был' suivi du nominatif",
+                "Avec 'нет был' suivi de l'accusatif",
+                "Avec 'не были' suivi du datif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absence ou la non-possession au passé s'exprime par la forme impersonnelle neutre 'не было' suivie du génitif (ex: у меня не было времени)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : Вчера погода ... (быть) отличная.",
+              "options": ["была", "был", "было", "были"],
+              "correctAnswers": [0],
+              "explanation": "Погода (la météo / le temps) est un nom féminin singulier : погода была отличная."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : Вчера на улице ... (быть) холодно.",
+              "options": ["было", "был", "была", "были"],
+              "correctAnswers": [0],
+              "explanation": "Dans une tournure impersonnelle avec un adverbe d'état (холодно, жарко, интересно), le verbe être se met au neutre : было холодно."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment traduit-on : 'Hier, nous n'avions pas de cours' ?",
+              "options": [
+                "Вчера у нас не было уроков",
+                "Вчера у нас не были уроки",
+                "Вчера у нас нет были уроков",
+                "Вчера у нас не был уроки"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour nier l'existence au passé, on utilise invariablement 'не было' + génitif pluriel : не было уроков."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Raconter sa journée : matin, après-midi, soir",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie : Утром я встал в семь часов ?",
+              "options": [
+                "Le matin, je me suis levé à sept heures",
+                "Le matin, je me lève à huit heures",
+                "Demain matin, je me lèverai à sept heures",
+                "Hier soir, je me suis couché à sept heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Утром = le matin ; я встал (verbe встать au passé masculin) = je me suis levé ; в семь часов = à sept heures."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complétez : Утром мы вкусно ... (завтракать au passé).",
+              "options": [
+                "завтракали",
+                "завтракал",
+                "завтракала",
+                "завтракаем"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le pronom мы (nous), la désinence du passé est -ли : завтракали (nous avons pris le petit-déjeuner)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une élève raconte : 'Hier après-midi, j'ai fait mes devoirs'. Que dit-elle ?",
+              "options": [
+                "Вчера днём я делала уроки",
+                "Вчера днём я делал уроки",
+                "Вчера днём я делали уроки",
+                "Вчера днём я делаю уроки"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une locutrice féminine au passé : я делала уроки. Днём signifie 'dans la journée / l'après-midi'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie : Вечером мы смотрели фильм ?",
+              "options": [
+                "Le soir, nous avons regardé un film",
+                "Ce soir, nous allons regarder un film",
+                "L'après-midi, ils regardent un film",
+                "Hier matin, j'ai regardé un film"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Вечером = le soir ; мы смотрели = nous avons regardé / regardions ; фильм = un film."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases décrivent une action matinale au passé ?",
+              "options": [
+                "Утром я пил чай",
+                "В восемь утра он пошёл в школу",
+                "Ночью все спали",
+                "Поздно вечером мы ужинали"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Утром я пил чай' et 'В восемь утра он пошёл в школу' situent l'action le matin. Les deux autres se déroulent la nuit ou tard le soir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : Она ... (пообедать) в школьной столовой.",
+              "options": ["пообедала", "пообедал", "пообедали", "пообедало"],
+              "correctAnswers": [0],
+              "explanation": "Она est féminin singulier : пообедала (elle a déjeuné)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : Вечером вся семья ... (ужинать au passé) дома.",
+              "options": ["ужинала", "ужинал", "ужинали", "ужинало"],
+              "correctAnswers": [0],
+              "explanation": "Семья (la famille) est un nom collectif féminin singulier, le verbe s'accorde au féminin : семья ужинала."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un garçon dit : 'Hier soir, je me suis couché tard'. Quelle est la bonne traduction ?",
+              "options": [
+                "Вчера вечером я лёг спать поздно",
+                "Вчера вечером я легла спать поздно",
+                "Вчера вечером я легли спать поздно",
+                "Вчера вечером я ложится поздно"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe лечь (se coucher) fait лёг au masculin passé (et легла au féminin) : я лёг спать."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la phrase : После школы я отдыхал ?",
+              "options": [
+                "Après l'école, je me reposais / je me suis reposé",
+                "Avant l'école, je faisais mes devoirs",
+                "Pendant l'école, je dormais",
+                "Après le dîner, je suis sorti"
+              ],
+              "correctAnswers": [0],
+              "explanation": "После школы = après l'école ; отдыхал = je me reposais (passé masculin de отдыхать)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : Днём ученики ... (писать au passé) контрольную работу.",
+              "options": ["писали", "писал", "писала", "пишут"],
+              "correctAnswers": [0],
+              "explanation": "Ученики (les élèves) est un sujet pluriel, d'où la terminaison -ли : писали."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Déplacements et sorties d'hier (ходить, ездить, пойти, поехать)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la valeur typique de ходил par rapport à пошёл pour parler d'hier ?",
+              "options": [
+                "Ходил indique un déplacement aller-retour accompli",
+                "Ходил indique qu'on est encore sur place",
+                "Пошёл signifie qu'on est déjà rentré chez soi",
+                "Il n'y a aucune différence d'emploi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au passé, le verbe multidirectionnel ходил exprime qu'on est allé quelque part et qu'on en est revenu (aller-retour)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un garçon dit : 'Hier, je suis allé au cinéma (et j'en suis revenu)'. Que dit-il ?",
+              "options": [
+                "Вчера я ходил в кино",
+                "Вчера я пошёл в кино",
+                "Вчера я шла в кино",
+                "Вчера я едет в кино"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour exprimer la sortie au cinéma avec retour au point de départ, on utilise le passé de ходить : я ходил в кино."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on : 'Hier, nous sommes allés à Moscou (en train/véhicule, aller-retour)' ?",
+              "options": [
+                "Вчера мы ездили в Москву",
+                "Вчера мы ходили в Москву",
+                "Вчера мы поехали в Москву",
+                "Вчера мы едем в Москву"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour un trajet aller-retour en moyen de transport, on utilise le verbe multidirectionnel ездить au passé : ездили."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : Вчера Анна ... (ездить au passé) в деревню к бабушке.",
+              "options": ["ездила", "ездил", "ездили", "ездит"],
+              "correctAnswers": [0],
+              "explanation": "Анна étant un sujet féminin, le verbe ездить s'accorde au féminin singulier : ездила."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels verbes au passé expriment un déplacement aller-retour déjà effectué ?",
+              "options": [
+                "он ходил в музей",
+                "мы ездили на дачу",
+                "он пошёл в магазин",
+                "они поехали в театр"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ходил et ездили sont des verbes multidirectionnels qui traduisent l'aller-retour. Пошёл et поехали marquent le départ ou le début du mouvement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie exactement la phrase : Иван пошёл в магазин ?",
+              "options": [
+                "Ivan est parti au magasin / s'est mis en route",
+                "Ivan est allé au magasin et est déjà rentré",
+                "Ivan va tous les jours au magasin",
+                "Ivan n'est jamais allé au magasin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Пошёл (du verbe perfectif пойти) indique le départ ou la mise en route ; la personne n'est pas encore rentrée au moment considéré."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : Куда вы ... (ходить au passé) в субботу ?",
+              "options": ["ходили", "ходил", "ходила", "ходило"],
+              "correctAnswers": [0],
+              "explanation": "Avec le pronom вы, la forme verbale se termine toujours par -ли : вы ходили."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la forme au passé du verbe поехать avec le pronom мы ?",
+              "options": ["поехали", "поехал", "поехала", "поедем"],
+              "correctAnswers": [0],
+              "explanation": "Au passé avec мы, le verbe prend la terminaison plurielle -ли : мы поехали (nous sommes partis en véhicule)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel verbe employer pour raconter qu'on s'est promené longtemps à pied dans le parc hier ?",
+              "options": ["гулял / гуляла", "побежал", "улетел", "приплыл"],
+              "correctAnswers": [0],
+              "explanation": "Гулять signifie se promener ; au passé : я гулял (garçon) ou я гуляла (fille)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : Вчера они долго ... (гулять au passé) по центру города.",
+              "options": ["гуляли", "гулял", "гуляла", "гуляет"],
+              "correctAnswers": [0],
+              "explanation": "Они est pluriel, donc le verbe prend la désinence -ли : гуляли."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Loisirs, lecture et activités culturelles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment un garçon dit-il : 'Hier, j'ai lu un livre intéressant' ?",
+              "options": [
+                "Вчера я читал интересную книгу",
+                "Вчера я читала интересную книгу",
+                "Вчера я читали интересную книгу",
+                "Вчера я читает интересную книгу"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un locuteur masculin emploie la terminaison -л : я читал."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on : 'Nous avons écouté de la musique russe' ?",
+              "options": [
+                "Мы слушали русскую музыку",
+                "Мы слушал русскую музыку",
+                "Мы слушала русскую музыку",
+                "Мы слушаем русскую музыку"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le pronom мы, le verbe écouter (слушать) se met au pluriel passé : слушали."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : Вчера вечером они ... (играть au passé) в шахматы.",
+              "options": ["играли", "играл", "играла", "играет"],
+              "correctAnswers": [0],
+              "explanation": "Они est au pluriel, la forme du verbe au passé est играли."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on : 'Elle a dessiné un beau paysage' ?",
+              "options": [
+                "Она рисовала красивый пейзаж",
+                "Она рисовал красивый пейзаж",
+                "Она рисовали красивый пейзаж",
+                "Она рисует красивый пейзаж"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Она est féminin singulier : рисовала (du verbe рисовать)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases décrivent une activité culturelle accomplie au passé ?",
+              "options": [
+                "Мы смотрели спектакль в театре",
+                "Вчера она читала исторический роман",
+                "Завтра мы пойдём в цирк",
+                "Сейчас я слушаю радио"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Мы смотрели спектакль...' et 'Вчера она читала...' sont au passé. Les deux autres sont au futur ou au présent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : Ты ... (видеть au passé, masc.) новый русский фильм ?",
+              "options": ["видел", "видела", "видели", "видело"],
+              "correctAnswers": [0],
+              "explanation": "Au masculin singulier, le verbe видеть devient видел."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la phrase : Вчера мы посетили Эрмитаж ?",
+              "options": [
+                "Hier, nous avons visité l'Ermitage",
+                "Demain, nous visiterons l'Ermitage",
+                "Chaque semaine, nous allons à l'Ermitage",
+                "Hier, nous sommes passés devant l'Ermitage sans entrer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Посетили est le passé pluriel de посетить (visiter) ; Эрмитаж est le célèbre musée de Saint-Pétersbourg."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : На концерте певица прекрасно ... (петь au passé).",
+              "options": ["пела", "пел", "пели", "пело"],
+              "correctAnswers": [0],
+              "explanation": "Певица (la chanteuse) est un sujet féminin, donc le verbe петь fait пела."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment un garçon dit-il : 'J'ai joué de la guitare' ?",
+              "options": [
+                "Я играл на гитаре",
+                "Я играла на гитаре",
+                "Я играли на гитаре",
+                "Я играю на гитаре"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un locuteur masculin emploie la terminaison -л : я играл. Jouer d'un instrument se construit avec на + locatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : Туристы долго ... (фотографировать au passé) Красную площадь.",
+              "options": [
+                "фотографировали",
+                "фотографировал",
+                "фотографировала",
+                "фотографирует"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Туристы est pluriel, le verbe prend la désinence -ли : фотографировали."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Dialogues au passé : poser des questions sur hier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment demande-t-on à un ami ce qu'il a fait hier ?",
+              "options": [
+                "Что ты делал вчера ?",
+                "Что ты делаешь вчера ?",
+                "Что ты будешь делать вчера ?",
+                "Что ты сделал завтра ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour interroger un ami masculin sur ses activités d'hier, on utilise l'imperfectif au passé : Что ты делал вчера ?"
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment demande-t-on poliment à une professeure où elle était hier ?",
+              "options": [
+                "Где вы были вчера ?",
+                "Где вы была вчера ?",
+                "Где вы был вчера ?",
+                "Где ты была вчера ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le pronom de politesse вы, on emploie toujours la forme plurielle : были."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment répondre affirmativement et sobrement à la question : Ты читал эту книгу ?",
+              "options": [
+                "Да, читал",
+                "Да, читаю",
+                "Да, читать",
+                "Да, буду читать"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En russe, la réponse brève reprend couramment le verbe au même temps : 'Да, читал' (ou 'Да, читала' si c'est une fille)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la question : С кем ты вчера гулял ?",
+              "options": [
+                "Avec qui t'es-tu promené hier ?",
+                "Où t'es-tu promené hier ?",
+                "Quand t'es-tu promené hier ?",
+                "Pourquoi t'es-tu promené hier ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "С кем est la forme instrumentale de кто précédée de с, signifiant 'avec qui'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles questions permettent de s'informer sur les activités passées d'un camarade ?",
+              "options": [
+                "Что ты делал на выходных ?",
+                "Где ты вчера отдыхал ?",
+                "Куда ты пойдёшь завтра ?",
+                "Что ты сейчас читаешь ?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux premières questions contiennent un verbe au passé (делал, отдыхал). Les deux autres concernent le futur (пойдёшь) ou le présent (читаешь)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment demander à une amie à quelle heure elle est rentrée hier soir ?",
+              "options": [
+                "Во сколько ты вернулась вчера вечером ?",
+                "Во сколько ты вернулся вчера вечером ?",
+                "Во сколько ты возвращаешься вчера вечером ?",
+                "Во сколько вы вернулись завтра вечером ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour s'adresser à une amie (féminin singulier), on accorde le verbe au féminin : вернулась."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que demande la question : Ты смотрел вчера вечерние новости ?",
+              "options": [
+                "As-tu regardé les actualités du soir hier ?",
+                "Vas-tu regarder les actualités ce soir ?",
+                "Aimes-tu les actualités du soir ?",
+                "Où as-tu acheté le journal hier ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ты смотрел вчера = as-tu regardé hier ; вечерние новости = les actualités du soir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment un garçon répond-il négativement à : Ты был вчера на уроке ?",
+              "options": [
+                "Нет, меня не было",
+                "Нет, меня нет",
+                "Нет, я не была",
+                "Нет, я не буду"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour exprimer son absence au passé, la formule standard est 'меня не было' (ou simplement 'нет, я не был')."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment demander : 'Pourquoi n'es-tu pas venu en cours hier ?' (à un camarade) ?",
+              "options": [
+                "Почему ты не пришёл на урок вчера ?",
+                "Почему ты не пришла на урок вчера ?",
+                "Почему ты не приходишь на урок вчера ?",
+                "Почему ты не придёшь на урок вчера ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour un interlocuteur masculin au passé : пришёл (de прийти). Pour une fille, ce serait пришла."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle réplique convient en réponse à la question : Как прошёл твой день ?",
+              "options": [
+                "Всё прошло отлично, спасибо !",
+                "Завтра всё пройдёт хорошо",
+                "Я сейчас иду домой",
+                "Мне очень нравится Москва"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La question portant sur le déroulement de la journée passée ('Как прошёл... ?'), on répond au passé : 'Всё прошло отлично !'."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan Unité 1 : Raconter une journée passée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle phrase est parfaitement correcte pour une lycéenne racontant sa journée d'hier ?",
+              "options": [
+                "Вчера я много читала и гуляла в парке",
+                "Вчера я много читал и гуляла в парке",
+                "Вчера я много читала и гулял в парке",
+                "Вчера я много читали и гуляли в парке"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous les verbes doivent s'accorder de manière cohérente au féminin singulier (-ла) : читала et гуляла."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complétez : Вчера весь день ... (идти au passé) холодный дождь.",
+              "options": ["шёл", "шла", "шло", "шли"],
+              "correctAnswers": [0],
+              "explanation": "Дождь (la pluie) est un nom masculin en russe ; le verbe идти au passé prend la forme masculine шёл."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : Мы ... (быть au passé) очень рады тебя видеть.",
+              "options": ["были", "был", "была", "было"],
+              "correctAnswers": [0],
+              "explanation": "Avec le pronom мы (nous), la forme du verbe être au passé est были."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on : 'Hier, mes parents sont allés au travail' ?",
+              "options": [
+                "Вчера мои родители ходили на работу",
+                "Вчера мои родители ходил на работу",
+                "Вчера мои родители ходила на работу",
+                "Вчера мои родители идут на работу"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Родители (les parents) est pluriel : ходили (aller-retour habituel au travail)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont grammaticalement irréprochables au passé ?",
+              "options": [
+                "Вчера Анна долго читала роман",
+                "Вчера мы были дома и отдыхали",
+                "Вчера он читала и писал письмо",
+                "Вчера окно была открыто"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux premières respectent l'accord en genre et nombre. Dans la 3e, 'он читала' mélange masculin et féminin. Dans la 4e, 'окно' (neutre) exige 'было'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : Утром я выпил чай и ... (съесть au passé, masc.) бутерброд.",
+              "options": ["съел", "съела", "съели", "съест"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe съесть (manger) fait съел au masculin singulier au passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel verbe au passé s'accorde avec le nom neutre время ?",
+              "options": ["летело", "летел", "летела", "летели"],
+              "correctAnswers": [0],
+              "explanation": "Время (le temps) étant neutre, le verbe лететь au passé prend la terminaison -ло : время летело быстро (le temps passait vite)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : Вечером друзья ... (собраться au passé) в кафе.",
+              "options": ["собрались", "собрался", "собралась", "собралось"],
+              "correctAnswers": [0],
+              "explanation": "Друзья est un pluriel ; au passé réfléchi, la terminaison est -ли + -сь = собрались."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on 'он шёл', mais 'она шла' ?",
+              "options": [
+                "Parce que le passé russe s'accorde en genre avec le sujet au singulier",
+                "Parce que ce sont deux verbes d'origine différente",
+                "Parce que 'шла' est au présent",
+                "Parce que la première forme est au subjonctif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En russe, le passé est issu d'un ancien participe et conserve donc l'accord en genre au singulier : masculin -л/ø, féminin -ла, neutre -ло."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Traduisez : 'Hier c'était un beau dimanche'.",
+              "options": [
+                "Вчера было прекрасное воскресенье",
+                "Вчера был прекрасное воскресенье",
+                "Вчера была прекрасное воскресенье",
+                "Вчера были прекрасное воскресенье"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Воскресенье (le dimanche) est un nom neutre en -ье ; le verbe s'accorde au neutre : было."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Hier, avant-hier et le passé immédiat",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le mot russe вчера ?",
+              "options": ["Hier", "Demain", "Aujourd'hui", "Maintenant"],
+              "correctAnswers": [0],
+              "explanation": "Вчера signifie 'hier'. Demain se dit завтра et aujourd'hui сегодня."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on 'avant-hier' en russe ?",
+              "options": ["позавчера", "послезавтра", "сегодня", "раньше"],
+              "correctAnswers": [0],
+              "explanation": "Позавчера signifie 'avant-hier'. Ne pas confondre avec послезавтра qui signifie 'après-demain'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie l'expression temporelle только что ?",
+              "options": [
+                "Tout juste / à l'instant",
+                "Pas encore",
+                "Il y a longtemps",
+                "Tous les jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Только что exprime le passé immédiat : 'venir de' ou 'tout juste / à l'instant' (ex: он только что пришёл)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : ... мы были в кино, а позавчера сидели дома.",
+              "options": ["Вчера", "Завтра", "Послезавтра", "Сейчас"],
+              "correctAnswers": [0],
+              "explanation": "La phrase fait référence à des actions passées ('позавчера сидели дома') ; le marqueur qui convient pour le jour précédent est Вчера."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels marqueurs temporels désignent des moments situés dans le passé récent ?",
+              "options": [
+                "вчера (hier)",
+                "позавчера (avant-hier)",
+                "только что (à l'instant)",
+                "послезавтра (après-demain)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Вчера, позавчера et только что renvoient au passé. Послезавтра renvoie au futur (après-demain)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Traduisez : 'Il vient tout juste d'arriver' (à pied).",
+              "options": [
+                "Он только что пришёл",
+                "Он только что придёт",
+                "Он вчера приходил",
+                "Он сейчас приходит"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Только что s'associe au verbe perfectif au passé pour exprimer le passé immédiat : Он только что пришёл."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mot est l'antonyme temporel direct de завтра (demain) ?",
+              "options": ["вчера", "утром", "потом", "давно"],
+              "correctAnswers": [0],
+              "explanation": "Вчера (hier) s'oppose directement à завтра (demain)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on : 'hier soir' en russe ?",
+              "options": [
+                "вчера вечером",
+                "вчера утром",
+                "вчера ночью",
+                "вчера днём"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour dire 'hier soir', on associe вчера à l'adverbe instrumental вечером : вчера вечером."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on : 'hier matin' ?",
+              "options": [
+                "вчера утром",
+                "вчера днём",
+                "вчера вечером",
+                "вчера ночью"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Hier matin' se dit вчера утром (adverbe instrumental de утро)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie : Я видел его пять минут назад ?",
+              "options": [
+                "Je l'ai vu il y a cinq minutes",
+                "Je vais le voir dans cinq minutes",
+                "Je le vois pendant cinq minutes",
+                "Je ne l'ai pas vu depuis cinq minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot назад placé après une durée exprime le recul dans le passé ('il y a') : пять минут назад = il y a cinq minutes."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Autrefois, jadis et le passé éloigné",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le mot раньше dans un contexte temporel comparatif ?",
+              "options": [
+                "Auparavant / autrefois",
+                "Maintenant",
+                "Bientôt",
+                "Toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Раньше est le comparatif de рано, mais s'utilise couramment comme adverbe signifiant 'avant, autrefois, auparavant'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe давно ?",
+              "options": [
+                "Il y a longtemps / depuis longtemps",
+                "Récemment",
+                "Hier",
+                "Immédiatement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Давно renvoie à un passé éloigné : 'il y a longtemps' ou 'depuis longtemps'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe когда-то ?",
+              "options": [
+                "Autrefois / jadis / un jour dans le passé",
+                "Jamais",
+                "Toujours",
+                "Demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Когда-то renvoie à un moment indéterminé du passé : 'jadis, autrefois, à une époque'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : ... я жил в деревне, а сейчас живу в Москве.",
+              "options": ["Раньше", "Завтра", "Сейчас", "Скоро"],
+              "correctAnswers": [0],
+              "explanation": "Pour contraster avec le présent (а сейчас...), on utilise Раньше (autrefois / avant)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels termes russes renvoient à un passé lointain ou révolu ?",
+              "options": ["раньше", "давно", "когда-то", "скоро"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Раньше, давно et когда-то désignent le passé. Скоро signifie 'bientôt' (futur)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre давно et недавно ?",
+              "options": [
+                "Давно = il y a longtemps ; недавно = récemment",
+                "Давно = bientôt ; недавно = tard",
+                "Давно = hier ; недавно = avant-hier",
+                "Il n'y a aucune différence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe не- inverse le sens : давно (il y a longtemps) vs недавно (récemment, il y a peu de temps)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : Мы не виделись очень ... (il y a bien longtemps).",
+              "options": ["давно", "недавно", "вчера", "завтра"],
+              "correctAnswers": [0],
+              "explanation": "L'expression 'мы не виделись очень давно' signifie 'nous ne nous sommes pas vus depuis très longtemps'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduisez : 'Auparavant, il ne parlait pas russe'.",
+              "options": [
+                "Раньше он не говорил по-русски",
+                "Сейчас он не говорит по-русски",
+                "Завтра он будет говорить по-русски",
+                "Всегда он говорил по-русски"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Auparavant' se traduit par Раньше, associé au passé imperfectif négatif : он не говорил по-русски."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la formule de conte : Давным-давно жили-были дед и баба... ?",
+              "options": [
+                "Il y a fort longtemps, vivaient un grand-père et une grand-mère...",
+                "Hier matin, un vieil homme et une vieille femme sont partis...",
+                "Bientôt vivront un grand-père et une grand-mère...",
+                "Tous les jours vivaient un grand-père et une grand-mère..."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Давным-давно renforce давно et correspond au français 'il y a très longtemps / jadis' dans les contes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez de façon cohérente : Раньше здесь стоял старый дом, а теперь здесь ...",
+              "options": [
+                "новый парк",
+                "был лес",
+                "стояло дерево",
+                "жили люди"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opposition entre 'Раньше... (passé)' et 'а теперь здесь... (présent)' appelle une description de la situation actuelle : новый парк."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La semaine dernière, le mois dernier, l'année dernière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment dit-on 'la semaine dernière' en russe ?",
+              "options": [
+                "на прошлой неделе",
+                "в прошлой неделе",
+                "на прошлом месяце",
+                "прошлую неделю"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec неделя (la semaine), on utilise la préposition на au locatif : на прошлой неделе."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on 'le mois dernier' en russe ?",
+              "options": [
+                "в прошлом месяце",
+                "на прошлом месяце",
+                "в прошлый месяц",
+                "прошлого месяца"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec месяц (le mois), on utilise la préposition в au locatif : в прошлом месяце."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on 'l'année dernière' en russe ?",
+              "options": [
+                "в прошлом году",
+                "на прошлом году",
+                "в прошлом годе",
+                "прошлый год"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec год, le locatif prend la désinence spéciale accentuée -у après la préposition в : в прошлом году."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie l'adjectif прошлый ?",
+              "options": [
+                "Dernier / passé / précédent",
+                "Prochain / futur",
+                "Actuel / présent",
+                "Lointain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Прошлый vient de прошлое (le passé) et qualifie ce qui a précédé : passé, dernier."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions situent correctement une action dans une période passée ?",
+              "options": [
+                "на прошлой неделе",
+                "в прошлом месяце",
+                "в прошлом году",
+                "на будущей неделе"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "На прошлой неделе, в прошлом месяце et в прошлом году renvoient au passé. На будущей неделе signifie 'la semaine prochaine' (futur)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on 'в прошлом году' avec une terminaison en -у et non en -е ?",
+              "options": [
+                "Parce que год a un locatif spécial en -у́ après les prépositions в et на",
+                "Parce que год est un mot neutre",
+                "Parce que c'est un accusatif déguisé",
+                "Parce que c'est une forme archaïque réservée aux dates de naissance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains masculins russes ont une désinence locative accentuée en -у́ quand ils indiquent le lieu ou le temps après в/на (в году, в лесу, на мосту)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : ... мы писали сложный тест по физике.",
+              "options": [
+                "На прошлой неделе",
+                "В прошлой неделе",
+                "На прошлом году",
+                "В прошлую неделю"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expression consacrée est 'на прошлой неделе' (au locatif féminin avec на)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : ... я ездил в Санкт-Петербург на каникулы.",
+              "options": [
+                "В прошлом году",
+                "На прошлой неделе году",
+                "В прошлый год",
+                "В прошлом годе"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expression correcte est 'в прошлом году' (l'année dernière)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduisez : 'Le mois dernier, nous avons acheté une nouvelle voiture'.",
+              "options": [
+                "В прошлом месяце мы купили новую машину",
+                "На прошлом месяце мы купили новую машину",
+                "В следующем месяце мы купили новую машину",
+                "Каждый месяц мы покупали новую машину"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Le mois dernier' = в прошлом месяце ; nous avons acheté = мы купили."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle préposition utilise-t-on avec неделя pour marquer le repère temporel ('la semaine dernière') ?",
+              "options": ["на", "в", "к", "за"],
+              "correctAnswers": [0],
+              "explanation": "En russe, on dit toujours 'на этой неделе' (cette semaine), 'на прошлой неделе' (la semaine dernière) et 'на следующей неделе' (la semaine prochaine)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les jours de la semaine au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment dit-on 'lundi' en tant que moment de l'action en russe ?",
+              "options": [
+                "в понедельник",
+                "на понедельник",
+                "в понедельнике",
+                "понедельником"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour exprimer le jour où se déroule une action, on emploie в + accusatif : в понедельник."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi emploie-t-on 'во' devant вторник (во вторник) ?",
+              "options": [
+                "Pour faciliter la prononciation devant le groupe consonantique вт-",
+                "Parce que вторник est féminin",
+                "Parce que c'est le deuxième jour",
+                "C'est une faute courante à éviter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La préposition в s'élargit en во devant certains groupes de consonnes difficiles à prononcer, notamment вт- (во вторник)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on 'mercredi dernier' en russe ?",
+              "options": [
+                "в прошлую среду",
+                "в прошлой среде",
+                "на прошлой среде",
+                "в прошлый среду"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Среда est féminin ; à l'accusatif singulier après в, on a : в прошлую среду."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle forme prend пятница à l'accusatif dans l'expression 'vendredi dernier' ?",
+              "options": [
+                "в прошлую пятницу",
+                "в прошлой пятнице",
+                "в прошлый пятницу",
+                "на прошлой пятнице"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Пятница est féminin, la terminaison à l'accusatif est -у : в прошлую пятницу."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions temporelles passées avec un jour de la semaine sont correctement formées ?",
+              "options": [
+                "в прошлый вторник (mardi dernier)",
+                "в прошлую субботу (samedi dernier)",
+                "в прошлое воскресенье (dimanche dernier)",
+                "в прошлой понедельник"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'accusatif masculin donne 'в прошлый вторник', le féminin 'в прошлую субботу', le neutre 'в прошлое воскресенье'. La 4e forme est erronée (mélange locatif féminin et nom masculin)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on : 'Dimanche dernier, nous étions au musée' ?",
+              "options": [
+                "В прошлое воскресенье мы были в музее",
+                "В прошлый воскресенье мы были в музее",
+                "На прошлом воскресенье мы были в музее",
+                "В прошлую воскресенье мы были в музее"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Воскресенье est neutre, donc à l'accusatif : в прошлое воскресенье."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : ... (jeudi dernier) он ходил к врачу.",
+              "options": [
+                "В прошлый четверг",
+                "В прошлую четверг",
+                "В прошлое четверг",
+                "На прошлый четверг"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Четверг est masculin, l'accusatif inanimé est identique au nominatif : в прошлый четверг."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on 'samedi dernier' ?",
+              "options": [
+                "в прошлую субботу",
+                "в прошлый субботу",
+                "в прошлой субботе",
+                "на прошлой субботе"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Суббота est féminin : в прошлую субботу."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduisez : 'Mardi dernier, il y avait du vent'.",
+              "options": [
+                "В прошлый вторник было ветрено",
+                "Во прошлый вторник был ветер",
+                "На прошлом вторнике было ветрено",
+                "В прошлую вторник ветрено"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Mardi dernier' = в прошлый вторник ; 'il y avait du vent' = было ветрено (tournure impersonnelle au neutre)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel cas grammatical gouverne la préposition в pour désigner le jour où s'est passée l'action ?",
+              "options": [
+                "L'accusatif",
+                "Le génitif",
+                "Le locatif",
+                "L'instrumental"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour exprimer le jour de la semaine (quand ?), la préposition в régit l'accusatif (в среду, в четверг, в субботу)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Dates, années et repères chronologiques au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment dit-on 'en 2020' au passé en russe ?",
+              "options": [
+                "в две тысячи двадцатом году",
+                "в две тысячи двадцатый год",
+                "в две тысячи двадцать год",
+                "в двух тысячах двадцатом годе"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour situer une action dans une année, on utilise в + adjectif ordinal au locatif en -ом году (seul le dernier chiffre prend la forme ordinale)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on une date précise avec le quantième du mois (ex: 'le premier septembre') au passé ?",
+              "options": [
+                "Au génitif : первого сентября",
+                "Au nominatif : первый сентябрь",
+                "Au locatif : в первом сентябре",
+                "À l'accusatif : в первое сентября"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour répondre à la question 'quand ?' avec une date précise complète, on emploie le génitif sans préposition : первого сентября."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie l'expression temporelle в детстве ?",
+              "options": [
+                "Dans l'enfance / quand j'étais enfant",
+                "À l'école primaire",
+                "Hier après-midi",
+                "L'année dernière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Детство = l'enfance ; в детстве (au locatif) signifie 'pendant l'enfance / dans mon enfance'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie l'expression в юности ?",
+              "options": [
+                "Dans la jeunesse / pendant ma jeunesse",
+                "Dans la vieillesse",
+                "Hier",
+                "Dans le futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Юность = la jeunesse ; в юности = pendant la jeunesse."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions indiquent une période de la vie passée ?",
+              "options": [
+                "в детстве (dans l'enfance)",
+                "в юности (dans la jeunesse)",
+                "в школьные годы (pendant les années d'école)",
+                "в будущем году (l'année prochaine)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "В детстве, в юности et в школьные годы renvoient à des étapes passées de la vie. В будущем году renvoie au futur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : Юрий Гагарин полетел в космос в тысяча девятьсот шестьдесят первом ... .",
+              "options": ["году", "год", "годе", "года"],
+              "correctAnswers": [0],
+              "explanation": "Après la préposition в indiquant l'année, le mot год prend la forme locative en -у : в ... году."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : Учебный год начался ... (le premier septembre).",
+              "options": [
+                "первого сентября",
+                "первый сентябрь",
+                "в первом сентябре",
+                "первому сентябрю"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La date précise en réponse à 'quand ?' se met au génitif : первого сентября."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie l'expression в прошлом веке ?",
+              "options": [
+                "Au siècle dernier",
+                "Au millénaire dernier",
+                "L'année dernière",
+                "Le mois dernier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Век signifie 'siècle' ; в прошлом веке = au siècle dernier (locatif régulier en -е)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduisez : 'Dans mon enfance, j'aimais les contes de fées'.",
+              "options": [
+                "В детстве я любил сказки",
+                "В детство я люблю сказки",
+                "На детстве я любил сказки",
+                "Детством я люблю сказки"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Dans mon enfance' = в детстве ; j'aimais = я любил (masc.) ou любила (fém.). Сказки = les contes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une date d'année en russe (ex: в 1980 году), quel mot se décline au locatif ordinal ?",
+              "options": [
+                "Seul le dernier élément (восьмидесятом)",
+                "Tous les éléments du nombre",
+                "Le premier et le dernier",
+                "Aucun, les nombres restent invariables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un nombre ordinal composé en russe, seul le tout dernier mot prend la désinence ordinale (ex: в тысяча девятьсот восьмидесятом году)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Durée et répétition au passé : долго, часто, каждый день",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel adverbe russe signifie 'longtemps' ?",
+              "options": ["долго", "давно", "скоро", "быстро"],
+              "correctAnswers": [0],
+              "explanation": "Долго exprime la durée d'une action ('longtemps'). Ne pas confondre avec давно ('il y a longtemps')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel adverbe russe signifie 'souvent' ?",
+              "options": ["часто", "редко", "всегда", "иногда"],
+              "correctAnswers": [0],
+              "explanation": "Часто signifie 'souvent'. Son contraire est редко ('rarement')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie l'expression целый день ?",
+              "options": [
+                "Toute la journée",
+                "Tous les jours",
+                "Hier midi",
+                "Dans la journée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Целый день (accusatif de durée) signifie 'toute la journée / la journée entière'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on 'tous les jours / chaque jour' en russe ?",
+              "options": [
+                "каждый день",
+                "целый день",
+                "один день",
+                "вчера день"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Каждый день signifie 'chaque jour / tous les jours'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels marqueurs expriment la répétition habituelle d'une action dans le passé ?",
+              "options": [
+                "часто (souvent)",
+                "каждый день (tous les jours)",
+                "всегда (toujours)",
+                "вдруг (soudain)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Часто, каждый день et всегда marquent l'habitude et la répétition. Вдруг marque au contraire un événement soudain et ponctuel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel adverbe est l'antonyme direct de часто (souvent) ?",
+              "options": ["редко", "долго", "много", "рано"],
+              "correctAnswers": [0],
+              "explanation": "Редко signifie 'rarement', c'est le contraire de часто."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : Вчера мы ... (longtemps) гуляли по набережной.",
+              "options": ["долго", "давно", "всегда", "скоро"],
+              "correctAnswers": [0],
+              "explanation": "Pour mesurer la durée de la promenade d'hier, on utilise l'adverbe долго (pendant longtemps)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe иногда ?",
+              "options": [
+                "Parfois / de temps en temps",
+                "Jamais",
+                "Toujours",
+                "Bientôt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Иногда exprime une fréquence occasionnelle : 'parfois, de temps à autre'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Avec des marqueurs comme долго, целый час ou каждый день, quel aspect verbal emploie-t-on le plus souvent au passé ?",
+              "options": [
+                "L'imperfectif (НСВ)",
+                "Le perfectif (СВ)",
+                "L'impératif",
+                "Le conditionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'imperfectif (НСВ) s'emploie par excellence pour exprimer le processus, la durée (долго) et la répétition (каждый день)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Traduisez : 'Dans mon enfance, nous allions à la mer chaque été'.",
+              "options": [
+                "В детстве каждое лето мы ездили на море",
+                "В детстве каждое лето мы поехали на море",
+                "В детство каждое лето мы едем на море",
+                "В детстве каждое лето мы поедем на море"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La répétition au passé (каждое лето) appelle le verbe de mouvement multidirectionnel imperfectif : мы ездили."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "L'antériorité et la chronologie : сначала, потом, затем",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le mot russe сначала ?",
+              "options": [
+                "D'abord / au début",
+                "Ensuite / puis",
+                "Enfin",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Сначала indique la première étape d'une suite chronologique : 'd'abord, au début'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le mot russe потом ?",
+              "options": [
+                "Ensuite / puis / plus tard",
+                "D'abord",
+                "Hier",
+                "Maintenant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Потом indique l'étape suivante dans le déroulement chronologique : 'ensuite, puis'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel adverbe plus soutenu est synonyme de потом pour marquer l'enchaînement d'actions ?",
+              "options": ["затем", "сейчас", "всегда", "тоже"],
+              "correctAnswers": [0],
+              "explanation": "Затем est un synonyme stylistique plus soutenu de потом, marquant la succession temporelle ('ensuite, par la suite')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie l'expression после этого ?",
+              "options": [
+                "Après cela / ensuite",
+                "Avant cela",
+                "Pendant ce temps",
+                "Sans cela"
+              ],
+              "correctAnswers": [0],
+              "explanation": "После régit le génitif : после этого = après cela."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels mots de liaison permettent d'organiser chronologiquement les étapes d'un récit au passé ?",
+              "options": [
+                "сначала (d'abord)",
+                "потом (ensuite)",
+                "затем (puis)",
+                "потому что (parce que)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Сначала, потом et затем articulent le temps. Потому что exprime la cause et non la chronologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie l'expression наконец dans un récit d'événements passés ?",
+              "options": [
+                "Enfin / finalement",
+                "Au début",
+                "Soudain",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Наконец marque le terme d'une attente ou la dernière étape d'un récit : 'enfin'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : ... я сделал уроки, а потом пошёл гулять.",
+              "options": ["Сначала", "Затем", "Наконец", "После"],
+              "correctAnswers": [0],
+              "explanation": "L'antithèse avec 'а потом' appelle en ouverture 'Сначала' (D'abord j'ai fait mes devoirs, puis je suis allé me promener)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez la suite logique : Сначала мы пообедали, ... посмотрели новый фильм.",
+              "options": ["затем", "сначала", "до того", "раньше"],
+              "correctAnswers": [0],
+              "explanation": "Pour marquer la deuxième étape après сначала, on emploie затем (ou потом)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie l'expression до этого ?",
+              "options": [
+                "Avant cela",
+                "Après cela",
+                "Pendant cela",
+                "Grâce à cela"
+              ],
+              "correctAnswers": [0],
+              "explanation": "До + génitif indique l'antériorité : до этого = avant cela."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Traduisez : 'D'abord nous avons discuté, après cela nous sommes rentrés à la maison'.",
+              "options": [
+                "Сначала мы поговорили, после этого пошли домой",
+                "Потом мы поговорили, сначала пошли домой",
+                "Сначала мы говорим, затем идём домой",
+                "После этого мы говорили, потом пошли домой"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La succession logique s'exprime par 'Сначала мы поговорили, после этого пошли домой'."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Le moment soudain et ponctuel : вдруг, сразу, неожиданно",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le mot russe вдруг ?",
+              "options": [
+                "Soudain / tout à coup",
+                "Toujours",
+                "Lentement",
+                "Hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Вдруг exprime un événement soudain et imprévu : 'tout à coup, soudain'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe сразу ?",
+              "options": [
+                "Tout de suite / immédiatement",
+                "Plus tard",
+                "Jamais",
+                "Autrefois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Сразу signifie 'immédiatement, sur-le-champ, tout de suite'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe неожиданно ?",
+              "options": [
+                "De manière inattendue / à l'improviste",
+                "Comme prévu",
+                "Lentement",
+                "Souvent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Неожиданно vient de ожидать (attendre) avec préfixe négatif не- : 'de façon inattendue, inopinément'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel aspect verbal suit le plus souvent вдруг pour désigner une action brusque qui survient ?",
+              "options": [
+                "Le perfectif (СВ)",
+                "L'imperfectif (НСВ)",
+                "L'infinitif sans accord",
+                "Le passif présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un événement soudain et ponctuel (вдруг) s'exprime naturellement par un verbe perfectif (ex: вдруг пошёл дождь, вдруг зазвонил телефон)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels adverbes soulignent la rapidité ou la soudaineté d'un événement au passé ?",
+              "options": [
+                "вдруг (soudain)",
+                "неожиданно (de façon inattendue)",
+                "сразу (tout de suite)",
+                "долго (longtemps)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Вдруг, неожиданно et сразу expriment l'instantanéité et la soudaineté. Долго exprime la durée prolongée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : Мы гуляли в парке, и ... (soudain) пошёл сильный дождь.",
+              "options": ["вдруг", "долго", "раньше", "всегда"],
+              "correctAnswers": [0],
+              "explanation": "La survenue soudaine de la pluie au milieu de la promenade s'introduit par вдруг."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Traduisez : 'Dès qu'il est entré, il a tout de suite compris'.",
+              "options": [
+                "Как только он вошёл, он сразу понял",
+                "Когда он вошёл, он долго понимал",
+                "Он вошёл и потом никогда не понял",
+                "Как только он входит, он сразу понимает"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Как только = dès que ; вошёл = est entré ; сразу понял = a tout de suite compris."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie l'expression в тот же момент ?",
+              "options": [
+                "Au même instant / au même moment",
+                "Un jour plus tard",
+                "Bien avant",
+                "De temps en temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Тот же signifie 'le même' : в тот же момент = au même instant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : В тишине комнаты ... (de façon inattendue) зазвонил телефон.",
+              "options": ["неожиданно", "медленно", "каждый день", "никогда"],
+              "correctAnswers": [0],
+              "explanation": "Le téléphone qui retentit dans le silence de façon imprévue appelle l'adverbe неожиданно."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase traduit correctement : 'Soudain, la porte s'est ouverte' ?",
+              "options": [
+                "Вдруг дверь открылась",
+                "Вдруг дверь открывалась",
+                "Всегда дверь открылась",
+                "Сначала дверь открывается"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action ponctuelle soudaine au passé s'exprime avec вдруг et le verbe perfectif : открылась."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Déjà, pas encore et la négation : уже, ещё не",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le mot russe уже ?",
+              "options": ["Déjà", "Pas encore", "Toujours", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Уже signifie 'déjà' (ex: он уже пришёл = il est déjà arrivé)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on 'pas encore' en russe ?",
+              "options": ["ещё не", "уже не", "никогда не", "только не"],
+              "correctAnswers": [0],
+              "explanation": "Ещё не signifie 'pas encore' (ex: я ещё не читал = je n'ai pas encore lu)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie la phrase : Он уже прочитал эту книгу ?",
+              "options": [
+                "Il a déjà lu ce livre",
+                "Il n'a pas encore lu ce livre",
+                "Il lit ce livre actuellement",
+                "Il lira bientôt ce livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Уже + verbe perfectif au passé indique que l'action est déjà accomplie et son résultat acquis."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment une élève dit-elle : 'Je n'ai pas encore fait mes devoirs' ?",
+              "options": [
+                "Я ещё не сделала уроки",
+                "Я уже не сделала уроки",
+                "Я ещё не сделал уроки",
+                "Я ещё делаю уроки"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Pas encore' = ещё не ; pour une fille, le verbe s'accorde au féminin passé : сделала."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases combinent correctement un marqueur d'accomplissement avec un verbe au passé ?",
+              "options": [
+                "Мы уже закончили работу",
+                "Они ещё не вернулись домой",
+                "Я уже прочитал статью",
+                "Он ещё не закончил завтра"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les trois premières phrases associent harmonieusement уже ou ещё не à un passé. La 4e est contradictoire (passé закончил avec завтра)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la différence entre 'он уже ушёл' et 'он ещё не ушёл' ?",
+              "options": [
+                "'Он уже ушёл' = il est déjà parti ; 'он ещё не ушёл' = il n'est pas encore parti",
+                "'Он уже ушёл' = il va partir ; 'он ещё не ушёл' = il ne partira jamais",
+                "'Он уже ушёл' = il partait ; 'он ещё не ушёл' = il est parti hier",
+                "Il n'y a aucune différence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Уже marque l'accomplissement préalable ; ещё не indique que l'action attendue ne s'est pas encore produite."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : Когда мы пришли на вокзал, поезд ... ушёл.",
+              "options": ["уже", "ещё", "никогда", "всегда"],
+              "correctAnswers": [0],
+              "explanation": "Le train était déjà parti avant l'arrivée en gare : поезд уже ушёл."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment demander à un ami : 'As-tu déjà dîné ?' ?",
+              "options": [
+                "Ты уже поужинал ?",
+                "Ты ещё поужинал ?",
+                "Ты уже ужинаешь ?",
+                "Ты не ужинал завтра ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour interroger sur le résultat accompli, on emploie уже + verbe perfectif au passé : Ты уже поужинал ?"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : Мы ждали Ивана, потому что он ... не пришёл.",
+              "options": ["ещё", "уже", "тоже", "очень"],
+              "correctAnswers": [0],
+              "explanation": "L'attente s'explique par le fait qu'il n'était pas encore arrivé : он ещё не пришёл."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Traduisez : 'Hier à midi, elle était déjà rentrée'.",
+              "options": [
+                "Вчера в полдень она уже вернулась",
+                "Вчера в полдень она ещё вернулась",
+                "Вчера в полночь она уже вернётся",
+                "Вчера днём она не вернулась ещё"
+              ],
+              "correctAnswers": [0],
+              "explanation": "В полдень = à midi ; она уже вернулась = elle était déjà rentrée (accord féminin singulier)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan Unité 2 : Maîtrise des marqueurs temporels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel marqueur temporel choisir pour une action qui s'est déroulée hier soir ?",
+              "options": [
+                "вчера вечером",
+                "завтра утром",
+                "сейчас днём",
+                "послезавтра ночью"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Hier soir' se dit sans ambiguïté вчера вечером en russe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complétez : ... неделе мы успешно сдали экзамен по истории.",
+              "options": ["На прошлой", "В прошлой", "На прошлом", "В прошлую"],
+              "correctAnswers": [0],
+              "explanation": "L'expression temporelle correcte pour 'la semaine dernière' est 'На прошлой неделе'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Choisissez la phrase respectant la chronologie logique des actions d'hier :",
+              "options": [
+                "Сначала мы позавтракали, а потом пошли в школу",
+                "Потом мы позавтракали, а сначала пошли в школу",
+                "Сначала мы пошли в школу, до этого позавтракали потом",
+                "Наконец мы позавтракали, а сначала оделись"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'articulation 'Сначала..., а потом...' présente l'enchaînement logique naturel des faits."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : ... погода была солнечная и тёплая.",
+              "options": ["Вчера", "Завтра", "Послезавтра", "Скоро"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe étant au passé (была), seul le marqueur Вчера convient."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels repères temporels russes renvoient sans équivoque au passé ?",
+              "options": [
+                "в прошлом году",
+                "позавчера",
+                "раньше",
+                "через два дня"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "В прошлом году, позавчера et раньше situent l'action dans le passé. Через два дня signifie 'dans deux jours' (futur)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie : В прошлый четверг мы ходили в театр ?",
+              "options": [
+                "Jeudi dernier, nous sommes allés au théâtre",
+                "Mardi dernier, nous étions au cinéma",
+                "Jeudi prochain, nous irons au théâtre",
+                "Chaque jeudi, nous allons au théâtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "В прошлый четверг = jeudi dernier ; мы ходили = nous sommes allés (aller-retour)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : Он окончил школу пять лет ... (il y a cinq ans).",
+              "options": ["назад", "после", "раньше", "потом"],
+              "correctAnswers": [0],
+              "explanation": "Pour traduire 'il y a' suivi d'une durée, on place l'adverbe назад après la durée : пять лет назад."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie l'expression два дня назад ?",
+              "options": [
+                "Il y a deux jours",
+                "Dans deux jours",
+                "Pendant deux jours",
+                "Depuis deux jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Два дня назад signifie 'il y a deux jours'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduisez : 'Auparavant, nous n'avions pas d'ordinateur portable'.",
+              "options": [
+                "Раньше у нас не было ноутбука",
+                "Раньше у нас не был ноутбук",
+                "Вчера у нас нет ноутбука",
+                "Потом у нас не было ноутбук"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Auparavant' = Раньше ; l'absence au passé se traduit par 'не было' + génitif : не было ноутбука."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte pour exprimer une action longue accomplie hier ?",
+              "options": [
+                "Вчера мы долго смотрели интересный фильм",
+                "Вчера мы давно смотрели интересный фильм",
+                "Вчера мы скоро смотрели интересный фильм",
+                "Вчера мы потом смотрели интересный фильм"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour indiquer la durée prolongée de l'action passée, on emploie l'adverbe долго : долго смотрели."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

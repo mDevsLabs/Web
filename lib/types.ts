@@ -30,7 +30,6 @@ import type { imageGenerate } from "./ai/tools/image-generate";
 import type { memory } from "./ai/tools/memory";
 import type { note } from "./ai/tools/note";
 import type { qrCodeGenerator } from "./ai/tools/qr-code-generator";
-import type { quizzly } from "./ai/tools/quizzly";
 import type { readUrl } from "./ai/tools/read-url";
 import type { requestSuggestions } from "./ai/tools/request-suggestions";
 import type { updateAccountProfile } from "./ai/tools/update-account-profile";
@@ -90,7 +89,23 @@ type cryptoToolsTool = InferUITool<typeof cryptoTools>;
 type currencyConverterTool = InferUITool<typeof currencyConverter>;
 type qrCodeGeneratorTool = InferUITool<typeof qrCodeGenerator>;
 type askUserTool = InferUITool<typeof askUser>;
-type quizzlyTool = InferUITool<typeof quizzly>;
+type quizzlyTool = {
+  input: {
+    difficulty?: "facile" | "moyen" | "difficile" | "expert";
+    domain?: string;
+    questions: {
+      correctAnswers: number[];
+      explanation: string;
+      id: string;
+      options: string[];
+      question: string;
+      type: "single_choice" | "multiple_choice";
+    }[];
+    theme: string;
+    title: string;
+  };
+  output: unknown;
+};
 type updateAccountProfileTool = InferUITool<
   ReturnType<typeof updateAccountProfile>
 >;

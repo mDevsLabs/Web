@@ -19,10 +19,12 @@
 
 import { type ReasoningDetail, readReasoningDetails } from "@/lib/agent/usage";
 
-/** Plafonds : 20 blocs, 256 Ko de texte cumulé, 1 Mo de ligne non terminée. */
+/** Plafonds : 20 blocs et 256 Ko pour la collecte, 1 Mo de ligne non terminée. */
 const MAX_BLOCKS = 20;
 const MAX_TEXT_BYTES = 256 * 1024;
 const MAX_LINE_BYTES = 1024 * 1024;
+/** L'affichage va plus loin que la collecte : une réflexion longue doit rester lisible. */
+const MAX_DISPLAY_BYTES = 2 * 1024 * 1024;
 
 export type ReasoningDetailsSink = {
   /** Détails collectés depuis le dernier `reset()`. */
@@ -72,7 +74,7 @@ export function createReasoningDetailsSink(): ReasoningDetailsSink {
 
   const emit = (raw: string) => {
     const text = typeof raw === "string" ? raw : "";
-    if (!text || emittedBytes >= MAX_TEXT_BYTES) {
+    if (!text || emittedBytes >= MAX_DISPLAY_BYTES) {
       return;
     }
     if (text === lastEmitted) {
@@ -99,7 +101,7 @@ export function createReasoningDetailsSink(): ReasoningDetailsSink {
     if (!text || !onDelta) {
       return;
     }
-    const remaining = MAX_TEXT_BYTES - emittedBytes;
+    const remaining = MAX_DISPLAY_BYTES - emittedBytes;
     if (remaining <= 0) {
       return;
     }
@@ -139,18 +141,15 @@ export function createReasoningDetailsSink(): ReasoningDetailsSink {
      * DEUX budgets, pas un.
      *
      * `details` sert l'observabilité : il est plafonné en blocs et en volume.
-     * L'affichage, lui, ne doit PAS être coupé par le plafond de blocs : les
-     * fournisseurs de type OpenRouter/GLM envoient `reasoning_details` à chaque
-     * chunk, donc vingt blocs représentent vingt fragments (deux phrases) — et
-     * la réflexion s'arrêtait là, au milieu d'un raisonnement, alors que la
-     * génération continuait. On continue donc à LIRE le flux tant qu'il reste
-     * du budget d'affichage, même quand la collecte est saturée.
+     * L'affichage continue au-delà, jusqu'à son propre plafond.
+     *
+     * La branche de lecture va TOUJOURS jusqu'au bout du flux. S'arrêter plus
+     * tôt puis `cancel()` la branche d'un `tee()` peut bloquer l'autre branche
+     * — celle que le modèle est en train de lire — et couper la réponse au
+     * milieu d'un mot.
      */
     const shouldCollect = () =>
       details.length < MAX_BLOCKS && detailsBytes < MAX_TEXT_BYTES;
-    const shouldStream = () =>
-      Boolean(onDelta) && emittedBytes < MAX_TEXT_BYTES;
-    const shouldContinue = () => !saturated || shouldStream();
 
     void scanSse(forScan, {
       onBlock: (block) => {
@@ -174,7 +173,6 @@ export function createReasoningDetailsSink(): ReasoningDetailsSink {
         emit(text);
       },
       onText: emit,
-      shouldContinue,
     });
 
     const transformed = new Response(forCaller, {
@@ -206,7 +204,6 @@ export function createReasoningDetailsSink(): ReasoningDetailsSink {
 type ScanOptions = {
   onBlock: (block: ReasoningDetail) => void;
   onText: (text: string) => void;
-  shouldContinue: () => boolean;
 };
 
 /**
@@ -224,11 +221,13 @@ async function scanSse(
   const reader = stream.getReader();
   const decoder = new TextDecoder();
   let buffer = "";
+  let finished = false;
 
   try {
-    while (options.shouldContinue()) {
+    while (true) {
       const { done, value } = await reader.read();
       if (done) {
+        finished = true;
         break;
       }
       buffer += decoder.decode(value, { stream: true });
@@ -241,24 +240,25 @@ async function scanSse(
         newline = buffer.indexOf("\n");
       }
       // Un chunk unique peut être volumineux (réponse entière d'un modèle non
-      // streamé) : sans cette borne, le buffer croîtrait sans limite.
+      // streamé). On jette le fragment trop long et on CONTINUE : abandonner
+      // ici annulerait la branche et pouvait couper le flux principal.
       if (buffer.length > MAX_LINE_BYTES) {
-        return;
+        buffer = "";
       }
     }
   } catch {
     // Flux interrompu (client déconnecté, avancement annulé) : rien à faire, et
     // surtout aucune raison de propager l'erreur au flux principal.
   } finally {
-    // Libère la branche de lecture. `cancel()` est un no-op si le flux est déjà
-    // terminé — et il ne faut PAS l'attendre : sur une branche de `tee()`, sa
-    // promesse ne se résout qu'à la fermeture de l'AUTRE branche. L'attendre
-    // laissait une promesse en suspens pour chaque réponse dont la collecte
-    // s'arrêtait avant la fin du flux (budget atteint, plafond de blocs).
-    try {
-      reader.cancel().catch(() => {});
-    } catch {
-      // Le flux est déjà clos : rien à libérer.
+    // On n'annule que si la lecture n'est pas allée au bout. `cancel()` n'est
+    // pas attendu : sur une branche de `tee()`, sa promesse ne se résout qu'à
+    // la fermeture de l'AUTRE branche.
+    if (!finished) {
+      try {
+        reader.cancel().catch(() => {});
+      } catch {
+        // Le flux est déjà clos : rien à libérer.
+      }
     }
   }
 }

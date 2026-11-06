@@ -1,0 +1,2593 @@
+{
+  "id": "3e-latin-03",
+  "year": "3e",
+  "subject": "latin",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Une inscription funéraire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Sur une stèle romaine, quels renseignements trouve-t-on souvent ensemble ?",
+              "type": "multiple_choice",
+              "options": [
+                "Le nom du défunt",
+                "L'âge ou la durée de vie",
+                "Le menu du banquet",
+                "La couleur des toges"
+              ],
+              "correctAnswers": [
+                "Le nom du défunt",
+                "L'âge ou la durée de vie"
+              ],
+              "explanation": "Les épitaphes indiquent l'identité et parfois l'âge (souvent après D.M.)."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie l'abréviation D.M. en tête d'inscription ?",
+              "type": "single_choice",
+              "options": [
+                "Dis Manibus",
+                "Deus Magnus",
+                "Domus Mea",
+                "Dux Militum"
+              ],
+              "correctAnswers": ["Dis Manibus"],
+              "explanation": "Aux Dieux Manes : formule d'ouverture funéraire fréquente."
+            },
+            {
+              "id": "q3",
+              "question": "« Filius » sur une pierre désigne :",
+              "type": "single_choice",
+              "options": ["Le fils", "La fille", "Le père", "La mère"],
+              "correctAnswers": ["Le fils"],
+              "explanation": "Filius = fils ; filia = fille."
+            },
+            {
+              "id": "q4",
+              "question": "« Vixit annos XX » évoque :",
+              "type": "single_choice",
+              "options": [
+                "Vingt ans de vie",
+                "Vingt batailles",
+                "Vingt temples",
+                "Vingt esclaves"
+              ],
+              "correctAnswers": ["Vingt ans de vie"],
+              "explanation": "Vixit annos + chiffre romain = durée de vie."
+            },
+            {
+              "id": "q5",
+              "question": "« Hic situs est » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Ici est enterré",
+                "Ici habite",
+                "Ici naquit",
+                "Ici combattit"
+              ],
+              "correctAnswers": ["Ici est enterré"],
+              "explanation": "Formule de localisation du tombeau."
+            },
+            {
+              "id": "q6",
+              "question": "Lire une épitaphe, c'est d'abord :",
+              "type": "single_choice",
+              "options": [
+                "Repérer noms et abréviations",
+                "Ignorer les chiffres",
+                "Traduire sans contexte",
+                "Lire seulement la dernière ligne"
+              ],
+              "correctAnswers": ["Repérer noms et abréviations"],
+              "explanation": "Noms propres, D.M. et chiffres romains guident la lecture."
+            },
+            {
+              "id": "q7",
+              "question": "XX en chiffres arabes vaut :",
+              "type": "single_choice",
+              "options": ["20", "12", "30", "25"],
+              "correctAnswers": ["20"],
+              "explanation": "Deux X = vingt."
+            },
+            {
+              "id": "q8",
+              "question": "« Coniunx » renvoie à :",
+              "type": "single_choice",
+              "options": [
+                "L'époux ou l'épouse",
+                "Le voisin",
+                "Le légionnaire",
+                "Le prêtre"
+              ],
+              "correctAnswers": ["L'époux ou l'épouse"],
+              "explanation": "Terme du conjoint sur les stèles."
+            },
+            {
+              "id": "q9",
+              "question": "Ce document appartient surtout à la sphère :",
+              "type": "single_choice",
+              "options": [
+                "Privée et familiale",
+                "Du théâtre seul",
+                "De la flotte",
+                "Des marchés grecs"
+              ],
+              "correctAnswers": ["Privée et familiale"],
+              "explanation": "La stèle commémore un mort dans la famille."
+            },
+            {
+              "id": "q10",
+              "question": "En 3e, ce type de texte sert à :",
+              "type": "single_choice",
+              "options": [
+                "Relier latin réel et société romaine",
+                "Remplacer toute mythologie",
+                "Étudier uniquement la Grèce",
+                "Apprendre le grec"
+              ],
+              "correctAnswers": ["Relier latin réel et société romaine"],
+              "explanation": "Document authentique court = culture et langue."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "SPQR et formule civique",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels traits caractérisent SPQR ?",
+              "type": "multiple_choice",
+              "options": [
+                "Sigle du Sénat et du peuple romain",
+                "Présence sur monnaies et monuments",
+                "Formule chrétienne médiévale",
+                "Texte grec du Parthénon"
+              ],
+              "correctAnswers": [
+                "Sigle du Sénat et du peuple romain",
+                "Présence sur monnaies et monuments"
+              ],
+              "explanation": "Senatus Populusque Romanus : emblème civique diffus."
+            },
+            {
+              "id": "q2",
+              "question": "SPQR signifie :",
+              "type": "single_choice",
+              "options": [
+                "Senatus Populusque Romanus",
+                "Salve Populus Quirites",
+                "Sacra Publica Quoque Romae",
+                "Senatus Pro Quaestoribus"
+              ],
+              "correctAnswers": ["Senatus Populusque Romanus"],
+              "explanation": "Le Sénat et le peuple romain."
+            },
+            {
+              "id": "q3",
+              "question": "« Populus » désigne ici :",
+              "type": "single_choice",
+              "options": [
+                "Le peuple romain",
+                "Un empereur seul",
+                "Une province",
+                "Un dieu"
+              ],
+              "correctAnswers": ["Le peuple romain"],
+              "explanation": "Ensemble citoyen dans l'idéal républicain."
+            },
+            {
+              "id": "q4",
+              "question": "Une formule officielle latine est :",
+              "type": "single_choice",
+              "options": [
+                "Une expression fixe institutionnelle",
+                "Un roman",
+                "Une carte",
+                "Une comédie grecque"
+              ],
+              "correctAnswers": ["Une expression fixe institutionnelle"],
+              "explanation": "Stabilité du wording = autorité."
+            },
+            {
+              "id": "q5",
+              "question": "« Senatus consultum » =",
+              "type": "single_choice",
+              "options": [
+                "Décision du Sénat",
+                "Temple de Mars",
+                "Mythe de Romulus",
+                "Légion étrangère"
+              ],
+              "correctAnswers": ["Décision du Sénat"],
+              "explanation": "Consultum = délibération sénatoriale."
+            },
+            {
+              "id": "q6",
+              "question": "SPQR se distingue d'une épitaphe car :",
+              "type": "single_choice",
+              "options": [
+                "Public et collectif vs privé",
+                "Identique en contenu",
+                "Toujours en grec",
+                "Sans lettres latines"
+              ],
+              "correctAnswers": ["Public et collectif vs privé"],
+              "explanation": "Deux sphères : cité et famille."
+            },
+            {
+              "id": "q7",
+              "question": "Traduire une devise, en 3e :",
+              "type": "single_choice",
+              "options": [
+                "Français clair + sens institutionnel",
+                "Mot à mot absurde",
+                "Ignorer le Sénat",
+                "Ne garder que les initiales"
+              ],
+              "correctAnswers": ["Français clair + sens institutionnel"],
+              "explanation": "Qui parle (magistrats, peuple) compte."
+            },
+            {
+              "id": "q8",
+              "question": "On trouvait SPQR sur :",
+              "type": "single_choice",
+              "options": [
+                "Enseignes militaires et édifices",
+                "Uniquement papyrus égyptien",
+                "Seulement livres modernes",
+                "Cartes du Moyen Âge"
+              ],
+              "correctAnswers": ["Enseignes militaires et édifices"],
+              "explanation": "Sigle visible dans l'espace urbain."
+            },
+            {
+              "id": "q9",
+              "question": "« Senatus » renvoie au :",
+              "type": "single_choice",
+              "options": ["Sénat", "Peuple seul", "Marché", "Campagne"],
+              "correctAnswers": ["Sénat"],
+              "explanation": "Assemblée des sénateurs."
+            },
+            {
+              "id": "q10",
+              "question": "Ces formules montrent que le latin servait :",
+              "type": "single_choice",
+              "options": [
+                "Langue du droit et de l'État",
+                "Langue secrète sans écrit",
+                "Uniquement la poésie",
+                "Seulement les marchands"
+              ],
+              "correctAnswers": ["Langue du droit et de l'État"],
+              "explanation": "Administration et ritualisation publique."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Abréviations épigraphiques",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles abréviations aident à lire une pierre ?",
+              "type": "multiple_choice",
+              "options": ["D.M.", "H.S.E.", "XYZ modernes", "Hashtags"],
+              "correctAnswers": ["D.M.", "H.S.E."],
+              "explanation": "Dis Manibus et Hic Situs Est sont courantes."
+            },
+            {
+              "id": "q2",
+              "question": "H.S.E. signifie souvent :",
+              "type": "single_choice",
+              "options": [
+                "Hic situs est",
+                "Hic senatus est",
+                "Hic servus est",
+                "Hic statua est"
+              ],
+              "correctAnswers": ["Hic situs est"],
+              "explanation": "Ici est enterré."
+            },
+            {
+              "id": "q3",
+              "question": "Abréger en épigraphie sert à :",
+              "type": "single_choice",
+              "options": [
+                "Gagner de la place sur la pierre",
+                "Cacher le grec",
+                "Supprimer les noms",
+                "Écrire en cursive moderne"
+              ],
+              "correctAnswers": ["Gagner de la place sur la pierre"],
+              "explanation": "Espace et coût du gravage limités."
+            },
+            {
+              "id": "q4",
+              "question": "« P.P. » peut indiquer :",
+              "type": "single_choice",
+              "options": [
+                "Pater patriae ou parens selon contexte",
+                "Populus parisien",
+                "Praefectus Persae",
+                "Plus proche"
+              ],
+              "correctAnswers": ["Pater patriae ou parens selon contexte"],
+              "explanation": "Toujours vérifier le document."
+            },
+            {
+              "id": "q5",
+              "question": "Face à une abréviation inconnue, on :",
+              "type": "single_choice",
+              "options": [
+                "Compare d'autres inscriptions",
+                "Invente un sens",
+                "Ignore toute la stèle",
+                "Lit en anglais"
+              ],
+              "correctAnswers": ["Compare d'autres inscriptions"],
+              "explanation": "Corpus épigraphique = repères."
+            },
+            {
+              "id": "q6",
+              "question": "Les points entre lettres en abréviation :",
+              "type": "single_choice",
+              "options": [
+                "Marquent des coupures de mots",
+                "Finissent une phrase française",
+                "Indiquent un nombre",
+                "Remplacent les images"
+              ],
+              "correctAnswers": ["Marquent des coupures de mots"],
+              "explanation": "Convention de lecture épigraphique."
+            },
+            {
+              "id": "q7",
+              "question": "D.M. s'adresse aux :",
+              "type": "single_choice",
+              "options": ["Manes", "Muses", "Mars seul", "Marchands"],
+              "correctAnswers": ["Manes"],
+              "explanation": "Esprits des morts dans la religion romaine."
+            },
+            {
+              "id": "q8",
+              "question": "Une stèle sans abréviations peut quand même :",
+              "type": "single_choice",
+              "options": [
+                "Nommer clairement le défunt",
+                "Être illisible par définition",
+                "Être toujours en grec",
+                "Ne jamais dater"
+              ],
+              "correctAnswers": ["Nommer clairement le défunt"],
+              "explanation": "Textes plus longs ou plus explicites existent."
+            },
+            {
+              "id": "q9",
+              "question": "En 3e, repérer D.M. permet de :",
+              "type": "single_choice",
+              "options": [
+                "Classer le document funéraire",
+                "Prouver un texte juridique",
+                "Identifier un décret sénatorial",
+                "Lire un poème d'Horace entier"
+              ],
+              "correctAnswers": ["Classer le document funéraire"],
+              "explanation": "Genre du document = sens global."
+            },
+            {
+              "id": "q10",
+              "question": "Abréviations et formules fixes montrent :",
+              "type": "single_choice",
+              "options": [
+                "Des habitudes d'écriture collectives",
+                "L'absence de religion",
+                "Un texte unique au monde",
+                "Un code secret moderne"
+              ],
+              "correctAnswers": ["Des habitudes d'écriture collectives"],
+              "explanation": "Répétition culturelle sur des siècles."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Chiffres romains dans un texte",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels nombres peuvent figurer sur une inscription ?",
+              "type": "multiple_choice",
+              "options": [
+                "Âge du défunt (ex. XV)",
+                "Année de magistrature",
+                "Numéro de téléphone",
+                "Code postal français"
+              ],
+              "correctAnswers": [
+                "Âge du défunt (ex. XV)",
+                "Année de magistrature"
+              ],
+              "explanation": "Chiffres romains datent ou quantifient."
+            },
+            {
+              "id": "q2",
+              "question": "XV vaut :",
+              "type": "single_choice",
+              "options": ["15", "14", "16", "50"],
+              "correctAnswers": ["15"],
+              "explanation": "X + V = quinze."
+            },
+            {
+              "id": "q3",
+              "question": "LIII vaut :",
+              "type": "single_choice",
+              "options": ["53", "33", "63", "43"],
+              "correctAnswers": ["53"],
+              "explanation": "L + III = cinquante-trois."
+            },
+            {
+              "id": "q4",
+              "question": "IV évite d'écrire :",
+              "type": "single_choice",
+              "options": ["IIII", "VI", "IX", "XL"],
+              "correctAnswers": ["IIII"],
+              "explanation": "Soustraction : un de moins que V."
+            },
+            {
+              "id": "q5",
+              "question": "Sur une stèle « annorum XV » :",
+              "type": "single_choice",
+              "options": [
+                "Quinze ans",
+                "Quinze légions",
+                "Quinze dieux",
+                "Quinze mois exacts"
+              ],
+              "correctAnswers": ["Quinze ans"],
+              "explanation": "Annorum + nombre = âge ou durée."
+            },
+            {
+              "id": "q6",
+              "question": "MCMXIV en date moderne :",
+              "type": "single_choice",
+              "options": ["1914", "1419", "1919", "2014"],
+              "correctAnswers": ["1914"],
+              "explanation": "M + CM + X + IV ; repère utile hors Antiquité aussi."
+            },
+            {
+              "id": "q7",
+              "question": "Lire un chiffre romain, on procède :",
+              "type": "single_choice",
+              "options": [
+                "De gauche à droite avec additions/soustractions",
+                "De bas en haut seulement",
+                "En ignorant les lettres",
+                "Comme des chiffres arabes identiques"
+              ],
+              "correctAnswers": [
+                "De gauche à droite avec additions/soustractions"
+              ],
+              "explanation": "Règles I, V, X, L, C, M."
+            },
+            {
+              "id": "q8",
+              "question": "Un texte mélange parfois :",
+              "type": "single_choice",
+              "options": [
+                "Mots latins et nombres romains",
+                "Grec et cyrillique seuls",
+                "Latin et hieroglyphes",
+                "Rien de numérique"
+              ],
+              "correctAnswers": ["Mots latins et nombres romains"],
+              "explanation": "Courant en épigraphie."
+            },
+            {
+              "id": "q9",
+              "question": "Erreur fréquente en 3e :",
+              "type": "single_choice",
+              "options": [
+                "Confondre V et X",
+                "Lire D.M. comme nombre",
+                "Prendre SPQR pour date",
+                "Voir M comme mille dans un prénom"
+              ],
+              "correctAnswers": ["Confondre V et X"],
+              "explanation": "Revoir les valeurs de base."
+            },
+            {
+              "id": "q10",
+              "question": "Les chiffres sur un document court aident à :",
+              "type": "single_choice",
+              "options": [
+                "Préciser âge ou date",
+                "Effacer le nom",
+                "Traduire en vers",
+                "Prouver le mythe"
+              ],
+              "correctAnswers": ["Préciser âge ou date"],
+              "explanation": "Information factuelle gravée."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Dédicace sur un autel",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Une dédicace latine mentionne souvent :",
+              "type": "multiple_choice",
+              "options": [
+                "Le dédicant (nom)",
+                "Le dieu ou la divinité",
+                "Le prix du loyer",
+                "Le numéro de série"
+              ],
+              "correctAnswers": ["Le dédicant (nom)", "Le dieu ou la divinité"],
+              "explanation": "Structure : X dédie à Y."
+            },
+            {
+              "id": "q2",
+              "question": "« Dedicavit » signifie :",
+              "type": "single_choice",
+              "options": ["A dédié", "A détruit", "A dansé", "A navigué"],
+              "correctAnswers": ["A dédié"],
+              "explanation": "Verbe de consécration."
+            },
+            {
+              "id": "q3",
+              "question": "« Deo » / « Deae » indique :",
+              "type": "single_choice",
+              "options": [
+                "À un dieu / à une déesse",
+                "Du peuple",
+                "Du Sénat",
+                "D'une légion"
+              ],
+              "correctAnswers": ["À un dieu / à une déesse"],
+              "explanation": "Datif de dédicataire divin."
+            },
+            {
+              "id": "q4",
+              "question": "« V.S.L.M. » signifie souvent :",
+              "type": "single_choice",
+              "options": [
+                "Votum solvit libens merito",
+                "Via semper longa magna",
+                "Vir summus legatus maximus",
+                "Vixit septem lustris multos"
+              ],
+              "correctAnswers": ["Votum solvit libens merito"],
+              "explanation": "A acquitté son vœu volontiers et à bon escient."
+            },
+            {
+              "id": "q5",
+              "question": "Ce document est surtout :",
+              "type": "single_choice",
+              "options": [
+                "Religieux",
+                "Comptable",
+                "Militaire naval",
+                "Judiciaire"
+              ],
+              "correctAnswers": ["Religieux"],
+              "explanation": "L'autel lie culte et gratitude."
+            },
+            {
+              "id": "q6",
+              "question": "« Iovi » =",
+              "type": "single_choice",
+              "options": [
+                "À Jupiter",
+                "De Jupiter",
+                "Par Jupiter",
+                "Sans Jupiter"
+              ],
+              "correctAnswers": ["À Jupiter"],
+              "explanation": "Datif de Iuppiter."
+            },
+            {
+              "id": "q7",
+              "question": "Lire une dédicace, repérer le datif sert à :",
+              "type": "single_choice",
+              "options": [
+                "Identifier à qui on offre",
+                "Conjuguer un imparfait",
+                "Nommer un consul",
+                "Compter des syllabes"
+              ],
+              "correctAnswers": ["Identifier à qui on offre"],
+              "explanation": "Complément du verbe dedicare."
+            },
+            {
+              "id": "q8",
+              "question": "« Libens » évoque :",
+              "type": "single_choice",
+              "options": [
+                "La volonté du donateur",
+                "La colère des dieux",
+                "La fin du culte",
+                "Un marché"
+              ],
+              "correctAnswers": ["La volonté du donateur"],
+              "explanation": "Acquittement volontaire du vœu."
+            },
+            {
+              "id": "q9",
+              "question": "Par rapport à SPQR, une dédicace :",
+              "type": "single_choice",
+              "options": [
+                "Exprime une piété individuelle",
+                "Remplace le Sénat",
+                "Est toujours funéraire",
+                "Est en grec"
+              ],
+              "correctAnswers": ["Exprime une piété individuelle"],
+              "explanation": "Spheres publique et religieuse privée."
+            },
+            {
+              "id": "q10",
+              "question": "En 3e, ce texte illustre :",
+              "type": "single_choice",
+              "options": [
+                "Pratiques cultuelles romaines",
+                "Code pénal complet",
+                "Guerre punique détaillée",
+                "Théâtre de Plaute seul"
+              ],
+              "correctAnswers": ["Pratiques cultuelles romaines"],
+              "explanation": "Document court = religion quotidienne."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Titulus sur un monument",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Un titulus monumental indique souvent :",
+              "type": "multiple_choice",
+              "options": [
+                "Qui a construit ou restauré",
+                "Pourquoi (victoire, honneur)",
+                "Recette de pain",
+                "Liste de courses"
+              ],
+              "correctAnswers": [
+                "Qui a construit ou restauré",
+                "Pourquoi (victoire, honneur)"
+              ],
+              "explanation": "Inscription de propagande ou mémoire."
+            },
+            {
+              "id": "q2",
+              "question": "« Imp. Caesar » renvoie à :",
+              "type": "single_choice",
+              "options": ["Un empereur", "Un esclave", "Un pont", "Un poète"],
+              "correctAnswers": ["Un empereur"],
+              "explanation": "Imp. = imperator, titre impérial."
+            },
+            {
+              "id": "q3",
+              "question": "« Restituit » signifie :",
+              "type": "single_choice",
+              "options": ["A restauré", "A brûlé", "A vendu", "A caché"],
+              "correctAnswers": ["A restauré"],
+              "explanation": "Fréquent sur arches et temples."
+            },
+            {
+              "id": "q4",
+              "question": "« Ex manubiis » =",
+              "type": "single_choice",
+              "options": [
+                "Avec le butin de guerre",
+                "Sans argent",
+                "En secret",
+                "Pour les enfants"
+              ],
+              "correctAnswers": ["Avec le butin de guerre"],
+              "explanation": "Financement militaire affiché."
+            },
+            {
+              "id": "q5",
+              "question": "Le titulus se lit sur :",
+              "type": "single_choice",
+              "options": [
+                "Façade visible",
+                "Intérieur seul des caves",
+                "Papyrus privé",
+                "Sable du cirque"
+              ],
+              "correctAnswers": ["Façade visible"],
+              "explanation": "Communication publique."
+            },
+            {
+              "id": "q6",
+              "question": "« Pontifex maximus » sur une base :",
+              "type": "single_choice",
+              "options": [
+                "Grande prêtrise",
+                "Commandement naval",
+                "Taxe sur le blé",
+                "Jeu de dés"
+              ],
+              "correctAnswers": ["Grande prêtrise"],
+              "explanation": "Charge religieuse majeure."
+            },
+            {
+              "id": "q7",
+              "question": "Nom propre au début aide à :",
+              "type": "single_choice",
+              "options": [
+                "Identifier le commanditaire",
+                "Oublier la date",
+                "Nier l'Latin",
+                "Traduire en grec"
+              ],
+              "correctAnswers": ["Identifier le commanditaire"],
+              "explanation": "Généalogie des honneurs."
+            },
+            {
+              "id": "q8",
+              "question": "« Populo suo » peut signifier :",
+              "type": "single_choice",
+              "options": [
+                "Pour son peuple",
+                "Contre son peuple",
+                "Sans peuple",
+                "Peuple grec"
+              ],
+              "correctAnswers": ["Pour son peuple"],
+              "explanation": "Lien patronage / evergetisme."
+            },
+            {
+              "id": "q9",
+              "question": "Document public vs épitaphe :",
+              "type": "single_choice",
+              "options": [
+                "Gloire du vivant vs mémoire du mort",
+                "Identiques",
+                "Tous deux secrets",
+                "Uniquement grecs"
+              ],
+              "correctAnswers": ["Gloire du vivant vs mémoire du mort"],
+              "explanation": "Deux fonctions sociales."
+            },
+            {
+              "id": "q10",
+              "question": "En classe, le titulus montre :",
+              "type": "single_choice",
+              "options": [
+                "Latin de la propagande et des honneurs",
+                "Uniquement la mythologie",
+                "Grammaire sans sens",
+                "Texte médiéval"
+              ],
+              "correctAnswers": ["Latin de la propagande et des honneurs"],
+              "explanation": "Civilisation par le document."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Formule juridique brève",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Une formule juridique romaine vise à :",
+              "type": "multiple_choice",
+              "options": [
+                "Fixer un acte légal",
+                "Rendre l'acte reconnaissable",
+                "Remplacer tout tribunal grec",
+                "Supprimer l'écrit"
+              ],
+              "correctAnswers": [
+                "Fixer un acte légal",
+                "Rendre l'acte reconnaissable"
+              ],
+              "explanation": "Langage technique stable."
+            },
+            {
+              "id": "q2",
+              "question": "« Testamentum » =",
+              "type": "single_choice",
+              "options": ["Testament", "Temple", "Théâtre", "Titre poétique"],
+              "correctAnswers": ["Testament"],
+              "explanation": "Disposition de dernière volonté."
+            },
+            {
+              "id": "q3",
+              "question": "« Heres » désigne :",
+              "type": "single_choice",
+              "options": ["L'héritier", "Le juge", "Le soldat", "Le prêtre"],
+              "correctAnswers": ["L'héritier"],
+              "explanation": "Central dans les clauses."
+            },
+            {
+              "id": "q4",
+              "question": "« Ex asse » évoque :",
+              "type": "single_choice",
+              "options": [
+                "Héritage total",
+                "Voyage en mer",
+                "Combat de gladiateurs",
+                "Offrande à Mars"
+              ],
+              "correctAnswers": ["Héritage total"],
+              "explanation": "Expression juridique d'universalité."
+            },
+            {
+              "id": "q5",
+              "question": "Ces textes sont courts mais :",
+              "type": "single_choice",
+              "options": [
+                "Très codifiés",
+                "Sans sens",
+                "Toujours en vers",
+                "Uniquement oraux"
+              ],
+              "correctAnswers": ["Très codifiés"],
+              "explanation": "Mots-valises du droit romain."
+            },
+            {
+              "id": "q6",
+              "question": "Le latin juridique a influé :",
+              "type": "single_choice",
+              "options": [
+                "Droit européen moderne",
+                "Cuisine asiatique",
+                "Musique jazz",
+                "Alphabet cyrillique"
+              ],
+              "correctAnswers": ["Droit européen moderne"],
+              "explanation": "Héritage long des institutions."
+            },
+            {
+              "id": "q7",
+              "question": "Lire « filius familias » dans un document :",
+              "type": "single_choice",
+              "options": [
+                "Fils soumis à la patria potestas",
+                "Fils empereur",
+                "Fils étranger",
+                "Fille aînée"
+              ],
+              "correctAnswers": ["Fils soumis à la patria potestas"],
+              "explanation": "Statut juridique familial."
+            },
+            {
+              "id": "q8",
+              "question": "« Lex » dans un titre de loi =",
+              "type": "single_choice",
+              "options": ["Loi", "Légion", "Lecture", "Lait"],
+              "correctAnswers": ["Loi"],
+              "explanation": "Base du vocabulaire civique."
+            },
+            {
+              "id": "q9",
+              "question": "En 3e, une formule juridique se comprend :",
+              "type": "single_choice",
+              "options": [
+                "Avec le contexte de l'acte",
+                "Sans aucun repère",
+                "Comme une blague",
+                "En latin oral seul"
+              ],
+              "correctAnswers": ["Avec le contexte de l'acte"],
+              "explanation": "Genre documentaire = sens."
+            },
+            {
+              "id": "q10",
+              "question": "Différence avec une dédicace :",
+              "type": "single_choice",
+              "options": [
+                "Acte légal vs offrande religieuse",
+                "Même fonction",
+                "Tous deux sur monnaies seulement",
+                "Aucun mot latin"
+              ],
+              "correctAnswers": ["Acte légal vs offrande religieuse"],
+              "explanation": "Deux types de documents courts."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Inscription militaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Une inscription militaire peut mentionner :",
+              "type": "multiple_choice",
+              "options": [
+                "Une légion",
+                "Un honneur au soldat",
+                "Un menu de fête",
+                "Un poème d'Ovide entier"
+              ],
+              "correctAnswers": ["Une légion", "Un honneur au soldat"],
+              "explanation": "Identité du unité et mérite."
+            },
+            {
+              "id": "q2",
+              "question": "« Legio X » =",
+              "type": "single_choice",
+              "options": [
+                "Dixième légion",
+                "Dixième loi",
+                "Dix temples",
+                "Dix sénateurs"
+              ],
+              "correctAnswers": ["Dixième légion"],
+              "explanation": "Numérotation des unités."
+            },
+            {
+              "id": "q3",
+              "question": "« Centurio » =",
+              "type": "single_choice",
+              "options": [
+                "Centurion",
+                "Centième année",
+                "Cent ville",
+                "Centurie de poètes"
+              ],
+              "correctAnswers": ["Centurion"],
+              "explanation": "Grade intermédiaire."
+            },
+            {
+              "id": "q4",
+              "question": "« Militavit annos » indique :",
+              "type": "single_choice",
+              "options": [
+                "A servi dans l'armée X ans",
+                "A milité sans fin",
+                "A quitté Rome",
+                "A fondé le Sénat"
+              ],
+              "correctAnswers": ["A servi dans l'armée X ans"],
+              "explanation": "Durée de service."
+            },
+            {
+              "id": "q5",
+              "question": "« Dis Manibus » sur stèle de soldat :",
+              "type": "single_choice",
+              "options": [
+                "Même formule funéraire civique",
+                "Formule grecque",
+                "Titre impérial",
+                "Décret naval"
+              ],
+              "correctAnswers": ["Même formule funéraire civique"],
+              "explanation": "Soldats aussi sous protection des Manes."
+            },
+            {
+              "id": "q6",
+              "question": "« Imperator » sur une base :",
+              "type": "single_choice",
+              "options": [
+                "Commandant victorieux / empereur",
+                "Esclave",
+                "Marchand",
+                "Comédien"
+              ],
+              "correctAnswers": ["Commandant victorieux / empereur"],
+              "explanation": "Sens évolutif historique."
+            },
+            {
+              "id": "q7",
+              "question": "Lire legio + numéro permet de :",
+              "type": "single_choice",
+              "options": [
+                "Situer l'unité dans l'armée",
+                "Connaître le menu",
+                "Lire la mythologie",
+                "Traduire l'Iliade"
+              ],
+              "correctAnswers": ["Situer l'unité dans l'armée"],
+              "explanation": "Repère organisation militaire."
+            },
+            {
+              "id": "q8",
+              "question": "Inscription militaire vs SPQR :",
+              "type": "single_choice",
+              "options": [
+                "Corps armé vs ensemble civique",
+                "Identiques",
+                "Tous deux sur tombe seule",
+                "Sans latin"
+              ],
+              "correctAnswers": ["Corps armé vs ensemble civique"],
+              "explanation": "Complémentarité des sigles."
+            },
+            {
+              "id": "q9",
+              "question": "« Honesta missione » évoque :",
+              "type": "single_choice",
+              "options": [
+                "Licenciement honorable du service",
+                "Mission secrète",
+                "Défaite",
+                "Exil poétique"
+              ],
+              "correctAnswers": ["Licenciement honorable du service"],
+              "explanation": "Formule de fin de carrière."
+            },
+            {
+              "id": "q10",
+              "question": "En 3e, ce document relie :",
+              "type": "single_choice",
+              "options": [
+                "Armée et mémoire individuelle",
+                "Théâtre et cirque seuls",
+                "Grèce classique",
+                "Moyen Âge"
+              ],
+              "correctAnswers": ["Armée et mémoire individuelle"],
+              "explanation": "Civilisation par l'épitaphe du miles."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Magistrat et date",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Une inscription publique peut dater avec :",
+              "type": "multiple_choice",
+              "options": [
+                "Noms de consuls",
+                "Noms de magistrats",
+                "Heure exacte GPS",
+                "Calendrier chinois"
+              ],
+              "correctAnswers": ["Noms de consuls", "Noms de magistrats"],
+              "explanation": "Dating consulaire habituelle."
+            },
+            {
+              "id": "q2",
+              "question": "« Consule » au ablatif indique :",
+              "type": "single_choice",
+              "options": [
+                "Sous le consulat de",
+                "Contre le consul",
+                "Sans consul",
+                "Avant Rome"
+              ],
+              "correctAnswers": ["Sous le consulat de"],
+              "explanation": "Repère chronologique."
+            },
+            {
+              "id": "q3",
+              "question": "« Aedilis » =",
+              "type": "single_choice",
+              "options": ["Édile", "Empereur", "Augure seul", "Affranchi"],
+              "correctAnswers": ["Édile"],
+              "explanation": "Magistrature curule ou plébéienne."
+            },
+            {
+              "id": "q4",
+              "question": "« Praetor » exerce surtout :",
+              "type": "single_choice",
+              "options": [
+                "Fonctions juridiques",
+                "Commandement permanent de légion",
+                "Culture du blé seul",
+                "Peinture"
+              ],
+              "correctAnswers": ["Fonctions juridiques"],
+              "explanation": "Magistrature de justice."
+            },
+            {
+              "id": "q5",
+              "question": "Lire deux noms de consuls sert à :",
+              "type": "single_choice",
+              "options": [
+                "Fixer l'année romaine",
+                "Nommer les dieux",
+                "Compter les légions",
+                "Traduire Homère"
+              ],
+              "correctAnswers": ["Fixer l'année romaine"],
+              "explanation": "Chronologie républicaine."
+            },
+            {
+              "id": "q6",
+              "question": "« Fasti » renvoient aux :",
+              "type": "single_choice",
+              "options": [
+                "Listes de magistrats et dates",
+                "Mythes seuls",
+                "Comédies",
+                "Cartes"
+              ],
+              "correctAnswers": ["Listes de magistrats et dates"],
+              "explanation": "Documents de référence."
+            },
+            {
+              "id": "q7",
+              "question": "Magistrat sur une base =",
+              "type": "single_choice",
+              "options": [
+                "Qui a commandité l'ouvrage",
+                "Qui a composé un poème grec",
+                "Qui a inventé le latin",
+                "Qui a quitté l'Italie"
+              ],
+              "correctAnswers": ["Qui a commandité l'ouvrage"],
+              "explanation": "Lien evergetisme / pouvoir."
+            },
+            {
+              "id": "q8",
+              "question": "En 3e, consul et praetor appartiennent à :",
+              "type": "single_choice",
+              "options": [
+                "Vie civique romaine",
+                "Mythologie nordique",
+                "Économie moderne",
+                "Grammaire sans histoire"
+              ],
+              "correctAnswers": ["Vie civique romaine"],
+              "explanation": "Institutions à connaître."
+            },
+            {
+              "id": "q9",
+              "question": "Document daté vs épitaphe sans date :",
+              "type": "single_choice",
+              "options": [
+                "Précision chronologique variable",
+                "Toujours identiques",
+                "Jamais de noms",
+                "Toujours en grec"
+              ],
+              "correctAnswers": ["Précision chronologique variable"],
+              "explanation": "Analyser ce qui est présent."
+            },
+            {
+              "id": "q10",
+              "question": "Comprendre magistrats aide à lire :",
+              "type": "single_choice",
+              "options": [
+                "Titulus et décrets",
+                "Uniquement les mythes",
+                "Le français sans latin",
+                "Les chiffres seuls"
+              ],
+              "correctAnswers": ["Titulus et décrets"],
+              "explanation": "Contexte politique du texte."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse : deux lignes latines",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour comparer deux documents courts, on observe :",
+              "type": "multiple_choice",
+              "options": [
+                "Public vs privé",
+                "Religieux vs juridique selon cas",
+                "Couleur des livres",
+                "Langue française du auteur"
+              ],
+              "correctAnswers": [
+                "Public vs privé",
+                "Religieux vs juridique selon cas"
+              ],
+              "explanation": "Genre et fonction sociale."
+            },
+            {
+              "id": "q2",
+              "question": "Ligne 1 : D.M. / Ligne 2 : SPQR →",
+              "type": "single_choice",
+              "options": [
+                "Funéraire vs civique",
+                "Deux épitaphes",
+                "Deux décrets grecs",
+                "Deux poèmes"
+              ],
+              "correctAnswers": ["Funéraire vs civique"],
+              "explanation": "Repères immédiats."
+            },
+            {
+              "id": "q3",
+              "question": "Même langue latine peut servir :",
+              "type": "single_choice",
+              "options": [
+                "Culte, droit, gloire, deuil",
+                "Seulement comédie",
+                "Seulement marchés",
+                "Uniquement oral"
+              ],
+              "correctAnswers": ["Culte, droit, gloire, deuil"],
+              "explanation": "Polyfonie des documents."
+            },
+            {
+              "id": "q4",
+              "question": "Étape 1 de lecture en 3e :",
+              "type": "single_choice",
+              "options": [
+                "Identifier le type de document",
+                "Traduire la dernière phrase d'abord",
+                "Ignorer les noms",
+                "Lire en anglais"
+              ],
+              "correctAnswers": ["Identifier le type de document"],
+              "explanation": "Stratégie de compréhension."
+            },
+            {
+              "id": "q5",
+              "question": "Les abréviations sont communes à :",
+              "type": "single_choice",
+              "options": [
+                "Plusieurs genres épigraphiques",
+                "Aucun texte",
+                "Seulement le droit moderne",
+                "Seulement la poésie"
+              ],
+              "correctAnswers": ["Plusieurs genres épigraphiques"],
+              "explanation": "Économie de pierre partout."
+            },
+            {
+              "id": "q6",
+              "question": "Héritage pour le francophone :",
+              "type": "single_choice",
+              "options": [
+                "Mots et structures du droit/culte",
+                "Alphabet arabe",
+                "Syntaxe chinoise",
+                "Aucun mot"
+              ],
+              "correctAnswers": ["Mots et structures du droit/culte"],
+              "explanation": "Latin → français historique."
+            },
+            {
+              "id": "q7",
+              "question": "« Senatus populusque » sans Romanus reste :",
+              "type": "single_choice",
+              "options": [
+                "Compréhensible par morceaux",
+                "Impossible à lire",
+                "Grec",
+                "Français"
+              ],
+              "correctAnswers": ["Compréhensible par morceaux"],
+              "explanation": "Analyse par champs lexicaux."
+            },
+            {
+              "id": "q8",
+              "question": "Chiffres romains lient :",
+              "type": "single_choice",
+              "options": [
+                "Quantité et temps",
+                "Mythe seul",
+                "Couleur",
+                "Musique"
+              ],
+              "correctAnswers": ["Quantité et temps"],
+              "explanation": "Âge, date, légion."
+            },
+            {
+              "id": "q9",
+              "question": "Objectif du chapitre « Lire un document » :",
+              "type": "single_choice",
+              "options": [
+                "Décoder un texte authentique court",
+                "Réciter l'Énéide",
+                "Apprendre le grec",
+                "Oublier la civilisation"
+              ],
+              "correctAnswers": ["Décoder un texte authentique court"],
+              "explanation": "Compétence culturelle 3e."
+            },
+            {
+              "id": "q10",
+              "question": "Ces documents prouvent que Rome :",
+              "type": "single_choice",
+              "options": [
+                "Écrit beaucoup sur pierre et bronze",
+                "Ne laisse aucune trace",
+                "N'utilise que le grec",
+                "Ignore les morts"
+              ],
+              "correctAnswers": ["Écrit beaucoup sur pierre et bronze"],
+              "explanation": "Épigraphie = mémoire matérielle."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Romulus, Remus et la fondation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le mythe de fondation de Rome met en scène :",
+              "type": "multiple_choice",
+              "options": [
+                "Romulus et Remus",
+                "Une louve allaitante",
+                "Napoléon",
+                "Ulysse roi de Rome"
+              ],
+              "correctAnswers": ["Romulus et Remus", "Une louve allaitante"],
+              "explanation": "Récit légendaire des origines."
+            },
+            {
+              "id": "q2",
+              "question": "Romulus est surtout connu pour :",
+              "type": "single_choice",
+              "options": [
+                "Fonder Rome",
+                "Conquérir la Gaule moderne",
+                "Écrire la Bible",
+                "Inventer le français"
+              ],
+              "correctAnswers": ["Fonder Rome"],
+              "explanation": "Premier roi légendaire."
+            },
+            {
+              "id": "q3",
+              "question": "Le Palatin dans le mythe :",
+              "type": "single_choice",
+              "options": [
+                "Colline liée à Romulus",
+                "Port de Naples",
+                "Désert africain",
+                "Temple grec"
+              ],
+              "correctAnswers": ["Colline liée à Romulus"],
+              "explanation": "Topographie mythique."
+            },
+            {
+              "id": "q4",
+              "question": "« Fratricide » dans la légende évoque :",
+              "type": "single_choice",
+              "options": [
+                "Mort de Remus",
+                "Paix éternelle",
+                "Alliance grecque",
+                "Construction du Panthéon"
+              ],
+              "correctAnswers": ["Mort de Remus"],
+              "explanation": "Violence des origines."
+            },
+            {
+              "id": "q5",
+              "question": "Ce mythe explique pour les Romains :",
+              "type": "single_choice",
+              "options": [
+                "Pourquoi leur cité existe",
+                "Le code Java",
+                "La révolution française",
+                "La physique quantique"
+              ],
+              "correctAnswers": ["Pourquoi leur cité existe"],
+              "explanation": "Légitimité et identité."
+            },
+            {
+              "id": "q6",
+              "question": "La louve (lupa) symbolise :",
+              "type": "single_choice",
+              "options": [
+                "Protection des jumeaux",
+                "Fin de Rome",
+                "Mer Méditerranée",
+                "Sénat"
+              ],
+              "correctAnswers": ["Protection des jumeaux"],
+              "explanation": "Motif iconographique fort."
+            },
+            {
+              "id": "q7",
+              "question": "En 3e, mythe ≠ histoire car :",
+              "type": "single_choice",
+              "options": [
+                "Récit fondateur sans preuve archéologique directe",
+                "Toujours daté au jour près",
+                "Document juridique",
+                "Inscription officielle"
+              ],
+              "correctAnswers": [
+                "Récit fondateur sans preuve archéologique directe"
+              ],
+              "explanation": "Distinction histoire / légende."
+            },
+            {
+              "id": "q8",
+              "question": "« Roma » dans le récit =",
+              "type": "single_choice",
+              "options": [
+                "La cité naissante",
+                "Empire du XXIe s.",
+                "Province grecque",
+                "Village gaulois"
+              ],
+              "correctAnswers": ["La cité naissante"],
+              "explanation": "Nom de la future capitale."
+            },
+            {
+              "id": "q9",
+              "question": "Héritage culturel :",
+              "type": "single_choice",
+              "options": [
+                "Statues et récits scolaires",
+                "Oubli total",
+                "Texte en cyrillic",
+                "Sans latin"
+              ],
+              "correctAnswers": ["Statues et récits scolaires"],
+              "explanation": "Mémoire collective occidentale."
+            },
+            {
+              "id": "q10",
+              "question": "Relier mythe et document épigraphique :",
+              "type": "single_choice",
+              "options": [
+                "Deux voix sur l'identité romaine",
+                "Même nature",
+                "Aucun lien",
+                "Uniquement grec"
+              ],
+              "correctAnswers": ["Deux voix sur l'identité romaine"],
+              "explanation": "Civilisation = récits + traces."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Citoyenneté et civitas",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Être citoyen à Rome implique :",
+              "type": "multiple_choice",
+              "options": [
+                "Statut juridique (civitas)",
+                "Droits et devoirs politiques",
+                "Nationalité française",
+                "Citoyenneté européenne moderne"
+              ],
+              "correctAnswers": [
+                "Statut juridique (civitas)",
+                "Droits et devoirs politiques"
+              ],
+              "explanation": "Civitas = appartenance à la cité."
+            },
+            {
+              "id": "q2",
+              "question": "« Civis » =",
+              "type": "single_choice",
+              "options": ["Citoyen", "Ville", "Civil", "Citerne"],
+              "correctAnswers": ["Citoyen"],
+              "explanation": "Base de civitas."
+            },
+            {
+              "id": "q3",
+              "question": "« Urbs » désigne souvent :",
+              "type": "single_choice",
+              "options": [
+                "La ville (Rome)",
+                "La campagne",
+                "La mer",
+                "Le ciel"
+              ],
+              "correctAnswers": ["La ville (Rome)"],
+              "explanation": "Opposition urbs / ager."
+            },
+            {
+              "id": "q4",
+              "question": "Participation républicaine :",
+              "type": "single_choice",
+              "options": [
+                "Vote et magistratures",
+                "Seulement esclavage",
+                "Absence de lois",
+                "Roi absolu toujours"
+              ],
+              "correctAnswers": ["Vote et magistratures"],
+              "explanation": "Idéal civique partagé."
+            },
+            {
+              "id": "q5",
+              "question": "« Patria » évoque :",
+              "type": "single_choice",
+              "options": ["Patrie", "Père seul", "Pâte", "Port"],
+              "correctAnswers": ["Patrie"],
+              "explanation": "Hérité en français."
+            },
+            {
+              "id": "q6",
+              "question": "Extension de citoyenneté aux Italiens :",
+              "type": "single_choice",
+              "options": [
+                "Processus long (guerres sociales)",
+                "Instantanée en 753",
+                "Jamais",
+                "Uniquement Grèce"
+              ],
+              "correctAnswers": ["Processus long (guerres sociales)"],
+              "explanation": "Repère historique 3e."
+            },
+            {
+              "id": "q7",
+              "question": "Femmes romaines citoyennes :",
+              "type": "single_choice",
+              "options": [
+                "Statut juridique sans vote politique classique",
+                "Consuls",
+                "Généraux",
+                "Sénatrices"
+              ],
+              "correctAnswers": [
+                "Statut juridique sans vote politique classique"
+              ],
+              "explanation": "Droit de cité ≠ suffrage féminin."
+            },
+            {
+              "id": "q8",
+              "question": "Esclave non citoyen :",
+              "type": "single_choice",
+              "options": ["Res sans civitas", "Consul", "Magistrat", "Roi"],
+              "correctAnswers": ["Res sans civitas"],
+              "explanation": "Contraste social fondamental."
+            },
+            {
+              "id": "q9",
+              "question": "Latin « civitas » → français :",
+              "type": "single_choice",
+              "options": [
+                "Citoyenneté / cité",
+                "Civilisation seule",
+                "Civette",
+                "Civique sans lien"
+              ],
+              "correctAnswers": ["Citoyenneté / cité"],
+              "explanation": "Famille lexicale riche."
+            },
+            {
+              "id": "q10",
+              "question": "SPQR résume l'idée :",
+              "type": "single_choice",
+              "options": [
+                "Institutions + peuple",
+                "Famille seule",
+                "Armée seule",
+                "Marchands"
+              ],
+              "correctAnswers": ["Institutions + peuple"],
+              "explanation": "Lien avec vie civique."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Dieux et religion publique",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Religion romaine officielle inclut :",
+              "type": "multiple_choice",
+              "options": [
+                "Culte du capitole (Iuppiter, Iuno, Minerva)",
+                "Rituels publics",
+                "Monothéisme d'État antique",
+                "Négation de tout culte"
+              ],
+              "correctAnswers": [
+                "Culte du capitole (Iuppiter, Iuno, Minerva)",
+                "Rituels publics"
+              ],
+              "explanation": "Triade capitoline."
+            },
+            {
+              "id": "q2",
+              "question": "« Iuppiter » =",
+              "type": "single_choice",
+              "options": ["Jupiter", "Janus seul", "Mars", "Mercure"],
+              "correctAnswers": ["Jupiter"],
+              "explanation": "Roi des dieux romains."
+            },
+            {
+              "id": "q3",
+              "question": "« Augur » =",
+              "type": "single_choice",
+              "options": [
+                "Interprète des signes",
+                "Boulanger",
+                "Gladiateur",
+                "Scribe grec"
+              ],
+              "correctAnswers": ["Interprète des signes"],
+              "explanation": "Prêtre de la divination."
+            },
+            {
+              "id": "q4",
+              "question": "« Pontifex » =",
+              "type": "single_choice",
+              "options": ["Prêtre du culte", "Pont", "Soldat", "Poète"],
+              "correctAnswers": ["Prêtre du culte"],
+              "explanation": "Collège pontifical."
+            },
+            {
+              "id": "q5",
+              "question": "Religion romaine vs christianisme naissant :",
+              "type": "single_choice",
+              "options": [
+                "Polythéisme tolerancé vs nouvelle foi",
+                "Identiques dès 753",
+                "Sans rituels",
+                "Grecque seule"
+              ],
+              "correctAnswers": ["Polythéisme tolerancé vs nouvelle foi"],
+              "explanation": "Repère chronologique tardif."
+            },
+            {
+              "id": "q6",
+              "question": "« Fanum » / « templum » :",
+              "type": "single_choice",
+              "options": [
+                "Sanctuaire / espace sacré",
+                "Marché",
+                "Forum seul",
+                "Route"
+              ],
+              "correctAnswers": ["Sanctuaire / espace sacré"],
+              "explanation": "Vocabulaire cultuel."
+            },
+            {
+              "id": "q7",
+              "question": "Lire « Iovi optimo maximo » :",
+              "type": "single_choice",
+              "options": [
+                "À Jupiter le meilleur et le plus grand",
+                "À Junon",
+                "Au peuple",
+                "Au Sénat"
+              ],
+              "correctAnswers": ["À Jupiter le meilleur et le plus grand"],
+              "explanation": "Formule cultuelle fréquente."
+            },
+            {
+              "id": "q8",
+              "question": "Fêtes romaines :",
+              "type": "single_choice",
+              "options": [
+                "Marquent calendrier civique",
+                "Ignorent la cité",
+                "Uniquement privées",
+                "Sans latin"
+              ],
+              "correctAnswers": ["Marquent calendrier civique"],
+              "explanation": "Religion et politique liées."
+            },
+            {
+              "id": "q9",
+              "question": "Manes dans épitaphe :",
+              "type": "single_choice",
+              "options": ["Morts honorés", "Dieux grecs", "Consuls", "Légions"],
+              "correctAnswers": ["Morts honorés"],
+              "explanation": "Pont privé / religieux."
+            },
+            {
+              "id": "q10",
+              "question": "En 3e, triade + dédicace autel =",
+              "type": "single_choice",
+              "options": [
+                "Vision cohérente religion romaine",
+                "Contradiction",
+                "Oubli du latin",
+                "Mythe seul"
+              ],
+              "correctAnswers": ["Vision cohérente religion romaine"],
+              "explanation": "Civilisation par repères."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Famille romaine (domus)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "La familia romaine comprend :",
+              "type": "multiple_choice",
+              "options": [
+                "Pater familias et dependents",
+                "Esclaves du foyer",
+                "Uniquement parents biologiques modernes",
+                "État français"
+              ],
+              "correctAnswers": [
+                "Pater familias et dependents",
+                "Esclaves du foyer"
+              ],
+              "explanation": "Familia au sens juridique large."
+            },
+            {
+              "id": "q2",
+              "question": "« Pater familias » =",
+              "type": "single_choice",
+              "options": [
+                "Chef juridique du foyer",
+                "Simple oncle",
+                "Roi de Rome",
+                "Général"
+              ],
+              "correctAnswers": ["Chef juridique du foyer"],
+              "explanation": "Patria potestas."
+            },
+            {
+              "id": "q3",
+              "question": "« Domus » =",
+              "type": "single_choice",
+              "options": [
+                "Maison / foyer",
+                "Dôme moderne",
+                "Domaine public seul",
+                "Route"
+              ],
+              "correctAnswers": ["Maison / foyer"],
+              "explanation": "Espace privé urbain."
+            },
+            {
+              "id": "q4",
+              "question": "« Matrona » =",
+              "type": "single_choice",
+              "options": [
+                "Épouse respectable",
+                "Soldate",
+                "Magistrate",
+                "Esclave seule"
+              ],
+              "correctAnswers": ["Épouse respectable"],
+              "explanation": "Rôle social féminin."
+            },
+            {
+              "id": "q5",
+              "question": "« Liberi » =",
+              "type": "single_choice",
+              "options": [
+                "Enfants libres",
+                "Livres",
+                "Libertins seuls",
+                "Légions"
+              ],
+              "correctAnswers": ["Enfants libres"],
+              "explanation": "Opposés aux esclaves."
+            },
+            {
+              "id": "q6",
+              "question": "Héritage français de familia :",
+              "type": "single_choice",
+              "options": [
+                "Famille, familial",
+                "Famille grecque",
+                "Famille sans latin",
+                "Famille anglaise seule"
+              ],
+              "correctAnswers": ["Famille, familial"],
+              "explanation": "Emprunt latin → roman."
+            },
+            {
+              "id": "q7",
+              "question": "Mariage romain (repère) :",
+              "type": "single_choice",
+              "options": [
+                "Union légitime avec rites",
+                "Sans contrat",
+                "Toujours chrétien antique",
+                "Interdit"
+              ],
+              "correctAnswers": ["Union légitime avec rites"],
+              "explanation": "Statut social."
+            },
+            {
+              "id": "q8",
+              "question": "Épitaphe familiale montre :",
+              "type": "single_choice",
+              "options": [
+                "Affection et statut",
+                "Code pénal",
+                "Bataille",
+                "Mythe fondateur"
+              ],
+              "correctAnswers": ["Affection et statut"],
+              "explanation": "Lien document / domus."
+            },
+            {
+              "id": "q9",
+              "question": "Patria potestas =",
+              "type": "single_choice",
+              "options": [
+                "Pouvoir du père sur descendants",
+                "Pouvoir du peuple",
+                "Culte",
+                "Guerre"
+              ],
+              "correctAnswers": ["Pouvoir du père sur descendants"],
+              "explanation": "Institution juridique."
+            },
+            {
+              "id": "q10",
+              "question": "En 3e, domus + civitas :",
+              "type": "single_choice",
+              "options": [
+                "Privé et public complémentaires",
+                "Identiques",
+                "Sans rapport",
+                "Grec seul"
+              ],
+              "correctAnswers": ["Privé et public complémentaires"],
+              "explanation": "Deux piliers civilisation."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Vie urbaine : forum et via",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le forum romain sert à :",
+              "type": "multiple_choice",
+              "options": [
+                "Politique et commerce",
+                "Vie religieuse parfois",
+                "Studio de cinéma",
+                "Aéroport"
+              ],
+              "correctAnswers": [
+                "Politique et commerce",
+                "Vie religieuse parfois"
+              ],
+              "explanation": "Centre de la cité."
+            },
+            {
+              "id": "q2",
+              "question": "« Forum » → français :",
+              "type": "single_choice",
+              "options": ["Forum (débat public)", "Forme", "Force", "Fort"],
+              "correctAnswers": ["Forum (débat public)"],
+              "explanation": "Emprunt direct."
+            },
+            {
+              "id": "q3",
+              "question": "« Via » =",
+              "type": "single_choice",
+              "options": ["Rue / route", "Vie", "Ville", "Vin"],
+              "correctAnswers": ["Rue / route"],
+              "explanation": "Réseau routier."
+            },
+            {
+              "id": "q4",
+              "question": "« Insula » en ville =",
+              "type": "single_choice",
+              "options": [
+                "Immeuble d'habitation",
+                "Île méditerranéenne seule",
+                "Temple",
+                "Légion"
+              ],
+              "correctAnswers": ["Immeuble d'habitation"],
+              "explanation": "Urbanisme romain."
+            },
+            {
+              "id": "q5",
+              "question": "Aqueduc montre :",
+              "type": "single_choice",
+              "options": [
+                "Technique et service public",
+                "Mythe seul",
+                "Absence d'eau",
+                "Art grec seul"
+              ],
+              "correctAnswers": ["Technique et service public"],
+              "explanation": "Civilisation matérielle."
+            },
+            {
+              "id": "q6",
+              "question": "Thermes =",
+              "type": "single_choice",
+              "options": ["Bains publics", "Théâtre", "Temple", "Tribunal"],
+              "correctAnswers": ["Bains publics"],
+              "explanation": "Socialisation urbaine."
+            },
+            {
+              "id": "q7",
+              "question": "Circus =",
+              "type": "single_choice",
+              "options": ["Course de chars", "Bibliothèque", "Prison", "Sénat"],
+              "correctAnswers": ["Course de chars"],
+              "explanation": "Loisirs populaires."
+            },
+            {
+              "id": "q8",
+              "question": "Latin via → :",
+              "type": "single_choice",
+              "options": ["Voie, voyage", "Viande", "Vieille", "Vitrine"],
+              "correctAnswers": ["Voie, voyage"],
+              "explanation": "Famille vi-."
+            },
+            {
+              "id": "q9",
+              "question": "Urbain vs rural (ager) :",
+              "type": "single_choice",
+              "options": [
+                "Deux modes de vie romains",
+                "Identiques",
+                "Sans latin",
+                "Modernes"
+              ],
+              "correctAnswers": ["Deux modes de vie romains"],
+              "explanation": "Économie agricole + ville."
+            },
+            {
+              "id": "q10",
+              "question": "Repère 3e : forum + SPQR =",
+              "type": "single_choice",
+              "options": [
+                "Espace où le peuple et le Sénat s'incarnent",
+                "Mythe louve",
+                "Épitaphe",
+                "Grec"
+              ],
+              "correctAnswers": ["Espace où le peuple et le Sénat s'incarnent"],
+              "explanation": "Civilisation concrète."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Loi et justice (repères)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Droit romain laisse :",
+              "type": "multiple_choice",
+              "options": [
+                "Vocabulaire juridique au français",
+                "Principes durables",
+                "Rien en Europe",
+                "Uniquement poésie"
+              ],
+              "correctAnswers": [
+                "Vocabulaire juridique au français",
+                "Principes durables"
+              ],
+              "explanation": "Héritage institutionnel."
+            },
+            {
+              "id": "q2",
+              "question": "« Lex » =",
+              "type": "single_choice",
+              "options": ["Loi", "Légion", "Lecture", "Lien"],
+              "correctAnswers": ["Loi"],
+              "explanation": "Base législative."
+            },
+            {
+              "id": "q3",
+              "question": "« Ius » =",
+              "type": "single_choice",
+              "options": ["Droit", "Jus", "Juge seul", "Jour"],
+              "correctAnswers": ["Droit"],
+              "explanation": "Droit vs loi (repère)."
+            },
+            {
+              "id": "q4",
+              "question": "« Iudex » =",
+              "type": "single_choice",
+              "options": ["Juge", "Joueur", "Jumeau", "Juif"],
+              "correctAnswers": ["Juge"],
+              "explanation": "Justice romaine."
+            },
+            {
+              "id": "q5",
+              "question": "« Testis » =",
+              "type": "single_choice",
+              "options": ["Témoin", "Testament seul", "Texte", "Tête"],
+              "correctAnswers": ["Témoin"],
+              "explanation": "Procédure."
+            },
+            {
+              "id": "q6",
+              "question": "Tables de la Loi (XII Tables) :",
+              "type": "single_choice",
+              "options": [
+                "Premier corpus écrit républicain",
+                "Mythe",
+                "Poème d'Homère",
+                "Code Napoléon"
+              ],
+              "correctAnswers": ["Premier corpus écrit républicain"],
+              "explanation": "Repère historique."
+            },
+            {
+              "id": "q7",
+              "question": "Français « justice » vient de :",
+              "type": "single_choice",
+              "options": [
+                "Famille latine ius / iustitia",
+                "Grec seul",
+                "Anglais",
+                "Arabe"
+              ],
+              "correctAnswers": ["Famille latine ius / iustitia"],
+              "explanation": "Héritage lexical."
+            },
+            {
+              "id": "q8",
+              "question": "Formule juridique courte + lex :",
+              "type": "single_choice",
+              "options": [
+                "Même civilisation du droit",
+                "Sans lien",
+                "Mythe",
+                "Épitaphe seule"
+              ],
+              "correctAnswers": ["Même civilisation du droit"],
+              "explanation": "Lire document = droit."
+            },
+            {
+              "id": "q9",
+              "question": "Empereur et droit :",
+              "type": "single_choice",
+              "options": [
+                "Édits et codifications",
+                "Absence de règles",
+                "Grec seul",
+                "Moyen Âge"
+              ],
+              "correctAnswers": ["Édits et codifications"],
+              "explanation": "Évolution impériale."
+            },
+            {
+              "id": "q10",
+              "question": "En 3e, ius civile =",
+              "type": "single_choice",
+              "options": [
+                "Droit des citoyens romains",
+                "Droit des stars",
+                "Sport",
+                "Musique"
+              ],
+              "correctAnswers": ["Droit des citoyens romains"],
+              "explanation": "Fondamental."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Guerre, imperium, paix",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Expansion romaine repose sur :",
+              "type": "multiple_choice",
+              "options": [
+                "Armée organisée",
+                "Idée d'imperium",
+                "Démocratie athénienne identique",
+                "Internet"
+              ],
+              "correctAnswers": ["Armée organisée", "Idée d'imperium"],
+              "explanation": "Conquête et commandement."
+            },
+            {
+              "id": "q2",
+              "question": "« Imperium » =",
+              "type": "single_choice",
+              "options": [
+                "Pouvoir de commandement",
+                "Empire seulement moderne",
+                "Impôt",
+                "Impossible"
+              ],
+              "correctAnswers": ["Pouvoir de commandement"],
+              "explanation": "Magistrature militaire."
+            },
+            {
+              "id": "q3",
+              "question": "« Pax Romana » évoque :",
+              "type": "single_choice",
+              "options": [
+                "Période de relative stabilité impériale",
+                "Guerre permanente",
+                "Mythe fondateur",
+                "Fin du latin"
+              ],
+              "correctAnswers": ["Période de relative stabilité impériale"],
+              "explanation": "Ordre impérial."
+            },
+            {
+              "id": "q4",
+              "question": "« Provincia » =",
+              "type": "single_choice",
+              "options": ["Province", "Ville", "Proche", "Preuve"],
+              "correctAnswers": ["Province"],
+              "explanation": "Territoire administré."
+            },
+            {
+              "id": "q5",
+              "question": "Légion vs auxiliaires :",
+              "type": "single_choice",
+              "options": [
+                "Citoyens vs troupes alliées",
+                "Identiques",
+                "Grecs seuls",
+                "Sans armée"
+              ],
+              "correctAnswers": ["Citoyens vs troupes alliées"],
+              "explanation": "Organisation."
+            },
+            {
+              "id": "q6",
+              "question": "Français « empire » vient de :",
+              "type": "single_choice",
+              "options": [
+                "Imperium / imperator",
+                "Grec",
+                "Germanique",
+                "Sans latin"
+              ],
+              "correctAnswers": ["Imperium / imperator"],
+              "explanation": "Héritage."
+            },
+            {
+              "id": "q7",
+              "question": "Inscription militaire + imperium :",
+              "type": "single_choice",
+              "options": [
+                "Gloire et service armé",
+                "Mythe louve",
+                "Dédicace seule",
+                "Grec"
+              ],
+              "correctAnswers": ["Gloire et service armé"],
+              "explanation": "Documents et armée."
+            },
+            {
+              "id": "q8",
+              "question": "« Hostis » =",
+              "type": "single_choice",
+              "options": ["Ennemi", "Hôte amical", "Hôtel", "Os"],
+              "correctAnswers": ["Ennemi"],
+              "explanation": "Guerre."
+            },
+            {
+              "id": "q9",
+              "question": "Triomphe à Rome :",
+              "type": "single_choice",
+              "options": [
+                "Cérémonie de victoire",
+                "Enterrement",
+                "Mariage",
+                "Procès"
+              ],
+              "correctAnswers": ["Cérémonie de victoire"],
+              "explanation": "Propagande."
+            },
+            {
+              "id": "q10",
+              "question": "Repère civilisation 3e :",
+              "type": "single_choice",
+              "options": [
+                "Rome unifie Méditerranée longtemps",
+                "Rome ignore la guerre",
+                "Latin absent",
+                "Mythe seul"
+              ],
+              "correctAnswers": ["Rome unifie Méditerranée longtemps"],
+              "explanation": "Portée historique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Mythes au-delà de Romulus",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Mythologie gréco-romaine à Rome inclut :",
+              "type": "multiple_choice",
+              "options": [
+                "Enée lié à Rome",
+                "Hercule dans légendes italiennes",
+                "Harry Potter",
+                "Rois de France médiévaux"
+              ],
+              "correctAnswers": [
+                "Enée lié à Rome",
+                "Hercule dans légendes italiennes"
+              ],
+              "explanation": "Syncretisme et origines troyennes."
+            },
+            {
+              "id": "q2",
+              "question": "Enée, figure de :",
+              "type": "single_choice",
+              "options": [
+                "Fuite de Troie vers l'Italie",
+                "Fondation Athènes",
+                "Empereur français",
+                "Philosophe grec seul"
+              ],
+              "correctAnswers": ["Fuite de Troie vers l'Italie"],
+              "explanation": "Énéide de Virgile (repère)."
+            },
+            {
+              "id": "q3",
+              "question": "« Mars » =",
+              "type": "single_choice",
+              "options": [
+                "Dieu de la guerre",
+                "Dieu de la mer",
+                "Dieu du commerce",
+                "Poète"
+              ],
+              "correctAnswers": ["Dieu de la guerre"],
+              "explanation": "Père légendaire de Romulus."
+            },
+            {
+              "id": "q4",
+              "question": "« Venus » dans mythologie romaine :",
+              "type": "single_choice",
+              "options": [
+                "Aphrodite assimilée",
+                "Jupiter",
+                "Junon seule",
+                "Mercure"
+              ],
+              "correctAnswers": ["Aphrodite assimilée"],
+              "explanation": "Mère d'Enée."
+            },
+            {
+              "id": "q5",
+              "question": "Mythe sert à :",
+              "type": "single_choice",
+              "options": [
+                "Expliquer origines et valeurs",
+                "Dater une loi",
+                "Remplacer épigraphie",
+                "Écrire en français"
+              ],
+              "correctAnswers": ["Expliquer origines et valeurs"],
+              "explanation": "Fonction culturelle."
+            },
+            {
+              "id": "q6",
+              "question": "Différence mythe / inscription :",
+              "type": "single_choice",
+              "options": [
+                "Récit vs trace matérielle",
+                "Identiques",
+                "Tous deux juridiques",
+                "Sans latin"
+              ],
+              "correctAnswers": ["Récit vs trace matérielle"],
+              "explanation": "Deux sources."
+            },
+            {
+              "id": "q7",
+              "question": "« Nymphae » =",
+              "type": "single_choice",
+              "options": ["Nymphes", "Nombres", "Nuits", "Navires"],
+              "correctAnswers": ["Nymphes"],
+              "explanation": "Monde surnaturel."
+            },
+            {
+              "id": "q8",
+              "question": "Littérature latine (Virgile) :",
+              "type": "single_choice",
+              "options": [
+                "Fixe mythes pour Rome",
+                "Ignore Rome",
+                "Grec seul",
+                "Français"
+              ],
+              "correctAnswers": ["Fixe mythes pour Rome"],
+              "explanation": "Civilisation littéraire."
+            },
+            {
+              "id": "q9",
+              "question": "En 3e, Romulus + Enée :",
+              "type": "single_choice",
+              "options": [
+                "Deux récits fondateurs complémentaires",
+                "Contradiction à ignorer",
+                "Histoire prouvée au jour",
+                "Grec seul"
+              ],
+              "correctAnswers": ["Deux récits fondateurs complémentaires"],
+              "explanation": "Mémoire multiple."
+            },
+            {
+              "id": "q10",
+              "question": "Mythes et vie civique :",
+              "type": "single_choice",
+              "options": [
+                "Relient identité et culte public",
+                "Sans rapport",
+                "Remplacent le Sénat",
+                "Modernes"
+              ],
+              "correctAnswers": ["Relient identité et culte public"],
+              "explanation": "Cohérence culturelle."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Latin dans le français",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le français hérite du latin :",
+              "type": "multiple_choice",
+              "options": [
+                "Mots courants (famille, agricole)",
+                "Suffixes (-tion, -ment)",
+                "Alphabet cyrillique",
+                "Aucun mot"
+              ],
+              "correctAnswers": [
+                "Mots courants (famille, agricole)",
+                "Suffixes (-tion, -ment)"
+              ],
+              "explanation": "Emprunts massifs."
+            },
+            {
+              "id": "q2",
+              "question": "« Agricola » →",
+              "type": "single_choice",
+              "options": [
+                "Agriculteur / agriculture",
+                "Agenda",
+                "Agneau",
+                "Agir"
+              ],
+              "correctAnswers": ["Agriculteur / agriculture"],
+              "explanation": "Champ lexical agricole."
+            },
+            {
+              "id": "q3",
+              "question": "« Aqua » →",
+              "type": "single_choice",
+              "options": ["Eau (aquatique)", "Aile", "Arbre", "Acte"],
+              "correctAnswers": ["Eau (aquatique)"],
+              "explanation": "Radical aqu-."
+            },
+            {
+              "id": "q4",
+              "question": "« Scola » →",
+              "type": "single_choice",
+              "options": ["École", "Score", "Scie", "Sculpture grecque seule"],
+              "correctAnswers": ["École"],
+              "explanation": "Scola / scholaris."
+            },
+            {
+              "id": "q5",
+              "question": "« Populus » →",
+              "type": "single_choice",
+              "options": ["Peuple / populaire", "Pope", "Pomme", "Port"],
+              "correctAnswers": ["Peuple / populaire"],
+              "explanation": "Politique."
+            },
+            {
+              "id": "q6",
+              "question": "« Senator » →",
+              "type": "single_choice",
+              "options": ["Sénateur", "Sens", "Sentence", "Senteur"],
+              "correctAnswers": ["Sénateur"],
+              "explanation": "Institutions."
+            },
+            {
+              "id": "q7",
+              "question": "Reconnaître un mot latin en français :",
+              "type": "single_choice",
+              "options": [
+                "Radical et sens (familia → famille)",
+                "Hasard",
+                "Grec systématique",
+                "Anglais seul"
+              ],
+              "correctAnswers": ["Radical et sens (familia → famille)"],
+              "explanation": "Méthode 3e."
+            },
+            {
+              "id": "q8",
+              "question": "« Documentum » →",
+              "type": "single_choice",
+              "options": ["Document", "Dommage", "Doux", "Doute"],
+              "correctAnswers": ["Document"],
+              "explanation": "Lien avec chapitre."
+            },
+            {
+              "id": "q9",
+              "question": "Latin classique vs français :",
+              "type": "single_choice",
+              "options": [
+                "Langue mère historique du roman",
+                "Frère du chinois",
+                "Identiques",
+                "Sans évolution"
+              ],
+              "correctAnswers": ["Langue mère historique du roman"],
+              "explanation": "Diachronie."
+            },
+            {
+              "id": "q10",
+              "question": "Étudier latin en 3e aide à :",
+              "type": "single_choice",
+              "options": [
+                "Mieux comprendre le français",
+                "Oublier le français",
+                "Parler latin courant",
+                "Remplacer histoire"
+              ],
+              "correctAnswers": ["Mieux comprendre le français"],
+              "explanation": "Héritage lexical."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse civilisation romaine",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux piliers du repère 3e (parmi les propositions) :",
+              "type": "multiple_choice",
+              "options": [
+                "Rome cité et empire",
+                "Mythes et religion",
+                "Héritage en français",
+                "Programme de maths"
+              ],
+              "correctAnswers": ["Rome cité et empire", "Héritage en français"],
+              "explanation": "Culture + langue."
+            },
+            {
+              "id": "q2",
+              "question": "Document court + civilisation :",
+              "type": "single_choice",
+              "options": [
+                "Texte concret illustre la société",
+                "Sans intérêt",
+                "Remplace tout cours",
+                "Grec seul"
+              ],
+              "correctAnswers": ["Texte concret illustre la société"],
+              "explanation": "Objectif du chapitre."
+            },
+            {
+              "id": "q3",
+              "question": "Rome laisse en Europe :",
+              "type": "single_choice",
+              "options": [
+                "Droit, mots, routes, mémoire",
+                "Rien",
+                "Seulement mythes",
+                "Langue anglaise"
+              ],
+              "correctAnswers": ["Droit, mots, routes, mémoire"],
+              "explanation": "Héritage durable."
+            },
+            {
+              "id": "q4",
+              "question": "Différence 3e / 6e (latin) :",
+              "type": "single_choice",
+              "options": [
+                "3e : documents, civique, héritage français",
+                "Identique",
+                "6e : seulement mythologie longue",
+                "Sans latin en 3e"
+              ],
+              "correctAnswers": ["3e : documents, civique, héritage français"],
+              "explanation": "Programme adapté."
+            },
+            {
+              "id": "q5",
+              "question": "SPQR + forum + lex =",
+              "type": "single_choice",
+              "options": [
+                "Institutions romaines",
+                "Mythe seul",
+                "Épitaphe seule",
+                "Français moderne pur"
+              ],
+              "correctAnswers": ["Institutions romaines"],
+              "explanation": "Vue d'ensemble."
+            },
+            {
+              "id": "q6",
+              "question": "Enée + Romulus =",
+              "type": "single_choice",
+              "options": [
+                "Identité légendaire",
+                "Code pénal",
+                "Inscription militaire",
+                "Grec"
+              ],
+              "correctAnswers": ["Identité légendaire"],
+              "explanation": "Mythes fondateurs."
+            },
+            {
+              "id": "q7",
+              "question": "Familia + domus + épitaphe =",
+              "type": "single_choice",
+              "options": [
+                "Vie privée romaine",
+                "Armée seule",
+                "Théâtre seul",
+                "Internet"
+              ],
+              "correctAnswers": ["Vie privée romaine"],
+              "explanation": "Repère social."
+            },
+            {
+              "id": "q8",
+              "question": "Pourquoi « Culture et documents » :",
+              "type": "single_choice",
+              "options": [
+                "Lire le réel + situer Rome",
+                "Ignorer les textes",
+                "Copier 6e",
+                "Apprendre grec"
+              ],
+              "correctAnswers": ["Lire le réel + situer Rome"],
+              "explanation": "Titre du chapitre."
+            },
+            {
+              "id": "q9",
+              "question": "Compétence visée en 3e :",
+              "type": "single_choice",
+              "options": [
+                "Décoder et contextualiser",
+                "Réciter sans comprendre",
+                "Traduire Homère",
+                "Oublier civilisation"
+              ],
+              "correctAnswers": ["Décoder et contextualiser"],
+              "explanation": "Objectif pédagogique."
+            },
+            {
+              "id": "q10",
+              "question": "Le latin à Rome était :",
+              "type": "single_choice",
+              "options": [
+                "Langue de la cité, du droit, du culte",
+                "Langue secrète rare",
+                "Uniquement parlée sans écrit",
+                "Français"
+              ],
+              "correctAnswers": ["Langue de la cité, du droit, du culte"],
+              "explanation": "Conclusion du chapitre."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

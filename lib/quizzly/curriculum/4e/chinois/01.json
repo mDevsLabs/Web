@@ -1,0 +1,2263 @@
+{
+  "id": "4e-chinois-01",
+  "year": "4e",
+  "subject": "chinois",
+  "title": "Découvrir le chinois",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Salutations du matin au soir",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Il est 7 h30. Quelles salutations conviennent ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "早上好 (zǎoshang hǎo)",
+                "晚上好 (wǎnshang hǎo)",
+                "你好 (nǐ hǎo)",
+                "再见 (zàijiàn)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le matin on peut dire 早上好 ou 你好."
+            },
+            {
+              "id": "q2",
+              "question": "Saluer à midi :",
+              "type": "single_choice",
+              "options": [
+                "中午好 (zhōngwǔ hǎo)",
+                "早上好 (zǎoshang hǎo)",
+                "晚安 (wǎn'ān)",
+                "谢谢 (xièxie)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "中午好 = bonjour (midi)."
+            },
+            {
+              "id": "q3",
+              "question": "À 20 h, on dit plutôt :",
+              "type": "single_choice",
+              "options": [
+                "晚上好 (wǎnshang hǎo)",
+                "下午好 (xiàwǔ hǎo)",
+                "早上好 (zǎoshang hǎo)",
+                "请进 (qǐng jìn)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "晚上 = soir."
+            },
+            {
+              "id": "q4",
+              "question": "下午好 (xiàwǔ hǎo) signifie :",
+              "type": "single_choice",
+              "options": ["Bon après-midi", "Bonne nuit", "Merci", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "下午 = après-midi."
+            },
+            {
+              "id": "q5",
+              "question": "Avant de dormir :",
+              "type": "single_choice",
+              "options": [
+                "晚安 (wǎn'ān)",
+                "你好 (nǐ hǎo)",
+                "对不起 (duìbuqǐ)",
+                "不客气 (bú kèqi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "晚安 = bonne nuit."
+            },
+            {
+              "id": "q6",
+              "question": "Réponse à 谢谢 (xièxie) :",
+              "type": "single_choice",
+              "options": [
+                "不客气 (bú kèqi)",
+                "再见 (zàijiàn)",
+                "你好 (nǐ hǎo)",
+                "请 (qǐng)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De rien."
+            },
+            {
+              "id": "q7",
+              "question": "Demander pardon :",
+              "type": "single_choice",
+              "options": [
+                "对不起 (duìbuqǐ)",
+                "没关系 (méi guānxi)",
+                "请坐 (qǐng zuò)",
+                "很高兴 (hěn gāoxìng)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "对不起 = pardon."
+            },
+            {
+              "id": "q8",
+              "question": "Au revoir :",
+              "type": "single_choice",
+              "options": [
+                "再见 (zàijiàn)",
+                "你好 (nǐ hǎo)",
+                "是 (shì)",
+                "有 (yǒu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "再见 = à bientôt."
+            },
+            {
+              "id": "q9",
+              "question": "你好 (nǐ hǎo) =",
+              "type": "single_choice",
+              "options": ["Bonjour", "Merci", "Oui", "Non"],
+              "correctAnswers": [0],
+              "explanation": "Salutation universelle."
+            },
+            {
+              "id": "q10",
+              "question": "Entrer en classe :",
+              "type": "single_choice",
+              "options": [
+                "请进 (qǐng jìn)",
+                "晚安 (wǎn'ān)",
+                "不 (bù)",
+                "没 (méi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "请进 = entrez."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Nom et présentation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Se présenter correctement ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "我叫王芳 (wǒ jiào Wáng Fāng)",
+                "我是学生 (wǒ shì xuésheng)",
+                "我叫是王芳 (wǒ jiào shì Wáng Fāng)",
+                "学生我叫 (xuésheng wǒ jiào)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "我叫 + nom ; 我是 + statut."
+            },
+            {
+              "id": "q2",
+              "question": "我叫… sert à :",
+              "type": "single_choice",
+              "options": [
+                "Donner son nom",
+                "Donner son âge",
+                "Saluer le soir",
+                "Compter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "叫 = s'appeler."
+            },
+            {
+              "id": "q3",
+              "question": "Demander le nom :",
+              "type": "single_choice",
+              "options": [
+                "你叫什么名字？(nǐ jiào shénme míngzi?)",
+                "你几岁？(nǐ jǐ suì?)",
+                "你是哪国人？(nǐ shì nǎ guó rén?)",
+                "几点了？(jǐ diǎn le?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "什么名字 = quel nom."
+            },
+            {
+              "id": "q4",
+              "question": "我 (wǒ) =",
+              "type": "single_choice",
+              "options": ["Je", "Tu", "Il", "Nous"],
+              "correctAnswers": [0],
+              "explanation": "1re personne."
+            },
+            {
+              "id": "q5",
+              "question": "你 (nǐ) =",
+              "type": "single_choice",
+              "options": ["Tu", "Je", "Elle", "Ils"],
+              "correctAnswers": [0],
+              "explanation": "2e personne."
+            },
+            {
+              "id": "q6",
+              "question": "很高兴认识你 (hěn gāoxìng rènshi nǐ) =",
+              "type": "single_choice",
+              "options": ["Enchanté(e)", "Au revoir", "Pardon", "Bonne nuit"],
+              "correctAnswers": [0],
+              "explanation": "Après une présentation."
+            },
+            {
+              "id": "q7",
+              "question": "是 (shì) =",
+              "type": "single_choice",
+              "options": ["Être", "Avoir", "Aller", "Manger"],
+              "correctAnswers": [0],
+              "explanation": "Verbe être."
+            },
+            {
+              "id": "q8",
+              "question": "我是法国人 (wǒ shì Fǎguó rén) =",
+              "type": "single_choice",
+              "options": [
+                "Je suis français(e)",
+                "Je suis chinois(e)",
+                "J'ai quatorze ans",
+                "Je m'appelle Pierre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "法国 = France."
+            },
+            {
+              "id": "q9",
+              "question": "学生 (xuésheng) =",
+              "type": "single_choice",
+              "options": [
+                "Élève / étudiant",
+                "Professeur",
+                "Médecin",
+                "Parent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot de la classe."
+            },
+            {
+              "id": "q10",
+              "question": "名字 (míngzi) =",
+              "type": "single_choice",
+              "options": ["Nom / prénom", "Âge", "Pays", "Heure"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire présentation."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quel âge as-tu ?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phrases d'âge correctes ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "我十四岁 (wǒ shísì suì)",
+                "我十五岁 (wǒ shíwǔ suì)",
+                "岁我十四 (suì wǒ shísì)",
+                "我岁十五 (wǒ suì shíwǔ)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ordre : sujet + nombre + 岁."
+            },
+            {
+              "id": "q2",
+              "question": "岁 (suì) =",
+              "type": "single_choice",
+              "options": ["Ans (âge)", "Euros", "Heures", "Personnes"],
+              "correctAnswers": [0],
+              "explanation": "Classifier d'âge."
+            },
+            {
+              "id": "q3",
+              "question": "十四 (shísì) =",
+              "type": "single_choice",
+              "options": ["14", "40", "4", "10"],
+              "correctAnswers": [0],
+              "explanation": "10 + 4."
+            },
+            {
+              "id": "q4",
+              "question": "你几岁？(nǐ jǐ suì?) =",
+              "type": "single_choice",
+              "options": [
+                "Quel âge as-tu ?",
+                "Comment t'appelles-tu ?",
+                "D'où viens-tu ?",
+                "Quelle heure est-il ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "几 = combien."
+            },
+            {
+              "id": "q5",
+              "question": "十六 (shíliù) =",
+              "type": "single_choice",
+              "options": ["16", "60", "6", "26"],
+              "correctAnswers": [0],
+              "explanation": "10 + 6."
+            },
+            {
+              "id": "q6",
+              "question": "我十三岁 (wǒ shísān suì) =",
+              "type": "single_choice",
+              "options": [
+                "J'ai treize ans",
+                "J'ai trente ans",
+                "J'ai trois ans",
+                "J'ai trente-trois ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "十三 = 13."
+            },
+            {
+              "id": "q7",
+              "question": "J'ai quinze ans :",
+              "type": "single_choice",
+              "options": [
+                "我十五岁 (wǒ shíwǔ suì)",
+                "我五十五岁 (wǒ wǔshíwǔ suì)",
+                "我五岁 (wǒ wǔ suì)",
+                "我五十岁 (wǒ wǔshí suì)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "十五 = 15."
+            },
+            {
+              "id": "q8",
+              "question": "Il a quatorze ans :",
+              "type": "single_choice",
+              "options": [
+                "他十四岁 (tā shísì suì)",
+                "我十四岁 (wǒ shísì suì)",
+                "你十四岁 (nǐ shísì suì)",
+                "十四岁他 (shísì suì tā)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "他 = il."
+            },
+            {
+              "id": "q9",
+              "question": "十二 (shí'èr) =",
+              "type": "single_choice",
+              "options": ["12", "20", "2", "22"],
+              "correctAnswers": [0],
+              "explanation": "10 + 2."
+            },
+            {
+              "id": "q10",
+              "question": "Âge plausible en 4e :",
+              "type": "single_choice",
+              "options": [
+                "我十四岁 (wǒ shísì suì)",
+                "我四岁 (wǒ sì suì)",
+                "我四十岁 (wǒ sìshí suì)",
+                "我一百岁 (wǒ yībǎi suì)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Environ 13–15 ans en 4e."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "D'où viens-tu ?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Nationalité bien formulée ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "我是法国人 (wǒ shì Fǎguó rén)",
+                "我是中国人 (wǒ shì Zhōngguó rén)",
+                "我是法国 (wǒ shì Fǎguó)",
+                "我法国人是 (wǒ Fǎguó rén shì)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "我是 + pays + 人."
+            },
+            {
+              "id": "q2",
+              "question": "中国 (Zhōngguó) =",
+              "type": "single_choice",
+              "options": ["Chine", "France", "Japon", "États-Unis"],
+              "correctAnswers": [0],
+              "explanation": "Pays cible de la langue."
+            },
+            {
+              "id": "q3",
+              "question": "你是哪国人？(nǐ shì nǎ guó rén?) =",
+              "type": "single_choice",
+              "options": [
+                "De quelle nationalité es-tu ?",
+                "Quel est ton nom ?",
+                "Quelle est ta classe ?",
+                "As-tu des frères ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "哪国 = quel pays."
+            },
+            {
+              "id": "q4",
+              "question": "美国人 (Měiguó rén) =",
+              "type": "single_choice",
+              "options": [
+                "Américain(e)",
+                "Français(e)",
+                "Allemand(e)",
+                "Espagnol(e)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "美国 = USA."
+            },
+            {
+              "id": "q5",
+              "question": "英国 (Yīngguó) =",
+              "type": "single_choice",
+              "options": ["Royaume-Uni", "Allemagne", "Italie", "Belgique"],
+              "correctAnswers": [0],
+              "explanation": "Pays européen."
+            },
+            {
+              "id": "q6",
+              "question": "日本 (Rìběn) =",
+              "type": "single_choice",
+              "options": ["Japon", "Corée", "Vietnam", "Inde"],
+              "correctAnswers": [0],
+              "explanation": "Asie de l'Est."
+            },
+            {
+              "id": "q7",
+              "question": "Je ne suis pas chinois :",
+              "type": "single_choice",
+              "options": [
+                "我不是中国人 (wǒ bú shì Zhōngguó rén)",
+                "我是中国人 (wǒ shì Zhōngguó rén)",
+                "我不中国人 (wǒ bù Zhōngguó rén)",
+                "我没中国 (wǒ méi Zhōngguó)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不是 = ne pas être."
+            },
+            {
+              "id": "q8",
+              "question": "人 (rén) =",
+              "type": "single_choice",
+              "options": ["Personne", "Maison", "Voiture", "Crayon"],
+              "correctAnswers": [0],
+              "explanation": "Radical fréquent."
+            },
+            {
+              "id": "q9",
+              "question": "德国 (Déguó) =",
+              "type": "single_choice",
+              "options": ["Allemagne", "Suisse", "Canada", "Maroc"],
+              "correctAnswers": [0],
+              "explanation": "Pays souvent appris."
+            },
+            {
+              "id": "q10",
+              "question": "Réponse : 我是法国人。Question :",
+              "type": "single_choice",
+              "options": ["你是哪国人？", "你几岁？", "你叫什么？", "你好吗？"],
+              "correctAnswers": [0],
+              "explanation": "On demande la nationalité."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "À l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Réponses à 你好吗？(nǐ hǎo ma?) ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "我很好 (wǒ hěn hǎo)",
+                "还好 (hái hǎo)",
+                "我叫Lucie (wǒ jiào Lucie)",
+                "晚安 (wǎn'ān)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On parle de son état."
+            },
+            {
+              "id": "q2",
+              "question": "老师 (lǎoshī) =",
+              "type": "single_choice",
+              "options": ["Professeur", "Élève", "Frère", "Ami"],
+              "correctAnswers": [0],
+              "explanation": "Personnel de l'école."
+            },
+            {
+              "id": "q3",
+              "question": "同学 (tóngxué) =",
+              "type": "single_choice",
+              "options": ["Camarade de classe", "Cousin", "Voisin", "Docteur"],
+              "correctAnswers": [0],
+              "explanation": "Même classe."
+            },
+            {
+              "id": "q4",
+              "question": "Saluer le prof le matin :",
+              "type": "single_choice",
+              "options": [
+                "老师早上好！(lǎoshī zǎoshang hǎo!)",
+                "老师晚安 (lǎoshī wǎn'ān)",
+                "老师再见 (lǎoshī zàijiàn)",
+                "老师谢谢 (lǎoshī xièxie)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titre + salutation."
+            },
+            {
+              "id": "q5",
+              "question": "请坐 (qǐng zuò) =",
+              "type": "single_choice",
+              "options": ["Asseyez-vous", "Levez-vous", "Sortez", "Écrivez"],
+              "correctAnswers": [0],
+              "explanation": "请 = s'il vous plaît."
+            },
+            {
+              "id": "q6",
+              "question": "没关系 (méi guānxi) répond à :",
+              "type": "single_choice",
+              "options": [
+                "对不起 (duìbuqǐ)",
+                "你好 (nǐ hǎo)",
+                "再见 (zàijiàn)",
+                "请 (qǐng)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce n'est pas grave."
+            },
+            {
+              "id": "q7",
+              "question": "我们 (wǒmen) =",
+              "type": "single_choice",
+              "options": ["Nous", "Vous", "Ils", "Tu"],
+              "correctAnswers": [0],
+              "explanation": "Pluriel de 我."
+            },
+            {
+              "id": "q8",
+              "question": "教室 (jiàoshì) =",
+              "type": "single_choice",
+              "options": ["Salle de classe", "Cantine", "Stade", "Gare"],
+              "correctAnswers": [0],
+              "explanation": "Lieu de cours."
+            },
+            {
+              "id": "q9",
+              "question": "上课 (shàngkè) =",
+              "type": "single_choice",
+              "options": [
+                "Avoir cours",
+                "Finir le cours",
+                "Déjeuner",
+                "Dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Routine scolaire."
+            },
+            {
+              "id": "q10",
+              "question": "下课 (xiàkè) =",
+              "type": "single_choice",
+              "options": [
+                "Fin du cours",
+                "Début du cours",
+                "Récréation seulement",
+                "Vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "下 = descendre / terminer."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Petit dialogue",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Questions de présentation ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "你叫什么名字？(nǐ jiào shénme míngzi?)",
+                "你几岁？(nǐ jǐ suì?)",
+                "几点了？(jǐ diǎn le?)",
+                "多少钱？(duōshao qián?)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nom et âge."
+            },
+            {
+              "id": "q2",
+              "question": "他 (tā) =",
+              "type": "single_choice",
+              "options": ["Il", "Je", "Tu", "Nous"],
+              "correctAnswers": [0],
+              "explanation": "3e personne masc."
+            },
+            {
+              "id": "q3",
+              "question": "她 (tā) =",
+              "type": "single_choice",
+              "options": ["Elle", "Il", "Je", "Ils"],
+              "correctAnswers": [0],
+              "explanation": "Même prononciation, caractère différent."
+            },
+            {
+              "id": "q4",
+              "question": "很好 (hěn hǎo) =",
+              "type": "single_choice",
+              "options": ["Très bien", "Très mal", "Fatigué", "En retard"],
+              "correctAnswers": [0],
+              "explanation": "Réponse positive."
+            },
+            {
+              "id": "q5",
+              "question": "吗 (ma) à la fin d'une phrase :",
+              "type": "single_choice",
+              "options": [
+                "Marque une question oui/non",
+                "Indique le passé",
+                "Indique le futur",
+                "Rend poli"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Particule interrogative."
+            },
+            {
+              "id": "q6",
+              "question": "不 (bù) =",
+              "type": "single_choice",
+              "options": ["Ne pas / non", "Très", "Aussi", "Encore"],
+              "correctAnswers": [0],
+              "explanation": "Négation."
+            },
+            {
+              "id": "q7",
+              "question": "也 (yě) =",
+              "type": "single_choice",
+              "options": ["Aussi", "Jamais", "Toujours", "Peut-être"],
+              "correctAnswers": [0],
+              "explanation": "我也是法国人 = moi aussi."
+            },
+            {
+              "id": "q8",
+              "question": "什么 (shénme) =",
+              "type": "single_choice",
+              "options": ["Quoi / quel", "Qui", "Où", "Quand"],
+              "correctAnswers": [0],
+              "explanation": "Mot interrogatif."
+            },
+            {
+              "id": "q9",
+              "question": "哪 (nǎ) dans 哪国 =",
+              "type": "single_choice",
+              "options": ["Quel / lequel", "Combien", "Pourquoi", "Comment"],
+              "correctAnswers": [0],
+              "explanation": "Choix entre options."
+            },
+            {
+              "id": "q10",
+              "question": "认识 (rènshi) =",
+              "type": "single_choice",
+              "options": [
+                "Connaître (une personne)",
+                "Manger",
+                "Courir",
+                "Dessiner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans 很高兴认识你."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Politesse en classe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Formules polies ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "请 (qǐng)",
+                "谢谢 (xièxie)",
+                "不 (bù) seul pour refuser un cadeau",
+                "滚 (gǔn)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "请 et 谢谢 sont polis."
+            },
+            {
+              "id": "q2",
+              "question": "请 (qǐng) =",
+              "type": "single_choice",
+              "options": ["S'il vous plaît", "Non merci", "Bonsoir", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "Adoucit une demande."
+            },
+            {
+              "id": "q3",
+              "question": "谢谢您 (xièxie nín) :",
+              "type": "single_choice",
+              "options": ["Merci (formel)", "De rien", "Pardon", "Bonjour"],
+              "correctAnswers": [0],
+              "explanation": "您 = vous de respect."
+            },
+            {
+              "id": "q4",
+              "question": "您 (nín) =",
+              "type": "single_choice",
+              "options": ["Vous (poli)", "Tu", "Ils", "Elle"],
+              "correctAnswers": [0],
+              "explanation": "Pour professeur ou adulte."
+            },
+            {
+              "id": "q5",
+              "question": "没关系 après 对不起 =",
+              "type": "single_choice",
+              "options": [
+                "Ce n'est pas grave",
+                "Merci",
+                "Au revoir",
+                "Bonne nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accepte les excuses."
+            },
+            {
+              "id": "q6",
+              "question": "请说 (qǐng shuō) =",
+              "type": "single_choice",
+              "options": [
+                "Parlez, s'il vous plaît",
+                "Asseyez-vous",
+                "Écrivez",
+                "Écoutez seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "说 = parler."
+            },
+            {
+              "id": "q7",
+              "question": "听 (tīng) =",
+              "type": "single_choice",
+              "options": ["Écouter", "Regarder", "Manger", "Dormir"],
+              "correctAnswers": [0],
+              "explanation": "请听 = écoutez."
+            },
+            {
+              "id": "q8",
+              "question": "说 (shuō) =",
+              "type": "single_choice",
+              "options": ["Parler / dire", "Lire", "Écrire", "Compter"],
+              "correctAnswers": [0],
+              "explanation": "Oral en classe."
+            },
+            {
+              "id": "q9",
+              "question": "写 (xiě) =",
+              "type": "single_choice",
+              "options": ["Écrire", "Effacer", "Couper", "Coller"],
+              "correctAnswers": [0],
+              "explanation": "Caractères au cahier."
+            },
+            {
+              "id": "q10",
+              "question": "读 (dú) =",
+              "type": "single_choice",
+              "options": ["Lire", "Chanter", "Danser", "Nager"],
+              "correctAnswers": [0],
+              "explanation": "Lecture à voix haute."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Révisions présentation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phrases vraies sur soi en 4e ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "我是法国人，我十四岁 (wǒ shì Fǎguó rén, wǒ shísì suì)",
+                "我叫Tom，我是学生 (wǒ jiào Tom, wǒ shì xuésheng)",
+                "我岁法国十四 (wǒ suì Fǎguó shísì)",
+                "叫我是Tom (jiào wǒ shì Tom)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Enchaîner nationalité, âge, nom."
+            },
+            {
+              "id": "q2",
+              "question": "Combien de syllabes dans 你好 (nǐ hǎo) ?",
+              "type": "single_choice",
+              "options": ["2", "3", "4", "1"],
+              "correctAnswers": [0],
+              "explanation": "nǐ + hǎo."
+            },
+            {
+              "id": "q3",
+              "question": "Le ton de 好 (hǎo) dans 你好 est :",
+              "type": "single_choice",
+              "options": [
+                "3e ton (dessinant)",
+                "1er ton (plat)",
+                "4e ton (descendant)",
+                "Neutre seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "hǎo = troisième ton."
+            },
+            {
+              "id": "q4",
+              "question": "法国 (Fǎguó) : 法 se lit :",
+              "type": "single_choice",
+              "options": [
+                "Fǎ (3e ton)",
+                "Fá (2e ton)",
+                "Fà (4e ton)",
+                "Fa (sans ton)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attention aux tons."
+            },
+            {
+              "id": "q5",
+              "question": "学生 (xuésheng) : 学 =",
+              "type": "single_choice",
+              "options": [
+                "Étudier / apprendre",
+                "Enseigner",
+                "Jouer",
+                "Dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Radical de l'école."
+            },
+            {
+              "id": "q6",
+              "question": "Pour dire « et » dans une énumération simple on peut utiliser :",
+              "type": "single_choice",
+              "options": ["和 (hé)", "不 (bù)", "没 (méi)", "吗 (ma)"],
+              "correctAnswers": [0],
+              "explanation": "我和我同学 = mon camarade et moi."
+            },
+            {
+              "id": "q7",
+              "question": "我同学 (wǒ tóngxué) =",
+              "type": "single_choice",
+              "options": [
+                "Mon camarade de classe",
+                "Mon professeur",
+                "Ma mère",
+                "Mon chien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possession implicite."
+            },
+            {
+              "id": "q8",
+              "question": "中文 (Zhōngwén) =",
+              "type": "single_choice",
+              "options": [
+                "Langue chinoise",
+                "Langue française",
+                "Mathématiques",
+                "Sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cours de 4e."
+            },
+            {
+              "id": "q9",
+              "question": "汉语 (Hànyǔ) désigne :",
+              "type": "single_choice",
+              "options": [
+                "Le chinois (langue des Han)",
+                "Le japonais",
+                "L'anglais",
+                "Le latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synonyme courant en classe."
+            },
+            {
+              "id": "q10",
+              "question": "我会说一点儿中文 (wǒ huì shuō yìdiǎnr Zhōngwén) =",
+              "type": "single_choice",
+              "options": [
+                "Je parle un peu chinois",
+                "Je ne parle pas chinois",
+                "Je suis chinois",
+                "Je déteste le chinois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一点儿 = un petit peu."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Mélange salutations",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Salutations selon le moment ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "下午好 (xiàwǔ hǎo) l'après-midi",
+                "晚上好 (wǎnshang hǎo) le soir",
+                "早上好 (zǎoshang hǎo) à minuit",
+                "晚安 (wǎn'ān) à 8 h du matin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Après-midi et soir cohérents."
+            },
+            {
+              "id": "q2",
+              "question": "Récréation à 10 h : saluer un ami :",
+              "type": "single_choice",
+              "options": [
+                "你好！(nǐ hǎo!)",
+                "晚安 (wǎn'ān)",
+                "晚上好 (wǎnshang hǎo)",
+                "再见 (zàijiàn) en arrivant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "你好 convient toute la journée."
+            },
+            {
+              "id": "q3",
+              "question": "Quitter le cours :",
+              "type": "single_choice",
+              "options": [
+                "再见！(zàijiàn!)",
+                "请进 (qǐng jìn)",
+                "早上好 (zǎoshang hǎo)",
+                "请坐 (qǐng zuò)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au revoir en partant."
+            },
+            {
+              "id": "q4",
+              "question": "Entrer chez quelqu'un :",
+              "type": "single_choice",
+              "options": [
+                "你好 + éventuellement 请进",
+                "晚安",
+                "下课",
+                "没关系"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Saluer d'abord."
+            },
+            {
+              "id": "q5",
+              "question": "hǎo dans 你好 signifie souvent :",
+              "type": "single_choice",
+              "options": ["Bon / bien", "Mauvais", "Grand", "Petit"],
+              "correctAnswers": [0],
+              "explanation": "Literally « you good »."
+            },
+            {
+              "id": "q6",
+              "question": "zàijiàn se décompose en :",
+              "type": "single_choice",
+              "options": [
+                "再 (encore) + 见 (voir)",
+                "你 + 好",
+                "请 + 进",
+                "谢 + 谢"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« À revoir »."
+            },
+            {
+              "id": "q7",
+              "question": "xièxie =",
+              "type": "single_choice",
+              "options": ["Merci", "Pardon", "Bonjour", "Non"],
+              "correctAnswers": [0],
+              "explanation": "Remerciement."
+            },
+            {
+              "id": "q8",
+              "question": "duìbuqǐ =",
+              "type": "single_choice",
+              "options": ["Pardon / désolé", "De rien", "Bonsoir", "Enchanté"],
+              "correctAnswers": [0],
+              "explanation": "Excuses."
+            },
+            {
+              "id": "q9",
+              "question": "hěn gāoxìng =",
+              "type": "single_choice",
+              "options": [
+                "Très heureux / content",
+                "Très triste",
+                "Très fâché",
+                "Très malade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avant 认识."
+            },
+            {
+              "id": "q10",
+              "question": "rènshi nǐ =",
+              "type": "single_choice",
+              "options": [
+                "Te connaître",
+                "Te manger",
+                "Te battre",
+                "T'oublier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Connaître une personne."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan unité 1",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour te présenter complètement en 4e ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "我叫…，我…岁，我是…人 (wǒ jiào…, wǒ … suì, wǒ shì … rén)",
+                "你好，很高兴认识你 (nǐ hǎo, hěn gāoxìng rènshi nǐ)",
+                "晚安，再见 (wǎn'ān, zàijiàn) comme présentation",
+                "谢谢，不客气 seulement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Infos + politesse."
+            },
+            {
+              "id": "q2",
+              "question": "Ordre logique :",
+              "type": "single_choice",
+              "options": [
+                "你好 → 我叫… → 很高兴认识你",
+                "再见 → 早上好 → 晚安",
+                "谢谢 → 对不起 → 请进",
+                "下课 → 上课 → 请坐"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Saluer, se nommer, être poli."
+            },
+            {
+              "id": "q3",
+              "question": "Question pour l'âge :",
+              "type": "single_choice",
+              "options": ["你几岁？", "你叫什么？", "你是哪国人？", "你好吗？"],
+              "correctAnswers": [0],
+              "explanation": "几岁 = quel âge."
+            },
+            {
+              "id": "q4",
+              "question": "Question pour le nom :",
+              "type": "single_choice",
+              "options": [
+                "你叫什么名字？",
+                "你几岁？",
+                "你是学生吗？",
+                "现在几点？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "什么名字."
+            },
+            {
+              "id": "q5",
+              "question": "Question pour la nationalité :",
+              "type": "single_choice",
+              "options": [
+                "你是哪国人？",
+                "你好吗？",
+                "你叫什么？",
+                "你去哪儿？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "哪国人."
+            },
+            {
+              "id": "q6",
+              "question": "我是学生吗？(wǒ shì xuésheng ma?) attend :",
+              "type": "single_choice",
+              "options": ["是 (shì) ou 不是 (bú shì)", "谢谢", "晚安", "请进"],
+              "correctAnswers": [0],
+              "explanation": "Question oui/non."
+            },
+            {
+              "id": "q7",
+              "question": "十四岁 en 4e est :",
+              "type": "single_choice",
+              "options": [
+                "Cohérent",
+                "Impossible",
+                "Pour bébé",
+                "Pour retraité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Âge scolaire."
+            },
+            {
+              "id": "q8",
+              "question": "法国人 ≠",
+              "type": "single_choice",
+              "options": [
+                "中国人 (Zhōngguó rén)",
+                "法国人 (Fǎguó rén) lui-même",
+                "— même phrase",
+                "— même pays"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nationalités différentes."
+            },
+            {
+              "id": "q9",
+              "question": "Le professeur de chinois :",
+              "type": "single_choice",
+              "options": [
+                "中文/汉语老师 (Zhōngwén/Hànyǔ lǎoshī)",
+                "医生 (yīshēng)",
+                "司机 (sījī)",
+                "厨师 (chúshī)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Métier adapté."
+            },
+            {
+              "id": "q10",
+              "question": "Objectif de l'unité :",
+              "type": "single_choice",
+              "options": [
+                "Saluer et se présenter (nom, âge, nationalité)",
+                "Compter jusqu'à mille seulement",
+                "Parler uniquement de la famille",
+                "Écrire un roman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thème u1."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Nombres 0 à 10",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Chiffres corrects en chinois ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "七 (qī) = 7",
+                "八 (bā) = 8",
+                "七 (qī) = 1",
+                "八 (bā) = 0"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "qī et bā."
+            },
+            {
+              "id": "q2",
+              "question": "零 (líng) =",
+              "type": "single_choice",
+              "options": ["0", "1", "10", "100"],
+              "correctAnswers": [0],
+              "explanation": "Zéro."
+            },
+            {
+              "id": "q3",
+              "question": "一 (yī) =",
+              "type": "single_choice",
+              "options": ["1", "2", "7", "9"],
+              "correctAnswers": [0],
+              "explanation": "Premier chiffre."
+            },
+            {
+              "id": "q4",
+              "question": "五 (wǔ) =",
+              "type": "single_choice",
+              "options": ["5", "6", "4", "3"],
+              "correctAnswers": [0],
+              "explanation": "Cinque."
+            },
+            {
+              "id": "q5",
+              "question": "九 (jiǔ) =",
+              "type": "single_choice",
+              "options": ["9", "8", "6", "2"],
+              "correctAnswers": [0],
+              "explanation": "Neuf."
+            },
+            {
+              "id": "q6",
+              "question": "十 (shí) =",
+              "type": "single_choice",
+              "options": ["10", "11", "20", "100"],
+              "correctAnswers": [0],
+              "explanation": "Base pour 11–19."
+            },
+            {
+              "id": "q7",
+              "question": "三 (sān) =",
+              "type": "single_choice",
+              "options": ["3", "13", "30", "33 seulement"],
+              "correctAnswers": [0],
+              "explanation": "Trois."
+            },
+            {
+              "id": "q8",
+              "question": "六 (liù) =",
+              "type": "single_choice",
+              "options": ["6", "16 sans 十", "60 toujours seul", "0"],
+              "correctAnswers": [0],
+              "explanation": "Six."
+            },
+            {
+              "id": "q9",
+              "question": "二 (èr) ou 两 (liǎng) : en 4e on voit surtout 二 pour :",
+              "type": "single_choice",
+              "options": [
+                "Le chiffre 2 dans 十二等",
+                "Le pays France",
+                "Merci",
+                "Professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "十二 = 12."
+            },
+            {
+              "id": "q10",
+              "question": "四 (sì) dans 十四 =",
+              "type": "single_choice",
+              "options": ["4 (donc 14)", "40", "44", "4 seul uniquement"],
+              "correctAnswers": [0],
+              "explanation": "十四 = 14."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Nombres 11 à 20",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Nombres justes ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "十五 (shíwǔ) = 15",
+                "十八 (shíbā) = 18",
+                "十五 (shíwǔ) = 50",
+                "十八 (shíbā) = 80"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "10 + unité."
+            },
+            {
+              "id": "q2",
+              "question": "十一 (shíyī) =",
+              "type": "single_choice",
+              "options": ["11", "10", "21", "101"],
+              "correctAnswers": [0],
+              "explanation": "10 + 1."
+            },
+            {
+              "id": "q3",
+              "question": "十三 (shísān) =",
+              "type": "single_choice",
+              "options": ["13", "3", "30", "103"],
+              "correctAnswers": [0],
+              "explanation": "Âge fréquent."
+            },
+            {
+              "id": "q4",
+              "question": "十七 (shíqī) =",
+              "type": "single_choice",
+              "options": ["17", "7", "70", "27"],
+              "correctAnswers": [0],
+              "explanation": "10 + 7."
+            },
+            {
+              "id": "q5",
+              "question": "二十 (èrshí) =",
+              "type": "single_choice",
+              "options": ["20", "12", "2", "200"],
+              "correctAnswers": [0],
+              "explanation": "2 × 10."
+            },
+            {
+              "id": "q6",
+              "question": "十九 (shíjiǔ) =",
+              "type": "single_choice",
+              "options": ["19", "9", "90", "29"],
+              "correctAnswers": [0],
+              "explanation": "10 + 9."
+            },
+            {
+              "id": "q7",
+              "question": "Quel nombre pour « quatorze ans » ?",
+              "type": "single_choice",
+              "options": [
+                "十四 (shísì)",
+                "四十 (sìshí)",
+                "四 (sì)",
+                "二十四 (èrshísì)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "十四 suì."
+            },
+            {
+              "id": "q8",
+              "question": "十二 (shí'èr) =",
+              "type": "single_choice",
+              "options": ["12", "20", "22", "2"],
+              "correctAnswers": [0],
+              "explanation": "Exception de prononciation ùr."
+            },
+            {
+              "id": "q9",
+              "question": "十六 (shíliù) =",
+              "type": "single_choice",
+              "options": ["16", "60", "6", "106"],
+              "correctAnswers": [0],
+              "explanation": "Collège."
+            },
+            {
+              "id": "q10",
+              "question": "Combien de camarades : 三个同学 (sān ge tóngxué) =",
+              "type": "single_choice",
+              "options": [
+                "3 camarades",
+                "13 camarades",
+                "30 camarades",
+                "4 camarades"
+              ],
+              "correctAnswers": [0],
+              "explanation": "三 = 3."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Famille proche",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Membres de la famille proche ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "爸爸 (bàba) = papa",
+                "妈妈 (māma) = maman",
+                "老师 (lǎoshī) = papa",
+                "同学 (tóngxué) = maman"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Papa et maman."
+            },
+            {
+              "id": "q2",
+              "question": "爸爸 (bàba) =",
+              "type": "single_choice",
+              "options": ["Père / papa", "Mère", "Frère", "Grand-père"],
+              "correctAnswers": [0],
+              "explanation": "Redoublement affectueux."
+            },
+            {
+              "id": "q3",
+              "question": "妈妈 (māma) =",
+              "type": "single_choice",
+              "options": ["Mère / maman", "Sœur", "Tante", "Cousine"],
+              "correctAnswers": [0],
+              "explanation": "Comme maman en français."
+            },
+            {
+              "id": "q4",
+              "question": "哥哥 (gēge) =",
+              "type": "single_choice",
+              "options": ["Grand frère", "Petite sœur", "Oncle", "Cousin"],
+              "correctAnswers": [0],
+              "explanation": "Frère aîné."
+            },
+            {
+              "id": "q5",
+              "question": "弟弟 (dìdi) =",
+              "type": "single_choice",
+              "options": ["Petit frère", "Grand-père", "Père", "Beau-frère"],
+              "correctAnswers": [0],
+              "explanation": "Frère cadet."
+            },
+            {
+              "id": "q6",
+              "question": "姐姐 (jiějie) =",
+              "type": "single_choice",
+              "options": ["Grande sœur", "Petit frère", "Mère", "Professeure"],
+              "correctAnswers": [0],
+              "explanation": "Sœur aînée."
+            },
+            {
+              "id": "q7",
+              "question": "妹妹 (mèimei) =",
+              "type": "single_choice",
+              "options": ["Petite sœur", "Grand frère", "Papa", "Ami"],
+              "correctAnswers": [0],
+              "explanation": "Sœur cadette."
+            },
+            {
+              "id": "q8",
+              "question": "家人 (jiārén) =",
+              "type": "single_choice",
+              "options": ["Famille (proche)", "Classe", "École", "Ville"],
+              "correctAnswers": [0],
+              "explanation": "家 = maison / famille."
+            },
+            {
+              "id": "q9",
+              "question": "这是我妈妈 (zhè shì wǒ māma) =",
+              "type": "single_choice",
+              "options": [
+                "Voici ma mère",
+                "Voici mon prof",
+                "Voici ma classe",
+                "Voici mon chien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présenter un parent."
+            },
+            {
+              "id": "q10",
+              "question": "我有哥哥 (wǒ yǒu gēge) =",
+              "type": "single_choice",
+              "options": [
+                "J'ai un grand frère",
+                "J'ai une sœur",
+                "Je suis frère",
+                "Je n'ai pas de frère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "有 = avoir."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Famille et 的",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phrases famille correctes ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "我的爸爸 (wǒ de bàba)",
+                "我的妈妈 (wǒ de māma)",
+                "爸爸我的 (bàba wǒ de)",
+                "的我妈妈 (de wǒ māma)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "的 marque le possessif."
+            },
+            {
+              "id": "q2",
+              "question": "的 (de) indique :",
+              "type": "single_choice",
+              "options": [
+                "Possession (mon, ma…)",
+                "Négation",
+                "Question",
+                "Passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我的 = mon/ma."
+            },
+            {
+              "id": "q3",
+              "question": "我弟弟 (wǒ dìdi) sans 的 :",
+              "type": "single_choice",
+              "options": [
+                "Aussi correct pour « mon petit frère »",
+                "Totalement faux",
+                "Signifie professeur",
+                "Signifie manger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Famille proche : 的 parfois omis."
+            },
+            {
+              "id": "q4",
+              "question": "父母 (fùmǔ) =",
+              "type": "single_choice",
+              "options": [
+                "Les parents (père et mère)",
+                "Les grands-parents",
+                "Les cousins",
+                "Les voisins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formel."
+            },
+            {
+              "id": "q5",
+              "question": "家 (jiā) =",
+              "type": "single_choice",
+              "options": [
+                "Maison / foyer / famille",
+                "École",
+                "Magasin",
+                "Gare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我家 = chez moi."
+            },
+            {
+              "id": "q6",
+              "question": "我家有四口人 (wǒ jiā yǒu sì kǒu rén) =",
+              "type": "single_choice",
+              "options": [
+                "Nous sommes quatre à la maison",
+                "J'ai quatre profs",
+                "J'ai quatre stylos",
+                "J'ai quarante ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "四口人 = 4 personnes."
+            },
+            {
+              "id": "q7",
+              "question": "口 (kǒu) ici =",
+              "type": "single_choice",
+              "options": [
+                "Classifier pour membres du foyer",
+                "Bouche seulement",
+                "Deux",
+                "Dix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compte les personnes."
+            },
+            {
+              "id": "q8",
+              "question": "谁 (shéi) =",
+              "type": "single_choice",
+              "options": ["Qui", "Quoi", "Où", "Combien"],
+              "correctAnswers": [0],
+              "explanation": "这是谁？= Qui est-ce ?"
+            },
+            {
+              "id": "q9",
+              "question": "这是你弟弟吗？(zhè shì nǐ dìdi ma?) =",
+              "type": "single_choice",
+              "options": [
+                "Est-ce ton petit frère ?",
+                "Est-ce ta mère ?",
+                "As-tu faim ?",
+                "Quelle heure est-il ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "弟弟 = petit frère."
+            },
+            {
+              "id": "q10",
+              "question": "他是我爸爸 (tā shì wǒ bàba) =",
+              "type": "single_choice",
+              "options": [
+                "C'est mon père",
+                "C'est mon prof",
+                "C'est mon ami",
+                "C'est ma sœur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation familiale."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Objets de la classe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Objets scolaires ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "书 (shū) = livre",
+                "笔 (bǐ) = stylo/crayon",
+                "书 (shū) = professeur",
+                "笔 (bǐ) = maison"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Matériel de classe."
+            },
+            {
+              "id": "q2",
+              "question": "书 (shū) =",
+              "type": "single_choice",
+              "options": ["Livre", "Table", "Fenêtre", "Porte"],
+              "correctAnswers": [0],
+              "explanation": "中文书 = livre de chinois."
+            },
+            {
+              "id": "q3",
+              "question": "本子 (běnzi) =",
+              "type": "single_choice",
+              "options": ["Cahier", "Gomme", "Règle", "Cartable"],
+              "correctAnswers": [0],
+              "explanation": "本 = cahier."
+            },
+            {
+              "id": "q4",
+              "question": "桌子 (zhuōzi) =",
+              "type": "single_choice",
+              "options": ["Table / bureau", "Chaise", "Tableau", "Sol"],
+              "correctAnswers": [0],
+              "explanation": "Dans la salle."
+            },
+            {
+              "id": "q5",
+              "question": "椅子 (yǐzi) =",
+              "type": "single_choice",
+              "options": ["Chaise", "Porte", "Mur", "Plafond"],
+              "correctAnswers": [0],
+              "explanation": "请坐 sur une chaise."
+            },
+            {
+              "id": "q6",
+              "question": "黑板 (hēibǎn) =",
+              "type": "single_choice",
+              "options": [
+                "Tableau (noir / vert)",
+                "Fenêtre",
+                "Cahier",
+                "Stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "黑 = noir."
+            },
+            {
+              "id": "q7",
+              "question": "电脑 (diànnǎo) =",
+              "type": "single_choice",
+              "options": [
+                "Ordinateur",
+                "Téléphone seulement",
+                "Lampe",
+                "Horloge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salle informatique."
+            },
+            {
+              "id": "q8",
+              "question": "手机 (shǒujī) =",
+              "type": "single_choice",
+              "options": [
+                "Téléphone portable",
+                "Télévision",
+                "Radio",
+                "Appareil photo seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "手 = main."
+            },
+            {
+              "id": "q9",
+              "question": "书包 (shūbāo) =",
+              "type": "single_choice",
+              "options": [
+                "Cartable / sac d'écolier",
+                "Sac à dos de randonnée seulement",
+                "Trousses",
+                "Casier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "书 + 包."
+            },
+            {
+              "id": "q10",
+              "question": "汉语书 (Hànyǔ shū) =",
+              "type": "single_choice",
+              "options": [
+                "Manuel / livre de chinois",
+                "Livre de maths",
+                "Dictionnaire français seulement",
+                "Roman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objet de cours."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Lieux à l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Lieux scolaires ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "学校 (xuéxiào) = école",
+                "图书馆 (túshūguǎn) = bibliothèque",
+                "学校 = hôpital",
+                "图书馆 = restaurant"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "École et bibliothèque."
+            },
+            {
+              "id": "q2",
+              "question": "学校 (xuéxiào) =",
+              "type": "single_choice",
+              "options": ["École", "Maison", "Parc", "Musée"],
+              "correctAnswers": [0],
+              "explanation": "学 + 校."
+            },
+            {
+              "id": "q3",
+              "question": "图书馆 (túshūguǎn) =",
+              "type": "single_choice",
+              "options": ["Bibliothèque", "Cantine", "Gymnase", "Infirmerie"],
+              "correctAnswers": [0],
+              "explanation": "Lire des livres."
+            },
+            {
+              "id": "q4",
+              "question": "食堂 (shítáng) =",
+              "type": "single_choice",
+              "options": [
+                "Cantine",
+                "Cour de récréation",
+                "Bureau du principal",
+                "Laboratoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "食 = nourriture."
+            },
+            {
+              "id": "q5",
+              "question": "我在教室 (wǒ zài jiàoshì) =",
+              "type": "single_choice",
+              "options": [
+                "Je suis en salle de classe",
+                "Je suis à la maison",
+                "Je suis au parc",
+                "Je suis en Chine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在 = être à un lieu."
+            },
+            {
+              "id": "q6",
+              "question": "在 (zài) =",
+              "type": "single_choice",
+              "options": ["Être à / se trouver à", "Avoir", "Manger", "Dormir"],
+              "correctAnswers": [0],
+              "explanation": "Préposition de lieu."
+            },
+            {
+              "id": "q7",
+              "question": "去 (qù) =",
+              "type": "single_choice",
+              "options": ["Aller", "Venir", "Rester", "Sortir de"],
+              "correctAnswers": [0],
+              "explanation": "去学校 = aller à l'école."
+            },
+            {
+              "id": "q8",
+              "question": "我去学校 (wǒ qù xuéxiào) =",
+              "type": "single_choice",
+              "options": [
+                "Je vais à l'école",
+                "Je quitte l'école",
+                "Je déteste l'école",
+                "Je suis prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mouvement."
+            },
+            {
+              "id": "q9",
+              "question": "班 (bān) dans 四班 =",
+              "type": "single_choice",
+              "options": [
+                "Classe (4e B par ex.)",
+                "Leçon d'une heure",
+                "Devoir",
+                "Note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organisation du collège."
+            },
+            {
+              "id": "q10",
+              "question": "四年级 (sì niánjí) ≈",
+              "type": "single_choice",
+              "options": [
+                "Niveau 4e (dans système chinois)",
+                "Quatre ans d'âge",
+                "Quatre livres",
+                "Quatre profs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parallèle pédagogique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Matières et cours",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Matières possibles ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "数学 (shùxué) = maths",
+                "英语 (Yīngyǔ) = anglais",
+                "数学 = chinois",
+                "英语 = sport seulement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Emploi du temps."
+            },
+            {
+              "id": "q2",
+              "question": "数学 (shùxué) =",
+              "type": "single_choice",
+              "options": ["Mathématiques", "Histoire", "Musique", "Chinois"],
+              "correctAnswers": [0],
+              "explanation": "数 = nombres."
+            },
+            {
+              "id": "q3",
+              "question": "英语 (Yīngyǔ) =",
+              "type": "single_choice",
+              "options": ["Anglais (langue)", "Français", "Allemand", "Latin"],
+              "correctAnswers": [0],
+              "explanation": "Pays + 语."
+            },
+            {
+              "id": "q4",
+              "question": "法语 (Fǎyǔ) =",
+              "type": "single_choice",
+              "options": ["Français (langue)", "Chinois", "Espagnol", "Arabe"],
+              "correctAnswers": [0],
+              "explanation": "Ta langue maternelle."
+            },
+            {
+              "id": "q5",
+              "question": "今天有汉语课 (jīntiān yǒu Hànyǔ kè) =",
+              "type": "single_choice",
+              "options": [
+                "Aujourd'hui il y a cours de chinois",
+                "Demain pas de cours",
+                "Hier cours de sport",
+                "Jamais de chinois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "有 = il y a."
+            },
+            {
+              "id": "q6",
+              "question": "课 (kè) =",
+              "type": "single_choice",
+              "options": [
+                "Cours / leçon",
+                "Récréation",
+                "Vacances",
+                "Examen seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "汉语课."
+            },
+            {
+              "id": "q7",
+              "question": "今天 (jīntiān) =",
+              "type": "single_choice",
+              "options": ["Aujourd'hui", "Demain", "Hier", "Chaque semaine"],
+              "correctAnswers": [0],
+              "explanation": "今 = maintenant."
+            },
+            {
+              "id": "q8",
+              "question": "明天 (míngtiān) =",
+              "type": "single_choice",
+              "options": ["Demain", "Aujourd'hui", "Après-midi", "Matin"],
+              "correctAnswers": [0],
+              "explanation": "明 = prochain."
+            },
+            {
+              "id": "q9",
+              "question": "星期 (xīngqī) =",
+              "type": "single_choice",
+              "options": ["Semaine", "Mois", "Année", "Heure"],
+              "correctAnswers": [0],
+              "explanation": "星期一 = lundi."
+            },
+            {
+              "id": "q10",
+              "question": "星期一 (xīngqīyī) =",
+              "type": "single_choice",
+              "options": ["Lundi", "Dimanche", "Mercredi", "Vendredi"],
+              "correctAnswers": [0],
+              "explanation": "Premier jour listé (système chinois)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Verbes utiles",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Verbes de base ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "有 (yǒu) = avoir",
+                "是 (shì) = être",
+                "有 = aller",
+                "是 = manger"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Avoir et être."
+            },
+            {
+              "id": "q2",
+              "question": "有 (yǒu) =",
+              "type": "single_choice",
+              "options": ["Avoir / il y a", "Ne pas avoir", "Être", "Aller"],
+              "correctAnswers": [0],
+              "explanation": "我有书."
+            },
+            {
+              "id": "q3",
+              "question": "没有 (méiyǒu) =",
+              "type": "single_choice",
+              "options": [
+                "Ne pas avoir / il n'y a pas",
+                "Avoir beaucoup",
+                "Être content",
+                "Être prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation de 有."
+            },
+            {
+              "id": "q4",
+              "question": "看 (kàn) =",
+              "type": "single_choice",
+              "options": [
+                "Regarder / lire (voir)",
+                "Écouter",
+                "Parler",
+                "Écrire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "看书 = lire un livre."
+            },
+            {
+              "id": "q5",
+              "question": "学习 (xuéxí) =",
+              "type": "single_choice",
+              "options": ["Étudier / apprendre", "Jouer", "Dormir", "Manger"],
+              "correctAnswers": [0],
+              "explanation": "En classe."
+            },
+            {
+              "id": "q6",
+              "question": "喜欢 (xǐhuan) =",
+              "type": "single_choice",
+              "options": ["Aimer / apprécier", "Détester", "Oublier", "Cacher"],
+              "correctAnswers": [0],
+              "explanation": "我喜欢汉语."
+            },
+            {
+              "id": "q7",
+              "question": "做 (zuò) =",
+              "type": "single_choice",
+              "options": ["Faire", "Dire", "Venir", "Partir"],
+              "correctAnswers": [0],
+              "explanation": "做作业 = faire les devoirs."
+            },
+            {
+              "id": "q8",
+              "question": "作业 (zuòyè) =",
+              "type": "single_choice",
+              "options": ["Devoirs", "Jeux", "Repas", "Sport"],
+              "correctAnswers": [0],
+              "explanation": "Travail à la maison."
+            },
+            {
+              "id": "q9",
+              "question": "我会写汉字 (wǒ huì xiě Hànzì) =",
+              "type": "single_choice",
+              "options": [
+                "Je sais écrire des caractères chinois",
+                "Je ne sais pas écrire",
+                "Je mange des caractères",
+                "Je suis un caractère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "会 = savoir (skill)."
+            },
+            {
+              "id": "q10",
+              "question": "汉字 (Hànzì) =",
+              "type": "single_choice",
+              "options": [
+                "Caractères chinois",
+                "Lettres latines",
+                "Chiffres romains",
+                "Emoji"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écriture étudiée en 4e."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Adjectifs simples",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Adjectifs fréquents ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "大 (dà) = grand",
+                "小 (xiǎo) = petit",
+                "大 = petit",
+                "小 = grand"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Opposés."
+            },
+            {
+              "id": "q2",
+              "question": "大 (dà) =",
+              "type": "single_choice",
+              "options": ["Grand", "Petit", "Beau", "Laid"],
+              "correctAnswers": [0],
+              "explanation": "Taille."
+            },
+            {
+              "id": "q3",
+              "question": "小 (xiǎo) =",
+              "type": "single_choice",
+              "options": ["Petit", "Grand", "Chaud", "Froid"],
+              "correctAnswers": [0],
+              "explanation": "小狗 = petit chien."
+            },
+            {
+              "id": "q4",
+              "question": "好 (hǎo) =",
+              "type": "single_choice",
+              "options": ["Bon / bien", "Mauvais", "Lent", "Rapide"],
+              "correctAnswers": [0],
+              "explanation": "好书 = bon livre."
+            },
+            {
+              "id": "q5",
+              "question": "难 (nán) =",
+              "type": "single_choice",
+              "options": ["Difficile", "Facile", "Cher", "Gratuit"],
+              "correctAnswers": [0],
+              "explanation": "汉语很难？ en blague."
+            },
+            {
+              "id": "q6",
+              "question": "容易 (róngyì) =",
+              "type": "single_choice",
+              "options": ["Facile", "Difficile", "Triste", "Drôle"],
+              "correctAnswers": [0],
+              "explanation": "Opposé de difficile."
+            },
+            {
+              "id": "q7",
+              "question": "多 (duō) =",
+              "type": "single_choice",
+              "options": ["Beaucoup / nombreux", "Peu", "Zéro", "Un seul"],
+              "correctAnswers": [0],
+              "explanation": "很多人."
+            },
+            {
+              "id": "q8",
+              "question": "少 (shǎo) =",
+              "type": "single_choice",
+              "options": ["Peu", "Beaucoup", "Trop", "Assez"],
+              "correctAnswers": [0],
+              "explanation": "人很少."
+            },
+            {
+              "id": "q9",
+              "question": "漂亮 (piàoliang) =",
+              "type": "single_choice",
+              "options": ["Joli / belle", "Moche", "Fatigué", "En colère"],
+              "correctAnswers": [0],
+              "explanation": "Compliment simple."
+            },
+            {
+              "id": "q10",
+              "question": "新 (xīn) =",
+              "type": "single_choice",
+              "options": ["Neuf / nouveau", "Vieux", "Sale", "Cassé"],
+              "correctAnswers": [0],
+              "explanation": "新书 = nouveau livre."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan mots essentiels",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phrases 4e cohérentes ? (Deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "我在四年级，我有汉语书 (wǒ zài sì niánjí, wǒ yǒu Hànyǔ shū)",
+                "我家有五口人 (wǒ jiā yǒu wǔ kǒu rén)",
+                "我零岁是老师 (wǒ líng suì shì lǎoshī)",
+                "书吃我 (shū chī wǒ)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Classe + famille."
+            },
+            {
+              "id": "q2",
+              "question": "Combien : 四口人 =",
+              "type": "single_choice",
+              "options": [
+                "4 personnes",
+                "14 personnes",
+                "40 personnes",
+                "0 personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "四 = 4."
+            },
+            {
+              "id": "q3",
+              "question": "五 (wǔ) dans 五口人 =",
+              "type": "single_choice",
+              "options": ["5", "15", "50", "500"],
+              "correctAnswers": [0],
+              "explanation": "Famille de cinq."
+            },
+            {
+              "id": "q4",
+              "question": "Lier « mon cahier » :",
+              "type": "single_choice",
+              "options": [
+                "我的本子 (wǒ de běnzi)",
+                "本子我 (běnzi wǒ)",
+                "的我在本子",
+                "我本子没 (wǒ běnzi méi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "的 possessif."
+            },
+            {
+              "id": "q5",
+              "question": "Où lire :",
+              "type": "single_choice",
+              "options": [
+                "图书馆 (túshūguǎn)",
+                "食堂 (shítáng) seulement",
+                "操场 (cāochǎng) seulement pour lire",
+                "厕所 (cèsuǒ) pour cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bibliothèque."
+            },
+            {
+              "id": "q6",
+              "question": "操场 (cāochǎng) =",
+              "type": "single_choice",
+              "options": [
+                "Cour / terrain de sport",
+                "Cantine",
+                "Salle de classe",
+                "Bureau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Récréation."
+            },
+            {
+              "id": "q7",
+              "question": "同学和我 (tóngxué hé wǒ) =",
+              "type": "single_choice",
+              "options": [
+                "Mon camarade et moi",
+                "Mon frère et ma sœur",
+                "Hier et demain",
+                "Deux profs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "和 = et."
+            },
+            {
+              "id": "q8",
+              "question": "Objectif u2 :",
+              "type": "single_choice",
+              "options": [
+                "Nombres, famille, classe, mots de base",
+                "Uniquement saluer le soir",
+                "Ignorer les tons",
+                "Ne jamais utiliser 的"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mots essentiels."
+            },
+            {
+              "id": "q9",
+              "question": "Pour compter des élèves on utilise souvent :",
+              "type": "single_choice",
+              "options": [
+                "个 (ge) après le nombre",
+                "岁 (suì) pour des élèves",
+                "口 (kǒu) pour des stylos",
+                "本 (běn) pour des personnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "三个学生."
+            },
+            {
+              "id": "q10",
+              "question": "个 (ge) =",
+              "type": "single_choice",
+              "options": [
+                "Classifier général",
+                "Verbe manger",
+                "Adjectif grand",
+                "Particule question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Très fréquent."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

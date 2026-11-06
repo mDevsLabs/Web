@@ -332,25 +332,21 @@ function SharedModelSelectorOption({
           "bg-muted/80 font-medium text-foreground",
         "data-[selected=true]:bg-muted data-[selected=true]:text-foreground hover:bg-muted/50"
       )}
+      onFocus={onHover}
       onPointerEnter={onHover}
       onSelect={handleSelect}
       value={`${model.name} ${model.id} ${model.description ?? ""}`}
     >
       <div className="flex items-center w-full min-w-0">
         <ModelSelectorLogo className="mr-2" provider={logoProvider} />
-        <div className="flex flex-col min-w-0 pr-2">
-          <div className="flex items-center gap-1.5 min-w-0">
-            <ModelSelectorName>{model.name}</ModelSelectorName>
-            {isMai2Model(model) ? <RecommendedBadge /> : null}
-          </div>
-          {model.description ? (
-            <ModelSelectorDescription
-              className="text-[11px] text-muted-foreground"
-              compact
-            >
-              {model.description}
-            </ModelSelectorDescription>
+        <div className="flex items-center gap-1.5 min-w-0 pr-2">
+          <ModelSelectorName>{model.name}</ModelSelectorName>
+          {model.isFree ? (
+            <span className="text-[10px] bg-success/10 text-success font-semibold px-1.5 py-0.5 rounded shrink-0">
+              Gratuit
+            </span>
           ) : null}
+          {isMai2Model(model) ? <RecommendedBadge /> : null}
         </div>
         <div className="ml-auto flex items-center shrink-0">
           {/* Bouton d'expansion sur mobile */}
@@ -480,7 +476,7 @@ function PureModelSelectorCompact({
     (modelId: string) => {
       onModelChange?.(modelId);
       for (const key of MODEL_CATALOG_SWR_KEYS) {
-        void mutateCatalog(key, undefined, { revalidate: true });
+        void mutateCatalog(key);
       }
     },
     [mutateCatalog, onModelChange]
@@ -515,17 +511,21 @@ function PureModelSelectorCompact({
     return res;
   }, [rawModels]);
 
+  const matchedModel = models.find((m) => m.id === selectedModelId);
+  const isResolvingModel = Boolean(selectedModelId && !matchedModel);
+
   const selectedModel =
-    models.find((m) => m.id === selectedModelId) ??
-    (fallbackToFirst
+    matchedModel ??
+    (!selectedModelId && fallbackToFirst
       ? (models.find((m) => m.id === DEFAULT_CHAT_MODEL) ?? models[0])
       : undefined);
   const provider = selectedModel ? resolveProviderKey(selectedModel) : null;
   const isEmptySelection = allowEmpty && !selectedModelId;
   const triggerLabel = isEmptySelection
     ? emptyLabel
-    : selectedModel?.name ||
-      (selectedModelId ? "Modèle indisponible" : placeholder);
+    : isResolvingModel
+      ? "Chargement..."
+      : selectedModel?.name || placeholder;
 
   // Filtrage intelligent insensible aux accents et à la casse
   const filteredModels = useMemo(() => {
@@ -617,13 +617,15 @@ function PureModelSelectorCompact({
         )}
       </ModelSelectorTrigger>
       <ModelSelectorContent
-        className="w-[min(320px,calc(100vw-1rem))] md:w-[600px] max-w-[calc(100vw-1rem)] p-0 overflow-hidden"
+        align={variant === "compact" ? "end" : "start"}
+        className="model-selector-popover w-auto max-w-[calc(100vw-1rem)] overflow-hidden p-0"
+        collisionPadding={12}
         commandDefaultValue={selectedModel?.id}
         shouldFilter={false}
         side={side ?? (variant === "compact" ? "top" : "bottom")}
       >
-        <div className="flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-border/60 max-h-[480px]">
-          <div className="flex flex-col w-full md:w-[320px] shrink-0 min-h-0">
+        <div className="flex max-h-[480px] min-w-0 flex-col sm:flex-row">
+          <div className="flex min-h-0 w-full sm:w-72 min-w-0 shrink-0 flex-col">
             <ModelSelectorInput
               onValueChange={setSearch}
               placeholder={
@@ -635,7 +637,7 @@ function PureModelSelectorCompact({
               }
               value={search}
             />
-            <ModelSelectorList className="max-h-[390px] overflow-y-auto p-1">
+            <ModelSelectorList className="max-h-[390px] min-w-0 overflow-y-auto p-1">
               {allowEmpty && !search.trim() ? (
                 <ModelSelectorItem
                   className={cn(
@@ -709,7 +711,7 @@ function PureModelSelectorCompact({
           </div>
 
           {/* Panneau latéral desktop d'aperçu au survol */}
-          <div className="hidden md:flex flex-col w-[280px] shrink-0 p-3.5 bg-muted/20 overflow-y-auto max-h-[480px]">
+          <div className="hidden min-h-0 w-80 min-w-0 shrink-0 flex-col overflow-y-auto bg-muted/20 p-3.5 sm:flex sm:max-h-[480px] sm:border-l sm:border-border/60">
             {activeModel ? (
               <ModelDetailsPanel
                 capabilities={capabilities?.[activeModel.id]}

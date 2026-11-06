@@ -1,13 +1,17 @@
-import { cn } from "@/lib/utils"
-import { Loader2Icon } from "@mdevs/icons";
+"use client";
 
-// L'interface est monolingue français (AGENTS.md §7). Les libellés lus par un
-// lecteur d'écran ne font pas exception : "Loading" était annoncé en anglais
-// dans chaque indicateur de chargement.
-function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
+import { Spinner as MdevsSpinner } from "@mdevs/ui/primitives/spinner";
+import { MdevsIsland } from "@/components/ui/mdevs-island";
+
+function Spinner({
+  className,
+  ...props
+}: React.ComponentProps<"span"> & { label?: string }) {
   return (
-    <Loader2Icon role="status" aria-label="Chargement" className={cn("size-4 animate-spin", className)} {...props} />
-  )
+    <MdevsIsland>
+      <MdevsSpinner className={className} data-slot="spinner" {...props} />
+    </MdevsIsland>
+  );
 }
 
-export { Spinner }
+export { Spinner };

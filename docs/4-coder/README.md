@@ -1,15 +1,35 @@
 # Documentation mAI Coder
 
-Cette section décrit mAI Coder, l’application Electron de développement dans apps/coder/. Elle couvre les processus Main et Renderer, l’agent, les intégrations et la publication desktop.
+mAI Coder est l'application Electron de développement (`apps/coder/`) : éditeur
+Monaco, explorateur, Git, terminal PTY, outils MCP, navigateur et plusieurs
+fournisseurs de modèles, orchestrés par un agent dont chaque action sensible est
+soumise à approbation. Cette section couvre les deux processus, l'agent, les
+intégrations et la publication desktop.
 
 ## Guides
 
-- [Architecture Electron et IPC](ARCHITECTURE.md)
-- [Agent et modes Composer](AGENT_SYSTEM.md)
-- [Build desktop et intégration continue](DESKTOP_BUILD.md)
-- [MCP, bots et intégrations](INTEGRATIONS.md)
-- [Règles de contribution](AGENTS.md)
-- [Wiki technique](llm-wiki/README.md)
-- [Captures et visuels](assets/)
+- [ARCHITECTURE.md](ARCHITECTURE.md) — processus Main, Renderer, frontière IPC
+- [AGENT_SYSTEM.md](AGENT_SYSTEM.md) — modes Composer, boucle d'exécution, approbations
+- [INTEGRATIONS.md](INTEGRATIONS.md) — MCP, bots de messagerie, navigateur
+- [DESKTOP_BUILD.md](DESKTOP_BUILD.md) — compilation, installateurs, intégration continue
+- [AGENTS.md](AGENTS.md) — règles impératives pour agents et contributeurs
+- [llm-wiki/](llm-wiki/README.md) — index des modules
+- [assets/](assets/) — captures et visuels
 
-Le [README de l’application](../../apps/coder/README.md) décrit le démarrage et les commandes. Le Wiki est un index de navigation ; vérifiez toujours les modules cités dans la source avant une modification.
+Le démarrage et les commandes sont dans
+[apps/coder/README.md](../../apps/coder/README.md).
+
+## Avertissement de fraicheur
+
+Ces guides ont été écrits sur une version précédente et **leurs numéros de
+versions peuvent être périmés**. À l'heure où ces lignes, `apps/coder/package.json`
+passe Electron 44 et Monaco 0.57, là où `AGENTS.md` et `ARCHITECTURE.md` citent
+Electron 41 et Monaco 0.52, et décrivent des dépendances (Zustand, `simple-git`)
+qui ne sont plus utilisées.
+
+**Règle** : pour une version, une dépendance ou une commande, `package.json` et
+le code font foi. Signalez l'écart plutôt que de le reproduire, et corrigez le
+guide en même temps que le code.
+
+Le wiki technique garde son propre registre des divergences connues dans
+[llm-wiki/meta/contradictions-and-open-questions.md](llm-wiki/meta/contradictions-and-open-questions.md).

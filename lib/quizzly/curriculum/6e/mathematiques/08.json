@@ -1,0 +1,2268 @@
+{
+  "id": "6e-mathematiques-08",
+  "year": "6e",
+  "subject": "mathematiques",
+  "title": "Algèbre",
+  "order": 8,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Mettre en équation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Lettre et inconnue",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles égalités ont une lettre pour un nombre inconnu ?",
+              "options": ["j + 1 = 8", "5 + 4 = 9", "2 × q = 14", "18 ÷ 2 = 9"],
+              "explanation": "j + 1 = 8 et 2 × q = 14 utilisent une lettre inconnue.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans x + 3 = 10, x est :",
+              "options": [
+                "le nombre qu'on cherche",
+                "toujours 3",
+                "le 10",
+                "le signe +"
+              ],
+              "explanation": "x désigne l'inconnu.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« n plus 5 vaut 12 » :",
+              "options": [
+                "n + 5 = 12",
+                "n − 5 = 12",
+                "5 × n = 12",
+                "n = 12 + 5"
+              ],
+              "explanation": "n + 5 = 12.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase pour a − 4 = 6 :",
+              "options": [
+                "a diminué de 4 vaut 6",
+                "a augmenté de 4 vaut 6",
+                "4 fois a vaut 6",
+                "a ÷ 4 vaut 6"
+              ],
+              "explanation": "a − 4 = 6.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Double de k vaut 20 » :",
+              "options": [
+                "2 × k = 20",
+                "k + 2 = 20",
+                "k ÷ 2 = 20",
+                "k + k + 2 = 20"
+              ],
+              "explanation": "2 × k = 20.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "b bonbons, −3, reste 11 :",
+              "options": [
+                "b − 3 = 11",
+                "b + 3 = 11",
+                "3 − b = 11",
+                "b × 3 = 11"
+              ],
+              "explanation": "b − 3 = 11.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« 4 fois p égale 28 » :",
+              "options": [
+                "4 × p = 28",
+                "p + 4 = 28",
+                "p ÷ 4 = 28",
+                "4 + p = 28"
+              ],
+              "explanation": "4 × p = 28.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "r ÷ 3 = 5 signifie :",
+              "options": [
+                "r partagé en 3 parts vaut 5",
+                "r multiplié par 3 vaut 5",
+                "r moins 3 vaut 5",
+                "3 ÷ r vaut 5"
+              ],
+              "explanation": "r ÷ 3 = 5 traduit un partage en 3.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "y € + 4 € = 13 € :",
+              "options": [
+                "y + 4 = 13",
+                "y − 4 = 13",
+                "4 × y = 13",
+                "y ÷ 4 = 13"
+              ],
+              "explanation": "y + 4 = 13.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Somme de z et 6 vaut 19 » :",
+              "options": [
+                "z + 6 = 19",
+                "z − 6 = 19",
+                "6 × z = 19",
+                "z = 19 + 6"
+              ],
+              "explanation": "z + 6 = 19.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Addition en égalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Traductions de « t plus 9 égale 17 » ?",
+              "options": [
+                "t + 9 = 17",
+                "9 + t = 17",
+                "t − 9 = 17",
+                "t × 9 = 17"
+              ],
+              "explanation": "t + 9 ou 9 + t.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ajouter 11 à un nombre, obtenir 30 :",
+              "options": [
+                "m + 11 = 30",
+                "m − 11 = 30",
+                "11 × m = 30",
+                "m = 30 + 11"
+              ],
+              "explanation": "m + 11 = 30.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L m + 4 m = 22 m :",
+              "options": [
+                "L + 4 = 22",
+                "L − 4 = 22",
+                "4 × L = 22",
+                "L ÷ 4 = 22"
+              ],
+              "explanation": "L + 4 = 22.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "7 de plus que c vaut 15 :",
+              "options": [
+                "c + 7 = 15",
+                "c − 7 = 15",
+                "7 × c = 15",
+                "c = 15 + 7"
+              ],
+              "explanation": "c + 7 = 15.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "v wagons + 6 = 25 wagons :",
+              "options": [
+                "v + 6 = 25",
+                "v − 6 = 25",
+                "6 × v = 25",
+                "v ÷ 6 = 25"
+              ],
+              "explanation": "v + 6 = 25.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "d + 14 = 50 signifie :",
+              "options": [
+                "d augmenté de 14 vaut 50",
+                "d diminué de 14 vaut 50",
+                "14 fois d vaut 50",
+                "d est 14 fois 50"
+              ],
+              "explanation": "d + 14 = 50.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "e + 3,5 = 12 :",
+              "options": [
+                "e plus 3,5 vaut 12",
+                "e moins 3,5 vaut 12",
+                "3,5 fois e vaut 12",
+                "e = 12 + 3,5"
+              ],
+              "explanation": "e + 3,5 = 12.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "g km + 10 km = 45 km :",
+              "options": [
+                "g + 10 = 45",
+                "g − 10 = 45",
+                "10 × g = 45",
+                "g ÷ 10 = 45"
+              ],
+              "explanation": "g + 10 = 45.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f + 13 = 100 :",
+              "options": [
+                "somme de f et 13 vaut 100",
+                "f moins 13 vaut 100",
+                "13 fois f vaut 100",
+                "f partagé en 13 vaut 100"
+              ],
+              "explanation": "f + 13 = 100.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "h fruits + 8 = 27 fruits :",
+              "options": [
+                "h + 8 = 27",
+                "h − 8 = 27",
+                "8 × h = 27",
+                "h ÷ 8 = 27"
+              ],
+              "explanation": "h + 8 = 27.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Soustraction en égalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Traductions de « u moins 5 vaut 10 » ?",
+              "options": [
+                "u − 5 = 10",
+                "10 = u − 5",
+                "u + 5 = 10",
+                "5 − u = 10"
+              ],
+              "explanation": "u − 5 = 10 ou 10 = u − 5.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Diminuer un nombre de 8, obtenir 14 :",
+              "options": [
+                "n − 8 = 14",
+                "n + 8 = 14",
+                "8 − n = 14",
+                "n ÷ 8 = 14"
+              ],
+              "explanation": "n − 8 = 14.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "C m − 6 m = 9 m :",
+              "options": ["C − 6 = 9", "C + 6 = 9", "6 − C = 9", "C × 6 = 9"],
+              "explanation": "C − 6 = 9.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "4 de moins que p vaut 11 :",
+              "options": [
+                "p − 4 = 11",
+                "p + 4 = 11",
+                "4 × p = 11",
+                "p = 11 + 4"
+              ],
+              "explanation": "p − 4 = 11.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "q pages, 5 de moins que 32 pages :",
+              "options": [
+                "q = 32 − 5",
+                "q + 5 = 32",
+                "q − 5 = 32",
+                "5 × q = 32"
+              ],
+              "explanation": "q = 32 − 5 ou q + 5 = 32 ; « 5 de moins que 32 » : q = 32 − 5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "m − 9 = 6 signifie :",
+              "options": [
+                "m diminué de 9 vaut 6",
+                "m augmenté de 9 vaut 6",
+                "9 fois m vaut 6",
+                "m ÷ 9 vaut 6"
+              ],
+              "explanation": "m − 9 = 6.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "s − 2,5 = 7,5 :",
+              "options": [
+                "s moins 2,5 vaut 7,5",
+                "s plus 2,5 vaut 7,5",
+                "2,5 fois s vaut 7,5",
+                "s = 7,5 + 2,5"
+              ],
+              "explanation": "s − 2,5 = 7,5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "r € − 15 € = 35 € :",
+              "options": [
+                "r − 15 = 35",
+                "r + 15 = 35",
+                "15 − r = 35",
+                "r × 15 = 35"
+              ],
+              "explanation": "r − 15 = 35.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "25 − a = 8 :",
+              "options": [
+                "a est tel que 25 moins a vaut 8",
+                "a moins 25 vaut 8",
+                "25 fois a vaut 8",
+                "a + 25 vaut 8"
+              ],
+              "explanation": "25 − a = 8.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "k billes − 9 = 16 billes :",
+              "options": [
+                "k − 9 = 16",
+                "k + 9 = 16",
+                "9 − k = 16",
+                "k × 9 = 16"
+              ],
+              "explanation": "k − 9 = 16.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Multiplication en égalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Traductions de « 6 fois x vaut 48 » ?",
+              "options": [
+                "6 × x = 48",
+                "x × 6 = 48",
+                "x + 6 = 48",
+                "x ÷ 6 = 48"
+              ],
+              "explanation": "6 × x ou x × 6.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Triple de a = 27 :",
+              "options": [
+                "3 × a = 27",
+                "a + 3 = 27",
+                "a ÷ 3 = 27",
+                "a + a + 3 = 27"
+              ],
+              "explanation": "3 × a = 27.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "5 sacs de b kg, total 40 kg :",
+              "options": [
+                "5 × b = 40",
+                "b + 5 = 40",
+                "b ÷ 5 = 40",
+                "b − 5 = 40"
+              ],
+              "explanation": "5 × b = 40.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Produit de 8 et c = 64 :",
+              "options": [
+                "8 × c = 64",
+                "c + 8 = 64",
+                "c − 8 = 64",
+                "8 ÷ c = 64"
+              ],
+              "explanation": "8 × c = 64.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "d rangées de 7 chaises, 42 chaises :",
+              "options": [
+                "7 × d = 42",
+                "d + 7 = 42",
+                "d ÷ 7 = 42",
+                "d − 7 = 42"
+              ],
+              "explanation": "7 × d = 42.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Moitié de e » ne s'écrit pas :",
+              "options": [
+                "2 × e = moitié",
+                "e ÷ 2",
+                "e / 2",
+                "partager e en 2"
+              ],
+              "explanation": "La moitié est e ÷ 2, pas 2 × e.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "9 × f = 81 :",
+              "options": [
+                "9 fois f vaut 81",
+                "f plus 9 vaut 81",
+                "f moins 9 vaut 81",
+                "9 ÷ f vaut 81"
+              ],
+              "explanation": "9 × f = 81.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "3,5 × g = 14 :",
+              "options": [
+                "3,5 fois g vaut 14",
+                "g plus 3,5 vaut 14",
+                "g ÷ 3,5 vaut 14",
+                "g − 3,5 vaut 14"
+              ],
+              "explanation": "3,5 × g = 14.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "h + h + h = 24 :",
+              "options": [
+                "3 × h = 24",
+                "h + 3 = 24",
+                "h ÷ 3 = 24",
+                "h − 3 = 24"
+              ],
+              "explanation": "3 × h = 24.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "12 tickets à t €, 60 € :",
+              "options": [
+                "12 × t = 60",
+                "t + 12 = 60",
+                "t ÷ 12 = 60",
+                "t − 12 = 60"
+              ],
+              "explanation": "12 × t = 60.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Division en égalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Traductions de « x divisé par 4 vaut 6 » ?",
+              "options": ["x ÷ 4 = 6", "x / 4 = 6", "x × 4 = 6", "4 ÷ x = 6"],
+              "explanation": "x ÷ 4 = 6 ou x / 4 = 6.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "n partagé en 5 parts = 4 :",
+              "options": ["n ÷ 5 = 4", "n × 5 = 4", "n − 5 = 4", "5 ÷ n = 4"],
+              "explanation": "n ÷ 5 = 4.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "a ÷ 2 = 11 :",
+              "options": [
+                "a partagé en 2 vaut 11",
+                "a multiplié par 2 vaut 11",
+                "a moins 2 vaut 11",
+                "2 ÷ a vaut 11"
+              ],
+              "explanation": "a ÷ 2 = 11.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "m ÷ 10 = 3 :",
+              "options": [
+                "m ÷ 10 = 3",
+                "m × 10 = 3",
+                "m + 10 = 3",
+                "10 − m = 3"
+              ],
+              "explanation": "m ÷ 10 = 3.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "48 ÷ p = 8 :",
+              "options": [
+                "48 partagé en p parts de 8",
+                "p × 8 = 48",
+                "48 − p = 8",
+                "p + 8 = 48"
+              ],
+              "explanation": "48 ÷ p = 8 signifie partager 48 en parts égales de taille p… En 6e : 48 ÷ p = 8 ⇔ p = 6 ; l'égalité modélise « combien de groupes de p dans 48 ». Ici on demande l'écriture : 48 ÷ p = 8.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "k ÷ 7 = 5 :",
+              "options": [
+                "k partagé en 7 vaut 5",
+                "k × 7 vaut 5",
+                "k − 7 vaut 5",
+                "7 ÷ k vaut 5"
+              ],
+              "explanation": "k ÷ 7 = 5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "r ÷ 4 = 9 :",
+              "options": ["r ÷ 4 = 9", "r × 4 = 9", "r − 4 = 9", "4 + r = 9"],
+              "explanation": "r ÷ 4 = 9.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "56 bonbons ÷ b enfants = 7 bonbons chacun :",
+              "options": [
+                "56 ÷ b = 7",
+                "b × 7 = 56",
+                "56 − b = 7",
+                "b + 7 = 56"
+              ],
+              "explanation": "56 ÷ b = 7.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "s ÷ 3 = s ÷ 3 traduit :",
+              "options": [
+                "un partage en 3 parts égales",
+                "une addition de 3",
+                "une multiplication par 3",
+                "une soustraction de 3"
+              ],
+              "explanation": "÷ 3 = partage en 3.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "t ÷ 6 = 2 :",
+              "options": [
+                "t partagé en 6 vaut 2",
+                "t × 6 vaut 2",
+                "t − 6 vaut 2",
+                "6 ÷ t vaut 2"
+              ],
+              "explanation": "t ÷ 6 = 2.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Situations concrètes I",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Léa a x €, reçoit 6 €, total 19 €. Quelles égalités conviennent ?",
+              "options": [
+                "x + 6 = 19",
+                "6 + x = 19",
+                "x − 6 = 19",
+                "6 × x = 19"
+              ],
+              "explanation": "x + 6 = 19 ou 6 + x = 19.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Film d minutes, extrait 20 min de moins, extrait 45 min :",
+              "options": [
+                "d − 20 = 45",
+                "d + 20 = 45",
+                "20 × d = 45",
+                "d ÷ 20 = 45"
+              ],
+              "explanation": "d − 20 = 45.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "3 cahiers à c €, 15 € :",
+              "options": [
+                "3 × c = 15",
+                "c + 3 = 15",
+                "c ÷ 3 = 15",
+                "c − 3 = 15"
+              ],
+              "explanation": "3 × c = 15.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Bus n passagers, 12 montent, 48 à bord :",
+              "options": [
+                "n + 12 = 48",
+                "n − 12 = 48",
+                "12 × n = 48",
+                "n ÷ 12 = 48"
+              ],
+              "explanation": "n + 12 = 48.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Corde L m, coupe 2,5 m, reste 9,5 m :",
+              "options": [
+                "L − 2,5 = 9,5",
+                "L + 2,5 = 9,5",
+                "2,5 × L = 9,5",
+                "L ÷ 2,5 = 9,5"
+              ],
+              "explanation": "L − 2,5 = 9,5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Poids p kg + 3 kg = 51 kg :",
+              "options": [
+                "p + 3 = 51",
+                "p − 3 = 51",
+                "3 × p = 51",
+                "p ÷ 3 = 51"
+              ],
+              "explanation": "p + 3 = 51.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Boîte b stylos, −7, reste 13 :",
+              "options": [
+                "b − 7 = 13",
+                "b + 7 = 13",
+                "7 − b = 13",
+                "b × 7 = 13"
+              ],
+              "explanation": "b − 7 = 13.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "8 parts de g g = 400 g :",
+              "options": [
+                "8 × g = 400",
+                "g + 8 = 400",
+                "g ÷ 8 = 400",
+                "g − 8 = 400"
+              ],
+              "explanation": "8 × g = 400.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Âge a ans, +5 ans = 14 ans :",
+              "options": [
+                "a + 5 = 14",
+                "a − 5 = 14",
+                "5 × a = 14",
+                "a ÷ 5 = 14"
+              ],
+              "explanation": "a + 5 = 14.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "s sièges = 40 + 12 :",
+              "options": [
+                "s = 40 + 12",
+                "s − 12 = 40",
+                "12 × s = 40",
+                "s ÷ 12 = 40"
+              ],
+              "explanation": "s = 40 + 12 ou s − 12 = 40 ; « 12 de plus que 40 » : s = 40 + 12.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Double et triple",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles égalités traduisent « le double de u plus 2 vaut 14 » ?",
+              "options": [
+                "2 × u + 2 = 14",
+                "u + u + 2 = 14",
+                "2 + u = 14",
+                "u × 2 + 2 = 20"
+              ],
+              "explanation": "Double de u : 2 × u ou u + u, puis + 2 = 14.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Double de n = 18 :",
+              "options": [
+                "2 × n = 18",
+                "n + 2 = 18",
+                "n ÷ 2 = 18",
+                "n + n + 2 = 18"
+              ],
+              "explanation": "2 × n = 18.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Triple de m = 21 :",
+              "options": [
+                "3 × m = 21",
+                "m + 3 = 21",
+                "m ÷ 3 = 21",
+                "m + m + 3 = 21"
+              ],
+              "explanation": "3 × m = 21.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Moitié de k = 9 s'écrit :",
+              "options": ["k ÷ 2 = 9", "2 × k = 9", "k − 2 = 9", "k + 2 = 9"],
+              "explanation": "k ÷ 2 = 9.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "x + x = 16 :",
+              "options": [
+                "double de x vaut 16",
+                "x plus 2 vaut 16",
+                "x moins 2 vaut 16",
+                "x ÷ 2 vaut 16"
+              ],
+              "explanation": "x + x = 2 × x = 16.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Triple de a moins 1 vaut 20 » :",
+              "options": [
+                "3 × a − 1 = 20",
+                "a + 3 − 1 = 20",
+                "3 + a = 20",
+                "a ÷ 3 − 1 = 20"
+              ],
+              "explanation": "3 × a − 1 = 20.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux fois b plus 5 = 17 :",
+              "options": [
+                "2 × b + 5 = 17",
+                "b + 2 + 5 = 17",
+                "2 + b = 17",
+                "b × 5 = 17"
+              ],
+              "explanation": "2 × b + 5 = 17.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "c + c + c = 30 :",
+              "options": [
+                "3 × c = 30",
+                "c + 3 = 30",
+                "c ÷ 3 = 30",
+                "c − 3 = 30"
+              ],
+              "explanation": "3 × c = 30.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quadruple de d = 32 :",
+              "options": [
+                "4 × d = 32",
+                "d + 4 = 32",
+                "d ÷ 4 = 32",
+                "d + d + 4 = 32"
+              ],
+              "explanation": "4 × d = 32.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Double de e = somme de 7 et 5 » :",
+              "options": [
+                "2 × e = 7 + 5",
+                "e + 2 = 7 + 5",
+                "2 + e = 12",
+                "e ÷ 2 = 12"
+              ],
+              "explanation": "2 × e = 12.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Parentheses simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles égalités traduisent « ajouter 1 à x, puis multiplier par 3, obtenir 15 » ?",
+              "options": [
+                "3 × (x + 1) = 15",
+                "(x + 1) × 3 = 15",
+                "3 × x + 1 = 15",
+                "x + 1 × 3 = 15"
+              ],
+              "explanation": "D'abord x + 1, puis × 3 : 3 × (x + 1) ou (x + 1) × 3.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "4 × (n + 2) = 20 modélise :",
+              "options": [
+                "4 fois (n plus 2) vaut 20",
+                "4 plus n plus 2 vaut 20",
+                "n plus 4 plus 2 vaut 20",
+                "n fois 4 plus 2 vaut 20"
+              ],
+              "explanation": "4 × (n + 2) = 20.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "(a − 3) × 2 = 10 :",
+              "options": [
+                "a moins 3, puis double, vaut 10",
+                "a moins 6 vaut 10",
+                "2 fois a moins 3 vaut 10 sans priorité",
+                "a plus 3 fois 2 vaut 10"
+              ],
+              "explanation": "(a − 3) × 2 = 10.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "5 + (m × 2) = 17 :",
+              "options": [
+                "5 plus le double de m vaut 17",
+                "5 plus m plus 2 vaut 17",
+                "m plus 7 vaut 17",
+                "2 fois 5 plus m vaut 17"
+              ],
+              "explanation": "5 + 2 × m = 17.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "2 × (p + 4) = 18 :",
+              "options": [
+                "double de (p + 4) vaut 18",
+                "2 plus p plus 4 vaut 18",
+                "p plus 8 vaut 18 toujours",
+                "p plus 6 vaut 18"
+              ],
+              "explanation": "2 × (p + 4) = 18.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "(12 − q) ÷ 3 = 2 :",
+              "options": [
+                "12 moins q, partagé en 3, vaut 2",
+                "12 moins q divisé par 3 plus 2",
+                "q moins 12 ÷ 3 vaut 2",
+                "12 ÷ q − 3 vaut 2"
+              ],
+              "explanation": "(12 − q) ÷ 3 = 2.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "3 × (r − 1) = 12 :",
+              "options": [
+                "triple de (r − 1) vaut 12",
+                "3r − 1 vaut 12 sans priorité",
+                "r − 3 vaut 12",
+                "r + 2 vaut 12"
+              ],
+              "explanation": "3 × (r − 1) = 12.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "(s + 5) + (s + 5) = 20 :",
+              "options": [
+                "deux fois (s + 5) vaut 20",
+                "s + 10 vaut 20 seulement",
+                "2s + 5 vaut 20",
+                "s + 25 vaut 20"
+              ],
+              "explanation": "2 × (s + 5) = 20.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "10 − (t + 2) = 3 :",
+              "options": [
+                "10 moins (t plus 2) vaut 3",
+                "10 moins t plus 2 vaut 3",
+                "t plus 5 vaut 3",
+                "8 − t vaut 3"
+              ],
+              "explanation": "10 − (t + 2) = 3.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "6 × (u + 0) = 6 × u car :",
+              "options": [
+                "ajouter 0 ne change pas u",
+                "u vaut 0",
+                "6 vaut u",
+                "on ne peut pas multiplier"
+              ],
+              "explanation": "u + 0 = u.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Comparer des modèles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles égalités signifient « un nombre plus 10 vaut 25 » ?",
+              "options": [
+                "v + 10 = 25",
+                "10 + v = 25",
+                "v − 10 = 25",
+                "v × 10 = 25"
+              ],
+              "explanation": "v + 10 ou 10 + v.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "x + 3 = 10 et 3 + x = 10 :",
+              "options": [
+                "modélisent la même situation",
+                "jamais la même solution",
+                "la seconde est fausse",
+                "x doit valoir 3"
+              ],
+              "explanation": "L'addition est commutative : même équation.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "2 × n = 12 équivaut à :",
+              "options": [
+                "n + n = 12",
+                "n + 2 = 12",
+                "n ÷ 2 = 12",
+                "n − 2 = 12"
+              ],
+              "explanation": "2 × n = n + n.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "a − 5 = 7 et a = 12 :",
+              "options": [
+                "a = 12 vérifie a − 5 = 7",
+                "a = 12 ne convient pas",
+                "a doit valoir 5",
+                "a doit valoir 7"
+              ],
+              "explanation": "12 − 5 = 7.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "m ÷ 4 = 3 et m = 11 :",
+              "options": ["faux car 11 ÷ 4 ≠ 3", "vrai", "m = 7", "m = 12"],
+              "explanation": "11 ÷ 4 n'est pas 3 ; m = 12 convient.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phrase pour 5 × w = 35 :",
+              "options": [
+                "5 fois w vaut 35",
+                "w plus 5 vaut 35",
+                "w moins 5 vaut 35",
+                "35 ÷ w vaut 5 seulement sans égalité"
+              ],
+              "explanation": "5 × w = 35.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "y + y + y + y = 36 s'écrit aussi :",
+              "options": [
+                "4 × y = 36",
+                "y + 4 = 36",
+                "y ÷ 4 = 36",
+                "y − 4 = 36"
+              ],
+              "explanation": "4 × y = 36.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "k − k = 0 traduit :",
+              "options": [
+                "un nombre moins lui-même vaut 0",
+                "k vaut 0",
+                "k vaut 1",
+                "k est double"
+              ],
+              "explanation": "k − k = 0 toujours.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "z + 6 = 6 + z montre :",
+              "options": [
+                "l'ordre dans l'addition n'importe pas",
+                "z vaut 6",
+                "z vaut 0",
+                "6 vaut z"
+              ],
+              "explanation": "Commutativité de +.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "p × 0 = 0 signifie :",
+              "options": [
+                "tout nombre fois 0 vaut 0",
+                "p vaut 1",
+                "p vaut 0 seulement",
+                "0 vaut p"
+              ],
+              "explanation": "Produit avec 0.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Bilan mise en équation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles écritures traduisent « retirer 2 à h, multiplier par 5, obtenir 30 » ?",
+              "options": [
+                "5 × (h − 2) = 30",
+                "(h − 2) × 5 = 30",
+                "5 × h − 2 = 30",
+                "h − 2 × 5 = 30"
+              ],
+              "explanation": "h − 2 d'abord, puis × 5.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Nombre inconnu plus 8 = 23 » :",
+              "options": [
+                "x + 8 = 23",
+                "x − 8 = 23",
+                "8 × x = 23",
+                "x = 23 + 8"
+              ],
+              "explanation": "x + 8 = 23.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« 2 × n = 12 » en phrase :",
+              "options": [
+                "double de n vaut 12",
+                "n plus 2 vaut 12",
+                "n moins 2 vaut 12",
+                "n partagé en 2 vaut 12"
+              ],
+              "explanation": "2 × n = 12.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ticket t €, 4 tickets = 20 € :",
+              "options": [
+                "4 × t = 20",
+                "t + 4 = 20",
+                "t ÷ 4 = 20",
+                "t − 4 = 20"
+              ],
+              "explanation": "4 × t = 20.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "e − 11 = 4 :",
+              "options": [
+                "e diminué de 11 vaut 4",
+                "e augmenté de 11 vaut 4",
+                "11 fois e vaut 4",
+                "e partagé en 11 vaut 4"
+              ],
+              "explanation": "e − 11 = 4.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "f ÷ 8 = 6 :",
+              "options": [
+                "f partagé en 8 vaut 6",
+                "f × 8 vaut 6",
+                "f − 8 vaut 6",
+                "8 ÷ f vaut 6"
+              ],
+              "explanation": "f ÷ 8 = 6.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "g + 15 = 15 + g est :",
+              "options": [
+                "vrai pour tout g",
+                "vrai seulement si g = 0",
+                "faux",
+                "vrai seulement si g = 15"
+              ],
+              "explanation": "Commutativité.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "3 × j + 1 = 19 modélise :",
+              "options": [
+                "triple de j plus 1 vaut 19",
+                "j plus 3 plus 1 vaut 19",
+                "j plus 4 vaut 19 toujours",
+                "3 plus j vaut 19"
+              ],
+              "explanation": "3 × j + 1 = 19.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Âge l ans, il y a 3 ans : l − 3 :",
+              "options": [
+                "l − 3 = âge il y a 3 ans",
+                "l + 3 = âge il y a 3 ans",
+                "3 − l = âge",
+                "l × 3 = âge"
+              ],
+              "explanation": "Retirer 3 ans.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "x + 3 = 10 en mots :",
+              "options": [
+                "x plus 3 vaut 10",
+                "x moins 3 vaut 10",
+                "3 fois x vaut 10",
+                "x partagé en 3 vaut 10"
+              ],
+              "explanation": "x + 3 = 10.",
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Résoudre",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Résoudre x + a = b",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles égalités ont pour solution x = 5 ?",
+              "options": ["x + 4 = 9", "x + 2 = 7", "x + 3 = 7", "x + 5 = 8"],
+              "explanation": "Si x = 5 : 5 + 4 = 9 et 5 + 2 = 7. Les deux autres égalités demandent x = 4 ou x = 3.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "x + 3 = 10. x = ?",
+              "options": ["7", "13", "3", "30"],
+              "explanation": "x = 10 − 3 = 7.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "a + 6 = 14. a = ?",
+              "options": ["8", "20", "6", "84"],
+              "explanation": "a = 8.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "m + 9 = 17. m = ?",
+              "options": ["8", "26", "9", "153"],
+              "explanation": "m = 8.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "y + 12 = 20. y = ?",
+              "options": ["8", "32", "12", "240"],
+              "explanation": "y = 8.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "k + 0 = 15. k = ?",
+              "options": ["15", "0", "16", "150"],
+              "explanation": "k = 15.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "n + 1,5 = 4. n = ?",
+              "options": ["2,5", "5,5", "1,5", "6"],
+              "explanation": "n = 2,5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "p + 100 = 250. p = ?",
+              "options": ["150", "350", "100", "25000"],
+              "explanation": "p = 150.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "7 + t = 13. t = ?",
+              "options": ["6", "20", "7", "91"],
+              "explanation": "t = 6.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "z + 3 = 3 + 7. z = ?",
+              "options": ["7", "10", "3", "21"],
+              "explanation": "z + 3 = 10, z = 7.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Résoudre x − a = b",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles égalités ont pour solution n = 6 ?",
+              "options": ["n − 1 = 5", "n − 2 = 4", "n − 3 = 4", "n − 6 = 1"],
+              "explanation": "6 − 1 = 5 et 6 − 2 = 4.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "n − 4 = 9. n = ?",
+              "options": ["13", "5", "4", "36"],
+              "explanation": "n = 13.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "a − 7 = 0. a = ?",
+              "options": ["7", "−7", "0", "49"],
+              "explanation": "a = 7.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "m − 12 = 18. m = ?",
+              "options": ["30", "6", "12", "216"],
+              "explanation": "m = 30.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "b − 2,5 = 5. b = ?",
+              "options": ["7,5", "2,5", "5", "12,5"],
+              "explanation": "b = 7,5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "15 − y = 6. y = ?",
+              "options": ["9", "21", "6", "90"],
+              "explanation": "y = 9.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "x − 20 = 80. x = ?",
+              "options": ["100", "60", "20", "1600"],
+              "explanation": "x = 100.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "c − 11 = 25. c = ?",
+              "options": ["36", "14", "11", "275"],
+              "explanation": "c = 36.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "k − 9 = 0. k = ?",
+              "options": ["9", "0", "18", "81"],
+              "explanation": "k = 9.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "w − 5 = 12. w = ?",
+              "options": ["17", "7", "5", "60"],
+              "explanation": "w = 17.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Résoudre a × x = b",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles égalités ont pour solution n = 4 ?",
+              "options": ["2 × n = 8", "3 × n = 12", "5 × n = 15", "n × 0 = 4"],
+              "explanation": "2 × 4 = 8 et 3 × 4 = 12.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "2 × n = 12. n = ?",
+              "options": ["6", "10", "24", "2"],
+              "explanation": "n = 6.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "3 × x = 21. x = ?",
+              "options": ["7", "18", "63", "3"],
+              "explanation": "x = 7.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "5 × a = 45. a = ?",
+              "options": ["9", "40", "50", "225"],
+              "explanation": "a = 9.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "7 × m = 0. m = ?",
+              "options": ["0", "7", "1", "70"],
+              "explanation": "m = 0.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "4 × p = 20. p = ?",
+              "options": ["5", "16", "24", "80"],
+              "explanation": "p = 5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "10 × k = 100. k = ?",
+              "options": ["10", "90", "1000", "1"],
+              "explanation": "k = 10.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "6 × y = 54. y = ?",
+              "options": ["9", "48", "60", "324"],
+              "explanation": "y = 9.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "2,5 × z = 10. z = ?",
+              "options": ["4", "7,5", "12,5", "25"],
+              "explanation": "z = 4.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "8 × r = 56. r = ?",
+              "options": ["7", "48", "64", "448"],
+              "explanation": "r = 7.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Résoudre x ÷ a = b",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles égalités ont pour solution d = 12 ?",
+              "options": ["d ÷ 2 = 6", "d ÷ 3 = 4", "d ÷ 4 = 4", "d ÷ 6 = 1"],
+              "explanation": "12 ÷ 2 = 6 et 12 ÷ 3 = 4.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "x ÷ 4 = 5. x = ?",
+              "options": ["20", "1", "9", "25"],
+              "explanation": "x = 20.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "n ÷ 5 = 3. n = ?",
+              "options": ["15", "8", "2", "53"],
+              "explanation": "n = 15.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "a ÷ 10 = 0. a = ?",
+              "options": ["0", "10", "1", "100"],
+              "explanation": "a = 0.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "m ÷ 2 = 7,5. m = ?",
+              "options": ["15", "5,5", "9,5", "3,75"],
+              "explanation": "m = 15.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "48 ÷ p = 6. p = ?",
+              "options": ["8", "42", "54", "288"],
+              "explanation": "p = 8.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "k ÷ 7 = 7. k = ?",
+              "options": ["49", "0", "14", "77"],
+              "explanation": "k = 49.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "r ÷ 8 = 3. r = ?",
+              "options": ["24", "11", "5", "38"],
+              "explanation": "r = 24.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "b ÷ 3 = 9. b = ?",
+              "options": ["27", "6", "12", "39"],
+              "explanation": "b = 27.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "t ÷ 6 = 4. t = ?",
+              "options": ["24", "10", "18", "64"],
+              "explanation": "t = 24.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Opération inverse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour résoudre x + 5 = 12, quelles étapes sont correctes ?",
+              "options": [
+                "calculer 12 − 5",
+                "x = 7",
+                "calculer 12 + 5",
+                "x = 5 − 12"
+              ],
+              "explanation": "On isole x par 12 − 5 = 7.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "x − 8 = 3. On fait :",
+              "options": ["x = 3 + 8", "x = 3 − 8", "x = 8 − 3", "x = 3 × 8"],
+              "explanation": "x = 11.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "5 × n = 35. n = ?",
+              "options": ["35 ÷ 5", "35 + 5", "35 − 5", "5 ÷ 35"],
+              "explanation": "n = 7.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "a ÷ 4 = 6. a = ?",
+              "options": ["6 × 4", "6 ÷ 4", "6 − 4", "4 − 6"],
+              "explanation": "a = 24.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "m + 14 = 14. m = ?",
+              "options": ["0", "28", "14", "196"],
+              "explanation": "m = 0.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "p − p = q. q = ?",
+              "options": ["0", "p", "2 × p", "1"],
+              "explanation": "q = 0.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "3 × e = 3 × 8 implique e = ?",
+              "options": ["8", "3", "24", "11"],
+              "explanation": "e = 8.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "h + 6 = 6 + h : combien de solutions ?",
+              "options": ["une infinité", "aucune", "une seule h = 0", "deux"],
+              "explanation": "Toujours vrai.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "u ÷ u = 1 (u ≠ 0). u = 5 vérifie ?",
+              "options": ["oui", "non", "u = 0", "u = 1"],
+              "explanation": "5 ÷ 5 = 1.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "v × 1 = 9. v = ?",
+              "options": ["9", "1", "10", "8"],
+              "explanation": "v = 9.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Vérifier une solution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour x + 5 = 12, quelles affirmations sont vraies ?",
+              "options": [
+                "x = 7 est solution",
+                "12 − 5 = 7 aide à trouver x",
+                "x = 5 est solution",
+                "5 + 5 = 12 vérifie l'équation"
+              ],
+              "explanation": "La solution est x = 7, obtenue par 12 − 5 = 7. x = 5 et 5 + 5 = 12 sont faux.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tester x = 4 dans 3 × x = 15 :",
+              "options": [
+                "faux car 12 ≠ 15",
+                "vrai",
+                "vrai car 4 < 15",
+                "faux car 4 > 3"
+              ],
+              "explanation": "3 × 4 = 12.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "n = 10 vérifie n − 8 = 2 ?",
+              "options": ["oui", "non", "n = 8", "n = 6"],
+              "explanation": "10 − 8 = 2.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "a = 6 vérifie a + 4 = 9 ?",
+              "options": ["non, 6 + 4 = 10", "oui", "a = 4", "a = 5"],
+              "explanation": "10 ≠ 9.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "k = 9 vérifie k ÷ 3 = 3 ?",
+              "options": ["oui", "non", "k = 6", "k = 27"],
+              "explanation": "9 ÷ 3 = 3.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "y = 5 vérifie 2 × y + 1 = 11 ?",
+              "options": ["oui", "non", "y = 6", "y = 10"],
+              "explanation": "2 × 5 + 1 = 11.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "m = 0 vérifie m + 12 = 12 ?",
+              "options": ["oui", "non", "m = 12", "impossible"],
+              "explanation": "0 + 12 = 12.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "p = 3 vérifie 4 × p = 14 ?",
+              "options": ["non, 12 ≠ 14", "oui", "p = 14", "p = 4"],
+              "explanation": "12 ≠ 14.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "t = 17 vérifie t − 5 = 12 ?",
+              "options": ["oui", "non", "t = 7", "t = 5"],
+              "explanation": "17 − 5 = 12.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "x = 8 vérifie x ÷ 2 = 4 ?",
+              "options": ["oui", "non", "x = 2", "x = 16"],
+              "explanation": "8 ÷ 2 = 4.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Deux opérations simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour x = 2, quelles égalités sont vraies ?",
+              "options": [
+                "3 × x + 1 = 7",
+                "x + x + 1 = 5",
+                "3 × x + 1 = 8",
+                "x × x = 2"
+              ],
+              "explanation": "3×2+1=7 et 2+2+1=5.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "2 × n + 4 = 14. n = ?",
+              "options": ["5", "9", "7", "18"],
+              "explanation": "2n = 10, n = 5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "3 × m − 2 = 10. m = ?",
+              "options": ["4", "12", "3", "8"],
+              "explanation": "3m = 12, m = 4.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "5 + 2 × t = 17. t = ?",
+              "options": ["6", "11", "5", "8,5"],
+              "explanation": "2t = 12, t = 6.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "10 − 2 × k = 4. k = ?",
+              "options": ["3", "7", "2", "5"],
+              "explanation": "2k = 6, k = 3.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "4 × (x − 1) = 20. x = ?",
+              "options": ["6", "5", "4", "21"],
+              "explanation": "x − 1 = 5, x = 6.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "(p + 1) × 2 = 12. p = ?",
+              "options": ["5", "6", "11", "7"],
+              "explanation": "p + 1 = 6, p = 5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "z ÷ 2 + 3 = 8. z = ?",
+              "options": ["10", "22", "5", "16"],
+              "explanation": "z ÷ 2 = 5, z = 10.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "2 × 3 + 4 × 1 = c. c = ?",
+              "options": ["10", "14", "24", "18"],
+              "explanation": "6 + 4 = 10.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "a = 5 : 2 × a + 3 = ?",
+              "options": ["13", "16", "10", "25"],
+              "explanation": "10 + 3 = 13.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Problèmes à une étape",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "3 carnets à c € coûtent 15 €. Quelles affirmations sont vraies ?",
+              "options": ["3 × c = 15", "c = 5", "c = 15", "c + 3 = 15"],
+              "explanation": "3 × c = 15 et c = 5.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Marie a x ans, +4 ans = 13 ans. x = ?",
+              "options": ["9", "17", "4", "52"],
+              "explanation": "x = 9.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "n passagers + 9 = 40. n = ?",
+              "options": ["31", "49", "9", "360"],
+              "explanation": "n = 31.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "b stylos − 6 = 14. b = ?",
+              "options": ["20", "8", "6", "84"],
+              "explanation": "b = 20.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "8 × g = 400. g = ?",
+              "options": ["50", "392", "408", "3200"],
+              "explanation": "g = 50.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "2 × k + 3 = 17 (km taxi). k = ?",
+              "options": ["7", "10", "5", "8,5"],
+              "explanation": "2k = 14, k = 7.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f + (f + 3) = 25. f = ?",
+              "options": ["11", "14", "22", "25"],
+              "explanation": "2f + 3 = 25, f = 11.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "5 × v − 2 = 28. v = ?",
+              "options": ["6", "30", "5", "26"],
+              "explanation": "5v = 30, v = 6.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "x + x + x = 27. x = ?",
+              "options": ["9", "3", "81", "24"],
+              "explanation": "3x = 27, x = 9.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "s = 45 + 15 sièges. s = ?",
+              "options": ["60", "30", "45", "675"],
+              "explanation": "s = 60.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Enchaîner résolution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles paires (équation, solution) sont correctes ?",
+              "options": [
+                "x + 8 = 15 → x = 7",
+                "2 × n = 12 → n = 6",
+                "x + 8 = 15 → x = 23",
+                "2 × n = 12 → n = 24"
+              ],
+              "explanation": "7 + 8 = 15 et 2 × 6 = 12.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "w + 18 = 25. w = ?",
+              "options": ["7", "43", "18", "450"],
+              "explanation": "w = 7.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "q − 11 = 4. q = ?",
+              "options": ["15", "7", "11", "44"],
+              "explanation": "q = 15.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "8 × r = 56. r = ?",
+              "options": ["7", "48", "64", "448"],
+              "explanation": "r = 7.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "s ÷ 6 = 9. s = ?",
+              "options": ["54", "3", "15", "69"],
+              "explanation": "s = 54.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Nombre + 10 = 35. Nombre = ?",
+              "options": ["25", "45", "10", "350"],
+              "explanation": "25 + 10 = 35.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "3 × e − 5 = 16. e = ?",
+              "options": ["7", "21", "11", "3"],
+              "explanation": "3e = 21, e = 7.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "12 + h = 12 + 5. h = ?",
+              "options": ["5", "17", "12", "60"],
+              "explanation": "h = 5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L + L + 6 = 22 (périmètre simplifié). L = ?",
+              "options": ["8", "11", "16", "6"],
+              "explanation": "2L + 6 = 22, L = 8.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "j × 0 + 6 = 6. j peut valoir :",
+              "options": [
+                "n'importe quel nombre",
+                "seulement 0",
+                "seulement 6",
+                "aucune valeur"
+              ],
+              "explanation": "j × 0 = 0 pour tout j.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Bilan résolution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles solutions sont correctes ?",
+              "options": [
+                "x + 3 = 10 → x = 7",
+                "2 × n = 12 → n = 6",
+                "x + 3 = 10 → x = 13",
+                "2 × n = 12 → n = 10"
+              ],
+              "explanation": "7 + 3 = 10 et 2 × 6 = 12.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "x + 3 = 10. x = ?",
+              "options": ["7", "13", "3", "30"],
+              "explanation": "x = 7.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "2 × n = 12. n = ?",
+              "options": ["6", "10", "24", "2"],
+              "explanation": "n = 6.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "a − 5 = 12. a = ?",
+              "options": ["17", "7", "5", "60"],
+              "explanation": "a = 17.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "m ÷ 4 = 8. m = ?",
+              "options": ["32", "4", "12", "2"],
+              "explanation": "m = 32.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pensé à un nombre, +10 = 35. Nombre = ?",
+              "options": ["25", "45", "10", "350"],
+              "explanation": "25.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "4 × (b − 2) = 20. b = ?",
+              "options": ["7", "5", "6", "22"],
+              "explanation": "b − 2 = 5, b = 7.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "c + c = 18. c = ?",
+              "options": ["9", "18", "36", "6"],
+              "explanation": "c = 9.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "d ÷ 5 = 0. d = ?",
+              "options": ["0", "5", "1", "25"],
+              "explanation": "d = 0.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "e + 6 = 6 + e a pour solutions :",
+              "options": [
+                "tous les nombres e",
+                "aucun",
+                "e = 0 seulement",
+                "e = 6 seulement"
+              ],
+              "explanation": "Égalité toujours vraie.",
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2633 @@
+{
+  "id": "6e-chinois-04",
+  "year": "6e",
+  "subject": "chinois",
+  "title": "La grammaire du chinois",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En français : « un garçon », « une fille ». En chinois mandarin :",
+              "options": [
+                "Pas de « un/une » obligatoire devant chaque nom.",
+                "Le verbe 是 shì s’accorde au féminin.",
+                "Les noms ne prennent pas de -s au pluriel.",
+                "On met « le » avant 我 wǒ."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Pas d’articles ni de pluriel en -s comme en français."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Je suis » se dit :",
+              "options": [
+                "我 wǒ seul",
+                "你是 nǐ shì",
+                "我是 wǒ shì",
+                "的一 yī de"
+              ],
+              "correctAnswers": [2],
+              "explanation": "我是 wǒ shì = je + être."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« École » sans article :",
+              "options": [
+                "学校 xuéxiào",
+                "一学校 yī xuéxiào obligatoire",
+                "的学校 de xuéxiào",
+                "是校 shì xiào"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学校 suffit, sans « une école »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "是 shì correspond à :",
+              "options": ["« et »", "« être »", "« de » possessif", "« un »"],
+              "correctAnswers": [1],
+              "explanation": "是 lie sujet et complément."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "书 shū « livre », plusieurs livres :",
+              "options": [
+                "书们 shūmen obligatoire",
+                "书 shū ; le contexte indique le nombre",
+                "书s en latin",
+                "是书 shì shū"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pas de pluriel régulier sur les objets."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Je » sans article :",
+              "options": ["的我 de wǒ", "我 wǒ", "是我 shì wǒ", "一我 yī wǒ"],
+              "correctAnswers": [1],
+              "explanation": "Pas de « le je »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "你是老师 nǐ shì lǎoshī :",
+              "options": [
+                "Tu es professeur.",
+                "Tu es le professeur obligatoire.",
+                "Je suis professeur.",
+                "Tu professeur sans verbe."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure sujet + 是 + nom."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Des amis » (fr.) vs 朋友 péngyou :",
+              "options": [
+                "一 yī toujours devant",
+                "Pas d’équivalent de « des » devant le nom",
+                "朋友朋友 au pluriel",
+                "的 de obligatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pas de partitif systématique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour le nombre « un » :",
+              "options": ["一 yī", "是 shì", "的 de", "你 nǐ"],
+              "correctAnswers": [0],
+              "explanation": "一 = un (nombre), pas l’article français."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Grande différence avec le français :",
+              "options": [
+                "Accords d’adjectifs en -e/-s partout",
+                "Pas de le/la/les/un/une comme en français",
+                "Verbe toujours en fin de phrase",
+                "Pas de pronoms"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Contraste central de l’unité."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Un chat » (fr.) et 猫 māo (ch.) :",
+              "options": [
+                "猫 peut dire « chat » sans « un ».",
+                "Il faut 一猫 yī māo pour tout nom.",
+                "Pas de « le chat » avec un mot « le ».",
+                "猫 prend un -s au pluriel."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Nom simple, sans articles définis."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "我是法国人 wǒ shì Fǎguó rén — verbe :",
+              "options": ["的 de", "是 shì", "一 yī", "你 nǐ"],
+              "correctAnswers": [1],
+              "explanation": "是 = être dans 我是…"
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« La maison » (fr.) → chinois :",
+              "options": [
+                "房子 fángzi",
+                "是房子 shì fángzi",
+                "的房子 de fángzi",
+                "一的房子 yī de fángzi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas d’article défini."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Adjectifs grand/grande/grands (fr.) en chinois :",
+              "options": [
+                "Terminaison -e au féminin",
+                "Pas d’accord en genre/nombre sur l’adjectif",
+                "Disparaissent",
+                "Après 是 seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pas d’accords français sur l’adjectif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "我是学生 wǒ shì xuésheng — ordre :",
+              "options": [
+                "Verbe + sujet + nom",
+                "Sujet + 是 + nom",
+                "Nom + 的 + sujet",
+                "一 + nom + 你"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sujet + 是 + complément."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Tu es » :",
+              "options": ["我是 wǒ shì", "你是 nǐ shì", "是 you", "的你 nǐ de"],
+              "correctAnswers": [1],
+              "explanation": "你 + 是."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Partitif « du/des » devant un nom :",
+              "options": [
+                "Toujours 的 de",
+                "Pas d’équivalent direct obligatoire",
+                "Toujours 一 yī",
+                "Après 是"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Structure différente du français."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "我 wǒ et 你 nǐ sont :",
+              "options": [
+                "Des articles",
+                "Des pronoms",
+                "Des pluriels",
+                "Des verbes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pronoms personnels."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Un livre » (compter un) :",
+              "options": [
+                "一本书 yì běn shū (一 + nom)",
+                "书是 shū shì",
+                "的书 de shū",
+                "我书 wǒ shū"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一 + classificateur + 书."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "我是 + nom/profession",
+                "的我是 de wǒ shì",
+                "我一 = je suis",
+                "是 wǒ shì nǐ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle de présentation."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "的 de en 6e sert surtout à :",
+              "options": [
+                "Remplacer le/la/les devant tout nom.",
+                "Marquer une relation (souvent « de » / possessif).",
+                "Accorder le verbe au pluriel.",
+                "Remplacer 你 nǐ."
+              ],
+              "correctAnswers": [1, 0],
+              "explanation": "的 n’est pas l’article « le » ; il lie des mots (我的 wǒ de)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "我的书 wǒ de shū :",
+              "options": [
+                "Je suis livre.",
+                "Mon livre.",
+                "Un livre.",
+                "Tu livres."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Possessif sans accord en genre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "的 de comparé au français :",
+              "options": [
+                "S’accorde au féminin",
+                "Ne s’accorde pas en genre",
+                "Remplace toujours 是",
+                "Signifie « une »"
+              ],
+              "correctAnswers": [1],
+              "explanation": "我的, 你的 : forme invariable."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "你的 nǐ de :",
+              "options": ["Tu es.", "Ton/ta/tes.", "Un toi.", "Le tu."],
+              "correctAnswers": [1],
+              "explanation": "Possessif après 你."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Le livre de Marie » :",
+              "options": [
+                "玛丽的书 Mǎlì de shū",
+                "书玛丽 sans 的",
+                "是玛丽书",
+                "一玛丽"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom + 的 + nom."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sans 的 ni 是, deux mots côte à côte :",
+              "options": [
+                "Parfois naturel selon le contexte",
+                "Toujours interdit en 6e",
+                "Remplace « je suis »",
+                "Ajoute « le »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chinois est moins marqué que le français."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "我是 vs 我的 :",
+              "options": [
+                "Même sens",
+                "我是 = identité ; 我的 = mon/ma",
+                "我的 = tu es",
+                "我是 = article"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ne pas confondre être et possessif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pas d’articles signifie aussi :",
+              "options": [
+                "Jamais de possession",
+                "Possession avec 的, pas le/la",
+                "Pas de pronoms",
+                "一 yī après chaque nom"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Rôles différents."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Des écoles » (fr.) et 学校 :",
+              "options": [
+                "学校们 obligatoire",
+                "Contexte ou quantificateur",
+                "xuéxiàos",
+                "的 entre syllabes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pluriel non obligatoire sur le nom."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Message u1 pour un élève de 6e :",
+              "options": [
+                "Pas d’accords/articles comme en français.",
+                "Tous les noms sont féminins.",
+                "是 change en 我是/你是/是s.",
+                "On dit « le 我 »."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse de l’unité."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Verbe « est/suis/es » (fr.) et 是 shì :",
+              "options": [
+                "是 ne change pas selon je/tu/il.",
+                "是s au pluriel.",
+                "Le pronom (我/你…) indique la personne.",
+                "On ajoute -e au féminin."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "是 invariable ; sujet variable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Il est professeur :",
+              "options": [
+                "他是老师 tā shì lǎoshī",
+                "他老师 = phrase complète obligatoire",
+                "是老师 sans sujet toujours",
+                "他一老师 = il est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "他 + 是 + 老师."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Nous sommes » :",
+              "options": [
+                "我们是 wǒmen shì",
+                "我是们 wǒ shìmen",
+                "你们 shì nǐmen",
+                "一我们"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我们 + 是."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Articles le, la, les :",
+              "options": [
+                "N’existent pas comme en français.",
+                "S’écrivent 的的.",
+                "Après le nom.",
+                "Valent 一 yī."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Point clé u1."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Un élève » :",
+              "options": [
+                "一个学生 yí gè xuésheng",
+                "学生一 seul toujours",
+                "的学生 = un",
+                "是学生 = un"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一 + 个 + nom."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Elle est » :",
+              "options": [
+                "她是 tā shì — pas de -e sur 是",
+                "是 elle",
+                "她的是 = elle est",
+                "一她"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas d’accord du verbe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Focus 6e sur la négation :",
+              "options": [
+                "On retient surtout 我是… affirmative",
+                "我不 seul suffit toujours",
+                "的我不",
+                "一不是 seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation approfondie plus tard."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "我是玛丽 wǒ shì Mǎlì :",
+              "options": [
+                "Je m’appelle Marie / Je suis Marie.",
+                "Marie de moi.",
+                "Un Marie.",
+                "La Marie."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation sans article."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Des élèves » pluriel :",
+              "options": [
+                "Plusieurs sans -s sur 学生 obligatoire",
+                "学生s",
+                "« les » en 的",
+                "On supprime 是"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel implicite ou 们 pour personnes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Paire cohérente :",
+              "options": [
+                "我 + 是 + nom",
+                "的 + 是 + 我",
+                "你 + 的 = tu es",
+                "一 + 是 = je"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre sujet + 是 + complément."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour un francophone :",
+              "options": [
+                "Pas de genre grammatical sur les noms comme en français.",
+                "Chaque nom a un « le » invisible.",
+                "是 ne se conjugue pas en -s.",
+                "Article avant 你 nǐ."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Contraste avec genre et conjugaison françaises."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "我是中国人 wǒ shì Zhōngguó rén :",
+              "options": [
+                "Je suis Chinois(e).",
+                "Je Chinois sans verbe.",
+                "Mon Chinois.",
+                "Tu es chinois."
+              ],
+              "correctAnswers": [0],
+              "explanation": "我是 + nationalité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Une table » → table :",
+              "options": [
+                "桌子 zhuōzi",
+                "的桌子 = une",
+                "是桌子 = une table",
+                "桌子一 ordre fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom seul ; 一 si on compte."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "你的书 nǐ de shū :",
+              "options": [
+                "Ton livre.",
+                "Tu es livre.",
+                "Le livre.",
+                "Des livres."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possessif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi « accords » dans le titre u1 ?",
+              "options": [
+                "Montrer ce que le chinois ne fait pas comme le français.",
+                "Le chinois accorde plus.",
+                "的 s’accorde en genre.",
+                "一 yī est un accord."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraste pédagogique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "你是学生 nǐ shì xuésheng :",
+              "options": [
+                "Tu es élève.",
+                "Je suis élève.",
+                "Ordre français strict.",
+                "Un élève tu."
+              ],
+              "correctAnswers": [0],
+              "explanation": "你 + 是 + 学生."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "一 yī :",
+              "options": [
+                "Peut compter « un »",
+                "Est l’article « le »",
+                "Remplace 是",
+                "S’accorde au féminin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nombre, pas article."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Erreur « à la française » :",
+              "options": [
+                "Mettre le/la traduit avant chaque nom.",
+                "Utiliser 我是 pour se présenter.",
+                "Écrire 我 wǒ pour je.",
+                "Dire 是 shì pour être."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne pas calquer les articles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "老师 lǎoshī — genre :",
+              "options": [
+                "Même mot homme/femme",
+                "lǎoshīe au féminin",
+                "deux mots le/la",
+                "Impossible sans 是"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de genre morphologique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Résumé u1 :",
+              "options": [
+                "Pas d’articles/accords comme en français ; 是 et 的 ont d’autres rôles.",
+                "Tous les noms féminins.",
+                "是 change en 是s.",
+                "« le 我 »."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "我的 wǒ de et 我是 wǒ shì :",
+              "options": [
+                "我的 = mon/ma/mes.",
+                "我是 = je suis.",
+                "Toujours même sens.",
+                "Les deux = le/la."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Possessif vs verbe être."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Personne française :",
+              "options": [
+                "法国人 Fǎguó rén",
+                "法国是 seul",
+                "的法国 = personne",
+                "一法国 = français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pays + 人."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Le chat » (fr.) → chat :",
+              "options": [
+                "猫 māo sans « le »",
+                "le猫",
+                "的猫 = le chat toujours",
+                "是猫 = le chat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas d’article défini."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ordre type 我是… :",
+              "options": [
+                "Sujet + 是 + complément",
+                "Complément + 是 + sujet",
+                "是 + sujet + complément toujours",
+                "的 + 是 + sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme « Je suis X »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "我的书 — pluriel « mes livres » :",
+              "options": [
+                "Pas de -s sur 书 ; 的 ne pluralise pas",
+                "书s",
+                "的 = des",
+                "们 men sur 书 obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel implicite."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "你 nǐ dans 你是… :",
+              "options": ["Tu (sujet)", "Article « le »", "Pluriel", "Verbe"],
+              "correctAnswers": [0],
+              "explanation": "Pronom sujet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Un ami » et 朋友 :",
+              "options": [
+                "朋友 seul ; 一个朋友 si on compte un",
+                "是朋友",
+                "un = 的 devant",
+                "Pluriel = 朋友们 seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quantité avec 一 + classificateur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Erreur fréquente :",
+              "options": [
+                "Chercher le/la avant chaque nom.",
+                "Pinyin à côté des caractères.",
+                "我 wǒ pour je.",
+                "是 shì pour être."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Habituer à l’absence d’articles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "他是 tā shì :",
+              "options": [
+                "Il/elle est.",
+                "Son/sa.",
+                "Un il.",
+                "Ils sont toujours."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identité avec 是."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Présentation correcte :",
+              "options": [
+                "我是汤姆 wǒ shì Tāngmǔ",
+                "的我是",
+                "汤姆我是 seule norme 6e",
+                "我是一"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Je suis Tom."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pluriel chinois vs français :",
+              "options": [
+                "Français -s ; pas sur le nom chinois ainsi.",
+                "们 men surtout avec personnes (我们).",
+                "Tout nom prend -们 obligatoire.",
+                "是 prend une terminaison « sont »."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "我们 = nous ; pas 书们 courant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "我们 wǒmen :",
+              "options": ["Nous", "Je", "Tu", "Un nous"],
+              "correctAnswers": [0],
+              "explanation": "我 + 们."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "你们 nǐmen :",
+              "options": ["Vous (pluriel)", "Ton", "Je suis", "Des vous"],
+              "correctAnswers": [0],
+              "explanation": "你 + 们."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "我们是朋友 wǒmen shì péngyou :",
+              "options": [
+                "Nous sommes amis.",
+                "Mon ami.",
+                "Tu es ami.",
+                "Amis le."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pronom pluriel + 是."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Partitif « du » (fr.) en 6e :",
+              "options": [
+                "Pas d’équivalent systématique",
+                "du = 的 de",
+                "du = 一 yī toujours",
+                "du = 是"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraste sans toutes les structures."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "我是法国人 — pas de « une » :",
+              "options": [
+                "Vrai",
+                "Faux : 一个法国人 obligatoire",
+                "Faux : 的法国人",
+                "Faux : le法国人"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nationalité avec 是."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "你的老师 nǐ de lǎoshī :",
+              "options": [
+                "Ton professeur / ta professeure (même forme).",
+                "Tu es professeur.",
+                "Le professeur.",
+                "Pluriel marqué."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possessif + nom."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "一个人 yí gè rén :",
+              "options": [
+                "Une personne",
+                "Le personne",
+                "Est personne",
+                "Accord pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一 + 个 + 人."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Grande maison » (accords fr.) :",
+              "options": [
+                "Pas de grande/grands en -e/-s comme en français.",
+                "Maison change de caractère.",
+                "Adjectif interdit",
+                "的 entre syllabes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraste adjectival."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bonne habitude :",
+              "options": [
+                "我/你/是/的/一 sans articles français.",
+                "Traduire mot à mot le/la/les.",
+                "Ignorer le pinyin.",
+                "Ajouter -s aux noms."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode du chapitre."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "我是… et articles français :",
+              "options": [
+                "Présentation sans un/une.",
+                "On dit 我是 le professeur en chinois.",
+                "是 = « être » ici.",
+                "Je suis = 的 wǒ."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Modèle simple sans articles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "我是学生 wǒ shì xuésheng :",
+              "options": [
+                "Je suis élève.",
+                "Mon élève.",
+                "Un élève je.",
+                "Élève le je."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase modèle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« L’école » (fr.) → école :",
+              "options": [
+                "学校 xuéxiào — pas de l’",
+                "l’学校",
+                "的学校 l’de",
+                "是学校 l’"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas d’élision d’article."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "你是法国人 nǐ shì Fǎguó rén :",
+              "options": [
+                "Tu es Français(e).",
+                "Je suis français.",
+                "France tu.",
+                "Ton français possessif."
+              ],
+              "correctAnswers": [0],
+              "explanation": "你 + 是 + 法国人."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "人 rén dans 中国人 :",
+              "options": [
+                "Personne / suffixe nationalité",
+                "Article défini",
+                "Verbe être",
+                "Pluriel -s"
+              ],
+              "correctAnswers": [0],
+              "explanation": "中国 + 人."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Articles — différence clé :",
+              "options": [
+                "Mandarin de base : pas comme le français.",
+                "Plus d’articles qu’en français.",
+                "Seuls 我/你 ont articles.",
+                "的 = le/la/les toujours."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Idée force u1."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "我的名字 wǒ de míngzi :",
+              "options": ["Mon nom.", "Je suis nom.", "Le nom.", "Nom un."],
+              "correctAnswers": [0],
+              "explanation": "Possessif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Je suis + prénom :",
+              "options": [
+                "我是 + prénom",
+                "的我是 + prénom",
+                "prénom + 的 seul",
+                "一 + prénom = je suis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation standard."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "他是学生 pour une fille élève :",
+              "options": [
+                "Possible ; 她 tā pour elle au sujet aussi",
+                "Il faut xuéshenge",
+                "Impossible",
+                "只有 她是 always"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学生 neutre ; 他/她 au sujet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Pas d’articles comme en français » signifie :",
+              "options": [
+                "Pas de le/la/les/un/une devant chaque nom comme en français.",
+                "Pas de noms.",
+                "Pas de verbes.",
+                "Tout s’accorde."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Message du chapitre."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Révision 是 et 的 :",
+              "options": [
+                "是 : identité/profession.",
+                "的 : possession souvent.",
+                "的 remplace toujours 是 pour être.",
+                "是 s’accorde au féminin."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rôles distincts."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "一本书 yì běn shū :",
+              "options": [
+                "Un livre.",
+                "Le livre défini.",
+                "Je suis livre.",
+                "Livre de."
+              ],
+              "correctAnswers": [0],
+              "explanation": "一 + classificateur + 书."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Les enfants » et 孩子 háizi :",
+              "options": [
+                "Pas de « les » ; pluriel non obligatoire sur le nom",
+                "háizis",
+                "les = 的 seul",
+                "孩子们 seule forme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "孩子们 possible pour personnes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "你是 sans complément :",
+              "options": [
+                "Incomplet comme « tu es » sans suite",
+                "Phrase = bonjour",
+                "Possessif",
+                "Article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complément après 是 en général."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Une école » vs 学校 :",
+              "options": [
+                "学校 = école ; « une » si on compte",
+                "Identiques avec article",
+                "学校 = le école",
+                "学校 = des seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom vs quantité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "我 wǒ :",
+              "options": ["Je", "Tu", "Le je", "Être"],
+              "correctAnswers": [0],
+              "explanation": "Pronom."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Expliquer « accords » à un camarade :",
+              "options": [
+                "是 ne change pas ; français suis/es/est changent.",
+                "Chinois conjugue plus.",
+                "Langues identiques.",
+                "Chinois que des accords."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveau 6e."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "你的 + nom :",
+              "options": [
+                "Ton/ta + nom",
+                "Tu es + nom",
+                "Le + nom",
+                "Un + nom toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possessif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "是 shì dans 我是 :",
+              "options": [
+                "Invariable pour je/tu/il…",
+                "wǒshìs au pluriel",
+                "shìe au féminin",
+                "Omis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de conjugaison de 是."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Fin u1 — choix juste :",
+              "options": [
+                "Articles fr. ≠ chinois ; 我是… pour je suis.",
+                "« the » = 一.",
+                "的 avant 我 toujours.",
+                "Pluriel -s en chinois."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clôture u1."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bilan « Accords et articles » :",
+              "options": [
+                "Mandarin : moins d’accords/articles que le français.",
+                "我/你 sans article devant.",
+                "Chaque nom exige 的 = le.",
+                "是 dans 我是… = je suis."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Synthèse u1 ; 的 n’est pas « le »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Exemple : 我是学生 wǒ shì xuésheng :",
+              "options": [
+                "Je suis élève.",
+                "Mon élève.",
+                "Le élève.",
+                "Des élèves."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle clé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Pas d’accords » veut dire :",
+              "options": [
+                "Pas comme féminin/pluriel français sur les mots.",
+                "Pas de grammaire.",
+                "Jamais conjuguer en aucune langue.",
+                "Caractères changent chaque jour."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sens pédagogique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "我的妈妈 wǒ de māma :",
+              "options": [
+                "Ma maman.",
+                "Je suis maman.",
+                "La maman.",
+                "Maman est."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possessif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Distinction être / mon :",
+              "options": [
+                "你是朋友 vs 我的朋友 selon le sens",
+                "的朋友 de péngyou shì nǐ seul",
+                "一朋友 = tu es mon ami",
+                "友朋 obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux structures."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "一 yī :",
+              "options": ["Un (nombre)", "Le", "De", "Tu"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire de base."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase sans article à retenir :",
+              "options": ["我是…", "le我是…", "我是the…", "un我是…"],
+              "correctAnswers": [0],
+              "explanation": "Modèle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Plusieurs chats (fr. « des chats ») :",
+              "options": [
+                "Contexte / quantificateur ; pas « des » fixe",
+                "des猫",
+                "的猫们 seul",
+                "是猫们"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de partitif comme des."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Vrai :",
+              "options": [
+                "Pinyin aide (我 wǒ, 是 shì…).",
+                "Ignorer les caractères.",
+                "Chinois classique requis.",
+                "Articles fr. toujours traduits."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consigne du chapitre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Plus important u1 :",
+              "options": [
+                "Différences avec le français et 我是…",
+                "3000 articles.",
+                "Accorder 是 au passé.",
+                "Ne jamais utiliser 的."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif u1."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrase simple de présentation :",
+              "options": [
+                "我 wǒ + 是 shì + complément.",
+                "是 shì invariable ; le sujet change (我/你).",
+                "Ordre : 是 + 我 + nom toujours.",
+                "Article « le » avant 我."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sujet + 是 + complément ; 是 ne se conjugue pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phrase modèle « Je suis élève » :",
+              "options": [
+                "我是学生 wǒ shì xuésheng",
+                "学生是我 xuésheng shì wǒ (norme 6e)",
+                "我学生 wǒ xuésheng = phrase complète obligatoire",
+                "的我是学生 de wǒ shì"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre chinois standard en 6e."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "你 nǐ en début de phrase :",
+              "options": ["Tu (sujet)", "Ton", "Le tu", "Être"],
+              "correctAnswers": [0],
+              "explanation": "Pronom sujet."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "你是老师 nǐ shì lǎoshī traduit :",
+              "options": [
+                "Tu es professeur.",
+                "Je suis professeur.",
+                "Ton professeur.",
+                "Professeur tu es (français strict)."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase simple sujet-verbe-nom."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complément après 我是 manque si on dit seulement :",
+              "options": [
+                "我是 wǒ shì (sans suite)",
+                "我是学生",
+                "我是玛丽",
+                "我是法国人"
+              ],
+              "correctAnswers": [0],
+              "explanation": "是 attend un complément."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Prénom après 我是 :",
+              "options": [
+                "我是安娜 wǒ shì Ānnà",
+                "安娜是我 seule règle",
+                "的我是安娜",
+                "一我是安娜"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Je suis Anna."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase simple ≠ phrase avec possession :",
+              "options": [
+                "我是… = identité ; 我的… = mon/ma",
+                "Même structure toujours",
+                "我的 = je suis",
+                "我是 = ton/ta"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux types de phrases."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Nous sommes amis :",
+              "options": [
+                "我们是朋友 wǒmen shì péngyou",
+                "我是们朋友",
+                "你们是朋友 seul pour nous",
+                "一我们朋友"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我们 + 是 + 朋友."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pinyin dans ce chapitre sert à :",
+              "options": [
+                "Lire à voix haute (我 wǒ, 是 shì)",
+                "Remplacer les caractères",
+                "Articles français",
+                "Pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caractère + pinyin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase simple correcte :",
+              "options": [
+                "我是中国人 wǒ shì Zhōngguó rén",
+                "中国人是我 seule norme 6e",
+                "我中是国人",
+                "是中国人我"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation nationalité."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Construire « Tu es élève » :",
+              "options": [
+                "你 nǐ + 是 shì + 学生 xuésheng.",
+                "Pas de « un élève » avec un/une.",
+                "你是学生 nǐ shì xuésheng.",
+                "的你是学生 pour « tu es »."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Même schéma que 我是… avec 你."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "你是学生 nǐ shì xuésheng :",
+              "options": [
+                "Tu es élève.",
+                "Je suis élève.",
+                "Mon élève.",
+                "Les élèves."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Second personne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Il est français :",
+              "options": [
+                "他是法国人 tā shì Fǎguó rén",
+                "法国人是他 seule norme",
+                "他一法国人",
+                "的他是法国人 = seule forme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "他 + 是 + 法国人."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase : 她是学生 tā shì xuésheng (她 = elle) :",
+              "options": [
+                "Elle est élève.",
+                "Il est élève.",
+                "Mon élève.",
+                "Tu es élève."
+              ],
+              "correctAnswers": [0],
+              "explanation": "她 pour sujet féminin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux phrases simples vraies :",
+              "options": [
+                "我是学生 et 你是老师",
+                "的我是 et 的你",
+                "一我是一",
+                "我是的"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèles 我是/你是."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ami : phrase « Je suis ton ami » (être) en 6e simplifié :",
+              "options": [
+                "我是朋友 wǒ shì péngyou (contexte) ; 你的朋友 wǒ shì nǐ de péngyou plus explicite",
+                "的朋友 de péngyou shì",
+                "一朋友是我",
+                "朋友一我"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction contexte / précision."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "是 shì dans une phrase simple :",
+              "options": [
+                "Relie sujet et nom/profession",
+                "Remplace toujours 的",
+                "Article le",
+                "Pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Copule « être »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase incorrecte en 6e :",
+              "options": [
+                "Je suis = 的 wǒ",
+                "我是 wǒ shì",
+                "你是 nǐ shì",
+                "我们 wǒmen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "的 n’est pas « je suis »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Salutation + phrase simple : 你好！我是… :",
+              "options": [
+                "Bonjour ! Je suis… (présentation)",
+                "Bonjour = je suis seul",
+                "你好 remplace 是",
+                "我是 remplace 你好 toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement courant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choix : phrase simple :",
+              "options": [
+                "你是法国人 nǐ shì Fǎguó rén",
+                "法国人你 nǐ",
+                "是法国你",
+                "的你是法国"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tu es français."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "我的… vs phrase 我是… :",
+              "options": [
+                "我的书 = mon livre (pas une phrase « je suis »).",
+                "我是书 = je suis livre (identité absurde ici).",
+                "我的 = phrase avec 是 obligatoire.",
+                "我是 = possessif ton/ma."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Types de phrases différents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phrase simple avec possession du nom :",
+              "options": [
+                "我的名字是… wǒ de míngzi shì… (Mon nom est…)",
+                "名字我 de",
+                "是我名字",
+                "一名字我"
+              ],
+              "correctAnswers": [0],
+              "explanation": "的 + nom + 是 + complément."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Mon livre (groupe nominal, pas « je suis ») :",
+              "options": [
+                "我的书 wǒ de shū",
+                "我是书 wǒ shì shū = mon livre",
+                "书是我",
+                "的书我"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possessif sans verbe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase : 这是书 zhè shì shū (这 zhè = ceci) :",
+              "options": [
+                "Ceci est un livre / C’est un livre.",
+                "Je suis livre.",
+                "Mon livre.",
+                "Tu es livre."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autre sujet + 是 + nom."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En français « C’est Marie » (identité) approche :",
+              "options": [
+                "是玛丽 shì Mǎlì avec sujet sous-entendu ou 这是玛丽",
+                "玛丽的是",
+                "的玛丽",
+                "一玛丽"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation avec 是."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tu es mon professeur (être) :",
+              "options": [
+                "你是我的老师 nǐ shì wǒ de lǎoshī",
+                "你的老师是我 seule norme",
+                "老师你我",
+                "一老师你"
+              ],
+              "correctAnswers": [0],
+              "explanation": "你 + 是 + 我的 + nom."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase simple la plus courte utile en 6e :",
+              "options": ["我是… / 你是…", "的…", "一… seul", "…们 seul"],
+              "correctAnswers": [0],
+              "explanation": "Modèles de base."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "一 yī dans une phrase simple de quantité :",
+              "options": [
+                "一个人 yí gè rén = une personne",
+                "我是 yī",
+                "一 je suis",
+                "你 yī es"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nombre, autre type de phrase."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "我们是学生 wǒmen shì xuésheng :",
+              "options": [
+                "Nous sommes élèves.",
+                "Je suis élève.",
+                "Mon élève.",
+                "Vous êtes élèves seul."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel sujet + 是."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase simple — ordre des mots :",
+              "options": [
+                "Comme français sujet-verbe : 我 + 是 + nom",
+                "Nom toujours avant 我",
+                "是 toujours en fin",
+                "的 entre chaque mot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parallèle simple avec le français."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases 我是… sans chinois classique :",
+              "options": [
+                "Vocabulaire mandarin simplifié courant.",
+                "Caractères + pinyin (我 wǒ).",
+                "On utilise uniquement le chinois archaïque.",
+                "On ajoute le/la en français dans la phrase chinoise."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Niveau 6e débutant mandarin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Je suis Tom :",
+              "options": [
+                "我是汤姆 wǒ shì Tāngmǔ",
+                "汤姆 wǒ shì inverse seule règle",
+                "的汤姆",
+                "一汤姆是我"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prénom étranger en phonétique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Profession dans phrase simple :",
+              "options": [
+                "我是医生 wǒ shì yīshēng (médecin)",
+                "医生我 wǒ",
+                "的我医生",
+                "是医生一"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我是 + profession."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tu es professeur :",
+              "options": [
+                "你是老师 nǐ shì lǎoshī",
+                "老师你是 inverse obligatoire",
+                "的你老师",
+                "一老师"
+              ],
+              "correctAnswers": [0],
+              "explanation": "你是 + 老师."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Phrase avec 的 de mais simple :",
+              "options": [
+                "这是我的书 zhè shì wǒ de shū (C’est mon livre.)",
+                "书是我 de",
+                "的这是书",
+                "一我的书是我"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这 + 是 + possessif + nom."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Question « Tu es élève ? » (intonation) 你是学生？ :",
+              "options": [
+                "Même mots, point d’interrogation ou intonation",
+                "Structure complètement différente obligatoire en 6e",
+                "Impossible en chinois",
+                "Seulement 的 de"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase déclarative + ? en écrit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Je suis + nationalité :",
+              "options": [
+                "我是法国人 / 我是中国人",
+                "法国我是 inverse seule",
+                "我是的法国",
+                "一法国人"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我是 + …人."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase fausse :",
+              "options": [
+                "我 wǒ shì (verbe mal écrit 是)",
+                "我是 wǒ shì",
+                "你是 nǐ shì",
+                "他是 tā shì"
+              ],
+              "correctAnswers": [0],
+              "explanation": "是 shì, pas wǒ shì séparé mal."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Vous ( plusieurs ) êtes professeurs :",
+              "options": [
+                "你们是老师 nǐmen shì lǎoshī",
+                "你是们老师",
+                "我们是你老师",
+                "一你们老师"
+              ],
+              "correctAnswers": [0],
+              "explanation": "你们 + 是."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Résumé phrase simple :",
+              "options": [
+                "Sujet + 是 + nom/adjectif/nationalité",
+                "Article + sujet + verbe",
+                "Nom + 的 + 是 + sujet toujours",
+                "Seulement 的 de"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma u2."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Comparer français et phrase 我是… :",
+              "options": [
+                "Français : « Je suis un élève » avec un ; chinois souvent sans « un ».",
+                "Chinois : 我是学生 sans article.",
+                "Chinois : on dit « le je suis élève ».",
+                "Français et chinois identiques pour les articles."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lien u1 et u2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phrase : 你是我的朋友 nǐ shì wǒ de péngyou :",
+              "options": [
+                "Tu es mon ami.",
+                "Je suis ton ami.",
+                "Mon ami tu.",
+                "Tu mon es ami (français mot à mot)."
+              ],
+              "correctAnswers": [0],
+              "explanation": "你 + 是 + 我的 + 朋友."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Je suis Luc :",
+              "options": [
+                "我是卢克 wǒ shì Lúkè",
+                "卢克 shì wǒ seule norme",
+                "的卢克我",
+                "一卢克"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prénom phonétique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase simple négative (aperçu) : 我不是老师 :",
+              "options": [
+                "Je ne suis pas professeur (不 bù = ne pas).",
+                "Je suis professeur.",
+                "Mon professeur.",
+                "Tu es professeur."
+              ],
+              "correctAnswers": [0],
+              "explanation": "不 devant 是."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Elle est Chinoise :",
+              "options": [
+                "她是中国人 tā shì Zhōngguó rén",
+                "他是中国人 seulement pour filles",
+                "中国人她",
+                "的她是中国人 seule forme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "她 + 是 + 中国人."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ton nom (phrase) :",
+              "options": [
+                "你的名字是… nǐ de míngzi shì…",
+                "名字的你",
+                "是你名字 de",
+                "一名字你"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possessif + 是."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase courte de classe :",
+              "options": [
+                "我是学生。你是老师。",
+                "的学生。的你是。",
+                "一我。一你。",
+                "我。你。是。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux phrases simples."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "是 peut terminer une phrase simple quand :",
+              "options": [
+                "Complément déjà clair ou réponse courte « Oui, c’est ça » (contexte)",
+                "Jamais",
+                "Toujours sans sujet interdit",
+                "Seulement avec 的"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponses courtes en contexte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "我 wǒ + 是 shì + 法国人 :",
+              "options": [
+                "Phrase complète « Je suis français »",
+                "Groupe nominal seul",
+                "Question",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase déclarative."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif u2 :",
+              "options": [
+                "Former des phrases simples avec 我是/你是/他是/她是 et 是.",
+                "Apprendre 500 classificateurs.",
+                "Chinois classique.",
+                "Accorder 是 en genre."
+              ],
+              "correctAnswers": [0],
+              "explanation": "But de l’unité."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pronoms sujet en phrases simples :",
+              "options": ["我 wǒ = je.", "你 nǐ = tu.", "我 = tu.", "你 = je."],
+              "correctAnswers": [0, 1],
+              "explanation": "Pronoms de base."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Il est élève :",
+              "options": [
+                "他是学生 tā shì xuésheng",
+                "她是他学生",
+                "学生他",
+                "一他是学生 seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "他 + 是 + 学生."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Phrase : 我是法国人，你是中国人 :",
+              "options": [
+                "Je suis français, tu es chinois.",
+                "Je suis chinois, tu es français.",
+                "Mon français.",
+                "Deux questions."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux phrases coordonnées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mot 朋友 péngyou dans 我是朋友 :",
+              "options": ["Ami (complément)", "Verbe", "Article", "Pluriel"],
+              "correctAnswers": [0],
+              "explanation": "Nom complément."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Structure 这 zhè + 是 shì :",
+              "options": [
+                "Ceci/C’est… (phrase simple)",
+                "Mon/ma",
+                "Ne pas",
+                "Pluriel nous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Démonstratif + 是."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Je suis élève, pas professeur (idée) :",
+              "options": [
+                "我是学生，不是老师 wǒ shì xuésheng, bù shì lǎoshī",
+                "不是我是",
+                "的学生不是",
+                "一学生一老师是我"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux phrases avec 不."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase simple la plus utile pour se présenter :",
+              "options": [
+                "我是… (nom ou nationalité)",
+                "的…",
+                "一…",
+                "…是的我"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Première phrase en classe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "你是 nǐ shì + 学生 :",
+              "options": [
+                "Phrase complète",
+                "Impossible",
+                "Seulement possessif",
+                "Article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tu es élève."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Explication en français dans Quizzly :",
+              "options": [
+                "Pour comprendre la grammaire vs le français.",
+                "Remplacer tout le chinois.",
+                "Interdit",
+                "Seulement en anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consigne du chapitre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choix cohérent :",
+              "options": [
+                "他是老师 tā shì lǎoshī",
+                "老师 shì 他 inverse 6e",
+                "的他老师",
+                "一他"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il est professeur."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases simples et mots du chapitre :",
+              "options": [
+                "是 shì central pour « être ».",
+                "的 de pour mon/ton dans 我的/你的.",
+                "是 remplace toujours 一.",
+                "一 yī peut compter dans d’autres phrases."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rappel vocabulaire chapitre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ma profession (phrase) :",
+              "options": [
+                "我是老师 wǒ shì lǎoshī (si vrai !)",
+                "我的老师 wǒ de lǎoshī = je suis",
+                "老师是我 de",
+                "一老师我"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identité vs 我的 = mon professeur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Phrase : 你是法国人吗？ (吗 ma = particule question) :",
+              "options": [
+                "Es-tu français ? (phrase simple + 吗)",
+                "Je suis français.",
+                "Mon français.",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question douce en 6e."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Nous sommes français (masc./mixte générique 我们) :",
+              "options": [
+                "我们是法国人 wǒmen shì Fǎguó rén",
+                "我是法国人 seul",
+                "你们法国人",
+                "一我们法国"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我们 + 是."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Phrase sans verbe français « être » visible mais équivalent :",
+              "options": [
+                "En chinois 是 rend « être » explicite dans 我是…",
+                "Le chinois n’a jamais de verbe",
+                "我是 n’a pas de 是",
+                "的 = être"
+              ],
+              "correctAnswers": [0],
+              "explanation": "是 explicite contrairement au français parfois."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Je suis Marie (filles) :",
+              "options": [
+                "我是玛丽 wǒ shì Mǎlì",
+                "我是玛丽 e",
+                "的玛丽是我",
+                "一玛丽 shì"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas d’accord sur le prénom."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase : 这是我的朋友 zhè shì wǒ de péngyou :",
+              "options": [
+                "C’est mon ami.",
+                "Je suis ami.",
+                "Tu es mon ami.",
+                "Mon ami sans verbe."
+              ],
+              "correctAnswers": [0],
+              "explanation": "这 + 是 + possessif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Erreur : traduire « I am » par deux caractères sans 是 :",
+              "options": [
+                "我 + nom seul n’est pas le modèle 我是 enseigné",
+                "Correct toujours",
+                "Obligatoire",
+                "Meilleur que 我是"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle avec 是 en 6e."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Vous êtes élèves :",
+              "options": [
+                "你们是学生 nǐmen shì xuésheng",
+                "你是学生 seul pour vous pluriel",
+                "我们是你们",
+                "一你们"
+              ],
+              "correctAnswers": [0],
+              "explanation": "你们 + 是."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase simple — exemple nationalité :",
+              "options": [
+                "我是中国人 wǒ shì Zhōngguó rén",
+                "中国我是",
+                "的我中国人",
+                "是中国人一"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Je suis Chinois."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Révision phrases simples :",
+              "options": [
+                "我是/你是/他是/她是 + complément.",
+                "Ordre sujet + 是 + complément.",
+                "Ordre verbe + sujet obligatoire comme anglais strict.",
+                "Toujours mettre 的 entre 我 et 是."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Schéma u2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tu es Chinois :",
+              "options": [
+                "你是中国人 nǐ shì Zhōngguó rén",
+                "中国人是你 seule règle",
+                "的你中国人",
+                "一你中国"
+              ],
+              "correctAnswers": [0],
+              "explanation": "你是 + nationalité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Phrase : 我不是法国人 wǒ bù shì Fǎguó rén :",
+              "options": [
+                "Je ne suis pas français.",
+                "Je suis français.",
+                "Mon français.",
+                "Tu n’es pas français."
+              ],
+              "correctAnswers": [0],
+              "explanation": "不 + 是."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mon amie (nom) :",
+              "options": [
+                "我的朋友 wǒ de péngyou",
+                "我是朋友 = mon amie toujours",
+                "朋友的我",
+                "一朋友我"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Groupe nominal possessif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Phrase en classe « Je m’appelle… » approche :",
+              "options": [
+                "我叫… ou 我是… selon le prof",
+                "的叫我",
+                "一名字",
+                "是叫 de"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我叫 fréquent ; 我是 prénom aussi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ils sont amis :",
+              "options": [
+                "他们是朋友 tāmen shì péngyou",
+                "他是们朋友",
+                "我们是他们",
+                "一他们朋友"
+              ],
+              "correctAnswers": [0],
+              "explanation": "他们 + 是."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase simple avec 一 :",
+              "options": [
+                "我是一个学生 wǒ shì yí gè xuésheng (Je suis un élève — insiste sur « un »)",
+                "一我是",
+                "我是 yī seul",
+                "学生一我"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一 + 个 dans complément."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complément le plus fréquent après 我是 en 6e :",
+              "options": [
+                "Nom, nationalité, profession, prénom",
+                "Seulement verbe",
+                "Article le",
+                "Pluriel -s"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usages vus en classe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase : 你是老师，我是学生 :",
+              "options": [
+                "Tu es professeur, je suis élève.",
+                "Je suis professeur, tu es élève.",
+                "Nous sommes.",
+                "Possessifs seulement."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dialogue simple."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Fin quiz u2 q08 — bonne phrase :",
+              "options": [
+                "她是法国人 tā shì Fǎguó rén",
+                "法国她 shì",
+                "的她法国",
+                "一她法国人"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle est française."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lien grammaire u1 et phrases u2 :",
+              "options": [
+                "Phrases 我是… sans articles français.",
+                "Pas d’accord sur 是 selon le genre.",
+                "On ajoute le avant 学生.",
+                "的 de = « je suis »."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Synthèse chapitre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Je suis ton ami (être) :",
+              "options": [
+                "我是你的朋友 wǒ shì nǐ de péngyou",
+                "你的我是朋友",
+                "朋友你我是",
+                "一朋友你的"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我 + 是 + 你的 + 朋友."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Phrase courte correcte :",
+              "options": [
+                "你是学生。",
+                "是学生你。",
+                "你。是。学生。",
+                "的你是。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase déclarative."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "C’est mon livre :",
+              "options": [
+                "这是我的书 zhè shì wǒ de shū",
+                "我是书 wǒ shì shū = c’est mon livre",
+                "书这我",
+                "一我的书这"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这 + 是 + possessif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pinyin  shì à côté de 是 :",
+              "options": [
+                "Aide à prononcer la phrase simple",
+                "Remplace le caractère",
+                "Article français",
+                "Indique le pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture oral."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Nous ne sommes pas professeurs :",
+              "options": [
+                "我们不是老师 wǒmen bù shì lǎoshī",
+                "不是我们是老师",
+                "我们是不老师",
+                "一我们不是"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我们 + 不 + 是."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase identité vs possession :",
+              "options": [
+                "我是老师 = métier ; 我的老师 = mon professeur",
+                "Identiques",
+                "我是 = possessif",
+                "我的 = je suis toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction essentielle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tu es Marie :",
+              "options": [
+                "你是玛丽 nǐ shì Mǎlì",
+                "玛丽 nǐ",
+                "的你玛丽",
+                "一玛丽你"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tu es Marie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase simple avec 我们 :",
+              "options": [
+                "我们是朋友 wǒmen shì péngyou",
+                "我是我们朋友",
+                "我们朋友是 seule",
+                "一我们"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nous sommes amis."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avant de passer au quiz suivant, retenir :",
+              "options": [
+                "Sujet + 是 + complément, pinyin, pas d’articles.",
+                "Conjuguer 是 en -s.",
+                "Toujours 的 entre mots.",
+                "Chinois classique."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Checklist u2."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bilan chapitre « La grammaire du chinois » :",
+              "options": [
+                "Français : articles et accords ; chinois : structure plus simple avec 是.",
+                "Phrases clés : 我是… / 你是…",
+                "On traduit le/la par 一 devant chaque mot.",
+                "的 de sert à dire « je suis »."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bilan u1 + u2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Présentation complète type :",
+              "options": [
+                "你好！我是学生。我是法国人。",
+                "的你好我是。",
+                "一你好一我。",
+                "是学生你好。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement réaliste."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Je suis élève français (deux infos) :",
+              "options": [
+                "我是学生。我是法国人。 (deux phrases simples)",
+                "我是学生法国人 un seul mot obligatoire",
+                "的学生法国人是我",
+                "一学生一法国"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux phrases ou une longue selon niveau ; 6e : deux simples."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tu es mon professeur :",
+              "options": [
+                "你是我的老师 nǐ shì wǒ de lǎoshī",
+                "我的老师是你 seule",
+                "老师我你",
+                "一老师你"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase simple avec possessif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mot 是 dans 我是中国人 :",
+              "options": [
+                "Relie 我 et 中国人",
+                "Article",
+                "Pluriel",
+                "Remplace 的"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Copule."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phrase fausse pour « Je suis » :",
+              "options": ["的 wǒ shì", "我是 wǒ shì", "我是玛丽", "我是老师"],
+              "correctAnswers": [0],
+              "explanation": "Pas de 的 devant 我 pour « je suis »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Elle est professeur :",
+              "options": [
+                "她是老师 tā shì lǎoshī",
+                "他是老师 seule pour filles",
+                "老师她",
+                "一她是"
+              ],
+              "correctAnswers": [0],
+              "explanation": "她 + 是 + 老师."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comparaison utile avec le français :",
+              "options": [
+                "« Je suis un professeur » vs 我是老师 sans « un »",
+                "Identiques avec articles",
+                "Chinois plus d’accords",
+                "Français sans verbe être"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraste pédagogique final."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Vocabulaire chapitre obligatoire :",
+              "options": [
+                "我, 你, 是, 的, 一 (avec pinyin)",
+                "Seulement pinyin sans caractères",
+                "Chinois classique",
+                "Aucun verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consigne initiale du chapitre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif final 6e chinois ch.04 :",
+              "options": [
+                "Comprendre différences fr./ch. et construire des phrases simples 我是…",
+                "Maîtriser tous les classificateurs",
+                "Lire poésie Tang",
+                "Conjuguer 是 au passé composé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fin du chapitre 04."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

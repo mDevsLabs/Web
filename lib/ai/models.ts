@@ -299,6 +299,25 @@ export function formatModelName(modelId: string): {
   };
 }
 
+// Paramètres déclarés par le catalogue, normalisés (casse, espaces).
+// Une liste absente reste vide : on n'invente pas `tool_choice` à partir du nom.
+export function readSupportedParameters(
+  modelInput: string | Partial<ChatModel> | null | undefined
+): string[] {
+  const model: Partial<ChatModel> =
+    typeof modelInput === "string" ? { id: modelInput } : modelInput || {};
+  const rawSupportedParams =
+    model.supported_parameters || (model as any)?.supported_parameters || [];
+  return Array.isArray(rawSupportedParams)
+    ? rawSupportedParams
+        .filter(
+          (parameter): parameter is string => typeof parameter === "string"
+        )
+        .map((parameter) => parameter.trim().toLowerCase())
+        .filter(Boolean)
+    : [];
+}
+
 export function getModelCapabilities(
   modelInput: string | Partial<ChatModel> | any
 ): ModelCapabilities {
@@ -316,16 +335,7 @@ export function getModelCapabilities(
     (model as any)?.modality ||
     ""
   ).toLowerCase();
-  const rawSupportedParams =
-    model.supported_parameters || (model as any)?.supported_parameters || [];
-  const supportedParams: string[] = Array.isArray(rawSupportedParams)
-    ? rawSupportedParams
-        .filter(
-          (parameter): parameter is string => typeof parameter === "string"
-        )
-        .map((parameter) => parameter.trim().toLowerCase())
-        .filter(Boolean)
-    : [];
+  const supportedParams = readSupportedParameters(model);
 
   const hasArchitecture = inputModalities.length > 0 || modality.length > 0;
 
@@ -425,4 +435,28 @@ export function getModelCapabilities(
     tools: isTools,
     vision: isVision,
   };
+}
+
+/**
+ * Sortie maximale quand le catalogue embarqué ne la connaît pas.
+ *
+ * Assez large pour qu'une réflexion ne mange pas la réponse visible : sur les
+ * modèles à raisonnement, `max_tokens` compte aussi les jetons de réflexion.
+ * Omettre la limite laisse certains fournisseurs s'arrêter au milieu d'un mot.
+ */
+export const UNKNOWN_MODEL_MAX_OUTPUT = 32_768;
+
+export function resolveModelMaxOutput(
+  modelId: string,
+  models: ReadonlyArray<{ id: string; maxOutput?: number }> = FALLBACK_MODELS
+): number {
+  const declared = models.find((model) => model.id === modelId)?.maxOutput;
+  if (
+    typeof declared === "number" &&
+    Number.isSafeInteger(declared) &&
+    declared > 0
+  ) {
+    return declared;
+  }
+  return UNKNOWN_MODEL_MAX_OUTPUT;
 }

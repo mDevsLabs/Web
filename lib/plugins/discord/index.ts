@@ -17,18 +17,10 @@ import manifest from "./index.json";
 /**
  * Connecteur Discord.
  *
- * Deux porteurs, et ce n'est pas un détail d'implémentation :
- *
- *  - le jeton OAuth de l'utilisateur identifie la personne et liste SES
- *    serveurs (`/users/@me`, `/users/@me/guilds`) ;
- *  - un jeton UTILISATEUR ne permet PAS de lire les messages d'un serveur ;
- *    il faut un bot, présent dans le serveur, avec la permission « Voir les
- *    salons » et « Lire l'historique ». C'est `DISCORD_BOT_TOKEN`, une
- *    variable d'INSTANCE : le bot appartient au déploiement, pas au compte.
- *
- * L'absence du bot n'empêche donc pas la connexion : la fiche l'annonce en
- * avertissement, et les outils qui en dépendent répondent par une phrase
- * explicite au lieu d'un 401 opaque.
+ * Le jeton est celui du bot créé par l'utilisateur, collé dans la fiche du
+ * plugin. Discord n'accepte pas `Bearer` pour un bot : chaque appel porte
+ * `Authorization: Bot <jeton>`. Le bot doit être invité dans le serveur, avec
+ * « Voir les salons » et « Lire l'historique », sinon l'API répond 403.
  */
 
 const descriptor = getIntegrationProvider("discord")!;
@@ -39,14 +31,17 @@ const DISCORD_HEADERS = {
   "User-Agent": "mAI (https://mai.example, 1.0)",
 };
 
-/** Le bot d'instance, ou `null` : jamais une variable vide prise pour un jeton. */
-function botToken(): string | null {
-  const value = process.env.DISCORD_BOT_TOKEN?.trim();
-  return value ? value : null;
+async function botAccess(deps: PluginToolDeps) {
+  const token = await bearerFor(deps, "discord");
+  if (!token.ok) {
+    return token;
+  }
+  return {
+    authorization: `Bot ${token.data}`,
+    ok: true as const,
+    token: token.data,
+  };
 }
-
-const NO_BOT =
-  "Le bot Discord de cette instance n'est pas configuré (DISCORD_BOT_TOKEN absent) : les messages d'un serveur ne sont pas lisibles sans lui.";
 
 function guildIdSchema() {
   return z
@@ -81,13 +76,13 @@ function shapeMessage(message: Record<string, unknown>) {
 
 function discordProfile(deps: PluginToolDeps) {
   return tool({
-    description:
-      "Profil Discord du compte connecté : nom affiché, identifiant, adresse de contact si accordée.",
+    description: "Profil du bot Discord connecté : nom affiché et identifiant.",
     execute: async () => {
-      const token = await bearerFor(deps, "discord");
-      if (!token.ok) return { error: token.error };
+      const access = await botAccess(deps);
+      if (!access.ok) return { error: access.error };
       const result = await callAuthorized<Record<string, unknown>>({
-        accessToken: token.data,
+        accessToken: access.token,
+        authorization: access.authorization,
         base: DISCORD_BASE,
         descriptor,
         headers: DISCORD_HEADERS,
@@ -112,13 +107,13 @@ function discordProfile(deps: PluginToolDeps) {
 
 function discordListGuilds(deps: PluginToolDeps) {
   return tool({
-    description:
-      "Liste les serveurs Discord du compte connecté, avec l'indication de ceux où le bot d'instance est présent.",
+    description: "Liste les serveurs Discord où le bot connecté est présent.",
     execute: async ({ maxResults, search }) => {
-      const token = await bearerFor(deps, "discord");
-      if (!token.ok) return { error: token.error };
+      const access = await botAccess(deps);
+      if (!access.ok) return { error: access.error };
       const result = await callAuthorized<Record<string, unknown>[]>({
-        accessToken: token.data,
+        accessToken: access.token,
+        authorization: access.authorization,
         base: DISCORD_BASE,
         descriptor,
         headers: DISCORD_HEADERS,
@@ -161,12 +156,13 @@ function discordListGuilds(deps: PluginToolDeps) {
 function discordListChannels(deps: PluginToolDeps) {
   return tool({
     description:
-      "Liste les salons textuels d'un serveur Discord, via le bot de l'instance.",
+      "Liste les salons textuels d'un serveur Discord accessible au bot connecté.",
     execute: async ({ guildId }) => {
-      const bot = botToken();
-      if (!bot) return { error: NO_BOT };
+      const access = await botAccess(deps);
+      if (!access.ok) return { error: access.error };
       const result = await callAuthorized<Record<string, unknown>[]>({
-        accessToken: bot,
+        accessToken: access.token,
+        authorization: access.authorization,
         base: DISCORD_BASE,
         descriptor,
         headers: DISCORD_HEADERS,
@@ -178,7 +174,7 @@ function discordListChannels(deps: PluginToolDeps) {
           error:
             result.error.includes("HTTP 403") ||
             result.error.includes("HTTP 404")
-              ? "Le bot d'instance n'a pas accès à ce serveur : ajoutez-le au serveur avant de lire ses salons."
+              ? "Ce bot n'a pas accès à ce serveur : invitez-le avant de lire ses salons."
               : result.error,
         };
       }
@@ -207,12 +203,13 @@ function discordListChannels(deps: PluginToolDeps) {
 function discordReadMessages(deps: PluginToolDeps) {
   return tool({
     description:
-      "Lit les derniers messages d'un salon Discord, via le bot de l'instance.",
+      "Lit les derniers messages d'un salon Discord accessible au bot connecté.",
     execute: async ({ channelId, limit }) => {
-      const bot = botToken();
-      if (!bot) return { error: NO_BOT };
+      const access = await botAccess(deps);
+      if (!access.ok) return { error: access.error };
       const result = await callAuthorized<Record<string, unknown>[]>({
-        accessToken: bot,
+        accessToken: access.token,
+        authorization: access.authorization,
         base: DISCORD_BASE,
         descriptor,
         headers: DISCORD_HEADERS,
@@ -225,7 +222,7 @@ function discordReadMessages(deps: PluginToolDeps) {
           error:
             result.error.includes("HTTP 403") ||
             result.error.includes("HTTP 404")
-              ? "Ce salon est inaccessible au bot d'instance : vérifiez qu'il est bien ajouté au serveur et qu'il voit ce salon."
+              ? "Ce salon est inaccessible au bot : vérifiez qu'il est invité au serveur et qu'il voit ce salon."
               : result.error,
         };
       }
@@ -251,12 +248,13 @@ function discordReadMessages(deps: PluginToolDeps) {
 function discordSendMessage(deps: PluginToolDeps) {
   return tool({
     description:
-      "Envoie un message dans un salon Discord, sous l'identité du bot de l'instance.",
+      "Envoie un message dans un salon Discord, sous l'identité du bot connecté.",
     execute: async ({ channelId, content }) => {
-      const bot = botToken();
-      if (!bot) return { error: NO_BOT };
+      const access = await botAccess(deps);
+      if (!access.ok) return { error: access.error };
       const result = await callAuthorized<Record<string, unknown>>({
-        accessToken: bot,
+        accessToken: access.token,
+        authorization: access.authorization,
         base: DISCORD_BASE,
         body: JSON.stringify({ content: content.trim().slice(0, 2000) }),
         descriptor,
@@ -268,7 +266,7 @@ function discordSendMessage(deps: PluginToolDeps) {
       if (!result.ok) {
         return {
           error: result.error.includes("HTTP 403")
-            ? "Le bot d'instance n'a pas la permission d'écrire dans ce salon."
+            ? "Ce bot n'a pas la permission d'écrire dans ce salon."
             : result.error,
         };
       }

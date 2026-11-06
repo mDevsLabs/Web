@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { requireUser } from "@/lib/auth/require-user";
-import { recordSearchQuery } from "@/lib/db/queries/search-history";
+import {
+  getSearchQueryForUser,
+  recordSearchQuery,
+} from "@/lib/db/queries/search-history";
 import { getUserPreferences } from "@/lib/db/queries/users";
 import {
   MAI_SEARCH_LANGUAGES,
@@ -25,6 +28,7 @@ export const maxDuration = 15;
 const bodySchema = z.object({
   count: z.number().int().min(1).max(MAI_SEARCH_RESULT_COUNT_MAX).optional(),
   deep: z.boolean().optional(),
+  historyId: z.string().uuid().optional(),
   lang: z.enum(MAI_SEARCH_LANGUAGES).optional(),
   query: z.string().min(1).max(500),
   safetyLevel: z.enum(MAI_SEARCH_SAFETY_LEVELS).optional(),
@@ -95,7 +99,7 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
-    const { count, deep, lang, query, safetyLevel, sources, type } =
+    const { count, deep, historyId, lang, query, safetyLevel, sources, type } =
       parsed.data;
     const trimmedQuery = query.trim();
     if (!trimmedQuery) {
@@ -160,11 +164,20 @@ export async function POST(request: Request) {
     let searchId: string | null = null;
 
     if (session) {
-      searchId = await recordSearchQuery({
-        query: trimmedQuery,
-        resultsCount: searchResponse.results.length,
-        userId: session.userId,
-      });
+      // Rouvrir une recherche du compte ne doit pas en créer une deuxième.
+      // L'identifiant n'est réutilisé que s'il appartient au compte ET que
+      // le texte correspond : un historyId arbitraire ne saute pas l'enregistrement.
+      const existing = historyId
+        ? await getSearchQueryForUser(historyId, session.userId)
+        : null;
+      searchId =
+        existing && existing.query === trimmedQuery
+          ? existing.id
+          : await recordSearchQuery({
+              query: trimmedQuery,
+              resultsCount: searchResponse.results.length,
+              userId: session.userId,
+            });
     }
 
     return NextResponse.json({

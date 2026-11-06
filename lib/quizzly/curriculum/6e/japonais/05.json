@@ -1,0 +1,2128 @@
+{
+  "id": "6e-japonais-05",
+  "year": "6e",
+  "subject": "japonais",
+  "title": "Le passé en japonais",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles deux formes sont au passé poli (ました) ?",
+              "options": [
+                "たべました (tabemashita)",
+                "たべます (tabemasu)",
+                "のみました (nomimashita)",
+                "のむ (nomu)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "ます devient ました ; のむ nest pas le passé poli."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie きのう (kinō) ?",
+              "options": ["aujourdhui", "hier", "demain", "ce matin"],
+              "correctAnswers": [1],
+              "explanation": "きのう = hier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Jai mangé se dit :",
+              "options": [
+                "たべます (tabemasu)",
+                "たべました (tabemashita)",
+                "たべる (taberu)",
+                "たべません (tabemasen)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Passé poli de たべます."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "きのう、パンをたべました signifie :",
+              "options": [
+                "Je mangerai du pain demain",
+                "Jai mangé du pain hier",
+                "Je mange du pain",
+                "Je ne mange pas de pain"
+              ],
+              "correctAnswers": [1],
+              "explanation": "きのう + を + passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "みます au passé :",
+              "options": [
+                "みました (mimashita)",
+                "みますた",
+                "みまし",
+                "みる seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ます → ました."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Jai bu :",
+              "options": ["のみます", "のみました", "のむ", "のみません"],
+              "correctAnswers": [1],
+              "explanation": "のみました = passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Mot pour hier :",
+              "options": ["きょう", "きのう", "あした", "いま"],
+              "correctAnswers": [1],
+              "explanation": "きのう (kinō)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "たべました est :",
+              "options": ["présent", "futur", "passé poli", "impératif"],
+              "correctAnswers": [2],
+              "explanation": "ました = passé en 6e."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "きのう、すしを___。",
+              "options": ["たべます", "たべました", "たべる", "たべません"],
+              "correctAnswers": [1],
+              "explanation": "Action finie hier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "On forme ました à partir de :",
+              "options": ["る seul", "forme ます", "を", "きのう"],
+              "correctAnswers": [1],
+              "explanation": "たべます → たべました."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles deux phrases disent hier + passé ?",
+              "options": [
+                "きのう、えいがをみました。",
+                "あした、えいがをみます。",
+                "きのう、えいがをみます。",
+                "きのう、コーヒーをのみました。"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Hier avec みました ou のみました."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "みました =",
+              "options": ["je regarde", "jai regardé", "demain", "négation"],
+              "correctAnswers": [1],
+              "explanation": "Passé de 見る."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "きのう、ともだちと___。",
+              "options": ["はなします", "はなしました", "はなす", "はなし"],
+              "correctAnswers": [1],
+              "explanation": "はなしました au passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Particule objet avant たべました :",
+              "options": ["は", "を", "に", "が"],
+              "correctAnswers": [1],
+              "explanation": "を marque ce quon mange."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "きのう se lit :",
+              "options": ["kyō", "kinō", "ashita", "ima"],
+              "correctAnswers": [1],
+              "explanation": "Transcription kinō."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "よみました vient de :",
+              "options": ["よむ", "のむ", "たべる", "みる"],
+              "correctAnswers": [0],
+              "explanation": "読む → 読みました."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour hier terminé on évite :",
+              "options": ["たべました", "きのう", "たべます seul", "を"],
+              "correctAnswers": [2],
+              "explanation": "たべます = présent ou habitude."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "ききました =",
+              "options": ["jécoute", "jai écouté", "je parle", "futur"],
+              "correctAnswers": [1],
+              "explanation": "聞く au passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Hier jai lu un manga :",
+              "options": [
+                "まんがをきのう、よみました。",
+                "きのう、まんがをよみました。",
+                "よみましたきのうまんが。",
+                "きのうよみまんが。"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Temps + objet + verbe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "ました en 6e est :",
+              "options": ["keigo", "passé poli courant", "interdit", "futur"],
+              "correctAnswers": [1],
+              "explanation": "Forme de base sans keigo."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels deux verbes sont en ました ?",
+              "options": ["かきました", "かきます", "あそびました", "あそぶ"],
+              "correctAnswers": [0, 2],
+              "explanation": "かき / あそび + ました."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "きのう、うちで___。",
+              "options": [
+                "べんきょうします",
+                "べんきょうしました",
+                "べんきょう",
+                "しません"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Étude terminée hier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ねました =",
+              "options": ["je dors", "jai dormi", "couche-toi", "présent"],
+              "correctAnswers": [1],
+              "explanation": "寝る au passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "７じにねました : particule heure",
+              "options": ["を", "に", "で", "は"],
+              "correctAnswers": [1],
+              "explanation": "に = moment."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Hier jai joué :",
+              "options": [
+                "きのう、あそびました。",
+                "あした、あそびます。",
+                "きのう、あそびます。",
+                "いま、あそびました。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "きのう + あそびました."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "たべました et のみました partagent :",
+              "options": [
+                "ました",
+                "le même verbe",
+                "が obligatoire",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même marqueur passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "きのう se place souvent :",
+              "options": [
+                "après verbe seul",
+                "jamais",
+                "avant laction",
+                "sans verbe"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Annonce du jour."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "はしりました =",
+              "options": ["jai couru", "je cours", "stop", "négatif"],
+              "correctAnswers": [0],
+              "explanation": "走る au passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pas hier :",
+              "options": ["きのう", "kinō", "あした", "きのう+ました"],
+              "correctAnswers": [2],
+              "explanation": "あした = demain."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "かいものをしました =",
+              "options": [
+                "futur courses",
+                "jai fait les courses",
+                "habitude",
+                "ordre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "しました = passé de する."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases cohérentes hier + passé :",
+              "options": [
+                "きのう、テレビをみました。",
+                "きのう、テレビをみます。",
+                "あした、テレビをみました。",
+                "きのう、コーヒーをのみました。"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "みました / のみました avec きのう."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "おきました =",
+              "options": ["je me lève", "je me suis levé", "ordre", "futur"],
+              "correctAnswers": [1],
+              "explanation": "起きる passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "きのう６じに___。",
+              "options": ["おきます", "おきました", "おきる", "おきません"],
+              "correctAnswers": [1],
+              "explanation": "Levé à 6h hier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Hiragana de kinō :",
+              "options": ["きょう", "きのう", "きね", "あした"],
+              "correctAnswers": [1],
+              "explanation": "き-の-う."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "でんわをかけました =",
+              "options": [
+                "jappelle",
+                "jai téléphoné",
+                "demain",
+                "je nappelle pas"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Téléphoner au passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Forme présent ou futur poli :",
+              "options": ["いきました", "たべました", "きます", "のみました"],
+              "correctAnswers": [2],
+              "explanation": "きます sans した."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "きのう、がっこうに___。",
+              "options": ["いきます", "いきました", "いく", "いきません"],
+              "correctAnswers": [1],
+              "explanation": "行く passé + に."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "まちました vient de :",
+              "options": ["待つ", "持つ", "町", "見る"],
+              "correctAnswers": [0],
+              "explanation": "待ちます → まちました."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "きのう situe laction :",
+              "options": [
+                "aujourdhui",
+                "la veille",
+                "semaine prochaine",
+                "maintenant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Jour davant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "した dans しました indique :",
+              "options": ["négation", "passé", "question", "salut"],
+              "correctAnswers": [1],
+              "explanation": "Passé poli."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux sens corrects de たべました :",
+              "options": [
+                "jai mangé",
+                "je mange maintenant",
+                "jai bu",
+                "action passée polie terminée"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Manger au passé poli."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "きのう、なにをたべましたか。",
+              "options": [
+                "Que mangeras-tu ?",
+                "Quas-tu mangé hier ?",
+                "Où manges-tu ?",
+                "Manges-tu ?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "なに + hier + passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Boire de leau :",
+              "options": [
+                "みずをのみました",
+                "みずがのみました",
+                "みずにのみました",
+                "みずはたべました"
+              ],
+              "correctAnswers": [0],
+              "explanation": "を + のみました."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "えいがをみました =",
+              "options": [
+                "je regarde",
+                "jai regardé un film",
+                "film demain",
+                "lire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Film vu terminé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Opposé de hier (jour) :",
+              "options": ["きょう / あした", "きのう", "ました", "を"],
+              "correctAnswers": [0],
+              "explanation": "Aujourdhui ou demain."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Parler avec un ami :",
+              "options": [
+                "ともだちをはなしました",
+                "ともだちとはなしました",
+                "ともだちがのみました",
+                "ともだちをたべました"
+              ],
+              "correctAnswers": [1],
+              "explanation": "と = avec."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "きのう + passé sert à :",
+              "options": ["ordre", "raconter la veille", "compter", "saluer"],
+              "correctAnswers": [1],
+              "explanation": "Unité Raconter hier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "おんがくをききました =",
+              "options": [
+                "jai écouté de la musique",
+                "jai lu",
+                "jai mangé",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "聞く passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ませんでした est :",
+              "options": [
+                "passé négatif poli",
+                "affirmatif",
+                "keigo seul",
+                "futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Je nai pas (poli)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "きのう、べんきょうしませんでした。",
+              "options": [
+                "Hier je nai pas étudié",
+                "Hier jai étudié",
+                "Demain",
+                "Maintenant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation passée."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases hier + passé :",
+              "options": [
+                "きのう、たべました。",
+                "きのう、のみました。",
+                "あした、たべました。",
+                "きょう、たべます。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux actions hier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "きのう、スポーツを___。",
+              "options": ["します", "しました", "する", "しません"],
+              "correctAnswers": [1],
+              "explanation": "Sport fait hier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "うたをうたいました =",
+              "options": ["jai chanté", "je chante", "demain", "silence"],
+              "correctAnswers": [0],
+              "explanation": "歌う passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "きのう、いそがし___。",
+              "options": ["しい", "しかったです", "しかった", "ます"],
+              "correctAnswers": [1],
+              "explanation": "Adjectif passé poli simple."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "しゃしんをとりました =",
+              "options": [
+                "jai pris une photo",
+                "je prends",
+                "photo demain",
+                "manger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "撮る passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réponse à きのう、なにをしましたか。",
+              "options": [
+                "パンをたべました。",
+                "あした、いきます。",
+                "きょう、きのう。",
+                "ををを。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Action passée concrète."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ともだちにあいました =",
+              "options": [
+                "jai rencontré un ami",
+                "ami mangé",
+                "demain",
+                "présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "会う passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "きのう、９じにねました。",
+              "options": [
+                "Dormi à 21h hier",
+                "Dors à 21h demain",
+                "Mange à 9h",
+                "Ne pas dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heure + dormir passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "パソコンをつかいました =",
+              "options": [
+                "jai utilisé lordinateur",
+                "ordi futur",
+                "boire",
+                "きのう seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "使う passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Raconter hier : verbe en général",
+              "options": ["ます seul", "ました", "dictionary seul", "ka seul"],
+              "correctAnswers": [1],
+              "explanation": "Passé poli."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux passés polis corrects :",
+              "options": [
+                "およぎました",
+                "およぎます",
+                "つくりました",
+                "つくる"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "泳ぐ / 作る passés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "きのう、としょかんに___。",
+              "options": ["いきます", "いきました", "いく", "いきません"],
+              "correctAnswers": [1],
+              "explanation": "Bibliothèque hier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "てがみをかきました =",
+              "options": [
+                "jai écrit une lettre",
+                "je lis",
+                "demain",
+                "négatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "書く passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "きのう、たのし___でした。",
+              "options": ["い", "かった", "く", "み"],
+              "correctAnswers": [1],
+              "explanation": "楽しい → 楽しかったです."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "りょうりをつくりました =",
+              "options": ["jai cuisiné", "jai couru", "regardé", "demain"],
+              "correctAnswers": [0],
+              "explanation": "料理を作る."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "を in りんごをたべました marque :",
+              "options": ["lieu", "objet mangé", "heure", "avec"],
+              "correctAnswers": [1],
+              "explanation": "Complément dobjet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "きのう、あめが___。",
+              "options": ["ふりました", "ふります", "たべました", "きのう"],
+              "correctAnswers": [0],
+              "explanation": "Il a plu (passé)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "うちで means :",
+              "options": ["à la maison (lieu)", "objet", "heure", "hier"],
+              "correctAnswers": [0],
+              "explanation": "うちで = chez moi."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ゲームを___。 (hier)",
+              "options": ["しました", "します", "きのう", "をを"],
+              "correctAnswers": [0],
+              "explanation": "Jeu fait (passé)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Transcription de たべました :",
+              "options": ["tabemashita", "tabemasu", "taberu", "kinō"],
+              "correctAnswers": [0],
+              "explanation": "Lecture romaji 6e."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases passées avec きのう :",
+              "options": [
+                "きのう、はしりました。",
+                "きのう、はしります。",
+                "きのう、やすみました。",
+                "あした、やすみました。"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Couru / repos hier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "やすみました =",
+              "options": ["jai me reposé", "je cours", "demain", "manger"],
+              "correctAnswers": [0],
+              "explanation": "休む passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "きのう、８じに___。 (sortie)",
+              "options": ["でました", "でます", "でる", "きのう"],
+              "correctAnswers": [0],
+              "explanation": "出ました = suis sorti."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "バスにのりました =",
+              "options": ["jai pris le bus", "bus mangé", "futur", "négatif"],
+              "correctAnswers": [0],
+              "explanation": "乗る passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "きのう、どこにいきましたか。",
+              "options": [
+                "Où es-tu allé hier ?",
+                "Où iras-tu ?",
+                "Quas-tu mangé ?",
+                "Quelle heure ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "どこ = où + passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "こうえんにいきました =",
+              "options": ["allé au parc", "mangé parc", "demain", "écouter"],
+              "correctAnswers": [0],
+              "explanation": "公園 + 行きました."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "きのう vs きょう :",
+              "options": [
+                "hier / aujourdhui",
+                "demain / hier",
+                "passé / passé",
+                "を / は"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraste jours."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "みせでたべました =",
+              "options": [
+                "mangé au magasin",
+                "magasin mangé",
+                "à demain",
+                "sans passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "で = lieu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "かえりました =",
+              "options": ["je suis rentré", "je pars", "demain", "boire"],
+              "correctAnswers": [0],
+              "explanation": "帰る passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En récit きのう aide à :",
+              "options": [
+                "situer dans le temps",
+                "conjuguer keigo",
+                "compter yen",
+                "lire kanji seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère temporel."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux réponses justes pour のみました :",
+              "options": [
+                "jai bu",
+                "action de boire terminée au passé",
+                "je bois maintenant",
+                "jai mangé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "のみました = boire au passé poli."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "きのう、なにをのみましたか。",
+              "options": [
+                "Quas-tu bu hier ?",
+                "Que boiras-tu ?",
+                "Où bois-tu ?",
+                "Manges-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question passée sur boire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "きのう、ミルクを___。",
+              "options": ["のみます", "のみました", "のむ", "のみません"],
+              "correctAnswers": [1],
+              "explanation": "Lait bu hier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "レポートを出しました =",
+              "options": [
+                "jai rendu un devoir",
+                "je sors",
+                "demain",
+                "chanter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "出す passé (rendre)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "きのう、とてもたのし___。",
+              "options": ["しい", "しかったです", "く", "ます"],
+              "correctAnswers": [1],
+              "explanation": "Très amusant (passé)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "ともだちのうちに___。",
+              "options": ["いきました", "いきます", "たべました", "きのう"],
+              "correctAnswers": [0],
+              "explanation": "Chez lami hier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "きのう、テレビゲームを___。",
+              "options": ["しました", "します", "みました", "たべました"],
+              "correctAnswers": [0],
+              "explanation": "Jouer = ゲームをする passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "はをみがきました =",
+              "options": [
+                "jai brossé les dents",
+                "jai lavé cheveux",
+                "demain",
+                "manger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "歯を磨く passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "きのう、しゅくだいを___。",
+              "options": ["しました", "しませんでした", "します", "たべました"],
+              "correctAnswers": [0],
+              "explanation": "Devoirs faits hier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase modèle :",
+              "options": [
+                "きのう、___を___ました。",
+                "あした、___ます。",
+                "___をきのう。",
+                "ました、きのう。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre temps + objet + passé."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux mots-clés du chapitre :",
+              "options": [
+                "きのう (kinō)",
+                "ました (mashita)",
+                "keigo",
+                "あした seul pour hier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hier + marqueur passé ました."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bilan : hier + mangé",
+              "options": [
+                "きのう、たべます。",
+                "きのう、たべました。",
+                "あした、たべました。",
+                "きょう、たべる。"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Forme attendue en 6e."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "たべました vient de :",
+              "options": ["たべます", "たべる seul", "のむ", "きのう"],
+              "correctAnswers": [0],
+              "explanation": "Conjugaison depuis ます."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "きのう、７じに起きる passé :",
+              "options": ["おきます", "おきました", "おきる", "おきません"],
+              "correctAnswers": [1],
+              "explanation": "Heure + passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pas de keigo : on dit",
+              "options": [
+                "たべました",
+                "召し上がりました",
+                "いらっしゃいました",
+                "おっしゃいました"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme polie simple seulement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "きのう、えいがを___。",
+              "options": ["みました", "みます", "みる", "みません"],
+              "correctAnswers": [0],
+              "explanation": "Film vu hier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "のみました ≠",
+              "options": ["たべました", "のむ présent", "passé", "poli"],
+              "correctAnswers": [0],
+              "explanation": "Boire ≠ manger."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Raconter sa journée dhier :",
+              "options": [
+                "きのう + verbes en ました",
+                "あした + ます",
+                "keigo",
+                "sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure de lunité u1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "きのう se écrit :",
+              "options": ["きのう", "きの", "のうき", "きょう"],
+              "correctAnswers": [0],
+              "explanation": "Trois hiragana."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le passé poli se termine souvent par :",
+              "options": ["ました", "ます seul", "る seul", "でした seulement"],
+              "correctAnswers": [0],
+              "explanation": "Verbes en ました en 6e."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels deux mots sont des marqueurs de moment ?",
+              "options": ["あさ (asa)", "ひる (hiru)", "たべました", "を"],
+              "correctAnswers": [0, 1],
+              "explanation": "Matin et midi ; pas particule objet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "あさ (asa) signifie :",
+              "options": ["matin", "midi", "soir", "nuit"],
+              "correctAnswers": [0],
+              "explanation": "朝 = matin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ひる (hiru) =",
+              "options": ["midi", "matin", "soir", "hier"],
+              "correctAnswers": [0],
+              "explanation": "昼 = journée / midi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "きのうのあさ =",
+              "options": [
+                "hier matin",
+                "demain matin",
+                "aujourdhui soir",
+                "hier soir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "の lie jour et moment."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ばん (ban) =",
+              "options": ["soir", "matin", "midi", "nuit seule"],
+              "correctAnswers": [0],
+              "explanation": "晩 = soir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "よる (yoru) =",
+              "options": ["nuit", "matin", "midi", "hier"],
+              "correctAnswers": [0],
+              "explanation": "夜 = nuit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "きのうのばん、テレビを___。",
+              "options": ["みました", "みます", "みる", "みません"],
+              "correctAnswers": [0],
+              "explanation": "Hier soir + passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ordre : hier + matin",
+              "options": [
+                "あさ、きのう",
+                "きのうのあさ",
+                "のあさきのう",
+                "あさきのうの"
+              ],
+              "correctAnswers": [1],
+              "explanation": "きのうのあさ standard."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ひるごろ =",
+              "options": ["vers midi", "vers minuit", "hier", "passé"],
+              "correctAnswers": [0],
+              "explanation": "ごろ = environ."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Marqueur + passé sert à :",
+              "options": [
+                "préciser quand cest arrivé",
+                "keigo",
+                "compter",
+                "saluer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unité marqueurs de temps."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux expressions de moment du jour :",
+              "options": ["ゆうがた (yūgata)", "あさ (asa)", "ました", "を"],
+              "correctAnswers": [0, 1],
+              "explanation": "Soirée et matin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "ゆうがた =",
+              "options": ["fin daprès-midi / soirée", "matin", "midi", "nuit"],
+              "correctAnswers": [0],
+              "explanation": "夕方."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "きのうのひる、___をたべました。",
+              "options": ["ひるごはん", "あさ", "よる", "を"],
+              "correctAnswers": [0],
+              "explanation": "Déjeuner hier midi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "あさ７じに =",
+              "options": ["à 7h du matin", "à 7h du soir", "7 jours", "7 mois"],
+              "correctAnswers": [0],
+              "explanation": "Heure + matin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ばんごはん =",
+              "options": ["dîner", "petit-déjeuner", "déjeuner", "goûter"],
+              "correctAnswers": [0],
+              "explanation": "晩ごはん."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "きのうのよる、ね___。",
+              "options": ["ました", "ます", "る", "ません"],
+              "correctAnswers": [0],
+              "explanation": "Dormir hier nuit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "の entre きのう et あさ :",
+              "options": [
+                "lie le jour au moment",
+                "objet",
+                "négation",
+                "keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Genitif simple 6e."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "ひる vs ばん :",
+              "options": [
+                "midi-journée / soir",
+                "hier / demain",
+                "passé / présent",
+                "を / は"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moments différents."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "あさはちじにおきました =",
+              "options": [
+                "levé à 8h du matin",
+                "levé à 8h du soir",
+                "hier seul",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "朝 + 8時."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "きのうの___、スポーツをしました。",
+              "options": ["あさ", "を", "ます", "keigo"],
+              "correctAnswers": [0],
+              "explanation": "Sport hier matin."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases avec marqueur + ました :",
+              "options": [
+                "きのうのあさ、パンをたべました。",
+                "あしたのあさ、パンをたべました。",
+                "きのうのばん、ねました。",
+                "パンをあさ。"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Hier matin / hier soir dormir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "ごぜん (gozen) =",
+              "options": ["matin (AM)", "après-midi (PM)", "soir", "nuit"],
+              "correctAnswers": [0],
+              "explanation": "午前."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ごご (gogo) =",
+              "options": ["après-midi", "matin", "nuit", "hier"],
+              "correctAnswers": [0],
+              "explanation": "午後."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "ごぜん９じ =",
+              "options": ["9h du matin", "9h du soir", "9 jours", "9 mois"],
+              "correctAnswers": [0],
+              "explanation": "午前9時."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "きのうのごご、___。",
+              "options": [
+                "べんきょうしました",
+                "べんきょうします",
+                "あさ",
+                "をを"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après-midi hier passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "ばん１０じ =",
+              "options": [
+                "22h (10h du soir)",
+                "10h du matin",
+                "10 jours",
+                "midi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "晩10時 en contexte 6e."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "あさごはんをたべました =",
+              "options": ["petit-déjeuner mangé", "dîner", "nuit", "demain"],
+              "correctAnswers": [0],
+              "explanation": "朝ごはん."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "きのうのゆうがた =",
+              "options": [
+                "hier en fin daprès-midi",
+                "demain matin",
+                "midi demain",
+                "keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "夕方 hier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "よるおそく =",
+              "options": [
+                "tard dans la nuit",
+                "tôt le matin",
+                "midi",
+                "hier seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "夜遅く."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Marqueur avant le verbe :",
+              "options": [
+                "きのうのひる、うみにいきました。",
+                "うみに、ひるきのう。",
+                "ましたひる。",
+                "keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moment puis action passée."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux marqueurs compatibles avec きのう :",
+              "options": [
+                "きのうのあさ",
+                "きのうのばん",
+                "あしたのあさ",
+                "をの"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hier matin / hier soir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "いちじ (1h) + ひる =",
+              "options": [
+                "1h de laprès-midi",
+                "1h du matin",
+                "1 jour",
+                "1 mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昼1時 = 13h en usage courant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "きのうのばん、８じに___。",
+              "options": ["ねました", "ねます", "あさ", "を"],
+              "correctAnswers": [0],
+              "explanation": "Coucher hier soir."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "あさ vs よる :",
+              "options": [
+                "matin / nuit",
+                "soir / midi",
+                "passé / futur",
+                "を / に"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opposition jour-nuit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ひるやすみ =",
+              "options": ["pause de midi", "pause du soir", "nuit", "hier"],
+              "correctAnswers": [0],
+              "explanation": "昼休み."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "きのうの___、ともだちとあそびました。",
+              "options": ["ひる", "を", "ます", "keigo"],
+              "correctAnswers": [0],
+              "explanation": "Jouer hier midi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Transcription 夕方 :",
+              "options": ["yūgata", "asa", "hiru", "ban"],
+              "correctAnswers": [0],
+              "explanation": "ゆうがた."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "ごご３じに =",
+              "options": ["15h", "3h du matin", "3 jours", "3 mois"],
+              "correctAnswers": [0],
+              "explanation": "午後3時."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "きのうのあさ、___をのみました。",
+              "options": ["ミルク", "を", "ばん", "keigo"],
+              "correctAnswers": [0],
+              "explanation": "Boisson au petit-déjeuner."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le marqueur indique :",
+              "options": [
+                "quand dans la journée",
+                "keigo",
+                "objet",
+                "négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rôle des marqueurs u2."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux repas liés au moment :",
+              "options": ["あさごはん", "ばんごはん", "を", "ました seul"],
+              "correctAnswers": [0, 1],
+              "explanation": "Petit-déj et dîner."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "きのうのばんごはん =",
+              "options": [
+                "dîner dhier",
+                "petit-déj demain",
+                "midi",
+                "nuit seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repas du soir hier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "あさ、６じに___。",
+              "options": ["おきました", "おきます", "よる", "を"],
+              "correctAnswers": [0],
+              "explanation": "Réveil matin passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "ひる、としょかんに___。",
+              "options": ["いきました", "いきます", "あさ", "keigo"],
+              "correctAnswers": [0],
+              "explanation": "Midi passé bibliothèque."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "よる、１０じに___。",
+              "options": ["ねました", "ねます", "あさ", "ひる"],
+              "correctAnswers": [0],
+              "explanation": "Dormir la nuit passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "きのう + marqueur + passé :",
+              "options": [
+                "précise jour et moment",
+                "keigo",
+                "sans verbe",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure complète."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ばん、テレビを___。",
+              "options": ["みました", "みます", "あさ", "をを"],
+              "correctAnswers": [0],
+              "explanation": "TV le soir (passé)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "ごぜん６じ vs ごご６じ :",
+              "options": ["6h matin / 18h", "même heure", "nuit", "hier"],
+              "correctAnswers": [0],
+              "explanation": "AM / PM."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "きのうのゆうがた、___。",
+              "options": [
+                "うちにかえりました",
+                "あしたいきます",
+                "を",
+                "keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rentrer hier en fin de journée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Marqueurs u2 en hiragana :",
+              "options": [
+                "oui avec transcription",
+                "kanji seul obligatoire",
+                "keigo",
+                "sans ました"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveau 6e."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux heures du matin en japonais 6e :",
+              "options": ["ごぜん７じ", "あさ７じ", "よる７じ seul", "を７じ"],
+              "correctAnswers": [0, 1],
+              "explanation": "午前7時 ou 朝7時."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "きのうのひる、１２じに___。",
+              "options": ["たべました", "たべます", "よる", "を"],
+              "correctAnswers": [0],
+              "explanation": "Manger à midi hier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "まいばん =",
+              "options": ["chaque soir", "chaque matin", "hier", "passé"],
+              "correctAnswers": [0],
+              "explanation": "毎晩."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "まいあさ =",
+              "options": ["chaque matin", "chaque soir", "nuit", "hier"],
+              "correctAnswers": [0],
+              "explanation": "毎朝."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "きのうのあさ、ジョギングを___。",
+              "options": ["しました", "します", "ばん", "keigo"],
+              "correctAnswers": [0],
+              "explanation": "Sport matinal hier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "よる１１じ =",
+              "options": ["23h", "11h matin", "11 jours", "midi"],
+              "correctAnswers": [0],
+              "explanation": "夜11時."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ひる、ね___。 (sieste)",
+              "options": ["ました", "ます", "あさ", "を"],
+              "correctAnswers": [0],
+              "explanation": "Dormir à midi passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "きのうのばん、しゅくだいを___。",
+              "options": ["しました", "します", "あさ", "ひる"],
+              "correctAnswers": [0],
+              "explanation": "Devoirs le soir hier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ごろ après heure :",
+              "options": ["environ", "exactement jamais", "keigo", "objet"],
+              "correctAnswers": [0],
+              "explanation": "7じごろ."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase : hier soir jai lu",
+              "options": [
+                "きのうのばん、ほんをよみました。",
+                "あさ、ほんをよみます。",
+                "きのう、を。",
+                "keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ばん + passé."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux moments opposés :",
+              "options": ["あさ", "よる", "を", "ました"],
+              "correctAnswers": [0, 1],
+              "explanation": "Matin et nuit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "きのうの___、５じにかえりました。",
+              "options": ["ゆうがた", "を", "ます", "keigo"],
+              "correctAnswers": [0],
+              "explanation": "Rentrer vers le soir."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "あさはやく =",
+              "options": ["tôt le matin", "tard le soir", "midi", "hier"],
+              "correctAnswers": [0],
+              "explanation": "朝早く."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "ばん、ともだちと___。",
+              "options": ["はなしました", "はなします", "あさ", "をを"],
+              "correctAnswers": [0],
+              "explanation": "Parler le soir passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ひる、１じから２じまで =",
+              "options": [
+                "de 13h à 14h (contexte 6e)",
+                "de 1h à 2h matin",
+                "nuit",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Créneau midi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "きのうのあさ、___をのみました。",
+              "options": ["コーヒー", "を", "ばん", "keigo"],
+              "correctAnswers": [0],
+              "explanation": "Café matin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "よる、あまり___。 (pas beaucoup)",
+              "options": ["ねませんでした", "ねました", "あさ", "を"],
+              "correctAnswers": [0],
+              "explanation": "Peu dormi (négatif passé)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "ごぜん１２じ =",
+              "options": ["midi", "minuit", "soir", "hier"],
+              "correctAnswers": [0],
+              "explanation": "午前12時 = midi."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "きのうのひるごろ =",
+              "options": [
+                "vers midi hier",
+                "vers minuit demain",
+                "matin",
+                "keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ひるごろ + きのう."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Marqueur + に + heure :",
+              "options": [
+                "あさ７じにおきました",
+                "あさ７じをおきました",
+                "を７じ",
+                "keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moment + に + heure."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux avec きのうの :",
+              "options": [
+                "きのうのあさ",
+                "きのうのばん",
+                "あしたのあさ",
+                "をの"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hier matin / soir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "School le matin passé :",
+              "options": [
+                "あさ、がっこうにいきました",
+                "よる、がっこうにいきました",
+                "を",
+                "keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "École le matin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ばん９じ =",
+              "options": ["21h", "9h matin", "9 jours", "midi"],
+              "correctAnswers": [0],
+              "explanation": "Soir 9h."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "きのうのよる、___をききました。",
+              "options": ["おんがく", "を", "あさ", "ます"],
+              "correctAnswers": [0],
+              "explanation": "Musique la nuit hier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ひる、えきで___。",
+              "options": ["まちました", "まちます", "よる", "keigo"],
+              "correctAnswers": [0],
+              "explanation": "Attendre à midi passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "あさ vs ばん (repas) :",
+              "options": ["朝ごはん / 晩ごはん", " même repas", "nuit", "hier"],
+              "correctAnswers": [0],
+              "explanation": "Repas matin et soir."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "きのうのごぜん、___。",
+              "options": [
+                "テストがありました",
+                "テストがあります",
+                "よる",
+                "を"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Test hier matin (passé)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "ごご５じ =",
+              "options": ["17h", "5h matin", "5 mois", "nuit"],
+              "correctAnswers": [0],
+              "explanation": "午後5時."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ゆうがた、こうえんを___。",
+              "options": ["さんぽしました", "さんぽします", "あさ", "keigo"],
+              "correctAnswers": [0],
+              "explanation": "Promenade fin de journée passée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Enchaîner marqueurs :",
+              "options": [
+                "きのうのあさ７じに",
+                "７じにあさきのうの",
+                "を７じ",
+                "keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour > moment > heure."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux questions sur le moment :",
+              "options": ["いつ (itsu)", "なんじ (nanji)", "を", "keigo"],
+              "correctAnswers": [0, 1],
+              "explanation": "Quand / quelle heure."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "なんじにおきましたか。",
+              "options": [
+                "À quelle heure tes-tu levé ?",
+                "Où es-tu allé ?",
+                "Quas-tu mangé ?",
+                "Demain ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heure de lever."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réponse : ７じに ___。",
+              "options": ["おきました", "おきます", "あさ", "を"],
+              "correctAnswers": [0],
+              "explanation": "Levé à 7h passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "きのうのばん、なにを___か。",
+              "options": ["しました", "します", "あさ", "keigo"],
+              "correctAnswers": [0],
+              "explanation": "Quoi faire hier soir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "いつ あさごはんをたべましたか。",
+              "options": [
+                "Quand as-tu pris le petit-déj ?",
+                "Où ?",
+                "Pourquoi keigo ?",
+                "Demain ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "いつ = quand."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "きのうのひる、１２じ___。",
+              "options": ["ごろ", "を", "ます", "keigo"],
+              "correctAnswers": [0],
+              "explanation": "Vers midi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "よる、でんわを___。",
+              "options": ["かけました", "かけます", "あさ", "ひる"],
+              "correctAnswers": [0],
+              "explanation": "Téléphoner la nuit passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "あさ、５じ =",
+              "options": ["5h du matin", "17h", "5 jours", "soir"],
+              "correctAnswers": [0],
+              "explanation": "Tôt le matin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "きのうの___、９じにねました。",
+              "options": ["ばん", "を", "ます", "keigo"],
+              "correctAnswers": [0],
+              "explanation": "Coucher 21h hier soir."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan u2 :",
+              "options": [
+                "marqueur + passé pour situer",
+                "keigo",
+                "sans temps",
+                "demain seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif unité."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux mots de lunité u2 :",
+              "options": ["あさ (asa)", "ばん (ban)", "keigo", "を seul"],
+              "correctAnswers": [0, 1],
+              "explanation": "Matin et soir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phrase complète modèle :",
+              "options": [
+                "きのうのばん、９じにねました。",
+                "あしたのあさ、ねます。",
+                "を９じ。",
+                "keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour + moment + heure + passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ひる (hiru) =",
+              "options": ["midi / journée", "nuit", "hier", "passé"],
+              "correctAnswers": [0],
+              "explanation": "昼."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "きのうのあさ + たべました =",
+              "options": [
+                "mangé hier matin",
+                "mangera demain",
+                "keigo",
+                "objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combinaison u1+u2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "よる (yoru) =",
+              "options": ["nuit", "matin", "midi", "soir seul"],
+              "correctAnswers": [0],
+              "explanation": "夜."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sans keigo on dit :",
+              "options": [
+                "きのうのひる、のみました",
+                "召し上がりました",
+                "いらっしゃいました",
+                "おっしゃいました"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poli simple."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ごぜん / ごご distinguent :",
+              "options": [
+                "matin vs après-midi",
+                "hier vs demain",
+                "を vs は",
+                "passé vs keigo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "AM PM."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "きのう (kinō) + あさ (asa) :",
+              "options": ["hier matin", "demain matin", "nuit", "keigo"],
+              "correctAnswers": [0],
+              "explanation": "きのうのあさ."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Verbe en ました après marqueur :",
+              "options": [
+                "action terminée à ce moment",
+                "futur",
+                "keigo",
+                "question seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé situé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Chapitre 05 combine :",
+              "options": [
+                "きのう + marqueurs + ました",
+                "keigo seul",
+                "kanji sans hiragana",
+                "demain seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé et temps."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

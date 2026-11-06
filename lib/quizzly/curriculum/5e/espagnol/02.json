@@ -1,0 +1,2303 @@
+{
+  "id": "5e-espagnol-02",
+  "year": "5e",
+  "subject": "espagnol",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La famille proche",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots espagnols désignent des parents ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["padre", "hermano", "madre", "primo"],
+              "correctAnswers": [0, 2],
+              "explanation": "Padre et madre signifient père et mère."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « frère » en espagnol ?",
+              "type": "single_choice",
+              "options": ["hermana", "hermano", "hijo", "tío"],
+              "correctAnswers": [1],
+              "explanation": "Hermano est le frère ; hermana est la sœur."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « abuela » ?",
+              "type": "single_choice",
+              "options": [
+                "Le grand-père",
+                "La grand-mère",
+                "La tante",
+                "La mère"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Abuela désigne la grand-mère."
+            },
+            {
+              "id": "q4",
+              "question": "Quel mot correspond à « fils » ?",
+              "type": "single_choice",
+              "options": ["hija", "hijo", "nieto", "sobrino"],
+              "correctAnswers": [1],
+              "explanation": "Hijo signifie fils ; hija signifie fille."
+            },
+            {
+              "id": "q5",
+              "question": "Comment se traduit « les parents » (père et mère) ?",
+              "type": "single_choice",
+              "options": [
+                "los parientes",
+                "los padres",
+                "los primos",
+                "los hijos"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Los padres désigne les parents au sens père et mère."
+            },
+            {
+              "id": "q6",
+              "question": "Que veut dire « tío » ?",
+              "type": "single_choice",
+              "options": ["Le cousin", "L'oncle", "Le neveu", "Le beau-père"],
+              "correctAnswers": [1],
+              "explanation": "Tío signifie oncle."
+            },
+            {
+              "id": "q7",
+              "question": "Quel mot espagnol désigne une sœur ?",
+              "type": "single_choice",
+              "options": ["hermano", "hermana", "madre", "tía"],
+              "correctAnswers": [1],
+              "explanation": "Hermana est la sœur."
+            },
+            {
+              "id": "q8",
+              "question": "Comment dit-on « grand-père » ?",
+              "type": "single_choice",
+              "options": ["abuela", "abuelo", "yayo", "solo abuela"],
+              "correctAnswers": [1],
+              "explanation": "Abuelo est le grand-père standard."
+            },
+            {
+              "id": "q9",
+              "question": "« Mis padres » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Mes cousins",
+                "Mes parents",
+                "Mes grands-parents",
+                "Mes oncles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Mis padres = mes parents."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « prima » ?",
+              "type": "single_choice",
+              "options": [
+                "Le cousin (m.)",
+                "La cousine",
+                "La nièce",
+                "La belle-sœur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Prima est la cousine ; primo est le cousin."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La famille élargie",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels termes désignent des membres de la famille élargie ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["primo", "lapicero", "tía", "silla"],
+              "correctAnswers": [0, 2],
+              "explanation": "Primo (cousin) et tía (tante) appartiennent à la famille."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « cousine » ?",
+              "type": "single_choice",
+              "options": ["primo", "prima", "sobrina", "nuera"],
+              "correctAnswers": [1],
+              "explanation": "Prima est la cousine."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « sobrino » ?",
+              "type": "single_choice",
+              "options": [
+                "Le neveu",
+                "La nièce",
+                "Le petit-fils",
+                "Le beau-frère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sobrino signifie neveu."
+            },
+            {
+              "id": "q4",
+              "question": "« La tía de Ana » signifie :",
+              "type": "single_choice",
+              "options": [
+                "La mère d'Ana",
+                "La tante d'Ana",
+                "La sœur d'Ana",
+                "La cousine d'Ana"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tía = tante."
+            },
+            {
+              "id": "q5",
+              "question": "Quel mot désigne la nièce ?",
+              "type": "single_choice",
+              "options": ["sobrino", "sobrina", "nieto", "hija"],
+              "correctAnswers": [1],
+              "explanation": "Sobrina est la nièce."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « les cousins » (mixte ou générique) ?",
+              "type": "single_choice",
+              "options": ["los primos", "los tíos", "los hijos", "los abuelos"],
+              "correctAnswers": [0],
+              "explanation": "Los primos regroupe souvent cousins et cousines à l'oral."
+            },
+            {
+              "id": "q7",
+              "question": "Que veut dire « nieto » ?",
+              "type": "single_choice",
+              "options": ["Le fils", "Le petit-fils", "Le neveu", "Le cousin"],
+              "correctAnswers": [1],
+              "explanation": "Nieto signifie petit-fils."
+            },
+            {
+              "id": "q8",
+              "question": "« Mi familia es grande » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Ma famille est petite",
+                "Ma famille est grande",
+                "Ma famille est en Espagne",
+                "Ma famille est en vacances"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Grande = grande."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « belle-mère » ?",
+              "type": "single_choice",
+              "options": ["suegra", "madrastra", "cuñada", "nuera"],
+              "correctAnswers": [1],
+              "explanation": "Madrastra est la belle-mère."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « parientes » ?",
+              "type": "single_choice",
+              "options": [
+                "Les parents (père et mère uniquement)",
+                "Les proches / la parenté",
+                "Les amis",
+                "Les voisins"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Parientes désigne la parenté au sens large."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "À l'école — lieux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont des lieux à l'école ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["aula", "playa", "biblioteca", "montaña"],
+              "correctAnswers": [0, 2],
+              "explanation": "Aula (salle de classe) et biblioteca (bibliothèque) sont à l'école."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « école » ?",
+              "type": "single_choice",
+              "options": [
+                "colegio / instituto",
+                "hospital",
+                "tienda",
+                "estadio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Colegio ou instituto selon le niveau."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « biblioteca » ?",
+              "type": "single_choice",
+              "options": [
+                "La cantine",
+                "La bibliothèque",
+                "La cour",
+                "Le gymnase"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Biblioteca = bibliothèque."
+            },
+            {
+              "id": "q4",
+              "question": "« El patio del colegio » désigne :",
+              "type": "single_choice",
+              "options": [
+                "La salle de classe",
+                "La cour de récréation",
+                "Le bureau du directeur",
+                "Le laboratoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Patio = cour."
+            },
+            {
+              "id": "q5",
+              "question": "Comment se traduit « salle de classe » ?",
+              "type": "single_choice",
+              "options": ["aula", "pasillo", "baño", "cafetería"],
+              "correctAnswers": [0],
+              "explanation": "Aula = salle de classe."
+            },
+            {
+              "id": "q6",
+              "question": "Que veut dire « gimnasio » à l'école ?",
+              "type": "single_choice",
+              "options": [
+                "Le réfectoire",
+                "Le gymnase",
+                "Le hall",
+                "L'infirmerie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Gimnasio = gymnase."
+            },
+            {
+              "id": "q7",
+              "question": "« Voy al instituto » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je vais au collège/lycée",
+                "Je vais au parc",
+                "Je vais chez moi",
+                "Je vais en ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Instituto = établissement secondaire."
+            },
+            {
+              "id": "q8",
+              "question": "Quel mot signifie « couloir » ?",
+              "type": "single_choice",
+              "options": ["puerta", "pasillo", "ventana", "techo"],
+              "correctAnswers": [1],
+              "explanation": "Pasillo = couloir."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « cantine » ?",
+              "type": "single_choice",
+              "options": [
+                "cafetería",
+                "biblioteca",
+                "laboratorio",
+                "dirección"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cafetería = cantine ou café scolaire."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « dirección » dans un établissement ?",
+              "type": "single_choice",
+              "options": [
+                "La direction / le bureau du chef",
+                "La salle de musique",
+                "La cour",
+                "Le vestiaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dirección = direction de l'établissement."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "À l'école — matériel",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels objets sont du matériel scolaire ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["libro", "coche", "cuaderno", "televisión"],
+              "correctAnswers": [0, 2],
+              "explanation": "Libro et cuaderno sont indispensables en classe."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « stylo » ?",
+              "type": "single_choice",
+              "options": ["lápiz", "bolígrafo", "goma", "regla"],
+              "correctAnswers": [1],
+              "explanation": "Bolígrafo = stylo à bille."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « mochila » ?",
+              "type": "single_choice",
+              "options": [
+                "Le cartable / sac à dos",
+                "Le crayon",
+                "La gomme",
+                "Le cahier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mochila = sac à dos scolaire."
+            },
+            {
+              "id": "q4",
+              "question": "« Necesito un lápiz » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai besoin d'un crayon",
+                "J'ai besoin d'un livre",
+                "J'ai besoin d'une règle",
+                "J'ai besoin d'une gomme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lápiz = crayon."
+            },
+            {
+              "id": "q5",
+              "question": "Quel mot désigne la gomme ?",
+              "type": "single_choice",
+              "options": [
+                "sacapuntas",
+                "goma de borrar",
+                "tijeras",
+                "pegamento"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Goma de borrar = gomme."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « cahier » ?",
+              "type": "single_choice",
+              "options": ["libro", "cuaderno", "diccionario", "mapa"],
+              "correctAnswers": [1],
+              "explanation": "Cuaderno = cahier."
+            },
+            {
+              "id": "q7",
+              "question": "Que veut dire « regla » ?",
+              "type": "single_choice",
+              "options": [
+                "La règle",
+                "La règle (norme)",
+                "Les deux peuvent exister",
+                "Le compas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Regla = règle pour tracer."
+            },
+            {
+              "id": "q8",
+              "question": "« Sacapuntas » sert à :",
+              "type": "single_choice",
+              "options": ["Coller", "Tailler le crayon", "Effacer", "Mesurer"],
+              "correctAnswers": [1],
+              "explanation": "Sacapuntas = taille-crayon."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « ordinateur » ?",
+              "type": "single_choice",
+              "options": ["ordenador", "teléfono", "pizarra", "proyector"],
+              "correctAnswers": [0],
+              "explanation": "Ordenador (Espagne) = ordinateur."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « diccionario » ?",
+              "type": "single_choice",
+              "options": [
+                "Le manuel",
+                "Le dictionnaire",
+                "L'atlas",
+                "Le classeur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Diccionario = dictionnaire."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Matières et horaires",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles matières sont enseignées au collège ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "matemáticas",
+                "cocina profesional",
+                "historia",
+                "conducir"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Matemáticas et historia sont des matières courantes."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « français » (la langue) ?",
+              "type": "single_choice",
+              "options": [
+                "francés",
+                "francés / lengua francesa",
+                "español",
+                "alemán"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Francés = français."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « educación física » ?",
+              "type": "single_choice",
+              "options": [
+                "Les maths",
+                "Le sport / EPS",
+                "La musique",
+                "La technologie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Educación física = EPS."
+            },
+            {
+              "id": "q4",
+              "question": "« Tengo clase de inglés » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai cours d'espagnol",
+                "J'ai cours d'anglais",
+                "Je n'ai pas cours",
+                "J'ai cours de sport"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Inglés = anglais."
+            },
+            {
+              "id": "q5",
+              "question": "Quel mot désigne les sciences ?",
+              "type": "single_choice",
+              "options": ["ciencias", "literatura", "geografía", "religión"],
+              "correctAnswers": [0],
+              "explanation": "Ciencias = sciences."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « à quelle heure » ?",
+              "type": "single_choice",
+              "options": ["¿A qué hora?", "¿Dónde?", "¿Cuánto?", "¿Por qué?"],
+              "correctAnswers": [0],
+              "explanation": "¿A qué hora? = à quelle heure ?"
+            },
+            {
+              "id": "q7",
+              "question": "« La clase empieza a las nueve » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Le cours finit à neuf heures",
+                "Le cours commence à neuf heures",
+                "Le cours dure neuf heures",
+                "Il est neuf heures du soir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Empieza = commence ; a las nueve = à neuf heures."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire « recreo » ?",
+              "type": "single_choice",
+              "options": [
+                "La récréation",
+                "Les devoirs",
+                "L'examen",
+                "La punition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recreo = récréation."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « devoirs » (scolaires) ?",
+              "type": "single_choice",
+              "options": ["deberes", "notas", "exámenes", "vacaciones"],
+              "correctAnswers": [0],
+              "explanation": "Deberes = devoirs."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « asignatura » ?",
+              "type": "single_choice",
+              "options": [
+                "La matière / discipline",
+                "La note",
+                "Le professeur",
+                "Le trimestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Asignatura = matière enseignée."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Loisirs — sports",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels sports se disent clairement en espagnol ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["fútbol", "natación", "keyboard", "homework"],
+              "correctAnswers": [0, 1],
+              "explanation": "Fútbol et natación sont des sports courants."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « jouer au football » ?",
+              "type": "single_choice",
+              "options": [
+                "jugar al fútbol",
+                "mirar al fútbol",
+                "comer fútbol",
+                "dormir fútbol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jugar al fútbol = jouer au football."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « baloncesto » ?",
+              "type": "single_choice",
+              "options": [
+                "Le tennis",
+                "Le basket-ball",
+                "Le volley",
+                "Le rugby"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Baloncesto = basket-ball."
+            },
+            {
+              "id": "q4",
+              "question": "« Me gusta nadar » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'aime courir",
+                "J'aime nager",
+                "J'aime danser",
+                "J'aime skier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Nadar = nager."
+            },
+            {
+              "id": "q5",
+              "question": "Quel verbe signifie « courir » ?",
+              "type": "single_choice",
+              "options": ["correr", "saltar", "patinar", "esquiar"],
+              "correctAnswers": [0],
+              "explanation": "Correr = courir."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « vélo » ?",
+              "type": "single_choice",
+              "options": ["bicicleta", "motocicleta", "patinete", "coche"],
+              "correctAnswers": [0],
+              "explanation": "Bicicleta = vélo."
+            },
+            {
+              "id": "q7",
+              "question": "« Hago deporte los martes » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je fais du sport le mardi",
+                "Je regarde le sport mardi",
+                "Je déteste le sport",
+                "Je ne fais jamais de sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hago deporte = je fais du sport."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire « tenis » ?",
+              "type": "single_choice",
+              "options": [
+                "Le tennis",
+                "La table",
+                "Le ping-pong uniquement",
+                "Le golf"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tenis = tennis."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « équipe » ?",
+              "type": "single_choice",
+              "options": ["equipo", "partido", "gol", "campo"],
+              "correctAnswers": [0],
+              "explanation": "Equipo = équipe."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « partido » au sens sportif ?",
+              "type": "single_choice",
+              "options": ["Le match", "Le terrain", "Le ballon", "L'arbitre"],
+              "correctAnswers": [0],
+              "explanation": "Partido = match."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Loisirs — musique et sorties",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots concernent des loisirs culturels ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["cine", "examen", "concierto", "deberes"],
+              "correctAnswers": [0, 2],
+              "explanation": "Cine et concierto sont des sorties culturelles."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « cinéma » ?",
+              "type": "single_choice",
+              "options": ["cine", "teatro", "museo", "discoteca"],
+              "correctAnswers": [0],
+              "explanation": "Cine = cinéma."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « escuchar música » ?",
+              "type": "single_choice",
+              "options": [
+                "Jouer de la musique",
+                "Écouter de la musique",
+                "Chanter seul",
+                "Détester la musique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Escuchar = écouter."
+            },
+            {
+              "id": "q4",
+              "question": "« Voy al parque con mis amigos » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je vais au parc avec mes amis",
+                "Je reste chez moi",
+                "Je vais à l'école",
+                "Je vais au supermarché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parque = parc ; amigos = amis."
+            },
+            {
+              "id": "q5",
+              "question": "Quel mot désigne « la plage » ?",
+              "type": "single_choice",
+              "options": ["playa", "montaña", "río", "bosque"],
+              "correctAnswers": [0],
+              "explanation": "Playa = plage."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « lire » ?",
+              "type": "single_choice",
+              "options": ["leer", "escribir", "dibujar", "bailar"],
+              "correctAnswers": [0],
+              "explanation": "Leer = lire."
+            },
+            {
+              "id": "q7",
+              "question": "« Me encanta bailar » exprime :",
+              "type": "single_choice",
+              "options": [
+                "J'adore danser",
+                "Je déteste danser",
+                "Je danse parfois",
+                "Je ne sais pas danser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Me encanta = j'adore."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire « dibujar » ?",
+              "type": "single_choice",
+              "options": [
+                "Dessiner",
+                "Peindre un mur",
+                "Photographier",
+                "Sculpter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dibujar = dessiner."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « sortir avec des amis » ?",
+              "type": "single_choice",
+              "options": [
+                "salir con amigos",
+                "entrar con amigos",
+                "estudiar con amigos",
+                "dormir con amigos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salir = sortir."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « fin de semana » ?",
+              "type": "single_choice",
+              "options": [
+                "En semaine",
+                "Le week-end",
+                "Le lundi",
+                "Les vacances"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Fin de semana = week-end."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Routine du matin",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles actions décrivent le matin ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["despertarse", "acostarse", "levantarse", "cenar"],
+              "correctAnswers": [0, 2],
+              "explanation": "Despertarse et levantarse ont lieu le matin."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « se lever » ?",
+              "type": "single_choice",
+              "options": ["levantarse", "sentarse", "ducharse", "vestirse"],
+              "correctAnswers": [0],
+              "explanation": "Levantarse = se lever."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « desayunar » ?",
+              "type": "single_choice",
+              "options": [
+                "Dîner",
+                "Déjeuner",
+                "Prendre le petit-déjeuner",
+                "Goûter"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Desayunar = prendre le petit-déjeuner."
+            },
+            {
+              "id": "q4",
+              "question": "« Me ducho por la mañana » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je me couche le matin",
+                "Je me douche le matin",
+                "Je mange le matin",
+                "Je cours le matin"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ducharse = se doucher."
+            },
+            {
+              "id": "q5",
+              "question": "Quel verbe signifie « s'habiller » ?",
+              "type": "single_choice",
+              "options": ["vestirse", "lavarse", "peinarse", "afeitarse"],
+              "correctAnswers": [0],
+              "explanation": "Vestirse = s'habiller."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « se brosser les dents » ?",
+              "type": "single_choice",
+              "options": [
+                "lavarse los dientes",
+                "cepillarse los dientes",
+                "peinarse los dientes",
+                "ducharse los dientes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Cepillarse los dientes = se brosser les dents."
+            },
+            {
+              "id": "q7",
+              "question": "« Llego tarde al colegio » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'arrive tôt à l'école",
+                "J'arrive en retard à l'école",
+                "Je n'vais pas à l'école",
+                "Je quitte l'école"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Llegar tarde = arriver en retard."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire « peinarse » ?",
+              "type": "single_choice",
+              "options": [
+                "Se coiffer / se peigner",
+                "Se laver les mains",
+                "Se maquiller",
+                "Se raser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peinarse = se peigner."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « réveil (horloge) » ?",
+              "type": "single_choice",
+              "options": ["despertador", "almohada", "sábana", "armario"],
+              "correctAnswers": [0],
+              "explanation": "Despertador = réveil."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « temprano » ?",
+              "type": "single_choice",
+              "options": ["Tôt", "Tard", "Souvent", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Temprano = tôt."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Maison et tâches",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles pièces se trouvent dans une maison ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["cocina", "aula", "dormitorio", "estadio"],
+              "correctAnswers": [0, 2],
+              "explanation": "Cocina et dormitorio sont des pièces de la maison."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « salon / salle de séjour » ?",
+              "type": "single_choice",
+              "options": ["salón", "baño", "garaje", "sótano"],
+              "correctAnswers": [0],
+              "explanation": "Salón = salon."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « ayudar en casa » ?",
+              "type": "single_choice",
+              "options": [
+                "Sortir de la maison",
+                "Aider à la maison",
+                "Acheter une maison",
+                "Louer une maison"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ayudar en casa = aider à la maison."
+            },
+            {
+              "id": "q4",
+              "question": "« Lavo los platos » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je fais la vaisselle",
+                "Je cuisine",
+                "Je mange",
+                "Je sors les poubelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lavar los platos = faire la vaisselle."
+            },
+            {
+              "id": "q5",
+              "question": "Quel verbe signifie « faire le ménage » ?",
+              "type": "single_choice",
+              "options": ["limpiar", "romper", "suciar", "olvidar"],
+              "correctAnswers": [0],
+              "explanation": "Limpiar = nettoyer / faire le ménage."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « chambre (à coucher) » ?",
+              "type": "single_choice",
+              "options": ["dormitorio", "cocina", "jardín", "terraza"],
+              "correctAnswers": [0],
+              "explanation": "Dormitorio = chambre."
+            },
+            {
+              "id": "q7",
+              "question": "« Hago la cama » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je fais mon lit",
+                "Je vais me coucher",
+                "J'achète un lit",
+                "Je casse le lit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hacer la cama = faire le lit."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire « sacar la basura » ?",
+              "type": "single_choice",
+              "options": [
+                "Sortir les poubelles",
+                "Jeter un ami",
+                "Ranger le salon",
+                "Arroser les plantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sacar la basura = sortir les poubelles."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « salle de bain » ?",
+              "type": "single_choice",
+              "options": ["baño", "pasillo", "desván", "balcón"],
+              "correctAnswers": [0],
+              "explanation": "Baño = salle de bain."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « ordenar la habitación » ?",
+              "type": "single_choice",
+              "options": [
+                "Ranger la chambre",
+                "Peindre la chambre",
+                "Quitter la chambre",
+                "Agrandir la chambre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordenar = ranger."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse quotidien u1",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots illustrent la vie quotidienne d'un élève ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["colegio", "vacío", "amigos", "nada"],
+              "correctAnswers": [0, 2],
+              "explanation": "Colegio et amigos structurent le quotidien."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « ami » (masculin) ?",
+              "type": "single_choice",
+              "options": ["amigo", "amiga", "amistad", "enemigo"],
+              "correctAnswers": [0],
+              "explanation": "Amigo = ami ; amiga = amie."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « todos los días » ?",
+              "type": "single_choice",
+              "options": [
+                "Parfois",
+                "Tous les jours",
+                "Jamais",
+                "Une fois par semaine"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Todos los días = tous les jours."
+            },
+            {
+              "id": "q4",
+              "question": "« Después de las clases » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Avant les cours",
+                "Après les cours",
+                "Pendant les cours",
+                "Sans cours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Después = après."
+            },
+            {
+              "id": "q5",
+              "question": "Quel mot signifie « souvent » ?",
+              "type": "single_choice",
+              "options": ["a menudo", "nunca", "siempre", "rara vez"],
+              "correctAnswers": [0],
+              "explanation": "A menudo = souvent."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « parfois » ?",
+              "type": "single_choice",
+              "options": ["a veces", "todavía", "tampoco", "además"],
+              "correctAnswers": [0],
+              "explanation": "A veces = parfois."
+            },
+            {
+              "id": "q7",
+              "question": "« Mi hermana estudia mucho » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Ma sœur travaille peu",
+                "Ma sœur étudie beaucoup",
+                "Mon frère étudie",
+                "Ma mère étudie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Estudiar mucho = étudier beaucoup."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire « pasar tiempo con la familia » ?",
+              "type": "single_choice",
+              "options": [
+                "Passer du temps en famille",
+                "Quitter la famille",
+                "Ignorer la famille",
+                "Vendre la maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pasar tiempo = passer du temps."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « je m'amuse » ?",
+              "type": "single_choice",
+              "options": ["me divierto", "me aburro", "me enfado", "me duermo"],
+              "correctAnswers": [0],
+              "explanation": "Divertirse = s'amuser."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « vida cotidiana » ?",
+              "type": "single_choice",
+              "options": [
+                "La vie quotidienne",
+                "La vie nocturne",
+                "Les vacances",
+                "L'avenir lointain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vida cotidiana = vie quotidienne."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Décrire une personne — physique",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adjectifs décrivent le physique ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["alto", "inteligente", "delgado", "amable"],
+              "correctAnswers": [0, 2],
+              "explanation": "Alto (grand) et delgado (mince) décrivent le corps."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « grand » (taille) pour un garçon ?",
+              "type": "single_choice",
+              "options": [
+                "alta",
+                "alto",
+                "alto/a seulement alta",
+                "grande always bajo"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Alto = grand (masculin)."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « ojos azules » ?",
+              "type": "single_choice",
+              "options": [
+                "Cheveux bleus",
+                "Yeux bleus",
+                "Vêtements bleus",
+                "Chaussures bleues"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ojos = yeux ; azules = bleus."
+            },
+            {
+              "id": "q4",
+              "question": "« Lleva el pelo castaño » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Il/elle a les cheveux châtains",
+                "Il/elle porte un chapeau",
+                "Il/elle se rase",
+                "Il/elle a les cheveux blonds"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pelo castaño = cheveux châtains."
+            },
+            {
+              "id": "q5",
+              "question": "Quel mot signifie « petit » (taille, masc.) ?",
+              "type": "single_choice",
+              "options": [
+                "bajo",
+                "pequeño (objet)",
+                "bajo ou pequeño selon contexte",
+                "corto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bajo décrit une personne de petite taille."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « barbe » ?",
+              "type": "single_choice",
+              "options": ["barba", "bigote", "pelo", "frente"],
+              "correctAnswers": [0],
+              "explanation": "Barba = barbe."
+            },
+            {
+              "id": "q7",
+              "question": "« Es morena y delgada » décrit :",
+              "type": "single_choice",
+              "options": [
+                "Une femme brune et mince",
+                "Un homme grand",
+                "Un enfant blond",
+                "Une personne âgée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Morena = brune ; delgada = mince (fém.)."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire « gafas » ?",
+              "type": "single_choice",
+              "options": [
+                "Les lunettes",
+                "Les gants",
+                "Les chaussures",
+                "Le chapeau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gafas = lunettes."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « cheveux blonds » ?",
+              "type": "single_choice",
+              "options": ["pelo rubio", "pelo negro", "pelo rojo", "pelo gris"],
+              "correctAnswers": [0],
+              "explanation": "Rubio = blond."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « llevar gafas » ?",
+              "type": "single_choice",
+              "options": [
+                "Porter des lunettes",
+                "Acheter des lunettes",
+                "Casser des lunettes",
+                "Perdre des lunettes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Llevar = porter."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Décrire une personne — caractère",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adjectifs décrivent le caractère ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["simpático", "alto", "tímido", "verde"],
+              "correctAnswers": [0, 2],
+              "explanation": "Simpático et tímido qualifient la personnalité."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « sympa / agréable » ?",
+              "type": "single_choice",
+              "options": ["simpático", "antipático", "feo", "lento"],
+              "correctAnswers": [0],
+              "explanation": "Simpático = sympathique."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « serio » ?",
+              "type": "single_choice",
+              "options": ["Sérieux", "Drôle", "Bruyant", "Paresseux"],
+              "correctAnswers": [0],
+              "explanation": "Serio = sérieux."
+            },
+            {
+              "id": "q4",
+              "question": "« Es muy trabajador » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Il est très paresseux",
+                "Il est très travailleur",
+                "Il ne travaille pas",
+                "Il travaille peu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Trabajador = travailleur."
+            },
+            {
+              "id": "q5",
+              "question": "Quel mot signifie « timide » ?",
+              "type": "single_choice",
+              "options": ["tímido", "valiente", "ruidoso", "orgulloso"],
+              "correctAnswers": [0],
+              "explanation": "Tímido = timide."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « drôle / amusant » ?",
+              "type": "single_choice",
+              "options": ["divertido", "triste", "enfadado", "cansado"],
+              "correctAnswers": [0],
+              "explanation": "Divertido = amusant."
+            },
+            {
+              "id": "q7",
+              "question": "« Mi profe es paciente » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Mon prof est patient",
+                "Mon prof est en retard",
+                "Mon prof est absent",
+                "Mon prof est strict"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paciente = patient."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire « antipático » ?",
+              "type": "single_choice",
+              "options": [
+                "Désagréable",
+                "Très gentil",
+                "Intelligent",
+                "Sportif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Antipático = antipathique."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « intelligent » (masc.) ?",
+              "type": "single_choice",
+              "options": [
+                "inteligente",
+                "inteligente (invariable)",
+                "inteligente for both",
+                "inteligente always"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inteligente s'accorde : inteligente (fém.) aussi."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « Es generoso con sus amigos » ?",
+              "type": "single_choice",
+              "options": [
+                "Il est généreux avec ses amis",
+                "Il est méchant",
+                "Il n'a pas d'amis",
+                "Il est pauvre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Generoso = généreux."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Décrire un lieu",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adjectifs décrivent un lieu ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["grande", "cansado", "tranquilo", "hambriento"],
+              "correctAnswers": [0, 2],
+              "explanation": "Grande et tranquilo décrivent un endroit."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « il y a » pour un lieu ?",
+              "type": "single_choice",
+              "options": ["hay", "hace", "está", "son"],
+              "correctAnswers": [0],
+              "explanation": "Hay = il y a."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « cerca de » ?",
+              "type": "single_choice",
+              "options": ["Loin de", "Près de", "Au-dessus de", "Dans"],
+              "correctAnswers": [1],
+              "explanation": "Cerca de = près de."
+            },
+            {
+              "id": "q4",
+              "question": "« Mi pueblo es pequeño y bonito » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Mon village est grand",
+                "Mon village est petit et joli",
+                "Ma ville est laide",
+                "Mon quartier est bruyant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pequeño = petit ; bonito = joli."
+            },
+            {
+              "id": "q5",
+              "question": "Quel mot signifie « bruyant » ?",
+              "type": "single_choice",
+              "options": ["ruidoso", "silencioso", "oscuro", "limpio"],
+              "correctAnswers": [0],
+              "explanation": "Ruidoso = bruyant."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « il n'y a pas de » ?",
+              "type": "single_choice",
+              "options": ["no hay", "no está", "no son", "no hace"],
+              "correctAnswers": [0],
+              "explanation": "No hay = il n'y a pas."
+            },
+            {
+              "id": "q7",
+              "question": "« En el centro hay muchos cafés » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Au centre il y a beaucoup de cafés",
+                "Au centre il n'y a rien",
+                "Les cafés sont fermés",
+                "Je n'aime pas le centre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Muchos cafés = beaucoup de cafés."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire « lejos del colegio » ?",
+              "type": "single_choice",
+              "options": [
+                "Loin de l'école",
+                "Près de l'école",
+                "Dans l'école",
+                "Derrière l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lejos = loin."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « moderne » ?",
+              "type": "single_choice",
+              "options": ["moderno", "antiguo", "feo", "sucio"],
+              "correctAnswers": [0],
+              "explanation": "Moderno = moderne."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « Hay un parque detrás de mi casa » ?",
+              "type": "single_choice",
+              "options": [
+                "Il y a un parc derrière ma maison",
+                "Il y a une école devant",
+                "Je n'ai pas de maison",
+                "Le parc est fermé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Detrás de = derrière."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le temps qu'il fait",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions parlent de la météo ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["hace sol", "tengo frío", "llueve", "estudio"],
+              "correctAnswers": [0, 2],
+              "explanation": "Hace sol et llueve décrivent le temps."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « il fait beau » ?",
+              "type": "single_choice",
+              "options": [
+                "hace buen tiempo",
+                "hace mal tiempo",
+                "nieva",
+                "hay tormenta"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hace buen tiempo = il fait beau."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « nieva » ?",
+              "type": "single_choice",
+              "options": ["Il neige", "Il pleut", "Il vente", "Il grêle"],
+              "correctAnswers": [0],
+              "explanation": "Nievar = neiger."
+            },
+            {
+              "id": "q4",
+              "question": "« Hace frío en invierno » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Il fait chaud en hiver",
+                "Il fait froid en hiver",
+                "Il pleut en hiver",
+                "Il n'y a pas d'hiver"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Hace frío = il fait froid."
+            },
+            {
+              "id": "q5",
+              "question": "Quelle phrase dit « il pleut » ?",
+              "type": "single_choice",
+              "options": [
+                "Llueve",
+                "Hace sol",
+                "Hace calor",
+                "Está nublado only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Llover → llueve."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « il fait chaud » ?",
+              "type": "single_choice",
+              "options": [
+                "hace calor",
+                "hace frío",
+                "hace viento",
+                "hace fresco"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hace calor = il fait chaud."
+            },
+            {
+              "id": "q7",
+              "question": "« Está nublado » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Il fait soleil",
+                "Il fait nuageux",
+                "Il fait nuit",
+                "Il fait vent"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Nublado = nuageux."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire « en primavera » ?",
+              "type": "single_choice",
+              "options": ["Au printemps", "En été", "En automne", "En hiver"],
+              "correctAnswers": [0],
+              "explanation": "Primavera = printemps."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « orage » ?",
+              "type": "single_choice",
+              "options": ["tormenta", "nube", "arcoíris", "viento"],
+              "correctAnswers": [0],
+              "explanation": "Tormenta = orage."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « ¿Qué tiempo hace hoy? » ?",
+              "type": "single_choice",
+              "options": [
+                "Quel temps fait-il aujourd'hui ?",
+                "Quelle heure est-il ?",
+                "Quel jour sommes-nous ?",
+                "Quelle date ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question standard sur la météo."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Passé — pretérito indefinido (repères)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels verbes sont au passé simple (indefinido) ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["comí", "como", "fui", "voy"],
+              "correctAnswers": [0, 2],
+              "explanation": "Comí et fui sont des formes passées."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « j'ai mangé » (yo) ?",
+              "type": "single_choice",
+              "options": ["comí", "como", "comeré", "comía"],
+              "correctAnswers": [0],
+              "explanation": "Comer → comí au pretérito indefinido."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « ayer fui al cine » ?",
+              "type": "single_choice",
+              "options": [
+                "Demain j'irai au ciné",
+                "Hier je suis allé au ciné",
+                "Je vais au ciné",
+                "Je n'aime pas le ciné"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ayer = hier ; fui = je suis allé."
+            },
+            {
+              "id": "q4",
+              "question": "« El año pasado » signifie :",
+              "type": "single_choice",
+              "options": [
+                "L'année prochaine",
+                "L'année dernière",
+                "Cette année",
+                "Chaque année"
+              ],
+              "correctAnswers": [1],
+              "explanation": "El año pasado = l'année dernière."
+            },
+            {
+              "id": "q5",
+              "question": "Quelle forme est « nous avons visité » ?",
+              "type": "single_choice",
+              "options": ["visitamos", "visitáis", "visitan", "visitaba"],
+              "correctAnswers": [0],
+              "explanation": "Visitar → visitamos (nosotros)."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « hier » ?",
+              "type": "single_choice",
+              "options": ["ayer", "hoy", "mañana", "antes de ayer"],
+              "correctAnswers": [0],
+              "explanation": "Ayer = hier."
+            },
+            {
+              "id": "q7",
+              "question": "« Hablé con mi madre » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je parle à ma mère",
+                "J'ai parlé à ma mère",
+                "Je parlerai",
+                "Je ne parle pas"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Hablé = j'ai parlé (passé)."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire « la semana pasada » ?",
+              "type": "single_choice",
+              "options": [
+                "La semaine dernière",
+                "La semaine prochaine",
+                "Toute la semaine",
+                "Un week-end"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Semana pasada = semaine dernière."
+            },
+            {
+              "id": "q9",
+              "question": "Comment conjugue-t-on « ser » (yo) au passé ?",
+              "type": "single_choice",
+              "options": ["fui", "soy", "era", "seré"],
+              "correctAnswers": [0],
+              "explanation": "Ser → fui (indefinido)."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « ¿Qué hiciste ayer? » ?",
+              "type": "single_choice",
+              "options": [
+                "Qu'as-tu fait hier ?",
+                "Que fais-tu ?",
+                "Que feras-tu ?",
+                "Pourquoi es-tu là ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiciste = as-tu fait (tú)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Raconter une journée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels marqueurs temporels ordonnent un récit ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["primero", "quizás", "después", "nunca"],
+              "correctAnswers": [0, 2],
+              "explanation": "Primero et después structurent la narration."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « d'abord » ?",
+              "type": "single_choice",
+              "options": ["primero", "finalmente", "luego", "mientras"],
+              "correctAnswers": [0],
+              "explanation": "Primero = d'abord."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « luego » dans un récit ?",
+              "type": "single_choice",
+              "options": ["Ensuite / puis", "Avant", "Jamais", "Toujours"],
+              "correctAnswers": [0],
+              "explanation": "Luego = ensuite."
+            },
+            {
+              "id": "q4",
+              "question": "« Por la tarde jugué con mi perro » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Le matin j'ai joué",
+                "L'après-midi j'ai joué avec mon chien",
+                "Le soir j'ai dormi",
+                "Je n'ai pas de chien"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Por la tarde = l'après-midi ; jugué = j'ai joué."
+            },
+            {
+              "id": "q5",
+              "question": "Quel mot signifie « enfin » ?",
+              "type": "single_choice",
+              "options": ["finalmente", "pronto", "todavía", "ya"],
+              "correctAnswers": [0],
+              "explanation": "Finalmente = enfin."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « pendant que » ?",
+              "type": "single_choice",
+              "options": ["mientras", "desde", "hasta", "sobre"],
+              "correctAnswers": [0],
+              "explanation": "Mientras = pendant que."
+            },
+            {
+              "id": "q7",
+              "question": "« Me levanté, desayuné y fui al colegio » décrit :",
+              "type": "single_choice",
+              "options": [
+                "Une série d'actions du matin",
+                "Un rêve",
+                "Un projet futur",
+                "Une question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois verbes passés enchaînés."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire « al final del día » ?",
+              "type": "single_choice",
+              "options": [
+                "À la fin de la journée",
+                "Au début",
+                "À midi",
+                "La nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Al final = à la fin."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « soudain » ?",
+              "type": "single_choice",
+              "options": ["de repente", "despacio", "a menudo", "casi nunca"],
+              "correctAnswers": [0],
+              "explanation": "De repente = soudain."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « contar lo que pasó » ?",
+              "type": "single_choice",
+              "options": [
+                "Raconter ce qui s'est passé",
+                "Mentir",
+                "Oublier",
+                "Prédire l'avenir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contar = raconter ; pasó = s'est passé."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Opinions et sentiments",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases expriment une opinion ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Me parece interesante",
+                "Son las tres",
+                "Creo que es difícil",
+                "Hay dos libros"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Me parece et creo que introduisent un avis."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « je pense que » ?",
+              "type": "single_choice",
+              "options": [
+                "Creo que",
+                "Pienso que aussi",
+                "Creo que / Pienso que",
+                "Solo Creo que"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Creo que est très fréquent en classe."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « Me gusta mucho » ?",
+              "type": "single_choice",
+              "options": [
+                "J'aime beaucoup",
+                "Je déteste",
+                "Je m'en fiche",
+                "J'ai peur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gustar + mucho = aimer beaucoup."
+            },
+            {
+              "id": "q4",
+              "question": "« Estoy contento » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je suis content",
+                "Je suis triste",
+                "J'ai faim",
+                "Je suis malade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Estar contento = être content."
+            },
+            {
+              "id": "q5",
+              "question": "Quel mot exprime « ennuyé / bored » ?",
+              "type": "single_choice",
+              "options": [
+                "aburrido",
+                "emocionado",
+                "preocupado",
+                "sorprendido"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aburrido = ennuyé."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « j'ai peur » ?",
+              "type": "single_choice",
+              "options": [
+                "Tengo miedo",
+                "Tengo sueño",
+                "Tengo prisa",
+                "Tengo razón"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tener miedo = avoir peur."
+            },
+            {
+              "id": "q7",
+              "question": "« No me gusta nada » exprime :",
+              "type": "single_choice",
+              "options": [
+                "Je n'aime pas du tout",
+                "J'adore",
+                "J'hésite",
+                "Je suis fatigué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nada renforce la négation."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire « Estoy preocupado por el examen » ?",
+              "type": "single_choice",
+              "options": [
+                "Je suis inquiet pour l'examen",
+                "Je suis prêt",
+                "J'ai réussi",
+                "Je n'ai pas d'examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Preocupado = inquiet."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « c'est facile » ?",
+              "type": "single_choice",
+              "options": ["Es fácil", "Es difícil", "Es imposible", "Es largo"],
+              "correctAnswers": [0],
+              "explanation": "Fácil = facile."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « En mi opinión » ?",
+              "type": "single_choice",
+              "options": ["À mon avis", "En effet", "Par contre", "C'est faux"],
+              "correctAnswers": [0],
+              "explanation": "En mi opinión = à mon avis."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Comparer et quantifier",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots servent à comparer ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "más ... que",
+                "debajo de",
+                "menos ... que",
+                "dentro de"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Más que et menos que comparent deux éléments."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « plus ... que » ?",
+              "type": "single_choice",
+              "options": [
+                "más ... que",
+                "menos ... que",
+                "tan ... como",
+                "muy ... que"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Más ... que = plus ... que."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « tan alto como » ?",
+              "type": "single_choice",
+              "options": [
+                "Aussi grand que",
+                "Plus grand que",
+                "Moins grand que",
+                "Très grand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tan ... como = aussi ... que."
+            },
+            {
+              "id": "q4",
+              "question": "« Mi hermano es más alto que yo » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Mon frère est plus petit",
+                "Mon frère est plus grand que moi",
+                "Nous avons la même taille",
+                "Je suis plus grand"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Más alto que = plus grand que."
+            },
+            {
+              "id": "q5",
+              "question": "Quel mot signifie « beaucoup de » (devant nom) ?",
+              "type": "single_choice",
+              "options": ["mucho / muchos", "poco", "algo de", "nada de"],
+              "correctAnswers": [0],
+              "explanation": "Mucho(s) = beaucoup."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « un peu » ?",
+              "type": "single_choice",
+              "options": ["un poco", "mucho", "demasiado", "bastante only"],
+              "correctAnswers": [0],
+              "explanation": "Un poco = un peu."
+            },
+            {
+              "id": "q7",
+              "question": "« Hay menos gente que ayer » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Il y a plus de monde",
+                "Il y a moins de monde qu'hier",
+                "Personne n'est venu",
+                "C'est hier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Menos = moins."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire « demasiado » ?",
+              "type": "single_choice",
+              "options": ["Trop", "Assez", "Peu", "Rien"],
+              "correctAnswers": [0],
+              "explanation": "Demasiado = trop."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « le meilleur » (superlatif) ?",
+              "type": "single_choice",
+              "options": [
+                "el mejor",
+                "el más bueno parfois",
+                "el mejor standard",
+                "mejor solo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "El mejor = le meilleur (irrégulier de bueno)."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « Tengo tantos libros como tú » ?",
+              "type": "single_choice",
+              "options": [
+                "J'ai autant de livres que toi",
+                "J'ai plus de livres",
+                "Je n'ai pas de livres",
+                "Je lis plus que toi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tantos ... como = autant de ... que."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Projets et futur proche",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formes parlent du futur proche ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "voy a estudiar",
+                "estudié",
+                "va a llover",
+                "estudiaba"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ir a + infinitif exprime le futur proche."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « je vais manger » ?",
+              "type": "single_choice",
+              "options": [
+                "Voy a comer",
+                "Voy comer",
+                "Voy a como",
+                "Voy comeré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voy a + infinitif."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « mañana vamos de excursión » ?",
+              "type": "single_choice",
+              "options": [
+                "Demain nous partons en excursion",
+                "Hier excursion",
+                "Jamais d'excursion",
+                "Excursion maintenant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mañana = demain ; vamos = nous allons."
+            },
+            {
+              "id": "q4",
+              "question": "« Este fin de semana » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Ce week-end",
+                "Le week-end dernier",
+                "Chaque week-end",
+                "Un lundi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Este = ce/cette."
+            },
+            {
+              "id": "q5",
+              "question": "Quelle phrase est au futur proche ?",
+              "type": "single_choice",
+              "options": ["Va a nevar", "Nevó", "Neva", "Nevaba"],
+              "correctAnswers": [0],
+              "explanation": "Va a nevar = il va neiger."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « demain » ?",
+              "type": "single_choice",
+              "options": ["mañana", "hoy", "ayer", "pasado mañana"],
+              "correctAnswers": [0],
+              "explanation": "Mañana = demain."
+            },
+            {
+              "id": "q7",
+              "question": "« Piensa visitar a sus abuelos » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Il/elle compte rendre visite à ses grands-parents",
+                "Il/elle les a visités",
+                "Il/elle les ignore",
+                "Il/elle est chez eux maintenant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pensar + infinitif = avoir l'intention."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire « la próxima semana » ?",
+              "type": "single_choice",
+              "options": [
+                "La semaine prochaine",
+                "La semaine dernière",
+                "Cette semaine",
+                "Toutes les semaines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Próxima = prochaine."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « nous allons voyager » ?",
+              "type": "single_choice",
+              "options": [
+                "Vamos a viajar",
+                "Vamos viajar sin a",
+                "Viajamos ayer",
+                "Viajábamos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vamos a viajar = futur proche."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « ¿Qué vas a hacer? » ?",
+              "type": "single_choice",
+              "options": [
+                "Qu'est-ce que tu vas faire ?",
+                "Qu'as-tu fait ?",
+                "Que fais-tu ?",
+                "Pourquoi ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vas a hacer = tu vas faire."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse décrire et raconter",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels connecteurs relient description et récit ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["porque", "aunque", "debajo", "encima solo spatial"],
+              "correctAnswers": [0, 1],
+              "explanation": "Porque et aunque expliquent et nuancent."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « parce que » ?",
+              "type": "single_choice",
+              "options": ["porque", "por qué", "para", "pero"],
+              "correctAnswers": [0],
+              "explanation": "Porque = parce que (sans accent)."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « aunque » ?",
+              "type": "single_choice",
+              "options": ["Bien que / même si", "Donc", "Puis", "Car"],
+              "correctAnswers": [0],
+              "explanation": "Aunque = bien que."
+            },
+            {
+              "id": "q4",
+              "question": "« Es un chico alto y simpático » sert à :",
+              "type": "single_choice",
+              "options": [
+                "Décrire quelqu'un",
+                "Raconter un voyage passé",
+                "Donner l'heure",
+                "Refuser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux adjectifs de description."
+            },
+            {
+              "id": "q5",
+              "question": "Quel pronom interrogatif signifie « où » ?",
+              "type": "single_choice",
+              "options": ["¿Dónde?", "¿Quién?", "¿Cuándo?", "¿Cuánto?"],
+              "correctAnswers": [0],
+              "explanation": "¿Dónde? = où ?"
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « quand » (interrogatif) ?",
+              "type": "single_choice",
+              "options": ["¿Cuándo?", "¿Cómo?", "¿Qué?", "¿Cuál?"],
+              "correctAnswers": [0],
+              "explanation": "¿Cuándo? = quand ?"
+            },
+            {
+              "id": "q7",
+              "question": "« Cuéntame tu fin de semana » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Raconte-moi ton week-end",
+                "Cache ton week-end",
+                "Oublie ton week-end",
+                "Prépare ton week-end"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contar = raconter ; cuéntame = raconte-moi."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire « en general » ?",
+              "type": "single_choice",
+              "options": [
+                "En général",
+                "En particulier",
+                "Parfois",
+                "Rarement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En general = en général."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « il/elle semble » ?",
+              "type": "single_choice",
+              "options": [
+                "Parece",
+                "Parecen always",
+                "Parecer yo",
+                "Pareció future"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parecer → parece = il/elle semble."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie « Describir y narrar bien ayuda a comunicarse » ?",
+              "type": "single_choice",
+              "options": [
+                "Bien décrire et raconter aide à communiquer",
+                "Il faut se taire",
+                "Seuls les verbes comptent",
+                "La grammaire ne sert à rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase de synthèse sur l'objectif du chapitre."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

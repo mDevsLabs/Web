@@ -1,0 +1,902 @@
+[
+  {
+    "description": "Valide un quiz avant la fin de la journée.",
+    "id": "qd-001",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "La mise en route"
+  },
+  {
+    "description": "Enchaîne deux quiz validés aujourd'hui.",
+    "id": "qd-002",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Double départ"
+  },
+  {
+    "description": "Trois quiz validés, et la journée est lancée.",
+    "id": "qd-003",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 3,
+    "recompense": 10,
+    "titre": "Trio du matin"
+  },
+  {
+    "description": "Un seul quiz suffit : valide-le aujourd'hui.",
+    "id": "qd-004",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Le quiz du goûter"
+  },
+  {
+    "description": "Valide un quiz, puis un second dans la foulée.",
+    "id": "qd-005",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Aller-retour"
+  },
+  {
+    "description": "Trois validations aujourd'hui, sans te presser.",
+    "id": "qd-006",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 3,
+    "recompense": 10,
+    "titre": "La petite série"
+  },
+  {
+    "description": "Décroche une validation avant minuit.",
+    "id": "qd-007",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Premier feu vert"
+  },
+  {
+    "description": "Deux quiz validés ouvrent la suite du parcours.",
+    "id": "qd-008",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Deux portes ouvertes"
+  },
+  {
+    "description": "Vise trois quiz validés d'ici ce soir.",
+    "id": "qd-009",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 3,
+    "recompense": 10,
+    "titre": "Cap sur trois"
+  },
+  {
+    "description": "Un quiz réussi aujourd'hui compte pour la quête.",
+    "id": "qd-010",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Une victoire nette"
+  },
+  {
+    "description": "Après un quiz validé, recommence et valide le suivant.",
+    "id": "qd-011",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Le second souffle"
+  },
+  {
+    "description": "Trois quiz au compteur des validations du jour.",
+    "id": "qd-012",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 3,
+    "recompense": 10,
+    "titre": "Trois coches"
+  },
+  {
+    "description": "Aujourd'hui, une validation suffit à remplir la quête.",
+    "id": "qd-013",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Le pas du jour"
+  },
+  {
+    "description": "Valide deux quiz distincts avant la nuit.",
+    "id": "qd-014",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Binôme de quiz"
+  },
+  {
+    "description": "Trois quiz validés ferment cette quête.",
+    "id": "qd-015",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 3,
+    "recompense": 10,
+    "titre": "Triplet gagnant"
+  },
+  {
+    "description": "Un quiz réussi, et cette quête quotidienne est bouclée.",
+    "id": "qd-016",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Validation éclair"
+  },
+  {
+    "description": "Gagne deux validations dans la même journée.",
+    "id": "qd-017",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Deux manches"
+  },
+  {
+    "description": "Trois quiz validés, pas un de moins.",
+    "id": "qd-018",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 3,
+    "recompense": 10,
+    "titre": "La règle de trois"
+  },
+  {
+    "description": "Passe le seuil : un quiz validé aujourd'hui.",
+    "id": "qd-019",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Le seuil du jour"
+  },
+  {
+    "description": "Valide un quiz, reviens, et valide-en un autre.",
+    "id": "qd-020",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Retour gagnant"
+  },
+  {
+    "description": "Chaque quiz validé avance d'un cran, jusqu'à trois.",
+    "id": "qd-021",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 3,
+    "recompense": 10,
+    "titre": "Trois étapes"
+  },
+  {
+    "description": "Commence par valider un quiz.",
+    "id": "qd-022",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Ouverture de session"
+  },
+  {
+    "description": "Deux quiz validés tamponnent la journée.",
+    "id": "qd-023",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Deuxième carte"
+  },
+  {
+    "description": "Trois validations bouclent le tour du jour.",
+    "id": "qd-024",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 3,
+    "recompense": 10,
+    "titre": "Tour complet"
+  },
+  {
+    "description": "Un quiz validé prouve que tu as révisé aujourd'hui.",
+    "id": "qd-025",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Le quiz témoin"
+  },
+  {
+    "description": "Deux quiz au vert avant minuit.",
+    "id": "qd-026",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Paire validée"
+  },
+  {
+    "description": "Trois quiz validés, trois feux au vert.",
+    "id": "qd-027",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 3,
+    "recompense": 10,
+    "titre": "Trois feux verts"
+  },
+  {
+    "description": "Un succès aujourd'hui, et la quête est tenue.",
+    "id": "qd-028",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Juste un succès"
+  },
+  {
+    "description": "Accumule deux quiz validés dans la journée.",
+    "id": "qd-029",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Deux succès"
+  },
+  {
+    "description": "Valide trois quiz, l'un après l'autre.",
+    "id": "qd-030",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 3,
+    "recompense": 10,
+    "titre": "Succès en cascade"
+  },
+  {
+    "description": "Une validation, une coche, et tu passes à autre chose.",
+    "id": "qd-031",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "La coche unique"
+  },
+  {
+    "description": "Deux coches de validation avant la fin du jour.",
+    "id": "qd-032",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Double coche"
+  },
+  {
+    "description": "Trois coches : la quête quotidienne est pleine.",
+    "id": "qd-033",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 3,
+    "recompense": 10,
+    "titre": "Triple coche"
+  },
+  {
+    "description": "S'il ne reste qu'un quiz à valider aujourd'hui, fais-le.",
+    "id": "qd-034",
+    "mesure": "quiz_valide",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Dernier créneau"
+  },
+  {
+    "description": "Réussis un quiz avec les dix réponses justes.",
+    "id": "qd-035",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Sans une faute"
+  },
+  {
+    "description": "Deux sans-faute aujourd'hui, sur deux quiz.",
+    "id": "qd-036",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Deux copies blanches"
+  },
+  {
+    "description": "Un dix sur dix suffit pour cette quête.",
+    "id": "qd-037",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "La copie parfaite"
+  },
+  {
+    "description": "Renouvelle un sans-faute une seconde fois aujourd'hui.",
+    "id": "qd-038",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Parfait, deux fois"
+  },
+  {
+    "description": "Termine un quiz sans laisser passer une erreur.",
+    "id": "qd-039",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Zéro erreur"
+  },
+  {
+    "description": "Deux quiz parfaits dans la même journée.",
+    "id": "qd-040",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Deux parcours nets"
+  },
+  {
+    "description": "Vise le sans-faute sur un quiz du jour.",
+    "id": "qd-041",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Dix sur dix"
+  },
+  {
+    "description": "Deux dix sur dix avant minuit.",
+    "id": "qd-042",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "La paire parfaite"
+  },
+  {
+    "description": "Un quiz entier, toutes les réponses justes.",
+    "id": "qd-043",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Aucune hésitation"
+  },
+  {
+    "description": "Deux quiz sans la moindre faute aujourd'hui.",
+    "id": "qd-044",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Double perfection"
+  },
+  {
+    "description": "Aujourd'hui, un quiz parfait remplit la quête.",
+    "id": "qd-045",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Le sans-faute du jour"
+  },
+  {
+    "description": "Après un premier parfait, signe-en un second.",
+    "id": "qd-046",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Second sans-faute"
+  },
+  {
+    "description": "Les dix questions justes sur un même quiz.",
+    "id": "qd-047",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Pleine feuille"
+  },
+  {
+    "description": "Deux quiz à dix sur dix dans la journée.",
+    "id": "qd-048",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Deux feuilles pleines"
+  },
+  {
+    "description": "Une précision totale : un quiz sans erreur.",
+    "id": "qd-049",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Précision du jour"
+  },
+  {
+    "description": "Répète l'exploit : deux sans-faute aujourd'hui.",
+    "id": "qd-050",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Précision redoublée"
+  },
+  {
+    "description": "Un carton plein sur un quiz vaut la quête.",
+    "id": "qd-051",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Carton plein"
+  },
+  {
+    "description": "Deux cartons pleins avant la fin du jour.",
+    "id": "qd-052",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Deux cartons"
+  },
+  {
+    "description": "Valide un quiz que le correcteur n'a pas à reprendre.",
+    "id": "qd-053",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Rien à corriger"
+  },
+  {
+    "description": "Deux quiz que tu n'as pas à recommencer pour une faute.",
+    "id": "qd-054",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Rien à reprendre, deux fois"
+  },
+  {
+    "description": "Un seul sans-faute, et cette quête est close.",
+    "id": "qd-055",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "L'excellence brève"
+  },
+  {
+    "description": "Deux sans-faute d'affilée dans la journée.",
+    "id": "qd-056",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Excellence suivie"
+  },
+  {
+    "description": "Aucune case fausse sur les dix questions.",
+    "id": "qd-057",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Le quiz immaculé"
+  },
+  {
+    "description": "Deux quiz sans case fausse aujourd'hui.",
+    "id": "qd-058",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Deux quiz immaculés"
+  },
+  {
+    "description": "Toutes les réponses justes, sur un quiz.",
+    "id": "qd-059",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Justesse totale"
+  },
+  {
+    "description": "Confirme par un second sans-faute.",
+    "id": "qd-060",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Justesse confirmée"
+  },
+  {
+    "description": "Fais le plein : dix bonnes réponses sur dix.",
+    "id": "qd-061",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Le plein du jour"
+  },
+  {
+    "description": "Deux quiz au maximum de bonnes réponses.",
+    "id": "qd-062",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Deux pleins"
+  },
+  {
+    "description": "Un quiz sans rature, dix réponses tenues.",
+    "id": "qd-063",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Sans rature"
+  },
+  {
+    "description": "Deux copies nettes, deux sans-faute.",
+    "id": "qd-064",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Deux copies nettes"
+  },
+  {
+    "description": "Un parfait aujourd'hui, et c'est assez.",
+    "id": "qd-065",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "L'unique parfait"
+  },
+  {
+    "description": "Deux parfaits, et la quête quotidienne est faite.",
+    "id": "qd-066",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 2,
+    "recompense": 10,
+    "titre": "Les deux parfaits"
+  },
+  {
+    "description": "Finis un quiz sur une dernière ligne sans faute.",
+    "id": "qd-067",
+    "mesure": "sans_faute",
+    "monnaie": "xp",
+    "objectif": 1,
+    "recompense": 10,
+    "titre": "Dernière ligne droite"
+  },
+  {
+    "description": "Cumule huit bonnes réponses sur tes premières validations.",
+    "id": "qd-068",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 8,
+    "recompense": 10,
+    "titre": "Huit justes"
+  },
+  {
+    "description": "Douze bonnes réponses, comptées à la première validation.",
+    "id": "qd-069",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 12,
+    "recompense": 10,
+    "titre": "Douzaine juste"
+  },
+  {
+    "description": "Quinze bonnes réponses aujourd'hui, sur des quiz validés.",
+    "id": "qd-070",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 15,
+    "recompense": 10,
+    "titre": "Quinze solides"
+  },
+  {
+    "description": "Vingt bonnes réponses avant minuit.",
+    "id": "qd-071",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 20,
+    "recompense": 10,
+    "titre": "Vingt au compteur"
+  },
+  {
+    "description": "Pousse le compteur à vingt-cinq bonnes réponses.",
+    "id": "qd-072",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 25,
+    "recompense": 10,
+    "titre": "Vingt-cinq justes"
+  },
+  {
+    "description": "Trente bonnes réponses ferment la quête du jour.",
+    "id": "qd-073",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 30,
+    "recompense": 10,
+    "titre": "Trente réponses"
+  },
+  {
+    "description": "Huit réponses justes suffisent pour aujourd'hui.",
+    "id": "qd-074",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 8,
+    "recompense": 10,
+    "titre": "Le paquet de huit"
+  },
+  {
+    "description": "À raison de quelques justes par quiz, atteins douze.",
+    "id": "qd-075",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 12,
+    "recompense": 10,
+    "titre": "Trois quiz, douze justes"
+  },
+  {
+    "description": "Dépasse le simple huit sur dix : quinze justes au total.",
+    "id": "qd-076",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 15,
+    "recompense": 10,
+    "titre": "Au-delà du seuil"
+  },
+  {
+    "description": "Deux quiz solides peuvent faire ces vingt justes.",
+    "id": "qd-077",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 20,
+    "recompense": 10,
+    "titre": "Deux quiz bien remplis"
+  },
+  {
+    "description": "Vingt-cinq bonnes réponses sur la journée.",
+    "id": "qd-078",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 25,
+    "recompense": 10,
+    "titre": "La barre des vingt-cinq"
+  },
+  {
+    "description": "Trente justes, comme trois quiz bien maîtrisés.",
+    "id": "qd-079",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 30,
+    "recompense": 10,
+    "titre": "Trois quiz presque pleins"
+  },
+  {
+    "description": "Huit bonnes réponses, le minimum d'un quiz réussi.",
+    "id": "qd-080",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 8,
+    "recompense": 10,
+    "titre": "Juste assez"
+  },
+  {
+    "description": "Douze bonnes réponses, un cran au-dessus d'un seul quiz.",
+    "id": "qd-081",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 12,
+    "recompense": 10,
+    "titre": "Un cran de plus"
+  },
+  {
+    "description": "Quinze justes avant que la journée ne se ferme.",
+    "id": "qd-082",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 15,
+    "recompense": 10,
+    "titre": "Milieu de journée"
+  },
+  {
+    "description": "Vingt bonnes réponses constituent le score du jour.",
+    "id": "qd-083",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 20,
+    "recompense": 10,
+    "titre": "Score de journée"
+  },
+  {
+    "description": "Vingt-cinq justes demandent plus d'un quiz.",
+    "id": "qd-084",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 25,
+    "recompense": 10,
+    "titre": "Révision appuyée"
+  },
+  {
+    "description": "Trente bonnes réponses : une vraie séance de révision.",
+    "id": "qd-085",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 30,
+    "recompense": 10,
+    "titre": "Grosse séance"
+  },
+  {
+    "description": "Huit coches de bonnes réponses aujourd'hui.",
+    "id": "qd-086",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 8,
+    "recompense": 10,
+    "titre": "Huit coches"
+  },
+  {
+    "description": "Douze coches, et cette quête est remplie.",
+    "id": "qd-087",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 12,
+    "recompense": 10,
+    "titre": "Douze coches"
+  },
+  {
+    "description": "Quinze bonnes réponses cochées sur le jour.",
+    "id": "qd-088",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 15,
+    "recompense": 10,
+    "titre": "Quinze coches"
+  },
+  {
+    "description": "Vingt coches de réponses justes.",
+    "id": "qd-089",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 20,
+    "recompense": 10,
+    "titre": "Vingt coches"
+  },
+  {
+    "description": "Le compteur s'arrête à vingt-cinq justes.",
+    "id": "qd-090",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 25,
+    "recompense": 10,
+    "titre": "Vingt-cinq coches"
+  },
+  {
+    "description": "Trente coches : le plafond du jour pour cette quête.",
+    "id": "qd-091",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 30,
+    "recompense": 10,
+    "titre": "Trente coches"
+  },
+  {
+    "description": "Récolte huit bonnes réponses.",
+    "id": "qd-092",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 8,
+    "recompense": 10,
+    "titre": "Première moisson"
+  },
+  {
+    "description": "Récolte douze bonnes réponses.",
+    "id": "qd-093",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 12,
+    "recompense": 10,
+    "titre": "Moisson élargie"
+  },
+  {
+    "description": "Quinze bonnes réponses récoltées aujourd'hui.",
+    "id": "qd-094",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 15,
+    "recompense": 10,
+    "titre": "Moisson sérieuse"
+  },
+  {
+    "description": "Vingt bonnes réponses dans la journée.",
+    "id": "qd-095",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 20,
+    "recompense": 10,
+    "titre": "Belle moisson"
+  },
+  {
+    "description": "Vingt-cinq justes, la moisson est pleine.",
+    "id": "qd-096",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 25,
+    "recompense": 10,
+    "titre": "Moisson pleine"
+  },
+  {
+    "description": "Trente bonnes réponses, le record du jour visé ici.",
+    "id": "qd-097",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 30,
+    "recompense": 10,
+    "titre": "Moisson record"
+  },
+  {
+    "description": "Huit réponses qui méritent une étoile.",
+    "id": "qd-098",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 8,
+    "recompense": 10,
+    "titre": "Huit étoiles"
+  },
+  {
+    "description": "Douze étoiles de bonnes réponses.",
+    "id": "qd-099",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 12,
+    "recompense": 10,
+    "titre": "Douze étoiles"
+  },
+  {
+    "description": "Vingt étoiles avant la fin du jour.",
+    "id": "qd-100",
+    "mesure": "bonnes_reponses",
+    "monnaie": "xp",
+    "objectif": 20,
+    "recompense": 10,
+    "titre": "Vingt étoiles"
+  }
+]

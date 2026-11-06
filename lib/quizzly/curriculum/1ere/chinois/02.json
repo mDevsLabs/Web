@@ -1,0 +1,2388 @@
+{
+  "id": "1ere-chinois-02",
+  "year": "1ere",
+  "subject": "chinois",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "La famille proche",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots désignent « papa » et « maman » ?",
+              "options": [
+                "爸爸 (bàba)",
+                "妈妈 (māma)",
+                "爷爷 (yéye)",
+                "老师 (lǎoshī)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "爸爸 et 妈妈 sont les appellations courantes pour père et mère ; 爷爷 est grand-père et 老师 professeur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « frère cadet » en chinois ?",
+              "options": [
+                "弟弟 (dìdi)",
+                "妹妹 (mèimei)",
+                "叔叔 (shūshu)",
+                "儿子 (érzi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "弟弟 signifie frère cadet ; 妹妹 est sœur cadette."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le caractère 家 dans 家人 signifie surtout :",
+              "options": ["famille / foyer", "école", "magasin", "hôpital"],
+              "correctAnswers": [0],
+              "explanation": "家 renvoie au foyer ou à la famille ; 家人 = les membres de la famille."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase présente sa famille de façon correcte ?",
+              "options": [
+                "我家有四口人。",
+                "我四家有口人。",
+                "四口我家有人。",
+                "有我家四口人。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre sujet-lieu-nombre-est très courant : « Chez nous, nous sommes quatre à la maison. »"
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Grand-père paternel » se dit :",
+              "options": [
+                "爷爷 (yéye)",
+                "外公 (wàigōng)",
+                "伯伯 (bóbo)",
+                "舅舅 (jiùjiu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "爷爷 = grand-père côté père ; 外公 = grand-père maternel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le mot 爱 (ài) exprime :",
+              "options": ["aimer", "manger", "dormir", "étudier"],
+              "correctAnswers": [0],
+              "explanation": "爱 = aimer ; on l'emploie aussi dans 我爱你 (je t'aime)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « 这是我妈妈 », 这 signifie :",
+              "options": ["ceci / c'est", "très", "aussi", "encore"],
+              "correctAnswers": [0],
+              "explanation": "这是… = « voici / c'est … », structure fréquente pour présenter quelqu'un."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien de traits a le caractère 口 (kǒu) ?",
+              "options": ["3", "4", "5", "6"],
+              "correctAnswers": [0],
+              "explanation": "口 est écrit en trois traits ; il signifie « bouche » et sert aussi de radical."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La particule 的 indique surtout :",
+              "options": [
+                "une relation d'appartenance",
+                "une question",
+                "le futur",
+                "la négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "的 marque le génitif ou l'attribut : 我的爸爸 = mon père."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Sœur aînée » correspond à :",
+              "options": [
+                "姐姐 (jiějie)",
+                "弟弟 (dìdi)",
+                "阿姨 (āyí)",
+                "女儿 (nǚ'ér)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "姐姐 = sœur aînée ; 女儿 = fille (enfant)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Famille élargie et politesse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes désignent des parents de la génération des gr-parents ou oncles/tantes ?",
+              "options": [
+                "奶奶 (nǎinai)",
+                "叔叔 (shūshu)",
+                "同学 (tóngxué)",
+                "阿姨 (āyí)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "奶奶 = grand-mère paternelle et 叔叔 = oncle paternel ; 同学 = camarade de classe, hors famille."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour saluer poliment un professeur, on dit souvent :",
+              "options": [
+                "老师好！(lǎoshī hǎo)",
+                "再见！(zàijiàn)",
+                "不客气 (bù kèqi)",
+                "对不起 (duìbuqǐ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "老师好 = « Bonjour professeur » ; formule attendue à l'école."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "您 (nín) est la forme polie de :",
+              "options": ["你 (nǐ)", "我 (wǒ)", "他 (tā)", "她 (tā)"],
+              "correctAnswers": [0],
+              "explanation": "您 = vous (de respect), surtout avec les aînés ou en contexte formel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Merci » se dit :",
+              "options": [
+                "谢谢 (xièxie)",
+                "你好 (nǐ hǎo)",
+                "没关系 (méi guānxi)",
+                "请 (qǐng)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "谢谢 = merci ; 请 = s'il vous plaît (invitation)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La réponse habituelle à 谢谢 est :",
+              "options": ["不客气", "对不起", "再见", "不好"],
+              "correctAnswers": [0],
+              "explanation": "不客气 ≈ « de rien / je vous en prie »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "舅舅 (jiùjiu) désigne :",
+              "options": [
+                "oncle maternel",
+                "oncle paternel",
+                "cousin",
+                "beau-frère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "舅舅 = frère de la mère ; 叔叔 = frère du père (cadet)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans une famille chinoise, 表哥 désigne souvent :",
+              "options": [
+                "un cousin du côté maternel",
+                "un grand-père",
+                "un voisin",
+                "un professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "表… marque les cousins du clan maternel (表兄, 表姐, etc.)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "请 (qǐng) devant un verbe signifie :",
+              "options": ["inviter / prière de", "ne pas", "déjà", "encore"],
+              "correctAnswers": [0],
+              "explanation": "请 + verbe = « veuillez… » ou « je vous invite à… »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "对不起 exprime :",
+              "options": [
+                "des excuses",
+                "de la joie",
+                "un refus poli",
+                "un au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "对不起 = pardon / désolé ; 没关系 répond souvent après."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Bonjour » (salutation générale) :",
+              "options": ["你好", "晚安", "欢迎", "加油"],
+              "correctAnswers": [0],
+              "explanation": "你好 = bonjour ; 晚安 = bonne nuit."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "À la maison",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots nomment des pièces ou espaces de la maison ?",
+              "options": [
+                "厨房 (chúfáng)",
+                "卧室 (wòshì)",
+                "机场 (jīchǎng)",
+                "教室 (jiàoshì)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "厨房 = cuisine, 卧室 = chambre ; 机场 = aéroport, 教室 = salle de classe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "客厅 (kètīng) est :",
+              "options": [
+                "le salon",
+                "la salle de bain",
+                "le garage",
+                "le couloir de l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "客厅 = salon / salle de séjour."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Je suis à la maison » se dit plutôt :",
+              "options": ["我在家。", "我在学校。", "我在中国。", "我在法国。"],
+              "correctAnswers": [0],
+              "explanation": "在家 = être à la maison ; 在 + lieu indique la position."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "房间 (fángjiān) signifie :",
+              "options": ["chambre / pièce", "jardin", "rue", "pont"],
+              "correctAnswers": [0],
+              "explanation": "房间 = pièce (d'une maison ou d'un hôtel)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le verbe 休息 (xiūxi) veut dire :",
+              "options": ["se reposer", "cuisiner", "conduire", "nager"],
+              "correctAnswers": [0],
+              "explanation": "休息 = se reposer ; utile après 学习 (étudier)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "桌子 (zhuōzi) désigne :",
+              "options": ["une table", "une chaise", "un lit", "une fenêtre"],
+              "correctAnswers": [0],
+              "explanation": "桌子 = table ; 椅子 = chaise."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Ouvrir la fenêtre » :",
+              "options": ["打开窗户", "关闭门", "洗衣服", "做作业"],
+              "correctAnswers": [0],
+              "explanation": "打开 = ouvrir, 窗户 = fenêtre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "电视 (diànshì) signifie :",
+              "options": ["télévision", "téléphone", "ordinateur", "radio"],
+              "correctAnswers": [0],
+              "explanation": "电视 = télévision ; 电话 = téléphone."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La négation habituelle avec un verbe est :",
+              "options": ["不 (bù)", "很 (hěn)", "也 (yě)", "都 (dōu)"],
+              "correctAnswers": [0],
+              "explanation": "不 + verbe = négation présent/futur proche (我不在家)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "睡觉 (shuìjiào) veut dire :",
+              "options": ["dormir", "manger", "lire", "chanter"],
+              "correctAnswers": [0],
+              "explanation": "睡觉 = dormir ; 起床 = se lever."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "École — lieux et personnes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots appartiennent au vocabulaire scolaire ?",
+              "options": [
+                "学校 (xuéxiào)",
+                "同学 (tóngxué)",
+                "饭店 (fàndiàn)",
+                "医院 (yīyuàn)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "学校 = école, 同学 = camarade ; 饭店 = restaurant, 医院 = hôpital."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "图书馆 (túshūguǎn) est :",
+              "options": [
+                "la bibliothèque",
+                "la cantine",
+                "le gymnase",
+                "l'infirmerie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "图书馆 = bibliothèque ( lieu de 书 = livres)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Professeur » se dit :",
+              "options": ["老师", "医生", "司机", "服务员"],
+              "correctAnswers": [0],
+              "explanation": "老师 = enseignant ; 医生 = médecin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "教室 (jiàoshì) signifie :",
+              "options": [
+                "salle de classe",
+                "bureau du directeur",
+                "cour de récréation",
+                "laboratoire de langues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "教室 = salle où l'on 教 (enseigne)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "学生 (xuésheng) désigne :",
+              "options": [
+                "un élève / étudiant",
+                "un parent",
+                "un étranger",
+                "un enfant en bas âge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学生 = personne qui 学 (apprend) à l'école."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Je vais à l'école » :",
+              "options": ["我去学校。", "我来法国。", "我回家。", "我吃饭。"],
+              "correctAnswers": [0],
+              "explanation": "去 + lieu = aller quelque part ; 学校 = école."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "校长 (xiàozhǎng) est :",
+              "options": [
+                "le directeur d'établissement",
+                "le gardien",
+                "le cuisinier",
+                "le bibliothécaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "校长 = responsable de 校 (établissement scolaire)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "课 (kè) dans 上课 signifie :",
+              "options": ["cours / leçon", "devoir", "vacances", "examen"],
+              "correctAnswers": [0],
+              "explanation": "上课 = suivre / commencer un cours."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "同学 et 朋友 :",
+              "options": [
+                "un camarade peut devenir un ami",
+                "sont toujours identiques",
+                "designent uniquement la famille",
+                "ne s'emploient qu'à l'oral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "同学 = camarade de classe ; 朋友 = ami (relation plus large)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "考试 (kǎoshì) signifie :",
+              "options": ["examen", "récréation", "inscription", "diplôme"],
+              "correctAnswers": [0],
+              "explanation": "考试 = examen / contrôle."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Matières et travail scolaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles matières sont nommées correctement en chinois ?",
+              "options": [
+                "数学 (shùxué)",
+                "汉语 (Hànyǔ)",
+                "游泳 (yóuyǒng)",
+                "历史 (lìshǐ)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "数学 = maths, 汉语 = langue chinoise ; 游泳 = natation (activité), pas une matière ici."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "作业 (zuòyè) désigne :",
+              "options": ["les devoirs", "le tableau", "la cloche", "le stylo"],
+              "correctAnswers": [0],
+              "explanation": "作业 = travail à faire à la maison."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Faire ses devoirs » :",
+              "options": ["做作业", "看电视", "打篮球", "睡觉"],
+              "correctAnswers": [0],
+              "explanation": "做 = faire + 作业 = devoirs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "英语 (Yīngyǔ) signifie :",
+              "options": [
+                "anglais (langue)",
+                " français",
+                "allemand",
+                "japonais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "英语 = langue anglaise enseignée au lycée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "学习 (xuéxí) veut dire :",
+              "options": [
+                "étudier / apprendre",
+                "jouer",
+                "voyager",
+                "cuisiner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学习 = processus d'apprentissage, très fréquent à l'école."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "笔 (bǐ) est :",
+              "options": [
+                "un instrument d'écriture",
+                "un cahier",
+                " une gomme",
+                " une règle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "笔 = stylo/pinceau ; 铅笔 = crayon."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "认真 (rènzhēn) décrit souvent un élève :",
+              "options": [
+                "sérieux / appliqué",
+                "paresseux",
+                " bruyant",
+                " en retard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "认真 = consciencieux, attentif au travail."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "问题 (wèntí) signifie :",
+              "options": ["question / problème", "réponse", "classe", "note"],
+              "correctAnswers": [0],
+              "explanation": "问题 = question posée en cours ou difficulté."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Je ne comprends pas » :",
+              "options": ["我不明白。", "我很高兴。", "我很好。", "我有钱。"],
+              "correctAnswers": [0],
+              "explanation": "明白 = comprendre ; 不 + verbe = négation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "课本 (kèběn) est :",
+              "options": [
+                "le manuel scolaire",
+                "le cartable",
+                " le planning",
+                " le bulletin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "课本 = livre de cours (课 + 本 classificateur des livres)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Sports et loisirs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes décrivent des loisirs sportifs ?",
+              "options": [
+                "打篮球 (dǎ lánqiú)",
+                "游泳 (yóuyǒng)",
+                "考试 (kǎoshì)",
+                "睡觉 (shuìjiào)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "打篮球 = jouer au basket, 游泳 = nager ; les deux sont des activités de loisir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "足球 (zúqiú) désigne :",
+              "options": [
+                "le football",
+                "le tennis",
+                " le volleyball",
+                " le rugby"
+              ],
+              "correctAnswers": [0],
+              "explanation": "足球 = ballon au pied (足 + 球)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Jouer au tennis » se dit :",
+              "options": ["打网球", "看网球", "写网球", "吃网球"],
+              "correctAnswers": [0],
+              "explanation": "打 + sport de balle = jouer (打网球, 打篮球)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "爱好 (àihào) signifie :",
+              "options": [
+                "passe-temps / hobby",
+                "devoir",
+                " maladie",
+                " voyage d'études"
+              ],
+              "correctAnswers": [0],
+              "explanation": "爱好 = ce que l'on aime faire régulièrement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "跑步 (pǎobù) veut dire :",
+              "options": ["courir / footing", "nager", " danser", " skier"],
+              "correctAnswers": [0],
+              "explanation": "跑步 = course à pied."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "喜欢 (xǐhuan) exprime :",
+              "options": [
+                "aimer / apprécier",
+                "détester",
+                " oublier",
+                " commencer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "喜欢 + nom/verbe = aimer (j'aime le sport)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "音乐 (yīnyuè) signifie :",
+              "options": ["musique", "peinture", " théâtre", " photo"],
+              "correctAnswers": [0],
+              "explanation": "音乐 = musique ; loisir culturel fréquent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "周末 (zhōumò) correspond à :",
+              "options": [
+                "le week-end",
+                "le lundi matin",
+                " les vacances d'été",
+                " la rentrée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "周末 = fin de semaine (samedi-dimanche)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "打 dans 打游戏 peut signifier :",
+              "options": [
+                "jouer (à un jeu)",
+                "frapper uniquement",
+                " manger",
+                " dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "打游戏 = jouer à un jeu (souvent vidéo) ; 打 est polyvalent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "运动 (yùndòng) désigne :",
+              "options": [
+                "sport / activité physique",
+                " lecture",
+                " cuisine",
+                " ménage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "运动 = mouvement sportif ou exercice physique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Culture et sorties",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots évoquent des sorties culturelles ou de divertissement ?",
+              "options": [
+                "电影 (diànyǐng)",
+                "公园 (gōngyuán)",
+                "厨房 (chúfáng)",
+                "博物馆 (bówùguǎn)"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "电影 = cinéma/film, 博物馆 = musée ; 厨房 = cuisine (maison)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "看电影 signifie :",
+              "options": [
+                "regarder un film",
+                "écouter de la radio",
+                " lire un roman",
+                " peindre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "看 = regarder + 电影 = film."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "唱歌 (chànggē) veut dire :",
+              "options": ["chanter", " danser", " jouer du piano", " écrire"],
+              "correctAnswers": [0],
+              "explanation": "唱歌 = chanter des 歌 (chansons)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "公园 (gōngyuán) est :",
+              "options": [
+                "un parc public",
+                " un supermarché",
+                " une gare",
+                " une plage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "公园 = espace vert ouvert au public."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「一起」dans 「我们一起去」exprime :",
+              "options": ["ensemble", " seulement", " jamais", " hier"],
+              "correctAnswers": [0],
+              "explanation": "一起 = ensemble ; structure invitation fréquente."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "有趣 (yǒuqù) décrit quelque chose :",
+              "options": [
+                "intéressant / amusant",
+                " ennuyeux",
+                " dangereux",
+                " cher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "有趣 = qui a du 趣 (intérêt)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "跳舞 (tiàowǔ) signifie :",
+              "options": ["danser", " courir", " nager", " dessiner"],
+              "correctAnswers": [0],
+              "explanation": "跳舞 = pratiquer la danse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "票 (piào) s'emploie pour :",
+              "options": [
+                "un billet (cinéma, train…)",
+                " une carte d'identité",
+                " un devoir",
+                " un manteau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "票 = ticket ; 电影票 = billet de cinéma."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "「太……了」 renforce souvent :",
+              "options": [
+                "l'intensité (trop / vraiment)",
+                " la négation",
+                " le passé",
+                " le futur lointain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "太好了 = « c'est génial » ; 太 + adj + 了 = très/trop."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "上网 (shàngwǎng) veut dire :",
+              "options": [
+                "surfer sur Internet",
+                " monter une montagne",
+                " prendre l'avion",
+                " faire les courses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "上网 = être en ligne / naviguer sur le web."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Temps libre et fréquence",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adverbes indiquent la fréquence ou l'habitude ?",
+              "options": [
+                "常常 (chángcháng)",
+                "有时候 (yǒu shíhou)",
+                "马上 (mǎshàng)",
+                "已经 (yǐjīng)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "常常 = souvent, 有时候 = parfois ; 马上 = tout de suite."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "每天 (měitiān) signifie :",
+              "options": [
+                "chaque jour",
+                " chaque année",
+                " une fois",
+                " jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "每天 = tous les jours (méthode pour parler de routine)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「我周末常常踢足球」 parle :",
+              "options": [
+                "d'une habitude le week-end",
+                " d'un projet professionnel",
+                " d'un repas",
+                " d'un examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "常常 + activité = habitude répétée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "休息天 / 休息日 évoque :",
+              "options": [
+                "un jour de repos",
+                " un jour de cours",
+                " une nuit blanche",
+                " une heure de trajet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire proche de 周末 pour parler de temps libre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "有时候 (yǒu shíhou) =",
+              "options": [
+                "parfois",
+                " toujours",
+                " rarement jamais",
+                " immédiatement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "有时候 indique une occurrence occasionnelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "想 (xiǎng) devant un verbe exprime souvent :",
+              "options": [
+                "vouloir / avoir envie de",
+                " devoir obligatoirement",
+                " finir de",
+                " oublier de"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我想看电影 = j'ai envie de voir un film."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "还 (hái) dans 「我还学习中文」 suggère :",
+              "options": [
+                "encore / en plus",
+                " jamais",
+                " hier seulement",
+                " demain matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "还 = encore (continuité ou addition)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "一共 (yígòng) sert à :",
+              "options": [
+                "indiquer un total",
+                " nier",
+                " saluer",
+                " demander l'heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一共 = au total (combien d'heures de loisir, etc.)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "「不太」devant un adjectif adoucit :",
+              "options": [
+                "la phrase (pas très…)",
+                " le temps",
+                " le prix",
+                " le sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不太好 = pas très bien (nuance fréquente à l'oral)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "安排 (ānpái) signifie plutôt :",
+              "options": [
+                "organiser / planifier",
+                " annuler",
+                " oublier",
+                " casser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "安排活动时间 = organiser son emploi du temps libre."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Repas et vie quotidienne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots concernent les repas ?",
+              "options": [
+                "早饭 (zǎofàn)",
+                "午饭 (wǔfàn)",
+                "考试 (kǎoshì)",
+                "晚饭 (wǎnfàn)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "早饭 = petit-déj., 午饭 = déjeuner ; 晚饭 aussi mais paire 0-1 suffit pour MC — les trois repas sont valides ; 考试 n'est pas un repas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "吃饭 (chīfàn) signifie :",
+              "options": [
+                "manger (un repas)",
+                " cuisiner seulement",
+                " jeûner",
+                " faire les courses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "吃饭 = prendre un repas (饭 = riz/repas)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "茶 (chá) désigne :",
+              "options": ["thé", " café", " jus", " lait"],
+              "correctAnswers": [0],
+              "explanation": "茶 = thé, boisson centrale dans la vie quotidienne chinoise."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「我饿了」exprime :",
+              "options": [
+                "j'ai faim",
+                " j'ai soif",
+                " je suis fatigué",
+                " j'ai froid"
+              ],
+              "correctAnswers": [0],
+              "explanation": "饿 = avoir faim ; 渴 = avoir soif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "筷子 (kuàizi) sont :",
+              "options": [
+                "des baguettes",
+                " des fourchettes",
+                " des assiettes",
+                " des verres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "筷子 = baguettes pour manger."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "冰箱 (bīngxiāng) est :",
+              "options": [
+                "le réfrigérateur",
+                " le four",
+                " la cafetière",
+                " le micro-ondes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "冰箱 = frigo (冰 = glace/froid)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "准备 (zhǔnbèi) veut dire :",
+              "options": ["préparer", " détruire", " vendre", " emprunter"],
+              "correctAnswers": [0],
+              "explanation": "准备晚饭 = préparer le dîner."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "好吃 (hǎochī) décrit :",
+              "options": [
+                "un plat savoureux",
+                " un plat froid",
+                " un plat cher",
+                " un plat épicé uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "好吃 = bon à manger (goût agréable)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "请进 (qǐng jìn) signifie :",
+              "options": [
+                "entrez (invitation)",
+                " sortez",
+                " asseyez-vous seulement",
+                " au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "请进 = formule d'accueil à la maison."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "洗碗 (xǐ wǎn) c'est :",
+              "options": [
+                "faire la vaisselle",
+                " laver le linge",
+                " nettoyer les vitres",
+                " passer l'aspirateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "洗 = laver, 碗 = bols/assiettes."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse famille — école — loisirs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases décrivent bien le quotidien d'un lycéen ?",
+              "options": [
+                "我早上七点上学。",
+                "下课以后我跟朋友打篮球。",
+                "我住在月亮上。",
+                "我弟弟在上小学。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Aller à l'école le matin et jouer au basket après les cours sont des situations réalistes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "放学 (fàngxué) signifie :",
+              "options": [
+                "la fin des cours",
+                " la rentrée",
+                " la pause déjeuner",
+                " les vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "放学 = quand l'école 放 (libère) les élèves."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "帮忙 (bāngmáng) veut dire :",
+              "options": ["aider", " déranger", " critiquer", " mentir"],
+              "correctAnswers": [0],
+              "explanation": "帮忙 = donner un coup de main (à la maison ou à l'école)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "快乐 (kuàilè) exprime :",
+              "options": ["joie / heureux", " tristesse", " colère", " peur"],
+              "correctAnswers": [0],
+              "explanation": "快乐 = état de bonheur (week-end en famille, etc.)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "忙 (máng) décrit une personne :",
+              "options": ["occupée", " libre", " malade", " en vacances"],
+              "correctAnswers": [0],
+              "explanation": "很忙 = très occupé (école + devoirs + loisirs)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "都 (dōu) dans 「我们都很努力」:",
+              "options": [
+                "tous (inclusivité)",
+                " seulement un",
+                " jamais",
+                " demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "都 = tous ; porte sur 我们."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "见面 (jiànmiàn) signifie :",
+              "options": [
+                "se rencontrer / se voir",
+                " se téléphoner",
+                " s'écrire",
+                " voyager"
+              ],
+              "correctAnswers": [0],
+              "explanation": "跟同学见面 = retrouver des camarades."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "记得 (jìde) veut dire :",
+              "options": ["se souvenir", " oublier", " inventer", " refuser"],
+              "correctAnswers": [0],
+              "explanation": "记得带课本 = se rappeler d'emporter le manuel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "安全 (ānquán) signifie :",
+              "options": [
+                "sûr / sécurité",
+                " dangereux",
+                " bruyant",
+                " rapide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "注意安全 = faire attention à la sécurité (sorties, sport)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "希望 (xīwàng) exprime :",
+              "options": [
+                "espérer / souhaiter",
+                " interdire",
+                " regretter",
+                " annoncer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "希望周末休息 = souhaiter se reposer le week-end."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Décrire une personne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs décrivent l'apparence ou le caractère ?",
+              "options": [
+                "高 (gāo)",
+                "友好 (yǒuhǎo)",
+                "红色 (hóngsè)",
+                "矮 (ǎi)"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "高 = grand, 矮 = petit (taille) ; 友好 = amical (personnalité)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "漂亮 (piàoliang) s'applique surtout à :",
+              "options": [
+                "une fille / une femme (belle)",
+                " un bâtiment uniquement",
+                " un chiffre",
+                " une heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "漂亮 = joli/belle pour une personne (surtout féminin à l'oral)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "头发 (tóufa) signifie :",
+              "options": ["cheveux", " yeux", " bouche", " mains"],
+              "correctAnswers": [0],
+              "explanation": "头发 = cheveux ; 长头发 = cheveux longs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "他有一双大眼睛 :",
+              "options": [
+                "Il a de grands yeux.",
+                " Il a les cheveux blonds.",
+                " Il porte des lunettes.",
+                " Il est professeur."
+              ],
+              "correctAnswers": [0],
+              "explanation": "眼睛 = yeux ; 大 = grands ; 一双 = une paire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "年轻 (niánqīng) veut dire :",
+              "options": ["jeune", " vieux", " fatigué", " malade"],
+              "correctAnswers": [0],
+              "explanation": "年轻 = jeune (âge ou allure)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "聪明 (cōngming) décrit :",
+              "options": ["intelligent", " timide", " bruyant", " lent"],
+              "correctAnswers": [0],
+              "explanation": "聪明 = esprit vif / intelligent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "穿 (chuān) devant un vêtement :",
+              "options": ["porter (habiller)", " acheter", " laver", " coudre"],
+              "correctAnswers": [0],
+              "explanation": "穿衣服 = s'habiller ; 穿 + vêtement = porter."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "有点儿 (yǒudiǎnr) devant un adj. :",
+              "options": [
+                "un peu (nuance)",
+                " beaucoup",
+                " pas du tout",
+                " toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "有点儿贵 = un peu cher."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "像 (xiàng) dans 「他像他爸爸」:",
+              "options": ["ressembler à", " détester", " suivre", " aider"],
+              "correctAnswers": [0],
+              "explanation": "像 = ressembler (traits du visage, caractère)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "性格 (xìnggé) signifie :",
+              "options": [
+                "personnalité / caractère",
+                " taille",
+                " poids",
+                " âge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "性格 = tempérament (introverti, optimiste…)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Couleurs et vêtements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles couleurs de base sont correctes ?",
+              "options": ["红色", "蓝色", "高兴", "绿色"],
+              "correctAnswers": [0, 1],
+              "explanation": "红/蓝/绿 sont des couleurs ; 高兴 = content (émotion)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "白色 (báisè) =",
+              "options": ["blanc", " noir", " gris", " jaune"],
+              "correctAnswers": [0],
+              "explanation": "白色 = couleur blanche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "一件衬衫 (yī jiàn chènshān) :",
+              "options": [
+                "une chemise (classificateur 件)",
+                " une paire de chaussures",
+                " un pantalon",
+                " un chapeau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "件 classe les vêtements du haut ; 衬衫 = chemise."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "裤子 (kùzi) désigne :",
+              "options": [
+                "un pantalon",
+                " une jupe",
+                " un manteau",
+                " des chaussettes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "裤子 = pantalon."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "新 (xīn) opposé fréquent :",
+              "options": ["旧 (jiù)", " 好", " 多", " 远"],
+              "correctAnswers": [0],
+              "explanation": "新 = neuf ; 旧 = vieux/usé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "贵 (guì) parle surtout :",
+              "options": [
+                "du prix (cher)",
+                " de la couleur",
+                " de la taille",
+                " du goût"
+              ],
+              "correctAnswers": [0],
+              "explanation": "贵 = cher ; 便宜 = bon marché."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "戴 (dài) pour les accessoires :",
+              "options": [
+                "porter (chapeau, lunettes…)",
+                " manger",
+                " courir",
+                " dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "戴眼镜 = porter des lunettes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "颜色 (yánsè) signifie :",
+              "options": ["couleur", " forme", " matière", " marque"],
+              "correctAnswers": [0],
+              "explanation": "什么颜色？ = quelle couleur ?"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "双 (shuāng) s'emploie pour :",
+              "options": [
+                "paires (chaussures, mains…)",
+                " liquides",
+                " livres",
+                " bâtiments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一双鞋 = une paire de chaussures."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "合适 (héshì) décrit un vêtement :",
+              "options": [
+                "qui va bien (taille)",
+                " trop sale",
+                " trop cher",
+                " trop vieux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很合适 = ça me va bien."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Météo et saisons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes décrivent le temps qu'il fait ?",
+              "options": [
+                "下雨 (xià yǔ)",
+                "冷 (lěng)",
+                "跑步 (pǎobù)",
+                "热 (rè)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "下雨 = pleuvoir, 冷 = froid ; 热 aussi météo ; 跑步 = sport."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "今天天气怎么样？ sert à :",
+              "options": [
+                "demander la météo",
+                " saluer",
+                " commander",
+                " se présenter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase type pour parler du temps."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "春天 (chūntiān) =",
+              "options": ["le printemps", " l'été", " l'automne", " l'hiver"],
+              "correctAnswers": [0],
+              "explanation": "春 = printemps dans le cycle 春夏秋冬."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "下雪 (xià xuě) signifie :",
+              "options": ["neiger", " vent fort", " orage", " brouillard"],
+              "correctAnswers": [0],
+              "explanation": "下 + phénomène = tomber (雨, 雪)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "暖和 (nuǎnhuo) décrit :",
+              "options": [
+                "doux / agréable (température)",
+                " glacial",
+                " étouffant",
+                " humide seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "暖和 = assez chaud pour être confortable."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "风 (fēng) =",
+              "options": ["vent", " soleil", " nuage", " arc-en-ciel"],
+              "correctAnswers": [0],
+              "explanation": "风 = vent ; 刮风 = il y a du vent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "季节 (jìjié) signifie :",
+              "options": ["saison", " semaine", " heure", " minute"],
+              "correctAnswers": [0],
+              "explanation": "四个季节 = les quatre saisons."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "晴天 (qíngtiān) =",
+              "options": ["temps ensoleillé", " nuit", " tempête", " neige"],
+              "correctAnswers": [0],
+              "explanation": "晴 = clair ; 晴天 = beau temps."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "比 (bǐ) dans 「今天比昨天冷」:",
+              "options": [
+                "comparer (plus/moins que)",
+                " nier",
+                " demander",
+                " compter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure comparative A 比 B + adj."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "记得带伞 :",
+              "options": [
+                "Pense à prendre un parapluie.",
+                " Il ne pleut jamais.",
+                " Le soleil est fort.",
+                " Ne sors pas."
+              ],
+              "correctAnswers": [0],
+              "explanation": "伞 = parapluie ; conseil fréquent s'il 下雨."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Raconter sa journée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots situent une journée dans le temps ?",
+              "options": [
+                "早上 (zǎoshang)",
+                "晚上 (wǎnshang)",
+                "绿色",
+                "中午 (zhōngwǔ)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "早上 = matin, 晚上 = soir ; 中午 = midi aussi valide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "先……再…… structure :",
+              "options": [
+                "d'abord… ensuite…",
+                " jamais… toujours…",
+                " hier… demain…",
+                " plus… moins…"
+              ],
+              "correctAnswers": [0],
+              "explanation": "先吃饭再学习 = manger d'abord, étudier ensuite."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "然后 (ránhòu) =",
+              "options": ["puis / ensuite", " avant", " pendant", " soudain"],
+              "correctAnswers": [0],
+              "explanation": "然后 enchaîne les étapes d'un récit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "起床 (qǐchuáng) signifie :",
+              "options": [
+                "se lever (du lit)",
+                " se coucher",
+                " déjeuner",
+                " rentrer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "起床 = début de journée typique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "刚才 (gāngcái) indique :",
+              "options": [
+                "il y a un instant (passé proche)",
+                " dans longtemps",
+                " demain",
+                " chaque semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "刚才 = à l'instant, pour raconter ce qui vient de se passer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "一起 (yìqǐ) dans un récit :",
+              "options": [
+                "ensemble avec quelqu'un",
+                " seul",
+                " en retard",
+                " en colère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我跟朋友一起去 = narration d'activité commune."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "回家 (huí jiā) =",
+              "options": [
+                "rentrer à la maison",
+                " quitter le pays",
+                " entrer en classe",
+                " monter en bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "回 = retourner + 家 = maison."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "最后 (zuìhòu) sert à :",
+              "options": [
+                "conclure (enfin / pour finir)",
+                " commencer",
+                " interrompre",
+                " nier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "最后 = dernière étape du récit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "今天我很忙 :",
+              "options": [
+                "Aujourd'hui je suis très occupé.",
+                " Hier j'étais libre.",
+                " Demain il pleut.",
+                " Je suis en vacances."
+              ],
+              "correctAnswers": [0],
+              "explanation": "很 + adj. = intensité ; 忙 = occupé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "告诉 (gàosu) veut dire :",
+              "options": [
+                "raconter / informer",
+                " cacher",
+                " oublier",
+                " dessiner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "告诉我今天做了什么 = demander le récit de la journée."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Déplacements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels moyens de transport sont nommés en chinois ?",
+              "options": [
+                "公共汽车 (gōnggòng qìchē)",
+                "自行车 (zìxíngchē)",
+                "筷子",
+                "地铁 (dìtiě)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "公交 = bus, 自行车 = vélo ; 地铁 = métro aussi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "走路 (zǒulù) =",
+              "options": ["marcher (à pied)", " conduire", " voler", " nager"],
+              "correctAnswers": [0],
+              "explanation": "走路 = se déplacer à pied."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "到 (dào) après un déplacement :",
+              "options": [
+                "arriver (à un lieu)",
+                " partir",
+                " tourner",
+                " attendre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "到学校 = arriver à l'école."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "离 (lí) dans 「离我家很近」:",
+              "options": [
+                "être à (distance) de",
+                " venir de",
+                " aller vers",
+                " entrer dans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "离…远/近 = loin/près de…"
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "票 (piào) + 火车 =",
+              "options": ["billet de train", " conducteur", " quai", " retard"],
+              "correctAnswers": [0],
+              "explanation": "火车票 = billet de chemin de fer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "左 (zuǒ) / 右 (yòu) :",
+              "options": [
+                "gauche / droite",
+                " nord / sud",
+                " haut / bas",
+                " avant / arrière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indispensable pour donner des directions."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "站 (zhàn) dans 车站 :",
+              "options": ["station / arrêt", " siège", " moteur", " route"],
+              "correctAnswers": [0],
+              "explanation": "车站 = gare ou arrêt."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "坐 (zuò) + transport :",
+              "options": [
+                "prendre (un moyen de transport)",
+                " acheter",
+                " réparer",
+                " louer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "坐地铁 = prendre le métro."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "远 (yuǎn) opposé :",
+              "options": ["近 (jìn)", " 高", " 快", " 新"],
+              "correctAnswers": [0],
+              "explanation": "远 = loin ; 近 = proche."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "地图 (dìtú) signifie :",
+              "options": [
+                "carte (géographique)",
+                " boussole",
+                " valise",
+                " passeport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "地图 = carte pour raconter un trajet."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Au marché et prix",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots appartiennent au shopping quotidien ?",
+              "options": ["买 (mǎi)", "钱 (qián)", "考试", "卖 (mài)"],
+              "correctAnswers": [0, 1],
+              "explanation": "买 = acheter, 钱 = argent ; 卖 = vendre aussi pertinent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "多少钱？ demande :",
+              "options": [
+                "combien ça coûte ?",
+                " quelle heure ?",
+                " où ?",
+                " pourquoi ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "多少 + 钱 = question sur le prix."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "块 (kuài) pour la monnaie :",
+              "options": [
+                "unité du yuan (oral)",
+                " gramme",
+                " litre",
+                " mètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "三块 = trois yuans (parlé)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "便宜 (piányi) =",
+              "options": ["bon marché", " cher", " lourd", " fragile"],
+              "correctAnswers": [0],
+              "explanation": "便宜 opposé de 贵."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "水果 (shuǐguǒ) désigne :",
+              "options": ["fruits", " légumes", " viande", " pain"],
+              "correctAnswers": [0],
+              "explanation": "水果 = fruits frais au marché."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "一点儿 (yìdiǎnr) avec un nom :",
+              "options": ["un peu de", " beaucoup de", " aucun", " tous les"],
+              "correctAnswers": [0],
+              "explanation": "买一点苹果 = acheter quelques pommes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "超市 (chāoshì) =",
+              "options": ["supermarché", " bibliothèque", " banque", " poste"],
+              "correctAnswers": [0],
+              "explanation": "超市 = grande surface."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "找 (zhǎo) au marché peut signifier :",
+              "options": [
+                "rendre la monnaie",
+                " chercher uniquement",
+                " casser",
+                " peser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "找您五块 = rendre 5 yuans de monnaie (contexte achat)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "新鲜 (xīnxiān) pour des légumes :",
+              "options": ["frais", " pourri", " congelé", " épicé"],
+              "correctAnswers": [0],
+              "explanation": "新鲜 = qualité du produit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "一共二十块 :",
+              "options": [
+                "Au total vingt yuans.",
+                " Vingt personnes.",
+                " Vingt kilos.",
+                " Il est vingt heures."
+              ],
+              "correctAnswers": [0],
+              "explanation": "一共 = total à payer."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Passé avec 了",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent 了 pour marquer un changement ou un accompli ?",
+              "options": ["我吃了早饭。", "他来了。", "了是名词", "天气冷了。"],
+              "correctAnswers": [0, 1],
+              "explanation": "了 en fin de proposition indique souvent action accomplie ou nouveau état."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "我买了一本书 :",
+              "options": [
+                "J'ai acheté un livre.",
+                " Je vais acheter un livre.",
+                " Je n'ai pas de livre.",
+                " Je lis un livre."
+              ],
+              "correctAnswers": [0],
+              "explanation": "了 marque l'achat réalisé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "没 (méi) pour nier le passé :",
+              "options": ["我没去。", "我不去。", "我没去吗？", "我去没。"],
+              "correctAnswers": [0],
+              "explanation": "没 + verbe = négation du passé (je n'y suis pas allé)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "昨天 (zuótiān) =",
+              "options": [
+                "hier",
+                " demain",
+                " aujourd'hui",
+                " l'année dernière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天 ancre le récit au passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "已经 (yǐjīng) suggère :",
+              "options": [
+                "déjà (action faite)",
+                " pas encore",
+                " bientôt",
+                " parfois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "已经…了 = c'est déjà fait."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "看了电影 :",
+              "options": [
+                "(avoir) regardé un film",
+                " vouloir un film",
+                " détester le cinéma",
+                " acheter un billet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "了 indique que la séance a eu lieu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "刚才我去了商店 :",
+              "options": [
+                "Il y a un instant je suis allé au magasin.",
+                " Demain j'irai.",
+                " Je n'y vais jamais.",
+                " Le magasin est fermé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "刚才 + 了 = passé très récent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "还 (hái) + 没 :",
+              "options": ["pas encore", " déjà", " jamais", " toujours"],
+              "correctAnswers": [0],
+              "explanation": "还没做完 = pas encore fini."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "过 (guo) après un verbe indique :",
+              "options": [
+                "expérience passée (déjà vécu)",
+                " futur certain",
+                " négation",
+                " question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我去过北京 = je suis déjà allé à Pékin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "开始 (kāishǐ) + verbe :",
+              "options": [
+                "commencer à…",
+                " finir de…",
+                " oublier de…",
+                " refuser de…"
+              ],
+              "correctAnswers": [0],
+              "explanation": "开始下雨 = il commence à pleuvoir (récit)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Opinions et comparaisons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots expriment un avis ou une comparaison ?",
+              "options": ["觉得 (juéde)", "比 (bǐ)", "桌子", "最好 (zuì hǎo)"],
+              "correctAnswers": [0, 1],
+              "explanation": "觉得 = trouver/penser ; 比 = comparer ; 最好 = le meilleur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "我觉得这个电影很有意思 :",
+              "options": [
+                "Je trouve ce film très intéressant.",
+                " Je refuse de voir le film.",
+                " Le film est court.",
+                " Personne n'aime le film."
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得 + opinion personnelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "更 (gèng) devant un adj. :",
+              "options": ["encore plus (…-er)", " moins", " jamais", " un peu"],
+              "correctAnswers": [0],
+              "explanation": "更好 = encore mieux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "一样 (yíyàng) signifie :",
+              "options": ["pareil / identique", " différent", " rare", " cher"],
+              "correctAnswers": [0],
+              "explanation": "A和B一样大 = A est aussi grand que B."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "可能 (kěnéng) exprime :",
+              "options": [
+                "possible / peut-être",
+                " certainement non",
+                " toujours",
+                " interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "可能下雨 = il va peut-être pleuvoir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "应该 (yīnggāi) =",
+              "options": [
+                "devoir / il faudrait",
+                " interdiction",
+                " souhait impossible",
+                " passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "你应该休息 = tu devrais te reposer."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "当然 (dāngrán) :",
+              "options": ["bien sûr", " jamais", " peut-être", " seulement"],
+              "correctAnswers": [0],
+              "explanation": "Renforce une opinion affirmative."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "虽然……但是…… :",
+              "options": [
+                "bien que… cependant…",
+                " si… alors…",
+                " d'abord… ensuite…",
+                " plus… plus…"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure concessive pour raconter un contraste."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "越……越…… :",
+              "options": [
+                "plus… plus…",
+                " moins… moins…",
+                " ni… ni…",
+                " ou… ou…"
+              ],
+              "correctAnswers": [0],
+              "explanation": "越学越有意思 = plus on apprend, plus c'est intéressant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "同意 (tóngyì) veut dire :",
+              "options": [
+                "être d'accord",
+                " refuser",
+                " ignorer",
+                " critiquer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我同意你的意见 = j'approuve ton avis."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Lieux et positions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots situent une personne ou un objet dans l'espace ?",
+              "options": ["在 (zài)", "上 (shàng)", "下 (xià)", "高兴"],
+              "correctAnswers": [0, 1],
+              "explanation": "在 = être à ; 上/下 = sur/sous ; 高兴 = content."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "里面 (lǐmiàn) =",
+              "options": ["à l'intérieur", " devant", " derrière", " à côté"],
+              "correctAnswers": [0],
+              "explanation": "在房间里面 = à l'intérieur de la pièce."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "旁边 (pángbiān) signifie :",
+              "options": [
+                "à côté de",
+                " loin de",
+                " en face uniquement",
+                " au-dessus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在学校旁边 = à côté de l'école."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "前面 (qiánmiàn) / 后面 (hòumiàn) :",
+              "options": [
+                "devant / derrière",
+                " gauche / droite",
+                " haut / bas",
+                " dedans / dehors"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repères pour décrire un lieu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "条 (tiáo) pour 河 (hé) :",
+              "options": [
+                "classificateur (rivière, route…)",
+                " verbe",
+                " adjectif",
+                " interjection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一条河 = une rivière (条 pour objets longs)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "城市 (chéngshì) =",
+              "options": ["ville", " village", " campagne", " montagne"],
+              "correctAnswers": [0],
+              "explanation": "城市 = agglomération urbaine."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "对 (duì) dans 对面 :",
+              "options": ["face à / en face", " loin", " proche", " autour"],
+              "correctAnswers": [0],
+              "explanation": "对面 = de l'autre côté / en face."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "地方 (dìfang) signifie :",
+              "options": ["endroit / lieu", " temps", " personne", " couleur"],
+              "correctAnswers": [0],
+              "explanation": "什么地方？ = quel endroit ?"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "从……到…… :",
+              "options": [
+                "de… à… (parcours)",
+                " plus… que…",
+                " si… alors…",
+                " ni… ni…"
+              ],
+              "correctAnswers": [0],
+              "explanation": "从家里到学校 = de la maison à l'école."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "附近 (fùjìn) =",
+              "options": [
+                "aux alentours / près d'ici",
+                " très loin",
+                " à l'étranger",
+                " en haut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "附近有一个公园 = il y a un parc nearby."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse décrire et raconter",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases racontent correctement une expérience vécue ?",
+              "options": [
+                "上个周末我参观了博物馆。",
+                "昨天太冷了，我穿了外套。",
+                "我明天了吃饭。",
+                "她描述朋友很友好。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "了/ passé avec 昨天 et récit du week-end sont corrects ; « 明天了 » est incohérent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "一边……一边…… :",
+              "options": [
+                "faire deux actions en même temps",
+                " d'abord… ensuite…",
+                " jamais…",
+                " plus… plus…"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一边听音乐一边做作业 = multitâche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "突然 (tūrán) dans un récit :",
+              "options": ["soudain", " lentement", " souvent", " poliment"],
+              "correctAnswers": [0],
+              "explanation": "突然下雨 = il s'est mis à pleuvoir soudain."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "终于 (zhōngyú) exprime :",
+              "options": [
+                "enfin (après effort)",
+                " jamais",
+                " tout de suite",
+                " parfois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "终于到了 = on est enfin arrivés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "为了 (wèile) introduit :",
+              "options": [
+                "le but (pour / afin de)",
+                " la cause passée",
+                " la négation",
+                " une question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "为了学习中文 = dans le but d'apprendre le chinois."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "不但……而且…… :",
+              "options": [
+                "non seulement… mais encore…",
+                " bien que…",
+                " ou… ou…",
+                " si… alors…"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renforce une description (il est grand 而且 聪明)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "样子 (yàngzi) signifie :",
+              "options": ["apparence / allure", " bruit", " odeur", " prix"],
+              "correctAnswers": [0],
+              "explanation": "你的样子 = ton look / ton air."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "记得/忘记 pair :",
+              "options": [
+                "se souvenir / oublier",
+                " aimer / détester",
+                " venir / partir",
+                " acheter / vendre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire clé pour raconter des oublis ou souvenirs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "真 (zhēn) devant adj. oral :",
+              "options": [
+                "vraiment (intensifieur)",
+                " faux",
+                " à peine",
+                " jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "真漂亮 = vraiment joli (description spontanée)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "总结 (zǒngjié) en fin de récit :",
+              "options": [
+                "résumer / conclure",
+                " commencer",
+                " interrompre",
+                " traduire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "总结今天的事 = résumer ce qui s'est passé aujourd'hui."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

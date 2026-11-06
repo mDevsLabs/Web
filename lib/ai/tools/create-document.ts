@@ -1,6 +1,8 @@
 import { tool, type UIMessageStreamWriter } from "ai";
 import type { Session } from "next-auth";
 import { z } from "zod";
+import { AGENT_ERROR_CODES } from "@/lib/agent/errors";
+import { AgentToolError } from "@/lib/agent/tool-errors";
 import {
   artifactKinds,
   documentHandlersByArtifactKind,
@@ -102,7 +104,11 @@ export const createDocument = ({
       );
 
       if (!documentHandler) {
-        throw new Error(`No document handler found for kind: ${kind}`);
+        throw new AgentToolError({
+          category: "invalid_arguments",
+          code: AGENT_ERROR_CODES.invalidInput,
+          message: `Aucun gestionnaire pour le type « ${kind} ». Choisis parmi : ${artifactKinds.join(", ")}.`,
+        });
       }
 
       await documentHandler.onCreateDocument({

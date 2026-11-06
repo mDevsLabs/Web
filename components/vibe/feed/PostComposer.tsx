@@ -509,11 +509,7 @@ export const PostComposer: React.FC<PostComposerProps> = ({
     if (!aiSnapshot) return;
     const snapshot = aiSnapshot;
     setAiSnapshot(null);
-    editorRef.current?.clear();
-    // insertText insère du texte brut : réinjecte le HTML via le presse-papiers interne
-    const el = document.createElement("div");
-    el.innerHTML = snapshot;
-    editorRef.current?.insertText(el.textContent || "");
+    editorRef.current?.setHTML(snapshot);
     editorRef.current?.focus();
   };
 

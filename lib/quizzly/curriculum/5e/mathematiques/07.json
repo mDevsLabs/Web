@@ -1,0 +1,1718 @@
+{
+  "id": "5e-mathematiques-07",
+  "year": "5e",
+  "subject": "mathematiques",
+  "title": "Organisation de données",
+  "order": 7,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un graphique",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un diagramme en bâtons compte les livres lus en janvier : Roman 8, BD 5, Poésie 3, Documentaire 4. Quelles affirmations sont exactes ?",
+              "options": [
+                "Le roman est la catégorie la plus lue.",
+                "La BD a été lue 5 fois.",
+                "Poésie et documentaire ont le même effectif.",
+                "Le total des lectures est 20."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Effectifs : Rouge 12, Bleu 9, Vert 6, Jaune 3. Quel est l'effectif total ?",
+              "options": ["27", "30", "24", "33"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sur un diagramme en bâtons, le bâton « Mercredi » monte jusqu'à 7 sur l'axe vertical. Quel est l'effectif du mercredi ?",
+              "options": ["5", "6", "7", "8"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tableau : A=4, B=4, C=10, D=2. Quelle valeur a le plus grand effectif ?",
+              "options": ["A", "B", "C", "D"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Diagramme circulaire : part A = 1/4 du disque, part B = 1/2, part C = 1/4. Quelle part représente la moitié ?",
+              "options": ["A", "B", "C", "Aucune"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bâtons : Lundi 2, Mardi 5, Mercredi 5, Jeudi 3. Combien de jours ont un effectif strictement supérieur à 3 ?",
+              "options": ["1", "2", "3", "4"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sur 40 élèves, un quart préfère le foot. Combien d'élèves est-ce ?",
+              "options": ["5", "8", "10", "20"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Effectifs des notes 10, 12, 14, 16 : respectivement 3, 5, 7, 5. Quel est l'effectif de la note 14 ?",
+              "options": ["3", "5", "7", "20"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un diagramme circulaire est partagé en 4 parts égales ; une part est colorée. Quelle fraction du total représente cette part ?",
+              "options": ["1/2", "1/3", "1/4", "1/5"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bâtons : Chat 15, Chien 10, Lapin 5. Quelle est la différence d'effectif entre chat et lapin ?",
+              "options": ["5", "10", "15", "20"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Températures lues sur un graphique (°C) : Lun 12, Mar 14, Mer 11, Jeu 15. Quelles lectures sont correctes ?",
+              "options": [
+                "Jeudi est le jour le plus chaud.",
+                "Mardi vaut 14 °C.",
+                "Lundi et jeudi ont la même température.",
+                "Mercredi est le jour le plus froid."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Effectifs : Pomme 18, Poire 12, Banane 6. Quel fruit a l'effectif le plus petit ?",
+              "options": ["Pomme", "Poire", "Banane", "Ils sont égaux"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un bâton « 2020 » atteint 25 et « 2021 » atteint 30 sur le même graphique. De combien augmente l'effectif ?",
+              "options": ["3", "4", "5", "6"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Répartition : 50 % foot, 25 % basket, 25 % natation. Quel sport occupe la plus grande part du diagramme circulaire ?",
+              "options": [
+                "Foot",
+                "Basket",
+                "Natation",
+                "Basket et natation ex aequo"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tableau d'effectifs : 2, 2, 2, 2 pour quatre couleurs. Quel est l'effectif total ?",
+              "options": ["6", "8", "10", "12"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sur 24 votants, 1/3 choisit A. Quel est l'effectif de A ?",
+              "options": ["6", "8", "9", "12"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bâtons alignés : effectifs 0, 4, 8, 4 pour quatre trimestres. Quel trimestre a l'effectif 8 ?",
+              "options": ["Le 1er", "Le 2e", "Le 3e", "Le 4e"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Diagramme circulaire : 3 parts égales. Une part vaut combien en fraction du total ?",
+              "options": ["1/2", "1/3", "1/4", "1/6"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Effectifs bus A 22, bus B 18, bus C 20. Quel bus transporte le plus d'élèves ?",
+              "options": ["A", "B", "C", "B et C ex aequo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Somme des effectifs 6 + 9 + 15. Quel total obtient-on ?",
+              "options": ["28", "29", "30", "31"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Graphique des ventes (unités) : T1=10, T2=15, T3=15, T4=20. Quelles infos sont vraies ?",
+              "options": [
+                "Le T4 a l'effectif le plus élevé.",
+                "T2 et T3 ont le même effectif.",
+                "T1 a vendu 15 unités.",
+                "Le total sur l'année est 60 unités."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un diagramme en bâtons montre 11 pour « Filles » et 9 pour « Garçons ». Quel est l'effectif des filles ?",
+              "options": ["9", "10", "11", "20"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Parts circulaires : 1/2 gâteau chocolat, 1/4 vanille, 1/4 fraise. Quelle saveur a la plus petite part (hors égalité) ?",
+              "options": [
+                "Chocolat",
+                "Vanille",
+                "Fraise",
+                "Vanille et fraise ont la même part"
+              ],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Effectifs 5, 10, 15, 20 pour quatre activités. Quelle activité correspond à 15 ?",
+              "options": ["La 1re", "La 2e", "La 3e", "La 4e"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sur 36 élèves, 1/4 pratique la musique. Quel effectif ?",
+              "options": ["6", "8", "9", "12"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bâtons : effectif 0 pour « Aucun » et 12 pour « Oui ». Quelle est la somme des effectifs ?",
+              "options": ["10", "11", "12", "13"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lecture directe : le bâton « Espagnol » s'arrête à la graduation 6. Effectif ?",
+              "options": ["4", "5", "6", "7"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Table : M=7, N=7, O=3, P=3. Combien de lettres ont un effectif de 7 ?",
+              "options": ["0", "1", "2", "3"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Diagramme circulaire en 2 parts égales. Chaque part représente quelle fraction ?",
+              "options": ["1/4", "1/3", "1/2", "2/3"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Effectifs 14 et 21 pour deux clubs. Quelle est leur somme ?",
+              "options": ["33", "34", "35", "36"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Nombre de pages lues : Sam 20, Dim 10, Lun 15, Mar 15. Quelles réponses sont exactes ?",
+              "options": [
+                "Samedi a le plus grand effectif.",
+                "Dimanche a le plus petit effectif.",
+                "Lundi et mardi ont le même effectif.",
+                "Le total est 55 pages."
+              ],
+              "correctAnswers": [1, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bâtons : effectifs 4, 6, 8, 10 pour les notes 8 à 11. Quel est l'effectif pour la note 10 ?",
+              "options": ["4", "6", "8", "10"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "60 % d'un disque est une couleur, le reste en deux parts égales. Quelle part vaut 60 % ?",
+              "options": [
+                "La plus petite",
+                "La plus grande",
+                "Une des deux petites",
+                "Impossible à lire"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Effectifs vélo 13, trottinette 7, marche 10. Quel mode a l'effectif 7 ?",
+              "options": ["Vélo", "Trottinette", "Marche", "Aucun"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sur 20 personnes, 1/2 choisit le thé. Effectif du thé ?",
+              "options": ["5", "8", "10", "15"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Graduations de 0 à 10 sur l'axe ; un bâton atteint la 5e graduation au-dessus de 0. Effectif ?",
+              "options": ["4", "5", "6", "10"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Somme 11 + 14 + 5. Résultat ?",
+              "options": ["28", "29", "30", "31"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quatre parts égales dans un circulaire. Chaque part vaut quel pourcentage simple ?",
+              "options": ["20 %", "25 %", "30 %", "40 %"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Effectifs A=1, B=2, C=3, D=4. Quel est l'effectif total ?",
+              "options": ["8", "9", "10", "11"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bâton le plus court : effectif 2 ; le plus long : 9. Quelle est la différence ?",
+              "options": ["5", "6", "7", "8"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Réponses à un sondage (effectifs) : Oui 16, Non 8, Sans avis 4. Quelles affirmations conviennent ?",
+              "options": [
+                "« Oui » a l'effectif le plus grand.",
+                "« Non » vaut 8.",
+                "« Sans avis » vaut 6.",
+                "L'effectif total est 28."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Diagramme en bâtons : Jan 4, Fév 7, Mar 7, Avr 2. Quel mois a l'effectif 2 ?",
+              "options": ["Janvier", "Février", "Mars", "Avril"],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "1/5 du cercle est coloré en bleu. Sur 25 personnes, combien choisissent le bleu ?",
+              "options": ["4", "5", "6", "10"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Effectifs 9, 9, 6, 6 pour quatre équipes. Combien d'équipes ont l'effectif 9 ?",
+              "options": ["0", "1", "2", "4"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lecture : bâton « Maths » = 13, « Français » = 17. Quelle matière a le plus grand effectif ?",
+              "options": [
+                "Maths",
+                "Français",
+                "Égalité",
+                "On ne peut pas savoir"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Total des effectifs 20. Si une catégorie vaut 5, quelle fraction du total est-ce ?",
+              "options": ["1/2", "1/3", "1/4", "1/5"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bâtons de hauteurs 3, 6, 9 (unités). Quel est l'effectif du 2e bâton ?",
+              "options": ["3", "6", "9", "18"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Table : effectif total 45 réparti 15, 15, 15 sur trois options. Chaque option vaut ?",
+              "options": ["10", "12", "15", "20"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Circulaire : moitié rouge, quart vert, quart bleu. Quelle couleur occupe 1/4 ?",
+              "options": ["Rouge", "Vert", "Bleu", "Vert ou bleu"],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Effectifs 8 + 12 + 5. Total ?",
+              "options": ["23", "24", "25", "26"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Points marqués par match : M1=3, M2=5, M3=5, M4=1. Quelles lectures sont bonnes ?",
+              "options": [
+                "Le match 4 a le plus petit effectif.",
+                "Les matchs 2 et 3 sont à égalité.",
+                "Le match 1 vaut 5 points.",
+                "Le total est 14 points."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un bâton atteint 19 sur un axe gradué de 2 en 2. L'effectif est-il 19 ?",
+              "options": ["Oui, 19", "Non, 18", "Non, 20", "Non, 17"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sur 48 élèves, 1/8 sont absents un jour. Quel est l'effectif des absents ?",
+              "options": ["4", "5", "6", "8"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Effectifs snack : Chips 24, Barre 16, Fruit 8. Quel snack a l'effectif 16 ?",
+              "options": ["Chips", "Barre", "Fruit", "Aucun"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux bâtons mesurent 10 et 6. Quelle est la somme des effectifs ?",
+              "options": ["14", "15", "16", "17"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Diagramme circulaire : 10 %, 20 %, 30 %, 40 % pour quatre secteurs. Quel est le plus petit pourcentage ?",
+              "options": ["10 %", "20 %", "30 %", "40 %"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Effectifs 0, 1, 2, 3 pour quatre niveaux. Quel est l'effectif total ?",
+              "options": ["5", "6", "7", "8"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Bâton « Art » : 11 ; « Sport » : 11. Que peut-on dire ?",
+              "options": [
+                "Art > Sport",
+                "Art < Sport",
+                "Art = Sport",
+                "Total 22 impossible"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "1/2 + 1/4 + 1/4 en parts d'un circulaire. Combien de parts valent 1/4 ?",
+              "options": ["0", "1", "2", "3"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lecture tableau : effectifs 22, 18, 20 pour trois villes. Quelle ville a 18 ?",
+              "options": ["La 1re", "La 2e", "La 3e", "Impossible"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Heures de sport par semaine (effectifs) : 0h→2 élèves, 2h→5, 4h→5, 6h→1. Quelles infos sont exactes ?",
+              "options": [
+                "5 élèves font 2 h de sport.",
+                "4 h et 2 h ont le même effectif.",
+                "6 h a le plus grand effectif.",
+                "Il y a 13 élèves au total."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bâtons : effectif 25 pour « A ». Sur un total de 100, quel pourcentage simple ?",
+              "options": ["10 %", "20 %", "25 %", "50 %"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Effectifs 7, 14, 21 forment une suite. Quel est le 2e effectif ?",
+              "options": ["7", "14", "21", "42"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Circulaire en 5 parts égales. Une part vaut quelle fraction ?",
+              "options": ["1/5", "1/4", "1/3", "2/5"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Diagramme : bâton « Hiver » = 6, « Été » = 14. Différence d'effectifs ?",
+              "options": ["6", "7", "8", "9"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Table effectifs total 32 avec quatre valeurs égales à 8. Chaque valeur vaut ?",
+              "options": ["4", "6", "8", "16"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le plus grand bâton vaut 30, le plus petit 5. Écart entre ces effectifs ?",
+              "options": ["20", "25", "30", "35"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur 50 personnes, 20 % choisissent A. Quel effectif pour A ?",
+              "options": ["5", "10", "15", "20"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Effectifs lus : 3, 3, 3, 3, 3 pour cinq jours. Total sur la semaine (5 jours) ?",
+              "options": ["12", "15", "18", "20"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bâton « Cinéma » atteint 4 ; « Théâtre » atteint 9. Somme des effectifs ?",
+              "options": ["11", "12", "13", "14"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Votes (effectifs) : Bleu 12, Rouge 8, Vert 4. Quelles propositions sont vraies ?",
+              "options": [
+                "Bleu a l'effectif le plus élevé.",
+                "Rouge vaut 8.",
+                "Vert vaut 6.",
+                "Le total des votes est 24."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un diagramme circulaire montre 75 % pour une activité. Quelle fraction simple équivalente ?",
+              "options": ["1/2", "2/3", "3/4", "4/5"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bâtons effectifs 1, 4, 7, 10. Quel est l'effectif du 4e bâton ?",
+              "options": ["1", "4", "7", "10"],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur 28 élèves, 1/4 mangent à la cantine et le reste à la maison. Effectif cantine ?",
+              "options": ["4", "6", "7", "8"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Effectifs deux groupes : 19 et 21. Total ?",
+              "options": ["38", "39", "40", "41"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quatre bâtons de même hauteur (effectif 5 chacun). Effectif total ?",
+              "options": ["15", "18", "20", "25"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lecture : « Mercredi » = 0, « Jeudi » = 6. Quel jour a l'effectif 0 ?",
+              "options": ["Mercredi", "Jeudi", "Les deux", "Aucun"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Parts 1/3, 1/3, 1/3 sur un circulaire. Combien de parts distinctes ?",
+              "options": ["1", "2", "3", "4"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Effectifs 10, 15, 20, 25. Quel est le plus petit ?",
+              "options": ["10", "15", "20", "25"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bâton double de 7 vaut quel effectif ?",
+              "options": ["9", "12", "14", "21"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Nombre de messages : Matin 6, Midi 9, Soir 9, Nuit 3. Quelles affirmations sont correctes ?",
+              "options": [
+                "Midi et soir ont le même effectif.",
+                "Nuit a l'effectif le plus petit.",
+                "Matin vaut 9.",
+                "Le total est 27 messages."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Effectif total 60 ; une catégorie vaut 15. Quelle fraction du total ?",
+              "options": ["1/2", "1/3", "1/4", "1/5"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bâtons : 12, 8, 4 pour trois saisons enregistrées. Quelle saison a l'effectif 4 ?",
+              "options": ["La 1re", "La 2e", "La 3e", "Impossible"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Circulaire : 1/2 + 1/2. Combien de parts de 1/2 ?",
+              "options": ["0", "1", "2", "4"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Effectifs 16 et 24. Quelle est leur somme ?",
+              "options": ["38", "40", "42", "44"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sur un axe, graduation 0 puis 5, 10, 15… Un bâton s'arrête sur 10. Effectif ?",
+              "options": ["5", "10", "15", "20"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Table : effectifs 2, 5, 8, 11. Quel est l'effectif total ?",
+              "options": ["24", "25", "26", "27"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "40 % sur 50 personnes. Effectif correspondant ?",
+              "options": ["15", "18", "20", "25"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bâton le plus haut 18, un autre 18, un troisième 6. Combien de bâtons valent 18 ?",
+              "options": ["0", "1", "2", "3"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Différence entre effectifs 23 et 17 ?",
+              "options": ["4", "5", "6", "7"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Stations de métro fréquentées (effectifs/jour) : A 1000, B 500, C 500, D 250. Quelles lectures sont exactes ?",
+              "options": [
+                "B et C ont le même effectif.",
+                "D a le plus petit effectif.",
+                "A vaut 500.",
+                "Le total est 2250 passages."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dernier bâton d'une série vaut 13 ; l'avant-dernier 10. Somme de ces deux effectifs ?",
+              "options": ["21", "22", "23", "24"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "1/10 du disque pour une option. Sur 30 personnes, effectif ?",
+              "options": ["2", "3", "4", "5"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Effectifs 9, 12, 15, 18. Quel est le plus grand effectif ?",
+              "options": ["9", "12", "15", "18"],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Trois bâtons : 7, 7, 14. Quel est l'effectif total ?",
+              "options": ["26", "27", "28", "29"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Circulaire : quart, quart, moitié. Quelle part est la moitié ?",
+              "options": ["La 1re", "La 2e", "La 3e", "Aucune"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lecture directe effectif 0 : que signifie le bâton ?",
+              "options": [
+                "Effectif inconnu",
+                "Aucune occurrence",
+                "Effectif maximal",
+                "Erreur de graphique obligatoire"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Somme 13 + 17 + 10. Résultat ?",
+              "options": ["38", "39", "40", "41"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Effectif 6 sur un total de 12. Quelle fraction du total ?",
+              "options": ["1/6", "1/4", "1/3", "1/2"],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bâtons alignés : effectifs 5, 10, 15, 20, 25. Quel est l'effectif du 3e bâton ?",
+              "options": ["5", "10", "15", "20"],
+              "correctAnswers": [2]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Interpréter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Notes : 10, 12, 14, 16 avec effectifs 2, 3, 3, 2. Quelles conclusions sont valides ?",
+              "options": [
+                "Les notes 12 et 14 ont le même effectif.",
+                "La note 10 a l'effectif le plus petit avec la note 16.",
+                "La note 14 est la plus fréquente seule.",
+                "Il y a 10 copies au total."
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Moyenne de 4, 6 et 8 ?",
+              "options": ["5", "6", "7", "8"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Effectifs : Sport 20, Lecture 10. Combien de fois plus d'élèves pour le sport ?",
+              "options": ["1", "2", "3", "4"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Diagramme circulaire : 50 % A, 25 % B, 25 % C. Quelle activité est deux fois moins choisie que A ?",
+              "options": ["A", "B", "C", "B ou C"],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Moyenne de 10 et 20 ?",
+              "options": ["10", "15", "20", "30"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bâtons : Lundi 3, Mardi 6, Mercredi 9. Quelle tendance observe-t-on ?",
+              "options": [
+                "Les effectifs diminuent",
+                "Les effectifs augmentent",
+                "Tous égaux",
+                "Aucune tendance"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Total 40 ; effectif catégorie X = 10. Quelle part du total en pourcentage simple ?",
+              "options": ["10 %", "20 %", "25 %", "40 %"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Moyenne de 5, 5, 5 et 5 ?",
+              "options": ["4", "5", "6", "20"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Effectifs 8 et 12 pour filles et garçons. Quelle catégorie est majoritaire ?",
+              "options": [
+                "Filles",
+                "Garçons",
+                "Égalité",
+                "On ne peut pas comparer"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Moyenne de 2, 4, 6, 8 et 10 ?",
+              "options": ["5", "6", "7", "8"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Températures moyennes lues : Ville P 15 °C, Ville Q 18 °C, Ville R 12 °C. Quelles interprétations sont justes ?",
+              "options": [
+                "Q est la ville la plus chaude en moyenne.",
+                "R est la ville la plus froide en moyenne.",
+                "P et R ont la même température.",
+                "Q dépasse P de 3 °C."
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Moyenne de 3, 7 et 8 ?",
+              "options": ["5", "6", "7", "8"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Effectifs ventes : A 30, B 10. De combien A dépasse-t-il B ?",
+              "options": ["10", "15", "20", "25"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Circulaire : 1/4 pain, 3/4 pâtisserie. Quelle part est la plus consommée ?",
+              "options": ["Pain", "Pâtisserie", "Égalité", "Impossible"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Moyenne de 12 et 18 ?",
+              "options": ["14", "15", "16", "17"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Effectifs 5, 15, 25. La série augmente-t-elle de 10 à chaque étape ?",
+              "options": [
+                "Oui",
+                "Non",
+                "On ne sait pas",
+                "Les effectifs baissent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sur 25 élèves, 5 absents. Quelle fraction des élèves est absente ?",
+              "options": ["1/2", "1/3", "1/4", "1/5"],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Moyenne de 9, 10 et 11 ?",
+              "options": ["9", "10", "11", "30"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bâtons identiques pour « Oui » et « Non » (effectif 14 chacun). Que conclure ?",
+              "options": [
+                "« Oui » domine",
+                "« Non » domine",
+                "Égalité entre les deux",
+                "Total inconnu"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Moyenne de 0, 10 et 20 ?",
+              "options": ["5", "10", "15", "20"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Heures de devoirs : 30 min→4 élèves, 45 min→6, 60 min→6, 75 min→2. Quelles interprétations tiennent ?",
+              "options": [
+                "45 min et 60 min sont les durées les plus fréquentes.",
+                "75 min est la durée la moins fréquente.",
+                "30 min a le plus grand effectif.",
+                "18 élèves ont été interrogés."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Moyenne de 6, 9 et 12 ?",
+              "options": ["7", "8", "9", "10"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Effectif A=18, B=6. A représente combien de fois B ?",
+              "options": ["2", "3", "4", "6"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Total 100 ; part 40 % pour une option. Effectif ?",
+              "options": ["30", "35", "40", "45"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Moyenne de 4, 4, 4, 4, 4 ?",
+              "options": ["3", "4", "5", "20"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bâtons décroissants de 20 à 5 de gauche à droite. Que signifie cela ?",
+              "options": [
+                "Les effectifs augmentent",
+                "Les effectifs diminuent",
+                "Tous nuls",
+                "Graphique illisible"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Moyenne de 7 et 13 ?",
+              "options": ["9", "10", "11", "12"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Effectifs 11, 22, 33. Chaque terme suivant augmente de 11. Quel est le 2e ?",
+              "options": ["11", "22", "33", "44"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Circulaire moitié/moitié. Peut-on dire que les deux groupes sont équilibrés ?",
+              "options": ["Oui", "Non", "Seulement si total pair", "Jamais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Moyenne de 1, 2, 3, 4, 5, 6, 7, 8, 9 ?",
+              "options": ["4", "5", "6", "7"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Recyclage (kg/classe) : 6A→12, 6B→8, 6C→12, 6D→4. Quelles conclusions sont correctes ?",
+              "options": [
+                "6A et 6C ont collecté la même masse.",
+                "6D a le plus faible effectif en kg.",
+                "6B a collecté 12 kg.",
+                "La collecte totale est 36 kg."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Moyenne de 15, 15 et 30 ?",
+              "options": ["15", "18", "20", "25"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Effectifs 7 et 21. Le second est combien de fois le premier ?",
+              "options": ["2", "3", "4", "7"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si le plus grand bâton double le plus petit (6 et 12), que dire ?",
+              "options": [
+                "Le plus grand vaut le double du plus petit",
+                "Les effectifs sont égaux",
+                "Le total vaut 6",
+                "Impossible"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Moyenne de 8, 10 et 12 ?",
+              "options": ["8", "9", "10", "11"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Total sondage 50 ; option gagnante 30 voix. Est-elle majoritaire (plus de la moitié) ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Égalité exacte",
+                "Données insuffisantes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Moyenne de 2, 5 et 11 ?",
+              "options": ["5", "6", "7", "8"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Parts 10 %, 20 %, 30 %, 40 %. Quelle part cumule le plus de personnes ?",
+              "options": ["10 %", "20 %", "30 %", "40 %"],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Effectifs 13, 13, 14. Quel effectif est le plus grand ?",
+              "options": ["10", "13", "14", "27"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Moyenne de 20, 20, 20 et 40 ?",
+              "options": ["20", "22", "25", "30"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dépenses (€) : Goûter 2→10 élèves, Transport 4→5, Sortie 6→5. Quelles interprétations sont exactes ?",
+              "options": [
+                "Le goûter à 2 € est le poste le plus fréquent.",
+                "Transport et sortie ont le même effectif.",
+                "10 élèves dépensent 4 € en transport.",
+                "20 élèves ont répondu au total."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Moyenne de 11, 12 et 13 ?",
+              "options": ["11", "12", "13", "36"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Effectifs 9, 12, 15. Augmentation constante entre termes consécutifs ?",
+              "options": ["+2", "+3", "+4", "+5"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Circulaire : 60 %, 20 %, 20 %. La part 60 % est combien de fois une part 20 % ?",
+              "options": ["2", "3", "4", "5"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Moyenne de 6 et 14 ?",
+              "options": ["8", "9", "10", "11"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bâton A deux fois plus haut que B ; B vaut 5. Effectif de A ?",
+              "options": ["5", "7", "10", "15"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Total 80 ; une catégorie 20. Fraction du total ?",
+              "options": ["1/2", "1/3", "1/4", "1/5"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Moyenne de 3, 6, 9, 12 ?",
+              "options": ["6", "7", "7,5", "8"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Effectifs 4, 16, 4, 16. Que remarque-t-on ?",
+              "options": [
+                "Deux paires de valeurs égales",
+                "Tous différents",
+                "Un seul maximum",
+                "Total nul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Moyenne de 25 et 35 ?",
+              "options": ["28", "30", "32", "35"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tailles de chaussures (effectifs) : 38→2, 39→5, 40→5, 41→1. Quelles conclusions sont fondées ?",
+              "options": [
+                "39 et 40 sont les tailles les plus fréquentes.",
+                "41 est la taille la moins fréquente.",
+                "38 a le plus grand effectif.",
+                "13 mesures ont été relevées."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Moyenne de 5, 10 et 15 ?",
+              "options": ["8", "9", "10", "11"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Effectifs 24 et 16. Différence ?",
+              "options": ["6", "7", "8", "9"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Moyenne de 18, 18, 18, 18 et 18 ?",
+              "options": ["15", "16", "18", "90"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Part 1/3 du total. Sur 21 personnes, effectif ?",
+              "options": ["5", "6", "7", "8"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bâtons : effectifs 10, 20, 30. Progression ?",
+              "options": ["+5", "+10", "+15", "+20"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Moyenne de 4, 8, 12, 16 ?",
+              "options": ["8", "9", "10", "12"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Total 30 ; deux catégories 15 et 15. Interprétation ?",
+              "options": [
+                "L'une domine",
+                "Égalité parfaite",
+                "Total faux",
+                "Une catégorie vaut 0"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Effectif 3 sur total 12. Pourcentage ?",
+              "options": ["15 %", "20 %", "25 %", "30 %"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Moyenne de 5, 5 et 20 ?",
+              "options": ["8", "9", "10", "11"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Scores jeu : Niveau1→8, Niveau2→4, Niveau3→4, Niveau4→0. Quelles interprétations sont correctes ?",
+              "options": [
+                "Le niveau 1 est le plus atteint.",
+                "Niveaux 2 et 3 ont le même effectif.",
+                "Le niveau 4 est le plus populaire.",
+                "16 parties comptabilisées au total."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Moyenne de 13 et 17 ?",
+              "options": ["14", "15", "16", "17"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Effectifs 5, 10, 15, 20. Somme des effectifs ?",
+              "options": ["45", "50", "55", "60"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Circulaire 25 % pour chacune des 4 options. Que dire ?",
+              "options": [
+                "Une option domine",
+                "Toutes les parts sont égales",
+                "Total 25 %",
+                "Deux options valent 50 % chacune"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Moyenne de 1, 4 et 7 ?",
+              "options": ["3", "4", "5", "6"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bâton maximal 25, minimal 5, tous les autres entre les deux. L'écart max-min vaut ?",
+              "options": ["15", "20", "25", "30"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Moyenne de 10, 10, 20 et 20 ?",
+              "options": ["12", "14", "15", "16"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Effectif 45 sur 60. Fraction simplifiée du total ?",
+              "options": ["1/2", "2/3", "3/4", "4/5"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux effectifs 12 et 8. Lequel représente 40 % d'un total 20 ?",
+              "options": ["8", "12", "Les deux", "Aucun"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Moyenne de 6, 6, 9 et 9 ?",
+              "options": ["6", "7", "7,5", "8"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Panier (€/famille) : 20→3, 30→6, 40→6, 50→1. Quelles analyses sont exactes ?",
+              "options": [
+                "30 € et 40 € sont les montants les plus fréquents.",
+                "50 € est le montant le moins fréquent.",
+                "20 € a le plus grand effectif.",
+                "16 familles ont été interrogées."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Moyenne de 2, 3, 4, 5 et 6 ?",
+              "options": ["3", "4", "5", "6"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Effectifs 14 et 21. Ratio 14:21 simplifié en « 2 pour 3 » signifie ?",
+              "options": [
+                "14 est 2/3 de 21",
+                "21 est 3/2 de 14",
+                "Les effectifs sont égaux",
+                "Total 35 impossible"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Moyenne de 16 et 24 ?",
+              "options": ["18", "19", "20", "21"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Total 100 ; parts 70 et 30. La plus grande part vaut combien d'effectifs ?",
+              "options": ["30", "50", "70", "100"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bâtons constants à 8 sur 5 jours. Que conclure sur la semaine ?",
+              "options": [
+                "Activité croissante",
+                "Activité décroissante",
+                "Activité stable",
+                "Aucune donnée"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Moyenne de 5, 15 et 25 ?",
+              "options": ["10", "12", "15", "18"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Effectifs 6, 9, 12. Chaque terme augmente de 3. Quel est le 1er ?",
+              "options": ["3", "6", "9", "12"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "50 % + 25 % + 25 % = 100 %. Deux petites parts valent ensemble ?",
+              "options": ["25 %", "50 %", "75 %", "100 %"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Moyenne de 8, 9, 10, 11 et 12 ?",
+              "options": ["9", "10", "11", "12"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Distance domicile-école (km) : 1→6, 2→3, 3→3, 4→1. Quelles interprétations sont valides ?",
+              "options": [
+                "1 km est la distance la plus fréquente.",
+                "4 km est la distance la moins fréquente.",
+                "2 km et 3 km ont des effectifs différents.",
+                "13 élèves ont été comptés."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Moyenne de 10, 20 et 30 ?",
+              "options": ["15", "18", "20", "25"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Effectifs 11 et 33. Le second est combien de fois le premier ?",
+              "options": ["2", "3", "4", "11"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Moyenne de 12, 12 et 15 ?",
+              "options": ["12", "13", "14", "15"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Circulaire : 1/5, 2/5, 2/5. Quelle part est la plus petite ?",
+              "options": ["1/5", "2/5", "Les deux du milieu", "Toutes égales"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Total 45 ; trois parts égales. Effectif par part ?",
+              "options": ["10", "12", "15", "20"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Moyenne de 0, 5, 10, 15 et 20 ?",
+              "options": ["8", "9", "10", "11"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Bâtons : 18, 12, 6. Tendance ?",
+              "options": [
+                "Croissante",
+                "Décroissante",
+                "Stable",
+                "Aléatoire sans lien"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Effectif 9 sur total 36. Fraction du total ?",
+              "options": ["1/6", "1/4", "1/3", "1/2"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Moyenne de 14, 16, 18 et 20 ?",
+              "options": ["16", "17", "18", "19"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bibliothèque (livres empruntés/mois) : Jan 5, Fév 10, Mar 10, Avr 15. Quelles conclusions sont exactes ?",
+              "options": [
+                "Février et mars ont le même effectif.",
+                "Avril a le plus grand effectif.",
+                "Janvier a 10 emprunts.",
+                "Le total sur quatre mois est 40 emprunts."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Moyenne de 3, 3, 6 et 12 ?",
+              "options": ["5", "6", "7", "8"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Effectifs 20, 30, 40. Augmentation entre termes consécutifs ?",
+              "options": ["+5", "+10", "+15", "+20"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Moyenne de 9, 11, 13 et 15 ?",
+              "options": ["11", "12", "13", "14"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Total 50 ; effectif 10. Quel pourcentage ?",
+              "options": ["10 %", "15 %", "20 %", "25 %"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Circulaire : 1/2, 1/4, 1/4. Les deux plus petites parts réunies valent ?",
+              "options": ["1/4", "1/2", "3/4", "1"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Moyenne de 4, 5, 6, 7, 8, 9 et 10 ?",
+              "options": ["6", "7", "8", "9"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Effectifs 7, 14, 21. Chaque valeur est un multiple de 7. Leur somme ?",
+              "options": ["35", "38", "42", "49"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bâton A=15, B=25. B dépasse A de ?",
+              "options": ["5", "10", "15", "20"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Moyenne de 22, 24, 26, 28 et 30 ?",
+              "options": ["24", "25", "26", "27"],
+              "correctAnswers": [2]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

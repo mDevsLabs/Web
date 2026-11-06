@@ -1,5 +1,4 @@
 import { tool } from "ai";
-import { z } from "zod";
 import {
   createNotification,
   logMcpExecution,
@@ -13,8 +12,14 @@ import {
   type McpRuntimePrefs,
   resolveRequireApproval,
 } from "./client";
+import { jsonSchemaToZod } from "./input-schema";
 import { assertMcpRuntimeEnabled } from "./policy";
-import { redactMcpError, redactMcpText, redactMcpValue } from "./redaction";
+import {
+  allocateMcpProviderToolIds,
+  isProviderToolName,
+  mcpModelDescription,
+} from "./provider-tool-id";
+import { redactMcpError, redactMcpText } from "./redaction";
 import type {
   McpApprovalPolicy,
   McpAuthType,
@@ -63,62 +68,7 @@ export function mcpServerToConfig(server: McpServer): McpServerConfig {
 }
 
 export function inputSchemaFor(toolDefinition: McpToolDefinition) {
-  const inputSchema = toolDefinition.inputSchema;
-  if (!inputSchema || typeof inputSchema !== "object") {
-    // Sans contrat publié, on conserve un objet extensible mais typé ; le
-    // client MCP reste toutefois la source de vérité pour la validation.
-    return z.object({}).catchall(z.unknown());
-  }
-
-  const required = new Set(inputSchema.required ?? []);
-  const shape: Record<string, z.ZodTypeAny> = {};
-  for (const [name, property] of Object.entries(inputSchema.properties ?? {})) {
-    if (!/^[A-Za-z_][A-Za-z0-9_-]{0,127}$/.test(name)) continue;
-    let schema: z.ZodTypeAny;
-    if (property.enum && property.enum.length > 0) {
-      schema = z.enum(
-        property.enum.map((value) => redactMcpText(value, 200)) as [
-          string,
-          ...string[],
-        ]
-      );
-    } else {
-      switch (property.type.toLowerCase()) {
-        case "boolean":
-          schema = z.boolean();
-          break;
-        case "integer":
-          schema = z.number().int();
-          break;
-        case "number":
-          schema = z.number();
-          break;
-        case "array":
-          schema = z.array(z.unknown());
-          break;
-        case "object":
-          schema = z.record(z.string(), z.unknown());
-          break;
-        case "null":
-          schema = z.null();
-          break;
-        default:
-          schema = z.string();
-          break;
-      }
-    }
-    if (property.description) schema = schema.describe(property.description);
-    if (property.default !== undefined) {
-      schema = schema.default(redactMcpValue(property.default) as never);
-    }
-    if (!required.has(name)) schema = schema.optional();
-    shape[name] = schema;
-  }
-
-  const objectSchema = z.object(shape);
-  return inputSchema.additionalProperties === true
-    ? objectSchema.catchall(z.unknown())
-    : objectSchema.strict();
+  return jsonSchemaToZod(toolDefinition.inputSchema);
 }
 
 export function createMcpChatTools({
@@ -142,7 +92,11 @@ export function createMcpChatTools({
   }
 
   const tools: Record<string, any> = {};
-  const usedToolIds = new Set<string>();
+  const planned: Array<{
+    config: ReturnType<typeof mcpServerToConfig>;
+    definition: McpToolDefinition;
+    server: McpServer;
+  }> = [];
 
   for (const server of servers) {
     if (!server.isEnabled) continue;
@@ -161,125 +115,130 @@ export function createMcpChatTools({
 
     for (const definition of cachedTools) {
       if (!definition || typeof definition.name !== "string") continue;
-      const safeServerName = redactMcpText(server.name, 120)
-        .replace(/[^a-zA-Z0-9]/g, "_")
-        .toLowerCase();
-      const safeToolName = definition.name.replace(/[^a-zA-Z0-9_-]/g, "_");
-      let toolId = `mcp_${safeServerName}_${safeToolName}`;
-      // Deux noms de serveurs peuvent se normaliser de la même façon. Ne pas
-      // écraser silencieusement l'un des outils.
-      if (usedToolIds.has(toolId)) {
-        const suffix = server.id.replace(/[^a-zA-Z0-9]/g, "").slice(-8);
-        toolId = `${toolId}_${suffix || "server"}`;
-      }
-      usedToolIds.add(toolId);
-
-      const actionType = classifyToolAction(
-        definition.name,
-        definition.description
-      );
-      const policy = resolveRequireApproval(config, definition.name);
-      const requireUserApproval = needsApproval(policy, actionType);
-      const approved = Boolean(
-        approvedToolIds?.has(toolId) || approvedToolIds?.has(`tool-${toolId}`)
-      );
-      const description = redactMcpText(
-        `[MCP: ${server.name}] ${definition.description || definition.name}`,
-        1000
-      );
-      const inputSchema = inputSchemaFor(definition);
-
-      if (requireUserApproval && !approved) {
-        // Vrai Human-in-the-Loop : sans fonction `execute`, le SDK AI suspend
-        // l'appel et attend une décision explicite. L'identifiant canonique
-        // est utilisé ; un nom d'outil brut partagé entre serveurs ne vaut pas
-        // une approbation.
-        tools[toolId] = (tool as any)({
-          description: `${description} (Action: ${actionType} - APPROBATION REQUISE)`,
-          inputSchema,
-          parameters: z.record(z.string(), z.unknown()),
-        });
-        continue;
-      }
-
-      tools[toolId] = (tool as any)({
-        description: `${description} (Action: ${actionType}${
-          requireUserApproval ? " - Confirmé" : ""
-        })`,
-        execute: async (args: Record<string, unknown>) => {
-          const startTime = Date.now();
-          try {
-            const result = await callMcpTool(
-              config,
-              definition.name,
-              args,
-              prefs
-            );
-
-            const durationMs = Date.now() - startTime;
-            await logMcpExecution({
-              actionType,
-              approvalStatus: requireUserApproval
-                ? "approved"
-                : "auto_approved",
-              chatId,
-              durationMs,
-              inputPayload: args,
-              outputPayload: result,
-              serverId: server.id,
-              serverName: server.name,
-              toolName: definition.name,
-              userId,
-            });
-            updateMcpServerStats({
-              durationMs,
-              id: server.id,
-              success: true,
-              userId,
-            }).catch(() => {});
-            if (["write", "delete", "execute"].includes(actionType)) {
-              createNotification({
-                body: `Outil ${redactMcpText(definition.name, 120)} exécuté sur ${redactMcpText(server.name, 120)}`,
-                link: chatId ? `/chat/${chatId}` : "/mcp",
-                title: "Demande d'accès MCP",
-                type: "mcp_access_request",
-                userId,
-              }).catch(() => {});
-            }
-
-            return result;
-          } catch (error: unknown) {
-            const durationMs = Date.now() - startTime;
-            const safeError = redactMcpError(error);
-            await logMcpExecution({
-              actionType,
-              approvalStatus: requireUserApproval
-                ? "approved"
-                : "auto_approved",
-              chatId,
-              durationMs,
-              error: safeError,
-              inputPayload: args,
-              serverId: server.id,
-              serverName: server.name,
-              toolName: definition.name,
-              userId,
-            });
-            updateMcpServerStats({
-              durationMs,
-              id: server.id,
-              success: false,
-              userId,
-            }).catch(() => {});
-            return {
-              error: `Erreur d'appel MCP ${redactMcpText(server.name, 120)}::${redactMcpText(definition.name, 120)}: ${safeError}`,
-            };
-          }
-        },
-        inputSchema,
-        parameters: z.record(z.string(), z.unknown()),
-      });
+      planned.push({ config, definition, server });
     }
+  }
+
+  const bindings = allocateMcpProviderToolIds(
+    planned.map((item) => ({
+      serverId: item.server.id,
+      serverName: item.server.name,
+      toolName: item.definition.name,
+    }))
+  );
+
+  for (let index = 0; index < planned.length; index += 1) {
+    const item = planned[index];
+    const binding = bindings[index];
+    if (!item || !binding || !isProviderToolName(binding.providerToolId)) {
+      continue;
+    }
+    const { config, definition, server } = item;
+    const toolId = binding.providerToolId;
+    const actionType = classifyToolAction(
+      definition.name,
+      definition.description
+    );
+    const policy = resolveRequireApproval(config, definition.name);
+    const requireUserApproval = needsApproval(policy, actionType);
+    const approved = Boolean(
+      approvedToolIds?.has(toolId) || approvedToolIds?.has(`tool-${toolId}`)
+    );
+    const approvalNote =
+      requireUserApproval && !approved
+        ? " - APPROBATION REQUISE"
+        : requireUserApproval
+          ? " - Confirmé"
+          : "";
+    const description = mcpModelDescription({
+      actionNote: ` (Action: ${actionType}${approvalNote})`,
+      description: definition.description,
+      serverName: server.name,
+      toolName: definition.name,
+    });
+    const inputSchema = inputSchemaFor(definition);
+
+    if (requireUserApproval && !approved) {
+      // Vrai Human-in-the-Loop : sans fonction `execute`, le SDK AI suspend
+      // l'appel et attend une décision explicite. L'identifiant court est
+      // celui de l'approbation ; l'appel utilise le nom d'outil d'origine.
+      tools[toolId] = tool({
+        description,
+        inputSchema,
+      });
+      continue;
+    }
+
+    tools[toolId] = tool<any, any, any>({
+      description,
+      execute: async (args: Record<string, unknown>) => {
+        const startTime = Date.now();
+        try {
+          const result = await callMcpTool(
+            config,
+            definition.name,
+            args,
+            prefs
+          );
+
+          const durationMs = Date.now() - startTime;
+          await logMcpExecution({
+            actionType,
+            approvalStatus: requireUserApproval ? "approved" : "auto_approved",
+            chatId,
+            durationMs,
+            inputPayload: args,
+            outputPayload: result,
+            serverId: server.id,
+            serverName: server.name,
+            toolName: definition.name,
+            userId,
+          });
+          updateMcpServerStats({
+            durationMs,
+            id: server.id,
+            success: true,
+            userId,
+          }).catch(() => {});
+          if (["write", "delete", "execute"].includes(actionType)) {
+            createNotification({
+              body: `Outil ${redactMcpText(definition.name, 120)} exécuté sur ${redactMcpText(server.name, 120)}`,
+              link: chatId ? `/chat/${chatId}` : "/mcp",
+              title: "Demande d'accès MCP",
+              type: "mcp_access_request",
+              userId,
+            }).catch(() => {});
+          }
+
+          return result;
+        } catch (error: unknown) {
+          const durationMs = Date.now() - startTime;
+          const safeError = redactMcpError(error);
+          await logMcpExecution({
+            actionType,
+            approvalStatus: requireUserApproval ? "approved" : "auto_approved",
+            chatId,
+            durationMs,
+            error: safeError,
+            inputPayload: args,
+            serverId: server.id,
+            serverName: server.name,
+            toolName: definition.name,
+            userId,
+          });
+          updateMcpServerStats({
+            durationMs,
+            id: server.id,
+            success: false,
+            userId,
+          }).catch(() => {});
+          return {
+            error: `Erreur d'appel MCP ${redactMcpText(server.name, 120)}::${redactMcpText(definition.name, 120)}: ${safeError}`,
+          };
+        }
+      },
+      inputSchema,
+    });
   }
 
   return tools;

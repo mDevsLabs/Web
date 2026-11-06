@@ -1,0 +1,2148 @@
+{
+  "id": "6e-chinois-10",
+  "year": "6e",
+  "subject": "chinois",
+  "title": "Vers l'examen en chinois",
+  "order": 10,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Compréhension",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans « 你好 (nǐ hǎo) », quelles affirmations sont correctes ?",
+              "options": [
+                "C'est une salutation.",
+                "Ça veut dire au revoir.",
+                "On peut saluer le matin.",
+                "C'est une question sur l'heure."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "你好 signifie bonjour ; on l'utilise pour saluer."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Réponse polie à « 你好 (nǐ hǎo) » ?",
+              "options": [
+                "你好 (nǐ hǎo)",
+                "再见 (zài jiàn)",
+                "谢谢 (xiè xie)",
+                "不客气 (bú kè qi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On répond souvent par la même salutation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans « 我是学生 (wǒ shì xué shēng) », 学生 signifie ?",
+              "options": ["Professeur", "Élève", "École", "Classe"],
+              "correctAnswers": [1],
+              "explanation": "学生 = élève ou étudiant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "A: 你好！ B: 你好！ — Ils ?",
+              "options": [
+                "Se saluent",
+                "Disent au revoir",
+                "Commandent",
+                "Parlent de demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échange de salutations."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "学校 (xué xiào) ?",
+              "options": ["Maison", "École", "Parc", "Magasin"],
+              "correctAnswers": [1],
+              "explanation": "学校 = école."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« 我喜欢苹果 (wǒ xǐ huān píng guǒ) » — goût ?",
+              "options": ["Riz", "Pommes", "Thé", "Pain"],
+              "correctAnswers": [1],
+              "explanation": "喜欢 = aimer ; 苹果 = pomme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "昨天 (zuó tiān) ?",
+              "options": ["Aujourd'hui", "Demain", "Hier", "Soir"],
+              "correctAnswers": [2],
+              "explanation": "昨天 = hier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "明天 (míng tiān) ?",
+              "options": ["Hier", "Demain", "Matin", "Semaine"],
+              "correctAnswers": [1],
+              "explanation": "明天 = demain."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "我昨天去学校 (wǒ zuó tiān qù xué xiào) — quand ?",
+              "options": ["Demain", "Hier", "Jamais", "Chaque matin"],
+              "correctAnswers": [1],
+              "explanation": "昨天 + 去 + 学校 = allé à l'école hier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "你好吗？(nǐ hǎo ma?) — on demande ?",
+              "options": [
+                "Comment ça va ?",
+                "Quelle heure ?",
+                "Où est l'école ?",
+                "Tu aimes quoi ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "你好吗 = comment vas-tu."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "À propos de 再见 (zài jiàn) :",
+              "options": [
+                "On quitte quelqu'un.",
+                "C'est bonjour le matin.",
+                "Ça veut dire au revoir.",
+                "Ça veut dire merci."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "再见 = au revoir en partant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "老师 (lǎo shī) ?",
+              "options": ["Élève", "Professeur", "Ami", "Directeur"],
+              "correctAnswers": [1],
+              "explanation": "老师 = professeur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "A: 谢谢！ B: 不客气。 — B ?",
+              "options": ["Remercie", "Répond au merci", "Salue", "Part"],
+              "correctAnswers": [1],
+              "explanation": "不客气 = de rien."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "我不喜欢咖啡 (wǒ bù xǐ huān kā fēi) ?",
+              "options": [
+                "J'aime le café",
+                "Je n'aime pas le café",
+                "Je bois de l'eau",
+                "Je vais à l'école"
+              ],
+              "correctAnswers": [1],
+              "explanation": "不 nie le verbe aimer."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "今天 (jīn tiān) ?",
+              "options": ["Hier", "Aujourd'hui", "Demain", "Lundi"],
+              "correctAnswers": [1],
+              "explanation": "今天 = aujourd'hui."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "明天我有课 (míng tiān wǒ yǒu kè) — cours ?",
+              "options": ["Hier", "Aujourd'hui", "Demain", "Jamais"],
+              "correctAnswers": [2],
+              "explanation": "明天 = demain ; 有课 = avoir cours."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "同学 (tóng xué) ?",
+              "options": [
+                "Camarade de classe",
+                "Professeur",
+                "Frère",
+                "Voisin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "同学 = camarade de classe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "这是什么？(zhè shì shén me?) ?",
+              "options": [
+                "Quelle heure ?",
+                "C'est quoi ?",
+                "Où vas-tu ?",
+                "Comment tu t'appelles ?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "这是什么 = qu'est-ce que c'est."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "书 (shū) à l'école ?",
+              "options": ["Stylo", "Livre", "Table", "Porte"],
+              "correctAnswers": [1],
+              "explanation": "书 = livre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "A: 你叫什么名字？ B: 我叫小明。 — B ?",
+              "options": [
+                "Donne son prénom",
+                "Dit au revoir",
+                "Parle de demain",
+                "Refuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我叫… = je m'appelle…"
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour les goûts en 6e, utile :",
+              "options": [
+                "喜欢 (xǐ huān)",
+                "不 (bù) + verbe",
+                "昨天 = demain",
+                "什么 dans une question"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "喜欢 et 不 servent à exprimer les goûts."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "水 (shuǐ) ?",
+              "options": ["Jus", "Eau", "Soupe", "Café"],
+              "correctAnswers": [1],
+              "explanation": "水 = eau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "我明天去学校 — quand ?",
+              "options": ["Hier", "Demain", "Hier soir", "L'an passé"],
+              "correctAnswers": [1],
+              "explanation": "明天 = demain."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "你也喜欢吗？ — 也 (yě) ?",
+              "options": ["Pas", "Aussi", "Toujours", "Jamais"],
+              "correctAnswers": [1],
+              "explanation": "也 = aussi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "教室 (jiào shì) ?",
+              "options": ["Cour", "Salle de classe", "Cantine", "Bus"],
+              "correctAnswers": [1],
+              "explanation": "教室 = salle de classe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "B: 我喜欢音乐 (yīn yuè). — sujet ?",
+              "options": [
+                "Musique aimée",
+                "École hier",
+                "Professeur",
+                "Météo demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "音乐 = musique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ordre : hier, aujourd'hui, demain ?",
+              "options": [
+                "明天, 今天, 昨天",
+                "昨天, 今天, 明天",
+                "今天, 昨天, 明天",
+                "昨天, 明天, 今天"
+              ],
+              "correctAnswers": [1],
+              "explanation": "昨天 → 今天 → 明天."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "对不起 (duì bu qǐ) ?",
+              "options": ["Merci", "Pardon", "Bonjour", "Bravo"],
+              "correctAnswers": [1],
+              "explanation": "对不起 = désolé, pardon."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "没关系 répond surtout à ?",
+              "options": ["你好", "谢谢", "对不起", "再见"],
+              "correctAnswers": [2],
+              "explanation": "没关系 = ce n'est pas grave."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "我 (wǒ) ?",
+              "options": ["Tu", "Je", "Il", "Nous"],
+              "correctAnswers": [1],
+              "explanation": "我 = je."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue à l'école possible :",
+              "options": [
+                "老师 et 学生",
+                "学校",
+                "Only 再见 sans contexte",
+                "你好 pour saluer"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Prof, élève, salutations courantes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "你 (nǐ) ?",
+              "options": ["Je", "Tu", "Nous", "Ils"],
+              "correctAnswers": [1],
+              "explanation": "你 = tu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "昨天我学习了 — 昨天 ?",
+              "options": ["Demain", "Hier", "Maintenant", "Plus tard"],
+              "correctAnswers": [1],
+              "explanation": "昨天 = hier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "吃 (chī) ?",
+              "options": ["Boire", "Manger", "Dormir", "Lire"],
+              "correctAnswers": [1],
+              "explanation": "吃 = manger."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "喜欢吃米饭 (mǐ fàn) ?",
+              "options": ["Nouilles", "Riz", "Pain", "Pommes"],
+              "correctAnswers": [1],
+              "explanation": "米饭 = riz cuit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "喝 (hē) ?",
+              "options": ["Manger", "Boire", "Courir", "Écrire"],
+              "correctAnswers": [1],
+              "explanation": "喝 = boire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "明天见！(míng tiān jiàn!) ?",
+              "options": ["À demain", "Bonjour", "Merci", "Je suis prof"],
+              "correctAnswers": [0],
+              "explanation": "明天见 = on se voit demain."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "是 (shì) dans 我是… ?",
+              "options": ["Avoir", "Être", "Aller", "Aimer"],
+              "correctAnswers": [1],
+              "explanation": "是 = être."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "他是我的同学 — 他 ?",
+              "options": ["Je", "Tu", "Il/elle", "Nous"],
+              "correctAnswers": [2],
+              "explanation": "他 = il."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "我的书 (wǒ de shū) — 的 ?",
+              "options": ["Possession", "Passé", "Question", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "的 = mon, ton…"
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases avec hier/demain :",
+              "options": [
+                "我昨天在家",
+                "明天我们上学",
+                "你好 seul",
+                "今天很热"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "昨天 et 明天 situent le temps."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "家 (jiā) ?",
+              "options": ["École", "Maison", "Parc", "Bureau"],
+              "correctAnswers": [1],
+              "explanation": "家 = maison."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "去 (qù) ?",
+              "options": ["Venir", "Aller", "Rester", "Dormir"],
+              "correctAnswers": [1],
+              "explanation": "去 = aller."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "上学 (shàng xué) ?",
+              "options": [
+                "Quitter l'école",
+                "Aller à l'école",
+                "Dormir",
+                "Jouer"
+              ],
+              "correctAnswers": [1],
+              "explanation": "上学 = fréquenter l'école."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "你昨天做什么？ B: 我学习中文 — quand ?",
+              "options": ["Demain", "Hier", "Dans une heure", "Jamais"],
+              "correctAnswers": [1],
+              "explanation": "Question avec 昨天."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "中文 (zhōng wén) ?",
+              "options": ["Anglais", "Chinois", "Maths", "Sport"],
+              "correctAnswers": [1],
+              "explanation": "中文 = langue chinoise."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "吗 (ma) en fin de phrase ?",
+              "options": ["Affirmation", "Question oui/non", "Passé", "Merci"],
+              "correctAnswers": [1],
+              "explanation": "吗 forme une question."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "很好 — 很 (hěn) ?",
+              "options": ["Peu", "Très", "Non", "Hier"],
+              "correctAnswers": [1],
+              "explanation": "很 = très devant adjectif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "好 (hǎo) ?",
+              "options": ["Mauvais", "Bon/bien", "Grand", "Petit"],
+              "correctAnswers": [1],
+              "explanation": "好 = bon, bien."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "明天天气很好 — quel jour ?",
+              "options": ["Hier", "Demain", "An passé", "Ce matin"],
+              "correctAnswers": [1],
+              "explanation": "明天 = demain."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Exprimer un goût :",
+              "options": [
+                "我喜欢…",
+                "我不喜欢…",
+                "再见 pour un goût",
+                "什么 dans 你喜欢什么？"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "喜欢 / 不喜欢 = goûts."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "茶 (chá) ?",
+              "options": ["Café", "Thé", "Eau", "Lait"],
+              "correctAnswers": [1],
+              "explanation": "茶 = thé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "你要茶还是水？ — A ?",
+              "options": [
+                "Choix thé ou eau",
+                "Au revoir",
+                "Parle d'hier",
+                "Se présente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "还是 = ou (choix)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "要 (yào) ?",
+              "options": ["Refuser", "Vouloir", "Courir", "Dormir"],
+              "correctAnswers": [1],
+              "explanation": "要 = vouloir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "我们 (wǒ men) ?",
+              "options": ["Je", "Nous", "Tu", "Ils"],
+              "correctAnswers": [1],
+              "explanation": "我们 = nous."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "我们明天考试 — examen ?",
+              "options": ["Hier", "Demain", "Mois prochain", "Jamais"],
+              "correctAnswers": [1],
+              "explanation": "明天 + 考试."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "笔 (bǐ) ?",
+              "options": ["Stylo/crayon", "Gomme", "Règle", "Cartable"],
+              "correctAnswers": [0],
+              "explanation": "笔 = instrument d'écriture."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "请坐 — demande ?",
+              "options": ["Se lever", "S'asseoir", "Partir", "Crier"],
+              "correctAnswers": [1],
+              "explanation": "请坐 = asseyez-vous."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "坐 (zuò) ?",
+              "options": ["Marcher", "S'asseoir", "Manger", "Lire"],
+              "correctAnswers": [1],
+              "explanation": "坐 = s'asseoir."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "老师好！ — élève ?",
+              "options": [
+                "Salue le prof",
+                "Au revoir ami",
+                "Commande",
+                "Météo hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "老师好 = bonjour professeur."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "昨天 et 明天 :",
+              "options": [
+                "Situent le temps",
+                "Tous deux = aujourd'hui",
+                "Passé proche / futur proche",
+                "Remplacent 你好"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Hier vs demain, pas salutation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "看 (kàn) ?",
+              "options": ["Écouter", "Regarder/lire", "Manger", "Dormir"],
+              "correctAnswers": [1],
+              "explanation": "看 = regarder, lire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "我看书 — action ?",
+              "options": [
+                "Mange un livre",
+                "Lit un livre",
+                "Va demain école",
+                "Salue"
+              ],
+              "correctAnswers": [1],
+              "explanation": "看书 = lire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "听 (tīng) ?",
+              "options": ["Parler", "Écouter", "Écrire", "Courir"],
+              "correctAnswers": [1],
+              "explanation": "听 = écouter."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "我听音乐 — ?",
+              "options": ["Sport", "Écoute musique", "Dort", "Au revoir"],
+              "correctAnswers": [1],
+              "explanation": "听音乐 = écouter musique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "昨天你累吗？ — jour ?",
+              "options": ["Demain", "Hier", "Aujourd'hui", "Toujours"],
+              "correctAnswers": [1],
+              "explanation": "昨天 dans la question."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "累 (lèi) ?",
+              "options": ["Content", "Fatigué", "Fâché", "Affamé"],
+              "correctAnswers": [1],
+              "explanation": "累 = fatigué."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "写 (xiě) ?",
+              "options": ["Lire", "Écrire", "Parler", "Effacer"],
+              "correctAnswers": [1],
+              "explanation": "写 = écrire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "我在学校 — lieu ?",
+              "options": ["Maison", "École", "Magasin", "Plage"],
+              "correctAnswers": [1],
+              "explanation": "在 + 学校."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "在 (zài) + lieu ?",
+              "options": ["Être à", "Partir de", "Aimer", "Hier"],
+              "correctAnswers": [0],
+              "explanation": "在 = être à un lieu."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "你好，我是李老师 — on trouve :",
+              "options": [
+                "Salutation",
+                "Présentation",
+                "Phrase seulement demain",
+                "Mot professeur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "你好 + 我是… se présenter."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "名字 (míng zi) ?",
+              "options": ["Âge", "Prénom/nom", "Ville", "Couleur"],
+              "correctAnswers": [1],
+              "explanation": "名字 = nom."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "他明天不来学校 ?",
+              "options": [
+                "Viendra hier",
+                "Ne viendra pas demain",
+                "Aime l'école",
+                "Est prof"
+              ],
+              "correctAnswers": [1],
+              "explanation": "不来 + 明天."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "来 (lái) ?",
+              "options": ["Partir", "Venir", "Manger", "Dormir"],
+              "correctAnswers": [1],
+              "explanation": "来 = venir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "多少 (duō shao) sert à ?",
+              "options": ["Combien", "Bonjour", "Au revoir", "Hier"],
+              "correctAnswers": [0],
+              "explanation": "多少 = combien."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "这个多少钱？ ?",
+              "options": ["Heure", "Prix", "Prénom", "Goût"],
+              "correctAnswers": [1],
+              "explanation": "多少钱 = quel prix."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "钱 (qián) ?",
+              "options": ["Temps", "Argent", "École", "Ami"],
+              "correctAnswers": [1],
+              "explanation": "钱 = argent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "大 (dà) ?",
+              "options": ["Petit", "Grand", "Rapide", "Lent"],
+              "correctAnswers": [1],
+              "explanation": "大 = grand."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "小 (xiǎo) ?",
+              "options": ["Grand", "Petit", "Beaucoup", "Peu"],
+              "correctAnswers": [1],
+              "explanation": "小 = petit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "昨天很小，今天很大 — sens ?",
+              "options": [
+                "Taille dans le temps",
+                "Salutation",
+                "Nourriture",
+                "Grammaire FR"
+              ],
+              "correctAnswers": [0],
+              "explanation": "小/大 = taille ; hier/aujourd'hui."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Comprendre un dialogue : repérer",
+              "options": [
+                "Qui parle (我, 你…)",
+                "Lieu 学校",
+                "Chiffres romains seuls",
+                "昨天/明天 si présents"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Pronoms et marqueurs de temps."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "现在几点？ — 几 ?",
+              "options": ["Combien (heure)", "Jamais", "Hier", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "几点 = quelle heure."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "现在 (xiàn zài) ?",
+              "options": ["Avant", "Maintenant", "Demain", "Hier"],
+              "correctAnswers": [1],
+              "explanation": "现在 = maintenant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "你喜欢运动吗？ — sujet ?",
+              "options": [
+                "Goût sport",
+                "Heure demain",
+                "Nom prof",
+                "Prix cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "运动 = sport."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "运动 (yùn dòng) ?",
+              "options": ["Musique", "Sport", "Devoirs", "Sommeil"],
+              "correctAnswers": [1],
+              "explanation": "运动 = sport."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "我昨天运动了 — quand ?",
+              "options": ["Demain", "Hier", "Mois", "Jamais"],
+              "correctAnswers": [1],
+              "explanation": "昨天 = hier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "和朋友 — 和 ?",
+              "options": ["Sans", "Et/avec", "Contre", "Avant"],
+              "correctAnswers": [1],
+              "explanation": "和 = avec."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "朋友 (péng you) ?",
+              "options": ["Prof", "Ami", "Frère", "Élève"],
+              "correctAnswers": [1],
+              "explanation": "朋友 = ami."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "明天见，朋友！ — ton ?",
+              "options": [
+                "Au revoir amical demain",
+                "Rencontre formelle",
+                "Colère",
+                "Question goût"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天见 + 朋友."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "我没去 (méi qù) — 没 ?",
+              "options": ["Très", "Négation passée", "Aussi", "Merci"],
+              "correctAnswers": [1],
+              "explanation": "没 = pas (action passée)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Couples corrects :",
+              "options": [
+                "你好 — salutation",
+                "学校 — école",
+                "昨天 — demain",
+                "谢谢 — au revoir"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "昨天 = hier ; 谢谢 = merci."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "几 (jǐ) dans 你有几个苹果？ ?",
+              "options": ["Combien (petite qty)", "Toujours", "Demain", "Prof"],
+              "correctAnswers": [0],
+              "explanation": "几个 = combien (objets)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "个 (ge) sert souvent à ?",
+              "options": [
+                "Compter des objets",
+                "Saluer",
+                "Dire au revoir",
+                "Hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "个 = classificateur courant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "A: 你明天来吗？ B: 来。 — B ?",
+              "options": [
+                "Viendra demain",
+                "Part hier",
+                "N'aime pas",
+                "Est prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "来 = venir ; 明天 = demain."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "不 (bù) ?",
+              "options": ["Aussi", "Négation", "Très", "Merci"],
+              "correctAnswers": [1],
+              "explanation": "不 = ne… pas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "很 + adjectif en 6e ?",
+              "options": ["Peu", "Assez/très", "Jamais", "Hier"],
+              "correctAnswers": [1],
+              "explanation": "很 renforce l'adjectif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "我有一本书 — 有 ?",
+              "options": ["Avoir", "Être", "Aller", "Boire"],
+              "correctAnswers": [0],
+              "explanation": "有 = avoir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "一 (yī) ?",
+              "options": ["Deux", "Un", "Trois", "Zéro"],
+              "correctAnswers": [1],
+              "explanation": "一 = un."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dialogue examen : 加油！(jiā yóu!) ?",
+              "options": [
+                "Encouragement",
+                "Au revoir",
+                "Question heure",
+                "Refus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "加油 = courage, bon courage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Révision : 明天 ≠ ?",
+              "options": [
+                "Demain",
+                "Hier",
+                "Futur proche",
+                "Après aujourd'hui"
+              ],
+              "correctAnswers": [1],
+              "explanation": "明天 = demain, pas hier."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Expression",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour saluer le matin à l'école, tu peux dire :",
+              "options": [
+                "你好 (nǐ hǎo)",
+                "老师好 (lǎo shī hǎo)",
+                "再见 (zài jiàn)",
+                "谢谢 (xiè xie)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "你好 et 老师好 saluent ; 再见 part."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tu veux dire « Je suis élève » :",
+              "options": [
+                "我是学生 (wǒ shì xué shēng)",
+                "我是老师",
+                "我是学校",
+                "我是明天"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学生 = élève."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tu quittes un ami :",
+              "options": ["你好", "再见 (zài jiàn)", "什么", "不客气"],
+              "correctAnswers": [1],
+              "explanation": "再见 = au revoir."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« J'aime le thé » :",
+              "options": ["我喜欢茶 (chá)", "我不喜欢茶", "我是茶", "茶是学校"],
+              "correctAnswers": [0],
+              "explanation": "我喜欢 + nom."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Hier j'ai étudié » commence par :",
+              "options": ["明天", "昨天 (zuó tiān)", "你好", "吗"],
+              "correctAnswers": [1],
+              "explanation": "昨天 = hier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Demain j'irai à l'école » :",
+              "options": [
+                "昨天去学校",
+                "明天 (míng tiān) 去学校",
+                "你好学校",
+                "不去学校吗"
+              ],
+              "correctAnswers": [1],
+              "explanation": "明天 + 去 + 学校."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Remercier :",
+              "options": ["对不起", "谢谢 (xiè xie)", "再见", "吗"],
+              "correctAnswers": [1],
+              "explanation": "谢谢 = merci."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Répondre « de rien » :",
+              "options": ["谢谢", "不客气 (bú kè qi)", "你好", "昨天"],
+              "correctAnswers": [1],
+              "explanation": "不客气 après merci."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Demander le prénom :",
+              "options": ["你好吗", "你叫什么名字", "你是学校吗", "明天见"],
+              "correctAnswers": [1],
+              "explanation": "叫什么名字 = comment tu t'appelles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Répondre « Je m'appelle Anna » :",
+              "options": [
+                "我叫安娜 (wǒ jiào Ān nà)",
+                "我是安娜学校",
+                "安娜明天",
+                "谢谢安娜"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我叫 + prénom."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour dire ce que tu n'aimes pas :",
+              "options": [
+                "我不喜欢… (wǒ bù xǐ huān…)",
+                "不 + 喜欢",
+                "谢谢 + 喜欢",
+                "再见 + 喜欢"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "我不喜欢 ou 不 + verbe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Je n'aime pas le café » :",
+              "options": [
+                "我喜欢咖啡",
+                "我不喜欢咖啡 (kā fēi)",
+                "我是咖啡",
+                "咖啡明天"
+              ],
+              "correctAnswers": [1],
+              "explanation": "不喜欢咖啡."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Inviter poliment à s'asseoir :",
+              "options": ["请坐 (qǐng zuò)", "请去", "请再见", "请昨天"],
+              "correctAnswers": [0],
+              "explanation": "请坐 = asseyez-vous."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Nous allons à l'école demain » :",
+              "options": [
+                "我们昨天去学校",
+                "我们明天去学校",
+                "我们你好学校",
+                "学校不我们"
+              ],
+              "correctAnswers": [1],
+              "explanation": "我们 + 明天 + 去 + 学校."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Excuser :",
+              "options": ["没关系", "对不起 (duì bu qǐ)", "谢谢", "你好"],
+              "correctAnswers": [1],
+              "explanation": "对不起 = pardon."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Répondre à 对不起 :",
+              "options": ["谢谢", "没关系 (méi guān xi)", "再见", "吗"],
+              "correctAnswers": [1],
+              "explanation": "没关系 = ce n'est pas grave."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Tu aimes quoi ? » :",
+              "options": [
+                "你喜欢什么 (shén me)",
+                "你是什么学校",
+                "你昨天吗",
+                "你再见"
+              ],
+              "correctAnswers": [0],
+              "explanation": "什么 = quoi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Répondre « J'aime la musique » :",
+              "options": [
+                "我喜欢音乐 (yīn yuè)",
+                "我不喜欢音乐",
+                "音乐是学校",
+                "明天音乐"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我喜欢音乐."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« À demain ! » entre amis :",
+              "options": ["你好", "明天见 (míng tiān jiàn)", "谢谢", "什么"],
+              "correctAnswers": [1],
+              "explanation": "明天见 = à demain."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Où es-tu ? — À l'école » :",
+              "options": [
+                "我在学校 (wǒ zài xué xiào)",
+                "我去学校吗",
+                "我是学校",
+                "学校你好"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在 + lieu = être à."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases correctes sur le temps :",
+              "options": [
+                "今天 (jīn tiān) 我上学",
+                "明天 (míng tiān) 我有课",
+                "昨天 = demain",
+                "你好 = hier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "今天/明天 cohérents ; 昨天 ≠ demain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Aujourd'hui il fait beau » :",
+              "options": [
+                "今天 (jīn tiān) 天气很好",
+                "昨天天气很好",
+                "明天你好",
+                "吗天气"
+              ],
+              "correctAnswers": [0],
+              "explanation": "今天 + 天气."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Je bois de l'eau » :",
+              "options": [
+                "我喝水 (wǒ hē shuǐ)",
+                "我吃水",
+                "水是我",
+                "不喝水吗学校"
+              ],
+              "correctAnswers": [0],
+              "explanation": "喝 + 水."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Je mange du riz » :",
+              "options": [
+                "我吃米饭 (mǐ fàn)",
+                "我喝米饭",
+                "米饭学校",
+                "不喜欢米饭吗你好"
+              ],
+              "correctAnswers": [0],
+              "explanation": "吃 + 米饭."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Question oui/non « Tu es fatigué ? » :",
+              "options": [
+                "你累 (lèi) 吗 (ma)",
+                "你累什么",
+                "你累学校",
+                "累明天"
+              ],
+              "correctAnswers": [0],
+              "explanation": "吗 en fin de phrase."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Répondre oui « Je suis fatigué » :",
+              "options": ["我累", "我不累", "累吗", "累学校"],
+              "correctAnswers": [0],
+              "explanation": "Affirmation simple."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Je lis un livre » :",
+              "options": [
+                "我看书 (wǒ kàn shū)",
+                "我写书吗",
+                "书明天",
+                "不看书你好"
+              ],
+              "correctAnswers": [0],
+              "explanation": "看书 = lire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Je n'ai pas été hier » (simple) :",
+              "options": [
+                "我昨天没去 (méi qù)",
+                "我昨天去",
+                "没你好",
+                "昨天吗"
+              ],
+              "correctAnswers": [0],
+              "explanation": "没 + verbe = pas (passé)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Présenter le prof : « C'est le prof Li » :",
+              "options": [
+                "这是李老师 (lǎo shī)",
+                "这是学生李",
+                "李明天",
+                "你好李学校"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这是… = c'est…"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Bonjour professeur ! » :",
+              "options": [
+                "老师好 (lǎo shī hǎo)",
+                "老师再见",
+                "老师谢谢",
+                "老师昨天"
+              ],
+              "correctAnswers": [0],
+              "explanation": "老师好 en classe."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour parler d'un camarade :",
+              "options": [
+                "我的同学 (tóng xué)",
+                "他是我的同学",
+                "同学 = demain",
+                "同学谢谢"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "同学 = camarade de classe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Mon ami » :",
+              "options": [
+                "我的朋友 (péng you)",
+                "我的学校",
+                "朋友吗",
+                "不朋友"
+              ],
+              "correctAnswers": [0],
+              "explanation": "的 + 朋友."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Je viens demain » :",
+              "options": ["我明天来 (lái)", "我昨天来", "来吗学校", "不明天"],
+              "correctAnswers": [0],
+              "explanation": "明天 + 来."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Je ne viendrai pas demain » :",
+              "options": ["我明天不来", "我明天来", "不来你好", "来学校吗"],
+              "correctAnswers": [0],
+              "explanation": "不来 = ne pas venir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Demander « C'est quoi ? » :",
+              "options": [
+                "这是什么 (zhè shì shén me)",
+                "这是什么吗学校",
+                "什么再见",
+                "你好什么"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这是什么."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« J'écoute de la musique » :",
+              "options": [
+                "我听音乐 (tīng yīn yuè)",
+                "我看音乐",
+                "音乐去学校",
+                "不音乐吗"
+              ],
+              "correctAnswers": [0],
+              "explanation": "听 + 音乐."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Avec un ami » :",
+              "options": [
+                "和朋友 (hé péng you)",
+                "不朋友",
+                "朋友昨天",
+                "朋友吗学校"
+              ],
+              "correctAnswers": [0],
+              "explanation": "和 = avec."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Je veux du thé » :",
+              "options": ["我要茶 (yào chá)", "我要学校", "不茶", "茶明天吗"],
+              "correctAnswers": [0],
+              "explanation": "要 = vouloir."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Choix « thé ou eau ? » :",
+              "options": [
+                "茶还是 (hái shì) 水",
+                "茶和水吗",
+                "还是再见",
+                "水昨天"
+              ],
+              "correctAnswers": [0],
+              "explanation": "还是 = ou."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Très bien, merci » (réponse à 你好吗) :",
+              "options": [
+                "很好，谢谢 (hěn hǎo, xiè xie)",
+                "再见",
+                "学校",
+                "昨天"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很好 + 谢谢."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Réponses adaptées à 你好 :",
+              "options": [
+                "你好",
+                "你好吗 — autre question",
+                "再见 immédiat",
+                "谢谢 seul sans contexte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Répondre 你好 ou poursuivre poliment."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Je suis à la maison aujourd'hui » :",
+              "options": ["今天我在家 (jiā)", "昨天我在家", "家明天", "不家吗"],
+              "correctAnswers": [0],
+              "explanation": "今天 + 在 + 家."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Hier j'étais à la maison » :",
+              "options": ["昨天我在家", "明天我在家", "家你好", "不昨天"],
+              "correctAnswers": [0],
+              "explanation": "昨天 + 在 + 家."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« J'écris en chinois » :",
+              "options": [
+                "我写中文 (xiě zhōng wén)",
+                "我看中文",
+                "中文吗",
+                "不中文学校"
+              ],
+              "correctAnswers": [0],
+              "explanation": "写 + 中文."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« J'étudie » :",
+              "options": [
+                "我学习 (xué xí)",
+                "我学校",
+                "学习吗再见",
+                "不学习昨天"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学习 = étudier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Encourager avant examen :",
+              "options": ["加油 (jiā yóu)", "再见", "什么", "不客气"],
+              "correctAnswers": [0],
+              "explanation": "加油 = courage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Nous avons cours demain » :",
+              "options": [
+                "我们明天有课 (yǒu kè)",
+                "我们昨天有课",
+                "有课吗你好",
+                "不课"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我们 + 明天 + 有课."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Tu aimes le sport ? » :",
+              "options": [
+                "你喜欢运动 (yùn dòng) 吗",
+                "你喜欢运动什么",
+                "运动再见",
+                "不运动学校"
+              ],
+              "correctAnswers": [0],
+              "explanation": "喜欢 + 运动 + 吗."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Répondre « Oui, j'aime le sport » :",
+              "options": ["我喜欢运动", "我不喜欢运动", "运动明天", "吗运动"],
+              "correctAnswers": [0],
+              "explanation": "Affirmation avec 喜欢."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Refuser poliment (non) :",
+              "options": [
+                "不 (bù), 不要 (bù yào) selon contexte",
+                "谢谢",
+                "你好",
+                "昨天"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不 / 不要 pour refuser."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formules de politesse :",
+              "options": [
+                "请 (qǐng) + verbe",
+                "谢谢 / 不客气",
+                "学校 / 明天 = merci",
+                "对不起 / 没关系"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "请… ; excuses et réponse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« S'il te plaît, assieds-toi » :",
+              "options": ["请坐", "请去", "请累", "请吗"],
+              "correctAnswers": [0],
+              "explanation": "请坐."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Je vais à l'école » (maintenant) :",
+              "options": [
+                "我去学校 (qù xué xiào)",
+                "我来学校",
+                "学校我",
+                "不去吗你好"
+              ],
+              "correctAnswers": [0],
+              "explanation": "去 + 学校."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Je suis français / française » :",
+              "options": [
+                "我是法国人 (fǎ guó rén)",
+                "我是法国学校",
+                "法国明天",
+                "不法国"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我是 + nationalité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Demander l'heure (simple) :",
+              "options": [
+                "现在几点 (jǐ diǎn)",
+                "现在什么学校",
+                "几点吗再见",
+                "昨天几点"
+              ],
+              "correctAnswers": [0],
+              "explanation": "几点 = quelle heure."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Combien ça coûte ? » :",
+              "options": [
+                "多少钱 (duō shao qián)",
+                "多少学校",
+                "钱吗你好",
+                "不钱"
+              ],
+              "correctAnswers": [0],
+              "explanation": "多少钱."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« J'ai un livre » :",
+              "options": [
+                "我有一本书 (yī běn shū)",
+                "我是书",
+                "书明天",
+                "没书吗"
+              ],
+              "correctAnswers": [0],
+              "explanation": "有 + quantificateur + nom."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Petite pomme » (ordre adjectif) en 6e :",
+              "options": [
+                "小苹果 (xiǎo píng guǒ)",
+                "苹果小吗",
+                "小吗苹果",
+                "苹果学校"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif avant nom : 小苹果."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Grande école » :",
+              "options": [
+                "大学校 (dà xué xiào)",
+                "学校大吗",
+                "大吗学校",
+                "不大学"
+              ],
+              "correctAnswers": [0],
+              "explanation": "大 + 学校."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Leave-taking après cours :",
+              "options": ["再见 (zài jiàn)", "你好", "老师吗", "什么"],
+              "correctAnswers": [0],
+              "explanation": "再见 en partant."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Mini-dialogue goûts cohérent :",
+              "options": [
+                "A: 你喜欢什么 B: 我喜欢…",
+                "A: 你好 B: 你好",
+                "A: 昨天 B: 明天 seuls",
+                "A: 谢谢 B: 不客气"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Question goût + salutation ok."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Répondre « Moi aussi » (j'aime aussi) :",
+              "options": ["我也喜欢 (yě xǐ huān)", "我不也", "也吗", "也学校"],
+              "correctAnswers": [0],
+              "explanation": "也 = aussi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Je n'aime pas » générique :",
+              "options": ["我不喜欢", "我喜欢不", "不吗", "不喜欢学校"],
+              "correctAnswers": [0],
+              "explanation": "我不喜欢 + nom."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Demain on se voit » :",
+              "options": ["明天见", "昨天见", "见吗", "不见学校"],
+              "correctAnswers": [0],
+              "explanation": "明天见."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Bonjour à tous (classe) » simple :",
+              "options": [
+                "大家好 (dà jiā hǎo)",
+                "大家再见",
+                "大家吗",
+                "不大家"
+              ],
+              "correctAnswers": [0],
+              "explanation": "大家好 = bonjour à tous."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Je suis dans la salle de classe » :",
+              "options": [
+                "我在教室 (jiào shì)",
+                "我去教室吗",
+                "教室是我",
+                "不教室"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在 + 教室."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Hier j'ai écouté de la musique » :",
+              "options": ["昨天我听音乐", "明天我听音乐", "听吗学校", "不昨天"],
+              "correctAnswers": [0],
+              "explanation": "昨天 + 听 + 音乐."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Proposer « et toi ? » (et toi) :",
+              "options": ["你呢 (nǐ ne)", "你吗学校", "呢再见", "不呢"],
+              "correctAnswers": [0],
+              "explanation": "你呢 = et toi ?"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Oui » (réponse courte) :",
+              "options": [
+                "对 (duì) / 是 (shì) selon contexte",
+                "不",
+                "吗",
+                "再见"
+              ],
+              "correctAnswers": [0],
+              "explanation": "对/是 pour accorder."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Non » (réponse courte) :",
+              "options": ["不 (bù)", "是", "谢谢", "你好"],
+              "correctAnswers": [0],
+              "explanation": "不 = non."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Présentation correcte :",
+              "options": ["我叫…", "我是… (identité)", "我是明天", "我叫学校"],
+              "correctAnswers": [0, 1],
+              "explanation": "我叫 prénom ; 我是 rôle/identité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Elle est ma camarade » (il/elle) :",
+              "options": [
+                "她是我的同学 (tā shì…)",
+                "他是我的同学 si garçon",
+                "学校是她",
+                "不她"
+              ],
+              "correctAnswers": [0],
+              "explanation": "她 pour elle ; 他 pour il."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Il est professeur » :",
+              "options": ["他是老师", "他是学生", "老师吗", "不他"],
+              "correctAnswers": [0],
+              "explanation": "他是老师."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Inviter « viens ! » :",
+              "options": ["来 (lái)", "去", "来吗学校", "不来你好"],
+              "correctAnswers": [0],
+              "explanation": "来 = viens."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Va à l'école ! » :",
+              "options": ["去学校", "来学校", "学校吗", "不去吗"],
+              "correctAnswers": [0],
+              "explanation": "去 + 学校."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Je n'ai pas de stylo » (simple) :",
+              "options": [
+                "我没有笔 (méi yǒu bǐ)",
+                "我有笔",
+                "笔吗",
+                "没吗学校"
+              ],
+              "correctAnswers": [0],
+              "explanation": "没有 = ne pas avoir."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« C'est bon » :",
+              "options": ["很好 / 好 (hǎo)", "很吗", "不好吗", "好学校"],
+              "correctAnswers": [0],
+              "explanation": "好 / 很好."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ce n'est pas bon » :",
+              "options": ["不好 (bù hǎo)", "很好", "吗好", "好昨天"],
+              "correctAnswers": [0],
+              "explanation": "不 + 好."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Saluer un ami le matin :",
+              "options": ["你好", "再见", "谢谢", "什么"],
+              "correctAnswers": [0],
+              "explanation": "你好 standard."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Planifier « rendez-vous demain à l'école » :",
+              "options": ["明天在学校见", "昨天在学校见", "学校吗", "不见吗"],
+              "correctAnswers": [0],
+              "explanation": "明天 + 在 + 学校 + 见."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Exprimer le futur proche avec :",
+              "options": [
+                "明天 (míng tiān)",
+                "今天 (jīn tiān) pour demain",
+                "来 / 去 + lieu",
+                "你好 seul"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "明天 + action ; aller/venir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Passé : hier j'ai mangé » :",
+              "options": [
+                "昨天我吃了 (chī le)",
+                "明天我吃了",
+                "吃吗",
+                "不昨天"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天 + verbe + 了."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Je veux de l'eau » :",
+              "options": ["我要水", "我要学校", "水吗", "不要吗你好"],
+              "correctAnswers": [0],
+              "explanation": "要 + 水."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Je ne veux pas » :",
+              "options": ["我不要 (bù yào)", "我要", "要吗", "不要学校"],
+              "correctAnswers": [0],
+              "explanation": "不要 = ne pas vouloir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Question « Est-ce que tu vas demain ? » :",
+              "options": [
+                "你明天去吗 (qù ma)",
+                "你明天什么",
+                "去吗学校",
+                "不明天"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天 + 去 + 吗."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réponse « Oui, je vais demain » :",
+              "options": ["我明天去", "我不去", "去吗", "去学校你好"],
+              "correctAnswers": [0],
+              "explanation": "Affirmation + 明天 + 去."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Tu es élève ? » :",
+              "options": ["你是学生吗", "你是老师吗", "学生什么", "吗学校"],
+              "correctAnswers": [0],
+              "explanation": "你是学生吗."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Oui, je suis élève » :",
+              "options": ["我是学生", "我是老师", "不学生", "学生吗"],
+              "correctAnswers": [0],
+              "explanation": "我是学生."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Remercier un prof :",
+              "options": ["谢谢老师", "再见老师", "老师吗", "不老师"],
+              "correctAnswers": [0],
+              "explanation": "谢谢 + 老师."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Clore une conversation :",
+              "options": ["再见", "你好", "什么", "吗"],
+              "correctAnswers": [0],
+              "explanation": "再见 pour partir."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Révision expression : correct",
+              "options": [
+                "我昨天学习中文",
+                "我明天去学校",
+                "昨天 = demain en français seulement",
+                "喜欢 = aimer"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Phrases temps cohérentes ; 昨天 ≠ demain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phrase complète polie au départ :",
+              "options": [
+                "再见，明天见！",
+                "你好，昨天见！",
+                "谢谢，什么！",
+                "学校，吗！"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au revoir + à demain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Répondre à « 你喜欢苹果吗？ » si oui :",
+              "options": ["喜欢 / 我喜欢苹果", "不喜欢", "苹果学校", "吗苹果"],
+              "correctAnswers": [0],
+              "explanation": "Réponse affirmative avec 喜欢."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Répondre si non :",
+              "options": ["不喜欢 (bù xǐ huān)", "喜欢", "不吗", "苹果明天"],
+              "correctAnswers": [0],
+              "explanation": "不喜欢."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Demander « Comment vas-tu ? » :",
+              "options": ["你好吗", "你叫什么", "你学校吗", "你明天吗"],
+              "correctAnswers": [0],
+              "explanation": "你好吗."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réponse standard positive :",
+              "options": [
+                "我很好 (wǒ hěn hǎo)",
+                "我不好",
+                "好吗",
+                "很好吗学校"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我很好."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Je vais bien, et toi ? » :",
+              "options": ["我很好，你呢", "我很好，再见", "你呢吗", "不你呢"],
+              "correctAnswers": [0],
+              "explanation": "你呢 reprend la question."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase examen : présenter + école :",
+              "options": [
+                "你好，我是学生，我在学校",
+                "再见我是学校",
+                "学校我叫",
+                "明天吗"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salut + identité + lieu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Enchaîner goût + nourriture :",
+              "options": [
+                "我喜欢吃苹果",
+                "我喜欢学校",
+                "吃吗再见",
+                "不苹果你好"
+              ],
+              "correctAnswers": [0],
+              "explanation": "喜欢吃 + aliment."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Meilleure réponse à 谢谢 :",
+              "options": ["不客气", "对不起", "你好", "昨天"],
+              "correctAnswers": [0],
+              "explanation": "不客气 après merci."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

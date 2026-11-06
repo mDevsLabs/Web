@@ -1,0 +1,2623 @@
+{
+  "id": "4e-espagnol-02",
+  "year": "4e",
+  "subject": "espagnol",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La famille élargie",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots espagnols nomment un parent proche ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["el tío", "la silla", "la tía", "el cuaderno"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Tío » et « tía » désignent l'oncle et la tante."
+            },
+            {
+              "id": "q2",
+              "question": "« Mi hermana mayor tiene quince años » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Ma sœur aînée a quinze ans.",
+                "Mon frère cadet a cinq ans.",
+                "Ma mère a cinquante ans.",
+                "Ma cousine a vingt ans."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hermana mayor » = sœur aînée, « quince años » = quinze ans."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « les petits-enfants » ?",
+              "type": "single_choice",
+              "options": [
+                "los nietos",
+                "los sobrinos",
+                "los primos",
+                "los hijos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Nietos » = petits-enfants."
+            },
+            {
+              "id": "q4",
+              "question": "Complete : « Tengo tres ___ en Madrid. » (cousins)",
+              "type": "single_choice",
+              "options": ["primos", "tíos", "abuelos", "suegros"],
+              "correctAnswers": [0],
+              "explanation": "« Primos » = cousins."
+            },
+            {
+              "id": "q5",
+              "question": "« Mis abuelos viven en el campo » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Mes grands-parents habitent à la campagne.",
+                "Mes parents travaillent en ville.",
+                "Mes oncles voyagent beaucoup.",
+                "Mes cousins étudient à Madrid."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Abuelos » = grands-parents, « campo » = campagne."
+            },
+            {
+              "id": "q6",
+              "question": "« Mi cuñado es profesor » : qui est « cuñado » ?",
+              "type": "single_choice",
+              "options": [
+                "le beau-frère",
+                "le beau-père",
+                "le cousin",
+                "le neveu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Cuñado » = beau-frère."
+            },
+            {
+              "id": "q7",
+              "question": "La fille de ta tía est ta :",
+              "type": "single_choice",
+              "options": ["prima", "tía", "sobrina", "suegra"],
+              "correctAnswers": [0],
+              "explanation": "Fille de la tante = cousine (« prima »)."
+            },
+            {
+              "id": "q8",
+              "question": "Quelle phrase parle de neveux et nièces ?",
+              "type": "single_choice",
+              "options": [
+                "Mis sobrinos juegan en el parque.",
+                "Mis primos estudian mucho.",
+                "Mis hijos duermen tarde.",
+                "Mis padres cocinan bien."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sobrinos » = neveux et nièces."
+            },
+            {
+              "id": "q9",
+              "question": "Traduction de « Es la esposa de mi hermano » :",
+              "type": "single_choice",
+              "options": [
+                "C'est l'épouse de mon frère.",
+                "C'est la sœur de mon père.",
+                "C'est la fille de ma tante.",
+                "C'est la mère de mes cousins."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Esposa de mi hermano » = belle-sœur par alliance."
+            },
+            {
+              "id": "q10",
+              "question": "« Somos una familia numerosa » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Nous sommes une famille nombreuse.",
+                "Nous habitons seuls.",
+                "Nous n'avons pas d'enfants.",
+                "Nous voyageons en été."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Familia numerosa » = famille nombreuse."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Matières à l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Lesquels sont des noms de matières en espagnol ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "matemáticas",
+                "el profesor",
+                "historia",
+                "el recreo"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Matemáticas » et « historia » sont des matières."
+            },
+            {
+              "id": "q2",
+              "question": "« Estudio lengua extranjera » : quelle matière ?",
+              "type": "single_choice",
+              "options": [
+                "Une langue étrangère",
+                "Les maths",
+                "La musique",
+                "La géographie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Lengua extranjera » = langue étrangère."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « la physique et la chimie » ?",
+              "type": "single_choice",
+              "options": [
+                "física y química",
+                "historia y geografía",
+                "arte y música",
+                "educación física"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Física y química » = physique-chimie."
+            },
+            {
+              "id": "q4",
+              "question": "« Me gusta la clase de música » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "J'aime le cours de musique.",
+                "Je déteste le sport.",
+                "Je rate les maths.",
+                "Je lis en anglais."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Clase de música » = cours de musique."
+            },
+            {
+              "id": "q5",
+              "question": "Quel mot correspond à « technologie » ?",
+              "type": "single_choice",
+              "options": ["tecnología", "literatura", "biología", "filosofía"],
+              "correctAnswers": [0],
+              "explanation": "« Tecnología » = technologie."
+            },
+            {
+              "id": "q6",
+              "question": "Complete : « Hoy tenemos ___ y educación física. » (sciences de la vie)",
+              "type": "single_choice",
+              "options": ["biología", "historia", "francés", "religión"],
+              "correctAnswers": [0],
+              "explanation": "« Biología » = SVT / biologie."
+            },
+            {
+              "id": "q7",
+              "question": "« La asignatura de geografía es interesante » :",
+              "type": "single_choice",
+              "options": [
+                "La matière de géo est intéressante.",
+                "Le prof de maths est strict.",
+                "Le lycée est loin.",
+                "Les devoirs sont faciles."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Asignatura » = matière scolaire."
+            },
+            {
+              "id": "q8",
+              "question": "Où entends-tu « plástica » ?",
+              "type": "single_choice",
+              "options": [
+                "Dans l'emploi du temps des arts.",
+                "Au réveil à la maison.",
+                "Chez les grands-parents.",
+                "Au supermarché."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Plástica » = arts plastiques."
+            },
+            {
+              "id": "q9",
+              "question": "Traduction : « Sacamos buenas notas en inglés. »",
+              "type": "single_choice",
+              "options": [
+                "Nous avons de bonnes notes en anglais.",
+                "Nous parlons mal espagnol.",
+                "Nous quittons le lycée.",
+                "Nous aimons le foot."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sacar buenas notas » = avoir de bonnes notes."
+            },
+            {
+              "id": "q10",
+              "question": "« ¿Qué asignatura prefieres? » est une question sur :",
+              "type": "single_choice",
+              "options": [
+                "la matière préférée",
+                "l'heure du déjeuner",
+                "la taille de la famille",
+                "le temps qu'il fait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Asignatura preferida » = matière préférée."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Emploi du temps",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases décrivent des moments de la journée scolaire ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "La primera clase empieza a las ocho.",
+                "Mi perro duerme mucho.",
+                "El recreo dura veinte minutos.",
+                "Mi abuela cocina paella."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Début de cours et récréation font partie de l'emploi du temps."
+            },
+            {
+              "id": "q2",
+              "question": "« Los miércoles tengo tutoría » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Les mercredis j'ai l'heure de tutorat.",
+                "Les lundis je fais du sport.",
+                "Les vendredis je dors tard.",
+                "Les samedis je travaille."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tutoría » = heure avec le prof principal."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « après-midi » ?",
+              "type": "single_choice",
+              "options": [
+                "por la tarde",
+                "por la mañana",
+                "por la noche",
+                "al mediodía"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Por la tarde » = l'après-midi."
+            },
+            {
+              "id": "q4",
+              "question": "« Terminamos las clases a las cinco » :",
+              "type": "single_choice",
+              "options": [
+                "Nous finissons les cours à cinq heures.",
+                "Nous commençons à huit heures.",
+                "Nous déjeunons à midi.",
+                "Nous dormons à minuit."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Terminar las clases » = finir les cours."
+            },
+            {
+              "id": "q5",
+              "question": "Quel jour : « el jueves » ?",
+              "type": "single_choice",
+              "options": ["jeudi", "mardi", "dimanche", "vendredi"],
+              "correctAnswers": [0],
+              "explanation": "« Jueves » = jeudi."
+            },
+            {
+              "id": "q6",
+              "question": "Complete : « El ___ tenemos examen de matemáticas. » (lundi)",
+              "type": "single_choice",
+              "options": ["lunes", "sábado", "domingo", "verano"],
+              "correctAnswers": [0],
+              "explanation": "« Lunes » = lundi."
+            },
+            {
+              "id": "q7",
+              "question": "« Después del instituto voy al club » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Après le lycée je vais au club.",
+                "Avant le petit-déjeuner je cours.",
+                "Pendant la nuit je lis.",
+                "Sans mes amis je m'ennuie."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Después del instituto » = après le lycée."
+            },
+            {
+              "id": "q8",
+              "question": "« Una hora libre » correspond à :",
+              "type": "single_choice",
+              "options": [
+                "une heure libre",
+                "une matière difficile",
+                "un cousin loin",
+                "un devoir long"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hora libre » = créneau sans cours."
+            },
+            {
+              "id": "q9",
+              "question": "Dans « Siempre llego puntual al aula », « puntual » veut dire :",
+              "type": "single_choice",
+              "options": ["à l'heure", "en retard", "fatigué", "content"],
+              "correctAnswers": [0],
+              "explanation": "« Puntual » = ponctuel, à l'heure."
+            },
+            {
+              "id": "q10",
+              "question": "Traduction : « Alternamos grupos cada trimestre. »",
+              "type": "single_choice",
+              "options": [
+                "Nous changeons de groupes chaque trimestre.",
+                "Nous mangeons toujours ensemble.",
+                "Nous quittons l'école en juin.",
+                "Nous parlons trois langues."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Trimestre » = trimestre scolaire."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Lire l'heure",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions indiquent une heure précise ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Son las tres y cuarto.",
+                "Hace mucho calor.",
+                "Es la una y media.",
+                "Me encanta el cine."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Tres y cuarto » et « una y media » donnent l'heure."
+            },
+            {
+              "id": "q2",
+              "question": "« Son las diez menos diez » =",
+              "type": "single_choice",
+              "options": [
+                "neuf heures cinquante",
+                "dix heures dix",
+                "onze heures moins le quart",
+                "huit heures vingt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Menos diez » = moins dix minutes."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dire « midi » ?",
+              "type": "single_choice",
+              "options": [
+                "Es mediodía.",
+                "Es medianoche.",
+                "Son las doce de la noche.",
+                "Es la una."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mediodía » = midi."
+            },
+            {
+              "id": "q4",
+              "question": "« ¿A qué hora empieza el cine? » demande :",
+              "type": "single_choice",
+              "options": [
+                "À quelle heure commence le ciné ?",
+                "Où est le cinéma ?",
+                "Combien coûte le ticket ?",
+                "Qui vient avec toi ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« A qué hora » = à quelle heure."
+            },
+            {
+              "id": "q5",
+              "question": "« Son las ocho en punto » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Il est huit heures pile.",
+                "Il est huit heures et demie.",
+                "Il est neuf heures.",
+                "Il est sept heures moins le quart."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« En punto » = pile, exactement."
+            },
+            {
+              "id": "q6",
+              "question": "Complete : « El autobús pasa a las siete ___ cuarto. »",
+              "type": "single_choice",
+              "options": ["y", "menos", "media", "en"],
+              "correctAnswers": [0],
+              "explanation": "« Siete y cuarto » = sept heures et quart."
+            },
+            {
+              "id": "q7",
+              "question": "« Media hora » vaut :",
+              "type": "single_choice",
+              "options": [
+                "trente minutes",
+                "quinze minutes",
+                "une heure",
+                "cinq minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Media hora » = une demi-heure."
+            },
+            {
+              "id": "q8",
+              "question": "Traduction : « Llego tarde a la primera clase. »",
+              "type": "single_choice",
+              "options": [
+                "J'arrive en retard au premier cours.",
+                "Je pars tôt du lycée.",
+                "Je mange à midi.",
+                "Je dors huit heures."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Llegar tarde » = arriver en retard."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿Qué hora es? » sert à :",
+              "type": "single_choice",
+              "options": [
+                "demander l'heure",
+                "saluer quelqu'un",
+                "commander au café",
+                "décrire la météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule standard pour demander l'heure."
+            },
+            {
+              "id": "q10",
+              "question": "« A las nueve y veinte » correspond à :",
+              "type": "single_choice",
+              "options": [
+                "neuf heures vingt",
+                "neuf heures moins vingt",
+                "huit heures vingt",
+                "dix heures vingt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Y veinte » = plus vingt minutes."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Dans le lycée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent des lieux du lycée ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "el aula",
+                "la playa",
+                "el laboratorio",
+                "la montaña"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Aula » et « laboratorio » sont dans l'établissement."
+            },
+            {
+              "id": "q2",
+              "question": "« Voy a la biblioteca a estudiar » :",
+              "type": "single_choice",
+              "options": [
+                "Je vais à la bibliothèque pour réviser.",
+                "Je cours au gymnase.",
+                "Je mange à la cantine.",
+                "Je joue dans la cour."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Biblioteca » = bibliothèque."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « la cour de récréation » ?",
+              "type": "single_choice",
+              "options": [
+                "el patio",
+                "el pasillo",
+                "el ascensor",
+                "el despacho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Patio » = cour."
+            },
+            {
+              "id": "q4",
+              "question": "« El profesor corrige los exámenes » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Le prof corrige les examens.",
+                "L'élève copie la leçon.",
+                "Le directeur ferme l'école.",
+                "La classe part en voyage."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Corregir exámenes » = corriger des copies."
+            },
+            {
+              "id": "q5",
+              "question": "Où achètes-tu le « bocadillo » à midi ?",
+              "type": "single_choice",
+              "options": [
+                "En la cantina ou à la maison.",
+                "Dans la piscine.",
+                "Sur l'autoroute.",
+                "Au cinéma le soir."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Bocadillo » = sandwich, souvent à la cantine."
+            },
+            {
+              "id": "q6",
+              "question": "« Subimos al segundo piso » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Nous montons au deuxième étage.",
+                "Nous descendons au sous-sol.",
+                "Nous sortons du bâtiment.",
+                "Nous traversons la cour."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Subir al piso » = monter à l'étage."
+            },
+            {
+              "id": "q7",
+              "question": "Quel mot = « couloir » ?",
+              "type": "single_choice",
+              "options": ["pasillo", "techo", "ventana", "puerta"],
+              "correctAnswers": [0],
+              "explanation": "« Pasillo » = couloir."
+            },
+            {
+              "id": "q8",
+              "question": "Traduction : « Guardamos los móviles en el armario. »",
+              "type": "single_choice",
+              "options": [
+                "Nous rangeons les portables dans le casier.",
+                "Nous jetons les livres.",
+                "Nous appelons nos parents.",
+                "Nous filmons le prof."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Armario » = casier ou placard."
+            },
+            {
+              "id": "q9",
+              "question": "« El ordenador del aula no funciona » :",
+              "type": "single_choice",
+              "options": [
+                "L'ordinateur de la salle ne marche pas.",
+                "Le stylo est neuf.",
+                "La cloche sonne tôt.",
+                "Le tableau est vert."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ordenador » = ordinateur."
+            },
+            {
+              "id": "q10",
+              "question": "« ¿Dónde está la secretaría? » cherche :",
+              "type": "single_choice",
+              "options": [
+                "le secrétariat",
+                "la piscine",
+                "le stade",
+                "la gare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Secretaría » = bureau administratif."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Devoirs et organisation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases parlent de devoirs ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Tengo que hacer los deberes.",
+                "Voy al cine ahora.",
+                "Entrego el trabajo mañana.",
+                "Nado en la piscina."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Deberes » et « entregar el trabajo » concernent les devoirs."
+            },
+            {
+              "id": "q2",
+              "question": "« Apunto la tarea en el agenda » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je note le devoir dans l'agenda.",
+                "Je perds mon stylo.",
+                "Je rate l'examen.",
+                "Je dors en classe."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Apuntar la tarea » = noter le devoir."
+            },
+            {
+              "id": "q3",
+              "question": "« El cuaderno » est :",
+              "type": "single_choice",
+              "options": [
+                "le cahier",
+                "le tableau",
+                "le plafond",
+                "le professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Cuaderno » = cahier."
+            },
+            {
+              "id": "q4",
+              "question": "Complete : « Necesito un ___ para escribir. »",
+              "type": "single_choice",
+              "options": ["bolígrafo", "zapato", "coche", "árbol"],
+              "correctAnswers": [0],
+              "explanation": "« Bolígrafo » = stylo."
+            },
+            {
+              "id": "q5",
+              "question": "« Estudio con mis compañeros » :",
+              "type": "single_choice",
+              "options": [
+                "Je révise avec mes camarades.",
+                "Je mange seul.",
+                "Je quitte le lycée.",
+                "Je regarde la télé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Compañeros » = camarades de classe."
+            },
+            {
+              "id": "q6",
+              "question": "Traduction : « Organizo mi mochila por la noche. »",
+              "type": "single_choice",
+              "options": [
+                "Je prépare mon sac le soir.",
+                "Je cours le matin.",
+                "Je parle au téléphone.",
+                "Je joue au foot."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mochila » = sac à dos."
+            },
+            {
+              "id": "q7",
+              "question": "« Repasar las lecciones » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "revoir les leçons",
+                "ignorer le prof",
+                "quitter la salle",
+                "acheter un livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Repasar » = réviser."
+            },
+            {
+              "id": "q8",
+              "question": "« ¿Has terminado el ejercicio? » au passé récent demande si :",
+              "type": "single_choice",
+              "options": [
+                "tu as fini l'exercice",
+                "tu vas au sport",
+                "tu connais Madrid",
+                "tu aimes la musique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Has terminado » = as-tu terminé (pretérito perfecto)."
+            },
+            {
+              "id": "q9",
+              "question": "« Sacar una buena nota » =",
+              "type": "single_choice",
+              "options": [
+                "obtenir une bonne note",
+                "perdre son cahier",
+                "arriver en retard",
+                "manger vite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sacar una nota » = obtenir une note."
+            },
+            {
+              "id": "q10",
+              "question": "« Me distraigo con el móvil » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je me laisse distraire par le portable.",
+                "Je travaille sans pause.",
+                "Je lis trois heures.",
+                "Je parle espagnol couramment."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Distraerse » = se distraire."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Loisirs après les cours",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles activités sont des loisirs ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "escuchar música",
+                "hacer deberes obligatorios",
+                "jugar a videojuegos",
+                "contestar un examen"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Musique et jeux vidéo sont des loisirs."
+            },
+            {
+              "id": "q2",
+              "question": "« Salgo con mis amigos al parque » :",
+              "type": "single_choice",
+              "options": [
+                "Je sors avec mes amis au parc.",
+                "Je reste seul à la maison.",
+                "Je dors toute l'après-midi.",
+                "Je travaille au supermarché."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Salir con amigos » = sortir avec des amis."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dire « lire des bandes dessinées » ?",
+              "type": "single_choice",
+              "options": [
+                "leer cómics",
+                "nadar en la piscina",
+                "cocinar la cena",
+                "limpiar la habitación"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Cómics » = BD."
+            },
+            {
+              "id": "q4",
+              "question": "« Me apunto a un taller de fotografía » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je m'inscris à un atelier photo.",
+                "Je quitte le club de théâtre.",
+                "Je rate le bus.",
+                "Je vends mon appareil."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Taller » = atelier."
+            },
+            {
+              "id": "q5",
+              "question": "« Pasar tiempo en redes sociales » =",
+              "type": "single_choice",
+              "options": [
+                "passer du temps sur les réseaux",
+                "courir dix kilomètres",
+                "étudier sans pause",
+                "dormir huit heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression courante pour les réseaux."
+            },
+            {
+              "id": "q6",
+              "question": "Traduction : « Los fines de semana montamos en bici. »",
+              "type": "single_choice",
+              "options": [
+                "Le week-end nous faisons du vélo.",
+                "En classe nous lisons.",
+                "Le lundi nous dormons.",
+                "En été nous ne sortons pas."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Montar en bici » = faire du vélo."
+            },
+            {
+              "id": "q7",
+              "question": "« Ir al cine » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "aller au cinéma",
+                "aller à la piscine",
+                "aller chez le médecin",
+                "aller à l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Cine » = cinéma."
+            },
+            {
+              "id": "q8",
+              "question": "« Tocar la guitarra » correspond à :",
+              "type": "single_choice",
+              "options": [
+                "jouer de la guitare",
+                "regarder la télé",
+                "faire les courses",
+                "écrire un mail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tocar un instrumento » = jouer d'un instrument."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿Qué haces en tu tiempo libre? » demande :",
+              "type": "single_choice",
+              "options": [
+                "ce que tu fais pendant ton temps libre",
+                "où tu habites",
+                "combien tu as de cousins",
+                "quelle heure il est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tiempo libre » = temps libre."
+            },
+            {
+              "id": "q10",
+              "question": "« Prefiero quedar en casa y leer » :",
+              "type": "single_choice",
+              "options": [
+                "Je préfère rester à la maison et lire.",
+                "Je préfère courir dehors.",
+                "Je déteste les livres.",
+                "Je voyage chaque jour."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Quedar en casa » = rester à la maison."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Sport et association",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels verbes décrivent du sport ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "practicar baloncesto",
+                "cocinar sopa",
+                "entrenar el martes",
+                "escribir una carta"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Practicar baloncesto » et « entrenar » concernent le sport."
+            },
+            {
+              "id": "q2",
+              "question": "« Juego en el equipo de voleibol » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je joue dans l'équipe de volley.",
+                "Je n'aime pas le sport.",
+                "Je regarde la télé.",
+                "Je fais du piano."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Equipo de voleibol » = équipe de volley."
+            },
+            {
+              "id": "q3",
+              "question": "« El entrenador es exigente » : « entrenador » =",
+              "type": "single_choice",
+              "options": [
+                "l'entraîneur",
+                "l'arbitre",
+                "le cousin",
+                "le bibliothécaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Entrenador » = entraîneur."
+            },
+            {
+              "id": "q4",
+              "question": "Complete : « Necesito las ___ nuevas para correr. » (baskets)",
+              "type": "single_choice",
+              "options": ["zapatillas", "gafas", "guantes", "bufandas"],
+              "correctAnswers": [0],
+              "explanation": "« Zapatillas » = baskets."
+            },
+            {
+              "id": "q5",
+              "question": "Traduction : « Ganamos el partido por tres puntos. »",
+              "type": "single_choice",
+              "options": [
+                "Nous avons gagné le match de trois points.",
+                "Nous avons perdu le bus.",
+                "Nous avons raté l'examen.",
+                "Nous avons mangé tard."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ganar el partido » = gagner le match."
+            },
+            {
+              "id": "q6",
+              "question": "« Hacer judo los jueves » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Faire du judo les jeudis.",
+                "Nager le dimanche.",
+                "Dormir le matin.",
+                "Lire le soir."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hacer judo » = pratiquer le judo."
+            },
+            {
+              "id": "q7",
+              "question": "« Me lesioné la rodilla » :",
+              "type": "single_choice",
+              "options": [
+                "Je me suis blessé au genou.",
+                "Je me suis coupé le doigt en cuisinant.",
+                "J'ai mal à la tête en classe.",
+                "J'ai perdu mon livre."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Rodilla » = genou."
+            },
+            {
+              "id": "q8",
+              "question": "« La piscina municipal » est :",
+              "type": "single_choice",
+              "options": [
+                "la piscine municipale",
+                "le stade de foot",
+                "la salle de classe",
+                "le marché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Piscina municipal » = piscine publique."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿Practicas algún deporte? » demande :",
+              "type": "single_choice",
+              "options": [
+                "si tu fais du sport",
+                "si tu as des frères",
+                "si tu parles anglais",
+                "si tu habites loin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question sur la pratique sportive."
+            },
+            {
+              "id": "q10",
+              "question": "« Después del entrenamiento ducho » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Après l'entraînement je prends une douche.",
+                "Avant le cours je mange.",
+                "Pendant le match je cours.",
+                "Sans sport je m'ennuie."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ducharse » = se doucher."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Ma journée type",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases racontent une routine ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Me levanto a las siete.",
+                "He visitado París el año pasado.",
+                "Desayuno cereales y zumo.",
+                "Compré un coche ayer."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Se lever et petit-déjeuner décrivent une routine."
+            },
+            {
+              "id": "q2",
+              "question": "« Me ducho y me visto rápido » :",
+              "type": "single_choice",
+              "options": [
+                "Je me douche et m'habille vite.",
+                "Je dors jusqu'à midi.",
+                "Je fais mes devoirs.",
+                "Je téléphone à ma tía."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ducharse y vestirse » = douche et habillage."
+            },
+            {
+              "id": "q3",
+              "question": "« Ceno con mi familia » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je dîne avec ma famille.",
+                "Je déjeune seul.",
+                "Je cuisine pour mes amis.",
+                "Je mange à la cantine."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Cenar » = dîner le soir."
+            },
+            {
+              "id": "q4",
+              "question": "Ordre logique le matin :",
+              "type": "single_choice",
+              "options": [
+                "despertarse → desayunar → ir al instituto",
+                "dormir → cenar → desayunar",
+                "salir → acostarse → levantarse",
+                "estudiar → cenar → despertarse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réveil, petit-déj, trajet vers le lycée."
+            },
+            {
+              "id": "q5",
+              "question": "« Voy en autobús al colegio » :",
+              "type": "single_choice",
+              "options": [
+                "Je vais au lycée en bus.",
+                "Je marche au parc.",
+                "Je conduis une voiture.",
+                "Je reste au lit."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Autobús » = bus."
+            },
+            {
+              "id": "q6",
+              "question": "Traduction : « Por la noche repaso un poco. »",
+              "type": "single_choice",
+              "options": [
+                "Le soir je révise un peu.",
+                "Le matin je cours.",
+                "À midi je dors.",
+                "L'après-midi je nage."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Repasar un poco » = réviser un peu."
+            },
+            {
+              "id": "q7",
+              "question": "« Me acuesto tarde los viernes » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Je me couche tard le vendredi.",
+                "Je me lève tôt le lundi.",
+                "Je déjeune à huit heures.",
+                "Je travaille le dimanche."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Acostarse tarde » = se coucher tard."
+            },
+            {
+              "id": "q8",
+              "question": "« Hago la cama » =",
+              "type": "single_choice",
+              "options": [
+                "je fais mon lit",
+                "je fais la vaisselle",
+                "je fais du sport",
+                "je fais un gâteau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression fixe pour ranger le lit."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿A qué hora te levantas? » porte sur :",
+              "type": "single_choice",
+              "options": [
+                "l'heure du réveil",
+                "la matière préférée",
+                "le nombre de cousins",
+                "la couleur du cartable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question sur l'heure de lever."
+            },
+            {
+              "id": "q10",
+              "question": "« Normalmente como fruta en el recreo » :",
+              "type": "single_choice",
+              "options": [
+                "D'habitude je mange un fruit à la récré.",
+                "Parfois je saute le dîner.",
+                "Jamais je bois d'eau.",
+                "Toujours je dors en classe."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Recreo » = récréation."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Passé récent au quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formes sont au pretérito perfecto ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "he desayunado",
+                "desayuno cada día",
+                "has llegado tarde",
+                "llego puntual"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« He desayunado » et « has llegado » utilisent avoir + participe."
+            },
+            {
+              "id": "q2",
+              "question": "« He terminado los deberes » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai fini mes devoirs.",
+                "Je finis mes devoirs.",
+                "Je finirai demain.",
+                "Je ne fais jamais mes devoirs."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pretérito perfecto = action récente ou liée au présent."
+            },
+            {
+              "id": "q3",
+              "question": "Complete : « ¿___ comprado entradas para el concierto? »",
+              "type": "single_choice",
+              "options": ["Has", "He", "Ha", "Hemos"],
+              "correctAnswers": [0],
+              "explanation": "Avec « tú », on emploie « has »."
+            },
+            {
+              "id": "q4",
+              "question": "« Hemos ganado el partido » : sujet =",
+              "type": "single_choice",
+              "options": ["nous", "tu", "il", "vous (ustedes)"],
+              "correctAnswers": [0],
+              "explanation": "« Hemos » = nous avons."
+            },
+            {
+              "id": "q5",
+              "question": "Participio de « comer » :",
+              "type": "single_choice",
+              "options": ["comido", "comía", "comeré", "como"],
+              "correctAnswers": [0],
+              "explanation": "« Comido » est le participe passé."
+            },
+            {
+              "id": "q6",
+              "question": "Traduction : « Hoy he ido a la biblioteca. »",
+              "type": "single_choice",
+              "options": [
+                "Aujourd'hui je suis allé à la bibliothèque.",
+                "Demain j'irai au cinéma.",
+                "Hier je dormais.",
+                "Chaque jour je mange ici."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« He ido » = je suis allé (récent)."
+            },
+            {
+              "id": "q7",
+              "question": "« No he visto la película » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Je n'ai pas vu le film.",
+                "J'ai adoré le film.",
+                "Je regarde le film.",
+                "Je vendrai le DVD."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation avec « no he visto »."
+            },
+            {
+              "id": "q8",
+              "question": "« ¿Qué has hecho esta tarde? » demande :",
+              "type": "single_choice",
+              "options": [
+                "ce que tu as fait cet après-midi",
+                "ce que tu feras demain",
+                "où tu habites",
+                "quelle heure il est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question au passé récent sur l'après-midi."
+            },
+            {
+              "id": "q9",
+              "question": "« Mis padres han llamado » =",
+              "type": "single_choice",
+              "options": [
+                "Mes parents ont téléphoné.",
+                "Mes parents téléphonent.",
+                "Mes parents téléphoneront.",
+                "Mes parents ne parlent pas."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Han llamado » = ils ont appelé."
+            },
+            {
+              "id": "q10",
+              "question": "« Ya hemos comido » indique :",
+              "type": "single_choice",
+              "options": [
+                "Nous avons déjà mangé.",
+                "Nous n'avons pas faim.",
+                "Nous mangerons plus tard.",
+                "Nous cuisinons maintenant."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ya » renforce l'idée d'action accomplie."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Raconter la matinée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles réponses utilisent le pretérito perfecto ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "He desayunado tarde.",
+                "Desayuno a las ocho.",
+                "Has perdido el autobús.",
+                "Pierdo el autobús a veces."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« He desayunado » et « has perdido » sont au passé composé espagnol."
+            },
+            {
+              "id": "q2",
+              "question": "« Esta mañana he leído veinte páginas » :",
+              "type": "single_choice",
+              "options": [
+                "Ce matin j'ai lu vingt pages.",
+                "Demain je lirai.",
+                "Chaque matin je dors.",
+                "Hier je courais."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Esta mañana » + pretérito perfecto."
+            },
+            {
+              "id": "q3",
+              "question": "Traduction : « Me he olvidado el estuche. »",
+              "type": "single_choice",
+              "options": [
+                "J'ai oublié ma trousse.",
+                "J'oublie toujours.",
+                "J'aurai une trousse.",
+                "Je prête une trousse."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Olvidarse » = oublier, avec « he »."
+            },
+            {
+              "id": "q4",
+              "question": "« ¿Has desayunado bien? » s'adresse à :",
+              "type": "single_choice",
+              "options": ["tu", "je", "nous", "ils"],
+              "correctAnswers": [0],
+              "explanation": "« Has » = tu as."
+            },
+            {
+              "id": "q5",
+              "question": "Participio de « escribir » :",
+              "type": "single_choice",
+              "options": ["escrito", "escribo", "escribía", "escribiré"],
+              "correctAnswers": [0],
+              "explanation": "« Escrito » est le participe."
+            },
+            {
+              "id": "q6",
+              "question": "« Hemos llegado antes que el profesor » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Nous sommes arrivés avant le prof.",
+                "Nous arriverons demain.",
+                "Le prof est toujours en retard.",
+                "Nous n'allons pas en classe."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hemos llegado » = nous sommes arrivés."
+            },
+            {
+              "id": "q7",
+              "question": "« No he entendido la consigna » :",
+              "type": "single_choice",
+              "options": [
+                "Je n'ai pas compris la consigne.",
+                "Je comprends tout.",
+                "Je répéterai plus tard.",
+                "La consigne est facile."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation au pretérito perfecto."
+            },
+            {
+              "id": "q8",
+              "question": "Marqueur temporel compatible : « ___ he hablado con la orientadora. »",
+              "type": "single_choice",
+              "options": ["Hoy", "Siempre", "Cada lunes", "Normalmente"],
+              "correctAnswers": [0],
+              "explanation": "« Hoy » accompagne souvent le passé récent."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿Qué has desayunado? » demande :",
+              "type": "single_choice",
+              "options": [
+                "ce que tu as pris au petit-déjeuner",
+                "à quelle heure tu te lèves",
+                "où tu habites",
+                "combien de cousins tu as"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question sur le contenu du petit-déj."
+            },
+            {
+              "id": "q10",
+              "question": "« Ya he preparado la mochila » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai déjà préparé mon sac.",
+                "Je préparerai ce soir.",
+                "Je n'ai pas de sac.",
+                "Mon sac est trop lourd."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ya » = déjà."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Hier et avant-hier",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adverbes situent le passé récent ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["ayer", "mañana", "esta semana", "el próximo mes"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Ayer » et « esta semana » cadrent avec le perfecto."
+            },
+            {
+              "id": "q2",
+              "question": "« Ayer he visitado a mis abuelos » :",
+              "type": "single_choice",
+              "options": [
+                "Hier j'ai rendu visite à mes grands-parents.",
+                "Demain je les verrai.",
+                "Chaque jour je les appelle.",
+                "Je ne les connais pas."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Visitar a » = rendre visite à."
+            },
+            {
+              "id": "q3",
+              "question": "Traduction : « ¿Has salido con tus amigos? »",
+              "type": "single_choice",
+              "options": [
+                "Es-tu sorti avec tes amis ?",
+                "Sortiras-tu demain ?",
+                "Aimes-tu tes amis ?",
+                "Où sont tes amis ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question au pretérito perfecto."
+            },
+            {
+              "id": "q4",
+              "question": "« Anteayer comí pizza » utilise :",
+              "type": "single_choice",
+              "options": [
+                "un pretérito simple (passé)",
+                "le futur",
+                "le présent",
+                "le conditionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Comí » est pretérito indefinido ; la phrase mélange parfois les temps, ici passé simple."
+            },
+            {
+              "id": "q5",
+              "question": "Pour dire « j'ai acheté un libro », on dit :",
+              "type": "single_choice",
+              "options": [
+                "He comprado un libro.",
+                "Compro un libro.",
+                "Compraré un libro.",
+                "Compraba un libro."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure « he + participio »."
+            },
+            {
+              "id": "q6",
+              "question": "« Esta tarde he hecho deporte » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Cet aprem j'ai fait du sport.",
+                "Ce matin j'ai dormi.",
+                "La semaine prochaine je nagerai.",
+                "Toujours je reste assis."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hacer deporte » = faire du sport."
+            },
+            {
+              "id": "q7",
+              "question": "« No hemos visto la serie » :",
+              "type": "single_choice",
+              "options": [
+                "Nous n'avons pas vu la série.",
+                "Nous adorons la série.",
+                "Nous la regardons.",
+                "Nous la vendons."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation avec « no hemos visto »."
+            },
+            {
+              "id": "q8",
+              "question": "« ¿Has terminado ya? » exprime :",
+              "type": "single_choice",
+              "options": [
+                "As-tu déjà fini ?",
+                "Vas-tu commencer ?",
+                "Pourquoi es-tu en retard ?",
+                "Où est ton cahier ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ya » = déjà."
+            },
+            {
+              "id": "q9",
+              "question": "Participio de « ver » :",
+              "type": "single_choice",
+              "options": ["visto", "veo", "vi", "veré"],
+              "correctAnswers": [0],
+              "explanation": "« Visto » est irrégulier."
+            },
+            {
+              "id": "q10",
+              "question": "« El lunes pasado he empezado el curso de alemán » :",
+              "type": "single_choice",
+              "options": [
+                "Lundi dernier j'ai commencé le cours d'allemand.",
+                "Lundi prochain je commencerai.",
+                "Chaque lundi j'étudie.",
+                "Je n'aime pas l'allemand."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Lunes pasado » = lundi dernier."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Sorties et invitations",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases acceptent une invitation ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "¡Claro, me apunto!",
+                "No quiero nada.",
+                "Vale, nos vemos a las cinco.",
+                "Odio salir."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Me apunto » et « nos vemos » acceptent la sortie."
+            },
+            {
+              "id": "q2",
+              "question": "« ¿Quieres venir al concierto? » : réponse positive courte :",
+              "type": "single_choice",
+              "options": [
+                "¡Sí, encantado!",
+                "No, nunca.",
+                "No entiendo.",
+                "Adiós."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Encantado » accepte poliment."
+            },
+            {
+              "id": "q3",
+              "question": "Traduction : « Quedamos en la plaza. »",
+              "type": "single_choice",
+              "options": [
+                "On se retrouve sur la place.",
+                "On part en vacances.",
+                "On mange à la cantine.",
+                "On étudie ensemble."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Quedar » = fixer un rendez-vous."
+            },
+            {
+              "id": "q4",
+              "question": "« He enviado un mensaje a Lucía » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai envoyé un message à Lucía.",
+                "J'écris tous les jours.",
+                "Lucía ne répond pas.",
+                "Je n'ai pas de portable."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Enviar un mensaje » au perfecto."
+            },
+            {
+              "id": "q5",
+              "question": "« ¿A qué hora quedamos? » demande :",
+              "type": "single_choice",
+              "options": [
+                "l'heure du rendez-vous",
+                "le prix du ticket",
+                "la matière du jour",
+                "le nom du prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fixer l'heure du RDV."
+            },
+            {
+              "id": "q6",
+              "question": "« Lamentablemente no puedo » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Malheureusement je ne peux pas.",
+                "Avec plaisir j'arrive.",
+                "Bien sûr je viens.",
+                "Demain c'est parfait."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Refus poli."
+            },
+            {
+              "id": "q7",
+              "question": "« Hemos reservado tres entradas » :",
+              "type": "single_choice",
+              "options": [
+                "Nous avons réservé trois places.",
+                "Nous vendons des billets.",
+                "Nous perdons le bus.",
+                "Nous quittons le lycée."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Reservar entradas » = réserver des billets."
+            },
+            {
+              "id": "q8",
+              "question": "« ¿Has confirmado con Pablo? » :",
+              "type": "single_choice",
+              "options": [
+                "As-tu confirmé avec Pablo ?",
+                "Pablo est ton cousin ?",
+                "Tu détestes Pablo ?",
+                "Pablo est prof ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Confirmar » = confirmer."
+            },
+            {
+              "id": "q9",
+              "question": "« Salimos después de clase » =",
+              "type": "single_choice",
+              "options": [
+                "Nous sortons après les cours.",
+                "Nous entrons tôt.",
+                "Nous dormons en classe.",
+                "Nous mangeons le matin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Después de clase » = après les cours."
+            },
+            {
+              "id": "q10",
+              "question": "« Me he retrasado por el tráfico » :",
+              "type": "single_choice",
+              "options": [
+                "Je me suis retardé à cause de la circulation.",
+                "Je suis arrivé en avance.",
+                "Je n'ai pas quitté la maison.",
+                "Je conduis une moto."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Retrasarse » = être en retard."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Vacances proches",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots évoquent un séjour ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["el hotel", "el cuaderno", "la playa", "el aula"],
+              "correctAnswers": [0, 2],
+              "explanation": "Hôtel et plage évoquent les vacances."
+            },
+            {
+              "id": "q2",
+              "question": "« He viajado en tren con mi familia » :",
+              "type": "single_choice",
+              "options": [
+                "J'ai voyagé en train avec ma famille.",
+                "Je voyagerai l'été prochain.",
+                "Je déteste les trains.",
+                "Ma famille reste ici."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Perfecto pour expérience récente."
+            },
+            {
+              "id": "q3",
+              "question": "Traduction : « ¿Has probado paella? »",
+              "type": "single_choice",
+              "options": [
+                "As-tu goûté la paella ?",
+                "Cuisines-tu la paella ?",
+                "Vends-tu de la paella ?",
+                "Détestes-tu la paella ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Probar » = goûter."
+            },
+            {
+              "id": "q4",
+              "question": "« Hemos hecho fotos en la montaña » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Nous avons pris des photos à la montagne.",
+                "Nous avons perdu l'appareil.",
+                "Nous dormons à l'hôtel.",
+                "Nous n'avons pas voyagé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hacer fotos » = prendre des photos."
+            },
+            {
+              "id": "q5",
+              "question": "« Las vacaciones han sido geniales » :",
+              "type": "single_choice",
+              "options": [
+                "Les vacances ont été super.",
+                "Les cours sont difficiles.",
+                "Le lycée est fermé demain.",
+                "La pluie tombe."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Han sido » = ont été."
+            },
+            {
+              "id": "q6",
+              "question": "« Recuerdo el viaje » =",
+              "type": "single_choice",
+              "options": [
+                "Je me souviens du voyage.",
+                "J'oublie tout.",
+                "Je pars demain.",
+                "Je n'aime pas voyager."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Recordar » = se souvenir."
+            },
+            {
+              "id": "q7",
+              "question": "« ¿Dónde has estado? » demande :",
+              "type": "single_choice",
+              "options": [
+                "où tu as été",
+                "où tu habites",
+                "où tu étudies",
+                "où tu manges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question sur un lieu visité."
+            },
+            {
+              "id": "q8",
+              "question": "« He comprado recuerdos » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai acheté des souvenirs.",
+                "J'ai vendu ma valise.",
+                "Je n'ai pas d'argent.",
+                "Je regarde une carte."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Recuerdos » = souvenirs (cadeaux)."
+            },
+            {
+              "id": "q9",
+              "question": "« El tiempo ha estado soleado » :",
+              "type": "single_choice",
+              "options": [
+                "Le temps a été ensoleillé.",
+                "Il pleut maintenant.",
+                "Il neige en hiver.",
+                "Le vent est fort."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Description météo au passé récent."
+            },
+            {
+              "id": "q10",
+              "question": "« Todavía no he deshecho la maleta » :",
+              "type": "single_choice",
+              "options": [
+                "Je n'ai pas encore défait ma valise.",
+                "Ma valise est prête.",
+                "Je pars ce soir.",
+                "Je n'ai pas de valise."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Todavía no » = pas encore."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Décrire des personnes",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adjectifs décrivent une personne ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "simpático",
+                "redondo (para un libro)",
+                "alto",
+                "cuadrado (para una mesa)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Simpático » et « alto » décrivent une personne."
+            },
+            {
+              "id": "q2",
+              "question": "« Mi prima es rubia y muy habladora » :",
+              "type": "single_choice",
+              "options": [
+                "Ma cousine est blonde et très bavarde.",
+                "Mon oncle est grand et calme.",
+                "Ma sœur est brune et timide.",
+                "Mon frère est sportif."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Habladora » = bavarde."
+            },
+            {
+              "id": "q3",
+              "question": "« Lleva gafas y va en bici » décrit :",
+              "type": "single_choice",
+              "options": [
+                "apparence et déplacement",
+                "heure du cours",
+                "note d'examen",
+                "plat préféré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Llevar gafas » = porter des lunettes."
+            },
+            {
+              "id": "q4",
+              "question": "Traduction : « Es bastante tímido. »",
+              "type": "single_choice",
+              "options": [
+                "Il est assez timide.",
+                "Il est très bruyant.",
+                "Il est prof de maths.",
+                "Il habite loin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Bastante tímido » = assez timide."
+            },
+            {
+              "id": "q5",
+              "question": "« Tiene los ojos verdes » parle de :",
+              "type": "single_choice",
+              "options": [
+                "la couleur des yeux",
+                "la taille du cartable",
+                "l'heure du déjeuner",
+                "le nom du chien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ojos verdes » = yeux verts."
+            },
+            {
+              "id": "q6",
+              "question": "Opposé de « serio » dans « Es muy serio en clase » :",
+              "type": "single_choice",
+              "options": ["bromista / divertido", "fatigué", "grand", "blond"],
+              "correctAnswers": [0],
+              "explanation": "En classe « serio » s'oppose à plaisantin."
+            },
+            {
+              "id": "q7",
+              "question": "« Parece mayor pero tiene catorce años » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Il paraît plus âgé mais a quatorze ans.",
+                "Il est petit et a dix ans.",
+                "Il est professeur.",
+                "Il n'a pas de cousins."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Parecer mayor » = paraître plus vieux."
+            },
+            {
+              "id": "q8",
+              "question": "« Viste con estilo » =",
+              "type": "single_choice",
+              "options": [
+                "Il/elle s'habille avec style.",
+                "Il/elle court vite.",
+                "Il/elle chante mal.",
+                "Il/elle dort tard."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Vestir con estilo » = s'habiller avec style."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿Cómo es tu mejor amigo? » demande :",
+              "type": "single_choice",
+              "options": [
+                "le caractère / la description",
+                "l'heure qu'il est",
+                "sa matière préférée",
+                "son adresse exacte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Cómo es » = comment il est (description)."
+            },
+            {
+              "id": "q10",
+              "question": "« Es responsable y organizado » :",
+              "type": "single_choice",
+              "options": [
+                "Il est responsable et organisé.",
+                "Il est paresseux.",
+                "Il est toujours en retard.",
+                "Il n'aime pas l'école."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traits positifs."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Météo et activités",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases parlent du temps qu'il fait ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Hace frío y llueve.",
+                "Estudio matemáticas.",
+                "Hace sol por la tarde.",
+                "Tengo tres primos."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Hace frío » et « hace sol » décrivent la météo."
+            },
+            {
+              "id": "q2",
+              "question": "« ¿Qué tiempo hace hoy? » sert à :",
+              "type": "single_choice",
+              "options": [
+                "demander la météo",
+                "demander l'heure",
+                "demander le prix",
+                "demander le chemin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule météo standard."
+            },
+            {
+              "id": "q3",
+              "question": "« Nieva en invierno » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Il neige en hiver.",
+                "Il pleut en été.",
+                "Il fait chaud au printemps.",
+                "Il vente en automne."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Nevar » = neiger."
+            },
+            {
+              "id": "q4",
+              "question": "Traduction : « Hemos cancelado el pícnic por el viento. »",
+              "type": "single_choice",
+              "options": [
+                "Nous avons annulé le pique-nique à cause du vent.",
+                "Nous avons dansé sous la pluie.",
+                "Nous avons nagé à la piscine.",
+                "Nous avons gagné le match."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Viento » = vent."
+            },
+            {
+              "id": "q5",
+              "question": "« Hace buen tiempo » =",
+              "type": "single_choice",
+              "options": [
+                "Il fait beau.",
+                "Il fait nuit.",
+                "Il fait peur.",
+                "Il fait froid extrême."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression pour beau temps."
+            },
+            {
+              "id": "q6",
+              "question": "« Cuando hace calor, nado » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Quand il fait chaud, je nage.",
+                "Quand il pleut, je lis.",
+                "Quand il neige, je sors.",
+                "Quand il vente, je dors."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien météo-loisir."
+            },
+            {
+              "id": "q7",
+              "question": "« El cielo está nublado » :",
+              "type": "single_choice",
+              "options": [
+                "Le ciel est couvert.",
+                "Le soleil brille.",
+                "La lune est pleine.",
+                "Les étoiles sont visibles."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Nublado » = nuageux."
+            },
+            {
+              "id": "q8",
+              "question": "« ¿Has llevado el paraguas? » demande si :",
+              "type": "single_choice",
+              "options": [
+                "tu as pris le parapluie",
+                "tu as perdu le bus",
+                "tu as fini tes devoirs",
+                "tu as appelé ta tía"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Paraguas » = parapluie."
+            },
+            {
+              "id": "q9",
+              "question": "« Tras la tormenta hemos salido » :",
+              "type": "single_choice",
+              "options": [
+                "Après l'orage nous sommes sortis.",
+                "Avant la pluie nous dormons.",
+                "Pendant le cours nous lisons.",
+                "Sans manteau nous gelons."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tormenta » = orage."
+            },
+            {
+              "id": "q10",
+              "question": "« Hace veinte grados » indique :",
+              "type": "single_choice",
+              "options": [
+                "une température de vingt degrés",
+                "une heure précise",
+                "un nombre de cousins",
+                "une distance en km"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Degrés pour la température."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Opinions et sentiments",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles tournures servent à donner un avis en espagnol ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Me parece interesante.",
+                "Son las tres.",
+                "Creo que es justo.",
+                "Tengo quince años."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Me parece » et « creo que » expriment une opinion."
+            },
+            {
+              "id": "q2",
+              "question": "« Me encanta la clase de teatro » :",
+              "type": "single_choice",
+              "options": [
+                "J'adore le cours de théâtre.",
+                "Je déteste le théâtre.",
+                "Je ne connais pas le théâtre.",
+                "Le théâtre est annulé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Me encanta » = j'adore."
+            },
+            {
+              "id": "q3",
+              "question": "Traduction : « Estoy cansado después del entrenamiento. »",
+              "type": "single_choice",
+              "options": [
+                "Je suis fatigué après l'entraînement.",
+                "Je suis content avant le match.",
+                "Je suis en retard au cours.",
+                "Je suis malade en hiver."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Estoy cansado » = je suis fatigué."
+            },
+            {
+              "id": "q4",
+              "question": "« No estoy de acuerdo » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Je ne suis pas d'accord.",
+                "Je suis d'accord.",
+                "Je ne comprends pas.",
+                "Je ne parle pas."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression de désaccord."
+            },
+            {
+              "id": "q5",
+              "question": "« Me molesta el ruido » =",
+              "type": "single_choice",
+              "options": [
+                "Le bruit me gêne.",
+                "Le bruit me plaît.",
+                "Je cherche le bruit.",
+                "Je fais du bruit."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Molestar » = déranger."
+            },
+            {
+              "id": "q6",
+              "question": "« ¿Qué te parece el nuevo horario? » demande :",
+              "type": "single_choice",
+              "options": [
+                "ton avis sur le nouvel emploi du temps",
+                "l'heure exacte",
+                "le nom du prof",
+                "le prix du livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Qué te parece » = qu'en penses-tu."
+            },
+            {
+              "id": "q7",
+              "question": "« Estoy nervioso antes del examen » :",
+              "type": "single_choice",
+              "options": [
+                "Je suis stressé avant l'examen.",
+                "Je suis calme après le match.",
+                "Je suis heureux en vacances.",
+                "Je suis fâché avec mon frère."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Nervioso » = nerveux."
+            },
+            {
+              "id": "q8",
+              "question": "« Me siento mejor hoy » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je me sens mieux aujourd'hui.",
+                "Je me sens pire.",
+                "Je ne ressens rien.",
+                "Je pars demain."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sentirse mejor » = aller mieux."
+            },
+            {
+              "id": "q9",
+              "question": "Renforcer « me gusta » :",
+              "type": "single_choice",
+              "options": [
+                "me gusta mucho",
+                "no me gusta nada",
+                "me gusta ayer",
+                "me gusta el reloj"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mucho » intensifie l'appréciation."
+            },
+            {
+              "id": "q10",
+              "question": "« He disfrutado del concierto » :",
+              "type": "single_choice",
+              "options": [
+                "J'ai profité du concert.",
+                "Je déteste la musique.",
+                "Je n'ai pas écouté.",
+                "Le concert est demain."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Disfrutar de » = apprécier."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Enchaîner un récit",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels connecteurs ordonnent le récit ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["primero", "ayer", "después", "matemáticas"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Primero » et « después » structurent le récit."
+            },
+            {
+              "id": "q2",
+              "question": "« Primero desayuno, luego cojo el bus » :",
+              "type": "single_choice",
+              "options": [
+                "D'abord je petit-déjeune, ensuite je prends le bus.",
+                "Ensuite je dors, d'abord je cours.",
+                "Je ne prends jamais le bus.",
+                "Je déjeune à midi seulement."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Primero… luego » = d'abord… ensuite."
+            },
+            {
+              "id": "q3",
+              "question": "Traduction : « Finalmente llegamos al instituto. »",
+              "type": "single_choice",
+              "options": [
+                "Enfin nous arrivons au lycée.",
+                "D'abord nous partons.",
+                "Parfois nous restons.",
+                "Demain nous viendrons."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Finalmente » = enfin."
+            },
+            {
+              "id": "q4",
+              "question": "« Mientras tanto, mis amigos esperan » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Pendant ce temps, mes amis attendent.",
+                "Après tout, ils partent.",
+                "Avant hier, ils dormaient.",
+                "Sans eux, je m'ennuie."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mientras tanto » = pendant ce temps."
+            },
+            {
+              "id": "q5",
+              "question": "« Al final del día » =",
+              "type": "single_choice",
+              "options": [
+                "à la fin de la journée",
+                "au début du matin",
+                "pendant le cours",
+                "avant le petit-déj"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marque la conclusion de la journée."
+            },
+            {
+              "id": "q6",
+              "question": "« Después de comer, hemos salido » :",
+              "type": "single_choice",
+              "options": [
+                "Après avoir mangé, nous sommes sortis.",
+                "Avant de manger, nous dormons.",
+                "Sans manger, nous courons.",
+                "Pendant le cours, nous lisons."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement repas-sortie au perfecto."
+            },
+            {
+              "id": "q7",
+              "question": "« Entonces he llamado a mi madre » :",
+              "type": "single_choice",
+              "options": [
+                "Alors j'ai appelé ma mère.",
+                "Mais je n'ai pas téléphone.",
+                "Demain j'appellerai.",
+                "Hier je dormais."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Entonces » = alors."
+            },
+            {
+              "id": "q8",
+              "question": "« Al principio estaba preocupado » exprime :",
+              "type": "single_choice",
+              "options": [
+                "Au début j'étais inquiet.",
+                "À la fin j'étais calme.",
+                "Toujours je ris.",
+                "Jamais je stresse."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Al principio » = au début."
+            },
+            {
+              "id": "q9",
+              "question": "« Luego hemos visto una película » suit logiquement :",
+              "type": "single_choice",
+              "options": [
+                "une sortie au ciné après une autre étape",
+                "un cours de maths le matin",
+                "un examen raté",
+                "un réveil à cinq heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Luego » enchaîne une activité après une autre."
+            },
+            {
+              "id": "q10",
+              "question": "« Para terminar, cenamos juntos » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Pour finir, nous dînons ensemble.",
+                "Pour commencer, nous courons.",
+                "Sans fin, nous travaillons.",
+                "Avant tout, nous dormons."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Para terminar » conclut le récit."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Interroger au passé récent",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles questions sont au pretérito perfecto ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "¿Has comido?",
+                "¿Comes ahora?",
+                "¿Ha llegado el tren?",
+                "¿Llegas tarde?"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Has comido » et « ha llegado » interrogent au perfecto."
+            },
+            {
+              "id": "q2",
+              "question": "« ¿Has hecho los deberes? » attend plutôt :",
+              "type": "single_choice",
+              "options": [
+                "Sí, ya los he hecho.",
+                "No, nunca estudio.",
+                "Sí, mañana los haré.",
+                "No, no tengo casa."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse cohérente au passé récent."
+            },
+            {
+              "id": "q3",
+              "question": "Traduction : « ¿Dónde has puesto las llaves? »",
+              "type": "single_choice",
+              "options": [
+                "Où as-tu mis les clés ?",
+                "Où mets-tu toujours les clés ?",
+                "Où achèteras des clés ?",
+                "Où sont tes cousins ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Poner » au perfecto = avoir mis."
+            },
+            {
+              "id": "q4",
+              "question": "« ¿Cuántas veces has visto la película? » porte sur :",
+              "type": "single_choice",
+              "options": [
+                "le nombre de fois vue",
+                "l'heure du film",
+                "le prix du ticket",
+                "le nom du acteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Cuántas veces » = combien de fois."
+            },
+            {
+              "id": "q5",
+              "question": "« ¿Quién ha escrito el mensaje? » demande :",
+              "type": "single_choice",
+              "options": [
+                "qui a écrit le message",
+                "qui écrit chaque jour",
+                "qui lira demain",
+                "qui est ton prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interrogatif « qui » au perfecto."
+            },
+            {
+              "id": "q6",
+              "question": "Réponse négative à « ¿Has salido? » :",
+              "type": "single_choice",
+              "options": [
+                "No, no he salido.",
+                "Sí, salgo siempre.",
+                "Sí, saldré mañana.",
+                "No, nunca tengo casa."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« No he salido » = je ne suis pas sorti."
+            },
+            {
+              "id": "q7",
+              "question": "« ¿A qué hora has llegado? » combine :",
+              "type": "single_choice",
+              "options": [
+                "heure + passé récent",
+                "météo + futur",
+                "famille + présent",
+                "matière + conditionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demande l'heure d'une arrivée passée."
+            },
+            {
+              "id": "q8",
+              "question": "« ¿Por qué has llegado tarde? » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Pourquoi es-tu arrivé en retard ?",
+                "Pourquoi pars-tu tôt ?",
+                "Pourquoi étudies-tu ?",
+                "Pourquoi manges-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Por qué » = pourquoi."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿Habéis entendido la explicación? » s'adresse à :",
+              "type": "single_choice",
+              "options": ["vous (pluriel)", "je", "tu seul", "il"],
+              "correctAnswers": [0],
+              "explanation": "« Habéis » = vous avez (Espagne)."
+            },
+            {
+              "id": "q10",
+              "question": "« ¿Qué has aprendido hoy? » demande :",
+              "type": "single_choice",
+              "options": [
+                "ce que tu as appris aujourd'hui",
+                "ce que tu achèteras",
+                "où tu habites",
+                "combien de frères tu as"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Aprender » au perfecto."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases résument bien la semaine ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "He estudiado mucho pero también he descansado.",
+                "Mañana lloverá siempre.",
+                "Esta semana he visto a mis primos.",
+                "Ayer será lunes."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Bilan études-repos et famille au perfecto."
+            },
+            {
+              "id": "q2",
+              "question": "« He mejorado en inglés » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je me suis amélioré en anglais.",
+                "Je déteste l'anglais.",
+                "Je n'ai jamais étudié.",
+                "Je parlerai demain."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Progrès au pretérito perfecto."
+            },
+            {
+              "id": "q3",
+              "question": "Traduction : « ¿Has organizado tu semana? »",
+              "type": "single_choice",
+              "options": [
+                "As-tu organisé ta semaine ?",
+                "Organises-tu chaque année ?",
+                "Oublies-tu ton agenda ?",
+                "Quitteras-tu le lycée ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question de planification passée."
+            },
+            {
+              "id": "q4",
+              "question": "« Hemos compartido las tareas domésticas » :",
+              "type": "single_choice",
+              "options": [
+                "Nous avons partagé les tâches ménagères.",
+                "Nous avons ignoré la maison.",
+                "Nous avons vendu la cuisine.",
+                "Nous avons dormi dehors."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tareas domésticas » = corvées."
+            },
+            {
+              "id": "q5",
+              "question": "« He aprendido a cocinar pasta » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "J'ai appris à cuisiner des pâtes.",
+                "Je mange toujours au resto.",
+                "Je déteste la cuisine.",
+                "Je n'ai pas de four."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nouvelle compétence au perfecto."
+            },
+            {
+              "id": "q6",
+              "question": "« Todavía no he decidido » =",
+              "type": "single_choice",
+              "options": [
+                "Je n'ai pas encore décidé.",
+                "J'ai décidé tout de suite.",
+                "Je déciderai dans un an.",
+                "Je ne décide jamais."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Todavía no » + perfecto."
+            },
+            {
+              "id": "q7",
+              "question": "« ¿Qué cambiarías de tu rutina? » est :",
+              "type": "single_choice",
+              "options": [
+                "une réflexion sur la routine",
+                "une question sur l'heure",
+                "un calcul de maths",
+                "une description météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hypothétique sur les habitudes."
+            },
+            {
+              "id": "q8",
+              "question": "« He pasado más tiempo con mi familia » :",
+              "type": "single_choice",
+              "options": [
+                "J'ai passé plus de temps avec ma famille.",
+                "Je vois moins ma famille.",
+                "Ma famille est en vacances seule.",
+                "Je n'ai pas de oncles."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Pasar tiempo con » = passer du temps avec."
+            },
+            {
+              "id": "q9",
+              "question": "« Gracias a mis compañeros he entendido » :",
+              "type": "single_choice",
+              "options": [
+                "Grâce à mes camarades j'ai compris.",
+                "Sans camarades je réussis.",
+                "Mes camarades sont absents.",
+                "Je n'aime pas le groupe."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Gracias a » = grâce à."
+            },
+            {
+              "id": "q10",
+              "question": "« En general, ha sido una buena semana » signifie :",
+              "type": "single_choice",
+              "options": [
+                "En général, c'a été une bonne semaine.",
+                "La semaine prochaine sera mauvaise.",
+                "Je ne me souviens de rien.",
+                "Je quitte le lycée."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan positif au perfecto."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

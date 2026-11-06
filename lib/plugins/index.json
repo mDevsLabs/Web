@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "2026.10.28",
+  "catalogVersion": "2026.10.31",
   "categories": [
     {
       "id": "meteo",
@@ -46,12 +46,6 @@
       "manifest": "./weather/index.json"
     },
     {
-      "id": "quizzly",
-      "dir": "quizzly",
-      "entry": "./quizzly",
-      "manifest": "./quizzly/index.json"
-    },
-    {
       "id": "air-quality",
       "dir": "air-quality",
       "entry": "./air-quality",
@@ -76,10 +70,10 @@
       "manifest": "./github/index.json"
     },
     {
-      "id": "google",
-      "dir": "google",
-      "entry": "./google",
-      "manifest": "./google/index.json"
+      "id": "google-maps",
+      "dir": "google-maps",
+      "entry": "./google-maps",
+      "manifest": "./google-maps/index.json"
     },
     {
       "id": "notion",
@@ -260,6 +254,12 @@
       "dir": "mobilite-fr",
       "entry": "./mobilite-fr",
       "manifest": "./mobilite-fr/index.json"
+    },
+    {
+      "id": "youtube",
+      "dir": "youtube",
+      "entry": "./youtube",
+      "manifest": "./youtube/index.json"
     },
     {
       "id": "wikidata",

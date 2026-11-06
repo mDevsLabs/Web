@@ -11,6 +11,10 @@ import {
 } from "@/lib/agent/types";
 import { getPluginInstallationsByUserId } from "@/lib/db/queries";
 import { createIntegrationSecretResolver } from "@/lib/integrations/tokens";
+import {
+  isProviderToolName,
+  pluginAgentToolDescription,
+} from "@/lib/mcp/provider-tool-id";
 import { getPluginManifest } from "@/lib/plugins/catalog";
 import {
   createPluginTools,
@@ -116,6 +120,7 @@ export function listPluginAgentTools(
         | Tool
         | undefined;
       if (!implementation?.execute || !implementation.inputSchema) return [];
+      if (!isProviderToolName(manifestTool.id)) return [];
       const name = `${definition.manifest.name} · ${manifestTool.label}`;
       const agentTool = defineTool<unknown>({
         availability: {
@@ -124,7 +129,11 @@ export function listPluginAgentTools(
           tiers: pluginTiers(definition.manifest.minTier),
         },
         category: "plugins",
-        description: `${definition.manifest.name} — ${manifestTool.description} ${manifestTool.systemHint}`,
+        description: pluginAgentToolDescription({
+          description: manifestTool.description,
+          name: definition.manifest.name,
+          systemHint: manifestTool.systemHint,
+        }),
         execute: async (input, context) => {
           const output: unknown = await implementation.execute!(
             input as never,
@@ -197,13 +206,6 @@ export function getMentionedPluginToolIds(task: string, pluginIds: string[]) {
 }
 
 const TOOL_INTENT_TERMS: Record<string, string[]> = {
-  checkCalendarAvailability: [
-    "mes disponibilités",
-    "suis-je libre",
-    "trous dans mon agenda",
-    "créneaux libres",
-    "quand suis-je disponible",
-  ],
   commentGithubIssue: [
     "commenter cette issue",
     "répondre sur github",
@@ -232,12 +234,6 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "comparer les pays",
     "comparaison entre pays",
     "écart entre pays",
-  ],
-  createCalendarEvent: [
-    "crée un événement",
-    "ajouter à mon agenda",
-    "planifie dans google agenda",
-    "nouveau rendez-vous",
   ],
   createGithubIssue: [
     "ouvrir une issue",
@@ -272,16 +268,6 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
   ],
   getAuthorBooks: ["livres de", "ouvrages de", "bibliographie de", "auteur"],
   getBookWork: ["détails de l'œuvre", "fiche d'œuvre", "ouvrage olid"],
-  getCalendarEvent: [
-    "détail de cet événement",
-    "qui participe à cet événement",
-    "où est ce rendez-vous",
-  ],
-  getDriveFileMetadata: [
-    "métadonnées du fichier",
-    "taille du fichier drive",
-    "type de ce fichier drive",
-  ],
   getEurostatData: [
     "eurostat",
     "données eurostat",
@@ -377,13 +363,6 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "aplatir le json",
     "fusionner deux json",
   ],
-  listCalendarEvents: [
-    "mon agenda",
-    "mes prochains rendez-vous",
-    "qu'est-ce que j'ai cette semaine",
-    "événements à venir",
-    "mes réunions",
-  ],
   listGithubIssues: [
     "issue github",
     "issues github",
@@ -397,15 +376,9 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
   ],
   listGitlabIssues: ["issue gitlab", "issues gitlab", "tickets gitlab"],
   listGitlabReleases: ["release gitlab", "releases gitlab", "versions gitlab"],
-  listGmailLabels: ["mes libellés gmail", "dossiers de ma messagerie"],
   listHolidayCountries: [
     "pays pris en charge",
     "pays disponibles pour les jours fériés",
-  ],
-  listRecentDriveFiles: [
-    "mes fichiers récents",
-    "dernier document modifié",
-    "ce sur quoi j'ai travaillé",
   ],
   listTvEpisodes: ["épisodes de", "liste des épisodes", "saison et épisode"],
   listWorldBankCountries: [
@@ -413,12 +386,19 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "pays et régions",
     "niveau de revenu des pays",
   ],
-  quizzly: ["quiz", "questionnaire", "tester mes connaissances"],
-  readDriveDocument: [
-    "lis ce document drive",
-    "contenu de ce fichier google",
-    "ouvre mon document drive",
+  mapsDirections: [
+    "itinéraire google maps",
+    "trajet en voiture",
+    "comment aller de",
   ],
+  mapsGeocode: ["géocoder", "coordonnées de", "adresse google maps"],
+  mapsReverseGeocode: ["adresse de ces coordonnées", "géocodage inverse"],
+  mapsSearchPlaces: [
+    "chercher un lieu",
+    "trouver un endroit",
+    "lieux google maps",
+  ],
+  quizzly: ["quiz", "questionnaire", "tester mes connaissances"],
   readGithubFile: [
     "fichier github",
     "code github",
@@ -426,11 +406,6 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "contenu du fichier",
   ],
   readGitlabFile: ["fichier gitlab", "code gitlab", "lire le fichier gitlab"],
-  readGmailThread: [
-    "cette conversation mail",
-    "le fil de cet e-mail",
-    "historique de ce message",
-  ],
   searchAuthorPublications: [
     "publications de",
     "articles de l'auteur",
@@ -443,21 +418,10 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "livres sur",
     "catalogue de livres",
   ],
-  searchDriveFiles: [
-    "chercher dans mes fichiers",
-    "retrouver un document drive",
-    "mon fichier intitulé",
-  ],
   searchFoodProducts: [
     "rechercher un aliment",
     "chercher un produit",
     "produits alimentaires",
-  ],
-  searchGmailMessages: [
-    "chercher dans mes mails",
-    "retrouver un e-mail",
-    "messages de",
-    "ma boîte mail",
   ],
   searchJournals: [
     "revue scientifique",
@@ -492,11 +456,20 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "indicateurs économiques",
     "indicateur de développement",
   ],
-  sendGmailMessage: [
-    "envoie un mail",
-    "envoyer un e-mail",
-    "rédige et envoie",
-    "mail à",
+  youtubeChannelDetails: [
+    "chaîne youtube",
+    "fiche de la chaîne",
+    "abonnés youtube",
+  ],
+  youtubeSearchVideos: [
+    "chercher une vidéo youtube",
+    "vidéos youtube",
+    "youtube sur",
+  ],
+  youtubeVideoDetails: [
+    "fiche de la vidéo",
+    "cette vidéo youtube",
+    "vues youtube",
   ],
 };
 

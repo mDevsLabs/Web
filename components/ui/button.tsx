@@ -1,65 +1,102 @@
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
-import { Slot } from "radix-ui"
+"use client";
 
-import { cn } from "@/lib/utils"
+import { Slot } from "radix-ui";
+import type * as React from "react";
+import { cn } from "@/lib/utils";
+import { MdevsIsland } from "@/components/ui/mdevs-island";
 
-const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none active:translate-y-px disabled:pointer-events-none disabled:opacity-50 min-h-[44px] min-w-[44px] md:min-h-0 md:min-w-0 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-  {
-    variants: {
-      variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/80",
-        outline:
-          "border-border bg-input/30 hover:bg-input/50 hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
-        ghost:
-          "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
-        destructive:
-          "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
-        link: "text-primary underline-offset-4 hover:underline",
-      },
-      size: {
-        default:
-          "h-9 gap-1.5 px-3 has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5",
-        xs: "h-6 gap-1 px-2.5 text-xs has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 [&_svg:not([class*='size-'])]:size-3",
-        sm: "h-8 gap-1 px-3 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-        lg: "h-10 gap-1.5 px-4 has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3",
-        icon: "size-9",
-        "icon-xs": "size-6 [&_svg:not([class*='size-'])]:size-3",
-        "icon-sm": "size-8",
-        "icon-lg": "size-10",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-)
+type ButtonVariant =
+  | "default"
+  | "outline"
+  | "secondary"
+  | "ghost"
+  | "destructive"
+  | "link";
 
-function Button({
+type ButtonSize =
+  | "default"
+  | "xs"
+  | "sm"
+  | "lg"
+  | "icon"
+  | "icon-xs"
+  | "icon-sm"
+  | "icon-lg";
+
+const VARIANT_CLASS: Record<ButtonVariant, string> = {
+  default: "md-button-solid",
+  destructive: "md-button-solid",
+  ghost: "md-button-ghost",
+  link: "md-link",
+  outline: "md-button-outline",
+  secondary: "md-button-soft",
+};
+
+const SIZE_CLASS: Record<ButtonSize, string> = {
+  default: "md-button-md min-h-11 md:min-h-0",
+  icon: "md-icon-button",
+  "icon-lg": "md-icon-button md-button-lg",
+  "icon-sm": "md-icon-button md-button-sm",
+  "icon-xs": "md-icon-button md-button-sm",
+  lg: "md-button-lg min-h-11 md:min-h-0",
+  sm: "md-button-sm min-h-11 md:min-h-0",
+  xs: "md-button-sm",
+};
+
+function buttonVariants({
   className,
-  variant = "default",
   size = "default",
-  asChild = false,
-  ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-  }) {
-  const Comp = asChild ? Slot.Root : "button"
-
-  return (
-    <Comp
-      data-slot="button"
-      data-variant={variant}
-      data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    />
-  )
+  variant = "default",
+}: {
+  className?: string;
+  size?: ButtonSize | null;
+  variant?: ButtonVariant | null;
+}) {
+  const resolvedVariant = variant ?? "default";
+  const resolvedSize = size ?? "default";
+  return cn(
+    resolvedVariant === "link" ? "md-link" : "md-button",
+    VARIANT_CLASS[resolvedVariant],
+    resolvedVariant === "link" ? undefined : SIZE_CLASS[resolvedSize],
+    className
+  );
 }
 
-export { Button, buttonVariants }
+function Button({
+  asChild = false,
+  className,
+  size = "default",
+  style,
+  variant = "default",
+  ...props
+}: React.ComponentProps<"button"> & {
+  asChild?: boolean;
+  size?: ButtonSize;
+  variant?: ButtonVariant;
+}) {
+  const Comp = asChild ? Slot.Root : "button";
+  const destructive = variant === "destructive";
+
+  return (
+    <MdevsIsland>
+      <Comp
+        className={cn(buttonVariants({ className, size, variant }))}
+        data-size={size}
+        data-slot="button"
+        data-variant={variant}
+        style={
+          destructive
+            ? {
+                background: "var(--destructive)",
+                color: "var(--destructive-foreground, #fff)",
+                ...style,
+              }
+            : style
+        }
+        {...props}
+      />
+    </MdevsIsland>
+  );
+}
+
+export { Button, buttonVariants };

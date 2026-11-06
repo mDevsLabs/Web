@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation';
-import { getAllNewsArticles, getNewsArticle } from '@/lib/news';
+import { getNewsArticle, getNewsArticles } from '@/lib/news';
 import PrintArticleClient from './PrintArticleClient';
 
 export async function generateStaticParams() {
-  const articles = getAllNewsArticles();
+  const articles = getNewsArticles();
   return articles.map((article) => ({
     slug: article.slug,
   }));
@@ -13,7 +13,7 @@ export default async function PrintArticlePage({ params }: { params: Promise<{ s
   const resolvedParams = await params;
   const article = getNewsArticle(resolvedParams.slug);
 
-  if (!article) {
+  if (!article || article.visibility === 'hidden') {
     // `notFound()` comme sur `/news/[slug]` : renvoyer un composant « Article non
     // trouvé » renvoyait un HTTP 200, ce qui rendait ces pages indexables.
     notFound();

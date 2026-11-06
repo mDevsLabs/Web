@@ -1,0 +1,2713 @@
+{
+  "id": "5e-technologie-07",
+  "year": "5e",
+  "subject": "technologie",
+  "title": "Information et réseaux",
+  "order": 7,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Structurer l'information",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments décrivent une information utile en technologie ?",
+              "options": [
+                "Elle répond à une question",
+                "Elle est toujours secrète",
+                "Elle peut être organisée",
+                "Elle ne sert jamais en groupe"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Une information utile éclaire un besoin et se structure pour être retrouvée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une donnée, c'est surtout :",
+              "options": [
+                "Un fait mesurable ou enregistré",
+                "Une opinion personnelle",
+                "Un bruit sans sens",
+                "Un dessin obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une donnée est un élément concret qu'on peut noter, compter ou mesurer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour comparer des notes de classe, le support le plus adapté est souvent :",
+              "options": [
+                "Un tableau",
+                "Une blague",
+                "Un son seul",
+                "Rien du tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un tableau aligne les valeurs et facilite la comparaison."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans un tableur, l'intersection d'une ligne et d'une colonne s'appelle :",
+              "options": ["Une cellule", "Un câble", "Un message", "Un réseau"],
+              "correctAnswers": [0],
+              "explanation": "Chaque case du tableau est une cellule."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La première ligne d'un tableau de notes sert surtout à :",
+              "options": [
+                "Nommer les colonnes",
+                "Cacher les données",
+                "Couper Internet",
+                "Envoyer un mail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les en-têtes indiquent ce que contient chaque colonne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Trier des lignes par ordre alphabétique permet de :",
+              "options": [
+                "Retrouver plus vite une entrée",
+                "Effacer le tableau",
+                "Couper l'électricité",
+                "Changer de réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tri organise les lignes selon un critère choisi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un filtre sur un tableau sert à :",
+              "options": [
+                "Afficher seulement certaines lignes",
+                "Supprimer Internet",
+                "Créer un câble",
+                "Parler à voix haute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre masque ce qui ne correspond pas au critère."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un formulaire en ligne demande surtout :",
+              "options": [
+                "De remplir des champs identifiés",
+                "De souder des fils",
+                "De peindre un boîtier",
+                "D'ouvrir le ventilateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un formulaire guide la saisie avec des zones prévues."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Classer des fichiers dans des dossiers, c'est :",
+              "options": [
+                "Structurer l'information",
+                "Envoyer un message",
+                "Créer un réseau Wi-Fi",
+                "Mesurer une température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les dossiers regroupent des fichiers par thème ou projet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Structurer l'information, c'est :",
+              "options": [
+                "La rendre claire et exploitable",
+                "La cacher toujours",
+                "La transformer en bruit",
+                "Refuser tout support"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structurer, c'est organiser pour comprendre et retrouver."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels supports aident à structurer des listes de courses ?",
+              "options": [
+                "Un tableau ou une liste",
+                "Un câble Ethernet",
+                "Un haut-parleur seul",
+                "Rien si on mémorise"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Tableau ou liste écrite organisent les items; mémoriser seul n'est pas un support structuré."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une liste à puces sert surtout à :",
+              "options": [
+                "Énumérer des éléments",
+                "Mesurer un courant",
+                "Relier deux PC",
+                "Coder un protocole lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les puces présentent plusieurs points distincts."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une colonne « Prénom » dans un tableau contient :",
+              "options": [
+                "Des prénoms",
+                "Des câbles",
+                "Des adresses IP avancées",
+                "Des protocoles TCP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque colonne porte un type d'information homogène."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ajouter une ligne dans un tableau de présence, c'est :",
+              "options": [
+                "Inscrire une personne de plus",
+                "Couper le Wi-Fi",
+                "Changer de récepteur",
+                "Installer un serveur lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une ligne correspond souvent à un enregistrement complet."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour lire un tableau, on commence souvent par :",
+              "options": [
+                "Les titres de colonnes",
+                "Le câble d'alimentation",
+                "La vitesse du vent",
+                "Un numéro de série oublié"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les en-têtes expliquent le contenu de chaque colonne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux tableaux identiques sur papier et à l'écran ont :",
+              "options": [
+                "La même organisation logique",
+                "Obligatoirement le même poids",
+                "Toujours des couleurs identiques",
+                "Aucune structure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le support change, pas forcément la structure lignes/colonnes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une case vide dans un tableau peut signifier :",
+              "options": [
+                "Information manquante ou non applicable",
+                "Erreur réseau obligatoire",
+                "Message crypté lycée",
+                "Fin d'Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une cellule vide indique souvent l'absence de donnée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Regrouper des lignes par sport pratiqué, c'est :",
+              "options": [
+                "Classer selon un critère",
+                "Communiquer sans récepteur",
+                "Couper un message",
+                "Oublier les en-têtes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le classement regroupe des entrées similaires."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un tableau de planning avec heures en colonnes sert à :",
+              "options": [
+                "Voir qui fait quoi et quand",
+                "Envoyer des paquets IP",
+                "Configurer un routeur pro",
+                "Analyser le binaire lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le planning croise personnes, activités et créneaux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bien structurer une fiche élève, c'est :",
+              "options": [
+                "Séparer identité, notes et remarques",
+                "Tout mélanger dans une case",
+                "Supprimer les titres",
+                "Ne rien nommer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des rubriques claires rendent la fiche lisible."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments trouve-t-on dans un tableau simple ?",
+              "options": [
+                "Des lignes",
+                "Des colonnes",
+                "Uniquement des câbles",
+                "Obligatoirement un émetteur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un tableau s'organise en lignes et en colonnes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le croisement ligne 3 et colonne B désigne :",
+              "options": [
+                "Une cellule précise",
+                "Tout le réseau",
+                "L'émetteur seul",
+                "Le récepteur seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque coordonnée ligne/colonne pointe une case."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Mettre des noms en première colonne aide à :",
+              "options": [
+                "Identifier chaque ligne",
+                "Bloquer le message",
+                "Couper le canal",
+                "Oublier les données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La première colonne sert souvent d'étiquette de ligne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un tableau avec une colonne « Note /20 » contient des :",
+              "options": [
+                "Nombres ou valeurs de note",
+                "Messages vocaux seuls",
+                "Câbles réseau",
+                "Protocoles HTTP détaillés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La colonne regroupe des notes chiffrées."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Colorier une ligne entière sert parfois à :",
+              "options": [
+                "La mettre en évidence",
+                "La rendre invisible",
+                "Couper le réseau",
+                "Changer l'émetteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La couleur attire l'œil sur un enregistrement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Fusionner deux cellules d'en-tête sert à :",
+              "options": [
+                "Créer un titre plus large",
+                "Envoyer un mail",
+                "Relier deux Wi-Fi",
+                "Coder en binaire lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fusion étend un titre sur plusieurs colonnes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un tableau papier et un tableur numérique partagent :",
+              "options": [
+                "Une grille de cellules",
+                "Un câble HDMI obligatoire",
+                "Un protocole de lycée",
+                "Aucune ligne possible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux utilisent une grille pour organiser."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si une colonne s'appelle « Âge », les valeurs doivent être :",
+              "options": [
+                "Des âges cohérents",
+                "Des blagues seulement",
+                "Des adresses MAC",
+                "Des trames Ethernet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le titre de colonne impose le type d'information."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Compter combien d'élèves ont la note A, on peut :",
+              "options": [
+                "Parcourir la colonne des notes",
+                "Couper le récepteur",
+                "Oublier les lignes",
+                "Supprimer les colonnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On lit la colonne concernée et on dénombre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un tableau mal structuré (sans en-têtes) :",
+              "options": [
+                "Est plus difficile à comprendre",
+                "Améliore toujours le réseau",
+                "Remplace un message",
+                "Devient un protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans en-têtes, on ne sait plus ce que signifie chaque colonne."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles actions structurent des données d'enquête en classe ?",
+              "options": [
+                "Créer un tableau",
+                "Noter les réponses",
+                "Jeter toutes les feuilles",
+                "Refuser tout nom de colonne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tableau et saisie organisée conservent les réponses de l'enquête."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une ligne dans un tableau d'enquête représente souvent :",
+              "options": [
+                "Une personne interrogée",
+                "Un câble du labo",
+                "Un routeur complet",
+                "Un protocole OSI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque répondant occupe généralement une ligne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une question de l'enquête devient souvent :",
+              "options": [
+                "Une colonne",
+                "Un ventilateur",
+                "Un émetteur Wi-Fi",
+                "Un câble coaxial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque question correspond à une colonne de réponses."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Cocher « Oui » ou « Non » dans une case, c'est :",
+              "options": [
+                "Remplir une cellule",
+                "Envoyer un paquet",
+                "Configurer DHCP lycée",
+                "Ouvrir un port réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réponse est stockée dans la cellule prévue."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour totaliser les « Oui », on regarde :",
+              "options": [
+                "La colonne concernée",
+                "Le câble d'alim",
+                "Le haut-parleur",
+                "Le clavier seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On compte les valeurs dans la bonne colonne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un graphique à barres à partir d'un tableau montre :",
+              "options": [
+                "Des effectifs ou des grandeurs",
+                "Des fils électriques",
+                "Des messages sans récepteur",
+                "Des protocoles inconnus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le graphique visualise des nombres du tableau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Avant de saisir, préparer les en-têtes évite :",
+              "options": [
+                "De mélanger les types de données",
+                "De couper Internet",
+                "De perdre le récepteur",
+                "D'effacer le réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des en-têtes clairs guident la saisie cohérente."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dupliquer une ligne par erreur crée :",
+              "options": [
+                "Un doublon à corriger",
+                "Un nouveau réseau",
+                "Un message automatique",
+                "Un protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux lignes identiques faussent les comptages."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sauvegarder le tableur, c'est :",
+              "options": [
+                "Conserver la structure et les données",
+                "Couper l'émetteur",
+                "Bloquer le canal",
+                "Oublier les cellules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sauvegarde garde le fichier pour plus tard."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Structurer une enquête, c'est d'abord :",
+              "options": [
+                "Décider quoi mesurer et comment le noter",
+                "Installer un serveur",
+                "Câbler tout le lycée",
+                "Étudier TCP/IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On définit les questions et leur emplacement dans le tableau."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels outils numériques aident à structurer des informations ?",
+              "options": [
+                "Un tableur",
+                "Un traitement de texte avec tableau",
+                "Un marteau seul",
+                "Un câble non branché"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tableur et tableaux dans un document organisent les données."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un tableur, la barre de formule sert à :",
+              "options": [
+                "Voir ou éditer le contenu de la cellule active",
+                "Couper le Wi-Fi",
+                "Changer de récepteur",
+                "Envoyer un SMS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle affiche ce qu'il y a dans la cellule sélectionnée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une formule simple =A1+B1 calcule :",
+              "options": [
+                "La somme de deux cellules",
+                "Un message réseau",
+                "Une adresse IP",
+                "Un protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tableur additionne les valeurs des cellules citées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Élargir une colonne permet de :",
+              "options": [
+                "Afficher tout le texte",
+                "Couper le réseau",
+                "Supprimer l'émetteur",
+                "Bloquer le récepteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de largeur évite que le texte soit tronqué."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une feuille nommée « Trimestre 1 » dans un classeur :",
+              "options": [
+                "Sépare les données par période",
+                "Remplace Internet",
+                "Est un câble",
+                "Est un message vocal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque feuille peut regrouper un jeu de données."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Copier-coller une plage de cellules duplique :",
+              "options": [
+                "Les valeurs et la disposition",
+                "Le câble réseau",
+                "L'adresse du récepteur",
+                "Le protocole de transport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le collage reproduit le contenu vers une autre zone."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Protéger une feuille contre les modifications sert à :",
+              "options": [
+                "Éviter les effacements accidentels",
+                "Couper tous les messages",
+                "Désactiver l'émetteur",
+                "Supprimer le tableau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La protection limite les changements non voulus."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un fichier .ods ou .xlsx contient souvent :",
+              "options": [
+                "Un tableur structuré",
+                "Un câble virtuel",
+                "Un bruit aléatoire",
+                "Un protocole lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces extensions désignent des classeurs tableur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Imprimer un tableau bien structuré donne :",
+              "options": [
+                "Une version papier lisible",
+                "Un réseau sans fil",
+                "Un message sans émetteur",
+                "Une panne électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'impression reproduit la grille sur papier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La structure d'un classeur aide surtout à :",
+              "options": [
+                "Retrouver et mettre à jour les données",
+                "Remplacer la communication",
+                "Oublier les cellules",
+                "Supprimer les lignes sans raison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organiser en feuilles et colonnes facilite la gestion."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles informations peuvent figurer dans un tableau d'objets connectés au labo ?",
+              "options": [
+                "Nom de l'objet",
+                "État marche/arrêt",
+                "Couleur du ciel uniquement",
+                "Protocole BGP"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On liste l'objet et son état; la météo ou BGP ne structurent pas le labo."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une colonne « Localisation » indique :",
+              "options": [
+                "Où se trouve l'appareil",
+                "Le message envoyé",
+                "Le protocole HTTP",
+                "La vitesse de lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle précise la place de chaque élément."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Mettre « OK » ou « Panne » dans une colonne État, c'est :",
+              "options": [
+                "Coder l'état en texte court",
+                "Envoyer un réseau",
+                "Parler sans récepteur",
+                "Oublier la structure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des mots courts décrivent l'état de façon uniforme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Trier par localisation regroupe :",
+              "options": [
+                "Les appareils d'une même salle",
+                "Tous les messages du monde",
+                "Les câbles par couleur du ciel",
+                "Les protocoles de lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tri rapproche les lignes partageant la même valeur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un tableau d'inventaire évite surtout :",
+              "options": [
+                "De perdre la trace du matériel",
+                "De structurer quoi que ce soit",
+                "D'avoir des lignes",
+                "D'avoir des colonnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inventaire structuré suit le matériel disponible."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ajouter une colonne « Date de vérification » sert à :",
+              "options": [
+                "Planifier la maintenance",
+                "Couper le canal radio",
+                "Supprimer l'émetteur",
+                "Effacer le récepteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La date rappelle quand l'objet a été contrôlé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une ligne par capteur respecte la règle :",
+              "options": [
+                "Un enregistrement = une entité",
+                "Un enregistrement = tout le réseau",
+                "Une ligne = zéro information",
+                "Une ligne = un protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque capteur a sa propre ligne d'informations."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Exporter le tableau en PDF permet de :",
+              "options": [
+                "Partager une lecture figée",
+                "Installer un switch",
+                "Configurer un routeur pro",
+                "Analyser TCP en lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le PDF garde la mise en page pour consultation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une légende en bas du tableau explique :",
+              "options": [
+                "Les abréviations ou symboles",
+                "Le câblage électrique du bâtiment",
+                "Les paquets réseau",
+                "Le binaire avancé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La légende clarifie les codes utilisés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Structurer l'inventaire du labo aide l'équipe à :",
+              "options": [
+                "Savoir quoi utiliser et où",
+                "Envoyer des messages sans contenu",
+                "Oublier les noms",
+                "Mélanger toutes les colonnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un inventaire clair guide l'utilisation du matériel."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels critères peuvent servir à trier un tableau de bibliothèque ?",
+              "options": [
+                "Titre du livre",
+                "Nom de l'auteur",
+                "Couleur des chaussures",
+                "Protocole SMTP détaillé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Titre et auteur sont des champs utiles; chaussures ou SMTP ne concernent pas le catalogue."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rechercher « Harry » dans une colonne Titre :",
+              "options": [
+                "Filtre les livres dont le titre contient ce texte",
+                "Coupe le réseau",
+                "Change l'émetteur",
+                "Supprime le récepteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La recherche textuelle isole les lignes correspondantes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une colonne « Année » avec des nombres permet de :",
+              "options": [
+                "Trier du plus ancien au plus récent",
+                "Envoyer un message vide",
+                "Câbler deux villes",
+                "Étudier un protocole lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tri numérique ordonne les années."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Marquer une ligne « Emprunté » informe sur :",
+              "options": [
+                "La disponibilité du livre",
+                "La température CPU",
+                "Le protocole IP",
+                "La longueur d'un câble HDMI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le statut indique si le livre est prêté."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux colonnes « Prénom » et « Nom » structurent :",
+              "options": [
+                "L'identité des emprunteurs",
+                "Le réseau Wi-Fi",
+                "Les paquets",
+                "Le routeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles séparent les parties du nom."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un tableau trop large sans filtres :",
+              "options": [
+                "Rend la lecture plus difficile",
+                "Améliore toujours le message",
+                "Remplace le récepteur",
+                "Crée un protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Beaucoup de lignes demandent tri ou recherche."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Geler la ligne d'en-tête à l'écran aide à :",
+              "options": [
+                "Garder les titres visibles en défilant",
+                "Couper Internet",
+                "Oublier les cellules",
+                "Supprimer les messages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les en-têtes restent visibles pendant le scroll."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une colonne « Code barre » sert à :",
+              "options": [
+                "Identifier uniquement chaque ouvrage",
+                "Mesurer le vent",
+                "Parler sans émetteur",
+                "Configurer un firewall lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le code est un identifiant distinct par livre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Compter les livres disponibles, on filtre sur :",
+              "options": [
+                "Statut « Disponible »",
+                "Couleur du ciel",
+                "Type de câble",
+                "Protocole inconnu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne compte que les lignes au bon statut."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bien structurer un catalogue, c'est :",
+              "options": [
+                "Permettre recherche et mise à jour faciles",
+                "Interdire toute colonne",
+                "Mélanger titres et notes sans titre",
+                "Supprimer les lignes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Colonnes claires et statuts facilitent la gestion."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels champs typiques trouve-t-on sur un formulaire d'inscription ?",
+              "options": [
+                "Nom",
+                "Prénom",
+                "Couleur du câble RJ45",
+                "Adresse MAC en hexadécimal obligatoire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nom et prénom identifient la personne; MAC n'est pas un champ courant en 5e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une case à cocher « J'accepte le règlement » sert à :",
+              "options": [
+                "Recueillir un accord",
+                "Mesurer un courant",
+                "Relier deux réseaux",
+                "Coder en binaire lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La case enregistre le consentement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un menu déroulant avec trois sports limite :",
+              "options": [
+                "Les réponses possibles",
+                "Le nombre de messages",
+                "La vitesse du réseau",
+                "Le protocole HTTP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liste impose un choix parmi des options."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un champ obligatoire marqué * signifie :",
+              "options": [
+                "Il doit être rempli",
+                "Il est invisible",
+                "Il coupe le Wi-Fi",
+                "Il supprime le tableau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'astérisque indique une saisie requise."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Envoyer le formulaire, c'est :",
+              "options": [
+                "Transmettre les réponses structurées",
+                "Couper l'émetteur",
+                "Oublier le récepteur",
+                "Effacer le réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le serveur ou le fichier reçoit les champs remplis."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Regrouper adresse, code postal et ville structure :",
+              "options": [
+                "La localisation postale",
+                "Le protocole de transport",
+                "Le câble coaxial",
+                "Le bruit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces champs décrivent où habite la personne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une zone de texte longue convient pour :",
+              "options": [
+                "Un commentaire libre",
+                "Un simple oui/non",
+                "Un code barre",
+                "Une adresse IP seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus d'espace accueille plusieurs phrases."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Valider un formulaire incomplet affiche souvent :",
+              "options": [
+                "Un message d'erreur sur les champs manquants",
+                "Un nouveau réseau",
+                "Un protocole",
+                "Un câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système signale ce qu'il faut corriger."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Structurer un formulaire en sections titrées aide à :",
+              "options": [
+                "Guider l'utilisateur étape par étape",
+                "Bloquer la communication",
+                "Supprimer les messages",
+                "Oublier les champs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des rubriques découpent la saisie en blocs logiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les réponses d'un formulaire peuvent être stockées dans :",
+              "options": [
+                "Un tableau ou une base simple",
+                "Un câble non branché",
+                "Un haut-parleur",
+                "Rien du tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque réponse devient une ligne ou un enregistrement."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles pratiques structurent des fichiers sur un ordinateur ?",
+              "options": [
+                "Créer des dossiers par projet",
+                "Donner des noms explicites",
+                "Tout mettre sur le bureau sans nom",
+                "Effacer les en-têtes de tableau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dossiers et noms clairs organisent; le désordre ou l'effacement d'en-têtes n'aide pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un dossier « Techno 5e » peut contenir :",
+              "options": [
+                "Les travaux de la matière",
+                "Uniquement des câbles physiques",
+                "Le réseau Internet entier",
+                "Un protocole de lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dossier regroupe les fichiers du cours."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Nommer un fichier « rapport-tableau-notes.odt » indique :",
+              "options": [
+                "Le contenu et le type de document",
+                "La couleur du ciel",
+                "L'adresse du routeur",
+                "Le protocole TCP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nom décrit le sujet et parfois le format."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une arborescence de dossiers ressemble à :",
+              "options": [
+                "Des dossiers dans des dossiers",
+                "Un message sans récepteur",
+                "Un câble unique",
+                "Un bruit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les niveaux imbriqués forment une hiérarchie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Déplacer une feuille de calcul dans le bon dossier, c'est :",
+              "options": [
+                "Classer l'information au bon endroit",
+                "Couper le canal",
+                "Supprimer l'émetteur",
+                "Oublier la structure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le classement facilite la retrouver plus tard."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une corbeille sur l'ordinateur sert à :",
+              "options": [
+                "Mettre de côté avant suppression définitive",
+                "Structurer un tableau",
+                "Envoyer un message",
+                "Créer un réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fichiers supprimés y restent temporairement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux fichiers homonymes dans le même dossier :",
+              "options": [
+                "Peuvent prêter à confusion",
+                "Améliorent toujours le réseau",
+                "Remplacent le récepteur",
+                "Sont obligatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des noms distincts évitent d'ouvrir le mauvais fichier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une sauvegarde sur clé USB du tableau de notes :",
+              "options": [
+                "Conserve une copie structurée",
+                "Coupe le Wi-Fi",
+                "Change le protocole",
+                "Supprime les lignes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La copie protège contre la perte du fichier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un raccourci vers un dossier partagé indique :",
+              "options": [
+                "Un accès rapide sans dupliquer tout le contenu",
+                "Un câble réseau physique",
+                "Un message vocal seul",
+                "Un protocole lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le raccourci pointe vers l'emplacement réel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Structurer ses fichiers personnellement aide à :",
+              "options": [
+                "Gagner du temps en retrouvant ses travaux",
+                "Parler sans émetteur",
+                "Oublier les tableaux",
+                "Mélanger toutes les matières sans dossier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une arborescence claire évite de chercher longtemps."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels réflexes montrent une information bien structurée ?",
+              "options": [
+                "En-têtes de colonnes présents",
+                "Une ligne par enregistrement",
+                "Tout dans une seule case sans titre",
+                "Aucun nom de dossier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En-têtes et une ligne par fiche sont des bases de structuration."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Avant un exposé, un tableau de sources cite :",
+              "options": [
+                "Où l'on a trouvé chaque information",
+                "Uniquement des câbles",
+                "Le protocole BGP",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sources tracent l'origine des données."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Passer d'une liste brute à un tableau, c'est :",
+              "options": [
+                "Organiser en lignes et colonnes",
+                "Couper le réseau",
+                "Supprimer le message",
+                "Oublier le récepteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tableau formalise la liste en grille."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Vérifier qu'une colonne ne mélange pas texte et dates évite :",
+              "options": [
+                "Des erreurs de tri et de lecture",
+                "Un nouveau Wi-Fi",
+                "Un protocole",
+                "Un câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un type homogène par colonne garde le tableau fiable."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Partager un tableur avec la classe suppose :",
+              "options": [
+                "Que la structure reste compréhensible pour tous",
+                "Qu'on supprime les en-têtes",
+                "Qu'on enlève les lignes",
+                "Qu'on casse le réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les autres doivent lire les colonnes sans explication orale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une fiche synthèse avec titres et puces :",
+              "options": [
+                "Structure un résumé",
+                "Remplace tout réseau",
+                "Est un protocole",
+                "Est un câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titres et listes découpent le résumé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Corriger une faute dans un en-tête de colonne :",
+              "options": [
+                "Clarifie le sens de la colonne",
+                "Coupe l'émetteur",
+                "Efface Internet",
+                "Supprime le récepteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un en-tête exact évite les malentendus."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Archiver l'ancien tableau dans « Archives » :",
+              "options": [
+                "Sépare l'ancien du courant",
+                "Mélange tout sans titre",
+                "Oublie la structure",
+                "Bloque les messages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'archive garde l'historique sans encombrer le dossier actif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Structurer l'information rend plus simple :",
+              "options": [
+                "La mise à jour et le contrôle",
+                "L'oubli systématique",
+                "La perte des données",
+                "Le bruit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une bonne organisation facilite les modifications."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'unité « Structurer l'information » vise surtout à :",
+              "options": [
+                "Organiser des données pour les comprendre",
+                "Étudier les protocoles de lycée",
+                "Câbler un datacenter",
+                "Analyser TCP/IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 5e, on apprend à ranger et lire l'information."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Communiquer",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes décrivent un échange simple ?",
+              "options": [
+                "Message",
+                "Émetteur",
+                "Récepteur absent",
+                "Protocole TCP/IP du lycée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un échange suppose un message et celui qui l'envoie; le récepteur manquant ou TCP lycée ne convient pas ici."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'émetteur d'un message est :",
+              "options": [
+                "Celui qui envoie",
+                "Celui qui reçoit toujours",
+                "Le câble seul",
+                "La box seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'émetteur est l'expéditeur du message."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le récepteur d'un message est :",
+              "options": [
+                "Celui qui reçoit",
+                "Celui qui envoie",
+                "Le tableau Excel",
+                "La cellule A1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le récepteur est le destinataire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un SMS entre deux téléphones illustre :",
+              "options": [
+                "Émetteur, message, récepteur",
+                "Uniquement un tableau",
+                "Un protocole lycée",
+                "Aucune communication"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le texte est le message, chaque téléphone joue un rôle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sans récepteur, un message :",
+              "options": [
+                "N'a personne pour le lire",
+                "Voyage toujours sur Internet",
+                "Devient un tableau",
+                "Devient un protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La communication vise quelqu'un qui reçoit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le canal de communication, c'est :",
+              "options": [
+                "Le moyen qui transporte le message",
+                "Le tableau de notes",
+                "La cellule vide",
+                "Le tri des lignes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le canal est le support du passage du message."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Parler dans un interphone à l'école utilise :",
+              "options": [
+                "La voix comme message",
+                "Un protocole BGP",
+                "Un tableur seul",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La voix porte l'information à travers l'appareil."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Écrire un mot sur une feuille puis le tendre, c'est :",
+              "options": [
+                "Communiquer par support papier",
+                "Créer un réseau Wi-Fi",
+                "Configurer un routeur pro",
+                "Analyser Ethernet en lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le papier est le support, la feuille le message."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un message peut être :",
+              "options": [
+                "Texte, image ou son",
+                "Uniquement un câble",
+                "Uniquement une cellule",
+                "Toujours secret et illisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs formes portent l'information."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Communiquer, c'est :",
+              "options": [
+                "Transmettre une information à quelqu'un",
+                "Trier un tableau sans envoi",
+                "Fusionner des cellules seules",
+                "Oublier l'émetteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Communiquer, c'est faire passer un message à un destinataire."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels exemples montrent un émetteur et un récepteur ?",
+              "options": [
+                "Élève qui pose une question au prof",
+                "Prof qui répond à l'élève",
+                "Tableau sans personne",
+                "Câble seul non branché"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Question et réponse impliquent deux rôles; un câble seul n'est pas un échange."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un mail, l'émetteur correspond à :",
+              "options": [
+                "L'expéditeur",
+                "Le serveur du lycée TCP",
+                "La colonne A",
+                "Le filtre du tableur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la personne ou le compte qui envoie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un mail, le récepteur principal est :",
+              "options": [
+                "Le destinataire",
+                "Le câble RJ45",
+                "La ligne 3",
+                "Le protocole OSI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le destinataire reçoit le message."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un message trop vague :",
+              "options": [
+                "Peut être mal compris",
+                "Améliore toujours le réseau",
+                "Remplace le récepteur",
+                "Est un protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut être clair pour que le récepteur comprenne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Choisir le bon canal (oral, écrit, numérique) dépend de :",
+              "options": [
+                "La situation et l'urgence",
+                "La couleur du ciel",
+                "Le protocole HTTP détaillé",
+                "La taille d'une cellule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On adapte le moyen au contexte."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une affiche dans le couloir communique avec :",
+              "options": [
+                "Des passants comme récepteurs",
+                "Uniquement des routeurs",
+                "Des cellules de tableur",
+                "Des paquets IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les personnes qui lisent sont les récepteurs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Répondre « Oui » à une invitation, c'est :",
+              "options": [
+                "Un message retour de l'émetteur devenu récepteur",
+                "Supprimer le réseau",
+                "Structurer un tableau",
+                "Oublier le canal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On inverse les rôles: celui qui répond envoie un nouveau message."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un bruit fort peut :",
+              "options": [
+                "Empêcher de recevoir le message parlé",
+                "Créer un tableur",
+                "Installer un protocole",
+                "Fusionner des colonnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bruit perturbe le canal sonore."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Noter l'heure d'envoi d'un message sert à :",
+              "options": [
+                "Savoir quand il a été transmis",
+                "Couper le Wi-Fi",
+                "Trier des lignes",
+                "Effacer des cellules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'horodatage situe l'échange dans le temps."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Identifier émetteur et récepteur aide à :",
+              "options": [
+                "Comprendre qui fait quoi dans l'échange",
+                "Étudier BGP",
+                "Câbler un datacenter",
+                "Oublier le message"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rôles clarifient le sens de la communication."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels canaux numériques simples utilise-t-on au collège ?",
+              "options": [
+                "Messagerie ou mail",
+                "Visioconférence",
+                "Protocole de routage lycée",
+                "Analyse de trames Ethernet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mail et visio sont des usages courants; routage ou trames sont hors niveau 5e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Envoyer un devoir par pièce jointe, c'est :",
+              "options": [
+                "Joindre un fichier au message",
+                "Couper le réseau",
+                "Supprimer le récepteur",
+                "Oublier l'émetteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pièce jointe voyage avec le mail."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un chat de classe en ligne contient :",
+              "options": [
+                "Des messages texte échangés",
+                "Uniquement des câbles",
+                "Un tableur obligatoire",
+                "Aucun émetteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque ligne du chat est un message."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Couper le micro en visio, c'est :",
+              "options": [
+                "Ne plus envoyer de son",
+                "Couper Internet mondial",
+                "Supprimer le récepteur",
+                "Effacer le tableau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le micro contrôle si l'audio part vers les autres."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une caméra éteinte en visio :",
+              "options": [
+                "N'envoie plus d'image",
+                "Change le protocole TCP",
+                "Crée un routeur",
+                "Trie les colonnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans vidéo, les autres ne voient plus l'émetteur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lire ses mails, c'est jouer le rôle de :",
+              "options": ["Récepteur", "Émetteur seul", "Câble", "Cellule"],
+              "correctAnswers": [0],
+              "explanation": "On reçoit les messages adressés à nous."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un objet de mail clair aide le récepteur à :",
+              "options": [
+                "Comprendre le sujet avant d'ouvrir",
+                "Configurer un firewall",
+                "Analyser IP",
+                "Fusionner des lignes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'objet résume le contenu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Répondre à tous dans un mail envoie le message à :",
+              "options": [
+                "Plusieurs récepteurs",
+                "Aucun récepteur",
+                "Un câble",
+                "Une cellule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque destinataire reçoit une copie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un emoji dans un chat est :",
+              "options": [
+                "Une partie du message",
+                "Un protocole",
+                "Un routeur",
+                "Un tableur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il exprime une émotion dans le texte."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir un mot de passe pour son compte mail protège :",
+              "options": [
+                "L'accès à la boîte de réception",
+                "La couleur des cellules",
+                "Le tri du tableur",
+                "Le protocole lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seul celui qui connaît le mot de passe peut lire les mails."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments forment un réseau simple de classe ?",
+              "options": [
+                "Plusieurs ordinateurs reliés",
+                "Une box ou switch pour les connecter",
+                "Un seul appareil isolé sans lien",
+                "Étude du protocole BGP"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un réseau relie plusieurs appareils via un équipement; un appareil seul ou BGP ne décrit pas le réseau 5e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un réseau local (LAN) couvre surtout :",
+              "options": [
+                "Un bâtiment ou un site",
+                "Toute la planète seule",
+                "Une cellule de tableur",
+                "Un message papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le LAN est limité à un lieu proche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Relier un PC au switch avec un câble, c'est :",
+              "options": [
+                "Une connexion filaire",
+                "Un message oral",
+                "Un tri de tableau",
+                "Un protocole lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le câble est le lien physique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le Wi-Fi du labo permet :",
+              "options": [
+                "De connecter sans fil",
+                "De supprimer les messages",
+                "D'effacer les tableaux",
+                "D'oublier émetteur et récepteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ondes remplacent le câble pour joindre la box."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Partager une imprimante sur le réseau, c'est :",
+              "options": [
+                "La rendre accessible à plusieurs postes",
+                "Couper tous les messages",
+                "Supprimer le récepteur",
+                "Interdire les tableaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ordinateurs envoient des jobs d'impression à la même imprimante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une box à la maison relie souvent :",
+              "options": [
+                "Les appareils du foyer à Internet",
+                "Uniquement deux cellules",
+                "Un protocole de lycée",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La box distribue la connexion aux appareils."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un câble réseau est débranché :",
+              "options": [
+                "La liaison filaire peut être coupée",
+                "Le message oral disparaît",
+                "Le tableur se supprime",
+                "Le protocole TCP est maîtrisé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans câble, la connexion filaire ne passe plus."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un identifiant de session Wi-Fi (mot de passe) sert à :",
+              "options": [
+                "Autoriser seulement les personnes qui le connaissent",
+                "Trier des lignes",
+                "Fusionner des colonnes",
+                "Analyser Ethernet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot de passe limite qui rejoint le réseau sans fil."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Voir les autres PC du labo sur le réseau permet :",
+              "options": [
+                "Partager des fichiers ou imprimer",
+                "Oublier le message",
+                "Supprimer l'émetteur",
+                "Effacer Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réseau sert à des échanges entre machines."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un réseau simple, c'est :",
+              "options": [
+                "Des appareils qui échangent via des liens",
+                "Un tableur sans lignes",
+                "Un message sans récepteur",
+                "Un protocole avancé du lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relier et échanger sont l'idée de base du réseau."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels usages du quotidien passent par Internet ?",
+              "options": [
+                "Consulter un site web",
+                "Regarder une vidéo en ligne",
+                "Trier un tableur hors ligne seul",
+                "Écrire sur papier sans envoi"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Web et streaming utilisent Internet; tableur local ou papier seul n'y passent pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Internet est surtout :",
+              "options": [
+                "Un ensemble de réseaux reliés entre eux",
+                "Un seul câble dans la salle",
+                "Une cellule Excel",
+                "Un message oral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Internet interconnecte des millions de réseaux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un navigateur sert à :",
+              "options": [
+                "Afficher des pages web",
+                "Souder des fils",
+                "Créer un tableur papier",
+                "Couper le récepteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le navigateur demande et montre les sites."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une adresse web (URL) indique :",
+              "options": [
+                "Où trouver une ressource en ligne",
+                "La couleur d'un câble",
+                "Le numéro de ligne du tableau",
+                "Le protocole BGP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'URL pointe vers une page ou un fichier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Télécharger un document depuis le ENT, c'est :",
+              "options": [
+                "Recevoir un fichier depuis un serveur",
+                "Envoyer un message sans contenu",
+                "Supprimer le réseau local",
+                "Oublier l'émetteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le serveur envoie, votre appareil reçoit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une coupure de box à la maison :",
+              "options": [
+                "Empêche d'accéder à Internet",
+                "Empêche de structurer un tableau papier",
+                "Supprime les messages déjà lus sur papier",
+                "Change le protocole lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans box, la liaison vers Internet est interrompue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le cloud scolaire stocke des fichiers :",
+              "options": [
+                "Sur des serveurs accessibles en ligne",
+                "Uniquement dans une cellule",
+                "Dans un câble RJ45",
+                "Sans réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les données sont sur des machines distantes joignables via Internet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Envoyer un devoir via une plateforme en ligne, l'élève est :",
+              "options": [
+                "Émetteur du fichier",
+                "Récepteur du routeur BGP",
+                "Le câble",
+                "La box seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il envoie son travail au serveur ou au prof."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lire une notice PDF sur un site, le PDF est :",
+              "options": [
+                "Le contenu reçu",
+                "L'émetteur humain",
+                "Le switch",
+                "Le protocole TCP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le document est le message numérique consulté."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Respecter les horaires de connexion au labo, c'est :",
+              "options": [
+                "Une règle d'usage du réseau",
+                "Un protocole de lycée",
+                "Un tri de colonnes",
+                "Une fusion de cellules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les règles organisent l'accès partagé au réseau."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels identifiants simples repère-t-on sur un réseau de classe ?",
+              "options": [
+                "Nom de l'ordinateur",
+                "Nom du compte élève",
+                "Protocole OSPF",
+                "Adresse MAC expliquée en lycée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nom de machine et compte aident à savoir qui est qui; OSPF ou MAC avancée dépassent le programme 5e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Se connecter avec login et mot de passe, c'est :",
+              "options": [
+                "Prouver qui on est au réseau",
+                "Trier un tableau",
+                "Fusionner des cellules",
+                "Couper le message oral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'identification ouvre une session personnelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deux élèves avec le même prénom se distinguent par :",
+              "options": [
+                "Leur nom de compte ou numéro",
+                "La couleur du ciel",
+                "Le protocole HTTP",
+                "La cellule A1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le compte est unique à chaque personne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une adresse de mail contient souvent :",
+              "options": [
+                "Identifiant @ domaine",
+                "Uniquement un câble",
+                "Une ligne de tableau",
+                "Un protocole BGP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La forme identifiant@service indique la boîte."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Donner son mail à un correspondant, c'est lui indiquer :",
+              "options": [
+                "Où vous envoyer un message",
+                "Comment couper le Wi-Fi",
+                "Comment trier ses lignes",
+                "Le protocole lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adresse mail est la destination numérique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un pseudonyme en ligne peut servir à :",
+              "options": [
+                "Ne pas afficher son vrai nom",
+                "Supprimer le récepteur",
+                "Effacer le réseau",
+                "Oublier le message"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pseudo protège partiellement l'identité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ne pas partager son mot de passe, c'est :",
+              "options": [
+                "Empêcher qu'un autre usurpe votre compte",
+                "Bloquer les tableaux",
+                "Couper le canal papier",
+                "Étudier TCP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot de passe doit rester secret."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Se déconnecter en fin de séance au labo :",
+              "options": [
+                "Libère la session pour la sécurité",
+                "Supprime Internet mondial",
+                "Efface tous les tableaux",
+                "Change le protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déconnexion empêche l'usage du compte par autrui."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une étiquette sur un PC « PC-12 » aide à :",
+              "options": [
+                "Le repérer sur le réseau ou en salle",
+                "Trier des notes",
+                "Fusionner des colonnes",
+                "Analyser Ethernet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nom matériel identifie la machine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Identifier les participants à un échange en ligne aide à :",
+              "options": [
+                "Savoir qui parle à qui",
+                "Oublier le message",
+                "Supprimer le canal",
+                "Interdire les tableaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les identités évitent la confusion."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles actions correspondent à « envoyer » et « recevoir » ?",
+              "options": [
+                "Poster un message dans un forum",
+                "Lire une réponse reçue",
+                "Trier des lignes sans échange",
+                "Fusionner des cellules seules"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Poster envoie; lire reçoit; tri ou fusion ne sont pas un échange."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La latence simple, c'est :",
+              "options": [
+                "Le petit délai avant d'obtenir une réponse",
+                "La couleur d'un câble",
+                "Le nombre de colonnes",
+                "Un protocole lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le message met un instant à traverser le réseau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si la connexion est lente, un gros fichier :",
+              "options": [
+                "Met plus de temps à arriver",
+                "Disparaît toujours",
+                "Devient un tableur",
+                "Supprime le récepteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus lourd ou lien faible allonge le transfert."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Synchroniser un dossier cloud, c'est :",
+              "options": [
+                "Envoyer et recevoir des mises à jour de fichiers",
+                "Couper le micro",
+                "Oublier l'émetteur",
+                "Effacer les en-têtes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les changements voyagent entre appareil et serveur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une notification « nouveau message » informe le :",
+              "options": [
+                "Récepteur qu'il a reçu quelque chose",
+                "Câble seul",
+                "Tableur",
+                "Protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'alerte signale l'arrivée d'un message."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Marquer un mail comme lu, c'est :",
+              "options": [
+                "Indiquer que le récepteur l'a ouvert",
+                "Envoyer un nouveau protocole",
+                "Supprimer le réseau",
+                "Trier des colonnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le statut montre que le message a été consulté."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Transférer un mail à un camarade, vous devenez :",
+              "options": [
+                "Émetteur d'un nouveau message",
+                "Le câble RJ45",
+                "La cellule B2",
+                "Le protocole BGP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vous renvoyez le contenu à un autre récepteur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une pièce jointe trop lourde peut :",
+              "options": [
+                "Ne pas partir ou mettre longtemps",
+                "Créer un tableur automatique",
+                "Couper l'électricité",
+                "Changer le récepteur en émetteur seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les limites de taille bloquent ou ralentissent l'envoi."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Recevoir plusieurs messages en même temps montre :",
+              "options": [
+                "Que le réseau peut gérer plusieurs échanges",
+                "Qu'il n'y a pas de récepteur",
+                "Qu'il n'y a pas d'émetteur",
+                "Qu'un protocole lycée est requis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs flux peuvent coexister."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Vérifier que le destinataire est correct avant d'envoyer évite :",
+              "options": [
+                "D'envoyer au mauvais récepteur",
+                "De structurer un tableau",
+                "De fusionner des lignes",
+                "D'étudier TCP/IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une adresse erronée envoie le message ailleurs."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles règles relèvent de la netiquette ?",
+              "options": [
+                "Rester poli en ligne",
+                "Ne pas insulter",
+                "Publier des mots de passe",
+                "Spammer sans limite"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Politesse et respect sont attendus; mots de passe ou spam sont interdits."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Écrire en majuscules partout en chat, c'est souvent vu comme :",
+              "options": [
+                "Crier et agresser",
+                "Structurer un tableau",
+                "Couper le réseau",
+                "Un protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les majuscules sont interprétées comme de la colère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Demander la permission avant de partager une photo d'un camarade, c'est :",
+              "options": [
+                "Respecter son image",
+                "Oublier le récepteur",
+                "Supprimer le message",
+                "Analyser BGP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chacun décide de la diffusion de sa photo."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Signaler un message hurtful sur la plateforme, c'est :",
+              "options": [
+                "Alerter les modérateurs",
+                "Couper le Wi-Fi mondial",
+                "Effacer tous les tableaux",
+                "Changer de protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le signalement permet une intervention adulte."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Relire avant d'envoyer un mail au prof :",
+              "options": [
+                "Évite les fautes et le ton inadapté",
+                "Supprime le réseau",
+                "Fusionne des cellules",
+                "Oublie l'émetteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La relecture améliore clarté et respect."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ne pas répéter vingt fois le même emoji, c'est :",
+              "options": [
+                "Éviter de spammer le fil",
+                "Interdire toute communication",
+                "Supprimer le récepteur",
+                "Étudier Ethernet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le flood gêne la lecture des autres."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Citer la source d'une image trouvée en ligne, c'est :",
+              "options": [
+                "Respecter le droit et l'auteur",
+                "Couper le canal",
+                "Oublier le message",
+                "Trier des lignes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On indique d'où vient le contenu réutilisé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Respecter les consignes du forum de classe :",
+              "options": [
+                "Maintient un espace de travail sûr",
+                "Remplace Internet",
+                "Supprime les émetteurs",
+                "Efface les tableaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les règles protègent le groupe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un message privé doit rester :",
+              "options": [
+                "Confidentiel si on le promet",
+                "Affiché au tableau",
+                "Dans une cellule publique",
+                "Sur le protocole BGP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La confiance exige de ne pas divulguer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La netiquette, c'est :",
+              "options": [
+                "Les bonnes manières sur les réseaux",
+                "Un protocole de lycée",
+                "Un type de câble",
+                "Un tableur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce sont les usages respectueux en ligne."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels gestes protègent un compte en 5e ?",
+              "options": [
+                "Mot de passe non évident",
+                "Ne pas le partager",
+                "L'écrire sur le mur de la classe",
+                "Utiliser le même pour tout le monde"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mot de passe solide et secret sécurisent; affichage public ou mot de passe commun sont risqués."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un mot de passe fort contient plutôt :",
+              "options": [
+                "Lettres, chiffres et longueur suffisante",
+                "Seulement « 1234 »",
+                "Le prénom seul",
+                "Rien du tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variété et longueur rendent le devinage difficile."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un mail demandant votre mot de passe est :",
+              "options": [
+                "Suspect, il faut se méfier",
+                "Toujours officiel",
+                "Un tableur",
+                "Un protocole lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les services sérieux ne demandent pas le mot de passe par mail."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Verrouiller sa session quand on s'éloigne du PC :",
+              "options": [
+                "Empêche l'usage par autrui",
+                "Coupe Internet mondial",
+                "Supprime les messages reçus",
+                "Efface le tableur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écran verrouillé protège la session ouverte."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mettre à jour une application du labo quand le prof le demande :",
+              "options": [
+                "Corrige parfois des failles de sécurité",
+                "Change le protocole BGP",
+                "Supprime le réseau",
+                "Oublie l'émetteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mises à jour patch des vulnérabilités."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ne pas brancher une clé USB inconnue trouvée :",
+              "options": [
+                "Évite des virus possibles",
+                "Améliore le tri du tableur",
+                "Crée un message",
+                "Installe TCP/IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une clé inconnue peut contenir des logiciels malveillants."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un réseau Wi-Fi public sans mot de passe :",
+              "options": [
+                "Est moins sûr qu'un réseau privé",
+                "Est toujours le meilleur choix",
+                "Remplace le récepteur",
+                "Structure un tableau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout le monde peut écouter plus facilement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sauvegarder son travail sur le cloud scolaire :",
+              "options": [
+                "Limite la perte si le PC tombe en panne",
+                "Supprime le message",
+                "Coupe le canal oral",
+                "Oublie le récepteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une copie en ligne reste accessible."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Parler d'un problème de harcèlement en ligne à un adulte :",
+              "options": [
+                "Permet d'être aidé",
+                "Supprime Internet",
+                "Efface le tableur",
+                "Change le protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un adulte peut intervenir et protéger."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La sécurité numérique en 5e, c'est surtout :",
+              "options": [
+                "Des réflexes simples de prudence",
+                "L'étude de protocoles avancés",
+                "Le câblage d'un datacenter",
+                "L'analyse de trames"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On apprend mots de passe, prudence et signalement."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments résument une communication réussie ?",
+              "options": [
+                "Message clair",
+                "Bon récepteur",
+                "Canal adapté",
+                "Protocole de routage lycée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un message clair et le bon destinataire sont essentiels; le routage avancé est hors programme 5e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Résumer un échange oral en trois lignes écrites, c'est :",
+              "options": [
+                "Structurer puis communiquer",
+                "Couper le réseau",
+                "Oublier l'émetteur",
+                "Supprimer le tableur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On organise l'info puis on la transmet par écrit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Schéma émetteur → canal → récepteur sert à :",
+              "options": [
+                "Visualiser le chemin du message",
+                "Trier des colonnes",
+                "Fusionner des cellules",
+                "Étudier BGP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le schéma montre les trois rôles de base."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Choisir mail plutôt que cris dans le couloir pour une consigne longue :",
+              "options": [
+                "Le canal écrit convient au détail",
+                "Le canal oral est toujours interdit",
+                "Le réseau n'existe pas",
+                "Le tableur remplace tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écrit garde une trace et le détail."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un réseau de classe plus un ENT illustrent :",
+              "options": [
+                "Communication locale et via Internet",
+                "Uniquement du papier",
+                "Aucun message",
+                "Protocole lycée seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le labo est local, l'ENT passe par Internet."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Vérifier connexion et identifiants avant un devoir en ligne :",
+              "options": [
+                "Évite de rater l'envoi",
+                "Supprime le récepteur",
+                "Efface le canal",
+                "Interdit les tableaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans connexion ou compte, l'envoi échoue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Expliquer à un camarade comment joindre le Wi-Fi du labo, vous êtes :",
+              "options": [
+                "Émetteur d'une information utile",
+                "Le protocole TCP",
+                "Une cellule",
+                "Un câble seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vous transmettez des consignes, il reçoit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Relier structuration (tableau) et communication (mail de résultats) montre :",
+              "options": [
+                "Qu'on peut d'abord organiser puis partager",
+                "Qu'il faut choisir l'un ou l'autre",
+                "Qu'Internet remplace les tableaux",
+                "Que le récepteur disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organiser les données facilite l'envoi clair."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Respecter émetteur, récepteur et règles en ligne :",
+              "options": [
+                "Améliore les échanges du groupe",
+                "Supprime le réseau",
+                "Efface les messages",
+                "Interdit les tableaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chacun sait comment participer correctement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'unité « Communiquer » en 5e technologie insiste sur :",
+              "options": [
+                "Messages, acteurs et réseaux simples",
+                "Protocoles du lycée",
+                "Datacenter et BGP",
+                "Analyse Ethernet avancée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le programme couvre bases du message et du réseau, pas le lycée."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

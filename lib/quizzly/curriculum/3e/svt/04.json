@@ -1,0 +1,2723 @@
+{
+  "id": "3e-svt-04",
+  "year": "3e",
+  "subject": "svt",
+  "order": 4,
+  "title": "La cellule et l'organisme",
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Organisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : La cellule, unité de base du vivant",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel élément délimite l'intérieur de toutes les cellules vivantes ?",
+              "options": [
+                "La membrane plasmique",
+                "La paroi de cellulose",
+                "L'enveloppe nucléaire",
+                "La vacuole centrale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La membrane plasmique entoure le cytoplasme et délimite toute cellule vivante, isolant son milieu interne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que trouve-t-on dans le cytoplasme d'une cellule eucaryote ?",
+              "options": [
+                "Du vide absolu sans matière",
+                "De l'eau, des molécules dissoutes et des organites",
+                "Uniquement des bulles de gaz comprimé",
+                "Uniquement des cristaux minéraux solides"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le cytoplasme est un milieu gélifié riche en eau, molécules dissoutes et organites cellulaires."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la principale différence entre une cellule eucaryote et une cellule procaryote ?",
+              "options": [
+                "La présence d'une membrane plasmique",
+                "La présence d'un noyau délimité par une enveloppe",
+                "La présence d'un cytoplasme liquide",
+                "La taille microscopique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les eucaryotes possèdent un noyau délimité renfermant l'ADN, contrairement aux procaryotes (bactéries)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel constituant est spécifique des cellules végétales chlorophylliennes par rapport aux cellules animales ?",
+              "options": [
+                "Le chloroplaste",
+                "Le noyau",
+                "La membrane plasmique",
+                "Le cytoplasme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chloroplastes renferment la chlorophylle et permettent la photosynthèse chez les végétaux verts."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles structures sont communes à TOUTES les cellules animales et végétales ?",
+              "options": [
+                "La membrane plasmique",
+                "La paroi squelettique rigide de cellulose",
+                "Le cytoplasme",
+                "Les chloroplastes pour la photosynthèse"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Toutes les cellules animales et végétales possèdent une membrane plasmique et un cytoplasme. La paroi et les chloroplastes sont propres aux végétaux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "À quel ordre de grandeur se situe généralement la taille d'une cellule humaine ?",
+              "options": [
+                "Quelques nanomètres",
+                "Quelques dizaines de micromètres",
+                "Quelques centimètres",
+                "Quelques mètres"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La majorité des cellules animales mesurent entre 10 et 50 micromètres (µm), visibles au microscope optique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel instrument permet d'observer l'ultrastructure détaillée des organites cellulaires ?",
+              "options": [
+                "La loupe binoculaire",
+                "Le microscope optique simple",
+                "Le microscope électronique",
+                "Le télescope astronomique"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le microscope électronique offre un grossissement et une résolution très supérieurs au microscope optique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un être vivant constitué d'une seule cellule autonome ?",
+              "options": [
+                "Pluricellulaire",
+                "Unicellulaire",
+                "Acaryote",
+                "Polymorphe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un organisme unicellulaire (comme la paramécie ou une bactérie) assure toutes ses fonctions vitales avec une seule cellule."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel terme désigne un organisme composé de plusieurs cellules spécialisées interdépendantes ?",
+              "options": [
+                "Organisme pluricellulaire",
+                "Organisme acellulaire",
+                "Bactérie isolée",
+                "Virus enveloppé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les êtres pluricellulaires (animaux, végétaux, champignons) sont formés de nombreuses cellules différenciées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel rôle essentiel joue la membrane plasmique pour la cellule ?",
+              "options": [
+                "Elle bloque absolument tout échange avec le milieu",
+                "Elle régule les échanges de matière entre l'intérieur et l'extérieur",
+                "Elle fabrique l'ensemble du caryotype",
+                "Elle stocke la totalité des réserves minérales"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La membrane plasmique contrôle de manière sélective les entrées de nutriments et les sorties de déchets cellulaires."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Des cellules aux tissus et organes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on un regroupement de cellules semblables assurant une même fonction ?",
+              "options": [
+                "Un tissu",
+                "Un atome",
+                "Un organisme",
+                "Une molécule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un tissu biologique est formé de cellules spécialisées similaires accomplissant une fonction définie (ex : tissu musculaire)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "De quoi est constitué un organe comme le cœur ou l'estomac ?",
+              "options": [
+                "D'une unique cellule géante",
+                "De l'association de plusieurs tissus différents",
+                "Uniquement de tissu osseux",
+                "Uniquement de vaisseaux sanguins"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un organe est une structure anatomique formée de différents tissus coopérant pour assurer une fonction biologique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel niveau d'organisation regroupe plusieurs organes coordonnés pour remplir une grande fonction ?",
+              "options": [
+                "La molécule",
+                "L'organite",
+                "Le système ou appareil",
+                "La cellule souche"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Un système (ex : appareil digestif, système nerveux) rassemble plusieurs organes qui collaborent à une fonction vitale."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels exemples correspondent à des types de tissus présents dans le corps humain ?",
+              "options": [
+                "Le tissu musculaire",
+                "Le tissu chlorophyllien",
+                "Le tissu nerveux",
+                "Le tissu plastique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les tissus musculaire et nerveux sont fondamentaux chez l'être humain. Le tissu chlorophyllien est propre aux végétaux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel processus permet à des cellules issues de la cellule œuf d'adopter des formes et fonctions variées ?",
+              "options": [
+                "La différenciation cellulaire",
+                "La fermentation",
+                "L'évaporation",
+                "La calcification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au cours du développement, les cellules se spécialisent et acquièrent des caractéristiques adaptées à leur fonction."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle particularité morphologique permet au neurone de transmettre l'information à distance ?",
+              "options": [
+                "Une forme sphérique lisse sans prolongement",
+                "De longs prolongements cytoplasmiques (axone et dendrites)",
+                "Une absence complète de membrane plasmique",
+                "Une paroi rigide en calcaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les dendrites et l'axone des neurones forment un réseau étendu pour acheminer les signaux nerveux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle particularité présentent les globules rouges (hématies) matures chez l'humain ?",
+              "options": [
+                "Ils possèdent plusieurs noyaux",
+                "Ils sont dépourvus de noyau pour transporter plus d'oxygène",
+                "Ils renferment des chloroplastes",
+                "Ils mesurent plus de dix centimètres"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'absence de noyau chez les hématies libère de l'espace pour maximiser la quantité d'hémoglobine transportant le dioxygène."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la hiérarchie correcte des niveaux d'organisation du plus simple au plus complexe ?",
+              "options": [
+                "Organe -> Tissu -> Cellule -> Système",
+                "Cellule -> Tissu -> Organe -> Système",
+                "Tissu -> Cellule -> Système -> Organe",
+                "Système -> Organe -> Cellule -> Tissu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'organisation emboîtée du vivant va de la cellule au tissu, du tissu à l'organe, puis à l'appareil ou système."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les cellules musculaires possèdent-elles une très grande quantité de mitochondries ?",
+              "options": [
+                "Pour fabriquer de l'amidon végétal",
+                "Pour fournir l'importante quantité d'énergie nécessaire à la contraction",
+                "Pour stocker les minéraux osseux",
+                "Pour détruire les chromosomes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les mitochondries produisent l'ATP indispensable au glissement des filaments lors de la contraction musculaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel tissu borde la surface externe du corps et tapisse l'intérieur des organes creux ?",
+              "options": [
+                "Le tissu épithélial",
+                "Le tissu adipeux",
+                "Le tissu osseux",
+                "Le tissu cartilagineux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tissu épithélial recouvre la peau (épiderme) et constitue les muqueuses protégeant les organes internes."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : Le noyau et les chromosomes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans quel compartiment cellulaire se situe l'information génétique chez l'être humain ?",
+              "options": [
+                "Dans la vacuole",
+                "Dans le noyau",
+                "Dans la paroi",
+                "Dans les lysosomes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le noyau des cellules eucaryotes protège et renferme les chromosomes qui portent l'information génétique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de chromosomes contient une cellule somatique humaine normale ?",
+              "options": [
+                "23 chromosomes",
+                "46 chromosomes (23 paires)",
+                "48 chromosomes",
+                "92 chromosomes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'espèce humaine possède 46 chromosomes par cellule somatique, ordonnés en 23 paires homologues."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la représentation ordonnée de l'ensemble des chromosomes d'une cellule ?",
+              "options": [
+                "Un électrocardiogramme",
+                "Un caryotype",
+                "Un radiogramme",
+                "Un phénotype"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le caryotype classe les chromosomes photographiés selon leur taille, la position du centromère et leur forme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle paire de chromosomes détermine le sexe biologique chez l'espèce humaine ?",
+              "options": [
+                "La paire numéro 1",
+                "La paire numéro 12",
+                "La paire numéro 21",
+                "La 23e paire (chromosomes sexuels)"
+              ],
+              "correctAnswers": [3],
+              "explanation": "La 23e paire est constituée des chromosomes sexuels : XX chez la femme et XY chez l'homme."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formules chromosomiques correspondent aux chromosomes sexuels d'un individu normal ?",
+              "options": [
+                "Une paire XX chez une femme",
+                "Une paire XY chez un homme",
+                "Une paire YY chez une femme",
+                "Une formule XXX chez tous les hommes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le caryotype féminin comporte deux chromosomes X (XX), tandis que le caryotype masculin comprend un X et un Y (XY)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle anomalie chromosomique est à l'origine du syndrome de Down (trisomie 21) ?",
+              "options": [
+                "L'absence d'un chromosome 21",
+                "La présence de trois chromosomes 21 au lieu de deux",
+                "Un chromosome sexuel Y manquant",
+                "La fusion des chromosomes 1 et 2"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La trisomie 21 se caractérise par la présence de trois chromosomes 21, portant le nombre total à 47 chromosomes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sous quel état se présente l'ADN quand la cellule n'est pas en cours de division ?",
+              "options": [
+                "En bâtonnets rigides et compacts",
+                "En filaments déroulés et diffus formant la chromatine",
+                "En billes d'acier microscopiques",
+                "En liquide transparent sans forme"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En dehors des divisions, l'ADN est décondensé sous forme de chromatine invisible sous forme de bâtonnets individuels."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on deux chromosomes d'une même paire portant les mêmes gènes ?",
+              "options": [
+                "Des chromosomes hétérologues",
+                "Des chromosomes homologues",
+                "Des chromosomes artificiels",
+                "Des chromosomes chimériques"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les chromosomes homologues forment une paire : l'un a été transmis par la mère, l'autre par le père."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel événement rend les chromosomes visibles sous forme de bâtonnets au microscope optique ?",
+              "options": [
+                "Leur condensation et enroulement au début de la division",
+                "Leur dissolution dans l'eau cellulaire",
+                "L'expulsion du noyau à l'extérieur",
+                "L'abaissement de la température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au début de la division cellulaire, la chromatine s'enroule étroitement sur elle-même : c'est la condensation des chromosomes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "De quoi est constitué chimiquement un chromosome eucaryote ?",
+              "options": [
+                "Uniquement de lipides gras",
+                "D'une molécule d'ADN associée à des protéines structurales",
+                "D'eau minérale et de sel pur",
+                "D'amidon végétal purifié"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque chromosome est formé d'une longue molécule d'ADN enroulée autour de protéines protectrices (histones)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : ADN, gènes et allèles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie la désignation biologique ADN ?",
+              "options": [
+                "Acide désoxyribonucléique",
+                "Acide di-nucléaire azoté",
+                "Association des noyaux",
+                "Agent de duplication naturelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ADN signifie Acide DésoxyriboNucléique, molécule support universel de l'information héréditaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la configuration tridimensionnelle caractéristique de la molécule d'ADN ?",
+              "options": [
+                "Une sphère creuse",
+                "Une double hélice en spirale",
+                "Un cube symétrique",
+                "Une ligne droite sans courbure"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La molécule d'ADN est formée de deux brins complémentaires enroulés en une double hélice."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment définit-on un gène sur un chromosome ?",
+              "options": [
+                "Une cellule entière du système nerveux",
+                "Un segment d'ADN portant l'information pour un caractère héréditaire",
+                "Une molécule de sucre de réserve",
+                "Une anomalie du sang"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un gène est une portion précise d'ADN qui détermine la réalisation d'un caractère biologique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment désigne-t-on les différentes versions possibles d'un même gène ?",
+              "options": [
+                "Les allèles",
+                "Les organites",
+                "Les caryotypes",
+                "Les enzymes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les allèles sont les diverses versions d'une séquence de gène (ex : les allèles A, B et O pour le groupe sanguin)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien d'allèles d'un gène donné une cellule humaine possède-t-elle généralement (hors chromosomes sexuels) ?",
+              "options": [
+                "Un seul allèle",
+                "Deux allèles (un sur chaque chromosome homologue)",
+                "Quatre allèles différents",
+                "Vingt-trois allèles identiques"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque individu diploïde possède deux copies de chaque chromosome autosome, donc deux allèles par gène."
+            },
+            {
+              "id": "q6",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations relatives aux allèles sont exactes ?",
+              "options": [
+                "Un individu possédant deux allèles identiques pour un gène est dit homozygote",
+                "Un allèle dominant s'exprime dans le phénotype même présent en un seul exemplaire",
+                "Un allèle récessif masque toujours l'action d'un allèle dominant",
+                "Tous les allèles d'un être vivant sont obligatoirement identiques"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'homozygote possède deux allèles identiques. L'allèle dominant s'exprime dès qu'il est présent, masquant le récessif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quand qualifie-t-on deux allèles de codominants ?",
+              "options": [
+                "Quand aucun des deux ne parvient à s'exprimer",
+                "Quand les deux allèles s'expriment simultanément dans le phénotype",
+                "Quand l'un élimine définitivement l'autre",
+                "Quand ils provoquent la mort de la cellule"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Deux allèles codominants s'expriment ensemble (ex : les allèles A et B donnent le groupe sanguin AB)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel terme désigne l'ensemble des caractères observables d'un individu ?",
+              "options": [
+                "Le génotype",
+                "Le phénotype",
+                "Le caryotype",
+                "Le ribosome"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le phénotype rassemble l'ensemble des traits morphologiques, physiologiques ou moléculaires observables d'un être vivant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel terme désigne la combinaison des allèles portés par un individu pour des gènes donnés ?",
+              "options": [
+                "Le génotype",
+                "Le phénotype",
+                "L'hématocrite",
+                "Le cytoplasme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le génotype représente la composition allique spécifique d'un individu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la molécule d'ADN est-elle qualifiée d'universelle dans le monde vivant ?",
+              "options": [
+                "Parce qu'elle possède la même structure de base chez tous les êtres vivants connus",
+                "Parce qu'elle n'est présente que dans les météorites",
+                "Parce que tous les êtres vivants possèdent le même nombre de gènes",
+                "Parce qu'elle ne subit jamais la moindre mutation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La composition et le fonctionnement universels de l'ADN chez tous les vivants prouvent une origine évolutive commune."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : La mitose et le maintien du caryotype",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le rôle biologique principal de la mitose chez les organismes pluricellulaires ?",
+              "options": [
+                "Multiplier les cellules à l'identique pour la croissance et le renouvellement",
+                "Réduire de moitié le nombre de chromosomes pour former des gamètes",
+                "Détruire les cellules âgées sans fabriquer de remplaçantes",
+                "Transformer les cellules animales en cellules végétales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mitose produit deux cellules filles génétiquement conformes à la cellule mère pour assurer la croissance et la réparation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle étape capitale doit impérativement précéder la mitose ?",
+              "options": [
+                "La destruction de la chromatine",
+                "La réplication (copie) à l'identique de l'ADN",
+                "L'expulsion des mitochondries",
+                "L'arrêt définitif de toute respiration"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La réplication de l'ADN double le matériel génétique pour que chaque future cellule fille en reçoive un jeu complet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "De combien de chromatides est constitué un chromosome juste après la réplication ?",
+              "options": [
+                "D'une seule chromatide simple",
+                "De deux chromatides sœurs identiques",
+                "De quatre chromatides différentes",
+                "D'aucune chromatide visible"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Après réplication, le chromosome comprend deux chromatides sœurs identiques réunies au niveau du centromère."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques s'appliquent aux cellules filles issues d'une mitose normale ?",
+              "options": [
+                "Elles possèdent exactement le même caryotype que la cellule mère",
+                "Elles contiennent le même nombre de chromosomes que la cellule de départ",
+                "Elles ont perdu la moitié de leurs chromosomes",
+                "Elles possèdent un génome totalement différent de la mère"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La mitose est une division cellulaire conforme : le nombre et la nature des chromosomes sont conservés intacts."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel événement caractéristique se déroule pendant l'anaphase de la mitose ?",
+              "options": [
+                "La réplication des brins d'ADN",
+                "La séparation des deux chromatides sœurs qui migrent aux pôles opposés",
+                "La disparition définitive de la membrane plasmique",
+                "L'alignement des chromosomes au centre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À l'anaphase, les centromères se séparent et chaque chromatide migre vers un pôle opposé de la cellule."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le plan où s'alignent les chromosomes doubles pendant la métaphase ?",
+              "options": [
+                "La plaque équatoriale",
+                "L'axe polaire",
+                "Le sillon de division",
+                "Le méridien nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pendant la métaphase, les chromosomes condensés s'alignent au centre de la cellule sur la plaque équatoriale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si une cellule humaine à 46 chromosomes se divise par mitose, combien de chromosomes chaque fille reçoit-elle ?",
+              "options": [
+                "23 chromosomes simples",
+                "46 chromosomes simples",
+                "92 chromosomes doubles",
+                "12 chromosomes simples"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque cellule fille hérite d'une copie de chaque chromosome, soit 46 chromosomes simples, conservant le caryotype humain."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la séparation physique finale du cytoplasme en deux cellules filles distinctes ?",
+              "options": [
+                "La cytodiérèse",
+                "L'interphase",
+                "La méiose",
+                "La transcription"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cytodiérèse (ou cytokinèse) clôt la division cellulaire en scindant le cytoplasme entre les deux cellules filles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle serait la conséquence si une cellule se divisait par mitose sans avoir répliqué son ADN au préalable ?",
+              "options": [
+                "Les cellules filles recevraient une quantité d'ADN incomplète et déficiente",
+                "Les cellules filles deviendraient immédiatement immortelles",
+                "Le nombre de gènes doublerait miraculeusement",
+                "Les cellules se transformeraient en bactéries"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans réplication préalable, la répartition des chromosomes serait déséquilibrée et entraînerait la perte d'informations vitales."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans quelles cellules de l'organisme humain la mitose a-t-elle lieu ?",
+              "options": [
+                "Uniquement dans les testicules et les ovaires pour faire des gamètes",
+                "Dans l'ensemble des cellules somatiques assurant le renouvellement corporel",
+                "Uniquement dans les hématies matures sans noyau",
+                "Uniquement dans les dents définitives"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La mitose se produit dans toutes les cellules somatiques (peau, tube digestif, os...) pour entretenir les tissus de l'organisme."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : La méiose et la production des gamètes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le but fondamental de la méiose dans la reproduction sexuée ?",
+              "options": [
+                "Produire des cellules somatiques identiques à 46 chromosomes",
+                "Produire des gamètes haploïdes à 23 chromosomes",
+                "Cicatriser les tissus cutanés blessés",
+                "Cloner un être vivant à l'identique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La méiose divise par deux le stock de chromosomes pour créer des cellules reproductrices (spermatozoïdes et ovocytes)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "De combien de divisions cellulaires successives se compose le processus de méiose ?",
+              "options": [
+                "Une seule division",
+                "Deux divisions successives",
+                "Trois divisions consécutives",
+                "Quatre divisions simultanées"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La méiose comprend deux divisions successives précédées d'une seule réplication préalable de l'ADN."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de cellules haploïdes sont produites à l'issue d'une méiose complète à partir d'une cellule mère ?",
+              "options": [
+                "Deux cellules",
+                "Quatre cellules",
+                "Huit cellules",
+                "Une seule cellule"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les deux étapes de division de la méiose aboutissent à la formation de quatre cellules filles haploïdes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel événement sépare-t-on lors de la première division de méiose (division réductionnelle) ?",
+              "options": [
+                "Les chromatides sœurs d'un même chromosome",
+                "Les chromosomes homologues de chaque paire",
+                "Les molécules d'eau cytoplasmique",
+                "Les membranes externes uniquement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La première division sépare les paires de chromosomes homologues, réduisant le caryotype de 2n à n chromosomes."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles cellules sont directement produites par méiose chez l'être humain ?",
+              "options": [
+                "Les spermatozoïdes",
+                "Les neurones pyramidaux",
+                "Les ovocytes (cellules reproductrices femelles)",
+                "Les hématies circulantes"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La méiose a lieu au sein des gonades (testicules et ovaires) pour produire les gamètes mâles et femelles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une cellule possédant un seul exemplaire de chaque chromosome (n chromosomes) ?",
+              "options": [
+                "Une cellule diploïde",
+                "Une cellule haploïde",
+                "Une cellule polyploïde",
+                "Une cellule acaryote"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les cellules haploïdes possèdent un seul jeu de chromosomes (n=23 chez l'humain), propre aux cellules reproductrices."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une cellule renfermant des paires de chromosomes homologues (2n chromosomes) ?",
+              "options": [
+                "Une cellule diploïde",
+                "Une cellule haploïde",
+                "Une cellule asexuée",
+                "Une cellule polymorphe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules somatiques sont diploïdes (notées 2n=46 chez l'humain), chaque chromosome étant présent en double."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel mécanisme de la méiose sépare au hasard les chromosomes parentaux de chaque paire ?",
+              "options": [
+                "Le brassage interchromosomique",
+                "La fermentation cellulaire",
+                "L'endocytose",
+                "La coagulation sanguine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le brassage interchromosomique résulte de la répartition aléatoire et indépendante des chromosomes de chaque paire en anaphase 1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que sépare la seconde division de méiose (division équationnelle) ?",
+              "options": [
+                "Les paires de chromosomes homologues",
+                "Les chromatides sœurs de chaque chromosome",
+                "Les noyaux des cellules voisines",
+                "Les molécules de lipides membranaires"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La seconde division méiotique scinde les deux chromatides sœurs de chaque chromosome, à la manière d'une mitose."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que se passerait-il de génération en génération si la méiose ne réduisait pas le nombre de chromosomes ?",
+              "options": [
+                "Le nombre de chromosomes doublerait à chaque fécondation",
+                "Le nombre de chromosomes diminuerait jusqu'à zéro",
+                "Les individus resteraient identiques sans modification",
+                "Les cellules perdraient leur noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans méiose (23 chromosomes par gamète), chaque union doublerait le nombre de chromosomes (46 + 46 = 92, puis 184...)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Fécondation et diversité des individus",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En quoi consiste l'événement de la fécondation lors de la reproduction sexuée ?",
+              "options": [
+                "En la division d'une cellule en deux cellules filles",
+                "En l'union d'un gamète mâle et d'un gamète femelle formant une cellule œuf",
+                "En la fabrication d'anticorps dans le sang",
+                "En la digestion d'un tissu lésé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La fécondation réunit les noyaux haploïdes d'un spermatozoïde et d'un ovocyte pour créer une cellule œuf diploïde unique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de chromosomes contient la cellule œuf humaine issue d'une fécondation normale ?",
+              "options": [
+                "23 chromosomes",
+                "46 chromosomes (23 paires)",
+                "69 chromosomes",
+                "92 chromosomes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La réunion de 23 chromosomes du père et 23 de la mère rétablit le stock diploïde normal de 46 chromosomes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi qualifie-t-on la fécondation de loterie génétique aléatoire ?",
+              "options": [
+                "Parce qu'elle sélectionne volontairement les caractères désirés",
+                "Parce que la rencontre entre un spermatozoïde et un ovocyte précis se fait au hasard parmi des millions de combinaisons",
+                "Parce qu'elle produit obligatoirement des jumeaux",
+                "Parce qu'elle n'obéit à aucune règle biologique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La rencontre au hasard d'un gamète parmi l'immense diversité créée par méiose assure l'unicité génétique de chaque individu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de combinaisons génétiques différentes la fécondation humaine peut-elle théoriquement produire chez un couple ?",
+              "options": [
+                "Plus de 70 000 milliards de combinaisons uniques",
+                "Environ 46 combinaisons",
+                "Exactement 100 combinaisons",
+                "Seulement 2 combinaisons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec plus de 8 millions de gamètes possibles par parent (2^23), la combinaison 2^23 x 2^23 dépasse 70 000 milliards de génotypes."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels processus sont directement responsables de la diversité génétique des descendants d'un couple ?",
+              "options": [
+                "Le brassage des chromosomes pendant la méiose",
+                "La rencontre aléatoire des gamètes à la fécondation",
+                "La mitose des cellules de l'épiderme",
+                "Le vieillissement des cellules osseuses"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La méiose (brassages inter et intrachromosomiques) et la fécondation aléatoire constituent les deux moteurs de la diversité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est l'origine biologique des vrais jumeaux (jumeaux monozygotes) ?",
+              "options": [
+                "Deux ovocytes distincts fécondés par deux spermatozoïdes différents",
+                "Une seule cellule œuf qui se sépare en deux amas cellulaires au début du développement",
+                "Une fécondation sans spermatozoïde",
+                "Une division par méiose de la peau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Issus d'une même cellule œuf, les vrais jumeaux possèdent exactement le même patrimoine génétique d'origine."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est l'origine biologique des faux jumeaux (jumeaux dizygotes) ?",
+              "options": [
+                "Une unique cellule œuf divisée en deux",
+                "Deux ovocytes libérés simultanément et fécondés par deux spermatozoïdes distincts",
+                "Une mutation spontanée d'un seul embryon",
+                "Un clonage médicalisé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les faux jumeaux proviennent de deux fécondations indépendantes : ils partagent 50 % de leurs allèles comme des frères et sœurs classiques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel gamète parental détermine le sexe chromosomique de l'enfant à la fécondation ?",
+              "options": [
+                "L'ovocyte, qui apporte soit un X soit un Y",
+                "Le spermatozoïde, qui peut apporter soit un chromosome X soit un chromosome Y",
+                "Les deux gamètes apportent obligatoirement un Y",
+                "Le sexe est déterminé uniquement par l'alimentation de la mère"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'ovocyte apporte toujours un X. Le spermatozoïde apporte soit un X (embryon XX fille) soit un Y (embryon XY garçon)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi deux enfants de la même fratrie (hors vrais jumeaux) ne sont-ils jamais identiques ?",
+              "options": [
+                "Parce qu'ils ont hérité de combinaisons d'allèles différentes issues des brassages parentaux",
+                "Parce que l'un d'eux ne possède pas d'ADN",
+                "Parce qu'ils ne proviennent pas des mêmes parents",
+                "Parce que leurs cellules ne contiennent pas le même nombre de chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque enfant reçoit un échantillon d'allèles différent à l'issue de chaque méiose et fécondation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel cycle perpétue la reproduction sexuée d'une génération à la suivante ?",
+              "options": [
+                "L'alternance entre méiose (2n -> n) et fécondation (n + n -> 2n)",
+                "La succession exclusive de mitoses sans jamais de méiose",
+                "La régénération spontanée d'organes à partir d'os",
+                "La division directe sans duplication préalable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La reproduction sexuée maintient la stabilité de l'espèce en alternant phase haploïde (gamètes) et phase diploïde (individus)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : Mutations et variabilité génétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une mutation au niveau moléculaire ?",
+              "options": [
+                "Une modification de la séquence des nucléotides de l'ADN",
+                "Une maladie infectieuse transmise par les moustiques",
+                "Une altération mécanique temporaire de la membrane",
+                "Une réaction normale à la digestion des protéines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une mutation est un changement spontané ou provoqué dans l'enchaînement des bases azotées constituant l'ADN."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quoi les mutations donnent-elles naissance au sein d'une espèce ?",
+              "options": [
+                "À de nouvelles versions de gènes, appelées allèles",
+                "À la perte irréversible de l'ensemble des chromosomes",
+                "À la mort immédiate et systématique de tous les organismes",
+                "À la transformation instantanée en une autre espèce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mutations constituent la source première de variabilité génétique en créant de nouveaux allèles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel facteur environnemental bien connu peut augmenter la fréquence d'apparition des mutations ?",
+              "options": [
+                "L'eau minérale filtrée",
+                "Les rayonnements ultraviolets (UV) du soleil",
+                "La consommation de fruits de saison",
+                "L'air pur des forêts"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les rayons UV, les rayonnements ionisants et certaines molécules chimiques sont des agents mutagènes altérant l'ADN."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernant les mutations génétiques sont exactes ?",
+              "options": [
+                "Les mutations peuvent être bénéfiques, neutres ou néfastes pour l'organisme",
+                "Une mutation dans une cellule de la peau n'est pas transmise aux enfants",
+                "Toutes les mutations entraînent obligatoirement une maladie mortelle",
+                "Les mutations ne peuvent jamais se produire chez l'être humain"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Beaucoup de mutations sont neutres. De plus, seules les mutations affectant les cellules germinales sont héréditaires."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle condition est indispensable pour qu'une mutation soit transmise à la descendance ?",
+              "options": [
+                "Elle doit se produire dans les cellules qui forment les gamètes (lignée germinale)",
+                "Elle doit toucher une cellule musculaire du bras",
+                "Elle doit être visible à l'œil nu sur la peau",
+                "Elle doit supprimer un chromosome entier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seules les mutations touchant les cellules germinales (spermatozoïdes ou ovocytes) sont transmises lors de la fécondation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une mutation qui n'a aucun impact sur la survie ni le fonctionnement de l'individu ?",
+              "options": [
+                "Une mutation neutre",
+                "Une mutation létale",
+                "Une mutation dominante",
+                "Une mutation artificielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une mutation neutre ne modifie ni l'activité de la protéine produite, ni l'espérance de survie de l'organisme porteur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel rôle primordial les mutations jouent-elles dans l'évolution des espèces ?",
+              "options": [
+                "Elles créent la diversité allique sur laquelle opère la sélection naturelle",
+                "Elles bloquent toute reproduction et figent les espèces",
+                "Elles transforment les animaux en plantes fossiles",
+                "Elles empêchent toute adaptation à l'environnement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La variabilité génétique générée par mutation permet à certains individus d'être mieux adaptés et de transmettre leurs allèles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment la cellule se protège-t-elle habituellement contre la fixation permanente d'erreurs d'ADN ?",
+              "options": [
+                "Grâce à des enzymes spécialisées dans la détection et la réparation de l'ADN",
+                "En expulsant son noyau à chaque division",
+                "En remplaçant son ADN par de la cellulose",
+                "En cessant définitivement de se nourrir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des systèmes enzymatiques performants corrigent la majorité des anomalies avant qu'elles ne deviennent des mutations définitives."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une maladie génétique monogénique comme la mucoviscidose ?",
+              "options": [
+                "Une maladie due à la mutation d'un seul gène précis",
+                "Une infection provoquée par une bactérie contagieuse",
+                "Une allergie passagère au pollen de printemps",
+                "Un manque temporaire de vitamines dans l'alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mucoviscidose est causée par des allèles mutés du gène CFTR (chromosome 7), altérant le mucus des bronches et du pancréas."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment se définit un cancer au niveau génétique et cellulaire ?",
+              "options": [
+                "Une accumulation de mutations provoquant la prolifération anarchique et incontrôlée de cellules",
+                "Une diminution brutale du nombre de cellules dans le corps",
+                "Une infection par un ver intestinal",
+                "Une simple fatigue musculaire passagère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cancer résulte de mutations successives altérant les gènes régulateurs du cycle cellulaire, provoquant des tumeurs."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Arbres généalogiques et transmission héréditaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans un arbre généalogique médical, quel symbole conventionnel représente un individu de sexe masculin ?",
+              "options": ["Un cercle", "Un carré", "Un losange", "Une étoile"],
+              "correctAnswers": [1],
+              "explanation": "Par convention internationale, un carré représente un homme et un cercle représente une femme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment indique-t-on qu'un individu manifeste la maladie étudiée dans un arbre généalogique ?",
+              "options": [
+                "Le symbole est entièrement noirci ou coloré",
+                "Le symbole est barré d'une flèche verte",
+                "Le symbole est dessiné deux fois plus grand",
+                "Le symbole est entouré d'un nuage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un symbole rempli en noir ou grisé signale un individu exprimant le phénotype malade étudié."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie le fait qu'une anomalie génétique soit qualifiée d'autosomique ?",
+              "options": [
+                "Le gène est porté par un autosome (chromosome non sexuel des paires 1 à 22)",
+                "Le gène est porté exclusivement par le chromosome sexuel Y",
+                "La maladie ne s'attrape qu'en voiture",
+                "La maladie ne se transmet jamais aux enfants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une transmission autosomique concerne un gène situé sur l'une des 22 paires de chromosomes homologues non sexuels."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans une maladie autosomique récessive, quelle condition est requise pour qu'un enfant soit atteint ?",
+              "options": [
+                "Posséder un seul allèle muté",
+                "Être homozygote et posséder deux allèles mutés (un de chaque parent)",
+                "Être obligatoirement de sexe masculin",
+                "Avoir un chromosome en trop sur son caryotype"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un allèle récessif ne s'exprime dans le phénotype que s'il est présent en double exemplaire chez l'individu."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Si deux parents sont hétérozygotes porteurs sains pour une maladie récessive (Aa x Aa) :",
+              "options": [
+                "Le risque d'avoir un enfant atteint (aa) est de 1 sur 4 (25 %) à chaque naissance",
+                "La probabilité d'avoir un enfant porteur sain (Aa) est de 2 sur 4 (50 %)",
+                "Tous leurs enfants seront obligatoirement malades",
+                "Ils ne peuvent pas avoir d'enfants sains"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'échiquier de croisement prévoit 25 % d'enfants sains non porteurs (AA), 50 % de porteurs sains (Aa) et 25 % d'atteints (aa)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour une maladie autosomique dominante, quel risque un parent malade hétérozygote a-t-il de la transmettre à son enfant (avec conjoint sain) ?",
+              "options": [
+                "0 % de risque",
+                "25 % de risque",
+                "50 % de risque",
+                "100 % de risque"
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'allèle dominant s'exprime dès qu'il est présent ; le parent porteur transmet son allèle muté dans un cas sur deux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi les garçons sont-ils plus exposés aux maladies récessives portées par le chromosome X (daltonisme, myopathie) ?",
+              "options": [
+                "Parce qu'ils ne possèdent qu'un seul chromosome X et aucun allèle de secours sur leur Y",
+                "Parce que leur sang circule plus vite que celui des filles",
+                "Parce qu'ils fabriquent moins d'hémoglobine",
+                "Parce que le chromosome Y détruit les yeux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Étant XY, un garçon exprimera tout allèle récessif muté porté par son unique chromosome X car Y n'en possède pas d'équivalent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une personne portant un allèle récessif délétère sans en présenter aucun signe clinique ?",
+              "options": [
+                "Un porteur sain (ou hétérozygote)",
+                "Un individu résistant",
+                "Un mutant actif",
+                "Un donneur universel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le porteur sain possède un allèle normal qui compense fonctionnellement l'allèle récessif muté."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À quoi sert un échiquier de croisement (tableau de Punnett) en génétique ?",
+              "options": [
+                "À prévoir les probabilités d'apparition des différents génotypes et phénotypes chez les descendants",
+                "À mesurer le poids futur d'un nouveau-né à sa naissance",
+                "À compter le nombre exact d'années de vie d'un patient",
+                "À cartographier les neurones du cerveau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échiquier de croisement combine les allèles des gamètes parentaux pour calculer les fréquences des génotypes attendus."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la mission principale du conseil génétique en milieu hospitalier ?",
+              "options": [
+                "Évaluer les risques de transmission d'une anomalie génétique et accompagner les familles dans leurs choix",
+                "Choisir la couleur des yeux et des cheveux des futurs bébés",
+                "Interdire le mariage aux personnes porteuses d'allèles récessifs",
+                "Remplacer l'ensemble de l'ADN par thérapie laser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le conseil génétique informe les couples à risque et propose des diagnostics adaptés dans le respect de l'éthique médicale."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Parenté cellulaire et histoire du vivant",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel constat fondamental partagé par tous les êtres vivants prouve leur parenté commune ?",
+              "options": [
+                "La structure cellulaire et l'utilisation de l'ADN comme support de l'information génétique",
+                "La présence obligatoire d'os et de muscles",
+                "Le mode de déplacement par la marche à deux pattes",
+                "L'obligation de vivre en milieu marin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure cellulaire universelle et le code génétique basé sur l'ADN attestent d'une origine commune de la vie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le dernier ancêtre commun universel hypothétique de toutes les formes de vie terrestres ?",
+              "options": [
+                "LUCA (Last Universal Common Ancestor)",
+                "Lucy l'australopithèque",
+                "Homo habilis",
+                "L'ammonite primitive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "LUCA désigne l'organisme ancestral unicellulaire commun à l'ensemble des bactéries, archées et eucaryotes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Selon la théorie endosymbiotique, quelle est l'origine des mitochondries et des chloroplastes ?",
+              "options": [
+                "D'anciennes bactéries intégrées en symbiose durable dans une cellule hôte ancestrale",
+                "Des morceaux de minéraux volcaniques dissous dans le cytoplasme",
+                "Des dépôts de graisse solidifiée",
+                "Des fragments de peau fossilisés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces organites dérivent d'anciennes bactéries phagocytées devenues des partenaires symbiotiques permanents des eucaryotes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel argument biologique soutient fortement l'origine bactérienne des mitochondries ?",
+              "options": [
+                "Elles possèdent leur propre ADN circulaire et se divisent de manière autonome",
+                "Elles sont visibles à l'œil nu sans appareil optique",
+                "Elles ne contiennent aucune protéine",
+                "Elles ont une forme de squelette rigide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La présence d'un ADN circulaire propre et de ribosomes de type bactérien confirme l'origine endosymbiotique des mitochondries."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels groupes d'êtres vivants appartiennent au domaine des Eucaryotes ?",
+              "options": [
+                "Les animaux et les végétaux",
+                "Les champignons (fongicidés)",
+                "Toutes les bactéries du sol",
+                "Les virus à ARN"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les animaux, les végétaux et les champignons sont des eucaryotes dont les cellules possèdent un véritable noyau délimité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le schéma arborescent représentant les liens de parenté évolutive entre espèces ?",
+              "options": [
+                "Un arbre phylogénétique",
+                "Un arbre généalogique nominatif",
+                "Un tableau nutritionnel",
+                "Un schéma électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'arbre phylogénétique illustre les relations de parenté basées sur le partage de caractères dérivés hérités d'ancêtres communs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sur quel critère scientifique moderne établit-on principalement les arbres de parenté entre espèces ?",
+              "options": [
+                "La comparaison moléculaire des séquences de gènes ou de protéines",
+                "Leur couleur extérieure superficielle",
+                "Leur lieu de vie (eau, terre, air)",
+                "Leur taille mesurée en centimètres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus deux espèces partagent de séquences d'ADN homologues, plus leur dernier ancêtre commun partagé est récent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "À quelle époque approximative remontent les plus anciennes traces de cellules procaryotes sur Terre ?",
+              "options": [
+                "Environ 3,5 milliards d'années",
+                "Environ 6 000 ans",
+                "Environ 200 000 ans",
+                "Environ 65 millions d'années"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les premiers fossiles de micro-organismes (stromatolites) sont datés d'environ 3,5 à 3,8 milliards d'années."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel gaz libéré par les cyanobactéries photosynthétiques a profondément modifié l'atmosphère terrestre primitive ?",
+              "options": [
+                "Le dioxygène (O2)",
+                "Le monoxyde de carbone",
+                "L'hélium",
+                "Le gaz ammoniac"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'activité photosynthétique des cyanobactéries a enrichi l'atmosphère en dioxygène, permettant la respiration et la formation de la couche d'ozone."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle transition évolutive majeure a permis l'apparition d'organismes de grande taille aux fonctions spécialisées ?",
+              "options": [
+                "Le passage de l'état unicellulaire à l'état pluricellulaire",
+                "La perte définitive du noyau cellulaire",
+                "L'arrêt complet de la division cellulaire",
+                "La suppression totale de la molécule d'ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pluricellularité a permis la coopération de cellules spécialisées au sein de tissus et d'organes complexes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Fonctions",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : Métabolisme et respiration cellulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel organite cellulaire est la principale centrale énergétique fabriquant l'ATP dans les cellules eucaryotes ?",
+              "options": [
+                "La mitochondrie",
+                "L'appareil de Golgi",
+                "La vacuole d'eau",
+                "Le lysosome acide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mitochondries réalisent la respiration cellulaire, oxydant les nutriments pour produire de l'ATP."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels sont les deux réactifs principaux consommés par la cellule pour la respiration aérobie ?",
+              "options": [
+                "Le dioxyde de carbone et l'eau",
+                "Le glucose (nutriment) et le dioxygène (O2)",
+                "L'azote et le fer minéral",
+                "L'amidon solide et le calcaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La respiration cellulaire nécessite un apport simultané en matière organique (glucose) et en dioxygène."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quels sont les déchets rejetés à l'issue de la dégradation respiratoire du glucose ?",
+              "options": [
+                "Le dioxyde de carbone (CO2) et l'eau (H2O)",
+                "Le dioxygène et les protéines pures",
+                "L'azote gazeux comprimé",
+                "Le glucose inaltéré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oxydation complète du glucose produit du CO2 rejeté par les poumons et de l'eau métabolique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle molécule constitue la monnaie d'énergie chimique directement utilisable par les réactions cellulaires ?",
+              "options": [
+                "L'ATP (adénosine triphosphate)",
+                "L'hémoglobine sanguine",
+                "Le collagène des tissus",
+                "La chlorophylle brute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ATP fournit l'énergie nécessaire à toutes les synthèses moléculaires, transports actifs et contractions musculaires."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Comment réagit le métabolisme d'une cellule musculaire lors d'un effort physique intense ?",
+              "options": [
+                "Sa consommation de glucose et de dioxygène augmente significativement",
+                "Sa production de chaleur et de dioxyde de carbone s'élève",
+                "Sa respiration cellulaire s'interrompt totalement",
+                "Ses mitochondries sont détruites pour faire de la place"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La demande accrue d'énergie musculaire accélère la respiration cellulaire, augmentant la consommation d'O2 et la thermogenèse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle voie énergétique de secours anaérobie le muscle utilise-t-il lors d'un sprint intense ?",
+              "options": [
+                "La fermentation lactique",
+                "La photosynthèse cutanée",
+                "La digestion stomacale",
+                "L'évaporation pulmonaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En absence transitoire d'apport suffisant en O2, la fermentation lactique produit de l'ATP avec formation d'acide lactique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on l'ensemble des réactions chimiques se déroulant dans une cellule vivante ?",
+              "options": [
+                "Le métabolisme",
+                "Le caryotype",
+                "L'osmose",
+                "La sédimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le métabolisme englobe l'anabolisme (synthèses cellulaires) et le catabolisme (dégradations libérant de l'énergie)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "D'où provient le glucose utilisé par les cellules des organismes animaux ?",
+              "options": [
+                "De la digestion des aliments glucidiques et de leur absorption intestinale",
+                "De la photosynthèse réalisée par leurs poils",
+                "De l'air inspiré par les voies respiratoires",
+                "De la décomposition des globules rouges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le glucose est apporté par l'alimentation, passe dans le sang au niveau intestinal et est distribué aux cellules."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que devient une part importante de l'énergie produite lors de la respiration cellulaire ?",
+              "options": [
+                "Elle est dissipée sous forme de chaleur participant au maintien de la température corporelle",
+                "Elle se transforme en lumière visible brillante",
+                "Elle disparaît totalement sans laisser de trace",
+                "Elle est stockée dans les cheveux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dégradation du glucose n'a pas un rendement de 100 % : la chaleur dégagée maintient notre corps à 37 °C."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi les cellules ont-elles besoin d'énergie en permanence, même pendant le sommeil ?",
+              "options": [
+                "Pour assurer les fonctions vitales de base (battements du cœur, respiration, entretien cellulaire)",
+                "Pour courir sans bouger dans le lit",
+                "Pour fabriquer de nouvelles dents chaque nuit",
+                "Uniquement pour chauffer les draps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le métabolisme de base requiert un flux continu d'ATP pour maintenir les gradients ioniques et renouveler les molécules."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Digestion et absorption des nutriments",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le but essentiel de la digestion dans le tube digestif ?",
+              "options": [
+                "Transformer les macromolécules alimentaires en nutriments simples solubles assimilables",
+                "Fabriquer de l'air pour remplir les poumons",
+                "Éliminer toute l'eau du corps",
+                "Refroidir le sang circulant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La digestion découpe chimiquement les aliments en petites molécules capables de traverser la paroi intestinale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles protéines spécialisées contenues dans les sucs digestifs découpent les molécules alimentaires ?",
+              "options": [
+                "Les enzymes digestives",
+                "Les hormones de croissance",
+                "Les plaquettes de coagulation",
+                "Les anticorps sanguins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les enzymes digestives (amylases, protéases, lipases) accélèrent la dégradation chimique des aliments ingérés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel organe du tube digestif réalise l'absorption de la quasi-totalité des nutriments ?",
+              "options": [
+                "L'intestin grêle",
+                "L'œsophage",
+                "La vésicule biliaire",
+                "Le pharynx"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intestin grêle absorbe l'eau et les nutriments grâce à sa paroi particulièrement plissée et fine."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques font de la paroi de l'intestin grêle une surface d'échange très performante ?",
+              "options": [
+                "Une surface gigantesque plissée en villosités et microvillosités (environ 300 m²)",
+                "Un réseau dense de capillaires sanguins et lymphatiques très proches de la surface",
+                "Une paroi épaisse et imperméable bloquant les liquides",
+                "L'absence totale de cellules vivantes à sa surface"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'immense surface, la minceur de l'épithélium et l'intense vascularisation optimisent le passage des nutriments dans le sang."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En quelle molécule simple soluble l'amidon alimentaire est-il découpé lors de la digestion ?",
+              "options": [
+                "En glucose",
+                "En acides aminés",
+                "En acides gras",
+                "En cholestérol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'amidon (glucide complexe) est hydrolysé en molécules de glucose par les amylases salivaires et pancréatiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En quels éléments de base les protéines de l'alimentation sont-elles décomposées ?",
+              "options": [
+                "En acides aminés",
+                "En glycogène hépatique",
+                "En vitamines minérales",
+                "En acide chlorhydrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les protéases scindent les protéines alimentaires en acides aminés individuels directement assimilables."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans quel réseau liquide passent préférentiellement le glucose et les acides aminés lors de l'absorption ?",
+              "options": [
+                "Dans le sang des capillaires villositaires",
+                "Dans le liquide céphalorachidien du cerveau",
+                "Dans l'urine rénale",
+                "Dans les canaux salivaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le glucose et les acides aminés traversent les entérocytes pour rejoindre le sang des capillaires sanguins de la villosité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel organe traite directement le sang venu de l'intestin et stocke l'excédent de glucose en glycogène ?",
+              "options": ["Le foie", "La rate", "La vessie", "La trachée"],
+              "correctAnswers": [0],
+              "explanation": "Relié par la veine porte, le foie régule la glycémie en stockant le glucose sous forme de glycogène après le repas."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le rôle principal du gros intestin (côlon) dans la digestion ?",
+              "options": [
+                "Réabsorber l'eau résiduelle et concentrer les matières fécales non digérées",
+                "Sécréter les enzymes de dégradation de la viande",
+                "Fabriquer l'insuline du sang",
+                "Oxygéner les aliments ingérés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le côlon récupère l'eau restante et abrite le microbiote qui fermente les résidus non digestibles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on les ondes de contractions musculaires qui font avancer le contenu du tube digestif ?",
+              "options": [
+                "Le péristaltisme",
+                "Le réflexe myotatique",
+                "La glycolyse",
+                "La dialyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le péristaltisme désigne les contractions coordonnées de la paroi musculaire propulsant le bol alimentaire de l'œsophage au rectum."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : Respiration et échanges gazeux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Où se déroulent précisément les échanges gazeux respiratoires entre l'air et le sang dans les poumons ?",
+              "options": [
+                "Dans la trachée",
+                "Dans les bronches souches",
+                "Au niveau des alvéoles pulmonaires",
+                "Dans la plèvre pariétale"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les alvéoles pulmonaires forment de petits culs-de-sac richement vascularisés où s'opèrent les échanges gazeux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel gaz passe de l'air alvéolaire vers le sang capillaire lors de la respiration ?",
+              "options": [
+                "Le dioxyde de carbone",
+                "Le dioxygène (O2)",
+                "L'azote pur",
+                "Le méthane"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le dioxygène diffuse à travers la fine membrane alvéolo-capillaire pour oxygéner le sang."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel gaz déchet passe du sang vers l'air alvéolaire pour être rejeté lors de l'expiration ?",
+              "options": [
+                "Le dioxyde de carbone (CO2)",
+                "Le dioxygène",
+                "L'hélium",
+                "L'ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CO2 produit par le catabolisme cellulaire est transporté par le sang et rejeté dans l'air expiré."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle protéine des hématies, contenant du fer, transporte l'immense majorité du dioxygène dans le sang ?",
+              "options": [
+                "L'hémoglobine",
+                "L'insuline",
+                "L'albumine",
+                "La kératine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hémoglobine fixe le dioxygène au niveau des alvéoles pour former l'oxyhémoglobine rouge vif."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques des alvéoles pulmonaires facilitent la diffusion rapide des gaz ?",
+              "options": [
+                "Une surface de contact colossale estimée à plus de 100 m²",
+                "Une paroi alvéolo-capillaire extrêmement fine (moins d'un micromètre)",
+                "Une absence totale de vaisseaux sanguins à leur contact",
+                "Une couche de cire imperméable aux gaz"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La minceur extrême de la paroi et la grande surface de contact favorisent une diffusion passive très rapide des gaz."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Par quel mécanisme physique les gaz respiratoires franchissent-ils la paroi alvéolo-capillaire ?",
+              "options": [
+                "La diffusion selon le gradient de pression partielle du gaz",
+                "Le pompage magnétique",
+                "L'attraction électrostatique",
+                "La sédimentation par gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque gaz diffuse spontanément du compartiment où sa pression partielle est la plus forte vers celui où elle est plus faible."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel muscle essentiel s'abaisse et s'aplatit lors de l'inspiration pour agrandir la cage thoracique ?",
+              "options": [
+                "Le diaphragme",
+                "Le triceps",
+                "Le grand fessier",
+                "Le trapèze"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La contraction du diaphragme crée une dépression dans la cage thoracique, provoquant l'aspiration d'air dans les poumons."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi le tabagisme détériore-t-il l'efficacité des échanges gazeux dans les poumons ?",
+              "options": [
+                "Il paralyse les cils vibratiles et détruit les cloisons alvéolaires (emphysème)",
+                "Il transforme le dioxygène en sucre solide",
+                "Il dissout les côtes et les vertèbres",
+                "Il empêche le cœur de battre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fumée du tabac détruit les défenses bronchiques et altère la surface alvéolaire, réduisant l'oxygénation du sang."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment réagit l'appareil respiratoire lors d'une activité sportive soutenue ?",
+              "options": [
+                "La fréquence et le volume respiratoires augmentent pour capter davantage d'O2",
+                "La respiration s'arrête complètement pendant l'effort",
+                "Les poumons expulsent uniquement de l'eau liquide",
+                "Le rythme respiratoire diminue de moitié"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le débit ventilatoire augmente fortement à l'effort pour répondre aux besoins en oxygène des muscles actifs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En comparant l'air inspiré et l'air expiré, que constate-t-on ?",
+              "options": [
+                "L'air expiré contient moins de dioxygène et plus de dioxyde de carbone que l'air inspiré",
+                "L'air expiré contient plus de dioxygène que l'air inspiré",
+                "L'air inspiré ne contient aucun gaz respirable",
+                "L'air expiré ne contient que de l'azote pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'organisme prélève une fraction du dioxygène de l'air (21 % à l'inspiration contre ~16 % à l'expiration) et y rejette du CO2 (~4 %)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : Le système cardiovasculaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel organe musculaire creux assure la propulsion continue du sang dans les vaisseaux sanguins ?",
+              "options": ["Le cœur", "Le foie", "Le rein", "Le pancréas"],
+              "correctAnswers": [0],
+              "explanation": "Le cœur est une pompe contractile dont les contractions rythmiques propulsent le sang dans tout le réseau vasculaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de cavités internes composent le cœur de l'être humain ?",
+              "options": [
+                "Deux cavités",
+                "Trois cavités",
+                "Quatre cavités (deux oreillettes et deux ventricules)",
+                "Six cavités distinctes"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le cœur humain possède quatre cavités : deux oreillettes supérieures réceptrices et deux ventricules inférieurs éjecteurs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quels vaisseaux sanguins transportent le sang qui part du cœur vers les différents organes ?",
+              "options": [
+                "Les artères",
+                "Les veines",
+                "Les uretères",
+                "Les canaux biliaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition, les artères sont les vaisseaux qui partent des ventricules du cœur et conduisent le sang vers la périphérie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quels vaisseaux sanguins ramènent le sang provenant des organes vers le cœur ?",
+              "options": [
+                "Les veines",
+                "Les artères",
+                "Les bronches",
+                "Les tendons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les veines collectent le sang circulant dans les organes et le reconduisent vers les oreillettes cardiaques."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques distinguent les capillaires sanguins des autres vaisseaux ?",
+              "options": [
+                "Ils possèdent une paroi monocellulaire extrêmement mince",
+                "Ils sont le siège exclusif des échanges de gaz et de nutriments avec les tissus",
+                "Ils sont bordés d'une épaisse couche d'os",
+                "Ils propulsent le sang par des battements autonomes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les capillaires sont microscopiques et leur fine paroi permet la diffusion rapide des gaz et nutriments vers les cellules."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi le sang oxygéné et le sang désoxygéné ne se mélangent-ils pas dans le cœur humain ?",
+              "options": [
+                "Une cloison étanche (le septum) sépare totalement le cœur droit du cœur gauche",
+                "Le sang riche en dioxygène est solide",
+                "Le sang pauvre en dioxygène s'évapore avant d'entrer dans le cœur",
+                "Le cœur ne bat qu'un côté à la fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cloison interventriculaire et interauriculaire (septum) empêche tout mélange entre sang désoxygéné (droit) et oxygéné (gauche)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel circuit vasculaire achemine le sang désoxygéné vers les poumons pour être rechargé en O2 ?",
+              "options": [
+                "La circulation pulmonaire (petite circulation)",
+                "La circulation générale (grande circulation)",
+                "La circulation lymphatique",
+                "La circulation coronaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La circulation pulmonaire relie le ventricule droit aux poumons, où le sang s'oxygène avant de revenir à l'oreillette gauche."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la paroi du ventricule gauche est-elle plus épaisse et musclée que celle du ventricule droit ?",
+              "options": [
+                "Parce qu'elle doit développer une pression plus élevée pour envoyer le sang dans tout le corps",
+                "Parce qu'elle contient des poches d'air comprimé",
+                "Parce qu'elle ne reçoit que du sang veineux",
+                "Parce qu'elle stocke les réserves de fer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le myocarde du ventricule gauche propulse le sang dans l'ensemble du circuit systémique à travers l'artère aorte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel rôle jouent les valvules cardiaques situées dans le cœur ?",
+              "options": [
+                "Empêcher le reflux du sang et assurer une circulation à sens unique",
+                "Filtrer le glucose en excès",
+                "Accélérer le refroidissement du sang",
+                "Fabriquer les globules rouges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les valvules s'ouvrent et se ferment au gré des pressions pour imposer une progression du sang à sens unique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment définit-on la fréquence cardiaque en physiologie ?",
+              "options": [
+                "Le nombre de battements ou pulsations du cœur par minute",
+                "Le volume de sang expulsé en une heure",
+                "La pression du sang dans les veines des jambes",
+                "La vitesse de déplacement des hématies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fréquence cardiaque compte le nombre de cycles cardiaques par minute (généralement 60 à 80 bpm au repos)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : Excrétion et élimination des déchets",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels organes filtrent le sang en permanence pour former l'urine et éliminer les toxines azotées ?",
+              "options": [
+                "Les reins",
+                "Les poumons",
+                "La vésicule biliaire",
+                "La rate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les reins sont les organes épurateurs majeurs de l'organisme, maintenant la composition stable du sang."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel déchet toxique issu de la dégradation des acides aminés est principalement éliminé dans l'urine ?",
+              "options": ["L'urée", "Le dioxygène", "Le glucose", "L'amidon"],
+              "correctAnswers": [0],
+              "explanation": "L'urée provient du catabolisme des protéines par le foie et est excrétée par filtration rénale dans l'urine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment s'appelle l'unité fonctionnelle microscopique de filtration du rein ?",
+              "options": [
+                "Le néphron",
+                "Le neurone",
+                "L'alvéole",
+                "La villosité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque rein contient environ 1 million de néphrons, unités microscopiques assurant filtration et réabsorption."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels éléments trouve-t-on normalement dans l'urine d'un individu en bonne santé ?",
+              "options": [
+                "De l'eau et des sels minéraux en excès",
+                "De l'urée et de l'acide urique",
+                "Des globules rouges en grande quantité",
+                "Du glucose en forte concentration"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'urine normale est composée d'eau, de sels et de déchets azotés. La présence de sang ou de sucre traduit une anomalie rénale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel conduit achemine l'urine depuis chaque rein jusqu'à la vessie ?",
+              "options": [
+                "L'uretère",
+                "L'urètre",
+                "L'œsophage",
+                "La veine porte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les uretères relient les reins à la vessie, tandis que l'urètre évacue l'urine de la vessie vers l'extérieur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le rôle de la vessie dans l'appareil urinaire humain ?",
+              "options": [
+                "Stocker temporairement l'urine avant son expulsion (miction)",
+                "Filtrer le sang des globules usés",
+                "Fabriquer les sels minéraux",
+                "Réguler la température de l'abdomen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vessie est une poche musculaire extensible retenant l'urine produite en continu par les reins."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que devient le glucose filtré au tout début du néphron lors de la réabsorption tubulaire ?",
+              "options": [
+                "Il est réabsorbé à 100 % vers le sang chez une personne saine",
+                "Il est entièrement rejeté dans les toilettes",
+                "Il est détruit par des acides rénaux",
+                "Il est transformé en dioxyde de carbone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rein sain réabsorbe intégralement le glucose filtré pour éviter toute perte de cette précieuse source d'énergie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En quoi consiste l'hémodialyse (rein artificiel) chez les personnes atteintes d'insuffisance rénale sévère ?",
+              "options": [
+                "À filtrer le sang hors de l'organisme à travers une membrane artificielle semi-perméable",
+                "À greffer une pompe mécanique dans l'estomac",
+                "À injecter du sang d'animal pour remplacer l'urine",
+                "À dissoudre les reins malades par ultrasons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hémodialyse épure le sang des toxines azotées et des excès d'eau lorsque les reins ne peuvent plus assurer leur fonction."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel autre système organique élimine massivement un déchet métabolique gazeux sous forme de CO2 ?",
+              "options": [
+                "L'appareil respiratoire (les poumons)",
+                "Le squelette osseux",
+                "L'appareil locomoteur",
+                "Le système auditif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les poumons éliminent le dioxyde de carbone produit en continu par le métabolisme cellulaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle structure de la peau participe également à l'excrétion d'eau, de sels et de traces d'urée ?",
+              "options": [
+                "Les glandes sudoripares",
+                "Les glandes sébacées",
+                "Les follicules pileux",
+                "Les ongles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les glandes sudoripares produisent la sueur qui, en plus de réguler la température, évacue des sels et de faibles quantités d'urée."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : Le système nerveux et la communication cellulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle cellule hautement spécialisée constitue l'unité élémentaire du système nerveux ?",
+              "options": [
+                "Le neurone",
+                "Le néphron",
+                "L'hématie",
+                "L'ostéoblaste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le neurone est la cellule spécialisée dans la réception, l'intégration et la conduction des messages nerveux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels organes composent le système nerveux central chez l'être humain ?",
+              "options": [
+                "L'encéphale (cerveau, cervelet, tronc) et la moelle épinière",
+                "Les muscles squelettiques et les tendons",
+                "Le cœur et les artères principales",
+                "L'estomac et les intestins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système nerveux central comprend les centres nerveux protégés par le crâne (encéphale) et le rachis (moelle épinière)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la zone de jonction et de transmission du message entre deux neurones ?",
+              "options": [
+                "La synapse",
+                "La vacuole",
+                "Le ganglion osseux",
+                "Le tendon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La synapse est la zone de communication fonctionnelle où l'information passe d'un neurone à une autre cellule."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sous quelle forme le message nerveux circule-t-il le long de la membrane de l'axone d'un neurone ?",
+              "options": [
+                "Sous forme de signaux de nature électrique (potentiels d'action)",
+                "Sous forme de flux sanguin sous pression",
+                "Sous forme de vagues de chaleur",
+                "Sous forme d'ondes sonores audibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le message nerveux le long de l'axone est un signal électrique caractérisé par une suite de potentiels d'action."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Que se passe-t-il au niveau d'une synapse chimique lors de l'arrivée de l'influx nerveux ?",
+              "options": [
+                "Des molécules messagères (neurotransmetteurs) sont libérées dans la fente synaptique",
+                "Les neurotransmetteurs se fixent sur des récepteurs cibles du neurone postsynaptique",
+                "Les deux neurones soudent leurs cytoplasmes de façon permanente",
+                "Le courant électrique franchit l'espace sans aucune molécule chimique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le message électrique déclenche l'exocytose de neurotransmetteurs qui traversent la fente pour activer la cellule suivante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le rôle des organes sensoriels (yeux, oreilles, peau...) dans le fonctionnement nerveux ?",
+              "options": [
+                "Capter les stimuli de l'environnement et générer un message nerveux sensitif",
+                "Contracter les os lors d'un mouvement",
+                "Sécréter les sucs digestifs",
+                "Refroidir le sang de la tête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les récepteurs sensoriels transforment une stimulation externe (lumière, son, pression) en influx nerveux sensitif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel type de nerf conduit l'information depuis les récepteurs sensoriels vers les centres nerveux ?",
+              "options": [
+                "Un nerf sensitif (ou afférent)",
+                "Un nerf moteur (ou efférent)",
+                "Un tendon musculaire",
+                "Une veine porte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fibres sensitives acheminent les informations vers l'encéphale ou la moelle épinière pour être analysées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel type de nerf achemine l'ordre moteur depuis le centre nerveux vers l'organe effecteur (muscle) ?",
+              "options": [
+                "Un nerf moteur (ou efférent)",
+                "Un nerf sensitif (ou afférent)",
+                "Une artère coronarienne",
+                "Un vaisseau lymphatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les nerfs moteurs transmettent la commande motrice du centre nerveux vers les muscles réalisant le mouvement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un mouvement réflexe (comme le réflexe rotulien au coup de marteau) ?",
+              "options": [
+                "Une réponse motrice involontaire, automatique et très rapide à une stimulation",
+                "Un choix conscient après dix minutes de calcul mental",
+                "Une maladie génétique dégénérative",
+                "Une défaillance musculaire permanente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un réflexe est une réponse motrice stéréotypée et rapide traitée directement au niveau de la moelle épinière."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment des substances psychoactives (drogues, alcool) perturbent-elles le fonctionnement cérébral ?",
+              "options": [
+                "En interférant avec les neurotransmetteurs au niveau des synapses, altérant vigilance et coordination",
+                "En faisant grossir le cerveau de dix centimètres",
+                "En supprimant la couleur des globules rouges",
+                "En transformant les nerfs en vaisseaux sanguins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces molécules modifient la libération ou la capture de neurotransmetteurs (comme la dopamine), faussant la transmission synaptique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : La régulation hormonale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une hormone dans le fonctionnement de l'organisme humain ?",
+              "options": [
+                "Un messager chimique sécrété dans le sang par une glande et agissant à distance sur des cellules cibles",
+                "Un influx électrique voyageant le long d'un axone",
+                "Une enzyme de digestion découpant l'amidon",
+                "Un type particulier de microbe symbiotique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une hormone est libérée dans la circulation sanguine par une glande endocrine pour agir sur des organes cibles précis."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment une cellule cible reconnaît-elle l'hormone spécifique qui doit modifier son activité ?",
+              "options": [
+                "Grâce à des récepteurs moléculaires complémentaires spécifiques situés sur ou dans la cellule",
+                "En absorbant la totalité du sang circulant",
+                "En expulsant son matériel génétique",
+                "En augmentant de taille sous l'effet du bruit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seules les cellules porteuses des récepteurs adaptés peuvent lier l'hormone et déclencher une réponse biologique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle hormone sécrétée par les testicules est responsable de la puberté et des caractères sexuels masculins ?",
+              "options": [
+                "La testostérone",
+                "L'insuline",
+                "L'adrénaline",
+                "L'œstrogène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La testostérone induit le développement des organes génitaux, la mue de la voix, la pilosité et la masse musculaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelles hormones ovariennes contrôlent le cycle menstruel et le développement de la muqueuse utérine ?",
+              "options": [
+                "Les œstrogènes et la progestérone",
+                "La mélatonine et la calcitonine",
+                "L'adrénaline et la cortisone",
+                "L'insuline et le glucagon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les œstrogènes et la progestérone préparent périodiquement l'utérus à accueillir une éventuelle nidation embryonnaire."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles hormones régulent l'équilibre de la glycémie (taux de glucose sanguin) ?",
+              "options": [
+                "L'insuline (hormone hypoglycémiante favorisant le stockage du glucose)",
+                "Le glucagon (hormone hyperglycémiante libérant le glucose hépatique)",
+                "L'hormone thyroïdienne de croissance",
+                "La progestérone utérine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Produites par le pancréas endocrine, l'insuline et le glucagon régulent la glycémie autour de la valeur consigne de 1 g/L."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle glande cérébrale contrôle l'activité de nombreuses autres glandes endocrines (gonades, thyroïde) ?",
+              "options": [
+                "L'hypophyse",
+                "La rate",
+                "L'appendice",
+                "La vésicule biliaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hypophyse sécrète des stimulines (LH, FSH...) qui pilotent la sécrétion hormonale des ovaires, testicules et surrénales."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est l'origine du diabète de type 1 survenant chez l'enfant ou l'adolescent ?",
+              "options": [
+                "La destruction auto-immune des cellules pancréatiques sécrétrices d'insuline",
+                "Une consommation excessive de sel de table",
+                "Une absence congénitale de reins",
+                "Une infection bactérienne des poumons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le diabète de type 1 est une maladie auto-immune entraînant une carence totale en insuline, provoquant une hyperglycémie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle différence majeure distingue la transmission hormonale de la transmission nerveuse ?",
+              "options": [
+                "La communication hormonale est plus lente par le sang mais son action est généralement plus prolongée",
+                "L'hormone voyage toujours plus vite que l'électricité nerveuse",
+                "La communication nerveuse utilise uniquement de l'eau pure",
+                "Les hormones ne circulent que dans les os"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le message nerveux est rapide et ciblé, tandis que le message hormonal circule dans tout le sang pour une action diffuse et durable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la cause directe des règles (menstruations) à la fin du cycle féminin en absence de fécondation ?",
+              "options": [
+                "La chute brutale des taux d'œstrogènes et de progestérone entraînant la dégradation de la muqueuse utérine",
+                "L'expulsion des deux ovaires hors du corps",
+                "Une infection bactérienne systématique",
+                "Une augmentation extrême de la testostérone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effondrement hormonal prive l'endomètre de soutien, provoquant son élimination sous forme de saignements menstruels."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle hormone de stress libérée par les glandes surrénales prépare l'organisme à réagir immédiatement au danger ?",
+              "options": [
+                "L'adrénaline",
+                "La mélatonine",
+                "L'insuline",
+                "La parathormone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adrénaline accélère instantanément le rythme cardiaque et ventilatoire pour mobiliser les ressources motrices face à l'urgence."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : Le système immunitaire et la défense de l'organisme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelles cellules sanguines constituent les acteurs principaux de la défense immunitaire de notre organisme ?",
+              "options": [
+                "Les leucocytes (globules blancs)",
+                "Les hématies (globules rouges)",
+                "Les plaquettes de coagulation",
+                "Les adipocytes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les leucocytes (phagocytes, lymphocytes B et T) patrouillent et éliminent les agents pathogènes infectieux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles sont les premières barrières naturelles empêchant l'intrusion des agents pathogènes ?",
+              "options": [
+                "La peau saine et les muqueuses",
+                "Les muscles des jambes",
+                "Les ongles et les sourcils",
+                "Les côtes de la cage thoracique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La peau et les muqueuses (avec leurs sécrétions protectrices acides et enzymatiques) forment une barrière mécanique et chimique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quels sont les quatre signes cliniques cardinaux de la réaction inflammatoire aiguë locale ?",
+              "options": [
+                "Rougeur, chaleur, gonflement et douleur",
+                "Pâleur, froid, rétrécissement et insensibilité",
+                "Saignement continu, perte osseuse et sommeil",
+                "Éruption de boutons bleus et jaunisse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vasodilatation et la perméabilité capillaire créent l'afflux sanguin et de cellules immunitaires provoquant ces quatre signes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mécanisme permet aux phagocytes (macrophages) d'ingérer et détruire les micro-organismes étrangers ?",
+              "options": [
+                "La phagocytose",
+                "La mitose",
+                "La photosynthèse",
+                "La duplication d'ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phagocytose comprend l'adhésion, l'englobement dans une vésicule et la digestion enzymatique du microbe."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont les deux grands types de lymphocytes assurant l'immunité adaptative spécifique ?",
+              "options": [
+                "Les lymphocytes B (producteurs d'anticorps spécifiques)",
+                "Les lymphocytes T cytotoxiques (détruisant les cellules infectées)",
+                "Les hématies anucléées",
+                "Les plaquettes sanguines"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les lymphocytes B libèrent des anticorps neutralisants tandis que les lymphocytes T éliminent les cellules cibles par contact direct."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un antigène pour le système immunitaire ?",
+              "options": [
+                "Toute molécule reconnue comme étrangère capable de déclencher une réaction immunitaire spécifique",
+                "Un médicament vendu en pharmacie pour faire baisser la fièvre",
+                "Une protéine servant uniquement à faire coaguler le sang",
+                "Un nutriment extrait de la pomme de terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les antigènes (protéines de surface d'un virus, d'une bactérie) sont reconnus spécifiquement par les récepteurs immunitaires."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment les anticorps neutralisent-ils spécifiquement les agents pathogènes ciblés ?",
+              "options": [
+                "En se fixant sur leurs antigènes pour former des complexes immuns neutralisants",
+                "En les dissolvant par de l'acide pur",
+                "En leur envoyant des impulsions électriques",
+                "En les expulsant mécaniquement par la respiration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liaison spécifique anticorps-antigène neutralise le pouvoir infectieux du pathogène et facilite sa phagocytose."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur quelle propriété biologique repose l'efficacité protectrice de la vaccination préventive ?",
+              "options": [
+                "Sur la mémoire immunitaire des lymphocytes",
+                "Sur la destruction préventive de la peau",
+                "Sur l'arrêt complet de la mitose",
+                "Sur la baisse de la température corporelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vaccin induit la formation de lymphocytes B et T mémoire, réagissant de manière foudroyante lors d'une infection réelle ultérieure."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contre quel type d'agents infectieux les antibiotiques sont-ils exclusivement efficaces ?",
+              "options": [
+                "Les bactéries uniquement",
+                "Les virus comme celui de la grippe ou du rhume",
+                "Tous les vers parasites sans exception",
+                "Le froid de l'hiver"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les antibiotiques ciblent des mécanismes spécifiques aux bactéries : ils sont inefficaces contre les infections virales."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel virus détruit les lymphocytes T auxiliaires (CD4), provoquant le syndrome d'immunodéficience acquise (SIDA) ?",
+              "options": [
+                "Le VIH (Virus de l'Immunodéficience Humaine)",
+                "Le virus de la rage",
+                "Le virus de la rougeole",
+                "Le rotavirus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En détruisant les lymphocytes T coordonnateurs, le VIH affaiblit le système immunitaire face aux infections opportunistes."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Le microbiote humain",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que désigne précisément le terme de microbiote humain en biologie ?",
+              "options": [
+                "L'ensemble des micro-organismes (bactéries, virus, champignons) vivant sur et dans notre corps",
+                "La collection des médicaments prescrits à un patient",
+                "La couche de cellules mortes de la surface cutanée",
+                "La liste des gènes du squelette humain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le microbiote humain est composé de dizaines de milliers de milliards de micro-organismes vivant en symbiose avec nous."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel organe du corps abrite la communauté microbienne la plus abondante et la plus diverse ?",
+              "options": [
+                "Le gros intestin (côlon)",
+                "Le cœur",
+                "Le pancréas",
+                "Le cerveau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le microbiote intestinal héberge à lui seul près de 100 000 milliards de bactéries au niveau du côlon."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la relation biologique à bénéfice réciproque unissant l'humain à son microbiote ?",
+              "options": [
+                "Une symbiose mutualiste",
+                "Un parasitisme destructeur",
+                "Une prédation",
+                "Une élimination mutuelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'humain nourrit et héberge le microbiote, qui en retour aide à la digestion et participe aux défenses immunitaires."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels rôles majeurs le microbiote intestinal remplit-il au profit de l'organisme humain ?",
+              "options": [
+                "Il dégrade les fibres alimentaires non digestibles et synthétise des vitamines (K et B)",
+                "Il protège contre l'implantation de micro-organismes pathogènes par effet de barrière",
+                "Il assure la contraction mécanique des muscles du squelette",
+                "Il fabrique l'ensemble des globules rouges du sang"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le microbiote intestinal fermente les fibres végétales, synthétise des vitamines indispensables et empêche la colonisation par des pathogènes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À quel moment essentiel de la vie se produit la colonisation massive initiale du microbiote du nourrisson ?",
+              "options": [
+                "Lors de l'accouchement et du contact immédiat avec la mère et l'allaitement",
+                "À l'âge adulte uniquement",
+                "Par injection d'un vaccin obligatoire à la naissance",
+                "Au cours de la puberté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fœtus est stérile dans l'utérus ; le microbiote commence à s'implanter au contact de la flore maternelle lors de la naissance."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel terme médical désigne un déséquilibre qualitatif et quantitatif de la composition du microbiote ?",
+              "options": [
+                "Une dysbiose",
+                "Une mitose",
+                "Une osmose",
+                "Une hémostase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dysbiose correspond à une altération de l'équilibre du microbiote, associée à des troubles intestinaux ou métaboliques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle habitude alimentaire ou médicale contemporaine risque d'appauvrir dangereusement le microbiote intestinal ?",
+              "options": [
+                "Une alimentation pauvre en fibres végétales et l'usage abusif d'antibiotiques",
+                "Boire de l'eau potable régulièrement",
+                "Pratiquer une activité sportive modérée",
+                "Dormir 8 heures par nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le manque de fibres prive les bactéries de substrats, et les antibiotiques détruisent indistinctement pathogènes et bactéries bénéfiques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que sont les probiotiques que l'on peut trouver dans les yaourts ou certains compléments alimentaires ?",
+              "options": [
+                "Des micro-organismes vivants qui, ingérés en quantité adéquate, exercent un effet bénéfique sur la santé",
+                "Des molécules chimiques détruisant tout le tube digestif",
+                "Des hormones de synthèse pour grandir plus vite",
+                "Des cellules de peau déshydratées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les probiotiques sont des bactéries lactiques ou levures bénéfiques contribuant à renforcer ou restaurer la flore intestinale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que sont les prébiotiques dans l'alimentation quotidienne ?",
+              "options": [
+                "Des fibres alimentaires non digestibles qui nourrissent sélectivement les bactéries bénéfiques du microbiote",
+                "Des substances toxiques pour les bactéries",
+                "Des graisses animales saturées",
+                "Des virus génétiquement modifiés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les prébiotiques (présents dans l'ail, l'oignon, les poireaux) nourrissent préférentiellement les bactéries protectrices de l'intestin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi qualifie-t-on souvent l'intestin et son microbiote de « deuxième cerveau » ?",
+              "options": [
+                "En raison de communications permanentes bidirectionnelles par le nerf vague, des hormones et des métabolites (axe intestin-cerveau)",
+                "Parce que l'intestin réfléchit et résout des énigmes",
+                "Parce que le cerveau migre dans le ventre pendant la nuit",
+                "Parce que l'estomac possède des organes des sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le microbiote et le système nerveux entérique dialoguent étroitement avec le système nerveux central, influençant humeur et métabolisme."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Rythmes biologiques, effort physique et adaptation de l'organisme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que mesure le débit ventilatoire d'un individu en physiologie ?",
+              "options": [
+                "Le volume d'air renouvelé dans les poumons en une minute",
+                "La quantité totale de sang présente dans le corps",
+                "La vitesse des influx nerveux sensitifs",
+                "La température interne du foie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le débit ventilatoire (L/min) est le produit du volume courant inspiré par la fréquence respiratoire par minute."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que mesure le débit cardiaque lors du fonctionnement cardiovasculaire ?",
+              "options": [
+                "Le volume de sang éjecté par le cœur en une minute",
+                "La quantité d'urine fabriquée par heure",
+                "La pression de l'air dans la trachée",
+                "Le nombre de battements en une semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le débit cardiaque (L/min) est le produit de la fréquence cardiaque (bpm) par le volume de sang expulsé à chaque contraction."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment s'adaptent la fréquence cardiaque et la ventilation lors du passage du repos à l'effort physique ?",
+              "options": [
+                "Elles s'élèvent de façon coordonnée pour fournir plus de dioxygène et de glucose aux muscles",
+                "Elles diminuent fortement pour économiser l'énergie corporelle",
+                "Elles restent strictement inchangées",
+                "Le cœur s'arrête pendant que la respiration double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effort physique nécessite un débit sanguin et ventilatoire accru pour alimenter l'important métabolisme des muscles actifs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la VO2 max chez un athlète ?",
+              "options": [
+                "Le volume maximal de dioxygène qu'un organisme peut consommer par unité de temps lors d'un effort extrême",
+                "La vitesse maximale sur une course de sprint",
+                "La quantité d'eau totale bue pendant une épreuve",
+                "Le nombre de calories brûlées au repos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La VO2 max reflète la capacité maximale aérobie du système cardiorespiratoire et des muscles de l'individu."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles réactions physiologiques permettent d'évacuer la chaleur produite en excès par les muscles lors de l'effort ?",
+              "options": [
+                "La sécrétion et l'évaporation de la sueur (transpiration)",
+                "La vasodilatation des vaisseaux sanguins de la peau (rougeur cutanée)",
+                "Le frisson thermique intense",
+                "L'arrêt complet de la circulation superficielle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La dilatation des vaisseaux cutanés et l'évaporation de la sueur évacuent la chaleur pour empêcher l'hyperthermie corporelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment le débit sanguin est-il redistribué dans les organes pendant une course à pied ?",
+              "options": [
+                "Le sang est préférentiellement dérivé vers les muscles squelettiques actifs au détriment des viscères digestifs",
+                "Le sang afflue uniquement vers l'estomac et les intestins",
+                "Le sang quitte complètement le cerveau",
+                "Le sang s'accumule uniquement dans la rate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vasodilatation musculaire et la vasoconstriction viscérale réorientent jusqu'à 80 % du débit sanguin vers les muscles en action."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le rythme biologique circadien de l'être humain ?",
+              "options": [
+                "Une horloge interne régulant les paramètres physiologiques sur une période d'environ 24 heures",
+                "Un entraînement physique réalisé une fois par mois",
+                "Une maladie affectant le rythme des battements du cœur",
+                "La vitesse de digestion d'un repas gras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rythmes circadiens (cycle veille/sommeil, variations de température, cortisol) sont calés sur une alternance jour/nuit de 24h."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quels rôles essentiels le sommeil régulier remplit-il pour la santé et le développement des adolescents ?",
+              "options": [
+                "La récupération physique, la consolidation de la mémoire et la sécrétion de l'hormone de croissance",
+                "L'élimination définitive de tout besoin en eau",
+                "La destruction des cellules cérébrales superflues",
+                "L'arrêt définitif des battements cardiaques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sommeil est indispensable à la maturation cérébrale, à l'apprentissage, à la croissance et aux défenses immunitaires."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quels sont les bénéfices prouvés d'une pratique sportive régulière sur la santé à long terme ?",
+              "options": [
+                "Renforcement du muscle cardiaque, amélioration du moral et prévention des maladies métaboliques",
+                "Dégradation accélérée des capacités pulmonaires",
+                "Perte irréversible de la mémoire",
+                "Fragilisation globale du système immunitaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'exercice régulier diminue le risque d'obésité, d'hypertension et de diabète de type 2 tout en favorisant le bien-être psychologique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la pratique du dopage (EPO, stéroïdes anabolisants) présente-t-elle un danger mortel pour les sportifs ?",
+              "options": [
+                "Elle perturbe gravement les équilibres physiologiques et multiplie les risques d'infarctus, d'AVC et de défaillances d'organes",
+                "Parce qu'elle empêche les muscles de se contracter",
+                "Parce qu'elle transforme les os en cartilage mou",
+                "Parce qu'elle dissout le caryotype des cellules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dopage entraîne de lourdes séquelles cardiovasculaires, hépatiques, rénales et hormonales pouvant provoquer la mort subite."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

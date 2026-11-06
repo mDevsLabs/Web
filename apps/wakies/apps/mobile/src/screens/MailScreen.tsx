@@ -71,7 +71,7 @@ export function MailScreen() {
     return () => {
       active = false;
     };
-  }, [api, w]);
+  }, [api]);
 
   const items = w.mail.filter(
     (m) =>

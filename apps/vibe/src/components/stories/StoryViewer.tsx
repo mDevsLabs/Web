@@ -361,10 +361,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
 
         {/* Stickers avec support badges */}
         {courant.story.stickers.map((sticker, index) => {
-          const estBadge =
-            /[a-zA-Z0-9]/.test(sticker.emoji) ||
-            sticker.emoji.startsWith("") ||
-            sticker.emoji.startsWith("");
+          const estBadge = /[a-zA-Z0-9]/.test(sticker.emoji);
           return (
             <span
               className={`pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 ${

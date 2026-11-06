@@ -914,7 +914,7 @@ function formatNumber(n: number): string {
 
 export const calculator = tool({
   description:
-    "Effectuer des calculs mathématiques précis (arithmétique, fonctions trigonométriques, logarithmes, puissances, racines, factorielles via max/min, etc.) OU convertir des unités entre systèmes (longueur, masse, température, temps, volume, données, énergie, pression, vitesse, surface, angle). Supporte les constantes pi, e, tau, phi.",
+    "Effectuer des calculs mathématiques précis : arithmétique, pourcentages (X % de Y, ajout d'un pourcentage, variation entre deux valeurs — operation='percentage', ne jamais calculer un pourcentage de tête), trigonométrie, logarithmes, puissances et racines, OU convertir des unités (longueur, masse, température, temps, volume, données, énergie, pression, vitesse, surface, angle). Supporte les constantes pi, e, tau, phi.",
   execute: async (input) => {
     if (
       input.operation === "convert" &&

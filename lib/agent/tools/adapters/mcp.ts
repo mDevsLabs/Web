@@ -16,6 +16,12 @@ import {
   validateMcpConfig,
 } from "@/lib/mcp/client";
 import { assertMcpRuntimeEnabled } from "@/lib/mcp/policy";
+import {
+  allocateMcpProviderToolIds,
+  mcpModelDescription,
+  mcpProviderToolId,
+  mcpToolBindingKey,
+} from "@/lib/mcp/provider-tool-id";
 import { redactMcpText } from "@/lib/mcp/redaction";
 import {
   loadMcpSecretDescriptors,
@@ -39,17 +45,10 @@ import type {
 // retirer au prochain point sûr (signature de sélection).
 
 export function mcpAgentToolId(params: {
-  serverName: string;
+  serverId: string;
   toolName: string;
 }): string {
-  const safeServerName = redactMcpText(params.serverName, 120)
-    .replace(/[^a-zA-Z0-9]/g, "_")
-    .toLowerCase();
-  const safeToolName = redactMcpText(params.toolName, 160).replace(
-    /[^a-zA-Z0-9_-]/g,
-    "_"
-  );
-  return `mcp_${safeServerName}_${safeToolName}`;
+  return mcpProviderToolId(params);
 }
 
 function boundedMcpResult(result: McpToolCallResult): unknown {
@@ -66,6 +65,7 @@ function boundedMcpResult(result: McpToolCallResult): unknown {
 }
 
 export async function buildMcpAgentTools(params: {
+  providerToolIds?: ReadonlyMap<string, string>;
   server: McpServer;
   userId: string;
 }): Promise<RegisteredAgentTool[]> {
@@ -136,10 +136,14 @@ export async function buildMcpAgentTools(params: {
 
   const tools: RegisteredAgentTool[] = [];
   for (const cached of cachedTools) {
-    const toolId = mcpAgentToolId({
-      serverName: params.server.name,
-      toolName: cached.name,
-    });
+    const toolId =
+      params.providerToolIds?.get(
+        mcpToolBindingKey(params.server.id, cached.name)
+      ) ??
+      mcpAgentToolId({
+        serverId: params.server.id,
+        toolName: cached.name,
+      });
     const summary = `[MCP · ${redactMcpText(params.server.name, 120)}] ${redactMcpText(cached.name, 160)}`;
     const actionType = classifyToolAction(cached.name, cached.description);
     const policy = resolveRequireApproval(serverConfig, cached.name);
@@ -155,9 +159,11 @@ export async function buildMcpAgentTools(params: {
         tiers: "all",
       },
       category: "mcp",
-      description:
-        (cached.description && redactMcpText(cached.description, 500)) ||
-        summary,
+      description: mcpModelDescription({
+        description: cached.description,
+        serverName: params.server.name,
+        toolName: cached.name,
+      }),
       execute: async (input) => {
         try {
           const result = await callMcpTool(
@@ -213,6 +219,27 @@ export async function buildMcpAgentTools(params: {
   return tools;
 }
 
+function indexMcpProviderToolIds(
+  servers: readonly McpServer[]
+): Map<string, string> {
+  const entries = servers.flatMap((server) => {
+    if (!server.isEnabled) {
+      return [];
+    }
+    return getFilteredTools(mcpServerToConfig(server)).map((cached) => ({
+      serverId: server.id,
+      serverName: server.name,
+      toolName: cached.name,
+    }));
+  });
+  return new Map(
+    allocateMcpProviderToolIds(entries).map((binding) => [
+      mcpToolBindingKey(binding.serverId, binding.toolName),
+      binding.providerToolId,
+    ])
+  );
+}
+
 // Outils MCP d'un utilisateur : serveurs activés, outils en cache découverts.
 // Une erreur de lecture ne bloque jamais le run : le pool reste utilisable.
 export async function listMcpAgentTools(params: {
@@ -236,9 +263,14 @@ export async function listMcpAgentTools(params: {
     return [];
   }
 
+  const providerToolIds = indexMcpProviderToolIds(servers);
   const results = await Promise.all(
     servers.map((server) =>
-      buildMcpAgentTools({ server, userId: params.userId }).catch(() => [])
+      buildMcpAgentTools({
+        providerToolIds,
+        server,
+        userId: params.userId,
+      }).catch(() => [])
     )
   );
   return results.flat();

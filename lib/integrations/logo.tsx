@@ -15,7 +15,7 @@ import {
  *
  * Deux renduS, parce que deux natures de marque :
  *
- *  - `monochrome: false` (Google, Slack, Discord, Docs) : `<img>` nu, en
+ *  - `monochrome: false` (Discord) : `<img>` nu, en
  *    couleurs de marque. Surtout pas le `dark:invert` des logos MCP : inverser
  *    un logo multicolore détruit ses couleurs.
  *  - `monochrome: true` (GitHub, Notion) : le repère officiel n'existe qu'en

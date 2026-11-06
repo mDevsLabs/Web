@@ -1,0 +1,1728 @@
+{
+  "id": "5e-mathematiques-04",
+  "year": "5e",
+  "subject": "mathematiques",
+  "title": "Nombres et calculs",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Priorités et fractions",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 7 ?",
+              "options": ["3 + 4", "10 − 3", "2 × 4", "15 − 9"],
+              "correctAnswers": [0, 1],
+              "explanation": "3 + 4 = 7 et 10 − 3 = 7. Or 2 × 4 = 8 et 15 − 9 = 6."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : 8 + 3 × 2",
+              "options": ["22", "14", "16", "11"],
+              "correctAnswers": [1],
+              "explanation": "3 × 2 = 6, puis 8 + 6 = 14."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule : (5 + 3) × 2",
+              "options": ["11", "13", "16", "10"],
+              "correctAnswers": [2],
+              "explanation": "5 + 3 = 8, puis 8 × 2 = 16."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calcule : −3 + 5",
+              "options": ["−8", "2", "−2", "8"],
+              "correctAnswers": [1],
+              "explanation": "−3 + 5 = 2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calcule : 1/4 + 2/4",
+              "options": ["3/8", "2/4", "3/4", "1/2"],
+              "correctAnswers": [2],
+              "explanation": "1/4 + 2/4 = 3/4."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de 3/4 de 20 ?",
+              "options": ["12", "15", "10", "16"],
+              "correctAnswers": [1],
+              "explanation": "20 ÷ 4 = 5 ; 3 × 5 = 15."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : 20 − 4 × 3",
+              "options": ["48", "8", "12", "16"],
+              "correctAnswers": [1],
+              "explanation": "4 × 3 = 12, puis 20 − 12 = 8."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcule : 7/10 − 2/10",
+              "options": ["5/20", "9/10", "5/10", "3/10"],
+              "correctAnswers": [2],
+              "explanation": "7/10 − 2/10 = 5/10 = 1/2."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule : −2 + (−4)",
+              "options": ["6", "−6", "2", "−2"],
+              "correctAnswers": [1],
+              "explanation": "−2 + (−4) = −6."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calcule : 36 ÷ (2 + 4)",
+              "options": ["18", "12", "6", "9"],
+              "correctAnswers": [2],
+              "explanation": "2 + 4 = 6, puis 36 ÷ 6 = 6."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 12 ?",
+              "options": ["4 × 3", "15 − 3", "6 + 5", "8 + 2"],
+              "correctAnswers": [0, 1],
+              "explanation": "4 × 3 = 12 et 15 − 3 = 12. Or 6 + 5 = 11 et 8 + 2 = 10."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : 5 + 6 ÷ 2",
+              "options": ["5,5", "8", "11", "7"],
+              "correctAnswers": [1],
+              "explanation": "6 ÷ 2 = 3, puis 5 + 3 = 8."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule : −5 + 8",
+              "options": ["−13", "3", "−3", "13"],
+              "correctAnswers": [1],
+              "explanation": "−5 + 8 = 3."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calcule : 2/5 + 1/5",
+              "options": ["3/10", "1/5", "3/5", "2/5"],
+              "correctAnswers": [2],
+              "explanation": "2/5 + 1/5 = 3/5."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de 2/3 de 18 ?",
+              "options": ["6", "9", "12", "15"],
+              "correctAnswers": [2],
+              "explanation": "18 ÷ 3 = 6 ; 2 × 6 = 12."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calcule : (12 − 4) ÷ 2",
+              "options": ["2", "4", "8", "6"],
+              "correctAnswers": [1],
+              "explanation": "12 − 4 = 8, puis 8 ÷ 2 = 4."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : 1 − 4/4",
+              "options": ["0", "1/4", "−3/4", "3/4"],
+              "correctAnswers": [0],
+              "explanation": "4/4 = 1, donc 1 − 1 = 0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcule : 4 + (−7)",
+              "options": ["11", "−11", "3", "−3"],
+              "correctAnswers": [3],
+              "explanation": "4 − 7 = −3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule : 50 − 5 × 6",
+              "options": ["270", "20", "30", "45"],
+              "correctAnswers": [1],
+              "explanation": "5 × 6 = 30, puis 50 − 30 = 20."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calcule : 3/8 + 2/8",
+              "options": ["5/16", "1/8", "5/8", "6/8"],
+              "correctAnswers": [2],
+              "explanation": "3/8 + 2/8 = 5/8."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 10 ?",
+              "options": ["2 × 5", "12 + 8", "20 − 10", "15 − 4"],
+              "correctAnswers": [0, 2],
+              "explanation": "2 × 5 = 10 et 20 − 10 = 10. Or 12 + 8 = 20 et 15 − 4 = 11."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : 9 − 2 × 3",
+              "options": ["21", "3", "15", "5"],
+              "correctAnswers": [1],
+              "explanation": "2 × 3 = 6, puis 9 − 6 = 3."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule : −1 + (−6)",
+              "options": ["7", "−7", "5", "−5"],
+              "correctAnswers": [1],
+              "explanation": "−1 + (−6) = −7."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de 1/2 de 24 ?",
+              "options": ["8", "12", "6", "16"],
+              "correctAnswers": [1],
+              "explanation": "24 ÷ 2 = 12."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calcule : 4/7 + 2/7",
+              "options": ["6/14", "2/7", "6/7", "8/7"],
+              "correctAnswers": [2],
+              "explanation": "4/7 + 2/7 = 6/7."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calcule : (3 + 7) × 4",
+              "options": ["19", "40", "31", "28"],
+              "correctAnswers": [1],
+              "explanation": "10 × 4 = 40."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : 6 − (−2)",
+              "options": ["4", "8", "−8", "−4"],
+              "correctAnswers": [1],
+              "explanation": "6 + 2 = 8."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcule : 5/6 − 1/6",
+              "options": ["4/12", "4/6", "2/3", "1/3"],
+              "correctAnswers": [2],
+              "explanation": "5/6 − 1/6 = 4/6 = 2/3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule : 100 ÷ 5 + 3",
+              "options": ["23", "20", "103", "17"],
+              "correctAnswers": [0],
+              "explanation": "100 ÷ 5 = 20, puis 20 + 3 = 23."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de 3/5 de 25 ?",
+              "options": ["10", "20", "15", "5"],
+              "correctAnswers": [2],
+              "explanation": "25 ÷ 5 = 5 ; 3 × 5 = 15."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 6 ?",
+              "options": ["18 ÷ 3", "9 − 3", "2 × 4", "14 − 9"],
+              "correctAnswers": [0, 1],
+              "explanation": "18 ÷ 3 = 6 et 9 − 3 = 6. Or 2 × 4 = 8 et 14 − 9 = 5."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : 2 + 8 ÷ 4",
+              "options": ["2,5", "4", "10", "3"],
+              "correctAnswers": [1],
+              "explanation": "8 ÷ 4 = 2, puis 2 + 2 = 4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule : −4 + 9",
+              "options": ["5", "−5", "13", "−13"],
+              "correctAnswers": [0],
+              "explanation": "−4 + 9 = 5."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calcule : 1/3 + 1/3",
+              "options": ["2/9", "1/3", "2/3", "1/6"],
+              "correctAnswers": [2],
+              "explanation": "1/3 + 1/3 = 2/3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calcule : 15 × 2 − 10",
+              "options": ["20", "40", "25", "30"],
+              "correctAnswers": [0],
+              "explanation": "30 − 10 = 20."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de 1/4 de 32 ?",
+              "options": ["4", "16", "8", "12"],
+              "correctAnswers": [2],
+              "explanation": "32 ÷ 4 = 8."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : 9/11 − 4/11",
+              "options": ["5/22", "13/11", "5/11", "4/11"],
+              "correctAnswers": [2],
+              "explanation": "9/11 − 4/11 = 5/11."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcule : 0 − 5",
+              "options": ["5", "−5", "0", "−10"],
+              "correctAnswers": [1],
+              "explanation": "0 − 5 = −5."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule : (20 − 8) ÷ 3",
+              "options": ["4", "12", "6", "8"],
+              "correctAnswers": [0],
+              "explanation": "12 ÷ 3 = 4."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calcule : 2/9 + 5/9",
+              "options": ["7/18", "7/9", "3/9", "10/9"],
+              "correctAnswers": [1],
+              "explanation": "2/9 + 5/9 = 7/9."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 15 ?",
+              "options": ["5 × 3", "20 − 5", "10 + 4", "30 ÷ 3"],
+              "correctAnswers": [0, 1],
+              "explanation": "5 × 3 = 15 et 20 − 5 = 15. Or 10 + 4 = 14 et 30 ÷ 3 = 10."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : 7 × 3 − 6",
+              "options": ["15", "27", "9", "21"],
+              "correctAnswers": [0],
+              "explanation": "21 − 6 = 15."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule : −6 + 10",
+              "options": ["16", "4", "−4", "−16"],
+              "correctAnswers": [1],
+              "explanation": "−6 + 10 = 4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de 3/4 de 16 ?",
+              "options": ["4", "8", "12", "6"],
+              "correctAnswers": [2],
+              "explanation": "16 ÷ 4 = 4 ; 3 × 4 = 12."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calcule : 5/12 + 4/12",
+              "options": ["9/24", "1/12", "9/12", "3/4"],
+              "correctAnswers": [3],
+              "explanation": "9/12 = 3/4."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calcule : 48 ÷ (6 + 2)",
+              "options": ["8", "6", "4", "12"],
+              "correctAnswers": [1],
+              "explanation": "48 ÷ 8 = 6."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : 3 + (−8)",
+              "options": ["11", "−5", "5", "−11"],
+              "correctAnswers": [1],
+              "explanation": "3 − 8 = −5."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcule : 11/15 − 6/15",
+              "options": ["5/30", "17/15", "1/3", "5/15"],
+              "correctAnswers": [2],
+              "explanation": "5/15 = 1/3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule : 4 × (5 + 1)",
+              "options": ["20", "24", "9", "25"],
+              "correctAnswers": [1],
+              "explanation": "4 × 6 = 24."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calcule : 7/8 − 3/8",
+              "options": ["4/16", "1/2", "4/8", "10/8"],
+              "correctAnswers": [1],
+              "explanation": "4/8 = 1/2."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 9 ?",
+              "options": ["3 × 3", "18 ÷ 2", "12 − 4", "5 + 3"],
+              "correctAnswers": [0, 1],
+              "explanation": "3 × 3 = 9 et 18 ÷ 2 = 9. Or 12 − 4 = 8 et 5 + 3 = 8."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : 16 ÷ 4 + 5",
+              "options": ["9", "4", "21", "6"],
+              "correctAnswers": [0],
+              "explanation": "4 + 5 = 9."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule : −7 + 3",
+              "options": ["10", "−10", "−4", "4"],
+              "correctAnswers": [2],
+              "explanation": "−7 + 3 = −4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calcule : 2/5 + 2/5",
+              "options": ["4/10", "4/5", "2/5", "1/5"],
+              "correctAnswers": [1],
+              "explanation": "2/5 + 2/5 = 4/5."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de 2/5 de 30 ?",
+              "options": ["6", "10", "12", "15"],
+              "correctAnswers": [2],
+              "explanation": "30 ÷ 5 = 6 ; 2 × 6 = 12."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calcule : 25 − 3 × 5",
+              "options": ["110", "10", "20", "15"],
+              "correctAnswers": [1],
+              "explanation": "25 − 15 = 10."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : (14 − 6) × 2",
+              "options": ["12", "16", "20", "8"],
+              "correctAnswers": [1],
+              "explanation": "8 × 2 = 16."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcule : 1/6 + 4/6",
+              "options": ["5/12", "5/6", "1/2", "4/6"],
+              "correctAnswers": [1],
+              "explanation": "1/6 + 4/6 = 5/6."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule : −3 + (−2)",
+              "options": ["−1", "5", "1", "−5"],
+              "correctAnswers": [3],
+              "explanation": "−3 + (−2) = −5."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calcule : 60 ÷ (10 − 7)",
+              "options": ["15", "20", "30", "10"],
+              "correctAnswers": [1],
+              "explanation": "60 ÷ 3 = 20."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 4 ?",
+              "options": ["8 ÷ 2", "6 − 2", "1 × 5", "9 − 6"],
+              "correctAnswers": [0, 1],
+              "explanation": "8 ÷ 2 = 4 et 6 − 2 = 4. Or 1 × 5 = 5 et 9 − 6 = 3."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : 10 + 6 ÷ 3",
+              "options": ["16", "12", "5,33", "8"],
+              "correctAnswers": [1],
+              "explanation": "10 + 2 = 12."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule : 5 − (−3)",
+              "options": ["2", "8", "−8", "−2"],
+              "correctAnswers": [1],
+              "explanation": "5 + 3 = 8."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de 1/3 de 21 ?",
+              "options": ["3", "14", "7", "9"],
+              "correctAnswers": [2],
+              "explanation": "21 ÷ 3 = 7."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calcule : 3/10 + 2/10",
+              "options": ["5/20", "1/2", "5/10", "1/5"],
+              "correctAnswers": [1],
+              "explanation": "5/10 = 1/2."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calcule : 3 × 4 + 2 × 4",
+              "options": ["24", "20", "14", "28"],
+              "correctAnswers": [1],
+              "explanation": "12 + 8 = 20."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : 8/9 − 5/9",
+              "options": ["3/18", "1/3", "13/9", "3/9"],
+              "correctAnswers": [1],
+              "explanation": "3/9 = 1/3."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcule : −2 + 7",
+              "options": ["9", "5", "−5", "−9"],
+              "correctAnswers": [1],
+              "explanation": "−2 + 7 = 5."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule : (9 + 3) ÷ 4",
+              "options": ["3", "4", "2", "5"],
+              "correctAnswers": [0],
+              "explanation": "12 ÷ 4 = 3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de 4/5 de 35 ?",
+              "options": ["20", "28", "7", "14"],
+              "correctAnswers": [1],
+              "explanation": "35 ÷ 5 = 7 ; 4 × 7 = 28."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 20 ?",
+              "options": ["4 × 5", "25 − 5", "10 + 8", "40 ÷ 3"],
+              "correctAnswers": [0, 1],
+              "explanation": "4 × 5 = 20 et 25 − 5 = 20. Or 10 + 8 = 18 et 40 ÷ 3 n'est pas entier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : 18 − 6 ÷ 2",
+              "options": ["6", "15", "12", "9"],
+              "correctAnswers": [1],
+              "explanation": "18 − 3 = 15."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule : −8 + 12",
+              "options": ["20", "4", "−4", "−20"],
+              "correctAnswers": [1],
+              "explanation": "−8 + 12 = 4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calcule : 6/13 + 4/13",
+              "options": ["10/26", "2/13", "10/13", "4/13"],
+              "correctAnswers": [2],
+              "explanation": "6/13 + 4/13 = 10/13."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calcule : 2 × (7 + 3)",
+              "options": ["17", "20", "13", "23"],
+              "correctAnswers": [1],
+              "explanation": "2 × 10 = 20."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de 3/8 de 40 ?",
+              "options": ["5", "12", "15", "20"],
+              "correctAnswers": [2],
+              "explanation": "40 ÷ 8 = 5 ; 3 × 5 = 15."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : 14/15 − 9/15",
+              "options": ["5/30", "1/3", "23/15", "5/15"],
+              "correctAnswers": [1],
+              "explanation": "5/15 = 1/3."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcule : 1 − 7/7",
+              "options": ["1/7", "0", "7", "−1"],
+              "correctAnswers": [1],
+              "explanation": "1 − 1 = 0."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule : 45 ÷ 9 + 6",
+              "options": ["11", "15", "9", "5"],
+              "correctAnswers": [0],
+              "explanation": "5 + 6 = 11."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calcule : −1 + (−9)",
+              "options": ["8", "10", "−10", "−8"],
+              "correctAnswers": [2],
+              "explanation": "−1 + (−9) = −10."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 18 ?",
+              "options": ["6 × 3", "20 − 2", "9 + 8", "36 ÷ 3"],
+              "correctAnswers": [0, 1],
+              "explanation": "6 × 3 = 18 et 20 − 2 = 18. Or 9 + 8 = 17 et 36 ÷ 3 = 12."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : 5 × 2 + 8",
+              "options": ["30", "18", "20", "16"],
+              "correctAnswers": [1],
+              "explanation": "10 + 8 = 18."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule : 2 − (−6)",
+              "options": ["8", "−4", "4", "−8"],
+              "correctAnswers": [0],
+              "explanation": "2 + 6 = 8."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calcule : 1/4 + 3/4",
+              "options": ["4/8", "1", "4/4", "2/4"],
+              "correctAnswers": [1],
+              "explanation": "4/4 = 1."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de 5/6 de 24 ?",
+              "options": ["4", "20", "15", "10"],
+              "correctAnswers": [1],
+              "explanation": "24 ÷ 6 = 4 ; 5 × 4 = 20."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calcule : 72 ÷ (8 + 4)",
+              "options": ["9", "6", "8", "12"],
+              "correctAnswers": [1],
+              "explanation": "72 ÷ 12 = 6."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : 4/5 − 1/5",
+              "options": ["3/10", "3/5", "1/5", "5/5"],
+              "correctAnswers": [1],
+              "explanation": "4/5 − 1/5 = 3/5."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcule : 30 − 4 × 5",
+              "options": ["10", "130", "50", "25"],
+              "correctAnswers": [0],
+              "explanation": "30 − 20 = 10."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule : (16 − 4) ÷ 4",
+              "options": ["4", "3", "2", "5"],
+              "correctAnswers": [1],
+              "explanation": "12 ÷ 4 = 3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calcule : −5 + 1",
+              "options": ["6", "−6", "−4", "4"],
+              "correctAnswers": [2],
+              "explanation": "−5 + 1 = −4."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 24 ?",
+              "options": ["8 × 3", "30 − 6", "12 + 10", "48 ÷ 3"],
+              "correctAnswers": [0, 1],
+              "explanation": "8 × 3 = 24 et 30 − 6 = 24. Or 12 + 10 = 22 et 48 ÷ 3 = 16."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : 12 + 8 ÷ 2",
+              "options": ["10", "16", "20", "14"],
+              "correctAnswers": [1],
+              "explanation": "12 + 4 = 16."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule : 1/2 + 1/2",
+              "options": ["2/4", "1", "1/4", "2/2"],
+              "correctAnswers": [1],
+              "explanation": "2/2 = 1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de 1/5 de 45 ?",
+              "options": ["5", "9", "15", "7"],
+              "correctAnswers": [1],
+              "explanation": "45 ÷ 5 = 9."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calcule : −9 + 15",
+              "options": ["24", "6", "−6", "−24"],
+              "correctAnswers": [1],
+              "explanation": "−9 + 15 = 6."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calcule : 5/8 + 1/8",
+              "options": ["6/16", "3/4", "6/8", "1/2"],
+              "correctAnswers": [1],
+              "explanation": "6/8 = 3/4."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : 6 × 5 − 4 × 5",
+              "options": ["10", "50", "20", "30"],
+              "correctAnswers": [0],
+              "explanation": "30 − 20 = 10."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcule : (25 − 5) ÷ 5",
+              "options": ["5", "4", "3", "6"],
+              "correctAnswers": [1],
+              "explanation": "20 ÷ 5 = 4."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule : 10/11 − 3/11",
+              "options": ["7/22", "13/11", "7/11", "3/11"],
+              "correctAnswers": [2],
+              "explanation": "10/11 − 3/11 = 7/11."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de 2/3 de 27 ?",
+              "options": ["9", "16", "18", "12"],
+              "correctAnswers": [2],
+              "explanation": "27 ÷ 3 = 9 ; 2 × 9 = 18."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Problèmes numériques",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "48 crayons sont partagés également entre 4 tables. Quels calculs donnent le nombre de crayons par table ?",
+              "options": ["48 ÷ 4", "4 × 12", "48 − 4", "48 + 4"],
+              "correctAnswers": [0, 1],
+              "explanation": "48 ÷ 4 = 12 crayons par table. Comme 4 × 12 = 48, 12 est bien la part de chaque table."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Noé achète 3 carnets à 4 € et 2 gommes à 1,50 €. Combien paie-t-il ?",
+              "options": ["12 €", "15 €", "14 €", "16 €"],
+              "correctAnswers": [1],
+              "explanation": "3 × 4 = 12 € et 2 × 1,50 = 3 € ; total 15 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un train part à 8 h pour un trajet de 2 h 30. À quelle heure arrive-t-il ?",
+              "options": ["10 h", "10 h 30", "11 h", "9 h 30"],
+              "correctAnswers": [1],
+              "explanation": "8 h + 2 h 30 = 10 h 30."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Zoé a 35 €. Elle achète un livre à 12 € et un jeu à 18 €. Combien lui reste-t-il ?",
+              "options": ["5 €", "7 €", "3 €", "65 €"],
+              "correctAnswers": [0],
+              "explanation": "12 + 18 = 30 € ; 35 − 30 = 5 €."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une recette pour 4 personnes utilise 600 g de farine. Pour 2 personnes, quelle quantité ?",
+              "options": ["150 g", "300 g", "400 g", "200 g"],
+              "correctAnswers": [1],
+              "explanation": "600 ÷ 2 = 300 g."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un parking a 120 places. 45 sont prises le matin et 30 de plus l'après-midi. Combien de places libres ?",
+              "options": ["75", "45", "105", "90"],
+              "correctAnswers": [1],
+              "explanation": "45 + 30 = 75 occupées ; 120 − 75 = 45 libres."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'équipe marque 14 points puis 9 points. Total ?",
+              "options": ["5", "23", "126", "32"],
+              "correctAnswers": [1],
+              "explanation": "14 + 9 = 23."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Maya économise 5 € par semaine pendant 6 semaines. Combien a-t-elle ?",
+              "options": ["11 €", "25 €", "30 €", "35 €"],
+              "correctAnswers": [2],
+              "explanation": "6 × 5 = 30 €."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "8 boîtes de 6 biscuits chacune. Combien de biscuits ?",
+              "options": ["14", "42", "48", "56"],
+              "correctAnswers": [2],
+              "explanation": "8 × 6 = 48."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La bibliothèque prête 27 livres lundi et 18 mardi. Total sur deux jours ?",
+              "options": ["9", "35", "45", "486"],
+              "correctAnswers": [2],
+              "explanation": "27 + 18 = 45."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Paul a 60 flyers. Il en a collé 25 puis 15. Quels calculs donnent le nombre qu'il lui reste à coller ?",
+              "options": [
+                "60 − 25 − 15",
+                "60 − (25 + 15)",
+                "25 + 15",
+                "60 ÷ 2"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "60 − 25 − 15 = 20 et 60 − (25 + 15) = 20 flyers restants."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un vélo parcourt 15 km puis 10 km. Distance totale ?",
+              "options": ["5 km", "25 km", "150 km", "20 km"],
+              "correctAnswers": [1],
+              "explanation": "15 + 10 = 25 km."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "24 chocolats dans une boîte. 3/8 sont au lait. Combien au lait ?",
+              "options": ["3", "6", "9", "12"],
+              "correctAnswers": [2],
+              "explanation": "24 ÷ 8 = 3 ; 3 × 3 = 9."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "4 stylos à 1,25 € l'unité. Prix total ?",
+              "options": ["4,25 €", "5 €", "6 €", "4,50 €"],
+              "correctAnswers": [1],
+              "explanation": "4 × 1,25 = 5 €."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "52 cartes ; on en retire 19 puis 8. Combien restent-elles ?",
+              "options": ["25", "33", "43", "79"],
+              "correctAnswers": [0],
+              "explanation": "52 − 19 − 8 = 25."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "90 m² pour 6 tables identiques. Surface par table ?",
+              "options": ["9 m²", "15 m²", "12 m²", "18 m²"],
+              "correctAnswers": [1],
+              "explanation": "90 ÷ 6 = 15 m²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "−2 °C le matin, hausse de 5 °C. Température l'après-midi ?",
+              "options": ["−7 °C", "3 °C", "7 °C", "−3 °C"],
+              "correctAnswers": [1],
+              "explanation": "−2 + 5 = 3 °C."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "5 paquets de 8 biscuits. Total ?",
+              "options": ["13", "35", "40", "45"],
+              "correctAnswers": [2],
+              "explanation": "5 × 8 = 40."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réservoir 50 L avec 18 L, on ajoute 12 L. Combien manque-t-il pour le remplir ?",
+              "options": ["20 L", "30 L", "44 L", "80 L"],
+              "correctAnswers": [0],
+              "explanation": "18 + 12 = 30 L ; 50 − 30 = 20 L."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "36 € partagés entre 3 amis. Part de chacun ?",
+              "options": ["9 €", "12 €", "18 €", "33 €"],
+              "correctAnswers": [1],
+              "explanation": "36 ÷ 3 = 12 €."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "30 livres sur une étagère ; 1/3 sont des BD. Quels calculs donnent le nombre de BD ?",
+              "options": ["30 ÷ 3", "30 × 1/3", "30 ÷ 5", "30 − 10"],
+              "correctAnswers": [0, 1],
+              "explanation": "1/3 de 30 : 30 ÷ 3 = 10 BD (ou 30 × 1/3 = 10)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "42 élèves dans le bus ; 15 descendent puis 8. Combien restent-ils ?",
+              "options": ["19", "27", "35", "65"],
+              "correctAnswers": [0],
+              "explanation": "42 − 15 − 8 = 19."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "4 rangées de 7 tulipes. Combien de tulipes ?",
+              "options": ["11", "28", "21", "32"],
+              "correctAnswers": [1],
+              "explanation": "4 × 7 = 28."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Léa a 20 €. Elle achète 3 bouteilles à 2 € et des fruits pour 12 €. Reste ?",
+              "options": ["2 €", "6 €", "10 €", "14 €"],
+              "correctAnswers": [0],
+              "explanation": "3 × 2 = 6 € ; 6 + 12 = 18 € ; 20 − 18 = 2 €."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Film de 95 min commençant à 14 h 10. Heure de fin ?",
+              "options": ["15 h 35", "15 h 45", "16 h 05", "15 h 55"],
+              "correctAnswers": [1],
+              "explanation": "95 min = 1 h 35 ; 14 h 10 + 1 h 35 = 15 h 45."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "80 € pour des cadeaux à 15 € chacun. Nombre maximum achetable ?",
+              "options": ["4", "5", "6", "7"],
+              "correctAnswers": [1],
+              "explanation": "80 ÷ 15 = 5 reste 5 ; 5 cadeaux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Score −3 puis gain de 7 points. Score final ?",
+              "options": ["10", "4", "−10", "−4"],
+              "correctAnswers": [1],
+              "explanation": "−3 + 7 = 4."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "On mélange 1/4 L et 2/4 L de jus. Volume total ?",
+              "options": ["3/8 L", "1/2 L", "3/4 L", "2/4 L"],
+              "correctAnswers": [2],
+              "explanation": "1/4 + 2/4 = 3/4 L."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "250 pièces par jour pendant 4 jours. Production totale ?",
+              "options": ["254", "1000", "750", "500"],
+              "correctAnswers": [1],
+              "explanation": "250 × 4 = 1000."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Randonnée 100 km : 38 km le matin, 27 km l'après-midi. Reste à parcourir ?",
+              "options": ["65", "35", "45", "73"],
+              "correctAnswers": [1],
+              "explanation": "38 + 27 = 65 ; 100 − 65 = 35 km."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "56 pommes réparties entre 8 enfants. Quels calculs donnent la part de chaque enfant ?",
+              "options": ["56 ÷ 8", "8 × 7", "56 − 8", "56 + 8"],
+              "correctAnswers": [0, 1],
+              "explanation": "56 ÷ 8 = 7 pommes. Comme 8 × 7 = 56, chaque enfant reçoit 7 pommes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un magasin vend 6 T-shirts à 9 € et 2 casquettes à 12 €. Total ?",
+              "options": ["66 €", "78 €", "84 €", "54 €"],
+              "correctAnswers": [1],
+              "explanation": "6 × 9 = 54 € ; 2 × 12 = 24 € ; 54 + 24 = 78 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un aquarium contient 45 poissons. On en ajoute 18 puis on en retire 10. Combien à la fin ?",
+              "options": ["53", "43", "63", "73"],
+              "correctAnswers": [0],
+              "explanation": "45 + 18 = 63 ; 63 − 10 = 53."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une corde de 2/5 m est coupée. On enlève 1/5 m. Longueur restante ?",
+              "options": ["3/10 m", "1/5 m", "3/5 m", "1/10 m"],
+              "correctAnswers": [1],
+              "explanation": "2/5 − 1/5 = 1/5 m."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le stade accueille 3 200 spectateurs par tribune et 4 tribunes sont pleines. Capacité utilisée ?",
+              "options": ["3 204", "12 800", "9 600", "6 400"],
+              "correctAnswers": [1],
+              "explanation": "3 200 × 4 = 12 800 spectateurs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ahmed marche 2 km, prend le bus pour 7 km, puis marche 1 km. Distance totale ?",
+              "options": ["8 km", "10 km", "9 km", "11 km"],
+              "correctAnswers": [1],
+              "explanation": "2 + 7 + 1 = 10 km."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un sac contient 72 bonbons. On en mange 1/4 le matin. Combien restent-ils ?",
+              "options": ["18", "54", "48", "36"],
+              "correctAnswers": [1],
+              "explanation": "72 ÷ 4 = 18 mangés ; 72 − 18 = 54."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La classe commande 25 cahiers à 2,40 €. Montant total ?",
+              "options": ["50 €", "60 €", "55 €", "52,40 €"],
+              "correctAnswers": [1],
+              "explanation": "25 × 2,40 = 60 €."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À midi il fait 4 °C, le soir −1 °C. De combien la température a-t-elle baissé ?",
+              "options": ["3 °C", "5 °C", "4 °C", "6 °C"],
+              "correctAnswers": [1],
+              "explanation": "4 − (−1) = 5 °C de baisse (écart de 5)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "On partage 84 photos en albums de 12. Nombre d'albums ?",
+              "options": ["6", "7", "8", "9"],
+              "correctAnswers": [1],
+              "explanation": "84 ÷ 12 = 7 albums."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un trajet coûte 3 € le km. Pour 8 km, quels calculs donnent le prix ?",
+              "options": ["3 × 8", "8 × 3", "8 + 3", "8 ÷ 3"],
+              "correctAnswers": [0, 1],
+              "explanation": "3 × 8 = 24 € et 8 × 3 = 24 €."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une boulangerie produit 150 pains le matin et 120 l'après-midi. Total ?",
+              "options": ["30", "270", "250", "170"],
+              "correctAnswers": [1],
+              "explanation": "150 + 120 = 270 pains."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un réservoir de 40 L est rempli aux 3/4. Combien de litres contient-il ?",
+              "options": ["10 L", "20 L", "30 L", "35 L"],
+              "correctAnswers": [2],
+              "explanation": "40 ÷ 4 = 10 ; 3 × 10 = 30 L."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Inès a 50 €. Elle paie 3 entrées à 11 €. Reste ?",
+              "options": ["17 €", "33 €", "39 €", "14 €"],
+              "correctAnswers": [0],
+              "explanation": "3 × 11 = 33 € ; 50 − 33 = 17 €."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un jardin mesure 12 m sur 5 m. Périmètre ?",
+              "options": ["17 m", "34 m", "60 m", "24 m"],
+              "correctAnswers": [1],
+              "explanation": "2 × (12 + 5) = 2 × 17 = 34 m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le compteur affichait 12 450 km. On roule 320 km. Nouvelle lecture ?",
+              "options": ["12 130 km", "12 770 km", "12 320 km", "12 680 km"],
+              "correctAnswers": [1],
+              "explanation": "12 450 + 320 = 12 770 km."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réunion à 9 h 15 d'une durée de 1 h 45. Heure de fin ?",
+              "options": ["10 h 45", "11 h", "11 h 15", "10 h 30"],
+              "correctAnswers": [1],
+              "explanation": "9 h 15 + 1 h 45 = 11 h."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "On répartit 96 € entre 8 bénévoles. Part de chacun ?",
+              "options": ["8 €", "12 €", "10 €", "16 €"],
+              "correctAnswers": [1],
+              "explanation": "96 ÷ 8 = 12 €."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un stock de 200 flacons perd 35 flacons cassés puis 15 vendus. Reste ?",
+              "options": ["150", "165", "180", "250"],
+              "correctAnswers": [0],
+              "explanation": "200 − 35 − 15 = 150 flacons."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour 5 kg de pommes à 2,80 € le kg, combien paie-t-on ?",
+              "options": ["7 €", "14 €", "12 €", "10,80 €"],
+              "correctAnswers": [1],
+              "explanation": "5 × 2,80 = 14 €."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "120 stickers collés sur 6 pages à parts égales. Quels calculs donnent le nombre par page ?",
+              "options": ["120 ÷ 6", "6 × 20", "120 − 6", "120 + 6"],
+              "correctAnswers": [0, 1],
+              "explanation": "120 ÷ 6 = 20 stickers par page ; 6 × 20 = 120 confirme 20."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un atelier fabrique 18 pièces par heure pendant 5 h. Production ?",
+              "options": ["23", "90", "85", "100"],
+              "correctAnswers": [1],
+              "explanation": "18 × 5 = 90 pièces."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le solde bancaire passe de −15 € à 8 € après un virement. Montant du virement ?",
+              "options": ["7 €", "23 €", "−23 €", "−7 €"],
+              "correctAnswers": [1],
+              "explanation": "8 − (−15) = 23 € versés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une tarte est découpée en 8 parts égales. On en mange 3. Fraction restante ?",
+              "options": ["3/8", "5/8", "1/2", "3/5"],
+              "correctAnswers": [1],
+              "explanation": "8 − 3 = 5 parts ; il reste 5/8."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "3 cartons de 24 bouteilles et 2 cartons de 18. Total de bouteilles ?",
+              "options": ["108", "96", "114", "102"],
+              "correctAnswers": [0],
+              "explanation": "3 × 24 = 72 ; 2 × 18 = 36 ; 72 + 36 = 108."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un sentier fait 4,5 km. On en a parcouru 1,2 km puis 2,3 km. Reste ?",
+              "options": ["1 km", "0,9 km", "1,5 km", "2 km"],
+              "correctAnswers": [0],
+              "explanation": "1,2 + 2,3 = 3,5 km ; 4,5 − 3,5 = 1 km."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Classe de 28 élèves : 2/7 partent en voyage. Combien partent ?",
+              "options": ["4", "6", "8", "14"],
+              "correctAnswers": [2],
+              "explanation": "28 ÷ 7 = 4 ; 2 × 4 = 8 élèves."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Budget 45 € : location 28 € et snack 9 €. Reste pour le souvenir ?",
+              "options": ["8 €", "6 €", "10 €", "18 €"],
+              "correctAnswers": [0],
+              "explanation": "28 + 9 = 37 € ; 45 − 37 = 8 €."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une pile de 5 assiettes pèse 750 g. Poids d'une assiette ?",
+              "options": ["100 g", "150 g", "125 g", "175 g"],
+              "correctAnswers": [1],
+              "explanation": "750 ÷ 5 = 150 g."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux bus : 42 et 38 passagers. Combien de passagers au total ?",
+              "options": ["4", "76", "80", "70"],
+              "correctAnswers": [2],
+              "explanation": "42 + 38 = 80 passagers."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un lot de 90 billes est partagé entre 5 amis. Quels calculs donnent la part de chacun ?",
+              "options": ["90 ÷ 5", "5 × 18", "90 − 5", "90 × 5"],
+              "correctAnswers": [0, 1],
+              "explanation": "90 ÷ 5 = 18 billes ; 5 × 18 = 90."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un robinet remplit 12 L en 3 minutes. Débit en litres par minute ?",
+              "options": ["3 L/min", "4 L/min", "9 L/min", "36 L/min"],
+              "correctAnswers": [1],
+              "explanation": "12 ÷ 3 = 4 L par minute."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un ascenseur part du 2e sous-sol (−2) et monte de 9 étages. Étage d'arrivée ?",
+              "options": ["7", "11", "−11", "5"],
+              "correctAnswers": [0],
+              "explanation": "−2 + 9 = 7 (7e étage au-dessus du RDC selon convention simple)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Recette : 2/3 de tasse de sucre pour 12 muffins. Sucre pour 6 muffins ?",
+              "options": ["1/3 tasse", "1/2 tasse", "1/6 tasse", "2/3 tasse"],
+              "correctAnswers": [0],
+              "explanation": "Moitié de la recette : (2/3) ÷ 2 = 1/3 tasse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un magasin offre 3 achetés, 1 offert sur des stylos à 2 €. Prix pour 4 stylos ?",
+              "options": ["8 €", "6 €", "4 €", "2 €"],
+              "correctAnswers": [1],
+              "explanation": "On paie 3 stylos : 3 × 2 = 6 € pour 4 stylos."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Longueur d'une étagère 2,4 m ; 6 livres identiques côte à côte la remplissent. Largeur d'un livre ?",
+              "options": ["0,3 m", "0,4 m", "0,5 m", "0,6 m"],
+              "correctAnswers": [1],
+              "explanation": "2,4 ÷ 6 = 0,4 m."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un jeu dure 3 manches de 12 points max. Scores : 8, 11 et 9. Total ?",
+              "options": ["28", "30", "32", "26"],
+              "correctAnswers": [0],
+              "explanation": "8 + 11 + 9 = 28 points."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une citerne de 500 L contient 125 L. On ajoute 275 L. Combien manque-t-il pour la remplir ?",
+              "options": ["100 L", "150 L", "250 L", "400 L"],
+              "correctAnswers": [0],
+              "explanation": "125 + 275 = 400 L ; 500 − 400 = 100 L."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "4 équipes marquent 7, 5, 9 et 6 buts. Total de buts ?",
+              "options": ["25", "27", "26", "28"],
+              "correctAnswers": [1],
+              "explanation": "7 + 5 + 9 + 6 = 27 buts."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un forfait mobile coûte 15 € par mois. Coût sur 4 mois ?",
+              "options": ["19 €", "45 €", "60 €", "75 €"],
+              "correctAnswers": [2],
+              "explanation": "15 × 4 = 60 €."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour acheter 4 livres identiques, on paie 32 €. Quels calculs donnent le prix d'un livre ?",
+              "options": ["32 ÷ 4", "4 × 8", "32 − 4", "32 + 4"],
+              "correctAnswers": [0, 1],
+              "explanation": "32 ÷ 4 = 8 € par livre ; 4 × 8 = 32 €."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une école reçoit 540 cahiers répartis dans 9 classes. Nombre par classe ?",
+              "options": ["50", "60", "54", "45"],
+              "correctAnswers": [1],
+              "explanation": "540 ÷ 9 = 60 cahiers."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un plongeur est à −12 m puis remonte de 5 m. Profondeur ?",
+              "options": ["−17 m", "−7 m", "7 m", "17 m"],
+              "correctAnswers": [1],
+              "explanation": "−12 + 5 = −7 m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "On mange 2/6 d'une pizza puis 1/6. Fraction mangée au total ?",
+              "options": ["3/12", "1/2", "1/3", "3/6"],
+              "correctAnswers": [1],
+              "explanation": "2/6 + 1/6 = 3/6 = 1/2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Taxi : 4 € la prise en charge plus 2 € par km. Pour 6 km, prix ?",
+              "options": ["12 €", "16 €", "18 €", "14 €"],
+              "correctAnswers": [1],
+              "explanation": "4 + 6 × 2 = 4 + 12 = 16 €."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un entrepôt expédie 75 colis le lundi, 68 mardi et 57 mercredi. Total ?",
+              "options": ["200", "190", "210", "180"],
+              "correctAnswers": [0],
+              "explanation": "75 + 68 + 57 = 200 colis."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un terrain de 3/5 km est parcouru. Il reste 2/5 km. Longueur totale ?",
+              "options": ["1 km", "5/10 km", "1/5 km", "3/5 km"],
+              "correctAnswers": [0],
+              "explanation": "3/5 + 2/5 = 5/5 = 1 km."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "7 amis paient une note de 84 € à parts égales. Combien chacun ?",
+              "options": ["10 €", "12 €", "14 €", "11 €"],
+              "correctAnswers": [1],
+              "explanation": "84 ÷ 7 = 12 €."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une bibliothèque a 1 250 ouvrages. Elle en prête 320 et en reçoit 180. Nouveau total ?",
+              "options": ["1 110", "1 350", "1 290", "1 430"],
+              "correctAnswers": [0],
+              "explanation": "1 250 − 320 + 180 = 1 110 ouvrages."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un cycliste roule 14 km/h pendant 3 h. Distance ?",
+              "options": ["17 km", "42 km", "38 km", "11 km"],
+              "correctAnswers": [1],
+              "explanation": "14 × 3 = 42 km."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une caisse contient 64 oranges pour 8 paniers identiques. Quels calculs donnent le nombre par panier ?",
+              "options": ["64 ÷ 8", "8 × 8", "64 − 8", "64 + 8"],
+              "correctAnswers": [0, 1],
+              "explanation": "64 ÷ 8 = 8 oranges ; 8 × 8 = 64."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un concert vend 125 billets adultes à 15 € et 80 enfants à 8 €. Recette totale ?",
+              "options": ["2 515 €", "2 390 €", "2 640 €", "1 955 €"],
+              "correctAnswers": [0],
+              "explanation": "125 × 15 = 1 875 € ; 80 × 8 = 640 € ; total 2 515 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un frigo indique −4 °C. On règle +3 °C. Nouvelle température ?",
+              "options": ["−7 °C", "−1 °C", "1 °C", "7 °C"],
+              "correctAnswers": [1],
+              "explanation": "−4 + 3 = −1 °C."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Deux réservoirs : 3/8 L et 1/8 L. Volume total ?",
+              "options": ["4/16 L", "1/2 L", "4/8 L", "2/8 L"],
+              "correctAnswers": [1],
+              "explanation": "3/8 + 1/8 = 4/8 = 1/2 L."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un abonnement coûte 9 € par mois plus 2 € de frais uniques. Coût la première année (12 mois) ?",
+              "options": ["110 €", "108 €", "120 €", "98 €"],
+              "correctAnswers": [0],
+              "explanation": "12 × 9 = 108 € ; 108 + 2 = 110 €."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un jardinier plante 5 rangées de 9 plants et 3 rangées de 7. Total de plants ?",
+              "options": ["66", "60", "72", "54"],
+              "correctAnswers": [0],
+              "explanation": "5 × 9 = 45 ; 3 × 7 = 21 ; 45 + 21 = 66."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un article à 40 € est soldé de 12 €. Prix payé ?",
+              "options": ["52 €", "28 €", "32 €", "48 €"],
+              "correctAnswers": [1],
+              "explanation": "40 − 12 = 28 €."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un train de 6 wagons transporte 54 voyageurs répartis également. Voyageurs par wagon ?",
+              "options": ["6", "8", "9", "12"],
+              "correctAnswers": [2],
+              "explanation": "54 ÷ 6 = 9 voyageurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans 2 L de limonade, 1/4 L est du sirop. Quelle fraction du mélange est du sirop ?",
+              "options": ["1/8", "1/4", "1/2", "2/4"],
+              "correctAnswers": [0],
+              "explanation": "Fraction = (1/4) ÷ 2 = 1/8 du mélange."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Marathon : 10 km + 12 km + 8 km + 10 km. Distance totale ?",
+              "options": ["30 km", "40 km", "38 km", "42 km"],
+              "correctAnswers": [1],
+              "explanation": "10 + 12 + 8 + 10 = 40 km."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "150 places dans une salle, 6 rangées égales. Quels calculs donnent le nombre de places par rangée ?",
+              "options": ["150 ÷ 6", "6 × 25", "150 − 6", "150 × 6"],
+              "correctAnswers": [0, 1],
+              "explanation": "150 ÷ 6 = 25 places ; 6 × 25 = 150."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une famille achète 2 kg de pommes à 3,50 € le kg et 1,5 kg de poires à 4 € le kg. Total ?",
+              "options": ["13 €", "14 €", "15 €", "16 €"],
+              "correctAnswers": [0],
+              "explanation": "2 × 3,50 = 7 € ; 1,5 × 4 = 6 € ; 7 + 6 = 13 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un compte à −25 € reçoit 40 €. Nouveau solde ?",
+              "options": ["15 €", "65 €", "−65 €", "−15 €"],
+              "correctAnswers": [0],
+              "explanation": "−25 + 40 = 15 €."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un réservoir plein faisait 1 L. On utilise 3/10 L puis 2/10 L. Quel volume reste ?",
+              "options": ["1/2 L", "3/10 L", "7/10 L", "1/4 L"],
+              "correctAnswers": [0],
+              "explanation": "3/10 + 2/10 = 5/10 L utilisés ; 1 − 5/10 = 5/10 L = 1/2 L restants."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une école organise 4 sorties de 35 élèves chacune. Élèves concernés au total ?",
+              "options": ["120", "140", "135", "145"],
+              "correctAnswers": [1],
+              "explanation": "4 × 35 = 140 élèves."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un ouvrier gagne 12 €/h et travaille 7 h avec 1 h de pause non payée sur 8 h présentes. Salaire ?",
+              "options": ["96 €", "84 €", "72 €", "108 €"],
+              "correctAnswers": [1],
+              "explanation": "7 h payées : 7 × 12 = 84 €."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux villages distants de 15 km : un cycliste parcourt 9 km. Distance restante ?",
+              "options": ["24 km", "6 km", "5 km", "7 km"],
+              "correctAnswers": [1],
+              "explanation": "15 − 9 = 6 km."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un lot de 3/4 kg de pâte sert à 6 petits pains égaux. Masse d'un pain ?",
+              "options": ["1/8 kg", "1/6 kg", "1/4 kg", "3/24 kg"],
+              "correctAnswers": [0],
+              "explanation": "(3/4) ÷ 6 = 3/24 = 1/8 kg par pain."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un magasin reçoit 48, 36 et 56 articles sur trois jours. Total ?",
+              "options": ["130", "140", "150", "120"],
+              "correctAnswers": [1],
+              "explanation": "48 + 36 + 56 = 140 articles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour fabriquer 5 bracelets identiques, il faut 35 perles. Perles pour 3 bracelets ?",
+              "options": ["15", "21", "18", "25"],
+              "correctAnswers": [1],
+              "explanation": "35 ÷ 5 = 7 perles par bracelet ; 3 × 7 = 21 perles."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

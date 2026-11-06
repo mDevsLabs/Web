@@ -1,0 +1,2158 @@
+{
+  "id": "6e-portugais-01",
+  "year": "6e",
+  "subject": "portugais",
+  "title": "Découvrir le portugais",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Dire bonjour",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions portugaises signifient « bonjour » (plusieurs réponses possibles) ?",
+              "type": "multiple_choice",
+              "options": ["Olá", "Bom dia", "Adeus", "Boa noite"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Olá » et « Bom dia » servent à saluer le jour ; « Adeus » veut dire au revoir et « Boa noite » bonsoir."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « bonjour » (matin) en portugais ?",
+              "type": "single_choice",
+              "options": ["Bom dia", "Boa tarde", "Boa noite", "Até logo"],
+              "correctAnswers": [0],
+              "explanation": "« Bom dia » s'utilise le matin pour souhaiter une bonne journée."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « Olá » ?",
+              "type": "single_choice",
+              "options": [
+                "Bonjour / Salut",
+                "Merci",
+                "S'il vous plaît",
+                "Pardon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Olá » est l'équivalent informel de bonjour ou salut."
+            },
+            {
+              "id": "q4",
+              "question": "Quand utilise-t-on « Boa tarde » ?",
+              "type": "single_choice",
+              "options": ["L'après-midi", "Le matin", "La nuit", "À minuit"],
+              "correctAnswers": [0],
+              "explanation": "« Boa tarde » correspond à « bon après-midi » ou « bonjour » l'après-midi."
+            },
+            {
+              "id": "q5",
+              "question": "Comment dit-on « bonsoir » en portugais ?",
+              "type": "single_choice",
+              "options": ["Boa noite", "Bom dia", "Olá", "Tchau"],
+              "correctAnswers": [0],
+              "explanation": "« Boa noite » sert le soir pour saluer ou souhaiter une bonne nuit."
+            },
+            {
+              "id": "q6",
+              "question": "Que veut dire « Tchau » ?",
+              "type": "single_choice",
+              "options": [
+                "Salut / Ciao (au revoir informel)",
+                "Bonjour",
+                "Merci beaucoup",
+                "Enchanté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tchau » est un au revoir familier, emprunté à l'italien."
+            },
+            {
+              "id": "q7",
+              "question": "Quelle salutation convient à 9 h du matin ?",
+              "type": "single_choice",
+              "options": ["Bom dia", "Boa noite", "Boa tarde", "Adeus"],
+              "correctAnswers": [0],
+              "explanation": "Le matin, on dit « Bom dia »."
+            },
+            {
+              "id": "q8",
+              "question": "« Bom » dans « Bom dia » signifie :",
+              "type": "single_choice",
+              "options": ["Bon / Bien", "Beau", "Grand", "Petit"],
+              "correctAnswers": [0],
+              "explanation": "« Bom » (masc.) et « Boa » (fém.) veulent dire bon ou bien."
+            },
+            {
+              "id": "q9",
+              "question": "Comment répond-on poliment à « Bom dia » ?",
+              "type": "single_choice",
+              "options": ["Bom dia", "Obrigado", "Desculpe", "Por favor"],
+              "correctAnswers": [0],
+              "explanation": "On renvoie la même salutation : « Bom dia »."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle phrase est une salutation ?",
+              "type": "single_choice",
+              "options": [
+                "Olá, como estás?",
+                "Chamo-me Ana.",
+                "Tenho doze anos.",
+                "Sou de Lisboa."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Olá, como estás? » signifie « Salut, comment vas-tu ? »."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Dire au revoir",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions portugaises veulent dire « au revoir » ?",
+              "type": "multiple_choice",
+              "options": ["Adeus", "Até logo", "Bom dia", "Tchau"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Adeus » et « Até logo » sont des formules de départ ; « Tchau » aussi, mais « Bom dia » est un bonjour."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie « Adeus » ?",
+              "type": "single_choice",
+              "options": ["Au revoir", "Bonjour", "Merci", "Oui"],
+              "correctAnswers": [0],
+              "explanation": "« Adeus » est l'au revoir standard en portugais."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « à bientôt » ?",
+              "type": "single_choice",
+              "options": ["Até logo", "Bom dia", "Por favor", "Sim"],
+              "correctAnswers": [0],
+              "explanation": "« Até logo » signifie « à bientôt » ou « à tout à l'heure »."
+            },
+            {
+              "id": "q4",
+              "question": "Que veut dire « Até amanhã » ?",
+              "type": "single_choice",
+              "options": [
+                "À demain",
+                "À ce soir",
+                "À jamais",
+                "À tout de suite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Amanhã » veut dire demain."
+            },
+            {
+              "id": "q5",
+              "question": "« Até à vista » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Au revoir (à la prochaine fois)",
+                "Bon appétit",
+                "Bonne nuit",
+                "Bonne chance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une formule de départ un peu plus formelle."
+            },
+            {
+              "id": "q6",
+              "question": "Quelle expression est informelle pour partir ?",
+              "type": "single_choice",
+              "options": ["Tchau", "Com licença", "Muito obrigado", "Desculpe"],
+              "correctAnswers": [0],
+              "explanation": "« Tchau » est familier, comme « ciao » en français."
+            },
+            {
+              "id": "q7",
+              "question": "Avant de dormir, on peut dire :",
+              "type": "single_choice",
+              "options": ["Boa noite", "Bom dia", "Boa tarde", "Olá"],
+              "correctAnswers": [0],
+              "explanation": "« Boa noite » peut signifier bonne nuit au moment de se coucher."
+            },
+            {
+              "id": "q8",
+              "question": "« Logo » dans « Até logo » veut dire environ :",
+              "type": "single_choice",
+              "options": [
+                "Bientôt / tout à l'heure",
+                "Jamais",
+                "Hier",
+                "Toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Logo » indique un bref délai, bientôt."
+            },
+            {
+              "id": "q9",
+              "question": "Quelle phrase termine une conversation ?",
+              "type": "single_choice",
+              "options": [
+                "Adeus e bom dia!",
+                "Chamo-me Pedro.",
+                "Onde ficas?",
+                "Quantos anos tens?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Adeus e bom dia! » mélange au revoir et souhait (exemple de prise de congé)."
+            },
+            {
+              "id": "q10",
+              "question": "Comment dit-on « à plus tard » de façon courante ?",
+              "type": "single_choice",
+              "options": ["Até já", "Bom dia", "Não", "De nada"],
+              "correctAnswers": [0],
+              "explanation": "« Até já » équivaut à « à tout de suite » ou « à plus tard »."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Comment ça va ?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles questions demandent « comment vas-tu ? » en portugais (Europe) ?",
+              "type": "multiple_choice",
+              "options": [
+                "Como estás?",
+                "Como vai?",
+                "Onde estás?",
+                "Quantos anos tens?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Como estás? » (tu) et « Como vai? » (vous / plus neutre) demandent des nouvelles."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie « Estou bem » ?",
+              "type": "single_choice",
+              "options": [
+                "Je vais bien",
+                "Je suis fatigué",
+                "Je suis triste",
+                "Je suis malade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Estou bem » répond positivement à « comment vas-tu ? »."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « et toi ? » après une réponse ?",
+              "type": "single_choice",
+              "options": ["E tu?", "E você?", "Obrigado", "Adeus"],
+              "correctAnswers": [0],
+              "explanation": "« E tu? » renvoie la question à l'interlocuteur (familier)."
+            },
+            {
+              "id": "q4",
+              "question": "« Muito bem » signifie :",
+              "type": "single_choice",
+              "options": ["Très bien", "Pas mal", "Mal", "Peut-être"],
+              "correctAnswers": [0],
+              "explanation": "« Muito » renforce : très bien."
+            },
+            {
+              "id": "q5",
+              "question": "Que veut dire « assim-assim » ?",
+              "type": "single_choice",
+              "options": [
+                "Comme ci comme ça",
+                "Formidable",
+                "Terrible",
+                "Parfait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression idiomatique pour un état moyen."
+            },
+            {
+              "id": "q6",
+              "question": "« Estou mal » exprime :",
+              "type": "single_choice",
+              "options": [
+                "Je ne vais pas bien",
+                "Je suis content",
+                "J'ai faim",
+                "Je suis pressé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mal » est l'opposé de « bem »."
+            },
+            {
+              "id": "q7",
+              "question": "Quelle réponse est polie et positive ?",
+              "type": "single_choice",
+              "options": [
+                "Estou bem, obrigado.",
+                "Não sei.",
+                "Adeus.",
+                "Chamo-me."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On remercie souvent après « bem » : « obrigado/a »."
+            },
+            {
+              "id": "q8",
+              "question": "« Como está? » s'adresse à :",
+              "type": "single_choice",
+              "options": [
+                "Une personne vouvoyée (vous)",
+                "Un animal",
+                "Un objet",
+                "Plusieurs amis proches seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La forme « está » est plus formelle (vous)."
+            },
+            {
+              "id": "q9",
+              "question": "Que signifie « Tudo bem? » ?",
+              "type": "single_choice",
+              "options": [
+                "Tout va bien ? / Ça va ?",
+                "Où es-tu ?",
+                "Qui es-tu ?",
+                "Quelle heure est-il ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tudo bem » est très courant au Brésil et au Portugal."
+            },
+            {
+              "id": "q10",
+              "question": "Réponse à « Tudo bem? » souvent entendue :",
+              "type": "single_choice",
+              "options": ["Tudo bem!", "Bom dia!", "Até logo!", "Por favor!"],
+              "correctAnswers": [0],
+              "explanation": "On répond souvent « Tudo bem! » pour confirmer que tout va bien."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Se présenter : le nom",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases permettent de dire son prénom en portugais ?",
+              "type": "multiple_choice",
+              "options": [
+                "Chamo-me Maria.",
+                "O meu nome é João.",
+                "Tenho fome.",
+                "Sou alto."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Chamo-me » et « O meu nome é » introduisent le nom."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie « Chamo-me Sofia » ?",
+              "type": "single_choice",
+              "options": [
+                "Je m'appelle Sofia",
+                "J'aime Sofia",
+                "Sofia est ici",
+                "Voici Sofia"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Chamar-se » est le verbe pronominal « s'appeler »."
+            },
+            {
+              "id": "q3",
+              "question": "Comment demander « Comment tu t'appelles ? » (tu) ?",
+              "type": "single_choice",
+              "options": [
+                "Como te chamas?",
+                "Onde vives?",
+                "Quantos anos tens?",
+                "Como estás?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Como te chamas? » est la question directe pour le prénom."
+            },
+            {
+              "id": "q4",
+              "question": "« O meu nome é » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Mon nom est",
+                "Mon ami est",
+                "Ma maison est",
+                "Mon chien est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formulation alternative à « Chamo-me »."
+            },
+            {
+              "id": "q5",
+              "question": "« Nome » veut dire :",
+              "type": "single_choice",
+              "options": ["Nom", "Numéro", "Nuit", "Nord"],
+              "correctAnswers": [0],
+              "explanation": "Faux ami partiel avec le français « nom »."
+            },
+            {
+              "id": "q6",
+              "question": "Formule polie : « Comment vous appelez-vous ? »",
+              "type": "single_choice",
+              "options": [
+                "Como se chama?",
+                "Como te chamas?",
+                "Tchau!",
+                "Estou bem."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Se chama » correspond au vouvoiement."
+            },
+            {
+              "id": "q7",
+              "question": "Après « Chamo-me Luís », on peut dire :",
+              "type": "single_choice",
+              "options": [
+                "Prazer em conhecer-te.",
+                "Tenho sede.",
+                "Boa tarde.",
+                "Não falo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Prazer em conhecer-te » = enchanté de te connaître."
+            },
+            {
+              "id": "q8",
+              "question": "« Prazer » dans une présentation signifie :",
+              "type": "single_choice",
+              "options": ["Enchanté / plaisir", "Pressé", "Prix", "Problème"],
+              "correctAnswers": [0],
+              "explanation": "On dit souvent « Muito prazer »."
+            },
+            {
+              "id": "q9",
+              "question": "Quelle phrase présente quelqu'un ?",
+              "type": "single_choice",
+              "options": [
+                "Esta é a minha amiga Rita.",
+                "Adeus Rita.",
+                "Rita tem fome.",
+                "Onde está Rita?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Esta é… » = voici / c'est…"
+            },
+            {
+              "id": "q10",
+              "question": "« Conhecer » dans « conhecer-te » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Connaître / rencontrer",
+                "Manger",
+                "Courir",
+                "Dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'infinitif « conhecer » = connaître quelqu'un."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Origine et nationalité",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases parlent de nationalité ou origine ?",
+              "type": "multiple_choice",
+              "options": [
+                "Sou português.",
+                "Sou de France.",
+                "Tenho um gato.",
+                "Gosto de pizza."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Sou português » et « Sou de France » indiquent origine ou nationalité."
+            },
+            {
+              "id": "q2",
+              "question": "« Sou francês » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je suis français",
+                "Je suis en France",
+                "Je parle français",
+                "J'aime la France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sou » = je suis ; « francês » = français (homme)."
+            },
+            {
+              "id": "q3",
+              "question": "Une fille française dit :",
+              "type": "single_choice",
+              "options": [
+                "Sou francesa.",
+                "Sou francês.",
+                "Sou português.",
+                "Sou menino."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif s'accorde : francesa au féminin."
+            },
+            {
+              "id": "q4",
+              "question": "Comment dit-on « Je suis du Portugal » ?",
+              "type": "single_choice",
+              "options": [
+                "Sou de Portugal.",
+                "Sou Portugal.",
+                "Estou Portugal.",
+                "Vou Portugal."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On utilise « ser de » + pays."
+            },
+            {
+              "id": "q5",
+              "question": "« De onde és? » demande :",
+              "type": "single_choice",
+              "options": [
+                "D'où es-tu ?",
+                "Comment vas-tu ?",
+                "Quel âge as-tu ?",
+                "Comment t'appelles-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« De onde » = d'où."
+            },
+            {
+              "id": "q6",
+              "question": "Réponse : « Sou de Lisboa » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Je suis de Lisbonne",
+                "Je vais à Lisbonne",
+                "J'aime Lisbonne",
+                "Lisbonne est grande"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lisboa = Lisbonne, capitale du Portugal."
+            },
+            {
+              "id": "q7",
+              "question": "« Brasileiro » désigne :",
+              "type": "single_choice",
+              "options": [
+                "Un Brésilien",
+                "Un Portugais",
+                "Un Espagnol",
+                "Un Italien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Brésil = Brasil en portugais."
+            },
+            {
+              "id": "q8",
+              "question": "« Angolano » signifie :",
+              "type": "single_choice",
+              "options": ["Angolais", "Anglais", "Américain", "Allemand"],
+              "correctAnswers": [0],
+              "explanation": "Angola est un pays lusophone."
+            },
+            {
+              "id": "q9",
+              "question": "Quelle question correspond à « Onde nasceste? » ?",
+              "type": "single_choice",
+              "options": [
+                "Où es-tu né(e) ?",
+                "Où habites-tu ?",
+                "Où vas-tu ?",
+                "Où manges-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Nascer » = naître."
+            },
+            {
+              "id": "q10",
+              "question": "« Eu sou aluno » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je suis élève",
+                "Je suis professeur",
+                "Je suis parent",
+                "Je suis médecin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Aluno » = élève (écolier)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Politesse de base",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont des marqueurs de politesse en portugais ?",
+              "type": "multiple_choice",
+              "options": ["Por favor", "Obrigado", "Desculpe", "Gato"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Por favor » et « Obrigado/a » sont essentiels ; « Desculpe » aussi mais la consigne demande deux bonnes réponses parmi les options — 0 et 1 sont les plus centraux pour politesse de base."
+            },
+            {
+              "id": "q2",
+              "question": "« Por favor » signifie :",
+              "type": "single_choice",
+              "options": ["S'il vous plaît", "Merci", "Pardon", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "À placer avant ou après une demande."
+            },
+            {
+              "id": "q3",
+              "question": "Un garçon dit « merci » avec :",
+              "type": "single_choice",
+              "options": ["Obrigado", "Obrigada", "Por favor", "Bom dia"],
+              "correctAnswers": [0],
+              "explanation": "« Obrigado » au masculin ; les filles disent « Obrigada »."
+            },
+            {
+              "id": "q4",
+              "question": "« De nada » répond à :",
+              "type": "single_choice",
+              "options": ["Obrigado (je t'en prie)", "Bom dia", "Adeus", "Olá"],
+              "correctAnswers": [0],
+              "explanation": "Équivalent de « de rien »."
+            },
+            {
+              "id": "q5",
+              "question": "« Desculpe » veut dire :",
+              "type": "single_choice",
+              "options": ["Pardon / excusez-moi", "Merci", "Bonjour", "Oui"],
+              "correctAnswers": [0],
+              "explanation": "Pour s'excuser ou attirer poliment l'attention."
+            },
+            {
+              "id": "q6",
+              "question": "« Com licença » s'utilise pour :",
+              "type": "single_choice",
+              "options": [
+                "Passer / demander la permission",
+                "Manger",
+                "Dormir",
+                "Jouer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme « excusez-moi » quand on passe."
+            },
+            {
+              "id": "q7",
+              "question": "« Muito obrigado » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Merci beaucoup",
+                "S'il vous plaît beaucoup",
+                "Pardon beaucoup",
+                "Bonjour beaucoup"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Muito » = beaucoup."
+            },
+            {
+              "id": "q8",
+              "question": "Avant de demander « Podes ajudar-me? », on dit souvent :",
+              "type": "single_choice",
+              "options": ["Por favor", "Adeus", "Tchau", "Gato"],
+              "correctAnswers": [0],
+              "explanation": "La politesse adoucit la demande d'aide."
+            },
+            {
+              "id": "q9",
+              "question": "« Licença » seul peut signifier :",
+              "type": "single_choice",
+              "options": ["Excusez-moi (court)", "Merci", "Bonsoir", "Non"],
+              "correctAnswers": [0],
+              "explanation": "Forme abrégée courante."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle suite est polie ?",
+              "type": "single_choice",
+              "options": [
+                "Obrigado, boa tarde!",
+                "Adeus, chamo-me!",
+                "Gato, bom dia!",
+                "Não, tchau!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Remercier puis saluer est naturel."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Tu ou vous ?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels pronoms/adresses sont familiers (tu) en portugais d'Europe ?",
+              "type": "multiple_choice",
+              "options": ["tu", "te", "você", "o senhor"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Tu » et « te » appartiennent au registre familier ; « você » et « o senhor » sont plus formels."
+            },
+            {
+              "id": "q2",
+              "question": "« Você » correspond plutôt à :",
+              "type": "single_choice",
+              "options": [
+                "Vous (forme courante au Brésil)",
+                "Tu toujours",
+                "Nous",
+                "Eux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au Brésil, « você » remplace souvent « tu »."
+            },
+            {
+              "id": "q3",
+              "question": "« Como te chamas? » utilise le pronom :",
+              "type": "single_choice",
+              "options": ["te (tu)", "o senhor", "nós", "eles"],
+              "correctAnswers": [0],
+              "explanation": "« Te » = te (complément de tu)."
+            },
+            {
+              "id": "q4",
+              "question": "Formule respectueuse envers un adulte inconnu (Portugal) :",
+              "type": "single_choice",
+              "options": [
+                "Como se chama?",
+                "Como te chamas?",
+                "E aí?",
+                "Tchau!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Se chama » avec vouvoiement implicite."
+            },
+            {
+              "id": "q5",
+              "question": "« O senhor » s'adresse à :",
+              "type": "single_choice",
+              "options": [
+                "Un homme (Monsieur)",
+                "Une fille",
+                "Un groupe d'enfants",
+                "Un animal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équivalent de monsieur."
+            },
+            {
+              "id": "q6",
+              "question": "« A senhora » s'adresse à :",
+              "type": "single_choice",
+              "options": [
+                "Une femme (Madame)",
+                "Un garçon",
+                "Un bébé",
+                "Un objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule de politesse féminine."
+            },
+            {
+              "id": "q7",
+              "question": "Entre amis de 12 ans, on emploie surtout :",
+              "type": "single_choice",
+              "options": ["tu", "o senhor", "Vossa Excelência", "o rei"],
+              "correctAnswers": [0],
+              "explanation": "Le tutoiement est normal entre pairs."
+            },
+            {
+              "id": "q8",
+              "question": "« Estás bem? » contient la forme :",
+              "type": "single_choice",
+              "options": [
+                "2e personne du singulier (tu)",
+                "3e personne formelle seulement",
+                "1re personne",
+                "impératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terminaison « -s » de « estar » avec « tu »."
+            },
+            {
+              "id": "q9",
+              "question": "« Está bem? » (sans s) suggère :",
+              "type": "single_choice",
+              "options": [
+                "Vouvoiement ou 3e personne",
+                "Toujours tu",
+                "Pluriel nous",
+                "Infinitif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme sans « s » pour você/ele/ela ou politesse."
+            },
+            {
+              "id": "q10",
+              "question": "Choisir la bonne question à un professeur :",
+              "type": "single_choice",
+              "options": [
+                "Como está, professora?",
+                "Como estás, mano?",
+                "E aí, gajo?",
+                "Tchau, prof!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Está » + titre « professora » reste respectueux."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Pronoms et verbe être",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont des pronoms personnels sujets en portugais ?",
+              "type": "multiple_choice",
+              "options": ["eu", "tu", "casa", "livro"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Eu » = je, « tu » = tu ; « casa » et « livro » sont des noms."
+            },
+            {
+              "id": "q2",
+              "question": "« Eu sou » signifie :",
+              "type": "single_choice",
+              "options": ["Je suis", "Tu es", "Il est", "Nous sommes"],
+              "correctAnswers": [0],
+              "explanation": "« Ser » conjugué : eu sou."
+            },
+            {
+              "id": "q3",
+              "question": "« Tu és » veut dire :",
+              "type": "single_choice",
+              "options": ["Tu es", "Je suis", "Vous êtes", "Ils sont"],
+              "correctAnswers": [0],
+              "explanation": "2e personne du singulier de « ser »."
+            },
+            {
+              "id": "q4",
+              "question": "« Ele é » signifie :",
+              "type": "single_choice",
+              "options": ["Il est", "Elle est", "Nous sommes", "Tu es"],
+              "correctAnswers": [0],
+              "explanation": "« Ele » = il."
+            },
+            {
+              "id": "q5",
+              "question": "« Ela é » signifie :",
+              "type": "single_choice",
+              "options": ["Elle est", "Il est", "Je suis", "Ils sont"],
+              "correctAnswers": [0],
+              "explanation": "« Ela » = elle."
+            },
+            {
+              "id": "q6",
+              "question": "« Nós somos » veut dire :",
+              "type": "single_choice",
+              "options": ["Nous sommes", "Vous êtes", "Ils sont", "Je suis"],
+              "correctAnswers": [0],
+              "explanation": "Pluriel de la 1re personne."
+            },
+            {
+              "id": "q7",
+              "question": "Pour « estou » on utilise le verbe :",
+              "type": "single_choice",
+              "options": [
+                "estar (état, lieu)",
+                "ser toujours",
+                "ter uniquement",
+                "ir seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Estou bem » emploie « estar » pour un état temporaire."
+            },
+            {
+              "id": "q8",
+              "question": "« Sou aluna » décrit :",
+              "type": "single_choice",
+              "options": [
+                "Une identité (ser)",
+                "Un emplacement",
+                "Une heure",
+                "Une couleur seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Profession/rôle utilise souvent « ser »."
+            },
+            {
+              "id": "q9",
+              "question": "« Eles são » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Ils sont",
+                "Elles sont (elles)",
+                "Nous sommes",
+                "Tu es"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Masculin pluriel ou mixte."
+            },
+            {
+              "id": "q10",
+              "question": "Phrase correcte :",
+              "type": "single_choice",
+              "options": [
+                "Eu sou o Miguel.",
+                "Eu estar o Miguel.",
+                "Eu ter o Miguel.",
+                "Eu ir o Miguel."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation avec « ser » : eu sou…"
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Âge et classe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles questions parlent de l'âge en portugais ?",
+              "type": "multiple_choice",
+              "options": [
+                "Quantos anos tens?",
+                "Quantos anos tem?",
+                "Que horas são?",
+                "Onde ficas?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Quantos anos tens/tem? » = quel âge as-tu / avez-vous."
+            },
+            {
+              "id": "q2",
+              "question": "« Tenho doze anos » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai douze ans",
+                "J'ai douze euros",
+                "Il est midi",
+                "J'ai douze livres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En portugais on « a » X ans avec « ter »."
+            },
+            {
+              "id": "q3",
+              "question": "« Anos » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Ans",
+                "Années (dans ce contexte : ans)",
+                "Jours",
+                "Mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot clé pour l'âge."
+            },
+            {
+              "id": "q4",
+              "question": "« Quantos » introduit :",
+              "type": "single_choice",
+              "options": [
+                "Une question « combien »",
+                "Une couleur",
+                "Un au revoir",
+                "Un prénom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Quantos anos? » = combien d'ans ?"
+            },
+            {
+              "id": "q5",
+              "question": "Un élève de 6e pourrait dire :",
+              "type": "single_choice",
+              "options": [
+                "Tenho onze ou doze anos.",
+                "Tenho cinquante anos.",
+                "Tenho zero anos.",
+                "Tenho cem anos."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Âge typique collège ≈ 11–12 ans."
+            },
+            {
+              "id": "q6",
+              "question": "« Estou na sexta classe » (exemple scolaire) évoque :",
+              "type": "single_choice",
+              "options": [
+                "Le niveau scolaire",
+                "La météo",
+                "Le sport",
+                "La cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les systèmes varient, mais « classe » renvoie à l'école."
+            },
+            {
+              "id": "q7",
+              "question": "« Sou estudante » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je suis étudiant/élève",
+                "Je suis professeur",
+                "Je suis fatigué",
+                "Je suis à la maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Estudante » = élève/étudiant."
+            },
+            {
+              "id": "q8",
+              "question": "Pour demander l'âge poliment (vous) :",
+              "type": "single_choice",
+              "options": [
+                "Quantos anos tem?",
+                "Quantos anos tens?",
+                "Como te chamas?",
+                "Onde estás?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tem » correspond à você/formel."
+            },
+            {
+              "id": "q9",
+              "question": "« Onze » en portugais s'écrit :",
+              "type": "single_choice",
+              "options": ["onze", "once", "eleven", "onzième"],
+              "correctAnswers": [0],
+              "explanation": "Identique à l'orthographe française pour 11."
+            },
+            {
+              "id": "q10",
+              "question": "Réponse logique à « Quantos anos tens? » :",
+              "type": "single_choice",
+              "options": [
+                "Tenho treze anos.",
+                "Chamo-me Ana.",
+                "Sou de Paris.",
+                "Estou bem."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On répond avec « Tenho … anos »."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Dialogue de présentation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles répliques conviennent au début d'une rencontre ?",
+              "type": "multiple_choice",
+              "options": [
+                "Olá! Chamo-me Inês.",
+                "Prazer em conhecer-te.",
+                "Adeus para sempre.",
+                "Não falo português nunca."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Saluer + se nommer et dire « enchanté » lance bien l'échange."
+            },
+            {
+              "id": "q2",
+              "question": "Ordre naturel d'un mini-dialogue :",
+              "type": "single_choice",
+              "options": [
+                "Olá → Como estás? → Estou bem",
+                "Adeus → Bom dia → Olá",
+                "Tenho fome → Adeus",
+                "Gato → Cão"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutation, question, réponse positive."
+            },
+            {
+              "id": "q3",
+              "question": "Après les présentations, on dit souvent :",
+              "type": "single_choice",
+              "options": [
+                "Muito prazer!",
+                "Muito gato!",
+                "Muito casa!",
+                "Muito livro!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Muito prazer » = très enchanté."
+            },
+            {
+              "id": "q4",
+              "question": "« De onde és, Pedro? » attend :",
+              "type": "single_choice",
+              "options": [
+                "Sou do Porto.",
+                "Sou bem.",
+                "Sou obrigado.",
+                "Sou por favor."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse avec « ser de » + lieu."
+            },
+            {
+              "id": "q5",
+              "question": "Compléter : « — Como te chamas? — … »",
+              "type": "single_choice",
+              "options": [
+                "Chamo-me Carla.",
+                "Estou Carla.",
+                "Vou Carla.",
+                "Tenho Carla."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On utilise « chamar-se » pour le prénom."
+            },
+            {
+              "id": "q6",
+              "question": "Terminer poliment :",
+              "type": "single_choice",
+              "options": [
+                "Até logo e obrigado!",
+                "Bom dia ontem!",
+                "Olá adeus bom dia!",
+                "Por favor tchau sim!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au revoir + remerciement est cohérent."
+            },
+            {
+              "id": "q7",
+              "question": "« E tu, como te chamas? » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Et toi, comment t'appelles-tu ?",
+                "Et toi, où es-tu ?",
+                "Et toi, pourquoi ?",
+                "Et toi, quand ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« E tu » relance la question."
+            },
+            {
+              "id": "q8",
+              "question": "Si on ne comprend pas :",
+              "type": "single_choice",
+              "options": [
+                "Desculpe, não percebo.",
+                "Obrigado, percebo tudo.",
+                "Adeus, percebo.",
+                "Bom dia, gato."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Não percebo » = je ne comprends pas."
+            },
+            {
+              "id": "q9",
+              "question": "« Falo um pouco de português » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Je parle un peu portugais",
+                "Je parle couramment",
+                "Je ne parle pas",
+                "Je parle français seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Um pouco » = un peu."
+            },
+            {
+              "id": "q10",
+              "question": "Phrase qui résume une présentation complète :",
+              "type": "single_choice",
+              "options": [
+                "Olá, chamo-me Rui, sou de Coimbra e tenho doze anos.",
+                "Adeus, gato, azul.",
+                "Por favor, mesa.",
+                "Tchau, número dez."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salut, nom, origine et âge forment une présentation riche."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les nombres 0 à 10",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels nombres portugais valent 1 et 2 ?",
+              "type": "multiple_choice",
+              "options": ["um", "dois", "dez", "zero"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Um » = 1, « dois » = 2 ; « dez » = 10, « zero » = 0."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « trois » ?",
+              "type": "single_choice",
+              "options": ["três", "treze", "tres", "terceiro"],
+              "correctAnswers": [0],
+              "explanation": "Accent circonflexe sur « três »."
+            },
+            {
+              "id": "q3",
+              "question": "« Quatro » signifie :",
+              "type": "single_choice",
+              "options": ["Quatre", "Cinq", "Quatorze", "Quarante"],
+              "correctAnswers": [0],
+              "explanation": "Proche du français « quatro » en prononciation."
+            },
+            {
+              "id": "q4",
+              "question": "Le nombre 5 en portugais :",
+              "type": "single_choice",
+              "options": ["cinco", "cinc", "cinque", "cinto"],
+              "correctAnswers": [0],
+              "explanation": "« Cinco » comme en espagnol."
+            },
+            {
+              "id": "q5",
+              "question": "« Seis » veut dire :",
+              "type": "single_choice",
+              "options": ["Six", "Sept", "Seize", "Soixante"],
+              "correctAnswers": [0],
+              "explanation": "Sixième nombre de base."
+            },
+            {
+              "id": "q6",
+              "question": "Comment dit-on « sept » ?",
+              "type": "single_choice",
+              "options": ["sete", "septe", "siete", "set"],
+              "correctAnswers": [0],
+              "explanation": "« Sete » sans « p » comme en français."
+            },
+            {
+              "id": "q7",
+              "question": "« Oito » correspond à :",
+              "type": "single_choice",
+              "options": ["Huit", "Huitième", "Unité", "Ouest"],
+              "correctAnswers": [0],
+              "explanation": "8 en portugais."
+            },
+            {
+              "id": "q8",
+              "question": "« Nove » signifie :",
+              "type": "single_choice",
+              "options": ["Neuf", "Nouveau", "Nord", "Nuit"],
+              "correctAnswers": [0],
+              "explanation": "9."
+            },
+            {
+              "id": "q9",
+              "question": "« Dez » veut dire :",
+              "type": "single_choice",
+              "options": ["Dix", "Douze", "Deux", "Dix-neuf"],
+              "correctAnswers": [0],
+              "explanation": "10 — fin de la série de base."
+            },
+            {
+              "id": "q10",
+              "question": "« Zero » en portugais :",
+              "type": "single_choice",
+              "options": ["zero", "zera", "zerro", "nada número"],
+              "correctAnswers": [0],
+              "explanation": "Orthographe identique au français."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Couleurs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles couleurs sont « vermelho » et « azul » ?",
+              "type": "multiple_choice",
+              "options": ["rouge", "bleu", "vert", "noir"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Vermelho » = rouge, « azul » = bleu."
+            },
+            {
+              "id": "q2",
+              "question": "« Verde » signifie :",
+              "type": "single_choice",
+              "options": ["Vert", "Verre", "Verdict", "Vers"],
+              "correctAnswers": [0],
+              "explanation": "Couleur verte."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « jaune » ?",
+              "type": "single_choice",
+              "options": [
+                "amarelo",
+                "amaro",
+                "amarillo",
+                "amarela sempre seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Amarelo » (masc.) ; « amarela » au féminin."
+            },
+            {
+              "id": "q4",
+              "question": "« Preto » veut dire :",
+              "type": "single_choice",
+              "options": ["Noir", "Pret", "Prêt", "Prié"],
+              "correctAnswers": [0],
+              "explanation": "Attention au faux ami avec « prêt »."
+            },
+            {
+              "id": "q5",
+              "question": "« Branco » signifie :",
+              "type": "single_choice",
+              "options": ["Blanc", "Branche", "Bras", "Bravo"],
+              "correctAnswers": [0],
+              "explanation": "Couleur blanche."
+            },
+            {
+              "id": "q6",
+              "question": "« Laranja » est :",
+              "type": "single_choice",
+              "options": [
+                "Orange (couleur ou fruit)",
+                "Laine",
+                "Large",
+                "Larme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot invariable pour la couleur orange."
+            },
+            {
+              "id": "q7",
+              "question": "« Roxo » correspond à :",
+              "type": "single_choice",
+              "options": ["Violet / pourpre", "Rose", "Roux", "Rond"],
+              "correctAnswers": [0],
+              "explanation": "Nuance pourpre."
+            },
+            {
+              "id": "q8",
+              "question": "« Castanho » veut dire :",
+              "type": "single_choice",
+              "options": ["Marron", "Châtaigne (couleur)", "Castor", "Casque"],
+              "correctAnswers": [0],
+              "explanation": "Couleur marron."
+            },
+            {
+              "id": "q9",
+              "question": "« Rosa » signifie :",
+              "type": "single_choice",
+              "options": ["Rose (couleur)", "Roue", "Rire", "Riz"],
+              "correctAnswers": [0],
+              "explanation": "Aussi le mot « rose » fleur."
+            },
+            {
+              "id": "q10",
+              "question": "Phrase : « O céu é azul » — « céu » et couleur :",
+              "type": "single_choice",
+              "options": [
+                "Le ciel est bleu",
+                "Le soleil est rouge",
+                "La mer est verte",
+                "La nuit est blanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Céu » = ciel."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La famille",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent des parents proches ?",
+              "type": "multiple_choice",
+              "options": ["mãe", "pai", "carro", "mesa"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Mãe » = mère, « pai » = père."
+            },
+            {
+              "id": "q2",
+              "question": "« Irmão » signifie :",
+              "type": "single_choice",
+              "options": ["Frère", "Sœur", "Oncle", "Cousin"],
+              "correctAnswers": [0],
+              "explanation": "Frère."
+            },
+            {
+              "id": "q3",
+              "question": "« Irmã » veut dire :",
+              "type": "single_choice",
+              "options": ["Sœur", "Grand-mère", "Tante", "Fille"],
+              "correctAnswers": [0],
+              "explanation": "Sœur."
+            },
+            {
+              "id": "q4",
+              "question": "Comment dit-on « fils » ?",
+              "type": "single_choice",
+              "options": ["filho", "filha", "família", "fogo"],
+              "correctAnswers": [0],
+              "explanation": "« Filho » = fils ; « filha » = fille."
+            },
+            {
+              "id": "q5",
+              "question": "« Avó » signifie :",
+              "type": "single_choice",
+              "options": ["Grand-mère", "Grand-père", "Bébé", "Voisin"],
+              "correctAnswers": [0],
+              "explanation": "« Avô » = grand-père."
+            },
+            {
+              "id": "q6",
+              "question": "« Família » veut dire :",
+              "type": "single_choice",
+              "options": ["Famille", "Faim", "Femme seulement", "Fête"],
+              "correctAnswers": [0],
+              "explanation": "Groupe familial."
+            },
+            {
+              "id": "q7",
+              "question": "« Os meus pais » signifie :",
+              "type": "single_choice",
+              "options": ["Mes parents", "Mes pays", "Mes pains", "Mes paires"],
+              "correctAnswers": [0],
+              "explanation": "« Pais » = parents (père et mère)."
+            },
+            {
+              "id": "q8",
+              "question": "« Tio » correspond à :",
+              "type": "single_choice",
+              "options": ["Oncle", "Tante", "Cousin", "Neveu"],
+              "correctAnswers": [0],
+              "explanation": "« Tia » = tante."
+            },
+            {
+              "id": "q9",
+              "question": "« Bebé » en portugais courant :",
+              "type": "single_choice",
+              "options": ["bebé", "bebe (verbe)", "biberon", "banco"],
+              "correctAnswers": [0],
+              "explanation": "Emprunt proche du français."
+            },
+            {
+              "id": "q10",
+              "question": "Phrase : « A minha mãe chama-se Teresa » — sens :",
+              "type": "single_choice",
+              "options": [
+                "Ma mère s'appelle Teresa",
+                "Ma mère est Teresa toujours malade",
+                "Teresa est ma tante",
+                "Teresa est une ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation du nom de la mère."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "À la maison",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont des pièces ou lieux de la maison ?",
+              "type": "multiple_choice",
+              "options": ["cozinha", "quarto", "céu", "mar"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Cozinha » = cuisine, « quarto » = chambre."
+            },
+            {
+              "id": "q2",
+              "question": "« Casa » signifie :",
+              "type": "single_choice",
+              "options": ["Maison", "Chaise", "Chasse", "Carte"],
+              "correctAnswers": [0],
+              "explanation": "Mot très fréquent."
+            },
+            {
+              "id": "q3",
+              "question": "« Sala » veut dire :",
+              "type": "single_choice",
+              "options": ["Salon / salle", "Sel", "Sale", "Soleil"],
+              "correctAnswers": [0],
+              "explanation": "Pièce de vie."
+            },
+            {
+              "id": "q4",
+              "question": "« Casa de banho » correspond à :",
+              "type": "single_choice",
+              "options": ["Salle de bain", "Maison banale", "Banque", "Banc"],
+              "correctAnswers": [0],
+              "explanation": "Expression portugaise pour la salle de bain."
+            },
+            {
+              "id": "q5",
+              "question": "« Porta » signifie :",
+              "type": "single_choice",
+              "options": ["Porte", "Port", "Porc", "Porter"],
+              "correctAnswers": [0],
+              "explanation": "Entrée/sortie d'une pièce."
+            },
+            {
+              "id": "q6",
+              "question": "« Janela » veut dire :",
+              "type": "single_choice",
+              "options": ["Fenêtre", "Jambe", "Janvier", "Jardin seulement"],
+              "correctAnswers": [0],
+              "explanation": "Ouverture vitrée."
+            },
+            {
+              "id": "q7",
+              "question": "« Cama » est :",
+              "type": "single_choice",
+              "options": ["Lit", "Chambre", "Chemin", "Chameau"],
+              "correctAnswers": [0],
+              "explanation": "Meuble pour dormir."
+            },
+            {
+              "id": "q8",
+              "question": "« Mesa » signifie :",
+              "type": "single_choice",
+              "options": ["Table", "Mois", "Mesure", "Mise"],
+              "correctAnswers": [0],
+              "explanation": "Meuble central."
+            },
+            {
+              "id": "q9",
+              "question": "« Cadeira » veut dire :",
+              "type": "single_choice",
+              "options": ["Chaise", "Cadre", "Cadeau", "Cahier"],
+              "correctAnswers": [0],
+              "explanation": "Siège."
+            },
+            {
+              "id": "q10",
+              "question": "« Estou em casa » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je suis à la maison",
+                "Je suis à l'école",
+                "Je suis en ville",
+                "Je suis au parc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Em casa » = à la maison."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Nourriture et boisson",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent boire et manger ?",
+              "type": "multiple_choice",
+              "options": ["água", "pão", "correr", "dormir"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Água » = eau, « pão » = pain — aliments de base."
+            },
+            {
+              "id": "q2",
+              "question": "« Leite » signifie :",
+              "type": "single_choice",
+              "options": ["Lait", "Laitue", "Loisir", "Livre"],
+              "correctAnswers": [0],
+              "explanation": "Boisson courante."
+            },
+            {
+              "id": "q3",
+              "question": "« Maçã » veut dire :",
+              "type": "single_choice",
+              "options": ["Pomme", "Maison", "Masse", "Machine"],
+              "correctAnswers": [0],
+              "explanation": "Fruit."
+            },
+            {
+              "id": "q4",
+              "question": "« Queijo » correspond à :",
+              "type": "single_choice",
+              "options": ["Fromage", "Gâteau", "Glace", "Gomme"],
+              "correctAnswers": [0],
+              "explanation": "Produit laitier."
+            },
+            {
+              "id": "q5",
+              "question": "« Fruta » signifie :",
+              "type": "single_choice",
+              "options": ["Fruit", "Fleur", "Frite", "Froid"],
+              "correctAnswers": [0],
+              "explanation": "Catégorie alimentaire."
+            },
+            {
+              "id": "q6",
+              "question": "« Tenho fome » veut dire :",
+              "type": "single_choice",
+              "options": ["J'ai faim", "J'ai soif", "J'ai froid", "J'ai chaud"],
+              "correctAnswers": [0],
+              "explanation": "« Fome » = faim."
+            },
+            {
+              "id": "q7",
+              "question": "« Tenho sede » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai soif",
+                "J'ai sommeil",
+                "J'ai peur",
+                "J'ai honte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sede » = soif."
+            },
+            {
+              "id": "q8",
+              "question": "« Arroz » est :",
+              "type": "single_choice",
+              "options": ["Riz", "Rose", "Raisin", "Râteau"],
+              "correctAnswers": [0],
+              "explanation": "Aliment de base."
+            },
+            {
+              "id": "q9",
+              "question": "« Peixe » veut dire :",
+              "type": "single_choice",
+              "options": ["Poisson", "Poids", "Piece", "Piste"],
+              "correctAnswers": [0],
+              "explanation": "Important au Portugal."
+            },
+            {
+              "id": "q10",
+              "question": "« Bom apetite » (souvent « Bom apetite! ») sert à :",
+              "type": "single_choice",
+              "options": [
+                "Souhaiter bon appétit",
+                "Dire au revoir",
+                "Demander l'heure",
+                "Saluer le matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule avant le repas."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Animaux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels animaux sont « gato » et « cão » ?",
+              "type": "multiple_choice",
+              "options": ["chat", "chien", "oiseau", "poisson"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Gato » = chat, « cão » = chien."
+            },
+            {
+              "id": "q2",
+              "question": "« Pássaro » signifie :",
+              "type": "single_choice",
+              "options": ["Oiseau", "Passage", "Pâle", "Père"],
+              "correctAnswers": [0],
+              "explanation": "Animal à plumes."
+            },
+            {
+              "id": "q3",
+              "question": "« Cavalo » veut dire :",
+              "type": "single_choice",
+              "options": ["Cheval", "Cave", "Caravane", "Carotte"],
+              "correctAnswers": [0],
+              "explanation": "Animal de ferme ou de sport."
+            },
+            {
+              "id": "q4",
+              "question": "« Vaca » correspond à :",
+              "type": "single_choice",
+              "options": ["Vache", "Vague", "Vide", "Voix"],
+              "correctAnswers": [0],
+              "explanation": "Bovin femelle."
+            },
+            {
+              "id": "q5",
+              "question": "« Peixe » (animal) signifie :",
+              "type": "single_choice",
+              "options": ["Poisson", "Pêche (fruit)", "Pic", "Pie"],
+              "correctAnswers": [0],
+              "explanation": "Vit dans l'eau."
+            },
+            {
+              "id": "q6",
+              "question": "« Rato » veut dire :",
+              "type": "single_choice",
+              "options": ["Rat / souris", "Rate", "Route", "Râteau"],
+              "correctAnswers": [0],
+              "explanation": "Petit rongeur."
+            },
+            {
+              "id": "q7",
+              "question": "« Coelho » signifie :",
+              "type": "single_choice",
+              "options": ["Lapin", "Coil", "Col", "Ciel"],
+              "correctAnswers": [0],
+              "explanation": "Animal des champs."
+            },
+            {
+              "id": "q8",
+              "question": "« Cão » — attention orthographe — signifie :",
+              "type": "single_choice",
+              "options": ["Chien", "Canapé", "Canon", "Cantine"],
+              "correctAnswers": [0],
+              "explanation": "Mot avec tilde oral sur « ão »."
+            },
+            {
+              "id": "q9",
+              "question": "« O meu gato é preto » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Mon chat est noir",
+                "Mon chien est blanc",
+                "Mon oiseau est vert",
+                "Mon cheval est bleu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase simple sujet + couleur."
+            },
+            {
+              "id": "q10",
+              "question": "« Animal de estimação » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Animal de compagnie",
+                "Animal sauvage",
+                "Animal de ferme seulement",
+                "Animal marin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Estimação » = affection/compagnie."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "École et objets",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots appartiennent à la trousse scolaire ?",
+              "type": "multiple_choice",
+              "options": ["livro", "lápis", "futebol", "oceano"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Livro » = livre, « lápis » = crayon."
+            },
+            {
+              "id": "q2",
+              "question": "« Escola » signifie :",
+              "type": "single_choice",
+              "options": ["École", "Escalier", "Escorte", "Espace"],
+              "correctAnswers": [0],
+              "explanation": "Lieu d'apprentissage."
+            },
+            {
+              "id": "q3",
+              "question": "« Professor / professora » veut dire :",
+              "type": "single_choice",
+              "options": ["Professeur", "Projet", "Programme", "Progrès"],
+              "correctAnswers": [0],
+              "explanation": "Genre marqué par la terminaison."
+            },
+            {
+              "id": "q4",
+              "question": "« Caderno » correspond à :",
+              "type": "single_choice",
+              "options": ["Cahier", "Cadre", "Cadeau", "Carreau"],
+              "correctAnswers": [0],
+              "explanation": "Notebook."
+            },
+            {
+              "id": "q5",
+              "question": "« Caneta » signifie :",
+              "type": "single_choice",
+              "options": ["Stylo", "Canette", "Carotte", "Carte"],
+              "correctAnswers": [0],
+              "explanation": "Instrument d'écriture."
+            },
+            {
+              "id": "q6",
+              "question": "« Mochila » veut dire :",
+              "type": "single_choice",
+              "options": ["Sac à dos", "Moche", "Mocheur", "Mouchoir"],
+              "correctAnswers": [0],
+              "explanation": "Pour transporter les affaires."
+            },
+            {
+              "id": "q7",
+              "question": "« Sala de aula » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Salle de classe",
+                "Salle de bain",
+                "Salle de sport",
+                "Salle à manger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Aula » = cours/classe."
+            },
+            {
+              "id": "q8",
+              "question": "« Deveres de casa » correspond à :",
+              "type": "single_choice",
+              "options": [
+                "Devoirs à la maison",
+                "Dîner à la maison",
+                "Draps de lit",
+                "Décorations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travail scolaire à domicile."
+            },
+            {
+              "id": "q9",
+              "question": "« Estudar » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Étudier",
+                "Estiver (être)",
+                "Escalader",
+                "Essayer seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe régulier en -ar."
+            },
+            {
+              "id": "q10",
+              "question": "Phrase : « Tenho aula de português » — sens :",
+              "type": "single_choice",
+              "options": [
+                "J'ai cours de portugais",
+                "J'ai peur du portugais",
+                "Je mange du portugais",
+                "Je vends du portugais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Aula de » = cours de."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Jours et moments",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels jours sont « segunda-feira » et « sexta-feira » ?",
+              "type": "multiple_choice",
+              "options": ["lundi", "vendredi", "dimanche", "mercredi"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Segunda-feira » = lundi, « sexta-feira » = vendredi."
+            },
+            {
+              "id": "q2",
+              "question": "« Domingo » signifie :",
+              "type": "single_choice",
+              "options": ["Dimanche", "Lundi", "Mardi", "Jeudi"],
+              "correctAnswers": [0],
+              "explanation": "Premier jour du week-end chretien."
+            },
+            {
+              "id": "q3",
+              "question": "« Hoje » veut dire :",
+              "type": "single_choice",
+              "options": ["Aujourd'hui", "Hier", "Demain", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe de temps."
+            },
+            {
+              "id": "q4",
+              "question": "« Amanhã » signifie :",
+              "type": "single_choice",
+              "options": ["Demain", "Matin", "Mois", "Minute"],
+              "correctAnswers": [0],
+              "explanation": "Jour suivant."
+            },
+            {
+              "id": "q5",
+              "question": "« Ontem » correspond à :",
+              "type": "single_choice",
+              "options": ["Hier", "Or", "Heure", "Ordre"],
+              "correctAnswers": [0],
+              "explanation": "Passé proche."
+            },
+            {
+              "id": "q6",
+              "question": "« Manhã » veut dire :",
+              "type": "single_choice",
+              "options": ["Matin", "Main", "Manche", "Manger"],
+              "correctAnswers": [0],
+              "explanation": "Dans « bom dia » on souhaite une bonne journée matinale."
+            },
+            {
+              "id": "q7",
+              "question": "« Tarde » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Après-midi / tard",
+                "Tarte",
+                "Tardif seulement en nom",
+                "Tare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utilisé dans « boa tarde »."
+            },
+            {
+              "id": "q8",
+              "question": "« Noite » veut dire :",
+              "type": "single_choice",
+              "options": ["Nuit / soirée", "Note", "Nord", "Nom"],
+              "correctAnswers": [0],
+              "explanation": "« Boa noite » le soir."
+            },
+            {
+              "id": "q9",
+              "question": "« Que horas são? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Quelle heure est-il ?",
+                "Quel jour sommes-nous ?",
+                "Quelle année ?",
+                "Quelle couleur ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question d'horloge."
+            },
+            {
+              "id": "q10",
+              "question": "« Terça-feira » est :",
+              "type": "single_choice",
+              "options": ["Mardi", "Mercredi", "Jeudi", "Samedi"],
+              "correctAnswers": [0],
+              "explanation": "Troisième jour ouvré (terça = troisième)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Corps et santé simple",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent des parties du corps ?",
+              "type": "multiple_choice",
+              "options": ["cabeça", "mão", "mesa", "porta"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Cabeça » = tête, « mão » = main."
+            },
+            {
+              "id": "q2",
+              "question": "« Olho » signifie :",
+              "type": "single_choice",
+              "options": ["Œil", "Oreille", "Ongle", "Os"],
+              "correctAnswers": [0],
+              "explanation": "Organe de la vue."
+            },
+            {
+              "id": "q3",
+              "question": "« Orelha » veut dire :",
+              "type": "single_choice",
+              "options": ["Oreille", "Orage", "Orange", "Ordre"],
+              "correctAnswers": [0],
+              "explanation": "Partie du visage/côté tête."
+            },
+            {
+              "id": "q4",
+              "question": "« Nariz » correspond à :",
+              "type": "single_choice",
+              "options": ["Nez", "Nerve", "Nord", "Nage"],
+              "correctAnswers": [0],
+              "explanation": "Pour sentir."
+            },
+            {
+              "id": "q5",
+              "question": "« Boca » signifie :",
+              "type": "single_choice",
+              "options": ["Bouche", "Boîte", "Bois", "Botte"],
+              "correctAnswers": [0],
+              "explanation": "Pour parler et manger."
+            },
+            {
+              "id": "q6",
+              "question": "« Pé » (pluriel « pés ») veut dire :",
+              "type": "single_choice",
+              "options": ["Pied", "Peau", "Poil", "Pont"],
+              "correctAnswers": [0],
+              "explanation": "Extrémité inférieure."
+            },
+            {
+              "id": "q7",
+              "question": "« Braço » signifie :",
+              "type": "single_choice",
+              "options": ["Bras", "Branche", "Braise", "Bravo"],
+              "correctAnswers": [0],
+              "explanation": "Membre supérieur."
+            },
+            {
+              "id": "q8",
+              "question": "« Estou doente » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Je suis malade",
+                "Je suis content",
+                "Je suis grand",
+                "Je suis prêt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Doente » = malade."
+            },
+            {
+              "id": "q9",
+              "question": "« Dor de cabeça » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Mal de tête",
+                "Mal de ventre",
+                "Mal de dent",
+                "Mal de dos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Cabeça » = tête."
+            },
+            {
+              "id": "q10",
+              "question": "« Sinto-me bem » correspond à :",
+              "type": "single_choice",
+              "options": [
+                "Je me sens bien",
+                "Je me sens triste",
+                "Je me sens perdu",
+                "Je me sens en colère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sentir-se » = se sentir."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision des mots essentiels",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots français correspondent à « sim » et « não » ?",
+              "type": "multiple_choice",
+              "options": ["oui", "non", "peut-être", "jamais"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Sim » = oui, « não » = non."
+            },
+            {
+              "id": "q2",
+              "question": "« Sim » signifie :",
+              "type": "single_choice",
+              "options": ["Oui", "Non", "Si (condition)", "Six"],
+              "correctAnswers": [0],
+              "explanation": "Réponse affirmative."
+            },
+            {
+              "id": "q3",
+              "question": "« Não » veut dire :",
+              "type": "single_choice",
+              "options": ["Non", "Nom", "Nain", "Nage"],
+              "correctAnswers": [0],
+              "explanation": "Réponse négative."
+            },
+            {
+              "id": "q4",
+              "question": "« Talvez » correspond à :",
+              "type": "single_choice",
+              "options": ["Peut-être", "Tard", "Table", "Talent"],
+              "correctAnswers": [0],
+              "explanation": "Incertitude."
+            },
+            {
+              "id": "q5",
+              "question": "« Aqui » signifie :",
+              "type": "single_choice",
+              "options": ["Ici", "Là-bas", "Partout", "Nulle part"],
+              "correctAnswers": [0],
+              "explanation": "Lieu proche."
+            },
+            {
+              "id": "q6",
+              "question": "« Ali » veut dire :",
+              "type": "single_choice",
+              "options": ["Là-bas", "Ici", "Haut", "Bas"],
+              "correctAnswers": [0],
+              "explanation": "Lieu éloigné visible."
+            },
+            {
+              "id": "q7",
+              "question": "« Grande » (fém.) / « grande » décrit :",
+              "type": "single_choice",
+              "options": ["Grand", "Petit", "Rapide", "Lent"],
+              "correctAnswers": [0],
+              "explanation": "Taille importante."
+            },
+            {
+              "id": "q8",
+              "question": "« Pequeno / pequena » signifie :",
+              "type": "single_choice",
+              "options": ["Petit", "Poids", "Peinture", "Pêche"],
+              "correctAnswers": [0],
+              "explanation": "Opposé de grand."
+            },
+            {
+              "id": "q9",
+              "question": "« Amigo / amiga » veut dire :",
+              "type": "single_choice",
+              "options": ["Ami / amie", "Amour", "Ambigu", "Ample"],
+              "correctAnswers": [0],
+              "explanation": "Relation d'amitié."
+            },
+            {
+              "id": "q10",
+              "question": "Phrase utile en classe : « Não percebo. Podes repetir, por favor? » — sens :",
+              "type": "single_choice",
+              "options": [
+                "Je ne comprends pas. Peux-tu répéter, s'il te plaît ?",
+                "Je comprends tout. Merci.",
+                "Au revoir professeur.",
+                "J'ai faim."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combinaison de politesse et demande de répétition."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

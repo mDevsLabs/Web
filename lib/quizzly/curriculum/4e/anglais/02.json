@@ -1,0 +1,2668 @@
+{
+  "id": "4e-anglais-02",
+  "year": "4e",
+  "subject": "anglais",
+  "title": "Médias et information",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "La presse",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Découvrir la presse écrite",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots anglais désignent une publication périodique papier ou en ligne ?",
+              "options": ["newspaper", "magazine", "headline", "byline"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Newspaper » est un journal ; « magazine » est un magazine, tous deux sont des supports de presse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le mot anglais « headline » ?",
+              "options": [
+                "Un article de fond",
+                "Le titre principal d'une une",
+                "Une photo d'actualité",
+                "La dernière page"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Headline » désigne le gros titre en une, celui qui accroche le lecteur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « journaliste » en anglais ?",
+              "options": ["editor", "journalist", "publisher", "reader"],
+              "correctAnswers": [1],
+              "explanation": "Un « journalist » recueille et rédige l'information pour le public."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que veut dire « front page » ?",
+              "options": [
+                "La page des sports",
+                "La première page du journal",
+                "Le sommaire",
+                "Les petites annonces"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La « front page » est la une, la page la plus visible du journal."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot anglais correspond à « article » (texte de presse) ?",
+              "options": ["caption", "article", "cartoon", "advertisement"],
+              "correctAnswers": [1],
+              "explanation": "Un « article » est un texte d'information ou d'analyse dans un média."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Daily » dans « The Daily News » indique surtout…",
+              "options": [
+                "Un hebdomadaire",
+                "Un quotidien",
+                "Un mensuel",
+                "Un site sans date"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Daily » signifie « quotidien », publié chaque jour."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « news » ?",
+              "options": [
+                "Des opinions personnelles",
+                "Des informations sur l'actualité",
+                "Des histoires inventées",
+                "Des publicités"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« News » regroupe les faits et événements récents rapportés par la presse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un « editor » est surtout…",
+              "options": [
+                "Le lecteur du journal",
+                "La personne qui dirige et valide la rédaction",
+                "Le livreur",
+                "Le photographe uniquement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'« editor » (rédacteur en chef) supervise le contenu et la ligne éditoriale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Press » peut désigner…",
+              "options": [
+                "Uniquement une presse à imprimer",
+                "L'ensemble des médias écrits et parfois la presse en général",
+                "Seulement la télévision",
+                "Les réseaux sociaux exclusivement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« The press » désigne souvent les journaux et, au sens large, les médias d'information."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Où lit-on habituellement un « report » dans un journal ?",
+              "options": [
+                "Dans le bandeau publicitaire",
+                "Dans la partie information, comme un compte rendu",
+                "Uniquement en couverture de magazine de mode",
+                "Dans les mots croisés seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un « report » est un reportage, un récit factuel d'un événement."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La une et la mise en page",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments peuvent apparaître en une d'un journal anglophone ?",
+              "options": [
+                "headline",
+                "photograph",
+                "recipe only",
+                "main story"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "La une combine souvent un gros titre (« headline ») et le sujet principal (« main story »), parfois avec photo."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie « caption » sous une photo ?",
+              "options": [
+                "Le titre du journal",
+                "La légende explicative de l'image",
+                "Le nom de l'imprimerie",
+                "La date de naissance du photographe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La « caption » est la légende qui décrit ou contextualise la photo."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Layout » en presse désigne…",
+              "options": [
+                "La langue du journal",
+                "La disposition des textes et images sur la page",
+                "Le prix du kiosque",
+                "Le tirage papier uniquement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le « layout » est la mise en page, l'organisation visuelle du contenu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un « column » dans un journal est…",
+              "options": [
+                "Une colonne de texte ou une rubrique régulière",
+                "Un type de caméra",
+                "Un abonnement",
+                "Une erreur d'impression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une « column » peut être une colonne typographique ou une chronique signée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Breaking news » signifie…",
+              "options": [
+                "Une vieille nouvelle",
+                "Une information très récente et urgente",
+                "Un horoscope",
+                "Une bande dessinée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Breaking news » annonce une info fraîche, souvent en direct ou en une."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que veut dire « issue » pour un magazine ?",
+              "options": [
+                "Un problème juridique",
+                "Un numéro paru à une date donnée",
+                "Une page blanche",
+                "Un refus de publication"
+              ],
+              "correctAnswers": [1],
+              "explanation": "An « issue » est un numéro (ex. : the March issue)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Subheading » correspond à…",
+              "options": [
+                "Le sous-titre sous le titre principal",
+                "La publicité du bas de page",
+                "La météo",
+                "Le classement sportif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « subheading » précise ou complète le titre principal."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Broadsheet » désigne souvent…",
+              "options": [
+                "Un journal au grand format, sérieux",
+                "Un journal satirique uniquement",
+                "Un livre scolaire",
+                "Une application mobile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « broadsheet » est un grand journal format « quality press », par opposition au tabloïd."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Tabloid » évoque plutôt…",
+              "options": [
+                "Un format compact et un ton parfois sensationnel",
+                "Un dictionnaire",
+                "Un manuel de grammaire",
+                "Une encyclopédie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les « tabloids » sont des journaux au format réduit, parfois très people ou sensationnels."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Byline » indique…",
+              "options": [
+                "La ligne de métro",
+                "Le nom de l'auteur de l'article",
+                "Le prix du numéro",
+                "La marge de la page"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La « byline » affiche la signature du journaliste qui a écrit le texte."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Rubriques et genres",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles rubriques anglaises correspondent à des pages d'actualité courantes ?",
+              "options": ["sports", "weather", "fiction only", "business"],
+              "correctAnswers": [0, 3],
+              "explanation": "« Sports » et « business » sont des sections classiques ; « weather » est la météo."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Opinion » ou « editorial » désigne surtout…",
+              "options": [
+                "Un texte neutre sans point de vue",
+                "Un texte qui exprime la position du journal ou d'un auteur",
+                "Une liste de courses",
+                "Une page de publicité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'« editorial » est une tribune éditoriale, distincte du pur reportage factuel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une « interview » en anglais est…",
+              "options": [
+                "Un entretien question-réponse publié",
+                "Une bande-annonce de film",
+                "Un horaire de train",
+                "Un jeu télévisé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une « interview » met en scène des questions posées à une personnalité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Cartoon » dans un journal peut être…",
+              "options": [
+                "Un dessin satirique ou d'actualité",
+                "Un roman entier",
+                "Un contrat légal",
+                "Un abonnement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les « cartoons » sont des dessins de presse, souvent humoristiques ou critiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Local news » traite…",
+              "options": [
+                "Uniquement la politique étrangère",
+                "L'actualité de la région ou de la ville",
+                "Seulement le sport international",
+                "Les faits scientifiques mondiaux exclusivement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Local news » couvre ce qui se passe près du lecteur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« International section » signifie…",
+              "options": [
+                "Rubrique consacrée aux nouvelles du monde",
+                "Page de jeux",
+                "Catalogue de mode",
+                "Météo locale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette section regroupe les événements hors du pays ou à l'échelle mondiale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un « feature article » est…",
+              "options": [
+                "Un texte très court sans titre",
+                "Un article de fond, souvent plus long",
+                "Une publicité déguisée obligatoire",
+                "Un horoscope"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un « feature » développe un sujet en profondeur, au-delà de la brève."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Letters to the editor » permet…",
+              "options": [
+                "Aux lecteurs de réagir par écrit",
+                "Aux journalistes de signer anonymement",
+                "De supprimer tous les articles",
+                "De changer la langue du journal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les « letters to the editor » publient des courriers de lecteurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Obituary » correspond à…",
+              "options": [
+                "Un faire-part de décès",
+                "Un concours de cuisine",
+                "Un bandeau météo",
+                "Une page de sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une « obituary » est un necrologie, hommage à une personne décédée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Review » dans la presse culturelle désigne…",
+              "options": [
+                "Une critique (livre, film, etc.)",
+                "Un relevé bancaire",
+                "Un permis de conduire",
+                "Un horaire scolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A « review » juge et commente une œuvre ou un événement culturel."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Vocabulaire du journaliste",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots anglais désignent des acteurs de la rédaction ?",
+              "options": ["reporter", "headline", "editor", "correspondent"],
+              "correctAnswers": [0, 3],
+              "explanation": "Le « reporter » et le « correspondent » sont des journalistes de rédaction ; « headline » est un titre, pas une personne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un « correspondent » est…",
+              "options": [
+                "Un envoyé spécial ou permanent à l'étranger ou sur un beat",
+                "Un imprimeur",
+                "Un kiosquier",
+                "Un lecteur abonné"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « correspondent » envoie des articles depuis un lieu ou un domaine précis."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Source » pour un journaliste signifie…",
+              "options": [
+                "Une personne ou un document qui fournit l'information",
+                "Le logo du journal",
+                "La taille de la police",
+                "Le prix du numéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une « source » est celui ou ce qui donne les faits ou les déclarations."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Quote » dans un article est…",
+              "options": [
+                "Une citation entre guillemets",
+                "Un type de papier",
+                "Une page de sport",
+                "Un abonnement annuel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A « quote » reprend les paroles exactes d'une personne interviewée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Deadline » pour la rédaction, c'est…",
+              "options": [
+                "La date limite pour rendre un article",
+                "La mort d'un personnage",
+                "Un titre de film",
+                "Une rubrique météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La « deadline » est l'heure ou le jour où le texte doit être prêt pour parution."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Press conference » signifie…",
+              "options": [
+                "Conférence de presse",
+                "Réunion de parents",
+                "Concert",
+                "Match de football"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une « press conference » réunit journalistes et porte-parole pour questions-réponses."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Witness » dans un reportage est…",
+              "options": [
+                "Un témoin oculaire ou auditif",
+                "Un dessinateur",
+                "Un abonné",
+                "Un publicitaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « witness » a vu ou entendu l'événement et peut le raconter."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Leak » au sens médiatique évoque…",
+              "options": [
+                "Une fuite d'information confidentielle vers la presse",
+                "Une fuite d'eau",
+                "Une erreur de grammaire",
+                "Une coupure d'électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A « leak » désigne la divulgation non officielle de documents ou secrets."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Fact-checking » avant publication sert à…",
+              "options": [
+                "Vérifier l'exactitude des faits",
+                "Augmenter les publicités",
+                "Changer la langue",
+                "Supprimer les photos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « fact-checking » contrôle dates, chiffres et affirmations."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Press freedom » désigne…",
+              "options": [
+                "La liberté de la presse",
+                "La gratuité du journal",
+                "L'absence de titres",
+                "Interdiction d'interviewer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Press freedom » est le droit d'informer sans censure abusive."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Publicité et lectorat",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes anglais concernent le financement ou la diffusion d'un journal ?",
+              "options": [
+                "advertisement",
+                "subscription",
+                "headline",
+                "circulation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les « advertisements » (pubs) et les « subscriptions » (abonnements) aident à financer la presse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Advertisement » ou « ad » désigne…",
+              "options": [
+                "Une publicité",
+                "Un éditorial",
+                "Un témoin",
+                "Une une"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une « ad » est un message commercial payant dans le média."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un « subscriber » est…",
+              "options": [
+                "Un abonné qui reçoit le journal régulièrement",
+                "Un dessinateur",
+                "Un juge",
+                "Un imprimeur obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « subscriber » paie pour recevoir les numéros."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Circulation » mesure surtout…",
+              "options": [
+                "Le nombre d'exemplaires vendus ou diffusés",
+                "La vitesse du vent",
+                "La température",
+                "Le nombre de photos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La « circulation » indique combien de copies atteignent les lecteurs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Readership » évoque…",
+              "options": [
+                "L'ensemble des lecteurs",
+                "Uniquement les auteurs",
+                "Les encres d'imprimerie",
+                "Les caméras TV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « readership » désigne le public qui lit le titre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Kiosk » ou « newsstand » désigne…",
+              "options": [
+                "Un point de vente de journaux",
+                "Une rédaction",
+                "Un tribunal",
+                "Un studio radio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On achète souvent le journal au « newsstand » ou au kiosque."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Sponsored content » signifie…",
+              "options": [
+                "Un contenu payé par un annonceur, à lire avec prudence",
+                "Un article gratuit sans auteur",
+                "Une page blanche",
+                "Un horoscope officiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contenu sponsorisé est financé par une marque et doit être identifié."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Target audience » désigne…",
+              "options": [
+                "Le public visé par le journal ou l'article",
+                "Les cibles de tir sportif",
+                "Les imprimeurs",
+                "Les avocats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La « target audience » est le lectorat auquel s'adresse le média."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Bias » dans les médias suggère…",
+              "options": [
+                "Un parti pris ou une inclinaison dans le traitement",
+                "Une absence totale d'information",
+                "Un format de papier",
+                "Une langue étrangère interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « bias » est un biais éditorial ou de sélection des faits."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Independent press » évoque…",
+              "options": [
+                "Une presse non contrôlée par un seul pouvoir politique ou économique",
+                "Un journal sans texte",
+                "Un magazine gratuit illégal",
+                "Une presse sans lecteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une presse « independent » garde une autonomie éditoriale relative."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Presse papier et numérique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots anglais renvoient à la presse en ligne ?",
+              "options": [
+                "online edition",
+                "website",
+                "printing press only",
+                "news app"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une « online edition » et le « website » du média diffusent l'info sur Internet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Digital subscription » signifie…",
+              "options": [
+                "Abonnement numérique au contenu en ligne",
+                "Achat d'une imprimante",
+                "Carte de métro",
+                "Licence de conduire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On s'abonne au site ou à l'application sans recevoir le papier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Paywall » désigne…",
+              "options": [
+                "Un mur payant bloquant certains articles",
+                "Un mur de briques",
+                "Une page météo",
+                "Un concours photo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « paywall » demande de payer ou de s'inscrire pour lire la suite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Newsletter » est…",
+              "options": [
+                "Une lettre d'information envoyée par e-mail",
+                "Un journal papier du XIXe siècle uniquement",
+                "Un jeu vidéo",
+                "Un tribunal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La « newsletter » résume l'actualité ou une thématique par mail."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Podcast » lié à la presse peut…",
+              "options": [
+                "Proposer des enquêtes audio",
+                "Remplacer obligatoirement tous les livres",
+                "Supprimer le droit de réponse",
+                "Interdire les interviews"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De nombreux médias proposent des « podcasts » d'actualité ou de reportage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Live blog » sert à…",
+              "options": [
+                "Suivre un événement en direct avec des mises à jour",
+                "Publier un roman",
+                "Vendre des timbres",
+                "Diffuser uniquement de la musique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « live blog » actualise minute par minute un match, une élection, etc."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Archive » sur un site de presse permet…",
+              "options": [
+                "Consulter d'anciens articles",
+                "Effacer toute l'histoire",
+                "Changer de langue automatiquement",
+                "Imprimer sans électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les « archives » conservent les textes publiés auparavant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Print edition » oppose souvent…",
+              "options": [
+                "Le journal papier à la version numérique",
+                "Deux langues identiques",
+                "Deux auteurs identiques",
+                "Deux dates identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La « print edition » est le numéro physique imprimé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Share » un article signifie…",
+              "options": [
+                "Le republier sur les réseaux ou par lien",
+                "Le déchirer",
+                "Le brûler",
+                "Le traduire automatiquement en latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Share » envoie le lien à d'autres lecteurs via apps ou réseaux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Notification » d'une appli de presse sert à…",
+              "options": [
+                "Alerter d'une info importante",
+                "Couper Internet",
+                "Masquer tous les titres",
+                "Supprimer l'abonnement sans le dire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les notifications poussent une « breaking news » sur le téléphone."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Lire un article en anglais",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots anglais indiquent la structure d'un article ?",
+              "options": [
+                "introduction",
+                "conclusion",
+                "weather forecast only",
+                "paragraph"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "L'« introduction » ouvre le texte ; les « paragraphs » organisent le développement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« According to » introduit souvent…",
+              "options": [
+                "Une source ou une référence",
+                "Une blague sans fond",
+                "Une recette",
+                "Un horaire de bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« According to the minister… » cite une autorité ou un document."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Claim » dans un article signifie souvent…",
+              "options": [
+                "Affirmer quelque chose (parfois à vérifier)",
+                "Acheter un journal",
+                "Fermer la rédaction",
+                "Changer de photo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« He claims that… » présente une déclaration qui demande confirmation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Reportedly » suggère…",
+              "options": [
+                "Une information rapportée sans confirmation totale",
+                "Une certitude scientifique absolue",
+                "Une interdiction légale",
+                "Une page publicitaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Reportedly » signifie « selon ce qu'on rapporte », avec prudence."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« In addition » sert à…",
+              "options": [
+                "Ajouter une information",
+                "Conclure définitivement",
+                "Supprimer un paragraphe",
+                "Changer de sujet sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« In addition » enchaîne avec un complément d'information."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« However » exprime…",
+              "options": [
+                "Une opposition ou nuance",
+                "Un accord total",
+                "Une publicité",
+                "Une date exacte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« However » introduit un contraste avec ce qui précède."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Figure » dans « a key figure » désigne…",
+              "options": [
+                "Une personnalité importante",
+                "Un chiffre de géométrie uniquement",
+                "Une statue sans rôle",
+                "Un type de papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A « key figure » est une personne centrale dans l'histoire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Data » est le pluriel anglais de…",
+              "options": [
+                "Datum (donnée)",
+                "Date (rendez-vous)",
+                "Day (jour)",
+                "Debate (débat)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Data » regroupe des « datum », les faits chiffrés ou mesurés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Official » dans « official statement » veut dire…",
+              "options": [
+                "Officiel, émanant de l'autorité",
+                "Secret",
+                "Inventé",
+                "Satire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une « official statement » est communiquée par une institution reconnue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Summary » correspond à…",
+              "options": [
+                "Un résumé",
+                "Un roman",
+                "Une bande-annonce de cinéma",
+                "Un permis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « summary » condense les points essentiels de l'article."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Titres et accroches",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels titres anglais sont typiques de une sensationnaliste ?",
+              "options": [
+                "Shock!",
+                "Scandal",
+                "Quiet annual report",
+                "Exclusive: major crisis"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Shock! » et « Scandal » visent l'émotion forte pour attirer le clic ou l'achat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Exclusive » sur un titre promet…",
+              "options": [
+                "Une information obtenue en premier par ce média",
+                "Un texte copié partout",
+                "Une page vide",
+                "Une météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Exclusive » signale un scoop ou un angle unique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Clickbait » désigne…",
+              "options": [
+                "Un titre exagéré pour provoquer le clic",
+                "Un article très long et sourcé",
+                "Un dictionnaire",
+                "Un abonnement gratuit garanti"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « clickbait » privilégie l'accroche trompeuse ou excessive."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un titre neutre en anglais pourrait être…",
+              "options": [
+                "City council votes on budget",
+                "You won't believe what happened!!!",
+                "Secret trick doctors hate",
+                "Buy now forever"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un titre factuel décrit l'événement sans surpromesse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Rumour » ou « rumor » dans un titre alerte…",
+              "options": [
+                "Qu'il s'agit d'une rumeur non confirmée",
+                "Qu'il s'agit d'une loi votée",
+                "Qu'il s'agit d'un horoscope",
+                "Qu'il s'agit d'une recette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Rumor » indique une information circulant sans preuve solide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Update » dans un titre en ligne signifie…",
+              "options": [
+                "Mise à jour de l'information",
+                "Fin définitive du sujet",
+                "Suppression de l'article",
+                "Changement de langue du site"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Update » précise que de nouveaux éléments ont été ajoutés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Analysis » dans un titre annonce…",
+              "options": [
+                "Un texte d'explication approfondie",
+                "Une simple photo",
+                "Une liste de courses",
+                "Un jeu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Analysis » propose une mise en perspective, pas seulement des faits bruts."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Opinion: » en en-tête signale…",
+              "options": [
+                "Une chronique subjective",
+                "Un communiqué de police officiel",
+                "Un horaire TV",
+                "Une publicité cachée obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le label « Opinion » distingue le point de vue de la pure info."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Who, what, when, where » rappelle…",
+              "options": [
+                "Les questions de base du journalisme",
+                "Les règles du football uniquement",
+                "La grammaire du passé simple français",
+                "Le code de la route"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces mots interrogatifs structurent le récit des faits."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Misleading headline » désigne…",
+              "options": [
+                "Un titre qui induit le lecteur en erreur",
+                "Un titre parfaitement exact",
+                "Une légende de photo",
+                "Un abonnement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un titre « misleading » ne correspond pas au contenu réel de l'article."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Presse anglophone et civisme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots anglais relient presse et démocratie ?",
+              "options": [
+                "freedom of speech",
+                "press freedom",
+                "click only",
+                "censorship approval"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La « freedom of speech » et la « press freedom » protègent le débat public."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Whistleblower » désigne…",
+              "options": [
+                "Une personne qui alerte sur un scandale ou un danger",
+                "Un sifflet de sport",
+                "Un abonné silencieux",
+                "Un photographe de mode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « whistleblower » révèle des faits graves au public ou aux autorités."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Censorship » signifie…",
+              "options": [
+                "Censure, contrôle ou suppression de l'information",
+                "Liberté totale sans limite",
+                "Augmentation des ventes",
+                "Traduction automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La « censorship » empêche ou filtre la publication."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Public interest » dans le journalisme évoque…",
+              "options": [
+                "L'intérêt général de la société à être informée",
+                "Le profit d'une seule entreprise",
+                "Un concours de beauté",
+                "Un jeu télévisé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Public interest » justifie parfois la publication de sujets sensibles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Right of reply » correspond à…",
+              "options": [
+                "Le droit de réponse",
+                "Le droit de ne jamais lire",
+                "Le droit de censurer",
+                "Le droit de pirater"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « right of reply » permet de corriger ou contester une mise en cause."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Media literacy » désigne…",
+              "options": [
+                "La capacité à comprendre et critiquer les médias",
+                "Savoir imprimer un journal",
+                "Parler anglais sans accent",
+                "Conduire un camion de livraison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La « media literacy » inclut repérer biais, sources et fake news."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Code of ethics » pour journalistes est…",
+              "options": [
+                "Un code de déontologie",
+                "Un code postal",
+                "Un code de la route",
+                "Un code vestimentaire obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « code of ethics » fixe règles de vérité, respect et indépendance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Plagiarism » en presse c'est…",
+              "options": [
+                "Copier le travail d'autrui sans crédit",
+                "Citer correctement une source",
+                "Signer son article",
+                "Vérifier les faits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « plagiarism » vole le texte ou l'idée d'un autre journaliste."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Transparency » éditoriale signifie…",
+              "options": [
+                "Clarté sur les sources et les conflits d'intérêts",
+                "Absence de titre",
+                "Suppression des photos",
+                "Interdiction des interviews"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La « transparency » aide le lecteur à juger la fiabilité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Citizen journalist » désigne…",
+              "options": [
+                "Un citoyen qui diffuse de l'info, souvent en ligne",
+                "Un ministre",
+                "Un robot",
+                "Un abonné papier uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « citizen journalist » témoigne ou publie sans être professionnel de rédaction."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan — la presse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes anglais désignent des formats de presse écrite ?",
+              "options": [
+                "broadsheet",
+                "tabloid",
+                "podcast episode only as paper",
+                "magazine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Broadsheet » et « tabloid » sont deux formats de journaux papier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La une d'un journal s'appelle en anglais…",
+              "options": [
+                "front page",
+                "back cover only",
+                "index card",
+                "weather map always"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La « front page » présente l'info la plus importante du jour."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le gros titre principal est…",
+              "options": [
+                "headline",
+                "footnote",
+                "caption only for ads",
+                "subscription"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « headline » résume l'événement en une ligne frappante."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La personne qui écrit l'article signe la…",
+              "options": ["byline", "paywall", "rumour", "clickbait"],
+              "correctAnswers": [0],
+              "explanation": "La « byline » affiche le nom du journaliste."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un texte d'opinion du journal est un…",
+              "options": [
+                "editorial",
+                "obituary always",
+                "cartoon only",
+                "weather chart"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'« editorial » exprime la ligne du titre ou d'un chroniqueur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une information très récente est souvent…",
+              "options": [
+                "breaking news",
+                "ancient history",
+                "classified ad only",
+                "crossword clue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Breaking news » marque l'urgence et la nouveauté."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour lire en ligne sans papier, on consulte…",
+              "options": [
+                "the online edition",
+                "the printing press machine",
+                "the newsstand only",
+                "the obituary page only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'« online edition » est la version numérique du titre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vérifier les faits avant parution, c'est du…",
+              "options": [
+                "fact-checking",
+                "clickbait",
+                "plagiarism",
+                "censorship always good"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « fact-checking » limite les erreurs et les rumeurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le droit d'informer sans censure abusive est la…",
+              "options": [
+                "press freedom",
+                "paywall",
+                "advertisement",
+                "rumour mill"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Press freedom » est un pilier des démocraties."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un reportage factuel long peut être un…",
+              "options": [
+                "feature / report",
+                "blank page",
+                "lottery ticket",
+                "weather joke"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « report » ou « feature » développe un sujet d'actualité."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Vérifier une information",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Fake news et rumeurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes anglais désignent une fausse information ?",
+              "options": [
+                "fake news",
+                "misinformation",
+                "verified report",
+                "fact-checked article"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Fake news » et « misinformation » décrivent des infos fausses ou trompeuses."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Rumour » (rumor) signifie…",
+              "options": ["Une rumeur", "Une loi", "Un abonnement", "Une une"],
+              "correctAnswers": [0],
+              "explanation": "Une « rumour » circule sans preuve officielle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Hoax » désigne…",
+              "options": [
+                "Une canular ou un piège délibéré",
+                "Un communiqué officiel",
+                "Un dictionnaire",
+                "Un match sportif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « hoax » est une fausseté fabriquée pour tromper."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Disinformation » implique souvent…",
+              "options": [
+                "Une intention de tromper",
+                "Une simple faute de frappe",
+                "Une citation exacte",
+                "Un titre neutre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La « disinformation » est diffusée sciemment pour manipuler."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Viral » pour un post signifie…",
+              "options": [
+                "Partagé massivement en peu de temps",
+                "Supprimé immédiatement",
+                "Invisible",
+                "Imprimé en une"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un contenu « viral » se propage très vite en ligne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Deepfake » évoque…",
+              "options": [
+                "Une vidéo ou image truquée par IA",
+                "Un article signé",
+                "Une archive papier",
+                "Un horoscope"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « deepfake » imite une personne ou une scène de façon trompeuse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Satire » diffère d'une fake news car…",
+              "options": [
+                "Elle vise l'humour ou la critique, souvent identifiable",
+                "Elle est toujours une arnaque bancaire",
+                "Elle est interdite",
+                "Elle n'utilise jamais d'images"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La « satire » peut ressembler à l'info mais cherche à moquer, pas à mentir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Conspiracy theory » signifie…",
+              "options": [
+                "Théorie du complot",
+                "Théorème de maths",
+                "Météo",
+                "Recette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une « conspiracy theory » explique un événement par un complot secret."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Debunk » veut dire…",
+              "options": [
+                "Démystifier ou réfuter une fausse info",
+                "Publier sans lire",
+                "Copier-coller",
+                "Supprimer Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Debunk » expose les preuves contre une rumeur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avant de partager, il vaut mieux…",
+              "options": [
+                "Vérifier la source",
+                "Cliquer le plus vite possible",
+                "Ignorer la date",
+                "Croire le titre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrôler la source limite la diffusion de fake news."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Sources fiables",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots anglais suggèrent une source plus fiable ?",
+              "options": [
+                "official website",
+                "peer-reviewed study",
+                "anonymous chat only",
+                "random comment"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un site « official » et une étude « peer-reviewed » passent des contrôles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Primary source » est…",
+              "options": [
+                "Un document ou témoin direct de l'événement",
+                "Un commentaire sans auteur",
+                "Une blague",
+                "Une pub"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une « primary source » vient au plus près du fait (texte, photo, témoin)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Secondary source »…",
+              "options": [
+                "Analyse ou résume d'autres sources",
+                "Est toujours faux",
+                "Est une photo brute",
+                "Est un tweet anonyme obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une « secondary source » commente des primary sources."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Reliable » signifie…",
+              "options": ["Fiable", "Gratuit", "Viral", "Secret"],
+              "correctAnswers": [0],
+              "explanation": "« Reliable » qualifie une source en laquelle on peut avoir confiance."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Credible » veut dire…",
+              "options": ["Crédible", "Coloré", "Court", "Copié"],
+              "correctAnswers": [0],
+              "explanation": "Une source « credible » paraît sérieuse et cohérente."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« .gov » ou « .edu » sur un site anglophone indique…",
+              "options": [
+                "Souvent une institution publique ou éducative",
+                "Toujours un jeu",
+                "Uniquement des rumeurs",
+                "Une arnaque garantie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces domaines sont réservés à des organismes officiels ou scolaires (selon pays)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Cross-check » signifie…",
+              "options": [
+                "Recouper avec d'autres sources",
+                "Partager sans lire",
+                "Effacer l'historique",
+                "Changer de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Cross-check » compare plusieurs sources pour confirmer."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Anonymous source » demande…",
+              "options": [
+                "Plus de prudence car l'auteur est caché",
+                "Aucune vigilance",
+                "De croire aveuglément",
+                "De payer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans nom, on évalue le média qui publie et les preuves apportées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Expert » dans un article indique…",
+              "options": [
+                "Une personne compétente sur le sujet",
+                "Un robot",
+                "Un enfant",
+                "Un logo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « expert » apporte un savoir spécialisé, à identifier clairement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Bibliography » ou « references » listent…",
+              "options": [
+                "Les sources utilisées",
+                "Les publicités",
+                "Les jeux",
+                "Les mots croisés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les « references » permettent de retrouver les documents d'origine."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Fact-checking",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels outils ou actions anglais servent au fact-checking ?",
+              "options": [
+                "fact-check",
+                "reverse image search",
+                "share immediately",
+                "ignore date"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Fact-check » vérifie les faits ; la « reverse image search » contrôle une photo."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Fact-checker » est…",
+              "options": [
+                "Une personne ou un service qui vérifie les affirmations",
+                "Un titre de journal sans texte",
+                "Un virus",
+                "Un abonnement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les « fact-checkers » comparent déclarations et preuves."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« True / False / Misleading » sont des…",
+              "options": [
+                "Verdicts de vérification",
+                "Noms de journaux",
+                "Types de papier",
+                "Sports"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces étiquettes résument le degré de vérité d'une info."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Context missing » signale…",
+              "options": [
+                "Une info vraie mais présentée sans contexte",
+                "Un article parfait",
+                "Une page vide",
+                "Une météo exacte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Context missing » indique une déformation par omission."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Evidence » veut dire…",
+              "options": ["Preuve", "Opinion", "Blague", "Titre"],
+              "correctAnswers": [0],
+              "explanation": "« Evidence » désigne les éléments qui étayent ou infirment un fait."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Verify » signifie…",
+              "options": ["Vérifier", "Vendre", "Voyager", "Voter toujours"],
+              "correctAnswers": [0],
+              "explanation": "« Verify » consiste à confirmer qu'une info est exacte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Out of context quote » est…",
+              "options": [
+                "Une citation coupée qui change le sens",
+                "Une citation complète",
+                "Un logo",
+                "Un horaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hors contexte, une « quote » peut tromper le lecteur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Statistics » dans un débat doivent être…",
+              "options": [
+                "Vérifiées (source, méthode, date)",
+                "Acceptées sans nom",
+                "Inventées",
+                "Cachées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les « statistics » sans source fiable peuvent manipuler."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Timestamp » sur une photo ou vidéo aide à…",
+              "options": [
+                "Dater le contenu",
+                "Changer la météo",
+                "Supprimer l'auteur",
+                "Créer un hoax"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « timestamp » situe l'image dans le temps."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Original URL » permet de…",
+              "options": [
+                "Retrouver la publication première",
+                "Pirater un site",
+                "Effacer les archives",
+                "Masquer l'auteur toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'« original URL » mène à la version initiale, pas à une copie."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Réseaux sociaux et info",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots anglais décrivent la diffusion rapide en ligne ?",
+              "options": [
+                "share",
+                "retweet / repost",
+                "archive only offline",
+                "print edition only"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Share » et « repost/retweet » propagent un message à de nouveaux publics."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Social media » désigne…",
+              "options": [
+                "Les réseaux sociaux",
+                "La presse papier du XIXe siècle",
+                "La radio FM",
+                "Les timbres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Social media » regroupe plateformes où les utilisateurs publient."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Algorithm » peut…",
+              "options": [
+                "Montrer d'abord ce qui choque ou plaît",
+                "Garantir toujours la vérité",
+                "Supprimer toute pub",
+                "Imprimer le journal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'« algorithm » personnalise le fil, pas toujours avec des infos fiables."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Echo chamber » signifie…",
+              "options": [
+                "Chambre d'écho : on n'entend que les mêmes opinions",
+                "Salle de sport",
+                "Rédaction",
+                "Tribunal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une « echo chamber » renforce les idées sans les contredire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Bot » sur un réseau peut…",
+              "options": [
+                "Diffuser automatiquement des messages",
+                "Être toujours un journaliste",
+                "Prouver une info",
+                "Remplacer une source primaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « bot » est un compte automatisé, parfois utilisé pour spam."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Hashtag » sert à…",
+              "options": [
+                "Regrouper des messages sur un thème",
+                "Chiffrer un article",
+                "Payer un abonnement",
+                "Imprimer une une"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « hashtag » (#topic) classe les publications."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Verified account » (badge) indique…",
+              "options": [
+                "Que la plateforme a authentifié l'identité du compte",
+                "Que tout ce qu'il poste est vrai",
+                "Qu'il est anonyme",
+                "Qu'il est un bot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Verified » confirme l'identité, pas la véracité de chaque post."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Screenshot » peut être…",
+              "options": [
+                "Facilement manipulé ou décontextualisé",
+                "Toujours une preuve légale",
+                "Interdit",
+                "Une source primaire automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une « screenshot » peut être recadrée ou montée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Report » un post signifie…",
+              "options": [
+                "Signaler un contenu abusif ou faux",
+                "Le partager partout",
+                "L'imprimer",
+                "Le traduire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Report » alerte la plateforme pour modération."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Think before you share » rappelle…",
+              "options": [
+                "De réfléchir avant de partager",
+                "De cliquer vite",
+                "D'ignorer les sources",
+                "De tout croire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce slogan pousse à vérifier plutôt qu'à amplifier."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Images et vidéos",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles actions anglais aident à vérifier une image ?",
+              "options": [
+                "reverse image search",
+                "check metadata",
+                "share without looking",
+                "crop the logo only"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La recherche inversée et les « metadata » retrouvent l'origine et la date."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Manipulated image » signifie…",
+              "options": [
+                "Image retouchée ou truquée",
+                "Image officielle signée",
+                "Image sans couleur",
+                "Image imprimée hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Manipulated » indique un montage trompeur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Outdated photo » utilisée pour un événement récent est…",
+              "options": [
+                "Une désinformation par image déplacée",
+                "Toujours autorisée",
+                "Une preuve suffisante",
+                "Un editorial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une photo « outdated » prête à confusion sur le moment présent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Video clip » hors contexte peut…",
+              "options": [
+                "Donner une impression fausse",
+                "Remplacer un procès-verbal",
+                "Prouver tout automatiquement",
+                "Effacer les sources"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un extrait coupé change souvent le sens du propos."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« AI-generated » sur une image alerte…",
+              "options": [
+                "Qu'elle peut être créée par intelligence artificielle",
+                "Qu'elle date de 1900",
+                "Qu'elle est un scan officiel",
+                "Qu'elle est interdite à voir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« AI-generated » signale un contenu synthétique, pas une photo réelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Watermark » sur une photo…",
+              "options": [
+                "Peut indiquer l'auteur ou l'agence",
+                "Prouve que le titre est faux",
+                "Supprime la date",
+                "Rend l'image vraie automatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « watermark » aide parfois à identifier la source."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Geolocation » d'une image sert à…",
+              "options": [
+                "Vérifier le lieu où elle a été prise",
+                "Changer la langue",
+                "Ajouter des publicités",
+                "Créer un hoax"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La « geolocation » compare le décor avec le lieu annoncé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Stock photo » utilisée comme « preuve » est…",
+              "options": [
+                "Peu fiable comme preuve d'événement",
+                "Toujours une primary source",
+                "Un document gouvernemental",
+                "Un témoignage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une « stock photo » générique n'illustre pas un fait précis."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Authenticate » un fichier signifie…",
+              "options": [
+                "Confirmer qu'il n'a pas été altéré",
+                "Le partager",
+                "Le supprimer",
+                "Le traduire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Authenticate » vérifie l'intégrité et l'origine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Caption » mensongère sous une vraie photo est…",
+              "options": [
+                "Une forme de désinformation",
+                "Un editorial obligatoire",
+                "Une météo",
+                "Un abonnement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une « caption » fausse détourne une image pourtant réelle."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Biais et point de vue",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes anglais décrivent un traitement partial ?",
+              "options": [
+                "bias",
+                "spin",
+                "neutral report",
+                "balanced coverage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un « bias » est un biais ; le « spin » oriente l'interprétation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Neutral » dans « neutral tone » veut dire…",
+              "options": [
+                "Neutre, sans parti pris visible",
+                "Très émotionnel",
+                "Toujours faux",
+                "Publicitaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un ton « neutral » évite de prendre parti dans un reportage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Loaded language » désigne…",
+              "options": [
+                "Des mots chargés émotionnellement",
+                "Une langue étrangère",
+                "Un dictionnaire",
+                "Une page blanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Loaded language » pousse le lecteur à ressentir plutôt qu'à analyser."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Cherry-picking » signifie…",
+              "options": [
+                "Choisir seulement les faits qui servent son argument",
+                "Citer toutes les sources",
+                "Vérifier les chiffres",
+                "Publier les deux côtés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Cherry-picking » ignore les preuves contraires."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Conflict of interest » alerte…",
+              "options": [
+                "Qu'un intérêt personnel peut influencer le texte",
+                "Qu'il n'y a aucun problème",
+                "Qu'il s'agit d'un sport",
+                "Qu'il s'agit d'une météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « conflict of interest » lie l'auteur à une partie en jeu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Opinion poll » diffère d'un fait car…",
+              "options": [
+                "Il mesure des avis, pas une vérité objective",
+                "Il remplace une loi",
+                "Il est toujours secret",
+                "Il est une photo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « opinion poll » (sondage) reflète des opinions."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Both sides » dans un débat demande…",
+              "options": [
+                "D'entendre plusieurs points de vue",
+                "De n'en lire qu'un",
+                "De supprimer les sources",
+                "De croire un titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Both sides » rappelle d'écouter plusieurs positions (sans équivalence automatique)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Agenda » médiatique évoque…",
+              "options": [
+                "Les sujets que le média met en avant",
+                "Un calendrier scolaire",
+                "Un timbre",
+                "Un jeu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'« agenda » montre ce qui est priorisé à l'antenne ou en une."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Fact » vs « opinion » : un fait est…",
+              "options": [
+                "Vérifiable",
+                "Pure préférence",
+                "Toujours secret",
+                "Toujours une blague"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A « fact » peut être contrôlé ; une « opinion » exprime un jugement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repérer le « bias » aide à…",
+              "options": [
+                "Lire de façon critique",
+                "Partager plus vite",
+                "Ignorer les preuves",
+                "Copier sans source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identifier un biais permet de nuancer sa confiance."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Méthode SIFT et esprit critique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans l'acronyme SIFT (Stop, Investigate, Find, Trace), quelles étapes anglaises sont explicites ?",
+              "options": [
+                "Stop",
+                "Investigate",
+                "Ignore everything",
+                "Buy the headline"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Stop » invite à ralentir ; « Investigate » pousse à creuser la source."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Stop » avant de partager signifie…",
+              "options": [
+                "Prendre une pause et ne pas réagir impulsivement",
+                "Cliquer immédiatement",
+                "Supprimer son compte",
+                "Imprimer le post"
+              ],
+              "correctAnswers": [0],
+              "explanation": "S'arrêter évite d'amplifier une rumeur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Investigate the source » demande de…",
+              "options": [
+                "Examiner qui publie et sa réputation",
+                "Ignorer l'auteur",
+                "Croire le logo",
+                "Effacer l'URL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On juge le site, le compte ou le média derrière le message."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Find better coverage » signifie…",
+              "options": [
+                "Chercher d'autres articles sur le même sujet",
+                "Ne lire qu'un tweet",
+                "Supprimer les archives",
+                "Changer de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparer plusieurs couvertures révèle consensus ou erreurs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Trace to the original » sert à…",
+              "options": [
+                "Remonter à la source première",
+                "Copier sans lien",
+                "Inventer une citation",
+                "Masquer la date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Trace » retrouve le document ou la déclaration d'origine."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Critical thinking » désigne…",
+              "options": [
+                "L'esprit critique",
+                "La mémorisation sans analyse",
+                "Le spam",
+                "La publicité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Critical thinking » questionne preuves et logique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Confirmation bias » est…",
+              "options": [
+                "Tendance à croire ce qui confirme nos idées",
+                "Vérification des faits",
+                "Neutralité parfaite",
+                "Archive officielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « confirmation bias » filtre l'info selon nos opinions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ask questions » face à une info, c'est…",
+              "options": [
+                "Interroger qui, quoi, quand, où, preuves",
+                "Accepter sans lire",
+                "Partager en masse",
+                "Supprimer les sources"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poser des questions structure la vérification."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Lateral reading » consiste à…",
+              "options": [
+                "Ouvrir d'autres onglets sur la source pendant la lecture",
+                "Lire uniquement le milieu de page",
+                "Imprimer le fil",
+                "Ignorer Wikipedia toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « lateral reading » vérifie le site à côté, pas seulement dedans."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Check the date » évite…",
+              "options": [
+                "De confondre une vieille info avec l'actualité",
+                "De lire l'article",
+                "De citer",
+                "De partager des sources"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une date récente ou ancienne change le sens de l'info."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Vocabulaire de la vérification",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots anglais appartiennent au vocabulaire de la fiabilité ?",
+              "options": [
+                "trustworthy",
+                "accurate",
+                "misleading",
+                "hoax only as quality"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Trustworthy » (digne de confiance) et « accurate » (exact) sont positifs pour une info."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Accurate » signifie…",
+              "options": ["Exact, correct", "Viral", "Secret", "Payant"],
+              "correctAnswers": [0],
+              "explanation": "Une info « accurate » correspond aux faits vérifiés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Misleading » veut dire…",
+              "options": ["Trompeur", "Gratuit", "Comique", "Officiel"],
+              "correctAnswers": [0],
+              "explanation": "« Misleading » induit en erreur même avec des éléments vrais."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Unverified » signifie…",
+              "options": [
+                "Non vérifié",
+                "Prouvé en tribunal",
+                "Signé par deux experts",
+                "Archivé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Unverified » manque encore de contrôle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Confirm » veut dire…",
+              "options": ["Confirmer", "Inventer", "Supprimer", "Vendre"],
+              "correctAnswers": [0],
+              "explanation": "« Confirm » valide une info avec des preuves."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Refute » signifie…",
+              "options": ["Réfuter", "Republier", "Photographier", "Abonner"],
+              "correctAnswers": [0],
+              "explanation": "« Refute » montre qu'une affirmation est fausse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Claim without evidence » décrit…",
+              "options": [
+                "Une affirmation sans preuve",
+                "Un rapport sourcé",
+                "Une loi",
+                "Une carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans « evidence », l'affirmation reste fragile."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Cite your sources » demande…",
+              "options": [
+                "D'indiquer d'où viennent les informations",
+                "De cacher l'auteur",
+                "De ne pas lire",
+                "De pirater"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Cite your sources » permet au lecteur de vérifier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Plausible » signifie…",
+              "options": [
+                "Vraisemblable mais pas encore prouvé",
+                "Prouvé à 100 %",
+                "Interdit",
+                "Satire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Plausible » semble cohérent, mais demande encore des preuves."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Red flag » dans une info est…",
+              "options": [
+                "Un signal d'alerte",
+                "Un drapeau de sport",
+                "Un abonnement",
+                "Une une"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A « red flag » incite à creuser (source floue, titre extrême…)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Agir face à l'info",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles actions anglaises responsables existent en ligne ?",
+              "options": [
+                "report",
+                "fact-check before sharing",
+                "spread rumour",
+                "ignore evidence"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Report » signale un contenu ; vérifier avant de partager limite les dégâts."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Digital citizenship » évoque…",
+              "options": [
+                "Un usage responsable du numérique",
+                "Un passeport papier",
+                "Un journal tabloïd",
+                "Un virus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La « digital citizenship » inclut respect et esprit critique en ligne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Corrections » dans un média sérieux…",
+              "options": [
+                "Rectifient une erreur publiée",
+                "Suppriment toute critique",
+                "Interdisent les lecteurs",
+                "Remplacent les sources"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une « correction » reconnaît et fixe une erreur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Talk to a trusted adult » face à une info inquiétante…",
+              "options": [
+                "Est une démarche sage",
+                "Est interdit",
+                "Remplace toute vérification",
+                "Prouve un hoax"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un adulte de confiance aide à évaluer une info stressante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Privacy » lors d'une enquête en ligne rappelle…",
+              "options": [
+                "De ne pas exposer ses données personnelles",
+                "De publier son adresse",
+                "De partager son mot de passe",
+                "De tout ouvrir au public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Privacy » protège identité et sécurité pendant la recherche."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Bookmark » une source fiable permet…",
+              "options": [
+                "De la retrouver pour vérifier plus tard",
+                "De la rendre fausse",
+                "De la pirater",
+                "De la cacher aux autres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « bookmark » enregistre un site utile (fact-checkers, médias)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Discuss respectfully » sur un sujet d'actualité…",
+              "options": [
+                "Favorise l'échange sans insultes",
+                "Interdit toute source",
+                "Oblige à mentir",
+                "Supprime le débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Discuss respectfully » garde le débat argumenté."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Do not feed the trolls » signifie…",
+              "options": [
+                "Ne pas amplifier les provocateurs",
+                "Répondre agressivement",
+                "Partager leurs posts",
+                "Les payer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ignorer les « trolls » limite la diffusion de haine ou de fausses infos."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Educate others » avec une info vérifiée…",
+              "options": [
+                "Partage des sources solides",
+                "Diffuse des rumeurs",
+                "Cache les preuves",
+                "Supprime les liens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Educate » propage la bonne pratique avec des références."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Stay curious, stay skeptical » résume…",
+              "options": [
+                "Curiosité et sceptisme sain face aux médias",
+                "Refus de toute information",
+                "Croire tout titre",
+                "Quitter Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Curiosité + scepticisme poussent à vérifier sans cynisme total."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan — vérifier une information",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels dangers anglais décrit-on souvent en ligne ?",
+              "options": [
+                "fake news",
+                "misinformation",
+                "peer-reviewed paper always bad",
+                "official statement always hoax"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Fake news » et « misinformation » nomment les fausses infos courantes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour tester une rumeur, on commence par…",
+              "options": [
+                "cross-check sources",
+                "share instantly",
+                "delete the internet",
+                "trust anonymous only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Cross-check » recoupe plusieurs sources fiables."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un service « fact-checker »…",
+              "options": [
+                "Évalue vrai/faux/trompeur",
+                "Crée des hoax",
+                "Vend des journaux",
+                "Imprime les une"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les « fact-checkers » publient des verdicts argumentés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une « primary source » est…",
+              "options": [
+                "Proche directe de l'événement",
+                "Toujours un meme",
+                "Toujours anonyme",
+                "Une pub"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La « primary source » apporte un lien direct avec le fait."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le « clickbait » incite à…",
+              "options": [
+                "Cliquer sans garantir un contenu honnête",
+                "Lire lentement",
+                "Vérifier les preuves",
+                "Citer les auteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « clickbait » privilégie le clic sur la vérité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Reverse image search » sert à…",
+              "options": [
+                "Retrouver l'origine d'une photo",
+                "Changer la météo",
+                "Voter",
+                "S'abonner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La recherche inversée trace une image sur le web."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Repérer un « bias » aide à…",
+              "options": [
+                "Comprendre l'angle du texte",
+                "Ignorer toute source",
+                "Copier sans lien",
+                "Croire tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « bias » explique pourquoi un sujet est présenté d'une certaine façon."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Think before you share » rappelle…",
+              "options": [
+                "La prudence avant diffusion",
+                "La vitesse maximale",
+                "L'anonymat obligatoire",
+                "La censure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réfléchir réduit la viralité des fausses infos."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Debunk » une rumeur, c'est…",
+              "options": [
+                "La réfuter avec des preuves",
+                "La republier",
+                "La cacher",
+                "La signer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Debunk » démontre qu'une affirmation est fausse ou trompeuse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La « media literacy » inclut…",
+              "options": [
+                "Analyser sources, biais et intentions",
+                "Accepter tout titre",
+                "Refuser les preuves",
+                "Ne jamais lire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Media literacy » forme à lire les médias de façon active et critique."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

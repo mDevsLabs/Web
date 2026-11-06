@@ -1,0 +1,2703 @@
+{
+  "id": "5e-svt-01",
+  "year": "5e",
+  "subject": "svt",
+  "title": "Respiration et milieux de vie",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Respirer dans l'air et dans l'eau",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce que respirer ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces affirmations, lesquelles décrivent correctement la respiration au sens biologique ?",
+              "options": [
+                "C'est un échange de gaz avec le milieu extérieur",
+                "C'est uniquement le mouvement visible de la poitrine",
+                "Les cellules utilisent l'oxygène pour produire de l'énergie",
+                "C'est la même chose que la photosynthèse"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Respirer, biologiquement, c'est capter de l'O₂ et libérer du CO₂, tandis que les cellules utilisent l'oxygène pour libérer l'énergie des aliments."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel gaz les animaux absorbent-ils principalement lors de la respiration ?",
+              "options": ["Azote", "Oxygène", "Hélium", "Hydrogène"],
+              "correctAnswers": [1],
+              "explanation": "L'oxygène est indispensable aux échanges respiratoires des animaux aérobies."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel gaz les animaux rejettent-ils en grande quantité après la respiration ?",
+              "options": ["Oxygène", "Dioxyde de carbone", "Ozone", "Méthane"],
+              "correctAnswers": [1],
+              "explanation": "Le CO₂ est le principal gaz rejeté lors de la respiration cellulaire aérobie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Où se produit la respiration cellulaire chez un animal multicellulaire ?",
+              "options": [
+                "Uniquement dans les poumons",
+                "Dans toutes les cellules vivantes",
+                "Seulement dans le sang",
+                "Uniquement dans la peau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque cellule vivante a besoin d'énergie et peut pratiquer la respiration cellulaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La respiration pulmonaire sert surtout à :",
+              "options": [
+                "Digérer les aliments",
+                "Échanger O₂ et CO₂ entre l'air et le sang",
+                "Produire de la lumière",
+                "Filtrer l'eau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les poumons permettent les échanges gazeux entre l'air alvéolaire et le sang."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un organisme qui ne peut pas respirer correctement risque surtout de manquer de :",
+              "options": ["Sucre", "Oxygène", "Sel", "Calcium"],
+              "correctAnswers": [1],
+              "explanation": "Sans apport suffisant d'oxygène, les cellules ne produisent plus assez d'énergie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le mouvement de la poitrine lors de l'inspiration correspond à :",
+              "options": [
+                "Une entrée d'air dans les poumons",
+                "Une sortie définitive d'air des poumons",
+                "La digestion",
+                "La circulation de la sève"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inspirer, c'est faire entrer de l'air dans les poumons en dilatant la cage thoracique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La respiration est indispensable à la vie car elle permet :",
+              "options": [
+                "De fabriquer de l'eau à partir de rien",
+                "De libérer l'énergie contenue dans les nutriments",
+                "De créer de la matière organique sans aliment",
+                "D'éliminer uniquement les déchets solides"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La respiration cellulaire libère l'énergie stockée dans les molécules organiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Chez un mammifère terrestre, l'organe principal des échanges avec l'air est :",
+              "options": ["Le cœur", "Les poumons", "L'estomac", "Le foie"],
+              "correctAnswers": [1],
+              "explanation": "Les poumons sont l'organe respiratoire des mammifères respirant dans l'air."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La respiration au sens SVT ne désigne pas :",
+              "options": [
+                "Les échanges gazeux avec le milieu",
+                "L'utilisation de l'O₂ par les cellules",
+                "La simple évaporation de l'eau",
+                "Le rejet de CO₂"
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'évaporation de l'eau n'est pas la définition biologique de la respiration."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "L'air que nous respirons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels gaz sont présents en grande quantité dans l'air sec que nous respirons ?",
+              "options": [
+                "Azote",
+                "Oxygène",
+                "Dioxyde de carbone en majorité",
+                "Dioxygène en très faible proportion"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'air sec contient surtout de l'azote (~78 %) et de l'oxygène (~21 %)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Environ quelle proportion d'oxygène contient l'air ?",
+              "options": ["1 %", "21 %", "50 %", "78 %"],
+              "correctAnswers": [1],
+              "explanation": "L'oxygène représente environ 21 % du volume de l'air sec."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le gaz le plus abondant dans l'air est :",
+              "options": ["L'oxygène", "L'azote", "Le CO₂", "L'argon seul"],
+              "correctAnswers": [1],
+              "explanation": "L'azote est le gaz majoritaire de l'atmosphère terrestre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'air expiré contient plus de CO₂ que l'air inspiré car :",
+              "options": [
+                "Les poumons fabriquent du CO₂ à partir de l'azote",
+                "Les cellules produisent du CO₂ utilisé puis rejeté",
+                "L'air extérieur perd son CO₂ en entrant",
+                "Le cœur concentre le CO₂"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le CO₂ expiré provient surtout de la respiration cellulaire de l'organisme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'air inspiré contient plus d'oxygène que l'air expiré car :",
+              "options": [
+                "Une partie de l'O₂ passe dans le sang",
+                "L'oxygène disparaît dans les bronches",
+                "Le CO₂ se transforme en O₂",
+                "L'azote devient de l'oxygène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une fraction de l'oxygène de l'air est captée par le sang aux alvéoles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un test au carbonate de calcium trouble montre que l'air expiré contient :",
+              "options": [
+                "Plus de CO₂",
+                "Moins de CO₂",
+                "Aucun gaz",
+                "Uniquement de l'azote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CO₂ de l'air expiré réagit avec l'eau et trouble davantage la solution."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'humidité de l'air expiré vient surtout de :",
+              "options": [
+                "La pluie avalée",
+                "L'évaporation de l'eau dans les voies respiratoires",
+                "La photosynthèse des poumons",
+                "La digestion"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'air est humidifié et réchauffé dans les voies aériennes avant d'atteindre les alvéoles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour mesurer la consommation d'oxygène, on compare plutôt :",
+              "options": [
+                "Air inspiré et air expiré",
+                "Eau du robinet et eau de mer",
+                "Sang artériel et bile",
+                "Air et roche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La différence de composition entre air inspiré et expiré traduit les échanges."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Respirer de l'air très pauvre en oxygène provoque rapidement :",
+              "options": [
+                "Une surabondance d'énergie",
+                "Des difficultés respiratoires et une fatigue",
+                "Une croissance accélérée des os",
+                "La photosynthèse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un déficit en O₂ limite la respiration cellulaire et fatigue l'organisme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le dioxyde de carbone dans l'air ambiant est présent en :",
+              "options": [
+                "Très faible proportion",
+                "Environ 50 %",
+                "Plus grande proportion que l'azote",
+                "Quantité identique à l'oxygène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CO₂ atmosphérique est minoritaire, de l'ordre de 0,04 % environ."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les poumons et les voies aériennes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments appartiennent aux voies aériennes ou aux poumons chez l'Homme ?",
+              "options": [
+                "La trachée",
+                "Les alvéoles pulmonaires",
+                "Les branchies",
+                "Les bronches"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Trachée et bronches conduisent l'air ; les branchies sont l'organe respiratoire des poissons."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'air entre d'abord dans le corps par :",
+              "options": [
+                "Les narines ou la bouche",
+                "L'œsophage",
+                "La veine cave",
+                "L'oreille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les voies aériennes supérieures débutent au niveau des narines ou de la bouche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La trachée mène l'air vers :",
+              "options": [
+                "Les poumons",
+                "L'estomac",
+                "Le cerveau",
+                "Les reins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La trachée se divise en bronches qui pénètrent dans chaque poumon."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les échanges gazeux entre air et sang ont lieu surtout dans :",
+              "options": [
+                "Les alvéoles pulmonaires",
+                "La peau",
+                "Les dents",
+                "Les muscles sans vascularisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les parois très fines des alvéoles permettent les échanges O₂/CO₂."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les poumons sont protégés et entourés par :",
+              "options": [
+                "La cage thoracique",
+                "Le crâne",
+                "Le bassin seul",
+                "Les côtes abdominales uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Côtes, sternum et muscles thoraciques forment la cage thoracique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le diaphragme est un muscle qui participe à :",
+              "options": [
+                "La ventilation pulmonaire",
+                "La mastication",
+                "La vision",
+                "La reproduction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le diaphragme se contracte à l'inspiration et modifie le volume thoracique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Expirer correspond à :",
+              "options": [
+                "Sortie d'air des poumons",
+                "Entrée d'air dans les poumons",
+                "Arrêt total de la respiration",
+                "Filtration du sang par les reins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expiration chasse l'air des poumons vers l'extérieur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les bronches se ramifient dans le poumon en :",
+              "options": [
+                "Bronchioles puis alvéoles",
+                "Artères uniquement",
+                "Os",
+                "Dents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'arbre bronchique se subdivise jusqu'aux alvéoles où se font les échanges."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La muqueuse des voies respiratoires aide à :",
+              "options": [
+                "Piéger poussières et microbes",
+                "Produire de l'oxygène",
+                "Digérer les protéines",
+                "Stocker le calcium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La muqueuse et le mucus protègent et nettoient l'air inspiré."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un poumon humain adulte contient des millions de :",
+              "options": ["Alvéoles", "Branchies", "Graines", "Feuilles"],
+              "correctAnswers": [0],
+              "explanation": "La grande surface alvéolaire maximise les échanges gazeux."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Échanges gazeux dans les poumons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lors de la respiration pulmonaire, quels échanges se produisent aux alvéoles ?",
+              "options": [
+                "O₂ passe de l'air vers le sang",
+                "CO₂ passe du sang vers l'air",
+                "O₂ passe du sang vers l'air en permanence",
+                "CO₂ disparaît totalement du corps"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'oxygène diffuse vers le sang tandis que le CO₂ quitte le sang vers l'air alvéolaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les alvéoles sont bordées de capillaires sanguins pour :",
+              "options": [
+                "Faciliter les échanges avec le sang",
+                "Stocker l'air longtemps",
+                "Produire des globules rouges sur place",
+                "Refroidir les os"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contact air-sang très proche permet la diffusion des gaz."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La paroi alvéolaire est très fine afin de :",
+              "options": [
+                "Raccourcir la distance de diffusion",
+                "Empêcher tout échange",
+                "Rendre les poumons rigides",
+                "Stocker le CO₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une paroi fine accélère les échanges gazeux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le sang qui quitte les poumons vers le cœur transporte surtout :",
+              "options": [
+                "Plus d'oxygène",
+                "Plus de CO₂ qu'à l'entrée",
+                "Uniquement de l'azote",
+                "De la bile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sang est oxygéné après passage dans les capillaires pulmonaires."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le sang arrivant aux poumons depuis les organes contient surtout :",
+              "options": [
+                "Du CO₂ produit par les cellules",
+                "Uniquement de l'azote liquide",
+                "De l'oxygène en excès",
+                "De l'eau de mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sang veineux apporte le CO₂ éliminé par les tissus."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La fréquence respiratoire augmente lors d'un effort car :",
+              "options": [
+                "Les muscles consomment plus d'O₂",
+                "Les poumons cessent de fonctionner",
+                "Le cœur arrête de battre",
+                "L'air n'a plus d'oxygène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effort accroît les besoins énergétiques et donc en oxygène."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une obstruction des bronches réduit surtout :",
+              "options": [
+                "L'arrivée d'air aux alvéoles",
+                "La digestion",
+                "La croissance des cheveux",
+                "La lumière solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins d'air atteint les alvéoles, donc moins d'échanges."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les globules rouges transportent l'oxygène grâce à :",
+              "options": [
+                "L'hémoglobine",
+                "La chlorophylle",
+                "L'os",
+                "Le sucre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hémoglobine lie l'oxygène dans le sang."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si les alvéoles sont détruites (tabac), la surface d'échange :",
+              "options": [
+                "Diminue",
+                "Double instantanément",
+                "Devient infinie",
+                "Ne change pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins d'alvéoles fonctionnelles réduisent la capacité respiratoire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La ventilation assure surtout :",
+              "options": [
+                "Le renouvellement de l'air dans les alvéoles",
+                "La fabrication de glucose dans les poumons",
+                "La photosynthèse",
+                "La production de spermatozoïdes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inspirer et expirer renouvelle l'air en contact avec le sang."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Transport de l'oxygène et du CO₂",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels organes participent au transport des gaz respiratoires chez un mammifère ?",
+              "options": [
+                "Les poumons",
+                "Le cœur et les vaisseaux",
+                "Les racines des plantes",
+                "Le sang"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Poumons, cœur, vaisseaux et sang assurent les échanges et la circulation des gaz."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le cœur propulse le sang oxygéné vers :",
+              "options": [
+                "Les organes du corps",
+                "Uniquement les poumons",
+                "L'air extérieur",
+                "Les roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sang artériel distribue l'oxygène aux tissus."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le sang veineux revient aux poumons pour :",
+              "options": [
+                "Se débarrasser du CO₂ et prendre de l'O₂",
+                "Produire de la lumière",
+                "Digérer les lipides",
+                "Fabriquer des os"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La circulation pulmonaire réalise les échanges gazeux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans les capillaires des muscles actifs, l'O₂ :",
+              "options": [
+                "Diffuse vers les cellules",
+                "Reste bloqué dans les vaisseaux",
+                "Devient de l'azote",
+                "Disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules consomment l'oxygène du sang capillaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le CO₂ produit par une cellule musculaire :",
+              "options": [
+                "Passe dans le sang vers les poumons",
+                "Reste toujours dans le muscle",
+                "Devient instantanément de l'O₂",
+                "Est stocké dans les dents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CO₂ est transporté par le sang jusqu'aux poumons pour être expiré."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Après un effort intense, on respire plus vite car :",
+              "options": [
+                "Il faut réapprovisionner en O₂ et éliminer le CO₂",
+                "Les poumons n'utilisent plus d'air",
+                "Le sang cesse de circuler",
+                "L'azote devient toxique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La respiration compense la demande énergétique accrue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une artère transporte en général le sang :",
+              "options": [
+                "Du cœur vers les organes",
+                "Toujours sans oxygène",
+                "Uniquement dans les poumons vers l'extérieur",
+                "Vers le soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les artères éloignent le sang du cœur (sauf artères pulmonaires)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une veine ramène en général le sang :",
+              "options": [
+                "Vers le cœur",
+                "Directement dans l'air",
+                "Vers les alvéoles sans passer par le cœur chez l'Homme",
+                "Vers le sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les veines collectent le sang veineux vers le cœur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'oxygène capté aux poumons rejoint d'abord :",
+              "options": [
+                "Les globules rouges du sang capillaire",
+                "L'air du ventre",
+                "Les os sans circulation",
+                "La bile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'O₂ diffuse dans le plasma puis est lié à l'hémoglobine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans circulation sanguine, les échanges pulmonaires seraient :",
+              "options": [
+                "Inutiles pour les organes éloignés",
+                "Plus efficaces partout",
+                "Identiques pour le cerveau",
+                "Remplacés par la photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sang distribue les gaz respiratoires à l'ensemble du corps."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Respirer dans l'eau : les poissons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur la respiration des poissons sont correctes ?",
+              "options": [
+                "Ils captent l'O₂ dissous dans l'eau",
+                "Ils utilisent des branchies",
+                "Ils respirent l'air atmosphérique avec des poumons comme les oiseaux",
+                "L'eau doit s'écouler sur les branchies"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les poissons extraient l'oxygène dissous grâce aux branchies irriguées par l'eau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'organe respiratoire principal d'un poisson est :",
+              "options": [
+                "Les branchies",
+                "Les poumons",
+                "La peau seule chez tous",
+                "Les feuilles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les branchies sont adaptées aux échanges dans l'eau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un poisson ouvre la bouche et agite ses opercules pour :",
+              "options": [
+                "Faire circuler l'eau sur les branchies",
+                "Manger uniquement",
+                "Produire de la lumière",
+                "Digérer dans l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le courant d'eau apporte l'oxygène dissous aux branchies."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'oxygène disponible pour un poisson se trouve :",
+              "options": [
+                "Dissous dans l'eau",
+                "Uniquement en bulles d'azote pur",
+                "Dans les roches sèches",
+                "Dans le sel cristallisé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les poissons utilisent l'O₂ dissous, pas l'air en surface sauf espèces spécifiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si l'eau ne circule plus sur les branchies, le poisson :",
+              "options": [
+                "Étouffe faute d'échanges",
+                "Respire mieux",
+                "Devient un reptile",
+                "Photosynthétise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans renouvellement de l'eau, les échanges branchiaux s'arrêtent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le CO₂ produit par un poisson est rejeté :",
+              "options": [
+                "Dans l'eau qui passe sur les branchies",
+                "Dans le sol",
+                "Dans l'espace",
+                "Uniquement dans l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CO₂ diffuse de la branchie vers l'eau circulante."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une eau très chaude contient souvent moins d'O₂ dissous, ce qui :",
+              "options": [
+                "Peut stresser les poissons",
+                "Augmente toujours la respiration branchiale sans limite",
+                "Rend l'eau plus riche en O₂",
+                "Empêche la photosynthèse des poissons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solubilité de l'oxygène diminue quand la température augmente."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les branchies sont riches en :",
+              "options": [
+                "Capillaires sanguins",
+                "Os compactes sans sang",
+                "Dents",
+                "Graines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un dense réseau capillaire optimise les échanges avec l'eau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un poisson d'eau douce et un poisson de mer respirent tous deux :",
+              "options": [
+                "L'O₂ dissous dans leur milieu",
+                "L'air sec des déserts",
+                "Uniquement le sel",
+                "La lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le principe branchial est le même ; le milieu diffère en salinité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sortir un poisson de l'eau provoque la suffocation car :",
+              "options": [
+                "Les branchies se collent et ne reçoivent plus d'eau",
+                "Il développe des poumons instantanément",
+                "L'eau devient plus riche en O₂",
+                "Il respire mieux dans l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hors de l'eau, les branchies ne fonctionnent plus correctement."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Branchies et échanges dans l'eau",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pourquoi les branchies sont-elles efficaces dans l'eau ?",
+              "options": [
+                "Grande surface d'échange",
+                "Parois fines",
+                "Présence de chlorophylle",
+                "Absence totale de circulation sanguine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Surface étendue et parois fines favorisent la diffusion de l'O₂ dissous."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur une branchie, l'O₂ dissous passe :",
+              "options": [
+                "De l'eau vers le sang",
+                "Du sang vers l'air sec",
+                "De la roche vers la peau",
+                "Du CO₂ vers l'azote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gradient de concentration dirige l'oxygène vers le sang."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les lamelles branchiales servent à :",
+              "options": [
+                "Augmenter la surface de contact eau-sang",
+                "Réduire la surface à zéro",
+                "Stocker la nourriture",
+                "Produire du lait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lamelles multiplient la zone d'échange."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comparer poumons et branchies : les deux permettent :",
+              "options": [
+                "Des échanges O₂/CO₂ avec un milieu",
+                "La digestion des minéraux",
+                "La reproduction asexuée",
+                "La photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poumons avec l'air, branchies avec l'eau, même rôle d'échange."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une eau polluée ou pauvre en O₂ peut entraîner :",
+              "options": [
+                "La mort de poissons par asphyxie",
+                "Une respiration branchiale plus facile",
+                "La transformation en oiseaux",
+                "Une augmentation illimitée de l'O₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans O₂ dissous suffisant, les organismes aquatiques meurent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le sang qui quitte les branchies transporte :",
+              "options": [
+                "Plus d'oxygène qu'à l'arrivée",
+                "Uniquement du sel sans gaz",
+                "De la bile",
+                "De l'azote liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme aux poumons, le sang est oxygéné au passage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les échanges à la branchie sont possibles car l'eau et le sang sont :",
+              "options": [
+                "Séparés par une paroi très fine",
+                "Mélangés dans un seul compartiment",
+                "Séparés par du métal épais",
+                "Absents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fine barrière épithéliale permet la diffusion."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un requin respire en permanence car :",
+              "options": [
+                "Il doit faire circuler l'eau sur ses branchies",
+                "Il possède des poumons terrestres",
+                "Il ne consomme jamais d'O₂",
+                "Il vit sans eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Beaucoup de requins doivent nager pour ventiler leurs branchies."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les invertébrés aquatiques respirent parfois avec :",
+              "options": [
+                "Des trachées aquatiques, branchies ou cutané",
+                "Des poumons identiques aux nôtres",
+                "Des ailes",
+                "Des feuilles vertes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Divers organes ou peau permettent les échanges selon les espèces."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'eau sature en O₂ grâce notamment à :",
+              "options": [
+                "Contact avec l'air et activité des plantes aquatiques",
+                "Chauffage extrême",
+                "Absence de vent",
+                "Sel uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air et la photosynthèse aquatique enrichissent l'eau en oxygène."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Comparer respiration dans l'air et dans l'eau",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles différences existent entre respirer dans l'air et dans l'eau ?",
+              "options": [
+                "L'O₂ est dissous dans l'eau, gazeux dans l'air",
+                "Les poumons conviennent à l'air, les branchies à l'eau",
+                "L'eau ne contient jamais d'oxygène",
+                "Les poissons utilisent nos poumons"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le milieu change la forme de l'oxygène disponible et l'organe adapté."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'oxygène est plus concentré dans :",
+              "options": [
+                "L'air que dans l'eau à température égale",
+                "L'eau que dans l'air",
+                "Le sel",
+                "Le sable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air contient ~21 % d'O₂, bien plus que l'O₂ dissous dans l'eau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un mammifère aquatique comme le dauphin respire :",
+              "options": [
+                "Dans l'air avec des poumons",
+                "Uniquement avec des branchies",
+                "Sans jamais monter à la surface",
+                "Avec la peau seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mammifères marins remontent respirer l'air atmosphérique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une grenouille adulte respire surtout :",
+              "options": [
+                "Dans l'air (poumons) et aussi par la peau humide",
+                "Uniquement avec des branchies permanentes",
+                "Dans le vide",
+                "Par photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les amphibiens adultes utilisent poumons et échanges cutanés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un têtard respire d'abord :",
+              "options": [
+                "Avec des branchies dans l'eau",
+                "Avec des poumons dans l'air",
+                "Sans échanges gazeux",
+                "Avec des plumes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stade larvaire aquatique avec branchies, puis métamorphose."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour extraire assez d'O₂, les branchies doivent avoir :",
+              "options": [
+                "Une grande surface par rapport aux poumons",
+                "Une surface nulle",
+                "Des parois très épaisses",
+                "Aucun sang"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau contient peu d'O₂, d'où le besoin d'une large surface branchiale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un oiseau respire :",
+              "options": [
+                "Dans l'air avec des poumons efficaces",
+                "Dans l'eau avec des branchies",
+                "Sans O₂",
+                "Uniquement la nuit sans air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les oiseaux possèdent un système respiratoire aérien performant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un insecte aquatique larvaire peut respirer avec :",
+              "options": [
+                "Des trachées ou un siphon d'air",
+                "Des poumons humains",
+                "Des branchies de requin",
+                "Rien du tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains insectes captent l'air atmosphérique ou dissous selon l'espèce."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Respirer dans l'eau demande souvent plus d'énergie de ventilation car :",
+              "options": [
+                "L'eau est dense et pauvre en O₂",
+                "L'eau est vide de matière",
+                "L'air est plus dense que l'eau",
+                "Le CO₂ n'existe pas dans l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déplacer l'eau coûte de l'énergie pour obtenir suffisamment d'oxygène."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le choix poumons/branchies dépend surtout du :",
+              "options": [
+                "Milieu de vie principal",
+                "Couleur de l'animal",
+                "Nombre de pattes",
+                "Saison uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les organes respiratoires sont adaptés au milieu air ou eau."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Adaptations respiratoires des animaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels exemples illustrent une adaptation respiratoire au milieu ?",
+              "options": [
+                "Branchies chez le saumon",
+                "Poumons chez le chat",
+                "Feuilles chlorophylliennes chez le poisson",
+                "Trachées chez certains insectes terrestres"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Poissons et mammifères possèdent des organes adaptés à leur milieu respectif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La tortue marine remonte à la surface pour :",
+              "options": [
+                "Respirer l'air avec ses poumons",
+                "Boire l'eau salée uniquement",
+                "Manger du sable",
+                "Perdre ses branchies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme les autres reptiles marins, elle respire l'air."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un éléphant respire :",
+              "options": [
+                "Dans l'air",
+                "Dans l'eau avec des branchies",
+                "Sans gaz",
+                "Par la queue uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les éléphants sont des mammifères terrestres à poumons."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le papillon adulte échange les gaz via :",
+              "options": [
+                "Un système trachéen",
+                "Des poumons",
+                "Des branchies permanentes",
+                "La photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les insectes possèdent des trachées ramifiées dans le corps."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un crustacé aquatique respire souvent avec :",
+              "options": [
+                "Des branchies",
+                "Des poumons d'oiseau",
+                "Des racines",
+                "Des ailes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De nombreux crustacés possèdent des branchies sous l'exosquelette."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La baleine ne peut pas respirer sous l'eau car :",
+              "options": [
+                "Elle n'a pas de branchies fonctionnelles",
+                "Elle possède des branchies actives",
+                "Elle vit sans O₂",
+                "Elle filtre l'azote liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mammifères marins retiennent leur respiration lors de la plongée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un serpent respire principalement :",
+              "options": [
+                "Dans l'air avec des poumons",
+                "Dans l'eau avec des branchies",
+                "Sans organes",
+                "Par les écailles sèches seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les serpents sont des reptiles à respiration pulmonaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Certaines espèces vivant en eau peu profonde peuvent tolérer :",
+              "options": [
+                "Des échanges cutanés complémentaires",
+                "L'absence totale d'O₂",
+                "La vie sans eau ni air",
+                "La respiration par le squelette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peau humide peut compléter branchies ou poumons selon l'espèce."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Changer de milieu sans changer d'organe respiratoire est :",
+              "options": [
+                "Rare et limité dans le temps",
+                "Toujours facile",
+                "Impossible pour tout animal",
+                "Identique pour tous les poissons hors de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les organes sont spécialisés ; un poisson hors eau ne respire pas durablement l'air."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'évolution des organes respiratoires montre :",
+              "options": [
+                "Une adaptation au milieu air ou eau",
+                "Une identité strictement identique chez tous",
+                "L'absence d'échanges gazeux",
+                "Le remplacement par la photosynthèse animale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La diversité respiratoire reflète les milieux fréquentés."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse : respiration et milieux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propositions résument la respiration animale en 5e ?",
+              "options": [
+                "Échanges O₂/CO₂ avec le milieu",
+                "Production d'énergie cellulaire",
+                "Absence de CO₂ chez les animaux",
+                "Organs adaptés air ou eau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Respirer, c'est échanger des gaz pour alimenter la respiration cellulaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le schéma air alvéole-sang illustre :",
+              "options": [
+                "La respiration pulmonaire",
+                "La photosynthèse",
+                "La digestion",
+                "La fécondation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les flèches O₂/CO₂ aux alvéoles modélisent les échanges pulmonaires."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un poisson stressé en aquarium fermé sans aération manque surtout de :",
+              "options": [
+                "Oxygène dissous",
+                "Lumière uniquement",
+                "Sel",
+                "Nitrogène gazeux pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans renouvellement, l'O₂ dissous s'épuise."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La respiration cellulaire se distingue de la respiration pulmonaire car elle :",
+              "options": [
+                "Libère l'énergie dans les cellules",
+                "Se limite aux narines",
+                "Ne consomme pas d'O₂",
+                "Ne produit pas de CO₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pulmonaire = échanges ; cellulaire = utilisation des nutriments avec O₂."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour comparer air inspiré et expiré, on mesure surtout :",
+              "options": ["O₂ et CO₂", "Or et argent", "Sable", "Pétrole"],
+              "correctAnswers": [0],
+              "explanation": "Les variations d'oxygène et de dioxyde de carbone traduisent l'activité respiratoire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un animal terrestre sec sans poumons ni trachées adaptées :",
+              "options": [
+                "Ne peut pas vivre longtemps en respirant l'air",
+                "Respire mieux qu'un mammifère",
+                "Devient une plante",
+                "Ne produit jamais de CO₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut un organe ou une surface adaptée aux échanges aériens."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La circulation sanguine relie :",
+              "options": [
+                "Poumons ou branchies et organes",
+                "Uniquement la peau et les cheveux",
+                "Le soleil et la lune",
+                "Les dents et les ongles sans sang"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sang transporte les gaz entre site d'échange et tissus."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une eutrophisation excessive peut tuer des poissons car :",
+              "options": [
+                "La décomposition consomme l'O₂ dissous",
+                "L'eau devient plus riche en O₂ sans limite",
+                "Les branchies grossissent",
+                "Le CO₂ disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La bactérie décompose la matière organique en utilisant l'oxygène de l'eau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Respirer correctement est une condition de :",
+              "options": [
+                "Vie active des animaux aérobies",
+                "Formation des roches magmatiques",
+                "Rotation de la Terre",
+                "Marée sans lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans apport d'oxygène, les fonctions vitales s'arrêtent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le chapitre « Respirer dans l'air et dans l'eau » prépare à comprendre :",
+              "options": [
+                "Comment le milieu influence les échanges",
+                "Comment les plantes respirent la lumière",
+                "Comment ignorer le CO₂",
+                "Comment les poissons volent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milieu air ou eau impose des organes et des contraintes différentes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Peuplement des milieux",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce qu'un milieu de vie ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un milieu de vie se caractérise par :",
+              "options": [
+                "Des conditions physiques et chimiques",
+                "La présence possible d'êtres vivants",
+                "L'absence totale d'eau partout",
+                "Un volume sans facteurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le milieu combine facteurs abiotiques et présence d'organismes adaptés ou non."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Exemple de milieu aquatique :",
+              "options": [
+                "Un lac",
+                "Un désert sec",
+                "Un sommet rocheux sans eau",
+                "Une grotte sèche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un lac est un milieu où l'eau domine le peuplement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Exemple de milieu terrestre :",
+              "options": [
+                "Une prairie",
+                "L'océan profond",
+                "Un ruisseau",
+                "Une mare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La prairie est un milieu essentiellement aérien et terrestre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Peupler un milieu signifie :",
+              "options": [
+                "Y vivent diverses espèces",
+                "Le milieu est vide de vie",
+                "Seules les roches y sont présentes",
+                "Il n'y a pas de conditions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le peuplement décrit les espèces qui y établissent leur vie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un facteur abiotique est :",
+              "options": [
+                "Non vivant, comme la température",
+                "Un prédateur",
+                "Une proie",
+                "Un champignon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abiotique = sans vie ; biotique = lié aux êtres vivants."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un facteur biotique peut être :",
+              "options": [
+                "La présence d'herbivores",
+                "La lumière du Soleil",
+                "La salinité",
+                "Le vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les interactions entre espèces sont des facteurs biotiques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux milieux voisins peuvent différer par :",
+              "options": [
+                "Leur humidité et leur luminosité",
+                "Uniquement la couleur du ciel",
+                "L'absence de facteurs",
+                "Leur distance au Soleil seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Humidité, lumière, température modifient le peuplement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un milieu hostile limite surtout :",
+              "options": [
+                "Le nombre d'espèces qui peuvent y vivre",
+                "La gravité terrestre",
+                "La rotation de la Terre",
+                "La masse du noyau terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des conditions extrêmes sélectionnent peu d'espèces tolérantes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Observer un milieu en SVT sert à :",
+              "options": [
+                "Relier conditions de vie et espèces présentes",
+                "Ignorer les facteurs",
+                "Compter uniquement les nuages",
+                "Mesurer la vitesse de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On étudie comment le milieu permet ou empêche certaines vies."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La forêt, la rivière et la dune sont :",
+              "options": [
+                "Des milieux différents",
+                "Un seul milieu identique",
+                "Des planètes",
+                "Des minéraux purs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque milieu possède un ensemble propre de conditions."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Facteurs physiques du milieu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels facteurs physiques influencent un milieu ?",
+              "options": [
+                "Température",
+                "Lumière",
+                "Présence d'un prédateur",
+                "Compétition entre deux espèces"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Température et lumière sont abiotiques ; prédateur et compétition sont biotiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La luminosité en forêt dense est souvent :",
+              "options": [
+                "Faible au sol",
+                "Plus forte qu'en plein désert",
+                "Identique partout",
+                "Absente même le jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le couvert végétal filtre la lumière au sol."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une température très basse en montagne :",
+              "options": [
+                "Favorise des espèces adaptées au froid",
+                "Permet à toutes les espèces tropicales de prospérer",
+                "Supprime toute vie",
+                "Augmente la salinité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seules certaines espèces tolèrent le froid prolongé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le vent sur une falaise côtière peut :",
+              "options": [
+                "Augmenter le stress et la déshydratation",
+                "Empêcher toute photosynthèse mondiale",
+                "Créer de l'oxygène pur",
+                "Rendre l'eau salée impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vent et embruns modifient les conditions pour les plantes et animaux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'humidité du sol en prairie humide est :",
+              "options": [
+                "Élevée",
+                "Toujours nulle",
+                "Identique au Sahara",
+                "Supérieure à 100 % d'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une prairie humide retient l'eau dans le sol."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La pente d'un versant influence :",
+              "options": [
+                "Le ruissellement et la stabilité du sol",
+                "La masse atomique du fer",
+                "La distance Terre-Lune",
+                "La vitesse de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau s'écoule, érodant et modifiant les conditions locales."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un milieu ombragé sélectionne des plantes :",
+              "options": [
+                "Tolérant peu de lumière",
+                "Nécessitant un soleil direct permanent",
+                "Sans chlorophylle",
+                "Uniquement marines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines espèces supportent la faible luminosité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La température de l'eau d'une rivière varie et affecte :",
+              "options": [
+                "Le métabolisme des organismes aquatiques",
+                "La forme des continents",
+                "La rotation de la Terre",
+                "Le noyau terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poissons et invertébrés sont sensibles à la température."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un sol compacté et dur :",
+              "options": [
+                "Gêne l'enracinement",
+                "Facilite toutes les plantes",
+                "Crée de l'oxygène pur",
+                "Empêche la pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Racines et eau circulent mal dans un sol compact."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mesurer température et luminosité d'un milieu aide à :",
+              "options": [
+                "Expliquer quelles espèces peuvent y vivre",
+                "Calculer la masse du Soleil",
+                "Ignorer le peuplement",
+                "Supprimer les facteurs biotiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les facteurs physiques déterminent en partie la répartition des espèces."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Facteurs chimiques et ressources",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels facteurs chimiques ou ressources structurent un milieu ?",
+              "options": [
+                "Salinité de l'eau",
+                "Minéraux du sol",
+                "Couleur des plumes d'un oiseau",
+                "Hauteur d'un prédateur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Salinité et minéraux sont des conditions chimiques ; couleur et taille relèvent du vivant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une eau douce a une salinité :",
+              "options": [
+                "Faible",
+                "Identique à l'océan",
+                "Nulle en minéraux dissous",
+                "Supérieure à 350 g/L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rivières et lacs sont peu salés comparés à la mer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'eau de mer est riche en :",
+              "options": [
+                "Sels dissous",
+                "Sucre",
+                "Pétrole uniquement",
+                "Azote liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La salinité caractérise le milieu marin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un sol pauvre en azote limite surtout :",
+              "options": [
+                "La croissance de nombreuses plantes",
+                "La respiration du Soleil",
+                "La marée",
+                "La gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'azote est un élément essentiel pour la végétation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le pH d'un sol acide convient à :",
+              "options": [
+                "Certaines espèces, pas à toutes",
+                "Absolument toutes les plantes",
+                "Aucun organisme",
+                "Uniquement les poissons marins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque espèce a une tolérance chimique propre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La disponibilité en eau est une ressource clé car :",
+              "options": [
+                "Tous les êtres vivants en ont besoin",
+                "Seules les roches l'utilisent",
+                "Elle remplace l'oxygène",
+                "Elle n'influence pas les plantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau = milieu ou ressource indispensable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une pollution par produits toxiques :",
+              "options": [
+                "Réduit la diversité du peuplement",
+                "Augmente toujours les espèces",
+                "Ne change rien",
+                "Crée de l'oxygène pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les substances nocives éliminent des espèces sensibles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les décomposeurs recyclent :",
+              "options": [
+                "Matière organique et minéraux",
+                "Uniquement la lumière",
+                "Le fer en or",
+                "L'air en roche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils remettent des éléments chimiques dans le sol."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un milieu riche en matière organique au sol favorise :",
+              "options": [
+                "Microorganismes et plantes",
+                "Absence totale de vie",
+                "Uniquement des métaux",
+                "Glace permanente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matière organique nourrit le réseau du sol."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparer eau douce et eau salée montre :",
+              "options": [
+                "Des peuplements différents",
+                "Les mêmes espèces partout",
+                "Aucun facteur chimique",
+                "L'absence d'adaptation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La salinité sélectionne des espèces spécialisées."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Peuplement des milieux terrestres",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans une forêt tempérée, on observe typiquement :",
+              "options": [
+                "Des arbres",
+                "Des animaux terrestres ou arboricoles",
+                "Des coraux",
+                "Des requins"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Forêt = végétation ligneuse et faune adaptée au sol et aux arbres."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une garrigue méditerranéenne est :",
+              "options": [
+                "Sèche avec vegetation basse",
+                "Un glacier",
+                "Un fond océanique",
+                "Une banquise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Climat méditerranéen et sécheresse estivale structurent ce milieu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un désert chaud se caractérise par :",
+              "options": [
+                "Peu d'eau et peu d'espèces",
+                "Pluie abondante toute l'année",
+                "Glaces permanentes",
+                "Salinité marine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rareté de l'eau limite le peuplement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les prairies naturelles abritent surtout :",
+              "options": [
+                "Herbes et herbivores",
+                "Grands coraux",
+                "Poissons des abysses",
+                "Mousses des tourbières uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Herbacées dominent et supportent chaînes alimentaires."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En montagne, l'altitude augmente et la température :",
+              "options": [
+                "Diminue en général",
+                "Double",
+                "Devient identique à l'équateur",
+                "Disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il fait plus froid en altitude, modifiant les espèces présentes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un sol forestier humifère contient :",
+              "options": [
+                "Décomposeurs et racines",
+                "Uniquement du plastique",
+                "De l'eau de mer",
+                "Du magma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Feuilles mortes et organismes du sol enrichissent le milieu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les zones urbaines peuvent être peuplées par :",
+              "options": [
+                "Espèces adaptées à l'Homme",
+                "Uniquement des espèces des abysses",
+                "Aucun être vivant",
+                "Seulement des poissons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pigeons, plantes rudérales et autres espèces tolèrent la ville."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un milieu terrestre ouvert (lande) reçoit :",
+              "options": [
+                "Plus de vent et de lumière",
+                "Aucune lumière",
+                "Uniquement de l'eau salée",
+                "Zéro facteur physique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Absence de couvert favorise vent et ensoleillement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La diversité d'espèces terrestres augmente souvent quand :",
+              "options": [
+                "Les conditions sont modérées et variées",
+                "Le milieu est extrême partout",
+                "Il n'y a pas d'eau jamais",
+                "La température est toujours au-delà de 80 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milieux tempérés et ressources diverses supportent plus d'espèces."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Observer des traces et des nids permet de :",
+              "options": [
+                "Identifier des animaux du milieu",
+                "Mesurer la salinité",
+                "Calculer la masse de Jupiter",
+                "Ignorer le peuplement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indices de présence complètent l'inventaire des espèces."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Peuplement des milieux aquatiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un étang de campagne peut abriter :",
+              "options": [
+                "Poissons",
+                "Libellules",
+                "Chameaux du désert",
+                "Coraux de récif tropical"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Étangs douces = poissons, insectes aquatiques ; chameaux et coraux ne correspondent pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le plancton est :",
+              "options": [
+                "Ensemble d'organismes flottant ou dérivant",
+                "Un seul grand poisson",
+                "Une roche",
+                "Un nuage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plancton = micro-organismes et larves à la merci du courant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En rivière, le courant influence :",
+              "options": [
+                "Les espèces capables de se fixer ou de nager",
+                "La rotation terrestre",
+                "La masse du Soleil",
+                "La salinité océanique globale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courant fort sélectionne morphologies et modes de vie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les zones littorales marines abritent :",
+              "options": [
+                "Algues, mollusques, poissons côtiers",
+                "Uniquement des cactus",
+                "Des pingouins des pôles seulement",
+                "Aucune vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interface eau-terre marine est riche en espèces."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une mare temporaire asséchée en été :",
+              "options": [
+                "Peut contenir des espèces adaptées au cycle",
+                "Reste toujours pleine",
+                "Contient de l'eau salée océanique",
+                "Interdit toute vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines espèces pondent avant l'assèchement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'oxygène dissous nécessaire aux poissons vient de :",
+              "options": [
+                "Échanges air-eau et plantes aquatiques",
+                "Roche volcanique seule",
+                "Sel pur",
+                "Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aération et photosynthèse aquatique enrichissent l'eau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les fonds vaseux abritent souvent :",
+              "options": [
+                "Vers et microorganismes détritivores",
+                "Grands félins",
+                "Aigles",
+                "Cactus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vase = matière organique consommée par détritivores."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La profondeur en lac augmente et la lumière :",
+              "options": [
+                "Diminue",
+                "Augmente toujours",
+                "Devient laser",
+                "Disparaît seulement la nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu de lumière atteint les profondeurs, limitant les plantes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comparer étang et océan montre :",
+              "options": [
+                "Des salinités et peuplements différents",
+                "Les mêmes espèces",
+                "Aucun facteur",
+                "Identité totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau douce vs marine impose des adaptations distinctes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un milieu aquatique pollué par des produits chimiques :",
+              "options": [
+                "Appauvrit le peuplement",
+                "Enrichit toujours la diversité",
+                "Ne change rien",
+                "Transforme l'eau en air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pollution élimine espèces sensibles."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Adaptations au milieu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent une adaptation au milieu ?",
+              "options": [
+                "Un trait qui favorise la survie ou la reproduction",
+                "Peut être morphologique ou comportementale",
+                "Rend l'espèce indépendante de toute condition",
+                "Est strictement identique chez toutes les espèces"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une adaptation est un caractère utile, de forme ou de comportement, hérité ou acquis selon les cas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une plante à feuilles épaisses en milieu sec montre :",
+              "options": [
+                "Adaptation à la sécheresse",
+                "Adaptation à l'eau salée uniquement",
+                "Absence d'eau dans les tissus",
+                "Vie marine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Feuilles charnues stockent l'eau chez les succulentes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un poisson au corps fuselé dans un courant :",
+              "options": [
+                "Réduit la résistance de l'eau",
+                "Vole dans l'air",
+                "Vit sans eau",
+                "Photosynthétise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme hydrodynamique adaptée au milieu liquide."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un caméléon change parfois de couleur pour :",
+              "options": [
+                "Communiquer ou se thermoréguler",
+                "Produire de l'oxygène",
+                "Digérer le fer",
+                "Respirer dans l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleur sert aussi à camouflage et échanges thermiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les racines profondes d'un arbre en prairie sèche :",
+              "options": [
+                "Atteignent l'eau profonde",
+                "Absorbent le sel marin",
+                "Remplacent les poumons",
+                "Produisent du lait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enracinement profond compense le manque d'eau en surface."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un oiseau migrateur quitte un milieu devenu :",
+              "options": [
+                "Défavorable (froid, manque de nourriture)",
+                "Trop favorable sans raison",
+                "Sans gravité",
+                "Sans atmosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Migration évite conditions difficiles saisonnières."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Des pattes palmées chez une grenouille aquatique :",
+              "options": [
+                "Aident à nager",
+                "Servent à voler",
+                "Coupent les arbres",
+                "Stockent le sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Membranes entre doigts propulsent dans l'eau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une espèce non adaptée à un milieu :",
+              "options": [
+                "Y survit mal ou disparaît",
+                "Domine toujours",
+                "Devient un minéral",
+                "Ne meurt jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans adaptation, compétition et conditions éliminent l'espèce."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le pelage épais d'un renard arctique :",
+              "options": [
+                "Protège du froid",
+                "Refroidit au désert",
+                "Absorbe le CO₂",
+                "Remplace la respiration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Isolation thermique = adaptation au froid."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Observer une adaptation permet de :",
+              "options": [
+                "Relier forme et fonction au milieu",
+                "Ignorer les conditions",
+                "Supprimer les facteurs",
+                "Nier l'évolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme et comportement s'expliquent par le milieu."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Relations entre espèces et milieu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les relations biotiques incluent :",
+              "options": [
+                "Prédation",
+                "Compétition",
+                "Température",
+                "Salinité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Prédation et compétition opposent des espèces ; température et salinité sont abiotiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un herbivore consomme :",
+              "options": [
+                "Des producteurs végétaux",
+                "Uniquement des roches",
+                "Du CO₂ pur",
+                "De la lumière directement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Herbivores mangent plantes ou algues."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un prédateur régule souvent :",
+              "options": [
+                "La population de proies",
+                "La masse de la Terre",
+                "La salinité du sol",
+                "La vitesse de rotation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prédation limite l'explosion des proies."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Deux espèces en compétition pour la même ressource :",
+              "options": [
+                "Peuvent coexister ou une l'emporte",
+                "Fusionnent toujours",
+                "Devient minéral",
+                "Ignorent le milieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétition modifie répartition et abondance."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un pollinisateur et une fleur montrent :",
+              "options": [
+                "Une interaction biotique bénéfique",
+                "Un facteur abiotique",
+                "Aucune relation",
+                "Une relation uniquement chimique du sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mutualisme : insecte nourri, plante pollinisée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La décomposition des feuilles mortes :",
+              "options": [
+                "Enrichit le milieu pour d'autres espèces",
+                "Supprime toute vie",
+                "Augmente le plastique",
+                "Crée du pétrole instantané"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recyclage de matière organique au profit du sol."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Introduire une espèce invasive peut :",
+              "options": [
+                "Déséquilibrer le peuplement local",
+                "Toujours augmenter la diversité",
+                "Ne rien changer",
+                "Refroidir le Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Espèce sans prédateur local peut dominer."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une chaîne alimentaire simple : herbe → lapin → renard montre :",
+              "options": [
+                "Des niveaux trophiques",
+                "Des roches nutritives",
+                "Photosynthèse animale",
+                "Absence d'énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie passe des producteurs aux consommateurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La disparition d'une espèce clé peut :",
+              "options": [
+                "Modifier tout le peuplement",
+                "Ne jamais rien changer",
+                "Créer un nouveau Soleil",
+                "Vider l'atmosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque espèce est liée à d'autres dans le réseau écologique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Étudier les relations aide à comprendre :",
+              "options": [
+                "Pourquoi un milieu est peuplé ainsi",
+                "La vitesse de la lumière",
+                "La masse des planètes",
+                "Le noyau terrestre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peuplement = conditions + interactions entre espèces."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Répartition des espèces",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La répartition d'une espèce dépend de :",
+              "options": [
+                "Facteurs du milieu",
+                "Capacité de dispersion",
+                "Couleur du ciel uniquement",
+                "Distance au centre de la Galaxie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Conditions locales et arrivée de l'espèce déterminent sa présence."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une espèce endémique est :",
+              "options": [
+                "Présente dans une zone géographique limitée",
+                "Partout sur Terre",
+                "Uniquement dans l'espace",
+                "Toujours invasive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Endémisme = répartition restreinte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un barrier naturel (fleuve, montagne) peut :",
+              "options": [
+                "Séparer des peuplements",
+                "Mélanger toutes les espèces",
+                "Supprimer la gravité",
+                "Créer de l'oxygène pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Obstacles limitent les déplacements."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le microclimat sous un buisson :",
+              "options": [
+                "Diffère du milieu ouvert voisin",
+                "Est identique partout",
+                "N'existe pas",
+                "Est toujours glacial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ombrage et humidité créent un petit milieu distinct."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Certaines espèces ne vivent qu'en bordure d'eau car :",
+              "options": [
+                "Elles exigent humidité ou eau",
+                "Elles détestent toute eau",
+                "Elles respirent le sel pur",
+                "Elles vivent sans facteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ripisylve et zones humides abritent espèces spécialisées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La latitude influence :",
+              "options": [
+                "Durée du jour et température",
+                "Masse du noyau",
+                "Salinité de toutes les rivières",
+                "Forme des os"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Climat global varie avec la latitude."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un inventaire d'espèces sur plusieurs stations permet :",
+              "options": [
+                "Cartographier la répartition",
+                "Ignorer le milieu",
+                "Mesurer Jupiter",
+                "Supprimer la biodiversité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relevés multiples montrent où vit chaque espèce."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une espèce ubiquiste est :",
+              "options": [
+                "Présente dans de nombreux milieux",
+                "Toujours rare",
+                "Uniquement marine profonde",
+                "Toujours disparue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ubiquiste = large répartition écologique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La fragmentation d'un habitat forestier :",
+              "options": [
+                "Isole des populations",
+                "Relie toujours les forêts",
+                "Ne change rien",
+                "Augmente la surface forestière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Routes et coupes isolent parcelles et espèces."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Relier carte et conditions du milieu sert à :",
+              "options": [
+                "Prédire où une espèce peut vivre",
+                "Calculer pi",
+                "Ignorer les adaptations",
+                "Nier les facteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèles écologiques croisent répartition et facteurs."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Milieux extrêmes et conditions limites",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Des milieux extrêmes incluent :",
+              "options": [
+                "Déserts très secs",
+                "Sources chaudes très chaudes",
+                "Forêt tempérée humide modérée",
+                "Prairie tempérée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sécheresse extrême et chaleur intense caractérisent des milieux limites."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les extremophiles microbien vivent parfois :",
+              "options": [
+                "Dans des conditions très dures",
+                "Uniquement en milieu parfait",
+                "Sans eau ni énergie",
+                "Dans le vide interstellaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains microbes tolèrent chaleur, acide ou sel élevé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une eau très acide ou basique :",
+              "options": [
+                "Limite les espèces présentes",
+                "Convient à toutes",
+                "Ne change rien",
+                "Crée des mammifères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "pH extrême est toxique pour beaucoup d'organismes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En haute montagne, l'oxygène de l'air est :",
+              "options": [
+                "Moins dense qu'en plaine",
+                "Plus dense qu'en plaine",
+                "Absent",
+                "Liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pression atmosphérique plus faible réduit l'O₂ disponible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les zones intertidales subissent :",
+              "options": [
+                "Alternance immersion et émergence",
+                "Gel permanent",
+                "Absence d'eau",
+                "Feu constant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marée expose et couvre régulièrement le milieu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un sol salé côtier sélectionne :",
+              "options": [
+                "Halophytes adaptées",
+                "Toutes les espèces forestières",
+                "Poissons d'eau douce",
+                "Coraux des abysses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plantes halophiles tolèrent le sel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La banquise abrite des espèces :",
+              "options": [
+                "Adaptées au froid",
+                "Du désert chaud",
+                "Uniquement tropicales",
+                "Sans eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manchots, algues glaciaires et autres espèces polaires."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une sécheresse prolongée en milieu terrestre :",
+              "options": [
+                "Réduit plantes et animaux sensibles",
+                "Augmente toujours la diversité",
+                "Crée des océans",
+                "Refroidit le noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manque d'eau élimine espèces non adaptées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Certaines bactéries des sources chaudes supportent :",
+              "options": [
+                "Des températures élevées",
+                "Le vide absolu",
+                "L'absence totale d'eau",
+                "Le froid de l'espace profond"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thermophiles vivent dans l'eau très chaude."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Étudier les milieux extrêmes montre :",
+              "options": [
+                "La diversité des adaptations possibles",
+                "Qu'aucune vie n'existe jamais",
+                "Que tous les milieux sont identiques",
+                "Que seuls les humains s'adaptent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vie colonise une grande variété de conditions."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse : conditions de vie et peuplement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour expliquer le peuplement d'un milieu, on combine :",
+              "options": [
+                "Facteurs abiotiques",
+                "Relations biotiques",
+                "Ignorance des conditions",
+                "Absence d'adaptations"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Milieu physique-chimique et interactions entre espèces structurent la communauté."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un même facteur (ex. température) peut :",
+              "options": [
+                "Favoriser certaines espèces et en exclure d'autres",
+                "Ne jamais influer",
+                "Créer des planètes",
+                "Supprimer l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque espèce a une plage de tolérance."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Protéger un milieu naturel sert à :",
+              "options": [
+                "Conserver conditions et espèces",
+                "Augmenter la pollution",
+                "Vider l'eau",
+                "Empêcher toute vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conservation maintient habitats et biodiversité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'Homme modifie les milieux en :",
+              "options": [
+                "Urbanisant, cultivant, polluant",
+                "Ne touchant jamais rien",
+                "Supprimant la gravité",
+                "Créant un second Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Activités humaines transforment facteurs et peuplements."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Relier respiration et milieu, on comprend que :",
+              "options": [
+                "Air ou eau doit fournir O₂ adapté",
+                "Les plantes n'ont pas besoin de milieu",
+                "Le CO₂ n'existe pas",
+                "Les poissons respirent l'air sec avec poumons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conditions du milieu déterminent les échanges respiratoires possibles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un tableau milieu / espèces observées sert à :",
+              "options": [
+                "Synthétiser une étude de terrain",
+                "Mesurer la vitesse lumière",
+                "Ignorer les adaptations",
+                "Nier la science"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse classe espèces selon milieu étudié."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La biodiversité d'un milieu mesure :",
+              "options": [
+                "La variété d'espèces présentes",
+                "La masse du noyau",
+                "La couleur du ciel",
+                "Le nombre de roches seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus d'espèces = plus grande diversité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Restaurer une zone humide peut :",
+              "options": [
+                "Récupérer des espèces disparues localement",
+                "Toujours la dessécher",
+                "Saliniser une rivière",
+                "Supprimer l'oxygène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rétablir l'eau et les conditions ramène la faune et la flore."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Chaque strate d'une forêt (sol, sous-bois, cime) :",
+              "options": [
+                "Accueille des espèces différentes",
+                "Est identique",
+                "Sans vie",
+                "Uniquement minérale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verticalité crée micro-milieux distincts."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le chapitre « Peuplement des milieux » conclut que :",
+              "options": [
+                "Vie et milieu sont indissociables",
+                "Les espèces vivent sans conditions",
+                "Seul l'air compte",
+                "L'eau n'influence rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peuplement et conditions de vie forment un ensemble cohérent."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

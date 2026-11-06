@@ -1,4 +1,4 @@
-import { getAllNewsArticles, getNewsArticle } from '@/lib/news';
+import { getNewsArticle, getNewsArticles } from '@/lib/news';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Link from 'next/link';
@@ -16,7 +16,7 @@ const formatDate = (dateStr: any) => {
 };
 
 export async function generateStaticParams() {
-  const articles = getAllNewsArticles();
+  const articles = getNewsArticles();
   return articles.map((article) => ({
     slug: article.slug,
   }));
@@ -33,7 +33,7 @@ export default async function ArticlePage({
   const requestHeaders = await headers;
   const article = getNewsArticle(resolvedParams.slug);
 
-  if (!article) {
+  if (!article || article.visibility === 'hidden') {
     notFound();
   }
 

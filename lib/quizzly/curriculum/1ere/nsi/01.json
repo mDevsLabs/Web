@@ -1,0 +1,2328 @@
+{
+  "id": "1ere-nsi-01",
+  "year": "1ere",
+  "subject": "nsi",
+  "title": "Représentation des données",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Types et encodage",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Notion de type",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent un type de données ?",
+              "options": [
+                "Valeurs possibles et opérations admises",
+                "Uniquement un nom de variable",
+                "Guide la représentation en mémoire",
+                "Interdit toute conversion"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Type = valeurs + encodage."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Valeur typique entier :",
+              "options": ["3.14", "-42", "true", "'A'"],
+              "correctAnswers": [1],
+              "explanation": "Entier sans décimale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Type pour une adresse e-mail :",
+              "options": ["bool", "str", "float", "bit"],
+              "correctAnswers": [1],
+              "explanation": "Suite de caractères."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "type(7) en Python 3 :",
+              "options": ["float", "str", "int", "bool"],
+              "correctAnswers": [2],
+              "explanation": "7 est int."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une énumération :",
+              "options": [
+                "Liste finie de valeurs",
+                "Type flottant",
+                "Sans mémoire",
+                "Assembleur seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valeurs nommées limitées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Entier vs flottant :",
+              "options": [
+                "Représentation binaire différente",
+                "Flottant sans mémoire",
+                "Entier jamais négatif",
+                "Flottant exact en base 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Encodages distincts."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un struct/enregistrement :",
+              "options": [
+                "Plusieurs champs typés",
+                "Un bit",
+                "Table de vérité",
+                "Fichier audio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Regroupement de champs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le booléen représente :",
+              "options": [
+                "Vrai ou faux",
+                "Une image",
+                "Un octet seul",
+                "Une adresse IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logique binaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un cast :",
+              "options": [
+                "Conversion entre types",
+                "Suppression variable",
+                "Compilation",
+                "Copie disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peut perdre de l'information."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Typage utile pour :",
+              "options": [
+                "Détecter incohérences",
+                "Interdire code",
+                "Remplacer tests",
+                "Tout en str"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opérations valides."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Entiers et plages",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Entier non signé sur n bits :",
+              "options": [
+                "2^n valeurs",
+                "Max 2^n-1",
+                "Négatifs sans règle",
+                "Un seul bit utile"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plage 0 à 2^n-1."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Valeurs sur 8 bits non signés :",
+              "options": ["128", "255", "256", "512"],
+              "correctAnswers": [2],
+              "explanation": "2^8=256."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complément à deux, MSB :",
+              "options": ["Signe", "Couleur", "Parité seule", "Port TCP"],
+              "correctAnswers": [0],
+              "explanation": "Bit de signe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Max uint16 :",
+              "options": ["65535", "32767", "65536", "255"],
+              "correctAnswers": [0],
+              "explanation": "2^16-1."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Overflow :",
+              "options": [
+                "Résultat hors plage",
+                "Disque plein",
+                "Wi-Fi coupé",
+                "Sans nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dépassement de capacité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "8/16/32/64 bits standard :",
+              "options": [
+                "Interop matérielle",
+                "Interdit grands nombres",
+                "Couleurs seules",
+                "Remplace binaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tailles conventionnelles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "int Python 3 :",
+              "options": [
+                "Précision arbitraire",
+                "Toujours 32 bits",
+                "Non signé seul",
+                "char C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grandit avec la valeur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "a // b :",
+              "options": ["Division entière", "Complexe", "Concat", "Erreur"],
+              "correctAnswers": [0],
+              "explanation": "Quotient entier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "BCD : chiffre sur",
+              "options": ["4 bits", "1 bit", "8 octets", "32 bits"],
+              "correctAnswers": [0],
+              "explanation": "Demi-octet par chiffre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Signé complément à deux :",
+              "options": [
+                "Comparaison binaire adaptée",
+                "Hex obligatoire",
+                "Ignore signe",
+                "Flottants seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre préservé."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Numération binaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le binaire :",
+              "options": [
+                "Base 2 avec chiffres 0 et 1",
+                "Chaque position vaut une puissance de 2",
+                "Base 10 avec chiffres A-F",
+                "Ignore les bits"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Puissances de 2 par position."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1010₂ vaut en décimal :",
+              "options": ["8", "10", "12", "16"],
+              "correctAnswers": [1],
+              "explanation": "8+2=10."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bit le plus à droite :",
+              "options": [
+                "Poids faible (LSB)",
+                "Poids fort (MSB)",
+                "Signe toujours",
+                "Parité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "LSB = unités."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "1111₂ + 1₂ :",
+              "options": ["10000₂", "1112₂", "0₂", "1110₂"],
+              "correctAnswers": [0],
+              "explanation": "15+1=16."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un octet contient :",
+              "options": ["8 bits", "4 bits", "16 bits", "1 bit"],
+              "correctAnswers": [0],
+              "explanation": "Standard 8 bits."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Décalage binaire gauche <<1 :",
+              "options": [
+                "Multiplie par 2 (entier)",
+                "Divise par 2",
+                "Inverse bits",
+                "Change base"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ajoute un 0 à droite."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "AND bit à bit 1010 & 1100 :",
+              "options": ["1000", "1110", "0010", "1010"],
+              "correctAnswers": [0],
+              "explanation": "1 si les deux bits valent 1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "OR bit à bit 1010 | 0101 :",
+              "options": ["1111", "0000", "1010", "0101"],
+              "correctAnswers": [0],
+              "explanation": "1 si au moins un bit vaut 1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "XOR 1010 ^ 1111 :",
+              "options": ["0101", "1010", "1111", "0000"],
+              "correctAnswers": [0],
+              "explanation": "1 si bits différents."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "NOT sur 4 bits ~1010 :",
+              "options": ["0101 (sur 4 bits)", "1010", "1111", "0000"],
+              "correctAnswers": [0],
+              "explanation": "Inversion de chaque bit."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Hexadécimal",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'hexadécimal :",
+              "options": [
+                "Base 16",
+                "Utilise 0-9 et A-F",
+                "Remplace toujours le binaire en mémoire",
+                "Base 8"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Compact pour lire le binaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "0xFF en décimal :",
+              "options": ["255", "256", "15", "240"],
+              "correctAnswers": [0],
+              "explanation": "2 octets non signés max."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un chiffre hex =",
+              "options": ["4 bits", "8 bits", "1 bit", "16 bits"],
+              "correctAnswers": [0],
+              "explanation": "Un demi-octet (nibble)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "0x2A en binaire :",
+              "options": ["00101010", "10101010", "00001010", "11101010"],
+              "correctAnswers": [0],
+              "explanation": "2=0010, A=1010."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Couleur #RRGGBB :",
+              "options": [
+                "6 chiffres hex (3 octets)",
+                "Décimal pur",
+                "BCD",
+                "Base 64"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rouge, vert, bleu sur 8 bits."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "0x10 vaut :",
+              "options": ["16", "10", "256", "1"],
+              "correctAnswers": [0],
+              "explanation": "1×16+0."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Préfixe Python hex :",
+              "options": ["0x", "0b", "0o", "#"],
+              "correctAnswers": [0],
+              "explanation": "Littéral hexadécimal."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1 octet s'écrit souvent :",
+              "options": [
+                "Deux chiffres hex",
+                "Un chiffre hex",
+                "Huit chiffres hex",
+                "En ASCII seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "00 à FF."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Adresse MAC typique :",
+              "options": ["6 octets en hex", "4 bits", "Flottant", "UTF-8"],
+              "correctAnswers": [0],
+              "explanation": "48 bits d'identifiant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Hex aide surtout à :",
+              "options": [
+                "Lire des dumps binaires",
+                "Mesurer température",
+                "Remplacer Unicode",
+                "Coder du son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lisibilité humaine."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Caractères et ASCII",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "ASCII 7 bits :",
+              "options": [
+                "128 caractères",
+                "Inclut lettres, chiffres, ponctuation",
+                "Identique à UTF-8 pour tous les symboles",
+                "Encode l'audio PCM"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Jeu limité, historique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Code ASCII de 'A' :",
+              "options": ["65", "97", "48", "32"],
+              "correctAnswers": [0],
+              "explanation": "Majuscules 65-90."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "'a' en ASCII :",
+              "options": ["97", "65", "48", "122"],
+              "correctAnswers": [0],
+              "explanation": "Minuscules 97-122."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Chiffre '0' ASCII :",
+              "options": ["48", "0", "32", "57"],
+              "correctAnswers": [0],
+              "explanation": "Chiffres 48-57."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un caractère en mémoire est :",
+              "options": [
+                "Un entier (code point encodé)",
+                "Toujours 1 bit",
+                "Un flottant",
+                "Sans encodage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stocké selon l'encodage choisi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "ASCII étendu 8 bits :",
+              "options": [
+                "256 valeurs possibles",
+                "128 seulement",
+                "Unicode complet",
+                "Binaire pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Octet par caractère (latin-1 etc.)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ord('A') en Python :",
+              "options": ["65", "'A'", "1", "256"],
+              "correctAnswers": [0],
+              "explanation": "Code Unicode/ASCII."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "chr(97) en Python :",
+              "options": ["'a'", "97", "'A'", "Erreur"],
+              "correctAnswers": [0],
+              "explanation": "Caractère depuis code."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Espace ASCII :",
+              "options": ["32", "0", "10", "255"],
+              "correctAnswers": [0],
+              "explanation": "Caractère imprimable."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Limite ASCII pour le français :",
+              "options": [
+                "Accents absents du ASCII 7 bits",
+                "Tous les accents natifs",
+                "Remplace UTF-8 partout",
+                "Encode images"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accents via encodages étendus ou Unicode."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Unicode et UTF-8",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Unicode :",
+              "options": [
+                "Répertoire de caractères (code points)",
+                "UTF-8 en est un encodage",
+                "Uniquement 128 symboles",
+                "Remplace le binaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Standard + encodages (UTF-8, UTF-16…)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "UTF-8 pour ASCII :",
+              "options": [
+                "1 octet identique à ASCII",
+                "Toujours 4 octets",
+                "BCD",
+                "16 bits fixes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compatibilité ASCII."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Émoji 🎵 en UTF-8 :",
+              "options": [
+                "Plusieurs octets",
+                "1 bit",
+                "Un flottant",
+                "Binaire pur sans octets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Code point hors ASCII."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "len('é') en Python str :",
+              "options": [
+                "1 caractère",
+                "2 caractères",
+                "0",
+                "Octets seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Longueur en code points."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "encode('utf-8') renvoie :",
+              "options": ["bytes", "str", "int", "bool"],
+              "correctAnswers": [0],
+              "explanation": "Chaîne → octets."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "BOM UTF-8 :",
+              "options": [
+                "Marque optionnelle en début de fichier",
+                "Obligatoire partout",
+                "Remplace JSON",
+                "Type entier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indique l'encodage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Caractère invalide en décodage :",
+              "options": [
+                "Erreur ou remplacement selon politique",
+                "Silence",
+                "Devient entier",
+                "Ignore Unicode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "strict vs replace."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Normalisation Unicode sert à :",
+              "options": [
+                "Comparer des formes composées/décomposées",
+                "Compresser images",
+                "Coder booléens",
+                "Remplacer hex"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. é vs e+accent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "UTF-8 est :",
+              "options": [
+                "Variable (1 à 4 octets par caractère)",
+                "Fixe 2 octets toujours",
+                "7 bits seulement",
+                "Audio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Encodage à longueur variable."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sur le Web, texte privilégie :",
+              "options": ["UTF-8", "ASCII 7 bits seul", "BCD", "Float"],
+              "correctAnswers": [0],
+              "explanation": "Standard moderne."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Images et couleurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Image matricielle (bitmap) :",
+              "options": [
+                "Grille de pixels",
+                "Chaque pixel a une couleur encodée",
+                "Toujours vectorielle",
+                "Sans mémoire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Raster = pixels + couleurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "RGB 8+8+8 bits :",
+              "options": [
+                "16777216 couleurs possibles",
+                "256 couleurs",
+                "1 couleur",
+                "Sans rouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2^24 combinaisons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "PNG est :",
+              "options": ["Sans perte", "Toujours lossy", "Audio", "Booléen"],
+              "correctAnswers": [0],
+              "explanation": "Compression sans perte."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "JPEG :",
+              "options": [
+                "Compression avec perte",
+                "Sans perte obligatoire",
+                "Texte Unicode",
+                "Table de vérité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adapté photos."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Résolution 1920×1080 :",
+              "options": [
+                "2073600 pixels",
+                "1080 pixels",
+                "1920 bits",
+                "1 octet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Produit largeur×hauteur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Canal alpha :",
+              "options": [
+                "Transparence",
+                "Volume son",
+                "Signe entier",
+                "Parité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quatrième composante couleur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Image noir et blanc 1 bit/pixel :",
+              "options": ["2 couleurs", "256 couleurs", "Flottant", "UTF-8"],
+              "correctAnswers": [0],
+              "explanation": "0 ou 1 par pixel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "SVG :",
+              "options": [
+                "Format vectoriel",
+                "Grille de pixels seule",
+                "BCD",
+                "Complément à deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Descriptions mathématiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Taille fichier image augmente avec :",
+              "options": [
+                "Résolution et profondeur couleur",
+                "Uniquement le titre",
+                "Le type bool",
+                "ASCII seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de pixels et bits/pixel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Métadonnées EXIF :",
+              "options": [
+                "Infos appareil/date dans le fichier",
+                "Remplacent pixels",
+                "Booléens seuls",
+                "Hex obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Données annexes."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Son numérique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Son numérique (PCM) :",
+              "options": [
+                "Échantillons à intervalles réguliers",
+                "Amplitude quantifiée sur n bits",
+                "Toujours sans fichier",
+                "Uniquement ASCII"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Discrétisation temps + amplitude."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Fréquence d'échantillonnage 44,1 kHz :",
+              "options": [
+                "44100 mesures par seconde",
+                "441 Hz",
+                "Bits par seconde",
+                "Octets par pixel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Standard audio CD."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "16 bits par échantillon :",
+              "options": [
+                "65536 niveaux d'amplitude",
+                "256 niveaux",
+                "1 niveau",
+                "Sans quantification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2^16 niveaux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Stéréo :",
+              "options": [
+                "Deux canaux (gauche/droite)",
+                "Un canal",
+                "Quatre octets fixes",
+                "Binaire seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux flux synchrones."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "MP3 :",
+              "options": [
+                "Compression avec perte",
+                "Sans perte obligatoire",
+                "Image",
+                "Bool"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Codec audio lossy."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bitrate élevé :",
+              "options": [
+                "Plus de données par seconde",
+                "Moins de qualité",
+                "Sans effet",
+                "Remplace UTF-8"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débit binaire audio."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Nyquist : fréquence max capturable ≈",
+              "options": [
+                "Moitié de la fréquence d'échantillonnage",
+                "Double",
+                "Identique",
+                "Nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théorème d'échantillonnage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "WAV non compressé :",
+              "options": [
+                "PCM brut souvent",
+                "Toujours MP3",
+                "Texte",
+                "Hex seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conteneur PCM courant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Silence en PCM :",
+              "options": [
+                "Échantillons proches de zéro",
+                "Bits tous à 1",
+                "UTF-8 vide",
+                "Overflow"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amplitude nulle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Durée × débit ≈",
+              "options": [
+                "Taille des données audio",
+                "Couleur pixel",
+                "Signe entier",
+                "Parité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Volume de données."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Flottants et approximations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Nombre flottant binaire :",
+              "options": [
+                "Mantisse + exposant (IEEE 754)",
+                "Approxime les réels",
+                "Toujours exact pour 0,1",
+                "Identique aux entiers"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Format standard approximatif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "0.1 + 0.2 en float Python :",
+              "options": [
+                "Peut différer légèrement de 0.3",
+                "Exact toujours",
+                "Entier",
+                "Bool"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erreur d'arrondi binaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "float 32 bits :",
+              "options": [
+                "Environ 7 chiffres décimaux significatifs",
+                "Infini précision",
+                "1 bit",
+                "BCD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Précision limitée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Infini flottant :",
+              "options": [
+                "Valeur spéciale IEEE",
+                "Erreur système",
+                "Entier max",
+                "ASCII"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Overflow peut → inf."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "NaN signifie :",
+              "options": [
+                "Not a Number",
+                "Nouveau ASCII",
+                "Nibble",
+                "Norme audio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résultat indéfini."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comparaison float sûre :",
+              "options": [
+                "Tolérance (epsilon) ou decimal",
+                "== toujours",
+                "XOR",
+                "NOT seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éviter égalité stricte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "double 64 bits :",
+              "options": [
+                "Plus de précision que float 32",
+                "Moins de bits",
+                "Sans exposant",
+                "Booléen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "64 bits IEEE."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Conversion int → float grande valeur :",
+              "options": [
+                "Peut perdre des entiers exacts",
+                "Toujours exact",
+                "Impossible",
+                "BCD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mantisse limitée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Type Python pour décimaux exacts métier :",
+              "options": ["decimal.Decimal", "bool", "bytes seul", "ASCII"],
+              "correctAnswers": [0],
+              "explanation": "Arithmétique décimale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choix float vs int :",
+              "options": [
+                "Int pour comptage exact ; float pour mesures continues",
+                "Int pour tout",
+                "Float pour indices tableau",
+                "Sans règle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adapter le type au besoin."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse types et encodage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Représenter des données implique :",
+              "options": [
+                "Choisir un type et un encodage",
+                "Connaître taille et plage",
+                "Ignorer la mémoire",
+                "Toujours du texte seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Type + bits en mémoire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bit :",
+              "options": [
+                "Plus petite unité binaire",
+                "Octet",
+                "Caractère UTF-8",
+                "Float"
+              ],
+              "correctAnswers": [0],
+              "explanation": "0 ou 1."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Octet =",
+              "options": ["8 bits", "4 bits", "16 bits", "1 hex"],
+              "correctAnswers": [0],
+              "explanation": "Standard byte."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Big-endian :",
+              "options": [
+                "Octet de poids fort en premier",
+                "LSB d'abord",
+                "Sans ordre",
+                "Audio seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre des octets."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "JSON transporte :",
+              "options": [
+                "Texte structuré (types limités)",
+                "Binaire natif",
+                "Pixels bruts",
+                "Circuits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sérialisation textuelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Checksum/CRC :",
+              "options": [
+                "Détecter erreurs de transmission",
+                "Compresser sans perte",
+                "Remplacer Unicode",
+                "Booléen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intégrité des données."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Compression lossless :",
+              "options": [
+                "Restauration exacte (ZIP, PNG)",
+                "Perte permanente",
+                "Flottant",
+                "Table vérité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réversible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Abstraction type en NSI :",
+              "options": [
+                "Sépare interface et représentation",
+                "Supprime binaire",
+                "Interdit hex",
+                "Sans intérêt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle pédagogique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Unité 1 prépare à :",
+              "options": [
+                "Lire encodages (entiers, texte, média)",
+                "Ignorer logique",
+                "Remplacer maths",
+                "Sans bool"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fondations représentation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Unité 2 portera sur :",
+              "options": [
+                "Booléens et logique",
+                "Uniquement images",
+                "Réseau seul",
+                "Assembleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Algèbre de Boole."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Booléens",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Valeurs booléennes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En logique et en programmation, le booléen :",
+              "options": [
+                "N'a que deux valeurs (vrai/faux)",
+                "Modélise le résultat d'un test",
+                "Stocke une image 24 bits",
+                "Remplace les entiers"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux valeurs ; issue d'une condition."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En Python, True est de type :",
+              "options": ["bool", "int", "str", "list"],
+              "correctAnswers": [0],
+              "explanation": "Type bool dédié."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "bool(0) en Python :",
+              "options": ["False", "True", "0", "None"],
+              "correctAnswers": [0],
+              "explanation": "0 est falsy."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "bool('') en Python :",
+              "options": ["False", "True", "''", "Erreur"],
+              "correctAnswers": [0],
+              "explanation": "Chaîne vide = faux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "bool(1) en Python :",
+              "options": ["True", "False", "1", "int"],
+              "correctAnswers": [0],
+              "explanation": "Non nul souvent vrai."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En mémoire, un booléen occupe souvent :",
+              "options": [
+                "Au moins un octet (implémentation)",
+                "Toujours 1 bit accessible seul",
+                "Un flottant",
+                "UTF-8"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langages stockent souvent 1 octet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "1 bit peut représenter :",
+              "options": [
+                "2 états",
+                "256 états",
+                "Un caractère Unicode",
+                "Un float"
+              ],
+              "correctAnswers": [0],
+              "explanation": "0 ou 1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Constantes Python booléennes :",
+              "options": [
+                "True et False",
+                "true et false",
+                "VRAI et FAUX",
+                "1 et 0 seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capitalisation Python."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un prédicat en maths logiques :",
+              "options": [
+                "Affirmation vraie ou fausse selon variables",
+                "Nombre réel",
+                "Fichier binaire",
+                "Couleur RGB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proposition logique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "if condition en Python attend :",
+              "options": [
+                "Une expression booléenne",
+                "Uniquement un entier >100",
+                "Une image",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Branchement selon vérité."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "ET, OU, NON",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Opérateurs logiques de base :",
+              "options": [
+                "ET (AND) : vrai si les deux le sont",
+                "OU (OR) : vrai si au moins un l'est",
+                "NON (NOT) inverse la valeur",
+                "XOR s'écrit toujours && en Python"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "AND, OR, NOT ; && n'existe pas en Python."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "True and False vaut :",
+              "options": ["False", "True", "None", "Erreur"],
+              "correctAnswers": [0],
+              "explanation": "ET exige les deux vrais."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "True or False vaut :",
+              "options": ["True", "False", "0", "''"],
+              "correctAnswers": [0],
+              "explanation": "OU : un suffit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "not True vaut :",
+              "options": ["False", "True", "0", "1"],
+              "correctAnswers": [0],
+              "explanation": "Négation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "False and (1/0) en Python :",
+              "options": ["False (court-circuit)", "Erreur", "True", "Infini"],
+              "correctAnswers": [0],
+              "explanation": "and n'évalue pas la droite si faux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "True or (1/0) en Python :",
+              "options": ["True (court-circuit)", "Erreur", "False", "None"],
+              "correctAnswers": [0],
+              "explanation": "or n'évalue pas si gauche vraie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Symbole logique pour ET :",
+              "options": ["∧", "∨", "¬", "⊕"],
+              "correctAnswers": [0],
+              "explanation": "Conjonction."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Symbole logique pour OU :",
+              "options": ["∨", "∧", "¬", "→"],
+              "correctAnswers": [0],
+              "explanation": "Disjonction."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "False or False :",
+              "options": ["False", "True", "None", "2"],
+              "correctAnswers": [0],
+              "explanation": "Aucun vrai."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "not False :",
+              "options": ["True", "False", "0", "''"],
+              "correctAnswers": [0],
+              "explanation": "Négation de faux."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Tables de vérité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une table de vérité :",
+              "options": [
+                "Liste toutes les combinaisons d'entrées",
+                "Donne la sortie pour chaque combinaison",
+                "Remplace l'encodage UTF-8",
+                "Mesure la température CPU"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "2^n lignes pour n variables."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "2 variables booléennes : combien de lignes ?",
+              "options": ["4", "2", "8", "16"],
+              "correctAnswers": [0],
+              "explanation": "2^2=4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "A and B : ligne A=F, B=F :",
+              "options": ["False", "True", "A", "B"],
+              "correctAnswers": [0],
+              "explanation": "ET faux si une entrée fausse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "A or B : A=F, B=F :",
+              "options": ["False", "True", "None", "Erreur"],
+              "correctAnswers": [0],
+              "explanation": "OU faux seulement si les deux faux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "not A quand A=True :",
+              "options": ["False", "True", "A", "not A"],
+              "correctAnswers": [0],
+              "explanation": "Négation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "3 variables : lignes table :",
+              "options": ["8", "6", "3", "9"],
+              "correctAnswers": [0],
+              "explanation": "2^3=8."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tautologie :",
+              "options": [
+                "Toujours vraie",
+                "Toujours fausse",
+                "Sans variable",
+                "Image"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. A or not A."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Contradiction :",
+              "options": ["Toujours fausse", "Toujours vraie", "Entier", "Hex"],
+              "correctAnswers": [0],
+              "explanation": "Ex. A and not A."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Équivalence A ↔ B signifie :",
+              "options": [
+                "Même vérité pour toutes lignes",
+                "A toujours vrai",
+                "B entier",
+                "XOR seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tables identiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Table aide à :",
+              "options": [
+                "Vérifier une expression logique",
+                "Encoder MP3",
+                "Calculer float",
+                "UTF-8"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode exhaustive petite n."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Priorité des opérateurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Priorité en Python logique :",
+              "options": [
+                "not avant and",
+                "and avant or",
+                "or avant not",
+                "Sans règle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "not > and > or."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "True or False and False vaut :",
+              "options": ["True", "False", "Erreur", "None"],
+              "correctAnswers": [0],
+              "explanation": "and d'abord : F and F=F ; T or F=T."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "not True or False :",
+              "options": ["False", "True", "None", "1"],
+              "correctAnswers": [0],
+              "explanation": "not T=F ; F or F=F."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Parenthèses servent à :",
+              "options": [
+                "Forcer l'ordre d'évaluation",
+                "Changer le type en str",
+                "Compiler hex",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lisibilité et priorité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comparaisons < > == avant and en Python :",
+              "options": [
+                "Oui (priorité plus haute)",
+                "Non, and d'abord",
+                "Jamais",
+                "Float seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relational before Boolean."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "5 > 3 and 2 < 1 :",
+              "options": ["False", "True", "5", "Erreur"],
+              "correctAnswers": [0],
+              "explanation": "T and F = F."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "not (True and False) :",
+              "options": ["True", "False", "None", "0"],
+              "correctAnswers": [0],
+              "explanation": "not False = True."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "(True or False) and False :",
+              "options": ["False", "True", "or", "and"],
+              "correctAnswers": [0],
+              "explanation": "T or F=T ; T and F=F."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Erreur fréquente : confondre and et or change :",
+              "options": [
+                "Le résultat logique",
+                "La couleur",
+                "UTF-8",
+                "Octet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sens différent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En cas de doute :",
+              "options": [
+                "Ajouter des parenthèses",
+                "Supprimer not",
+                "Tout en float",
+                "Ignorer priorité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clarté du code."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Lois de De Morgan",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "De Morgan :",
+              "options": [
+                "not (A and B) ≡ (not A) or (not B)",
+                "not (A or B) ≡ (not A) and (not B)",
+                "not (A and B) ≡ (not A) and (not B)",
+                "Remplace UTF-8"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Négation distribue avec inversion opérateur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "not (True and False) équivaut à :",
+              "options": [
+                "True or True → True",
+                "False and True",
+                "True and True",
+                "False or False seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "not F = T ; not T or not F = T or T."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "not (A or B) remplace OU par :",
+              "options": ["ET entre les négations", "OU", "XOR", "Rien"],
+              "correctAnswers": [0],
+              "explanation": "Second law De Morgan."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Simplifier : not (not A) :",
+              "options": ["A", "not A", "True", "False"],
+              "correctAnswers": [0],
+              "explanation": "Double négation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "De Morgan utile pour :",
+              "options": [
+                "Simplifier conditions",
+                "Encoder JPEG",
+                "Float",
+                "BCD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réécriture logique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "not (x > 5 and x < 10) équivaut à :",
+              "options": [
+                "x <= 5 or x >= 10",
+                "x > 5 or x < 10",
+                "x == 5",
+                "True"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation des inégalités."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Loi du tiers exclu (A or not A) :",
+              "options": ["Tautologie", "Contradiction", "Float", "ASCII"],
+              "correctAnswers": [0],
+              "explanation": "Toujours vraie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Loi de non-contradiction (A and not A) :",
+              "options": ["Contradiction", "Tautologie", "Entier", "Hex"],
+              "correctAnswers": [0],
+              "explanation": "Toujours fausse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Absorption A or (A and B) :",
+              "options": ["A", "B", "False", "True"],
+              "correctAnswers": [0],
+              "explanation": "Si A vrai, expression vraie ; sinon A faux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "De Morgan en Python :",
+              "options": [
+                "not (a and b) == (not a) or (not b)",
+                "Toujours faux",
+                "== remplace or",
+                "Sans not"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traduction directe."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Comparaisons et booléens",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En Python, une comparaison comme a < b renvoie :",
+              "options": [
+                "Un booléen",
+                "True ou False",
+                "Une chaîne",
+                "Un flottant"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "== < > etc. → True/False."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "3 == 3 :",
+              "options": ["True", "False", "3", "None"],
+              "correctAnswers": [0],
+              "explanation": "Égalité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "'abc' == 'abd' :",
+              "options": ["False", "True", "'abc'", "Erreur"],
+              "correctAnswers": [0],
+              "explanation": "Chaînes différentes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "5 != 5 :",
+              "options": ["False", "True", "5", "0"],
+              "correctAnswers": [0],
+              "explanation": "Inégalité fausse si égaux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Chaînage : 0 < 5 < 10 :",
+              "options": ["True", "False", "Erreur", "5"],
+              "correctAnswers": [0],
+              "explanation": "Équivalent à (0<5) and (5<10)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "is vs == : is teste :",
+              "options": [
+                "Identité d'objet",
+                "Valeur seule toujours",
+                "Type seul",
+                "UTF-8"
+              ],
+              "correctAnswers": [0],
+              "explanation": "== égalité valeur ; is même objet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "None is None :",
+              "options": ["True", "False", "None", "0"],
+              "correctAnswers": [0],
+              "explanation": "Singleton None."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "in pour séquence : 2 in [1,2,3] :",
+              "options": ["True", "False", "2", "Erreur"],
+              "correctAnswers": [0],
+              "explanation": "Appartenance → bool."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "age >= 18 and majeur logique :",
+              "options": [
+                "Modèle de condition combinée",
+                "Float",
+                "Hex",
+                "PCM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tests multiples."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparaison float 0.1+0.2 == 0.3 :",
+              "options": [
+                "Souvent False (approximation)",
+                "Toujours True",
+                "Erreur",
+                "None"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Précision binaire."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Expressions booléennes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Expression booléenne :",
+              "options": [
+                "Combine variables et opérateurs logiques",
+                "Vaut vrai ou faux",
+                "Encode toujours une image",
+                "Remplace int"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Calcul logique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "(a > 0) and (b > 0) si a=1,b=-1 :",
+              "options": ["False", "True", "1", "-1"],
+              "correctAnswers": [0],
+              "explanation": "Deuxième condition fausse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "XOR (a or b) and not (a and b) pour a=T,b=F :",
+              "options": ["True", "False", "None", "Erreur"],
+              "correctAnswers": [0],
+              "explanation": "Un seul vrai."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Implication A → B équivalent à :",
+              "options": ["not A or B", "A and B", "A or B", "not B"],
+              "correctAnswers": [0],
+              "explanation": "Faux seulement si A vrai et B faux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Simplifier A and True :",
+              "options": ["A", "True", "False", "not A"],
+              "correctAnswers": [0],
+              "explanation": "Élément neutre pour ET."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "A or False :",
+              "options": ["A", "False", "True", "None"],
+              "correctAnswers": [0],
+              "explanation": "Neutre pour OU."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Forme canonique disjonctive :",
+              "options": ["Somme de mintermes", "Image PNG", "Float", "UTF-8"],
+              "correctAnswers": [0],
+              "explanation": "Somme de produits."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Karnaugh (hors programme strict) aide à :",
+              "options": [
+                "Simplifier expressions",
+                "Coder audio",
+                "Réseau seul",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil de simplification."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Variable booléenne en algo :",
+              "options": [
+                "bool ou équivalent",
+                "float obligatoire",
+                "str seule",
+                "Sans type"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Typage logique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lire expression de gauche à droite sans priorité :",
+              "options": [
+                "Donne un mauvais résultat",
+                "Toujours correct",
+                "Ignore not",
+                "UTF-8"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respecter priorités."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Logique et circuits",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Porte logique AND :",
+              "options": [
+                "Sortie 1 si toutes entrées 1",
+                "Modélise l'opérateur ET",
+                "Stocke UTF-8",
+                "Mesure son"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Circuit ET."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Porte OR : entrées 0,0 :",
+              "options": ["0", "1", "X", "Z"],
+              "correctAnswers": [0],
+              "explanation": "OU : 0 si aucune entrée 1."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Porte NOT : entrée 1 :",
+              "options": ["0", "1", "AND", "OR"],
+              "correctAnswers": [0],
+              "explanation": "Inverseur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "NAND = NOT AND :",
+              "options": [
+                "Porte universelle (peut construire les autres)",
+                "Sans intérêt",
+                "Audio",
+                "Float"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fonctionnellement complet."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "XOR : sortie 1 si :",
+              "options": [
+                "Entrées différentes",
+                "Entrées égales",
+                "Toujours 0",
+                "Toujours 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ou exclusif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Demi-additionneur calcule :",
+              "options": [
+                "Somme et retenue de 2 bits",
+                "Produit float",
+                "Unicode",
+                "JPEG"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Addition binaire 1 bit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Multiplexeur sélectionne :",
+              "options": [
+                "Une entrée parmi plusieurs",
+                "Toutes entrées",
+                "Rien",
+                "Son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commutation de signal."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lien booléen / bit en CPU :",
+              "options": [
+                "Opérations AND OR NOT sur registres",
+                "Remplace ALU entière",
+                "Sans ALU",
+                "Texte seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logique matérielle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sortie tri-state :",
+              "options": [
+                "Peut être haute impédance (Z)",
+                "Toujours 0 ou 1",
+                "Float Python",
+                "BCD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bus partagés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Schéma logique sert à :",
+              "options": [
+                "Documenter un circuit combinatoire",
+                "Encoder MP3",
+                "Table ASCII",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Représentation hardware."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Python bool avancé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Valeurs falsy Python incluent :",
+              "options": [
+                "0, '', None, []",
+                "False",
+                "Toujours 42",
+                "Toujours 'hello'"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vides et zéro sont faux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "[] or 'def' vaut :",
+              "options": ["'def'", "[]", "True", "False"],
+              "correctAnswers": [0],
+              "explanation": "or renvoie première vraie ou dernière."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "'a' and 'b' vaut :",
+              "options": ["'b'", "'a'", "True", "False"],
+              "correctAnswers": [0],
+              "explanation": "and renvoie dernière si tout vrai."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "all([True, True, False]) :",
+              "options": ["False", "True", "None", "[]"],
+              "correctAnswers": [0],
+              "explanation": "Tous vrais requis."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "any([False, False, 1]) :",
+              "options": ["True", "False", "1", "0"],
+              "correctAnswers": [0],
+              "explanation": "Au moins un vrai."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "1 == True en Python :",
+              "options": ["True (valeur)", "False", "Erreur", "None"],
+              "correctAnswers": [0],
+              "explanation": "bool sous-classe int historique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "0 == False :",
+              "options": ["True", "False", "None", "Erreur"],
+              "correctAnswers": [0],
+              "explanation": "Comparaison valeur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Opérateur & sur int Python :",
+              "options": [
+                "ET bit à bit",
+                "ET logique short-circuit",
+                "OU",
+                "NOT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "& bitwise ; and logique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "if liste: signifie :",
+              "options": ["Liste non vide", "Liste vide", "Erreur", "None"],
+              "correctAnswers": [0],
+              "explanation": "Truthy si éléments."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Expression conditionnelle x if c else y :",
+              "options": [
+                "Sélection selon bool c",
+                "Boucle",
+                "Import",
+                "UTF-8"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opérateur ternaire."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse booléens",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Chapitre booléens NSI :",
+              "options": [
+                "Algèbre de Boole et programmation",
+                "Tables de vérité et simplification",
+                "Remplace encodage texte",
+                "Sans lien CPU"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Logique discrète fondamentale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Boole a formalisé :",
+              "options": ["Logique à deux valeurs", "IEEE 754", "UTF-8", "MP3"],
+              "correctAnswers": [0],
+              "explanation": "Algèbre booléenne XIXe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lien unité 1 et 2 :",
+              "options": [
+                "Bit/booléen et opérations logiques",
+                "Sans lien",
+                "Images seules",
+                "Réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Représentation + raisonnement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Condition while en algo :",
+              "options": ["Booléenne", "Float", "Str", "Image"],
+              "correctAnswers": [0],
+              "explanation": "Boucle tant que vrai."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Filtrer liste avec if :",
+              "options": ["Prédicat booléen", "Hex", "PCM", "BCD"],
+              "correctAnswers": [0],
+              "explanation": "Sélection logique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Assertion assert cond :",
+              "options": [
+                "Vérifie cond vraie",
+                "Compile C",
+                "Encode PNG",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Test debug."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Erreur logique vs syntaxe :",
+              "options": [
+                "Programme tourne mais mauvais résultat",
+                "Python refuse de parser",
+                "UTF-8",
+                "Float"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bug sémantique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tester tous cas petite n :",
+              "options": ["Table de vérité", "JPEG", "Nyquist", "MAC"],
+              "correctAnswers": [0],
+              "explanation": "Validation exhaustive."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Représentation données + booléens :",
+              "options": [
+                "Base NSI première",
+                "Hors programme",
+                "Sans algo",
+                "Réseau seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thème chapitre 01."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Compétence clé :",
+              "options": [
+                "Lire/écrire conditions correctes",
+                "Ignorer not",
+                "Tout en float",
+                "Sans tables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logique en code."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

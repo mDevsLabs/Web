@@ -1,0 +1,2990 @@
+{
+  "id": "6e-anglais-01",
+  "year": "6e",
+  "subject": "anglais",
+  "title": "Se présenter",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Identité",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Dire qui je suis",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles phrases anglaises sont correctes pour dire ton prénom ?",
+              "options": [
+                { "id": "a", "text": "My name is Emma." },
+                { "id": "b", "text": "I am Emma." },
+                { "id": "c", "text": "My name are Emma." },
+                { "id": "d", "text": "I name is Emma." }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "On peut dire « My name is… » ou « I am… » avec le prénom. « Are » et « I name is » sont incorrects."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Comment dit-on « Je m'appelle Lucas » en anglais ?",
+              "options": [
+                { "id": "a", "text": "My name is Lucas." },
+                { "id": "b", "text": "I have Lucas." },
+                { "id": "c", "text": "My name Lucas." },
+                { "id": "d", "text": "I names Lucas." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "La formule standard est « My name is + prénom »."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Que signifie « I am ten » ?",
+              "options": [
+                { "id": "a", "text": "J'ai dix ans." },
+                { "id": "b", "text": "Je suis grand." },
+                { "id": "c", "text": "Je m'appelle Ten." },
+                { "id": "d", "text": "J'habite ici." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« I am + nombre » sert à dire son âge en anglais."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Quelle question demande l'âge ?",
+              "options": [
+                { "id": "a", "text": "How old are you?" },
+                { "id": "b", "text": "What is your name?" },
+                { "id": "c", "text": "Where are you?" },
+                { "id": "d", "text": "How are you?" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« How old are you? » signifie « Quel âge as-tu ? »."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Réponse correcte à « What is your name? »",
+              "options": [
+                { "id": "a", "text": "I am twelve." },
+                { "id": "b", "text": "My name is Mia." },
+                { "id": "c", "text": "I like blue." },
+                { "id": "d", "text": "I am fine." }
+              ],
+              "correctAnswers": ["b"],
+              "explanation": "On répond avec « My name is… » ou « I am… », pas avec l'âge."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Choisis la phrase correcte.",
+              "options": [
+                { "id": "a", "text": "I am a student." },
+                { "id": "b", "text": "I is a student." },
+                { "id": "c", "text": "I am student a." },
+                { "id": "d", "text": "Am I student." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Avec « I », on utilise « am » : « I am a student » (Je suis élève)."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« How are you? » — quelle réponse convient pour te présenter brièvement ?",
+              "options": [
+                { "id": "a", "text": "I am fine, thank you." },
+                { "id": "b", "text": "I am red." },
+                { "id": "c", "text": "My name is fine." },
+                { "id": "d", "text": "I like you." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "On répond souvent « I am fine, thank you » à « How are you? »."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Traduction : « J'ai onze ans. »",
+              "options": [
+                { "id": "a", "text": "I am eleven." },
+                { "id": "b", "text": "I have eleven." },
+                { "id": "c", "text": "I eleven am." },
+                { "id": "d", "text": "My age eleven." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "L'âge se dit avec « I am + nombre », pas « I have »."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Quelle phrase est une présentation complète simple ?",
+              "options": [
+                { "id": "a", "text": "Hello! My name is Noah. I am twelve." },
+                { "id": "b", "text": "Blue I like." },
+                { "id": "c", "text": "Name how old?" },
+                { "id": "d", "text": "Are you name." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Salutation + prénom + âge forment une mini-présentation A1."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Mot manquant : « ___ name is Sara. »",
+              "options": [
+                { "id": "a", "text": "My" },
+                { "id": "b", "text": "I" },
+                { "id": "c", "text": "Am" },
+                { "id": "d", "text": "You" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "On dit « My name is… », avec le possessif « my »."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Poser des questions",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles questions servent à connaître quelqu'un ?",
+              "options": [
+                { "id": "a", "text": "What is your name?" },
+                { "id": "b", "text": "How old are you?" },
+                { "id": "c", "text": "I am Paul." },
+                { "id": "d", "text": "My name is Paul." }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Les deux questions interrogatives demandent le nom et l'âge ; les autres phrases se présentent."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Ordre des mots correct : question sur le prénom",
+              "options": [
+                { "id": "a", "text": "What is your name?" },
+                { "id": "b", "text": "Your name what is?" },
+                { "id": "c", "text": "What your name is?" },
+                { "id": "d", "text": "Is what your name?" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "En anglais, l'ordre est : mot interrogatif + verbe + sujet."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Tu veux savoir si ton camarade a douze ans. Tu demandes :",
+              "options": [
+                { "id": "a", "text": "Are you twelve?" },
+                { "id": "b", "text": "You are twelve?" },
+                { "id": "c", "text": "Is you twelve?" },
+                { "id": "d", "text": "Twelve you are?" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Pour « tu », la question yes/no inverse : « Are you…? »"
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Réponse à « How old are you? » si tu as treize ans :",
+              "options": [
+                { "id": "a", "text": "I am thirteen." },
+                { "id": "b", "text": "My name is thirteen." },
+                { "id": "c", "text": "I like thirteen." },
+                { "id": "d", "text": "I am name thirteen." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "On répond avec « I am + âge »."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Hello, I am Kate. ___ » — quelle question polie ajoutes-tu ?",
+              "options": [
+                { "id": "a", "text": "What is your name?" },
+                { "id": "b", "text": "I red like." },
+                { "id": "c", "text": "My old how." },
+                { "id": "d", "text": "Name I am." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Après te présenter, tu peux demander le nom avec « What is your name? »"
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Sens de « I am from France. »",
+              "options": [
+                { "id": "a", "text": "Je viens de France." },
+                { "id": "b", "text": "Je suis français le matin." },
+                { "id": "c", "text": "J'aime la France." },
+                { "id": "d", "text": "Ma couleur est France." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« I am from + pays » indique la nationalité ou l'origine."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Phrase correcte avec « you » :",
+              "options": [
+                { "id": "a", "text": "You are my friend." },
+                { "id": "b", "text": "You is my friend." },
+                { "id": "c", "text": "You am my friend." },
+                { "id": "d", "text": "You be my friend." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Avec « you », le verbe « be » se conjugue « are »."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Quelle réponse correspond à « Nice to meet you. » ?",
+              "options": [
+                { "id": "a", "text": "Nice to meet you too." },
+                { "id": "b", "text": "I am old." },
+                { "id": "c", "text": "My name old." },
+                { "id": "d", "text": "How colour you?" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "On répond « Nice to meet you too » quand on vient d'être présenté."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Choisis la bonne traduction : « Enchanté. »",
+              "options": [
+                { "id": "a", "text": "Nice to meet you." },
+                { "id": "b", "text": "How old are you?" },
+                { "id": "c", "text": "I like meet." },
+                { "id": "d", "text": "My name nice." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« Nice to meet you » est la formule standard A1."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« ___ are you? » — « I am fine. »",
+              "options": [
+                { "id": "a", "text": "How" },
+                { "id": "b", "text": "What" },
+                { "id": "c", "text": "Old" },
+                { "id": "d", "text": "Name" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "La question sur l'état est « How are you? »"
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Les nombres et l'âge",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles phrases disent correctement un âge ?",
+              "options": [
+                { "id": "a", "text": "I am fourteen." },
+                { "id": "b", "text": "I am fifteen." },
+                { "id": "c", "text": "I have fourteen." },
+                { "id": "d", "text": "My old is fourteen." }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "L'âge utilise « I am + nombre ». « I have » ou « my old » sont incorrects ici."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« She is twelve. » — qui parle-on ?",
+              "options": [
+                { "id": "a", "text": "D'une fille de douze ans." },
+                { "id": "b", "text": "D'un garçon de douze ans." },
+                { "id": "c", "text": "D'une couleur." },
+                { "id": "d", "text": "D'un animal." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« She » désigne une fille ou une femme ; « is twelve » donne son âge."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Traduction : « Il a treize ans. »",
+              "options": [
+                { "id": "a", "text": "He is thirteen." },
+                { "id": "b", "text": "He are thirteen." },
+                { "id": "c", "text": "He am thirteen." },
+                { "id": "d", "text": "He name thirteen." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Avec « he », on emploie « is » : « He is thirteen. »"
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Nombre en lettres : « I am ten. »",
+              "options": [
+                { "id": "a", "text": "10" },
+                { "id": "b", "text": "12" },
+                { "id": "c", "text": "14" },
+                { "id": "d", "text": "16" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« Ten » vaut dix en anglais."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Quelle question pour l'âge d'une camarade ?",
+              "options": [
+                { "id": "a", "text": "How old is she?" },
+                { "id": "b", "text": "What colour is she?" },
+                { "id": "c", "text": "How name is she?" },
+                { "id": "d", "text": "I like she." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« How old is she? » demande l'âge d'une fille."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« We are eleven. » — qui sommes-nous ?",
+              "options": [
+                { "id": "a", "text": "Un groupe d'élèves de onze ans." },
+                { "id": "b", "text": "Une seule personne." },
+                { "id": "c", "text": "Une couleur." },
+                { "id": "d", "text": "Un fruit." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« We » = nous ; « are eleven » indique que le groupe a onze ans."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Phrase correcte au pluriel :",
+              "options": [
+                { "id": "a", "text": "They are twelve." },
+                { "id": "b", "text": "They is twelve." },
+                { "id": "c", "text": "They am twelve." },
+                { "id": "d", "text": "They be twelve." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Avec « they », le verbe « be » est « are »."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Réponse courte à « How old are you? »",
+              "options": [
+                { "id": "a", "text": "Twelve." },
+                { "id": "b", "text": "Blue." },
+                { "id": "c", "text": "Like." },
+                { "id": "d", "text": "Name." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "On peut répondre juste le nombre, ou « I am twelve. »"
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« My brother is nine. » — sens ?",
+              "options": [
+                { "id": "a", "text": "Mon frère a neuf ans." },
+                { "id": "b", "text": "Mon frère s'appelle Nine." },
+                { "id": "c", "text": "J'ai neuf frères." },
+                { "id": "d", "text": "Mon frère est bleu." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« Brother » = frère ; « is nine » = a neuf ans."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Complète : « How old ___ you? »",
+              "options": [
+                { "id": "a", "text": "are" },
+                { "id": "b", "text": "is" },
+                { "id": "c", "text": "am" },
+                { "id": "d", "text": "be" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Avec « you », la forme correcte est « are »."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Pronoms et verbe be",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent correctement « am / is / are » ?",
+              "options": [
+                { "id": "a", "text": "I am happy." },
+                { "id": "b", "text": "She is happy." },
+                { "id": "c", "text": "He are happy." },
+                { "id": "d", "text": "They is happy." }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "I → am, she → is. « He are » et « they is » mélangent les formes."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« ___ am Leo. »",
+              "options": [
+                { "id": "a", "text": "I" },
+                { "id": "b", "text": "You" },
+                { "id": "c", "text": "She" },
+                { "id": "d", "text": "They" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Seul « I » se combine avec « am »."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« This is my sister. ___ is eight. »",
+              "options": [
+                { "id": "a", "text": "She" },
+                { "id": "b", "text": "He" },
+                { "id": "c", "text": "I" },
+                { "id": "d", "text": "You" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« Sister » = sœur, donc pronom « she »."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Traduction : « Nous sommes en sixième. » (présentation scolaire)",
+              "options": [
+                { "id": "a", "text": "We are in year 6." },
+                { "id": "b", "text": "We is in year 6." },
+                { "id": "c", "text": "I am in year 6 we." },
+                { "id": "d", "text": "Year 6 like we." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« We are » présente un groupe ; « year 6 » équivaut à la sixième."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Négation correcte : « I ___ sad. » (Je ne suis pas triste.)",
+              "options": [
+                { "id": "a", "text": "am not" },
+                { "id": "b", "text": "not am" },
+                { "id": "c", "text": "is not" },
+                { "id": "d", "text": "are not" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Avec « I », la négation est « am not »."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« His name is Ben. » — « his » signifie",
+              "options": [
+                { "id": "a", "text": "son (à lui)" },
+                { "id": "b", "text": "ma" },
+                { "id": "c", "text": "leur" },
+                { "id": "d", "text": "ta" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« His » est le possessif masculin « son »."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Her name is Zoe. » — qui est Zoe ?",
+              "options": [
+                { "id": "a", "text": "Une fille dont on parle." },
+                { "id": "b", "text": "Un garçon." },
+                { "id": "c", "text": "Une couleur." },
+                { "id": "d", "text": "Un nombre." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« Her » indique une fille ou une femme."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Choisis la phrase polie au début d'un dialogue.",
+              "options": [
+                { "id": "a", "text": "Hello! My name is Amy." },
+                { "id": "b", "text": "Name Amy how old." },
+                { "id": "c", "text": "Amy I colour." },
+                { "id": "d", "text": "Old name you." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« Hello » + présentation est une entrée en matière A1."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« It is my cat. ___ name is Mimi. »",
+              "options": [
+                { "id": "a", "text": "Its" },
+                { "id": "b", "text": "I" },
+                { "id": "c", "text": "You" },
+                { "id": "d", "text": "Are" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Pour un animal, le possessif neutre est « its » (A1 simplifié)."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Question : « ___ is he? » — « He is my cousin. »",
+              "options": [
+                { "id": "a", "text": "Who" },
+                { "id": "b", "text": "How old" },
+                { "id": "c", "text": "What colour" },
+                { "id": "d", "text": "Where like" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« Who is he? » demande l'identité d'une personne."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Dialogue de classe",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles répliques vont ensemble dans une présentation ?",
+              "options": [
+                { "id": "a", "text": "Hi! I am Tom." },
+                { "id": "b", "text": "Nice to meet you." },
+                { "id": "c", "text": "I like green today." },
+                { "id": "d", "text": "The cat is blue." }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Salutation + « nice to meet you » font partie d'un échange de présentation."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Le prof demande les prénoms. Il dit :",
+              "options": [
+                { "id": "a", "text": "What is your name?" },
+                { "id": "b", "text": "What colour your name?" },
+                { "id": "c", "text": "How like your name?" },
+                { "id": "d", "text": "Name old what?" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "La question standard pour le prénom reste « What is your name? »"
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Tu réponds après « I am Mr Lee. » en classe :",
+              "options": [
+                { "id": "a", "text": "Nice to meet you." },
+                { "id": "b", "text": "I am red." },
+                { "id": "c", "text": "How colour are you?" },
+                { "id": "d", "text": "My like name." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "On répond poliment quand on rencontre quelqu'un."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Good morning! ___ name is Nina. »",
+              "options": [
+                { "id": "a", "text": "My" },
+                { "id": "b", "text": "Am" },
+                { "id": "c", "text": "Are" },
+                { "id": "d", "text": "Old" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« My name is… » après une salutation matinale."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Ordre logique : 1) How old are you? 2) ___",
+              "options": [
+                { "id": "a", "text": "I am twelve." },
+                { "id": "b", "text": "My name is twelve." },
+                { "id": "c", "text": "I like twelve." },
+                { "id": "d", "text": "Twelve is blue." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "La question sur l'âge reçoit « I am + nombre »."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Sit down, please. » — le prof te demande de",
+              "options": [
+                { "id": "a", "text": "T'asseoir." },
+                { "id": "b", "text": "Te présenter." },
+                { "id": "c", "text": "Compter en anglais." },
+                { "id": "d", "text": "Nommer une couleur." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Instruction de classe fréquente, utile dans un dialogue A1."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Phrase à l'oral : « I am from Paris. I ___ French. »",
+              "options": [
+                { "id": "a", "text": "am" },
+                { "id": "b", "text": "is" },
+                { "id": "c", "text": "are" },
+                { "id": "d", "text": "like" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« I am French » décrit la nationalité."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Quelle phrase présente un ami ?",
+              "options": [
+                { "id": "a", "text": "This is my friend Sam." },
+                { "id": "b", "text": "Sam colour green." },
+                { "id": "c", "text": "Friend I old." },
+                { "id": "d", "text": "Like Sam colour." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« This is my friend… » sert à présenter quelqu'un."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Bye! See you! » — tu",
+              "options": [
+                { "id": "a", "text": "Dis au revoir." },
+                { "id": "b", "text": "Demandes l'âge." },
+                { "id": "c", "text": "Nommes une couleur." },
+                { "id": "d", "text": "Comptes jusqu'à dix." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Formules de fin d'échange après les présentations."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Mini-dialogue : « What's your name? » — « ___ »",
+              "options": [
+                { "id": "a", "text": "I'm Jade." },
+                { "id": "b", "text": "I'm twelve colours." },
+                { "id": "c", "text": "Name old how." },
+                { "id": "d", "text": "Like I red." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« I'm » est la contraction de « I am » pour le prénom."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Contractions I'm / you're",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles contractions sont correctes ?",
+              "options": [
+                { "id": "a", "text": "I'm = I am" },
+                { "id": "b", "text": "You're = you are" },
+                { "id": "c", "text": "I'm = I is" },
+                { "id": "d", "text": "You're = you am" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Les contractions fusionnent le pronom et « am/are », pas d'autres formes."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Forme développée : « I'm ten. »",
+              "options": [
+                { "id": "a", "text": "I am ten." },
+                { "id": "b", "text": "I is ten." },
+                { "id": "c", "text": "I are ten." },
+                { "id": "d", "text": "I name ten." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« I'm » remplace « I am »."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« You're my friend. » signifie",
+              "options": [
+                { "id": "a", "text": "Tu es mon ami." },
+                { "id": "b", "text": "Je suis ton ami." },
+                { "id": "c", "text": "Il est mon ami." },
+                { "id": "d", "text": "Tu aimes mon ami." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« You're » = you are, adressé à l'interlocuteur."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Choisis la phrase orale naturelle.",
+              "options": [
+                { "id": "a", "text": "Hi, I'm Rosa." },
+                { "id": "b", "text": "Hi, I Rosa am." },
+                { "id": "c", "text": "Hi, am I Rosa name." },
+                { "id": "d", "text": "Hi, Rosa name are." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "À l'oral, « I'm + prénom » est très fréquent."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« What's your name? » — « What's » =",
+              "options": [
+                { "id": "a", "text": "What is" },
+                { "id": "b", "text": "What am" },
+                { "id": "c", "text": "What are" },
+                { "id": "d", "text": "What be" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Contraction de « What is » dans les questions."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Réponse : « What's your name? »",
+              "options": [
+                { "id": "a", "text": "I'm Omar." },
+                { "id": "b", "text": "I like Omar." },
+                { "id": "c", "text": "Omar is blue." },
+                { "id": "d", "text": "How old Omar." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "On répond avec « I'm + prénom »."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« She's twelve. » — contraction de",
+              "options": [
+                { "id": "a", "text": "She is" },
+                { "id": "b", "text": "She am" },
+                { "id": "c", "text": "She are" },
+                { "id": "d", "text": "She be" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« She's » = she is."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Phrase correcte : présenter une fille",
+              "options": [
+                { "id": "a", "text": "She's my sister. Her name is Lily." },
+                { "id": "b", "text": "She's name are Lily." },
+                { "id": "c", "text": "Her am Lily." },
+                { "id": "d", "text": "Lily is how old name." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "On enchaîne présentation + prénom avec « her name »."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« We're friends. » — « We're » =",
+              "options": [
+                { "id": "a", "text": "We are" },
+                { "id": "b", "text": "We is" },
+                { "id": "c", "text": "We am" },
+                { "id": "d", "text": "We be" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Contraction de « we are »."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Complète : « ___ name's Alex. » (My name is)",
+              "options": [
+                { "id": "a", "text": "My" },
+                { "id": "b", "text": "I" },
+                { "id": "c", "text": "Am" },
+                { "id": "d", "text": "Are" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« My name's » est la contraction de « My name is »."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Orthographe des prénoms",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles phrases ont une majuscule correcte sur le prénom ?",
+              "options": [
+                { "id": "a", "text": "My name is Jack." },
+                { "id": "b", "text": "I am Anna." },
+                { "id": "c", "text": "my name is jack." },
+                { "id": "d", "text": "i am anna." }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "En anglais, les prénoms et le début de phrase prennent une majuscule."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Comment écrire correctement ?",
+              "options": [
+                { "id": "a", "text": "Hello, I am Sophie." },
+                { "id": "b", "text": "hello, i am sophie." },
+                { "id": "c", "text": "Hello i Am sophie." },
+                { "id": "d", "text": "hello I am Sophie" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Majuscule en début de phrase et sur le prénom Sophie."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« my name is liam » — correction",
+              "options": [
+                { "id": "a", "text": "My name is Liam." },
+                { "id": "b", "text": "My Name Is liam." },
+                { "id": "c", "text": "my Name is Liam." },
+                { "id": "d", "text": "My name Is liam." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Début de phrase + prénom en majuscule."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Point en fin de phrase : choisis la bonne version.",
+              "options": [
+                { "id": "a", "text": "I am ten." },
+                { "id": "b", "text": "I am ten" },
+                { "id": "c", "text": "i am ten." },
+                { "id": "d", "text": "I Am ten" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Phrase déclarative : majuscule initiale et point final."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Question correcte :",
+              "options": [
+                { "id": "a", "text": "How old are you?" },
+                { "id": "b", "text": "How old are you." },
+                { "id": "c", "text": "how old are you?" },
+                { "id": "d", "text": "How Old Are You?" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Les questions se terminent par « ? » et commencent par une majuscule."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Prénom anglais courant : épellation de « Eve »",
+              "options": [
+                { "id": "a", "text": "E-V-E" },
+                { "id": "b", "text": "E-V-A" },
+                { "id": "c", "text": "I-V-E" },
+                { "id": "d", "text": "E-B-E" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Eve s'écrit avec trois lettres E-V-E."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« I am from London. » — « London » est",
+              "options": [
+                { "id": "a", "text": "Un nom de ville (majuscule)." },
+                { "id": "b", "text": "Une couleur." },
+                { "id": "c", "text": "Un verbe." },
+                { "id": "d", "text": "Un nombre." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Les noms propres de lieux prennent une majuscule."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Choisis l'écriture correcte du prénom dans la phrase.",
+              "options": [
+                { "id": "a", "text": "This is Max." },
+                { "id": "b", "text": "This is max." },
+                { "id": "c", "text": "this is Max." },
+                { "id": "d", "text": "This Is max." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Début de phrase et prénom Max en majuscule."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Apostrophe : « I am » à l'oral s'écrit souvent",
+              "options": [
+                { "id": "a", "text": "I'm" },
+                { "id": "b", "text": "Im" },
+                { "id": "c", "text": "I'am" },
+                { "id": "d", "text": "I m" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "L'apostrophe marque les lettres omises dans « I'm »."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Phrase présentation : virgule après « Hello »",
+              "options": [
+                { "id": "a", "text": "Hello, my name is Iris." },
+                { "id": "b", "text": "Hello my name is Iris." },
+                { "id": "c", "text": "Hello; my name is Iris." },
+                { "id": "d", "text": "Hello my Name is iris." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "On sépare souvent la salutation avec une virgule."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Nationalités simples",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles phrases parlent d'origine ?",
+              "options": [
+                { "id": "a", "text": "I am from Spain." },
+                { "id": "b", "text": "I am Spanish." },
+                { "id": "c", "text": "I like Spain colour." },
+                { "id": "d", "text": "Spain is my name." }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "« From Spain » et « Spanish » décrivent l'origine ou la nationalité."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« I am British. » — sens",
+              "options": [
+                { "id": "a", "text": "Je suis britannique." },
+                { "id": "b", "text": "Je suis bleu." },
+                { "id": "c", "text": "Je m'appelle British." },
+                { "id": "d", "text": "J'ai onze ans." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Adjectif de nationalité après « I am »."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Question : « Where are you from? »",
+              "options": [
+                { "id": "a", "text": "D'où viens-tu ?" },
+                { "id": "b", "text": "Quel âge as-tu ?" },
+                { "id": "c", "text": "Quelle est ta couleur ?" },
+                { "id": "d", "text": "Comment t'appelles-tu ?" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« Where are you from? » demande le pays ou la ville d'origine."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Réponse : « Where are you from? » — « ___ from Italy. »",
+              "options": [
+                { "id": "a", "text": "I am" },
+                { "id": "b", "text": "I is" },
+                { "id": "c", "text": "I are" },
+                { "id": "d", "text": "I name" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Structure : « I am from + pays »."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« He is American. » — « He » parle de",
+              "options": [
+                { "id": "a", "text": "Un garçon ou un homme." },
+                { "id": "b", "text": "Une fille." },
+                { "id": "c", "text": "Toi." },
+                { "id": "d", "text": "Nous." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Pronom masculin « he »."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Présentation complète :",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "I'm Carla. I'm from Brazil. I'm twelve."
+                },
+                { "id": "b", "text": "I'm Carla colour Brazil." },
+                { "id": "c", "text": "Brazil old name Carla." },
+                { "id": "d", "text": "Carla like from." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Prénom + origine + âge, niveau A1."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« We are from Canada. » — « Canada » est",
+              "options": [
+                { "id": "a", "text": "Un pays." },
+                { "id": "b", "text": "Un prénom." },
+                { "id": "c", "text": "Une couleur." },
+                { "id": "d", "text": "Un verbe." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Après « from », on met un lieu."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Traduction : « Elle est allemande. »",
+              "options": [
+                { "id": "a", "text": "She is German." },
+                { "id": "b", "text": "She are German." },
+                { "id": "c", "text": "She am German." },
+                { "id": "d", "text": "She German is." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "She + is + adjectif de nationalité."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« They are from Japan. » — « they » =",
+              "options": [
+                { "id": "a", "text": "Ils / elles" },
+                { "id": "b", "text": "Je" },
+                { "id": "c", "text": "Tu" },
+                { "id": "d", "text": "Il" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Pronom pluriel « they »."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Associe : drapeau UK — phrase",
+              "options": [
+                { "id": "a", "text": "I am from the UK." },
+                { "id": "b", "text": "I am from red." },
+                { "id": "c", "text": "I like UK old." },
+                { "id": "d", "text": "UK is twelve." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Le Royaume-Uni se dit « the UK » en présentation A1."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Révision identité 1",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont des présentations ?",
+              "options": [
+                { "id": "a", "text": "I am Leo and I am eleven." },
+                { "id": "b", "text": "My name is Emma." },
+                { "id": "c", "text": "The sky is blue." },
+                { "id": "d", "text": "I like pizza colour." }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Prénom et âge servent à se présenter ; les autres phrases ne le font pas."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Relie question et réponse : « How old are you? »",
+              "options": [
+                { "id": "a", "text": "I am fourteen." },
+                { "id": "b", "text": "I am Emma." },
+                { "id": "c", "text": "I am from here." },
+                { "id": "d", "text": "I am fine colour." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Réponse = âge."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Erreur à corriger : « She are my friend. »",
+              "options": [
+                { "id": "a", "text": "She is my friend." },
+                { "id": "b", "text": "She am my friend." },
+                { "id": "c", "text": "She be my friend." },
+                { "id": "d", "text": "She are is friend." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "She → is."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« What's his name? » — réponse",
+              "options": [
+                { "id": "a", "text": "His name is Dan." },
+                { "id": "b", "text": "He is twelve colours." },
+                { "id": "c", "text": "Dan like he." },
+                { "id": "d", "text": "Name how old Dan." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Question sur le prénom d'un garçon → « His name is… »"
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Choisis la salutation du matin.",
+              "options": [
+                { "id": "a", "text": "Good morning!" },
+                { "id": "b", "text": "Good colour!" },
+                { "id": "c", "text": "Good old!" },
+                { "id": "d", "text": "Good name!" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« Good morning » avant une présentation en classe."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« I am not ten. I am eleven. » — sens",
+              "options": [
+                { "id": "a", "text": "Je n'ai pas dix ans, j'en ai onze." },
+                { "id": "b", "text": "Je m'appelle Ten." },
+                { "id": "c", "text": "Je n'aime pas dix." },
+                { "id": "d", "text": "Onze est une couleur." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Négation + correction de l'âge."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Mini-texte : « Hi! ___ name's Chloe. ___ am twelve. »",
+              "options": [
+                { "id": "a", "text": "My / I" },
+                { "id": "b", "text": "I / My" },
+                { "id": "c", "text": "Am / My" },
+                { "id": "d", "text": "My / Am" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "My name's… puis I am…"
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Are you new? » — « Yes, ___ »",
+              "options": [
+                { "id": "a", "text": "I am." },
+                { "id": "b", "text": "I is." },
+                { "id": "c", "text": "I are." },
+                { "id": "d", "text": "I name." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Réponse courte affirmative avec « I am »."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Quelle phrase demande le prénom de l'interlocuteur ?",
+              "options": [
+                { "id": "a", "text": "And you? What's your name?" },
+                { "id": "b", "text": "And you? How colour?" },
+                { "id": "c", "text": "And you? I like." },
+                { "id": "d", "text": "And you? Old green." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« And you? » reprend la question après s'être présenté."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Objectif du chapitre Identité :",
+              "options": [
+                { "id": "a", "text": "Dire qui l'on est (nom, âge)." },
+                { "id": "b", "text": "Nommer dix couleurs seulement." },
+                { "id": "c", "text": "Conjuguer tous les verbes." },
+                { "id": "d", "text": "Écrire un roman." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "L'unité Identité vise nom, âge et formules de base."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision identité 2",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles questions appartiennent au thème « se présenter » ?",
+              "options": [
+                { "id": "a", "text": "What is your name?" },
+                { "id": "b", "text": "How old are you?" },
+                { "id": "c", "text": "What colour is it?" },
+                { "id": "d", "text": "Do you like red?" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Nom et âge = identité ; couleur et goûts = autre unité."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Traduction : « Enchantée, je m'appelle Inès. »",
+              "options": [
+                { "id": "a", "text": "Nice to meet you. My name is Ines." },
+                { "id": "b", "text": "I like Ines colour." },
+                { "id": "c", "text": "Ines is how old." },
+                { "id": "d", "text": "My old Ines." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Formule de politesse + présentation."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« You are welcome. » après « Thank you. » signifie",
+              "options": [
+                { "id": "a", "text": "De rien." },
+                { "id": "b", "text": "Bonjour." },
+                { "id": "c", "text": "Au revoir." },
+                { "id": "d", "text": "J'ai douze ans." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Réponse polie à « Thank you »."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Phrase : « I am a girl. I am ten. ___ name is Zoe. »",
+              "options": [
+                { "id": "a", "text": "My" },
+                { "id": "b", "text": "You" },
+                { "id": "c", "text": "Are" },
+                { "id": "d", "text": "Old" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Enchaînement cohérent avec « my name »."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Listen (lecture) : « He is my dad. He is forty. » — « forty » =",
+              "options": [
+                { "id": "a", "text": "40" },
+                { "id": "b", "text": "14" },
+                { "id": "c", "text": "4" },
+                { "id": "d", "text": "400" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Vocabulaire nombre ; le père est plus âgé que l'élève."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Choisis la réponse à « Are you okay? »",
+              "options": [
+                { "id": "a", "text": "Yes, I am fine." },
+                { "id": "b", "text": "Yes, I am blue." },
+                { "id": "c", "text": "Yes, my name fine." },
+                { "id": "d", "text": "Yes, I like okay." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« Okay/fine » décrit comment on va."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« My friends are nice. » — sujet + verbe",
+              "options": [
+                { "id": "a", "text": "friends → are" },
+                { "id": "b", "text": "friends → is" },
+                { "id": "c", "text": "friends → am" },
+                { "id": "d", "text": "friends → be" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Pluriel « friends » → « are »."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Carte identité : Name: Jay / Age: 12 → phrase",
+              "options": [
+                { "id": "a", "text": "My name is Jay. I am twelve." },
+                { "id": "b", "text": "My name Jay twelve colour." },
+                { "id": "c", "text": "Jay is blue twelve." },
+                { "id": "d", "text": "I like Jay old." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Transformer une fiche en phrases A1."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Politesse : avant de demander l'âge, tu peux dire",
+              "options": [
+                { "id": "a", "text": "Excuse me, how old are you?" },
+                { "id": "b", "text": "Colour me old." },
+                { "id": "c", "text": "Old name you." },
+                { "id": "d", "text": "How like you." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« Excuse me » adoucit la question."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Bilan : pour te présenter en anglais, tu utilises surtout",
+              "options": [
+                { "id": "a", "text": "I am / My name is / How old are you?" },
+                { "id": "b", "text": "I like / red / green only." },
+                { "id": "c", "text": "Past tense / will / did." },
+                { "id": "d", "text": "Because / although / however." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Structures clés de l'unité Identité."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Goûts et couleurs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Couleurs de base",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quels mots anglais sont des couleurs ?",
+              "options": [
+                { "id": "a", "text": "red" },
+                { "id": "b", "text": "blue" },
+                { "id": "c", "text": "hello" },
+                { "id": "d", "text": "name" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "« Red » et « blue » sont des couleurs ; « hello » et « name » ne le sont pas."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Traduction : « vert »",
+              "options": [
+                { "id": "a", "text": "green" },
+                { "id": "b", "text": "grey" },
+                { "id": "c", "text": "great" },
+                { "id": "d", "text": "grape" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Green = vert."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« The book is yellow. » — couleur du livre",
+              "options": [
+                { "id": "a", "text": "Jaune" },
+                { "id": "b", "text": "Rouge" },
+                { "id": "c", "text": "Bleu" },
+                { "id": "d", "text": "Noir" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Yellow = jaune."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                { "id": "a", "text": "It is black." },
+                { "id": "b", "text": "It black is." },
+                { "id": "c", "text": "Is it black are." },
+                { "id": "d", "text": "Black it." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Structure : sujet + is + couleur."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« What colour is your bag? » — sens",
+              "options": [
+                { "id": "a", "text": "De quelle couleur est ton sac ?" },
+                { "id": "b", "text": "Comment t'appelles-tu ?" },
+                { "id": "c", "text": "Quel âge as-tu ?" },
+                { "id": "d", "text": "Où habites-tu ?" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Question standard sur la couleur d'un objet."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Réponse : « My bag is purple. » — « purple » =",
+              "options": [
+                { "id": "a", "text": "Violet" },
+                { "id": "b", "text": "Orange" },
+                { "id": "c", "text": "Blanc" },
+                { "id": "d", "text": "Gris" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Purple = violet."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Couleur du ciel par beau temps (A1) :",
+              "options": [
+                { "id": "a", "text": "The sky is blue." },
+                { "id": "b", "text": "The sky is name." },
+                { "id": "c", "text": "The sky am old." },
+                { "id": "d", "text": "The sky I am." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Exemple classique : sky + blue."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« White » =",
+              "options": [
+                { "id": "a", "text": "Blanc" },
+                { "id": "b", "text": "Noir" },
+                { "id": "c", "text": "Rose" },
+                { "id": "d", "text": "Marron" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "White = blanc."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Orange » peut être",
+              "options": [
+                { "id": "a", "text": "Une couleur et un fruit." },
+                { "id": "b", "text": "Un prénom seulement." },
+                { "id": "c", "text": "Un verbe." },
+                { "id": "d", "text": "Un nombre." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Orange désigne la couleur orange et le fruit."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Complète : « My pen is ___. » (rouge)",
+              "options": [
+                { "id": "a", "text": "red" },
+                { "id": "b", "text": "read" },
+                { "id": "c", "text": "road" },
+                { "id": "d", "text": "ride" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Attention à l'orthographe : red ≠ read."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "I like…",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles phrases expriment un goût positif ?",
+              "options": [
+                { "id": "a", "text": "I like blue." },
+                { "id": "b", "text": "I like cats." },
+                { "id": "c", "text": "I am blue." },
+                { "id": "d", "text": "My name is like." }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "« I like + nom » exprime ce qu'on aime ; « I am blue » décrit une couleur sur soi."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Traduction : « J'aime le vert. »",
+              "options": [
+                { "id": "a", "text": "I like green." },
+                { "id": "b", "text": "I am green like." },
+                { "id": "c", "text": "Green I name." },
+                { "id": "d", "text": "I green am." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Structure fixe : I like + couleur."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« I don't like pink. » — sens",
+              "options": [
+                { "id": "a", "text": "Je n'aime pas le rose." },
+                { "id": "b", "text": "Je suis rose." },
+                { "id": "c", "text": "Je m'appelle Pink." },
+                { "id": "d", "text": "J'ai douze ans." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« Don't like » = n'aime pas."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Question : « Do you like football? » — réponse oui",
+              "options": [
+                { "id": "a", "text": "Yes, I do." },
+                { "id": "b", "text": "Yes, I am." },
+                { "id": "c", "text": "Yes, I name." },
+                { "id": "d", "text": "Yes, I old." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Réponse courte à « Do you… ? » : « Yes, I do. »"
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« She likes music. » — sens",
+              "options": [
+                { "id": "a", "text": "Elle aime la musique." },
+                { "id": "b", "text": "Elle est musique." },
+                { "id": "c", "text": "Elle s'appelle Music." },
+                { "id": "d", "text": "Elle a douze musiques." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Avec he/she, « like » prend un « s » : likes."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Choisis la phrase correcte.",
+              "options": [
+                { "id": "a", "text": "I like my school." },
+                { "id": "b", "text": "I likes my school." },
+                { "id": "c", "text": "I like am school." },
+                { "id": "d", "text": "Like I school." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Avec « I », le verbe reste « like » sans « s »."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« We like English. » — « we » =",
+              "options": [
+                { "id": "a", "text": "Nous" },
+                { "id": "b", "text": "Je" },
+                { "id": "c", "text": "Il" },
+                { "id": "d", "text": "Tu" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "We = nous, verbe sans « s »."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Associe : « I like red and blue. »",
+              "options": [
+                { "id": "a", "text": "J'aime le rouge et le bleu." },
+                { "id": "b", "text": "Je suis rouge et bleu." },
+                { "id": "c", "text": "Mon nom est Red Blue." },
+                { "id": "d", "text": "J'ai douze couleurs." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Deux couleurs après « like »."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Négation : « I ___ like brown. »",
+              "options": [
+                { "id": "a", "text": "don't" },
+                { "id": "b", "text": "doesn't" },
+                { "id": "c", "text": "am not" },
+                { "id": "d", "text": "is not" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Avec I → don't like."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« They like dogs. » — sujet pluriel → verbe",
+              "options": [
+                { "id": "a", "text": "like (sans s)" },
+                { "id": "b", "text": "likes" },
+                { "id": "c", "text": "am" },
+                { "id": "d", "text": "is" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "They → like, pas likes."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Couleur + objet",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles phrases décrivent la couleur d'un objet ?",
+              "options": [
+                { "id": "a", "text": "The car is red." },
+                { "id": "b", "text": "My shoes are black." },
+                { "id": "c", "text": "I like my name." },
+                { "id": "d", "text": "How old are you?" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Is/are + couleur décrivent un objet ; les autres ne le font pas."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Pluriel : « The flowers ___ pink. »",
+              "options": [
+                { "id": "a", "text": "are" },
+                { "id": "b", "text": "is" },
+                { "id": "c", "text": "am" },
+                { "id": "d", "text": "be" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Flowers = pluriel → are."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« An apple can be red or green. » — sens",
+              "options": [
+                { "id": "a", "text": "Une pomme peut être rouge ou verte." },
+                { "id": "b", "text": "Une pomme a douze ans." },
+                { "id": "c", "text": "Je m'appelle Apple." },
+                { "id": "d", "text": "J'aime seulement les pommes." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Or relie deux couleurs possibles."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Question couleur pour des chaussures",
+              "options": [
+                { "id": "a", "text": "What colour are your shoes?" },
+                { "id": "b", "text": "What name are your shoes?" },
+                { "id": "c", "text": "How old are your shoes?" },
+                { "id": "d", "text": "Where like your shoes?" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Shoes pluriel → « are » dans la question."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« My T-shirt is blue. » — objet",
+              "options": [
+                { "id": "a", "text": "Un T-shirt" },
+                { "id": "b", "text": "Un prénom" },
+                { "id": "c", "text": "Un âge" },
+                { "id": "d", "text": "Un pays" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "T-shirt = vêtement."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Traduction : « Le chat est gris. »",
+              "options": [
+                { "id": "a", "text": "The cat is grey." },
+                { "id": "b", "text": "The cat is gray old." },
+                { "id": "c", "text": "The cat am grey." },
+                { "id": "d", "text": "Grey cat name." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Grey/gray = gris (orthographes UK/US)."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« This pencil is yellow. » — « this » =",
+              "options": [
+                { "id": "a", "text": "Ce / cette (proche)" },
+                { "id": "b", "text": "Ils" },
+                { "id": "c", "text": "Tu" },
+                { "id": "d", "text": "Nous" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "This + singulier + is."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Those balls are orange. » — « those » indique",
+              "options": [
+                { "id": "a", "text": "Plusieurs objets éloignés." },
+                { "id": "b", "text": "Une seule personne." },
+                { "id": "c", "text": "Un prénom." },
+                { "id": "d", "text": "Une question sur l'âge." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Those + pluriel + are."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Couleur + like : phrase correcte",
+              "options": [
+                { "id": "a", "text": "I like your red hat." },
+                { "id": "b", "text": "I likes your red hat." },
+                { "id": "c", "text": "I like am red hat." },
+                { "id": "d", "text": "Like red I hat." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "On peut aimer un objet avec sa couleur."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« It isn't green. It's brown. » — sens",
+              "options": [
+                { "id": "a", "text": "Ce n'est pas vert, c'est marron." },
+                { "id": "b", "text": "J'aime le vert." },
+                { "id": "c", "text": "Je m'appelle Brown." },
+                { "id": "d", "text": "J'ai onze ans." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Correction de couleur avec « it isn't / it's »."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Ma couleur préférée",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles phrases parlent d'une couleur favorite ?",
+              "options": [
+                { "id": "a", "text": "My favourite colour is blue." },
+                { "id": "b", "text": "I like blue best." },
+                { "id": "c", "text": "I am twelve blue." },
+                { "id": "d", "text": "Blue is my name." }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "« Favourite colour » ou « like … best » expriment la préférence."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Favourite » (UK) = « Favorite » (US) signifie",
+              "options": [
+                { "id": "a", "text": "Préféré" },
+                { "id": "b", "text": "Ancien" },
+                { "id": "c", "text": "Dangereux" },
+                { "id": "d", "text": "Lent" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Vocabulaire A1 pour les goûts."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Question : « What is your favourite colour? »",
+              "options": [
+                { "id": "a", "text": "Quelle est ta couleur préférée ?" },
+                { "id": "b", "text": "Quel âge as-tu ?" },
+                { "id": "c", "text": "Comment t'appelles-tu ?" },
+                { "id": "d", "text": "Où es-tu ?" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Question clé de l'unité Goûts et couleurs."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Réponse : « ___ favourite colour is green. »",
+              "options": [
+                { "id": "a", "text": "My" },
+                { "id": "b", "text": "I" },
+                { "id": "c", "text": "Am" },
+                { "id": "d", "text": "Are" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Possessif « my » devant « favourite colour »."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Her favourite colour is pink. » — de qui parle-t-on ?",
+              "options": [
+                { "id": "a", "text": "D'une fille." },
+                { "id": "b", "text": "De toi." },
+                { "id": "c", "text": "D'un chat." },
+                { "id": "d", "text": "D'un nombre." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Her = son/sa (à elle)."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Dialogue : « I like black. » — « Me too! » signifie",
+              "options": [
+                { "id": "a", "text": "Moi aussi !" },
+                { "id": "b", "text": "Au revoir." },
+                { "id": "c", "text": "Je m'appelle Too." },
+                { "id": "d", "text": "J'ai douze ans." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Accord sur le goût."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« His favourite colour is red. » — « his » =",
+              "options": [
+                { "id": "a", "text": "Son (à lui)" },
+                { "id": "b", "text": "Ma" },
+                { "id": "c", "text": "Leur" },
+                { "id": "d", "text": "Notre" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Possessif masculin."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Phrase : présentation + couleur",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "I'm Mia. My favourite colour is yellow."
+                },
+                { "id": "b", "text": "I'm Mia colour old." },
+                { "id": "c", "text": "Mia is how like." },
+                { "id": "d", "text": "Yellow name Mia." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Relie identité et goût couleur."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« I don't like grey, but I like blue. » — sens",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Je n'aime pas le gris, mais j'aime le bleu."
+                },
+                { "id": "b", "text": "Je suis gris et bleu." },
+                { "id": "c", "text": "Gris est mon prénom." },
+                { "id": "d", "text": "J'ai onze couleurs." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "But = mais, opposition de goûts."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Choisis la couleur : « navy » (A1 élargi) ≈",
+              "options": [
+                { "id": "a", "text": "Dark blue" },
+                { "id": "b", "text": "Light pink" },
+                { "id": "c", "text": "Bright yellow" },
+                { "id": "d", "text": "White black" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Navy = bleu marine, nuance de blue."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Goûts et loisirs simples",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles activités peut-on aimer (I like + nom) ?",
+              "options": [
+                { "id": "a", "text": "I like swimming." },
+                { "id": "b", "text": "I like drawing." },
+                { "id": "c", "text": "I am swimming name." },
+                { "id": "d", "text": "Like is I old." }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Swimming et drawing sont des activités ; les autres phrases sont incorrectes."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« I like pizza. » — sens",
+              "options": [
+                { "id": "a", "text": "J'aime la pizza." },
+                { "id": "b", "text": "Je suis une pizza." },
+                { "id": "c", "text": "Je m'appelle Pizza." },
+                { "id": "d", "text": "La pizza est bleue." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Goût alimentaire simple A1."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Question : « Do you like chocolate? » — non",
+              "options": [
+                { "id": "a", "text": "No, I don't." },
+                { "id": "b", "text": "No, I am." },
+                { "id": "c", "text": "No, I name." },
+                { "id": "d", "text": "No, I old." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Réponse négative courte avec don't."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« He likes video games. » — verbe correct car",
+              "options": [
+                { "id": "a", "text": "He = 3e personne singulier." },
+                { "id": "b", "text": "He = pluriel." },
+                { "id": "c", "text": "He = I." },
+                { "id": "d", "text": "He = you." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "He/she/it → likes."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Relie couleur et goût : « I like ___ apples. » (rouge)",
+              "options": [
+                { "id": "a", "text": "red" },
+                { "id": "b", "text": "read" },
+                { "id": "c", "text": "old" },
+                { "id": "d", "text": "name" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Adjectif de couleur avant le nom : red apples."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Do they like school? » — réponse",
+              "options": [
+                { "id": "a", "text": "Yes, they do." },
+                { "id": "b", "text": "Yes, they are." },
+                { "id": "c", "text": "Yes, they name." },
+                { "id": "d", "text": "Yes, they old." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "They → do dans la réponse courte."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« My favourite food is pasta. » — « food » =",
+              "options": [
+                { "id": "a", "text": "Nourriture" },
+                { "id": "b", "text": "Couleur" },
+                { "id": "c", "text": "Prénom" },
+                { "id": "d", "text": "Classe" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Même structure que favourite colour."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Phrase : « We like music and sport. » — combien de goûts ?",
+              "options": [
+                { "id": "a", "text": "Deux" },
+                { "id": "b", "text": "Zéro" },
+                { "id": "c", "text": "Dix" },
+                { "id": "d", "text": "Un seul mot" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "And relie music et sport."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« She doesn't like rain. » — sens",
+              "options": [
+                { "id": "a", "text": "Elle n'aime pas la pluie." },
+                { "id": "b", "text": "Elle est la pluie." },
+                { "id": "c", "text": "Elle s'appelle Rain." },
+                { "id": "d", "text": "Elle a douze ans." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Doesn't = does not avec he/she."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Pour parler de goûts, le verbe le plus utilisé est",
+              "options": [
+                { "id": "a", "text": "like" },
+                { "id": "b", "text": "am" },
+                { "id": "c", "text": "old" },
+                { "id": "d", "text": "name" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Like structure les préférences A1."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Décrire avec les couleurs",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles phrases mélangent correctement couleur et objet ?",
+              "options": [
+                { "id": "a", "text": "I have a blue bike." },
+                { "id": "b", "text": "She has a green bag." },
+                { "id": "c", "text": "I have blue am." },
+                { "id": "d", "text": "Colour is I." }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Adjectif de couleur avant le nom : a blue bike, a green bag."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« The flag is red, white and blue. » — combien de couleurs ?",
+              "options": [
+                { "id": "a", "text": "Trois" },
+                { "id": "b", "text": "Une" },
+                { "id": "c", "text": "Aucune" },
+                { "id": "d", "text": "Dix" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Red, white, blue = trois couleurs."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Traduction : « Mon crayon est rose. »",
+              "options": [
+                { "id": "a", "text": "My pencil is pink." },
+                { "id": "b", "text": "My pencil is think." },
+                { "id": "c", "text": "My pencil am pink." },
+                { "id": "d", "text": "Pink I pencil." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Pink = rose."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Light blue » =",
+              "options": [
+                { "id": "a", "text": "Bleu clair" },
+                { "id": "b", "text": "Bleu nuit" },
+                { "id": "c", "text": "Vert foncé" },
+                { "id": "d", "text": "Rouge vif" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Light = clair devant une couleur."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Dark green » décrit",
+              "options": [
+                { "id": "a", "text": "Un vert foncé." },
+                { "id": "b", "text": "Un prénom." },
+                { "id": "c", "text": "Un âge." },
+                { "id": "d", "text": "Une question." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Dark = foncé."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Phrase : « Look! The bus is yellow. » — « Look! » =",
+              "options": [
+                { "id": "a", "text": "Regarde !" },
+                { "id": "b", "text": "Au revoir !" },
+                { "id": "c", "text": "Merci !" },
+                { "id": "d", "text": "Bonjour !" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Interjection pour attirer l'attention sur une couleur."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Are your eyes brown? » — réponse oui",
+              "options": [
+                { "id": "a", "text": "Yes, they are." },
+                { "id": "b", "text": "Yes, I am." },
+                { "id": "c", "text": "Yes, I like." },
+                { "id": "d", "text": "Yes, my name." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Eyes = pluriel → they are."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« I like your blue eyes. » — compliment sur",
+              "options": [
+                { "id": "a", "text": "La couleur des yeux." },
+                { "id": "b", "text": "L'âge." },
+                { "id": "c", "text": "Le prénom." },
+                { "id": "d", "text": "Le pays." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Blue eyes = yeux bleus."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Ordre : adjectif couleur en anglais (A1)",
+              "options": [
+                { "id": "a", "text": "A red ball" },
+                { "id": "b", "text": "A ball red" },
+                { "id": "c", "text": "Red a ball" },
+                { "id": "d", "text": "Ball a red" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Couleur avant le nom : red ball."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« The classroom is big and bright. » — « bright » ≈",
+              "options": [
+                { "id": "a", "text": "Lumineux" },
+                { "id": "b", "text": "Bleu" },
+                { "id": "c", "text": "Petit" },
+                { "id": "d", "text": "Prénom" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Bright décrit la lumière, pas une couleur ici."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Questions sur les goûts",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles questions portent sur les goûts ?",
+              "options": [
+                { "id": "a", "text": "Do you like rap?" },
+                { "id": "b", "text": "What colour do you like?" },
+                { "id": "c", "text": "How old are you?" },
+                { "id": "d", "text": "What is your name?" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Do you like / what colour do you like interrogent les préférences."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« What colour do you like? » — réponse",
+              "options": [
+                { "id": "a", "text": "I like purple." },
+                { "id": "b", "text": "I am purple." },
+                { "id": "c", "text": "My name purple." },
+                { "id": "d", "text": "Purple old twelve." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Réponse avec I like + couleur."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Does she like cats? » — réponse non",
+              "options": [
+                { "id": "a", "text": "No, she doesn't." },
+                { "id": "b", "text": "No, she don't." },
+                { "id": "c", "text": "No, she isn't." },
+                { "id": "d", "text": "No, she names." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "She → does / doesn't."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Why do you like green? » — « Because ___ »",
+              "options": [
+                { "id": "a", "text": "it is beautiful." },
+                { "id": "b", "text": "I am name." },
+                { "id": "c", "text": "old twelve." },
+                { "id": "d", "text": "like do you." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Because introduit une raison simple A1."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Sondage classe : « Who likes blue? » — tu aimes le bleu",
+              "options": [
+                { "id": "a", "text": "Me!" },
+                { "id": "b", "text": "I am twelve." },
+                { "id": "c", "text": "My name." },
+                { "id": "d", "text": "How old." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "« Me! » = moi, réponse orale courte."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Do you like tea or coffee? » — choix",
+              "options": [
+                { "id": "a", "text": "I like tea." },
+                { "id": "b", "text": "I am tea." },
+                { "id": "c", "text": "Tea is my name." },
+                { "id": "d", "text": "Tea old how." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Or propose deux options ; on répond avec I like…"
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« What do you like? » — réponse couleur",
+              "options": [
+                { "id": "a", "text": "I like orange." },
+                { "id": "b", "text": "I orange am." },
+                { "id": "c", "text": "Like what name." },
+                { "id": "d", "text": "Do like old." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Question ouverte sur les goûts."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Does he like basketball? » — oui",
+              "options": [
+                { "id": "a", "text": "Yes, he does." },
+                { "id": "b", "text": "Yes, he do." },
+                { "id": "c", "text": "Yes, he is." },
+                { "id": "d", "text": "Yes, he name." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "He → does dans la réponse."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Politesse : « Do you like my red scarf? » — compliment",
+              "options": [
+                { "id": "a", "text": "Yes, it's nice!" },
+                { "id": "b", "text": "Yes, I am twelve." },
+                { "id": "c", "text": "Yes, my name." },
+                { "id": "d", "text": "Yes, how old." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Réponse positive sur l'objet coloré."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Structure question : « ___ you like yellow? »",
+              "options": [
+                { "id": "a", "text": "Do" },
+                { "id": "b", "text": "Are" },
+                { "id": "c", "text": "Is" },
+                { "id": "d", "text": "Am" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Do you like… pour les goûts."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Mélanger identité et goûts",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles phrases combinent présentation et goût ?",
+              "options": [
+                { "id": "a", "text": "I'm Sam. I like blue." },
+                { "id": "b", "text": "My name is Kim. I like dogs." },
+                { "id": "c", "text": "Blue is twelve." },
+                { "id": "d", "text": "Like name old." }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Prénom + I like relient les deux unités du chapitre."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Carte : Name: Ali / Favourite colour: green →",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "My name is Ali. My favourite colour is green."
+                },
+                { "id": "b", "text": "Ali green old name." },
+                { "id": "c", "text": "I am green Ali twelve." },
+                { "id": "d", "text": "Green like Ali how." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Transformer une fiche identité + couleur."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Hi! I'm Nora. I'm twelve. I like pink. » — combien d'infos ?",
+              "options": [
+                { "id": "a", "text": "Trois (nom, âge, goût)" },
+                { "id": "b", "text": "Une seule" },
+                { "id": "c", "text": "Aucune" },
+                { "id": "d", "text": "Dix" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Mini-bio A1 complète."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Question après présentation : « Nice to meet you. ___ colour do you like? »",
+              "options": [
+                { "id": "a", "text": "What" },
+                { "id": "b", "text": "How old" },
+                { "id": "c", "text": "My name" },
+                { "id": "d", "text": "I am" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "What colour do you like?"
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« She is my friend. She likes red. » — « she » réfère à",
+              "options": [
+                { "id": "a", "text": "L'amie dont on parle." },
+                { "id": "b", "text": "Toi." },
+                { "id": "c", "text": "Le rouge." },
+                { "id": "d", "text": "Un nombre." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Même sujet pour les deux phrases."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Erreur : « I like am blue. » — correction",
+              "options": [
+                { "id": "a", "text": "I like blue." },
+                { "id": "b", "text": "I am like blue." },
+                { "id": "c", "text": "Blue like I am." },
+                { "id": "d", "text": "Like blue am I." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Pas de « am » entre like et la couleur."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« How old are you? » puis « What is your favourite colour? » — thèmes",
+              "options": [
+                { "id": "a", "text": "Identité puis goût couleur." },
+                {
+                  "id": "b",
+                  "text": "Deux questions sur le même verbe be only."
+                },
+                { "id": "c", "text": "Couleurs seulement." },
+                { "id": "d", "text": "Rien à voir avec le chapitre." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Enchaînement typique du module « Se présenter »."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« We are in 6e. We like English class. » — « we like » =",
+              "options": [
+                { "id": "a", "text": "Nous aimons" },
+                { "id": "b", "text": "Nous sommes" },
+                { "id": "c", "text": "Nous avons" },
+                { "id": "d", "text": "Nous appelons" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Like = aimer."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Phrase : « My brother is ten. He likes green. » — goût de",
+              "options": [
+                { "id": "a", "text": "Son frère." },
+                { "id": "b", "text": "Toi." },
+                { "id": "c", "text": "La couleur seulement." },
+                { "id": "d", "text": "Personne." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "He = the brother."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Pour te décrire + couleur préférée, tu dis :",
+              "options": [
+                { "id": "a", "text": "I am Leo. I am eleven. I like black." },
+                { "id": "b", "text": "Black Leo eleven like." },
+                { "id": "c", "text": "I like name old." },
+                { "id": "d", "text": "How colour am." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Synthèse du chapitre entier."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Révision couleurs et goûts 1",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quels mots sont des couleurs en anglais ?",
+              "options": [
+                { "id": "a", "text": "brown" },
+                { "id": "b", "text": "silver" },
+                { "id": "c", "text": "like" },
+                { "id": "d", "text": "hello" }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Brown et silver (A1+) sont des couleurs ; like et hello ne le sont pas."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« I don't like black, but I like white. » — sens",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Je n'aime pas le noir, mais j'aime le blanc."
+                },
+                { "id": "b", "text": "Je suis noir et blanc." },
+                { "id": "c", "text": "Black est mon prénom." },
+                { "id": "d", "text": "J'ai onze ans." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Opposition de goûts avec but."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Couleur du soleil (image A1) :",
+              "options": [
+                { "id": "a", "text": "The sun is yellow." },
+                { "id": "b", "text": "The sun is name." },
+                { "id": "c", "text": "The sun am I." },
+                { "id": "d", "text": "Sun old twelve." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Association culturelle simple."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Their favourite colour is blue. » — « their » =",
+              "options": [
+                { "id": "a", "text": "Leur" },
+                { "id": "b", "text": "Mon" },
+                { "id": "c", "text": "Ton" },
+                { "id": "d", "text": "Son (une personne)" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Their = leur (plusieurs personnes)."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Verbe : « It ___ red. »",
+              "options": [
+                { "id": "a", "text": "is" },
+                { "id": "b", "text": "are" },
+                { "id": "c", "text": "am" },
+                { "id": "d", "text": "like" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "It → is + couleur."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Do you like my green T-shirt? » — « T-shirt » couleur",
+              "options": [
+                { "id": "a", "text": "Vert" },
+                { "id": "b", "text": "Bleu" },
+                { "id": "c", "text": "Rose" },
+                { "id": "d", "text": "Noir" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Green = vert."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Liste : red, blue, green, yellow — ce sont",
+              "options": [
+                { "id": "a", "text": "Des couleurs." },
+                { "id": "b", "text": "Des prénoms." },
+                { "id": "c", "text": "Des verbes." },
+                { "id": "d", "text": "Des nombres." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Vocabulaire couleurs de base."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« She doesn't like purple. She likes blue. » — préférence",
+              "options": [
+                { "id": "a", "text": "Bleu plutôt que violet." },
+                { "id": "b", "text": "Violet seulement." },
+                { "id": "c", "text": "Aucune couleur." },
+                { "id": "d", "text": "Son prénom." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Contraste doesn't like / likes."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Question : « Is your room blue? » — oui",
+              "options": [
+                { "id": "a", "text": "Yes, it is." },
+                { "id": "b", "text": "Yes, I do." },
+                { "id": "c", "text": "Yes, I like." },
+                { "id": "d", "text": "Yes, my name." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Is… ? → Yes, it is (your room = it)."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Objectif unité Goûts et couleurs :",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Nommer des couleurs et dire ce qu'on aime."
+                },
+                { "id": "b", "text": "Conjuguer le passé composé." },
+                { "id": "c", "text": "Écrire un email formel." },
+                { "id": "d", "text": "Compter jusqu'à mille." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Couleurs + like / favourite colour."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision couleurs et goûts 2",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles réponses conviennent à « What is your favourite colour? » ?",
+              "options": [
+                { "id": "a", "text": "My favourite colour is red." },
+                { "id": "b", "text": "I like red." },
+                { "id": "c", "text": "I am red old." },
+                { "id": "d", "text": "Red is my name." }
+              ],
+              "correctAnswers": ["a", "b"],
+              "explanation": "Les deux formulations expriment la préférence pour le rouge."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Texte : « Hello! My name is Eva. I am twelve. My favourite colour is turquoise. I like cats. » — couleur",
+              "options": [
+                { "id": "a", "text": "Turquoise" },
+                { "id": "b", "text": "Cats" },
+                { "id": "c", "text": "Twelve" },
+                { "id": "d", "text": "Eva" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Favourite colour = turquoise."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« The rainbow has many colours. » — « rainbow » =",
+              "options": [
+                { "id": "a", "text": "Arc-en-ciel" },
+                { "id": "b", "text": "Sac à dos" },
+                { "id": "c", "text": "Prénom" },
+                { "id": "d", "text": "Classe" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Vocabulaire visuel couleurs."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Erreur : « He like green. » — correction",
+              "options": [
+                { "id": "a", "text": "He likes green." },
+                { "id": "b", "text": "He like greens." },
+                { "id": "c", "text": "He am green." },
+                { "id": "d", "text": "He is like green am." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "He → likes."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Our classroom walls are white. » — « our » =",
+              "options": [
+                { "id": "a", "text": "Notre" },
+                { "id": "b", "text": "Ton" },
+                { "id": "c", "text": "Son" },
+                { "id": "d", "text": "Leur" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Our = notre (nous)."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Associe : grass (herbe) → couleur",
+              "options": [
+                { "id": "a", "text": "Green" },
+                { "id": "b", "text": "Purple" },
+                { "id": "c", "text": "Pink" },
+                { "id": "d", "text": "Black" }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Herbe verte = association A1."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« I like blue. My sister likes pink. » — goûts",
+              "options": [
+                { "id": "a", "text": "Différents (bleu vs rose)." },
+                { "id": "b", "text": "Identiques." },
+                { "id": "c", "text": "Aucun." },
+                { "id": "d", "text": "Ce sont des prénoms." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Deux personnes, deux couleurs aimées."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Bilan chapitre « Se présenter » : tu peux",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Dire ton nom, ton âge, une couleur que tu aimes."
+                },
+                { "id": "b", "text": "Uniquement compter sans parler." },
+                { "id": "c", "text": "Uniquement écrire en français." },
+                { "id": "d", "text": "Ignorer les questions." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Synthèse identité + goûts couleurs du fichier 01."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Goodbye! See you! » après un jeu « find the colour »",
+              "options": [
+                { "id": "a", "text": "Formule de fin de activité." },
+                { "id": "b", "text": "Question sur l'âge." },
+                { "id": "c", "text": "Nom d'une couleur." },
+                { "id": "d", "text": "Verbe like." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Clôture d'échange en classe."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Phrase modèle A1 complète du module :",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Hi! My name is Alex. I am eleven. I like green."
+                },
+                { "id": "b", "text": "Green Alex eleven like name." },
+                { "id": "c", "text": "I am like name old colour." },
+                { "id": "d", "text": "How colour name old am." }
+              ],
+              "correctAnswers": ["a"],
+              "explanation": "Nom + âge + goût couleur : objectif du chapitre 6e anglais 01."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

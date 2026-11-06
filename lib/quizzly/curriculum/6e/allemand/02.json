@@ -1,0 +1,2243 @@
+{
+  "id": "6e-allemand-02",
+  "year": "6e",
+  "subject": "allemand",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les membres de la famille",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots allemands désignent un parent proche ?",
+              "options": ["der Vater", "der Tisch", "die Mutter", "das Buch"],
+              "correctAnswers": [0, 2],
+              "explanation": "Vater et Mutter signifient père et mère."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « le frère » en allemand ?",
+              "options": [
+                "der Bruder",
+                "die Schwester",
+                "der Onkel",
+                "der Cousin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bruder signifie frère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « die Schwester » ?",
+              "options": ["la sœur", "la grand-mère", "la tante", "la fille"],
+              "correctAnswers": [0],
+              "explanation": "Schwester est le mot pour sœur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « les grands-parents » ?",
+              "options": [
+                "die Großeltern",
+                "die Eltern",
+                "die Geschwister",
+                "die Kinder"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Großeltern regroupe grand-père et grand-mère."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « der Opa » ?",
+              "options": [
+                "papy / grand-père (familier)",
+                "papa",
+                "oncle",
+                "cousin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opa est la forme familière de grand-père."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « l'enfant » au singulier ?",
+              "options": ["das Kind", "die Kinder", "der Junge", "das Baby"],
+              "correctAnswers": [0],
+              "explanation": "Kind signifie enfant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « die Familie » ?",
+              "options": ["la famille", "la maison", "l'école", "l'amitié"],
+              "correctAnswers": [0],
+              "explanation": "Familie est un faux ami facile : c'est la famille."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « le fils » ?",
+              "options": ["der Sohn", "die Tochter", "der Bruder", "der Vater"],
+              "correctAnswers": [0],
+              "explanation": "Sohn signifie fils."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie « die Tochter » ?",
+              "options": [
+                "la fille (enfant)",
+                "la tante",
+                "la mère",
+                "la cousine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tochter désigne la fille d'un couple."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on « les frères et sœurs » ?",
+              "options": [
+                "die Geschwister",
+                "die Eltern",
+                "die Verwandten",
+                "die Nachbarn"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Geschwister regroupe frères et sœurs."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Ma famille et les possessifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes expriment « mon / ma » correctement ?",
+              "options": [
+                "mein Vater",
+                "meine Mutter",
+                "dein Bruder",
+                "sein Buch"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mein s'accorde avec le genre : masculin/neutre mein, féminin meine."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « ma sœur » ?",
+              "options": [
+                "meine Schwester",
+                "mein Schwester",
+                "deine Schwester",
+                "seine Schwester"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schwester est féminin : on utilise meine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « dein Bruder » ?",
+              "options": ["ton frère", "mon frère", "son frère", "votre frère"],
+              "correctAnswers": [0],
+              "explanation": "Dein correspond au tutoiement « ton / ta »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « ses parents » (il) ?",
+              "options": [
+                "seine Eltern",
+                "sein Eltern",
+                "ihre Eltern",
+                "meine Eltern"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eltern est pluriel ; avec il on emploie seine."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase présente « mon enfant » ?",
+              "options": ["mein Kind", "meine Kind", "dein Kind", "ihr Kind"],
+              "correctAnswers": [0],
+              "explanation": "Kind est neutre : mein Kind."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie « unsere Familie » ?",
+              "options": [
+                "notre famille",
+                "votre famille",
+                "leur famille",
+                "ma famille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unser = notre (nous)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on « ta mère » ?",
+              "options": [
+                "deine Mutter",
+                "dein Mutter",
+                "meine Mutter",
+                "eure Mutter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mutter est féminin : deine Mutter."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Das ist mein Opa », que signifie mein ?",
+              "options": ["mon", "ton", "son", "notre"],
+              "correctAnswers": [0],
+              "explanation": "Mein indique la possession à la première personne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on « leurs enfants » (ils) ?",
+              "options": [
+                "ihre Kinder",
+                "sein Kinder",
+                "eure Kinder",
+                "deine Kinder"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ihre (ils/elles) s'utilise avec un pluriel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle forme est correcte pour « votre père » (vous poli) ?",
+              "options": [
+                "Ihr Vater",
+                "dein Vater",
+                "unser Vater",
+                "ihr Vater"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ihr (majuscule) est le possessif de politesse Sie."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "À l'école : la classe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots se rapportent à l'école ?",
+              "options": [
+                "die Schule",
+                "der Unterricht",
+                "der Strand",
+                "das Klassenzimmer"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Schule et Unterricht appartiennent au vocabulaire scolaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « la salle de classe » ?",
+              "options": [
+                "das Klassenzimmer",
+                "die Küche",
+                "das Schlafzimmer",
+                "die Bibliothek"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Klassenzimmer est la salle où l'on cours."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « der Lehrer » ?",
+              "options": [
+                "le professeur (homme)",
+                "l'élève",
+                "le directeur",
+                "le livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lehrer désigne un enseignant masculin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « l'élève » (garçon) ?",
+              "options": [
+                "der Schüler",
+                "die Schülerin",
+                "der Schülerinnen",
+                "der Student"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schüler est l'élève au masculin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « die Schülerin » ?",
+              "options": [
+                "l'élève (fille)",
+                "la professeure",
+                "la classe",
+                "l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le suffixe -in marque le féminin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « le cahier » ?",
+              "options": ["das Heft", "der Stift", "die Mappe", "das Buch"],
+              "correctAnswers": [0],
+              "explanation": "Heft correspond souvent au cahier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « der Stift » ?",
+              "options": [
+                "le stylo / crayon",
+                "la gomme",
+                "la règle",
+                "le sac"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stift désigne un instrument d'écriture."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « le sac à dos » ?",
+              "options": [
+                "der Rucksack",
+                "die Tasche",
+                "der Koffer",
+                "die Mappe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rucksack est le sac porté dans le dos."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie « die Tafel » en classe ?",
+              "options": ["le tableau", "la porte", "la fenêtre", "le bureau"],
+              "correctAnswers": [0],
+              "explanation": "Tafel est le tableau noir ou blanc."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on « la récréation » (cour) ?",
+              "options": [
+                "die Pause",
+                "die Prüfung",
+                "die Hausaufgabe",
+                "die Ferien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pause est la pause entre les cours."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Matières et emploi du temps",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles matières sont des noms allemands courants ?",
+              "options": ["Mathematik", "Sport", "Küche (cuisine)", "Deutsch"],
+              "correctAnswers": [0, 3],
+              "explanation": "Mathematik et Deutsch sont des matières scolaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « l'allemand » (matière) ?",
+              "options": ["Deutsch", "Englisch", "Französisch", "Latein"],
+              "correctAnswers": [0],
+              "explanation": "Deutsch est la langue et la matière."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « Englisch » ?",
+              "options": ["l'anglais", "l'allemand", "l'espagnol", "l'italien"],
+              "correctAnswers": [0],
+              "explanation": "Englisch = anglais."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « les maths » ?",
+              "options": ["Mathe / Mathematik", "Musik", "Kunst", "Erdkunde"],
+              "correctAnswers": [0],
+              "explanation": "Mathe est la forme familière de Mathematik."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « Sport » ?",
+              "options": ["EPS / sport", "musique", "histoire", "physique"],
+              "correctAnswers": [0],
+              "explanation": "Sport est identique au français sport."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « l'emploi du temps » ?",
+              "options": [
+                "der Stundenplan",
+                "der Schulhof",
+                "der Unterricht",
+                "die Klasse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stundenplan liste les heures de cours."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « die Hausaufgabe » ?",
+              "options": [
+                "le devoir (maison)",
+                "la leçon",
+                "l'examen",
+                "la note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hausaufgabe = travail à la maison."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « la note » (scolaire) ?",
+              "options": ["die Note", "die Nummer", "die Frage", "die Antwort"],
+              "correctAnswers": [0],
+              "explanation": "Note est aussi la note en allemand."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie « Kunst » ?",
+              "options": ["arts plastiques", "musique", "histoire", "SVT"],
+              "correctAnswers": [0],
+              "explanation": "Kunst désigne les arts."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Ich habe Deutsch », que signifie haben ?",
+              "options": ["avoir (j'ai)", "être", "aller", "faire"],
+              "correctAnswers": [0],
+              "explanation": "Ich habe = j'ai (allemand)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Sports et mouvement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sports se disent ainsi en allemand ?",
+              "options": ["Fußball", "Schwimmen", "Kochen", "Tennis"],
+              "correctAnswers": [0, 3],
+              "explanation": "Fußball et Tennis sont des sports très courants."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « le football » ?",
+              "options": [
+                "der Fußball",
+                "der Handball",
+                "der Basketball",
+                "der Volleyball"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fußball = football."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « schwimmen » ?",
+              "options": ["nager", "courir", "sauter", "danser"],
+              "correctAnswers": [0],
+              "explanation": "Schwimmen est le verbe nager."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « faire du vélo » ?",
+              "options": ["Rad fahren", "Auto fahren", "laufen", "springen"],
+              "correctAnswers": [0],
+              "explanation": "Rad fahren = rouler à vélo."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « laufen » ?",
+              "options": ["courir / marcher vite", "nager", "jouer", "gagner"],
+              "correctAnswers": [0],
+              "explanation": "Laufen signifie courir ou marcher rapidement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « l'équipe » ?",
+              "options": [
+                "die Mannschaft",
+                "der Ball",
+                "das Spiel",
+                "der Sportplatz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mannschaft = équipe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « das Spiel » ?",
+              "options": [
+                "le match / jeu",
+                "le ballon",
+                "le stade",
+                "l'entraînement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spiel peut être un jeu ou un match."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « gagner » ?",
+              "options": ["gewinnen", "verlieren", "spielen", "trainieren"],
+              "correctAnswers": [0],
+              "explanation": "Gewinnen = gagner."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie « verlieren » ?",
+              "options": ["perdre", "gagner", "jouer", "arrêter"],
+              "correctAnswers": [0],
+              "explanation": "Verlieren est l'antonyme de gewinnen."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Ich spiele gern Fußball », que signifie gern ?",
+              "options": [
+                "volontiers / avec plaisir",
+                "jamais",
+                "toujours",
+                "mal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gern renforce une activité aimée."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Loisirs et temps libre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles activités de loisirs sont correctes ?",
+              "options": [
+                "Musik hören",
+                "fernsehen",
+                "schlafen (devoir)",
+                "lesen"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Musik hören et lesen sont des loisirs fréquents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « lire » ?",
+              "options": ["lesen", "schreiben", "hören", "sehen"],
+              "correctAnswers": [0],
+              "explanation": "Lesen = lire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « spielen » ?",
+              "options": ["jouer", "travailler", "manger", "dormir"],
+              "correctAnswers": [0],
+              "explanation": "Spielen s'utilise pour jeux et sports."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « regarder la télé » ?",
+              "options": ["fernsehen", "Radio hören", "Kino gehen", "tanzen"],
+              "correctAnswers": [0],
+              "explanation": "Fernsehen est un verbe composé télé + voir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « die Freizeit » ?",
+              "options": [
+                "le temps libre",
+                "le travail",
+                "l'école",
+                "les vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Freizeit = loisirs / temps libre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « écouter de la musique » ?",
+              "options": [
+                "Musik hören",
+                "Musik spielen",
+                "Musik lesen",
+                "Musik kochen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hören = écouter."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « tanzen » ?",
+              "options": ["danser", "chanter", "dessiner", "cuisiner"],
+              "correctAnswers": [0],
+              "explanation": "Tanzen = danser."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « le hobby » ?",
+              "options": [
+                "das Hobby",
+                "die Arbeit",
+                "die Schule",
+                "die Prüfung"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hobby est emprunté et masculin en allemand."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie « mit Freunden treffen » ?",
+              "options": [
+                "retrouver des amis",
+                "appeler des amis",
+                "quitter des amis",
+                "chercher des amis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sich treffen = se retrouver."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Am Wochenende », que signifie Wochenende ?",
+              "options": ["le week-end", "la semaine", "le lundi", "le soir"],
+              "correctAnswers": [0],
+              "explanation": "Wochenende = fin de semaine."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Nombres, âge et dates simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels nombres allemands sont corrects ?",
+              "options": ["eins", "zwei", "trois", "vier"],
+              "correctAnswers": [0, 1],
+              "explanation": "Eins et zwei ; « trois » se dit drei, « quatre » vier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « trois » ?",
+              "options": ["drei", "dreizehn", "dreißig", "zwei"],
+              "correctAnswers": [0],
+              "explanation": "Drei = 3."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « zehn » ?",
+              "options": ["dix", "onze", "cent", "zéro"],
+              "correctAnswers": [0],
+              "explanation": "Zehn = 10."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment demande-t-on « Quel âge as-tu ? » (familier) ?",
+              "options": [
+                "Wie alt bist du?",
+                "Wie heißt du?",
+                "Wo wohnst du?",
+                "Was machst du?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wie alt bist du? porte sur l'âge."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « Ich bin zwölf » ?",
+              "options": [
+                "J'ai douze ans",
+                "Je suis en classe de sixième",
+                "Je pèse douze kg",
+                "Il est midi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En allemand on « est » un certain nombre d'années."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « vingt » ?",
+              "options": ["zwanzig", "zwei", "zwölf", "hundert"],
+              "correctAnswers": [0],
+              "explanation": "Zwanzig = 20."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « fünfzehn » ?",
+              "options": ["quinze", "cinquante", "cinq", "cinq cents"],
+              "correctAnswers": [0],
+              "explanation": "Fünf + zehn = fünfzehn."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « sept » ?",
+              "options": ["sieben", "sechs", "acht", "neun"],
+              "correctAnswers": [0],
+              "explanation": "Sieben = 7."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une date, que signifie « der erste Mai » ?",
+              "options": [
+                "le premier mai",
+                "le dernier mai",
+                "en mai",
+                "lundi mai"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erste = premier (ordinal)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on « zéro » ?",
+              "options": ["null", "eins", "neun", "zehn"],
+              "correctAnswers": [0],
+              "explanation": "Null = 0."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Couleurs et vêtements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles couleurs allemandes sont exactes ?",
+              "options": ["rot", "blau", "rouge (mot français)", "grün"],
+              "correctAnswers": [0, 1],
+              "explanation": "Rot et blau ; vert = grün."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « vert » ?",
+              "options": ["grün", "gelb", "grau", "braun"],
+              "correctAnswers": [0],
+              "explanation": "Grün = vert."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « die Hose » ?",
+              "options": ["le pantalon", "la chemise", "la robe", "le manteau"],
+              "correctAnswers": [0],
+              "explanation": "Hose = pantalon."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « la chemise » ?",
+              "options": ["das Hemd", "die Jacke", "der Rock", "die Socke"],
+              "correctAnswers": [0],
+              "explanation": "Hemd est neutre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « schwarz » ?",
+              "options": ["noir", "blanc", "rose", "orange"],
+              "correctAnswers": [0],
+              "explanation": "Schwarz = noir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « blanc » ?",
+              "options": ["weiß", "weit", "warm", "wichtig"],
+              "correctAnswers": [0],
+              "explanation": "Weiß = blanc (ß = double s)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « die Schuhe » ?",
+              "options": [
+                "les chaussures",
+                "les chaussettes",
+                "les gants",
+                "les lunettes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schuhe est le pluriel de Schuh."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « porter » (vêtement) ?",
+              "options": ["tragen", "kaufen", "waschen", "nähen"],
+              "correctAnswers": [0],
+              "explanation": "Tragen = porter."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « ein rotes T-Shirt », que décrit rot ?",
+              "options": [
+                "la couleur rouge",
+                "la taille",
+                "le prix",
+                "la matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rot est l'adjectif de couleur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie « gelb » ?",
+              "options": ["jaune", "bleu", "violet", "marron"],
+              "correctAnswers": [0],
+              "explanation": "Gelb = jaune."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "La maison et le quartier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots désignent des pièces ou lieux à la maison ?",
+              "options": [
+                "die Küche",
+                "das Wohnzimmer",
+                "der Bus",
+                "das Schlafzimmer"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Küche et Schlafzimmer sont des pièces."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « la chambre » (dormir) ?",
+              "options": [
+                "das Schlafzimmer",
+                "das Badezimmer",
+                "der Balkon",
+                "der Garten"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schlafzimmer = chambre à coucher."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « das Haus » ?",
+              "options": [
+                "la maison",
+                "l'appartement",
+                "l'école",
+                "le magasin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Haus = maison."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « habiter » ?",
+              "options": ["wohnen", "arbeiten", "lernen", "kaufen"],
+              "correctAnswers": [0],
+              "explanation": "Wohnen = habiter."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « die Wohnung » ?",
+              "options": ["l'appartement", "la maison", "la ferme", "l'hôtel"],
+              "correctAnswers": [0],
+              "explanation": "Wohnung = logement / appartement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « le jardin » ?",
+              "options": ["der Garten", "der Park", "der Wald", "der Hof"],
+              "correctAnswers": [0],
+              "explanation": "Garten = jardin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « der Nachbar » ?",
+              "options": [
+                "le voisin",
+                "le cousin",
+                "le collègue",
+                "le passant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nachbar = voisin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « la salle de bain » ?",
+              "options": [
+                "das Badezimmer",
+                "die Toilette",
+                "die Dusche",
+                "das Badewanne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Badezimmer regroupe bain et douche souvent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « Ich wohne in Berlin », que signifie in ?",
+              "options": ["à / dans (ville)", "de", "vers", "sans"],
+              "correctAnswers": [0],
+              "explanation": "In + ville = habiter à."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie « die Adresse » ?",
+              "options": ["l'adresse", "la rue", "le numéro", "le code postal"],
+              "correctAnswers": [0],
+              "explanation": "Adresse = adresse postale."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision : famille, école, loisirs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots appartiennent au thème « école » ?",
+              "options": [
+                "der Schüler",
+                "die Schule",
+                "der Fußball",
+                "der Stundenplan"
+              ],
+              "correctAnswers": [1, 3],
+              "explanation": "Schule et Stundenplan sont scolaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « ma grand-mère » (familier) ?",
+              "options": [
+                "meine Oma",
+                "mein Opa",
+                "meine Tante",
+                "meine Cousine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oma = mamie / grand-mère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « Ich gehe zur Schule » ?",
+              "options": [
+                "Je vais à l'école",
+                "Je suis à la maison",
+                "Je fais du sport",
+                "Je lis un livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zur Schule = direction école."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « jouer » au présent « je » ?",
+              "options": [
+                "ich spiele",
+                "ich spielst",
+                "ich spielt",
+                "ich spielen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spielen : ich spiele."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « die Ferien » ?",
+              "options": [
+                "les vacances",
+                "les cours",
+                "les devoirs",
+                "les examens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ferien = vacances scolaires."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « l'ami » (garçon) ?",
+              "options": [
+                "der Freund",
+                "die Freundin",
+                "der Feind",
+                "der Nachbar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Freund = ami."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « zusammen » ?",
+              "options": ["ensemble", "seul", "vite", "souvent"],
+              "correctAnswers": [0],
+              "explanation": "Zusammen = ensemble."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Nach dem Unterricht », que signifie nach ?",
+              "options": ["après", "avant", "pendant", "sans"],
+              "correctAnswers": [0],
+              "explanation": "Nach dem = après le."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on « aimer » (verbe) ?",
+              "options": [
+                "mögen / gern haben",
+                "hassen",
+                "vergessen",
+                "finden"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mögen exprime l'appréciation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie « Viel Spaß! » ?",
+              "options": [
+                "Amuse-toi bien !",
+                "Bon courage !",
+                "À bientôt !",
+                "Bonne nuit !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spaß = amusement."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Se présenter : sein et heißen",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes du verbe sein sont correctes ?",
+              "options": ["ich bin", "du bist", "er bin", "wir sind"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ich bin et du bist ; er utilise ist."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « je suis » ?",
+              "options": ["ich bin", "ich bist", "ich ist", "ich sind"],
+              "correctAnswers": [0],
+              "explanation": "Bin est la forme de ich."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « Wie heißt du? » ?",
+              "options": [
+                "Comment t'appelles-tu ?",
+                "Où habites-tu ?",
+                "Quel âge as-tu ?",
+                "Comment vas-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heißen = s'appeler."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment répond-on « Je m'appelle Anna » ?",
+              "options": [
+                "Ich heiße Anna",
+                "Ich bin Anna Name",
+                "Ich heißt Anna",
+                "Ich nenne Anna"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ich heiße + prénom."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « er ist » ?",
+              "options": ["il est", "elle est", "nous sommes", "ils sont"],
+              "correctAnswers": [0],
+              "explanation": "Er ist = il est."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « nous sommes » ?",
+              "options": ["wir sind", "wir seid", "wir ist", "wir bin"],
+              "correctAnswers": [0],
+              "explanation": "Wir sind."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « sie ist » (elle) ?",
+              "options": ["elle est", "ils sont", "tu es", "je suis"],
+              "correctAnswers": [0],
+              "explanation": "Sie (elle) + ist."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « vous êtes » (familier pluriel) ?",
+              "options": ["ihr seid", "ihr sind", "ihr bist", "ihr bin"],
+              "correctAnswers": [0],
+              "explanation": "Ihr seid."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « Das ist mein Bruder », que fait ist ?",
+              "options": [
+                "lie le sujet au complément",
+                "exprime un lieu",
+                "marque le passé",
+                "indique un nombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la 3e personne du singulier de sein."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie « Woher kommst du? » ?",
+              "options": [
+                "D'où viens-tu ?",
+                "Où vas-tu ?",
+                "Où es-tu ?",
+                "Quand arrives-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Woher = d'où (origine)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Avoir et décrire ce qu'on possède",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes de haben sont correctes ?",
+              "options": ["ich habe", "du hast", "er habe", "sie hat"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ich habe, du hast ; er/sie = hat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « j'ai » ?",
+              "options": ["ich habe", "ich hast", "ich hat", "ich haben"],
+              "correctAnswers": [0],
+              "explanation": "Habe avec ich."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « Ich habe einen Hund » ?",
+              "options": [
+                "J'ai un chien",
+                "Je suis un chien",
+                "Je vois un chien",
+                "Je cherche un chien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Haben + accusatif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « elle a » ?",
+              "options": ["sie hat", "sie habe", "sie hast", "sie haben"],
+              "correctAnswers": [0],
+              "explanation": "Sie hat."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « wir haben » ?",
+              "options": ["nous avons", "vous avez", "ils ont", "tu as"],
+              "correctAnswers": [0],
+              "explanation": "Wir haben."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans « Hast du Geschwister? », que demande-t-on ?",
+              "options": [
+                "As-tu des frères et sœurs ?",
+                "As-tu des parents ?",
+                "As-tu un animal ?",
+                "As-tu un vélo ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Geschwister = fratrie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on « ils ont » ?",
+              "options": ["sie haben", "sie hat", "sie habt", "sie habe"],
+              "correctAnswers": [0],
+              "explanation": "Sie (ils) + haben."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie « kein » dans « kein Auto » ?",
+              "options": [
+                "pas de / aucune voiture",
+                "une voiture",
+                "ma voiture",
+                "ta voiture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kein nie la négation avec un nom."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on « tu as » ?",
+              "options": ["du hast", "du habe", "du hat", "du haben"],
+              "correctAnswers": [0],
+              "explanation": "Du hast."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie « Ich habe Hunger » ?",
+              "options": [
+                "J'ai faim",
+                "J'ai soif",
+                "J'ai sommeil",
+                "J'ai peur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hunger = faim."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Adjectifs et description physique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs décrivent une personne ?",
+              "options": ["groß", "klein", "schnell (vélo)", "nett"],
+              "correctAnswers": [0, 1],
+              "explanation": "Groß et klein décrivent la taille."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « grand » (taille) ?",
+              "options": ["groß", "klein", "lang", "kurz"],
+              "correctAnswers": [0],
+              "explanation": "Groß = grand."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « klein » ?",
+              "options": ["petit", "grand", "jeune", "vieux"],
+              "correctAnswers": [0],
+              "explanation": "Klein = petit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « les cheveux blonds » ?",
+              "options": [
+                "blonde Haare",
+                "blaue Haare",
+                "lange Haare",
+                "kurze Haare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Blond = blond."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « die Augen » ?",
+              "options": ["les yeux", "les oreilles", "le nez", "la bouche"],
+              "correctAnswers": [0],
+              "explanation": "Auge → Augen."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « sympa / gentil » ?",
+              "options": ["nett", "böse", "faul", "laut"],
+              "correctAnswers": [0],
+              "explanation": "Nett = gentil."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « Er ist sportlich » ?",
+              "options": [
+                "Il est sportif",
+                "Il fait du foot",
+                "Il est malade",
+                "Il est fatigué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sportlich = sportif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « fatigué » ?",
+              "options": ["müde", "froh", "hungrig", "durstig"],
+              "correctAnswers": [0],
+              "explanation": "Müde = fatigué."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « Sie hat braune Augen », que décrit braun ?",
+              "options": [
+                "la couleur marron",
+                "la forme",
+                "la taille",
+                "le nombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Braun = marron."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie « jung » ?",
+              "options": ["jeune", "vieux", "content", "triste"],
+              "correctAnswers": [0],
+              "explanation": "Jung = jeune."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Jours, mois et moments de la journée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels jours allemands sont corrects ?",
+              "options": [
+                "Montag",
+                "Dienstag",
+                "Mercredi (français)",
+                "Freitag"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Montag, Dienstag ; mercredi = Mittwoch."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « mercredi » ?",
+              "options": ["Mittwoch", "Montag", "Samstag", "Sonntag"],
+              "correctAnswers": [0],
+              "explanation": "Mittwoch = milieu de semaine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « am Samstag » ?",
+              "options": [
+                "samedi (ce samedi-là)",
+                "le dimanche",
+                "chaque jour",
+                "le matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Am + jour = un samedi précis."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « le matin » ?",
+              "options": [
+                "am Morgen / morgens",
+                "am Abend",
+                "in der Nacht",
+                "am Mittag"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Morgen = matin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « heute » ?",
+              "options": ["aujourd'hui", "hier", "demain", "maintenant"],
+              "correctAnswers": [0],
+              "explanation": "Heute = aujourd'hui."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « demain » ?",
+              "options": ["morgen", "gestern", "heute", "bald"],
+              "correctAnswers": [0],
+              "explanation": "Morgen = demain (≠ Morgen matin selon contexte)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « gestern » ?",
+              "options": ["hier", "demain", "tôt", "tard"],
+              "correctAnswers": [0],
+              "explanation": "Gestern = hier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « janvier » ?",
+              "options": ["Januar", "Juni", "Juli", "Jahr"],
+              "correctAnswers": [0],
+              "explanation": "Januar = janvier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie « die Uhr » (contexte heure) ?",
+              "options": [
+                "l'horloge / l'heure",
+                "la porte",
+                "la cloche de l'école",
+                "le réveil seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wie spät ist es? utilise die Uhr."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Um acht Uhr », que signifie um ?",
+              "options": ["à (heure précise)", "dans", "depuis", "jusqu'à"],
+              "correctAnswers": [0],
+              "explanation": "Um + heure = à huit heures."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Raconter sa journée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes servent à raconter une journée ?",
+              "options": [
+                "aufstehen",
+                "frühstücken",
+                "schlafen (nom)",
+                "lernen"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Se lever et prendre le petit-déjeuner structurent le récit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « se lever » ?",
+              "options": ["aufstehen", "einschlafen", "anfangen", "aufhören"],
+              "correctAnswers": [0],
+              "explanation": "Aufstehen = se lever."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « Ich stehe um sieben Uhr auf » ?",
+              "options": [
+                "Je me lève à sept heures",
+                "Je me couche à sept heures",
+                "Je mange à sept heures",
+                "Je cours à sept heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe séparable stehe … auf."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « déjeuner / petit-déjeuner » (souvent matin) ?",
+              "options": ["frühstücken", "zu Abend essen", "kochen", "kaufen"],
+              "correctAnswers": [0],
+              "explanation": "Frühstücken = prendre le petit-déjeuner."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « dann » dans un récit ?",
+              "options": ["puis / ensuite", "jamais", "toujours", "hier"],
+              "correctAnswers": [0],
+              "explanation": "Dann enchaîne les actions."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « aller au lit / se coucher » ?",
+              "options": [
+                "ins Bett gehen / schlafen gehen",
+                "aufstehen",
+                "fernsehen",
+                "spielen gehen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ins Bett gehen = se coucher."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « zuerst » ?",
+              "options": ["d'abord", "enfin", "parfois", "souvent"],
+              "correctAnswers": [0],
+              "explanation": "Zuerst ouvre la chronologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « après l'école » ?",
+              "options": [
+                "nach der Schule",
+                "vor der Schule",
+                "in der Schule",
+                "ohne Schule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nach der Schule."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie « spät » ?",
+              "options": ["tard", "tôt", "vite", "lentement"],
+              "correctAnswers": [0],
+              "explanation": "Spät = tard."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Am Abend sehe ich fern », que fait-on ?",
+              "options": [
+                "On regarde la télé le soir",
+                "On lit le soir",
+                "On dort le soir",
+                "On mange le soir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fernsehen = regarder la télé."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Lieux et dire où l'on va",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles prépositions indiquent un lieu ?",
+              "options": ["in", "auf", "ohne", "nach"],
+              "correctAnswers": [0, 3],
+              "explanation": "In et nach (ville) ; ohne = sans."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « Je vais à l'école » ?",
+              "options": [
+                "Ich gehe zur Schule",
+                "Ich gehe in Schule",
+                "Ich gehe auf Schule",
+                "Ich gehe von Schule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zur = zu der (féminin)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « Ich bin in der Schule » ?",
+              "options": [
+                "Je suis à l'école (à l'intérieur)",
+                "Je vais à l'école",
+                "Je quitte l'école",
+                "Je n'aime pas l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In + datif = position."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « au parc » ?",
+              "options": ["im Park", "am Park", "zum Park", "im Parke"],
+              "correctAnswers": [0],
+              "explanation": "Im = in dem."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « hier » ?",
+              "options": ["ici", "là-bas", "partout", "nulle part"],
+              "correctAnswers": [0],
+              "explanation": "Hier = ici."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « là-bas » ?",
+              "options": ["dort", "da", "hier", "oben"],
+              "correctAnswers": [0],
+              "explanation": "Dort = là-bas."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « links » ?",
+              "options": ["à gauche", "à droite", "tout droit", "en arrière"],
+              "correctAnswers": [0],
+              "explanation": "Links = gauche."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « à droite » ?",
+              "options": ["rechts", "links", "geradeaus", "unten"],
+              "correctAnswers": [0],
+              "explanation": "Rechts = droite."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « Ich fahre nach Hamburg », que fait nach ?",
+              "options": [
+                "indique une ville de destination",
+                "indique un pays avec article",
+                "signifie « de »",
+                "signifie « sans »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nach + ville sans article."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie « Wo ist …? » ?",
+              "options": [
+                "Où est … ?",
+                "Qu'est-ce que … ?",
+                "Qui est … ?",
+                "Quand est … ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wo = où (lieu)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Questions en W- : qui, quoi, comment",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots interrogatifs allemands sont corrects ?",
+              "options": ["wer", "was", "quoi (français)", "wie"],
+              "correctAnswers": [0, 1],
+              "explanation": "Wer et was ; comment = wie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « qui ? » ?",
+              "options": ["wer", "was", "wo", "wann"],
+              "correctAnswers": [0],
+              "explanation": "Wer = qui."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « Was machst du? » ?",
+              "options": [
+                "Qu'est-ce que tu fais ?",
+                "Où vas-tu ?",
+                "Comment t'appelles-tu ?",
+                "Quel âge as-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Was = quoi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « quand ? » ?",
+              "options": ["wann", "warum", "wie", "wohin"],
+              "correctAnswers": [0],
+              "explanation": "Wann = quand."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « warum » ?",
+              "options": ["pourquoi", "comment", "combien", "où"],
+              "correctAnswers": [0],
+              "explanation": "Warum = pourquoi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « comment ? » ?",
+              "options": ["wie", "was", "wer", "wo"],
+              "correctAnswers": [0],
+              "explanation": "Wie = comment."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « Wohin gehst du? » ?",
+              "options": [
+                "Où vas-tu ? (direction)",
+                "D'où viens-tu ?",
+                "Où es-tu ?",
+                "Où habites-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wohin = vers où."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « combien ? » (prix) ?",
+              "options": ["wie viel", "wie alt", "wie spät", "wie groß"],
+              "correctAnswers": [0],
+              "explanation": "Wie viel = combien."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une question oui/non, où va le verbe ?",
+              "options": [
+                "en première position (avant le sujet)",
+                "à la fin",
+                "jamais conjugué",
+                "après deux verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe en tête : Kommst du?"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie « Welche Farbe? » ?",
+              "options": [
+                "Quelle couleur ?",
+                "Quelle taille ?",
+                "Quel jour ?",
+                "Quelle heure ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Welche = quel(le)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Négation : nicht et kein",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases négatives sont correctes en 6e ?",
+              "options": [
+                "Ich habe kein Handy",
+                "Das ist nicht gut",
+                "Ich habe nicht Hund",
+                "Sie ist nicht müde"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Kein + nom ; nicht + adjectif/verbe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « Je n'ai pas de chat » ?",
+              "options": [
+                "Ich habe keine Katze",
+                "Ich habe nicht Katze",
+                "Ich habe kein Katze",
+                "Ich nicht habe Katze"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Katze féminin : keine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « Das ist nicht wahr » ?",
+              "options": [
+                "Ce n'est pas vrai",
+                "C'est vrai",
+                "C'est possible",
+                "C'est drôle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nicht nie le adjectif wahr."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment nie-t-on « Je ne comprends pas » (simple) ?",
+              "options": [
+                "Ich verstehe nicht",
+                "Ich nicht verstehe",
+                "Ich verstehe kein",
+                "Ich habe nicht verstehen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nicht en fin de proposition simple."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « kein Problem » ?",
+              "options": [
+                "pas de problème",
+                "un problème",
+                "mon problème",
+                "gros problème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression fixe courante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « pas de lait » ?",
+              "options": [
+                "keine Milch",
+                "nicht Milch",
+                "kein Milch",
+                "nicht die Milch"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milch féminin : keine Milch."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « Er spielt nicht », que nie nicht ?",
+              "options": [
+                "l'action de jouer",
+                "le nom Spiel",
+                "la couleur",
+                "le jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nicht porte sur le verbe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie « Ich bin nicht zu Hause » ?",
+              "options": [
+                "Je ne suis pas à la maison",
+                "Je suis à la maison",
+                "Je vais à la maison",
+                "Je n'aime pas la maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zu Hause = chez soi."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on « aucun frère » ?",
+              "options": [
+                "kein Bruder",
+                "nicht Bruder",
+                "keine Bruder",
+                "keinen Bruder (accusatif possible)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kein Bruder au nominatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie « nie » ?",
+              "options": ["jamais", "toujours", "souvent", "parfois"],
+              "correctAnswers": [0],
+              "explanation": "Nie = jamais."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Passé simple : Perfekt avec haben",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels auxiliaires forment le Perfekt en 6e ?",
+              "options": ["haben", "sein", "werden", "können"],
+              "correctAnswers": [0, 1],
+              "explanation": "Haben surtout ; sein avec certains verbes de mouvement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « J'ai joué » (foot) ?",
+              "options": [
+                "Ich habe Fußball gespielt",
+                "Ich bin Fußball gespielt",
+                "Ich habe gespielt Fußball",
+                "Ich spiele gespielt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Haben + participe en fin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « gegessen » ?",
+              "options": [
+                "mangé (participe)",
+                "manger (infinitif)",
+                "bu (participe)",
+                "cuisiné"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Participe de essen."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « Hier j'ai lu » ?",
+              "options": [
+                "Gestern habe ich gelesen",
+                "Gestern ich habe gelesen",
+                "Gestern habe gelesen ich",
+                "Gestern lese ich"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre SVO ; participe final."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « gemacht » ?",
+              "options": [
+                "fait / faite (participe)",
+                "faire",
+                "travaillé",
+                "joué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Participe de machen."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Avec « fernsehen », quel auxiliaire est le plus courant en récit ?",
+              "options": ["haben", "sein", "werden", "dürfen"],
+              "correctAnswers": [0],
+              "explanation": "Ich habe ferngesehen."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « Ich bin nach Hause gegangen » ?",
+              "options": [
+                "Je suis rentré à la maison",
+                "Je mange à la maison",
+                "Je reste à la maison",
+                "Je vais à l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gehen utilise sein."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « Nous avons chanté » ?",
+              "options": [
+                "Wir haben gesungen",
+                "Wir sind gesungen",
+                "Wir haben singen",
+                "Wir singen haben"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gesungen = participe de singen."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie « getrunken » ?",
+              "options": ["bu (participe)", "mangé", "lu", "écrit"],
+              "correctAnswers": [0],
+              "explanation": "Participe de trinken."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un récit au passé, que signifie « dann » ?",
+              "options": ["puis", "avant", "jamais", "toujours"],
+              "correctAnswers": [0],
+              "explanation": "Dann enchaîne les événements passés."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision : décrire et raconter",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases décrivent ou racontent correctement ?",
+              "options": [
+                "Ich bin müde",
+                "Gestern habe ich Sport gemacht",
+                "Ich bin einen Apfel",
+                "Er heißt Tom"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "État avec sein ; passé avec haben + participe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « Elle s'appelle Lisa » ?",
+              "options": [
+                "Sie heißt Lisa",
+                "Sie heiße Lisa",
+                "Sie ist Lisa heißen",
+                "Sie nennt Lisa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heißen : sie heißt."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « Erzähl mir! » ?",
+              "options": [
+                "Raconte-moi !",
+                "Écoute-moi !",
+                "Regarde !",
+                "Viens !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erzählen = raconter."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « C'était super » (familier) ?",
+              "options": [
+                "Das war super",
+                "Das ist super war",
+                "Das war sein",
+                "Das haben super"
+              ],
+              "correctAnswers": [0],
+              "explanation": "War = était (sein au prétérit)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « langweilig » ?",
+              "options": ["ennuyeux", "drôle", "facile", "difficile"],
+              "correctAnswers": [0],
+              "explanation": "Langweilig = ennuyeux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « intéressant » ?",
+              "options": [
+                "interessant",
+                "interessantest",
+                "interesse",
+                "interessieren"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif identique au français."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « Ich erkläre dir … » ?",
+              "options": [
+                "Je t'explique …",
+                "Je te demande …",
+                "Je te montre …",
+                "Je te donne …"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erklären = expliquer."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment commence un petit récit ?",
+              "options": [
+                "Zuerst … / Am Montag …",
+                "Nie …",
+                "Ohne …",
+                "Kein …"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueurs temporels ou zuerst."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie « alles » dans « Alles klar! » ?",
+              "options": ["tout (OK, compris)", "rien", "personne", "jamais"],
+              "correctAnswers": [0],
+              "explanation": "Alles klar = d'accord / OK."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on « Je raconte ma journée » ?",
+              "options": [
+                "Ich erzähle von meinem Tag",
+                "Ich esse meinen Tag",
+                "Ich lese meinen Tag",
+                "Ich bin meinen Tag"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erzählen von = raconter à propos de."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

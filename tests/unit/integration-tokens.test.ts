@@ -1,8 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { IntegrationConnection } from "@/lib/db/schema";
+import type { IntegrationDescriptor } from "@/lib/integrations/providers";
 
 /**
- * Rafraîchissement des jetons : le coin où une connexion Google meurt en
+ * Rafraîchissement des jetons : le coin où une connexion OAuth meurt en
  * silence si l'on se trompe. La rotation du `refresh_token`, l'écriture
  * conditionnée et le vol en groupe sont testés contre `fetch` simulé, pas contre
  * un mock de notre propre client OAuth — la préservation de l'ancien
@@ -33,12 +34,21 @@ const {
   createIntegrationSecretResolver,
   ensureFreshAccessToken,
 } = await import("@/lib/integrations/tokens");
-const { GOOGLE_SCOPES, getIntegrationProvider } = await import(
-  "@/lib/integrations/providers"
-);
+const { getIntegrationProvider } = await import("@/lib/integrations/providers");
 
-const google = getIntegrationProvider("google")!;
-const GRANTED = google.scopes.join(" ");
+const github = getIntegrationProvider("github")!;
+// GitHub ne fait pas tourner son jeton. Le descripteur ci-dessous reprend
+// le même client, avec la politique de rafraîchissement que le coffre doit
+// encore honorer pour un consentement OAuth.
+const refreshing: IntegrationDescriptor = {
+  ...github,
+  refresh: {
+    policy: "oauth_refresh",
+    refreshLeadMs: 5 * 60 * 1000,
+    rotatesRefreshToken: true,
+  },
+};
+const GRANTED = github.scopes.join(" ");
 
 function rowOf(
   overrides: Partial<IntegrationConnection> = {}
@@ -52,7 +62,7 @@ function rowOf(
     id: "connection-1",
     isPrimary: true,
     lastRefreshedAt: null,
-    provider: "google",
+    provider: "github",
     providerAccountId: "1234",
     refreshToken: "mai1.v0.cipher-refresh",
     revokedAt: null,
@@ -81,8 +91,8 @@ const fetchMock = vi.fn();
 beforeEach(() => {
   vi.useFakeTimers({ now: new Date("2026-10-11T10:00:00Z") });
   process.env.MCP_ENCRYPTION_KEY = "cle-de-test-chiffrement-oauth";
-  process.env.GOOGLE_CLIENT_ID = "google-id";
-  process.env.GOOGLE_CLIENT_SECRET = "google-secret";
+  process.env.GITHUB_CLIENT_ID = "github-id";
+  process.env.GITHUB_CLIENT_SECRET = "github-secret";
   // Rien ne traverse d'un test à l'autre : les faux dépôts portent l'état
   // chiffré, et une implémentation qui déborderait rendrait un vert mensonger.
   for (const mock of Object.values(store)) {
@@ -102,14 +112,14 @@ afterEach(() => {
   vi.useRealTimers();
   vi.unstubAllGlobals();
   delete process.env.MCP_ENCRYPTION_KEY;
-  delete process.env.GOOGLE_CLIENT_ID;
-  delete process.env.GOOGLE_CLIENT_SECRET;
+  delete process.env.GITHUB_CLIENT_ID;
+  delete process.env.GITHUB_CLIENT_SECRET;
 });
 
 describe("ensureFreshAccessToken", () => {
   it("ne touche pas au réseau quand le porteur a encore la vie longue", async () => {
     const outcome = await ensureFreshAccessToken({
-      descriptor: google,
+      descriptor: refreshing,
       row: rowOf(),
     });
     expect(outcome.accessToken).toBe("jeton-deja-valide");
@@ -126,7 +136,7 @@ describe("ensureFreshAccessToken", () => {
       })
     );
     const outcome = await ensureFreshAccessToken({
-      descriptor: google,
+      descriptor: refreshing,
       row: almostExpired(),
     });
     expect(outcome.accessToken).toBe("jeton-neuf");
@@ -140,12 +150,12 @@ describe("ensureFreshAccessToken", () => {
     );
   });
 
-  it("conserve l'ancien refresh_token quand Google n'en émet pas un nouveau", async () => {
+  it("conserve l'ancien refresh_token quand le fournisseur n'en émet pas un nouveau", async () => {
     fetchMock.mockResolvedValueOnce(
       jsonResponse({ access_token: "jeton-neuf", expires_in: 3599 })
     );
     await ensureFreshAccessToken({
-      descriptor: google,
+      descriptor: refreshing,
       row: almostExpired(),
     });
     // Perdre le refresh_token rendrait la connexion définitivement muette.
@@ -169,7 +179,7 @@ describe("ensureFreshAccessToken", () => {
         : "jeton-deja-valide"
     );
     const outcome = await ensureFreshAccessToken({
-      descriptor: google,
+      descriptor: refreshing,
       row: almostExpired(),
     });
     expect(outcome.accessToken).toBe("jeton-du-gagnant");
@@ -182,8 +192,8 @@ describe("ensureFreshAccessToken", () => {
       () => new Promise<Response>((resolve) => (resolveFetch = resolve))
     );
     const row = almostExpired();
-    const first = ensureFreshAccessToken({ descriptor: google, row });
-    const second = ensureFreshAccessToken({ descriptor: google, row });
+    const first = ensureFreshAccessToken({ descriptor: refreshing, row });
+    const second = ensureFreshAccessToken({ descriptor: refreshing, row });
     resolveFetch?.(
       jsonResponse({ access_token: "jeton-partage", expires_in: 3599 })
     );
@@ -198,7 +208,7 @@ describe("ensureFreshAccessToken", () => {
       jsonResponse({ error: "invalid_grant" }, false)
     );
     const outcome = await ensureFreshAccessToken({
-      descriptor: google,
+      descriptor: refreshing,
       row: almostExpired(),
     });
     expect(outcome.accessToken).toBeNull();
@@ -209,7 +219,7 @@ describe("ensureFreshAccessToken", () => {
   it("lève sur une panne réseau : une indisponibilité n'est pas un « non connecté »", async () => {
     fetchMock.mockRejectedValueOnce(new Error("ECONNRESET"));
     await expect(
-      ensureFreshAccessToken({ descriptor: google, row: almostExpired() })
+      ensureFreshAccessToken({ descriptor: refreshing, row: almostExpired() })
     ).rejects.toThrow(/indisponible/);
     expect(store.markConnectionRevoked).not.toHaveBeenCalled();
   });
@@ -220,7 +230,7 @@ describe("ensureFreshAccessToken", () => {
     // doit être dite révoquée, jamais utilisée comme bearer.
     store.readAccessToken.mockReturnValue(null);
     const outcome = await ensureFreshAccessToken({
-      descriptor: google,
+      descriptor: refreshing,
       row: rowOf({ accessToken: "" }),
     });
     expect(outcome.revoked).toBe(true);
@@ -232,7 +242,7 @@ describe("createIntegrationSecretResolver", () => {
   it("ignore tout ce qui n'est pas un secret d'autorisation", async () => {
     const resolver = createIntegrationSecretResolver({ userId: "user-1" });
     expect(
-      await resolver({ key: "google.access_token", kind: "env" })
+      await resolver({ key: "github.access_token", kind: "env" })
     ).toBeUndefined();
     expect(await resolver({ key: "INCONNU", kind: "auth" })).toBeUndefined();
     expect(
@@ -243,16 +253,16 @@ describe("createIntegrationSecretResolver", () => {
   it("délivre le porteur d'accès et les portées, jamais le refresh_token", async () => {
     store.getPrimaryConnection.mockResolvedValue(rowOf());
     const resolver = createIntegrationSecretResolver({ userId: "user-1" });
-    expect(await resolver({ key: "google.access_token", kind: "auth" })).toBe(
+    expect(await resolver({ key: "github.access_token", kind: "auth" })).toBe(
       "jeton-deja-valide"
     );
-    expect(await resolver({ key: "google.scopes", kind: "auth" })).toContain(
-      GOOGLE_SCOPES.mailSend
+    expect(await resolver({ key: "github.scopes", kind: "auth" })).toContain(
+      "repo"
     );
     // Un outil qui mettrait la main là-dessus pourrait s'affranchir du
     // consentement : la demande est refusée, pas ignorée.
     await expect(
-      resolver({ key: "google.refresh_token", kind: "auth" })
+      resolver({ key: "github.refresh_token", kind: "auth" })
     ).rejects.toThrow(/jamais expos/i);
   });
 
@@ -261,11 +271,11 @@ describe("createIntegrationSecretResolver", () => {
     // Le plugin rendra un conseil : c'est exactement ce qu'un échec permanent
     // doit produire, l'Agent ne rejouera pas le tour.
     expect(
-      await accessTokenForProvider({ provider: "google", userId: "user-1" })
+      await accessTokenForProvider({ provider: "github", userId: "user-1" })
     ).toEqual({ accessToken: null, revoked: false, scopes: "" });
     const resolver = createIntegrationSecretResolver({ userId: "user-1" });
     expect(
-      await resolver({ key: "google.access_token", kind: "auth" })
+      await resolver({ key: "github.access_token", kind: "auth" })
     ).toBeUndefined();
   });
 
@@ -273,7 +283,7 @@ describe("createIntegrationSecretResolver", () => {
     delete process.env.MCP_ENCRYPTION_KEY;
     const resolver = createIntegrationSecretResolver({ userId: "user-1" });
     await expect(
-      resolver({ key: "google.access_token", kind: "auth" })
+      resolver({ key: "github.access_token", kind: "auth" })
     ).rejects.toThrow(/Coffre non configur/);
   });
 });

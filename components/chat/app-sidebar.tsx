@@ -5,6 +5,7 @@ import {
   ArrowRightIcon,
   CalendarClockIcon,
   ChevronDownIcon,
+  FileTextIcon,
   FolderKanbanIcon,
   LibraryIcon,
   LockIcon,
@@ -364,6 +365,11 @@ export function AppSidebar({
   type NavMenuKey = "plus";
   const [openMenu, setOpenMenu] = useState<NavMenuKey | null>(null);
 
+  // Même prédicat que `ChatHost` : sur ces routes, `ChatHeader` est monté et
+  // porte l'unique déclencheur de la barre. Ailleurs, il n'existe pas, donc
+  // le déclencheur interne doit rester disponible.
+  const isChatRoute =
+    pathname === "/" || Boolean(pathname?.startsWith("/chat"));
   const isSearchActive = Boolean(pathname?.startsWith("/search"));
   const isCreationActive = Boolean(
     pathname?.startsWith("/creation") ||
@@ -661,10 +667,12 @@ export function AppSidebar({
                 >
                   <SearchIcon />
                 </Button>
-                <SidebarTrigger
-                  aria-label="Afficher ou réduire la barre latérale"
-                  className="text-sidebar-foreground/60 transition-colors duration-150 hover:text-sidebar-foreground"
-                />
+                {isChatRoute ? null : (
+                  <SidebarTrigger
+                    aria-label="Afficher ou réduire la barre latérale"
+                    className="text-sidebar-foreground/60 transition-colors duration-150 hover:text-sidebar-foreground"
+                  />
+                )}
               </div>
             </SidebarMenuItem>
           </SidebarMenu>
@@ -700,6 +708,23 @@ export function AppSidebar({
                     >
                       <FolderKanbanIcon className="size-4" />
                       <span>Projets</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    asChild
+                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    tooltip="Pages"
+                  >
+                    <Link
+                      data-onboarding="nav-pages"
+                      href="/pages"
+                      onClick={handleNavClick}
+                    >
+                      <FileTextIcon className="size-4" />
+                      <span>Pages</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

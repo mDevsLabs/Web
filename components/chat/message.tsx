@@ -18,6 +18,7 @@ import {
 } from "@/components/agent/agent-user-input-card";
 import { unwrapAgentToolOutput } from "@/lib/agent/types";
 import type { Vote } from "@/lib/db/schema";
+import { mcpHashedToolLabel } from "@/lib/mcp/provider-tool-label";
 import type { ChatMessage } from "@/lib/types";
 import {
   cn,
@@ -61,7 +62,7 @@ import {
 
 function WaitingText() {
   const { waitingStatus } = useDataStream();
-  const waitingText = waitingStatus?.message ?? "En attente...";
+  const waitingText = waitingStatus?.message ?? "Réflexion";
 
   return (
     <div className="flex min-h-[calc(13px*1.65)] min-w-0 items-center text-[13px] leading-[1.65]">
@@ -1178,14 +1179,20 @@ const PurePreviewMessage = ({
       const output = unwrapAgentToolOutput(toolPart.output) as {
         error?: unknown;
       } | null;
-      const rawName = (toolPart.toolName || type)
-        .replace(/^tool-/, "")
-        .replace(/^mcp_/, "");
+      const rawId = String(toolPart.toolName || type).replace(/^tool-/, "");
+      const hashed = mcpHashedToolLabel(rawId);
+      const rawName = rawId.replace(/^mcp_/, "");
       const nameParts = rawName.split("_");
-      const serverName =
-        nameParts.length > 1 ? nameParts[0].toUpperCase() : "MCP";
-      const methodName =
-        nameParts.length > 1 ? nameParts.slice(1).join("_") : rawName;
+      const serverName = hashed
+        ? hashed.serverLabel
+        : nameParts.length > 1
+          ? nameParts[0].toUpperCase()
+          : "MCP";
+      const methodName = hashed
+        ? hashed.methodLabel
+        : nameParts.length > 1
+          ? nameParts.slice(1).join("_")
+          : rawName;
       const isAvailable = state === "output-available";
       const isError = state === "output-error" || (output && "error" in output);
 

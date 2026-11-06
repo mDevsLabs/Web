@@ -51,7 +51,7 @@ export type IntegrationStatus = {
    */
   vaultConfigured: boolean;
   /**
-   * Variables de capacité absentes (ex. `DISCORD_BOT_TOKEN`). Elles ne
+   * Variables de capacité absentes. Elles ne
    * bloquent pas le consentement, mais privent certains outils de leur sens :
    * la fiche les annonce avant le premier appel.
    */

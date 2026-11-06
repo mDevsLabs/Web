@@ -1,0 +1,2708 @@
+{
+  "id": "3e-svt-02",
+  "year": "3e",
+  "subject": "svt",
+  "title": "Génétique et évolution",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Information génétique",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "L'ADN, support de l'information",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent correctement l'ADN ?",
+              "options": [
+                "Molécule à double hélice",
+                "Présente dans le noyau des cellules eucaryotes",
+                "Composée uniquement de protéines",
+                "Formée de nucléotides"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "L'ADN est une double hélice de nucléotides, stockée surtout dans le noyau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel sucre caractérise les nucléotides de l'ADN ?",
+              "options": ["Ribose", "Désoxyribose", "Glucose", "Fructose"],
+              "correctAnswers": [1],
+              "explanation": "Le désoxyribose distingue l'ADN de l'ARN."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de types de bases azotées l'ADN comporte-t-il ?",
+              "options": ["2", "3", "4", "5"],
+              "correctAnswers": [2],
+              "explanation": "Les quatre bases sont A, T, C et G."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans l'ADN, quelle base s'apparie toujours avec l'adénine ?",
+              "options": ["Guanine", "Cytosine", "Thymine", "Uracile"],
+              "correctAnswers": [2],
+              "explanation": "A s'apparie avec T grâce à deux liaisons hydrogène."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Où se trouve majoritairement l'ADN dans une cellule animale ?",
+              "options": [
+                "Dans le cytoplasme seul",
+                "Dans le noyau",
+                "Dans la paroi",
+                "Dans les vacuoles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chez les eucaryotes, l'ADN nucléaire porte l'essentiel de l'information."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qui a proposé le modèle en double hélice de l'ADN en 1953 ?",
+              "options": [
+                "Darwin et Wallace",
+                "Watson et Crick",
+                "Mendel et Bateson",
+                "Pasteur et Koch"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Watson et Crick ont décrit la structure en double hélice."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un nucléotide comprend :",
+              "options": [
+                "Un acide aminé, un sucre, un lipide",
+                "Une base, un sucre, un phosphate",
+                "Un gène, un chromosome, une protéine",
+                "Deux hélices et quatre protéines"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque nucléotide associe base azotée, sucre et groupe phosphate."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'information génétique est portée par :",
+              "options": [
+                "L'ordre des bases le long de l'ADN",
+                "La couleur du noyau",
+                "Le nombre de mitochondries",
+                "La taille de la cellule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La séquence de bases code l'information héréditaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les deux brins de l'ADN sont :",
+              "options": [
+                "Parallèles et identiques",
+                "Antiparallèles et complémentaires",
+                "Indépendants et aléatoires",
+                "Formés d'ARN et de lipides"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les brins courent en sens opposé avec bases complémentaires."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'ADN mitochondrial chez l'humain provient surtout :",
+              "options": [
+                "Du père",
+                "De la mère",
+                "De l'environnement",
+                "Des bactéries alimentaires"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le cytoplasme ovulaire transmet l'ADN mitochondrial."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Gènes et expression",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un gène correspond à :",
+              "options": [
+                "Une séquence d'ADN codant souvent une protéine",
+                "Un chromosome entier",
+                "Une cellule spécialisée",
+                "Une portion d'ADN portant l'information pour un caractère"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Un gène est une portion d'ADN ; ce n'est ni une cellule ni un chromosome entier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les gènes sont portés par :",
+              "options": [
+                "Les lipides",
+                "Les chromosomes",
+                "L'eau cytoplasmique",
+                "Les ions seuls"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les chromosomes sont de longs filaments d'ADN contenant des gènes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'ARN messager sert à :",
+              "options": [
+                "Dupliquer l'ADN",
+                "Transporter l'information du noyau vers les ribosomes",
+                "Digérer les sucres",
+                "Produire de l'ATP"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'ARNm traduit l'information génétique en protéines."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La transcription produit :",
+              "options": [
+                "De l'ADN à partir de protéines",
+                "De l'ARN à partir d'une séquence d'ADN",
+                "Des chromosomes à partir de lipides",
+                "Du glucose à partir d'ADN"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La transcription copie un gène en ARN."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La traduction a lieu principalement :",
+              "options": [
+                "Dans le noyau",
+                "Sur les ribosomes du cytoplasme",
+                "Dans la paroi",
+                "Dans le nucleole seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les ribosomes assemblent les acides aminés selon l'ARNm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un codon est :",
+              "options": [
+                "Un groupe de trois bases sur l'ARN",
+                "Un chromosome supernuméraire",
+                "Une mutation toujours létale",
+                "Un type de cellule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois bases consécutives codent un acide aminé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tous les cellules d'un individu ont en général :",
+              "options": [
+                "Le même ADN nucléaire",
+                "Un ADN différent par organe",
+                "Pas d'ADN",
+                "Uniquement de l'ARN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fécondation transmet le même patrimoine à toutes les cellules."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La différenciation cellulaire s'explique par :",
+              "options": [
+                "L'expression différentielle des gènes",
+                "La perte totale de l'ADN",
+                "La fusion des chromosomes",
+                "L'absence de gènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules activent des sous-ensembles de gènes différents."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une protéine est synthétisée à partir de :",
+              "options": [
+                "Acides aminés",
+                "Nucléotides seuls",
+                "Glucides seuls",
+                "Lipides seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les protéines sont des chaînes d'acides aminés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'ADN reste dans le noyau pendant la transcription car :",
+              "options": [
+                "Il est trop volumineux pour sortir tel quel",
+                "Il devient de l'eau",
+                "Il est détruit",
+                "Il n'existe pas chez l'eucaryote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seule une copie en ARN quitte le noyau."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Chromosomes et caryotype",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un chromosome humain somatique normal contient :",
+              "options": [
+                "Une molécule d'ADN associée à des protéines",
+                "Deux chromatides après réplication",
+                "Uniquement de l'ARN",
+                "Aucune information génétique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un chromosome est de l'ADN condensé ; après réplication il a deux chromatides sœurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de chromosomes possède une cellule somatique humaine ?",
+              "options": ["23", "46", "92", "12"],
+              "correctAnswers": [1],
+              "explanation": "46 chromosomes, soit 23 paires."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les autosomes sont :",
+              "options": [
+                "Les 22 paires non sexuelles",
+                "Les gonosomes uniquement",
+                "Les mitochondries",
+                "Les ribosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les autosomes ne déterminent pas le sexe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Chez l'humain, XX correspond à :",
+              "options": [
+                "Un individu mâle",
+                "Un individu femelle",
+                "Une cellule sans noyau",
+                "Un gamète haploïde seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Deux chromosomes X définissent le sexe femelle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un caryotype permet de :",
+              "options": [
+                "Observer le nombre et la forme des chromosomes",
+                "Mesurer la température corporelle",
+                "Compter les calories",
+                "Déterminer l'âge osseux seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On classe les chromosomes par paires à partir d'une photographie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une cellule haploïde possède :",
+              "options": [
+                "n chromosomes",
+                "2n chromosomes",
+                "4n chromosomes sans exception",
+                "0 chromosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les gamètes humains ont n = 23 chromosomes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le centromère sert à :",
+              "options": [
+                "Attacher les chromatides",
+                "Produire du glucose",
+                "Filtrer le sang",
+                "Digérer les lipides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le centromère est la zone de constriction du chromosome."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La trisomie 21 se caractérise par :",
+              "options": [
+                "Trois chromosomes 21",
+                "Deux chromosomes 21 seulement",
+                "Absence du chromosome 21",
+                "Quatre chromosomes X"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il s'agit d'une aneuploïdie avec trois copies du chromosome 21."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les chromosomes se condensent visiblement en :",
+              "options": [
+                "Métaphase",
+                "Interphase uniquement",
+                "Digestion",
+                "Photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En métaphase, les chromosomes sont bien visibles au microscope."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les protéines histones participent à :",
+              "options": [
+                "La compaction de l'ADN",
+                "La respiration cellulaire",
+                "La contraction musculaire seule",
+                "La photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ADN s'enroule autour des histones pour former la chromatine."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Mitose et cycle cellulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La mitose permet :",
+              "options": [
+                "De produire deux cellules filles génétiquement identiques",
+                "De conserver le nombre de chromosomes (2n)",
+                "De former des gamètes haploïdes",
+                "De mélanger les patrimoines de deux parents"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La mitose assure croissance et renouvellement avec 2n conservé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Avant la mitose, l'ADN est :",
+              "options": [
+                "Répliqué",
+                "Détruit",
+                "Converti en lipides",
+                "Expulsé du noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phase S du cycle duplique l'ADN."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'anaphase est la phase où :",
+              "options": [
+                "Les chromatides sœurs se séparent",
+                "La cellule digère",
+                "L'ADN disparaît",
+                "Les chromosomes se répliquent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chromatides migrent vers les pôles opposés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La cytokinèse correspond à :",
+              "options": [
+                "La division du cytoplasme",
+                "La réplication de l'ADN",
+                "La méiose II",
+                "La fécondation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux cellules distinctes se forment après séparation du cytoplasme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La mitose dure typiquement :",
+              "options": [
+                "Quelques minutes à une heure selon la cellule",
+                "Plusieurs mois obligatoirement",
+                "Une seconde exacte",
+                "Toute une vie humaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La durée varie selon le type cellulaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les cellules somatiques se divisent par :",
+              "options": [
+                "Mitose",
+                "Méiose uniquement",
+                "Fécondation",
+                "Mutation dirigée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mitose concerne les cellules du corps hors gamétogenèse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En interphase, le noyau semble :",
+              "options": [
+                "Au repos avec ADN peu condensé",
+                "Sans ADN",
+                "Avec chromosomes visibles",
+                "Vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'interphase comprend croissance et réplication."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une cellule mère 2n = 46 donne après mitose :",
+              "options": [
+                "Deux cellules 2n = 46",
+                "Quatre cellules n = 23",
+                "Une cellule 92",
+                "Zéro cellule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nombre chromosomique reste identique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les centrosomes aident à :",
+              "options": [
+                "Organiser le fuseau mitotique",
+                "Synthétiser l'ADN alimentaire",
+                "Produire des hormones",
+                "Filtrer l'urine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les microtubules du fuseau captent les chromosomes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La mitose est essentielle pour :",
+              "options": [
+                "La cicatrisation",
+                "La formation des spermatozoïdes",
+                "La fécondation",
+                "La réduction chromosomique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le renouvellement tissulaire repose sur la mitose."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Méiose et reproduction",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La méiose produit :",
+              "options": [
+                "Des cellules haploïdes",
+                "Quatre cellules filles à partir d'une mère",
+                "Des cellules identiques à la mère somatique",
+                "Toujours deux ovules matures chez la femme à chaque cycle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux divisions aboutissent à quatre cellules n chez de nombreux organismes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La méiose comprend :",
+              "options": [
+                "Deux divisions successives",
+                "Une seule division",
+                "Aucune division",
+                "Trois divisions obligatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méiose I et méiose II séparent d'abord les homologues puis les chromatides."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le brassage génétique lors de la méiose I provient surtout de :",
+              "options": [
+                "La séparation des chromosomes homologues",
+                "La digestion",
+                "La photosynthèse",
+                "La mitose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chromosomes maternels et paternels se répartissent aléatoirement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La fécondation restaure :",
+              "options": [
+                "La diploïdie 2n",
+                "L'haploïdie permanente",
+                "L'absence de chromosomes",
+                "Quatre noyaux par cellule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "n + n donnent 2n dans la zygote."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un spermatozoïde humain contient :",
+              "options": [
+                "23 chromosomes",
+                "46 chromosomes",
+                "92 chromosomes",
+                "0 chromosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une cellule haploïde."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les chromosomes homologues :",
+              "options": [
+                "Portent les mêmes gènes aux mêmes loci",
+                "Sont identiques en séquence totale",
+                "N'existent que chez les plantes",
+                "Sont toujours identiques par le sexe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils viennent de chaque parent mais peuvent porter des allèles différents."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La crossing-over échange :",
+              "options": [
+                "Des segments entre chromatides non sœurs",
+                "Des organites entiers",
+                "Des chromosomes entiers avec certitude",
+                "De l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La recombination augmente la diversité génétique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sans méiose, la fécondation doublerait à chaque génération :",
+              "options": [
+                "Le nombre de chromosomes",
+                "La température",
+                "Le poids seul",
+                "La vitesse de course"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réduction à n compense la fusion des gamètes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La méiose a lieu dans :",
+              "options": [
+                "Les gonades",
+                "La peau uniquement",
+                "Les os",
+                "Les feuilles chez l'animal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ovaires et testicules produisent les gamètes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux divisions méiotiques transforment une cellule 2n en :",
+              "options": [
+                "Quatre cellules n",
+                "Deux cellules 2n identiques",
+                "Une cellule 4n",
+                "Huit cellules 2n"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque division réduit ou sépare pour aboutir à n."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Allèles et hérédité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux allèles d'un même gène :",
+              "options": [
+                "Occupent le même locus sur des chromosomes homologues",
+                "Peuvent coder des versions différentes d'un caractère",
+                "Se trouvent toujours sur le même chromosome",
+                "Sont identiques chez tous les humains"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chaque parent apporte un allèle au même emplacement génique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un caractère dominant s'exprime :",
+              "options": [
+                "Même en présence d'un allèle récessif",
+                "Seulement sans allèle dominant",
+                "Jamais chez l'humain",
+                "Uniquement chez les plantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un seul allèle dominant peut suffire à l'expression."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un génotype décrit :",
+              "options": [
+                "Les allèles possédés",
+                "L'apparence visible seule",
+                "Le climat",
+                "L'âge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le génotype est l'information allélique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le phénotype correspond à :",
+              "options": [
+                "Les caractères observables",
+                "La séquence complète du génome seule",
+                "Le nombre de chromosomes",
+                "Le lieu de vie uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il résulte du génotype et de l'environnement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Chez l'humain, le groupe sanguin ABO est un exemple de :",
+              "options": [
+                "Polymorphisme génétique",
+                "Mutation toujours létale",
+                "Absence de gènes",
+                "Chromosome Y seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs allèles codent les antigènes A, B ou O."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un individu hétérozygote possède :",
+              "options": [
+                "Deux allèles différents pour un gène",
+                "Deux allèles identiques",
+                "Aucun allèle",
+                "Quatre chromosomes X"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hétérozygote signifie allèles distincts."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un individu homozygote possède :",
+              "options": [
+                "Deux allèles identiques",
+                "Trois chromosomes 21",
+                "Un seul chromosome",
+                "Un mélange d'ADN et d'ARN uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux copies du gène sont les mêmes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La transmission des allèles aux enfants est :",
+              "options": [
+                "Aléatoire pour chaque gamète",
+                "Toujours identique pour tous les frères",
+                "Indépendante de la méiose",
+                "Impossible pour les autosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque gamète reçoit un allèle parmi les deux possibles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un caractère récessif n'apparaît au phénotype que si :",
+              "options": [
+                "Les deux allèles sont récessifs",
+                "Un seul allèle récessif est présent",
+                "Il n'y a pas de gène",
+                "L'environnement l'interdit toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'allèle dominant masque le récessif en hétérozygote."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les frères et sœurs diffèrent car :",
+              "options": [
+                "Les gamètes combinent les allèles différemment",
+                "Ils n'ont pas les mêmes parents",
+                "L'ADN n'existe pas",
+                "La mitose mélange les espèces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brassage et fécondation créent des combinaisons uniques."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Mutations et variabilité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une mutation est :",
+              "options": [
+                "Une modification de la séquence d'ADN",
+                "Une source de nouveaux allèles",
+                "Toujours bénéfique",
+                "Toujours visible immédiatement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les mutations altèrent l'ADN et peuvent créer de la diversité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une mutation ponctuelle change :",
+              "options": [
+                "Une ou quelques bases",
+                "Tout le caryotype obligatoirement",
+                "Uniquement les lipides",
+                "Le nombre de planètes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Substitution, insertion ou délétion localisée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une mutation peut survenir :",
+              "options": [
+                "Lors de la réplication",
+                "Seulement après la mort",
+                "Uniquement chez les virus informatiques",
+                "Jamais naturellement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erreurs de copie ou agents mutagènes en sont des causes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une mutation silencieuse :",
+              "options": [
+                "Ne change pas l'acide aminé",
+                "Tue toujours la cellule",
+                "Crée un chromosome en plus",
+                "Efface tous les gènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le code dégénéré permet parfois le même acide aminé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les rayons UV peuvent provoquer :",
+              "options": [
+                "Des lésions de l'ADN",
+                "Une photosynthèse chez l'humain",
+                "La mitose chez les roches",
+                "L'augmentation du nombre de chromosomes à chaque coup"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les UV endommagent les bases et favorisent les mutations."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une mutation germinale :",
+              "options": [
+                "Peut être transmise à la descendance",
+                "Ne concerne que la peau morte",
+                "N'affecte jamais l'ADN",
+                "Existe seulement en laboratoire fictif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle touche les cellules reproductrices ou le zygote initial."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une mutation somatique :",
+              "options": [
+                "N'est en général pas transmise aux enfants",
+                "Est toujours héréditaire",
+                "Change le sexe des gamètes",
+                "Supprime la méiose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle affecte le corps sans entrer dans les gamètes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La variabilité génétique d'une espèce est utile pour :",
+              "options": [
+                "Répondre aux changements de milieu",
+                "Empêcher toute évolution",
+                "Supprimer la sélection",
+                "Rendre tous les individus identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La diversité allélique permet l'adaptation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un mutagène est :",
+              "options": [
+                "Un facteur augmentant le taux de mutations",
+                "Un chromosome de secours",
+                "Une protéine digestive",
+                "Un fossile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains produits chimiques ou radiations sont mutagènes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La réparation de l'ADN permet :",
+              "options": [
+                "De corriger certaines erreurs",
+                "D'annuler la méiose",
+                "De créer des fossiles",
+                "De doubler les chromosomes à chaque heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des enzymes détectent et réparent des lésions."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Du génotype au phénotype",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le phénotype dépend :",
+              "options": [
+                "Du génotype",
+                "De l'environnement",
+                "Uniquement du hasard sans gènes",
+                "Exclusivement du nombre de jours de pluie sans gènes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Gènes et milieu interagissent pour produire les caractères."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La couleur de la peau chez l'humain illustre :",
+              "options": [
+                "Une interaction gènes-environnement",
+                "Un caractère sans base génétique",
+                "Un chromosome absent",
+                "Une méiose chez les roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mélanine et l'exposition solaire modulent la teinte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un test génétique peut détecter :",
+              "options": [
+                "Certaines mutations connues",
+                "Le goût futur des plats",
+                "La météo",
+                "L'âge exact à vieillir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On recherche des variants associés à des maladies ou traits."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Deux jumeaux monozygotes ont :",
+              "options": [
+                "Le même génotype",
+                "Des chromosomes de parents différents",
+                "Toujours des phénotypes strictement identiques",
+                "0 ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils proviennent d'un même zygote."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La taille d'un enfant est influencée par :",
+              "options": [
+                "Des gènes et la nutrition",
+                "Seulement la lune",
+                "Uniquement le prénom",
+                "Le nombre de chromosomes Y"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hérédité et alimentation contribuent à la croissance."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un gène récessif lié à une maladie peut être :",
+              "options": [
+                "Porté sans symptôme en hétérozygote",
+                "Toujours visible",
+                "Absent de l'ADN",
+                "Transmis seulement par l'environnement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le porteur possède l'allèle sans l'exprimer."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'épigénétique étudie notamment :",
+              "options": [
+                "Les régulations d'expression sans changer la séquence",
+                "La disparition de l'ADN",
+                "La formation des volcans",
+                "Les orbites planétaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthylation et autres marques modulent l'activité des gènes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un caractère polygénique dépend :",
+              "options": [
+                "De plusieurs gènes",
+                "D'un seul nucléotide toujours",
+                "D'aucun gène",
+                "Du vent uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs loci contribuent, comme pour la taille."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le daltonisme lié à l'X touche surtout :",
+              "options": [
+                "Les individus XY",
+                "Les individus XX uniquement",
+                "Les plantes",
+                "Les prokaryotes sans gènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mâles n'ont qu'un allèle X donc expriment le déficit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un pedigree (arbre généalogique) sert à :",
+              "options": [
+                "Visualiser la transmission familiale",
+                "Mesurer la pression atmosphérique",
+                "Dater les fossiles directement",
+                "Compter les ribosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il aide à repérer les maladies héréditaires."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Biotechnologies et éthique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le génie génétique peut :",
+              "options": [
+                "Introduire un gène dans un organisme",
+                "Produire des médicaments comme l'insuline recombinante",
+                "Créer de l'ADN à partir de rien sans modèle",
+                "Remplacer la sélection naturelle en une journée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On modifie ou utilise des organismes pour fabriquer des molécules utiles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La PCR permet de :",
+              "options": [
+                "Amplifier une séquence d'ADN",
+                "Mesurer la masse terrestre",
+                "Former des gamètes",
+                "Remplacer la méiose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des cycles de dénaturation, amorces et polymérase copient l'ADN."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un OGM est :",
+              "options": [
+                "Un organisme dont le génome a été modifié",
+                "Un fossile",
+                "Un chromosome naturel non modifié",
+                "Une cellule sans noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La modification vise un caractère agronomique ou autre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le clonage reproductif produit :",
+              "options": [
+                "Un individu génétiquement identique à l'original nucléaire",
+                "Deux espèces différentes",
+                "Des gamètes",
+                "Des fossiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le noyau donneur est transplanté dans un ovocyte."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le séquençage d'ADN détermine :",
+              "options": [
+                "L'ordre des bases",
+                "La couleur des yeux sans gènes",
+                "Le nombre de lunes",
+                "La vitesse du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On lit la séquence nucléotidique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les banques de gènes conservent :",
+              "options": [
+                "Des échantillons d'ADN ou de ressources génétiques",
+                "Uniquement des roches",
+                "Des météorites",
+                "Des ribosomes usagés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles préservent la diversité pour recherche et sélection."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La thérapie génique vise à :",
+              "options": [
+                "Corriger ou compenser un gène défectueux",
+                "Supprimer tous les chromosomes",
+                "Empêcher la respiration",
+                "Créer des volcans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On introduit une copie fonctionnelle ou on édite la séquence."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un plasmide bactérien sert souvent à :",
+              "options": [
+                "Vecteur pour insérer un gène",
+                "Respirer à la place des poumons",
+                "Former des os",
+                "Produire de la lumière solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les plasmides reçoivent des constructions recombinantes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'éthique en génétique implique :",
+              "options": [
+                "Respect de la vie et consentement",
+                "Absence de toute règle",
+                "Publication obligatoire de tous les génomes sans accord",
+                "Interdiction de toute recherche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les avancées soulèvent des questions de droits et de risques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "CRISPR-Cas9 est un outil de :",
+              "options": [
+                "Édition ciblée de l'ADN",
+                "Photosynthèse artificielle chez l'humain",
+                "Formation des gamètes par mitose seule",
+                "Mesure des marées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système coupe et remplace une séquence choisie."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse — information génétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'information génétique :",
+              "options": [
+                "Est portée par l'ADN",
+                "Se transmet lors de la reproduction",
+                "Disparaît à chaque mitose",
+                "Est identique chez toutes les espèces"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'ADN est copié et transmis aux générations suivantes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "De l'ADN au caractère visible, l'ordre logique inclut :",
+              "options": [
+                "Transcription puis traduction",
+                "Traduction puis photosynthèse",
+                "Mitose puis fécondation uniquement",
+                "Mutation puis extinction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ADN → ARN → protéine influence le phénotype."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "2n chez l'humain vaut :",
+              "options": ["46", "23", "92", "12"],
+              "correctAnswers": [0],
+              "explanation": "Les cellules somatiques sont diploïdes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La diversité génétique des gamètes provient surtout de :",
+              "options": [
+                "Méiose et crossing-over",
+                "Mitose seule",
+                "Digestion",
+                "Condensation des fossiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brassage et recombinaison créent des combinaisons nouvelles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un gène est situé sur :",
+              "options": [
+                "Un locus précis d'un chromosome",
+                "Un nucléotide au hasard sans structure",
+                "Une mitochondrie uniquement toujours",
+                "L'atmosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque gène occupe une adresse chromosomique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les chromosomes humains en métaphase sont visibles car :",
+              "options": [
+                "L'ADN est fortement condensé",
+                "Ils deviennent de l'eau",
+                "Ils perdent leurs gènes",
+                "Ils fusionnent en un seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La compaction permet le transport lors de la division."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une cellule nerveuse et une cellule musculaire partagent :",
+              "options": [
+                "Le même ADN nucléaire",
+                "Des génomes totalement différents",
+                "Aucun chromosome",
+                "Uniquement de l'ARN viral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles expriment des gènes différents à partir du même patrimoine."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La fécondation combine :",
+              "options": [
+                "Deux gamètes haploïdes",
+                "Quatre cellules somatiques",
+                "Deux individus adultes entiers",
+                "Des fossiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gamète mâle et femelle fusionnent en zygote 2n."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une mutation peut devenir fréquente dans une population si :",
+              "options": [
+                "Elle confère un avantage sélectif",
+                "Elle est toujours létale",
+                "Elle empêche la reproduction systématiquement",
+                "Elle supprime l'ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sélection naturelle peut favoriser certains allèles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le caryotype 46,XX indique :",
+              "options": [
+                "Une femelle avec 46 chromosomes",
+                "Un mâle avec 23 chromosomes",
+                "Une trisomie 21",
+                "Une cellule haploïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "46 chromosomes dont deux X."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Diversité et évolution",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Biodiversité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La biodiversité inclut :",
+              "options": [
+                "La diversité des espèces",
+                "La diversité génétique au sein des espèces",
+                "Uniquement les animaux de zoo",
+                "Seulement les espèces domestiques"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Elle couvre espèces, gènes et écosystèmes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une espèce est définie classiquement par :",
+              "options": [
+                "Des individus capables de se reproduire entre eux et d'avoir une descendance fertile",
+                "Des individus de même couleur",
+                "Des organismes vivant au même endroit",
+                "Des clones identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le critère biologique repose sur l'isolement reproductif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La diversité génétique au sein d'une espèce permet :",
+              "options": [
+                "De résister aux maladies et aux changements",
+                "D'empêcher toute variation",
+                "De supprimer la sélection",
+                "D'uniformiser tous les individus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus d'allèles offrent plus de possibilités d'adaptation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un écosystème comprend :",
+              "options": [
+                "Des êtres vivants et leur milieu",
+                "Uniquement des roches",
+                "Seulement l'atmosphère",
+                "Des chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interactions biotiques et abiotic définissent l'écosystème."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La disparition d'une espèce clé peut :",
+              "options": [
+                "Déséquilibrer tout l'écosystème",
+                "Augmenter toujours la biodiversité",
+                "Ne rien changer",
+                "Créer des chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines espèces structurent le réseau trophique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les hotspots de biodiversité sont :",
+              "options": [
+                "Des zones très riches en espèces endémiques",
+                "Des déserts sans vie",
+                "Des laboratoires d'ADN",
+                "Des caryotypes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces régions concentrent une forte diversité menacée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'extinction massive actuelle est surtout due à :",
+              "options": [
+                "L'activité humaine",
+                "La méiose",
+                "La transcription",
+                "La condensation chromosomique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Habitat, pollution et surpêche accélèrent les disparitions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux espèces sœurs partagent :",
+              "options": [
+                "Un ancêtre commun récent",
+                "Aucun gène",
+                "Le même individu",
+                "Toujours le même habitat exact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La parenté se lit sur les arbres phylogénétiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La classification en regne, phylum, classe… reflète :",
+              "options": [
+                "Les liens de parenté évolutive",
+                "L'ordre alphabétique des noms",
+                "La taille des individus",
+                "Le nombre de chromosomes seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La systématique cladistique regroupe par ascendance."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Protéger la biodiversité sert à :",
+              "options": [
+                "Maintenir les services écologiques",
+                "Supprimer l'évolution",
+                "Empêcher toute mutation",
+                "Éliminer les écosystèmes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pollinisation, cycles nutritifs et stabilité en dépendent."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Variation et sélection",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La sélection naturelle agit sur :",
+              "options": [
+                "La variabilité existante",
+                "Les individus les mieux adaptés au milieu",
+                "Des caractères acquis par effort individuel héréditaires",
+                "Des organismes identiques sans variation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Darwin : variation + sélection différentielle + hérédité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un avantage sélectif signifie :",
+              "options": [
+                "Un caractère augmentant la survie ou la reproduction",
+                "Un gène toujours récessif",
+                "Une mutation toujours létale",
+                "Un fossile récent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adaptation améliore la fitness relative."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La sélection naturelle a été formalisée par :",
+              "options": ["Darwin", "Pasteur seul", "Watson seul", "Newton"],
+              "correctAnswers": [0],
+              "explanation": "Darwin a publié l'Origine des espèces en 1859."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Wallace a :",
+              "options": [
+                "Proposé indépendamment une théorie similaire à Darwin",
+                "Découvert l'ADN",
+                "Inventé la mitose",
+                "Mesuré le caryotype humain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Darwin et Wallace ont présenté ensemble en 1858."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un exemple de sélection est :",
+              "options": [
+                "Bactéries résistantes aux antibiotiques",
+                "Rochers devenant des mammifères",
+                "ADN créé sans parent",
+                "Mitose chez les minéraux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les antibiotiques sélectionnent les variants résistants."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La variation dans une population provient notamment de :",
+              "options": [
+                "Mutations et recombinaisons",
+                "Efforts volontaires héréditaires",
+                "Absence de gènes",
+                "Photosynthèse chez les animaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méiose et mutations alimentent la diversité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La sélection artificielle est pratiquée par :",
+              "options": [
+                "Les éleveurs et les agriculteurs",
+                "Les volcans",
+                "Les marées seules",
+                "Les fossiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'homme choisit les reproducteurs selon des critères utiles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un caractère héréditaire peut évoluer en fréquence si :",
+              "options": [
+                "Il améliore la reproduction dans un milieu donné",
+                "Il disparaît toujours",
+                "Il n'est jamais transmis",
+                "Il empêche toute descendance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les allèles favorisés se multiplient au fil des générations."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La coévolution décrit :",
+              "options": [
+                "L'évolution réciproque de deux espèces interactives",
+                "La fusion de deux planètes",
+                "La mitose des roches",
+                "L'absence d'interaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : fleur et pollinisateur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La fitness mesure surtout :",
+              "options": [
+                "La contribution génétique à la génération suivante",
+                "La force musculaire seule",
+                "La taille du fossile",
+                "Le nombre de chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce n'est pas la robustesse absolue mais la reproduction relative."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Adaptation aux milieux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une adaptation est :",
+              "options": [
+                "Un caractère favorisant la survie dans un milieu",
+                "Le résultat de la sélection sur la variation",
+                "Un trait acquis par un individu transmis tel quel aux enfants",
+                "Toujours visible en une génération"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les adaptations héréditaires s'accumulent par sélection."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les caméléons changent de couleur surtout pour :",
+              "options": [
+                "Communiquer et thermoréguler",
+                "Modifier leur ADN",
+                "Faire de la mitose",
+                "Produire des gamètes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines variations sont physiologiques, pas évolutives instantanées."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un milieu extrême peut sélectionner :",
+              "options": [
+                "Des variants tolérants",
+                "Des organismes sans génome",
+                "Des individus identiques sans gènes",
+                "Des fossiles vivants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salinité, froid ou sécheresse filtrent les phénotypes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La mimicry (mimétisme) est :",
+              "options": [
+                "Une ressemblance avantageuse avec un autre organisme",
+                "Une mutation obligatoire létale",
+                "Un caryotype humain",
+                "Une méiose chez les roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Imiter un prédateur ou une proie toxique peut protéger."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les animaux des régions froides ont souvent :",
+              "options": [
+                "Des appendices plus petits (règle de Allen)",
+                "Des ailes géantes obligatoires",
+                "Pas de gènes",
+                "0 chromosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduire la surface limite limite les pertes de chaleur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une niche écologique désigne :",
+              "options": [
+                "Le rôle et les besoins d'une espèce dans l'écosystème",
+                "Un fossile",
+                "Un chromosome Y",
+                "Un plasmide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Habitat, alimentation et interactions définissent la niche."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La convergence évolutive produit :",
+              "options": [
+                "Des structures similaires chez des espèces non sœurs",
+                "Des génomes identiques partout",
+                "L'arrêt de l'évolution",
+                "Des trisomies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même pression de sélection peut mener à des formes pareilles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un organe vestigial est :",
+              "options": [
+                "Un reste réduit d'une structure ancestrale",
+                "Un chromosome supplémentaire",
+                "Un gène sans ADN",
+                "Une cellule haploïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : os pelviens chez certaines baleines."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La pollinisation entomophile favorise des fleurs :",
+              "options": [
+                "Colorées et parfois parfumées",
+                "Toujours sans pétales",
+                "Uniquement aquatiques sans insectes",
+                "Sans gènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les insectes attirés transportent le pollen."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Changer de milieu sans variation adaptée peut mener à :",
+              "options": [
+                "Une diminution de la fitness",
+                "Une immédiat perfection",
+                "La création d'ADN ex nihilo",
+                "La perte de l'évolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un caractère inadapté réduit survie et reproduction."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Fossiles et datation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les fossiles permettent de :",
+              "options": [
+                "Documenter des formes de vie disparues",
+                "Estimer l'âge des roches qui les contiennent",
+                "Prouver que l'évolution s'est arrêtée",
+                "Mesurer directement l'ADN intact de tous les dinosaures"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Restes ou traces témoignent du passé biologique et stratigraphique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un fossile peut être :",
+              "options": [
+                "Une empreinte ou un squelette minéralisé",
+                "Un chromosome vivant",
+                "Un gamète",
+                "Un plasmide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conservation variable selon le milieu de sédimentation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La paléontologie étudie :",
+              "options": [
+                "La vie du passé via les fossiles",
+                "Seulement la météo",
+                "Les orbites lunaires",
+                "La mitose actuelle seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle reconstitue histoire évolutive et environnements anciens."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les couches géologiques les plus profondes sont en général :",
+              "options": [
+                "Plus anciennes",
+                "Toujours plus récentes",
+                "Sans fossiles",
+                "Identiques à aujourd'hui"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Principe de superposition en stratigraphie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un fossile daté à 65 Ma se trouve dans :",
+              "options": [
+                "Le Cénozoïque après la fin des dinosaures non aviens dominants",
+                "L'ère actuelle seulement hier",
+                "Avant la formation de la Terre",
+                "Sans roche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "65 Ma marque la limite Crétacé-Paléogène."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les fossiles intermédiaires :",
+              "options": [
+                "Montrent des transitions entre grands groupes",
+                "Prouvent l'absence de parenté",
+                "Sont tous des faux",
+                "N'existent pas dans la nature"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Archaeopteryx illustre lien dinosaures-oiseaux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La datation radiométrique utilise :",
+              "options": [
+                "La décroissance d'isotopes instables",
+                "Le nombre de chromosomes",
+                "La couleur des yeux",
+                "La mitose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demi-vie connue donne l'âge des roches ou minéraux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un index fossile est utile car :",
+              "options": [
+                "Il vécut peu de temps mais sur une large zone",
+                "Il est toujours géant",
+                "Il n'a jamais existé",
+                "Il mesure l'ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il corrèle des couches de régions différentes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'enregistrement fossile est :",
+              "options": [
+                "Incomplet mais informatif",
+                "Parfait pour chaque espèce",
+                "Absent pour tout être vivant",
+                "Remplaçant l'ADN moderne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conditions rares permettent la fossilisation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparer fossiles anciens et formes actuelles montre :",
+              "options": [
+                "Des changements au cours du temps",
+                "L'absence de parenté",
+                "Que l'évolution n'existe pas",
+                "Que l'ADN n'existe pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séries chronologiques révèlent modifications morphologiques."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Parenté et phylogénie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un arbre phylogénétique montre :",
+              "options": [
+                "Des relations de parenté entre espèces",
+                "Des ancêtres communs hypothétiques",
+                "La météo future",
+                "Le nombre exact de générations d'un individu"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les nœuds représentent des ancêtres communs estimés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Des séquences d'ADN similaires suggèrent :",
+              "options": [
+                "Une parenté évolutive récente",
+                "Aucun lien",
+                "Des roches identiques",
+                "Des chromosomes absents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les gènes conservés tracent l'histoire évolutive."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un groupe monophylétique inclut :",
+              "options": [
+                "Un ancêtre commun et tous ses descendants",
+                "Des espèces sans ancêtre",
+                "Uniquement des fossiles",
+                "Des gamètes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un clade au sens cladistique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Homo sapiens et Pan troglodytes partagent :",
+              "options": [
+                "Un ancêtre commun récent",
+                "Aucun gène",
+                "Le même individu actuel",
+                "Des chromosomes de plantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grands singes et humains sont proches phylogénétiquement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les homologues sont :",
+              "options": [
+                "Des structures issues d'un même plan ancestral",
+                "Des structures similaires sans parenté",
+                "Des fossiles seuls",
+                "Des mutations létalité systématique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : os du bras chez vertébrés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les analogues résultent de :",
+              "options": [
+                "Convergence évolutive",
+                "Méiose identique",
+                "Clonage",
+                "Trisomie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ailes d'insecte et d'oiseau ne partagent pas le même origine."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'ADN mitochondrial compare surtout :",
+              "options": [
+                "La lignée maternelle",
+                "Le père uniquement",
+                "Les roches",
+                "Les nuages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hérédité cytoplasmique maternelle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Plus deux espèces partagent de synapomorphies, plus :",
+              "options": [
+                "Elles sont proches parentes",
+                "Elles sont éloignées",
+                "Elles n'ont pas d'ADN",
+                "Elles sont identiques en tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caractères dérivés partagés définissent les clades."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le dernier ancêtre commun universel (LUCA) est :",
+              "options": [
+                "L'ancêtre cellulaire de toutes les espèces actuelles",
+                "Un dinosaure récent",
+                "Un humain du Moyen Âge",
+                "Une roche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous les vivants actuels en descendent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La phylogénie moléculaire utilise :",
+              "options": [
+                "Comparaisons de séquences",
+                "Mesure du vent",
+                "Couleur des yeux seule",
+                "Nombre de pattes sans gènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mutations accumulées servent de horloge relative."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Spéciation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La spéciation aboutit à :",
+              "options": [
+                "Deux espèces reproductivement isolées",
+                "L'apparition de barrières de reproduction",
+                "La fusion instantanée de tous les génomes",
+                "L'identité totale de deux populations"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les populations divergent jusqu'à ne plus produire de descendance fertile."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La spéciation allopatrique implique :",
+              "options": [
+                "Une séparation géographique",
+                "Une fusion immédiate",
+                "Absence de variation",
+                "Mitose seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un obstacle isole deux populations."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La dérive génétique est plus forte quand :",
+              "options": [
+                "La population est petite",
+                "La population est infinie",
+                "Il n'y a pas de gènes",
+                "Tous les allèles sont identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le hasard modifie les fréquences alléliques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Deux populations isolées peuvent diverger par :",
+              "options": [
+                "Sélection et mutations différentes",
+                "Effort volontaire héréditaire",
+                "Perte de l'ADN",
+                "Photosynthèse animale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pressions de milieu et hasard accumulent les différences."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une espèce reproductricement isolée ne :",
+              "options": [
+                "Produit pas de descendance fertile avec l'autre",
+                "Partage toujours tous les gènes",
+                "Vit obligatoirement au pôle",
+                "N'a pas de chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Isolation pré ou post-zygotique maintient la séparation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La spéciation sympatrique est :",
+              "options": [
+                "Sans barrière géographique majeure",
+                "Toujours impossible",
+                "Uniquement chez les roches",
+                "Identique à la mitose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Isolement écologique ou génétique dans la même zone."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le flux génique entre populations :",
+              "options": [
+                "Homogénéise les fréquences alléliques",
+                "Empêche toute variation",
+                "Supprime l'ADN",
+                "Crée des fossiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Migrations mélangent les allèles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un ring species (espèce en anneau) illustre :",
+              "options": [
+                "Une transition graduelle avec extrémités isolées",
+                "Une création instantanée",
+                "L'absence d'évolution",
+                "Des trisomies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Populations voisines se croisent mais les extrêmes non."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La polyploïdisation chez les plantes peut :",
+              "options": [
+                "Créer une nouvelle espèce en une génération",
+                "Empêcher toute cellule",
+                "Supprimer les chromosomes",
+                "Remplacer la photosynthèse chez l'humain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Doublement du génome isole reproductivement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le temps de spéciation varie :",
+              "options": [
+                "De milliers à millions d'années",
+                "Toujours une seconde",
+                "Jamais plus d'un jour",
+                "Uniquement en laboratoire fictif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rythme dépend du groupe et des isolations."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Grands événements évolutifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'évolution du vivant inclut :",
+              "options": [
+                "L'apparition de la photosynthèse",
+                "L'adaptation aux milieux changeants",
+                "L'arrêt total des mutations",
+                "L'absence de parenté entre espèces"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Innovations majeures et adaptation continuelle marquent l'histoire du vivant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La Terre a environ :",
+              "options": [
+                "4,5 milliards d'années",
+                "6 000 ans scientifiquement établis",
+                "10 ans",
+                "100 ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Datations géologiques convergent vers 4,5 Ga."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les premières traces de vie microbienne datent d'environ :",
+              "options": [
+                "3,5 à 4 Ga",
+                "Hier",
+                "L'ère quaternaire seule",
+                "Après l'apparition des dinosaures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stromatolithes et isotopes témoignent de microbes anciens."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'explosion cambrienne correspond à :",
+              "options": [
+                "Une diversification rapide d'animaux fossiles",
+                "La fin de l'ADN",
+                "La création des chromosomes humains",
+                "L'extinction totale de la vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nombreux plans d'organisation apparaissent il y a ~540 Ma."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La fin du Crétacé (~66 Ma) est marquée par :",
+              "options": [
+                "Extinction massive incluant dinosaures non aviens",
+                "Apparition de l'Homo sapiens",
+                "Invention de la PCR",
+                "Découverte de l'ADN par Watson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impact et volcanisme contribuent à cette crise."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les mammifères se diversifient surtout :",
+              "options": [
+                "Après la disparition des grands dinosaures terrestres",
+                "Avant l'apparition de la Terre",
+                "Uniquement en 2020",
+                "Sans gènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niches libérées favorisent les mammifères."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'oxygène atmosphérique a augmenté grâce à :",
+              "options": [
+                "Photosynthèse",
+                "Respiration des roches",
+                "Mitose des minéraux",
+                "Fossiles seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cyanobactéries et plantes libèrent O₂."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Endosymbiose explique l'origine :",
+              "options": [
+                "Des mitochondries",
+                "Des volcans",
+                "Des lunes",
+                "Des caryotypes humains"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ancêtres eucaryotes incorporaient des bactéries aerobies."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les continents dérivent selon :",
+              "options": [
+                "Tectonique des plaques",
+                "Mitose",
+                "Transcription",
+                "Sélection artificielle seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mouvements modifient climats et isolations."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une extinction de masse :",
+              "options": [
+                "Efface une grande part de la biodiversité",
+                "Crée instantanément tous les gènes",
+                "Empêche toute évolution future",
+                "N'a jamais existé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cinq grandes crises sont reconnues, plus la sixième actuelle."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Homme et évolution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Homo sapiens :",
+              "options": [
+                "Est une espèce d'hominidés",
+                "Partage des ancêtres avec les autres primates",
+                "Est apparue il y a 4,5 Ga",
+                "Ne possède pas de gènes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nous sommes des primates avec une histoire évolutive documentée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Homo sapiens apparaît en Afrique il y a environ :",
+              "options": [
+                "300 000 ans",
+                "6 000 ans",
+                "1 milliard d'années",
+                "Hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fossiles et génétique pointent vers une origine africaine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La bipédie est :",
+              "options": [
+                "Marcher sur deux membres",
+                "Nager uniquement",
+                "Voler",
+                "Photosynthétiser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caractère ancien des hominines."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La capacité crânienne a augmenté chez certains hominidés, liée à :",
+              "options": [
+                "Développement cérébral",
+                "Perte totale de l'ADN",
+                "Mitose des roches",
+                "Trisomie systématique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cerveau plus volumineux chez genres comme Homo."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Néandertal et Homo sapiens :",
+              "options": [
+                "Se sont croisés et ont laissé de l'ADN chez nous",
+                "N'ont jamais coexisté",
+                "Sont identiques en tout point",
+                "N'ont pas de gènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Introgression détectée dans génomes non africains."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La domestication du feu a permis :",
+              "options": [
+                "Cuisson et protection",
+                "Photosynthèse humaine",
+                "Mitose accélérée des gènes",
+                "Perte des chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Technologie culturelle influença survie et alimentation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La culture humaine peut évoluer :",
+              "options": [
+                "Plus vite que les gènes seuls",
+                "Sans transmission",
+                "Sans cerveau",
+                "Uniquement par mutation obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apprentissage social transmet savoirs rapidement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lucy (Australopithecus) est un fossile trouvé en :",
+              "options": ["Éthiopie", "Antarctique", "Lune", "Mars"],
+              "correctAnswers": [0],
+              "explanation": "Hominine pliocène ~3,2 Ma."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La diversité génétique humaine est :",
+              "options": [
+                "Plus faible que chez beaucoup de grands singes",
+                "Infinie sans limites",
+                "Absente",
+                "Identique chez tous base par base"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Goulot récent réduit la variation relative."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Étudier l'évolution humaine combine :",
+              "options": [
+                "Fossiles, génétique et archéologie",
+                "Uniquement la météo",
+                "Seulement les légendes",
+                "Mitose des minéraux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approches complémentaires reconstruisent la lignée."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Évolution et santé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les micro-organismes évoluent :",
+              "options": [
+                "Rapidement par mutations et sélection",
+                "Sous pression des antibiotiques",
+                "Sans jamais changer d'ADN",
+                "Uniquement quand ils deviennent des mammifères"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Courtes générations et forte sélection médicale accélèrent l'adaptation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La résistance aux antibiotiques est un exemple de :",
+              "options": [
+                "Sélection naturelle",
+                "Lamarckisme correct",
+                "Création instantanée de gènes sans parent",
+                "Mitose chez les roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variants résistants survivent et se multiplient."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un virus peut évoluer par :",
+              "options": [
+                "Mutations et recombinations",
+                "Effort musculaire",
+                "Perte de l'ADN ou RNA",
+                "Fossilisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erreurs de copie et mélanges génériques créent variants."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La vaccination sélectionne indirectement :",
+              "options": [
+                "Des souches échappant parfois à l'immunité",
+                "Des roches",
+                "Des chromosomes humains en plus",
+                "L'extinction du système immunitaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Immunité de groupe réduit circulation mais peut filtrer variants."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les allergies peuvent s'expliquer en partie par :",
+              "options": [
+                "Hypothèse hygiéniste et contexte immunitaire",
+                "Absence de gènes",
+                "Mitose des os",
+                "Trisomie obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Système immunitaire moins exposé aux parasites anciens."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le paludisme a sélectionné des allèles comme :",
+              "options": [
+                "Drépanocytose en zones endémiques",
+                "Quatre chromosomes X",
+                "Perte de l'ADN",
+                "Photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hétérozygotes résistent mieux au Plasmodium."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La lactase persistante chez certains adultes est :",
+              "options": [
+                "Une adaptation à l'élevage laitier",
+                "Une mutation toujours létale",
+                "Absente de gènes",
+                "Un fossile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Culture laitière a favorisé allèles de digestion du lactose."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comprendre l'évolution aide à :",
+              "options": [
+                "Anticiper résistances et épidémies",
+                "Nier l'existence des gènes",
+                "Stopper toute mutation",
+                "Empêcher la diversité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèles évolutifs guident santé publique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un pathogène zoonotique :",
+              "options": [
+                "Passe d'un animal à l'humain",
+                "Vit uniquement sur Mars",
+                "N'a pas de génome",
+                "Se forme par mitose des roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contact étroit favorise les sauts d'espèce."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Utiliser tous les antibiotiques à la fois sans ordonnance :",
+              "options": [
+                "Favorise des super-bactéries",
+                "Empêche toute évolution",
+                "Protège toujours",
+                "Crée des fossiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usage responsable limite la sélection de résistances."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse — diversité et évolution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La théorie de l'évolution moderne intègre :",
+              "options": [
+                "Sélection naturelle",
+                "Génétique des populations",
+                "Fixisme des espèces",
+                "Absence de mutations"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Synthèse néodarwiniste unit Darwin et Mendel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les preuves de l'évolution viennent de :",
+              "options": [
+                "Fossiles, anatomie comparée, ADN",
+                "Uniquement de opinions",
+                "Mitose seule",
+                "Couleur des yeux seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convergence indépendante des disciplines."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La diversité actuelle résulte de :",
+              "options": [
+                "Speciations passées et adaptations",
+                "Création instantanée identique",
+                "Perte de tous les gènes",
+                "Arrêt de la sélection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arbre du vivant riche de milliards d'années."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lamarck a suggéré (hypothèse refutée) :",
+              "options": [
+                "Hérédité des caractères acquis",
+                "Sélection naturelle",
+                "Structure ADN",
+                "Méiose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les expériences n'ont pas confirmé la transmission des efforts."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une population évolue quand :",
+              "options": [
+                "Les fréquences alléliques changent",
+                "Rien ne change jamais",
+                "L'ADN disparaît",
+                "Les chromosomes deviennent des fossiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évolution = changement héréditaire dans le temps."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Protéger les habitats limite :",
+              "options": [
+                "Extinctions liées à la destruction",
+                "Toute évolution future",
+                "La diversité génétique",
+                "Les gènes eux-mêmes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conservation maintient écosystèmes et variabilité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le hasard (dérive) et la sélection :",
+              "options": [
+                "Influencent tous deux les populations",
+                "N'existent pas",
+                "Remplacent l'ADN",
+                "Empêchent les mutations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forces évolutives combinées selon contexte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tous les êtres vivants actuels partagent :",
+              "options": [
+                "De l'ADN ou ARN et un ancêtre commun",
+                "Rien",
+                "Les mêmes fossiles",
+                "Zéro gène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unité du vivant au niveau moléculaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'éducation à l'évolution aide à :",
+              "options": [
+                "Comprendre résistance, biodiversité et origine de l'homme",
+                "Nier les gènes",
+                "Ignorer les fossiles",
+                "Confondre mitose et spéciation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concepts clés pour citoyens et futurs scientifiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Génétique et évolution sont liées car :",
+              "options": [
+                "Les allèles varient, se transmettent et sont sélectionnés",
+                "L'ADN n'existe pas",
+                "Les chromosomes n'influencent rien",
+                "La méiose n'existe pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variation héréditaire est la matière première de l'évolution."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

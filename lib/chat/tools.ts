@@ -27,6 +27,11 @@ import { updateProfilePicture } from "@/lib/ai/tools/update-profile-picture";
 import { webCapture } from "@/lib/ai/tools/web-capture";
 import { webSearch } from "@/lib/ai/tools/web-search";
 import type { MaiUser } from "@/lib/auth/session";
+import { guardNativeChatTools } from "@/lib/chat/native-tool-guard";
+import {
+  type ChatToolEligibility,
+  isChatToolEligible,
+} from "@/lib/chat/tool-policy";
 import { logChatToolExecution } from "@/lib/db/queries";
 import type { ChatMessage } from "@/lib/types";
 
@@ -51,6 +56,12 @@ export type ChatToolDeps = {
   memoryAllowAdd: boolean;
   memoryLimit: number;
   effectiveAgentId: string | null;
+  /**
+   * Capacités du modèle (`capabilities.tools` du catalogue). Faux : l'objet
+   * renvoyé est vide, plugins et MCP compris. Absent : traité comme vrai, pour
+   * les appelants qui filtrent déjà leur plateau (Wakies).
+   */
+  toolsSupported?: boolean;
 };
 
 /**
@@ -125,7 +136,7 @@ function tracePluginTools(
 
 export function createChatTools(
   deps: ChatToolDeps,
-  mcpTools: Record<string, any>,
+  mcpTools: Record<string, any> = {},
   pluginTools: Record<string, any> = {}
 ) {
   const {
@@ -143,6 +154,13 @@ export function createChatTools(
     effectiveAgentId,
   } = deps;
 
+  const eligibility: ChatToolEligibility = {
+    hasSessionToken: sessionToken.trim().length > 0,
+    isGhostMode,
+    memoryActive,
+    toolsSupported: deps.toolsSupported !== false,
+  };
+
   const userSession = {
     user: isGhostMode ? null : { email: userEmail, id: userId },
   } as any;
@@ -158,78 +176,84 @@ export function createChatTools(
   // PREMIER, les outils natifs ensuite. Un outil natif ne peut donc jamais être
   // masqué par un plugin (la validation interdit déjà toute collision
   // d'identifiant ; cet ordre rend l'invariant explicite et testable).
-  return {
+  // Le filtre final est la politique partagée avec le prompt : un outil
+  // inéligible n'existe pas dans l'objet, même s'il a été construit plus haut.
+  const assembled = {
     ...tracePluginTools(pluginTools, { chatId, userId }),
     ...mcpTools,
-    askUser,
-    audioGenerate: audioGenerate({
-      dataStream,
-      session: userSessionWithToken,
+    ...guardNativeChatTools({
+      askUser,
+      audioGenerate: audioGenerate({
+        dataStream,
+        session: userSessionWithToken,
+      }),
+      audioPodcast: audioPodcast({
+        dataStream,
+        session: userSessionWithToken,
+      }),
+      calculator,
+      calendarReminder,
+      codeExecution,
+      createDocument: createDocument({
+        dataStream,
+        modelId: chatModel,
+        session: userSession,
+      }),
+      cryptoTools,
+      currencyConverter,
+      dateTime,
+      documentParser,
+      editDocument: editDocument({
+        dataStream,
+        session: userSession,
+      }),
+      generateChart,
+      generateDiagram,
+      getAccountUsage: getAccountUsage({ maiUser, sessionToken }),
+      getUsageStats: getUsageStatsTool({
+        userEmail,
+        userId: isGhostMode ? null : userId,
+      }),
+      imageGenerate: imageGenerate({
+        dataStream,
+        session: userSessionWithToken,
+      }),
+      updateAccountProfile: updateAccountProfile({ maiUser }),
+      updateProfilePicture: updateProfilePicture(),
+      ...(memoryActive
+        ? {
+            memory: memory({
+              agentId: effectiveAgentId,
+              allowAdd: memoryAllowAdd,
+              memoryLimit,
+              userId,
+            }),
+          }
+        : {}),
+      note: note({
+        dataStream,
+        session: userSession,
+      }),
+      qrCodeGenerator,
+      readUrl,
+      requestSuggestions: requestSuggestions({
+        dataStream,
+        modelId: chatModel,
+        session: userSession,
+      }),
+      updateDocument: updateDocument({
+        dataStream,
+        modelId: chatModel,
+        session: userSession,
+      }),
+      webCapture,
+      webSearch,
     }),
-    audioPodcast: audioPodcast({
-      dataStream,
-      session: userSessionWithToken,
-    }),
-    calculator,
-    calendarReminder,
-    codeExecution,
-    createDocument: createDocument({
-      dataStream,
-      modelId: chatModel,
-      session: userSession,
-    }),
-    cryptoTools,
-    currencyConverter,
-    dateTime,
-    documentParser,
-    editDocument: editDocument({
-      dataStream,
-      session: userSession,
-    }),
-    generateChart,
-    generateDiagram,
-    getAccountUsage: getAccountUsage({ maiUser, sessionToken }),
-    getUsageStats: getUsageStatsTool({
-      userEmail,
-      userId: isGhostMode ? null : userId,
-    }),
-    ...(isGhostMode
-      ? {}
-      : {
-          imageGenerate: imageGenerate({
-            dataStream,
-            session: userSessionWithToken,
-          }),
-          updateAccountProfile: updateAccountProfile({ maiUser }),
-          updateProfilePicture: updateProfilePicture(),
-        }),
-    ...(memoryActive
-      ? {
-          memory: memory({
-            agentId: effectiveAgentId,
-            allowAdd: memoryAllowAdd,
-            memoryLimit,
-            userId,
-          }),
-        }
-      : {}),
-    note: note({
-      dataStream,
-      session: userSession,
-    }),
-    qrCodeGenerator,
-    readUrl,
-    requestSuggestions: requestSuggestions({
-      dataStream,
-      modelId: chatModel,
-      session: userSession,
-    }),
-    updateDocument: updateDocument({
-      dataStream,
-      modelId: chatModel,
-      session: userSession,
-    }),
-    webCapture,
-    webSearch,
   };
+
+  return Object.fromEntries(
+    Object.entries(assembled).filter(([toolId]) =>
+      isChatToolEligible(toolId, eligibility)
+    )
+  );
 }

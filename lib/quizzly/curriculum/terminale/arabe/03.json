@@ -1,0 +1,2473 @@
+{
+  "id": "terminale-arabe-03",
+  "year": "terminale",
+  "subject": "arabe",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Annonces et affiches",
+          "questions": [
+            {
+              "id": "u1-q01-01",
+              "type": "multiple_choice",
+              "question": "Sur une affiche de conférence en arabe, quels repères situent l'événement ?",
+              "options": [
+                "المكان et الساعة",
+                "Le nom de l'intervenant (الاسم)",
+                "Le numéro ISBN du livre",
+                "La marque du papier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lieu, heure et intervenant structurent l'affiche ; ISBN et type de papier ne sont pas des repères usuels."
+            },
+            {
+              "id": "u1-q01-02",
+              "type": "single_choice",
+              "question": "« ممنوع التدخين » signifie :",
+              "options": [
+                "Interdiction de fumer",
+                "Entrée libre",
+                "Réduction étudiante",
+                "Horaires d'ouverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ممنوع = interdit ; التدخين = tabagisme."
+            },
+            {
+              "id": "u1-q01-03",
+              "type": "single_choice",
+              "question": "« مجاناً » indique :",
+              "options": ["Gratuit", "Sur réservation", "Annulé", "Reporté"],
+              "correctAnswers": [0],
+              "explanation": "Accès sans paiement."
+            },
+            {
+              "id": "u1-q01-04",
+              "type": "single_choice",
+              "question": "La date hijrienne est souvent suivie de :",
+              "options": ["هـ", "€", "ISBN", "WWW"],
+              "correctAnswers": [0],
+              "explanation": "هـ marque l'ère hégirienne."
+            },
+            {
+              "id": "u1-q01-05",
+              "type": "single_choice",
+              "question": "« يرجى الحضور قبل » + heure :",
+              "options": [
+                "Venir avant l'heure indiquée",
+                "Partir après minuit",
+                "Interdiction de photos",
+                "Paiement cash"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule de politesse + avant (قبل)."
+            },
+            {
+              "id": "u1-q01-06",
+              "type": "single_choice",
+              "question": "« قاعة المحاضرات » :",
+              "options": [
+                "Salle de conférences",
+                "Bibliothèque",
+                "Restaurant",
+                "Parking"
+              ],
+              "correctAnswers": [0],
+              "explanation": "قاعة = salle ; محاضرات = cours magistraux."
+            },
+            {
+              "id": "u1-q01-07",
+              "type": "single_choice",
+              "question": "« د. » devant un nom :",
+              "options": [
+                "Docteur",
+                "Directeur de banque",
+                "Diplôme",
+                "Douane"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abréviation académique courante."
+            },
+            {
+              "id": "u1-q01-08",
+              "type": "single_choice",
+              "question": "« للتسجيل » renvoie à :",
+              "options": ["L'inscription", "Le menu", "Le métro", "La météo"],
+              "correctAnswers": [0],
+              "explanation": "التسجيل = enregistrement / inscription."
+            },
+            {
+              "id": "u1-q01-09",
+              "type": "single_choice",
+              "question": "Lecture d'une ligne arabe :",
+              "options": [
+                "De droite à gauche",
+                "De bas en haut",
+                "En chiffres romains",
+                "Sans ordre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Direction scripturaire standard."
+            },
+            {
+              "id": "u1-q01-10",
+              "type": "single_choice",
+              "question": "« منظم » :",
+              "options": ["Organisateur", "Prix", "Durée", "Sous-titres"],
+              "correctAnswers": [0],
+              "explanation": "Celui qui organise l'événement."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Lettres administratives",
+          "questions": [
+            {
+              "id": "u1-q02-01",
+              "type": "multiple_choice",
+              "question": "Formules d'ouverture d'une lettre formelle arabe :",
+              "options": [
+                "السلام عليكم",
+                "تحية طيبة وبعد",
+                "Salut !",
+                "À plus"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Registre soutenu ; familiarité inadaptée à l'administratif."
+            },
+            {
+              "id": "u1-q02-02",
+              "type": "single_choice",
+              "question": "« سعادة » s'adresse à :",
+              "options": ["Haute fonction", "Enfant", "Animal", "Objet"],
+              "correctAnswers": [0],
+              "explanation": "Titre honorifique."
+            },
+            {
+              "id": "u1-q02-03",
+              "type": "single_choice",
+              "question": "« مرفق » :",
+              "options": [
+                "Pièce jointe",
+                "Erreur",
+                "Interdit de répondre",
+                "Devise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Document annexé."
+            },
+            {
+              "id": "u1-q02-04",
+              "type": "single_choice",
+              "question": "« وتفضلوا بقبول فائق الاحترام » clôt :",
+              "options": ["Courrier officiel", "SMS", "Blague", "Ticket"],
+              "correctAnswers": [0],
+              "explanation": "Formule de politesse élevée."
+            },
+            {
+              "id": "u1-q02-05",
+              "type": "single_choice",
+              "question": "« رقم المرجع » sert à :",
+              "options": [
+                "Identifier le dossier",
+                "Choisir un plat",
+                "Météo",
+                "Traduction auto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traçabilité administrative."
+            },
+            {
+              "id": "u1-q02-06",
+              "type": "single_choice",
+              "question": "« الموضوع » :",
+              "options": [
+                "Objet du courrier",
+                "Pied de page",
+                "Cachet",
+                "Filigrane"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet traité."
+            },
+            {
+              "id": "u1-q02-07",
+              "type": "single_choice",
+              "question": "« نود إعلامكم » introduit :",
+              "options": [
+                "Information officielle",
+                "Recette",
+                "Chanson",
+                "Horoscope"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nous souhaitons vous informer."
+            },
+            {
+              "id": "u1-q02-08",
+              "type": "single_choice",
+              "question": "Date en en-tête :",
+              "options": [
+                "Grégorien et/ou hijri selon l'institution",
+                "Calendrier chinois seul",
+                "Sans date",
+                "Heure solaire antique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratiques administratives variables."
+            },
+            {
+              "id": "u1-q02-09",
+              "type": "single_choice",
+              "question": "« مع فائق التقدير » :",
+              "options": [
+                "Respect en clôture",
+                "Colère",
+                "Demande d'argent",
+                "Refus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Estime en fin de lettre."
+            },
+            {
+              "id": "u1-q02-10",
+              "type": "single_choice",
+              "question": "« نسخة إلى » :",
+              "options": [
+                "Copie à",
+                "Erreur d'impression",
+                "Illisible",
+                "Latin obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Destinataires en copie."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Articles de presse",
+          "questions": [
+            {
+              "id": "u1-q03-01",
+              "type": "multiple_choice",
+              "question": "Structure d'un article de presse arabe :",
+              "options": [
+                "عنوان (titre)",
+                "متن (corps) et souvent فقرة افتتاحية",
+                "Code-barres seul",
+                "Mélodie TV"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Titre, lead et corps sont les repères journalistiques."
+            },
+            {
+              "id": "u1-q03-02",
+              "type": "single_choice",
+              "question": "« وفقاً ل » :",
+              "options": [
+                "Selon (source)",
+                "Blague",
+                "Pub parfum",
+                "Fin du journal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Citation de source."
+            },
+            {
+              "id": "u1-q03-03",
+              "type": "single_choice",
+              "question": "« أعلن » :",
+              "options": ["A déclaré", "Silence", "Page blanche", "Change"],
+              "correctAnswers": [0],
+              "explanation": "Verbe d'annonce."
+            },
+            {
+              "id": "u1-q03-04",
+              "type": "single_choice",
+              "question": "Rubrique « اقتصاد » :",
+              "options": ["Économie", "Sport seul", "Plages", "Horoscope"],
+              "correctAnswers": [0],
+              "explanation": "iqtiṣād = économie."
+            },
+            {
+              "id": "u1-q03-05",
+              "type": "single_choice",
+              "question": "« محلل » :",
+              "options": ["Analyste", "Cuisinier", "Pilote", "Jardinier"],
+              "correctAnswers": [0],
+              "explanation": "Commentateur spécialisé."
+            },
+            {
+              "id": "u1-q03-06",
+              "type": "single_choice",
+              "question": "Guillemets « » :",
+              "options": ["Citation directe", "Téléphone", "Image", "Silence"],
+              "correctAnswers": [0],
+              "explanation": "Propos rapportés."
+            },
+            {
+              "id": "u1-q03-07",
+              "type": "single_choice",
+              "question": "« في سياق » :",
+              "options": [
+                "Dans le contexte de",
+                "Hors logique",
+                "Sans auteur",
+                "En latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression contextuelle."
+            },
+            {
+              "id": "u1-q03-08",
+              "type": "single_choice",
+              "question": "« خبر عاجل » :",
+              "options": ["Flash urgent", "Archive", "Pub", "Concours poésie"],
+              "correctAnswers": [0],
+              "explanation": "Dernière minute."
+            },
+            {
+              "id": "u1-q03-09",
+              "type": "single_choice",
+              "question": "« نسب » (titre) :",
+              "options": ["Attribue à", "Cuisine", "Peinture", "Danse"],
+              "correctAnswers": [0],
+              "explanation": "نسب إلى = selon X."
+            },
+            {
+              "id": "u1-q03-10",
+              "type": "single_choice",
+              "question": "« خاص » :",
+              "options": ["Exclusif", "Vide", "Interdit de lire", "Latin seul"],
+              "correctAnswers": [0],
+              "explanation": "Reportage exclusif."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Notices et instructions",
+          "questions": [
+            {
+              "id": "u1-q04-01",
+              "type": "multiple_choice",
+              "question": "Marqueurs de consigne en arabe :",
+              "options": [
+                "يجب (obligation)",
+                "لا + impératif (interdiction)",
+                "Peut-être",
+                "J'adore"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Obligation et interdiction encadrent les notices."
+            },
+            {
+              "id": "u1-q04-02",
+              "type": "single_choice",
+              "question": "« احفظ في مكان بارد » :",
+              "options": [
+                "Stockage au frais",
+                "Match foot",
+                "Discours",
+                "Poème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conservation du produit."
+            },
+            {
+              "id": "u1-q04-03",
+              "type": "single_choice",
+              "question": "« للاستعمال الخارجي فقط » :",
+              "options": [
+                "Usage externe",
+                "Livre scolaire",
+                "Billet train",
+                "Carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne pas ingérer."
+            },
+            {
+              "id": "u1-q04-04",
+              "type": "single_choice",
+              "question": "« تحذير » :",
+              "options": ["Avertissement", "Promo", "Concours", "Fête"],
+              "correctAnswers": [0],
+              "explanation": "Signal de danger."
+            },
+            {
+              "id": "u1-q04-05",
+              "type": "single_choice",
+              "question": "« اقرأ التعليمات بعناية » :",
+              "options": [
+                "Lire attentivement",
+                "Ignorer",
+                "Jeter",
+                "Changer langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "بعناية = avec soin."
+            },
+            {
+              "id": "u1-q04-06",
+              "type": "single_choice",
+              "question": "Pictogrammes :",
+              "options": [
+                "Complètent le texte",
+                "Remplacent tout l'arabe",
+                "Sans sens",
+                "Marque seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Icones + texte."
+            },
+            {
+              "id": "u1-q04-07",
+              "type": "single_choice",
+              "question": "« صلاحية » :",
+              "options": ["Date limite", "Prix", "Auteur", "Couleur"],
+              "correctAnswers": [0],
+              "explanation": "Validité / péremption."
+            },
+            {
+              "id": "u1-q04-08",
+              "type": "single_choice",
+              "question": "« يُرجى إعادة التدوير » :",
+              "options": ["Recycler", "Détruire", "Enterrer", "Ne pas lire"],
+              "correctAnswers": [0],
+              "explanation": "Consigne écologique."
+            },
+            {
+              "id": "u1-q04-09",
+              "type": "single_choice",
+              "question": "« ١ » dans une liste :",
+              "options": ["Première étape", "Dernière", "Pub", "Note latin"],
+              "correctAnswers": [0],
+              "explanation": "Chiffre arabe orientale 1."
+            },
+            {
+              "id": "u1-q04-10",
+              "type": "single_choice",
+              "question": "« في حالة الطوارئ » :",
+              "options": [
+                "Mesures d'urgence",
+                "Blague",
+                "Menu",
+                "Bibliothèque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Section urgence."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Menus et cartes",
+          "questions": [
+            {
+              "id": "u1-q05-01",
+              "type": "multiple_choice",
+              "question": "Sur une carte de restaurant arabe :",
+              "options": [
+                "سعر (prix)",
+                "طبق (plat)",
+                "Code postal",
+                "Température GPU"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Prix et désignation du plat sont centraux."
+            },
+            {
+              "id": "u1-q05-02",
+              "type": "single_choice",
+              "question": "« مشروبات » :",
+              "options": [
+                "Boissons",
+                "Viandes seules",
+                "Desserts seuls",
+                "Pourboires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rubrique boissons."
+            },
+            {
+              "id": "u1-q05-03",
+              "type": "single_choice",
+              "question": "Mention « حلal » :",
+              "options": [
+                "Conforme charia alimentaire",
+                "Épicé obligatoire",
+                "Surgelé interdit",
+                "Français seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Licite islamiquement."
+            },
+            {
+              "id": "u1-q05-04",
+              "type": "single_choice",
+              "question": "« فاتورة » :",
+              "options": [
+                "Addition",
+                "Entrée gratuite",
+                "Changer table",
+                "Carte chef"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Note à payer."
+            },
+            {
+              "id": "u1-q05-05",
+              "type": "single_choice",
+              "question": "« يومي » :",
+              "options": [
+                "Plat du jour",
+                "Interdit",
+                "Sans sel",
+                "Enfants seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suggestion quotidienne."
+            },
+            {
+              "id": "u1-q05-06",
+              "type": "single_choice",
+              "question": "« مكونات » :",
+              "options": ["Ingrédients", "Serveurs", "Chaises", "Musée"],
+              "correctAnswers": [0],
+              "explanation": "Liste composants."
+            },
+            {
+              "id": "u1-q05-07",
+              "type": "single_choice",
+              "question": "« د.إ » ou « ر.س » :",
+              "options": [
+                "Monnaie régionale",
+                "Réduction %",
+                "Téléphone",
+                "Température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dirham, riyal, etc."
+            },
+            {
+              "id": "u1-q05-08",
+              "type": "single_choice",
+              "question": "« حجم كبير » :",
+              "options": [
+                "Grande portion",
+                "Petite",
+                "Sans gluten auto",
+                "Froid obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "كبير = grand."
+            },
+            {
+              "id": "u1-q05-09",
+              "type": "single_choice",
+              "question": "« خدمة » sur additon :",
+              "options": [
+                "Frais de service",
+                "Plat Service",
+                "Silence",
+                "Pain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Service en restauration."
+            },
+            {
+              "id": "u1-q05-10",
+              "type": "single_choice",
+              "question": "« مغلق » :",
+              "options": [
+                "Fermé",
+                "Ouvert 24 h",
+                "Avion requis",
+                "Livres interdits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Établissement fermé."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Programmes culturels",
+          "questions": [
+            {
+              "id": "u1-q06-01",
+              "type": "multiple_choice",
+              "question": "Programme de festival arabe :",
+              "options": [
+                "الفعاليات (activités)",
+                "المدة (durée)",
+                "Pôle Nord",
+                "Vent en knots"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Activités et durée cadrent le document."
+            },
+            {
+              "id": "u1-q06-02",
+              "type": "single_choice",
+              "question": "« افتتاح » :",
+              "options": ["Ouverture", "Clôture", "Pause", "Nettoyage"],
+              "correctAnswers": [0],
+              "explanation": "Inauguration."
+            },
+            {
+              "id": "u1-q06-03",
+              "type": "single_choice",
+              "question": "« ورشة عمل » :",
+              "options": ["Atelier", "Tennis", "Voitures", "Examen médical"],
+              "correctAnswers": [0],
+              "explanation": "Workshop pratique."
+            },
+            {
+              "id": "u1-q06-04",
+              "type": "single_choice",
+              "question": "« ضيف شرف » :",
+              "options": [
+                "Invité d'honneur",
+                "Serveur",
+                "Guichetier",
+                "Peintre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Personnalité honorée."
+            },
+            {
+              "id": "u1-q06-05",
+              "type": "single_choice",
+              "question": "« من » … « إلى » :",
+              "options": [
+                "Période ou horaire",
+                "Secret",
+                "Sécu",
+                "Photo interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De … à …"
+            },
+            {
+              "id": "u1-q06-06",
+              "type": "single_choice",
+              "question": "« ترجمة فورية » :",
+              "options": [
+                "Interprétation simultanée",
+                "Sans son",
+                "Film muet",
+                "Sanskrit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traduction orale live."
+            },
+            {
+              "id": "u1-q06-07",
+              "type": "single_choice",
+              "question": "« للجمهور » :",
+              "options": ["Grand public", "Machines", "Animaux", "Robots"],
+              "correctAnswers": [0],
+              "explanation": "Ouvert au public."
+            },
+            {
+              "id": "u1-q06-08",
+              "type": "single_choice",
+              "question": "« رعاية » :",
+              "options": ["Parrainage", "Pluie", "Fermeture", "Annulation"],
+              "correctAnswers": [0],
+              "explanation": "Sponsoring institutionnel."
+            },
+            {
+              "id": "u1-q06-09",
+              "type": "single_choice",
+              "question": "« ندوة » :",
+              "options": ["Colloque", "Stade", "Piscine", "Parking"],
+              "correctAnswers": [0],
+              "explanation": "Séminaire / table ronde."
+            },
+            {
+              "id": "u1-q06-10",
+              "type": "single_choice",
+              "question": "« ختام » :",
+              "options": ["Clôture", "Début", "Café", "Monnaie"],
+              "correctAnswers": [0],
+              "explanation": "Fin du programme."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Textes patrimoniaux commentés",
+          "questions": [
+            {
+              "id": "u1-q07-01",
+              "type": "multiple_choice",
+              "question": "Fiche sur un extrait classique :",
+              "options": [
+                "الكاتب (auteur)",
+                "العصر (époque)",
+                "Pointure chaussures",
+                "Voyelles katakana"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Auteur et époque situent le patrimoine."
+            },
+            {
+              "id": "u1-q07-02",
+              "type": "single_choice",
+              "question": "« نص » :",
+              "options": ["Texte", "Image", "Audio seul", "Vidéo muette"],
+              "correctAnswers": [0],
+              "explanation": "naṣṣ = texte étudié."
+            },
+            {
+              "id": "u1-q07-03",
+              "type": "single_choice",
+              "question": "« معاني » :",
+              "options": [
+                "Sens des mots",
+                "Orthographe FR",
+                "Poids livre",
+                "Couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travail lexical."
+            },
+            {
+              "id": "u1-q07-04",
+              "type": "single_choice",
+              "question": "« استنتاج » :",
+              "options": [
+                "Déduire du document",
+                "Recopier",
+                "Ignorer",
+                "Chinois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inférence."
+            },
+            {
+              "id": "u1-q07-05",
+              "type": "single_choice",
+              "question": "Tashkīl (diacritiques) :",
+              "options": [
+                "Voyelles et prononciation",
+                "Décor",
+                "Prix",
+                "Traduction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Harakāt pour apprenants."
+            },
+            {
+              "id": "u1-q07-06",
+              "type": "single_choice",
+              "question": "« بلاغة » :",
+              "options": [
+                "Rhétorique arabe",
+                "Cuisine",
+                "Mécanique",
+                "Couture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Art de l'expression."
+            },
+            {
+              "id": "u1-q07-07",
+              "type": "single_choice",
+              "question": "« يُراجع » (note) :",
+              "options": [
+                "Consulter référence",
+                "Supprimer",
+                "Quitter examen",
+                "Changer matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renvoi bibliographique."
+            },
+            {
+              "id": "u1-q07-08",
+              "type": "single_choice",
+              "question": "« شعر » en en-tête :",
+              "options": ["Poésie", "Prose scientifique", "BD muette", "Métro"],
+              "correctAnswers": [0],
+              "explanation": "Genre poétique."
+            },
+            {
+              "id": "u1-q07-09",
+              "type": "single_choice",
+              "question": "« نثر » :",
+              "options": ["Prose", "Poésie en latin", "Silence", "Musique"],
+              "correctAnswers": [0],
+              "explanation": "Opposé au vers."
+            },
+            {
+              "id": "u1-q07-10",
+              "type": "single_choice",
+              "question": "« خلاصة » :",
+              "options": ["Résumé", "Courses", "Métro", "Horoscope"],
+              "correctAnswers": [0],
+              "explanation": "Synthèse du document."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Documents numériques",
+          "questions": [
+            {
+              "id": "u1-q08-01",
+              "type": "multiple_choice",
+              "question": "Navigation sur site arabe :",
+              "options": [
+                "الرئيسية (accueil)",
+                "اتصل بنا (contact)",
+                "Pointure",
+                "GPU"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Liens standards de portail."
+            },
+            {
+              "id": "u1-q08-02",
+              "type": "single_choice",
+              "question": "« بحث » :",
+              "options": [
+                "Rechercher",
+                "Imprimer",
+                "Supprimer compte",
+                "App interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "baḥth = recherche."
+            },
+            {
+              "id": "u1-q08-03",
+              "type": "single_choice",
+              "question": "« تسجيل الدخول » :",
+              "options": [
+                "Connexion",
+                "Déconnexion",
+                "Effacer historique",
+                "Fuseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Login."
+            },
+            {
+              "id": "u1-q08-04",
+              "type": "single_choice",
+              "question": "« مشاركة » :",
+              "options": ["Partager", "Amende", "Hôtel", "Couper Internet"],
+              "correctAnswers": [0],
+              "explanation": "Partage réseaux."
+            },
+            {
+              "id": "u1-q08-05",
+              "type": "single_choice",
+              "question": "URL arabophone :",
+              "options": [
+                "IDN ou translittération",
+                "Hiéroglyphes",
+                "Sans http",
+                "Espaces seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Domaines internationalisés."
+            },
+            {
+              "id": "u1-q08-06",
+              "type": "single_choice",
+              "question": "« تحميل » :",
+              "options": ["Télécharger", "Supprimer", "Bug", "Langue"],
+              "correctAnswers": [0],
+              "explanation": "Download."
+            },
+            {
+              "id": "u1-q08-07",
+              "type": "single_choice",
+              "question": "« سياسة الخصوصية » :",
+              "options": [
+                "Données personnelles",
+                "Gâteau",
+                "Lune seule",
+                "Sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "RGPD-like."
+            },
+            {
+              "id": "u1-q08-08",
+              "type": "single_choice",
+              "question": "« آخر الأخبار » :",
+              "options": [
+                "Actualité récente",
+                "Archives XIXe",
+                "Prières seules",
+                "Jeu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fil d'info."
+            },
+            {
+              "id": "u1-q08-09",
+              "type": "single_choice",
+              "question": "« رجوع » :",
+              "options": [
+                "Page précédente",
+                "Paiement",
+                "Supprimer site",
+                "Mode avion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retour arrière."
+            },
+            {
+              "id": "u1-q08-10",
+              "type": "single_choice",
+              "question": "« تعليق » :",
+              "options": ["Commentaire", "Film", "Carte bancaire", "Oral"],
+              "correctAnswers": [0],
+              "explanation": "Zone de commentaires."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Statistiques et infographies",
+          "questions": [
+            {
+              "id": "u1-q09-01",
+              "type": "multiple_choice",
+              "question": "Lire une infographie arabe :",
+              "options": [
+                "النسبة المئوية",
+                "المصدر (source)",
+                "Chaussures graphiste",
+                "Katakana"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pourcentages et source pour lecture critique."
+            },
+            {
+              "id": "u1-q09-02",
+              "type": "single_choice",
+              "question": "« ارتفاع » :",
+              "options": [
+                "Hausse",
+                "Baisse",
+                "Stagnation",
+                "Erreur obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Augmentation."
+            },
+            {
+              "id": "u1-q09-03",
+              "type": "single_choice",
+              "question": "« انخفاض » :",
+              "options": ["Diminution", "Doublement", "Fête", "Poème"],
+              "correctAnswers": [0],
+              "explanation": "Baisse."
+            },
+            {
+              "id": "u1-q09-04",
+              "type": "single_choice",
+              "question": "« ٪ » avec chiffres :",
+              "options": ["Pourcentage", "Kelvin seul", "Code postal", "ISBN"],
+              "correctAnswers": [0],
+              "explanation": "Lecture statistique."
+            },
+            {
+              "id": "u1-q09-05",
+              "type": "single_choice",
+              "question": "« مقارنة بين » :",
+              "options": ["Comparaison", "Interdit lire", "Menu", "Train"],
+              "correctAnswers": [0],
+              "explanation": "Entre deux séries."
+            },
+            {
+              "id": "u1-q09-06",
+              "type": "single_choice",
+              "question": "« مليون » :",
+              "options": [
+                "Un million",
+                "Mille",
+                "Milliard systématique",
+                "Zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unité numérique."
+            },
+            {
+              "id": "u1-q09-07",
+              "type": "single_choice",
+              "question": "« وفق بيانات » :",
+              "options": [
+                "Selon les données",
+                "Sans source",
+                "Fiction",
+                "Latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base statistique citée."
+            },
+            {
+              "id": "u1-q09-08",
+              "type": "single_choice",
+              "question": "« السكان » :",
+              "options": ["Population", "Volcans", "Constellations", "Marées"],
+              "correctAnswers": [0],
+              "explanation": "Habitants."
+            },
+            {
+              "id": "u1-q09-09",
+              "type": "single_choice",
+              "question": "« تقدير » :",
+              "options": ["Estimation", "Mesure absolue", "Blague", "Silence"],
+              "correctAnswers": [0],
+              "explanation": "Projection."
+            },
+            {
+              "id": "u1-q09-10",
+              "type": "single_choice",
+              "question": "« محور أفقي » :",
+              "options": [
+                "Axe horizontal",
+                "Titre roman",
+                "Couverture",
+                "Billet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture de graphique."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse documentaire",
+          "questions": [
+            {
+              "id": "u1-q10-01",
+              "type": "multiple_choice",
+              "question": "Synthétiser un dossier arabe :",
+              "options": [
+                "Idée principale par texte",
+                "Type de document",
+                "Marges en pouces seules",
+                "Imprimeur XVIIe sans lien"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Contenu et genre documentaire guident la synthèse."
+            },
+            {
+              "id": "u1-q10-02",
+              "type": "single_choice",
+              "question": "« ربط » entre textes :",
+              "options": ["Lien logique", "Déchirer", "Ignorer", "Grec"],
+              "correctAnswers": [0],
+              "explanation": "Mise en relation."
+            },
+            {
+              "id": "u1-q10-03",
+              "type": "single_choice",
+              "question": "Paraphrase fidèle :",
+              "options": [
+                "Reformuler sans trahir",
+                "Opinions non sourcées",
+                "Supprimer le sens",
+                "Inventer chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même sens, autres mots."
+            },
+            {
+              "id": "u1-q10-04",
+              "type": "single_choice",
+              "question": "« وجهة نظر » :",
+              "options": ["Point de vue", "Objet perdu", "Vélo", "Monnaie"],
+              "correctAnswers": [0],
+              "explanation": "Position argumentative."
+            },
+            {
+              "id": "u1-q10-05",
+              "type": "single_choice",
+              "question": "Comparer deux communiqués :",
+              "options": [
+                "Objectifs, public, ton",
+                "Police seule",
+                "Papier",
+                "Voyelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyse pragmatique."
+            },
+            {
+              "id": "u1-q10-06",
+              "type": "single_choice",
+              "question": "« مستند » :",
+              "options": ["Document", "Chanson", "Montagne", "Nuage"],
+              "correctAnswers": [0],
+              "explanation": "Terme administratif."
+            },
+            {
+              "id": "u1-q10-07",
+              "type": "single_choice",
+              "question": "Citer le document :",
+              "options": [
+                "Guillemets + référence",
+                "Sans ponctuation",
+                "Traduction libre cachée",
+                "Emoji seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Citation loyale."
+            },
+            {
+              "id": "u1-q10-08",
+              "type": "single_choice",
+              "question": "« تحيز » :",
+              "options": ["Biais", "Vérité math", "Plat", "JO"],
+              "correctAnswers": [0],
+              "explanation": "Partialité."
+            },
+            {
+              "id": "u1-q10-09",
+              "type": "single_choice",
+              "question": "Cohérence de synthèse :",
+              "options": [
+                "Fil logique et connecteurs",
+                "Paragraphes sans lien",
+                "Sans conclusion",
+                "Trois langues sans raison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement terminale."
+            },
+            {
+              "id": "u1-q10-10",
+              "type": "single_choice",
+              "question": "« خلاصة عامة » :",
+              "options": [
+                "Conclusion globale",
+                "Introduction seule",
+                "Page blanche",
+                "Index latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan final."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Langue et identité",
+          "questions": [
+            {
+              "id": "u2-q01-01",
+              "type": "multiple_choice",
+              "question": "L'arabe standard moderne (فصحى) :",
+              "options": [
+                "Médias panarabes",
+                "Enseignement formel",
+                "Remplace tous dialectes partout",
+                "Interdit l'écrit"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fusha unifie presse et école ; dialectes coexistent."
+            },
+            {
+              "id": "u2-q01-02",
+              "type": "single_choice",
+              "question": "« اللغة العربية » officielle :",
+              "options": [
+                "Plusieurs États arabes",
+                "Aucun pays",
+                "Antarctique",
+                "Fidji seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statut dans la Ligue arabe."
+            },
+            {
+              "id": "u2-q01-03",
+              "type": "single_choice",
+              "question": "Calligraphie arabe :",
+              "options": [
+                "Esthétique religieuse et culturelle",
+                "Sport olympique",
+                "Diesel",
+                "Botanique seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Art du Coran et architecture."
+            },
+            {
+              "id": "u2-q01-04",
+              "type": "single_choice",
+              "question": "« العامية » :",
+              "options": [
+                "Dialecte",
+                "Arabe classique seul",
+                "Latin",
+                "Swahili"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vernaculaire oral."
+            },
+            {
+              "id": "u2-q01-05",
+              "type": "single_choice",
+              "question": "Journée internationale langue arabe :",
+              "options": [
+                "18 décembre",
+                "1er avril",
+                "31 octobre",
+                "14 juillet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Date UNESCO."
+            },
+            {
+              "id": "u2-q01-06",
+              "type": "single_choice",
+              "question": "Alphabet arabe :",
+              "options": [
+                "Droite à gauche",
+                "Haut bas seul",
+                "Cercle",
+                "Romain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Direction scripturaire."
+            },
+            {
+              "id": "u2-q01-07",
+              "type": "single_choice",
+              "question": "« ترجمة » historique :",
+              "options": [
+                "Diffuse savoirs",
+                "Interdit lire",
+                "Supprime poésie",
+                "Efface histoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maison de la sagesse, etc."
+            },
+            {
+              "id": "u2-q01-08",
+              "type": "single_choice",
+              "question": "Langue du Coran :",
+              "options": [
+                "Dimension sacrée",
+                "Oublie grammaire",
+                "Interdit écrire",
+                "Fin alphabet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Étude religieuse."
+            },
+            {
+              "id": "u2-q01-09",
+              "type": "single_choice",
+              "question": "« معجم » :",
+              "options": ["Dictionnaire", "Stade", "Bateau", "Dessert"],
+              "correctAnswers": [0],
+              "explanation": "Référence lexicale."
+            },
+            {
+              "id": "u2-q01-10",
+              "type": "single_choice",
+              "question": "Diglossie :",
+              "options": [
+                "Fusha écrite / dialecte oral",
+                "FR / latin",
+                "Grec / sanskrit",
+                "Silence / bruit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concept sociolinguistique."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Islam et société",
+          "questions": [
+            {
+              "id": "u2-q02-01",
+              "type": "multiple_choice",
+              "question": "Piliers de l'islam incluent :",
+              "options": [
+                "Shahada (foi)",
+                "Salat (prière)",
+                "Tour du monde obligatoire",
+                "Voiture obligatoire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Profession de foi et prière sont piliers."
+            },
+            {
+              "id": "u2-q02-02",
+              "type": "single_choice",
+              "question": "Mois de jeûne :",
+              "options": ["Ramadan", "Noël", "Pâques", "Nisan seul"],
+              "correctAnswers": [0],
+              "explanation": "Jeûne diurne."
+            },
+            {
+              "id": "u2-q02-03",
+              "type": "single_choice",
+              "question": "Zakat :",
+              "options": ["Aumône obligatoire", "Musique", "Plat", "Cartes"],
+              "correctAnswers": [0],
+              "explanation": "Pilier social."
+            },
+            {
+              "id": "u2-q02-04",
+              "type": "single_choice",
+              "question": "Mecque :",
+              "options": ["Hajj", "JO permanents", "Siège ONU", "Pôle Nord"],
+              "correctAnswers": [0],
+              "explanation": "Ville sainte, qibla."
+            },
+            {
+              "id": "u2-q02-05",
+              "type": "single_choice",
+              "question": "« مسجد » :",
+              "options": ["Mosquée", "Église", "Synagogue", "Stade"],
+              "correctAnswers": [0],
+              "explanation": "Lieu de prière musulman."
+            },
+            {
+              "id": "u2-q02-06",
+              "type": "single_choice",
+              "question": "Calendrier musulman :",
+              "options": [
+                "Lunaire",
+                "Grégorien solaire seul",
+                "Sans mois",
+                "Antarctique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hijri ~354 jours."
+            },
+            {
+              "id": "u2-q02-07",
+              "type": "single_choice",
+              "question": "« فقه » :",
+              "options": [
+                "Jurisprudence islamique",
+                "Quantique",
+                "Couture",
+                "Plongée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Droit religieux."
+            },
+            {
+              "id": "u2-q02-08",
+              "type": "single_choice",
+              "question": "Fin du Ramadan :",
+              "options": ["Aïd al-Fitr", "Noël", "Pâques", "Diwali"],
+              "correctAnswers": [0],
+              "explanation": "Fête de rupture."
+            },
+            {
+              "id": "u2-q02-09",
+              "type": "single_choice",
+              "question": "« أذان » :",
+              "options": ["Appel à la prière", "Dessert", "Épopée", "Visa"],
+              "correctAnswers": [0],
+              "explanation": "Rappel depuis minaret."
+            },
+            {
+              "id": "u2-q02-10",
+              "type": "single_choice",
+              "question": "Diversité islamique :",
+              "options": [
+                "Sunna, chiisme, écoles",
+                "Uniformité totale",
+                "Aucune école",
+                "Culture locale interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluralité historique."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Héritage andalou",
+          "questions": [
+            {
+              "id": "u2-q03-01",
+              "type": "multiple_choice",
+              "question": "Al-Andalus :",
+              "options": [
+                "Cordoue et Grenade",
+                "Échanges scientifiques et artistiques",
+                "Banquise arctique",
+                "Téléphone 1876 seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Villes et savoirs andalous."
+            },
+            {
+              "id": "u2-q03-02",
+              "type": "single_choice",
+              "question": "Alhambra :",
+              "options": ["Grenade", "Le Caire", "Bagdad", "Riyad"],
+              "correctAnswers": [0],
+              "explanation": "Palais nazarí."
+            },
+            {
+              "id": "u2-q03-03",
+              "type": "single_choice",
+              "question": "« ماء » en stucs :",
+              "options": [
+                "Symbole eau / vie",
+                "Code binaire",
+                "Interdit lire",
+                "Téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot décoratif."
+            },
+            {
+              "id": "u2-q03-04",
+              "type": "single_choice",
+              "question": "1492 en Espagne :",
+              "options": [
+                "Chute de Grenade",
+                "Invention écriture",
+                "Fondation Rome",
+                "Sans contexte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fin émirat grenadin."
+            },
+            {
+              "id": "u2-q03-05",
+              "type": "single_choice",
+              "question": "Convivencia :",
+              "options": [
+                "Coexistence communautés",
+                "Guerre sans échange",
+                "Sans traduction",
+                "Mythe sans source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concept historiographique."
+            },
+            {
+              "id": "u2-q03-06",
+              "type": "single_choice",
+              "question": "Ibn Rushd :",
+              "options": [
+                "Commentaire Aristote",
+                "Imprimerie",
+                "Joconde",
+                "Amérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Averroès XIIe s."
+            },
+            {
+              "id": "u2-q03-07",
+              "type": "single_choice",
+              "question": "Cordoue omeyyade :",
+              "options": [
+                "Grande Mosquée-cathédrale",
+                "Tour Eiffel",
+                "Burj Khalifa",
+                "Colisée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arcs entrelacés."
+            },
+            {
+              "id": "u2-q03-08",
+              "type": "single_choice",
+              "question": "Flamenco :",
+              "options": [
+                "Racines andalouses",
+                "Scandinavie seule",
+                "Steppes pures",
+                "Antarctique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Métissage sud espagnol."
+            },
+            {
+              "id": "u2-q03-09",
+              "type": "single_choice",
+              "question": "Mudéjar :",
+              "options": [
+                "Art islamisant chrétien",
+                "Art grec pur",
+                "Pop art NY",
+                "Aborigène seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après Reconquista."
+            },
+            {
+              "id": "u2-q03-10",
+              "type": "single_choice",
+              "question": "Arabe en espagnol :",
+              "options": [
+                "Milliers de mots (ojalá…)",
+                "Aucune trace",
+                "Planètes seules",
+                "Chiffres romains"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Substrat lexical."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Sciences et savoirs",
+          "questions": [
+            {
+              "id": "u2-q04-01",
+              "type": "multiple_choice",
+              "question": "بيت الحكمة (Bagdad) :",
+              "options": [
+                "Traductions grecques",
+                "Astronomie et médecine",
+                "Glaces seules",
+                "Interdit livres"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Centre de savoir abbasside."
+            },
+            {
+              "id": "u2-q04-02",
+              "type": "single_choice",
+              "question": "Al-Khwarizmi :",
+              "options": ["Algèbre", "Impressionnisme", "Rugby", "TTS seule"],
+              "correctAnswers": [0],
+              "explanation": "Algorithme."
+            },
+            {
+              "id": "u2-q04-03",
+              "type": "single_choice",
+              "question": "Ibn Sina :",
+              "options": [
+                "Médecine et philosophie",
+                "Basket",
+                "Cinéma muet",
+                "Python"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avicenne."
+            },
+            {
+              "id": "u2-q04-04",
+              "type": "single_choice",
+              "question": "Chiffres « arabes » :",
+              "options": [
+                "Inde via monde arabe",
+                "Rome seule",
+                "Mayas isolés",
+                "2020"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transmission historique."
+            },
+            {
+              "id": "u2-q04-05",
+              "type": "single_choice",
+              "question": "Al-Idrisi :",
+              "options": [
+                "Cartographie",
+                "Symphonies",
+                "Hollywood",
+                "Mode Paris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Géographe médiéval."
+            },
+            {
+              "id": "u2-q04-06",
+              "type": "single_choice",
+              "question": "« الكيمياء » →",
+              "options": ["Chimie", "Géographie", "Botanique", "Athlétisme"],
+              "correctAnswers": [0],
+              "explanation": "Emprunt lexical."
+            },
+            {
+              "id": "u2-q04-07",
+              "type": "single_choice",
+              "question": "Astrolabe :",
+              "options": [
+                "Observer et calculer ciel",
+                "Pâtes",
+                "Tapis seul",
+                "Foot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Instrument astronomique."
+            },
+            {
+              "id": "u2-q04-08",
+              "type": "single_choice",
+              "question": "Ibn al-Haytham :",
+              "options": [
+                "Optique",
+                "Plomberie romaine",
+                "Volcans sans obs",
+                "Réseaux sociaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alhazen."
+            },
+            {
+              "id": "u2-q04-09",
+              "type": "single_choice",
+              "question": "Bimaristan :",
+              "options": [
+                "Hôpitaux médiévaux",
+                "Inexistants",
+                "Armes",
+                "Sans hygiène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soins et formation."
+            },
+            {
+              "id": "u2-q04-10",
+              "type": "single_choice",
+              "question": "Textes antiques :",
+              "options": [
+                "Traducteurs arabes",
+                "Oubli total",
+                "Interdit imprimer",
+                "Sans bibliothèques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pont vers Renaissance."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Arts et architecture",
+          "questions": [
+            {
+              "id": "u2-q05-01",
+              "type": "multiple_choice",
+              "question": "Art islamique classique :",
+              "options": [
+                "Évite figures humaines en mosquée",
+                "Favorise géométrie et arabesques",
+                "Statues colosses culte",
+                "Interdit couleur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Aniconisme relatif et décor non figuratif."
+            },
+            {
+              "id": "u2-q05-02",
+              "type": "single_choice",
+              "question": "Moucharabieh :",
+              "options": [
+                "Écran bois ajouré",
+                "Plat épicé",
+                "Instrument vent",
+                "Visa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ventilation et intimité."
+            },
+            {
+              "id": "u2-q05-03",
+              "type": "single_choice",
+              "question": "Dôme du Rocher :",
+              "options": ["Jérusalem", "Paris", "Tokyo", "Buenos Aires"],
+              "correctAnswers": [0],
+              "explanation": "Monument omeyyade."
+            },
+            {
+              "id": "u2-q05-04",
+              "type": "single_choice",
+              "question": "« رِوَاق » :",
+              "options": [
+                "Portique mosquée / école",
+                "Montagne",
+                "Océan",
+                "Satellite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Galerie couverte."
+            },
+            {
+              "id": "u2-q05-05",
+              "type": "single_choice",
+              "question": "Minaret :",
+              "options": [
+                "Appel prière surélevé",
+                "Blé seul",
+                "Avions",
+                "Vignes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tour de l'adhan."
+            },
+            {
+              "id": "u2-q05-06",
+              "type": "single_choice",
+              "question": "Thuluth :",
+              "options": [
+                "Style calligraphique",
+                "Dialecte",
+                "Plat tunisien",
+                "Jeu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lettres majestueuses."
+            },
+            {
+              "id": "u2-q05-07",
+              "type": "single_choice",
+              "question": "Tapis Maghreb / Machrek :",
+              "options": [
+                "Motifs géométriques",
+                "Toujours unis",
+                "Interdits",
+                "Jamais tissés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Art textile."
+            },
+            {
+              "id": "u2-q05-08",
+              "type": "single_choice",
+              "question": "« قبة » :",
+              "options": ["Coupole", "Fenêtre", "Porte", "Escalier"],
+              "correctAnswers": [0],
+              "explanation": "Élément sanctuaire."
+            },
+            {
+              "id": "u2-q05-09",
+              "type": "single_choice",
+              "question": "Zellige marocain :",
+              "options": [
+                "Faïence géométrique",
+                "Danse seule",
+                "Épopée",
+                "Monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Revêtement artisanal."
+            },
+            {
+              "id": "u2-q05-10",
+              "type": "single_choice",
+              "question": "Jardin islamique :",
+              "options": [
+                "Paradis : eau, ombre, quadrilatère",
+                "Désert sans plantes",
+                "Banquise",
+                "Vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "chahar bagh symbolique."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Littérature et poésie",
+          "questions": [
+            {
+              "id": "u2-q06-01",
+              "type": "multiple_choice",
+              "question": "Les mu'allaqat :",
+              "options": [
+                "Poèmes préislamiques célèbres",
+                "Odes suspendues dans la tradition",
+                "Manuels plomberie",
+                "Code JavaScript"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Grandes odes de la Jahiliyya anthologisées."
+            },
+            {
+              "id": "u2-q06-02",
+              "type": "single_choice",
+              "question": "Imru' al-Qays :",
+              "options": [
+                "Poète préislamique",
+                "Calife abbasside",
+                "Philosophe grec",
+                "Général romain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Figure des mu'allaqat."
+            },
+            {
+              "id": "u2-q06-03",
+              "type": "single_choice",
+              "question": "« قافية » :",
+              "options": [
+                "Rime poétique",
+                "Type de soupe",
+                "Monnaie",
+                "Montagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terminaison rimée."
+            },
+            {
+              "id": "u2-q06-04",
+              "type": "single_choice",
+              "question": "« بحر » en métrique :",
+              "options": ["Mètre poétique", "Océan seul", "Désert", "Ville"],
+              "correctAnswers": [0],
+              "explanation": "Prosodie arabe."
+            },
+            {
+              "id": "u2-q06-05",
+              "type": "single_choice",
+              "question": "Maḥmūd Darwīsh :",
+              "options": [
+                "Poète palestinien moderne",
+                "Astronome médiéval",
+                "Ministre finance",
+                "Architecte omeyyade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voix majeure XXe s."
+            },
+            {
+              "id": "u2-q06-06",
+              "type": "single_choice",
+              "question": "« ألف ليلة وليلة » :",
+              "options": [
+                "Recueil de contes",
+                "Traité médical",
+                "Code civil",
+                "Carte marine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patrimoine narratif."
+            },
+            {
+              "id": "u2-q06-07",
+              "type": "single_choice",
+              "question": "Nagīb Maḥfūẓ :",
+              "options": [
+                "Romancier prix Nobel",
+                "Calligraphe omeyyade",
+                "Général",
+                "Astronome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Littérature égyptienne."
+            },
+            {
+              "id": "u2-q06-08",
+              "type": "single_choice",
+              "question": "« معلق » :",
+              "options": [
+                "Ode suspendue / célèbre",
+                "Lettre administrative",
+                "Notice produit",
+                "Ticket métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Genre poétique Jahiliyya."
+            },
+            {
+              "id": "u2-q06-09",
+              "type": "single_choice",
+              "question": "« بيت » en poésie :",
+              "options": [
+                "Vers",
+                "Maison uniquement",
+                "Chapitre prose",
+                "Paragraphe presse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unité métrique."
+            },
+            {
+              "id": "u2-q06-10",
+              "type": "single_choice",
+              "question": "Adab :",
+              "options": [
+                "Littérature et belles-lettres",
+                "Sport",
+                "Cuisine seule",
+                "Droit pénal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Culture lettered classique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Géographie et monde arabe",
+          "questions": [
+            {
+              "id": "u2-q07-01",
+              "type": "multiple_choice",
+              "question": "Monde arabe contemporain :",
+              "options": [
+                "Diversité dialectale",
+                "Ressources stratégiques (pétrole, etc.)",
+                "Un seul État",
+                "Langue officielle : latin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pluralité états et variétés linguistiques."
+            },
+            {
+              "id": "u2-q07-02",
+              "type": "single_choice",
+              "question": "Nil :",
+              "options": [
+                "Artère de l'Égypte",
+                "Frontière France-Espagne",
+                "Rivière Antarctique",
+                "Canal de Panama"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Géographie arabe africaine."
+            },
+            {
+              "id": "u2-q07-03",
+              "type": "single_choice",
+              "question": "« شبه الجزيرة العربية » :",
+              "options": [
+                "Péninsule arabique",
+                "Maghreb",
+                "Anatolie",
+                "Balkans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arabie saoudite, Yémen, etc."
+            },
+            {
+              "id": "u2-q07-04",
+              "type": "single_choice",
+              "question": "Maghreb :",
+              "options": [
+                "Afrique du Nord occidentale",
+                "Moyen-Orient seul",
+                "Asie centrale",
+                "Océanie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maroc, Algérie, Tunisie…"
+            },
+            {
+              "id": "u2-q07-05",
+              "type": "single_choice",
+              "question": "Mashrek :",
+              "options": [
+                "Orient arabe (Levant + Golfe)",
+                "Amérique latine",
+                "Europe de l'Est",
+                "Scandinavie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terme géopolitique."
+            },
+            {
+              "id": "u2-q07-06",
+              "type": "single_choice",
+              "question": "Ligue arabe :",
+              "options": [
+                "Organisation d'États arabes",
+                "Club de football",
+                "Banque privée",
+                "ONG environnementale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coopération régionale."
+            },
+            {
+              "id": "u2-q07-07",
+              "type": "single_choice",
+              "question": "Détroit de Bab el-Mandeb :",
+              "options": [
+                "Mer Rouge / océan Indien",
+                "Atlantique / Méditerranée",
+                "Pacifique / Arctique",
+                "Lacs africains"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Porte géostratégique."
+            },
+            {
+              "id": "u2-q07-08",
+              "type": "single_choice",
+              "question": "« واحات » :",
+              "options": [
+                "Zones cultivées en désert",
+                "Glaciers",
+                "Volcans actifs",
+                "Archipels polaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau et palmeraies."
+            },
+            {
+              "id": "u2-q07-09",
+              "type": "single_choice",
+              "question": "Capitale Égypte :",
+              "options": ["Le Caire", "Riyad", "Rabat", "Bagdad"],
+              "correctAnswers": [0],
+              "explanation": "Métropole du Nil."
+            },
+            {
+              "id": "u2-q07-10",
+              "type": "single_choice",
+              "question": "« خليج » en toponyme :",
+              "options": [
+                "Golfe (Persique, etc.)",
+                "Montagne",
+                "Désert sans eau",
+                "Forêt boréale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "khaleej = golfe."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Médias et société numérique",
+          "questions": [
+            {
+              "id": "u2-q08-01",
+              "type": "multiple_choice",
+              "question": "Médias arabophones modernes :",
+              "options": [
+                "Chaînes panarabes (Al Jazeera, etc.)",
+                "Presse en ligne en fusha",
+                "Uniquement en latin",
+                "Sans satellite"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "TV satellite et web en arabe standard."
+            },
+            {
+              "id": "u2-q08-02",
+              "type": "single_choice",
+              "question": "Réseaux sociaux au Maghreb :",
+              "options": [
+                "Mélange fusha, français, darija",
+                "Arabe classique seul obligatoire",
+                "Interdit Internet",
+                "Sans téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diglossie numérique."
+            },
+            {
+              "id": "u2-q08-03",
+              "type": "single_choice",
+              "question": "« hashtag » en arabe :",
+              "options": [
+                "هاشتاغ / tags bilingues",
+                "Interdit",
+                "Réservé gouvernements",
+                "Sans Unicode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Campagnes # en arabe."
+            },
+            {
+              "id": "u2-q08-04",
+              "type": "single_choice",
+              "question": "Podcasts arabes :",
+              "options": [
+                "Culture, religion, actualité",
+                "Inexistants",
+                "Silence seul",
+                "Latin exclusivement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Croissance audio numérique."
+            },
+            {
+              "id": "u2-q08-05",
+              "type": "single_choice",
+              "question": "Censure et presse :",
+              "options": [
+                "Variabilité selon États",
+                "Identique partout",
+                "Absente partout",
+                "Sans loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contextes politiques divers."
+            },
+            {
+              "id": "u2-q08-06",
+              "type": "single_choice",
+              "question": "Wikipedia arabe :",
+              "options": [
+                "Encyclopédie collaborative fusha",
+                "Interdit éditer",
+                "Sans sources",
+                "Uniquement images"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Production collective de savoir."
+            },
+            {
+              "id": "u2-q08-07",
+              "type": "single_choice",
+              "question": "Streaming musical arabe :",
+              "options": [
+                "Khaleeji, raï, pop égyptienne…",
+                "Silence",
+                "Occident seul",
+                "Sans artistes femmes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diversité genres régionaux."
+            },
+            {
+              "id": "u2-q08-08",
+              "type": "single_choice",
+              "question": "Fake news :",
+              "options": [
+                "تحقق من المصدر",
+                "Partager sans lire",
+                "Ignorer date",
+                "Croire titre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vérifier la source — compétence média."
+            },
+            {
+              "id": "u2-q08-09",
+              "type": "single_choice",
+              "question": "E-learning arabe :",
+              "options": [
+                "MOOC et plateformes régionales",
+                "Inexistant",
+                "Papier seul",
+                "Sans traduction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éducation numérique croissante."
+            },
+            {
+              "id": "u2-q08-10",
+              "type": "single_choice",
+              "question": "Emoji en chat arabe :",
+              "options": [
+                "Complètent darija / fusha",
+                "Remplacent alphabet",
+                "Interdits",
+                "Sans sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pragmatique digitale."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Patrimoine immatériel",
+          "questions": [
+            {
+              "id": "u2-q09-01",
+              "type": "multiple_choice",
+              "question": "UNESCO et monde arabe :",
+              "options": [
+                "Sites du patrimoine mondial",
+                "Pratiques culturelles (maqaam, etc.)",
+                "Aucun site arabe",
+                "Interdit patrimoine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Classements matériels et immatériels."
+            },
+            {
+              "id": "u2-q09-02",
+              "type": "single_choice",
+              "question": "Maqaam irakien :",
+              "options": [
+                "Tradition musicale modale",
+                "Plat libanais",
+                "Stade",
+                "Monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Musique savante Bagdad."
+            },
+            {
+              "id": "u2-q09-03",
+              "type": "single_choice",
+              "question": "Falconry (fauconnerie) :",
+              "options": [
+                "Pratique patrimoniale Golfe",
+                "Sport olympique 2024 seul",
+                "Interdit",
+                "Européen uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition bedouine et royale."
+            },
+            {
+              "id": "u2-q09-04",
+              "type": "single_choice",
+              "question": "« سجادة » :",
+              "options": [
+                "Tapis / tapis de prière",
+                "Château",
+                "Bateau",
+                "Satellite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Artisanat et culte."
+            },
+            {
+              "id": "u2-q09-05",
+              "type": "single_choice",
+              "question": "Calligraphie UNESCO :",
+              "options": [
+                "Inscrite patrimoine immatériel",
+                "Oubliée",
+                "Interdite",
+                "Sans apprentissage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reconnaissance 2021."
+            },
+            {
+              "id": "u2-q09-06",
+              "type": "single_choice",
+              "question": "Moussem :",
+              "options": [
+                "Fête religieuse / culturelle",
+                "Taxe",
+                "Prison",
+                "Autoroute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pèlerinages et foires au Maghreb."
+            },
+            {
+              "id": "u2-q09-07",
+              "type": "single_choice",
+              "question": "Henna (حناء) :",
+              "options": [
+                "Art corporel célébrations",
+                "Epice sans usage social",
+                "Sport",
+                "Devise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mariages et fêtes."
+            },
+            {
+              "id": "u2-q09-08",
+              "type": "single_choice",
+              "question": "Contes oralité :",
+              "options": [
+                "Transmission intergénérationnelle",
+                "Disparus totalement",
+                "Sans arabe",
+                "Livres seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patrimoine oral."
+            },
+            {
+              "id": "u2-q09-09",
+              "type": "single_choice",
+              "question": "Artisanat cuivre Fès :",
+              "options": [
+                "Médina et savoir-faire",
+                "Antarctique",
+                "Sans ateliers",
+                "Plastique seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ville impériale marocaine."
+            },
+            {
+              "id": "u2-q09-10",
+              "type": "single_choice",
+              "question": "Préservation patrimoine :",
+              "options": [
+                "Musées et numérisation",
+                "Destruction systématique",
+                "Sans archives",
+                "Interdit étudier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politiques culturelles."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Repères pour la synthèse",
+          "questions": [
+            {
+              "id": "u2-q10-01",
+              "type": "multiple_choice",
+              "question": "Relier culture et document en terminale :",
+              "options": [
+                "Contextualiser auteur et époque",
+                "Identifier intention du texte",
+                "Ignorer le public visé",
+                "Recopier sans analyse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Contexte et intention sont des repères civilisationnels."
+            },
+            {
+              "id": "u2-q10-02",
+              "type": "single_choice",
+              "question": "« حضارة » :",
+              "options": ["Civilisation", "Désert vide", "Monnaie", "Sport"],
+              "correctAnswers": [0],
+              "explanation": "Terme central du chapitre."
+            },
+            {
+              "id": "u2-q10-03",
+              "type": "single_choice",
+              "question": "« تراث » :",
+              "options": ["Patrimoine", "Futur", "Erreur", "Silence"],
+              "correctAnswers": [0],
+              "explanation": "Héritage transmis."
+            },
+            {
+              "id": "u2-q10-04",
+              "type": "single_choice",
+              "question": "« هوية » :",
+              "options": ["Identité", "Poids", "Couleur", "Vitesse"],
+              "correctAnswers": [0],
+              "explanation": "Identité culturelle et linguistique."
+            },
+            {
+              "id": "u2-q10-05",
+              "type": "single_choice",
+              "question": "Orientalisme (Said) :",
+              "options": [
+                "Critique représentations Occident",
+                "Louange coloniale",
+                "Recette cuisine",
+                "Carte métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère critique contemporain."
+            },
+            {
+              "id": "u2-q10-06",
+              "type": "single_choice",
+              "question": "« تنوع » :",
+              "options": ["Diversité", "Uniformité", "Guerre", "Famine"],
+              "correctAnswers": [0],
+              "explanation": "Pluralité du monde arabe."
+            },
+            {
+              "id": "u2-q10-07",
+              "type": "single_choice",
+              "question": "Françophonie et Maghreb :",
+              "options": [
+                "Bilinguisme et diglossie",
+                "Arabe absent",
+                "Latin seul",
+                "Sans école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte scolaire terminale FR/AR."
+            },
+            {
+              "id": "u2-q10-08",
+              "type": "single_choice",
+              "question": "« قيم » dans un texte :",
+              "options": [
+                "Valeurs morales / sociales",
+                "Prix du marché",
+                "Chiffres sans sens",
+                "Couleurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyse axiologique."
+            },
+            {
+              "id": "u2-q10-09",
+              "type": "single_choice",
+              "question": "Comparer deux documents culturels :",
+              "options": [
+                "Thème, registre, public",
+                "Police uniquement",
+                "Grammage papier",
+                "Parfum encre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode comparée terminale."
+            },
+            {
+              "id": "u2-q10-10",
+              "type": "single_choice",
+              "question": "« خلاصة » en dossier civilisation :",
+              "options": [
+                "Synthèse des repères",
+                "Introduction seule",
+                "Bibliographie vide",
+                "Sans conclusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan des acquis culturels."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

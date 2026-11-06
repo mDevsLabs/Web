@@ -3,26 +3,30 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 /**
- * Historique des recherches récentes.
+ * Historique des recherches.
  *
  * L'interface ne connaît pas la base : elle lit `/api/mai-search/recent` et
  * ne fait qu'afficher. Le serveur décide de ce qui est visible, et le filtre
- * par compte y est appliqué — l'interface ne reçoit jamais la requête d'un
- * autre compte, même par une route malveillante.
+ * par compte y est appliqué.
  *
- * Le rechargement est MANUAL : l'historique ne bouge pas tout seul pendant
- * que l'utilisateur cherche. Il se recharge quand la page redevient visible
- * (l'utilisateur a peut-être cherché depuis un autre onglet) et après chaque
- * recherche.
+ * Le rechargement est MANUAL. La première page se charge au montage et quand
+ * l'onglet redevient visible. Les pages suivantes s'ajoutent sur demande.
  */
 export type RecentSearch = {
   createdAt: string;
+  hasSummary: boolean;
   id: string;
+  pinned: boolean;
   query: string;
+  title: string | null;
 };
+
+const PAGE = 40;
 
 export function useRecentSearches() {
   const [recent, setRecent] = useState<RecentSearch[]>([]);
+  const [hasMore, setHasMore] = useState(false);
+  const [nextOffset, setNextOffset] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const mountedRef = useRef(true);
 
@@ -33,22 +37,30 @@ export function useRecentSearches() {
     };
   }, []);
 
-  const refresh = useCallback(async () => {
+  const lirePage = useCallback(async (offset: number, remplacer: boolean) => {
     setIsLoading(true);
     try {
-      const reponse = await fetch("/api/mai-search/recent", {
-        cache: "no-store",
-      });
+      const reponse = await fetch(
+        `/api/mai-search/recent?limit=${PAGE}&offset=${offset}`,
+        { cache: "no-store" }
+      );
       if (!reponse.ok) {
         return;
       }
       const donnees = (await reponse.json().catch(() => null)) as {
+        hasMore?: boolean;
+        nextOffset?: number | null;
         queries?: RecentSearch[];
       } | null;
       if (!mountedRef.current) {
         return;
       }
-      setRecent(Array.isArray(donnees?.queries) ? donnees.queries : []);
+      const page = Array.isArray(donnees?.queries) ? donnees.queries : [];
+      setRecent((precedents) => (remplacer ? page : [...precedents, ...page]));
+      setHasMore(donnees?.hasMore === true);
+      setNextOffset(
+        typeof donnees?.nextOffset === "number" ? donnees.nextOffset : null
+      );
     } catch {
       // L'historique est un confort : son absence ne doit pas faire échouer
       // la recherche en cours.
@@ -59,9 +71,17 @@ export function useRecentSearches() {
     }
   }, []);
 
-  // Chargement au montage, puis à la reprise de l'onglet : la recherche a
-  // pu être faite ailleurs. `visibilitychange` ne se déclenche pas à
-  // l'ouverture, donc le premier appel est explicite.
+  const refresh = useCallback(async () => {
+    await lirePage(0, true);
+  }, [lirePage]);
+
+  const loadMore = useCallback(async () => {
+    if (nextOffset === null) {
+      return;
+    }
+    await lirePage(nextOffset, false);
+  }, [lirePage, nextOffset]);
+
   useEffect(() => {
     void refresh();
     const onVisible = () => {
@@ -73,14 +93,6 @@ export function useRecentSearches() {
     return () => document.removeEventListener("visibilitychange", onVisible);
   }, [refresh]);
 
-  /**
-   * Retire une recherche de l'historique.
-   *
-   * L'état local est mis à jour TOUT DE SUITE, avant la confirmation du
-   * serveur : l'interface ne doit pas faire attendre un clic pour un
-   * élément qui disparaît. Si le serveur refuse, un rechargement remet
-   * la vérité en place.
-   */
   const forget = useCallback(
     async (id: string) => {
       setRecent((precedents) =>
@@ -99,9 +111,10 @@ export function useRecentSearches() {
     [refresh]
   );
 
-  /** Vide tout l'historique. */
   const clear = useCallback(async () => {
     setRecent([]);
+    setHasMore(false);
+    setNextOffset(null);
     try {
       await fetch("/api/mai-search/recent", {
         body: JSON.stringify({ all: true }),
@@ -113,5 +126,52 @@ export function useRecentSearches() {
     }
   }, [refresh]);
 
-  return { clear, forget, isLoading, recent, refresh };
+  const patch = useCallback(
+    async (id: string, body: { pinned?: boolean; title?: string | null }) => {
+      setRecent((precedents) =>
+        precedents.map((entree) =>
+          entree.id === id ? { ...entree, ...body } : entree
+        )
+      );
+      try {
+        const reponse = await fetch("/api/mai-search/recent", {
+          body: JSON.stringify({ id, ...body }),
+          headers: { "Content-Type": "application/json" },
+          method: "PATCH",
+        });
+        if (!reponse.ok) {
+          void refresh();
+        }
+      } catch {
+        void refresh();
+      }
+    },
+    [refresh]
+  );
+
+  const rename = useCallback(
+    (id: string, title: string) => patch(id, { title }),
+    [patch]
+  );
+
+  const pin = useCallback(
+    async (id: string, pinned: boolean) => {
+      await patch(id, { pinned });
+      // L'ordre change : la première page est la vérité.
+      await refresh();
+    },
+    [patch, refresh]
+  );
+
+  return {
+    clear,
+    forget,
+    hasMore,
+    isLoading,
+    loadMore,
+    pin,
+    recent,
+    refresh,
+    rename,
+  };
 }

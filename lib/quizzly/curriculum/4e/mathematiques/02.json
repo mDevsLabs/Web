@@ -1,0 +1,2188 @@
+{
+  "id": "4e-mathematiques-02",
+  "year": "4e",
+  "subject": "mathematiques",
+  "title": "Théorème de Pythagore",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Le triangle rectangle",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Reconnaître un angle droit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un triangle rectangle, quelles affirmations sont vraies ?",
+              "options": [
+                "Il possède exactement un angle de 90°",
+                "Tous ses angles sont aigus",
+                "Le plus grand côté est opposé à l'angle droit",
+                "Il a toujours deux côtés de même longueur"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Un triangle rectangle a un seul angle droit et l'hypoténuse est le côté opposé à cet angle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel symbole indique un angle droit sur une figure ?",
+              "options": [
+                "Un petit carré dans l'angle",
+                "Une flèche",
+                "Un arc de cercle",
+                "Un point"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le codage d'un angle droit se fait par un petit carré à l'intérieur de l'angle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un triangle ABC a un angle droit en B. Où se trouve l'angle droit ?",
+              "options": [
+                "Au sommet A",
+                "Au sommet B",
+                "Au sommet C",
+                "Au milieu de [AC]"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La notation « angle droit en B » place le sommet de l'angle droit en B."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les côtés formant l'angle droit s'appellent :",
+              "options": [
+                "Les hypoténuses",
+                "Les hauteurs",
+                "Les côtés de l'angle droit",
+                "Les médiatrices"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les deux côtés adjacents à l'angle droit sont les côtés de l'angle droit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un triangle a des angles de 90°, 35° et 55°. Ce triangle est :",
+              "options": [
+                "Équilatéral",
+                "Isocèle seulement",
+                "Rectangle",
+                "Impossible"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La présence d'un angle de 90° définit un triangle rectangle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans triangle DEF rectangle en E, quel côté est le plus long ?",
+              "options": ["[DE]", "[EF]", "[DF]", "Tous égaux"],
+              "correctAnswers": [2],
+              "explanation": "[DF] est l'hypoténuse, opposée à l'angle droit en E, donc le plus long côté."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien d'angles droits peut avoir un triangle ?",
+              "options": ["0", "1", "2", "3"],
+              "correctAnswers": [1],
+              "explanation": "La somme des angles d'un triangle vaut 180°, donc au plus un angle de 90°."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le triangle rectangle est aussi un triangle :",
+              "options": [
+                "Équilatéral",
+                "Quelconque avec un angle droit",
+                "Toujours isocèle",
+                "Obtusangle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C'est un triangle quelconque qui possède en plus un angle de 90°."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'angle droit est en A, les côtés [AB] et [AC] sont :",
+              "options": [
+                "Les hypoténuses",
+                "Les deux côtés de l'angle droit",
+                "Parallèles",
+                "Égaux obligatoirement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "[AB] et [AC] sont les deux côtés qui se rencontrent au sommet A, angle droit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'hypoténuse d'un triangle rectangle est toujours :",
+              "options": [
+                "Un côté de l'angle droit",
+                "Le côté opposé à l'angle droit",
+                "La hauteur issue du sommet droit",
+                "Le plus petit côté"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Par définition, l'hypoténuse est le côté opposé à l'angle droit."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Nommer l'hypoténuse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un triangle MNP rectangle en P, quels côtés sont des côtés de l'angle droit ?",
+              "options": ["[MN]", "[MP]", "[NP]", "[MN] et [NP]"],
+              "correctAnswers": [1, 2],
+              "explanation": "En P, les côtés [MP] et [NP] forment l'angle droit ; [MN] est l'hypoténuse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Triangle RST rectangle en R. L'hypoténuse est :",
+              "options": ["[RS]", "[RT]", "[ST]", "[SR]"],
+              "correctAnswers": [2],
+              "explanation": "[ST] est opposé à l'angle droit en R."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le mot « hypoténuse » désigne :",
+              "options": [
+                "Le plus petit côté",
+                "Un angle de 45°",
+                "Le côté face à l'angle droit",
+                "La médiatrice"
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'hypoténuse est le côté du triangle rectangle opposé à l'angle droit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "ABC rectangle en C : le plus long côté est :",
+              "options": ["[AC]", "[BC]", "[AB]", "On ne peut pas savoir"],
+              "correctAnswers": [2],
+              "explanation": "[AB] est l'hypoténuse car opposée à l'angle droit en C."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour repérer l'hypoténuse, on cherche le côté :",
+              "options": [
+                "Adjacent à l'angle droit",
+                "Opposé à l'angle droit",
+                "Le plus court",
+                "Perpendiculaire à la base"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'hypoténuse est toujours opposée à l'angle de 90°."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Triangle IJK rectangle en J. Quelle longueur est l'hypoténuse ?",
+              "options": ["IJ", "JK", "IK", "IJ ou JK"],
+              "correctAnswers": [2],
+              "explanation": "IK relie les extrémités des côtés de l'angle droit, c'est l'hypoténuse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans un schéma, l'hypoténuse est souvent notée :",
+              "options": [
+                "a ou b",
+                "c (le plus long)",
+                "h (hauteur)",
+                "x uniquement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En classe, on note souvent les côtés de l'angle droit a et b et l'hypoténuse c."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un triangle rectangle a des côtés 5 cm, 12 cm et 13 cm. L'hypoténuse mesure :",
+              "options": ["5 cm", "12 cm", "13 cm", "17 cm"],
+              "correctAnswers": [2],
+              "explanation": "Le plus grand côté d'un triangle rectangle est toujours l'hypoténuse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si le triangle est rectangle en D, l'hypoténuse ne peut pas être :",
+              "options": ["[DE]", "[DF]", "[EF]", "[FD]"],
+              "correctAnswers": [0],
+              "explanation": "[DE] est un côté de l'angle droit en D, pas l'hypoténuse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'hypoténuse est toujours plus longue que :",
+              "options": [
+                "Un seul côté de l'angle droit",
+                "Chaque côté de l'angle droit",
+                "La somme des deux autres côtés",
+                "Rien de tout cela"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dans un triangle rectangle, l'hypoténuse est strictement plus longue que chaque côté de l'angle droit."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Énoncé du théorème de Pythagore",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le théorème de Pythagore concerne :",
+              "options": [
+                "Tout triangle",
+                "Un triangle rectangle",
+                "Les longueurs des côtés",
+                "Les angles seulement"
+              ],
+              "correctAnswers": [1, 2],
+              "explanation": "Il établit une relation entre les longueurs des côtés d'un triangle rectangle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si a et b sont les côtés de l'angle droit et c l'hypoténuse, Pythagore dit :",
+              "options": [
+                "a + b = c",
+                "a² + b² = c²",
+                "a² = b² + c²",
+                "2ab = c²"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La relation fondamentale est a² + b² = c²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans a² + b² = c², la lettre c représente :",
+              "options": [
+                "Un côté de l'angle droit",
+                "L'hypoténuse",
+                "Un angle",
+                "Le périmètre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Par convention, c désigne la longueur de l'hypoténuse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le théorème de Pythagore porte le nom d'un :",
+              "options": [
+                "Astronome grec",
+                "Mathématicien grec",
+                "Physicien français",
+                "Géomètre romain"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pythagore est un mathématicien et philosophe grec de l'Antiquité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "a² signifie :",
+              "options": ["2 × a", "a × a", "a + a", "√a"],
+              "correctAnswers": [1],
+              "explanation": "Le carré d'un nombre est le produit de ce nombre par lui-même."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Triangle rectangle : côtés 3 et 4. L'égalité de Pythagore s'écrit :",
+              "options": [
+                "3 + 4 = c",
+                "3² + 4² = c²",
+                "3² = 4² + c²",
+                "9 = 16"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On additionne les carrés des côtés de l'angle droit : 3² + 4² = c²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le théorème de Pythagore permet de :",
+              "options": [
+                "Calculer des aires",
+                "Relier les longueurs dans un triangle rectangle",
+                "Tracer un cercle",
+                "Mesurer un angle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il sert à calculer une longueur manquante ou à vérifier qu'un triangle est rectangle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si c = 5, a = 3 et b = 4, on vérifie :",
+              "options": [
+                "3 + 4 = 5",
+                "9 + 16 = 25",
+                "25 = 9 − 16",
+                "5² = 3 + 4"
+              ],
+              "correctAnswers": [1],
+              "explanation": "3² + 4² = 9 + 16 = 25 = 5², l'égalité de Pythagore est vérifiée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'égalité b² + a² = c² est :",
+              "options": [
+                "Fausse en général",
+                "La même relation que a² + b² = c²",
+                "Valable pour tout polygone",
+                "Sans hypoténuse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'addition est commutative : l'ordre des côtés de l'angle droit n'a pas d'importance."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans angle droit, l'égalité a² + b² = c² :",
+              "options": [
+                "Reste toujours vraie",
+                "Peut être vraie par hasard",
+                "N'est pas le théorème de Pythagore",
+                "Définit un carré"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le théorème ne s'applique que si le triangle est rectangle."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Carrés et racines carrées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles égalités sont correctes ?",
+              "options": ["5² = 25", "√25 = 5", "5² = 10", "√25 = 625"],
+              "correctAnswers": [0, 1],
+              "explanation": "5² = 25 et la racine carrée de 25 vaut 5 (racine principale positive)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "9 + 16 = 25 équivaut à dire :",
+              "options": [
+                "3 + 4 = 5",
+                "3² + 4² = 5²",
+                "9 × 16 = 25",
+                "√9 + √16 = √25"
+              ],
+              "correctAnswers": [1],
+              "explanation": "9 = 3², 16 = 4² et 25 = 5², d'où 3² + 4² = 5²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si a² + b² = 50 et a² = 25, alors b² vaut :",
+              "options": ["75", "25", "5", "√50"],
+              "correctAnswers": [1],
+              "explanation": "b² = 50 − 25 = 25."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour trouver c connaissant c² = 36, on calcule :",
+              "options": ["36 ÷ 2", "√36", "6²", "36 − 6"],
+              "correctAnswers": [1],
+              "explanation": "c est la racine carrée positive de c², donc c = √36 = 6."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "7² + 24² = 625 signifie que l'hypoténuse vaut :",
+              "options": ["625", "25", "31", "√625 = 25"],
+              "correctAnswers": [3],
+              "explanation": "c² = 625 donc c = √625 = 25 (longueur positive)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le carré de 12 est :",
+              "options": ["24", "144", "122", "√12"],
+              "correctAnswers": [1],
+              "explanation": "12² = 12 × 12 = 144."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans un calcul de Pythagore, on garde souvent c² puis on prend :",
+              "options": [
+                "La moitié",
+                "La racine carrée",
+                "Le carré encore",
+                "L'arrondi à l'unité sans calcul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Après avoir isolé c², la longueur c est la racine carrée de ce résultat."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "√50 est environ (calculatrice) :",
+              "options": ["7,07", "25", "50", "5"],
+              "correctAnswers": [0],
+              "explanation": "√50 ≈ 7,07 car 7² = 49 est proche de 50."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "1² + (√3)² vaut :",
+              "options": ["4", "1 + 3 = 4", "2", "√4 seulement"],
+              "correctAnswers": [1],
+              "explanation": "(√3)² = 3, donc 1 + 3 = 4."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une longueur obtenue par Pythagore doit être :",
+              "options": [
+                "Négative si besoin",
+                "Strictement positive",
+                "Nulle",
+                "Sans unité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une longueur est toujours un nombre positif (ou nul en cas dégénéré)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Réciproque du théorème",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La réciproque de Pythagore permet de :",
+              "options": [
+                "Prouver qu'un triangle est rectangle",
+                "Calculer une aire de disque",
+                "Tester si a² + b² = c² avec c le plus grand côté",
+                "Déterminer un angle sans mesure"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Si le plus grand côté c vérifie a² + b² = c², alors le triangle est rectangle en face du plus petit angle opposé à c… en fait rectangle opposé à c : angle droit opposé à l'hypoténuse c."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Triangle de côtés 6, 8 et 10. Est-il rectangle ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Impossible à dire",
+                "Seulement isocèle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "6² + 8² = 36 + 64 = 100 = 10², la réciproque s'applique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour la réciproque, on compare d'abord :",
+              "options": [
+                "Les angles",
+                "Le plus grand côté aux autres",
+                "Les périmètres",
+                "Les hauteurs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On identifie le plus grand côté c et on teste si a² + b² = c²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Côtés 5, 12 et 14. Le triangle est-il rectangle ?",
+              "options": ["Oui", "Non", "Équilatéral", "Rectangle en 5"],
+              "correctAnswers": [1],
+              "explanation": "5² + 12² = 169 alors que 14² = 196, l'égalité n'est pas vérifiée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Côtés 9, 40 et 41. Que conclure ?",
+              "options": [
+                "Pas rectangle",
+                "Rectangle",
+                "Angle obtus seulement",
+                "Données incohérentes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "9² + 40² = 81 + 1600 = 1681 = 41², le triangle est rectangle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si a² + b² ≠ c² avec c le plus grand côté, alors :",
+              "options": [
+                "Le triangle est rectangle",
+                "Le triangle n'est pas rectangle",
+                "Il est équilatéral",
+                "Pythagore ne s'applique pas du tout"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'égalité est nécessaire et suffisante (réciproque) pour la rectangularité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Triangle 7, 24, 25 :",
+              "options": [
+                "Rectangle",
+                "Non rectangle",
+                "7 est hypoténuse",
+                "25 est un côté de l'angle droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "7² + 24² = 49 + 576 = 625 = 25²."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La réciproque diffère du théorème car elle part de :",
+              "options": [
+                "Un angle mesuré",
+                "Trois longueurs connues",
+                "Une aire",
+                "Un cercle inscrit"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On connaît les trois côtés et on déduit la présence d'un angle droit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Côtés 4, 5 et 6. Rectangle ?",
+              "options": ["Oui", "Non", "Oui en 4", "Oui en 6"],
+              "correctAnswers": [1],
+              "explanation": "4² + 5² = 41 ≠ 36 = 6²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Où est l'angle droit si côtés 8, 15 et 17 avec 17 le plus grand ?",
+              "options": [
+                "Opposé au côté 17",
+                "Opposé au côté 8",
+                "Au milieu de 15",
+                "Nulle part"
+              ],
+              "correctAnswers": [0],
+              "explanation": "17 est l'hypoténuse ; l'angle droit est opposé à ce côté."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Triplets pythagoriciens",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les triplets (3 ; 4 ; 5) et (5 ; 12 ; 13) sont :",
+              "options": [
+                "Des longueurs de triangle rectangle",
+                "Des triplets pythagoriciens",
+                "Des périmètres de carrés",
+                "Toujours des triangles équilatéraux"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ce sont des entiers vérifiant a² + b² = c², donc des triplets pythagoriciens."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le triplet (6 ; 8 ; 10) est :",
+              "options": [
+                "Faux",
+                "Un multiple de (3 ; 4 ; 5)",
+                "Sans hypoténuse",
+                "Pour un angle de 60°"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque valeur est le double de 3, 4 et 5, l'égalité reste vraie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel triplet est pythagoricien ?",
+              "options": [
+                "(2 ; 3 ; 4)",
+                "(8 ; 15 ; 17)",
+                "(4 ; 4 ; 8)",
+                "(10 ; 10 ; 10)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "8² + 15² = 64 + 225 = 289 = 17²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "(9 ; 12 ; 15) vérifie Pythagore car c'est :",
+              "options": [
+                "3 × (3 ; 4 ; 5)",
+                "Un hasard",
+                "Un triangle isocèle",
+                "Sans multiple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multiplier un triplet par un entier donne un autre triplet pythagoricien."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans (3 ; 4 ; 5), l'hypoténuse est :",
+              "options": ["3", "4", "5", "7"],
+              "correctAnswers": [2],
+              "explanation": "5 est le plus grand côté, donc l'hypoténuse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lequel n'est pas un triplet pythagoricien ?",
+              "options": [
+                "(7 ; 24 ; 25)",
+                "(20 ; 21 ; 29)",
+                "(5 ; 5 ; 10)",
+                "(12 ; 16 ; 20)"
+              ],
+              "correctAnswers": [2],
+              "explanation": "5² + 5² = 50 ≠ 100 = 10² (10 est hypoténuse mais l'égalité échoue pour deux côtés 5 et 5… 25+25=50, 10²=100, non)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "(12 ; 16 ; 20) est obtenu en multipliant (3 ; 4 ; 5) par :",
+              "options": ["2", "3", "4", "5"],
+              "correctAnswers": [2],
+              "explanation": "3×4=12, 4×4=16, 5×4=20."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Connaitre un triplet pythagoricien aide à :",
+              "options": [
+                "Reconnaître vite un triangle rectangle",
+                "Calculer π",
+                "Tracer une parabole",
+                "Éviter les racines toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On reconnaît immédiatement des triangles rectangles sans calcul long."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "20² + 21² vaut :",
+              "options": ["841", "400 + 441 = 841", "29", "400 + 21"],
+              "correctAnswers": [1],
+              "explanation": "400 + 441 = 841 = 29², triplet (20 ; 21 ; 29)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un triplet pythagoricien primitif signifie souvent :",
+              "options": [
+                "Les trois nombres sont premiers entre eux (pgcd 1)",
+                "Ils sont négatifs",
+                "Il n'y a pas d'hypoténuse",
+                "C'est un triplet décimal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "(3 ; 4 ; 5) est primitif car aucun entier > 1 ne divise les trois."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Schémas et codage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur une figure, pour appliquer Pythagore il faut :",
+              "options": [
+                "Repérer l'angle droit",
+                "Identifier l'hypoténuse",
+                "Connaître tous les angles en degrés",
+                "Avoir un cercle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sans angle droit et sans repérage de l'hypoténuse, on ne pose pas a² + b² = c²."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un échelle indique que 1 cm sur le plan vaut 2 m. Une longueur 3 cm sur le plan vaut :",
+              "options": ["3 m", "6 m", "5 m", "1,5 m"],
+              "correctAnswers": [1],
+              "explanation": "3 × 2 m = 6 m en réalité (hors Pythagore mais utile en problèmes)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un rectangle, la diagonale forme avec deux côtés :",
+              "options": [
+                "Un triangle rectangle",
+                "Un triangle équilatéral",
+                "Deux angles droits sur la diagonale",
+                "Rien de particulier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un angle du rectangle est droit, donc la diagonale crée un triangle rectangle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rectangle de longueur 6 cm et largeur 8 cm : la diagonale d vérifie :",
+              "options": [
+                "d = 6 + 8",
+                "6² + 8² = d²",
+                "d = 6 × 8",
+                "6² = 8² + d²"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La diagonale est l'hypoténuse d'un triangle rectangle dont les côtés sont 6 et 8."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une échelle appuyée contre un mur forme souvent un triangle :",
+              "options": [
+                "Rectangle avec le sol et le mur",
+                "Équilatéral",
+                "Obtusangle seulement",
+                "Sans angle droit jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mur et sol sont perpendiculaires, l'échelle est l'hypoténuse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour coder [BC] perpendiculaire à [AB], on utilise :",
+              "options": [
+                "Le symbole ⊥",
+                "Le symbole //",
+                "Le symbole ∈",
+                "Le symbole ∞"
+              ],
+              "correctAnswers": [0],
+              "explanation": "⊥ signifie « perpendiculaire », donc angle droit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux côtés perpendiculaires d'un triangle impliquent :",
+              "options": [
+                "Triangle rectangle",
+                "Triangle isocèle forcé",
+                "Cercle inscrit",
+                "Angles de 60°"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Perpendiculaires ⇒ angle de 90° entre eux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur un quadrillage, un triangle dont un côté horizontal et un vertical se croisent a :",
+              "options": [
+                "Un angle droit au croisement",
+                "Trois angles droits",
+                "Jamais Pythagore",
+                "Une hypoténuse horizontale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grille orthogonale : horizontal et vertical sont perpendiculaires."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La longueur d'une diagonale de carré de côté a est :",
+              "options": ["a", "a√2", "2a", "a²"],
+              "correctAnswers": [1],
+              "explanation": "a² + a² = d² donc d = a√2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avant de calculer, il est utile de :",
+              "options": [
+                "Faire un schéma et nommer les côtés",
+                "Oublier les unités",
+                "Prendre le plus petit côté pour c",
+                "Additionner les trois côtés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un schéma clair évite de confondre hypoténuse et côtés de l'angle droit."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Erreurs fréquentes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles erreurs faut-il éviter ?",
+              "options": [
+                "Mettre l'hypoténuse dans a ou b sans raison",
+                "Oublier de prendre la racine carrée à la fin",
+                "Appliquer a² + b² = c² à un triangle non rectangle",
+                "Toujours utiliser c pour le plus petit côté"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "c doit être l'hypoténuse et le triangle doit être rectangle ; confondre les rôles fausse le calcul."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calculer c avec a = 3, b = 4 : erreur classique est de dire c = 7 car :",
+              "options": [
+                "On a additionné au lieu de c²",
+                "On a utilisé √",
+                "On a divisé",
+                "Rien de faux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut 3² + 4² = c², donc c = 5, pas 3 + 4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si c² = 20, dire c = 20 est :",
+              "options": [
+                "Correct",
+                "Faux, il faut √20",
+                "Faux, il faut 400",
+                "Correct en cm"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La longueur c est √20, pas 20."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans 5² + 12² = c², mettre c = 169 est faux car :",
+              "options": [
+                "169 est c²",
+                "169 est trop petit",
+                "12 n'existe pas",
+                "5 n'est pas carré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "25 + 144 = 169 = c², donc c = 13."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Utiliser a² = b² + c² avec c hypoténuse est :",
+              "options": [
+                "Toujours vrai",
+                "Faux, c'est a² + b² = c²",
+                "Valable en 3e seulement",
+                "Pour les aires"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les carrés des côtés de l'angle droit s'additionnent pour donner le carré de l'hypoténuse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Oublier l'unité dans la réponse d'un problème de longueur est :",
+              "options": [
+                "Sans importance",
+                "Une imprécision à corriger",
+                "Obligatoire en radians",
+                "Interdit en 4e"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une longueur doit être donnée avec son unité (m, cm, etc.)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour la réciproque, prendre le plus petit côté comme c mène à :",
+              "options": [
+                "Une bonne preuve",
+                "Une conclusion fausse",
+                "Un triplet",
+                "Rien"
+              ],
+              "correctAnswers": [1],
+              "explanation": "c doit être le plus grand des trois côtés dans le test a² + b² = c²."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Arrondir √2 à 1,4 puis recarre pour retrouver 2 est :",
+              "options": ["Exact", "Approximatif", "Interdit", "Égal à π"],
+              "correctAnswers": [1],
+              "explanation": "1,4² = 1,96 ≠ 2 ; l'arrondi introduit une petite erreur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Confondre aire et longueur (m² vs m) dans Pythagore est :",
+              "options": [
+                "Courant et acceptable",
+                "Une erreur d'unité",
+                "Requis",
+                "Pour les angles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "a² et b² ont dimension longueur² mais on extrait c en longueur via √."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Vérifier sa réponse en recomptant a² + b² = c² s'appelle :",
+              "options": [
+                "Une contrôle par Pythagore",
+                "Un théorème de Thales",
+                "Une division euclidienne",
+                "Un produit scalaire obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recontrôler l'égalité permet de détecter une erreur de calcul."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Problèmes de vocabulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans l'expression « triangle rectangle en A », on peut affirmer :",
+              "options": [
+                "L'angle en A vaut 90°",
+                "[AB] et [AC] peuvent être perpendiculaires",
+                "Le côté [BC] est l'hypoténuse si B et C sont les autres sommets",
+                "Tous les côtés sont parallèles"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Rectangle en A : angle droit en A ; le côté opposé à A est [BC], hypoténuse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Côté adjacent à l'angle droit » signifie :",
+              "options": [
+                "Hypoténuse",
+                "Côté qui forme l'angle droit",
+                "Diagonale d'un carré",
+                "Médiane"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Adjacent à l'angle droit : l'un des deux côtés qui le forment."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sommet de l'angle droit et sommet opposé à l'hypoténuse :",
+              "options": [
+                "Identiques",
+                "Différents",
+                "Toujours confondus",
+                "Au centre du triangle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'hypoténuse est opposée au sommet de l'angle droit, pas adjacent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un triangle isocèle rectangle a :",
+              "options": [
+                "Deux angles de 45° et un angle droit",
+                "Trois angles droits",
+                "Pas d'hypoténuse",
+                "Trois côtés égaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "180° − 90° = 90° restants, partagés en deux angles égaux de 45° si isocèle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Triangle isocèle rectangle de côtés de l'angle droit a :",
+              "options": ["a et a", "a et 2a", "a et 0", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "Isocèle : les deux côtés de l'angle droit ont même longueur a."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'hypoténuse d'un triangle isocèle rectangle de côté a vaut :",
+              "options": ["a", "a√2", "2a", "a²"],
+              "correctAnswers": [1],
+              "explanation": "a² + a² = c² ⇒ c = a√2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Réciproque » signifie ici :",
+              "options": [
+                "On inverse la logique (longueurs ⇒ angle droit)",
+                "On inverse les côtés signés",
+                "On divise par 2",
+                "On utilise cosinus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théorème : rectangle ⇒ égalité ; réciproque : égalité ⇒ rectangle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le théorème de Pythagore est dans le programme de :",
+              "options": [
+                "Géométrie plane au collège",
+                "Chimie organique",
+                "Statistiques seules",
+                "Arithmétique sans figures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un résultat central de géométrie au collège."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux côtés perpendiculaires ont pour angle entre eux :",
+              "options": ["90°", "180°", "45° toujours", "0°"],
+              "correctAnswers": [0],
+              "explanation": "Perpendiculaires ⇔ angle droit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La longueur d'un segment est toujours :",
+              "options": [
+                "Positive",
+                "Negative possible",
+                "Sans dimension",
+                "En degrés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une longueur est une grandeur positive."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse — le triangle rectangle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour un triangle rectangle, on retient :",
+              "options": [
+                "a² + b² = c² avec c hypoténuse",
+                "Un seul angle de 90°",
+                "a + b = c toujours",
+                "La réciproque teste a² + b² = c²"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Angle unique de 90° et relation sur les carrés des côtés avec c hypoténuse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Côtés 11, 60, 61 : triangle ?",
+              "options": [
+                "Rectangle",
+                "Non rectangle",
+                "Équilatéral",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "11² + 60² = 121 + 3600 = 3721 = 61²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le plus grand côté d'un triangle rectangle mesure 13 cm. Il s'agit de :",
+              "options": [
+                "Un côté de l'angle droit",
+                "L'hypoténuse",
+                "La hauteur",
+                "Le demi-périmètre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'hypoténuse est toujours le côté le plus long."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si seuls les deux côtés de l'angle droit sont connus, on cherche :",
+              "options": [
+                "L'hypoténuse",
+                "Un angle sans outil",
+                "L'aire du cercle circonscrit d'abord",
+                "Le pgcd"
+              ],
+              "correctAnswers": [0],
+              "explanation": "a² + b² = c² permet de calculer l'hypoténuse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si l'hypoténuse et un côté de l'angle droit sont connus, on cherche :",
+              "options": [
+                "L'autre côté de l'angle droit",
+                "Le troisième angle en degrés sans mesure",
+                "Le volume",
+                "La dérivée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On isole b² = c² − a² puis b = √b²."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pythagore ne remplace pas :",
+              "options": [
+                "La mesure d'un angle avec rapporteur si non droit",
+                "L'addition",
+                "Les unités",
+                "Rien, il fait tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour un triangle non rectangle, il faut d'autres outils (Thales, trigonométrie plus tard)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un terrain rectangulaire 30 m sur 40 m : diagonale ≈",
+              "options": ["50 m", "70 m", "35 m", "1200 m"],
+              "correctAnswers": [0],
+              "explanation": "30² + 40² = 900 + 1600 = 2500, √2500 = 50 m."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La formule a² + b² = c² date conceptuellement de :",
+              "options": [
+                "L'Antiquité grecque",
+                "Le XXIe siècle uniquement",
+                "La révolution industrielle",
+                "Les tablettes sans mathématiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La relation est associée à la tradition pythagoricienne grecque."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "√(a² + b²) correspond à :",
+              "options": [
+                "La longueur de l'hypoténuse si a, b sont côtés de l'angle droit",
+                "L'aire",
+                "Le périmètre",
+                "a + b"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si c² = a² + b² alors c = √(a² + b²)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan : avant de calculer une longueur, je vérifie que :",
+              "options": [
+                "Le triangle est rectangle",
+                "J'ai identifié l'hypoténuse",
+                "Les deux réponses précédentes",
+                "Le triangle est équilatéral"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Rectangularité et repérage de l'hypoténuse sont indispensables."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Calculer une longueur",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Calculer l'hypoténuse (entiers)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Triangle rectangle, côtés de l'angle droit 6 cm et 8 cm. Quelles valeurs sont correctes pour l'hypoténuse ?",
+              "options": ["10 cm", "√(36+64) cm", "14 cm", "2 cm"],
+              "correctAnswers": [0, 1],
+              "explanation": "6² + 8² = 100, donc c = 10 cm = √(36+64)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Côtés 5 cm et 12 cm. Hypoténuse = ?",
+              "options": ["13 cm", "17 cm", "7 cm", "60 cm"],
+              "correctAnswers": [0],
+              "explanation": "25 + 144 = 169, √169 = 13 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Côtés 9 cm et 12 cm. Hypoténuse = ?",
+              "options": [
+                "15 cm",
+                "21 cm",
+                "3 cm",
+                "√108 cm seulement sans simplifier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "81 + 144 = 225, √225 = 15 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Côtés 7 cm et 24 cm. Hypoténuse = ?",
+              "options": ["25 cm", "31 cm", "17 cm", "√576 cm"],
+              "correctAnswers": [0],
+              "explanation": "49 + 576 = 625 = 25²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Côtés 15 cm et 20 cm. Hypoténuse = ?",
+              "options": ["25 cm", "35 cm", "5 cm", "300 cm"],
+              "correctAnswers": [0],
+              "explanation": "225 + 400 = 625, c = 25 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Côtés 10 cm et 24 cm. Hypoténuse = ?",
+              "options": ["26 cm", "34 cm", "14 cm", "240 cm"],
+              "correctAnswers": [0],
+              "explanation": "100 + 576 = 676 = 26²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Côtés 8 cm et 15 cm. Hypoténuse = ?",
+              "options": ["17 cm", "23 cm", "7 cm", "√289 cm"],
+              "correctAnswers": [0],
+              "explanation": "64 + 225 = 289, c = 17 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Côtés 20 cm et 21 cm. Hypoténuse = ?",
+              "options": ["29 cm", "41 cm", "1 cm", "441 cm"],
+              "correctAnswers": [0],
+              "explanation": "400 + 441 = 841 = 29²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Côtés 14 cm et 48 cm. Hypoténuse = ?",
+              "options": ["50 cm", "62 cm", "34 cm", "√2400 cm"],
+              "correctAnswers": [0],
+              "explanation": "196 + 2304 = 2500, c = 50 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Côtés 11 cm et 60 cm. Hypoténuse = ?",
+              "options": ["61 cm", "71 cm", "49 cm", "660 cm"],
+              "correctAnswers": [0],
+              "explanation": "121 + 3600 = 3721 = 61²."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Calculer un côté de l'angle droit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Hypoténuse 13 cm, un côté 5 cm. Le troisième côté peut valoir :",
+              "options": ["12 cm", "√(169−25) cm", "8 cm", "18 cm"],
+              "correctAnswers": [0, 1],
+              "explanation": "b² = 13² − 5² = 169 − 25 = 144, b = 12 cm."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Hypoténuse 10 cm, côté 6 cm. Autre côté = ?",
+              "options": ["8 cm", "4 cm", "16 cm", "√136 cm"],
+              "correctAnswers": [0],
+              "explanation": "100 − 36 = 64, √64 = 8 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Hypoténuse 25 cm, côté 7 cm. Autre côté = ?",
+              "options": ["24 cm", "18 cm", "32 cm", "√576 cm"],
+              "correctAnswers": [0],
+              "explanation": "625 − 49 = 576, √576 = 24 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Hypoténuse 17 cm, côté 8 cm. Autre côté = ?",
+              "options": ["15 cm", "9 cm", "25 cm", "√225 cm"],
+              "correctAnswers": [0],
+              "explanation": "289 − 64 = 225, côté = 15 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Hypoténuse 26 cm, côté 10 cm. Autre côté = ?",
+              "options": ["24 cm", "16 cm", "36 cm", "√576 cm"],
+              "correctAnswers": [0],
+              "explanation": "676 − 100 = 576, √576 = 24 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Hypoténuse 15 cm, côté 9 cm. Autre côté = ?",
+              "options": ["12 cm", "6 cm", "24 cm", "√144 cm"],
+              "correctAnswers": [0],
+              "explanation": "225 − 81 = 144, côté = 12 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Hypoténuse 20 cm, côté 12 cm. Autre côté = ?",
+              "options": ["16 cm", "8 cm", "32 cm", "√256 cm"],
+              "correctAnswers": [0],
+              "explanation": "400 − 144 = 256, √256 = 16 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Hypoténuse 29 cm, côté 20 cm. Autre côté = ?",
+              "options": ["21 cm", "9 cm", "49 cm", "√441 cm"],
+              "correctAnswers": [0],
+              "explanation": "841 − 400 = 441, √441 = 21 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Hypoténuse 41 cm, côté 9 cm. Autre côté = ?",
+              "options": ["40 cm", "32 cm", "50 cm", "√1600 cm"],
+              "correctAnswers": [0],
+              "explanation": "1681 − 81 = 1600, côté = 40 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Hypoténuse 50 cm, côté 14 cm. Autre côté = ?",
+              "options": ["48 cm", "36 cm", "64 cm", "√2304 cm"],
+              "correctAnswers": [0],
+              "explanation": "2500 − 196 = 2304, √2304 = 48 cm."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Diagonale d'un rectangle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Rectangle 3 m sur 4 m. La diagonale vérifie :",
+              "options": ["d² = 3² + 4²", "d = 5 m", "d = 7 m", "d² = 12"],
+              "correctAnswers": [0, 1],
+              "explanation": "d² = 9 + 16 = 25, donc d = 5 m."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rectangle 6 cm × 8 cm. Diagonale = ?",
+              "options": ["10 cm", "14 cm", "48 cm", "2 cm"],
+              "correctAnswers": [0],
+              "explanation": "36 + 64 = 100, d = 10 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Rectangle 5 m × 12 m. Diagonale = ?",
+              "options": ["13 m", "17 m", "60 m", "7 m"],
+              "correctAnswers": [0],
+              "explanation": "25 + 144 = 169, d = 13 m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rectangle 9 dm × 12 dm. Diagonale = ?",
+              "options": ["15 dm", "21 dm", "108 dm", "3 dm"],
+              "correctAnswers": [0],
+              "explanation": "81 + 144 = 225, d = 15 dm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Rectangle 7 cm × 24 cm. Diagonale = ?",
+              "options": ["25 cm", "31 cm", "168 cm", "17 cm"],
+              "correctAnswers": [0],
+              "explanation": "49 + 576 = 625, d = 25 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Carré de côté 5 cm. Diagonale = ?",
+              "options": ["5√2 cm", "10 cm", "25 cm", "5 cm"],
+              "correctAnswers": [0],
+              "explanation": "5² + 5² = d², d = 5√2 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Carré de côté 10 cm. Diagonale ≈ ? (1 décimale)",
+              "options": ["14,1 cm", "20 cm", "100 cm", "10 cm"],
+              "correctAnswers": [0],
+              "explanation": "10√2 ≈ 14,142… cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rectangle 15 mm × 20 mm. Diagonale = ?",
+              "options": ["25 mm", "35 mm", "300 mm", "5 mm"],
+              "correctAnswers": [0],
+              "explanation": "225 + 400 = 625, d = 25 mm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Diagonale 13 cm, largeur 5 cm. Longueur = ?",
+              "options": ["12 cm", "8 cm", "18 cm", "√194 cm"],
+              "correctAnswers": [0],
+              "explanation": "169 − 25 = 144, longueur = 12 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Diagonale 17 cm, un côté 8 cm. Autre côté = ?",
+              "options": ["15 cm", "9 cm", "25 cm", "√225 cm"],
+              "correctAnswers": [0],
+              "explanation": "289 − 64 = 225, côté = 15 cm."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Résultats non entiers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Côtés 1 cm et 2 cm. L'hypoténuse est :",
+              "options": ["√5 cm", "Environ 2,24 cm", "3 cm", "√3 cm"],
+              "correctAnswers": [0, 1],
+              "explanation": "1² + 2² = 5, c = √5 ≈ 2,24 cm."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Côtés 2 cm et 3 cm. c = ?",
+              "options": ["√13 cm", "5 cm", "√6 cm", "1 cm"],
+              "correctAnswers": [0],
+              "explanation": "4 + 9 = 13, c = √13 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Côtés 4 cm et 7 cm. c = ?",
+              "options": ["√65 cm", "11 cm", "√33 cm", "3 cm"],
+              "correctAnswers": [0],
+              "explanation": "16 + 49 = 65, hypoténuse √65 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Hypoténuse 5 cm, côté 2 cm. Autre côté = ?",
+              "options": ["√21 cm", "3 cm", "√7 cm", "7 cm"],
+              "correctAnswers": [0],
+              "explanation": "25 − 4 = 21, côté = √21 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Côtés 5 cm et 5 cm. Hypoténuse = ?",
+              "options": ["5√2 cm", "10 cm", "25 cm", "√50 cm"],
+              "correctAnswers": [0],
+              "explanation": "25 + 25 = 50, c = √50 = 5√2 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "√50 simplifié vaut :",
+              "options": ["5√2", "25", "2√5", "10"],
+              "correctAnswers": [0],
+              "explanation": "√50 = √(25×2) = 5√2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Côtés 6 cm et 7 cm. c² = ?",
+              "options": ["85", "13", "1", "42"],
+              "correctAnswers": [0],
+              "explanation": "36 + 49 = 85."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Hypoténuse √85 cm provient de côtés :",
+              "options": [
+                "6 cm et 7 cm",
+                "5 cm et 6 cm",
+                "8 cm et 9 cm",
+                "1 cm et 84 cm"
+              ],
+              "correctAnswers": [0],
+              "explanation": "6² + 7² = 85."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Côtés 1,5 m et 2 m. c² = ?",
+              "options": ["6,25", "3,5", "5", "2,25"],
+              "correctAnswers": [0],
+              "explanation": "2,25 + 4 = 6,25."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Côtés 1,5 m et 2 m. Hypoténuse = ?",
+              "options": ["2,5 m", "3,5 m", "√6,25 m = 2,5 m", "1 m"],
+              "correctAnswers": [0],
+              "explanation": "√6,25 = 2,5 m (triplet 3-4-5 divisé par 2)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Échelle contre un mur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Échelle 5 m, pied à 3 m du mur. Hauteur atteinte sur le mur ?",
+              "options": ["4 m", "√(5² − 3²) m", "8 m", "2 m"],
+              "correctAnswers": [0, 1],
+              "explanation": "Triangle rectangle : h² = 25 − 9 = 16, h = 4 m."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Échelle 13 m, pied à 5 m du mur. Hauteur = ?",
+              "options": ["12 m", "8 m", "18 m", "√194 m"],
+              "correctAnswers": [0],
+              "explanation": "169 − 25 = 144, h = 12 m."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Échelle 10 m, hauteur 6 m. Distance pied–mur = ?",
+              "options": ["8 m", "4 m", "16 m", "√136 m"],
+              "correctAnswers": [0],
+              "explanation": "100 − 36 = 64, d = 8 m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Échelle 15 m, pied à 9 m. Hauteur = ?",
+              "options": ["12 m", "6 m", "24 m", "√144 m"],
+              "correctAnswers": [0],
+              "explanation": "225 − 81 = 144, h = 12 m."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Échelle 17 m, hauteur 8 m. Distance au mur = ?",
+              "options": ["15 m", "9 m", "25 m", "√225 m"],
+              "correctAnswers": [0],
+              "explanation": "289 − 64 = 225, d = 15 m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Échelle 3 m, pied à 1 m. Hauteur ≈ ?",
+              "options": ["√8 m", "2 m", "4 m", "1 m"],
+              "correctAnswers": [0],
+              "explanation": "9 − 1 = 8, h = √8 m = 2√2 m."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Échelle 25 m, pied à 7 m. Hauteur = ?",
+              "options": ["24 m", "18 m", "32 m", "√576 m"],
+              "correctAnswers": [0],
+              "explanation": "625 − 49 = 576, h = 24 m."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Échelle 8 m, hauteur 6 m. Distance pied–mur = ?",
+              "options": ["√28 m", "2 m", "14 m", "√64 m"],
+              "correctAnswers": [0],
+              "explanation": "64 − 36 = 28, d = √28 m."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Échelle 6 m, pied à 2 m. Hauteur = ?",
+              "options": ["√32 m", "4 m", "8 m", "√20 m"],
+              "correctAnswers": [0],
+              "explanation": "36 − 4 = 32, h = √32 m = 4√2 m."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mur perpendiculaire au sol : l'échelle est l'",
+              "options": [
+                "Hypoténuse",
+                "Côté de l'angle droit seulement",
+                "Médiane",
+                "Bissectrice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échelle relie le pied au point le plus haut, c'est le plus grand côté."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Distances dans un repère",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Points A(0 ; 0) et B(3 ; 4). AB vaut :",
+              "options": ["5", "√(3² + 4²)", "7", "1"],
+              "correctAnswers": [0, 1],
+              "explanation": "Distance = √(9 + 16) = 5."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "A(0 ; 0), B(6 ; 8). AB = ?",
+              "options": ["10", "14", "2", "48"],
+              "correctAnswers": [0],
+              "explanation": "Triplet 6-8-10, AB = 10."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "A(1 ; 2), B(4 ; 6). Δx = 3, Δy = 4. AB = ?",
+              "options": ["5", "7", "1", "25"],
+              "correctAnswers": [0],
+              "explanation": "3² + 4² = 25, AB = 5."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "A(0 ; 0), B(5 ; 12). AB = ?",
+              "options": ["13", "17", "7", "60"],
+              "correctAnswers": [0],
+              "explanation": "25 + 144 = 169, AB = 13."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "A(2 ; 1), B(2 ; 9). AB = ?",
+              "options": ["8", "10", "6", "√68"],
+              "correctAnswers": [0],
+              "explanation": "Même abscisse : distance = |9 − 1| = 8."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "A(3 ; 4), B(3 ; 4). AB = ?",
+              "options": ["0", "5", "7", "1"],
+              "correctAnswers": [0],
+              "explanation": "Points confondus : distance nulle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "A(0 ; 0), B(1 ; 1). AB = ?",
+              "options": ["√2", "2", "1", "0"],
+              "correctAnswers": [0],
+              "explanation": "1 + 1 = 2, AB = √2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "A(−1 ; 0), B(2 ; 0). AB = ?",
+              "options": ["3", "1", "√5", "9"],
+              "correctAnswers": [0],
+              "explanation": "Sur l'axe horizontal : |2 − (−1)| = 3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour AB avec Δx et Δy, on utilise :",
+              "options": [
+                "AB² = Δx² + Δy²",
+                "AB = Δx + Δy",
+                "AB = Δx × Δy",
+                "AB² = Δx − Δy"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est Pythagore sur le triangle formé par les projections."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "A(0 ; 0), B(8 ; 15). AB = ?",
+              "options": ["17", "23", "7", "120"],
+              "correctAnswers": [0],
+              "explanation": "64 + 225 = 289, AB = 17."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Vérifier un triangle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Côtés 10, 24, 26. On peut affirmer :",
+              "options": [
+                "Triangle rectangle",
+                "26 est l'hypoténuse",
+                "10 + 24 = 26",
+                "10² + 24² = 26²"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "100 + 576 = 676 = 26², la réciproque s'applique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Côtés 13, 14, 15. Rectangle ?",
+              "options": ["Non", "Oui", "Oui en 13", "Oui en 15"],
+              "correctAnswers": [0],
+              "explanation": "169 + 196 = 365 ≠ 225 = 15²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Côtés 16, 30, 34. Rectangle ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Équilatéral",
+                "34 est un côté de l'angle droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "256 + 900 = 1156 = 34²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Côtés 2, 3, 4. Rectangle ?",
+              "options": ["Non", "Oui", "Oui en 2", "Hypoténuse 3"],
+              "correctAnswers": [0],
+              "explanation": "4 + 9 = 13 ≠ 16."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Côtés 1, 1, √2. Rectangle ?",
+              "options": ["Oui", "Non", "Impossible", "Équilatéral"],
+              "correctAnswers": [0],
+              "explanation": "1 + 1 = 2 = (√2)², triangle isocèle rectangle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plus grand côté 25, autres 15 et 20. Conclusion ?",
+              "options": [
+                "Rectangle",
+                "Non rectangle",
+                "15 est hypoténuse",
+                "Périmètre 60 seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "225 + 400 = 625 = 25²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Côtés 18, 24, 30. Rectangle ?",
+              "options": ["Oui", "Non", "30 trop petit", "18 hypoténuse"],
+              "correctAnswers": [0],
+              "explanation": "Multiple de 3-4-5 : 6×(3,4,5)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si a² + b² < c² (c plus grand), le triangle a un angle :",
+              "options": [
+                "Obtus en face de c",
+                "Droit",
+                "Aigu en face de c toujours",
+                "Nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans égalité, ce n'est pas rectangle ; si somme des carrés plus petite, angle obtus opposé à c."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Côtés 12, 35, 37. Rectangle ?",
+              "options": ["Oui", "Non", "37 côté droit", "12 hypoténuse"],
+              "correctAnswers": [0],
+              "explanation": "144 + 1225 = 1369 = 37²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour tester la réciproque, on calcule d'abord :",
+              "options": [
+                "Les carrés des trois côtés",
+                "Les angles au rapporteur",
+                "L'aire",
+                "Le rayon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On compare a² + b² à c² avec c le plus long."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Unités et conversions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Rectangle 0,3 m × 0,4 m. Diagonale en m :",
+              "options": ["0,5 m", "0,5", "0,7 m", "1,2 m"],
+              "correctAnswers": [0, 1],
+              "explanation": "0,09 + 0,16 = 0,25, d = 0,5 m."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Côtés 30 cm et 40 cm. Hypoténuse = ?",
+              "options": ["50 cm", "70 cm", "12 cm", "500 cm"],
+              "correctAnswers": [0],
+              "explanation": "Triplet 3-4-5 en dm : 3 dm et 4 dm → 5 dm = 50 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Côtés 3 dm et 4 dm. Hypoténuse = ?",
+              "options": ["5 dm", "7 dm", "12 dm", "50 cm"],
+              "correctAnswers": [0],
+              "explanation": "9 + 16 = 25, c = 5 dm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Hypoténuse 1 m, côté 60 cm. Autre côté = ?",
+              "options": ["80 cm", "40 cm", "100 cm", "√6400 cm"],
+              "correctAnswers": [0],
+              "explanation": "100² − 60² = 6400, √6400 = 80 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Côtés 500 mm et 1200 mm. Hypoténuse = ?",
+              "options": [
+                "1300 mm",
+                "1700 mm",
+                "600 mm",
+                "1,3 m seulement sans calcul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "250000 + 1440000 = 1690000, √ = 1300 mm = 1,3 m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Avant Pythagore, on convertit les longueurs pour :",
+              "options": [
+                "Utiliser la même unité",
+                "Passer en degrés",
+                "Calculer l'aire",
+                "Oublier les carrés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toutes les longueurs doivent être exprimées dans la même unité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Côtés 1,2 m et 1,6 m. Hypoténuse = ?",
+              "options": ["2 m", "2,8 m", "0,4 m", "√4 m"],
+              "correctAnswers": [0],
+              "explanation": "1,44 + 2,56 = 4, c = 2 m."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Diagonale 2,5 m, côté 1,5 m (même unité). Autre côté = ?",
+              "options": ["2 m", "1 m", "4 m", "√6,25 m"],
+              "correctAnswers": [0],
+              "explanation": "6,25 − 2,25 = 4, côté = 2 m."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Côtés 9 km et 12 km. Hypoténuse = ?",
+              "options": ["15 km", "21 km", "3 km", "108 km"],
+              "correctAnswers": [0],
+              "explanation": "81 + 144 = 225, c = 15 km."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réponse 50 sans unité alors que l'énoncé est en cm :",
+              "options": [
+                "Incomplète",
+                "Toujours correcte",
+                "Interdite en maths",
+                "Égale à 50 m"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut préciser cm, m, etc."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Problèmes concrets",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Terrain rectangulaire 40 m × 30 m. Diagonale = ?",
+              "options": ["50 m", "70 m", "1200 m", "√2500 m"],
+              "correctAnswers": [0, 3],
+              "explanation": "1600 + 900 = 2500, d = 50 m."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Avion monte verticalement 300 m, avance 400 m. Distance parcourue en ligne droite depuis le départ ?",
+              "options": ["500 m", "700 m", "100 m", "120000 m"],
+              "correctAnswers": [0],
+              "explanation": "90000 + 160000 = 250000, √ = 500 m."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Fil tendu entre deux poteaux : poteaux 3 m et 4 m d'écart, fil 5 m. Angle au sol ?",
+              "options": [
+                "Triangle rectangle 3-4-5",
+                "Équilatéral",
+                "Sans angle droit",
+                "Fil trop court toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3² + 4² = 5² : configuration rectangle possible selon la hauteur des poteaux ; classiquement problème 3-4-5."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Écran 16:9, largeur 80 cm. Diagonale ≈ ? (utiliser 64 + 36 = 100 si modèle 48×80)",
+              "options": ["√(48² + 80²) cm", "128 cm", "160 cm", "80 cm"],
+              "correctAnswers": [0],
+              "explanation": "On modélise par un rectangle ; d = √(48² + 80²) cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Chemin rectangulaire : aller 120 m puis 50 m. Raccourci diagonal = ?",
+              "options": ["130 m", "170 m", "70 m", "6000 m"],
+              "correctAnswers": [0],
+              "explanation": "14400 + 2500 = 16900, d = 130 m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bateau 6 km vers l'est puis 8 km vers le nord. Distance à vol d'oiseau du départ = ?",
+              "options": ["10 km", "14 km", "2 km", "48 km"],
+              "correctAnswers": [0],
+              "explanation": "36 + 64 = 100, distance = 10 km."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Mur 4 m, toit à 3 m du mur au sol. Longueur de la poutre = ?",
+              "options": ["5 m", "7 m", "1 m", "12 m"],
+              "correctAnswers": [0],
+              "explanation": "9 + 16 = 25, poutre = 5 m."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Câble 25 m du haut d'un mât à un point à 7 m du pied. Hauteur du mât = ?",
+              "options": ["24 m", "18 m", "32 m", "√576 m"],
+              "correctAnswers": [0],
+              "explanation": "625 − 49 = 576, h = 24 m."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pièce 5 m × 12 m. Diagonale du sol = ?",
+              "options": ["13 m", "17 m", "60 m", "7 m"],
+              "correctAnswers": [0],
+              "explanation": "25 + 144 = 169, d = 13 m."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un problème, « distance à vol d'oiseau » signifie souvent :",
+              "options": [
+                "Segment en ligne droite",
+                "Distance le long d'une route",
+                "Périmètre",
+                "Aire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la longueur du segment direct, calculée par Pythagore si deux étapes perpendiculaires."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse — calculer une longueur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour calculer une longueur manquante dans un triangle rectangle :",
+              "options": [
+                "Identifier l'hypoténuse",
+                "Écrire a² + b² = c² ou c² − a² = b²",
+                "Additionner les trois côtés",
+                "Utiliser π"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Repérage de c puis application de Pythagore selon le côté cherché."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Côtés 8 et 15. Hypoténuse = ?",
+              "options": ["17", "23", "7", "120"],
+              "correctAnswers": [0],
+              "explanation": "64 + 225 = 289, c = 17."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Hypoténuse 20, côté 12. Autre côté = ?",
+              "options": ["16", "8", "32", "√256"],
+              "correctAnswers": [0],
+              "explanation": "400 − 144 = 256, côté = 16."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Côtés √3 et 1. Hypoténuse = ?",
+              "options": ["2", "√4", "4", "√2"],
+              "correctAnswers": [0],
+              "explanation": "3 + 1 = 4, c = 2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Rectangle 7 cm × 24 cm. Diagonale = ?",
+              "options": ["25 cm", "31 cm", "168 cm", "17 cm"],
+              "correctAnswers": [0],
+              "explanation": "49 + 576 = 625, d = 25 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Côtés 2,4 m et 3,2 m. Hypoténuse = ?",
+              "options": ["4 m", "5,6 m", "0,8 m", "√16 m"],
+              "correctAnswers": [0],
+              "explanation": "5,76 + 10,24 = 16, c = 4 m."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Après c² = 50, la longueur c vaut :",
+              "options": ["√50", "50", "25", "5 obligatoirement"],
+              "correctAnswers": [0],
+              "explanation": "On prend la racine carrée positive du résultat."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Côtés 13, 84, 85. Nature du triangle ?",
+              "options": [
+                "Rectangle",
+                "Non rectangle",
+                "Équilatéral",
+                "85 côté droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "169 + 7056 = 7225 = 85²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Isocèle rectangle, côté de l'angle droit 7 cm. Hypoténuse = ?",
+              "options": ["7√2 cm", "14 cm", "49 cm", "7 cm"],
+              "correctAnswers": [0],
+              "explanation": "49 + 49 = 98, c = √98 = 7√2 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Étape finale après un calcul de Pythagore :",
+              "options": [
+                "Vérifier a² + b² = c² et donner l'unité",
+                "Multiplier par 2",
+                "Passer en degrés",
+                "Oublier la racine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrôle de cohérence et réponse complète avec unité."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

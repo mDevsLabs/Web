@@ -1,0 +1,2738 @@
+{
+  "id": "5e-coreen-04",
+  "year": "5e",
+  "subject": "coreen",
+  "title": "La grammaire du coréen",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur les « articles » en coréen sont exactes ?",
+              "options": [
+                "Le coréen n'utilise pas le/la/les comme en français.",
+                "On traduit parfois un nom seul sans ajouter de mot.",
+                "Le mot « le » s'écrit toujours 이 (i) devant un nom.",
+                "Chaque nom coréen doit être précédé de 은 (eun)."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le coréen n'a pas d'article défini ou indéfini comme le français."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour parler du thème « école », on dit souvent :",
+              "options": [
+                "학교는 (hakgyoneun)",
+                "학교가 (hakgyoga)",
+                "학교에 (hakgyoe)",
+                "학교를 (hakgyoreul)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "은/는 (eun/neun) marque souvent le thème dont on parle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Après 학교 (hakgyo), la particule de thème s'écrit :",
+              "options": ["는 (neun)", "은 (eun)", "가 (ga)", "이 (i)"],
+              "correctAnswers": [0],
+              "explanation": "학교 finit par une voyelle, donc on emploie 는 (neun)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Après 책 (chaek, « livre »), la particule de thème s'écrit :",
+              "options": [
+                "는 (neun)",
+                "은 (eun)",
+                "예요 (yeyo)",
+                "이에요 (ieyo)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "책 finit par une consonne (batchim), donc on emploie 은 (eun)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "이/가 (i/ga) sert surtout à indiquer :",
+              "options": [
+                "Le sujet qui fait l'action ou est mis en avant",
+                "Une adresse e-mail",
+                "Uniquement le thème connu",
+                "La politesse maximale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "이/가 (i/ga) marque le sujet grammatical ou une mise en relief."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans « 친구가 와요 (chinguga wayo) », 친구가 (chinguga) signifie :",
+              "options": [
+                "« l'ami » comme sujet",
+                "« à l'ami »",
+                "« l'ami » comme thème seulement",
+                "« sans ami »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "가 (ga) indique ici que « ami » est le sujet de l'action."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour dire « quant à moi » on peut dire :",
+              "options": [
+                "저는 (jeoneun)",
+                "저가 (jeoga) seulement",
+                "저를 (jeoreul) toujours",
+                "저에 (jeoe) toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "저는 (jeoneun) présente « moi » comme thème de la phrase."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La particule 은/는 (eun/neun) ne remplace pas :",
+              "options": [
+                "Un article français le/la",
+                "La notion de thème ou contraste",
+                "Le choix après voyelle ou consonne",
+                "Un marqueur de sujet possible à côté de 이/가"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle oriente le discours mais n'équivaut pas mot pour mot à un article."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "물 (mul, « eau ») + thème donne :",
+              "options": [
+                "물은 (mureun)",
+                "물는 (mulneun)",
+                "물가 (mulga)",
+                "물이에요 (murieyo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "물 finit par l consonne, donc 은 (eun) : 물은 (mureun)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour opposer « l'enfant, lui… » on peut utiliser :",
+              "options": [
+                "아이는 (aineun)",
+                "아이를 (aireul) seul",
+                "아이에 (aie) seul",
+                "아이로 (airo) seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "은/는 (eun/neun) peut marquer un contraste entre personnes ou choses."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases montrent bien 은/는 (eun/neun) ?",
+              "options": [
+                "나는 학생이에요 (naneun haksaengieyo).",
+                "오늘은 날씨가 좋아요 (oneureun nalssiga joayo).",
+                "책이 (chaegi) seul sans verbe.",
+                "은 (eun) après toute voyelle."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ces exemples présentent un thème avec 는 ou 은 selon le nom."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "나 (na, « je ») + thème :",
+              "options": [
+                "나는 (naneun)",
+                "나은 (naeun)",
+                "나가 (naga) toujours thème",
+                "나이 (nai)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "나 finit par voyelle → 는 (neun)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Le chat dort » sans article coréen :",
+              "options": [
+                "고양이가 자요 (goyangiga jayo)",
+                "Impossible sans « le » coréen",
+                "고양이 le (goyangi le)",
+                "고양이예요 (goyangiyeyo) seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "고양이 (goyangi) seul suffit ; 가 (ga) marque le sujet."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "사과 (sagwa) + sujet :",
+              "options": [
+                "사과가 (sagwaga)",
+                "사과은 (sagwaeun)",
+                "사과이 (sagwai)",
+                "사과를 (sagwareul) sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle finale → 가 (ga) pour le sujet."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "밥 (bap) + sujet :",
+              "options": [
+                "밥이 (babi)",
+                "밥가 (bapga)",
+                "밥는 (bapneun)",
+                "밥예요 (bapyeyo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consonne finale → 이 (i) : 밥이 (babi)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour insister « c'est MOI qui… » :",
+              "options": [
+                "제가 (jega)",
+                "제는 (jeneun) seul",
+                "저예요 (jeoyeyo) seul",
+                "저와 (jeowa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "제가 (jega) met le sujet « moi » en relief."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "선생님 (seonsaengnim) + thème :",
+              "options": [
+                "선생님은 (seonsaengnimeun)",
+                "선생님는 (seonsaengnimneun)",
+                "선생님가 (seonsaengnimga)",
+                "선생님를 (seonsaengnimreul)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consonne finale → 은 (eun)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Différence thème/sujet en 5e :",
+              "options": [
+                "은/는 pour le cadre, 이/가 pour l'acteur",
+                "이/가 uniquement pour le français",
+                "은/는 uniquement après 예요",
+                "Aucune particule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On distingue cadre (은/는) et sujet (이/가)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "커피 (keopi) + thème :",
+              "options": [
+                "커피는 (keopineun)",
+                "커피은 (keopieun)",
+                "커피이 (keopii)",
+                "커피를 (keopireul) thème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "커피 finit par i voyelle → 는 (neun)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Un livre » sans article :",
+              "options": [
+                "책 (chaek) + particule adaptée",
+                "un 책 (un chaek)",
+                "le 책 (le chaek)",
+                "책은 (chaegeun) toujours obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom seul puis 은/는 ou 이/가 selon le sens."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Après batchim, quelles formes sont correctes ?",
+              "options": [
+                "책 + 은 → 책은 (chaegeun)",
+                "밥 + 이 → 밥이 (babi)",
+                "물 + 는 → 물는 (mulneun)",
+                "사과 + 이 → 사과이 (sagwai)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Après batchim on utilise 은 (eun) et 이 (i)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "의자 (uija) + sujet :",
+              "options": [
+                "의자가 (uijaga)",
+                "의자은 (uijaeun)",
+                "의자이 (uijai)",
+                "의자를 (uijareul) sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle finale → 가 (ga)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "한국 (hanguk) + thème :",
+              "options": [
+                "한국은 (hangugeun)",
+                "한국는 (hangukneun)",
+                "한국가 (hangukga)",
+                "한국예요 (hangukyeyo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consonne finale k → 은 (eun)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« La maison, elle… » :",
+              "options": [
+                "집은 (jibeun)",
+                "집를 (jibreul)",
+                "집에 (jibe) seul",
+                "집와 (jibwa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "집은 (jibeun) présente la maison comme thème."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "이/가 (i/ga) vient après :",
+              "options": [
+                "Le nom nu, selon voyelle ou consonne",
+                "Toujours après 이에요",
+                "Uniquement après les verbes",
+                "Un article défini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On colle 이 ou 가 directement au nom."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réponse « qui est venu ? » :",
+              "options": [
+                "Souvent 이/가 (i/ga)",
+                "만 (man) seul",
+                "에서 (eseo) seul",
+                "도 (do) seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réponse met en avant le sujet avec 이/가."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "형 (hyeong) + thème :",
+              "options": [
+                "형은 (hyeongeun)",
+                "형는 (hyeongneun)",
+                "형가 (hyeongga)",
+                "형를 (hyeongreul)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "형 finit par consonne ng → 은 (eun)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pluriel « des chats » sans article :",
+              "options": [
+                "고양이 (goyangi) ou 고양이들 (goyangideul) selon contexte",
+                "Impossible",
+                "Obligatoire le (le)",
+                "Obligatoire un (un)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas d'article ; pluriel implicite ou 들 (deul)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "핸드폰 (haendeupon) + sujet :",
+              "options": [
+                "핸드폰이 (haendeuponi)",
+                "핸드폰가 (haendeuponga)",
+                "핸드폰는 (haendeuponneun)",
+                "핸드폰를 (haendeuponreul)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consonne finale n → 이 (i)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "잎 (ip) + thème :",
+              "options": [
+                "잎은 (ipeun)",
+                "잎는 (ipneun)",
+                "잎가 (ipga)",
+                "잎을 (ipeul) thème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim ㅂ → 은 (eun) pour le thème."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Paires correctes :",
+              "options": [
+                "바나나 (banana) → 바나나는 (banananeun)",
+                "학교 (hakgyo) → 학교가 (hakgyoga)",
+                "책 → 책는 (chaekneun)",
+                "공 → 공가 (gongga) sujet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fin en voyelle : 는/가 ; 책는 est incorrect."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "가방 (gabang) + sujet :",
+              "options": [
+                "가방이 (gabangi)",
+                "가방가 (gabangga)",
+                "가방는 (gabangneun)",
+                "가방예요 (gabangyeyo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consonne finale ng → 이 (i)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« L'élève lit » sans « le » :",
+              "options": [
+                "학생이 읽어요 (haksaengi ilgeoyo) approx.",
+                "학생 le lit",
+                "le 학생 lit",
+                "학생은 (haksaengeun) seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "학생 (haksaeng) + sujet 이 + verbe ; pas d'article."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "우유 (uyu) + thème :",
+              "options": [
+                "우유는 (uyuneun)",
+                "우유은 (uyueun)",
+                "우유이 (uyui)",
+                "우유가 (uyuga) thème unique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fin en voyelle u → 는 (neun)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Quant au vendredi » :",
+              "options": [
+                "금요일은 (geumyoireun)",
+                "금요일를 (geumyoireul)",
+                "금요일에요 (geumyoireyeyo) seul",
+                "금요일가 (geumyoilga)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour + 은/는 pour le thème temporel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "비 (bi, pluie) + sujet :",
+              "options": [
+                "비가 (biga)",
+                "비는 (bineun) sujet pluie",
+                "비를 (bireul)",
+                "비에 (bie)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "비가 오다 (biga oda) : sujet 가."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "토마토 (tomato) + thème :",
+              "options": [
+                "토마토는 (tomatoneun)",
+                "토마토은 (tomatoeun)",
+                "토마토이 (tomatoi)",
+                "토마토를 (tomatoreul) thème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle o finale → 는 (neun)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En 5e, on évite de confondre :",
+              "options": [
+                "Particule sujet et copule",
+                "Corée et France",
+                "Hangul et latin",
+                "Pluriel seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "이/가 n'est pas un verbe ; 이에요/예요 est la copule."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "손 (son) + sujet :",
+              "options": [
+                "손이 (soni)",
+                "손가 (songga)",
+                "손는 (sonneun)",
+                "손와 (sonwa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim n → 이 (i)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Mon ami » sans article :",
+              "options": [
+                "친구 (chingu) + particule selon phrase",
+                "le 친구 (le chingu)",
+                "un 친구 (un chingu)",
+                "친구 le (chingu le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas d'articles ; autres marqueurs pour possession."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux affirmations vraies sur 은/는 :",
+              "options": [
+                "Peut introduire ce dont on parle.",
+                "Voyelle → 는, consonne → 은.",
+                "Remplace toujours « un/une ».",
+                "S'écrit après 이에요 (ieyo)."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Marqueur de thème avec alternance eun/neun."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "축구 (chukgu) + thème :",
+              "options": [
+                "축구는 (chukguneun)",
+                "축구은 (chukgueun)",
+                "축구가 (chukguga) thème seul",
+                "축구를 (chukgureul) thème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle u → 는 : 축구는."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "나무 (namu) + sujet :",
+              "options": [
+                "나무가 (namuga)",
+                "나무은 (namueun)",
+                "나무이 (namui)",
+                "나무는 (namuneun) sujet obligé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle u finale → 가 (ga)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Le ciel, lui… » :",
+              "options": [
+                "하늘은 (haneureun)",
+                "하늘를 (haneureul)",
+                "하늘에 (haneure)",
+                "하늘와 (haneulwa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하늘 + 은 (eun) car consonne finale l."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Est-ce le prof ? » sujet :",
+              "options": [
+                "선생님이 (seonsaengnimi)",
+                "선생님 le (seonsaengnim le)",
+                "선생님 un (seonsaengnim un)",
+                "Sans nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identification : nom en sujet avec 이."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "는 (neun) ne suit pas directement :",
+              "options": [
+                "Un nom à consonne finale (batchim)",
+                "Un nom à voyelle finale",
+                "Un pronom",
+                "Un nom coréen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après batchim on dit 은, pas 는 collé au nom."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "개 (gae) + sujet :",
+              "options": [
+                "개가 (gaega)",
+                "개이 (gaei)",
+                "개는 (gaeneun) sujet unique",
+                "개을 (gaeeul)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle finale → 가 (ga)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Pas d'article » en classe :",
+              "options": [
+                "Pas de le/la/un coréens systématiques.",
+                "On ne traduit jamais les noms.",
+                "On supprime 은/는.",
+                "On parle sans noms."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les particules structurent, ce ne sont pas des articles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "문 (mun) + thème :",
+              "options": [
+                "문은 (muneun)",
+                "문는 (munneun)",
+                "문가 (munga)",
+                "문예요 (munyeyo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim n → 은 (eun)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "자전거 (jajeongeo) + sujet :",
+              "options": [
+                "자전거가 (jajeongeoga)",
+                "자전거은 (jajeongeoeun)",
+                "자전거이 (jajeongeoi)",
+                "자전거를 (jajeongeoreul) sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle o → 가 (ga)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux affirmations vraies sur 이/가 (i/ga) :",
+              "options": [
+                "Marque le sujet du verbe.",
+                "Après batchim : 이, après voyelle : 가.",
+                "Équivaut à « et ».",
+                "Se place après 예요 seulement."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "이/ga est la paire sujet selon la dernière lettre du nom."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "달 (dal) + sujet :",
+              "options": [
+                "달이 (dari)",
+                "달가 (dalga)",
+                "달는 (dalneun)",
+                "달에 (dale)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim l → 이 (i)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "사진 (sajin) + thème :",
+              "options": [
+                "사진은 (sajineun)",
+                "사진는 (sajinneun)",
+                "사진가 (sajinga)",
+                "사진를 (sajinreul)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim n → 은 (eun)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "우리 학교가 (uri hakgyoga) :",
+              "options": [
+                "« notre école » comme sujet",
+                "« notre école » article le",
+                "Impossible sans le",
+                "Thème obligatoire 는"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet de l'action : 학교가."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Batchim en 5e :",
+              "options": [
+                "Consonne en fin de syllabe → 이/은",
+                "Toujours 가/는",
+                "Toujours 이/은",
+                "Aucune règle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim = consonne sous la voyelle en fin de syllabe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "음악 (eumak) + thème :",
+              "options": [
+                "음악은 (eumageun)",
+                "음악는 (eumagneun)",
+                "음악가 (eumakga)",
+                "음악를 (eumakreul)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim k → 은 (eun)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "꽃 (kkoch) + sujet :",
+              "options": [
+                "꽃이 (kkochi)",
+                "꽃는 (kkochneun)",
+                "꽃가 (kkochga)",
+                "꽃 le (kkoch le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim ch → 이 (i)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "저희 (jeohui) + thème :",
+              "options": [
+                "저희는 (jeohuineun)",
+                "저희은 (jeohuieun)",
+                "저희이 (jeohuii)",
+                "저희를 (jeohuireul) thème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fin voyelle i → 는 (neun)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contrast « le thé… » :",
+              "options": [
+                "차는 (chaneun)",
+                "차를 (chareul) thème",
+                "차에 (chae)",
+                "차가 (chaga) impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thème contrasté : 차는 (chaneun)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "한국 (hanguk) + sujet :",
+              "options": [
+                "한국이 (hanguki)",
+                "한국가 (hangukga)",
+                "한국는 (hangukneun)",
+                "한국 un (hanguk un)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim k → 이 (i) pour sujet."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vrai sur traduction sans article :",
+              "options": [
+                "« Le garçon » peut être 소년 (sonyeon) + particule.",
+                "Il n'y a pas de mot « le » obligatoire devant chaque nom.",
+                "On invente « le » en hangul.",
+                "이/ga = a/an toujours."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pas de mot « le » ; particules selon le rôle du nom."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "소년 (sonyeon) + thème :",
+              "options": [
+                "소년은 (sonyeoneun)",
+                "소년는 (sonyeonneun)",
+                "소년가 (sonyeonga)",
+                "소년을 (sonyeoneul) thème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim n → 은 (eun)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "소녀 (sonyeo) + sujet :",
+              "options": [
+                "소녀가 (sonyeoga)",
+                "소녀은 (sonyeoeun)",
+                "소녀이 (sonyeoi)",
+                "소녀를 (sonyeoreul) sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle o → 가 (ga)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "가게 (gage) + thème :",
+              "options": [
+                "가게는 (gageneun)",
+                "가게은 (gageeun)",
+                "가게이 (gagei)",
+                "가게가 (gagega) thème seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle e → 는 (neun)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "코 (ko) + sujet :",
+              "options": [
+                "코가 (koga)",
+                "코는 (koneun) sujet fixe",
+                "코을 (koeul)",
+                "코 le (ko le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle o → 가 (ga)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "산 (san) + thème :",
+              "options": [
+                "산은 (saneun)",
+                "산는 (sanneun)",
+                "산가 (sanga)",
+                "산예요 (sanyeyo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim n → 은 (eun)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi apprendre 은/는 en 5e ?",
+              "options": [
+                "Comprendre la structure des phrases simples.",
+                "Remplacer tous les verbes.",
+                "Éviter le hangul.",
+                "Parler sans noms."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base pour lire et construire des énoncés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "펜 (pen) + sujet :",
+              "options": [
+                "펜이 (peni)",
+                "펜가 (penga)",
+                "펜는 (penneun)",
+                "펜을 (peneul) sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim n → 이 (i)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "인터넷 (inteonet) + thème :",
+              "options": [
+                "인터넷은 (inteoneteun)",
+                "인터넷는 (inteonetneun)",
+                "인터넷가 (inteonetga)",
+                "인터넷를 (inteonetreul)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim t → 은 (eun)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Erreur fréquente débutant :",
+              "options": [
+                "Mettre 는 après consonne finale du nom.",
+                "Oublier le nom.",
+                "Utiliser hangul.",
+                "Lire la transcription."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après batchim on utilise 은, pas 는 attaché au nom."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Paires correctes :",
+              "options": [
+                "바다 (bada) + 가 → 바다가 (badaga)",
+                "말 (mal) + 이 → 말이 (mari)",
+                "책 + 가 → 책가 (chaekga)",
+                "공 (gong) + 이 → 공이 (gongi)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Voyelle → 가 ; batchim l → 이 ; 책가 est faux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "바다 (bada) + thème :",
+              "options": [
+                "바다는 (badaneun)",
+                "바다은 (badaeun)",
+                "바다이 (badai)",
+                "바다를 (badareul) thème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle a → 는 (neun)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "공 (gong) + sujet :",
+              "options": [
+                "공이 (gongi)",
+                "공가 (gongga)",
+                "공는 (gongneun)",
+                "공 le (gong le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim ng → 이 (i)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "겨울 (gyeoul) + thème :",
+              "options": [
+                "겨울은 (gyeoureun)",
+                "겨울는 (gyeoulneun)",
+                "겨울가 (gyeoulga)",
+                "겨울를 (gyeoulreul)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim l → 은 (eun)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "태양 (taeyang) + sujet :",
+              "options": [
+                "태양이 (taeyangi)",
+                "태양가 (taeyangga)",
+                "태양는 (taeyangneun)",
+                "태양 un (taeyang un)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim ng → 이 (i)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réponse « qui ? » utilise :",
+              "options": [
+                "이/가 (i/ga)",
+                "만 (man)",
+                "부터 (buteo)",
+                "까지 (kkaji)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot répondu reprend souvent le sujet en 이/가."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "강 (gang) + thème :",
+              "options": [
+                "강은 (gageun)",
+                "강는 (gangneun)",
+                "강가 (gangga) thème",
+                "강예요 (gangyeyo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim ng → 은 (eun)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Français « des » devant nom :",
+              "options": [
+                "Pas d'équivalent article ; contexte ou 들 (deul).",
+                "은 (eun) toujours",
+                "가 (ga) toujours",
+                "예요 (yeyo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le partitif français n'a pas un seul mot coréen article."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "새 (sae) + sujet :",
+              "options": [
+                "새가 (saega)",
+                "새은 (saeeun)",
+                "새이 (saei)",
+                "새를 (saereul) sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle ae → 가 (ga)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "밤 (bam) + thème :",
+              "options": [
+                "밤은 (bameun)",
+                "밤는 (bamneun)",
+                "밤가 (bamga)",
+                "밤 le (bam le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim m → 은 (eun)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux réponses justes :",
+              "options": [
+                "Le coréen choisit les particules selon la fin du nom.",
+                "은/는 et 이/가 alternent voyelle/consonne finale.",
+                "Les articles français se traduisent mot à mot.",
+                "이 (i) vient toujours après o."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Alternance phonétique standard en début de grammaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "치즈 (chijeu) + thème :",
+              "options": [
+                "치즈는 (chijeuneun)",
+                "치즈은 (chijeeun)",
+                "치즈이 (chijeuui)",
+                "치즈가 (chijeuga) thème unique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle eu → 는 (neun)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "탁자 (takja) + sujet :",
+              "options": [
+                "탁자가 (takjaga)",
+                "탁자은 (takjaeun)",
+                "탁자이 (takjai)",
+                "탁자를 (takjareul) sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle a → 가 (ga)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "공원이 (gongwoni) + prédicat :",
+              "options": [
+                "Structure sujet sans article français",
+                "공원 le (gongwon le)",
+                "Sans particule",
+                "Obligatoire un (un)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet + 이 + prédicat ; pas d'article."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "프랑스 (peurangseu) + thème :",
+              "options": [
+                "프랑스는 (peurangseuneun)",
+                "프랑스은 (peurangseueun)",
+                "프랑스이 (peurangseui)",
+                "프랑스를 (peurangseureul) thème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle u → 는 (neun)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "신발 (sinbal) + sujet :",
+              "options": [
+                "신발이 (sinbari)",
+                "신발가 (sinbalga)",
+                "신발는 (sinbalneun)",
+                "신발 le (sinbal le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim l → 이 (i)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "오늘 (oneul) + thème :",
+              "options": [
+                "오늘은 (oneureun)",
+                "오늘는 (oneulneun)",
+                "오늘가 (oneulga)",
+                "오늘를 (oneulreul)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim l → 은 (eun)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Conseil thème/sujet :",
+              "options": [
+                "Repérer 은/는 vs 이/가 dans la leçon.",
+                "Supprimer les particules.",
+                "Ajouter « le » en hangul.",
+                "Ne traduire jamais."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Observer les marqueurs en contexte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "빨간색 (ppalgansaek) + thème :",
+              "options": [
+                "빨간색은 (ppalgansaegeun)",
+                "빨간색는 (ppalgansaekneun)",
+                "빨간색가 (ppalgansaekga)",
+                "빨간색 un (ppalgansaek un)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim k → 은 (eun)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "버스 (beoseu) + sujet :",
+              "options": [
+                "버스가 (beoseuga)",
+                "버스은 (beoseueun)",
+                "버스이 (beoseui)",
+                "버스를 (beoseureul) sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle u → 가 (ga)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bilan u1 — deux affirmations exactes :",
+              "options": [
+                "Pas d'articles le/la/un en coréen.",
+                "은/는 thème ; 이/가 sujet.",
+                "예요 marque le thème.",
+                "가 suit toujours 책 (chaek)."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Récap particules de base sans articles français."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "책 (chaek) + thème :",
+              "options": [
+                "책은 (chaegeun)",
+                "책는 (chaekneun)",
+                "책가 (chaekga)",
+                "책 le (chaek le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim k → 은 (eun)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "학교 (hakgyo) + sujet :",
+              "options": [
+                "학교가 (hakgyoga)",
+                "학교은 (hakgyoeun)",
+                "학교이 (hakgyoi)",
+                "학교 un (hakgyo un)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle o → 가 (ga)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Moi, je… » :",
+              "options": [
+                "나는 (naneun) ou 저는 (jeoneun)",
+                "나 le (na le)",
+                "나 un (na un)",
+                "Sans pronom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pronom + 는 pour le thème « moi »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Titre « articles » car :",
+              "options": [
+                "Contraste avec le français qui en a.",
+                "Le coréen a « le ».",
+                "Pour l'anglais.",
+                "Pour oublier 은/는."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On compare les systèmes linguistiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pluriel sans article :",
+              "options": [
+                "고양이 (goyangi) peut impliquer plusieurs chats",
+                "Impossible",
+                "Obligatoire le (le)",
+                "Obligatoire un (un)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte ou 들 (deul) gère le pluriel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "너 (neo) + thème :",
+              "options": [
+                "너는 (neoneun)",
+                "너은 (neoeun)",
+                "너이 (neoi)",
+                "너를 (neoreul) thème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle o → 는 (neun)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mise en relief courte :",
+              "options": [
+                "Souvent 이/가 (i/ga)",
+                "Toujours 을 (eul)",
+                "Toujours 에 (e)",
+                "Jamais de particule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "이/ga accentue l'élément répondu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "게 (ge) + sujet :",
+              "options": [
+                "게가 (gega)",
+                "게은 (geeun)",
+                "게이 (gei)",
+                "게 le (ge le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle e → 가 (ga)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Compétence fin u1 :",
+              "options": [
+                "Choisir 은/는 ou 이/ga sans confondre avec un article.",
+                "Passé composé français.",
+                "Six niveaux de politesse.",
+                "Hanja seulement."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif 5e : particules de base."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes sont la copule polie « c'est / c'est un(e) » en 5e ?",
+              "options": [
+                "이에요 (ieyo)",
+                "예요 (yeyo)",
+                "입니다 (imnida) niveau lycée",
+                "은 (eun) seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "이에요 et 예요 sont la copule polie neutre du chapitre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "책 (chaek) + copule :",
+              "options": [
+                "책이에요 (chaegieyo)",
+                "책예요 (chaegyeyo)",
+                "책은 (chaegeun) copule",
+                "책가 (chaekga)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim → 이에요 (ieyo)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "학교 (hakgyo) + copule :",
+              "options": [
+                "학교예요 (hakgyoyeyo)",
+                "학교이에요 (hakgyoieyo)",
+                "학교는 (hakgyoneun) copule",
+                "학교를 (hakgyoreul) copule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle finale → 예요 (yeyo)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 나는 학생이에요 (naneun haksaengieyo) 」 signifie :",
+              "options": [
+                "Je suis élève.",
+                "Je suis prof.",
+                "Tu es élève.",
+                "C'est un livre."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thème 나는 + 학생 + 이에요."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La copule ne se traduit pas par :",
+              "options": [
+                "Un article le/la",
+                "« être » ou « c'est »",
+                "Un adjectif seul",
+                "Rien (ellipse en français)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "이에요/예요 n'ajoute pas le/la français."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "커피 (keopi) + copule :",
+              "options": [
+                "커피예요 (keopiyeyo)",
+                "커피이에요 (keopiieyo)",
+                "커피은 (keopieun)",
+                "커피가 (keopiga) copule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fin voyelle → 예요."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 이것은 사과예요 (igeoseun sagwayeyo) 」 :",
+              "options": [
+                "Ceci est une pomme.",
+                "Ceci est un livre.",
+                "C'est hier.",
+                "Je suis pomme."
+              ],
+              "correctAnswers": [0],
+              "explanation": "이것은 thème + 사과예요."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "이것 (igeot, « ceci ») + thème :",
+              "options": [
+                "이것은 (igeoseun)",
+                "이것는 (igeotneun)",
+                "이것가 (igeotga)",
+                "이것 le (igeot le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim t → 은 pour thème."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "사과 (sagwa) dans la phrase précédente prend :",
+              "options": [
+                "예요 (yeyo)",
+                "이에요 (ieyo)",
+                "입니다 (imnida)",
+                "은 (eun) seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "사과 finit par voyelle → 예요."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase simple =",
+              "options": [
+                "Nom (+ particule) + 이에요/예요",
+                "Nom + article le",
+                "Verbe seul toujours",
+                "Copule avant le nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure de base en 5e."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux noms qui prennent 이에요 (ieyo) ?",
+              "options": [
+                "물 (mul) → 물이에요 (murieyo)",
+                "책 (chaek) → 책이에요 (chaegieyo)",
+                "물 (mul) → 물예요 (muryeyo)",
+                "학교 (hakgyo) → 학교이에요 (hakgyoieyo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Après batchim on utilise 이에요."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "물 (mul) + copule :",
+              "options": [
+                "물이에요 (murieyo)",
+                "물예요 (muryeyo)",
+                "물은 (mureun) copule",
+                "물가 (mulga)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim l → 이에요."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "밥 (bap) + copule :",
+              "options": [
+                "밥이에요 (babieyo)",
+                "밥예요 (bapyeyo)",
+                "밥는 (bapneun)",
+                "밥이 (babi) seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consonne finale → 이에요."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 저는 마리예요 (jeoneun mariyeyo) 」 :",
+              "options": [
+                "Je m'appelle Marie. / Je suis Marie.",
+                "Tu es Marie.",
+                "C'est un livre.",
+                "Marie mange."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation avec thème + nom + 예요."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Prénom fin voyelle ㅣ : 지 (ji) + copule :",
+              "options": [
+                "지예요 (jiyeyo)",
+                "지이에요 (jiieyo)",
+                "지은 (jieun)",
+                "지가 (jiga) copule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle i → 예요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Prénom batchim : 준 (jun) + copule :",
+              "options": [
+                "준이에요 (junieyo)",
+                "준예요 (junyeyo)",
+                "준는 (junneun)",
+                "준 le (jun le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim n → 이에요."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 이건 연필이에요 (igeon yeonpir-ieyo) 」 :",
+              "options": [
+                "C'est un crayon.",
+                "C'est une gomme.",
+                "C'est une pomme.",
+                "Je suis crayon."
+              ],
+              "correctAnswers": [0],
+              "explanation": "이건 = forme contractée de ceci ; 연필 batchim → 이에요."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "연필 (yeonpil) + copule :",
+              "options": [
+                "연필이에요 (yeonpirieyo)",
+                "연필예요 (yeonpiryeyo)",
+                "연필는 (yeonpilneun)",
+                "연필를 (yeonpilreul)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim l → 이에요."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Erreur : 학교이에요 (hakgyoieyo) car :",
+              "options": [
+                "학교 finit par voyelle → 예요",
+                "학교 a batchim",
+                "Impossible en coréen",
+                "Trop poli"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après voyelle on dit 예요, pas 이에요."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Règle 5e copule :",
+              "options": [
+                "Batchim → 이에요 ; voyelle → 예요",
+                "Toujours 예요",
+                "Toujours 이에요",
+                "Après 은/는 seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même alternance que 이/ga mais avec 이에요/예요."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases avec 예요 (yeyo) correct ?",
+              "options": [
+                "바나나예요 (bananayeyo)",
+                "우유예요 (uyuyeyo)",
+                "책예요 (chaegyeyo)",
+                "밥예요 (bapyeyo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Noms en voyelle finale : 바나나, 우유."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "바나나 (banana) + copule :",
+              "options": [
+                "바나나예요 (bananayeyo)",
+                "바나나이에요 (bananaiieyo)",
+                "바나나은 (bananaeun)",
+                "바나나가 (bananaka) copule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle a → 예요."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 이것은 우유예요 (igeoseun uyuyeyo) 」 :",
+              "options": [
+                "Ceci est du lait.",
+                "Ceci est de l'eau.",
+                "Je suis lait.",
+                "C'est hier."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identification simple avec copule."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "의자 (uija) + copule :",
+              "options": [
+                "의자예요 (uijayeyo)",
+                "의자이에요 (uijaiieyo)",
+                "의자은 (uijaeun)",
+                "의자를 (uijareul) copule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle a finale → 예요."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「 저는 프랑스 사람이에요 (jeoneun peurangseu saramieyo) 」 :",
+              "options": [
+                "Je suis français(e).",
+                "Je suis coréen(ne).",
+                "Tu es français.",
+                "C'est la France."
+              ],
+              "correctAnswers": [0],
+              "explanation": "사람 (personne) batchim → 이에요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "사람 (saram) + copule :",
+              "options": [
+                "사람이에요 (saramieyo)",
+                "사람예요 (saramyeyo)",
+                "사람는 (saramneun)",
+                "사람가 (saramga)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim m → 이에요."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 이건 가방이에요 (igeon gabangieyo) 」 :",
+              "options": [
+                "C'est un sac.",
+                "C'est une pomme.",
+                "Je suis sac.",
+                "Sac court."
+              ],
+              "correctAnswers": [0],
+              "explanation": "가방 batchim ng → 이에요."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "가방 (gabang) + copule :",
+              "options": [
+                "가방이에요 (gabangieyo)",
+                "가방예요 (gabangyeyo)",
+                "가방는 (gabangneun)",
+                "가방 un (gabang un)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim ng → 이에요."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase : « C'est de l'eau. »",
+              "options": [
+                "물이에요 (murieyo)",
+                "물예요 (muryeyo)",
+                "물은 (mureun) seul",
+                "물 le (mul le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "물 + 이에요."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Copule après nom seul signifie :",
+              "options": [
+                "Identifier ou décrire (X est Y)",
+                "Conjuguer un verbe d'action",
+                "Marquer le passé",
+                "Remplacer 은/는"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La copule lie le sujet à un nom ou notion."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux réponses justes pour « C'est un chat. » ?",
+              "options": [
+                "고양이예요 (goyangiyeyo)",
+                "On n'ajoute pas « un/le » devant 고양이 (goyangi).",
+                "고양이 le (goyangi le)",
+                "고양이이에요 (goyangiieyo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "고양i + 예요 ; pas d'article français devant le nom."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "고양이 (goyangi) + copule :",
+              "options": [
+                "고양이예요 (goyangiyeyo)",
+                "고양이이에요 (goyangiieyo)",
+                "고양이은 (goyangieun)",
+                "고양이를 (goyangireul) copule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle i → 예요."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 이것은 책상이에요 (igeoseun chaeksangieyo) 」 :",
+              "options": [
+                "C'est un bureau.",
+                "C'est une chaise.",
+                "Je suis bureau.",
+                "C'est une pomme."
+              ],
+              "correctAnswers": [0],
+              "explanation": "책상 batchim → 이에요."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "책상 (chaeksang) + copule :",
+              "options": [
+                "책상이에요 (chaeksangieyo)",
+                "책상예요 (chaeksangyeyo)",
+                "책상는 (chaeksangneun)",
+                "책상 un (chaeksang un)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim ng → 이에요."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「 우리 집은 작아요 (uri jibeun jagayo) 」 vs copule :",
+              "options": [
+                "작아요 est adjectif ; le chapitre copule = 이에요/예요",
+                "Même chose",
+                "Impossible",
+                "Passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 5e on sépare copule nom-nom et adjectif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 이건 한국어 책이에요 (igeon hangugeo chaegieyo) 」 :",
+              "options": [
+                "C'est un livre de coréen.",
+                "C'est un livre français.",
+                "Je suis livre.",
+                "C'est une école."
+              ],
+              "correctAnswers": [0],
+              "explanation": "책 batchim → 이에요."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 저는 중학생이에요 (jeoneun junghaksaengieyo) 」 :",
+              "options": [
+                "Je suis au collège (élève).",
+                "Je suis prof.",
+                "Tu es élève.",
+                "C'est le collège."
+              ],
+              "correctAnswers": [0],
+              "explanation": "중학생 batchim → 이에요."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "중학생 (junghaksaeng) + copule :",
+              "options": [
+                "중학생이에요 (junghaksaengieyo)",
+                "중학생예요 (junghaksaengyeyo)",
+                "중학생는 (junghaksaengneun)",
+                "중학생 un (junghaksaeng un)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim ng → 이에요."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Question « Qu'est-ce que c'est ? » début :",
+              "options": [
+                "이게 뭐예요? (ige moyeyo?)",
+                "이게 뭐이에요? (ige moyieyo?)",
+                "뭐 le (mwo le)",
+                "Sans copule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "뭐 (quoi) + 예요 en question."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réponse à « 이게 뭐예요? » avec pomme :",
+              "options": [
+                "사과예요 (sagwayeyo)",
+                "사과이에요 (sagwaieyo)",
+                "사과 le (sagwa le)",
+                "사과는 (sagwaneun) seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "사과 + 예요."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux affirmations vraies sur phrases simples :",
+              "options": [
+                "On peut ajouter 은/는 au thème avant la copule.",
+                "La copule vient en fin de phrase (5e).",
+                "La copule remplace tout verbe d'action.",
+                "On ajoute « le » en hangul."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Thème optionnel + copule finale typique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 나는 토마토예요 (naneun tomatoyeyo) 」 (blague : je suis tomate) :",
+              "options": [
+                "Nom + 예요 après voyelle du nom",
+                "Nom + 이에요",
+                "Sans copule",
+                "Article le"
+              ],
+              "correctAnswers": [0],
+              "explanation": "토마토 finit par voyelle → 예요."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "토마토 (tomato) + copule :",
+              "options": [
+                "토마토예요 (tomatoyeyo)",
+                "토마토이에요 (tomatoieyo)",
+                "토마토은 (tomatoeun)",
+                "토마토 un (tomato un)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle o → 예요."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 이것은 지도예요 (igeoseun jidoyeyo) 」 :",
+              "options": [
+                "C'est une carte (géo).",
+                "C'est une porte.",
+                "Je suis carte.",
+                "C'est un crayon."
+              ],
+              "correctAnswers": [0],
+              "explanation": "지도 voyelle o → 예요."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "지도 (jido) + copule :",
+              "options": [
+                "지도예요 (jidoyeyo)",
+                "지도이에요 (jidoieyo)",
+                "지도은 (jidoeun)",
+                "지도 le (jido le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle o → 예요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 저는 의사가 아니에요 (jeoneun uisaga anieyo) 」 niveau 5e :",
+              "options": [
+                "Je ne suis pas médecin (négation copule).",
+                "Je suis médecin.",
+                "Tu es médecin.",
+                "C'est un médecin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "아니에요 nie la copule (5e)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Négation de copule en 5e :",
+              "options": [
+                "아니에요 (anieyo)",
+                "안 해요 seul",
+                "Pas de négation",
+                "입니다"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom + 아니에요."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「 이건 사과가 아니에요 (igeon sagwaga anieyo) 」 :",
+              "options": [
+                "Ce n'est pas une pomme.",
+                "C'est une pomme.",
+                "Je suis pomme.",
+                "Pas de fruit."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet 사과가 + 아니에요."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Affirmation : « C'est du fromage. »",
+              "options": [
+                "치즈예요 (chijeuyeyo)",
+                "치즈이에요 (chijeuieyo)",
+                "치즈 le (chijeu le)",
+                "치즈는 (chijeuneun) copule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "치즈 voyelle eu → 예요."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ordre moyen phrase copule :",
+              "options": [
+                "(Thème + 는/은) + nom + 이에요/예요",
+                "Copule + nom + thème",
+                "Article + nom",
+                "Verbe + copule + nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure S + prédicat nominal."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases simples correctes avec copule ?",
+              "options": [
+                "저는 학생이에요 (jeoneun haksaengieyo).",
+                "이것은 펜이에요 (igeoseun penieyo).",
+                "저는 학생예요 (jeoneun haksaengyeyo).",
+                "펜예요 (penyeyo) seul avec batchim pen."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "학생 et 펜 ont batchim → 이에요."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "펜 (pen) + copule :",
+              "options": [
+                "펜이에요 (penieyo)",
+                "펜예요 (penyeyo)",
+                "펜는 (penneun)",
+                "펜 le (pen le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim n → 이에요."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 이건 우산이에요 (igeon usanieyo) 」 :",
+              "options": [
+                "C'est un parapluie.",
+                "C'est une porte.",
+                "Je suis parapluie.",
+                "C'est une pomme."
+              ],
+              "correctAnswers": [0],
+              "explanation": "우산 batchim → 이에요."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "우산 (usan) + copule :",
+              "options": [
+                "우산이에요 (usanieyo)",
+                "우산예요 (usanyeyo)",
+                "우산는 (usanneun)",
+                "우산 un (usan un)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim n → 이에요."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「 그것은 시계예요 (geugeoseun sigyeyeyo) 」 :",
+              "options": [
+                "C'est une montre.",
+                "C'est un livre.",
+                "Je suis montre.",
+                "C'est de l'eau."
+              ],
+              "correctAnswers": [0],
+              "explanation": "시계 voyelle → 예요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "시계 (sigye) + copule :",
+              "options": [
+                "시계예요 (sigyeyeyo)",
+                "시계이에요 (sigyeieyo)",
+                "시계은 (sigyeeun)",
+                "시계 le (sigye le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle e → 예요."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "그것 (geugeot, « cela ») + thème :",
+              "options": [
+                "그것은 (geugeoseun)",
+                "그것는 (geugeotneun)",
+                "그것가 (geugeotga)",
+                "그것 le (geugeot le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim t → 은."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「 저는 김민수예요 (jeoneun gim minsuyeyo) 」 :",
+              "options": [
+                "Je m'appelle Kim Min-su.",
+                "Je suis prof.",
+                "Tu es Min-su.",
+                "C'est Min-su (objet)."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation polie avec 예요 sur voyelle du prénom si fin voyelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase identité :",
+              "options": [
+                "이름 + 이에요/예요 ou prénom + 예요",
+                "Article + prénom",
+                "Verbe manger + prénom",
+                "Copule seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On présente un nom avec la copule."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "「 이것은 문이에요 (igeoseun munieyo) 」 :",
+              "options": [
+                "C'est une porte.",
+                "C'est une fenêtre.",
+                "Je suis porte.",
+                "C'est un chat."
+              ],
+              "correctAnswers": [0],
+              "explanation": "문 batchim → 이에요."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux lieux avec copule correcte ?",
+              "options": [
+                "병원이에요 (byeongwonieyo)",
+                "공원이에요 (gongwonieyo)",
+                "병원예요 (byeongwonyeyo)",
+                "공원예요 (gongwonyeyo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "병원 et 공원 finissent par batchim n → 이에요."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "병원 (byeongwon) + copule :",
+              "options": [
+                "병원이에요 (byeongwonieyo)",
+                "병원예요 (byeongwonyeyo)",
+                "병원는 (byeongwonneun)",
+                "병원 un (byeongwon un)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim n → 이에요."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 여기는 도서관이에요 (yeogineun doseogwanieyo) 」 :",
+              "options": [
+                "Ici c'est la bibliothèque.",
+                "Ici c'est le parc.",
+                "Là-bas bibliothèque.",
+                "Je suis bibliothèque."
+              ],
+              "correctAnswers": [0],
+              "explanation": "여기는 thème + 도서관 + 이에요."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "도서관 (doseogwan) + copule :",
+              "options": [
+                "도서관이에요 (doseogwanieyo)",
+                "도서관예요 (doseogwanyeyo)",
+                "도서관는 (doseogwanneun)",
+                "도서관 le (doseogwan le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim n → 이에요."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "여기 (yeogi, « ici ») + thème :",
+              "options": [
+                "여기는 (yeogineun)",
+                "여기은 (yeogieun)",
+                "여기가 (yeogiga) copule",
+                "여기 le (yeogi le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle i → 는."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 저기는 운동장이에요 (jeogineun undongjangieyo) 」 :",
+              "options": [
+                "Là-bas c'est la cour de sport.",
+                "Ici cour.",
+                "C'est la maison.",
+                "Je suis cour."
+              ],
+              "correctAnswers": [0],
+              "explanation": "저기는 + 운동장 + 이에요."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "운동장 (undongjang) + copule :",
+              "options": [
+                "운동장이에요 (undongjangieyo)",
+                "운동장예요 (undongjangyeyo)",
+                "운동장는 (undongjangneun)",
+                "운동장 un (undongjang un)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim ng → 이에요."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "저기 (jeogi, « là-bas ») + thème :",
+              "options": [
+                "저기는 (jeogineun)",
+                "저기은 (jeogieun)",
+                "저기 le (jeogi le)",
+                "저기를 (jeogireul) thème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle i → 는."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "「 이곳은 교실이에요 (igoseun gyosirieyo) 」 :",
+              "options": [
+                "Cet endroit est la salle de classe.",
+                "C'est le parc.",
+                "Je suis salle.",
+                "C'est la cuisine."
+              ],
+              "correctAnswers": [0],
+              "explanation": "교실 batchim l → 이에요."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "교실 (gyosil) + copule :",
+              "options": [
+                "교실이에요 (gyosirieyo)",
+                "교실예요 (gyosilyeyo)",
+                "교실는 (gyosilneun)",
+                "교실 le (gyosil le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim l → 이에요."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux nourritures ou boissons qui prennent 예요 (yeyo) ?",
+              "options": [
+                "주스예요 (juseuyeyo)",
+                "커피예요 (keopiyeyo)",
+                "빵예요 (ppangyeyo)",
+                "김밥예요 (gimbapyeyo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "주스 et 커피 finissent par une voyelle et prennent 예요. 빵 et 김밥 ont un batchim et prennent 이에요."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "빵 (ppang) + copule polie :",
+              "options": [
+                "빵이에요 (ppangieyo)",
+                "빵예요 (ppangyeyo)",
+                "빵는 (ppangneun)",
+                "빵 le (ppang le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim ng → 이에요."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "주스 (juseu) + copule polie :",
+              "options": [
+                "주스예요 (juseuyeyo)",
+                "주스이에요 (juseuieyo)",
+                "주스은 (juseueun)",
+                "주스 un (juseu un)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle u → 예요."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 이건 김밥이에요 (igeon gimbapieyo) 」 :",
+              "options": [
+                "C'est du gimbap.",
+                "C'est du lait.",
+                "Je suis gimbap.",
+                "C'est une pomme."
+              ],
+              "correctAnswers": [0],
+              "explanation": "김밥 batchim p → 이에요."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "김밥 (gimbap) + copule polie :",
+              "options": [
+                "김밥이에요 (gimbapieyo)",
+                "김밥예요 (gimbapyeyo)",
+                "김밥는 (gimbapneun)",
+                "김밥 le (gimbap le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim p → 이에요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 저는 채식주의자예요 (jeoneun chaesikjuuijayeyo) 」 :",
+              "options": [
+                "Je suis végétarien(ne).",
+                "Je suis médecin.",
+                "Tu es végétarien.",
+                "C'est un légume."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom finissant par une voyelle a → 예요."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 이것은 라면이에요 (igeoseun ramyeonieyo) 」 :",
+              "options": [
+                "C'est des nouilles instantanées.",
+                "C'est du riz.",
+                "Je suis ramen.",
+                "C'est de l'eau."
+              ],
+              "correctAnswers": [0],
+              "explanation": "라면 batchim n → 이에요."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "라면 (ramyeon) + copule polie :",
+              "options": [
+                "라면이에요 (ramyeonieyo)",
+                "라면예요 (ramyeonyeyo)",
+                "라면는 (ramyeonneun)",
+                "라면 un (ramyeon un)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batchim n → 이에요."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Question polie « C'est du thé ? » :",
+              "options": [
+                "차예요? (chayeyo?)",
+                "차이에요? (chaieyo?)",
+                "차 le (cha le)",
+                "Sans point d'interrogation coréen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "차 voyelle a → 예요? avec intonation montante."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "차 (cha, thé) + copule affirmative :",
+              "options": [
+                "차예요 (chayeyo)",
+                "차이에요 (chaieyo)",
+                "차은 (chaeun)",
+                "차 le (cha le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle a → 예요."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux métiers ou statuts qui s'associent avec 이에요 (ieyo) ?",
+              "options": [
+                "학생이에요 (haksaengieyo)",
+                "선생님이에요 (seonsaengnimieyo)",
+                "의사이에요 (uisaieyo)",
+                "가수이에요 (gasuieyo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "학생 et 선생님 finissent par une consonne finale (batchim) et prennent 이에요. 의사 et 가수 finissent par une voyelle et prennent 예요."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dire « Je suis élève » avec la copule polie ?",
+              "options": [
+                "저는 학생이에요 (jeoneun haksaengieyo).",
+                "저는 학생예요 (jeoneun haksaengyeyo).",
+                "저는 학생는 (jeoneun haksaengneun).",
+                "저는 학생 있어요 (jeoneun haksaeng isseoyo)."
+              ],
+              "correctAnswers": [0],
+              "explanation": "학생 se termine par le batchim ng, donc on ajoute 이에요."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "선생님 (seonsaengnim, professeur) + copule polie :",
+              "options": [
+                "선생님이에요 (seonsaengnimieyo)",
+                "선생님예요 (seonsaengnimyeyo)",
+                "선생님은 (seonsaengnimeun)",
+                "선생님이 (seonsaengnimi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "선생님 se termine par la consonne finale m (batchim), donc on utilise 이에요."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "의사 (uisa, médecin) + copule polie :",
+              "options": [
+                "의사예요 (uisayeyo)",
+                "의사이에요 (uisaieyo)",
+                "의사는 (uisaneun)",
+                "의사가 (uisaga)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "의사 se termine par la voyelle a, donc on utilise 예요."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Traduction de « 저는 요리사예요 (jeoneun yorisayeyo) » :",
+              "options": [
+                "Je suis cuisinier / cuisinière.",
+                "Je suis médecin.",
+                "C'est un restaurant.",
+                "J'aime cuisiner."
+              ],
+              "correctAnswers": [0],
+              "explanation": "요리사 signifie « cuisinier » et se termine par une voyelle a, d'où 요리사예요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "기자 (gija, journaliste) + copule polie :",
+              "options": [
+                "기자예요 (gijayeyo)",
+                "기자이에요 (gijaieyo)",
+                "기자는 (gijaneun)",
+                "기자가 (gijaga)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "기자 se termine par la voyelle a, donc on attache 예요."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "가수 (gasu, chanteur/chanteuse) + copule polie :",
+              "options": [
+                "가수예요 (gasuyeyo)",
+                "가수이에요 (gasuieyo)",
+                "가수는 (gasuneun)",
+                "가수가 (gasuga)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "가수 se termine par la voyelle u, donc on attache 예요."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "회사원 (hoesawon, employé de bureau) + copule polie :",
+              "options": [
+                "회사원이에요 (hoesawonieyo)",
+                "회사원예요 (hoesawonyeyo)",
+                "회사원은 (hoesawoneun)",
+                "회사원이 (hoesawoni)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "회사원 se termine par le batchim n, donc on attache 이에요."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment demander poliment « Êtes-vous policier ? » (경찰, gyeongchal) :",
+              "options": [
+                "경찰이에요? (gyeongchalieyo?)",
+                "경찰예요? (gyeongchalyeyo?)",
+                "경찰은? (gyeongchaleun?)",
+                "경찰이? (gyeongchali?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "경찰 se termine par le batchim l, donc on utilise 이에よ avec intonation montante."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "간호사 (ganhosa, infirmier/infirmière) + copule polie :",
+              "options": [
+                "간호사예요 (ganhosayeyo)",
+                "간호사이에요 (ganhosaieyo)",
+                "간호사는 (ganhosaneun)",
+                "간호사가 (ganhosaga)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "간호사 se termine par la voyelle a, donc on attache 예요."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles paires [nom + copule] sont parfaitement correctes ?",
+              "options": [
+                "한국 사람이에요 (hanguk saramieyo)",
+                "프랑스 사람이에요 (peurangseu saramieyo)",
+                "한국 사람예요 (hanguk saramyeyo)",
+                "프랑스 사람예요 (peurangseu saramyeyo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "사람 (personne) se termine par le batchim m, donc 사람이에요 est la forme correcte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Règle d'or de la copule polie au présent (이에요 / 예요) :",
+              "options": [
+                "Batchim (consonne finale) → 이에요, Voyelle finale → 예요",
+                "Batchim → 예요, Voyelle → 이에요",
+                "Toujours 이에요 sans exception",
+                "Toujours 예요 sans exception"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après consonne finale (batchim) on dit 이에요 ; après voyelle on dit 예요."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « 이것은 책____ (C'est un livre). »",
+              "options": [
+                "이에요 (ieyo)",
+                "예요 (yeyo)",
+                "은 (eun)",
+                "는 (neun)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "책 (chaek) se termine par le batchim k, donc on dit 책이에요."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « 저것은 사과____ (Là-bas, c'est une pomme). »",
+              "options": [
+                "예요 (yeyo)",
+                "이에요 (ieyo)",
+                "은 (eun)",
+                "는 (neun)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "사과 (sagwa) se termine par la voyelle wa, donc on dit 사과예요."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ordre standard des mots dans une phrase simple coréenne :",
+              "options": [
+                "Sujet / Thème + Attribut + Copule (verbe en fin)",
+                "Copule + Sujet + Attribut",
+                "Attribut + Copule + Sujet",
+                "Sujet + Copule + Attribut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En coréen, le verbe et la copule se placent toujours à la fin de la phrase."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phrase signifie « Je suis français(e) » ?",
+              "options": [
+                "저는 프랑스 사람이에요 (jeoneun peurangseu saramieyo).",
+                "저는 프랑스 사람예요 (jeoneun peurangseu saramyeyo).",
+                "저는 프랑스예요 (jeoneun peurangseuyeyo).",
+                "프랑스 사람 저는 (peurangseu saram jeoneun)."
+              ],
+              "correctAnswers": [0],
+              "explanation": "프랑스 사람 (Français) se termine par le batchim m, donc 이에요."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour poser une question avec 이에요 / 예요 à l'oral :",
+              "options": [
+                "On garde la même forme avec une intonation montante (?)",
+                "On inverse obligatoirement le sujet et le verbe",
+                "On ajoute obligatoirement un mot interrogatif au début",
+                "On remplace 이에요 par un verbe spécial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En coréen poli informel, la question a la même structure que l'affirmation avec une intonation montante."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduction de « 민우는 제 친구예요 (minuneun je chinguyeyo) » :",
+              "options": [
+                "Min-woo est mon ami(e).",
+                "Min-woo est professeur.",
+                "Je suis l'ami de Min-woo.",
+                "Min-woo habite ici."
+              ],
+              "correctAnswers": [0],
+              "explanation": "친구 (ami) se termine par la voyelle u, donc on dit 친구예요."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle particule de thème convient pour « 저 » (je poli) ?",
+              "options": [
+                "는 (neun) car 저 finit par une voyelle",
+                "은 (eun) car 저 finit par une consonne",
+                "이 (i) comme particule de thème",
+                "을 (eul) comme particule de thème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "저 finit par la voyelle eo, donc la particule de thème est 는."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez la formule de fin : « 4과 끝____ (C'est la fin du chapitre 4) ! »",
+              "options": [
+                "이에요 (ieyo) car 끝 a un batchim",
+                "예요 (yeyo)",
+                "는 (neun)",
+                "le (particule)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "끝 (fin) se termine par le batchim t, donc on utilise 이에요 !"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -171,6 +171,116 @@ export const projectFile = pgTable(
 
 export type ProjectFile = InferSelectModel<typeof projectFile>;
 
+// Pages mAI : documents Markdown autonomes, distincts des artefacts de chat
+// (`Document`, versions par createdAt) et des pages Wakies (`WakiesPage`,
+// espaces payants). Le corps courant vit ici ; l'historique est dans
+// PageRevision, le fil du panneau dans PageMessage, les patches à accepter
+// dans PageProposal. `revision` sert de verrou optimiste : une écriture dont
+// la révision ne correspond plus est refusée plutôt qu'écrasée.
+export const page = pgTable(
+  "Page",
+  {
+    content: text("content").notNull().default(""),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    customPrompt: text("customPrompt"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    modelId: text("modelId"),
+    projectId: uuid("projectId").references(() => project.id, {
+      onDelete: "set null",
+    }),
+    revision: integer("revision").notNull().default(1),
+    title: text("title").notNull().default("Sans titre"),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    projectIdx: index("Page_projectId_idx").on(table.projectId),
+    userIdx: index("Page_userId_idx").on(table.userId),
+    userUpdatedIdx: index("Page_userId_updatedAt_idx").on(
+      table.userId,
+      table.updatedAt
+    ),
+  })
+);
+
+export type Page = InferSelectModel<typeof page>;
+
+export const pageRevision = pgTable(
+  "PageRevision",
+  {
+    content: text("content").notNull().default(""),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    createdBy: text("createdBy").notNull(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    pageId: uuid("pageId")
+      .notNull()
+      .references(() => page.id, { onDelete: "cascade" }),
+    source: varchar("source", {
+      enum: ["manual", "assistant", "restore"],
+    }).notNull(),
+    title: text("title").notNull(),
+  },
+  (table) => ({
+    pageCreatedIdx: index("PageRevision_pageId_createdAt_idx").on(
+      table.pageId,
+      table.createdAt
+    ),
+  })
+);
+
+export type PageRevision = InferSelectModel<typeof pageRevision>;
+
+export const pageMessage = pgTable(
+  "PageMessage",
+  {
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: text("id").primaryKey().notNull(),
+    pageId: uuid("pageId")
+      .notNull()
+      .references(() => page.id, { onDelete: "cascade" }),
+    parts: json("parts").notNull(),
+    role: varchar("role", { enum: ["user", "assistant", "system"] }).notNull(),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    pageCreatedIdx: index("PageMessage_pageId_createdAt_idx").on(
+      table.pageId,
+      table.createdAt
+    ),
+  })
+);
+
+export type PageMessage = InferSelectModel<typeof pageMessage>;
+
+export const pageProposal = pgTable(
+  "PageProposal",
+  {
+    baseHash: text("baseHash").notNull(),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    description: text("description"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    ops: jsonb("ops").notNull(),
+    pageId: uuid("pageId")
+      .notNull()
+      .references(() => page.id, { onDelete: "cascade" }),
+    resolvedAt: timestamp("resolvedAt"),
+    status: varchar("status", {
+      enum: ["pending", "accepted", "rejected", "stale"],
+    })
+      .notNull()
+      .default("pending"),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    pageStatusIdx: index("PageProposal_pageId_status_idx").on(
+      table.pageId,
+      table.status
+    ),
+  })
+);
+
+export type PageProposal = InferSelectModel<typeof pageProposal>;
+
 export const skill = pgTable(
   "Skill",
   {
@@ -983,6 +1093,17 @@ export const userPreferences = pgTable("user_preferences", {
     .notNull()
     .default("EN"),
   ghostMemoryEnabled: boolean("ghostMemoryEnabled").notNull().default(false),
+  // Police de lecture des Pages (migration 0080). Elle ne se copie pas sur
+  // le document : le texte sans marque la suit, y compris sur une page déjà
+  // écrite. Une valeur illisible vaut « sans ».
+  pagesDefaultFont: varchar("pagesDefaultFont", { length: 10 })
+    .notNull()
+    .default("sans"),
+  // Modèle et consigne copiés sur chaque page nouvelle (migration 0076).
+  // Un modèle vide laisse la page suivre le modèle du compte. La consigne
+  // vide signifie « pas de consigne propre ».
+  pagesDefaultModel: text("pagesDefaultModel"),
+  pagesDefaultPrompt: text("pagesDefaultPrompt").notNull().default(""),
   // Effort de réflexion par défaut pour tous les modèles qui le supportent
   // (Chat, Agent, Wakies, Vibe).
   reasoningLevel: varchar("reasoningLevel", { enum: REASONING_LEVELS })
@@ -1228,8 +1349,9 @@ export const userPluginSecret = pgTable(
 
 export type UserPluginSecret = InferSelectModel<typeof userPluginSecret>;
 
-// Connexion d'un compte à une application externe (Google Drive, Agenda, Gmail,
-// GitHub). Les jetons sont chiffrés (AES-256-GCM, lib/mcp/encryption.ts) ; les
+// Connexion d'un compte à une application externe (GitHub, Google Maps,
+// YouTube, et les autres connecteurs à jeton). Les jetons sont chiffrés
+// (AES-256-GCM, lib/mcp/encryption.ts) ; les
 // métadonnées servant à décider un rafraîchissement restent en clair, parce que
 // cette lecture se produit à chaque appel d'outil et ne doit pas faire du coffre
 // un chemin chaud. `providerAccountId` garde le schéma prêt pour plusieurs
@@ -1258,7 +1380,7 @@ export const integrationConnection = pgTable(
         "dockerhub",
         "exchange-rate",
         "github",
-        "google",
+        "google-maps",
         "jira",
         "linear",
         "make",
@@ -1275,6 +1397,7 @@ export const integrationConnection = pgTable(
         "twilio",
         "upstash",
         "vercel",
+        "youtube",
         "zapier",
       ] as const,
     }).notNull(),
@@ -2785,9 +2908,12 @@ export const maiSearchQuery = pgTable(
   {
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
+    pinned: boolean("pinned").notNull().default(false),
     query: text("query").notNull(),
+    reasoning: text("reasoning"),
     resultsCount: integer("resultsCount").notNull().default(0),
     summary: text("summary"),
+    title: text("title"),
     updatedAt: timestamp("updatedAt").notNull().defaultNow(),
     userId: text("userId").notNull(),
     vote: varchar("vote", { length: 10 }),
@@ -2844,3 +2970,308 @@ export const blacklineSettings = pgTable("BlacklineSettings", {
 });
 
 export type BlacklineSettings = InferSelectModel<typeof blacklineSettings>;
+
+// ─────────────────────────────────────────────
+// QUIZZLY (migration 0073) : parcours, cœurs, série et quêtes
+// ─────────────────────────────────────────────
+//
+// Quizzly est une application hôte, pas le plugin de chat du même nom.
+// La progression (XP, gemmes, cœurs, série) est une économie de compte :
+// elle vit ici, pas dans le navigateur, pour qu'un rejeu ne fabrique pas
+// de récompense. Les questions, elles, restent des JSON versionnés.
+//
+// Le Coach (migration 0075) relit `modelId` et `lastAttempt`. Le meilleur
+// score ne décrit pas l'option choisie : la dernière tentative est un
+// instantané, écrasé à chaque envoi, distinct de `correctCount`.
+//
+// Le nom affiché n'est PAS dans cette table. Il est celui de Vibe
+// (`profiles.display_name`), recopié dans l'indicatif Blackline.
+export const quizzlyProfile = pgTable("QuizzlyProfile", {
+  cosmetics: jsonb("cosmetics")
+    .$type<Record<string, unknown>>()
+    .notNull()
+    .default({}),
+  gems: integer("gems").notNull().default(0),
+  hearts: integer("hearts").notNull().default(5),
+  heartsUpdatedAt: timestamp("heartsUpdatedAt").notNull().defaultNow(),
+  lastDailyGift: date("lastDailyGift"),
+  league: varchar("league", { length: 12 }).notNull().default("bronze"),
+  leagueShieldWeek: varchar("leagueShieldWeek", { length: 8 }),
+  modelId: text("modelId"),
+  schoolYear: varchar("schoolYear", { length: 12 }).notNull().default("6e"),
+  streakBest: integer("streakBest").notNull().default(0),
+  streakCount: integer("streakCount").notNull().default(0),
+  streakFreezes: integer("streakFreezes").notNull().default(0),
+  streakLastDay: date("streakLastDay"),
+  subjects: jsonb("subjects").$type<string[]>().notNull().default([]),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+  userId: text("userId").notNull().primaryKey(),
+  xp: integer("xp").notNull().default(0),
+  xpBoostUntil: timestamp("xpBoostUntil"),
+  yearChosen: boolean("yearChosen").notNull().default(false),
+});
+
+export type QuizzlyProfile = InferSelectModel<typeof quizzlyProfile>;
+
+// Catalogue persistant de la boutique Quizzly (migration 0082). Le catalogue
+// statique de `lib/quizzly/shop.ts` reste la base ; cette table porte les
+// articles et offres ajoutés par `scripts/admin.ts`, sans redéploiement.
+export const quizzlyShopItem = pgTable("QuizzlyShopItem", {
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+  description: varchar("description", { length: 300 }).notNull(),
+  id: varchar("id", { length: 40 }).primaryKey(),
+  kind: varchar("kind", { length: 12 }).notNull(),
+  label: varchar("label", { length: 60 }).notNull(),
+  price: integer("price").notNull().default(0),
+});
+
+export type QuizzlyShopItem = InferSelectModel<typeof quizzlyShopItem>;
+
+// Même forme que `DerniereTentative` (`lib/quizzly/coach.ts`). Le schéma
+// ne l'importe pas : drizzle-kit charge ce fichier seul.
+type QuizzlyLastAttempt = {
+  answeredAt: string;
+  correctCount: number;
+  misses: {
+    expectedIndexes: number[];
+    explanation: string;
+    givenIndexes: number[];
+    options: string[];
+    question: string;
+    questionId: string;
+  }[];
+  passed: boolean;
+  totalCount: number;
+};
+
+export const quizzlyQuizProgress = pgTable(
+  "QuizzlyQuizProgress",
+  {
+    completedAt: timestamp("completedAt").notNull().defaultNow(),
+    correctCount: integer("correctCount").notNull(),
+    lastAttempt: jsonb("lastAttempt").$type<QuizzlyLastAttempt>(),
+    passed: boolean("passed").notNull().default(false),
+    quizId: text("quizId").notNull(),
+    totalCount: integer("totalCount").notNull(),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({ columns: [table.userId, table.quizId] }),
+  })
+);
+
+export type QuizzlyQuizProgress = InferSelectModel<typeof quizzlyQuizProgress>;
+
+export const quizzlyQuest = pgTable(
+  "QuizzlyQuest",
+  {
+    claimedAt: timestamp("claimedAt"),
+    progress: integer("progress").notNull().default(0),
+    questKey: text("questKey").notNull(),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({ columns: [table.userId, table.questKey] }),
+  })
+);
+
+export type QuizzlyQuest = InferSelectModel<typeof quizzlyQuest>;
+
+// Tirage global des quêtes (migration 0081). Une ligne par période
+// (`daily:AAAA-MM-JJ` ou `weekly:AAAA-Wnn`). Elle est écrite à la
+// première lecture et n'est plus recalculée : un catalogue édité
+// ensuite ne remplace pas les quêtes déjà publiées.
+export const quizzlyQuestDraw = pgTable("QuizzlyQuestDraw", {
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+  periodKey: varchar("periodKey", { length: 24 }).primaryKey().notNull(),
+  questIds: jsonb("questIds").$type<string[]>().notNull(),
+});
+
+export type QuizzlyQuestDraw = InferSelectModel<typeof quizzlyQuestDraw>;
+
+// Signalement d'un exercice (migration 0074). La ligne fige la question
+// et le compte : le JSON du curriculum peut changer ensuite.
+export const quizzlyReport = pgTable(
+  "QuizzlyReport",
+  {
+    chapterFile: varchar("chapterFile", { length: 2 }).notNull(),
+    chapterTitle: varchar("chapterTitle", { length: 160 }).notNull(),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    email: varchar("email", { length: 320 }),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    message: text("message").notNull(),
+    options: jsonb("options").$type<string[]>().notNull(),
+    questionId: varchar("questionId", { length: 8 }).notNull(),
+    questionNumber: integer("questionNumber").notNull(),
+    questionText: text("questionText").notNull(),
+    quizId: text("quizId").notNull(),
+    quizTitle: varchar("quizTitle", { length: 120 }).notNull(),
+    subjectId: varchar("subjectId", { length: 40 }).notNull(),
+    subjectLabel: varchar("subjectLabel", { length: 80 }).notNull(),
+    unitId: varchar("unitId", { length: 8 }).notNull(),
+    unitTitle: varchar("unitTitle", { length: 160 }).notNull(),
+    userId: text("userId").notNull(),
+    username: varchar("username", { length: 120 }),
+    year: varchar("year", { length: 12 }).notNull(),
+  },
+  (table) => ({
+    parCompte: index("QuizzlyReport_userId_createdAt_idx").on(
+      table.userId,
+      table.createdAt
+    ),
+    parQuestion: index("QuizzlyReport_quiz_question_idx").on(
+      table.quizId,
+      table.questionId
+    ),
+  })
+);
+
+export type QuizzlyReport = InferSelectModel<typeof quizzlyReport>;
+
+// Ligues hebdomadaires (migration 0077). La cohorte groupe 30 comptes ;
+// le siège porte l'XP de la semaine ; la clôture empêche un second classement.
+export const quizzlyLeagueCohort = pgTable(
+  "QuizzlyLeagueCohort",
+  {
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    league: varchar("league", { length: 12 }).notNull(),
+    weekKey: varchar("weekKey", { length: 8 }).notNull(),
+  },
+  (table) => ({
+    parSemaine: index("QuizzlyLeagueCohort_week_league_idx").on(
+      table.weekKey,
+      table.league
+    ),
+  })
+);
+
+export type QuizzlyLeagueCohort = InferSelectModel<typeof quizzlyLeagueCohort>;
+
+export const quizzlyLeagueSeat = pgTable(
+  "QuizzlyLeagueSeat",
+  {
+    cohortId: uuid("cohortId").notNull(),
+    league: varchar("league", { length: 12 }).notNull(),
+    userId: text("userId").notNull(),
+    weekKey: varchar("weekKey", { length: 8 }).notNull(),
+    weeklyXp: integer("weeklyXp").notNull().default(0),
+  },
+  (table) => ({
+    parCohorte: index("QuizzlyLeagueSeat_cohort_idx").on(table.cohortId),
+    pk: primaryKey({ columns: [table.userId, table.weekKey] }),
+  })
+);
+
+export type QuizzlyLeagueSeat = InferSelectModel<typeof quizzlyLeagueSeat>;
+
+export const quizzlyLeagueClosure = pgTable("QuizzlyLeagueClosure", {
+  closedAt: timestamp("closedAt").notNull().defaultNow(),
+  weekKey: varchar("weekKey", { length: 8 }).primaryKey(),
+});
+
+export type QuizzlyLeagueClosure = InferSelectModel<
+  typeof quizzlyLeagueClosure
+>;
+
+// Amitié mutuelle. `mirroredAt` distingue « le miroir Vibe a été tenté »
+// de « des abonnements ont été créés » (ces derniers sont dans le miroir).
+export const quizzlyFriendship = pgTable(
+  "QuizzlyFriendship",
+  {
+    addresseeId: text("addresseeId").notNull(),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    mirroredAt: timestamp("mirroredAt"),
+    requesterId: text("requesterId").notNull(),
+    respondedAt: timestamp("respondedAt"),
+    status: varchar("status", { length: 12 }).notNull().default("pending"),
+  },
+  (table) => ({
+    destinataire: index("QuizzlyFriendship_addressee_idx").on(
+      table.addresseeId,
+      table.status
+    ),
+  })
+);
+
+export type QuizzlyFriendship = InferSelectModel<typeof quizzlyFriendship>;
+
+export const quizzlyFollowMirror = pgTable(
+  "QuizzlyFollowMirror",
+  {
+    followerVibeId: text("followerVibeId").notNull(),
+    followingVibeId: text("followingVibeId").notNull(),
+    friendshipId: uuid("friendshipId")
+      .notNull()
+      .references(() => quizzlyFriendship.id, { onDelete: "cascade" }),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [
+        table.friendshipId,
+        table.followerVibeId,
+        table.followingVibeId,
+      ],
+    }),
+  })
+);
+
+export type QuizzlyFollowMirror = InferSelectModel<typeof quizzlyFollowMirror>;
+
+// Historique du Coach (migration 0079). Le fil est la source du modèle :
+// le navigateur n'envoie que le nouveau texte. Renommer, épingler,
+// exporter et partager restent sur le compte — aucun lien public.
+export const quizzlyCoachConversation = pgTable(
+  "QuizzlyCoachConversation",
+  {
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    intent: varchar("intent", { length: 16 }).notNull().default("chat"),
+    pinned: boolean("pinned").notNull().default(false),
+    pinnedAt: timestamp("pinnedAt"),
+    questionId: varchar("questionId", { length: 8 }),
+    quizId: text("quizId"),
+    title: varchar("title", { length: 80 }).notNull(),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    parCompte: index("QuizzlyCoachConversation_user_pinned_idx").on(
+      table.userId,
+      table.pinned,
+      table.updatedAt
+    ),
+  })
+);
+
+export type QuizzlyCoachConversation = InferSelectModel<
+  typeof quizzlyCoachConversation
+>;
+
+export const quizzlyCoachMessage = pgTable(
+  "QuizzlyCoachMessage",
+  {
+    conversationId: uuid("conversationId").notNull(),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    pinned: boolean("pinned").notNull().default(false),
+    pinnedAt: timestamp("pinnedAt"),
+    role: varchar("role", { length: 16 }).notNull(),
+    text: text("text").notNull(),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    conversationFk: foreignKey({
+      columns: [table.conversationId],
+      foreignColumns: [quizzlyCoachConversation.id],
+      name: "QuizzlyCoachMessage_conversation_fkey",
+    }).onDelete("cascade"),
+    parConversation: index("QuizzlyCoachMessage_conversation_idx").on(
+      table.conversationId,
+      table.createdAt
+    ),
+  })
+);
+
+export type QuizzlyCoachMessage = InferSelectModel<typeof quizzlyCoachMessage>;

@@ -1,0 +1,2643 @@
+{
+  "id": "4e-chinois-04",
+  "year": "4e",
+  "subject": "chinois",
+  "title": "La grammaire du chinois",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : L'absence d'accords et de conjugaison en chinois",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Le chinois possède-t-il des marques de genre grammatical (féminin/masculin) sur les noms et les adjectifs ?",
+              "options": [
+                "Non, les mots sont strictement invariables en genre",
+                "Oui, tous les adjectifs s'accordent obligatoirement en genre",
+                "Oui, mais cette règle ne s'applique qu'aux noms d'animaux",
+                "Oui, on ajoute un préfixe spécifique pour marquer le féminin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En chinois, il n'existe aucun genre grammatical : les noms et les adjectifs ne portent jamais de marque de masculin ou de féminin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment se comporte le verbe manger (吃 chī) selon la personne du sujet ?",
+              "options": [
+                "Il change de terminaison selon chaque pronom",
+                "Il reste strictement invariable quelle que soit la personne",
+                "Il prend un suffixe uniquement à la 3e personne du singulier",
+                "Il change de ton selon le nombre de personnes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les verbes chinois ne se conjuguent pas : 吃 reste identique avec 我 (je), 你 (tu), 他 (il) ou 我们 (nous)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on principalement le pluriel d'un nom d'objet en chinois ?",
+              "options": [
+                "Par le contexte, un nombre ou un déterminant quantitatif",
+                "En ajoutant toujours la lettre -s à la fin du mot",
+                "En redoublant obligatoirement le caractère du nom",
+                "En modifiant la tonalité du nom au pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noms d'objets n'ont pas de marque morphologique de pluriel : ce sont les chiffres ou le contexte qui indiquent la quantité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle affirmation est exacte concernant l'adjectif qualificatif 大 (dà, grand) ?",
+              "options": [
+                "Il prend un suffixe -e devant un nom féminin",
+                "Il reste rigoureusement invariable en genre et en nombre",
+                "Il prend la marque -men quand il qualifie plusieurs objets",
+                "Il s'accorde uniquement avec les sujets pluriels"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les adjectifs en chinois sont totalement invariables : ils ne s'accordent jamais en genre ni en nombre."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques distinguent la grammaire chinoise des langues romanes ?",
+              "options": [
+                "Absence totale de conjugaison verbale selon la personne",
+                "Absence d'accords en genre masculin ou féminin",
+                "Obligation d'accorder le verbe avec le complément d'objet",
+                "Présence de dix déclinaisons différentes pour chaque nom"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le chinois est une langue isolante : il n'a ni conjugaison selon la personne ni accords en genre ou en nombre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Existe-t-il une règle d'accord en nombre entre le sujet et le verbe en chinois ?",
+              "options": [
+                "Non, le verbe ne porte aucune marque de singulier ou de pluriel",
+                "Oui, le verbe s'accorde si le sujet désigne des êtres vivants",
+                "Oui, le verbe prend un accent différent au pluriel",
+                "Oui, le verbe se place avant le sujet au pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il n'y a aucun accord sujet-verbe en chinois : la forme verbale est absolument identique quel que soit le sujet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Puisque les verbes ne se conjuguent pas, comment indique-t-on le moment d'une action ?",
+              "options": [
+                "À l'aide de mots temporels (hier, demain) et de particules d'aspect",
+                "En changeant la voyelle principale du verbe",
+                "En ajoutant systématiquement un article défini",
+                "En modifiant l'ordre des traits du caractère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le temps est indiqué par des adverbes temporels (昨天, 明天) et des particules d'aspect comme 了 (le) ou 过 (guo)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Trouve-t-on des articles définis (le, la, les) ou indéfinis (un, une, des) en chinois ?",
+              "options": [
+                "Non, le chinois ne possède aucun article grammatical",
+                "Oui, il existe un article masculin et un article féminin",
+                "Oui, chaque nom doit obligatoirement être précédé d'un article",
+                "Oui, mais ils ne s'emploient qu'à l'écrit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chinois n'a pas d'articles : la détermination s'exprime par le contexte, des démonstratifs ou des classificateurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie le principe d'invariabilité des mots chinois ?",
+              "options": [
+                "Leur forme ne change jamais selon la fonction ou le contexte",
+                "Ils ne peuvent appartenir qu'à une seule catégorie grammaticale",
+                "Leur prononciation change selon chaque jour de la semaine",
+                "Ils doivent toujours être écrits en majuscules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'invariabilité signifie qu'un mot ne subit aucune flexion morphologique (pas de déclinaison, de conjugaison ni d'accord)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la morphologie du chinois est-elle souvent considérée comme logique et directe ?",
+              "options": [
+                "Parce qu'il n'y a pas de désinences verbales ni d'accords complexes à mémoriser",
+                "Parce que tous les mots ont exactement la même signification",
+                "Parce que la grammaire chinoise a été inventée au vingtième siècle",
+                "Parce qu'il n'existe que trois verbes dans toute la langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absence de conjugaisons irrégulières et d'accords morphologiques rend la morphologie chinoise très régulière."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Le spécificateur général 个 (gè)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le rôle principal du mot 个 (gè) en chinois ?",
+              "options": [
+                "C'est un spécificateur (classificateur) servant à lier un nombre à un nom",
+                "C'est une préposition de lieu signifiant 'vers'",
+                "C'est un verbe d'action signifiant 'donner'",
+                "C'est une conjonction de coordination signifiant 'mais'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "个 (gè) est le classificateur nominal le plus courant : il s'insère obligatoirement entre un nombre ou démonstratif et un nom."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on correctement 'une personne' en chinois ?",
+              "options": [
+                "一个人 (yí gè rén)",
+                "一人 (yì rén)",
+                "个一人 (gè yì rén)",
+                "人一个 (rén yí gè)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On suit la structure Nombre + Spécificateur + Nom : 一 (un) + 个 (spécificateur) + 人 (personne)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel ton prend très fréquemment le caractère 个 (gè) dans la langue parlée courante ?",
+              "options": [
+                "Le ton neutre (léger)",
+                "Le premier ton haut",
+                "Le deuxième ton montant",
+                "Le troisième ton descendant-montant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la conversation courante, 个 perd souvent son quatrième ton d'origine pour devenir ton neutre (ge)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on 'trois étudiants' en chinois ?",
+              "options": [
+                "三个学生 (sān gè xuésheng)",
+                "三学生 (sān xuésheng)",
+                "学生三个 (xuésheng sān gè)",
+                "个三学生 (gè sān xuésheng)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure standard impose l'insertion de 个 : 三 (3) + 个 (classificateur) + 学生 (étudiant)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels noms s'associent couramment au spécificateur général 个 (gè) ?",
+              "options": [
+                "人 (rén, personne)",
+                "书 (shū, livre)",
+                "苹果 (píngguǒ, pomme)",
+                "笔 (bǐ, stylo)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "人 et 苹果 utilisent naturellement 个. En revanche, 书 utilise 本 (běn) et 笔 utilise 支 (zhī)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi qualifie-t-on 个 de 'classificateur général' ?",
+              "options": [
+                "Car il s'emploie avec un très grand nombre de noms usuels et abstraits",
+                "Car il ne peut s'utiliser qu'avec les généraux de l'armée",
+                "Car il remplace tous les verbes de la langue chinoise",
+                "Car il est réservé exclusivement aux noms propres de pays"
+              ],
+              "correctAnswers": [0],
+              "explanation": "个 est dit 'général' car il s'applique par défaut à une multitude d'êtres humains, d'objets usuels et de notions abstraites."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la formule syntaxique correcte pour quantifier un nom avec un classificateur ?",
+              "options": [
+                "Nombre + Classificateur + Nom",
+                "Nom + Nombre + Classificateur",
+                "Classificateur + Nom + Nombre",
+                "Nombre + Nom + Classificateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre strict en chinois mandarin est : Nombre (ou Démonstratif) + Classificateur + Nom."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie l'expression 一个朋友 (yí gè péngyou) ?",
+              "options": ["Un ami", "Le premier ami", "Des amis", "Mon ami"],
+              "correctAnswers": [0],
+              "explanation": "一 (un) + 个 (classificateur) + 朋友 (ami) signifie littéralement 'un ami'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Peut-on dire '三朋友' sans classificateur en chinois standard moderne ?",
+              "options": [
+                "Non, l'omission du classificateur est agrammaticale",
+                "Oui, c'est la formule la plus élégante à l'oral",
+                "Oui, car 朋友 est un mot d'origine étrangère",
+                "Oui, mais uniquement le matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En chinois standard moderne, un nombre ne peut pas qualifier directement un nom sans spécificateur intermédiaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'cinq pommes' en chinois (pomme = 苹果 píngguǒ) ?",
+              "options": [
+                "五个苹果 (wǔ gè píngguǒ)",
+                "五苹果 (wǔ píngguǒ)",
+                "个五苹果 (gè wǔ píngguǒ)",
+                "苹果五个 (píngguǒ wǔ gè)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On applique la règle : 五 (5) + 个 (classificateur) + 苹果 (pomme) = 五个苹果."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : Les spécificateurs courants (本, 张, 支)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel spécificateur utilise-t-on pour les livres, dictionnaires et cahiers reliés ?",
+              "options": ["本 (běn)", "张 (zhāng)", "支 (zhī)", "条 (tiáo)"],
+              "correctAnswers": [0],
+              "explanation": "本 (běn) est le classificateur spécifique pour tous les volumes reliés (livres, cahiers, dictionnaires)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on 'deux livres' en chinois ?",
+              "options": [
+                "两本书 (liǎng běn shū)",
+                "二本书 (èr běn shū)",
+                "两书 (liǎng shū)",
+                "二书 (èr shū)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant un classificateur, le chiffre 2 s'exprime par 两 (liǎng) : 两 (2) + 本 + 书 = 两本书."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel spécificateur emploie-t-on pour les objets ayant une surface plane (tables, feuilles, lits) ?",
+              "options": ["张 (zhāng)", "本 (běn)", "个 (gè)", "只 (zhī)"],
+              "correctAnswers": [0],
+              "explanation": "张 (zhāng) sert de spécificateur pour les objets plats ou étalés comme les tables, feuilles de papier, cartes ou lits."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on 'une feuille de papier' (papier = 纸 zhǐ) ?",
+              "options": [
+                "一张纸 (yì zhāng zhǐ)",
+                "一本纸 (yì běn zhǐ)",
+                "一支纸 (yì zhī zhǐ)",
+                "一条纸 (yì tiáo zhǐ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La feuille de papier étant une surface plane, on utilise 张 : 一张纸 (yì zhāng zhǐ)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels objets s'associent naturellement au spécificateur 张 (zhāng) ?",
+              "options": [
+                "桌子 (zhuōzi, table)",
+                "照片 (zhàopiàn, photo)",
+                "猫 (māo, chat)",
+                "书 (shū, livre)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La table (plate) et la photo (feuille plane) utilisent 张. Le chat utilise 只 et le livre 本."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel spécificateur emploie-t-on pour les instruments d'écriture rigides (stylos, crayons) ?",
+              "options": ["支 (zhī)", "本 (běn)", "张 (zhāng)", "个 (gè)"],
+              "correctAnswers": [0],
+              "explanation": "支 (zhī) est le spécificateur réservé aux stylos, crayons, pinceaux et bâtonnets rigides."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on 'trois stylos' (stylo = 笔 bǐ) ?",
+              "options": [
+                "三支笔 (sān zhī bǐ)",
+                "三本笔 (sān běn bǐ)",
+                "三张笔 (sān zhāng bǐ)",
+                "三条笔 (sān tiáo bǐ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les stylos (笔), on utilise 支 : 三 (3) + 支 (classificateur) + 笔 (stylo) = 三支笔."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel nom ci-dessous s'associe obligatoirement au spécificateur 本 (běn) ?",
+              "options": [
+                "词典 (cídiǎn, dictionnaire)",
+                "椅子 (yǐzi, chaise)",
+                "床 (chuáng, lit)",
+                "老师 (lǎoshī, professeur)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dictionnaire étant un volume relié, il prend 本. 椅子 prend 把, 床 prend 张, 老师 prend 位 ou 个."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel spécificateur convient pour une carte géographique (地图 dìtú) ?",
+              "options": ["张 (zhāng)", "本 (běn)", "支 (zhī)", "只 (zhī)"],
+              "correctAnswers": [0],
+              "explanation": "Une carte géographique est une feuille plane dépliée : elle prend le classificateur 张."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète la phrase : 我买了一___书 (Wǒ mǎi le yì ___ shū, J'ai acheté un livre).",
+              "options": ["本 (běn)", "张 (zhāng)", "支 (zhī)", "条 (tiáo)"],
+              "correctAnswers": [0],
+              "explanation": "Le livre (书) prend obligatoirement le classificateur 本 (běn)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : Les spécificateurs d'animaux et d'objets longs (只, 条)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel spécificateur emploie-t-on pour la plupart des petits animaux, quadrupèdes et oiseaux ?",
+              "options": ["只 (zhī)", "条 (tiáo)", "本 (běn)", "张 (zhāng)"],
+              "correctAnswers": [0],
+              "explanation": "只 (zhī) est le spécificateur standard pour les petits animaux, oiseaux, chats, etc."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'un chat' en chinois (chat = 猫 māo) ?",
+              "options": [
+                "一只猫 (yì zhī māo)",
+                "一条猫 (yì tiáo māo)",
+                "一本猫 (yì běn māo)",
+                "一张猫 (yì zhāng māo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chat utilise le classificateur d'animaux 只 (zhī) : 一只猫 (yì zhī māo)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel spécificateur utilise-t-on pour les objets longs, étroits ou sinueux (rivières, pantalons) ?",
+              "options": ["条 (tiáo)", "只 (zhī)", "本 (běn)", "张 (zhāng)"],
+              "correctAnswers": [0],
+              "explanation": "条 (tiáo) est le spécificateur des objets allongés et souples (rivières, cordes, pantalons, poissons)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel animal compte-t-on traditionnellement avec 条 (tiáo) en raison de sa forme allongée ?",
+              "options": [
+                "鱼 (yú, poisson)",
+                "鸟 (niǎo, oiseau)",
+                "猫 (māo, chat)",
+                "羊 (yáng, mouton)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le poisson (鱼) a un corps allongé et ondulant : on utilise 条 (一条鱼 yì tiáo yú)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels éléments s'emploient couramment avec le spécificateur 条 (tiáo) ?",
+              "options": [
+                "裤子 (kùzi, pantalon)",
+                "河 (hé, rivière)",
+                "书 (shū, livre)",
+                "苹果 (píngguǒ, pomme)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le pantalon et la rivière sont des entités longues et sinueuses, qui prennent le spécificateur 条."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on 'deux chiens' en chinois (chien = 狗 gǒu) ?",
+              "options": [
+                "两只狗 (liǎng zhī gǒu)",
+                "二只狗 (èr zhī gǒu)",
+                "两狗 (liǎng gǒu)",
+                "二本狗 (èr běn gǒu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chien prend 只 (ou parfois 条 pour les grands chiens) avec 两 pour le nombre 2 : 两只狗."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel spécificateur utilise-t-on pour un pantalon (裤子 kùzi) ?",
+              "options": ["条 (tiáo)", "件 (jiàn)", "张 (zhāng)", "本 (běn)"],
+              "correctAnswers": [0],
+              "explanation": "Les vêtements du bas allongés (jupes, pantalons) utilisent 条 (tiáo) : 一条裤子."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'une rivière' (rivière = 河 hé) ?",
+              "options": [
+                "一条河 (yì tiáo hé)",
+                "一只河 (yì zhī hé)",
+                "一本河 (yì běn hé)",
+                "一张河 (yì zhāng hé)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rivière étant un cours d'eau long et sinueux, elle prend 条 : 一条河 (yì tiáo hé)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie l'expression 一只鸟 (yì zhī niǎo) ?",
+              "options": [
+                "Un oiseau",
+                "Un poisson",
+                "Un pantalon",
+                "Un cheval"
+              ],
+              "correctAnswers": [0],
+              "explanation": "鸟 signifie oiseau, associé à son classificateur 只 : 'un oiseau'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle expression est correcte pour dire 'trois poissons' en chinois ?",
+              "options": [
+                "三条鱼 (sān tiáo yú)",
+                "三只鱼 (sān zhī yú)",
+                "三张鱼 (sān zhāng yú)",
+                "三本鱼 (sān běn yú)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les poissons (鱼), on emploie traditionnellement le classificateur 条 : 三条鱼 (sān tiáo yú)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : Les démonstratifs 这 (zhè) et 那 (nà)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que désigne le démonstratif 这 (zhè) en chinois ?",
+              "options": [
+                "Ce / cet / cette (proche du locuteur, 'ceci')",
+                "Ce / cet / cette (éloigné du locuteur, 'cela')",
+                "Le pronom interrogatif 'lequel ?'",
+                "Le nombre zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这 (zhè) indique la proximité spatiale ou temporelle (ceci, ce...-ci)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que désigne le démonstratif 那 (nà) en chinois ?",
+              "options": [
+                "Ce / cet / cette (éloigné du locuteur, 'cela / ce...-là')",
+                "Ce / cet / cette (tout proche, 'ceci')",
+                "La négation 'ne pas'",
+                "Le verbe 'avoir'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "那 (nà) exprime l'éloignement spatial ou temporel (cela, ce...-là)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la structure obligatoire pour employer un démonstratif devant un nom dénombrable au singulier ?",
+              "options": [
+                "Démonstratif + Spécificateur + Nom",
+                "Nom + Démonstratif",
+                "Démonstratif + Nom direct sans spécificateur",
+                "Spécificateur + Démonstratif + Nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme pour les nombres, on doit insérer un spécificateur : 这 / 那 + Spécificateur + Nom."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on 'ce livre-ci' en chinois ?",
+              "options": [
+                "这本书 (zhè běn shū)",
+                "那本书 (nà běn shū)",
+                "这书 (zhè shū)",
+                "本书这 (běn shū zhè)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这 (ceci) + 本 (spécificateur du livre) + 书 (livre) = 这本书 (zhè běn shū)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions démonstratives sont correctement construites en chinois ?",
+              "options": [
+                "这个人 (zhè gè rén, cette personne-ci)",
+                "那张桌子 (nà zhāng zhuōzi, cette table-là)",
+                "这人个 (zhè rén gè)",
+                "那本笔 (nà běn bǐ)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "这个人 et 那张桌子 respectent l'ordre Démonstratif + Spécificateur approprié + Nom."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'cette personne-là' en chinois ?",
+              "options": [
+                "那个人 (nà gè rén)",
+                "这个人 (zhè gè rén)",
+                "哪个人 (nǎ gè rén)",
+                "那个书 (nà gè shū)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'éloignement ('là') se traduit par 那, associé au spécificateur 个 et au nom 人 : 那个人."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle distinction spatiale fondamentale oppose 这 (zhè) et 那 (nà) ?",
+              "options": [
+                "这 indique la proximité immédiate, 那 indique l'éloignement",
+                "这 est féminin, 那 est masculin",
+                "这 s'emploie le jour, 那 s'emploie la nuit",
+                "这 s'applique aux personnes, 那 s'applique aux animaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这 (proche) et 那 (lointain) s'opposent exactement comme 'ceci' et 'cela' en français."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment forme-t-on le pluriel démonstratif 'ces ...-ci' en utilisant 些 (xiē) ?",
+              "options": [
+                "这些 (zhèxiē)",
+                "那些 (nàxiē)",
+                "些这 (xiēzhè)",
+                "个这 (gèzhè)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "些 (xiē) indique une quantité plurielle indéfinie : 这些 (zhèxiē) signifie 'ceux-ci / ces ...-ci'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on 'ce chat-ci' en chinois ?",
+              "options": [
+                "这只猫 (zhè zhī māo)",
+                "那只猫 (nà zhī māo)",
+                "这条猫 (zhè tiáo māo)",
+                "这本猫 (zhè běn māo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这 (ce...-ci) + 只 (spécificateur du chat) + 猫 (chat) = 这只猫."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la phrase 那张桌子很大 (Nà zhāng zhuōzi hěn dà) ?",
+              "options": [
+                "Cette table-là est grande",
+                "Cette table-ci est petite",
+                "Combien coûte cette table ?",
+                "J'ai deux grandes tables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "那张桌子 = cette table-là ; 很大 = est grande. La phrase signifie 'Cette table-là est grande'."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : L'interrogatif 哪 (nǎ) et les quantités 几 (jǐ) / 多少 (duōshao)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le mot interrogatif 哪 (nǎ) placé devant un spécificateur ?",
+              "options": [
+                "Quel / lequel ?",
+                "Pourquoi ?",
+                "Quand ?",
+                "Comment ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "哪 (nǎ) sert à demander 'quel ? / lequel ?' parmi un choix : 哪 + Spécificateur + Nom."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment demande-t-on 'quel livre ?' en chinois ?",
+              "options": [
+                "哪本书？ (nǎ běn shū?)",
+                "那本书？ (nà běn shū?)",
+                "这书？ (zhè shū?)",
+                "几书？ (jǐ shū?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "哪 (quel) + 本 (spécificateur) + 书 (livre) = 哪本书？ (nǎ běn shū?)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la principale différence d'usage entre 几 (jǐ) et 多少 (duōshao) ?",
+              "options": [
+                "几 s'emploie pour les petits nombres (< 10), 多少 pour toutes les quantités",
+                "几 s'emploie pour les prix, 多少 pour les personnes",
+                "几 est uniquement négatif, 多少 est interrogatif",
+                "几 est réservé aux adultes, 多少 aux enfants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "几 s'utilise pour des quantités faibles estimées à moins de 10 ; 多少 s'emploie pour toute quantité, grande ou inconnue."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment demande-t-on 'combien de personnes ?' pour un petit groupe de moins de 10 ?",
+              "options": [
+                "几个人？ (jǐ gè rén?)",
+                "多少人？ (duōshao rén?)",
+                "哪个人？ (nǎ gè rén?)",
+                "什么人？ (shénme rén?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une petite quantité attendue (<10), on dit : 几 (combien) + 个 (spécificateur) + 人 (personne)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Dans quelles situations utilise-t-on préférentiellement 几 (jǐ) plutôt que 多少 ?",
+              "options": [
+                "Pour demander l'heure (几点 jǐ diǎn)",
+                "Pour demander l'âge d'un jeune enfant (几岁 jǐ suì)",
+                "Pour demander le prix d'un smartphone (多少钱)",
+                "Pour compter les habitants d'une métropole"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "几 s'emploie pour les heures (1 à 12) et l'âge des enfants (<10 ans). Pour les prix et les grands nombres, on utilise 多少."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Doit-on obligatoirement insérer un spécificateur après 几 (jǐ) devant un nom dénombrable usuel ?",
+              "options": [
+                "Oui, l'association 几 + Spécificateur + Nom est indispensable",
+                "Non, le mot 几 remplace toujours le spécificateur",
+                "Non, 几 s'emploie uniquement en fin de phrase",
+                "Uniquement si le nom commence par une consonne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "几 fonctionne comme un nombre : il doit être suivi de son spécificateur (ex: 几个, 几本, 几只)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment demande-t-on 'Combien ça coûte ?' de manière idiomatique ?",
+              "options": [
+                "多少钱？ (duōshao qián?)",
+                "几钱？ (jǐ qián?)",
+                "哪钱？ (nǎ qián?)",
+                "什么钱？ (shénme qián?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expression consacrée pour demander un prix est 多少钱？ (duōshao qián?)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment distingue-t-on à l'oral 哪 (nǎ, quel) et 那 (nà, cela) ?",
+              "options": [
+                "哪 est au 3e ton (descendant-montant), 那 est au 4e ton (descendant sec)",
+                "哪 est au 1er ton, 那 est au 2e ton",
+                "Ils ont exactement la même prononciation et le même ton",
+                "那 se prononce toujours avec un 's' muet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "哪 porte le 3e ton (nǎ), tandis que 那 porte le 4e ton (nà) : le ton est capital pour éviter les confusions."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment demande-t-on 'De quel pays es-tu ?' en chinois (pays = 国 guó) ?",
+              "options": [
+                "你是哪国人？ (Nǐ shì nǎ guó rén?)",
+                "你是那国人？ (Nǐ shì nà guó rén?)",
+                "你是几国人？ (Nǐ shì jǐ guó rén?)",
+                "你是多少国人？ (Nǐ shì duōshao guó rén?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "哪国人 signifie 'personne de quel pays' : 你是哪国人？ est la question rituelle sur la nationalité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment demande-t-on 'Combien d'élèves y a-t-il dans l'école ?' (> 100 élèves) ?",
+              "options": [
+                "学校有多少学生？ (Xuéxiào yǒu duōshao xuésheng?)",
+                "学校有几学生？ (Xuéxiào yǒu jǐ xuésheng?)",
+                "学校有哪学生？ (Xuéxiào yǒu nǎ xuésheng?)",
+                "学校有什么学生？ (Xuéxiào yǒu shénme xuésheng?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une quantité importante ou inconnue, on emploie 多少 : 学校有多少学生？"
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : La distinction essentielle entre 二 (èr) et 两 (liǎng)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quand emploie-t-on obligatoirement 两 (liǎng) à la place de 二 (èr) ?",
+              "options": [
+                "Devant un classificateur pour quantifier deux personnes ou objets",
+                "Pour réciter les chiffres dans l'ordre (un, deux, trois)",
+                "Dans les numéros de téléphone et d'étage",
+                "Uniquement pour former le nombre vingt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand on dénombre deux unités devant un classificateur, le chiffre 2 devient impérativement 两 (liǎng)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on correctement 'deux personnes' en chinois ?",
+              "options": [
+                "两个人 (liǎng gè rén)",
+                "二个人 (èr gè rén)",
+                "二两个人 (èr liǎng gè rén)",
+                "两二个人 (liǎng èr gè rén)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant le spécificateur 个, on emploie 两 : 两个人 (liǎng gè rén). Dire 二个人 est fautif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans quel cas utilise-t-on obligatoirement 二 (èr) et jamais 两 (liǎng) ?",
+              "options": [
+                "Pour compter simplement (一, 二, 三) ou donner un numéro",
+                "Pour dire 'deux livres' devant le mot 本",
+                "Pour dire 'deux tasses de café'",
+                "Pour exprimer une paire d'animaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le comptage pur, l'arithmétique ou les numéros de code/téléphone, on emploie exclusivement 二 (èr)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment énumère-t-on les trois premiers chiffres en chinois ?",
+              "options": [
+                "一，二，三 (yī, èr, sān)",
+                "一，两，三 (yī, liǎng, sān)",
+                "两，二，三 (liǎng, èr, sān)",
+                "二，一，三 (èr, yī, sān)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la récitation des nombres ordonnés, on dit toujours yī, èr, sān (1, 2, 3)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Dans quelles expressions trouve-t-on le chiffre 二 (èr) et non 两 (liǎng) ?",
+              "options": [
+                "十二 (shí'èr, douze)",
+                "二十 (èrshí, vingt)",
+                "两个朋友 (deux amis)",
+                "两本书 (deux livres)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dans les dizaines composées comme 12 (十二) et 20 (二十), on utilise 二. Devant classificateur, on emploie 两."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'deux dictionnaires' en chinois (spécificateur 本) ?",
+              "options": [
+                "两本词典 (liǎng běn cídiǎn)",
+                "二本词典 (èr běn cídiǎn)",
+                "两词典 (liǎng cídiǎn)",
+                "二词典 (èr cídiǎn)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On emploie 两 devant le spécificateur 本 : 两本词典 (liǎng běn cídiǎn)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on le nombre '12' en chinois ?",
+              "options": [
+                "十二 (shí'èr)",
+                "十两 (shíliǎng)",
+                "两十 (liǎngshí)",
+                "二个 (ègè)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nombre 12 se compose de dix (十) + deux (二) = 十二 (shí'èr)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on le nombre '20' en chinois ?",
+              "options": [
+                "二十 (èrshí)",
+                "两十 (liǎngshí)",
+                "二十个 (èrshígè)",
+                "两两个 (liǎngliǎnggè)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nombre 20 se forme avec deux dizaines : 二 (2) + 十 (10) = 二十 (èrshí)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie l'expression 两个月 (liǎng gè yuè) ?",
+              "options": [
+                "Deux mois (durée)",
+                "Le mois de février",
+                "Deux années",
+                "La deuxième lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "两个月 exprime une durée de 2 mois (avec spécificateur 个). Février se dit 二月 (sans spécificateur)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle formulation est agrammaticale parmi les suivantes ?",
+              "options": ["二个苹果", "两个苹果", "二月", "二十二"],
+              "correctAnswers": [0],
+              "explanation": "On ne peut pas employer 二 directement devant le spécificateur 个 pour quantifier : il faut dire 两个苹果."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : La particule de détermination et possession 的 (de)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le rôle syntaxique essentiel de la particule 的 (de) ?",
+              "options": [
+                "Elle marque la possession, la détermination ou la qualification d'un nom",
+                "Elle indique le temps futur d'une action",
+                "Elle transforme une phrase affirmative en interrogation",
+                "Elle sert de marque de négation absolue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "的 (de) est la particule de détermination nominale : elle relie un possesseur ou un modificateur au nom déterminé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on 'mon livre' en chinois ?",
+              "options": [
+                "我的书 (wǒ de shū)",
+                "书的我 (shū de wǒ)",
+                "我书的 (wǒ shū de)",
+                "书我 (shū wǒ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure de possession est Possesseur + 的 + Objet possédé : 我 (moi) + 的 + 书 (livre)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans une relation de détermination avec 的, où se place le modificateur par rapport au nom déterminé ?",
+              "options": [
+                "Le modificateur se place toujours AVANT le nom déterminé",
+                "Le modificateur se place toujours APRÈS le nom déterminé",
+                "La position est totalement libre et sans importance",
+                "Le modificateur doit se trouver en toute fin de phrase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle d'or en chinois : le déterminant (qui précise) précède toujours le déterminé (nom principal)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quand peut-on omettre la particule 的 dans l'expression de la possession ?",
+              "options": [
+                "Pour les relations familiales très proches ou d'appartenance institutionnelle évidente",
+                "Pour les objets de grande valeur financière",
+                "Quand la phrase est au passé",
+                "Lorsque le possesseur est un animal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On omet souvent 的 pour les parents proches (我妈妈) ou les institutions familières (我学校)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Dans quelles expressions l'omission de 的 est-elle fréquente et naturelle ?",
+              "options": [
+                "我爸爸 (mon papa)",
+                "我哥哥 (mon grand frère)",
+                "我的那本红色的书 (ce mien livre rouge)",
+                "他的很有名的中国朋友 (son très célèbre ami chinois)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Avec les membres de la famille proche (爸爸, 哥哥), l'omission de 的 est courante et idiomatique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'le professeur de chinois' ?",
+              "options": [
+                "中文老师 (zhōngwén lǎoshī)",
+                "老师中文 (lǎoshī zhōngwén)",
+                "的中文老师 (de zhōngwén lǎoshī)",
+                "中文的 (zhōngwén de)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le domaine (中文, chinois) qualifie le nom (老师, enseignant) sans même nécessiter de 的 ici : 中文老师."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on 'la voiture de papa' en chinois (voiture = 车 chē) ?",
+              "options": [
+                "爸爸的车 (bàba de chē)",
+                "车爸爸的 (chē bàba de)",
+                "车的爸爸 (chē de bàba)",
+                "爸爸车 (bàba chē)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possesseur (爸爸) + 的 + Objet possédé (车) = 爸爸的车 (la voiture de papa)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie l'expression 我们的学校 (wǒmen de xuéxiào) ?",
+              "options": [
+                "Notre école",
+                "Leur école",
+                "Votre maison",
+                "Mes professeurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我们 (nous) + 的 + 学校 (école) se traduit par 'notre école'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle particule insère-t-on entre un adjectif qualificatif à deux caractères et le nom qu'il modifie ?",
+              "options": ["的 (de)", "得 (de)", "地 (de)", "了 (le)"],
+              "correctAnswers": [0],
+              "explanation": "Un adjectif dissyllabique est généralement relié au nom par la particule de détermination 的 (ex: 漂亮的衣服)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie 漂亮的衣服 (piàoliang de yīfu) ?",
+              "options": [
+                "De beaux vêtements",
+                "Des vêtements chauds",
+                "Acheter des habits",
+                "La couleur des vêtements"
+              ],
+              "correctAnswers": [0],
+              "explanation": "漂亮 (beau/joli) + 的 + 衣服 (vêtements) signifie 'de beaux vêtements'."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Les pronoms personnels et le suffixe de pluriel 们 (men)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels sont les trois pronoms personnels singuliers 'je', 'tu', 'il/elle' en chinois ?",
+              "options": [
+                "我 (wǒ), 你 (nǐ), 他/她 (tā)",
+                "你 (nǐ), 我 (wǒ), 们 (men)",
+                "他 (tā), 她 (tā), 它 (tā)",
+                "我们 (wǒmen), 你们 (nǐmen), 他们 (tāmen)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pronoms de base sont 我 (1re pers.), 你 (2e pers.) et 他/她 (3e pers. masculin/féminin)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel suffixe ajoute-t-on aux pronoms singuliers pour former le pluriel ?",
+              "options": ["们 (men)", "的 (de)", "个 (gè)", "了 (le)"],
+              "correctAnswers": [0],
+              "explanation": "Le suffixe 们 (men) au ton neutre sert à pluraliser les pronoms personnels et certains noms d'êtres humains."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on 'nous' en chinois ?",
+              "options": [
+                "我们 (wǒmen)",
+                "你们 (nǐmen)",
+                "他们 (tāmen)",
+                "她们 (tāmen)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我 (je) + 们 (suffixe de pluriel) = 我们 (nous)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on 'vous' (pluriel) en chinois ?",
+              "options": [
+                "你们 (nǐmen)",
+                "我们 (wǒmen)",
+                "您 (nín)",
+                "他们 (tāmen)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "你 (tu) + 们 (pluriel) = 你们 (vous, pluriel de plusieurs personnes)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "À quels types de mots peut-on adjoindre le suffixe de pluriel 们 (men) ?",
+              "options": [
+                "Aux pronoms personnels (我, 你, 他)",
+                "Aux noms désignant des personnes (老师, 学生, 朋友)",
+                "Aux noms d'objets inanimés (书, 桌子)",
+                "Aux adjectifs de couleur (红, 白)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "们 est réservé aux pronoms personnels et aux êtres humains (老师们). Il ne s'emploie jamais avec des objets inanimés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Peut-on ajouter le suffixe 们 à un objet inanimé comme 桌子 (table) pour dire 'les tables' ?",
+              "options": [
+                "Non, 们 est strictement réservé aux personnes et pronoms humains",
+                "Oui, on dit toujours 桌子们",
+                "Oui, mais uniquement pour les tables en bois",
+                "Oui, si la phrase est négative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les objets inanimés ne reçoivent jamais 们 : leur pluralité est indiquée par le contexte ou un déterminant quantitatif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un nom est déjà précédé d'un nombre (ex: 三个学生), peut-on lui ajouter le suffixe 们 ?",
+              "options": [
+                "Non, l'association d'un chiffre précis et de 们 est redondante et bannie",
+                "Oui, c'est une obligation grammaticale",
+                "Oui, mais seulement si le chiffre est supérieur à cent",
+                "Oui, uniquement à l'écrit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne cumule jamais un nombre précis et 们 : on dit soit 学生们 (les élèves), soit 三个学生 (trois élèves)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment écrit-on 'elles' (groupe exclusivement féminin) en chinois ?",
+              "options": [
+                "她们 (tāmen)",
+                "他们 (tāmen)",
+                "它们 (tāmen)",
+                "你们 (nǐmen)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle s'écrit 她 (clé de la femme 女) ; au pluriel féminin exclusif, on écrit 她们 (tāmen)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la formule de politesse pour 'vous' au singulier (forme de respect) ?",
+              "options": [
+                "您 (nín)",
+                "你 (nǐ)",
+                "你们 (nǐmen)",
+                "他们 (tāmen)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "您 (nín) est la forme de vouvoiement respectueux au singulier (tu avec la clé du cœur 心 en dessous)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment salue-t-on collectivement ses professeurs en entrant dans une classe ?",
+              "options": [
+                "老师们好！ (Lǎoshīmen hǎo!)",
+                "老师好！ (Lǎoshī hǎo!)",
+                "你们好老师！ (Nǐmen hǎo lǎoshī!)",
+                "好老师们！ (Hǎo lǎoshīmen!)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "老师们 (les professeurs) + 好 (bonjour) = 老师们好！ (Bonjour chers professeurs !)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Révision et synthèse des classificateurs et déterminants",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle formule résume la construction d'un groupe nominal quantifié en chinois ?",
+              "options": [
+                "Nombre / Démonstratif + Spécificateur + Nom",
+                "Nom + Spécificateur + Nombre",
+                "Spécificateur + Nom + Nombre",
+                "Nombre + Nom sans spécificateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre immuable est : Déterminant quantitatif/démonstratif + Spécificateur + Nom."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel spécificateur utilise-t-on pour 'une tasse de thé' (tasse = 杯 bēi) ?",
+              "options": ["杯 (bēi)", "瓶 (píng)", "个 (gè)", "本 (běn)"],
+              "correctAnswers": [0],
+              "explanation": "杯 (bēi) sert de spécificateur contenant pour tout ce qui est servi en tasse ou en verre : 一杯茶."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel spécificateur utilise-t-on pour 'une bouteille d'eau' (bouteille = 瓶 píng) ?",
+              "options": ["瓶 (píng)", "杯 (bēi)", "张 (zhāng)", "支 (zhī)"],
+              "correctAnswers": [0],
+              "explanation": "瓶 (píng) est le spécificateur désignant une bouteille : 一瓶水 (yì píng shuǐ, une bouteille d'eau)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'ces trois personnes' en combinant démonstratif et numéral ?",
+              "options": [
+                "这三个人 (zhè sān gè rén)",
+                "三这人 (sān zhè rén)",
+                "人这三个 (rén zhè sān gè)",
+                "个三这人 (gè sān zhè rén)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre combiné est : Démonstratif (这) + Nombre (三) + Spécificateur (个) + Nom (人)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles associations Nom + Spécificateur sont parfaitement exactes ?",
+              "options": [
+                "两本书 (deux livres)",
+                "三张桌子 (trois tables)",
+                "五本猫 (cinq chats)",
+                "一条笔 (un stylo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "书 prend 本, 桌子 prend 张. En revanche, le chat prend 只 et le stylo prend 支."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel spécificateur utilise-t-on pour une part de gâteau ou un morceau de sucre (块 kuài) ?",
+              "options": ["块 (kuài)", "条 (tiáo)", "张 (zhāng)", "本 (běn)"],
+              "correctAnswers": [0],
+              "explanation": "块 (kuài) quantifie les morceaux, tranches épaisses ou blocs (ex: 一块蛋糕 une part de gâteau)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel spécificateur respectueux utilise-t-on pour désigner poliment une personne ou un invité ?",
+              "options": ["位 (wèi)", "个 (gè)", "只 (zhī)", "条 (tiáo)"],
+              "correctAnswers": [0],
+              "explanation": "位 (wèi) est le spécificateur honorifique pour les personnes : 一位老师 (un professeur respecté)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'ce stylo noir' (stylo = 笔 bǐ ; noir = 黑色的 hēisè de) ?",
+              "options": [
+                "这支黑色的笔 (zhè zhī hēisè de bǐ)",
+                "这黑色的笔 (zhè hēisè de bǐ)",
+                "黑色的笔这 (hēisè de bǐ zhè)",
+                "这本黑色的笔 (zhè běn hēisè de bǐ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Démonstratif (这) + Spécificateur de stylo (支) + Modificateur avec 的 (黑色的) + Nom (笔)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est l'erreur dans la phrase *我买三书 (Wǒ mǎi sān shū) ?",
+              "options": [
+                "Il manque le spécificateur 本 entre le chiffre 三 et le nom 书",
+                "Le verbe 买 devrait être conjugué au futur",
+                "Le mot 书 devrait obligatoirement porter un pluriel",
+                "Le pronom 我 ne peut pas acheter de livres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En chinois, on ne peut pas lier un nombre à un nom sans son classificateur : il faut dire 我买三本书."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie le mot quantitatif indéfini 一些 (yìxiē) placé devant un nom ?",
+              "options": [
+                "Quelques / un certain nombre de",
+                "Aucun",
+                "Exactement un seul",
+                "Toujours dix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一些 (yìxiē) signifie 'quelques' ou 'un peu de' : il remplace le spécificateur habituel pour indiquer le pluriel."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : La structure canonique Sujet + Verbe + Objet",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'ordre canonique des mots dans une phrase déclarative simple en chinois ?",
+              "options": [
+                "Sujet + Verbe + Objet (SVO)",
+                "Sujet + Objet + Verbe (SOV)",
+                "Verbe + Sujet + Objet (VSO)",
+                "Objet + Verbe + Sujet (OVS)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme en français, la structure fondamentale d'une phrase active simple en chinois est Sujet + Verbe + Objet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans la phrase '我喝茶' (Wǒ hē chá), quel mot remplit la fonction d'objet direct ?",
+              "options": [
+                "茶 (chá, le thé)",
+                "我 (wǒ, je)",
+                "喝 (hē, boire)",
+                "Il n'y a pas d'objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我 est le sujet, 喝 le verbe d'action et 茶 (le thé) est l'objet de l'action de boire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'J'apprends le chinois' en respectant l'ordre SVO ?",
+              "options": [
+                "我学中文 (Wǒ xué zhōngwén)",
+                "中文我学 (Zhōngwén wǒ xué)",
+                "我中文学 (Wǒ zhōngwén xué)",
+                "学中文我 (Xué zhōngwén wǒ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet (我) + Verbe (学, apprendre) + Objet (中文, langue chinoise) = 我学中文."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le chinois fait-il une inversion sujet-verbe pour poser une question ?",
+              "options": [
+                "Non, l'ordre des mots ne change jamais en chinois pour interroger",
+                "Oui, le verbe passe toujours en tête de phrase",
+                "Oui, mais uniquement avec les verbes d'action",
+                "Oui, si la question s'adresse à un adulte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chinois ne pratique jamais l'inversion sujet-verbe : l'ordre canonique SVO est scrupuleusement conservé."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases respectent scrupuleusement l'ordre canonique Sujet + Verbe + Objet ?",
+              "options": [
+                "他吃米饭 (Tā chī mǐfàn, Il mange du riz)",
+                "我们买书 (Wǒmen mǎi shū, Nous achetons des livres)",
+                "米饭他吃 (Mǐfàn tā chī)",
+                "看书爸爸 (Kàn shū bàba)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "他吃米饭 et 我们买书 placent clairement le Sujet en tête, suivi du Verbe puis du Complément d'objet."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Il mange une pomme' en chinois ?",
+              "options": [
+                "他吃一个苹果 (Tā chī yí gè píngguǒ)",
+                "他一个苹果吃 (Tā yí gè píngguǒ chī)",
+                "吃他一个苹果 (Chī tā yí gè píngguǒ)",
+                "一个苹果他吃 (Yí gè píngguǒ tā chī)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet (他) + Verbe (吃) + Objet (一个苹果) = 他吃一个苹果."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Où se place généralement le sujet dans une proposition simple chinoise ?",
+              "options": [
+                "Au début de la proposition",
+                "À la toute fin de la phrase",
+                "Entre le verbe et l'objet",
+                "Après la particule modale finale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sujet ouvre la proposition : il se place en position initiale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans la phrase '爸爸看书' (Bàba kàn shū), que signifie le verbe 看 (kàn) ?",
+              "options": ["Lire / regarder", "Écrire", "Acheter", "Vendre"],
+              "correctAnswers": [0],
+              "explanation": "看 signifie 'regarder' ou 'lire' : 看书 signifie lire un livre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la phrase '我们喜欢中国' (Wǒmen xǐhuan Zhōngguó) ?",
+              "options": [
+                "Nous aimons la Chine",
+                "La Chine nous aime",
+                "Nous allons en Chine",
+                "Nous habitons en Chine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我们 (nous) + 喜欢 (aimer) + 中国 (la Chine) = Nous aimons la Chine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Tu écoutes la musique' (musique = 音乐 yīnyuè) ?",
+              "options": [
+                "你听音乐 (Nǐ tīng yīnyuè)",
+                "音乐你听 (Yīnyuè nǐ tīng)",
+                "你音乐听 (Nǐ yīnyuè tīng)",
+                "听你音乐 (Tīng nǐ yīnyuè)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet (你) + Verbe (听, écouter) + Objet (音乐, musique) = 你听音乐."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Le verbe d'identification 是 (shì)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la fonction essentielle du verbe 是 (shì) en chinois ?",
+              "options": [
+                "C'est un verbe de liaison pour identifier ou classifier (être)",
+                "C'est un verbe d'action signifiant se déplacer",
+                "C'est un auxiliaire qui exprime la possibilité physique",
+                "C'est un verbe de possession signifiant posséder"
+              ],
+              "correctAnswers": [0],
+              "explanation": "是 (shì) sert à relier deux éléments nominaux d'identité ou d'appartenance (A est B)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Je suis français' en chinois ?",
+              "options": [
+                "我是法国人 (Wǒ shì fǎguó rén)",
+                "我法国人 (Wǒ fǎguó rén)",
+                "我是法国 (Wǒ shì fǎguó)",
+                "法国人是我 (Fǎguó rén shì wǒ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我 (sujet) + 是 (verbe être) + 法国人 (Français) = 我是法国人."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Peut-on employer 是 directement devant un adjectif qualificatif simple (ex: pour dire 'Il est grand') ?",
+              "options": [
+                "Non, c'est une faute majeure : on emploie 很 et non 是 devant un adjectif",
+                "Oui, 是 doit obligatoirement précéder tous les adjectifs",
+                "Oui, mais uniquement pour les adjectifs de couleur",
+                "Oui, si le sujet est féminin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erreur classique des débutants : 是 relie deux noms (A 是 B). Devant un adjectif qualificatif, on utilise 很."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Ceci est un livre' en chinois ?",
+              "options": [
+                "这是一本书 (Zhè shì yì běn shū)",
+                "这书是一本 (Zhè shū shì yì běn)",
+                "是一本书这 (Shì yì běn shū zhè)",
+                "这本是一书 (Zhè běn shì yì shū)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这 (ceci) + 是 (est) + 一本书 (un livre) = 这是一本书."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Dans quelles phrases le verbe 是 (shì) est-il employé de manière parfaitement correcte ?",
+              "options": [
+                "他是学生 (Tā shì xuésheng, Il est étudiant)",
+                "今天是星期一 (Jīntiān shì xīngqīyī, Aujourd'hui c'est lundi)",
+                "他是个很高 (Tā shì ge hěn gāo)",
+                "我是很忙 (Wǒ shì hěn máng)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "他是学生 et 今天是星期一 relient bien deux substantifs. En revanche, devant un adjectif (高, 忙), 是 est banni."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Elle est professeur' en chinois ?",
+              "options": [
+                "她是老师 (Tā shì lǎoshī)",
+                "她很老师 (Tā hěn lǎoshī)",
+                "老师是她 (Lǎoshī shì tā)",
+                "她是很有名 (Tā shì hěn yǒumíng)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identification professionnelle : Sujet (她) + 是 + Titre/métier (老师) = 她是老师."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quels sont la prononciation pinyin et le ton corrects du verbe 是 ?",
+              "options": [
+                "shì (quatrième ton descendant)",
+                "shī (premier ton haut)",
+                "shí (deuxième ton montant)",
+                "shǐ (troisième ton)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "是 se prononce shì avec une consonne rétroflexe et un quatrième ton net et descendant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment forme-t-on la négation du verbe 是 pour dire 'Ce n'est pas...' ?",
+              "options": [
+                "不是 (bú shì)",
+                "没是 (méi shì)",
+                "不有 (bù yǒu)",
+                "无是 (wú shì)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La négation de 是 se fait toujours avec 不 : 不是 (bú shì), où 不 prend le 2e ton devant un 4e ton."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans la phrase '我是学生' (Wǒ shì xuésheng), quelle est la fonction grammaticale de 学生 ?",
+              "options": [
+                "Attribut du sujet (relié par 是)",
+                "Complément circonstanciel de lieu",
+                "Verbe conjugué",
+                "Sujet inversé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学生 est l'attribut du sujet identifié par le verbe copule 是."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment répond-on brièvement par l'affirmative à la question '你是中国人吗？' ?",
+              "options": [
+                "是 / 是的 (Shì / Shì de)",
+                "很 (Hěn)",
+                "有 (Yǒu)",
+                "行了 (Xíng le)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On reprend le verbe de la question : '是' ou '是的' pour confirmer l'identification."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : Les phrases à prédicat adjectival et l'adverbe 很 (hěn)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En chinois, quelle est la structure pour exprimer une qualité (ex: 'Il est grand') ?",
+              "options": [
+                "Sujet + 很 (hěn) + Adjectif",
+                "Sujet + 是 (shì) + Adjectif",
+                "Sujet + 有 (yǒu) + Adjectif",
+                "Adjectif + Sujet + 是"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les phrases à prédicat adjectival utilisent l'adverbe de liaison 很 (hěn) : Sujet + 很 + Adjectif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans la phrase affirmative simple '今天很冷' (Aujourd'hui il fait froid), quel est le rôle de 很 ?",
+              "options": [
+                "C'est un pivot syntaxique neutre indispensable pour équilibrer la phrase",
+                "Il signifie obligatoirement 'extrêmement' avec emphase",
+                "C'est un mot de politesse obligatoire",
+                "C'est une particule interrogative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une affirmation neutre, 很 perd sa valeur de 'très' : il sert de cheville syntaxique entre sujet et adjectif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que sous-entend la phrase '今天冷' prononcée SANS l'adverbe 很 ?",
+              "options": [
+                "Une opposition ou une comparaison implicite (ex: 'Aujourd'hui il fait froid, mais pas hier')",
+                "Que la phrase est au passé simple",
+                "Que le locuteur a très chaud",
+                "Que la phrase est une interrogation polie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans 很, l'adjectif isolé crée une valeur contrastive ou comparative immédiate."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on souvent que les adjectifs chinois sont des 'verbes d'état' ?",
+              "options": [
+                "Car ils portent en eux-mêmes l'idée du verbe être et forment le prédicat",
+                "Car ils se conjuguent avec des terminaisons régulières",
+                "Car ils doivent obligatoirement être suivis d'un complément d'objet",
+                "Car ils changent de voyelle selon le temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les adjectifs chinois prédicatifs n'ont pas besoin de verbe 'être' : ils fonctionnent eux-mêmes comme verbes d'état."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases à prédicat adjectival sont grammaticalement bien formées ?",
+              "options": [
+                "他很高 (Tā hěn gāo, Il est grand)",
+                "汉字很有意思 (Hànzì hěn yǒu yìsi, Les caractères sont intéressants)",
+                "他是高 (Tā shì gāo)",
+                "我是有忙 (Wǒ shì yǒu máng)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "他很高 et 汉字很有意思 relient bien le sujet à l'adjectif avec 很. L'emploi de 是 est fautif ici."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Le chinois est difficile' (difficile = 难 nán) ?",
+              "options": [
+                "汉语很难 (Hànyǔ hěn nán)",
+                "汉语是难 (Hànyǔ shì nán)",
+                "汉语有难 (Hànyǔ yǒu nán)",
+                "难汉语 (Nán hànyǔ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet (汉语) + 很 + Adjectif (难) = 汉语很难."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel adverbe emploie-t-on pour exprimer un véritable 'extrêmement / particulièrement' avec intensité ?",
+              "options": [
+                "非常 (fēicháng)",
+                "很 (hěn, dans son usage neutre)",
+                "个 (gè)",
+                "都 (dōu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "非常 (fēicháng) signifie sans ambiguïté 'extrêmement / très particulièrement'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment forme-t-on la négation d'un prédicat adjectival (ex: 'Il ne fait pas froid') ?",
+              "options": [
+                "Sujet + 不 + Adjectif (不冷 bù lěng)",
+                "Sujet + 没 + 很 + Adjectif",
+                "Sujet + 不是 + 很 + Adjectif",
+                "Sujet + 不有 + Adjectif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la forme négative, on utilise 不 directement devant l'adjectif : 不冷 (il ne fait pas froid)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans la phrase négative '今天不冷' (Aujourd'hui il ne fait pas froid), conserve-t-on 很 ?",
+              "options": [
+                "Non, 很 disparaît et est remplacé par l'adverbe de négation 不",
+                "Oui, on doit toujours dire 不很冷 pour une négation simple",
+                "Oui, 很 se place obligatoirement avant 不",
+                "Non, on le remplace obligatoirement par 有"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la négation neutre, 不 remplace 很 : on dit 今天不冷. Dire 不很 signifie 'pas très'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la phrase '我很忙' (Wǒ hěn máng) ?",
+              "options": [
+                "Je suis occupé",
+                "Je suis fatigué",
+                "Je suis libre",
+                "J'ai faim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我 (je) + 很 + 忙 (occupé/pris) = Je suis occupé."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : La négation avec 不 (bù)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'adverbe de négation principal pour les verbes d'action, d'état et au présent/futur ?",
+              "options": ["不 (bù)", "没 (méi)", "别 (bié)", "非 (fēi)"],
+              "correctAnswers": [0],
+              "explanation": "不 (bù) est l'adverbe universel pour nier le présent, les habitudes, les volontés et les états."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle modification de ton (sandhi) subit 不 (bù, 4e ton) lorsqu'il précède un autre 4e ton ?",
+              "options": [
+                "Il passe au deuxième ton montant (bú)",
+                "Il passe au premier ton haut (bū)",
+                "Il passe au troisième ton (bǔ)",
+                "Il devient ton neutre muet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle de sandhi tonal : 不 (4e ton) se prononce bú (2e ton) devant un autre caractère au 4e ton."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment prononce-t-on 不 dans l'expression 不是 (ne pas être) ?",
+              "options": [
+                "bú shì (deuxième ton)",
+                "bù shì (quatrième ton)",
+                "bǔ shì (troisième ton)",
+                "bu shì (ton neutre)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque 是 est au 4e ton, 不 change obligatoirement son ton et se prononce bú : bú shì."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Je ne mange pas' en chinois ?",
+              "options": [
+                "我不吃 (Wǒ bù chī)",
+                "我没吃 (Wǒ méi chī)",
+                "吃不我 (Chī bù wǒ)",
+                "我不吃喝 (Wǒ bù chī hē)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adverbe de négation 不 se place directement avant le verbe 吃 : 我不吃."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Dans quelles expressions le mot 不 se prononce-t-il au deuxième ton (bú) ?",
+              "options": [
+                "不是 (bú shì, ne pas être)",
+                "不去 (bú qù, ne pas aller)",
+                "不吃 (bù chī, ne pas manger)",
+                "不好 (bù hǎo, ne pas être bien)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "是 (shì) et 去 (qù) sont au 4e ton, donc 不 devient bú. En revanche, 吃 (1er) et 好 (3e) maintiennent bù au 4e ton."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Il ne va pas à l'école' en chinois ?",
+              "options": [
+                "他不去学校 (Tā bú qù xuéxiào)",
+                "他不学校去 (Tā bù xuéxiào qù)",
+                "不去他学校 (Bú qù tā xuéxiào)",
+                "他学校不去 (Tā xuéxiào bú qù)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet (他) + Négation (不) + Verbe (去) + Lieu (学校) = 他不去学校."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Peut-on utiliser l'adverbe 不 devant le verbe 有 (yǒu, avoir) ?",
+              "options": [
+                "Non, c'est formellement interdit : la négation de 有 est toujours 没有",
+                "Oui, on peut dire 不有 indifféremment",
+                "Oui, mais uniquement pour les objets inanimés",
+                "Oui, si la phrase est au passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interdiction absolue : l'expression *不有 n'existe pas en chinois. On dit impérativement 没有."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Où se place l'adverbe de négation 不 dans la proposition ?",
+              "options": [
+                "Juste avant le verbe ou l'adjectif qu'il nie",
+                "Après le verbe",
+                "À la toute fin de la phrase",
+                "Avant le sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les adverbes en chinois se placent toujours devant le verbe ou le prédicat qu'ils modifient."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Je ne sais pas' en chinois (savoir = 知道 zhīdào) ?",
+              "options": [
+                "我不知道 (Wǒ bù zhīdào)",
+                "我没知道 (Wǒ méi zhīdào)",
+                "不我知道 (Bù wǒ zhīdào)",
+                "知道我不 (Zhīdào wǒ bù)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不 se place devant le verbe 知道 : 我不知道 (Wǒ bù zhīdào)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la phrase '我不喝咖啡' (Wǒ bù hē kāfēi) ?",
+              "options": [
+                "Je ne bois pas de café",
+                "Je n'aime pas le thé",
+                "Je n'ai pas de café",
+                "Je veux du café"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我 (je) + 不喝 (ne bois pas) + 咖啡 (café) = Je ne bois pas de café."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : Le verbe d'existence et de possession 有 (yǒu) et sa négation 没有 (méiyǒu)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelles sont les deux significations majeures du verbe 有 (yǒu) ?",
+              "options": [
+                "Posséder ('avoir') et exister ('il y a')",
+                "Être grand et être petit",
+                "Aller et venir",
+                "Parler et écouter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "有 exprime à la fois la possession (j'ai un frère) et l'existence spatiale (il y a un livre sur la table)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la forme négative exclusive et obligatoire du verbe 有 (yǒu) ?",
+              "options": [
+                "没有 (méiyǒu)",
+                "不有 (bù yǒu)",
+                "无有 (wú yǒu)",
+                "非有 (fēi yǒu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La seule et unique négation de 有 est 没有 (méiyǒu). L'expression *不有 est rigoureusement exclue."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans la langue parlée, peut-on abréger 没有 (méiyǒu) en 没 (méi) seul devant un nom ?",
+              "options": [
+                "Oui, l'omission de 有 est fréquente à l'oral (ex: 我没钱)",
+                "Non, il faut toujours prononcer les deux caractères",
+                "Non, 没 seul ne peut s'employer qu'au futur",
+                "Uniquement dans les poésies classiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'oral familier, 没有 est souvent abrégé en 没 seul : 我没钱 (Wǒ méi qián, Je n'ai pas d'argent)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'J'ai un petit frère' (petit frère = 弟弟 dìdi) ?",
+              "options": [
+                "我有一个弟弟 (Wǒ yǒu yí gè dìdi)",
+                "我是弟弟 (Wǒ shì dìdi)",
+                "我有一个哥哥 (Wǒ yǒu yí gè gēge)",
+                "弟弟有我 (Dìdi yǒu wǒ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet (我) + Verbe (有) + Spécificateur + Nom (一个弟弟) = 我有一个弟弟."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases emploient correctement le verbe 有 ou sa négation 没有 ?",
+              "options": [
+                "他没有自行车 (Tā méiyǒu zìxíngchē, Il n'a pas de vélo)",
+                "这里有很多人 (Zhèlǐ yǒu hěn duō rén, Il y a beaucoup de monde ici)",
+                "他不有书 (Tā bù yǒu shū)",
+                "桌子是有书 (Zhuōzi shì yǒu shū)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "他没有自行车 et 这里有很多人 sont impeccables. La forme *不有 est une grave erreur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Il n'a pas d'argent' (argent = 钱 qián) ?",
+              "options": [
+                "他没有钱 (Tā méiyǒu qián)",
+                "他不有钱 (Tā bù yǒu qián)",
+                "他是不钱 (Tā shì bù qián)",
+                "没有钱他 (Méiyǒu qián tā)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation de la possession : 他 (sujet) + 没有 (ne pas avoir) + 钱 (argent) = 他没有钱."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on la phrase existentielle 'Sur la table, il y a des livres' ?",
+              "options": [
+                "桌子上有书 (Zhuōzi shang yǒu shū)",
+                "书有桌子上 (Shū yǒu zhuōzi shang)",
+                "是有书桌子上 (Shì yǒu shū zhuōzi shang)",
+                "桌子上是书 (Zhuōzi shang shì shū)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour exprimer l'existence : Lieu (桌子上) + 有 (il y a) + Nom (书) = 桌子上有书."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment pose-t-on une question alternative avec le verbe 有 (avoir ou ne pas avoir) ?",
+              "options": [
+                "有没有？ (Yǒu méiyǒu?)",
+                "有不有？ (Yǒu bù yǒu?)",
+                "是没是？ (Shì méi shì?)",
+                "有有？ (Yǒu yǒu?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule interrogative alternative est Verbe + Négation + Verbe : 有没有 (Yǒu méiyǒu?)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la phrase '我们学校有很多学生' ?",
+              "options": [
+                "Dans notre école, il y a beaucoup d'élèves",
+                "Notre école n'a aucun élève",
+                "Les élèves n'aiment pas l'école",
+                "Notre école est très petite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我们学校 (notre école) + 有 (il y a) + 很多学生 (beaucoup d'élèves)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment demande-t-on 'As-tu le temps ?' (temps = 时间 shíjiān) ?",
+              "options": [
+                "你有时间吗？ (Nǐ yǒu shíjiān ma?)",
+                "你是时间吗？ (Nǐ shì shíjiān ma?)",
+                "你看时间吗？ (Nǐ kàn shíjiān ma?)",
+                "你很时间吗？ (Nǐ hěn shíjiān ma?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Posséder du temps se dit avoir du temps : 你 (tu) + 有 (as) + 时间 (temps) + 吗 (particule interrogative)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : Les questions fermées avec la particule 吗 (ma)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la fonction essentielle de la particule 吗 (ma) en fin de phrase ?",
+              "options": [
+                "Elle transforme une phrase affirmative en question fermée (réponse par oui ou non)",
+                "Elle indique que la phrase est au passé",
+                "Elle sert de marque d'exclamation admirative",
+                "Elle remplace le sujet de la phrase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "吗 (ma) se place à la fin d'une phrase déclarative sans en changer l'ordre pour en faire une question fermée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que devient l'ordre des mots d'une phrase affirmative lorsqu'on lui ajoute la particule 吗 ?",
+              "options": [
+                "L'ordre des mots reste rigoureusement inchangé",
+                "Le sujet et le verbe s'inversent",
+                "Le verbe se déplace en début de phrase",
+                "L'objet passe obligatoirement avant le sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Magie de la grammaire chinoise : on prend la phrase affirmative telle quelle et on pose simplement 吗 à la fin !"
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le ton de la particule interrogative 吗 (ma) ?",
+              "options": [
+                "Le ton neutre (léger et bref)",
+                "Le premier ton haut",
+                "Le deuxième ton montant",
+                "Le quatrième ton sec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "吗 est une particule modale atone : elle se prononce toujours au ton neutre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment transforme-t-on l'affirmation '你是中国人' en question fermée ?",
+              "options": [
+                "你是中国人吗？ (Nǐ shì zhōngguó rén ma?)",
+                "你是吗中国人？ (Nǐ shì ma zhōngguó rén?)",
+                "吗你是中国人？ (Ma nǐ shì zhōngguó rén?)",
+                "中国人你是吗？ (Zhōngguó rén nǐ shì ma?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ajoute 吗 à la fin de la phrase affirmative : 你是中国人吗？ (Es-tu chinois ?)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases interrogatives avec 吗 (ma) sont parfaitement construites ?",
+              "options": [
+                "你喝茶吗？ (Nǐ hē chá ma?, Bois-tu du thé ?)",
+                "他好吗？ (Tā hǎo ma?, Va-t-il bien ?)",
+                "你是谁吗？ (Nǐ shì shéi ma?)",
+                "你想买什么吗？ (dans le sens 'quel objet achètes-tu ?')"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "你喝茶吗 et 他好吗 sont des questions fermées régulières. On ne combine pas 吗 avec un mot interrogatif (谁, 什么)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment demande-t-on 'Aimes-tu le chinois ?' avec la particule 吗 ?",
+              "options": [
+                "你喜欢中文吗？ (Nǐ xǐhuan zhōngwén ma?)",
+                "你喜欢吗中文？ (Nǐ xǐhuan ma zhōngwén?)",
+                "中文你喜欢吗？ (Zhōngwén nǐ xǐhuan ma?)",
+                "吗你喜欢中文？ (Ma nǐ xǐhuan zhōngwén?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase affirmative (你喜欢中文) + 吗 = 你喜欢中文吗？"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Peut-on combiner dans une même proposition 吗 et un mot interrogatif comme 什么 (quoi) ou 谁 (qui) ?",
+              "options": [
+                "Non, un mot interrogatif exclut l'usage de la particule 吗",
+                "Oui, il faut toujours mettre les deux ensemble",
+                "Oui, mais uniquement le matin",
+                "Oui, si la phrase compte plus de dix mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incompatibilité absolue : une question ouverte avec 什么, 谁, 哪儿 ne prend jamais 吗."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment demande-t-on 'Es-tu fatigué ?' (fatigué = 累 lèi) ?",
+              "options": [
+                "你累吗？ (Nǐ lèi ma?)",
+                "你是累吗？ (Nǐ shì lèi ma?)",
+                "你很累吗？ (Nǐ hěn lèi ma?)",
+                "累你吗？ (Lèi nǐ ma?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On associe directement le sujet et l'adjectif sans 很 dans la question simple : 你累吗？"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Est-ce qu'il vient demain ?' (demain = 明天 míngtiān ; venir = 来 lái) ?",
+              "options": [
+                "他明天来吗？ (Tā míngtiān lái ma?)",
+                "明天他来不？ (Míngtiān tā lái bù?)",
+                "来明天他吗？ (Lái míngtiān tā ma?)",
+                "他是明天来吗？ (Tā shì míngtiān lái ma?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet (他) + Temps (明天) + Verbe (来) + 吗 = 他明天来吗？"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la formule de politesse courante '你忙吗？' (Nǐ máng ma?) ?",
+              "options": [
+                "Es-tu occupé ?",
+                "Vas-tu bien ?",
+                "Où vas-tu ?",
+                "Que fais-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "你 (tu) + 忙 (occupé) + 吗 = Es-tu occupé ? (formule fréquente pour demander si on dérange)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Les questions ouvertes avec 什么 (shénme) et 谁 (shéi)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le mot interrogatif 什么 (shénme) en chinois ?",
+              "options": ["Que / quoi / quel", "Qui", "Où", "Pourquoi"],
+              "correctAnswers": [0],
+              "explanation": "什么 (shénme) sert à interroger sur les choses : que, quoi ou quel (+ nom)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le mot interrogatif 谁 (shéi ou shuí) ?",
+              "options": ["Qui", "Quoi", "Quand", "Combien"],
+              "correctAnswers": [0],
+              "explanation": "谁 (shéi / shuí) est le pronom interrogatif désignant une personne : qui."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Où place-t-on le mot interrogatif (什么, 谁) dans une question en chinois ?",
+              "options": [
+                "Exactement à la place qu'occuperait la réponse dans la phrase affirmative",
+                "Toujours obligatoirement en tête de phrase",
+                "Toujours en toute fin de phrase après la ponctuation",
+                "Entre le sujet et le temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Principe fondamental : le mot interrogatif reste in situ (à l'emplacement naturel du mot recherché)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment demande-t-on 'Que manges-tu ?' en chinois ?",
+              "options": [
+                "你吃什么？ (Nǐ chī shénme?)",
+                "什么你吃？ (Shénme nǐ chī?)",
+                "你什么吃？ (Nǐ shénme chī?)",
+                "吃什么你？ (Chī shénme nǐ?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réponse affirmative serait '我吃苹果' (Sujet Verbe Objet), donc la question est '你吃什么？' (Sujet Verbe Quoi)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles questions ouvertes sont correctement structurées en chinois ?",
+              "options": [
+                "谁是老师？ (Shéi shì lǎoshī?, Qui est le professeur ?)",
+                "你看什么书？ (Nǐ kàn shénme shū?, Quel livre lis-tu ?)",
+                "什么你买？ (Shénme nǐ mǎi?)",
+                "谁你喜欢？ (Shéi nǐ xǐhuan?)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "谁 est sujet dans 谁是老师 ; 什么 précède le nom 書 dans 你看什么书. Les inversions sont fautives."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment demande-t-on 'Qui est cette personne / Qui est-ce ?' ?",
+              "options": [
+                "他是谁？ (Tā shì shéi?)",
+                "谁他是？ (Shéi tā shì?)",
+                "他谁是？ (Tā shéi shì?)",
+                "谁是他？ (Shéi shì tā?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet (他) + Verbe (是) + Attribut interrogatif (谁) = 他是谁？ (Tā shì shéi?)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment demande-t-on usuellement 'Comment t'appelles-tu ?' en chinois ?",
+              "options": [
+                "你叫什么名字？ (Nǐ jiào shénme míngzi?)",
+                "你是怎么叫？ (Nǐ shì zěnme jiào?)",
+                "什么名字你叫？ (Shénme míngzi nǐ jiào?)",
+                "你叫谁名字？ (Nǐ jiào shéi míngzi?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tu t'appelles quel nom : 你 (tu) + 叫 (s'appeler) + 什么 (quel) + 名字 (nom)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi le chinois ne déplace-t-il pas le mot interrogatif en tête de phrase comme le français ?",
+              "options": [
+                "Parce que la syntaxe chinoise privilégie la régularité et conserve la structure Sujet-Verbe-Objet",
+                "Parce qu'il est interdit de commencer une phrase par une question",
+                "Parce que les mots interrogatifs sont considérés comme impolis",
+                "Parce que les tons empêchent le déplacement des mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En chinois, l'ordre syntaxique de base ne bouge jamais : le pronom interrogatif remplace simplement l'élément inconnu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Quel livre lis-tu ?' en associant 什么 à un nom ?",
+              "options": [
+                "你看什么书？ (Nǐ kàn shénme shū?)",
+                "你看书什么？ (Nǐ kàn shū shénme?)",
+                "什么书看你？ (Shénme shū kàn nǐ?)",
+                "你什么看书？ (Nǐ shénme kàn shū?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "什么 se place immédiatement devant le nom pour signifier 'quel' : 什么书 = quel livre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la question '这是谁的书？' (Zhè shì shéi de shū?) ?",
+              "options": [
+                "À qui est ce livre ?",
+                "Où est mon livre ?",
+                "Quel est ce livre ?",
+                "Qui a lu ce livre ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这是 (ceci est) + 谁的书 (le livre de qui) = À qui est ce livre ?"
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : La particule réflexive et elliptique 呢 (ne)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le rôle essentiel de la particule 呢 (ne) attachée à un pronom ou un nom ?",
+              "options": [
+                "Elle relance une question en écho ou en ellipse ('et ... ?')",
+                "Elle marque la négation passée",
+                "Elle indique le futur proche",
+                "Elle exprime un ordre sévère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "呢 (ne) sert à poser une question abrégée en rebondissant sur ce qui vient d'être dit ('et toi ?', 'et lui ?')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Et toi ?' de manière ultra-courante en chinois ?",
+              "options": [
+                "你呢？ (Nǐ ne?)",
+                "你吗？ (Nǐ ma?)",
+                "你是？ (Nǐ shì?)",
+                "你什么？ (Nǐ shénme?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "你 (tu/toi) + 呢 (particule elliptique) = 你呢？ (Et toi ?)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si quelqu'un dit '我是法国人，你呢？', qu'attend-il comme information ?",
+              "options": [
+                "Votre nationalité en retour",
+                "Votre âge exact",
+                "L'heure qu'il est",
+                "Le montant de vos achats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La particule 呢 reprend le prédicat précédent ('être français') pour l'appliquer au nouvel interlocuteur ('et toi, de quelle nationalité es-tu ?')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel autre usage 呢 peut-il avoir en fin de phrase affirmative ?",
+              "options": [
+                "Souligner la continuité d'une action en cours de déroulement",
+                "Indiquer que l'action est terminée depuis dix ans",
+                "Exprimer un souhait pieux",
+                "Marquer une condition irréelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En fin de phrase, 呢 peut marquer la continuité d'un état ou d'une action en cours (ex: 他在看书呢)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Dans quelles situations utilise-t-on naturellement la particule 呢 (ne) ?",
+              "options": [
+                "Pour demander 'Et toi ?' après une réponse (你呢？)",
+                "Pour demander où est un objet égaré (我的笔呢？ Où est mon stylo ?)",
+                "Pour nier un verbe d'action au présent",
+                "Pour compter de 1 à 10"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "呢 s'emploie en relance elliptique (你呢？) et pour demander où se trouve un objet cherché (我的笔呢？)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment demande-t-on 'Et ton grand frère ?' de façon concise avec 呢 ?",
+              "options": [
+                "你哥哥呢？ (Nǐ gēge ne?)",
+                "你哥哥吗？ (Nǐ gēge ma?)",
+                "哥哥是谁？ (Gēge shì shéi?)",
+                "什么你哥哥？ (Shénme nǐ gēge?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom (你哥哥) + 呢 = 你哥哥呢？ (Et ton grand frère ?)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le ton de la particule 呢 (ne) ?",
+              "options": [
+                "Le ton neutre (atone, doux et léger)",
+                "Le premier ton",
+                "Le deuxième ton",
+                "Le troisième ton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme 吗 et 的, la particule 呢 se prononce toujours au ton neutre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la phrase familière '我的手机呢？' (portable = 手机 shǒujī) ?",
+              "options": [
+                "Où est donc passé mon portable ?",
+                "Ceci est mon portable",
+                "As-tu un portable ?",
+                "Mon portable est très cher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objet + 呢 exprime familièrement la recherche d'un objet absent : 'Où est mon portable ?'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans le dialogue '我不喝茶。——咖啡呢？', que demande le second locuteur ?",
+              "options": [
+                "Et du café, en boirais-tu ?",
+                "Le café est-il chaud ?",
+                "Qui a préparé le café ?",
+                "Combien coûte le café ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "咖啡呢？ applique la question de la consommation à une alternative : 'Et pour le café ?'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase illustre un usage correct de 呢 en relance ?",
+              "options": [
+                "他喜欢中国，他弟弟呢？",
+                "他喜欢呢中国？",
+                "呢他喜欢中国？",
+                "中国呢他喜欢？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énoncé pose un fait puis interroge sur un tiers par ellipse : 他弟弟呢？"
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Les adverbes 也 (yě) et 都 (dōu)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe 也 (yě) en chinois ?",
+              "options": [
+                "Aussi / également",
+                "Tous / chacun",
+                "Jamais",
+                "Beaucoup"
+              ],
+              "correctAnswers": [0],
+              "explanation": "也 (yě) est l'adverbe qui exprime la conformité ou l'addition : aussi, également."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe 都 (dōu) en chinois ?",
+              "options": [
+                "Tous / tout / totalité",
+                "Aussi",
+                "Seulement",
+                "Déjà"
+              ],
+              "correctAnswers": [0],
+              "explanation": "都 (dōu) exprime la totalité ou la généralisation portant sur les éléments mentionnés avant lui."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Où se placent OBLIGATOIREMENT les adverbes 也 et 都 dans la phrase chinoise ?",
+              "options": [
+                "Entre le sujet et le verbe (toujours DEVANT le verbe)",
+                "Après le verbe",
+                "À la fin de la phrase",
+                "Avant le sujet au début de la phrase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle absolue : les adverbes chinois ne peuvent jamais être placés en fin de phrase ; ils se placent avant le verbe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si 也 et 都 apparaissent ensemble dans la même phrase, quel est leur ordre obligatoire ?",
+              "options": [
+                "也 d'abord, puis 都 (也都 yě dōu)",
+                "都 d'abord, puis 也 (都也 dōu yě)",
+                "L'ordre est totalement indifférent",
+                "Ils doivent être séparés par le verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule immuable est 'aussi tous' : 也都 (yě dōu) et jamais *都也."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases placent correctement les adverbes 也 ou 都 ?",
+              "options": [
+                "我也学中文 (Wǒ yě xué zhōngwén, Moi aussi j'apprends le chinois)",
+                "我们都是学生 (Wǒmen dōu shì xuésheng, Nous sommes tous étudiants)",
+                "我学中文也 (Wǒ xué zhōngwén yě)",
+                "我们是学生都 (Wǒmen shì xuésheng dōu)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "我也学中文 et 我们都是学生 placent bien l'adverbe entre sujet et verbe. Les placer en fin de phrase est une faute."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Moi aussi je suis français' en chinois ?",
+              "options": [
+                "我也是法国人 (Wǒ yě shì fǎguó rén)",
+                "我是在法国也 (Wǒ shì zài fǎguó yě)",
+                "也我是法国人 (Yě wǒ shì fǎguó rén)",
+                "我是法国人也 (Wǒ shì fǎguó rén yě)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet (我) + Adverbe (也) + Verbe (是) + Attribut (法国人) = 我也是法国人."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Ils sont tous contents' (content = 高兴 gāoxìng) ?",
+              "options": [
+                "他们都很高兴 (Tāmen dōu hěn gāoxìng)",
+                "他们很高兴都 (Tāmen hěn gāoxìng dōu)",
+                "都他们很高兴 (Dōu tāmen hěn gāoxìng)",
+                "他们高兴都 (Tāmen gāoxìng dōu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet pluriel (他们) + 都 + 很 + Adjectif (高兴) = 他们都很高兴."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Nous aussi, nous aimons tous le thé' en combinant 也 et 都 ?",
+              "options": [
+                "我们也都很喜欢茶 (Wǒmen yě dōu hěn xǐhuan chá)",
+                "我们都也很喜欢茶 (Wǒmen dōu yě hěn xǐhuan chá)",
+                "我们喜欢茶也都 (Wǒmen xǐhuan chá yě dōu)",
+                "也都我们喜欢茶 (Yě dōu wǒmen xǐhuan chá)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On applique la règle de succession : Sujet + 也 + 都 + Verbe = 我们也都很喜欢茶."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la signification de '都不' (dōu bù) dans la phrase '他们都不是法国人' ?",
+              "options": [
+                "Négation totale : aucun d'entre eux n'est français",
+                "Négation partielle : ils ne sont pas tous français",
+                "Affirmation : ils sont presque tous français",
+                "Doute : peut-être qu'ils sont français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "都 + 不 = négation totale ('tous ne sont pas' = aucun n'est)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la nuance de '不都' (bù dōu) dans la phrase '他们不都是法国人' ?",
+              "options": [
+                "Négation partielle : ils ne sont pas tous français (certains le sont, d'autres non)",
+                "Négation absolue : aucun n'est français",
+                "Affirmation totale : ils sont tous français",
+                "Interrogation : sont-ils français ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不 + 都 = négation partielle ('pas tous' : certains oui, certains non)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : L'emplacement des compléments de temps et de lieu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Où se place généralement le complément de temps dans une phrase chinoise ?",
+              "options": [
+                "Avant le verbe (soit en tête de phrase, soit immédiatement après le sujet)",
+                "Toujours en toute fin de phrase après l'objet",
+                "Entre le verbe et l'objet direct",
+                "À l'intérieur du verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En chinois, le temps plante le décor : il se place impérativement avant le verbe (avant ou après le sujet)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la règle d'or pour l'ordre des éléments : Sujet, Temps, Lieu et Action ?",
+              "options": [
+                "Sujet + Temps + Lieu + Verbe + Objet",
+                "Sujet + Verbe + Objet + Lieu + Temps",
+                "Verbe + Sujet + Temps + Lieu",
+                "Lieu + Objet + Verbe + Temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule mnémotechnique majeure en chinois est : Sujet + (Quand) + (Où) + Action (Quoi)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on 'J'étudie à l'école' avec la préposition de lieu 在 (zài) ?",
+              "options": [
+                "我在学校学习 (Wǒ zài xuéxiào xuéxí)",
+                "我学习在学校 (Wǒ xuéxí zài xuéxiào)",
+                "在学校学习我 (Zài xuéxiào xuéxí wǒ)",
+                "我学习学校在 (Wǒ xuéxí xuéxiào zài)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le complément de lieu prépositionnel (在学校) se place impérativement AVANT le verbe d'action (学习)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Où se situe le groupe prépositionnel de lieu '在 + Lieu' par rapport au verbe d'action ?",
+              "options": [
+                "Avant le verbe",
+                "Après l'objet",
+                "À la fin de la phrase",
+                "Avant le pronom sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En chinois, le lieu où se déroule l'action doit être posé avant l'accomplissement du verbe."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases respectent scrupuleusement l'ordre temporel et spatial chinois ?",
+              "options": [
+                "他明天去北京 (Tā míngtiān qù Běijīng, Demain il va à Pékin)",
+                "我们晚上在家里看电影 (Ce soir nous regardons un film à la maison)",
+                "他去北京明天 (Tā qù Běijīng míngtiān)",
+                "我们看电影在家里晚上"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le temps (明天, 晚上) et le lieu (在家里) précèdent bien le verbe. Les rejets en fin de phrase sont des calques fautifs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Demain je vais à Pékin' en plaçant le temps en tête de phrase ?",
+              "options": [
+                "明天我去北京 (Míngtiān wǒ qù Běijīng)",
+                "我去北京明天 (Wǒ qù Běijīng míngtiān)",
+                "我明天去北京 (forme avec temps après sujet, également bonne mais temps après)",
+                "去北京明天我 (Qù Běijīng míngtiān wǒ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le complément de temps peut ouvrir la phrase : 明天我去北京 (Míngtiān wǒ qù Běijīng)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans quel ordre hiérarchique énonce-t-on les indications de temps en chinois (ex: date, jour, heure) ?",
+              "options": [
+                "Du plus grand au plus petit (Année > Mois > Jour > Heure)",
+                "Du plus petit au plus grand (Heure > Jour > Mois > Année)",
+                "Dans un ordre totalement aléatoire",
+                "L'heure en premier, l'année au milieu, le jour à la fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pensée globale vers le détail : en chinois, on part toujours de la plus grande unité vers la plus petite."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Ce soir nous mangeons chez lui' (ce soir = 今天晚上 ; chez lui = 在他家) ?",
+              "options": [
+                "今天晚上我们在他家吃饭 (Jīntiān wǎnshang wǒmen zài tā jiā chīfàn)",
+                "我们吃饭在他家今天晚上 (Wǒmen chīfàn zài tā jiā jīntiān wǎnshang)",
+                "我们吃饭今天晚上在他家 (Wǒmen chīfàn jīntiān wǎnshang zài tā jiā)",
+                "在他家吃饭我们今天晚上 (Zài tā jiā chīfàn wǒmen jīntiān wǎnshang)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séquence logique : Temps (今天晚上) + Sujet (我们) + Lieu (在他家) + Action (吃饭)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la phrase '*我学中文在学校' est-elle considérée comme incorrecte en chinois ?",
+              "options": [
+                "Parce que le complément de lieu en 在 ne peut jamais être rejeté après le verbe d'action",
+                "Parce que le mot 中文 doit être écrit en pinyin",
+                "Parce que 学校 est un mot féminin",
+                "Parce qu'il manque un point d'exclamation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Calque direct du français à bannir : en chinois, le cadre spatial (在学校) précède obligatoirement le verbe (学)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle formule résume la chronologie mentale de la phrase chinoise ?",
+              "options": [
+                "On pose d'abord le décor (qui, quand, où), puis on accomplit l'action",
+                "On énonce l'action d'abord, puis on donne les détails ensuite",
+                "On met toujours l'objet en premier pour capter l'attention",
+                "On termine toujours par le verbe conjugué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En chinois, la pensée va du cadre général vers l'action précise : Sujet + Temps + Lieu + Verbe + Objet."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -39,6 +39,7 @@ import {
 import { useSettings } from "@/hooks/use-settings";
 import type { MaiUser } from "@/lib/auth/session";
 import { APP_SUPPORT_URL, APP_VERSION } from "@/lib/constants";
+import { preloadApplicationSettings } from "@/lib/settings/preload-applications";
 import { saveThemePreference } from "@/lib/theme/preference";
 
 export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
@@ -143,6 +144,8 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
               <Link
                 className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent"
                 href="/settings"
+                onFocus={preloadApplicationSettings}
+                onMouseEnter={preloadApplicationSettings}
               >
                 <SettingsIcon className="size-4 text-muted-foreground" />
                 <span>Paramètres du compte</span>

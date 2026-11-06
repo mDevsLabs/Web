@@ -1,0 +1,2168 @@
+{
+  "id": "2nde-mathematiques-02",
+  "year": "2nde",
+  "subject": "mathematiques",
+  "title": "Géométrie et statistiques",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Géométrie repérée",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Repère orthonormé et coordonnées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un repère orthonormé (O; I, J), quelles affirmations sont exactes ?",
+              "options": [
+                "L'axe des abscisses est la droite (Oy)",
+                "L'origine O a pour coordonnées (0 ; 0)",
+                "Un point du plan a une unique paire (abscisse ; ordonnée)",
+                "La distance OI vaut 1 unité de longueur"
+              ],
+              "correctAnswers": [1, 3],
+              "explanation": "L'origine est en (0;0), OI = 1 ; l'axe des abscisses est (Ox)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le point A(3 ; -2) se situe dans quel quadrant ?",
+              "options": [
+                "Premier (x>0, y>0)",
+                "Deuxième (x<0, y>0)",
+                "Quatrième (x>0, y<0)",
+                "Troisième (x<0, y<0)"
+              ],
+              "correctAnswers": [2],
+              "explanation": "x>0 et y<0 : quatrième quadrant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Symétrique de B(4 ; 1) par rapport à l'axe (Ox) :",
+              "options": ["(4 ; -1)", "(-4 ; 1)", "(-4 ; -1)", "(1 ; 4)"],
+              "correctAnswers": [0],
+              "explanation": "Symétrie par (Ox) : l'ordonnée change de signe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Point sur l'axe des ordonnées d'ordonnée 5 :",
+              "options": ["(5 ; 0)", "(0 ; 5)", "(5 ; 5)", "(-5 ; 0)"],
+              "correctAnswers": [1],
+              "explanation": "Sur (Oy), l'abscisse est nulle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Repère orthogonal avec même unité sur les deux axes :",
+              "options": [
+                "Seulement orthogonal",
+                "Orthonormé",
+                "Affin",
+                "Non cartésien"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Orthogonal + unités égales : repère orthonormé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Symétrique de D(-2 ; 3) par rapport à O :",
+              "options": ["(2 ; -3)", "(2 ; 3)", "(-2 ; -3)", "(3 ; -2)"],
+              "correctAnswers": [0],
+              "explanation": "Symétrie centrale : coordonnées opposées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Abscisse négative et ordonnée positive :",
+              "options": ["(2 ; -1)", "(-3 ; 4)", "(5 ; 2)", "(0 ; -2)"],
+              "correctAnswers": [1],
+              "explanation": "(-3 ; 4) est au deuxième quadrant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'ensemble des points d'abscisse 0 est :",
+              "options": ["(Ox)", "(Oy)", "y = x", "Cercle unité"],
+              "correctAnswers": [1],
+              "explanation": "x = 0 caractérise l'axe des ordonnées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Symétrique de E(1 ; -4) par rapport à (Oy) :",
+              "options": ["(-1 ; -4)", "(1 ; 4)", "(-1 ; 4)", "(4 ; -1)"],
+              "correctAnswers": [0],
+              "explanation": "Symétrie par (Oy) : abscisse opposée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Milieu de [FG], F(-1 ; 2) et G(5 ; 8) :",
+              "options": ["(4 ; 10)", "(2 ; 5)", "(3 ; 6)", "(2 ; 3)"],
+              "correctAnswers": [1],
+              "explanation": "Moyenne des coordonnées : (2 ; 5)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Distance entre deux points",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un repère orthonormé, pour A et B, quelles égalités sont correctes ?",
+              "options": [
+                "AB = √[(x_B − x_A)² + (y_B − y_A)²]",
+                "AB = |x_B − x_A| + |y_B − y_A| dans tous les cas",
+                "AB² = (x_B − x_A)² + (y_B − y_A)²",
+                "AB vaut toujours |x_B − x_A|"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Distance euclidienne : formule avec somme des carrés des écarts."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Distance A(0;0) et B(3;4) :",
+              "options": ["5", "7", "√7", "25"],
+              "correctAnswers": [0],
+              "explanation": "√(9+16) = 5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Distance M(1;2) et N(1;-3) :",
+              "options": ["1", "5", "√5", "4"],
+              "correctAnswers": [1],
+              "explanation": "Écart vertical : |2−(−3)| = 5."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Distance P(-2;0) et Q(4;0) :",
+              "options": ["2", "6", "√6", "8"],
+              "correctAnswers": [1],
+              "explanation": "Sur (Ox) : |4−(−2)| = 6."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Triangle A(0;0), B(6;0), C(0;8) :",
+              "options": [
+                "Équilatéral",
+                "Rectangle en A",
+                "Isocèle non rectangle",
+                "Impossible"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Angle droit en A ; hypoténuse BC = 10."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Distance R(2;1) et S(5;5) :",
+              "options": ["4", "5", "7", "√13"],
+              "correctAnswers": [1],
+              "explanation": "√(3²+4²) = 5."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Point de (Ox) equidistant de (0;0) et (4;0) : abscisse",
+              "options": ["0", "2", "4", "-2"],
+              "correctAnswers": [1],
+              "explanation": "Milieu du segment horizontal : x = 2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "AB = 10, A(1;2), B(1;y), y > 2 : y =",
+              "options": ["8", "12", "-8", "10"],
+              "correctAnswers": [1],
+              "explanation": "y − 2 = 10 donne y = 12."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Périmètre triangle (0;0), (3;0), (0;4) :",
+              "options": ["7", "12", "10", "3+√7"],
+              "correctAnswers": [1],
+              "explanation": "Côtés 3, 4 et 5."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Distance T(-1;-1) et U(2;3) :",
+              "options": ["4", "5", "6", "√34"],
+              "correctAnswers": [1],
+              "explanation": "√(9+16) = 5."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Milieu et partage de segment",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Soit I le milieu de [AB]. Quelles propriétés sont vraies ?",
+              "options": [
+                "AI = IB",
+                "Les coordonnées de I sont ((x_A+x_B)/2 ; (y_A+y_B)/2)",
+                "I est toujours le point le plus proche de A dans le plan",
+                "I appartient au segment [AB]"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le milieu partage le segment en deux parts égales avec coordonnées moyennes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Milieu de A(-4;6) et B(8;-2) :",
+              "options": ["(2;2)", "(4;4)", "(6;4)", "(2;4)"],
+              "correctAnswers": [0],
+              "explanation": "((−4+8)/2 ; (6−2)/2) = (2;2)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "M milieu de [PQ], P(1;3), M(4;5). Coordonnées de Q :",
+              "options": ["(7;7)", "(5;8)", "(3;4)", "(2.5;4)"],
+              "correctAnswers": [0],
+              "explanation": "Q = (2×4−1 ; 2×5−3) = (7;7)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Parallélogramme ABCD, A(0;0), B(4;0), D(1;3). Coordonnées de C :",
+              "options": ["(5;3)", "(3;5)", "(4;3)", "(1;0)"],
+              "correctAnswers": [0],
+              "explanation": "C = B + vecteur AD : (5;3)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "I milieu de [AB], A(0;0), B(6;8). Distance AI :",
+              "options": ["4", "5", "√34", "10"],
+              "correctAnswers": [1],
+              "explanation": "I(3;4) et AI = √(9+16) = 5."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Point G partage [AB] en ratio AG/GB = 1 (G milieu), A(-2;0), B(4;6). G =",
+              "options": ["(1;3)", "(2;4)", "(0;2)", "(3;5)"],
+              "correctAnswers": [0],
+              "explanation": "Moyenne : (1;3)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Diagonales d'un parallélogramme se coupent en :",
+              "options": [
+                "Le sommet A",
+                "Le milieu de chaque diagonale",
+                "L'origine seulement",
+                "Un point hors figure"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Propriété : les diagonales se bisectent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Milieu de [CD], C(3;-1), D(-5;7) :",
+              "options": ["(-1;3)", "(4;4)", "(-2;6)", "(1;2)"],
+              "correctAnswers": [0],
+              "explanation": "((3−5)/2 ; (−1+7)/2) = (−1;3)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "A(2;1), B(6;1), milieu I. Longueur AI :",
+              "options": ["2", "4", "√8", "6"],
+              "correctAnswers": [0],
+              "explanation": "I(4;1), segment horizontal de longueur 2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Centre du cercle de diamètre [EF], E(0;0), F(8;0) :",
+              "options": ["(4;0)", "(0;4)", "(8;0)", "(4;4)"],
+              "correctAnswers": [0],
+              "explanation": "Centre = milieu du diamètre : (4;0)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Vecteurs et coordonnées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour u⃗ de coordonnées (x ; y) dans un repère orthonormé, quelles affirmations sont vraies ?",
+              "options": [
+                "||u⃗|| = √(x² + y²)",
+                "Les coordonnées de u⃗ + v⃗ s'additionnent terme à terme",
+                "||u⃗|| = |x| + |y| toujours",
+                "Deux vecteurs égaux ont mêmes coordonnées"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Norme euclidienne et addition coordonnée par coordonnée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Coordonnées de AB⃗, A(1;2), B(4;6) :",
+              "options": ["(3;4)", "(5;8)", "(-3;-4)", "(4;3)"],
+              "correctAnswers": [0],
+              "explanation": "B − A : (3;4)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "u⃗(2;-3), v⃗(-1;5). Coordonnées de u⃗ + v⃗ :",
+              "options": ["(1;2)", "(3;2)", "(1;-8)", "(-3;8)"],
+              "correctAnswers": [0],
+              "explanation": "(2−1 ; −3+5) = (1;2)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Norme de w⃗(3;4) :",
+              "options": ["5", "7", "√7", "25"],
+              "correctAnswers": [0],
+              "explanation": "√(9+16) = 5."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Vecteur nul :",
+              "options": ["(1;0)", "(0;0)", "(0;1)", "Sans coordonnées"],
+              "correctAnswers": [1],
+              "explanation": "Le vecteur nul a coordonnées (0;0)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Parallélogramme : AB⃗ = DC⃗. A(0;0), B(3;1), D(1;4). C =",
+              "options": ["(4;5)", "(2;3)", "(3;4)", "(4;1)"],
+              "correctAnswers": [0],
+              "explanation": "C = A + AB⃗ + AD⃗ = (4;5)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "k = −2, u⃗(1;3). Coordonnées de k u⃗ :",
+              "options": ["(-2;-6)", "(2;6)", "(-1;-3)", "(-2;6)"],
+              "correctAnswers": [0],
+              "explanation": "Multiplication par −2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Points A(2;5) et B(2;-1). AB⃗ :",
+              "options": ["(0;-6)", "(0;6)", "(4;4)", "(-4;-4)"],
+              "correctAnswers": [0],
+              "explanation": "Même abscisse : ordonnées diffèrent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "u⃗(4;0) : direction",
+              "options": [
+                "Verticale",
+                "Horizontale",
+                "Oblique quelconque",
+                "Nulle seulement si x=0"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ordonnée nulle : vecteur horizontal."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Milieu M de [AB] et AB⃗ :",
+              "options": ["AM⃗ = MB⃗", "AM⃗ = 2 AB⃗", "AB⃗ = 2 AM⃗", "AM⃗ = −AB⃗"],
+              "correctAnswers": [2],
+              "explanation": "M milieu : AM⃗ = ½ AB⃗ donc AB⃗ = 2 AM⃗."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Équation cartésienne d'une droite",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une droite du plan admet une équation ax + by + c = 0 avec (a;b) ≠ (0;0). Quelles affirmations sont correctes ?",
+              "options": [
+                "Tout point de la droite vérifie l'équation",
+                "y = 2x + 1 s'écrit −2x + y − 1 = 0",
+                "x = 3 est une droite verticale",
+                "Toute droite a une équation y = mx + p unique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Forme générale ; les droites verticales n'ont pas d'équation y = mx + p."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Droite d'équation y = 3x − 2. Ordonnée pour x = 1 :",
+              "options": ["1", "−1", "5", "0"],
+              "correctAnswers": [0],
+              "explanation": "3×1 − 2 = 1."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Droite passant par (0;4) avec pente 2 :",
+              "options": ["y = 2x + 4", "y = 4x + 2", "y = 2x", "y = x + 4"],
+              "correctAnswers": [0],
+              "explanation": "Ordonnée à l'origine 4, coefficient 2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Point (2;1) sur y = −x + 3 ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Seulement si x=0",
+                "Impossible à décider"
+              ],
+              "correctAnswers": [0],
+              "explanation": "−2 + 3 = 1 : le point vérifie l'équation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Équation x = −1 décrit :",
+              "options": [
+                "(Ox)",
+                "(Oy)",
+                "Droite verticale",
+                "Droite horizontale"
+              ],
+              "correctAnswers": [2],
+              "explanation": "x constant : verticale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "y = 0 est :",
+              "options": ["(Ox)", "(Oy)", "y = x", "Cercle"],
+              "correctAnswers": [0],
+              "explanation": "Ordonnée nulle : axe des abscisses."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Droite y = 5x. Image de 2 :",
+              "options": ["7", "10", "5", "2"],
+              "correctAnswers": [1],
+              "explanation": "5×2 = 10."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Antécédent de 6 par f(x) = 2x + 6 :",
+              "options": ["0", "3", "6", "12"],
+              "correctAnswers": [0],
+              "explanation": "2x + 6 = 6 ⇒ x = 0."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Droite horizontale passant par (0;−3) :",
+              "options": ["y = −3", "x = −3", "y = 3x", "x = 3"],
+              "correctAnswers": [0],
+              "explanation": "Ordonnée constante −3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Intersection de y = x et y = −x + 4 : abscisse",
+              "options": ["2", "4", "0", "1"],
+              "correctAnswers": [0],
+              "explanation": "x = −x + 4 ⇒ x = 2."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Coefficient directeur et ordonnée à l'origine",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour une droite non verticale d'équation y = mx + p, quelles affirmations sont exactes ?",
+              "options": [
+                "m est le coefficient directeur",
+                "p est l'ordonnée à l'origine",
+                "m mesure toujours une longueur",
+                "Si m = 0, la droite est horizontale"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "m contrôle la pente, p l'intersection avec (Oy) ; m = 0 ⇒ horizontale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Droite passant par (0;1) et (2;5). Coefficient directeur :",
+              "options": ["2", "4", "1", "3"],
+              "correctAnswers": [0],
+              "explanation": "(5−1)/(2−0) = 2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "y = −½ x + 3. Pente :",
+              "options": ["−2", "−½", "½", "3"],
+              "correctAnswers": [1],
+              "explanation": "m = −½ dans l'équation réduite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Deux points (1;4) et (3;4). Coefficient directeur :",
+              "options": ["0", "2", "4", "Indéfini"],
+              "correctAnswers": [0],
+              "explanation": "Ordonnées égales : droite horizontale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Droite verticale x = 2 : coefficient directeur ?",
+              "options": ["0", "1", "Indéfini", "2"],
+              "correctAnswers": [2],
+              "explanation": "Division par zéro : pente non définie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "y = 4x − 1. Ordonnée à l'origine :",
+              "options": ["4", "−1", "1", "0"],
+              "correctAnswers": [1],
+              "explanation": "p = −1."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Droite parallèle à y = 2x + 1 a un m égal à :",
+              "options": ["1", "2", "−2", "0"],
+              "correctAnswers": [1],
+              "explanation": "Parallèles : mêmes coefficients directeurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Points (0;−2) et (3;4). Équation réduite :",
+              "options": [
+                "y = 2x − 2",
+                "y = 3x − 2",
+                "y = 2x + 2",
+                "y = x − 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "m = 2, p = −2."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si m > 0, la droite est :",
+              "options": [
+                "Décroissante",
+                "Croissante",
+                "Horizontale",
+                "Verticale"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pente positive : fonction croissante."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Droite passant par (2;0) et (0;4) : p =",
+              "options": ["2", "4", "−2", "0"],
+              "correctAnswers": [1],
+              "explanation": "Ordonnée à l'origine 4."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Droites parallèles et perpendiculaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un repère orthonormé, pour droites non verticales de pentes m et m', quelles règles sont correctes ?",
+              "options": [
+                "Parallèles ⇔ m = m'",
+                "Perpendiculaires ⇔ m × m' = −1",
+                "Perpendiculaires ⇔ m = m'",
+                "Parallèles ⇔ m × m' = −1"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Égalité des pentes pour parallèles ; produit −1 pour perpendiculaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "D₁ : y = 3x + 1. Pente d'une parallèle :",
+              "options": ["−3", "3", "1/3", "−1/3"],
+              "correctAnswers": [1],
+              "explanation": "Conserver m = 3."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "D : y = 2x. Pente d'une perpendiculaire :",
+              "options": ["2", "−2", "−1/2", "1/2"],
+              "correctAnswers": [2],
+              "explanation": "Produit 2 × (−1/2) = −1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "D₁ : y = −x + 4, D₂ : y = −x − 1. Relation :",
+              "options": [
+                "Perpendiculaires",
+                "Parallèles",
+                "Sécantes non parallèles",
+                "Confondues"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Même pente −1."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "D₁ : y = 4x, D₂ : y = −¼ x + 2.",
+              "options": [
+                "Parallèles",
+                "Perpendiculaires",
+                "Identiques",
+                "Horizontales"
+              ],
+              "correctAnswers": [1],
+              "explanation": "4 × (−1/4) = −1."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "x = 5 et x = −2 sont :",
+              "options": [
+                "Perpendiculaires",
+                "Parallèles verticales",
+                "Horizontales",
+                "Confondues"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Même type : verticales parallèles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "y = 0 et x = 0 :",
+              "options": [
+                "Parallèles",
+                "Perpendiculaires",
+                "Confondues",
+                "Même droite"
+              ],
+              "correctAnswers": [1],
+              "explanation": "(Ox) et (Oy) sont perpendiculaires."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "D perpendiculaire à y = −3x passant par (0;0) : pente",
+              "options": ["3", "−3", "1/3", "−1/3"],
+              "correctAnswers": [2],
+              "explanation": "Produit des pentes −1 : m' = 1/3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Droites y = 1 et y = −2 :",
+              "options": [
+                "Parallèles horizontales",
+                "Perpendiculaires",
+                "Sécantes",
+                "Verticales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordonnées constantes distinctes : parallèles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pente 0 et pente indéfinie (verticale) :",
+              "options": [
+                "Parallèles",
+                "Perpendiculaires",
+                "Confondues",
+                "Impossible"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Horizontale et verticale se coupent à angle droit."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Cercle et ensemble de points",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Cercle de centre Ω(a;b) et rayon r > 0. Quelles caractérisations sont correctes ?",
+              "options": [
+                "Équation (x − a)² + (y − b)² = r²",
+                "Ensemble des points M tels que ΩM = r",
+                "Équation x² + y² = r² si centre en O",
+                "Ensemble des points avec ΩM ≤ r uniquement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cercle = distance au centre égale à r ; disque serait ≤ r."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Cercle centre O, rayon 5. Point sur le cercle ?",
+              "options": ["(3;4)", "(3;3)", "(5;5)", "(0;6)"],
+              "correctAnswers": [0],
+              "explanation": "3² + 4² = 25."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Centre (2;−1), r = 3. Équation :",
+              "options": [
+                "(x−2)² + (y+1)² = 9",
+                "(x+2)² + (y−1)² = 9",
+                "x² + y² = 3",
+                "(x−2)² + (y+1)² = 3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rayon au carré 9."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "x² + y² = 16 : rayon",
+              "options": ["4", "16", "8", "√8"],
+              "correctAnswers": [0],
+              "explanation": "r² = 16 ⇒ r = 4."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Point (0;0) distance au centre (3;4) :",
+              "options": ["5", "7", "25", "1"],
+              "correctAnswers": [0],
+              "explanation": "Rayon du cercle centré (3;4) passant par O."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cercle diamètre [AB], A(0;0), B(6;0). Rayon :",
+              "options": ["3", "6", "√6", "9"],
+              "correctAnswers": [0],
+              "explanation": "Rayon = moitié du diamètre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "(x−1)² + (y−2)² = 4. Centre :",
+              "options": ["(1;2)", "(−1;−2)", "(2;1)", "(4;4)"],
+              "correctAnswers": [0],
+              "explanation": "Centre lu dans les signes opposés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Point strictement intérieur au disque x² + y² < 25 ?",
+              "options": ["(1;2)", "(5;0)", "(4;4)", "(3;4)"],
+              "correctAnswers": [0],
+              "explanation": "1² + 2² = 5 < 25."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Translation : centre (0;0), r=1. Point (1;0) :",
+              "options": [
+                "Sur le cercle",
+                "Au centre",
+                "Extérieur",
+                "Indéfini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distance 1 au centre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux cercles même centre, rayons 2 et 5 :",
+              "options": [
+                "Un seul point commun",
+                "Cercle petit inclus dans grand",
+                "Disjoints",
+                "Identiques"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Concentriques : le plus petit est inclus."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Produit scalaire et orthogonalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "u⃗(x₁;y₁), v⃗(x₂;y₂). Quelles formules du produit scalaire sont correctes en repère orthonormé ?",
+              "options": [
+                "u⃗·v⃗ = x₁x₂ + y₁y₂",
+                "u⃗·v⃗ = 0 ⇔ u⃗ et v⃗ orthogonaux (non nuls)",
+                "u⃗·v⃗ = x₁ + x₂",
+                "||u⃗||² = u⃗·u⃗"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Produit scalaire coordonnées ; carré de norme = produit scalaire de u par lui-même."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "u⃗(1;2), v⃗(3;4). Produit scalaire :",
+              "options": ["11", "7", "10", "5"],
+              "correctAnswers": [0],
+              "explanation": "1×3 + 2×4 = 11."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "u⃗(2;−1), v⃗(1;2). Produit scalaire :",
+              "options": ["0", "4", "−4", "2"],
+              "correctAnswers": [0],
+              "explanation": "2−2 = 0 : orthogonaux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Vecteurs (3;0) et (0;5) :",
+              "options": ["Colinéaires", "Orthogonaux", "Égaux", "Opposés"],
+              "correctAnswers": [1],
+              "explanation": "Produit scalaire nul."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Triangle rectangle en A, AB⃗(3;0), AC⃗(0;4). AB⃗·AC⃗ =",
+              "options": ["12", "0", "7", "−12"],
+              "correctAnswers": [1],
+              "explanation": "Côtés perpendiculaires au sommet A."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "u⃗(1;1), v⃗(−1;1). Produit scalaire :",
+              "options": ["0", "2", "−2", "1"],
+              "correctAnswers": [0],
+              "explanation": "−1 + 1 = 0."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Droites de pentes m et −1/m (m≠0) :",
+              "options": [
+                "Parallèles",
+                "Perpendiculaires",
+                "Horizontales",
+                "Identiques"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Produit des pentes −1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "||u⃗||² pour u⃗(3;4) :",
+              "options": ["5", "25", "7", "12"],
+              "correctAnswers": [1],
+              "explanation": "3² + 4² = 25."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "u⃗·v⃗ > 0 signifie angle :",
+              "options": [
+                "Aigu (aigu ou nul)",
+                "Toujours obtus",
+                "Toujours droit",
+                "Indéfini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Produit positif : angle aigu entre vecteurs non nuls."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "u⃗(2;3), v⃗(4;6). Relation :",
+              "options": ["Orthogonaux", "Colinéaires", "Opposés", "Nuls"],
+              "correctAnswers": [1],
+              "explanation": "v⃗ = 2 u⃗."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse géométrie repérée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Problème : A(1;2), B(5;6), C(1;6). Quelles affirmations sont vraies ?",
+              "options": [
+                "Triangle ABC rectangle en A",
+                "AB = 4√2",
+                "AC est horizontal de longueur 4",
+                "BC est verticale de longueur 4"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "AC horizontal, AB oblique ; angle droit en A, AC = 4."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Aire triangle rectangle (0;0), (6;0), (0;4) :",
+              "options": ["10", "12", "24", "7"],
+              "correctAnswers": [1],
+              "explanation": "½ × 6 × 4 = 12."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Droite AB, A(0;0), B(2;4). Équation :",
+              "options": ["y = 2x", "y = 4x", "y = x + 2", "y = ½ x"],
+              "correctAnswers": [0],
+              "explanation": "Pente 2, passe par O."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Distance point (3;4) à l'origine :",
+              "options": ["5", "7", "25", "1"],
+              "correctAnswers": [0],
+              "explanation": "Triangle 3-4-5."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Milieu de [AB] et distance AB, A(0;0), B(8;6) :",
+              "options": [
+                "M(4;3), AB=10",
+                "M(4;3), AB=14",
+                "M(8;6), AB=10",
+                "M(2;3), AB=10"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milieu (4;3), distance √(64+36)=10."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Point équidistant de (0;0) et (6;0) sur (Ox) :",
+              "options": ["(3;0)", "(0;3)", "(6;3)", "(3;3)"],
+              "correctAnswers": [0],
+              "explanation": "Axe de symétrie x = 3 sur (Ox)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Cercle centre (0;0) rayon 5 et droite y = x : points d'intersection ?",
+              "options": [
+                "Aucun",
+                "Deux points symétriques",
+                "Un seul",
+                "Infinité sans intersection"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Droite passe par O : deux intersections ± distance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vecteur AB⃗(4;−3). Norme :",
+              "options": ["5", "7", "1", "√7"],
+              "correctAnswers": [0],
+              "explanation": "3-4-5."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Parallélogramme : A(0;0), B(2;0), C(3;2). D =",
+              "options": ["(1;2)", "(2;2)", "(3;0)", "(1;0)"],
+              "correctAnswers": [0],
+              "explanation": "D = C − B + A = (1;2)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pente de la médiatrice de [AB] horizontale :",
+              "options": ["0", "Indéfinie", "1", "−1"],
+              "correctAnswers": [1],
+              "explanation": "Médiatrice verticale si AB horizontal."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Statistique descriptive",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Effectifs et fréquences",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Série statistique sur N individus. Quelles égalités sont toujours vraies ?",
+              "options": [
+                "Somme des effectifs = N",
+                "Somme des fréquences = 1 (ou 100 %)",
+                "Chaque fréquence = effectif × N",
+                "Effectif = fréquence × N"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Conservation du total ; fréquence = effectif / N."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "20 élèves, 5 pratiquent le rugby. Fréquence :",
+              "options": ["0,25", "0,5", "0,05", "4"],
+              "correctAnswers": [0],
+              "explanation": "5/20 = 0,25."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Effectif total 80, fréquence 0,15. Effectif :",
+              "options": ["12", "15", "8", "0,15"],
+              "correctAnswers": [0],
+              "explanation": "0,15 × 80 = 12."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tableau : valeurs 1,2,3 effectifs 10,20,30. N =",
+              "options": ["60", "50", "30", "20"],
+              "correctAnswers": [0],
+              "explanation": "Somme 10+20+30."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Fréquence en % de 0,3 :",
+              "options": ["30 %", "3 %", "0,3 %", "300 %"],
+              "correctAnswers": [0],
+              "explanation": "0,3 = 30 %."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Caractère quantitatif discret :",
+              "options": [
+                "Couleur des yeux",
+                "Nombre de frères",
+                "Moyenne de classe",
+                "Profession du père"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Compte entier : discret."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Effectif cumulé croissant sert à :",
+              "options": [
+                "Calculer une aire",
+                "Lire médiane sur classes",
+                "Définir l'étendue seule",
+                "Tracer un cercle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Effectifs cumulés : médiane, quartiles en continu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "10, 10, 20, 30. Effectif de 10 :",
+              "options": ["1", "2", "10", "20"],
+              "correctAnswers": [1],
+              "explanation": "Valeur répétée deux fois."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Fréquence 0 sur une modalité :",
+              "options": [
+                "Effectif 0",
+                "Effectif N",
+                "Fréquence 1",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aucun individu : effectif nul."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "N = 50, effectif 5. Fréquence :",
+              "options": ["0,1", "0,5", "0,05", "10"],
+              "correctAnswers": [0],
+              "explanation": "5/50 = 0,1."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Tableaux et graphiques simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour représenter une série qualitative à modalités peu nombreuses, quels outils conviennent ?",
+              "options": [
+                "Diagramme en secteurs (camembert)",
+                "Diagramme en bâtons",
+                "Nuage de points sans légende",
+                "Histogramme à classes égales obligatoire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Secteurs ou bâtons pour effectifs de modalités."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Diagramme en bâtons : hauteur proportionnelle à :",
+              "options": [
+                "L'effectif",
+                "La médiane seule",
+                "L'écart-type",
+                "Le carré de N"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hauteur = effectif ou fréquence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Camembert : angle total",
+              "options": ["90°", "180°", "360°", "100°"],
+              "correctAnswers": [2],
+              "explanation": "Cercle complet 360°."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Série 40 % A, 30 % B, reste C. Part de C :",
+              "options": ["30 %", "70 %", "30 points", "40 %"],
+              "correctAnswers": [0],
+              "explanation": "100 − 40 − 30 = 30 %."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tableau effectif-fréquence : colonne manquante si on connaît N et effectifs ?",
+              "options": ["Fréquences", "Médiane", "Variance", "Quartiles"],
+              "correctAnswers": [0],
+              "explanation": "Fréquence = effectif / N."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Caractère qualitatif ordinal :",
+              "options": [
+                "Note A/B/C avec ordre",
+                "Numéro de maillot",
+                "Masse en kg",
+                "Température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modalités ordonnées sans calcul sur labels."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lecture graphique : barre la plus haute indique :",
+              "options": [
+                "Modalité la plus fréquente",
+                "Médiane",
+                "Minimum",
+                "Écart-type max"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effectif maximal = mode graphique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Fréquence cumulée à la dernière valeur :",
+              "options": ["0", "1", "N", "0,5"],
+              "correctAnswers": [1],
+              "explanation": "Total des fréquences = 1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Histogramme vs bâtons (discrét) : classes",
+              "options": [
+                "Toujours identiques",
+                "Histogramme : intervalles contigus",
+                "Bâtons : jamais de fréquence",
+                "Histogramme sans aire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Histogramme pour données regroupées en classes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pie chart 25 % : angle",
+              "options": ["90°", "45°", "25°", "360°"],
+              "correctAnswers": [0],
+              "explanation": "0,25 × 360 = 90°."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Moyenne arithmétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Moyenne arithmétique x̄ d'une série (xᵢ ; nᵢ). Quelles formules sont correctes ?",
+              "options": [
+                "x̄ = (Σ nᵢ xᵢ) / N",
+                "x̄ = (Σ xᵢ) / k si liste non pondérée de k valeurs",
+                "x̄ = Σ nᵢ / xᵢ",
+                "Ajouter une valeur égale à x̄ ne change pas x̄"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Moyenne pondérée ; liste simple : somme / effectif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Notes 10, 12, 14, 14. Moyenne :",
+              "options": ["12", "12,5", "13", "11"],
+              "correctAnswers": [1],
+              "explanation": "(10+12+14+14)/4 = 12,5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Valeurs 2 (eff.3), 5 (eff.1). Moyenne :",
+              "options": ["2,75", "3", "3,5", "2"],
+              "correctAnswers": [0],
+              "explanation": "(6+5)/4 = 2,75."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Moyenne 15, 4 valeurs, somme ?",
+              "options": ["60", "15", "19", "45"],
+              "correctAnswers": [0],
+              "explanation": "15×4 = 60."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Série 8,8,10,12. Moyenne :",
+              "options": ["9", "9,5", "10", "8"],
+              "correctAnswers": [1],
+              "explanation": "38/4 = 9,5."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Effet d'une note 20 sur moyenne 10 (3 notes) :",
+              "options": [
+                "Augmente",
+                "Diminue",
+                "Inchange toujours",
+                "Annule la série"
+              ],
+              "correctAnswers": [0],
+              "explanation": "20 > 10 tire la moyenne vers le haut."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Moyenne et translation : ajouter 2 à chaque valeur",
+              "options": [
+                "Moyenne +2",
+                "Moyenne ×2",
+                "Moyenne inchangée",
+                "Moyenne −2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Translation additive sur la moyenne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Liste 1,2,3,4,100. Commentaire :",
+              "options": [
+                "Moyenne robuste",
+                "Moyenne sensible à la valeur extrême",
+                "Moyenne = médiane",
+                "Moyenne indéfinie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Valeur atypique 100 tire la moyenne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Classes centres 10, 20, 30 avec effectifs 10, 10, 10. Moyenne :",
+              "options": ["20", "22", "18", "25"],
+              "correctAnswers": [0],
+              "explanation": "Moyenne pondérée des centres égaux : 20."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Moyenne de deux groupes N1=10 m1=12, N2=30 m2=8 :",
+              "options": ["9", "9,5", "10", "8"],
+              "correctAnswers": [0],
+              "explanation": "(120+240)/40 = 9."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Médiane et quartiles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Série ordonnée de N valeurs. Quelles affirmations sur la médiane Me sont correctes ?",
+              "options": [
+                "Au moins 50 % des valeurs sont ≤ Me (définition usuelle)",
+                "Me partage toujours exactement la série en deux effectifs égaux si N pair",
+                "Me est un nombre de résistance aux extrêmes",
+                "Me = moyenne arithmétique toujours"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Médiane : position centrale, plus robuste que la moyenne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Série 3, 5, 7, 9, 11. Médiane :",
+              "options": ["5", "7", "9", "6"],
+              "correctAnswers": [1],
+              "explanation": "Valeur centrale : 7."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Série 4, 6, 8, 10. Médiane (convention lycée) :",
+              "options": ["6", "7", "8", "5"],
+              "correctAnswers": [1],
+              "explanation": "Moyenne des deux valeurs centrales : 7."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Q1 approx. : au moins 25 % des données sont ≤ Q1.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Vrai seulement si N pair",
+                "Sans sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition du premier quartile."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1,2,2,3,100. Médiane vs moyenne :",
+              "options": [
+                "Médiane < moyenne",
+                "Médiane > moyenne",
+                "Égales",
+                "Médiane = 100"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Médiane 2, moyenne beaucoup plus grande."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Effectif 40. Position médiane (1-based) souvent :",
+              "options": ["20 et 21", "20 seule", "40", "10"],
+              "correctAnswers": [0],
+              "explanation": "N pair : moyenne des rangs N/2 et N/2+1."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Q2 coïncide avec :",
+              "options": ["La moyenne", "La médiane", "Le mode", "L'étendue"],
+              "correctAnswers": [1],
+              "explanation": "Second quartile = médiane."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Série 1,1,1,5. Médiane :",
+              "options": ["1", "2", "5", "1,5"],
+              "correctAnswers": [0],
+              "explanation": "Valeurs centrales 1 et 1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comparer deux classes via médiane des notes :",
+              "options": [
+                "Utile si distributions asymétriques",
+                "Inutile toujours",
+                "Remplace l'effectif",
+                "Interdit en stats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Médiane résume le centre sans extrêmes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "5, 5, 6, 7, 8. Q3 proche de :",
+              "options": ["7", "8", "6", "5"],
+              "correctAnswers": [0],
+              "explanation": "Quartile supérieur vers 7-8 ; 7 raisonnable en 2nde."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Étendue et écart interquartile",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Mesures de dispersion. Quelles définitions sont correctes ?",
+              "options": [
+                "Étendue = max − min",
+                "Écart interquartile IQR = Q3 − Q1",
+                "IQR = max − min",
+                "IQR mesure la dispersion centrale des 50 % centraux"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Étendue globale ; IQR = boîte centrale du diagramme en boîte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Valeurs 2, 5, 9, 11. Étendue :",
+              "options": ["7", "9", "11", "5"],
+              "correctAnswers": [1],
+              "explanation": "11 − 2 = 9."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Q1=4, Q3=10. IQR :",
+              "options": ["6", "14", "4", "10"],
+              "correctAnswers": [0],
+              "explanation": "10 − 4 = 6."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Série très concentrée : IQR petit signifie :",
+              "options": [
+                "50 % centraux proches",
+                "Données identiques forcément",
+                "Moyenne nulle",
+                "Effectif nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boîte étroite : faible dispersion centrale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Étendue sensible aux :",
+              "options": [
+                "Valeurs extrêmes",
+                "Médiane seule",
+                "Mode",
+                "Fréquences nulles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un outlier augmente fortement l'étendue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Diagramme en boîte : longueur de la boîte =",
+              "options": ["IQR", "Étendue totale", "Médiane", "Moyenne"],
+              "correctAnswers": [0],
+              "explanation": "Boîte de Q1 à Q3."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Min=1, max=20, Q1=5, Q3=8. Moustache inférieure va jusqu'à :",
+              "options": ["1 (ou valeur proche selon règle)", "5", "8", "20"],
+              "correctAnswers": [0],
+              "explanation": "Minimum de la série ou borne usuelle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux séries même médiane, IQR₁ < IQR₂ :",
+              "options": [
+                "Série 1 plus homogène au centre",
+                "Série 2 plus homogène",
+                "Mêmes étendues",
+                "Médianes différentes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "IQR plus petit : moins de dispersion centrale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Étendue 0 implique :",
+              "options": [
+                "Toutes valeurs égales",
+                "Médiane 0",
+                "N = 1 seulement",
+                "IQR = 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Max = min."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "IQR = 0 avec plusieurs valeurs :",
+              "options": [
+                "Au moins 50 % identiques au centre",
+                "Impossible",
+                "Étendue nulle",
+                "Q1 = max"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Q1 = Q3 : quartiles confondus."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Variance et écart-type",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Série x₁,…,xₙ de moyenne x̄. Quelles formules de la variance V sont correctes (population simple) ?",
+              "options": [
+                "V = (1/n) Σ (xᵢ − x̄)²",
+                "Écart-type σ = √V",
+                "V = x̄² − (1/n)Σ xᵢ² toujours sans signe",
+                "V mesure la dispersion autour de la moyenne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Variance moyenne des carrés des écarts ; σ = √V."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Série 2, 4, 4, 8. Moyenne 4,5. Écarts au carré somme 18,5, n=4. V ≈",
+              "options": ["4,625", "3", "2,15", "18,5"],
+              "correctAnswers": [0],
+              "explanation": "18,5/4 = 4,625."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Écart-type 3. Interprétation :",
+              "options": [
+                "Dispersion typique ~3 autour de la moyenne",
+                "Étendue 3",
+                "Médiane 3",
+                "Mode 3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "σ même unité que les données."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Translation +5 sur toutes les valeurs : σ",
+              "options": ["Inchangé", "+5", "×5", "÷5"],
+              "correctAnswers": [0],
+              "explanation": "Écarts relatifs conservés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Multiplier par 2 : σ",
+              "options": ["×2", "Inchangé", "+2", "÷2"],
+              "correctAnswers": [0],
+              "explanation": "Homogénéité : σ multiplié par |2|."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Variance nulle :",
+              "options": [
+                "Toutes valeurs égales",
+                "Moyenne nulle",
+                "n = 0",
+                "Médiane = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas d'écart à la moyenne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Série 1, 1, 10. σ relativement :",
+              "options": [
+                "Grand (forte dispersion)",
+                "Nul",
+                "Égal à 1",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valeur 10 éloignée des 1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comparer deux classes : moyennes égales, σ₁ < σ₂",
+              "options": [
+                "Classe 1 plus homogène",
+                "Classe 2 plus homogène",
+                "Médianes égales forcément",
+                "Effectifs égaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus petit écart-type : notes plus regroupées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Unité de σ si notes sur 20 :",
+              "options": [
+                "Points (même unité)",
+                "Sans unité",
+                "Pourcent",
+                "Radians"
+              ],
+              "correctAnswers": [0],
+              "explanation": "σ hérite de l'unité des données."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "V = 9 ⇒ σ =",
+              "options": ["3", "9", "81", "4,5"],
+              "correctAnswers": [0],
+              "explanation": "√9 = 3."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Lecture de diagrammes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lecture d'un histogramme à classes d'amplitudes égales. Quelles affirmations sont vraies ?",
+              "options": [
+                "Aire totale proportionnelle à l'effectif total",
+                "Hauteur peut être effectif ou densité selon construction",
+                "Plus la barre est haute, plus l'effectif de la classe est grand (si hauteur = effectif)",
+                "Les classes doivent se chevaucher"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Classes disjointes ; hauteur liée à l'effectif si choix usuel lycée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Camembert : modalité 40 sur 100. Fréquence :",
+              "options": ["0,4", "40", "4", "0,04"],
+              "correctAnswers": [0],
+              "explanation": "40/100."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bâtons : modalités A,B,C effectifs 12,8,20. Plus fréquent :",
+              "options": ["A", "B", "C", "Égalité"],
+              "correctAnswers": [2],
+              "explanation": "C a effectif 20."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Courbe effectifs cumulés croissants : plateaux indiquent",
+              "options": [
+                "Classes sans nouvel individu",
+                "Erreur",
+                "Médiane",
+                "σ nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Palier : pas d'ajout dans l'intervalle suivant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Graphique médiane en boîte à moustaches : trait central =",
+              "options": ["Médiane", "Moyenne", "Q1", "Max"],
+              "correctAnswers": [0],
+              "explanation": "Trait dans la boîte : Me."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux boîtes, boîte A plus basse verticalement :",
+              "options": [
+                "IQR(A) < IQR(B) en général",
+                "Étendue A plus grande",
+                "Médiane A plus grande",
+                "N plus petit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boîte plus courte : IQR plus petit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Histogramme classes [0;10[, [10;20[ effectifs 5,15. Classe modale :",
+              "options": ["[0;10[", "[10;20[", "Égalité", "Aucune"],
+              "correctAnswers": [1],
+              "explanation": "Effectif maximal 15."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Fréquence 0,2 et N=150. Effectif :",
+              "options": ["30", "20", "75", "0,2"],
+              "correctAnswers": [0],
+              "explanation": "0,2×150 = 30."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Série temporelle vs statistique descriptive univariée :",
+              "options": [
+                "Temporelle : ordre du temps importe",
+                "Identiques toujours",
+                "Temporelle sans graphique",
+                "Univariée = deux variables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chronologie : série temporelle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lecture : Q1 sous la médiane sur boîte signifie",
+              "options": [
+                "25 % des valeurs ≤ Q1",
+                "75 % ≤ Q1",
+                "Q1 = max",
+                "Médiane = Q1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quartile inférieur."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Diagramme en boîte",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Construction d'un diagramme en boîte. Quels éléments sont standard ?",
+              "options": [
+                "Boîte de Q1 à Q3",
+                "Trait de la médiane dans la boîte",
+                "Moustaches vers min et max (ou bornes adjacente)",
+                "Aire de la boîte = variance"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Boîte = IQR ; médiane visible ; moustaches vers extrêmes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Valeur isolée loin de la boîte :",
+              "options": [
+                "Valeur aberrante possible",
+                "Toujours erreur de saisie",
+                "Médiane",
+                "Q1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Point atypique à signaler."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Boîte décalée vers le haut : distribution",
+              "options": [
+                "Asymétrique",
+                "Symétrique parfaite",
+                "Uniforme",
+                "Sans médiane"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Queue plus longue en bas ou haut."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comparer deux boîtes côte à côte :",
+              "options": [
+                "Compare centres et dispersions",
+                "Donne σ exact sans calcul",
+                "Remplace le tableau",
+                "Interdit si N différent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture visuelle médiane et IQR."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Médiane proche de Q3, Q1 éloigné :",
+              "options": ["Asymétrie", "Symétrie", "σ = 0", "Mode = Q1"],
+              "correctAnswers": [0],
+              "explanation": "Quartiles non symétriques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Longueur totale min-max sur le graphique reflète :",
+              "options": ["Étendue", "IQR", "Médiane", "Fréquence"],
+              "correctAnswers": [0],
+              "explanation": "Distance min-max."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "50 % des données dans la boîte signifie entre",
+              "options": ["Q1 et Q3", "Min et max", "Me et max", "0 et Q1"],
+              "correctAnswers": [0],
+              "explanation": "Définition interquartile."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux séries, même boîte, moustaches différentes :",
+              "options": [
+                "Mêmes IQR, étendues différentes possibles",
+                "Impossible",
+                "Médianes différentes",
+                "N identiques forcés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Extrêmes peuvent différer."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Boîte très étroite et longues moustaches :",
+              "options": [
+                "Centre homogène, extrêmes éloignés",
+                "Toutes valeurs égales",
+                "σ = 0",
+                "Pas de médiane"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Petit IQR, grande étendue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Utilité principale en 2nde :",
+              "options": [
+                "Résumer et comparer visuellement",
+                "Calculer une intégrale",
+                "Résoudre une équation",
+                "Tracer un cercle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse visuelle de série."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Séries à classes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Série groupée en classes [aᵢ ; aᵢ₊₁[. Quelles pratiques sont usuelles au lycée ?",
+              "options": [
+                "Utiliser le centre de classe pour approximer moyenne",
+                "Effectif de classe = nombre d'individus dans l'intervalle",
+                "Médiane exacte sans effectifs cumulés",
+                "Histogramme avec classes contiguës"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Centres et effectifs ; médiane par cumuls ; histogramme contigu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Classe [10;20[ centre 15, effectif 8. Contribution à Σ n x :",
+              "options": ["120", "80", "15", "8"],
+              "correctAnswers": [0],
+              "explanation": "8×15 = 120."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Classes [0;10[, [10;20[, [20;30[ effectifs 5,15,10. Classe modale :",
+              "options": ["[0;10[", "[10;20[", "[20;30[", "Aucune"],
+              "correctAnswers": [1],
+              "explanation": "Effectif 15 maximal."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Effectif cumulé à [20;30[ fin = 30, N=30. Médiane dans classe [10;20[ si cumul 5 avant :",
+              "options": [
+                "Oui (position centrale)",
+                "Non",
+                "Médiane = 10",
+                "Médiane = 30"
+              ],
+              "correctAnswers": [0],
+              "explanation": "15e et 16e valeurs souvent dans cette classe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Amplitude de [5;15[ :",
+              "options": ["10", "5", "15", "20"],
+              "correctAnswers": [0],
+              "explanation": "15 − 5 = 10."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Centre [5;15[ :",
+              "options": ["10", "5", "15", "7,5"],
+              "correctAnswers": [0],
+              "explanation": "(5+15)/2 = 10."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Histogramme : classe [0;4[ eff. 6, [4;8[ eff. 14. Dominante :",
+              "options": ["[0;4[", "[4;8[", "Égales", "[8;12["],
+              "correctAnswers": [1],
+              "explanation": "14 > 6."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Approximation moyenne par centres peut :",
+              "options": [
+                "Différer légèrement de la vraie moyenne",
+                "Être toujours exacte",
+                "Donner la médiane",
+                "Annuler σ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hypothèse de concentration au centre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Classes de même amplitude facilitent :",
+              "options": [
+                "Lecture comparative des hauteurs",
+                "Calcul de σ exact",
+                "Médiane sans tableau",
+                "Fréquence > 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amplitudes égales : hauteur ∝ effectif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dernière classe [40;50] inclut 50. Effectif compte individus avec :",
+              "options": [
+                "40 ≤ x ≤ 50",
+                "x < 40",
+                "x = 50 seulement",
+                "x > 50"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Borne supérieure incluse si convention fermée."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse statistique descriptive",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux échantillons A et B : mA=12, mB=12, σA=2, σB=5. Quelles conclusions sont raisonnables ?",
+              "options": [
+                "Centres identiques, B plus dispersé",
+                "B plus homogène que A",
+                "Médianes forcément différentes",
+                "σB > σA indique plus de variabilité autour de la moyenne pour B"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Mêmes moyennes ; plus grand σ : dispersion plus forte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Choix de la médiane plutôt que moyenne si :",
+              "options": [
+                "Présence d'extrêmes",
+                "Série symétrique sans outlier",
+                "Effectif 2",
+                "Données qualitatives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Robustesse aux valeurs atypiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Fréquences 0,3 ; 0,3 ; 0,4. Vérification :",
+              "options": ["Somme 1", "Somme 0,3", "Somme 10", "Erreur"],
+              "correctAnswers": [0],
+              "explanation": "0,3+0,3+0,4 = 1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Série 5,7,7,7,9. Mode =",
+              "options": ["7", "5", "9", "7,5"],
+              "correctAnswers": [0],
+              "explanation": "Valeur la plus fréquente."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Étendue 12, IQR 4. Commentaire :",
+              "options": [
+                "Extrêmes peuvent élargir l'étendue plus que la boîte",
+                "IQR > étendue",
+                "Impossible",
+                "Médiane 12"
+              ],
+              "correctAnswers": [0],
+              "explanation": "IQR ≤ étendue toujours."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Augmenter N avec même distribution empirique :",
+              "options": [
+                "Fréquences relatives stables",
+                "Effectifs diminuent",
+                "Médiane disparaît",
+                "σ devient 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grands effectifs : fréquences convergent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Caractère quantitatif continu :",
+              "options": [
+                "Taille en cm",
+                "Nombre de siblings",
+                "Numéro de place",
+                "Couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesure continue."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Boîte + moyenne σ : complémentarité",
+              "options": [
+                "Centre (m/Me) et dispersion (σ/IQR)",
+                "Redondants toujours",
+                "Interdits ensemble",
+                "σ remplace graphique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indicateurs numériques + visuel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Classe [12;14[ 10 élèves, notes supposées 13. Contribution moyenne :",
+              "options": ["130", "13", "10", "26"],
+              "correctAnswers": [0],
+              "explanation": "10×13."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Interpréter σ petit près d'une moyenne de 15/20 :",
+              "options": [
+                "Notes globalement proches de 15",
+                "Tous ont 15",
+                "Médiane 0",
+                "Étendue nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faible dispersion autour de 15."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -111,6 +111,13 @@ export function supportsTools(
   return getModelEntry(modelId, models).capabilities.tools;
 }
 
+export function supportsToolChoice(
+  modelId: string,
+  models: ChatModel[] = FALLBACK_MODELS
+): boolean {
+  return getModelEntry(modelId, models).capabilities.toolChoice;
+}
+
 export function supportsFiles(
   modelId: string,
   models: ChatModel[] = FALLBACK_MODELS

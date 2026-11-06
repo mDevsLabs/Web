@@ -1,0 +1,2658 @@
+{
+  "id": "5e-francais-02",
+  "year": "5e",
+  "subject": "francais",
+  "title": "Le portrait et la description",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Décrire un lieu",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Repères spatiaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adverbes indiquent la position d'un élément dans un lieu ?",
+              "options": ["devant", "hier", "à côté de", "demain"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Devant » et « à côté de » situent un objet dans l'espace ; « hier » et « demain » situent dans le temps."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour décrire un lieu, on peut commencer par…",
+              "options": [
+                "une impression générale",
+                "le prénom du narrateur",
+                "la date de naissance",
+                "le nombre de pages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une description commence souvent par une vue d'ensemble avant les détails."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Au fond de la salle » indique…",
+              "options": [
+                "une position lointaine dans l'espace",
+                "une heure précise",
+                "un sentiment",
+                "un bruit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette locution situe un élément à l'arrière ou au loin dans un espace clos."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot relie deux parties d'un lieu ?",
+              "options": ["puis", "ensuite", "entre", "car"],
+              "correctAnswers": [2],
+              "explanation": "« Entre » exprime la position entre deux repères."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans une description, les adjectifs servent surtout à…",
+              "options": [
+                "préciser les caractéristiques",
+                "conjuguer les verbes",
+                "compter les personnages",
+                "indiquer le temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les adjectifs qualifient les noms et enrichissent la description."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« En haut de l'escalier » correspond à…",
+              "options": [
+                "un repère vertical",
+                "un repère temporel",
+                "une comparaison",
+                "une exclamation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« En haut » indique une position sur un axe vertical."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour organiser une description de pièce, on peut suivre…",
+              "options": [
+                "un parcours du regard",
+                "l'ordre alphabétique des meubles",
+                "les chapitres du livre",
+                "les règles de grammaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décrire en suivant le regard du narrateur rend le texte clair."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Derrière la porte » est une locution…",
+              "options": ["de lieu", "de temps", "de manière", "de cause"],
+              "correctAnswers": [0],
+              "explanation": "Elle indique où se trouve quelque chose par rapport à la porte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un plan large dans une description correspond à…",
+              "options": [
+                "la vue d'ensemble",
+                "un détail minuscule",
+                "un dialogue",
+                "une lettre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le plan large montre l'ensemble avant de zoomer sur les détails."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« À droite du bureau » précise…",
+              "options": [
+                "l'orientation par rapport à un repère",
+                "la couleur du bureau",
+                "l'âge du bureau",
+                "le prix du bureau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« À droite de » situe un élément par rapport à un autre."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Lexique du lieu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots désignent des parties d'une maison ?",
+              "options": ["grenier", "océan", "cuisine", "nuage"],
+              "correctAnswers": [0, 2],
+              "explanation": "Le grenier et la cuisine font partie d'une habitation ; océan et nuage ne décrivent pas une pièce."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un « seuil » se trouve généralement…",
+              "options": [
+                "à l'entrée d'une porte",
+                "au milieu du ciel",
+                "sous la mer",
+                "dans une équation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le seuil est la partie basse de l'encadrement d'une porte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Poussiéreux » qualifie un lieu…",
+              "options": [
+                "couvert de poussière",
+                "très lumineux",
+                "très bruyant",
+                "vide de meubles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif dérivé de « poussière » évoque la saleté fine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un lieu « exigu » est…",
+              "options": [
+                "étroit, difficile à occuper",
+                "immense",
+                "coloré",
+                "ancien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Exigu » signifie de très petite superficie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Claustré » évoque un espace…",
+              "options": [
+                "fermé, comme un cloître",
+                "ouvert sur la mer",
+                "en plein soleil",
+                "sans murs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On l'emploie pour un lieu confiné, parfois oppressant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les « pavés » se trouvent souvent…",
+              "options": [
+                "dans une rue ou une cour",
+                "dans un livre",
+                "dans le frigo",
+                "dans une chanson uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pavés recouvrent le sol de certaines voies ou places."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Vacant » pour un logement signifie…",
+              "options": ["inoccupé", "luxueux", "bruyant", "neuf"],
+              "correctAnswers": [0],
+              "explanation": "Un local vacant n'est pas habité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un « carrefour » est…",
+              "options": [
+                "un croisement de routes",
+                "un type de fenêtre",
+                "un meuble",
+                "un animal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs voies se rencontrent au carrefour."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Sombre » décrit surtout…",
+              "options": [
+                "le manque de lumière",
+                "le manque de nourriture",
+                "la vitesse",
+                "le silence absolu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un lieu sombre reçoit peu de lumière."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Bordé de » dans « une allée bordée d'arbres » indique…",
+              "options": [
+                "ce qui longe l'allée",
+                "ce qui est au-dessus",
+                "ce qui est invisible",
+                "ce qui est passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les arbres suivent les côtés de l'allée."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Impressions sensorielles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sens peut-on mobiliser pour décrire un lieu ?",
+              "options": [
+                "l'ouïe",
+                "le goût des couleurs",
+                "l'odorat",
+                "le toucher"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "On entend et on sent les odeurs d'un lieu ; « goût des couleurs » n'est pas un sens littéral ici."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Une odeur de cire et de bois » appelle surtout…",
+              "options": ["l'odorat", "la vue seule", "le goût", "l'équilibre"],
+              "correctAnswers": [0],
+              "explanation": "Les odeurs relèvent du sens olfactif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Le silence pesait » est une description…",
+              "options": [
+                "auditive et ressentie",
+                "purement visuelle",
+                "mathématique",
+                "géographique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le silence concerne l'ouïe ; « pesait » traduit une impression."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour évoquer la chaleur d'une pièce, on peut écrire…",
+              "options": [
+                "« l'air était lourd »",
+                "« deux plus deux »",
+                "« il courut vite »",
+                "« bonjour »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Air lourd » suggère chaleur ou humidité ressentie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un lieu « humide » se ressent souvent au…",
+              "options": [
+                "toucher et à l'odorat",
+                "goût uniquement",
+                "palais seulement",
+                "equilibre seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'humidité affecte la peau et parfois une odeur de moisi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Le crépitement du feu » décrit…",
+              "options": [
+                "un bruit",
+                "une couleur",
+                "un goût",
+                "une forme géométrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Crépitement » est un bruit caractéristique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les couleurs dans une description relèvent surtout de…",
+              "options": ["la vue", "l'ouïe", "l'odorat", "le goût"],
+              "correctAnswers": [0],
+              "explanation": "On perçoit les couleurs avec les yeux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Une lumière crue » donne une impression de…",
+              "options": [
+                "éclat agressif ou vif",
+                "obscurité totale",
+                "froid glacial",
+                "silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Crue » qualifie une lumière forte, parfois désagréable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mélanger plusieurs impressions sensorielles rend la description…",
+              "options": [
+                "plus vivante",
+                "incorrecte grammaticalement",
+                "obligatoirement courte",
+                "sans adjectifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sens combinés plongent le lecteur dans le lieu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Le vent s'engouffrait » évoque surtout…",
+              "options": [
+                "un mouvement d'air et un bruit",
+                "une saveur",
+                "une odeur de fleur",
+                "un nombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'engouffrement suggère air en mouvement dans un espace."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Présent de description",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels temps sont fréquents pour décrire un lieu de façon immobile ?",
+              "options": [
+                "présent de l'indicatif",
+                "passé simple narratif d'action",
+                "imparfait de description",
+                "futur antérieur"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Présent et imparfait peignent l'état d'un lieu ; passé simple et futur antérieur servent plutôt à raconter des actions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Les murs sont recouverts de tapisserie » est au…",
+              "options": [
+                "présent",
+                "passé composé",
+                "futur",
+                "conditionnel passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sont » est la forme présente du verbe être."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le présent de description donne l'impression que…",
+              "options": [
+                "le lieu existe sous nos yeux",
+                "tout est déjà fini",
+                "rien n'est jamais arrivé",
+                "on interroge quelqu'un"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On présente le décor comme actuel, devant le lecteur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle forme verbe convient : « La fenêtre ___ sur le jardin » ?",
+              "options": ["donne", "donnera", "donnait", "a donné"],
+              "correctAnswers": [0],
+              "explanation": "Au présent descriptif : « donne »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Il règne un calme absolu » exprime…",
+              "options": [
+                "un état durable au moment décrit",
+                "une action soudaine passée",
+                "un ordre",
+                "une question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Règne » au présent décrit une atmosphère constante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans « Des oiseaux chantent au loin », le verbe est…",
+              "options": [
+                "présent de l'indicatif",
+                "imparfait",
+                "subjonctif",
+                "impératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Chantent » est bien au présent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "On évite souvent le passé simple pour décrire un décor parce qu'il…",
+              "options": [
+                "marque surtout des actions ponctuelles",
+                "n'existe pas",
+                "est toujours oral",
+                "remplace les adjectifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passé simple avance le récit ; l'imparfait ou le présent fixent l'état."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Se dresse » dans « un clocher se dresse » est…",
+              "options": [
+                "présent",
+                "participe passé seul",
+                "infinitif",
+                "gérondif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme pronominale au présent de l'indicatif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Accord : « Les toits ___ gris » (être)…",
+              "options": ["sont", "est", "êtes", "sera"],
+              "correctAnswers": [0],
+              "explanation": "Sujet pluriel « les toits » → « sont »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le présent descriptif se distingue du présent narratif car il…",
+              "options": [
+                "fige un état plutôt qu'une suite d'événements",
+                "ne concerne que le futur",
+                "interdit les adjectifs",
+                "exige le dialogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Description = état ; narration = enchaînement d'actions."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Imparfait de description",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'imparfait convient pour…",
+              "options": [
+                "décrire un décor au passé",
+                "une action brève et unique",
+                "habitudes ou états dans le passé",
+                "un ordre direct"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'imparfait peint le fond, les habitudes ou états ; une action unique ponctuelle relève plutôt du passé simple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« La maison semblait abandonnée » est à l'…",
+              "options": ["imparfait", "passé simple", "futur", "présent"],
+              "correctAnswers": [0],
+              "explanation": "« Semblait » est l'imparfait de sembler."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Terminaison de l'imparfait pour « chanter » à la 3e personne du singulier :",
+              "options": [
+                "-ait",
+                "-a",
+                "-ait-il seulement à l'interrogatif",
+                "-ons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il chantait → terminaison -ait."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Des nuages couvraient le ciel » décrit…",
+              "options": [
+                "un état du ciel dans le passé",
+                "un événement unique",
+                "le futur",
+                "un souhait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'imparfait présente la situation comme durée ou fond."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Impératif ou imparfait : « Tu ___ prudemment dans le couloir » (marcher, souvenir)…",
+              "options": ["marchais", "marche", "marcheras", "marches"],
+              "correctAnswers": [0],
+              "explanation": "Souvenir au passé → imparfait « marchais »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'imparfait de « être » à la 1re personne du pluriel est…",
+              "options": [
+                "nous étions",
+                "nous sommes",
+                "nous fûmes",
+                "nous serons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nous étions = imparfait."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans un récit au passé, l'imparfait sert souvent de…",
+              "options": [
+                " toile de fond à l'action",
+                "titre du livre",
+                "signature",
+                "adresse postale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le décor à l'imparfait entoure les actions au passé simple."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Il faisait nuit » exprime…",
+              "options": [
+                "une durée, une situation",
+                "une question",
+                "un ordre",
+                "une comparaison obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression impersonal au imparfait pour l'état du temps."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Les enfants jouaient dans la cour » met l'accent sur…",
+              "options": [
+                "une activité en cours dans le passé",
+                "un coup de tonnerre unique",
+                "demain",
+                "l'interdiction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'imparfait suggère une scène en train de se dérouler."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'imparfait de « avoir » à « ils » est…",
+              "options": ["avaient", "ont", "eurent", "auront"],
+              "correctAnswers": [0],
+              "explanation": "Ils avaient = imparfait."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Adjectifs et enrichissement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs qualifient un lieu ?",
+              "options": [
+                "spacieux",
+                "courant (électricité)",
+                "délabré",
+                "heureux (personne)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Spacieux et délabré décrivent un espace ; « heureux » vise plutôt une personne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un adjectif épithète est…",
+              "options": [
+                "collé au nom sans verbe",
+                "après une préposition",
+                "toujours au pluriel",
+                "un verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. : « une vaste salle » — « vaste » est épithète."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« La rue, étroite et bruyante, … » : les adjectifs sont…",
+              "options": [
+                "épithètes ou apposés décrivant la rue",
+                "des adverbes",
+                "des noms",
+                "des conjonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils précisent le nom « rue »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Éviter les répétitions, c'est…",
+              "options": [
+                "varier le vocabulaire et les structures",
+                "supprimer tous les adjectifs",
+                "ne plus décrire",
+                "écrire une seule phrase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synonymes et périphrases enrichissent sans lourdeur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Immense » est le contraire approximatif de…",
+              "options": ["minuscule", "rapide", "bruyant", "ancien"],
+              "correctAnswers": [0],
+              "explanation": "Immense ↔ très petit (minuscule, exigu)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Accord : « des murs ___ (blanc) »…",
+              "options": ["blancs", "blanche", "blanc", "blanchies"],
+              "correctAnswers": [0],
+              "explanation": "Nom masculin pluriel → adjectif « blancs »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un adjectif attribut se construit avec…",
+              "options": [
+                "un verbe d'état (être, sembler…)",
+                "uniquement un point",
+                "une majuscule",
+                "un chiffre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. : « La pièce est sombre » — sombre = attribut."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Poussiéreux, le grenier … » : l'adjectif en tête…",
+              "options": [
+                "met en valeur une caractéristique",
+                "remplace le sujet",
+                "est un verbe",
+                "indique le temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif antépposé ou en incise insiste sur le trait."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Préférer des adjectifs précis plutôt que « beau » ou « mauvais » permet…",
+              "options": [
+                "une description plus nette",
+                "d'effacer le lieu",
+                "de ne plus accorder",
+                "d'écrire au futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectifs concrets = image plus claire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Verdoyant » convient pour décrire…",
+              "options": [
+                "un paysage ou un parc",
+                "un bruit",
+                "un goût salé",
+                "un calcul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évoque la végétation verte."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Figures de style du lieu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles figures enrichissent une description de lieu ?",
+              "options": [
+                "comparaison",
+                "métaphore",
+                "addition",
+                "personnification"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La comparaison et la métaphore transforment le lieu en image ; « addition » est une opération mathématique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« La ville dormait » est une…",
+              "options": [
+                "personnification",
+                "comparaison avec « comme »",
+                "énumération",
+                "question rhétorique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On prête à la ville une action humaine (dormir)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Blanc comme neige » pour un mur est…",
+              "options": [
+                "une comparaison",
+                "une métaphore sans outil",
+                "un dialogue",
+                "un titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'outil « comme » relie le mur à la neige."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ce château est un nid d'aigle » est…",
+              "options": [
+                "une métaphore",
+                "une comparaison",
+                "une liste",
+                "un impératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On identifie le château au nid sans « comme »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une énumération dans une description sert à…",
+              "options": [
+                "multiplier les détails",
+                "supprimer les adjectifs",
+                "ne plus parler du lieu",
+                "conjuguer au futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaîner plusieurs éléments enrichit la vue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Le vent hurlait dans les arbres » personnifie…",
+              "options": [
+                "le vent",
+                "les lecteurs",
+                "le temps passé",
+                "la ponctuation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hurlait » est une action humaine attribuée au vent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Hyperbole possible pour un grand immeuble :",
+              "options": [
+                "« il touche les nuages »",
+                "« il est moyen »",
+                "« il a deux portes »",
+                "« il est à Paris »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hyperbole exagère la hauteur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Éviter les clichés (« calme plat », « coin perdu » sans précision)…",
+              "options": [
+                "rend la description plus personnelle",
+                "interdit les figures",
+                "supprime le sujet",
+                "change le genre du texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expressions originales marquent davantage le lecteur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Une forêt de mâts » pour des poteaux électriques est…",
+              "options": [
+                "une métaphore",
+                "une date",
+                "un adverbe",
+                "un pronom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mâts sont comparés à une forêt par identification."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La comparaison se reconnaît souvent grâce à…",
+              "options": [
+                "« comme », « semblable à », « tel »",
+                "un point-virgule seul",
+                "une majuscule en milieu de phrase",
+                "un chiffre romain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces outils introduisent le rapprochement entre deux éléments."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Nature et paysage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments appartiennent à un paysage naturel ?",
+              "options": ["colline", "bureau", "rivière", "ascenseur"],
+              "correctAnswers": [0, 2],
+              "explanation": "Colline et rivière font partie du paysage ; bureau et ascenseur relèvent du bâti."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« L'horizon se fondait dans la brume » décrit surtout…",
+              "options": [
+                "la vue au loin",
+                "un dialogue",
+                "un calcul",
+                "une odeur précise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'horizon et la brume concernent l'atmosphère visuelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour décrire une forêt, on peut évoquer…",
+              "options": [
+                "la canopée et le sous-bois",
+                "uniquement le prix du bois",
+                "les règles de conjugaison",
+                "le nombre de chapitres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire spatial vertical : feuillage en haut, sol en bas."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Escarpé » qualifie souvent…",
+              "options": [
+                "un terrain difficile à gravir",
+                "une voix douce",
+                "un plat cuisiné",
+                "une ponctuation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente raide, relief abrupt."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Plaine » désigne…",
+              "options": [
+                "une étendue de terrain peu accidenté",
+                "une montagne très haute",
+                "une pièce d'eau fermée",
+                "un type de verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relief plat ou ondulé sans forte pente."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le ciel « couvert » signifie…",
+              "options": [
+                "nuageux, peu de soleil visible",
+                "sans aucun nuage",
+                "noir comme la nuit close",
+                "invisible dans le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les nuages masquent en grande partie le ciel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Le sentier serpentait » suggère…",
+              "options": [
+                "des courbes dans le chemin",
+                "un animal réel obligatoire",
+                "un bruit fort",
+                "une couleur rouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Image du trajet sinueux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Décrire la mer peut inclure…",
+              "options": [
+                "vagues, écume, horizon",
+                "uniquement des noms propres",
+                "des tableaux de multiplication",
+                "des impératifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lexique maritime et visuel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Sauvage » appliqué à un lieu évoque…",
+              "options": [
+                "peu aménagé, naturel",
+                "toujours une ville",
+                "un texte court",
+                "une rime"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraste avec un espace civilisé ou urbanisé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Au crépuscule » situe la scène…",
+              "options": [
+                "entre jour et nuit",
+                "à midi pile",
+                "en plein hiver seulement",
+                "dans un livre scolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moment où la lumière décline."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Ville et intérieur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels indices évoquent une ville ?",
+              "options": ["faubourg", "ruelle", "prairie isolée", "immeuble"],
+              "correctAnswers": [0, 1],
+              "explanation": "Faubourg et ruelle appartiennent à l'espace urbain ; la prairie isolée évoque plutôt la campagne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Le bitume brillait sous la pluie » situe…",
+              "options": [
+                "une rue en ville",
+                "un sommet alpin",
+                "une grotte",
+                "un tableau abstrait sans lieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bitume est la surface des routes urbaines."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Décrire un salon, c'est décrire…",
+              "options": [
+                "un intérieur",
+                "un sommet montagneux",
+                "l'espace intersidéral",
+                "un océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le salon est une pièce de la maison."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Encombré » pour une chambre signifie…",
+              "options": [
+                "plein d'objets, difficile à circuler",
+                "vide et silencieux",
+                "toujours neuf",
+                "sans fenêtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trop de meubles ou d'objets occupent l'espace."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Le néon clignotait » évoque souvent…",
+              "options": [
+                "une vitrine ou un commerce",
+                "une forêt profonde",
+                "un désert sans électricité",
+                "un poème médiéval"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éclairage urbain commercial."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Carrelage » se trouve plutôt…",
+              "options": [
+                "au sol d'une pièce",
+                "dans le ciel",
+                "dans une équation",
+                "dans un titre de film seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Revêtement dur des sols intérieurs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Contraste utile en description :",
+              "options": [
+                "silence de l'appartement / bruit de la rue",
+                "deux dates identiques",
+                "même adjectif répété vingt fois",
+                "absence de verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opposer intérieur et extérieur crée un effet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Métro bondé » suggère…",
+              "options": [
+                "beaucoup de voyageurs",
+                "un train vide",
+                "un jardin fleuri",
+                "une plage déserte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Bondé » = très fréquenté."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Plafond » désigne…",
+              "options": [
+                "la surface haute d'une pièce",
+                "le sol",
+                "une porte",
+                "un jardin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partie supérieure de l'espace clos."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour un appartement ancien, adjectif pertinent :",
+              "options": [
+                "délabré ou cossu selon le contexte",
+                "liquide",
+                "numérique",
+                "triangulaire seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contexte choisit entre négatif (délabré) ou charmant (cossu)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Structurer sa description",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels connecteurs ordonnent une description ?",
+              "options": [
+                "d'abord",
+                "ensuite",
+                "parce que (cause seule)",
+                "enfin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« D'abord » et « ensuite » organisent la progression ; « parce que » introduit une cause, pas un ordre de description."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une description efficace évite…",
+              "options": [
+                "les listes sans lien ni précision",
+                "les adjectifs variés",
+                "les repères spatiaux",
+                "un point de vue cohérent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une énumération floue fatigue le lecteur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le point de vue du narrateur dans une description…",
+              "options": [
+                "reste en général fixe ou logique",
+                "change à chaque mot sans raison",
+                "interdit les adverbes",
+                "supprime le présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un regard cohérent aide à se repérer."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« En arrière-plan » structure la description en…",
+              "options": [
+                "plans (avant / arrière)",
+                "chapitres numérotés",
+                "versets",
+                "dialogues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Notion de profondeur dans l'image."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Relire une description sert à…",
+              "options": [
+                "vérifier clarté et accords",
+                "effacer le sujet",
+                "ajouter des fautes",
+                "supprimer les noms"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Correction et enrichissement au second passage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phrase typique descriptive :",
+              "options": [
+                "« De grands arbres ombragent l'allée »",
+                "« Ouvre la porte ! »",
+                "« Est-ce que tu viens ? »",
+                "« Hier je courus »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "État du lieu au présent, sans injonction ni question."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Terminer par une impression générale…",
+              "options": [
+                "peut laisser une émotion au lecteur",
+                "est interdit en français",
+                "remplace tous les détails",
+                "supprime le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dernière phrase mémorable possible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Au premier plan » signifie…",
+              "options": [
+                "ce que l'on voit d'abord, devant",
+                "ce qui est invisible",
+                "le passé lointain",
+                "une footnote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Élément le plus proche du spectateur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Paragraphes dans une description longue…",
+              "options": [
+                "aident à regrouper les parties du lieu",
+                "interdisent les adjectifs",
+                "remplacent les verbes",
+                "effacent le thème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un paragraphe par zone ou par plan, par exemple."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif principal d'une description de lieu en 5e :",
+              "options": [
+                "faire voir un espace au lecteur",
+                "résoudre une équation",
+                "lister des verbes irréguliers",
+                "mémoriser des dates"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lecteur doit se représenter le lieu."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Portrait physique et moral",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Portrait physique : vocabulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots décrivent le visage ?",
+              "options": ["front", "cheville", "menton", "poignet"],
+              "correctAnswers": [0, 2],
+              "explanation": "Front et menton font partie du visage ; cheville et poignet concernent les membres."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Imposante » peut qualifier…",
+              "options": [
+                "une stature ou une personne grande",
+                "un adverbe",
+                "une conjonction",
+                "un silence seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Taille ou présence physique marquante."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Châtain » décrit souvent…",
+              "options": [
+                "la couleur des cheveux",
+                "le volume d'une voix",
+                "la vitesse de course",
+                "l'âge exact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleur marron clair des cheveux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Barbu » signifie…",
+              "options": [
+                "porteur d'une barbe",
+                "sans cheveux",
+                "aux yeux bleus obligatoirement",
+                "très jeune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présence de barbe au visage."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Svelte » évoque une silhouette…",
+              "options": [
+                "fine et élancée",
+                "très large",
+                "invisible",
+                "toujours assise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Minceur gracieuse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Rides » se trouvent surtout…",
+              "options": [
+                "sur la peau, avec l'âge ou l'expression",
+                "dans un dictionnaire seulement",
+                "dans le ciel",
+                "sur une page blanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marques du temps au visage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Regard perçant » suggère…",
+              "options": [
+                "des yeux vifs et intenses",
+                "des yeux fermés",
+                "l'absence de visage",
+                "un chuchotement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intensité du regard."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Voûté » décrit…",
+              "options": [
+                "un dos courbé",
+                "des cheveux longs",
+                "une voix aiguë",
+                "un costume neuf"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Posture penchée, dos arrondi."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Teint » renvoie à…",
+              "options": [
+                "la couleur de la peau",
+                "la taille du nez seule",
+                "le prénom",
+                "le métier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complexion, coloration du visage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Bien bâti » indique…",
+              "options": [
+                "une carrure solide",
+                "une faiblesse physique",
+                "un texte court",
+                "une absence de description"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corps robuste, musclé ou solide."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Du détail à l'ensemble",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles parties peut-on décrire dans un portrait physique ?",
+              "options": ["cheveux", "honnêteté", "mains", "courage"],
+              "correctAnswers": [0, 2],
+              "explanation": "Cheveux et mains sont visibles ; honnêteté et courage relèvent du moral."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Commencer par un trait saillant du visage…",
+              "options": [
+                "accroche l'attention du lecteur",
+                "interdit le reste du portrait",
+                "supprime les accords",
+                "transforme le texte en dialogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Détail marquant puis vue d'ensemble possible."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Zoom » sur les mains peut servir à…",
+              "options": [
+                "montrer le travail ou l'âge du personnage",
+                "indiquer la météo",
+                "donner l'heure",
+                "compter les chapitres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mains calleuses, tremblantes, soignées, etc."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Éviter le catalogue (« yeux, nez, bouche… » sans style)…",
+              "options": [
+                "rend le portrait plus vivant",
+                "est une règle absolue interdisant tout nom de partie du corps",
+                "supprime le sujet",
+                "oblige au passé simple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Varier ordre et formulations évite la liste scolaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Silhouette » désigne…",
+              "options": [
+                "la forme générale du corps",
+                "un seul doigt",
+                "un dialogue",
+                "une date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contour ou allure générale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Démarche lourde » décrit…",
+              "options": [
+                "façon de marcher",
+                "couleur des yeux",
+                "prénom",
+                "lieu de naissance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manière de se déplacer, aspect physique-comportemental."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Portrait physique : on utilise surtout…",
+              "options": [
+                "adjectifs et verbes d'apparence",
+                "uniquement des chiffres",
+                "des formules mathématiques",
+                "des cartes géographiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualificatifs et verbes comme « paraître », « sembler »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Élancé » convient pour…",
+              "options": [
+                "une personne grande et fine",
+                "un objet cubique",
+                "un bruit",
+                "une odeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce et hauteur de la silhouette."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Décrire la voix entre dans…",
+              "options": [
+                "le portrait global (physique et ton)",
+                "uniquement le moral sans lien",
+                "la grammaire des noms",
+                "le passé simple obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voix grave, nasillarde… complète l'image."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Tenue » dans un portrait peut désigner…",
+              "options": [
+                "les vêtements et la posture",
+                "uniquement la morale",
+                "un verbe conjugué",
+                "une ponctuation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Costume, allure, maintien."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Portrait moral : traits de caractère",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots relèvent du portrait moral ?",
+              "options": ["généreux", "curieux", "blond", "timide"],
+              "correctAnswers": [0, 1],
+              "explanation": "Généreux et curieux décrivent la personnalité ; « blond » relève de l'apparence."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Avare » est un trait…",
+              "options": [
+                "moral négatif",
+                "physique du visage",
+                "nom de lieu",
+                "temps verbal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rapport à l'argent et aux autres, pas une forme du corps."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Montrer le caractère par des actions dans le récit, c'est…",
+              "options": [
+                "indirect (comportements)",
+                "impossible en français",
+                "réservé au portrait physique",
+                "interdit en 5e"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On devine la personnalité à travers ce que le personnage fait."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Altruiste » signifie…",
+              "options": [
+                "soucieux des autres",
+                "très grand",
+                "aux cheveux noirs",
+                "maladroit seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attention portée au bien-être d'autrui."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Antonyme approximatif de « courageux » :",
+              "options": ["lâche", "grand", "blond", "rapide"],
+              "correctAnswers": [0],
+              "explanation": "Manque de bravoure face au danger."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Patient » qualifie…",
+              "options": [
+                "quelqu'un qui sait attendre",
+                "un mur épais",
+                "un verbe",
+                "une ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualité morale ou comportementale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Portrait moral direct :",
+              "options": [
+                "« C'était un homme loyal »",
+                "« Il avait les cheveux roux »",
+                "« La table était ronde »",
+                "« Il pleut »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif de caractère appliqué au personnage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Orgueilleux » peut être…",
+              "options": [
+                "un défaut de caractère",
+                "une couleur",
+                "un nombre",
+                "un adverbe de lieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Excès d'amour-propre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Nuancer un trait (« plutôt timide mais observateur »)…",
+              "options": [
+                "évite les personnages plates",
+                "interdit l'écriture",
+                "supprime le physique",
+                "remplace les accords"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les personnages réalistes ont plusieurs facettes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Sincère » oppose souvent à…",
+              "options": [
+                "hypocrite",
+                "grand",
+                "jeune",
+                "fatigué physiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Honnêteté versus mensonge ou masque social."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Physique et moral ensemble",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments peuvent suggérer le caractère sans le nommer ?",
+              "options": [
+                "un sourire narquois",
+                "un regard fuyant",
+                "la couleur exacte d'un mur",
+                "des gestes brusques"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Expression du visage et comportement laissent entrevoir la personnalité ; le mur n'appartient pas au portrait."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mélanger portrait physique et moral permet…",
+              "options": [
+                "un personnage plus crédible",
+                "d'oublier les accords",
+                "de ne plus utiliser de verbes",
+                "de supprimer le récit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corps et tempérament se complètent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Visage fermé » peut suggérer…",
+              "options": [
+                "réserve ou colère contenue",
+                "toujours la joie",
+                "une couleur de cheveux",
+                "un lieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression qui renvoie à l'humeur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Démarche assurée » évoque…",
+              "options": [
+                "confiance",
+                "peur systématique",
+                "absence de jambes",
+                "un dialogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le corps traduit un trait moral possible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Contraste physique/moral efficace :",
+              "options": [
+                "apparence fragile / will solide",
+                "deux fois le même adjectif",
+                "aucun verbe",
+                "liste de courses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surprendre le lecteur enrichit le personnage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Éclat de rire » touche…",
+              "options": [
+                "physique (voix) et moral (gaieté)",
+                "uniquement la météo",
+                "la conjugaison",
+                "une carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Son et personnalité à la fois."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ne pas répéter « il était gentil » vingt fois, c'est…",
+              "options": [
+                "montrer la gentillesse par des actes",
+                "interdit de décrire",
+                "réservé au lieu",
+                "une règle de mathématiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Portrait indirect plus convaincant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Mains tremblantes » peut indiquer…",
+              "options": [
+                "peur ou fatigue",
+                "couleur des yeux",
+                "métier exact",
+                "nombre d'enfants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Détail physique révélateur d'état moral ou émotionnel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ordre possible dans un portrait complet :",
+              "options": [
+                "silhouette puis regard puis caractère",
+                "uniquement le moral d'abord toujours",
+                "sans paragraphes",
+                "sans adjectifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs plans de lecture existent ; enchaînement logique aide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif d'un portrait en récit :",
+              "options": [
+                "faire connaître un personnage",
+                "remplacer l'intrigue obligatoirement",
+                "effacer le lieu",
+                "ne plus conjuguer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lecteur identifie et comprend le personnage."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Verbes et formulations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes conviennent à un portrait ?",
+              "options": [
+                "paraître",
+                "sembler",
+                "additionner",
+                "décrire (métalangue possible)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Paraître et sembler introduisent une apparence ou une impression ; « additionner » est mathématique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« On devinait chez lui une grande bonté » : « devinait »…",
+              "options": [
+                "suggère sans affirmer brutalement",
+                "donne la couleur des yeux",
+                "indique l'heure",
+                "remplace le sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impression progressive chez le narrateur ou le lecteur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Il avait l'air fatigué » : « avait l'air » exprime…",
+              "options": [
+                "une apparence",
+                "une certitude scientifique",
+                "un lieu",
+                "un dialogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Locution d'apparence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Présent de vérité générale pour un type de personnage :",
+              "options": [
+                "« Les yeux bleus tranchent sur le visage hâlé »",
+                "« Hier il partit »",
+                "« Demain tu viendras »",
+                "« Ouvre ! »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Description statique au présent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Imparfait dans un souvenir de personnage :",
+              "options": [
+                "« Elle portait toujours un chapeau »",
+                "« Soudain il cria »",
+                "« Je mangerai »",
+                "« Sois sage »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Habitude ou état dans le passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Éviter « beau » / « joli » sans précision, c'est…",
+              "options": [
+                "préférer des adjectifs plus concrets",
+                "supprimer le portrait",
+                "interdire les compliments",
+                "écrire en anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Précision = image plus nette."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Tracer un portrait » signifie…",
+              "options": [
+                "le décrire par écrit",
+                "dessiner obligatoirement",
+                "effacer le personnage",
+                "le faire disparaître du livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression figurée pour décrire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Accord : « Elles semblaient ___ (heureux) »…",
+              "options": ["heureuses", "heureux", "heureuse", "heureusement"],
+              "correctAnswers": [0],
+              "explanation": "Sujet féminin pluriel → adjectif « heureuses »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Nommer » un trait (« il était colérique ») est une description…",
+              "options": [
+                "directe",
+                "physique du nez",
+                "d'un paysage",
+                "mathématique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le qualificatif est posé explicitement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Verbe « ressembler » introduit souvent…",
+              "options": [
+                "une comparaison entre personnes",
+                "un calcul",
+                "un impératif",
+                "une date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. : « Il ressemblait à son père »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Figures et portrait",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles figures peuvent servir au portrait ?",
+              "options": [
+                "métaphore",
+                "comparaison",
+                "table de multiplication",
+                "hyperbole"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Métaphore et comparaison créent des images du personnage ; « table de multiplication » n'est pas une figure littéraire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Un lion de la tribune » pour un orateur est…",
+              "options": [
+                "une métaphore",
+                "une liste",
+                "un dialogue",
+                "un adverbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On identifie l'orateur au lion par la fougue."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Yeux couleur de mer » est plutôt…",
+              "options": [
+                "comparaison implicite / métaphore",
+                "impératif",
+                "passé simple narratif seul",
+                "carte routière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rapprochement visuel sans « comme » obligatoire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Hyperbole : « il mesurait deux mètres vingt » pour insister sur…",
+              "options": [
+                "grande taille",
+                "petitesse",
+                "silence",
+                "couleur des chaussures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exagération possible de la stature."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Personnification appliquée au personnage :",
+              "options": [
+                "« Sa colère éclata » (colère comme force)",
+                "« Il mangea »",
+                "« 2 + 2 »",
+                "« Paris »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trait moral ou émotion présenté avec vigueur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cliché à éviter :",
+              "options": [
+                "« beaux yeux bleus » sans autre trait",
+                "un trait moral nuancé",
+                "un détail original",
+                "un verbe précis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule usée n'enrichit pas le portrait."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Comme un chat » pour la souplesse, c'est…",
+              "options": [
+                "comparaison",
+                "métaphore sans outil",
+                "énumération",
+                "question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil « comme » explicite."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Figure qui exagère un trait de caractère :",
+              "options": [
+                "hyperbole",
+                "point final",
+                "virgule seule",
+                "paragraphe vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outrance pour marquer le lecteur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Portrait plus poétique avec…",
+              "options": [
+                "figures de style maîtrisées",
+                "absence totale de noms",
+                "fautes volontaires",
+                "chiffres seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Images frappantes sans perdre la clarté."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Un visage en pierre » suggère…",
+              "options": [
+                "froideur ou impassibilité",
+                "matériau de sculpture uniquement",
+                "joie bruyante",
+                "faim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Métaphore du visage dur, fermé."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Point de vue et narrateur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un portrait au « je », on peut…",
+              "options": [
+                "donner une impression personnelle",
+                "inventer des pensées d'autrui sans indication",
+                "mélanger subjectif et regard extérieur si le récit le permet",
+                "oublier les accords"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le narrateur-personnage voit et interprète ; inventer sans cadre romanesque fausse le point de vue."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Portrait au « il/elle » par un narrateur externe…",
+              "options": [
+                "observe le personnage",
+                "est toujours le personnage lui-même",
+                "interdit les adjectifs",
+                "supprime le moral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Regard souvent omniscient ou limité sur autrui."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Je le trouvais arrogant » montre…",
+              "options": [
+                "un jugement du narrateur",
+                "une mesure en mètres",
+                "un lieu",
+                "un temps futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Subjectivité du « je »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Changer de point de vue sans signaler…",
+              "options": [
+                "trouble le lecteur",
+                "enrichit toujours sans limite",
+                "corrige les accords",
+                "remplace le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérence narrative nécessaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Adverbes de jugement (« peut-être », « sans doute »)…",
+              "options": [
+                "nuancent l'opinion",
+                "indiquent la couleur des cheveux",
+                "remplacent le sujet",
+                "forment le pluriel des noms"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modestie ou incertitude du narrateur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Portrait dans une lettre au « je »…",
+              "options": [
+                "sonne subjectif et intime",
+                "interdit la description",
+                "oblige au passé simple partout",
+                "supprime le destinataire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme épistolaire = regard personnel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Focalisation interne : on connaît surtout…",
+              "options": [
+                "ce que voit et pense un personnage",
+                "tout l'univers scientifiquement",
+                "uniquement le décor",
+                "les règles de math"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vision limitée à la conscience du personnage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« À mes yeux » indique…",
+              "options": [
+                "subjectivité",
+                "objectivité absolue",
+                "un lieu géographique",
+                "un verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opinion du narrateur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Portrait au présent avec narrateur externe…",
+              "options": [
+                "donne une impression d'éternité ou de tableau",
+                "interdit le moral",
+                "supprime les noms",
+                "est impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet de description fixe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Respecter le point de vue, c'est notamment…",
+              "options": [
+                "ne pas attribuer au « je » des infos impossibles",
+                "copier un dictionnaire entier",
+                "éviter les verbes",
+                "ne jamais décrire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérence des connaissances du narrateur."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Portrait au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Temps utiles pour un portrait dans un récit passé :",
+              "options": [
+                "imparfait",
+                "passé simple (action)",
+                "présent descriptif possible au style",
+                "futur antérieur systématique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Imparfait pour l'état ; le présent descriptif peut figer le personnage ; passé simple sert surtout à l'action ponctuelle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« C'était un homme mince » : « était »…",
+              "options": [
+                "imparfait",
+                "passé simple",
+                "futur",
+                "participe seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Description d'état au passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Souvenir d'enfance d'un parent : temps fréquent…",
+              "options": [
+                "imparfait",
+                "impératif",
+                "futur simple seul",
+                "infinitif seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Habitudes et descriptions passées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Passé simple dans « Il sourit et partit »…",
+              "options": [
+                "marque une action brève",
+                "décrit un état permanent",
+                "remplace tous les adjectifs",
+                "est interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Action ponctuelle, pas le fond descriptif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Plus-que-parfait rare en portrait simple ; il exprime surtout…",
+              "options": [
+                "antériorité",
+                "couleur des yeux",
+                "lieu",
+                "dialogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Action ou état avant un autre moment passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Elle avait les cheveux noirs » décrit…",
+              "options": [
+                "un trait physique passé",
+                "demain",
+                "un ordre",
+                "une question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Imparfait ou passé composé selon contexte ; ici état au passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Alternance imparfait / passé simple dans un chapitre…",
+              "options": [
+                "décors et actions",
+                "interdit en français",
+                "remplace les portraits",
+                "supprime le moral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classique : fond vs événements."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Flashback : portrait au passé sert à…",
+              "options": [
+                "présenter un personnage avant l'action présente",
+                "effacer l'intrigue",
+                "interdire les adjectifs",
+                "changer de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retour arrière descriptif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Autrefois, il paraissait plus robuste » oppose…",
+              "options": [
+                "passé et présent du personnage",
+                "deux villes",
+                "deux verbes identiques",
+                "rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évolution physique dans le temps."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cohérence des temps dans un paragraphe de portrait…",
+              "options": [
+                "facilite la lecture",
+                "est optionnelle sans limite",
+                "supprime le sujet",
+                "interdit l'imparfait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éviter les sauts incohérents."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Typologie et registre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Registres possibles d'un portrait :",
+              "options": [
+                "sérieux / tragique",
+                "comique ou grotesque",
+                "tableur Excel",
+                "heroïque ou épique par le lexique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ton grave ou humoristique selon l'effet ; « tableur » n'est pas un registre littéraire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Portrait comique :",
+              "options": [
+                "exagère un défaut physique ou moral",
+                "interdit tout adjectif",
+                "supprime le personnage",
+                "n'utilise que des chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caricature légère possible."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Registre soutenu : vocabulaire…",
+              "options": [
+                "plus précis et parfois rare",
+                "uniquement oral et familier",
+                "sans verbes",
+                "sans noms"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lexique recherché selon le texte étudié."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Portrait d'un héros positif : adjectifs possibles…",
+              "options": [
+                "valeureux, loyal",
+                "uniquement méchants",
+                "sans qualificatif",
+                "réservés au décor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traits moraux valorisés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Antihéros : portrait peut insister sur…",
+              "options": [
+                "contradictions et faiblesses",
+                "perfection absolue",
+                "absence de verbes",
+                "lieu seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Personnage complexe, imparfait."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Grotesque : mélange parfois…",
+              "options": [
+                "ridicule et inquiétant",
+                "silence total",
+                "carte et météo",
+                "équations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exagération déformante."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vocabulaire familier dans un portrait…",
+              "options": [
+                "colle au registre du narrateur oral",
+                "est toujours interdit",
+                "remplace les accords",
+                "efface le physique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix stylistique selon le texte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Portrait épique : verbes et adjectifs…",
+              "options": [
+                "marquants, parfois hyperboliques",
+                "inexistants",
+                "uniquement négatifs",
+                "réservés au présent futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amplification du héros."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Adapter le registre, c'est…",
+              "options": [
+                "tenir compte du genre du texte et du public",
+                "copier n'importe quel site",
+                "ignorer le sens",
+                "supprimer les figures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérence avec le type d'œuvre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Portrait réaliste vise surtout…",
+              "options": [
+                "vraisemblance",
+                "abstraction totale",
+                "absence de détails",
+                "liste de courses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Personnage crédible pour le lecteur."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Réviser son portrait",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Check-list utile après un portrait :",
+              "options": [
+                "accords des adjectifs",
+                "répétitions inutiles",
+                "oubli du sujet du texte",
+                "présence d'au moins une précision concrète"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Grammaire et variété ; « oubli du sujet » n'est pas un critère de relecture positive."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Relire à voix haute…",
+              "options": [
+                "détecte lourdeurs et répétitions",
+                "interdit le portrait",
+                "change le tier",
+                "supprime le moral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oreille repère les maladresses."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Remplacer trois fois « nice » par des synonymes français variés…",
+              "options": [
+                "enrichit le texte",
+                "est interdit",
+                "supprime le personnage",
+                "efface le temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synonymes : agréable, aimable, doux… selon le sens."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Portrait trop vague : remède…",
+              "options": [
+                "ajouter un détail précis (main, regard…)",
+                "supprimer tous les adjectifs",
+                "ne plus conjuguer",
+                "changer de matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un détail concret ancre l'image."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Équilibre physique / moral idéal :",
+              "options": [
+                "les deux présents selon la consigne",
+                "physique seul toujours",
+                "moral seul interdit",
+                "aucun des deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La consigne de l'exercice guide la part de chaque."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "« Ses yeux verts brillaient d'intelligence »",
+                "« Ses yeux vert brillait »",
+                "« Yeux vertes brillé »",
+                "« Vert yeux intelligence »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accords : yeux (masc. plur.), verts ; verbe conjugué."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Éviter le jugement sans preuve dans un devoir…",
+              "options": [
+                "illustrer par un comportement",
+                "ne rien écrire",
+                "copier la consigne",
+                "supprimer le narrateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Montrer plutôt qu'affirmer sans exemple."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dernier mot du portrait peut…",
+              "options": [
+                "laisser une impression forte",
+                "être obligatoirement « fin »",
+                "supprimer le titre",
+                "interdire la relecture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chute mémorable possible."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Différence lieu / portrait :",
+              "options": [
+                "lieu = espace ; portrait = personnage",
+                "identiques",
+                "lieu = personnage seulement",
+                "portrait = carte IGN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objets différents de la description."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En 5e, maîtriser portrait et description permet…",
+              "options": [
+                "enrichir récits et textes argumentatifs",
+                "ne plus lire de romans",
+                "éviter les accords à vie",
+                "supprimer l'oral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétences de base en expression écrite."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2743 @@
+{
+  "id": "5e-technologie-03",
+  "year": "5e",
+  "subject": "technologie",
+  "title": "Objets techniques",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Fonction et solution",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Besoin et fonction d'usage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments décrivent un besoin et sa traduction technique ?",
+              "options": [
+                "Un manque ressenti par une personne",
+                "Une fonction d'usage à satisfaire",
+                "Le numéro de série du prototype",
+                "La météo du jour de conception"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le besoin exprime un manque ; la fonction d'usage précise l'action attendue de l'objet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La fonction d'usage d'un vélo est surtout de :",
+              "options": [
+                "Se déplacer en propulsant soi-même",
+                "Stocker des fichiers cloud",
+                "Chauffer une pièce",
+                "Couper du métal industriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cycliste fournit l'énergie pour avancer sur deux roues."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un cahier des charges décrit principalement :",
+              "options": [
+                "Fonctions, contraintes et performances attendues",
+                "Uniquement la couleur favorite",
+                "Les blagues de l'équipe",
+                "L'historique géologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il guide la conception avec des exigences mesurables."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un thermos sert surtout à :",
+              "options": [
+                "Maintenir une boisson chaude ou froide",
+                "Mixer des soupes",
+                "Mesurer le vent",
+                "Imprimer des documents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'isolation limite les pertes de chaleur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un besoin devient un enjeu technique quand :",
+              "options": [
+                "On cherche un objet ou procédé pour le satisfaire",
+                "On le cache",
+                "On le change sans motif",
+                "On refuse toute solution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La technologie matérialise des réponses concrètes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Fonction d'usage d'une lampe de bureau :",
+              "options": [
+                "Éclairer une zone de travail",
+                "Refroidir l'air",
+                "Peser le courrier",
+                "Filtrer l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière localisée aide à lire et écrire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'utilisateur d'un objet est :",
+              "options": [
+                "Celui qui se sert de l'objet",
+                "Toujours le mineur de fer",
+                "Uniquement le robot d'usine",
+                "La matière première"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il réalise la fonction d'usage dans un contexte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Formuler une fonction d'usage avec un verbe, c'est :",
+              "options": [
+                "Dire ce que l'on fait avec l'objet",
+                "Décrire une loi physique abstraite",
+                "Nommer une marque",
+                "Compter les pages d'un livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : couper, transporter, éclairer."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Communiquer à distance se fait avec :",
+              "options": [
+                "Téléphone ou ordinateur connecté",
+                "Marteau seul",
+                "Brique pleine",
+                "Morceau de tissu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces objets échangent voix, texte ou images."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Distinguer besoin et envie sert à :",
+              "options": [
+                "Prioriser des fonctions réalistes",
+                "Ignorer la sécurité",
+                "Supprimer les tests",
+                "Refuser le prototype"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toutes les envies ne deviennent pas des exigences."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Fonctions techniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Exemples de fonctions techniques internes :",
+              "options": [
+                "Transmettre un mouvement",
+                "Stocker de l'énergie",
+                "Choisir la couleur des murs",
+                "Modifier une loi nationale"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les composants assurent des actions mécaniques, énergétiques, etc."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Convertir l'électricité en lumière :",
+              "options": [
+                "Ampoule ou LED",
+                "Roue de vélo",
+                "Carnet papier",
+                "Règle en bois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système d'éclairage produit un flux lumineux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Guider un mouvement linéaire :",
+              "options": [
+                "Rail ou glissière",
+                "Haut-parleur",
+                "Filtre à café",
+                "Autocollant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La guidage fixe la trajectoire d'une pièce mobile."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rôle de la chaîne du vélo :",
+              "options": [
+                "Transmettre le mouvement du pédalier à la roue",
+                "Stocker de l'eau",
+                "Afficher l'heure",
+                "Prendre des photos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle relie pédalier et pignon arrière."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Étanchéifier signifie :",
+              "options": [
+                "Empêcher l'eau ou l'air de fuir",
+                "Augmenter le bruit",
+                "Rendre l'objet fragile",
+                "Supprimer la solidité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Joints et formes fermées limitent les infiltrations."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le diagramme pieuvre montre :",
+              "options": [
+                "Lien entre usage, techniques et environnement",
+                "Les prénoms des élèves",
+                "Les scores de sport",
+                "Des recettes sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il visualise les échanges de l'objet avec son milieu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ressort d'un stylo à bille :",
+              "options": [
+                "Pousser la mine vers le papier",
+                "Chauffer l'encre",
+                "Recevoir des appels",
+                "Mesurer la pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il maintient le contact d'écriture."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Résister aux chocs relève de :",
+              "options": [
+                "Solidité et protection des composants",
+                "Couleur seule",
+                "Parfum",
+                "Nombre de pages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matériaux et formes absorbent les efforts."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un capteur sert à :",
+              "options": [
+                "Mesurer une grandeur physique",
+                "Décorer sans rôle",
+                "Remplacer tout utilisateur",
+                "Interdire la maintenance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il convertit une mesure en signal."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Plusieurs fonctions techniques pour un usage car :",
+              "options": [
+                "L'objet est un ensemble coopérant",
+                "Un vis suffit toujours",
+                "Les techniques n'existent pas",
+                "L'utilisateur est absent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'usage global résulte de sous-systèmes."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Contraintes de conception",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Contraintes qui orientent la solution :",
+              "options": [
+                "Sécurité utilisateur",
+                "Coût de fabrication",
+                "Forme des nuages",
+                "Normes et réglementations"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Sécurité et normes imposent des choix de conception vérifiables."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Contrainte ergonomique :",
+              "options": [
+                "Adaptation à la morphologie et au confort",
+                "Vitesse de la lumière",
+                "Nombre de lunes",
+                "Âge des dinosaures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poignées et efforts réduits facilitent l'usage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Concevoir pour l'environnement :",
+              "options": [
+                "Limiter toxiques et favoriser recyclage",
+                "Gaspiller volontairement",
+                "Jeter dès la première utilisation",
+                "Interdire réparation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cycle de vie guide des choix durables."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Masse maximale imposée :",
+              "options": [
+                "Ne pas dépasser un poids fixé",
+                "Utiliser uniquement plomb",
+                "Ne jamais peser",
+                "Doubler volume sans limite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transport et portabilité imposent des plafonds."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Marquage CE sur jouets vise :",
+              "options": [
+                "Sécurité des enfants",
+                "Interdire le jeu",
+                "Supprimer couleurs",
+                "Arêtes coupantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tests sur risques mécaniques et chimiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Contrainte esthétique :",
+              "options": [
+                "Harmonie visuelle avec un contexte",
+                "Absence de forme",
+                "Bruit permanent",
+                "Fuite d'eau obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apparence influence l'acceptation du produit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sonnette extérieure sous pluie :",
+              "options": [
+                "Protection eau et corrosion",
+                "Boîtier ouvert",
+                "Carton non traité",
+                "Fils nus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enveloppe adaptée préserve le fonctionnement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Délai de livraison du projet :",
+              "options": [
+                "Contrainte temporelle",
+                "Gravité seule",
+                "Langue sans lien",
+                "Moyen Âge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le calendrier borne conception et production."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Prise USB-C imposée :",
+              "options": [
+                "Standard d'interface",
+                "Goût alimentaire",
+                "Parfum plastique",
+                "Pages d'un roman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Connecteurs communs assurent compatibilité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Contraintes contradictoires :",
+              "options": [
+                "Arbitrer des compromis",
+                "Ignorer les règles",
+                "Abandonner sans essai",
+                "Tirer au sort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Légèreté et solidité demandent un équilibre."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Composants et matériaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Critères de choix d'un matériau :",
+              "options": [
+                "Résistance mécanique",
+                "Masse et coût",
+                "Couleur des étoiles",
+                "Prénom du designer"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Propriétés mécaniques, masse et prix guident le choix."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'aluminium est souvent choisi pour :",
+              "options": [
+                "Bon rapport légèreté/rigidité",
+                "Être le plus lourd possible",
+                "Fondre dans l'eau froide",
+                "Ne jamais conduire la chaleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il équipe cadres, boîtiers et pièces usinées."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le plastique ABS dans un boîtier :",
+              "options": [
+                "Résiste aux chocs et se moule facilement",
+                "Est toujours transparent comme verre",
+                "Ne s'isole jamais électriquement",
+                "Ne peut pas être coloré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thermoplastique courant pour enveloppes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Acier dans une charnière :",
+              "options": [
+                "Bonne résistance à l'usure",
+                "Se casse comme du verre sec",
+                "Flotte sur l'eau",
+                "Ne rouille jamais sans traitement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alliage fer-carbone robuste, parfois protégé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Bois pour une chaise :",
+              "options": [
+                "Résistance et aspect chaleureux",
+                "Conductivité électrique élevée",
+                "Fusion à 50 °C",
+                "Impossible à scier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matériau renouvelable structurant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Verre trempé sur smartphone :",
+              "options": [
+                "Résister aux rayures et chocs légers",
+                "Remplacer la batterie",
+                "Servir d'antenne seule",
+                "Stocker des fichiers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traitement thermique augmente la dureté."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Caoutchouc sur poignée :",
+              "options": [
+                "Améliorer adhérence et confort",
+                "Augmenter glissance",
+                "Chauffer le métal",
+                "Bloquer tout mouvement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surface souple limite le glissement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vis et écrou :",
+              "options": [
+                "Assembler des pièces par force serrée",
+                "Stocker de l'énergie solaire",
+                "Afficher des images",
+                "Filtrer l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fixation démontable classique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Roulement à billes :",
+              "options": [
+                "Réduire frottement d'un axe",
+                "Augmenter frottement volontairement",
+                "Mesurer humidité",
+                "Couper le bois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Billes roulent entre bagues intérieure et extérieure."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir matériau recyclable :",
+              "options": [
+                "Faciliter fin de vie et tri",
+                "Interdire réutilisation",
+                "Augmenter déchets",
+                "Empêcher réparation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Économie circulaire limite l'impact."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Énergie et information",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formes d'énergie utiles en objets techniques :",
+              "options": [
+                "Électrique",
+                "Mécanique (mouvement)",
+                "Couleur du papier peint",
+                "Numéro de téléphone"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Moteurs, ressorts et batteries transforment et transportent l'énergie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pile dans une télécommande :",
+              "options": [
+                "Fournir énergie électrique",
+                "Refroidir la pièce",
+                "Couper le bois",
+                "Peser les lettres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conversion chimique en courant pour le circuit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Manivelle de moulin à café :",
+              "options": [
+                "Énergie musculaire en rotation",
+                "Énergie nucléaire",
+                "Énergie des marées seule",
+                "Aucune énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'utilisateur fournit l'effort mécanique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Signal numérique binaire :",
+              "options": [
+                "Valeurs 0 et 1",
+                "Couleurs du vent",
+                "Goût du métal",
+                "Odeur du plastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bits codent texte, son et images."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Capteur de luminosité :",
+              "options": [
+                "Mesure lumière pour adapter écran",
+                "Coupe toujours l'alimentation",
+                "Joue de la musique seule",
+                "Imprime papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Information environnementale pour commande."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Moteur électrique dans ventilateur :",
+              "options": [
+                "Convertit électricité en rotation",
+                "Convertit lumière en son",
+                "Stocke eau potable",
+                "Mesure pH du sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aimants et bobines entraînent l'hélice."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Frein de vélo :",
+              "options": [
+                "Transformer énergie cinétique en chaleur",
+                "Créer énergie infinie",
+                "Supprimer masse",
+                "Envoyer emails"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frottement ralentit la roue."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Carte mémoire :",
+              "options": [
+                "Stocker informations numériques",
+                "Chauffer café",
+                "Couper métal",
+                "Pomper eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mémoire flash conserve fichiers sans alimentation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Interrupteur :",
+              "options": [
+                "Ouvrir ou fermer un circuit",
+                "Augmenter toujours tension",
+                "Mesurer masse",
+                "Peindre surface"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commande manuelle du courant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Chaîne énergie d'un drone :",
+              "options": [
+                "Batterie → moteurs → hélices → portance",
+                "Papier → encre → livre",
+                "Pluie → nuage → arc-en-ciel seul",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie stockée devient mouvement d'air."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Schémas et modèles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Intérêts d'un schéma ou maquette :",
+              "options": [
+                "Visualiser avant fabrication",
+                "Tester des idées à moindre coût",
+                "Remplacer toute sécurité",
+                "Supprimer le cahier des charges"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Représentations simplifient communication et essais."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Schéma fonctionnel montre :",
+              "options": [
+                "Fonctions sans détail esthétique",
+                "Uniquement couleurs mode",
+                "Recette cuisine",
+                "Carte géographique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Blocs et flèches décrivent rôles et liens."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Maquette d'échelle réduite :",
+              "options": [
+                "Vérifier proportions et assemblage",
+                "Remplacer tests réels obligatoires",
+                "Interdire modifications",
+                "Supprimer mesures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prototype géométrique pour validation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "CAO signifie :",
+              "options": [
+                "Conception assistée par ordinateur",
+                "Cuisine assistée par oiseau",
+                "Course assistée par océan",
+                "Chant assistée par orchestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèles 3D numériques pour conception."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Vue éclatée d'un objet :",
+              "options": [
+                "Montre pièces séparées et ordre",
+                "Cache toutes vis",
+                "Supprime nomenclature",
+                "Interdit montage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aide montage et maintenance."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Symbole flèche sur schéma :",
+              "options": [
+                "Sens flux énergie ou information",
+                "Direction vent réel",
+                "Couleur préférée",
+                "Heure déjeuner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orientation des échanges entre blocs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Prototype fonctionnel :",
+              "options": [
+                "Teste comportement réel partiel ou total",
+                "Est toujours produit final",
+                "Ne sert jamais",
+                "Remplace normes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Validation avant industrialisation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Plan coté indique :",
+              "options": [
+                "Dimensions en mm ou cm",
+                "Parfum matériau",
+                "Musique fond",
+                "Recette gâteau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cotes guident usinage et contrôle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Simulation numérique :",
+              "options": [
+                "Prédire comportement sans tout fabriquer",
+                "Remplace toujours utilisateur",
+                "Interdit essais",
+                "Supprime matériaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèles mathématiques réduisent essais coûteux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Légende d'un schéma :",
+              "options": [
+                "Explique symboles utilisés",
+                "Liste prénoms aléatoires",
+                "Compte mots",
+                "Mesure température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture commune entre acteurs du projet."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Solutions techniques comparées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Comparer des solutions permet de :",
+              "options": [
+                "Évaluer avantages et inconvénients",
+                "Choisir la plus adaptée au cahier des charges",
+                "Ignorer contraintes",
+                "Ne jamais prototyper"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tableau comparatif aide la décision argumentée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Éclairer une lampe torche : pile vs dynamo :",
+              "options": [
+                "Pile portable, dynamo sans pile mais effort",
+                "Les deux identiques sans nuance",
+                "Aucune source d'énergie",
+                "Uniquement vent solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autonomie et effort utilisateur diffèrent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Frein à tambour vs disque vélo :",
+              "options": [
+                "Disque souvent meilleur refroidissement",
+                "Tambour toujours plus léger sans exception",
+                "Aucun ne freine",
+                "Les deux utilisent eau seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Technologies de friction différentes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Boîtier plastique vs métal :",
+              "options": [
+                "Plastique léger, métal plus rigide",
+                "Plastique toujours plus lourd",
+                "Métal flotte toujours",
+                "Identiques en tous points"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compromis masse, coût, blindage."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ouverture bocal : vis vs clip :",
+              "options": [
+                "Vis étanche, clip accès rapide",
+                "Clip toujours étanche sous pression",
+                "Vis impossible à ouvrir",
+                "Aucun ne ferme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fonctions d'usage et contraintes diffèrent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Transport : sac à dos vs chariot :",
+              "options": [
+                "Chariot soulage dos sur longue distance",
+                "Sac toujours plus confortable chargé",
+                "Chariot interdit partout",
+                "Identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répartition masse change effort humain."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Stockage données : clé USB vs cloud :",
+              "options": [
+                "USB locale, cloud distante avec réseau",
+                "Cloud sans internet",
+                "USB lit sans contact",
+                "Identiques sans réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accessibilité et sécurité varient."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Critère « facilité de réparation » favorise :",
+              "options": [
+                "Vis standard et pièces disponibles",
+                "Collage permanent total",
+                "Composants soudés uniques",
+                "Boîtier scellé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maintenance prolonge durée de vie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Solution retenue doit :",
+              "options": [
+                "Respecter contraintes prioritaires",
+                "Ignorer budget",
+                "Violer sécurité",
+                "Refuser tests"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décision justifiée par critères mesurés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Brainstorming avant choix :",
+              "options": [
+                "Produire plusieurs pistes sans juger d'abord",
+                "Imposer une seule idée",
+                "Interdire croquis",
+                "Supprimer contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diversité d'idées enrichit comparaison."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Sécurité et usage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Mesures liées à la sécurité d'un objet :",
+              "options": [
+                "Protections physiques",
+                "Pictogrammes d'avertissement",
+                "Ignorer mode d'emploi",
+                "Retirer fusibles"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Conception et information réduisent les risques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Carter sur courroie machine :",
+              "options": [
+                "Empêche contact accidentel",
+                "Augmente bruit utile",
+                "Chauffe l'utilisateur",
+                "Supprime arrêt urgence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Barrière mécanique contre pincement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Mode d'emploi sert à :",
+              "options": [
+                "Utiliser correctement et en sécurité",
+                "Décorer emballage seule",
+                "Remplacer formation",
+                "Interdire maintenance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consignes limitent mauvais usages."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fusible dans circuit :",
+              "options": [
+                "Coupe courant si surintensité",
+                "Augmente toujours tension",
+                "Stocke photos",
+                "Mélange liquides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection incendie et composants."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Casque vélo :",
+              "options": [
+                "Protège tête en choc",
+                "Remplace freins",
+                "Augmente vitesse seule",
+                "Stocke eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équipement personnel complémentaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bouton arrêt d'urgence :",
+              "options": [
+                "Stop rapide machine dangereuse",
+                "Accélère production",
+                "Change couleur",
+                "Imprime étiquette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accès visible pour couper énergie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Matériau non toxique pour jouet :",
+              "options": [
+                "Réduit risque ingestion nocive",
+                "Augmente plomb",
+                "Ignore normes",
+                "Interdit lavage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enfants portent objets à la bouche."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Stabilité d'une échelle :",
+              "options": [
+                "Pieds antidérapants et bon angle",
+                "Une seule jambe suffit",
+                "Glissance volontaire",
+                "Pas de charge max"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conception et usage limitent chutes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Signal sonore alarme fumée :",
+              "options": [
+                "Avertit utilisateur danger",
+                "Joue musique",
+                "Charge téléphone",
+                "Coupe eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Information urgente pour évacuer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Maintenance préventive :",
+              "options": [
+                "Vérifie usure avant panne",
+                "Attend casse totale",
+                "Supprime pièces",
+                "Ignore notice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entretien régulier préserve sécurité."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Innovation et amélioration",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sources d'amélioration d'un objet :",
+              "options": [
+                "Retours utilisateurs",
+                "Progrès matériaux et électronique",
+                "Refuser tout test",
+                "Copier sans réfléchir"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Usage réel et R&D nourrissent évolutions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Version 2 d'un produit peut :",
+              "options": [
+                "Corriger défauts et ajouter fonctions",
+                "Être identique sans changement",
+                "Supprimer sécurité",
+                "Interdire réparation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Itération continue après retours marché."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Brevet protège :",
+              "options": [
+                "Invention technique novelle",
+                "Couleur du ciel",
+                "Prénom usager",
+                "Recette famille secrète cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Droit temporaire sur solution inventée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Obsolescence programmée critiquée car :",
+              "options": [
+                "Réduit durée vie volontairement",
+                "Augmente recyclabilité",
+                "Facilite réparation",
+                "Allonge garantie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gaspille ressources et argent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Design thinking met l'accent sur :",
+              "options": [
+                "Comprendre besoins utilisateurs",
+                "Ignorer contraintes",
+                "Supprimer prototypes",
+                "Refuser équipe pluridisciplinaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Empathie et tests guident solutions."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Modularité d'un objet :",
+              "options": [
+                "Permet remplacer une partie",
+                "Interdit démontage",
+                "Colle tout définitivement",
+                "Supprime pièces détachées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réparation et évolution facilitées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Capteur ajouté à ancien système :",
+              "options": [
+                "Peut le rendre plus intelligent",
+                "Le rend toujours inutilisable",
+                "Supprime alimentation",
+                "Interdit réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objets connectés collectent et agissent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Éco-conception vise :",
+              "options": [
+                "Réduire impact environnement global",
+                "Augmenter déchets",
+                "Interdire tri",
+                "Supprimer matériaux recyclés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix dès la phase idée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Test utilisateur en classe :",
+              "options": [
+                "Observe difficultés réelles d'usage",
+                "Remplace normes",
+                "Supprime mesures",
+                "Interdit retours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retours concrets pour ajuster prototype."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Amélioration continue en usine :",
+              "options": [
+                "Petits gains réguliers qualité et coût",
+                "Un seul changement puis stop",
+                "Ignore sécurité",
+                "Refuse mesures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Démarche type Kaizen en production."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse fonction-solution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lien fonction d'usage et solution technique :",
+              "options": [
+                "La solution matérialise l'usage",
+                "Les composants réalisent fonctions techniques",
+                "Le prix fixe la loi de gravité",
+                "La couleur remplace sécurité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Organisation interne sert le rôle pour l'utilisateur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Objet multi-fonctions risque :",
+              "options": [
+                "Complexité et coût accrus",
+                "Toujours simplicité maximale",
+                "Absence de pièces",
+                "Impossibilité de panne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de fonctions demandent plus de sous-systèmes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Nomenclature liste :",
+              "options": [
+                "Pièces et quantités pour fabriquer",
+                "Parfums disponibles",
+                "Films du mois",
+                "Scores sportifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bill of materials pour production."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Interface homme-machine :",
+              "options": [
+                "Zone où utilisateur commande l'objet",
+                "Intérieur du noyau terrestre",
+                "Fond océanique",
+                "Atmosphère de Mars"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boutons, écrans, poignées transmettent ordres."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Robustesse signifie :",
+              "options": [
+                "Tenir conditions d'usage prévues",
+                "Casser au premier choc léger",
+                "Fonctionner sans entretien jamais",
+                "Ignorer contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fiabilité dans la durée nominale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Compromis coût/qualité :",
+              "options": [
+                "Trop bas peut réduire durabilité",
+                "Toujours gratuit et parfait",
+                "Qualité sans lien prix",
+                "Prix fixe matériaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Budget oriente matériaux et contrôles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Objet technique vs objet naturel :",
+              "options": [
+                "Technique conçu par humains pour un besoin",
+                "Naturel fabriqué en usine",
+                "Identiques",
+                "Technique sans fonction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pierre n'a pas de cahier des charges."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Chaîne fonctionnelle du perceuse :",
+              "options": [
+                "Énergie → rotation → perçage matériau",
+                "Lumière → son → image seule",
+                "Eau → vent → nuage",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moteur entraîne mèche qui enlève matière."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Documentation technique aide :",
+              "options": [
+                "Fabriquer, utiliser, réparer",
+                "Supprimer sécurité",
+                "Interdire formation",
+                "Cacher pièces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plans et notices transmettent savoir."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bonne solution retenue quand :",
+              "options": [
+                "Critères du cahier des charges satisfaits",
+                "Aucun test réalisé",
+                "Contraintes ignorées",
+                "Usage impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Validation par essais et mesures."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Cycle de vie",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Étapes du cycle de vie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Grandes phases du cycle de vie d'un objet :",
+              "options": [
+                "Conception",
+                "Fabrication et utilisation",
+                "Couleur des rêves",
+                "Numéro de téléphone aléatoire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "De l'idée à la fin de vie, l'objet traverse plusieurs étapes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Première étape logique :",
+              "options": [
+                "Identifier besoin et idée",
+                "Recycler sans conception",
+                "Jeter prototype",
+                "Vendre sans test"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le projet part du besoin et du cahier des charges."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Phase utilisation :",
+              "options": [
+                "Utilisateur se sert de l'objet",
+                "Miner minerai seulement",
+                "Breveter sans produire",
+                "Dessiner sans fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fonction d'usage réalisée dans la durée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fin de vie peut inclure :",
+              "options": [
+                "Recyclage ou valorisation",
+                "Enterrement obligatoire seul",
+                "Lancement spatial systématique",
+                "Ignorer déchets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tri et traitements limitent impact."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Distribution place l'objet :",
+              "options": [
+                "Entre usine et utilisateur",
+                "Avant conception",
+                "Après recyclage seul",
+                "Sans transport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logistique vers magasins ou clients."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Maintenance pendant usage :",
+              "options": [
+                "Entretien pour prolonger service",
+                "Supprime garantie",
+                "Interdit pièces",
+                "Force casse immédiate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réparations et réglages conservent performance."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Analyse cycle de vie (ACV) étudie :",
+              "options": [
+                "Impacts environnement à chaque étape",
+                "Uniquement couleur",
+                "Scores football",
+                "Recettes sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie, émissions, ressources sur tout le parcours."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Prototype avant série :",
+              "options": [
+                "Valide avant production masse",
+                "Remplace toujours produit final vendu",
+                "Interdit modifications",
+                "Supprime tests"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduit risques industrialisation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Marketing après conception :",
+              "options": [
+                "Informe et vend au public",
+                "Fabrique pièces",
+                "Mine matières",
+                "Recycle métaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Communication commerciale distincte production."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cycle de vie fermé vise :",
+              "options": [
+                "Réintroduire matériaux en production",
+                "Jeter tout",
+                "Brûler sans filtre",
+                "Interdire réparation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Économie circulaire réduit extraction."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Extraction et matières premières",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Matières premières pour objets techniques :",
+              "options": [
+                "Minerais métalliques",
+                "Pétrole pour certains plastiques",
+                "Nuages décoratifs",
+                "Fictions sans matière"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Métaux et polymères viennent de ressources naturelles transformées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Minerai de fer sert à produire :",
+              "options": [
+                "Acier",
+                "Verre seul",
+                "Papier journal",
+                "Eau potable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fusion et alliage donnent aciers variés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bauxite liée à :",
+              "options": [
+                "Production aluminium",
+                "Coton textile",
+                "Sel de table",
+                "Bois construction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Minerai principal pour alumine puis aluminium."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Plastique souvent issu de :",
+              "options": [
+                "Pétrole raffiné",
+                "Pierre calcaire seule",
+                "Air pur",
+                "Sable sans traitement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monomères synthétiques polymérisés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sable siliceux pour :",
+              "options": [
+                "Verre et puces électroniques",
+                "Carburant voiture direct",
+                "Tissu laine",
+                "Lait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Silicium purifié pour verre et semi-conducteurs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Extraction minière impacte :",
+              "options": [
+                "Paysages et consommation énergie",
+                "Uniquement couleur ciel",
+                "Scores jeux",
+                "Recettes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ACV inclut cette phase amont."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Matière première renouvelable :",
+              "options": [
+                "Bois géré durablement",
+                "Pétrole illimité instantané",
+                "Minerai recréé en heure",
+                "Plastique fossile renouvelable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forêts replantées alimentent filières bois."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lithium pour batteries :",
+              "options": [
+                "Extrait de gisements ou saumures",
+                "Tombe du ciel pur",
+                "Issu du papier",
+                "Fabriqué sans éléments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ressource critique pour stockage énergie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réduire matière amont :",
+              "options": [
+                "Diminue impact extraction",
+                "Augmente toujours déchets",
+                "Interdit recyclage",
+                "Supprime transport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conception frugale dès l'origine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Transport matières premières :",
+              "options": [
+                "Consomme énergie et émet CO₂",
+                "Sans énergie",
+                "Impossible bateau",
+                "Interdit train"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logistique mondiale a un coût environnemental."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Fabrication industrielle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Procédés de fabrication courants :",
+              "options": [
+                "Usinage",
+                "Moulage plastique",
+                "Peinture nuages",
+                "Chant oiseaux"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Enlèvement matière et formage sous pression ou chaleur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Chaîne de montage :",
+              "options": [
+                "Assemble pièces en série",
+                "Plante arbres",
+                "Vend uniquement",
+                "Recycle seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organisation linéaire type Ford."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Contrôle qualité en usine :",
+              "options": [
+                "Vérifie conformité pièces",
+                "Ignore défauts",
+                "Supprime mesures",
+                "Interdit tests"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dimension, aspect et performance contrôlés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Robot industriel sert à :",
+              "options": [
+                "Répéter tâches précises",
+                "Remplacer toute sécurité",
+                "Cuisiner restaurant",
+                "Peindre nuages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soudure, peinture, pick and place."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Injection plastique :",
+              "options": [
+                "Fond plastique injecté dans moule",
+                "Coupe bois scie",
+                "Tisse coton",
+                "Forge sans chaleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grande série coques et pièces."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Déchet atelier peut :",
+              "options": [
+                "Être trié et revalorisé",
+                "Toujours brûlé sans filtre",
+                "Interdit recyclage",
+                "Jeté en mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chutes métal refondues, plastique broyé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Énergie usine souvent :",
+              "options": [
+                "Électricité et gaz",
+                "Uniquement vent humain",
+                "Aucune",
+                "Gravité seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Machines et fours consomment énergie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traceabilité lot :",
+              "options": [
+                "Suit origine pièces et date",
+                "Cache défauts",
+                "Supprime numéros",
+                "Interdit enregistrement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rappel produit possible si problème."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Fabrication additive (impression 3D) :",
+              "options": [
+                "Construit couche par couche",
+                "Enlève toujours métal masse",
+                "Interdit prototype",
+                "Supprime fichier numérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prototypage rapide et petites séries."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sous-traitant :",
+              "options": [
+                "Fabrique partie pour assembleur final",
+                "Utilise toujours objet",
+                "Recycle fin de vie seul",
+                "Conçoit sans production"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filière globale répartie."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Transport et distribution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Moyens transport marchandises :",
+              "options": [
+                "Camion",
+                "Bateau cargo",
+                "Télépathie produits",
+                "Téléportation générale"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Route et mer dominent logistique internationale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Emballage protège :",
+              "options": [
+                "Objet chocs et humidité",
+                "Augmente casse volontaire",
+                "Supprime étiquette",
+                "Interdit manutention"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Carton, mousse et calage sécurisent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Entrepôt logistique :",
+              "options": [
+                "Stocke avant livraison",
+                "Fabrique minerai",
+                "Mine charbon",
+                "Recycle seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Buffer entre production et points vente."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Transport train longue distance :",
+              "options": [
+                "Souvent moins CO₂ par tonne que camion seul",
+                "Toujours plus polluant sans exception",
+                "Impossible Europe",
+                "Sans énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Efficient sur grands volumes terrestres."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Étiquette colis indique :",
+              "options": [
+                "Destinataire et codes suivi",
+                "Recette cuisine",
+                "Score match",
+                "Poème aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traçabilité livraison."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Délai livraison client :",
+              "options": [
+                "Partie service attendu",
+                "Sans lien cycle vie",
+                "Interdit mesure",
+                "Toujours zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Satisfaction et stock dependance."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réduire emballage :",
+              "options": [
+                "Diminue déchets et volume transport",
+                "Augmente toujours casse",
+                "Interdit protection",
+                "Supprime étiquettes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éco-conception emballages."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Conteneur maritime standardise :",
+              "options": [
+                "Facilite chargement ports",
+                "Empêche tout transport",
+                "Remplace produit",
+                "Interdit train"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Module 20 ou 40 pieds universel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Distributeur vend :",
+              "options": [
+                "Met produit disponible consommateur",
+                "Extrait pétrole",
+                "Fond acier",
+                "Recycle usine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commerce détail ou grossiste."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Kilomètres parcourus produit :",
+              "options": [
+                "Comptent dans bilan carbone",
+                "Sans impact",
+                "Interdits ACV",
+                "Uniquement esthétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phase distribution dans ACV."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Utilisation et consommation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pendant utilisation consomme souvent :",
+              "options": [
+                "Énergie",
+                "Consommables",
+                "Couleur arc-en-ciel seule",
+                "Lois physiques inventées"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Électricité, carburant, cartouches, piles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mode veille appareil :",
+              "options": [
+                "Consomme moins qu'en marche pleine",
+                "Consomme toujours maximum",
+                "Coupe réseau mondial",
+                "Charge sans électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Standby réduit mais pas zéro."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Notice usage prolonge vie si :",
+              "options": [
+                "Utilisateur respecte entretien",
+                "Ignore nettoyage",
+                "Surchauffe volontaire",
+                "Ouvre sans précaution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bon usage limite usure."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Réparabilité index affiché :",
+              "options": [
+                "Informe facilité réparation",
+                "Interdit démontage",
+                "Supprime pièces",
+                "Augmente obsolescence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transparence pour consommateur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Seconde main prolonge :",
+              "options": [
+                "Phase utilisation totale",
+                "Extraction seule",
+                "Conception seule",
+                "Fin vie immédiate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réemploi retarde recyclage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Garantie légale couvre :",
+              "options": [
+                "Défaut conformité délai fixé",
+                "Tous dommages utilisateur",
+                "Perte vol",
+                "Envie changement couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection consommateur contractuelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Surconsommation énergie usage :",
+              "options": [
+                "Augmente facture et impact",
+                "Réduit CO₂",
+                "Sans lien climat",
+                "Interdit mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix modes éco et entretien filtres."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Location vs achat :",
+              "options": [
+                "Usage sans propriété durable",
+                "Identique recyclage",
+                "Interdit maintenance",
+                "Supprime fabricant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle économique différent même objet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mise à jour logicielle objet connecté :",
+              "options": [
+                "Peut corriger bugs usage",
+                "Force casse matérielle",
+                "Supprime alimentation",
+                "Interdit réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partie service prolonge fonctionnalité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Durée vie utile dépend :",
+              "options": [
+                "Qualité, usage et entretien",
+                "Uniquement couleur",
+                "Phase lune",
+                "Prénom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Facteurs combinés avant fin de vie."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Maintenance et réparation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Maintenance peut être :",
+              "options": [
+                "Préventive planifiée",
+                "Corrective après panne",
+                "Interdite toujours",
+                "Sans pièces détachées"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Anticiper ou réparer selon situation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Vidange moteur voiture :",
+              "options": [
+                "Entretien préventif",
+                "Recyclage fin vie",
+                "Conception CAO",
+                "Extraction minerai"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Huile propre protège mécanisme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pièce détachée d'origine :",
+              "options": [
+                "Assure compatibilité constructeur",
+                "Toujours incompatible",
+                "Interdit montage",
+                "Remplace garantie loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Référence catalogue fabricant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Réparation locale :",
+              "options": [
+                "Réduit transport et soutient économie",
+                "Augmente toujours déchets",
+                "Interdit emploi",
+                "Supprime savoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Artisans et repair cafés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Diagnostic panne :",
+              "options": [
+                "Identifie cause avant intervention",
+                "Remplace toujours tout",
+                "Ignore symptômes",
+                "Interdit outils"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesures et observation guident réparation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Garantie constructeur :",
+              "options": [
+                "Prise en charge défaut période définie",
+                "Couvre mauvaise usage systématique",
+                "Interdit SAV",
+                "Supprime notice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conditions contractuelles limitées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lubrification chaîne vélo :",
+              "options": [
+                "Réduit usure et bruit",
+                "Augmente rouille volontaire",
+                "Supprime mouvement",
+                "Interdit pédaler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entretien simple prolonge transmission."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Obsolescence logicielle :",
+              "options": [
+                "Arrêt mises à jour limite usage",
+                "Renforce toujours sécurité",
+                "Allonge vie matérielle seule",
+                "Sans lien cycle vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appareil encore physique mais fonction réduite."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Manuel réparation détaillé :",
+              "options": [
+                "Aide technicien démonter",
+                "Interdit vis",
+                "Supprime schémas",
+                "Cache références"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Documentation technique SAV."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Allonger maintenance c'est :",
+              "options": [
+                "Retarder fin de vie",
+                "Accélérer recyclage immédiat",
+                "Supprimer usage",
+                "Ignorer usure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Meilleure utilisation ressources."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Fin de vie et déchets",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Destins fin de vie possibles :",
+              "options": [
+                "Recyclage matière",
+                "Valorisation énergétique",
+                "Lancer dans espace systématique",
+                "Enterrer sans tri"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tri oriente filières matière ou incinération avec récupération."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "DEEE désigne :",
+              "options": [
+                "Déchets équipements électriques électroniques",
+                "Déchets alimentaires",
+                "Eau pluie",
+                "Feuilles mortes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Collecte séparée en déchetterie ou magasin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Metaux recyclés fondus :",
+              "options": [
+                "Servent nouvelles pièces",
+                "Disparaissent totalement",
+                "Devient toujours plastique",
+                "Interdit fonderie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boucle matière fer et aluminium."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mélange matériaux complexe :",
+              "options": [
+                "Complique recyclage",
+                "Facilite toujours tri",
+                "Sans effet",
+                "Supprime déchets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conception mono-matière aide fin vie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Poubelle jaune France souvent :",
+              "options": [
+                "Emballages recyclables",
+                "Verre cassé",
+                "Piles",
+                "Médicaments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consignes varient, emballages tri sélectif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Enfouissement dernier recours car :",
+              "options": [
+                "Occupe espace et peut polluer",
+                "Sans impact",
+                "Produit énergie propre",
+                "Recyclage parfait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiérarchie préfère réduire réutiliser recycler."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Batterie lithium ne va pas :",
+              "options": [
+                "Poubelle ordinaire ménagère",
+                "Point collecte adapté",
+                "Recycleur spécialisé",
+                "Borne magasin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Risque incendie et matières valorisables."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Éco-organisme producteur :",
+              "options": [
+                "Finance collecte fin de vie",
+                "Vend uniquement neuf",
+                "Mine charbon",
+                "Interdit tri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Responsabilité élargie producteur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Upcycling transforme :",
+              "options": [
+                "Déchet en objet valeur supérieure",
+                "Tout en cendres",
+                "Métal en eau",
+                "Plastique invisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Créativité réemploi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réduire déchets amont :",
+              "options": [
+                "Moins à traiter en fin vie",
+                "Augmente enfouissement",
+                "Interdit conception",
+                "Supprime usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévention prioritaire."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Impact environnemental",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Indicateurs ACV fréquents :",
+              "options": [
+                "Émissions gaz effet de serre",
+                "Consommation eau",
+                "Couleur préférée équipe",
+                "Numéro maillot"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bilan carbone et stress hydrique comptés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phase parfois dominante CO₂ smartphone :",
+              "options": [
+                "Fabrication amont",
+                "Uniquement emballage",
+                "Recyclage seul",
+                "Usage sans énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mines, composants, assemblage lourds."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Greenwashing c'est :",
+              "options": [
+                "Communication écologique trompeuse",
+                "Recyclage certifié",
+                "ACV transparente",
+                "Réparation encouragée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Allégations non prouvées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Énergie renouvelable usine :",
+              "options": [
+                "Réduit empreinte fabrication",
+                "Augmente charbon",
+                "Sans effet",
+                "Interdit production"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pan solaire ou contrat vert."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pollution plastique océans liée :",
+              "options": [
+                "Mauvaise gestion fin vie",
+                "Uniquement conception parfaite",
+                "Recyclage total mondial",
+                "Absence plastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fuite déchets vers milieux naturels."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Allonger durée vie objet :",
+              "options": [
+                "Amortit impact sur années",
+                "Augmente impact instantané seul",
+                "Sans lien ACV",
+                "Interdit mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impact annuel diminue si service prolongé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Étiquette énergie appareil :",
+              "options": [
+                "Compare consommation usage",
+                "Indique poids uniquement",
+                "Remplace garantie",
+                "Mesure bruit seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classes A à G en Europe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Biodiversité affectée par :",
+              "options": [
+                "Extraction ressources et pollution",
+                "Uniquement couleur produit",
+                "Notice papier",
+                "Boîte carton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Habitats et chimie perturbés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Compenser carbone :",
+              "options": [
+                "Finance projets réduction ailleurs",
+                "Supprime émissions localement",
+                "Remplace toujours réduction",
+                "Interdit transport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complément après efforts réduction."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choix matériau bas carbone :",
+              "options": [
+                "Diminue bilan fabrication",
+                "Augmente toujours pétrole",
+                "Sans données",
+                "Interdit ACV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bois local, aluminium recyclé, etc."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Économie circulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Principes économie circulaire :",
+              "options": [
+                "Réduire, réutiliser, recycler",
+                "Allonger la durée de vie des objets",
+                "Modèle linéaire extraire-jeter",
+                "Interdire toute réparation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Boucles matière et longue durée de service remplacent le jetable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Réemploi bouteille consignée :",
+              "options": [
+                "Lavée et remplie plusieurs fois",
+                "Fondue à chaque tour",
+                "Jetée systématique",
+                "Interdit verre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cycle court sans refabrication."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Écoconception intègre :",
+              "options": [
+                "Fin de vie dès conception",
+                "Uniquement marketing",
+                "Phase usage seule",
+                "Extraction oubliée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matériaux démontables et recyclables."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Location outil pro :",
+              "options": [
+                "Partage augmente taux utilisation",
+                "Chaque personne achète inutilisé",
+                "Supprime entretien",
+                "Interdit accès"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins d'objets dormants."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Filament imprimante 3D recyclé :",
+              "options": [
+                "Plastique broyé réextrudé",
+                "Métal pur sans fusion",
+                "Eau solidifiée",
+                "Air comprimé seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boucle matière additive."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Indice réparabilité élevé encourage :",
+              "options": [
+                "Circulation pièces et savoir",
+                "Mise décharge rapide",
+                "Collage permanent",
+                "Absence notice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objet reste en service."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Symbiose industrielle :",
+              "options": [
+                "Déchets d'un deviennent ressource autre",
+                "Tout brûlé",
+                "Sans échange",
+                "Interdit usines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écosystème local optimisé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Modèle linéaire :",
+              "options": [
+                "Extraire fabriquer jeter",
+                "Boucle fermée",
+                "Réparation systématique",
+                "Partage outils"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opposé circularité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bonus réparation état :",
+              "options": [
+                "Soutient réparateurs agréés",
+                "Interdit SAV",
+                "Augmente décharge",
+                "Supprime pièces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incitation financière entretien."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Citoyen tri correct :",
+              "options": [
+                "Facilite filières circulaires",
+                "Sans effet",
+                "Empêche recyclage",
+                "Augmente mélange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualité flux matière amont."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse cycle de vie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Agir sur cycle de vie peut signifier :",
+              "options": [
+                "Concevoir durable",
+                "Allonger usage et réparer",
+                "Jeter sans tri toujours",
+                "Ignorer ACV"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Amont et usage comptent autant que fin vie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phase souvent oubliée citoyen :",
+              "options": [
+                "Fin de vie et tri",
+                "Rêve uniquement",
+                "Conception seule usine",
+                "Extraction seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Collecte séparée responsabilité utilisateur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Producteur responsable élargie :",
+              "options": [
+                "Organise reprise fin vie",
+                "Ignore déchets",
+                "Vend sans notice",
+                "Interdit recyclage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "REP finance filières."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comparatif deux objets ACV :",
+              "options": [
+                "Montre impacts totaux par étape",
+                "Uniquement prix magasin",
+                "Couleur emballage",
+                "Publicité TV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aide choix éclairé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Allonger garantie commerciale :",
+              "options": [
+                "Encourage qualité durable",
+                "Réduit durée vie",
+                "Interdit SAV",
+                "Supprime pièces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Constructeur assume plus longtemps."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cycle vie objet connecté inclut :",
+              "options": [
+                "Mises à jour serveur",
+                "Uniquement plastique",
+                "Phase lunaire",
+                "Sans électronique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Service numérique partie durée utile."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réduire empreinte global :",
+              "options": [
+                "Agir plusieurs phases",
+                "Une étape seule suffit toujours",
+                "Ignorer usage",
+                "Refuser recyclage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approche systémique nécessaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Documenter cycle vie produit :",
+              "options": [
+                "Transparence consommateur",
+                "Secret industriel total",
+                "Interdit étiquette",
+                "Supprime ACV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passport produit émergent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Élève en technologie peut :",
+              "options": [
+                "Proposer amélioration éco-conception",
+                "Ignorer impacts",
+                "Interdire tri",
+                "Supprimer maintenance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Projets scolaires simulent choix durables."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif global cycle vie maîtrisé :",
+              "options": [
+                "Satisfaire besoin avec moindre impact",
+                "Maximiser déchets",
+                "Réduire durée vie",
+                "Interdire innovation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équilibre fonction, coût et environnement."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

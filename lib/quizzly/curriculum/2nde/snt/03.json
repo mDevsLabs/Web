@@ -1,0 +1,2733 @@
+{
+  "id": "2nde-snt-03",
+  "year": "2nde",
+  "subject": "snt",
+  "title": "Informatique embarquée et objets connectés",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Capteurs et actionneurs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce qu'un capteur ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent un capteur ?",
+              "options": [
+                "Il convertit une grandeur physique en signal",
+                "Il est toujours identique à un PC gamer",
+                "Il peut mesurer température ou lumière",
+                "Il affiche obligatoirement Windows 11"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le capteur est une entrée du système embarqué."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une thermistance mesure surtout :",
+              "options": [
+                "La température",
+                "Le son",
+                "La couleur",
+                "Un mot de passe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sa résistance varie avec la chaleur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un capteur ultrason estime :",
+              "options": [
+                "Une distance",
+                "Un parfum",
+                "Une adresse MAC",
+                "Un fichier PDF"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le temps de retour des ondes renseigne la distance."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un capteur analogique produit :",
+              "options": [
+                "Un signal continu (tension variable)",
+                "Uniquement du texte Unicode",
+                "Toujours du silence",
+                "Uniquement des images PNG"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La valeur varie progressivement avant numérisation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une photorésistance (LDR) réagit à :",
+              "options": [
+                "La luminosité",
+                "La pression du clavier",
+                "La vitesse du ventilateur PC",
+                "Le nombre de followers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de lumière modifie sa résistance."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lire un capteur numérique se fait via :",
+              "options": [
+                "Une entrée GPIO du microcontrôleur",
+                "Un graveur DVD",
+                "Une imprimante 3D",
+                "Un écran CRT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On lit typiquement 0 ou 1 sur une broche."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un accéléromètre dans un téléphone sert à :",
+              "options": [
+                "Détecter mouvements et orientation",
+                "Chiffrer le réseau mobile",
+                "Stocker des photos RAW",
+                "Payer sans contact seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rotation d'écran, podomètre, jeux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calibrer un capteur consiste à :",
+              "options": [
+                "Ajuster pour des mesures fiables",
+                "Supprimer le firmware",
+                "Couper Internet",
+                "Formater le disque dur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparaison avec une référence connue."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un capteur d'humidité mesure :",
+              "options": [
+                "La vapeur d'eau dans l'air",
+                "La taille de l'écran",
+                "Le débit fibre",
+                "Le nombre de cœurs CPU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utilisé en domotique et agriculture connectée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans capteur, un objet embarqué ne peut pas :",
+              "options": [
+                "Percevoir son environnement",
+                "Avoir un boîtier",
+                "Avoir une marque",
+                "Avoir des vis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les capteurs sont les « sens » du système."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les actionneurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments sont des actionneurs ?",
+              "options": [
+                "Un moteur qui entraîne une roue",
+                "Un capteur de pluie",
+                "Une LED qui s'allume",
+                "Un thermomètre passif"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'actionneur agit sur le monde physique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un servomoteur sert souvent à :",
+              "options": [
+                "Positionner une pièce mécanique",
+                "Mesurer le CO₂",
+                "Capturer un son ambiant",
+                "Lire une carte SD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrôle angulaire précis."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une électrovanne contrôle :",
+              "options": [
+                "Le passage d'un fluide",
+                "La couleur du boîtier",
+                "La vitesse de la lumière",
+                "Le nombre de pixels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ouverture/fermeture d'un circuit fluide."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans capteur → traitement → actionneur, le rôle final est :",
+              "options": [
+                "Exécuter l'action",
+                "Mesurer la température",
+                "Stocker des vidéos 4K",
+                "Remplacer Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sortie physique du système."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un buzzer piezo est un actionneur :",
+              "options": ["Sonore", "Olfactif", "Gustatif", "Magnétique seul"],
+              "correctAnswers": [0],
+              "explanation": "Produit un bip ou une alarme."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Piloter un moteur demande souvent :",
+              "options": [
+                "Un driver de puissance",
+                "Uniquement un capteur GPS",
+                "Aucun composant",
+                "Un clavier mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le MCU ne fournit pas assez de courant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le PWM permet de :",
+              "options": [
+                "Moduler vitesse moteur ou luminosité LED",
+                "Mesurer une distance",
+                "Compresser une vidéo",
+                "Chiffrer un email"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modulation de largeur d'impulsion."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un relais sert à :",
+              "options": [
+                "Commander un circuit de forte puissance",
+                "Lire une température",
+                "Naviguer sur le Web",
+                "Scanner un QR code sans électronique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commutateur isolé du microcontrôleur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un actionneur se distingue d'un capteur car il :",
+              "options": [
+                "Agit au lieu de mesurer",
+                "Est toujours plus petit",
+                "Ne consomme jamais d'énergie",
+                "N'a pas de fil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capteur = entrée ; actionneur = sortie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Capteur de présence + lampe : l'actionneur est :",
+              "options": [
+                "La lampe",
+                "Le capteur",
+                "Le cloud uniquement",
+                "Le câble Ethernet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lampe produit l'éclairage."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Microcontrôleur et Arduino",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un microcontrôleur embarqué possède :",
+              "options": [
+                "Un CPU et des entrées/sorties",
+                "Un programme stocké en mémoire",
+                "Toujours un disque dur mécanique",
+                "Uniquement un écran 4K"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Carte type Arduino/ESP : MCU programmable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La boucle setup() puis loop() signifie :",
+              "options": [
+                "Initialisation puis répétition",
+                "Un seul passage puis arrêt",
+                "Code uniquement en Python web",
+                "Aucun accès aux broches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle classique des sketches Arduino."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une broche analogique IN sert à :",
+              "options": [
+                "Lire une tension variable",
+                "Envoyer uniquement des emails",
+                "Recharger un PC portable",
+                "Installer un OS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convertisseur analogique-numérique interne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le firmware d'un objet connecté est :",
+              "options": [
+                "Le logiciel embarqué",
+                "Un site web",
+                "Une application mobile seule",
+                "Un câble USB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Programme exécuté sur le MCU."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Alimenter une carte en 5 V :",
+              "options": [
+                "Fournit l'énergie au circuit",
+                "Mesure automatiquement la pluie",
+                "Remplace le programme",
+                "Connecte au cloud sans radio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans alimentation, pas de fonctionnement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un shield Arduino est :",
+              "options": [
+                "Une carte d'extension empilée",
+                "Un antivirus",
+                "Un capteur de vent seul",
+                "Un réseau social"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Module prêt à l'emploi (moteur, Ethernet…)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La liaison série USB sert surtout à :",
+              "options": [
+                "Programmer et déboguer",
+                "Imprimer des photos",
+                "Diffuser de la musique seule",
+                "Remplacer le Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Téléversement et moniteur série."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Serial.println() aide à :",
+              "options": [
+                "Afficher des valeurs de debug",
+                "Couper l'alimentation",
+                "Chiffrer WPA3",
+                "Formater une SD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suivre capteurs en développement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un ESP32 intègre souvent :",
+              "options": [
+                "Wi-Fi et Bluetooth",
+                "Un tube cathodique",
+                "Un disque dur 8 To",
+                "Une tour PC complète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "MCU + radio pour l'IoT."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Téléverser un sketch consiste à :",
+              "options": [
+                "Flasher le programme dans le MCU",
+                "Peindre le boîtier",
+                "Effacer Internet",
+                "Formater un smartphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écriture en mémoire flash."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Chaînes d'information et d'énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La chaîne d'information comprend :",
+              "options": [
+                "Acquérir avec un capteur",
+                "Traiter l'information",
+                "Uniquement peindre le boîtier",
+                "Ignorer toute mesure"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mesure puis traitement numérique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La chaîne d'énergie comprend :",
+              "options": [
+                "Alimenter et convertir l'énergie",
+                "Transmettre la puissance à l'actionneur",
+                "Envoyer des emails",
+                "Compiler du JavaScript web"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De la source jusqu'à l'effet mécanique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une batterie dans un drone alimente :",
+              "options": [
+                "La chaîne d'énergie",
+                "Uniquement le GPS logiciel",
+                "Le cloud Amazon",
+                "Un tableur Excel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Source mobile d'énergie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un convertisseur DC-DC :",
+              "options": [
+                "Adapte le niveau de tension",
+                "Mesure la couleur",
+                "Joue de la musique seul",
+                "Scanne des documents papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Étape de conversion."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Capteur → calcul → PWM moteur illustre :",
+              "options": [
+                "Information puis énergie",
+                "Uniquement marketing",
+                "Absence de traitement",
+                "Seulement du papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boucle de régulation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réduire la fréquence d'envoi radio :",
+              "options": [
+                "Économise la batterie",
+                "Augmente toujours le trafic",
+                "Désactive les capteurs utiles",
+                "Remplace le RGPD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autonomie des objets sur pile."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Filtrer une mesure bruitée relève de :",
+              "options": [
+                "Le traitement de l'information",
+                "La peinture du boîtier",
+                "La publicité",
+                "Le clavier AZERTY"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moyenne, seuil, lissage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Transmettre la puissance aux roues relève de :",
+              "options": [
+                "La chaîne d'énergie",
+                "La chaîne d'information seule",
+                "Le RGPD seul",
+                "Un tableur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Action mécanique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un panneau solaire + capteur luminosité :",
+              "options": [
+                "Lie énergie et information",
+                "Empêche toute mesure",
+                "Remplace le microcontrôleur",
+                "Supprime le réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Production et pilotage possibles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En 2nde, modéliser chaînes info/énergie sert à :",
+              "options": [
+                "Analyser un système embarqué",
+                "Ignorer capteurs et moteurs",
+                "Remplacer la physique",
+                "Supprimer les données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil d'analyse technique."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Objets connectés (IoT)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un objet connecté (IoT) combine :",
+              "options": [
+                "Capteurs ou actionneurs",
+                "Liaison réseau",
+                "Uniquement un cahier papier",
+                "Jamais de microcontrôleur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mesure, décide, échange des données."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Exemple domestique d'IoT :",
+              "options": [
+                "Thermostat intelligent",
+                "Règle en bois",
+                "Cahier ligné",
+                "Stylo bille seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesure, communique avec une appli."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le cloud IoT sert à :",
+              "options": [
+                "Stocker ou traiter des données distantes",
+                "Remplacer tous les capteurs",
+                "Couper l'électricité",
+                "Imprimer des tickets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Serveurs accessibles via Internet."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une passerelle domotique :",
+              "options": [
+                "Relie objets locaux et Internet",
+                "Est un capteur de pluie",
+                "Ne communique jamais",
+                "Remplace la CNIL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hub entre protocoles maison et cloud."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "MQTT est un protocole :",
+              "options": [
+                "Léger pour capteurs",
+                "Réservé aux emails",
+                "Identique au HTML",
+                "Pour imprimantes papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Publish/subscribe adapté à faible débit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une mise à jour OTA :",
+              "options": [
+                "Met à jour le firmware sans fil",
+                "Peint l'objet",
+                "Change le fournisseur d'électricité",
+                "Supprime les données utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Over-The-Air."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'edge computing consiste à :",
+              "options": [
+                "Traiter près de la source",
+                "Tout envoyer sans filtrer",
+                "Désactiver les capteurs",
+                "Interdire stockage local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduit latence et trafic."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'interopérabilité des objets :",
+              "options": [
+                "Permet des appareils de marques différentes de coopérer",
+                "Interdit toute norme",
+                "Un seul fabricant obligatoire",
+                "Sans protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wi-Fi, Zigbee, Matter…"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sans Internet, un objet connecté peut :",
+              "options": [
+                "Fonctionner en local (mode dégradé)",
+                "Rien faire jamais",
+                "Envoyer des données sur Mars",
+                "Remplacer un médecin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Services cloud vs fonctions locales."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Identifiant réseau d'un objet :",
+              "options": [
+                "Adresse IP ou identifiant cloud",
+                "Couleur du plastique",
+                "Prénom de l'utilisateur",
+                "Taille de l'écran du PC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adressage pour échanger messages."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Protocoles sans fil",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En IoT, on utilise souvent :",
+              "options": [
+                "Wi-Fi pour le réseau local",
+                "Bluetooth pour proximité",
+                "HDMI pour relier capteurs DHT",
+                "Les capteurs n'utilisent jamais de radio"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Liaisons sans fil courantes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bluetooth Low Energy vise :",
+              "options": [
+                "Faible consommation",
+                "Streaming 8K permanent",
+                "Remplacer la fibre",
+                "Alimenter un moteur industriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Montres, balises, capteurs sur pile."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une adresse MAC identifie :",
+              "options": [
+                "Une interface réseau",
+                "Une température",
+                "Un mot de passe Wi-Fi",
+                "Une formule Excel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identifiant matériel de la puce radio."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Zigbee est souvent utilisé en :",
+              "options": [
+                "Domotique maillée",
+                "Montage vidéo 4K",
+                "Impression 3D seule",
+                "Navigation web"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseau faible débit, capteurs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La latence réseau est :",
+              "options": [
+                "Le délai entre envoi et réception",
+                "La couleur du câble",
+                "La taille du boîtier",
+                "Le nombre de vis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Important pour alarmes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "WPA2/WPA3 sur Wi-Fi :",
+              "options": [
+                "Chiffrent les données radio",
+                "Augmentent la température CPU",
+                "Remplacent le mot de passe cloud",
+                "Désactivent les capteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité de la liaison locale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "IPv4 sert à :",
+              "options": [
+                "Adresser des appareils sur Internet",
+                "Mesurer la pression",
+                "Piloter un servomoteur seul",
+                "Styliser une page CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. 192.168.1.x en local."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un port logique (ex. 1883) :",
+              "options": [
+                "Distingue un service (MQTT)",
+                "Mesure l'humidité",
+                "Colore une LED",
+                "Remplace un capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Numéro d'application réseau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un LAN relie :",
+              "options": [
+                "Appareils d'un même lieu",
+                "Toute la planète obligatoirement",
+                "Uniquement des capteurs analogiques",
+                "Rien en SNT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Box, smartphone, objets."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Perte de paquets peut :",
+              "options": [
+                "Faire manquer des mesures",
+                "Améliorer toujours la précision",
+                "Recharger une batterie",
+                "Calibrer un capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualité de lien à surveiller."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Données des capteurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Des données capteurs peuvent être :",
+              "options": [
+                "Des séries temporelles",
+                "Des coordonnées GPS",
+                "Uniquement du papier",
+                "Toujours sans horodatage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Valeurs datées, parfois géolocalisées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Horodater une mesure sert à :",
+              "options": [
+                "La situer dans le temps",
+                "Changer la couleur du boîtier",
+                "Supprimer le RGPD",
+                "Augmenter le voltage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Graphes et alertes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "JSON est utilisé car :",
+              "options": [
+                "Format texte structuré léger",
+                "Illisible par les machines",
+                "Remplace l'électricité",
+                "Interdit sur Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clé/valeur pour API IoT."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le bruit de mesure :",
+              "options": [
+                "Perturbe la valeur réelle",
+                "Est toujours silencieux",
+                "Est un mot de passe",
+                "Est une marque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtrage ou moyenne possible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Agréger (moyenne, min, max) sert à :",
+              "options": [
+                "Résumer un flux",
+                "Détruire le capteur",
+                "Couper le réseau",
+                "Peindre l'objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduit le volume de données."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une donnée IoT peut être personnelle si :",
+              "options": [
+                "Elle permet de suivre une personne",
+                "Elle n'existe jamais",
+                "Elle est toujours anonyme sans effort",
+                "Elle remplace le code"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Localisation, santé, habits."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Capteur défectueux →",
+              "options": [
+                "Valeurs aberrantes possibles",
+                "Mesures toujours parfaites",
+                "Plus d'énergie solaire",
+                "Réseau plus rapide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Détection d'anomalies."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Journaliser sur carte SD :",
+              "options": [
+                "Fonctionne si Internet coupe",
+                "Empêche toute mesure",
+                "Remplace le capteur",
+                "Supprime la pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stockage local."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Courbes et graphiques aident à :",
+              "options": [
+                "Visualiser l'évolution",
+                "Ignorer les capteurs",
+                "Formater un disque",
+                "Changer la langue OS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interface ou appli mobile."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Métadonnées d'une mesure :",
+              "options": [
+                "Unité (°C) et id capteur",
+                "Couleur préférée",
+                "Pseudo TikTok",
+                "Pointure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte d'interprétation."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Cybersécurité des objets",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Risques sur objets connectés :",
+              "options": [
+                "Firmware piratable",
+                "Port de debug physique exposé",
+                "Couleur du logo",
+                "Nombre de likes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Attaques logicielles et physiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mot de passe par défaut sur caméra :",
+              "options": [
+                "Facilite le piratage",
+                "Améliore la confidentialité",
+                "Chiffre tout automatiquement",
+                "Est toujours illégal sans exception"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À changer à l'installation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Port UART de debug :",
+              "options": [
+                "Peut compromettre l'appareil",
+                "Mesure le vent seul",
+                "Remplace le cloud",
+                "Est un GPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protéger en production."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mise à jour firmware :",
+              "options": [
+                "Corrige des failles",
+                "Change toujours la météo",
+                "Remplace le RGPD",
+                "Supprime les capteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maintenance embarquée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Isoler objets IoT sur un VLAN :",
+              "options": [
+                "Limite propagation d'attaque",
+                "Ouvre tous les ports",
+                "Supprime le Wi-Fi",
+                "Remplace les capteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Segmentation réseau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un botnet IoT :",
+              "options": [
+                "Appareils compromis coordonnés",
+                "Jardin connecté légal",
+                "Type de capteur",
+                "Norme Bluetooth"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mirai et autres exemples."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "HTTPS/TLS vers le cloud :",
+              "options": [
+                "Protège données en transit",
+                "Remplace mot de passe faible",
+                "Désactive capteurs",
+                "Formate SD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chiffrement applicatif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Désactiver services inutiles :",
+              "options": [
+                "Réduit surface d'attaque",
+                "Augmente failles",
+                "Empêche mesure",
+                "Efface JSON"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moindre privilège."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Objet médical piraté :",
+              "options": [
+                "Peut mettre en danger la santé",
+                "Sans conséquence",
+                "Améliore toujours soins",
+                "Hors cybersécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjeu critique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bonne pratique utilisateur :",
+              "options": [
+                "Mises à jour et mots de passe forts",
+                "Laisser défauts usine",
+                "Publier IP sur réseaux sociaux",
+                "Désactiver chiffrement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hygiène numérique."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Ville et maison connectées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une smart city peut mesurer :",
+              "options": [
+                "Qualité de l'air",
+                "Trafic routier",
+                "Remplacer les élections",
+                "Interdire toute technologie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Capteurs urbains variés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Compteur Linky transmet :",
+              "options": [
+                "Consommation électrique",
+                "Température corporelle",
+                "Notes de classe",
+                "Films Netflix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objet connecté énergétique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Parking connecté informe sur :",
+              "options": [
+                "Places disponibles",
+                "Couleur des voitures",
+                "Parfum des rues",
+                "Cours de bitcoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capteurs ou caméras."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Agriculture de précision :",
+              "options": [
+                "Capteurs sol pour irriguer",
+                "Tracteur sans mesure",
+                "Interdit données",
+                "Remplace paysans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Optimisation eau/engrais."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Alarme connectée :",
+              "options": [
+                "Capteurs + sirène + notification",
+                "Uniquement publicité",
+                "Rien n'est envoyé",
+                "Devoirs de maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne complète."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Montre connectée mesure souvent :",
+              "options": [
+                "Fréquence cardiaque ou pas",
+                "Contenu du frigo",
+                "Code du cloud",
+                "Trafic mondial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capteurs biométriques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Capteur sonore urbain sert à :",
+              "options": [
+                "Cartographier bruit",
+                "Jouer Spotify",
+                "Couper Internet",
+                "Peser bâtiments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique environnementale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Open data municipal :",
+              "options": [
+                "Données publiques réutilisables",
+                "Publie mots de passe",
+                "Remplace RGPD",
+                "Supprime capteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec anonymisation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Assistant vocal :",
+              "options": [
+                "Micro + traitement cloud",
+                "Sans micro",
+                "Uniquement actionneurs",
+                "Ne stocke rien jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne audio → langage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avant d'acheter un objet connecté :",
+              "options": [
+                "Vérifier usage des données",
+                "Ignorer notice",
+                "Partager identifiants",
+                "Désactiver mises à jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vie privée et sécurité."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse capteurs et actionneurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Système embarqué complet :",
+              "options": [
+                "Capteurs + traitement + actionneurs",
+                "Programme embarqué",
+                "Affiche sans électronique",
+                "Sans énergie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Boucle perception-décision-action."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Capteur numérique renvoie :",
+              "options": [
+                "Valeurs discrètes",
+                "Toujours tension analogique seule",
+                "Uniquement papier",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "0/1 ou bus numérique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un actionneur transforme :",
+              "options": [
+                "Signal électrique en action",
+                "Action en Wi-Fi seul",
+                "Données en cookies",
+                "Texte en image"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sortie physique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "IoT = embarqué + :",
+              "options": ["Réseau", "Uniquement HDMI", "Rien", "Papier"],
+              "correctAnswers": [0],
+              "explanation": "Connectivité et services."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Données capteurs servent à :",
+              "options": [
+                "Décisions et alertes",
+                "Uniquement affiches pub",
+                "Rien",
+                "Prix du pétrole seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Services intelligents."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Autonomie batterie dépend de :",
+              "options": [
+                "Fréquence mesures et radio",
+                "Couleur plastique",
+                "Police Arial",
+                "Marque IDE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Optimisation énergétique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Prototyper avec Arduino :",
+              "options": [
+                "Teste capteurs/actionneurs",
+                "Remplace réflexion",
+                "Supprime sécurité",
+                "Interdit réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apprentissage main basse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Normes et protocoles :",
+              "options": [
+                "Font dialoguer appareils",
+                "Peignent boîtiers",
+                "Effacent données",
+                "Interdisent capteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interopérabilité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Message clé unité 1 :",
+              "options": [
+                "Entrées, sorties, IoT",
+                "Ignorer énergie",
+                "Oublier données",
+                "Marketing seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Embarqué 2nde SNT."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Unité 2 abordera :",
+              "options": [
+                "Impacts sociaux des objets connectés",
+                "Uniquement câblage",
+                "Vis et boulons",
+                "Rien sur société"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Technique et société."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Impacts sociaux",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Vie privée et surveillance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Objets connectés et vie privée :",
+              "options": [
+                "Peuvent tracer des habitudes",
+                "Peuvent collecter données personnelles",
+                "Ne laissent jamais de traces",
+                "Rend impossible toute réflexion"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Audio, vidéo, localisation…"
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Caméra connectée mal sécurisée :",
+              "options": [
+                "Risque d'intrusion visuelle",
+                "Sans danger",
+                "Interdite",
+                "Ne filme jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux à protéger."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Géolocalisation d'un bracelet :",
+              "options": [
+                "Révèle déplacements",
+                "Mesure vent",
+                "Remplace RGPD",
+                "Toujours publique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Donnée sensible."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Consentement éclairé :",
+              "options": [
+                "Comprendre ce qui est collecté",
+                "Signer sans lire",
+                "Tout accepter par défaut",
+                "Ignorer notice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transparence."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Micro d'assistant vocal :",
+              "options": [
+                "Peut enregistrer voix",
+                "Impossible d'écouter",
+                "Remplace médecin",
+                "Jamais cloud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lire politique confidentialité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pseudonymisation :",
+              "options": [
+                "Réduit lien direct à personne",
+                "Publie adresse exacte",
+                "Supprime utilité",
+                "Remplace chiffrement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection technique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Surveillance de masse non encadrée :",
+              "options": [
+                "Menace libertés",
+                "Améliore toujours démocratie",
+                "Sans effet",
+                "Interdit d'en parler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat démocratique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Droit à l'effacement (RGPD) :",
+              "options": [
+                "Demander suppression sous conditions",
+                "Effacer lois",
+                "Publier mots de passe",
+                "Interdire capteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Droit européen."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Publier intérieur sur réseaux :",
+              "options": [
+                "Expose vie privée",
+                "Sans conséquence",
+                "Obligatoire",
+                "Remplace paramètres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réflexion visibilité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Paramètres confidentialité appli :",
+              "options": [
+                "À vérifier régulièrement",
+                "Inutiles",
+                "Réservés entreprises",
+                "Identiques partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrôle utilisateur."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "RGPD et données personnelles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le RGPD protège :",
+              "options": [
+                "Données personnelles dans l'UE",
+                "Droits des personnes",
+                "Uniquement papier",
+                "Rien sur Internet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Règlement européen."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Donnée personnelle :",
+              "options": [
+                "Identifie ou rend identifiable",
+                "Toujours anonyme",
+                "Uniquement prénom",
+                "Interdite partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom, IP, localisation…"
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Responsable de traitement :",
+              "options": [
+                "Décide finalités et moyens",
+                "Toujours l'utilisateur seul",
+                "Capteur DHT11",
+                "Câble USB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entité légale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Finalité d'un traitement :",
+              "options": [
+                "But déclaré (ex. facturation)",
+                "Secret illimité",
+                "Vente sans limite",
+                "Ignorer personnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limitation usages."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Durée de conservation :",
+              "options": [
+                "Limitée et justifiée",
+                "Infinie toujours",
+                "Une seconde obligatoire",
+                "Sans règle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Minimisation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Droit d'accès :",
+              "options": [
+                "Obtenir copie de ses données",
+                "Pirater serveur",
+                "Supprimer loi",
+                "Interdire IoT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transparence."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Fuite de données :",
+              "options": [
+                "Signalement aux autorités",
+                "À cacher",
+                "Sans conséquence",
+                "Souhaitable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CNIL en France."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mineurs et données :",
+              "options": [
+                "Protection renforcée",
+                "Aucune règle",
+                "Liberté totale",
+                "Interdit d'étudier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consentement parental selon cas."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Anonymisation IoT :",
+              "options": [
+                "Difficile si données fines",
+                "Trivial avec IP seule",
+                "Impossible",
+                "Automatique sans risque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recoupements possibles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "CNIL :",
+              "options": [
+                "Autorité française protection données",
+                "Fabricant Arduino",
+                "Fournisseur Wi-Fi",
+                "Réseau social"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrôle et sanctions."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Environnement et obsolescence",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "IoT et environnement :",
+              "options": [
+                "Consomme ressources (métaux, énergie)",
+                "Peut optimiser eau/énergie",
+                "Sans impact",
+                "Remplace écologie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Coûts et bénéfices."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Obsolescence programmée :",
+              "options": [
+                "Durée de vie limitée volontairement",
+                "Toujours illégale partout",
+                "Améliore recyclage seul",
+                "N'existe pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat consommation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "DEEE :",
+              "options": [
+                "Déchets d'équipements électriques",
+                "Capteur",
+                "Protocole Wi-Fi",
+                "Python"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recycler en filière agréée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Piles de capteurs :",
+              "options": [
+                "Pollution si mal jetées",
+                "Comestibles",
+                "Sans métaux",
+                "Illimitées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Points collecte."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Datacenters cloud :",
+              "options": [
+                "Consomment électricité",
+                "Sans consommation",
+                "Remplacent renouvelables",
+                "Gratuits écologiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Empreinte numérique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Capteurs présence pour éclairage :",
+              "options": [
+                "Réduisent gaspillage",
+                "Augmentent toujours conso",
+                "Interdits",
+                "Sans mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple éco-conception."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Faible réparabilité :",
+              "options": [
+                "Jet plus rapide",
+                "Toujours meilleure",
+                "Score réparabilité France",
+                "Sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indice affiché."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Extractivisme numérique :",
+              "options": [
+                "Mines pour composants",
+                "Jardinage",
+                "Sport",
+                "Poésie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coltan, lithium…"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Allonger vie objet :",
+              "options": [
+                "Mises à jour et réparation",
+                "Jeter à première panne",
+                "Doublon systématique",
+                "Ignorer firmware"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Citoyenneté."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Éco-responsabilité numérique :",
+              "options": [
+                "Limiter achats inutiles",
+                "Acheter sans réfléchir",
+                "Multiplier serveurs",
+                "Supprimer tri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix individuel/collectif."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Fracture numérique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Fracture numérique :",
+              "options": [
+                "Inégal accès technologies",
+                "Compétences inégales",
+                "Égalité parfaite",
+                "Uniquement seniors"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Accès, usage, culture."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sans Internet fiable :",
+              "options": [
+                "Services cloud limités",
+                "IoT local parfois possible",
+                "Identique partout",
+                "Meilleur débit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zones rurales."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Prix objets connectés :",
+              "options": [
+                "Exclut parfois ménages modestes",
+                "Toujours gratuit",
+                "Fixé par capteurs",
+                "Sans lien social"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matériel + abonnement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Illettrisme numérique :",
+              "options": [
+                "Difficulté utiliser services",
+                "Diplôme",
+                "Type Wi-Fi",
+                "Capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formation nécessaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Smart city inclusive :",
+              "options": [
+                "Services pour tous",
+                "Quartiers riches seuls",
+                "Sans transport",
+                "Ignore handicap"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Design universel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Langue des interfaces :",
+              "options": [
+                "Barrière si non traduite",
+                "Toujours française",
+                "Sans importance",
+                "Remplace loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inclusion."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Forfait mobile cher :",
+              "options": [
+                "Limite applis IoT",
+                "Gratuit toujours",
+                "Remplace capteurs",
+                "Illimité ado"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coût familles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Seniors et objets santé :",
+              "options": [
+                "Besoin accompagnement",
+                "Toujours autonomes",
+                "Interdits",
+                "Sans éthique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Humain au centre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Cours SNT :",
+              "options": [
+                "Réduit écart culture numérique",
+                "Remplace équité seule",
+                "Inutile",
+                "Elite seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Citoyenneté."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Politique publique :",
+              "options": [
+                "Peut financer accès",
+                "Ignore territoires",
+                "Interdit Wi-Fi",
+                "Supprime école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aménagement."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Travail et automatisation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Automatisation avec capteurs :",
+              "options": [
+                "Transforme emplois",
+                "Crée aussi nouveaux métiers",
+                "Sans effet",
+                "Interdit syndicats"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mutation travail."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Entrepôt robotisé :",
+              "options": [
+                "Capteurs guident robots",
+                "Sans mesure",
+                "100 % sans humains toujours",
+                "An 1800"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logistique 4.0."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Télétravail surveillé :",
+              "options": [
+                "Logiciels mesurent activité",
+                "Impossible",
+                "Toujours illégal",
+                "Sans débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éthique employeur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Maintenance prédictive :",
+              "options": [
+                "Capteurs anticipent pannes",
+                "Devine sans données",
+                "Interdit usines",
+                "Remplace formation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Industrie connectée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Cadence imposée par capteurs :",
+              "options": [
+                "Peut stresser ouvriers",
+                "Toujours améliore",
+                "Hors SNT",
+                "Identique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conditions travail."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Formation continue :",
+              "options": [
+                "S'adapter outils connectés",
+                "Inutile",
+                "Remplace lycée",
+                "Interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétences évolutives."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Plateformes type VTC/livraison :",
+              "options": [
+                "Algorithmes affectent revenus",
+                "Sans techno",
+                "Anonymes",
+                "Remplacent code travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gig economy."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Syndicats et capteurs :",
+              "options": [
+                "Négocient usages",
+                "Interdits",
+                "Sans lien",
+                "Remplacent RGPD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dialogue social."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Arrêt d'urgence machine :",
+              "options": [
+                "Capteur sécurité ouvrier",
+                "Accélère",
+                "Désactive protection",
+                "Sans capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévention accidents."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qui profite automatisation :",
+              "options": [
+                "Choix société et politique",
+                "Purement technique",
+                "Fixé par capteur",
+                "Sans démocratie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjeu collectif."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Santé connectée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Santé connectée :",
+              "options": [
+                "Objets mesurent signes vitaux",
+                "Complète parfois suivi médical",
+                "Remplace toujours médecin",
+                "Sans régulation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Indications ≠ diagnostic officiel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Montre cardio :",
+              "options": [
+                "Donnée indicative",
+                "Certificat médical",
+                "Sans erreur",
+                "Imposée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consulter si doute."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Fuite données santé :",
+              "options": [
+                "Grave pour vie privée",
+                "Sans conséquence",
+                "Souhaitable",
+                "Toujours anonyme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Données sensibles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Télémédecine :",
+              "options": [
+                "Consultation à distance",
+                "Remplace urgences vitales",
+                "Sans Internet",
+                "1900"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complément soins."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Biais algorithme santé :",
+              "options": [
+                "Peut discriminer groupes",
+                "Parfait",
+                "Sans données",
+                "Capteur DHT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jeux d'entraînement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pacemaker connecté :",
+              "options": [
+                "Bénéfice + cybersécurité",
+                "Jouet",
+                "Sans risque hack",
+                "Mesure vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjeu vital."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "App bien-être :",
+              "options": [
+                "Peut monétiser données",
+                "Toujours gratuite sans business",
+                "Remplace CNIL",
+                "Sans politique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lire conditions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Capteur chute senior :",
+              "options": [
+                "Alerte aidants",
+                "Enferme sans consentement",
+                "Toujours malveillant",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autonomie vs sécurité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dispositif médical certifié :",
+              "options": [
+                "Contrôle qualité",
+                "Inutile",
+                "Jeu vidéo",
+                "Ultrason seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marquage CE médical."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ado et apps santé :",
+              "options": [
+                "Esprit critique",
+                "Croire tout",
+                "Publier données",
+                "Ignorer adultes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éducation."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Mobilité connectée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Voiture connectée peut :",
+              "options": [
+                "Collecter position et conduite",
+                "Utiliser capteurs embarqués",
+                "Uniquement couleur carrosserie",
+                "Aucune donnée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Boîte noire, GPS."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Assurance pay-as-you-drive :",
+              "options": [
+                "Tarif selon capteurs",
+                "Sans mesure",
+                "Interdite",
+                "Fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle économique data."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Autopilot partiel :",
+              "options": [
+                "Conducteur responsable",
+                "Dormir au volant légal",
+                "Sans capteurs",
+                "Niveau 5 partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveaux SAE."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pirater freins connectés :",
+              "options": [
+                "Risque sécurité",
+                "Blague",
+                "Impossible",
+                "Améliore freinage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cybersécurité auto."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Vélo GPS :",
+              "options": [
+                "Trace en cas vol",
+                "Vole vélo",
+                "Sans vie privée",
+                "Remplace antivol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avantages/inconvénients."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Feux intelligents :",
+              "options": [
+                "Capteurs adaptent cycles",
+                "Sans trafic",
+                "Annule piétons",
+                "Coupe Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ville connectée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Open data transport :",
+              "options": [
+                "Apps si anonymisées",
+                "Publier nom conducteur",
+                "Sans RGPD",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mobilité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Appli covoiturage :",
+              "options": [
+                "Géolocalisation temps réel",
+                "Sans smartphone",
+                "Remplace code route",
+                "Sans économie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plateforme + GPS."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Borne recharge :",
+              "options": [
+                "Identifie session",
+                "Mesure température corps",
+                "Remplace Linky",
+                "Sans réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "IoT énergie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Citoyen mobilité connectée :",
+              "options": [
+                "Connaître données partagées",
+                "Publier trajets secrets",
+                "Sans ceinture",
+                "Ignorer mises à jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Responsabilité."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Dépendance et bien-être",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dépendance objets connectés :",
+              "options": [
+                "Stress si panne",
+                "Notifications compulsives",
+                "Toujours bénéfique",
+                "Sans psychologie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Usage problématique possible."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Smartphone + apps :",
+              "options": [
+                "Capture attention",
+                "Sans effet sommeil",
+                "Guérit addiction",
+                "Interdit lycée partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Design persuasif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Déconnexion régulière :",
+              "options": [
+                "Équilibre",
+                "Faiblesse",
+                "Impossible",
+                "Remplace RGPD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hygiène numérique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Maison tout-connectée en panne :",
+              "options": [
+                "Inconfort ou danger",
+                "Toujours backup manuel",
+                "Sans enjeu",
+                "Autonomie max"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Redondance humaine."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Enfants et IoT :",
+              "options": [
+                "Cadre parental",
+                "Sans limite",
+                "Interdits",
+                "Remplacent école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection mineurs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "FOMO notifications :",
+              "options": [
+                "Peur de manquer",
+                "Capteur température",
+                "Sans lien",
+                "Guérison auto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bien-être mental."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sport connecté excessif :",
+              "options": [
+                "Obsession performance",
+                "Toujours sain",
+                "Sans données",
+                "Remplace médecin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écouter son corps."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Design éthique :",
+              "options": [
+                "Notifications modérables",
+                "Dark patterns obligatoires",
+                "Sans choix",
+                "Ignorer utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régulation discutée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Écrans le soir :",
+              "options": [
+                "Lumière bleue perturbe sommeil",
+                "Améliore sommeil",
+                "Remplace oreiller",
+                "Sans capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chambre sans écran."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bien-être numérique :",
+              "options": [
+                "Usage réfléchi",
+                "Maximum capteurs",
+                "Tout partager",
+                "Ignorer vie privée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liberté de choix."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Éthique et biais",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Biais données IoT :",
+              "options": [
+                "Échantillon non représentatif",
+                "Capteurs mal calibrés",
+                "Toujours parfait",
+                "Sans effet décision"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Injustice possible."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Reconnaissance faciale ville :",
+              "options": [
+                "Débat libertés",
+                "Sans controverse",
+                "Interdit partout",
+                "Toujours juste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faux positifs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Transparence algorithme :",
+              "options": [
+                "Comprendre critères",
+                "Secret total",
+                "Remplace loi",
+                "GPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "IA explicable."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tarification dynamique :",
+              "options": [
+                "Prix selon profil data",
+                "Toujours égal",
+                "Sans IoT",
+                "Gratuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commerce connecté."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Bannière cookies :",
+              "options": [
+                "Choix tracking",
+                "Sans RGPD",
+                "Capteur",
+                "Moteur voiture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Web et apps."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Firmware open source :",
+              "options": [
+                "Audit communautaire",
+                "Toujours moins sûr",
+                "Interdit",
+                "Remplace capteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transparence."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lobbys smart city :",
+              "options": [
+                "Influencent choix tech",
+                "Absents",
+                "Capteurs seuls",
+                "Sans politique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marchés publics."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Éthique ingénieur :",
+              "options": [
+                "Refuser usages nocifs",
+                "Tout vendre",
+                "Ignorer impacts",
+                "Sans responsabilité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déontologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Privacy by design :",
+              "options": [
+                "Dès conception",
+                "Après fuite",
+                "Inutile",
+                "Interdit RGPD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Minimisation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Citoyen informé :",
+              "options": [
+                "Questionne collecte",
+                "Accepte tout",
+                "Pirate caméras",
+                "Supprime loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Esprit critique SNT."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Citoyenneté numérique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Citoyenneté numérique :",
+              "options": [
+                "Droits et devoirs en ligne",
+                "Participation démocratique",
+                "Piraterie systématique",
+                "Ignorance loi"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Respect et engagement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "IoT transforme :",
+              "options": [
+                "Ville, maison, corps",
+                "Uniquement vis",
+                "Rien",
+                "Gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Société numérique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Cadre légal :",
+              "options": [
+                "RGPD, cybersécurité, réparabilité",
+                "Sans règle",
+                "Capteur",
+                "Une entreprise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évolution législative."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "SNT 2nde prépare à :",
+              "options": [
+                "Comprendre enjeux IoT",
+                "Coder sans réfléchir",
+                "Oublier société",
+                "Remplacer histoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien tech/société."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Données agrégées publiques :",
+              "options": [
+                "Politiques publiques",
+                "Toujours individu seul",
+                "Sans stats",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Smart city démocratique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Agir en citoyen :",
+              "options": [
+                "Vote, associations, pétitions",
+                "Subir passif",
+                "Pirater",
+                "Publier mots de passe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Engagement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Message clé unité 2 :",
+              "options": [
+                "IoT = impacts sociaux",
+                "Technique sans conséquence",
+                "Ignorer vie privée",
+                "Supprimer débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Penser société."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lien u1-u2 :",
+              "options": [
+                "Capteurs → données → enjeux humains",
+                "Sans lien",
+                "Câbles seuls",
+                "Remplace maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne complète."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Chapitre 03 :",
+              "options": [
+                "Embarqué, IoT, impacts",
+                "Marketing seul",
+                "Sans capteurs",
+                "Hors programme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titre officiel SNT."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réflexion finale :",
+              "options": [
+                "Technologie et société indissociables",
+                "Hasard",
+                "Substances",
+                "Négliger sommeil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Responsabilité lycéen."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

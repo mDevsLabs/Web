@@ -1,0 +1,2413 @@
+{
+  "id": "4e-espagnol-03",
+  "year": "4e",
+  "subject": "espagnol",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Menú del bar La Plaza",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Tostada 2,50 € · Zumo de naranja 3 € · Café con leche 2,20 € ». Quelles lignes sont des boissons ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Tostada",
+                "Zumo de naranja",
+                "Café con leche",
+                "Ensalada"
+              ],
+              "correctAnswers": [1, 2],
+              "explanation": "Zumo et café con leche sont des boissons."
+            },
+            {
+              "id": "q2",
+              "question": "Quel prix est le plus bas ?",
+              "type": "single_choice",
+              "options": ["2,20 €", "3 €", "2,50 €", "4 €"],
+              "correctAnswers": [0],
+              "explanation": "Le café con leche coûte 2,20 €."
+            },
+            {
+              "id": "q3",
+              "question": "« Mermelada » signifie…",
+              "type": "single_choice",
+              "options": ["Confiture", "Sel", "Poivre", "Huile"],
+              "correctAnswers": [0],
+              "explanation": "Mermelada = confiture."
+            },
+            {
+              "id": "q4",
+              "question": "Le symbole € indique…",
+              "type": "single_choice",
+              "options": ["Euros", "Pesos", "Dollars", "Yens"],
+              "correctAnswers": [0],
+              "explanation": "En Espagne les prix sont en euros."
+            },
+            {
+              "id": "q5",
+              "question": "« Zumo de naranja » c'est…",
+              "type": "single_choice",
+              "options": ["Jus d'orange", "Soupe", "Gâteau", "Fromage"],
+              "correctAnswers": [0],
+              "explanation": "Zumo = jus ; naranja = orange."
+            },
+            {
+              "id": "q6",
+              "question": "Pour un petit-déjeuner sucré on choisit plutôt…",
+              "type": "single_choice",
+              "options": ["Tostada con mermelada", "Pescado", "Sopa", "Carne"],
+              "correctAnswers": [0],
+              "explanation": "Tostada + confiture = sucré."
+            },
+            {
+              "id": "q7",
+              "question": "« Con leche » veut dire…",
+              "type": "single_choice",
+              "options": ["Avec du lait", "Sans sucre", "Très chaud", "Froid"],
+              "correctAnswers": [0],
+              "explanation": "Con = avec ; leche = lait."
+            },
+            {
+              "id": "q8",
+              "question": "Où voit-on ce type de texte ?",
+              "type": "single_choice",
+              "options": [
+                "Dans un bar ou café",
+                "Sur une carte routière",
+                "Dans un dictionnaire",
+                "Au cinéma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un menú s'affiche dans les bars."
+            },
+            {
+              "id": "q9",
+              "question": "Avec 5 €, zumo + café : assez ?",
+              "type": "single_choice",
+              "options": [
+                "Non (5,20 €)",
+                "Oui largement",
+                "Il faut 20 €",
+                "Gratuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3 + 2,20 = 5,20 €."
+            },
+            {
+              "id": "q10",
+              "question": "« Tostada » évoque…",
+              "type": "single_choice",
+              "options": ["Pain grillé", "Viande", "Riz", "Poisson"],
+              "correctAnswers": [0],
+              "explanation": "Tostada = tartine/pain grillé."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Horario de autobús",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Salida 08:15 · Llegada 09:40 · Línea 12 ». Quels mots donnent des heures ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Salida 08:15",
+                "Línea 12",
+                "Llegada 09:40",
+                "Parada"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Salida et llegada portent les horaires."
+            },
+            {
+              "id": "q2",
+              "question": "« Días laborables » = …",
+              "type": "single_choice",
+              "options": [
+                "Jours ouvrables",
+                "Vacances",
+                "Nuit seulement",
+                "Dimanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Laborables = jours de travail."
+            },
+            {
+              "id": "q3",
+              "question": "« Línea 12 » indique…",
+              "type": "single_choice",
+              "options": [
+                "Numéro de ligne",
+                "Prix",
+                "Couleur du bus",
+                "Conducteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Línea = ligne de transport."
+            },
+            {
+              "id": "q4",
+              "question": "Durée 08:15 → 09:40 ?",
+              "type": "single_choice",
+              "options": ["1 h 25", "15 min", "2 h 40", "50 min"],
+              "correctAnswers": [0],
+              "explanation": "1 heure et 25 minutes."
+            },
+            {
+              "id": "q5",
+              "question": "« Salida » = …",
+              "type": "single_choice",
+              "options": ["Départ", "Arrivée", "Annulé", "Complet"],
+              "correctAnswers": [0],
+              "explanation": "Salida = départ."
+            },
+            {
+              "id": "q6",
+              "question": "« Llegada » = …",
+              "type": "single_choice",
+              "options": ["Arrivée", "Départ", "Ticket", "Bagage"],
+              "correctAnswers": [0],
+              "explanation": "Llegada = arrivée."
+            },
+            {
+              "id": "q7",
+              "question": "Ce document sert à…",
+              "type": "single_choice",
+              "options": [
+                "Planifier un trajet",
+                "Commander à manger",
+                "Louer un hôtel",
+                "Acheter des vêtements"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un horario indique quand partir."
+            },
+            {
+              "id": "q8",
+              "question": "Format 24 h : 08:15 se lit…",
+              "type": "single_choice",
+              "options": [
+                "Huit heures quinze",
+                "Huit heures moins le quart",
+                "Neuf heures",
+                "Vingt heures quinze"
+              ],
+              "correctAnswers": [0],
+              "explanation": "08:15 = huit heures quinze."
+            },
+            {
+              "id": "q9",
+              "question": "Si le bus est « completo », tu…",
+              "type": "single_choice",
+              "options": [
+                "Attends le suivant",
+                "Conduis le bus",
+                "Fermes la línea",
+                "Changes de pays"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Completo = plus de places."
+            },
+            {
+              "id": "q10",
+              "question": "Où trouver cet horario ?",
+              "type": "single_choice",
+              "options": [
+                "À la parada",
+                "Dans une piscine",
+                "Au zoo",
+                "En classe de gym"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parada = arrêt de bus."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Postal desde Sevilla",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Querida Ana: Estoy en Sevilla. Hace mucho calor. Mañana visito la Giralda. Un abrazo, Luis ». Qui écrit ? (2 indices vrais)",
+              "type": "multiple_choice",
+              "options": [
+                "Luis",
+                "Ana",
+                "Luis est à Sevilla",
+                "Ana est à Sevilla"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Luis signe ; il dit « estoy en Sevilla »."
+            },
+            {
+              "id": "q2",
+              "question": "À qui s'adresse la carte ?",
+              "type": "single_choice",
+              "options": ["Ana", "Luis", "La Giralda", "Sevilla"],
+              "correctAnswers": [0],
+              "explanation": "« Querida Ana » = chère Ana."
+            },
+            {
+              "id": "q3",
+              "question": "« Hace mucho calor » signifie…",
+              "type": "single_choice",
+              "options": [
+                "Il fait très chaud",
+                "Il neige",
+                "Il pleut",
+                "Il vente fort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Calor = chaleur."
+            },
+            {
+              "id": "q4",
+              "question": "« Mañana visito la Giralda » : la Giralda est…",
+              "type": "single_choice",
+              "options": [
+                "Un monument à Sevilla",
+                "Un plat",
+                "Un bus",
+                "Une plage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Giralda est le clocher de la cathédrale."
+            },
+            {
+              "id": "q5",
+              "question": "« Un abrazo » correspond à…",
+              "type": "single_choice",
+              "options": [
+                "Une formule amicale de fin",
+                "Un horaire",
+                "Un prix",
+                "Une adresse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abrazo = câlin ; formule affectueuse."
+            },
+            {
+              "id": "q6",
+              "question": "« Querida » s'adresse à…",
+              "type": "single_choice",
+              "options": [
+                "Une fille/femme",
+                "Un groupe d'hommes",
+                "Un objet",
+                "Un animal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Querida = chère (féminin)."
+            },
+            {
+              "id": "q7",
+              "question": "Le temps du verbe « visito » (demain) est…",
+              "type": "single_choice",
+              "options": [
+                "Futur proche (mañana + présent)",
+                "Passé",
+                "Impératif",
+                "Infinitif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En espagnol on peut utiliser le présent pour le futur proche."
+            },
+            {
+              "id": "q8",
+              "question": "Sevilla est une ville…",
+              "type": "single_choice",
+              "options": [
+                "En Andalousie (Espagne)",
+                "Au Canada",
+                "En Chine",
+                "En Suède"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sevilla est en Espagne du sud."
+            },
+            {
+              "id": "q9",
+              "question": "Une postal sert surtout à…",
+              "type": "single_choice",
+              "options": [
+                "Envoyer des nouvelles brèves",
+                "Payer l'impôt",
+                "Réserver un vol",
+                "Passer un examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Format court et personnel."
+            },
+            {
+              "id": "q10",
+              "question": "« Estoy en » veut dire…",
+              "type": "single_choice",
+              "options": [
+                "Je suis à / dans",
+                "Je vais à",
+                "J'ai quitté",
+                "Je déteste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Estar en = être à un lieu."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Cartel de feria",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Feria de Abril · Del 20 al 27 de abril · Sevilla · Entrada gratuita ». Quelles infos sont des dates/lieu ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Del 20 al 27 de abril",
+                "Entrada gratuita",
+                "Sevilla",
+                "Menú del día"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les dates et Sevilla localisent l'événement."
+            },
+            {
+              "id": "q2",
+              "question": "« Entrada gratuita » : l'entrée est…",
+              "type": "single_choice",
+              "options": [
+                "Gratuite",
+                "Interdite",
+                "50 €",
+                "Réservée aux adultes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gratuita = sans payer."
+            },
+            {
+              "id": "q3",
+              "question": "« Feria de Abril » est une fête…",
+              "type": "single_choice",
+              "options": [
+                "Printanière à Sevilla",
+                "De Noël",
+                "D'Halloween",
+                "De Pâques en Pologne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abril = avril ; grande fête andalouse."
+            },
+            {
+              "id": "q4",
+              "question": "« Del … al … » indique…",
+              "type": "single_choice",
+              "options": [
+                "Du … au … (période)",
+                "Devant / derrière",
+                "Avant hier",
+                "Chaque heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Del al = du au."
+            },
+            {
+              "id": "q5",
+              "question": "Sur une affiche, le titre en gros sert à…",
+              "type": "single_choice",
+              "options": [
+                "Attirer l'attention",
+                "Cacher la date",
+                "Remplacer l'adresse",
+                "Interdire la fête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cartel annonce l'événement."
+            },
+            {
+              "id": "q6",
+              "question": "« Abril » = mois de…",
+              "type": "single_choice",
+              "options": ["Avril", "Mars", "Mai", "Août"],
+              "correctAnswers": [0],
+              "explanation": "Abril = avril."
+            },
+            {
+              "id": "q7",
+              "question": "Si la feria dure du 20 au 27, combien de jours ?",
+              "type": "single_choice",
+              "options": ["8 jours (inclus)", "1 jour", "30 jours", "2 heures"],
+              "correctAnswers": [0],
+              "explanation": "Du 20 au 27 inclus = 8 jours."
+            },
+            {
+              "id": "q8",
+              "question": "« Entrada » signifie…",
+              "type": "single_choice",
+              "options": [
+                "Entrée (accès)",
+                "Sortie",
+                "Scène",
+                "Parking payant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entrada = entrée."
+            },
+            {
+              "id": "q9",
+              "question": "Où voit-on un cartel ?",
+              "type": "single_choice",
+              "options": [
+                "Dans la rue ou sur les réseaux",
+                "Sous l'eau",
+                "Dans un livre fermé",
+                "Sur une carte d'identité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Affichage public."
+            },
+            {
+              "id": "q10",
+              "question": "La Feria de Abril est associée à…",
+              "type": "single_choice",
+              "options": [
+                "Musique, casetas, flamenco",
+                "Ski alpin",
+                "Igloo",
+                "Surf en Alaska"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition andalouse festive."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Menú heladería",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Copas: chocolate, vainilla, fresa · Tarrina pequeña 3 € · Grande 5 € ». Quels mots sont des parfums ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": ["Chocolate", "Tarrina", "Vainilla", "Pequeña"],
+              "correctAnswers": [0, 2],
+              "explanation": "Chocolate et vainilla sont des goûts."
+            },
+            {
+              "id": "q2",
+              "question": "« Fresa » = …",
+              "type": "single_choice",
+              "options": ["Fraise", "Framboise", "Citron", "Menthe"],
+              "correctAnswers": [0],
+              "explanation": "Fresa = fraise."
+            },
+            {
+              "id": "q3",
+              "question": "La tarrina grande coûte…",
+              "type": "single_choice",
+              "options": ["5 €", "3 €", "1 €", "10 €"],
+              "correctAnswers": [0],
+              "explanation": "Grande = 5 € dans l'extrait."
+            },
+            {
+              "id": "q4",
+              "question": "« Copas » ici désigne…",
+              "type": "single_choice",
+              "options": [
+                "Boules de glace",
+                "Boissons alcoolisées",
+                "Chaussures",
+                "Chapeaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En heladería, copa = portion en coupe."
+            },
+            {
+              "id": "q5",
+              "question": "« Pequeña » = …",
+              "type": "single_choice",
+              "options": ["Petite", "Grande", "Moyenne", "Gratuite"],
+              "correctAnswers": [0],
+              "explanation": "Pequeña = petite taille."
+            },
+            {
+              "id": "q6",
+              "question": "« Vainilla » = …",
+              "type": "single_choice",
+              "options": ["Vanille", "Vinaigre", "Viande", "Velours"],
+              "correctAnswers": [0],
+              "explanation": "Vainilla = vanille."
+            },
+            {
+              "id": "q7",
+              "question": "Différence de prix petite / grande ?",
+              "type": "single_choice",
+              "options": ["2 €", "5 €", "0 €", "20 €"],
+              "correctAnswers": [0],
+              "explanation": "5 − 3 = 2 €."
+            },
+            {
+              "id": "q8",
+              "question": "Une heladería vend surtout…",
+              "type": "single_choice",
+              "options": [
+                "Des glaces",
+                "Du pain",
+                "Des timbres",
+                "Des billets de train"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Helado = glace."
+            },
+            {
+              "id": "q9",
+              "question": "Pour commander deux parfums différents on demande…",
+              "type": "single_choice",
+              "options": [
+                "Dos copas / dos sabores",
+                "Un autobús",
+                "Un abrazo",
+                "Un horario"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sabores = parfums."
+            },
+            {
+              "id": "q10",
+              "question": "« Chocolate » en espagnol se prononce approximativement…",
+              "type": "single_choice",
+              "options": [
+                "Comme en français",
+                "Comme « ketchup »",
+                "Comme « château »",
+                "Comme « school »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot proche du français."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Horario biblioteca",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Lunes a viernes: 9:00–20:00 · Sábado: 10:00–14:00 · Domingo: cerrado ». Quels jours la bibliothèque ouvre le matin à 9 h ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": ["Lunes", "Domingo", "Viernes", "Cerrado"],
+              "correctAnswers": [0, 2],
+              "explanation": "Lunes à viernes commencent à 9:00."
+            },
+            {
+              "id": "q2",
+              "question": "« Cerrado » le dimanche signifie…",
+              "type": "single_choice",
+              "options": ["Fermé", "Ouvert 24 h", "Gratuit", "En travaux"],
+              "correctAnswers": [0],
+              "explanation": "Cerrado = fermé."
+            },
+            {
+              "id": "q3",
+              "question": "Sábado, fermeture à…",
+              "type": "single_choice",
+              "options": ["14:00", "20:00", "9:00", "Minuit"],
+              "correctAnswers": [0],
+              "explanation": "Sábado 10:00–14:00."
+            },
+            {
+              "id": "q4",
+              "question": "« Lunes a viernes » = …",
+              "type": "single_choice",
+              "options": [
+                "Du lundi au vendredi",
+                "Le week-end",
+                "Uniquement le mardi",
+                "Tous les dimanches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A = à / jusqu'à."
+            },
+            {
+              "id": "q5",
+              "question": "En semaine, la bibliothèque ferme à…",
+              "type": "single_choice",
+              "options": ["20:00", "14:00", "9:00", "8:00"],
+              "correctAnswers": [0],
+              "explanation": "Horaire jusqu'à 20 h."
+            },
+            {
+              "id": "q6",
+              "question": "« Biblioteca » = …",
+              "type": "single_choice",
+              "options": ["Bibliothèque", "Boulangerie", "Stade", "Aéroport"],
+              "correctAnswers": [0],
+              "explanation": "Biblioteca = bibliothèque."
+            },
+            {
+              "id": "q7",
+              "question": "Peut-on y aller un domingo ?",
+              "type": "single_choice",
+              "options": [
+                "Non, cerrado",
+                "Oui toute la nuit",
+                "Oui à 9 h",
+                "Seulement avec un bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Domingo cerrado."
+            },
+            {
+              "id": "q8",
+              "question": "« Sábado » = …",
+              "type": "single_choice",
+              "options": ["Samedi", "Lundi", "Mercredi", "Vendredi"],
+              "correctAnswers": [0],
+              "explanation": "Sábado = samedi."
+            },
+            {
+              "id": "q9",
+              "question": "Ce document est un…",
+              "type": "single_choice",
+              "options": [
+                "Horaire d'ouverture",
+                "Menu",
+                "Poème",
+                "Billet de loterie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heures d'ouverture."
+            },
+            {
+              "id": "q10",
+              "question": "« Domingo » = …",
+              "type": "single_choice",
+              "options": ["Dimanche", "Jeudi", "Mardi", "Samedi"],
+              "correctAnswers": [0],
+              "explanation": "Domingo = dimanche."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Postal desde México",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Hola, mamá: Estoy en Ciudad de México. La comida es picante pero rica. El Día de los Muertos es muy bonito. Te quiero. — Carmen ». Quels éléments parlent du pays/culture ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Ciudad de México",
+                "Te quiero",
+                "Día de los Muertos",
+                "Hola mamá seulement"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Capitale mexicaine et fête traditionnelle."
+            },
+            {
+              "id": "q2",
+              "question": "Carmen écrit à…",
+              "type": "single_choice",
+              "options": ["Sa mère", "Son prof", "Un bus", "Un restaurant"],
+              "correctAnswers": [0],
+              "explanation": "« Hola, mamá »."
+            },
+            {
+              "id": "q3",
+              "question": "« Picante » = …",
+              "type": "single_choice",
+              "options": ["Épicé", "Sucré", "Froid", "Dur"],
+              "correctAnswers": [0],
+              "explanation": "Picante = épicé/piquant."
+            },
+            {
+              "id": "q4",
+              "question": "« Te quiero » = …",
+              "type": "single_choice",
+              "options": [
+                "Je t'aime / je t'apprécie",
+                "Tu m'énerves",
+                "Au revoir",
+                "Bon appétit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule affective."
+            },
+            {
+              "id": "q5",
+              "question": "Le Día de los Muertos est célébré surtout au…",
+              "type": "single_choice",
+              "options": [
+                "Mexique et monde hispanophone",
+                "Pôle Nord",
+                "Japon uniquement",
+                "Maroc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition mexicaine connue."
+            },
+            {
+              "id": "q6",
+              "question": "« Rica » décrit ici la…",
+              "type": "single_choice",
+              "options": ["Nourriture", "Météo", "Valise", "Gare"],
+              "correctAnswers": [0],
+              "explanation": "La comida es rica."
+            },
+            {
+              "id": "q7",
+              "question": "Ciudad de México est la capitale…",
+              "type": "single_choice",
+              "options": [
+                "Du Mexique",
+                "De l'Espagne",
+                "Du Brésil",
+                "Du Canada"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capitale mexicaine."
+            },
+            {
+              "id": "q8",
+              "question": "« Estoy en » indique…",
+              "type": "single_choice",
+              "options": [
+                "Où Carmen se trouve",
+                "Où était Carmen l'an passé",
+                "Un prix",
+                "Un horaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Localisation actuelle."
+            },
+            {
+              "id": "q9",
+              "question": "Une postal du Mexique peut montrer…",
+              "type": "single_choice",
+              "options": [
+                "Des motifs de calaveras ou temples",
+                "Un igloo",
+                "Un kangourou",
+                "La Tour Eiffel seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Imagery culturelle mexicaine."
+            },
+            {
+              "id": "q10",
+              "question": "« Hola » = …",
+              "type": "single_choice",
+              "options": ["Salut / bonjour", "Merci", "Non", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "Salutation courante."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Cartel concierto",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Concierto de guitarra · Viernes 21 h · Teatro Municipal · Entradas: 12 € / 8 € estudiantes ». Quelles lignes parlent de lieu ou tarif ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Teatro Municipal",
+                "Viernes 21 h",
+                "12 €",
+                "Guitarra seule"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Lieu = teatro ; tarif = 12 €."
+            },
+            {
+              "id": "q2",
+              "question": "Le concert a lieu…",
+              "type": "single_choice",
+              "options": [
+                "Un vendredi soir",
+                "Un lundi matin",
+                "En plein désert",
+                "Sans date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Viernes 21 h."
+            },
+            {
+              "id": "q3",
+              "question": "« Estudiantes » paient…",
+              "type": "single_choice",
+              "options": ["8 €", "12 €", "0 € obligatoire", "100 €"],
+              "correctAnswers": [0],
+              "explanation": "Tarif réduit étudiants."
+            },
+            {
+              "id": "q4",
+              "question": "« Concierto » = …",
+              "type": "single_choice",
+              "options": ["Concert", "Concours de cuisine", "Course", "Examen"],
+              "correctAnswers": [0],
+              "explanation": "Concierto = concert."
+            },
+            {
+              "id": "q5",
+              "question": "« Teatro Municipal » est…",
+              "type": "single_choice",
+              "options": [
+                "Une salle de spectacle",
+                "Une plage",
+                "Un aéroport",
+                "Une ferme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Teatro = théâtre/salle."
+            },
+            {
+              "id": "q6",
+              "question": "21 h en format 24 h = …",
+              "type": "single_choice",
+              "options": [
+                "Neuf heures du soir",
+                "Neuf heures du matin",
+                "Onze heures",
+                "Minuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "21:00 = soirée."
+            },
+            {
+              "id": "q7",
+              "question": "Instrument annoncé : …",
+              "type": "single_choice",
+              "options": [
+                "Guitare",
+                "Trompette",
+                "Batterie seule",
+                "Piano interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guitarra = guitare."
+            },
+            {
+              "id": "q8",
+              "question": "Pour acheter une entrada tu vas…",
+              "type": "single_choice",
+              "options": [
+                "À la billetterie ou en ligne",
+                "Dans la mer",
+                "Au supermarché légumes",
+                "Nulle part"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entradas = billets."
+            },
+            {
+              "id": "q9",
+              "question": "« Viernes » = …",
+              "type": "single_choice",
+              "options": ["Vendredi", "Mardi", "Dimanche", "Samedi"],
+              "correctAnswers": [0],
+              "explanation": "Viernes = vendredi."
+            },
+            {
+              "id": "q10",
+              "question": "Un cartel indique surtout…",
+              "type": "single_choice",
+              "options": [
+                "Qui, quoi, quand, où",
+                "Une recette secrète",
+                "Un code postal",
+                "Un devoir de maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Information pratique pour le public."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Carta de tapas",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Patatas bravas 4 € · Tortilla 3,50 € · Pan con tomate 2 € · Agua 1,50 € ». Quels items sont des tapas/plats ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": ["Patatas bravas", "Agua", "Tortilla", "Avión"],
+              "correctAnswers": [0, 2],
+              "explanation": "Patatas et tortilla sont des plats ; agua est une boisson."
+            },
+            {
+              "id": "q2",
+              "question": "Le moins cher est…",
+              "type": "single_choice",
+              "options": ["Agua 1,50 €", "Tortilla", "Patatas", "Tous à 10 €"],
+              "correctAnswers": [0],
+              "explanation": "Agua = 1,50 €."
+            },
+            {
+              "id": "q3",
+              "question": "« Pan con tomate » = …",
+              "type": "single_choice",
+              "options": [
+                "Pain avec tomate",
+                "Poisson frit",
+                "Soupe froide",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spécialité catalane/espagnole."
+            },
+            {
+              "id": "q4",
+              "question": "« Tortilla » ici désigne…",
+              "type": "single_choice",
+              "options": [
+                "Omelette espagnole aux pommes de terre",
+                "Galette mexicaine seule",
+                "Un gâteau",
+                "Une boisson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tortilla española = omelette."
+            },
+            {
+              "id": "q5",
+              "question": "Les tapas se partagent souvent…",
+              "type": "single_choice",
+              "options": [
+                "En petites portions entre amis",
+                "Un seul plat géant obligatoire",
+                "Sans manger",
+                "À l'école uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Culture des petites assiettes."
+            },
+            {
+              "id": "q6",
+              "question": "« Patatas bravas » sont…",
+              "type": "single_choice",
+              "options": [
+                "Pommes de terre épicées",
+                "Des fraises",
+                "Du riz au lait",
+                "Des pâtes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patatas = pommes de terre ; sauce piquante."
+            },
+            {
+              "id": "q7",
+              "question": "Total patatas + pan con tomate ?",
+              "type": "single_choice",
+              "options": ["6 €", "4 €", "2 €", "10 €"],
+              "correctAnswers": [0],
+              "explanation": "4 + 2 = 6 €."
+            },
+            {
+              "id": "q8",
+              "question": "« Agua » = …",
+              "type": "single_choice",
+              "options": ["Eau", "Bière", "Vin", "Jus de raisin obligatoire"],
+              "correctAnswers": [0],
+              "explanation": "Agua = eau."
+            },
+            {
+              "id": "q9",
+              "question": "Où commande-t-on une carta de tapas ?",
+              "type": "single_choice",
+              "options": [
+                "Dans un bar ou restaurant",
+                "À la banque",
+                "Au poste",
+                "Dans un stade vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Carta = menu dans un local."
+            },
+            {
+              "id": "q10",
+              "question": "« Carta » dans ce contexte = …",
+              "type": "single_choice",
+              "options": [
+                "Menu (liste des plats)",
+                "Lettre postale",
+                "Carte géographique",
+                "Carte bancaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Carta = menu au restaurant."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Horario farmacia",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Farmacia Sol · Abierta 24 horas · Tel: 900 123 456 · Urgencias ». Quels mots indiquent service médical/dispensa ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Farmacia",
+                "24 horas",
+                "Urgencias",
+                "Sol (nom seul)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Farmacia et urgencias = santé."
+            },
+            {
+              "id": "q2",
+              "question": "« Abierta 24 horas » signifie…",
+              "type": "single_choice",
+              "options": [
+                "Ouverte en permanence",
+                "Fermée le week-end",
+                "Ouverte 1 h par jour",
+                "Ouverte seulement le matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "24 h = toute la journée et nuit."
+            },
+            {
+              "id": "q3",
+              "question": "« Farmacia » = …",
+              "type": "single_choice",
+              "options": ["Pharmacie", "Boucherie", "Librairie", "Piscine"],
+              "correctAnswers": [0],
+              "explanation": "Farmacia = pharmacie."
+            },
+            {
+              "id": "q4",
+              "question": "Le numéro « Tel » sert à…",
+              "type": "single_choice",
+              "options": [
+                "Appeler la pharmacie",
+                "Commander une pizza",
+                "Réserver un cinéma",
+                "Jouer en ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tel = téléphone."
+            },
+            {
+              "id": "q5",
+              "question": "« Urgencias » évoque…",
+              "type": "single_choice",
+              "options": [
+                "Besoin médical pressant",
+                "Promotion de glace",
+                "Concert",
+                "Vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Urgencias = urgences."
+            },
+            {
+              "id": "q6",
+              "question": "En Espagne, une farmacia de garde peut être…",
+              "type": "single_choice",
+              "options": [
+                "Indiquée sur une affiche ou site",
+                "Secrète et sans nom",
+                "Uniquement en bateau",
+                "Interdite aux touristes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rotation de garde affichée."
+            },
+            {
+              "id": "q7",
+              "question": "« Abierta » (féminin) = …",
+              "type": "single_choice",
+              "options": ["Ouverte", "Fermée", "Grande", "Chère"],
+              "correctAnswers": [0],
+              "explanation": "Accord avec farmacia."
+            },
+            {
+              "id": "q8",
+              "question": "On achète ici surtout…",
+              "type": "single_choice",
+              "options": [
+                "Médicaments et produits de santé",
+                "Billets de train",
+                "Vêtements de ski",
+                "Poissons exotiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rôle de la pharmacie."
+            },
+            {
+              "id": "q9",
+              "question": "« Horas » = …",
+              "type": "single_choice",
+              "options": ["Heures", "Jours", "Semaines", "Années"],
+              "correctAnswers": [0],
+              "explanation": "Horas = heures."
+            },
+            {
+              "id": "q10",
+              "question": "Ce panneau est utile si…",
+              "type": "single_choice",
+              "options": [
+                "Tu as besoin d'un médicament tard le soir",
+                "Tu veux nager",
+                "Tu perds ton passeport sans mal",
+                "Tu cherches un musée fermé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pharmacie 24 h = accès santé."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Fiestas en España",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Texte : « En España celebramos la Nochevieja con uvas, los Reyes Magos en enero y semanas santas con procesiones. » Quelles fêtes sont citées ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Nochevieja",
+                "Thanksgiving",
+                "Reyes Magos",
+                "Hanouka"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Nochevieja et Reyes Magos sont mentionnés."
+            },
+            {
+              "id": "q2",
+              "question": "À la Nochevieja, tradition des…",
+              "type": "single_choice",
+              "options": [
+                "Douze raisins à minuit",
+                "Feux d'artifice interdits",
+                "Turkey",
+                "Costumes d'Halloween"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une uva par coup de minuit."
+            },
+            {
+              "id": "q3",
+              "question": "« Reyes Magos » = …",
+              "type": "single_choice",
+              "options": [
+                "Rois mages (6 janvier)",
+                "Roïs olympiques",
+                "Stars de cinéma",
+                "Chefs cuisiniers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Épiphanie en Espagne."
+            },
+            {
+              "id": "q4",
+              "question": "« Semana Santa » concerne surtout…",
+              "type": "single_choice",
+              "options": [
+                "La Semaine sainte",
+                "Les vacances d'été",
+                "Le carnaval de Rio seul",
+                "La rentrée scolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Processions pascales."
+            },
+            {
+              "id": "q5",
+              "question": "« En enero » = …",
+              "type": "single_choice",
+              "options": ["En janvier", "En juin", "En août", "En décembre"],
+              "correctAnswers": [0],
+              "explanation": "Enero = janvier."
+            },
+            {
+              "id": "q6",
+              "question": "« Celebramos » veut dire…",
+              "type": "single_choice",
+              "options": [
+                "Nous fêtons / célébrons",
+                "Nous interdisons",
+                "Nous oublions",
+                "Nous vendons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Celebrar = célébrer."
+            },
+            {
+              "id": "q7",
+              "question": "Les processions de Semana Santa sont visibles surtout…",
+              "type": "single_choice",
+              "options": [
+                "En Andalousie et dans plusieurs villes",
+                "Au pôle Sud",
+                "Uniquement en Asie",
+                "Jamais en Espagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fort ancrage culturel espagnol."
+            },
+            {
+              "id": "q8",
+              "question": "« Uvas » = …",
+              "type": "single_choice",
+              "options": ["Raisins", "Pommes", "Oranges", "Bananes"],
+              "correctAnswers": [0],
+              "explanation": "Uva = raisin."
+            },
+            {
+              "id": "q9",
+              "question": "La Nochevieja est la nuit…",
+              "type": "single_choice",
+              "options": [
+                "Du 31 décembre au 1er janvier",
+                "Du 1er mai",
+                "De Noël seulement",
+                "D'été"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Veille du Nouvel An."
+            },
+            {
+              "id": "q10",
+              "question": "Ces fêtes montrent que l'Espagne…",
+              "type": "single_choice",
+              "options": [
+                "Mêle traditions religieuses et populaires",
+                "N'a aucune fête",
+                "Copie uniquement les USA",
+                "Ignore le calendrier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mosaïque de célébrations."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Madrid capitale",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Madrid es la capital de España. Tiene el Museo del Prado y la Puerta del Sol. » Quels repères géographiques/culturels ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Capital de España",
+                "Capitale du Mexique",
+                "Museo del Prado",
+                "Tour Eiffel"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Madrid capitale et Prado cités."
+            },
+            {
+              "id": "q2",
+              "question": "La capitale de l'Espagne est…",
+              "type": "single_choice",
+              "options": ["Madrid", "Barcelona", "Lisbonne", "Buenos Aires"],
+              "correctAnswers": [0],
+              "explanation": "Madrid = capitale."
+            },
+            {
+              "id": "q3",
+              "question": "« Puerta del Sol » est…",
+              "type": "single_choice",
+              "options": [
+                "Une place célèbre de Madrid",
+                "Une plage",
+                "Un aéroport au Pérou",
+                "Un fleuve"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Place centrale emblématique."
+            },
+            {
+              "id": "q4",
+              "question": "Le Prado est…",
+              "type": "single_choice",
+              "options": [
+                "Un grand musée d'art",
+                "Un stade de foot",
+                "Une gare",
+                "Un volcan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Musée national."
+            },
+            {
+              "id": "q5",
+              "question": "« Tiene » signifie…",
+              "type": "single_choice",
+              "options": ["A / possède", "N'a pas", "Vend", "Ferme"],
+              "correctAnswers": [0],
+              "explanation": "Tener = avoir."
+            },
+            {
+              "id": "q6",
+              "question": "Madrid se situe au centre de…",
+              "type": "single_choice",
+              "options": [
+                "La péninsule ibérique (Espagne)",
+                "L'Islande",
+                "L'Australie",
+                "Le Sahara seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capitale centrale espagnole."
+            },
+            {
+              "id": "q7",
+              "question": "« España » = …",
+              "type": "single_choice",
+              "options": ["Espagne", "Italie", "France", "Chili"],
+              "correctAnswers": [0],
+              "explanation": "Espagne en espagnol."
+            },
+            {
+              "id": "q8",
+              "question": "Un repère de civilisation peut être…",
+              "type": "single_choice",
+              "options": [
+                "Un monument ou musée connu",
+                "Un numéro de téléphone aléatoire",
+                "Une page blanche",
+                "Un bus sans ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieux symboliques."
+            },
+            {
+              "id": "q9",
+              "question": "« Capital » en espagnol = …",
+              "type": "single_choice",
+              "options": [
+                "Capital",
+                "Capitán (capitaine)",
+                "Capítulo (chapitre)",
+                "Capitalisme seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même mot pour la ville chef-lieu."
+            },
+            {
+              "id": "q10",
+              "question": "Visiter el Prado permet de voir surtout…",
+              "type": "single_choice",
+              "options": [
+                "Des œuvres de peintres célèbres",
+                "Des voitures",
+                "Des poissons vivants",
+                "Des avions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Collections picturales."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "El español en el mundo",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« El español es lengua oficial en más de 20 países. Se habla en España, México, Argentina… » Quelles affirmations sont vraies ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Langue officielle dans de nombreux pays",
+                "Parlé seulement en Espagne",
+                "Parlé au Mexique",
+                "Parlé uniquement en Antarctique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Espagnol mondial incluant México."
+            },
+            {
+              "id": "q2",
+              "question": "« Lengua oficial » = …",
+              "type": "single_choice",
+              "options": [
+                "Langue officielle",
+                "Langue secrète",
+                "Langue morte",
+                "Langue inventée hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statut administratif et scolaire."
+            },
+            {
+              "id": "q3",
+              "question": "« Se habla » indique…",
+              "type": "single_choice",
+              "options": [
+                "On parle (passif)",
+                "On mange",
+                "On dort",
+                "On nage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme passive/pronominale."
+            },
+            {
+              "id": "q4",
+              "question": "L'espagnol appartient à la famille…",
+              "type": "single_choice",
+              "options": [
+                "Des langues romanes",
+                "Des langues slaves",
+                "Des langues germaniques uniquement",
+                "Des langues chinoises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Issu du latin."
+            },
+            {
+              "id": "q5",
+              "question": "En Amérique latine, l'espagnol est majoritaire sauf…",
+              "type": "single_choice",
+              "options": [
+                "Brésil (portugais) et quelques exceptions",
+                "Tous parlent français",
+                "Personne ne parle espagnol",
+                "Uniquement le Canada anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brésil = portugais."
+            },
+            {
+              "id": "q6",
+              "question": "« Países » = …",
+              "type": "single_choice",
+              "options": ["Pays", "Villes", "Rues", "Océans"],
+              "correctAnswers": [0],
+              "explanation": "País / países = pays."
+            },
+            {
+              "id": "q7",
+              "question": "Apprendre l'espagnol en 4e aide à…",
+              "type": "single_choice",
+              "options": [
+                "Comprendre des documents simples",
+                "Parler couramment latin antique",
+                "Éviter toute culture",
+                "Ne lire que en anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif collège : compréhension."
+            },
+            {
+              "id": "q8",
+              "question": "Argentina est un pays…",
+              "type": "single_choice",
+              "options": [
+                "D'Amérique du Sud",
+                "D'Europe",
+                "D'Afrique du Nord",
+                "Océanien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hispanophone sud-américain."
+            },
+            {
+              "id": "q9",
+              "question": "« Más de 20 » signifie…",
+              "type": "single_choice",
+              "options": [
+                "Plus de vingt",
+                "Moins de cinq",
+                "Exactement deux",
+                "Zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Más de = plus de."
+            },
+            {
+              "id": "q10",
+              "question": "Une différence entre espagnol d'Espagne et du Mexique peut être…",
+              "type": "single_choice",
+              "options": [
+                "Quelques mots et accents",
+                "Deux langues sans rapport",
+                "L'espagnol n'existe pas au Mexique",
+                "Identique à du japonais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variantes régionales."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Día de la Hispanidad",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« El 12 de octubre es el Día de la Hispanidad en España, fiesta nacional. » Quels éléments sont corrects ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Date 12 octobre",
+                "Fête en France le même jour obligatoire",
+                "Fiesta nacional en España",
+                "Jour sans calendrier"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "12 octobre et fête nationale espagnole."
+            },
+            {
+              "id": "q2",
+              "question": "« Fiesta nacional » = …",
+              "type": "single_choice",
+              "options": [
+                "Fête nationale",
+                "Fête d'école",
+                "Anniversaire privé",
+                "Match de foot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour férié national."
+            },
+            {
+              "id": "q3",
+              "question": "« Octubre » = …",
+              "type": "single_choice",
+              "options": ["Octobre", "Avril", "Juillet", "Mars"],
+              "correctAnswers": [0],
+              "explanation": "Octubre = octobre."
+            },
+            {
+              "id": "q4",
+              "question": "Ce jour commémore aussi historiquement l'arrivée de Colomb en…",
+              "type": "single_choice",
+              "options": ["Amérique (1492)", "Lune", "Mars", "Antarctique"],
+              "correctAnswers": [0],
+              "explanation": "Lien avec 1492."
+            },
+            {
+              "id": "q5",
+              "question": "« Hispanidad » évoque…",
+              "type": "single_choice",
+              "options": [
+                "Communauté de culture espagnole",
+                "Uniquement la cuisine",
+                "Une marque de voiture",
+                "Un sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monde hispanophone."
+            },
+            {
+              "id": "q6",
+              "question": "En Espagne ce jour peut inclure…",
+              "type": "single_choice",
+              "options": [
+                "Défilé militaire à Madrid",
+                "Fermeture de tous les pays",
+                "Examen obligatoire",
+                "Silence total interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition du défilé."
+            },
+            {
+              "id": "q7",
+              "question": "« El 12 de octubre » se lit…",
+              "type": "single_choice",
+              "options": [
+                "Le douze octobre",
+                "Le vingt octobre",
+                "Le douze décembre",
+                "Le deux octobre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Format date espagnol."
+            },
+            {
+              "id": "q8",
+              "question": "Ce repère aide à comprendre…",
+              "type": "single_choice",
+              "options": [
+                "L'histoire des liens Espagne–Amérique",
+                "La météo d'hier",
+                "Les horaires de bus locaux",
+                "Un menu de crêpes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dimension historique et culturelle."
+            },
+            {
+              "id": "q9",
+              "question": "« Es » (el 12 … es) = …",
+              "type": "single_choice",
+              "options": ["Est", "Sont", "Étaient", "Seront demain"],
+              "correctAnswers": [0],
+              "explanation": "Ser / es = être."
+            },
+            {
+              "id": "q10",
+              "question": "Une fiesta nacional implique souvent…",
+              "type": "single_choice",
+              "options": [
+                "Pas d'école / activités officielles",
+                "Interdiction de parler",
+                "Changement de langue",
+                "Suppression du calendrier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour férié."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "La Tomatina et fêtes populaires",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« La Tomatina es en Buñol (Valencia): miles de personas lanzan tomates en agosto. San Fermín en Pamplona tiene los encierros. » Quels événements ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "La Tomatina",
+                "Encierros de San Fermín",
+                "Tour de France",
+                "Oktoberfest allemand"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tomatina et San Fermín cités."
+            },
+            {
+              "id": "q2",
+              "question": "La Tomatina utilise…",
+              "type": "single_choice",
+              "options": [
+                "Des tomates",
+                "De la neige",
+                "Du sable",
+                "De l'encre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bataille de tomates."
+            },
+            {
+              "id": "q3",
+              "question": "« Encierros » à Pamplona = …",
+              "type": "single_choice",
+              "options": [
+                "Courses de taureaux dans les rues",
+                "Concours de danse",
+                "Examen scolaire",
+                "Silence méditatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition des encierros."
+            },
+            {
+              "id": "q4",
+              "question": "Buñol se trouve en…",
+              "type": "single_choice",
+              "options": [
+                "Communauté valencienne",
+                "Groenland",
+                "Inde",
+                "Finlande"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valencia, Espagne."
+            },
+            {
+              "id": "q5",
+              "question": "« Miles de personas » = …",
+              "type": "single_choice",
+              "options": [
+                "Des milliers de personnes",
+                "Trois personnes",
+                "Personne",
+                "Un chat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Miles = milliers."
+            },
+            {
+              "id": "q6",
+              "question": "« Agosto » = …",
+              "type": "single_choice",
+              "options": ["Août", "Avril", "Janvier", "Novembre"],
+              "correctAnswers": [0],
+              "explanation": "Agosto = août."
+            },
+            {
+              "id": "q7",
+              "question": "San Fermín est célèbre à…",
+              "type": "single_choice",
+              "options": ["Pamplona", "Paris", "Tokyo", "Sydney"],
+              "correctAnswers": [0],
+              "explanation": "Ville navarraise."
+            },
+            {
+              "id": "q8",
+              "question": "Ces fêtes montrent…",
+              "type": "single_choice",
+              "options": [
+                "Des traditions locales très participatives",
+                "L'absence de culture",
+                "Uniquement des fêtes religieuses",
+                "Des interdictions de sortir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tourisme et folklore."
+            },
+            {
+              "id": "q9",
+              "question": "« Lanzan » vient de…",
+              "type": "single_choice",
+              "options": ["Lancer (verbe)", "Manger", "Dormir", "Lire"],
+              "correctAnswers": [0],
+              "explanation": "Lanzar = lancer."
+            },
+            {
+              "id": "q10",
+              "question": "Avant de participer à ce genre de fête, il faut…",
+              "type": "single_choice",
+              "options": [
+                "Respecter règles et sécurité",
+                "Ignorer les autorités",
+                "Apporter n'importe quoi dangereux",
+                "Oublier la date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consignes officielles importantes."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Barcelona et Cataluña",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Barcelona está en Cataluña. La Sagrada Familia es de Gaudí. También hablan catalán. » Quels repères ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Sagrada Familia",
+                "Tour de Londres",
+                "Cataluña",
+                "Langue catalane mentionnée"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Monument et région ; catalán aussi."
+            },
+            {
+              "id": "q2",
+              "question": "Gaudí est un…",
+              "type": "single_choice",
+              "options": [
+                "Architecte",
+                "Footballeur",
+                "Chanteur de reggaeton",
+                "Pilote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Art nouveau catalan."
+            },
+            {
+              "id": "q3",
+              "question": "« También hablan catalán » signifie…",
+              "type": "single_choice",
+              "options": [
+                "On parle aussi catalan",
+                "Personne ne parle",
+                "Seulement l'anglais",
+                "Uniquement le latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilinguisme courant."
+            },
+            {
+              "id": "q4",
+              "question": "Barcelona est une ville…",
+              "type": "single_choice",
+              "options": [
+                "Méditerranéenne du nord-est espagnol",
+                "Au centre du Canada",
+                "En Afrique",
+                "Sans mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Côte catalane."
+            },
+            {
+              "id": "q5",
+              "question": "« Está en » = …",
+              "type": "single_choice",
+              "options": [
+                "Est située à / dans",
+                "Va partir",
+                "A disparu",
+                "Est fermée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Localisation."
+            },
+            {
+              "id": "q6",
+              "question": "La Sagrada Familia est…",
+              "type": "single_choice",
+              "options": [
+                "Une basilique célèbre inachevée longtemps",
+                "Un stade",
+                "Une gare",
+                "Un parc d'attractions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emblème architectural."
+            },
+            {
+              "id": "q7",
+              "question": "« Cataluña » = …",
+              "type": "single_choice",
+              "options": ["Catalogne", "Castille", "Andalousie", "Galice"],
+              "correctAnswers": [0],
+              "explanation": "Région autonome."
+            },
+            {
+              "id": "q8",
+              "question": "Le catalán et l'espagnol…",
+              "type": "single_choice",
+              "options": [
+                "Coexistent en Catalogne",
+                "Sont identiques à 100 %",
+                "N'existent pas",
+                "Sont interdits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux langues officielles régionales."
+            },
+            {
+              "id": "q9",
+              "question": "Un repère pour les touristes à Barcelona : …",
+              "type": "single_choice",
+              "options": [
+                "Las Ramblas",
+                "Le pôle Nord",
+                "Le désert du Sahara seul",
+                "Un igloo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Artère célèbre."
+            },
+            {
+              "id": "q10",
+              "question": "« Es de Gaudí » = l'œuvre…",
+              "type": "single_choice",
+              "options": [
+                "Est de Gaudí (auteur)",
+                "Est interdite",
+                "Est en France",
+                "N'existe pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ser de = être de / appartenir à."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Países hispanohablantes",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Hispanoamérica incluye Colombia, Perú, Chile. En África, Equatorial Guinea también habla español. » Quels pays/zones ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": ["Colombia", "Japon", "Equatorial Guinea", "Islande"],
+              "correctAnswers": [0, 2],
+              "explanation": "Colombia et Guinée équatoriale cités."
+            },
+            {
+              "id": "q2",
+              "question": "« Hispanoamérica » désigne surtout…",
+              "type": "single_choice",
+              "options": [
+                "Amérique hispanophone",
+                "Europe du Nord",
+                "Océanie",
+                "Antarctique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amérique de langue espagnole."
+            },
+            {
+              "id": "q3",
+              "question": "Capitale de Colombia : …",
+              "type": "single_choice",
+              "options": ["Bogotá", "Madrid", "Lima", "Santiago"],
+              "correctAnswers": [0],
+              "explanation": "Bogotá = capitale colombienne."
+            },
+            {
+              "id": "q4",
+              "question": "« Perú » capital : …",
+              "type": "single_choice",
+              "options": [
+                "Lima",
+                "Quito",
+                "La Paz administrative partielle",
+                "Buenos Aires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lima = capitale du Pérou."
+            },
+            {
+              "id": "q5",
+              "question": "Chile a pour capitale…",
+              "type": "single_choice",
+              "options": ["Santiago", "Caracas", "Havana", "San José"],
+              "correctAnswers": [0],
+              "explanation": "Santiago de Chile."
+            },
+            {
+              "id": "q6",
+              "question": "Equatorial Guinea se situe…",
+              "type": "single_choice",
+              "options": [
+                "En Afrique",
+                "En Amérique du Nord",
+                "En Europe de l'Est",
+                "Au pôle Nord"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Petit pays hispanophone africain."
+            },
+            {
+              "id": "q7",
+              "question": "« Incluye » = …",
+              "type": "single_choice",
+              "options": ["Inclut", "Exclut", "Détruit", "Oublie"],
+              "correctAnswers": [0],
+              "explanation": "Incluir = inclure."
+            },
+            {
+              "id": "q8",
+              "question": "Connaître ces pays aide à…",
+              "type": "single_choice",
+              "options": [
+                "Situer la diversité hispanophone",
+                "Ignorer la géographie",
+                "Parler japonais",
+                "Confondre tous les continents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Carte mentale du monde espagnol."
+            },
+            {
+              "id": "q9",
+              "question": "« También habla español » en Guinée équatoriale montre…",
+              "type": "single_choice",
+              "options": [
+                "Héritage colonial et usage actuel",
+                "Que personne ne parle",
+                "Que c'est une langue martienne",
+                "Qu'il n'y a pas d'écoles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langue officielle historique."
+            },
+            {
+              "id": "q10",
+              "question": "« Países hispanohablantes » = …",
+              "type": "single_choice",
+              "options": [
+                "Pays où l'on parle espagnol",
+                "Pays sans habitants",
+                "Pays uniquement européens",
+                "Pays sans culture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hispanohablante = hispanophone."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Flamenco y cultura andaluza",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« El flamenco tiene cante, baile y guitarra. Es famoso en Andalucía. » Quels éléments composent le flamenco ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": ["Cante", "Ski", "Baile", "Hockey"],
+              "correctAnswers": [0, 2],
+              "explanation": "Chant et danse cités avec la guitare."
+            },
+            {
+              "id": "q2",
+              "question": "« Baile » = …",
+              "type": "single_choice",
+              "options": ["Danse", "Repas", "Sommeil", "Devoir"],
+              "correctAnswers": [0],
+              "explanation": "Bailar = danser."
+            },
+            {
+              "id": "q3",
+              "question": "« Cante » = …",
+              "type": "single_choice",
+              "options": ["Chant", "Silence", "Peinture", "Natation"],
+              "correctAnswers": [0],
+              "explanation": "Cantar = chanter."
+            },
+            {
+              "id": "q4",
+              "question": "Andalucía se trouve…",
+              "type": "single_choice",
+              "options": [
+                "Au sud de l'Espagne",
+                "Au nord du Canada",
+                "En Sibérie",
+                "En Patagonie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Région méridionale."
+            },
+            {
+              "id": "q5",
+              "question": "Instrument typique mentionné : …",
+              "type": "single_choice",
+              "options": [
+                "Guitare",
+                "Trombone seul",
+                "Harpe celtique",
+                "Synthétiseur obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guitarra flamenca."
+            },
+            {
+              "id": "q6",
+              "question": "« Es famoso » = …",
+              "type": "single_choice",
+              "options": [
+                "Est célèbre",
+                "Est inconnu",
+                "Est interdit",
+                "Est invisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Famoso = célèbre."
+            },
+            {
+              "id": "q7",
+              "question": "Où peut-on voir un tablao ?",
+              "type": "single_choice",
+              "options": [
+                "Dans un local de spectacle andalou",
+                "Sous l'océan",
+                "Dans un avion en vol",
+                "Nulle part"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu de flamenco."
+            },
+            {
+              "id": "q8",
+              "question": "Le flamenco est classé…",
+              "type": "single_choice",
+              "options": [
+                "Patrimoine culturel (UNESCO)",
+                "Sport olympique",
+                "Matière scolaire obligatoire partout",
+                "Langue officielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reconnaissance internationale."
+            },
+            {
+              "id": "q9",
+              "question": "« Tiene » dans le texte indique…",
+              "type": "single_choice",
+              "options": [
+                "Comprend / possède (composantes)",
+                "N'a rien",
+                "Finit",
+                "Commence demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liste des éléments."
+            },
+            {
+              "id": "q10",
+              "question": "Séville et Grenade (Andalousie) sont liées à…",
+              "type": "single_choice",
+              "options": [
+                "Histoire mauresque et flamenco",
+                "Culture viking",
+                "Tradition samouraï",
+                "Cuisine scandinave seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Héritage al-Andalus et arts."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Capitales latinoamericanas",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« La capital de Cuba es La Habana. La de Venezuela es Caracas. La de Costa Rica es San José. » Quelles paires sont correctes ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Cuba – La Habana",
+                "Cuba – Madrid",
+                "Venezuela – Caracas",
+                "Venezuela – Paris"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Habana et Caracas correctes."
+            },
+            {
+              "id": "q2",
+              "question": "Capitale du Costa Rica : …",
+              "type": "single_choice",
+              "options": ["San José", "Buenos Aires", "Quito", "Montevideo"],
+              "correctAnswers": [0],
+              "explanation": "San José = Costa Rica."
+            },
+            {
+              "id": "q3",
+              "question": "« La capital de » = …",
+              "type": "single_choice",
+              "options": [
+                "La capitale de",
+                "La frontière de",
+                "La monnaie de",
+                "La mer de"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure géographique."
+            },
+            {
+              "id": "q4",
+              "question": "La Habana est connue pour…",
+              "type": "single_choice",
+              "options": [
+                "Son histoire cubaine et son front de mer",
+                "Être en Norvège",
+                "Ne pas exister",
+                "Parler allemand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capitale insulaire."
+            },
+            {
+              "id": "q5",
+              "question": "Caracas est la capitale…",
+              "type": "single_choice",
+              "options": [
+                "Du Venezuela",
+                "De l'Argentine",
+                "Du Portugal",
+                "Du Japon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Venezuela = Caracas."
+            },
+            {
+              "id": "q6",
+              "question": "Connaître capitales sert à…",
+              "type": "single_choice",
+              "options": [
+                "Lire cartes et actualités",
+                "Éviter la géographie",
+                "Confondre tous les pays",
+                "Ne pas voyager"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repères de civilisation."
+            },
+            {
+              "id": "q7",
+              "question": "« Es » dans « La Habana es… » = …",
+              "type": "single_choice",
+              "options": ["Est", "A", "Va", "Mange"],
+              "correctAnswers": [0],
+              "explanation": "Lien ville–pays."
+            },
+            {
+              "id": "q8",
+              "question": "Cuba se situe dans…",
+              "type": "single_choice",
+              "options": [
+                "La mer des Caraïbes",
+                "Le désert du Gobi",
+                "L'Arctique",
+                "L'hémisphère sud uniquement au pôle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Île des Antilles."
+            },
+            {
+              "id": "q9",
+              "question": "Costa Rica est en…",
+              "type": "single_choice",
+              "options": [
+                "Amérique centrale",
+                "Europe",
+                "Afrique de l'Ouest",
+                "Océanie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entre Nicaragua et Panama."
+            },
+            {
+              "id": "q10",
+              "question": "Toutes ces capitales sont dans des pays…",
+              "type": "single_choice",
+              "options": [
+                "Hispanophones",
+                "Germanophones",
+                "Sans espagnol",
+                "Sans habitants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Espagnol langue officielle."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Gastronomía y identidad",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« La paella valenciana lleva arroz. En México comemos tacos. En Argentina asado es tradición. » Quels plats/pays ? (2 réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Paella – arroz",
+                "Sushi – Japon cité",
+                "Tacos – México",
+                "Asado – tradition argentine"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Paella avec arroz ; tacos au Mexique."
+            },
+            {
+              "id": "q2",
+              "question": "« Arroz » = …",
+              "type": "single_choice",
+              "options": ["Riz", "Viande", "Lait", "Beurre"],
+              "correctAnswers": [0],
+              "explanation": "Arroz = riz."
+            },
+            {
+              "id": "q3",
+              "question": "« Asado » évoque…",
+              "type": "single_choice",
+              "options": [
+                "Grillades argentines",
+                "Soupe froide",
+                "Salade de fruits seule",
+                "Pain sans gluten"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Barbecue traditionnel."
+            },
+            {
+              "id": "q4",
+              "question": "La paella est associée à…",
+              "type": "single_choice",
+              "options": ["Valencia", "Stockholm", "Le Caire", "Reykjavik"],
+              "correctAnswers": [0],
+              "explanation": "Plat valencien."
+            },
+            {
+              "id": "q5",
+              "question": "« Lleva » signifie ici…",
+              "type": "single_choice",
+              "options": ["Contient / comporte", "Enlève", "Refuse", "Vole"],
+              "correctAnswers": [0],
+              "explanation": "Llevar = porter/contenir."
+            },
+            {
+              "id": "q6",
+              "question": "Les tacos sont emblématiques…",
+              "type": "single_choice",
+              "options": [
+                "Du Mexique",
+                "De la Russie",
+                "De l'Indonésie",
+                "Du Groenland"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cuisine mexicaine."
+            },
+            {
+              "id": "q7",
+              "question": "La gastronomie aide à comprendre…",
+              "type": "single_choice",
+              "options": [
+                "Identité et échanges culturels",
+                "Uniquement les mathématiques",
+                "Rien sur les pays",
+                "Les horaires de bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Culture matérielle."
+            },
+            {
+              "id": "q8",
+              "question": "« Tradición » = …",
+              "type": "single_choice",
+              "options": ["Tradition", "Tragédie", "Traffic", "Traduction"],
+              "correctAnswers": [0],
+              "explanation": "Tradición = tradition."
+            },
+            {
+              "id": "q9",
+              "question": "« Comemos » = …",
+              "type": "single_choice",
+              "options": [
+                "Nous mangeons",
+                "Nous dormons",
+                "Nous courons",
+                "Nous écrivons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comer = manger."
+            },
+            {
+              "id": "q10",
+              "question": "Goûter des plats hispaniques en classe peut…",
+              "type": "single_choice",
+              "options": [
+                "Relier langue et civilisation",
+                "Remplacer l'espagnol par le latin",
+                "Interdire les documents",
+                "Supprimer les fêtes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approche culturelle 4e."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

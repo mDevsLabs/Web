@@ -1,0 +1,2653 @@
+{
+  "id": "5e-coreen-03",
+  "year": "5e",
+  "subject": "coreen",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Découvrir le hangeul sur une affiche",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Sur une affiche scolaire coréenne, quels symboles indiquent clairement qu'il s'agit du hangeul ?",
+              "type": "multiple_choice",
+              "options": [
+                "Des lettres arrondies et des traits courts combinés en blocs",
+                "Des syllabes formées de consonnes et voyelles en carrés",
+                "De l'alphabet latin pour tout le texte",
+                "Des chiffres romains pour les titres"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le hangeul se reconnaît à ses blocs syllabiques simples, distincts du latin ou des chiffres romains."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie souvent le mot « 학교 » (hakgyo) sur une affiche à l'entrée d'un bâtiment ?",
+              "type": "single_choice",
+              "options": ["École", "Hôpital", "Banque", "Gare"],
+              "correctAnswers": [0],
+              "explanation": "학교 se lit hakgyo et désigne l'école."
+            },
+            {
+              "id": "q3",
+              "question": "Si une affiche affiche « 화장실 », où mène-t-elle le plus probablement ?",
+              "type": "single_choice",
+              "options": [
+                "Aux toilettes",
+                "À la cantine",
+                "Au gymnase",
+                "Au bureau du directeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "화장실 (hwajangsil) indique les sanitaires."
+            },
+            {
+              "id": "q4",
+              "question": "Sur une affiche, la date « 2024년 3월 1일 » se lit comment en français ?",
+              "type": "single_choice",
+              "options": [
+                "1er mars 2024",
+                "3 janvier 2024",
+                "1er janvier 2023",
+                "31 mars 2024"
+              ],
+              "correctAnswers": [0],
+              "explanation": "년 année, 월 mois, 일 jour : ordre année-mois-jour."
+            },
+            {
+              "id": "q5",
+              "question": "Le pictogramme d'un livre ouvert sur une affiche évoque plutôt…",
+              "type": "single_choice",
+              "options": [
+                "La bibliothèque ou la lecture",
+                "La piscine",
+                "Le parking",
+                "La salle de sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les icônes universelles complètent le texte coréen."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie « 입구 » sur un plan d'accès ?",
+              "type": "single_choice",
+              "options": ["Entrée", "Sortie", "Ascenseur", "Couloir"],
+              "correctAnswers": [0],
+              "explanation": "입구 (ipgu) marque l'entrée."
+            },
+            {
+              "id": "q7",
+              "question": "« 금연 » sur une affiche dans un bâtiment public signifie…",
+              "type": "single_choice",
+              "options": [
+                "Interdiction de fumer",
+                "Zone de jeux",
+                "Silence obligatoire",
+                "Photos autorisées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "금연 (geumyeon) = non-fumeur / interdit de fumer."
+            },
+            {
+              "id": "q8",
+              "question": "Pour repérer le titre principal d'une affiche, on regarde surtout…",
+              "type": "single_choice",
+              "options": [
+                "La ligne en plus gros caractères en haut",
+                "Les numéros de téléphone en bas à droite",
+                "Le code-barres",
+                "La marge blanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le titre est visuellement mis en avant."
+            },
+            {
+              "id": "q9",
+              "question": "« 시간 » sur une affiche d'événement renvoie le plus souvent à…",
+              "type": "single_choice",
+              "options": [
+                "L'heure ou la durée",
+                "Le prix",
+                "Le lieu",
+                "L'organisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "시간 (sigan) = temps / heure."
+            },
+            {
+              "id": "q10",
+              "question": "Lire de gauche à droite une affiche coréenne moderne est correct car…",
+              "type": "single_choice",
+              "options": [
+                "Le hangeul suit souvent l'ordre occidental aujourd'hui",
+                "Le coréen s'écrit toujours de bas en haut",
+                "Les chiffres sont interdits",
+                "Il n'y a pas de ponctuation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les documents contemporains utilisent l'horizontal gauche-droite."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Comprendre un emploi du temps",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dans un emploi du temps coréen, quels éléments permettent de repérer une matière sans tout traduire ?",
+              "type": "multiple_choice",
+              "options": [
+                "Des abréviations ou mots comme 수학, 국어",
+                "Des numéros de période (교시) associés à chaque case",
+                "Des pictogrammes de drapeaux uniquement",
+                "Uniquement des couleurs au hasard"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les noms de matières et la numérotation des périodes structurent le tableau."
+            },
+            {
+              "id": "q2",
+              "question": "« 월요일 » en tête de colonne désigne…",
+              "type": "single_choice",
+              "options": ["Lundi", "Mardi", "Mercredi", "Dimanche"],
+              "correctAnswers": [0],
+              "explanation": "월요일 = lundi (jour de la lune)."
+            },
+            {
+              "id": "q3",
+              "question": "« 3교시 » indique généralement…",
+              "type": "single_choice",
+              "options": [
+                "La troisième période de cours",
+                "Le troisième étage",
+                "Trois devoirs",
+                "Trois professeurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "교시 (gyosi) = période horaire scolaire."
+            },
+            {
+              "id": "q4",
+              "question": "Si « 점심시간 » apparaît entre deux blocs, c'est…",
+              "type": "single_choice",
+              "options": [
+                "La pause déjeuner",
+                "La récréation du matin",
+                "La fin des cours",
+                "L'heure de sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "점심시간 = heure du déjeuner."
+            },
+            {
+              "id": "q5",
+              "question": "« 체육 » dans une case correspond à…",
+              "type": "single_choice",
+              "options": [
+                "Éducation physique",
+                "Musique",
+                "Histoire",
+                "Anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "체육 (cheyuk) = EPS."
+            },
+            {
+              "id": "q6",
+              "question": "Une cellule vide dans le tableau signifie le plus souvent…",
+              "type": "single_choice",
+              "options": [
+                "Pas de cours à ce créneau",
+                "Cours annulé sans raison",
+                "Devoir surprise",
+                "Réunion parents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cases vides indiquent un créneau libre."
+            },
+            {
+              "id": "q7",
+              "question": "« 09:00–09:50 » sous une matière précise…",
+              "type": "single_choice",
+              "options": [
+                "La plage horaire du cours",
+                "Le numéro de salle uniquement",
+                "La note minimale",
+                "Le code examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les horaires encadrent chaque séance."
+            },
+            {
+              "id": "q8",
+              "question": "« 금요일 » se trouve où dans un tableau hebdomadaire type ?",
+              "type": "single_choice",
+              "options": [
+                "Dernier jour ouvré de la semaine scolaire",
+                "Premier jour",
+                "Jour férié fixe",
+                "Week-end"
+              ],
+              "correctAnswers": [0],
+              "explanation": "금요일 = vendredi, souvent dernière colonne."
+            },
+            {
+              "id": "q9",
+              "question": "« 방과 후 » en bas du document évoque…",
+              "type": "single_choice",
+              "options": [
+                "Les activités après les cours",
+                "L'entrée matinale",
+                "Le contrôle continu",
+                "Les vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "방과 후 = après l'école."
+            },
+            {
+              "id": "q10",
+              "question": "Pour lire l'emploi du temps, la bonne stratégie est…",
+              "type": "single_choice",
+              "options": [
+                "Croiser jours en colonnes et périodes en lignes",
+                "Lire uniquement la dernière page",
+                "Ignorer les chiffres",
+                "Ne regarder que les logos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La grille croise jours et créneaux."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Lire une carte de menu",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Sur un menu coréen, quels indices aident à repérer un plat principal ?",
+              "type": "multiple_choice",
+              "options": [
+                "Mots comme 밥, 비빔밥, 불고기",
+                "Prix affichés en won (원) à côté du nom",
+                "La mention « parking gratuit »",
+                "Des paragraphes en latin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les noms de plats et les prix en won structurent le menu."
+            },
+            {
+              "id": "q2",
+              "question": "« 김치 » sur presque toutes les lignes suggère…",
+              "type": "single_choice",
+              "options": [
+                "Un accompagnement typique",
+                "Un dessert",
+                "Une boisson gazeuse",
+                "Un ticket de métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le kimchi accompagne souvent les repas."
+            },
+            {
+              "id": "q3",
+              "question": "« 8,000원 » correspond à…",
+              "type": "single_choice",
+              "options": [
+                "Un prix en won sud-coréen",
+                "Une température",
+                "Un numéro de table",
+                "Une heure de service"
+              ],
+              "correctAnswers": [0],
+              "explanation": "원 (won) est la monnaie."
+            },
+            {
+              "id": "q4",
+              "question": "« 음료 » en section séparée liste…",
+              "type": "single_choice",
+              "options": [
+                "Les boissons",
+                "Les entrées chaudes",
+                "Les sauces",
+                "Les couverts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "음료 = boissons."
+            },
+            {
+              "id": "q5",
+              "question": "« 매운 » à côté d'un plat avertit que…",
+              "type": "single_choice",
+              "options": [
+                "Le plat est épicé",
+                "Le plat est froid",
+                "Le plat est sucré",
+                "Le plat est sans gluten"
+              ],
+              "correctAnswers": [0],
+              "explanation": "매운 (maeun) = épicé/piquant."
+            },
+            {
+              "id": "q6",
+              "question": "« 세트 메뉴 » propose…",
+              "type": "single_choice",
+              "options": [
+                "Un menu combiné à prix fixe",
+                "Uniquement de l'eau",
+                "La carte des vins seule",
+                "Les horaires du restaurant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "세트 = formule ensemble."
+            },
+            {
+              "id": "q7",
+              "question": "« 추천 » sur une ligne met en avant…",
+              "type": "single_choice",
+              "options": [
+                "Un plat recommandé",
+                "Un plat retiré",
+                "Une allergie",
+                "Un code promo expiré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "추천 (chuchon) = recommandation."
+            },
+            {
+              "id": "q8",
+              "question": "« 채식 » indique une option…",
+              "type": "single_choice",
+              "options": [
+                "Végétarienne",
+                "Très grasse",
+                "Crue obligatoire",
+                "Sans riz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "채식 = régime végétarien."
+            },
+            {
+              "id": "q9",
+              "question": "« 포장 » en bas du menu concerne…",
+              "type": "single_choice",
+              "options": [
+                "La vente à emporter",
+                "La réservation de salle",
+                "Le service en salle uniquement",
+                "Le parking"
+              ],
+              "correctAnswers": [0],
+              "explanation": "포장 = emballage / à emporter."
+            },
+            {
+              "id": "q10",
+              "question": "Lire les allergènes sur un menu coréen moderne, c'est chercher…",
+              "type": "single_choice",
+              "options": [
+                "Des pictogrammes ou notes en petits caractères",
+                "Uniquement le logo du pays",
+                "Le numéro de téléphone du chef",
+                "La météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les infos sanitaires sont parfois en note."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Interpréter une signalisation urbaine",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels textes sur un panneau de rue à Séoul orientent piétons et conducteurs ?",
+              "type": "multiple_choice",
+              "options": [
+                "출구, 횡단보도, 버스 정류장",
+                "지하철 avec flèche vers le métro",
+                "Uniquement des poèmes",
+                "Des listes de courses"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sortie, passage piéton, arrêt de bus et métro sont des repères fréquents."
+            },
+            {
+              "id": "q2",
+              "question": "« 횡단보도 » signifie…",
+              "type": "single_choice",
+              "options": [
+                "Passage piéton",
+                "Station-service",
+                "Pharmacie",
+                "Musée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "횡단보도 = passage pour traverser."
+            },
+            {
+              "id": "q3",
+              "question": "« 지하철 » avec une flèche indique…",
+              "type": "single_choice",
+              "options": [
+                "Direction du métro",
+                "Direction de la plage",
+                "Zone agricole",
+                "Frontière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "지하철 = métro."
+            },
+            {
+              "id": "q4",
+              "question": "Un panneau rouge circulaire avec barre blanche évoque en général…",
+              "type": "single_choice",
+              "options": [
+                "Une interdiction",
+                "Une aire de pique-nique",
+                "Un marché",
+                "Un concert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les panneaux d'interdiction suivent des codes visuels internationaux."
+            },
+            {
+              "id": "q5",
+              "question": "« 버스 정류장 » est l'endroit où…",
+              "type": "single_choice",
+              "options": [
+                "On attend le bus",
+                "On achète des timbres",
+                "On loue des vélos",
+                "On vote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "정류장 = arrêt."
+            },
+            {
+              "id": "q6",
+              "question": "« 출구 » avec numéro « 3 » dans le métro…",
+              "type": "single_choice",
+              "options": [
+                "Sortie numéro 3",
+                "Ligne 3 uniquement",
+                "Tarif 3 won",
+                "Trois stations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sorties sont numérotées."
+            },
+            {
+              "id": "q7",
+              "question": "« 주차 금지 » interdit…",
+              "type": "single_choice",
+              "options": [
+                "Le stationnement",
+                "La marche",
+                "Les photos",
+                "Les chiens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "주차 = stationnement ; 금지 = interdit."
+            },
+            {
+              "id": "q8",
+              "question": "Les noms de quartier en hangeul et en alphabet latin aident à…",
+              "type": "single_choice",
+              "options": [
+                "Repérer les touristes et locaux",
+                "Cacher l'adresse",
+                "Supprimer le GPS",
+                "Interdire les cartes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La double écriture facilite la lecture."
+            },
+            {
+              "id": "q9",
+              "question": "« 편의점 » sur un panneau annonce…",
+              "type": "single_choice",
+              "options": [
+                "Une supérette de proximité",
+                "Un tribunal",
+                "Un stade olympique",
+                "Une mine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "편의점 = convenience store."
+            },
+            {
+              "id": "q10",
+              "question": "Lire un panneau, c'est d'abord repérer…",
+              "type": "single_choice",
+              "options": [
+                "Mots-clés et pictogrammes",
+                "La couleur du ciel",
+                "Le nombre de passants",
+                "L'âge du panneau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Texte et symboles donnent le sens."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Décoder une invitation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Sur une invitation à une fête scolaire en Corée, quels champs sont quasi obligatoires ?",
+              "type": "multiple_choice",
+              "options": [
+                "Date, lieu, objet de la fête",
+                "Nom de l'organisateur ou de l'école",
+                "Recette de kimchi uniquement",
+                "Carte météo de l'Antarctique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Date, lieu, motif et organisateur structurent l'invitation."
+            },
+            {
+              "id": "q2",
+              "question": "« 초대합니다 » exprime…",
+              "type": "single_choice",
+              "options": [
+                "Une invitation",
+                "Un refus",
+                "Une amende",
+                "Une météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "초대합니다 = nous vous invitons."
+            },
+            {
+              "id": "q3",
+              "question": "« 장소 » renvoie à…",
+              "type": "single_choice",
+              "options": ["Le lieu", "Le prix", "Le menu", "Le professeur"],
+              "correctAnswers": [0],
+              "explanation": "장소 (jangso) = endroit."
+            },
+            {
+              "id": "q4",
+              "question": "« 오후 2시 » précise…",
+              "type": "single_choice",
+              "options": ["14 h", "2 h du matin", "Minuit", "20 h"],
+              "correctAnswers": [0],
+              "explanation": "오후 = après-midi ; 2시 = deux heures."
+            },
+            {
+              "id": "q5",
+              "question": "« 학예회 » annonce souvent…",
+              "type": "single_choice",
+              "options": [
+                "Une fête scolaire / spectacle",
+                "Un examen médical",
+                "Une grève",
+                "Un déménagement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "학예회 = fête artistique scolaire."
+            },
+            {
+              "id": "q6",
+              "question": "« RSVP » ou « 참석 여부 » demande…",
+              "type": "single_choice",
+              "options": [
+                "De confirmer sa présence",
+                "De payer en won",
+                "De parler latin",
+                "D'apporter un animal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On indique si l'on viendra."
+            },
+            {
+              "id": "q7",
+              "question": "« dress code » ou « 복장 » mentionne…",
+              "type": "single_choice",
+              "options": [
+                "Tenue conseillée",
+                "Heure de fin",
+                "Nombre de places",
+                "Langue du discours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "복장 = tenue vestimentaire."
+            },
+            {
+              "id": "q8",
+              "question": "Une carte avec plan schématique sert à…",
+              "type": "single_choice",
+              "options": [
+                "Trouver le bâtiment",
+                "Calculer des fractions",
+                "Apprendre le hangeul",
+                "Choisir un prénom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le plan guide les invités."
+            },
+            {
+              "id": "q9",
+              "question": "« 주최 » indique…",
+              "type": "single_choice",
+              "options": [
+                "L'organisateur",
+                "Le invité surprise",
+                "Le DJ",
+                "Le photographe officiel du pays"
+              ],
+              "correctAnswers": [0],
+              "explanation": "주최 = organisation / hôte."
+            },
+            {
+              "id": "q10",
+              "question": "Lire une invitation, c'est vérifier en priorité…",
+              "type": "single_choice",
+              "options": [
+                "Quand, où et pourquoi",
+                "La couleur de l'enveloppe seule",
+                "Le poids du papier",
+                "Le nombre de syllabes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les trois questions essentielles guident la lecture."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Lire une bulletin météo simple",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dans un bulletin météo coréen court, quels éléments sont les plus utiles pour la journée ?",
+              "type": "multiple_choice",
+              "options": [
+                "Température, ciel, pluie ou neige",
+                "Probabilité de précipitations (강수 확률)",
+                "Recettes de nouilles",
+                "Horoscope uniquement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Températures, état du ciel et probabilité de pluie préparent la journée."
+            },
+            {
+              "id": "q2",
+              "question": "« 맑음 » décrit un ciel…",
+              "type": "single_choice",
+              "options": [
+                "Dégagé / ensoleillé",
+                "Très orageux",
+                "Toujours la nuit",
+                "Couvert de sable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "맑음 = beau temps."
+            },
+            {
+              "id": "q3",
+              "question": "« 비 » signifie…",
+              "type": "single_choice",
+              "options": ["Pluie", "Neige", "Brouillard", "Soleil"],
+              "correctAnswers": [0],
+              "explanation": "비 (bi) = pluie."
+            },
+            {
+              "id": "q4",
+              "question": "« 5°C » indique…",
+              "type": "single_choice",
+              "options": [
+                "Cinq degrés Celsius",
+                "Cinq heures",
+                "Cinq jours",
+                "Cinq villes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "°C = température."
+            },
+            {
+              "id": "q5",
+              "question": "« 서울 » en en-tête localise la prévision à…",
+              "type": "single_choice",
+              "options": ["Séoul", "Busan", "Paris", "Tokyo"],
+              "correctAnswers": [0],
+              "explanation": "서울 = Séoul, capitale."
+            },
+            {
+              "id": "q6",
+              "question": "« 강수 확률 60% » annonce…",
+              "type": "single_choice",
+              "options": [
+                "60 % de chance de pluie",
+                "60 km/h de vent fixe",
+                "60 mm de neige certaine",
+                "60 jours de sécheresse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "강수 확률 = probabilité de précipitations."
+            },
+            {
+              "id": "q7",
+              "question": "« 눈 » dans l'icône prévoit…",
+              "type": "single_choice",
+              "options": [
+                "Neige",
+                "Nuages légers",
+                "Canicule",
+                "Ouragan catégorie 5"
+              ],
+              "correctAnswers": [0],
+              "explanation": "눈 = neige."
+            },
+            {
+              "id": "q8",
+              "question": "« 최고 / 최저 » donnent…",
+              "type": "single_choice",
+              "options": [
+                "Températures max et min",
+                "Heures de marée",
+                "Prix du riz",
+                "Notes scolaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "최고 = max, 최저 = min."
+            },
+            {
+              "id": "q9",
+              "question": "« 미세먼지 주의 » alerte sur…",
+              "type": "single_choice",
+              "options": [
+                "Qualité de l'air / particules fines",
+                "Grêle uniquement",
+                "Tsunami",
+                "Éclipse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "미세먼지 = poussière fine."
+            },
+            {
+              "id": "q10",
+              "question": "Pour planifier une sortie, on compare surtout…",
+              "type": "single_choice",
+              "options": [
+                "Matin et après-midi du même jour",
+                "Uniquement la lune",
+                "Le prix du métro",
+                "La date de création du hangeul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les créneaux horaires changent la météo ressentie."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Consulter un horaire de bus",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Sur un horaire de bus urbain, quelles infos permettent de prendre le bon véhicule ?",
+              "type": "multiple_choice",
+              "options": [
+                "Numéro de ligne, direction, heures de passage",
+                "Nom de l'arrêt où l'on attend",
+                "Paroles d'une chanson",
+                "Uniquement le nom du chauffeur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ligne, terminus, horaires et nom d'arrêt évitent l'erreur."
+            },
+            {
+              "id": "q2",
+              "question": "« 273번 버스 » désigne…",
+              "type": "single_choice",
+              "options": [
+                "Le bus de la ligne 273",
+                "273 passagers",
+                "273 arrêts sans bus",
+                "273 won exacts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "번 = numéro de ligne."
+            },
+            {
+              "id": "q3",
+              "question": "« 첫차 / 막차 » indiquent…",
+              "type": "single_choice",
+              "options": [
+                "Premier et dernier bus",
+                "Bus gratuit",
+                "Bus sans roues",
+                "Bus réservé aux chats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "첫차 premier, 막차 dernier départ."
+            },
+            {
+              "id": "q4",
+              "question": "« 방향 » ou flèche vers un quartier précise…",
+              "type": "single_choice",
+              "options": [
+                "Le sens du trajet",
+                "La vitesse du vent",
+                "Le menu du conducteur",
+                "La couleur du bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On vérifie le terminus annoncé."
+            },
+            {
+              "id": "q5",
+              "question": "« 배차 간격 10분 » signifie…",
+              "type": "single_choice",
+              "options": [
+                "Un bus environ toutes les 10 minutes",
+                "Dix bus à la seconde",
+                "Dix heures d'attente",
+                "Dix lignes fusionnées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "배차 간격 = intervalle entre véhicules."
+            },
+            {
+              "id": "q6",
+              "question": "« 정류장 이름 » en haut du panneau…",
+              "type": "single_choice",
+              "options": [
+                "Nom de l'arrêt actuel",
+                "Nom du prochain pays",
+                "Nom du président",
+                "Nom du bus uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque arrêt est identifié."
+            },
+            {
+              "id": "q7",
+              "question": "Un tableau « 평일 / 토요일 / 일요일 » distingue…",
+              "type": "single_choice",
+              "options": [
+                "Semaine, samedi, dimanche",
+                "Matin, midi, soir uniquement",
+                "Été, automne, hiver sans printemps",
+                "Bus rapide et lent identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les horaires varient selon le jour."
+            },
+            {
+              "id": "q8",
+              "question": "« 심야 버스 » circule…",
+              "type": "single_choice",
+              "options": [
+                "La nuit tard",
+                "Uniquement à midi",
+                "Jamais",
+                "Sous l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "심야 = profonde nuit."
+            },
+            {
+              "id": "q9",
+              "question": "« 요금 » ou pictogramme carte annonce…",
+              "type": "single_choice",
+              "options": [
+                "Tarif ou moyen de paiement",
+                "Nombre de fenêtres",
+                "Hauteur des arbres",
+                "Température du moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "요금 = prix du trajet."
+            },
+            {
+              "id": "q10",
+              "question": "Pour ne pas rater le bus, on repère…",
+              "type": "single_choice",
+              "options": [
+                "L'heure la plus proche de maintenant",
+                "La ligne la plus longue en lettres",
+                "Le bus le plus coloré",
+                "Un arrêt au hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On choisit le prochain passage utile."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Parcourir un dépliant de musée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Un dépliant de musée national coréen met en avant quels repères ?",
+              "type": "multiple_choice",
+              "options": [
+                "Horaires, expositions, plan des salles",
+                "Tarifs ou gratuité (무료) et consignes de visite",
+                "Classement de jeux vidéo",
+                "Liste des métros du monde entier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pratique, contenu culturel et règles guident la visite."
+            },
+            {
+              "id": "q2",
+              "question": "« 국립중앙박물관 » renvoie au…",
+              "type": "single_choice",
+              "options": [
+                "Musée national central",
+                "Stade de foot",
+                "Aéroport",
+                "Marché aux poissons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Institution majeure à Séoul."
+            },
+            {
+              "id": "q3",
+              "question": "« 관람 시간 » précise…",
+              "type": "single_choice",
+              "options": [
+                "Heures d'ouverture",
+                "Heure de fermeture des frontières",
+                "Durée d'un film",
+                "Heure de prière obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "관람 = visite ; horaires d'accueil."
+            },
+            {
+              "id": "q4",
+              "question": "« 특별 전시 » annonce…",
+              "type": "single_choice",
+              "options": [
+                "Exposition temporaire",
+                "Fermeture totale",
+                "Vente de voitures",
+                "Cours de natation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "특별 전시 = expo spéciale."
+            },
+            {
+              "id": "q5",
+              "question": "« 무료 » pour certains visiteurs signifie…",
+              "type": "single_choice",
+              "options": [
+                "Entrée gratuite sous conditions",
+                "Payer double",
+                "Interdit aux étrangers",
+                "Visite de nuit seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "무료 = gratuit."
+            },
+            {
+              "id": "q6",
+              "question": "« 오디오 가이드 » propose…",
+              "type": "single_choice",
+              "options": [
+                "Commentaires sonores",
+                "Uniquement des photos",
+                "Un jeu de cartes",
+                "Un examen final"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guide audio pour les salles."
+            },
+            {
+              "id": "q7",
+              "question": "« 금속 공예 » comme titre de salle évoque…",
+              "type": "single_choice",
+              "options": [
+                "Artisanat en métal",
+                "Peinture abstraite seule",
+                "Sport extrême",
+                "Jardin botanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "공예 = artisanat / arts appliqués."
+            },
+            {
+              "id": "q8",
+              "question": "« 사진 촬영 금지 » interdit…",
+              "type": "single_choice",
+              "options": [
+                "De photographier",
+                "De marcher",
+                "De lire",
+                "De respirer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines œuvres sont protégées."
+            },
+            {
+              "id": "q9",
+              "question": "Un plan « 1층, 2층 » aide à…",
+              "type": "single_choice",
+              "options": [
+                "Se repérer par étage",
+                "Choisir un restaurant",
+                "Réserver un hôtel",
+                "Acheter des billets de train"
+              ],
+              "correctAnswers": [0],
+              "explanation": "층 = étage."
+            },
+            {
+              "id": "q10",
+              "question": "Lire le dépliant avant la visite sert surtout à…",
+              "type": "single_choice",
+              "options": [
+                "Choisir ce qu'on veut voir en priorité",
+                "Apprendre à conduire",
+                "Oublier les horaires",
+                "Éviter toute culture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On prépare un parcours cohérent."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Comprendre des heures d'ouverture",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Sur une affiche « heures d'ouverture » en Corée, quels couples d'infos sont essentiels ?",
+              "type": "multiple_choice",
+              "options": [
+                "Jours ouvrés et heures, jours de fermeture",
+                "Pause déjeuner ou fermeture temporaire éventuelle",
+                "Couleur des murs",
+                "Uniquement le nom du propriétaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Quand c'est ouvert, fermé ou en pause évite le déplacement inutile."
+            },
+            {
+              "id": "q2",
+              "question": "« 영업 시간 » signifie…",
+              "type": "single_choice",
+              "options": [
+                "Heures d'ouverture commerciale",
+                "Heure de lever du soleil",
+                "Durée d'un vol",
+                "Période scolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "영업 = activité commerciale."
+            },
+            {
+              "id": "q3",
+              "question": "« 휴무일 » indique…",
+              "type": "single_choice",
+              "options": [
+                "Jour de fermeture",
+                "Jour de fête nationale obligatoire partout",
+                "Heure de pointe",
+                "Promotion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "휴무 = repos / fermé."
+            },
+            {
+              "id": "q4",
+              "question": "« 월–금 10:00–19:00 » décrit…",
+              "type": "single_choice",
+              "options": [
+                "Lundi à vendredi de 10 h à 19 h",
+                "Tous les jours 24 h/24",
+                "Uniquement le dimanche",
+                "Une minute par semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plage horaire en semaine."
+            },
+            {
+              "id": "q5",
+              "question": "« 점심시간 12:30–13:30 » peut signifier…",
+              "type": "single_choice",
+              "options": [
+                "Fermeture temporaire à midi",
+                "Ouverture exceptionnelle toute la nuit",
+                "Gratuité totale",
+                "Changement de monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pause déjeuner fréquente en commerce."
+            },
+            {
+              "id": "q6",
+              "question": "« 공휴일 » renvoie aux…",
+              "type": "single_choice",
+              "options": [
+                "Jours fériés",
+                "Jours de pluie",
+                "Jours sans hangeul",
+                "Jours de grève automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "공휴일 = jour férié officiel."
+            },
+            {
+              "id": "q7",
+              "question": "« 24시간 » annonce un lieu…",
+              "type": "single_choice",
+              "options": [
+                "Ouvert en continu",
+                "Ouvert une minute",
+                "Fermé définitivement",
+                "Réservé aux cyclistes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Service permanent."
+            },
+            {
+              "id": "q8",
+              "question": "« 마지막 주문 30분 전 » signifie…",
+              "type": "single_choice",
+              "options": [
+                "Commander avant la fin proche",
+                "Partir après fermeture",
+                "Payer en dollar",
+                "Fermer le magasin soi-même"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dernière commande avant la clôture."
+            },
+            {
+              "id": "q9",
+              "question": "Un pictogramme de cadenas après 22 h suggère…",
+              "type": "single_choice",
+              "options": [
+                "Fermeture nocturne",
+                "Ouverture matinale",
+                "Concert gratuit",
+                "Piscine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symbole de fermeture."
+            },
+            {
+              "id": "q10",
+              "question": "Avant de se déplacer, on vérifie surtout…",
+              "type": "single_choice",
+              "options": [
+                "Si le jour choisi n'est pas un 휴무일",
+                "La marque de ses chaussures",
+                "Le nombre de bus dans le pays",
+                "La date d'invention du métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un jour fermé bloque la visite."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Lire une courte lettre scolaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Une lettre du professeur aux familles en Corée contient souvent…",
+              "type": "multiple_choice",
+              "options": [
+                "Objet, date, message, signature",
+                "Date limite (마감일) ou action attendue des parents",
+                "Uniquement des blagues",
+                "La carte du monde en entier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Forme polie avec objet clair, consigne et date limite éventuelle."
+            },
+            {
+              "id": "q2",
+              "question": "« 학부모님께 » s'adresse…",
+              "type": "single_choice",
+              "options": [
+                "Aux parents d'élèves",
+                "Aux chauffeurs de taxi",
+                "Aux joueurs pro",
+                "Aux astronautes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "학부모 = parents d'élèves."
+            },
+            {
+              "id": "q3",
+              "question": "« 안내드립니다 » introduit…",
+              "type": "single_choice",
+              "options": [
+                "Une information officielle",
+                "Une insulte",
+                "Une recette",
+                "Un horoscope"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule polie « nous vous informons »."
+            },
+            {
+              "id": "q4",
+              "question": "« 현장 학습 » annonce…",
+              "type": "single_choice",
+              "options": [
+                "Sortie scolaire sur le terrain",
+                "Examen final",
+                "Vacances illimitées",
+                "Changement de monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Visite pédagogique hors classe."
+            },
+            {
+              "id": "q5",
+              "question": "« 준비물 » liste…",
+              "type": "single_choice",
+              "options": [
+                "Ce qu'il faut apporter",
+                "Notes de musique",
+                "Résultats électoraux",
+                "Carte météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matériel à préparer."
+            },
+            {
+              "id": "q6",
+              "question": "« 동의서 제출 » demande…",
+              "type": "single_choice",
+              "options": [
+                "De rendre un formulaire d'accord parental",
+                "De payer en won",
+                "D'apprendre le latin",
+                "De quitter l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "동의서 = formulaire de consentement."
+            },
+            {
+              "id": "q7",
+              "question": "« 마감일 » est…",
+              "type": "single_choice",
+              "options": [
+                "La date limite",
+                "Le premier jour",
+                "L'heure du sport",
+                "Le nom du directeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Date butoir pour rendre un document."
+            },
+            {
+              "id": "q8",
+              "question": "« 감사합니다 » en fin de lettre exprime…",
+              "type": "single_choice",
+              "options": ["Remerciement", "Colère", "Confusion", "Refus"],
+              "correctAnswers": [0],
+              "explanation": "Politesse standard."
+            },
+            {
+              "id": "q9",
+              "question": "Une consigne « 편한 복장 » invite à…",
+              "type": "single_choice",
+              "options": [
+                "Porter une tenue confortable",
+                "Porter un hanbok obligatoire",
+                "Venir en costume de plongée",
+                "Ne pas s'habiller"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tenue pratique pour la sortie."
+            },
+            {
+              "id": "q10",
+              "question": "Pour résumer la lettre, on relève…",
+              "type": "single_choice",
+              "options": [
+                "Action attendue des parents",
+                "Couleur du stylo du prof",
+                "Nombre de fenêtres de l'école",
+                "Marque du téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quoi faire et quand : l'essentiel."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Séoul, capitale",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Séoul est un repère de civilisation car elle concentre…",
+              "type": "multiple_choice",
+              "options": [
+                "Institutions politiques, patrimoine, économie",
+                "Des palais, musées et quartiers historiques",
+                "Uniquement des déserts",
+                "Exclusivement des usines sans culture"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Capitale dense, mélange histoire, pouvoir et modernité."
+            },
+            {
+              "id": "q2",
+              "question": "Séoul se situe en…",
+              "type": "single_choice",
+              "options": [
+                "Corée du Sud",
+                "Corée du Nord uniquement",
+                "Chine",
+                "Japon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cœur du pays sud-coréen."
+            },
+            {
+              "id": "q3",
+              "question": "Le fleuve Han traverse la région de…",
+              "type": "single_choice",
+              "options": ["Séoul", "Paris", "Le Caire", "Lima"],
+              "correctAnswers": [0],
+              "explanation": "Le Han (한강) structure la ville."
+            },
+            {
+              "id": "q4",
+              "question": "Gyeongbokgung, palais royal, se visite à…",
+              "type": "single_choice",
+              "options": ["Séoul", "Jeju seule", "Antarctique", "Lune"],
+              "correctAnswers": [0],
+              "explanation": "Grand palais de la dynastie Joseon."
+            },
+            {
+              "id": "q5",
+              "question": "La Namsan Tower est un symbole…",
+              "type": "single_choice",
+              "options": [
+                "Moderne de la ville",
+                "Agricole du Moyen Âge européen",
+                "Romain antique",
+                "Viking"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Point de vue emblématique."
+            },
+            {
+              "id": "q6",
+              "question": "Le métro séoulite est connu pour…",
+              "type": "single_choice",
+              "options": [
+                "Sa grande taille et fréquentation",
+                "N'avoir qu'une station",
+                "Ne jamais circuler",
+                "Être réservé aux bateaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseau massif et utilisé."
+            },
+            {
+              "id": "q7",
+              "question": "Myeongdong est un quartier associé au…",
+              "type": "single_choice",
+              "options": [
+                "Commerce et animation",
+                "Pêche en haute mer",
+                "Silence total",
+                "Agriculture seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zone commerçante très fréquentée."
+            },
+            {
+              "id": "q8",
+              "question": "La Corée du Sud a pour langue officielle le…",
+              "type": "single_choice",
+              "options": ["Coréen", "Français seul", "Latin", "Swahili"],
+              "correctAnswers": [0],
+              "explanation": "Langue nationale avec le hangeul."
+            },
+            {
+              "id": "q9",
+              "question": "Séoul a accueilli les Jeux olympiques d'été en…",
+              "type": "single_choice",
+              "options": ["1988", "1900", "2024", "1776"],
+              "correctAnswers": [0],
+              "explanation": "JO 1988, étape de modernisation."
+            },
+            {
+              "id": "q10",
+              "question": "Comprendre Séoul aide à saisir…",
+              "type": "single_choice",
+              "options": [
+                "L'équilibre tradition / innovation en Corée",
+                "Uniquement la cuisine mexicaine",
+                "L'histoire de Rome seule",
+                "Les cartes marines du XVIIe siècle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La capitale résume de nombreux enjeux nationaux."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Gyeongbokgung et la dynastie Joseon",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Gyeongbokgung illustre quels aspects de la civilisation joseonienne ?",
+              "type": "multiple_choice",
+              "options": [
+                "Architecture palatiale, cérémonial, pouvoir royal",
+                "Mémoire nationale et reconstructions du XXe siècle",
+                "Stations spatiales du XIIe siècle",
+                "Pyramides d'Égypte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Palais joseon, symbole du pouvoir et de l'identité coréenne."
+            },
+            {
+              "id": "q2",
+              "question": "La dynastie Joseon a dominé la péninsule environ de…",
+              "type": "single_choice",
+              "options": [
+                "1392 à 1910",
+                "500 à 600",
+                "2000 à 2050",
+                "100 av. J.-C. à 100 ap. J.-C."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Longue période prémoderne."
+            },
+            {
+              "id": "q3",
+              "question": "Le changement de la garde au palais est…",
+              "type": "single_choice",
+              "options": [
+                "Une reconstitution touristique et culturelle",
+                "Un match de football",
+                "Une élection",
+                "Un concours de cuisine italienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spectacle basé sur le protocole royal."
+            },
+            {
+              "id": "q4",
+              "question": "Les toits courbes des palais coréens utilisent souvent…",
+              "type": "single_choice",
+              "options": [
+                "Tuiles et bois",
+                "Glace polaire",
+                "Plastique jetable",
+                "Sable seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Techniques traditionnelles de construction."
+            },
+            {
+              "id": "q5",
+              "question": "Le mont Bugaksan domine le site de…",
+              "type": "single_choice",
+              "options": ["Gyeongbokgung", "Tour Eiffel", "Big Ben", "Colisée"],
+              "correctAnswers": [0],
+              "explanation": "Relief derrière le palais à Séoul."
+            },
+            {
+              "id": "q6",
+              "question": "« Geunjeongjeon » est la salle du…",
+              "type": "single_choice",
+              "options": ["Trône", "Sport", "Piscine", "Cinéma"],
+              "correctAnswers": [0],
+              "explanation": "Lieu des audiences officielles."
+            },
+            {
+              "id": "q7",
+              "question": "Le palais a été gravement endommagé pendant…",
+              "type": "single_choice",
+              "options": [
+                "Guerres et occupations du XXe siècle",
+                "Aucun événement",
+                "Un volcan en 1392",
+                "Une inondation de lave en 2020"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reconstructions progressives depuis."
+            },
+            {
+              "id": "q8",
+              "question": "Porter un hanbok à la visite peut offrir…",
+              "type": "single_choice",
+              "options": [
+                "Tarif réduit selon règles locales",
+                "Un billet d'avion",
+                "Citoyenneté automatique",
+                "Un examen universitaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incitation culturelle fréquente."
+            },
+            {
+              "id": "q9",
+              "question": "Le palais se trouve près de la place…",
+              "type": "single_choice",
+              "options": [
+                "Gwanghwamun",
+                "Times Square",
+                "Red Square",
+                "Trafalgar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grande porte et place emblématiques."
+            },
+            {
+              "id": "q10",
+              "question": "Visiter Gyeongbokgung permet de relier…",
+              "type": "single_choice",
+              "options": [
+                "Histoire royale et identité nationale",
+                "Géologie lunaire",
+                "Football brésilien",
+                "Poésie française du Moyen Âge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu clé pour la mémoire collective."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le bibimbap, plat emblématique",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le bibimbap représente la civilisation coréenne par…",
+              "type": "multiple_choice",
+              "options": [
+                "Mélange d'ingrédients, riz, légumes, gochujang",
+                "Convivialité à table et geste du mélange dans le bol",
+                "Absence totale de nourriture",
+                "Boisson gazeuse obligatoire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plat équilibré, coloré, partagé et lié au terroir."
+            },
+            {
+              "id": "q2",
+              "question": "« Bibimbap » signifie littéralement idée de…",
+              "type": "single_choice",
+              "options": [
+                "Riz mélangé",
+                "Soupe froide",
+                "Poisson cru seul",
+                "Dessert glacé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bibim = mélanger, bap = riz."
+            },
+            {
+              "id": "q3",
+              "question": "Le gochujang est…",
+              "type": "single_choice",
+              "options": [
+                "Une pâte de piment fermentée",
+                "Un fromage suisse",
+                "Un thé vert en poudre",
+                "Un gâteau sec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Condiment rouge typique."
+            },
+            {
+              "id": "q4",
+              "question": "Jeonju est réputée pour une version…",
+              "type": "single_choice",
+              "options": [
+                "Traditionnelle du bibimbap",
+                "Du sushi",
+                "De la pizza",
+                "De la paella"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ville associée au plat."
+            },
+            {
+              "id": "q5",
+              "question": "Avant de manger, on mélange le bol pour…",
+              "type": "single_choice",
+              "options": [
+                "Harmoniser saveurs et textures",
+                "Refroidir le métal",
+                "Cacher les légumes",
+                "Éviter le riz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gestuelle partagée à table."
+            },
+            {
+              "id": "q6",
+              "question": "Un œuf sur le bibimbap apporte…",
+              "type": "single_choice",
+              "options": [
+                "Protéines et onctuosité",
+                "Uniquement de la couleur bleue",
+                "De la glace",
+                "Du sucre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ingrédient fréquent."
+            },
+            {
+              "id": "q7",
+              "question": "Les légumes variés symbolisent aussi…",
+              "type": "single_choice",
+              "options": [
+                "Équilibre et saisonnalité",
+                "Guerre navale",
+                "Musique classique",
+                "Architecture gothique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cuisine liée aux saisons."
+            },
+            {
+              "id": "q8",
+              "question": "Le bibimbap peut se servir dans un bol…",
+              "type": "single_choice",
+              "options": [
+                "En pierre chaude (dolsot)",
+                "En papier jetable uniquement",
+                "Sans bol",
+                "En verre fragile interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dolsot cuit le riz croustillant."
+            },
+            {
+              "id": "q9",
+              "question": "Ce plat est connu…",
+              "type": "single_choice",
+              "options": [
+                "À l'international comme emblème coréen",
+                "Uniquement en Antarctique",
+                "Seulement en Corée sans export",
+                "Comme plat italien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ambassadeur culinaire."
+            },
+            {
+              "id": "q10",
+              "question": "Étudier le bibimbap, c'est aborder…",
+              "type": "single_choice",
+              "options": [
+                "Culture alimentaire et convivialité",
+                "Astronomie",
+                "Droit romain",
+                "Cartographie médiévale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La table est un repère civilisationnel."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le hanbok, vêtement traditionnel",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le hanbok est un repère culturel car il montre…",
+              "type": "multiple_choice",
+              "options": [
+                "Esthétique coréenne, couleurs, coupe",
+                "Rituels familiaux (mariages, fêtes comme Chuseok)",
+                "Uniforme scolaire occidental obligatoire",
+                "Tenue de plongée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vêtement cérémoniel, identitaire et festif."
+            },
+            {
+              "id": "q2",
+              "question": "Le hanbok se compose d'un jeogori (veste) et…",
+              "type": "single_choice",
+              "options": [
+                "D'une jupe ou d'un pantalon",
+                "D'un casque de moto",
+                "D'une cravate seule",
+                "D'un manteau de ski"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Femmes : chima ; hommes : baji."
+            },
+            {
+              "id": "q3",
+              "question": "On le porte souvent pour…",
+              "type": "single_choice",
+              "options": [
+                "Fêtes familiales et mariages",
+                "Match de rugby",
+                "Travaux de mine",
+                "Vol spatial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Occasions solennelles."
+            },
+            {
+              "id": "q4",
+              "question": "Les couleurs vives du hanbok peuvent indiquer…",
+              "type": "single_choice",
+              "options": [
+                "Statut social historique ou goût",
+                "Température extérieure exacte",
+                "Numéro de téléphone",
+                "Heure du bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symbolique des teintes."
+            },
+            {
+              "id": "q5",
+              "question": "Le nœud du otgoreum sert à…",
+              "type": "single_choice",
+              "options": [
+                "Fermer le jeogori",
+                "Attacher des skis",
+                "Ouvrir une porte",
+                "Charger un téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ruban décoratif et pratique."
+            },
+            {
+              "id": "q6",
+              "question": "Seoul et autres villes proposent…",
+              "type": "single_choice",
+              "options": [
+                "Location de hanbok pour visites",
+                "Vente de fusées",
+                "Cours de surf obligatoire",
+                "Chasse au trésor pirate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tourisme culturel."
+            },
+            {
+              "id": "q7",
+              "question": "Le hanbok influence encore…",
+              "type": "single_choice",
+              "options": [
+                "Mode contemporaine et K-dramas",
+                "Lois maritimes du XVIIe siècle",
+                "Cartes routières",
+                "Grammaire latine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Références visuelles modernes."
+            },
+            {
+              "id": "q8",
+              "question": "Porter hanbok dans un palais respecte souvent…",
+              "type": "single_choice",
+              "options": [
+                "Consignes de respect du site",
+                "Interdiction de marcher",
+                "Obligation de courir",
+                "Silence absolu permanent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tenue adaptée au patrimoine."
+            },
+            {
+              "id": "q9",
+              "question": "Le hanbok diffère du kimono japonais par…",
+              "type": "single_choice",
+              "options": [
+                "Coupe et nœud distincts",
+                "Identité identique",
+                "Absence de tissu",
+                "Usage uniquement nocturne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traditions vestimentaires voisines mais distinctes."
+            },
+            {
+              "id": "q10",
+              "question": "Comprendre le hanbok enrichit l'étude de…",
+              "type": "single_choice",
+              "options": [
+                "Art, société et rituels coréens",
+                "Physique quantique seule",
+                "Géologie martienne",
+                "Droit américain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vêtement = document culturel."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Le hangeul, alphabet national",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le hangeul est un repère civilisationnel car…",
+              "type": "multiple_choice",
+              "options": [
+                "Alphabet inventé, accessible, symbole d'identité",
+                "Fête nationale (9 octobre) et enseignement scolaire",
+                "Écriture secrète sans voyelles",
+                "Copie du sanskrit sans changement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Création du XVe siècle, fierté nationale célébrée chaque année."
+            },
+            {
+              "id": "q2",
+              "question": "Il a été promu sous le règne de…",
+              "type": "single_choice",
+              "options": [
+                "Sejong le Grand",
+                "Napoléon",
+                "Charlemagne",
+                "Cléopâtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Roi Joseon, mécène du hangeul."
+            },
+            {
+              "id": "q3",
+              "question": "La fête du hangeul se célèbre le…",
+              "type": "single_choice",
+              "options": [
+                "9 octobre",
+                "1er janvier",
+                "14 juillet",
+                "25 décembre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour férié en Corée du Sud."
+            },
+            {
+              "id": "q4",
+              "question": "Une syllabe en hangeul groupe…",
+              "type": "single_choice",
+              "options": [
+                "Consonnes et voyelles en bloc",
+                "Uniquement des chiffres",
+                "Trois alphabets latins",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Blocs syllabiques caractéristiques."
+            },
+            {
+              "id": "q5",
+              "question": "Avant le hangeul, l'élite utilisait surtout…",
+              "type": "single_choice",
+              "options": [
+                "Hanja (caractères chinois)",
+                "Cyrillique",
+                "Arabe seul",
+                "Runes vikings"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le hangeul démocratise l'écrit."
+            },
+            {
+              "id": "q6",
+              "question": "L'alphabet compte des consonnes et…",
+              "type": "single_choice",
+              "options": [
+                "Des voyelles de base",
+                "Des couleurs",
+                "Des animaux",
+                "Des planètes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lettres phonétiques simples."
+            },
+            {
+              "id": "q7",
+              "question": "Le nom « hangeul » signifie…",
+              "type": "single_choice",
+              "options": [
+                "Écriture coréenne",
+                "Montagne sacrée",
+                "Rivière du nord",
+                "Palais d'or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Han = coréen, geul = écriture."
+            },
+            {
+              "id": "q8",
+              "question": "UNESCO a salué le hangeul pour…",
+              "type": "single_choice",
+              "options": [
+                "Sa rationalité et son héritage",
+                "Son usage en latin seul",
+                "Sa disparition",
+                "Son interdiction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reconnaissance du patrimoine linguistique."
+            },
+            {
+              "id": "q9",
+              "question": "Apprendre le hangeul aide à lire…",
+              "type": "single_choice",
+              "options": [
+                "Panneaux, menus, affiches",
+                "Hiéroglyphes égyptiens seuls",
+                "Code morse uniquement",
+                "Cartes sans légende"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétence de base pour la Corée."
+            },
+            {
+              "id": "q10",
+              "question": "Le hangeul montre qu'une société peut…",
+              "type": "single_choice",
+              "options": [
+                "Créer un outil d'écriture adapté à sa langue",
+                "Renoncer à toute écriture",
+                "Copier sans réfléchir",
+                "Interdire l'éducation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Innovation culturelle majeure."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "La zone démilitarisée (DMZ)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "La DMZ est un repère géopolitique car elle…",
+              "type": "multiple_choice",
+              "options": [
+                "Sépare Corée du Nord et du Sud depuis la guerre",
+                "Rappelle la division et les enjeux de paix",
+                "Est un parc d'attractions",
+                "N'existe pas sur la carte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bande neutralisée, mémoire du conflit et symbole de division."
+            },
+            {
+              "id": "q2",
+              "question": "Elle suit approximativement…",
+              "type": "single_choice",
+              "options": [
+                "Le 38e parallèle",
+                "L'équateur",
+                "Le pôle Nord",
+                "La ligne de date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frontière armistice de 1953."
+            },
+            {
+              "id": "q3",
+              "question": "Des visites guidées depuis le Sud permettent…",
+              "type": "single_choice",
+              "options": [
+                "Comprendre la division",
+                "Traverser librement sans contrôle",
+                "Aller sur la Lune",
+                "Voir Rome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tourisme encadré et pédagogique."
+            },
+            {
+              "id": "q4",
+              "question": "Panmunjeom est connu pour…",
+              "type": "single_choice",
+              "options": [
+                "Bâtiments de négociations",
+                "Stade olympique",
+                "Port de croisière",
+                "Aéroport international seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu de pourparlers historiques."
+            },
+            {
+              "id": "q5",
+              "question": "La nature y est parfois…",
+              "type": "single_choice",
+              "options": [
+                "Préservée faute d'activité humaine",
+                "Totalement détruite",
+                "Artificielle en plastique",
+                "Absente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Refuge écologique involontaire."
+            },
+            {
+              "id": "q6",
+              "question": "La guerre de Corée a eu lieu principalement…",
+              "type": "single_choice",
+              "options": ["1950–1953", "1914–1918", "2003–2011", "1789–1799"],
+              "correctAnswers": [0],
+              "explanation": "Conflit majeur de la guerre froide."
+            },
+            {
+              "id": "q7",
+              "question": "Pour les Coréens, la division évoque…",
+              "type": "single_choice",
+              "options": [
+                "Familles séparées et mémoire",
+                "Uniquement le sport",
+                "Rien d'important",
+                "Une fête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjeu identitaire fort."
+            },
+            {
+              "id": "q8",
+              "question": "Des tunnels découverts rappellent…",
+              "type": "single_choice",
+              "options": [
+                "Tensions militaires passées",
+                "Routes touristiques",
+                "Métro parisien",
+                "Canal de Panama"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Infiltrations historiques."
+            },
+            {
+              "id": "q9",
+              "question": "La DMZ n'est pas un repère de…",
+              "type": "single_choice",
+              "options": [
+                "Cuisine italienne classique",
+                "Géopolitique",
+                "Histoire récente",
+                "Relations inter-coréennes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet politique, pas culinaire."
+            },
+            {
+              "id": "q10",
+              "question": "Étudier la DMZ en classe invite à…",
+              "type": "single_choice",
+              "options": [
+                "Réfléchir à la paix et à la mémoire",
+                "Oublier l'histoire",
+                "Confondre les deux Corées",
+                "Nier les frontières"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère pour débats citoyens."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Chuseok, fête des moissons",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Chuseok est un repère civilisationnel parce qu'il…",
+              "type": "multiple_choice",
+              "options": [
+                "Rassemble familles, remercie les récoltes",
+                "Honore les ancêtres et transmet des rituels",
+                "Interdit toute nourriture",
+                "Supprime le calendrier lunaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Grande fête lunaire, famille et mémoire des aïeux."
+            },
+            {
+              "id": "q2",
+              "question": "On la compare parfois à…",
+              "type": "single_choice",
+              "options": [
+                "Thanksgiving",
+                "Halloween uniquement",
+                "Carnaval de Rio seul",
+                "Fête du travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Remerciements et repas familiaux."
+            },
+            {
+              "id": "q3",
+              "question": "Les familles visitent souvent…",
+              "type": "single_choice",
+              "options": [
+                "Tombes des ancêtres",
+                "Stades étrangers",
+                "Pôles glaciaires",
+                "Mars"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rituel de respect filial."
+            },
+            {
+              "id": "q4",
+              "question": "Le songpyeon est…",
+              "type": "single_choice",
+              "options": [
+                "Gâteau de riz cuit à la vapeur",
+                "Soupe tomate",
+                "Steak frites",
+                "Croissant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pâtisserie festive typique."
+            },
+            {
+              "id": "q5",
+              "question": "Des jeux traditionnels incluent…",
+              "type": "single_choice",
+              "options": [
+                "Danse du cercle (ganggangsullae)",
+                "Football américain pro",
+                "Cricket test match",
+                "Polo sur glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratiques folkloriques."
+            },
+            {
+              "id": "q6",
+              "question": "Chuseok dure environ…",
+              "type": "single_choice",
+              "options": [
+                "Trois jours de congé",
+                "Une heure",
+                "Six mois",
+                "Toute l'année"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vacances nationales majeures."
+            },
+            {
+              "id": "q7",
+              "question": "Les déplacements massifs montrent…",
+              "type": "single_choice",
+              "options": [
+                "Importance du lien familial",
+                "Abandon des transports",
+                "Fermeture du pays",
+                "Interdiction de rire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retour au foyer d'origine."
+            },
+            {
+              "id": "q8",
+              "question": "Le hanbok peut être porté pour…",
+              "type": "single_choice",
+              "options": [
+                "Célébrer avec les proches",
+                "Travailler en mine",
+                "Piloter un avion de chasse",
+                "Nager en compétition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tenue festive."
+            },
+            {
+              "id": "q9",
+              "question": "Chuseok tombe en…",
+              "type": "single_choice",
+              "options": [
+                "Automne (calendrier lunaire)",
+                "Été uniquement",
+                "Hiver fixe le 25 décembre",
+                "Printemps occidental seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "15e jour du 8e mois lunaire."
+            },
+            {
+              "id": "q10",
+              "question": "Comprendre Chuseok aide à saisir…",
+              "type": "single_choice",
+              "options": [
+                "Valeurs agricoles et familiales",
+                "Lois du marché boursier",
+                "Grammaire allemande",
+                "Cartographie antique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fête = fenêtre sur la société."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Le taekwondo, art martial national",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le taekwondo est un repère culturel car il combine…",
+              "type": "multiple_choice",
+              "options": [
+                "Sport, discipline, philosophie coréenne",
+                "Respect du dojang, ceintures et saluts rituel",
+                "Uniquement la danse sans règles",
+                "Navigation maritime"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Art martial olympique transmettant valeurs et protocole."
+            },
+            {
+              "id": "q2",
+              "question": "« Tae » évoque surtout…",
+              "type": "single_choice",
+              "options": [
+                "Le pied / frapper",
+                "La main seule",
+                "La tête",
+                "Le coude interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coups de pied caractéristiques."
+            },
+            {
+              "id": "q3",
+              "question": "Les pratiquants portent un dobok, sorte de…",
+              "type": "single_choice",
+              "options": [
+                "Tenue blanche",
+                "Armure métal",
+                "Costume de plongée",
+                "Smoking"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Uniforme d'entraînement."
+            },
+            {
+              "id": "q4",
+              "question": "Les ceintures de couleur indiquent…",
+              "type": "single_choice",
+              "options": [
+                "Niveau du pratiquant",
+                "Âge exact",
+                "Taille du dojang",
+                "Prix du billet d'avion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Progression graduelle."
+            },
+            {
+              "id": "q5",
+              "question": "Le taekwondo est devenu sport olympique en…",
+              "type": "single_choice",
+              "options": ["2000 (Sydney)", "1896", "2028 prévu seul", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Présent aux JO depuis Sydney."
+            },
+            {
+              "id": "q6",
+              "question": "Un dojang est…",
+              "type": "single_choice",
+              "options": [
+                "La salle d'entraînement",
+                "Un restaurant",
+                "Un palais royal",
+                "Un bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu de pratique."
+            },
+            {
+              "id": "q7",
+              "question": "Saluer avant un combat montre…",
+              "type": "single_choice",
+              "options": [
+                "Respect de l'adversaire",
+                "Refus de participer",
+                "Sommeil",
+                "Colère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rituel de courtoisie."
+            },
+            {
+              "id": "q8",
+              "question": "Kukkiwon à Séoul est lié au…",
+              "type": "single_choice",
+              "options": [
+                "Taekwondo mondial",
+                "Ski alpin",
+                "Opéra italien",
+                "Bridge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Institution de référence."
+            },
+            {
+              "id": "q9",
+              "question": "Le taekwondo enseigne aussi…",
+              "type": "single_choice",
+              "options": [
+                "Contrôle de soi",
+                "Tricherie scolaire",
+                "Piraterie",
+                "Menace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Discipline physique et mentale."
+            },
+            {
+              "id": "q10",
+              "question": "Étudier le taekwondo en cours de coréen permet de…",
+              "type": "single_choice",
+              "options": [
+                "Relier culture physique et identité",
+                "Ignorer la Corée",
+                "Confondre avec sumo",
+                "Oublier le hangeul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sport national reconnu."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Busan, port et culture",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Busan est un repère car c'est…",
+              "type": "multiple_choice",
+              "options": [
+                "Grand port, plages, cinéma (BIFF)",
+                "Deuxième métropole du pays, ouverte sur l'océan",
+                "Capitale politique",
+                "Désert central"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Métropole maritime, culture et échanges."
+            },
+            {
+              "id": "q2",
+              "question": "Busan se situe au…",
+              "type": "single_choice",
+              "options": [
+                "Sud-est de la Corée du Sud",
+                "Nord de la Chine",
+                "Ouest de l'Europe",
+                "Centre du Brésil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Côte mer du Japon / Est."
+            },
+            {
+              "id": "q3",
+              "question": "Haeundae est une plage…",
+              "type": "single_choice",
+              "options": ["Célèbre", "Inconnue", "En montagne", "Sous terre"],
+              "correctAnswers": [0],
+              "explanation": "Destination estivale populaire."
+            },
+            {
+              "id": "q4",
+              "question": "Le marché de Jagalchi est associé aux…",
+              "type": "single_choice",
+              "options": [
+                "Produits de la mer",
+                "Livres anciens seuls",
+                "Voitures",
+                "Meubles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grand marché aux poissons."
+            },
+            {
+              "id": "q5",
+              "question": "Le festival du film de Busan (BIFF) met en avant…",
+              "type": "single_choice",
+              "options": [
+                "Cinéma asiatique",
+                "Sports mécaniques",
+                "Opéra uniquement",
+                "Agriculture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Événement culturel majeur."
+            },
+            {
+              "id": "q6",
+              "question": "Le temple Beomeosa se trouve près de…",
+              "type": "single_choice",
+              "options": ["Busan", "Paris", "New York", "Le Caire"],
+              "correctAnswers": [0],
+              "explanation": "Patrimoine bouddhiste local."
+            },
+            {
+              "id": "q7",
+              "question": "Busan a été touchée par des réfugiés pendant…",
+              "type": "single_choice",
+              "options": [
+                "Guerre de Corée",
+                "Guerre de Troie",
+                "Guerre de Cent Ans",
+                "Aucun conflit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ville refuge temporaire de la capitale."
+            },
+            {
+              "id": "q8",
+              "question": "Gamcheon Culture Village est connu pour…",
+              "type": "single_choice",
+              "options": [
+                "Maisons colorées en colline",
+                "Désert de sable",
+                "Glacier",
+                "Autoroute seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quartier artistique touristique."
+            },
+            {
+              "id": "q9",
+              "question": "Le port facilite…",
+              "type": "single_choice",
+              "options": [
+                "Échanges maritimes",
+                "Blocage total du commerce",
+                "Absence de poisson",
+                "Fermeture des frontières"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logistique et exportations."
+            },
+            {
+              "id": "q10",
+              "question": "Comparer Séoul et Busan montre…",
+              "type": "single_choice",
+              "options": [
+                "Diversité géographique du pays",
+                "Identité identique sans nuance",
+                "Absence de côte",
+                "Un seul dialecte interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capitale inland vs métropole maritime."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Le kimchi, patrimoine vivant",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le kimchi est un repère civilisationnel car…",
+              "type": "multiple_choice",
+              "options": [
+                "Fermentation, tradition familiale, UNESCO",
+                "Présence quotidienne à table et kimjang collectif",
+                "Plat oublié sans histoire",
+                "Boisson sans conserve"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Accompagnement national et rituel saisonnier inscrit au patrimoine."
+            },
+            {
+              "id": "q2",
+              "question": "L'ingrédient central est souvent…",
+              "type": "single_choice",
+              "options": [
+                "Chou napa",
+                "Banane",
+                "Pomme de terre seule",
+                "Riz cru sec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Légume fermenté épicé."
+            },
+            {
+              "id": "q3",
+              "question": "Kimjang désigne…",
+              "type": "single_choice",
+              "options": [
+                "Préparation collective du kimchi",
+                "Danse du ventre",
+                "Course de chevaux",
+                "Examen final"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rituel saisonnier inscrit à l'UNESCO."
+            },
+            {
+              "id": "q4",
+              "question": "Le gochugaru apporte…",
+              "type": "single_choice",
+              "options": [
+                "Piment en flocons",
+                "Sucre seul",
+                "Lait",
+                "Farine de blé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poudre de piment rouge."
+            },
+            {
+              "id": "q5",
+              "question": "On conserve le kimchi souvent…",
+              "type": "single_choice",
+              "options": [
+                "Dans des jarres ou réfrigérateur",
+                "À l'air libre chaud",
+                "Sous l'eau salée ouverte",
+                "Dans le sable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fermentation contrôlée."
+            },
+            {
+              "id": "q6",
+              "question": "Il accompagne presque…",
+              "type": "single_choice",
+              "options": [
+                "Tous les repas coréens",
+                "Uniquement le petit-déjeuner européen",
+                "Jamais le riz",
+                "Seulement Noël"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présence quotidienne."
+            },
+            {
+              "id": "q7",
+              "question": "Le kimchi jjigae est…",
+              "type": "single_choice",
+              "options": [
+                "Un ragoût épicé",
+                "Un dessert glacé",
+                "Un pain",
+                "Une boisson gazeuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plat réconfortant à base de kimchi."
+            },
+            {
+              "id": "q8",
+              "question": "Les bienfaits recherchés incluent…",
+              "type": "single_choice",
+              "options": [
+                "Probiotiques et vitamines",
+                "Pilules de chocolat",
+                "Métal fondu",
+                "Pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Légumes fermentés nutritifs."
+            },
+            {
+              "id": "q9",
+              "question": "Il existe des centaines de…",
+              "type": "single_choice",
+              "options": [
+                "Recettes régionales",
+                "Couleurs interdites",
+                "Lois contre le chou",
+                "Versions sans sel obligatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diversité locale."
+            },
+            {
+              "id": "q10",
+              "question": "Parler du kimchi en classe de coréen, c'est…",
+              "type": "single_choice",
+              "options": [
+                "Aborder identité et transmission",
+                "Ignorer la culture",
+                "Étudier uniquement l'allemand",
+                "Refuser la gastronomie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aliment = document social."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

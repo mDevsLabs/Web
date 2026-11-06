@@ -1,7 +1,7 @@
 {
   "author": "mAI",
   "category": "integrations",
-  "description": "Connectez votre compte Discord : l'IA lit votre profil et la liste de vos serveurs ; avec le bot de l'instance, elle parcourt les salons et les messages et — dans l'Agent, avec votre accord — y envoie un message.",
+  "description": "Collez le jeton de votre bot Discord : l'IA lit son profil, les serveurs où il est invité, les salons et les messages, et — dans l'Agent, avec votre accord — y envoie un message.",
   "icon": { "src": "/plugins/discord.svg", "type": "image" },
   "id": "discord",
   "minTier": "plus",
@@ -19,40 +19,40 @@
     "salon",
     "messages",
     "gaming",
-    "oauth",
+    "jeton",
     "bot"
   ],
   "tools": [
     {
-      "description": "Profil Discord du compte connecté : nom affiché, identifiant, adresse de contact si accordée.",
+      "description": "Profil du bot Discord connecté : nom affiché et identifiant.",
       "effect": "read",
       "id": "discordProfile",
       "label": "Mon profil Discord",
       "systemHint": "Sert à confirmer QUEL compte est relié, pas à retrouver un serveur."
     },
     {
-      "description": "Liste les serveurs Discord du compte connecté.",
+      "description": "Liste les serveurs Discord où le bot connecté est présent.",
       "effect": "read",
       "id": "discordListGuilds",
       "label": "Mes serveurs Discord",
       "systemHint": "Commencez ici quand l'utilisateur parle d'« un serveur » sans en donner l'identifiant."
     },
     {
-      "description": "Liste les salons textuels d'un serveur Discord, via le bot de l'instance.",
+      "description": "Liste les salons textuels d'un serveur Discord accessible au bot connecté.",
       "effect": "read",
       "id": "discordListChannels",
       "label": "Salons d'un serveur",
-      "systemHint": "Un échec 403/404 signifie que le bot n'est pas dans le serveur : dites-le, ne réessayez pas."
+      "systemHint": "Un échec 403/404 signifie que le bot de l'utilisateur n'est pas dans le serveur : dites-le, ne réessayez pas."
     },
     {
-      "description": "Lit les derniers messages d'un salon Discord, via le bot de l'instance.",
+      "description": "Lit les derniers messages d'un salon Discord accessible au bot connecté.",
       "effect": "read",
       "id": "discordReadMessages",
       "label": "Lire un salon Discord",
       "systemHint": "Résumez les échanges et citez leurs auteurs ; ne recopiez pas cinquante messages."
     },
     {
-      "description": "Envoie un message dans un salon Discord, sous l'identité du bot de l'instance.",
+      "description": "Envoie un message dans un salon Discord, sous l'identité du bot connecté.",
       "effect": "write",
       "id": "discordSendMessage",
       "label": "Envoyer un message Discord",

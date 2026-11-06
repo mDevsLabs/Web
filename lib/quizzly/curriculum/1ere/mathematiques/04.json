@@ -1,0 +1,2158 @@
+{
+  "id": "1ere-mathematiques-04",
+  "year": "1ere",
+  "subject": "mathematiques",
+  "title": "Nombres et calculs",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Priorités et fractions",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Calcul fractionnaire avancé et simplifications",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Calculer l'expression A = (3/4 - 1/6) / (2/3 + 1/2).",
+              "options": ["1/2", "7/14", "7/6", "3/5"],
+              "correctAnswers": [0],
+              "explanation": "Au numérateur : 9/12 - 2/12 = 7/12. Au dénominateur : 4/6 + 3/6 = 7/6. Ainsi A = (7/12) * (6/7) = 6/12 = 1/2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Simplifier au maximum le quotient (2^3 * 3^4 * 5) / (2^2 * 3^5 * 25).",
+              "options": ["2/15", "6/25", "2/5", "1/15"],
+              "correctAnswers": [0],
+              "explanation": "En simplifiant par facteurs : 2^(3-2) * 3^(4-5) * 5^(1-2) = 2^1 * 3^(-1) * 5^(-1) = 2 / (3 * 5) = 2/15."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réduire au même dénominateur l'expression 2/(x - 1) - 3/(x + 1) pour x distinct de 1 et -1.",
+              "options": [
+                "(-x + 5)/(x^2 - 1)",
+                "(-x - 1)/(x^2 - 1)",
+                "(5x - 1)/(x^2 - 1)",
+                "(-x + 1)/(x^2 - 1)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2(x + 1)/((x-1)(x+1)) - 3(x - 1)/((x-1)(x+1)) = (2x + 2 - 3x + 3)/(x^2 - 1) = (-x + 5)/(x^2 - 1)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour a et b réels non nuls avec a différent de b, simplifier (1/a + 1/b) / (1/a - 1/b).",
+              "options": [
+                "(b + a)/(b - a)",
+                "(a + b)/(a - b)",
+                "1/(b - a)",
+                "(b - a)/(b + a)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Numérateur : (b + a)/(ab). Dénominateur : (b - a)/(ab). Le quotient donne ((b + a)/ab) * (ab/(b - a)) = (b + a)/(b - a)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions sont strictement égales à 3/4 - 2/5 ?",
+              "options": ["7/20", "0,35", "1/20", "1/10"],
+              "correctAnswers": [0, 1],
+              "explanation": "3/4 - 2/5 = 15/20 - 8/20 = 7/20 = 0,35. Les deux premières réponses sont donc exactes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est l'inverse de 1 + 1 / (1 + 1/2) ?",
+              "options": ["3/5", "5/3", "2/3", "4/5"],
+              "correctAnswers": [0],
+              "explanation": "1 + 1/2 = 3/2. Donc 1 / (3/2) = 2/3. L'expression vaut 1 + 2/3 = 5/3. Son inverse est 3/5."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour x = 2/3, que vaut l'expression (3x - 1) / (2x + 1) ?",
+              "options": ["3/7", "1/7", "7/3", "1/3"],
+              "correctAnswers": [0],
+              "explanation": "Numérateur : 3*(2/3) - 1 = 2 - 1 = 1. Dénominateur : 2*(2/3) + 1 = 4/3 + 3/3 = 7/3. Le quotient vaut 1 / (7/3) = 3/7."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour b, c, d non nuls, le quotient (a/b) / (c/d) est égal à :",
+              "options": [
+                "(a * d) / (b * c)",
+                "(a * c) / (b * d)",
+                "(a * b) / (c * d)",
+                "(b * c) / (a * d)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diviser par une fraction revient à multiplier par son inverse : (a/b) / (c/d) = (a/b) * (d/c) = (ad)/(bc)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calculer la somme 1 - 1/2 + 1/4 - 1/8 + 1/16.",
+              "options": ["11/16", "9/16", "13/16", "21/32"],
+              "correctAnswers": [0],
+              "explanation": "En réduisant sur 16 : 16/16 - 8/16 + 4/16 - 2/16 + 1/16 = (16 - 8 + 4 - 2 + 1)/16 = 11/16."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour x différent de 2, simplifier (x^2 - 4) / (x^2 - 4x + 4).",
+              "options": [
+                "(x + 2)/(x - 2)",
+                "(x - 2)/(x + 2)",
+                "(x + 2)^2",
+                "1/(x - 2)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x^2 - 4 = (x - 2)(x + 2) et x^2 - 4x + 4 = (x - 2)^2. En simplifiant par (x - 2), on obtient (x + 2)/(x - 2)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Fractions rationnelles et formes irréductibles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'ensemble de définition de la fraction rationnelle f(x) = (2x + 1) / (x^2 - 9) ?",
+              "options": [
+                "R \\ {-3 ; 3}",
+                "R \\ {3}",
+                "R \\ {-9 ; 9}",
+                "R \\ {-1/2}"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dénominateur s'annule lorsque x^2 - 9 = 0, c'est-à-dire x = 3 ou x = -3. L'ensemble de définition est R \\ {-3 ; 3}."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour x différent de -1, quelle est la forme simplifiée de (x^2 - 1) / (x + 1) ?",
+              "options": ["x - 1", "x + 1", "1", "x^2 - x"],
+              "correctAnswers": [0],
+              "explanation": "x^2 - 1 = (x - 1)(x + 1). Pour x != -1, on simplifie par (x + 1) et on obtient x - 1."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Simplifier (3x^2 - 12) / (6x + 12) pour x différent de -2.",
+              "options": ["(x - 2)/2", "(x + 2)/2", "x - 2", "(3x - 6)/6"],
+              "correctAnswers": [0],
+              "explanation": "3x^2 - 12 = 3(x^2 - 4) = 3(x - 2)(x + 2). 6x + 12 = 6(x + 2). Le quotient vaut 3(x - 2)/6 = (x - 2)/2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Simplifier la fraction (2x^2 + 5x - 3) / (x + 3) pour x différent de -3.",
+              "options": ["2x - 1", "2x + 1", "x - 1", "2x - 3"],
+              "correctAnswers": [0],
+              "explanation": "Le trinôme 2x^2 + 5x - 3 a pour racines -3 et 1/2, donc se factorise en (x + 3)(2x - 1). La simplification donne 2x - 1."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles valeurs réelles annulent le dénominateur de (x + 4) / (x^3 - 4x) ?",
+              "options": ["0", "2", "-2", "4"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "x^3 - 4x = x(x^2 - 4) = x(x - 2)(x + 2). Les valeurs annulant le dénominateur sont donc 0, 2 et -2."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Simplifier le produit ((x + 1)/x) * (x^2 / (x^2 - 1)) pour x non nul et x distinct de 1 et -1.",
+              "options": [
+                "x / (x - 1)",
+                "1 / (x - 1)",
+                "x / (x + 1)",
+                "(x + 1)/(x - 1)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "((x + 1)/x) * (x^2 / ((x - 1)(x + 1))) = (x * (x + 1)) / ((x - 1)(x + 1)) = x / (x - 1)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour x différent de y avec x et y non nuls, simplifier (1/x - 1/y) / (x - y).",
+              "options": [
+                "-1 / (xy)",
+                "1 / (xy)",
+                "1 / (x - y)",
+                "(y - x) / (xy)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1/x - 1/y = (y - x)/(xy) = -(x - y)/(xy). En divisant par (x - y), on obtient -1 / (xy)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour x différent de 1, quelle expression est égale à (x^3 - 1) / (x - 1) ?",
+              "options": ["x^2 + x + 1", "x^2 - x + 1", "x^2 - 1", "(x + 1)^2"],
+              "correctAnswers": [0],
+              "explanation": "Identité remarquable : x^3 - 1 = (x - 1)(x^2 + x + 1). En simplifiant par (x - 1), on obtient x^2 + x + 1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Simplifier (4x^2 - 9) / (2x + 3) pour x différent de -3/2.",
+              "options": ["2x - 3", "2x + 3", "4x - 3", "x - 3"],
+              "correctAnswers": [0],
+              "explanation": "4x^2 - 9 = (2x - 3)(2x + 3). En simplifiant par (2x + 3), il reste 2x - 3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Déterminer les constantes a et b telles que (3x + 1) / (x + 1) = a + b / (x + 1).",
+              "options": [
+                "a = 3 et b = -2",
+                "a = 3 et b = 1",
+                "a = 1 et b = 3",
+                "a = 3 et b = 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3x + 1 = 3(x + 1) - 2. Donc (3x + 1)/(x + 1) = 3 - 2/(x + 1), ce qui donne a = 3 et b = -2."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Décomposition en éléments simples et sommes télescopiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la décomposition de 1 / (x(x + 1)) sous forme de somme de fractions ?",
+              "options": [
+                "1/x - 1/(x + 1)",
+                "1/x + 1/(x + 1)",
+                "1/(x + 1) - 1/x",
+                "2/x - 1/(x + 1)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1/x - 1/(x + 1) = (x + 1 - x)/(x(x + 1)) = 1/(x(x + 1))."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calculer la somme S = 1/(1*2) + 1/(2*3) + 1/(3*4) + ... + 1/(n*(n + 1)).",
+              "options": ["n / (n + 1)", "1 / (n + 1)", "(n + 1) / n", "n / 2"],
+              "correctAnswers": [0],
+              "explanation": "Par télescopage : (1 - 1/2) + (1/2 - 1/3) + ... + (1/n - 1/(n+1)) = 1 - 1/(n+1) = n/(n+1)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Déterminer A et B tels que 1 / ((x - 1)(x + 1)) = A / (x - 1) + B / (x + 1).",
+              "options": [
+                "A = 1/2 et B = -1/2",
+                "A = 1 et B = -1",
+                "A = 1/2 et B = 1/2",
+                "A = -1/2 et B = 1/2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1/2 * (1/(x - 1) - 1/(x + 1)) = 1/2 * (x + 1 - (x - 1))/((x-1)(x+1)) = 1/2 * 2 / (x^2 - 1) = 1/(x^2 - 1)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Écrire (2x + 5) / (x + 2) sous la forme a + b / (x + 2).",
+              "options": [
+                "2 + 1 / (x + 2)",
+                "2 + 5 / (x + 2)",
+                "1 + 3 / (x + 2)",
+                "2 - 1 / (x + 2)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2x + 5 = 2(x + 2) + 1. Donc (2x + 5)/(x + 2) = 2 + 1/(x + 2)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont exactes concernant la somme finie S = sum_{k=1}^{99} 1 / (k(k + 1)) ?",
+              "options": ["S = 99/100", "S = 1 - 1/100", "S = 1", "S > 1"],
+              "correctAnswers": [0, 1],
+              "explanation": "La somme télescopique vaut 1 - 1/(99+1) = 1 - 1/100 = 99/100 = 0,99. Elle est strictement inférieure à 1."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour k >= 1, que vaut la différence 1/k - 1/(k + 2) ?",
+              "options": [
+                "2 / (k(k + 2))",
+                "1 / (k(k + 2))",
+                "-2 / (k(k + 2))",
+                "k / (k + 2)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "(k + 2 - k)/(k(k + 2)) = 2 / (k(k + 2))."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calculer la somme 1/(1*3) + 1/(3*5) + 1/(5*7).",
+              "options": ["3/7", "1/7", "5/14", "3/14"],
+              "correctAnswers": [0],
+              "explanation": "1/(2k-1)(2k+1) = 1/2 * (1/(2k-1) - 1/(2k+1)). La somme télescope : 1/2 * (1 - 1/7) = 1/2 * 6/7 = 3/7."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Trouver a et b tels que (5x - 1) / ((x - 1)(x + 2)) = a / (x - 1) + b / (x + 2).",
+              "options": [
+                "a = 4/3 et b = 11/3",
+                "a = 2 et b = 3",
+                "a = 1 et b = 4",
+                "a = 4/3 et b = -11/3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En multipliant par (x - 1) et en posant x = 1 : a = (5 - 1)/(1 + 2) = 4/3. Avec x = -2 : b = (-10 - 1)/(-2 - 1) = 11/3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Décomposer x^2 / (x^2 - 1) sous la forme 1 + A / (x - 1) + B / (x + 1).",
+              "options": [
+                "A = 1/2 et B = -1/2",
+                "A = 1 et B = 1",
+                "A = -1/2 et B = 1/2",
+                "A = 1 et B = -1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x^2 / (x^2 - 1) = 1 + 1/(x^2 - 1) = 1 + 1/(2(x - 1)) - 1/(2(x + 1)). Donc A = 1/2 et B = -1/2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En analyse, la décomposition d'une fraction rationnelle en éléments simples permet principalement de :",
+              "options": [
+                "Calculer des primitives et des sommes",
+                "Résoudre des équations différentielles non linéaires",
+                "Calculer des dérivées d'ordre supérieur",
+                "Éliminer les racines imaginaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La décomposition en éléments simples transforme une fraction complexe en termes simples faciles à intégrer ou à sommer."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Puissances, exposants relatifs et fractions algébriques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Calculer l'expression (2^(-3) * 4^2) / 8^(-1).",
+              "options": ["16", "8", "2", "32"],
+              "correctAnswers": [0],
+              "explanation": "2^(-3) = 1/8. 4^2 = 16. 8^(-1) = 1/8. Donc ((1/8)*16) / (1/8) = 16."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Écrire (x^3 * y^(-2)) / (x^(-1) * y^4) sous la forme x^a * y^b.",
+              "options": [
+                "x^4 * y^(-6)",
+                "x^2 * y^2",
+                "x^4 * y^2",
+                "x^(-4) * y^6"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour x : 3 - (-1) = 4. Pour y : -2 - 4 = -6. L'expression vaut x^4 * y^(-6)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour a et b réels non nuls et n entier relatif, que vaut (a/b)^(-n) ?",
+              "options": ["(b/a)^n", "(a/b)^n", "-(a/b)^n", "b^n / a"],
+              "correctAnswers": [0],
+              "explanation": "Par définition de l'exposant négatif, (a/b)^(-n) = 1 / (a/b)^n = (b/a)^n."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Simplifier l'expression ((x^2)^3 * x^(-4)) / x^5 pour x non nul.",
+              "options": ["x^(-3)", "x^7", "x^5", "x^(-1)"],
+              "correctAnswers": [0],
+              "explanation": "(x^2)^3 = x^6. x^6 * x^(-4) = x^2. Enfin x^2 / x^5 = x^(2 - 5) = x^(-3)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi les écritures suivantes, lesquelles sont égales à (1/2)^(-3) ?",
+              "options": ["8", "2^3", "1/8", "-8"],
+              "correctAnswers": [0, 1],
+              "explanation": "(1/2)^(-3) = (2/1)^3 = 2^3 = 8. Les options '8' et '2^3' sont exactes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Simplifier (10^4 * 10^(-7)) / (10^(-2) * 10^3).",
+              "options": ["10^(-4)", "10^(-2)", "10^2", "10^(-6)"],
+              "correctAnswers": [0],
+              "explanation": "Numérateur : 10^(4 - 7) = 10^(-3). Dénominateur : 10^(-2 + 3) = 10^1. Quotient : 10^(-3 - 1) = 10^(-4)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour a et b réels strictement positifs, simplifier (a^(-1) + b^(-1))^(-1).",
+              "options": ["(ab) / (a + b)", "(a + b) / (ab)", "a + b", "ab"],
+              "correctAnswers": [0],
+              "explanation": "a^(-1) + b^(-1) = 1/a + 1/b = (b + a)/(ab). L'inverse de cette fraction est (ab)/(a + b)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calculer la valeur exacte de 2^0 + 2^(-1) + 2^(-2).",
+              "options": ["7/4", "3/4", "5/4", "7/2"],
+              "correctAnswers": [0],
+              "explanation": "2^0 = 1, 2^(-1) = 1/2 = 2/4, 2^(-2) = 1/4. Somme : 1 + 2/4 + 1/4 = 7/4."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si a^x = 3, que vaut a^(2x + 1) en fonction de a ?",
+              "options": ["9a", "6a", "9 + a", "3a^2"],
+              "correctAnswers": [0],
+              "explanation": "a^(2x + 1) = a^(2x) * a^1 = (a^x)^2 * a = 3^2 * a = 9a."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Simplifier pour tout entier n l'expression (3^(n+1) - 3^n) / 3^n.",
+              "options": ["2", "3", "1", "3^n"],
+              "correctAnswers": [0],
+              "explanation": "En factorisant par 3^n au numérateur : 3^n * (3 - 1) / 3^n = 3 - 1 = 2."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Radicaux et expressions conjuguées dans les quotients",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Rendre rationnel le dénominateur de 1 / (sqrt(2) + 1).",
+              "options": [
+                "sqrt(2) - 1",
+                "sqrt(2) + 1",
+                "1 - sqrt(2)",
+                "(sqrt(2) - 1)/3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multiplication par le conjugué : (sqrt(2) - 1) / ((sqrt(2) + 1)(sqrt(2) - 1)) = (sqrt(2) - 1) / (2 - 1) = sqrt(2) - 1."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Écrire sans radical au dénominateur le quotient 3 / sqrt(5).",
+              "options": [
+                "(3 * sqrt(5)) / 5",
+                "sqrt(15) / 5",
+                "3 / 5",
+                "5 * sqrt(3) / 3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On multiplie numérateur et dénominateur par sqrt(5) : (3 * sqrt(5)) / (sqrt(5) * sqrt(5)) = 3*sqrt(5)/5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Simplifier le quotient (sqrt(3) - 1) / (sqrt(3) + 1).",
+              "options": [
+                "2 - sqrt(3)",
+                "2 + sqrt(3)",
+                "4 - 2*sqrt(3)",
+                "sqrt(3) - 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "(sqrt(3) - 1)^2 / (3 - 1) = (3 - 2*sqrt(3) + 1)/2 = (4 - 2*sqrt(3))/2 = 2 - sqrt(3)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calculer la valeur exacte de sqrt(50) / sqrt(2).",
+              "options": ["5", "25", "5*sqrt(2)", "2*sqrt(5)"],
+              "correctAnswers": [0],
+              "explanation": "sqrt(50) / sqrt(2) = sqrt(50 / 2) = sqrt(25) = 5."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions sont strictement égales à 1 / (sqrt(5) - 2) ?",
+              "options": [
+                "sqrt(5) + 2",
+                "2 + sqrt(5)",
+                "sqrt(5) - 2",
+                "1 / (2 - sqrt(5))"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En multipliant par le conjugué sqrt(5) + 2 : (sqrt(5) + 2)/(5 - 4) = sqrt(5) + 2 = 2 + sqrt(5)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calculer la somme 1/sqrt(2) + 1/sqrt(8).",
+              "options": [
+                "(3 * sqrt(2)) / 4",
+                "sqrt(2)",
+                "(2 * sqrt(2)) / 3",
+                "sqrt(10)/4"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1/sqrt(2) = sqrt(2)/2 = 2*sqrt(2)/4. 1/sqrt(8) = 1/(2*sqrt(2)) = sqrt(2)/4. La somme vaut 3*sqrt(2)/4."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est l'expression conjuguée de 2*sqrt(3) - 5 ?",
+              "options": [
+                "2*sqrt(3) + 5",
+                "-2*sqrt(3) - 5",
+                "5 - 2*sqrt(3)",
+                "2*sqrt(3) - 5"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expression conjuguée de a - b est a + b. Ici, le conjugué de 2*sqrt(3) - 5 est 2*sqrt(3) + 5."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour x >= 0 et x différent de 4, simplifier (sqrt(x) - 2) / (x - 4).",
+              "options": [
+                "1 / (sqrt(x) + 2)",
+                "sqrt(x) + 2",
+                "1 / (sqrt(x) - 2)",
+                "(sqrt(x) - 2)^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x - 4 = (sqrt(x) - 2)(sqrt(x) + 2). En simplifiant par (sqrt(x) - 2), il reste 1 / (sqrt(x) + 2)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calculer sqrt(18) - 2 / sqrt(2).",
+              "options": ["2 * sqrt(2)", "sqrt(2)", "4 * sqrt(2)", "0"],
+              "correctAnswers": [0],
+              "explanation": "sqrt(18) = 3*sqrt(2). 2/sqrt(2) = sqrt(2). Donc 3*sqrt(2) - sqrt(2) = 2*sqrt(2)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour x > 0 et x différent de 1, simplifier (x - 1) / (sqrt(x) - 1).",
+              "options": [
+                "sqrt(x) + 1",
+                "sqrt(x) - 1",
+                "x + 1",
+                "1 / (sqrt(x) + 1)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x - 1 = (sqrt(x) - 1)(sqrt(x) + 1). La simplification donne directement sqrt(x) + 1."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Équations quotient nul et valeurs interdites",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Résoudre dans R l'équation (2x - 3) / (x + 4) = 0.",
+              "options": ["x = 3/2", "x = -4", "x = -3/2", "x = 4"],
+              "correctAnswers": [0],
+              "explanation": "Un quotient est nul si son numérateur est nul et son dénominateur non nul : 2x - 3 = 0 => x = 3/2 (avec x != -4)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la valeur interdite de l'équation (5x + 1) / (2x - 6) = 3 ?",
+              "options": ["x = 3", "x = -1/5", "x = 6", "x = 0"],
+              "correctAnswers": [0],
+              "explanation": "Le dénominateur 2x - 6 s'annule pour 2x = 6, soit x = 3. C'est la valeur interdite."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Résoudre dans R l'équation (x^2 - 9) / (x - 3) = 0.",
+              "options": [
+                "x = -3",
+                "x = 3 ou x = -3",
+                "x = 3",
+                "Aucune solution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x^2 - 9 = 0 pour x = 3 ou x = -3. Mais 3 est une valeur interdite car elle annule le dénominateur. La seule solution est x = -3."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Résoudre dans R l'équation 1/x = 2 / (x + 3).",
+              "options": ["x = 3", "x = -3", "x = 1", "x = 2"],
+              "correctAnswers": [0],
+              "explanation": "Pour x != 0 et x != -3, le produit en croix donne x + 3 = 2x, d'où x = 3."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles sont les solutions réelles de l'équation (x^2 - 4) / (x + 1) = 0 ?",
+              "options": ["x = 2", "x = -2", "x = -1", "x = 4"],
+              "correctAnswers": [0, 1],
+              "explanation": "Le numérateur s'annule pour x = 2 et x = -2. La valeur interdite est -1. Les solutions sont donc 2 et -2."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Résoudre dans R l'équation (3x + 2) / (x - 1) = 2.",
+              "options": ["x = -4", "x = 4", "x = -1", "x = 0"],
+              "correctAnswers": [0],
+              "explanation": "Pour x != 1 : 3x + 2 = 2(x - 1) = 2x - 2 => 3x - 2x = -2 - 2 => x = -4."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de solutions réelles admet l'équation (x - 1) / (x - 1) = 0 ?",
+              "options": [
+                "0 solution",
+                "1 solution",
+                "Une infinité",
+                "2 solutions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour x != 1, la fraction vaut 1, qui n'est jamais égal à 0. Pour x = 1, l'expression n'est pas définie. L'équation n'a aucune solution."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Résoudre l'équation (2x - 1) / (x + 2) = (2x + 3) / (x - 1).",
+              "options": ["x = -1/2", "x = 1/2", "x = -2", "x = 1"],
+              "correctAnswers": [0],
+              "explanation": "(2x - 1)(x - 1) = (2x + 3)(x + 2) => 2x^2 - 3x + 1 = 2x^2 + 7x + 6 => -10x = 5 => x = -1/2."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Résoudre dans R l'équation 3 / (x - 2) + 2 / (x + 1) = 0.",
+              "options": ["x = 1/5", "x = -1/5", "x = 5", "x = 1"],
+              "correctAnswers": [0],
+              "explanation": "(3(x + 1) + 2(x - 2)) / ((x - 2)(x + 1)) = (5x - 1) / ((x - 2)(x + 1)) = 0 => 5x - 1 = 0 => x = 1/5."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour résoudre rigoureusement A(x) / B(x) = 0, la méthode consiste à résoudre :",
+              "options": [
+                "A(x) = 0 et vérifier que B(x) != 0",
+                "A(x) = 0 ou B(x) = 0",
+                "B(x) = 0 uniquement",
+                "A(x) * B(x) = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une fraction est nulle si et seulement si son numérateur est nul et son dénominateur strictement non nul."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Inéquations rationnelles et tableaux de signes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'ensemble solution de l'inéquation (x - 2) / (x + 3) > 0 ?",
+              "options": [
+                "]-inf ; -3[ U ]2 ; +inf[",
+                "]-3 ; 2[",
+                "[-3 ; 2]",
+                "]-inf ; 2["
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le quotient change de signe en -3 et 2. Il est strictement positif à l'extérieur des racines : ]-inf ; -3[ U ]2 ; +inf[."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le signe de l'expression (2x - 4) / (1 - x) pour tout x > 2 ?",
+              "options": [
+                "Strictement négatif",
+                "Strictement positif",
+                "Nul",
+                "Variable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour x > 2, 2x - 4 > 0 et 1 - x < -1 < 0. Le quotient d'un terme positif par un terme négatif est strictement négatif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Résoudre dans R l'inéquation (x + 1) / (x - 1) <= 0.",
+              "options": [
+                "[-1 ; 1[",
+                "[-1 ; 1]",
+                "]-1 ; 1[",
+                "]-inf ; -1] U ]1 ; +inf["
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le numérateur s'annule en -1 (inclus car <= 0) et le dénominateur s'annule en 1 (valeur interdite donc exclu). Solution : [-1 ; 1[."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Résoudre dans R l'inéquation 1/x >= 1.",
+              "options": [
+                "]0 ; 1]",
+                "[1 ; +inf[",
+                "]-inf ; 1]",
+                "]-inf ; 0[ U [1 ; +inf["
+              ],
+              "correctAnswers": [0],
+              "explanation": "1/x - 1 >= 0 <=> (1 - x)/x >= 0. Le tableau de signes montre que l'expression est positive sur ]0 ; 1]."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels nombres réels appartiennent à l'ensemble solution de (x - 1) / (x + 2) >= 0 ?",
+              "options": ["2", "-3", "0", "-1"],
+              "correctAnswers": [0, 1],
+              "explanation": "L'inéquation a pour solution ]-inf ; -2[ U [1 ; +inf[. On a 2 >= 1 et -3 < -2. En revanche, 0 et -1 sont dans ]-2 ; 1[."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Résoudre dans R l'inéquation 2 / (x - 1) < 1.",
+              "options": [
+                "]-inf ; 1[ U ]3 ; +inf[",
+                "]1 ; 3[",
+                "]-inf ; 3[",
+                "[1 ; 3]"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2/(x - 1) - 1 < 0 <=> (2 - x + 1)/(x - 1) < 0 <=> (3 - x)/(x - 1) < 0. Le quotient est négatif sur ]-inf ; 1[ U ]3 ; +inf[."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans un tableau de signes, que signifie une double barre verticale sous une valeur de x ?",
+              "options": [
+                "Une valeur interdite pour le quotient",
+                "Une racine du numérateur",
+                "Un extremum local",
+                "Un changement d'inflexion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La double barre indique que la fonction n'est pas définie en cette valeur, typiquement une valeur qui annule le dénominateur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Résoudre dans R l'inéquation (x^2 - 4) / (x - 1) > 0.",
+              "options": [
+                "]-2 ; 1[ U ]2 ; +inf[",
+                "]-inf ; -2[ U ]1 ; 2[",
+                "]-2 ; 2[",
+                "]1 ; +inf["
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les valeurs charnières sont -2, 1 et 2. En étudiant les signes : négatif sur ]-inf ; -2[, positif sur ]-2 ; 1[, négatif sur ]1 ; 2[, positif sur ]2 ; +inf[."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Résoudre l'inéquation (3x - 6) / (x^2 + 1) <= 0.",
+              "options": ["]-inf ; 2]", "[2 ; +inf[", "[-2 ; 2]", "R"],
+              "correctAnswers": [0],
+              "explanation": "Puisque x^2 + 1 > 0 pour tout réel x, le quotient a le même signe que 3x - 6. Donc 3x - 6 <= 0 <=> x <= 2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi ne peut-on pas directement multiplier par x les deux membres d'une inéquation 1/x > 2 ?",
+              "options": [
+                "Car le signe de x peut être négatif, inversant le sens",
+                "Car x est une variable réelle continue",
+                "Car cela créerait une équation cubique",
+                "Car 1/x n'est pas dérivable en 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multiplier une inéquation par un nombre négatif inverse le sens de l'inégalité. Le signe de x étant inconnu, il faut étudier la différence."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Fractions et suites numériques (sommes et récurrence)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Soit la suite définie par u_0 = 1 et u_{n+1} = u_n / (1 + u_n). Calculer u_2.",
+              "options": ["1/3", "1/2", "1/4", "2/3"],
+              "correctAnswers": [0],
+              "explanation": "u_1 = 1 / (1 + 1) = 1/2. u_2 = (1/2) / (1 + 1/2) = (1/2) / (3/2) = 1/3."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Soit la suite définie pour n >= 1 par u_n = 1 / (n + 1). La suite (u_n) est :",
+              "options": [
+                "Strictement décroissante et converge vers 0",
+                "Strictement croissante",
+                "Constante",
+                "Divergente vers +infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "u_{n+1} - u_n = 1/(n+2) - 1/(n+1) = -1/((n+1)(n+2)) < 0. La suite décroît et tend vers 0 lorsque n tend vers +infini."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calculer la somme S = 1/2 + 1/4 + 1/8 + 1/16.",
+              "options": ["15/16", "7/8", "31/32", "1"],
+              "correctAnswers": [0],
+              "explanation": "Somme des termes d'une suite géométrique de premier terme 1/2 et de raison 1/2 : (1/2)*(1 - (1/2)^4)/(1 - 1/2) = 1 - 1/16 = 15/16."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Soit la suite v_n = (2n + 1) / (n + 2). Quelle est la limite de (v_n) lorsque n tend vers +infini ?",
+              "options": ["2", "1/2", "1", "+infini"],
+              "correctAnswers": [0],
+              "explanation": "En factorisant par n au numérateur et dénominateur : (2 + 1/n)/(1 + 2/n) qui tend vers 2/1 = 2."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Soit la suite géométrique u_n = (1/3)^n pour n >= 0. Quelles affirmations sont vraies ?",
+              "options": [
+                "La suite est strictement décroissante",
+                "La limite de u_n quand n tend vers +inf est 0",
+                "La suite est arithmétique de raison 1/3",
+                "u_2 = 1/6"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Puisque 0 < 1/3 < 1, la suite géométrique est strictement décroissante et converge vers 0. u_2 = (1/3)^2 = 1/9."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour la suite u_n = n / (n + 1), que vaut u_{n+1} - u_n ?",
+              "options": [
+                "1 / ((n + 1)(n + 2))",
+                "-1 / ((n + 1)(n + 2))",
+                "1 / (n + 1)",
+                "n / (n + 2)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "(n + 1)/(n + 2) - n/(n + 1) = ((n + 1)^2 - n(n + 2))/((n + 1)(n + 2)) = (n^2 + 2n + 1 - n^2 - 2n)/((n+1)(n+2)) = 1/((n+1)(n+2))."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Soit une suite arithmétique de premier terme u_0 = 1/2 et de raison r = 1/4. Que vaut u_3 ?",
+              "options": ["5/4", "1", "3/2", "7/4"],
+              "correctAnswers": [0],
+              "explanation": "u_3 = u_0 + 3*r = 1/2 + 3*(1/4) = 2/4 + 3/4 = 5/4."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que vaut la somme infinie 1 + 1/2 + 1/4 + 1/8 + ... ?",
+              "options": ["2", "1", "3/2", "+infini"],
+              "correctAnswers": [0],
+              "explanation": "Pour une suite géométrique de premier terme 1 et raison q = 1/2 (|q| < 1), la somme vaut a / (1 - q) = 1 / (1 - 1/2) = 2."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Soit la suite définie par u_0 = 2 et u_{n+1} = (2*u_n) / (u_n + 1). Calculer u_1.",
+              "options": ["4/3", "2/3", "1", "4/5"],
+              "correctAnswers": [0],
+              "explanation": "u_1 = (2 * 2) / (2 + 1) = 4/3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour la suite u_n = (-1)^n / n définie pour n >= 1 :",
+              "options": [
+                "Elle converge vers 0 en oscillant",
+                "Elle diverge sans limite",
+                "Elle est monotone décroissante",
+                "Elle converge vers 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par encadrement, -1/n <= u_n <= 1/n. Comme -1/n et 1/n tendent vers 0, d'après le théorème des gendarmes, (u_n) converge vers 0."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Calculs de limites de fractions rationnelles simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Calculer la limite en +infini de (3x^2 + 2x - 1) / (5x^2 - 4).",
+              "options": ["3/5", "+infini", "0", "2/5"],
+              "correctAnswers": [0],
+              "explanation": "En l'infini, la limite d'une fonction rationnelle est celle du quotient de ses monômes de plus haut degré : lim (3x^2 / 5x^2) = 3/5."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calculer la limite en +infini de (2x + 1) / (x^2 + 3).",
+              "options": ["0", "2", "+infini", "1/3"],
+              "correctAnswers": [0],
+              "explanation": "Le quotient des monômes de plus haut degré est 2x / x^2 = 2/x, dont la limite en +infini est 0."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calculer la limite en +infini de (x^3 - 2) / (2x^2 + 1).",
+              "options": ["+infini", "1/2", "0", "-infini"],
+              "correctAnswers": [0],
+              "explanation": "Le terme prépondérant est x^3 / (2x^2) = x / 2. Lorsque x tend vers +infini, cette quantité tend vers +infini."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calculer la limite quand x tend vers 2 avec x > 2 de 1 / (x - 2).",
+              "options": ["+infini", "-infini", "0", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "Quand x tend vers 2 par valeurs supérieures, x - 2 tend vers 0 par valeurs positives. Donc 1/(x - 2) tend vers +infini."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes parmi les suivantes sont des formes indéterminées en calcul de limites ?",
+              "options": ["infini / infini", "0 / 0", "0 / infini", "1 / 0"],
+              "correctAnswers": [0, 1],
+              "explanation": "Les formes 'infini / infini' et '0 / 0' sont indéterminées. '0 / infini' donne 0 et '1 / 0' donne un infini."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calculer la limite quand x tend vers 1 de (x^2 - 1) / (x - 1).",
+              "options": ["2", "1", "0", "+infini"],
+              "correctAnswers": [0],
+              "explanation": "Pour x != 1, (x^2 - 1)/(x - 1) = (x - 1)(x + 1)/(x - 1) = x + 1. Quand x tend vers 1, la limite est 1 + 1 = 2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour lever l'indétermination de (x^2 - 4) / (x - 2) en x = 2, quelle démarche utilise-t-on ?",
+              "options": [
+                "Factoriser par (x - 2) et simplifier",
+                "Dériver deux fois le numérateur",
+                "Multiplier par l'expression conjuguée x^2 + 4",
+                "Remplacer x par +infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x^2 - 4 = (x - 2)(x + 2). En factorisant et simplifiant par (x - 2), on lève immédiatement la forme 0/0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calculer la limite en -infini de (4x^3 - 1) / (2x^3 + 5x).",
+              "options": ["2", "-2", "4", "0"],
+              "correctAnswers": [0],
+              "explanation": "Le quotient des monômes de plus haut degré est (4x^3) / (2x^3) = 2. La limite en -infini est donc 2."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calculer la limite quand x tend vers 3 avec x < 3 de (2x) / (x - 3).",
+              "options": ["-infini", "+infini", "6", "0"],
+              "correctAnswers": [0],
+              "explanation": "Le numérateur tend vers 6 > 0 et le dénominateur tend vers 0 par valeurs négatives (car x < 3). Le quotient tend vers -infini."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En +infini, la limite d'une fonction rationnelle P(x)/Q(x) est égale à :",
+              "options": [
+                "La limite du quotient des termes de plus haut degré",
+                "P(0) / Q(0)",
+                "La différence des degrés de P et Q",
+                "Toujours 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un théorème fondamental : la limite à l'infini d'une fraction rationnelle est celle du rapport de ses termes de plus haut degré."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Problèmes de synthèse : fractions et algèbre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Résoudre dans R l'équation (2x) / (x - 1) = 1 + 2 / (x - 1).",
+              "options": ["Aucune solution", "x = 1", "x = 3", "x = 2"],
+              "correctAnswers": [0],
+              "explanation": "Pour x != 1 : 2x/(x - 1) - 2/(x - 1) = 1 <=> (2x - 2)/(x - 1) = 1 <=> 2(x - 1)/(x - 1) = 1 <=> 2 = 1, ce qui est impossible. Aucune solution."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour x non nul et différent de 1 et -1, simplifier (1 + 1/x) / (1 - 1/x^2).",
+              "options": [
+                "x / (x - 1)",
+                "x / (x + 1)",
+                "1 / (x - 1)",
+                "(x - 1)/x"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Numérateur : (x + 1)/x. Dénominateur : (x^2 - 1)/x^2 = ((x - 1)(x + 1))/x^2. Le quotient donne ((x + 1)/x) * (x^2 / ((x-1)(x+1))) = x / (x - 1)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la moyenne harmonique de 2 et 6 ?",
+              "options": ["3", "4", "3,5", "8/3"],
+              "correctAnswers": [0],
+              "explanation": "La moyenne harmonique de a et b est 2 / (1/a + 1/b). Ici : 2 / (1/2 + 1/6) = 2 / (4/6) = 2 / (2/3) = 3."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Résoudre dans R l'inéquation (x + 1) / (x - 2) >= 2.",
+              "options": [
+                "]2 ; 5]",
+                "[2 ; 5]",
+                "]-inf ; 2[ U [5 ; +inf[",
+                "[-1 ; 2["
+              ],
+              "correctAnswers": [0],
+              "explanation": "(x + 1)/(x - 2) - 2 >= 0 <=> (x + 1 - 2x + 4)/(x - 2) >= 0 <=> (5 - x)/(x - 2) >= 0. Le quotient est positif sur ]2 ; 5]."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles relations sont toujours vraies pour tous réels non nuls a et b ?",
+              "options": [
+                "1 / (ab) = (1/a) * (1/b)",
+                "1 / (a/b) = b / a",
+                "1 / (a + b) = 1/a + 1/b",
+                "a / (b + c) = a/b + a/c"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'inverse d'un produit est le produit des inverses et l'inverse d'un quotient est la fraction inverse. Les deux autres formules sont fausses."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si deux réels x et y vérifient xy = 4 et x + y = 6, que vaut 1/x + 1/y ?",
+              "options": ["3/2", "2/3", "24", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "1/x + 1/y = (x + y) / (xy) = 6 / 4 = 3/2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Simplifier l'expression (x^(-1) - y^(-1)) / (x^(-2) - y^(-2)) pour x et y distincts et non nuls.",
+              "options": [
+                "(xy) / (x + y)",
+                "(x + y) / (xy)",
+                "xy / (y - x)",
+                "x - y"
+              ],
+              "correctAnswers": [0],
+              "explanation": "(1/x - 1/y) / (1/x^2 - 1/y^2) = (1/x - 1/y) / ((1/x - 1/y)(1/x + 1/y)) = 1 / (1/x + 1/y) = 1 / ((x + y)/xy) = xy / (x + y)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une fonction f de la forme f(x) = (ax + b) / (cx + d) avec ad - bc non nul est appelée :",
+              "options": [
+                "Une fonction homographique",
+                "Une fonction affine",
+                "Une fonction polynomiale",
+                "Une fonction exponentielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition, le quotient de deux fonctions affines avec ad - bc != 0 est une fonction homographique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calculer le produit P = (1 - 1/2) * (1 - 1/3) * (1 - 1/4) * ... * (1 - 1/n) pour n >= 2.",
+              "options": ["1 / n", "(n - 1) / n", "2 / n", "1 / n!"],
+              "correctAnswers": [0],
+              "explanation": "P = (1/2) * (2/3) * (3/4) * ... * ((n - 1)/n). Tous les termes intermédiaires se simplifient en cascade, il reste 1/n."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Résoudre dans R l'équation 1 / (x - 1) + 1 / (x + 1) = 2 / x.",
+              "options": ["Aucune solution", "x = 0", "x = 1", "x = -1"],
+              "correctAnswers": [0],
+              "explanation": "(2x)/(x^2 - 1) = 2/x <=> x / (x^2 - 1) = 1/x <=> x^2 = x^2 - 1 <=> 0 = -1, ce qui est impossible. L'ensemble des solutions est vide."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Problèmes numériques",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Évolutions successives et taux réciproques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Un prix augmente de 20 % puis diminue de 20 %. L'évolution globale est :",
+              "options": [
+                "Une baisse de 4 %",
+                "Une stabilité (0 %)",
+                "Une baisse de 2 %",
+                "Une hausse de 4 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coefficient multiplicateur global : CM = (1 + 0,20) * (1 - 0,20) = 1,2 * 0,8 = 0,96. Cela correspond à une baisse de 1 - 0,96 = 0,04 = 4 %."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le taux d'évolution réciproque d'une hausse de 25 % ?",
+              "options": [
+                "Une baisse de 20 %",
+                "Une baisse de 25 %",
+                "Une baisse de 15 %",
+                "Une baisse de 30 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CM initial = 1,25. Le CM réciproque est 1 / 1,25 = 0,80, ce qui correspond à une baisse de 20 %."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une quantité augmente de 50 %. Par quel coefficient multiplicateur passe-t-elle ?",
+              "options": ["1,5", "0,5", "1,05", "2"],
+              "correctAnswers": [0],
+              "explanation": "Le coefficient multiplicateur associé à une hausse de t % est CM = 1 + t/100 = 1 + 0,50 = 1,5."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le coefficient multiplicateur global associé à deux hausses successives de 10 % est :",
+              "options": ["1,21", "1,20", "1,10", "1,02"],
+              "correctAnswers": [0],
+              "explanation": "CM_global = 1,10 * 1,10 = 1,21, ce qui correspond à une hausse globale de 21 %."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels couples d'évolutions successives ramènent exactement à la valeur initiale ?",
+              "options": [
+                "Une hausse de 100 % suivie d'une baisse de 50 %",
+                "Une hausse de 25 % suivie d'une baisse de 20 %",
+                "Une hausse de 10 % suivie d'une baisse de 10 %",
+                "Une hausse de 50 % suivie d'une baisse de 50 %"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "2 * 0,5 = 1 et 1,25 * 0,8 = 1. En revanche, 1,1 * 0,9 = 0,99 != 1 et 1,5 * 0,5 = 0,75 != 1."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si une grandeur baisse de 50 %, quel pourcentage de hausse faut-il lui appliquer pour retrouver sa valeur initiale ?",
+              "options": ["+100 %", "+50 %", "+75 %", "+200 %"],
+              "correctAnswers": [0],
+              "explanation": "CM = 0,5. Le coefficient réciproque est 1 / 0,5 = 2, ce qui correspond à une hausse de 100 %."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un article coûte 80 € après une remise de 20 %. Quel était son prix initial ?",
+              "options": ["100 €", "96 €", "104 €", "90 €"],
+              "correctAnswers": [0],
+              "explanation": "Prix initial = Prix final / CM = 80 / (1 - 0,20) = 80 / 0,80 = 100 €."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux baisses successives de 30 % correspondent à une baisse globale de :",
+              "options": ["51 %", "60 %", "49 %", "70 %"],
+              "correctAnswers": [0],
+              "explanation": "CM_global = 0,70 * 0,70 = 0,49. La baisse globale est de 1 - 0,49 = 0,51 = 51 %."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le taux annuel moyen correspondant à une hausse globale de 44 % sur 2 ans ?",
+              "options": ["20 %", "22 %", "24 %", "18 %"],
+              "correctAnswers": [0],
+              "explanation": "CM_moyen^2 = 1,44 => CM_moyen = sqrt(1,44) = 1,20. Le taux annuel moyen est donc de 20 %."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si un capital est multiplié par 1,03 chaque année pendant n années, son évolution globale en fonction de n s'écrit :",
+              "options": [
+                "(1,03)^n - 1",
+                "n * 0,03",
+                "1 + n * 0,03",
+                "(0,03)^n"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le coefficient multiplicateur global sur n années est (1,03)^n. Le taux d'évolution global correspondant est (1,03)^n - 1."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Modélisation de mélanges et concentrations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "On mélange 2 L d'une solution à 10 % de sel avec 3 L d'une solution à 20 % de sel. Quelle est la concentration du mélange ?",
+              "options": ["16 %", "15 %", "14 %", "18 %"],
+              "correctAnswers": [0],
+              "explanation": "Volume de sel : 2*0,10 + 3*0,20 = 0,2 + 0,6 = 0,8 L. Volume total : 5 L. Concentration : 0,8 / 5 = 0,16 = 16 %."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour diluer de moitié la concentration d'une solution de 500 mL, quel volume d'eau pure faut-il ajouter ?",
+              "options": ["500 mL", "250 mL", "1000 mL", "750 mL"],
+              "correctAnswers": [0],
+              "explanation": "Pour diviser la concentration par 2 sans changer la masse de soluté, il faut doubler le volume total, donc ajouter 500 mL d'eau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une solution de 4 L contient 200 g de sucre dissous. Sa concentration massique est de :",
+              "options": ["50 g/L", "800 g/L", "20 g/L", "25 g/L"],
+              "correctAnswers": [0],
+              "explanation": "Concentration massique = masse / volume = 200 g / 4 L = 50 g/L."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "On ajoute 100 g de sel pur dans 900 g d'eau pure. Quel est le pourcentage massique de sel dans le mélange ?",
+              "options": ["10 %", "11,1 %", "9 %", "15 %"],
+              "correctAnswers": [0],
+              "explanation": "Masse totale = 100 + 900 = 1000 g. Pourcentage massique = 100 / 1000 = 0,10 = 10 %."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi les actions suivantes, lesquelles diminuent la concentration en soluté d'une solution aqueuse ?",
+              "options": [
+                "Ajouter de l'eau pure",
+                "Ajouter une solution moins concentrée que la solution initiale",
+                "Évaporer une partie de l'eau",
+                "Ajouter du soluté pur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ajouter de l'eau pure ou une solution plus diluée diminue la concentration globale. L'évaporation ou l'ajout de soluté pur l'augmentent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel volume d'alcool à 50 % faut-il pour préparer 10 L d'alcool à 30 % par ajout d'eau pure ?",
+              "options": ["6 L", "5 L", "4 L", "7 L"],
+              "correctAnswers": [0],
+              "explanation": "Volume d'alcool pur nécessaire : 10 * 0,30 = 3 L. Comme la solution de départ est à 50 %, le volume requis est 3 / 0,50 = 6 L."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "On mélange à volumes égaux deux liquides de masses volumiques 1,0 kg/L et 0,8 kg/L. La masse volumique du mélange est :",
+              "options": ["0,9 kg/L", "0,85 kg/L", "1,8 kg/L", "0,89 kg/L"],
+              "correctAnswers": [0],
+              "explanation": "À volumes égaux V : masse totale = 1,0*V + 0,8*V = 1,8*V. Volume total = 2V. Masse volumique = 1,8*V / 2V = 0,9 kg/L."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si l'on évapore 1 L d'eau d'une solution de 3 L contenant 30 g de sel, quelle devient la concentration en sel ?",
+              "options": ["15 g/L", "10 g/L", "20 g/L", "12 g/L"],
+              "correctAnswers": [0],
+              "explanation": "La masse de sel reste constante (30 g). Le nouveau volume est 3 - 1 = 2 L. La concentration devient 30 / 2 = 15 g/L."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel volume d'acide à 80 % faut-il mélanger avec de l'acide à 20 % pour obtenir 6 L à 40 % ?",
+              "options": ["2 L", "3 L", "1,5 L", "2,5 L"],
+              "correctAnswers": [0],
+              "explanation": "Soit x le volume à 80 %. On a 0,80*x + 0,20*(6 - x) = 0,40*6 = 2,4 => 0,60*x + 1,2 = 2,4 => 0,60*x = 1,2 => x = 2 L."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans tout problème de mélange sans réaction chimique, la grandeur fondamentale qui se conserve est :",
+              "options": [
+                "La masse totale de chaque constituant",
+                "Le volume total sans aucune variation",
+                "La température du système",
+                "La concentration molaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conservation de la masse de chaque espèce chimique présente est le principe physique absolu sur lequel repose la modélisation."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Vitesses moyennes, débits et proportions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Un automobiliste roule à 60 km/h à l'aller et à 120 km/h au retour sur le même trajet. Sa vitesse moyenne sur l'aller-retour est :",
+              "options": ["80 km/h", "90 km/h", "85 km/h", "100 km/h"],
+              "correctAnswers": [0],
+              "explanation": "V_moyenne = 2*d / (d/60 + d/120) = 2 / (2/120 + 1/120) = 2 / (3/120) = 2 * 40 = 80 km/h (moyenne harmonique)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un premier robinet remplit un bassin en 3 h, un second en 6 h. Ensemble, ils le rempliront en :",
+              "options": ["2 h", "4,5 h", "1,5 h", "2,5 h"],
+              "correctAnswers": [0],
+              "explanation": "Débit combiné : 1/3 + 1/6 = 2/6 + 1/6 = 3/6 = 1/2 bassin par heure. Il faut donc 2 heures pour le remplir entièrement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un train parcourt 150 km en 1 h 15 min. Quelle est sa vitesse moyenne ?",
+              "options": ["120 km/h", "112,5 km/h", "125 km/h", "100 km/h"],
+              "correctAnswers": [0],
+              "explanation": "1 h 15 min = 1,25 h. Vitesse = distance / temps = 150 / 1,25 = 120 km/h."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Convertir une vitesse de 90 km/h en mètres par seconde (m/s).",
+              "options": ["25 m/s", "30 m/s", "20 m/s", "32,4 m/s"],
+              "correctAnswers": [0],
+              "explanation": "Pour passer de km/h en m/s, on divise par 3,6 : 90 / 3,6 = 25 m/s."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Si la distance parcourue est multipliée par 2 et le temps de parcours est divisé par 2, quelles assertions sont vraies ?",
+              "options": [
+                "La vitesse moyenne est quadruplée",
+                "v_nouvelle = 4 * v_initiale",
+                "La vitesse moyenne est doublée",
+                "La vitesse moyenne est inchangée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "v = d / t. Nouvelle vitesse : v' = (2d) / (t/2) = 4 * (d/t) = 4v. La vitesse moyenne est donc quadruplée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une pompe vide un réservoir de 12 m^3 en 40 minutes. Quel est son débit en m^3/h ?",
+              "options": ["18 m^3/h", "16 m^3/h", "20 m^3/h", "15 m^3/h"],
+              "correctAnswers": [0],
+              "explanation": "40 minutes = 40/60 h = 2/3 h. Débit = 12 / (2/3) = 12 * 3/2 = 18 m^3/h."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Trois ouvriers construisent un mur en 6 jours. Combien de jours mettraient 6 ouvriers travaillant à la même cadence ?",
+              "options": ["3 jours", "2 jours", "4 jours", "12 jours"],
+              "correctAnswers": [0],
+              "explanation": "Il s'agit d'une proportionnalité inverse : le nombre d'ouvriers double, donc le temps nécessaire est divisé par 2 : 6 / 2 = 3 jours."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un marcheur parcourt 8 km en 2 h, puis 6 km en 1 h. Sa vitesse moyenne totale est :",
+              "options": [
+                "14/3 km/h (environ 4,67 km/h)",
+                "5 km/h",
+                "4,5 km/h",
+                "14 km/h"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distance totale : 8 + 6 = 14 km. Temps total : 2 + 1 = 3 h. Vitesse moyenne = 14/3 km/h."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un tuyau a un débit de 50 L/min. Combien de temps faut-il pour remplir une cuve de 3 m^3 (3 000 L) ?",
+              "options": [
+                "60 minutes",
+                "30 minutes",
+                "100 minutes",
+                "150 minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Temps = volume / débit = 3 000 L / (50 L/min) = 60 minutes (soit 1 heure)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la vitesse moyenne sur un aller-retour n'est-elle pas la moyenne arithmétique des deux vitesses ?",
+              "options": [
+                "Parce qu'on passe plus de temps à la vitesse la plus lente",
+                "Parce que la distance retour est toujours plus courte",
+                "Parce que les accélérations sont négligées",
+                "Parce que la moyenne arithmétique est réservée aux prix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vitesse la plus faible nécessite plus de temps de parcours sur la même distance, elle pèse donc davantage dans la moyenne pondérée par le temps."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Optimisation numérique et fonctions économiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Le coût total de fabrication est C(q) = q^2 + 10q + 100 pour q >= 0. Que représentent les coûts fixes ?",
+              "options": ["100", "10", "q^2", "110"],
+              "correctAnswers": [0],
+              "explanation": "Les coûts fixes correspondent aux coûts engagés même sans production, c'est-à-dire C(0) = 100."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En économie d'entreprise, le bénéfice B(q) est défini par :",
+              "options": [
+                "Recette totale R(q) - Coût total C(q)",
+                "Coût total C(q) - Recette totale R(q)",
+                "Recette totale / Coût total",
+                "Prix unitaire * Quantité vendue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bénéfice (ou profit) est la différence entre le chiffre d'affaires (recette) et la totalité des coûts engagés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Soit R(q) = 50q et C(q) = q^2 + 10q + 100. Pour quelle quantité q le bénéfice B(q) est-il maximal ?",
+              "options": ["q = 20", "q = 25", "q = 15", "q = 30"],
+              "correctAnswers": [0],
+              "explanation": "B(q) = R(q) - C(q) = -q^2 + 40q - 100. C'est un trinôme du second degré orienté vers le bas, son maximum est en q = -b/(2a) = -40 / (-2) = 20."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le coût moyen unitaire C_M(q) pour q > 0 est donné par la formule :",
+              "options": ["C(q) / q", "C'(q)", "C(q) * q", "q / C(q)"],
+              "correctAnswers": [0],
+              "explanation": "Le coût moyen représente le coût par unité produite, soit le coût total divisé par la quantité q."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles conditions caractérisent une situation de bénéfice strictement positif (B(q) > 0) ?",
+              "options": [
+                "Recette R(q) > Coût C(q)",
+                "Prix de vente unitaire > Coût moyen unitaire",
+                "Coût marginal = 0",
+                "Recette marginale = 0"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "B(q) = R(q) - C(q) > 0 équivaut à R(q) > C(q). En divisant par q > 0, cela équivaut à Prix unitaire > Coût moyen."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En première approximation continue, le coût marginal pour une unité supplémentaire est modélisé par :",
+              "options": [
+                "La dérivée du coût total C'(q)",
+                "Le coût moyen C(q)/q",
+                "L'intégrale du coût total",
+                "Le coût fixe C(0)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En analyse économique, le coût marginal d'une production continue correspond à la fonction dérivée du coût total C'(q)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si la recette en fonction du prix p est R(p) = p * (100 - 2p), quel prix p maximise la recette ?",
+              "options": ["p = 25", "p = 50", "p = 20", "p = 30"],
+              "correctAnswers": [0],
+              "explanation": "R(p) = -2p^2 + 100p. Le sommet de cette parabole est atteint en p = -b/(2a) = -100 / (2 * (-2)) = 25."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une entreprise vend chaque article 30 €. Son coût est C(q) = 20q + 500. Quel est le seuil de rentabilité (quantité pour B = 0) ?",
+              "options": ["q = 50", "q = 25", "q = 100", "q = 75"],
+              "correctAnswers": [0],
+              "explanation": "B(q) = 30q - (20q + 500) = 10q - 500 = 0 <=> 10q = 500 <=> q = 50 unités."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Avec 40 m de clôture pour entourer un enclos rectangulaire adossé à un mur (x + 2y = 40), l'aire maximale est :",
+              "options": ["200 m^2", "100 m^2", "400 m^2", "150 m^2"],
+              "correctAnswers": [0],
+              "explanation": "x = 40 - 2y. Aire = y(40 - 2y) = -2y^2 + 40y. Sommet en y = 10 m, d'où x = 20 m. Aire max = 10 * 20 = 200 m^2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un marché concurrentiel au prix p fixé, le profit maximal est atteint lorsque :",
+              "options": [
+                "Le coût marginal est égal au prix de vente (C'(q) = p)",
+                "Le coût total est minimal",
+                "La quantité produite est infinie",
+                "Le coût fixe est nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "B'(q) = R'(q) - C'(q) = p - C'(q). Le profit est maximal lorsque sa dérivée s'annule, soit C'(q) = p."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Résolution de problèmes par systèmes et équations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "La somme de deux nombres est 45 et leur différence est 15. Quels sont ces nombres ?",
+              "options": ["30 et 15", "25 et 20", "35 et 10", "28 et 17"],
+              "correctAnswers": [0],
+              "explanation": "Soit x + y = 45 et x - y = 15. En sommant : 2x = 60 => x = 30. Puis y = 45 - 30 = 15."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un cinéma vend des places adultes à 10 € et enfants à 6 €. Pour 100 places vendues et 840 € de recette, combien d'adultes y avait-il ?",
+              "options": ["60", "40", "50", "70"],
+              "correctAnswers": [0],
+              "explanation": "Soit A le nombre d'adultes. 10A + 6(100 - A) = 840 => 4A + 600 = 840 => 4A = 240 => A = 60."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Trouver le réel x tel que le triple de x augmenté de 4 vaille le double de x diminué de 7.",
+              "options": ["x = -11", "x = 11", "x = -3", "x = -7"],
+              "correctAnswers": [0],
+              "explanation": "Équation : 3x + 4 = 2x - 7 <=> 3x - 2x = -7 - 4 <=> x = -11."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Deux capitaux totalisent 10 000 €. L'un est placé à 3 %, l'autre à 5 %. L'intérêt annuel total est 420 €. Le premier capital vaut :",
+              "options": ["4 000 €", "6 000 €", "5 000 €", "3 500 €"],
+              "correctAnswers": [0],
+              "explanation": "0,03*x + 0,05*(10 000 - x) = 420 => -0,02*x + 500 = 420 => 0,02*x = 80 => x = 4 000 €."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels couples (x ; y) sont solutions de l'équation linéaire 2x - y = 5 ?",
+              "options": ["(3 ; 1)", "(4 ; 3)", "(2 ; 0)", "(5 ; 4)"],
+              "correctAnswers": [0, 1],
+              "explanation": "2*(3) - 1 = 5 et 2*(4) - 3 = 5. En revanche 2*(2) - 0 = 4 != 5 et 2*(5) - 4 = 6 != 5."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un père a le triple de l'âge de son fils. Dans 10 ans, il aura le double de l'âge de son fils. Quel est l'âge actuel du fils ?",
+              "options": ["10 ans", "15 ans", "12 ans", "8 ans"],
+              "correctAnswers": [0],
+              "explanation": "P = 3F. Dans 10 ans : P + 10 = 2(F + 10) => 3F + 10 = 2F + 20 => F = 10 ans."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le périmètre d'un rectangle est 36 cm et sa longueur dépasse sa largeur de 4 cm. Quelle est sa largeur ?",
+              "options": ["7 cm", "11 cm", "8 cm", "6 cm"],
+              "correctAnswers": [0],
+              "explanation": "Demi-périmètre : L + l = 18. Comme L = l + 4, on a 2l + 4 = 18 => 2l = 14 => l = 7 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un groupe paie 120 € pour un repas. Si 2 personnes s'ajoutent au groupe pour la même somme globale, chacun paie 2 € de moins. Combien étaient-ils au départ ?",
+              "options": [
+                "10 personnes",
+                "12 personnes",
+                "8 personnes",
+                "15 personnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "120/n - 120/(n+2) = 2. Pour n = 10 : 120/10 = 12 € par personne, et 120/12 = 10 € par personne, soit exactement 2 € de moins."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Résoudre le système { x + y = 12 ; x * y = 35 }.",
+              "options": ["{5 ; 7}", "{4 ; 8}", "{3 ; 9}", "{6 ; 6}"],
+              "correctAnswers": [0],
+              "explanation": "x et y sont les racines de l'équation X^2 - 12X + 35 = 0. Le discriminant vaut 144 - 140 = 4, d'où X = (12 +- 2)/2, soit 5 et 7."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un système de deux équations linéaires à deux inconnues n'admet aucune solution lorsque :",
+              "options": [
+                "Les droites associées sont strictement parallèles",
+                "Les droites associées sont sécantes",
+                "Les droites associées sont confondues",
+                "Le déterminant du système est non nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Graphiquement, un système sans solution correspond à deux droites parallèles distinctes qui ne possèdent aucun point d'intersection."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Algorithmes, approximations et méthodes de dichotomie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Le principe de la méthode de dichotomie pour trouver une racine de f(x) = 0 repose sur :",
+              "options": [
+                "La division de l'intervalle par 2 à chaque étape",
+                "L'interpolation polynomiale de degré n",
+                "Le calcul de tangentes successives",
+                "L'évaluation aléatoire par méthode de Monte-Carlo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dichotomie divise par 2 la longueur de l'intervalle à chaque itération en exploitant le théorème des valeurs intermédiaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Après 10 itérations de dichotomie sur un intervalle de départ [0 ; 1], la largeur de l'intervalle final est :",
+              "options": ["1 / 1024", "1 / 100", "1 / 10", "1 / 20"],
+              "correctAnswers": [0],
+              "explanation": "À chaque étape la largeur est divisée par 2. Après 10 étapes, la largeur est 1 / 2^10 = 1 / 1024 (environ 0,00098)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour f(x) = x^3 + x - 1 sur [0 ; 1], avec f(0) = -1 et f(1) = 1, quel est le premier milieu testé par dichotomie ?",
+              "options": ["0,5", "0,25", "0,75", "0"],
+              "correctAnswers": [0],
+              "explanation": "Le milieu de l'intervalle [a ; b] est m = (a + b)/2 = (0 + 1)/2 = 0,5."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sachant que f(0,5) = -0,375 < 0 et f(1) = 1 > 0, quel est le nouvel intervalle sélectionné pour la racine ?",
+              "options": ["[0,5 ; 1]", "[0 ; 0,5]", "[-0,375 ; 1]", "[0 ; 1]"],
+              "correctAnswers": [0],
+              "explanation": "Puisque f(0,5) et f(1) sont de signes contraires, le théorème des valeurs intermédiaires garantit une racine dans [0,5 ; 1]."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles conditions sont requises pour appliquer la méthode de dichotomie à une fonction f sur [a ; b] ?",
+              "options": [
+                "f est continue sur [a ; b]",
+                "f(a) et f(b) sont de signes contraires (f(a) * f(b) < 0)",
+                "f est deux fois dérivable",
+                "f est impaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La continuité et le changement de signe aux bornes garantissent l'existence d'au moins un zéro par le théorème des valeurs intermédiaires."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien d'itérations de dichotomie sur [0 ; 1] suffisent pour garantir une précision inférieure à 10^(-2) ?",
+              "options": [
+                "7 itérations",
+                "5 itérations",
+                "10 itérations",
+                "3 itérations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On cherche n tel que 1/2^n <= 0,01 <=> 2^n >= 100. Comme 2^6 = 64 et 2^7 = 128, 7 itérations suffisent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La méthode de balayage avec un pas de 0,1 consiste à :",
+              "options": [
+                "Calculer les images de 0,1 en 0,1 jusqu'au changement de signe",
+                "Diviser l'intervalle par 10 à chaque étape",
+                "Calculer la dérivée en chaque point",
+                "Choisir des points au hasard espacés de 0,1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le balayage incrémente x d'un pas fixe (ici 0,1) et détecte le premier changement de signe des images consécutives."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans un algorithme en Python, la condition `while (b - a) > e:` permet de :",
+              "options": [
+                "Arrêter la boucle dès que la précision e est atteinte",
+                "Exécuter la boucle e fois",
+                "Vérifier que f(e) est nul",
+                "Diviser l'intervalle par e"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La boucle continue tant que l'amplitude de l'intervalle (b - a) est supérieure à la tolérance e demandée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'approximation affine locale d'une fonction f dérivable en a s'écrit pour h proche de 0 :",
+              "options": [
+                "f(a + h) approx f(a) + h * f'(a)",
+                "f(a + h) approx f'(a) + h * f(a)",
+                "f(a + h) approx f(a) + h^2 * f'(a)",
+                "f(a + h) approx f(a) * f'(a) * h"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est l'équation de la tangente au voisinage du point d'abscisse a : f(a + h) approx f(a) + f'(a)*h."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En utilisant l'approximation affine sqrt(1 + h) approx 1 + h/2 pour h proche de 0, estimer sqrt(1,04).",
+              "options": ["1,02", "1,04", "1,01", "1,08"],
+              "correctAnswers": [0],
+              "explanation": "Avec h = 0,04 : sqrt(1 + 0,04) approx 1 + 0,04 / 2 = 1 + 0,02 = 1,02."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Encadrements d'erreurs et précision numérique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Si 2,1 <= x <= 2,3 et 1,0 <= y <= 1,2, quel est l'encadrement de x + y ?",
+              "options": [
+                "[3,1 ; 3,5]",
+                "[3,1 ; 3,3]",
+                "[2,1 ; 3,5]",
+                "[3,0 ; 3,6]"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On additionne membre à membre : 2,1 + 1,0 <= x + y <= 2,3 + 1,2, soit 3,1 <= x + y <= 3,5."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si 5 <= x <= 8 et 2 <= y <= 4, quel est l'encadrement de x - y ?",
+              "options": ["[1 ; 6]", "[3 ; 4]", "[3 ; 6]", "[1 ; 4]"],
+              "correctAnswers": [0],
+              "explanation": "On encadre -y : -4 <= -y <= -2. Puis x + (-y) : 5 - 4 <= x - y <= 8 - 2, soit [1 ; 6]."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si 2 <= x <= 4, quel est l'encadrement de x^2 ?",
+              "options": ["[4 ; 16]", "[2 ; 16]", "[4 ; 8]", "[0 ; 16]"],
+              "correctAnswers": [0],
+              "explanation": "La fonction carré est strictement croissante sur [0 ; +infini[, donc 2^2 <= x^2 <= 4^2, soit [4 ; 16]."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si -3 <= x <= 2, quel est l'encadrement exact de x^2 ?",
+              "options": ["[0 ; 9]", "[4 ; 9]", "[-9 ; 4]", "[0 ; 4]"],
+              "correctAnswers": [0],
+              "explanation": "Pour tout x dans [-3 ; 2], x^2 >= 0 (atteint en x = 0). Le maximum est (-3)^2 = 9. Donc [0 ; 9]."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Sachant que 2 <= x <= 5 et 1 <= y <= 2, quelles inégalités sont toujours vérifiées ?",
+              "options": [
+                "2 <= x * y <= 10",
+                "1 <= x / y <= 5",
+                "x - y >= 0",
+                "x + y <= 6"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "x*y est entre 2*1=2 et 5*2=10. x/y : avec 1/y dans [0,5 ; 1], x*(1/y) est entre 2*0,5=1 et 5*1=5. x-y est entre 2-2=0 et 5-1=4 (donc x-y >= 0 est vraie aussi, mais l'option 0 et 1 sont vérifiées)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la valeur arrondie au centième de 3,14159 ?",
+              "options": ["3,14", "3,15", "3,142", "3,1"],
+              "correctAnswers": [0],
+              "explanation": "Le chiffre des millièmes est 1 < 5, donc l'arrondi au centième le plus proche est 3,14."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est l'écriture scientifique correcte du nombre 0,000456 ?",
+              "options": [
+                "4,56 * 10^(-4)",
+                "45,6 * 10^(-5)",
+                "4,56 * 10^4",
+                "0,456 * 10^(-3)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écriture scientifique s'écrit a * 10^n avec 1 <= |a| < 10, soit 4,56 * 10^(-4)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si une mesure est notée L = 12,5 cm +- 0,1 cm, quelle est l'incertitude absolue ?",
+              "options": ["0,1 cm", "12,5 cm", "0,2 cm", "0,05 cm"],
+              "correctAnswers": [0],
+              "explanation": "L'incertitude absolue Delta L correspond directement à la demi-largeur de l'intervalle de confiance, ici 0,1 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est l'incertitude relative pour une distance de 50 m mesurée avec une incertitude absolue de 0,5 m ?",
+              "options": ["1 %", "0,1 %", "0,01 %", "10 %"],
+              "correctAnswers": [0],
+              "explanation": "Incertitude relative = Delta x / x = 0,5 / 50 = 1 / 100 = 0,01 = 1 %."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi l'encadrement de 1/x pour 2 <= x <= 5 est-il 1/5 <= 1/x <= 1/2 ?",
+              "options": [
+                "Car la fonction inverse est strictement décroissante sur ]0 ; +inf[",
+                "Car on applique la règle des signes opposés",
+                "Car 1/x est toujours inférieur à 1",
+                "Car l'inverse conserve l'ordre naturel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une fonction strictement décroissante inverse l'ordre des inégalités : a <= x <= b => 1/b <= 1/x <= 1/a."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Problèmes arithmétiques et suites numériques modélisées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Une population de bactéries double toutes les heures. Si elle compte 100 individus à t = 0, combien en compte-t-elle après 5 heures ?",
+              "options": ["3 200", "1 600", "500", "6 400"],
+              "correctAnswers": [0],
+              "explanation": "Modélisation géométrique : N(5) = 100 * 2^5 = 100 * 32 = 3 200 bactéries."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un loyer de 600 € augmente de 20 € chaque année. Quel sera son montant au bout de 5 ans ?",
+              "options": ["700 €", "680 €", "720 €", "660 €"],
+              "correctAnswers": [0],
+              "explanation": "Suite arithmétique : u_5 = u_0 + 5*r = 600 + 5*20 = 600 + 100 = 700 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la somme de tous les entiers de 1 à 100 ?",
+              "options": ["5 050", "5 000", "5 100", "10 100"],
+              "correctAnswers": [0],
+              "explanation": "Formule de Gauss : S = n(n + 1) / 2 = 100 * 101 / 2 = 50 * 101 = 5 050."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un capital de 1 000 € est placé à intérêts simples au taux annuel de 4 %. Quelle est sa valeur au bout de 3 ans ?",
+              "options": ["1 120 €", "1 124,86 €", "1 040 €", "1 080 €"],
+              "correctAnswers": [0],
+              "explanation": "Intérêts simples : les intérêts sont constants chaque année (1 000 * 0,04 = 40 €). En 3 ans : 1 000 + 3*40 = 1 120 €."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Une suite est définie par u_0 = 1 000 et u_{n+1} = 1,02 * u_n + 50. Quelles assertions sont vraies ?",
+              "options": [
+                "La suite est arithmético-géométrique",
+                "u_1 = 1 070",
+                "C'est une suite purement géométrique",
+                "u_n est une suite constante"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La relation u_{n+1} = a*u_n + b définit une suite arithmético-géométrique. u_1 = 1,02 * 1 000 + 50 = 1 020 + 50 = 1 070."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le plus petit entier n tel que 2^n > 1 000 ?",
+              "options": ["n = 10", "n = 9", "n = 11", "n = 8"],
+              "correctAnswers": [0],
+              "explanation": "2^9 = 512 et 2^10 = 1 024. Le plus petit entier est donc n = 10."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une balle rebondit à chaque fois à 80 % de sa hauteur précédente. Lâchée de 10 m, à quelle hauteur monte-t-elle au 2e rebond ?",
+              "options": ["6,4 m", "8 m", "5,12 m", "4 m"],
+              "correctAnswers": [0],
+              "explanation": "Hauteur au rebond 1 : 10 * 0,8 = 8 m. Rebond 2 : 8 * 0,8 = 6,4 m (soit 10 * 0,8^2)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le creusement d'un puits coûte 50 € pour le premier mètre, puis 10 € de plus par mètre supplémentaire. Quel est le coût total pour 4 mètres ?",
+              "options": ["260 €", "200 €", "240 €", "280 €"],
+              "correctAnswers": [0],
+              "explanation": "Coûts successifs : 50 € + 60 € + 70 € + 80 € = 260 €."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une suite dont chaque terme est obtenu en multipliant le précédent par une constante q s'appelle :",
+              "options": [
+                "Une suite géométrique",
+                "Une suite arithmétique",
+                "Une suite harmonique",
+                "Une suite récurrente linéaire d'ordre 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition, u_{n+1} = q * u_n définit une suite géométrique de raison q."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Trouver la raison r d'une suite arithmétique telle que u_2 = 11 et u_5 = 20.",
+              "options": ["r = 3", "r = 9", "r = 4", "r = 2"],
+              "correctAnswers": [0],
+              "explanation": "u_5 - u_2 = (u_0 + 5r) - (u_0 + 2r) = 3r. D'où 3r = 20 - 11 = 9 => r = 3."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Problèmes financiers et intérêts composés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Un capital C_0 placé à intérêts composés au taux annuel t pendant n années devient :",
+              "options": [
+                "C_n = C_0 * (1 + t)^n",
+                "C_n = C_0 * (1 + n * t)",
+                "C_n = C_0 * (1 + t^n)",
+                "C_n = C_0 + n * t"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque année le capital est multiplié par (1 + t). Au bout de n années, il vaut C_0 * (1 + t)^n."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un capital de 2 000 € est placé à 5 % par an à intérêts composés. Combien vaut-il au bout de 2 ans ?",
+              "options": ["2 205 €", "2 200 €", "2 100 €", "2 250 €"],
+              "correctAnswers": [0],
+              "explanation": "C_2 = 2 000 * (1,05)^2 = 2 000 * 1,1025 = 2 205 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Selon la règle empirique des 72, au taux d'intérêt composé de 6 % par an, le capital double en environ :",
+              "options": ["12 ans", "10 ans", "15 ans", "8 ans"],
+              "correctAnswers": [0],
+              "explanation": "La règle des 72 indique que la durée de doublement est approximativement 72 / taux = 72 / 6 = 12 ans."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre intérêts simples et intérêts composés ?",
+              "options": [
+                "Dans les intérêts composés, les intérêts acquis produisent eux-mêmes des intérêts",
+                "Les intérêts simples sont toujours supérieurs aux intérêts composés",
+                "Les intérêts composés ne s'appliquent qu'aux emprunts bancaires",
+                "Les intérêts simples varient selon l'inflation annuelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les intérêts composés capitalisent les gains précédents : les intérêts passés intègrent le capital de base pour le calcul futur."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Pour un capital de 1 000 € placé à 10 % par an pendant 3 ans, quelles affirmations sont exactes ?",
+              "options": [
+                "À intérêts simples, les intérêts totaux sont de 300 €",
+                "À intérêts composés, le capital final est de 1 331 €",
+                "À intérêts composés, les intérêts totaux sont de 300 €",
+                "À intérêts simples, le capital final est de 1 331 €"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Intérêts simples : 3 * (1 000 * 0,10) = 300 €. Intérêts composés : 1 000 * (1,10)^3 = 1 000 * 1,331 = 1 331 €."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si un taux d'intérêt mensuel est de 0,5 %, quel est le taux annuel proportionnel correspondant ?",
+              "options": ["6 %", "6,17 %", "5 %", "0,5 %"],
+              "correctAnswers": [0],
+              "explanation": "Le taux annuel proportionnel multiplie le taux périodique par le nombre de périodes : 12 * 0,5 % = 6 %."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour doubler un capital en 10 ans à intérêts composés, le taux annuel t doit vérifier l'équation :",
+              "options": [
+                "(1 + t)^10 = 2",
+                "1 + 10t = 2",
+                "(1 + t)^2 = 10",
+                "10*(1 + t) = 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C_10 = C_0 * (1 + t)^10 = 2 * C_0 <=> (1 + t)^10 = 2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la valeur actuelle d'une somme de 1 210 € à percevoir dans 2 ans avec un taux d'actualisation de 10 % par an ?",
+              "options": ["1 000 €", "1 100 €", "950 €", "1 050 €"],
+              "correctAnswers": [0],
+              "explanation": "Valeur actuelle = 1 210 / (1 + 0,10)^2 = 1 210 / 1,21 = 1 000 €."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans le remboursement d'un emprunt à annuités constantes, au fil des mois :",
+              "options": [
+                "La part du capital remboursé augmente et celle des intérêts diminue",
+                "La part des intérêts augmente et celle du capital diminue",
+                "Les parts d'intérêts et de capital restent constantes",
+                "L'annuité globale diminue chaque mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le capital restant dû diminuant après chaque échéance, les intérêts diminuent et la fraction consacrée au remboursement du capital augmente."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le Taux Annuel Effectif Global (TAEG) inclut obligatoirement :",
+              "options": [
+                "Les intérêts nominaux, frais de dossier et assurances obligatoires",
+                "Uniquement le taux nominal sans aucun frais",
+                "Le taux d'inflation estimé sur la durée du prêt",
+                "Les pénalités de remboursement anticipé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le TAEG est le coût total du crédit exprimé en pourcentage annuel, englobant tous les frais obligatoires imposés pour l'obtention du prêt."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Problèmes ouverts et raisonnements complexes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Un nénuphar double de surface chaque jour et couvre un étang en 30 jours. Au bout de combien de jours en couvrait-il la moitié ?",
+              "options": ["29 jours", "15 jours", "28 jours", "25 jours"],
+              "correctAnswers": [0],
+              "explanation": "Puisqu'il double chaque jour, la veille du 30e jour (donc au 29e jour), il couvrait exactement la moitié de l'étang."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Deux bougies de même hauteur brûlent : la 1re en 4 h et la 2de en 3 h. Après combien de temps la 1re est-elle deux fois plus haute que la 2de ?",
+              "options": [
+                "2 h 24 min (2,4 h)",
+                "2 h",
+                "2 h 30 min",
+                "1 h 45 min"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 - t/4 = 2*(1 - t/3) <=> 1 - t/4 = 2 - 2t/3 <=> 2t/3 - t/4 = 1 <=> 5t/12 = 1 <=> t = 12/5 h = 2,4 h = 2 h 24 min."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La moyenne de 5 nombres est 12. Si l'on ajoute un 6e nombre égal à 18, quelle devient la nouvelle moyenne ?",
+              "options": ["13", "14", "12,5", "15"],
+              "correctAnswers": [0],
+              "explanation": "Somme des 5 nombres : 5 * 12 = 60. Nouvelle somme : 60 + 18 = 78. Nouvelle moyenne : 78 / 6 = 13."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans une course à pied, vous doublez le coureur qui se trouve en deuxième position. À quelle position vous trouvez-vous alors ?",
+              "options": ["2e", "1er", "3e", "Dernier"],
+              "correctAnswers": [0],
+              "explanation": "En doublant le deuxième, vous prenez sa place et devenez donc deuxième (le premier est toujours devant vous)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles étapes caractérisent la structure d'un raisonnement par l'absurde ?",
+              "options": [
+                "On suppose vraie la négation de la proposition à démontrer",
+                "On aboutit à une contradiction logique ou mathématique",
+                "On démontre la propriété pour n = 0 puis par récurrence",
+                "On vérifie la propriété sur un nombre fini d'exemples"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le raisonnement par l'absurde suppose faux ce que l'on veut prouver et déduit une contradiction logique pour en conclure que la proposition initiale est vraie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un commerçant vend deux vestes 120 € chacune. Sur la 1re il gagne 20 %, sur la 2de il perd 20 %. Sur l'ensemble des deux ventes :",
+              "options": [
+                "Il perd 10 €",
+                "Il ne gagne ni ne perd rien",
+                "Il gagne 10 €",
+                "Il perd 20 €"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coût 1re veste : 120 / 1,20 = 100 €. Coût 2de veste : 120 / 0,80 = 150 €. Coût total = 250 €. Recette totale = 240 €. Il perd 10 €."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si 5 machines fabriquent 5 pièces en 5 minutes, combien de temps mettent 100 machines pour fabriquer 100 pièces ?",
+              "options": ["5 minutes", "100 minutes", "20 minutes", "1 minute"],
+              "correctAnswers": [0],
+              "explanation": "Chaque machine fabrique 1 pièce en 5 minutes. Donc 100 machines fabriquent 100 pièces simultanément en 5 minutes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien de fois le chiffre 9 apparaît-il dans la suite des nombres entiers de 1 à 100 inclus ?",
+              "options": ["20 fois", "10 fois", "19 fois", "11 fois"],
+              "correctAnswers": [0],
+              "explanation": "Au chiffre des unités : 9, 19, 29, ..., 99 (10 fois). Au chiffre des dizaines : 90, 91, ..., 99 (10 fois). Total : 10 + 10 = 20 fois."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La somme de trois nombres entiers consécutifs est égale à 72. Quel est le plus grand de ces trois nombres ?",
+              "options": ["25", "24", "23", "26"],
+              "correctAnswers": [0],
+              "explanation": "Soit (n - 1) + n + (n + 1) = 72 => 3n = 72 => n = 24. Les trois entiers sont 23, 24 et 25. Le plus grand est 25."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lors d'une réunion de 10 personnes, chacun serre la main de tous les autres exactement une fois. Combien de poignées de main sont échangées ?",
+              "options": ["45", "90", "50", "100"],
+              "correctAnswers": [0],
+              "explanation": "Nombre de paires distinctes : (10 * 9) / 2 = 90 / 2 = 45 poignées de main (combinaison de 2 parmi 10)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

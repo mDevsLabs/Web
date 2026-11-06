@@ -1,7 +1,9 @@
+import { connection } from "next/server";
 import { errorResponse, logError } from "@/lib/api/error-response";
 import { getAgentTemplates } from "@/lib/db/queries";
 
 export async function GET() {
+  await connection();
   try {
     const templates = await getAgentTemplates();
     return Response.json(templates);

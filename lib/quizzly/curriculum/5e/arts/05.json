@@ -1,0 +1,2048 @@
+{
+  "id": "5e-arts-05",
+  "year": "5e",
+  "subject": "arts",
+  "title": "L'espace et le volume",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Relief et profondeur",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes décrivent bien ce qui est proche ou loin dans une image ?",
+              "explanation": "Le premier plan et l'arrière-plan situent les éléments dans la profondeur de l'œuvre.",
+              "options": ["Premier plan", "Arrière-plan", "Signature", "Cadre"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le relief d'une sculpture se perçoit surtout au toucher et à la lumière.",
+              "explanation": "Le relief désigne les parties qui avancent ou reculent sur la surface.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Seulement en peinture",
+                "Seulement en photo"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un bas-relief est une sculpture où les formes restent peu saillantes.",
+              "explanation": "En bas-relief, les volumes dépassent peu du fond.",
+              "options": ["Vrai", "Faux", "Toujours en rond", "Sans volume"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour donner de la profondeur en dessin, on peut superposer des plans.",
+              "explanation": "Placer un objet devant un autre crée l'impression de distance.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Interdit en arts",
+                "Réservé au lycée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le premier plan attire souvent le regard en premier.",
+              "explanation": "Il est visuellement plus proche du spectateur.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Jamais en sculpture",
+                "Uniquement en noir et blanc"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'arrière-plan paraît généralement plus petit ou moins net que le premier plan.",
+              "explanation": "La distance le rend parfois moins détaillé ou plus pâle.",
+              "options": ["Vrai", "Faux", "Toujours identique", "Sans effet"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Changer de point de vue modifie ce que l'on voit d'une sculpture.",
+              "explanation": "Se déplacer autour d'un volume révèle d'autres faces.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Seulement en peinture",
+                "Jamais en classe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un volume en arts plastiques occupe de l'espace en hauteur, largeur et profondeur.",
+              "explanation": "Contrairement au dessin plat, le volume est tangible ou suggéré en trois dimensions.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Uniquement en musique",
+                "Sans profondeur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une ombre portée peut renforcer l'effet de relief sur une composition.",
+              "explanation": "La lumière et l'ombre modèient la perception des saillies.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Efface le volume",
+                "Remplace la couleur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un haut-relief présente des formes plus saillantes qu'un bas-relief.",
+              "explanation": "Les volumes ressortent davantage du support.",
+              "options": ["Vrai", "Faux", "Sans différence", "Toujours plat"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels moyens simples suggèrent la profondeur sans perspective savante ?",
+              "explanation": "Superposition et taille différente aident à lire près et loin.",
+              "options": [
+                "Superposer les formes",
+                "Agrandir ce qui est proche",
+                "Effacer l'arrière-plan",
+                "Ignorer la lumière"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En observant un paysage, la ligne d'horizon sépare souvent ciel et sol.",
+              "explanation": "Elle aide à situer la profondeur dans l'image.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "N'existe qu'en sculpture",
+                "Interdit en 5e"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un plan intermédiaire se situe entre le premier plan et l'arrière-plan.",
+              "explanation": "Il crée une transition dans la profondeur.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Toujours au premier plan",
+                "Hors image"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Modeler avec de l'argile permet de créer du volume.",
+              "explanation": "La matière se construit dans l'espace.",
+              "options": ["Vrai", "Faux", "Uniquement en 2D", "Sans relief"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une sculpture en rond-bosse se regarde de plusieurs côtés.",
+              "explanation": "Elle n'est pas accrochée à un mur comme un relief.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Toujours plate",
+                "Sans point de vue"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Des valeurs plus claires peuvent reculer visuellement dans un dessin.",
+              "explanation": "Le contraste aide parfois à lire la distance.",
+              "options": ["Vrai", "Faux", "Interdit", "Sans effet"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le relief mural reste attaché à un support vertical.",
+              "explanation": "C'est le cas des bas et hauts-reliefs.",
+              "options": ["Vrai", "Faux", "Toujours au sol", "Sans fond"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Photographier une maquette sous un angle change la lecture des volumes.",
+              "explanation": "Le point de vue influence la perception de la profondeur.",
+              "options": ["Vrai", "Faux", "Ne change rien", "Efface le relief"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Empiler des matériaux crée parfois des niveaux de profondeur.",
+              "explanation": "Les couches successives font avancer ou reculer des parties.",
+              "options": ["Vrai", "Faux", "Interdit en collage", "Sans volume"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Observer une œuvre de près puis de loin fait varier les détails visibles.",
+              "explanation": "La distance du spectateur est un point de vue.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Identique toujours",
+                "Seulement en musée fermé"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments relèvent du volume en arts plastiques ?",
+              "explanation": "Sculpture et modelage occupent l'espace réel.",
+              "options": [
+                "Une sculpture",
+                "Un modelage",
+                "Une liste de courses",
+                "Un timbre seul"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un collage épais avec matières superposées peut produire du relief.",
+              "explanation": "L'épaisseur dépasse du support.",
+              "options": ["Vrai", "Faux", "Toujours plat", "Sans effet"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La profondeur de champ en photo peut flouter l'arrière-plan.",
+              "explanation": "Cela isole le sujet au premier plan.",
+              "options": ["Vrai", "Faux", "Interdit", "Sans lien avec l'image"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans une nature morte, le fruit devant la carafe est au premier plan.",
+              "explanation": "Il masque partiellement l'objet derrière.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Toujours arrière-plan",
+                "Sans profondeur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Gratter ou inciser une surface crée un relief léger.",
+              "explanation": "La matière est enlevée ou creusée.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Uniquement numérique",
+                "Sans texture"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un croquis rapide peut indiquer trois plans avec des lignes simples.",
+              "explanation": "On distingue avant, milieu et fond sans perspective complexe.",
+              "options": ["Vrai", "Faux", "Interdit", "Réservé aux experts"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La lumière rasante accentue les reliefs d'une surface.",
+              "explanation": "Les ombres marquent les saillies.",
+              "options": ["Vrai", "Faux", "Les efface", "Sans intérêt"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une statue de jardin se découvre en tournant autour.",
+              "explanation": "Le volume se révèle sous plusieurs angles.",
+              "options": ["Vrai", "Faux", "Vue unique", "Toujours murale"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réduire la taille d'un personnage au fond suggère qu'il est loin.",
+              "explanation": "C'est un repère spatial courant à l'école.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Signifie qu'il est proche",
+                "Sans effet"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un embossage fait ressortir des motifs en relief sur papier.",
+              "explanation": "La forme est moulée ou pressée.",
+              "options": ["Vrai", "Faux", "Toujours creux", "Sans volume"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles pratiques développent le sens du volume en 5e ?",
+              "explanation": "Modeler et construire en trois dimensions entraînent l'œil et la main.",
+              "options": [
+                "Modeler",
+                "Construire une maquette",
+                "Copier une recette",
+                "Compter sans dessin"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un découpage en papier plié peut devenir une forme en volume.",
+              "explanation": "Le pliage ouvre la troisième dimension.",
+              "options": ["Vrai", "Faux", "Reste toujours plat", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le premier plan peut être mis en valeur par des couleurs plus vives.",
+              "explanation": "Le contraste attire l'attention vers l'avant.",
+              "options": ["Vrai", "Faux", "Interdit", "Efface la profondeur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une frise sculptée sur un mur est un exemple de relief.",
+              "explanation": "Les figures ressortent du support.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Toujours en rond",
+                "Sans profondeur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Observer son propre croquis à bout de bras change l'échelle perçue.",
+              "explanation": "La distance modifie le point de vue.",
+              "options": ["Vrai", "Faux", "Sans effet", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les lignes de contour peuvent séparer premier plan et fond.",
+              "explanation": "Elles clarifient la superposition.",
+              "options": ["Vrai", "Faux", "Toujours inutiles", "Sans lien"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un masque sculpté présente souvent un relief marqué.",
+              "explanation": "Nez et joues avancent sur la surface.",
+              "options": ["Vrai", "Faux", "Toujours plat", "Sans volume"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La profondeur peut être suggérée par des détails plus fins au loin.",
+              "explanation": "Moins de détails évoquent la distance.",
+              "options": ["Vrai", "Faux", "Inverse toujours", "Sans règle"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une empreinte dans l'argile crée une forme creuse ou saillante.",
+              "explanation": "Le volume naît du contact avec la matière.",
+              "options": ["Vrai", "Faux", "Sans effet", "Uniquement peinture"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparer une photo et une sculpture aide à distinguer image et volume réel.",
+              "explanation": "La sculpture occupe l'espace physiquement.",
+              "options": ["Vrai", "Faux", "Identiques", "Sans intérêt"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels repères aident à lire la profondeur dans une composition ?",
+              "explanation": "Superposition et plans successifs structurent l'espace.",
+              "options": [
+                "Superposition",
+                "Plans successifs",
+                "Numéro de page",
+                "Heure du cours"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un paysage avec route qui se rétrécit suggère la profondeur.",
+              "explanation": "La voie semble s'enfoncer vers l'horizon.",
+              "options": ["Vrai", "Faux", "Sans effet", "Interdit en 5e"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le volume d'un cube se mesure en longueur, largeur et hauteur.",
+              "explanation": "Ce sont les trois dimensions.",
+              "options": ["Vrai", "Faux", "Une seule", "Sans hauteur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une scène de théâtre peinte avec plusieurs plans rappelle la profondeur.",
+              "explanation": "Décors superposés imitent la distance.",
+              "options": ["Vrai", "Faux", "Toujours plate", "Sans décor"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Toucher une sculpture texturée informe sur le relief.",
+              "explanation": "Le toucher complète la vue quand c'est autorisé.",
+              "options": ["Vrai", "Faux", "Interdit toujours", "Sans intérêt"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un personnage plus grand au premier plan peut paraître proche.",
+              "explanation": "L'échelle relative guide la lecture.",
+              "options": ["Vrai", "Faux", "Signifie loin", "Sans effet"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Gravure en creux et en relief modifient la surface différemment.",
+              "explanation": "L'une enfonce, l'autre fait saillir.",
+              "options": ["Vrai", "Faux", "Identiques", "Sans texture"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Photographier une sculpture de face montre une seule facette du volume.",
+              "explanation": "D'autres angles complètent la vision.",
+              "options": ["Vrai", "Faux", "Montre tout", "Efface le volume"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un arbre devant une montagne illustre premier plan et arrière-plan.",
+              "explanation": "Le tronc masque partiellement la montagne.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Inverse obligatoire",
+                "Sans profondeur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Assembler des volumes géométriques simples forme une composition 3D.",
+              "explanation": "Cubes et cylindres s'empilent dans l'espace.",
+              "options": ["Vrai", "Faux", "Reste plat", "Interdit"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels supports peuvent porter un relief en classe ?",
+              "explanation": "Bois, carton épais ou argile accueillent des volumes.",
+              "options": [
+                "Carton épais",
+                "Argile",
+                "Écran éteint seul",
+                "Feuille vide sans travail"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un dessin en fil de fer de boîtes empilées évoque des volumes.",
+              "explanation": "Les arêtes suggèrent la profondeur.",
+              "options": ["Vrai", "Faux", "Sans effet", "Uniquement couleur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'ombre d'un objet posé sur une table renforce son volume.",
+              "explanation": "Elle ancre l'objet dans l'espace.",
+              "options": ["Vrai", "Faux", "L'aplatit", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un paysage avec brouillard au fond peut faire reculer l'arrière-plan.",
+              "explanation": "La brume adoucit les détails lointains.",
+              "options": ["Vrai", "Faux", "Rapproche tout", "Sans effet"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sculpter un animal en petite taille demande d'observer les volumes du corps.",
+              "explanation": "Tête, corps et membres avancent différemment.",
+              "options": ["Vrai", "Faux", "Sans observation", "Toujours plat"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un point de vue en hauteur montre le dessus des formes.",
+              "explanation": "On surplombe la scène.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Identique au sol",
+                "Sans changement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Relief et texture peuvent se combiner sur une même surface.",
+              "explanation": "La matière peut être à la fois rugueuse et saillante.",
+              "options": ["Vrai", "Faux", "Exclusifs", "Sans lien"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une silhouette devant un soleil crée un contraste premier plan / fond.",
+              "explanation": "Le personnage sombre se détache sur la lumière.",
+              "options": ["Vrai", "Faux", "Sans profondeur", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Construire un personnage en papier mâché développe le sens du volume.",
+              "explanation": "Les couches forment une masse.",
+              "options": ["Vrai", "Faux", "Reste plat", "Sans intérêt"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un fond uni peut faire ressortir un sujet au premier plan.",
+              "explanation": "Moins de détails derrière isolent l'avant.",
+              "options": ["Vrai", "Faux", "Efface le sujet", "Sans effet"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles notions sont au cœur du chapitre relief et profondeur ?",
+              "explanation": "Premier plan, arrière-plan et volume structurent l'espace.",
+              "options": [
+                "Premier plan",
+                "Volume",
+                "Accord grammatical seul",
+                "Division sans image"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une maquette architecturale présente des volumes à l'échelle réduite.",
+              "explanation": "Elle représente l'espace en miniature.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Toujours pleine taille",
+                "Sans profondeur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un dessin où le bâtiment cache la lune montre une superposition.",
+              "explanation": "Ce qui masque est devant.",
+              "options": ["Vrai", "Faux", "Sans ordre", "Toujours arrière"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le contraste entre zones sombres et claires peut modeler un volume.",
+              "explanation": "Les valeurs sculptent visuellement la forme.",
+              "options": ["Vrai", "Faux", "Aplatit", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une frise en classe peut alterner parties plates et parties en relief.",
+              "explanation": "Le rythme des saillies enrichit la lecture.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Tout plat obligatoire",
+                "Sans variation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Se pencher pour regarder une basse-relief change l'angle de lumière perçu.",
+              "explanation": "Le point de vue modifie les ombres.",
+              "options": ["Vrai", "Faux", "Sans effet", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un personnage au milieu de la feuille peut occuper le plan intermédiaire.",
+              "explanation": "Il se situe entre avant et fond selon la composition.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Toujours premier plan",
+                "Hors image"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Empiler des formes découpées crée une sculpture légère en volume.",
+              "explanation": "Chaque couche ajoute de la profondeur.",
+              "options": ["Vrai", "Faux", "Reste 2D", "Sans effet"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une photo prise de très près accentue le relief d'une texture.",
+              "explanation": "Le gros plan rapproche les détails.",
+              "options": ["Vrai", "Faux", "Efface tout", "Sans lien"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Distinguer bas-relief et sculpture en rond aide à nommer l'œuvre.",
+              "explanation": "Le rapport au mur ou à l'espace libre diffère.",
+              "options": ["Vrai", "Faux", "Même chose", "Sans vocabulaire"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels gestes artistiques travaillent la saillie ou la profondeur ?",
+              "explanation": "Gratter, coller en épaisseur ou modeler modifient le relief.",
+              "options": [
+                "Coller en épaisseur",
+                "Modeler",
+                "Effacer sans trace",
+                "Laisser feuille vierge"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un tunnel dessiné avec des arcs qui rétrécissent suggère la profondeur.",
+              "explanation": "Les formes semblent s'éloigner.",
+              "options": ["Vrai", "Faux", "Sans effet", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La sculpture de plein air se voit sous la lumière naturelle changeante.",
+              "explanation": "Le soleil révèle différemment les volumes.",
+              "options": ["Vrai", "Faux", "Toujours identique", "Sans volume"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un premier plan flou est rare ; on nettoie plutôt le sujet proche.",
+              "explanation": "La mise au point guide l'attention.",
+              "options": ["Vrai", "Faux", "Toujours flou devant", "Sans règle"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Observer une œuvre depuis une passerelle modifie le point de vue vertical.",
+              "explanation": "On voit le haut et le bas différemment.",
+              "options": ["Vrai", "Faux", "Identique", "Sans intérêt"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un masque africanisé en classe peut montrer des volumes stylisés.",
+              "explanation": "Les formes sont exagérées pour l'effet.",
+              "options": ["Vrai", "Faux", "Toujours réaliste", "Sans volume"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La profondeur se lit aussi dans un paysage urbain avec rues et immeubles.",
+              "explanation": "Les bâtiments se superposent dans l'espace.",
+              "options": ["Vrai", "Faux", "Uniquement nature", "Sans espace"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un volume creux, comme un vase, possède intérieur et extérieur.",
+              "explanation": "L'espace intérieur fait partie de la forme.",
+              "options": ["Vrai", "Faux", "Toujours plein", "Sans intérieur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tracer une ligne de fuite simple vers un point aide parfois au paysage.",
+              "explanation": "C'est une introduction légère à la profondeur, pas la perspective savante.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Réservé uniquement au lycée",
+                "Sans effet en 5e"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparer deux photos du même relief sous éclairages différents montre l'importance de la lumière.",
+              "explanation": "Les ombres changent la lecture des saillies.",
+              "options": ["Vrai", "Faux", "Identiques", "Sans lien"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels outils ou matières servent souvent à explorer le volume en 5e ?",
+              "explanation": "Argile et assemblage de matériaux construisent en 3D.",
+              "options": [
+                "Argile",
+                "Assemblage de cartons",
+                "Silence sans matière",
+                "Texte seul sans forme"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un personnage de bande dessinée au premier plan dépasse parfois du cadre.",
+              "explanation": "L'effet rapproche le lecteur.",
+              "options": ["Vrai", "Faux", "Toujours au fond", "Sans effet"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La sculpture monumentale impose un rapport différent au point de vue du spectateur.",
+              "explanation": "La taille change la perception de l'espace.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Identique à une mini figurine",
+                "Sans échelle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un fond détaillé peut parfois concurrencer le premier plan.",
+              "explanation": "Trop de détails loin distraient du sujet.",
+              "options": ["Vrai", "Faux", "Impossible", "Sans composition"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Gratter une couche de cire révèle une couleur et un relief visuel.",
+              "explanation": "La surface devient irrégulière ou contrastée.",
+              "options": ["Vrai", "Faux", "Toujours plat", "Sans effet"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une composition avec route, personnage et montagne utilise plusieurs plans.",
+              "explanation": "Chaque élément occupe une profondeur différente.",
+              "options": ["Vrai", "Faux", "Un seul plan", "Sans profondeur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le volume négatif désigne parfois l'espace vide autour ou dans une forme.",
+              "explanation": "Le vide compte dans la sculpture.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "N'existe pas",
+                "Uniquement peinture"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Photographier une œuvre en contre-plongée la fait paraître imposante.",
+              "explanation": "La caméra est en bas, le sujet domine.",
+              "options": ["Vrai", "Faux", "La réduit", "Sans angle"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un relief léger peut être obtenu avec du papier froissé collé.",
+              "explanation": "Les plis créent des saillies.",
+              "options": ["Vrai", "Faux", "Toujours lisse", "Sans texture"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Nommer premier plan et arrière-plan enrichit l'analyse d'une affiche.",
+              "explanation": "Le vocabulaire spatial clarifie la description.",
+              "options": ["Vrai", "Faux", "Inutile", "Réservé au lycée"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pourquoi le point de vue compte-t-il devant une sculpture ?",
+              "explanation": "Changer d'angle ou de distance transforme ce que l'on perçoit.",
+              "options": [
+                "On voit d'autres faces",
+                "La taille perçue change en s'approchant",
+                "L'œuvre devient invisible",
+                "Le volume disparaît toujours"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Réviser relief et profondeur aide à décrire une œuvre avec précision.",
+              "explanation": "Les termes spatialisent l'analyse.",
+              "options": ["Vrai", "Faux", "Sans intérêt", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un collage avec sable ou grain épais ajoute relief tactile et visuel.",
+              "explanation": "La matière sort du plan.",
+              "options": ["Vrai", "Faux", "Toujours plat", "Sans effet"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La profondeur peut être créée en classe sans calculs de perspective complexe.",
+              "explanation": "Superposition et échelle suffisent souvent en 5e.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Impossible",
+                "Uniquement avec logiciel pro"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une statue sur un piédestal est vue de bas en haut depuis le sol.",
+              "explanation": "Le spectateur lève les yeux, ce qui est un point de vue.",
+              "options": ["Vrai", "Faux", "Toujours de haut", "Sans piédestal"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Distinguer volume réel et volume suggéré en dessin est une compétence de 5e.",
+              "explanation": "On sépare ce qui est tangible de ce qui est représenté.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Identiques toujours",
+                "Sans analyse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un arrière-plan très coloré peut parfois rapprocher visuellement le fond.",
+              "explanation": "La couleur attire l'œil et modifie la profondeur perçue.",
+              "options": ["Vrai", "Faux", "Sans effet", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Assembler des tubes et boîtes recycle des matériaux en volume.",
+              "explanation": "La construction 3D peut être éco-responsable.",
+              "options": ["Vrai", "Faux", "Interdit", "Sans forme"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Observer une frise historique permet de repérer figures en avant et en retrait.",
+              "explanation": "Le relief raconte aussi par la profondeur.",
+              "options": ["Vrai", "Faux", "Tout plat", "Sans histoire"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Maîtriser premier plan, arrière-plan et volume prépare à installer une œuvre dans l'espace.",
+              "explanation": "C'est le lien avec la deuxième unité du chapitre.",
+              "options": ["Vrai", "Faux", "Sans lien", "Uniquement en 6e"],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Installer dans l'espace",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels gestes relèvent d'une installation dans l'espace ?",
+              "explanation": "Disposer et parcourir l'œuvre in situ structure l'expérience.",
+              "options": [
+                "Disposer des éléments dans une salle",
+                "Penser au parcours du visiteur",
+                "Effacer toute trace",
+                "Interdire de entrer"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une installation occupe souvent un lieu entier ou une partie de salle.",
+              "explanation": "L'espace devient partie de l'œuvre.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Toujours sur une feuille A4",
+                "Sans lieu"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le parcours du spectateur influence la découverte de l'installation.",
+              "explanation": "L'ordre des regards compte.",
+              "options": ["Vrai", "Faux", "Sans effet", "Identique partout"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Accrocher une sculpture au plafond change le rapport au volume.",
+              "explanation": "Elle flotte au-dessus du sol.",
+              "options": ["Vrai", "Faux", "Toujours au sol", "Sans effet"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une installation éphémère peut être démontée après l'exposition.",
+              "explanation": "Elle n'est pas forcément permanente.",
+              "options": ["Vrai", "Faux", "Toujours éternelle", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'éclairage d'une salle modifie la perception des volumes installés.",
+              "explanation": "Lumière et ombre transforment la lecture.",
+              "options": ["Vrai", "Faux", "Sans lien", "Efface tout"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Disposer des objets au sol invite à contourner l'œuvre.",
+              "explanation": "Le visiteur se déplace dans l'espace.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Interdit de bouger",
+                "Sans parcours"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une installation peut mélanger son, lumière et matières.",
+              "explanation": "Plusieurs médias cohabitent dans le lieu.",
+              "options": ["Vrai", "Faux", "Un seul crayon", "Sans médium"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'échelle des éléments doit parfois s'accorder à la taille de la salle.",
+              "explanation": "Un petit objet se perd dans un grand espace.",
+              "options": ["Vrai", "Faux", "Sans importance", "Toujours géant"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Installer une œuvre, c'est choisir où et comment le public la rencontre.",
+              "explanation": "Le contexte spatial fait sens.",
+              "options": ["Vrai", "Faux", "Au hasard", "Sans public"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels critères guident un accrochage réfléchi en classe ou au musée ?",
+              "explanation": "Hauteur et espacement facilitent la lecture.",
+              "options": [
+                "Hauteur des œuvres",
+                "Espace entre les pièces",
+                "Couleur des chaussures",
+                "Numéro de téléphone"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un parcours fléché oriente le visiteur dans une exposition.",
+              "explanation": "Il structure le déplacement.",
+              "options": ["Vrai", "Faux", "Interdit", "Sans effet"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une installation dans la cour de l'école utilise un espace extérieur.",
+              "explanation": "Le dehors devient lieu d'exposition.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Uniquement intérieur",
+                "Sans espace"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Suspendre des fils ou des formes crée un volume aérien.",
+              "explanation": "L'espace entre le sol et le plafond est activé.",
+              "options": ["Vrai", "Faux", "Toujours au sol", "Sans volume"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le point de vue depuis l'entrée de la salle compte pour la première impression.",
+              "explanation": "On voit l'ensemble avant les détails.",
+              "options": ["Vrai", "Faux", "Sans entrée", "Identique partout"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une bande au sol peut guider le parcours sans toucher aux œuvres.",
+              "explanation": "Le cheminement se lit visuellement.",
+              "options": ["Vrai", "Faux", "Interdit", "Sans guide"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Regrouper des sculptures sur un même socle les met en dialogue.",
+              "explanation": "La proximité crée une composition.",
+              "options": ["Vrai", "Faux", "Les isole", "Sans effet"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une salle sombre avec spots met en scène des volumes choisis.",
+              "explanation": "La lumière dirige le regard.",
+              "options": ["Vrai", "Faux", "Tout voir pareil", "Sans éclairage"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'installation peut inviter à entrer dans une structure.",
+              "explanation": "Le spectateur devient au centre de l'espace.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Toujours interdit",
+                "Sans structure"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Penser à la sécurité du public fait partie de l'installation.",
+              "explanation": "Stabilité et circulation comptent.",
+              "options": ["Vrai", "Faux", "Sans importance", "Optionnel"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels espaces peut-on transformer en lieu d'installation en 5e ?",
+              "explanation": "Couloir, classe ou cour accueillent des dispositifs.",
+              "options": [
+                "Couloir de l'école",
+                "Coin de la classe",
+                "Boîte aux lettres fermée seule",
+                "Rien du tout"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une cabine ou un tunnel en carton crée un parcours immersif.",
+              "explanation": "On traverse un espace construit.",
+              "options": ["Vrai", "Faux", "Sans parcours", "Toujours plat"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Placer une œuvre face à une fenêtre joue avec la lumière du jour.",
+              "explanation": "L'environnement naturel intervient.",
+              "options": ["Vrai", "Faux", "Sans fenêtre", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un mètre de référence aide parfois à respecter les distances entre œuvres.",
+              "explanation": "L'espacement évite la foule visuelle.",
+              "options": ["Vrai", "Faux", "Inutile", "Sans mesure"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une installation sonore occupe l'espace avec le son, pas seulement la vue.",
+              "explanation": "L'oreille parcourt aussi le lieu.",
+              "options": ["Vrai", "Faux", "Uniquement visuel", "Sans espace"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Disposer des miroirs modifie la perception de la profondeur de la salle.",
+              "explanation": "Les reflets multiplient l'espace.",
+              "options": ["Vrai", "Faux", "Sans effet", "Efface la salle"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une exposition collective demande d'harmoniser plusieurs installations.",
+              "explanation": "Les œuvres coexistent sans se nuire.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Chacune ignore les autres",
+                "Sans règle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le sol peut devenir support : dessin au sol ou tapis d'objets.",
+              "explanation": "On regarde aussi vers le bas.",
+              "options": ["Vrai", "Faux", "Interdit", "Uniquement murs"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Photographier l'installation documente le choix spatial.",
+              "explanation": "La vue fixe un instant du parcours.",
+              "options": ["Vrai", "Faux", "Inutile", "Efface l'œuvre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une œuvre trop près d'une autre peut empêcher de reculer pour la voir.",
+              "explanation": "Il faut parfois de la distance pour percevoir le volume.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Sans importance",
+                "Toujours mieux collé"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels effets recherche-t-on en installant des volumes dans un espace ?",
+              "explanation": "Surprendre ou guider le regard fait partie du projet.",
+              "options": [
+                "Créer un parcours",
+                "Mettre en valeur un volume",
+                "Cacher toute lumière",
+                "Empêcher toute visite"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un socle élève une sculpture et change le point de vue du public.",
+              "explanation": "La hauteur modifie la relation.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Sans effet",
+                "Toujours au sol direct"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une installation peut réutiliser des objets du quotidien.",
+              "explanation": "Chaises, bouteilles ou cartons deviennent matériaux.",
+              "options": ["Vrai", "Faux", "Interdit", "Uniquement marbre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le plafond peut porter des éléments légers suspendus.",
+              "explanation": "L'espace aérien est exploité.",
+              "options": ["Vrai", "Faux", "Toujours interdit", "Sans fixation"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un parcours en zigzag ralentit la visite et multiplie les angles.",
+              "explanation": "Le déplacement devient partie de l'expérience.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Sans effet",
+                "Ligne droite obligatoire"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'ambiance d'une pièce (couleur des murs) influence l'installation.",
+              "explanation": "Le fond colore la perception.",
+              "options": ["Vrai", "Faux", "Sans lien", "Murs invisibles"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une barrière légère protège une œuvre fragile au sol.",
+              "explanation": "On préserve tout en permettant la vue.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Toujours interdit de protéger",
+                "Sans public"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Installer, c'est parfois négocier avec les contraintes du lieu.",
+              "explanation": "Portes, prises et circulation imposent des choix.",
+              "options": ["Vrai", "Faux", "Lieu sans contrainte", "Au hasard"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une vue d'ensemble depuis un coin de salle aide à vérifier l'équilibre.",
+              "explanation": "On voit les volumes dans leur ensemble.",
+              "options": ["Vrai", "Faux", "Un détail suffit", "Sans recul"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le public peut être invité à modifier une installation participative.",
+              "explanation": "L'espace évolue avec les contributions.",
+              "options": ["Vrai", "Faux", "Jamais", "Sans interaction"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels documents aident à préparer une installation en classe ?",
+              "explanation": "Plan simple et croquis situent les éléments.",
+              "options": [
+                "Croquis du lieu",
+                "Plan simplifié",
+                "Liste de courses seule",
+                "Rien"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une sculpture au centre d'une pièce se voit de tous les côtés.",
+              "explanation": "Le parcours tourne autour.",
+              "options": ["Vrai", "Faux", "Un seul angle", "Mur obligatoire"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Des projections sur un mur agrandissent l'espace visuel.",
+              "explanation": "La surface devient écran.",
+              "options": ["Vrai", "Faux", "Réduit l'espace", "Sans image"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le choix d'une salle calme ou bruyante fait partie du sens de l'installation.",
+              "explanation": "Le contexte sonore compte.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Sans importance",
+                "Toujours identique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Aligner des objets le long d'un mur crée une ligne de lecture.",
+              "explanation": "Le regard suit la suite.",
+              "options": ["Vrai", "Faux", "Sans ordre", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une installation trop encombrante peut gêner la circulation.",
+              "explanation": "Il faut laisser passer les visiteurs.",
+              "options": ["Vrai", "Faux", "Sans effet", "Toujours souhaitable"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tester l'installation avant le vernissage permet d'ajuster les positions.",
+              "explanation": "On corrige hauteur et distance.",
+              "options": ["Vrai", "Faux", "Interdit", "Sans essai"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un texte court à l'entrée peut introduire le parcours.",
+              "explanation": "Il oriente sans remplacer l'expérience.",
+              "options": ["Vrai", "Faux", "Remplace l'œuvre", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Des volumes suspendus à hauteurs différentes dynamisent l'espace.",
+              "explanation": "Le regard monte et descend.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Tous à la même hauteur obligatoire",
+                "Sans effet"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'installation transforme un lieu ordinaire en espace d'attention.",
+              "explanation": "Le quotidien devient scène.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Sans changement",
+                "Uniquement musée"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sens peuvent être sollicités dans une installation ?",
+              "explanation": "Vue et ouïe participent souvent au parcours.",
+              "options": ["La vue", "L'ouïe", "Le goût obligatoire", "Rien"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une arche à franchir marque une entrée dans l'installation.",
+              "explanation": "Le seuil structure le parcours.",
+              "options": ["Vrai", "Faux", "Sans entrée", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Placer une petite sculpture dans un grand hall demande un socle ou un éclairage.",
+              "explanation": "Sinon elle se perd dans l'espace.",
+              "options": ["Vrai", "Faux", "Toujours visible", "Sans aide"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une installation peut commenter l'histoire du bâtiment qui l'héberge.",
+              "explanation": "Le lieu apporte du sens.",
+              "options": ["Vrai", "Faux", "Sans contexte", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Des cordes tendues dans l'espace créent des lignes et des obstacles visuels.",
+              "explanation": "Le volume de l'air est structuré.",
+              "options": ["Vrai", "Faux", "Sans ligne", "Toujours sol"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le démontage fait partie du cycle d'une installation temporaire.",
+              "explanation": "L'œuvre n'est pas toujours conservée telle quelle.",
+              "options": ["Vrai", "Faux", "Jamais démontée", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Observer une installation d'en haut d'un escalier change le point de vue.",
+              "explanation": "La verticalité du lieu compte.",
+              "options": ["Vrai", "Faux", "Identique", "Sans escalier"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une salle trop chargée fatigue le visiteur.",
+              "explanation": "Il faut des respirations dans le parcours.",
+              "options": ["Vrai", "Faux", "Mieux surchargée", "Sans effet"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Des étiquettes discrètes indiquent parfois le titre sans imposer.",
+              "explanation": "L'information accompagne l'espace.",
+              "options": ["Vrai", "Faux", "Remplacent l'œuvre", "Interdites"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Collaborer en groupe pour installer favorise le dialogue sur l'espace.",
+              "explanation": "Chacun propose placement et parcours.",
+              "options": ["Vrai", "Faux", "Seul obligatoire", "Sans dialogue"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels matériaux légers conviennent à une suspension en classe ?",
+              "explanation": "Papier, fil ou plastique léger limitent le risque.",
+              "options": [
+                "Papier",
+                "Fil solide",
+                "Blocs de béton lourds",
+                "Enclume"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une installation peut occuper un angle de couloir ouvert au public de l'école.",
+              "explanation": "Le passage devient exposition.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Uniquement salle fermée",
+                "Sans public"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le contraste entre une œuvre blanche et un mur sombre la fait ressortir.",
+              "explanation": "Le fond met en scène le volume.",
+              "options": ["Vrai", "Faux", "L'efface", "Sans contraste"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un parcours circulaire ramène le visiteur au point de départ.",
+              "explanation": "La boucle structure la visite.",
+              "options": ["Vrai", "Faux", "Interdit", "Ligne unique"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Installer des mâts ou des tiges verticales rythme l'espace en hauteur.",
+              "explanation": "La dimension verticale s'active.",
+              "options": ["Vrai", "Faux", "Toujours horizontal", "Sans rythme"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une porte entrouverte peut inviter à découvrir une pièce secrète.",
+              "explanation": "Le parcours crée la curiosité.",
+              "options": ["Vrai", "Faux", "Toujours fermée", "Sans surprise"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La documentation photo ne remplace pas la visite réelle de l'installation.",
+              "explanation": "Le parcours corporel manque à l'image.",
+              "options": ["Vrai", "Faux", "Identique", "Inutile de visiter"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Des volumes géants en papier mâché transforment l'échelle perçue.",
+              "explanation": "Le public se sent petit face à l'objet.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Sans effet d'échelle",
+                "Toujours mini"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Respecter les consignes de sécurité permet de suspendre correctement.",
+              "explanation": "Fixations adaptées évitent les chutes.",
+              "options": ["Vrai", "Faux", "Au hasard", "Sans fixation"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une installation peut lier intérieur et extérieur par une vitrine ou une fenêtre.",
+              "explanation": "Deux espaces se regardent.",
+              "options": ["Vrai", "Faux", "Toujours séparés", "Sans lien"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels choix relèvent du « site specific » simplifié en 5e ?",
+              "explanation": "Adapter l'œuvre au lieu choisi ancre l'installation.",
+              "options": [
+                "Créer pour un couloir précis",
+                "Tenir compte de la lumière du lieu",
+                "Ignorer le lieu",
+                "Travailler sans visite"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un banc dans l'installation invite à s'arrêter et observer.",
+              "explanation": "Le temps de visite s'allonge.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Interdit de s'asseoir",
+                "Sans pause"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Des objets identiques répétés dans la salle créent un rythme spatial.",
+              "explanation": "La répétition structure l'espace.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Sans rythme",
+                "Un seul objet obligatoire"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une vitrine dans le couloir protège tout en montrant l'œuvre.",
+              "explanation": "Le verre interpose un plan transparent.",
+              "options": ["Vrai", "Faux", "Cache tout", "Sans protection"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le parcours peut commencer dehors et continuer dedans.",
+              "explanation": "L'installation traverse les seuils.",
+              "options": ["Vrai", "Faux", "Un seul espace", "Interdit dehors"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une œuvre posée au sol demande parfois de regarder vers le bas.",
+              "explanation": "Le point de vue incline le corps.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Toujours à hauteur des yeux",
+                "Sans regard"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'artiste peut laisser des traces de son geste dans l'espace installé.",
+              "explanation": "Fil, scotch ou marques racontent le montage.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Tout effacer obligatoire",
+                "Sans geste"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une salle vide avec un seul volume central concentre l'attention.",
+              "explanation": "Peu d'éléments, fort impact.",
+              "options": ["Vrai", "Faux", "Toujours pleine", "Sans focus"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Changer l'ordre des pièces change le sens du parcours.",
+              "explanation": "La succession modifie la lecture.",
+              "options": ["Vrai", "Faux", "Ordre sans effet", "Fixe toujours"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une installation école peut être pensée pour durer une semaine ou un mois.",
+              "explanation": "La durée fait partie du projet.",
+              "options": ["Vrai", "Faux", "Toujours une heure", "Sans durée"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments composent souvent une mise en espace réussie ?",
+              "explanation": "Volumes, lumière et parcours travaillent ensemble.",
+              "options": [
+                "Volumes choisis",
+                "Parcours du visiteur",
+                "Absence totale de lumière",
+                "Porte fermée"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un ruban de sol coloré peut relier plusieurs zones de l'installation.",
+              "explanation": "Il unit visuellement le parcours.",
+              "options": ["Vrai", "Faux", "Sans lien", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une sculpture trop lourde exige un sol ou un support adapté.",
+              "explanation": "La stabilité est une contrainte réelle.",
+              "options": ["Vrai", "Faux", "Sans importance", "Toujours légère"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le silence ou le bruit ambiant modifient l'atmosphère de l'installation.",
+              "explanation": "L'espace n'est pas seulement visuel.",
+              "options": ["Vrai", "Faux", "Sans effet", "Toujours bruyant"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Des formes qui dépassent d'un cadre créent un effet de sortie de l'espace.",
+              "explanation": "Le volume envahit le lieu.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Toujours dans le cadre",
+                "Sans débord"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une maquette de salle aide à tester les emplacements avant le montage.",
+              "explanation": "On prévoit à petite échelle.",
+              "options": ["Vrai", "Faux", "Inutile", "Sans plan"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Inviter des camarades à décrire leur parcours enrichit la critique.",
+              "explanation": "Chaque parcours est subjectif.",
+              "options": ["Vrai", "Faux", "Une seule vue", "Sans échange"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une installation peut réagir au vent ou à la pluie si elle est dehors.",
+              "explanation": "Le climat devient partenaire ou contrainte.",
+              "options": ["Vrai", "Faux", "Toujours intérieur", "Sans météo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le plafond bas rapproche visuellement les suspensions du public.",
+              "explanation": "L'espace intime change l'échelle.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Sans effet",
+                "Plafond toujours haut"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Terminer par une œuvre forte clôt le parcours en mémoire.",
+              "explanation": "La dernière impression reste.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Sans fin",
+                "Ordre aléatoire obligatoire"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles compétences du chapitre « espace et volume » servent à installer ?",
+              "explanation": "Point de vue et volume guident placement et parcours.",
+              "options": [
+                "Choisir un point de vue",
+                "Organiser des volumes",
+                "Ignorer l'espace",
+                "Refuser le public"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une rétrospective de fin d'année peut être une grande installation collective.",
+              "explanation": "Plusieurs œuvres partagent le lieu.",
+              "options": ["Vrai", "Faux", "Impossible en 5e", "Sans espace"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Nettoyer le lieu après démontage fait partie du respect de l'espace.",
+              "explanation": "L'installation laisse parfois des traces à effacer.",
+              "options": ["Vrai", "Faux", "Optionnel", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une œuvre vue de dos peut être volontaire dans le parcours.",
+              "explanation": "Le artiste oriente la découverte.",
+              "options": ["Vrai", "Faux", "Toujours de face", "Erreur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'installation relie création plastique et expérience du lieu réel.",
+              "explanation": "On sort du seul exercice sur feuille.",
+              "options": ["Vrai", "Faux", "Uniquement dessin", "Sans lieu"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Des volumes transparents ou ajourés laissent voir à travers l'installation.",
+              "explanation": "L'espace traverse l'objet.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Toujours opaques",
+                "Sans transparence"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Expliquer son choix d'emplacement à l'oral complète le projet.",
+              "explanation": "Le discours clarifie l'intention spatiale.",
+              "options": ["Vrai", "Faux", "Inutile", "Interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une installation modeste peut avoir autant de sens qu'une grande.",
+              "explanation": "La pertinence prime sur la taille.",
+              "options": ["Vrai", "Faux", "Taille seule compte", "Sans sens"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Revenir sur une installation plusieurs fois permet de nouveaux points de vue.",
+              "explanation": "Chaque visite peut révéler autre chose.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Une visite suffit toujours",
+                "Sans variation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Relief, profondeur et installation forment ensemble la compréhension de l'espace en arts.",
+              "explanation": "Les deux unités du chapitre se complètent.",
+              "options": ["Vrai", "Faux", "Sans lien", "Uniquement en 6e"],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

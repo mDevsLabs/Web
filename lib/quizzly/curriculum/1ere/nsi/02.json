@@ -1,0 +1,2728 @@
+{
+  "id": "1ere-nsi-02",
+  "year": "1ere",
+  "subject": "nsi",
+  "title": "Traitement de données en tables",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "CSV et index",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce qu'un fichier CSV ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés décrivent le CSV ?",
+              "options": [
+                "Texte tabulaire avec valeurs séparées",
+                "Toujours binaire illisible",
+                "Souvent une ligne d'en-tête",
+                "Format réservé aux images"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "CSV = valeurs séparées, lisible et échangeable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "CSV signifie :",
+              "options": [
+                "Comma-Separated Values (valeurs séparées par des virgules)",
+                "Compressed Secure Video",
+                "Central System Variable",
+                "Code Source Validé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom historique ; le séparateur peut varier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une ligne CSV correspond le plus souvent à :",
+              "options": [
+                "Un enregistrement (une ligne de table)",
+                "Une colonne entière",
+                "Un fichier système",
+                "Une adresse IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle ligne = tuple, colonne = attribut."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La première ligne peut contenir :",
+              "options": [
+                "Les noms des champs (en-tête)",
+                "Uniquement des nombres binaires",
+                "Le mot de passe admin",
+                "Le code machine du CPU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Facilite l'interprétation des colonnes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ouvrir un CSV dans un tableur permet de :",
+              "options": [
+                "Visualiser et trier les données",
+                "Compiler du C++",
+                "Chiffrer WPA3",
+                "Lancer un jeu 3D"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil courant en première NSI."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le CSV est adapté à :",
+              "options": [
+                "L'échange simple entre logiciels",
+                "Stocker uniquement du son",
+                "Remplacer une base relationnelle complexe",
+                "Transmettre du vidéo HD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Léger et universel pour des tables."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une cellule CSV contient :",
+              "options": [
+                "Une valeur d'un champ",
+                "Toute la base de données",
+                "Un programme Python",
+                "Un index B-tree"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intersection ligne/colonne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Exporter une table en CSV sert à :",
+              "options": [
+                "Partager ou archiver des données",
+                "Supprimer les clés primaires",
+                "Interdire toute lecture",
+                "Chiffrer automatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interopérabilité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un fichier .csv est en général :",
+              "options": [
+                "Du texte UTF-8 ou Latin-1",
+                "Exécutable Windows",
+                "Une image PNG",
+                "Un exécutable Java"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Encodage à vérifier à l'import."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Limite du CSV pour de grosses bases :",
+              "options": [
+                "Pas de contraintes ni index natifs",
+                "Impossible de lire",
+                "Interdit en NSI",
+                "Trop sécurisé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On migre vers SGBD si besoin."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Séparateurs et guillemets",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En France, un CSV peut utiliser :",
+              "options": [
+                "Le point-virgule comme séparateur",
+                "La virgule comme séparateur décimal dans Excel FR",
+                "Uniquement des tabulations interdites",
+                "Jamais de guillemets"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Locale française : ; fréquent dans Excel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si une valeur contient le séparateur, on :",
+              "options": [
+                "L'entoure de guillemets",
+                "Supprime la valeur",
+                "Double le fichier",
+                "Change l'encodage en binaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "RFC 4180 : échappement par guillemets."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un guillemet dans une valeur s'échappe par :",
+              "options": [
+                "Doubler le guillemet \"\"",
+                "Supprimer la ligne",
+                "Remplacer par un slash",
+                "Ignorer le CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convention standard CSV."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le séparateur de champs par défaut en Python csv (locale US) est souvent :",
+              "options": [
+                "La virgule",
+                "Le point-virgule obligatoire",
+                "L'espace seul",
+                "Le retour chariot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paramètre delimiter du module csv."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lire un CSV français avec csv.reader sans delimiter=';' peut :",
+              "options": [
+                "Fusionner plusieurs colonnes en une",
+                "Améliorer la clé primaire",
+                "Créer un index automatique",
+                "Chiffrer le fichier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mauvais découpage si mauvais séparateur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une ligne vide dans un CSV :",
+              "options": [
+                "Peut être ignorée ou erreur selon le lecteur",
+                "Crée une clé primaire",
+                "Indexe automatiquement",
+                "Convertit en JSON"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À traiter explicitement en code."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le retour à la fin de ligne Windows est souvent :",
+              "options": [
+                "\\r\\n",
+                "\\n seul uniquement",
+                "Tabulation",
+                "Point-virgule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "LF vs CRLF à harmoniser."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un champ texte avec saut de ligne doit être :",
+              "options": [
+                "Entre guillemets dans le CSV",
+                "Interdit",
+                "Sans encodage",
+                "Toujours vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sinon la ligne est coupée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le point-virgule en CSV FR évite surtout :",
+              "options": [
+                "Conflit avec la virgule décimale",
+                "Perte de clé étrangère",
+                "Fusion de tables",
+                "Index unique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1,5 en français vs séparateur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Vérifier le séparateur avant import :",
+              "options": [
+                "Évite des colonnes mal découpées",
+                "Remplace la sélection SQL",
+                "Supprime les index",
+                "Interdit UTF-8"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Première étape de nettoyage."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "En-tête et types de valeurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'en-tête d'un CSV sert à :",
+              "options": [
+                "Nommer les attributs",
+                "Identifier les colonnes pour le code",
+                "Remplacer toute clé primaire automatiquement",
+                "Chiffrer les lignes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Schéma implicite du fichier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un CSV, les nombres sont stockés :",
+              "options": [
+                "Comme texte à interpréter",
+                "Comme binaires IEEE obligatoires",
+                "Comme images",
+                "Comme index B-tree"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Typage à faire à la lecture."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La valeur \"42\" lue comme str doit être convertie avec :",
+              "options": [
+                "int() ou float() si besoin",
+                "open()",
+                "print() seul",
+                "hash()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cast explicite en Python."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une date \"2024-05-01\" en CSV est :",
+              "options": [
+                "Une chaîne jusqu'à parsing",
+                "Un type DATE natif du fichier",
+                "Un index",
+                "Une clé étrangère auto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CSV ne porte pas de types SQL."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Valeur manquante possible en CSV :",
+              "options": [
+                "Champ vide entre séparateurs",
+                "Mot NULL impossible",
+                "Toujours zéro",
+                "Toujours -1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gérer None ou NaN à l'import."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Mélanger texte et nombres dans une colonne :",
+              "options": [
+                "Complique calculs et tris",
+                "Améliore l'index",
+                "Obligatoire en NSI",
+                "Crée clé primaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Homogénéiser les types."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "DictReader (Python) utilise l'en-tête pour :",
+              "options": [
+                "Accéder aux champs par nom",
+                "Fusionner deux tables seul",
+                "Créer jointure SQL",
+                "Indexer disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clés du dictionnaire = noms colonnes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux colonnes \"nom\" et \"Nom\" :",
+              "options": [
+                "Sont distinctes (souvent sensibles à la casse)",
+                "Toujours fusionnées",
+                "Interdites",
+                "Identiques en SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attention cohérence des noms."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "BOM UTF-8 en début de fichier :",
+              "options": [
+                "Peut perturber le premier nom de colonne",
+                "Crée index",
+                "Supprime guillemets",
+                "Fusionne lignes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "encoding='utf-8-sig' en Python."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Schéma de table décrit :",
+              "options": [
+                "Noms et types attendus des attributs",
+                "Couleur du fichier",
+                "Route réseau",
+                "Algorithme de tri uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrat de données."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Lire un CSV en Python",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour lire un CSV en Python on utilise :",
+              "options": [
+                "Le module csv",
+                "open() avec gestion encodage",
+                "Uniquement input() sans fichier",
+                "Toujours pickle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "csv + fichier texte ouvert."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "csv.reader renvoie :",
+              "options": [
+                "Un itérateur de lignes (listes de champs)",
+                "Un dictionnaire SQL",
+                "Un index",
+                "Une jointure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque ligne = liste de cellules."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "with open('f.csv', encoding='utf-8') garantit :",
+              "options": [
+                "Fermeture automatique du fichier",
+                "Fusion de tables",
+                "Index unique",
+                "Sélection WHERE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Context manager."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La première ligne lue avec en-tête peut être sautée par :",
+              "options": [
+                "next(reader) ou DictReader",
+                "delete table",
+                "JOIN",
+                "INDEX"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si on traite l'en-tête à part."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Stocker toutes les lignes en liste :",
+              "options": [
+                "Consomme la RAM proportionnelle à la taille",
+                "Crée index B-tree",
+                "Exécute SQL",
+                "Interdit en NSI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Streaming ligne à ligne si gros fichier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "csv.DictReader ligne →",
+              "options": [
+                "dict clé=nom colonne",
+                "tuple indexé seulement",
+                "produit cartésien",
+                "clé primaire auto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accès row['ville']."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Erreur UnicodeDecodeError indique :",
+              "options": [
+                "Mauvais encodage supposé",
+                "Jointure impossible",
+                "Clé dupliquée",
+                "Index manquant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tester latin-1 ou utf-8-sig."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Parcourir for row in reader :",
+              "options": [
+                "Traite le fichier séquentiellement",
+                "Charge tout le disque en SQL",
+                "Fusionne sans clé",
+                "Supprime en-tête auto toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boucle standard."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Filtrer à la lecture (if row[2] > 18) :",
+              "options": [
+                "Sélection de lignes en mémoire",
+                "Projection de colonnes seule",
+                "Jointure interne",
+                "Index secondaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Premier pas avant SQL."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "len(row) après reader :",
+              "options": [
+                "Nombre de champs de la ligne",
+                "Nombre de tables",
+                "Taille index",
+                "Cardinalité jointure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérence colonnes attendue."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Écrire un CSV",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Écrire un CSV avec csv.writer :",
+              "options": [
+                "writerow pour une ligne",
+                "writerows pour plusieurs lignes",
+                "Écrit automatiquement un SGBD",
+                "Crée index sur disque"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "API d'écriture standard."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "csv.writer(out, delimiter=';') :",
+              "options": [
+                "Produit un CSV au séparateur point-virgule",
+                "Fusionne deux fichiers",
+                "Sélectionne colonnes",
+                "Crée clé étrangère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adapter à Excel FR."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "DictWriter nécessite :",
+              "options": [
+                "fieldnames = liste des colonnes",
+                "Une jointure",
+                "Un index unique",
+                "Produit cartésien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre et noms des champs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Exporter une liste de dicts Python vers CSV :",
+              "options": [
+                "DictWriter.writeheader() puis writerows",
+                "SELECT * sans table",
+                "CREATE INDEX",
+                "CROSS JOIN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pipeline données → fichier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "newline='' dans open(..., 'w') avec csv :",
+              "options": [
+                "Évite double saut de ligne",
+                "Ajoute BOM seul",
+                "Joint tables",
+                "Trie index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recommandation doc Python csv."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Convertir int en str à l'écriture :",
+              "options": [
+                "Automatique via str() du writer",
+                "Impossible",
+                "Interdit",
+                "Crée float SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout est texte dans le CSV."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réécrire un CSV filtré :",
+              "options": [
+                "Lecture + écriture lignes retenues",
+                "INDEX seul",
+                "ALTER TABLE",
+                "DROP KEY"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sélection puis export."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "quoting=csv.QUOTE_MINIMAL :",
+              "options": [
+                "Guillemets seulement si nécessaire",
+                "Supprime en-tête",
+                "Jointure auto",
+                "Clé primaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paramètre du writer."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Écraser un fichier existant mode 'w' :",
+              "options": [
+                "Remplace le contenu précédent",
+                "Ajoute à la fin sans effacer",
+                "Crée index",
+                "Verrouille SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attention sauvegarde."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Export après traitement en table :",
+              "options": [
+                "Partage résultats sélectionnés",
+                "Remplace index mémoire",
+                "Oblige produit cartésien",
+                "Interdit UTF-8"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne traitement → CSV."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Qualité et nettoyage CSV",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Problèmes fréquents CSV :",
+              "options": [
+                "Encodage incorrect",
+                "Nombre de colonnes incohérent",
+                "Index SQL manquant dans le fichier",
+                "Trop de clés primaires auto"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Validation avant analyse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Doublons de lignes identiques :",
+              "options": [
+                "Peuvent fausser statistiques",
+                "Améliorent index",
+                "Obligatoires",
+                "Créent jointure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dédoublonnage possible."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Espaces autour d'une valeur :",
+              "options": [
+                "À strip() avant comparaison",
+                "Index automatique",
+                "Clé étrangère",
+                "Fusion INNER"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nettoyage strings."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Colonne id avec \"001\" et \"1\" :",
+              "options": [
+                "Texte vs entier : risque doublon logique",
+                "Toujours égaux en CSV",
+                "Jointure impossible",
+                "Index unique auto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normaliser identifiants."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ligne avec trop peu de champs :",
+              "options": [
+                "Erreur ou padding selon politique",
+                "Crée index",
+                "Produit cartésien",
+                "SELECT *"
+              ],
+              "correctAnswers": [0],
+              "explanation": "csv peut lever ou compléter."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Caractères spéciaux mal affichés :",
+              "options": [
+                "Souvent problème d'encodage",
+                "Preuve de bon index",
+                "Signe de jointure réussie",
+                "Clé primaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "UTF-8 recommandé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Valider schéma à l'import :",
+              "options": [
+                "Vérifier colonnes attendues",
+                "Ignorer en-tête",
+                "CROSS JOIN",
+                "DROP TABLE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Robustesse pipeline."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Statistiques sur colonne numérique :",
+              "options": [
+                "Nécessite conversion préalable",
+                "Direct sur str toujours fiable",
+                "Sans lecture",
+                "Index seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cast puis min/max/moy."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Journaliser lignes rejetées :",
+              "options": [
+                "Aide au débogage des données",
+                "Remplace CSV",
+                "Crée index",
+                "Fusion sans clé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traçabilité qualité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "CSV propre avant fusion :",
+              "options": [
+                "Évite erreurs de jointure",
+                "Supprime SELECT",
+                "Interdit index",
+                "Oblige produit cartésien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clés comparables."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Tables et enregistrements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Modèle relationnel ligne/colonne :",
+              "options": [
+                "Ligne = enregistrement",
+                "Colonne = attribut",
+                "Ligne = index disque",
+                "Colonne = fichier CSV entier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Table = relation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Cardinalité d'une table :",
+              "options": [
+                "Nombre de lignes (enregistrements)",
+                "Nombre de fichiers CSV",
+                "Taille index seule",
+                "Nombre de jointures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "|R| en cours NSI."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Degré d'une relation :",
+              "options": [
+                "Nombre d'attributs (colonnes)",
+                "Nombre de bases",
+                "Profondeur index",
+                "Nombre de SELECT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Domaine d'un attribut :",
+              "options": [
+                "Ensemble des valeurs possibles",
+                "Chemin du CSV",
+                "Algorithme de fusion",
+                "Type index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrainte sémantique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Table Élève(id, nom, classe) : id décrit :",
+              "options": [
+                "Identifiant élève",
+                "Nom complet seulement",
+                "Index disque",
+                "Jointure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attribut identifiant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Représenter une table en Python :",
+              "options": [
+                "Liste de dicts ou listes",
+                "Un seul int",
+                "Index B-tree natif",
+                "Fichier exécutable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure en mémoire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "CSV vers table en RAM :",
+              "options": [
+                "Charger lignes structurées",
+                "Crée SGBD Oracle",
+                "Index automatique disque",
+                "Produit cartésien seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Étape avant requêtes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Null / vide en enregistrement :",
+              "options": [
+                "Information absente ou inconnue",
+                "Toujours zéro",
+                "Interdit en table",
+                "Clé primaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sémantique données."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Plusieurs tables CSV :",
+              "options": [
+                "Modèle multi-relations",
+                "Une seule colonne globale",
+                "Sans lien possible",
+                "Interdit première"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prépare fusion."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Métadonnée de table :",
+              "options": [
+                "Noms colonnes et types attendus",
+                "Couleur interface",
+                "Port TCP",
+                "Hash mot de passe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Catalogue / schéma."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Clé primaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une clé primaire :",
+              "options": [
+                "Identifie uniquement chaque enregistrement",
+                "Ne doit pas se répéter entre lignes",
+                "Est toujours le premier fichier CSV",
+                "Remplace toute sélection"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Unicité et identifiabilité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Deux lignes avec même clé primaire :",
+              "options": [
+                "Violent l'unicité",
+                "Sont autorisées",
+                "Créent index",
+                "Fusionnent auto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrainte fondamentale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Clé surrogate id auto :",
+              "options": [
+                "Identifiant artificiel sans sens métier",
+                "Toujours nom de personne",
+                "Index secondaire",
+                "Produit cartésien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. id entier incrémenté."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Clé naturelle :",
+              "options": [
+                "Basée sur donnée métier (ex. INSEE si unique)",
+                "Toujours numérique",
+                "Fichier CSV",
+                "JOIN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peut être composite."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Clé composite (a,b) :",
+              "options": [
+                "Unicité sur le couple d'attributs",
+                "Un seul champ obligatoire",
+                "Index interdit",
+                "Sélection impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs colonnes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sans clé primaire fiable, fusion :",
+              "options": [
+                "Risque doublons ou lignes mal appariées",
+                "Toujours parfaite",
+                "Index inutile",
+                "SELECT interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clé de jointure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vérifier unicité colonne id :",
+              "options": [
+                "Ensemble des id de taille = nombre de lignes",
+                "Lire en-tête seule",
+                "CROSS JOIN",
+                "DROP COLUMN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Test set vs liste."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Clé primaire en CSV :",
+              "options": [
+                "Convention, pas contrainte fichier",
+                "Imposée par .csv",
+                "Auto par Excel",
+                "Index disque natif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Application doit garantir."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Référencer une ligne depuis autre table :",
+              "options": [
+                "Utiliser sa clé primaire (clé étrangère)",
+                "Première colonne aléatoire",
+                "Nom fichier",
+                "Index secondaire seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intégrité référentielle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir clé primaire :",
+              "options": [
+                "Stable, unique, non NULL",
+                "Toujours nom",
+                "Toujours NULL",
+                "Plus long texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bonnes pratiques."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Index et recherche",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un index sur un attribut sert à :",
+              "options": [
+                "Accélérer recherche par valeur",
+                "Éviter parcours complet systématique",
+                "Remplace clé primaire toujours",
+                "Supprime CSV"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Structure d'accès (dict, arbre…)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Recherche linéaire dans table n lignes :",
+              "options": [
+                "O(n) dans le pire cas",
+                "O(1) toujours",
+                "O(log n) sans structure",
+                "O(1) avec CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parcours séquentiel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Index dict Python clé→ligne :",
+              "options": [
+                "Accès direct si clé hashable",
+                "Produit cartésien",
+                "SELECT sans WHERE",
+                "Fusion sans clé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Index en mémoire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Construire index {id: enregistrement} :",
+              "options": [
+                "Un parcours pour remplir le dict",
+                "Deux produits cartésiens",
+                "Lecture en-tête seule",
+                "Écriture CSV seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coût construction puis gains."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Recherche avec index vs sans :",
+              "options": [
+                "Index réduit comparaisons moyennes",
+                "Identique toujours",
+                "Index interdit NSI",
+                "CSV a index natif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trade-off mémoire/temps."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Index sur colonne non unique :",
+              "options": [
+                "Peut mapper clé → liste de lignes",
+                "Interdit",
+                "Clé primaire seulement",
+                "Supprime doublons auto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Index secondaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Mise à jour table avec index :",
+              "options": [
+                "Doit mettre à jour l'index aussi",
+                "Ignore index",
+                "Recrée produit cartésien",
+                "DROP TABLE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérence structure."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tri préalable + recherche dichotomique si trié :",
+              "options": [
+                "O(log n) si accès aléatoire",
+                "O(n) toujours",
+                "Sans index",
+                "Jointure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autre forme d'index."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Petite table en mémoire :",
+              "options": [
+                "Index parfois inutile (n faible)",
+                "Index obligatoire",
+                "CSV illisible",
+                "Fusion impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coût construction."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lien index / jointure :",
+              "options": [
+                "Indexer clés de jointure accélère fusion",
+                "Index remplace JOIN",
+                "Index = CSV",
+                "Produit cartésien seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lookup rapide."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse CSV et index",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pipeline typique première NSI :",
+              "options": [
+                "Lire CSV → structurer table → indexer → requêter",
+                "Exporter résultats CSV",
+                "Ignorer encodage",
+                "Produit cartésien systématique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Boucle données."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "CSV + clé primaire + index préparent :",
+              "options": [
+                "Fusions et sélections efficaces",
+                "Uniquement affichage",
+                "Perte de données",
+                "SQL obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unité 2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Module csv Python :",
+              "options": [
+                "Lecture/écriture champs séparés",
+                "CREATE TABLE SQL",
+                "INDEX disque",
+                "CROSS JOIN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil de base."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "DictReader améliore :",
+              "options": [
+                "Lisibilité accès par nom de colonne",
+                "Clé primaire SQL",
+                "Produit cartésien",
+                "Chiffrement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Code plus clair."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Index en dict sur id :",
+              "options": [
+                "Recherche par id en temps moyen O(1)",
+                "Tri automatique CSV",
+                "Jointure sans clé",
+                "SELECT * interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Table de hachage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Nettoyer avant index :",
+              "options": [
+                "Clés comparables et uniques si primaire",
+                "Ignorer types",
+                "Supprimer en-tête",
+                "Fusionner sans nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualité clé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Limite CSV vs SGBD :",
+              "options": [
+                "Pas de requête déclarative native dans le fichier",
+                "Trop petit",
+                "Sans table",
+                "Interdit lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Code ou SQL externe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "UTF-8 pour CSV :",
+              "options": [
+                "Caractères accentués corrects",
+                "Index obligatoire",
+                "Jointure auto",
+                "Binaire seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Standard web."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Message clé u1 :",
+              "options": [
+                "Tables depuis CSV, clés, index",
+                "Images seules",
+                "Réseau bas niveau",
+                "HTML/CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traitement tabulaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Unité u2 portera sur :",
+              "options": [
+                "Sélection et fusion de tables",
+                "Capteurs Arduino",
+                "Cryptographie RSA",
+                "Web sémantique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtrer et combiner."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Fusion et sélection",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Sélection de lignes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sélectionner des lignes c'est :",
+              "options": [
+                "Filtrer selon un prédicat (condition)",
+                "Garder enregistrements vérifiant critère",
+                "Projeter toutes colonnes sans filtre",
+                "Produit cartésien"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Opération σ (sigma) en algèbre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "WHERE age >= 18 en SQL :",
+              "options": [
+                "Sélection de lignes",
+                "Projection colonnes",
+                "Jointure",
+                "Index disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtre lignes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En Python sur liste de dicts :",
+              "options": [
+                "[r for r in t if r['age']>=18]",
+                "SELECT * sans if",
+                "CROSS JOIN",
+                "CREATE INDEX"
+              ],
+              "correctAnswers": [0],
+              "explanation": "List comprehension filtrante."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Prédicat toujours vrai :",
+              "options": [
+                "Renvoie toutes les lignes",
+                "Aucune ligne",
+                "Erreur syntaxe",
+                "Fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtre trivial."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Prédicat toujours faux :",
+              "options": [
+                "Résultat vide",
+                "Toutes lignes",
+                "Produit cartésien",
+                "Index complet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aucun match."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comparer chaînes sensibles casse :",
+              "options": [
+                "Peut rater des lignes si casse différente",
+                "Améliore jointure",
+                "Crée clé primaire",
+                "Index B-tree"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normaliser .lower() si besoin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Filtrer ville == 'Paris' :",
+              "options": [
+                "Sélection égalité",
+                "Projection",
+                "Jointure",
+                "Cartésien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critère simple."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Résultat sélection :",
+              "options": [
+                "Sous-ensemble de lignes, mêmes colonnes",
+                "Nouvelles colonnes seules",
+                "Table produit",
+                "Index seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même schéma colonnes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Plusieurs conditions AND :",
+              "options": [
+                "Toutes doivent être vraies",
+                "Une seule suffit",
+                "Ignore filtres",
+                "CROSS JOIN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conjonction."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Exporter lignes filtrées en CSV :",
+              "options": [
+                "Écriture sous-ensemble",
+                "Supprime clé",
+                "Index auto",
+                "Fusion sans clé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résultat partageable."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Projection de colonnes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Projection (SELECT col1, col2) :",
+              "options": [
+                "Choisit un sous-ensemble de colonnes",
+                "Conserve toutes lignes (sans WHERE)",
+                "Remplace jointure",
+                "Crée produit cartésien seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Opération π (pi)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "SELECT nom, prenom FROM Eleve :",
+              "options": [
+                "Projection",
+                "Sélection lignes seule",
+                "JOIN",
+                "INDEX"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Colonnes nom et prenom."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En Python extraire clés :",
+              "options": [
+                "[{k:r[k] for k in ('nom','classe')} for r in t]",
+                "Fusion deux tables",
+                "Parcours index seul",
+                "CSV sans en-tête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nouveaux dicts réduits."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "SELECT * :",
+              "options": [
+                "Toutes colonnes",
+                "Aucune colonne",
+                "Jointure auto",
+                "Supprime lignes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Projection totale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Projection puis sélection ordre en SQL :",
+              "options": [
+                "FROM WHERE SELECT équivalent logique filtre puis colonnes",
+                "Toujours JOIN d'abord",
+                "Index d'abord",
+                "Cartésien d'abord"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Optimiseur peut réordonner."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Doublons visibles après projection :",
+              "options": [
+                "Possibles si colonnes projetées non uniques",
+                "Impossible",
+                "Clé primaire garantie",
+                "Index supprime"
+              ],
+              "correctAnswers": [0],
+              "explanation": "DISTINCT si besoin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Masquer colonne sensible :",
+              "options": [
+                "Projection excluant ce champ",
+                "CROSS JOIN",
+                "Produit cartésien",
+                "Lire binaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Minimisation exposition."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Colonnes calculées (AS total) :",
+              "options": [
+                "Projection avec expression",
+                "Sélection lignes",
+                "Clé étrangère",
+                "Index CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attribut dérivé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réduire colonnes avant export :",
+              "options": [
+                "Fichier CSV plus léger",
+                "Fusion obligatoire",
+                "Perte toutes lignes",
+                "Index disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de champs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "π puis σ vs σ puis π :",
+              "options": [
+                "Résultat final identique pour même requête logique",
+                "Toujours différent",
+                "Interdit",
+                "Produit cartésien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commutativité sous conditions."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Comparateurs et conditions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Opérateurs de comparaison :",
+              "options": [
+                "= <> < > <= >=",
+                "LIKE pour motifs texte (SQL)",
+                "Uniquement + et -",
+                "INDEX BY"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Filtrage riche."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "age BETWEEN 16 AND 18 :",
+              "options": [
+                "Intervalle inclusif",
+                "Produit cartésien",
+                "Projection seule",
+                "Jointure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Raccourci comparaisons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "note <> 0 :",
+              "options": ["Différent de zéro", "Égal zéro", "JOIN", "LIKE %"],
+              "correctAnswers": [0],
+              "explanation": "Inégalité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comparaison str vs int sans cast :",
+              "options": [
+                "Peut donner résultats erronés",
+                "Toujours correct",
+                "Crée index",
+                "Fusion auto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Typage cohérent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "IS NULL en SQL :",
+              "options": [
+                "Teste valeur inconnante",
+                "Teste zéro",
+                "Jointure",
+                "LIKE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "NULL distinct de 0."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "IN ('A','B') :",
+              "options": [
+                "Appartenance à liste",
+                "Produit cartésien",
+                "Index",
+                "CROSS JOIN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Disjonction de valeurs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "LIKE 'Dup%' :",
+              "options": ["Préfixe Dup", "Suffixe %Dup", "Jointure", "= exact"],
+              "correctAnswers": [0],
+              "explanation": "Motif SQL."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "NOT predicate :",
+              "options": [
+                "Négation condition",
+                "Projection",
+                "Clé primaire",
+                "CSV writer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lignes ne vérifiant pas."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comparaison dates en texte ISO :",
+              "options": [
+                "Ordre lexicographique = ordre chronologique si YYYY-MM-DD",
+                "Impossible",
+                "Index seul",
+                "Cartésien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Format ISO pratique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir bon opérateur :",
+              "options": [
+                "Exprime précisément le filtre métier",
+                "Toujours =",
+                "Ignorer NULL",
+                "JOIN sans ON"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Requête lisible."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Opérateurs logiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "AND et OR :",
+              "options": [
+                "AND : toutes conditions vraies",
+                "OR : au moins une vraie",
+                "Remplacent clé primaire",
+                "Créent index disque"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Combinaison prédicats."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "WHERE a>10 AND b<5 :",
+              "options": [
+                "Les deux requis",
+                "Une seule",
+                "Produit cartésien",
+                "Projection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conjonction stricte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "WHERE role='admin' OR role='mod' :",
+              "options": [
+                "L'une ou l'autre condition",
+                "Les deux rôles simultanés sur ligne",
+                "JOIN",
+                "INDEX"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Disjonction."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "NOT (age<18) :",
+              "options": [
+                "age >= 18 si entiers",
+                "age<18",
+                "CROSS JOIN",
+                "SELECT *"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Priorité AND vs OR en SQL :",
+              "options": [
+                "AND lie plus fort ; parenthèses clarifient",
+                "OR toujours d'abord",
+                "Sans règle",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utiliser ( )."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En Python : if x>0 and x<100 :",
+              "options": [
+                "Même logique conjonctive",
+                "OR implicite",
+                "Jointure",
+                "Fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parallèle SQL."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Filtre (ville='Lyon') OR (ville='Paris') :",
+              "options": [
+                "Deux villes acceptées",
+                "Aucune",
+                "Cartésien",
+                "Projection seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Union de cas."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Condition impossible AND :",
+              "options": [
+                "Résultat vide",
+                "Toutes lignes",
+                "Index",
+                "JOIN all"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contradiction."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Simplifier OR redondants :",
+              "options": [
+                "Améliore lisibilité",
+                "Obligatoire cartésien",
+                "Supprime CSV",
+                "Crée clé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maintenance requêtes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combiner sélection + logique :",
+              "options": [
+                "Affiner sous-ensemble de table",
+                "Produit cartésien seul",
+                "Index seul",
+                "Sans prédicat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Requêtes réalistes."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Jointure interne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Jointure interne (INNER JOIN) :",
+              "options": [
+                "Lignes appariées sur clé commune",
+                "Exclut non-appariées des deux côtés",
+                "Produit cartésien complet toujours",
+                "Sans condition ON"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Intersection appariée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "ON Eleve.classe_id = Classe.id :",
+              "options": [
+                "Condition d'égalité clés",
+                "Projection",
+                "Sélection seule",
+                "Index CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critère fusion."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Résultat INNER JOIN :",
+              "options": [
+                "Colonnes combinées des deux tables",
+                "Une table vide toujours",
+                "CSV seul",
+                "Index dict seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma élargi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Élève sans classe correspondante (LEFT absent) :",
+              "options": [
+                "Disparaît du INNER JOIN",
+                "Conservé avec NULL",
+                "Dupliqué cartésien",
+                "Index seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inner = match requis."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Fusionner en Python avec dict indexé :",
+              "options": [
+                "Parcourir t1, lookup t2[id]",
+                "Produit cartésien aveugle",
+                "Lire en-tête",
+                "DROP TABLE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Algorithme naïf efficace."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Clés de jointure doivent :",
+              "options": [
+                "Être comparables et cohérentes",
+                "Être toujours NULL",
+                "Ignorer types",
+                "Différer toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même domaine."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "JOIN puis WHERE :",
+              "options": [
+                "Filtre le résultat joint",
+                "Remplace ON",
+                "Cartésien",
+                "Sans lignes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sélection après fusion."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux tables 100 lignes match 1-1 :",
+              "options": [
+                "Au plus 100 lignes résultat",
+                "10000 lignes",
+                "0 ligne",
+                "Index seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de duplication si unique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Alias T1, T2 en SQL :",
+              "options": [
+                "Clarifient colonnes homonymes",
+                "Suppriment JOIN",
+                "CSV delimiter",
+                "Clé primaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "T1.nom vs T2.nom."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "INNER JOIN vs fusion manuelle boucles :",
+              "options": [
+                "Même idée appariement par clé",
+                "Sans relation",
+                "Produit cartésien voulu",
+                "Interdit NSI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concept central u2."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Clé étrangère et intégrité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Clé étrangère :",
+              "options": [
+                "Référence clé primaire autre table",
+                "Maintient lien logique entre relations",
+                "Est toujours index CSV natif",
+                "Interdit jointure"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Intégrité référentielle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "commande.client_id → client.id :",
+              "options": [
+                "FK client_id",
+                "Produit cartésien",
+                "Projection",
+                "SELECT *"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien métier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "FK sans client correspondant :",
+              "options": [
+                "Violation intégrité si contrainte",
+                "Toujours OK",
+                "Index auto",
+                "CSV guillemet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orphelin interdit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "JOIN utilise souvent :",
+              "options": [
+                "PK d'un côté, FK de l'autre",
+                "Deux PK identiques aléatoires",
+                "Sans clé",
+                "Cartésien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle relationnel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "FK peut être NULL si :",
+              "options": [
+                "Relation optionnelle autorisée",
+                "Toujours interdit",
+                "Jointure impossible",
+                "Index seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cardinalité 0..1."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plusieurs FK vers même table :",
+              "options": [
+                "Possible (ex. adresses livraison/facturation)",
+                "Interdit",
+                "Un seul JOIN",
+                "CSV un fichier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rôles différents."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vérifier FK avant import :",
+              "options": [
+                "Lookup ensemble ids parents",
+                "Ignorer enfants",
+                "CROSS JOIN",
+                "DROP KEY"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualité données."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Supprimer client référencé :",
+              "options": [
+                "Bloqué ou cascade selon règle",
+                "Toujours libre",
+                "Crée cartésien",
+                "Index CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique ON DELETE."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Table associative N-N :",
+              "options": [
+                "Deux FK vers entités",
+                "Une colonne seule",
+                "Sans JOIN",
+                "Produit seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. eleve_cours."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "FK mal typée (str vs int) :",
+              "options": [
+                "Jointure échoue ou incomplete",
+                "Toujours OK",
+                "Index Python",
+                "UTF-8 BOM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normaliser types."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Produit cartésien",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Produit cartésien T1×T2 :",
+              "options": [
+                "Toute paire (ligne1, ligne2)",
+                "Cardinalité |T1|×|T2|",
+                "Toujours INNER JOIN",
+                "Sans duplication"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "CROSS JOIN."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "CROSS JOIN sans ON :",
+              "options": [
+                "Cartésien complet",
+                "Inner join",
+                "Index seul",
+                "Projection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Danger si oubli ON."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "3 lignes × 4 lignes :",
+              "options": ["12 lignes résultat", "7 lignes", "1 ligne", "0"],
+              "correctAnswers": [0],
+              "explanation": "Multiplication des cardinalités."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Oublier ON en jointure :",
+              "options": [
+                "Peut exploser combinaisons",
+                "Réduit lignes",
+                "Crée PK",
+                "CSV seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bug fréquent débutant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Cartésien utile :",
+              "options": [
+                "Rare ; tables calendrier × params",
+                "Toujours par défaut",
+                "Remplace INDEX",
+                "Lecture CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cas contrôlés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Filtrer après cartésien avec WHERE :",
+              "options": [
+                "Peut simuler join si condition clé",
+                "Impossible",
+                "Sans effet",
+                "Index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théorique ; préférer JOIN."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Boucles imbriquées for t1 for t2 :",
+              "options": [
+                "Génère paires cartésiennes",
+                "Index dict",
+                "DictReader",
+                "writerow"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Implémentation naïve."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "INNER JOIN sélectif vs cartésien :",
+              "options": [
+                "JOIN garde paires liées seulement",
+                "Identiques",
+                "JOIN plus grand toujours",
+                "Cartésien vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtre appariement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mémoire gros cartésien :",
+              "options": [
+                "Peut saturer RAM",
+                "Toujours O(1)",
+                "CSV illisible",
+                "Clé primaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Explosion combinatoire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Éviter cartésien accidentel :",
+              "options": [
+                "Toujours spécifier ON / clé",
+                "SELECT * seul",
+                "Sans WHERE",
+                "Ignorer FK"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bonne pratique SQL."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Fusionner deux CSV",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Fusionner eleves.csv et classes.csv :",
+              "options": [
+                "Charger deux tables",
+                "JOIN sur classe_id = id",
+                "Écrire un seul CSV sans réfléchir",
+                "Cartésien systématique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pipeline double fichier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Index dict id→classe avant boucle élèves :",
+              "options": [
+                "JOIN efficace en O(n+m)",
+                "Produit cartésien",
+                "Projection seule",
+                "Sans clé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pattern première NSI."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Colonnes homonymes 'nom' :",
+              "options": [
+                "Préfixer eleve_nom, classe_nom",
+                "Fusionner valeurs",
+                "Supprimer",
+                "Ignorer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éviter écrasement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Exporter résultat joint :",
+              "options": [
+                "Nouveau CSV enrichi",
+                "Supprime FK",
+                "Index disque",
+                "Binaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Table dénormalisée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Clé absente dans table B :",
+              "options": [
+                "Ligne exclue du INNER",
+                "Toujours conservée INNER",
+                "Cartésien",
+                "NULL PK"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de match."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "LEFT JOIN concept (hors inner strict) :",
+              "options": [
+                "Garde toutes lignes gauche",
+                "Programme première souvent inner",
+                "Interdit",
+                "CSV seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Extension à connaître."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Trois tables A-B-C en chaîne :",
+              "options": [
+                "JOIN successifs sur FK",
+                "Un cartésien",
+                "Un CSV",
+                "Sans ON"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaînage clés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vérifier cardinalité post-JOIN :",
+              "options": [
+                "Détecte duplications accidentelles",
+                "Inutile",
+                "Index",
+                "UTF-8"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sanity check."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Même id dans deux CSV différents :",
+              "options": [
+                "Contexte table nécessaire",
+                "Toujours même entité",
+                "Interdit JOIN",
+                "Clé globale auto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sémantique compte."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Fusion correcte requiert :",
+              "options": [
+                "Comprendre schéma et clés",
+                "Guillemets seuls",
+                "BOM seul",
+                "LIKE seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle données."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Combiner sélection et jointure",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "SELECT ... FROM A JOIN B ON ... WHERE ... :",
+              "options": [
+                "Jointure puis filtre lignes",
+                "Combine fusion et sélection",
+                "Produit cartésien seul",
+                "Sans prédicat"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Requête composée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "JOIN élèves-classes WHERE ville='Paris' :",
+              "options": [
+                "Élèves parisien·nes avec info classe",
+                "Tous cartésiens",
+                "Sans classes",
+                "Index CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtre sur attribut."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Filtrer avant JOIN en Python :",
+              "options": [
+                "Réduit taille si sélectif",
+                "Toujours plus lent",
+                "Interdit",
+                "Cartésien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Optimisation manuelle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Projection après JOIN :",
+              "options": [
+                "Choisir colonnes utiles du résultat",
+                "Oblige SELECT *",
+                "Supprime ON",
+                "FK NULL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "π sur table jointe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "COUNT(*) après JOIN filtré :",
+              "options": [
+                "Nombre lignes satisfaisant critères",
+                "Nombre colonnes",
+                "Taille CSV",
+                "Index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agrégat simple."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Condition sur colonne des deux tables :",
+              "options": [
+                "WHERE avec alias T1.col AND T2.col",
+                "Sans alias",
+                "CROSS JOIN",
+                "DictWriter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prédicat multi-table."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ORDER BY note DESC :",
+              "options": [
+                "Tri du résultat",
+                "Jointure",
+                "Index seul",
+                "Encodage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Requête impossible métier :",
+              "options": [
+                "Retourne vide, pas erreur SQL",
+                "Crash disque",
+                "Cartésien obligato",
+                "CSV corrompu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ensemble vide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Enchaîner opérations algèbre :",
+              "options": [
+                "σ, π, ⋈ composables",
+                "Une seule opération",
+                "Sans table",
+                "Fichier binaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base formelle NSI."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tester requête sur petit échantillon :",
+              "options": [
+                "Valide logique avant gros volume",
+                "Inutile",
+                "Produit cartésien",
+                "Sans CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débogage."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Cas pratiques et synthèse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments résument le chapitre ?",
+              "options": [
+                "CSV, clés, index, sélection, jointure",
+                "Fusion et filtrage de tables",
+                "Uniquement réseau",
+                "HTML seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Compétences u1+u2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Analyser ventes par région :",
+              "options": [
+                "JOIN ventes-regions + GROUP BY",
+                "Cartésien seul",
+                "Lire en-tête",
+                "Index sans données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cas métier typique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Doublon clé primaire import :",
+              "options": [
+                "Corriger source ou dedupe",
+                "Ignorer",
+                "CROSS JOIN",
+                "UTF-16"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avant index/join."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pipeline complet NSI :",
+              "options": [
+                "Import CSV → nettoyer → indexer → requêter → exporter",
+                "Sans structure",
+                "Produit cartésien final",
+                "Oublier types"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "SQL et Python list/dict :",
+              "options": [
+                "Deux façons même logique tables",
+                "Sans lien",
+                "SQL interdit lycée",
+                "Python sans CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dualité outils."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Erreur jointure silencieuse :",
+              "options": [
+                "Résultat trop grand ou trop petit",
+                "Toujours exception",
+                "CSV illisible",
+                "BOM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vérifier cardinalité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Documentation schéma :",
+              "options": [
+                "Facilite fusion entre fichiers",
+                "Remplace données",
+                "Index disque",
+                "LIKE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Collaboration."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "RGPD et export joint :",
+              "options": [
+                "Minimiser colonnes projetées",
+                "Tout fusionner",
+                "Publier clés",
+                "Cartésien public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Projection prudente."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Message clé u2 :",
+              "options": [
+                "Filtrer et combiner relations",
+                "Oublier clés",
+                "CSV binaire",
+                "Sans prédicat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fusion et sélection."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Prochaine étape programme NSI :",
+              "options": [
+                "Aller plus loin SQL/SGBD ou algo",
+                "Abandonner tables",
+                "Sans jointure",
+                "Retour capteurs seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poursuite cursus."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

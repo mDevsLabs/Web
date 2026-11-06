@@ -1,16 +1,14 @@
 "use client";
 
-import {
-  AlertCircleIcon,
-  CheckCircle2Icon,
-  CircleIcon,
-  KeyIcon,
-  Loader2Icon,
-  PlusIcon,
-  RefreshCwIcon,
-  ShieldAlertIcon,
-  Trash2Icon,
-} from "lucide-react";
+import { CheckCircle2Icon } from "@mdevs/icons/controls/check-circle-2";
+import { PlusIcon } from "@mdevs/icons/controls/plus";
+import { CircleIcon } from "@mdevs/icons/interface/circle";
+import { AlertCircleIcon } from "@mdevs/icons/misc/alert-circle";
+import { Loader2Icon } from "@mdevs/icons/misc/loader-2";
+import { RefreshCwIcon } from "@mdevs/icons/misc/refresh-cw";
+import { Trash2Icon } from "@mdevs/icons/objects/trash-2";
+import { KeyIcon } from "@mdevs/icons/security/key";
+import { ShieldAlertIcon } from "@mdevs/icons/security/shield-alert";
 import type React from "react";
 import { Button } from "@/components/ui/button";
 import {

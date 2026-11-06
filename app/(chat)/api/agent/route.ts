@@ -835,6 +835,7 @@ export async function POST(request: Request) {
       // Budget d'outils CUMULÉ : la reprise repart du compteur persisté, pas de
       // zéro (sinon une tâche relancée indéfiniment n'atteint jamais sa limite).
       startToolCallCount: activeRun?.toolCallCount ?? 0,
+      supportsToolChoice: resolvedEntry.capabilities.toolChoice,
       task,
       // Sur une reprise, la valeur vient du run d'origine : l'option a été
       // décidée à l'envoi initial, pas à chaque question posée en cours de route.

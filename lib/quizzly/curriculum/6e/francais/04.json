@@ -1,0 +1,2228 @@
+{
+  "id": "6e-francais-04",
+  "year": "6e",
+  "subject": "francais",
+  "title": "La langue au service du sens",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Orthographe et accords",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Le verbe avec il",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans « Les oiseaux chantent », quelles formes sont correctes au présent ?",
+              "options": [
+                "Les oiseaux chante.",
+                "Les oiseaux chantent.",
+                "L'oiseau chante.",
+                "L'oiseau chantent."
+              ],
+              "explanation": "Avec un sujet pluriel, le verbe prend la marque -ent ; au singulier on écrit chante.",
+              "correctAnswers": [1, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : « Ma sœur ___ contente. »",
+              "options": ["es", "est", "et", "sont"],
+              "explanation": "Avec le sujet « ma sœur » (elle), on emploie la forme est.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "Tu mange une pomme.",
+                "Tu manges une pomme.",
+                "Tu mangent une pomme.",
+                "Tu mangez une pomme."
+              ],
+              "explanation": "Avec tu, le verbe manger prend la terminaison -s : manges.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Nous ___ au parc demain. » Choisis la bonne forme.",
+              "options": ["allons", "allez", "va", "vas"],
+              "explanation": "Le sujet nous exige la forme allons du verbe aller.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le sujet est « les filles ». Quelle forme convient ?",
+              "options": ["joue", "joues", "jouent", "jouons"],
+              "explanation": "Les filles est pluriel : le verbe prend la terminaison -ent.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Il ___ très grand. »",
+              "options": ["es", "est", "et", "sont"],
+              "explanation": "Il est un sujet singulier masculin : on utilise est.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase accorde mal le verbe ?",
+              "options": [
+                "Les chats dorment.",
+                "Le chat dort.",
+                "Les chat dort.",
+                "Les chats dorment bien."
+              ],
+              "explanation": "Les chat mélange un sujet pluriel et un verbe au singulier : c'est incorrect.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Vous ___ gentils. »",
+              "options": ["es", "est", "êtes", "sont"],
+              "explanation": "Avec vous, le verbe être s'écrit êtes.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le sujet « je » avec manger au présent :",
+              "options": ["mange", "manges", "mangeons", "mangent"],
+              "explanation": "Avec je, on écrit mange sans -s à l'écrit.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Elles ___ leurs devoirs. »",
+              "options": ["fini", "finis", "finit", "finissent"],
+              "explanation": "Elles est pluriel : finissent s'accorde avec le sujet.",
+              "correctAnswers": [3]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Pluriel des noms",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels pluriels sont corrects ?",
+              "options": [
+                "des tables",
+                "des table",
+                "des chaises",
+                "des chaise"
+              ],
+              "explanation": "On ajoute en général -s au singulier : tables et chaises.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le pluriel de « un livre » est :",
+              "options": [
+                "des livre",
+                "des livres",
+                "des livres",
+                "des livres"
+              ],
+              "explanation": "Livre devient livres au pluriel.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Un cheval » au pluriel :",
+              "options": [
+                "des chevals",
+                "des chevaux",
+                "des chevaux",
+                "des cheval"
+              ],
+              "explanation": "Cheval fait un pluriel irrégulier en -aux : chevaux.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle forme est fausse ?",
+              "options": ["des amis", "des amies", "des amie", "des amis"],
+              "explanation": "Des amie manque le -s du pluriel.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pluriel de « un journal » :",
+              "options": [
+                "des journaux",
+                "des journals",
+                "des journal",
+                "des journauxs"
+              ],
+              "explanation": "Journal forme son pluriel en -aux : journaux.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Deux ___ » (classe)",
+              "options": ["classe", "classes", "class", "classess"],
+              "explanation": "Classe prend un -s au pluriel : classes.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pluriel de « un bateau » :",
+              "options": [
+                "des bateaus",
+                "des bateaux",
+                "des bateau",
+                "des bateauxs"
+              ],
+              "explanation": "Bateau → bateaux, comme cheval → chevaux.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase a un nom mal accordé ?",
+              "options": [
+                "Les élèves lisent.",
+                "Les élève lisent.",
+                "Les élèves écrivent.",
+                "Les professeurs parlent."
+              ],
+              "explanation": "Élève doit être au pluriel élèves avec les.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Plusieurs ___ » (animal)",
+              "options": ["animal", "animals", "animaux", "animau"],
+              "explanation": "Animal forme son pluriel en -aux.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pluriel de « une feuille » :",
+              "options": [
+                "des feuilles",
+                "des feuille",
+                "des feuills",
+                "des feuilles"
+              ],
+              "explanation": "On ajoute -s : feuilles.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Féminin des adjectifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs féminins sont bien formés ?",
+              "options": ["contente", "content", "gentille", "gentil"],
+              "explanation": "Contente et gentille ajoutent -e ou doublent la consonne pour le féminin.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Féminin de « grand » :",
+              "options": ["grande", "grands", "grandes", "granda"],
+              "explanation": "On ajoute -e : grande.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Une fille ___ » (heureux)",
+              "options": ["heureux", "heureuse", "heureuxe", "heureus"],
+              "explanation": "Heureux devient heureuse au féminin.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Féminin de « petit » :",
+              "options": ["petite", "petits", "petit", "petites"],
+              "explanation": "Petit → petite avec -e.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "Un garçon timide.",
+                "Une fille timide.",
+                "Une fille timida.",
+                "Un fille timide."
+              ],
+              "explanation": "Timide est invariable en genre ici ; une fille timide est correct.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Féminin de « actif » :",
+              "options": ["active", "actife", "actifs", "activ"],
+              "explanation": "Actif → active ( -if devient -ive ).",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Des robes ___ » (bleu)",
+              "options": ["bleu", "bleus", "bleues", "bleue"],
+              "explanation": "Robes est féminin pluriel : bleues.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Féminin de « sportif » :",
+              "options": ["sportive", "sportife", "sportifs", "sportif"],
+              "explanation": "Sportif → sportive.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle forme ne convient pas avec « maison » ?",
+              "options": ["grande", "belle", "beau", "vieille"],
+              "explanation": "Maison est féminin : on dit une grande maison, pas beau.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Féminin de « joyeux » :",
+              "options": ["joyeuse", "joyeuxe", "joyeux", "joyeus"],
+              "explanation": "Joyeux → joyeuse.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "a ou à ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Où faut-il écrire « à » (préposition) ?",
+              "options": [
+                "Il va ___ école.",
+                "Il ___ faim.",
+                "Je pense ___ toi.",
+                "C'est un livre ___ lire."
+              ],
+              "explanation": "Va à, pense à utilisent la préposition à ; a faim = verbe avoir.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Il ___ soif. »",
+              "options": ["a", "à", "as", "ah"],
+              "explanation": "A soif : verbe avoir à la 3e personne.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Nous allons ___ la piscine. »",
+              "options": ["a", "à", "as", "ah"],
+              "explanation": "Aller à indique la direction : préposition à.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Tu ___ raison. »",
+              "options": ["a", "à", "as", "ah"],
+              "explanation": "Tu as : conjugaison de avoir.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Elle est ___ la maison. »",
+              "options": ["a", "à", "as", "ah"],
+              "explanation": "Être à la maison : lieu, préposition à.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "Il a dix ans.",
+                "Il à dix ans.",
+                "Il as dix ans.",
+                "Il ah dix ans."
+              ],
+              "explanation": "Avoir : il a, jamais il à pour l'âge.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Je reste ___ Paris. »",
+              "options": ["a", "à", "as", "ah"],
+              "explanation": "Rester à + ville : préposition.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Mon frère ___ un vélo. »",
+              "options": ["a", "à", "as", "ah"],
+              "explanation": "Possession : il a un vélo.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Elle pense ___ ses amis. »",
+              "options": ["a", "à", "as", "ah"],
+              "explanation": "Penser à quelqu'un prend la préposition à.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle erreur vois-tu ?",
+              "options": [
+                "J'ai peur.",
+                "J'à peur.",
+                "J'ai froid.",
+                "J'ai chaud."
+              ],
+              "explanation": "J'à peur confond la préposition avec le verbe avoir.",
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "et ou est ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans quelles phrases « est » (verbe être) est correct ?",
+              "options": [
+                "Il ___ grand.",
+                "Pierre ___ Marie jouent.",
+                "Elle ___ fatiguée.",
+                "Le chat ___ le chien dorment."
+              ],
+              "explanation": "Il est et elle est : verbe être ; et relie deux noms dans la deuxième phrase.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Paul ___ Sophie sont amis. »",
+              "options": ["et", "est", "es", "ait"],
+              "explanation": "Et relie deux personnes : Paul et Sophie.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Mon cartable ___ lourd. »",
+              "options": ["et", "est", "es", "ait"],
+              "explanation": "Description : mon cartable est lourd.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Le soleil ___ la lune brillent. »",
+              "options": ["et", "est", "es", "ait"],
+              "explanation": "On relie deux sujets avec et.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« La porte ___ ouverte. »",
+              "options": ["et", "est", "es", "ait"],
+              "explanation": "État : la porte est ouverte.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phrase est fausse ?",
+              "options": [
+                "Il est gentil.",
+                "Il et gentil.",
+                "Il est là.",
+                "Il est mon ami."
+              ],
+              "explanation": "Il et gentil mélange la conjonction et le verbe.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Un stylo ___ une gomme. » (addition)",
+              "options": ["et", "est", "es", "ait"],
+              "explanation": "On énumère avec et.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Cette règle ___ utile. »",
+              "options": ["et", "est", "es", "ait"],
+              "explanation": "Cette règle est : verbe être.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Tu ___ mon copain. »",
+              "options": ["et", "est", "es", "ait"],
+              "explanation": "Tu es : 2e personne du singulier de être.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Le film ___ intéressant. »",
+              "options": ["et", "est", "es", "ait"],
+              "explanation": "Le film est intéressant : accord avec être.",
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Accord dans le GN",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels groupes nominaux sont bien accordés ?",
+              "options": [
+                "de petites fleurs",
+                "de petite fleurs",
+                "un grand arbre",
+                "un grands arbre"
+              ],
+              "explanation": "Petites s'accorde avec fleurs ; grand avec arbre singulier.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Des ___ pommes » (rouge)",
+              "options": ["rouge", "rouges", "rouges", "rouge"],
+              "explanation": "Pommes pluriel : adjectif rouges.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Une ___ histoire » (drôle)",
+              "options": ["drôle", "drôles", "drôl", "drôles"],
+              "explanation": "Histoire féminin singulier : drôle.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel GN est incorrect ?",
+              "options": [
+                "de beaux jours",
+                "de beau jours",
+                "de belles images",
+                "de bons repas"
+              ],
+              "explanation": "Beau s'accorde : beaux jours au masculin pluriel.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Les ___ enfants » (petit)",
+              "options": ["petit", "petits", "petite", "petites"],
+              "explanation": "Enfants masculin pluriel : petits.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Une ___ voiture » (neuf)",
+              "options": ["neuf", "neuve", "neufs", "neuves"],
+              "explanation": "Voiture féminin : neuve.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Des ___ idées » (nouveau)",
+              "options": ["nouveau", "nouveaux", "nouvelles", "nouvel"],
+              "explanation": "Idées féminin pluriel : nouvelles.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Un ___ garçon » (curieux)",
+              "options": ["curieux", "curieuse", "curieuses", "curieus"],
+              "explanation": "Garçon masculin singulier : curieux.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Mes ___ chaussures » (vieux)",
+              "options": ["vieux", "vieille", "vieilles", "vieil"],
+              "explanation": "Chaussures féminin pluriel : vieilles.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« De ___ exercices » (facile)",
+              "options": ["facile", "faciles", "facil", "faciles"],
+              "explanation": "Exercices pluriel : faciles.",
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Participes avec être",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Avec être, quels participes s'accordent correctement ?",
+              "options": [
+                "Elles sont arrivées.",
+                "Elles sont arrivé.",
+                "Il est parti.",
+                "Il est partis."
+              ],
+              "explanation": "Avec elles, arrivées et partis s'accordent ; avec il, parti sans -s.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Marie est ___ » (content)",
+              "options": ["content", "contente", "contents", "contentes"],
+              "explanation": "Marie est féminin : contente.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Les filles sont ___ » (parti)",
+              "options": ["parti", "partie", "parties", "partis"],
+              "explanation": "Filles féminin pluriel : parties.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Paul est ___ » (rentré)",
+              "options": ["rentré", "rentrée", "rentrés", "rentrées"],
+              "explanation": "Paul masculin singulier : rentré.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase est fausse ?",
+              "options": [
+                "Ils sont venus.",
+                "Ils sont venu.",
+                "Elles sont venues.",
+                "Tu es arrivé."
+              ],
+              "explanation": "Ils sont venu manque le -s d'accord avec ils.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Nous sommes ___ » (fatigué, filles)",
+              "options": ["fatigué", "fatiguée", "fatigués", "fatiguées"],
+              "explanation": "Nous inclut des filles ou on accorde au féminin pluriel si le groupe est féminin : fatiguées pour un groupe de filles ; ici question dit filles → fatiguées.",
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Elle est ___ » (tombé)",
+              "options": ["tombé", "tombée", "tombés", "tombées"],
+              "explanation": "Elle féminin : tombée.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Les garçons sont ___ » (monté)",
+              "options": ["monté", "montée", "montés", "montées"],
+              "explanation": "Garçons masculin pluriel : montés.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Je suis ___ » (resté, garçon)",
+              "options": ["resté", "restée", "restés", "restées"],
+              "explanation": "Je masculin : resté.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Elles sont ___ » (allé)",
+              "options": ["allé", "allée", "allées", "allés"],
+              "explanation": "Elles féminin pluriel : allées.",
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Les déterminants",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels déterminants conviennent devant un nom féminin singulier ?",
+              "options": ["une", "un", "la", "le"],
+              "explanation": "Une et la accompagnent un nom féminin singulier.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« ___ table est propre. »",
+              "options": ["Le", "La", "Les", "Des"],
+              "explanation": "Table est féminin : la table.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« ___ garçons jouent. »",
+              "options": ["Le", "La", "Les", "Une"],
+              "explanation": "Garçons pluriel : les garçons.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« J'ai ___ idée. »",
+              "options": ["un", "une", "des", "le"],
+              "explanation": "Idée féminin : une idée.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "Un livre intéressant.",
+                "Une pomme rouge.",
+                "Un pomme verte.",
+                "Des amis sympas."
+              ],
+              "explanation": "Pomme est féminin : une pomme, pas un pomme.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« ___ enfants mangent. »",
+              "options": ["Le", "La", "Les", "Une"],
+              "explanation": "Enfants pluriel : les.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« C'est ___ bon prof. »",
+              "options": ["un", "une", "des", "la"],
+              "explanation": "Prof (professeur) masculin : un.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« ___ eau est froide. »",
+              "options": ["Le", "La", "Les", "Un"],
+              "explanation": "Eau féminin : l'eau avec la contractée en l'.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Il achète ___ crayons. »",
+              "options": ["un", "une", "des", "le"],
+              "explanation": "Plusieurs crayons : des crayons.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« ___ maison est grande. »",
+              "options": ["Le", "La", "Les", "Des"],
+              "explanation": "Maison féminin singulier : la maison.",
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Noms en -s, -x",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels pluriels de noms en -s ou -x sont corrects ?",
+              "options": ["des bus", "des buse", "des yeux", "des yeuxs"],
+              "explanation": "Bus est invariable au pluriel ; yeux est déjà le pluriel de œil.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pluriel de « un nez » :",
+              "options": ["des nez", "des nezs", "des nezes", "des neux"],
+              "explanation": "Nez ne change pas au pluriel : des nez.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pluriel de « un jeu » :",
+              "options": ["des jeus", "des jeux", "des jeuxs", "des jeu"],
+              "explanation": "Jeu → jeux au pluriel.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pluriel de « un os » :",
+              "options": ["des os", "des oss", "des ose", "des oses"],
+              "explanation": "Os est invariable : des os.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pluriel de « un prix » :",
+              "options": ["des prix", "des prixs", "des pris", "des prieux"],
+              "explanation": "Prix ne change pas au pluriel.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pluriel de « un chou » :",
+              "options": ["des chous", "des choux", "des chou", "des chouxs"],
+              "explanation": "Chou → choux.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle forme est fausse ?",
+              "options": ["des gens", "des genss", "des hiboux", "des génoux"],
+              "explanation": "Gens est déjà pluriel ; genss n'existe pas.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pluriel de « un pou » :",
+              "options": ["des pous", "des poux", "des pou", "des pouxs"],
+              "explanation": "Pou → poux.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pluriel de « un trou » :",
+              "options": ["des trous", "des troux", "des trou", "des trouss"],
+              "explanation": "Trou → trous avec -s.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pluriel de « un bleu » (couleur) :",
+              "options": ["des bleus", "des bleux", "des bleu", "des bleus"],
+              "explanation": "Bleu → bleus au pluriel.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Accords en contexte",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont entièrement correctes ?",
+              "options": [
+                "Les filles sont contentes.",
+                "Les filles sont contente.",
+                "Il mange une pomme.",
+                "Il mangent une pomme."
+              ],
+              "explanation": "Contentes s'accorde avec filles ; il mange est correct.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Corrige : « Ma copine et moi ___ fatigués. » (nous, filles)",
+              "options": [
+                "sommes fatigué",
+                "sommes fatiguées",
+                "est fatiguées",
+                "sont fatiguées"
+              ],
+              "explanation": "Nous filles : sommes fatiguées.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Des ___ nuages » (gris)",
+              "options": ["gris", "grise", "grises", "griss"],
+              "explanation": "Nuages masculin pluriel : gris (invariable en genre ici).",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase a une faute ?",
+              "options": [
+                "Tu as raison.",
+                "Tu à raison.",
+                "Tu es là.",
+                "Tu vas bien."
+              ],
+              "explanation": "Tu à raison confond a et à.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Elles ___ parties tôt. »",
+              "options": ["es", "est", "sont", "et"],
+              "explanation": "Elles sont parties : être + participe accordé.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Un ___ manteau » (beau)",
+              "options": ["beau", "belle", "beaux", "belles"],
+              "explanation": "Manteau masculin singulier : beau.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Les oiseaux ___ dans le ciel. »",
+              "options": ["vole", "voles", "volent", "volons"],
+              "explanation": "Oiseaux pluriel : volent.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« C'est ___ ami. » (mon, fille)",
+              "options": ["mon", "ma", "mes", "le"],
+              "explanation": "Ami masculin : mon ami (si ami est un garçon).",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pluriel correct :",
+              "options": [
+                "des chevals",
+                "des chevaux",
+                "des cheval",
+                "des chevauxs"
+              ],
+              "explanation": "Cheval → chevaux.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Pierre ___ Paul travaillent. »",
+              "options": ["et", "est", "es", "ait"],
+              "explanation": "On relie deux sujets avec et.",
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Réécrire une phrase",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Dire autrement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles reformulations gardent le même sens que « Il fait beau » ?",
+              "options": [
+                "Le temps est agréable.",
+                "Il pleut fort.",
+                "Il y a du soleil.",
+                "Il neige."
+              ],
+              "explanation": "Temps agréable et du soleil expriment un beau temps ; pleuvoir et neiger changent le sens.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Synonyme de « maison » dans « grande maison » :",
+              "options": ["habitation", "voiture", "arbre", "stylo"],
+              "explanation": "Habitation peut remplacer maison dans un contexte simple.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réécris sans changer le sens : « Le chat dort. »",
+              "options": [
+                "Le chat sommeille.",
+                "Le chat court.",
+                "Le chat mange.",
+                "Le chat aboie."
+              ],
+              "explanation": "Sommeille est proche de dort.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Elle est triste » → même sens :",
+              "options": [
+                "Elle est joyeuse.",
+                "Elle est malheureuse.",
+                "Elle est grande.",
+                "Elle est vite."
+              ],
+              "explanation": "Malheureuse exprime une tristesse proche.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Remplace « rapidement » par un mot proche :",
+              "options": ["vite", "lentement", "demain", "ici"],
+              "explanation": "Vite a le même sens que rapidement.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Commencer » peut se dire aussi :",
+              "options": ["débuter", "finir", "fermer", "cacher"],
+              "explanation": "Débuter est synonyme de commencer.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réécris : « Il a peur. »",
+              "options": [
+                "Il est effrayé.",
+                "Il a faim.",
+                "Il est grand.",
+                "Il court vite."
+              ],
+              "explanation": "Effrayé reprend l'idée de peur.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Petit » → autre mot pour « un ___ chien »",
+              "options": ["minuscule", "énorme", "lent", "bleu"],
+              "explanation": "Minuscule ou petit : ici minuscule convient.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Même sens : « Nous partons demain. »",
+              "options": [
+                "Nous quittons demain.",
+                "Nous dormons demain.",
+                "Nous mangeons demain.",
+                "Nous lisons demain."
+              ],
+              "explanation": "Quittons reprend l'idée de partir.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Beau » dans « un beau dessin » ≈",
+              "options": ["joli", "sale", "froid", "vide"],
+              "explanation": "Joli est proche de beau pour un dessin.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Remplacer un mot",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels remplacements conviennent dans « Je ___ un livre » (lire) ?",
+              "options": ["lis", "mange", "regarde un texte", "lis"],
+              "explanation": "Lis et regarde un texte gardent l'idée de lecture ; mange change le sens.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Remplace « enfant » : « L'___ joue. »",
+              "options": ["enfant", "garçon ou fille", "table", "nuage"],
+              "explanation": "Garçon ou fille précise l'enfant sans changer l'idée de jouer.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Il parle fort » → remplace « fort » :",
+              "options": [
+                "à voix haute",
+                "doucement",
+                "sous la table",
+                "demain"
+              ],
+              "explanation": "À voix haute explique parler fort.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Voiture » → « Il monte dans sa ___. »",
+              "options": ["auto", "pomme", "chaise", "feuille"],
+              "explanation": "Auto remplace voiture.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Remplace « content » : « Elle est ___. »",
+              "options": ["heureuse", "triste", "lourde", "fermée"],
+              "explanation": "Heureuse est proche de contente.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Manger » → « Nous ___ à midi. »",
+              "options": ["déjeunons", "dormons", "courons", "lisons"],
+              "explanation": "Déjeunons précise manger à midi.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Remplace « école » : « Il va au ___. »",
+              "options": ["collège", "jardin", "ciel", "stylo"],
+              "explanation": "Collège peut remplacer école en 6e.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Regarde » → autre verbe proche :",
+              "options": ["Observe", "Dors", "Mange", "Pars"],
+              "explanation": "Observe est proche de regarde.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ami » → « Mon ___ m'aide. »",
+              "options": ["copain", "ennemi", "livre", "mur"],
+              "explanation": "Copain remplace ami.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Remplace « achète » : « Elle ___ du pain. »",
+              "options": ["prend", "jette", "oublie", "cache"],
+              "explanation": "Prend du pain peut reformuler l'achat simplement.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Phrase négative",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont à la forme négative ?",
+              "options": [
+                "Je ne mange pas.",
+                "Je mange.",
+                "Il ne dort pas.",
+                "Il dort."
+              ],
+              "explanation": "Ne … pas entoure le verbe pour nier.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Transforme : « Tu aimes le sport. » → négatif",
+              "options": [
+                "Tu n'aimes pas le sport.",
+                "Tu aimes le sport.",
+                "Tu aimes pas le sport.",
+                "Tu ne aimes le sport."
+              ],
+              "explanation": "Tu n'aimes pas : ne devient n' devant voyelle.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Elle ___ ___ vient pas. »",
+              "options": ["ne … pas", "pas … ne", "ne … ne", "pas … pas"],
+              "explanation": "Ordre : ne + verbe + pas.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Négatif de « Nous avons fini. »",
+              "options": [
+                "Nous n'avons pas fini.",
+                "Nous avons pas fini.",
+                "Nous ne avons fini.",
+                "Nous n'avons fini."
+              ],
+              "explanation": "N'avons pas fini nie la phrase.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase négative est correcte ?",
+              "options": [
+                "Il ne parle pas.",
+                "Il ne parle.",
+                "Il parle ne pas.",
+                "Il pas ne parle."
+              ],
+              "explanation": "Ne parle pas est l'ordre correct.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Affirmatif : « Ils jouent. » → négatif",
+              "options": [
+                "Ils ne jouent pas.",
+                "Ils ne jouent.",
+                "Ils jouent pas.",
+                "Ils pas jouent."
+              ],
+              "explanation": "Ne jouent pas nie l'action.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Je ___ suis ___ fatigué. » (négation)",
+              "options": ["ne … pas", "pas … ne", "ne … ne", "pas … pas"],
+              "explanation": "Je ne suis pas fatigué.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sens opposé de « Il est là » (négatif) :",
+              "options": [
+                "Il n'est pas là.",
+                "Il est là.",
+                "Il est ici.",
+                "Il vient."
+              ],
+              "explanation": "N'est pas là nie la présence.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Erreur fréquente à éviter :",
+              "options": [
+                "Elle n'écoute pas.",
+                "Elle écoute pas.",
+                "Elle n'écoute pas la musique.",
+                "Elle n'écoute pas."
+              ],
+              "explanation": "Écoute pas oublie ne.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Négatif : « Vous comprenez. »",
+              "options": [
+                "Vous ne comprenez pas.",
+                "Vous comprenez pas.",
+                "Vous ne comprenez.",
+                "Vous pas comprenez."
+              ],
+              "explanation": "Ne comprenez pas est correct.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Phrase exclamative",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont exclamatives ?",
+              "options": [
+                "Comme il est grand !",
+                "Il est grand.",
+                "Quelle belle fleur !",
+                "La fleur est belle."
+              ],
+              "explanation": "Comme … ! et Quelle … ! marquent l'exclamation.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Transforme en exclamation : « Tu es gentil. »",
+              "options": [
+                "Comme tu es gentil !",
+                "Tu es gentil.",
+                "Tu n'es pas gentil.",
+                "Es-tu gentil ?"
+              ],
+              "explanation": "Comme tu es gentil ! exprime l'admiration.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Exclamation avec « quel » : « ___ beau cadeau ! »",
+              "options": ["Quel", "Quelle", "Quels", "Quelles"],
+              "explanation": "Cadeau masculin singulier : quel.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« ___ jolie robe ! »",
+              "options": ["Quel", "Quelle", "Quels", "Quelles"],
+              "explanation": "Robe féminin : quelle.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Phrase exclamative :",
+              "options": [
+                "Comme c'est bon !",
+                "C'est bon.",
+                "Ce n'est pas bon.",
+                "Est-ce bon ?"
+              ],
+              "explanation": "Comme c'est bon ! est exclamative.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« ___ bruit terrible ! »",
+              "options": ["Quel", "Quelle", "Quels", "Quelles"],
+              "explanation": "Bruit masculin : quel.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réécris en exclamant la surprise : « Il court vite. »",
+              "options": [
+                "Comme il court vite !",
+                "Il court vite.",
+                "Il ne court pas.",
+                "Court-il vite ?"
+              ],
+              "explanation": "Comme … ! souligne la vitesse.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« ___ belles photos ! »",
+              "options": ["Quel", "Quelle", "Quels", "Quelles"],
+              "explanation": "Photos féminin pluriel : quelles.",
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle ponctuation convient à une exclamation ?",
+              "options": ["!", ".", "?", "…"],
+              "explanation": "Le point d'exclamation clôt une exclamation.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Exclamation : « ___ chance ! » (tu as de la chance)",
+              "options": ["Quelle", "Quel", "Quels", "Quelles"],
+              "explanation": "Chance féminin : quelle chance !",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Ordre des mots",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases ont un ordre des mots correct en français ?",
+              "options": [
+                "Le chien mange.",
+                "Mange le chien.",
+                "Marie lit un livre.",
+                "Lit Marie un livre."
+              ],
+              "explanation": "Sujet puis verbe puis complément est l'ordre le plus naturel ici.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Remets en ordre : « dans / le / chat / jardin / dort / le »",
+              "options": [
+                "Le chat dort dans le jardin.",
+                "Dort le chat le jardin dans.",
+                "Le jardin dort chat le dans.",
+                "Dans le chat dort jardin le."
+              ],
+              "explanation": "Le chat dort dans le jardin est correct.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Demain / nous / partons / tôt » → phrase",
+              "options": [
+                "Nous partons tôt demain.",
+                "Partons nous demain tôt.",
+                "Demain tôt nous partons.",
+                "Tôt demain partons nous."
+              ],
+              "explanation": "Nous partons tôt demain est naturel.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase sonne incorrecte ?",
+              "options": [
+                "Pierre mange une pomme.",
+                "Mange Pierre une pomme.",
+                "Pierre mange.",
+                "Une pomme est rouge."
+              ],
+              "explanation": "Mange Pierre une pomme inverse l'ordre sans raison.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Place le complément : « Il joue ___ » (dehors)",
+              "options": ["dehors", "dehors il", "il dehors", "joue dehors il"],
+              "explanation": "Il joue dehors : sujet-verbe-lieu.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Toujours / elle / sourire / fait »",
+              "options": [
+                "Elle fait toujours sourire.",
+                "Fait elle sourire toujours.",
+                "Sourire fait elle toujours.",
+                "Elle sourire fait toujours."
+              ],
+              "explanation": "Elle fait toujours sourire (ou sourire toujours) — la première option structure l'adverbe.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sujet + verbe + COD :",
+              "options": [
+                "Les élèves écoutent le prof.",
+                "Écoutent les élèves le prof.",
+                "Le prof écoutent les élèves.",
+                "Les élèves le prof écoutent."
+              ],
+              "explanation": "Les élèves écoutent le prof est standard.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« À l'école / les / vont / enfants »",
+              "options": [
+                "Les enfants vont à l'école.",
+                "Vont les enfants à l'école.",
+                "À l'école vont enfants les.",
+                "Enfants les vont à l'école."
+              ],
+              "explanation": "Les enfants vont à l'école.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réorganise sans changer le sens : « mon / c'est / livre »",
+              "options": [
+                "C'est mon livre.",
+                "Mon livre c'est.",
+                "Livre mon c'est.",
+                "C'est livre mon."
+              ],
+              "explanation": "C'est mon livre.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "Nous aimons la musique.",
+                "Aimons nous la musique.",
+                "La musique aimons nous.",
+                "Nous la musique aimons."
+              ],
+              "explanation": "Nous aimons la musique.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Enrichir une phrase",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles versions enrichissent « Le chien court » sans changer le sens de base ?",
+              "options": [
+                "Le petit chien court vite.",
+                "Le chien court.",
+                "Le chien brun court dans le parc.",
+                "Le chien dort."
+              ],
+              "explanation": "Adjectifs et compléments de lieu enrichissent ; dormir change l'action.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Enrichis : « Il mange. »",
+              "options": [
+                "Il mange une pomme croquante.",
+                "Il mange.",
+                "Il dort.",
+                "Il part."
+              ],
+              "explanation": "Une pomme croquante précise quoi et comment.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ajoute un adjectif : « une ___ maison »",
+              "options": ["grande", "mange", "court", "demain"],
+              "explanation": "Grande qualifie maison.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Elle chante » → phrase plus précise",
+              "options": [
+                "Elle chante une chanson douce.",
+                "Elle chante.",
+                "Elle court.",
+                "Elle ferme."
+              ],
+              "explanation": "Chanson douce enrichit.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complément de lieu : « Nous jouons ___. »",
+              "options": ["dans la cour", "jouons", "nous", "vite"],
+              "explanation": "Dans la cour indique où.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Adverbe de manière : « Il parle ___. »",
+              "options": ["doucement", "table", "deux", "maison"],
+              "explanation": "Doucement précise la manière.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Enrichir sans changer le sujet : « Les oiseaux ___ »",
+              "options": [
+                "chantent le matin dans les arbres",
+                "dorment la nuit uniquement si on change le verbe — chantent le matin garde oiseaux",
+                "disparaissent",
+                "sont des tables"
+              ],
+              "explanation": "Chantent le matin dans les arbres garde oiseaux et précise quand et où.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Un garçon lit » → plus riche",
+              "options": [
+                "Un garçon attentif lit un roman passionnant.",
+                "Un garçon lit.",
+                "Un lit garçon.",
+                "Lit un garçon."
+              ],
+              "explanation": "Attentif et roman passionnant enrichissent.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel ajout est un complément de temps ?",
+              "options": ["demain", "bleu", "grand", "sous"],
+              "explanation": "Demain situe dans le temps.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase la plus précise :",
+              "options": [
+                "Le chat noir dort sur le canapé.",
+                "Le chat dort.",
+                "Le chat.",
+                "Dort."
+              ],
+              "explanation": "Couleur et lieu précisent la scène.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Phrase courte ou longue",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont des phrases courtes (un seul verbe, idée simple) ?",
+              "options": [
+                "Il pleut.",
+                "Il pleut et le vent souffle fort sur la mer ce matin.",
+                "Elle sourit.",
+                "Quand elle sourit, tout le monde se sent mieux dans la classe."
+              ],
+              "explanation": "Il pleut et Elle sourit sont courtes ; les autres sont développées.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Raccourcis l'idée : long → court",
+              "options": [
+                "Il marche.",
+                "Il marche lentement dans la rue encombrée vers l'école.",
+                "Il marche lentement dans la rue encombrée vers l'école chaque matin.",
+                "Il marche lentement."
+              ],
+              "explanation": "Il marche résume l'action essentielle.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Développe : « Il lit. »",
+              "options": [
+                "Il lit un livre d'aventures.",
+                "Il lit.",
+                "Il dort.",
+                "Lit."
+              ],
+              "explanation": "Un livre d'aventures allonge utilement.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase la plus courte :",
+              "options": [
+                "Courez !",
+                "Les enfants courent vite dans le pré vert.",
+                "Les enfants courent.",
+                "Courent les enfants."
+              ],
+              "explanation": "Courez ! est une phrase impérative minimale.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Allonger sans changer le sens : « La fille dessine. »",
+              "options": [
+                "La fille dessine un paysage au crayon.",
+                "La fille dessine.",
+                "La fille.",
+                "Dessine."
+              ],
+              "explanation": "Paysage au crayon ajoute des détails.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Résumé en une phrase courte : « Le matin, Paul boit son chocolat chaud avant l'école. »",
+              "options": [
+                "Paul boit son chocolat.",
+                "Le matin, Paul boit son chocolat chaud avant l'école.",
+                "Paul.",
+                "Chocolat."
+              ],
+              "explanation": "Paul boit son chocolat garde l'action principale.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux phrases courtes plutôt qu'une longue :",
+              "options": [
+                "Il mange. Il boit.",
+                "Il mange et il boit et il parle.",
+                "Il mange pendant qu'il boit et qu'il parle avec ses amis.",
+                "Manger boire parler."
+              ],
+              "explanation": "Deux phrases simples séparent les actions.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase est trop longue pour dire seulement « Il est fatigué » ?",
+              "options": [
+                "Après la journée, il est fatigué.",
+                "Il est fatigué.",
+                "Il est très fatigué.",
+                "Il est un peu fatigué."
+              ],
+              "explanation": "La première ajoute un contexte ; les autres restent proches — « Après la journée… » est la plus développée du groupe simple.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Condenser : « Marie, qui aime lire, ouvre son livre. » → idée centrale",
+              "options": [
+                "Marie ouvre son livre.",
+                "Marie.",
+                "Livre.",
+                "Qui aime lire."
+              ],
+              "explanation": "Marie ouvre son livre garde l'action.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase simple avec sujet + verbe + complément :",
+              "options": [
+                "Le prof explique la leçon.",
+                "Explique.",
+                "Le prof.",
+                "La leçon prof le."
+              ],
+              "explanation": "Structure complète mais claire.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Paraphrase simple",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases disent la même chose que « Il n'y a personne » ?",
+              "options": [
+                "Il n'y a aucune personne.",
+                "Il y a du monde.",
+                "Personne n'est là.",
+                "Tout le monde est là."
+              ],
+              "explanation": "Aucune personne et personne n'est là expriment l'absence.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Paraphrase : « La réunion commence à huit heures. »",
+              "options": [
+                "À huit heures, la réunion commence.",
+                "La réunion finit à huit heures.",
+                "Il n'y a pas de réunion.",
+                "La réunion est annulée."
+              ],
+              "explanation": "Même information, ordre des mots changé.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Tous les élèves sont présents » ≈",
+              "options": [
+                "Aucun élève n'est absent.",
+                "Personne n'est venu.",
+                "Il n'y a pas d'élèves.",
+                "Un seul élève est là."
+              ],
+              "explanation": "Aucun absent = tous présents.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Reformule : « Je n'aime pas les épinards. »",
+              "options": [
+                "Les épinards ne me plaisent pas.",
+                "J'adore les épinards.",
+                "Je mange des épinards.",
+                "Les épinards sont verts."
+              ],
+              "explanation": "Ne me plaisent pas reprend le rejet.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Il fait nuit » ≈",
+              "options": [
+                "Il est tard et le ciel est sombre.",
+                "Il fait jour.",
+                "Il pleut.",
+                "Il neige."
+              ],
+              "explanation": "Tard et ciel sombre expliquent la nuit simplement.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Paraphrase : « Emma est la sœur de Léo. »",
+              "options": [
+                "Léo est le frère d'Emma.",
+                "Emma est le frère de Léo.",
+                "Léo est la sœur d'Emma.",
+                "Emma n'a pas de frère."
+              ],
+              "explanation": "Relation réciproque : Léo frère d'Emma.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Le magasin est fermé » ≈",
+              "options": [
+                "On ne peut pas entrer dans le magasin.",
+                "Le magasin est ouvert.",
+                "Le magasin vend des pommes.",
+                "Le magasin est grand."
+              ],
+              "explanation": "Fermé = on ne peut pas entrer.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Reformule : « Nous devons écouter. »",
+              "options": [
+                "Il faut que nous écoutions.",
+                "Nous ne devons rien.",
+                "Nous parlons.",
+                "Nous dormons."
+              ],
+              "explanation": "Il faut que … reprend l'obligation d'écouter.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« C'est difficile » ≈",
+              "options": [
+                "Ce n'est pas facile.",
+                "C'est facile.",
+                "C'est amusant.",
+                "C'est petit."
+              ],
+              "explanation": "Pas facile = difficile.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Paraphrase : « Il a oublié son cartable. »",
+              "options": [
+                "Son cartable n'est pas avec lui.",
+                "Il a son cartable.",
+                "Il achète un cartable.",
+                "Le cartable est neuf."
+              ],
+              "explanation": "Oublier = ne pas l'avoir avec soi.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Oral vers écrit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes conviennent à l'écrit scolaire plutôt qu'à l'oral familier ?",
+              "options": [
+                "Il habite ici.",
+                "Il habite par ici, quoi.",
+                "Nous allons à l'école.",
+                "On va à l'école, ben oui."
+              ],
+              "explanation": "Phrases simples sans tics oraux ; les autres imitent la parole relâchée.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Oral : « J'sais pas » → écrit correct :",
+              "options": [
+                "Je ne sais pas.",
+                "J'sais pas.",
+                "Sais pas.",
+                "Je sais pas."
+              ],
+              "explanation": "Je ne sais pas est la forme négative complète à l'écrit.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ya du soleil » → écrit :",
+              "options": [
+                "Il y a du soleil.",
+                "Ya du soleil.",
+                "Y a du soleil.",
+                "Il a du soleil."
+              ],
+              "explanation": "Il y a est la forme standard.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Remplace « ben » à l'écrit : « C'est ___ difficile. »",
+              "options": ["assez", "ben", "euh", "bah"],
+              "explanation": "Assez ou simplement supprimer ; ben est oral.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« On » en classe, on peut écrire parfois :",
+              "options": ["Nous", "Ben", "Euh", "Ouais"],
+              "explanation": "Nous est plus formel que on à l'écrit scolaire.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Oral : « T'as vu ? » → écrit neutre :",
+              "options": ["As-tu vu ?", "T'as vu ?", "Vu ?", "Tas vu ?"],
+              "explanation": "As-tu vu ou As-tu vu ? avec majuscule en début.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase est adaptée à un devoir ?",
+              "options": [
+                "Le chat dort sur le tapis.",
+                "Le chat il dort, tu vois.",
+                "Bah le chat dort.",
+                "Le chat dort, quoi."
+              ],
+              "explanation": "Phrase claire sans redondance orale.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« C'est trop cool » → registre scolaire :",
+              "options": [
+                "C'est très bien.",
+                "C'est trop cool.",
+                "C'est trop nul.",
+                "C'est ouf."
+              ],
+              "explanation": "Très bien remplace l'argot cool.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Écrit correct : « ___ pleuvoir demain. »",
+              "options": ["Il va", "Faut", "Ya", "Sa"],
+              "explanation": "Il va pleuvoir est correct ; sa/sa confusions évitées.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Oral : « J'vais pas » → écrit :",
+              "options": [
+                "Je ne vais pas.",
+                "J'vais pas.",
+                "Vais pas.",
+                "Je vais pas."
+              ],
+              "explanation": "Je ne vais pas avec négation complète.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Phrase claire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont claires pour un lecteur de 6e ?",
+              "options": [
+                "Le chien mord la balle.",
+                "La balle mord le chien.",
+                "Marie donne un cadeau à son frère.",
+                "À son frère cadeau un donne Marie."
+              ],
+              "explanation": "Sujet-verbe-complément logique ; la balle ne mord pas le chien.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Réécris plus clairement : « Il le lui a dit. » (précise)",
+              "options": [
+                "Paul a dit la vérité à Emma.",
+                "Il le lui a dit.",
+                "Dit il le lui.",
+                "Le lui il a dit."
+              ],
+              "explanation": "Nommer Paul, Emma et la vérité lève l'ambiguïté des pronoms.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Phrase floue : « Il est là-bas. » → mieux :",
+              "options": [
+                "Mon sac est sur le banc du fond.",
+                "Il est là-bas.",
+                "Là-bas.",
+                "Est là."
+              ],
+              "explanation": "Préciser quoi et où rend la phrase utile.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Évite la répétition : « Le chat mange. Le chat boit. »",
+              "options": [
+                "Le chat mange et boit.",
+                "Le chat mange. Le chat boit.",
+                "Chat mange boit.",
+                "Mange boit chat."
+              ],
+              "explanation": "Une seule phrase avec et relie les actions.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Clarté : choisis la phrase la plus précise.",
+              "options": [
+                "Hier, en classe, nous avons lu un poème.",
+                "Nous avons lu.",
+                "Hier nous.",
+                "Poème lu."
+              ],
+              "explanation": "Temps, lieu et objet sont indiqués.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Reformule pour le sens : « Faire attention » →",
+              "options": [
+                "Sois prudent.",
+                "Faire attention.",
+                "Attention faire.",
+                "Prudent sois."
+              ],
+              "explanation": "Sois prudent exprime l'avertissement clairement.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase évite le « on » vague ?",
+              "options": [
+                "Les élèves doivent rendre le devoir.",
+                "On doit rendre le devoir.",
+                "Faut rendre.",
+                "Rendre le devoir."
+              ],
+              "explanation": "Les élèves précise qui agit.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Truc » → mot plus clair : « J'ai perdu mon ___. »",
+              "options": ["cahier", "truc", "machin", "bidule"],
+              "explanation": "Cahier est concret et clair.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ordre logique cause-effet : « Il pleut. Je prends mon parapluie. »",
+              "options": [
+                "Comme il pleut, je prends mon parapluie.",
+                "Je prends mon parapluie il pleut.",
+                "Parapluie pleut je.",
+                "Pleut parapluie."
+              ],
+              "explanation": "Comme il pleut explique pourquoi.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase correcte et claire pour un récit :",
+              "options": [
+                "Ce matin, le bus arrive en retard.",
+                "Bus retard ce matin.",
+                "En retard.",
+                "Ce matin bus."
+              ],
+              "explanation": "Sujet, verbe et complément de temps sont présents.",
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

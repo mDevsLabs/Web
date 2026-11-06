@@ -1,0 +1,2268 @@
+{
+  "id": "4e-anglais-05",
+  "year": "4e",
+  "subject": "anglais",
+  "title": "Le passé en anglais",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les verbes réguliers au prétérit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel suffixe ajoute-t-on à la base verbale d'un verbe régulier pour former le prétérit ?",
+              "options": ["-ed", "-ing", "-s", "-en"],
+              "correctAnswers": [0],
+              "explanation": "Pour former le prétérit d'un verbe régulier, on ajoute le suffixe -ed à la base verbale (ex: walk -> walked)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment écrit-on le prétérit du verbe régulier 'play' ?",
+              "options": ["played", "playied", "plaied", "playing"],
+              "correctAnswers": [0],
+              "explanation": "Après une voyelle suivie de y, on ajoute simplement -ed : play devient played sans changer le y."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe régulier 'watch' ?",
+              "options": ["watched", "watchied", "watching", "wachted"],
+              "correctAnswers": [0],
+              "explanation": "Watch est régulier : on ajoute -ed pour obtenir watched (ex: 'He watched TV last night')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que devient un verbe terminé par 'consonne + y' comme 'study' au prétérit ?",
+              "options": [
+                "Le y se transforme en -ied (studied)",
+                "Le y reste et on ajoute -ed (studyed)",
+                "Le verbe ne change pas (study)",
+                "Le y devient -ing (studying)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand un verbe régulier se termine par une consonne suivie de y, le y devient i puis on ajoute -ed (study -> studied)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases contiennent un verbe régulier correctement conjugué au prétérit ?",
+              "options": [
+                "Yesterday, Tom visited London.",
+                "She go to London yesterday.",
+                "They stopped the car at the red light.",
+                "He watch TV last night."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Visited (visit + ed) et stopped (avec doublement de la consonne finale) sont bien conjugués au prétérit régulier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi double-t-on la consonne finale de 'stop' pour former 'stopped' ?",
+              "options": [
+                "Car il se termine par une seule consonne précédée d'une seule voyelle courte",
+                "Car tous les verbes courts doublent leur consonne",
+                "Car la consonne p double toujours en anglais",
+                "C'est un choix purement optionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un verbe d'une syllabe terminé par consonne-voyelle-consonne double sa consonne finale devant -ed (stop -> stopped)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe régulier 'arrive' qui se termine déjà par un e ?",
+              "options": [
+                "arrived (on ajoute uniquement -d)",
+                "arriveed (on ajoute -ed)",
+                "arrivied",
+                "arriven"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si le verbe se termine déjà par la lettre e, on se contente d'ajouter un simple -d (arrive -> arrived)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'Last night, my brother and I _______ a delicious meal.'",
+              "options": ["cooked", "cook", "cooking", "cooks"],
+              "correctAnswers": [0],
+              "explanation": "Cook est un verbe régulier : au prétérit avec le repère passé 'last night', on utilise cooked."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment orthographie-t-on le prétérit régulier du verbe 'listen' ?",
+              "options": ["listened", "listenned", "listening", "listend"],
+              "correctAnswers": [0],
+              "explanation": "Listen ne double pas sa consonne car l'accent tonique est sur la première syllabe : on écrit listened."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : 'We _______ our grandparents last weekend.'",
+              "options": ["visited", "visiting", "visits", "visit"],
+              "correctAnswers": [0],
+              "explanation": "Avec le marqueur temporel 'last weekend', le verbe régulier visit prend la terminaison -ed : visited."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La prononciation du suffixe -ed",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Combien de prononciations distinctes existe-t-il pour le suffixe -ed au prétérit ?",
+              "options": [
+                "3 prononciations : /t/, /d/ et /ɪd/",
+                "2 prononciations : /d/ et /ed/",
+                "1 seule prononciation : /ed/",
+                "4 prononciations différentes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le suffixe -ed se prononce de trois façons différentes en anglais : /t/, /d/ ou /ɪd/ selon le son final du verbe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans quel cas le suffixe -ed se prononce-t-il /ɪd/ avec une syllabe supplémentaire ?",
+              "options": [
+                "Après les sons /t/ et /d/",
+                "Après tous les verbes réguliers",
+                "Après les sons voyelles uniquement",
+                "Après les sons /s/ et /k/"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La terminaison -ed se prononce /ɪd/ uniquement après les sons /t/ ou /d/ (ex: wanted, decided)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment se prononce la terminaison -ed dans le verbe 'started' ?",
+              "options": ["/ɪd/", "/t/", "/d/", "/e/"],
+              "correctAnswers": [0],
+              "explanation": "Start se terminant par le son /t/, la terminaison -ed se prononce /ɪd/ (star-tid)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment se prononce la terminaison -ed dans le verbe 'played' ?",
+              "options": ["/d/", "/ɪd/", "/t/", "/ed/"],
+              "correctAnswers": [0],
+              "explanation": "Play se termine par un son voyelle voisé : la terminaison -ed se prononce simplement /d/."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Dans quels verbes le suffixe -ed se prononce-t-il avec le son /t/ ?",
+              "options": ["watched", "visited", "walked", "needed"],
+              "correctAnswers": [0, 2],
+              "explanation": "Après les consonnes sourdes non voisées comme /tʃ/ (watch) et /k/ (walk), -ed se prononce /t/."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment se prononce le suffixe -ed dans 'wanted' ?",
+              "options": ["/ɪd/", "/d/", "/t/", "/ed/"],
+              "correctAnswers": [0],
+              "explanation": "Want se terminant par le son /t/, l'ajout de -ed forme une syllabe en /ɪd/ (wan-tid)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans quel verbe le suffixe -ed se prononce-t-il /d/ ?",
+              "options": ["cleaned", "stopped", "liked", "hoped"],
+              "correctAnswers": [0],
+              "explanation": "Le son /n/ de clean est voisé : -ed se prononce donc /d/. Dans stopped, liked et hoped, il se prononce /t/."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la terminaison de 'liked' se prononce-t-elle /t/ ?",
+              "options": [
+                "Car le son /k/ est une consonne sourde (non voisée)",
+                "Car le verbe se termine par la lettre e",
+                "C'est une exception sans règle",
+                "Car tous les verbes d'appréciation finissent en /t/"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le son final de la base verbale like est /k/, une consonne sourde qui entraîne la prononciation /t/ pour -ed."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment se prononce le suffixe -ed dans 'decided' ?",
+              "options": ["/ɪd/", "/d/", "/t/", "/e/"],
+              "correctAnswers": [0],
+              "explanation": "Decide se termine par le son /d/ : -ed se prononce donc /ɪd/ (de-ci-did)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans quel mot retrouve-t-on le son /t/ pour la terminaison -ed ?",
+              "options": ["kissed", "waited", "lived", "opened"],
+              "correctAnswers": [0],
+              "explanation": "Le son final de kiss est /s/ (sourd) : kissed se termine donc par le son /t/."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les verbes irréguliers du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe irrégulier 'go' (aller) ?",
+              "options": ["went", "goed", "gone", "was"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe 'go' est très irrégulier : son prétérit est 'went' (ex: 'I went to Paris')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe 'have' (avoir) ?",
+              "options": ["had", "haved", "has", "having"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de 'have' est 'had' pour toutes les personnes (ex: 'She had a cat')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe 'see' (voir) ?",
+              "options": ["saw", "seed", "seen", "so"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de 'see' est 'saw' (ex: 'Yesterday, I saw a beautiful bird')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe 'eat' (manger) ?",
+              "options": ["ate", "eated", "eaten", "eat"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe 'eat' a pour prétérit 'ate' (qui se prononce souvent comme le chiffre eight)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles paires 'base verbale -> prétérit' sont exactes ?",
+              "options": [
+                "make -> made",
+                "take -> tooked",
+                "take -> took",
+                "do -> done"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le prétérit de make est made, et le prétérit de take est took (done est un participe passé, pas un prétérit)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe 'do' (faire) ?",
+              "options": ["did", "doed", "done", "does"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit du verbe 'do' est 'did' (ex: 'He did his homework yesterday')."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe 'buy' (acheter) ?",
+              "options": ["bought", "buyed", "brought", "bot"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de 'buy' est 'bought' (brought est le prétérit de bring : apporter)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'She _______ an interesting movie on TV yesterday.'",
+              "options": ["saw", "seen", "seed", "sees"],
+              "correctAnswers": [0],
+              "explanation": "Au prétérit simple pour relater un fait passé avec yesterday, on utilise la forme 'saw'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe 'give' (donner) ?",
+              "options": ["gave", "gived", "given", "gaves"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe irrégulier 'give' devient 'gave' au prétérit (ex: 'He gave me a gift')."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : 'Yesterday morning, we _______ pancakes for breakfast.'",
+              "options": ["had", "haved", "having", "has"],
+              "correctAnswers": [0],
+              "explanation": "On emploie 'had' pour exprimer 'avoir' ou 'prendre un repas' au prétérit."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les verbes irréguliers d'action et mouvement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe 'come' (venir) ?",
+              "options": ["came", "comed", "come", "camed"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de 'come' est 'came' (ex: 'My friend came to my house yesterday')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe 'run' (courir) ?",
+              "options": ["ran", "runned", "run", "roan"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de 'run' est 'ran' (ex: 'The dog ran after the ball')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe 'write' (écrire) ?",
+              "options": ["wrote", "writed", "written", "wroted"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de 'write' est 'wrote' (ex: 'Shakespeare wrote Hamlet')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la particularité du prétérit du verbe 'read' (lire) ?",
+              "options": [
+                "Il s'écrit 'read' mais se prononce /red/",
+                "Il s'écrit 'readed' et se prononce /ri:dɪd/",
+                "Il change en 'rode'",
+                "Il s'écrit 'red' directement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'orthographe de 'read' reste identique au prétérit, mais sa prononciation devient /red/ (comme la couleur rouge)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels verbes sont correctement conjugués au prétérit ?",
+              "options": [
+                "flew (prétérit de fly)",
+                "swimmed (prétérit de swim)",
+                "fell (prétérit de fall)",
+                "bringed (prétérit de bring)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Fly donne flew, et fall donne fell. Pour swim le prétérit est swam, et pour bring c'est brought."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe 'speak' (parler) ?",
+              "options": ["spoke", "speaked", "spoken", "spake"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de 'speak' est 'spoke' (ex: 'She spoke English fluently')."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe 'leave' (partir / quitter) ?",
+              "options": ["left", "leaved", "leaving", "lefted"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de 'leave' est 'left' (ex: 'The train left at 8 o'clock')."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'The bird _______ high in the sky.'",
+              "options": ["flew", "flyed", "flown", "flying"],
+              "correctAnswers": [0],
+              "explanation": "Au prétérit, le verbe irrégulier fly devient flew."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le prétérit du verbe 'drive' (conduire) ?",
+              "options": ["drove", "drived", "driven", "droved"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de 'drive' est 'drove' (driven est le participe passé)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : 'She _______ an inspiring novel last week.'",
+              "options": ["read", "readed", "reading", "reads"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de read s'écrit 'read' (se prononçant /red/)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "La forme négative au prétérit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel auxiliaire utilise-t-on pour former la négation au prétérit simple pour la majorité des verbes ?",
+              "options": [
+                "didn't (did not)",
+                "don't (do not)",
+                "doesn't (does not)",
+                "haven't (have not)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour nier une action au prétérit simple, on utilise l'auxiliaire 'didn't' pour toutes les personnes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle forme prend le verbe qui suit immédiatement l'auxiliaire 'didn't' ?",
+              "options": [
+                "La base verbale sans -ed",
+                "Le verbe au prétérit en -ed",
+                "Le verbe au participe passé",
+                "Le verbe avec -ing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après didn't, le verbe reste à la base verbale (infinitif sans to), car l'auxiliaire porte déjà la marque du passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle phrase négative est grammaticalement correcte au prétérit ?",
+              "options": [
+                "I didn't go to the cinema yesterday.",
+                "I didn't went to the cinema yesterday.",
+                "I didn't to go to the cinema yesterday.",
+                "I not went to the cinema yesterday."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On utilise didn't + base verbale : 'I didn't go'. Mettre 'went' après didn't est une double marque du passé interdite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : 'Peter _______ his homework yesterday afternoon.'",
+              "options": ["didn't do", "didn't did", "not did", "didn't done"],
+              "correctAnswers": [0],
+              "explanation": "L'auxiliaire de négation est 'didn't' suivi de la base verbale 'do' : 'didn't do'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases négatives au prétérit sont grammaticalement correctes ?",
+              "options": [
+                "She didn't watch television last night.",
+                "We didn't bought bread.",
+                "They didn't see the accident.",
+                "He didn't liked the soup."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "'didn't watch' et 'didn't see' sont corrects avec la base verbale. 'didn't bought' et 'didn't liked' sont erronés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la phrase 'She didn't played tennis' est-elle incorrecte ?",
+              "options": [
+                "Car didn't exprime déjà le passé, play doit rester en base verbale",
+                "Car il faut utiliser doesn't au passé",
+                "Car tennis prend toujours un article",
+                "Car play est un verbe irrégulier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En anglais, quand l'auxiliaire didn't est présent, le verbe lexical ne prend jamais de -ed."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Nous n'avons pas aimé ce concert' au prétérit ?",
+              "options": [
+                "We didn't like this concert.",
+                "We didn't liked this concert.",
+                "We not liked this concert.",
+                "We didn't liking this concert."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule négative correcte est : Sujet + didn't + base verbale like."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'Sam was ill, so he _______ to school yesterday.'",
+              "options": [
+                "didn't come",
+                "didn't came",
+                "not came",
+                "didn't comes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On emploie didn't suivi de la base verbale come : 'didn't come'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la forme contractée de 'did not' ?",
+              "options": ["didn't", "did'nt", "dident", "didnot"],
+              "correctAnswers": [0],
+              "explanation": "L'apostrophe remplace la lettre o disparue : on écrit 'didn't'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : 'I _______ that strange noise last night.'",
+              "options": [
+                "didn't hear",
+                "didn't heard",
+                "not heard",
+                "didn't hearing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hear est en base verbale après l'auxiliaire didn't : 'didn't hear'."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "La forme interrogative au prétérit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel auxiliaire utilise-t-on pour poser une question au prétérit simple ?",
+              "options": ["Did", "Do", "Does", "Have"],
+              "correctAnswers": [0],
+              "explanation": "Au prétérit simple, on utilise l'auxiliaire 'Did' en tête de question pour tous les sujets."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'ordre des mots dans une question fermée (Yes/No) au prétérit simple ?",
+              "options": [
+                "Did + Sujet + Base verbale + Compléments ?",
+                "Sujet + Did + Verbe au prétérit ?",
+                "Base verbale + Sujet + Did ?",
+                "Did + Verbe en -ed + Sujet ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure standard est : Did + Sujet + Base verbale (ex: 'Did you sleep well?')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle question au prétérit est correctement formulée ?",
+              "options": [
+                "Did you sleep well last night?",
+                "Did you slept well last night?",
+                "Slept you well last night?",
+                "Did you sleeping well last night?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après Did, le verbe est toujours à la base verbale : 'Did you sleep'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment répond-on par une réponse courte affirmative à 'Did you enjoy your trip?' ?",
+              "options": [
+                "Yes, I did.",
+                "Yes, I enjoyed.",
+                "Yes, I do.",
+                "Yes, I have."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une réponse courte, on reprend le pronom sujet et l'auxiliaire de la question : 'Yes, I did'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases interrogatives au prétérit sont bien construites ?",
+              "options": [
+                "Where did you find this book?",
+                "Did they ate lunch?",
+                "What did she say to the teacher?",
+                "Did he went to London?"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "'Where did you find' et 'What did she say' utilisent bien la base verbale après did."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment répond-on par une réponse courte négative à 'Did Lucy call you?' ?",
+              "options": [
+                "No, she didn't.",
+                "No, she did.",
+                "No, she not.",
+                "No, she doesn't."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réponse courte négative reprend le pronom et l'auxiliaire nié : 'No, she didn't'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'What time _______ you leave the party yesterday?'",
+              "options": ["did", "do", "does", "were"],
+              "correctAnswers": [0],
+              "explanation": "On emploie l'auxiliaire Did pour poser une question au prétérit avec un verbe d'action."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'As-tu vu mon chat hier ?' ?",
+              "options": [
+                "Did you see my cat yesterday?",
+                "Did you saw my cat yesterday?",
+                "Saw you my cat yesterday?",
+                "Have you see my cat yesterday?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Did + sujet (you) + base verbale (see) : 'Did you see my cat yesterday?'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'Why _______ you arrive late this morning?'",
+              "options": ["did", "do", "was", "were"],
+              "correctAnswers": [0],
+              "explanation": "La question porte sur le passé avec la base verbale arrive : on utilise l'auxiliaire 'did'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi ne dit-on pas 'Did they watched the match?' ?",
+              "options": [
+                "Car Did marque déjà le temps passé, watch doit rester à la base verbale",
+                "Car watch est un verbe irrégulier",
+                "Car Did ne s'emploie jamais avec they",
+                "Car il faut employer Does au passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme Did porte déjà la marque du prétérit, le verbe watch reste à la base verbale sans -ed."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Le verbe be au prétérit : was et were",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelles sont les deux formes du verbe 'be' au prétérit simple ?",
+              "options": [
+                "was et were",
+                "been et being",
+                "is et are",
+                "did et do"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe 'be' a deux formes au prétérit : 'was' au singulier et 'were' au pluriel (et avec you)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Avec quels pronoms sujets emploie-t-on 'was' ?",
+              "options": [
+                "I, he, she, it",
+                "you, we, they",
+                "you, I, they",
+                "we, they, he"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Was' s'emploie avec la 1re et la 3e personne du singulier : I was, he was, she was, it was."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Avec quels pronoms sujets emploie-t-on 'were' ?",
+              "options": [
+                "you, we, they",
+                "I, he, she",
+                "he, she, it",
+                "I, you, he"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Were' s'emploie avec you (singulier et pluriel), we et they : you were, we were, they were."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : 'Yesterday, I _______ at home all day.'",
+              "options": ["was", "were", "been", "am"],
+              "correctAnswers": [0],
+              "explanation": "Avec le pronom 'I', la forme du verbe be au prétérit est 'was'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases contenant le verbe 'be' au prétérit sont correctes ?",
+              "options": [
+                "They were very tired after the trip.",
+                "She were absent yesterday.",
+                "We were happy to see our cousins.",
+                "I were at the cinema last night."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "On accorde correctement : 'They were' et 'We were'. Au singulier, on dit 'She was' et 'I was'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme négative contractée de 'was not' ?",
+              "options": ["wasn't", "weren't", "was'nt", "didn't be"],
+              "correctAnswers": [0],
+              "explanation": "La contraction de 'was not' est 'wasn't' (be n'utilise pas l'auxiliaire did)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la forme négative contractée de 'were not' ?",
+              "options": ["weren't", "wasn't", "werent", "didn't be"],
+              "correctAnswers": [0],
+              "explanation": "La contraction de 'were not' est 'weren't' (ex: 'They weren't ready')."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment pose-t-on la question 'Était-il en retard ce matin ?' ?",
+              "options": [
+                "Was he late this morning?",
+                "Did he be late this morning?",
+                "Were he late this morning?",
+                "Is he late this morning?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe be s'inverse directement avec le sujet sans utiliser did : 'Was he late?'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'The weather _______ terrible last weekend.'",
+              "options": ["was", "were", "are", "been"],
+              "correctAnswers": [0],
+              "explanation": "'The weather' équivaut au pronom 'it' (singulier), on utilise donc 'was'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : 'Where _______ you yesterday at 4 pm?'",
+              "options": ["were", "was", "did", "are"],
+              "correctAnswers": [0],
+              "explanation": "Avec le pronom 'you', on emploie toujours 'were' au prétérit : 'Where were you?'."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Le prétérit en be + -ing (past continuous)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment se forme le prétérit en be + -ing (past continuous) ?",
+              "options": [
+                "was/were + verbe en -ing",
+                "did + verbe en -ing",
+                "have/has + verbe en -ing",
+                "was/were + base verbale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le past continuous se compose de l'auxiliaire be au prétérit (was ou were) suivi du participe présent en -ing."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quoi sert principalement le prétérit en be + -ing ?",
+              "options": [
+                "À décrire une action en cours de déroulement à un moment précis du passé",
+                "À exprimer une vérité générale intemporelle",
+                "À donner une consigne impérative",
+                "À annoncer une action future certaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il décrit ce qui était en train de se passer à un instant précis dans le passé (action en cours)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : 'At 8 pm yesterday, Paul _______ a book in his bedroom.'",
+              "options": [
+                "was reading",
+                "were reading",
+                "is reading",
+                "readed"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paul correspond à 'he' : on utilise 'was' + base verbale en -ing : 'was reading'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : 'At this time yesterday, they _______ in the garden.'",
+              "options": [
+                "were playing",
+                "was playing",
+                "are playing",
+                "played"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet pluriel 'they', l'auxiliaire est 'were' : 'they were playing'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases au prétérit en be + -ing sont correctement formées ?",
+              "options": [
+                "I was writing an email at 7 pm.",
+                "They was listening to music.",
+                "We were cooking dinner together.",
+                "She were doing her exercises."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "'I was writing' et 'We were cooking' respectent parfaitement l'accord sujet-auxiliaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme négative pour 'he / sleep' au prétérit continuous ?",
+              "options": [
+                "He wasn't sleeping.",
+                "He didn't sleeping.",
+                "He weren't sleeping.",
+                "He not was sleeping."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La négation se fixe sur l'auxiliaire be : 'wasn't' + base en -ing : 'He wasn't sleeping'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète la question : 'What _______ you doing when I called you?'",
+              "options": ["were", "was", "did", "are"],
+              "correctAnswers": [0],
+              "explanation": "Avec 'you' au past continuous, on utilise l'auxiliaire 'were' : 'What were you doing?'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment orthographie-t-on le verbe 'swim' avec la terminaison -ing ?",
+              "options": [
+                "swimming (on double la consonne m)",
+                "swiming",
+                "swimeing",
+                "swimmng"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Swim est un verbe d'une syllabe consonne-voyelle-consonne : le m final double devant -ing (swimming)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'The students _______ attention while the teacher was speaking.'",
+              "options": [
+                "were paying",
+                "was paying",
+                "are paying",
+                "did paying"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'The students' est au pluriel (they), on emploie donc 'were paying'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment forme-t-on le gérondif du verbe 'make' ?",
+              "options": [
+                "making (on supprime le e muet)",
+                "makeing",
+                "makking",
+                "makin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand un verbe se termine par un e muet, on supprime ce e avant d'ajouter -ing (make -> making)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Prétérit simple vs Prétérit en be + -ing",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel temps utilise-t-on pour une action brève et ponctuelle qui interrompt une action plus longue en cours ?",
+              "options": [
+                "Le prétérit simple",
+                "Le prétérit en be + -ing",
+                "Le présent simple",
+                "Le futur simple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action brève qui coupe ou interrompt se met au prétérit simple, tandis que l'action longue en cours est en be + -ing."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : 'I was taking a shower when the telephone _______.'",
+              "options": ["rang", "was ringing", "rings", "ringed"],
+              "correctAnswers": [0],
+              "explanation": "L'action brève qui interrompt est au prétérit simple du verbe irrégulier ring : 'rang'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : 'While my mother was driving, my sister _______ asleep.'",
+              "options": ["fell", "was falling", "fall", "falled"],
+              "correctAnswers": [0],
+              "explanation": "S'endormir est l'événement ponctuel survenu pendant le trajet : on emploie le prétérit simple 'fell'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot de liaison introduit généralement l'action longue en cours au past continuous ?",
+              "options": ["While (ou As)", "When", "Ago", "Yesterday"],
+              "correctAnswers": [0],
+              "explanation": "'While' (pendant que) est suivi de l'action longue en train de se dérouler au prétérit en be + -ing."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases associent correctement le prétérit simple et le prétérit en be + -ing ?",
+              "options": [
+                "While we were walking in the park, it began to rain.",
+                "When the doorbell rang, he was watching TV.",
+                "While it rained, we was walking.",
+                "When the phone rang, I was answer it."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux premières phrases combinent parfaitement l'action continue en be + -ing et l'action ponctuelle au prétérit simple."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : 'Jack broke his arm while he _______ football.'",
+              "options": [
+                "was playing",
+                "were playing",
+                "played",
+                "is playing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La proposition avec 'while' décrit l'activité en cours : 'he was playing football'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'The lights suddenly went out while we _______ dinner.'",
+              "options": ["were eating", "was eating", "ate", "are eating"],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet 'we' dans la subordonnée introduite par 'while', on emploie 'were eating'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que décrit la proposition 'While the sun was shining' au début d'un récit ?",
+              "options": [
+                "Le décor d'arrière-plan (l'action longue en cours)",
+                "L'action brève et ponctuelle",
+                "Une conséquence future",
+                "Une interdiction passée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit en be + -ing sert souvent à planter le décor ou le cadre d'un récit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'What were you doing when you _______ the loud noise?'",
+              "options": ["heard", "were hearing", "hear", "heared"],
+              "correctAnswers": [0],
+              "explanation": "Entendre le bruit est une action ponctuelle introduite par 'when' : prétérit simple 'heard'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : 'She was crossing the street when she _______ her best friend.'",
+              "options": ["saw", "was seeing", "sees", "seed"],
+              "correctAnswers": [0],
+              "explanation": "Apercevoir son amie est un événement bref qui survient pendant la traversée : prétérit simple 'saw'."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Raconter une anecdote au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel temps verbal utilise-t-on pour raconter la chronologie d'événements successifs au passé ?",
+              "options": [
+                "Le prétérit simple",
+                "Le présent simple",
+                "Le futur simple",
+                "Le conditionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un récit, les actions qui s'enchaînent les unes après les autres se conjuguent au prétérit simple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on l'expression 'Il était une fois' au début d'un conte ?",
+              "options": [
+                "Once upon a time",
+                "One day ago",
+                "Sometimes",
+                "In the old time"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Once upon a time' est la formule narrative traditionnelle pour commencer un conte en anglais."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète ce récit : 'Tom woke up, had breakfast and _______ out of the house.'",
+              "options": ["rushed", "rush", "rushing", "rushes"],
+              "correctAnswers": [0],
+              "explanation": "Il s'agit d'une succession d'actions passées : woke, had, et rushed au prétérit simple."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel adverbe signifie 'heureusement' pour apporter une tournure positive à une histoire passée ?",
+              "options": ["Fortunately", "Unfortunately", "Suddenly", "Sadly"],
+              "correctAnswers": [0],
+              "explanation": "'Fortunately' (ou 'Luckily') signifie 'heureusement' et introduit un dénouement favorable."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases permettent d'introduire un récit au passé de façon captivante ?",
+              "options": [
+                "It all happened on a cold December evening.",
+                "Everything begins tomorrow morning.",
+                "Last summer, an unexpected event changed my life.",
+                "I will tell you what happens next year."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ces deux phrases amorcent un récit au passé en fixant un repère temporel ('cold December evening', 'Last summer')."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Soudain, nous avons entendu un bruit étrange' ?",
+              "options": [
+                "Suddenly, we heard a strange noise.",
+                "Suddenly, we was hearing a strange noise.",
+                "Sudden, we hear a strange noise.",
+                "Suddenly, we did hear a strange noise."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Suddenly' exprime la soudaineté, suivi du prétérit simple 'we heard a strange noise'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'As soon as he entered the dark room, he _______ the light.'",
+              "options": ["turned on", "was turning on", "turns on", "turn on"],
+              "correctAnswers": [0],
+              "explanation": "Allumer la lumière est une action immédiate qui suit l'entrée : prétérit simple 'turned on'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'À la fin de l'histoire, tout le monde était soulagé' ?",
+              "options": [
+                "In the end, everyone was relieved.",
+                "At the end, everyone were relieved.",
+                "Finally, everyone did be relieved.",
+                "In end, all was relieved."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'In the end' signifie 'en fin de compte' et 'everyone' s'accorde au singulier avec 'was'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'After searching for two hours, the detective finally _______ the clue.'",
+              "options": ["found", "finded", "finding", "finds"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit du verbe irrégulier find est 'found'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel mot signifie 'malheureusement' dans un récit au passé ?",
+              "options": ["Unfortunately", "Luckily", "Happily", "Fortunately"],
+              "correctAnswers": [0],
+              "explanation": "'Unfortunately' exprime un regret ou un contretemps fâcheux dans le récit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Yesterday et ses expressions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe temporel 'yesterday' ?",
+              "options": ["Hier", "Demain", "Aujourd'hui", "Autrefois"],
+              "correctAnswers": [0],
+              "explanation": "'Yesterday' désigne le jour immédiatement antérieur à aujourd'hui : hier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on 'hier matin' en anglais ?",
+              "options": [
+                "yesterday morning",
+                "last morning",
+                "yesterday in the morning",
+                "hier morning"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dit simplement 'yesterday morning' sans préposition."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on 'hier après-midi' en anglais ?",
+              "options": [
+                "yesterday afternoon",
+                "last afternoon",
+                "yesterday after-lunch",
+                "the day after noon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Yesterday afternoon' est la tournure exacte pour désigner l'après-midi d'hier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'avant-hier' en anglais ?",
+              "options": [
+                "the day before yesterday",
+                "before yesterday",
+                "two days before",
+                "yesterday before"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'The day before yesterday' est l'expression idiomatique consacrée pour 'avant-hier'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions temporelles avec 'yesterday' sont courantes et correctes ?",
+              "options": [
+                "yesterday morning",
+                "yesterday night",
+                "yesterday evening",
+                "yesterday day"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "On dit 'yesterday morning' et 'yesterday evening'. Pour la nuit, on dit idiomatiquement 'last night'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi privilégie-t-on 'last night' plutôt que 'yesterday night' ?",
+              "options": [
+                "C'est l'usage idiomatique standard en anglais",
+                "Car yesterday est interdit après 18 heures",
+                "Car night vient du français",
+                "Car last night ne s'utilise qu'à l'écrit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En anglais, on emploie traditionnellement 'last night' pour dire 'hier soir' ou 'la nuit dernière'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Où se place le plus fréquemment 'yesterday' dans une phrase anglaise ?",
+              "options": [
+                "En fin de phrase ou au tout début pour mettre l'accent sur le moment",
+                "Obligatoirement entre le sujet et le verbe",
+                "Toujours entre l'auxiliaire et le verbe",
+                "Uniquement à la fin d'une question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Yesterday' se place naturellement en fin de proposition (ou en tête de phrase pour insister)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'Did you meet Sarah _______ morning at school?'",
+              "options": ["yesterday", "last", "ago", "the day"],
+              "correctAnswers": [0],
+              "explanation": "L'expression exacte pour 'hier matin' est 'yesterday morning'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase est correctement ordonnée avec 'yesterday' ?",
+              "options": [
+                "Yesterday, we visited the British Museum.",
+                "We yesterday visited the British Museum.",
+                "We visited yesterday to the British Museum.",
+                "Yesterday visited we the British Museum."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Placé en début de phrase, 'Yesterday' est suivi du sujet et du verbe sans inversion : 'Yesterday, we visited...'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Hier, il a neigé toute la journée' ?",
+              "options": [
+                "Yesterday, it snowed all day.",
+                "Yesterday, it did snow all the day.",
+                "It snowed yesterday day.",
+                "The day before yesterday it snowed all."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phrase correcte est : 'Yesterday, it snowed all day'."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "L'emploi du mot last",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel sens a le mot 'last' dans l'expression 'last week' ?",
+              "options": ["Dernier / Passé", "Prochain", "Actuel", "Premier"],
+              "correctAnswers": [0],
+              "explanation": "Devant une unité de temps, 'last' signifie 'dernier / passé' (ex: last week = la semaine dernière)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'la semaine dernière' en anglais ?",
+              "options": [
+                "last week",
+                "the last week",
+                "week last",
+                "past week"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne met pas d'article : on dit directement 'last week'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'hier soir / la nuit dernière' en anglais ?",
+              "options": [
+                "last night",
+                "yesterday night",
+                "the night last",
+                "last evening night"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Last night' est l'expression anglaise habituelle pour 'hier soir' ou 'la nuit dernière'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Met-on l'article 'the' devant 'last month' pour dire 'le mois dernier' ?",
+              "options": [
+                "Non, on dit directement 'last month'",
+                "Oui, on dit obligatoirement 'the last month'",
+                "Uniquement dans un style formel",
+                "Uniquement dans les phrases interrogatives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En référence au mois qui vient de s'écouler, on dit simplement 'last month' sans article 'the'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions temporelles avec 'last' renvoient au passé ?",
+              "options": [
+                "last month",
+                "last tomorrow",
+                "last year",
+                "last next week"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "'Last month' (le mois dernier) et 'last year' (l'année dernière) sont des repères temporels passés authentiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on 'le week-end dernier' en anglais ?",
+              "options": [
+                "last weekend",
+                "the last weekend",
+                "weekend last",
+                "past weekend"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dit simplement 'last weekend'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'We traveled to Spain _______ summer.'",
+              "options": ["last", "yesterday", "ago", "passed"],
+              "correctAnswers": [0],
+              "explanation": "Pour dire 'l'été dernier', on dit 'last summer'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'mardi dernier' en anglais ?",
+              "options": [
+                "last Tuesday",
+                "the Tuesday last",
+                "Tuesday past",
+                "yesterday Tuesday"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant un jour de la semaine, 'last' indique le jour passé le plus récent : 'last Tuesday'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'I bought this pair of shoes _______ month.'",
+              "options": ["last", "yesterday", "ago", "the"],
+              "correctAnswers": [0],
+              "explanation": "On utilise 'last month' pour situer l'achat au cours du mois passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase utilise correctement 'last' comme repère temporel passé ?",
+              "options": [
+                "She saw her dentist last Friday.",
+                "She saw her dentist the last Friday ago.",
+                "She last saw Friday her dentist.",
+                "She saw her dentist yesterday Friday."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Last Friday' (vendredi dernier) se place en fin de phrase sans préposition ni article."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "L'emploi de ago",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le mot 'ago' en anglais ?",
+              "options": [
+                "Il y a (indiquant un temps écoulé)",
+                "Avant",
+                "Pendant",
+                "Depuis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Ago' sert à mesurer le temps écoulé depuis un événement passé jusqu'au présent : 'il y a...'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où se place systématiquement 'ago' par rapport à l'expression de durée ?",
+              "options": [
+                "Toujours après la durée (ex: two days ago)",
+                "Toujours avant la durée (ex: ago two days)",
+                "Au milieu du verbe",
+                "N'importe où au hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement au français 'il y a', 'ago' se place toujours APRÈS la durée (ex: three years ago)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'il y a deux jours' en anglais ?",
+              "options": [
+                "two days ago",
+                "ago two days",
+                "there is two days",
+                "it makes two days"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durée (two days) + ago = 'two days ago'. Ne jamais utiliser 'there is' pour une durée passée !"
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'il y a dix minutes' en anglais ?",
+              "options": [
+                "ten minutes ago",
+                "ago ten minutes",
+                "since ten minutes",
+                "for ten minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On place 'ago' après la durée : 'ten minutes ago'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions temporelles utilisant 'ago' sont correctes ?",
+              "options": [
+                "three years ago",
+                "ago one month",
+                "a few minutes ago",
+                "two hours past ago"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "'three years ago' (il y a trois ans) et 'a few minutes ago' (il y a quelques minutes) sont parfaitement formées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Avec quel temps grammatical emploie-t-on le marqueur 'ago' ?",
+              "options": [
+                "Le prétérit simple",
+                "Le présent simple",
+                "Le futur simple",
+                "Le présent en be + -ing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Ago' ancre l'action dans un passé totalement révolu et daté : il s'emploie avec le prétérit simple."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'The train arrived twenty minutes _______.'",
+              "options": ["ago", "before", "since", "last"],
+              "correctAnswers": [0],
+              "explanation": "Après une durée (twenty minutes), on emploie 'ago' pour signifier 'il y a 20 minutes'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'J'ai rencontré Thomas il y a six mois' ?",
+              "options": [
+                "I met Thomas six months ago.",
+                "I met Thomas ago six months.",
+                "I have met Thomas there is six months.",
+                "I met Thomas since six months."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe au prétérit simple (met) + durée suivie de ago : 'six months ago'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'Dinosaurs lived on Earth millions of years _______.'",
+              "options": ["ago", "before", "last", "past"],
+              "correctAnswers": [0],
+              "explanation": "'Millions of years ago' = il y a des millions d'années."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la phrase 'Ago three weeks, I visited London' est-elle incorrecte ?",
+              "options": [
+                "Car 'ago' doit obligatoirement se placer après la durée (Three weeks ago)",
+                "Car London ne prend pas de majuscule",
+                "Car il faut utiliser le verbe go",
+                "Car three s'accorde au pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En anglais, 'ago' est un adverbe postposé : on dit 'Three weeks ago, I visited London'."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Dates, années et repères passés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle préposition utilise-t-on devant une année passée comme 2018 ?",
+              "options": ["in (ex: in 2018)", "on", "at", "to"],
+              "correctAnswers": [0],
+              "explanation": "Devant une année ou un mois, on utilise la préposition 'in' (ex: in 2018, in July)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle préposition utilise-t-on devant une date précise incluant le jour (ex: le 15 mai) ?",
+              "options": ["on (ex: on May 15th)", "in", "at", "by"],
+              "correctAnswers": [0],
+              "explanation": "Devant un jour précis ou une date complète, on utilise la préposition 'on' (ex: on Monday, on May 15th)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'au dix-neuvième siècle' en anglais ?",
+              "options": [
+                "in the nineteenth century",
+                "on the nineteenth century",
+                "at the nineteenth century",
+                "during nineteenth century"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les siècles, on emploie la préposition 'in' : 'in the 19th century'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment lit-on l'année 1995 en anglais ?",
+              "options": [
+                "nineteen ninety-five",
+                "one thousand nine hundred ninety-five",
+                "ninety nineteen five",
+                "nineteen hundred ninety-five"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les années se lisent habituellement par groupes de deux chiffres : 19 (nineteen) 95 (ninety-five)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions temporelles passées sont bien construites ?",
+              "options": [
+                "in 2005",
+                "at July 2010",
+                "on June 18th",
+                "in Monday morning"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "On emploie 'in' pour une année (in 2005) et 'on' pour un jour précis (on June 18th)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : 'The Olympic Games took place in London _______ 2012.'",
+              "options": ["in", "on", "at", "by"],
+              "correctAnswers": [0],
+              "explanation": "Devant une année comme 2012, on emploie la préposition 'in'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'à cette époque-là' pour situer une action dans le passé ?",
+              "options": [
+                "at that time",
+                "in this moment",
+                "on that hour",
+                "to that day"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'At that time' (ou 'back then') est l'expression standard pour dire 'à cette époque-là'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'The Eiffel Tower was built _______ 1889.'",
+              "options": ["in", "on", "at", "for"],
+              "correctAnswers": [0],
+              "explanation": "On utilise la préposition 'in' devant l'année 1889 : 'in 1889'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'dans les années 1980' en anglais ?",
+              "options": [
+                "in the 1980s (ou in the eighties)",
+                "on the 1980",
+                "at the eighties",
+                "during the 1980 years"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On écrit 'in the 1980s' ou 'in the eighties' pour désigner la décennie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : 'She was born _______ September 24th, 2010.'",
+              "options": ["on", "in", "at", "from"],
+              "correctAnswers": [0],
+              "explanation": "Une date comportant le jour exact s'introduit par la préposition 'on'."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "When et While dans le récit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle nuance apporte la conjonction 'while' par rapport à 'when' ?",
+              "options": [
+                "While insiste sur la durée et la simultanéité d'une action en cours ('pendant que')",
+                "While indique une action brève et soudaine",
+                "While signifie obligatoirement 'après que'",
+                "While s'utilise uniquement au futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'While' signifie 'pendant que / tandis que' et s'associe généralement à une action continue au past continuous."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle conjonction temporelle introduit typiquement l'action brève qui interrompt au prétérit simple ?",
+              "options": ["When", "While", "During", "Since"],
+              "correctAnswers": [0],
+              "explanation": "'When' (quand / lorsque) introduit très souvent l'événement soudain qui interrompt l'action de fond."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : 'I was reading a novel _______ the lights went out.'",
+              "options": ["when", "while", "during", "for"],
+              "correctAnswers": [0],
+              "explanation": "L'extinction des lumières est l'événement ponctuel qui interrompt la lecture : on emploie 'when'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : '_______ they were playing tennis, it began to rain heavily.'",
+              "options": ["While", "When", "During", "Ago"],
+              "correctAnswers": [0],
+              "explanation": "'While' introduit l'action en cours de déroulement au past continuous ('While they were playing')."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent correctement 'when' ou 'while' ?",
+              "options": [
+                "While my sister was sleeping, I was doing my homework.",
+                "When I was washing dishes, the glass broke.",
+                "While the doorbell rang, I was sleeping.",
+                "When they were cooking, suddenly they left."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dans la phrase 1, 'while' relie deux actions simultanées au past continuous. Dans la phrase 2, 'when' introduit la situation temporelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Pendant que nous marchions dans la rue, nous avons vu un renard' ?",
+              "options": [
+                "While we were walking down the street, we saw a fox.",
+                "When we walked down the street, we was seeing a fox.",
+                "During we walked, we saw a fox.",
+                "For we were walking, we saw a fox."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'While' introduit l'action continue (were walking), suivie de l'action ponctuelle au prétérit simple (saw)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la conjonction 'while' en français ?",
+              "options": [
+                "Pendant que / Tandis que",
+                "Quand soudain",
+                "Puis",
+                "Après que"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'While' exprime la simultanéité et se traduit par 'pendant que' ou 'tandis que'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'The phone rang three times _______ we were having breakfast.'",
+              "options": ["while", "when", "during", "ago"],
+              "correctAnswers": [0],
+              "explanation": "L'action en cours 'we were having breakfast' est introduite par la conjonction 'while'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'He was riding his bike _______ he fell off.'",
+              "options": ["when", "while", "during", "since"],
+              "correctAnswers": [0],
+              "explanation": "La chute est un événement soudain et ponctuel au prétérit simple : on utilise 'when'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle proposition a le même sens que 'While she was cooking, she burned her hand' ?",
+              "options": [
+                "She was cooking when she burned her hand.",
+                "She burned her hand while she burned dinner.",
+                "When she was cooking when she burned.",
+                "She cooked when she was burning."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'She was cooking when she burned her hand' exprime exactement la même relation temporelle."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Les connecteurs chronologiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel connecteur utilise-t-on pour marquer la première étape d'une suite d'actions ?",
+              "options": [
+                "First (ou First of all)",
+                "Finally",
+                "Then",
+                "Meanwhile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'First' ou 'First of all' signifie 'd'abord / premièrement' et introduit le début d'une chronologie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels mots signifient 'ensuite' ou 'puis' pour relier deux actions successives au passé ?",
+              "options": [
+                "Then et Next",
+                "Before et Ago",
+                "Yesterday et Last",
+                "Finally et At last"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Then' et 'Next' sont les connecteurs privilégiés pour exprimer la succession : 'puis / ensuite'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'après cela' en anglais ?",
+              "options": [
+                "after that",
+                "before that",
+                "since that",
+                "later that"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'After that' est l'équivalent direct et naturel de 'après cela' dans un récit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel connecteur permet d'exprimer un événement inattendu qui surgit brusquement ?",
+              "options": ["Suddenly", "Slowly", "Usually", "Always"],
+              "correctAnswers": [0],
+              "explanation": "'Suddenly' signifie 'soudain / tout à coup' et dynamise le récit en introduisant une rupture."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels connecteurs permettent d'introduire la dernière étape ou conclusion d'une histoire ?",
+              "options": ["Finally", "First", "In the end", "Next"],
+              "correctAnswers": [0, 2],
+              "explanation": "'Finally' (finalement / enfin) et 'In the end' (à la fin) marquent tous deux l'aboutissement du récit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : 'First, we packed our bags. _______, we took a taxi to the airport.'",
+              "options": ["Then", "Before", "Yesterday", "Ago"],
+              "correctAnswers": [0],
+              "explanation": "Après 'First', on emploie 'Then' (ensuite) pour enchaîner sur la deuxième action."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'plus tard' en anglais ?",
+              "options": ["later", "latter", "sooner", "late"],
+              "correctAnswers": [0],
+              "explanation": "'Later' signifie 'plus tard' (ex: 'two hours later' = deux heures plus tard)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'We were chatting calmly when _______ a strange noise startled us.'",
+              "options": ["suddenly", "finally", "first", "rarely"],
+              "correctAnswers": [0],
+              "explanation": "'Suddenly' convient parfaitement pour décrire l'irruption soudaine du bruit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on 'au début' pour introduire la situation de départ d'une histoire ?",
+              "options": [
+                "At first (ou In the beginning)",
+                "At end",
+                "In the next",
+                "After all"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'At first' ou 'In the beginning' situe la scène initiale d'un récit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : 'They looked everywhere for the cat and _______ found it under the bed.'",
+              "options": ["finally", "first", "before", "ago"],
+              "correctAnswers": [0],
+              "explanation": "'Finally' exprime l'aboutissement heureux après une longue recherche."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Exprimer la durée : for, during, from... to...",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle préposition utilise-t-on devant une durée chiffrée au passé (ex: pendant deux heures) ?",
+              "options": ["for", "during", "since", "while"],
+              "correctAnswers": [0],
+              "explanation": "Devant une durée quantifiable (ex: for two hours, for three days), on utilise la préposition 'for'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle préposition utilise-t-on devant un nom désignant un événement (ex: pendant le film) ?",
+              "options": ["during", "for", "while", "since"],
+              "correctAnswers": [0],
+              "explanation": "Devant un nom d'événement ou de période sans chiffre (ex: during the film, during the holidays), on emploie 'during'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : 'Sarah lived in London _______ three years when she was young.'",
+              "options": ["for", "during", "since", "while"],
+              "correctAnswers": [0],
+              "explanation": "'Three years' est une durée chiffrée : on utilise 'for three years' pour dire 'pendant trois ans'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : 'I took plenty of pictures _______ my holiday in Scotland.'",
+              "options": ["during", "for", "while", "since"],
+              "correctAnswers": [0],
+              "explanation": "'My holiday' est un groupe nominal désignant une période : on emploie 'during'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisant 'for' ou 'during' sont grammaticalement correctes ?",
+              "options": [
+                "He slept for eight hours last night.",
+                "We stayed at home during three days.",
+                "It snowed during the night.",
+                "She waited during two hours."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "'for eight hours' (durée chiffrée) et 'during the night' (nom de période) sont corrects. Avec des heures/jours, on emploie for."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'du lundi au vendredi' pour exprimer une borne temporelle ?",
+              "options": [
+                "from Monday to Friday",
+                "between Monday at Friday",
+                "of Monday to Friday",
+                "since Monday until Friday"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure pour indiquer un point de départ et d'arrivée temporel est 'from... to...'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'The match lasted _______ ninety minutes.'",
+              "options": ["for", "during", "while", "since"],
+              "correctAnswers": [0],
+              "explanation": "'Ninety minutes' est une mesure de temps : on emploie 'for'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on 'during the film' et NON 'for the film' pour situer une action ?",
+              "options": [
+                "Car 'the film' est un nom d'événement sans durée chiffrée",
+                "Car for est interdit au prétérit",
+                "Car film est trop court",
+                "Car during s'emploie devant toutes les consonnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'During' s'emploie toujours avec un nom (the meal, the concert, the film) pour situer l'action au cours de cet événement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'We waited for the bus _______ forty minutes in the freezing cold.'",
+              "options": ["for", "during", "while", "ago"],
+              "correctAnswers": [0],
+              "explanation": "Avec la durée chiffrée 'forty minutes', on emploie 'for'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : 'Shakespeare lived _______ 1564 to 1616.'",
+              "options": ["from", "since", "between", "during"],
+              "correctAnswers": [0],
+              "explanation": "Pour encadrer une période délimitée par deux années, on utilise le couple 'from... to...'."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Reconstituer un emploi du temps au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle question un enquêteur pose-t-il pour vérifier un alibi à une heure précise du passé ?",
+              "options": [
+                "What were you doing at 8 pm yesterday?",
+                "What do you do at 8 pm yesterday?",
+                "What will you do yesterday at 8 pm?",
+                "What did you doing yesterday at 8 pm?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour interroger sur une action en cours à une heure précise dans le passé, on emploie le past continuous."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète la déclaration d'alibi : 'At that exact time, I _______ dinner with my family.'",
+              "options": ["was having", "have", "am having", "were having"],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet 'I' à un moment précis du passé, on utilise 'was having'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'à ce moment précis' en anglais ?",
+              "options": [
+                "at that precise moment",
+                "in this precise hour",
+                "on that exact day",
+                "by this precise time"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'At that precise moment' permet d'isoler un instant exact dans la chronologie des faits."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : 'The robbery happened _______ 11 pm and midnight.'",
+              "options": ["between", "from", "during", "through"],
+              "correctAnswers": [0],
+              "explanation": "Pour situer un événement dans un intervalle entre deux heures, on utilise 'between... and...'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels repères temporels sont utiles pour reconstituer la chronologie d'un alibi passé ?",
+              "options": [
+                "At 7:30 pm",
+                "Every Monday",
+                "Ten minutes later",
+                "Tomorrow afternoon"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "'At 7:30 pm' fixe une heure précise et 'Ten minutes later' enchaîne chronologiquement sur l'action suivante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'vers dix heures' pour indiquer une heure approximative au passé ?",
+              "options": [
+                "around 10 o'clock (ou about 10 o'clock)",
+                "exact at 10 o'clock",
+                "on 10 o'clock",
+                "by 10 o'clock ago"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Around' ou 'about' exprime l'approximation horaire : 'around 10 o'clock'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : 'Where were you _______ the night of October 31st?'",
+              "options": ["on", "in", "at", "by"],
+              "correctAnswers": [0],
+              "explanation": "Pour une nuit ou une date calendaire spécifique, on emploie 'on' : 'on the night of October 31st'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'pendant ce temps-là' pour décrire une action simultanée ?",
+              "options": [
+                "meanwhile (ou in the meantime)",
+                "suddenly",
+                "later",
+                "eventually"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Meanwhile' signifie 'pendant ce temps' et relie deux actions qui se passent en même temps."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'The suspect left the building shortly _______ the alarm rang.'",
+              "options": ["after", "ago", "during", "between"],
+              "correctAnswers": [0],
+              "explanation": "'Shortly after' signifie 'peu après' (ex: 'shortly after the alarm rang')."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : 'The security guard was sleeping _______ the entire night.'",
+              "options": ["throughout (ou during)", "for", "while", "since"],
+              "correctAnswers": [0],
+              "explanation": "'Throughout' ou 'during' s'associe à 'the entire night' pour signifier 'tout au long de la nuit'."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Distinguer présent, passé et futur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel marqueur temporel indique clairement et exclusivement une action passée ?",
+              "options": ["yesterday", "tomorrow", "right now", "next week"],
+              "correctAnswers": [0],
+              "explanation": "'Yesterday' renvoie au passé, alors que 'tomorrow' et 'next week' renvoient au futur, et 'right now' au présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel marqueur temporel renvoie au futur et ne peut jamais s'employer au prétérit ?",
+              "options": ["tomorrow", "yesterday", "last week", "two days ago"],
+              "correctAnswers": [0],
+              "explanation": "'Tomorrow' signifie 'demain' et s'utilise avec un temps futur (will ou be going to)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel marqueur temporel exprime une habitude régulière au présent simple ?",
+              "options": [
+                "every day",
+                "yesterday afternoon",
+                "last night",
+                "three years ago"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Every day' (tous les jours) exprime la répétition habituelle au présent simple."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète la phrase au passé : 'We visited the Natural History Museum _______.'",
+              "options": [
+                "last Saturday",
+                "next Saturday",
+                "every Saturday",
+                "tomorrow"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le verbe 'visited' au prétérit, le complément temporel passé approprié est 'last Saturday'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels marqueurs temporels exigent obligatoirement l'emploi d'un temps du passé ?",
+              "options": [
+                "in 1998",
+                "next month",
+                "two days ago",
+                "at the moment"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "'in 1998' et 'two days ago' sont des dates révolues qui imposent l'usage du prétérit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : 'Now she lives in Manchester, but she lived in Bristol _______.'",
+              "options": ["two years ago", "next year", "tomorrow", "nowadays"],
+              "correctAnswers": [0],
+              "explanation": "Le contraste entre 'now' (présent) et 'lived' (passé) requiert un repère passé comme 'two years ago'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase présente une incohérence entre le verbe et le marqueur temporel ?",
+              "options": [
+                "Tomorrow, I watched a movie with my brother.",
+                "Yesterday, I watched a movie with my brother.",
+                "Last week, I played football.",
+                "Right now, I am studying English."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne peut pas associer 'Tomorrow' (futur) avec 'watched' (prétérit). Il faudrait dire 'Tomorrow, I will watch'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'autrefois / dans le passé' pour évoquer une époque révolue ?",
+              "options": [
+                "in the past",
+                "in the future",
+                "at present",
+                "the day after"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'In the past' situe une période révolue par rapport au présent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'They moved into their new house _______.'",
+              "options": [
+                "last month",
+                "next month",
+                "tomorrow",
+                "every month"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Moved' est au prétérit, seul 'last month' convient parmi les propositions."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel mot s'associe au prétérit pour signifier 'la veille' dans un récit ?",
+              "options": [
+                "the day before",
+                "the day after",
+                "tomorrow",
+                "next week"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'The day before' signifie 'la veille / le jour d'avant' dans une narration au passé."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan global du passé et des marqueurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle phrase associe parfaitement un verbe au passé et son marqueur temporel ?",
+              "options": [
+                "We explored London two days ago.",
+                "We explored London two days before ago.",
+                "We explore London yesterday.",
+                "We will explore London last week."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'We explored' (prétérit) s'accorde impeccablement avec 'two days ago'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un récit, que permet d'exprimer la combinaison de 'while' et 'when' ?",
+              "options": [
+                "Une action de fond continue interrompue par un événement soudain",
+                "Deux actions futures interdépendantes",
+                "Une règle de grammaire invariable",
+                "Une prévision météorologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette combinaison permet de contraster une action longue en cours (past continuous) et un fait soudain (prétérit simple)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : 'Lucy _______ her keys while she was jogging in the park.'",
+              "options": ["lost", "was losing", "loses", "did lose"],
+              "correctAnswers": [0],
+              "explanation": "Perdre ses clés est un fait ponctuel survenu pendant le jogging : prétérit simple 'lost'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : 'They arrived at the train station ten minutes _______.'",
+              "options": ["ago", "last", "before", "passed"],
+              "correctAnswers": [0],
+              "explanation": "Après une durée (ten minutes), 'ago' marque le temps écoulé."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases au passé avec marqueurs temporels sont parfaitement correctes ?",
+              "options": [
+                "Did you finish your project yesterday evening?",
+                "She didn't came home last night.",
+                "While I was studying, my friend sent me a message.",
+                "They was playing football three days ago."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La question 1 et la phrase 3 sont irréprochables. Les options 2 ('didn't came') et 4 ('They was') contiennent des erreurs grammaticales."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : 'He worked in that bookstore _______ 2018 to 2021.'",
+              "options": ["from", "between", "since", "during"],
+              "correctAnswers": [0],
+              "explanation": "On emploie le binôme 'from 2018 to 2021' pour borner la période dans le passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la règle d'or pour former une question fermée au prétérit simple ?",
+              "options": [
+                "Did + sujet + base verbale ?",
+                "Did + sujet + verbe en -ed ?",
+                "Do + sujet + verbe au prétérit ?",
+                "Was + sujet + base verbale ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La règle absolue est : Did + sujet + base verbale (ex: 'Did you see?')."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : 'I was cooking dinner when suddenly the fire alarm _______.'",
+              "options": ["went off", "was going off", "goes off", "go off"],
+              "correctAnswers": [0],
+              "explanation": "Le déclenchement de l'alarme est une action brève et soudaine : prétérit simple 'went off'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : 'We stayed at home last night because it _______ heavily.'",
+              "options": ["was raining", "raineded", "is raining", "rains"],
+              "correctAnswers": [0],
+              "explanation": "Le past continuous 'was raining' décrit l'action en cours qui justifie le fait de rester à la maison."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi emploie-t-on 'ago' plutôt que 'since' dans 'I finished my book an hour ago' ?",
+              "options": [
+                "Car ago quantifie le temps écoulé depuis un événement passé daté jusqu'à maintenant",
+                "Car since s'utilise uniquement avec le futur",
+                "Car an hour est un nom singulier",
+                "Car ago remplace toujours during"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Ago' s'utilise avec le prétérit simple pour indiquer le temps écoulé depuis l'événement passé."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
